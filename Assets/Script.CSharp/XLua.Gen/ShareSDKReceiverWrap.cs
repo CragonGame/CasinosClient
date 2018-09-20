@@ -1,0 +1,167 @@
+﻿#if USE_UNI_LUA
+using LuaAPI = UniLua.Lua;
+using RealStatePtr = UniLua.ILuaState;
+using LuaCSFunction = UniLua.CSharpFunctionDelegate;
+#else
+using LuaAPI = XLua.LuaDLL.Lua;
+using RealStatePtr = System.IntPtr;
+using LuaCSFunction = XLua.LuaDLL.lua_CSFunction;
+#endif
+
+using XLua;
+using System.Collections.Generic;
+
+
+namespace XLua.CSObjectWrap
+{
+    using Utils = XLua.Utils;
+    public class ShareSDKReceiverWrap 
+    {
+        public static void __Register(RealStatePtr L)
+        {
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			System.Type type = typeof(ShareSDKReceiver);
+			Utils.BeginObjectRegister(type, L, translator, 0, 0, 0, 0);
+			
+			
+			
+			
+			
+			
+			Utils.EndObjectRegister(type, L, translator, null, null,
+			    null, null, null);
+
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 2, 2, 2);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "instance", _m_instance_xlua_st_);
+            
+			
+            
+			Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "mOpenInstallReceiver", _g_get_mOpenInstallReceiver);
+            Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "mShareSDK", _g_get_mShareSDK);
+            
+			Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "mOpenInstallReceiver", _s_set_mOpenInstallReceiver);
+            Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "mShareSDK", _s_set_mShareSDK);
+            
+			
+			Utils.EndClassRegister(type, L, translator);
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CreateInstance(RealStatePtr L)
+        {
+            
+			try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+				if(LuaAPI.lua_gettop(L) == 1)
+				{
+					
+					ShareSDKReceiver gen_ret = new ShareSDKReceiver();
+					translator.Push(L, gen_ret);
+                    
+					return 1;
+				}
+				
+			}
+			catch(System.Exception gen_e) {
+				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+			}
+            return LuaAPI.luaL_error(L, "invalid arguments to ShareSDKReceiver constructor!");
+            
+        }
+        
+		
+        
+		
+        
+        
+        
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_instance_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    string _key = LuaAPI.lua_tostring(L, 1);
+                    string _secret = LuaAPI.lua_tostring(L, 2);
+                    
+                        ShareSDKReceiver gen_ret = ShareSDKReceiver.instance( _key, _secret );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        
+        
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_mOpenInstallReceiver(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    translator.Push(L, ShareSDKReceiver.mOpenInstallReceiver);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_mShareSDK(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    translator.Push(L, ShareSDKReceiver.mShareSDK);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_mOpenInstallReceiver(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    ShareSDKReceiver.mOpenInstallReceiver = (ShareSDKReceiver)translator.GetObject(L, 1, typeof(ShareSDKReceiver));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_mShareSDK(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    ShareSDKReceiver.mShareSDK = (cn.sharesdk.unity3d.ShareSDK)translator.GetObject(L, 1, typeof(cn.sharesdk.unity3d.ShareSDK));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+		
+		
+		
+		
+    }
+}

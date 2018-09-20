@@ -1,5 +1,6 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 EvUiLoginDeleteGuest = EventBase:new(nil) -- ui��Ϣ�������¼����ɾ���ο��˺�
 
 function EvUiLoginDeleteGuest:new(o)
@@ -13,6 +14,7 @@ end
 function EvUiLoginDeleteGuest:reset()
 end
 
+---------------------------------------
 EvUiLoginRequestGetPwd = EventBase:new(nil)-- Ui��Ϣ�������һ�����
 
 function EvUiLoginRequestGetPwd:new(o)
@@ -28,6 +30,7 @@ function EvUiLoginRequestGetPwd:reset()
     self.super_pwd = nil
 end
 
+---------------------------------------
 EvUiReportFriend = EventBase:new(nil)-- Ui��Ϣ�������һ�����
 
 function EvUiReportFriend:new(o)
@@ -45,6 +48,7 @@ function EvUiReportFriend:reset()
     self.report_type = nil
 end
 
+---------------------------------------
 EvUiCloseActivityPopUpBox = EventBase:new(nil)-- Ui��Ϣ�������һ�����
 
 function EvUiCloseActivityPopUpBox:new(o)
@@ -58,6 +62,7 @@ end
 function EvUiCloseActivityPopUpBox:reset()
 end
 
+---------------------------------------
 EvUiRequestFriendAddOrRemove = EventBase:new(nil)-- Ui��Ϣ�������һ�����
 
 function EvUiRequestFriendAddOrRemove:new(o)
@@ -77,6 +82,7 @@ function EvUiRequestFriendAddOrRemove:reset()
     self.friend_nickname = nil
 end
 
+---------------------------------------
 EvUiRequestMailRead = EventBase:new(nil)-- Ui��Ϣ�������һ�����
 
 function EvUiRequestMailRead:new(o)

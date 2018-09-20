@@ -11,6 +11,7 @@ namespace FairyGUI
 	{
 		/// <summary>
 		/// Display an error sign if the loader fails to load the content.
+		/// UIConfig.loaderErrorSign muse be set.
 		/// </summary>
 		public bool showErrorSign;
 
@@ -19,6 +20,7 @@ namespace FairyGUI
 		VertAlignType _verticalAlign;
 		bool _autoSize;
 		FillType _fill;
+		bool _shrinkOnly;
 		bool _updatingLayout;
 		PackageItem _contentItem;
 		float _contentWidth;
@@ -28,6 +30,7 @@ namespace FairyGUI
 
 		MovieClip _content;
 		GObject _errorSign;
+		GComponent _content2;
 
 		static GObjectPool errorSignPool;
 
@@ -57,6 +60,8 @@ namespace FairyGUI
 			}
 			if (_errorSign != null)
 				_errorSign.Dispose();
+			if (_content2 != null)
+				_content2.Dispose();
 			_content.Dispose();
 			base.Dispose();
 		}
@@ -135,6 +140,22 @@ namespace FairyGUI
 		/// <summary>
 		/// 
 		/// </summary>
+		public bool shrinkOnly
+		{
+			get { return _shrinkOnly; }
+			set
+			{
+				if (_shrinkOnly != value)
+				{
+					_shrinkOnly = value;
+					UpdateLayout();
+				}
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
 		public bool autoSize
 		{
 			get { return _autoSize; }
@@ -166,12 +187,39 @@ namespace FairyGUI
 		/// </summary>
 		public int frame
 		{
-			get { return _content.currentFrame; }
+			get { return _content.frame; }
 			set
 			{
-				_content.currentFrame = value;
+				_content.frame = value;
 				UpdateGear(5);
 			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public float timeScale
+		{
+			get { return _content.timeScale; }
+			set { _content.timeScale = value; }
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool ignoreEngineTimeScale
+		{
+			get { return _content.ignoreEngineTimeScale; }
+			set { _content.ignoreEngineTimeScale = value; }
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="time"></param>
+		public void Advance(float time)
+		{
+			_content.Advance(time);
 		}
 
 		/// <summary>
@@ -255,6 +303,14 @@ namespace FairyGUI
 		public MovieClip movieClip
 		{
 			get { return _content; }
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public GComponent component
+		{
+			get { return _content2; }
 		}
 
 		/// <summary>
@@ -345,6 +401,26 @@ namespace FairyGUI
 
 					UpdateLayout();
 				}
+				else if (_contentItem.type == PackageItemType.Component)
+				{
+					_contentSourceWidth = _contentItem.width;
+					_contentSourceHeight = _contentItem.height;
+
+					GObject obj = UIPackage.CreateObjectFromURL(itemURL);
+					if (obj == null)
+						SetErrorState();
+					else if (!(obj is GComponent))
+					{
+						obj.Dispose();
+						SetErrorState();
+					}
+					else
+					{
+						_content2 = (GComponent)obj;
+						((Container)displayObject).AddChild(_content2.displayObject);
+						UpdateLayout();
+					}
+				}
 				else
 				{
 					if (_autoSize)
@@ -422,7 +498,7 @@ namespace FairyGUI
 
 		private void UpdateLayout()
 		{
-			if (_content.texture == null && _content.frameCount == 0)
+			if (_content2 == null && _content.texture == null && _content.frameCount == 0)
 			{
 				if (_autoSize)
 				{
@@ -448,9 +524,18 @@ namespace FairyGUI
 
 				if (_width == _contentWidth && _height == _contentHeight)
 				{
-					_content.SetScale(1, 1);
-					if (_content.texture != null)
-						_content.SetNativeSize();
+					if (_content2 != null)
+					{
+						_content2.SetXY(0, 0);
+						_content2.SetScale(1, 1);
+					}
+					else
+					{
+						_content.SetXY(0, 0);
+						_content.SetScale(1, 1);
+						if (_content.texture != null)
+							_content.SetNativeSize();
+					}
 					return;
 				}
 				//如果不相等，可能是由于大小限制造成的，要后续处理
@@ -482,12 +567,25 @@ namespace FairyGUI
 						else
 							sx = sy;
 					}
+
+					if (_shrinkOnly)
+					{
+						if (sx > 1)
+							sx = 1;
+						if (sy > 1)
+							sy = 1;
+					}
+
 					_contentWidth = Mathf.FloorToInt(_contentSourceWidth * sx);
 					_contentHeight = Mathf.FloorToInt(_contentSourceHeight * sy);
 				}
 			}
 
-			if (_content.texture != null)
+			if (_content2 != null)
+			{
+				_content2.SetScale(sx, sy);
+			}
+			else if (_content.texture != null)
 			{
 				_content.SetScale(1, 1);
 				_content.size = new Vector2(_contentWidth, _contentHeight);
@@ -509,7 +607,10 @@ namespace FairyGUI
 				ny = Mathf.FloorToInt(this.height - _contentHeight);
 			else
 				ny = 0;
-			_content.SetXY(nx, ny);
+			if (_content2 != null)
+				_content2.SetXY(nx, ny);
+			else
+				_content.SetXY(nx, ny);
 		}
 
 		private void ClearContent()
@@ -524,6 +625,11 @@ namespace FairyGUI
 			}
 
 			_content.Clear();
+			if (_content2 != null)
+			{
+				_content2.Dispose();
+				_content2 = null;
+			}
 			_contentItem = null;
 		}
 
@@ -535,54 +641,33 @@ namespace FairyGUI
 				UpdateLayout();
 		}
 
-		override public void Setup_BeforeAdd(XML xml)
+		override public void Setup_BeforeAdd(ByteBuffer buffer, int beginPos)
 		{
-			base.Setup_BeforeAdd(xml);
+			base.Setup_BeforeAdd(buffer, beginPos);
 
-			string str;
-			str = xml.GetAttribute("url");
-			if (str != null)
-				_url = str;
+			buffer.Seek(beginPos, 5);
 
-			str = xml.GetAttribute("align");
-			if (str != null)
-				_align = FieldTypes.ParseAlign(str);
+			_url = buffer.ReadS();
+			_align = (AlignType)buffer.ReadByte();
+			_verticalAlign = (VertAlignType)buffer.ReadByte();
+			_fill = (FillType)buffer.ReadByte();
+			_shrinkOnly = buffer.ReadBool();
+			_autoSize = buffer.ReadBool();
+			showErrorSign = buffer.ReadBool();
+			_content.playing = buffer.ReadBool();
+			_content.frame = buffer.ReadInt();
 
-			str = xml.GetAttribute("vAlign");
-			if (str != null)
-				_verticalAlign = FieldTypes.ParseVerticalAlign(str);
-
-			str = xml.GetAttribute("fill");
-			if (str != null)
-				_fill = FieldTypes.ParseFillType(str);
-
-			_autoSize = xml.GetAttributeBool("autoSize", false);
-
-			str = xml.GetAttribute("errorSign");
-			if (str != null)
-				showErrorSign = str == "true";
-
-			str = xml.GetAttribute("frame");
-			if (str != null)
-				_content.currentFrame = int.Parse(str);
-			_content.playing = xml.GetAttributeBool("playing", true);
-
-			str = xml.GetAttribute("color");
-			if (str != null)
-				_content.color = ToolSet.ConvertFromHtmlColor(str);
-
-			str = xml.GetAttribute("fillMethod");
-			if (str != null)
-				_content.fillMethod = FieldTypes.ParseFillMethod(str);
-
+			if (buffer.ReadBool())
+				_content.color = buffer.ReadColor();
+			_content.fillMethod = (FillMethod)buffer.ReadByte();
 			if (_content.fillMethod != FillMethod.None)
 			{
-				_content.fillOrigin = xml.GetAttributeInt("fillOrigin");
-				_content.fillClockwise = xml.GetAttributeBool("fillClockwise", true);
-				_content.fillAmount = (float)xml.GetAttributeInt("fillAmount", 100) / 100;
+				_content.fillOrigin = buffer.ReadByte();
+				_content.fillClockwise = buffer.ReadBool();
+				_content.fillAmount = buffer.ReadFloat();
 			}
 
-			if (_url != null)
+			if (!string.IsNullOrEmpty(_url))
 				LoadContent();
 		}
 	}
