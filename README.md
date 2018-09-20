@@ -22,6 +22,9 @@
 - http://zh.esotericsoftware.com/spine-unity
 - https://github.com/Tencent/xLua
 
+## 果派德州Redmine
+- http://gp.cragon.cn:81/redmine/projects/kingtexas
+
 ## 果派德州QQ技术交流群
 558157909
 
