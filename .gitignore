@@ -1,0 +1,21 @@
+# CasinosClient
+.vs/
+Library/
+obj/
+Temp/
+Assets/.idea
+/Assets/SettingsUser
+/Assets/SettingsUser.meta
+/Assets/XLua/Gen
+/ProjectUiKing/.objs
+/ProjectUiZero/.objs
+/Assembly-CSharp.csproj
+/Assembly-CSharp-Editor.csproj
+/Assembly-CSharp-Editor-firstpass.csproj
+/Assembly-CSharp-firstpass.csproj
+/CasinosClient.csproj
+/CasinosClient.Editor.csproj
+/CasinosClient.Editor.Plugins.csproj
+/CasinosClient.Plugins.csproj
+/CasinosClient.sln
+*.userprefs
