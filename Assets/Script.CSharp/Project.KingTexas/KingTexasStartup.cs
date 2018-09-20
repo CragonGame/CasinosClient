@@ -8,7 +8,7 @@ namespace Casinos
     public class KingTexasStartup : MonoBehaviour
     {
         //---------------------------------------------------------------------
-        void Awake()
+        async void Awake()
         {
             bool use_persistent = true;
 #if UNITY_EDITOR
@@ -25,6 +25,8 @@ namespace Casinos
                 "Resources.KingTexasRaw/",
                 "Resources.KingTexas/",
                 "Texas");
+
+            await casinos_context.Launch();
 
             casinos_context.RegLuaFilePath(
                 "Launch/",

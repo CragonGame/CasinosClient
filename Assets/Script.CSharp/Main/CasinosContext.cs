@@ -9,6 +9,7 @@ namespace Casinos
     using UnityEngine;
     using XLua;
     using FairyGUI;
+    using System.Threading.Tasks;
 
     public enum _eProjectItemDisplayNameKey
     {
@@ -59,12 +60,13 @@ namespace Casinos
         public AsyncAssetLoaderMgr AsyncAssetLoaderMgr { get; private set; }
         public PathMgr PathMgr { get; private set; }
         public CasinosPlayerPrefs PlayerPrefs { get; private set; }
+        public CasinosConfig Config { get; private set; }
         public CasinosListener Listener { get; private set; }
         public TextureMgr TextureMgr { get; private set; }
         public CasinosLua CasinosLua { get; private set; }
         public NetBridge NetBridge { get; private set; }
         public CopyStreamingAssetsToPersistentDataPath CopyStreamingAssetsToPersistentDataPath { get; set; }
-        public Launch Launch { get; set; }
+        //public Launch Launch { get; set; }
         public NativeMgr NativeMgr { get; set; }
         public bool IsDev { get; set; }
         public bool Pause { get; set; }
@@ -139,7 +141,7 @@ namespace Casinos
         public const string LanKey = "LanKey";
 
         //---------------------------------------------------------------------
-        public CasinosContext(CasinosListener listener, 
+        public CasinosContext(CasinosListener listener,
             bool use_persistent,
             string lua_project_listener_name,
             string ui_pathroot,
@@ -222,6 +224,7 @@ namespace Casinos
             Listener = listener;
             MemoryStream = new MemoryStream();
             SB = new StringBuilder();
+            Config = new CasinosConfig();
 
             //Config = GameObject.FindObjectOfType<MbCasinosConfig>();
             //Config.FormatConfigUrl();
@@ -276,7 +279,7 @@ namespace Casinos
 
             CopyStreamingAssetsToPersistentDataPath = new CopyStreamingAssetsToPersistentDataPath();
 
-            Launch = new Launch();
+            //Launch = new Launch();
 
             HeadIconMgr = new HeadIconMgr();
         }
@@ -314,10 +317,10 @@ namespace Casinos
                 CopyStreamingAssetsToPersistentDataPath.update(elapsed_tm);
             }
 
-            if (Launch != null)
-            {
-                Launch.update(elapsed_tm);
-            }
+            //if (Launch != null)
+            //{
+            //    Launch.update(elapsed_tm);
+            //}
         }
 
         //---------------------------------------------------------------------
@@ -366,6 +369,13 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public Task Launch()
+        {
+            var launch = new CasinosLaunch();
+            return launch.Fire();
+        }
+
+        //---------------------------------------------------------------------
         public string GetRandomTips()
         {
             return "确认退出吗";
@@ -405,10 +415,10 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void copyStreamingAssetsToPersistentDataPath()
-        {
-            Launch.copyStreamingAssetsToPersistentDataPath();
-        }
+        //public void copyStreamingAssetsToPersistentDataPath()
+        //{
+        //    Launch.copyStreamingAssetsToPersistentDataPath();
+        //}
 
         //---------------------------------------------------------------------
         public void LoadConfigDone()

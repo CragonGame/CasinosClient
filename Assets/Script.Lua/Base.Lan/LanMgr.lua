@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 LanMgr = {}
 
+---------------------------------------
 function LanMgr:new(o)
     o = o or {}
     setmetatable(o,self)
@@ -22,11 +24,13 @@ function LanMgr:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function LanMgr.refreshLan()
     local lan_mgr = LanMgr:new(nil)
     lan_mgr:_checkAndCreateLanBase()
 end
 
+---------------------------------------
 function LanMgr:parseLanKeyValue()
     if (self.CasinosContext.UseLan == true)
     then
@@ -34,6 +38,7 @@ function LanMgr:parseLanKeyValue()
     end
 end
 
+---------------------------------------
 function LanMgr:getLanValue(lan_key)
     local value = ""
     if (self.CasinosContext.UseLan == true)
@@ -48,6 +53,7 @@ function LanMgr:getLanValue(lan_key)
     return value
 end
 
+---------------------------------------
 function LanMgr:getLanPackageName()
     local value = ""
     if (self.CasinosContext.UseLan == true)
@@ -57,6 +63,7 @@ function LanMgr:getLanPackageName()
     return value
 end
 
+---------------------------------------
 function LanMgr:setLan(lan)
     if (self.CasinosContext.UseLan == false)
     then
@@ -78,6 +85,7 @@ function LanMgr:setLan(lan)
     self:parseLanKeyValue()
 end
 
+---------------------------------------
 function LanMgr:parseComponent(component)
     if (self.CasinosContext.UseLan == false)
     then
@@ -112,6 +120,7 @@ function LanMgr:parseComponent(component)
     end
 end
 
+---------------------------------------
 function LanMgr:_checkAndCreateLanBase()
     if (self.CasinosContext.UseLan == true)
     then
@@ -133,6 +142,7 @@ function LanMgr:_checkAndCreateLanBase()
     end
 end
 
+---------------------------------------
 function LanMgr:_parseGObject(name,i,pack_name)
     local strs = CS.Casinos.LuaHelper.spliteStr(name,"_")
     local l = #strs
@@ -170,6 +180,7 @@ function LanMgr:_parseGObject(name,i,pack_name)
     end
 end
 
+---------------------------------------
 function LanMgr:_createLanBase()
     if (self.CurrentLan == "English")
     then

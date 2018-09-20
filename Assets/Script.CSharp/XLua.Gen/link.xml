@@ -48,7 +48,6 @@
 		<type fullname="_eAsyncAssetLoadType" preserve="all"/>
 		<type fullname="Casinos.ParseStreamingAssetsDataInfo" preserve="all"/>
 		<type fullname="Casinos.CopyStreamingAssetsToPersistentDataPath" preserve="all"/>
-		<type fullname="Casinos.LaunchConfigLoader" preserve="all"/>
 		<type fullname="Casinos.UiSoundMgr" preserve="all"/>
 		<type fullname="ChatParser" preserve="all"/>
 		<type fullname="Casinos.UiHelper" preserve="all"/>

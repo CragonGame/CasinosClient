@@ -5,7 +5,6 @@ GetPhoneCodeReson = {
     ResetPwd = 1,
 }
 
-
 AttachWechatMp ={}
 function AttachWechatMp:new(o)
     o = o or {}

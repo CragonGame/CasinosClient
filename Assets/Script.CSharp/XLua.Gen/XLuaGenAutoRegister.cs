@@ -219,8 +219,6 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentDataPath), CasinosCopyStreamingAssetsToPersistentDataPathWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos.LaunchConfigLoader), CasinosLaunchConfigLoaderWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(Casinos.UiSoundMgr), CasinosUiSoundMgrWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(ChatParser), ChatParserWrap.__Register);

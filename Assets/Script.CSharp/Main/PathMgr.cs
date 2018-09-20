@@ -21,8 +21,8 @@ namespace Casinos
         //---------------------------------------------------------------------
         public bool UsePersistent { get; private set; }// true=使用临时目录中的资源，false=使用编辑器目录中的资源
         public string PathAssets { get; private set; }// Unity3D的Assets目录
-        public string PathSettings { get; private set; }// Settings目录
-        public string PathSettingsUser { get; private set; }// SettingsUser目录
+        public string PathSettings { get; private set; }// Unity3D的Settings目录
+        public string PathSettingsUser { get; private set; }// Unity3D的SettingsUser目录
         public string PathLuaRoot { get; private set; }// Lua文件所在根目录
         _eEditorRunSourcePlatform EditorModeRunsourcesPlatform { get; set; }
         string NeedCombinePath { get; set; }

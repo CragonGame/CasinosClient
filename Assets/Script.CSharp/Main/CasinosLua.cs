@@ -159,7 +159,7 @@ namespace Casinos
 
             typeof(Casinos.ParseStreamingAssetsDataInfo),
             typeof(Casinos.CopyStreamingAssetsToPersistentDataPath),
-            typeof(Casinos.LaunchConfigLoader),
+            //typeof(Casinos.LaunchConfigLoader),
             typeof(Casinos.UiSoundMgr),
             typeof(ChatParser),
             typeof(UiHelper),
