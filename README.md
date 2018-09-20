@@ -17,8 +17,8 @@
 - http://zh.esotericsoftware.com/spine-unity
 - https://github.com/Tencent/xLua
 
-## QQ交流群
-232026043
+## 果派德州QQ技术交流群
+558157909
 
 ## License
 [MIT](/LICENSE)
