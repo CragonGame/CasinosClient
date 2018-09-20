@@ -10,7 +10,7 @@
 - https://bugly.qq.com/v2/
 - https://www.dataeye.com/
 - http://www.fairygui.com/
-- http://www.fairygui.com/
+- https://msgpack.org/
 - https://www.openinstall.io/
 - http://sdk.weixin.senparc.com/
 - http://www.mob.com/
