@@ -4,7 +4,13 @@
 [![forks badge]][forks]
 [![issues badge]][issues]
 
-## 果派德州第三方依赖
+## 果派德州介绍
+果派德州是一款休闲德州扑克，包含常规桌，赛事场，百人桌，时时彩等玩法。
+目前已经上线，下载地址为：
+https://cragon.cn/gpdz.html
+该客户端源码与之对应。
+
+## 果派德州依赖的第三方SDK
 - https://unity3d.com
 - https://beecloud.cn
 - https://bugly.qq.com/v2/
