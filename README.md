@@ -1,15 +1,15 @@
-﻿# 果派德州，客户端Unity3D源代码
+﻿## 果派德州，客户端Unity3D源代码
 [![licence badge]][licence]
 [![stars badge]][stars]
 [![forks badge]][forks]
 [![issues badge]][issues]
 
-## 果派德州介绍
+### 果派德州介绍
 - 果派德州是一款休闲德州扑克，包含常规桌，赛事场，百人桌，时时彩等玩法。
 - 目前已经上线，该客户端源码与之对应。
 - 下载地址：https://cragon.cn/gpdz.html
 
-## 果派德州依赖的第三方SDK
+### 果派德州依赖的第三方SDK
 - https://unity3d.com
 - https://beecloud.cn
 - https://bugly.qq.com/v2/
@@ -22,13 +22,13 @@
 - http://zh.esotericsoftware.com/spine-unity
 - https://github.com/Tencent/xLua
 
-## 果派德州Redmine
+### 果派德州Redmine
 - http://gp.cragon.cn:81/redmine/projects/kingtexas
 
-## 果派德州QQ技术交流群
+### 果派德州QQ技术交流群
 558157909
 
-## License
+### License
 [MIT](/LICENSE)
 
 [licence badge]:https://img.shields.io/badge/license-MIT-blue.svg
