@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rqfkr96l" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="oypw1" name="ComMarquee.xml" path="/Component/" exported="true"/>
+    <component id="oypw7" name="ComShootingText.xml" path="/Component/" exported="true"/>
+    <component id="oypw9" name="CoVIP.xml" path="/Component/"/>
+    <component id="oypwc" name="ShootingText.xml" path="/" exported="true"/>
+    <component id="oypwd" name="ComParent.xml" path="/Component/" exported="true"/>
+    <component id="oypwi" name="ComMarqueeRealParent.xml" path="/Component/" exported="true"/>
+    <component id="lil3j" name="BtnHorn.xml" path="/Component/"/>
+    <component id="lil3k" name="BtnPen.xml" path="/Component/" exported="true"/>
+  </resources>
+  <publish name="ShootingText" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\ShootingText"/>
+</packageDescription>

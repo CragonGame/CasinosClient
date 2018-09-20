@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n13_j0ra" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n15_j0ra" name="Lan_Btn_BuyNow" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="448,490" group="n17_lh6b"/>
+    <loader id="n10_njuk" name="Lan_Image_FirstPurchaseBig" xy="283,39" size="510,136" group="n17_lh6b" url="ui://6kz8w16qnjuk6h" align="center" vAlign="middle"/>
+    <loader id="n11_njuk" name="Lan_Image_RechargeFirstContent" xy="141,179" size="783,265" group="n17_lh6b" url="ui://6kz8w16qj0ra6k" align="center" vAlign="middle" fill="scale"/>
+    <group id="n17_lh6b" name="n17" xy="141,39" size="783,515" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerMatchInfo" pages="0,,1,,2,,3,,4," selected="0"/>
+  <displayList>
+    <component id="n0_gy6l" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n8_inau" name="n8" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="411,74" pivot="0.5,0.5" group="n17_m4t7">
+      <relation target="n16_m4t7" sidePair="right-left"/>
+    </image>
+    <image id="n6_inau" name="n6" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="139,80" group="n17_m4t7"/>
+    <image id="n9_inau" name="n9" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="616,74" pivot="0.5,0.5" group="n17_m4t7" skew="0,180">
+      <relation target="n16_m4t7" sidePair="left-right"/>
+    </image>
+    <component id="n5_inau" name="ComTab" src="inauf" fileName="Component/ComTab.xml" xy="179,159" group="n17_m4t7"/>
+    <component id="n2_gy6l" name="ComOverView" src="gy6l4" fileName="Component/ComOverView.xml" xy="173,222" group="n17_m4t7">
+      <gearDisplay controller="ControllerMatchInfo" pages="0"/>
+    </component>
+    <component id="n3_gy6l" name="ComReward" src="gy6l5" fileName="Component/ComReward.xml" xy="173,219" group="n17_m4t7">
+      <gearDisplay controller="ControllerMatchInfo" pages="4"/>
+    </component>
+    <component id="n4_gy6l" name="ComRank" src="gy6lc" fileName="Component/ComRank.xml" xy="173,219" group="n17_m4t7">
+      <gearDisplay controller="ControllerMatchInfo" pages="2"/>
+    </component>
+    <component id="n10_inau" name="ComMatchState" src="gy6le" fileName="Component/ComMatchState.xml" xy="173,219" group="n17_m4t7">
+      <gearDisplay controller="ControllerMatchInfo" pages="1"/>
+    </component>
+    <component id="n12_inau" name="ComBlind" src="gy6l7" fileName="Component/ComBlind.xml" xy="173,219" group="n17_m4t7">
+      <gearDisplay controller="ControllerMatchInfo" pages="3"/>
+    </component>
+    <text id="n16_m4t7" name="TextTitle" xy="450,81" pivot="0.5,0.5" size="165,50" group="n17_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="本场赛况         "/>
+    <group id="n17_m4t7" name="n17" xy="139,74" size="754,476" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ryu58q0c" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="oypwm" name="Notice.xml" path="/" exported="true"/>
+    <component id="oypwn" name="CoInput.xml" path="/Component/" exported="true"/>
+    <image id="y7iqo" name="Bg.png" path="/Image/" scale="9grid" scale9grid="19,19,38,38"/>
+    <image id="vxr8p" name="聊天-喇叭.png" path="/Image/"/>
+  </resources>
+  <publish name="Notice" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Notice"/>
+</packageDescription>

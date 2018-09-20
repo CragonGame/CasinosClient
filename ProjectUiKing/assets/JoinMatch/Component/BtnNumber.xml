@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="143,83" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n5_sd6w" name="n5" src="u51ojc" pkg="nhvxw9ov" xy="1,0" size="141,83" color="#2d2d5a">
+      <gearDisplay controller="button" pages="1"/>
+    </image>
+    <text id="n4_sd6w" name="title" xy="0,0" pivot="0.5,0.5" size="143,83" fontSize="60" color="#a9c9f7" align="center" vAlign="middle" leading="0" autoSize="none" bold="true" text="9"/>
+  </displayList>
+  <Button/>
+</component>

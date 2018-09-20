@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="92,86">
+  <displayList>
+    <image id="n0_mad8" name="n0" src="onuyc4" pkg="nhvxw9ov" xy="0,0"/>
+    <image id="n2_mad8" name="n2" src="qeucih" pkg="nhvxw9ov" xy="3,3"/>
+    <text id="n3_hawu" name="Lan_Text_Gift" xy="3,86" pivot="0.5,0.5" size="86,25" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="属性"/>
+  </displayList>
+</component>

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 979073406
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a501f26daf1cf184c60292c939891950
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/sit.wav
+Dependencies: []

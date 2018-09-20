@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1550354325
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ca89426d8b156fffee9d4faa20afff72
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreMsgBox/PreMsgBox@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreMsgBox/PreMsgBox.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreMsgBox/PreMsgBox@atlas0.png
+Dependencies: []

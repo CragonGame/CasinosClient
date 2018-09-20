@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n6_s17d" name="ComBgAndClose" src="s17d1" fileName="Component/ComBgAndClose.xml" xy="0,0" alpha="0.6">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <loader id="n0_lacn" name="LoaderContent" xy="238,115" size="590,410" group="n5_s17d" align="center" vAlign="middle" fill="scaleFree"/>
+    <component id="n1_lacn" name="BtnClose" src="jt75ep" fileName="Component/Btn/BtnClose.xml" pkg="nhvxw9ov" xy="775,107" group="n5_s17d"/>
+    <text id="n2_odv2" name="TextContent" xy="245,273" pivot="0.5,0.5" size="579,39" group="n5_s17d" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <group id="n5_s17d" name="n5" xy="238,107" size="597,418" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

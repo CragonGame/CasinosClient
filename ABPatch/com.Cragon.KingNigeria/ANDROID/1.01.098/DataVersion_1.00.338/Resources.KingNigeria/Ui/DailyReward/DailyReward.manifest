@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3848732623
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: dailyreward.ab
+      Dependencies: {}

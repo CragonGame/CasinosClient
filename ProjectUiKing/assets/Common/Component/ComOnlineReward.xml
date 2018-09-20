@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="59,58" pivot="0.5,0.5" initName="ComOnlineReward">
+  <displayList>
+    <image id="n5_ot8l" name="n3" src="ffinew" xy="0,0" pivot="0.5,0.5" size="59,58" rotation="-1"/>
+    <image id="n6_ot8l" name="n6" src="ffinev" xy="1,36" pivot="0.5,0.5" size="57,16"/>
+    <text id="n2_ixpj" name="TextOnlineReward" xy="1,34" pivot="0.5,0.5" size="56,20" fontSize="14" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n5_ot8l" tween="true" startValue="-1" endValue="1" duration="6" ease="Linear"/>
+    <item time="0" type="Scale" target="n5_ot8l" tween="true" startValue="0.98,0.98" endValue="1.02,1.02" duration="6" ease="Linear"/>
+    <item time="6" type="Rotation" target="n5_ot8l" tween="true" startValue="1" endValue="-1" duration="6" ease="Linear"/>
+    <item time="6" type="Scale" target="n5_ot8l" tween="true" startValue="1.02,1.02" endValue="0.98,0.98" duration="6" ease="Linear"/>
+    <item time="12" type="Rotation" target="n5_ot8l" tween="true" startValue="-1" endValue="-1" duration="72" ease="Linear"/>
+    <item time="12" type="Scale" target="n5_ot8l" tween="true" startValue="0.98,0.98" endValue="0.98,0.98" duration="72" ease="Linear"/>
+    <item time="84" type="Scale" target="n5_ot8l" tween="true" startValue="0.98,0.98" ease="Linear"/>
+  </transition>
+</component>

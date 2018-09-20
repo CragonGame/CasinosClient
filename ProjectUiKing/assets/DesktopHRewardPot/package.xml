@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="z8juw08s" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="fb5j0" name="DesktopHRewardPot.xml" path="/" exported="true"/>
+    <component id="etcz6" name="CoRewardPotPlayerInfo.xml" path="/Component/" exported="true"/>
+  </resources>
+  <publish name="DesktopHRewardPot" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHRewardPot"/>
+</packageDescription>

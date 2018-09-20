@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="544,330">
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <image id="n34_onuy" name="n34" src="onuyc3" fileName="Image/BgSign.png" pkg="nhvxw9ov" xy="184,4" size="351,45" group="n2_qsg8" alpha="0.6" color="#4973bc"/>
+    <text id="n1_qsg8" name="TextUnderwrite" xy="188,9" size="338,25" group="n2_qsg8" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="left-left,middle-middle"/>
+    </text>
+    <group id="n2_qsg8" name="top" xy="184,4" size="351,45"/>
+    <component id="n31_h7og" name="HeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="21,1" size="150,150" group="n5_qsg8"/>
+    <group id="n5_qsg8" name="Icon" xy="21,1" size="150,150"/>
+    <text id="n26_h7og" name="NickName" xy="188,47" size="183,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n27_h7og" name="Chip" xy="207,77" size="164,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n28_h7og" name="State" xy="188,107" size="183,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n29_h7og" name="ID" xy="21,154" size="183,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n30_h7og" name="Address" xy="21,183" size="183,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n7_qsg8" name="TextLevel" xy="456,82" size="73,25" group="n10_qsg8" fontSize="18" color="#e5bb4f" leading="0" autoSize="none" text="8"/>
+    <component id="n40_fqbz" name="ProgressLevel" src="ot8lff" fileName="Component/Progress.xml" pkg="nhvxw9ov" xy="395,112" size="142,18" group="n10_qsg8">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <loader id="n44_ipt6" name="Lan_Image_Level" xy="395,59" size="59,48" group="n10_qsg8" url="ui://nhvxw9ovtv2tla" align="center" vAlign="middle" fill="scaleFree"/>
+    <group id="n10_qsg8" name="level" xy="395,59" size="142,71"/>
+    <component id="n12_qsg8" name="Lan_Btn_JoinDesk" src="o1cmo" fileName="Component/MenuBtn.xml" xy="20,211">
+      <Button title="加入牌桌"/>
+    </component>
+    <image id="n13_qsg8" name="n13" src="qeucii" fileName="Image/BtnIcon/ProfileJoinDesk.png" pkg="nhvxw9ov" xy="23,214"/>
+    <component id="n14_qsg8" name="Lan_Btn_Message" src="o1cmo" fileName="Component/MenuBtn.xml" xy="126,211">
+      <Button title="消息"/>
+    </component>
+    <image id="n15_qsg8" name="n15" src="qeucin" fileName="Image/BtnIcon/ProfileSendMsg.png" pkg="nhvxw9ov" xy="129,214"/>
+    <component id="n16_qsg8" name="Lan_Btn_Presented" src="o1cmo" fileName="Component/MenuBtn.xml" xy="232,211">
+      <Button title="发送"/>
+    </component>
+    <image id="n17_qsg8" name="n17" src="qeucim" fileName="Image/BtnIcon/ProfileSendChips.png" pkg="nhvxw9ov" xy="235,214"/>
+    <component id="n18_qsg8" name="BtnAddFriend" src="o1cmo" fileName="Component/MenuBtn.xml" xy="338,211">
+      <Button title="添加朋友"/>
+    </component>
+    <image id="n19_qsg8" name="AddFriend" src="qeucif" fileName="Image/BtnIcon/ProfileFriend.png" pkg="nhvxw9ov" xy="341,214"/>
+    <image id="n38_c1pc" name="RemoveFriend" src="qeucio" fileName="Image/BtnIcon/RemoveFriend.png" pkg="nhvxw9ov" xy="338,212"/>
+    <component id="n35_heqs" name="Lan_Btn_Report" src="heqs13" fileName="Component/MenuBtnOrange.xml" xy="444,211">
+      <Button title="举报用户"/>
+    </component>
+    <image id="n36_heqs" name="n36" src="qeucit" fileName="Image/BtnIcon/report1.png" pkg="nhvxw9ov" xy="446,214" size="88,88"/>
+    <image id="n39_ddgu" name="n39" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="184,80" size="18,18" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </image>
+    <image id="n43_j1yr" name="n43" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="184,80" size="18,18" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </image>
+    <component id="n41_jyil" name="ComReportPlayer" src="jyil18" fileName="Component/ComReportPlayer.xml" xy="-91,148" hideByEditor="true" visible="false"/>
+  </displayList>
+</component>

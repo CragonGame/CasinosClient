@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="318,287" overflow="hidden">
+  <displayList>
+    <image id="n44_kd14" name="n44" src="kd14o" fileName="Image/QuickChatBg.png" xy="0,-16" size="355,342">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+</component>

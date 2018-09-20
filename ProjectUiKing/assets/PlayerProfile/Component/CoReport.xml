@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="93,111">
+  <displayList>
+    <image id="n3_hawu" name="n3" src="onuyc5" pkg="nhvxw9ov" xy="0,0"/>
+    <image id="n4_hawu" name="n4" src="qeucit" pkg="nhvxw9ov" xy="3,0"/>
+    <text id="n5_hawu" name="Lan_Text_Report" xy="3,86" pivot="0.5,0.5" size="86,25" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="举报"/>
+  </displayList>
+</component>

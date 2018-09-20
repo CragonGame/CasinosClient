@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3210924096
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c984bec5c1e88730b61b65d3e741115b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f19fbf085e00d23fbc8d6cf7b345590b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Spine/DengLong/denglong.png
+Dependencies: []

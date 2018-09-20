@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="162,36">
+  <displayList>
+    <text id="n189_sbed" name="TextCountryCord" xy="0,1" pivot="0.5,0.5" size="114,35" fontSize="26" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n190_sbed" name="n190" src="h9va1k" fileName="Image/下拉.png" xy="117,4" pivot="0.5,0.5"/>
+  </displayList>
+</component>

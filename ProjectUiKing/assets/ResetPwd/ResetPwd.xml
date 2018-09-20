@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <image id="n63_lvp2" name="n63" src="teyh8q" pkg="gbdohaiv" xy="-124,-97" size="1314,835">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n58_erub" name="BtnReturn" src="wb2ek4" pkg="nhvxw9ov" xy="1005,8">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <image id="n33" name="n33" src="vcplc" xy="237,175" size="500,213" group="n62_s17d"/>
+    <image id="n34" name="n34" src="vcplb" xy="206,224" size="561,7" group="n62_s17d"/>
+    <text id="n37" name="InputAcc" xy="244,184" size="485,34" group="n62_s17d" input="true" maxLength="32" fontSize="26" vAlign="middle" autoSize="shrink" text=""/>
+    <text id="n38" name="InputSuperPwd" xy="243,236" size="485,34" group="n62_s17d" input="true" maxLength="16" password="true" fontSize="26" vAlign="middle" leading="0" autoSize="shrink" text=""/>
+    <image id="n39" name="n39" src="vcplb" xy="206,328" size="561,7" group="n62_s17d"/>
+    <text id="n40" name="InputNewPwd" xy="243,288" size="485,34" group="n62_s17d" input="true" maxLength="16" password="true" fontSize="26" vAlign="middle" leading="0" autoSize="shrink" text=""/>
+    <text id="n41" name="InputConfirmNewPwd" xy="243,340" size="485,34" group="n62_s17d" input="true" maxLength="16" password="true" fontSize="26" vAlign="middle" leading="0" autoSize="shrink" text=""/>
+    <image id="n42" name="n42" src="vcplb" xy="206,272" size="561,7" group="n62_s17d"/>
+    <component id="n49_v4ef" name="Lan_Btn_Return" src="n8cld" xy="235,387" group="n62_s17d"/>
+    <component id="n52_v4ef" name="Lan_Btn_ResetPwd" src="n8cle" xy="569,387" size="290,110" group="n62_s17d"/>
+    <group id="n62_s17d" name="ForgetPwd" xy="206,175" size="653,322" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

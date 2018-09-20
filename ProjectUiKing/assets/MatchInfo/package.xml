@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="6jtesqzw" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="gy6l0" name="MatchInfo.xml" path="/" exported="true"/>
+    <component id="gy6l1" name="BtnApply.xml" path="/Component/" exported="true"/>
+    <component id="gy6l2" name="BtnShare.xml" path="/Component/" exported="true"/>
+    <component id="gy6l3" name="ComOverViewText.xml" path="/Component/"/>
+    <component id="gy6l4" name="ComOverView.xml" path="/Component/"/>
+    <component id="gy6l5" name="ComReward.xml" path="/Component/"/>
+    <component id="gy6l6" name="ItemReward.xml" path="/Component/Item/"/>
+    <component id="gy6l7" name="ComBlind.xml" path="/Component/"/>
+    <component id="gy6l8" name="ComRepurchase.xml" path="/Component/"/>
+    <component id="gy6l9" name="ComPurchase.xml" path="/Component/"/>
+    <component id="gy6la" name="ItemBlind.xml" path="/Component/Item/"/>
+    <component id="gy6lc" name="ComRank.xml" path="/Component/"/>
+    <component id="gy6ld" name="ItemRank.xml" path="/Component/Item/"/>
+    <component id="gy6le" name="ComMatchState.xml" path="/Component/"/>
+    <component id="inauf" name="ComTab.xml" path="/Component/"/>
+    <component id="flnpg" name="ComRewardExplain.xml" path="/Component/"/>
+  </resources>
+  <publish name="MatchInfo" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\MatchInfo"/>
+</packageDescription>

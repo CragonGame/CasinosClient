@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" adaptationTest="FitSize">
+  <controller name="ControllerOperate" pages="0,Slide,1,Input" selected="1"/>
+  <displayList>
+    <component id="n26_h1h1" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <text id="n7_eh36" name="TextChipValue" xy="433,155" pivot="0.5,0.5" size="200,39" group="n39_m4t7" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="你的余额:">
+      <gearDisplay controller="ControllerOperate" pages="0"/>
+    </text>
+    <component id="n24_g8hz" name="Lan_Btn_Confirm" src="uvmqkg" fileName="Component/Btn/BtnEnsure.xml" pkg="nhvxw9ov" xy="448,469" group="n39_m4t7"/>
+    <text id="n15_fdy1" name="Lan_Text_AskingAvailableBalance" xy="368,197" pivot="0.5,0.5" size="329,39" group="n39_m4t7" fontSize="30" color="#ffffff" leading="0" text="正在请求获取可用余额..."/>
+    <image id="n32_lh6b" name="n32" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="140,77" group="n39_m4t7"/>
+    <image id="n33_lh6b" name="n33" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="413,75" pivot="0.5,0.5" group="n39_m4t7">
+      <relation target="n38_m4t7" sidePair="right-left"/>
+    </image>
+    <image id="n34_lh6b" name="n34" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="615,75" pivot="0.5,0.5" group="n39_m4t7" skew="0,180">
+      <relation target="n38_m4t7" sidePair="left-right"/>
+    </image>
+    <text id="n38_m4t7" name="TextTitle" xy="450,81" pivot="0.5,0.5" size="165,50" group="n39_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="下注游戏"/>
+    <text id="n9_eh36" name="TextTipsRight" xy="729,294" pivot="0.5,0.5" size="116,31" group="n40_ddfw" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="牌桌上限"/>
+    <text id="n8_eh36" name="TextTipsLeft" xy="221,294" pivot="0.5,0.5" size="118,31" group="n40_ddfw" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="牌桌下限"/>
+    <component id="n1_eh36" name="ComSlider" src="eccy7" fileName="Component/ComSlider.xml" xy="219,256" group="n40_ddfw"/>
+    <group id="n40_ddfw" name="n40" xy="219,256" size="626,142" group="n39_m4t7" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerOperate" pages="0"/>
+    </group>
+    <text id="n46_ddfw" name="Lan_Text_YourBalance" xy="403,256" pivot="1,0" size="125,39" group="n45_ddfw" fontSize="30" color="#ffffff" align="right" vAlign="middle" leading="0" singleLine="true" text="你的余额"/>
+    <image id="n41_ddfw" name="n41" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="555,307" size="257,43" group="n45_ddfw"/>
+    <text id="n42_ddfw" name="TextInput" xy="557,310" size="251,36" group="n45_ddfw" input="true" prompt="0" keyboardType="4" fontSize="30" color="#ffffff" vAlign="middle" ubb="true" autoSize="none" text=""/>
+    <text id="n44_ddfw" name="Lan_Text_SendGoldTips" xy="253,312" size="275,39" group="n45_ddfw" fontSize="30" color="#ffffff" align="right" vAlign="middle" text="请输入赠送筹码数额"/>
+    <text id="n47_ddfw" name="TextChipValueInput" xy="557,257" pivot="0.5,0.5" size="200,39" group="n45_ddfw" fontSize="30" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n45_ddfw" name="n45" xy="253,256" size="559,95" group="n39_m4t7" advanced="true">
+      <gearDisplay controller="ControllerOperate" pages="1"/>
+    </group>
+    <group id="n39_m4t7" name="n39" xy="140,75" size="705,460" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Alpha" target="n15_fdy1" tween="true" startValue="1" endValue="0" duration="36"/>
+    <item time="36" type="Alpha" target="n15_fdy1" tween="true" startValue="0"/>
+  </transition>
+</component>

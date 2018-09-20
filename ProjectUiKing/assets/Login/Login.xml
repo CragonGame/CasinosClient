@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" margin="0,640,0,0">
+  <controller name="LoginState" pages="0,Login,1,Register,3,LoginMain,4,RegisterCode,5,ResetPwd,6,ResetPwdCode,7,Logining" selected="2"/>
+  <controller name="ControllerWeChat" pages="0,ShowWeChat,1,HideWeChat" selected="0"/>
+  <controller name="ControllerChooseCountryCode" pages="0,Hide,1,Choose" selected="0"/>
+  <controller name="ControllerShowIcon" pages="0,Hide,1,Show" selected="0"/>
+  <displayList>
+    <component id="n183_hrhq" name="ComBg" src="hrhqv" fileName="Component/ComBg.xml" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n245_h1fy" name="n245" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="1,1" size="19,28" alpha="0.25" color="#000000">
+      <relation target="n124_tiab" sidePair="leftext-left,rightext-right"/>
+    </image>
+    <text id="n124_tiab" name="Version" xy="5,6" size="10,18" fontSize="14" color="#ffffff" align="center" vAlign="middle" text=""/>
+    <graph id="n244_rbum" name="HolderMote" xy="540,457" size="0,0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+    <image id="n188_d2ra" name="n188" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,568" size="1066,72" group="n211_sbed" alpha="0.4" color="#000000">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </image>
+    <text id="n129_tm91" name="Lan_Text_TipWarn" xy="6,593" size="1054,20" group="n211_sbed" fontSize="14" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <gearDisplay controller="LoginState" pages="0,3"/>
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </text>
+    <text id="n171_cpaa" name="wenwangwen" xy="407,572" size="249,20" group="n211_sbed" fontSize="14" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="沪网文(2017) 9645-739号">
+      <gearDisplay controller="LoginState" pages="0,3"/>
+      <relation target="n129_tm91" sidePair="bottom-top,center-center"/>
+    </text>
+    <group id="n211_sbed" name="n211" xy="0,568" size="1066,72" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="0,1,3,5"/>
+    </group>
+    <component id="n123_czif" name="CoShadeLogin" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n15" alpha="0.03">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n8" name="n8" src="796z9" fileName="Image/InputBg.png" xy="283,173" size="500,107" group="n81_qq5e"/>
+    <image id="n9" name="n9" src="796z5" fileName="Image/SpliteLine.png" xy="252,222" size="561,7" group="n81_qq5e"/>
+    <component id="n11" name="InputPwdLogin" src="sbed1d" fileName="Component/ComPwd.xml" xy="290,232" group="n81_qq5e"/>
+    <component id="n137_mkwx" name="Lan_Btn_Login1" src="n8cl12" fileName="Component/BtnLogin1.xml" xy="404,349" group="n120_czif"/>
+    <group id="n120_czif" name="Login" xy="404,349" size="258,64" group="n81_qq5e" advanced="true"/>
+    <component id="n191_sbed" name="ComCountryCordLogin" src="sbed1c" fileName="Component/ComCountryCode.xml" xy="291,181" group="n81_qq5e"/>
+    <component id="n141_mkwx" name="Lan_Btn_Register" src="n8cl14" fileName="Component/BtnCreateNewAccount.xml" xy="614,283" group="n122_czif"/>
+    <group id="n122_czif" name="Regesiter" xy="614,283" size="170,64" group="n81_qq5e" advanced="true"/>
+    <component id="n142_mkwx" name="Lan_Btn_ResetPwd" src="n8cl17" fileName="Component/BtnForget.xml" xy="282,283" pivot="0.5,0.5" group="n81_qq5e"/>
+    <group id="n81_qq5e" name="n81" xy="252,173" size="561,240" group="n15" advanced="true" collapsed="true">
+      <relation target="n123_czif" sidePair="center-center,middle-middle"/>
+    </group>
+    <group id="n15" name="Login" xy="0,0" size="1066,640" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="0"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </group>
+    <image id="n27" name="n27" src="796z9" fileName="Image/InputBg.png" xy="283,173" size="500,107" group="n149_mkwx"/>
+    <image id="n28" name="n28" src="796z5" fileName="Image/SpliteLine.png" xy="252,222" size="561,7" group="n149_mkwx"/>
+    <component id="n32" name="ComPwdReg" src="sbed1d" fileName="Component/ComPwd.xml" xy="290,232" group="n149_mkwx"/>
+    <component id="n145_mkwx" name="BtnReturn" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="281,298" group="n149_mkwx"/>
+    <component id="n147_mkwx" name="BtnRegister" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="617,298" group="n149_mkwx"/>
+    <component id="n192_sbed" name="ComCountryCordReg" src="sbed1c" fileName="Component/ComCountryCode.xml" xy="291,181" group="n149_mkwx"/>
+    <text id="n209_sbed" name="Lan_Text_LastStep" xy="326,313" pivot="0.5,0.5" size="80,33" group="n149_mkwx" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="上一步"/>
+    <text id="n210_sbed" name="Lan_Text_Register" xy="674,313" pivot="0.5,0.5" size="55,33" group="n149_mkwx" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="注册"/>
+    <group id="n149_mkwx" name="Register" xy="252,173" size="561,189" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <image id="n195_sbed" name="n195" src="796z9" fileName="Image/InputBg.png" xy="285,173" size="500,107" group="n196_sbed"/>
+    <text id="n193_sbed" name="TextRegisterPhone" xy="294,183" pivot="0.5,0.5" size="480,39" group="n196_sbed" fontSize="30" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n194_sbed" name="TextRegisterCode" xy="294,230" pivot="0.5,0.5" size="480,39" group="n196_sbed" input="true" fontSize="30" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n197_sbed" name="BtnReturn" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="282,298" group="n196_sbed"/>
+    <text id="n208_sbed" name="Lan_Text_LastStep" xy="327,313" pivot="0.5,0.5" size="80,33" group="n196_sbed" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="上一步"/>
+    <component id="n199_sbed" name="BtnReSend" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="449,298" group="n196_sbed"/>
+    <text id="n207_sbed" name="Lan_Text_Resend" xy="506,313" pivot="0.5,0.5" size="55,33" group="n196_sbed" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="重发"/>
+    <component id="n204_sbed" name="BtnNext" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="616,298" group="n196_sbed"/>
+    <text id="n206_sbed" name="Lan_Text_NextStep" xy="661,313" pivot="0.5,0.5" size="80,33" group="n196_sbed" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="下一步"/>
+    <image id="n234_jczm" name="n234" src="796z5" fileName="Image/SpliteLine.png" xy="252,223" size="561,7" group="n196_sbed"/>
+    <group id="n196_sbed" name="RegisterCode" xy="252,173" size="561,189" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="4"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <image id="n224_sbed" name="n224" src="796z9" fileName="Image/InputBg.png" xy="283,173" size="500,53" group="n232_sbed"/>
+    <component id="n227_sbed" name="BtnReturn" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="281,245" group="n232_sbed"/>
+    <component id="n228_sbed" name="BtnNext" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="617,245" group="n232_sbed"/>
+    <component id="n229_sbed" name="ComCountryCordResetPwd" src="sbed1c" fileName="Component/ComCountryCode.xml" xy="291,180" group="n232_sbed"/>
+    <text id="n230_sbed" name="Lan_Text_LastStep" xy="326,260" pivot="0.5,0.5" size="80,33" group="n232_sbed" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="上一步"/>
+    <text id="n231_sbed" name="Lan_Text_NextStep" xy="662,260" pivot="0.5,0.5" size="80,33" group="n232_sbed" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="下一步"/>
+    <group id="n232_sbed" name="ResetPwd" xy="281,173" size="506,136" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="5"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <image id="n213_sbed" name="n213" src="796z9" fileName="Image/InputBg.png" xy="283,173" size="500,53" group="n222_sbed"/>
+    <image id="n240_ecz6" name="n240" src="796z9" fileName="Image/InputBg.png" xy="282,347" size="500,53" group="n222_sbed"/>
+    <text id="n214_sbed" name="TextRegisterPhone" xy="292,297" pivot="0.5,0.5" size="480,39" group="n222_sbed" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text=""/>
+    <text id="n215_sbed" name="TextRegisterCode" xy="292,353" pivot="0.5,0.5" size="480,39" group="n222_sbed" input="true" fontSize="30" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n216_sbed" name="BtnReturn" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="280,412" group="n222_sbed"/>
+    <text id="n217_sbed" name="Lan_Text_LastStep" xy="325,427" pivot="0.5,0.5" size="80,33" group="n222_sbed" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="上一步"/>
+    <component id="n218_sbed" name="BtnReSend" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="447,412" group="n222_sbed"/>
+    <text id="n219_sbed" name="Lan_Text_Resend" xy="504,427" pivot="0.5,0.5" size="55,33" group="n222_sbed" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="重发"/>
+    <component id="n220_sbed" name="BtnNext" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="614,412" group="n222_sbed"/>
+    <text id="n221_sbed" name="Lan_Text_NextStep" xy="659,427" pivot="0.5,0.5" size="80,33" group="n222_sbed" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="下一步"/>
+    <component id="n223_sbed" name="ComPwd" src="sbed1d" fileName="Component/ComPwd.xml" xy="289,180" group="n222_sbed"/>
+    <text id="n238_ecz6" name="Lan_Text_SetNewPwd" xy="435,126" pivot="0.5,0.5" size="173,36" group="n222_sbed" fontSize="28" color="#ffffff" align="center" vAlign="middle" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="请设置新密码"/>
+    <group id="n222_sbed" name="ResetPwdCode" xy="280,126" size="504,350" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="6"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <image id="n203_sbed" name="n203" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,568" size="1066,72" group="n212_sbed" alpha="0.4" color="#000000">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </image>
+    <text id="n202_sbed" name="Lan_Text_PhoneCodeSended" xy="362,586" pivot="0.5,0.5" size="341,36" group="n212_sbed" fontSize="28" color="#ffffff" align="center" vAlign="middle" text="验证码已发送到您的手机。">
+      <relation target="n203_sbed" sidePair="center-center,middle-middle"/>
+    </text>
+    <group id="n212_sbed" name="n212" xy="0,568" size="1066,72" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="4,6"/>
+    </group>
+    <text id="n128_74h9" name="SeverStateInfo" xy="1046,9" size="10,34" fontSize="30" color="#ff0000" align="right" vAlign="middle" singleLine="true" text="">
+      <relation target="" sidePair="right-right,top-top"/>
+    </text>
+    <component id="n237_ecz6" name="BtnGuestEx" src="n8cl13" fileName="Component/BtnGuestLogin.xml" xy="183,464" group="n167_c1pc">
+      <gearDisplay controller="ControllerWeChat" pages="1"/>
+    </component>
+    <component id="n166_c1pc" name="BtnOtherLoginEx" src="c1pcq" fileName="Component/BtnLogin.xml" xy="638,464" group="n167_c1pc">
+      <gearDisplay controller="ControllerWeChat" pages="1"/>
+    </component>
+    <component id="n165_c1pc" name="BtnWeiXin" src="c1pcr" fileName="Component/BtnWeChat.xml" xy="411,464" group="n167_c1pc">
+      <gearDisplay controller="ControllerWeChat" pages="0"/>
+    </component>
+    <component id="n139_mkwx" name="BtnGuest" src="n8cl13" fileName="Component/BtnGuestLogin.xml" xy="129,464" group="n167_c1pc">
+      <gearDisplay controller="ControllerWeChat" pages="0"/>
+    </component>
+    <component id="n164_c1pc" name="BtnOtherLogin" src="c1pcq" fileName="Component/BtnLogin.xml" xy="693,464" group="n167_c1pc">
+      <gearDisplay controller="ControllerWeChat" pages="0"/>
+    </component>
+    <group id="n167_c1pc" name="n167" xy="129,464" size="808,78" group="n161_v4ef"/>
+    <group id="n161_v4ef" name="LoginMain" xy="129,464" size="808,78" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="3"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <component id="n172_cpaa" name="BtnAgree" src="cpaah6" fileName="Component/Btn/BtnCheck.xml" pkg="nhvxw9ov" xy="340,614" size="20,20" group="n175_cpaa"/>
+    <text id="n173_cpaa" name="Lan_Text_ReadAndAgree" xy="364,615" size="153,20" group="n175_cpaa" fontSize="14" color="#ffffff" align="right" vAlign="middle" autoSize="shrink" singleLine="true" text="我已经阅读过并且同意:"/>
+    <component id="n174_cpaa" name="ComLink" src="cpaat" fileName="Component/ComLink.xml" xy="518,616" group="n175_cpaa"/>
+    <group id="n175_cpaa" name="n175" xy="340,614" size="384,22" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="0,3"/>
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </group>
+    <component id="n184_jyil" name="MoteParent" src="jyil10" fileName="Component/ComParent.xml" xy="540,492">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n185_jyil" name="DengLongParent" src="jyil10" fileName="Component/ComParent.xml" xy="233,224"/>
+    <component id="n186_hrjf" name="ComboChooseUCenter" src="hrjf1a" fileName="Component/ComboBox1.xml" xy="224,11" size="191,56">
+      <ComboBox visibleItemCount="10"/>
+    </component>
+    <component id="n187_hrjf" name="ComboChooseGateWay" src="hrjf1a" fileName="Component/ComboBox1.xml" xy="627,12" size="191,56">
+      <ComboBox visibleItemCount="10"/>
+    </component>
+    <component id="n233_jczm" name="ComCountryCodeChoose" src="jczm1e" fileName="Component/ComCountryCodeChoose.xml" xy="0,0">
+      <gearDisplay controller="ControllerChooseCountryCode" pages="1"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <text id="n241_ecz6" name="Tips" xy="8,610" size="974,29" group="n243_ecz6" fontSize="22" color="#ffffff" autoSize="none" text="">
+      <relation target="" sidePair="bottom-bottom,width-width"/>
+    </text>
+    <component id="n242_ecz6" name="n242" src="l4gzj" fileName="Component/CoWaiting.xml" pkg="gzhgc1jr" xy="989,562" group="n243_ecz6">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <group id="n243_ecz6" name="n243" xy="8,562" size="1054,77" advanced="true" collapsed="true">
+      <gearDisplay controller="LoginState" pages="7"/>
+    </group>
+    <image id="n248_leuv" name="n248" src="leuv1p" fileName="Image/icon-152.jpg" xy="0,33" size="56,56">
+      <gearDisplay controller="ControllerShowIcon" pages="1"/>
+    </image>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Alpha" target="n128_74h9" tween="true" startValue="1" endValue="0.5" duration="24" ease="Linear" repeat="-1" yoyo="true"/>
+    <item time="24" type="Alpha" target="n128_74h9" tween="true" startValue="0.5" endValue="1" duration="24" ease="Linear" yoyo="true"/>
+    <item time="48" type="Alpha" target="n128_74h9" tween="true" startValue="1" ease="Linear" repeat="-1" yoyo="true"/>
+  </transition>
+</component>

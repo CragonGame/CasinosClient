@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 1302564827
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 451e9e4942fcd900b94a200f14efd125
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e524609455c7cfb29b5bab3f5d3ec7c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@atlas7.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@atlas4.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@atlas1.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@sprites.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@atlas6.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@atlas5.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@atlas2.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@atlas3.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@atlas10.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Main/Main@atlas0.png
+Dependencies: []

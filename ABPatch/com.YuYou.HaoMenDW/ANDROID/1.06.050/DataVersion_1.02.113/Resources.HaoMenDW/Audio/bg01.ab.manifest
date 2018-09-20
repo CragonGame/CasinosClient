@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1051874070
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ce2f0cc8dfa38d6b379eca63a5d7fc43
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/BG01.ogg
+Dependencies: []

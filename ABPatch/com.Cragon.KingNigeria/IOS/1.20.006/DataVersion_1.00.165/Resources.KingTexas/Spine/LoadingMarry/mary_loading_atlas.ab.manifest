@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 2057851111
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1a467c5b1d59441005014e1b59969d3a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: aaf0938e8a66af6508783a09b3c3e1ae
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Spine/LoadingMarry/Mary_Loading_Atlas.asset
+- Assets/Lib.Spine/spine-unity/Editor/GUI/AtlasAsset Icon.png
+- Assets/Resources.KingTexas/PkgSingle/Spine/LoadingMarry/Mary_Loading.png
+- Assets/Lib.Spine/spine-unity/Shaders/Spine-Skeleton.shader
+- Assets/Resources.KingTexas/PkgSingle/Spine/LoadingMarry/Mary_Loading.atlas.txt
+- Assets/Resources.KingTexas/PkgSingle/Spine/LoadingMarry/Mary_Loading_Material.mat
+Dependencies: []

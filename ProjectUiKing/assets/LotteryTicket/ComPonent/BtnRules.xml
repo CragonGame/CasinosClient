@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="47,51" extention="Button" initName="BtnRules">
+  <displayList>
+    <image id="n3_twda" name="n3" src="twda5r" xy="0,0"/>
+    <image id="n4_twda" name="n4" src="twda5q" xy="8,6"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.97"/>
+</component>

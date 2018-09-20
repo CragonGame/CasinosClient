@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ieo9yhye" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="pik73" name="Bank.xml" path="/" exported="true"/>
+    <component id="x8p04" name="ComOperate.xml" path="/Component/"/>
+  </resources>
+  <publish name="Bank" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Bank"/>
+</packageDescription>

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 726418687
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7b829b9120e2b1e42f8d9d0e0913eeba
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/NiuNiu.mp3
+Dependencies: []

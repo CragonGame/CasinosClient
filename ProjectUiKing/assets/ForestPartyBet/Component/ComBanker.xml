@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="293,127" initName="ComBanker">
+  <controller name="ControllerBanker" pages="0,Player,1,System" selected="0"/>
+  <displayList>
+    <image id="n1_iu00" name="n1" src="ieud2r" xy="3,4" size="287,120"/>
+    <component id="n12_sak4" name="ComHeadIcon" src="ieud2s" xy="3,12" size="105,101"/>
+    <text id="n3_iu00" name="TextName" xy="102,5" size="191,39" fontSize="30" color="#ffff66" vAlign="middle" autoSize="shrink" bold="true" singleLine="true" text="系统小美坐庄"/>
+    <image id="n4_iu00" name="n4" src="ieud2z" xy="107,48" size="30,30" group="n8_iu00"/>
+    <text id="n5_iu00" name="TextGold" xy="143,44" size="146,39" group="n8_iu00" fontSize="30" color="#ffff66" vAlign="middle" autoSize="shrink" bold="true" singleLine="true" text="101.6万"/>
+    <image id="n6_iu00" name="n6" src="ieud30" xy="107,89" group="n8_iu00"/>
+    <text id="n7_iu00" name="TextBureau" xy="142,83" size="146,39" group="n8_iu00" fontSize="30" color="#ffff66" vAlign="middle" autoSize="none" bold="true" text=""/>
+    <group id="n8_iu00" name="player" xy="107,44" size="182,78" advanced="true">
+      <gearDisplay controller="ControllerBanker" pages="0"/>
+    </group>
+    <text id="n9_iu00" name="n9" xy="102,43" size="135,39" group="n11_iu00" fontSize="30" color="#33ff00" autoSize="none" text="上庄条件"/>
+    <text id="n10_iu00" name="TextBeBankerLimitMin" xy="102,82" size="181,39" group="n11_iu00" fontSize="30" color="#ffff66" autoSize="none" text="50万&#xA;"/>
+    <group id="n11_iu00" name="system" xy="102,43" size="181,78" advanced="true">
+      <gearDisplay controller="ControllerBanker" pages="1"/>
+    </group>
+  </displayList>
+</component>

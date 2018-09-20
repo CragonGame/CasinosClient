@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="241,44">
+  <displayList>
+    <image id="n0_qljn" name="n0" src="qljn6m" fileName="Image/86.PNG" xy="-21,-22" pivot="0.5,0.5" scale="0.5,0.5"/>
+    <image id="n1_qljn" name="n1" src="qljn6k" fileName="Image/WaitLight.png" xy="-21,-20" pivot="0.5,0.5" size="87,87" scale="0.5,0.5"/>
+    <text id="n2_qljn" name="Lan_Text_WaitGameBegin" xy="57,5" size="183,39" fontSize="26" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="等待开局中"/>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n1_qljn" tween="true" startValue="0" endValue="-360" duration="36" ease="Linear"/>
+    <item time="36" type="Rotation" target="n1_qljn" tween="true" startValue="-360" ease="Linear"/>
+  </transition>
+</component>

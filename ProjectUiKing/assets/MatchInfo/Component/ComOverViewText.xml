@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="720,280" overflow="scroll" initName="ComOverView">
+  <displayList>
+    <image id="n0_gy6l" name="n0" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="0,0" size="720,280" hideByEditor="true" color="#303563"/>
+    <text id="n2_gy6l" name="MatchTitle" xy="2,8" pivot="0.5,0.5" size="715,34" fontSize="25" color="#f6c113" align="center" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <image id="n3_gy6l" name="n3" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,52" size="722,4" color="#242647"/>
+    <image id="n4_gy6l" name="n4" src="gy6lkh" fileName="Image/New/WhiteChipIcon.png" pkg="nhvxw9ov" xy="22,69" size="32,32" color="#a1b4e9"/>
+    <text id="n5_gy6l" name="Lan_Text_EntryFee" xy="59,70" pivot="0,0.5" size="106,29" fontSize="22" color="#a1b4e9" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="报名费用:"/>
+    <text id="n6_gy6l" name="TextApplyFee" xy="165,70" size="552,29" fontSize="22" color="#cfb37a" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <image id="n7_gy6l" name="n7" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,114" size="722,4" group="n40_gy6l" color="#242647"/>
+    <text id="n8_gy6l" name="Lan_Text_MatchBeginTime" xy="58,132" pivot="0,0.5" size="106,29" group="n40_gy6l" fontSize="22" color="#a1b4e9" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="比赛时间:"/>
+    <image id="n9_gy6l" name="n9" src="gy6lki" fileName="Image/New/UI2_通用_闹钟.png" pkg="nhvxw9ov" xy="22,128" size="32,37" group="n40_gy6l" color="#a1b4e9"/>
+    <text id="n10_gy6l" name="TextMatchTime" xy="164,132" size="552,29" group="n40_gy6l" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="none" singleLine="true" text=""/>
+    <image id="n11_gy6l" name="n11" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,178" size="722,4" group="n40_gy6l" color="#242647"/>
+    <text id="n12_gy6l" name="Lan_Text_StopSignUpTm" xy="58,196" pivot="0,0.5" size="106,29" group="n40_gy6l" fontSize="22" color="#a1b4e9" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="截止报名:"/>
+    <image id="n13_gy6l" name="n13" src="gy6lki" fileName="Image/New/UI2_通用_闹钟.png" pkg="nhvxw9ov" xy="22,192" size="32,37" group="n40_gy6l" color="#a1b4e9"/>
+    <text id="n14_gy6l" name="TextStopApplyTime" xy="164,196" size="552,29" group="n40_gy6l" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="none" singleLine="true" text=""/>
+    <image id="n15_gy6l" name="n15" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,242" size="722,4" group="n40_gy6l" color="#242647"/>
+    <text id="n16_gy6l" name="Lan_Text_NumberOfEntries" xy="58,260" pivot="0,0.5" size="106,29" group="n40_gy6l" fontSize="22" color="#a1b4e9" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="参赛人数:"/>
+    <image id="n17_gy6l" name="n17" src="wb2ek7" fileName="Image/New/UI2_通用_人像.png" pkg="nhvxw9ov" xy="22,258" pivot="0.5,0.5" size="32,34" group="n40_gy6l" color="#a1b4e9"/>
+    <text id="n18_gy6l" name="TextEntryNumber" xy="164,260" size="552,29" group="n40_gy6l" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="none" singleLine="true" text=""/>
+    <image id="n19_gy6l" name="n19" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,306" size="722,4" group="n40_gy6l" color="#242647"/>
+    <text id="n23_gy6l" name="Lan_Text_InitScore" xy="58,324" pivot="0,0.5" size="129,29" group="n40_gy6l" fontSize="22" color="#a1b4e9" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="初始记分牌:"/>
+    <image id="n24_gy6l" name="n24" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="22,322" pivot="0.5,0.5" size="32,34" group="n40_gy6l" color="#f1bf5b"/>
+    <text id="n25_gy6l" name="TextInitialChip" xy="186,324" size="529,29" group="n40_gy6l" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="none" singleLine="true" text=""/>
+    <image id="n26_gy6l" name="n26" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,370" size="722,4" group="n40_gy6l" color="#242647"/>
+    <text id="n29_gy6l" name="TextRepurchaseTips" xy="63,385" size="652,29" group="n40_gy6l" fontSize="22" color="#ffffff" vAlign="middle" ubb="true" autoSize="height" singleLine="true" text=""/>
+    <component id="n32_gy6l" name="ComReBuy" src="gy6l8" fileName="Component/ComRepurchase.xml" xy="19,389" size="40,19" group="n40_gy6l"/>
+    <image id="n30_gy6l" name="n30" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,427" size="722,4" group="n41_gy6l" color="#242647"/>
+    <text id="n33_gy6l" name="TextPurchaseTips" xy="63,439" size="652,29" group="n41_gy6l" fontSize="22" color="#ffffff" vAlign="middle" ubb="true" autoSize="height" singleLine="true" text=""/>
+    <component id="n37_gy6l" name="ComAddon" src="gy6l9" fileName="Component/ComPurchase.xml" xy="19,443" size="40,19" group="n41_gy6l"/>
+    <group id="n41_gy6l" name="GroupAddon" xy="-1,427" size="722,41" group="n40_gy6l" advanced="true">
+      <relation target="n29_gy6l" sidePair="top-bottom"/>
+    </group>
+    <group id="n40_gy6l" name="n40" xy="-1,114" size="722,354" advanced="true">
+      <relation target="n6_gy6l" sidePair="top-bottom"/>
+    </group>
+  </displayList>
+</component>

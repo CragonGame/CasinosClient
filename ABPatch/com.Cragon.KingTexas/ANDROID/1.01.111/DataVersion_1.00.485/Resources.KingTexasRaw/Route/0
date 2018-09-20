@@ -1,0 +1,8 @@
+{
+	"initPos":{"x":-500.0,"y":-350.0},
+	"initVelocity":{"speed":100.0,"direction":30.0},
+	"accs":[
+			{"start_time":5.0,"acc":{"speed":200.0,"direction":90.0},"duration":2.0},
+			{"start_time":8.0,"acc":{"speed":50.0,"direction":-10.0},"duration":2.0}
+			]
+}

@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 3490196525
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4ad52206d5e3f39abf59f378fdfcf28d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a911f1a217cac38a53692f660230225e
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Spine/DengLong/denglong.atlas.txt
+- Assets/Resources.KingTexas/PkgSingle/Spine/DengLong/denglong_Material.mat
+- Assets/Resources.KingTexas/PkgSingle/Spine/DengLong/denglong_SkeletonData.asset
+- Assets/Resources.KingTexas/PkgSingle/Spine/DengLong/denglong_Atlas.asset
+- Assets/spine-unity/Assets/spine-unity/Shaders/Spine-Skeleton.shader
+- Assets/Resources.KingTexas/PkgSingle/Spine/DengLong/denglongJson.json
+- Assets/Resources.KingTexas/PkgSingle/Spine/DengLong/denglong.png
+Dependencies: []

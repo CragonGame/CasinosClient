@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="84,120">
+  <displayList>
+    <image id="n4" name="n4" src="sx4r4" xy="0,23"/>
+    <text id="n5" name="BetValue" xy="0,98" pivot="0.5,0.5" size="84,22" fontSize="16" color="#f0ff84" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n6" name="RewardValue" xy="0,0" pivot="0.5,0.5" size="84,22" fontSize="16" color="#f0ff84" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="z4s3gxx2" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="fb5j0" name="DesktopHBankPlayerList.xml" path="/" exported="true"/>
+    <component id="fb5j2" name="CoBankPlayerInfo.xml" path="/Component/" exported="true"/>
+  </resources>
+  <publish name="DesktopHBankPlayerList" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\DesktopHBankPlayerList"/>
+</packageDescription>

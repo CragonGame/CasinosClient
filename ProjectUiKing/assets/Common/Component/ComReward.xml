@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="158,80">
+  <displayList>
+    <image id="n2_lmq9" name="n2" src="t4okj4" xy="-18,-18" size="196,112"/>
+    <component id="n0_lmq9" name="ComOnlineReward" src="ixpjb2" xy="10,9"/>
+    <component id="n1_lmq9" name="ComPushReward" src="lmq9lp" xy="84,7"/>
+  </displayList>
+</component>

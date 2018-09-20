@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 3539346587
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b970db931540b66cb9e679fe00919cad
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: dc0f446bb9dbd38742987675ab96e886
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Common/Common.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Common/Common@atlas1.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Common/Common@sprites.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Common/Common@atlas0.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Common/Common@px3r1m.wav
+Dependencies: []

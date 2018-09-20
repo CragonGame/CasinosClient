@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" adaptationTest="FitSize">
+  <displayList>
+    <image id="n28_h2pl" name="bg" src="n9rr2x" fileName="Image/Bg.png" xy="21,0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n30_h2pl" name="n30" src="fb5j7" fileName="Image/Desk.png" xy="46,138" group="n34_m0v3"/>
+    <list id="n3_fb5j" name="ListBetPot" xy="159,191" size="740,272" group="n34_m0v3" layout="row" colGap="51" defaultItem="ui://zah9oa21fb5j17" align="center" vAlign="bottom"/>
+    <component id="n2_fb5j" name="CoRewardPot" src="fb5j11" fileName="Component/CoRewardPot.xml" xy="379,131" group="n34_m0v3"/>
+    <component id="n10_fb5j" name="CoTips" src="fb5j1l" fileName="Component/CoTips.xml" xy="382,504" group="n34_m0v3"/>
+    <component id="n9_fb5j" name="CoChair2" src="fb5j2a" fileName="Component/CoSeat.xml" pkg="erh3pvqh" xy="893,389" group="n34_m0v3"/>
+    <component id="n6_fb5j" name="CoChair3" src="fb5j2a" fileName="Component/CoSeat.xml" pkg="erh3pvqh" xy="78,388" group="n34_m0v3"/>
+    <component id="n8_fb5j" name="CoChair1" src="fb5j2a" fileName="Component/CoSeat.xml" pkg="erh3pvqh" xy="929,232" group="n34_m0v3"/>
+    <component id="n5_fb5j" name="CoChair4" src="fb5j2a" fileName="Component/CoSeat.xml" pkg="erh3pvqh" xy="43,231" group="n34_m0v3"/>
+    <component id="n7_fb5j" name="CoChair0" src="fb5j2a" fileName="Component/CoSeat.xml" pkg="erh3pvqh" xy="886,84" group="n34_m0v3"/>
+    <component id="n4_fb5j" name="CoChair5" src="fb5j2a" fileName="Component/CoSeat.xml" pkg="erh3pvqh" xy="86,92" group="n34_m0v3"/>
+    <group id="n34_m0v3" name="n34" xy="43,84" size="972,535" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <image id="n31_h2pl" name="n31" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="287,39" size="491,85" group="n24_dnpc" alpha="0.4" color="#039de0"/>
+    <component id="n11_fb5j" name="CoHeadIconBankPlayer" src="fb5j1z" fileName="Component/CoHeadIcon.xml" pkg="erh3pvqh" xy="288,41" size="80,80" group="n24_dnpc"/>
+    <text id="n15_fb5j" name="GoldAcc" xy="369,85" size="99,32" group="n24_dnpc" fontSize="25" color="#f6dc87" leading="0" autoSize="shrink" singleLine="true" text="3.48"/>
+    <component id="n17_fb5j" name="CoCardParent" src="fb5j1a" fileName="Component/CoCardParent.xml" xy="476,42" group="n24_dnpc"/>
+    <loader id="n18_fb5j" name="LoaderBankCardType" xy="522,91" pivot="0.5,0.5" size="55,32" group="n24_dnpc" align="center" vAlign="middle"/>
+    <component id="n20_fb5j" name="Lan_Btn_BeBank" src="n9rr2z" fileName="Component/BtnBeBank.xml" xy="645,58" group="n24_dnpc"/>
+    <component id="n19_fb5j" name="CoChatParentBank" src="fb5j1s" fileName="Component/CoChatParent.xml" xy="342,71" group="n24_dnpc">
+      <relation target="n11_fb5j" sidePair="top-top,center-center"/>
+    </component>
+    <text id="n14_fb5j" name="NickNameBank" xy="369,51" size="96,33" group="n24_dnpc" fontSize="22" color="#ffffff" vAlign="bottom" leading="0" autoSize="shrink" singleLine="true" text="沙尘暴"/>
+    <group id="n24_dnpc" name="n24" xy="287,39" size="491,85" advanced="true">
+      <relation target="" sidePair="center-center"/>
+    </group>
+    <image id="n23_fxsn" name="n23" src="fxsn28" fileName="Image/cm_d.png" xy="0,551" size="1066,89">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </image>
+  </displayList>
+</component>

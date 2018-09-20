@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="75,75">
+  <controller name="ConttollerBg" pages="0,Black,1,Light" selected="0"/>
+  <displayList>
+    <image id="n9_8xod" name="n9" src="8xode8" pkg="nhvxw9ov" xy="0,0" size="75,75"/>
+    <image id="n11_vxr8" name="n11" src="l1q0c9" pkg="nhvxw9ov" xy="0,0" size="75,75"/>
+    <image id="n10_8xod" name="n10" src="8xode9" pkg="nhvxw9ov" xy="0,0" size="75,75">
+      <gearDisplay controller="ConttollerBg" pages="1"/>
+    </image>
+    <loader id="n1_mad8" name="LoaderGift" xy="0,0" size="75,75" align="center" vAlign="middle" fill="scaleFree"/>
+  </displayList>
+</component>

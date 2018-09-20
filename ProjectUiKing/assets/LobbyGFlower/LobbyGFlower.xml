@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="960,640">
+  <controller name="ControllerRoomModel" pages="0,Classic,1,MustBet,2,RoomCard" selected="1"/>
+  <displayList>
+    <image id="n0_fjnl" name="n0" src="gp481" xy="0,0" size="960,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_fjnl" name="n1" src="gp482" xy="134,11" pivot="0.5,0.5" size="691,68" group="n4_fjnl">
+      <gearDisplay controller="ControllerRoomModel" pages="0"/>
+    </image>
+    <image id="n2_fjnl" name="n2" src="gp483" xy="134,11" size="691,68" group="n4_fjnl">
+      <gearDisplay controller="ControllerRoomModel" pages="1"/>
+    </image>
+    <image id="n3_fjnl" name="n3" src="gp484" xy="134,11" size="691,68" group="n4_fjnl">
+      <gearDisplay controller="ControllerRoomModel" pages="2"/>
+    </image>
+    <component id="n11_fjnl" name="ComTabClassic" src="gp485" xy="177,10" size="204,62" group="n4_fjnl"/>
+    <component id="n12_fjnl" name="ComTabMustBet" src="gp485" xy="383,10" size="190,62" group="n4_fjnl"/>
+    <component id="n13_fjnl" name="ComTabRoomCard" src="gp485" xy="576,10" size="204,62" group="n4_fjnl"/>
+    <group id="n4_fjnl" name="n4" xy="134,10" size="691,69" advanced="true">
+      <relation target="" sidePair="center-center,top-top"/>
+    </group>
+    <component id="n6_fjnl" name="BtnNotice" src="gp486" xy="-1,547">
+      <relation target="" sidePair="left-left,bottom-bottom"/>
+    </component>
+    <component id="n7_fjnl" name="BtnReturn" src="gp488" xy="2,4" size="133,69"/>
+    <list id="n9_fjnl" name="ListClassic" xy="39,109" size="881,439" layout="flow_hz" overflow="scroll" defaultItem="ui://regdu2t9gp48a" align="center" vAlign="middle">
+      <gearDisplay controller="ControllerRoomModel" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </list>
+    <list id="n10_fjnl" name="ListMustBet" xy="39,109" size="881,439" layout="flow_hz" overflow="scroll" defaultItem="ui://regdu2t9gp48a" align="center" vAlign="middle">
+      <gearDisplay controller="ControllerRoomModel" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </list>
+  </displayList>
+</component>

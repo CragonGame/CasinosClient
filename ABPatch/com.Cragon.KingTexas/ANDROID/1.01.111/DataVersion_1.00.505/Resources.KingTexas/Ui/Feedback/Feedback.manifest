@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 445196727
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: feedback.ab
+      Dependencies: {}

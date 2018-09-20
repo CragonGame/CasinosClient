@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="606,30" initName="ComTitle">
+  <displayList>
+    <text id="n0_uvmq" name="Lan_Text_MatchInfomation" xy="0,1" pivot="0.5,0.5" size="93,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="赛事信息"/>
+    <text id="n1_uvmq" name="Lan_Text_Reward" xy="377,1" pivot="0.5,0.5" size="49,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="奖励"/>
+    <component id="n2_uvmq" name="BtnStartTime" src="uvmqf" fileName="Component/BtnStartTime.xml" xy="207,0"/>
+    <component id="n3_uvmq" name="BtnSignUpFee" src="uvmqh" fileName="Component/BtnEntryFee.xml" xy="479,0"/>
+  </displayList>
+</component>

@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4021123624
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7c57a8b1b5207a5c81a9fa742e44923f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/PrivateMatchInfo/PrivateMatchInfo@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/PrivateMatchInfo/PrivateMatchInfo.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/PrivateMatchInfo/PrivateMatchInfo@atlas0.png
+Dependencies: []

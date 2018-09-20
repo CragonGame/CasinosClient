@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="73,73">
+  <displayList>
+    <image id="n4_l4gz" name="n4" src="l4gzk" xy="0,0"/>
+    <image id="n5_l4gz" name="n5" src="l4gzl" xy="3,3" pivot="0.5,0.5"/>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n5_l4gz" tween="true" startValue="0" endValue="-360" duration="36" ease="Linear" repeat="-1"/>
+  </transition>
+</component>

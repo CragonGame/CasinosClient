@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="162,160" pivot="0.5,0.5">
+  <displayList>
+    <loader id="n6_jhsd" name="LoaderExp" xy="26,25" size="109,109" align="center" vAlign="middle"/>
+  </displayList>
+  <transition name="AniRotate">
+    <item time="0" type="Rotation" tween="true" startValue="0" endValue="360" duration="24" ease="Linear"/>
+    <item time="24" type="Rotation" tween="true" startValue="360" ease="Linear"/>
+  </transition>
+</component>

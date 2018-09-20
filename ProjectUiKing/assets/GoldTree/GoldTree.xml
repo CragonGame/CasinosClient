@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" adaptationTest="FitSize">
+  <controller name="ControllerRecord" pages="0,RecordWorld,1,RecordPerson" selected="0"/>
+  <controller name="ControllerTree" pages="0,HaveTree,1,NoTree" selected="0"/>
+  <displayList>
+    <component id="n117_trl1" name="ComBgAndClose" src="y7iqc1" pkg="nhvxw9ov" xy="108,58"/>
+    <loader id="n131_q5yu" name="Lan_Image_GoldTree" xy="477,74" pivot="0.5,0.5" size="118,36" touchable="false" url="ui://6kz8w16qq5yu50" align="center" vAlign="middle" autoSize="true">
+      <relation target="n118_trl1" sidePair="middle-middle"/>
+    </loader>
+    <movieclip id="n124_g5lb" name="n124" src="g5lb24" xy="428,76" size="528,434"/>
+    <movieclip id="n125_g5lb" name="n125" src="g5lb25" xy="536,169" size="376,231"/>
+    <text id="n19" name="Lan_Text_MoneyTreeInstruction" xy="251,132" pivot="0.5,0.5" size="120,30" group="n66" fontSize="22" color="#f4ca51" align="center" vAlign="middle" bold="true" text="摇钱树说明"/>
+    <component id="n108_n886" name="n108" src="n8861p" xy="121,180" group="n66"/>
+    <group id="n66" name="GroupTips" xy="121,132" size="400,265" advanced="true"/>
+    <text id="n18" name="Lan_Text_NoGoldTreeTips" xy="115,403" pivot="0.5,0.5" size="415,32" group="n71_kybs" fontSize="25" color="#8eb1b7" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="您还没有摇钱树，充值就送摇钱树哦~"/>
+    <component id="n128_rdp3" name="Lan_Btn_RecharegeNow" src="mkwxed" pkg="nhvxw9ov" xy="264,458" group="n71_kybs"/>
+    <loader id="n133_q5yu" name="Lan_Image_RechargeNow" xy="281,468" size="96,25" group="n71_kybs" touchable="false" url="ui://6kz8w16qq5yu5f" align="center" vAlign="middle"/>
+    <group id="n71_kybs" name="GroupNotTree" xy="115,403" size="415,102" advanced="true">
+      <gearDisplay controller="ControllerTree" pages="1"/>
+    </group>
+    <text id="n86_kybs" name="TakeGoldLimit" xy="115,398" pivot="0.5,0.5" size="250,28" group="n89_kybs" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" bold="true" singleLine="true" text=""/>
+    <text id="n87_kybs" name="TakeGoldCountDownTime" xy="115,461" pivot="0.5,0.5" size="250,27" group="n89_kybs" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n88_kybs" name="TakeGoldTips" xy="115,489" pivot="0.5,0.5" size="250,27" group="n89_kybs" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n90_kybs" name="GoldTreeLevel" xy="375,399" pivot="0.5,0.5" size="129,27" group="n89_kybs" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n92_iera" name="MaxCanGetGoldTiTle" xy="374,460" pivot="0.5,0.5" size="129,27" group="n89_kybs" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n93_iera" name="MaxCanGetGold" xy="374,489" pivot="0.5,0.5" size="129,27" group="n89_kybs" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n116_bsci" name="ProGoldTree" src="ot8lff" pkg="nhvxw9ov" xy="115,428" size="250,30" group="n89_kybs">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <component id="n130_q4uo" name="Lan_Btn_GetIn" src="mkwxed" pkg="nhvxw9ov" xy="372,422" size="132,43" group="n89_kybs"/>
+    <loader id="n132_q5yu" name="Lan_Image_Get" xy="391,429" size="96,25" group="n89_kybs" touchable="false" url="ui://6kz8w16qq5yu4z" align="center" vAlign="middle"/>
+    <group id="n89_kybs" name="GroupHaveTree" xy="115,398" size="389,118" advanced="true">
+      <gearDisplay controller="ControllerTree" pages="0"/>
+    </group>
+    <image id="n118_trl1" name="n118" src="vi47jp" pkg="nhvxw9ov" xy="586,67" pivot="0.5,0.5">
+      <relation target="n131_q5yu" sidePair="left-right"/>
+    </image>
+    <image id="n119_trl1" name="n119" src="vi47jp" pkg="nhvxw9ov" xy="429,67" pivot="0.5,0.5" skew="0,180">
+      <relation target="n131_q5yu" sidePair="right-left"/>
+    </image>
+  </displayList>
+</component>

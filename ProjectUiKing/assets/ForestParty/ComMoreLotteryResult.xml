@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="215,209" initName="ComMoreLotteryResult">
+  <displayList>
+    <image id="n0_ijmt" name="n0" src="ieudkq" xy="0,0" size="215,209"/>
+    <list id="n1_uwv8" name="ListMoreLottery" xy="13,34" size="188,161" layout="flow_hz" overflow="scroll" lineGap="8" colGap="8" defaultItem="ui://si97dldqieudf5"/>
+  </displayList>
+</component>

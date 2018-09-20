@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="gzhgc1jr" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="gfsk5" name="PreLoading.xml" path="/" exported="true"/>
+    <component id="l4gzj" name="CoWaiting.xml" path="/Component/" exported="true"/>
+    <image id="l4gzk" name="IconWait.png" path="/Image/"/>
+    <image id="l4gzl" name="WaitLight.png" path="/Image/"/>
+    <component id="ewc0m" name="Progress.xml" path="/Component/" exported="true"/>
+    <image id="ewc0n" name="BgBar.png" path="/Image/" scale="9grid" scale9grid="16,9,32,9"/>
+    <image id="ewc0o" name="Bar.png" path="/Image/" scale="9grid" scale9grid="12,6,24,12"/>
+    <component id="hrhq10" name="ComBg.xml" path="/Component/"/>
+    <image id="hrhq11" name="Loading_BG.jpg.jpg" path="/Image/" atlas="1"/>
+    <image id="hrhq12" name="Mote.png" path="/Image/"/>
+    <component id="jyil13" name="ComMoteParent.xml" path="/Component/"/>
+    <image id="l6zb16" name="UISprite.png" path="/Image/" exported="true" scale="9grid" scale9grid="8,8,12,12"/>
+  </resources>
+  <publish name="PreLoading" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\PreLoading"/>
+</packageDescription>

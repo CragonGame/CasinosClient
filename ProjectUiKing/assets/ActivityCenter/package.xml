@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="fy38w9lb" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="ta420" name="ActivityCenter.xml" path="/" exported="true"/>
+    <component id="lnv71" name="ItemActivityTitle.xml" path="/Component/" exported="true"/>
+    <image id="phss7" name="图层9.png" path="/Image/"/>
+    <image id="s17da" name="图层17.png" path="/Image/"/>
+    <image id="s17db" name="图层8.png" path="/Image/"/>
+    <image id="rbumh" name="Share.png" path="/Image/"/>
+    <image id="ok08j" name="AddWeChatGroup.png" path="/Image/"/>
+  </resources>
+  <publish name="ActivityCenter" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\ActivityCenter"/>
+</packageDescription>

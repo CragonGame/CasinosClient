@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 3155963502
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1e3bc181699b7e8c9ae37187b6d622e6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/LanEnAndroid/LanEnAndroid@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/LanEnAndroid/LanEnAndroid@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/LanEnAndroid/LanEnAndroid.bytes
+Dependencies: []

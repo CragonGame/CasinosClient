@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rug9oibj" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="ieudy" name="BtnConfirm.xml" path="/Component/"/>
+    <image id="ieudz" name="jiesuan_03.png" path="/Image/"/>
+    <component id="ieud10" name="ItemForestPartyResultBig.xml" path="/Component/"/>
+    <image id="ieud11" name="Lion.png" path="/Image/Animal/" exported="true"/>
+    <image id="ieud12" name="jiesuan_06.png" path="/Image/"/>
+    <component id="ieud13" name="ItemForestPartyResultSmall.xml" path="/Component/"/>
+    <image id="ieud14" name="Monkey.png" path="/Image/Animal/" exported="true"/>
+    <image id="ieud15" name="Panda.png" path="/Image/Animal/" exported="true"/>
+    <image id="ieud16" name="Rabbit.png" path="/Image/Animal/" exported="true"/>
+    <image id="ieud17" name="Loose.png" path="/Image/BankerResult/"/>
+    <image id="ieud18" name="Win.png" path="/Image/BankerResult/"/>
+    <image id="ieud19" name="BaoZhuang.png" path="/Image/BankerResult/"/>
+    <image id="ieud1a" name="ZongHengSiHai.png" path="/Image/DaZhao/" exported="true"/>
+    <image id="ieud1b" name="SongDeng.png" path="/Image/DaZhao/" exported="true"/>
+    <image id="ieud1c" name="DaSanYuan.png" path="/Image/DaZhao/" exported="true"/>
+    <image id="ieud1d" name="CaiJin.png" path="/Image/DaZhao/" exported="true"/>
+    <image id="ieud1e" name="FanBei2.png" path="/Image/DaZhao/" exported="true"/>
+    <image id="ieud1f" name="FanBei3.png" path="/Image/DaZhao/" exported="true"/>
+    <image id="ieud1g" name="jiesuan_01.png" path="/Image/"/>
+    <image id="ieud1h" name="jiesuan_02.png" path="/Image/"/>
+    <image id="ieud1i" name="jiesuan_04.png" path="/Image/"/>
+    <image id="ieud1j" name="jiesuan_05_1.png" path="/Image/"/>
+    <image id="ieud1k" name="jiesuan_08.png" path="/Image/"/>
+    <image id="ieud1l" name="jiesuan_10.png" path="/Image/"/>
+    <image id="ieud1m" name="jiesuan_11.png" path="/Image/"/>
+    <image id="ieud1n" name="jiesuan_12.png" path="/Image/"/>
+    <image id="ieud1o" name="jiesuan_13.png" path="/Image/"/>
+    <image id="ieud1p" name="jiesuan_16.png" path="/Image/"/>
+    <image id="ieud1q" name="jiesuan_17.png" path="/Image/"/>
+    <image id="ieud1r" name="jiesuan_19.png" path="/Image/"/>
+    <image id="ieud1s" name="jiesuan_20.png" path="/Image/"/>
+    <image id="ieud1t" name="jiesuan_21.png" path="/Image/"/>
+    <image id="ieud1u" name="jiesuan_22.png" path="/Image/"/>
+    <component id="ieud1v" name="ForestPartyResult.xml" path="/" exported="true"/>
+    <image id="ieud1w" name="Bg3.png" path="/Image/" exported="true" scale="9grid" scale9grid="20,20,8,8"/>
+  </resources>
+  <publish name="ForestPartyResult" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.King\PkgFold\Ui\ForestPartyResult"/>
+</packageDescription>

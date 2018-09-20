@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="722,58">
+  <displayList>
+    <image id="n0_gy6l" name="n0" src="u51ojc" pkg="nhvxw9ov" xy="0,54" size="722,4" color="#242647"/>
+    <text id="n2_gy6l" name="TextLevel" xy="66,15" pivot="0.5,0.5" size="27,27" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" singleLine="true" text="00"/>
+    <text id="n3_gy6l" name="TextBlind" xy="165,14" pivot="0.5,0.5" size="167,29" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000"/>
+    <text id="n4_gy6l" name="BlindnessTime" xy="532,14" pivot="0.5,0.5" size="154,29" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="00000000"/>
+    <text id="n5_gy6l" name="TextAnte" xy="334,14" pivot="0.5,0.5" size="164,29" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000"/>
+    <component id="n6_gy6l" name="ComPurchase" src="gy6l9" xy="95,19" visible="false">
+      <relation target="n2_gy6l" sidePair="middle-middle,left-right"/>
+    </component>
+    <component id="n8_gy6l" name="ComRepurchase" src="gy6l8" xy="95,19" hideByEditor="true" visible="false">
+      <relation target="n2_gy6l" sidePair="middle-middle,left-right"/>
+    </component>
+  </displayList>
+</component>

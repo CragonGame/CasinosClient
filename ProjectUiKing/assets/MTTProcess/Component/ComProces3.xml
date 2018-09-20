@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="614,104" pivot="0.5,0.5">
+  <displayList>
+    <loader id="n8_n1df" name="Lan_Image_恭喜进入YY" xy="-2,1" size="618,102" align="center" vAlign="middle" fill="scaleFree"/>
+    <component id="n0_n7pp" name="n0" src="ru14t" fileName="Component/Component4.xml" xy="-2,0" pivot="0.5,1" size="54,84"/>
+    <component id="n1_n7pp" name="n1" src="ru14u" fileName="Component/Component5.xml" xy="564,-1" pivot="0.5,1" size="55,84"/>
+    <component id="n3_n7pp" name="n3" src="ivt5m" fileName="Component/Component2.xml" xy="48,-14" pivot="0.5,0.5"/>
+    <component id="n6_cvtg" name="n6" src="ivt5m" fileName="Component/Component2.xml" xy="48,-14" pivot="0.5,0.5"/>
+    <image id="n7_cvtg" name="n7" src="cvtgw" fileName="Image/FX_light_05.png" xy="-193,-448" pivot="0.5,0.5" size="1000,1000"/>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="Scale" target="n3_n7pp" tween="true" startValue="3,3" endValue="1,1" duration="5" ease="Quad.InOut"/>
+    <item time="0" type="Visible" target="n1_n7pp" value="false"/>
+    <item time="0" type="Visible" target="n0_n7pp" value="false"/>
+    <item time="0" type="Visible" target="n7_cvtg" value="false"/>
+    <item time="0" type="Visible" target="n6_cvtg" value="false"/>
+    <item time="0" type="Visible" target="n8_n1df" value="false"/>
+    <item time="3" type="Scale" target="n7_cvtg" tween="true" startValue="0.3,0.3" endValue="1,1" duration="2"/>
+    <item time="3" type="Visible" target="n7_cvtg" value="true"/>
+    <item time="5" type="Alpha" target="n6_cvtg" tween="true" startValue="1" endValue="0" duration="7"/>
+    <item time="5" type="Alpha" target="n7_cvtg" tween="true" startValue="1" endValue="0.5" duration="7"/>
+    <item time="5" type="Scale" target="n3_n7pp" tween="true" startValue="1,1" ease="Quad.InOut"/>
+    <item time="5" type="Scale" target="n7_cvtg" tween="true" startValue="1,1" endValue="1.1,1.1" duration="3"/>
+    <item time="5" type="Scale" target="n6_cvtg" tween="true" startValue="1,1" endValue="3,3" duration="7"/>
+    <item time="5" type="Visible" target="n8_n1df" value="true"/>
+    <item time="5" type="Visible" target="n6_cvtg" value="true"/>
+    <item time="12" type="Alpha" target="n7_cvtg" tween="true" startValue="0.5" endValue="0.1" duration="6"/>
+    <item time="12" type="Alpha" target="n6_cvtg" tween="true" startValue="0"/>
+    <item time="12" type="Rotation" target="n1_n7pp" tween="true" startValue="0" endValue="-41" duration="4"/>
+    <item time="12" type="Rotation" target="n0_n7pp" tween="true" startValue="0" endValue="41" duration="4"/>
+    <item time="12" type="Scale" tween="true" startValue="1,1" endValue="1.05,1.05" duration="24"/>
+    <item time="12" type="Scale" target="n6_cvtg" tween="true" startValue="3,3"/>
+    <item time="12" type="Visible" target="n1_n7pp" value="true"/>
+    <item time="12" type="Visible" target="n0_n7pp" value="true"/>
+    <item time="16" type="Rotation" target="n0_n7pp" tween="true" startValue="41"/>
+    <item time="18" type="Alpha" target="n7_cvtg" tween="true" startValue="0.1"/>
+    <item time="18" type="Visible" target="n7_cvtg" value="false"/>
+    <item time="36" type="Scale" tween="true" startValue="1.05,1.05" endValue="2,2" duration="4" ease="Quad.InOut"/>
+    <item time="40" type="Scale" tween="true" startValue="2,2" endValue="0.1,0.1" duration="3" ease="Quad.InOut"/>
+    <item time="43" type="Scale" tween="true" startValue="0.1,0.1" ease="Quad.InOut"/>
+  </transition>
+</component>

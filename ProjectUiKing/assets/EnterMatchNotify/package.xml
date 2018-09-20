@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="zujfwuny" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="kpff0" name="EnterMatchNotify.xml" path="/" exported="true"/>
+    <component id="kpff1" name="BtnEnterNow.xml" path="/Component/"/>
+    <component id="fskk2" name="ComTips2.xml" path="/Component/"/>
+    <component id="fskk3" name="BtnEnter.xml" path="/Component/"/>
+    <component id="fskk4" name="BtnCancel.xml" path="/Component/"/>
+  </resources>
+  <publish name="EnterMatchNotify" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\EnterMatchNotify"/>
+</packageDescription>

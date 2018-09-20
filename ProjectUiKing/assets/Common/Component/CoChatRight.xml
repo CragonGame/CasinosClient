@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="218,64">
+  <displayList>
+    <image id="n2_jhsd" name="ChatBg" src="dcobd4" xy="-9,-46" size="22,47" group="n4_uctx">
+      <relation target="n3_jhsd" sidePair="leftext-left,rightext-right"/>
+    </image>
+    <richtext id="n3_jhsd" name="ChatMsg" xy="-5,-40" pivot="1,0" size="10,35" group="n4_uctx" fontSize="26" color="#ffffff" align="right" shadowColor="#000000" shadowOffset="1,1" text=""/>
+    <group id="n4_uctx" name="GroupNormalLength" xy="-9,-46" size="22,47" advanced="true"/>
+    <image id="n5_uctx" name="ChatBg" src="dcobd4" xy="-470,-53" size="472,58" group="n7_uctx">
+      <relation target="n6_uctx" sidePair="top-top,bottomext-bottom"/>
+    </image>
+    <richtext id="n6_uctx" name="ChatMsg" xy="-464,-43" pivot="1,0" size="447,35" group="n7_uctx" fontSize="26" color="#ffffff" align="right" autoSize="height" shadowColor="#000000" shadowOffset="1,1" text=""/>
+    <group id="n7_uctx" name="GroupMaxLength" xy="-470,-53" size="472,58" visible="false" advanced="true"/>
+  </displayList>
+</component>

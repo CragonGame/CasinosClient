@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ctthmchr" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="j0ra0" name="CreateDeskTop.xml" path="/" exported="true"/>
+    <component id="pm2d1" name="BtnAnte.xml" path="/Component/"/>
+  </resources>
+  <publish name="CreateDeskTop" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\CreateDeskTop"/>
+</packageDescription>

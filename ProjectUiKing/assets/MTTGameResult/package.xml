@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ttgm1r1p" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="n1oc0" name="MTTGameResult.xml" path="/" exported="true"/>
+    <image id="n1oc1" name="Cup.png" path="/Image/"/>
+    <image id="n1oc2" name="Line2.png" path="/Image/"/>
+    <image id="n1oc3" name="Result3.png" path="/Image/"/>
+    <image id="n1oc4" name="Shineline.png" path="/Image/"/>
+    <image id="n1oc5" name="Line1.png" path="/Image/"/>
+    <component id="n1oc6" name="ComCup.xml" path="/Component/"/>
+    <image id="n1oc7" name="WaitResult.png" path="/Image/"/>
+    <image id="n1oc8" name="MTTLogo.png" path="/Image/"/>
+    <component id="n1oca" name="ComCup1.xml" path="/Component/"/>
+    <image id="n1ocb" name="JBmask.png" path="/Image/"/>
+    <image id="9ehfc" name="eff_glowPoint.png" path="/Image/"/>
+    <image id="cvtgd" name="0.png" path="/Image/Num/"/>
+    <image id="cvtge" name="1.png" path="/Image/Num/"/>
+    <image id="cvtgf" name="2.png" path="/Image/Num/"/>
+    <image id="cvtgg" name="3.png" path="/Image/Num/"/>
+    <image id="cvtgh" name="4.png" path="/Image/Num/"/>
+    <image id="cvtgi" name="5.png" path="/Image/Num/"/>
+    <image id="cvtgj" name="6.png" path="/Image/Num/"/>
+    <image id="cvtgk" name="7.png" path="/Image/Num/"/>
+    <image id="cvtgl" name="8.png" path="/Image/Num/"/>
+    <image id="cvtgm" name="9.png" path="/Image/Num/"/>
+    <font id="cvtgn" name="Font1.fnt" path="/Image/Num/" exported="true"/>
+    <image id="cvtgo" name="UI2_公用数字_第.png" path="/Image/Num/"/>
+    <image id="cvtgp" name="UI2_公用数字_名.png" path="/Image/Num/"/>
+    <image id="cvtgq" name="UI2_胜利结算_名次待定.png" path="/Image/"/>
+  </resources>
+  <publish name="MTTGameResult" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\MTTGameResult"/>
+</packageDescription>

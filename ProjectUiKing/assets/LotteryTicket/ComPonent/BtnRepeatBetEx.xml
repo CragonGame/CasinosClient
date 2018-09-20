@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="166,51" extention="Button">
+  <displayList>
+    <image id="n6_lfqc" name="n6" src="lfqc5k" xy="0,0"/>
+    <image id="n7_lfqc" name="n7" src="lfqc5i" xy="136,4"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="1.02"/>
+</component>

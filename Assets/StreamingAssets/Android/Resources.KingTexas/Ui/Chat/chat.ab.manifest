@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 3974858979
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: df599fabc4c89dbb04e41fcbf6d6d97a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Chat/Chat@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Chat/Chat@atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Chat/Chat.bytes
+Dependencies: []

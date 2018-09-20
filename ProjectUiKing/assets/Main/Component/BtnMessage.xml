@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="64,60" extention="Button" initName="BtnMessage">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n5_he5u" name="n5" src="he5udl" pkg="nhvxw9ov" xy="0,0"/>
+    <image id="n4_ixpj" name="n4" src="ixpj2u" xy="4,7"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

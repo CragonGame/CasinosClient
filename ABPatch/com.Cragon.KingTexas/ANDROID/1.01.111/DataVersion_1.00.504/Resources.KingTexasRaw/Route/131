@@ -1,0 +1,1 @@
+{initPos:{"x":500,"y":250}, initVelocity:{"speed":180,"direction":-80},accs:[{"start_time":1.2,"acc":{"speed":200,"direction":-170},"duration":2}]}

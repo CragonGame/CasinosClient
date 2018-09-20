@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 3957754195
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 212210bc2f575c81e51ea7109ed06db4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/Purse/Purse.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/Purse/Purse@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/Purse/Purse@atlas2.png
+- Assets/Resources.KingTexas/PkgFold/Ui/Purse/Purse@sprites.bytes
+Dependencies: []

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" adaptationTest="FitSize">
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <image id="n12_wb2e" name="Bg" src="wb2ec" fileName="Image/UI2_赛事_bg.png" xy="0,0" size="1066,640"/>
+    <component id="n1_wb2e" name="BtnReturn" src="wb2ek4" fileName="Component/Btn/BtnReturn1.xml" pkg="nhvxw9ov" xy="38,14"/>
+    <component id="n4_wb2e" name="BtnAddChip" src="wb2e3" fileName="Component/ComAddChip.xml" xy="837,24">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n24_j1yr" name="BtnAddChip1" src="j1yr13" fileName="Component/ComAddChip1.xml" xy="837,24">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n9_wb2e" name="bg" src="wb2e5" fileName="Component/Component1.xml" xy="0,86" touchable="false">
+      <relation target="" sidePair="top-top"/>
+    </component>
+    <list id="n10_wb2e" name="ListMatchType" xy="0,86" size="142,554" overflow="hidden" lineGap="1" defaultItem="ui://2bmbew6zwb2e7">
+      <relation target="" sidePair="top-top"/>
+    </list>
+    <image id="n11_wb2e" name="n11" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="150,97" size="907,540" alpha="0.66" color="#1d2052">
+      <relation target="" sidePair="height-height,rightext-right"/>
+    </image>
+    <component id="n14_wb2e" name="ComNoMatch" src="wb2ee" fileName="Component/ComNoMatch.xml" xy="359,334" hideByEditor="true" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n20_uvmq" name="ComTitle" src="uvmqi" fileName="Component/ComTitle.xml" xy="300,100">
+      <relation target="n11_wb2e" sidePair="center-center,top-top"/>
+    </component>
+    <list id="n21_tbey" name="ListMatch" xy="151,135" size="904,500" overflow="scroll" defaultItem="ui://2bmbew6zwb2ea">
+      <relation target="n11_wb2e" sidePair="center-center,top-top"/>
+      <relation target="n11_wb2e" sidePair="width-width"/>
+    </list>
+    <component id="n22_vs7z" name="ComSelfMatchNum" src="vs7zs" fileName="Component/ComSelfMatchNum.xml" xy="109,190" visible="false">
+      <relation target="" sidePair="top-top"/>
+    </component>
+    <component id="n13_wb2e" name="ComSelfNoMatch" src="wb2ed" fileName="Component/ComSelfNoMatch.xml" xy="334,335" hideByEditor="true" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n23_s4ta" name="TextTime" xy="110,26" size="83,35" fontSize="20" color="#96999d" vAlign="middle" leading="0" autoSize="none" text=""/>
+  </displayList>
+</component>

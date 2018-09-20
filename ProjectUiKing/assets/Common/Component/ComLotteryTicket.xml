@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="83,81" initName="ComLotteryTicket">
+  <displayList>
+    <image id="n39_ot8l" name="n39" src="ffinf5" fileName="Image/LotteryTicket/yy.png" xy="19,60" size="46,11" hideByEditor="true" visible="false"/>
+    <image id="n34_ot8l" name="n34" src="ffinf0" fileName="Image/LotteryTicket/cm.png" xy="11,6" size="58,58" hideByEditor="true" visible="false"/>
+    <image id="n31_ot8l" name="n31" src="ffinex" fileName="Image/LotteryTicket/a.png" xy="20,21" pivot="0.5,1" size="27,34" hideByEditor="true" visible="false"/>
+    <image id="n36_ot8l" name="n36" src="ffinf2" fileName="Image/LotteryTicket/k.png" xy="33,23" pivot="0.5,1" size="32,38" hideByEditor="true" visible="false"/>
+    <image id="n33_ot8l" name="n33" src="ffinez" fileName="Image/LotteryTicket/cd.png" xy="0,42" pivot="0.5,0.5" size="83,24" hideByEditor="true" visible="false"/>
+    <loader id="n50_q5yu" name="Lan_Image_LotteryTicket" xy="20,49" size="44,14" hideByEditor="true" visible="false" url="ui://6kz8w16qq5yu5a" align="center" vAlign="middle" fill="scaleFree"/>
+    <image id="n32_ot8l" name="n32" src="ffiney" fileName="Image/LotteryTicket/ag.png" xy="10,15" size="13,14" group="n40_ot8l" visible="false"/>
+    <image id="n35_ot8l" name="n35" src="ffinf1" fileName="Image/LotteryTicket/gd.png" xy="10,13" size="13,14" group="n40_ot8l" visible="false"/>
+    <group id="n40_ot8l" name="n40" xy="10,13" size="13,16" hideByEditor="true" collapsed="true"/>
+    <image id="n44_ot8l" name="n44" src="ffiney" fileName="Image/LotteryTicket/ag.png" xy="34,2" size="13,14" group="n46_ot8l" visible="false"/>
+    <image id="n45_ot8l" name="n45" src="ffinf1" fileName="Image/LotteryTicket/gd.png" xy="34,0" size="13,14" group="n46_ot8l" visible="false"/>
+    <group id="n46_ot8l" name="n46" xy="34,0" size="13,16" hideByEditor="true" collapsed="true"/>
+    <image id="n41_ot8l" name="n41" src="ffiney" fileName="Image/LotteryTicket/ag.png" xy="57,15" size="13,14" group="n43_ot8l" visible="false"/>
+    <image id="n42_ot8l" name="n42" src="ffinf1" fileName="Image/LotteryTicket/gd.png" xy="57,13" size="13,14" group="n43_ot8l" visible="false"/>
+    <group id="n43_ot8l" name="n43" xy="57,13" size="13,16" hideByEditor="true" collapsed="true"/>
+    <image id="n49_ot8l" name="n49" src="ffinev" fileName="Image/CountDownBg.png" xy="11,64" pivot="0.5,0.5" size="59,17" hideByEditor="true" visible="false"/>
+    <movieclip id="n51_hwqj" name="n51" src="hwqjm5" fileName="Image/LotteryTicket/AniLotteryTicket.jta" xy="-2,6"/>
+    <text id="n12_qj42" name="LotteryTicketTips" xy="11,52" pivot="0.5,0.5" size="59,20" fontSize="14" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+  <transition name="t0" autoPlayRepeat="-1">
+    <item time="0" type="Alpha" target="n35_ot8l" tween="true" startValue="1" endValue="0" duration="6" ease="Linear"/>
+    <item time="0" type="Alpha" target="n45_ot8l" tween="true" startValue="0" endValue="1" duration="6" ease="Linear"/>
+    <item time="0" type="Alpha" target="n42_ot8l" tween="true" startValue="0" endValue="0" duration="6" ease="Linear"/>
+    <item time="0" type="Rotation" target="n36_ot8l" tween="true" startValue="0" endValue="3" duration="6" ease="Linear"/>
+    <item time="0" type="Rotation" target="n33_ot8l" tween="true" startValue="0" endValue="3" duration="6" ease="Linear"/>
+    <item time="0" type="Rotation" target="n31_ot8l" tween="true" startValue="0" endValue="-3" duration="6" ease="Linear"/>
+    <item time="6" type="Alpha" target="n35_ot8l" tween="true" startValue="0" endValue="0" duration="6" ease="Linear"/>
+    <item time="6" type="Alpha" target="n45_ot8l" tween="true" startValue="1" endValue="0" duration="6" ease="Linear"/>
+    <item time="6" type="Alpha" target="n42_ot8l" tween="true" startValue="0" endValue="1" duration="6" ease="Linear"/>
+    <item time="6" type="Rotation" target="n33_ot8l" tween="true" startValue="3" endValue="0" duration="6" ease="Linear"/>
+    <item time="6" type="Rotation" target="n31_ot8l" tween="true" startValue="-3" endValue="0" duration="6" ease="Linear"/>
+    <item time="6" type="Rotation" target="n36_ot8l" tween="true" startValue="3" endValue="0" duration="6" ease="Linear"/>
+    <item time="12" type="Alpha" target="n35_ot8l" tween="true" startValue="0" endValue="1" duration="6" ease="Linear"/>
+    <item time="12" type="Alpha" target="n45_ot8l" tween="true" startValue="0" endValue="0" duration="6" ease="Linear"/>
+    <item time="12" type="Alpha" target="n42_ot8l" tween="true" startValue="1" endValue="0" duration="6" ease="Linear"/>
+    <item time="12" type="Rotation" target="n31_ot8l" tween="true" startValue="0" endValue="-3" duration="6" ease="Linear"/>
+    <item time="12" type="Rotation" target="n36_ot8l" tween="true" startValue="0" endValue="3" duration="6" ease="Linear"/>
+    <item time="12" type="Rotation" target="n33_ot8l" tween="true" startValue="0" endValue="-3" duration="6" ease="Linear"/>
+    <item time="18" type="Alpha" target="n45_ot8l" tween="true" startValue="0" endValue="1" duration="6" ease="Linear"/>
+    <item time="18" type="Alpha" target="n42_ot8l" tween="true" startValue="0" endValue="0" duration="6" ease="Linear"/>
+    <item time="18" type="Alpha" target="n35_ot8l" tween="true" startValue="1" endValue="0" duration="6" ease="Linear"/>
+    <item time="18" type="Rotation" target="n33_ot8l" tween="true" startValue="-3" endValue="0" duration="6" ease="Linear"/>
+    <item time="18" type="Rotation" target="n31_ot8l" tween="true" startValue="-3" endValue="0" duration="6" ease="Linear"/>
+    <item time="18" type="Rotation" target="n36_ot8l" tween="true" startValue="3" endValue="0" duration="6" ease="Linear"/>
+    <item time="24" type="Alpha" target="n45_ot8l" tween="true" startValue="1" endValue="0" duration="6" ease="Linear"/>
+    <item time="24" type="Alpha" target="n35_ot8l" tween="true" startValue="0" endValue="0" duration="6" ease="Linear"/>
+    <item time="24" type="Alpha" target="n42_ot8l" tween="true" startValue="0" endValue="1" duration="6" ease="Linear"/>
+    <item time="24" type="Rotation" target="n31_ot8l" tween="true" startValue="0" endValue="0" duration="72" ease="Linear"/>
+    <item time="24" type="Rotation" target="n36_ot8l" tween="true" startValue="0" endValue="0" duration="72" ease="Linear"/>
+    <item time="24" type="Rotation" target="n33_ot8l" tween="true" startValue="0" endValue="0" duration="72" ease="Linear"/>
+    <item time="24" type="Scale" target="n33_ot8l" tween="true" startValue="1,1" endValue="1.05,1.05" duration="6" ease="Linear"/>
+    <item time="30" type="Alpha" target="n42_ot8l" tween="true" startValue="1" endValue="0" duration="6" ease="Linear"/>
+    <item time="30" type="Alpha" target="n35_ot8l" tween="true" startValue="0" endValue="1" duration="6" ease="Linear"/>
+    <item time="30" type="Alpha" target="n45_ot8l" tween="true" startValue="0" endValue="0" duration="6" ease="Linear"/>
+    <item time="30" type="Scale" target="n33_ot8l" tween="true" startValue="1.05,1.05" endValue="1,1" duration="6" ease="Linear"/>
+    <item time="36" type="Alpha" target="n35_ot8l" tween="true" startValue="1" endValue="0" duration="6" ease="Linear"/>
+    <item time="36" type="Alpha" target="n45_ot8l" tween="true" startValue="0" endValue="1" duration="6" ease="Linear"/>
+    <item time="36" type="Alpha" target="n42_ot8l" tween="true" startValue="0" endValue="0" duration="6" ease="Linear"/>
+    <item time="36" type="Scale" target="n33_ot8l" tween="true" startValue="1,1" endValue="1,1" duration="60" ease="Linear"/>
+    <item time="42" type="Alpha" target="n45_ot8l" tween="true" startValue="1" endValue="0" duration="6" ease="Linear"/>
+    <item time="42" type="Alpha" target="n35_ot8l" tween="true" startValue="0" endValue="0" duration="6" ease="Linear"/>
+    <item time="42" type="Alpha" target="n42_ot8l" tween="true" startValue="0" endValue="1" duration="6" ease="Linear"/>
+    <item time="48" type="Alpha" target="n42_ot8l" tween="true" startValue="1" endValue="0" duration="6" ease="Linear"/>
+    <item time="48" type="Alpha" target="n45_ot8l" tween="true" startValue="0" endValue="0" duration="6" ease="Linear"/>
+    <item time="48" type="Alpha" target="n35_ot8l" tween="true" startValue="0" endValue="1" duration="6" ease="Linear"/>
+    <item time="54" type="Alpha" target="n42_ot8l" tween="true" startValue="0" ease="Linear"/>
+    <item time="54" type="Alpha" target="n45_ot8l" tween="true" startValue="0" ease="Linear"/>
+    <item time="54" type="Alpha" target="n35_ot8l" tween="true" startValue="1" ease="Linear"/>
+    <item time="96" type="Rotation" target="n31_ot8l" tween="true" startValue="0" ease="Linear"/>
+    <item time="96" type="Rotation" target="n36_ot8l" tween="true" startValue="0" ease="Linear"/>
+    <item time="96" type="Rotation" target="n33_ot8l" tween="true" startValue="0" ease="Linear"/>
+    <item time="96" type="Scale" target="n33_ot8l" tween="true" startValue="1,1" ease="Linear"/>
+  </transition>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="223,65" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n8_h7bs" name="n8" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="1,0" size="220,65" color="#393b5e">
+      <gearDisplay controller="button" pages="1"/>
+    </image>
+    <text id="n6_phet" name="Lan_Text_Help" xy="103,9" pivot="0.5,0.5" size="75,44" fontSize="35" color="#8aa6e7" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="帮助">
+      <relation target="n9_ewf7" sidePair="left-right"/>
+    </text>
+    <image id="n9_ewf7" name="n9" src="nhy4kn" fileName="Image/New/UI2_通用按钮_帮助.png" pkg="nhvxw9ov" xy="53,13" color="#8aa6e7"/>
+  </displayList>
+  <Button/>
+</component>

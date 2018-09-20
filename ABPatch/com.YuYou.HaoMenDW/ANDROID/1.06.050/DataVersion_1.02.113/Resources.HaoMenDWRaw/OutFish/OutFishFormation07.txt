@@ -1,0 +1,17 @@
+{
+	"CommonData": "{\"DestroyTm\":18.0}",
+	"ListGenerator": [{
+		"mTypeName": "IntervalDivergenceGeneratorData",
+		"mJsonString": "{\"mFishVibID\":3,\"mGenerationPointX\":0.0,\"mGenerationPointY\":0.0,\"mAmount\":6,\"mStartTime\":0.0,\"mDeltaTime\":0.167,\"mWaveNumber\":30,\"mRandomAngle\":20.0}"
+	},
+	{
+		"mTypeName": "IntervalDivergenceGeneratorData",
+		"mJsonString": "{\"mFishVibID\":1,\"mGenerationPointX\":0.0,\"mGenerationPointY\":0.0,\"mAmount\":6,\"mStartTime\":5.0,\"mDeltaTime\":0.167,\"mWaveNumber\":30,\"mRandomAngle\":20.0}"
+	},
+	{
+		"mTypeName": "IntervalDivergenceGeneratorData",
+		"mJsonString": "{\"mFishVibID\":2,\"mGenerationPointX\":0.0,\"mGenerationPointY\":0.0,\"mAmount\":6,\"mStartTime\":10.0,\"mDeltaTime\":0.167,\"mWaveNumber\":30,\"mRandomAngle\":20.0}"
+	}],
+	"ListAffector": [],
+	"GeneratorAffectorMap": "[]"
+}

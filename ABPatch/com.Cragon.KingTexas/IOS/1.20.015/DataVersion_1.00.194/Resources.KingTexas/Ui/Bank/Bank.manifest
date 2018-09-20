@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 271519232
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: bank.ab
+      Dependencies: {}

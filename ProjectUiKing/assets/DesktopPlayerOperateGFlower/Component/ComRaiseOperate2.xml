@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="140,110">
+  <controller name="ControllerEnable" pages="0,Enable,1,Disable" selected="0"/>
+  <displayList>
+    <image id="n3_waxw" name="n3" src="gp48y" xy="17,13">
+      <gearDisplay controller="ControllerEnable" pages="1"/>
+    </image>
+    <image id="n4_waxw" name="n4" src="gp48z" xy="17,13">
+      <gearDisplay controller="ControllerEnable" pages="0"/>
+    </image>
+    <text id="n5_waxw" name="TextValue" xy="0,85" pivot="0.5,0.5" size="140,39" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" text=""/>
+  </displayList>
+</component>

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3766946029
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0444f48c27db132c6e5c9c93bdc856e2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/CountDown2.mp3
+Dependencies: []

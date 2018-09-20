@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="86,139">
+  <controller name="ControllerSeat" pages="0,HavePlayer,1,HaveNoPlayer" selected="0"/>
+  <displayList>
+    <image id="n16_fxsn" name="n16" src="fxsn45" xy="0,0" size="86,139"/>
+    <image id="n19_jdzb" name="n19" src="npdvw" pkg="08hoz1y1" xy="20,46">
+      <gearDisplay controller="ControllerSeat" pages="1"/>
+    </image>
+    <component id="n11_jhsd" name="CoChatParent" src="fb5j2l" xy="42,62" group="n22_h2pl">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n5" name="NickNameSelf" xy="0,0" pivot="0.5,0.5" size="86,28" group="n22_h2pl" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n7" name="GoldSelf" xy="0,111" pivot="0.5,0.5" size="86,28" group="n22_h2pl" fontSize="20" color="#ffcc33" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n12_fb5j" name="CoHeadIcon" src="fb5j1z" xy="0,26" size="86,86" group="n22_h2pl"/>
+    <group id="n22_h2pl" name="n22" xy="0,0" size="86,139" advanced="true">
+      <gearDisplay controller="ControllerSeat" pages="0"/>
+    </group>
+  </displayList>
+</component>

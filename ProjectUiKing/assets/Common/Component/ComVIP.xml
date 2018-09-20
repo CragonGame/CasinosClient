@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="46,25" adaptationTest="FitSize">
+  <displayList>
+    <image id="n0" name="n0" src="i4nvgr" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n1" name="VIPLevel1" xy="20,13" size="7,11" align="center" vAlign="bottom" fill="scaleFree">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="" sidePair="left-left%,bottom-bottom%"/>
+    </loader>
+    <loader id="n2" name="VIPLevel2" xy="28,13" size="7,11" align="center" vAlign="bottom" fill="scaleFree">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="n1" sidePair="left-right,middle-middle"/>
+    </loader>
+    <loader id="n3" name="VIPLevel3" xy="23,13" size="7,11" visible="false" url="ui://nhvxw9ovi4nvgs" align="center" vAlign="bottom" fill="scaleFree">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="" sidePair="left-left%,bottom-bottom%"/>
+    </loader>
+  </displayList>
+</component>

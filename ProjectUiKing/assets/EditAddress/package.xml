@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ib0kpwpz" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="hrhq0" name="EditAddress.xml" path="/" exported="true"/>
+    <component id="j3hl1" name="BtnSave.xml" path="/Component/"/>
+  </resources>
+  <publish name="EditAddress" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\EditAddress"/>
+</packageDescription>

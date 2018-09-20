@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="560,46">
+  <displayList>
+    <loader id="n1" name="LoaderBetPotIcon" xy="0,1" size="0,0" visible="false" url="ui://zjam3slgetczb" fill="scale"/>
+    <loader id="n2" name="Loader1" xy="2,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n3" name="Loader2" xy="59,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n4" name="Loader3" xy="116,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n5" name="Loader4" xy="173,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n6" name="Loader5" xy="230,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n7" name="Loader6" xy="287,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n8" name="Loader7" xy="344,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n9" name="Loader8" xy="401,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n10" name="Loader9" xy="458,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n11" name="Loader10" xy="515,1" size="45,45" url="ui://6kz8w16qitm135" align="center" vAlign="middle" fill="scale"/>
+  </displayList>
+</component>

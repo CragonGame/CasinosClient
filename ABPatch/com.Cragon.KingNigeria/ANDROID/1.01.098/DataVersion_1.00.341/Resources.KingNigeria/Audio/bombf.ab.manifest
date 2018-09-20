@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2853718747
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 24bfc55c479afbfefc8bce1cbc598fce
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/bombf.mp3
+Dependencies: []

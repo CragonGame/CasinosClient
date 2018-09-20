@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="252,78" extention="Button" initName="BtnCreateMatch">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_nhy4" name="n4" src="mkwxec" pkg="nhvxw9ov" xy="0,0" size="252,78"/>
+    <text id="n5_nhy4" name="n5" xy="0,0" pivot="0.5,0.5" size="252,78" font="FontCu" fontSize="35" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" text="创建赛事"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

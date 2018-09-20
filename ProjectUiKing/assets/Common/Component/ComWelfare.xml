@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="200,80">
+  <displayList>
+    <component id="n0_vtnc" name="ComOnlineReward" src="ixpjb2" xy="11,12"/>
+    <component id="n1_vtnc" name="n1" src="vtnclk" xy="112,1"/>
+  </displayList>
+</component>

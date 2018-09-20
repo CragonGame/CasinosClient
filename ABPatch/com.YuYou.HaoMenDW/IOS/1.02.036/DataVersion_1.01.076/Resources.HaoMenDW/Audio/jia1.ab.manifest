@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 793860754
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: aad4fa129f02038f6142b8f7eaea81c8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/jia1.ogg
+Dependencies: []

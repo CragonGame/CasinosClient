@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="720,280" initName="ComOverView">
+  <controller name="ControllerOverView" pages="0,,1," selected="1"/>
+  <displayList>
+    <image id="n0_gy6l" name="n0" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="0,0" size="720,280" color="#303563"/>
+    <component id="n4_gy6l" name="ComOverViewText" src="gy6l3" fileName="Component/ComOverViewText.xml" xy="0,0"/>
+    <component id="n1_gy6l" name="BtnShare" src="gy6l2" fileName="Component/BtnShare.xml" xy="140,288">
+      <gearDisplay controller="ControllerOverView" pages="1"/>
+    </component>
+    <component id="n2_gy6l" name="BtnApply" src="gy6l1" fileName="Component/BtnApply.xml" xy="410,288">
+      <gearDisplay controller="ControllerOverView" pages="1"/>
+    </component>
+    <text id="n5_kak4" name="TextUniqId" xy="606,311" size="85,20" alpha="0.5" fontSize="14" color="#666666" vAlign="middle" leading="0" autoSize="none" text=""/>
+  </displayList>
+</component>

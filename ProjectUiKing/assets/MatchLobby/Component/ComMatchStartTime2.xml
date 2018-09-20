@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,70">
+  <displayList>
+    <image id="n0_tbey" name="n0" src="wb2ek8" pkg="nhvxw9ov" xy="5,31" size="37,37" color="#173270"/>
+    <text id="n2_tbey" name="TextTips" xy="1,0" pivot="0.5,0.5" size="97,30" fontSize="22" color="#518ee0" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="报名截止"/>
+    <text id="n3_tbey" name="TextTimeM" xy="6,36" pivot="0.5,0.5" size="35,27" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="20"/>
+    <image id="n4_tbey" name="n4" src="wb2ek8" pkg="nhvxw9ov" xy="59,31" size="37,37" color="#173270"/>
+    <text id="n5_tbey" name="TextTimeS" xy="60,36" pivot="0.5,0.5" size="35,27" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="20"/>
+    <text id="n6_tbey" name="n6" xy="44,34" size="12,30" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" bold="true" text=":"/>
+  </displayList>
+</component>

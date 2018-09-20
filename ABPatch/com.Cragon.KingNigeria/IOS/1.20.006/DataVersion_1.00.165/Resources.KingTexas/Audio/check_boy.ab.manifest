@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3534159739
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b92d6cd44b203ef27a63e5c952d6d895
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/check_boy.wav
+Dependencies: []

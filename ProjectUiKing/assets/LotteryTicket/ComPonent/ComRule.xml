@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="663,340" overflow="scroll">
+  <displayList>
+    <text id="n0_h1fp" name="Lan_Text_LotteryTicketRule" xy="0,0" size="663,322" fontSize="25" color="#c5c8cf" ubb="true" autoSize="height" text="[size=27][b]基本规则[/b][/size]&#xA;每轮有60秒开奖时间和10秒结算时间，玩家在开奖倒计时过程中可以进行牌型押注也可按照上一轮押注进行重复下注。玩家输则输光投注余额，若玩家赢，则获得奖项上标注的倍数X下注量&#xA;&#xA;[size=27][b]彩金池规则[/b][/size]&#xA;压中四条分得彩金池5%的金币，封顶倍数80倍。&#xA;压中同花顺分得彩金池10%的金币，封顶倍数100倍。&#xA;压中皇家同花顺分得彩金池20%的金币，封顶倍数120倍。"/>
+  </displayList>
+</component>

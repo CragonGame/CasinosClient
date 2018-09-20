@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1316029458
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: mail.ab
+      Dependencies: {}

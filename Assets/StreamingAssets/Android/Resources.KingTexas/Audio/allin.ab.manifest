@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1230862643
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 11d502d1daa6991980859975f7ea8514
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/allin.wav
+Dependencies: []

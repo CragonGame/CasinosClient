@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 129563276
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e69a8e8e4673741b79445569e06bb41e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0f931d4ebb7724728a37cd063f2dc20a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexasParticle/Materials/star3.mat
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Particle/Star.prefab
+- Assets/Resources.KingTexasParticle/Textures/Star3.png
+Dependencies: []

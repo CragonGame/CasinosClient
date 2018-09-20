@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="116,162">
+  <controller name="ConttollerBg" pages="0,Black,1,Light" selected="0"/>
+  <displayList>
+    <image id="n9_8xod" name="n9" src="8xode8" fileName="Image/BgGift.png" xy="0,0" size="116,116"/>
+    <image id="n10_8xod" name="n10" src="8xode9" fileName="Image/CommonBlueLightBg.png" xy="0,0" size="116,116">
+      <gearDisplay controller="ConttollerBg" pages="1"/>
+    </image>
+    <loader id="n1_mad8" name="LoaderGift" xy="0,0" size="116,116" align="center" vAlign="middle" fill="scale"/>
+    <text id="n2_mad8" name="GiftName" xy="0,116" size="116,23" fontSize="17" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n3_mad8" name="GiftValue" xy="0,139" size="116,23" fontSize="17" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n6_wdvn" name="ItemCount" xy="103,89" pivot="1,0.5" size="10,27" fontSize="20" color="#ffffff" align="right" vAlign="middle" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text=""/>
+    <text id="n11_w2f5" name="ItemDes" xy="2,88" pivot="0,0.5" size="10,27" fontSize="20" color="#ffffff" vAlign="middle" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text=""/>
+  </displayList>
+</component>

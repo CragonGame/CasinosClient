@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1060,640" overflow="hidden" adaptationTest="FitSize">
+  <displayList>
+    <image id="n0_qsc1" name="n0" src="ieudkg" xy="-60,-122" size="1181,885">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n118_iu00" name="BtnBetPanel" src="ieudee" xy="0,0" size="1060,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n121_rkyl" name="n121" src="ieudki" xy="478,-166" pivot="0.5,0.5" size="105,292" group="n149_rkyl"/>
+    <image id="n122_rkyl" name="n122" src="ieudki" xy="329,-133" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="-26"/>
+    <image id="n123_rkyl" name="n123" src="ieudki" xy="625,-134" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="26"/>
+    <image id="n124_rkyl" name="n124" src="ieudki" xy="745,-38" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="51"/>
+    <image id="n125_rkyl" name="n125" src="ieudki" xy="810,99" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="77"/>
+    <image id="n126_rkyl" name="n126" src="ieudki" xy="810,252" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="103"/>
+    <image id="n127_rkyl" name="n127" src="ieudki" xy="744,387" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="129"/>
+    <image id="n128_rkyl" name="n128" src="ieudki" xy="625,483" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="154"/>
+    <image id="n129_rkyl" name="n129" src="ieudki" xy="210,-37" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="-51"/>
+    <image id="n130_rkyl" name="n130" src="ieudki" xy="144,99" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="-77"/>
+    <image id="n131_rkyl" name="n131" src="ieudki" xy="144,251" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="-103"/>
+    <image id="n132_rkyl" name="n132" src="ieudki" xy="209,388" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="-129"/>
+    <image id="n133_rkyl" name="n133" src="ieudki" xy="329,483" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="-154"/>
+    <image id="n134_rkyl" name="n134" src="ieudki" xy="477,514" pivot="0.5,0.5" size="105,292" group="n149_rkyl" rotation="180"/>
+    <group id="n149_rkyl" name="YeZiRed" xy="144,-166" size="771,972" visible="false" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <image id="n135_rkyl" name="n135" src="ieudkj" xy="478,-166" pivot="0.5,0.5" size="105,292" group="n150_rkyl"/>
+    <image id="n136_rkyl" name="n136" src="ieudkj" xy="625,-134" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="26"/>
+    <image id="n137_rkyl" name="n137" src="ieudkj" xy="745,-38" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="51"/>
+    <image id="n138_rkyl" name="n138" src="ieudkj" xy="810,99" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="77"/>
+    <image id="n139_rkyl" name="n139" src="ieudkj" xy="810,252" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="103"/>
+    <image id="n140_rkyl" name="n140" src="ieudkj" xy="744,387" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="129"/>
+    <image id="n141_rkyl" name="n141" src="ieudkj" xy="625,483" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="154"/>
+    <image id="n142_rkyl" name="n142" src="ieudkj" xy="477,514" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="180"/>
+    <image id="n143_rkyl" name="n143" src="ieudkj" xy="329,483" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="-154"/>
+    <image id="n144_rkyl" name="n144" src="ieudkj" xy="209,388" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="-129"/>
+    <image id="n145_rkyl" name="n145" src="ieudkj" xy="144,251" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="-103"/>
+    <image id="n146_rkyl" name="n146" src="ieudkj" xy="144,99" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="-77"/>
+    <image id="n147_rkyl" name="n147" src="ieudkj" xy="210,-37" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="-51"/>
+    <image id="n148_rkyl" name="n148" src="ieudkj" xy="329,-133" pivot="0.5,0.5" size="105,292" group="n150_rkyl" rotation="-26"/>
+    <group id="n150_rkyl" name="YeZiYellow" xy="144,-166" size="771,972" visible="false" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <image id="n1_qsc1" name="n1" src="ieudkh" xy="478,-166" pivot="0.5,0.5" size="105,292" group="n91_yna0"/>
+    <image id="n2_qsc1" name="n2" src="ieudkh" xy="329,-133" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="-26"/>
+    <image id="n3_qsc1" name="n3" src="ieudkh" xy="625,-134" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="26"/>
+    <image id="n4_qsc1" name="n4" src="ieudkh" xy="745,-38" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="51"/>
+    <image id="n5_qsc1" name="n5" src="ieudkh" xy="810,99" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="77"/>
+    <image id="n6_qsc1" name="n6" src="ieudkh" xy="810,252" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="103"/>
+    <image id="n7_qsc1" name="n7" src="ieudkh" xy="744,387" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="129"/>
+    <image id="n8_qsc1" name="n8" src="ieudkh" xy="625,483" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="154"/>
+    <image id="n9_qsc1" name="n9" src="ieudkh" xy="477,514" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="180"/>
+    <image id="n10_qsc1" name="n10" src="ieudkh" xy="210,-37" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="-51"/>
+    <image id="n12_qsc1" name="n12" src="ieudkh" xy="144,99" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="-77"/>
+    <image id="n13_qsc1" name="n13" src="ieudkh" xy="144,251" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="-103"/>
+    <image id="n14_qsc1" name="n14" src="ieudkh" xy="209,388" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="-129"/>
+    <image id="n15_qsc1" name="n15" src="ieudkh" xy="329,483" pivot="0.5,0.5" size="105,292" group="n91_yna0" rotation="-154"/>
+    <group id="n91_yna0" name="YeZiGreen" xy="144,-166" size="771,972" visible="false" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <component id="n22_qsc1" name="BtnMenu" src="ieudky" xy="0,0"/>
+    <component id="n120_a4hq" name="ComBlocks" src="ieudfq" xy="50,0" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n35_we8o" name="ComArrow" src="ieudfk" xy="530,320" pivot="0.5,0.5" anchor="true" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n119_a4hq" name="ComAnimals" src="ieudfi" xy="50,0" pivot="0.5,0.5" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <image id="n116_iu00" name="ImageBetPanel" src="ieudkp" xy="1008,212">
+      <relation target="" sidePair="middle-middle,right-right"/>
+    </image>
+    <image id="n151_xkvh" name="CountDown3" src="ieudh9" xy="466,219" size="127,201" alpha="0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n152_xkvh" name="CountDown2" src="ieudh8" xy="463,221" size="133,198" alpha="0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n153_xkvh" name="CountDown1" src="ieudh7" xy="467,220" size="126,199" alpha="0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n159_ay3t" name="ComCommon" src="ieudg8" xy="0,0" size="1060,640">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n162_ijmt" name="ComMoreLottery" src="ieudkw" xy="827,191" hideByEditor="true" visible="false" touchable="false">
+      <relation target="" sidePair="right-right,middle-middle"/>
+    </component>
+    <component id="n163_uwv8" name="ComZongHengSiHai" src="ieudga" xy="465,255" hideByEditor="true" visible="false" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n164_uwv8" name="ComDaSanYuan" src="ieudgh" xy="469,160" hideByEditor="true" visible="false" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n165_uwv8" name="ComSongDeng" src="ieudgj" xy="470,267" hideByEditor="true" visible="false" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <image id="n167_uwv8" name="n167" src="ieudkr" xy="282,184" pivot="0.5,0.5" size="494,271" hideByEditor="true" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n168_uwv8" name="n168" src="ieudks" xy="282,184" size="494,271" hideByEditor="true" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n170_lgku" name="ComLotteryMultiple" src="ieudkv" xy="439,380" visible="false" touchable="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n179_g9bo" name="ComCaiJin" src="ieudgl" xy="840,50" touchable="false">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <movieclip id="n182_ovgp" name="MoveClipShanDian" src="ieudeq" xy="380,20" size="300,600" hideByEditor="true" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </movieclip>
+    <movieclip id="n183_e91e" name="MoveClipBaoZhuang" src="ieudet" xy="349,202" hideByEditor="true" visible="false" playing="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </movieclip>
+  </displayList>
+  <transition name="TransitionGreen">
+    <item time="0" type="Visible" target="n91_yna0" value="false"/>
+    <item time="12" type="Visible" target="n91_yna0" value="true"/>
+    <item time="24" type="Visible" target="n91_yna0" value="false"/>
+  </transition>
+  <transition name="TransitionRed">
+    <item time="0" type="Visible" target="n149_rkyl" value="false"/>
+    <item time="12" type="Visible" target="n149_rkyl" value="true"/>
+    <item time="24" type="Visible" target="n149_rkyl" value="false"/>
+  </transition>
+  <transition name="TransitionYellow">
+    <item time="0" type="Visible" target="n150_rkyl" value="false"/>
+    <item time="12" type="Visible" target="n150_rkyl" value="true"/>
+    <item time="24" type="Visible" target="n150_rkyl" value="false"/>
+  </transition>
+  <transition name="TransitionRGY">
+    <item time="0" type="Visible" target="n149_rkyl" value="true"/>
+    <item time="0" type="Visible" target="n150_rkyl" value="false"/>
+    <item time="0" type="Visible" target="n91_yna0" value="false"/>
+    <item time="12" type="Visible" target="n149_rkyl" value="false"/>
+    <item time="12" type="Visible" target="n150_rkyl" value="false"/>
+    <item time="12" type="Visible" target="n91_yna0" value="true"/>
+    <item time="24" type="Visible" target="n149_rkyl" value="false"/>
+    <item time="24" type="Visible" target="n150_rkyl" value="true"/>
+    <item time="24" type="Visible" target="n91_yna0" value="false"/>
+    <item time="36" type="Visible" target="n149_rkyl" value="false"/>
+    <item time="36" type="Visible" target="n150_rkyl" value="false"/>
+    <item time="36" type="Visible" target="n91_yna0" value="false"/>
+  </transition>
+  <transition name="TransitionFanBei2">
+    <item time="0" type="Visible" target="n167_uwv8" value="true"/>
+    <item time="12" type="Size" target="n167_uwv8" tween="true" startValue="494,271" endValue="190.49,101.51" duration="30"/>
+    <item time="12" type="XY" target="n167_uwv8" tween="true" startValue="232,184" endValue="625.42,390.02" duration="30"/>
+    <item time="288" type="Size" target="n167_uwv8" value="494,271"/>
+    <item time="288" type="Visible" target="n167_uwv8" value="false"/>
+    <item time="288" type="XY" target="n167_uwv8" value="232,184"/>
+  </transition>
+  <transition name="TransitionCountDown">
+    <item time="0" type="Alpha" target="n151_xkvh" label="0" value="1"/>
+    <item time="0" type="Size" target="n151_xkvh" tween="true" startValue="245,337" endValue="256,354" duration="4" ease="Back.Out"/>
+    <item time="1" type="XY" target="n0_qsc1" label="3" value="-60,-122"/>
+    <item time="6" type="Alpha" target="n151_xkvh" tween="true" startValue="1" endValue="0" duration="18" ease="Sine.Out"/>
+    <item time="6" type="Size" target="n151_xkvh" tween="true" startValue="256,354" endValue="164,233" duration="18" ease="Sine.Out"/>
+    <item time="25" type="Alpha" target="n152_xkvh" value="1"/>
+    <item time="25" type="Size" target="n152_xkvh" tween="true" startValue="245,337" endValue="256,354" duration="4" ease="Back.Out"/>
+    <item time="25" type="XY" target="n0_qsc1" label="2" value="-60,-122"/>
+    <item time="31" type="Alpha" target="n152_xkvh" tween="true" startValue="1" endValue="0" duration="17" label2="0" ease="Sine.Out"/>
+    <item time="31" type="Size" target="n152_xkvh" tween="true" startValue="256,354" endValue="164,233" duration="17"/>
+    <item time="49" type="Alpha" target="n153_xkvh" value="1"/>
+    <item time="49" type="Size" target="n153_xkvh" tween="true" startValue="245,337" endValue="256,354" duration="4" ease="Back.Out"/>
+    <item time="49" type="XY" target="n0_qsc1" label="1" value="-60,-122"/>
+    <item time="53" type="Size" target="n153_xkvh" tween="true" startValue="256,354" endValue="256,354" duration="3"/>
+    <item time="56" type="Alpha" target="n153_xkvh" tween="true" startValue="1" endValue="0" duration="16" ease="Sine.Out"/>
+    <item time="56" type="Size" target="n153_xkvh" tween="true" startValue="256,354" endValue="164,233" duration="16" ease="Sine.Out"/>
+    <item time="68" type="XY" target="n0_qsc1" label="Go" value="-60,-122"/>
+    <item time="72" type="Alpha" target="n152_xkvh" value="0"/>
+    <item time="72" type="Alpha" target="n151_xkvh" value="0"/>
+    <item time="72" type="Size" target="n152_xkvh" value="0,0"/>
+    <item time="72" type="Size" target="n151_xkvh" value="0,0"/>
+  </transition>
+  <transition name="TransitionGreen1">
+    <item time="0" type="Visible" target="n91_yna0" value="false"/>
+    <item time="6" type="Visible" target="n91_yna0" value="true"/>
+    <item time="42" type="Visible" target="n91_yna0" label="end" value="false"/>
+  </transition>
+  <transition name="TransitionRGYZHSH">
+    <item time="0" type="Visible" target="n149_rkyl" value="true"/>
+    <item time="0" type="Visible" target="n150_rkyl" value="false"/>
+    <item time="0" type="Visible" target="n91_yna0" value="false"/>
+    <item time="12" type="Visible" target="n149_rkyl" value="false"/>
+    <item time="12" type="Visible" target="n150_rkyl" value="false"/>
+    <item time="12" type="Visible" target="n91_yna0" value="true"/>
+    <item time="24" type="Visible" target="n149_rkyl" value="false"/>
+    <item time="24" type="Visible" target="n150_rkyl" value="true"/>
+    <item time="24" type="Visible" target="n91_yna0" value="false"/>
+    <item time="36" type="Visible" target="n149_rkyl" value="false"/>
+    <item time="36" type="Visible" target="n150_rkyl" value="true"/>
+    <item time="36" type="Visible" target="n91_yna0" value="false"/>
+  </transition>
+  <transition name="TransitionFanBei3">
+    <item time="0" type="Visible" target="n168_uwv8" value="true"/>
+    <item time="12" type="Size" target="n168_uwv8" tween="true" startValue="494,271" endValue="190.49,101.51" duration="30"/>
+    <item time="12" type="XY" target="n168_uwv8" tween="true" startValue="232,184" endValue="625.42,390.02" duration="30"/>
+    <item time="288" type="Size" target="n168_uwv8" value="494,271"/>
+    <item time="288" type="Visible" target="n168_uwv8" value="false"/>
+    <item time="288" type="XY" target="n168_uwv8" value="232,184"/>
+  </transition>
+  <transition name="TransitionWait">
+    <item time="0" type="Alpha" target="n0_qsc1" value="1"/>
+    <item time="12" type="Alpha" target="n0_qsc1" value="1"/>
+  </transition>
+</component>

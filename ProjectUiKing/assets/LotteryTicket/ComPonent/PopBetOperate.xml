@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="153,223">
+  <displayList>
+    <image id="n3_lfqc" name="n3" src="lfqc5j" fileName="Image/cm_d.png" xy="0,0" size="153,259"/>
+    <list id="n2_lc2k" name="list" xy="6,4" size="140,226" defaultItem="ui://xzwfr8w1nl3o5c" autoItemSize="false">
+      <relation target="" sidePair="width-width"/>
+    </list>
+  </displayList>
+</component>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="137,75" extention="Button" initName="BtnSignIn">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <controller name="ControllerState" pages="0,,1,,2,,3," selected="3"/>
+  <displayList>
+    <image id="n4_tbey" name="n4" src="tbeyk" xy="0,0" size="137,75">
+      <gearDisplay controller="ControllerState" pages="0"/>
+    </image>
+    <image id="n6_tbey" name="n6" src="tbeyq" xy="-2,-1" size="139,76">
+      <gearDisplay controller="ControllerState" pages="1"/>
+    </image>
+    <image id="n7_tbey" name="n7" src="tbeyr" xy="0,0" size="137,75">
+      <gearDisplay controller="ControllerState" pages="2"/>
+    </image>
+    <text id="n5_tbey" name="TextTitle" xy="0,19" pivot="0.5,0.5" size="138,36" fontSize="27" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" autoSize="shrink" singleLine="true" text="等待开始"/>
+    <component id="n8_nmmo" name="ComStarYellow" src="nmmou" xy="0,0">
+      <gearDisplay controller="ControllerState" pages="1"/>
+    </component>
+    <component id="n9_nmmo" name="ComStarRed" src="nmmow" xy="0,0">
+      <gearDisplay controller="ControllerState" pages="2"/>
+    </component>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

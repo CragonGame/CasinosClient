@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="90,90" pivot="0.5,0.5">
+  <displayList>
+    <image id="n9_fb5j" name="n9" src="fb5j27" xy="-5,-11" hideByEditor="true" visible="false">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <component id="n13_nmmo" name="ComLoaderIcon" src="nmmol8" pkg="nhvxw9ov" xy="2,2" size="86,86">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n10_fb5j" name="BankPlayerSign" src="fb5j28" xy="1,0" pivot="0.5,0.5" anchor="true">
+      <relation target="" sidePair="left-left,top-top"/>
+      <relation target="" sidePair="width-width%,height-height%"/>
+    </image>
+  </displayList>
+</component>

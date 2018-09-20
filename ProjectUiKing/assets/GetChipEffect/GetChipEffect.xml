@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" opaque="false">
+  <displayList>
+    <graph id="n0_pcq4" name="HolderParticle" xy="507,324" size="0,0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+    <text id="n1_vzxh" name="TextChipValue" xy="91,89" pivot="0.5,0.5" anchor="true" size="98,33" fontSize="26" color="#e5bb4f" align="center" vAlign="middle" leading="0" autoSize="none" text=""/>
+  </displayList>
+</component>

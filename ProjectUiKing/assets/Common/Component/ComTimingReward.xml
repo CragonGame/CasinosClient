@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="80,80">
+  <displayList>
+    <text id="n0_vtnc" name="n0" xy="12,30" size="55,19" fontSize="12" text="定时奖励"/>
+  </displayList>
+</component>

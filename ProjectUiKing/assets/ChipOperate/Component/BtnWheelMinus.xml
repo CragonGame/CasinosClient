@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="64,66" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n8_h1h1" name="n8" src="h1h1d" xy="0,0"/>
+    <image id="n7_y7iq" name="n7" src="eccyc" xy="0,0"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

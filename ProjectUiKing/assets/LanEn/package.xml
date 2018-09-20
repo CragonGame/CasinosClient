@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="3tbqqv48" jpegQuality="80" compressPNG="true">
+  <resources>
+    <image id="itm11m" name="AlreadyGet.png" path="/Image/" exported="true"/>
+    <image id="itm11o" name="BankerList.png" path="/Image/" exported="true"/>
+    <image id="itm11p" name="Barrage.png" path="/Image/" exported="true"/>
+    <image id="itm11t" name="CardTypeTexas.png" path="/Image/" exported="true" atlas="1"/>
+    <image id="itm11w" name="FlushLoose.png" path="/Image/" exported="true"/>
+    <image id="itm11x" name="FlushWin.png" path="/Image/" exported="true"/>
+    <image id="itm11y" name="FourOfAKindLoose.png" path="/Image/" exported="true"/>
+    <image id="itm11z" name="FourOfAKindWin.png" path="/Image/" exported="true"/>
+    <image id="itm120" name="FullHouseLoose.png" path="/Image/" exported="true"/>
+    <image id="itm121" name="FullHouseWin.png" path="/Image/" exported="true"/>
+    <image id="itm123" name="HighCardLoose.png" path="/Image/" exported="true"/>
+    <image id="itm124" name="HighCardWin.png" path="/Image/" exported="true"/>
+    <image id="itm126" name="LastRoundAward.png" path="/Image/" exported="true"/>
+    <image id="itm127" name="Loose.png" path="/Image/" exported="true"/>
+    <image id="itm128" name="LooseSign.png" path="/Image/" exported="true"/>
+    <image id="itm129" name="MagicExpression.png" path="/Image/" exported="true"/>
+    <image id="itm12b" name="PairLoose.png" path="/Image/" exported="true"/>
+    <image id="itm12c" name="PairWin.png" path="/Image/" exported="true"/>
+    <image id="itm12i" name="PoolInfoNot.png" path="/Image/" exported="true"/>
+    <image id="itm12k" name="RewardPool.png" path="/Image/" exported="true"/>
+    <image id="itm12l" name="RoyalFlushLoose.png" path="/Image/" exported="true"/>
+    <image id="itm12m" name="RoyalFlushWin.png" path="/Image/" exported="true"/>
+    <image id="itm12p" name="StraightFlushLoose.png" path="/Image/" exported="true"/>
+    <image id="itm12q" name="StraightFlushWin.png" path="/Image/" exported="true"/>
+    <image id="itm12r" name="StraightLoose.png" path="/Image/" exported="true"/>
+    <image id="itm12s" name="StraightWin.png" path="/Image/" exported="true"/>
+    <image id="itm12t" name="ThreeOfAKindLoose.png" path="/Image/" exported="true"/>
+    <image id="itm12u" name="ThreeOfAKindWin.png" path="/Image/" exported="true"/>
+    <image id="itm12x" name="TwoPairsLoose.png" path="/Image/" exported="true"/>
+    <image id="itm12y" name="TwoPairsWin.png" path="/Image/" exported="true"/>
+    <image id="itm130" name="Win.png" path="/Image/" exported="true"/>
+    <image id="itm132" name="WinRewardNotChoose.png" path="/Image/" exported="true"/>
+    <image id="itm133" name="WinSign.png" path="/Image/" exported="true"/>
+    <image id="9dc236" name="14002.png" path="/Image/" exported="true"/>
+    <image id="9dc237" name="AccountLogin.png" path="/Image/" exported="true"/>
+    <image id="9dc23b" name="BankSign.png" path="/Image/" exported="true"/>
+    <image id="9dc23e" name="BetPotInfo0.png" path="/Image/" exported="true"/>
+    <image id="9dc23f" name="BetPotInfo1.png" path="/Image/" exported="true"/>
+    <image id="9dc23g" name="BetPotInfo2.png" path="/Image/" exported="true"/>
+    <image id="9dc23h" name="BetPotInfo3.png" path="/Image/" exported="true"/>
+    <image id="9dc23i" name="BetPotInfo4.png" path="/Image/" exported="true"/>
+    <image id="9dc23j" name="BetPotInfo5.png" path="/Image/" exported="true"/>
+    <image id="9dc23k" name="BetRepeat.png" path="/Image/" exported="true"/>
+    <image id="9dc23m" name="BigRewardRecord.png" path="/Image/" exported="true"/>
+    <image id="9dc23o" name="CaiChi.png" path="/Image/" exported="true"/>
+    <image id="9dc23p" name="Choose.png" path="/Image/" exported="true"/>
+    <image id="9dc23t" name="DeskHundred1.png" path="/Image/" exported="true"/>
+    <image id="9dc23u" name="DeskHundred2.png" path="/Image/" exported="true"/>
+    <image id="9dc23v" name="DeskNormal1.png" path="/Image/" exported="true"/>
+    <image id="9dc23w" name="DeskNormal2.png" path="/Image/" exported="true"/>
+    <image id="9dc23x" name="DesktopLogo.png" path="/Image/" exported="true" atlas="3"/>
+    <image id="9dc241" name="FirstPurchaseBig.png" path="/Image/" exported="true" atlas="3"/>
+    <image id="9dc242" name="FirstPurchaseSmall.png" path="/Image/" exported="true"/>
+    <image id="9dc243" name="Flush.png" path="/Image/" exported="true"/>
+    <image id="9dc246" name="FullHouse.png" path="/Image/" exported="true"/>
+    <image id="9dc247" name="Get.png" path="/Image/" exported="true"/>
+    <image id="9dc24a" name="Gold10000.png" path="/Image/" exported="true"/>
+    <image id="9dc24b" name="Gold100000.png" path="/Image/" exported="true"/>
+    <image id="9dc24c" name="Gold1000000.png" path="/Image/" exported="true"/>
+    <image id="9dc24d" name="Gold10000000.png" path="/Image/" exported="true"/>
+    <image id="9dc24e" name="Gold100000000.png" path="/Image/" exported="true"/>
+    <image id="9dc24f" name="Gold1000000000.png" path="/Image/" exported="true"/>
+    <image id="9dc24h" name="GrandPrixRecord.png" path="/Image/" exported="true"/>
+    <image id="9dc24j" name="HelpLotteryTicket.png" path="/Image/" exported="true"/>
+    <image id="9dc24k" name="HighCard.png" path="/Image/" exported="true"/>
+    <image id="9dc24l" name="HistoryRecordOfAward.png" path="/Image/" exported="true"/>
+    <image id="9dc24o" name="LastRoundBigWinner.png" path="/Image/" exported="true"/>
+    <image id="9dc24r" name="Logo.png" path="/Image/" exported="true" atlas="3"/>
+    <image id="9dc24s" name="LotteryTicket.png" path="/Image/" exported="true"/>
+    <image id="9dc24t" name="LotteryTicketBig.png" path="/Image/" exported="true" atlas="3"/>
+    <image id="9dc24u" name="LotteryTicketsTips.png" path="/Image/" exported="true"/>
+    <image id="9dc24x" name="Pair.png" path="/Image/" exported="true"/>
+    <image id="9dc251" name="RechargeFirstContent.png" path="/Image/" exported="true" atlas="3"/>
+    <image id="9dc252" name="RechargeNow.png" path="/Image/" exported="true"/>
+    <image id="9dc258" name="RewardPoolLotteryTicket.png" path="/Image/" exported="true"/>
+    <image id="9dc25b" name="ShopIcon.png" path="/Image/" exported="true"/>
+    <image id="9dc25c" name="Straight.png" path="/Image/" exported="true"/>
+    <image id="9dc25k" name="ThreeOfAKind.png" path="/Image/" exported="true"/>
+    <image id="9dc25l" name="TwoPairs.png" path="/Image/" exported="true"/>
+    <image id="h21p5s" name="Beting.png" path="/Image/" exported="true"/>
+    <image id="h21p5t" name="Ending.png" path="/Image/" exported="true"/>
+    <image id="h21p5v" name="14000.png" path="/Image/" exported="true"/>
+    <image id="h21p5x" name="Gold100.png" path="/Image/" exported="true"/>
+    <image id="h21p5y" name="Gold1000.png" path="/Image/" exported="true"/>
+    <image id="fqmc69" name="TongPei.png" path="/Image/" exported="true"/>
+    <image id="fqmc6a" name="TongSha.png" path="/Image/" exported="true"/>
+    <image id="mbom6e" name="Create.png" path="/Image/" exported="true"/>
+    <image id="cuhu6k" name="Gold500.png" path="/Image/" exported="true"/>
+    <image id="cuhu6l" name="Gold5000.png" path="/Image/" exported="true"/>
+    <image id="cuhu6m" name="Gold50000.png" path="/Image/" exported="true"/>
+    <image id="cuhu6n" name="Level.png" path="/Image/" exported="true"/>
+    <image id="rxsg6o" name="AliPay.png" path="/Image/" exported="true"/>
+    <image id="rxsg6p" name="WeChatPay.png" path="/Image/" exported="true"/>
+  </resources>
+  <publish name="LanEn" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\LanEn"/>
+</packageDescription>

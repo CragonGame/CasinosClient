@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="cezlmpqg" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="et5o0" name="ClassicModel.xml" path="/" exported="true"/>
+    <image id="et5o6" name="DeskChair1.png" path="/Image/"/>
+    <image id="et5o7" name="DeskSitPoint.png" path="/Image/"/>
+    <component id="et5oh" name="ComDeskItem.xml" path="/Component/"/>
+    <component id="et5oi" name="BtnEnter.xml" path="/Component/"/>
+    <component id="et5oj" name="ComSeatItem.xml" path="/Component/"/>
+    <component id="et5oo" name="BetOperateItem.xml" path="/Component/"/>
+    <component id="nb2eu" name="BtnBet.xml" path="/Component/"/>
+    <component id="llx1w" name="BtnFriend.xml" path="/Component/"/>
+    <component id="llx1x" name="ComBetRangeOperateList.xml" path="/Component/"/>
+    <component id="ghahy" name="ComStakePosition.xml" path="/Component/"/>
+    <component id="y48p10" name="BtnCreateTabel.xml" path="/Component/"/>
+    <image id="sul811" name="bg.png" path="/Image/" atlas="1"/>
+    <image id="sul813" name="bt_xx.png" path="/Image/"/>
+    <image id="sul814" name="bt_jt.png" path="/Image/"/>
+    <component id="sul815" name="BtnArrow.xml" path="/Component/"/>
+    <image id="sul816" name="bt_cm.png" path="/Image/"/>
+    <image id="sul818" name="bt_play.png" path="/Image/"/>
+    <image id="sul819" name="Play.png" path="/Image/" exported="true"/>
+    <image id="sul81a" name="pz.png" path="/Image/"/>
+    <image id="sul81b" name="pz_+.png" path="/Image/"/>
+    <image id="sul81c" name="bt_xz.png" path="/Image/"/>
+    <component id="eccy1d" name="BtnSeat.xml" path="/Component/"/>
+    <component id="eccy1e" name="BtnFullDesk.xml" path="/Component/"/>
+    <image id="mi0g1g" name="View.png" path="/Image/" exported="true"/>
+    <image id="jdzb1u" name="z_x.png" path="/Image/"/>
+    <component id="smxa1v" name="ItemFriend.xml" path="/Component/" exported="true"/>
+    <image id="f4nw1x" name="DeskChair2.png" path="/Image/"/>
+    <image id="f4nw1y" name="DeskChair3.png" path="/Image/"/>
+    <image id="f4nw1z" name="DeskChair4.png" path="/Image/"/>
+    <image id="f4nw20" name="DeskChair5.png" path="/Image/"/>
+    <image id="vwta21" name="zi_d.png" path="/Image/"/>
+    <image id="fpah23" name="zi_d_l - 副本.png" path="/Image/"/>
+  </resources>
+  <publish name="ClassicModel" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\ClassicModel"/>
+</packageDescription>

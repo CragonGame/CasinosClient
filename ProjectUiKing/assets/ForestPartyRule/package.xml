@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="fajwuyr4" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="ieud4" name="ComRule.xml" path="/Component/"/>
+    <image id="ieud5" name="HistoryRecordLionRed.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieud6" name="HistoryRecordLionGreen.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieud7" name="HistoryRecordLionYellow.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieud8" name="HistoryRecordRabbitRed.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieud9" name="HistoryRecordRabbitGreen.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieuda" name="HistoryRecordRabbitYellow.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieudb" name="HistoryRecordPandaRed.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieudc" name="HistoryRecordPandaGreen.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieudd" name="HistoryRecordPandaYellow.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieude" name="HistoryRecordMonkeyRed.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieudf" name="HistoryRecordMonkeyYellow.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieudg" name="HistoryRecordMonkeyGreen.png" path="/Image/Rewardhistory/" exported="true" atlas="1"/>
+    <image id="ieudh" name="slwh_3D_75.png" path="/Image/"/>
+    <image id="ieudi" name="title.png" path="/Image/"/>
+    <component id="ieudj" name="ForestPartyRule.xml" path="/" exported="true"/>
+    <component id="ieudk" name="ComMsgBgAndClose.xml" path="/Component/" exported="true"/>
+    <image id="ieudl" name="Bg5.png" path="/Image/Bg/" exported="true" scale="9grid" scale9grid="212,135,424,270"/>
+    <component id="ieudm" name="BtnCommonClose2.xml" path="/Component/Btn/" exported="true"/>
+    <image id="ieudn" name="BtnClose2.png" path="/Image/"/>
+    <image id="q6q3o" name="bz_zi.png" path="/Image/"/>
+  </resources>
+  <publish name="ForestPartyRule" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.King\PkgFold\Ui\ForestPartyRule"/>
+</packageDescription>

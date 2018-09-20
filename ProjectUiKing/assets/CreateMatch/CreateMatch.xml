@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" adaptationTest="FitSize">
+  <controller name="ControllerSetType" pages="0,,1," selected="0"/>
+  <displayList>
+    <image id="n5_nhy4" name="n5" src="t4ok7l" pkg="gbdohaiv" xy="-124,-97" size="1314,835">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n4_nhy4" name="n4" src="u51ojc" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0.82" color="#17192c">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <component id="n16_nhy4" name="BtnCreateMatch" src="nhy4i" xy="407,531" group="n26_qkn2"/>
+    <text id="n19_nhy4" name="n19" xy="698,556" pivot="0.5,0.5" size="131,28" group="n26_qkn2" fontSize="21" color="#4b5f92" vAlign="middle" leading="0" text="预计比赛时长"/>
+    <text id="n20_nhy4" name="TextMatchExpectTime" xy="856,556" size="172,28" group="n26_qkn2" fontSize="21" color="#fdc822" vAlign="middle" leading="0" autoSize="none" text="1小时12分钟"/>
+    <component id="n24_nhy4" name="ComBasicsSet" src="nhy4q" xy="0,0" group="n26_qkn2">
+      <gearDisplay controller="ControllerSetType" pages="0"/>
+    </component>
+    <component id="n25_nhy4" name="ComHighSet" src="nhy4p" xy="0,0" group="n26_qkn2">
+      <gearDisplay controller="ControllerSetType" pages="1"/>
+    </component>
+    <group id="n26_qkn2" name="n26" xy="0,0" size="1066,640" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <component id="n27_qkn2" name="BtnReturn" src="wb2ek4" pkg="nhvxw9ov" xy="19,13"/>
+    <component id="n21_nhy4" name="ComSetType" src="nhy4o" xy="834,141">
+      <relation target="" sidePair="right-right,middle-middle"/>
+    </component>
+    <component id="n31_donu" name="ComChooseTime" src="donur" xy="0,0" hideByEditor="true" visible="false">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+  </displayList>
+</component>

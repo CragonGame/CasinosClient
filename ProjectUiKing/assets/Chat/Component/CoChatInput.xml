@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="840,103">
+  <displayList>
+    <image id="n4_y7iq" name="n4" src="kd14k" fileName="Image/InputBg1.png" xy="0,0" size="840,103">
+      <relation target="" sidePair="width-width"/>
+    </image>
+    <image id="n3_y7iq" name="n3" src="kd14l" fileName="Image/InputBg.png" xy="7,32" size="691,57">
+      <relation target="" sidePair="width-width%"/>
+    </image>
+    <text id="n2_oypw" name="TextInput" xy="31,38" size="644,46" input="true" fontSize="26" color="#ffffff" vAlign="middle" leading="0" autoSize="none" singleLine="true" text="">
+      <relation target="n3_y7iq" sidePair="width-width"/>
+    </text>
+  </displayList>
+</component>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="695,346" overflow="scroll">
+  <displayList>
+    <text id="n0_sd6w" name="n0" xy="0,0" size="695,346" fontSize="20" color="#6f88be" leading="18" autoSize="none" text="创建赛事&#xA;1.牌友圈内创建赛事不消耗房卡，玩家可免费邀请好友参赛。&#xA;2.玩家可通过邀请链接，或赛事密码进入报名赛事，经过房主同意，方可参加比赛。&#xA;3.记分牌用于记录比赛情况，牌局结束后不带出房间，也不可兑换德州币。&#xA;4.开赛时报名人数不足2人，赛事将自动解散。&#xA;5.赛事创建者对其所创建比赛的规则,奖品完全负责，果派德州不承担任何责任。"/>
+  </displayList>
+</component>

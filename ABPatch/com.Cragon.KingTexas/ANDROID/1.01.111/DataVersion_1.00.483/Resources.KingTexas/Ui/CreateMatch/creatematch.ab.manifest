@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 2492922390
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ec0095844360d88ded6bec508a859014
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/CreateMatch/CreateMatch.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/CreateMatch/CreateMatch@atlas3.png
+- Assets/Resources.KingTexas/PkgFold/Ui/CreateMatch/CreateMatch@atlas0!a.png
+- Assets/Resources.KingTexas/PkgFold/Ui/CreateMatch/CreateMatch@atlas3!a.png
+- Assets/Resources.KingTexas/PkgFold/Ui/CreateMatch/CreateMatch@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/CreateMatch/CreateMatch@sprites.bytes
+Dependencies: []

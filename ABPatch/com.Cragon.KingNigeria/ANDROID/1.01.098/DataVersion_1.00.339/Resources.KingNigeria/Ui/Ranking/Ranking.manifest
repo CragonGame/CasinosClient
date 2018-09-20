@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 853161736
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ranking.ab
+      Dependencies: {}

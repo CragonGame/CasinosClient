@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1845001017
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2f1d5c10ba90ee93020754a9a3a3c12e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/DesktopChatParent/DesktopChatParent@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/DesktopChatParent/DesktopChatParent.bytes
+Dependencies: []

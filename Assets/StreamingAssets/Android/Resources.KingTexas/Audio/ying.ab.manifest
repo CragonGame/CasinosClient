@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2161498455
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6caa24b8f4f115555f56292f12ea043c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/ying.wav
+Dependencies: []

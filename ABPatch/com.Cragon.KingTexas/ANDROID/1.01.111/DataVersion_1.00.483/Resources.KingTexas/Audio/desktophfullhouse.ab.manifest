@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 151596970
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4ffd26f40665ec0c4d40a5f5b0e8fad0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/DesktopHFullHouse.mp3
+Dependencies: []

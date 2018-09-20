@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: 568be1e971fbcee4aaed1b70788a130f
+labels:
+- sound
+- soundmanager
+- soundmanagerpro
+- audio
+- audioclip
+- toolkit
+- audiotoolkit
+- soundtoolkit
+- soundeffect
+- soundeffects
+- sounds
+- sfx
+- SFX
+- Sound
+- Audio
+- Sounds
+- SoundEffect
+- SoundEffects
+- Singleton
+- singleton
+- next-gen
+- nextgen
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

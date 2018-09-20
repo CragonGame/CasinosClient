@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 4109885383
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6184c2dceb344b181b75156cb357efba
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: abb9b9167ab0d9f4af2beeb617361f49
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Spine/DengLong/denglong_Material.mat
+- Assets/Resources.KingNigeria/PkgSingle/Spine/DengLong/denglong.png
+- Assets/Lib.Spine/spine-unity/Shaders/Spine-Skeleton.shader
+Dependencies: []

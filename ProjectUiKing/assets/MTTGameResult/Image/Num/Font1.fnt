@@ -1,0 +1,11 @@
+info creator=UIBuilder resizable=true
+char id=48 img=cvtgd xoffset=0 yoffset=0 xadvance=0
+char id=49 img=cvtge xoffset=0 yoffset=0 xadvance=0
+char id=50 img=cvtgf xoffset=0 yoffset=0 xadvance=0
+char id=51 img=cvtgg xoffset=0 yoffset=0 xadvance=0
+char id=52 img=cvtgh xoffset=0 yoffset=0 xadvance=0
+char id=53 img=cvtgi xoffset=0 yoffset=0 xadvance=0
+char id=54 img=cvtgj xoffset=0 yoffset=0 xadvance=0
+char id=55 img=cvtgk xoffset=0 yoffset=0 xadvance=0
+char id=56 img=cvtgl xoffset=0 yoffset=0 xadvance=0
+char id=57 img=cvtgm xoffset=0 yoffset=0 xadvance=0

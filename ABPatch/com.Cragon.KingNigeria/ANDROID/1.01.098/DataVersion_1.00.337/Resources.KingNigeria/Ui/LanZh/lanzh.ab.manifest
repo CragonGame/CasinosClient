@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 2134217377
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ea7ad58465947aeeb9f2b7fdb0c21998
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanZh/LanZh@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanZh/LanZh@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanZh/LanZh.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanZh/LanZh@atlas1.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanZh/LanZh@atlas3.png
+Dependencies: []

@@ -1,0 +1,46 @@
+ManifestFileVersion: 0
+CRC: 1730051376
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a8618f4be84040117b0f798b7c9b8830
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ecf27c63b8469c12e2a4d2071cff92d0
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dParticle/EXzhuanpan.prefab
+- Assets/ResourcesParticle/Textures/Materials/zhuanpan1.mat
+- Assets/ResourcesParticle/Textures/Textures/Materials/particle05.mat
+- Assets/ResourcesParticle/Textures/FBX/Materials/No Name.mat
+- Assets/ResourcesParticle/Textures/Textures/particle05.png
+- Assets/ResourcesParticle/Textures/Textures/zhuanpan1.png
+- Assets/ResourcesParticle/Textures/Materials/zhuanpan2.mat
+- Assets/ResourcesParticle/Textures/FBX/CylinderEmitter04.fbx
+- Assets/ResourcesParticle/Textures/Textures/zhuanpan2.png
+Dependencies: []

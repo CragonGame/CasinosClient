@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4139787578
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 39a8b1eb1a1ccfd5f504e5a9c1585c10
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/ChipOperate/ChipOperate@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/ChipOperate/ChipOperate@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/ChipOperate/ChipOperate.bytes
+Dependencies: []

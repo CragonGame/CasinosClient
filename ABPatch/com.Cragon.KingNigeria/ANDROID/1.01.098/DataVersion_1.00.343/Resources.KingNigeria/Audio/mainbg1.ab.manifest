@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3895374884
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 906eab0a155f75e93f02c6a50bf9aa67
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/MainBg1.mp3
+Dependencies: []

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="684,432" overflow="scroll" adaptationTest="FitSize">
+  <displayList>
+    <text id="n1_lh90" name="n1" xy="19,13" size="199,50" fontSize="40" color="#fbe290" vAlign="middle" autoSize="none" bold="true" text="游戏规则:"/>
+    <image id="n2_lh90" name="n2" src="ieud5" xy="180,200" group="n27_ircf"/>
+    <image id="n3_lh90" name="n3" src="ieud6" xy="233,200" group="n27_ircf"/>
+    <image id="n4_lh90" name="n4" src="ieud7" xy="286,200" group="n27_ircf"/>
+    <image id="n5_lh90" name="n5" src="ieud8" xy="386,200" group="n27_ircf"/>
+    <image id="n6_lh90" name="n6" src="ieud9" xy="439,200" group="n27_ircf"/>
+    <image id="n7_lh90" name="n7" src="ieuda" xy="492,200" group="n27_ircf"/>
+    <image id="n8_lh90" name="n8" src="ieudb" xy="180,260" group="n27_ircf"/>
+    <image id="n9_lh90" name="n9" src="ieudc" xy="233,260" group="n27_ircf"/>
+    <image id="n10_lh90" name="n10" src="ieudd" xy="286,260" group="n27_ircf"/>
+    <image id="n11_lh90" name="n11" src="ieude" xy="386,260" group="n27_ircf"/>
+    <image id="n13_lh90" name="n13" src="ieudf" xy="492,260" group="n27_ircf"/>
+    <image id="n14_lh90" name="n14" src="ieud5" xy="255,316" group="n27_ircf"/>
+    <image id="n15_lh90" name="n15" src="ieudb" xy="308,316" group="n27_ircf"/>
+    <image id="n16_lh90" name="n16" src="ieude" xy="361,316" group="n27_ircf"/>
+    <image id="n17_lh90" name="n17" src="ieud8" xy="414,316" group="n27_ircf"/>
+    <image id="n18_lh90" name="n18" src="ieud6" xy="255,390" group="n27_ircf"/>
+    <image id="n19_lh90" name="n19" src="ieudg" xy="361,390" group="n27_ircf"/>
+    <image id="n20_lh90" name="n20" src="ieudc" xy="308,390" group="n27_ircf"/>
+    <image id="n21_lh90" name="n21" src="ieud9" xy="414,390" group="n27_ircf"/>
+    <image id="n22_lh90" name="n22" src="ieud7" xy="255,464" group="n27_ircf"/>
+    <image id="n23_lh90" name="n23" src="ieudf" xy="361,464" group="n27_ircf"/>
+    <image id="n24_lh90" name="n24" src="ieudd" xy="308,464" group="n27_ircf"/>
+    <image id="n25_lh90" name="n25" src="ieuda" xy="414,464" group="n27_ircf"/>
+    <image id="n26_lh90" name="n26" src="ieudh" xy="256,511" group="n27_ircf"/>
+    <image id="n28_ircf" name="n28" src="ieudg" xy="439,260" group="n27_ircf"/>
+    <group id="n27_ircf" name="n27" xy="180,200" size="352,364" advanced="true">
+      <relation target="" sidePair="center-center"/>
+    </group>
+    <text id="n29_v4pk" name="n29" xy="339,232" size="32,34" fontSize="26" color="#daf4ff" align="center" vAlign="middle" bold="true" text="或"/>
+    <text id="n30_v4pk" name="n30" xy="45,234" size="96,34" fontSize="26" color="#daf5ff" vAlign="middle" bold="true" text="大三元:"/>
+    <text id="n31_v4pk" name="n31" xy="339,357" size="34,34" fontSize="26" color="#daf4ff" align="center" vAlign="middle" bold="true" text="或"/>
+    <text id="n32_v4pk" name="n32" xy="339,430" size="34,34" fontSize="26" color="#daf4ff" align="center" vAlign="middle" bold="true" text="或"/>
+    <text id="n33_v4pk" name="n33" xy="45,527" size="215,34" fontSize="26" color="#daf4ff" align="center" vAlign="middle" bold="true" text="彩金:屏幕右上方"/>
+    <text id="n34_v4pk" name="n34" xy="343,527" size="306,34" fontSize="26" color="#daf4ff" vAlign="middle" autoSize="none" bold="true" text="为出现彩金的值。"/>
+    <text id="n35_v4pk" name="n35" xy="45,389" size="129,37" fontSize="26" color="#daf4ff" vAlign="middle" bold="true" text="纵横四海:&#xA;"/>
+    <text id="n37_v4pk" name="n37" xy="103,561" size="530,34" fontSize="26" color="#daf4ff" vAlign="middle" autoSize="none" bold="true" text="出现彩金时，时，所中的灯可获得一"/>
+    <text id="n38_v4pk" name="n38" xy="103,594" size="536,34" fontSize="26" color="#daf4ff" vAlign="middle" autoSize="none" bold="true" text="定比例的彩金，比如当彩金为40000，"/>
+    <text id="n39_v4pk" name="n39" xy="103,627" size="532,34" fontSize="26" color="#daf4ff" vAlign="middle" autoSize="none" bold="true" text="本门下注上限10000，但该门只下注"/>
+    <text id="n42_v4pk" name="n42" xy="19,67" size="572,64" fontSize="26" color="#daf5ff" vAlign="middle" leading="0" autoSize="none" bold="true" text="1. 玩家押中动物后，按倍率得分。&#xA;2. 开始游戏后，有几率出现一下大奖:"/>
+    <text id="n43_v4pk" name="n43" xy="45,131" size="572,34" fontSize="26" color="#daf5ff" vAlign="middle" autoSize="none" bold="true" text="翻倍:所中的灯翻2-3倍。"/>
+    <text id="n44_v4pk" name="n44" xy="45,164" size="572,34" fontSize="26" color="#daf5ff" vAlign="middle" autoSize="none" bold="true" text="送灯:随机送出2-11门灯。"/>
+    <text id="n45_v4pk" name="n45" xy="103,660" size="570,34" fontSize="26" color="#daf4ff" vAlign="middle" autoSize="none" bold="true" text="5000，则额外获得=（5000/10000）*4000"/>
+    <text id="n46_v4pk" name="n46" xy="103,693" size="526,34" fontSize="26" color="#e1ce88" vAlign="middle" autoSize="none" bold="true" text=""/>
+  </displayList>
+</component>

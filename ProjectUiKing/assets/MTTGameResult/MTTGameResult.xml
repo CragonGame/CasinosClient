@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerShare" pages="0,MultiPlayerCanNotShare,1,MultiPlayerCanShare,2,SinglePlayerCanNotShare,3,SinglePlayerCanShare" selected="3"/>
+  <controller name="ControllerRank" pages="0,HaveRank,1,NoRank" selected="0"/>
+  <displayList>
+    <component id="n3_n1oc" name="n3" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" alpha="0.84">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n20_9ehf" name="n20" src="9ehfc" fileName="Image/eff_glowPoint.png" xy="0,-213" pivot="0.5,0.5" size="1066,1066" alpha="0.06">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n21_n2pa" name="n21" src="9ehfc" fileName="Image/eff_glowPoint.png" xy="133,-80" pivot="0.5,0.5" size="800,800" alpha="0.06">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <component id="n2_n1oc" name="n2" src="n1oca" fileName="Component/ComCup1.xml" xy="249,23" group="n22_peqy"/>
+    <text id="n5_n1oc" name="TextTips" xy="513,437" pivot="0.5,0.5" size="40,39" group="n22_peqy" fontSize="30" color="#ffffff" align="center" vAlign="middle" text="">
+      <gearDisplay controller="ControllerShare" pages="0,2"/>
+    </text>
+    <list id="n27_e7h0" name="ListReward" xy="89,404" size="888,124" group="n22_peqy" layout="row" overflow="scroll" colGap="41" defaultItem="ui://nhvxw9ove7h0le" align="center" vAlign="middle">
+      <gearDisplay controller="ControllerShare" pages="1,3"/>
+    </list>
+    <component id="n6_n7pp" name="BtnOB" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="692,535" size="209,81" group="n10_n7pp"/>
+    <text id="n17_n7pp" name="Lan_Text_StayOB" xy="708,555" pivot="0.5,0.5" size="175,39" group="n10_n7pp" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="留下旁观"/>
+    <component id="n7_n7pp" name="BtnShare" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="428,535" size="209,81" group="n10_n7pp"/>
+    <text id="n19_n7pp" name="Lan_Text_MatchShare" xy="444,556" pivot="0.5,0.5" size="175,39" group="n10_n7pp" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="炫耀一下"/>
+    <component id="n8_n7pp" name="BtnReturn" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="164,535" size="209,81" group="n10_n7pp"/>
+    <text id="n18_n7pp" name="Lan_Text_BacktoLobby" xy="180,555" pivot="0.5,0.5" size="175,39" group="n10_n7pp" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="返回大厅"/>
+    <group id="n10_n7pp" name="GroupMultiCanShare" xy="164,535" size="737,81" group="n22_peqy" advanced="true">
+      <gearDisplay controller="ControllerShare" pages="1"/>
+    </group>
+    <component id="n11_n7pp" name="BtnOB" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="560,535" size="209,81" group="n14_n7pp"/>
+    <text id="n15_n7pp" name="Lan_Text_StayOB" xy="576,555" pivot="0.5,0.5" size="175,39" group="n14_n7pp" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="留下旁观"/>
+    <component id="n13_n7pp" name="BtnReturn" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="296,535" size="209,81" group="n14_n7pp"/>
+    <text id="n16_n7pp" name="Lan_Text_BacktoLobby" xy="312,555" pivot="0.5,0.5" size="175,39" group="n14_n7pp" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="返回大厅"/>
+    <group id="n14_n7pp" name="GroupMultiCanNotShare" xy="296,535" size="473,81" group="n22_peqy" advanced="true">
+      <gearDisplay controller="ControllerShare" pages="0"/>
+    </group>
+    <component id="n30_e7h0" name="BtnShare" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="560,535" size="209,81" group="n34_e7h0"/>
+    <text id="n31_e7h0" name="Lan_Text_MatchShare" xy="576,556" pivot="0.5,0.5" size="175,39" group="n34_e7h0" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="炫耀一下"/>
+    <component id="n32_e7h0" name="BtnReturn" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="296,535" size="209,81" group="n34_e7h0"/>
+    <text id="n33_e7h0" name="Lan_Text_BacktoLobby" xy="312,555" pivot="0.5,0.5" size="175,39" group="n34_e7h0" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="返回大厅"/>
+    <group id="n34_e7h0" name="GroupSingleCanShare" xy="296,535" size="473,81" group="n22_peqy" advanced="true">
+      <gearDisplay controller="ControllerShare" pages="3"/>
+    </group>
+    <component id="n37_e7h0" name="BtnReturn" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="428,535" size="209,81" group="n39_e7h0"/>
+    <text id="n38_e7h0" name="Lan_Text_BacktoLobby" xy="445,555" pivot="0.5,0.5" size="175,39" group="n39_e7h0" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="返回大厅"/>
+    <group id="n39_e7h0" name="GroupSingleCanNotShare" xy="428,535" size="209,81" group="n22_peqy" advanced="true">
+      <gearDisplay controller="ControllerShare" pages="2"/>
+    </group>
+    <text id="n43_cvtg" name="TextRank" xy="534,173" pivot="0.5,0.5" size="10,174" group="n46_cvtg" font="ui://ttgm1r1pcvtgn" fontSize="174" align="center" vAlign="middle" leading="0" text=""/>
+    <image id="n44_cvtg" name="n44" src="cvtgo" fileName="Image/Num/UI2_公用数字_第.png" xy="383,215" group="n46_cvtg">
+      <relation target="n43_cvtg" sidePair="right-left,middle-middle"/>
+    </image>
+    <image id="n45_cvtg" name="n45" src="cvtgp" fileName="Image/Num/UI2_公用数字_名.png" xy="588,215" group="n46_cvtg">
+      <relation target="n43_cvtg" sidePair="left-right,middle-middle"/>
+    </image>
+    <group id="n46_cvtg" name="GroupRank" xy="383,173" size="305,174" group="n22_peqy" advanced="true">
+      <gearDisplay controller="ControllerRank" pages="0"/>
+    </group>
+    <loader id="n48_n1df" name="Lan_Image_NoRank" xy="421,236" size="228,48" group="n22_peqy" url="ui://ttgm1r1pcvtgq" align="center" vAlign="middle" fill="scaleFree">
+      <gearDisplay controller="ControllerRank" pages="1"/>
+    </loader>
+    <group id="n22_peqy" name="n22" xy="89,23" size="888,593" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <graph id="n40_cvtg" name="ParticleRed" xy="253,15" size="0,0" type="rect">
+      <relation target="" sidePair="left-left,top-top"/>
+    </graph>
+    <graph id="n41_cvtg" name="ParticleBlue" xy="539,15" size="0,0" type="rect">
+      <relation target="" sidePair="center-center,top-top"/>
+    </graph>
+    <graph id="n42_cvtg" name="ParticleP" xy="825,15" size="0,0" type="rect">
+      <relation target="" sidePair="right-right,top-top"/>
+    </graph>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n20_9ehf" tween="true" startValue="0" endValue="360" duration="173" ease="Linear"/>
+    <item time="0" type="Rotation" target="n21_n2pa" tween="true" startValue="360" endValue="0" duration="173" ease="Linear"/>
+    <item time="173" type="Rotation" target="n20_9ehf" tween="true" startValue="360" ease="Quad.InOut"/>
+    <item time="173" type="Rotation" target="n21_n2pa" tween="true" startValue="0" ease="Linear"/>
+  </transition>
+</component>

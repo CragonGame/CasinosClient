@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="erh3pvqh" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="ixds3" name="DesktopH.xml" path="/" exported="true"/>
+    <image id="fb5ji" name="Gold.png" path="/Image/" exported="true"/>
+    <component id="fb5j1z" name="CoHeadIcon.xml" path="/Component/" exported="true"/>
+    <image id="fb5j27" name="BankPlayerBorder.png" path="/Image/" exported="true"/>
+    <image id="fb5j28" name="BankPlayerSign.png" path="/Image/" exported="true"/>
+    <image id="fb5j29" name="DefautIcon.png" path="/Image/" exported="true"/>
+    <component id="fb5j2a" name="CoSeat.xml" path="/Component/" exported="true"/>
+    <component id="fb5j2l" name="CoChatParent.xml" path="/Component/" exported="true"/>
+    <component id="fb5j2p" name="BtnHistory.xml" path="/Component/" exported="true"/>
+    <component id="fb5j2s" name="CoBetOperate.xml" path="/Component/" exported="true"/>
+    <component id="fb5j2u" name="CoDealer.xml" path="/Component/" exported="true"/>
+    <component id="fb5j2v" name="ComDesktopHPoolParent.xml" path="/Component/" exported="true"/>
+    <component id="fb5j2w" name="ComDesktopHTopParent.xml" path="/Component/" exported="true"/>
+    <component id="fb5j2x" name="ComDesktopParent.xml" path="/Component/" exported="true"/>
+    <component id="n04r42" name="ComBetReward.xml" path="/Component/"/>
+    <image id="n04r43" name="BetReward.png" path="/Image/"/>
+    <image id="fxsn45" name="BgSeat.png" path="/Image/" scale="9grid" scale9grid="19,9,38,18"/>
+    <image id="he5u46" name="BtnHistory.png" path="/Image/"/>
+    <image id="m4hj4t" name="OperateGoldChoose.png" path="/Image/"/>
+    <component id="jx6n53" name="BtnStandPlayer.xml" path="/Component/"/>
+    <image id="jx6n54" name="wj.png" path="/Image/"/>
+    <image id="t3v855" name="z.png" path="/Image/"/>
+  </resources>
+  <publish name="DesktopH" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopH"/>
+</packageDescription>

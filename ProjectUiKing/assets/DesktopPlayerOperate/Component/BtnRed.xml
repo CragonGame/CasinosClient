@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="194,60" extention="Button" adaptationTest="FitSize">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_b91q" name="n4" src="awzv26" xy="-3,0" size="202,66">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n5_nhsu" name="title" xy="0,0" pivot="0.5,0.5" size="194,56" fontSize="32" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

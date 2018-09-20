@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" opaque="false">
+  <displayList>
+    <image id="n5_tjym" name="n5" src="lh6bjv" fileName="Image/New/BgInput.png" xy="517,291" size="31,56" visible="false">
+      <relation target="n1_spqo" sidePair="rightext-right,leftext-left"/>
+      <relation target="n1_spqo" sidePair="topext-top,bottomext-bottom"/>
+    </image>
+    <text id="n1_spqo" name="GTextInfo0" xy="528,304" size="10,32" fontSize="25" align="center" vAlign="middle" singleLine="true" text="">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n6_tjym" name="n6" src="lh6bjv" fileName="Image/New/BgInput.png" xy="517,292" size="31,56" hideByEditor="true" visible="false">
+      <relation target="n2_spqo" sidePair="rightext-right,leftext-left"/>
+      <relation target="n2_spqo" sidePair="topext-top,bottomext-bottom"/>
+    </image>
+    <text id="n2_spqo" name="GTextInfo1" xy="528,304" size="10,32" hideByEditor="true" fontSize="25" align="center" vAlign="middle" singleLine="true" text="">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <image id="n7_tjym" name="n7" src="lh6bjv" fileName="Image/New/BgInput.png" xy="517,292" size="31,56" hideByEditor="true" visible="false">
+      <relation target="n3_spqo" sidePair="rightext-right,leftext-left"/>
+      <relation target="n3_spqo" sidePair="topext-top,bottomext-bottom"/>
+    </image>
+    <text id="n3_spqo" name="GTextInfo2" xy="528,304" size="10,32" hideByEditor="true" fontSize="25" align="center" vAlign="middle" singleLine="true" text="">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+  <transition name="TransitionMove0">
+    <item time="0" type="Visible" target="n5_tjym" value="true"/>
+    <item time="0" type="XY" target="n1_spqo" tween="true" startValue="-,300" endValue="-,274" duration="18" label2="aa" ease="Linear"/>
+    <item time="18" type="XY" target="n1_spqo" label="aa" tween="true" startValue="-,274" endValue="-,234" duration="30" ease="Linear"/>
+    <item time="48" type="Visible" target="n5_tjym" value="false"/>
+    <item time="48" type="XY" target="n1_spqo" tween="true" startValue="-,234" ease="Linear"/>
+  </transition>
+  <transition name="TransitionMove1">
+    <item time="0" type="Visible" target="n6_tjym" value="true"/>
+    <item time="0" type="XY" target="n2_spqo" tween="true" startValue="-,300" endValue="-,274" duration="18" label2="aa" ease="Linear"/>
+    <item time="18" type="XY" target="n2_spqo" label="aa" tween="true" startValue="-,274" endValue="-,234" duration="30" ease="Linear"/>
+    <item time="48" type="Visible" target="n6_tjym" value="false"/>
+    <item time="48" type="XY" target="n2_spqo" tween="true" startValue="-,234" ease="Linear"/>
+  </transition>
+  <transition name="TransitionMove2">
+    <item time="0" type="Visible" target="n7_tjym" value="true"/>
+    <item time="0" type="XY" target="n3_spqo" tween="true" startValue="-,300" endValue="-,274" duration="18" label2="aa" ease="Linear"/>
+    <item time="18" type="XY" target="n3_spqo" label="aa" tween="true" startValue="-,274" endValue="-,234" duration="30" ease="Linear"/>
+    <item time="48" type="Visible" target="n7_tjym" value="false"/>
+    <item time="48" type="XY" target="n3_spqo" tween="true" startValue="-,234" ease="Linear"/>
+  </transition>
+</component>

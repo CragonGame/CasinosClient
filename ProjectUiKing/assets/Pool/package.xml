@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="k1kweeno" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="czif0" name="Pool.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="Pool" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.King\PkgFold\Ui\Pool"/>
+</packageDescription>

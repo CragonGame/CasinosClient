@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n10_excb" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" aspect="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n15_g8hz" name="Lan_Btn_Photograph" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="450,231" group="n22_lh6b"/>
+    <component id="n17_g8hz" name="Lan_Btn_Photo" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="450,332" group="n22_lh6b"/>
+    <group id="n22_lh6b" name="n22" xy="450,231" size="170,165" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

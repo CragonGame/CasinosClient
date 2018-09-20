@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1413564393
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cd8afadef533a607e0d6bab1b1781ab1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTongSha/DesktopHTongSha@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTongSha/DesktopHTongSha@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTongSha/DesktopHTongSha.bytes
+Dependencies: []

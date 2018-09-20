@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1845070705
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: premsgbox.ab
+      Dependencies: {}

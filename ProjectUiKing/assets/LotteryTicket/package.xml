@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="xzwfr8w1" jpegQuality="80" compressPNG="true">
+  <resources>
+    <image id="ieud1u" name="images_hall_light_vip.png" path="/Image/"/>
+    <image id="ieud1z" name="NewIcon.png" path="/Image/" exported="true"/>
+    <component id="ieud2t" name="LotteryTicket.xml" path="/" exported="true"/>
+    <image id="ieud30" name="HeadBorder1.png" path="/Image/" exported="true"/>
+    <image id="q6q33f" name="bt_01.png" path="/Image/"/>
+    <image id="q6q33h" name="bt_05.png" path="/Image/"/>
+    <image id="q6q33j" name="bt_04.png" path="/Image/"/>
+    <image id="q6q33k" name="bt_03.png" path="/Image/"/>
+    <image id="d5pu3t" name="CardBack1.png" path="/Image/" exported="true"/>
+    <image id="rfhi42" name="bt.png" path="/Image/" scale="9grid" scale9grid="16,25,32,11"/>
+    <image id="nl3o4q" name="kjjl_d.png" path="/Image/"/>
+    <component id="nl3o4y" name="BtnRepeatBet.xml" path="/ComPonent/"/>
+    <component id="nl3o4z" name="BtnRepeatBetEx.xml" path="/ComPonent/"/>
+    <component id="nl3o50" name="BtnRewardPotRecord.xml" path="/ComPonent/"/>
+    <component id="nl3o51" name="BtnRules.xml" path="/ComPonent/"/>
+    <component id="nl3o52" name="CoBetPot.xml" path="/ComPonent/" exported="true"/>
+    <component id="nl3o53" name="CoHistory.xml" path="/ComPonent/"/>
+    <component id="nl3o54" name="ComCard.xml" path="/ComPonent/"/>
+    <component id="nl3o59" name="CoRewardPot.xml" path="/ComPonent/"/>
+    <component id="nl3o5a" name="CoRewardPotPlayerInfo.xml" path="/ComPonent/" exported="true"/>
+    <component id="nl3o5b" name="PopBetOperate.xml" path="/ComPonent/" exported="true"/>
+    <component id="nl3o5c" name="PopBetOperate_item.xml" path="/ComPonent/" exported="true"/>
+    <component id="nl3o5d" name="BtnArrowLeft.xml" path="/ComPonent/"/>
+    <component id="nl3o5e" name="BtnArrowRight.xml" path="/ComPonent/"/>
+    <image id="oprn5h" name="bt_zs.png" path="/Image/"/>
+    <image id="lfqc5i" name="slk.png" path="/Image/"/>
+    <image id="lfqc5j" name="cm_d.png" path="/Image/" scale="9grid" scale9grid="10,10,10,10"/>
+    <image id="lfqc5k" name="bt_ls.png" path="/Image/"/>
+    <image id="lfqc5l" name="bt(1).png" path="/Image/"/>
+    <image id="lfqc5m" name="bt0.png" path="/Image/" scale="9grid" scale9grid="19,10,38,12"/>
+    <component id="twda5o" name="CommonMsgBgAndClose.xml" path="/ComPonent/"/>
+    <image id="twda5p" name="d.png" path="/Image/" scale="9grid" scale9grid="26,27,52,54"/>
+    <image id="twda5q" name="wh.png" path="/Image/"/>
+    <image id="twda5r" name="y.png" path="/Image/"/>
+    <image id="twda5s" name="gb.png" path="/Image/"/>
+    <component id="twda5t" name="BtnClose.xml" path="/ComPonent/"/>
+    <image id="twda5u" name="ccd.png" path="/Image/" scale="9grid" scale9grid="16,16,32,32"/>
+    <image id="twda5v" name="d_q.png" path="/Image/" scale="9grid" scale9grid="16,16,32,32"/>
+    <image id="blxx64" name="S_Z_d.png" path="/Image/" scale="9grid" scale9grid="25,25,50,50"/>
+    <image id="blxx65" name="S_Z_dk.png" path="/Image/" scale="9grid" scale9grid="13,13,26,26"/>
+    <component id="blxx66" name="ComBgAndClose.xml" path="/ComPonent/"/>
+    <image id="h1h169" name="S_gdt.png" path="/Image/" scale="9grid"/>
+    <component id="h1fp6a" name="ComRule.xml" path="/ComPonent/"/>
+  </resources>
+  <publish name="LotteryTicket" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\LotteryTicket"/>
+</packageDescription>

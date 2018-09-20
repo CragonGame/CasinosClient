@@ -1,0 +1,146 @@
+
+Mary.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Earrings
+  rotate: false
+  xy: 990, 123
+  size: 13, 65
+  orig: 13, 65
+  offset: 0, 0
+  index: -1
+Flicker
+  rotate: false
+  xy: 451, 8
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+bag
+  rotate: true
+  xy: 292, 2
+  size: 70, 75
+  orig: 70, 75
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 2, 253
+  size: 253, 333
+  orig: 253, 333
+  offset: 0, 0
+  index: -1
+eye1
+  rotate: true
+  xy: 990, 190
+  size: 77, 30
+  orig: 77, 30
+  offset: 0, 0
+  index: -1
+eye2
+  rotate: false
+  xy: 707, 23
+  size: 86, 38
+  orig: 86, 38
+  offset: 0, 0
+  index: -1
+hair0
+  rotate: true
+  xy: 2, 133
+  size: 118, 208
+  orig: 118, 208
+  offset: 0, 0
+  index: -1
+hair00
+  rotate: false
+  xy: 2, 62
+  size: 171, 69
+  orig: 171, 69
+  offset: 0, 0
+  index: -1
+hair1
+  rotate: false
+  xy: 865, 18
+  size: 123, 249
+  orig: 123, 249
+  offset: 0, 0
+  index: -1
+hair2
+  rotate: false
+  xy: 650, 261
+  size: 200, 245
+  orig: 200, 245
+  offset: 0, 0
+  index: -1
+hair3
+  rotate: true
+  xy: 852, 331
+  size: 175, 170
+  orig: 175, 170
+  offset: 0, 0
+  index: -1
+hair4
+  rotate: true
+  xy: 650, 63
+  size: 196, 213
+  orig: 196, 213
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 337, 74
+  size: 184, 198
+  orig: 184, 198
+  offset: 0, 0
+  index: -1
+left_hand
+  rotate: false
+  xy: 369, 3
+  size: 80, 69
+  orig: 80, 69
+  offset: 0, 0
+  index: -1
+left_low_arm
+  rotate: false
+  xy: 632, 13
+  size: 73, 48
+  orig: 73, 48
+  offset: 0, 0
+  index: -1
+left_up_arm
+  rotate: false
+  xy: 212, 138
+  size: 82, 113
+  orig: 82, 113
+  offset: 0, 0
+  index: -1
+leg
+  rotate: false
+  xy: 337, 260
+  size: 311, 246
+  orig: 311, 246
+  offset: 0, 0
+  index: -1
+right_hand
+  rotate: true
+  xy: 212, 24
+  size: 112, 78
+  orig: 112, 78
+  offset: 0, 0
+  index: -1
+right_low_arm
+  rotate: false
+  xy: 852, 269
+  size: 170, 60
+  orig: 170, 60
+  offset: 0, 0
+  index: -1
+right_up_arm
+  rotate: false
+  xy: 537, 46
+  size: 93, 212
+  orig: 93, 212
+  offset: 0, 0
+  index: -1

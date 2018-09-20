@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="g4dvwbxl" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="npdv0" name="DesktopPlayerInfo.xml" path="/" exported="true"/>
+    <image id="npdv1" name="PlayerQuitShadow.png" path="/Image/" scale="9grid" scale9grid="15,21,30,42"/>
+    <image id="npdv2" name="PlayerActionOrName.png" path="/Image/" scale="9grid" scale9grid="15,5,30,2"/>
+    <image id="npdv3" name="PlayerActionProgress.png" path="/Image/" scale="9grid" scale9grid="40,35,48,108"/>
+    <image id="npdv4" name="PlayerWinner.png" path="/Image/" scale="9grid" scale9grid="20,26,40,52"/>
+    <image id="npdv6" name="DeskFriendMark.png" path="/Image/"/>
+    <component id="npdv7" name="ComGiftAndVIP.xml" path="/Component/"/>
+    <image id="npdv8" name="Gift.png" path="/Image/"/>
+    <image id="npdv9" name="VipSign.png" path="/Image/"/>
+    <image id="npdva" name="DeskDealer.png" path="/Image/"/>
+    <image id="npdvb" name="PokerView.png" path="/Image/" scale="9grid" scale9grid="7,7,14,14"/>
+    <image id="dcgbc" name="62.png" path="/Image/"/>
+    <image id="qljnd" name="77.png" path="/Image/"/>
+    <image id="qljne" name="127.png" path="/Image/"/>
+    <image id="qljnf" name="7.png" path="/Image/"/>
+    <image id="qljng" name="56.png" path="/Image/"/>
+    <image id="qljnh" name="63.png" path="/Image/"/>
+    <component id="qljni" name="ComAction.xml" path="/Component/"/>
+    <image id="gs19k" name="c51(1).png" path="/"/>
+    <image id="a8com" name="CardBack.png" path="/Image/" exported="true"/>
+    <image id="nr9uz" name="140.png" path="/Image/"/>
+    <image id="l9uq11" name="35.png" path="/Image/"/>
+    <image id="hrjf12" name="8.png" path="/Image/Num/"/>
+    <image id="hrjf13" name="9.png" path="/Image/Num/"/>
+    <image id="hrjf14" name="0.png" path="/Image/Num/"/>
+    <image id="hrjf15" name="1.png" path="/Image/Num/"/>
+    <image id="hrjf16" name="2.png" path="/Image/Num/"/>
+    <image id="hrjf17" name="3.png" path="/Image/Num/"/>
+    <image id="hrjf18" name="4.png" path="/Image/Num/"/>
+    <image id="hrjf19" name="5.png" path="/Image/Num/"/>
+    <image id="hrjf1a" name="6.png" path="/Image/Num/"/>
+    <image id="hrjf1b" name="7.png" path="/Image/Num/"/>
+    <image id="hrjf1c" name="jy.png" path="/Image/Num/"/>
+    <image id="hrjf1d" name="+.png" path="/Image/Num/"/>
+    <component id="iy7z1g" name="ComTips.xml" path="/Component/"/>
+    <font id="iy7z1h" name="Font3.fnt" path="/Image/Num/" exported="true"/>
+    <image id="kkr11j" name="FX_flare_009.png" path="/Image/"/>
+    <image id="9ehf1w" name="1.png" path="/Image/AllIn/"/>
+    <image id="9ehf1x" name="2.png" path="/Image/AllIn/"/>
+    <image id="9ehf1y" name="3.png" path="/Image/AllIn/"/>
+    <image id="9ehf1z" name="4.png" path="/Image/AllIn/"/>
+    <image id="9ehf20" name="5.png" path="/Image/AllIn/"/>
+    <image id="9ehf21" name="6.png" path="/Image/AllIn/"/>
+    <image id="9ehf22" name="7.png" path="/Image/AllIn/"/>
+    <image id="9ehf23" name="8.png" path="/Image/AllIn/"/>
+    <image id="9ehf24" name="9.png" path="/Image/AllIn/"/>
+    <image id="9ehf25" name="91.png" path="/Image/AllIn/"/>
+    <image id="9ehf26" name="92.png" path="/Image/AllIn/"/>
+    <image id="9ehf27" name="93.png" path="/Image/AllIn/"/>
+    <movieclip id="9ehf28" name="MovieAllIn.jta" path="/Component/"/>
+    <component id="iuh229" name="ComWinInfo.xml" path="/Component/"/>
+  </resources>
+  <publish name="DesktopPlayerInfo" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopPlayerInfo"/>
+</packageDescription>

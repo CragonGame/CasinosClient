@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rwlqrrz2" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="oypw0" name="Chat.xml" path="/" exported="true"/>
+    <component id="oypw3" name="CoChatInput.xml" path="/Component/"/>
+    <component id="l1q0e" name="CoChatInput1.xml" path="/Component/"/>
+    <component id="fzbbh" name="CoPresetMsg.xml" path="/Component/"/>
+    <component id="tabcj" name="BtnSend.xml" path="/Component/"/>
+    <image id="kd14k" name="InputBg1.png" path="/Image/" scale="9grid" scale9grid="32,26,64,52"/>
+    <image id="kd14l" name="InputBg.png" path="/Image/" scale="9grid" scale9grid="30,28,4,3"/>
+    <image id="kd14m" name="BgAll.png" path="/Image/" scale="9grid" scale9grid="27,27,54,54"/>
+    <image id="kd14n" name="BgHalf.png" path="/Image/" scale="9grid" scale9grid="41,41,82,82"/>
+    <image id="kd14o" name="QuickChatBg.png" path="/Image/" scale="9grid" scale9grid="45,45,90,90"/>
+    <image id="kd14p" name="QuickChatSplite.png" path="/Image/" scale="9grid" scale9grid="93,2,186,3"/>
+    <component id="kd14q" name="Component1.xml" path="/Component/"/>
+    <component id="kd14r" name="Component2.xml" path="/Component/"/>
+    <image id="ppk5s" name="QuickChatBgHalf.png" path="/Image/" scale="9grid" scale9grid="45,45,90,90"/>
+    <image id="ppk5t" name="背景-补缺角.png" path="/Image/"/>
+    <image id="ppk5u" name="背景-补缺角白底.png" path="/Image/"/>
+  </resources>
+  <publish name="Chat" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Chat"/>
+</packageDescription>

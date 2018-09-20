@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="180,62" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <text id="n5" name="title" xy="7,5" size="165,50" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <Button mode="Radio"/>
+</component>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="6ks4cw4y" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="rhkp0" name="ChooseLan.xml" path="/" exported="true"/>
+    <component id="rhkp1" name="ItemLanguage.xml" path="/Component/" exported="true"/>
+    <image id="ef0j2" name="Bg5.png" path="/Image/" atlas="alone"/>
+  </resources>
+  <publish name="ChooseLan" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\ChooseLan"/>
+</packageDescription>

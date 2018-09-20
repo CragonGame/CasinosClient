@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 1128952515
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0fd688e05c45ce77afb25647eb371854
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e2880a290d4d8f9980e591db710b9f4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1dfbeb482055554409bf41569c75d166, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dParticle/EXlihua_shengji.prefab
+Dependencies: []

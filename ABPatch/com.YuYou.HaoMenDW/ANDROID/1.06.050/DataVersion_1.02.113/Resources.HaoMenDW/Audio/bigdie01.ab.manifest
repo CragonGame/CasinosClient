@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1472899001
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a5a9ffeb44754e4bf00567dce774dbcd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/Bigdie01.ogg
+Dependencies: []

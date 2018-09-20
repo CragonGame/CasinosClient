@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1284579928
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e04a4749d1636db5a622474da3ecc01f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/DesktopHCardType/DesktopHCardType@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/DesktopHCardType/DesktopHCardType.bytes
+Dependencies: []

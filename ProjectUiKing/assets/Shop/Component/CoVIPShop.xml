@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="92,51">
+  <displayList>
+    <image id="n3_lil3" name="n3" src="lil32g" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n0_lil3" name="VIPLevel1" xy="39,30" size="10,17" visible="false" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="" sidePair="left-left%,bottom-bottom%"/>
+    </loader>
+    <loader id="n1_lil3" name="VIPLevel2" xy="50,30" size="10,17" visible="false" url="ui://nhvxw9ovi4nvgs" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="n0_lil3" sidePair="left-right,middle-middle"/>
+    </loader>
+    <loader id="n2_lil3" name="VIPLevel3" xy="44,30" size="10,17" visible="false" url="ui://nhvxw9ovi4nvgs" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="" sidePair="left-left%,bottom-bottom%"/>
+    </loader>
+  </displayList>
+</component>

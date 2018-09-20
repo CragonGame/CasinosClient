@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2433933618
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c0304a51e28b4a7ea3680b4af1d85ff9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/cheersf.mp3
+Dependencies: []

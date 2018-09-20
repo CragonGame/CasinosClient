@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ABPatchInfo>  
+  <Platform PlatformKey="1" PlatformName="ANDROID" BundleVersion="1.06.050" DataVersion="1.02.113" BuildTarget="13"/> 
+  <Platform PlatformKey="2" PlatformName="IOS" BundleVersion="1.02.037" DataVersion="1.01.076" BuildTarget="9"/> 
+  <Platform PlatformKey="3" PlatformName="PC" BundleVersion="1.00.000" DataVersion="9.99.99" BuildTarget="19"/>   
+</ABPatchInfo>

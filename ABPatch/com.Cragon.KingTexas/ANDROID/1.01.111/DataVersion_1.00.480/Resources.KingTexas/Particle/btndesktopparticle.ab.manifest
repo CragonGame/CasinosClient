@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 1021825682
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 69cf0ed647ca96911b3d9a1d2e4ce2fe
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 96297cc14ffc9531636b55d963947141
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesParticle/Textures/FX_DotsOrange.png
+- Assets/ResourcesParticle/Materials/btndesktop.mat
+- Assets/Resources.KingTexas/PkgSingle/Particle/BtnDeskTopParticle.prefab
+Dependencies: []

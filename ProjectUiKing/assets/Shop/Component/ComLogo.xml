@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="371,137">
+  <displayList>
+    <image id="n0_hrhq" name="n0" src="hrhq2y" fileName="Image/New/图层2.png" xy="0,0"/>
+    <image id="n6_n8cl" name="n6" src="n8cl3j" fileName="Image/FX_Flare004.png" xy="138,65" pivot="0.5,0.5" size="64,64"/>
+    <image id="n7_n8cl" name="n7" src="n8cl3j" fileName="Image/FX_Flare004.png" xy="234,38" pivot="0.5,0.5" size="64,64"/>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n6_n8cl" value="129"/>
+    <item time="0" type="Size" target="n6_n8cl" value="0,0"/>
+    <item time="0" type="Size" target="n7_n8cl" value="0,0"/>
+    <item time="21" type="Rotation" target="n6_n8cl" tween="true" startValue="0" endValue="129" duration="28"/>
+    <item time="21" type="Size" target="n6_n8cl" tween="true" startValue="0,0" endValue="64,64" duration="15"/>
+    <item time="36" type="Size" target="n6_n8cl" tween="true" startValue="64,64" endValue="0,0" duration="13"/>
+    <item time="49" type="Rotation" target="n7_n8cl" tween="true" startValue="0" endValue="129" duration="28"/>
+    <item time="49" type="Size" target="n7_n8cl" tween="true" startValue="0,0" endValue="64,64" duration="15"/>
+    <item time="64" type="Size" target="n7_n8cl" tween="true" startValue="64,64" endValue="0,0" duration="13"/>
+  </transition>
+</component>

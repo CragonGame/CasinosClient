@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="68,68">
+  <displayList>
+    <image id="n6_vxr8" name="n6" src="8xode8" pkg="nhvxw9ov" xy="0,0" size="68,68"/>
+    <image id="n5_vxr8" name="n5" src="l1q0c9" pkg="nhvxw9ov" xy="0,0" size="68,68"/>
+    <loader id="n1" name="LoaderExp" xy="4,4" size="60,60" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+  </displayList>
+</component>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="295,43">
+  <displayList>
+    <image id="n8_v92t" name="n8" src="v92t25" xy="0,0" size="295,43"/>
+    <text id="n1_fb5j" name="RewardPot" xy="66,2" pivot="0.5,0.5" size="220,39" fontSize="30" color="#f6e29b" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text=""/>
+    <loader id="n7_jvj7" name="Lan_Image_RewardPool" xy="0,6" size="67,30" url="ui://6kz8w16qdc3n5q" align="center" vAlign="middle"/>
+  </displayList>
+</component>

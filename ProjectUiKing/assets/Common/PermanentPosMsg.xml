@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="960,640">
+  <displayList>
+    <image id="n5_j0t7" name="n5" src="oypw6e" xy="26,296" pivot="0.5,0.5" size="908,48" group="n4_q55i"/>
+    <text id="n3_q55i" name="MsgText" xy="475,300" pivot="0.5,0.5" size="10,39" group="n4_q55i" fontSize="30" color="#ffffff" align="center" vAlign="middle" shadowColor="#000000" shadowOffset="1,1" text=""/>
+    <group id="n4_q55i" name="n4" xy="26,296" size="908,48" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+  <transition name="AniShow" autoPlay="true">
+    <item time="0" type="Alpha" tween="true" startValue="0.3" endValue="1" duration="12"/>
+    <item time="12" type="Alpha" tween="true" startValue="1"/>
+  </transition>
+</component>

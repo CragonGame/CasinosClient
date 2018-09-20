@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2544179334
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: shop.ab
+      Dependencies: {}

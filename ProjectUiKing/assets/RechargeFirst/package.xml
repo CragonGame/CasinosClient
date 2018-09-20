@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="fd7ggi85" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="njuk9" name="RechargeFirst.xml" path="/" exported="true"/>
+    <component id="njuka" name="CommonMsgBgAndClose.xml" path="/Component/"/>
+    <image id="njukb" name="CommonMsgBg.png" path="/Image/" scale="9grid" scale9grid="40,40,34,34"/>
+    <image id="njukc" name="CommonMsgTitleBg.png" path="/Image/" atlas="2"/>
+    <component id="njukd" name="BtnCommonClose.xml" path="/Component/"/>
+    <image id="njuke" name="CommonClose.png" path="/Image/"/>
+    <component id="njukh" name="BtnGreenEx.xml" path="/Component/"/>
+    <image id="njuki" name="BtnGreen.png" path="/Image/"/>
+    <image id="njukk" name="BtnGreen.png" path="/Image/"/>
+    <image id="njukl" name="CommonClose.png" path="/Image/"/>
+    <image id="njukm" name="CommonMsgBg.png" path="/Image/"/>
+    <image id="njukn" name="CommonMsgTitleBg.png" path="/Image/"/>
+  </resources>
+  <publish name="RechargeFirst" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\RechargeFirst"/>
+</packageDescription>

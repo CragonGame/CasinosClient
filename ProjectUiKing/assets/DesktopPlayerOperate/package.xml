@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="m0t9o5fx" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="romc0" name="DesktopPlayerOperate.xml" path="/" exported="true"/>
+    <image id="b91qq" name="f.png" path="/Image/" scale="9grid" scale9grid="10,10,12,12"/>
+    <component id="b91qv" name="BtnCommon.xml" path="/Component/"/>
+    <image id="h0xsw" name="RaiseBackground.png" path="/Image/"/>
+    <component id="u5uiy" name="ComConfirm.xml" path="/Component/"/>
+    <component id="u5ui11" name="RaiseSlider_grip.xml" path="/Component/"/>
+    <image id="u5ui12" name="RaiseThumb.png" path="/Image/"/>
+    <component id="u5ui14" name="SliderRaise.xml" path="/Component/"/>
+    <image id="u5ui15" name="RaiseOff.png" path="/Image/" scale="9grid" scale9grid="8,3,7,4" gridTile="31"/>
+    <image id="u5ui16" name="RaiseOn.png" path="/Image/" scale="9grid" scale9grid="8,3,7,4" gridTile="31"/>
+    <image id="u5ui17" name="0.png" path="/Image/Font1/"/>
+    <image id="u5ui18" name="1.png" path="/Image/Font1/"/>
+    <image id="u5ui19" name="2.png" path="/Image/Font1/"/>
+    <image id="u5ui1a" name="3.png" path="/Image/Font1/"/>
+    <image id="u5ui1b" name="4.png" path="/Image/Font1/"/>
+    <image id="u5ui1c" name="5.png" path="/Image/Font1/"/>
+    <image id="u5ui1d" name="6.png" path="/Image/Font1/"/>
+    <image id="u5ui1e" name="7.png" path="/Image/Font1/"/>
+    <image id="u5ui1f" name="8.png" path="/Image/Font1/"/>
+    <image id="u5ui1g" name="9.png" path="/Image/Font1/"/>
+    <image id="u5ui1h" name="d.png" path="/Image/Font1/"/>
+    <image id="u5ui1i" name="q.png" path="/Image/Font1/"/>
+    <image id="u5ui1j" name="w.png" path="/Image/Font1/"/>
+    <font id="u5ui1k" name="Font1.fnt" path="/Image/Font1/" exported="true"/>
+    <component id="oo5c1o" name="BtnRed.xml" path="/Component/" exported="true"/>
+    <component id="oo5c1s" name="BtnY.xml" path="/Component/" exported="true"/>
+    <component id="oo5c1t" name="BtnG.xml" path="/Component/" exported="true"/>
+    <component id="dcgb1v" name="ComAutoAction.xml" path="/Component/"/>
+    <image id="qljn1w" name="22.png" path="/Image/"/>
+    <image id="qljn1x" name="23.png" path="/Image/"/>
+    <image id="nr9u1y" name="67.png" path="/Image/" scale="tile"/>
+    <image id="nr9u1z" name="27.png" path="/Image/"/>
+    <image id="nr9u21" name="58.png" path="/Image/" scale="9grid" scale9grid="12,12,20,19"/>
+    <component id="nhsu22" name="BtnComCheck.xml" path="/Component/"/>
+    <image id="awzv23" name="001.png" path="/Image/" scale="9grid" scale9grid="24,15,48,6"/>
+    <image id="awzv24" name="002.png" path="/Image/" scale="9grid" scale9grid="24,15,48,6"/>
+    <image id="awzv25" name="003.png" path="/Image/" scale="9grid" scale9grid="24,15,48,6"/>
+    <image id="awzv26" name="004.png" path="/Image/" scale="9grid" scale9grid="24,15,48,6"/>
+  </resources>
+  <publish name="DesktopPlayerOperate" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopPlayerOperate"/>
+</packageDescription>

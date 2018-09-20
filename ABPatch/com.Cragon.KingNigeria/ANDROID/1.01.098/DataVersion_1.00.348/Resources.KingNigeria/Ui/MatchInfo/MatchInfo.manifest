@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1003966428
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: matchinfo.ab
+      Dependencies: {}

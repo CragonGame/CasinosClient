@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2089674901
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9d8bc663fdc024c63d75e119c49ff442
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/AllFailed.wav
+Dependencies: []

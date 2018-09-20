@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="416,36" overflow="hidden" initName="ComBetRangeOperateList">
+  <displayList>
+    <list id="n0_llx1" name="ListBetRangeOperate" xy="0,0" size="416,36" layout="flow_vt" overflow="scroll" scroll="horizontal" scrollBarFlags="514" scrollBar="visible" margin="0,0,104,104" lineItemCount="1" defaultItem="ui://cezlmpqget5oo" align="center" vAlign="middle"/>
+  </displayList>
+</component>

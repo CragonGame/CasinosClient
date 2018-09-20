@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3829259255
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 791afcfa36c9b9d9b22b1d79984e65ba
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/CountDownGo.mp3
+Dependencies: []

@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4274730460
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e0855372cfd3af05809ad0ce6d89db15
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/ChatFriend/ChatFriend.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/ChatFriend/ChatFriend@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/ChatFriend/ChatFriend@atlas0.png
+Dependencies: []

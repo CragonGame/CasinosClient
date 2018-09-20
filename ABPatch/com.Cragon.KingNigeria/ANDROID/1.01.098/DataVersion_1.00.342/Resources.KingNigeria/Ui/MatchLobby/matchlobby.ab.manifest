@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 1459816038
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 58519a3fcab291db638bc160be821a4a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/MatchLobby/MatchLobby@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/MatchLobby/MatchLobby.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/MatchLobby/MatchLobby@atlas_wb2ec.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/MatchLobby/MatchLobby@atlas0.png
+Dependencies: []

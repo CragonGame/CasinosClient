@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 678290943
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 013f504395f5aee96a32398db9d9c812
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Cards/2_7.png
+Dependencies: []

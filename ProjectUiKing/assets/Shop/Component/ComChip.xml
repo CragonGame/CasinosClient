@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="245,296" overflow="hidden">
+  <displayList>
+    <component id="n10_hrhq" name="n10" src="hrhq3c" fileName="Component/New/ComItemBg.xml" xy="0,0"/>
+    <loader id="n2_r6kn" name="LoaderGold" xy="54,76" size="136,138" align="center" vAlign="middle" fill="scaleFree"/>
+    <text id="n4_r6kn" name="GoldValue" xy="21,18" pivot="0.5,0.5" size="200,39" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n7_bsci" name="BtnBuy" src="n8cl3h" fileName="Component/BtnBuyConsume.xml" xy="29,224"/>
+  </displayList>
+</component>

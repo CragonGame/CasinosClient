@@ -1,0 +1,12 @@
+info creator=UIBuilder resizable=true
+common xadvance=25
+char id=48 img=ieudha xoffset=-7 yoffset=0 xadvance=0
+char id=49 img=ieudhb xoffset=-7 yoffset=0 xadvance=0
+char id=50 img=ieudhc xoffset=-7 yoffset=0 xadvance=0
+char id=51 img=ieudhd xoffset=-7 yoffset=0 xadvance=0
+char id=52 img=ieudhe xoffset=-7 yoffset=0 xadvance=0
+char id=53 img=ieudhf xoffset=-7 yoffset=0 xadvance=0
+char id=54 img=ieudhg xoffset=-7 yoffset=0 xadvance=0
+char id=55 img=ieudhh xoffset=-7 yoffset=0 xadvance=0
+char id=56 img=ieudhi xoffset=-7 yoffset=0 xadvance=0
+char id=57 img=ieudhj xoffset=-7 yoffset=0 xadvance=0

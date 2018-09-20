@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="0zbu0heg" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="n7pp0" name="MTTProcess.xml" path="/" exported="true"/>
+    <image id="n7pp1" name="30%.png" path="/Image/"/>
+    <image id="n7pp2" name="50%.png" path="/Image/"/>
+    <image id="n7pp3" name="Reward1.png" path="/Image/"/>
+    <image id="n7pp5" name="Win1.png" path="/Image/"/>
+    <image id="n7pp6" name="Enter.png" path="/Image/"/>
+    <component id="n7ppb" name="ComProces1.xml" path="/Component/"/>
+    <image id="n7ppc" name="恭喜进入前.png" path="/Image/"/>
+    <image id="n7ppd" name="终极对决A.png" path="/Image/"/>
+    <image id="n7ppe" name="终极对决B.png" path="/Image/"/>
+    <image id="n7ppf" name="决赛T2.png" path="/Image/"/>
+    <component id="n7ppg" name="ComProces2.xml" path="/Component/"/>
+    <component id="n7ppi" name="ComProces3.xml" path="/Component/"/>
+    <component id="n7ppk" name="Component1.xml" path="/Component/"/>
+    <component id="ivt5m" name="Component2.xml" path="/Component/"/>
+    <component id="ivt5n" name="ComProces4.xml" path="/Component/"/>
+    <image id="ivt5q" name="终极对决T2.png" path="/Image/"/>
+    <image id="ivt5r" name="终极对决T3.png" path="/Image/"/>
+    <component id="ivt5s" name="ComProces5.xml" path="/Component/"/>
+    <component id="ru14t" name="Component4.xml" path="/Component/"/>
+    <component id="ru14u" name="Component5.xml" path="/Component/"/>
+    <component id="ixe1v" name="Com1.xml" path="/Component/"/>
+    <image id="cvtgw" name="FX_light_05.png" path="/Image/"/>
+    <image id="cvtgx" name="恭喜进入YY.png" path="/Image/"/>
+    <image id="cvtgy" name="R礼包盒.png" path="/Image/"/>
+    <image id="cvtgz" name="R飘带.png" path="/Image/"/>
+    <image id="cvtg10" name="R旗帜.png" path="/Image/"/>
+    <image id="cvtg11" name="R喇叭.png" path="/Image/"/>
+    <image id="cvtg12" name="R礼包带.png" path="/Image/"/>
+    <component id="cvtg13" name="Component6.xml" path="/Component/"/>
+    <image id="cvtg14" name="FX_light_04.png" path="/Image/"/>
+    <image id="cvtg16" name="决赛S.png" path="/Image/"/>
+    <image id="cvtg17" name="终极对决S.png" path="/Image/"/>
+    <component id="cvtg18" name="Component7.xml" path="/Component/"/>
+    <image id="cvtg19" name="FX_flare_009.png" path="/Image/"/>
+    <component id="cvtg1a" name="Component8.xml" path="/Component/"/>
+    <component id="cvtg1b" name="Component9.xml" path="/Component/"/>
+  </resources>
+  <publish name="MTTProcess" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\MTTProcess"/>
+</packageDescription>

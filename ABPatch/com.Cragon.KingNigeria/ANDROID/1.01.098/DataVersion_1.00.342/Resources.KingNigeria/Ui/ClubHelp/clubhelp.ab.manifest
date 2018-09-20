@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1394421923
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 95d47ffc3449e476cfea76771e2c4061
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/ClubHelp/ClubHelp@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/ClubHelp/ClubHelp.bytes
+Dependencies: []

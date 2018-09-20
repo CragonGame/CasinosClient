@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 1539639468
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4cc94e2a789324f57aae63a370ddd775
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 31a428025b88c708b393e4e1e8bf9087
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0fca48fe1ce34d844a4b0ee6e25e43f8, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dParticle/ExSilverCoins.prefab
+Dependencies: []

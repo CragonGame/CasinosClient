@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 1902527408
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 26585c5b1968e208d6271b25eb51083d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 96297cc14ffc9531636b55d963947141
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesParticle/Materials/star.mat
+- Assets/Resources.KingNigeria/PkgSingle/Particle/StarYellow.prefab
+- Assets/ResourcesParticle/Textures/Star.png
+Dependencies: []

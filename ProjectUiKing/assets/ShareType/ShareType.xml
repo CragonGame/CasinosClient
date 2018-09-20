@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n27_ow3k" name="ComBgAndClose" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n26_ow3k" name="n26" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="400,278" pivot="0.5,0.5" size="264,84" alpha="0.48" color="#111342"/>
+    <component id="n24_ow3k" name="BtnWeChat" src="ow3k3" fileName="Component/ComWechat.xml" xy="441,287"/>
+    <component id="n25_ow3k" name="BtnWeChatMoments" src="ow3k4" fileName="Component/ComWeChatMoments.xml" xy="552,287"/>
+  </displayList>
+</component>

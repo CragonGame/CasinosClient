@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1202545167
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: purse.ab
+      Dependencies: {}

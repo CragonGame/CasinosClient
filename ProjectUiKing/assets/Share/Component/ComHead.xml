@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="138,138" mask="n3_gvmm">
+  <displayList>
+    <image id="n4_rjau" name="n4" src="d45974" pkg="nhvxw9ov" xy="9,9"/>
+    <loader id="n1_gvmm" name="LoaderHead" xy="0,0" size="138,138" url="ui://nhvxw9ovd45974" align="center" vAlign="middle"/>
+    <graph id="n3_gvmm" name="n3" xy="12,12" pivot="0.5,0.5" size="113,113" type="eclipse"/>
+  </displayList>
+</component>

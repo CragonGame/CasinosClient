@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="233,122">
+  <displayList>
+    <component id="n15_tbey" name="n15" src="tbeyd" xy="0,0"/>
+    <loader id="n2_nhy4" name="LoaderMatchType" xy="70,0" pivot="0.5,0.5" size="91,36" url="ui://61kbhm96nhy46" align="center" vAlign="middle" autoSize="true">
+      <relation target="" sidePair="center-center"/>
+    </loader>
+    <component id="n4_nhy4" name="ComInfo" src="nhy47" xy="22,38"/>
+    <text id="n5_nhy4" name="TextMatchTitle" xy="44,66" size="93,19" fontSize="12" color="#a0caff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="Fun的Mtt&#xA;"/>
+    <image id="n6_nhy4" name="n6" src="wb2ek8" pkg="nhvxw9ov" xy="138,65" size="52,20" alpha="0.3" color="#000000"/>
+    <text id="n7_nhy4" name="TextMatchState" xy="140,66" size="48,19" fontSize="12" autoSize="none" text=""/>
+    <image id="n8_nhy4" name="n8" src="wb2ek8" pkg="nhvxw9ov" xy="30,102" size="170,20" alpha="0.3" color="#000000"/>
+    <image id="n9_nhy4" name="n9" src="gy6lki" pkg="nhvxw9ov" xy="53,102" size="18,20" group="n12_nhy4"/>
+    <text id="n10_nhy4" name="TextMatchStartTime" xy="75,103" size="71,19" group="n12_nhy4" fontSize="12" color="#a5a4a4" vAlign="middle" leading="0" text="03-14 14:41"/>
+    <text id="n11_nhy4" name="n11" xy="146,103" size="29,19" group="n12_nhy4" fontSize="12" color="#a5a4a4" vAlign="middle" leading="0" text="开赛">
+      <relation target="n10_nhy4" sidePair="left-right"/>
+    </text>
+    <group id="n12_nhy4" name="n12" xy="53,102" size="123,20" advanced="true">
+      <relation target="n8_nhy4" sidePair="center-center"/>
+    </group>
+  </displayList>
+</component>

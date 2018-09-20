@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 66366621
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 05425c10e14a4197c3fd94d9a221dc5f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a9b67de436e9b2aded21164fbd176d7c
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Lib.Spine/spine-unity/Editor/GUI/AtlasAsset Icon.png
+- Assets/Resources.KingNigeria/PkgSingle/Spine/LoadingMarry/Mary_Loading_Material.mat
+- Assets/Resources.KingNigeria/PkgSingle/Spine/LoadingMarry/Mary_Loading.atlas.txt
+- Assets/Lib.Spine/spine-unity/Shaders/Spine-Skeleton.shader
+- Assets/Resources.KingNigeria/PkgSingle/Spine/LoadingMarry/Mary_Loading_Atlas.asset
+- Assets/Resources.KingNigeria/PkgSingle/Spine/LoadingMarry/Mary_Loading.png
+Dependencies: []

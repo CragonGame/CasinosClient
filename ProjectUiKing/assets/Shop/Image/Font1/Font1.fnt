@@ -1,0 +1,11 @@
+info creator=UIBuilder
+char id=48 img=bscit xoffset=0 yoffset=0 xadvance=0
+char id=49 img=bsciu xoffset=0 yoffset=0 xadvance=0
+char id=50 img=bsciv xoffset=0 yoffset=0 xadvance=0
+char id=51 img=bsciw xoffset=0 yoffset=0 xadvance=0
+char id=52 img=bscix xoffset=0 yoffset=0 xadvance=0
+char id=53 img=bsciy xoffset=0 yoffset=0 xadvance=0
+char id=54 img=bsciz xoffset=0 yoffset=0 xadvance=0
+char id=55 img=bsci10 xoffset=0 yoffset=0 xadvance=0
+char id=56 img=bsci11 xoffset=0 yoffset=0 xadvance=0
+char id=57 img=bsci12 xoffset=0 yoffset=0 xadvance=0

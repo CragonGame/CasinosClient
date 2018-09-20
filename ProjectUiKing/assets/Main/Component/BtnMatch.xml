@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="357,113" extention="Button" initName="BtnMatch">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <loader id="n7_hl9h" name="Lan_Image_Match" xy="1,1" size="355,111" url="ui://gbdohaivt4ok7p" align="center" vAlign="middle" fill="scaleFree"/>
+    <image id="n4_t4ok" name="n4" src="t4ok7p" fileName="Image/UI2_主界面_赛事场.png" xy="0,0" size="357,113" hideByEditor="true" visible="false"/>
+    <image id="n5_n8cl" name="n5" src="n8cl8o" fileName="Image/Eff_Star_A_00161.png" xy="117,17" pivot="0.5,0.5" anchor="true" size="40,40"/>
+    <graph id="n6_tv2t" name="HolderParticle" xy="244,28" size="0,0"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.97"/>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n5_n8cl" value="0"/>
+    <item time="0" type="Size" target="n5_n8cl" value="0,0"/>
+    <item time="30" type="Rotation" target="n5_n8cl" tween="true" startValue="0" endValue="130" duration="36" ease="Linear"/>
+    <item time="30" type="Size" target="n5_n8cl" tween="true" startValue="0,0" endValue="40,40" duration="18" ease="Linear"/>
+    <item time="48" type="Size" target="n5_n8cl" tween="true" startValue="40,40" endValue="40,40" duration="18" ease="Linear"/>
+  </transition>
+</component>

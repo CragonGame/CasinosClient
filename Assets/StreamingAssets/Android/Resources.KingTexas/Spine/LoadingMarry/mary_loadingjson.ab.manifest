@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3950064959
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a83bffec6e08a274fd516082982b1a92
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Spine/LoadingMarry/Mary_LoadingJson.json
+Dependencies: []

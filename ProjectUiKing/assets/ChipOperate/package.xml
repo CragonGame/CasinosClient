@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="mwh9abad" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="romc0" name="ChipOperate.xml" path="/" exported="true"/>
+    <component id="eccy1" name="Slider.xml" path="/Component/"/>
+    <component id="eccy7" name="ComSlider.xml" path="/Component/"/>
+    <component id="eccy8" name="BtnWheelPlus.xml" path="/Component/"/>
+    <image id="eccya" name="BtnAdd.png" path="/Image/"/>
+    <component id="eccyb" name="BtnWheelMinus.xml" path="/Component/"/>
+    <image id="eccyc" name="BtnSubtract.png" path="/Image/"/>
+    <image id="h1h1d" name="bt_y.png" path="/Image/"/>
+  </resources>
+  <publish name="ChipOperate" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\ChipOperate"/>
+</packageDescription>

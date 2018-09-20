@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n0_s17d" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n2_s17d" name="n2" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="333,74" pivot="0.5,0.5" group="n20_m4t7">
+      <relation target="n19_m4t7" sidePair="right-left"/>
+    </image>
+    <image id="n3_s17d" name="n3" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="694,74" pivot="0.5,0.5" group="n20_m4t7" skew="0,180">
+      <relation target="n19_m4t7" sidePair="left-right"/>
+    </image>
+    <image id="n4_s17d" name="n4" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="140,78" group="n20_m4t7"/>
+    <text id="n5_s17d" name="Lan_Text_SnowBallTips" xy="147,148" size="770,60" group="n20_m4t7" fontSize="20" color="#606c8e" leading="0" autoSize="none" text="滚雪球赛制，设有基本保底奖励，参赛人次越多总奖励越大，参赛人数决定奖励人数和奖励分配比例。"/>
+    <text id="n6_s17d" name="Lan_Text_PlayAndRewardNum" xy="173,201" size="220,32" group="n20_m4t7" fontSize="25" color="#5968a7" leading="0" text="参赛人数/奖励人数"/>
+    <image id="n9_s17d" name="n9" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="393,245" size="533,329" group="n20_m4t7" color="#313564"/>
+    <image id="n11_s17d" name="n11" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="926,245" size="3,8" group="n20_m4t7" rotation="90" color="#313564"/>
+    <image id="n12_s17d" name="n12" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="401,245" size="7,8" group="n20_m4t7" rotation="90" color="#313564"/>
+    <image id="n13_s17d" name="n13" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="401,567" size="7,8" group="n20_m4t7" rotation="90" color="#313564"/>
+    <text id="n7_s17d" name="Lan_Text_Rank" xy="506,201" size="55,32" group="n20_m4t7" fontSize="25" color="#5968a7" leading="0" text="名次"/>
+    <text id="n8_s17d" name="Lan_Text_RewardRate" xy="708,201" size="109,32" group="n20_m4t7" fontSize="25" color="#5968a7" leading="0" text="奖励比例"/>
+    <list id="n15_s17d" name="ListRewardInfo" xy="396,246" size="528,327" group="n20_m4t7" overflow="scroll" defaultItem="ui://631wxlb2s17d1"/>
+    <image id="n16_s17d" name="n16" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="141,244" size="251,4" group="n20_m4t7"/>
+    <list id="n17_s17d" name="ListPlayerNum" xy="140,246" size="253,327" group="n20_m4t7" overflow="scroll" defaultItem="ui://631wxlb2s17d2"/>
+    <text id="n19_m4t7" name="TextTitle" xy="370,81" pivot="0.5,0.5" size="325,50" group="n20_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="滚雪球赛奖励说明"/>
+    <group id="n20_m4t7" name="n20" xy="140,74" size="789,501" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

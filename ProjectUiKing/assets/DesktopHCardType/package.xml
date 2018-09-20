@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="zecy3kze" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="fb5j0" name="DesktopHCardType.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="DesktopHCardType" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.King\PkgFold\Ui\DesktopHCardType"/>
+</packageDescription>

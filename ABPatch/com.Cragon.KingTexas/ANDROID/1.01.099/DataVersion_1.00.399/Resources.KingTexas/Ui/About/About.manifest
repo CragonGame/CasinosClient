@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1284190330
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: about.ab
+      Dependencies: {}

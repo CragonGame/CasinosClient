@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="364,68">
+  <displayList>
+    <image id="n10_kpff" name="n10" src="u51ojc" pkg="nhvxw9ov" xy="-3,66" size="370,2" color="#262748"/>
+    <text id="n4" name="TextTitle" xy="114,6" size="200,30" group="n11_kpff" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="我的去污粉全微分"/>
+    <text id="n6_eh36" name="TextOutLineTime" xy="114,33" size="200,28" group="n11_kpff" fontSize="18" color="#97a8de" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="我我"/>
+    <component id="n9_rhyv" name="CoHeadIcon" src="d45975" pkg="nhvxw9ov" xy="50,6" size="55,55" group="n11_kpff"/>
+    <group id="n11_kpff" name="n11" xy="50,6" size="264,55"/>
+  </displayList>
+</component>

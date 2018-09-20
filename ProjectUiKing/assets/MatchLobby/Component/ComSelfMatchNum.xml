@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="21,21" initName="ComSelfMatchNum">
+  <displayList>
+    <image id="n1_vs7z" name="n1" src="dld2a7" pkg="nhvxw9ov" xy="-2,-1" pivot="0.5,0.5" size="24,24"/>
+    <text id="n0_vs7z" name="TextNum" xy="0,1" size="21,19" fontSize="12" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="12"/>
+  </displayList>
+</component>

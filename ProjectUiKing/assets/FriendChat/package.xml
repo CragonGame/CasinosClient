@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="vclln4to" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="dcob0" name="FriendChat.xml" path="/" exported="true"/>
+    <image id="dcob1" name="TargetHereHelpSign.png" path="/Image/"/>
+    <component id="dcob2" name="ComChatTarget.xml" path="/New/Component/" exported="true"/>
+    <component id="dcob3" name="BtnChooseChatTarget.xml" path="/New/Component/"/>
+    <image id="dcob4" name="ChooseChatTarget.png" path="/New/Image/"/>
+    <component id="dcob5" name="BtnChatTargetProfile.xml" path="/New/Component/"/>
+    <image id="dcob6" name="ChatTargetProfile.png" path="/New/Image/"/>
+    <component id="dcob7" name="BtnPlayWithChatTarget.xml" path="/New/Component/"/>
+    <image id="dcob8" name="PlayWithChatTarget.png" path="/New/Image/"/>
+    <image id="g5sv9" name="Title.png" path="/New/Image/"/>
+  </resources>
+  <publish name="FriendChat" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\FriendChat"/>
+</packageDescription>

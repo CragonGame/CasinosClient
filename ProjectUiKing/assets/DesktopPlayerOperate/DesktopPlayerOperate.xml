@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" opaque="false">
+  <controller name="ControllerTurn" pages="1,TurnOther,2,TurnSelfRaise,3,TurnSelfNotRaise" selected="0"/>
+  <controller name="ControllerSelfRaise" pages="0,ClickRaise,1,NotClickRaise" selected="1"/>
+  <displayList>
+    <component id="n74_b91q" name="ComContinue" src="b91qv" fileName="Component/BtnCommon.xml" xy="859,574" size="196,60" group="n33_nbcl">
+      <relation target="" sidePair="width-width%"/>
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <text id="n32_nbcl" name="LeaveTips" xy="864,583" pivot="0.5,0.5" size="185,41" group="n33_nbcl" fontSize="32" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="继续">
+      <relation target="n74_b91q" sidePair="width-width"/>
+      <relation target="n74_b91q" sidePair="center-center,middle-middle"/>
+    </text>
+    <group id="n33_nbcl" name="GroupContinue" xy="859,574" size="196,60" group="n34_nbcl" advanced="true" collapsed="true"/>
+    <group id="n34_nbcl" name="GroupLeaveWhile" xy="859,574" size="196,60" advanced="true"/>
+    <component id="n131_nhsu" name="Lan_Btn_CheckOrFold" src="nhsu22" fileName="Component/BtnComCheck.xml" xy="447,640" group="n124_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+      <Button title="让或弃"/>
+    </component>
+    <component id="n126_nhsu" name="BtnAutoCheckOrCall" src="nhsu22" fileName="Component/BtnComCheck.xml" xy="654,640" group="n124_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+      <Button title="让牌"/>
+    </component>
+    <component id="n130_nhsu" name="Lan_Btn_CallAny" src="nhsu22" fileName="Component/BtnComCheck.xml" xy="861,640" group="n124_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+      <Button title="跟任何注"/>
+    </component>
+    <group id="n124_nr9u" name="GroupAutoOperate" xy="447,640" size="608,60" group="n29_romc" advanced="true"/>
+    <component id="n90_u5ui" name="SliderRise" src="u5ui14" fileName="Component/SliderRaise.xml" xy="873,133" group="n29_romc" hideByEditor="true">
+      <relation target="n87_h0xs" sidePair="center-center,top-bottom"/>
+      <Slider value="50" max="100"/>
+    </component>
+    <component id="n108_nr9u" name="BtnQuick1" src="b91qv" fileName="Component/BtnCommon.xml" xy="11,643" group="n112_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+    </component>
+    <component id="n111_nr9u" name="BtnQuick2" src="b91qv" fileName="Component/BtnCommon.xml" xy="147,643" group="n112_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+    </component>
+    <component id="n110_nr9u" name="BtnQuick3" src="b91qv" fileName="Component/BtnCommon.xml" xy="283,643" group="n112_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+    </component>
+    <group id="n112_nr9u" name="GroupQuick1" xy="11,643" size="398,60" group="n125_nr9u" advanced="true" collapsed="true"/>
+    <component id="n98_oo5c" name="Lan_Btn_Fold" src="oo5c1o" fileName="Component/BtnRed.xml" xy="447,643" group="n123_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+      <Button title="盖牌"/>
+    </component>
+    <component id="n81_h0xs" name="ComCheckOrCall" src="oo5c1t" fileName="Component/BtnG.xml" xy="654,643" group="n123_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+      <Button title="让牌"/>
+    </component>
+    <component id="n87_h0xs" name="ComRaiseNClickRaise" src="oo5c1s" fileName="Component/BtnY.xml" xy="861,643" group="n123_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+      <Button title="加注"/>
+    </component>
+    <group id="n123_nr9u" name="GroupSelf" xy="447,643" size="608,60" group="n125_nr9u" advanced="true" collapsed="true"/>
+    <group id="n125_nr9u" name="GroupSelfNotRaise" xy="11,643" size="1044,60" group="n29_romc" hideByEditor="true" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerSelfRaise" pages="1"/>
+    </group>
+    <image id="n113_nr9u" name="n113" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,643" size="1066,80" group="n119_nr9u" color="#000000">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </image>
+    <component id="n114_nr9u" name="BtnQuick4" src="b91qv" fileName="Component/BtnCommon.xml" xy="11,655" size="152,60" group="n119_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+    </component>
+    <component id="n115_nr9u" name="BtnQuick5" src="b91qv" fileName="Component/BtnCommon.xml" xy="181,655" size="152,60" group="n119_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+    </component>
+    <component id="n116_nr9u" name="BtnQuick6" src="b91qv" fileName="Component/BtnCommon.xml" xy="351,655" size="152,60" group="n119_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+    </component>
+    <component id="n117_nr9u" name="BtnQuick7" src="b91qv" fileName="Component/BtnCommon.xml" xy="521,655" size="152,60" group="n119_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+    </component>
+    <component id="n118_nr9u" name="BtnQuick8" src="b91qv" fileName="Component/BtnCommon.xml" xy="691,655" size="152,60" group="n119_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+    </component>
+    <component id="n121_nr9u" name="Lan_Btn_AddBet" src="oo5c1s" fileName="Component/BtnY.xml" xy="861,655" group="n119_nr9u">
+      <relation target="" sidePair="right-right%,bottom-bottom"/>
+      <relation target="" sidePair="width-width%"/>
+      <Button title="加注"/>
+    </component>
+    <group id="n119_nr9u" name="GroupQuick2" xy="0,643" size="1066,80" group="n29_romc" advanced="true">
+      <gearDisplay controller="ControllerSelfRaise" pages="0"/>
+    </group>
+    <group id="n29_romc" name="GroupAutoOperateAll" xy="0,133" size="1066,590" advanced="true"/>
+    <component id="n105_dcgb" name="ComAutoAction" src="dcgb1v" fileName="Component/ComAutoAction.xml" xy="0,0" hideByEditor="true" visible="false">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </component>
+  </displayList>
+  <transition name="TransitionShowAutoOperate">
+    <item time="0" type="XY" target="n124_nr9u" tween="true" startValue="447,643" endValue="447,573" duration="3" ease="Linear"/>
+  </transition>
+  <transition name="TransitionShowOther">
+    <item time="0" type="XY" target="n125_nr9u" tween="true" startValue="7,643" endValue="7,573" duration="3" ease="Linear"/>
+    <item time="0" type="XY" target="n119_nr9u" tween="true" startValue="0,643" endValue="0,562" duration="3" ease="Linear"/>
+  </transition>
+</component>

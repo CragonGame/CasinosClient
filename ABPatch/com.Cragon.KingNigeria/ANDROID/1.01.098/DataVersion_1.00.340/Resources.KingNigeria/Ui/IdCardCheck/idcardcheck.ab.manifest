@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3314679045
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: be92beec63df2675e4b6cac508cc1c3c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/IdCardCheck/IdCardCheck@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/IdCardCheck/IdCardCheck.bytes
+Dependencies: []

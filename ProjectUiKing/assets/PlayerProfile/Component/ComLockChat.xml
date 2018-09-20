@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="92,90">
+  <controller name="ControllerLockChat" pages="0,Unlocked,1,Locked" selected="0"/>
+  <displayList>
+    <image id="n2_je85" name="n2" src="onuyc4" pkg="nhvxw9ov" xy="0,0"/>
+    <image id="n3_g92b" name="n3" src="qeucid" pkg="nhvxw9ov" xy="3,0">
+      <gearDisplay controller="ControllerLockChat" pages="0"/>
+    </image>
+    <text id="n4_hawu" name="Lan_Text_LockChat" xy="3,85" pivot="0.5,0.5" size="85,25" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="锁定聊天"/>
+    <image id="n6_y30t" name="n6" src="vxr8ix" pkg="nhvxw9ov" xy="0,0">
+      <gearDisplay controller="ControllerLockChat" pages="1"/>
+    </image>
+  </displayList>
+</component>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerState" pages="0,,1," selected="0"/>
+  <displayList>
+    <component id="n11_d5pu" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" xy="0,0" size="1066,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <text id="n5" name="TextTitle" xy="277,160" pivot="0.5,0.5" size="497,45" group="n22_donu" font="FontCu" fontSize="35" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n17_g8hz" name="Lan_Btn_Confirm" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" xy="422,412" size="207,74" group="n22_donu">
+      <gearDisplay controller="ControllerState" pages="0"/>
+    </component>
+    <component id="n20_s4ta" name="Lan_Btn_Confirm1" src="uvmqkg" fileName="Component/Btn/BtnEnsure.xml" xy="335,414" size="180,72" group="n22_donu">
+      <gearDisplay controller="ControllerState" pages="1"/>
+    </component>
+    <component id="n21_s4ta" name="Lan_Btn_Cancel" src="s4taku" fileName="Component/Btn/BtnCancel.xml" xy="547,414" size="180,72" group="n22_donu">
+      <gearDisplay controller="ControllerState" pages="1"/>
+    </component>
+    <component id="n23_qjsd" name="ComTips" src="qjsdlz" fileName="Component/ComText.xml" xy="266,213" size="530,190" group="n22_donu"/>
+    <group id="n22_donu" name="n22" xy="266,160" size="530,326" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

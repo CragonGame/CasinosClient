@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1648728216
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b9a364c57cc9183b622dd754047846f4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Cards/FiveTong.png
+Dependencies: []

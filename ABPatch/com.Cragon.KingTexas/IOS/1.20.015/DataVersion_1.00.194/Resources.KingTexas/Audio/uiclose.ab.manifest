@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 767458472
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9ec0c620628d1b66ea7b4567d980d511
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/UIClose.wav
+Dependencies: []

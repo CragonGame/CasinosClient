@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="245,296">
+  <displayList>
+    <component id="n0_j3hl" name="n0" src="hrhq3c" xy="0,0"/>
+    <loader id="n1_j3hl" name="LoaderItem" xy="44,79" size="155,120" url="ui://3pqfkhluasp31x" align="center" vAlign="bottom" fill="scale"/>
+    <component id="n3_j3hl" name="BtnBuy" src="j3hl3r" xy="29,222"/>
+    <richtext id="n5_diz5" name="TextItemDescribe" xy="-4,0" size="254,78" fontSize="0" color="#ffffff" align="center" leading="0" ubb="true" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

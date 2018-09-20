@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="60,60">
+  <controller name="ConttollerBg" pages="0,Black,1,Light" selected="0"/>
+  <displayList>
+    <image id="n9_8xod" name="n9" src="8xode8" xy="0,0" size="60,60" alpha="0.5"/>
+    <image id="n10_8xod" name="n10" src="8xode9" xy="0,0" size="60,60">
+      <gearDisplay controller="ConttollerBg" pages="1"/>
+    </image>
+    <loader id="n1_mad8" name="LoaderGift" xy="0,0" size="60,60" align="center" vAlign="middle" fill="scaleFree"/>
+    <text id="n2_mad8" name="GiftName" xy="25,65" pivot="0.5,0.5" size="10,25" fontSize="18" color="#f7d45d" align="center" vAlign="middle" leading="0" letterSpacing="1" singleLine="true" text=""/>
+    <text id="n3_mad8" name="GiftValue" xy="25,95" pivot="0.5,0.5" size="10,25" fontSize="18" color="#8391ae" align="center" vAlign="middle" leading="0" letterSpacing="1" singleLine="true" text=""/>
+  </displayList>
+</component>

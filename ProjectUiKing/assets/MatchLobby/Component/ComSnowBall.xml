@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="50,22" initName="ComSnowBall">
+  <displayList>
+    <image id="n0_tbey" name="n0" src="gy6lkk" fileName="Image/New/UI2_通用_重购增购底.png" pkg="nhvxw9ov" xy="0,0" size="50,22" color="#2f68da"/>
+    <text id="n1_tbey" name="Lan_Text_Snowball" xy="0,0" pivot="0.5,0.5" size="50,22" fontSize="12" color="#173261" align="center" vAlign="middle" leading="0" autoSize="none" text="滚雪球"/>
+  </displayList>
+</component>

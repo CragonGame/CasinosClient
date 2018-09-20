@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="72,66" extention="Button">
+  <displayList>
+    <image id="n24_ow3k" name="n24" src="ow3k2" fileName="Image/WeChat.png" xy="0,0"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.95"/>
+</component>

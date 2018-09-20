@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2597045772
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 097db9fc029abc30ad45c6832e33a6fb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/TongPei.mp3
+Dependencies: []

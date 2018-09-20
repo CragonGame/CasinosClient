@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <image id="n0_s17d" name="n0" src="t4ok7l" pkg="gbdohaiv" xy="-124,-97" size="1314,835" hideByEditor="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <component id="n3_s17d" name="BtnReturn" src="wb2ek4" pkg="nhvxw9ov" xy="19,13"/>
+    <list id="n4_nhy4" name="ListMatch" xy="0,510" size="1066,130" layout="row" overflow="scroll" scroll="horizontal" colGap="47" defaultItem="ui://61kbhm96nhy43" align="center" vAlign="middle">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </list>
+    <component id="n11_sd6w" name="BtnHelp" src="sd6wl0" pkg="nhvxw9ov" xy="987,13">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n1_s17d" name="BtnCreateMatch" src="s17d1" xy="107,292" size="296,154">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n6_qkn2" name="BtnCreateTable" src="qkn2f" xy="107,132" size="296,154">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n7_qkn2" name="BtnJoinMatch" src="qkn2g" xy="408,132">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n8_qkn2" name="BtnClub" src="qkn2i" xy="687,132">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+  <transition name="TransitionShow">
+    <item time="0" type="XY" target="n8_qkn2" tween="true" startValue="1066,-" endValue="687,132" duration="6" ease="Linear"/>
+    <item time="0" type="XY" target="n4_nhy4" tween="true" startValue="-,640" endValue="0,510" duration="6"/>
+    <item time="0" type="XY" target="n6_qkn2" tween="true" startValue="-296,132" endValue="107,132" duration="5" ease="Linear"/>
+    <item time="0" type="XY" target="n7_qkn2" tween="true" startValue="1066,-" endValue="408,132" duration="5" ease="Linear"/>
+    <item time="0" type="XY" target="n1_s17d" tween="true" startValue="-296,-" endValue="107,-" duration="6" ease="Linear"/>
+    <item time="0" type="XY" target="n11_sd6w" tween="true" startValue="987,-60" endValue="987,13" duration="6"/>
+    <item time="0" type="XY" target="n3_s17d" tween="true" startValue="19,-60" endValue="19,13" duration="6"/>
+  </transition>
+</component>

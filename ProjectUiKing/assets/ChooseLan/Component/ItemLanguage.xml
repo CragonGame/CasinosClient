@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="582,80" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n9_rdp3" name="n9" src="l1q0c9" fileName="Image/BgTransparent.png" pkg="nhvxw9ov" xy="0,0" size="582,80" group="n8_rhkp"/>
+    <loader id="n0_rhkp" name="LoadLanguage" xy="3,2" size="577,76" group="n8_rhkp" touchable="false" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <text id="n1_rhkp" name="TextLanguage" xy="6,7" size="570,67" group="n8_rhkp" font="FontCu" fontSize="40" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="中文"/>
+    <group id="n8_rhkp" name="n8" xy="0,0" size="582,80" advanced="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </group>
+  </displayList>
+  <Button/>
+</component>

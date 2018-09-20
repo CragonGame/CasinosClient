@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="80,80">
+  <displayList>
+    <image id="n3_svov" name="ImageBg" src="et5o7" xy="6,6"/>
+    <component id="n4_llx1" name="ComHeadIcon" src="d45975" pkg="nhvxw9ov" xy="0,0" pivot="0.5,0.5" size="80,80"/>
+    <text id="n1_et5o" name="TextName" xy="0,-23" pivot="0.5,0.5" size="80,23" fontSize="17" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="center-center"/>
+    </text>
+    <text id="n2_et5o" name="TextChipAmount" xy="0,80" pivot="0.5,0.5" size="80,23" fontSize="17" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="center-center"/>
+    </text>
+  </displayList>
+</component>

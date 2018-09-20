@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerRewardPot" pages="0,RewardPot,1,WinRewardPotPlayerList" selected="1"/>
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <component id="n77_ow7f" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n93_wb2e" name="n93" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="153,77" group="n99_m4t7"/>
+    <loader id="n57_jvj7" name="Lan_Image_LastRoundAward" xy="177,465" pivot="0.5,0.5" size="88,62" group="n36_etcz" touchable="false" url="ui://6kz8w16qitm12a" align="center" vAlign="middle"/>
+    <text id="n30_etcz" name="Lan_Text_CardType" xy="264,482" pivot="0.5,0.5" size="57,29" group="n36_etcz" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="牌型"/>
+    <loader id="n31_etcz" name="Card0" xy="322,472" size="35,50" group="n36_etcz" fill="scaleFree"/>
+    <loader id="n32_etcz" name="Card1" xy="340,472" size="35,50" group="n36_etcz" fill="scaleFree"/>
+    <loader id="n33_etcz" name="Card2" xy="357,472" size="35,50" group="n36_etcz" fill="scaleFree"/>
+    <loader id="n34_etcz" name="Card3" xy="375,472" size="35,50" group="n36_etcz" fill="scaleFree"/>
+    <loader id="n35_etcz" name="Card4" xy="392,472" size="35,50" group="n36_etcz" fill="scaleFree"/>
+    <group id="n36_etcz" name="n36" xy="177,465" size="250,62" group="n78_ow7f"/>
+    <text id="n38_etcz" name="Lan_Text_Total" xy="430,480" pivot="0.5,0.5" size="65,29" group="n40_etcz" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="总额"/>
+    <text id="n39_etcz" name="WinTotalGold" xy="494,480" pivot="0.5,0.5" size="135,30" group="n40_etcz" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n40_etcz" name="n40" xy="430,480" size="199,30" group="n78_ow7f" collapsed="true"/>
+    <text id="n41_etcz" name="Lan_Text_Date" xy="629,477" pivot="0.5,0.5" size="61,35" group="n43_etcz" fontSize="24" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="日期"/>
+    <text id="n42_etcz" name="WinTime" xy="689,479" pivot="0.5,0.5" size="223,29" group="n43_etcz" fontSize="22" color="#ffffff" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n43_etcz" name="n43" xy="628,477" size="284,35" group="n78_ow7f" collapsed="true"/>
+    <image id="n80_ow7f" name="n80" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="206,215" size="672,4" group="n70_dnpc"/>
+    <image id="n81_ow7f" name="n81" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="206,263" size="672,4" group="n70_dnpc"/>
+    <image id="n83_ow7f" name="n83" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="206,327" size="672,4" group="n70_dnpc"/>
+    <text id="n9_etcz" name="RewardPot" xy="402,172" size="407,39" group="n70_dnpc" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="00000000"/>
+    <text id="n11_etcz" name="Lan_Text_TipAllPlayer" xy="217,226" pivot="0.5,0.5" size="649,32" group="n70_dnpc" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="所有玩家的获利将有小部分进入奖池"/>
+    <text id="n21_etcz" name="Lan_Text_OpenType" xy="206,281" pivot="0.5,0.5" size="136,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="开牌类型"/>
+    <text id="n22_etcz" name="Lan_Text_RoyalFlush" xy="349,278" pivot="0.5,0.5" size="187,39" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="皇家同花顺"/>
+    <text id="n23_etcz" name="Lan_Text_StraightFlush" xy="544,280" pivot="0.5,0.5" size="141,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="同花顺"/>
+    <text id="n24_etcz" name="Lan_Text_FourOfAKind" xy="691,280" pivot="0.5,0.5" size="146,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="四条"/>
+    <text id="n25_etcz" name="Lan_Text_OpeningProportion" xy="211,345" pivot="0.5,0.5" size="124,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="开牌比例"/>
+    <text id="n26_etcz" name="n26" xy="384,344" size="117,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="50%"/>
+    <text id="n27_etcz" name="n27" xy="556,344" size="117,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="40%"/>
+    <text id="n28_etcz" name="n28" xy="705,344" size="117,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="30%"/>
+    <image id="n76_smxa" name="n76" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="332,172" group="n70_dnpc" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </image>
+    <image id="n100_j1yr" name="n100" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="332,172" group="n70_dnpc" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </image>
+    <image id="n87_jx6n" name="n87" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="206,390" size="672,4" group="n70_dnpc"/>
+    <text id="n88_jx6n" name="Lan_Text_MaxMultiplier" xy="208,407" pivot="0.5,0.5" size="128,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="最高倍数"/>
+    <text id="n89_jx6n" name="n89" xy="383,406" size="117,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="120"/>
+    <text id="n90_jx6n" name="n90" xy="555,406" size="117,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="100"/>
+    <text id="n91_jx6n" name="n91" xy="704,406" size="117,35" group="n70_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="80"/>
+    <group id="n70_dnpc" name="n70" xy="206,172" size="672,270" group="n78_ow7f"/>
+    <group id="n78_ow7f" name="n78" xy="177,172" size="735,355" group="n99_m4t7" advanced="true">
+      <gearDisplay controller="ControllerRewardPot" pages="0"/>
+    </group>
+    <list id="n48_etcz" name="ListPlayerInfo" xy="200,199" size="666,264" group="n72_dnpc" overflow="scroll" lineGap="1" defaultItem="ui://z8juw08setcz6"/>
+    <text id="n45_etcz" name="Lan_Text_Icon" xy="259,169" pivot="0.5,0.5" size="65,29" group="n72_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="头像"/>
+    <text id="n47_etcz" name="Lan_Text_Bonus" xy="741,168" size="65,29" group="n72_dnpc" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="奖金"/>
+    <group id="n72_dnpc" name="n72" xy="200,168" size="666,295" group="n99_m4t7" advanced="true">
+      <gearDisplay controller="ControllerRewardPot" pages="1"/>
+    </group>
+    <text id="n96_m4t7" name="TextTitleLeft" xy="274,81" pivot="0.5,0.5" size="165,50" group="n99_m4t7" font="BigTitle" fontSize="40" color="#242546" align="center" vAlign="middle" leading="0" ubb="true" text="奖池信息"/>
+    <text id="n97_m4t7" name="TextTitleRight" xy="626,81" pivot="0.5,0.5" size="165,50" group="n99_m4t7" font="BigTitle" fontSize="40" color="#242546" align="center" vAlign="middle" leading="0" ubb="true" text="中奖纪录"/>
+    <component id="n52_103ld" name="BtnTabPlayerInfo" src="qkn2kv" fileName="Component/Btn/BtnEmpty.xml" pkg="nhvxw9ov" xy="630,85" size="159,43" group="n99_m4t7"/>
+    <component id="n51_103ld" name="BtnTabRewardPot" src="qkn2kv" fileName="Component/Btn/BtnEmpty.xml" pkg="nhvxw9ov" xy="278,85" size="159,43" group="n99_m4t7"/>
+    <group id="n99_m4t7" name="n99" xy="153,77" size="759,450" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

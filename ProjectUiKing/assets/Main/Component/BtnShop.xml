@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="94,83" extention="Button" initName="BtnShop">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <loader id="n9_hl9h" name="Lan_Image_BtnShop" xy="0,0" size="94,83" url="ui://gbdohaivt4ok7m" align="center" vAlign="middle" fill="scaleFree"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

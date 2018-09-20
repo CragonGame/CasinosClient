@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="275,103">
+  <controller name="ControllerShowDiamondIcon" pages="0,Show,1,Hide" selected="0">
+    <action type="play_transition" fromPage="0" toPage="1" transition="t0"/>
+  </controller>
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <component id="n1_d6ge" name="CoHeadIcon" src="d45975" pkg="nhvxw9ov" xy="0,0" size="99,99"/>
+    <text id="n2_d6ge" name="TextName" xy="101,0" size="174,36" fontSize="28" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n3_d6ge" name="TextChips" xy="132,34" size="143,36" fontSize="28" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n4_d6ge" name="TextGolds" xy="132,67" size="143,36" fontSize="28" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n5_trl1" name="IconGold" src="hrhqkc" pkg="nhvxw9ov" xy="102,38" pivot="0.5,0.5" size="28,28" group="n11_j1yr" color="#61e2ff"/>
+    <image id="n7_g5lb" name="IconDiamond" src="ixpjau" pkg="nhvxw9ov" xy="100,73" size="33,24" group="n11_j1yr">
+      <gearDisplay controller="ControllerShowDiamondIcon" pages="0"/>
+    </image>
+    <group id="n11_j1yr" name="n11" xy="100,38" size="33,59" advanced="true" collapsed="true">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </group>
+    <image id="n8_j1yr" name="n8" src="j1yrlq" pkg="nhvxw9ov" xy="102,39" size="28,28" group="n13_j1yr" color="#61e2ff"/>
+    <image id="n12_j1yr" name="n12" src="j1yrlq" pkg="nhvxw9ov" xy="102,70" size="28,28" group="n13_j1yr" color="#a273ff"/>
+    <group id="n13_j1yr" name="n13" xy="102,39" size="28,59" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </group>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="XY" target="n4_d6ge" value="100,-"/>
+  </transition>
+</component>

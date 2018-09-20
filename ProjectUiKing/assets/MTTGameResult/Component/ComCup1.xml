@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="591,384">
+  <displayList>
+    <image id="n3_n1oc" name="n3" src="n1oc3" xy="81,12" pivot="1,1" rotation="-3"/>
+    <image id="n4_n1oc" name="n4" src="n1oc3" xy="191,12" pivot="1,1" skew="0,180" rotation="3"/>
+    <image id="n0_n1oc" name="n0" src="n1oc1" xy="102,0"/>
+    <image id="n1_n1oc" name="n1" src="n1oc5" xy="14,37" pivot="1,0" rotation="6"/>
+    <image id="n2_n1oc" name="n2" src="n1oc2" xy="386,34" rotation="-3"/>
+    <image id="n5_n1oc" name="n5" src="n1oc8" xy="242,46"/>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n2_n1oc" tween="true" startValue="-3" endValue="-8" duration="24" ease="Quad.InOut" yoyo="true"/>
+    <item time="0" type="Rotation" target="n1_n1oc" tween="true" startValue="6" endValue="9" duration="24" ease="Quad.InOut" yoyo="true"/>
+    <item time="24" type="Rotation" target="n1_n1oc" tween="true" startValue="9" endValue="6" duration="24" ease="Quad.InOut" yoyo="true"/>
+    <item time="24" type="Rotation" target="n2_n1oc" tween="true" startValue="-8" endValue="-3" duration="24" ease="Quad.InOut" yoyo="true"/>
+    <item time="48" type="Rotation" target="n2_n1oc" tween="true" startValue="-3" ease="Quad.InOut" yoyo="true"/>
+    <item time="48" type="Rotation" target="n1_n1oc" tween="true" startValue="6" ease="Quad.InOut" yoyo="true"/>
+  </transition>
+</component>

@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 4245781919
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 892eba402f28ee5f96c1d8f1a94e18f5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateDeskTop/CreateDeskTop@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateDeskTop/CreateDeskTop.bytes
+Dependencies: []

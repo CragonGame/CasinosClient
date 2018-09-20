@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n26_h1h1" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n14_r6kn" name="CoMailRealDetail" src="j0t7c" fileName="Component/CoMailRealDetail.xml" xy="264,212" group="n35_l3vq"/>
+    <component id="n19_asp3" name="BtnConfirm" src="n8clh" fileName="Component/BtnConfirm.xml" xy="448,413" group="n35_l3vq"/>
+    <loader id="n24_asp3" name="Lan_Image_GetAccessory" xy="468,416" size="130,47" group="n35_l3vq" hideByEditor="true" visible="false" touchable="false" align="center" vAlign="middle"/>
+    <loader id="n25_asp3" name="Lan_Image_Ensure" xy="468,418" size="130,47" group="n35_l3vq" hideByEditor="true" visible="false" touchable="false" align="center" vAlign="middle"/>
+    <text id="n31_m4t7" name="TextTitle" xy="278,158" pivot="0.5,0.5" size="509,44" group="n35_l3vq" font="BigTitle" fontSize="35" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n35_l3vq" name="n35" xy="264,158" size="538,325" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

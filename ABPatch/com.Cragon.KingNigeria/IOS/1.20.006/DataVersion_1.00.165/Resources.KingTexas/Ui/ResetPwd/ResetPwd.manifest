@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 57840122
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: resetpwd.ab
+      Dependencies: {}

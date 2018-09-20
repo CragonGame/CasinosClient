@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <component id="n36_fb5j" name="ComDesktopParent" src="fb5j2x" fileName="Component/ComDesktopParent.xml" xy="0,0"/>
+    <component id="n59_erub" name="BtnShop" src="xk561y" fileName="Component/BtnShop.xml" pkg="08hoz1y1" xy="908,11">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n20_fb5j" name="BtnHistory" src="fb5j2p" fileName="Component/BtnHistory.xml" xy="987,392">
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </component>
+    <component id="n54_8vtz" name="CoShiShiCai" src="j6hsb5" fileName="Component/ComLotteryTicket.xml" pkg="nhvxw9ov" xy="822,2">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n58_jx6n" name="BtnStandPlayer" src="jx6n53" fileName="Component/BtnStandPlayer.xml" xy="987,11">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n48_he5u" name="BtnFriend" src="q7ht66" fileName="Component/BtnFriend.xml" pkg="08hoz1y1" xy="5,392">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <list id="n34_fb5j" name="ListBetOperate" xy="258,525" size="647,115" layout="row" scroll="horizontal" margin="3,0,0,0" colGap="-3" defaultItem="ui://erh3pvqhfb5j2s" autoItemSize="false" vAlign="bottom">
+      <relation target="" sidePair="bottom-bottom,center-center"/>
+    </list>
+    <component id="n37_fb5j" name="CoDealer" src="fb5j2u" fileName="Component/CoDealer.xml" xy="532,99">
+      <relation target="" sidePair="top-top,center-center"/>
+    </component>
+    <component id="n39_fb5j" name="CoDesktopHPoolParent" src="fb5j2v" fileName="Component/ComDesktopHPoolParent.xml" xy="0,0"/>
+    <component id="n40_fb5j" name="CoDesktopHTopParent" src="fb5j2w" fileName="Component/ComDesktopHTopParent.xml" xy="0,0"/>
+    <component id="n38_fb5j" name="CoChatParentStandPlayer" src="fb5j2l" fileName="Component/CoChatParent.xml" xy="1004,15">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n41_czif" name="BtnSetCardType" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="120,38" group="n43_czif" alpha="0.08"/>
+    <group id="n43_czif" name="GroupSetCardType" xy="120,38" size="170,76" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <text id="n44_czif" name="Time" xy="87,21" size="10,27" fontSize="20" color="#96999d" vAlign="middle" leading="0" text="">
+      <relation target="" sidePair="left-left,top-top"/>
+    </text>
+    <component id="n45_n04r" name="ComBetLotteryBox" src="n04r42" fileName="Component/ComBetReward.xml" xy="982,562">
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </component>
+    <component id="n49_he5u" name="BtnChatFriend" src="q7ht68" fileName="Component/BtnFriendChat.xml" pkg="08hoz1y1" xy="5,476">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n50_he5u" name="BtnMenu" src="xk5623" fileName="Component/BtnMenu.xml" pkg="08hoz1y1" xy="5,11"/>
+    <component id="n53_m4hj" name="BtnRepeat" src="jx6n53" fileName="Component/BtnStandPlayer.xml" xy="853,576" hideByEditor="true" visible="false">
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </component>
+    <component id="n55_kv0i" name="BtnChat" src="cpaa53" fileName="Component/BtnChatFriend.xml" pkg="08hoz1y1" xy="987,476">
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </component>
+    <component id="n25_fb5j" name="CoHeadIconSelf" src="fb5j1z" fileName="Component/CoHeadIcon.xml" xy="6,557" size="80,80" group="n56_potm"/>
+    <text id="n28_fb5j" name="NickNameSelf" xy="88,563" size="160,29" group="n56_potm" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n31_fb5j" name="GoldSelf" xy="120,604" size="127,29" group="n56_potm" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n61_vzxh" name="n61" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="88,603" size="30,30" group="n56_potm" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </image>
+    <image id="n62_j1yr" name="n62" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="87,603" size="30,30" group="n56_potm" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </image>
+    <group id="n56_potm" name="selfinfo" xy="6,557" size="242,80" advanced="true">
+      <relation target="" sidePair="bottom-bottom"/>
+    </group>
+    <component id="n60_y30t" name="ComMsgTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="43,480"/>
+    <component id="n64_d6x8" name="ComShadeReward" src="u51o84" fileName="Component/ComShadeMore.xml" pkg="gbdohaiv" xy="0,0" hideByEditor="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n63_d6x8" name="ComReward" src="lmq9lm" fileName="Component/ComReward.xml" pkg="nhvxw9ov" xy="95,-91"/>
+    <component id="n65_d6x8" name="ComRewardTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="50,14" visible="false"/>
+  </displayList>
+  <transition name="TransitionReward">
+    <item time="0" type="XY" target="n63_d6x8" tween="true" startValue="-,-91" endValue="-,10" duration="6"/>
+    <item time="6" type="XY" target="n63_d6x8" tween="true" startValue="-,10"/>
+  </transition>
+</component>

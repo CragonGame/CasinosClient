@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1217963165
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: club.ab
+      Dependencies: {}

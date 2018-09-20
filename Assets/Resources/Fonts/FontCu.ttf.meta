@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 3586209b31a18eb4cb6a195b6c0c7c02
+timeCreated: 1522120386
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: FZLanTingHeiS-DB-GB
+  fontNames:
+  - FontCu
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 40d379cfc0bb00d458788e90c801eb7f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

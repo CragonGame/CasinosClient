@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" bgColor="#333333">
+  <displayList>
+    <component id="n51_lh6b" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <text id="n4" name="Lan_Text_DoubleVip" xy="564,214" size="188,29" group="n58_nhsw" fontSize="22" color="#ffffff" align="right" leading="0" autoSize="shrink" singleLine="true" text="激活VIP奖励加倍"/>
+    <text id="n5" name="Lan_Text_WeeklyReward" xy="147,217" size="481,25" group="n58_nhsw" fontSize="18" color="#ffffff" leading="0" autoSize="shrink" singleLine="true" text="每周累计签到到达指定天数，即可获得相应奖励"/>
+    <component id="n40_twda" name="Lan_Btn_GetDailyReward" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="448,486" pivot="0.5,0.5" group="n58_nhsw"/>
+    <list id="n23" name="ListItemReward" xy="140,255" size="784,180" group="n58_nhsw" touchable="false" layout="flow_hz" lineGap="11" colGap="2" defaultItem="ui://my2pm5uwtq72i" align="center"/>
+    <component id="n49_f4nw" name="Lan_Btn_BecomeVIP" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="751,187" group="n58_nhsw"/>
+    <graph id="n26_k6os" name="FallGoldParent" xy="533,129" size="0,0" group="n58_nhsw" type="rect">
+      <relation target="" sidePair="top-top,middle-middle"/>
+    </graph>
+    <image id="n33_bsci" name="n33" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="538,74" pivot="0.5,0.5" group="n58_nhsw" skew="0,180"/>
+    <image id="n34_bsci" name="n34" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="490,74" pivot="0.5,0.5" group="n58_nhsw"/>
+    <image id="n54_lh6b" name="n54" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="141,81" group="n58_nhsw"/>
+    <component id="n56_pcq4" name="ComParticlePos" src="pcq4x" fileName="Component/ComPos.xml" xy="533,493" size="0,0" group="n58_nhsw"/>
+    <text id="n57_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n58_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n58_nhsw" name="n58" xy="140,74" size="784,476" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

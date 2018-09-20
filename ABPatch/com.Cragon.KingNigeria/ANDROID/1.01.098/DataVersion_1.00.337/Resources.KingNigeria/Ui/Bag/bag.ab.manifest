@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2372870545
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 45cf251bf1c4c518b7f790d9bfea980f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/Bag/Bag.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/Bag/Bag@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/Bag/Bag@sprites.bytes
+Dependencies: []

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" initName="ComChooseTime">
+  <displayList>
+    <image id="n39_donu" name="n39" src="t4ok7l" pkg="gbdohaiv" xy="-124,-97" size="1314,835">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n40_donu" name="n40" src="u51ojc" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0.82" color="#17192c">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n9_donu" name="n9" src="t4okj4" pkg="nhvxw9ov" xy="299,150" pivot="0.5,0.5" size="468,340" group="n41_donu"/>
+    <image id="n10_donu" name="n10" src="vi47jn" pkg="nhvxw9ov" xy="318,166" pivot="0.5,0.5" size="215,50" group="n41_donu"/>
+    <image id="n11_donu" name="n11" src="vi47jn" pkg="nhvxw9ov" xy="533,166" pivot="0.5,0.5" size="215,50" group="n41_donu" skew="0,180"/>
+    <component id="n14_donu" name="BtnClose" src="jt75ep" pkg="nhvxw9ov" xy="686,163" group="n41_donu"/>
+    <text id="n15_donu" name="n15" xy="390,172" size="284,39" group="n41_donu" fontSize="30" color="#a7b6d7" align="center" vAlign="middle" leading="0" bold="true" text="请设置比赛开始时间"/>
+    <component id="n33_donu" name="BtnEnsure" src="donus" xy="460,398" size="144,60" group="n41_donu"/>
+    <image id="n21_donu" name="n21" src="lh6bjv" pkg="nhvxw9ov" xy="416,326" size="70,38" group="n41_donu"/>
+    <text id="n22_donu" name="n22" xy="492,329" size="30,32" group="n41_donu" fontSize="25" color="#a7b6d7" align="center" vAlign="middle" leading="0" text="时"/>
+    <image id="n23_donu" name="n23" src="lh6bjv" pkg="nhvxw9ov" xy="541,326" size="70,38" group="n41_donu"/>
+    <text id="n24_donu" name="n24" xy="618,330" size="30,32" group="n41_donu" fontSize="25" color="#a7b6d7" align="center" vAlign="middle" leading="0" text="分"/>
+    <image id="n16_donu" name="n16" src="lh6bjv" pkg="nhvxw9ov" xy="416,265" size="70,38" group="n41_donu"/>
+    <text id="n17_donu" name="n17" xy="492,268" size="30,32" group="n41_donu" fontSize="25" color="#a7b6d7" align="center" vAlign="middle" leading="0" text="月"/>
+    <image id="n18_donu" name="n18" src="lh6bjv" pkg="nhvxw9ov" xy="541,265" size="70,38" group="n41_donu"/>
+    <text id="n19_donu" name="n19" xy="618,268" size="30,32" group="n41_donu" fontSize="25" color="#a7b6d7" align="center" vAlign="middle" leading="0" text="日"/>
+    <text id="n28_donu" name="TextInputMonth" xy="418,268" size="66,32" group="n41_donu" input="true" prompt="--" maxLength="2" restrict="[0-9]" keyboardType="4" fontSize="25" color="#8af2f6" align="center" vAlign="middle" leading="0" autoSize="none" text="--"/>
+    <text id="n29_donu" name="TextInputDay" xy="543,268" size="66,32" group="n41_donu" input="true" prompt="--" maxLength="2" restrict="[0-9]" keyboardType="4" fontSize="25" color="#8af2f6" align="center" vAlign="middle" leading="0" autoSize="none" text="--"/>
+    <text id="n30_donu" name="TextInputHour" xy="418,329" size="66,32" group="n41_donu" input="true" maxLength="2" restrict="[0-9]" keyboardType="4" fontSize="25" color="#8af2f6" align="center" vAlign="middle" leading="0" autoSize="none" text="--"/>
+    <text id="n31_donu" name="TextInputMinute" xy="543,329" size="66,32" group="n41_donu" input="true" maxLength="2" restrict="[0-9]" keyboardType="4" fontSize="25" color="#8af2f6" align="center" vAlign="middle" leading="0" autoSize="none" text="--"/>
+    <text id="n34_donu" name="n34" xy="387,225" size="112,32" group="n37_donu" input="true" fontSize="25" color="#a7b6d7" align="center" vAlign="middle" leading="0" text="当前时间:"/>
+    <text id="n36_donu" name="n36" xy="502,225" size="174,32" group="n37_donu" input="true" fontSize="25" color="#8af2f6" vAlign="middle" leading="0" text="03月19日20:05"/>
+    <group id="n37_donu" name="n37" xy="387,225" size="291,32" group="n41_donu" hideByEditor="true" visible="false" advanced="true"/>
+    <group id="n41_donu" name="n41" xy="299,150" size="468,340" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

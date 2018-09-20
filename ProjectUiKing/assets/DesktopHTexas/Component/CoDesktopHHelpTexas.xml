@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="744,379" overflow="scroll" clipSoftness="2,2" extention="Label">
+  <displayList>
+    <text id="n1" name="Lan_Text_TexasDesktopHRule" xy="0,0" size="744,581" fontSize="22" color="#ffffff" ubb="true" autoSize="none" text="上庄规则:&#xA;1.玩家均有机会以庄家的身份进行游戏，上庄需要携带系统规定的上庄筹码才能坐庄&#xA;2.按照玩家申请上庄的先后顺序依次轮流坐庄，若无其他玩家上庄，则当前庄家可以一直坐庄，玩家可以在结算的时候选择下庄&#xA;3.若是无人申请上庄，则系统为庄家&#xA;玩家押注额度规则:&#xA;1.玩家最大押注自身携带筹码总数的25%，例如玩家身上携带了100万那么最多只能下注25万&#xA;胜负规则:&#xA;当局牌型大者胜，牌型相同庄家赢&#xA;奖池抽水:&#xA;1.凡是参与投注即视为参与了奖池&#xA;2.庄家或者玩家任何人实际赢取的筹码的3%累计进奖池&#xA;3.多个玩家击中奖池，按照投注比率分配，投注越多的玩家获得奖励越多&#xA;4.如果同个回合击中多个中奖牌型组合，那将会发放给牌型最大的牌型组合&#xA;本游戏的玩法规则最终解释权归顶星德州所有"/>
+  </displayList>
+</component>

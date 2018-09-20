@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="297,35">
+  <displayList>
+    <text id="n1_lkoc" name="GameTips" xy="39,1" size="220,32" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

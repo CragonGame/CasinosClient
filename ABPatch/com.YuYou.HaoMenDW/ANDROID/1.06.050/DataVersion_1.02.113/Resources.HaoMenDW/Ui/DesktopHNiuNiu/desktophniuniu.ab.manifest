@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4283862178
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 01b0fcef8b7bbcfe3948dbc384c4a503
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e524609455c7cfb29b5bab3f5d3ec7c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgFold/Ui/DesktopHNiuNiu/DesktopHNiuNiu.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/DesktopHNiuNiu/DesktopHNiuNiu@sprites.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/DesktopHNiuNiu/DesktopHNiuNiu@atlas0.png
+Dependencies: []

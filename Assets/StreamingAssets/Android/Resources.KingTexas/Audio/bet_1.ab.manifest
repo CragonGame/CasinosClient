@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1859684957
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e02c57babfd7b27a4231be91d64af041
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/bet_1.wav
+Dependencies: []

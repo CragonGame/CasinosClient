@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="19,19" extention="Button">
+  <displayList>
+    <image id="n5_d6ge" name="n5" src="dld2a7" xy="0,0" pivot="0.5,0.5" size="19,19"/>
+    <text id="n6_d6ge" name="TextMsgTips" xy="0,0" pivot="0.5,0.5" size="19,19" visible="false" fontSize="10" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+  <Button/>
+  <transition name="TransitionNewMsg" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Size" target="n5_d6ge" tween="true" startValue="19,19" endValue="25,25" duration="6" ease="Linear"/>
+    <item time="6" type="Size" target="n5_d6ge" tween="true" startValue="25,25" endValue="19,19" duration="6" ease="Linear"/>
+    <item time="12" type="Size" target="n5_d6ge" tween="true" startValue="19,19" endValue="19,19" duration="18"/>
+    <item time="30" type="Size" target="n5_d6ge" tween="true" startValue="19,19"/>
+  </transition>
+</component>

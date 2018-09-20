@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n41_h1h1" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n51_lh6b" name="n51" src="lh6bm" fileName="Image/UI2_设置_ICON.png" xy="140,74" group="n61_lvp2"/>
+    <component id="n28_rdp3" name="BtnResetPwd" src="n8cln" fileName="Component/BtnResetPwd.xml" xy="448,466" group="n61_lvp2" hideByEditor="true" visible="false"/>
+    <component id="n30_rdp3" name="Lan_Btn_SelectLanguage" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="448,466" group="n61_lvp2" hideByEditor="true" visible="false"/>
+    <component id="n35_jt75" name="ComAbount" src="jt75j" fileName="Component/ComAbount.xml" xy="783,481" group="n61_lvp2"/>
+    <component id="n36_g8hz" name="soundEffectBar" src="g8hzfl" fileName="Component/Slider.xml" pkg="nhvxw9ov" xy="417,211" group="n61_lvp2">
+      <relation target="n10_bz6i" sidePair="left-right"/>
+      <Slider value="50" max="100"/>
+    </component>
+    <component id="n37_g8hz" name="soundBar" src="g8hzfl" fileName="Component/Slider.xml" pkg="nhvxw9ov" xy="416,301" group="n61_lvp2">
+      <relation target="n11_bz6i" sidePair="left-right"/>
+      <Slider value="50" max="100"/>
+    </component>
+    <text id="n10_bz6i" name="Lan_Text_SoundEffect" xy="321,211" pivot="0,0.5" size="75,44" group="n61_lvp2" fontSize="35" color="#ffffff" vAlign="middle" leading="0" text="音效"/>
+    <text id="n11_bz6i" name="Lan_Text_Music" xy="321,301" pivot="0,0.5" size="75,44" group="n61_lvp2" fontSize="35" color="#ffffff" vAlign="middle" leading="0" text="音乐"/>
+    <loader id="n47_q5yu" name="Lan_Image_ChooseLanguage" xy="471,483" pivot="0.5,0.5" size="123,25" group="n61_lvp2" hideByEditor="true" visible="false" touchable="false" url="ui://6kz8w16qq5yu4p" align="center" vAlign="middle" fill="scale">
+      <relation target="n30_rdp3" sidePair="center-center,middle-middle"/>
+    </loader>
+    <image id="n52_lh6b" name="n52" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="490,73" pivot="0.5,0.5" group="n61_lvp2">
+      <relation target="n57_m4t7" sidePair="right-left"/>
+    </image>
+    <image id="n53_lh6b" name="n53" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="538,73" pivot="0.5,0.5" group="n61_lvp2" skew="0,180">
+      <relation target="n57_m4t7" sidePair="left-right"/>
+    </image>
+    <text id="n57_m4t7" name="TextTitle" xy="528,80" pivot="0.5,0.5" size="10,50" group="n61_lvp2" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <text id="n59_lvp2" name="Lan_Text_AutoRotation" xy="321,391" pivot="0,0.5" size="145,44" group="n61_lvp2" fontSize="35" color="#ffffff" vAlign="middle" leading="0" text="横屏旋转"/>
+    <component id="n60_lvp2" name="BtnSwitch" src="lvp2lf" fileName="Component/Btn/BtnSwitch.xml" pkg="nhvxw9ov" xy="480,393" group="n61_lvp2">
+      <relation target="n59_lvp2" sidePair="left-right"/>
+    </component>
+    <group id="n61_lvp2" name="n61" xy="140,73" size="727,457" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

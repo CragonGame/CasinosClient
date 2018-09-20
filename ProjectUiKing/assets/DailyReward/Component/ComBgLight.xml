@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="110,180">
+  <displayList>
+    <image id="n0_lh6b" name="n0" src="lh6bt" xy="55,0" pivot="0.5,0.5" size="55,90">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_lh6b" name="n1" src="lh6bt" xy="0,0" pivot="0.5,0.5" size="55,90" skew="0,180">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n2_lh6b" name="n2" src="lh6bt" xy="55,90" pivot="0.5,0.5" size="55,90" skew="180,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n3_lh6b" name="n3" src="lh6bt" xy="0,90" pivot="0.5,0.5" size="55,90" skew="180,180">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+</component>

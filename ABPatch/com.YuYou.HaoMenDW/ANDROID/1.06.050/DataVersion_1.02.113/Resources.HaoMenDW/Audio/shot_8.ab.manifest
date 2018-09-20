@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 135969403
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e034e7e9f2ca0049b2438e998f931d8f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/shot_8.ogg
+Dependencies: []

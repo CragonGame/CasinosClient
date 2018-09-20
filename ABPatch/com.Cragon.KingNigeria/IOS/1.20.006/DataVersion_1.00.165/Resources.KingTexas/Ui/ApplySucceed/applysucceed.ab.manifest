@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2987334001
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ea23203d410ca03573f76a2a44b4a6c0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/ApplySucceed/ApplySuccedd.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/ApplySucceed/ApplySuccedd@sprites.bytes
+Dependencies: []

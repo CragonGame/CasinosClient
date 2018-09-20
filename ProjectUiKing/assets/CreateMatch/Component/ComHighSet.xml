@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" opaque="false" initName="ComHighSet" adaptationTest="FitSize">
+  <displayList>
+    <component id="n8_nhy4" name="SliderRaiseBlindTime" src="nhy4b" xy="124,223" size="372,32" group="n18_nhy4">
+      <Slider value="50" max="100"/>
+    </component>
+    <text id="n9_nhy4" name="n9" xy="124,177" size="125,27" group="n18_nhy4" fontSize="20" color="#566fa8" vAlign="middle" leading="0" autoSize="none" text="涨盲时间          "/>
+    <text id="n10_nhy4" name="TextRaiseBlindTime" xy="371,179" pivot="1,0" size="125,27" group="n18_nhy4" fontSize="20" color="#b5c9ea" align="right" vAlign="middle" leading="0" autoSize="none" text="1000"/>
+    <group id="n18_nhy4" name="2" xy="124,177" size="372,78" collapsed="true"/>
+    <component id="n11_nhy4" name="SliderStartBlind" src="nhy4b" xy="124,351" size="372,32" group="n19_nhy4">
+      <Slider value="50" max="100"/>
+    </component>
+    <text id="n12_nhy4" name="n12" xy="124,305" size="125,27" group="n19_nhy4" fontSize="20" color="#566fa8" vAlign="middle" leading="0" autoSize="none" text="起始盲注     "/>
+    <text id="n13_nhy4" name="TextStartBlind" xy="371,307" pivot="1,0" size="125,27" group="n19_nhy4" fontSize="20" color="#b5c9ea" align="right" vAlign="middle" leading="0" autoSize="none" text="1000"/>
+    <group id="n19_nhy4" name="3" xy="124,305" size="372,78" collapsed="true"/>
+    <component id="n14_nhy4" name="SliderStopSignupLevel" src="nhy4b" xy="124,479" size="372,32" group="n20_nhy4">
+      <Slider value="50" max="100"/>
+    </component>
+    <text id="n15_nhy4" name="n15" xy="124,433" size="213,27" group="n20_nhy4" fontSize="20" color="#566fa8" vAlign="middle" leading="0" autoSize="none" text="截至报名级别 "/>
+    <text id="n16_nhy4" name="TextStopSignupLevel" xy="371,435" pivot="1,0" size="125,27" group="n20_nhy4" fontSize="20" color="#b5c9ea" align="right" vAlign="middle" leading="0" autoSize="none" text="1000         "/>
+    <group id="n20_nhy4" name="4" xy="124,433" size="372,78" collapsed="true"/>
+    <component id="n1_nhy4" name="SliderStartScore" src="nhy4b" xy="124,95" size="372,32" group="n17_nhy4">
+      <Slider value="50" max="100"/>
+    </component>
+    <text id="n6_nhy4" name="n6" xy="124,49" size="125,27" group="n17_nhy4" fontSize="20" color="#566fa8" vAlign="middle" leading="0" autoSize="none" text="起始记分牌            "/>
+    <text id="n7_nhy4" name="TextStartScore" xy="371,51" pivot="1,0" size="125,27" group="n17_nhy4" fontSize="20" color="#bcc9ea" align="right" vAlign="middle" leading="0" autoSize="none" text="1000"/>
+    <group id="n17_nhy4" name="1" xy="124,49" size="372,78" collapsed="true"/>
+    <component id="n21_nhy4" name="SliderRebuyTimes" src="nhy47" xy="568,95" size="373,32" group="n25_nhy4">
+      <Slider value="50" max="100"/>
+    </component>
+    <text id="n23_nhy4" name="n23" xy="568,51" size="125,27" group="n25_nhy4" fontSize="20" color="#566fa8" vAlign="middle" leading="0" autoSize="none" text="重购次数  "/>
+    <text id="n24_nhy4" name="TextRebuyTimes" xy="816,50" pivot="1,0" size="125,27" group="n25_nhy4" fontSize="20" color="#b9c5e7" align="right" vAlign="middle" leading="0" autoSize="none" text="1"/>
+    <group id="n25_nhy4" name="n25" xy="568,50" size="373,77" collapsed="true"/>
+    <text id="n26_nhy4" name="n26" xy="568,202" size="104,27" group="n28_nhy4" fontSize="20" color="#566fa8" vAlign="middle" leading="0" autoSize="none" text="允许增购                        "/>
+    <component id="n27_nhy4" name="BtnAllowAddon" src="nhy4h" xy="699,195" group="n28_nhy4"/>
+    <group id="n28_nhy4" name="n28" xy="568,195" size="238,40" collapsed="true"/>
+    <component id="n30_nhy4" name="ComTablePlayerNum" src="nhy4f" xy="568,451"/>
+    <component id="n31_qkn2" name="SliderAddonNum" src="nhy47" xy="568,350" size="373,32" group="n34_qkn2">
+      <Slider value="50" max="100"/>
+    </component>
+    <text id="n32_qkn2" name="n32" xy="568,306" size="125,27" group="n34_qkn2" fontSize="20" color="#566fa8" vAlign="middle" leading="0" autoSize="none" text="增购筹码数"/>
+    <text id="n33_qkn2" name="TextAddonNum" xy="816,305" pivot="1,0" size="125,27" group="n34_qkn2" fontSize="20" color="#b9c5e7" align="right" vAlign="middle" leading="0" autoSize="none" text="1"/>
+    <group id="n34_qkn2" name="GroupAddon" xy="568,305" size="373,77" visible="false" advanced="true" collapsed="true"/>
+  </displayList>
+</component>

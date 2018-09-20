@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="nzilj8da" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="796z4" name="Loading.xml" path="/" exported="true"/>
+    <image id="l4gzb" name="logo.png" path="/Image/" atlas="1"/>
+    <image id="l4gzc" name="logo_d.png" path="/Image/"/>
+    <image id="l4gzd" name="logo_gg.png" path="/Image/" atlas="1"/>
+    <image id="l4gze" name="Mote.png" path="/Image/"/>
+    <component id="ewc0j" name="Progress.xml" path="/Component/" exported="true"/>
+    <image id="ewc0k" name="BgBar.png" path="/Image/" scale="9grid" scale9grid="16,9,32,9"/>
+    <image id="ewc0l" name="Bar.png" path="/Image/" scale="9grid" scale9grid="12,6,24,12"/>
+    <component id="or7lq" name="ComLogo.xml" path="/Component/"/>
+    <component id="jyils" name="ComMoteParent.xml" path="/Component/"/>
+  </resources>
+  <publish name="Loading" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Loading"/>
+</packageDescription>

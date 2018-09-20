@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n0_hrhq" name="ComBgAndClose" src="vi47jm" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <text id="n25_j3hl" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n32_j3hl" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <image id="n2_hrhq" name="n2" src="vi47jp" pkg="nhvxw9ov" xy="491,75" pivot="0.5,0.5" group="n32_j3hl">
+      <relation target="n25_j3hl" sidePair="right-left"/>
+    </image>
+    <image id="n3_hrhq" name="n3" src="vi47jp" pkg="nhvxw9ov" xy="538,75" pivot="0.5,0.5" group="n32_j3hl" skew="0,180">
+      <relation target="n25_j3hl" sidePair="left-right"/>
+    </image>
+    <image id="n4_hrhq" name="n4" src="lh6bjy" pkg="nhvxw9ov" xy="140,79" group="n32_j3hl"/>
+    <text id="n5_hrhq" name="n5" xy="172,152" pivot="0.5,0.5" size="721,27" group="n32_j3hl" fontSize="20" color="#6773a4" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="请务必填写真实姓名和联系方式,以便获奖后联系"/>
+    <image id="n7_j3hl" name="n7" src="wb2ek8" pkg="nhvxw9ov" xy="157,186" size="751,314" group="n32_j3hl" color="#2d2e52"/>
+    <text id="n13_j3hl" name="n13" xy="184,194" pivot="0.5,0.5" size="91,31" group="n32_j3hl" fontSize="24" color="#c4d0fa" align="center" vAlign="middle" leading="0" text="收 货 人"/>
+    <text id="n14_j3hl" name="n14" xy="185,247" pivot="0.5,0.5" size="101,31" group="n32_j3hl" fontSize="24" color="#c4d0fa" align="center" vAlign="middle" leading="0" text="手机号码"/>
+    <text id="n15_j3hl" name="n15" xy="184,300" pivot="0.5,0.5" size="91,31" group="n32_j3hl" fontSize="24" color="#c4d0fa" align="center" vAlign="middle" leading="0" text="QQ号码"/>
+    <text id="n29_j3hl" name="n29" xy="185,353" pivot="0.5,0.5" size="101,31" group="n32_j3hl" fontSize="24" color="#c4d0fa" align="center" vAlign="middle" leading="0" text="微信号码"/>
+    <text id="n16_j3hl" name="n16" xy="185,406" pivot="0.5,0.5" size="101,31" group="n32_j3hl" fontSize="24" color="#c4d0fa" align="center" vAlign="middle" leading="0" text="收货地址"/>
+    <text id="n17_j3hl" name="n17" xy="185,459" pivot="0.5,0.5" size="101,31" group="n32_j3hl" fontSize="24" color="#c4d0fa" align="center" vAlign="middle" leading="0" text="电子邮箱"/>
+    <text id="n18_j3hl" name="TextName" xy="303,195" pivot="0,0.5" size="597,29" group="n32_j3hl" input="true" prompt="[color=#42476D]姓名[/color]" fontSize="22" color="#7281b4" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <text id="n19_j3hl" name="TextPhoneNum" xy="303,248" pivot="0,0.5" size="597,29" group="n32_j3hl" input="true" prompt="[color=#42476D]手机号码[/color]" keyboardType="5" fontSize="22" color="#7281b4" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <text id="n20_j3hl" name="TextQQNum" xy="303,301" pivot="0,0.5" size="597,29" group="n32_j3hl" input="true" prompt="[color=#42476D]QQ号码[/color]" keyboardType="4" fontSize="22" color="#7281b4" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <text id="n21_j3hl" name="TextAddress" xy="303,407" pivot="0,0.5" size="597,29" group="n32_j3hl" input="true" prompt="[color=#42476D]请务必填写详细的省、市、区（县）及街道门牌信息[/color]" fontSize="22" color="#7281b4" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <text id="n30_j3hl" name="TextWeChatNum" xy="303,354" pivot="0,0.5" size="597,29" group="n32_j3hl" input="true" prompt="[color=#42476D]微信号码[/color]" keyboardType="4" fontSize="22" color="#7281b4" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <text id="n22_j3hl" name="TextEmail" xy="303,460" pivot="0,0.5" size="597,29" group="n32_j3hl" input="true" prompt="[color=#42476D]邮箱地址[/color]" fontSize="22" color="#7281b4" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <component id="n23_j3hl" name="BtnSave" src="j3hl1" xy="447,506" group="n32_j3hl"/>
+    <image id="n8_j3hl" name="n8" src="u51ojc" pkg="nhvxw9ov" xy="156,234" size="753,2" group="n32_j3hl" color="#242546"/>
+    <image id="n9_j3hl" name="n9" src="u51ojc" pkg="nhvxw9ov" xy="155,342" size="753,2" group="n32_j3hl" color="#242546"/>
+    <image id="n10_j3hl" name="n10" src="u51ojc" pkg="nhvxw9ov" xy="155,288" size="753,2" group="n32_j3hl" color="#242546"/>
+    <image id="n11_j3hl" name="n11" src="u51ojc" pkg="nhvxw9ov" xy="155,396" size="753,2" group="n32_j3hl" color="#242546"/>
+    <image id="n27_j3hl" name="n27" src="u51ojc" pkg="nhvxw9ov" xy="154,450" size="753,2" group="n32_j3hl" color="#242546"/>
+    <group id="n32_j3hl" name="n32" xy="140,75" size="769,496" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

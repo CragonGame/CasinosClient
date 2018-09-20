@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,100">
+  <displayList>
+    <loader id="n1_qf8d" name="LoaderEmotion" xy="0,0" size="100,100" url="ui://nhvxw9ovhiep8d" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+  </displayList>
+  <transition name="TransitionEmotion">
+    <item time="0" type="XY" target="n1_qf8d" tween="true" startValue="0,0" endValue="0,-40" duration="18" ease="Linear"/>
+    <item time="18" type="XY" target="n1_qf8d" tween="true" startValue="0,-40" endValue="0,0" duration="18" ease="Linear"/>
+    <item time="36" type="XY" target="n1_qf8d" tween="true" startValue="0,0" endValue="0,-40" duration="18" ease="Linear"/>
+    <item time="54" type="XY" target="n1_qf8d" tween="true" startValue="0,-40" endValue="0,0" duration="18" ease="Linear"/>
+    <item time="60" type="Alpha" target="n1_qf8d" tween="true" startValue="1" endValue="0" duration="12" ease="Linear"/>
+    <item time="72" type="Alpha" target="n1_qf8d" tween="true" startValue="0" ease="Linear"/>
+    <item time="72" type="XY" target="n1_qf8d" tween="true" startValue="0,0" ease="Linear"/>
+  </transition>
+</component>

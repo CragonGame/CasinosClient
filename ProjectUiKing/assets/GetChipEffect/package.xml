@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="40g70lgl" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="pcq40" name="GetChipEffect.xml" path="/" exported="true"/>
+    <image id="pcq41" name="ImageGold.png" path="/Image/" exported="true"/>
+  </resources>
+  <publish name="ViewGetChipEffect" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\GetChipEffect" extractAlpha="true"/>
+</packageDescription>

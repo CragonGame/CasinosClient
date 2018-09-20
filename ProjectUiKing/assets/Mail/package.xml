@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="bdt8twnc" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="dld20" name="Mail.xml" path="/" exported="true"/>
+    <component id="d2r3f" name="ComItemMail.xml" path="/Component/" exported="true"/>
+    <image id="lil3o" name="IconClose.png" path="/Image/"/>
+    <image id="lil3p" name="IconOpen.png" path="/Image/"/>
+    <image id="qeucr" name="BgIcon.png" path="/Image/"/>
+    <image id="lh6bs" name="邮件没有时mary_03.png" path="/Image/" exported="true"/>
+    <image id="lh6bt" name="UI2_Icon_邮件.png" path="/Image/"/>
+  </resources>
+  <publish name="Mail" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Mail"/>
+</packageDescription>

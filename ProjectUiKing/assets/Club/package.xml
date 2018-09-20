@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="61kbhm96" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="s17d0" name="Club.xml" path="/" exported="true"/>
+    <component id="s17d1" name="BtnCreateMatch.xml" path="/Component/"/>
+    <image id="s17d2" name="CreateMatch.png" path="/Image/"/>
+    <component id="nhy43" name="ItemSelfMatch.xml" path="/Component/"/>
+    <image id="nhy44" name="1.png" path="/Image/" scale="9grid" scale9grid="63,62,8,3" atlas="1"/>
+    <image id="nhy45" name="Normal.png" path="/Image/" exported="true"/>
+    <image id="nhy46" name="Match.png" path="/Image/" exported="true"/>
+    <component id="nhy47" name="ComItemMathInfo.xml" path="/Component/"/>
+    <image id="nhy48" name="表.png" path="/Image/"/>
+    <image id="nhy49" name="8.png" path="/Image/"/>
+    <image id="tbeya" name="111.png" path="/Image/" scale="9grid" scale9grid="71,57,7,3" atlas="1"/>
+    <image id="tbeyb" name="赛事.png" path="/Image/"/>
+    <component id="tbeyc" name="ComNormalMatchBg.xml" path="/Component/"/>
+    <component id="tbeyd" name="ComMTTMatchBg.xml" path="/Component/" exported="true"/>
+    <image id="qkn2e" name="创建.png" path="/Image/"/>
+    <component id="qkn2f" name="BtnCreateTable.xml" path="/Component/"/>
+    <component id="qkn2g" name="BtnJoinRoom.xml" path="/Component/"/>
+    <image id="qkn2h" name="加入房间1.png" path="/Image/"/>
+    <component id="qkn2i" name="BtnClub.xml" path="/Component/"/>
+    <image id="qkn2j" name="11.png" path="/Image/"/>
+    <image id="qkn2k" name="俱乐部.png" path="/Image/"/>
+  </resources>
+  <publish name="Club" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Club" extractAlpha="true"/>
+</packageDescription>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="468,52">
+  <displayList>
+    <image id="n4_fgtk" name="n4" src="lh6bjv" pkg="nhvxw9ov" xy="0,0" size="468,52">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n1_x8p0" name="Num" xy="5,9" size="458,34" input="true" maxLength="32" fontSize="26" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+</component>

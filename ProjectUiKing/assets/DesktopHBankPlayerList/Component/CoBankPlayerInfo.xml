@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="742,96">
+  <displayList>
+    <component id="n4_wb2e" name="n4" src="lh6bjw" pkg="nhvxw9ov" xy="0,0"/>
+    <component id="n0_fb5j" name="CoHeadIcon" src="fb5j1z" pkg="erh3pvqh" xy="35,8" size="80,80"/>
+    <text id="n1_fb5j" name="NickName" xy="140,29" pivot="0.5,0.5" size="278,37" fontSize="28" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n2_fb5j" name="Golds" xy="448,29" pivot="0.5,0.5" size="257,37" fontSize="28" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

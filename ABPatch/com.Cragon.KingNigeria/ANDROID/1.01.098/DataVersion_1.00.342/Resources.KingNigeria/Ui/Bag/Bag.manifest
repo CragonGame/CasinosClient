@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3868131205
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: bag.ab
+      Dependencies: {}

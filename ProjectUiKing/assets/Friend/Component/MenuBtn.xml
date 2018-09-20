@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="92,93" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n3_pwp3" name="Bg" src="onuyc4" pkg="nhvxw9ov" xy="0,0"/>
+    <text id="n2" name="title" xy="-8,93" pivot="0.5,0.5" size="109,25" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" singleLine="true" text="">
+      <relation target="" sidePair="center-center,top-bottom"/>
+    </text>
+  </displayList>
+  <Button mode="Radio"/>
+</component>

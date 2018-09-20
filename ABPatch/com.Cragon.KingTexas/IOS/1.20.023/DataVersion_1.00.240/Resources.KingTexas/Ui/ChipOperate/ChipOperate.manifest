@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 317735438
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: chipoperate.ab
+      Dependencies: {}

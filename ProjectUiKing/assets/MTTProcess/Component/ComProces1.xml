@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="516,83" pivot="0.5,0.5">
+  <displayList>
+    <component id="n5_cvtg" name="n5" src="cvtg13" fileName="Component/Component6.xml" xy="42,-66" pivot="0.5,0.5"/>
+    <loader id="n11_n1df" name="Lan_Image_Reward1" xy="64,7" size="380,68"/>
+    <image id="n10_cvtg" name="n10" src="cvtgw" fileName="Image/FX_light_05.png" xy="-226,-458" pivot="0.5,0.5" size="1000,1000"/>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="Scale" target="n5_cvtg" tween="true" startValue="0.3,0.3" endValue="1,1" duration="5"/>
+    <item time="0" type="Scale" target="n11_n1df" tween="true" startValue="3,3" endValue="1,1" duration="5" ease="Quad.InOut"/>
+    <item time="0" type="Visible" target="n10_cvtg" value="false"/>
+    <item time="3" type="Scale" target="n10_cvtg" tween="true" startValue="0.3,0.3" endValue="1,1" duration="2"/>
+    <item time="3" type="Visible" target="n10_cvtg" value="true"/>
+    <item time="5" type="Alpha" target="n10_cvtg" tween="true" startValue="1" endValue="1" duration="3"/>
+    <item time="5" type="Scale" target="n5_cvtg" tween="true" startValue="1,1"/>
+    <item time="5" type="Scale" target="n10_cvtg" tween="true" startValue="1,1" endValue="1.1,1.1" duration="3"/>
+    <item time="5" type="Scale" target="n11_n1df" tween="true" startValue="1,1" ease="Quad.InOut"/>
+    <item time="6" type="Scale" tween="true" startValue="1,1" endValue="1.05,1.05" duration="24"/>
+    <item time="8" type="Alpha" target="n10_cvtg" tween="true" startValue="1" endValue="0.3" duration="10"/>
+    <item time="8" type="Scale" target="n10_cvtg" tween="true" startValue="1.1,1.1"/>
+    <item time="18" type="Alpha" target="n10_cvtg" tween="true" startValue="0.3"/>
+    <item time="18" type="Visible" target="n10_cvtg" value="false"/>
+    <item time="30" type="Scale" tween="true" startValue="1.05,1.05" endValue="2,2" duration="4" ease="Quad.InOut"/>
+    <item time="34" type="Scale" tween="true" startValue="2,2" endValue="0.1,0.1" duration="3" ease="Quad.InOut"/>
+    <item time="37" type="Scale" tween="true" startValue="0.1,0.1" ease="Quad.InOut"/>
+  </transition>
+</component>

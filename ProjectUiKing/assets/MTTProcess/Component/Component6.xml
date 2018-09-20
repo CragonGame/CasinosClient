@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="430,186">
+  <displayList>
+    <image id="n10_cvtg" name="n10" src="cvtg14" xy="17,-105" pivot="0.5,0.5" size="400,400" color="#ffff00"/>
+    <image id="n5_cvtg" name="n5" src="cvtgy" xy="131,18"/>
+    <image id="n6_cvtg" name="n6" src="cvtgz" xy="63,61"/>
+    <image id="n3_cvtg" name="n3" src="cvtg11" xy="296,80" pivot="0,0.5" rotation="-21"/>
+    <image id="n4_cvtg" name="n4" src="cvtg12" xy="124,0" pivot="0.5,0.5"/>
+    <image id="n7_cvtg" name="n7" src="cvtg10" xy="314,103" pivot="0.5,0.5" rotation="-24"/>
+    <image id="n8_cvtg" name="n8" src="cvtg11" xy="136,83" pivot="0,0.5" skew="0,180" rotation="21"/>
+    <image id="n9_cvtg" name="n9" src="cvtg10" xy="24,103" pivot="0.5,0.5" skew="0,180" rotation="24"/>
+  </displayList>
+  <transition name="t0" autoPlay="true">
+    <item time="0" type="Visible" target="n10_cvtg" value="false"/>
+    <item time="5" type="Rotation" target="n10_cvtg" tween="true" startValue="0" endValue="90" duration="32"/>
+    <item time="5" type="Visible" target="n10_cvtg" value="true"/>
+    <item time="5" type="XY" target="n4_cvtg" tween="true" startValue="124,0" endValue="124,-23" duration="5"/>
+    <item time="10" type="Rotation" target="n4_cvtg" tween="true" startValue="0" endValue="16" duration="5"/>
+    <item time="10" type="XY" target="n4_cvtg" tween="true" startValue="124,-23" endValue="147.05,-19.2" duration="5"/>
+    <item time="15" type="XY" target="n4_cvtg" tween="true" startValue="147.05,-19.2"/>
+    <item time="37" type="Rotation" target="n10_cvtg" tween="true" startValue="90"/>
+  </transition>
+</component>

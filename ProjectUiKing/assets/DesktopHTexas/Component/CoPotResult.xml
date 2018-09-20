@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="255,48">
+  <displayList>
+    <loader id="n6_wp1h" name="LoaderBankSign" xy="4,2" size="49,45" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n13_i4gb" name="Card1" xy="71,0" size="35,48" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n14_i4gb" name="Card2" xy="94,0" size="35,48" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n15_i4gb" name="Card3" xy="117,0" size="35,48" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n16_i4gb" name="Card4" xy="140,0" size="35,48" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n17_i4gb" name="Card5" xy="163,0" size="35,48" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n12_wp1h" name="LoaderWinLoose" xy="207,2" size="44,44" align="center" vAlign="middle" fill="scale"/>
+  </displayList>
+</component>

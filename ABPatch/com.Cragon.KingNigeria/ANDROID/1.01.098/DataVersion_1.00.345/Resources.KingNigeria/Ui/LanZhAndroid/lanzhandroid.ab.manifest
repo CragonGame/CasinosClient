@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2635628128
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4758cbd43f160f6917ebd5d0dd8d6527
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanZhAndroid/LanZhAndroid@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanZhAndroid/LanZhAndroid@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanZhAndroid/LanZhAndroid.bytes
+Dependencies: []

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="260,86">
+  <controller name="ControllerSelected" pages="0,,1," selected="1"/>
+  <displayList>
+    <image id="n3_s17d" name="n3" src="u51ojc" pkg="nhvxw9ov" xy="0,0" size="260,86" color="#393e92">
+      <gearDisplay controller="ControllerSelected" pages="1"/>
+    </image>
+    <text id="n0_s17d" name="TextSignUpNum" xy="7,10" pivot="0.5,0.5" size="244,36" fontSize="28" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="56/48ren"/>
+    <text id="n1_s17d" name="TextRewardNum" xy="7,46" pivot="0.5,0.5" size="244,27" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="奖励23人"/>
+    <image id="n2_s17d" name="n2" src="phssjs" pkg="nhvxw9ov" xy="0,84" size="260,4"/>
+  </displayList>
+</component>

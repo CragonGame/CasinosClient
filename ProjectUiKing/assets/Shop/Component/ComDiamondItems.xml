@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="781,244">
+  <displayList>
+    <image id="n0_mtk2" name="n0" src="mtk22d" xy="0,194">
+      <relation target="" sidePair="width-width"/>
+    </image>
+    <list id="n2_mtk2" name="n2" xy="72,0" size="663,244" layout="row" overflow="scroll" colGap="103" defaultItem="ui://3pqfkhlur6knb" vAlign="middle">
+      <relation target="" sidePair="center-center%"/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

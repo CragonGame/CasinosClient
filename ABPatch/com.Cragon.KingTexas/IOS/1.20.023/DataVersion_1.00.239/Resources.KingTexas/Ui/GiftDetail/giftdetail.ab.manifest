@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3920937887
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 64651bc4f13a1a007e543e1eb43154a4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/GiftDetail/GiftDetail.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/GiftDetail/GiftDetail@sprites.bytes
+Dependencies: []

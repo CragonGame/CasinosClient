@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="245,296">
+  <displayList>
+    <image id="n0_hrhq" name="n0" src="hrhq3b" xy="-2,-3" size="251,303"/>
+    <image id="n1_hrhq" name="n1" src="hrhq3d" xy="9,159" pivot="0.5,0.5"/>
+    <image id="n2_hrhq" name="n2" src="hrhq3d" xy="122,159" pivot="0.5,0.5" skew="0,180"/>
+  </displayList>
+</component>

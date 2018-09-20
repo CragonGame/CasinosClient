@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="905,95" adaptationTest="FitSize">
+  <controller name="ControllerMatchState" pages="0,,1,,2," selected="0"/>
+  <displayList>
+    <image id="n0_wb2e" name="n0" src="wb2eb" fileName="Image/1.png" xy="-11,0" size="930,104">
+      <relation target="" sidePair="width-width,center-center"/>
+    </image>
+    <component id="n8_tbey" name="BtnSignIn" src="tbeyj" fileName="Component/BtnSignIn.xml" xy="756,10">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n17_scf7" name="BtnSelf" src="scf7t" fileName="Component/BtnEmpty.xml" xy="3,2" size="749,91" hideByEditor="true">
+      <relation target="n8_tbey" sidePair="rightext-left"/>
+    </component>
+    <loader id="n1_wb2e" name="LoaderMatchType" xy="21,8" pivot="0.5,0.5" size="90,80" group="n18_qkn2" touchable="false" url="ui://2bmbew6z6ey610" fill="scaleFree"/>
+    <text id="n2_wb2e" name="TextMatchTitle" xy="136,21" size="227,30" group="n18_qkn2" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n3_wb2e" name="n3" src="wb2ek7" fileName="Image/New/UI2_通用_人像.png" pkg="nhvxw9ov" xy="136,56" size="15,17" group="n18_qkn2" color="#90f2fa"/>
+    <text id="n4_wb2e" name="TextPlayerNumber" xy="155,51" pivot="0,0.5" size="61,29" group="n18_qkn2" fontSize="22" color="#4d88d7" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n10_tbey" name="ComAddon" src="tbeym" fileName="Component/ComAddon.xml" xy="248,56" group="n18_qkn2" touchable="false"/>
+    <component id="n11_tbey" name="ComRebuy" src="tbeyl" fileName="Component/ComRebuy.xml" xy="223,56" group="n18_qkn2" touchable="false"/>
+    <component id="n12_tbey" name="ComSnowBall" src="tbeyn" fileName="Component/ComSnowBall.xml" xy="273,56" group="n18_qkn2" touchable="false"/>
+    <group id="n18_qkn2" name="n18" xy="21,8" size="342,80" collapsed="true"/>
+    <text id="n6_wb2e" name="TextMatchReward" xy="510,33" pivot="0.5,0.5" size="84,29" group="n20_j8ql" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n15_tbey" name="TextState" xy="343,33" pivot="0.5,0.5" size="144,28" group="n20_j8ql" fontSize="20" color="#518ee0" align="center" vAlign="middle" leading="0" autoSize="none" text="正在进行">
+      <gearDisplay controller="ControllerMatchState" pages="2"/>
+    </text>
+    <text id="n7_wb2e" name="TextApplicationFee" xy="606,33" pivot="0.5,0.5" size="133,29" group="n20_j8ql" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n14_tbey" name="ComMatchStartTime2" src="tbeyp" fileName="Component/ComMatchStartTime2.xml" xy="365,12" group="n20_j8ql" touchable="false">
+      <gearDisplay controller="ControllerMatchState" pages="1"/>
+    </component>
+    <component id="n16_tbey" name="ComMatchStartTime1" src="tbeyo" fileName="Component/ComMatchStartTime1.xml" xy="365,12" group="n20_j8ql" touchable="false">
+      <gearDisplay controller="ControllerMatchState" pages="0"/>
+    </component>
+    <group id="n20_j8ql" name="n20" xy="343,12" size="396,70" advanced="true">
+      <relation target="" sidePair="center-center"/>
+    </group>
+  </displayList>
+</component>

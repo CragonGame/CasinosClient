@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" opaque="false">
+  <displayList>
+    <loader id="n2_n1df" name="Lan_Image_终极对决B" xy="-777,249" pivot="0.5,0.5" size="214,141" url="ui://0zbu0hegn7ppe" align="center" vAlign="middle" fill="scaleFree"/>
+    <loader id="n3_n1df" name="Lan_Image_终极对决A" xy="1743,249" pivot="0.5,0.5" size="214,134" url="ui://0zbu0hegn7ppd" align="center" vAlign="middle" fill="scaleFree"/>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="XY" target="n3_n1df" tween="true" startValue="1843,249" endValue="527,249" duration="5"/>
+    <item time="0" type="XY" target="n2_n1df" tween="true" startValue="-777,249" endValue="325,249" duration="5"/>
+  </transition>
+</component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="90,90">
+  <controller name="ConttollerBg" pages="0,Black,1,Light" selected="0"/>
+  <displayList>
+    <image id="n9_8xod" name="n9" src="8xode8" xy="0,0" size="90,90"/>
+    <image id="n10_8xod" name="n10" src="8xode9" xy="0,0" size="90,90">
+      <gearDisplay controller="ConttollerBg" pages="1"/>
+    </image>
+    <loader id="n1_mad8" name="LoaderGift" xy="0,0" size="90,90" align="center" vAlign="middle" fill="scaleFree"/>
+  </displayList>
+</component>

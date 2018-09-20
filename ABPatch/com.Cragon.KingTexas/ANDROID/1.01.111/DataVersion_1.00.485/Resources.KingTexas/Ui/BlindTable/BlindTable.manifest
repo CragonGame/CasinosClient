@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2232219238
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: blindtable.ab
+      Dependencies: {}

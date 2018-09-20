@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="d1mrkbop" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="n1r70" name="Bag.xml" path="/" exported="true"/>
+    <component id="excb2" name="BtnBuyMore.xml" path="/Component/"/>
+    <image id="pucj3" name="D_bb.png" path="/Image/"/>
+  </resources>
+  <publish name="Bag" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Bag"/>
+</packageDescription>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="78,40" extention="Button">
+  <Button/>
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver"/>
+  <displayList>
+    <component id="n1" src="s17d0" name="n1" xy="0,0">
+      <gearDisplay controller="button" pages="0"/>
+    </component>
+    <component id="n2" src="s17d0" name="n2" xy="0,0">
+      <gearDisplay controller="button" pages="1"/>
+    </component>
+    <component id="n3" src="s17d0" name="n3" xy="0,0">
+      <gearDisplay controller="button" pages="2"/>
+    </component>
+    <component id="n4" src="s17d0" name="n4" xy="0,0">
+      <gearDisplay controller="button" pages="3"/>
+    </component>
+  </displayList>
+</component>

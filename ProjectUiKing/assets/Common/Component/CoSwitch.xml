@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="117,40">
+  <controller name="ControllerSwitch" pages="0,On,1,Off" selected="0"/>
+  <displayList>
+    <image id="n4_lixs" name="n4" src="nhy4e" fileName="Image/SwitchOn.png" pkg="6443cbga" xy="0,0" hideByEditor="true" visible="false">
+      <gearDisplay controller="ControllerSwitch" pages="0"/>
+    </image>
+    <image id="n6_lixs" name="n6" src="ii4zt" fileName="Image/36.png" pkg="6443cbga" xy="78,2" hideByEditor="true" visible="false">
+      <gearDisplay controller="ControllerSwitch" pages="0"/>
+    </image>
+    <image id="n5_lixs" name="n5" src="nhy4d" fileName="Image/SwitchOff.png" pkg="6443cbga" xy="0,0" hideByEditor="true" visible="false">
+      <gearDisplay controller="ControllerSwitch" pages="1"/>
+    </image>
+    <image id="n7_lixs" name="n7" src="ii4zt" fileName="Image/36.png" pkg="6443cbga" xy="3,2" hideByEditor="true" visible="false">
+      <gearDisplay controller="ControllerSwitch" pages="1"/>
+    </image>
+    <image id="n8_kd14" name="n8" src="kd14me" fileName="Image/SwitchOff.png" xy="0,0">
+      <gearDisplay controller="ControllerSwitch" pages="1"/>
+    </image>
+    <image id="n9_kd14" name="n9" src="kd14md" fileName="Image/SwitchOn.png" xy="0,0">
+      <gearDisplay controller="ControllerSwitch" pages="0"/>
+    </image>
+  </displayList>
+</component>

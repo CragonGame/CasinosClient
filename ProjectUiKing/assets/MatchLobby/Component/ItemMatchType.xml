@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="142,92">
+  <controller name="ControllerIsSelected" pages="0,,1," selected="1"/>
+  <displayList>
+    <image id="n0_wb2e" name="n0" src="wb2e6" xy="0,0" size="100,92" group="n4_wb2e"/>
+    <image id="n2_wb2e" name="n2" src="u51ojc" pkg="nhvxw9ov" xy="0,0" size="142,92" group="n4_wb2e" alpha="0.85" color="#294893"/>
+    <group id="n4_wb2e" name="n4" xy="0,0" size="142,92" advanced="true">
+      <gearDisplay controller="ControllerIsSelected" pages="1"/>
+    </group>
+    <loader id="n1_wb2e" name="LoaderMatchType" xy="0,4" size="142,53" align="center" vAlign="bottom"/>
+    <text id="n3_wb2e" name="TextMatchTitle" xy="0,58" pivot="0.5,0.5" size="142,29" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text=""/>
+  </displayList>
+  <transition name="t0"/>
+</component>

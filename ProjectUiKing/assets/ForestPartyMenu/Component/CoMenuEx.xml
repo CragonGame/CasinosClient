@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="153,158">
+  <displayList>
+    <image id="n26_q6q3" name="n26" src="phetch" pkg="nhvxw9ov" xy="0,0" size="153,158"/>
+    <component id="n19_filf" name="BtnReturn" src="ieudp" xy="25,22" group="n22_filf"/>
+    <group id="n22_filf" name="return" xy="21,14" size="114,51"/>
+    <component id="n20_filf" name="BtnRule" src="ieudr" xy="25,83" group="n25_filf"/>
+    <image id="n27_q6q3" name="n27" src="tfq4ba" pkg="nhvxw9ov" xy="-13,75" size="180,7" group="n25_filf"/>
+    <group id="n25_filf" name="rule" xy="-13,75" size="180,44"/>
+  </displayList>
+</component>

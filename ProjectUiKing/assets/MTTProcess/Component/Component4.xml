@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="55,84">
+  <displayList>
+    <image id="n0_ru14" name="n0" src="n7pp5" xy="0,0" pivot="1,1" rotation="-35">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="Rotation" target="n0_ru14" tween="true" startValue="-35" endValue="-35" duration="12" ease="Quad.InOut"/>
+    <item time="12" type="Rotation" target="n0_ru14" tween="true" startValue="-35" endValue="0" duration="12" ease="Quad.InOut"/>
+    <item time="24" type="Rotation" target="n0_ru14" tween="true" startValue="0"/>
+  </transition>
+</component>

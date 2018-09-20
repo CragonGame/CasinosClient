@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1067177264
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8100f8ceb9098397468a307e51fbcbb1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/desk_player_fold.wav
+Dependencies: []

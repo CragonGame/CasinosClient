@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="127,37" initName="ComBlindTable">
+  <displayList>
+    <component id="n0_nhy4" name="BtnBlindTable" src="nhy4m" xy="0,3"/>
+    <component id="n1_nhy4" name="BtnHelp" src="nhy4j" xy="90,0"/>
+  </displayList>
+</component>

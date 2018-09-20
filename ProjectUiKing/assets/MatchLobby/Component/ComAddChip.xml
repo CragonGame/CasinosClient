@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="215,40" extention="Button" initName="ComAddChip">
+  <displayList>
+    <image id="n0_wb2e" name="n0" src="hrhqkc" pkg="nhvxw9ov" xy="0,4" size="30,30" color="#61e2ff"/>
+    <image id="n1_wb2e" name="n1" src="wb2e4" xy="16,19" size="15,15"/>
+    <text id="n2_wb2e" name="TextSelfChip" xy="36,1" pivot="0,0.5" size="178,39" fontSize="30" color="#ffffff" vAlign="bottom" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

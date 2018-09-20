@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="40,40" adaptationTest="FitSize">
+  <displayList>
+    <loader id="n0_qsc1" name="LoaderIcon" xy="0,0" pivot="0.5,0.5" size="40,40" align="center" vAlign="middle" fill="scale"/>
+  </displayList>
+  <transition name="TransitionRotate">
+    <item time="0" type="Rotation" target="n0_qsc1" tween="true" startValue="0" endValue="720" duration="12"/>
+  </transition>
+</component>

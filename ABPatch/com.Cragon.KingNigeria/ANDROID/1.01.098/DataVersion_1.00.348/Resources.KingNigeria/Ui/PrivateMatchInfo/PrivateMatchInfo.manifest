@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2764876713
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: privatematchinfo.ab
+      Dependencies: {}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="my2pm5uw" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="orej0" name="DailyReward.xml" path="/" exported="true"/>
+    <image id="tq726" name="RewardBg1.png" path="/Image/" exported="true"/>
+    <image id="tq72b" name="Chips1.png" path="/Image/" exported="true"/>
+    <image id="tq72c" name="Chips5.png" path="/Image/" exported="true"/>
+    <image id="tq72d" name="Chips4.png" path="/Image/" exported="true"/>
+    <image id="tq72e" name="Chips3.png" path="/Image/" exported="true"/>
+    <image id="tq72f" name="Chips7.png" path="/Image/" exported="true"/>
+    <image id="tq72g" name="Chips6.png" path="/Image/" exported="true"/>
+    <image id="tq72h" name="Chips2.png" path="/Image/" exported="true"/>
+    <component id="tq72i" name="ItemReward.xml" path="/Component/" exported="true"/>
+    <image id="bscio" name="qd.png" path="/Image/" scale9grid="38,43,76,86"/>
+    <image id="f4nwr" name="bt_zi.png" path="/Image/"/>
+    <component id="f4nws" name="BtnBeVip.xml" path="/Component/"/>
+    <image id="lh6bt" name="UI2_签到_反射性底光.png" path="/Image/" scale=""/>
+    <component id="lh6bu" name="ComBg.xml" path="/Component/"/>
+    <component id="lh6bv" name="ComBgLight.xml" path="/Component/"/>
+    <image id="lh6bw" name="筹码按钮选中勾选.png" path="/Image/"/>
+    <component id="pcq4x" name="ComPos.xml" path="/Component/"/>
+  </resources>
+  <publish name="DailyReward" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\DailyReward"/>
+</packageDescription>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="110,110">
+  <displayList>
+    <image id="n26_jdzb" name="GoldChoose" src="m4hj4t" xy="0,0" pivot="0.5,0.5"/>
+    <loader id="n25" name="GoldIcon" xy="8,8" size="93,93" url="ui://erh3pvqhfb5j1q" align="center" vAlign="middle"/>
+  </displayList>
+  <transition name="Choose" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n26_jdzb" tween="true" startValue="360" endValue="0" duration="72" ease="Linear" repeat="-1"/>
+  </transition>
+</component>

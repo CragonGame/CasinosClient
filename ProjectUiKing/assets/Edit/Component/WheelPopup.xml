@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="128,56">
+  <displayList>
+    <image id="n0_bz6i" name="n0" src="bz6i9" xy="0,-2" size="128,44" group="n2_h8wa"/>
+    <image id="n1_bz6i" name="n1" src="bz6ia" xy="46,38" group="n2_h8wa"/>
+    <group id="n2_h8wa" name="n2" xy="0,-2" size="128,64" advanced="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </group>
+  </displayList>
+</component>

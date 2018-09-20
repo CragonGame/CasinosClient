@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 2162099882
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4c53fb06112e772c641b068565794acc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/Club/Club@atlas0!a.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/Club/Club@atlas1.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/Club/Club@atlas1!a.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/Club/Club.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/Club/Club@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/Club/Club@sprites.bytes
+Dependencies: []

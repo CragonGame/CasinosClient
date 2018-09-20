@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="2bmbew6z" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="wb2e0" name="MatchLobby.xml" path="/" exported="true"/>
+    <image id="wb2e2" name="对话框内黑底.png" path="/Image/" scale="9grid" scale9grid="15,15,3,5"/>
+    <component id="wb2e3" name="ComAddChip.xml" path="/Component/"/>
+    <image id="wb2e4" name="UI2_俱乐部加号.png" path="/Image/"/>
+    <component id="wb2e5" name="Component1.xml" path="/Component/" exported="true"/>
+    <image id="wb2e6" name="23.png" path="/Image/"/>
+    <component id="wb2e7" name="ItemMatchType.xml" path="/Component/"/>
+    <image id="wb2e8" name="MatchTypeAll.png" path="/Image/" exported="true"/>
+    <image id="wb2e9" name="MatchTypeMyApply.png" path="/Image/" exported="true"/>
+    <component id="wb2ea" name="ItemMatch.xml" path="/Component/" exported="true"/>
+    <image id="wb2eb" name="1.png" path="/Image/"/>
+    <image id="wb2ec" name="UI2_赛事_bg.png" path="/Image/" atlas="alone"/>
+    <component id="wb2ed" name="ComSelfNoMatch.xml" path="/Component/"/>
+    <component id="wb2ee" name="ComNoMatch.xml" path="/Component/"/>
+    <component id="uvmqf" name="BtnStartTime.xml" path="/Component/"/>
+    <image id="uvmqg" name="7.png" path="/Image/"/>
+    <component id="uvmqh" name="BtnEntryFee.xml" path="/Component/"/>
+    <component id="uvmqi" name="ComTitle.xml" path="/Component/"/>
+    <component id="tbeyj" name="BtnSignIn.xml" path="/Component/"/>
+    <image id="tbeyk" name="22.png" path="/Image/"/>
+    <component id="tbeyl" name="ComRebuy.xml" path="/Component/"/>
+    <component id="tbeym" name="ComAddon.xml" path="/Component/"/>
+    <component id="tbeyn" name="ComSnowBall.xml" path="/Component/"/>
+    <component id="tbeyo" name="ComMatchStartTime1.xml" path="/Component/"/>
+    <component id="tbeyp" name="ComMatchStartTime2.xml" path="/Component/"/>
+    <image id="tbeyq" name="4.png" path="/Image/"/>
+    <image id="tbeyr" name="21.png" path="/Image/"/>
+    <component id="vs7zs" name="ComSelfMatchNum.xml" path="/Component/"/>
+    <component id="scf7t" name="BtnEmpty.xml" path="/Component/"/>
+    <component id="nmmou" name="ComStaryYellow.xml" path="/Component/"/>
+    <image id="nmmov" name="FX_Flare002.png" path="/Image/"/>
+    <component id="nmmow" name="ComStarRed.xml" path="/Component/"/>
+    <image id="nmmox" name="FX_Flare001.png" path="/Image/"/>
+    <component id="fskky" name="Button1.xml" path="/Component/"/>
+    <image id="6ey610" name="Normal.png" path="/Image/" exported="true"/>
+    <component id="j1yr13" name="ComAddChip1.xml" path="/Component/"/>
+  </resources>
+  <publish name="MatchLobby" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\MatchLobby"/>
+</packageDescription>

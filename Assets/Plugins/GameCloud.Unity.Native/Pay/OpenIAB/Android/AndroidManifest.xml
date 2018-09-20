@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.unity3d.player"
+	  android:installLocation="preferExternal"
+	  android:theme="@android:style/Theme.NoTitleBar"
+    android:versionCode="1"
+    android:versionName="0.9.7.2">
+
+    <supports-screens
+      android:smallScreens="true"
+      android:normalScreens="true"
+      android:largeScreens="true"
+      android:xlargeScreens="true"
+      android:anyDensity="true"/>
+
+    <!-- android:debuggable should be removed in release build -->
+    <application
+      android:icon="@drawable/app_icon"
+      android:label="@string/app_name"
+      android:debuggable="true">
+      
+      <activity android:name="com.unity3d.player.UnityPlayerProxyActivity"
+              android:launchMode="singleTask"
+              android:label="@string/app_name"
+              android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+      
+        <intent-filter>
+          <action android:name="android.intent.action.MAIN" />
+          <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
+    
+      <activity android:name="com.unity3d.player.UnityPlayerActivity"
+              android:launchMode="singleTask"
+              android:label="@string/app_name"
+              android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+      </activity>
+      
+      <activity android:name="com.unity3d.player.UnityPlayerNativeActivity"
+              android:launchMode="singleTask"
+              android:label="@string/app_name"
+              android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+              <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" />
+      </activity>
+
+      <activity android:name="org.onepf.openiab.UnityProxyActivity"
+              android:launchMode="singleTask"
+              android:label="@string/app_name"
+              android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+      </activity>
+                
+      <receiver android:name="com.amazon.device.iap.ResponseReceiver">
+        <intent-filter>
+            <action
+                android:name="com.amazon.inapp.purchasing.NOTIFY"
+                android:permission="com.amazon.inapp.purchasing.Permission.NOTIFY" />
+        </intent-filter>
+      </receiver>
+    </application>
+
+    <!--Fortumo start-->
+    <receiver android:name="mp.MpSMSReceiver">
+        <intent-filter>
+            <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+        </intent-filter>
+    </receiver>
+    
+    <service android:name="mp.MpService" />
+    <service android:name="mp.StatusUpdateService" />
+    
+    <activity
+        android:name="mp.MpActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    <!--Fortumo end-->
+    
+    <!--all-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--Google Play-->
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <!--Open Store-->
+    <uses-permission android:name="org.onepf.openiab.permission.BILLING" />
+    <!--Amazon requires no permissions -->
+    <!--Samsung Apps-->
+    <uses-permission android:name="com.sec.android.iap.permission.BILLING" />
+    <!--Nokia-->
+    <uses-permission android:name="com.nokia.payment.BILLING"/>
+    <!--SlideME-->
+    <uses-permission android:name="com.slideme.sam.manager.inapp.permission.BILLING" />
+
+</manifest>

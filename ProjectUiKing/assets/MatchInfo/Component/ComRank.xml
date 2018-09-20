@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="720,331" initName="ComRank">
+  <controller name="ControllerRank" pages="0,,1," selected="0"/>
+  <displayList>
+    <text id="n0_gy6l" name="Lan_Text_CurrentMatchRank" xy="0,0" pivot="0.5,0.5" size="720,27" group="n9_fskk" fontSize="20" color="#303563" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="当前排名"/>
+    <image id="n1_gy6l" name="n1" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="0,34" size="720,297" group="n9_fskk" color="#303563"/>
+    <list id="n6_gy6l" name="ListRank" xy="-1,34" size="722,296" group="n9_fskk" overflow="scroll" defaultItem="ui://6jtesqzwgy6ld" align="center"/>
+    <group id="n9_fskk" name="n9" xy="-1,0" size="722,331" advanced="true">
+      <gearDisplay controller="ControllerRank" pages="0"/>
+    </group>
+    <text id="n8_scf7" name="Lan_Text_NoMatchRankTip" xy="218,90" pivot="0.5,0.5" size="284,29" fontSize="22" color="#9db2e2" align="center" vAlign="middle" leading="0" autoSize="none" text="暂无排名数据">
+      <gearDisplay controller="ControllerRank" pages="1"/>
+    </text>
+  </displayList>
+</component>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <image id="n0_hrhq" name="Bg" src="hrhq11" fileName="Image/Loading_BG.jpg.jpg" xy="0,0" size="1066,640"/>
+    <image id="n1_hrhq" name="ImageMote" src="hrhq12" fileName="Image/Mote.png" xy="366,48" pivot="0.5,0.5" rotation="3">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+  </displayList>
+</component>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="495,108" initName="ComMore">
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <image id="n0_vi47" name="n0" src="vi47jq" fileName="Image/HalfImage/UI2_通用_气泡2.png" pkg="nhvxw9ov" xy="-85,0" size="438,108">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </image>
+    <image id="n9_j1yr" name="n9" src="vi47jq" fileName="Image/HalfImage/UI2_通用_气泡2.png" pkg="nhvxw9ov" xy="-3,0" size="355,108">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </image>
+    <image id="n1_vi47" name="n1" src="vi47jq" fileName="Image/HalfImage/UI2_通用_气泡2.png" pkg="nhvxw9ov" xy="352,0" pivot="0.5,0.5" size="143,108" skew="0,180"/>
+    <component id="n2_phss" name="BtnSet" src="ixpj3a" fileName="Component/BtnSet.xml" xy="408,4"/>
+    <component id="n3_phss" name="BtnRank" src="ixpj37" fileName="Component/BtnRank.xml" xy="253,4"/>
+    <component id="n4_phss" name="BtnFriend" src="ixpj36" fileName="Component/BtnFriend.xml" xy="168,4"/>
+    <component id="n6_phss" name="BtnBag" src="g5sv3i" fileName="Component/BtnBag.xml" xy="100,4"/>
+    <component id="n7_phss" name="BtnBank" src="ewc03j" fileName="Component/BtnBank.xml" xy="14,8"/>
+    <component id="n8_j1yr" name="BtnShop" src="j1yr8z" fileName="Component/BtnShop1.xml" xy="-74,4">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </component>
+    <component id="n10_ncj5" name="BtnFeedback" src="ncj59f" fileName="Component/BtnFeedback.xml" xy="333,4"/>
+    <component id="n11_ijq5" name="ComBagTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="137,4">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+  </displayList>
+</component>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="40,19" initName="ComRepurchase">
+  <displayList>
+    <image id="n0_gy6l" name="n0" src="gy6lkk" fileName="Image/New/UI2_通用_重购增购底.png" pkg="nhvxw9ov" xy="0,0" pivot="0.5,0.5" size="40,19" color="#efbd5a"/>
+    <text id="n1_gy6l" name="Lan_Text_Rebuy" xy="0,0" pivot="0.5,0.5" size="40,19" fontSize="15" color="#303563" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="重购"/>
+  </displayList>
+</component>

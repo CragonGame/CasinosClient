@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="90,118">
+  <displayList>
+    <image id="n4_dq41" name="CardBack" src="dq41277" xy="-4,-3" pivot="0.5,0.5" size="94,120" visible="false">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n0_npdv" name="LoaderCard" xy="-1,-1" pivot="0.5,0.5" size="91,120" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <image id="n3_tfq4" name="ImageCardHighLight" src="npdvm" xy="0,1" size="88,116" visible="false">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+</component>

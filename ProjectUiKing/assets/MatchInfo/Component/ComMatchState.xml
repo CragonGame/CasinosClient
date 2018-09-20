@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="720,331" initName="ComMatchState">
+  <controller name="ControllerMatchState" pages="0,,1," selected="0"/>
+  <displayList>
+    <image id="n1_gy6l" name="n1" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="0,0" size="720,331" group="n53_scf7" color="#30356a"/>
+    <image id="n7_gy6l" name="n7" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,108" size="722,2" group="n53_scf7" color="#242647"/>
+    <image id="n8_gy6l" name="n8" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,218" size="722,2" group="n53_scf7" color="#242647"/>
+    <image id="n10_gy6l" name="n10" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="3,164" pivot="0.5,0.5" size="333,2" group="n53_scf7" rotation="90" color="#242647"/>
+    <image id="n11_gy6l" name="n11" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="383,164" pivot="0.5,0.5" size="333,2" group="n53_scf7" rotation="90" color="#242647"/>
+    <image id="n17_gy6l" name="n17" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="172,1" size="377,328" group="n53_scf7" alpha="0.75" color="#333978"/>
+    <image id="n15_gy6l" name="n15" src="bjg9cl" fileName="Image/BtnTab1Light.png" pkg="nhvxw9ov" xy="172,0" size="377,107" group="n53_scf7"/>
+    <text id="n18_gy6l" name="Lan_Text_MatchRank" xy="61,24" pivot="0.5,0.5" size="47,27" group="n25_gy6l" fontSize="20" color="#6c7ecb" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="排名"/>
+    <text id="n24_gy6l" name="TextMatchStateRank" xy="15,59" pivot="0.5,0.5" size="137,27" group="n25_gy6l" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000"/>
+    <group id="n25_gy6l" name="n25" xy="15,24" size="137,62" group="n53_scf7" collapsed="true"/>
+    <text id="n26_gy6l" name="Lan_Text_NumberOfEntries1" xy="23,133" pivot="0.5,0.5" size="119,27" group="n28_gy6l" fontSize="20" color="#6c7ecb" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="参赛人数  "/>
+    <text id="n27_gy6l" name="TextMatchStateApplyNumber" xy="14,168" pivot="0.5,0.5" size="137,27" group="n28_gy6l" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000"/>
+    <group id="n28_gy6l" name="n28" xy="14,133" size="137,62" group="n53_scf7"/>
+    <text id="n29_gy6l" name="Lan_Text_RewardNum" xy="6,243" pivot="0.5,0.5" size="152,27" group="n31_gy6l" fontSize="20" color="#6c7ecb" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="奖励人数"/>
+    <text id="n30_gy6l" name="TextMatchStateRewardNumber" xy="14,277" pivot="0.5,0.5" size="137,27" group="n31_gy6l" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000"/>
+    <group id="n31_gy6l" name="n31" xy="6,243" size="152,61" group="n53_scf7" collapsed="true"/>
+    <text id="n32_gy6l" name="Lan_Text_AverageChip" xy="567,24" pivot="0.5,0.5" size="133,27" group="n34_gy6l" fontSize="20" color="#6c7ecb" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="平均筹码"/>
+    <text id="n33_gy6l" name="TextMatchStateAverageChip" xy="566,59" pivot="0.5,0.5" size="137,27" group="n34_gy6l" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000"/>
+    <group id="n34_gy6l" name="n34" xy="566,24" size="137,62" group="n53_scf7" collapsed="true"/>
+    <text id="n35_gy6l" name="Lan_Text_MatchTm" xy="563,133" pivot="0.5,0.5" size="142,27" group="n37_gy6l" fontSize="20" color="#6c7ecb" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="比赛用时"/>
+    <text id="n36_gy6l" name="TextMatchUsedTime" xy="566,168" pivot="0.5,0.5" size="137,27" group="n37_gy6l" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000"/>
+    <group id="n37_gy6l" name="n37" xy="563,133" size="142,62" group="n53_scf7" collapsed="true"/>
+    <text id="n38_inau" name="Lan_Text_CurrentLevel1" xy="225,150" pivot="0.5,0.5" size="94,27" group="n53_scf7" fontSize="20" color="#8698f4" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="当前级别"/>
+    <text id="n39_inau" name="Lan_Text_Ante" xy="330,133" pivot="0.5,0.5" size="64,27" group="n53_scf7" fontSize="20" color="#8698f4" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="前注"/>
+    <text id="n40_inau" name="Lan_Text_Blind" xy="330,168" pivot="0.5,0.5" size="63,27" group="n53_scf7" fontSize="20" color="#8698f4" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="盲注"/>
+    <text id="n41_inau" name="TextMatchStateCurrentAnte" xy="394,133" pivot="0.5,0.5" size="65,27" group="n53_scf7" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="前注"/>
+    <text id="n42_inau" name="TextMatchStateCurrentBlind" xy="394,168" pivot="0.5,0.5" size="122,27" group="n53_scf7" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="盲注"/>
+    <text id="n43_inau" name="Lan_Text_NextLevel" xy="225,259" pivot="0.5,0.5" size="94,27" group="n53_scf7" fontSize="20" color="#8698f4" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="下一级别"/>
+    <text id="n44_inau" name="Lan_Text_Ante" xy="330,243" pivot="0.5,0.5" size="64,27" group="n53_scf7" fontSize="20" color="#8698f4" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="前注"/>
+    <text id="n45_inau" name="Lan_Text_Blind" xy="330,277" pivot="0.5,0.5" size="63,27" group="n53_scf7" fontSize="20" color="#8698f4" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="盲注"/>
+    <text id="n46_inau" name="TextMatchStateNextAnte" xy="394,243" pivot="0.5,0.5" size="65,27" group="n53_scf7" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="前注"/>
+    <text id="n47_inau" name="TextMatchStateNextBlind" xy="394,277" pivot="0.5,0.5" size="122,27" group="n53_scf7" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="盲注"/>
+    <text id="n48_inau" name="Lan_Text_CurrentLevel" xy="292,7" pivot="0.5,0.5" size="87,23" group="n53_scf7" fontSize="17" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="当前级别:"/>
+    <text id="n49_inau" name="TextMatchStateCurrentLevel" xy="379,7" size="58,23" group="n53_scf7" fontSize="17" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000"/>
+    <text id="n52_inau" name="TextCurrentLevelLeftTime" xy="188,29" size="344,77" group="n53_scf7" fontSize="60" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" bold="true" strokeColor="#0290c6" shadowColor="#0290c6" shadowOffset="1,1" text="000000"/>
+    <group id="n53_scf7" name="n53" xy="-1,0" size="722,331" advanced="true">
+      <gearDisplay controller="ControllerMatchState" pages="0"/>
+    </group>
+    <text id="n54_scf7" name="Lan_Text_NoMatchInfoTip" xy="218,90" pivot="0.5,0.5" size="284,29" fontSize="22" color="#9db2e2" align="center" vAlign="middle" leading="0" autoSize="none" text="暂无赛况数据">
+      <gearDisplay controller="ControllerMatchState" pages="1"/>
+    </text>
+  </displayList>
+</component>

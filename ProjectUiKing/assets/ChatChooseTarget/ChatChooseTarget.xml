@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerHaveFriend" pages="0,HaveFriend,1,HaveNoFriend" selected="0"/>
+  <displayList>
+    <component id="n15_h1h1" name="ComBgAndClose" src="vi47jm" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n11_rdp3" name="n11" src="lh6bjv" pkg="nhvxw9ov" xy="159,159" size="747,50" group="n6_l411"/>
+    <text id="n4_l411" name="TextInputSearch" xy="172,164" size="720,39" group="n6_l411" input="true" fontSize="30" color="#ffffff" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <group id="n6_l411" name="GroupInput" xy="159,159" size="747,50" group="n24_nhsw" advanced="true" collapsed="true"/>
+    <list id="n5_l411" name="ListChatTarget" xy="159,221" size="747,334" group="n24_nhsw" overflow="scroll" lineGap="5" defaultItem="ui://5lhem4o5l4111" autoItemSize="false" align="center">
+      <gearDisplay controller="ControllerHaveFriend" pages="0"/>
+    </list>
+    <text id="n7_l411" name="Lan_Text_YouHaveNoFriend" xy="453,305" pivot="0.5,0.5" size="159,29" group="n24_nhsw" fontSize="22" color="#ffffff" align="center" vAlign="middle" text="你没有一个朋友">
+      <gearDisplay controller="ControllerHaveFriend" pages="1"/>
+    </text>
+    <image id="n19_lh6b" name="n19" src="lh6bjy" pkg="nhvxw9ov" xy="141,77" group="n24_nhsw"/>
+    <image id="n20_lh6b" name="n20" src="vi47jp" pkg="nhvxw9ov" xy="490,74" pivot="0.5,0.5" group="n24_nhsw">
+      <relation target="n23_nhsw" sidePair="right-left"/>
+    </image>
+    <image id="n21_lh6b" name="n21" src="vi47jp" pkg="nhvxw9ov" xy="538,74" pivot="0.5,0.5" group="n24_nhsw" skew="0,180">
+      <relation target="n23_nhsw" sidePair="left-right"/>
+    </image>
+    <text id="n23_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n24_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n24_nhsw" name="n24" xy="141,74" size="765,481" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

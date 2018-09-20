@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" initName="ComTips2">
+  <displayList>
+    <component id="n10_fskk" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n6_fskk" name="Lan_Btn_Enter" src="fskk3" fileName="Component/BtnEnter.xml" xy="339,415" group="n11_fskk"/>
+    <component id="n7_fskk" name="Lan_Btn_Cancel" src="fskk4" fileName="Component/BtnCancel.xml" xy="559,415" group="n11_fskk"/>
+    <text id="n9_fskk" name="TextTips" xy="272,272" size="522,97" group="n11_fskk" fontSize="25" color="#ffffff" align="center" ubb="true" autoSize="none" text=""/>
+    <group id="n11_fskk" name="n11" xy="272,272" size="522,208" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

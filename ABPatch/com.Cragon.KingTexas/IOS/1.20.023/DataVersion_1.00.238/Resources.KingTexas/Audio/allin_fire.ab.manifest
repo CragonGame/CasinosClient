@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2770392659
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f5290e3d1011434880aeb2e08150500e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/allin_fire.wav
+Dependencies: []

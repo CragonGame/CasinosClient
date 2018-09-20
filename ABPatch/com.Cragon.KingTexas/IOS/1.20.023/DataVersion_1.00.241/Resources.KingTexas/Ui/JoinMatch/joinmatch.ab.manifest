@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2691853350
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2ddbc0849a6d2df9056599a2d1450080
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/JoinMatch/JoinMatch@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/JoinMatch/JoinMatch@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/JoinMatch/JoinMatch.bytes
+Dependencies: []

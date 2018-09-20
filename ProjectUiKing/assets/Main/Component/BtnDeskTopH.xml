@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="355,110" extention="Button" initName="BtnDeskTopH">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <loader id="n17_hl9h" name="Lan_Image_DeskH" xy="0,0" size="355,111" url="ui://gbdohaivlh6b89" align="center" vAlign="middle" fill="scaleFree"/>
+    <image id="n15_lh6b" name="n15" src="lh6b89" fileName="Image/百人.png" xy="0,0" size="355,110" hideByEditor="true" aspect="true" visible="false"/>
+    <image id="n16_n8cl" name="n16" src="n8cl3j" fileName="Image/FX_Flare004.png" pkg="3pqfkhlu" xy="113,17" pivot="0.5,0.5" anchor="true" size="64,64"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.97"/>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n16_n8cl" value="0"/>
+    <item time="0" type="Size" target="n16_n8cl" value="0,0"/>
+    <item time="30" type="Rotation" target="n16_n8cl" tween="true" startValue="0" endValue="130" duration="36"/>
+    <item time="30" type="Size" target="n16_n8cl" tween="true" startValue="0,0" endValue="64,64" duration="18"/>
+    <item time="48" type="Size" target="n16_n8cl" tween="true" startValue="64,64" endValue="0,0" duration="18"/>
+  </transition>
+</component>

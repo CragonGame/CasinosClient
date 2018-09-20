@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="371,137">
+  <displayList>
+    <image id="n8_j1yr" name="n8" src="j1yr1c" xy="0,0"/>
+    <image id="n6_n8cl" name="n6" src="j1yrt" xy="138,65" pivot="0.5,0.5" size="64,64"/>
+    <image id="n7_n8cl" name="n7" src="j1yrt" xy="234,38" pivot="0.5,0.5" size="64,64"/>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n6_n8cl" value="129"/>
+    <item time="0" type="Size" target="n6_n8cl" value="0,0"/>
+    <item time="0" type="Size" target="n7_n8cl" value="0,0"/>
+    <item time="21" type="Rotation" target="n6_n8cl" tween="true" startValue="0" endValue="129" duration="28"/>
+    <item time="21" type="Size" target="n6_n8cl" tween="true" startValue="0,0" endValue="64,64" duration="15"/>
+    <item time="36" type="Size" target="n6_n8cl" tween="true" startValue="64,64" endValue="0,0" duration="13"/>
+    <item time="49" type="Rotation" target="n7_n8cl" tween="true" startValue="0" endValue="129" duration="28"/>
+    <item time="49" type="Size" target="n7_n8cl" tween="true" startValue="0,0" endValue="64,64" duration="15"/>
+    <item time="64" type="Size" target="n7_n8cl" tween="true" startValue="64,64" endValue="0,0" duration="13"/>
+  </transition>
+</component>

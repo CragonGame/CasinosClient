@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="125,140">
+  <displayList>
+    <image id="n9_nl3o" name="n9" src="rfhi42" xy="0,0" size="125,148"/>
+    <image id="n8_q6q3" name="n8" src="q6q33k" xy="8,25" pivot="0.5,0.5" size="109,89"/>
+    <image id="n2_lc2k" name="WinBg" src="ieud1u" xy="-12,-5" pivot="0.5,0.5" size="150,150"/>
+    <text id="n3_lc2k" name="BetChipsSelf" xy="2,114" pivot="0.5,0.5" size="120,25" fontSize="18" color="#b3d5f0" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n4_lc2k" name="BetChipsTotal" xy="2,1" pivot="0.5,0.5" size="120,25" fontSize="18" color="#b3d5f0" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n6_lc2k" name="LoaderCardType" xy="8,25" pivot="0.5,0.5" size="108,87" align="center" vAlign="middle" fill="scale"/>
+    <text id="n7_lc2k" name="WinPercent" xy="2,91" pivot="0.5,0.5" size="120,23" fontSize="17" color="#b3d5f0" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text=""/>
+  </displayList>
+  <transition name="t1" autoPlay="true">
+    <item time="0" type="Rotation" target="n2_lc2k" tween="true" startValue="0" endValue="360" duration="48" ease="Linear" repeat="-1"/>
+  </transition>
+  <transition name="AniBet">
+    <item time="0" type="Size" target="n8_q6q3" tween="true" startValue="109,89" endValue="118.12,99.53" duration="2"/>
+    <item time="2" type="Size" target="n8_q6q3" tween="true" startValue="118.12,99.53" endValue="109,89" duration="2"/>
+  </transition>
+</component>

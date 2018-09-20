@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3812700005
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 817c36221501d30c6e63ab904ff599bc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/ClubHelp/ClubHelp.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/ClubHelp/ClubHelp@sprites.bytes
+Dependencies: []

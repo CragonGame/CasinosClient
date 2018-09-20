@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="144,60" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_donu" name="n4" src="mkwxec" pkg="nhvxw9ov" xy="0,0" size="144,60">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n5_donu" name="title" xy="9,3" pivot="0.5,0.5" size="126,49" fontSize="27" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" bold="true" text="确定">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

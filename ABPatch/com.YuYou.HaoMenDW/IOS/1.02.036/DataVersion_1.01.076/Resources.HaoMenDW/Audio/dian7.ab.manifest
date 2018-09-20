@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3337633061
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 39dab58ee525a87b933c89d57426446b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/Dian7.mp3
+Dependencies: []

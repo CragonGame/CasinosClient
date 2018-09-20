@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" opaque="false">
+  <displayList>
+    <image id="n8_v4ef" name="n8" src="l1q0c9" pkg="nhvxw9ov" xy="0,-74" size="243,74" group="n9_p5bt"/>
+    <component id="n4_je85" name="CoHeadIcon" src="d45975" pkg="nhvxw9ov" xy="2,-71" size="68,68" group="n9_p5bt"/>
+    <text id="n5_je85" name="NickName" xy="70,-67" size="170,30" group="n9_p5bt" fontSize="22" color="#ffffff" autoSize="none" bold="true" text=""/>
+    <text id="n6_je85" name="Lan_Text_Online" xy="70,-34" size="51,30" group="n9_p5bt" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" bold="true" text="上线"/>
+    <group id="n9_p5bt" name="n9" xy="0,-74" size="243,74" advanced="true"/>
+  </displayList>
+  <transition name="MoveFromTopToTop">
+    <item time="0" type="XY" target="n9_p5bt" tween="true" startValue="0.83,-74.45" endValue="-,1" duration="8" ease="Linear"/>
+    <item time="48" type="XY" target="n9_p5bt" value="0.83,1"/>
+  </transition>
+</component>

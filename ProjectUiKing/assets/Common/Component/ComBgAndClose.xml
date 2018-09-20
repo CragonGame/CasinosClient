@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" initName="ComBgAndClose">
+  <displayList>
+    <component id="n8_phss" name="ComShade" src="oypw6k" fileName="Component/ComShade.xml" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n0_vi47" name="n0" src="t4okj4" fileName="Image/New/UI2_通用_底板01.png" xy="121,48" size="823,544" group="n5_phss"/>
+    <image id="n1_vi47" name="n1" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" xy="140,65" pivot="0.5,0.5" size="392,80" group="n5_phss"/>
+    <image id="n2_vi47" name="n2" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" xy="532,65" pivot="0.5,0.5" size="392,80" group="n5_phss" skew="0,180"/>
+    <image id="n3_vi47" name="n3" src="vi47jo" fileName="Image/New/UI2_通用_Title花纹01.png" xy="883,76" group="n5_phss"/>
+    <component id="n9_phss" name="n9" src="no8k7u" fileName="Component/ComEmpty.xml" xy="140,66" size="790,510" group="n5_phss"/>
+    <component id="n4_vi47" name="BtnClose" src="jt75ep" fileName="Component/Btn/BtnClose.xml" xy="855,75" group="n5_phss"/>
+    <group id="n5_phss" name="n5" xy="121,48" size="823,544" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

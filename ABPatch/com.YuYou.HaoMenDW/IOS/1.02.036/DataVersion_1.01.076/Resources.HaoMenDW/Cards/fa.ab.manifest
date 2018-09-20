@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1098949641
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4668b5055c46183b7394c1ca8b6e6f59
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Cards/Fa.png
+Dependencies: []

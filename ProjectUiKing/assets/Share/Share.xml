@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n2_lpgp" name="n2" src="oypw6k" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n11_rjau" name="n11" src="rjau7" xy="-124,-97" size="1314,835">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n12_rjau" name="n12" src="rjau9" xy="859,0">
+      <relation target="" sidePair="top-top,right-right"/>
+    </image>
+    <image id="n13_rjau" name="n13" src="rjau8" xy="1,46" size="503,594">
+      <relation target="" sidePair="bottom-bottom"/>
+    </image>
+    <image id="n14_rjau" name="n14" src="rjau6" xy="425,251">
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </image>
+    <image id="n9_gvmm" name="n9" src="gvmm3" xy="545,246" group="n15_rqry"/>
+    <text id="n5_lpgp" name="NickName" xy="610,284" pivot="0.5,0.5" size="265,39" group="n15_rqry" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" text=""/>
+    <image id="n8_gvmm" name="n8" src="gvmm5" xy="471,236" group="n15_rqry"/>
+    <component id="n6_gvmm" name="ComHead" src="gvmm2" xy="474,238" group="n15_rqry"/>
+    <image id="n10_gvmm" name="n10" src="gvmm4" xy="882,229" group="n15_rqry"/>
+    <loader id="n3_lpgp" name="LoaderQRCode" xy="888,235" size="138,138" group="n15_rqry" align="center" vAlign="middle" fill="scale"/>
+    <group id="n15_rqry" name="n15" xy="471,229" size="560,149" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

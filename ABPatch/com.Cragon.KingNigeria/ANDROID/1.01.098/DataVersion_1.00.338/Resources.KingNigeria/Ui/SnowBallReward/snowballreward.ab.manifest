@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1273768487
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b362a9294edfc646d75fdf2a06ec2497
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/SnowBallReward/SnowBallReward.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/SnowBallReward/SnowBallReward@sprites.bytes
+Dependencies: []

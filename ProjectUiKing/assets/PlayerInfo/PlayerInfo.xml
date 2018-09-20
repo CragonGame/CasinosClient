@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <controller name="ControllerBtn" pages="0,WeChatBlinded,1,BlindWeChat" selected="1"/>
+  <displayList>
+    <component id="n183_lh6b" name="ComBgAndClose" src="s17d2m" fileName="Component/ComBgAndClose.xml" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n184_lh6b" name="n184" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="134,62" size="798,516" group="n206_nmmo"/>
+    <image id="n177_lh6b" name="n177" src="t4okj4" fileName="Image/New/UI2_通用_底板01.png" pkg="nhvxw9ov" xy="120,48" size="826,543" group="n206_nmmo"/>
+    <image id="n196_wb2e" name="n196" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="138,66" size="395,338" group="n206_nmmo" alpha="0.6"/>
+    <image id="n197_wb2e" name="n197" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="533,66" pivot="0.5,0.5" size="395,338" group="n206_nmmo" skew="0,180" alpha="0.6"/>
+    <image id="n24_je85" name="n24" src="onuyc3" fileName="Image/BgSign.png" pkg="nhvxw9ov" xy="384,85" size="526,51" group="n206_nmmo" alpha="0.6" color="#4973bc"/>
+    <text id="n25_je85" name="IndividualSignature" xy="388,91" size="488,29" group="n206_nmmo" input="true" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n33_je85" name="ID" xy="156,295" size="221,32" group="n206_nmmo" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n130_hcqk" name="BtnAddress" src="nmmo2o" fileName="Component/BtnRefresh.xml" xy="339,341" group="n129_o3jq"/>
+    <text id="n131_hcqk" name="Address" xy="156,338" size="181,32" group="n129_o3jq" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n129_o3jq" name="n129" xy="156,338" size="213,32" group="n206_nmmo" collapsed="true"/>
+    <component id="n14_je85" name="PlayerIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="156,85" size="200,200" group="n206_nmmo"/>
+    <image id="n123_v6rd" name="GiftBg" src="v6rdx" fileName="Image/Gift.png" xy="333,165" group="n127_o3jq"/>
+    <component id="n132_hcqk" name="BtnGift" src="hcqk10" fileName="Component/BtnAddress.xml" xy="333,165" size="40,40" group="n127_o3jq" alpha="0"/>
+    <group id="n127_o3jq" name="n127" xy="333,165" size="40,40" group="n206_nmmo" collapsed="true"/>
+    <text id="n27_je85" name="NickName" xy="388,136" pivot="0.5,0.5" size="160,32" group="n31_je85" input="true" maxLength="9" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n200_jyil" name="BtnEidtName" src="lil3k" fileName="Component/BtnPen.xml" pkg="rqfkr96l" xy="548,136" group="n31_je85"/>
+    <group id="n31_je85" name="NickNameInput" xy="388,136" size="192,32" group="n46_je85" advanced="true" collapsed="true"/>
+    <text id="n30_je85" name="Chip" xy="421,173" pivot="0.5,0.5" size="176,32" group="n46_je85" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n32_je85" name="Cion" xy="421,210" size="175,32" group="n46_je85" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n162_trl1" name="n162" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="388,174" size="30,30" group="n208_j1yr" color="#61e2ff"/>
+    <image id="n167_g8hz" name="n167" src="ixpjau" fileName="Image/DiamondIcon.png" pkg="nhvxw9ov" xy="384,215" pivot="0.5,0.5" size="37,24" group="n208_j1yr"/>
+    <group id="n208_j1yr" name="n208" xy="384,174" size="37,65" group="n46_je85" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </group>
+    <image id="n209_j1yr" name="n209" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="388,172" size="30,30" group="n211_j1yr" color="#61e2ff"/>
+    <image id="n210_j1yr" name="n210" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="388,210" size="30,30" group="n211_j1yr" color="#a273ff"/>
+    <group id="n211_j1yr" name="n211" xy="388,172" size="30,68" group="n46_je85" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </group>
+    <image id="n201_n8cl" name="n201" src="n8cll4" fileName="Image/New/UI2_通用_五角星2.png" pkg="nhvxw9ov" xy="388,248" size="30,30" group="n46_je85"/>
+    <text id="n202_n8cl" name="TextPoint" xy="421,247" size="175,32" group="n46_je85" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n46_je85" name="ProfileGrid" xy="384,136" size="213,143" group="n206_nmmo" collapsed="true"/>
+    <text id="n76_je85" name="TextLevel" xy="652,136" pivot="0.5,0.5" size="115,35" group="n80_umbb" fontSize="26" color="#e5bb4f" vAlign="middle" leading="0" autoSize="none" text="8"/>
+    <component id="n172_dkpk" name="Exp" src="ot8lff" fileName="Component/Progress.xml" pkg="nhvxw9ov" xy="597,171" size="172,20" group="n80_umbb">
+      <ProgressBar value="50" max="100"/>
+    </component>
+    <loader id="n212_hl9h" name="Lan_Image_Level" xy="600,136" size="45,32" group="n80_umbb" url="ui://nhvxw9ovtv2tla" align="center" vAlign="middle" fill="scaleFree"/>
+    <group id="n80_umbb" name="n80" xy="597,136" size="172,55" group="n206_nmmo"/>
+    <component id="n135_hcqk" name="Gift" src="hcqk13" fileName="Component/CoGift.xml" xy="156,428" group="n62_je85"/>
+    <text id="n156_trl1" name="Lan_Text_SmallGift" xy="144,522" pivot="0.5,0.5" size="116,25" group="n62_je85" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="礼物"/>
+    <component id="n133_hcqk" name="Property" src="hcqk11" fileName="Component/CoGiftHome.xml" xy="288,428" group="n62_je85"/>
+    <text id="n157_trl1" name="Lan_Text_Gift" xy="283,522" pivot="0.5,0.5" size="102,25" group="n62_je85" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="属性"/>
+    <component id="n55_je85" name="MoreChips" src="je85k" fileName="Component/ComChips.xml" xy="420,428" group="n62_je85"/>
+    <text id="n158_trl1" name="Lan_Text_BuyChips" xy="398,522" pivot="0.5,0.5" size="135,25" group="n62_je85" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="更多筹码"/>
+    <component id="n59_je85" name="MoreCoins" src="je85l" fileName="Component/ComCoin.xml" xy="552,428" pivot="0.1,0" group="n62_je85" alpha="0.99"/>
+    <component id="n136_hcqk" name="InviteFriend" src="hcqk15" fileName="Component/CoFriend.xml" xy="684,428" group="n62_je85"/>
+    <text id="n160_trl1" name="Lan_Text_AddFriend" xy="670,522" pivot="0.5,0.5" size="119,25" group="n62_je85" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="邀请"/>
+    <text id="n159_trl1" name="Lan_Text_BuyDiamond" xy="525,522" pivot="0.5,0.5" size="146,25" group="n62_je85" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="更多钻石"/>
+    <component id="n155_eccy" name="BtnLogin" src="s56l2l" fileName="Component/BtnLogin.xml" xy="816,428" group="n62_je85"/>
+    <text id="n161_trl1" name="Lan_Text_ReturnLogin" xy="802,522" pivot="0.5,0.5" size="119,25" group="n62_je85" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="注销"/>
+    <group id="n62_je85" name="WeChatBlinded" xy="144,428" size="777,119" group="n73_je85" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerBtn" pages="0"/>
+    </group>
+    <component id="n214_w2f5" name="Gift" src="hcqk13" fileName="Component/CoGift.xml" xy="156,428" group="n227_w2f5"/>
+    <text id="n215_w2f5" name="Lan_Text_SmallGift" xy="144,522" pivot="0.5,0.5" size="116,25" group="n227_w2f5" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="礼物"/>
+    <component id="n216_w2f5" name="Property" src="hcqk11" fileName="Component/CoGiftHome.xml" xy="288,428" group="n227_w2f5"/>
+    <text id="n217_w2f5" name="Lan_Text_Gift" xy="283,522" pivot="0.5,0.5" size="102,25" group="n227_w2f5" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="属性"/>
+    <component id="n220_w2f5" name="MoreCoins" src="je85l" fileName="Component/ComCoin.xml" xy="420,428" group="n227_w2f5" alpha="0.99"/>
+    <text id="n223_w2f5" name="Lan_Text_BuyDiamond" xy="393,522" pivot="0.5,0.5" size="146,25" group="n227_w2f5" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="更多钻石"/>
+    <component id="n221_w2f5" name="InviteFriend" src="hcqk15" fileName="Component/CoFriend.xml" xy="552,428" group="n227_w2f5"/>
+    <text id="n222_w2f5" name="Lan_Text_AddFriend" xy="538,522" pivot="0.5,0.5" size="119,25" group="n227_w2f5" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="邀请"/>
+    <component id="n218_w2f5" name="BindWeChat" src="je85k" fileName="Component/ComChips.xml" xy="684,428" group="n227_w2f5"/>
+    <text id="n219_w2f5" name="TextBindWeChatTitle" xy="662,522" pivot="0.5,0.5" size="135,25" group="n227_w2f5" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="绑定微信"/>
+    <component id="n224_w2f5" name="BtnLogin" src="s56l2l" fileName="Component/BtnLogin.xml" xy="816,428" group="n227_w2f5"/>
+    <text id="n225_w2f5" name="Lan_Text_ReturnLogin" xy="802,522" pivot="0.5,0.5" size="119,25" group="n227_w2f5" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="注销"/>
+    <group id="n227_w2f5" name="BlindWeChat" xy="144,428" size="777,119" group="n73_je85" advanced="true">
+      <gearDisplay controller="ControllerBtn" pages="1"/>
+    </group>
+    <group id="n73_je85" name="Bottom" xy="144,428" size="777,119" group="n206_nmmo"/>
+    <text id="n61_je85" name="Lan_Text_StatisticalInformation" xy="597,196" pivot="0.5,0.5" size="278,32" group="n168_niy2" fontSize="25" color="#717bb3" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="统计信息"/>
+    <text id="n63_je85" name="Lan_Text_FinishGames" xy="597,229" size="108,31" group="n69_je85" fontSize="24" color="#717bb3" vAlign="middle" leading="0" singleLine="true" text="已完游戏:"/>
+    <text id="n64_je85" name="GameDone" xy="708,228" pivot="0.5,0.5" size="188,32" group="n69_je85" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="n63_je85" sidePair="left-right"/>
+    </text>
+    <group id="n69_je85" name="gameDone" xy="597,228" size="299,32" group="n168_niy2" collapsed="true"/>
+    <text id="n65_je85" name="Lan_Text_WinGames" xy="597,261" size="108,31" group="n70_je85" fontSize="24" color="#717bb3" vAlign="middle" leading="0" singleLine="true" text="已赢游戏:"/>
+    <text id="n66_je85" name="WinGame" xy="708,260" size="188,32" group="n70_je85" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="n65_je85" sidePair="left-right"/>
+    </text>
+    <group id="n70_je85" name="winGame" xy="597,260" size="299,32" group="n168_niy2" collapsed="true"/>
+    <text id="n67_je85" name="Lan_Text_StartJoinTime" xy="597,292" size="108,31" group="n71_je85" fontSize="24" color="#717bb3" vAlign="middle" leading="0" singleLine="true" text="开始时间:"/>
+    <text id="n68_je85" name="JoinInGame" xy="708,291" size="209,32" group="n71_je85" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="n67_je85" sidePair="left-right"/>
+    </text>
+    <group id="n71_je85" name="joinInGame" xy="597,291" size="320,32" group="n168_niy2" collapsed="true"/>
+    <group id="n168_niy2" name="n168" xy="597,196" size="320,127" group="n206_nmmo"/>
+    <component id="n199_jyil" name="BtnEidtSign" src="lil3k" fileName="Component/BtnPen.xml" pkg="rqfkr96l" xy="874,91" group="n206_nmmo"/>
+    <group id="n206_nmmo" name="n206" xy="120,48" size="826,543" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

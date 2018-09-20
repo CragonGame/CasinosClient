@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="847,539">
+  <displayList>
+    <image id="n0_t3f7" name="n0" src="ieudl" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <component id="n1_t3f7" name="BtnClose" src="ieudm" xy="802,-15">
+      <relation target="" sidePair="right-right"/>
+      <relation target="" sidePair=""/>
+    </component>
+  </displayList>
+</component>

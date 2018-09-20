@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="fhkgb1j1" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="ieud4" name="ItemPlayerInfo.xml" path="/Component/" exported="true"/>
+    <image id="ieud5" name="ItemBg.png" path="/Image/" scale="9grid" scale9grid="61,53,1109,5"/>
+    <component id="ieud6" name="ComHeadIcon.xml" path="/Component/" exported="true"/>
+    <image id="ieud7" name="DefautHeadIcon.png" path="/Image/" exported="true"/>
+    <image id="ieud8" name="HeadBorder1.png" path="/Image/" exported="true"/>
+    <image id="ieud9" name="BankPlayerSign.png" path="/Image/" exported="true"/>
+    <component id="ieuda" name="ComVIP.xml" path="/Component/" exported="true"/>
+    <image id="ieudb" name="VIPBg.png" path="/Image/" exported="true" scale9grid="13,21,25,18"/>
+    <image id="ieudc" name="VIPNum0.png" path="/Image/VipNum/" exported="true"/>
+    <image id="ieudd" name="GoldIcon.png" path="/Image/" exported="true"/>
+    <image id="ieude" name="bg.png" path="/Image/" scale="9grid" scale9grid="243,94,486,188"/>
+    <component id="ieudf" name="ForestPartyInfo.xml" path="/" exported="true"/>
+    <component id="ieudg" name="ComMsgBgAndClose.xml" path="/Component/" exported="true"/>
+    <image id="ieudh" name="Bg5.png" path="/Image/Bg/" exported="true" scale="9grid" scale9grid="212,135,424,270"/>
+    <component id="ieudi" name="BtnCommonClose2.xml" path="/Component/Btn/" exported="true"/>
+    <image id="ieudj" name="BtnClose2.png" path="/Image/"/>
+    <component id="ieudk" name="BtnDark.xml" path="/Component/Btn/" exported="true"/>
+    <image id="ieudl" name="BtnDark.png" path="/Image/Btn/" exported="true" scale="9grid" scale9grid="58,18,116,36"/>
+    <image id="ieudm" name="BtnLright.png" path="/Image/Btn/" exported="true"/>
+    <component id="ieudn" name="BtnCommonBlue2.xml" path="/Component/Btn/" exported="true"/>
+    <image id="ieudo" name="BtnBlue2.png" path="/Image/Btn/" exported="true"/>
+  </resources>
+  <publish name="ForestPartyInfo" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.King\PkgFold\Ui\ForestPartyInfo"/>
+</packageDescription>

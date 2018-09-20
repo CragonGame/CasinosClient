@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="966,532" initName="ComBlind">
+  <displayList>
+    <image id="n0_nhy4" name="n0" src="wb2ek8" pkg="nhvxw9ov" xy="0,0" size="966,532" color="#343963"/>
+    <image id="n1_nhy4" name="n1" src="wb2ek8" pkg="nhvxw9ov" xy="0,76" size="966,456" color="#414b8d"/>
+    <image id="n2_nhy4" name="n2" src="wb2ek8" pkg="nhvxw9ov" xy="0,76" size="6,6" color="#414b8d"/>
+    <image id="n3_nhy4" name="n3" src="wb2ek8" pkg="nhvxw9ov" xy="960,76" size="6,6" color="#414b8d"/>
+    <text id="n4_nhy4" name="n4" xy="109,37" pivot="0.5,0.5" size="84,32" fontSize="25" color="#a2b1e3" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="级别"/>
+    <text id="n5_nhy4" name="n5" xy="309,37" pivot="0.5,0.5" size="82,32" fontSize="25" color="#a2b1e3" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="盲注"/>
+    <text id="n6_nhy4" name="n6" xy="510,37" pivot="0.5,0.5" size="89,32" fontSize="25" color="#a2b1e3" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="前注"/>
+    <text id="n7_nhy4" name="n7" xy="724,37" pivot="0.5,0.5" size="132,32" fontSize="25" color="#a2b1e3" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="升盲时间"/>
+    <list id="n9_nhy4" name="ListBlind" xy="0,76" size="966,456" overflow="scroll" defaultItem="ui://jzdiszdwnhy43">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+  </displayList>
+</component>

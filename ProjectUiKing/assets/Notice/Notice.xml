@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" adaptationTest="FitSize">
+  <controller name="ControllerSend" pages="0,NeedItem,1,NotNeedItem" selected="0"/>
+  <displayList>
+    <image id="n21_8ani" name="n21" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="1066,640" hideByEditor="true" visible="false" alpha="0.6" color="#000000">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <component id="n10_oypw" name="CoShade" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0.6">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n17_y7iq" name="n17" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="-611,0" pivot="1,0" size="610,640" group="n22_8ani" alpha="0.9" color="#252647">
+      <relation target="" sidePair="height-height"/>
+    </image>
+    <list id="n9_oypw" name="ListNotice" xy="-606,6" size="600,526" group="n22_8ani" overflow="scroll" defaultItem="ui://nhvxw9ovhiep88">
+      <relation target="" sidePair="bottomext-bottom"/>
+    </list>
+    <image id="n19_y7iq" name="n19" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-611,545" pivot="1,0" size="610,95" group="n25_vtnc" color="#252647"/>
+    <component id="n2_oypw" name="CoInput" src="oypwn" fileName="Component/CoInput.xml" xy="-608,565" pivot="1,0" size="436,54" group="n25_vtnc"/>
+    <component id="n18_y7iq" name="BtnSend" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="-170,562" group="n25_vtnc"/>
+    <text id="n16_oypw" name="Lan_Text_Send" xy="-170,562" size="170,64" group="n25_vtnc" fontSize="28" color="#ffffff" align="center" vAlign="middle" autoSize="none" shadowColor="#000000" shadowOffset="1,1" text="发送">
+      <gearDisplay controller="ControllerSend" pages="1"/>
+    </text>
+    <image id="n20_y7iq" name="n20" src="vxr8p" fileName="Image/聊天-喇叭.png" xy="-79,573" size="36,36" group="n24_vxr8"/>
+    <text id="n7_oypw" name="ItemCount" xy="-34,573" size="10,36" group="n24_vxr8" fontSize="28" color="#ffffff" shadowColor="#000000" shadowOffset="1,1" text=""/>
+    <text id="n26_ipt6" name="Lan_Text_Send" xy="-201,563" size="170,64" group="n24_vxr8" fontSize="28" color="#ffffff" align="center" vAlign="middle" autoSize="none" shadowColor="#000000" shadowOffset="1,1" text="发送"/>
+    <group id="n24_vxr8" name="n24" xy="-201,563" size="177,64" group="n25_vtnc" advanced="true">
+      <gearDisplay controller="ControllerSend" pages="0"/>
+    </group>
+    <group id="n25_vtnc" name="n25" xy="-611,545" size="611,95" group="n22_8ani" advanced="true">
+      <relation target="" sidePair="bottom-bottom"/>
+    </group>
+    <group id="n22_8ani" name="n22" xy="-611,0" size="611,640" advanced="true"/>
+  </displayList>
+  <transition name="TransitionCreate">
+    <item time="0" type="XY" target="n22_8ani" tween="true" startValue="-682,-" endValue="0,-" duration="6"/>
+  </transition>
+</component>

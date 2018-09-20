@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="73,72" initName="ComWelfareIcon">
+  <displayList>
+    <image id="n1_lmq9" name="n3" src="d6x8lv" fileName="Image/Reward.png" xy="-7,-7" pivot="0.5,0.5" hideByEditor="true" visible="false" rotation="-1"/>
+    <loader id="n3_hl9h" name="Lan_Image_RewardText2" xy="12,64" size="48,28" hideByEditor="true" visible="false" url="ui://nhvxw9ovd6x8ly" align="center" vAlign="middle"/>
+    <movieclip id="n4_hwqj" name="n4" src="hwqjmb" fileName="Image/Welfare/AniWelfare.jta" xy="-11,-11"/>
+  </displayList>
+  <transition name="t0" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n1_lmq9" tween="true" startValue="-1" endValue="1" duration="6" ease="Linear"/>
+    <item time="0" type="Scale" target="n1_lmq9" tween="true" startValue="0.98,0.98" endValue="1.02,1.02" duration="6" ease="Linear"/>
+    <item time="6" type="Rotation" target="n1_lmq9" tween="true" startValue="1" endValue="-1" duration="6" ease="Linear"/>
+    <item time="6" type="Scale" target="n1_lmq9" tween="true" startValue="1.02,1.02" endValue="0.98,0.98" duration="6" ease="Linear"/>
+    <item time="12" type="Rotation" target="n1_lmq9" tween="true" startValue="-1" endValue="-1" duration="72" ease="Linear"/>
+    <item time="12" type="Scale" target="n1_lmq9" tween="true" startValue="0.98,0.98" endValue="0.98,0.98" duration="72" ease="Linear"/>
+    <item time="84" type="Scale" target="n1_lmq9" tween="true" startValue="0.98,0.98" ease="Linear"/>
+  </transition>
+</component>

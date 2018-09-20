@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1201841858
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c544d42f30d919415d0f8cd1482025e5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/ChatExPression/ChatExPression.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/ChatExPression/ChatExPression@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/ChatExPression/ChatExPression@sprites.bytes
+Dependencies: []

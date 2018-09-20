@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 383238789
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: abc4878e3f298b6b8811ff8871879d6d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/Ranking/Ranking@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/Ranking/Ranking.bytes
+Dependencies: []

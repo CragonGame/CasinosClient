@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="84,45">
+  <displayList>
+    <text id="n0_jt75" name="Lan_Text_About" xy="17,8" size="49,29" fontSize="22" color="#ffffff" underline="true" text="关于"/>
+  </displayList>
+</component>

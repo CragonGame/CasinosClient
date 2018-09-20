@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n35_l1q0" name="ComBgAndClose" src="tabcl2" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n54_tabc" name="n54" src="vi47jp" pkg="nhvxw9ov" xy="372,91" pivot="0.5,0.5" group="n63_m4t7">
+      <relation target="n62_m4t7" sidePair="right-left"/>
+    </image>
+    <image id="n55_tabc" name="n55" src="vi47jp" pkg="nhvxw9ov" xy="656,91" pivot="0.5,0.5" group="n63_m4t7" skew="0,180">
+      <relation target="n62_m4t7" sidePair="left-right"/>
+    </image>
+    <component id="n40_l1q0" name="n40" src="tbeyd" pkg="61kbhm96" xy="321,423" size="233,96" group="n63_m4t7"/>
+    <component id="n30_xbuq" name="ComLockStandPlayer" src="no8k7u" pkg="nhvxw9ov" xy="414,455" size="0,0" group="n63_m4t7"/>
+    <image id="n41_cdfz" name="n41" src="cdfzf" xy="520,429" group="n63_m4t7"/>
+    <image id="n42_cdfz" name="n42" src="cdfzf" xy="474,415" group="n63_m4t7"/>
+    <image id="n43_cdfz" name="n43" src="cdfzf" xy="474,498" group="n63_m4t7"/>
+    <image id="n44_cdfz" name="n44" src="cdfzf" xy="421,499" group="n63_m4t7"/>
+    <list id="n5_w6r6" name="ListPlayer" xy="236,181" size="448,220" group="n63_m4t7" layout="flow_hz" overflow="scroll" colGap="8" lineItemCount="5" defaultItem="ui://5e3qcz8fw6r6b"/>
+    <component id="n49_cdfz" name="Lan_Btn_AllPlayer" src="hp40g" xy="705,218" group="n63_m4t7"/>
+    <component id="n50_cdfz" name="Lan_Btn_Onlooker" src="hp40g" xy="705,341" group="n63_m4t7">
+      <Button title="旁观者"/>
+    </component>
+    <loader id="n21_t4rk" name="LoaderLock1" xy="273,421" size="60,80" group="n63_m4t7" touchable="false" url="ui://5e3qcz8fw6r62" align="center" vAlign="middle"/>
+    <loader id="n22_t4rk" name="LoaderLock2" xy="540,421" size="60,80" group="n63_m4t7" touchable="false" url="ui://5e3qcz8fw6r62" align="center" vAlign="middle"/>
+    <text id="n62_m4t7" name="TextTitle" xy="410,98" pivot="0.5,0.5" size="245,50" group="n63_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="桌内聊天屏蔽"/>
+    <group id="n63_m4t7" name="n63" xy="236,91" size="619,428" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

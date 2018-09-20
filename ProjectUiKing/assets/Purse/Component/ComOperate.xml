@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="499,77">
+  <displayList>
+    <image id="n5_tjym" name="n5" src="t4okj4" fileName="Image/New/UI2_通用_底板01.png" pkg="nhvxw9ov" xy="-15,-13" size="529,101">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n1_x8p0" name="Num" xy="15,21" size="467,34" input="true" maxLength="32" fontSize="26" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+</component>

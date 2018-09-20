@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 716029093
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 12ebce4699c9d2d9add9a5583c595d3b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHSetCardType/DesktopHSetCardType@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHSetCardType/DesktopHSetCardType.bytes
+Dependencies: []

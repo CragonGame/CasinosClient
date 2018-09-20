@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n24_excb" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <text id="n1_umbb" name="Title" xy="305,158" pivot="0.5,0.5" size="457,44" group="n34_nmmo" font="BigTitle" fontSize="35" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n2_umbb" name="Tips" xy="367,217" size="426,29" group="n34_nmmo" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="height" text=""/>
+    <component id="n20_pik7" name="Gift" src="k3yw80" fileName="Component/ComGift.xml" pkg="nhvxw9ov" xy="272,217" size="90,90" group="n34_nmmo"/>
+    <component id="n21_sul8" name="ConfirmCenterBtn" src="nmmo3" fileName="Component/BtnBuy1.xml" xy="440,413" size="188,64" group="n15_umbb"/>
+    <group id="n15_umbb" name="WindowNeedConfirm" xy="440,413" size="188,64" group="n34_nmmo" advanced="true"/>
+    <component id="n23_sul8" name="ConfirmOneBuyBtn" src="nmmo3" fileName="Component/BtnBuy1.xml" xy="283,415" group="n33_nmmo"/>
+    <component id="n22_sul8" name="ConfirmAllBuy" src="nmmo2" fileName="Component/BtnBuy.xml" xy="549,416" group="n33_nmmo"/>
+    <group id="n33_nmmo" name="WindowNeedConfirmTwo" xy="283,415" size="501,64" group="n34_nmmo" hideByEditor="true" advanced="true"/>
+    <group id="n34_nmmo" name="n34" xy="272,158" size="521,321" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

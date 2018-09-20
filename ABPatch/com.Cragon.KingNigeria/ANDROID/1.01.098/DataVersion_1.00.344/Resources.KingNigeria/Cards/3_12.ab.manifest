@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2453790426
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 51fc5ab4f32a26408303e3c47242fdb8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c73412a662fd4e4f36af34cbdf078b85
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Cards/3_12.png
+Dependencies: []

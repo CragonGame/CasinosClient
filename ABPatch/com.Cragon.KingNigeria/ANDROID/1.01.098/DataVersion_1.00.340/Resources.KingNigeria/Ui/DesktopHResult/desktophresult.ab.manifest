@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 4044787321
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 09df81d91b6c622509bf9ecce1a10214
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHResult/DesktopHResult.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHResult/DesktopHResult@sprites.bytes
+Dependencies: []

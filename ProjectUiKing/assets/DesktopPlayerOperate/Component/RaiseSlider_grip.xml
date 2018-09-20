@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="138,114" extention="Button">
+  <displayList>
+    <image id="n0_u5ui" name="n0" src="u5ui12" xy="18,61"/>
+    <component id="n2_icp5" name="ComConfirmRaise" src="u5uiy" xy="-2,2"/>
+  </displayList>
+  <Button/>
+</component>

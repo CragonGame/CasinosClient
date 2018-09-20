@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="688,36" opaque="false">
+  <controller name="ControllerLeft" pages="0,ShowLeft,1,ShowRight,2,ShowCenter" selected="0"/>
+  <controller name="ControllerShowBg" pages="0,ShowBg,1,HideBg" selected="0"/>
+  <displayList>
+    <image id="n21_g5sv" name="ChatBg1" src="kd14mf" fileName="Image/ChatBgLeft2.png" xy="0,0" size="688,36" group="n12_j5mk">
+      <gearDisplay controller="ControllerShowBg" pages="0"/>
+      <relation target="n4_wonv" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n26_hnuz" name="ChatBg2" src="kd14mf" fileName="Image/ChatBgLeft2.png" xy="0,0" size="687,36" group="n12_j5mk">
+      <gearDisplay controller="ControllerShowBg" pages="0"/>
+      <relation target="n4_wonv" sidePair="width-width,height-height"/>
+    </image>
+    <richtext id="n4_wonv" name="ChatContent" xy="19,5" size="653,27" group="n12_j5mk" fontSize="20" color="#ffffff" vAlign="middle" leading="0" ubb="true" autoSize="height" text="">
+      <relation target="" sidePair="width-width"/>
+    </richtext>
+    <group id="n12_j5mk" name="GroupLeft" xy="0,0" size="688,36" advanced="true">
+      <gearDisplay controller="ControllerLeft" pages="0"/>
+    </group>
+    <image id="n23_g5sv" name="ChatBg" src="kd14mg" fileName="Image/ChatBgRight1.png" xy="0,0" size="688,36" group="n11_9ay5">
+      <relation target="n10_9ay5" sidePair="width-width,height-height"/>
+      <relation target="" sidePair="right-right"/>
+    </image>
+    <richtext id="n10_9ay5" name="ChatContent" xy="13,5" size="653,27" group="n11_9ay5" fontSize="20" color="#ffffff" ubb="true" autoSize="height" text="">
+      <relation target="" sidePair="right-right,width-width"/>
+    </richtext>
+    <group id="n11_9ay5" name="GroupRight" xy="0,0" size="688,36" advanced="true">
+      <gearDisplay controller="ControllerLeft" pages="1"/>
+    </group>
+    <image id="n19_er9b" name="TimeBg" src="er9baj" fileName="Image/CommonDarkBg.png" xy="332,5" pivot="0.5,0.5" size="23,26" group="n14_er9b" alpha="0.5">
+      <relation target="n13_er9b" sidePair="width-width,height-height"/>
+    </image>
+    <richtext id="n13_er9b" name="ChatContent" xy="339,7" pivot="0.5,0.5" size="10,22" group="n14_er9b" fontSize="16" color="#ffffff" align="center" vAlign="middle" ubb="true" text=""/>
+    <group id="n14_er9b" name="GroupCenter" xy="332,5" size="23,26" advanced="true">
+      <gearDisplay controller="ControllerLeft" pages="2"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+  <relation target="n10_9ay5" sidePair="height-height"/>
+</component>

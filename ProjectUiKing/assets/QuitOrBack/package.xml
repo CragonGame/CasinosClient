@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rni97cw7" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="bdz53" name="QuitOrBack.xml" path="/" exported="true"/>
+    <component id="eccy8" name="BtnLogin.xml" path="/Component/"/>
+    <image id="v4efc" name="Mote.png" path="/Image/"/>
+  </resources>
+  <publish name="QuitOrBack" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\QuitOrBack"/>
+</packageDescription>

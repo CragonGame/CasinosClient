@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n13_hwqj" name="ComShade" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n14_hwqj" name="n14" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="253,118" size="549,345" group="n22_hwqj"/>
+    <image id="n15_hwqj" name="n15" src="t4okj4" fileName="Image/New/UI2_通用_底板01.png" pkg="nhvxw9ov" xy="184,77" pivot="0.5,0.5" size="686,477" group="n22_hwqj"/>
+    <image id="n16_hwqj" name="n16" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="202,95" size="325,60" group="n22_hwqj"/>
+    <image id="n17_hwqj" name="n17" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="525,95" pivot="0.5,0.5" size="325,60" group="n22_hwqj" skew="0,180"/>
+    <image id="n18_hwqj" name="n18" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="850,534" size="325,80" group="n22_hwqj" skew="180,180" color="#595b99"/>
+    <image id="n19_hwqj" name="n19" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="202,454" pivot="0.5,0.5" size="325,80" group="n22_hwqj" skew="180,0" color="#595b99"/>
+    <image id="n20_hwqj" name="n20" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="208,96" size="180,59" group="n22_hwqj"/>
+    <image id="n21_hwqj" name="n21" src="vi47jo" fileName="Image/New/UI2_通用_Title花纹01.png" pkg="nhvxw9ov" xy="761,100" size="32,54" group="n22_hwqj" aspect="true"/>
+    <group id="n22_hwqj" name="n22" xy="184,77" size="991,537" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <text id="n10_hwqj" name="Lan_Text_IdCardCheckTip" xy="285,176" size="497,27" group="n7_nrzk" fontSize="14" color="#ffffff" vAlign="middle" autoSize="shrink" text="我们不会泄露您的资料，请放心填写"/>
+    <component id="n1_nrzk" name="ComInputName" src="nrzk1" fileName="Component/ComInput.xml" xy="399,224" size="384,43" group="n7_nrzk"/>
+    <text id="n3_nrzk" name="Lan_Text_IdName" xy="283,229" size="110,31" group="n7_nrzk" fontSize="24" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="真实姓名"/>
+    <component id="n4_nrzk" name="ComInputId" src="nrzk1" fileName="Component/ComInput.xml" xy="399,314" size="384,43" group="n7_nrzk"/>
+    <text id="n5_nrzk" name="Lan_Text_IdCard" xy="283,319" size="110,31" group="n7_nrzk" fontSize="24" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="身份证号"/>
+    <component id="n6_nrzk" name="Lan_Btn_Confirm" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="437,464" size="196,66" group="n7_nrzk"/>
+    <text id="n11_hwqj" name="Lan_Text_IdCardNameTip" xy="400,272" size="382,22" group="n7_nrzk" fontSize="14" color="#ffffff" vAlign="middle" autoSize="shrink" singleLine="true" text="真实姓名是您权益的重要保证，请填写您身份证上的真实姓名"/>
+    <text id="n12_hwqj" name="Lan_Text_IdCardNumTip" xy="400,360" size="382,22" group="n7_nrzk" fontSize="14" color="#ffffff" vAlign="middle" autoSize="shrink" singleLine="true" text="请输入您的15位或18位的身份证号，不够请补零"/>
+    <text id="n23_hwqj" name="Lan_Text_IdCardCheckTip1" xy="286,402" size="497,27" group="n7_nrzk" fontSize="16" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" text="未满18岁用户，在游戏过程中将有防沉迷提示!"/>
+    <group id="n7_nrzk" name="n7" xy="283,176" size="500,354" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <text id="n9_ns8y" name="Lan_Text_IdCardCheck" xy="284,102" pivot="0.5,0.5" size="497,45" font="FontCu" fontSize="35" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

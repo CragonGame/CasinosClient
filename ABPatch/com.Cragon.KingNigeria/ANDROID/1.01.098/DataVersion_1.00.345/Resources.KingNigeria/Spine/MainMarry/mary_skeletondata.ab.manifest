@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 1333404342
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c7111a71029503c042416580458af588
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f821beecd63de8a73f6421cfec5a4796
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Lib.Spine/spine-unity/Editor/GUI/AtlasAsset Icon.png
+- Assets/Resources.KingNigeria/PkgSingle/Spine/MainMarry/Mary_SkeletonData.asset
+- Assets/Resources.KingTexas/PkgSingle/Spine/MainMarry/Mary.atlas.txt
+- Assets/Resources.KingTexas/PkgSingle/Spine/MainMarry/MaryJson.json
+- Assets/Lib.Spine/spine-unity/Editor/GUI/SkeletonDataAsset Icon.png
+- Assets/Resources.KingTexas/PkgSingle/Spine/MainMarry/Mary_Atlas.asset
+Dependencies: []

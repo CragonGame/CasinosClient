@@ -1,0 +1,37 @@
+{
+	"CommonData": "{\"DestroyTm\":16.05}",
+	"ListGenerator": [{
+		"mTypeName": "CircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":18,\"mStartPointX\":-300.0,\"mStartPointY\":0.0,\"mRadius\":0.0,\"mAmount\":1,\"mStartTime\":0.0,\"mStartAngle\":90.0,\"mSpeed\":50.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":-1}"
+	},
+	{
+		"mTypeName": "CircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":18,\"mStartPointX\":300.0,\"mStartPointY\":0.0,\"mRadius\":0.0,\"mAmount\":1,\"mStartTime\":0.0,\"mStartAngle\":-90.0,\"mSpeed\":50.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":-1}"
+	},
+	{
+		"mTypeName": "CircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":5,\"mStartPointX\":-300.0,\"mStartPointY\":0.0,\"mRadius\":150.0,\"mAmount\":35,\"mStartTime\":0.0,\"mStartAngle\":90.0,\"mSpeed\":50.0,\"mRedFishVibId\":29,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "CircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":4,\"mStartPointX\":300.0,\"mStartPointY\":0.0,\"mRadius\":150.0,\"mAmount\":35,\"mStartTime\":0.0,\"mStartAngle\":-90.0,\"mSpeed\":50.0,\"mRedFishVibId\":28,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "CircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":2,\"mStartPointX\":-300.0,\"mStartPointY\":0.0,\"mRadius\":220.0,\"mAmount\":30,\"mStartTime\":0.0,\"mStartAngle\":90.0,\"mSpeed\":50.0,\"mRedFishVibId\":26,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "CircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":3,\"mStartPointX\":300.0,\"mStartPointY\":0.0,\"mRadius\":220.0,\"mAmount\":30,\"mStartTime\":0.0,\"mStartAngle\":-90.0,\"mSpeed\":50.0,\"mRedFishVibId\":27,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "CircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":1,\"mStartPointX\":-300.0,\"mStartPointY\":0.0,\"mRadius\":300.0,\"mAmount\":60,\"mStartTime\":0.0,\"mStartAngle\":90.0,\"mSpeed\":50.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "CircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":1,\"mStartPointX\":300.0,\"mStartPointY\":0.0,\"mRadius\":300.0,\"mAmount\":60,\"mStartTime\":0.0,\"mStartAngle\":-90.0,\"mSpeed\":50.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":0}"
+	}],
+	"ListAffector": [],
+	"GeneratorAffectorMap": "[]"
+}

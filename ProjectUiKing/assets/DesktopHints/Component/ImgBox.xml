@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="500,500" extention="Button">
+  <displayList>
+    <image id="n6_y7iq" name="n6" src="mbom6" xy="0,0" size="500,500">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n2" name="title" xy="32,1" size="436,40" fontSize="28" color="#ffffff" align="center" vAlign="middle" autoSize="none" singleLine="true" text="">
+      <relation target="" sidePair="width-width%"/>
+    </text>
+    <component id="n8_smxa" name="BtnClose" src="jyu45" xy="184,143"/>
+  </displayList>
+  <Button/>
+</component>

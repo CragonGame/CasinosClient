@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2946821474
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c8ed0c43f2a9b08e336726f95ac2f4ca
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Spine/LoadingMarry/Mary_Loading.atlas.txt
+Dependencies: []

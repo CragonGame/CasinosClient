@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2552452534
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cb000d0860b95c88d7f4aca89f84a720
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1033bf7ddfd4c6d43e7a6382c0a0a61a
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Spine/DengLong/denglong.atlas.txt
+Dependencies: []

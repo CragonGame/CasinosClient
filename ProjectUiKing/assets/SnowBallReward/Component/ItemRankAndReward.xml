@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="528,60">
+  <displayList>
+    <text id="n0_s17d" name="TextRank" xy="69,15" pivot="0.5,0.5" size="136,32" fontSize="25" color="#99c0fa" align="center" vAlign="middle" leading="0" autoSize="none" text="00000"/>
+    <text id="n1_s17d" name="TextRewardRatio" xy="297,15" pivot="0.5,0.5" size="136,32" fontSize="25" color="#eacf7d" align="center" vAlign="middle" leading="0" autoSize="none" text="0000000000"/>
+  </displayList>
+</component>

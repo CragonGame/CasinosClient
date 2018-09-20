@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="106,45" extention="Button" initName="BtnRemovePlayer">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_nhy4" name="n4" src="mkwxea" pkg="nhvxw9ov" xy="0,0" size="106,45">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n6_nhy4" name="n6" xy="13,6" pivot="0.5,0.5" size="78,27" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="移除"/>
+  </displayList>
+  <Button mode="Check" downEffect="scale" downEffectValue="0.90"/>
+</component>

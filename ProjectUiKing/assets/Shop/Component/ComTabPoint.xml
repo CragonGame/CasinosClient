@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="293,40" initName="ComTabPoint">
+  <controller name="ControllerTab" pages="0,,1,,2," selected="0"/>
+  <displayList>
+    <image id="n0_j3hl" name="n0" src="y7iqbv" fileName="Image/TabDark.png" pkg="nhvxw9ov" xy="0,0" pivot="0.5,0.5" size="144,40">
+      <gearDisplay controller="ControllerTab" pages="1,2"/>
+    </image>
+    <image id="n1_j3hl" name="n1" src="y7iqbv" fileName="Image/TabDark.png" pkg="nhvxw9ov" xy="149,0" pivot="0.5,0.5" size="144,40" skew="0,180">
+      <gearDisplay controller="ControllerTab" pages="0,1"/>
+    </image>
+    <text id="n3_j3hl" name="n3" xy="0,5" size="144,27" font="FontCu" fontSize="23" color="#6880c6" align="center" vAlign="middle" leading="0" autoSize="none" text="礼品券"/>
+    <text id="n5_j3hl" name="n5" xy="149,5" size="144,27" font="FontCu" fontSize="23" color="#6880c6" align="center" vAlign="middle" leading="0" autoSize="none" text="积分"/>
+    <image id="n11_j3hl" name="n11" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="0,0" pivot="0.5,0.5" size="144,40">
+      <gearDisplay controller="ControllerTab" pages="0"/>
+    </image>
+    <image id="n12_j3hl" name="n12" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="149,0" pivot="0.5,0.5" size="144,40" skew="0,180">
+      <gearDisplay controller="ControllerTab" pages="2"/>
+    </image>
+    <text id="n6_j3hl" name="Lan_Text_GiftTicket" xy="0,5" size="144,27" font="FontCu" fontSize="23" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="礼品券">
+      <gearDisplay controller="ControllerTab" pages="0"/>
+    </text>
+    <text id="n8_j3hl" name="Lan_Text_Score" xy="149,5" size="144,27" font="FontCu" fontSize="23" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="积分">
+      <gearDisplay controller="ControllerTab" pages="2"/>
+    </text>
+    <component id="n16_j3hl" name="BtnGift1" src="qkn2kv" fileName="Component/Btn/BtnEmpty.xml" pkg="nhvxw9ov" xy="0,0" size="144,40"/>
+    <component id="n18_j3hl" name="BtnStarPoint" src="qkn2kv" fileName="Component/Btn/BtnEmpty.xml" pkg="nhvxw9ov" xy="149,0" size="144,40"/>
+    <image id="n2_j3hl" name="n2" src="bjg9ck" fileName="Image/BtnTab1.png" pkg="nhvxw9ov" xy="149,0" size="144,40" hideByEditor="true" visible="false">
+      <gearDisplay controller="ControllerTab" pages="0,2"/>
+    </image>
+    <text id="n4_j3hl" name="n4" xy="149,5" size="144,27" hideByEditor="true" visible="false" fontSize="23" color="#6880c6" align="center" vAlign="middle" leading="0" autoSize="none" text="礼券"/>
+    <image id="n10_j3hl" name="n10" src="bjg9cl" fileName="Image/BtnTab1Light.png" pkg="nhvxw9ov" xy="149,0" size="144,40" hideByEditor="true" visible="false">
+      <gearDisplay controller="ControllerTab" pages="1"/>
+    </image>
+    <text id="n7_j3hl" name="n7" xy="149,5" size="144,27" hideByEditor="true" visible="false" fontSize="23" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="礼券">
+      <gearDisplay controller="ControllerTab" pages="1"/>
+    </text>
+    <component id="n17_j3hl" name="BtnGift2" src="qkn2kv" fileName="Component/Btn/BtnEmpty.xml" pkg="nhvxw9ov" xy="149,-1" size="144,40" hideByEditor="true" visible="false"/>
+    <component id="n19_m4t7" name="ComPointAndStar" src="j3hl3o" fileName="Component/ComPointAndStar.xml" xy="35,46">
+      <gearDisplay controller="ControllerTab" pages="2"/>
+    </component>
+  </displayList>
+</component>

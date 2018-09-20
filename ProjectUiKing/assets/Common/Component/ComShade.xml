@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <image id="n4_hp40" name="n4" src="oypw6e" fileName="Image/Shade.png" xy="0,0" size="1066,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n5_phss" name="n5" src="oypw6e" fileName="Image/Shade.png" xy="0,0" size="1066,640" alpha="0.6">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n6_phss" name="n6" src="oypw6e" fileName="Image/Shade.png" xy="0,0" size="1066,640" hideByEditor="true" visible="false">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+</component>

@@ -1,0 +1,64 @@
+{
+	"CommonData": "{\"DestroyTm\":15.0}",
+	"ListGenerator": [{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":21,\"mStartPointX\":-150.0,\"mStartPointY\":0.0,\"mRadius\":0.0,\"mAmount\":1,\"mStartTime\":0.0,\"mStartAngle\":90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":-1}"
+	},
+	{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":20,\"mStartPointX\":150.0,\"mStartPointY\":0.0,\"mRadius\":0.0,\"mAmount\":1,\"mStartTime\":0.0,\"mStartAngle\":-90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":-1}"
+	},
+	{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":6,\"mStartPointX\":-150.0,\"mStartPointY\":0.0,\"mRadius\":80.0,\"mAmount\":13,\"mStartTime\":0.0,\"mStartAngle\":90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":30,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":4,\"mStartPointX\":150.0,\"mStartPointY\":0.0,\"mRadius\":80.0,\"mAmount\":13,\"mStartTime\":0.0,\"mStartAngle\":-90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":28,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":4,\"mStartPointX\":-150.0,\"mStartPointY\":0.0,\"mRadius\":150.0,\"mAmount\":24,\"mStartTime\":0.0,\"mStartAngle\":90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":6,\"mStartPointX\":150.0,\"mStartPointY\":0.0,\"mRadius\":150.0,\"mAmount\":24,\"mStartTime\":0.0,\"mStartAngle\":-90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":3,\"mStartPointX\":-150.0,\"mStartPointY\":0.0,\"mRadius\":220.0,\"mAmount\":33,\"mStartTime\":0.0,\"mStartAngle\":90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":27,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":5,\"mStartPointX\":150.0,\"mStartPointY\":0.0,\"mRadius\":220.0,\"mAmount\":33,\"mStartTime\":0.0,\"mStartAngle\":-90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":29,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":1,\"mStartPointX\":-150.0,\"mStartPointY\":0.0,\"mRadius\":300.0,\"mAmount\":33,\"mStartTime\":0.0,\"mStartAngle\":90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":0}"
+	},
+	{
+		"mTypeName": "RoundCircleGeneratorData",
+		"mJsonString": "{\"mFishVibID\":2,\"mStartPointX\":150.0,\"mStartPointY\":0.0,\"mRadius\":300.0,\"mAmount\":33,\"mStartTime\":0.0,\"mStartAngle\":-90.0,\"mSpeed\":50.0,\"mAngleSpeed\":36.0,\"mRedFishVibId\":-1,\"mRedFishIndex\":0}"
+	}],
+	"ListAffector": [{
+		"mTypeName": "AngleSpeedAffectorData",
+		"mJsonString": "{\"mStartTime\":10.0,\"mAngleSpeed\":0.0,\"mSpeed\":300.0}"
+	},
+	{
+		"mTypeName": "AngleSpeedAffectorData",
+		"mJsonString": "{\"mStartTime\":11.0,\"mAngleSpeed\":0.0,\"mSpeed\":300.0}"
+	},
+	{
+		"mTypeName": "AngleSpeedAffectorData",
+		"mJsonString": "{\"mStartTime\":12.0,\"mAngleSpeed\":0.0,\"mSpeed\":300.0}"
+	},
+	{
+		"mTypeName": "AngleSpeedAffectorData",
+		"mJsonString": "{\"mStartTime\":13.0,\"mAngleSpeed\":0.0,\"mSpeed\":300.0}"
+	},
+	{
+		"mTypeName": "AngleSpeedAffectorData",
+		"mJsonString": "{\"mStartTime\":14.0,\"mAngleSpeed\":0.0,\"mSpeed\":300.0}"
+	}],
+	"GeneratorAffectorMap": "[{\"GeneratorIndex\":8,\"AffectorIndex\":0},{\"GeneratorIndex\":9,\"AffectorIndex\":0},{\"GeneratorIndex\":6,\"AffectorIndex\":1},{\"GeneratorIndex\":7,\"AffectorIndex\":1},{\"GeneratorIndex\":4,\"AffectorIndex\":2},{\"GeneratorIndex\":5,\"AffectorIndex\":2},{\"GeneratorIndex\":2,\"AffectorIndex\":3},{\"GeneratorIndex\":3,\"AffectorIndex\":3},{\"GeneratorIndex\":0,\"AffectorIndex\":4},{\"GeneratorIndex\":1,\"AffectorIndex\":4}]"
+}

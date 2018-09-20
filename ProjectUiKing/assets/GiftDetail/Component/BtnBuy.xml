@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="235,64" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_nmmo" name="n4" src="mkwxea" pkg="nhvxw9ov" xy="0,0" size="235,64"/>
+    <text id="n5_nmmo" name="Title" xy="5,16" pivot="0.5,0.5" size="224,27" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="给所有人购买1千"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

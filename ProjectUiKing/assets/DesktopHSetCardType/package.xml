@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="kyloje0x" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="czif6" name="DesktopHSetCardType.xml" path="/" exported="true"/>
+    <component id="czifb" name="CoBankCardTypeParent.xml" path="/Component/" exported="true"/>
+    <component id="cziff" name="ComboBoxCardType_item.xml" path="/Component/" exported="true"/>
+    <component id="czifg" name="ComboBoxCardType_popup.xml" path="/Component/" exported="true"/>
+    <component id="czifh" name="ComboBoxCardType.xml" path="/Component/" exported="true"/>
+  </resources>
+  <publish name="DesktopHSetCardType" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\DesktopHSetCardType"/>
+</packageDescription>

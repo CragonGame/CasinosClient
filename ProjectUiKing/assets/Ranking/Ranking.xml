@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerRanking" pages="0,Coin,2,Win,1,Diamond" selected="2"/>
+  <displayList>
+    <component id="n74_bjg9" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n117_lh6b" name="n117" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="153,78" size="180,68" group="n119_m4t7"/>
+    <component id="n82_bjg9" name="BtnTabRed" src="bjg9cm" fileName="Component/Btn/BtnTab1.xml" pkg="nhvxw9ov" xy="485,155" size="115,37" group="n119_m4t7"/>
+    <component id="n80_bjg9" name="BtnTabDiamond" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="600,155" pivot="0.5,0.5" size="118,37" group="n119_m4t7" rotation="180"/>
+    <component id="n81_bjg9" name="BtnTabGold" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="368,155" pivot="0.5,0.5" size="118,37" group="n119_m4t7" skew="0,180" rotation="180"/>
+    <list id="n31_g8bh" name="RankingList" xy="154,203" size="758,363" group="n119_m4t7" overflow="scroll" lineGap="1" defaultItem="ui://696tr25tg8bh6" autoItemSize="false" align="center"/>
+    <text id="n109_jx6n" name="Lan_Text_RankChip" xy="374,156" pivot="0.5,0.5" size="110,35" group="n119_m4t7" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="筹码榜"/>
+    <text id="n111_jx6n" name="Lan_Text_RankDiamond" xy="603,156" pivot="0.5,0.5" size="110,35" group="n119_m4t7" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="钻石榜"/>
+    <text id="n113_jx6n" name="Lan_Text_RankingRedEnvelopes" xy="487,156" pivot="0.5,0.5" size="110,35" group="n119_m4t7" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="豪胜榜"/>
+    <image id="n106_smxa" name="n106" src="bjg9cl" fileName="Image/BtnTab1Light.png" pkg="nhvxw9ov" xy="485,155" size="115,37" group="n119_m4t7" visible="false">
+      <gearDisplay controller="ControllerRanking" pages="2"/>
+    </image>
+    <image id="n107_smxa" name="n107" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="368,155" pivot="0.5,0.5" size="118,37" group="n119_m4t7">
+      <gearDisplay controller="ControllerRanking" pages="0"/>
+    </image>
+    <image id="n108_smxa" name="n108" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="600,155" pivot="0.5,0.5" size="118,37" group="n119_m4t7" skew="0,180">
+      <gearDisplay controller="ControllerRanking" pages="1"/>
+    </image>
+    <text id="n110_jx6n" name="Lan_Text_RankChip" xy="374,156" pivot="0.5,0.5" size="110,35" group="n119_m4t7" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="筹码榜">
+      <gearDisplay controller="ControllerRanking" pages="0"/>
+    </text>
+    <text id="n112_jx6n" name="Lan_Text_RankDiamond" xy="603,156" pivot="0.5,0.5" size="110,35" group="n119_m4t7" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="钻石榜">
+      <gearDisplay controller="ControllerRanking" pages="1"/>
+    </text>
+    <text id="n114_jx6n" name="Lan_Text_RankingRedEnvelopes" xy="487,156" pivot="0.5,0.5" size="110,35" group="n119_m4t7" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="豪胜榜">
+      <gearDisplay controller="ControllerRanking" pages="2"/>
+    </text>
+    <image id="n76_bjg9" name="n76" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="575,74" pivot="0.5,0.5" size="38,64" group="n119_m4t7" skew="0,180">
+      <relation target="n118_m4t7" sidePair="left-right"/>
+    </image>
+    <image id="n77_bjg9" name="n77" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="452,74" pivot="0.5,0.5" size="38,64" group="n119_m4t7">
+      <relation target="n118_m4t7" sidePair="right-left"/>
+    </image>
+    <text id="n118_m4t7" name="TextTitle" xy="490,81" pivot="0.5,0.5" size="85,50" group="n119_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="排行"/>
+    <group id="n119_m4t7" name="n119" xy="153,74" size="759,492" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

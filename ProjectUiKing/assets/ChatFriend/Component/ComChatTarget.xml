@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="179,63">
+  <controller name="ControlSelect" pages="1,NotSelect,0,IsSelect" selected="1"/>
+  <controller name="ControllerNewRecord" pages="0,HaveNewRecord,1,NoRecord" selected="0"/>
+  <displayList>
+    <image id="n24_dkpk" name="n24" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="179,63" color="#192245">
+      <gearDisplay controller="ControlSelect" pages="1"/>
+    </image>
+    <image id="n25_dkpk" name="n25" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="179,63" alpha="0.8" color="#294893">
+      <gearDisplay controller="ControlSelect" pages="0"/>
+    </image>
+    <component id="n17_dld2" name="CoHeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="3,4" size="61,55"/>
+    <text id="n2" name="TextName" xy="66,2" size="100,20" fontSize="14" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n18_dld2" name="TextLastRecord" xy="66,21" size="101,20" fontSize="14" color="#ffffff" vAlign="middle" leading="0" autoSize="none" singleLine="true" text=""/>
+    <text id="n19_dld2" name="TextSendTm" xy="66,41" size="100,20" fontSize="14" color="#ffffff" align="right" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n16_dld2" name="n16" src="dld2a7" fileName="Image/MsgTips.png" pkg="nhvxw9ov" xy="157,22" size="20,20" group="n21_dld2"/>
+    <text id="n20_dld2" name="NewRecordCount" xy="158,21" pivot="0.5,0.5" size="19,21" group="n21_dld2" fontSize="15" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n21_dld2" name="GroupNewRecord" xy="157,21" size="20,21" advanced="true">
+      <gearDisplay controller="ControllerNewRecord" pages="0"/>
+    </group>
+  </displayList>
+</component>

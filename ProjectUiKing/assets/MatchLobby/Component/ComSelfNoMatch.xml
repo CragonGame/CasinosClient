@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="540,155" initName="ComSelfNoMatch">
+  <displayList>
+    <text id="n0_wb2e" name="Lan_Text_NotSignUpMatchInfo" xy="0,0" pivot="0.5,0.5" size="541,44" fontSize="35" color="#ffffff" align="center" vAlign="middle" singleLine="true" text="还未报名任何比赛，赶紧去报名吧!"/>
+    <component id="n1_wb2e" name="BtnApply" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="185,91"/>
+    <text id="n2_wb2e" name="Lan_Text_GotoSignUp" xy="199,91" pivot="0.5,0.5" size="142,64" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="去比赛"/>
+  </displayList>
+</component>

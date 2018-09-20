@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="233,97">
+  <displayList>
+    <image id="n0_tbey" name="n0" src="tbeya" xy="0,0" pivot="0.5,0.5" size="117,97"/>
+    <image id="n1_tbey" name="n1" src="tbeya" xy="116,0" pivot="0.5,0.5" size="116,97" skew="0,180"/>
+  </displayList>
+</component>

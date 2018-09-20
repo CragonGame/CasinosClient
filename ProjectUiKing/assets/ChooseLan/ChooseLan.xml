@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" overflow="hidden" adaptationTest="FitSize">
+  <displayList>
+    <image id="n8_dhq4" name="Bg" src="ef0j2" fileName="Image/Bg5.png" xy="21,-64"/>
+    <component id="n5_le0e" name="CoShade" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0.01">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <list id="n2_rhkp" name="ListMultipleLanguage" xy="240,17" size="586,605" overflow="scroll" lineGap="5" defaultItem="ui://6ks4cw4yrhkp1" align="center" vAlign="middle">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </list>
+    <component id="n9_pufl" name="BtnReturn" src="wb2ek4" fileName="Component/Btn/BtnReturn1.xml" pkg="nhvxw9ov" xy="1005,8">
+      <relation target="" sidePair="right-right"/>
+    </component>
+  </displayList>
+</component>

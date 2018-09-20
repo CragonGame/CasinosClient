@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 1887777257
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0c540108d6761317b796769b1489a3e2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: abb9b9167ab0d9f4af2beeb617361f49
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Spine/LoadingMarry/Mary_Loading_Material.mat
+- Assets/Lib.Spine/spine-unity/Shaders/Spine-Skeleton.shader
+- Assets/Resources.KingNigeria/PkgSingle/Spine/LoadingMarry/Mary_Loading.png
+Dependencies: []

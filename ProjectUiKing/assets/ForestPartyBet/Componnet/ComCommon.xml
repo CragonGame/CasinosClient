@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1060,640" opaque="false" initName="ComCommon" adaptationTest="FitSize">
+  <displayList>
+    <list id="n11_ay3t" name="ListRewardHistory" xy="606,5" size="449,39" touchable="false" layout="row" overflow="hidden" colGap="5" defaultItem="ui://si97dldqqsc1n" align="right" vAlign="middle">
+      <relation target="" sidePair="right-right"/>
+    </list>
+    <component id="n3_ay3t" name="ComCountDown" src="ieud35" xy="484,32"/>
+    <component id="n14_q6q3" name="ComBanker" src="ieudeu" pkg="si97dldq" xy="55,0"/>
+    <component id="n15_q6q3" name="BtnNotBeBanker" src="ieudds" pkg="si97dldq" xy="352,46"/>
+    <component id="n16_q6q3" name="BtnBeBanker" src="ieuddp" pkg="si97dldq" xy="352,46"/>
+    <component id="n18_q6q3" name="BtnBetChange" src="ieude7" pkg="si97dldq" xy="60,538"/>
+    <component id="n19_q6q3" name="BtnChat" src="ieuddv" pkg="si97dldq" xy="172,525"/>
+    <component id="n20_q6q3" name="ComPlayerGold" src="ieudfs" pkg="si97dldq" xy="288,522"/>
+    <component id="n21_q6q3" name="BtnInfo" src="ieude4" pkg="si97dldq" xy="596,526"/>
+    <component id="n22_q6q3" name="BtnShop" src="ieudeb" pkg="si97dldq" xy="709,521"/>
+    <component id="n24_q6q3" name="BtnBetRepet" src="ieuddy" pkg="si97dldq" xy="833,551"/>
+    <component id="n23_q6q3" name="BtnBetRepeatAutoOrManual" src="ieude1" pkg="si97dldq" xy="866,552"/>
+  </displayList>
+</component>

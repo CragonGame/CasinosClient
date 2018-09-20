@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="88,91" extention="Button" initName="BtnGoldTree">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n6_qj42" name="n6" src="qj426x" xy="8,46" size="70,45"/>
+    <image id="n5_qj42" name="n5" src="qj426y" xy="2,14" size="78,53"/>
+    <image id="n12_mai6" name="n12" src="qj426z" xy="53,17"/>
+    <image id="n13_mai6" name="n13" src="qj426z" xy="-7,14" pivot="0.5,0.5"/>
+    <image id="n14_mai6" name="n14" src="qj426z" xy="37,0"/>
+    <graph id="n11_qj42" name="GoldTreeParParent" xy="41,35" size="1,1" type="rect"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Alpha" target="n14_mai6" tween="true" startValue="0" endValue="0" duration="12" ease="Linear"/>
+    <item time="0" type="Alpha" target="n13_mai6" tween="true" startValue="1" endValue="0" duration="12" ease="Linear"/>
+    <item time="0" type="Alpha" target="n12_mai6" tween="true" startValue="0" endValue="1" duration="12" ease="Linear"/>
+    <item time="0" type="Rotation" target="n13_mai6" tween="true" startValue="0" endValue="0" duration="36"/>
+    <item time="12" type="Alpha" target="n14_mai6" tween="true" startValue="0" endValue="1" duration="12" ease="Linear"/>
+    <item time="12" type="Alpha" target="n12_mai6" tween="true" startValue="1" endValue="0" duration="12" ease="Linear"/>
+    <item time="12" type="Alpha" target="n13_mai6" tween="true" startValue="0" endValue="0" duration="12" ease="Linear"/>
+    <item time="24" type="Alpha" target="n13_mai6" tween="true" startValue="0" endValue="1" duration="12" ease="Linear"/>
+    <item time="24" type="Alpha" target="n12_mai6" tween="true" startValue="0" endValue="0" duration="12" ease="Linear"/>
+    <item time="24" type="Alpha" target="n14_mai6" tween="true" startValue="1" endValue="0" duration="12" ease="Linear"/>
+    <item time="36" type="Alpha" target="n14_mai6" tween="true" startValue="0" endValue="0" duration="24" ease="Linear"/>
+    <item time="36" type="Alpha" target="n13_mai6" tween="true" startValue="1" endValue="1" duration="24" ease="Linear"/>
+    <item time="36" type="Alpha" target="n12_mai6" tween="true" startValue="0" endValue="0" duration="24" ease="Linear"/>
+    <item time="36" type="Rotation" target="n13_mai6" tween="true" startValue="0" endValue="360" duration="24" ease="Linear"/>
+    <item time="60" type="Rotation" target="n13_mai6" tween="true" startValue="360" ease="Linear"/>
+  </transition>
+</component>

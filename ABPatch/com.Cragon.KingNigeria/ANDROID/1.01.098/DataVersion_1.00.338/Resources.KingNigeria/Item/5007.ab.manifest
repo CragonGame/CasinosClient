@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1690196064
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 52524524323a67b089d72a6c4b7a15f7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c73412a662fd4e4f36af34cbdf078b85
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Item/5007.png
+Dependencies: []

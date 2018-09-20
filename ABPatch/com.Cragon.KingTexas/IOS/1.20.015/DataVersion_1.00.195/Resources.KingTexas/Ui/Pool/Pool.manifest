@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3931505083
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: pool.ab
+      Dependencies: {}

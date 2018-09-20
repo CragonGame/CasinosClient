@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 2113236594
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9424817193b4af3e28708c271dbe375c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/DesktopImage/MTTDesk.png
+Dependencies: []

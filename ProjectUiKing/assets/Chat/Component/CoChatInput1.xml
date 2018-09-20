@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="572,57">
+  <displayList>
+    <image id="n3_y7iq" name="n3" src="kd14l" fileName="Image/InputBg.png" xy="0,0" size="572,57">
+      <relation target="" sidePair="width-width"/>
+    </image>
+    <text id="n2_oypw" name="TextInput" xy="18,6" size="535,46" input="true" fontSize="26" color="#ffffff" vAlign="middle" leading="0" autoSize="none" singleLine="true" text="">
+      <relation target="n3_y7iq" sidePair="width-width"/>
+    </text>
+  </displayList>
+</component>

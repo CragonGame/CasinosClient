@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2236097779
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b92eb6db68b22f62743010ade5de7567
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Icon/CustomerService.png
+Dependencies: []

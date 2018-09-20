@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="516,83" pivot="0.5,0.5">
+  <displayList>
+    <image id="n0_n7pp" name="n0" src="qljn6t" fileName="Image/NYL_MaiSui.png" xy="-5,-74" pivot="0.5,1" size="131,152" rotation="-48">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_n7pp" name="n1" src="qljn6u" fileName="Image/NYL_MaiSui1.png" xy="381,-74" pivot="0.5,1" size="131,152" rotation="48">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n4_a2iq" name="Lan_Image_SelfWin" xy="68,-39" pivot="0.5,0.5" size="371,161" url="ui://08hoz1y1qljn6s"/>
+    <graph id="n3_kkr1" name="ParentSelfWin" xy="257,41" size="1,1" type="rect"/>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="Rotation" target="n1_n7pp" tween="true" startValue="48" endValue="48" duration="6"/>
+    <item time="0" type="Rotation" target="n0_n7pp" tween="true" startValue="-48" endValue="-48" duration="6"/>
+    <item time="0" type="Scale" target="n4_a2iq" tween="true" startValue="3,3" endValue="0.9,0.9" duration="3" ease="Linear"/>
+    <item time="0" type="Scale" target="n1_n7pp" tween="true" startValue="0.2,0.2" endValue="1,1" duration="6"/>
+    <item time="0" type="Scale" target="n0_n7pp" tween="true" startValue="0.2,0.2" endValue="1,1" duration="6"/>
+    <item time="0" type="XY" target="n1_n7pp" tween="true" startValue="592.25,-287" endValue="381,-75" duration="6"/>
+    <item time="0" type="XY" target="n0_n7pp" tween="true" startValue="-183.75,-286.25" endValue="-5.5,-74.44" duration="6" ease="Quad.InOut"/>
+    <item time="3" type="Scale" target="n4_a2iq" tween="true" startValue="0.9,0.9" endValue="1,1" duration="3" ease="Quad.InOut"/>
+    <item time="6" type="Rotation" target="n0_n7pp" tween="true" startValue="-48" endValue="0" duration="4"/>
+    <item time="6" type="Rotation" target="n1_n7pp" tween="true" startValue="48" endValue="0" duration="4"/>
+    <item time="6" type="Scale" target="n1_n7pp" tween="true" startValue="1,1" endValue="1,1" duration="4"/>
+    <item time="6" type="Scale" target="n0_n7pp" tween="true" startValue="1,1" endValue="1,1" duration="4"/>
+    <item time="6" type="Scale" target="n4_a2iq" tween="true" startValue="1,1" endValue="1,1" duration="14"/>
+    <item time="6" type="XY" target="n1_n7pp" tween="true" startValue="381,-75" endValue="381,-75" duration="4"/>
+    <item time="6" type="XY" target="n0_n7pp" tween="true" startValue="-5.5,-74.44" endValue="-5,-74" duration="4" ease="Quad.InOut"/>
+    <item time="10" type="Scale" target="n0_n7pp" tween="true" startValue="1,1" endValue="1,1" duration="12"/>
+    <item time="10" type="Scale" target="n1_n7pp" tween="true" startValue="1,1" endValue="1,1" duration="12"/>
+    <item time="10" type="XY" target="n1_n7pp" tween="true" startValue="381,-75" endValue="381,-75" duration="12"/>
+    <item time="10" type="XY" target="n0_n7pp" tween="true" startValue="-5,-74" endValue="-5,-74" duration="12"/>
+    <item time="20" type="Scale" target="n4_a2iq" tween="true" startValue="1,1" endValue="1,1" duration="13"/>
+  </transition>
+</component>

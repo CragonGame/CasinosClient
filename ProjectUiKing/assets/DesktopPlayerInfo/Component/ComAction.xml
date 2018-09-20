@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="92,55">
+  <controller name="ControllerAction" pages="0,Fold,1,Check,2,Call,3,Raise,4,AllIn" selected="4"/>
+  <displayList>
+    <loader id="n5_a2iq" name="Lan_Image_56" xy="23,16" pivot="0.5,0.5" size="46,24" scale="0.8,0.8" url="ui://g4dvwbxlqljng">
+      <gearDisplay controller="ControllerAction" pages="0"/>
+    </loader>
+    <loader id="n6_a2iq" name="Lan_Image_7" xy="16,8" pivot="0.5,0.5" size="63,39" scale="0.8,0.8" url="ui://g4dvwbxlqljnf" align="center" vAlign="middle">
+      <gearDisplay controller="ControllerAction" pages="1"/>
+    </loader>
+    <loader id="n7_a2iq" name="Lan_Image_77" xy="8,4" pivot="0.5,0.5" size="74,47" scale="0.8,0.8" url="ui://g4dvwbxlqljnd" align="center" vAlign="middle">
+      <gearDisplay controller="ControllerAction" pages="2"/>
+    </loader>
+    <loader id="n8_a2iq" name="Lan_Image_127" xy="7,2" pivot="0.5,0.5" size="77,53" scale="0.8,0.8" url="ui://g4dvwbxlqljne" align="center" vAlign="middle">
+      <gearDisplay controller="ControllerAction" pages="3"/>
+    </loader>
+    <loader id="n9_a2iq" name="Lan_Image_63" xy="2,1" pivot="0.5,0.5" size="88,54" scale="0.8,0.8" url="ui://g4dvwbxlqljnh" align="center" vAlign="middle">
+      <gearDisplay controller="ControllerAction" pages="4"/>
+    </loader>
+  </displayList>
+</component>

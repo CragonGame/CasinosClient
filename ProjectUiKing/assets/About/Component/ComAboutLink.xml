@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="85,27" initName="ComAboutLink">
+  <displayList>
+    <text id="n0_qaww" name="n0" xy="0,0" size="85,28" font="FontXi" fontSize="20" color="#92dcfc" underline="true" text="服务协议"/>
+  </displayList>
+</component>

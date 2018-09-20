@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 2810465776
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bf0eea985d471cbb7ef3c8905451c108
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e524609455c7cfb29b5bab3f5d3ec7c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgFold/Ui/PreMsgBox/PreMsgBox.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/PreMsgBox/PreMsgBox@atlas1.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/PreMsgBox/PreMsgBox@sprites.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/PreMsgBox/PreMsgBox@atlas0.png
+Dependencies: []

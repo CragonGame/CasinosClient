@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="718,56">
+  <displayList>
+    <image id="n0_scf7" name="n0" src="u51ojc" pkg="nhvxw9ov" xy="0,54" size="718,2" color="#2e3056"/>
+    <text id="n1_scf7" name="TextLevel" xy="51,12" pivot="0.5,0.5" size="149,32" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="000"/>
+    <text id="n2_scf7" name="TextBlind" xy="248,12" pivot="0.5,0.5" size="223,32" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" singleLine="true" text="0000"/>
+    <text id="n3_scf7" name="TextAnte" xy="532,12" pivot="0.5,0.5" size="132,32" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="000"/>
+  </displayList>
+</component>

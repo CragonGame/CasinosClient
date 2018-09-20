@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="332,64" extention="Label">
+  <displayList>
+    <image id="n7_w6r6" name="n7" src="w6r62" xy="236,0" size="96,64"/>
+    <text id="n1" name="title" xy="236,0" pivot="0.5,0.5" size="96,64" fontSize="30" color="#be9be6" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="12">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+    <loader id="n8_et5o" name="loder_0" xy="1,0" size="46,64" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n9_et5o" name="loder_1" xy="48,0" size="46,64" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n10_et5o" name="loder_2" xy="95,0" size="46,64" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n12_et5o" name="loder_3" xy="142,0" size="46,64" align="center" vAlign="middle" fill="scale"/>
+    <loader id="n13_et5o" name="loder_4" xy="189,0" size="46,64" align="center" vAlign="middle" fill="scale"/>
+  </displayList>
+</component>

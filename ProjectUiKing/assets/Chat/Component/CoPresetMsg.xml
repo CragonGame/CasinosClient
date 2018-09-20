@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="322,50">
+  <displayList>
+    <text id="n0_fzbb" name="Msg" xy="5,3" pivot="0.5,0.5" size="317,44" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="none" text="sdfsdf"/>
+    <image id="n1_fzbb" name="n1" src="kd14p" fileName="Image/QuickChatSplite.png" xy="0,0" size="322,3" alpha="0.9"/>
+    <image id="n2_fzbb" name="n2" src="kd14p" fileName="Image/QuickChatSplite.png" xy="0,47" size="322,3" alpha="0.9"/>
+  </displayList>
+</component>

@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 869829395
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: cardback.ab
+      Dependencies: {}

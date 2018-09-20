@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="181,87" initName="ComTabChipDark">
+  <displayList>
+    <image id="n0_hrhq" name="n0" src="hrhqkc" pkg="nhvxw9ov" xy="31,24" color="#748bba"/>
+    <text id="n1_hrhq" name="n1" xy="74,27" pivot="0.5,0.5" size="85,32" fontSize="25" color="#748bba" align="center" vAlign="middle" leading="0" autoSize="none" text="筹码"/>
+  </displayList>
+</component>

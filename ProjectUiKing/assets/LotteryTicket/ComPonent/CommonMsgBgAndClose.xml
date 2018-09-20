@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="850,485">
+  <displayList>
+    <image id="n0_twda" name="n0" src="twda5p" xy="0,0" size="850,485"/>
+    <component id="n1_twda" name="BtnClose" src="twda5t" xy="790,8"/>
+  </displayList>
+</component>

@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 2664359446
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5de68f5a6b36c99c3698fb8247886217
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e8214c69729ed7b4e0f89bad6e44781a
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/MatchLobby/MatchLobby@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/MatchLobby/MatchLobby@atlas_wb2ec.png
+- Assets/Resources.KingTexas/PkgFold/Ui/MatchLobby/MatchLobby@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/MatchLobby/MatchLobby.bytes
+Dependencies: []

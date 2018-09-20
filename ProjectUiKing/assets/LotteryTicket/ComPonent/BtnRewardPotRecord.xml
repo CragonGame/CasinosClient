@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="168,53" extention="Button">
+  <displayList>
+    <image id="n3_twda" name="n3" src="lfqc5k" xy="0,0"/>
+    <loader id="n4_q5yu" name="Lan_Image_GrandPrixRecord" xy="30,11" size="107,30" touchable="false" url="ui://6kz8w16qq5yu51" align="center" vAlign="middle"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.97"/>
+</component>

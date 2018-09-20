@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n39_ow7f" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n27_dhq4" name="ProBet" src="v4efj" fileName="Component/ProgressBar.xml" xy="279,190" size="530,69" group="n49_nhsw">
+      <ProgressBar max="100"/>
+    </component>
+    <image id="n35_dhq4" name="n35" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="343,315" size="403,38" group="n49_nhsw"/>
+    <text id="n22_piy4" name="Lan_Text_Reward" xy="190,168" pivot="0.5,0.5" size="71,39" group="n49_nhsw" fontSize="16" color="#ffffff" vAlign="middle" autoSize="shrink" singleLine="true" text="奖励:"/>
+    <text id="n23_piy4" name="Lan_Text_Bet" xy="190,234" pivot="0.5,0.5" size="71,39" group="n49_nhsw" fontSize="16" color="#ffffff" vAlign="middle" autoSize="shrink" singleLine="true" text="下注:"/>
+    <text id="n18" name="BetTotal" xy="519,317" size="225,34" group="n49_nhsw" fontSize="26" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="0"/>
+    <component id="n19" name="n19" src="abqrk" fileName="Component/ComTips.xml" xy="233,358" group="n49_nhsw"/>
+    <component id="n33_dhq4" name="Lan_Btn_OneKeyCollection" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="462,471" group="n49_nhsw"/>
+    <text id="n36_dhq4" name="Lan_Text_CurrentBetTotal" xy="343,317" size="168,35" group="n49_nhsw" fontSize="26" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="当前累计下注:"/>
+    <component id="n8" name="ComReward1" src="sx4rb" fileName="Component/ComReward1.xml" xy="255,169" group="n37_dhq4"/>
+    <component id="n10" name="ComReward2" src="sx4rc" fileName="Component/ComReward2.xml" xy="379,167" group="n37_dhq4"/>
+    <component id="n11" name="ComReward3" src="sx4rd" fileName="Component/ComReward3.xml" xy="503,167" group="n37_dhq4"/>
+    <component id="n12" name="ComReward4" src="sx4re" fileName="Component/ComReward4.xml" xy="627,167" group="n37_dhq4"/>
+    <component id="n13" name="ComReward5" src="sx4rf" fileName="Component/ComReward5.xml" xy="751,167" group="n37_dhq4"/>
+    <group id="n37_dhq4" name="n37" xy="255,167" size="580,122" group="n49_nhsw" collapsed="true"/>
+    <image id="n44_wb2e" name="n44" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="140,78" group="n49_nhsw"/>
+    <image id="n45_wb2e" name="n45" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="490,74" pivot="0.5,0.5" group="n49_nhsw">
+      <relation target="n48_nhsw" sidePair="right-left"/>
+    </image>
+    <image id="n46_wb2e" name="n46" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="538,74" pivot="0.5,0.5" group="n49_nhsw" skew="0,180">
+      <relation target="n48_nhsw" sidePair="left-right"/>
+    </image>
+    <text id="n48_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n49_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n49_nhsw" name="n49" xy="140,74" size="716,461" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

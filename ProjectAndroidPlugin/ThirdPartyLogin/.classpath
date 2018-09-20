@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="libs/androidtounitymsgbridge.jar"/>
+	<classpathentry kind="lib" path="libs/wechat-sdk-android-without-mta.jar"/>
+	<classpathentry kind="lib" path="libs/MobCommons-2018.0308.1404.jar"/>
+	<classpathentry kind="lib" path="libs/MobTools-2018.0307.2123.jar"/>
+	<classpathentry kind="lib" path="libs/SDKWrapper-2018.0201.1609.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-3.1.4.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Core-3.1.4.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

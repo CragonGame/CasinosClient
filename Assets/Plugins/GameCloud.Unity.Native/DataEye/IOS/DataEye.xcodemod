@@ -1,0 +1,2 @@
+"Libs" : ["libz.1.dylib"]
+"Frameworks" : ["AdSupport.framework : NotWeak","CoreTelephony.framework:NotWeak","SystemConfiguration.framework:NotWeak","Security.framework:NotWeak"]

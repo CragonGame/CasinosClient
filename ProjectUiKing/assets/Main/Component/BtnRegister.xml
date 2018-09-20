@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="72,72" extention="Button" initName="BtnGoldTree">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <movieclip id="n16_hwqj" name="n16" src="hwqj9e" fileName="Image/Register/AniRegister.jta" xy="0,0"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1"/>
+</component>

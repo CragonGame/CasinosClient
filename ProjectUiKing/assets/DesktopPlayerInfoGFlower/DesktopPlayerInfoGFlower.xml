@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="148,187">
+  <displayList>
+    <image id="n2_lxy5" name="n2" src="gp481" xy="7,6" size="134,187"/>
+    <image id="n1_lxy5" name="PlayerActionProgress" src="gp482" xy="0,-1" size="147,188" fillMethod="radial360" fillClockwise="false"/>
+    <text id="n3_lxy5" name="TextNickName" xy="14,18" pivot="0.5,0.5" size="119,29" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n4_lxy5" name="ComHeadIcon" src="gp483" xy="29,49"/>
+    <text id="n5_lxy5" name="TextGold" xy="14,140" pivot="0.5,0.5" size="119,29" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n6_lxy5" name="ImageReady" src="gp48a" xy="174,56" group="n16_lxy5"/>
+    <image id="n10_lxy5" name="ImageCardBackOne" src="gp48b" xy="155,39" pivot="0.5,0.5" size="68,90" group="n16_lxy5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n12_lxy5" name="ImageCardBackTwo" src="gp48b" xy="188,39" pivot="0.5,0.5" size="68,90" group="n16_lxy5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n14_lxy5" name="ImageCardBackThree" src="gp48b" xy="221,39" pivot="0.5,0.5" size="68,90" group="n16_lxy5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n11_lxy5" name="LoaderCardOne" xy="155,39" size="68,90" group="n16_lxy5" fill="scale"/>
+    <loader id="n13_lxy5" name="LoaderCardTwo" xy="188,39" size="68,90" group="n16_lxy5" fill="scale"/>
+    <loader id="n15_lxy5" name="LoaderCardThree" xy="221,39" size="68,90" group="n16_lxy5" fill="scale"/>
+    <image id="n30_lxy5" name="ImageCardLoseOne" src="gp48c" xy="155,39" size="68,90" group="n48_waxw"/>
+    <image id="n31_lxy5" name="ImageCardLoseTwo" src="gp48c" xy="188,39" size="68,90" group="n48_waxw"/>
+    <image id="n32_lxy5" name="ImageCardLoseThree" src="gp48c" xy="221,39" size="68,90" group="n48_waxw"/>
+    <group id="n48_waxw" name="GroupLose" xy="155,39" size="134,90" group="n16_lxy5" advanced="true" collapsed="true"/>
+    <image id="n40_lxy5" name="n40" src="gp48b" xy="168,45" size="68,90" group="n43_lxy5" rotation="-10"/>
+    <image id="n41_lxy5" name="n41" src="gp48b" xy="188,37" size="68,90" group="n43_lxy5"/>
+    <image id="n42_lxy5" name="n42" src="gp48b" xy="210,31" size="68,90" group="n43_lxy5" rotation="10"/>
+    <image id="n24_lxy5" name="ImageSeeCard" src="gp48d" xy="178,74" group="n43_lxy5"/>
+    <group id="n43_lxy5" name="GroupSeeCard" xy="168,31" size="110,104" group="n16_lxy5" advanced="true" collapsed="true"/>
+    <image id="n25_lxy5" name="ImageFlod" src="gp48e" xy="178,73" group="n16_lxy5"/>
+    <image id="n26_lxy5" name="ImagePKLose" src="gp48f" xy="158,43" group="n16_lxy5"/>
+    <component id="n57_ncss" name="ComAction" src="gp48g" xy="168,14" group="n16_lxy5"/>
+    <group id="n16_lxy5" name="GroupRight" xy="155,14" size="134,121" advanced="true"/>
+    <image id="n7_lxy5" name="ImageReady" src="gp48a" xy="-76,56" group="n23_lxy5"/>
+    <image id="n17_lxy5" name="ImageCardBackOne" src="gp48b" xy="-140,39" pivot="0.5,0.5" size="68,90" group="n23_lxy5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n19_lxy5" name="ImageCardBackTwo" src="gp48b" xy="-107,39" pivot="0.5,0.5" size="68,90" group="n23_lxy5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n21_lxy5" name="ImageCardBackThree" src="gp48b" xy="-74,39" pivot="0.5,0.5" size="68,90" group="n23_lxy5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n18_lxy5" name="LoaderCardOne" xy="-140,39" size="68,90" group="n23_lxy5" fill="scale"/>
+    <loader id="n20_lxy5" name="LoaderCardTwo" xy="-107,39" size="68,90" group="n23_lxy5" fill="scale"/>
+    <loader id="n22_lxy5" name="LoaderCardThree" xy="-74,39" size="68,90" group="n23_lxy5" fill="scale"/>
+    <image id="n33_lxy5" name="ImageCardLoseOne" src="gp48c" xy="-140,39" size="68,90" group="n47_waxw"/>
+    <image id="n34_lxy5" name="ImageCardLoseTwo" src="gp48c" xy="-107,39" size="68,90" group="n47_waxw"/>
+    <image id="n35_lxy5" name="ImageCardLoseThree" src="gp48c" xy="-74,39" size="68,90" group="n47_waxw"/>
+    <group id="n47_waxw" name="GroupLose" xy="-140,39" size="134,90" group="n23_lxy5" advanced="true" collapsed="true"/>
+    <image id="n36_lxy5" name="n36" src="gp48b" xy="-128,45" size="68,90" group="n39_lxy5" rotation="-10"/>
+    <image id="n37_lxy5" name="n37" src="gp48b" xy="-108,37" size="68,90" group="n39_lxy5"/>
+    <image id="n38_lxy5" name="n38" src="gp48b" xy="-86,31" size="68,90" group="n39_lxy5" rotation="10"/>
+    <image id="n28_lxy5" name="ImageSeeCard" src="gp48d" xy="-117,74" group="n39_lxy5"/>
+    <group id="n39_lxy5" name="GroupSeeCard" xy="-128,31" size="110,104" group="n23_lxy5" advanced="true" collapsed="true"/>
+    <image id="n27_lxy5" name="ImageFlod" src="gp48e" xy="-118,73" group="n23_lxy5"/>
+    <image id="n29_lxy5" name="ImagePKLose" src="gp48f" xy="-139,43" group="n23_lxy5"/>
+    <component id="n56_ncss" name="ComAction" src="gp48g" xy="-79,20" group="n23_lxy5"/>
+    <group id="n23_lxy5" name="GroupLeft" xy="-140,20" size="134,115" advanced="true"/>
+    <image id="n44_lxy5" name="ImageAutoBet" src="gp48h" xy="14,66" visible="false"/>
+    <movieclip id="n49_waxw" name="MoviePkCard" src="gp48i" xy="7,26" visible="false"/>
+    <movieclip id="n50_waxw" name="MoviePkLose" src="gp48j" xy="-21,-1" visible="false"/>
+    <image id="n52_waxw" name="ImagePlayerShadow" src="gp481" xy="2,0" size="142,197"/>
+    <image id="n53_waxw" name="ImageCompareCard" src="gp48k" xy="-2,-4" size="152,193"/>
+    <component id="n54_waxw" name="ComChatParent" src="gp48l" xy="73,49"/>
+    <component id="n55_waxw" name="ComPlayerCenter" src="gp48l" xy="73,93"/>
+  </displayList>
+  <transition name="TransitionCompareCard" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Alpha" target="n53_waxw" tween="true" startValue="1" endValue="0" duration="18" ease="Linear"/>
+    <item time="18" type="Alpha" target="n53_waxw" tween="true" startValue="0" endValue="1" duration="18" ease="Linear"/>
+    <item time="36" type="Alpha" target="n53_waxw" tween="true" startValue="1" ease="Linear"/>
+  </transition>
+</component>

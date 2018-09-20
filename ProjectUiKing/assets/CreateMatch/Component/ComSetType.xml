@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="232,310" opaque="false" extention="Button" initName="ComSetType">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <controller name="ControllerTabSet" pages="0,,1," selected="0"/>
+  <displayList>
+    <image id="n8_nhy4" name="n8" src="wb2ek8" pkg="nhvxw9ov" xy="0,0" size="232,310" alpha="0.5" color="#1d223f">
+      <gearDisplay controller="ControllerTabSet" pages="0"/>
+    </image>
+    <image id="n4_nhy4" name="n4" src="wb2ek8" pkg="nhvxw9ov" xy="172,0" size="60,310" color="#324a9a"/>
+    <text id="n5_nhy4" name="n5" xy="186,72" pivot="0.5,0.5" size="30,122" group="n20_nhy4" fontSize="25" color="#b2cdf5" text="高&#xA;级&#xA;设&#xA;置"/>
+    <image id="n6_nhy4" name="n6" src="wb2ek1" pkg="nhvxw9ov" xy="191,210" pivot="0.5,0.5" size="20,27" group="n20_nhy4" color="#b2cdf5"/>
+    <text id="n13_nhy4" name="n13" xy="0,141" pivot="0.5,0.5" size="172,27" group="n20_nhy4" fontSize="20" color="#707995" align="center" vAlign="middle" leading="0" autoSize="none" singleLine="true" text="起始盲注"/>
+    <text id="n12_nhy4" name="n12" xy="0,50" pivot="0.5,0.5" size="172,27" group="n20_nhy4" fontSize="20" color="#707995" align="center" vAlign="middle" leading="0" autoSize="none" singleLine="true" text="起始记分牌"/>
+    <text id="n14_nhy4" name="n14" xy="0,232" pivot="0.5,0.5" size="172,27" group="n20_nhy4" fontSize="20" color="#707995" align="center" vAlign="middle" leading="0" autoSize="none" singleLine="true" text="涨盲时间"/>
+    <text id="n16_nhy4" name="TextStartScore" xy="0,77" pivot="0.5,0.5" size="172,32" group="n20_nhy4" fontSize="25" color="#fdc822" align="center" vAlign="middle" leading="0" autoSize="none" text="454665"/>
+    <text id="n17_nhy4" name="TextStartBlind" xy="0,167" pivot="0.5,0.5" size="172,32" group="n20_nhy4" fontSize="25" color="#fdc822" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="54456"/>
+    <text id="n18_nhy4" name="TextRaiseBlindTime" xy="0,258" pivot="0.5,0.5" size="172,32" group="n20_nhy4" fontSize="25" color="#fdc822" align="center" vAlign="middle" leading="0" autoSize="none" text="562"/>
+    <group id="n20_nhy4" name="n20" xy="0,50" size="217,240" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerTabSet" pages="0"/>
+    </group>
+    <text id="n9_nhy4" name="n9" xy="186,72" pivot="0.5,0.5" size="30,122" group="n11_nhy4" fontSize="25" color="#b2cdf5" text="基&#xA;础&#xA;设&#xA;置"/>
+    <image id="n10_nhy4" name="n10" src="wb2ek1" pkg="nhvxw9ov" xy="191,210" pivot="0.5,0.5" size="20,27" group="n11_nhy4" skew="0,180" color="#b2cdf5"/>
+    <group id="n11_nhy4" name="n11" xy="186,72" size="31,165" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerTabSet" pages="1"/>
+    </group>
+    <component id="n21_qkn2" name="BtnSet" src="qkn2kv" pkg="nhvxw9ov" xy="172,0" size="60,310"/>
+  </displayList>
+  <Button mode="Check"/>
+  <transition name="t0"/>
+</component>

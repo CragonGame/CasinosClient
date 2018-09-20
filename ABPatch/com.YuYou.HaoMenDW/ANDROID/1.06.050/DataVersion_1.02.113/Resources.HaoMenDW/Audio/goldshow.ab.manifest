@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3706315653
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ad417a94056a06497273f428b8a2b1e9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/goldShow.ogg
+Dependencies: []

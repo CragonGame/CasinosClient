@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="gvymz82s" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="eh360" name="ChipNotEnough.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="ChipNotEnough" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\ChipNotEnough"/>
+</packageDescription>

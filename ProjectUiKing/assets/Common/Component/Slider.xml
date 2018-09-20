@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="391,43" extention="Slider">
+  <displayList>
+    <image id="n15_g8hz" name="bg" src="fqbzhp" xy="0,12" size="374,19"/>
+    <image id="n16_dk9h" name="bar" src="fqbzho" xy="3,15" size="368,13"/>
+    <component id="n11_g8hz" name="grip" src="g8hzfj" xy="353,2">
+      <relation target="n16_dk9h" sidePair="right-right"/>
+    </component>
+  </displayList>
+  <Slider titleType="value"/>
+</component>

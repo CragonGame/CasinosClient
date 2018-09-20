@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2394614947
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: chatexpression.ab
+      Dependencies: {}

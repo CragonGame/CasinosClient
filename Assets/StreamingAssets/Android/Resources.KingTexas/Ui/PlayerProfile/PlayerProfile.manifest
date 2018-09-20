@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1792660526
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: playerprofile.ab
+      Dependencies: {}

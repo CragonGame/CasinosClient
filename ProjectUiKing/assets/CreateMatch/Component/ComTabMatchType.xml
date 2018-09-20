@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="368,41" initName="ComTabMatchType">
+  <controller name="ControllerMatchSpeed" pages="0,,1,,2," selected="0"/>
+  <displayList>
+    <image id="n0_nhy4" name="n0" src="nhy4d" xy="130,1" size="107,40"/>
+    <image id="n1_nhy4" name="n1" src="nhy4d" xy="261,1" size="107,40"/>
+    <image id="n2_nhy4" name="n2" src="nhy4d" xy="0,1" size="107,40"/>
+    <text id="n3_nhy4" name="n3" xy="20,7" pivot="0.5,0.5" size="67,28" fontSize="18" color="#a8c0f0" align="center" vAlign="middle" leading="0" autoSize="none" text="快速赛">
+      <gearDisplay controller="ControllerMatchSpeed" pages="1,2"/>
+    </text>
+    <text id="n4_nhy4" name="n4" xy="150,7" pivot="0.5,0.5" size="67,28" fontSize="18" color="#a8c0f0" align="center" vAlign="middle" leading="0" autoSize="none" text="常规赛">
+      <gearDisplay controller="ControllerMatchSpeed" pages="0,2"/>
+    </text>
+    <text id="n5_nhy4" name="n5" xy="280,7" pivot="0.5,0.5" size="67,28" fontSize="18" color="#a8c0f0" align="center" vAlign="middle" leading="0" autoSize="none" text="慢速赛">
+      <gearDisplay controller="ControllerMatchSpeed" pages="0,1"/>
+    </text>
+    <image id="n9_nhy4" name="n9" src="nhy4e" xy="130,1" size="107,40">
+      <gearDisplay controller="ControllerMatchSpeed" pages="1"/>
+    </image>
+    <image id="n10_nhy4" name="n10" src="nhy4e" xy="261,1" size="107,40">
+      <gearDisplay controller="ControllerMatchSpeed" pages="2"/>
+    </image>
+    <image id="n11_nhy4" name="n11" src="nhy4e" xy="0,1" size="107,40">
+      <gearDisplay controller="ControllerMatchSpeed" pages="0"/>
+    </image>
+    <text id="n6_nhy4" name="n6" xy="20,7" pivot="0.5,0.5" size="67,28" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="快速赛">
+      <gearDisplay controller="ControllerMatchSpeed" pages="0"/>
+    </text>
+    <text id="n7_nhy4" name="n7" xy="150,7" pivot="0.5,0.5" size="67,28" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="常规赛">
+      <gearDisplay controller="ControllerMatchSpeed" pages="1"/>
+    </text>
+    <text id="n8_nhy4" name="n8" xy="280,7" pivot="0.5,0.5" size="67,28" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="慢速赛">
+      <gearDisplay controller="ControllerMatchSpeed" pages="2"/>
+    </text>
+    <component id="n12_qkn2" name="BtnFastMatch" src="qkn2kv" pkg="nhvxw9ov" xy="2,1" size="104,39"/>
+    <component id="n13_qkn2" name="BtnNormalMatch" src="qkn2kv" pkg="nhvxw9ov" xy="132,1" size="104,39"/>
+    <component id="n14_qkn2" name="BtnSlowMatch" src="qkn2kv" pkg="nhvxw9ov" xy="262,1" size="104,39"/>
+  </displayList>
+</component>

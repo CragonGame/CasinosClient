@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="967,76">
+  <displayList>
+    <image id="n1_nhy4" name="n1" src="wb2ek8" pkg="nhvxw9ov" xy="-1,74" size="968,3" color="#343963"/>
+    <loader id="n6_nhy4" name="LoaderHeadIcon" xy="64,5" size="65,65"/>
+    <text id="n7_nhy4" name="TextNickName" xy="141,22" size="234,32" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="none" text="Fun"/>
+    <image id="n8_nhy4" name="n8" src="nhy4kt" pkg="nhvxw9ov" xy="397,19" color="#ffcf4c"/>
+    <text id="n9_nhy4" name="TextChip" xy="451,22" size="171,32" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="none" text="100000"/>
+    <component id="n10_nhy4" name="BtnRemovePlayer" src="nhy47" xy="794,15"/>
+  </displayList>
+</component>

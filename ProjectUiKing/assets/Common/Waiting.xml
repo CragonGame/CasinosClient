@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <image id="n4_u51o" name="n4" src="oypw6e" fileName="Image/Shade.png" xy="0,0" size="1066,640" alpha="0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n5_u51o" name="n5" src="oypw6e" fileName="Image/Shade.png" xy="0,202" size="1066,235">
+      <relation target="" sidePair="width-width,middle-middle"/>
+    </image>
+    <text id="n2" name="Tips" xy="216,368" size="634,39" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="height" text="">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+    <component id="n3_niy2" name="n3" src="lb4j67" fileName="Component/CoWaiting.xml" xy="496,262">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

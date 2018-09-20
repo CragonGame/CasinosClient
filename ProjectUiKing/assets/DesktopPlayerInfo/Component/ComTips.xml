@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="102,34">
+  <controller name="ControllerTips" pages="0,Point,1,WinGold,2,Exp" selected="0"/>
+  <displayList>
+    <graph id="n4_iy7z" name="ParticalParent" xy="50,16" size="1,1" type="rect"/>
+    <image id="n0_iy7z" name="n0" src="n8cll4" pkg="nhvxw9ov" xy="2,2" scale="0.6,0.6">
+      <gearDisplay controller="ControllerTips" pages="0"/>
+    </image>
+    <text id="n1_iy7z" name="TextPoint" xy="33,6" size="67,22" font="ui://g4dvwbxliy7z1h" fontSize="22" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <gearDisplay controller="ControllerTips" pages="0"/>
+    </text>
+    <text id="n3_iy7z" name="TextExp" xy="0,6" size="102,22" font="ui://g4dvwbxliy7z1h" fontSize="22" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <gearDisplay controller="ControllerTips" pages="2"/>
+    </text>
+    <text id="n5_iy7z" name="TextWinGold" xy="0,-3" pivot="0.5,0.5" size="102,40" font="ui://g4dvwbxliy7z1h" fontSize="40" color="#ffff33" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <gearDisplay controller="ControllerTips" pages="1"/>
+    </text>
+  </displayList>
+</component>

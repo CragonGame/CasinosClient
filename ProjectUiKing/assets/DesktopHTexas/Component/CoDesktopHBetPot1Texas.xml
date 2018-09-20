@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="145,150">
+  <displayList>
+    <image id="n33_h2pl" name="n33" src="ii4z31" xy="9,-7" pivot="0.5,0.5" size="160,44"/>
+    <loader id="n6" name="BetPotSign" xy="47,65" size="50,50" url="ui://zah9oa21fb5j3" align="center" vAlign="middle"/>
+    <text id="n8" name="BetChipsSelf" xy="0,253" pivot="0.5,0.5" size="126,29" fontSize="22" color="#eef2cf" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text=""/>
+    <component id="n10" name="CoCardParent" src="fb5j1a" xy="-10,156"/>
+    <loader id="n11" name="LoaderCardType" xy="33,209" pivot="0.5,0.5" size="55,32" align="center" vAlign="middle"/>
+    <graph id="n24" name="BetPotArea" xy="12,35" size="137,113"/>
+    <text id="n7" name="BetChipsTotal" xy="26,3" pivot="0.5,0.5" size="128,28" fontSize="18" color="#eef2cf" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text=""/>
+  </displayList>
+</component>

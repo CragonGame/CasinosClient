@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="400,35" overflow="hidden">
+  <controller name="ControllerShowBg" pages="0,Show,1,Hide" selected="0"/>
+  <displayList>
+    <image id="n10_oypw" name="n10" src="wb2ek8" pkg="nhvxw9ov" xy="0,0" pivot="0.5,0.5" size="400,35" alpha="0.4" color="#000000">
+      <gearDisplay controller="ControllerShowBg" pages="0"/>
+    </image>
+    <component id="n11_oypw" name="ComMarqueeRealParent" src="oypwi" xy="34,0" size="335,35"/>
+    <component id="n14_lil3" name="BtnPen" src="lil3k" xy="366,2">
+      <gearDisplay controller="ControllerShowBg" pages="0"/>
+    </component>
+    <component id="n15_lil3" name="BtnHorn" src="lil3j" xy="1,1">
+      <gearDisplay controller="ControllerShowBg" pages="0"/>
+    </component>
+  </displayList>
+</component>

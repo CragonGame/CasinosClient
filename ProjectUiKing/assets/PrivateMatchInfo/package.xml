@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="jzdiszdw" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="nhy40" name="PrivateMatchInfo.xml" path="/" exported="true"/>
+    <component id="nhy41" name="ComOverView.xml" path="/Component/"/>
+    <component id="nhy42" name="ComBlind.xml" path="/Component/"/>
+    <component id="nhy43" name="ItemBlind.xml" path="/Component/"/>
+    <component id="nhy45" name="ComPayer.xml" path="/Component/"/>
+    <component id="nhy46" name="ItemPlayer.xml" path="/Component/"/>
+    <component id="nhy47" name="BtnRemovePlayer.xml" path="/Component/"/>
+    <component id="nhy48" name="BtnDismiss.xml" path="/Component/"/>
+    <image id="nhy49" name="UI2_赛事详情-概述_解散按钮.png" path="/Image/"/>
+  </resources>
+  <publish name="PrivateMatchInfo" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\PrivateMatchInfo"/>
+</packageDescription>

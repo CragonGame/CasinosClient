@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="270,91" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <loader id="n5_a2iq" name="Lan_Image_Share1" xy="0,-1" size="270,94" touchable="false" align="center" vAlign="middle">
+      <gearDisplay controller="button" pages="0"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <loader id="n6_a2iq" name="Lan_Image_Share2" xy="0,-1" size="270,94" touchable="false" align="center" vAlign="middle">
+      <gearDisplay controller="button" pages="1"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <loader id="n7_a2iq" name="Lan_Image_Share2" xy="0,-1" size="270,94" touchable="false" align="center" vAlign="middle">
+      <gearDisplay controller="button" pages="2"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <loader id="n8_a2iq" name="Lan_Image_Share2" xy="0,-1" size="270,94" touchable="false" align="center" vAlign="middle">
+      <gearDisplay controller="button" pages="3"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+  </displayList>
+  <Button/>
+</component>

@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 699640748
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bb90fa94eb1a6a46073ded8a6381a387
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHTexas/DesktopHTexas@atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHTexas/DesktopHTexas.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHTexas/DesktopHTexas@atlas2.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHTexas/DesktopHTexas@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHTexas/DesktopHTexas@atlas1.png
+Dependencies: []

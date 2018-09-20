@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" opaque="false">
+  <displayList>
+    <component id="n6_fskk" name="ComTips2" src="fskk2" fileName="Component/ComTips2.xml" xy="0,0" visible="false">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n0_kpff" name="n0" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="1066,91" group="n5_kpff" alpha="0.6" color="#000000">
+      <relation target="" sidePair="width-width"/>
+    </image>
+    <component id="n2_kpff" name="BtnClose" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="994,15" group="n5_kpff">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n3_kpff" name="Lan_Btn_EnterNow" src="kpff1" fileName="Component/BtnEnterNow.xml" xy="840,14" group="n5_kpff">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <text id="n4_kpff" name="TextTips" xy="14,19" pivot="1,0" size="795,51" group="n5_kpff" fontSize="24" color="#ffffff" align="right" vAlign="middle" leading="0" ubb="true" autoSize="shrink" singleLine="true" text="您报名的免费赛-8元红包赛">
+      <relation target="" sidePair="right-right"/>
+    </text>
+    <group id="n5_kpff" name="GoupTip1" xy="0,0" size="1066,91" visible="false" advanced="true"/>
+  </displayList>
+  <transition name="TransitionShow">
+    <item time="0" type="XY" target="n5_kpff" tween="true" startValue="-,-91" endValue="0,0" duration="6" ease="Linear"/>
+  </transition>
+</component>

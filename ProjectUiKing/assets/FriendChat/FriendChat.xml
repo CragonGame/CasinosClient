@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerMessage" pages="0,NoChatTarget,1,HaveChatTarget" selected="1"/>
+  <controller name="ControllerWaiting" pages="0,,1," selected="1"/>
+  <displayList>
+    <component id="n0_dcob" name="ComBgAndClose" src="y7iqc1" pkg="nhvxw9ov" xy="103,41" group="n26_l7wh"/>
+    <image id="n25_g5sv" name="n25" src="g5sv9" xy="497,56" group="n4_dcob"/>
+    <image id="n2_dcob" name="n2" src="y7iqbz" pkg="nhvxw9ov" xy="583,52" pivot="0.5,0.5" group="n4_dcob"/>
+    <image id="n3_dcob" name="n3" src="y7iqbz" pkg="nhvxw9ov" xy="457,52" pivot="0.5,0.5" group="n4_dcob" skew="0,180"/>
+    <group id="n4_dcob" name="n4" xy="457,52" size="151,43" group="n26_l7wh" collapsed="true"/>
+    <image id="n5_dcob" name="n5" src="dcob1" xy="150,337" pivot="0.5,0.5" size="411,174" group="n7_dcob" rotation="-10"/>
+    <text id="n6_dcob" name="Lan_Text_NoConversation" xy="126,245" pivot="0.5,0.5" size="813,82" group="n7_dcob" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" text="你还没有开始任何对话。要开始新的对话，请按屏幕左下角的“加号”按钮。"/>
+    <group id="n7_dcob" name="GroupNoChatTarget" xy="126,245" size="813,267" group="n23_dcob" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerMessage" pages="0"/>
+    </group>
+    <image id="n8_dcob" name="n8" src="l1q0c9" pkg="nhvxw9ov" xy="113,130" size="232,397" group="n17_dcob"/>
+    <image id="n9_dcob" name="n9" src="l1q0c9" pkg="nhvxw9ov" xy="114,130" size="232,397" group="n17_dcob"/>
+    <list id="n10_dcob" name="ListChatTarget" xy="122,135" size="220,391" group="n17_dcob" overflow="scroll" lineGap="2" defaultItem="ui://vclln4todcob2" autoItemSize="false"/>
+    <image id="n11_dcob" name="n11" src="l1q0c9" pkg="nhvxw9ov" xy="344,130" size="601,397" group="n17_dcob"/>
+    <component id="n12_dcob" name="ComInput" src="dld2a4" pkg="nhvxw9ov" xy="346,484" group="n17_dcob"/>
+    <list id="n13_dcob" name="ListChatContent" xy="349,135" size="590,343" group="n17_dcob" overflow="scroll" defaultItem="ui://nhvxw9ovhiep88"/>
+    <image id="n14_dcob" name="n14" src="j6dq5y" pkg="nhvxw9ov" xy="580,233" pivot="0.5,0.5" group="n16_dcob">
+      <relation target="" sidePair="center-center"/>
+    </image>
+    <image id="n15_dcob" name="n15" src="j6dq5x" pkg="nhvxw9ov" xy="580,233" group="n16_dcob">
+      <relation target="" sidePair="center-center"/>
+    </image>
+    <group id="n16_dcob" name="GroupWaiting" xy="580,233" size="128,128" group="n17_dcob" advanced="true">
+      <gearDisplay controller="ControllerWaiting" pages="0"/>
+    </group>
+    <group id="n17_dcob" name="GroupHaveChatTarget" xy="113,130" size="833,397" group="n23_dcob" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerMessage" pages="1"/>
+    </group>
+    <component id="n18_dcob" name="BtnChooseChatTarget" src="dcob3" xy="131,547" group="n22_dcob"/>
+    <component id="n19_dcob" name="BtnChatTargetProfile" src="dcob5" xy="192,546" group="n22_dcob"/>
+    <component id="n20_dcob" name="BtnPlayWithChatTarget" src="dcob7" xy="888,547" group="n22_dcob"/>
+    <text id="n21_dcob" name="Lan_Text_NoteDeleteRecord" xy="329,550" pivot="0.5,0.5" size="396,35" group="n22_dcob" fontSize="26" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" bold="true" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="注:长按头像删除记录"/>
+    <group id="n22_dcob" name="GroupMsgBottom" xy="131,546" size="803,40" group="n23_dcob" advanced="true" collapsed="true"/>
+    <group id="n23_dcob" name="GroupMsg" xy="113,130" size="833,456" group="n26_l7wh" advanced="true"/>
+    <group id="n26_l7wh" name="n26" xy="103,41" size="859,557" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n14_dcob" tween="true" startValue="0" endValue="360" duration="48" ease="Linear" repeat="-1"/>
+  </transition>
+</component>

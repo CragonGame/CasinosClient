@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 78573986
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: preloading.ab
+      Dependencies: {}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="gbdohaiv" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="mjlr3" name="Main.xml" path="/" exported="true"/>
+    <component id="d6ge19" name="ComPlayerInfo.xml" path="/Component/"/>
+    <image id="ixpj2e" name="MoTe.png" path="/Image/" atlas="1"/>
+    <image id="ixpj2f" name="ForestParty_icon.png" path="/Image/"/>
+    <image id="ixpj2r" name="Friend_icon.png" path="/Image/"/>
+    <image id="ixpj2s" name="Rank_icon.png" path="/Image/"/>
+    <image id="ixpj2t" name="BtnBillboard.png" path="/Image/"/>
+    <image id="ixpj2u" name="Email_icon.png" path="/Image/"/>
+    <image id="ixpj2v" name="Set_icon.png" path="/Image/"/>
+    <component id="ixpj2z" name="BtnDeskTOP.xml" path="/Component/"/>
+    <component id="ixpj32" name="BtnDeskTopH.xml" path="/Component/"/>
+    <component id="ixpj34" name="ComForestParty.xml" path="/Component/"/>
+    <component id="ixpj35" name="BtnShop.xml" path="/Component/"/>
+    <component id="ixpj36" name="BtnFriend.xml" path="/Component/" exported="true"/>
+    <component id="ixpj37" name="BtnRank.xml" path="/Component/"/>
+    <component id="ixpj38" name="BtnMessage.xml" path="/Component/" exported="true"/>
+    <component id="ixpj39" name="BtnBillboard.xml" path="/Component/" exported="true"/>
+    <component id="ixpj3a" name="BtnSet.xml" path="/Component/"/>
+    <component id="ixpj3c" name="BtnGoldTree.xml" path="/Component/"/>
+    <component id="g5sv3h" name="BtnFriendChat.xml" path="/Component/" exported="true"/>
+    <component id="g5sv3i" name="BtnBag.xml" path="/Component/"/>
+    <component id="ewc03j" name="BtnBank.xml" path="/Component/"/>
+    <image id="he5u3m" name="BtnBag.png" path="/Image/"/>
+    <image id="he5u3n" name="BtnChatFriend.png" path="/Image/"/>
+    <image id="he5u3o" name="BtnBank.png" path="/Image/"/>
+    <image id="he5u3p" name="FriendInvite.png" path="/Image/"/>
+    <component id="he5u3q" name="BtnInviteFriend.xml" path="/Component/"/>
+    <component id="he5u3s" name="BtnMore.xml" path="/Component/" exported="true"/>
+    <image id="he5u3t" name="BtnMore.png" path="/Image/"/>
+    <image id="qj426x" name="yqs.png" path="/Image/GoldTree/"/>
+    <image id="qj426y" name="yqs_s.png" path="/Image/GoldTree/"/>
+    <image id="qj426z" name="xx.png" path="/Image/GoldTree/"/>
+    <component id="njuk75" name="ComFirstRecharge.xml" path="/Component/"/>
+    <image id="aupq78" name="BtnDeskTop.png" path="/Image/"/>
+    <image id="aupq79" name="BtnDeskH.png" path="/Image/"/>
+    <image id="aupq7a" name="BtnDeskTopPress.png" path="/Image/"/>
+    <image id="aupq7b" name="BtnDeskHPress.png" path="/Image/"/>
+    <image id="fol77c" name="BtnDeskTopIcon.png" path="/Image/"/>
+    <image id="fol77d" name="BtnDeskHIcon.png" path="/Image/"/>
+    <image id="fol77e" name="BgBorader.png" path="/Image/" scale="9grid" scale9grid="7,22,20,44"/>
+    <component id="fol77f" name="BtnFriend1.xml" path="/Component/"/>
+    <component id="fol77g" name="BtnFriendChat1.xml" path="/Component/"/>
+    <component id="fol77h" name="BtnMessage1.xml" path="/Component/"/>
+    <image id="fol77i" name="BgFriendList.png" path="/Image/" scale="9grid" scale9grid="30,30,20,20"/>
+    <image id="fol77j" name="BgSmall.png" path="/Image/"/>
+    <component id="lnv77k" name="BtnActivityCenter.xml" path="/Component/"/>
+    <image id="t4ok7m" name="UI2_主界面_商城.png" path="/Image/"/>
+    <component id="t4ok7o" name="BtnMatch.xml" path="/Component/"/>
+    <image id="t4ok7p" name="UI2_主界面_赛事场.png" path="/Image/"/>
+    <image id="t4ok7q" name="dougu_f_07.png" path="/Image/"/>
+    <image id="t4ok7r" name="dougu_f_08.png" path="/Image/"/>
+    <image id="t4ok7s" name="dougu_f_09.png" path="/Image/"/>
+    <image id="t4ok7t" name="dougu_f_10.png" path="/Image/"/>
+    <image id="t4ok7u" name="dougu_f_01.png" path="/Image/"/>
+    <image id="t4ok7v" name="dougu_f_02.png" path="/Image/"/>
+    <image id="t4ok7w" name="dougu_f_03.png" path="/Image/"/>
+    <image id="t4ok7x" name="dougu_f_04.png" path="/Image/"/>
+    <image id="t4ok7y" name="dougu_f_05.png" path="/Image/"/>
+    <image id="t4ok7z" name="dougu_f_06.png" path="/Image/"/>
+    <movieclip id="t4ok80" name="MovieClipWa.jta" path="/Image/"/>
+    <component id="t4ok82" name="BtnWa.xml" path="/Component/"/>
+    <image id="t4ok83" name="doutyuu_f_04.png" path="/Image/"/>
+    <component id="u51o84" name="ComShadeMore.xml" path="/Component/" exported="true"/>
+    <image id="vi4785" name="活动.png" path="/Image/"/>
+    <component id="vi4786" name="ComMore.xml" path="/Component/"/>
+    <component id="phss87" name="ComMoreHideRank.xml" path="/Component/"/>
+    <image id="lh6b88" name="普通.png" path="/Image/"/>
+    <image id="lh6b89" name="百人.png" path="/Image/"/>
+    <image id="lh6b8a" name="UI2_主界面_立即开始扑克1.png" path="/Image/"/>
+    <image id="aedc8b" name="01.png" path="/Image/New/"/>
+    <image id="aedc8c" name="02.png" path="/Image/New/"/>
+    <image id="aedc8d" name="03.png" path="/Image/New/"/>
+    <image id="aedc8e" name="04.png" path="/Image/New/"/>
+    <image id="aedc8f" name="05.png" path="/Image/New/"/>
+    <image id="aedc8g" name="06.png" path="/Image/New/"/>
+    <image id="aedc8h" name="07.png" path="/Image/New/"/>
+    <image id="aedc8i" name="08.png" path="/Image/New/"/>
+    <movieclip id="aedc8j" name="MovieClipWa.jta" path="/Image/New/"/>
+    <component id="s17d8k" name="ComCircleOfCardFriends.xml" path="/Component/"/>
+    <image id="s17d8l" name="UI2_主界面_牌友圈01.png" path="/Image/"/>
+    <component id="nh9c8m" name="MoteParent.xml" path="/Component/"/>
+    <component id="jyil8n" name="ComPlayerInfoSelf.xml" path="/Component/"/>
+    <image id="n8cl8o" name="Eff_Star_A_00161.png" path="/Image/"/>
+    <component id="n8cl8p" name="ComParent.xml" path="/Component/"/>
+    <image id="teyh8q" name="bg.png" path="/Image/" exported="true" atlas="3"/>
+    <component id="diz58r" name="BtnConsole.xml" path="/Component/"/>
+    <component id="diz58s" name="ComConsole.xml" path="/Component/"/>
+    <image id="j1yr8t" name="Shop.png" path="/Image/"/>
+    <image id="j1yr8x" name="Purse.png" path="/Image/"/>
+    <component id="j1yr8z" name="BtnShop1.xml" path="/Component/" exported="true"/>
+    <component id="j1yr90" name="BtnPurse.xml" path="/Component/"/>
+    <component id="ecz692" name="BtnRegister.xml" path="/Component/"/>
+    <image id="hwqj93" name="img_lipinhe1.png" path="/Image/FirstRecharge/"/>
+    <image id="hwqj94" name="img_lipinhe2.png" path="/Image/FirstRecharge/"/>
+    <image id="hwqj95" name="img_lipinhe3.png" path="/Image/FirstRecharge/"/>
+    <image id="hwqj96" name="img_lipinhe4.png" path="/Image/FirstRecharge/"/>
+    <image id="hwqj97" name="img_lipinhe5.png" path="/Image/FirstRecharge/"/>
+    <movieclip id="hwqj98" name="AniFirstRecharge.jta" path="/Image/FirstRecharge/"/>
+    <image id="hwqj99" name="img_zhuanzheng1.png" path="/Image/Register/"/>
+    <image id="hwqj9a" name="img_zhuanzheng2.png" path="/Image/Register/"/>
+    <image id="hwqj9b" name="img_zhuanzheng3.png" path="/Image/Register/"/>
+    <image id="hwqj9c" name="img_zhuanzheng4.png" path="/Image/Register/"/>
+    <image id="hwqj9d" name="img_zhuanzheng5.png" path="/Image/Register/"/>
+    <movieclip id="hwqj9e" name="AniRegister.jta" path="/Image/Register/"/>
+    <component id="ncj59f" name="BtnFeedback.xml" path="/Component/"/>
+    <image id="f70a9g" name="Service_icon.png" path="/Image/"/>
+  </resources>
+  <publish name="Main" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Main"/>
+</packageDescription>

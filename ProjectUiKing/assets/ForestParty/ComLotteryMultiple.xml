@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="182,85" initName="ComLotteryMultiple">
+  <displayList>
+    <image id="n1_9nzx" name="n1" src="ieudkt" xy="-21,4"/>
+    <text id="n0_lgku" name="TextMultiple" xy="73,15" size="71,50" group="n3_p4ch" font="ui://si97dldqieudhl" fontSize="50" color="#8d76ff" align="center" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <image id="n2_9nzx" name="n2" src="ieudhk" xy="37,22" group="n3_p4ch"/>
+    <group id="n3_p4ch" name="n3" xy="37,15" size="107,50"/>
+  </displayList>
+</component>

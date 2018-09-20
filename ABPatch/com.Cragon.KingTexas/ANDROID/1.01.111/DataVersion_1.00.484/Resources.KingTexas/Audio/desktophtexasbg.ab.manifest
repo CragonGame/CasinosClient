@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1448159137
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 17423f544a2246b20d9e4b5ab956c669
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/DesktopHTexasBg.mp3
+Dependencies: []

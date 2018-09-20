@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="384,45" extention="Slider">
+  <displayList>
+    <image id="n10_f4nw" name="bg" src="nhy42" pkg="6443cbga" xy="0,13" size="383,19"/>
+    <image id="n11_f4nw" name="bar" src="nhy43" pkg="6443cbga" xy="0,12" size="384,21"/>
+    <image id="n5_eccy" name="n5" src="vwtaib" pkg="nhvxw9ov" xy="309,-62">
+      <relation target="n9_8vtz" sidePair="center-center"/>
+    </image>
+    <text id="n6_eccy" name="TextCurrentValue" xy="320,-50" size="120,34" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="n5_eccy" sidePair="center-center"/>
+    </text>
+    <component id="n9_8vtz" name="grip" src="s17d0" pkg="6443cbga" xy="343,2">
+      <relation target="n11_f4nw" sidePair="right-right"/>
+    </component>
+  </displayList>
+  <Slider/>
+</component>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="181,87" initName="ComTabConsumeDark">
+  <displayList>
+    <image id="n4_hrhq" name="n4" src="hrhqke" pkg="nhvxw9ov" xy="39,20" color="#748bba"/>
+    <text id="n5_hrhq" name="n5" xy="83,27" pivot="0.5,0.5" size="85,32" fontSize="25" color="#748bba" align="center" vAlign="middle" leading="0" autoSize="none" text="消耗品"/>
+  </displayList>
+</component>

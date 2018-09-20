@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="76,37">
+  <displayList>
+    <image id="n4_lfqc" name="n4" src="lfqc5m" xy="0,0"/>
+    <loader id="n1_lc2k" name="LoaderHistory" xy="6,7" size="65,24" url="ui://xzwfr8w1ieud1y" align="center" vAlign="middle" fill="scale"/>
+    <image id="n3_lc2k" name="NewSign" src="ieud1z" xy="46,0" size="25,9"/>
+  </displayList>
+</component>

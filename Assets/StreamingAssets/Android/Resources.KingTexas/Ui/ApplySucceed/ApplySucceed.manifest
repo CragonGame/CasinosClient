@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3191950360
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: applysucceed.ab
+      Dependencies: {}

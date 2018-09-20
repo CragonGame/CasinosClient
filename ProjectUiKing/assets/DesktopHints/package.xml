@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="5dkf0iep" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="w6r60" name="DesktopHints.xml" path="/" exported="true"/>
+    <image id="w6r62" name="BlueHint.png" path="/Image/" scale="9grid" scale9grid="2,2,4,4"/>
+    <component id="w6r63" name="ImgBox.xml" path="/Component/"/>
+    <component id="w6r64" name="LoaderHintItem.xml" path="/Component/"/>
+    <component id="jyu45" name="BtnClose.xml" path="/Component/"/>
+    <image id="mbom6" name="BgCardType.png" path="/Image/" scale="9grid" scale9grid="22,22,44,44"/>
+  </resources>
+  <publish name="DesktopHints" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHints"/>
+</packageDescription>

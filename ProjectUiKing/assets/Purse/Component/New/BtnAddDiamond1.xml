@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="198,45" extention="Button" initName="BtnAddDiamond">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_hrhq" name="n4" src="j1yr18" xy="0,0" size="198,45" alpha="0.5" color="#000000"/>
+    <image id="n5_hrhq" name="n5" src="j1yrlq" pkg="nhvxw9ov" xy="9,6" size="35,35" color="#a273ff"/>
+    <image id="n6_hrhq" name="n6" src="hrhqkb" pkg="nhvxw9ov" xy="29,19" size="20,20" hideByEditor="true" visible="false"/>
+    <text id="n7_hrhq" name="TextDiamondAmount" xy="49,6" pivot="0.5,0.5" size="140,36" font="FontCu" fontSize="28" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+  <Button/>
+</component>

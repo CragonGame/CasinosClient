@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n1_tabc" name="ComShade" src="oypw6k" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n7_tabc" name="n7" src="qkn2kv" xy="142,88" size="786,465" group="n8_tabc"/>
+    <image id="n0_tabc" name="n0" src="sd6wl1" xy="140,88" size="786,463" group="n8_tabc" color="#252647"/>
+    <image id="n2_tabc" name="n2" src="vi47jn" xy="140,88" pivot="0.5,0.5" size="393,70" group="n8_tabc"/>
+    <image id="n3_tabc" name="n3" src="vi47jn" xy="533,88" pivot="0.5,0.5" size="393,70" group="n8_tabc" skew="0,180"/>
+    <image id="n5_tabc" name="n5" src="vi47jo" xy="880,88" size="45,70" group="n8_tabc"/>
+    <component id="n4_tabc" name="BtnClose" src="jt75ep" xy="855,94" group="n8_tabc"/>
+    <image id="n6_tabc" name="n6" src="lh6bjy" xy="140,91" group="n8_tabc"/>
+    <group id="n8_tabc" name="n8" xy="140,88" size="788,465" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

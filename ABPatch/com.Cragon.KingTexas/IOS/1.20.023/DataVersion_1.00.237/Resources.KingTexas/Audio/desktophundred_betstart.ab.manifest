@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3727067248
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: dcd4611d85196b9e4ef1d6c3b6381065
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/desktophundred_betstart.wav
+Dependencies: []

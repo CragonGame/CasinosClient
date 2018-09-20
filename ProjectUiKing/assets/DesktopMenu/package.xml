@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="52xlzsdk" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="w6r66" name="DesktopMenu.xml" path="/" exported="true"/>
+    <component id="w6r67" name="BtnContinue.xml" path="/Component/"/>
+    <component id="w6r68" name="BtnExitGame.xml" path="/Component/"/>
+    <component id="w6r69" name="BtnStandUp.xml" path="/Component/"/>
+    <component id="w6r6a" name="BtnLeaveInMiddle.xml" path="/Component/"/>
+    <component id="w6r6b" name="BtnInvitFriend.xml" path="/Component/"/>
+    <component id="w6r6c" name="BtnEdit.xml" path="/Component/"/>
+    <image id="gqzge" name="likai.png" path="/Image/"/>
+    <image id="gqzgf" name="yaoqing.png" path="/Image/"/>
+    <image id="gqzgg" name="001.png" path="/Image/"/>
+    <image id="gqzgh" name="return.png" path="/Image/" exported="true"/>
+    <image id="gqzgi" name="003.png" path="/Image/"/>
+    <image id="gqzgj" name="jixu.png" path="/Image/"/>
+    <image id="gqzgk" name="51.png" path="/Image/"/>
+    <image id="gqzgl" name="60.png" path="/Image/"/>
+    <image id="gqzgm" name="97.png" path="/Image/"/>
+    <image id="gqzgn" name="100.png" path="/Image/"/>
+    <image id="gqzgo" name="001111.png" path="/Image/"/>
+    <image id="h7bsp" name="UI2_ICON_牌型.png" path="/Image/" exported="true"/>
+    <image id="ewf7q" name="UI2_ICON_站起.png" path="/Image/"/>
+    <image id="ewf7r" name="002.png" path="/Image/"/>
+    <component id="kl3os" name="BtnHint.xml" path="/Component/"/>
+    <component id="d6x8t" name="BtnReward.xml" path="/Component/" exported="true"/>
+    <image id="d6x8u" name="福利Icon.png" path="/Image/" exported="true"/>
+  </resources>
+  <publish name="DesktopMenu" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DeskTopMenu"/>
+</packageDescription>

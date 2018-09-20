@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="211,123" remark="139">
+  <displayList>
+    <image id="n7_twda" name="n7" src="twda5u" xy="0,0" size="211,123"/>
+    <loader id="n8_q5yu" name="Lan_Image_RewardPoolLotteryTicket" xy="77,7" size="57,28" touchable="false" url="ui://6kz8w16qq5yu5k" align="center" vAlign="middle"/>
+    <text id="n1_lc2k" name="RewardPotTotal" xy="0,35" pivot="0.5,0.5" size="210,29" fontSize="22" color="#ccd6e1" align="center" vAlign="middle" leading="0" autoSize="none" text="5656985954"/>
+    <text id="n2_lc2k" name="Lan_Text_TimeOfLastReward" xy="8,70" pivot="0.5,0.5" size="192,21" fontSize="15" color="#ccd6e1" align="center" vAlign="middle" leading="0" autoSize="shrink" text=""/>
+    <text id="n3_lc2k" name="LastRoundBaoZiTm" xy="3,95" pivot="0.5,0.5" size="202,21" fontSize="15" color="#ccd6e1" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n5_q6q3" name="n5" src="tfq4ba" pkg="nhvxw9ov" xy="0,-3" size="211,7"/>
+    <image id="n6_q6q3" name="n6" src="tfq4ba" pkg="nhvxw9ov" xy="0,63" size="211,7"/>
+  </displayList>
+</component>

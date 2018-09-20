@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerProcess" pages="0,50,1,30,2,Reward,3,FinalTable,4,Solo" selected="0"/>
+  <displayList>
+    <component id="n7_ivt5" name="ComProcess0" src="n7ppg" xy="226,268">
+      <gearDisplay controller="ControllerProcess" pages="0"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n8_ivt5" name="ComProcess1" src="n7ppi" xy="226,268">
+      <gearDisplay controller="ControllerProcess" pages="1"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n6_ivt5" name="ComProcess2" src="n7ppb" xy="275,279">
+      <gearDisplay controller="ControllerProcess" pages="2"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n9_ivt5" name="ComProcess3" src="ivt5n" xy="344,231">
+      <gearDisplay controller="ControllerProcess" pages="3"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n10_ivt5" name="ComProcess4" src="ivt5s" xy="257,250">
+      <gearDisplay controller="ControllerProcess" pages="4"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+</component>

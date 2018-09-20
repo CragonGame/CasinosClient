@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="92,77" initName="ComForestParty">
+  <displayList>
+    <image id="n0_ixpj" name="n0" src="ixpj2f" xy="0,0" size="92,74"/>
+    <image id="n1_ixpj" name="n1" src="ixpj2g" xy="10,62" size="72,15"/>
+  </displayList>
+</component>

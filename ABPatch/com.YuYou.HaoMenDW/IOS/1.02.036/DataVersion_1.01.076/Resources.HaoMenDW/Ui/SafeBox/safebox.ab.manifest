@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2265456602
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3315beee583e6b62606e326ad6e5a7af
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e524609455c7cfb29b5bab3f5d3ec7c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgFold/Ui/SafeBox/SafeBox@atlas0.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/SafeBox/SafeBox@sprites.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/SafeBox/SafeBox.bytes
+Dependencies: []

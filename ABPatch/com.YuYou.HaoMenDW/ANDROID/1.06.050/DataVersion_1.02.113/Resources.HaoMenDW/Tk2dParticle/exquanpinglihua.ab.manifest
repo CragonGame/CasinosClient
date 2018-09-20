@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 2469579050
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f09d4256e92e8a4a698072a86afb2f3b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0a74aa64808eb62d7c19fc4359cec5cf
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: cd128e2f76dbb6b4c87d4a2fb57c9f94, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dParticle/EXquanpinglihua.prefab
+Dependencies: []

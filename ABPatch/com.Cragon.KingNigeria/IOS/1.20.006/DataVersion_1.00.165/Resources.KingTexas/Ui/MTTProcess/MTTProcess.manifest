@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 746974660
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: mttprocess.ab
+      Dependencies: {}

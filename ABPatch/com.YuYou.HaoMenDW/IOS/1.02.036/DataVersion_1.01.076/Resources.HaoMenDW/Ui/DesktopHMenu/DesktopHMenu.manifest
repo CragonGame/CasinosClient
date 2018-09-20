@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 39933231
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: desktophmenu.ab
+      Dependencies: {}

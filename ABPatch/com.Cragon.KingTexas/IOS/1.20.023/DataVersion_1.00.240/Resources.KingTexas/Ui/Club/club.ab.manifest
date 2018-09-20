@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 4183634549
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: be7f03b32ed192cb1066b67a96a3bb61
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/Club/Club@atlas1.png
+- Assets/Resources.KingTexas/PkgFold/Ui/Club/Club@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/Club/Club@atlas1!a.png
+- Assets/Resources.KingTexas/PkgFold/Ui/Club/Club@atlas0!a.png
+- Assets/Resources.KingTexas/PkgFold/Ui/Club/Club@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/Club/Club.bytes
+Dependencies: []

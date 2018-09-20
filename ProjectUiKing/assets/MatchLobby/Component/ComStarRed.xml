@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="137,75" initName="ComStarRed">
+  <displayList>
+    <image id="n1_nmmo" name="n1" src="nmmox" xy="16,75" pivot="0.5,0.5" anchor="true" size="35,35"/>
+    <image id="n2_nmmo" name="n2" src="nmmox" xy="101,77" pivot="0.5,0.5" anchor="true" size="74,72"/>
+    <image id="n3_nmmo" name="n3" src="nmmox" xy="124,75" pivot="0.5,0.5" anchor="true" size="22,22"/>
+  </displayList>
+  <transition name="TransitionStar" options="3" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Alpha" target="n1_nmmo" value="1"/>
+    <item time="0" type="Rotation" target="n1_nmmo" tween="true" startValue="0" endValue="360" duration="30" ease="Linear"/>
+    <item time="0" type="Size" target="n2_nmmo" value="0,0"/>
+    <item time="0" type="Size" target="n1_nmmo" value="35,35"/>
+    <item time="0" type="XY" target="n1_nmmo" tween="true" startValue="16.56,75.85" endValue="-,1" duration="30" ease="Linear"/>
+    <item time="7" type="Alpha" target="n2_nmmo" value="1"/>
+    <item time="7" type="Rotation" target="n2_nmmo" tween="true" startValue="0" endValue="360" duration="30" ease="Linear"/>
+    <item time="7" type="Size" target="n2_nmmo" value="74,72"/>
+    <item time="7" type="XY" target="n2_nmmo" tween="true" startValue="-,77" endValue="-,2" duration="30" ease="Linear"/>
+    <item time="12" type="Alpha" target="n1_nmmo" tween="true" startValue="1" endValue="0" duration="18" ease="Linear"/>
+    <item time="12" type="Size" target="n1_nmmo" tween="true" startValue="35,35" endValue="10,10" duration="18" ease="Linear"/>
+    <item time="16" type="Alpha" target="n3_nmmo" value="1"/>
+    <item time="16" type="Rotation" target="n3_nmmo" tween="true" startValue="0" endValue="130" duration="20" ease="Linear"/>
+    <item time="16" type="Size" target="n3_nmmo" value="22,22"/>
+    <item time="16" type="XY" target="n3_nmmo" tween="true" startValue="-,75" endValue="-,36" duration="33"/>
+    <item time="19" type="Alpha" target="n2_nmmo" tween="true" startValue="1" endValue="0" duration="18" ease="Linear"/>
+    <item time="19" type="Size" target="n2_nmmo" tween="true" startValue="74,72" endValue="20,20" duration="18" ease="Linear"/>
+    <item time="21" type="Alpha" target="n3_nmmo" tween="true" startValue="1" endValue="0" duration="15" ease="Linear"/>
+    <item time="25" type="Size" target="n3_nmmo" tween="true" startValue="22,22" endValue="10,10" duration="15" ease="Linear"/>
+    <item time="36" type="Rotation" target="n3_nmmo" tween="true" startValue="130"/>
+    <item time="48" type="Alpha" target="n1_nmmo" value="0"/>
+    <item time="48" type="Rotation" target="n1_nmmo" value="360"/>
+    <item time="48" type="Size" target="n1_nmmo" value="0,0"/>
+    <item time="48" type="XY" target="n1_nmmo" value="-,1"/>
+    <item time="55" type="Alpha" target="n2_nmmo" value="0"/>
+    <item time="55" type="Rotation" target="n2_nmmo" value="360"/>
+    <item time="55" type="Size" target="n2_nmmo" value="74,72"/>
+    <item time="55" type="XY" target="n2_nmmo" value="-,2"/>
+  </transition>
+</component>

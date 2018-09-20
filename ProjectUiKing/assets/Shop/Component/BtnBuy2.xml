@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="186,67" extention="Button" initName="BtnBuy">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_j3hl" name="n4" src="mkwxec" pkg="nhvxw9ov" xy="0,0" size="186,67"/>
+    <text id="n5_j3hl" name="TextTitle" xy="4,7" pivot="0.5,0.5" size="177,44" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" autoSize="none" text="兑换"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

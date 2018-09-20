@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n16_czif" name="CoShade" src="oypw6k" pkg="nhvxw9ov" xy="0,0" size="1066,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <list id="n7_ofcc" name="ListPotCardType" xy="164,203" size="738,126" layout="row" margin="0,0,1,0" colGap="2" defaultItem="ui://kyloje0xczifh" autoItemSize="false" align="center"/>
+    <component id="n15_czif" name="BtnConfirm" src="qkn2kv" pkg="nhvxw9ov" xy="470,334" size="125,73" group="n13_ofcc"/>
+    <text id="n12_ofcc" name="Lan_Text_Confirm" xy="499,350" size="65,39" group="n13_ofcc" fontSize="30" color="#ffffff" align="center" vAlign="middle" shadowColor="#000000" shadowOffset="1,1" text="确定"/>
+    <group id="n13_ofcc" name="n13" xy="470,334" size="125,73"/>
+    <component id="n18_r6kn" name="CoBankCardTypeParent" src="czifb" xy="316,50"/>
+  </displayList>
+</component>

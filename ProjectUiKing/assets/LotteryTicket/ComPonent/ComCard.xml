@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="68,90">
+  <displayList>
+    <image id="n1_lc2k" name="CardBack" src="d5pu3t" xy="0,0" pivot="0.5,0.5" size="68,90">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n2_lc2k" name="LoaderCard" xy="0,0" pivot="0.5,0.5" size="68,90" fill="scale"/>
+  </displayList>
+</component>

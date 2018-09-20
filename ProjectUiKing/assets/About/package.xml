@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="1ao71e7v" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="ewc00" name="About.xml" path="/" exported="true"/>
+    <component id="92xk2" name="AgreementContent.xml" path="/Component/"/>
+    <component id="qaww4" name="PrivacyContent.xml" path="/Component/"/>
+    <component id="qaww5" name="ComAboutLink.xml" path="/Component/"/>
+    <component id="qaww6" name="ComPrivacyLink.xml" path="/Component/"/>
+    <component id="m0v37" name="ComEmpty.xml" path="/Component/"/>
+  </resources>
+  <publish name="About" path="C:\Users\xc\Desktop\新建文件夹 (6)"/>
+</packageDescription>

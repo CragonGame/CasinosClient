@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" adaptationTest="FitSize">
+  <controller name="ControllerScreenHalf" pages="0,ShowHalf,1,ShowAll" selected="1"/>
+  <displayList>
+    <component id="n12_nr1t" name="CoShade" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0.01">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n42_vxr8" name="n42" src="kd14n" fileName="Image/BgHalf.png" xy="0,204" size="736,434" group="n15_hiep" alpha="0.9">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </image>
+    <component id="n44_kd14" name="n44" src="kd14q" fileName="Component/Component1.xml" xy="719,206" size="362,369" group="n15_hiep">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <component id="n8_oypw" name="Cobg" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,231" size="1066,409" group="n15_hiep" alpha="0">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </component>
+    <image id="n41_y30t" name="n41" src="kd14k" fileName="Image/InputBg1.png" xy="0,537" size="1066,103" group="n15_hiep">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </image>
+    <component id="n29_l1q0" name="CoChatInput" src="l1q0e" fileName="Component/CoChatInput1.xml" xy="8,569" size="679,57" group="n15_hiep">
+      <relation target="" sidePair="bottom-bottom"/>
+      <relation target="n3_oypw" sidePair="rightext-left"/>
+    </component>
+    <loader id="n27_cc7e" name="Lan_Image_Barrage" xy="880,581" size="55,31" group="n14_r6kn" touchable="false" url="ui://6kz8w16qq5yu4h" align="center" vAlign="middle" fill="scale"/>
+    <component id="n11_oypw" name="CoSwitch" src="oypw6s" fileName="Component/CoSwitch.xml" pkg="nhvxw9ov" xy="940,577" group="n14_r6kn"/>
+    <group id="n14_r6kn" name="n14" xy="880,577" size="177,40" group="n15_hiep" advanced="true" collapsed="true">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </group>
+    <component id="n3_oypw" name="Lan_Btn_Send" src="tabcj" fileName="Component/BtnSend.xml" xy="697,567" size="166,60" group="n15_hiep">
+      <gearDisplay controller="ControllerScreenHalf" pages="0"/>
+      <relation target="" sidePair="bottom-bottom,right-right"/>
+    </component>
+    <list id="n7_oypw" name="ListChat" xy="7,231" pivot="0.5,0.5" size="723,323" group="n15_hiep" overflow="scroll" lineGap="5" defaultItem="ui://nhvxw9ovhiep88">
+      <relation target="" sidePair="bottom-bottom"/>
+      <relation target="" sidePair="width-width"/>
+    </list>
+    <group id="n15_hiep" name="GroupScreenHalf" xy="0,204" size="1081,436" advanced="true">
+      <gearDisplay controller="ControllerScreenHalf" pages="0"/>
+    </group>
+    <image id="n43_vxr8" name="n43" src="kd14m" fileName="Image/BgAll.png" xy="0,0" size="735,640" group="n26_hiep" alpha="0.9">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n47_ppk5" name="n47" src="ppk5u" fileName="Image/背景-补缺角白底.png" xy="735,0" group="n26_hiep" color="#414251">
+      <relation target="" sidePair="right-right"/>
+    </image>
+    <component id="n45_kd14" name="n45" src="kd14r" fileName="Component/Component2.xml" xy="718,0" size="348,555" group="n26_hiep">
+      <relation target="" sidePair="right-right,height-height"/>
+    </component>
+    <component id="n16_hiep" name="Cobg" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n26_hiep" alpha="0" grayed="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n21_hiep" name="CoChatInput" src="oypw3" fileName="Component/CoChatInput.xml" xy="0,537" size="1066,103" group="n26_hiep">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </component>
+    <list id="n25_hiep" name="ListChat" xy="6,4" pivot="0.5,0.5" size="723,552" group="n26_hiep" overflow="scroll" lineGap="5" defaultItem="ui://nhvxw9ovhiep88">
+      <relation target="" sidePair="width-width,height-height"/>
+      <relation target="" sidePair="bottom-bottom"/>
+    </list>
+    <component id="n34_o3im" name="Lan_Btn_Send" src="tabcj" fileName="Component/BtnSend.xml" xy="890,568" group="n28_y7iq">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <group id="n28_y7iq" name="GroupBtnSend" xy="890,568" size="170,64" group="n26_hiep"/>
+    <group id="n26_hiep" name="GroupScreen" xy="0,0" size="1066,640" advanced="true">
+      <gearDisplay controller="ControllerScreenHalf" pages="1"/>
+    </group>
+    <list id="n30_g5lb" name="ListShortCutChatHalf" xy="735,231" size="328,323" overflow="scroll" lineGap="-3" defaultItem="ui://rwlqrrz2fzbbh">
+      <gearDisplay controller="ControllerScreenHalf" pages="0"/>
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </list>
+    <list id="n31_g5lb" name="ListShortCutChatAll" xy="735,4" size="328,551" overflow="scroll" lineGap="-3" defaultItem="ui://rwlqrrz2fzbbh">
+      <gearDisplay controller="ControllerScreenHalf" pages="1"/>
+      <relation target="" sidePair="right-right,height-height"/>
+    </list>
+  </displayList>
+</component>

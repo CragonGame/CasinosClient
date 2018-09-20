@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3053572323
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: classicmodel.ab
+      Dependencies: {}

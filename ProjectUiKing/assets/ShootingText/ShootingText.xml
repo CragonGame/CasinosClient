@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="960,640" opaque="false" clipSoftness="0,1">
+  <displayList>
+    <component id="n3" name="MarqueeParentTop" src="oypwd" xy="479,0">
+      <relation target="" sidePair="top-top,center-center"/>
+    </component>
+    <component id="n4" name="ShootingTextParent" src="oypwd" xy="0,0"/>
+    <component id="n6_jhsd" name="MarqueeParentCenter" src="oypwd" xy="479,0">
+      <relation target="" sidePair="center-center,top-top"/>
+    </component>
+  </displayList>
+</component>

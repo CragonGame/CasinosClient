@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 798606854
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5c10b6757393daac435ed48939d69836
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/Flush.mp3
+Dependencies: []

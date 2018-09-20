@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerRules" pages="0,ShowRules,1,HideRules" selected="1"/>
+  <controller name="ControllerBetOperate" pages="0,HideBetOperate,1,ShowBetOperate" selected="0"/>
+  <controller name="ControllerRewardPot" pages="0,ShowRewardPot,1,HideRewardPot" selected="1"/>
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <component id="n127_fskk" name="ComShade" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n115_asp3">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n110_twda" name="CommonMsgBgAndClose" src="twda5o" fileName="ComPonent/CommonMsgBgAndClose.xml" xy="108,77" group="n115_asp3"/>
+    <component id="n111_twda" name="BtnRules" src="nl3o51" fileName="ComPonent/BtnRules.xml" xy="840,85" group="n115_asp3"/>
+    <loader id="n121_q5yu" name="Lan_Image_LotteryTicketBig" xy="327,13" size="412,176" group="n115_asp3" touchable="false" url="ui://6kz8w16qq5yu56" align="center" vAlign="middle"/>
+    <image id="n113_twda" name="n113" src="twda5v" fileName="Image/d_q.png" xy="133,293" size="800,216" group="n115_asp3"/>
+    <component id="n93_oprn" name="LoaderCard0" src="nl3o54" fileName="ComPonent/ComCard.xml" xy="363,180" pivot="0.5,0.5" group="n115_asp3"/>
+    <component id="n108_lfqc" name="LoaderCard1" src="nl3o54" fileName="ComPonent/ComCard.xml" xy="431,180" pivot="0.5,0.5" group="n115_asp3"/>
+    <component id="n95_oprn" name="LoaderCard2" src="nl3o54" fileName="ComPonent/ComCard.xml" xy="499,180" pivot="0.5,0.5" group="n115_asp3"/>
+    <component id="n96_oprn" name="LoaderCard3" src="nl3o54" fileName="ComPonent/ComCard.xml" xy="567,180" pivot="0.5,0.5" group="n115_asp3"/>
+    <component id="n97_oprn" name="LoaderCard4" src="nl3o54" fileName="ComPonent/ComCard.xml" xy="635,180" pivot="0.5,0.5" group="n115_asp3"/>
+    <image id="n112_twda" name="n112" src="twda5u" fileName="Image/ccd.png" xy="722,167" size="211,123" group="n24_lc2k"/>
+    <image id="n69_q6q3" name="n69" src="tfq4ba" fileName="Image/Line03.png" pkg="nhvxw9ov" xy="721,164" size="211,7" group="n24_lc2k"/>
+    <image id="n70_q6q3" name="n70" src="tfq4ba" fileName="Image/Line03.png" pkg="nhvxw9ov" xy="721,208" size="211,7" group="n24_lc2k"/>
+    <text id="n22_lc2k" name="WinMaxNickName" xy="790,226" pivot="0.5,0.5" size="139,27" group="n24_lc2k" fontSize="20" color="#ccd6e1" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n23_lc2k" name="WinMaxGolds" xy="816,257" pivot="0.5,0.5" size="112,27" group="n24_lc2k" fontSize="20" color="#ccd6e1" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n92_oprn" name="CoHeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="731,226" size="57,57" group="n24_lc2k"/>
+    <image id="n114_motp" name="WinMaxPlayerGoldSign" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="790,258" size="25,25" group="n24_lc2k" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </image>
+    <image id="n128_j1yr" name="n128" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="790,258" size="25,25" group="n24_lc2k" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </image>
+    <loader id="n122_q5yu" name="Lan_Image_LastRoundBigWinner" xy="757,174" size="142,30" group="n24_lc2k" touchable="false" url="ui://6kz8w16qq5yu57" align="center" vAlign="middle"/>
+    <group id="n24_lc2k" name="nextwinner" xy="721,164" size="212,126" group="n115_asp3"/>
+    <loader id="n9_lc2k" name="LoaderTips" xy="454,101" size="157,41" group="n16_lc2k" touchable="false" url="ui://xzwfr8w1ieud27" align="center" vAlign="middle"/>
+    <text id="n10_lc2k" name="Time" xy="528,140" pivot="0.5,0.5" size="10,39" group="n16_lc2k" fontSize="30" color="#feda02" align="center" vAlign="middle" text=""/>
+    <group id="n16_lc2k" name="time" xy="454,101" size="157,78" group="n115_asp3"/>
+    <component id="n103_lfqc" name="PotBetOperate" src="nl3o5b" fileName="ComPonent/PopBetOperate.xml" xy="595,63" size="153,223" group="n55_lc2k">
+      <gearDisplay controller="ControllerBetOperate" pages="1"/>
+    </component>
+    <component id="n106_lfqc" name="BtnRepeatBetEx" src="nl3o4z" fileName="ComPonent/BtnRepeatBetEx.xml" xy="589,295" group="n55_lc2k"/>
+    <text id="n54_lc2k" name="BetOperateValue" xy="603,301" pivot="0.5,0.5" size="118,39" group="n55_lc2k" fontSize="30" color="#f5e292" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text=""/>
+    <group id="n55_lc2k" name="selected" xy="589,63" size="166,283" group="n115_asp3" collapsed="true"/>
+    <component id="n102_lfqc" name="BtnRepeatBet" src="nl3o4y" fileName="ComPonent/BtnRepeatBet.xml" xy="762,295" group="n115_asp3"/>
+    <loader id="n123_q5yu" name="Lan_Image_LotteryTicketsTips" xy="143,301" size="173,40" group="n115_asp3" touchable="false" url="ui://6kz8w16qq5yu5b" vAlign="middle"/>
+    <component id="n99_lfqc" name="BtnRewardPotRecord" src="nl3o50" fileName="ComPonent/BtnRewardPotRecord.xml" xy="155,105" group="n115_asp3"/>
+    <component id="n100_lfqc" name="CoRewardPot" src="nl3o59" fileName="ComPonent/CoRewardPot.xml" xy="133,166" group="n115_asp3"/>
+    <list id="n27_lc2k" name="ListBetPot" xy="132,355" size="802,145" group="n115_asp3" layout="row" colGap="10" defaultItem="ui://xzwfr8w1nl3o52" vAlign="middle"/>
+    <list id="n29_lc2k" name="ListHistory" xy="331,508" pivot="0.5,0.5" size="569,47" group="n62_a65d" layout="row" overflow="scroll" scroll="horizontal" colGap="6" defaultItem="ui://xzwfr8w1nl3o53" autoItemSize="false" vAlign="middle"/>
+    <component id="n89_nl3o" name="BtnArrowLeft" src="nl3o5d" fileName="ComPonent/BtnArrowLeft.xml" xy="301,519" group="n62_a65d"/>
+    <component id="n90_nl3o" name="BtnArrowRight" src="nl3o5e" fileName="ComPonent/BtnArrowRight.xml" xy="912,519" group="n62_a65d"/>
+    <loader id="n124_q5yu" name="Lan_Image_HistoryRecordOfAward" xy="135,517" size="160,27" group="n62_a65d" touchable="false" url="ui://6kz8w16qq5yu54" align="center" vAlign="middle" fill="scale"/>
+    <group id="n62_a65d" name="history" xy="135,508" size="797,47" group="n115_asp3" collapsed="true"/>
+    <component id="n86_fgke" name="CoShade" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n36_lc2k" alpha="0.01">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n116_blxx" name="n116" src="blxx66" fileName="ComPonent/ComBgAndClose.xml" xy="146,93" group="n36_lc2k">
+      <gearDisplay controller="ControllerRules" pages="0"/>
+    </component>
+    <loader id="n125_q5yu" name="Lan_Image_HelpLotteryTicket" xy="411,96" size="243,41" group="n36_lc2k" touchable="false" url="ui://6kz8w16qq5yu53" align="center" vAlign="middle"/>
+    <component id="n120_h1fp" name="rule" src="h1fp6a" fileName="ComPonent/ComRule.xml" xy="201,150" group="n36_lc2k"/>
+    <group id="n36_lc2k" name="GroupRules" xy="0,0" size="1066,640" group="n115_asp3" advanced="true">
+      <gearDisplay controller="ControllerRules" pages="0"/>
+    </group>
+    <component id="n87_nl3o" name="CoShade" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n59_lc2k" alpha="0.01">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n118_blxx" name="n118" src="blxx66" fileName="ComPonent/ComBgAndClose.xml" xy="146,93" group="n59_lc2k"/>
+    <list id="n46_lc2k" name="ListRewardPotPlayerInfo" xy="205,204" size="656,287" group="n59_lc2k" overflow="scroll" lineGap="4" defaultItem="ui://xzwfr8w1nl3o5a"/>
+    <text id="n80_q6q3" name="Lan_Text_Time" xy="228,155" pivot="0.5,0.5" size="162,39" group="n83_q6q3" fontSize="27" color="#c5c8cf" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="时间"/>
+    <text id="n81_q6q3" name="Lan_Text_Reward" xy="663,155" pivot="0.5,0.5" size="185,39" group="n83_q6q3" fontSize="27" color="#c5c8cf" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="奖金"/>
+    <text id="n82_q6q3" name="Lan_Text_NickName" xy="422,156" pivot="0.5,0.5" size="221,39" group="n83_q6q3" fontSize="27" color="#c5c8cf" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="昵称"/>
+    <group id="n83_q6q3" name="n83" xy="228,155" size="620,40" group="n59_lc2k"/>
+    <loader id="n126_q5yu" name="Lan_Image_BigRewardRecord" xy="411,96" size="243,41" group="n59_lc2k" touchable="false" url="ui://6kz8w16qq5yu4m" align="center" vAlign="middle"/>
+    <group id="n59_lc2k" name="GroupRewardPotPlayerInfo" xy="0,0" size="1066,640" group="n115_asp3" advanced="true">
+      <gearDisplay controller="ControllerRewardPot" pages="0"/>
+    </group>
+    <group id="n115_asp3" name="n115" xy="0,0" size="1066,640" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <component id="n24_hp40" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n3_je85" name="CoHeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="311,243" size="120,120" group="n11_je85"/>
+    <text id="n8_je85" name="NickName" xy="449,246" size="305,30" group="n11_je85" font="FontXi" fontSize="26" color="#ffffff" vAlign="middle" autoSize="shrink" text=""/>
+    <image id="n29_s17d" name="n29" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="450,291" pivot="0.5,0.5" size="26,26" group="n11_je85" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </image>
+    <image id="n33_j1yr" name="n33" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="448,288" size="30,30" group="n11_je85" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </image>
+    <text id="n9_je85" name="Chips" xy="483,287" size="268,33" group="n11_je85" font="FontXi" fontSize="26" color="#ffffff" vAlign="middle" autoSize="shrink" text=""/>
+    <text id="n10_je85" name="Level" xy="448,330" size="305,30" group="n11_je85" font="FontXi" fontSize="26" color="#ffffff" vAlign="middle" autoSize="shrink" text=""/>
+    <group id="n11_je85" name="ProfileGrid" xy="311,243" size="443,120" group="n32_nhsw"/>
+    <component id="n19_g8hz" name="Lan_Btn_Accept" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="450,417" group="n32_nhsw">
+      <Button title="接受"/>
+    </component>
+    <text id="n31_nhsw" name="TextTitle" xy="528,156" pivot="0.5,0.5" size="10,50" group="n32_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n32_nhsw" name="n32" xy="311,156" size="443,325" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

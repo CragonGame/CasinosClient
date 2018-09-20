@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3369303673
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 385ad9743171ec3ba926c999d462f2b5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/Pool/Pool.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/Pool/Pool@sprites.bytes
+Dependencies: []

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" adaptationTest="FitSize">
+  <controller name="ControllerPot" pages="0,Pot1,1,Pot2,2,Pot3,3,Pot4,4,Pot5,5,Pot6,6,Pot7,7,Pot8,8,Pot9" selected="0"/>
+  <displayList>
+    <loader id="n226_n1oc" name="LoaderBg" xy="0,0" size="1066,640" align="center" vAlign="middle" fill="scaleFree"/>
+    <loader id="n303_oo4k" name="LoaderDesk" xy="-88,-78" size="1242,796" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+    <component id="n68_npdv" name="ComSeat0" src="npdvp" fileName="Component/ComSeat0.xml" xy="653,56" pivot="0.5,0.5" group="n224_n1oc" scale="0.9,0.9" rotation="-9"/>
+    <component id="n80_npdv" name="ComSeatAndInvite0" src="npdv11" fileName="Component/ComSeatAndInvite.xml" xy="686,82" pivot="0.5,0.5" group="n224_n1oc"/>
+    <component id="n72_npdv" name="ComSeat1" src="npdvx" fileName="Component/ComSeat1.xml" xy="853,120" pivot="0.5,0.5" group="n224_n1oc" scale="0.9,0.9" rotation="-18"/>
+    <component id="n81_npdv" name="ComSeatAndInvite1" src="npdv11" fileName="Component/ComSeatAndInvite.xml" xy="886,151" pivot="0.5,0.5" group="n224_n1oc"/>
+    <component id="n76_npdv" name="ComSeat2" src="npdvy" fileName="Component/ComSeat2.xml" xy="910,314" pivot="0.5,0.5" group="n224_n1oc" scale="0.9,0.9" rotation="-9"/>
+    <component id="n82_npdv" name="ComSeatAndInvite2" src="npdv11" fileName="Component/ComSeatAndInvite.xml" xy="950,344" pivot="0.5,0.5" group="n224_n1oc"/>
+    <component id="n89_npdv" name="ComSeat6" src="npdvy" fileName="Component/ComSeat2.xml" xy="46,314" pivot="0.5,0.5" group="n224_n1oc" scale="0.9,0.9" skew="0,180" rotation="7"/>
+    <component id="n90_npdv" name="ComSeatAndInvite6" src="npdv11" fileName="Component/ComSeatAndInvite.xml" xy="71,346" pivot="0.5,0.5" group="n224_n1oc"/>
+    <component id="n91_npdv" name="ComSeat7" src="npdvx" fileName="Component/ComSeat1.xml" xy="96,120" pivot="0.5,0.5" size="110,110" group="n224_n1oc" scale="0.9,0.9" skew="0,180" rotation="18"/>
+    <component id="n92_npdv" name="ComSeatAndInvite7" src="npdv11" fileName="Component/ComSeatAndInvite.xml" xy="128,150" pivot="0.5,0.5" group="n224_n1oc"/>
+    <component id="n93_npdv" name="ComSeat8" src="npdvp" fileName="Component/ComSeat0.xml" xy="292,56" pivot="0.5,0.5" group="n224_n1oc" scale="0.9,0.9" skew="0,180" rotation="9"/>
+    <component id="n94_npdv" name="ComSeatAndInvite8" src="npdv11" fileName="Component/ComSeatAndInvite.xml" xy="323,81" pivot="0.5,0.5" group="n224_n1oc"/>
+    <loader id="n95_npdv" name="LoaderDealerGirl" xy="452,5" size="146,216" group="n224_n1oc" url="ui://08hoz1y1q7rr61" align="center" vAlign="middle" fill="scale"/>
+    <component id="n220_n1oc" name="Lan_Btn_RebuyChip" src="n1oc6e" fileName="Component/BtnRebuy.xml" xy="460,152" size="129,33" group="n224_n1oc" visible="false"/>
+    <component id="n221_n1oc" name="Lan_Btn_AddonChip" src="n1oc6f" fileName="Component/BtnAddon.xml" xy="461,152" size="129,33" group="n224_n1oc" visible="false"/>
+    <component id="n83_npdv" name="ComSeat3" src="npdvz" fileName="Component/ComSeat3.xml" xy="712,443" pivot="0.5,0.5" group="n224_n1oc" scale="0.9,0.9" rotation="11"/>
+    <component id="n84_npdv" name="ComSeatAndInvite3" src="npdv11" fileName="Component/ComSeatAndInvite.xml" xy="753,472" pivot="0.5,0.5" group="n224_n1oc"/>
+    <component id="n85_npdv" name="ComSeat4" src="npdv10" fileName="Component/ComSeat4.xml" xy="453,437" pivot="0.5,0.5" group="n224_n1oc" scale="0.9,0.9"/>
+    <component id="n86_npdv" name="ComSeatAndInvite4" src="npdv11" fileName="Component/ComSeatAndInvite.xml" xy="487,469" pivot="0.5,0.5" group="n224_n1oc"/>
+    <component id="n87_npdv" name="ComSeat5" src="npdvz" fileName="Component/ComSeat3.xml" xy="239,443" pivot="0.5,0.5" group="n224_n1oc" scale="0.9,0.9" skew="0,180" rotation="-12"/>
+    <component id="n88_npdv" name="ComSeatAndInvite5" src="npdv11" fileName="Component/ComSeatAndInvite.xml" xy="269,472" pivot="0.5,0.5" group="n224_n1oc"/>
+    <group id="n224_n1oc" name="n224" xy="46,5" size="974,548" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <component id="n100_nf8f" name="ComDealer" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="532,164" group="n189_abf8"/>
+    <loader id="n190_pufl" name="DesktopLogo" xy="377,250" pivot="0.5,0.5" size="312,99" group="n189_abf8" align="center" vAlign="middle" fill="scale"/>
+    <text id="n225_n1oc" name="TextDesktopDescribe" xy="527,358" pivot="0.5,0.5" size="10,22" group="n189_abf8" visible="false" alpha="0.5" fontSize="16" color="#b7ccd6" align="center" vAlign="middle" text=""/>
+    <image id="n166_rdp3" name="n166" src="rdp32z" fileName="Image/PlayerActionTips.png" xy="413,354" size="240,25" group="n57_npdv" alpha="0.5"/>
+    <text id="n56_npdv" name="TextCardTypeTips" xy="417,353" size="232,29" group="n57_npdv" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n57_npdv" name="GroupCardTypeTips" xy="417,353" size="232,29" group="n189_abf8" hideByEditor="true" visible="false" advanced="true" collapsed="true"/>
+    <image id="n167_rdp3" name="n167" src="rdp32z" fileName="Image/PlayerActionTips.png" xy="413,385" size="240,25" group="n54_npdv" alpha="0.5"/>
+    <text id="n53_npdv" name="TextActionTips" xy="417,384" size="232,29" group="n54_npdv" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n54_npdv" name="GroupActionTips" xy="413,384" size="240,29" group="n189_abf8" hideByEditor="true" visible="false" advanced="true" collapsed="true"/>
+    <component id="n58_npdv" name="ComCard1" src="npdvn" fileName="Component/ComCard.xml" xy="318,241" pivot="0.5,0.5" group="n235_p8a1" scale="0.95,0.95" visible="false"/>
+    <component id="n59_npdv" name="ComCard2" src="npdvn" fileName="Component/ComCard.xml" xy="403,241" pivot="0.5,0.5" group="n235_p8a1" scale="0.95,0.95" visible="false"/>
+    <component id="n60_npdv" name="ComCard3" src="npdvn" fileName="Component/ComCard.xml" xy="488,241" pivot="0.5,0.5" group="n235_p8a1" scale="0.95,0.95" visible="false"/>
+    <component id="n61_npdv" name="ComCard4" src="npdvn" fileName="Component/ComCard.xml" xy="573,241" pivot="0.5,0.5" group="n235_p8a1" scale="0.95,0.95" visible="false"/>
+    <component id="n62_npdv" name="ComCard5" src="npdvn" fileName="Component/ComCard.xml" xy="658,241" pivot="0.5,0.5" group="n235_p8a1" scale="0.95,0.95" visible="false"/>
+    <group id="n235_p8a1" name="GroupCard" xy="318,241" size="430,118" group="n189_abf8" advanced="true" collapsed="true"/>
+    <group id="n189_abf8" name="card" xy="318,164" size="430,249" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <component id="n105_rhyv" name="ComSeatPlayerParent0" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="698,103" pivot="0.5,0.5" anchor="true" group="n191_pufl"/>
+    <component id="n106_rhyv" name="ComSeatPlayerParent1" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="941,215" pivot="0.5,0.5" anchor="true" group="n191_pufl"/>
+    <component id="n116_rhyv" name="ComSeatPlayerParent2" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="952,396" pivot="0.5,0.5" anchor="true" group="n191_pufl"/>
+    <component id="n117_rhyv" name="ComSeatPlayerParent3" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="770,466" pivot="0.5,0.5" anchor="true" group="n191_pufl"/>
+    <component id="n118_rhyv" name="ComSeatPlayerParent4" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="478,458" pivot="0.5,0.5" anchor="true" group="n191_pufl"/>
+    <component id="n119_rhyv" name="ComSeatPlayerParent5" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="260,466" pivot="0.5,0.5" anchor="true" group="n191_pufl"/>
+    <component id="n120_rhyv" name="ComSeatPlayerParent6" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="103,395" pivot="0.5,0.5" anchor="true" group="n191_pufl"/>
+    <component id="n121_rhyv" name="ComSeatPlayerParent7" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="115,215" pivot="0.5,0.5" anchor="true" group="n191_pufl"/>
+    <component id="n122_rhyv" name="ComSeatPlayerParent8" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="327,102" pivot="0.5,0.5" anchor="true" group="n191_pufl"/>
+    <group id="n191_pufl" name="player" xy="103,102" size="850,365" hideByEditor="true" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <loader id="n48_npdv" name="LoaderNetWork" xy="167,18" size="20,20" url="ui://08hoz1y1tfq42t" align="center" vAlign="middle" fill="scaleMatchHeight" color="#8a9cc9"/>
+    <text id="n49_npdv" name="TextTime" xy="95,18" size="55,27" fontSize="21" color="#8a9cc9" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n99_hyla" name="ComChipParent" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="0,0"/>
+    <component id="n149_xk56" name="BtnDesktopHints" src="xk561z" fileName="Component/BtnDesktopCardType.xml" xy="83,10" hideByEditor="true" visible="false"/>
+    <component id="n151_xk56" name="BtnLockChat" src="xk5621" fileName="Component/BtnLockChat.xml" xy="895,497">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <component id="n163_he5u" name="BtnNotice" src="ixpj39" fileName="Component/BtnBillboard.xml" pkg="gbdohaiv" xy="178,11" hideByEditor="true" visible="false"/>
+    <component id="n184_kv0i" name="BtnChat" src="cpaa53" fileName="Component/BtnChatFriend.xml" xy="979,497">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <component id="n165_he5u" name="BtnMenu" src="xk5623" fileName="Component/BtnMenu.xml" xy="11,10"/>
+    <text id="n234_tn4x" name="Lan_Text_Pot:" xy="475,182" pivot="0.5,0.5" size="52,27" group="n182_jdzb" visible="false" alpha="0.98" fontSize="20" color="#b7ccd6" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="底池:"/>
+    <text id="n233_tn4x" name="TextPotChipAllValue" xy="526,182" pivot="0.5,0.5" size="64,27" group="n182_jdzb" visible="false" alpha="0.98" fontSize="20" color="#b7ccd6" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n236_f8gu" name="ComPot1" src="f8gu27m" fileName="Component/ComPot.xml" xy="471,216" group="n239_f8gu"/>
+    <group id="n239_f8gu" name="GroupPot1" xy="471,216" size="106,27" group="n182_jdzb" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerPot" pages="0"/>
+    </group>
+    <component id="n238_f8gu" name="ComPot1" src="f8gu27m" fileName="Component/ComPot.xml" xy="407,215" group="n240_f8gu"/>
+    <component id="n237_f8gu" name="ComPot2" src="f8gu27m" fileName="Component/ComPot.xml" xy="529,215" group="n240_f8gu"/>
+    <group id="n240_f8gu" name="GroupPot2" xy="407,215" size="228,27" group="n182_jdzb" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerPot" pages="1"/>
+    </group>
+    <component id="n248_f8gu" name="ComPot1" src="f8gu27m" fileName="Component/ComPot.xml" xy="349,216" group="n252_f8gu"/>
+    <component id="n251_f8gu" name="ComPot2" src="f8gu27m" fileName="Component/ComPot.xml" xy="471,216" group="n252_f8gu"/>
+    <component id="n249_f8gu" name="ComPot3" src="f8gu27m" fileName="Component/ComPot.xml" xy="593,216" group="n252_f8gu"/>
+    <group id="n252_f8gu" name="GroupPot3" xy="349,216" size="350,27" group="n182_jdzb" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerPot" pages="2"/>
+    </group>
+    <component id="n241_f8gu" name="ComPot1" src="f8gu27m" fileName="Component/ComPot.xml" xy="288,216" group="n247_f8gu"/>
+    <component id="n244_f8gu" name="ComPot2" src="f8gu27m" fileName="Component/ComPot.xml" xy="410,216" group="n247_f8gu"/>
+    <component id="n242_f8gu" name="ComPot3" src="f8gu27m" fileName="Component/ComPot.xml" xy="532,216" group="n247_f8gu"/>
+    <component id="n246_f8gu" name="ComPot4" src="f8gu27m" fileName="Component/ComPot.xml" xy="654,216" group="n247_f8gu"/>
+    <group id="n247_f8gu" name="GroupPot4" xy="288,216" size="472,27" group="n182_jdzb" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerPot" pages="3"/>
+    </group>
+    <component id="n253_f8gu" name="ComPot1" src="f8gu27m" fileName="Component/ComPot.xml" xy="227,216" group="n258_f8gu"/>
+    <component id="n255_f8gu" name="ComPot2" src="f8gu27m" fileName="Component/ComPot.xml" xy="349,216" group="n258_f8gu"/>
+    <component id="n257_f8gu" name="ComPot3" src="f8gu27m" fileName="Component/ComPot.xml" xy="471,217" group="n258_f8gu"/>
+    <component id="n254_f8gu" name="ComPot4" src="f8gu27m" fileName="Component/ComPot.xml" xy="593,216" group="n258_f8gu"/>
+    <component id="n256_f8gu" name="ComPot5" src="f8gu27m" fileName="Component/ComPot.xml" xy="715,216" group="n258_f8gu"/>
+    <group id="n258_f8gu" name="GroupPot5" xy="227,216" size="594,28" group="n182_jdzb" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerPot" pages="4"/>
+    </group>
+    <component id="n259_f8gu" name="ComPot1" src="f8gu27m" fileName="Component/ComPot.xml" xy="227,216" group="n270_f8gu"/>
+    <component id="n261_f8gu" name="ComPot2" src="f8gu27m" fileName="Component/ComPot.xml" xy="349,216" group="n270_f8gu"/>
+    <component id="n263_f8gu" name="ComPot3" src="f8gu27m" fileName="Component/ComPot.xml" xy="471,217" group="n270_f8gu"/>
+    <component id="n260_f8gu" name="ComPot4" src="f8gu27m" fileName="Component/ComPot.xml" xy="593,216" group="n270_f8gu"/>
+    <component id="n262_f8gu" name="ComPot5" src="f8gu27m" fileName="Component/ComPot.xml" xy="715,216" group="n270_f8gu"/>
+    <component id="n265_f8gu" name="ComPot6" src="f8gu27m" fileName="Component/ComPot.xml" xy="471,258" group="n270_f8gu"/>
+    <group id="n270_f8gu" name="GroupPot6" xy="227,216" size="594,69" group="n182_jdzb" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerPot" pages="5"/>
+    </group>
+    <component id="n271_f8gu" name="ComPot1" src="f8gu27m" fileName="Component/ComPot.xml" xy="227,216" group="n278_f8gu"/>
+    <component id="n272_f8gu" name="ComPot2" src="f8gu27m" fileName="Component/ComPot.xml" xy="349,216" group="n278_f8gu"/>
+    <component id="n273_f8gu" name="ComPot3" src="f8gu27m" fileName="Component/ComPot.xml" xy="471,217" group="n278_f8gu"/>
+    <component id="n274_f8gu" name="ComPot4" src="f8gu27m" fileName="Component/ComPot.xml" xy="593,216" group="n278_f8gu"/>
+    <component id="n275_f8gu" name="ComPot5" src="f8gu27m" fileName="Component/ComPot.xml" xy="715,216" group="n278_f8gu"/>
+    <component id="n276_f8gu" name="ComPot6" src="f8gu27m" fileName="Component/ComPot.xml" xy="410,258" group="n278_f8gu"/>
+    <component id="n277_f8gu" name="ComPot7" src="f8gu27m" fileName="Component/ComPot.xml" xy="532,258" group="n278_f8gu"/>
+    <group id="n278_f8gu" name="GroupPot7" xy="227,216" size="594,69" group="n182_jdzb" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerPot" pages="6"/>
+    </group>
+    <component id="n280_f8gu" name="ComPot1" src="f8gu27m" fileName="Component/ComPot.xml" xy="227,216" group="n288_f8gu"/>
+    <component id="n281_f8gu" name="ComPot2" src="f8gu27m" fileName="Component/ComPot.xml" xy="349,216" group="n288_f8gu"/>
+    <component id="n282_f8gu" name="ComPot3" src="f8gu27m" fileName="Component/ComPot.xml" xy="471,217" group="n288_f8gu"/>
+    <component id="n283_f8gu" name="ComPot4" src="f8gu27m" fileName="Component/ComPot.xml" xy="593,216" group="n288_f8gu"/>
+    <component id="n284_f8gu" name="ComPot5" src="f8gu27m" fileName="Component/ComPot.xml" xy="715,216" group="n288_f8gu"/>
+    <component id="n285_f8gu" name="ComPot6" src="f8gu27m" fileName="Component/ComPot.xml" xy="349,258" group="n288_f8gu"/>
+    <component id="n286_f8gu" name="ComPot7" src="f8gu27m" fileName="Component/ComPot.xml" xy="471,258" group="n288_f8gu"/>
+    <component id="n287_f8gu" name="ComPot8" src="f8gu27m" fileName="Component/ComPot.xml" xy="593,258" group="n288_f8gu"/>
+    <group id="n288_f8gu" name="GroupPot8" xy="227,216" size="594,69" group="n182_jdzb" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerPot" pages="7"/>
+    </group>
+    <component id="n290_f8gu" name="ComPot1" src="f8gu27m" fileName="Component/ComPot.xml" xy="227,216" group="n299_f8gu"/>
+    <component id="n291_f8gu" name="ComPot2" src="f8gu27m" fileName="Component/ComPot.xml" xy="349,216" group="n299_f8gu"/>
+    <component id="n292_f8gu" name="ComPot3" src="f8gu27m" fileName="Component/ComPot.xml" xy="471,216" group="n299_f8gu"/>
+    <component id="n293_f8gu" name="ComPot4" src="f8gu27m" fileName="Component/ComPot.xml" xy="593,216" group="n299_f8gu"/>
+    <component id="n294_f8gu" name="ComPot5" src="f8gu27m" fileName="Component/ComPot.xml" xy="715,216" group="n299_f8gu"/>
+    <component id="n295_f8gu" name="ComPot6" src="f8gu27m" fileName="Component/ComPot.xml" xy="282,258" group="n299_f8gu"/>
+    <component id="n296_f8gu" name="ComPot7" src="f8gu27m" fileName="Component/ComPot.xml" xy="404,258" group="n299_f8gu"/>
+    <component id="n297_f8gu" name="ComPot8" src="f8gu27m" fileName="Component/ComPot.xml" xy="526,258" group="n299_f8gu"/>
+    <component id="n298_f8gu" name="ComPot9" src="f8gu27m" fileName="Component/ComPot.xml" xy="648,258" group="n299_f8gu"/>
+    <group id="n299_f8gu" name="GroupPot9" xy="227,216" size="594,69" group="n182_jdzb" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerPot" pages="8"/>
+    </group>
+    <group id="n182_jdzb" name="GroupPot" xy="227,182" size="594,103" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <component id="n164_he5u" name="BtnMsg" src="q7ht68" fileName="Component/BtnFriendChat.xml" xy="97,497" group="n162_he5u"/>
+    <component id="n159_xxpn" name="ComMsgTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="140,496" group="n162_he5u"/>
+    <group id="n162_he5u" name="msg" xy="97,496" size="74,79" advanced="true" collapsed="true">
+      <relation target="" sidePair="bottom-bottom"/>
+    </group>
+    <component id="n193_jx6n" name="BtnFriend" src="q7ht66" fileName="Component/BtnFriend.xml" xy="11,497">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n183_8vtz" name="ComLotteryTicket" src="j6hsb5" fileName="Component/ComLotteryTicket.xml" pkg="nhvxw9ov" xy="969,10" visible="false">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n207_lil3" name="BtnShop" src="xk561y" fileName="Component/BtnShop.xml" xy="890,10" visible="false">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n223_n1oc" name="ComRealTimeInfo" src="n1oc6h" fileName="Component/ComRealTimeInfo.xml" xy="781,0" hideByEditor="true" visible="false">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n230_qljn" name="ComWaitingBegine" src="qljn6l" fileName="Component/ComWaiting.xml" xy="408,205" hideByEditor="true" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n231_qljn" name="ComMeWin" src="qljn6n" fileName="Component/ComProces1.xml" xy="275,288" scale="0.85,0.85" visible="false">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n301_d6x8" name="ComShadeReward" src="u51o84" fileName="Component/ComShadeMore.xml" pkg="gbdohaiv" xy="0,0" hideByEditor="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n300_d6x8" name="ComReward" src="lmq9lm" fileName="Component/ComReward.xml" pkg="nhvxw9ov" xy="81,-93"/>
+    <component id="n302_d6x8" name="ComRewardTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="54,15" visible="false"/>
+  </displayList>
+  <transition name="TransitionNewMsg"/>
+  <transition name="TransitionReward">
+    <item time="0" type="XY" target="n300_d6x8" tween="true" startValue="-,-93" endValue="-,10" duration="6"/>
+    <item time="6" type="XY" target="n300_d6x8" tween="true" startValue="-,10"/>
+  </transition>
+</component>

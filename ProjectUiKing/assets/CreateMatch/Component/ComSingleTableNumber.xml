@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="358,41" initName="ComSingleTableNumber">
+  <controller name="ControllerTablePlayerNum" pages="0,,1," selected="0"/>
+  <displayList>
+    <text id="n0_nhy4" name="n0" xy="0,7" size="98,27" fontSize="20" color="#5871aa" vAlign="middle" leading="0" autoSize="none" text="单桌人数"/>
+    <image id="n1_nhy4" name="n1" src="nhy4d" xy="101,1" size="107,40">
+      <gearDisplay controller="ControllerTablePlayerNum" pages="1"/>
+    </image>
+    <image id="n2_nhy4" name="n2" src="nhy4d" xy="251,1" size="107,40">
+      <gearDisplay controller="ControllerTablePlayerNum" pages="0"/>
+    </image>
+    <image id="n5_nhy4" name="n5" src="nhy4e" xy="101,1" size="107,40">
+      <gearDisplay controller="ControllerTablePlayerNum" pages="0"/>
+    </image>
+    <image id="n6_nhy4" name="n6" src="nhy4e" xy="251,1" size="107,40">
+      <gearDisplay controller="ControllerTablePlayerNum" pages="1"/>
+    </image>
+    <component id="n9_qkn2" name="BtnSixNum" src="qkn2kv" pkg="nhvxw9ov" xy="104,2" size="102,38"/>
+    <component id="n10_qkn2" name="BtnNineNum" src="qkn2kv" pkg="nhvxw9ov" xy="254,2" size="102,38"/>
+    <text id="n12_donu" name="n12" xy="104,5" size="102,33" fontSize="20" color="#a7bff0" align="center" vAlign="middle" leading="0" autoSize="none" text="6人">
+      <gearDisplay controller="ControllerTablePlayerNum" pages="1"/>
+    </text>
+    <text id="n13_donu" name="n13" xy="254,5" size="102,33" fontSize="20" color="#a7bff0" align="center" vAlign="middle" leading="0" autoSize="none" text="9人">
+      <gearDisplay controller="ControllerTablePlayerNum" pages="0"/>
+    </text>
+    <text id="n14_donu" name="n14" xy="104,5" size="102,33" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="6人">
+      <gearDisplay controller="ControllerTablePlayerNum" pages="0"/>
+    </text>
+    <text id="n15_donu" name="n15" xy="254,5" size="102,33" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="9人">
+      <gearDisplay controller="ControllerTablePlayerNum" pages="1"/>
+    </text>
+  </displayList>
+</component>

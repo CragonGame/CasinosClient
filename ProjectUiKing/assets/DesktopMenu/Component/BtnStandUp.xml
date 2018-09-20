@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="223,65" extention="Button" initName="BtnStandUp">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n8_ewf7" name="n8" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="1,0" size="220,66" color="#393b5e">
+      <gearDisplay controller="button" pages="1"/>
+    </image>
+    <image id="n4_gqzg" name="n4" src="ewf7q" fileName="Image/UI2_ICON_站起.png" xy="44,15" size="45,37" color="#8aa6e7"/>
+    <text id="n7_ewf7" name="title" xy="106,10" pivot="0.5,0.5" size="77,45" fontSize="35" color="#8aa6e7" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="站起">
+      <relation target="n4_gqzg" sidePair="left-right"/>
+    </text>
+  </displayList>
+  <Button/>
+</component>

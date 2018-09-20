@@ -1,0 +1,40 @@
+ManifestFileVersion: 0
+CRC: 767174513
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d58be2bb88946918f845f2e2b6f05cb4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: cd3b0ad9afa1e4a80a6b1b6af5f77466
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 203665e0cb9d1c342aebb15f96fed059, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0c6f0cb32de4c1b46bc3a67a83553d08, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d546f34a90531a14eaba82a43b05b86b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesToolkit2D/UltimateResources/BGS01SpriteCollection Data/atlas0 material.mat
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dBackground/BGS01Prefab.prefab
+- Assets/TK2DROOT/tk2d/Shaders/resources/BlendVertexColor.shader
+- Assets/ResourcesToolkit2D/UltimateResources/BGS01SpriteCollection Data/BGS01SpriteCollection.prefab
+- Assets/ResourcesToolkit2D/UltimateResources/BGS01SpriteCollection Data/atlas0.png
+Dependencies: []

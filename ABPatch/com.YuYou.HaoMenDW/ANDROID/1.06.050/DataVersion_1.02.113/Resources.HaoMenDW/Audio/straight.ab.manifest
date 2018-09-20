@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1533934622
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 14cfab02ac1f1c14368beb4717e9e20f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/Straight.mp3
+Dependencies: []

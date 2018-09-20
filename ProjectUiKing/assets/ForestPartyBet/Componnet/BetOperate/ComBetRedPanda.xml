@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="195,98" extention="Button" initName="ComBetRedPanda">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n9_np4u" name="n9" src="ieud1w" xy="99,0">
+      <gearColor controller="button" pages="1" values="#cccccc" default="#ffffff"/>
+    </image>
+    <image id="n11_np4u" name="n11" src="ieud22" xy="123,0" size="52,71"/>
+    <component id="n15_g9bo" name="ComText" src="ieud1y" xy="0,28"/>
+  </displayList>
+  <Button/>
+</component>

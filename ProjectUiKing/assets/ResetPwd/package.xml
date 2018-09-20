@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="2gsmsscd" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="vcpl3" name="ResetPwd.xml" path="/" exported="true"/>
+    <image id="vcplb" name="SpliteLine.png" path="/Image/"/>
+    <image id="vcplc" name="InputBg.png" path="/Image/" scale="9grid" scale9grid="121,15,242,30"/>
+    <component id="n8cld" name="BtnReturn.xml" path="/Component/"/>
+    <component id="n8cle" name="BtnResetPassword.xml" path="/Component/"/>
+  </resources>
+  <publish name="ResetPwd" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\ResetPwd"/>
+</packageDescription>

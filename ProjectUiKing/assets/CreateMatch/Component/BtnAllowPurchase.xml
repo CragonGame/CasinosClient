@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="107,40" extention="Button" initName="BtnAllowPurchase">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_nhy4" name="n4" src="nhy4d" xy="0,0" size="107,40"/>
+    <image id="n5_nhy4" name="n5" src="nhy4e" xy="0,0" size="107,40">
+      <gearDisplay controller="button" pages="1,3"/>
+    </image>
+    <image id="n6_ii4z" name="n6" src="ii4zt" xy="2,1" size="38,38">
+      <gearDisplay controller="button" pages="0,2"/>
+    </image>
+    <image id="n7_ii4z" name="n7" src="ii4zt" xy="67,1" size="38,38">
+      <gearDisplay controller="button" pages="1,3"/>
+    </image>
+  </displayList>
+  <Button mode="Check"/>
+</component>

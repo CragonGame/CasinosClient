@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="82,104">
+  <displayList>
+    <image id="n14_g8hz" name="n14" src="l1q0c9" pkg="nhvxw9ov" xy="0,22" size="82,82"/>
+    <component id="n13_xbuq" name="CoHeadIcon" src="d45975" pkg="nhvxw9ov" xy="0,22" size="82,82"/>
+    <image id="n8_romc" name="Dealer" src="w6r69" xy="0,22" size="82,82" visible="false"/>
+    <text id="n9_romc" name="TextName" xy="0,0" pivot="0.5,0.5" size="82,22" fontSize="16" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n12_xbuq" name="LoadLock" xy="0,22" size="82,82" touchable="false" align="center" vAlign="middle"/>
+  </displayList>
+</component>

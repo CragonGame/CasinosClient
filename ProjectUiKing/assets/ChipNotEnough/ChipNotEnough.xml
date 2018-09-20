@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n14_excb" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n15_g8hz" name="Lan_Btn_Cancel" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="302,416" group="n23_lh6b"/>
+    <component id="n17_g8hz" name="Lan_Btn_GetChips" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="594,416" group="n23_lh6b"/>
+    <text id="n2_eh36" name="Lan_Text_YouDoNotHaveEnoughChips" xy="306,262" size="449,39" group="n23_lh6b" fontSize="32" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="你没有足够的筹码"/>
+    <group id="n23_lh6b" name="n23" xy="302,262" size="462,218" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

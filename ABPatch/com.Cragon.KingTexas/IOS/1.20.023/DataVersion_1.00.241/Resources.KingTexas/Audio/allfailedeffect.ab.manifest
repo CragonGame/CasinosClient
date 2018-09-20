@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2686815885
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a82f9e42497dd8c5402b3d691b8f186e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/AllFailedEffect.wav
+Dependencies: []

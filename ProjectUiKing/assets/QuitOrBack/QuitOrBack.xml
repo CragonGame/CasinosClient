@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n14_v4ef" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n10_rdp3" name="Lan_Btn_QuitGame" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="332,416" group="n24_lh6b"/>
+    <component id="n12_rdp3" name="Lan_Btn_Back" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="564,415" group="n24_lh6b"/>
+    <text id="n6" name="Tips" xy="287,282" pivot="0.5,0.5" size="490,40" group="n24_lh6b" fontSize="32" color="#ffffff" align="center" vAlign="middle" autoSize="none" shadowColor="#000000" shadowOffset="1,1" text=""/>
+    <group id="n24_lh6b" name="n24" xy="287,282" size="490,198" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

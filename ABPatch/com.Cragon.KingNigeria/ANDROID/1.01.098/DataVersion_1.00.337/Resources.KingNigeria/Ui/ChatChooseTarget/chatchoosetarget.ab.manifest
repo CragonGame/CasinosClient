@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2394528941
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f884257836fc3c357012e993bae4e227
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/ChatChooseTarget/ChatChooseTarget.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/ChatChooseTarget/ChatChooseTarget@sprites.bytes
+Dependencies: []

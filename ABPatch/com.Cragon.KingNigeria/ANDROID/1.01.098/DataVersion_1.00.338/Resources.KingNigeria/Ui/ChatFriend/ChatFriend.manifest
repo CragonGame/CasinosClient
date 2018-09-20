@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2177207830
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: chatfriend.ab
+      Dependencies: {}

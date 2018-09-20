@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4238167863
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 20677324b06a3b59064a7d8782ff7297
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/Notice/Notice@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/Notice/Notice.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/Notice/Notice@sprites.bytes
+Dependencies: []

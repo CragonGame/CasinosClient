@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 3762491867
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 643b0da8fc9b73d2d75220797732a28f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopPlayerOperate/DesktopPlayerOperate@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopPlayerOperate/DesktopPlayerOperate.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopPlayerOperate/DesktopPlayerOperate@atlas0.png
+Dependencies: []

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="183,67">
+  <controller name="ControlSelect" pages="1,SelectNo,0,SelectIt" selected="0"/>
+  <controller name="ConttollerBg" pages="0,Black,1,Light" selected="0"/>
+  <displayList>
+    <image id="n19_niy2" name="n19" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="183,67" color="#192245">
+      <gearDisplay controller="ControlSelect" pages="1"/>
+    </image>
+    <image id="n20_niy2" name="n20" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="183,67" alpha="0.8" color="#294893">
+      <gearDisplay controller="ControlSelect" pages="0"/>
+    </image>
+    <image id="n24_ko7v" name="n24" src="8xode8" fileName="Image/BgGift.png" pkg="nhvxw9ov" xy="2,2" size="62,62"/>
+    <image id="n25_ko7v" name="n25" src="8xode9" fileName="Image/CommonBlueLightBg.png" pkg="nhvxw9ov" xy="2,2" size="62,62">
+      <gearDisplay controller="ConttollerBg" pages="1"/>
+    </image>
+    <loader id="n23_wuv9" name="LoaderGiftIcon" xy="2,2" size="62,62" align="center" vAlign="middle" fill="scale"/>
+    <text id="n2" name="TextName" xy="64,19" size="112,27" fontSize="20" color="#ffffff" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

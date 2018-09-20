@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2149781452
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 38a509eb716aa46457208d1d5ae0e7c7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e524609455c7cfb29b5bab3f5d3ec7c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgFold/Ui/PlayerProfile/PlayerProfile@sprites.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/PlayerProfile/PlayerProfile.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/PlayerProfile/PlayerProfile@atlas0.png
+Dependencies: []

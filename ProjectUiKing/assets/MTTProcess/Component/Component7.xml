@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="319,177">
+  <displayList>
+    <loader id="n6_n1df" name="Lan_Image_Enter" xy="69,0" pivot="0.5,0.5" size="187,87" align="center" vAlign="middle" fill="scaleFree"/>
+    <loader id="n7_n1df" name="Lan_Image_决赛T2" xy="0,38" pivot="0.5,0.5" size="319,139" align="center" vAlign="middle" fill="scaleFree"/>
+    <loader id="n8_n1df" name="Lan_Image_决赛T2" xy="0,37" pivot="0.5,0.5" size="319,139" align="center" vAlign="middle" fill="scaleFree"/>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="Visible" target="n8_n1df" value="false"/>
+    <item time="5" type="Alpha" target="n8_n1df" tween="true" startValue="1" endValue="0" duration="7"/>
+    <item time="5" type="Scale" target="n8_n1df" tween="true" startValue="1,1" endValue="3,3" duration="7"/>
+    <item time="5" type="Visible" target="n8_n1df" value="true"/>
+    <item time="12" type="Alpha" target="n8_n1df" tween="true" startValue="0"/>
+    <item time="12" type="Scale" target="n8_n1df" tween="true" startValue="3,3"/>
+  </transition>
+</component>

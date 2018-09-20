@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="40,40">
+  <displayList>
+    <image id="n0_npdv" name="VipSign" src="npdv9" xy="5,3" size="30,34">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_npdv" name="Gift" src="npdv8" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+</component>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="91,29" extention="Button" initName="BtnEntryFee">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <controller name="ControllerState" pages="0,,1," selected="0"/>
+  <displayList>
+    <text id="n4_uvmq" name="Lan_Text_EntryFee1" xy="0,0" pivot="0.5,0.5" size="71,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="报名费"/>
+    <image id="n5_uvmq" name="n5" src="uvmqg" fileName="Image/7.png" xy="69,7" pivot="0.5,0.5" skew="180,0" color="#617cba">
+      <gearDisplay controller="ControllerState" pages="0"/>
+      <relation target="n4_uvmq" sidePair="left-right"/>
+    </image>
+    <image id="n6_vs7z" name="n6" src="uvmqg" fileName="Image/7.png" xy="69,7" pivot="0.5,0.5" color="#617cba">
+      <gearDisplay controller="ControllerState" pages="1"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

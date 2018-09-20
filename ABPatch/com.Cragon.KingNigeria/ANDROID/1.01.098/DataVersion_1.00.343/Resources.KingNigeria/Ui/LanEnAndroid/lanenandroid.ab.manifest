@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 3519166056
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 61fecac0e6e7ab33c619e1213320ef4e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanEnAndroid/LanEnAndroid@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanEnAndroid/LanEnAndroid@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/LanEnAndroid/LanEnAndroid.bytes
+Dependencies: []

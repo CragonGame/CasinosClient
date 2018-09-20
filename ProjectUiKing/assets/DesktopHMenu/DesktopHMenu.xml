@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n0_fb5j" name="CoMenuEx" src="fb5jn" xy="3,-370">
+      <relation target="" sidePair="left-left,center-center"/>
+    </component>
+  </displayList>
+</component>

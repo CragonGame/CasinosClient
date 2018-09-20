@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="143,72">
+  <displayList>
+    <image id="n7_h0xs" name="n7" src="vwtaib" pkg="nhvxw9ov" xy="0,0"/>
+    <text id="n6_romc" name="TextCurrentRaiseChip" xy="8,10" size="127,39" fontSize="30" color="#a3a1c1" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

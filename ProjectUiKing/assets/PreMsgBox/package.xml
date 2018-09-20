@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="8k6iw2x6" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="v3b90" name="PreMsgBox.xml" path="/" exported="true"/>
+    <component id="d5pu9" name="BtnBlue.xml" path="/Component/"/>
+    <image id="i2xrh" name="EnsureEn.png" path="/Image/"/>
+    <image id="i2xri" name="EnsureZh.png" path="/Image/"/>
+    <component id="lh6bj" name="ComBgAndCloseSmall.xml" path="/Component/"/>
+    <image id="lh6bk" name="UI2_通用_Title花纹02.png" path="/Image/"/>
+    <image id="lh6bl" name="UI2_通用_Title.png" path="/Image/" scale="9grid" scale9grid="20,21,101,6" duplicatePadding="true"/>
+    <image id="lh6bm" name="UI2_通用_底板01.png" path="/Image/" scale="9grid" scale9grid="36,34,10,8"/>
+    <image id="lh6bo" name="BtnGreen.png" path="/Image/" scale="9grid" scale9grid="75,28,25,2"/>
+  </resources>
+  <publish name="PreMsgBox" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\PreMsgBox"/>
+</packageDescription>

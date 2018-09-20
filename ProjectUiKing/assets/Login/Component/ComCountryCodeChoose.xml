@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n3_jczm" name="n3" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" alpha="0.8">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n2_jczm" name="n2" src="796z9" fileName="Image/InputBg.png" xy="232,108" size="609,420" group="n6_jczm"/>
+    <text id="n0_jczm" name="TextSearchCountry" xy="296,129" size="525,45" group="n6_jczm" input="true" fontSize="30" vAlign="middle" autoSize="shrink" text=""/>
+    <image id="n1_jczm" name="n1" src="796z5" fileName="Image/SpliteLine.png" xy="193,171" pivot="0.5,0.5" size="679,10" group="n6_jczm" color="#ff9900"/>
+    <list id="n4_jczm" name="ListCountryCode" xy="251,175" size="572,259" group="n6_jczm" overflow="scroll" defaultItem="ui://nq1z8ebjjczm1f" align="center"/>
+    <component id="n7_jczm" name="Lan_Btn_Cancel" src="jczm1g" fileName="Component/BtnCancel.xml" xy="472,451" group="n6_jczm"/>
+    <image id="n8_h9va" name="n8" src="h9va1m" fileName="Image/放大镜.png" xy="249,128" group="n6_jczm"/>
+    <group id="n6_jczm" name="n6" xy="193,108" size="679,420" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="288,107">
+  <displayList>
+    <image id="n1_n1oc" name="n1" src="n1oc6g" xy="0,0" size="288,111" group="n6_n1oc" alpha="0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n8_cvtg" name="BlindBg" src="u51ojc" pkg="nhvxw9ov" xy="5,69" size="278,34" group="n6_n1oc" visible="false" alpha="0.5" color="#3b214e"/>
+    <text id="n3_n1oc" name="TextReward" xy="9,39" pivot="0.5,0.5" size="270,29" group="n6_n1oc" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n4_n1oc" name="TextBlind" xy="9,71" pivot="0.5,0.5" size="270,29" group="n6_n1oc" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n6_n1oc" name="GroupRewardBlind" xy="0,0" size="288,111" advanced="true"/>
+    <image id="n0_n1oc" name="n0" src="n1oc6g" xy="0,0" size="288,81" group="n7_n1oc" alpha="0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n9_cvtg" name="BlindBg" src="u51ojc" pkg="nhvxw9ov" xy="5,39" size="278,33" group="n7_n1oc" visible="false" alpha="0.5" color="#3b214e"/>
+    <text id="n5_n1oc" name="TextBlind" xy="9,41" pivot="0.5,0.5" size="270,29" group="n7_n1oc" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n7_n1oc" name="GroupBlind" xy="0,0" size="288,81" advanced="true"/>
+    <text id="n2_n1oc" name="TextRankingAScore" xy="8,6" pivot="0.5,0.5" size="270,29" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

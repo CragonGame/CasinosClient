@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 668256035
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: abbc5d8c87eb31285dbc25306d6452e7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0605fe76d012b1a951d4b995dc7210fb
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesParticle/Textures/FX_MotionBlur001.png
+- Assets/ResourcesParticle/Materials/btnmatch.mat
+- Assets/Resources.KingTexas/PkgSingle/Particle/BtnMatchParticle.prefab
+Dependencies: []

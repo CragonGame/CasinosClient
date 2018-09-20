@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n25_hrhq" name="ComBg" src="hrhqv" fileName="Component/ComBg.xml" pkg="nq1z8ebj" xy="0,0"/>
+    <text id="n3" name="Tips" xy="5,567" size="974,29" fontSize="22" color="#ffffff" autoSize="none" text="">
+      <relation target="" sidePair="bottom-bottom"/>
+    </text>
+    <image id="n27_h1fy" name="n27" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="1,0" size="19,28" alpha="0.25" color="#000000">
+      <relation target="n11_uwif" sidePair="leftext-left,rightext-right"/>
+    </image>
+    <text id="n11_uwif" name="Version" xy="5,4" size="10,20" fontSize="14" color="#ffffff" vAlign="middle" text="">
+      <relation target="" sidePair="top-top,left-left"/>
+    </text>
+    <component id="n18_l4gz" name="n18" src="l4gzj" fileName="Component/CoWaiting.xml" pkg="gzhgc1jr" xy="986,519">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <component id="n22_ewc0" name="Progress" src="ewc0j" fileName="Component/Progress.xml" xy="5,598" size="1055,41" alpha="0.8">
+      <relation target="" sidePair="bottom-bottom,width-width"/>
+      <ProgressBar max="100"/>
+    </component>
+    <component id="n26_jyil" name="MoteParent" src="jyils" fileName="Component/ComMoteParent.xml" xy="532,489">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1"/>
+</component>

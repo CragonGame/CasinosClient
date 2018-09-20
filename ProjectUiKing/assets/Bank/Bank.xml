@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerBank" pages="0,PutInMoney,1,TakeOutMoney" selected="1"/>
+  <displayList>
+    <component id="n74_sul8" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n121_lh6b" name="n121" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="148,80" group="n123_nhsw"/>
+    <component id="n80_sul8" name="BtnDrawMoneyClose" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="533,165" pivot="0.5,0.5" group="n123_nhsw" skew="0,180"/>
+    <component id="n81_sul8" name="BtnSaveMoneyClose" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="415,165" pivot="0.5,0.5" group="n123_nhsw"/>
+    <image id="n85_sul8" name="n85" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="415,165" pivot="0.5,0.5" size="118,37" group="n123_nhsw">
+      <gearDisplay controller="ControllerBank" pages="0"/>
+    </image>
+    <image id="n89_fgtk" name="n89" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="159,253" pivot="0.5,0.5" size="355,43" group="n123_nhsw"/>
+    <image id="n90_fgtk" name="n90" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="563,253" pivot="0.5,0.5" size="355,43" group="n123_nhsw"/>
+    <image id="n86_sul8" name="n86" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="533,165" pivot="0.5,0.5" size="118,37" group="n123_nhsw" skew="0,180">
+      <gearDisplay controller="ControllerBank" pages="1"/>
+    </image>
+    <text id="n113_jx6n" name="Lan_Text_SaveChips" xy="423,169" pivot="0.5,0.5" size="109,28" group="n123_nhsw" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="存筹码">
+      <gearDisplay controller="ControllerBank" pages="0"/>
+    </text>
+    <text id="n115_jx6n" name="Lan_Text_TakeChips" xy="534,169" pivot="0.5,0.5" size="109,28" group="n123_nhsw" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="取筹码">
+      <gearDisplay controller="ControllerBank" pages="1"/>
+    </text>
+    <component id="n101_ot8l" name="Lan_Btn_TakeChips" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="456,496" group="n53_qsg8">
+      <Button title="取筹码"/>
+    </component>
+    <component id="n71_qsg8" name="CoNumOperateTakeOut" src="x8p04" fileName="Component/ComOperate.xml" xy="396,378" pivot="0.5,0.5" size="285,52" group="n53_qsg8"/>
+    <text id="n28_qsg8" name="Lan_Text_YourBalance" xy="162,260" pivot="0.5,0.5" size="115,30" group="n29_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="你的余额："/>
+    <text id="n49_qsg8" name="PlayerGold" xy="276,260" pivot="0.5,0.5" size="238,30" group="n29_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="数值"/>
+    <group id="n29_qsg8" name="SelfLeft" xy="162,260" size="352,30" group="n53_qsg8" collapsed="true"/>
+    <text id="n31_qsg8" name="Lan_Text_BankBalance" xy="565,260" pivot="0.5,0.5" size="115,30" group="n32_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="银行余额："/>
+    <text id="n48_qsg8" name="SafeBoxGold" xy="679,260" pivot="0.5,0.5" size="238,30" group="n32_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="数值"/>
+    <group id="n32_qsg8" name="BankLeft" xy="565,260" size="352,30" group="n53_qsg8" collapsed="true"/>
+    <text id="n41_qsg8" name="Lan_Text_UpperTakeChips" xy="707,400" pivot="0.5,0.5" size="206,30" group="n53_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n38_qsg8" name="Lan_Text_LowerTakeChips" xy="162,400" pivot="0.5,0.5" size="206,30" group="n53_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n34_qsg8" name="Lan_Text_PleaseEnterTakeChipsAmount" xy="401,347" size="165,29" group="n53_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" text="请输入取款金额:"/>
+    <text id="n39_qsg8" name="TextBottomTakeOut" xy="162,358" pivot="0.5,0.5" size="206,29" group="n53_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="$"/>
+    <text id="n42_qsg8" name="TextTopTakeOut" xy="707,357" pivot="0.5,0.5" size="206,29" group="n53_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="$"/>
+    <group id="n53_qsg8" name="GroupTakeOut" xy="162,260" size="755,300" group="n123_nhsw" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerBank" pages="1"/>
+    </group>
+    <text id="n54_qsg8" name="Lan_Text_PleaseEnterSaveChipsAmount" xy="401,347" size="165,29" group="n68_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" text="请输入存款金额:"/>
+    <text id="n55_qsg8" name="TextButtomPutIn" xy="162,358" size="206,29" group="n68_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="$"/>
+    <text id="n56_qsg8" name="TextTopPutIn" xy="707,357" size="206,29" group="n68_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="$"/>
+    <text id="n58_qsg8" name="Lan_Text_BankBalance" xy="162,260" pivot="0.5,0.5" size="115,30" group="n60_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="银行余额："/>
+    <text id="n59_qsg8" name="SafeBoxGold" xy="276,260" pivot="0.5,0.5" size="238,30" group="n60_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="数值"/>
+    <group id="n60_qsg8" name="BankLeft" xy="162,260" size="352,30" group="n68_qsg8"/>
+    <text id="n61_qsg8" name="Lan_Text_YourBalance" xy="565,260" pivot="0.5,0.5" size="115,30" group="n63_qsg8" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="你的余额："/>
+    <text id="n62_qsg8" name="PlayerGold" xy="679,260" pivot="0.5,0.5" size="238,30" group="n63_qsg8" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="数值"/>
+    <group id="n63_qsg8" name="SelfLeft" xy="565,260" size="352,30" group="n68_qsg8" collapsed="true"/>
+    <component id="n100_ot8l" name="Lan_Btn_SaveChips" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="456,496" group="n68_qsg8">
+      <Button title="存筹码"/>
+    </component>
+    <component id="n69_qsg8" name="CoNumOperatePutIn" src="x8p04" fileName="Component/ComOperate.xml" xy="396,378" pivot="0.5,0.5" size="285,52" group="n68_qsg8"/>
+    <text id="n110_niy2" name="Lan_Text_UpperSaveChips" xy="707,400" pivot="0.5,0.5" size="206,30" group="n68_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n111_niy2" name="Lan_Text_LowerSaveChips" xy="162,400" pivot="0.5,0.5" size="206,30" group="n68_qsg8" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n68_qsg8" name="GroupPutIn" xy="162,260" size="755,300" group="n123_nhsw" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerBank" pages="0"/>
+    </group>
+    <image id="n76_sul8" name="n76" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="538,74" pivot="0.5,0.5" group="n123_nhsw" skew="0,180">
+      <relation target="n122_nhsw" sidePair="left-right"/>
+    </image>
+    <image id="n77_sul8" name="n77" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="490,74" pivot="0.5,0.5" group="n123_nhsw">
+      <relation target="n122_nhsw" sidePair="right-left"/>
+    </image>
+    <text id="n112_jx6n" name="Lan_Text_SaveChips" xy="423,169" pivot="0.5,0.5" size="109,28" group="n123_nhsw" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="存筹码">
+      <gearDisplay controller="ControllerBank" pages="1"/>
+    </text>
+    <text id="n114_jx6n" name="Lan_Text_TakeChips" xy="534,169" pivot="0.5,0.5" size="109,28" group="n123_nhsw" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="取筹码">
+      <gearDisplay controller="ControllerBank" pages="0"/>
+    </text>
+    <text id="n122_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n123_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n123_nhsw" name="n123" xy="148,74" size="770,486" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

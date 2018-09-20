@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 4083372947
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f4faf75eb990f310ab49c0057c74981b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 96297cc14ffc9531636b55d963947141
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesParticle/Textures/FX_MotionBlur001.png
+- Assets/ResourcesParticle/Materials/btnmatch.mat
+- Assets/Resources.KingNigeria/PkgSingle/Particle/BtnMatchParticle.prefab
+Dependencies: []

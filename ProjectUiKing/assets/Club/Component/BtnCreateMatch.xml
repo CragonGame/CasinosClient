@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="379,199" extention="Button" initName="BtnCreateMatch">
+  <displayList>
+    <image id="n0_s17d" name="n0" src="s17d2" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

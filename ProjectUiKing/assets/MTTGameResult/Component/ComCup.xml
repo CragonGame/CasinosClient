@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="371,384" overflow="hidden">
+  <displayList>
+    <image id="n0_n1oc" name="n0" src="n1oc1" xy="1,0"/>
+    <image id="n7_n1oc" name="n7" src="n1oc4" xy="-184,-1" size="256,373" alpha="0.6"/>
+    <image id="n5_n1oc" name="n5" src="n1oc8" xy="141,46"/>
+    <image id="n9_n1oc" name="n9" src="n1oc1" xy="0,0"/>
+  </displayList>
+  <transition name="t1">
+    <item time="0" type="XY" target="n7_n1oc" tween="true" startValue="-184.94,-1.42" endValue="298.19,-1.73" duration="12" ease="Linear"/>
+    <item time="12" type="XY" target="n7_n1oc" tween="true" startValue="298.19,-1.73"/>
+  </transition>
+</component>

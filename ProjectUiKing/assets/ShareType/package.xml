@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="jln7clls" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="ow3k0" name="ShareType.xml" path="/" exported="true"/>
+    <image id="ow3k1" name="WeChatMoments.png" path="/Image/"/>
+    <image id="ow3k2" name="WeChat.png" path="/Image/"/>
+    <component id="ow3k3" name="ComWechat.xml" path="/Component/"/>
+    <component id="ow3k4" name="ComWeChatMoments.xml" path="/Component/"/>
+  </resources>
+  <publish name="ShareType" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\ShareType"/>
+</packageDescription>

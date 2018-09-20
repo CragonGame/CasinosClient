@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="z7w3u7a1" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="fb5j0" name="DesktopHResult.xml" path="/" exported="true"/>
+    <component id="wp1hh" name="CoWinPlayer.xml" path="/Component/"/>
+  </resources>
+  <publish name="DesktopHResult" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHResult"/>
+</packageDescription>

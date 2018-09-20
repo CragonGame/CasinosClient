@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 695741070
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: desktop.ab
+      Dependencies: {}

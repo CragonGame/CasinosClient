@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n26_ko7v" name="ComBgAndClose" src="vi47jm" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n41_tabc" name="n41" src="wb2ek8" pkg="nhvxw9ov" xy="163,196" size="350,357" group="n57_m4t7" color="#303563"/>
+    <image id="n42_tabc" name="n42" src="wb2ek8" pkg="nhvxw9ov" xy="553,196" size="350,357" group="n57_m4t7" color="#303563"/>
+    <list id="n8_eh36" name="ListOnLine" xy="156,196" size="364,354" group="n57_m4t7" overflow="scroll" defaultItem="ui://ga4gc7i6eh362" align="center"/>
+    <list id="n9_eh36" name="ListOffLine" xy="546,196" size="364,354" group="n57_m4t7" overflow="scroll" defaultItem="ui://ga4gc7i6eh362" align="center"/>
+    <image id="n37_lh6b" name="n37" src="lh6bjy" pkg="nhvxw9ov" xy="123,78" group="n57_m4t7"/>
+    <image id="n38_lh6b" name="n38" src="vi47jp" pkg="nhvxw9ov" xy="373,74" pivot="0.5,0.5" group="n57_m4t7">
+      <relation target="n56_m4t7" sidePair="right-left"/>
+    </image>
+    <image id="n39_lh6b" name="n39" src="vi47jp" pkg="nhvxw9ov" xy="655,74" pivot="0.5,0.5" group="n57_m4t7" skew="0,180">
+      <relation target="n56_m4t7" sidePair="left-right"/>
+    </image>
+    <text id="n6_eh36" name="Lan_Text_Online" xy="306,157" pivot="0.5,0.5" size="63,34" group="n57_m4t7" font="FontCu" fontSize="26" color="#7c9de7" align="center" vAlign="middle" leading="0" bold="true" text="在线"/>
+    <text id="n7_eh36" name="Lan_Text_OffLine" xy="696,157" pivot="0.5,0.5" size="63,34" group="n57_m4t7" font="FontCu" fontSize="26" color="#7c9de7" align="center" vAlign="middle" leading="0" bold="true" text="离线"/>
+    <image id="n49_tabc" name="n49" src="u51ojc" pkg="nhvxw9ov" xy="531,148" size="4,422" group="n57_m4t7" color="#1e203b"/>
+    <text id="n56_m4t7" name="TextTitle" xy="410,81" pivot="0.5,0.5" size="245,50" group="n57_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="邀请好友打牌"/>
+    <group id="n57_m4t7" name="n57" xy="123,74" size="787,496" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

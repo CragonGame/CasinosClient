@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2883067533
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: fe513fc4e37db0a0df964a9dec2b8377
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c73412a662fd4e4f36af34cbdf078b85
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Spine/MainMarry/Mary.png
+Dependencies: []

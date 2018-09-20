@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1208313959
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 84414abd6e7c24f0690e6130739e773c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/allin_boy.wav
+Dependencies: []

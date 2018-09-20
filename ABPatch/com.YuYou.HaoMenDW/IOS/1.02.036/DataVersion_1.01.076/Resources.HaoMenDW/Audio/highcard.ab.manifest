@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 922553010
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 713acf85c123aeaf5e6b2bc5b7f3e52d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/HighCard.mp3
+Dependencies: []

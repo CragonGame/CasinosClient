@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="722,62">
+  <displayList>
+    <image id="n0_gy6l" name="n0" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,58" size="722,4" color="#242647"/>
+    <loader id="n1_gy6l" name="LoaderRank" xy="21,5" pivot="0.5,0.5" size="50,50"/>
+    <text id="n2_gy6l" name="TextRank" xy="21,5" pivot="0.5,0.5" size="50,50" fontSize="25" color="#7b8fea" align="center" vAlign="middle" leading="0" autoSize="shrink" text=""/>
+    <loader id="n3_gy6l" name="LoaderHeadIcon" xy="103,5" pivot="0.5,0.5" size="50,50" fill="scale"/>
+    <text id="n4_gy6l" name="TextPlayerName" xy="163,13" pivot="0.5,0.5" size="240,30" fontSize="23" color="#ffffff" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <text id="n5_gy6l" name="TextChipAmount" xy="564,13" pivot="0.5,0.5" size="154,30" fontSize="23" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

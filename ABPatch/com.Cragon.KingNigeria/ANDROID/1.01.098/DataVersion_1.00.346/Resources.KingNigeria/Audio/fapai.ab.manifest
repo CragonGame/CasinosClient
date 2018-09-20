@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3109351659
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8b1678595c381cfc46c2551a90635f53
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/fapai.wav
+Dependencies: []

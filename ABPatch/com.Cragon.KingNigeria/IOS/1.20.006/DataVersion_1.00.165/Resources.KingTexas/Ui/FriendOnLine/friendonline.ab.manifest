@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2128195876
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: fae0f884cf8fbdddca79702d1bb4e088
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/FriendOnLine/FriendOnLine@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/FriendOnLine/FriendOnLine.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/FriendOnLine/FriendOnLine@atlas0.png
+Dependencies: []

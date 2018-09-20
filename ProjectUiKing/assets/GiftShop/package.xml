@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="87eqd1c9" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="umbb0" name="GiftShop.xml" path="/" exported="true"/>
+    <component id="v6rd5" name="UiItemGiftType.xml" path="/Component/" exported="true"/>
+    <image id="qeucg" name="Item.png" path="/Image/"/>
+    <image id="qeuch" name="ItemChoose.png" path="/Image/"/>
+    <component id="qeuci" name="ComGiftItem.xml" path="/Component/" exported="true"/>
+  </resources>
+  <publish name="GiftShop" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\GiftShop"/>
+</packageDescription>

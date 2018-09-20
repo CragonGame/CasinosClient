@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 1640994191
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5d25d31cd03ffe18ac4bfc9d55d81947
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e8214c69729ed7b4e0f89bad6e44781a
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/PreLoading/PreLoading@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/PreLoading/PreLoading@atlas1.png
+- Assets/Resources.KingTexas/PkgFold/Ui/PreLoading/PreLoading.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/PreLoading/PreLoading@atlas0.png
+Dependencies: []

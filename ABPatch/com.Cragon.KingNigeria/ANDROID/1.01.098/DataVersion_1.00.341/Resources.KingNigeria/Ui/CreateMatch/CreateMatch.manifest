@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1170273529
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: creatematch.ab
+      Dependencies: {}

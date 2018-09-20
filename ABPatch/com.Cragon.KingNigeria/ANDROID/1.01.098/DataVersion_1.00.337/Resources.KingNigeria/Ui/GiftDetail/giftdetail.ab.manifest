@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 860699674
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5ecb96ec5d641dd4d6929bee5d3d8573
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/GiftDetail/GiftDetail@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/GiftDetail/GiftDetail.bytes
+Dependencies: []

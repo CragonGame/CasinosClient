@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rdlj3o8e" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="gp480" name="DesktopPlayerInfoGFlower.xml" path="/" exported="true"/>
+    <image id="gp481" name="PlayerInfoBg.png" path="/Image/PlayerInfo/" scale="9grid" scale9grid="129,99,6,26"/>
+    <image id="gp482" name="PlayerActionProgress.png" path="/Image/PlayerInfo/" scale="9grid" scale9grid="20,27,40,54"/>
+    <component id="gp483" name="ComHeadIcon.xml" path="/Component/" exported="true"/>
+    <image id="gp484" name="DefautHeadIcon.png" path="/Image/" exported="true"/>
+    <image id="gp485" name="HeadBorder1.png" path="/Image/" exported="true"/>
+    <image id="gp486" name="BankPlayerSign.png" path="/Image/" exported="true"/>
+    <component id="gp487" name="ComVIP.xml" path="/Component/" exported="true"/>
+    <image id="gp488" name="VIPBg.png" path="/Image/" exported="true" scale9grid="13,21,25,18"/>
+    <image id="gp489" name="VIPNum0.png" path="/Image/VipNum/" exported="true"/>
+    <image id="gp48a" name="Ready.png" path="/Image/PlayerInfo/"/>
+    <image id="gp48b" name="CardBack.png" path="/Image/"/>
+    <image id="gp48c" name="CardBackLose.png" path="/Image/"/>
+    <image id="gp48d" name="Check.png" path="/Image/PlayerInfo/"/>
+    <image id="gp48e" name="Fold.png" path="/Image/PlayerInfo/"/>
+    <image id="gp48f" name="Lost.png" path="/Image/PlayerInfo/"/>
+    <component id="gp48g" name="ComAction.xml" path="/Component/"/>
+    <image id="gp48h" name="AutoBet.png" path="/Image/"/>
+    <movieclip id="gp48i" name="MoviePKCardEx.jta" path="/Component/"/>
+    <movieclip id="gp48j" name="MoviePKLose.jta" path="/Component/"/>
+    <image id="gp48k" name="PKBorder.png" path="/Image/PlayerInfo/"/>
+    <component id="gp48l" name="ComParent.xml" path="/Component/" exported="true"/>
+  </resources>
+  <publish name="DesktopPlayerInfoGFlower" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.King\PkgFold\Ui\DesktopPlayerInfoGFlower"/>
+</packageDescription>

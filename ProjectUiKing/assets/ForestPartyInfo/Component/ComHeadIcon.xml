@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="90,90" initName="ComHeadIcon">
+  <displayList>
+    <image id="n5_ubr5" name="n5" src="ieud7" xy="8,8" size="76,74">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n6_ubr5" name="n6" src="ieud8" xy="0,0" size="90,90">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n2_ubr5" name="LoaderIcon" xy="7,9" size="75,75" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+    <image id="n3_ubr5" name="BankPlayerSign" src="ieud9" xy="1,0" size="30,31" hideByEditor="true" visible="false">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <component id="n4_ubr5" name="CoVIPSign" src="ieuda" xy="5,56" size="63,28" visible="false">
+      <relation target="" sidePair="width-width%,height-height%"/>
+      <relation target="" sidePair="bottom-bottom%,right-right%"/>
+    </component>
+  </displayList>
+</component>

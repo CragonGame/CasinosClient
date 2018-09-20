@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="755,316" overflow="scroll" scrollBarFlags="64" clipSoftness="2,2" extention="Label">
+  <displayList>
+    <text id="n0" name="Lan_Text_AgreementContent" xy="0,0" size="755,699" font="FontXi" fontSize="20" color="#6a77a9" ubb="true" autoSize="none" text="">
+      <relation target="" sidePair="center-center,top-top"/>
+    </text>
+  </displayList>
+</component>

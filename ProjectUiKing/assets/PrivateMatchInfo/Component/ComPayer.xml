@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="966,532" initName="ComPayer">
+  <displayList>
+    <image id="n0_nhy4" name="n0" src="wb2ek8" pkg="nhvxw9ov" xy="0,0" size="966,532" color="#343963"/>
+    <image id="n1_nhy4" name="n1" src="wb2ek8" pkg="nhvxw9ov" xy="0,76" size="966,456" color="#414b8d"/>
+    <image id="n2_nhy4" name="n2" src="wb2ek8" pkg="nhvxw9ov" xy="0,76" size="6,6" color="#414b8d"/>
+    <image id="n3_nhy4" name="n3" src="wb2ek8" pkg="nhvxw9ov" xy="960,76" size="6,6" color="#414b8d"/>
+    <list id="n9_nhy4" name="ListBlind" xy="0,76" size="966,456" overflow="scroll" defaultItem="ui://jzdiszdwnhy46">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <text id="n10_nhy4" name="n10" xy="410,34" size="112,32" group="n12_nhy4" fontSize="25" color="#a2b1e3" align="center" vAlign="middle" leading="0" text="报名玩家:"/>
+    <text id="n11_nhy4" name="TextSignupNum" xy="523,34" size="33,32" group="n12_nhy4" fontSize="25" color="#ffc811" vAlign="middle" leading="0" text="12"/>
+    <group id="n12_nhy4" name="n12" xy="410,34" size="146,32" advanced="true">
+      <relation target="" sidePair="center-center"/>
+    </group>
+  </displayList>
+</component>

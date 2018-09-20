@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 492833907
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b3c37c8382f3f35b013d3beb7eba42bc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/call_girl.wav
+Dependencies: []

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="742,96">
+  <displayList>
+    <image id="n1_wb2e" name="n1" src="wb2ek6" xy="0,0" size="742,96">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+</component>

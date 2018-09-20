@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="181,87" initName="ComTabVipDark">
+  <displayList>
+    <text id="n3_hrhq" name="n3" xy="73,27" pivot="0.5,0.5" size="85,32" fontSize="25" color="#748bba" align="center" vAlign="middle" leading="0" autoSize="none" text="贵族"/>
+    <image id="n4_hrhq" name="n4" src="hrhq38" xy="20,25" pivot="0.5,0.5" color="#748bba"/>
+  </displayList>
+</component>

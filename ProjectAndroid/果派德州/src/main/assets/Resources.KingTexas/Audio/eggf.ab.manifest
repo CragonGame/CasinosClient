@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 737205891
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 42d163835ef8e6b098f34e5476896d56
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/eggf.mp3
+Dependencies: []

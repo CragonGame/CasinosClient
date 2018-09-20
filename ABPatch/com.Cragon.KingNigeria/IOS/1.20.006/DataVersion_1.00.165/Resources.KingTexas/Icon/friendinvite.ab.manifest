@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 706631365
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: df2ed66d1ab887e7ece064c19e678d59
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c73412a662fd4e4f36af34cbdf078b85
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Icon/FriendInvite.png
+Dependencies: []

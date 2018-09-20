@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="275,80" extention="Button" initName="BtnEdit">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <controller name="BtnController" pages="0,Enable,1,Disable" selected="0"/>
+  <displayList>
+    <image id="n1" name="n1" src="w6r63" xy="0,0" size="100,100">
+      <gearDisplay controller="button" pages="1"/>
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n2" name="title" xy="0,0" size="275,80" font="仿宋" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" singleLine="true" text="设置">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+    <image id="n3_dvh1" name="n3" src="oypw6e" pkg="nhvxw9ov" xy="0,0" size="275,80">
+      <gearDisplay controller="BtnController" pages="1"/>
+    </image>
+  </displayList>
+  <Button/>
+</component>

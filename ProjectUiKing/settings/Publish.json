@@ -1,0 +1,15 @@
+{
+	"codeGeneration":{
+		"classNamePrefix":"UI_",
+		"codePath":"C:\\Users\\xc\\Desktop\\新建文件夹 (6)",
+		"codeType":"",
+		"getMemberByName":false,
+		"ignoreNoname":false,
+		"memberNamePrefix":"m_",
+		"packageName":""
+	},
+	"compressDesc":true,
+	"fileExtension":"",
+	"packageCount":2,
+	"path":""
+}

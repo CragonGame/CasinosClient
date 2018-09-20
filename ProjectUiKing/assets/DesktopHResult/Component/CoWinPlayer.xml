@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="428,65">
+  <displayList>
+    <component id="n6_wb2e" name="n6" src="lh6bjw" pkg="nhvxw9ov" xy="0,0" size="428,65"/>
+    <text id="n2_wp1h" name="Rank" xy="20,17" size="10,30" fontSize="22" color="#ffffff" align="center" vAlign="middle" bold="true" text=""/>
+    <component id="n3_wp1h" name="CoHeadIcon" src="d45975" pkg="nhvxw9ov" xy="52,4" size="57,57"/>
+    <text id="n4_wp1h" name="NickName" xy="127,13" size="119,39" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n5_wp1h" name="WinGold" xy="251,13" size="174,39" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

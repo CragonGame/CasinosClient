@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" designImageLayer="1">
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <component id="n85_gcfd" name="ComBgAndClose" src="s17d6s" fileName="Component/ComBgAndClose.xml" xy="0,0" size="1066,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n101_lh6b" name="n101" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="133,58" size="801,518" group="n104_inau"/>
+    <image id="n100_lh6b" name="n100" src="t4okj4" fileName="Image/New/UI2_通用_底板01.png" pkg="nhvxw9ov" xy="120,45" size="826,543" group="n104_inau"/>
+    <image id="n98_vxr8" name="n98" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="504,111" size="416,390" group="n104_inau" color="#2f3255"/>
+    <component id="n29_svni" name="CoHeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="150,160" size="102,102" group="n82_gcfd"/>
+    <text id="n30_svni" name="Address" xy="259,212" size="171,25" group="n82_gcfd" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n68_sul8" name="n68" src="onuyc3" fileName="Image/BgSign.png" pkg="nhvxw9ov" xy="151,111" size="348,49" group="n33_svni" alpha="0.6" color="#4973bc"/>
+    <text id="n32_svni" name="Sign" xy="157,115" size="338,32" group="n33_svni" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n33_svni" name="NickNameTop" xy="151,111" size="348,49" group="n82_gcfd" collapsed="true"/>
+    <text id="n34_svni" name="NickName" xy="259,162" size="134,25" group="n82_gcfd" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n35_svni" name="GTextPlayerLevel" xy="435,162" size="61,25" group="n82_gcfd" fontSize="18" color="#e5bb4f" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="1"/>
+    <image id="n94_ddgu" name="n94" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="257,187" size="22,22" group="n82_gcfd" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </image>
+    <image id="n106_j1yr" name="n106" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="257,187" size="22,22" group="n82_gcfd" color="#61e2ff">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </image>
+    <text id="n36_svni" name="Chips" xy="281,187" size="116,25" group="n82_gcfd" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n61_ye44" name="ID" xy="259,236" size="170,25" group="n82_gcfd" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n72_sul8" name="CoGift" src="mad8i" fileName="Component/CoGift.xml" xy="263,272" group="n78_sul8"/>
+    <component id="n73_sul8" name="CoFriend" src="mad8j" fileName="Component/CoFriend.xml" xy="142,271" group="n78_sul8"/>
+    <component id="n74_sul8" name="CoGiftHome" src="mad8h" fileName="Component/CoGiftHome.xml" xy="384,271" group="n78_sul8"/>
+    <component id="n75_sul8" name="CoReport" src="mad8l" fileName="Component/CoReport.xml" xy="383,392" group="n78_sul8"/>
+    <component id="n76_sul8" name="CoSendChip" src="mad8k" fileName="Component/CoSendChip.xml" xy="142,392" group="n78_sul8"/>
+    <component id="n77_sul8" name="CoLockChat" src="lj3qv" fileName="Component/ComLockChat.xml" xy="263,392" group="n78_sul8"/>
+    <group id="n78_sul8" name="ProfileOperate" xy="142,271" size="334,232" group="n82_gcfd" advanced="true" collapsed="true"/>
+    <component id="n90_ot8l" name="ProgressLevel" src="ot8lff" fileName="Component/Progress.xml" pkg="nhvxw9ov" xy="398,189" size="100,18" group="n82_gcfd">
+      <ProgressBar value="100" max="100"/>
+    </component>
+    <loader id="n107_hl9h" name="Lan_Image_Level" xy="398,162" size="34,23" group="n82_gcfd" url="ui://nhvxw9ovtv2tla" align="center" vAlign="middle" fill="scaleFree"/>
+    <group id="n82_gcfd" name="GroupPlayerInfo" xy="142,111" size="357,392" group="n104_inau" advanced="true"/>
+    <list id="n47_fdy1" name="ListMagicExp" xy="504,424" size="416,76" group="n52_fdy1" layout="flow_vt" overflow="hidden" defaultItem="ui://h1mhsg6klj3qw" align="center" vAlign="middle"/>
+    <loader id="n60_jvj7" name="Lan_Image_MagicExpression" xy="582,384" size="264,42" group="n52_fdy1" url="ui://6kz8w16qitm12d" align="center" vAlign="middle"/>
+    <group id="n52_fdy1" name="GroupMagicExp" xy="504,384" size="416,116" group="n104_inau" advanced="true"/>
+    <list id="n46_svni" name="ListItem" xy="507,118" size="412,238" group="n104_inau" layout="flow_hz" overflow="scroll" lineGap="5" colGap="6" lineItemCount="5" defaultItem="ui://h1mhsg6kvxr833"/>
+    <component id="n93_ot8l" name="BtnStandup" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="448,502" group="n71_sul8"/>
+    <text id="n24_mad8" name="Lan_Text_Stand" xy="448,502" pivot="0.5,0.5" size="170,64" group="n71_sul8" font="FontCu" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="站起"/>
+    <group id="n71_sul8" name="GroupStand" xy="448,502" size="170,64" group="n104_inau" advanced="true"/>
+    <component id="n103_hrhq" name="ComReportPlayer" src="hrhq6q" fileName="Component/ComReportPlayer.xml" xy="189,312" group="n104_inau" hideByEditor="true" visible="false"/>
+    <group id="n104_inau" name="n104" xy="120,45" size="826,543" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

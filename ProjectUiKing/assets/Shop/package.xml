@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="3pqfkhlu" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="j0t70" name="Shop.xml" path="/" exported="true"/>
+    <component id="r6kna" name="ComChip.xml" path="/Component/" exported="true"/>
+    <component id="r6knb" name="ComDiamond.xml" path="/Component/" exported="true"/>
+    <component id="r6knd" name="ComConsume.xml" path="/Component/" exported="true"/>
+    <image id="bscit" name="0.png" path="/Image/Font1/"/>
+    <image id="bsciu" name="1.png" path="/Image/Font1/"/>
+    <image id="bsciv" name="2.png" path="/Image/Font1/"/>
+    <image id="bsciw" name="3.png" path="/Image/Font1/"/>
+    <image id="bscix" name="4.png" path="/Image/Font1/"/>
+    <image id="bsciy" name="5.png" path="/Image/Font1/"/>
+    <image id="bsciz" name="6.png" path="/Image/Font1/"/>
+    <image id="bsci10" name="7.png" path="/Image/Font1/"/>
+    <image id="bsci11" name="8.png" path="/Image/Font1/"/>
+    <image id="bsci12" name="9.png" path="/Image/Font1/"/>
+    <font id="bsci13" name="Font1.fnt" path="/Image/Font1/" exported="true"/>
+    <font id="bsci14" name="Font2.fnt" path="/Image/Font2/" exported="true"/>
+    <image id="bsci15" name="bt_2.png" path="/Image/Font2/"/>
+    <image id="bsci16" name="bt_3.png" path="/Image/Font2/"/>
+    <image id="bsci17" name="bt_4.png" path="/Image/Font2/"/>
+    <image id="bsci18" name="bt_5.png" path="/Image/Font2/"/>
+    <image id="bsci19" name="bt_6.png" path="/Image/Font2/"/>
+    <image id="bsci1a" name="bt_7.png" path="/Image/Font2/"/>
+    <image id="bsci1b" name="bt_8.png" path="/Image/Font2/"/>
+    <image id="bsci1c" name="bt_9.png" path="/Image/Font2/"/>
+    <image id="bsci1d" name="bt_0.png" path="/Image/Font2/"/>
+    <image id="bsci1e" name="bt_1.png" path="/Image/Font2/"/>
+    <image id="bsci1f" name="bt_02.png" path="/Image/"/>
+    <image id="bsci1g" name="bt_03.png" path="/Image/"/>
+    <component id="bsci1h" name="BtnTab.xml" path="/Component/"/>
+    <image id="bsci1o" name="hwdb.png" path="/Image/"/>
+    <component id="bsci1q" name="BtnBuy.xml" path="/Component/"/>
+    <image id="bsci1r" name="IconMonkey.png" path="/Image/"/>
+    <image id="bsci1s" name="IconDiamond.png" path="/Image/"/>
+    <image id="asp31t" name="vip_zi.png" path="/Image/"/>
+    <image id="asp31u" name="vip_zi_l.png" path="/Image/"/>
+    <image id="asp31y" name="d.png" path="/Image/"/>
+    <image id="asp323" name="bg_d.png" path="/Image/"/>
+    <component id="i4nv25" name="ComVip.xml" path="/Component/" exported="true"/>
+    <image id="i4nv26" name="t.png" path="/Image/"/>
+    <component id="ti7o27" name="BtnVIPLevelUp.xml" path="/Component/"/>
+    <image id="ti7o29" name="Bg.png" path="/Image/"/>
+    <image id="mtk22a" name="Bg1.png" path="/Image/" atlas="2"/>
+    <component id="mtk22c" name="ComChipItems.xml" path="/Component/"/>
+    <component id="mtk22e" name="ComDiamondItems.xml" path="/Component/"/>
+    <component id="lil32f" name="CoVIPShop.xml" path="/Component/"/>
+    <image id="lil32g" name="VIPBg.png" path="/Image/"/>
+    <image id="tsz32r" name="Bg2.png" path="/Image/" atlas="2"/>
+    <image id="tsz32s" name="bg_hj.png" path="/Image/" scale="9grid" scale9grid="46,17,5,15"/>
+    <image id="tsz32u" name="bt.png" path="/Image/" scale="9grid" scale9grid="50,26,38,34"/>
+    <image id="tsz32w" name="d_g.png" path="/Image/"/>
+    <component id="hrhq2x" name="ComLogo.xml" path="/Component/"/>
+    <image id="hrhq2y" name="图层2.png" path="/Image/New/"/>
+    <image id="hrhq2z" name="图层15.png" path="/Image/New/" scale="9grid" scale9grid="23,23,2,1"/>
+    <component id="hrhq30" name="BtnAddDiamond.xml" path="/Component/New/"/>
+    <component id="hrhq31" name="BtnAddChip.xml" path="/Component/New/"/>
+    <component id="hrhq32" name="Component1.xml" path="/Component/New/"/>
+    <component id="hrhq34" name="ComTabChipDark.xml" path="/Component/New/"/>
+    <component id="hrhq35" name="ComTabDiamondDark.xml" path="/Component/New/"/>
+    <component id="hrhq36" name="ComTabConsumeDark.xml" path="/Component/New/"/>
+    <component id="hrhq37" name="ComTabVipDark.xml" path="/Component/New/"/>
+    <image id="hrhq38" name="图层3.png" path="/Image/"/>
+    <component id="hrhq39" name="TabLight.xml" path="/Component/New/"/>
+    <image id="hrhq3a" name="23.png" path="/Image/"/>
+    <image id="hrhq3b" name="图层21.png" path="/Image/" scale="9grid" scale9grid="13,15,55,58"/>
+    <component id="hrhq3c" name="ComItemBg.xml" path="/Component/New/"/>
+    <image id="hrhq3d" name="图层20.png" path="/Image/" atlas="2" duplicatePadding="true"/>
+    <image id="hrhq3e" name="图层22.png" path="/Image/" scale="9grid" scale9grid="86,26,8,1" gridTile="28"/>
+    <image id="hrhq3f" name="图层18.png" path="/Image/"/>
+    <component id="hrhq3g" name="BtnAddress.xml" path="/Component/New/"/>
+    <component id="n8cl3h" name="BtnBuyConsume.xml" path="/Component/"/>
+    <image id="n8cl3j" name="FX_Flare004.png" path="/Image/" exported="true"/>
+    <image id="n8cl3k" name="Eff_Star_A_00161.png" path="/Image/"/>
+    <image id="n8cl3m" name="FX_Star_L_001.png" path="/Image/"/>
+    <component id="j3hl3n" name="ComTabPoint.xml" path="/Component/"/>
+    <component id="j3hl3o" name="ComPointAndStar.xml" path="/Component/"/>
+    <image id="j3hl3p" name="图层28.png" path="/Image/"/>
+    <component id="j3hl3q" name="ItemGoods.xml" path="/Component/"/>
+    <component id="j3hl3r" name="BtnBuy2.xml" path="/Component/"/>
+    <image id="diz53s" name="Beats.png" path="/Image/GoodsIcon/" exported="true"/>
+    <image id="diz53t" name="iPadMini4.png" path="/Image/GoodsIcon/" exported="true"/>
+    <image id="diz53u" name="iPhoneX.png" path="/Image/GoodsIcon/" exported="true"/>
+    <image id="diz53v" name="PhoneCard.png" path="/Image/GoodsIcon/" exported="true" atlas="2"/>
+    <image id="diz53w" name="P20Pro.png" path="/Image/GoodsIcon/" exported="true" atlas="2"/>
+    <image id="diz53x" name="PowerBank.png" path="/Image/GoodsIcon/" exported="true" atlas="2"/>
+    <component id="j1yr3z" name="BtnAddChip1.xml" path="/Component/New/"/>
+    <component id="j1yr40" name="BtnAddDiamond1.xml" path="/Component/New/"/>
+    <component id="j1yr42" name="Component3.xml" path="/Component/New/"/>
+  </resources>
+  <publish name="Shop" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Shop"/>
+</packageDescription>

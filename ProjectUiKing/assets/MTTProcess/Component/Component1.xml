@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="526,118">
+  <displayList>
+    <loader id="n2_n1df" name="Lan_Image_恭喜进入前" xy="7,28" size="463,69" align="center" vAlign="middle" fill="scaleFree"/>
+    <image id="n1_n7pp" name="n1" src="n7pp2" fileName="Image/50%.png" xy="320,7"/>
+  </displayList>
+</component>

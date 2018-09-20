@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 4156599447
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: desktopmenu.ab
+      Dependencies: {}

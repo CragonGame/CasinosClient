@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="138,45" extention="Button">
+  <controller name="checked" pages="0,no,1,yes" selected="0"/>
+  <displayList>
+    <image id="n3_lfqc" name="n3" src="lfqc5l" xy="0,0"/>
+    <text id="n1_lc2k" name="title" xy="64,7" pivot="0.5,0.5" size="10,31" fontSize="24" color="#9696b8" align="center" vAlign="middle" singleLine="true" text="">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.95"/>
+</component>

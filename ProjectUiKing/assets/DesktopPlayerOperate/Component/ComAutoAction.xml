@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <image id="n0_dcgb" name="n0" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,509" size="1066,131" alpha="0.98" color="#070c32">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </image>
+    <component id="n1_dcgb" name="BtnBack" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="407,537" size="252,78">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </component>
+    <text id="n2_dcgb" name="Lan_Text_ReturnGame" xy="425,537" pivot="0.5,0.5" size="215,78" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" bold="true" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="我回来了">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </text>
+  </displayList>
+</component>

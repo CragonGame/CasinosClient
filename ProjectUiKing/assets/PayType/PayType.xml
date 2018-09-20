@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerPay" pages="0,IsIOS,1,NotIOS" selected="0"/>
+  <displayList>
+    <component id="n0_gcfd" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" pkg="nhvxw9ov" xy="0,0" aspect="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n24_lp42" name="BtnWeiChat" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="327,297" group="n28_lp42"/>
+    <loader id="n25_lp42" name="Lan_Image_WeChatPay" xy="332,301" pivot="0.5,0.5" size="156,47" group="n28_lp42" touchable="false" url="ui://6kz8w16qpcdr48" align="center" vAlign="middle"/>
+    <component id="n26_lp42" name="BtnAliPay" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="569,297" group="n28_lp42"/>
+    <loader id="n27_lp42" name="Lan_Image_AliPay" xy="574,301" pivot="0.5,0.5" size="156,47" group="n28_lp42" touchable="false" url="ui://6kz8w16qpcdr45" align="center" vAlign="middle"/>
+    <group id="n28_lp42" name="GroupNotIOS" xy="327,297" size="412,64" group="n34_m4t7" advanced="true">
+      <gearDisplay controller="ControllerPay" pages="1"/>
+    </group>
+    <component id="n22_lp42" name="BtnWeiChat" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="448,297" group="n14_lfqc"/>
+    <loader id="n21_lp42" name="Lan_Image_WeChatPay" xy="454,301" pivot="0.5,0.5" size="156,47" group="n14_lfqc" touchable="false" url="ui://6kz8w16qpcdr48" align="center" vAlign="middle">
+      <relation target="n22_lp42" sidePair="center-center,middle-middle"/>
+    </loader>
+    <component id="n8_lfqc" name="BtnAliPay" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="629,297" group="n14_lfqc"/>
+    <loader id="n23_lp42" name="Lan_Image_AliPay" xy="635,301" pivot="0.5,0.5" size="156,47" group="n14_lfqc" touchable="false" url="ui://6kz8w16qpcdr45" align="center" vAlign="middle">
+      <relation target="n8_lfqc" sidePair="center-center,middle-middle"/>
+    </loader>
+    <component id="n11_lfqc" name="BtnNeiGou" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="267,297" group="n14_lfqc"/>
+    <loader id="n20_lp42" name="Lan_Image_IAP" xy="271,301" pivot="0.5,0.5" size="156,47" group="n14_lfqc" touchable="false" url="ui://6kz8w16qpcdr46" align="center" vAlign="middle">
+      <relation target="n11_lfqc" sidePair="center-center,middle-middle"/>
+    </loader>
+    <group id="n14_lfqc" name="GroupIOS" xy="267,297" size="532,64" group="n34_m4t7" advanced="true">
+      <gearDisplay controller="ControllerPay" pages="0"/>
+    </group>
+    <text id="n33_m4t7" name="TextTitle" xy="450,156" pivot="0.5,0.5" size="165,50" group="n34_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="支付方式"/>
+    <group id="n34_m4t7" name="n34" xy="267,155" size="532,206" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

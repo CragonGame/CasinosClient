@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 619503170
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: water_ani_moveprefab.ab
+      Dependencies: {}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,70">
+  <displayList>
+    <image id="n0_tbey" name="n0" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="0,0" size="100,70" color="#173270"/>
+    <image id="n1_tbey" name="n1" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,30" size="102,1" color="#2e5693"/>
+    <text id="n2_tbey" name="TextDay" xy="1,2" pivot="0.5,0.5" size="97,27" fontSize="20" color="#4e89da" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n3_tbey" name="TextTime" xy="1,39" pivot="0.5,0.5" size="97,27" fontSize="20" color="#4e89da" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

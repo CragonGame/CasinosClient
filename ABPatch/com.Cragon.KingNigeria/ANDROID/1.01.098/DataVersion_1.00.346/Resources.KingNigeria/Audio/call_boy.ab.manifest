@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 462019305
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d4e65fbdf8ac51f7e23f439a180707c4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/call_boy.wav
+Dependencies: []

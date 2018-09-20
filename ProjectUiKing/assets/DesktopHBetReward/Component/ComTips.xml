@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="623,87" overflow="scroll">
+  <displayList>
+    <text id="n19" name="Lan_Text_BetRewardTips" xy="0,0" size="623,75" fontSize="20" color="#ffffff" autoSize="height" text="玩家在闲家位下注量会进行积累，积累到一定额度可以领取对应宝箱以及之前宝箱的累加奖励。累计额度及领取奖励将在每天8点重置，未领奖励时，请玩家注意及时领取。"/>
+  </displayList>
+</component>

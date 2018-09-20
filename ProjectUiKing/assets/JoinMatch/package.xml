@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="upcr5kwt" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="sd6w0" name="JoinMatch.xml" path="/" exported="true"/>
+    <component id="sd6w1" name="BtnNumber.xml" path="/Component/"/>
+    <component id="sd6w2" name="BtnDelete.xml" path="/Component/"/>
+    <image id="sd6w3" name="退出.png" path="/Component/"/>
+    <component id="sd6w4" name="ComBgAndClose.xml" path="/Component/"/>
+  </resources>
+  <publish name="JoinMatch" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\JoinMatch"/>
+</packageDescription>

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3839155256
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0c9cbced528088eadc2dcf4a48da5b40
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c73412a662fd4e4f36af34cbdf078b85
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Cards/1_10.png
+Dependencies: []

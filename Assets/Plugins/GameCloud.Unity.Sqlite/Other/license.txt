@@ -1,0 +1,5 @@
+We were using SQLite C# code from http://code.google.com/p/csharp-sqlite/
+
+SQLite C# code is under MIT License. http://www.opensource.org/licenses/mit-license.php
+
+SQLite C# project has Content license as well. http://creativecommons.org/licenses/by/3.0/

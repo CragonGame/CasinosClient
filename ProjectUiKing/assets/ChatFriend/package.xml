@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="vclln4to" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="dcob0" name="ChatFriend.xml" path="/" exported="true"/>
+    <image id="dcob1" name="TargetHereHelpSign.png" path="/Image/"/>
+    <component id="dcob2" name="ComChatTarget.xml" path="/Component/" exported="true"/>
+    <component id="dcob3" name="BtnChooseChatTarget.xml" path="/Component/"/>
+    <component id="dcob5" name="BtnChatTargetProfile.xml" path="/Component/"/>
+    <component id="dcob7" name="BtnPlayWithChatTarget.xml" path="/Component/"/>
+    <component id="ef0jl" name="ComInput.xml" path="/Component/"/>
+    <image id="qeucy" name="ItemBg.png" path="/Image/"/>
+    <image id="qeucz" name="ItemBgChoose.png" path="/Image/"/>
+    <component id="vzxh10" name="Btnsend.xml" path="/Component/"/>
+  </resources>
+  <publish name="ChatFriend" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\ChatFriend"/>
+</packageDescription>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="168,490" extention="Slider">
+  <displayList>
+    <image id="n5_u5ui" name="n5" src="h0xsw" xy="0,0"/>
+    <text id="n8_u5ui" name="TextTopRaiseChip" xy="16,5" pivot="0.5,0.5" size="136,44" font="ui://m0t9o5fxu5ui1k" fontSize="12" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n9_u5ui" name="TextBottomRaiseChip" xy="30,444" size="108,34" font="ui://m0t9o5fxu5ui1k" fontSize="12" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n6_u5ui" name="n6" src="u5ui15" xy="61,84" size="46,334"/>
+    <image id="n7_u5ui" name="bar_v" src="u5ui16" xy="61,84" size="46,334"/>
+    <component id="n4_u5ui" name="grip" src="u5ui11" xy="15,1">
+      <relation target="n7_u5ui" sidePair="top-top"/>
+    </component>
+    <image id="n10_qljn" name="n10" src="qljn1w" xy="326,39" pivot="0.5,0.5" hideByEditor="true" visible="false"/>
+    <image id="n11_qljn" name="n11" src="qljn1x" xy="324,-57" pivot="0.5,0.5" hideByEditor="true" visible="false"/>
+  </displayList>
+  <Slider titleType="valueAndmax" reverse="true"/>
+</component>

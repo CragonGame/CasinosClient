@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="163,36" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <text id="n5_nhmu" name="title" xy="40,9" size="105,26" font="FontXi" fontSize="20" color="#4c7be5" vAlign="middle" leading="0" text="购买更多"/>
+    <image id="n6_pucj" name="n6" src="pucj3" xy="0,0" color="#66ccff"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.95"/>
+</component>

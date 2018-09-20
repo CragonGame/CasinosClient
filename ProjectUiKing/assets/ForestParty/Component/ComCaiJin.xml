@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="208,155">
+  <displayList>
+    <image id="n0_g9bo" name="n0" src="ieudgm" xy="0,0"/>
+    <image id="n6_q6q3" name="n6" src="q6q3lb" xy="11,28"/>
+    <image id="n5_q6q3" name="n5" src="q6q3la" xy="13,0" size="182,29"/>
+    <text id="n1_g9bo" name="TextCaiJin" xy="9,37" size="190,80" font="ui://si97dldqieudgn" fontSize="40" color="#ffff66" align="center" vAlign="middle" autoSize="none" bold="true" text="00000"/>
+    <image id="n4_q6q3" name="n4" src="q6q3l9" xy="79,2"/>
+  </displayList>
+</component>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" initName="BtnClose" adaptationTest="FitSize">
+  <controller name="ControllerShop" pages="0,BuyChip,1,GetMoney" selected="1"/>
+  <displayList>
+    <image id="n200_hrhq" name="Bg" src="teyh8q" fileName="Image/bg.png" pkg="gbdohaiv" xy="0,0" size="1066,640"/>
+    <image id="n208_hrhq" name="n208" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0.4" color="#000033">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n9_r6kn" name="Lan_Text_Trouble" xy="-21,696" size="213,131" hideByEditor="true" fontSize="18" color="#677a88" vAlign="middle" autoSize="shrink" bold="true" shadowColor="#000000" shadowOffset="1,1" text="充值过程有问题请联系微信：&#xA;lin3621110&#xA;QQ：3621110">
+      <relation target="" sidePair="width-width%"/>
+    </text>
+    <text id="n89_i8ex" name="Lan_Text_QQ" xy="-33,754" size="190,23" hideByEditor="true" fontSize="16" color="#677a88" vAlign="middle" autoSize="shrink" bold="true" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="玩家交流群：5328888"/>
+    <list id="n190_mtk2" name="ListChip" xy="205,108" size="797,484" layout="flow_hz" overflow="scroll" lineGap="5" colGap="16" defaultItem="ui://npdzqphej1yr1">
+      <gearDisplay controller="ControllerShop" pages="0"/>
+      <relation target="" sidePair="bottom-bottom,left-left%"/>
+    </list>
+    <list id="n194_mtk2" name="ListDiamond" xy="205,108" size="797,531" hideByEditor="true" visible="false" layout="flow_hz" overflow="scroll" lineGap="5" colGap="16" defaultItem="ui://npdzqphej1yri">
+      <gearDisplay controller="ControllerShop" pages="1"/>
+      <relation target="" sidePair="bottom-bottom,left-left%"/>
+    </list>
+    <component id="n201_hrhq" name="n201" src="j1yrr" fileName="Component/ComLogo.xml" xy="1,-32"/>
+    <component id="n225_j1yr" name="ComTabAll" src="j1yr12" fileName="Component/New/Component2.xml" xy="0,137" group="n214_ewf7">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n226_j1yr" name="BtnTabChip" src="j1yr11" fileName="Component/BtnTab.xml" xy="2,139" group="n214_ewf7">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n227_j1yr" name="BtnTabGetMoney" src="j1yr11" fileName="Component/BtnTab.xml" xy="2,227" group="n214_ewf7">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <group id="n214_ewf7" name="tab" xy="0,137" size="182,503" advanced="true"/>
+    <component id="n119_excb" name="BtnReturn" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="992,21" group="n219_vtnc"/>
+    <component id="n230_tjym" name="BtnAddChip" src="j1yr1b" fileName="Component/New/BtnAddChip1.xml" xy="787,29" group="n220_vtnc"/>
+    <component id="n231_tjym" name="BtnAddDiamond" src="j1yr1a" fileName="Component/New/BtnAddDiamond1.xml" xy="582,29" group="n220_vtnc"/>
+    <group id="n220_vtnc" name="n220" xy="582,29" size="403,45" group="n219_vtnc" advanced="true">
+      <gearDisplay controller="ControllerShop" pages="0,1,2,3"/>
+    </group>
+    <group id="n219_vtnc" name="n219" xy="582,21" size="470,60" advanced="true">
+      <relation target="" sidePair="right-right"/>
+    </group>
+    <component id="n241_tjym" name="Lan_Btn_GetCash" src="s4taku" fileName="Component/Btn/BtnCancel.xml" pkg="nhvxw9ov" xy="544,541" group="n242_tjym">
+      <Button title="提现"/>
+    </component>
+    <text id="n232_tjym" name="GetCashTips" xy="278,141" pivot="1,0.5" size="156,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="AccountNumber:"/>
+    <component id="n235_tjym" name="ComPutAccNum" src="tjym1d" fileName="Component/ComOperate.xml" xy="446,116" pivot="0.5,0.5" group="n242_tjym"/>
+    <text id="n243_tbmo" name="GetCashTips" xy="340,227" pivot="1,0.5" size="94,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="CbnCode:"/>
+    <component id="n244_tbmo" name="ComPutCbnCode" src="tjym1d" fileName="Component/ComOperate.xml" xy="445,204" pivot="0.5,0.5" group="n242_tjym"/>
+    <text id="n245_tbmo" name="GetCashTips" xy="353,308" pivot="1,0.5" size="81,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="Amount:"/>
+    <component id="n246_tbmo" name="ComPutAmount" src="tjym1d" fileName="Component/ComOperate.xml" xy="444,285" pivot="0.5,0.5" group="n242_tjym"/>
+    <text id="n247_tbmo" name="GetCashTips" xy="244,473" pivot="1,0.5" size="190,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="ReceiverOtherName:"/>
+    <component id="n248_tbmo" name="ComPutOtherName" src="tjym1d" fileName="Component/ComOperate.xml" xy="445,450" pivot="0.5,0.5" group="n242_tjym"/>
+    <text id="n249_tbmo" name="GetCashTips" xy="256,391" pivot="1,0.5" size="178,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="ReceiverLastName:"/>
+    <component id="n250_tbmo" name="ComPutLastName" src="tjym1d" fileName="Component/ComOperate.xml" xy="445,366" pivot="0.5,0.5" group="n242_tjym"/>
+    <text id="n256_tbmo" name="n256" xy="959,142" pivot="0.5,0.5" size="17,39" group="n242_tjym" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="*"/>
+    <text id="n257_tbmo" name="n257" xy="959,228" pivot="0.5,0.5" size="17,39" group="n242_tjym" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="*"/>
+    <text id="n258_tbmo" name="n258" xy="960,311" pivot="0.5,0.5" size="17,39" group="n242_tjym" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="*"/>
+    <group id="n242_tjym" name="n242" xy="244,116" size="733,491" advanced="true">
+      <gearDisplay controller="ControllerShop" pages="1"/>
+    </group>
+  </displayList>
+  <transition name="TransitionShow">
+    <item time="0" type="XY" target="n214_ewf7" tween="true" startValue="-182,-" endValue="0,137" duration="6" ease="Linear"/>
+    <item time="0" type="XY" target="n201_hrhq" tween="true" startValue="-,-137" endValue="1,-32" duration="6" ease="Linear"/>
+    <item time="0" type="XY" target="n190_mtk2" tween="true" startValue="1066,-" endValue="205,108" duration="6"/>
+  </transition>
+</component>

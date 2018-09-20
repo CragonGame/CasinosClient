@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="657,68">
+  <displayList>
+    <image id="n6_h1h1" name="n6" src="h1h169" xy="0,0"/>
+    <text id="n1_lc2k" name="Time" xy="6,21" pivot="0.5,0.5" size="196,30" fontSize="23" color="#cbd8e1" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="00000000"/>
+    <text id="n2_lc2k" name="NickName" xy="222,21" pivot="0.5,0.5" size="210,30" fontSize="23" color="#cbd8e1" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000000000"/>
+    <text id="n3_lc2k" name="Golds" xy="465,21" pivot="0.5,0.5" size="176,30" fontSize="23" color="#cbd8e1" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="0000"/>
+  </displayList>
+</component>

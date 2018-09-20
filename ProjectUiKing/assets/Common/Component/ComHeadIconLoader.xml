@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,100" mask="n1_nmmo">
+  <displayList>
+    <image id="n2_b65z" name="n2" src="d45974" xy="0,0" size="100,100">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <loader id="n0_nmmo" name="LoaderIcon" xy="0,0" size="100,100" align="center" vAlign="middle" fill="scaleFree">
+      <relation target="" sidePair="width-width,height-height"/>
+    </loader>
+    <image id="n1_nmmo" name="n1" src="wb2ek8" xy="0,0" size="100,100" hideByEditor="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+</component>

@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 4064818391
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: lockchat.ab
+      Dependencies: {}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="npdzqphe" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="j1yr0" name="Purse.xml" path="/" exported="true"/>
+    <component id="j1yr1" name="ComChip.xml" path="/Component/" exported="true"/>
+    <component id="j1yr2" name="ComItemBg.xml" path="/Component/New/"/>
+    <image id="j1yr3" name="图层21.png" path="/Image/" scale="9grid" scale9grid="13,15,55,58"/>
+    <image id="j1yr4" name="图层20.png" path="/Image/" atlas="2" duplicatePadding="true"/>
+    <component id="j1yr5" name="BtnBuy.xml" path="/Component/"/>
+    <font id="j1yr6" name="Font2.fnt" path="/Image/Font2/" exported="true"/>
+    <image id="j1yr7" name="bt_0.png" path="/Image/Font2/"/>
+    <image id="j1yr8" name="bt_1.png" path="/Image/Font2/"/>
+    <image id="j1yr9" name="bt_2.png" path="/Image/Font2/"/>
+    <image id="j1yra" name="bt_3.png" path="/Image/Font2/"/>
+    <image id="j1yrb" name="bt_4.png" path="/Image/Font2/"/>
+    <image id="j1yrc" name="bt_5.png" path="/Image/Font2/"/>
+    <image id="j1yrd" name="bt_6.png" path="/Image/Font2/"/>
+    <image id="j1yre" name="bt_7.png" path="/Image/Font2/"/>
+    <image id="j1yrf" name="bt_8.png" path="/Image/Font2/"/>
+    <image id="j1yrg" name="bt_9.png" path="/Image/Font2/"/>
+    <image id="j1yrh" name="IconMonkey.png" path="/Image/"/>
+    <image id="j1yrp" name="VIPBg.png" path="/Image/"/>
+    <image id="j1yrq" name="图层22.png" path="/Image/" scale="9grid" scale9grid="86,26,8,1" gridTile="28"/>
+    <component id="j1yrr" name="ComLogo.xml" path="/Component/"/>
+    <image id="j1yrt" name="FX_Flare004.png" path="/Image/" exported="true"/>
+    <image id="j1yrv" name="bt.png" path="/Image/" scale="9grid"/>
+    <image id="j1yrx" name="图层3.png" path="/Image/"/>
+    <image id="j1yry" name="图层18.png" path="/Image/"/>
+    <component id="j1yrz" name="TabLight.xml" path="/Component/New/"/>
+    <image id="j1yr10" name="23.png" path="/Image/"/>
+    <component id="j1yr11" name="BtnTab.xml" path="/Component/"/>
+    <component id="j1yr12" name="Component2.xml" path="/Component/New/"/>
+    <image id="j1yr15" name="图层28.png" path="/Image/"/>
+    <image id="j1yr18" name="图层15.png" path="/Image/" scale="9grid" scale9grid="23,23,2,1"/>
+    <component id="j1yr1a" name="BtnAddDiamond1.xml" path="/Component/New/"/>
+    <component id="j1yr1b" name="BtnAddChip1.xml" path="/Component/New/"/>
+    <image id="j1yr1c" name="Logo.png" path="/Image/"/>
+    <component id="tjym1d" name="ComOperate.xml" path="/Component/"/>
+  </resources>
+  <publish name="Purse" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Purse"/>
+</packageDescription>

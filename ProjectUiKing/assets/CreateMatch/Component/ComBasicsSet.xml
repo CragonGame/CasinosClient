@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" opaque="false" initName="ComBasicsSet">
+  <displayList>
+    <component id="n0_nhy4" name="n0" src="nhy41" xy="273,50" group="n12_nhy4"/>
+    <component id="n1_nhy4" name="n1" src="nhy41" xy="272,231" group="n12_nhy4"/>
+    <component id="n2_nhy4" name="n2" src="nhy41" xy="272,138" group="n12_nhy4"/>
+    <text id="n3_nhy4" name="TextInputMatchName" xy="282,57" size="500,50" group="n12_nhy4" input="true" fontSize="25" color="#9fb2e7" vAlign="middle" leading="0" autoSize="none" text="一个比赛"/>
+    <text id="n4_nhy4" name="TextInputMatchExplain" xy="282,145" size="500,50" group="n12_nhy4" input="true" prompt="赛事说明(可不填)" fontSize="25" color="#6a718b" vAlign="middle" leading="0" autoSize="none" text="赛事说明(可不填)"/>
+    <text id="n5_nhy4" name="TextInputMatchTime" xy="282,239" size="184,50" group="n12_nhy4" fontSize="25" color="#9fb2e7" vAlign="middle" leading="0" autoSize="none" text="开赛时间"/>
+    <component id="n6_nhy4" name="BtnSetMatchTime" src="nhy4l" xy="559,239" group="n12_nhy4"/>
+    <component id="n7_nhy4" name="ComBlindTable" src="nhy4n" xy="272,327" group="n12_nhy4"/>
+    <component id="n8_nhy4" name="ComMatchSpeedType" src="nhy4c" xy="424,323" group="n12_nhy4"/>
+    <component id="n9_nhy4" name="SliderMaxApplyNumber" src="nhy47" xy="272,459" size="522,32" group="n12_nhy4">
+      <Slider value="50" max="100"/>
+    </component>
+    <text id="n10_nhy4" name="n10" xy="272,397" size="155,32" group="n12_nhy4" fontSize="25" color="#4b5f92" vAlign="middle" leading="0" text="最高参赛人数"/>
+    <text id="n11_nhy4" name="TextMaxApplyNum" xy="671,397" pivot="1,0" size="122,32" group="n12_nhy4" input="true" fontSize="25" color="#ffffff" align="right" vAlign="middle" leading="0" autoSize="none" text="10"/>
+    <group id="n12_nhy4" name="n12" xy="272,50" size="522,441" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

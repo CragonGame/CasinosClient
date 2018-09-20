@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n11_excb" name="ComBgAndClose" src="lh6bjx" fileName="Component/ComBgAndCloseSmall.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <text id="n3_et5o" name="TextBet" xy="284,226" pivot="0.5,0.5" size="494,39" group="n22_m4t7" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text=""/>
+    <text id="n4_et5o" name="TextStake" xy="284,265" pivot="0.5,0.5" size="494,39" group="n22_m4t7" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text=""/>
+    <text id="n5_et5o" name="Ante" xy="284,305" pivot="0.5,0.5" size="494,39" group="n22_m4t7" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="选择前注"/>
+    <component id="n13_g8hz" name="Lan_Btn_Create" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="450,417" group="n22_m4t7"/>
+    <text id="n17_m4t7" name="TextTitle" xy="370,157" pivot="0.5,0.5" size="325,50" group="n22_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="正在创建私人牌桌"/>
+    <image id="n20_m4t7" name="n20" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="332,149" pivot="0.5,0.5" group="n22_m4t7"/>
+    <image id="n21_m4t7" name="n21" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="695,149" pivot="0.5,0.5" group="n22_m4t7" skew="0,180"/>
+    <list id="n23_pm2d" name="ListAnte" xy="284,345" size="494,47" group="n22_m4t7" layout="row" overflow="hidden" colGap="63" defaultItem="ui://ctthmchrpm2d1" autoItemSize="false" align="center" vAlign="middle"/>
+    <group id="n22_m4t7" name="n22" xy="284,149" size="494,332" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

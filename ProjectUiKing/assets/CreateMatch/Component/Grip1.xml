@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="78,40">
+  <displayList>
+    <image id="n0_nhy4" name="n0" src="nhy44" xy="0,0" pivot="0.5,0.5" size="78,20">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n1_nhy4" name="n1" src="nhy44" xy="0,20" pivot="0.5,0.5" size="78,20" skew="180,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+</component>

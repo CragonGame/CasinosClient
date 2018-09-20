@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="742,96">
+  <displayList>
+    <component id="n12_lh6b" name="n12" src="lh6bjw" pkg="nhvxw9ov" xy="0,0"/>
+    <component id="n1_l411" name="CoHeadIcon" src="d45975" pkg="nhvxw9ov" xy="31,19" size="57,57"/>
+    <text id="n2_l411" name="TextName" xy="91,19" size="260,29" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n3_l411" name="TextState" xy="91,47" size="260,29" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n5_rdp3" name="Lan_Btn_Choose" src="n8cl6" xy="548,14"/>
+  </displayList>
+</component>

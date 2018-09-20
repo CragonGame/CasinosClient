@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3791492912
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cf1978da4d66ea01b807cf0ac24f5c46
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/jettonmoney.wav
+Dependencies: []

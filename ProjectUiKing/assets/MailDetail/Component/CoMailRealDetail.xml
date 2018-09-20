@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="538,190" overflow="scroll">
+  <displayList>
+    <text id="n14_l3vq" name="TextMailTitle" xy="0,5" pivot="0.5,0.5" size="538,36" hideByEditor="true" visible="false" fontSize="28" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" autoSize="shrink" singleLine="true" text="水电费"/>
+    <text id="n0_ro89" name="MailContent" xy="7,6" size="523,28" fontSize="21" color="#ffffff" vAlign="middle" leading="0" ubb="true" autoSize="height" text="">
+      <relation target="" sidePair="width-width,height-height"/>
+    </text>
+    <image id="n12_asp3" name="n12" src="l1q0c9" fileName="Image/BgTransparent.png" pkg="nhvxw9ov" xy="3,35" size="528,33" group="n13_l3vq" hideByEditor="true" visible="false" alpha="0.6"/>
+    <text id="n3_ro89" name="MailTm" xy="7,34" size="521,27" group="n13_l3vq" fontSize="20" color="#ffffff" align="right" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <text id="n2_ro89" name="Lan_Text_Accessory" xy="7,66" size="46,25" group="n13_l3vq" visible="false" fontSize="18" color="#ffffff" leading="0" autoSize="none" text="附件:"/>
+    <list id="n1_ro89" name="AttachMentList" xy="58,66" size="471,125" group="n13_l3vq" visible="false" touchable="false" layout="pagination" overflow="scroll" scroll="horizontal" colGap="2" lineItemCount="8" defaultItem="ui://391qafluj0t7b">
+      <relation target="n2_ro89" sidePair="top-bottom"/>
+    </list>
+    <group id="n13_l3vq" name="n13" xy="3,34" size="528,157" advanced="true">
+      <relation target="n0_ro89" sidePair="top-bottom"/>
+    </group>
+  </displayList>
+</component>

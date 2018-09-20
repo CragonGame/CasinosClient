@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n6_py2j" name="ComShade" src="oypw6k" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0.01">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n3_w6r6" name="Content" src="w6r63" xy="-335,0" size="335,612" group="n7_y7iq"/>
+    <list id="n4_w6r6" name="Grid" xy="-335,6" size="332,593" group="n7_y7iq" selectionMode="none" lineGap="2" defaultItem="ui://5dkf0iepw6r64"/>
+    <group id="n7_y7iq" name="n7" xy="-335,0" size="335,612" advanced="true"/>
+    <component id="n8_jyu4" name="BtnClose" src="jyu45" xy="-70,125" touchable="false"/>
+  </displayList>
+  <transition name="TransitionCreate">
+    <item time="0" type="XY" target="n7_y7iq" tween="true" startValue="-335,0" endValue="0,0" duration="5"/>
+  </transition>
+</component>

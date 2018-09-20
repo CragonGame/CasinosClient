@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="68,88">
+  <displayList>
+    <component id="n2_smxa" name="ComHeadIcon" src="d45975" pkg="nhvxw9ov" xy="0,0" size="68,68"/>
+    <text id="n3_smxa" name="NickName" xy="0,68" size="68,20" fontSize="10" color="#e9e9e9" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="大肆发放"/>
+  </displayList>
+</component>

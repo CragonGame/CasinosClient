@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="720,331" initName="ComReward">
+  <displayList>
+    <text id="n0_gy6l" name="TextRewardTips" xy="122,0" pivot="0.5,0.5" size="472,27" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n1_gy6l" name="n1" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="0,34" size="720,297" color="#303563"/>
+    <text id="n2_gy6l" name="Lan_Text_Rank" xy="57,44" pivot="0.5,0.5" size="55,32" fontSize="25" color="#525f9c" align="center" vAlign="middle" leading="0" text="名次"/>
+    <text id="n3_gy6l" name="Lan_Text_Reward" xy="332,44" pivot="0.5,0.5" size="55,32" fontSize="25" color="#525f9c" align="center" vAlign="middle" leading="0" text="奖励"/>
+    <text id="n4_gy6l" name="Lan_Text_MasterPoint" xy="581,44" pivot="0.5,0.5" size="80,32" fontSize="25" color="#525f9c" align="center" vAlign="middle" leading="0" text="大师分"/>
+    <image id="n5_gy6l" name="n5" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,86" size="722,4" color="#242647"/>
+    <list id="n6_gy6l" name="ListReward" xy="-1,87" size="722,225" overflow="scroll" defaultItem="ui://6jtesqzwgy6l6" align="center"/>
+    <component id="n7_flnp" name="ComRewardExplain" src="flnpg" fileName="Component/ComRewardExplain.xml" xy="596,2"/>
+  </displayList>
+</component>

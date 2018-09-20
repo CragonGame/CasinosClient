@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 576749453
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 966fd2f41e482dc0c6048fe17588f725
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/Bag/Bag.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/Bag/Bag@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/Bag/Bag@atlas0.png
+Dependencies: []

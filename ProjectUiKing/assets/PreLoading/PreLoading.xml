@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n37_hrhq" name="ComBg" src="hrhq10" fileName="Component/ComBg.xml" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n33_l4gz" name="n33" src="l4gzj" fileName="Component/CoWaiting.xml" xy="986,519">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <component id="n34_ewc0" name="Progress" src="ewc0m" fileName="Component/Progress.xml" xy="5,598" size="1055,41" alpha="0.8">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+      <ProgressBar max="100"/>
+    </component>
+    <graph id="n40_rbum" name="HolderMote" xy="540,457" size="0,0">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </graph>
+    <component id="n38_jyil" name="MoteParent" src="jyil13" fileName="Component/ComMoteParent.xml" xy="540,459">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n39_jyil" name="DengLongParent" src="jyil13" fileName="Component/ComMoteParent.xml" xy="233,224">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <text id="n29_l4gz" name="Tips" xy="5,567" size="974,29" fontSize="22" color="#ffffff" autoSize="height" text="">
+      <relation target="" sidePair="bottom-bottom"/>
+    </text>
+    <image id="n41_h1fy" name="n41" src="l6zb16" fileName="Image/UISprite.png" xy="1,0" size="19,28" alpha="0.25" color="#000000">
+      <relation target="n32_l4gz" sidePair="leftext-left,rightext-right"/>
+    </image>
+    <text id="n32_l4gz" name="Version" xy="5,4" size="10,20" fontSize="14" color="#ffffff" vAlign="middle" text="">
+      <relation target="" sidePair="top-top,left-left"/>
+    </text>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1"/>
+</component>

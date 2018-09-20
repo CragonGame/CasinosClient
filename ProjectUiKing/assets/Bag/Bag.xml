@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerBag" pages="0,Item,1,Gift" selected="0"/>
+  <controller name="ControllerTips" pages="0,None,1,Gift,2,Consume" selected="0"/>
+  <displayList>
+    <component id="n0_n1r7" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n25_lh6b" name="n25" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="147,80" group="n27_nhsw"/>
+    <image id="n2_n1r7" name="n2" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="538,76" pivot="0.5,0.5" group="n27_nhsw" skew="0,180">
+      <relation target="n26_nhsw" sidePair="left-right"/>
+    </image>
+    <image id="n3_n1r7" name="n3" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="490,76" pivot="0.5,0.5" group="n27_nhsw">
+      <relation target="n26_nhsw" sidePair="right-left"/>
+    </image>
+    <list id="n5_excb" name="ListGiftNormal" xy="148,195" size="771,334" group="n27_nhsw" layout="flow_hz" overflow="scroll" lineGap="3" colGap="15" defaultItem="ui://nhvxw9oveajtj0"/>
+    <component id="n6_excb" name="Lan_Btn_BuyMore" src="excb2" fileName="Component/BtnBuyMore.xml" xy="154,526" group="n27_nhsw"/>
+    <text id="n16_i8gp" name="Lan_Text_NoGiftTips" xy="424,319" pivot="0.5,0.5" size="229,37" group="n27_nhsw" font="FontXi" fontSize="28" color="#eef2d1" align="center" vAlign="middle" leading="0" text="你暂时没有礼物呦">
+      <gearDisplay controller="ControllerTips" pages="1"/>
+    </text>
+    <text id="n17_i8gp" name="Lan_Text_NoConsumeTips" xy="424,319" pivot="0.5,0.5" size="229,37" group="n27_nhsw" font="FontXi" fontSize="28" color="#eef2d1" align="center" vAlign="middle" leading="0" text="你暂时没有道具呦">
+      <gearDisplay controller="ControllerTips" pages="2"/>
+    </text>
+    <component id="n8_iuyu" name="BtnItem" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="651,153" group="n14_wdvn" skew="0,180"/>
+    <image id="n11_wdvn" name="ItemLight" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="533,153" pivot="0.5,0.5" size="118,37" group="n14_wdvn" skew="0,180">
+      <gearDisplay controller="ControllerBag" pages="0"/>
+    </image>
+    <text id="n13_wdvn" name="Lan_Text_Consume" xy="536,157" pivot="0.5,0.5" size="109,28" group="n14_wdvn" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="礼物">
+      <gearDisplay controller="ControllerBag" pages="1"/>
+    </text>
+    <text id="n20_jx6n" name="Lan_Text_Consume" xy="536,157" pivot="0.5,0.5" size="109,28" group="n14_wdvn" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="礼物">
+      <gearDisplay controller="ControllerBag" pages="0"/>
+    </text>
+    <group id="n14_wdvn" name="GroupItem" xy="533,153" size="236,37" group="n27_nhsw" advanced="true"/>
+    <component id="n9_wdvn" name="BtnGift" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="416,153" group="n15_wdvn"/>
+    <image id="n10_wdvn" name="GiftLight" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="415,154" size="118,37" group="n15_wdvn">
+      <gearDisplay controller="ControllerBag" pages="1"/>
+    </image>
+    <text id="n12_wdvn" name="Lan_Text_Gift" xy="422,157" pivot="0.5,0.5" size="110,28" group="n15_wdvn" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="礼物">
+      <gearDisplay controller="ControllerBag" pages="1"/>
+    </text>
+    <text id="n19_jx6n" name="Lan_Text_Gift" xy="422,157" pivot="0.5,0.5" size="110,28" group="n15_wdvn" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="礼物">
+      <gearDisplay controller="ControllerBag" pages="0"/>
+    </text>
+    <group id="n15_wdvn" name="GroupGift" xy="415,153" size="119,38" group="n27_nhsw" advanced="true"/>
+    <text id="n26_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n27_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n27_nhsw" name="n27" xy="147,76" size="772,486" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

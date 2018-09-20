@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 3250663055
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a59419211569b94dd8cf04fd73eb02db
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/PreLoading/PreLoading@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/PreLoading/PreLoading@atlas0!a.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/PreLoading/PreLoading@atlas1.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/PreLoading/PreLoading.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/PreLoading/PreLoading@atlas0.png
+Dependencies: []

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1086679488
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 43a40747002e3e384792ce67d4c104ad
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/chipfly.wav
+Dependencies: []

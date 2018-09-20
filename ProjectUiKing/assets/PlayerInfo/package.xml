@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="iln2rhot" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="je850" name="PlayerInfo.xml" path="/" exported="true"/>
+    <component id="je85k" name="ComChips.xml" path="/Component/"/>
+    <component id="je85l" name="ComCoin.xml" path="/Component/"/>
+    <image id="v6rdx" name="Gift.png" path="/Image/"/>
+    <component id="hcqk10" name="BtnAddress.xml" path="/Component/"/>
+    <component id="hcqk11" name="CoGiftHome.xml" path="/Component/"/>
+    <component id="hcqk13" name="CoGift.xml" path="/Component/"/>
+    <component id="hcqk15" name="CoFriend.xml" path="/Component/"/>
+    <component id="s56l2l" name="BtnLogin.xml" path="/Component/"/>
+    <component id="s17d2m" name="ComBgAndClose.xml" path="/Component/"/>
+    <image id="nmmo2n" name="shuxin1.png" path="/Image/"/>
+    <component id="nmmo2o" name="BtnRefresh.xml" path="/Component/"/>
+  </resources>
+  <publish name="PlayerInfo" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\PlayerInfo"/>
+</packageDescription>

@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3035299376
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e90a2a682ff3d39631c579341f57a79e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/EditAddress/EditAddress@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/EditAddress/EditAddress.bytes
+Dependencies: []

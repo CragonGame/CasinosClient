@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ew0zx19i" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="scf70" name="BlindTable.xml" path="/" exported="true"/>
+    <component id="scf71" name="ItemBlind.xml" path="/Component/"/>
+  </resources>
+  <publish name="BlindTable" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\BlindTable"/>
+</packageDescription>

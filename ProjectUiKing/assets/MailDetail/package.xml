@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="391qaflu" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="j0t73" name="MailDetail.xml" path="/" exported="true"/>
+    <component id="j0t7b" name="CoMailAttachment.xml" path="/Component/" exported="true"/>
+    <component id="j0t7c" name="CoMailRealDetail.xml" path="/Component/" exported="true"/>
+    <component id="asp3e" name="CommonMsgBgAndClose.xml" path="/Component/"/>
+    <component id="asp3f" name="BtnClose.xml" path="/Component/"/>
+    <component id="n8clh" name="BtnConfirm.xml" path="/Component/"/>
+  </resources>
+  <publish name="MailDetail" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\MailDetail"/>
+</packageDescription>

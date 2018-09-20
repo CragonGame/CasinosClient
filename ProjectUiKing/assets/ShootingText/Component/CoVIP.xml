@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="93,52">
+  <displayList>
+    <loader id="n1" name="VIPLevel1" xy="40,20" size="21,30" visible="false" url="ui://rqfkr96loypwb" align="center" vAlign="middle" fill="scaleFree"/>
+    <loader id="n2" name="VIPLevel2" xy="61,20" size="21,30" visible="false" url="ui://rqfkr96loypwb" align="center" vAlign="middle" fill="scaleFree"/>
+    <loader id="n3" name="VIPLevel3" xy="50,20" size="21,30" visible="false" url="ui://rqfkr96loypwb" align="center" vAlign="middle" fill="scaleFree"/>
+  </displayList>
+</component>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="966,430" initName="ComOverView">
+  <displayList>
+    <image id="n3_nhy4" name="n3" src="wb2ek8" pkg="nhvxw9ov" xy="0,0" size="966,430" color="#343963"/>
+    <text id="n0_nhy4" name="TextMatchTime" xy="359,31" size="182,39" group="n2_nhy4" fontSize="30" color="#ffc811" vAlign="middle" leading="0" text="3.143.143.14"/>
+    <text id="n1_nhy4" name="n1" xy="541,31" size="65,39" group="n2_nhy4" fontSize="30" color="#ffc811" vAlign="middle" leading="0" text="开赛">
+      <relation target="n0_nhy4" sidePair="left-right"/>
+    </text>
+    <group id="n2_nhy4" name="n2" xy="359,31" size="248,39" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center"/>
+    </group>
+    <image id="n4_nhy4" name="n4" src="wb2ek8" pkg="nhvxw9ov" xy="0,78" size="966,352" color="#414b8d"/>
+    <image id="n5_nhy4" name="n5" src="wb2ek8" pkg="nhvxw9ov" xy="782,19" size="169,31" group="n9_nhy4" color="#1f2348"/>
+    <text id="n6_nhy4" name="n6" xy="782,21" size="71,27" group="n9_nhy4" fontSize="20" color="#96a8dc" vAlign="middle" leading="0" singleLine="true" text="邀请码:"/>
+    <text id="n8_nhy4" name="TextInvitationCode" xy="853,21" size="96,27" group="n9_nhy4" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="835654"/>
+    <group id="n9_nhy4" name="Invitation code" xy="782,19" size="169,31" collapsed="true"/>
+    <image id="n10_nhy4" name="n10" src="u51ojc" pkg="nhvxw9ov" xy="0,78" color="#414b8d"/>
+    <image id="n11_nhy4" name="n11" src="u51ojc" pkg="nhvxw9ov" xy="960,78" color="#414b8d"/>
+    <image id="n12_nhy4" name="n12" src="u51ojc" pkg="nhvxw9ov" xy="0,145" size="966,3" color="#2e3566"/>
+    <image id="n13_nhy4" name="n13" src="u51ojc" pkg="nhvxw9ov" xy="0,217" size="966,3" color="#2e3566"/>
+    <image id="n14_nhy4" name="n14" src="u51ojc" pkg="nhvxw9ov" xy="0,287" size="966,1" color="#2e3566"/>
+    <image id="n15_nhy4" name="n15" src="u51ojc" pkg="nhvxw9ov" xy="0,358" size="966,1" color="#2e3566"/>
+    <image id="n16_nhy4" name="n16" src="wb2ek7" pkg="nhvxw9ov" xy="85,93" pivot="0.5,0.5" size="26,31" color="#a1b4e9"/>
+    <image id="n17_nhy4" name="n17" src="hrhqkc" pkg="nhvxw9ov" xy="82,167" size="31,31" color="#a1b4e9"/>
+    <image id="n18_nhy4" name="n18" src="nhy4ko" pkg="nhvxw9ov" xy="82,237" size="31,31" color="#a1b4e9"/>
+    <image id="n19_nhy4" name="n19" src="nhy4kp" pkg="nhvxw9ov" xy="82,308" size="31,31" aspect="true"/>
+    <text id="n20_nhy4" name="n20" xy="130,96" size="55,27" fontSize="20" color="#96a8dc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="房主:"/>
+    <text id="n21_nhy4" name="n21" xy="130,169" size="97,27" fontSize="20" color="#96a8dc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="起始筹码:"/>
+    <text id="n22_nhy4" name="n22" xy="130,239" size="96,27" fontSize="20" color="#96a8dc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="起始盲注:"/>
+    <text id="n23_nhy4" name="n23" xy="130,310" size="57,27" fontSize="20" color="#96a8dc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="重购:"/>
+    <text id="n24_nhy4" name="TextOwner" xy="185,96" size="165,27" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="Fun">
+      <relation target="n20_nhy4" sidePair="left-right"/>
+    </text>
+    <text id="n25_nhy4" name="TextStartChip" xy="228,169" size="161,27" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="起始筹码:">
+      <relation target="n21_nhy4" sidePair="left-right"/>
+    </text>
+    <text id="n26_nhy4" name="TextStartBlind" xy="226,239" size="149,27" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="起始盲注:">
+      <relation target="n22_nhy4" sidePair="left-right"/>
+    </text>
+    <text id="n27_nhy4" name="TextRePurchase" xy="187,310" size="157,27" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="重购:">
+      <relation target="n23_nhy4" sidePair="left-right"/>
+    </text>
+    <image id="n28_nhy4" name="n28" src="nhy4kq" pkg="nhvxw9ov" xy="480,93" pivot="0.5,0.5" size="46,31" color="#a1b4e9"/>
+    <image id="n29_nhy4" name="n29" src="nhy4kr" pkg="nhvxw9ov" xy="488,165" size="31,34" color="#a1b4e9"/>
+    <image id="n30_nhy4" name="n30" src="gy6lki" pkg="nhvxw9ov" xy="489,235" size="31,34" color="#a1b4e9"/>
+    <image id="n31_nhy4" name="n31" src="nhy4ks" pkg="nhvxw9ov" xy="488,308" size="31,31" aspect="true"/>
+    <text id="n32_nhy4" name="n32" xy="542,96" size="72,27" fontSize="20" color="#96a8dc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="已报名:"/>
+    <text id="n33_nhy4" name="n33" xy="542,169" size="97,27" fontSize="20" color="#96a8dc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="涨盲时间:"/>
+    <text id="n34_nhy4" name="n34" xy="542,239" size="96,27" fontSize="20" color="#96a8dc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="截止报名:"/>
+    <text id="n35_nhy4" name="n35" xy="542,310" size="57,27" fontSize="20" color="#96a8dc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="增购:"/>
+    <text id="n36_nhy4" name="TextApplyNumber" xy="614,96" size="165,27" fontSize="20" color="#ffc811" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="Fun">
+      <relation target="n32_nhy4" sidePair="left-right"/>
+    </text>
+    <text id="n37_nhy4" name="TextRiseBlindTime" xy="640,169" size="161,27" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="起始筹码:">
+      <relation target="n33_nhy4" sidePair="left-right"/>
+    </text>
+    <text id="n38_nhy4" name="TextStopApplyTime" xy="638,239" size="149,27" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="起始盲注:">
+      <relation target="n34_nhy4" sidePair="left-right"/>
+    </text>
+    <text id="n39_nhy4" name="TextPurchase" xy="599,310" size="157,27" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="重购:">
+      <relation target="n35_nhy4" sidePair="left-right"/>
+    </text>
+    <component id="n40_nhy4" name="BtnApply" src="gy6l1" pkg="6jtesqzw" xy="596,440"/>
+    <component id="n41_nhy4" name="BtnShare" src="gy6l2" pkg="6jtesqzw" xy="199,440"/>
+    <text id="n42_kpff" name="TextMatchDiscribe" xy="52,381" size="647,27" fontSize="20" color="#5e6ea9" vAlign="middle" leading="0" autoSize="none" text=""/>
+  </displayList>
+</component>

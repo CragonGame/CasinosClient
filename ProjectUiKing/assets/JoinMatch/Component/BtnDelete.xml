@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="143,83" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="1"/>
+  <displayList>
+    <image id="n5_sd6w" name="n5" src="u51ojc" pkg="nhvxw9ov" xy="1,1" size="141,56" group="n9_sd6w" color="#2d2d5a"/>
+    <image id="n7_sd6w" name="n7" src="sd6wl1" pkg="nhvxw9ov" xy="0,0" size="143,83" group="n9_sd6w" color="#2d2d5a"/>
+    <image id="n8_sd6w" name="n8" src="u51ojc" pkg="nhvxw9ov" xy="-6,21" pivot="0.5,0.5" size="68,53" group="n9_sd6w" rotation="90" color="#2d2d5a">
+      <gearDisplay controller="button" pages="1"/>
+    </image>
+    <group id="n9_sd6w" name="n9" xy="-6,0" size="149,83" advanced="true" collapsed="true">
+      <gearDisplay controller="button" pages="1"/>
+    </group>
+    <image id="n4_sd6w" name="n4" src="sd6w3" xy="35,15"/>
+  </displayList>
+  <Button/>
+</component>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="6443cbga" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="s17d0" name="Grip1.xml" path="/Component/" exported="true"/>
+    <component id="nhy41" name="ComInputBg.xml" path="/Component/"/>
+    <image id="nhy42" name="ProgressBg1.png" path="/Image/" exported="true" scale="9grid" scale9grid="31,7,69,1"/>
+    <image id="nhy43" name="ProgressFg1.png" path="/Image/" exported="true" scale="9grid" scale9grid="90,10,18,1"/>
+    <image id="nhy44" name="滑动.png" path="/Image/" duplicatePadding="true"/>
+    <component id="nhy45" name="CreateMatch.xml" path="/" exported="true"/>
+    <component id="nhy46" name="Slider1_grip.xml" path="/Component/"/>
+    <component id="nhy47" name="Slider1.xml" path="/Component/" exported="true"/>
+    <image id="nhy48" name="16.png" path="/Image/" atlas="3" duplicatePadding="true"/>
+    <component id="nhy49" name="Grip2.xml" path="/Component/"/>
+    <component id="nhy4a" name="Slider2_grip.xml" path="/Component/"/>
+    <component id="nhy4b" name="Slider2.xml" path="/Component/"/>
+    <component id="nhy4c" name="ComTabMatchType.xml" path="/Component/"/>
+    <image id="nhy4d" name="SwitchOff.png" path="/Image/" exported="true" scale="9grid" scale9grid="31,25,62,1"/>
+    <image id="nhy4e" name="SwitchOn.png" path="/Image/" exported="true" scale9grid="31,25,62,1"/>
+    <component id="nhy4f" name="ComSingleTableNumber.xml" path="/Component/"/>
+    <component id="nhy4h" name="BtnAllowPurchase.xml" path="/Component/"/>
+    <component id="nhy4i" name="BtnCreateMatch.xml" path="/Component/"/>
+    <component id="nhy4j" name="BtnHelp.xml" path="/Component/"/>
+    <component id="nhy4l" name="BtnSetMatchTime.xml" path="/Component/"/>
+    <component id="nhy4m" name="BtnBlindTable.xml" path="/Component/"/>
+    <component id="nhy4n" name="ComBlindTable.xml" path="/Component/"/>
+    <component id="nhy4o" name="ComSetType.xml" path="/Component/"/>
+    <component id="nhy4p" name="ComHighSet.xml" path="/Component/"/>
+    <component id="nhy4q" name="ComBasicsSet.xml" path="/Component/"/>
+    <component id="donur" name="ComChooseTime.xml" path="/Component/"/>
+    <component id="donus" name="BtnEnsure.xml" path="/Component/"/>
+    <image id="ii4zt" name="36.png" path="/Image/" exported="true"/>
+  </resources>
+  <publish name="CreateMatch" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\CreateMatch" extractAlpha="true"/>
+</packageDescription>

@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4897238
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f4955476b75c8a7805a2c0723d7023d2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/GiftShop/GiftShop.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/GiftShop/GiftShop@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/GiftShop/GiftShop@sprites.bytes
+Dependencies: []

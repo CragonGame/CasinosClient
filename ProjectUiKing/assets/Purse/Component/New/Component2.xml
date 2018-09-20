@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="182,503" overflow="hidden">
+  <controller name="ControllerTab" pages="0,Chip,1,Diamond" selected="0"/>
+  <displayList>
+    <image id="n0_hrhq" name="n0" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="182,503" group="n53_hrhq" alpha="0.9" color="#192245"/>
+    <image id="n1_hrhq" name="n1" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="0,86" size="182,4" group="n53_hrhq"/>
+    <image id="n2_hrhq" name="n2" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="0,176" size="182,4" group="n53_hrhq"/>
+    <image id="n18_hrhq" name="n18" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="25,24" pivot="0.5,0.5" group="n32_hrhq" color="#748bba"/>
+    <text id="n19_hrhq" name="Lan_Text_Recharge" xy="68,27" pivot="0.5,0.5" size="95,33" group="n32_hrhq" font="FontCu" fontSize="25" color="#748bba" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="充值"/>
+    <group id="n32_hrhq" name="n32" xy="25,24" size="138,38" group="n53_hrhq"/>
+    <image id="n20_hrhq" name="n20" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="25,113" pivot="0.5,0.5" group="n33_hrhq" color="#748bba"/>
+    <text id="n21_hrhq" name="Lan_Text_GetCash" xy="68,115" pivot="0.5,0.5" size="95,33" group="n33_hrhq" font="FontCu" fontSize="25" color="#748bba" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="提现"/>
+    <group id="n33_hrhq" name="n33" xy="25,113" size="133,38" group="n53_hrhq"/>
+    <group id="n53_hrhq" name="n53" xy="0,0" size="182,503"/>
+    <component id="n46_hrhq" name="n46" src="j1yrz" fileName="Component/New/TabLight.xml" xy="0,0" group="n52_hrhq">
+      <gearDisplay controller="ControllerTab" pages="0"/>
+    </component>
+    <component id="n47_hrhq" name="n47" src="j1yrz" fileName="Component/New/TabLight.xml" xy="0,91" group="n52_hrhq">
+      <gearDisplay controller="ControllerTab" pages="1"/>
+    </component>
+    <group id="n52_hrhq" name="n52" xy="0,0" size="181,178"/>
+    <image id="n30_hrhq" name="n30" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="25,24" pivot="0.5,0.5" group="n36_hrhq"/>
+    <text id="n31_hrhq" name="Lan_Text_Recharge" xy="68,27" pivot="0.5,0.5" size="95,32" group="n36_hrhq" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="充值"/>
+    <group id="n36_hrhq" name="n36" xy="25,24" size="138,38" advanced="true">
+      <gearDisplay controller="ControllerTab" pages="0"/>
+    </group>
+    <image id="n37_hrhq" name="n37" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="25,113" pivot="0.5,0.5" group="n39_hrhq"/>
+    <text id="n38_hrhq" name="Lan_Text_GetCash" xy="68,115" pivot="0.5,0.5" size="95,33" group="n39_hrhq" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="提现"/>
+    <group id="n39_hrhq" name="n39" xy="25,113" size="138,38" advanced="true">
+      <gearDisplay controller="ControllerTab" pages="1"/>
+    </group>
+  </displayList>
+</component>

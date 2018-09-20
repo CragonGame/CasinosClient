@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n25_tfq4" name="ComShade" src="oypw6k" fileName="Component/ComShade.xml" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n24_tfq4" name="n24" src="sd6wl1" fileName="Image/New/面板mask2.png" pkg="nhvxw9ov" xy="6,-445" size="224,438" group="n38_tfq4" alpha="0.8" color="#222340"/>
+    <image id="n27_tfq4" name="n27" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="18,-371" size="200,3" group="n38_tfq4"/>
+    <image id="n28_tfq4" name="n28" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="18,-300" size="200,3" group="n38_tfq4"/>
+    <image id="n29_tfq4" name="n29" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="18,-229" size="200,3" group="n38_tfq4"/>
+    <image id="n39_kl3o" name="n39" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="18,-158" size="200,3" group="n38_tfq4"/>
+    <image id="n43_d6x8" name="n43" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="18,-87" size="200,3" group="n38_tfq4"/>
+    <component id="n33_tfq4" name="Lan_Btn_ExitGame" src="w6r67" fileName="Component/BtnContinue.xml" xy="6,-436" group="n38_tfq4"/>
+    <component id="n35_tfq4" name="Lan_Btn_StandUp" src="w6r69" fileName="Component/BtnStandUp.xml" xy="6,-366" group="n38_tfq4"/>
+    <component id="n36_tfq4" name="Lan_Btn_LeaveHalfWay" src="w6r6a" fileName="Component/BtnLeaveInMiddle.xml" xy="6,-296" group="n38_tfq4"/>
+    <component id="n37_tfq4" name="Lan_Btn_InviteFriend" src="w6r6b" fileName="Component/BtnInvitFriend.xml" xy="6,-225" group="n38_tfq4"/>
+    <component id="n41_kl3o" name="Lan_Btn_CardType" src="kl3os" fileName="Component/BtnHint.xml" xy="6,-153" group="n38_tfq4"/>
+    <component id="n42_d6x8" name="BtnReward" src="d6x8t" fileName="Component/BtnReward.xml" xy="6,-82" group="n38_tfq4"/>
+    <group id="n38_tfq4" name="Group" xy="6,-445" size="224,439" advanced="true"/>
+  </displayList>
+  <transition name="TransitionCreate">
+    <item time="0" type="XY" target="n38_tfq4" tween="true" startValue="-,-445" endValue="3,0" duration="4"/>
+    <item time="4" type="XY" target="n38_tfq4" tween="true" startValue="3,0"/>
+  </transition>
+</component>

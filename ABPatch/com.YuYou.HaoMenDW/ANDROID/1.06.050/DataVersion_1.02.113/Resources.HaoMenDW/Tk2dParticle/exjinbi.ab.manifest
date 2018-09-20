@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 3797569619
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c0e4e3a636f0bfe35be444e65b578ea7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 470c1af1c724562a5047c7d9683d59a7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesParticle/Textures/Textures/jinbi.png
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dParticle/EXjinbi.prefab
+- Assets/ResourcesParticle/Textures/Textures/Materials/jinbi.mat
+Dependencies: []

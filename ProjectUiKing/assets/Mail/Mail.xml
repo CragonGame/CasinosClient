@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerIfHaveMail" pages="0,NoMail,1,HaveMail" selected="1"/>
+  <controller name="ControllerHaveNewMail" pages="0,HaveNewMail,1,HaveNoNewMail" selected="0"/>
+  <displayList>
+    <component id="n45_l1q0" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n69_lh6b" name="n69" src="lh6bt" fileName="Image/UI2_Icon_邮件.png" xy="154,79" group="n71_m4t7"/>
+    <image id="n62_l7wh" name="n62" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="579,74" pivot="0.5,0.5" group="n71_m4t7" skew="0,180">
+      <relation target="n70_m4t7" sidePair="left-right"/>
+    </image>
+    <image id="n63_l7wh" name="n63" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="455,74" pivot="0.5,0.5" group="n71_m4t7">
+      <relation target="n70_m4t7" sidePair="right-left"/>
+    </image>
+    <text id="n37_dld2" name="Lan_Text_YouHaveNoMail" xy="434,315" pivot="0.5,0.5" size="386,36" group="n39_dld2" fontSize="28" color="#ffffff" leading="0" autoSize="none" text="你还没有任何邮件">
+      <gearDisplay controller="ControllerIfHaveMail" pages="0"/>
+    </text>
+    <list id="n38_dld2" name="ListMail" xy="160,157" size="751,410" group="n39_dld2" overflow="scroll" lineGap="6" defaultItem="ui://bdt8twncd2r3f" align="center">
+      <gearDisplay controller="ControllerIfHaveMail" pages="1"/>
+    </list>
+    <image id="n66_lh6b" name="n66" src="lh6bs" fileName="Image/邮件没有时mary_03.png" xy="264,232" group="n39_dld2">
+      <gearDisplay controller="ControllerIfHaveMail" pages="0"/>
+    </image>
+    <group id="n39_dld2" name="GroupMail" xy="160,157" size="751,410" group="n46_l1q0" advanced="true"/>
+    <group id="n46_l1q0" name="n46" xy="160,157" size="751,410" group="n71_m4t7"/>
+    <text id="n70_m4t7" name="TextTitle" xy="493,81" pivot="0.5,0.5" size="85,50" group="n71_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="邮箱"/>
+    <group id="n71_m4t7" name="n71" xy="154,74" size="757,493" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+  <transition name="TransitionWaiting" autoPlay="true" autoPlayRepeat="-1"/>
+</component>

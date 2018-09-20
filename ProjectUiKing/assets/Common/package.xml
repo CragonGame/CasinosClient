@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="nhvxw9ov" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="796z5e" name="Waiting.xml" path="/" exported="true"/>
+    <component id="796z5f" name="MsgBox.xml" path="/" exported="true"/>
+    <component id="796z5g" name="FloatMsg.xml" path="/" exported="true"/>
+    <component id="lb4j67" name="CoWaiting.xml" path="/Component/" exported="true"/>
+    <image id="oypw6e" name="Shade.png" path="/Image/" exported="true" scale="9grid" scale9grid="7,7,14,14"/>
+    <component id="oypw6k" name="ComShade.xml" path="/Component/" exported="true"/>
+    <component id="oypw6s" name="CoSwitch.xml" path="/Component/" exported="true"/>
+    <component id="i5es6w" name="PermanentPosMsg.xml" path="/" exported="true"/>
+    <component id="r6kn72" name="BtnTab.xml" path="/Component/Btn/" exported="true"/>
+    <image id="d45974" name="PlayerShadow.png" path="/Image/" exported="true"/>
+    <component id="d45975" name="ComHeadIcon.xml" path="/Component/" exported="true"/>
+    <component id="mad876" name="CoHeadIconBig.xml" path="/Component/" exported="true"/>
+    <image id="u40k7i" name="Rank1.png" path="/Image/" exported="true"/>
+    <image id="u40k7j" name="Rank2.png" path="/Image/" exported="true"/>
+    <image id="u40k7k" name="Rank3.png" path="/Image/" exported="true"/>
+    <component id="o3jq7t" name="ComGiftDesktopTmp.xml" path="/Component/" exported="true"/>
+    <component id="no8k7u" name="ComEmpty.xml" path="/Component/" exported="true"/>
+    <image id="k3yw7y" name="OperateCheckBg.png" path="/Image/" scale="9grid" scale9grid="7,7,14,14"/>
+    <image id="k3yw7z" name="OperateChecked.png" path="/Image/"/>
+    <component id="k3yw80" name="ComGift.xml" path="/Component/" exported="true"/>
+    <component id="hiep88" name="ComChatText.xml" path="/Component/" exported="true"/>
+    <image id="hiep8c" name="(10).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8d" name="(11).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8e" name="(12).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8f" name="(13).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8g" name="(14).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8h" name="(15).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8i" name="(16).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8j" name="(17).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8k" name="(18).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8l" name="(19).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8n" name="(20).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8o" name="(2).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8p" name="(3).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8q" name="(4).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8r" name="(5).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8s" name="(6).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8t" name="(7).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8u" name="(8).png" path="/Image/Chat/" exported="true"/>
+    <image id="hiep8v" name="(9).png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9j" name="(1).png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9k" name="10Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9l" name="11Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9m" name="12Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9n" name="13Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9o" name="14Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9p" name="15Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9q" name="16Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9r" name="17Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9s" name="18Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9t" name="19Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9u" name="1Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9v" name="20Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9w" name="2Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9x" name="3Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9y" name="4Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjc9z" name="5Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjca0" name="6Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjca1" name="7Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjca2" name="8Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="jtjca3" name="9Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="dld2a7" name="MsgTips.png" path="/Image/" exported="true"/>
+    <component id="d6gea8" name="ComMsgTips.xml" path="/Component/" exported="true"/>
+    <component id="qf8daf" name="ComChatEmotion.xml" path="/Component/" exported="true"/>
+    <image id="er9baj" name="CommonDarkBg.png" path="/Image/" exported="true" scale="9grid" scale9grid="8,8,14,14"/>
+    <image id="wniuak" name="pot2Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="wniual" name="pot3Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="wniuam" name="pot0Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="wniuan" name="pot1Small.png" path="/Image/Chat/" exported="true"/>
+    <image id="ixpjau" name="DiamondIcon.png" path="/Image/" exported="true"/>
+    <component id="ixpjb2" name="ComOnlineReward.xml" path="/Component/" exported="true"/>
+    <component id="j6hsb5" name="ComLotteryTicket.xml" path="/Component/" exported="true"/>
+    <image id="tfq4ba" name="Line03.png" path="/Image/" exported="true" atlas="3"/>
+    <image id="y7iqbd" name="Horn.png" path="/Image/" exported="true"/>
+    <image id="y7iqbu" name="TabLight.png" path="/Image/" exported="true" scale="9grid" scale9grid="33,25,66,1"/>
+    <image id="y7iqbv" name="TabDark.png" path="/Image/" exported="true" scale="9grid" scale9grid="30,20,60,1" gridTile="28"/>
+    <image id="onuyc3" name="BgSign.png" path="/Image/" exported="true" scale="9grid" scale9grid="75,14,47,8" atlas="3"/>
+    <image id="onuyc4" name="YuanBlue.png" path="/Image/" exported="true"/>
+    <image id="onuyc5" name="YuanYellow.png" path="/Image/" exported="true"/>
+    <image id="ohzdc6" name="CardBack.png" path="/Image/" exported="true"/>
+    <image id="l1q0c9" name="BgTransparent.png" path="/Image/" exported="true" scale="9grid" scale9grid="15,15,10,10"/>
+    <image id="l1q0ca" name="BgChatItem.png" path="/Image/" scale="9grid" scale9grid="26,24,52,6"/>
+    <image id="l1q0cb" name="SwitchTrigger.png" path="/Image/" exported="true"/>
+    <image id="bjg9ck" name="BtnTab1.png" path="/Image/" exported="true"/>
+    <image id="bjg9cl" name="BtnTab1Light.png" path="/Image/" exported="true"/>
+    <component id="bjg9cm" name="BtnTab1.xml" path="/Component/Btn/" exported="true"/>
+    <image id="bscicn" name="BtnClose.png" path="/Image/"/>
+    <image id="l4gzcy" name="IconWait.png" path="/Image/"/>
+    <image id="l4gzcz" name="WaitLight.png" path="/Image/"/>
+    <image id="g5lbd2" name="IconBi.png" path="/Image/" exported="true"/>
+    <image id="dcobd4" name="ChatBgRight.png" path="/Image/" scale="9grid" scale9grid="9,31,21,5"/>
+    <image id="dcobd5" name="ChatBgLeft.png" path="/Image/" scale="9grid" scale9grid="26,29,15,6"/>
+    <image id="he5udl" name="BtnSmallBg.png" path="/Image/" exported="true" scale="9grid" scale9grid="16,15,32,12"/>
+    <image id="blgfds" name="ChatBgLeft1 .png" path="/Image/" scale="9grid" scale9grid="26,29,16,6"/>
+    <image id="8xode8" name="BgGift.png" path="/Image/" exported="true"/>
+    <image id="8xode9" name="CommonBlueLightBg.png" path="/Image/" exported="true"/>
+    <image id="mkwxea" name="BtnGreen.png" path="/Image/" exported="true" scale="9grid" scale9grid="42,27,49,1" gridTile="16"/>
+    <image id="mkwxec" name="BtnYellow.png" path="/Image/" exported="true" scale="9grid" scale9grid="44,0,47,84"/>
+    <component id="mkwxed" name="BtnYellow.xml" path="/Component/Btn/" exported="true"/>
+    <component id="mkwxef" name="BtnBlue.xml" path="/Component/Btn/" exported="true"/>
+    <component id="jt75ep" name="BtnClose.xml" path="/Component/Btn/" exported="true"/>
+    <image id="ffinev" name="CountDownBg.png" path="/Image/" scale="9grid"/>
+    <image id="ffinew" name="OnlineReward.png" path="/Image/"/>
+    <image id="ffinex" name="a.png" path="/Image/LotteryTicket/"/>
+    <image id="ffiney" name="ag.png" path="/Image/LotteryTicket/"/>
+    <image id="ffinez" name="cd.png" path="/Image/LotteryTicket/"/>
+    <image id="ffinf0" name="cm.png" path="/Image/LotteryTicket/"/>
+    <image id="ffinf1" name="gd.png" path="/Image/LotteryTicket/"/>
+    <image id="ffinf2" name="k.png" path="/Image/LotteryTicket/"/>
+    <image id="ffinf3" name="p.png" path="/Image/LotteryTicket/"/>
+    <image id="ffinf5" name="yy.png" path="/Image/LotteryTicket/"/>
+    <component id="ot8lff" name="Progress.xml" path="/Component/" exported="true"/>
+    <component id="ot8lfi" name="ComGiftItemEx.xml" path="/Component/" exported="true"/>
+    <component id="g8hzfj" name="Slider_grip.xml" path="/Component/" exported="true"/>
+    <component id="g8hzfl" name="Slider.xml" path="/Component/" exported="true"/>
+    <component id="i4nvgq" name="ComVIP.xml" path="/Component/" exported="true"/>
+    <image id="i4nvgr" name="VIPBg.png" path="/Image/" exported="true"/>
+    <image id="ti7ogt" name="VIPNum0.png" path="/Image/FontVip/" exported="true"/>
+    <image id="ti7ogu" name="VIPNum1.png" path="/Image/FontVip/" exported="true"/>
+    <image id="ti7ogv" name="VIPNum2.png" path="/Image/FontVip/" exported="true"/>
+    <image id="ti7ogw" name="VIPNum3.png" path="/Image/FontVip/" exported="true"/>
+    <image id="ti7ogx" name="VIPNum4.png" path="/Image/FontVip/" exported="true"/>
+    <image id="ti7ogy" name="VIPNum5.png" path="/Image/FontVip/" exported="true"/>
+    <image id="ti7ogz" name="VIPNum6.png" path="/Image/FontVip/" exported="true"/>
+    <image id="ti7oh0" name="VIPNum7.png" path="/Image/FontVip/" exported="true"/>
+    <image id="ti7oh1" name="VIPNum8.png" path="/Image/FontVip/" exported="true"/>
+    <image id="ti7oh2" name="VIPNum9.png" path="/Image/FontVip/" exported="true"/>
+    <component id="96r3h3" name="CoChatLeft.xml" path="/Component/" exported="true"/>
+    <component id="96r3h5" name="CoChatRight.xml" path="/Component/" exported="true"/>
+    <component id="cpaah6" name="BtnCheck.xml" path="/Component/Btn/" exported="true"/>
+    <component id="fzurhl" name="ComChip.xml" path="/Component/" exported="true"/>
+    <image id="fqbzho" name="ProgressFg1.png" path="/Image/" exported="true" scale="9grid" scale9grid="9,5,117,3"/>
+    <image id="fqbzhp" name="ProgressBg1.png" path="/Image/" exported="true" scale="9grid" scale9grid="17,7,81,4"/>
+    <image id="lil3hs" name="Chip.png" path="/Image/" exported="true"/>
+    <component id="i2xrhu" name="CoChatRightTop.xml" path="/Component/" exported="true"/>
+    <image id="vwtaib" name="BgText.png" path="/Image/" exported="true"/>
+    <image id="qeucid" name="ProfileChatUnblocked.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucie" name="ProfileExchangeChips.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucif" name="ProfileFriend.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucig" name="ProfileGift.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucih" name="ProfileGiftHome.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucii" name="ProfileJoinDesk.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucij" name="ProfileMoreChips.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucim" name="ProfileSendChips.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucin" name="ProfileSendMsg.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucio" name="RemoveFriend.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucip" name="小按钮-1.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeuciq" name="小按钮-2.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucir" name="小按钮-3.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucis" name="小按钮-4.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="qeucit" name="report1.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="vxr8ix" name="ProfileChatblocked.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="s56liy" name="ProfileMoreCoin.png" path="/Image/BtnIcon/" exported="true"/>
+    <image id="s56liz" name="ProfileLogout.png" path="/Image/BtnIcon/" exported="true"/>
+    <component id="eajtj0" name="ComGiftItem.xml" path="/Component/" exported="true"/>
+    <component id="eajtj1" name="ComGiftItem1.xml" path="/Component/" exported="true"/>
+    <image id="t4okj4" name="UI2_通用_底板01.png" path="/Image/New/" exported="true" scale="9grid" scale9grid="36,34,10,8"/>
+    <image id="u51oj6" name="UI2_通用_渐变底2.png" path="/Image/New/" exported="true"/>
+    <image id="u51ojc" name="UI2_通用_纯色底板.png" path="/Image/New/" exported="true" scale="9grid" scale9grid="2,2,2,2"/>
+    <image id="u51oje" name="UI2_通用_底板05.png" path="/Image/HalfImage/" exported="true" scale="9grid" scale9grid="9,9,18,18" duplicatePadding="true"/>
+    <image id="u51ojf" name="UI2_通用_底光.png" path="/Image/HalfImage/" duplicatePadding="true"/>
+    <image id="u51ojk" name="UI2_个人信息_Title顶光.png" path="/Image/HalfImage/" exported="true" duplicatePadding="true"/>
+    <image id="vi47jl" name="UI2_通用_Toggle底.png" path="/Image/HalfImage/" duplicatePadding="true"/>
+    <component id="vi47jm" name="ComBgAndClose.xml" path="/Component/" exported="true"/>
+    <image id="vi47jn" name="UI2_通用_Title.png" path="/Image/HalfImage/" exported="true" scale="9grid" scale9grid="20,21,101,6" duplicatePadding="true"/>
+    <image id="vi47jo" name="UI2_通用_Title花纹01.png" path="/Image/New/" exported="true"/>
+    <image id="vi47jp" name="UI2_通用_叶子1.png" path="/Image/" exported="true"/>
+    <image id="vi47jq" name="UI2_通用_气泡2.png" path="/Image/HalfImage/" exported="true" scale="9grid" scale9grid="12,14,7,7" duplicatePadding="true"/>
+    <image id="phssjr" name="UI2_通用_分割线2.png" path="/Image/New/" exported="true"/>
+    <image id="phssjs" name="UI2_通用_分割线1.png" path="/Image/New/" exported="true" scale="9grid" scale9grid="1,1,2,2"/>
+    <image id="lh6bjv" name="BgInput.png" path="/Image/New/" exported="true" scale="9grid" scale9grid="4,4,6,6"/>
+    <component id="lh6bjw" name="ComListItemBg.xml" path="/Component/" exported="true"/>
+    <component id="lh6bjx" name="ComBgAndCloseSmall.xml" path="/Component/" exported="true"/>
+    <image id="lh6bjy" name="UI2_通用_Title花纹02.png" path="/Image/New/" exported="true"/>
+    <component id="lh6bjz" name="ComBgAndClose1.xml" path="/Component/" exported="true"/>
+    <image id="wb2ek1" name="UI2_通用按钮_返回箭头.png" path="/Image/New/" exported="true"/>
+    <component id="wb2ek4" name="BtnReturn1.xml" path="/Component/Btn/" exported="true"/>
+    <image id="wb2ek5" name="UI2_通用按钮_icon底.png" path="/Image/New/" exported="true"/>
+    <image id="wb2ek6" name="ItemBg.png" path="/Image/New/" exported="true"/>
+    <image id="wb2ek7" name="UI2_通用_人像.png" path="/Image/New/" exported="true"/>
+    <image id="wb2ek8" name="UISprite.png" path="/Image/New/" exported="true" scale="9grid" scale9grid="8,8,12,12"/>
+    <component id="hrhqka" name="BtnClose1.xml" path="/Component/Btn/" exported="true"/>
+    <image id="hrhqkb" name="UI2_俱乐部加号.png" path="/Image/New/" exported="true"/>
+    <image id="hrhqkc" name="ChipIcon.png" path="/Image/New/" exported="true"/>
+    <image id="hrhqkd" name="UI2_通用_钻石1.png" path="/Image/New/" exported="true"/>
+    <image id="hrhqke" name="图层10.png" path="/Image/New/" exported="true"/>
+    <image id="hrhqkf" name="半圆.png" path="/Image/HalfImage/" exported="true" scale="9grid" scale9grid="30,25,1,2" duplicatePadding="true"/>
+    <component id="uvmqkg" name="BtnEnsure.xml" path="/Component/Btn/" exported="true"/>
+    <image id="gy6lkh" name="WhiteChipIcon.png" path="/Image/New/" exported="true"/>
+    <image id="gy6lki" name="UI2_通用_闹钟.png" path="/Image/New/" exported="true"/>
+    <image id="gy6lkk" name="UI2_通用_重购增购底.png" path="/Image/New/" exported="true" scale="9grid" scale9grid="6,5,3,3"/>
+    <image id="nhy4kn" name="UI2_通用按钮_帮助.png" path="/Image/New/" exported="true"/>
+    <image id="nhy4ko" name="UI2_赛事_icon起始盲注.png" path="/Image/New/" exported="true"/>
+    <image id="nhy4kp" name="UI2_赛事_icon重购.png" path="/Image/New/" exported="true"/>
+    <image id="nhy4kq" name="UI2_赛事_icon三人.png" path="/Image/New/" exported="true"/>
+    <image id="nhy4kr" name="UI2_赛事_icon涨盲时间.png" path="/Image/New/" exported="true"/>
+    <image id="nhy4ks" name="UI2_赛事_icon增购.png" path="/Image/New/" exported="true"/>
+    <image id="nhy4kt" name="UI2_通用_筹码1.png" path="/Image/New/" exported="true"/>
+    <component id="s4taku" name="BtnCancel.xml" path="/Component/Btn/" exported="true"/>
+    <component id="qkn2kv" name="BtnEmpty.xml" path="/Component/Btn/" exported="true"/>
+    <component id="sd6wl0" name="BtnHelp.xml" path="/Component/Btn/" exported="true"/>
+    <image id="sd6wl1" name="面板mask2.png" path="/Image/New/" exported="true" scale="9grid" scale9grid="24,25,11,10"/>
+    <component id="tabcl2" name="ComBgAndCloseMiddel.xml" path="/Component/" exported="true"/>
+    <image id="ewf7l3" name="UI2_通用按钮_商城加.png" path="/Image/New/" exported="true"/>
+    <image id="n8cll4" name="UI2_通用_五角星2.png" path="/Image/New/" exported="true"/>
+    <image id="nmmol6" name="UI2_头像_mask2.png" path="/Image/New/" exported="true" scale="9grid" scale9grid="27,27,54,54"/>
+    <component id="nmmol8" name="ComHeadIconLoader.xml" path="/Component/" exported="true"/>
+    <image id="d2ral9" name="UI2_头像_默认头像.png" path="/Image/New/"/>
+    <image id="tv2tla" name="UI2_ICON_等级.png" path="/Image/New/" exported="true"/>
+    <component id="sdyolb" name="WaitingCountDown.xml" path="/" exported="true"/>
+    <image id="sdyolc" name="Tips-底板.png" path="/Image/"/>
+    <image id="sdyold" name="31.png" path="/Image/"/>
+    <component id="e7h0le" name="ComItemReward.xml" path="/Component/" exported="true"/>
+    <component id="lvp2lf" name="BtnSwitch.xml" path="/Component/Btn/" exported="true"/>
+    <component id="gvmmli" name="BtnShare.xml" path="/Component/Btn/" exported="true"/>
+    <component id="vtnclj" name="ComWelfare.xml" path="/Component/" exported="true"/>
+    <component id="vtnclk" name="ComTimingReward.xml" path="/Component/"/>
+    <component id="vtncll" name="ComWelfareIcon.xml" path="/Component/" exported="true"/>
+    <component id="lmq9lm" name="ComReward.xml" path="/Component/" exported="true"/>
+    <image id="lmq9ln" name="111.png" path="/Image/New/"/>
+    <image id="lmq9lo" name="222.png" path="/Image/New/"/>
+    <component id="lmq9lp" name="ComPushReward.xml" path="/Component/" exported="true"/>
+    <image id="j1yrlq" name="ChipIcon1.png" path="/Image/New/" exported="true"/>
+    <image id="tjymlr" name="ChipIcon0.png" path="/Image/New/" exported="true"/>
+    <image id="tjymlt" name="DiamondIcon0.png" path="/Image/" exported="true"/>
+    <image id="tjymlu" name="DiamondIcon1.png" path="/Image/" exported="true"/>
+    <image id="d6x8lv" name="Reward.png" path="/Image/"/>
+    <image id="d6x8ly" name="RewardText2.png" path="/Image/" exported="true"/>
+    <component id="qjsdlz" name="ComText.xml" path="/Component/"/>
+    <image id="hwqjm0" name="img_sscai5.png" path="/Image/LotteryTicket/"/>
+    <image id="hwqjm1" name="img_sscai1.png" path="/Image/LotteryTicket/"/>
+    <image id="hwqjm2" name="img_sscai2.png" path="/Image/LotteryTicket/"/>
+    <image id="hwqjm3" name="img_sscai3.png" path="/Image/LotteryTicket/"/>
+    <image id="hwqjm4" name="img_sscai4.png" path="/Image/LotteryTicket/"/>
+    <movieclip id="hwqjm5" name="AniLotteryTicket.jta" path="/Image/LotteryTicket/"/>
+    <image id="hwqjm6" name="img_baoxiang1.png" path="/Image/Welfare/"/>
+    <image id="hwqjm7" name="img_baoxiang2.png" path="/Image/Welfare/"/>
+    <image id="hwqjm8" name="img_baoxiang3.png" path="/Image/Welfare/"/>
+    <image id="hwqjm9" name="img_baoxiang4.png" path="/Image/Welfare/"/>
+    <image id="hwqjma" name="img_baoxiang5.png" path="/Image/Welfare/"/>
+    <movieclip id="hwqjmb" name="AniWelfare.jta" path="/Image/Welfare/"/>
+    <image id="kd14md" name="SwitchOn.png" path="/Image/" exported="true"/>
+    <image id="kd14me" name="SwitchOff.png" path="/Image/" exported="true"/>
+    <image id="kd14mf" name="ChatBgLeft2.png" path="/Image/" scale="9grid" scale9grid="30,26,5,3"/>
+    <image id="kd14mg" name="ChatBgRight1.png" path="/Image/" scale="9grid" scale9grid="20,26,5,3"/>
+    <component id="h1fymh" name="BtnShare1.xml" path="/Component/Btn/" exported="true"/>
+  </resources>
+  <publish name="Common" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Common"/>
+</packageDescription>

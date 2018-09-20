@@ -1,0 +1,50 @@
+ManifestFileVersion: 0
+CRC: 2150508888
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8409d584dd395322b9a87858e273580d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f017bab42f6766fbe73db0749b64b96d
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3bf19882ce18f0542a76818c98c760df, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesParticle/Textures/Textures/Materials/flash08_j.mat
+- Assets/ResourcesParticle/Textures/Textures/flash08_j.png
+- Assets/ResourcesParticle/Textures/FBX/Materials/No Name.mat
+- Assets/ResourcesParticle/Textures/Textures/gloworange.png
+- Assets/ResourcesParticle/Textures/Textures/Materials/trail04.mat
+- Assets/ResourcesParticle/Textures/Textures/trail04.png
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dParticle/EXlihua_jin.prefab
+- Assets/ResourcesParticle/Textures/FBX/CylinderEmitter04.fbx
+- Assets/ResourcesParticle/Textures/Textures/Materials/gloworange.mat
+Dependencies: []

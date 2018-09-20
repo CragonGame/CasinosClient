@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n1_uvmq" name="ComBgAndClose" src="j8ql1" fileName="Component/ComBgAndClose.xml" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n3_uvmq" name="n3" src="t4okj4" fileName="Image/New/UI2_通用_底板01.png" pkg="nhvxw9ov" xy="209,101" size="648,438" group="n22_nhsw"/>
+    <image id="n4_uvmq" name="n4" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="227,119" pivot="0.5,0.5" size="306,62" group="n22_nhsw"/>
+    <image id="n5_uvmq" name="n5" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="533,119" pivot="0.5,0.5" size="306,62" group="n22_nhsw" skew="0,180"/>
+    <image id="n6_uvmq" name="n6" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="232,121" size="180,59" group="n22_nhsw"/>
+    <image id="n8_uvmq" name="n8" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="227,436" pivot="0.5,0.5" size="306,84" group="n22_nhsw" skew="180,0"/>
+    <image id="n9_gy6l" name="n9" src="vi47jn" fileName="Image/HalfImage/UI2_通用_Title.png" pkg="nhvxw9ov" xy="533,436" pivot="0.5,0.5" size="306,84" group="n22_nhsw" skew="180,180"/>
+    <component id="n7_uvmq" name="Lan_Btn_Confirm" src="uvmqkg" fileName="Component/Btn/BtnEnsure.xml" pkg="nhvxw9ov" xy="448,447" group="n22_nhsw"/>
+    <text id="n10_gy6l" name="Lan_Text_MatchName" xy="281,205" pivot="0.5,0.5" size="113,33" group="n22_nhsw" font="FontXi" fontSize="25" color="#60e2fc" vAlign="middle" leading="0" text="赛事名称:"/>
+    <text id="n11_gy6l" name="Lan_Text_EntryFee" xy="282,250" pivot="0.5,0.5" size="112,32" group="n22_nhsw" font="FontXi" fontSize="25" color="#c1ccf5" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="报名费用:"/>
+    <text id="n12_gy6l" name="Lan_Text_MatchBeginTime" xy="282,294" pivot="0.5,0.5" size="112,32" group="n22_nhsw" font="FontXi" fontSize="25" color="#c1ccf5" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="开赛时间:"/>
+    <text id="n13_gy6l" name="Lan_Text_ApplySucceedTip" xy="282,342" pivot="0.5,0.5" size="412,83" group="n22_nhsw" font="FontXi" fontSize="25" color="#7485b6" vAlign="middle" leading="0" autoSize="shrink" text="比赛开始前将在游戏内提示您。&#xA;祝您手气长虹！"/>
+    <text id="n14_gy6l" name="TextMatchName" xy="413,206" size="378,32" group="n22_nhsw" font="FontXi" fontSize="25" color="#60e2fc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n15_gy6l" name="TextEntryFee" xy="445,250" size="341,32" group="n22_nhsw" font="FontXi" fontSize="25" color="#60e2fc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n16_gy6l" name="TextMatchBeginTime" xy="413,294" size="374,32" group="n22_nhsw" font="FontXi" fontSize="25" color="#f0c889" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n17_gy6l" name="n17" src="gy6lkh" fileName="Image/New/WhiteChipIcon.png" pkg="nhvxw9ov" xy="413,250" size="32,32" group="n22_nhsw" color="#60e2fc"/>
+    <text id="n21_nhsw" name="TextTitle" xy="528,125" pivot="0.5,0.5" size="10,50" group="n22_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n22_nhsw" name="n22" xy="209,101" size="648,438" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

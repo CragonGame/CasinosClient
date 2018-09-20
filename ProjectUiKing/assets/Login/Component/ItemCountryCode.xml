@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="571,51">
+  <controller name="ControllerShowLine" pages="0,show,1,hide" selected="0"/>
+  <displayList>
+    <text id="n0_jczm" name="TextCountryCode" xy="0,1" size="571,45" fontSize="30" vAlign="middle" autoSize="shrink" text=""/>
+    <image id="n1_jczm" name="n1" src="796z5" xy="-36,44" pivot="0.5,0.5" size="638,10">
+      <gearDisplay controller="ControllerShowLine" pages="0"/>
+    </image>
+  </displayList>
+</component>

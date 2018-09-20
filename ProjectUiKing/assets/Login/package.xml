@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="nq1z8ebj" jpegQuality="80" compressPNG="true">
+  <resources>
+    <image id="796z5" name="SpliteLine.png" path="/Image/"/>
+    <image id="796z9" name="InputBg.png" path="/Image/" exported="true" scale="9grid" scale9grid="121,15,242,30"/>
+    <component id="796zb" name="Login.xml" path="/" exported="true"/>
+    <component id="c1pcq" name="BtnLogin.xml" path="/Component/"/>
+    <component id="c1pcr" name="BtnWeChat.xml" path="/Component/"/>
+    <component id="cpaat" name="ComLink.xml" path="/Component/"/>
+    <component id="hrhqv" name="ComBg.xml" path="/Component/" exported="true"/>
+    <image id="hrhqx" name="图层13.png" path="/Image/"/>
+    <image id="hrhqy" name="图层15.png" path="/Image/"/>
+    <image id="hrhqz" name="Mote.png" path="/Image/" atlas="2"/>
+    <component id="jyil10" name="ComParent.xml" path="/Component/"/>
+    <component id="n8cl12" name="BtnLogin1.xml" path="/Component/"/>
+    <component id="n8cl13" name="BtnGuestLogin.xml" path="/Component/"/>
+    <component id="n8cl14" name="BtnCreateNewAccount.xml" path="/Component/"/>
+    <component id="n8cl17" name="BtnForget.xml" path="/Component/"/>
+    <component id="hrjf18" name="ComboBox1_item.xml" path="/Component/"/>
+    <component id="hrjf19" name="ComboBox1_popup.xml" path="/Component/"/>
+    <component id="hrjf1a" name="ComboBox1.xml" path="/Component/" exported="true"/>
+    <image id="jfu11b" name="Loading_BG.png" path="/Image/" atlas="1"/>
+    <component id="sbed1c" name="ComCountryCode.xml" path="/Component/" exported="true"/>
+    <component id="sbed1d" name="ComPwd.xml" path="/Component/" exported="true"/>
+    <component id="jczm1e" name="ComCountryCodeChoose.xml" path="/Component/" exported="true"/>
+    <component id="jczm1f" name="ItemCountryCode.xml" path="/Component/" exported="true"/>
+    <component id="jczm1g" name="BtnCancel.xml" path="/Component/"/>
+    <component id="jczm1h" name="ComTextCountryCode.xml" path="/Component/" exported="true"/>
+    <image id="h9va1i" name="密码钥匙.png" path="/Image/"/>
+    <image id="h9va1j" name="手机登录.png" path="/Image/"/>
+    <image id="h9va1k" name="下拉.png" path="/Image/"/>
+    <image id="h9va1l" name="游客登录.png" path="/Image/"/>
+    <image id="h9va1m" name="放大镜.png" path="/Image/"/>
+    <image id="leuv1p" name="icon-152.jpg" path="/Image/"/>
+  </resources>
+  <publish name="Login" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Login"/>
+</packageDescription>

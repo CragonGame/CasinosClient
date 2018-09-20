@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="2vjsicec" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="sx4r0" name="DesktopHBetReward.xml" path="/" exported="true"/>
+    <image id="sx4r3" name="Reward1.png" path="/Image/" exported="true"/>
+    <image id="sx4r4" name="Reward5.png" path="/Image/" exported="true"/>
+    <image id="sx4r5" name="Reward4.png" path="/Image/" exported="true"/>
+    <image id="sx4r6" name="Reward3.png" path="/Image/" exported="true"/>
+    <image id="sx4r7" name="Reward2.png" path="/Image/" exported="true"/>
+    <component id="sx4rb" name="ComReward1.xml" path="/Component/" exported="true"/>
+    <component id="sx4rc" name="ComReward2.xml" path="/Component/" exported="true"/>
+    <component id="sx4rd" name="ComReward3.xml" path="/Component/" exported="true"/>
+    <component id="sx4re" name="ComReward4.xml" path="/Component/" exported="true"/>
+    <component id="sx4rf" name="ComReward5.xml" path="/Component/" exported="true"/>
+    <image id="v4efh" name="ProgressBg.png" path="/Image/"/>
+    <image id="v4efi" name="ProgressBar.png" path="/Image/" scale="9grid" scale9grid="18,28,36,16"/>
+    <component id="v4efj" name="ProgressBar.xml" path="/Component/"/>
+    <component id="abqrk" name="ComTips.xml" path="/Component/"/>
+  </resources>
+  <publish name="DesktopHBetReward" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHBetReward"/>
+</packageDescription>

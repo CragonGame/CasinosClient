@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="722,74">
+  <displayList>
+    <image id="n0_gy6l" name="n0" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,70" size="722,4" color="#242647"/>
+    <loader id="n1_gy6l" name="LoaderRankIcon" xy="51,6" pivot="0.5,0.5" size="60,60" hideByEditor="true" align="center" vAlign="middle"/>
+    <text id="n2_gy6l" name="TextRank" xy="48,21" pivot="0.5,0.5" size="67,30" fontSize="22" color="#7b8fea" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text=""/>
+    <text id="n3_gy6l" name="TextRawardConent" xy="135,22" pivot="0.5,0.5" size="448,29" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n4_gy6l" name="TextMasterPoint" xy="586,22" pivot="0.5,0.5" size="79,29" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

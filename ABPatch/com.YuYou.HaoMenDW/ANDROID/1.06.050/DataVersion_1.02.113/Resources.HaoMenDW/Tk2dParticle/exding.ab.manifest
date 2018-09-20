@@ -1,0 +1,44 @@
+ManifestFileVersion: 0
+CRC: 3895731436
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9ecb992d9dcd8277c150e2c83bd6958f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 817e229f16e9d10b19630f78aeba253e
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3bf19882ce18f0542a76818c98c760df, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesParticle/Textures/Textures/lie.png
+- Assets/ResourcesParticle/Textures/Textures/Materials/lie2.mat
+- Assets/ResourcesParticle/Textures/Textures/Materials/lie.mat
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dParticle/EXding.prefab
+- Assets/ResourcesParticle/Textures/ding.png
+- Assets/ResourcesParticle/Textures/Textures/CFXM_ElectricSparkle.png
+- Assets/ResourcesParticle/Textures/Textures/CFXM_T_Anim7_Electricity.png
+- Assets/ResourcesParticle/Textures/Textures/Materials/CFXM_ElectricSparkle.mat
+- Assets/ResourcesParticle/Textures/Textures/lie2.png
+- Assets/ResourcesParticle/Textures/Textures/Materials/CFXM_T_Anim7_Electricity.mat
+- Assets/ResourcesParticle/Materials/ding.mat
+Dependencies: []

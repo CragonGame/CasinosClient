@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="245,296">
+  <displayList>
+    <component id="n16_hrhq" name="n16" src="hrhq3c" xy="0,0"/>
+    <component id="n12_bsci" name="BtnBuy" src="bsci1q" xy="29,224"/>
+    <loader id="n2_r6kn" name="LoaderDiamond" xy="54,76" size="139,144" align="center" vAlign="middle" fill="scale" playing="false"/>
+    <text id="n4_r6kn" name="DiamondValue" xy="21,20" pivot="0.5,0.5" size="202,39" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

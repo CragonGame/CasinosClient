@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2383498467
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7587b878e1fa79aaf8dbc0577108f64c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/MTTGameResult/MTTGameResult@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/MTTGameResult/MTTGameResult@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/MTTGameResult/MTTGameResult.bytes
+Dependencies: []

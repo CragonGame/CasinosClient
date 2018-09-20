@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="631wxlb2" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="s17d0" name="SnowBallReward.xml" path="/" exported="true"/>
+    <component id="s17d1" name="ItemRankAndReward.xml" path="/Component/"/>
+    <component id="s17d2" name="ItemApplyReward.xml" path="/Component/"/>
+  </resources>
+  <publish name="SnowBallReward" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\SnowBallReward"/>
+</packageDescription>

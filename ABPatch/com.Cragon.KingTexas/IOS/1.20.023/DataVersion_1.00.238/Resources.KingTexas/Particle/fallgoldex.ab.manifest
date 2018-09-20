@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 4226793037
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2b97a32db2d1dcaee56d851803e4e1d4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0605fe76d012b1a951d4b995dc7210fb
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesParticle/Materials/gold.mat
+- Assets/ResourcesParticle/Textures/Gold.png
+- Assets/Resources.KingTexas/PkgSingle/Particle/FallGoldEx.prefab
+Dependencies: []

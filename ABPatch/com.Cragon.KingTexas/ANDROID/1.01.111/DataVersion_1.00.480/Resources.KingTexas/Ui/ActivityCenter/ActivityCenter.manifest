@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 4276551769
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: activitycenter.ab
+      Dependencies: {}

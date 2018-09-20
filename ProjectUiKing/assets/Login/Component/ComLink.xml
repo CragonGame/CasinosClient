@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="206,20" initName="ComLink">
+  <displayList>
+    <text id="n0_cpaa" name="Lan_Text_CragonAgreement" xy="0,0" size="206,20" fontSize="14" color="#92dcfc" vAlign="middle" autoSize="shrink" underline="true" singleLine="true" text="螭龙游戏服务协议"/>
+  </displayList>
+</component>

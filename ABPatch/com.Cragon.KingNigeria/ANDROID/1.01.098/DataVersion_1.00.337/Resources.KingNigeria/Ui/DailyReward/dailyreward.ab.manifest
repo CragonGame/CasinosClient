@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 1995914516
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2d6c5720e0020447513fe830ba5c9f25
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/DailyReward/DailyReward@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/DailyReward/DailyReward@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/DailyReward/DailyReward.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/DailyReward/DailyReward@atlas1.png
+Dependencies: []

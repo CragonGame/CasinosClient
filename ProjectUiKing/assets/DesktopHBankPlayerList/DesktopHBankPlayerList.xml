@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerBeBank" pages="0,BeBank,1,NotBeBank" selected="0"/>
+  <displayList>
+    <component id="n29_ow7f" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <list id="n2_fb5j" name="ListPlayerInfo" xy="162,153" size="742,261" group="n36_nhsw" overflow="scroll" lineGap="3" defaultItem="ui://z4s3gxx2fb5j2" align="center"/>
+    <text id="n5_fb5j" name="BeBankTips" xy="178,474" pivot="0.5,0.5" size="709,25" group="n36_nhsw" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n21_nvzf" name="BeBank" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="448,506" group="n36_nhsw"/>
+    <component id="n28_twda" name="SliderBankStack" src="g8hzfl" fileName="Component/Slider.xml" pkg="nhvxw9ov" xy="337,426" group="n36_nhsw">
+      <Slider value="50" max="100"/>
+    </component>
+    <text id="n13_rpos" name="BankGoldLimit" xy="162,430" pivot="0.5,0.5" size="109,39" group="n36_nhsw" fontSize="23" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" bold="true" singleLine="true" text=""/>
+    <text id="n14_rpos" name="SelfGolds" xy="784,430" pivot="0.5,0.5" size="120,39" group="n36_nhsw" fontSize="23" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text=""/>
+    <image id="n31_wb2e" name="n31" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="140,78" group="n36_nhsw"/>
+    <image id="n32_wb2e" name="n32" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="485,74" pivot="0.5,0.5" group="n36_nhsw">
+      <relation target="n35_nhsw" sidePair="right-left"/>
+    </image>
+    <image id="n33_wb2e" name="n33" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="533,74" pivot="0.5,0.5" group="n36_nhsw" skew="0,180">
+      <relation target="n35_nhsw" sidePair="left-right"/>
+    </image>
+    <text id="n35_nhsw" name="TextTitle" xy="523,81" pivot="0.5,0.5" size="10,50" group="n36_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <text id="n37_fut9" name="Lan_Text_NotBeBank" xy="458,506" pivot="0.5,0.5" size="150,64" group="n36_nhsw" fontSize="24" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="">
+      <gearDisplay controller="ControllerBeBank" pages="1"/>
+    </text>
+    <text id="n38_fut9" name="Lan_Text_BeBank" xy="458,506" pivot="0.5,0.5" size="150,64" group="n36_nhsw" fontSize="24" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="">
+      <gearDisplay controller="ControllerBeBank" pages="0"/>
+    </text>
+    <group id="n36_nhsw" name="n36" xy="140,74" size="764,496" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

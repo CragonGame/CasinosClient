@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="233,25" initName="ComPointAndStar">
+  <controller name="ControllerStarNum" pages="0,,1,,2,,3,,4," selected="0"/>
+  <displayList>
+    <text id="n0_j3hl" name="n0" xy="0,0" size="46,25" fontSize="18" color="#728fe3" align="center" vAlign="middle" leading="0" text="积分:"/>
+    <text id="n1_j3hl" name="TextPoint" xy="45,1" pivot="0,0.5" size="11,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" text=" "/>
+    <text id="n2_j3hl" name="n2" xy="56,0" size="82,25" group="n11_j3hl" fontSize="18" color="#728fe3" align="center" vAlign="middle" leading="0" text="上周星级:"/>
+    <image id="n3_j3hl" name="n3" src="j3hl3p" xy="139,2" size="22,21" group="n11_j3hl" aspect="true" color="#32427b"/>
+    <image id="n4_j3hl" name="n4" src="j3hl3p" xy="163,2" size="22,21" group="n11_j3hl" aspect="true" color="#32427b"/>
+    <image id="n5_j3hl" name="n5" src="j3hl3p" xy="187,2" size="22,21" group="n11_j3hl" aspect="true" color="#32427b"/>
+    <image id="n6_j3hl" name="n6" src="j3hl3p" xy="211,2" size="22,21" group="n11_j3hl" aspect="true" color="#32427b"/>
+    <image id="n7_j3hl" name="n7" src="n8cll4" pkg="nhvxw9ov" xy="140,2" size="22,21" group="n11_j3hl">
+      <gearDisplay controller="ControllerStarNum" pages="1,2,3,4"/>
+    </image>
+    <image id="n8_j3hl" name="n8" src="n8cll4" pkg="nhvxw9ov" xy="164,2" size="22,21" group="n11_j3hl">
+      <gearDisplay controller="ControllerStarNum" pages="2,3,4"/>
+    </image>
+    <image id="n9_j3hl" name="n9" src="n8cll4" pkg="nhvxw9ov" xy="188,2" size="22,21" group="n11_j3hl">
+      <gearDisplay controller="ControllerStarNum" pages="3,4"/>
+    </image>
+    <image id="n10_j3hl" name="n10" src="n8cll4" pkg="nhvxw9ov" xy="212,2" size="22,21" group="n11_j3hl">
+      <gearDisplay controller="ControllerStarNum" pages="4"/>
+    </image>
+    <group id="n11_j3hl" name="n11" xy="56,0" size="178,25" hideByEditor="true" visible="false" advanced="true" collapsed="true">
+      <relation target="n1_j3hl" sidePair="left-right"/>
+    </group>
+  </displayList>
+</component>

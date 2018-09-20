@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2875815210
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5d848bcc7ac239e2358b8461dd92d2dc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/PayType/PayType.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/PayType/PayType@sprites.bytes
+Dependencies: []

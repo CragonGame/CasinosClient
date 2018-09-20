@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="94,83" extention="Button" initName="BtnShop">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <loader id="n10_hl9h" name="Lan_Image_Purse" xy="-2,-8" size="99,99" url="ui://gbdohaivj1yr8x" align="center" vAlign="middle" fill="scaleFree"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

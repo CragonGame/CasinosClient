@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rfaokxyd" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="oypw0" name="DesktopHTongSha.xml" path="/" exported="true"/>
+    <image id="oypw1" name="TongShaBg.png" path="/Image/" exported="true"/>
+  </resources>
+  <publish name="DesktopHTongSha" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHTongSha"/>
+</packageDescription>

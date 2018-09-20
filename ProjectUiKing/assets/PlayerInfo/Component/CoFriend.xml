@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="92,93" extention="Button">
+  <controller name="ControllerFriend" pages="0,Add,1,Remove" selected="0"/>
+  <displayList>
+    <image id="n0_mad8" name="n0" src="onuyc4" pkg="nhvxw9ov" xy="0,0"/>
+    <image id="n2_mad8" name="n2" src="qeucif" pkg="nhvxw9ov" xy="3,3">
+      <gearDisplay controller="ControllerFriend" pages="0"/>
+    </image>
+    <image id="n3_mad8" name="n3" src="qeucio" pkg="nhvxw9ov" xy="0,0">
+      <gearDisplay controller="ControllerFriend" pages="1"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

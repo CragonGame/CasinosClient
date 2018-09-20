@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2817465071
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: joinmatch.ab
+      Dependencies: {}

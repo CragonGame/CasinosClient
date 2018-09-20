@@ -1,0 +1,68 @@
+ManifestFileVersion: 0
+CRC: 3428280695
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c865b3cd7ff140ba7f94d317fd286e76
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ae1c816d550b352e2c1bc77235a296da
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3fac570381f34f647b768dc5a5aa1364, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ecaffc43a5d2b1d47858e3fb687e7271, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0c6f0cb32de4c1b46bc3a67a83553d08, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d546f34a90531a14eaba82a43b05b86b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesToolkit2D/UltimateResources/fish04SpriteCollection Data/atlas0 material.mat
+- Assets/ResourcesToolkit2D/UltimateResources/fish04SpriteCollection Data/fish04SpriteCollection.prefab
+- Assets/ResourcesToolkit2D/UltimateResources/fish01SpriteCollection Data/atlas0.png
+- Assets/ResourcesToolkit2D/UltimateResources/quanSpriteCollection Data/atlas0.png
+- Assets/ResourcesToolkit2D/UltimateResources/fish04SpriteCollection Data/atlas0.png
+- Assets/ResourcesToolkit2D/UltimateResources/fish05SpriteCollection Data/atlas0 material.mat
+- Assets/ResourcesToolkit2D/UltimateResources/fish01SpriteCollection Data/fish01SpriteCollection.prefab
+- Assets/ResourcesToolkit2D/UltimateResources/fish05SpriteCollection Data/fish05SpriteCollection.prefab
+- Assets/ResourcesToolkit2D/UltimateResources/water01SpriteCollection Data/atlas0
+  material.mat
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dMain/Tk2dObj.prefab
+- Assets/ResourcesToolkit2D/UltimateResources/WaterWaveSpriteCollection Data/atlas0.png
+- Assets/ResourcesToolkit2D/UltimateResources/gameSpriteAnimation.prefab
+- Assets/ResourcesToolkit2D/UltimateResources/fish03SpriteCollection Data/atlas0.png
+- Assets/ResourcesToolkit2D/UltimateResources/water01SpriteCollection Data/atlas0.png
+- Assets/ResourcesToolkit2D/UltimateResources/fish02SpriteCollection Data/fish02SpriteCollection.prefab
+- Assets/TK2DROOT/tk2d/Shaders/resources/BlendVertexColor.shader
+- Assets/ResourcesToolkit2D/UltimateResources/fish03SpriteCollection Data/atlas0 material.mat
+- Assets/ResourcesToolkit2D/UltimateResources/fish02SpriteCollection Data/atlas0 material.mat
+- Assets/ResourcesToolkit2D/UltimateResources/fish02SpriteCollection Data/atlas0.png
+- Assets/ResourcesToolkit2D/UltimateResources/fish05SpriteCollection Data/atlas0.png
+- Assets/ResourcesToolkit2D/UltimateResources/fish01SpriteCollection Data/atlas0 material.mat
+- Assets/ResourcesToolkit2D/UltimateResources/WaterWaveSpriteCollection Data/atlas0
+  material.mat
+- Assets/ResourcesToolkit2D/UltimateResources/quanSpriteCollection Data/quanSpriteCollection.prefab
+- Assets/ResourcesToolkit2D/UltimateResources/water01SpriteCollection Data/water01SpriteCollection.prefab
+- Assets/ResourcesToolkit2D/UltimateResources/quanSpriteCollection Data/atlas0 material.mat
+- Assets/ResourcesToolkit2D/UltimateResources/WaterWaveSpriteCollection Data/WaterWaveSpriteCollection.prefab
+- Assets/ResourcesToolkit2D/UltimateResources/fish03SpriteCollection Data/fish03SpriteCollection.prefab
+Dependencies: []

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="28,28">
+  <displayList>
+    <loader id="n1_fzur" name="LoaderChip" xy="0,0" size="28,28" url="ui://08hoz1y1kl3o27c" align="center" vAlign="middle" fill="scale"/>
+  </displayList>
+</component>

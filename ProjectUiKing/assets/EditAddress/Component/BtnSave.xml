@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="172,65" extention="Button" initName="BtnSave">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_j3hl" name="n4" src="mkwxec" fileName="Image/BtnYellow.png" pkg="nhvxw9ov" xy="0,0" size="172,65"/>
+    <text id="n5_j3hl" name="n5" xy="0,0" size="172,65" font="FontCu" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="保存"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.97"/>
+</component>

@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 330648401
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8e74c6e6f0eae6b81e7f29d3fbb0053b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/Share/Share.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/Share/Share@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/Share/Share@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/Share/Share@atlas1.png
+Dependencies: []

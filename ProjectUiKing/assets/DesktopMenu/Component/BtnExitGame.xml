@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="224,70" extention="Button" initName="BtnExitGame">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n6_gqzg" name="n6" src="gqzgo" xy="4,0" pivot="0.5,0.5" size="215,70">
+      <gearDisplay controller="button" pages="1"/>
+    </image>
+    <image id="n5_gqzg" name="n5" src="gqzgh" xy="44,15" pivot="0.5,0.5" size="42,34" skew="0,180"/>
+    <text id="n7_ewf7" name="n7" xy="93,20" size="76,44" fontSize="35" text="退出"/>
+  </displayList>
+  <Button/>
+</component>

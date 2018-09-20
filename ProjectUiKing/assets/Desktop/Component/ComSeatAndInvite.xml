@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="46,46" extention="Button">
+  <displayList>
+    <image id="n0_npdv" name="ImagePlayerSit" src="npdvw" xy="0,0"/>
+    <image id="n1_npdv" name="ImagePlayerInvite" src="npdvv" xy="0,0"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

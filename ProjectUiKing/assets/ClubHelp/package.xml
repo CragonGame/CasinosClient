@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="u0mfw6o4" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="sd6w0" name="ClubHelp.xml" path="/" exported="true"/>
+    <component id="sd6w1" name="ComConten.xml" path="/Component/"/>
+  </resources>
+  <publish name="ClubHelp" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\ClubHelp"/>
+</packageDescription>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n0_sd6w" name="ComBgAndClose" src="vi47jm" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n1_sd6w" name="n1" src="lh6bjy" pkg="nhvxw9ov" xy="139,78" group="n10_nhsw"/>
+    <image id="n2_sd6w" name="n2" src="vi47jp" pkg="nhvxw9ov" xy="490,74" pivot="0.5,0.5" group="n10_nhsw">
+      <relation target="n9_nhsw" sidePair="right-left"/>
+    </image>
+    <image id="n3_sd6w" name="n3" src="vi47jp" pkg="nhvxw9ov" xy="538,74" pivot="0.5,0.5" group="n10_nhsw" skew="0,180">
+      <relation target="n9_nhsw" sidePair="left-right"/>
+    </image>
+    <component id="n6_sd6w" name="n6" src="sd6w1" xy="183,180" size="695,346" group="n10_nhsw"/>
+    <text id="n9_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n10_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n10_nhsw" name="n10" xy="139,74" size="739,452" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="g3v18g13" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="eh360" name="Friend.xml" path="/" exported="true"/>
+    <component id="o1cmo" name="MenuBtn.xml" path="/Component/" exported="true"/>
+    <component id="qsg8p" name="ComDetailInfo.xml" path="/Component/" exported="true"/>
+    <component id="kuplr" name="ComFriendItem.xml" path="/Component/" exported="true"/>
+    <component id="heqs13" name="MenuBtnOrange.xml" path="/Component/"/>
+    <image id="fol714" name="ItemBg.png" path="/Image/"/>
+    <image id="fol715" name="ItemBgChoose.png" path="/Image/"/>
+    <component id="jyil18" name="ComReportPlayer.xml" path="/Component/"/>
+  </resources>
+  <publish name="Friend" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Friend"/>
+</packageDescription>

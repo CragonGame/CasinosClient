@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="120,29" initName="ComRewardExplain">
+  <displayList>
+    <text id="n0_flnp" name="Lan_Text_RewardNote" xy="0,0" size="95,29" fontSize="22" color="#6879c4" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="奖励说明"/>
+    <component id="n1_flnp" name="BtnHelp" src="sd6wl0" fileName="Component/Btn/BtnHelp.xml" pkg="nhvxw9ov" xy="96,2" size="24,24" aspect="true"/>
+  </displayList>
+</component>

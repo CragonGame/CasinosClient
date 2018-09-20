@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="484,39">
+  <displayList>
+    <component id="n189_sbed" name="ComTextCountryCode" src="jczm1h" fileName="Component/ComTextCountryCode.xml" xy="0,0"/>
+    <text id="n191_sbed" name="InputAccLogin" xy="183,0" size="300,39" input="true" maxLength="32" keyboardType="4" fontSize="30" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="355,110" extention="Button" initName="BtnDeskTOP">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <loader id="n17_hl9h" name="Lan_Image_Desk" xy="0,0" size="355,111" url="ui://gbdohaivlh6b88" align="center" vAlign="middle" fill="scaleFree"/>
+    <image id="n13_lh6b" name="n13" src="lh6b88" fileName="Image/普通.png" xy="0,0" size="355,110" hideByEditor="true" aspect="true" visible="false"/>
+    <image id="n14_lh6b" name="n14" src="lh6b8a" fileName="Image/UI2_主界面_立即开始扑克1.png" xy="63,-17"/>
+    <graph id="n16_tv2t" name="HolderParticle" xy="47,53" size="0,0"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.97"/>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="XY" target="n14_lh6b" tween="true" startValue="63,-17" endValue="69,-21" duration="36" ease="Linear" repeat="-1" yoyo="true"/>
+  </transition>
+</component>

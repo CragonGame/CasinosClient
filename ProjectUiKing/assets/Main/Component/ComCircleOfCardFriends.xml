@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="256,85" extention="Button" initName="ComCircleOfCardFriends">
+  <displayList>
+    <loader id="n1_hl9h" name="Lan_Image_Club" xy="0,0" size="256,85" url="ui://gbdohaivs17d8l" align="center" vAlign="middle" fill="scaleFree"/>
+    <image id="n0_s17d" name="n0" src="s17d8l" fileName="Image/UI2_主界面_牌友圈01.png" xy="0,0" size="256,85" hideByEditor="true" aspect="true" visible="false"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

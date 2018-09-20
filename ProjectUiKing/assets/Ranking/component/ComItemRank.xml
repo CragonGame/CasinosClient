@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="745,96">
+  <displayList>
+    <component id="n23_lh6b" name="n23" src="lh6bjw" pkg="nhvxw9ov" xy="0,0"/>
+    <text id="n11_g8bh" name="NickName" xy="226,30" pivot="0.5,0.5" size="160,35" fontSize="26" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n12_g8bh" name="Gold" xy="530,30" pivot="0.5,0.5" size="185,35" fontSize="26" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n19_u40k" name="CoHeadIcon" src="d45975" pkg="nhvxw9ov" xy="117,5" size="85,85" aspect="true"/>
+    <component id="n18_u40k" name="CoRankSign" src="u40kj" xy="31,10"/>
+  </displayList>
+  <transition name="MoveUp" autoPlay="true"/>
+</component>

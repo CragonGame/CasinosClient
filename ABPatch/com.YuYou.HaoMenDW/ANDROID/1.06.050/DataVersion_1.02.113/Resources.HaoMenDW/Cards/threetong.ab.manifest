@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3556722924
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ca4d330860e62641a0aa7e6c14bb83ec
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Cards/ThreeTong.png
+Dependencies: []

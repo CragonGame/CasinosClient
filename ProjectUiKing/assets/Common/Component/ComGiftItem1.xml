@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="98,144">
+  <controller name="ConttollerBg" pages="0,Black,1,Light" selected="0"/>
+  <displayList>
+    <image id="n9_8xod" name="n9" src="8xode8" fileName="Image/BgGift.png" xy="0,0" size="98,98"/>
+    <image id="n10_8xod" name="n10" src="8xode9" fileName="Image/CommonBlueLightBg.png" xy="0,0" size="98,98">
+      <gearDisplay controller="ConttollerBg" pages="1"/>
+    </image>
+    <loader id="n1_mad8" name="LoaderGift" xy="0,0" size="98,98" align="center" vAlign="middle" fill="scaleMatchHeight"/>
+    <text id="n2_mad8" name="GiftName" xy="0,98" size="98,23" fontSize="17" color="#c09be6" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="红跑车"/>
+    <text id="n3_mad8" name="GiftValue" xy="0,121" size="97,23" fontSize="17" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="60000"/>
+  </displayList>
+</component>

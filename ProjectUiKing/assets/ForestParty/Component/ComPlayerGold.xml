@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="315,102">
+  <displayList>
+    <image id="n15_q6q3" name="n15" src="q6q3lc" xy="0,0"/>
+    <image id="n5_ay3t" name="n5" src="ieudfv" xy="7,7"/>
+    <image id="n16_bjg9" name="n16" src="bjg9lk" xy="7,58"/>
+    <image id="n17_bjg9" name="n17" src="bjg9ll" xy="137,5" size="170,36"/>
+    <image id="n18_bjg9" name="n18" src="bjg9ll" xy="137,57" size="170,36"/>
+    <text id="n9_g9bo" name="TextSelfClearGold" xy="138,10" size="126,26" font="ui://si97dldqbjg9lw" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="none" singleLine="true" text=""/>
+    <text id="n12_g9bo" name="TextSelfGold" xy="139,62" size="124,26" font="ui://si97dldqbjg9lw" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="none" singleLine="true" text=""/>
+    <text id="n13_9nzx" name="TextSelfClearGoldWanOrYi" xy="265,4" size="41,39" fontSize="20" color="#f2e3b8" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <text id="n14_9nzx" name="TextSelfGoldWanOrYi" xy="265,55" size="41,39" fontSize="20" color="#f2e3b8" vAlign="middle" leading="0" autoSize="none" text=""/>
+  </displayList>
+  <transition name="TransitionClearGold"/>
+</component>

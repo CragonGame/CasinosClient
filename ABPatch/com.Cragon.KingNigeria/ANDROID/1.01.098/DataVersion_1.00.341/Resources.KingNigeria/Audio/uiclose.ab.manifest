@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3204989418
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e66fec5a828e3cf57a4dad25498424dd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/UIClose.wav
+Dependencies: []

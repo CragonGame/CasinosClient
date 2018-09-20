@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4107752330
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: eb97d892703d1d1ae6f72827f9b8011e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e524609455c7cfb29b5bab3f5d3ec7c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgFold/Ui/LotteryTicket/LotteryTicket@atlas0.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/LotteryTicket/LotteryTicket.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/LotteryTicket/LotteryTicket@sprites.bytes
+Dependencies: []

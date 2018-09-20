@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="k5bmvao8" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="souu0" name="Feedback.xml" path="/" exported="true"/>
+    <component id="souu2" name="ComInput.xml" path="/Component/"/>
+  </resources>
+  <publish name="Feedback" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Feedback"/>
+</packageDescription>

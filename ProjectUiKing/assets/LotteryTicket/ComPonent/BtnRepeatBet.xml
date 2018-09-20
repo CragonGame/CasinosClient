@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="166,51" extention="Button">
+  <displayList>
+    <image id="n2_oprn" name="n2" src="oprn5h" xy="0,0"/>
+    <loader id="n4_q5yu" name="Lan_Image_BetRepeat" xy="18,9" size="129,32" touchable="false" url="ui://6kz8w16qq5yu4k" align="center" vAlign="middle"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.95"/>
+</component>

@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 3181125299
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c44418718602c0c66ef893a6f2f46ef6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Item/14002.png
+Dependencies: []

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="186,67" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n7_n8cl" name="n7" src="mkwxec" pkg="nhvxw9ov" xy="0,0" size="186,67"/>
+    <text id="n8_n8cl" name="Price" xy="66,17" pivot="0.5,0.5" size="93,27" font="ui://3pqfkhlubsci14" fontSize="24" color="#ffffff" align="center" vAlign="middle" leading="6" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n10_n8cl" name="n10" src="ixpjau" pkg="nhvxw9ov" xy="26,14" size="40,32"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

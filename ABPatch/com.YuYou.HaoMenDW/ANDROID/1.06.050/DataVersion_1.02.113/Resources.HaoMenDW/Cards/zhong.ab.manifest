@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3668471136
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b40b7b9780ccf8cf1cde256c576a143b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Cards/Zhong.png
+Dependencies: []

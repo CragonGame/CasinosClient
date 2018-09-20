@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="170,66" extention="Button" initName="BtnApply">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_gy6l" name="n4" src="mkwxec" fileName="Image/BtnYellow.png" pkg="nhvxw9ov" xy="0,0" size="170,66"/>
+    <text id="n5_gy6l" name="Lan_Text_SignUp" xy="7,0" pivot="0.5,0.5" size="153,66" font="FontCu" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="报名"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

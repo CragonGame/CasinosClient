@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rzivlazq" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="oypw0" name="DesktopHTongPei.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="DesktopHTongPei" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\DesktopHTongPei"/>
+</packageDescription>

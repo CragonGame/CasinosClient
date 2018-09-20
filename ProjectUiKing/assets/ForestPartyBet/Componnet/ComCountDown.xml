@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="100,100">
+  <displayList>
+    <image id="n0_ay3t" name="n0" src="ieud36" xy="0,0"/>
+    <text id="n1_ay3t" name="TextCount" xy="5,5" size="90,90" font="ui://6xa2blv5fgtk4q" fontSize="40" color="#f7fb62" align="center" vAlign="middle" leading="0" autoSize="none" bold="true" strokeColor="#ffb000" strokeSize="2" text="26"/>
+  </displayList>
+</component>

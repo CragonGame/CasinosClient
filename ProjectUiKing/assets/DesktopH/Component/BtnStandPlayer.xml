@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="74,78" extention="Button" initName="BtnStandPlayer">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n6_ipt6" name="n6" src="wb2ek5" fileName="Image/New/UI2_通用按钮_icon底.png" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n5_jx6n" name="n5" src="jx6n54" fileName="Image/wj.png" xy="0,0"/>
+  </displayList>
+  <Button/>
+</component>

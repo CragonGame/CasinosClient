@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="5e3qcz8f" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="w6r60" name="LockChat.xml" path="/" exported="true"/>
+    <image id="w6r62" name="TextureUnLock.png" path="/Image/" exported="true"/>
+    <image id="w6r66" name="TextureLocked.png" path="/Image/" exported="true"/>
+    <image id="w6r69" name="Dealer.png" path="/Image/"/>
+    <component id="w6r6b" name="ComCheckPlayer.xml" path="/Component/" exported="true"/>
+    <image id="cdfzf" name="IconPlayer.png" path="/Image/"/>
+    <component id="hp40g" name="BtnCheck1.xml" path="/Component/" exported="true"/>
+    <component id="tabch" name="ComBgAndClose.xml" path="/Component/"/>
+  </resources>
+  <publish name="LockChat" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\LockChat"/>
+</packageDescription>

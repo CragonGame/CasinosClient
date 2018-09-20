@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="182,503">
+  <controller name="ControllerTab" pages="2,Consume,3,Vip,4,Gift" selected="0"/>
+  <displayList>
+    <image id="n0_hrhq" name="n0" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="182,1000" group="n53_hrhq" alpha="0.9" color="#192245"/>
+    <image id="n1_hrhq" name="n1" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="0,86" size="182,4" group="n53_hrhq"/>
+    <image id="n2_hrhq" name="n2" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="0,176" size="182,4" group="n53_hrhq"/>
+    <image id="n7_hrhq" name="n7" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="0,268" size="182,4" group="n53_hrhq"/>
+    <image id="n22_hrhq" name="n22" src="hrhqke" fileName="Image/New/图层10.png" pkg="nhvxw9ov" xy="25,19" pivot="0.5,0.5" group="n34_hrhq" color="#748bba"/>
+    <text id="n23_hrhq" name="Lan_Text_Consume" xy="68,26" pivot="0.5,0.5" size="95,33" group="n34_hrhq" font="FontCu" fontSize="25" color="#748bba" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="消耗品"/>
+    <group id="n34_hrhq" name="n34" xy="25,19" size="138,47" group="n53_hrhq"/>
+    <text id="n24_hrhq" name="Lan_Text_VIP" xy="68,116" pivot="0.5,0.5" size="95,33" group="n35_hrhq" font="FontCu" fontSize="25" color="#748bba" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="贵族"/>
+    <image id="n25_hrhq" name="n25" src="hrhq38" fileName="Image/图层3.png" xy="19,115" pivot="0.5,0.5" group="n35_hrhq" color="#748bba"/>
+    <group id="n35_hrhq" name="n35" xy="19,115" size="144,36" group="n53_hrhq"/>
+    <image id="n54_hrhq" name="n54" src="hrhq3f" fileName="Image/图层18.png" xy="21,200" group="n56_hrhq" color="#748bba"/>
+    <text id="n55_hrhq" name="Lan_Text_Gift1" xy="68,207" pivot="0.5,0.5" size="95,33" group="n56_hrhq" font="FontCu" fontSize="25" color="#748bba" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="礼品"/>
+    <group id="n56_hrhq" name="n56" xy="21,200" size="142,46" group="n53_hrhq" advanced="true"/>
+    <group id="n53_hrhq" name="n53" xy="0,0" size="182,1000"/>
+    <component id="n46_hrhq" name="n46" src="hrhq39" fileName="Component/New/TabLight.xml" xy="0,0" group="n52_hrhq">
+      <gearDisplay controller="ControllerTab" pages="2"/>
+    </component>
+    <component id="n47_hrhq" name="n47" src="hrhq39" fileName="Component/New/TabLight.xml" xy="0,91" group="n52_hrhq">
+      <gearDisplay controller="ControllerTab" pages="3"/>
+    </component>
+    <component id="n48_hrhq" name="n48" src="hrhq39" fileName="Component/New/TabLight.xml" xy="0,181" group="n52_hrhq">
+      <gearDisplay controller="ControllerTab" pages="4"/>
+    </component>
+    <group id="n52_hrhq" name="n52" xy="0,0" size="181,268" collapsed="true"/>
+    <image id="n40_hrhq" name="n40" src="hrhqke" fileName="Image/New/图层10.png" pkg="nhvxw9ov" xy="25,19" pivot="0.5,0.5" group="n42_hrhq"/>
+    <text id="n41_hrhq" name="Lan_Text_Consume" xy="68,26" pivot="0.5,0.5" size="95,33" group="n42_hrhq" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="消耗品"/>
+    <group id="n42_hrhq" name="n42" xy="25,19" size="138,47" advanced="true">
+      <gearDisplay controller="ControllerTab" pages="2"/>
+    </group>
+    <text id="n43_hrhq" name="Lan_Text_VIP" xy="68,116" pivot="0.5,0.5" size="95,33" group="n45_hrhq" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="贵族"/>
+    <image id="n44_hrhq" name="n44" src="hrhq38" fileName="Image/图层3.png" xy="19,115" pivot="0.5,0.5" group="n45_hrhq"/>
+    <group id="n45_hrhq" name="n45" xy="19,115" size="144,36" advanced="true">
+      <gearDisplay controller="ControllerTab" pages="3"/>
+    </group>
+    <image id="n58_hrhq" name="n58" src="hrhq3f" fileName="Image/图层18.png" xy="21,200" group="n60_hrhq"/>
+    <text id="n59_hrhq" name="Lan_Text_Gift1" xy="68,207" pivot="0.5,0.5" size="95,33" group="n60_hrhq" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="礼品"/>
+    <group id="n60_hrhq" name="n60" xy="21,200" size="142,46" advanced="true">
+      <gearDisplay controller="ControllerTab" pages="4"/>
+    </group>
+  </displayList>
+</component>

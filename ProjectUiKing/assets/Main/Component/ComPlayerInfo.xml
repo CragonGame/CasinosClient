@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="275,99">
+  <controller name="ControllerShowDiamondIcon" pages="0,Show,1,Hide" selected="1">
+    <action type="play_transition" fromPage="0" toPage="1" transition="t0"/>
+  </controller>
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="1"/>
+  <displayList>
+    <component id="n1_d6ge" name="CoHeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="0,0" size="99,99"/>
+    <text id="n2_d6ge" name="TextName" xy="101,0" size="174,39" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n3_d6ge" name="TextChips" xy="127,38" size="147,31" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n4_d6ge" name="TextGolds" xy="127,68" size="147,31" fontSize="22" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n5_trl1" name="IconGold0" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="103,42" pivot="0.5,0.5" size="22,22" group="n8_j1yr" color="#61e2ff"/>
+    <image id="n7_g5lb" name="IconDiamond0" src="ixpjau" fileName="Image/DiamondIcon.png" pkg="nhvxw9ov" xy="101,74" size="26,19" group="n8_j1yr">
+      <gearDisplay controller="ControllerShowDiamondIcon" pages="0"/>
+    </image>
+    <group id="n8_j1yr" name="n8" xy="101,42" size="26,51" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </group>
+    <image id="n9_j1yr" name="IconGold1" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="102,44" size="22,22" group="n11_j1yr" color="#61e2ff"/>
+    <image id="n10_j1yr" name="IconDiamond1" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="102,73" size="22,22" group="n11_j1yr" color="#a273ff">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </image>
+    <group id="n11_j1yr" name="n11" xy="102,44" size="22,51" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </group>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="XY" target="n4_d6ge" value="100,-"/>
+  </transition>
+</component>

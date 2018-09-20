@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1785209764
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: createdesktop.ab
+      Dependencies: {}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="170,80">
+  <controller name="ControllerSelected" pages="0,,1," selected="0"/>
+  <displayList>
+    <image id="n8_phss" name="n8" src="u51ojc" pkg="nhvxw9ov" xy="0,0" size="170,80" group="n11_phss" alpha="0.5" color="#5459b0"/>
+    <image id="n10_phss" name="n10" src="u51oj6" pkg="nhvxw9ov" xy="0,0" size="170,80" group="n11_phss" color="#6c7bdc"/>
+    <group id="n11_phss" name="n11" xy="0,0" size="170,80" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerSelected" pages="1"/>
+    </group>
+    <loader id="n0_lnv7" name="LoaderType" xy="0,0" size="20,41"/>
+    <text id="n1_lnv7" name="TextTitle" xy="0,20" pivot="0.5,0.5" size="170,39" font="FontCu" fontSize="27" color="#edeef7" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="祭坛太原                 "/>
+    <image id="n9_phss" name="n9" src="u51ojc" pkg="nhvxw9ov" xy="0,78" size="170,2" color="#3f468c"/>
+  </displayList>
+</component>

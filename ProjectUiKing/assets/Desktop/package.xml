@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="08hoz1y1" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="pkp83" name="Desktop.xml" path="/" exported="true"/>
+    <image id="npdvm" name="CardHighlight.png" path="/Image/" exported="true" scale="9grid" scale9grid="29,41,58,82"/>
+    <component id="npdvn" name="ComCard.xml" path="/Component/" exported="true"/>
+    <image id="npdvo" name="Chip250.png" path="/Image/" exported="true"/>
+    <component id="npdvp" name="ComSeat0.xml" path="/Component/"/>
+    <image id="npdvq" name="DeskChair4.png" path="/Image/"/>
+    <image id="npdvr" name="DeskChair5.png" path="/Image/"/>
+    <image id="npdvs" name="DeskChair3.png" path="/Image/"/>
+    <image id="npdvt" name="DeskChair2.png" path="/Image/"/>
+    <image id="npdvu" name="DeskChair1.png" path="/Image/"/>
+    <image id="npdvv" name="PlayerInvite.png" path="/Image/"/>
+    <image id="npdvw" name="PlayerSit.png" path="/Image/" exported="true"/>
+    <component id="npdvx" name="ComSeat1.xml" path="/Component/"/>
+    <component id="npdvy" name="ComSeat2.xml" path="/Component/"/>
+    <component id="npdvz" name="ComSeat3.xml" path="/Component/"/>
+    <component id="npdv10" name="ComSeat4.xml" path="/Component/"/>
+    <component id="npdv11" name="ComSeatAndInvite.xml" path="/Component/"/>
+    <component id="npdv12" name="ComDealCard.xml" path="/Component/" exported="true"/>
+    <component id="xk561y" name="BtnShop.xml" path="/Component/" exported="true"/>
+    <component id="xk561z" name="BtnDesktopCardType.xml" path="/Component/"/>
+    <component id="xk5621" name="BtnLockChat.xml" path="/Component/"/>
+    <component id="xk5623" name="BtnMenu.xml" path="/Component/" exported="true"/>
+    <image id="tfq42q" name="wifi_2.png" path="/Image/NetWork/"/>
+    <image id="tfq42r" name="wifi_3.png" path="/Image/NetWork/"/>
+    <image id="tfq42s" name="wifi_4.png" path="/Image/NetWork/"/>
+    <image id="tfq42t" name="Wifi.png" path="/Image/NetWork/" exported="true"/>
+    <image id="rdp32z" name="PlayerActionTips.png" path="/Image/" scale="9grid" scale9grid="10,6,10,3"/>
+    <component id="cpaa53" name="BtnChatFriend.xml" path="/Component/" exported="true"/>
+    <image id="t3v85t" name="DeskChair6.png" path="/Image/"/>
+    <image id="vwta5u" name="BgChips.png" path="/Image/" exported="true" scale="9grid" scale9grid="24,7,48,14"/>
+    <image id="vwta5v" name="RaiseBackground.png" path="/Image/"/>
+    <image id="vwta5w" name="RaiseBtn.png" path="/Image/"/>
+    <image id="vwta5x" name="RaiseOff.png" path="/Image/"/>
+    <image id="vwta5y" name="RaiseOn.png" path="/Image/"/>
+    <image id="eajt5z" name="z.png" path="/Image/"/>
+    <image id="eajt60" name="0_2.png" path="/Image/"/>
+    <image id="q7rr61" name="DeskGirl.png" path="/Image/"/>
+    <component id="q7ht66" name="BtnFriend.xml" path="/Component/" exported="true"/>
+    <component id="q7ht68" name="BtnFriendChat.xml" path="/Component/" exported="true"/>
+    <image id="n1oc6b" name="BgDesktop1.jpg" path="/Image/" atlas="1"/>
+    <image id="n1oc6c" name="BtnAddon.png" path="/Image/"/>
+    <image id="n1oc6d" name="BtnRebuy.png" path="/Image/"/>
+    <component id="n1oc6e" name="BtnRebuy.xml" path="/Component/"/>
+    <component id="n1oc6f" name="BtnAddon.xml" path="/Component/"/>
+    <image id="n1oc6g" name="RealtimeInfoBg.png" path="/Image/" scale="9grid" scale9grid="7,38,13,29" gridTile="16"/>
+    <component id="n1oc6h" name="ComRealTimeInfo.xml" path="/Component/" exported="true"/>
+    <image id="n1oc6i" name="BgDesktop2.jpg" path="/Image/"/>
+    <image id="qljn6k" name="WaitLight.png" path="/Image/"/>
+    <component id="qljn6l" name="ComWaiting.xml" path="/Component/"/>
+    <image id="qljn6m" name="86.PNG" path="/Image/"/>
+    <component id="qljn6n" name="ComProces1.xml" path="/Component/"/>
+    <image id="qljn6s" name="NYL_Text.png" path="/Image/"/>
+    <image id="qljn6t" name="NYL_MaiSui.png" path="/Image/"/>
+    <image id="qljn6u" name="NYL_MaiSui1.png" path="/Image/"/>
+    <image id="a8co6w" name="c51(1).png" path="/"/>
+    <image id="a8co6y" name="MoblieNetWork.png" path="/Image/NetWork/" exported="true"/>
+    <image id="a8co6z" name="NoNetwork.png" path="/Image/NetWork/" exported="true"/>
+    <image id="10je270" name="hint.png" path="/Image/"/>
+    <image id="10je271" name="lockchat.png" path="/Image/"/>
+    <image id="10je272" name="chatfriend.png" path="/Image/"/>
+    <image id="10je273" name="friend.png" path="/Image/"/>
+    <image id="10je274" name="menu.png" path="/Image/"/>
+    <image id="10je275" name="msg.png" path="/Image/"/>
+    <image id="hzcp276" name="2.png" path="/Image/"/>
+    <image id="dq41277" name="CardBack.png" path="/Image/"/>
+    <image id="kl3o278" name="Chip4.png" path="/Image/Chips/" exported="true"/>
+    <image id="kl3o279" name="Chip5.png" path="/Image/Chips/" exported="true"/>
+    <image id="kl3o27a" name="Chip7.png" path="/Image/Chips/" exported="true"/>
+    <image id="kl3o27b" name="Chip1.png" path="/Image/Chips/" exported="true"/>
+    <image id="kl3o27c" name="Chip6.png" path="/Image/Chips/" exported="true"/>
+    <image id="kl3o27d" name="Chip2.png" path="/Image/Chips/" exported="true"/>
+    <image id="kl3o27e" name="Chip3.png" path="/Image/Chips/" exported="true"/>
+    <component id="mlxc27f" name="ComChip1.xml" path="/Component/" exported="true"/>
+    <component id="mlxc27g" name="ComChip2.xml" path="/Component/" exported="true"/>
+    <component id="mlxc27h" name="ComChip3.xml" path="/Component/" exported="true"/>
+    <component id="mlxc27i" name="ComChip4.xml" path="/Component/" exported="true"/>
+    <component id="mlxc27j" name="ComChip5.xml" path="/Component/" exported="true"/>
+    <component id="mlxc27k" name="ComChip6.xml" path="/Component/" exported="true"/>
+    <component id="mlxc27l" name="ComChip7.xml" path="/Component/" exported="true"/>
+    <component id="f8gu27m" name="ComPot.xml" path="/Component/"/>
+    <image id="ow3k27n" name="ClassicDesk.png" path="/Image/" exported="true" scale="" atlas="4"/>
+    <image id="ow3k27o" name="ClassicBg.png" path="/Image/" exported="true" scale="" atlas="3"/>
+    <image id="ow3k27p" name="MTTBg.png" path="/Image/" exported="true" scale="" atlas="1"/>
+    <image id="ow3k27q" name="MTTDesk.png" path="/Image/" exported="true" scale="" atlas="2"/>
+  </resources>
+  <publish name="Desktop" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Desktop"/>
+</packageDescription>

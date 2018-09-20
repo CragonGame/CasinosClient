@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2605592007
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 86cedea7a2f6c5d4f78fba53de0c17c5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/desk_player_turn.wav
+Dependencies: []

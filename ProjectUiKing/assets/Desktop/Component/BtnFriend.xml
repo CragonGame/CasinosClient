@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="74,78" extention="Button" initName="BtnFriend">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n5_he5u" name="n5" src="he5udl" fileName="Image/BtnSmallBg.png" pkg="nhvxw9ov" xy="0,0" hideByEditor="true" visible="false"/>
+    <image id="n4_ixpj" name="n4" src="q7ht67" fileName="" xy="6,5" hideByEditor="true" visible="false"/>
+    <image id="n7_ipt6" name="n7" src="wb2ek5" fileName="Image/New/UI2_通用按钮_icon底.png" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n6_10je2" name="n6" src="10je273" fileName="Image/friend.png" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

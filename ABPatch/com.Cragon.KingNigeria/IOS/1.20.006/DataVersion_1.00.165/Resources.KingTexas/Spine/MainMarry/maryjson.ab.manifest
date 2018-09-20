@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2920828256
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 060f5191a9cc01fcf36cbbda42879098
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Spine/MainMarry/MaryJson.json
+Dependencies: []

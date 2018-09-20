@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1265028478
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e3a177e4ef3511875fdb1da34b3d7d2c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTongPei/DesktopHTongPei.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTongPei/DesktopHTongPei@sprites.bytes
+Dependencies: []

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="707,42" initName="ComTab">
+  <controller name="ControllerTab" pages="0,,1,,2,,3,,4," selected="1"/>
+  <displayList>
+    <component id="n0_inau" name="BtnOverView" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="0,0" size="139,42">
+      <gearDisplay controller="ControllerTab" pages="1,2,3,4"/>
+    </component>
+    <component id="n2_inau" name="BtnMatchState" src="bjg9cm" fileName="Component/Btn/BtnTab1.xml" pkg="nhvxw9ov" xy="142,0" size="139,42"/>
+    <component id="n3_inau" name="BtnRank" src="bjg9cm" fileName="Component/Btn/BtnTab1.xml" pkg="nhvxw9ov" xy="284,0" size="139,42"/>
+    <component id="n4_inau" name="BtnBlind" src="bjg9cm" fileName="Component/Btn/BtnTab1.xml" pkg="nhvxw9ov" xy="426,0" size="139,42"/>
+    <component id="n5_inau" name="BtnReward" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="568,0" pivot="0.5,0.5" size="139,42" skew="0,180">
+      <gearDisplay controller="ControllerTab" pages="0,1,2,3"/>
+    </component>
+    <text id="n11_inau" name="Lan_Text_Summary" xy="1,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#6c7ecc" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="概述"/>
+    <text id="n12_inau" name="Lan_Text_SaiKuang" xy="142,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#6c7ecc" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="赛况"/>
+    <text id="n13_inau" name="Lan_Text_MatchRank" xy="284,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#6c7ecc" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="排名 "/>
+    <text id="n14_inau" name="Lan_Text_Blind" xy="426,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#6c7ecc" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="盲注"/>
+    <text id="n15_inau" name="Lan_Text_Reward" xy="568,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#6c7ecc" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="奖励"/>
+    <image id="n6_inau" name="n6" src="bjg9cl" fileName="Image/BtnTab1Light.png" pkg="nhvxw9ov" xy="142,0" size="139,42">
+      <gearDisplay controller="ControllerTab" pages="1"/>
+    </image>
+    <image id="n7_inau" name="n7" src="bjg9cl" fileName="Image/BtnTab1Light.png" pkg="nhvxw9ov" xy="284,0" size="139,42">
+      <gearDisplay controller="ControllerTab" pages="2"/>
+    </image>
+    <image id="n8_inau" name="n8" src="bjg9cl" fileName="Image/BtnTab1Light.png" pkg="nhvxw9ov" xy="426,0" size="139,42">
+      <gearDisplay controller="ControllerTab" pages="3"/>
+    </image>
+    <image id="n9_inau" name="n9" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="0,0" size="139,42">
+      <gearDisplay controller="ControllerTab" pages="0"/>
+    </image>
+    <image id="n10_inau" name="n10" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="568,0" pivot="0.5,0.5" size="139,42" skew="0,180">
+      <gearDisplay controller="ControllerTab" pages="4"/>
+    </image>
+    <text id="n16_inau" name="Lan_Text_Summary" xy="1,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="概述">
+      <gearDisplay controller="ControllerTab" pages="0"/>
+    </text>
+    <text id="n17_inau" name="Lan_Text_SaiKuang" xy="142,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="赛况">
+      <gearDisplay controller="ControllerTab" pages="1"/>
+    </text>
+    <text id="n21_p5bt" name="Lan_Text_MatchRank" xy="284,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="排名 ">
+      <gearDisplay controller="ControllerTab" pages="2"/>
+    </text>
+    <text id="n19_inau" name="Lan_Text_Blind" xy="426,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" text="盲注">
+      <gearDisplay controller="ControllerTab" pages="3"/>
+    </text>
+    <text id="n20_inau" name="Lan_Text_Reward" xy="568,3" pivot="0.5,0.5" size="139,37" font="FontCu" fontSize="23" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" text="奖励">
+      <gearDisplay controller="ControllerTab" pages="4"/>
+    </text>
+  </displayList>
+</component>

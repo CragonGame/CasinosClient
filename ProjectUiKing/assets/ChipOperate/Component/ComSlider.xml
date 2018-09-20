@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="626,142">
+  <displayList>
+    <text id="n5_je85" name="TextMinusTips" xy="0,0" size="121,39" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n3_je85" name="TextPlusTips" xy="505,0" size="121,39" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n0_je85" name="BtnWheelPlus" src="eccy8" xy="534,76"/>
+    <component id="n1_je85" name="BtnWheelMinus" src="eccyb" xy="29,75"/>
+    <component id="n10_eccy" name="Slider" src="eccy1" xy="122,87">
+      <Slider value="50" max="100"/>
+    </component>
+  </displayList>
+</component>

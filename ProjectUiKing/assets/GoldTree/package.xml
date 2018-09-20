@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="rj2n7373" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="jios10" name="GoldTree.xml" path="/" exported="true"/>
+    <component id="n8861p" name="ComTips.xml" path="/Component/" exported="true"/>
+    <component id="bsci1s" name="BtnReturn.xml" path="/Component/"/>
+    <component id="bsci1z" name="Lan_Btn_RecharegeNow.xml" path="/Component/"/>
+    <movieclip id="g5lb24" name="AniGoldTree.jta" path="/Component/" exported="true" atlas="1"/>
+    <movieclip id="g5lb25" name="AniGoldTreeShine.jta" path="/Component/" exported="true"/>
+    <image id="w07g26" name="bt_01.png" path="/Image/"/>
+    <image id="w07g27" name="bt_03.png" path="/Image/"/>
+  </resources>
+  <publish name="GoldTree" path="E:\Cragon.Casinos.Client\branches\KingTexas12.28\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\GoldTree"/>
+</packageDescription>

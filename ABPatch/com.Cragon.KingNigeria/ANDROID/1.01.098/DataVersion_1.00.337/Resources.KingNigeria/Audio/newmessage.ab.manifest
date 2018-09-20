@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2251393961
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: be2da11d7cf110c3b45df8b472053f34
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/NewMessage.ogg
+Dependencies: []

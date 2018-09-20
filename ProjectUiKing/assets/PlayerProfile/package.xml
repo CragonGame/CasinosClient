@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="h1mhsg6k" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="vfhr0" name="PlayerProfile.xml" path="/" exported="true"/>
+    <component id="mad8h" name="CoGiftHome.xml" path="/Component/" exported="true"/>
+    <component id="mad8i" name="CoGift.xml" path="/Component/" exported="true"/>
+    <component id="mad8j" name="CoFriend.xml" path="/Component/" exported="true"/>
+    <component id="mad8k" name="CoSendChip.xml" path="/Component/" exported="true"/>
+    <component id="mad8l" name="CoReport.xml" path="/Component/" exported="true"/>
+    <movieclip id="lj3qp" name="AniBomb.jta" path="/Component/" exported="true"/>
+    <movieclip id="lj3qq" name="AniCheers.jta" path="/Component/" exported="true"/>
+    <movieclip id="lj3qr" name="AniEgg.jta" path="/Component/" exported="true"/>
+    <movieclip id="lj3qs" name="AniFlower.jta" path="/Component/" exported="true"/>
+    <movieclip id="lj3qt" name="AniKiss.jta" path="/Component/" exported="true"/>
+    <movieclip id="lj3qu" name="AniShoe.jta" path="/Component/" exported="true"/>
+    <component id="lj3qv" name="ComLockChat.xml" path="/Component/" exported="true"/>
+    <component id="lj3qw" name="ComMagicExp.xml" path="/Component/" exported="true"/>
+    <component id="lj3qx" name="ComMagicExpSender.xml" path="/Component/" exported="true"/>
+    <component id="vxr833" name="ComGiftItemEx.xml" path="/Component/" exported="true"/>
+    <image id="icp54x" name="bomb1.png" path="/Image/MagicExp/Bomb/" exported="true"/>
+    <image id="icp54y" name="bomb2.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp54z" name="bomb3.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp550" name="bomb4.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp551" name="bomb5.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp552" name="bomb6.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp553" name="bomb7.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp554" name="bomb8.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp555" name="bomb9.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp556" name="bomb91.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp557" name="bomb92.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp558" name="bomb93.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp559" name="bomb94.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp55a" name="bomb95.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp55b" name="bomb96.png" path="/Image/MagicExp/Bomb/"/>
+    <image id="icp55c" name="cheers1.png" path="/Image/MagicExp/Cheers/" exported="true"/>
+    <image id="icp55d" name="cheers2.png" path="/Image/MagicExp/Cheers/"/>
+    <image id="icp55e" name="cheers3.png" path="/Image/MagicExp/Cheers/"/>
+    <image id="icp55f" name="cheers4.png" path="/Image/MagicExp/Cheers/"/>
+    <image id="icp55g" name="cheers5.png" path="/Image/MagicExp/Cheers/"/>
+    <image id="icp55h" name="cheers6.png" path="/Image/MagicExp/Cheers/"/>
+    <image id="icp55i" name="cheers7.png" path="/Image/MagicExp/Cheers/"/>
+    <image id="icp55j" name="cheers8.png" path="/Image/MagicExp/Cheers/"/>
+    <image id="icp55k" name="cheers9.png" path="/Image/MagicExp/Cheers/"/>
+    <image id="icp55l" name="cheers91.png" path="/Image/MagicExp/Cheers/"/>
+    <image id="icp55m" name="egg1.png" path="/Image/MagicExp/Egg/" exported="true"/>
+    <image id="icp55n" name="egg2.png" path="/Image/MagicExp/Egg/"/>
+    <image id="icp55o" name="egg3.png" path="/Image/MagicExp/Egg/"/>
+    <image id="icp55p" name="egg4.png" path="/Image/MagicExp/Egg/"/>
+    <image id="icp55q" name="egg5.png" path="/Image/MagicExp/Egg/"/>
+    <image id="icp55r" name="egg6.png" path="/Image/MagicExp/Egg/"/>
+    <image id="icp55s" name="egg7.png" path="/Image/MagicExp/Egg/"/>
+    <image id="icp55t" name="flower1.png" path="/Image/MagicExp/Flower/" exported="true"/>
+    <image id="icp55u" name="flower2.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp55v" name="flower3.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp55w" name="flower4.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp55x" name="flower5.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp55y" name="flower6.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp55z" name="flower7.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp560" name="flower8.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp561" name="flower9.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp562" name="flower91.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp563" name="flower92.png" path="/Image/MagicExp/Flower/"/>
+    <image id="icp564" name="kiss1.png" path="/Image/MagicExp/Kiss/" exported="true"/>
+    <image id="icp565" name="kiss2.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp566" name="kiss3.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp567" name="kiss4.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp568" name="kiss5.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp569" name="kiss6.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp56a" name="kiss7.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp56b" name="kiss8.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp56c" name="kiss9.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp56d" name="kiss91.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp56e" name="kiss92.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp56f" name="kiss93.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp56g" name="kiss94.png" path="/Image/MagicExp/Kiss/"/>
+    <image id="icp56h" name="shoe1.png" path="/Image/MagicExp/Shoe/" exported="true"/>
+    <image id="icp56i" name="shoe2.png" path="/Image/MagicExp/Shoe/"/>
+    <image id="icp56j" name="shoe3.png" path="/Image/MagicExp/Shoe/"/>
+    <image id="icp56k" name="shoe4.png" path="/Image/MagicExp/Shoe/"/>
+    <image id="icp56l" name="shoe5.png" path="/Image/MagicExp/Shoe/"/>
+    <image id="icp56m" name="shoe6.png" path="/Image/MagicExp/Shoe/"/>
+    <image id="icp56n" name="shoe7.png" path="/Image/MagicExp/Shoe/"/>
+    <image id="icp56o" name="shoe8.png" path="/Image/MagicExp/Shoe/"/>
+    <image id="icp56p" name="shoe9.png" path="/Image/MagicExp/Shoe/"/>
+    <component id="hrhq6q" name="ComReportPlayer.xml" path="/Component/" exported="true"/>
+    <component id="hrhq6r" name="ComReport.xml" path="/Component/" exported="true"/>
+    <component id="s17d6s" name="ComBgAndClose.xml" path="/Component/"/>
+  </resources>
+  <publish name="PlayerProfile" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\PlayerProfile"/>
+</packageDescription>

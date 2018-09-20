@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 3478363033
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 04fce8cee207838cdf015c433f608e30
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/LanZh/LanZh@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/LanZh/LanZh@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/LanZh/LanZh.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/LanZh/LanZh@atlas3.png
+- Assets/Resources.KingTexas/PkgFold/Ui/LanZh/LanZh@atlas1.png
+Dependencies: []

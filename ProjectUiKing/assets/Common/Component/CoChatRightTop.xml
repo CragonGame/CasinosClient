@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="218,86">
+  <displayList>
+    <image id="n4_oypw" name="n4" src="l1q0ca" xy="-25,3" size="34,79" group="n5_nr1t" alpha="0.4">
+      <relation target="n3_jhsd" sidePair="rightext-right,leftext-left"/>
+    </image>
+    <richtext id="n3_jhsd" name="ChatMsg" xy="-12,28" pivot="1,0.5" size="10,32" group="n5_nr1t" fontSize="28" color="#ffffff" align="right" vAlign="middle" ubb="true" shadowColor="#000000" shadowOffset="1,1" text=""/>
+    <group id="n5_nr1t" name="GroupNormalLength" xy="-25,3" size="34,79" advanced="true"/>
+    <image id="n9_nr1t" name="n9" src="l1q0ca" xy="-464,2" size="478,77" group="n8_nr1t" alpha="0.4">
+      <relation target="n7_nr1t" sidePair="top-top,bottomext-bottom"/>
+    </image>
+    <richtext id="n7_nr1t" name="ChatMsg" xy="-448,29" size="447,32" group="n8_nr1t" fontSize="28" color="#ffffff" vAlign="bottom" ubb="true" autoSize="height" shadowColor="#000000" shadowOffset="1,1" text=""/>
+    <group id="n8_nr1t" name="GroupMaxLength" xy="-464,2" size="478,77" visible="false" advanced="true"/>
+  </displayList>
+</component>

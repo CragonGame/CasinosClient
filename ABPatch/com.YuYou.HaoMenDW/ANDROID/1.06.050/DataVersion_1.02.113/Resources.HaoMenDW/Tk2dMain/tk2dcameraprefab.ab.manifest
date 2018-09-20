@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 2612945256
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d1535274931a44d2acea3fd0f6d0e965
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5234ea916b1abab022c3bd6ddd7ffc9d
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: d60c017246963b14c9806a06670568b5, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dMain/tk2dCameraPrefab.prefab
+Dependencies: []

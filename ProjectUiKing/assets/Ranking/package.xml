@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="696tr25t" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="g8bh1" name="Ranking.xml" path="/" exported="true"/>
+    <component id="g8bh6" name="ComItemRank.xml" path="/Component/" exported="true"/>
+    <component id="u40kj" name="ComRankSign.xml" path="/Component/" exported="true"/>
+    <image id="hp4018" name="ItemBg.png" path="/Image/"/>
+    <component id="nmmo19" name="ComItemRank.xml" path="/component/"/>
+    <component id="nmmo1a" name="ComRankSign.xml" path="/component/"/>
+  </resources>
+  <publish name="Ranking" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Ranking"/>
+</packageDescription>

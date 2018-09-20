@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2755692212
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 10dfe3cc07f05069418ed4393676cd28
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/M_die04.ogg
+Dependencies: []

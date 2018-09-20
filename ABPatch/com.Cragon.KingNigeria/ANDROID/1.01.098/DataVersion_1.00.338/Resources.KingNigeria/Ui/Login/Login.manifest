@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2198598350
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: login.ab
+      Dependencies: {}

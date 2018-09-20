@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 14348934
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f012bd327a04f85a12b7b5fc41a0ccde
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0605fe76d012b1a951d4b995dc7210fb
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/ResourcesParticle/Materials/star.mat
+- Assets/Resources.KingTexas/PkgSingle/Particle/StarYellowRight.prefab
+- Assets/ResourcesParticle/Textures/Star.png
+Dependencies: []

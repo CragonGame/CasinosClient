@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="648,409" pivot="0.5,0.5">
+  <controller name="ControllerDesk" pages="0,SeatFive,1,SeatNine" selected="0"/>
+  <displayList>
+    <image id="n40_llx1" name="n40" src="f4nw20" fileName="Image/DeskChair5.png" xy="266,275" pivot="0.5,0.5" size="115,107" group="n55_fzbi"/>
+    <image id="n41_llx1" name="n41" src="et5o6" fileName="Image/DeskChair1.png" xy="392,19" pivot="0.5,0.5" size="121,140" group="n55_fzbi" rotation="40"/>
+    <image id="n42_llx1" name="n42" src="et5o6" fileName="Image/DeskChair1.png" xy="133,17" pivot="0.5,0.5" size="121,140" group="n55_fzbi" skew="0,180" rotation="-40"/>
+    <image id="n43_llx1" name="n43" src="f4nw1y" fileName="Image/DeskChair3.png" xy="525,150" pivot="0.5,0.5" size="115,99" group="n55_fzbi" skew="0,180" rotation="-23"/>
+    <image id="n44_llx1" name="n44" src="f4nw1y" fileName="Image/DeskChair3.png" xy="7,150" pivot="0.5,0.5" size="115,99" group="n55_fzbi" rotation="25"/>
+    <group id="n55_fzbi" name="GroupSeatImageFive" xy="7,17" size="633,365" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerDesk" pages="0"/>
+    </group>
+    <image id="n10_et5o" name="n10" src="f4nw20" fileName="Image/DeskChair5.png" xy="266,273" pivot="0.5,0.5" size="115,107" group="n54_fzbi">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <image id="n8_et5o" name="n8" src="f4nw1z" fileName="Image/DeskChair4.png" xy="134,271" pivot="0.5,0.5" size="118,113" group="n54_fzbi">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <image id="n12_et5o" name="n12" src="f4nw1z" fileName="Image/DeskChair4.png" xy="393,271" pivot="0.5,0.5" size="118,113" group="n54_fzbi" skew="0,180">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <image id="n14_et5o" name="n14" src="f4nw1z" fileName="Image/DeskChair4.png" xy="521,217" pivot="0.5,0.5" size="118,113" group="n54_fzbi" skew="0,180" rotation="-50">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <image id="n6_et5o" name="n6" src="f4nw1z" fileName="Image/DeskChair4.png" xy="9,217" pivot="0.5,0.5" size="118,113" group="n54_fzbi" rotation="50">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <image id="n16_et5o" name="n16" src="et5o6" fileName="Image/DeskChair1.png" xy="499,89" pivot="0.5,0.5" size="121,140" group="n54_fzbi" skew="0,180" rotation="35">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <image id="n4_et5o" name="n4" src="et5o6" fileName="Image/DeskChair1.png" xy="28,90" pivot="0.5,0.5" size="121,140" group="n54_fzbi" rotation="-35">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <image id="n3_et5o" name="n3" src="et5o6" fileName="Image/DeskChair1.png" xy="104,22" pivot="0.5,0.5" size="121,140" group="n54_fzbi" rotation="13">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <image id="n18_et5o" name="n18" src="et5o6" fileName="Image/DeskChair1.png" xy="422,22" pivot="0.5,0.5" size="121,140" group="n54_fzbi" skew="0,180" rotation="-13">
+      <relation target="" sidePair="left-left,top-top"/>
+    </image>
+    <group id="n54_fzbi" name="GroupSeatImageNine" xy="9,22" size="630,362" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerDesk" pages="1"/>
+    </group>
+    <image id="n60_sul8" name="n60" src="sul81a" fileName="Image/pz.png" xy="60,76" pivot="0.5,0.5" skew="0,180"/>
+    <text id="n27_llx1" name="TextBlindBetTips" xy="126,147" pivot="0.5,0.5" size="396,27" fontSize="20" color="#eef2d1" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n1_et5o" name="BtnPlay" src="et5oi" fileName="Component/BtnEnter.xml" xy="281,10">
+      <relation target="" sidePair="left-left,top-top"/>
+    </component>
+    <component id="n48_llx1" name="FiveSeatSeat2" src="et5oj" fileName="Component/ComSeatItem.xml" xy="284,287" group="n56_fzbi" visible="false"/>
+    <component id="n46_llx1" name="FiveSeatSeat0" src="et5oj" fileName="Component/ComSeatItem.xml" xy="426,10" group="n56_fzbi" visible="false"/>
+    <component id="n50_llx1" name="FiveSeatSeat4" src="et5oj" fileName="Component/ComSeatItem.xml" xy="142,10" group="n56_fzbi" visible="false"/>
+    <component id="n47_llx1" name="FiveSeatSeat1" src="et5oj" fileName="Component/ComSeatItem.xml" xy="536,141" group="n56_fzbi" visible="false"/>
+    <component id="n49_llx1" name="FiveSeatSeat3" src="et5oj" fileName="Component/ComSeatItem.xml" xy="32,141" group="n56_fzbi" visible="false"/>
+    <group id="n56_fzbi" name="GroupSeatFive" xy="32,10" size="584,357" hideByEditor="true" advanced="true"/>
+    <component id="n32_llx1" name="NineSeatSeat4" src="et5oj" fileName="Component/ComSeatItem.xml" xy="284,284" group="n57_fzbi" visible="false"/>
+    <component id="n36_llx1" name="NineSeatSeat3" src="et5oj" fileName="Component/ComSeatItem.xml" xy="420,284" group="n57_fzbi" visible="false"/>
+    <component id="n31_llx1" name="NineSeatSeat5" src="et5oj" fileName="Component/ComSeatItem.xml" xy="148,284" group="n57_fzbi" visible="false"/>
+    <component id="n34_llx1" name="NineSeatSeat0" src="et5oj" fileName="Component/ComSeatItem.xml" xy="435,12" group="n57_fzbi" visible="false"/>
+    <component id="n33_llx1" name="NineSeatSeat8" src="et5oj" fileName="Component/ComSeatItem.xml" xy="133,12" group="n57_fzbi" visible="false"/>
+    <component id="n35_llx1" name="NineSeatSeat1" src="et5oj" fileName="Component/ComSeatItem.xml" xy="540,90" group="n57_fzbi" visible="false"/>
+    <component id="n29_llx1" name="NineSeatSeat7" src="et5oj" fileName="Component/ComSeatItem.xml" xy="27,90" group="n57_fzbi" visible="false"/>
+    <component id="n37_llx1" name="NineSeatSeat2" src="et5oj" fileName="Component/ComSeatItem.xml" xy="535,227" group="n57_fzbi" visible="false"/>
+    <component id="n30_llx1" name="NineSeatSeat6" src="et5oj" fileName="Component/ComSeatItem.xml" xy="32,227" group="n57_fzbi" visible="false"/>
+    <group id="n57_fzbi" name="GroupSeatNine" xy="27,12" size="593,352" advanced="true" collapsed="true"/>
+    <component id="n52_fzbi" name="BtnCreateTableL" src="y48p10" fileName="Component/BtnCreateTabel.xml" xy="-113,148" visible="false"/>
+    <component id="n53_fzbi" name="BtnCreateTableR" src="y48p10" fileName="Component/BtnCreateTabel.xml" xy="639,148" visible="false"/>
+  </displayList>
+  <transition name="TransitionBig">
+    <item time="0" type="XY" target="n29_llx1" tween="true" startValue="89,109" endValue="59,101" duration="6"/>
+    <item time="0" type="XY" target="n12_et5o" tween="true" startValue="405,277" endValue="426,290" duration="6"/>
+    <item time="0" type="XY" target="n14_et5o" tween="true" startValue="498.16,213.44" endValue="533.16,221.44" duration="6"/>
+    <item time="0" type="XY" target="n31_llx1" tween="true" startValue="166,278" endValue="149,289" duration="6"/>
+    <item time="0" type="XY" target="n16_et5o" tween="true" startValue="487.76,102.68" endValue="522.76,95.68" duration="6"/>
+    <item time="0" type="XY" target="n32_llx1" tween="true" startValue="290,301" endValue="290,296" duration="6"/>
+    <item time="0" type="XY" target="n34_llx1" tween="true" startValue="388,46" endValue="409,45" duration="6"/>
+    <item time="0" type="XY" target="n18_et5o" tween="true" startValue="381,51" endValue="403,32" duration="6"/>
+    <item time="0" type="XY" target="n10_et5o" tween="true" startValue="284,281" endValue="284,298" duration="6"/>
+    <item time="0" type="XY" target="n33_llx1" tween="true" startValue="192,46" endValue="179,44" duration="6"/>
+    <item time="0" type="XY" target="n30_llx1" tween="true" startValue="78,218" endValue="47,226" duration="6"/>
+    <item time="0" type="XY" target="n35_llx1" tween="true" startValue="494,109" endValue="523,101" duration="6"/>
+    <item time="0" type="XY" target="n36_llx1" tween="true" startValue="410,278" endValue="433,287" duration="6"/>
+    <item time="0" type="XY" target="n8_et5o" tween="true" startValue="160.84,277.84" endValue="143,291" duration="6"/>
+    <item time="0" type="XY" target="n3_et5o" tween="true" startValue="187,51" endValue="173,32" duration="6"/>
+    <item time="0" type="XY" target="n40_llx1" tween="true" startValue="284,282" endValue="284,295" duration="6"/>
+    <item time="0" type="XY" target="n41_llx1" tween="true" startValue="409,50" endValue="405,36" duration="6"/>
+    <item time="0" type="XY" target="n42_llx1" tween="true" startValue="166,50" endValue="166,32" duration="6"/>
+    <item time="0" type="XY" target="n43_llx1" tween="true" startValue="505,164" endValue="542,162" duration="6"/>
+    <item time="0" type="XY" target="n44_llx1" tween="true" startValue="61.08,164" endValue="22.32,162.8" duration="6"/>
+    <item time="0" type="XY" target="n46_llx1" tween="true" startValue="416,58" endValue="411,43" duration="6"/>
+    <item time="0" type="XY" target="n47_llx1" tween="true" startValue="505.8,170.6" endValue="542.8,168.6" duration="6"/>
+    <item time="0" type="XY" target="n48_llx1" tween="true" startValue="290,281" endValue="290,292" duration="6"/>
+    <item time="0" type="XY" target="n49_llx1" tween="true" startValue="75,170" endValue="37,168" duration="6"/>
+    <item time="0" type="XY" target="n4_et5o" tween="true" startValue="81,102" endValue="47,95" duration="6"/>
+    <item time="0" type="XY" target="n50_llx1" tween="true" startValue="172,58" endValue="172,43" duration="6"/>
+    <item time="0" type="XY" target="n37_llx1" tween="true" startValue="503,218" endValue="533,226" duration="6"/>
+    <item time="0" type="XY" target="n6_et5o" tween="true" startValue="75,213" endValue="37,221" duration="6"/>
+  </transition>
+</component>

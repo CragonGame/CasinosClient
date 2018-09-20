@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2546265801
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 980911467b58e557d2d3e9ec34a7f4d8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/call_girl.wav
+Dependencies: []

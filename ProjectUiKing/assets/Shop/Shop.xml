@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" initName="BtnClose" adaptationTest="FitSize">
+  <controller name="ControllerShop" pages="0,Chip,1,Diamond,2,Consume,3,Vip,4,Gift" selected="3"/>
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <image id="n200_hrhq" name="Bg" src="teyh8q" fileName="Image/bg.png" pkg="gbdohaiv" xy="0,0" size="1066,640"/>
+    <image id="n208_hrhq" name="n208" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0.4" color="#000033">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <text id="n9_r6kn" name="Lan_Text_Trouble" xy="-21,696" size="213,131" hideByEditor="true" visible="false" fontSize="18" color="#677a88" vAlign="middle" autoSize="shrink" bold="true" shadowColor="#000000" shadowOffset="1,1" text="充值过程有问题请联系微信：&#xA;lin3621110&#xA;QQ：3621110">
+      <relation target="" sidePair="width-width%"/>
+    </text>
+    <text id="n89_i8ex" name="Lan_Text_QQ" xy="-33,754" size="190,23" hideByEditor="true" visible="false" fontSize="16" color="#677a88" vAlign="middle" autoSize="shrink" bold="true" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="玩家交流群：5328888"/>
+    <list id="n190_mtk2" name="ListChip" xy="205,112" size="797,516" layout="flow_hz" overflow="scroll" lineGap="5" colGap="16" defaultItem="ui://3pqfkhlur6kna">
+      <gearDisplay controller="ControllerShop" pages="0"/>
+      <relation target="" sidePair="top-top,left-left%"/>
+      <relation target="" sidePair="height-height%"/>
+    </list>
+    <list id="n194_mtk2" name="ListDiamond" xy="205,112" size="797,516" layout="flow_hz" overflow="scroll" lineGap="5" colGap="16" defaultItem="ui://3pqfkhlur6knb">
+      <gearDisplay controller="ControllerShop" pages="1"/>
+      <relation target="" sidePair="top-top,left-left%"/>
+      <relation target="" sidePair="height-height%"/>
+    </list>
+    <list id="n184_mtk2" name="ListConsume" xy="205,112" size="797,516" layout="flow_hz" overflow="scroll" lineGap="5" colGap="16" defaultItem="ui://3pqfkhlur6knd">
+      <gearDisplay controller="ControllerShop" pages="2"/>
+      <relation target="" sidePair="top-top,left-left%"/>
+      <relation target="" sidePair="height-height%"/>
+    </list>
+    <list id="n211_hrhq" name="ListGoods" xy="205,112" size="797,516" layout="flow_hz" overflow="scroll" lineGap="5" colGap="16" defaultItem="ui://3pqfkhluj3hl3q">
+      <gearDisplay controller="ControllerShop" pages="4"/>
+      <relation target="" sidePair="top-top,left-left%"/>
+      <relation target="" sidePair="height-height%"/>
+    </list>
+    <list id="n168_ti7o" name="ListVip" xy="181,166" size="883,376" overflow="scroll" lineGap="1" defaultItem="ui://3pqfkhlui4nv25">
+      <gearDisplay controller="ControllerShop" pages="3"/>
+      <relation target="" sidePair="rightext-right,top-top"/>
+    </list>
+    <image id="n206_hrhq" name="n206" src="hrhq3e" fileName="Image/图层22.png" xy="181,110" size="886,57">
+      <gearDisplay controller="ControllerShop" pages="3"/>
+      <relation target="" sidePair="rightext-right,top-top"/>
+    </image>
+    <image id="n207_hrhq" name="n207" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="182,543" size="884,71" alpha="0.78" color="#12192f">
+      <gearDisplay controller="ControllerShop" pages="3"/>
+      <relation target="" sidePair="top-top,rightext-right"/>
+    </image>
+    <text id="n164_asp3" name="Lan_Text_Level" xy="275,119" pivot="0.5,0.5" size="109,39" group="n197_fqmc" font="FontCu" fontSize="30" color="#6d84ad" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="等级">
+      <relation target="n206_hrhq" sidePair="middle-middle,center-center"/>
+    </text>
+    <text id="n165_asp3" name="Lan_Text_RequiredGrowthValue" xy="488,119" pivot="0.5,0.5" size="192,39" group="n197_fqmc" font="FontCu" fontSize="30" color="#6d84ad" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="所需成长值">
+      <relation target="n206_hrhq" sidePair="middle-middle,center-center"/>
+    </text>
+    <text id="n166_asp3" name="Lan_Text_DoubledRemedies" xy="744,119" pivot="0.5,0.5" size="185,39" group="n197_fqmc" font="FontCu" fontSize="30" color="#6d84ad" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="救济金翻倍">
+      <relation target="n206_hrhq" sidePair="middle-middle,center-center"/>
+    </text>
+    <group id="n197_fqmc" name="n197" xy="275,119" size="654,39" advanced="true">
+      <gearDisplay controller="ControllerShop" pages="3"/>
+    </group>
+    <component id="n201_hrhq" name="n201" src="hrhq2x" fileName="Component/ComLogo.xml" xy="1,-32"/>
+    <component id="n169_ti7o" name="Lan_Btn_Upgrade" src="ti7o27" fileName="Component/BtnVIPLevelUp.xml" xy="736,548" size="164,63" group="n175_ti7o"/>
+    <text id="n170_ti7o" name="VIPTips" xy="270,583" pivot="0.5,0.5" size="450,25" group="n175_ti7o" fontSize="18" color="#6d84ad" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="再充值10RMB即可提升为"/>
+    <text id="n171_ti7o" name="Lan_Text_ShopVipTips2" xy="439,580" size="287,25" group="n175_ti7o" hideByEditor="true" visible="false" fontSize="18" color="#6d84ad" vAlign="middle" autoSize="shrink" singleLine="true" text="每充值一元，获得一点成长值"/>
+    <component id="n174_ti7o" name="ProVIP" src="ot8lff" fileName="Component/Progress.xml" pkg="nhvxw9ov" xy="332,557" size="317,18" group="n175_ti7o">
+      <ProgressBar max="100"/>
+    </component>
+    <component id="n195_lil3" name="CoVIPCurrent" src="lil32f" fileName="Component/CoVIPShop.xml" xy="268,547" size="52,30" group="n175_ti7o"/>
+    <component id="n196_lil3" name="CoVIPNext" src="lil32f" fileName="Component/CoVIPShop.xml" xy="664,546" size="52,30" group="n175_ti7o"/>
+    <group id="n175_ti7o" name="n175" xy="268,546" size="632,64" advanced="true">
+      <gearDisplay controller="ControllerShop" pages="3"/>
+      <relation target="n207_hrhq" sidePair="center-center,middle-middle"/>
+    </group>
+    <component id="n235_j1yr" name="ComTabAll" src="j1yr42" fileName="Component/New/Component3.xml" xy="0,112" group="n228_j1yr"/>
+    <component id="n106_bsci" name="BtnTabChip" src="bsci1h" fileName="Component/BtnTab.xml" xy="2,202" group="n228_j1yr"/>
+    <component id="n107_bsci" name="BtnTabDiamond" src="bsci1h" fileName="Component/BtnTab.xml" xy="2,114" group="n228_j1yr"/>
+    <component id="n108_bsci" name="BtnTabConsume" src="bsci1h" fileName="Component/BtnTab.xml" xy="2,294" group="n228_j1yr"/>
+    <component id="n130_bhh7" name="BtnTabVip" src="bsci1h" fileName="Component/BtnTab.xml" xy="2,387" group="n228_j1yr"/>
+    <component id="n209_hrhq" name="BtnTabGift" src="bsci1h" fileName="Component/BtnTab.xml" xy="2,479" group="n228_j1yr"/>
+    <group id="n228_j1yr" name="GroupTab0" xy="0,112" size="182,503" group="n214_ewf7" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </group>
+    <component id="n231_j1yr" name="ComTabAll" src="hrhq32" fileName="Component/New/Component1.xml" xy="0,112" group="n229_j1yr"/>
+    <component id="n232_j1yr" name="BtnTabConsume" src="bsci1h" fileName="Component/BtnTab.xml" xy="2,114" group="n229_j1yr"/>
+    <component id="n233_j1yr" name="BtnTabVip" src="bsci1h" fileName="Component/BtnTab.xml" xy="2,202" group="n229_j1yr"/>
+    <component id="n234_j1yr" name="BtnTabGift" src="bsci1h" fileName="Component/BtnTab.xml" xy="2,294" group="n229_j1yr"/>
+    <group id="n229_j1yr" name="GroupTab1" xy="0,112" size="182,503" group="n214_ewf7" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </group>
+    <group id="n214_ewf7" name="tab" xy="0,112" size="182,503" advanced="true">
+      <relation target="" sidePair="top-top"/>
+    </group>
+    <component id="n216_j3hl" name="ComTabPoint" src="j3hl3n" fileName="Component/ComTabPoint.xml" xy="507,33" group="n218_j3hl"/>
+    <component id="n212_hrhq" name="Lan_Btn_ReceivingAddress" src="hrhq3g" fileName="Component/New/BtnAddress.xml" xy="829,35" group="n218_j3hl">
+      <gearDisplay controller="ControllerShop" pages="4"/>
+    </component>
+    <group id="n218_j3hl" name="n218" xy="507,33" size="428,40" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerShop" pages="4"/>
+      <relation target="" sidePair="right-right"/>
+    </group>
+    <component id="n119_excb" name="BtnReturn" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="992,21" group="n219_vtnc"/>
+    <component id="n202_hrhq" name="BtnAddDiamond" src="hrhq30" fileName="Component/New/BtnAddDiamond.xml" xy="582,30" group="n223_j1yr"/>
+    <component id="n203_hrhq" name="BtnAddChip" src="hrhq31" fileName="Component/New/BtnAddChip.xml" xy="787,30" group="n223_j1yr"/>
+    <group id="n223_j1yr" name="Group0" xy="582,30" size="403,45" group="n220_vtnc" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </group>
+    <component id="n222_j1yr" name="BtnAddDiamond" src="j1yr40" fileName="Component/New/BtnAddDiamond1.xml" xy="582,30" group="n224_j1yr"/>
+    <component id="n221_j1yr" name="BtnAddChip" src="j1yr3z" fileName="Component/New/BtnAddChip1.xml" xy="787,30" group="n224_j1yr"/>
+    <group id="n224_j1yr" name="Group1" xy="582,30" size="403,45" group="n220_vtnc" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </group>
+    <group id="n220_vtnc" name="n220" xy="582,30" size="403,45" group="n219_vtnc" advanced="true">
+      <gearDisplay controller="ControllerShop" pages="0,1,2,3"/>
+    </group>
+    <group id="n219_vtnc" name="n219" xy="582,21" size="470,60" advanced="true" collapsed="true">
+      <relation target="" sidePair="right-right"/>
+    </group>
+  </displayList>
+  <transition name="TransitionShow">
+    <item time="0" type="XY" target="n190_mtk2" tween="true" startValue="1066,-" endValue="205,-" duration="6"/>
+    <item time="0" type="XY" target="n201_hrhq" tween="true" startValue="-,-137" endValue="1,-32" duration="6" ease="Linear"/>
+    <item time="0" type="XY" target="n214_ewf7" tween="true" startValue="-182,-" endValue="0,-" duration="6" ease="Linear"/>
+    <item time="0" type="XY" target="n194_mtk2" tween="true" startValue="1066,-" endValue="205,-" duration="6"/>
+  </transition>
+</component>

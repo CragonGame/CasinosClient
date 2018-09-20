@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="485,39">
+  <displayList>
+    <text id="n32" name="InputPwdRegister" xy="45,0" size="441,39" input="true" maxLength="16" password="true" fontSize="30" vAlign="middle" autoSize="none" singleLine="true" text="">
+      <relation target="" sidePair="width-width"/>
+    </text>
+    <image id="n33_h9va" name="n33" src="h9va1i" fileName="Image/密码钥匙.png" xy="3,1" size="37,36"/>
+  </displayList>
+</component>

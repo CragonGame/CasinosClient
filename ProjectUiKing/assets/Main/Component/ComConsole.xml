@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="300,60" initName="ComConsole">
+  <displayList>
+    <text id="n1_diz5" name="TextConsole" xy="0,15" size="233,27" input="true" fontSize="20" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n2_diz5" name="BtnSend" src="diz58r" fileName="Component/BtnConsole.xml" xy="243,20">
+      <Button title="Go"/>
+    </component>
+    <image id="n4_hld5" name="n4" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="0,14" size="242,30"/>
+  </displayList>
+</component>

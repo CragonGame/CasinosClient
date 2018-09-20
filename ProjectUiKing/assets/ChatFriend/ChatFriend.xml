@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerMessage" pages="0,NoChatTarget,1,HaveChatTarget" selected="0"/>
+  <controller name="ControllerWaiting" pages="0,,1," selected="0"/>
+  <displayList>
+    <component id="n0_dcob" name="ComBgAndClose" src="vi47jm" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n33_lh6b" name="n33" src="lh6bjy" pkg="nhvxw9ov" xy="144,76" group="n36_nhsw"/>
+    <image id="n2_dcob" name="n2" src="vi47jp" pkg="nhvxw9ov" xy="538,74" pivot="0.5,0.5" group="n36_nhsw" skew="0,180">
+      <relation target="n35_nhsw" sidePair="left-right"/>
+    </image>
+    <image id="n3_dcob" name="n3" src="vi47jp" pkg="nhvxw9ov" xy="490,74" pivot="0.5,0.5" group="n36_nhsw">
+      <relation target="n35_nhsw" sidePair="right-left"/>
+    </image>
+    <image id="n5_dcob" name="n5" src="dcob1" xy="167,327" pivot="0.5,0.5" size="399,173" group="n7_dcob" rotation="-10"/>
+    <text id="n6_dcob" name="Lan_Text_NoConversation" xy="154,274" pivot="0.5,0.5" size="758,29" group="n7_dcob" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="height" text="你还没有开始任何对话。要开始新的对话，请按屏幕左下角的按钮。"/>
+    <group id="n7_dcob" name="GroupNoChatTarget" xy="154,274" size="758,226" group="n23_dcob" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerMessage" pages="0"/>
+    </group>
+    <image id="n11_dcob" name="n11" src="wb2ek8" pkg="nhvxw9ov" xy="331,147" size="590,376" group="n17_dcob" color="#2f3255"/>
+    <image id="n28_m0v3" name="n28" src="wb2ek8" pkg="nhvxw9ov" xy="144,147" size="184,376" group="n17_dcob" color="#2f3255"/>
+    <list id="n10_dcob" name="ListChatTarget" xy="148,148" size="178,373" group="n17_dcob" overflow="scroll" lineGap="-1" defaultItem="ui://vclln4todcob2" autoItemSize="false"/>
+    <component id="n12_dcob" name="ComInput" src="ef0jl" xy="336,464" group="n17_dcob"/>
+    <list id="n13_dcob" name="ListChatContent" xy="333,152" size="586,307" group="n17_dcob" overflow="scroll" lineGap="29" defaultItem="ui://nhvxw9ovhiep88"/>
+    <component id="n27_kamq" name="n27" src="lb4j67" pkg="nhvxw9ov" xy="608,245" group="n17_dcob">
+      <gearDisplay controller="ControllerWaiting" pages="0"/>
+    </component>
+    <group id="n17_dcob" name="GroupHaveChatTarget" xy="144,147" size="777,376" group="n23_dcob" advanced="true">
+      <gearDisplay controller="ControllerMessage" pages="1"/>
+    </group>
+    <component id="n18_dcob" name="BtnChooseChatTarget" src="dcob3" xy="155,526" group="n22_dcob"/>
+    <component id="n19_dcob" name="BtnChatTargetProfile" src="dcob5" xy="220,526" group="n22_dcob" grayed="true"/>
+    <component id="n20_dcob" name="BtnPlayWithChatTarget" src="dcob7" xy="868,528" group="n22_dcob" grayed="true"/>
+    <text id="n21_dcob" name="Lan_Text_NoteDeleteRecord" xy="335,530" pivot="0.5,0.5" size="396,35" group="n22_dcob" fontSize="26" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="注:长按头像删除记录"/>
+    <group id="n22_dcob" name="GroupMsgBottom" xy="155,526" size="759,39" group="n23_dcob" advanced="true"/>
+    <group id="n23_dcob" name="GroupMsg" xy="144,147" size="777,418" group="n36_nhsw" advanced="true"/>
+    <text id="n35_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n36_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n36_nhsw" name="n36" xy="144,74" size="777,491" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1"/>
+</component>

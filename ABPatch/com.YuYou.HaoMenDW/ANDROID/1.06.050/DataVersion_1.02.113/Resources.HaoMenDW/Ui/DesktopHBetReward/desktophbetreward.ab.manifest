@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2984051971
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0997b65de40f5946effd1533accf85fe
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e524609455c7cfb29b5bab3f5d3ec7c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgFold/Ui/DesktopHBetReward/DesktopHBetReward@atlas0.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/DesktopHBetReward/DesktopHBetReward@sprites.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/DesktopHBetReward/DesktopHBetReward.bytes
+Dependencies: []

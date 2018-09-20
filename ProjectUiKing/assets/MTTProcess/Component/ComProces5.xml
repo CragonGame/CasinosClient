@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="551,139">
+  <displayList>
+    <component id="n1_ivt5" name="ComTransition" src="cvtg1a" fileName="Component/Component8.xml" xy="-257,-250">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <loader id="n11_n1df" name="Lan_Image_终极对决S" xy="0,13" pivot="0.5,0.5" size="551,115" align="center" vAlign="middle" fill="scaleFree"/>
+    <image id="n2_ivt5" name="n2" src="ivt5q" fileName="Image/终极对决T2.png" xy="4,26" pivot="1,0.5"/>
+    <image id="n10_cvtg" name="n10" src="cvtg19" fileName="Image/FX_flare_009.png" xy="-22,-6" pivot="0.5,0.5" size="203,64"/>
+    <image id="n3_ivt5" name="n3" src="ivt5r" fileName="Image/终极对决T3.png" xy="447,24" pivot="0,0.5"/>
+    <image id="n9_cvtg" name="n9" src="cvtg19" fileName="Image/FX_flare_009.png" xy="371,-5" pivot="0.5,0.5" size="203,56"/>
+    <component id="n6_cvtg" name="n6" src="cvtg1b" fileName="Component/Component9.xml" xy="68,2" pivot="0.5,0.5"/>
+    <image id="n8_cvtg" name="n8" src="cvtgw" fileName="Image/FX_light_05.png" xy="-224,-430" pivot="0.5,0.5" size="1000,1000" hideByEditor="true"/>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="Visible" target="n9_cvtg" value="false"/>
+    <item time="0" type="Visible" target="n6_cvtg" value="false"/>
+    <item time="0" type="Visible" target="n3_ivt5" value="false"/>
+    <item time="0" type="Visible" target="n8_cvtg" value="false"/>
+    <item time="0" type="Visible" target="n10_cvtg" value="false"/>
+    <item time="0" type="Visible" target="n2_ivt5" value="false"/>
+    <item time="3" type="Scale" target="n8_cvtg" tween="true" startValue="0.3,0.3" endValue="1,1" duration="2"/>
+    <item time="3" type="Visible" target="n8_cvtg" value="true"/>
+    <item time="5" type="Alpha" target="n9_cvtg" tween="true" startValue="0.8" endValue="1" duration="4"/>
+    <item time="5" type="Alpha" target="n8_cvtg" tween="true" startValue="1" endValue="0.5" duration="7"/>
+    <item time="5" type="Alpha" target="n10_cvtg" tween="true" startValue="0.8" endValue="1" duration="4"/>
+    <item time="5" type="Alpha" target="n6_cvtg" tween="true" startValue="1" endValue="0" duration="7"/>
+    <item time="5" type="Scale" target="n8_cvtg" tween="true" startValue="1,1" endValue="1.1,1.1" duration="3"/>
+    <item time="5" type="Scale" target="n9_cvtg" tween="true" startValue="1,1" endValue="1.1,1.1" duration="4"/>
+    <item time="5" type="Scale" target="n6_cvtg" tween="true" startValue="1,1" endValue="3,3" duration="7"/>
+    <item time="5" type="Scale" target="n10_cvtg" tween="true" startValue="1,1" endValue="1.1,1.1" duration="4"/>
+    <item time="5" type="Visible" target="n9_cvtg" value="true"/>
+    <item time="5" type="Visible" target="n3_ivt5" value="true"/>
+    <item time="5" type="Visible" target="n2_ivt5" value="true"/>
+    <item time="5" type="Visible" target="n10_cvtg" value="true"/>
+    <item time="5" type="Visible" target="n6_cvtg" value="true"/>
+    <item time="5" type="XY" target="n9_cvtg" tween="true" startValue="371,-6" endValue="439,-5" duration="13"/>
+    <item time="5" type="XY" target="n10_cvtg" tween="true" startValue="-22,-7" endValue="-91,-6" duration="13"/>
+    <item time="9" type="Alpha" target="n10_cvtg" tween="true" startValue="1" endValue="0.8" duration="9"/>
+    <item time="9" type="Alpha" target="n9_cvtg" tween="true" startValue="1" endValue="0.8" duration="9"/>
+    <item time="9" type="Scale" target="n9_cvtg" tween="true" startValue="1.1,1.1" endValue="1,1" duration="9"/>
+    <item time="9" type="Scale" target="n10_cvtg" tween="true" startValue="1.1,1.1" endValue="1,1" duration="9"/>
+    <item time="12" type="Alpha" target="n8_cvtg" tween="true" startValue="0.5" endValue="0.1" duration="6"/>
+    <item time="12" type="Alpha" target="n6_cvtg" tween="true" startValue="0"/>
+    <item time="12" type="Scale" target="n6_cvtg" tween="true" startValue="3,3"/>
+    <item time="18" type="Alpha" target="n8_cvtg" tween="true" startValue="0.1"/>
+    <item time="18" type="Alpha" target="n9_cvtg" tween="true" startValue="0.8"/>
+    <item time="18" type="Alpha" target="n10_cvtg" tween="true" startValue="0.8"/>
+    <item time="18" type="Alpha" tween="true" startValue="1" endValue="0.1" duration="6"/>
+    <item time="18" type="Scale" target="n9_cvtg" tween="true" startValue="1,1"/>
+    <item time="18" type="Scale" target="n10_cvtg" tween="true" startValue="1,1"/>
+    <item time="18" type="Visible" target="n10_cvtg" value="false"/>
+    <item time="18" type="Visible" target="n9_cvtg" value="false"/>
+    <item time="18" type="Visible" target="n8_cvtg" value="false"/>
+    <item time="24" type="Alpha" tween="true" startValue="0.1"/>
+  </transition>
+</component>

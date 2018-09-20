@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 185565711
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 09dd26e5a07cd6d6fa281bea338f1b44
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/call_boy.wav
+Dependencies: []

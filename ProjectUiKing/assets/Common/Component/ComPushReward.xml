@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="64,64">
+  <controller name="ControllerCanGet" pages="0,CanNot,1,Can" selected="0"/>
+  <displayList>
+    <image id="n0_lmq9" name="n0" src="lmq9ln" fileName="Image/New/111.png" xy="0,0" pivot="0.5,0.5">
+      <gearDisplay controller="ControllerCanGet" pages="1"/>
+    </image>
+    <image id="n1_lmq9" name="n1" src="lmq9lo" fileName="Image/New/222.png" xy="0,0" alpha="0.5">
+      <gearDisplay controller="ControllerCanGet" pages="0"/>
+    </image>
+    <loader id="n3_a2iq" name="Lan_Image_RewardText1" xy="-5,37" size="75,32" align="center" fill="scale"/>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n0_lmq9" tween="true" startValue="-1" endValue="1" duration="6" ease="Linear"/>
+    <item time="0" type="Scale" target="n0_lmq9" tween="true" startValue="0.98,0.98" endValue="1.02,1.02" duration="6" ease="Linear"/>
+    <item time="6" type="Rotation" target="n0_lmq9" tween="true" startValue="1" endValue="-1" duration="6" ease="Linear"/>
+    <item time="6" type="Scale" target="n0_lmq9" tween="true" startValue="1.02,1.02" endValue="0.98,0.98" duration="6" ease="Linear"/>
+    <item time="12" type="Rotation" target="n0_lmq9" tween="true" startValue="-1" endValue="-1" duration="72" ease="Linear"/>
+    <item time="12" type="Scale" target="n0_lmq9" tween="true" startValue="0.98,0.98" endValue="0.98,0.98" duration="72" ease="Linear"/>
+    <item time="84" type="Scale" target="n0_lmq9" tween="true" startValue="0.98,0.98" ease="Linear"/>
+  </transition>
+</component>

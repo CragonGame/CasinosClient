@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 1018208484
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 933f2d9e23137cfacee39a6bc79a7697
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 36c33a819640bead83b84b1645a12e6d
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Image/MainLight/Light0.png
+Dependencies: []

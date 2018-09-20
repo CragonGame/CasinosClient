@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="232,79" extention="Button" initName="Lan_Btn_RecharegeNow">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_bsci" name="n4" src="bsci1x" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n5_bsci" name="n5" src="bsci1y" xy="37,18">
+      <relation target="" sidePair="center-center,middle-middle"/>
+      <relation target="" sidePair="width-width%,height-height%"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="1.02"/>
+</component>

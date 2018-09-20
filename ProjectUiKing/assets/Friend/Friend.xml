@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="FriendOrSearchControl" pages="0,Friend,1,Search" selected="0"/>
+  <controller name="SearchController" pages="0,NoSearch,1,HaveResult" selected="0"/>
+  <controller name="FriendController" alias="好友显示" pages="0,NoFriend,2,HaveFriend" selected="0"/>
+  <displayList>
+    <component id="n130_y7iq" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n39_eh36" name="Search" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="144,200" size="776,347" group="n16_eh36" color="#2f3255">
+      <gearDisplay controller="FriendOrSearchControl" pages="1"/>
+    </image>
+    <image id="n162_lil3" name="n162" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="323,200" size="597,347" group="n16_eh36" color="#2f3255">
+      <gearDisplay controller="FriendController" pages="2"/>
+    </image>
+    <image id="n164_lil3" name="n164" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="145,200" size="774,347" group="n16_eh36" color="#2f3255">
+      <gearDisplay controller="FriendController" pages="0"/>
+    </image>
+    <text id="n103_qsg8" name="Lan_Text_YouHaveNoFriend" xy="154,323" pivot="0.5,0.5" size="750,25" group="n104_qsg8" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="你没有一个朋友"/>
+    <richtext id="n17_eh36" name="Lan_Text_TipAddFriend" xy="156,360" pivot="0.5,0.5" size="750,25" group="n104_qsg8" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="要在游戏牌桌添加朋友，按朋友头像，再按“添加朋友”按钮。"/>
+    <image id="n145_l7wh" name="n145" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="575,74" pivot="0.5,0.5" group="n175_m4t7" skew="0,180">
+      <relation target="n174_m4t7" sidePair="left-right"/>
+    </image>
+    <image id="n146_l7wh" name="n146" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="452,74" pivot="0.5,0.5" group="n175_m4t7">
+      <relation target="n174_m4t7" sidePair="right-left"/>
+    </image>
+    <component id="n132_y7iq" name="BtnTabFriend" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="415,151" pivot="0.5,0.5" group="n175_m4t7"/>
+    <component id="n131_y7iq" name="BtnTabSearch" src="r6kn72" fileName="Component/Btn/BtnTab.xml" pkg="nhvxw9ov" xy="532,151" pivot="0.5,0.5" group="n175_m4t7" skew="0,180"/>
+    <image id="n138_y7iq" name="n138" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="415,151" pivot="0.5,0.5" size="118,37" group="n140_y7iq">
+      <gearDisplay controller="FriendOrSearchControl" pages="0"/>
+    </image>
+    <image id="n139_y7iq" name="n139" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="532,151" pivot="0.5,0.5" size="118,37" group="n140_y7iq" skew="0,180">
+      <gearDisplay controller="FriendOrSearchControl" pages="1"/>
+    </image>
+    <text id="n156_jx6n" name="Lan_Text_Friend" xy="423,157" pivot="0.5,0.5" size="109,27" group="n140_y7iq" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="好友">
+      <gearDisplay controller="FriendOrSearchControl" pages="0"/>
+    </text>
+    <text id="n157_jx6n" name="Lan_Text_Friend" xy="423,157" pivot="0.5,0.5" size="109,27" group="n140_y7iq" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="好友">
+      <gearDisplay controller="FriendOrSearchControl" pages="1"/>
+    </text>
+    <text id="n158_jx6n" name="Lan_Text_Search" xy="535,156" pivot="0.5,0.5" size="109,28" group="n140_y7iq" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="搜索">
+      <gearDisplay controller="FriendOrSearchControl" pages="1"/>
+    </text>
+    <text id="n159_jx6n" name="Lan_Text_Search" xy="535,156" pivot="0.5,0.5" size="109,28" group="n140_y7iq" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="搜索">
+      <gearDisplay controller="FriendOrSearchControl" pages="0"/>
+    </text>
+    <group id="n140_y7iq" name="n140" xy="415,151" size="235,37" group="n175_m4t7"/>
+    <group id="n104_qsg8" name="NoFriend" xy="154,323" size="752,62" group="n16_eh36" advanced="true" collapsed="true">
+      <gearDisplay controller="FriendController" pages="0"/>
+    </group>
+    <list id="n7_eh36" name="ListFriend" xy="144,202" size="178,343" group="n16_eh36" overflow="scroll" defaultItem="ui://g3v18g13kuplr" autoItemSize="false">
+      <gearDisplay controller="FriendController" pages="2"/>
+    </list>
+    <component id="n119_me18" name="FriendDetail" src="qsg8p" fileName="Component/ComDetailInfo.xml" xy="356,208" group="n16_eh36">
+      <gearDisplay controller="FriendController" pages="2"/>
+    </component>
+    <group id="n16_eh36" name="Friend" xy="144,200" size="776,347" group="n175_m4t7" advanced="true" collapsed="true">
+      <gearDisplay controller="FriendOrSearchControl" pages="0"/>
+    </group>
+    <list id="n30_eh36" name="ListFriendRecommend" xy="144,202" size="178,343" group="n172_inau" overflow="scroll" lineGap="1" defaultItem="ui://g3v18g13kuplr" autoItemSize="false">
+      <gearDisplay controller="SearchController" pages="1"/>
+    </list>
+    <image id="n151_ko7v" name="n151" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="323,200" size="597,347" group="n172_inau" color="#2f3255">
+      <gearDisplay controller="SearchController" pages="1"/>
+    </image>
+    <image id="n161_lil3" name="n161" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="145,200" size="774,347" group="n172_inau" color="#2f3255">
+      <gearDisplay controller="SearchController" pages="0"/>
+    </image>
+    <component id="n149_rdp3" name="Lan_Btn_Search" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="695,212" group="n81_qsg8"/>
+    <group id="n81_qsg8" name="BtnSearch" xy="695,212" size="170,64" group="n172_inau" advanced="true" collapsed="true">
+      <gearDisplay controller="SearchController" pages="0"/>
+    </group>
+    <image id="n169_qeuc" name="n169" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="231,219" size="451,46" group="n82_qsg8"/>
+    <text id="n114_qsg8" name="TextSearch" xy="237,230" size="436,25" group="n82_qsg8" input="true" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <group id="n82_qsg8" name="InputSearch" xy="231,219" size="451,46" group="n172_inau" advanced="true" collapsed="true">
+      <gearDisplay controller="SearchController" pages="0"/>
+    </group>
+    <text id="n51_eh36" name="Lan_Text_TipSearchAddFriend" xy="218,353" pivot="0.5,0.5" size="627,54" group="n53_eh36" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="可以使用昵称或ID搜索用户。把你的个人账号ID发给朋友，&#xA;他们就可以把你添加为朋友。"/>
+    <text id="n52_eh36" name="TextID" xy="429,448" size="206,25" group="n53_eh36" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" text="你的ID:"/>
+    <group id="n53_eh36" name="NoSearch" xy="218,353" size="627,120" group="n172_inau" advanced="true" collapsed="true">
+      <gearDisplay controller="SearchController" pages="0"/>
+    </group>
+    <component id="n117_qsg8" name="FriendRecommendDetail" src="qsg8p" fileName="Component/ComDetailInfo.xml" xy="356,208" group="n172_inau">
+      <gearDisplay controller="SearchController" pages="1"/>
+    </component>
+    <group id="n172_inau" name="n172" xy="144,200" size="776,347" group="n175_m4t7" advanced="true" collapsed="true">
+      <gearDisplay controller="FriendOrSearchControl" pages="1"/>
+    </group>
+    <text id="n174_m4t7" name="TextTitle" xy="490,81" pivot="0.5,0.5" size="85,50" group="n175_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text="好友"/>
+    <group id="n175_m4t7" name="n175" xy="144,74" size="776,473" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

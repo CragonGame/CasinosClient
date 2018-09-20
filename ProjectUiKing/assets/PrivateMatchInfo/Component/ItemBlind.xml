@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="967,72">
+  <displayList>
+    <image id="n1_nhy4" name="n1" src="wb2ek8" pkg="nhvxw9ov" xy="-1,69" size="968,3" color="#343963"/>
+    <text id="n2_nhy4" name="TextLevel" xy="113,20" pivot="0.5,0.5" size="75,32" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="00000"/>
+    <text id="n3_nhy4" name="TextBlind" xy="312,20" pivot="0.5,0.5" size="75,32" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="00000"/>
+    <text id="n4_nhy4" name="TextStartBet" xy="516,20" pivot="0.5,0.5" size="75,32" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="00000"/>
+    <text id="n5_nhy4" name="TextRiseBlindTime" xy="714,20" pivot="0.5,0.5" size="149,32" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" text="0000000000"/>
+  </displayList>
+</component>

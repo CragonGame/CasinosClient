@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="160,85" extention="Button">
+  <displayList>
+    <image id="n4_dqdn" name="n4" src="ieudo" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.98"/>
+</component>

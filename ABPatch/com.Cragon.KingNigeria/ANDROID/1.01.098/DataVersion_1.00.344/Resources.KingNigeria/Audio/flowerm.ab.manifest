@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 157116290
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f6bfa596f23f232aca66c1751fc225cf
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/flowerm.mp3
+Dependencies: []

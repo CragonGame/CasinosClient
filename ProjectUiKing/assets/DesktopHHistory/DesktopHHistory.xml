@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n40_ow7f" name="ComBgAndClose" src="vi47jm" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n43_wb2e" name="n43" src="lh6bjy" pkg="nhvxw9ov" xy="141,78" group="n49_nhsw"/>
+    <image id="n41_vwta" name="n41" src="vwtaf" xy="198,173" group="n49_nhsw"/>
+    <list id="n21_etcz" name="ListHistroy" xy="257,229" size="568,225" group="n49_nhsw" overflow="hidden" lineGap="12" defaultItem="ui://zjam3slgetcza"/>
+    <image id="n44_wb2e" name="n44" src="vi47jp" pkg="nhvxw9ov" xy="490,72" pivot="0.5,0.5" group="n49_nhsw">
+      <relation target="n48_nhsw" sidePair="right-left"/>
+    </image>
+    <image id="n45_wb2e" name="n45" src="vi47jp" pkg="nhvxw9ov" xy="538,72" pivot="0.5,0.5" group="n49_nhsw" skew="0,180">
+      <relation target="n48_nhsw" sidePair="left-right"/>
+    </image>
+    <text id="n48_nhsw" name="TextTitle" xy="528,79" pivot="0.5,0.5" size="10,50" group="n49_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n49_nhsw" name="n49" xy="141,72" size="726,394" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

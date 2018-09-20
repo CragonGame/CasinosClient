@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 96225977
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: notice.ab
+      Dependencies: {}

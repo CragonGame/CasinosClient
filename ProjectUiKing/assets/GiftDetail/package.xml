@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="8fytru7h" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="umbb0" name="GiftDetail.xml" path="/" exported="true"/>
+    <component id="nmmo2" name="BtnBuy.xml" path="/Component/"/>
+    <component id="nmmo3" name="BtnBuy1.xml" path="/Component/"/>
+  </resources>
+  <publish name="GiftDetail" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\GiftDetail"/>
+</packageDescription>

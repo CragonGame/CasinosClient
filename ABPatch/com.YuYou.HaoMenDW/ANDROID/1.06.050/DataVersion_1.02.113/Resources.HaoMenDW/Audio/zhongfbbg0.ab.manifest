@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4181464234
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9b4b42ed68b6abe502b5507d85fe0b5b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/ZhongFBBg0.mp3
+Dependencies: []

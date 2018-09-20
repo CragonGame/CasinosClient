@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 701842450
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 08afc8840a2fb277d5f3e2a579b179ee
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTexas/DesktopHTexas@atlas2.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTexas/DesktopHTexas@atlas1.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTexas/DesktopHTexas.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTexas/DesktopHTexas@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/DesktopHTexas/DesktopHTexas@atlas0.png
+Dependencies: []

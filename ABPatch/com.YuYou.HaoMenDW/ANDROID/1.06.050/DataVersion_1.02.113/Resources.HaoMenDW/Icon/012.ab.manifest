@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1473467314
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b41783348e0ee37d335ea0d31bd48282
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Icon/012.png
+Dependencies: []

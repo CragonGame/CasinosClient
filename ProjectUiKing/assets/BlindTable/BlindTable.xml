@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerState" pages="0,,1,,2," selected="0"/>
+  <displayList>
+    <component id="n0_scf7" name="ComBgAndClose" src="vi47jm" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n2_scf7" name="n2" src="vi47jp" pkg="nhvxw9ov" xy="490,74" pivot="0.5,0.5" group="n30_nhsw">
+      <relation target="n29_nhsw" sidePair="right-left"/>
+    </image>
+    <image id="n3_scf7" name="n3" src="vi47jp" pkg="nhvxw9ov" xy="538,74" pivot="0.5,0.5" group="n30_nhsw" skew="0,180">
+      <relation target="n29_nhsw" sidePair="left-right"/>
+    </image>
+    <image id="n4_scf7" name="n4" src="bjg9ck" pkg="nhvxw9ov" xy="417,168" size="232,40" group="n17_scf7">
+      <gearDisplay controller="ControllerState" pages="0,2"/>
+    </image>
+    <image id="n5_scf7" name="n5" src="y7iqbv" pkg="nhvxw9ov" xy="181,168" size="232,40" group="n17_scf7">
+      <gearDisplay controller="ControllerState" pages="1,2"/>
+    </image>
+    <image id="n6_scf7" name="n6" src="y7iqbv" pkg="nhvxw9ov" xy="653,168" pivot="0.5,0.5" size="232,40" group="n17_scf7" skew="0,180">
+      <gearDisplay controller="ControllerState" pages="0,1"/>
+    </image>
+    <text id="n8_scf7" name="n8" xy="181,169" pivot="0.5,0.5" size="232,40" group="n17_scf7" font="FontCu" fontSize="25" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="快速赛">
+      <gearDisplay controller="ControllerState" pages="1,2"/>
+    </text>
+    <text id="n9_scf7" name="n9" xy="417,169" pivot="0.5,0.5" size="232,40" group="n17_scf7" font="FontCu" fontSize="25" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="常规赛">
+      <gearDisplay controller="ControllerState" pages="0,2"/>
+    </text>
+    <text id="n10_scf7" name="n10" xy="653,169" pivot="0.5,0.5" size="232,40" group="n17_scf7" font="FontCu" fontSize="25" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="慢速赛">
+      <gearDisplay controller="ControllerState" pages="0,1"/>
+    </text>
+    <image id="n14_scf7" name="n14" src="y7iqbu" pkg="nhvxw9ov" xy="181,168" pivot="0.5,0.5" size="232,40" group="n17_scf7">
+      <gearDisplay controller="ControllerState" pages="0"/>
+    </image>
+    <image id="n15_scf7" name="n15" src="bjg9cl" pkg="nhvxw9ov" xy="417,168" size="232,40" group="n17_scf7">
+      <gearDisplay controller="ControllerState" pages="1"/>
+    </image>
+    <image id="n16_scf7" name="n16" src="y7iqbu" pkg="nhvxw9ov" xy="653,168" pivot="0.5,0.5" size="232,40" group="n17_scf7" skew="0,180">
+      <gearDisplay controller="ControllerState" pages="2"/>
+    </image>
+    <text id="n11_scf7" name="n11" xy="182,169" pivot="0.5,0.5" size="232,40" group="n17_scf7" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="快速赛">
+      <gearDisplay controller="ControllerState" pages="0"/>
+    </text>
+    <text id="n12_scf7" name="n12" xy="417,169" pivot="0.5,0.5" size="232,40" group="n17_scf7" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="常规赛">
+      <gearDisplay controller="ControllerState" pages="1"/>
+    </text>
+    <text id="n13_scf7" name="n13" xy="653,169" pivot="0.5,0.5" size="232,40" group="n17_scf7" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="慢速赛">
+      <gearDisplay controller="ControllerState" pages="2"/>
+    </text>
+    <group id="n17_scf7" name="n17" xy="181,168" size="704,41" group="n30_nhsw"/>
+    <image id="n18_scf7" name="n18" src="wb2ek8" pkg="nhvxw9ov" xy="175,217" size="716,324" group="n30_nhsw" color="#2e3056"/>
+    <text id="n19_scf7" name="n19" xy="270,228" pivot="0.5,0.5" size="55,32" group="n30_nhsw" fontSize="25" color="#ecb95a" align="center" vAlign="middle" leading="0" text="级别"/>
+    <text id="n20_scf7" name="n20" xy="505,228" pivot="0.5,0.5" size="55,32" group="n30_nhsw" fontSize="25" color="#ecb95a" align="center" vAlign="middle" leading="0" text="盲注"/>
+    <text id="n21_scf7" name="n21" xy="743,228" pivot="0.5,0.5" size="55,32" group="n30_nhsw" fontSize="25" color="#ecb95a" align="center" vAlign="middle" leading="0" text="前注"/>
+    <list id="n22_scf7" name="ListBlind" xy="174,264" size="718,277" group="n30_nhsw" overflow="scroll" defaultItem="ui://ew0zx19iscf71"/>
+    <component id="n24_scf7" name="BtnTabFast" src="qkn2kv" pkg="nhvxw9ov" xy="182,168" size="232,40" group="n30_nhsw"/>
+    <component id="n25_scf7" name="BtnTabNormal" src="qkn2kv" pkg="nhvxw9ov" xy="417,168" size="232,40" group="n30_nhsw"/>
+    <component id="n26_scf7" name="BtnTabSlow" src="qkn2kv" pkg="nhvxw9ov" xy="653,168" size="232,40" group="n30_nhsw"/>
+    <text id="n29_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n30_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n30_nhsw" name="n30" xy="174,74" size="718,467" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

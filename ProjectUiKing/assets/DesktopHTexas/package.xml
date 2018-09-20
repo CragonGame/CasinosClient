@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="zah9oa21" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="fb5j0" name="CoDesktopHTexas.xml" path="/Component/" exported="true"/>
+    <image id="fb5j3" name="Pot1.png" path="/Image/" exported="true"/>
+    <image id="fb5j4" name="Pot3.png" path="/Image/" exported="true"/>
+    <image id="fb5j5" name="Pot0.png" path="/Image/" exported="true"/>
+    <image id="fb5j6" name="Pot2.png" path="/Image/" exported="true"/>
+    <image id="fb5j7" name="Desk.png" path="/Image/" atlas="2"/>
+    <image id="fb5jx" name="PotSmall2.png" path="/Image/" exported="true"/>
+    <image id="fb5jy" name="PotSmall3.png" path="/Image/" exported="true"/>
+    <image id="fb5jz" name="PotSmall1.png" path="/Image/" exported="true"/>
+    <image id="fb5j10" name="PotSmall0.png" path="/Image/" exported="true"/>
+    <component id="fb5j11" name="CoRewardPot.xml" path="/Component/" exported="true"/>
+    <component id="fb5j14" name="CoCardTexas.xml" path="/Component/" exported="true"/>
+    <component id="fb5j17" name="CoDesktopHBetPot0Texas.xml" path="/Component/" exported="true"/>
+    <component id="fb5j1a" name="CoCardParent.xml" path="/Component/" exported="true"/>
+    <component id="fb5j1l" name="CoTips.xml" path="/Component/" exported="true"/>
+    <component id="fb5j1n" name="CoDesktopHHelpTexas.xml" path="/Component/" exported="true"/>
+    <component id="fb5j1p" name="CoDesktopHCardTypeTexas.xml" path="/Component/" exported="true"/>
+    <component id="fb5j1s" name="CoChatParent.xml" path="/Component/" exported="true"/>
+    <image id="hn2n1v" name="GoldTexas.png" path="/Image/" exported="true"/>
+    <component id="wp1h1w" name="CoPotResult.xml" path="/Component/" exported="true"/>
+    <image id="wp1h20" name="Pot0Sign.png" path="/Image/" exported="true"/>
+    <image id="wp1h21" name="Pot1Sign.png" path="/Image/" exported="true"/>
+    <image id="wp1h22" name="Pot2Sign.png" path="/Image/" exported="true"/>
+    <image id="wp1h23" name="Pot3Sign.png" path="/Image/" exported="true"/>
+    <image id="v92t25" name="jc_d.png" path="/Image/" scale9grid="20,18,268,2"/>
+    <image id="fxsn28" name="cm_d.png" path="/Image/"/>
+    <component id="fxsn2c" name="CoDesktopHBetPot1Texas.xml" path="/Component/" exported="true"/>
+    <component id="fxsn2d" name="CoDesktopHBetPot2Texas.xml" path="/Component/" exported="true"/>
+    <component id="fxsn2e" name="CoDesktopHBetPot3Texas.xml" path="/Component/" exported="true"/>
+    <image id="d5pu2g" name="CardBack.png" path="/Image/" exported="true"/>
+    <image id="sz682r" name="ch.png" path="/Image/"/>
+    <image id="sz682s" name="fk.png" path="/Image/"/>
+    <image id="sz682u" name="k1.png" path="/Image/"/>
+    <image id="sz682v" name="k2.png" path="/Image/"/>
+    <image id="n9rr2x" name="Bg.png" path="/Image/" atlas="1"/>
+    <image id="n9rr2y" name="BtnBeBank.png" path="/Image/"/>
+    <component id="n9rr2z" name="BtnBeBank.xml" path="/Component/"/>
+    <image id="ii4z30" name="桌中右上长底框.png" path="/Image/"/>
+    <image id="ii4z31" name="桌中左上长底框.png" path="/Image/" scale9grid="37,6,74,12"/>
+    <image id="ii4z32" name="桌右上长底框.png" path="/Image/"/>
+    <image id="ii4z33" name="桌面左上长底框.png" path="/Image/"/>
+  </resources>
+  <publish name="DesktopHTexas" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHTexas"/>
+</packageDescription>

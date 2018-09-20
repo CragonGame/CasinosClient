@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="60,62" extention="Button" initName="BtnDesktopCardType">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n8_he5u" name="n8" src="he5udl" pkg="nhvxw9ov" xy="0,0" hideByEditor="true" visible="false"/>
+    <image id="n9_he5u" name="n9" src="he5u2v" xy="13,7" hideByEditor="true" visible="false"/>
+    <image id="n10_10je2" name="n10" src="10je270" xy="-10,-9">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

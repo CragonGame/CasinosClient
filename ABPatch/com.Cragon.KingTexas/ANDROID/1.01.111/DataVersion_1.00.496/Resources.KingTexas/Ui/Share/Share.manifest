@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2686151700
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: share.ab
+      Dependencies: {}

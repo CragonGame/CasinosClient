@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n13_ow7f" name="ComBgAndClose" src="vi47jm" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n2_fb5j" name="ComHelpParent" src="fb5j1" xy="160,165" size="0,0" group="n21_nhsw"/>
+    <image id="n15_wb2e" name="n15" src="lh6bjy" pkg="nhvxw9ov" xy="140,77" group="n21_nhsw"/>
+    <image id="n16_wb2e" name="n16" src="vi47jp" pkg="nhvxw9ov" xy="490,75" pivot="0.5,0.5" group="n21_nhsw">
+      <relation target="n20_nhsw" sidePair="right-left"/>
+    </image>
+    <image id="n17_wb2e" name="n17" src="vi47jp" pkg="nhvxw9ov" xy="538,75" pivot="0.5,0.5" group="n21_nhsw" skew="0,180">
+      <relation target="n20_nhsw" sidePair="left-right"/>
+    </image>
+    <text id="n20_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n21_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n21_nhsw" name="n21" xy="140,75" size="436,90" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

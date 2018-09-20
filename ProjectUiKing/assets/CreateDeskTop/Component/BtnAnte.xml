@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="106,36" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_pm2d" name="n4" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="106,36" color="#192245">
+      <gearDisplay controller="button" pages="0,2"/>
+    </image>
+    <image id="n5_pm2d" name="n5" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="106,36" alpha="0.8" color="#294893">
+      <gearDisplay controller="button" pages="1,3"/>
+    </image>
+    <text id="n6_pm2d" name="title" xy="0,0" pivot="0.5,0.5" size="106,36" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+  <Button mode="Radio" downEffect="scale" downEffectValue="0.95"/>
+</component>

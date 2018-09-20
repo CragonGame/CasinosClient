@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1799366629
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d552600723905ddf32b5f9a825f90b22
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/z_hecai.ogg
+Dependencies: []

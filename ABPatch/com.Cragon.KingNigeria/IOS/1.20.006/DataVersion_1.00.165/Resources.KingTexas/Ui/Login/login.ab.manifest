@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 1480909376
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ecaed7f6e961be7139471e8bf7889a18
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e8214c69729ed7b4e0f89bad6e44781a
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgFold/Ui/Login/Login.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/Login/Login@atlas0.png
+- Assets/Resources.KingTexas/PkgFold/Ui/Login/Login@sprites.bytes
+- Assets/Resources.KingTexas/PkgFold/Ui/Login/Login@atlas2.png
+- Assets/Resources.KingTexas/PkgFold/Ui/Login/Login@atlas1.png
+Dependencies: []

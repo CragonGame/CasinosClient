@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="5lhem4o5" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="l4110" name="ChatChooseTarget.xml" path="/" exported="true"/>
+    <component id="l4111" name="ComChatTarget.xml" path="/Component/"/>
+    <component id="n8cl6" name="Lan_Btn_Choose.xml" path="/Component/"/>
+  </resources>
+  <publish name="ChatChooseTarget" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\ChatChooseTarget"/>
+</packageDescription>

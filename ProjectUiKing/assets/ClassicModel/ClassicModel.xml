@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" adaptationTest="FitSize">
+  <controller name="ControllerFriendOrBet" pages="0,Friend,1,Bet" selected="1">
+    <action type="play_transition" fromPage="1" toPage="0" transition="t0"/>
+    <action type="play_transition" fromPage="0" toPage="1" transition="t1"/>
+  </controller>
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <image id="n92_sul8" name="Bg" src="sul811" fileName="Image/bg.png" xy="0,0" size="1066,640"/>
+    <image id="n109_eajt" name="n109" src="vwta21" fileName="Image/zi_d.png" xy="0,499" size="1066,119">
+      <relation target="" sidePair="width-width,bottom-bottom"/>
+    </image>
+    <image id="n111_fpah" name="n111" src="fpah23" fileName="Image/zi_d_l - 副本.png" xy="0,65" pivot="0.5,0.5" size="1066,1">
+      <relation target="" sidePair="width-width"/>
+    </image>
+    <component id="n99_eccy" name="BtnReturn" src="wb2ek4" fileName="Component/Btn/BtnReturn1.xml" pkg="nhvxw9ov" xy="1003,2">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n102_eccy" name="BtnFullDesk" src="eccy1e" fileName="Component/BtnFullDesk.xml" xy="503,8" group="n103_eccy"/>
+    <text id="n9_et5o" name="Lan_Text_FullDesk" xy="442,15" pivot="1,0.5" size="55,32" group="n103_eccy" fontSize="25" color="#c09be6" align="right" vAlign="middle" text="满桌"/>
+    <group id="n103_eccy" name="fulldesk" xy="442,8" size="176,45" advanced="true" collapsed="true">
+      <relation target="" sidePair="center-center"/>
+    </group>
+    <text id="n3_et5o" name="Lan_Text_Seat" xy="12,15" pivot="0.5,0.5" size="55,32" group="n107_heqs" fontSize="25" color="#c09be6" align="center" vAlign="middle" text="座位"/>
+    <component id="n100_eccy" name="BtnSeat" src="eccy1d" fileName="Component/BtnSeat.xml" xy="74,8" group="n107_heqs"/>
+    <group id="n107_heqs" name="seat" xy="12,8" size="177,45" collapsed="true"/>
+    <list id="n44_hzax" name="ListDesk" xy="48,100" size="969,389" layout="flow_vt" overflow="scroll" scroll="horizontal" scrollBarFlags="514" margin="0,0,158,158" defaultItem="ui://cezlmpqget5oh" align="center" vAlign="middle">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </list>
+    <component id="n67_nb2e" name="ComHeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="1,512" size="90,90" group="n84_fzbi"/>
+    <text id="n29_et5o" name="PlayerName" xy="92,508" size="169,31" group="n84_fzbi" fontSize="24" color="#ccdadd" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n30_et5o" name="PlayerChipAmount" xy="125,542" size="136,31" group="n84_fzbi" fontSize="24" color="#ccdadd" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n31_et5o" name="PlayerGoldAmount" xy="125,575" size="136,31" group="n84_fzbi" fontSize="24" color="#ccdadd" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="width-width%"/>
+    </text>
+    <component id="n89_nhmu" name="BtnPersonInfo" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="-4,511" size="270,129" group="n84_fzbi" hideByEditor="true"/>
+    <image id="n108_a4c8" name="n108" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="95,545" size="26,26" group="n112_j1yr" color="#61e2ff"/>
+    <image id="n105_dcob" name="n105" src="ixpjau" fileName="Image/DiamondIcon.png" pkg="nhvxw9ov" xy="95,581" size="27,21" group="n112_j1yr"/>
+    <group id="n112_j1yr" name="n112" xy="95,545" size="27,57" group="n84_fzbi" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+    </group>
+    <image id="n113_j1yr" name="n113" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="96,542" size="26,26" group="n115_j1yr" color="#61e2ff"/>
+    <image id="n114_j1yr" name="n114" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="96,575" size="26,26" group="n115_j1yr" color="#a273ff"/>
+    <group id="n115_j1yr" name="n115" xy="96,542" size="26,59" group="n84_fzbi" advanced="true">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+    </group>
+    <group id="n84_fzbi" name="GroupSelfInfo" xy="-4,508" size="270,132" advanced="true">
+      <relation target="" sidePair="bottom-bottom"/>
+    </group>
+    <component id="n68_llx1" name="BtnFriend" src="llx1w" fileName="Component/BtnFriend.xml" xy="918,508" size="100,100" group="n77_y48p">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <image id="n94_sul8" name="n94" src="sul816" fileName="Image/bt_cm.png" xy="277,531" group="n87_hv9g"/>
+    <text id="n33_et5o" name="BetHint" xy="529,510" pivot="0.5,0.5" size="10,25" group="n87_hv9g" fontSize="18" color="#be96ff" align="center" vAlign="middle" text=""/>
+    <component id="n69_llx1" name="ComBetRangeOperateList" src="llx1x" fileName="Component/ComBetRangeOperateList.xml" xy="324,554" size="416,36" group="n87_hv9g"/>
+    <component id="n95_sul8" name="BtnBetAdd" src="sul815" fileName="Component/BtnArrow.xml" xy="747,552" pivot="0.5,0.5" group="n87_hv9g" skew="0,180"/>
+    <component id="n96_sul8" name="BtnBetReduce" src="sul815" fileName="Component/BtnArrow.xml" xy="291,552" pivot="0.5,0.5" group="n87_hv9g"/>
+    <group id="n87_hv9g" name="n87" xy="277,510" size="512,103" group="n77_y48p" advanced="true">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </group>
+    <group id="n77_y48p" name="bet" xy="277,508" size="741,105" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerFriendOrBet" pages="1"/>
+    </group>
+    <component id="n58_nb2e" name="BtnBet" src="nb2eu" fileName="Component/BtnBet.xml" xy="918,506" size="100,100" group="n78_y48p">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
+    <text id="n60_nb2e" name="NoFriendTips" xy="582,543" size="10,32" group="n78_y48p" fontSize="25" color="#ffffff" align="center" vAlign="middle" text="">
+      <relation target="n61_nb2e" sidePair="center-center,middle-middle"/>
+    </text>
+    <list id="n61_nb2e" name="ListFriend" xy="332,517" size="508,87" group="n78_y48p" layout="flow_vt" overflow="scroll" scroll="horizontal" colGap="2" defaultItem="ui://cezlmpqgsmxa1v" vAlign="middle">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </list>
+    <group id="n78_y48p" name="friend" xy="332,506" size="686,100" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerFriendOrBet" pages="0"/>
+    </group>
+    <text id="n32_et5o" name="Lan_Text_ChooseFitTable" xy="1,608" pivot="0.5,0.5" size="242,33" fontSize="24" color="#c09be6" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="选择合适的牌桌">
+      <relation target="" sidePair="bottom-bottom"/>
+    </text>
+    <text id="n34_et5o" name="Lan_Text_Blind" xy="463,608" pivot="0.5,0.5" size="138,33" fontSize="24" color="#c09be6" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="下注">
+      <gearDisplay controller="ControllerFriendOrBet" pages="1"/>
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </text>
+    <text id="n35_et5o" name="Lan_Text_ChangeToPlayingFriend" xy="869,608" pivot="0.5,0.5" size="197,33" fontSize="24" color="#c09be6" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="切换到打牌中好友">
+      <gearDisplay controller="ControllerFriendOrBet" pages="1"/>
+      <relation target="n68_llx1" sidePair="center-center"/>
+      <relation target="" sidePair="bottom-bottom"/>
+    </text>
+    <text id="n63_nb2e" name="Lan_Text_PlayingCardsFriend" xy="439,608" pivot="0.5,0.5" size="291,33" fontSize="24" color="#c09be6" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="打牌中好友">
+      <gearDisplay controller="ControllerFriendOrBet" pages="0"/>
+      <relation target="n61_nb2e" sidePair="center-center"/>
+      <relation target="" sidePair="bottom-bottom"/>
+    </text>
+    <text id="n59_nb2e" name="Lan_Text_ChangetoDeskList" xy="870,608" pivot="0.5,0.5" size="196,33" fontSize="24" color="#c09be6" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="切换到牌桌列表">
+      <gearDisplay controller="ControllerFriendOrBet" pages="0"/>
+      <relation target="n58_nb2e" sidePair="center-center"/>
+      <relation target="" sidePair="bottom-bottom"/>
+    </text>
+  </displayList>
+</component>

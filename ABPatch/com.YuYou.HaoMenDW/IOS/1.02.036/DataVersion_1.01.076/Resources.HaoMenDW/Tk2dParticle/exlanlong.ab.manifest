@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 2276975591
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ef0fd3e7f1743dd88876b8d2c0701f15
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 470c1af1c724562a5047c7d9683d59a7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Tk2dParticle/EXlanlong.prefab
+- Assets/ResourcesParticle/Textures/Textures/water.png
+- Assets/ResourcesParticle/Textures/Textures/Materials/water.mat
+Dependencies: []

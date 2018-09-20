@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="iwjsk14c" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="qsg81" name="AgreeOrDisAddFriendRequest.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="AgreeOrDisAddFriendRequest" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\AgreeOrDisAddFriendRequest"/>
+</packageDescription>

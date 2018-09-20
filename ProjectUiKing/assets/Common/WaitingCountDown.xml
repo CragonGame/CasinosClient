@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" opaque="false">
+  <displayList>
+    <image id="n4_u51o" name="n4" src="oypw6e" fileName="Image/Shade.png" xy="0,0" size="1066,640" alpha="0.5">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n9_dcgb" name="n9" src="sdyolc" fileName="Image/Tips-底板.png" xy="30,210" size="509,220" group="n12_dcgb"/>
+    <image id="n11_dcgb" name="n11" src="sdyolc" fileName="Image/Tips-底板.png" xy="1039,210" size="509,220" group="n12_dcgb" skew="0,180"/>
+    <group id="n12_dcgb" name="n12" xy="30,210" size="1518,220" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <image id="n10_dcgb" name="n10" src="sdyold" fileName="Image/31.png" xy="449,324" group="n14_dcgb"/>
+    <text id="n26_dcgb" name="TextMin" xy="453,335" pivot="0.5,0.5" size="49,42" group="n14_dcgb" fontSize="36" color="#333333" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n13_dcgb" name="n13" src="sdyold" fileName="Image/31.png" xy="558,324" group="n14_dcgb"/>
+    <text id="n27_dcgb" name="TextSec" xy="562,335" pivot="0.5,0.5" size="49,42" group="n14_dcgb" fontSize="36" color="#333333" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n15_dcgb" name="n15" xy="526,336" size="15,39" group="n14_dcgb" fontSize="30" color="#ffffff" bold="true" text=":"/>
+    <group id="n14_dcgb" name="n14" xy="449,324" size="168,64" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+    <text id="n2" name="Tips" xy="216,253" size="634,34" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="height" text="">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

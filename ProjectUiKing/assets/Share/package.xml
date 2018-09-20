@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="plamk3fn" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="lpgp0" name="Share.xml" path="/" exported="true"/>
+    <image id="lpgp1" name="Bg.jpg" path="/Image/"/>
+    <component id="gvmm2" name="ComHead.xml" path="/Component/"/>
+    <image id="gvmm3" name="NameBg.png" path="/Image/"/>
+    <image id="gvmm4" name="QRCodeBg.png" path="/Image/"/>
+    <image id="gvmm5" name="Head.png" path="/Image/"/>
+    <image id="rjau6" name="daoju.png" path="/Image/"/>
+    <image id="rjau7" name="diban.png" path="/Image/" atlas="1"/>
+    <image id="rjau8" name="nv.png" path="/Image/"/>
+    <image id="rjau9" name="logo.png" path="/Image/"/>
+  </resources>
+  <publish name="Share" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Share"/>
+</packageDescription>

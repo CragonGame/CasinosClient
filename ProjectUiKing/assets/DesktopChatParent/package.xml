@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="kibo0ihl" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="lma80" name="DesktopChatParent.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="DesktopChatParent" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.King\PkgFold\Ui\DesktopChatParent"/>
+</packageDescription>

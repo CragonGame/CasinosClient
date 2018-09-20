@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 555434402
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3903058e6e29cc2bfe75c3245b765b15
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Ranking/Ranking.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Ranking/Ranking@sprites.bytes
+Dependencies: []

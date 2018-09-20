@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1311527253
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cdab28671079a4188545afe3cf5185ca
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/jettonmoney.wav
+Dependencies: []

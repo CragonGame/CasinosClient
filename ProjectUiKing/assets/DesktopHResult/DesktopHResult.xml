@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n54_ow7f" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n68_tabc" name="n68" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="152,206" size="279,357" group="n75_m4t7" color="#303563"/>
+    <image id="n69_tabc" name="n69" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="454,206" size="459,357" group="n75_m4t7" color="#303563"/>
+    <loader id="n33_jvj7" name="Lan_Image_IncomeRanking" xy="445,158" pivot="0.5,0.5" size="357,28" group="n75_m4t7" hideByEditor="true" visible="false" url="ui://z7w3u7a1wp1hc" align="center" vAlign="middle" fill="scale"/>
+    <image id="n58_vwta" name="n58" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="142,197" size="781,4" group="n75_m4t7" color="#1e203b"/>
+    <image id="n59_vwta" name="n59" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="445,147" size="426,4" group="n75_m4t7" rotation="90" color="#1e203b"/>
+    <image id="n61_wb2e" name="n61" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="140,77" group="n75_m4t7"/>
+    <image id="n62_wb2e" name="n62" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="490,74" pivot="0.5,0.5" group="n75_m4t7">
+      <relation target="n74_nhsw" sidePair="right-left"/>
+    </image>
+    <image id="n63_wb2e" name="n63" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="538,74" pivot="0.5,0.5" group="n75_m4t7" skew="0,180">
+      <relation target="n74_nhsw" sidePair="left-right"/>
+    </image>
+    <text id="n14_wp1h" name="CloseTips" xy="164,155" pivot="0.5,0.5" size="255,36" group="n75_m4t7" fontSize="28" color="#7c9de7" align="center" vAlign="middle" leading="0" ubb="true" autoSize="shrink" singleLine="true" text="还有4秒将自动关闭"/>
+    <text id="n17_wp1h" name="Lan_Text_CurrentBanker" xy="164,483" pivot="0.5,0.5" size="119,32" group="n75_m4t7" fontSize="25" color="#98a9df" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="当前庄家:"/>
+    <text id="n18_wp1h" name="BankName" xy="283,483" size="135,32" group="n75_m4t7" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n19_wp1h" name="BanWin" xy="283,514" pivot="0.5,0.5" size="135,32" group="n75_m4t7" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n30_c8qy" name="Lan_Text_MyIncomeBureau" xy="469,479" pivot="0.5,0.5" size="183,32" group="n75_m4t7" fontSize="25" color="#98a9df" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="我的本局盈利:"/>
+    <text id="n20_wp1h" name="SelfWin" xy="652,479" pivot="0.5,0.5" size="216,32" group="n75_m4t7" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <list id="n21_wp1h" name="ListWinRank" xy="469,215" size="428,265" group="n75_m4t7" overflow="scroll" lineGap="1" defaultItem="ui://z7w3u7a1wp1hh" align="center"/>
+    <list id="n22_wp1h" name="ListPotResult" xy="164,215" size="255,264" group="n75_m4t7" overflow="scroll" lineGap="2" defaultItem="ui://zah9oa21wp1h1w"/>
+    <text id="n31_c8qy" name="Lan_Text_MyBureauBet" xy="469,510" size="184,32" group="n75_m4t7" fontSize="25" color="#98a9df" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="我的本局下注:"/>
+    <text id="n32_c8qy" name="SelfBet" xy="652,510" size="216,32" group="n75_m4t7" fontSize="25" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n55_ow7f" name="Lan_Text_RevenueRankingOfTheBureau" xy="545,155" pivot="0.5,0.5" size="276,36" group="n75_m4t7" fontSize="28" color="#7c9de7" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="本局收益排行"/>
+    <text id="n73_d2ra" name="Lan_Text_BankerWin" xy="164,514" pivot="0.5,0.5" size="119,32" group="n75_m4t7" fontSize="25" color="#98a9df" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="庄家盈利:"/>
+    <text id="n74_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n75_m4t7" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
+    <group id="n75_m4t7" name="n75" xy="140,74" size="783,489" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

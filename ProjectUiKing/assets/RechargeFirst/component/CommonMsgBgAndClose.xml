@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="960,640">
+  <displayList>
+    <image id="n0" name="n0" src="njukb" xy="15,19" size="930,601" group="n3">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n1" name="n1" src="njukc" xy="33,36" size="896,61" group="n3">
+      <relation target="n0" sidePair="width-width,top-top"/>
+    </image>
+    <component id="n2" name="BtnClose" src="njukd" xy="861,31" size="70,70" group="n3">
+      <relation target="n0" sidePair="right-right,top-top"/>
+    </component>
+    <group id="n3" name="n3" xy="15,19" size="930,601" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

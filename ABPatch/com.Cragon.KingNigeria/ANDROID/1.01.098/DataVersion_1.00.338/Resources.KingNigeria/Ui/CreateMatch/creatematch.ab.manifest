@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 1820024735
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 86b7225bcb151eb74d2a2659c085324f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/CreateMatch/CreateMatch@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/CreateMatch/CreateMatch@atlas0!a.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/CreateMatch/CreateMatch@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/CreateMatch/CreateMatch@atlas3!a.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/CreateMatch/CreateMatch@atlas3.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/CreateMatch/CreateMatch.bytes
+Dependencies: []

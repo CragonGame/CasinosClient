@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="56,69">
+  <displayList>
+    <loader id="n0_ncss" name="LoaderActionBg" xy="0,0" size="56,69" group="n2_ncss" url="ui://e229983sncss1u" align="center" vAlign="middle" fill="scale"/>
+    <text id="n1_ncss" name="TextAction" xy="23,8" pivot="0.5,0.5" size="10,39" group="n2_ncss" fontSize="30" align="center" vAlign="middle" text=""/>
+    <group id="n2_ncss" name="GroupAction" xy="0,0" size="56,69" advanced="true"/>
+  </displayList>
+  <transition name="TransitionAction">
+    <item time="0" type="Alpha" target="n2_ncss" tween="true" startValue="1" endValue="0" duration="12" ease="Linear"/>
+    <item time="0" type="XY" target="n2_ncss" tween="true" startValue="0,0" endValue="0,-111" duration="12" ease="Linear"/>
+    <item time="12" type="Alpha" target="n2_ncss" tween="true" startValue="0" endValue="0" duration="1" ease="Linear"/>
+    <item time="12" type="XY" target="n2_ncss" tween="true" startValue="0,-111" endValue="0,0" duration="1" ease="Linear"/>
+    <item time="13" type="Alpha" target="n2_ncss" tween="true" startValue="0" ease="Linear"/>
+    <item time="13" type="XY" target="n2_ncss" tween="true" startValue="0,0"/>
+  </transition>
+</component>

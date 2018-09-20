@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="742,96">
+  <controller name="ControllerRead" pages="0,Read,1,NoRead" selected="0"/>
+  <displayList>
+    <component id="n13_lh6b" name="n13" src="lh6bjw" fileName="Component/ComListItemBg.xml" pkg="nhvxw9ov" xy="0,0"/>
+    <image id="n12_qeuc" name="n12" src="qeucr" fileName="Image/BgIcon.png" xy="672,17" color="#66ccff"/>
+    <richtext id="n3_d2r3" name="MailTitle" xy="29,15" size="462,31" fontSize="24" color="#ffffff" vAlign="bottom" leading="0" ubb="true" autoSize="shrink" singleLine="true" text=""/>
+    <richtext id="n4_d2r3" name="MailContent" xy="29,52" size="628,29" fontSize="22" color="#ffffff" vAlign="middle" leading="0" ubb="true" autoSize="none" singleLine="true" text=""/>
+    <richtext id="n5_d2r3" name="MailTm" xy="498,19" size="158,27" fontSize="20" color="#ffffff" vAlign="bottom" leading="0" ubb="true" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n2_d2r3" name="NewSign" src="dld2a7" fileName="Image/MsgTips.png" pkg="nhvxw9ov" xy="702,7" visible="false"/>
+    <image id="n10_lil3" name="n10" src="lil3o" fileName="Image/IconClose.png" xy="686,35">
+      <gearDisplay controller="ControllerRead" pages="1"/>
+    </image>
+    <image id="n11_lil3" name="n11" src="lil3p" fileName="Image/IconOpen.png" xy="684,28" color="#66ccff">
+      <gearDisplay controller="ControllerRead" pages="0"/>
+    </image>
+  </displayList>
+</component>

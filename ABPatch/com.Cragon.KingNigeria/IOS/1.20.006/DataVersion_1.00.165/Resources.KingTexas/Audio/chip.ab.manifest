@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 299209305
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f2ff870e8af8408297681ceb9a77b948
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/chip.wav
+Dependencies: []

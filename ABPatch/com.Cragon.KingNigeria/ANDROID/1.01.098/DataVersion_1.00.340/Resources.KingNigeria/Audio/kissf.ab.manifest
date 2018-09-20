@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 378700159
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a8193fcf1ad5c2edea78be1ef0b6a1e4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/kissf.mp3
+Dependencies: []

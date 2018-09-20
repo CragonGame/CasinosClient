@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1315866560
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 65bf0ff61699e3ad482f09b1809423a8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/Close.wav
+Dependencies: []

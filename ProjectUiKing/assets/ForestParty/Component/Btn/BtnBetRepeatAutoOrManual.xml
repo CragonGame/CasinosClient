@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="50,39" extention="Button" initName="BtnBetRepeatAutoOrManual">
+  <controller name="ControllerBetAutoOrManual" pages="0,Auto,1,Manual" selected="0"/>
+  <displayList>
+    <image id="n6_q6q3" name="n6" src="q6q3lf" xy="0,0"/>
+    <image id="n7_q6q3" name="n7" src="q6q3lg" xy="8,20">
+      <gearDisplay controller="ControllerBetAutoOrManual" pages=""/>
+    </image>
+    <image id="n9_q6q3" name="n9" src="q6q3li" xy="10,0"/>
+    <image id="n10_bjg9" name="n10" src="bjg9lx" xy="3,0">
+      <gearDisplay controller="ControllerBetAutoOrManual" pages="0"/>
+    </image>
+    <image id="n11_bjg9" name="n11" src="bjg9lx" xy="3,19">
+      <gearDisplay controller="ControllerBetAutoOrManual" pages="1"/>
+    </image>
+    <image id="n4_fy98" name="n4" src="ieude2" xy="10,0">
+      <gearDisplay controller="ControllerBetAutoOrManual" pages="0"/>
+    </image>
+    <image id="n5_fy98" name="n5" src="ieude3" xy="8,20">
+      <gearDisplay controller="ControllerBetAutoOrManual" pages="1"/>
+    </image>
+  </displayList>
+  <Button/>
+</component>

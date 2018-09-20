@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3248813183
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9ffa9d6eee36e4e919dafe4dd20c1da4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/DesktopHRoyalFlush.mp3
+Dependencies: []

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="654,84" initName="ComReportPlayer">
+  <displayList>
+    <image id="n0_hrhq" name="n0" src="vi47jq" pkg="nhvxw9ov" xy="0,0" size="240,84"/>
+    <image id="n1_hrhq" name="n1" src="vi47jq" pkg="nhvxw9ov" xy="240,0" pivot="0.5,0.5" size="417,84" skew="0,180"/>
+    <image id="n6_hrhq" name="n6" src="u51ojc" pkg="nhvxw9ov" xy="159,1" size="2,60" color="#5970b1"/>
+    <image id="n7_hrhq" name="n7" src="u51ojc" pkg="nhvxw9ov" xy="317,1" size="2,60" color="#5970b1"/>
+    <image id="n8_hrhq" name="n8" src="u51ojc" pkg="nhvxw9ov" xy="485,1" size="2,60" color="#5970b1"/>
+    <list id="n2_hrhq" name="ContentList" xy="6,11" size="630,40" layout="row" overflow="scroll" colGap="26" defaultItem="ui://h1mhsg6khrhq6r" align="center" vAlign="middle"/>
+  </displayList>
+</component>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="143,63" extention="Button" initName="BtnEnterNow">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n5_kpff" name="n5" src="mkwxea" fileName="Image/BtnGreen.png" pkg="nhvxw9ov" xy="0,0" size="143,63"/>
+    <text id="n6_kpff" name="title" xy="0,0" size="143,63" fontSize="25" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="立即进入"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

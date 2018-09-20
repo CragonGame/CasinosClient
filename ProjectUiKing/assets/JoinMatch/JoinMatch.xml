@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n0_sd6w" name="ComBgAndClose" src="sd6w4" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <image id="n1_sd6w" name="n1" src="sd6wl1" pkg="nhvxw9ov" xy="318,85" size="430,470" group="n26_sd6w" color="#393973"/>
+    <image id="n3_sd6w" name="n3" src="phssjr" pkg="nhvxw9ov" xy="318,470" size="430,1" group="n26_sd6w"/>
+    <image id="n4_sd6w" name="n4" src="phssjr" pkg="nhvxw9ov" xy="318,387" pivot="0.5,0.5" size="430,1" group="n26_sd6w"/>
+    <image id="n5_sd6w" name="n5" src="phssjr" pkg="nhvxw9ov" xy="318,304" size="430,1" group="n26_sd6w"/>
+    <image id="n6_sd6w" name="n6" src="u51ojc" pkg="nhvxw9ov" xy="320,138" size="425,83" group="n26_sd6w" color="#24213c"/>
+    <image id="n9_sd6w" name="n9" src="vi47jn" pkg="nhvxw9ov" xy="318,86" pivot="0.5,0.5" size="215,52" group="n26_sd6w" alpha="0.6"/>
+    <image id="n10_sd6w" name="n10" src="vi47jn" pkg="nhvxw9ov" xy="533,86" pivot="0.5,0.5" size="215,52" group="n26_sd6w" skew="0,180" alpha="0.6"/>
+    <text id="n11_sd6w" name="n11" xy="400,98" pivot="0.5,0.5" size="265,27" group="n26_sd6w" fontSize="20" color="#a9b7da" align="center" vAlign="middle" leading="0" autoSize="none" text="输入6位数密码"/>
+    <component id="n8_sd6w" name="BtnClose" src="jt75ep" pkg="nhvxw9ov" xy="697,90" size="45,45" group="n26_sd6w"/>
+    <component id="n12_sd6w" name="BtnNum1" src="sd6w1" xy="320,221" group="n26_sd6w">
+      <Button title="1"/>
+    </component>
+    <component id="n13_sd6w" name="BtnNum2" src="sd6w1" xy="462,221" group="n26_sd6w">
+      <Button title="2"/>
+    </component>
+    <component id="n14_sd6w" name="BtnNum3" src="sd6w1" xy="604,221" group="n26_sd6w">
+      <Button title="3"/>
+    </component>
+    <image id="n15_sd6w" name="n15" src="phssjr" pkg="nhvxw9ov" xy="296,386" pivot="0.5,0.5" size="334,1" group="n26_sd6w" rotation="90"/>
+    <image id="n16_sd6w" name="n16" src="phssjr" pkg="nhvxw9ov" xy="438,387" pivot="0.5,0.5" size="334,1" group="n26_sd6w" rotation="90"/>
+    <component id="n17_sd6w" name="BtnNum4" src="sd6w1" xy="320,305" group="n26_sd6w">
+      <Button title="4"/>
+    </component>
+    <component id="n18_sd6w" name="BtnNum5" src="sd6w1" xy="462,305" group="n26_sd6w">
+      <Button title="5"/>
+    </component>
+    <component id="n19_sd6w" name="BtnNum6" src="sd6w1" xy="604,305" group="n26_sd6w">
+      <Button title="6"/>
+    </component>
+    <component id="n20_sd6w" name="BtnNum7" src="sd6w1" xy="320,388" group="n26_sd6w">
+      <Button title="7"/>
+    </component>
+    <component id="n21_sd6w" name="BtnNum8" src="sd6w1" xy="462,388" group="n26_sd6w">
+      <Button title="8"/>
+    </component>
+    <component id="n22_sd6w" name="BtnNum9" src="sd6w1" xy="604,388" group="n26_sd6w">
+      <Button title="9"/>
+    </component>
+    <component id="n23_sd6w" name="BtnNum0" src="sd6w1" xy="462,472" group="n26_sd6w">
+      <Button title="0"/>
+    </component>
+    <component id="n24_sd6w" name="BtnDelete" src="sd6w2" xy="605,470" group="n26_sd6w"/>
+    <text id="n25_sd6w" name="TextPassword" xy="326,147" pivot="0.5,0.5" size="412,61" group="n26_sd6w" fontSize="50" color="#8af2f6" align="center" vAlign="middle" leading="0" letterSpacing="40" autoSize="none" bold="true" text="------"/>
+    <group id="n26_sd6w" name="n26" xy="296,85" size="476,470" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="960,640">
+  <controller name="ControllerInfo" pages="0,Player,1,Banker" selected="0"/>
+  <displayList>
+    <component id="n24_q6q3" name="ComBgAndClose" src="y7iqc1" pkg="nhvxw9ov" xy="167,43" size="550,550"/>
+    <component id="n4_lh90" name="BtnBeBankerList" src="ieudk" xy="93,163" pivot="0.5,0.5" size="178,59" hideByEditor="true" visible="false" rotation="-90"/>
+    <image id="n5_lh90" name="n5" src="ieudm" xy="92,164" pivot="0.5,0.5" size="178,59" hideByEditor="true" visible="false" rotation="-90">
+      <gearDisplay controller="ControllerInfo" pages="1"/>
+    </image>
+    <text id="n6_lh90" name="n6" xy="168,115" size="36,158" hideByEditor="true" visible="false" fontSize="25" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" text="上&#xA;庄&#xA;列&#xA;表"/>
+    <list id="n16_lh90" name="ListPlayer" xy="202,119" size="482,394" layout="flow_hz" overflow="scroll" lineGap="4" defaultItem="ui://fhkgb1j1ieud4" align="center"/>
+    <component id="n8_lh90" name="BtnBeBanker" src="ieudn" xy="558,533" size="149,54" group="n17_g8xn"/>
+    <text id="n9_lh90" name="n9" xy="579,543" size="109,34" group="n17_g8xn" fontSize="25" color="#ffffff" align="center" vAlign="middle" bold="true" text="申请上庄">
+      <gearDisplay controller="ControllerInfo" pages=""/>
+    </text>
+    <group id="n17_g8xn" name="BeBanker" xy="558,533" size="149,54" advanced="true">
+      <gearDisplay controller="ControllerInfo" pages="0"/>
+    </group>
+    <component id="n10_lh90" name="BtnForestall" src="ieudn" xy="555,530" size="149,54" group="n18_g8xn"/>
+    <text id="n11_lh90" name="n11" xy="598,539" size="60,34" group="n18_g8xn" fontSize="25" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" bold="true" text="抢庄"/>
+    <group id="n18_g8xn" name="Forestall" xy="555,530" size="149,54" advanced="true">
+      <gearDisplay controller="ControllerInfo" pages="1"/>
+    </group>
+    <text id="n12_lh90" name="n12" xy="220,518" size="239,34" group="n19_g8xn" fontSize="25" color="#cccccc" vAlign="middle" bold="true" text="当前房间在线人数："/>
+    <text id="n13_lh90" name="TextOnlineAmount" xy="456,518" size="113,34" group="n19_g8xn" fontSize="25" color="#cccccc" vAlign="middle" autoSize="shrink" bold="true" text=""/>
+    <group id="n19_g8xn" name="OnlineAmount" xy="220,518" size="349,34" hideByEditor="true" visible="false" advanced="true" collapsed="true">
+      <gearDisplay controller="ControllerInfo" pages="0"/>
+    </group>
+    <text id="n14_lh90" name="n14" xy="197,541" size="311,34" group="n20_g8xn" fontSize="25" color="#ffc001" vAlign="middle" autoSize="none" bold="true" text="当前场次上庄条件为："/>
+    <text id="n15_lh90" name="TextBeBankerLimit" xy="450,541" size="95,34" group="n20_g8xn" fontSize="25" color="#ffc001" vAlign="middle" autoSize="shrink" bold="true" singleLine="true" text=""/>
+    <group id="n20_g8xn" name="tiaojian" xy="197,541" size="348,34" advanced="true">
+      <gearDisplay controller="ControllerInfo" pages="1"/>
+    </group>
+    <component id="n1_lh90" name="BtnPlayerList" src="ieudk" xy="93,138" pivot="0.5,0.5" size="178,59" group="n22_ltgi" rotation="-90"/>
+    <image id="n2_lh90" name="n2" src="ieudm" xy="92,138" pivot="0.5,0.5" size="178,59" group="n22_ltgi" rotation="-90">
+      <gearDisplay controller="ControllerInfo" pages="0"/>
+    </image>
+    <text id="n3_lh90" name="n3" xy="168,89" size="36,158" group="n22_ltgi" fontSize="25" color="#ffffff" align="center" vAlign="middle" autoSize="none" bold="true" text="玩&#xA;家&#xA;列&#xA;表"/>
+    <group id="n22_ltgi" name="n22" xy="92,89" size="179,158" hideByEditor="true" visible="false" advanced="true" collapsed="true"/>
+  </displayList>
+</component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="720,331" initName="ComBlind">
+  <displayList>
+    <text id="n0_gy6l" name="TextBindTips" xy="0,0" pivot="0.5,0.5" size="720,27" fontSize="20" color="#60699c" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <image id="n1_gy6l" name="n1" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="0,34" size="720,297" color="#303563"/>
+    <image id="n5_gy6l" name="n5" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="-1,86" size="722,4" color="#242647"/>
+    <list id="n6_gy6l" name="ListBlind" xy="-1,87" size="722,243" overflow="scroll" defaultItem="ui://6jtesqzwgy6la" align="center"/>
+    <text id="n2_gy6l" name="Lan_Text_MatchLevel" xy="57,44" pivot="0.5,0.5" size="55,32" fontSize="25" color="#525f9c" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="级别"/>
+    <text id="n3_gy6l" name="Lan_Text_Blind" xy="220,44" pivot="0.5,0.5" size="55,32" fontSize="25" color="#525f9c" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="盲注"/>
+    <text id="n4_gy6l" name="Lan_Text_Ante" xy="381,44" pivot="0.5,0.5" size="68,32" fontSize="25" color="#525f9c" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="前注"/>
+    <text id="n7_gy6l" name="Lan_Text_BlindnessTime" xy="556,44" pivot="0.5,0.5" size="105,32" fontSize="25" color="#525f9c" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="升盲时间"/>
+  </displayList>
+</component>

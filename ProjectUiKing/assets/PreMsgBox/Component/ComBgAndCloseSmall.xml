@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <image id="n0_lh6b" name="n0" src="lh6bm" fileName="Image/UI2_通用_底板01.png" xy="245,134" size="574,371" group="n10_lh6b"/>
+    <image id="n1_lh6b" name="n1" src="lh6bl" fileName="Image/UI2_通用_Title.png" xy="265,151" size="269,60" group="n10_lh6b"/>
+    <image id="n2_lh6b" name="n2" src="lh6bl" fileName="Image/UI2_通用_Title.png" xy="530,151" pivot="0.5,0.5" size="269,60" group="n10_lh6b" skew="0,180"/>
+    <image id="n4_lh6b" name="n4" src="lh6bl" fileName="Image/UI2_通用_Title.png" xy="799,486" size="269,80" group="n10_lh6b" skew="180,180" color="#595b99"/>
+    <image id="n5_lh6b" name="n5" src="lh6bl" fileName="Image/UI2_通用_Title.png" xy="265,406" pivot="0.5,0.5" size="269,80" group="n10_lh6b" skew="180,0" color="#595b99"/>
+    <image id="n7_lh6b" name="n7" src="lh6bk" fileName="Image/UI2_通用_Title花纹02.png" xy="264,152" size="180,59" group="n10_lh6b"/>
+    <group id="n10_lh6b" name="n10" xy="245,134" size="823,432" advanced="true">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </group>
+  </displayList>
+</component>

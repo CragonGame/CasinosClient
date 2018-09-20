@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 3481652910
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 17c60221a5c6893b93b5ef9c5e8af917
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f97869c28a1aa28c8d991fd457505a12
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/ActivityCenter/ActivityCenter@atlas0.png
+- Assets/Resources.KingNigeria/PkgFold/Ui/ActivityCenter/ActivityCenter@sprites.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/ActivityCenter/ActivityCenter.bytes
+Dependencies: []

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1116493490
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 90ff872debc9adeeef672bea712f69dd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/kissf.mp3
+Dependencies: []

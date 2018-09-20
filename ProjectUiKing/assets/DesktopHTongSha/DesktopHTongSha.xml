@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="960,640">
+  <displayList>
+    <image id="n3" name="n3" src="oypw1" xy="158,5">
+      <relation target="" sidePair="middle-middle,center-center"/>
+    </image>
+    <loader id="n5_jvj7" name="Lan_Image_TongSha" xy="180,213" size="600,214" url="ui://rfaokxydoypw2" align="center" vAlign="middle" fill="scale">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </loader>
+  </displayList>
+  <transition name="AniTongSha">
+    <item time="0" type="Alpha" target="n3" tween="true" startValue="1" endValue="0.4" duration="6" ease="Linear"/>
+    <item time="6" type="Alpha" target="n3" tween="true" startValue="0.4" endValue="1" duration="6" ease="Linear"/>
+    <item time="12" type="Alpha" target="n3" tween="true" startValue="1" endValue="0.4" duration="6" ease="Linear"/>
+    <item time="18" type="Alpha" target="n3" tween="true" startValue="0.4" endValue="1" duration="6" ease="Linear"/>
+    <item time="24" type="Alpha" target="n3" tween="true" startValue="1" endValue="0.4" duration="6" ease="Linear"/>
+    <item time="30" type="Alpha" target="n3" tween="true" startValue="0.4" endValue="1" duration="6" ease="Linear"/>
+    <item time="36" type="Alpha" target="n3" tween="true" startValue="1" endValue="0.4" duration="6" ease="Linear"/>
+    <item time="42" type="Alpha" target="n3" tween="true" startValue="0.4" endValue="1" duration="6" ease="Linear"/>
+    <item time="48" type="Alpha" target="n3" tween="true" startValue="1" ease="Linear"/>
+  </transition>
+</component>

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 784541332
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6aa610b21dbdf298fa52bd0bf531372c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/fapaia.wav
+Dependencies: []

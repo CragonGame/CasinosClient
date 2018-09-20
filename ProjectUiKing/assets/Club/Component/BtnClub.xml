@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="274,313" extention="Button" initName="BtnClub">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n4_qkn2" name="n4" src="qkn2k" xy="0,0" size="274,313"/>
+    <image id="n5_qkn2" name="n5" src="qkn2j" xy="48,38" size="176,204"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

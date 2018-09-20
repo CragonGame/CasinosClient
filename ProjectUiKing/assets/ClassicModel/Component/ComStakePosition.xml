@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="68,68">
+  <displayList>
+    <loader id="n0_et5o" name="LoaderHeadIcon" xy="0,0" pivot="0.5,0.5" size="68,68" url="ui://cezlmpqget5o7" align="center" vAlign="middle" fill="scale"/>
+    <text id="n1_et5o" name="TextName" xy="1,-24" size="67,24" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="center-center"/>
+    </text>
+    <text id="n2_et5o" name="TextGoldAmount" xy="1,68" size="67,24" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="center-center"/>
+    </text>
+  </displayList>
+</component>

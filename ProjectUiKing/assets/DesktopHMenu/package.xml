@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="zihntqcz" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="fb5j0" name="DesktopHMenu.xml" path="/" exported="true"/>
+    <component id="fb5jj" name="Lan_ImageBtnCardType.xml" path="/Component/" exported="true"/>
+    <component id="fb5jk" name="Lan_ImageBtnCharge.xml" path="/Component/" exported="true"/>
+    <component id="fb5jl" name="Lan_ImageBtnHelp.xml" path="/Component/" exported="true"/>
+    <component id="fb5jm" name="Lan_ImageBtnReturn.xml" path="/Component/" exported="true"/>
+    <component id="fb5jn" name="CoMenuEx.xml" path="/Component/" exported="true"/>
+  </resources>
+  <publish name="DesktopHMenu" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\DesktopHMenu"/>
+</packageDescription>

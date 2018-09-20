@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 538003661
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 13dff556a843a0148a3e2c48c7fc89bb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6e524609455c7cfb29b5bab3f5d3ec7c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Set/Set@atlas0.png
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Set/Set@sprites.bytes
+- Assets/Resources.HaoMenDW/PkgFold/Ui/Set/Set.bytes
+Dependencies: []

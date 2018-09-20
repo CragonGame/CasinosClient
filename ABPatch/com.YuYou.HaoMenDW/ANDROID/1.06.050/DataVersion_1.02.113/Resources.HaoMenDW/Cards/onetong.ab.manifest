@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1015564154
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: eeb3e11203f9f70a8a02d4a0b05fc75a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c1642440719609290a7e09a50a7286f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Cards/OneTong.png
+Dependencies: []

@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2388105039
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 27504cd4f450931e428e3851723ba907
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/AllWinEffect.wav
+Dependencies: []

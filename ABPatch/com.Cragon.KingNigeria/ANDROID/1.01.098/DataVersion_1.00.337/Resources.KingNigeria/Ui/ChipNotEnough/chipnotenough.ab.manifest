@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2194287033
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 10d17bfdd56ccfc534010d1e1db453d1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgFold/Ui/ChipNotEnough/ChipNotEnough.bytes
+- Assets/Resources.KingNigeria/PkgFold/Ui/ChipNotEnough/ChipNotEnough@sprites.bytes
+Dependencies: []

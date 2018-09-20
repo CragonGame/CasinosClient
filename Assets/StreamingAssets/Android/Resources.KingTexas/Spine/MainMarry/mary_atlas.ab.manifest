@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 754495238
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d9d93459bb698f19ab21f9b2401f9818
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8f8a15e77918057f9b1ceb9d21584790
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Lib.Spine/spine-unity/Editor/GUI/AtlasAsset Icon.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Spine/MainMarry/Mary.atlas.txt
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Spine/MainMarry/Mary_Atlas.asset
+Dependencies: []

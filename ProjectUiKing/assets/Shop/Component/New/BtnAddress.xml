@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="106,36" overflow="hidden" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n9_j3hl" name="n9" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="20,0" size="66,36" color="#405db4"/>
+    <image id="n6_hrhq" name="n6" src="hrhqkf" fileName="Image/HalfImage/半圆.png" pkg="nhvxw9ov" xy="-1,0" pivot="0.5,0.5" size="23,36" color="#415eb5">
+      <relation target="" sidePair="width-width"/>
+    </image>
+    <image id="n7_hrhq" name="n7" src="hrhqkf" fileName="Image/HalfImage/半圆.png" pkg="nhvxw9ov" xy="85,0" pivot="0.5,0.5" size="21,36" skew="0,180" color="#415eb5"/>
+    <text id="n5_hrhq" name="title" xy="0,0" pivot="0.5,0.5" size="106,36" font="FontCu" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" text="收货地址"/>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

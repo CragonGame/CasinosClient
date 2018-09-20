@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="102,153" opaque="false">
+  <displayList>
+    <image id="n2_npdv" name="ActionOrNameBg" src="npdv2" fileName="Image/PlayerActionOrName.png" xy="0,1" size="102,25" group="n4_npdv" alpha="0.7"/>
+    <text id="n3_npdv" name="ActionOrNameLable" xy="0,2" pivot="0.5,0.5" size="102,25" group="n4_npdv" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n4_npdv" name="GroupActionOrName" xy="0,1" size="102,26" advanced="true"/>
+    <image id="n5_npdv" name="DeskAmountBg" src="npdv2" fileName="Image/PlayerActionOrName.png" xy="0,152" size="102,25" skew="180,0" alpha="0.7"/>
+    <text id="n6_npdv" name="DesktopAmountLable" xy="0,127" size="102,27" fontSize="20" color="#fddd8d" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+    <component id="n1_npdv" name="ComHeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="0,25" size="102,102"/>
+    <image id="n11_npdv" name="PlayerWinner" src="npdv4" fileName="Image/PlayerWinner.png" xy="-11,-8" pivot="0.5,0.5" size="124,171" hideByEditor="true"/>
+    <image id="n13_npdv" name="FriendMark" src="npdv6" fileName="Image/DeskFriendMark.png" xy="91,-13" hideByEditor="true"/>
+    <component id="n14_npdv" name="ComCardOne" src="npdvn" fileName="Component/ComCard.xml" pkg="08hoz1y1" xy="-2,25" size="75,107" hideByEditor="true"/>
+    <component id="n15_npdv" name="ComCardTwo" src="npdvn" fileName="Component/ComCard.xml" pkg="08hoz1y1" xy="31,25" size="75,107" hideByEditor="true"/>
+    <component id="n19_npdv" name="ComChatParent" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="50,65" hideByEditor="true"/>
+    <component id="n30_npdv" name="ComPlayerCenter" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="50,76" hideByEditor="true"/>
+    <graph id="n132_nhmu" name="GraphWinStarParent" xy="50,76" size="1,1" hideByEditor="true" visible="false" type="rect"/>
+    <image id="n22_npdv" name="DeskDealer" src="npdva" fileName="Image/DeskDealer.png" xy="-27,18" group="n29_npdv"/>
+    <image id="n24_npdv" name="ImageBetChipBg" src="vwta5u" fileName="Image/BgChips.png" pkg="08hoz1y1" xy="-30,157" size="106,28" group="n27_npdv" alpha="0.5"/>
+    <text id="n25_npdv" name="TextBetChipValue" xy="-18,158" pivot="0.5,0.5" size="72,25" group="n27_npdv" fontSize="18" color="#fddd8d" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n122_hyla" name="Chip" xy="54,157" size="28,28" group="n27_npdv" url="ui://08hoz1y1npdvo" align="center" vAlign="middle" fill="scale"/>
+    <group id="n27_npdv" name="GroupBetValue" xy="-30,157" size="112,28" group="n29_npdv" advanced="true"/>
+    <image id="n20_npdv" name="CardOne" src="a8com" fileName="Image/CardBack.png" xy="-41,108" pivot="0.5,0.5" size="35,48" group="n28_npdv"/>
+    <image id="n23_npdv" name="CardTwo" src="a8com" fileName="Image/CardBack.png" xy="-52,108" pivot="0.5,0.5" size="35,48" group="n28_npdv" rotation="-15"/>
+    <group id="n28_npdv" name="GroupCard" xy="-52,108" size="46,48" group="n29_npdv" advanced="true" collapsed="true"/>
+    <component id="n31_npdv" name="ComChipEnd" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="54,157" group="n29_npdv"/>
+    <group id="n29_npdv" name="GroupFirstSeat" xy="-52,18" size="134,167" hideByEditor="true" advanced="true" collapsed="true"/>
+    <image id="n32_npdv" name="DeskDealer" src="npdva" fileName="Image/DeskDealer.png" xy="-27,18" group="n42_npdv"/>
+    <image id="n33_npdv" name="ImageBetChipBg" src="vwta5u" fileName="Image/BgChips.png" pkg="08hoz1y1" xy="-116,138" size="106,28" group="n36_npdv" alpha="0.5"/>
+    <text id="n34_npdv" name="TextBetChipValue" xy="-105,139" pivot="0.5,0.5" size="72,25" group="n36_npdv" fontSize="18" color="#fddd8d" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n123_hyla" name="Chip" xy="-33,138" size="28,28" group="n36_npdv" url="ui://08hoz1y1npdvo" align="center" vAlign="middle" fill="scale"/>
+    <group id="n36_npdv" name="GroupBetValue" xy="-116,138" size="111,28" group="n42_npdv" advanced="true" collapsed="true"/>
+    <image id="n37_npdv" name="CardOne" src="a8com" fileName="Image/CardBack.png" xy="-41,77" pivot="0.5,0.5" size="35,48" group="n39_npdv"/>
+    <image id="n38_npdv" name="CardTwo" src="a8com" fileName="Image/CardBack.png" xy="-52,77" pivot="0.5,0.5" size="35,48" group="n39_npdv" rotation="-15"/>
+    <group id="n39_npdv" name="GroupCard" xy="-52,77" size="46,48" group="n42_npdv" advanced="true" collapsed="true"/>
+    <component id="n41_npdv" name="ComChipEnd" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="-33,138" group="n42_npdv"/>
+    <group id="n42_npdv" name="GroupTopRightSeat" xy="-116,18" size="113,148" hideByEditor="true" advanced="true" collapsed="true"/>
+    <image id="n43_npdv" name="DeskDealer" src="npdva" fileName="Image/DeskDealer.png" xy="-27,110" group="n52_npdv"/>
+    <image id="n44_npdv" name="ImageBetChipBg" src="vwta5u" fileName="Image/BgChips.png" pkg="08hoz1y1" xy="-118,4" size="106,28" group="n47_npdv" alpha="0.5"/>
+    <text id="n45_npdv" name="TextBetChipValue" xy="-106,5" pivot="0.5,0.5" size="72,25" group="n47_npdv" fontSize="18" color="#fddd8d" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n124_hyla" name="Chip" xy="-34,5" size="28,28" group="n47_npdv" url="ui://08hoz1y1npdvo" align="center" vAlign="middle" fill="scale"/>
+    <group id="n47_npdv" name="GroupBetValue" xy="-118,4" size="112,29" group="n52_npdv" advanced="true" collapsed="true"/>
+    <image id="n48_npdv" name="CardOne" src="a8com" fileName="Image/CardBack.png" xy="-42,39" pivot="0.5,0.5" size="35,48" group="n50_npdv"/>
+    <image id="n49_npdv" name="CardTwo" src="a8com" fileName="Image/CardBack.png" xy="-53,39" pivot="0.5,0.5" size="35,48" group="n50_npdv" rotation="-15"/>
+    <group id="n50_npdv" name="GroupCard" xy="-53,39" size="46,48" group="n52_npdv" advanced="true" collapsed="true"/>
+    <component id="n51_npdv" name="ComChipEnd" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="-34,4" group="n52_npdv"/>
+    <group id="n52_npdv" name="GroupRightSeat" xy="-118,4" size="115,130" hideByEditor="true" advanced="true" collapsed="true"/>
+    <image id="n53_npdv" name="DeskDealer" src="npdva" fileName="Image/DeskDealer.png" xy="-27,110" group="n62_npdv"/>
+    <image id="n54_npdv" name="ImageBetChipBg" src="vwta5u" fileName="Image/BgChips.png" pkg="08hoz1y1" xy="-52,-34" size="106,28" group="n57_npdv" alpha="0.5"/>
+    <text id="n55_npdv" name="TextBetChipValue" xy="-39,-33" pivot="0.5,0.5" size="72,25" group="n57_npdv" fontSize="18" color="#fddd8d" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n125_hyla" name="Chip" xy="33,-34" size="28,28" group="n57_npdv" url="ui://08hoz1y1npdvo" align="center" vAlign="middle" fill="scale"/>
+    <group id="n57_npdv" name="GroupBetValue" xy="-52,-34" size="113,28" group="n62_npdv" advanced="true" collapsed="true"/>
+    <image id="n58_npdv" name="CardOne" src="a8com" fileName="Image/CardBack.png" xy="-39,-2" pivot="0.5,0.5" size="35,48" group="n60_npdv"/>
+    <image id="n59_npdv" name="CardTwo" src="a8com" fileName="Image/CardBack.png" xy="-50,-2" pivot="0.5,0.5" size="35,48" group="n60_npdv" rotation="-15"/>
+    <group id="n60_npdv" name="GroupCard" xy="-50,-2" size="46,48" group="n62_npdv" advanced="true" collapsed="true"/>
+    <component id="n61_npdv" name="ComChipEnd" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="33,-34" group="n62_npdv"/>
+    <group id="n62_npdv" name="GroupBottomRightSeat" xy="-52,-34" size="113,168" advanced="true" collapsed="true"/>
+    <image id="n103_npdv" name="DeskDealer" src="npdva" fileName="Image/DeskDealer.png" xy="-27,110" group="n112_npdv"/>
+    <image id="n108_npdv" name="CardOne" src="a8com" fileName="Image/CardBack.png" xy="104,25" pivot="0.5,0.5" size="70,95" group="n110_npdv" hideByEditor="true"/>
+    <loader id="n118_npdv" name="LoaderCardOne" xy="105,27" pivot="0.5,0.5" size="69,94" group="n110_npdv" align="center" vAlign="middle" fill="scaleFree"/>
+    <image id="n120_npdv" name="ImageCardOneHighLight" src="npdvm" fileName="Image/CardHighlight.png" pkg="08hoz1y1" xy="104,28" pivot="0.5,0.5" size="68,92" group="n110_npdv"/>
+    <image id="n142_l9uq" name="ShowCard1" src="l9uq11" fileName="Image/35.png" xy="139,29" group="n110_npdv" scale="0.8,0.8" visible="false"/>
+    <image id="n109_npdv" name="CardTwo" src="a8com" fileName="Image/CardBack.png" xy="170,25" pivot="0.5,0.5" size="70,95" group="n110_npdv" hideByEditor="true"/>
+    <loader id="n119_npdv" name="LoaderCardTwo" xy="172,27" pivot="0.5,0.5" size="69,94" group="n110_npdv" align="center" vAlign="middle" fill="scaleFree"/>
+    <image id="n121_npdv" name="ImageCardTwoHighLight" src="npdvm" fileName="Image/CardHighlight.png" pkg="08hoz1y1" xy="171,28" pivot="0.5,0.5" size="68,92" group="n110_npdv"/>
+    <image id="n143_l9uq" name="ShowCard2" src="l9uq11" fileName="Image/35.png" xy="206,29" group="n110_npdv" scale="0.8,0.8" visible="false"/>
+    <group id="n110_npdv" name="GroupCard" xy="104,25" size="141,96" group="n112_npdv" advanced="true" collapsed="true"/>
+    <image id="n113_npdv" name="ImageBetChipBg" src="vwta5u" fileName="Image/BgChips.png" pkg="08hoz1y1" xy="111,-3" size="106,28" group="n116_npdv" alpha="0.5"/>
+    <text id="n114_npdv" name="TextBetChipValue" xy="134,-2" pivot="0.5,0.5" size="72,25" group="n116_npdv" fontSize="18" color="#fddd8d" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n127_hyla" name="Chip" xy="107,-3" size="28,28" group="n116_npdv" url="ui://08hoz1y1npdvo" align="center" vAlign="middle" fill="scale"/>
+    <group id="n116_npdv" name="GroupBetValue" xy="107,-3" size="110,28" group="n112_npdv" advanced="true" collapsed="true"/>
+    <component id="n117_npdv" name="ComChipEnd" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="107,-3" group="n112_npdv"/>
+    <image id="n139_nr9u" name="n139" src="nr9uz" fileName="Image/140.png" xy="108,121" pivot="0.5,0.5" size="132,32" group="n140_nr9u"/>
+    <text id="n138_nr9u" name="TextCardType" xy="108,123" pivot="0.5,0.5" size="132,28" group="n140_nr9u" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <group id="n140_nr9u" name="GroupCardType" xy="108,121" size="132,32" group="n112_npdv" visible="false" advanced="true" collapsed="true"/>
+    <group id="n112_npdv" name="GroupBottomSeat" xy="-27,-3" size="272,156" hideByEditor="true" advanced="true" collapsed="true"/>
+    <image id="n63_npdv" name="DeskDealer" src="npdva" fileName="Image/DeskDealer.png" xy="106,110" group="n72_npdv"/>
+    <image id="n64_npdv" name="ImageBetChipBg" src="vwta5u" fileName="Image/BgChips.png" pkg="08hoz1y1" xy="46,-34" size="106,28" group="n67_npdv" alpha="0.5"/>
+    <text id="n65_npdv" name="TextBetChipValue" xy="67,-33" pivot="0.5,0.5" size="72,25" group="n67_npdv" fontSize="18" color="#fddd8d" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n128_hyla" name="Chip" xy="39,-34" size="28,28" group="n67_npdv" url="ui://08hoz1y1npdvo" align="center" vAlign="middle" fill="scale"/>
+    <group id="n67_npdv" name="GroupBetValue" xy="39,-34" size="113,28" group="n72_npdv" advanced="true"/>
+    <image id="n68_npdv" name="CardOne" src="a8com" fileName="Image/CardBack.png" xy="107,-2" pivot="0.5,0.5" size="35,48" group="n70_npdv"/>
+    <image id="n69_npdv" name="CardTwo" src="a8com" fileName="Image/CardBack.png" xy="120,-2" pivot="0.5,0.5" size="35,48" group="n70_npdv" rotation="15"/>
+    <group id="n70_npdv" name="GroupCard" xy="107,-2" size="48,48" group="n72_npdv" advanced="true" collapsed="true"/>
+    <component id="n71_npdv" name="ComChipEnd" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="39,-34" group="n72_npdv"/>
+    <group id="n72_npdv" name="GroupBottomLeftSeat" xy="39,-34" size="116,168" advanced="true" collapsed="true"/>
+    <image id="n73_npdv" name="DeskDealer" src="npdva" fileName="Image/DeskDealer.png" xy="106,110" group="n82_npdv"/>
+    <image id="n74_npdv" name="ImageBetChipBg" src="vwta5u" fileName="Image/BgChips.png" pkg="08hoz1y1" xy="116,4" size="106,28" group="n77_npdv" alpha="0.5"/>
+    <text id="n75_npdv" name="TextBetChipValue" xy="138,5" pivot="0.5,0.5" size="72,25" group="n77_npdv" fontSize="18" color="#fddd8d" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n129_hyla" name="Chip" xy="110,5" size="28,28" group="n77_npdv" url="ui://08hoz1y1npdvo" align="center" vAlign="middle" fill="scale"/>
+    <group id="n77_npdv" name="GroupBetValue" xy="110,4" size="112,29" group="n82_npdv" advanced="true" collapsed="true"/>
+    <image id="n78_npdv" name="CardOne" src="a8com" fileName="Image/CardBack.png" xy="108,40" pivot="0.5,0.5" size="35,48" group="n80_npdv"/>
+    <image id="n79_npdv" name="CardTwo" src="a8com" fileName="Image/CardBack.png" xy="121,40" pivot="0.5,0.5" size="35,48" group="n80_npdv" rotation="15"/>
+    <group id="n80_npdv" name="GroupCard" xy="108,40" size="48,48" group="n82_npdv" advanced="true" collapsed="true"/>
+    <component id="n81_npdv" name="ComChipEnd" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="110,4" group="n82_npdv"/>
+    <group id="n82_npdv" name="GroupLeftSeat" xy="106,4" size="116,130" hideByEditor="true" advanced="true" collapsed="true"/>
+    <image id="n83_npdv" name="DeskDealer" src="npdva" fileName="Image/DeskDealer.png" xy="106,18" group="n92_npdv"/>
+    <image id="n84_npdv" name="ImageBetChipBg" src="vwta5u" fileName="Image/BgChips.png" pkg="08hoz1y1" xy="114,138" size="106,28" group="n87_npdv" alpha="0.5"/>
+    <text id="n85_npdv" name="TextBetChipValue" xy="135,139" pivot="0.5,0.5" size="72,25" group="n87_npdv" fontSize="18" color="#fddd8d" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n130_hyla" name="Chip" xy="107,138" size="28,28" group="n87_npdv" url="ui://08hoz1y1npdvo" align="center" vAlign="middle" fill="scale"/>
+    <group id="n87_npdv" name="GroupBetValue" xy="107,138" size="113,28" group="n92_npdv" advanced="true" collapsed="true"/>
+    <image id="n88_npdv" name="CardOne" src="a8com" fileName="Image/CardBack.png" xy="107,77" pivot="0.5,0.5" size="35,48" group="n90_npdv"/>
+    <image id="n89_npdv" name="CardTwo" src="a8com" fileName="Image/CardBack.png" xy="120,77" pivot="0.5,0.5" size="35,48" group="n90_npdv" rotation="15"/>
+    <group id="n90_npdv" name="GroupCard" xy="107,77" size="48,48" group="n92_npdv" advanced="true" collapsed="true"/>
+    <component id="n91_npdv" name="ComChipEnd" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="107,138" group="n92_npdv"/>
+    <group id="n92_npdv" name="GroupTopLeftSeat" xy="106,18" size="114,148" hideByEditor="true" advanced="true" collapsed="true"/>
+    <image id="n93_npdv" name="DeskDealer" src="npdva" fileName="Image/DeskDealer.png" xy="106,18" group="n102_npdv"/>
+    <image id="n94_npdv" name="ImageBetChipBg" src="vwta5u" fileName="Image/BgChips.png" pkg="08hoz1y1" xy="25,157" size="106,28" group="n97_npdv" alpha="0.5"/>
+    <text id="n95_npdv" name="TextBetChipValue" xy="47,158" pivot="0.5,0.5" size="72,25" group="n97_npdv" fontSize="18" color="#fddd8d" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <loader id="n131_hyla" name="Chip" xy="19,157" size="28,28" group="n97_npdv" url="ui://08hoz1y1npdvo" align="center" vAlign="middle" fill="scale"/>
+    <group id="n97_npdv" name="GroupBetValue" xy="19,157" size="112,28" group="n102_npdv" advanced="true"/>
+    <image id="n98_npdv" name="CardOne" src="a8com" fileName="Image/CardBack.png" xy="107,108" pivot="0.5,0.5" size="35,48" group="n100_npdv"/>
+    <image id="n99_npdv" name="CardTwo" src="a8com" fileName="Image/CardBack.png" xy="120,108" pivot="0.5,0.5" size="35,48" group="n100_npdv" rotation="15"/>
+    <group id="n100_npdv" name="GroupCard" xy="107,108" size="48,48" group="n102_npdv" advanced="true"/>
+    <component id="n101_npdv" name="ComChipEnd" src="no8k7u" fileName="Component/ComEmpty.xml" pkg="nhvxw9ov" xy="19,162" group="n102_npdv"/>
+    <group id="n102_npdv" name="GroupEndSeat" xy="19,18" size="136,167" hideByEditor="true" advanced="true" collapsed="true"/>
+    <component id="n16_npdv" name="ComGiftAndVIPLeft" src="npdv7" fileName="Component/ComGiftAndVIP.xml" xy="-19,61" size="36,36"/>
+    <component id="n17_npdv" name="ComGiftAndVIPRight" src="npdv7" fileName="Component/ComGiftAndVIP.xml" xy="83,61" size="36,36"/>
+    <loader id="n153_a2iq" name="ImageAutoAction" xy="0,46" size="102,62" hideByEditor="true" visible="false" touchable="false" url="ui://g4dvwbxldcgbc"/>
+    <image id="n141_kl3o" name="ImagePlayerShadow" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="102,153" hideByEditor="true" alpha="0.3" color="#333333"/>
+    <component id="n134_qljn" name="ComAction" src="qljni" fileName="Component/ComAction.xml" xy="5,-14" visible="false"/>
+    <image id="n10_npdv" name="PlayerActionProgress" src="npdv3" fileName="Image/PlayerActionProgress.png" xy="-8,-4" size="118,163" hideByEditor="true" fillMethod="radial360" fillClockwise="false"/>
+    <movieclip id="n152_9ehf" name="MovieAllIn" src="9ehf28" fileName="Component/MovieAllIn.jta" xy="-32,-35" size="166,218" hideByEditor="true" visible="false" blend="add"/>
+    <component id="n146_iy7z" name="ComPoint" src="iy7z1g" fileName="Component/ComTips.xml" xy="0,59"/>
+    <component id="n148_iy7z" name="ComWinGold" src="iy7z1g" fileName="Component/ComTips.xml" xy="0,59"/>
+    <component id="n149_iy7z" name="ComExp" src="iy7z1g" fileName="Component/ComTips.xml" xy="0,59"/>
+    <image id="n151_kkr1" name="ImageWinName" src="kkr11j" fileName="Image/FX_flare_009.png" xy="-25,-68" pivot="0.5,0.5" size="152,163" hideByEditor="true" visible="false"/>
+  </displayList>
+  <transition name="TransitionBottomSeat">
+    <item time="0" type="Alpha" target="n118_npdv" tween="true" startValue="1" endValue="0" duration="8"/>
+    <item time="0" type="Alpha" target="n120_npdv" tween="true" startValue="1" endValue="0" duration="8"/>
+    <item time="0" type="Alpha" target="n109_npdv" tween="true" startValue="1" endValue="0" duration="8"/>
+    <item time="0" type="Alpha" target="n121_npdv" tween="true" startValue="1" endValue="0" duration="8"/>
+    <item time="0" type="Alpha" target="n108_npdv" tween="true" startValue="1" endValue="0" duration="8"/>
+    <item time="0" type="Alpha" target="n119_npdv" tween="true" startValue="1" endValue="0" duration="8"/>
+    <item time="0" type="XY" target="n109_npdv" tween="true" startValue="170,25" endValue="180,25" duration="12"/>
+    <item time="0" type="XY" target="n121_npdv" tween="true" startValue="171,28" endValue="181,28" duration="12"/>
+    <item time="0" type="XY" target="n118_npdv" tween="true" startValue="105,27" endValue="115,27" duration="12"/>
+    <item time="0" type="XY" target="n108_npdv" tween="true" startValue="104,25" endValue="114,25" duration="12"/>
+    <item time="0" type="XY" target="n119_npdv" tween="true" startValue="172,27" endValue="182,27" duration="12"/>
+    <item time="0" type="XY" target="n120_npdv" tween="true" startValue="104,28" endValue="114,28" duration="12"/>
+  </transition>
+  <transition name="TransitionFirstSeat">
+    <item time="0" type="Alpha" target="n23_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="Alpha" target="n20_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="XY" target="n20_npdv" tween="true" startValue="-41,108" endValue="-51,108" duration="8"/>
+    <item time="0" type="XY" target="n23_npdv" tween="true" startValue="-52,108" endValue="-62,108" duration="8"/>
+    <item time="8" type="XY" target="n20_npdv" tween="true" startValue="-51,108" endValue="-41,108" duration="4"/>
+    <item time="8" type="XY" target="n23_npdv" tween="true" startValue="-62,108" endValue="-52,108" duration="4"/>
+    <item time="12" type="Alpha" target="n23_npdv" tween="true" startValue="0"/>
+    <item time="12" type="Alpha" target="n20_npdv" tween="true" startValue="0"/>
+    <item time="12" type="XY" target="n20_npdv" tween="true" startValue="-41,108"/>
+    <item time="12" type="XY" target="n23_npdv" tween="true" startValue="-52,108"/>
+  </transition>
+  <transition name="TransitionTopRightSeat">
+    <item time="0" type="Alpha" target="n37_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="Alpha" target="n38_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="XY" target="n38_npdv" tween="true" startValue="-52,77" endValue="-62,77" duration="8"/>
+    <item time="0" type="XY" target="n37_npdv" tween="true" startValue="-41,77" endValue="-51,77" duration="8"/>
+    <item time="8" type="XY" target="n37_npdv" tween="true" startValue="-51,77" endValue="-41,77" duration="4"/>
+    <item time="8" type="XY" target="n38_npdv" tween="true" startValue="-62,77" endValue="-52,77" duration="4"/>
+    <item time="12" type="Alpha" target="n37_npdv" tween="true" startValue="0"/>
+    <item time="12" type="Alpha" target="n38_npdv" tween="true" startValue="0"/>
+    <item time="12" type="XY" target="n37_npdv" tween="true" startValue="-41,77"/>
+    <item time="12" type="XY" target="n38_npdv" tween="true" startValue="-52,77"/>
+  </transition>
+  <transition name="TransitionRightSeat">
+    <item time="0" type="Alpha" target="n48_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="Alpha" target="n49_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="XY" target="n48_npdv" tween="true" startValue="-42,39" endValue="-52,39" duration="8"/>
+    <item time="0" type="XY" target="n49_npdv" tween="true" startValue="-53,39" endValue="-63,39" duration="8"/>
+    <item time="8" type="XY" target="n48_npdv" tween="true" startValue="-52,39" endValue="-42,39" duration="4"/>
+    <item time="8" type="XY" target="n49_npdv" tween="true" startValue="-63,39" endValue="-53,39" duration="4"/>
+    <item time="12" type="XY" target="n48_npdv" tween="true" startValue="-42,39"/>
+    <item time="12" type="XY" target="n49_npdv" tween="true" startValue="-53,39"/>
+  </transition>
+  <transition name="TransitionBottomRightSeat">
+    <item time="0" type="Alpha" target="n58_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="Alpha" target="n59_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="XY" target="n58_npdv" tween="true" startValue="-41,-2" endValue="-51,-2" duration="8"/>
+    <item time="0" type="XY" target="n59_npdv" tween="true" startValue="-52,-2" endValue="-62,-2" duration="8"/>
+    <item time="8" type="XY" target="n58_npdv" tween="true" startValue="-51,-2" endValue="-41,-2" duration="4"/>
+    <item time="8" type="XY" target="n59_npdv" tween="true" startValue="-62,-2" endValue="-52,-2" duration="4"/>
+    <item time="12" type="Alpha" target="n58_npdv" tween="true" startValue="0"/>
+    <item time="12" type="Alpha" target="n59_npdv" tween="true" startValue="0"/>
+    <item time="12" type="XY" target="n58_npdv" tween="true" startValue="-41,-2"/>
+    <item time="12" type="XY" target="n59_npdv" tween="true" startValue="-52,-2"/>
+  </transition>
+  <transition name="TransitionBottomLeftSeat">
+    <item time="0" type="Alpha" target="n69_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="Alpha" target="n68_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="XY" target="n69_npdv" tween="true" startValue="120,-2" endValue="130,-2" duration="8"/>
+    <item time="0" type="XY" target="n68_npdv" tween="true" startValue="107,-2" endValue="117,-2" duration="8"/>
+    <item time="8" type="XY" target="n69_npdv" tween="true" startValue="130,-2" endValue="120,-2" duration="4"/>
+    <item time="8" type="XY" target="n68_npdv" tween="true" startValue="117,-2" endValue="107,-2" duration="4"/>
+    <item time="12" type="Alpha" target="n68_npdv" tween="true" startValue="0"/>
+    <item time="12" type="Alpha" target="n69_npdv" tween="true" startValue="0"/>
+    <item time="12" type="XY" target="n68_npdv" tween="true" startValue="107,-2"/>
+    <item time="12" type="XY" target="n69_npdv" tween="true" startValue="120,-2"/>
+  </transition>
+  <transition name="TransitionLeftSeat">
+    <item time="0" type="Alpha" target="n79_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="Alpha" target="n78_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="XY" target="n79_npdv" tween="true" startValue="121,39" endValue="131,39" duration="8"/>
+    <item time="0" type="XY" target="n78_npdv" tween="true" startValue="108,39" endValue="118,39" duration="8"/>
+    <item time="8" type="XY" target="n78_npdv" tween="true" startValue="118,39" endValue="108,39" duration="4"/>
+    <item time="8" type="XY" target="n79_npdv" tween="true" startValue="131,39" endValue="121,39" duration="4"/>
+    <item time="12" type="Alpha" target="n78_npdv" tween="true" startValue="0"/>
+    <item time="12" type="Alpha" target="n79_npdv" tween="true" startValue="0"/>
+    <item time="12" type="XY" target="n78_npdv" tween="true" startValue="108,39"/>
+    <item time="12" type="XY" target="n79_npdv" tween="true" startValue="121,39"/>
+  </transition>
+  <transition name="TransitionTopLeftSeat">
+    <item time="0" type="Alpha" target="n89_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="Alpha" target="n88_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="XY" target="n89_npdv" tween="true" startValue="120,77" endValue="130,77" duration="8"/>
+    <item time="0" type="XY" target="n88_npdv" tween="true" startValue="107,77" endValue="117,77" duration="8"/>
+    <item time="8" type="XY" target="n88_npdv" tween="true" startValue="117,77" endValue="107,77" duration="4"/>
+    <item time="8" type="XY" target="n89_npdv" tween="true" startValue="130,77" endValue="120,77" duration="4"/>
+    <item time="12" type="Alpha" target="n89_npdv" tween="true" startValue="0"/>
+    <item time="12" type="Alpha" target="n88_npdv" tween="true" startValue="0"/>
+    <item time="12" type="XY" target="n88_npdv" tween="true" startValue="107,77"/>
+    <item time="12" type="XY" target="n89_npdv" tween="true" startValue="120,77"/>
+  </transition>
+  <transition name="TransitionEndSeat">
+    <item time="0" type="Alpha" target="n98_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="Alpha" target="n99_npdv" tween="true" startValue="1" endValue="0" duration="12"/>
+    <item time="0" type="XY" target="n99_npdv" tween="true" startValue="120,108" endValue="130,108" duration="8"/>
+    <item time="0" type="XY" target="n98_npdv" tween="true" startValue="107,108" endValue="117,108" duration="8"/>
+    <item time="8" type="XY" target="n98_npdv" tween="true" startValue="117,108" endValue="107,108" duration="4"/>
+    <item time="8" type="XY" target="n99_npdv" tween="true" startValue="130,108" endValue="120,108" duration="4"/>
+    <item time="12" type="Alpha" target="n98_npdv" tween="true" startValue="0"/>
+    <item time="12" type="Alpha" target="n99_npdv" tween="true" startValue="0"/>
+    <item time="12" type="XY" target="n98_npdv" tween="true" startValue="107,108"/>
+    <item time="12" type="XY" target="n99_npdv" tween="true" startValue="120,108"/>
+  </transition>
+  <transition name="TransitionBottomSeatInit">
+    <item time="0" type="Alpha" target="n109_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n108_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n120_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n118_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n119_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n121_npdv" value="1"/>
+    <item time="0" type="XY" target="n108_npdv" value="104,25"/>
+    <item time="0" type="XY" target="n120_npdv" value="104,28"/>
+    <item time="0" type="XY" target="n119_npdv" value="172,27"/>
+    <item time="0" type="XY" target="n118_npdv" value="105,27"/>
+    <item time="0" type="XY" target="n121_npdv" value="171,28"/>
+    <item time="0" type="XY" target="n109_npdv" value="170,25"/>
+  </transition>
+  <transition name="TransitionFirstSeatInit">
+    <item time="0" type="Alpha" target="n23_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n20_npdv" value="1"/>
+    <item time="0" type="XY" target="n20_npdv" value="-41,108"/>
+    <item time="0" type="XY" target="n23_npdv" value="-52,108"/>
+  </transition>
+  <transition name="TransitionTopRightSeatInit">
+    <item time="0" type="Alpha" target="n38_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n37_npdv" value="1"/>
+    <item time="0" type="XY" target="n37_npdv" value="-41,77"/>
+    <item time="0" type="XY" target="n38_npdv" value="-52,77"/>
+  </transition>
+  <transition name="TransitionRightSeatInit">
+    <item time="0" type="Alpha" target="n49_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n48_npdv" value="1"/>
+    <item time="0" type="XY" target="n48_npdv" value="-42,39"/>
+    <item time="0" type="XY" target="n49_npdv" value="-53,39"/>
+  </transition>
+  <transition name="TransitionBottomRightSeatInit">
+    <item time="0" type="Alpha" target="n59_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n58_npdv" value="1"/>
+    <item time="0" type="XY" target="n58_npdv" value="-41,-2"/>
+    <item time="0" type="XY" target="n59_npdv" value="-52,-2"/>
+  </transition>
+  <transition name="TransitionBottomLeftSeatInit">
+    <item time="0" type="Alpha" target="n69_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n68_npdv" value="1"/>
+    <item time="0" type="XY" target="n68_npdv" value="107,-2"/>
+    <item time="0" type="XY" target="n69_npdv" value="120,-2"/>
+  </transition>
+  <transition name="TransitionLeftSeatInit">
+    <item time="0" type="Alpha" target="n79_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n78_npdv" value="1"/>
+    <item time="0" type="XY" target="n78_npdv" value="108,39"/>
+    <item time="0" type="XY" target="n79_npdv" value="121,39"/>
+  </transition>
+  <transition name="TransitionTopLeftSeatInit">
+    <item time="0" type="Alpha" target="n89_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n88_npdv" value="1"/>
+    <item time="0" type="XY" target="n88_npdv" value="107,77"/>
+    <item time="0" type="XY" target="n89_npdv" value="120,77"/>
+  </transition>
+  <transition name="TransitionEndSeatInit">
+    <item time="0" type="Alpha" target="n99_npdv" value="1"/>
+    <item time="0" type="Alpha" target="n98_npdv" value="1"/>
+    <item time="0" type="XY" target="n98_npdv" value="107,108"/>
+    <item time="0" type="XY" target="n99_npdv" value="120,108"/>
+  </transition>
+  <transition name="TransitionWinName">
+    <item time="0" type="Alpha" target="n151_kkr1" tween="true" startValue="0.3" endValue="1" duration="3"/>
+    <item time="0" type="Scale" target="n151_kkr1" tween="true" startValue="0.5,0.5" endValue="1.2,1.2" duration="3"/>
+    <item time="0" type="Scale" target="n3_npdv" tween="true" startValue="0.5,0.5" endValue="1.2,1.2" duration="3"/>
+    <item time="0" type="Visible" target="n151_kkr1" value="true"/>
+    <item time="3" type="Alpha" target="n151_kkr1" tween="true" startValue="1" endValue="0.6" duration="3"/>
+    <item time="3" type="Scale" target="n3_npdv" tween="true" startValue="1.2,1.2" endValue="1,1" duration="3"/>
+    <item time="3" type="Scale" target="n151_kkr1" tween="true" startValue="1.2,1.2" endValue="1,1" duration="3"/>
+    <item time="6" type="Alpha" target="n151_kkr1" tween="true" startValue="0.6" endValue="0.3" duration="3"/>
+    <item time="6" type="Scale" target="n3_npdv" tween="true" startValue="1,1" endValue="1,1" duration="3"/>
+    <item time="6" type="Scale" target="n151_kkr1" tween="true" startValue="1,1" endValue="0.5,0.5" duration="3"/>
+    <item time="9" type="Scale" target="n151_kkr1" tween="true" startValue="0.5,0.5"/>
+    <item time="9" type="Scale" target="n3_npdv" tween="true" startValue="1,1"/>
+    <item time="9" type="Visible" target="n151_kkr1" value="false"/>
+  </transition>
+</component>

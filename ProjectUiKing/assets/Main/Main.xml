@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640" initName="ComOnlineReward" adaptationTest="FitSize">
+  <controller name="ControllerMoreBtn" pages="0,HideBtn,1,ShowBtn" selected="0"/>
+  <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
+  <displayList>
+    <image id="n186_lbeu" name="Bg" src="teyh8q" fileName="Image/bg.png" xy="-352,-242" size="1770,1125">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </image>
+    <image id="n210_d2ra" name="ImageMote" src="ixpj2e" fileName="Image/MoTe.png" xy="350,140">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </image>
+    <graph id="n211_tv2t" name="HolderMote" xy="485,657" size="0,0">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </graph>
+    <component id="n204_nh9c" name="MoteParent" src="nh9c8m" fileName="Component/MoteParent.xml" xy="485,657">
+      <relation target="" sidePair="center-center,bottom-bottom"/>
+    </component>
+    <image id="n197_u51o" name="n197" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="9,1" size="300,103" group="n45_umbb" alpha="0.25" color="#000000"/>
+    <component id="n82_d6ge" name="ComPlayerInfoSelf" src="jyil8n" fileName="Component/ComPlayerInfoSelf.xml" xy="11,4" group="n45_umbb"/>
+    <group id="n45_umbb" name="GroupPlayerInfo" xy="9,1" size="300,103" advanced="true" collapsed="true"/>
+    <image id="n153_l4gz" name="n153" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="9,123" size="300,299" group="n54_umbb" alpha="0.25" color="#000000"/>
+    <component id="n81_d6ge" name="ComPlayerInfoFriend" src="d6ge19" fileName="Component/ComPlayerInfo.xml" xy="10,124" size="275,99" group="n54_umbb"/>
+    <list id="n62_hmk9" name="ListFriend" xy="10,223" size="297,199" group="n54_umbb" layout="flow_vt" overflow="scroll" scroll="horizontal" scrollBarFlags="8" lineItemCount="2" defaultItem="ui://nhvxw9ovd45975"/>
+    <component id="n169_he5u" name="BtnInviteFriend" src="he5u3q" fileName="Component/BtnInviteFriend.xml" xy="11,124" size="99,99" group="n54_umbb"/>
+    <group id="n54_umbb" name="GroupFriendInfo" xy="9,123" size="300,299" advanced="true">
+      <relation target="" sidePair="middle-middle"/>
+    </group>
+    <component id="n129_ixpj" name="BtnDeskTop" src="ixpj2z" fileName="Component/BtnDeskTOP.xml" xy="699,90">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n130_ixpj" name="BtnDeskTopH" src="ixpj32" fileName="Component/BtnDeskTopH.xml" xy="699,194">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n194_t4ok" name="BtnMatch" src="t4ok7o" fileName="Component/BtnMatch.xml" xy="697,297">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n138_ixpj" name="ComOnlineReward" src="ixpjb2" fileName="Component/ComOnlineReward.xml" pkg="nhvxw9ov" xy="894,558" group="n207_tabc" hideByEditor="true" visible="false"/>
+    <component id="n140_ixpj" name="BtnGoldTree" src="ixpj3c" fileName="Component/BtnGoldTree.xml" xy="703,549" group="n207_tabc" hideByEditor="true" visible="false"/>
+    <component id="n189_njuk" name="ComRechargeFirst" src="njuk75" fileName="Component/ComFirstRecharge.xml" xy="801,568" group="n207_tabc"/>
+    <component id="n217_vtnc" name="ComWelfareIcon" src="vtncll" fileName="Component/ComWelfareIcon.xml" pkg="nhvxw9ov" xy="886,562" group="n207_tabc"/>
+    <component id="n148_j6hs" name="ComLotteryTicket" src="j6hsb5" fileName="Component/ComLotteryTicket.xml" pkg="nhvxw9ov" xy="968,558" group="n207_tabc"/>
+    <component id="n219_lmq9" name="ComRewardTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="938,565" group="n207_tabc" visible="false">
+      <relation target="n217_vtnc" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n224_ecz6" name="BtnRegister" src="ecz692" fileName="Component/BtnRegister.xml" xy="722,562" group="n207_tabc"/>
+    <group id="n207_tabc" name="n207" xy="703,549" size="348,91" advanced="true" collapsed="true">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </group>
+    <text id="n146_j6hs" name="TextPlayerNum" xy="879,9" pivot="0.5,0.5" size="172,29" fontSize="22" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+      <relation target="" sidePair="right-right"/>
+    </text>
+    <component id="n202_s17d" name="BtnCircleOfCardFriends" src="s17d8k" fileName="Component/ComCircleOfCardFriends.xml" xy="798,410" visible="false">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <image id="n152_l4gz" name="n152" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="9,439" size="300,100" group="n58_umbb" alpha="0.25" color="#000000"/>
+    <list id="n79_t4rk" name="ListRecommend" xy="10,440" size="297,99" group="n58_umbb" layout="row" overflow="scroll" scroll="horizontal" defaultItem="ui://nhvxw9ovd45975" autoItemSize="false" vAlign="middle"/>
+    <loader id="n80_t4rk" name="Wating" xy="97,459" pivot="0.5,0.5" size="113,60" group="n58_umbb" url="ui://gbdohaivumbbu" align="center" vAlign="middle"/>
+    <group id="n58_umbb" name="GroupRecommendFriend" xy="9,439" size="300,100" advanced="true" collapsed="true">
+      <relation target="" sidePair="middle-middle"/>
+    </group>
+    <image id="n190_fol7" name="n190" src="fol77e" fileName="Image/BgBorader.png" xy="0,554" size="635,86" group="n205_tabc">
+      <relation target="" sidePair="bottom-bottom"/>
+    </image>
+    <component id="n135_ixpj" name="BtnShop" src="ixpj35" fileName="Component/BtnShop.xml" xy="19,545" group="n205_tabc">
+      <gearDisplay controller="ChipIconSolustion" pages="0"/>
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n222_j1yr" name="BtnPurse" src="j1yr90" fileName="Component/BtnPurse.xml" xy="23,549" group="n205_tabc">
+      <gearDisplay controller="ChipIconSolustion" pages="1"/>
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n193_lnv7" name="BtnActivityCenter" src="lnv77k" fileName="Component/BtnActivityCenter.xml" xy="402,567" group="n205_tabc">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n162_g5sv" name="BtnChatFriend" src="fol77g" fileName="Component/BtnFriendChat1.xml" xy="279,572" group="n205_tabc">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n167_ewc0" name="ComMsgTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="325,567" group="n205_tabc">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n133_ixpj" name="BtnMail" src="fol77h" fileName="Component/BtnMessage1.xml" xy="168,572" group="n205_tabc">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n144_j6hs" name="ComMailTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="213,568" group="n205_tabc">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n185_loxc" name="BtnMore" src="he5u3s" fileName="Component/BtnMore.xml" xy="503,560" pivot="0.5,0.5" group="n205_tabc">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n225_ncj5" name="ComMoreTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="549,567" group="n205_tabc">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <group id="n205_tabc" name="board" xy="0,545" size="635,95" advanced="true" collapsed="true"/>
+    <component id="n223_d6x8" name="ComShadeReward" src="u51o84" fileName="Component/ComShadeMore.xml" xy="0,0" hideByEditor="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n218_lmq9" name="ComReward" src="lmq9lm" fileName="Component/ComReward.xml" pkg="nhvxw9ov" xy="844,670">
+      <relation target="n217_vtnc" sidePair="center-center,top-bottom"/>
+    </component>
+    <component id="n196_u51o" name="ComShadeMore" src="u51o84" fileName="Component/ComShadeMore.xml" xy="0,0" hideByEditor="true">
+      <relation target="" sidePair="width-width,height-height"/>
+    </component>
+    <component id="n200_phss" name="ComMore" src="vi4786" fileName="Component/ComMore.xml" xy="186,641" visible="false">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n201_phss" name="ComMoreHideRank" src="phss87" fileName="Component/ComMoreHideRank.xml" xy="266,641" visible="false">
+      <relation target="" sidePair="bottom-bottom"/>
+    </component>
+    <component id="n208_n8cl" name="ComDeskTopParticleParent" src="n8cl8p" fileName="Component/ComParent.xml" xy="767,161">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n212_pcq4" name="ComPosGetChipParticle" src="n8cl8p" fileName="Component/ComParent.xml" xy="923,570" size="1,1">
+      <relation target="n138_ixpj" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n213_eqm9" name="ComPosEnd" src="n8cl8p" fileName="Component/ComParent.xml" xy="60,52"/>
+    <component id="n214_diz5" name="BtnConsole" src="diz58r" fileName="Component/BtnConsole.xml" xy="728,446" visible="false">
+      <relation target="" sidePair="right-right"/>
+    </component>
+    <component id="n216_diz5" name="ComConsole" src="diz58s" fileName="Component/ComConsole.xml" xy="423,426" visible="false">
+      <relation target="" sidePair="right-right"/>
+    </component>
+  </displayList>
+  <transition name="Rotate" options="4" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n80_t4rk" tween="true" startValue="360" endValue="0" duration="48" ease="Linear"/>
+    <item time="48" type="Rotation" target="n80_t4rk" tween="true" startValue="0" ease="Linear" repeat="-1"/>
+  </transition>
+  <transition name="TansitionShowComMore">
+    <item time="0" type="Skew" target="n185_loxc" value="0,0"/>
+    <item time="0" type="XY" target="n200_phss" tween="true" startValue="-,641" endValue="-,466" duration="6"/>
+    <item time="0" type="XY" target="n201_phss" tween="true" startValue="-,641" endValue="296,466" duration="6"/>
+    <item time="1" type="Skew" target="n185_loxc" value="180,0"/>
+  </transition>
+  <transition name="TransitionShow">
+    <item time="0" type="Alpha" target="n205_tabc" tween="true" startValue="0" endValue="1" duration="5"/>
+    <item time="0" type="XY" target="n205_tabc" tween="true" startValue="-,640" endValue="0,545" duration="5"/>
+    <item time="0" type="XY" target="n45_umbb" tween="true" startValue="-,-105" endValue="9,1" duration="5"/>
+    <item time="0" type="XY" target="n130_ixpj" tween="true" startValue="1066,-" endValue="702,220" duration="4"/>
+    <item time="0" type="XY" target="n54_umbb" tween="true" startValue="-301,-" endValue="9,123" duration="5"/>
+    <item time="0" type="XY" target="n207_tabc" tween="true" startValue="-,640" endValue="707,533" duration="5"/>
+    <item time="0" type="XY" target="n129_ixpj" tween="true" startValue="1066,-" endValue="702,104" duration="3"/>
+    <item time="0" type="XY" target="n194_t4ok" tween="true" startValue="1066,-" endValue="702,336" duration="5"/>
+    <item time="0" type="XY" target="n202_s17d" tween="true" startValue="1066,-" endValue="783,452" duration="5"/>
+    <item time="0" type="XY" target="n58_umbb" tween="true" startValue="-301,-" endValue="9,439" duration="5"/>
+  </transition>
+  <transition name="TransitionShowReward">
+    <item time="0" type="XY" target="n218_lmq9" tween="true" startValue="-,655" endValue="-,466" duration="6"/>
+  </transition>
+</component>

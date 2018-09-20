@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 19837354
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: matchlobby.ab
+      Dependencies: {}

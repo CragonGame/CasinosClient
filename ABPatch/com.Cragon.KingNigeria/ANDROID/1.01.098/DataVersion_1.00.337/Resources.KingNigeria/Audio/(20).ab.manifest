@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1678873219
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d63b3e490d7802d02f5c8fe0d44a0147
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingNigeria/PkgSingle/Audio/(20).mp3
+Dependencies: []

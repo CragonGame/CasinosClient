@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="415,141">
+  <displayList>
+    <loader id="n8_n1df" name="Lan_Image_终极对决B" xy="0,0" pivot="0.5,0.5" size="214,141" url="ui://0zbu0hegn7ppe" align="center" vAlign="middle" fill="scaleFree"/>
+    <loader id="n9_n1df" name="Lan_Image_终极对决A" xy="201,1" pivot="0.5,0.5" size="214,134" url="ui://0zbu0hegn7ppd" align="center" vAlign="middle" fill="scaleFree"/>
+  </displayList>
+</component>

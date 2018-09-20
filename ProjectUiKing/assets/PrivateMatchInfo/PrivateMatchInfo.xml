@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <controller name="ControllerMatchInfo" pages="0,,1,,2," selected="0"/>
+  <displayList>
+    <image id="n0_nhy4" name="n0" src="u51ojc" pkg="nhvxw9ov" xy="0,0" size="1066,640" alpha="0.93" color="#151830"/>
+    <text id="n3_nhy4" name="TextMatchTitle" xy="150,24" pivot="0.5,0.5" size="764,39" fontSize="30" color="#7c9de7" align="center" vAlign="middle" leading="0" autoSize="none" singleLine="true" text="Fun的MTT"/>
+    <image id="n19_nhy4" name="n19" src="wb2ek6" pkg="nhvxw9ov" xy="260,69" size="545,49"/>
+    <component id="n21_nhy4" name="ComBlind" src="nhy42" xy="50,97">
+      <gearDisplay controller="ControllerMatchInfo" pages="2"/>
+    </component>
+    <component id="n17_nhy4" name="ComOverView" src="nhy41" xy="50,97">
+      <gearDisplay controller="ControllerMatchInfo" pages="0"/>
+    </component>
+    <component id="n22_nhy4" name="ComPayer" src="nhy45" xy="50,97">
+      <gearDisplay controller="ControllerMatchInfo" pages="1"/>
+    </component>
+    <image id="n4_nhy4" name="n4" src="bjg9ck" pkg="nhvxw9ov" xy="446,73" size="174,46" group="n20_nhy4"/>
+    <image id="n5_nhy4" name="n5" src="y7iqbv" pkg="nhvxw9ov" xy="268,73" pivot="0.5,0.5" size="170,46" group="n20_nhy4"/>
+    <image id="n6_nhy4" name="n6" src="y7iqbv" pkg="nhvxw9ov" xy="627,73" pivot="0.5,0.5" size="170,46" group="n20_nhy4" skew="0,180"/>
+    <text id="n7_nhy4" name="n7" xy="284,75" pivot="0.5,0.5" size="154,39" group="n20_nhy4" font="FontCu" fontSize="30" color="#6a7cc9" align="center" vAlign="middle" leading="0" autoSize="none" text="概述">
+      <gearDisplay controller="ControllerMatchInfo" pages="1,2"/>
+    </text>
+    <text id="n8_nhy4" name="n8" xy="456,75" pivot="0.5,0.5" size="154,39" group="n20_nhy4" font="FontCu" fontSize="30" color="#6a7cc9" align="center" vAlign="middle" leading="0" autoSize="none" text="玩家">
+      <gearDisplay controller="ControllerMatchInfo" pages="0,2"/>
+    </text>
+    <text id="n9_nhy4" name="n9" xy="627,75" pivot="0.5,0.5" size="154,39" group="n20_nhy4" font="FontCu" fontSize="30" color="#6a7cc9" align="center" vAlign="middle" leading="0" autoSize="none" text="盲注">
+      <gearDisplay controller="ControllerMatchInfo" pages="0,1"/>
+    </text>
+    <image id="n13_nhy4" name="n13" src="y7iqbu" pkg="nhvxw9ov" xy="268,73" size="170,46" group="n20_nhy4">
+      <gearDisplay controller="ControllerMatchInfo" pages="0"/>
+    </image>
+    <image id="n14_nhy4" name="n14" src="bjg9cl" pkg="nhvxw9ov" xy="446,73" size="174,46" group="n20_nhy4">
+      <gearDisplay controller="ControllerMatchInfo" pages="1"/>
+    </image>
+    <image id="n15_nhy4" name="n15" src="y7iqbu" pkg="nhvxw9ov" xy="627,73" pivot="0.5,0.5" size="170,46" group="n20_nhy4" skew="0,180">
+      <gearDisplay controller="ControllerMatchInfo" pages="2"/>
+    </image>
+    <text id="n10_nhy4" name="n10" xy="284,75" pivot="0.5,0.5" size="154,39" group="n20_nhy4" font="FontCu" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="概述">
+      <gearDisplay controller="ControllerMatchInfo" pages="0"/>
+    </text>
+    <text id="n11_nhy4" name="n11" xy="456,75" pivot="0.5,0.5" size="154,39" group="n20_nhy4" font="FontCu" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="玩家">
+      <gearDisplay controller="ControllerMatchInfo" pages="1"/>
+    </text>
+    <text id="n12_nhy4" name="n12" xy="627,75" pivot="0.5,0.5" size="154,39" group="n20_nhy4" font="FontCu" fontSize="30" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" text="盲注">
+      <gearDisplay controller="ControllerMatchInfo" pages="2"/>
+    </text>
+    <group id="n20_nhy4" name="n20" xy="268,73" size="529,46"/>
+    <component id="n24_nhy4" name="BtnDismiss" src="nhy48" xy="917,24">
+      <relation target="" sidePair="right-right"/>
+    </component>
+  </displayList>
+</component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="560,505">
+  <displayList>
+    <image id="n2_or7l" name="n2" src="l4gzd" xy="89,71" pivot="0.5,0.5"/>
+    <image id="n1_or7l" name="n1" src="l4gzc" xy="24,0"/>
+    <loader id="n3_q5yu" name="Lan_Image_Logo" xy="13,183" size="533,225" touchable="false" url="ui://6kz8w16qq5yu5c" align="center" vAlign="middle"/>
+  </displayList>
+  <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
+    <item time="0" type="Rotation" target="n2_or7l" tween="true" startValue="0" endValue="360" duration="72" ease="Linear" repeat="-1"/>
+  </transition>
+</component>

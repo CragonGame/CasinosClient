@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="75,75">
+  <displayList>
+    <loader id="n1_u40k" name="LoaderRankSign" xy="0,0" pivot="0.5,0.5" size="75,75" hideByEditor="true" align="center" vAlign="middle"/>
+    <text id="n0_u40k" name="RankLevel" xy="0,0" pivot="0.5,0.5" size="75,75" hideByEditor="true" fontSize="26" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
+  </displayList>
+</component>

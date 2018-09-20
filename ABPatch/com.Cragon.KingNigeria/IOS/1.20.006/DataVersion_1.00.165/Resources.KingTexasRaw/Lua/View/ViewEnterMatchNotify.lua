@@ -1,0 +1,170 @@
+ViewEnterMatchNotify = ViewBase:new()
+
+function ViewEnterMatchNotify:new(o)
+    o = o or {}
+    setmetatable(o,self)
+    self.__index = self	
+	o.ViewMgr = nil
+	o.GoUi = nil
+	o.ComUi = nil
+	o.Panel = nil
+	o.UILayer = nil
+	o.InitDepth = nil
+	o.ViewKey = nil
+
+    return o
+end
+
+function ViewEnterMatchNotify:onCreate()
+	self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
+	local btn_close = self.ComUi:GetChild("BtnClose").asButton
+	btn_close.onClick:Add(
+		function()
+			self:close()
+		end
+	)
+	local btn_enterNow = self.ComUi:GetChild("BtnEnterNow").asButton
+	btn_enterNow.onClick:Add(
+		function()
+			self:onClickBtnEnterNow()
+		end
+	)
+	self.ComTips2 = self.ComUi:GetChild("ComTips2").asCom
+	local btn_enter = self.ComTips2:GetChild("BtnEnter").asButton
+	btn_enter.onClick:Add(
+		function()
+			self:onClickBtnEnterNow()
+		end
+	)
+	local btn_cancel = self.ComTips2:GetChild("BtnCancel").asButton
+	btn_cancel.onClick:Add(
+		function()
+			self:closeComTips2()
+		end
+	)
+	local com_bg = self.ComTips2:GetChild("ComBgAndClose").asCom
+	local com_shade = com_bg:GetChild("ComShade").asCom
+	com_shade.onClick:Add(
+		function()
+			self:closeComTips2()
+		end
+	)
+	self.GTextTips1 = self.ComUi:GetChild("TextTips").asTextField
+	self.GTextTips2 = self.ComTips2:GetChild("TextTips").asTextField
+	self.GGroupTip1 = self.ComUi:GetChild("GoupTip1").asGroup
+	self.LeftMatchBeginSedonds = 0
+	self.MatchGuid = nil
+	self.MatchName = nil
+	self.HasCloseComTips2 = false
+end
+
+function ViewEnterMatchNotify:Init(match_beginTime,match_guid,match_name)
+	local left_time = match_beginTime - CS.System.DateTime.Now
+	self.LeftMatchBeginSedonds = left_time.Minutes * 60 + left_time.Seconds
+	self.MatchGuid = match_guid
+	self.MatchName = match_name
+end
+
+function ViewEnterMatchNotify:onUpdate(tm)
+	self.LeftMatchBeginSedonds = self.LeftMatchBeginSedonds - tm
+	local temp_seconds = math.ceil(self.LeftMatchBeginSedonds)
+	if(temp_seconds <= 0)
+	then
+		self:close()
+	else
+		local temp = {}
+		temp[1] = "您报名的"
+		temp[2] = "[color=#F8F802]"
+		temp[3] = self.MatchName
+		temp[4] = "[/color]"
+		temp[5] = self:formatTime(temp_seconds)
+		temp[6] = "后开始"
+		temp[7] = ",赶紧参赛吧"
+		if(temp_seconds > 20)
+		then
+			self.GTextTips1.text = table.concat(temp)
+			if(self.GGroupTip1.visible == false)
+			then
+				self.GGroupTip1.visible = true
+				self.GTransitionShow:Play()
+			end
+		elseif(temp_seconds > 0 and temp_seconds <= 20)
+		then
+			if(self.GGroupTip1.visible == true)
+			then
+				self.GTextTips1.text = table.concat(temp)
+			end
+			if(self.HasCloseComTips2 == false)
+			then
+				if(self.ComTips2.visible == false)
+				then
+					self.ComTips2.visible = true
+					ViewHelper:PopUi(self.ComTips2)
+				end
+				self.GTextTips2.text = table.concat(temp,"",1,6)
+			end
+		end
+	end
+end
+
+function ViewEnterMatchNotify:formatTime(time_seconds)
+	local temp = {}
+	temp[1] = ""
+	temp[2] = ""
+	temp[3] = ""
+	temp[4] = "秒"
+	if(time_seconds >= 60)
+	then
+		temp[1] = tostring(math.floor(time_seconds/60))
+		temp[2] = "分"
+		temp[3] = tostring(time_seconds % 60)
+	else
+		temp[3] = tostring(time_seconds)
+	end
+	return table.concat(temp)
+end
+
+function ViewEnterMatchNotify:closeComTips2()
+	self.ComTips2.visible = false
+	self.HasCloseComTips2 = true
+	if(self.GGroupTip1.visible == false)
+	then
+		self.ViewMgr:destroyView(self)
+	end
+end
+
+function ViewEnterMatchNotify:close()
+	self.ViewMgr:destroyView(self)
+end
+
+function ViewEnterMatchNotify:onClickBtnEnterNow()
+	local ev = self.ViewMgr:getEv("EvUiRequestEnterMatch")
+	if(ev == nil)
+	then
+		ev = EvUiRequestEnterMatch:new(nil)
+	end
+	ev.MatchGuid = self.MatchGuid
+	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:destroyView(self)
+end
+
+
+ViewEnterMatchNotifyFactory = ViewFactory:new()
+
+function ViewEnterMatchNotifyFactory:new(o,ui_package_name,ui_component_name,
+	ui_layer,is_single,fit_screen)
+	o = o or {}  
+    setmetatable(o,self)  
+    self.__index = self
+	self.PackageName = ui_package_name
+	self.ComponentName = ui_component_name
+	self.UILayer = ui_layer
+	self.IsSingle = is_single
+	self.FitScreen = fit_screen
+    return o
+end
+
+function ViewEnterMatchNotifyFactory:createView()	
+	local view = ViewEnterMatchNotify:new(nil)	
+	return view
+end

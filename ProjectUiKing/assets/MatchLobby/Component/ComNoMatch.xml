@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="489,44" initName="ComNoMatch">
+  <displayList>
+    <text id="n0_wb2e" name="Lan_Text_NoMatchInfoTip1" xy="0,0" pivot="0.5,0.5" size="480,44" fontSize="35" color="#ffffff" align="center" vAlign="middle" text="还没有比赛，请等待官方通知~"/>
+  </displayList>
+</component>

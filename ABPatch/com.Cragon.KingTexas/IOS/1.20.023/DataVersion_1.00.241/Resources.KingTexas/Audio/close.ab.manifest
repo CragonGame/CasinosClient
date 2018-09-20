@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3278654467
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ffbd8fc25594011bc7d9fa307f28ce25
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/PkgSingle/Audio/Close.wav
+Dependencies: []

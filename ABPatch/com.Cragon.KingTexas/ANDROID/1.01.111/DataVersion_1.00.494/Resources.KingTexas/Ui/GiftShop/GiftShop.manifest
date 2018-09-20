@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3470879851
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: giftshop.ab
+      Dependencies: {}

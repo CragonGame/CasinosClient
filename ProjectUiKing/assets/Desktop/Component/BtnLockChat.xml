@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="74,78" extention="Button" initName="BtnLockChat">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
+  <displayList>
+    <image id="n8_he5u" name="n8" src="he5udl" fileName="Image/BtnSmallBg.png" pkg="nhvxw9ov" xy="0,0" hideByEditor="true" visible="false"/>
+    <image id="n9_he5u" name="n9" src="he5u2w" fileName="" xy="11,4" hideByEditor="true" visible="false"/>
+    <image id="n11_ipt6" name="n11" src="wb2ek5" fileName="Image/New/UI2_通用按钮_icon底.png" pkg="nhvxw9ov" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n10_10je2" name="n10" src="10je271" fileName="Image/lockchat.png" xy="0,0">
+      <relation target="" sidePair="width-width,height-height"/>
+    </image>
+  </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
+</component>

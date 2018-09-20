@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 365427183
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: lotteryticket.ab
+      Dependencies: {}

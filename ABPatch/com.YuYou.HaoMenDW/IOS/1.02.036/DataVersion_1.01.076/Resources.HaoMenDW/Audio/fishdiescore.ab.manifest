@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3920030495
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9b552d0cea9c9857ef441fcac414c144
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c516f2a3b2b6b67ef759f6410a790acd
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.HaoMenDW/PkgSingle/Audio/fishdiescore.ogg
+Dependencies: []

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="188,20">
+  <displayList>
+    <image id="n1_nhy4" name="n1" src="hrhqkc" pkg="nhvxw9ov" xy="0,0" size="20,20" color="#a0caff"/>
+    <text id="n2_nhy4" name="TextStartChip" xy="22,1" size="40,19" fontSize="12" color="#a0caff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="1万"/>
+    <image id="n3_nhy4" name="n3" src="wb2ek7" pkg="nhvxw9ov" xy="63,0" size="17,20" color="#a0caff"/>
+    <text id="n4_nhy4" name="TextApplyNumber" xy="82,1" size="30,19" fontSize="12" color="#a0caff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="10"/>
+    <image id="n5_nhy4" name="n5" src="gy6lki" pkg="nhvxw9ov" xy="120,0" size="18,20" color="#a0caff"/>
+    <text id="n6_nhy4" name="TextRiseBlindTime" xy="138,1" size="49,19" fontSize="12" color="#a0caff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="10"/>
+  </displayList>
+</component>
