@@ -21,10 +21,12 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosLua);
-			Utils.BeginObjectRegister(type, L, translator, 0, 7, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 9, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "InitLuaContext", _m_InitLuaContext);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RegLuaPath", _m_RegLuaPath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RegLuaFilePath", _m_RegLuaFilePath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddLuaFile", _m_AddLuaFile);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DoString", _m_DoString);
@@ -122,6 +124,61 @@ namespace XLua.CSObjectWrap
                     float _elapsed_tm = (float)LuaAPI.lua_tonumber(L, 2);
                     
                     gen_to_be_invoked.Update( _elapsed_tm );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_InitLuaContext(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.CasinosLua gen_to_be_invoked = (Casinos.CasinosLua)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.InitLuaContext(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_RegLuaPath(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.CasinosLua gen_to_be_invoked = (Casinos.CasinosLua)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string[] _list_path = (string[])translator.GetObject(L, 2, typeof(string[]));
+                    
+                    gen_to_be_invoked.RegLuaPath( _list_path );
                     
                     
                     

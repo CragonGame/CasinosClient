@@ -8,7 +8,7 @@ namespace Casinos
     public class KingTexasStartup : MonoBehaviour
     {
         //---------------------------------------------------------------------
-        async void Awake()
+        void Awake()
         {
             bool use_persistent = true;
 #if UNITY_EDITOR
@@ -26,16 +26,16 @@ namespace Casinos
                 "Resources.KingTexas/",
                 "Texas");
 
-            await casinos_context.Launch();
+            casinos_context.Launch();
 
-            casinos_context.RegLuaFilePath(
-                "Launch/",
-                "Launch",
-                "PreViewMgr",
-                "PreViewFactory",
-                "PreViewBase",
-                "PreViewLoading",
-                "PreViewMsgBox");
+            //casinos_context.RegLuaFilePath(
+            //    "Launch/",
+            //    "Launch",
+            //    "PreViewMgr",
+            //    "PreViewFactory",
+            //    "PreViewBase",
+            //    "PreViewLoading",
+            //    "PreViewMsgBox");
         }
 
         //---------------------------------------------------------------------
@@ -54,7 +54,10 @@ namespace Casinos
         //---------------------------------------------------------------------
         void OnDestroy()
         {
-            CasinosContext.Instance.Close();
+            if (CasinosContext.Instance != null)
+            {
+                CasinosContext.Instance.Close();
+            }
         }
 
         //-------------------------------------------------------------------------

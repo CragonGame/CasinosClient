@@ -16,7 +16,34 @@ namespace XLua
     public partial class DelegateBridge : DelegateBridgeBase
     {
 		
-		public void __Gen_Delegate_Imp0(float p0)
+		public void __Gen_Delegate_Imp0(XLua.LuaTable p0)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                ObjectTranslator translator = luaEnv.translator;
+                
+                LuaAPI.lua_getref(L, luaReference);
+                
+                translator.Push(L, p0);
+                
+                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
+                if (__gen_error != 0)
+                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                
+                
+                
+                LuaAPI.lua_settop(L, err_func - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public void __Gen_Delegate_Imp1(float p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -43,7 +70,7 @@ namespace XLua
 #endif
 		}
         
-		public XLua.LuaTable __Gen_Delegate_Imp1(string p0)
+		public XLua.LuaTable __Gen_Delegate_Imp2(string p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -70,7 +97,7 @@ namespace XLua
 #endif
 		}
         
-		public XLua.LuaTable __Gen_Delegate_Imp2(XLua.LuaTable p0, string p1, System.Collections.Generic.Dictionary<string, string> p2)
+		public XLua.LuaTable __Gen_Delegate_Imp3(XLua.LuaTable p0, string p1, System.Collections.Generic.Dictionary<string, string> p2)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -99,7 +126,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp3(string p0)
+		public void __Gen_Delegate_Imp4(string p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -126,7 +153,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp4(string[] p0)
+		public void __Gen_Delegate_Imp5(string[] p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -153,7 +180,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp5(byte[] p0)
+		public void __Gen_Delegate_Imp6(byte[] p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -166,33 +193,6 @@ namespace XLua
                 LuaAPI.lua_getref(L, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
-                
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
-                
-                
-                
-                LuaAPI.lua_settop(L, err_func - 1);
-                
-#if THREAD_SAFE || HOTFIX_ENABLE
-            }
-#endif
-		}
-        
-		public void __Gen_Delegate_Imp6(XLua.LuaTable p0)
-		{
-#if THREAD_SAFE || HOTFIX_ENABLE
-            lock (luaEnv.luaEnvLock)
-            {
-#endif
-                RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
-                translator.Push(L, p0);
                 
                 int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
                 if (__gen_error != 0)
@@ -1215,54 +1215,59 @@ namespace XLua
 		public override Delegate GetDelegateByType(Type type)
 		{
 		
-		    if (type == typeof(Casinos.DelegateLuaUpdate))
+		    if (type == typeof(Casinos.DelegateLuaNew))
 			{
-			    return new Casinos.DelegateLuaUpdate(__Gen_Delegate_Imp0);
-			}
-		
-		    if (type == typeof(System.Action<float>))
-			{
-			    return new System.Action<float>(__Gen_Delegate_Imp0);
-			}
-		
-		    if (type == typeof(DG.Tweening.Core.DOSetter<float>))
-			{
-			    return new DG.Tweening.Core.DOSetter<float>(__Gen_Delegate_Imp0);
-			}
-		
-		    if (type == typeof(Casinos.GetView))
-			{
-			    return new Casinos.GetView(__Gen_Delegate_Imp1);
-			}
-		
-		    if (type == typeof(Casinos.GetController))
-			{
-			    return new Casinos.GetController(__Gen_Delegate_Imp1);
-			}
-		
-		    if (type == typeof(Casinos.CreateController))
-			{
-			    return new Casinos.CreateController(__Gen_Delegate_Imp2);
-			}
-		
-		    if (type == typeof(System.Action<string>))
-			{
-			    return new System.Action<string>(__Gen_Delegate_Imp3);
-			}
-		
-		    if (type == typeof(System.Action<string[]>))
-			{
-			    return new System.Action<string[]>(__Gen_Delegate_Imp4);
-			}
-		
-		    if (type == typeof(System.Action<byte[]>))
-			{
-			    return new System.Action<byte[]>(__Gen_Delegate_Imp5);
+			    return new Casinos.DelegateLuaNew(__Gen_Delegate_Imp0);
 			}
 		
 		    if (type == typeof(System.Action<XLua.LuaTable>))
 			{
-			    return new System.Action<XLua.LuaTable>(__Gen_Delegate_Imp6);
+			    return new System.Action<XLua.LuaTable>(__Gen_Delegate_Imp0);
+			}
+		
+		    if (type == typeof(Casinos.DelegateLuaUpdate))
+			{
+			    return new Casinos.DelegateLuaUpdate(__Gen_Delegate_Imp1);
+			}
+		
+		    if (type == typeof(System.Action<float>))
+			{
+			    return new System.Action<float>(__Gen_Delegate_Imp1);
+			}
+		
+		    if (type == typeof(DG.Tweening.Core.DOSetter<float>))
+			{
+			    return new DG.Tweening.Core.DOSetter<float>(__Gen_Delegate_Imp1);
+			}
+		
+		    if (type == typeof(Casinos.GetView))
+			{
+			    return new Casinos.GetView(__Gen_Delegate_Imp2);
+			}
+		
+		    if (type == typeof(Casinos.GetController))
+			{
+			    return new Casinos.GetController(__Gen_Delegate_Imp2);
+			}
+		
+		    if (type == typeof(Casinos.CreateController))
+			{
+			    return new Casinos.CreateController(__Gen_Delegate_Imp3);
+			}
+		
+		    if (type == typeof(System.Action<string>))
+			{
+			    return new System.Action<string>(__Gen_Delegate_Imp4);
+			}
+		
+		    if (type == typeof(System.Action<string[]>))
+			{
+			    return new System.Action<string[]>(__Gen_Delegate_Imp5);
+			}
+		
+		    if (type == typeof(System.Action<byte[]>))
+			{
+			    return new System.Action<byte[]>(__Gen_Delegate_Imp6);
 			}
 		
 		    if (type == typeof(System.Action<XLua.LuaTable, string>))

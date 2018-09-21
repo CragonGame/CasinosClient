@@ -153,6 +153,9 @@ namespace Casinos
 #elif UNITY_ANDROID
             Application.streamingAssetsPath;
 #endif
+
+            assetbundlePath += "/" + EditorModeRunsourcesPlatform.ToString();
+
             return assetbundlePath;
         }
 
@@ -173,6 +176,8 @@ namespace Casinos
 #elif UNITY_ANDROID
             "jar:file://" + Application.dataPath + "!/assets";
 #endif
+            assetbundlePath += "/" + EditorModeRunsourcesPlatform.ToString();
+
             return assetbundlePath;
         }
 

@@ -65,8 +65,6 @@ namespace Casinos
         public TextureMgr TextureMgr { get; private set; }
         public CasinosLua CasinosLua { get; private set; }
         public NetBridge NetBridge { get; private set; }
-        public CopyStreamingAssetsToPersistentDataPath CopyStreamingAssetsToPersistentDataPath { get; set; }
-        //public Launch Launch { get; set; }
         public NativeMgr NativeMgr { get; set; }
         public bool IsDev { get; set; }
         public bool Pause { get; set; }
@@ -139,6 +137,9 @@ namespace Casinos
         public const string LocalDataVersionKey = "LocalVersionInfo";
         public const string PreDataVersionKey = "PreDataVersion";
         public const string LanKey = "LanKey";
+
+        //public CopyStreamingAssetsToPersistentDataPath CopyStreamingAssetsToPersistentDataPath { get; set; }
+        //public Launch Launch { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosContext(CasinosListener listener,
@@ -224,7 +225,7 @@ namespace Casinos
             Listener = listener;
             MemoryStream = new MemoryStream();
             SB = new StringBuilder();
-            Config = new CasinosConfig();
+            Config = new CasinosConfig(editor_runsorce);
 
             //Config = GameObject.FindObjectOfType<MbCasinosConfig>();
             //Config.FormatConfigUrl();
@@ -277,8 +278,7 @@ namespace Casinos
 
             SoundMgr = new CSoundMgr();
 
-            CopyStreamingAssetsToPersistentDataPath = new CopyStreamingAssetsToPersistentDataPath();
-
+            //CopyStreamingAssetsToPersistentDataPath = new CopyStreamingAssetsToPersistentDataPath();
             //Launch = new Launch();
 
             HeadIconMgr = new HeadIconMgr();
@@ -312,14 +312,9 @@ namespace Casinos
                 CasinosLua.Update(elapsed_tm);
             }
 
-            if (CopyStreamingAssetsToPersistentDataPath != null)
-            {
-                CopyStreamingAssetsToPersistentDataPath.update(elapsed_tm);
-            }
-
-            //if (Launch != null)
+            //if (CopyStreamingAssetsToPersistentDataPath != null)
             //{
-            //    Launch.update(elapsed_tm);
+            //    CopyStreamingAssetsToPersistentDataPath.update(elapsed_tm);
             //}
         }
 
@@ -369,16 +364,23 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public Task Launch()
+        public void Launch()
         {
             var launch = new CasinosLaunch();
-            return launch.Fire();
+
+            CasinosLua.InitLuaContext();
+
+            // 解析全局函数
+            //FuncLuaInit = CasinosLua.LuaEnv.Global.Get<Action>("MainCInit");
+            //FuncLuaUpdate = LuaEnv.Global.Get<DelegateLuaUpdate>("MainCUpdate");
+            //FuncLuaRelease = LuaEnv.Global.Get<Action>("MainCRelease");
         }
 
         //---------------------------------------------------------------------
         public string GetRandomTips()
         {
             return "确认退出吗";
+
             //var arr_tip = UserConfig.Current.Tips;
             //return arr_tip[UnityEngine.Random.Range(0, arr_tip.Length)];
         }

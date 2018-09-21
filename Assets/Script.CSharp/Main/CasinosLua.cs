@@ -15,6 +15,9 @@ namespace Casinos
 
     //---------------------------------------------------------------------
     [CSharpCallLua]
+    public delegate void DelegateLuaNew(LuaTable lua_table);
+
+    [CSharpCallLua]
     public delegate void DelegateLuaUpdate(float tm);
 
     [CSharpCallLua]
@@ -284,6 +287,10 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Release()
         {
+            var lua_context = LuaEnv.Global.Get<LuaTable>("LuaContext");
+            var fun_release = lua_context.Get<Action>("Release");
+            fun_release();
+
             if (LuaEnv != null)
             {
                 FuncLuaRelease?.Invoke();
@@ -300,6 +307,50 @@ namespace Casinos
                 FuncLuaUpdate?.Invoke(elapsed_tm);
 
                 LuaEnv.Tick();
+            }
+        }
+
+        //---------------------------------------------------------------------
+        public void InitLuaContext()
+        {
+            var path_launch1 = CasinosContext.Instance.PathMgr.combinePersistentDataPath("Script.Lua/Launch/");
+            var path_launch2 = CasinosContext.Instance.PathMgr.combinePersistentDataPath("Script.Lua/Main/");
+            string[] list_path = new string[] { path_launch1, path_launch2 };
+            RegLuaPath(list_path);
+
+            DoString("LuaContext");
+
+            var lua_context = LuaEnv.Global.Get<LuaTable>("LuaContext");
+            var fun_new = lua_context.Get<DelegateLuaNew>("new");
+            fun_new(LuaEnv.NewTable());
+            var fun_init = lua_context.Get<Action>("Init");
+            fun_init();
+            //var fun_release = lua_context.Get<Action>("Release");
+            //fun_release();
+        }
+
+        //---------------------------------------------------------------------
+        public void RegLuaPath(string[] list_path)
+        {
+            foreach (var k in list_path)
+            {
+                DirectoryInfo dir = new DirectoryInfo(k);
+                FileInfo[] file_list = dir.GetFiles("*.lua", SearchOption.AllDirectories);
+                foreach (FileInfo i in file_list)
+                {
+                    using (FileStream fs = new FileStream(i.FullName, FileMode.Open))
+                    {
+                        using (StreamReader sr = new StreamReader(fs))
+                        {
+                            string s = sr.ReadToEnd();
+                            byte[] data = System.Text.Encoding.UTF8.GetBytes(s);
+
+                            string name = i.Name.ToLower();
+                            string name1 = name.Replace(".lua", "");
+                            MapLuaFiles[name1] = data;
+                        }
+                    }
+                }
             }
         }
 
@@ -379,27 +430,29 @@ namespace Casinos
         // 自定义Lua文件加载函数
         byte[] LuaLoaderCustom(ref string file_name)
         {
+            var key = file_name.ToLower();
+
             byte[] array_file = null;
-            MapLuaFiles.TryGetValue(file_name, out array_file);
+            MapLuaFiles.TryGetValue(key, out array_file);
             if (array_file != null)
             {
                 return array_file;
             }
 
-            if (!File.Exists(CurrentLuaPath))
-            {
-                return null;
-            }
+            //if (!File.Exists(CurrentLuaPath))
+            //{
+            //    return null;
+            //}
 
-            FileInfo fi = new FileInfo(CurrentLuaPath);
-            using (FileStream fs = File.OpenRead(CurrentLuaPath))
-            {
-                var data = new byte[fi.Length];
-                if (fs.Read(data, 0, data.Length) > 0)
-                {
-                    return data;
-                }
-            }
+            //FileInfo fi = new FileInfo(CurrentLuaPath);
+            //using (FileStream fs = File.OpenRead(CurrentLuaPath))
+            //{
+            //    var data = new byte[fi.Length];
+            //    if (fs.Read(data, 0, data.Length) > 0)
+            //    {
+            //        return data;
+            //    }
+            //}
 
             return null;
         }
