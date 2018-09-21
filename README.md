@@ -28,15 +28,15 @@
 ### 果派德州QQ技术交流群
 558157909
 
+### License
+[MIT](/LICENSE)
+
 ### 果派德州游戏截图
 ![a](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/a.png)
+![e](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/e.png)
 ![b](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/b.png)
 ![c](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/c.png)
 ![d](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/d.png)
-![e](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/e.png)
-
-### License
-[MIT](/LICENSE)
 
 [licence badge]:https://img.shields.io/badge/license-MIT-blue.svg
 [stars badge]:https://img.shields.io/github/stars/CragonGame/CasinosClient.svg
