@@ -31,6 +31,13 @@
 ### License
 [MIT](/LICENSE)
 
+### 果派德州游戏截图
+![e](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/e.png)
+![b](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/b.png)
+![a](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/a.png)
+![c](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/c.png)
+![d](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/d.png)
+
 [licence badge]:https://img.shields.io/badge/license-MIT-blue.svg
 [stars badge]:https://img.shields.io/github/stars/CragonGame/CasinosClient.svg
 [forks badge]:https://img.shields.io/github/forks/CragonGame/CasinosClient.svg
