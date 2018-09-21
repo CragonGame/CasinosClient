@@ -32,9 +32,9 @@
 [MIT](/LICENSE)
 
 ### 果派德州游戏截图
-![a](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/a.png)
 ![e](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/e.png)
 ![b](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/b.png)
+![a](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/a.png)
 ![c](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/c.png)
 ![d](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/d.png)
 
