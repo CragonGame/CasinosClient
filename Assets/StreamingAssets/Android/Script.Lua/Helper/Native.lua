@@ -1,7 +1,9 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 Native = {}
 
+---------------------------------------
 function Native:new(o, view_mgr, listner)
     o = o or {}
     setmetatable(o, self)
@@ -86,6 +88,7 @@ function Native:new(o, view_mgr, listner)
     return self.Instance
 end
 
+---------------------------------------
 function Native:ShareContent(platform_type, text, pic_path, title, url, share_type)
     local share_content = CS.cn.sharesdk.unity3d.ShareContent()
     --share_content:SetText("this is a test string.")
@@ -101,6 +104,7 @@ function Native:ShareContent(platform_type, text, pic_path, title, url, share_ty
     CS.ShareSDKReceiver.mShareSDK:ShareContent(platform_type, share_content)
 end
 
+---------------------------------------
 function Native:GetMobId(player_id)
     local c = CS.System.Collections.Hashtable()
     c:Add("PlayerId", player_id)
@@ -113,6 +117,7 @@ function Native:GetMobId(player_id)
     end
 end
 
+---------------------------------------
 function Native:OnMobIdHandler(mobid)
     --local url = CS.Casinos.CasinosContext.Config.ConfigUrl
     print("OnMobIdHandler  " .. mobid)
@@ -125,6 +130,7 @@ function Native:OnMobIdHandler(mobid)
     self.PlayerQRCodeTexture:Apply()
 end
 
+---------------------------------------
 function Native:CreateShareUrlAndQRCode(player_id)
     --local url = CS.Casinos.CasinosContext.Config.ConfigUrl
     print("CreateShareUrlAndQRCode  " .. player_id)
@@ -137,6 +143,7 @@ function Native:CreateShareUrlAndQRCode(player_id)
     self.PlayerQRCodeTexture:Apply()
 end
 
+---------------------------------------
 function Native:OnRestoreScene(scene)
     local params = scene.customParams
     print("OnRestoreScene")
@@ -158,6 +165,7 @@ function Native:OnRestoreScene(scene)
     end
 end
 
+---------------------------------------
 function Native:OpenInstallResult(result, is_install)
     if CS.System.String.IsNullOrEmpty(result) then
         print("OpenInstallResult i null")
@@ -185,6 +193,7 @@ function Native:OpenInstallResult(result, is_install)
     end
 end
 
+---------------------------------------
 function Native:ActionGetPicSuccess(getpic_result)
     ViewHelper:UiEndWaiting()
     if (CS.System.String.IsNullOrEmpty(getpic_result) == false)
@@ -193,6 +202,7 @@ function Native:ActionGetPicSuccess(getpic_result)
     end
 end
 
+---------------------------------------
 function Native:ActionGetPicSuccessWithBytes(pic_data)
     local ev = self.ViewMgr:getEv("EvGetPicSuccess")
     if (ev == nil)
@@ -203,10 +213,12 @@ function Native:ActionGetPicSuccessWithBytes(pic_data)
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function Native:ActionPayWithIAPFailed(result)
     ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("BuyFail") .. result)
 end
 
+---------------------------------------
 function Native:ActionPayWithIAPSuccess(purchase)
     local ev = self.ViewMgr:getEv("EvPayWithIAPSuccess")
     if (ev == nil)
@@ -217,6 +229,7 @@ function Native:ActionPayWithIAPSuccess(purchase)
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function Native:ActionPayResult(pay_result)
     if (pay_result.Length <= 0)
     then
@@ -238,6 +251,7 @@ function Native:ActionPayResult(pay_result)
     end
 end
 
+---------------------------------------
 function Native:ActionLoginFailed(fail_type)
     local native = Native.Instance
     ViewHelper:UiEndWaiting()
@@ -268,6 +282,7 @@ function Native:ActionLoginFailed(fail_type)
     end
 end
 
+---------------------------------------
 function Native:ActionLoginSuccess(param, real_token)
     if(param == "Login")
     then

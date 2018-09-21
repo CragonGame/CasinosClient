@@ -287,9 +287,9 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Release()
         {
-            var lua_context = LuaEnv.Global.Get<LuaTable>("LuaContext");
-            var fun_release = lua_context.Get<Action>("Release");
-            fun_release();
+            //var lua_context = LuaEnv.Global.Get<LuaTable>("Context");
+            //var fun_release = lua_context.Get<Action>("Release");
+            //fun_release();
 
             if (LuaEnv != null)
             {
@@ -311,20 +311,20 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void InitLuaContext()
+        public void LoadLuaLaunch()
         {
-            var path_launch1 = CasinosContext.Instance.PathMgr.combinePersistentDataPath("Script.Lua/Launch/");
-            var path_launch2 = CasinosContext.Instance.PathMgr.combinePersistentDataPath("Script.Lua/Main/");
-            string[] list_path = new string[] { path_launch1, path_launch2 };
+            var path_launch = CasinosContext.Instance.PathMgr.combinePersistentDataPath("Script.Lua/Launch/");
+            string[] list_path = new string[] { path_launch };
             RegLuaPath(list_path);
 
-            DoString("LuaContext");
+            //DoString("Context");
 
-            var lua_context = LuaEnv.Global.Get<LuaTable>("LuaContext");
-            var fun_new = lua_context.Get<DelegateLuaNew>("new");
-            fun_new(LuaEnv.NewTable());
-            var fun_init = lua_context.Get<Action>("Init");
-            fun_init();
+            //var lua_context = LuaEnv.Global.Get<LuaTable>("Context");
+            //var fun_new = lua_context.Get<DelegateLuaNew>("new");
+            //fun_new(LuaEnv.NewTable());
+            //var fun_init = lua_context.Get<Action>("Init");
+            //fun_init();
+
             //var fun_release = lua_context.Get<Action>("Release");
             //fun_release();
         }
@@ -355,16 +355,16 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void RegLuaFilePath(string luafile_relativepath, params string[] luafile_name)
-        {
-            foreach (var i in luafile_name)
-            {
-                string path = Path.Combine(
-                    CasinosContext.Instance.PathMgr.PathLuaRoot,
-                    string.Format("{0}{1}.lua", luafile_relativepath, i));
-                MapLuaFilePath[i] = path;
-            }
-        }
+        //public void RegLuaFilePath(string luafile_relativepath, params string[] luafile_name)
+        //{
+        //    foreach (var i in luafile_name)
+        //    {
+        //        string path = Path.Combine(
+        //            CasinosContext.Instance.PathMgr.PathLuaRoot,
+        //            string.Format("{0}{1}.lua", luafile_relativepath, i));
+        //        MapLuaFilePath[i] = path;
+        //    }
+        //}
 
         //---------------------------------------------------------------------
         public void AddLuaFile(string file_name, byte[] array_file)
@@ -373,13 +373,13 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void DoString(string config_name)
+        public void DoString(string luafile_name)
         {
-            string current_luapath = string.Empty;
-            MapLuaFilePath.TryGetValue(config_name, out current_luapath);
-            CurrentLuaPath = current_luapath;
+            //string current_luapath = string.Empty;
+            //MapLuaFilePath.TryGetValue(config_name, out current_luapath);
+            //CurrentLuaPath = current_luapath;
 
-            string do_string = string.Format("require '{0}'", config_name);
+            string do_string = string.Format("require '{0}'", luafile_name);
             LuaEnv.DoString(do_string);
         }
 
@@ -430,6 +430,8 @@ namespace Casinos
         // 自定义Lua文件加载函数
         byte[] LuaLoaderCustom(ref string file_name)
         {
+            Debug.Log("Lua Load: " + file_name);
+
             var key = file_name.ToLower();
 
             byte[] array_file = null;
@@ -438,21 +440,6 @@ namespace Casinos
             {
                 return array_file;
             }
-
-            //if (!File.Exists(CurrentLuaPath))
-            //{
-            //    return null;
-            //}
-
-            //FileInfo fi = new FileInfo(CurrentLuaPath);
-            //using (FileStream fs = File.OpenRead(CurrentLuaPath))
-            //{
-            //    var data = new byte[fi.Length];
-            //    if (fs.Read(data, 0, data.Length) > 0)
-            //    {
-            //        return data;
-            //    }
-            //}
 
             return null;
         }

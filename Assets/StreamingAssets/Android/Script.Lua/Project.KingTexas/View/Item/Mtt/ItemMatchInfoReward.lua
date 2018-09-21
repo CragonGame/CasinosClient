@@ -1,5 +1,9 @@
+-- Copyright(c) Cragon. All rights reserved.
+
+---------------------------------------
 ItemMatchInfoReward = {}
 
+---------------------------------------
 function ItemMatchInfoReward:new(o,com,reward,view_mgr)
 	o = o or {}
 	setmetatable(o,self)
@@ -47,4 +51,3 @@ function ItemMatchInfoReward:new(o,com,reward,view_mgr)
 	o.GTextMasterPoint.text = 0
 	return o
 end
-

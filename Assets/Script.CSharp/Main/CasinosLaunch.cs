@@ -6,6 +6,7 @@ namespace Casinos
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using UnityEngine;
+    using XLua;
 
     public class StreamingAssetsInfo
     {
@@ -18,6 +19,9 @@ namespace Casinos
         //---------------------------------------------------------------------
         public string VersionLaunchStreamingAssets { get; set; }
         public string VersionLaunchPersistent { get; set; }
+        Action FuncLuaLaunchInit { get; set; }
+        DelegateLuaUpdate FuncLuaLaunchUpdate { get; set; }
+        Action FuncLuaLaunchRelease { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosLaunch()
@@ -53,15 +57,24 @@ namespace Casinos
                     var copy_dir = new CopyStreamingAssetsToPersistentData(i);
                 }
             }
+
+            // 预加载Script.Lua/Launch中的所有lua文件
+            CasinosContext.Instance.CasinosLua.LoadLuaLaunch();
+
+            // 显示加载界面
+            CasinosContext.Instance.CasinosLua.DoString("Launch");
+            var lua_launch = CasinosContext.Instance.CasinosLua.LuaEnv.Global.Get<LuaTable>("Launch");
+            FuncLuaLaunchInit = lua_launch.Get<Action>("Init");
+            FuncLuaLaunchUpdate = lua_launch.Get<DelegateLuaUpdate>("Update");
+            FuncLuaLaunchRelease = lua_launch.Get<Action>("Release");
+            FuncLuaLaunchInit();
         }
 
         //---------------------------------------------------------------------
         //public async Task Fire()
         //{
         //    Debug.Log("CasinosLaunch.Fire() 1");
-
         //    await Task.Delay(5000);
-
         //    Debug.Log("CasinosLaunch.Fire()2");
         //}
     }

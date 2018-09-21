@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 PreViewBase = {
 	PreViewMgr = nil,
 	GoUi = nil,
@@ -10,6 +11,7 @@ PreViewBase = {
 	ViewKey = nil
 }
 
+---------------------------------------
 function  PreViewBase:new(o)
 	o = o or {}  
     setmetatable(o,self)  
@@ -17,14 +19,18 @@ function  PreViewBase:new(o)
     return o
 end
 
+---------------------------------------
 function PreViewBase:onCreate()	
 end
 
+---------------------------------------
 function PreViewBase:onDestroy()	
 end
 
+---------------------------------------
 function PreViewBase:onUpdate(tm)	
 end
 
+---------------------------------------
 function PreViewBase:onHandleEv(ev)	
 end

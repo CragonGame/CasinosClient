@@ -1,7 +1,9 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 LuaHelper = {}
 
+---------------------------------------
 function LuaHelper:new(o)
 	o = o or {}
 	setmetatable(o,self)
@@ -15,6 +17,7 @@ function LuaHelper:new(o)
 	return self.Instance
 end
 
+---------------------------------------
 function LuaHelper:SplitStr(full_str, separator)
 	local start_index = 1
 	local split_index = 1
@@ -33,6 +36,7 @@ function LuaHelper:SplitStr(full_str, separator)
 	return split_array
 end
 
+---------------------------------------
 function LuaHelper:GetTableCount(t)
 	local count = 0
 	for k, v in pairs(t) do
@@ -42,6 +46,7 @@ function LuaHelper:GetTableCount(t)
 	return count
 end
 
+---------------------------------------
 function LuaHelper:GetAndRemoveTableFirstEle(t)
 	local key = nil
 	local value = nil
@@ -57,6 +62,7 @@ function LuaHelper:GetAndRemoveTableFirstEle(t)
 	return key,value
 end
 
+---------------------------------------
 function LuaHelper:GetTableFirstEle(t)
 	local key = nil
 	local value = nil
@@ -70,6 +76,7 @@ function LuaHelper:GetTableFirstEle(t)
 	return key,value
 end
 
+---------------------------------------
 function LuaHelper:TableContainsV(t,value)
 	local have_v = false
 	for k, v in pairs(t) do
@@ -83,6 +90,7 @@ function LuaHelper:TableContainsV(t,value)
 	return have_v
 end
 
+---------------------------------------
 function LuaHelper:TableRemoveV(t,value)
 	local key = nil
 	for k, v in pairs(t) do
@@ -99,6 +107,7 @@ function LuaHelper:TableRemoveV(t,value)
 	end
 end
 
+---------------------------------------
 function LuaHelper:CloneTableData(table_resource,table_target)
 	if(table_resource ~= nil)
 	then
@@ -108,6 +117,7 @@ function LuaHelper:CloneTableData(table_resource,table_target)
 	end
 end
 
+---------------------------------------
 function LuaHelper:ReverseTable(table)
 	local temp = {}
 	for i = 1,#table do
@@ -116,17 +126,20 @@ function LuaHelper:ReverseTable(table)
 	return temp
 end
 
+---------------------------------------
 function LuaHelper:GetUrlWithRandomNum(url)
 	local n = math.random(10000)
 	local new_url  = url..'?'..tostring(n)
 	return new_url
 end
 
+---------------------------------------
 function LuaHelper:GetRandomNum(num_max)
 	local n = math.random(num_max)
 	return n
 end
 
+---------------------------------------
 function LuaHelper:DeleteAllTableEle(t)
 	for k,v in pairs(t) do
 		t[k] = nil

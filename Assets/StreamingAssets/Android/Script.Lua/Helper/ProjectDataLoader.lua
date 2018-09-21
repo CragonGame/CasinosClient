@@ -1,5 +1,6 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 ProjectDataLoader = {
 	Instance = nil,
 	DataVersion = nil,
@@ -14,6 +15,7 @@ ProjectDataLoader = {
 	TableNeedLoadFileInfo = {},	
 }
 
+---------------------------------------
 function ProjectDataLoader:new(o)
 	 o = o or {}  
     setmetatable(o,self)
@@ -26,6 +28,7 @@ function ProjectDataLoader:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function ProjectDataLoader:onCreate(data_version,data_filelist_name,commonlua_root_url,local_commonlua_versionkey,function_loaddown)
 	self.DataVersion = data_version
 	self.DataFileURLRoot = commonlua_root_url
@@ -46,6 +49,7 @@ function ProjectDataLoader:onCreate(data_version,data_filelist_name,commonlua_ro
 	self.WWWProjectData = CS.UnityEngine.WWW(datafilelist_remoteurl)		
 end
 
+---------------------------------------
 function ProjectDataLoader:onUpdate()	
 	if(self.WWWProjectData == nil)
 	then        
@@ -74,10 +78,12 @@ function ProjectDataLoader:onUpdate()
 	end
 end
 
+---------------------------------------
 function ProjectDataLoader:onRelease()
 	print('UpdateData___UpdateDataRelease')
 end
 
+---------------------------------------
 function ProjectDataLoader:ParseDataFileList(data_filelist_text,is_local)	
 		local split_array = self.MainC.LuaHelper:SplitStr(data_filelist_text,'\n')
 		for key,value in pairs(split_array) do
@@ -101,6 +107,7 @@ function ProjectDataLoader:ParseDataFileList(data_filelist_text,is_local)
 		end        
 end
 
+---------------------------------------
 function ProjectDataLoader.LoadPro(current_index,total)
 	local pro = current_index / total
 	local tips = "正在更新美术资源，请稍候"
@@ -120,6 +127,7 @@ function ProjectDataLoader.LoadPro(current_index,total)
 	CS.Casinos.UiHelperCasinos.UiShowPreLoading(tips,pro * 100)	
 end
 
+---------------------------------------
 function ProjectDataLoader.LoadOneFileDown(key,file_bytes)
 	-- 写文件				
 	local path_mgr = CS.Casinos.CasinosContext.Instance.PathMgr
@@ -127,6 +135,7 @@ function ProjectDataLoader.LoadOneFileDown(key,file_bytes)
 	CS.Casinos.LuaHelper.writeFile(file_bytes,local_file_path)
 end
 
+---------------------------------------
 function ProjectDataLoader.LoadDown()
 	local loader = ProjectDataLoader:new(nil)
 	local path_mgr = CS.Casinos.CasinosContext.Instance.PathMgr
@@ -139,10 +148,12 @@ function ProjectDataLoader.LoadDown()
 	end
 end
 
+---------------------------------------
 function ProjectDataLoader:CombineRemoteDataPath(path)
 	return self.DataFileURLRoot..path	
 end
 
+---------------------------------------
 function ProjectDataLoader:_getNeedLoadAssetAndDeleteOldAsset()			
 	local needloadasset_array = {} 	
 	local same_asset_array = {}

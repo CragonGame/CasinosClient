@@ -1,5 +1,6 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 CommonLuaLoader = {
 	Instance = nil,
 	DataVersion = nil,
@@ -17,6 +18,7 @@ CommonLuaLoader = {
 	RemoteDataFileList = nil	
 }
 
+---------------------------------------
 function CommonLuaLoader:new(o)
 	 o = o or {}  
     setmetatable(o,self)  
@@ -30,6 +32,7 @@ function CommonLuaLoader:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function CommonLuaLoader:onCreate(data_version,commonlua_filelist_name,commonlua_root_url,local_commonlua_versionkey,function_loaddown)	
 	self.DataVersion = data_version
 	self.CommonLuaFileListTxtName = commonlua_filelist_name
@@ -51,6 +54,7 @@ function CommonLuaLoader:onCreate(data_version,commonlua_filelist_name,commonlua
 	self.WWWCommonLuaDataList = CS.UnityEngine.WWW(datafilelist_remoteurl)		
 end
 
+---------------------------------------
 function CommonLuaLoader:onUpdate(tm)
 	if(self.WWWCommonLuaDataList == nil)
 	then        
@@ -79,10 +83,12 @@ function CommonLuaLoader:onUpdate(tm)
 	end
 end
 
+---------------------------------------
 function CommonLuaLoader:onRelease()
 	print('WWWLoader_Release')
 end
 
+---------------------------------------
 function CommonLuaLoader:ParseDataFileList(data_filelist_text,is_local)	
 	local split_array = self.MainC.LuaHelper:SplitStr(data_filelist_text,'\n')
 	for key,value in pairs(split_array) do
@@ -106,10 +112,12 @@ function CommonLuaLoader:ParseDataFileList(data_filelist_text,is_local)
 	end        
 end
 
+---------------------------------------
 function CommonLuaLoader:CombineRemoteDataPath(path)
 	return self.DataFileURLRoot..path	
 end
 
+---------------------------------------
 function CommonLuaLoader.LoadPro(current_index,total)
 	local pro = current_index / total	
 	local tips = "正在更新数据，请稍候"
@@ -129,6 +137,7 @@ function CommonLuaLoader.LoadPro(current_index,total)
 	CS.Casinos.UiHelperCasinos.UiShowPreLoading(tips,pro * 100)	
 end
 
+---------------------------------------
 function CommonLuaLoader.LoadOneFileDown(key,file_bytes)
 	-- 写文件				
 	local path_mgr = CS.Casinos.CasinosContext.Instance.PathMgr
@@ -137,6 +146,7 @@ function CommonLuaLoader.LoadOneFileDown(key,file_bytes)
 	CS.Casinos.LuaHelper.writeFile(file_bytes,local_file_path)
 end
 
+---------------------------------------
 function CommonLuaLoader.LoadDown()	
 	local loader = CommonLuaLoader:new(nil)
 	local path_mgr = CS.Casinos.CasinosContext.Instance.PathMgr
@@ -149,6 +159,7 @@ function CommonLuaLoader.LoadDown()
 	end
 end
 
+---------------------------------------
 function CommonLuaLoader:_getNeedLoadAssetAndDeleteOldAsset()			
 	local needloadasset_array = {} 	
 	local same_asset_array = {}

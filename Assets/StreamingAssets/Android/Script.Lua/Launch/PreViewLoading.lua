@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 PreViewLoading = PreViewBase:new()
 
+---------------------------------------
 function PreViewLoading:new(o)
     o = o or {}
     setmetatable(o,self)
@@ -23,6 +25,7 @@ function PreViewLoading:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function PreViewLoading:onCreate()
     local pro = self.ComUi:GetChild("Progress")
     if(pro ~= nil)
@@ -97,6 +100,7 @@ function PreViewLoading:onCreate()
     self.DengLongAnim.transform.gameObject.name = "DengLong"
 end
 
+---------------------------------------
 function PreViewLoading:onDestroy()
     if(self.ShowSPine)
     then
@@ -111,12 +115,15 @@ function PreViewLoading:onDestroy()
     CS.FairyGUI.Timers.inst:Remove(self._updateTips)
 end
 
+---------------------------------------
 function PreViewLoading:onUpdate(tm)
 end
 
+---------------------------------------
 function PreViewLoading:onHandleEv(ev)
 end
 
+---------------------------------------
 function PreViewLoading.fireAutoLoadingProgress()
     local loading = PreViewLoading:new(nil)
     loading.GProgressBar.visible = true
@@ -125,6 +132,7 @@ function PreViewLoading.fireAutoLoadingProgress()
     CS.FairyGUI.Timers.inst:Add(0.01, 0, loading._playProgress)
 end
 
+---------------------------------------
 function PreViewLoading.fireManualLoadingProgress(progress, loading_info)
     local loading = PreViewLoading:new(nil)
     loading.IsAuto = false
@@ -151,6 +159,7 @@ function PreViewLoading.fireManualLoadingProgress(progress, loading_info)
     end
 end
 
+---------------------------------------
 function PreViewLoading.setLoadingProgress(progress)
     local loading = PreViewLoading:new(nil)
     loading.GProgressBar.visible = true
@@ -169,6 +178,7 @@ function PreViewLoading.setLoadingProgress(progress)
     end
 end
 
+---------------------------------------
 function PreViewLoading.setTip(tip)
     local loading = PreViewLoading:new(nil)
     loading.ListRandomTips = {}
@@ -203,6 +213,7 @@ function PreViewLoading.setTip(tip)
     end
 end
 
+---------------------------------------
 function PreViewLoading.setTips(list_tips)
     local loading = PreViewLoading:new(nil)
     loading.ListRandomTips = {}
@@ -211,6 +222,7 @@ function PreViewLoading.setTips(list_tips)
     end
 end
 
+---------------------------------------
 function PreViewLoading._updateTips(param)
     local loading = PreViewLoading:new(nil)
     local tips_key,tips_value = nil
@@ -230,6 +242,7 @@ function PreViewLoading._updateTips(param)
     end
 end
 
+---------------------------------------
 function PreViewLoading._playProgress(param)
     local loading = PreViewLoading:new(nil)
     if (loading.GProgressBar ~= nil)
@@ -251,6 +264,7 @@ function PreViewLoading._playProgress(param)
     end
 end
 
+---------------------------------------
 function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode,t_anchor_point)
     local w = logic_width / design_width
     local h = logic_height / design_height
@@ -308,11 +322,10 @@ function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_wi
     end
 end
 
-
-
-
+---------------------------------------
 PreViewLoadingFactory = PreViewFactory:new()
 
+---------------------------------------
 function PreViewLoadingFactory:new(o,ui_package_name,ui_component_name,
                                    ui_layer,is_single,fit_screen)
     o = o or {}
@@ -326,19 +339,17 @@ function PreViewLoadingFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
+---------------------------------------
 function PreViewLoadingFactory:createView()
     local view = PreViewLoading:new(nil)
     return view
 end
 
-
-
-
-
-
+---------------------------------------
 ParticleHelper = {
 }
 
+---------------------------------------
 function ParticleHelper:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -354,6 +365,7 @@ function ParticleHelper:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function ParticleHelper:GetParticel(path)
     local particle = self.TableParticle[path]
     if (particle == nil)
@@ -367,6 +379,7 @@ function ParticleHelper:GetParticel(path)
     return particle
 end
 
+---------------------------------------
 function ParticleHelper:GetSpine(path)
     local spine = self.TableSpine[path]
     if (spine == nil)
@@ -380,6 +393,7 @@ function ParticleHelper:GetSpine(path)
     return spine
 end
 
+---------------------------------------
 function ParticleHelper:GetPreSpine(path)
     local spine = self.TableSpine[path]
     if (spine == nil)

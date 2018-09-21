@@ -1,5 +1,6 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 WWWLoader = {
 	Instance = nil,
 	MainC = nil,	
@@ -14,6 +15,7 @@ WWWLoader = {
 	LoadDown = false
 }
 
+---------------------------------------
 function WWWLoader:new(o)
 	 o = o or {}  
     setmetatable(o,self)  
@@ -25,10 +27,12 @@ function WWWLoader:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function WWWLoader:onCreate()
 	self.MainC = MainC:new(nil)	
 end
 
+---------------------------------------
 function WWWLoader:StartDownload(table_need_loadfile,function_loadpro,function_loadonefile_down,function_loaddown)
 	self.FunctionLoadPro = function_loadpro
 	self.FunctionLoadOneFileDown = function_loadonefile_down
@@ -38,6 +42,7 @@ function WWWLoader:StartDownload(table_need_loadfile,function_loadpro,function_l
 	self.LoadDown = false
 end
 
+---------------------------------------
 function WWWLoader:onUpdate(tm)
 	if(self.LoadDown == true)
 	then
@@ -94,6 +99,7 @@ function WWWLoader:onUpdate(tm)
 	end
 end
 
+---------------------------------------
 function WWWLoader:onRelease()
 	print('WWWLoader_Release')	
 end

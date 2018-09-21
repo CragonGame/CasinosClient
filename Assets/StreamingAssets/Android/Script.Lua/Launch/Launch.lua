@@ -1,8 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
-ControllerLaunch = {}
+---------------------------------------
+Launch = {}
 
-function ControllerLaunch:new(o)
+---------------------------------------
+function Launch:new(o)
     o = o or {}
     setmetatable(o,self)
     self.__index = self
@@ -20,19 +22,31 @@ function ControllerLaunch:new(o)
     return self.Instance
 end
 
-function ControllerLaunch.onCreate()
-    print("Launch:onCreate")
-    local casinos_context = CS.Casinos.CasinosContext.Instance
-    local predata_persistentdata_path = casinos_context.PathMgr:combinePersistentDataPath(casinos_context.ResourcesRowPathRoot .. "PreData/")
-    casinos_context.CasinosLua:doString("PreViewMgr")
-    casinos_context:setPreViewMgr()
-    local launch = ControllerLaunch:new(nil)
+---------------------------------------
+function Launch:Init()
+    print("Launch:Init()")
+
+    require 'PreViewMgr'
+    require 'PreViewBase'
+    require 'PreViewFactory'
+    require 'PreViewLoading'
+    require 'PreViewMsgBox'
+
+    --casinos_context.CasinosLua:DoString("PreViewMgr")
+    --casinos_context:setPreViewMgr()
+
+    local launch = Launch:new(nil)
     launch.PreViewMgr = PreViewMgr:new(nil)
+    launch.PreViewMgr:Init()
+
+    local casinos_context = CS.Casinos.CasinosContext.Instance
+    --local launch_persistentdata_path = casinos_context.PathMgr:combinePersistentDataPath(casinos_context.ResourcesRowPathRoot .. "Launch/")
+    local launch_persistentdata_path = casinos_context.PathMgr.PathLaunchRootPersistent
 
     local ui_name_loading = "PreLoading"
-    local ui_path_loading = predata_persistentdata_path .. ui_name_loading .. "/" .. string.lower(ui_name_loading) .. ".ab"
+    local ui_path_loading = launch_persistentdata_path .. ui_name_loading .. "/" .. string.lower(ui_name_loading) .. ".ab"
     local ui_name_msgbox = "PreMsgBox"
-    local ui_path_msgbox = predata_persistentdata_path .. ui_name_msgbox .. "/" .. string.lower(ui_name_msgbox) .. ".ab"
+    local ui_path_msgbox = launch_persistentdata_path .. ui_name_msgbox .. "/" .. string.lower(ui_name_msgbox) .. ".ab"
     casinos_context:LuaAsyncLoadLocalUiBundle(
             function()
                 launch:_loadABDone()
@@ -40,11 +54,14 @@ function ControllerLaunch.onCreate()
     ,ui_path_loading,ui_path_msgbox)
 end
 
-function ControllerLaunch:onDestroy()
+---------------------------------------
+function Launch:Release()
+    print("Launch:Release()")
 end
 
-function ControllerLaunch.onUpdate(tm)
-    local launch = ControllerLaunch:new(nil)
+---------------------------------------
+function Launch:Update(tm)
+    local launch = Launch:new(nil)
     if (launch.LaunchConfigLoader ~= nil)
     then
         launch.LaunchConfigLoader:update(tm)
@@ -80,14 +97,17 @@ function ControllerLaunch.onUpdate(tm)
     end
 end
 
-function ControllerLaunch:onHandleEv(ev)
+---------------------------------------
+function Launch:onHandleEv(ev)
 end
 
-function ControllerLaunch:getModle()
+---------------------------------------
+function Launch:getModle()
 end
 
-function ControllerLaunch:copyStreamingAssetsToPersistentDataPath()
-    local controller_launch = ControllerLaunch:new(nil)
+---------------------------------------
+function Launch:CopyStreamingAssetsToPersistentDataPath()
+    local controller_launch = Launch:new(nil)
     local tips = "首次进入游戏，解压资源，该过程不产生任何流量"
     local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
     if(lan == "English")
@@ -109,11 +129,12 @@ function ControllerLaunch:copyStreamingAssetsToPersistentDataPath()
                 function(current_index, total_count)
                     controller_launch:_firstCopyStreamingAssetsDataPro(current_index, total_count)
                 end,
-                ControllerLaunch._firstCopyStreamingAssetsDataDown)
+                Launch._firstCopyStreamingAssetsDataDown)
     end
 end
 
-function ControllerLaunch:_loadABDone()
+---------------------------------------
+function Launch:_loadABDone()
     local view_preloading = self.PreViewMgr.createView("PreLoading")
     local tips = "正在努力加载配置，请耐心等待..."
     local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
@@ -137,14 +158,16 @@ function ControllerLaunch:_loadABDone()
     )
 end
 
-function ControllerLaunch:_firstCopyStreamingAssetsDataPro(current_index, total_count)
-    -- local launch = ControllerLaunch:new(nil)
+---------------------------------------
+function Launch:_firstCopyStreamingAssetsDataPro(current_index, total_count)
+    -- local launch = Launch:new(nil)
     local pro = current_index / total_count
     local view_preloading = self.PreViewMgr.createView("PreLoading")
     view_preloading.setLoadingProgress(pro * 100)
 end
 
-function ControllerLaunch._firstCopyStreamingAssetsDataDown()
+---------------------------------------
+function Launch._firstCopyStreamingAssetsDataDown()
     local launch = CS.Casinos.CasinosContext.Instance.Launch
     launch.ParseStreamingAssetsDataInfo:writeStreamingAssetsDataFileList2Persistent()
     CS.UnityEngine.PlayerPrefs.SetString(CS.Casinos.CasinosContext.LocalDataVersionKey,
@@ -152,8 +175,9 @@ function ControllerLaunch._firstCopyStreamingAssetsDataDown()
     launch.ParseStreamingAssetsDataInfo = nil
 end
 
-function ControllerLaunch:_loadConfigDone(config)
-    -- local launch = ControllerLaunch:new(nil)
+---------------------------------------
+function Launch:_loadConfigDone(config)
+    -- local launch = Launch:new(nil)
     local casinos_context = CS.Casinos.CasinosContext.Instance
     casinos_context.CasinosLua:addLuaFile(casinos_context.Config.ConfigName, config)
     casinos_context.CasinosLua:doMainCLua(casinos_context.Config.ConfigName)
@@ -161,7 +185,8 @@ function ControllerLaunch:_loadConfigDone(config)
     self.CanCheckLoadDataDone = true
 end
 
-function ControllerLaunch:_initializeDone()
+---------------------------------------
+function Launch:_initializeDone()
     self.InitializeDone = true
     CS.Casinos.CasinosContext.Instance.Listener:OnInitializeEnd()
 end

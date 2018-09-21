@@ -30,7 +30,7 @@ function KingNigeriaListener:onCreate()
     self:_regLuaFilePath()
 
     self.MainC = MainC:new(nil)
-    self.Lanch = ControllerLaunch:new(nil)
+    self.Lanch = Launch:new(nil)
     self.CreateLogin = false
     self.LoadTbDataDone = false
     --MainC:doString("LuaHelper")

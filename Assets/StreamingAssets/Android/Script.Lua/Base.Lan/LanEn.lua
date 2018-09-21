@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 LanEn = LanBase:new(nil)
 
+---------------------------------------
 function LanEn:new(o)
     o = o or {}
     setmetatable(o,self)
@@ -19,10 +21,12 @@ function LanEn:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function LanEn:getValue(key)
     return self.MapLan[key]
 end
 
+---------------------------------------
 function LanEn:parseLanKeyValue(tb_datamgr)
     local map_data = tb_datamgr:GetMapData("LanEn")
     if (map_data == nil)
@@ -34,10 +38,12 @@ function LanEn:parseLanKeyValue(tb_datamgr)
     end
 end
 
+---------------------------------------
 function LanEn:getLanPackageName()
     return "LanEn"
 end
 
+---------------------------------------
 function LanEn:getGoldShowStr(gold,show_short_way,precision_length)
     local show_str = ""
 
@@ -108,6 +114,7 @@ function LanEn:getGoldShowStr(gold,show_short_way,precision_length)
     return show_str
 end
 
+---------------------------------------
 function LanEn:getGoldShowStr2(gold,show_short_way,precision_length)
     local show_str = ""
 

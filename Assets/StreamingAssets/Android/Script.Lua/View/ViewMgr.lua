@@ -3,6 +3,7 @@
 -- 每个View的创建和销毁
 -- 多语言的替换。命名规则
 
+---------------------------------------
 TableUiLayer = {
 	None=0,
 	Background = 1,
@@ -19,6 +20,7 @@ TableUiLayer = {
 	GM = 951,
 }
 
+---------------------------------------
 ViewMgr = {
 	STANDARD_WIDTH = 1066,
 	STANDARD_HEIGHT = 640,
@@ -33,6 +35,7 @@ ViewMgr = {
 	TableUpdateView = {},
 }
 
+---------------------------------------
 function ViewMgr:new(o)
 	o = o or {}
 	setmetatable(o,self)
@@ -56,6 +59,7 @@ function ViewMgr:new(o)
 	return self.Instance
 end
 
+---------------------------------------
 function ViewMgr:onCreate(uipath_root,resourcesrow_pathroot)
 	print("ViewMgr:onCreate")
 	self.UiPathRoot = uipath_root
@@ -84,9 +88,11 @@ function ViewMgr:onCreate(uipath_root,resourcesrow_pathroot)
 	MainC:doString("ViewFactory")
 end
 
+---------------------------------------
 function ViewMgr:onDestroy()
 end
 
+---------------------------------------
 function ViewMgr:onUpdate(tm)
 	for k,v in pairs(self.TableViewSingle) do
 		if(v~=nil)
@@ -104,6 +110,7 @@ function ViewMgr:onUpdate(tm)
 	end
 end
 
+---------------------------------------
 function ViewMgr:regView(view_key,view_factory)
 	if(view_factory ~= nil)
 	then
@@ -111,6 +118,7 @@ function ViewMgr:regView(view_key,view_factory)
 	end
 end
 
+---------------------------------------
 function ViewMgr:createView(view_key)
 	local view_factory = self.TableViewFactory[view_key]
 	if(view_factory == nil)
@@ -174,6 +182,7 @@ function ViewMgr:createView(view_key)
 	return view
 end
 
+---------------------------------------
 function ViewMgr:destroyView(view)
 	if(view~=nil)
 	then
@@ -205,11 +214,13 @@ function ViewMgr:destroyView(view)
 	end
 end
 
+---------------------------------------
 function ViewMgr:getView(view_key)
 	local view = self.TableViewSingle[view_key]
 	return view
 end
 
+---------------------------------------
 function ViewMgr:destroyAllView()
 	local table_need_destroyui = {}
 	for k,v in pairs(self.TableViewSingle) do
@@ -230,6 +241,7 @@ function ViewMgr:destroyAllView()
 	self.TableViewMultiple = {}
 end
 
+---------------------------------------
 function ViewMgr:_checkDestroyUi(t_layer)
 	if (t_layer == "None" or t_layer == "MessgeBox" or t_layer == "SceneActor"
 			or t_layer == "PlayerOperateUi" or t_layer == "ShootingText")
@@ -294,6 +306,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
 	map_need_destroyuis = {}
 end
 
+---------------------------------------
 function ViewMgr:bindEvListener(ev_name,ev_listener)
 	if(self.EventSys ~= nil)
 	then
@@ -301,6 +314,7 @@ function ViewMgr:bindEvListener(ev_name,ev_listener)
 	end
 end
 
+---------------------------------------
 function ViewMgr:unbindEvListener(ev_listener)
 	if(self.EventSys ~= nil)
 	then
@@ -308,6 +322,7 @@ function ViewMgr:unbindEvListener(ev_listener)
 	end
 end
 
+---------------------------------------
 function ViewMgr:getEv(ev_name)
 	local ev = nil
 	if(self.EventSys ~= nil)
@@ -317,6 +332,7 @@ function ViewMgr:getEv(ev_name)
 	return ev
 end
 
+---------------------------------------
 function ViewMgr:sendEv(ev)
 	if(self.EventSys ~= nil)
 	then
@@ -324,17 +340,20 @@ function ViewMgr:sendEv(ev)
 	end
 end
 
+---------------------------------------
 function ViewMgr:getUiPackagePath(package_name)
 	local s = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(
 			self.UiPathRoot .. package_name .. "/" .. string.lower(package_name) .. ".ab")
 	return s
 end
 
+---------------------------------------
 function ViewMgr:packData(data)
 	local p_datas = self.RPC:PackData(data)
 	return p_datas
 end
 
+---------------------------------------
 function ViewMgr:unpackData(data)
 	local p_datas = self.RPC:UnPackData(data)
 	return p_datas

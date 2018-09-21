@@ -1,7 +1,9 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 PicCapture = {}
 
+---------------------------------------
 function PicCapture:new(o, view_mgr, listner)
     o = o or {}
     setmetatable(o, self)
@@ -18,6 +20,7 @@ function PicCapture:new(o, view_mgr, listner)
     return self.Instance
 end
 
+---------------------------------------
 function PicCapture:OnUpdate(tm)
     if self.CanShowTips then
         local c_t = self.CheckPicTm
@@ -39,6 +42,7 @@ function PicCapture:OnUpdate(tm)
     end
 end
 
+---------------------------------------
 function PicCapture:CapturePic(pic_name, pic_down_callback)
     self.CanShowTips = true
     self.PicDownCallBack = pic_down_callback

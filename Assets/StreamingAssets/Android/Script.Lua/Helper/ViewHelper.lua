@@ -1,11 +1,13 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 BgAttachMode = {
     Top = 1,
     Center = 2,
     Bottom = 3,
 }
 
+---------------------------------------
 ViewHelper = {
     Instance = nil,
     ListShootingTextColor = {
@@ -19,6 +21,7 @@ ViewHelper = {
     ViewMgr = nil
 }
 
+---------------------------------------
 function ViewHelper:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -32,10 +35,12 @@ function ViewHelper:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function ViewHelper.UiShowInfoSuccess(table, info)
     return table:UiShowInfoSuccess(info)
 end
 
+---------------------------------------
 function ViewHelper:UiShowInfoSuccess(info)
     local ui_floatmsg = self.ViewMgr:getView("FloatMsg")
     if (ui_floatmsg == nil)
@@ -46,10 +51,12 @@ function ViewHelper:UiShowInfoSuccess(info)
     return ui_floatmsg
 end
 
+---------------------------------------
 function ViewHelper.UiShowInfoFailed(table, info)
     return table:UiShowInfoFailed(info)
 end
 
+---------------------------------------
 function ViewHelper:UiShowInfoFailed(info)
     local ui_floatmsg = self.ViewMgr:getView("FloatMsg")
     if (ui_floatmsg == nil)
@@ -62,10 +69,12 @@ function ViewHelper:UiShowInfoFailed(info)
     return ui_floatmsg
 end
 
+---------------------------------------
 function ViewHelper.UiShowPermanentPosMsg(table, info)
     return table:UiShowPermanentPosMsg(info)
 end
 
+---------------------------------------
 function ViewHelper:UiShowPermanentPosMsg(info)
     local ui_msg = self.ViewMgr:getView("PermanentPosMsg")
     if (ui_msg == nil)
@@ -77,6 +86,7 @@ function ViewHelper:UiShowPermanentPosMsg(info)
     return ui_msg
 end
 
+---------------------------------------
 function ViewHelper:UiShowMsgBox(info, ok, cancel)
     local ui = self.ViewMgr:createView("MsgBox")
     ui:showMsgBox3(info, ok, cancel)
@@ -84,6 +94,7 @@ function ViewHelper:UiShowMsgBox(info, ok, cancel)
     return ui
 end
 
+---------------------------------------
 function ViewHelper:UiShowMsgBox(info, ok)
     local ui = self.ViewMgr:createView("MsgBox")
     ui:showMsgBox4(info, ok)
@@ -91,10 +102,12 @@ function ViewHelper:UiShowMsgBox(info, ok)
     return ui
 end
 
+---------------------------------------
 function ViewHelper.UiBeginWaiting(table, tips, auto_destroytm)
     return table:UiBeginWaiting(tips, auto_destroytm)
 end
 
+---------------------------------------
 function ViewHelper:UiBeginWaiting(tips, auto_destroytm)
     if (auto_destroytm == nil)
     then
@@ -110,15 +123,18 @@ function ViewHelper:UiBeginWaiting(tips, auto_destroytm)
     return ui_waiting
 end
 
+---------------------------------------
 function ViewHelper.UiEndWaiting(table)
     return table:UiEndWaiting()
 end
 
+---------------------------------------
 function ViewHelper:UiEndWaiting()
     local ui_waiting = self.ViewMgr:getView("Waiting")
     self.ViewMgr:destroyView(ui_waiting)
 end
 
+---------------------------------------
 function ViewHelper:UiShowLoading(tips, progress)
     local ui_loading = self.ViewMgr:getView("Loading")
     if (ui_loading == nil)
@@ -132,16 +148,19 @@ function ViewHelper:UiShowLoading(tips, progress)
     return ui_loading
 end
 
+---------------------------------------
 function ViewHelper:UiEndLoading()
     local ui_loading = self.ViewMgr:getView("Loading")
     self.ViewMgr:destroyView(ui_loading)
 end
 
+---------------------------------------
 function ViewHelper:FormatePackageImagePath(package_name, image_name)
     local l = string.format("ui://%s/%s", package_name, image_name)
     return l
 end
 
+---------------------------------------
 function ViewHelper:setGObjectVisible(is_visible, obj)
     if (obj.visible ~= is_visible)
     then
@@ -149,11 +168,13 @@ function ViewHelper:setGObjectVisible(is_visible, obj)
     end
 end
 
+---------------------------------------
 function ViewHelper:GetRandomShootingTextColor()
     local index = math.random(0, 5)
     return self.ListShootingTextColor[index]
 end
 
+---------------------------------------
 function ViewHelper:subStrToTargetLength(str, target_length)
     if (string.len(str) > target_length)
     then
@@ -163,6 +184,7 @@ function ViewHelper:subStrToTargetLength(str, target_length)
     return str
 end
 
+---------------------------------------
 -- 全屏背景的多分辨率自适应计算函数
 function ViewHelper:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode,t_anchor_point)
     local w = logic_width / design_width
@@ -217,18 +239,22 @@ function ViewHelper:makeUiBgFiteScreen(design_width, design_height, logic_width,
     end
 end
 
+---------------------------------------
 function ViewHelper:getABParticleResourceTitlePath()
     return CS.Casinos.CasinosContext.Instance.ABResourcePathTitle .. "Particle/"
 end
 
+---------------------------------------
 function ViewHelper:getABItemResourceTitlePath()
     return CS.Casinos.CasinosContext.Instance.ABResourcePathTitle .. "Item/"
 end
 
+---------------------------------------
 function ViewHelper:getABAudioResourceTitlePath()
     return CS.Casinos.CasinosContext.Instance.ABResourcePathTitle .. "Audio/"
 end
 
+---------------------------------------
 function ViewHelper:PopUi(comui, title)
     local proportion = 0.85
     local tween_time = 0.3
@@ -247,6 +273,7 @@ function ViewHelper:PopUi(comui, title)
     end
 end
 
+---------------------------------------
 function ViewHelper:SetUiTitle(text_title, title)
     local temp = {}
     temp[1] = "[color=#FFFFFF,#B8D1F6]"

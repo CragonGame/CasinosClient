@@ -43,17 +43,12 @@ function PreViewMgr:new(o)
 end
 
 ---------------------------------------
-function PreViewMgr:onCreate()
-	print("PreViewMgr:onCreate")
+function PreViewMgr:Init()
+	print("PreViewMgr:Init")
 
 	CS.FairyGUI.GRoot.inst:SetContentScaleFactor(PreViewMgr.STANDARD_WIDTH, PreViewMgr.STANDARD_HEIGHT,
 		CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
     CS.FairyGUI.UIConfig.defaultFont = "Microsoft YaHei"	
-
-	CS.Casinos.CasinosContext.Instance.CasinosLua:doString("PreViewBase")
-	CS.Casinos.CasinosContext.Instance.CasinosLua:doString("PreViewFactory")
-	CS.Casinos.CasinosContext.Instance.CasinosLua:doString("PreViewLoading")
-	CS.Casinos.CasinosContext.Instance.CasinosLua:doString("PreViewMsgBox")
 
 	local view_loading_fac = PreViewLoadingFactory:new(nil,"PreLoading","PreLoading","Loading",true,CS.FairyGUI.FitScreen.FitSize)
 	PreViewMgr.regView("PreLoading",view_loading_fac)
@@ -62,11 +57,11 @@ function PreViewMgr:onCreate()
 end
 
 ---------------------------------------
-function PreViewMgr:onDestroy()
+function PreViewMgr:Release()
 end
 
 ---------------------------------------
-function PreViewMgr:onUpdate(tm)	
+function PreViewMgr:Update(tm)
 	for k,v in pairs(PreViewMgr.TableViewSingle) do
 		if(v~=nil)
 		then

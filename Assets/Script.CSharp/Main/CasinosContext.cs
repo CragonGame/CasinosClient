@@ -368,8 +368,6 @@ namespace Casinos
         {
             var launch = new CasinosLaunch();
 
-            CasinosLua.InitLuaContext();
-
             // 解析全局函数
             //FuncLuaInit = CasinosLua.LuaEnv.Global.Get<Action>("MainCInit");
             //FuncLuaUpdate = LuaEnv.Global.Get<DelegateLuaUpdate>("MainCUpdate");
@@ -565,10 +563,10 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void RegLuaFilePath(string luafile_relativepath, params string[] luafile_name)
-        {
-            CasinosLua.RegLuaFilePath(luafile_relativepath, luafile_name);
-        }
+        //public void RegLuaFilePath(string luafile_relativepath, params string[] luafile_name)
+        //{
+        //    CasinosLua.RegLuaFilePath(luafile_relativepath, luafile_name);
+        //}
 
         //---------------------------------------------------------------------
         // 需要调整为可并发调用的接口

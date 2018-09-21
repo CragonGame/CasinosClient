@@ -1,5 +1,6 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 FileLoader = {
 	Instance = nil,
 	MainC = nil,
@@ -9,6 +10,7 @@ FileLoader = {
 	LoadDown = false
 }
 
+---------------------------------------
 function FileLoader:new(o)
 	 o = o or {}  
     setmetatable(o,self)  
@@ -20,10 +22,12 @@ function FileLoader:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function FileLoader:onCreate()
 	self.MainC = MainC:new(nil)	
 end
 
+---------------------------------------
 function FileLoader:StartDownload(need_loadfile,function_loadpro,function_loaddown)
 	self.FileWWW = CS.UnityEngine.WWW(need_loadfile)
 	self.FunctionLoadPro = function_loadpro
@@ -31,6 +35,7 @@ function FileLoader:StartDownload(need_loadfile,function_loadpro,function_loaddo
 	self.LoadDown = false
 end
 
+---------------------------------------
 function FileLoader:onUpdate(tm)
 	if(self.LoadDown == true)
 	then
@@ -60,6 +65,7 @@ function FileLoader:onUpdate(tm)
 	end
 end
 
+---------------------------------------
 function FileLoader:onRelease()
 	print('FileLoader_Release')	
 end

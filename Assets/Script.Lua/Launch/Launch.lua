@@ -23,19 +23,30 @@ function Launch:new(o)
 end
 
 ---------------------------------------
-function Launch.onCreate()
-    print("Launch:onCreate")
-    local casinos_context = CS.Casinos.CasinosContext.Instance
-    local predata_persistentdata_path = casinos_context.PathMgr:combinePersistentDataPath(casinos_context.ResourcesRowPathRoot .. "PreData/")
-    casinos_context.CasinosLua:doString("PreViewMgr")
-    casinos_context:setPreViewMgr()
+function Launch:Init()
+    print("Launch:Init()")
+
+    require 'PreViewMgr'
+    require 'PreViewBase'
+    require 'PreViewFactory'
+    require 'PreViewLoading'
+    require 'PreViewMsgBox'
+
+    --casinos_context.CasinosLua:DoString("PreViewMgr")
+    --casinos_context:setPreViewMgr()
+
     local launch = Launch:new(nil)
     launch.PreViewMgr = PreViewMgr:new(nil)
+    launch.PreViewMgr:Init()
+
+    local casinos_context = CS.Casinos.CasinosContext.Instance
+    --local launch_persistentdata_path = casinos_context.PathMgr:combinePersistentDataPath(casinos_context.ResourcesRowPathRoot .. "Launch/")
+    local launch_persistentdata_path = casinos_context.PathMgr.PathLaunchRootPersistent
 
     local ui_name_loading = "PreLoading"
-    local ui_path_loading = predata_persistentdata_path .. ui_name_loading .. "/" .. string.lower(ui_name_loading) .. ".ab"
+    local ui_path_loading = launch_persistentdata_path .. ui_name_loading .. "/" .. string.lower(ui_name_loading) .. ".ab"
     local ui_name_msgbox = "PreMsgBox"
-    local ui_path_msgbox = predata_persistentdata_path .. ui_name_msgbox .. "/" .. string.lower(ui_name_msgbox) .. ".ab"
+    local ui_path_msgbox = launch_persistentdata_path .. ui_name_msgbox .. "/" .. string.lower(ui_name_msgbox) .. ".ab"
     casinos_context:LuaAsyncLoadLocalUiBundle(
             function()
                 launch:_loadABDone()
@@ -44,11 +55,12 @@ function Launch.onCreate()
 end
 
 ---------------------------------------
-function Launch:onDestroy()
+function Launch:Release()
+    print("Launch:Release()")
 end
 
 ---------------------------------------
-function Launch.onUpdate(tm)
+function Launch:Update(tm)
     local launch = Launch:new(nil)
     if (launch.LaunchConfigLoader ~= nil)
     then
@@ -94,7 +106,7 @@ function Launch:getModle()
 end
 
 ---------------------------------------
-function Launch:copyStreamingAssetsToPersistentDataPath()
+function Launch:CopyStreamingAssetsToPersistentDataPath()
     local controller_launch = Launch:new(nil)
     local tips = "首次进入游戏，解压资源，该过程不产生任何流量"
     local lan = CS.Casinos.CasinosContext.Instance.CurrentLan

@@ -23,7 +23,9 @@ namespace Casinos
         public string PathAssets { get; private set; }// Unity3D的Assets目录
         public string PathSettings { get; private set; }// Unity3D的Settings目录
         public string PathSettingsUser { get; private set; }// Unity3D的SettingsUser目录
-        public string PathLuaRoot { get; private set; }// Lua文件所在根目录
+        public string PathLuaRootPersistent { get; private set; }// Lua文件所在根目录
+        public string PathLaunchRootPersistent { get; private set; }// Launch根目录
+        public string PathLuaRootAssets { get; private set; }// Lua文件所在根目录
         _eEditorRunSourcePlatform EditorModeRunsourcesPlatform { get; set; }
         string NeedCombinePath { get; set; }
 
@@ -71,19 +73,13 @@ namespace Casinos
                 PathSettingsUser = di.FullName;
             }
 
-            if (UsePersistent)
+            PathLuaRootPersistent = combinePersistentDataPath("Script.Lua/");
+            PathLaunchRootPersistent = combinePersistentDataPath("Resources.KingTexas/Launch/");
+
             {
-                // PathLuaRoot
-                PathLuaRoot = combinePersistentDataPath("Script.Lua/");
-            }
-            else
-            {
-                // PathLuaRoot
-                {
-                    string p = Path.Combine(Environment.CurrentDirectory, "./Assets/Script.Lua/");
-                    var di = new DirectoryInfo(p);
-                    PathLuaRoot = di.FullName;
-                }
+                string p = Path.Combine(Environment.CurrentDirectory, "./Assets/Script.Lua/");
+                var di = new DirectoryInfo(p);
+                PathLuaRootAssets = di.FullName;
             }
         }
 
@@ -91,12 +87,13 @@ namespace Casinos
         public string getWWWPersistentDataPath()
         {
             string persistent_path =
+
 #if UNITY_STANDALONE_WIN && UNITY_EDITOR
             "file:///" + Application.persistentDataPath + "/"+ NeedCombinePath;
 #elif UNITY_ANDROID && UNITY_EDITOR
             "file:///" + Application.persistentDataPath + "/" + NeedCombinePath;
 #elif UNITY_IPHONE && UNITY_EDITOR
-            "file:///" + Application.persistentDataPath+ "/" +NeedCombinePath;
+            "file:///" + Application.persistentDataPath + "/" + NeedCombinePath;
 #elif UNITY_ANDROID
             "file:///" + Application.persistentDataPath;
 #elif UNITY_IPHONE
@@ -104,6 +101,7 @@ namespace Casinos
 #else
             string.Empty;
 #endif
+
             return persistent_path;
         }
 
@@ -117,12 +115,13 @@ namespace Casinos
         public string getPersistentDataPath()
         {
             string persistent_path =
+
 #if UNITY_STANDALONE_WIN && UNITY_EDITOR
             Application.persistentDataPath +"/"+ NeedCombinePath;
 #elif UNITY_ANDROID && UNITY_EDITOR
             Application.persistentDataPath + "/" + NeedCombinePath;
 #elif UNITY_IPHONE && UNITY_EDITOR
-            Application.persistentDataPath+"/"+ NeedCombinePath;
+            Application.persistentDataPath + "/" + NeedCombinePath;
 #elif UNITY_ANDROID
             Application.persistentDataPath;
 #elif UNITY_IPHONE
@@ -146,6 +145,7 @@ namespace Casinos
         public string getStreamingAssetsPath()
         {
             string assetbundlePath =
+
 #if UNITY_EDITOR
             Application.streamingAssetsPath;
 #elif UNITY_IPHONE
@@ -169,6 +169,7 @@ namespace Casinos
         public string getWWWStreamingAssetsPath()
         {
             string assetbundlePath =
+
 #if UNITY_EDITOR
             "file:///" + Application.streamingAssetsPath;
 #elif UNITY_IPHONE
@@ -176,6 +177,7 @@ namespace Casinos
 #elif UNITY_ANDROID
             "jar:file://" + Application.dataPath + "!/assets";
 #endif
+
             assetbundlePath += "/" + EditorModeRunsourcesPlatform.ToString();
 
             return assetbundlePath;

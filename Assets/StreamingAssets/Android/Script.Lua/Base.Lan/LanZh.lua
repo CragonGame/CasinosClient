@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 LanZh = LanBase:new(nil)
 
+---------------------------------------
 function LanZh:new(o)
     o = o or {}
     setmetatable(o,self)
@@ -19,10 +21,12 @@ function LanZh:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function LanZh:getValue(key)
     return self.MapLan[key]
 end
 
+---------------------------------------
 function LanZh:parseLanKeyValue(tb_datamgr)
     local map_data = tb_datamgr:GetMapData("LanZh")
     if (map_data == nil)
@@ -34,10 +38,12 @@ function LanZh:parseLanKeyValue(tb_datamgr)
     end
 end
 
+---------------------------------------
 function LanZh:getLanPackageName()
     return "LanZh"
 end
 
+---------------------------------------
 function LanZh:getGoldShowStr(gold,show_short_way,precision_length)
     local show_str = ""
     if (show_short_way == false)
@@ -107,6 +113,7 @@ function LanZh:getGoldShowStr(gold,show_short_way,precision_length)
     return show_str
 end
 
+---------------------------------------
 function LanZh:getGoldShowStr2(gold,show_short_way,precision_length)
     local show_str = ""
 

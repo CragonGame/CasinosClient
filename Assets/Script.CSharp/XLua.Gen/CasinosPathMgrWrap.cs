@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.PathMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 8, 5, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 8, 7, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "getWWWPersistentDataPath", _m_getWWWPersistentDataPath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "combineWWWPersistentDataPath", _m_combineWWWPersistentDataPath);
@@ -37,7 +37,9 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathAssets", _g_get_PathAssets);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathSettings", _g_get_PathSettings);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathSettingsUser", _g_get_PathSettingsUser);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathLuaRoot", _g_get_PathLuaRoot);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathLuaRootPersistent", _g_get_PathLuaRootPersistent);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathLaunchRootPersistent", _g_get_PathLaunchRootPersistent);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathLuaRootAssets", _g_get_PathLuaRootAssets);
             
 			
 			
@@ -390,13 +392,41 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_PathLuaRoot(RealStatePtr L)
+        static int _g_get_PathLuaRootPersistent(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushstring(L, gen_to_be_invoked.PathLuaRoot);
+                LuaAPI.lua_pushstring(L, gen_to_be_invoked.PathLuaRootPersistent);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_PathLaunchRootPersistent(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
+                LuaAPI.lua_pushstring(L, gen_to_be_invoked.PathLaunchRootPersistent);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_PathLuaRootAssets(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
+                LuaAPI.lua_pushstring(L, gen_to_be_invoked.PathLuaRootAssets);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

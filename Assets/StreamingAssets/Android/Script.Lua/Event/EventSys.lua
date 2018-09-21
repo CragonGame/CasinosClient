@@ -1,5 +1,6 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 EventSys = {
 	Instance = nil,	
 	TableEvListener = {}, -- key evname value table listener
@@ -8,6 +9,7 @@ EventSys = {
 	TableEvEv = {} -- key evname value ev evPool
 }
 
+---------------------------------------
 function EventSys:new(o)
 	 o = o or {}  
     setmetatable(o,self)  
@@ -19,11 +21,13 @@ function EventSys:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function EventSys:onCreate()	
 	print("EventSys:onCreate")
 	MainC:doString("EventBase")
 end
 
+---------------------------------------
 function EventSys:bindEvListener(ev_name,ev_listener)
 	local table_listener = self.TableEvListener[ev_name]
 	if(table_listener == nil)
@@ -42,6 +46,7 @@ function EventSys:bindEvListener(ev_name,ev_listener)
 	table_ev[ev_name] = ev_name
 end
 
+---------------------------------------
 function EventSys:unbindEvListener(ev_listener)
 	local table_ev = self.TableListenerEv[ev_listener]
 	if(table_ev ~= nil)
@@ -57,6 +62,7 @@ function EventSys:unbindEvListener(ev_listener)
 	end
 end
 
+---------------------------------------
 function EventSys:sendEv(ev)
 	 local ev_name = ev.EventName	 
 	 --EventSys.TableEvListenerTransfer = {}
@@ -76,6 +82,7 @@ function EventSys:sendEv(ev)
 	 self.TableEvEv[ev_name] = ev
 end
 
+---------------------------------------
 function EventSys:getEv(ev_name)
 	local ev = self.TableEvEv[ev_name]	
 	return ev

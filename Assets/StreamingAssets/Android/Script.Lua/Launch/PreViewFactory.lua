@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 PreViewFactory = {
 	PackageName = nil,
 	ComponentName = nil,
@@ -8,6 +9,7 @@ PreViewFactory = {
 	FitScreen = nil
 }
 
+---------------------------------------
 function PreViewFactory:new(o,ui_package_name,ui_component_name,
 	ui_layer,is_single,fit_screen)
 	o = o or {}  
@@ -21,6 +23,6 @@ function PreViewFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
+---------------------------------------
 function PreViewFactory:createView()
-	
 end

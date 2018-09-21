@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 PreViewMsgBox = PreViewBase:new()
 
+---------------------------------------
 function PreViewMsgBox:new(o)
     o = o or {}
     setmetatable(o,self)
@@ -21,6 +23,7 @@ function PreViewMsgBox:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function PreViewMsgBox:onCreate()	 
 	 self.ActionOk = nil
      self.ActionCancel = nil
@@ -58,15 +61,19 @@ function PreViewMsgBox:onCreate()
 	 end
 end
 
+---------------------------------------
 function PreViewMsgBox:onDestroy()		
 end
 
+---------------------------------------
 function PreViewMsgBox:onUpdate(tm)		
 end
 
+---------------------------------------
 function PreViewMsgBox:onHandleEv(ev)	
 end
 
+---------------------------------------
 function PreViewMsgBox.showMsgBox(info,ok,cancel)
 	local view = PreViewMsgBox:new(nil)
 	if(view.TextTips ~= nil)
@@ -78,6 +85,7 @@ function PreViewMsgBox.showMsgBox(info,ok,cancel)
     view.ActionCancel = cancel
 end
 
+---------------------------------------
 function PreViewMsgBox.showMsgBoxEx(info,ok)
 	local view = PreViewMsgBox:new(nil)
     if(view.TextTips ~= nil)
@@ -88,6 +96,7 @@ function PreViewMsgBox.showMsgBoxEx(info,ok)
     view.ActionOk = ok
 end
 
+---------------------------------------
 function PreViewMsgBox._onClickBtnOK()	
 	local view = PreViewMsgBox:new(nil)
     if (view.ActionOk ~= nil)
@@ -98,6 +107,7 @@ function PreViewMsgBox._onClickBtnOK()
 	view.PreViewMgr.destroyView(view)    
 end
 
+---------------------------------------
 function PreViewMsgBox._onClickBtnCancel()	
 	local view = PreViewMsgBox:new(nil)	
     if (view.ActionCancel ~= nil)
@@ -107,9 +117,11 @@ function PreViewMsgBox._onClickBtnCancel()
 
     view.PreViewMgr.destroyView(view)
 end
-        
+
+---------------------------------------
 PreViewMsgBoxFactory = PreViewFactory:new()
 
+---------------------------------------
 function PreViewMsgBoxFactory:new(o,ui_package_name,ui_component_name,
 	ui_layer,is_single,fit_screen)
 	o = o or {}  
@@ -123,6 +135,7 @@ function PreViewMsgBoxFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
+---------------------------------------
 function PreViewMsgBoxFactory:createView()	
 	local view = PreViewMsgBox:new(nil)	
 	return view

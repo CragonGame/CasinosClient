@@ -1,7 +1,9 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 CasinoHelper = {}
 
+---------------------------------------
 function CasinoHelper:new(o,m_p,lan_mgr)
     o = o or {}
     setmetatable(o, self)
@@ -16,6 +18,7 @@ function CasinoHelper:new(o,m_p,lan_mgr)
     return self.Instance
 end
 
+---------------------------------------
 function CasinoHelper:TranslateFriendStateEx(friend_info)
     local friend_state = _eFriendStateClient.Offline
     local online_state = friend_info.PlayerInfoMore.OnlineState
@@ -81,6 +84,7 @@ function CasinoHelper:TranslateFriendStateEx(friend_info)
     return friend_state
 end
 
+---------------------------------------
 function CasinoHelper:TranslateFriendState(friend_state)
     local state = ""
     local lan_mgr = self.LanMgr

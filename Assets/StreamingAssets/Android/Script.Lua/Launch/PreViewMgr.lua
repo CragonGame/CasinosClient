@@ -1,20 +1,22 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 PreTableUiLayer = {
-	None=0,-- �ֶ�����
-	Background = 1,-- �����㣬������Ĳ�         
+	None = 0,
+	Background = 1,
     SceneActor = 51,
     ShootingText = 151,
-    PlayerOperateUi = 251,-- ��������
-    NomalUiMain = 351,-- ��������        
-    NomalUi = 451,-- �������      
-    MessgeBox = 551,-- MessageBox����� ֮�䲻����
-    Loading = 651,-- ���ؽ����
-    Waiting = 751,-- �ȴ������       
+    PlayerOperateUi = 251,
+    NomalUiMain = 351,
+    NomalUi = 451,
+    MessgeBox = 551,
+    Loading = 651,
+    Waiting = 751,
     QuitGame = 851,
     GM = 951,
 }
 
+---------------------------------------
 PreViewMgr = { 
 	STANDARD_WIDTH = 1066,
     STANDARD_HEIGHT = 640,
@@ -28,6 +30,7 @@ PreViewMgr = {
 	TableUpdateView = {},
 }
 
+---------------------------------------
 function PreViewMgr:new(o)
 	 o = o or {}  
     setmetatable(o,self)  
@@ -39,27 +42,26 @@ function PreViewMgr:new(o)
     return self.Instance
 end
 
-function PreViewMgr:onCreate()
+---------------------------------------
+function PreViewMgr:Init()
 	print("PreViewMgr:onCreate")
+
 	CS.FairyGUI.GRoot.inst:SetContentScaleFactor(PreViewMgr.STANDARD_WIDTH, PreViewMgr.STANDARD_HEIGHT,
-                CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
+		CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
     CS.FairyGUI.UIConfig.defaultFont = "Microsoft YaHei"	
-	-- PreViewMgr.EventSys = EventSys:new(nil)
-	CS.Casinos.CasinosContext.Instance.CasinosLua:doString("PreViewBase")
-	CS.Casinos.CasinosContext.Instance.CasinosLua:doString("PreViewFactory")
-	CS.Casinos.CasinosContext.Instance.CasinosLua:doString("PreViewLoading")
-	CS.Casinos.CasinosContext.Instance.CasinosLua:doString("PreViewMsgBox")
+
 	local view_loading_fac = PreViewLoadingFactory:new(nil,"PreLoading","PreLoading","Loading",true,CS.FairyGUI.FitScreen.FitSize)
 	PreViewMgr.regView("PreLoading",view_loading_fac)
 	local view_msgbox_fac = PreViewMsgBoxFactory:new(nil,"PreMsgBox","PreMsgBox","Waiting",true,CS.FairyGUI.FitScreen.FitSize)
 	PreViewMgr.regView("PreMsgBox",view_msgbox_fac)	
 end
 
-function PreViewMgr:onDestroy()
-	
+---------------------------------------
+function PreViewMgr:Release()
 end
 
-function PreViewMgr:onUpdate(tm)	
+---------------------------------------
+function PreViewMgr:Update(tm)
 	for k,v in pairs(PreViewMgr.TableViewSingle) do
 		if(v~=nil)
 		then
@@ -68,6 +70,7 @@ function PreViewMgr:onUpdate(tm)
 	end
 end
 
+---------------------------------------
 function PreViewMgr.regView(view_key,view_factory)
 	if(view_factory~=nil)
 	then
@@ -75,6 +78,7 @@ function PreViewMgr.regView(view_key,view_factory)
 	end	
 end
 
+---------------------------------------
 function PreViewMgr.createView(view_key)	
 	local view_factory = PreViewMgr.TableViewFactory[view_key]
 	if(view_factory==nil)
@@ -135,6 +139,7 @@ function PreViewMgr.createView(view_key)
 	return view
 end
 
+---------------------------------------
 function PreViewMgr.destroyView(view)
 	if(view~=nil)
 	then
@@ -157,11 +162,13 @@ function PreViewMgr.destroyView(view)
 	end
 end
 
+---------------------------------------
 function PreViewMgr.getView(view_key)
 	local view = PreViewMgr.TableViewSingle[view_key]
 	return view
 end
 
+---------------------------------------
 function PreViewMgr.destroyAllView()
 	 for k,v in pairs(PreViewMgr.TableViewSingle) do          
 		PreViewMgr.TableMaxDepth[v.UILayer] = v.InitDepth
@@ -178,6 +185,7 @@ function PreViewMgr.destroyAllView()
 	 end       
 end
 
+---------------------------------------
 function PreViewMgr:bindEvListener(ev_name,ev_listener)
 	if(PreViewMgr.EventSys ~= nil)
 	then
@@ -185,6 +193,7 @@ function PreViewMgr:bindEvListener(ev_name,ev_listener)
 	end
 end
 
+---------------------------------------
 function PreViewMgr:unbindEvListener(ev_listener)
 	if(PreViewMgr.EventSys ~= nil)
 	then
@@ -192,6 +201,7 @@ function PreViewMgr:unbindEvListener(ev_listener)
 	end
 end
 
+---------------------------------------
 function PreViewMgr:getEv(ev_name)
 	local ev = nil
 	if(PreViewMgr.EventSys ~= nil)
@@ -201,6 +211,7 @@ function PreViewMgr:getEv(ev_name)
 	return ev
 end
 
+---------------------------------------
 function PreViewMgr:sendEv(ev)
 	if(PreViewMgr.EventSys ~= nil)
 	then
@@ -208,6 +219,7 @@ function PreViewMgr:sendEv(ev)
 	end
 end
 
+---------------------------------------
 function PreViewMgr:GetTableCount(t)
 	local count = 0
     for k, v in pairs(t) do
@@ -217,6 +229,7 @@ function PreViewMgr:GetTableCount(t)
     return count
 end
 
+---------------------------------------
 function PreViewMgr:GetAndRemoveTableFirstEle(t)
 	local key = nil	
 	local value = nil

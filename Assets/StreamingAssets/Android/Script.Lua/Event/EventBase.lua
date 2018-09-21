@@ -1,9 +1,11 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 EventBase = {
 	EventName = nil
 }
 
+---------------------------------------
 function EventBase:new(o)
 	 o = o or {}  
     setmetatable(o,self)  
@@ -11,6 +13,6 @@ function EventBase:new(o)
     return o
 end
 
+---------------------------------------
 function EventBase:reset()
-	
 end

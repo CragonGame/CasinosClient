@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 赛况详情
 
--- ------------------------------------
+---------------------------------------
 ViewMatchInfo = ViewBase:new()
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -20,7 +20,7 @@ function ViewMatchInfo:new(o)
     return o
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:onCreate()
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerActor = controller_mgr:GetController("Actor")
@@ -144,7 +144,7 @@ function ViewMatchInfo:onCreate()
     self:selectTab(0)
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:Init(match_guid, isIndesk, isSelfJoin)
     local ev = self.ViewMgr:getEv("EvUiRequestMatchDetailedInfo")
     if (ev == nil)
@@ -169,7 +169,7 @@ function ViewMatchInfo:Init(match_guid, isIndesk, isSelfJoin)
     self.MatchGuid = match_guid
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:onHandleEv(ev)
     if (ev.EventName == "EvEntitySetMatchDetailedInfo")
     then
@@ -191,7 +191,7 @@ function ViewMatchInfo:onHandleEv(ev)
     end
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:onUpdate(tm)
     if (self.GControllerMatchInfo.selectedIndex == 1 and self.GControllerMatchState.selectedIndex == 0)
     then
@@ -234,12 +234,12 @@ function ViewMatchInfo:onUpdate(tm)
     end
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:onDestroy()
     self.ViewMgr:unbindEvListener(self)
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
     local match_info = detailedMatchInfo.Info
     self.TextUniqId.text = string.format("Id:%s",match_info.UniqId)
@@ -427,7 +427,7 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
     end
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:updateMatchState(left_seconds, begin_time)
     if (left_seconds >= 3600)
     then
@@ -454,13 +454,13 @@ function ViewMatchInfo:updateMatchState(left_seconds, begin_time)
     end
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:selectTab(index)
     self.GControllerMatchInfo:SetSelectedIndex(index)
     self.GControllerTab:SetSelectedIndex(index)
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:onClickShare()
     local content = string.format(self.ViewMgr.LanMgr:getLanValue("MatchInviteTip"),self.ControllerActor.PropNickName:get(),
             self:formatTime(self.MatchInfo.DtMatchBegin),self.MatchInfo.Name)
@@ -470,7 +470,7 @@ function ViewMatchInfo:onClickShare()
             Native.Instance.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Webpage)
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:onClickBtnApply()
     local btnApplyState = self:getBtnApplyState()
     if (btnApplyState == 2) -- 进入
@@ -525,17 +525,17 @@ function ViewMatchInfo:onClickBtnApply()
     end
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:onClickComRewardExplain()
     self.ViewMgr:createView("SnowBallReward")
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:close()
     self.ViewMgr:destroyView(self)
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:getBtnApplyState()
     if (self.IsSelfJoin)
     then
@@ -559,7 +559,7 @@ function ViewMatchInfo:getBtnApplyState()
     end
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfo:formatTime(dtTime)
     local nowtm = CS.System.DateTime.Now
     local day = dtTime.Day - nowtm.Day
@@ -584,10 +584,10 @@ function ViewMatchInfo:formatTime(dtTime)
     return text_day .. text_time
 end
 
--- ------------------------------------
+---------------------------------------
 ViewMatchInfoFactory = ViewFactory:new()
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfoFactory:new(o, ui_package_name, ui_component_name,
                                   ui_layer, is_single, fit_screen)
     o = o or {}
@@ -601,7 +601,7 @@ function ViewMatchInfoFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
--- ------------------------------------
+---------------------------------------
 function ViewMatchInfoFactory:createView()
     local view = ViewMatchInfo:new(nil)
     return view

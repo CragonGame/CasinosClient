@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosContext);
-			Utils.BeginObjectRegister(type, L, translator, 0, 32, 69, 55);
+			Utils.BeginObjectRegister(type, L, translator, 0, 31, 69, 55);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -45,7 +45,6 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetMainCUrl", _m_GetMainCUrl);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ClearSB", _m_ClearSB);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AppendStrWithSB", _m_AppendStrWithSB);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RegLuaFilePath", _m_RegLuaFilePath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LuaAsyncLoadLocalUiBundle", _m_LuaAsyncLoadLocalUiBundle);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Disconnect", _m_Disconnect);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PlayBackgroundSound", _m_PlayBackgroundSound);
@@ -851,35 +850,6 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_RegLuaFilePath(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    string _luafile_relativepath = LuaAPI.lua_tostring(L, 2);
-                    string[] _luafile_name = translator.GetParams<string>(L, 3);
-                    
-                    gen_to_be_invoked.RegLuaFilePath( _luafile_relativepath, _luafile_name );
-                    
-                    
-                    
-                    return 0;
                 }
                 
             } catch(System.Exception gen_e) {

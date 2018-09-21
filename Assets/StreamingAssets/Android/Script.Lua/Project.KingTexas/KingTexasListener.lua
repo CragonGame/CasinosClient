@@ -1,3 +1,6 @@
+-- Copyright(c) Cragon. All rights reserved.
+
+---------------------------------------
 KingTexasListener = {
     Instance = nil,
     MainC = nil,
@@ -9,6 +12,7 @@ KingTexasListener = {
     TbDataMgrBase = nil,
 }
 
+---------------------------------------
 function KingTexasListener:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -20,6 +24,7 @@ function KingTexasListener:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function KingTexasListener:onCreate()
     print("KingTexasListener:onCreate")
     self.ResourcesRowPathRoot = "Resources.KingTexasRaw/"
@@ -30,7 +35,7 @@ function KingTexasListener:onCreate()
     self:_regLuaFilePath()
 
     self.MainC = MainC:new(nil)
-    self.Lanch = ControllerLaunch:new(nil)
+    self.Lanch = Launch:new(nil)
     if self.MainC:isReload() then
         self.Lanch.CanCheckLoadDataDone = true
         self.Lanch.InitializeDone = false
@@ -99,10 +104,9 @@ function KingTexasListener:onCreate()
     self.ViewMgr.Listener = self
 
     self:_addUiPackage()
-
-
 end
 
+---------------------------------------
 function KingTexasListener:onDestroy()
     if (self.ViewMgr ~= nil)
     then
@@ -115,6 +119,7 @@ function KingTexasListener:onDestroy()
     end
 end
 
+---------------------------------------
 function KingTexasListener:onUpdate(tm)
     if (self.ViewMgr ~= nil)
     then
@@ -155,6 +160,7 @@ function KingTexasListener:onUpdate(tm)
     end
 end
 
+---------------------------------------
 function KingTexasListener.OnApplicationPause(is_pause)
     print("OnApplicationPause   "..tostring(is_pause))
     if (is_pause == false)
@@ -178,10 +184,11 @@ function KingTexasListener.OnApplicationPause(is_pause)
     end
 end
 
+---------------------------------------
 function KingTexasListener:CreateController(table_data)
-
 end
 
+---------------------------------------
 function KingTexasListener:_regLuaFilePath()
     local casinos_context = CS.Casinos.CasinosContext.Instance
     casinos_context:regLuaFilePath("MessagePack/", "MessagePack")
@@ -252,6 +259,7 @@ function KingTexasListener:_regLuaFilePath()
     ,"ItemMatchInfoReward","ItemMatchInfoRank")
 end
 
+---------------------------------------
 function KingTexasListener:_regView()
     MainC:doString("ViewLoading")
     local view_loading_fac = ViewLoadingFactory:new(nil, "Loading", "Loading", "Loading", true, CS.FairyGUI.FitScreen.FitSize)
@@ -627,6 +635,7 @@ function KingTexasListener:_regView()
     MainC:doString("ItemMatchInfoRank")
 end
 
+---------------------------------------
 function KingTexasListener:_regController()
     MainC:doString("ControllerLogin")
     local con_login_fac = ControllerLoginFactory:new(nil)
@@ -697,6 +706,7 @@ function KingTexasListener:_regController()
     MainC:doString("TimingReward")
 end
 
+---------------------------------------
 function KingTexasListener:_addUiPackage()
     self:addUiPackage("LotteryTicket")
     self:addUiPackage("Chat")
@@ -786,31 +796,9 @@ function KingTexasListener:_addUiPackage()
     self:addUiPackage("EnterMatchNotify")
     self:addUiPackage("SnowBallReward")
     self:addUiPackage("EditAddress")
-
-    --[[s = self.ViewMgr:getUiPackagePath("DesktopGFlower")
-    casinos_context.Listener:AddUiPackage(s)
-    s = self.ViewMgr:getUiPackagePath("DesktopMenuGFlower")
-    casinos_context.Listener:AddUiPackage(s)
-    s = self.ViewMgr:getUiPackagePath("DesktopPlayerInfoGFlower")
-    casinos_context.Listener:AddUiPackage(s)
-    s = self.ViewMgr:getUiPackagePath("DesktopPlayerOperateGFlower")
-    casinos_context.Listener:AddUiPackage(s)
-    s = self.ViewMgr:getUiPackagePath("LobbyGFlower")]]
-
-    --[[s = self.ViewMgr:getUiPackagePath("ForestParty")
-    casinos_context.Listener:AddUiPackage(s)
-    s = self.ViewMgr:getUiPackagePath("ForestPartyMenu")
-    casinos_context.Listener:AddUiPackage(s)
-    s = self.ViewMgr:getUiPackagePath("ForestPartyRule")
-    casinos_context.Listener:AddUiPackage(s)
-    s = self.ViewMgr:getUiPackagePath("ForestPartyInfo")
-    casinos_context.Listener:AddUiPackage(s)
-    s = self.ViewMgr:getUiPackagePath("ForestPartyBet")
-    casinos_context.Listener:AddUiPackage(s)
-    s = self.ViewMgr:getUiPackagePath("ForestPartyResult")
-    casinos_context.Listener:AddUiPackage(s)]]--
 end
 
+---------------------------------------
 function KingTexasListener:RegTbData()
     MainC:doString("TbDataHintsInfoTexas")
     self.TbDataMgr:RegTbDataFac("HintsInfoTexas", TbDataFactoryHintsInfoTexas:new(nil))
@@ -886,67 +874,9 @@ function KingTexasListener:RegTbData()
     self.TbDataMgr:RegTbDataFac("TexasSnowBallRewardPlayerNum", TbDataFactoryTexasSnowBallRewardPlayerNum:new(nil))
     MainC:doString("TbDataTexasSnowBallRewardInfo")
     self.TbDataMgr:RegTbDataFac("TexasSnowBallRewardInfo", TbDataFactoryTexasSnowBallRewardInfo:new(nil))
-
-
-
-
-
-    --[[MainC:doString("TbDataConfigGFlowerDesktop")
-self.TbDataMgr:RegTbDataFac("ConfigGFlowerDesktop",TbDataFactoryConfigGFlowerDesktop:new(nil))
-MainC:doString("TbDataDesktopGFlowerBetOperate")
-self.TbDataMgr:RegTbDataFac("DesktopGFlowerBetOperate",TbDataFactoryDesktopGFlowerBetOperate:new(nil))
-MainC:doString("TbDataDesktopGFlowerCreateInfo")
-self.TbDataMgr:RegTbDataFac("DesktopGFlowerCreateInfo",TbDataFactoryDesktopGFlowerCreateInfo:new(nil))
-MainC:doString("TbDataDesktopInfoGFlower")
-self.TbDataMgr:RegTbDataFac("DesktopInfoGFlower",TbDataFactoryDesktopInfoGFlower:new(nil))
-MainC:doString("TbDataCfigGFlowerDesktopH")
-self.TbDataMgr:RegTbDataFac("CfigGFlowerDesktopH",TbDataFactoryCfigGFlowerDesktopH:new(nil))
-MainC:doString("TbDataCfigGFlowerDesktopHGoldPercent")
-self.TbDataMgr:RegTbDataFac("CfigGFlowerDesktopHGoldPercent",TbDataFactoryCfigGFlowerDesktopHGoldPercent:new(nil))
-MainC:doString("TbDataCfigGFlowerDesktopHSysBank")
-self.TbDataMgr:RegTbDataFac("CfigGFlowerDesktopHSysBank",TbDataFactoryCfigGFlowerDesktopHSysBank:new(nil))
-MainC:doString("TbDataDesktopHBetOperateGFlower")
-self.TbDataMgr:RegTbDataFac("DesktopHBetOperateGFlower",TbDataFactoryDesktopHBetOperateGFlower:new(nil))
-MainC:doString("TbDataDesktopHBetPotGFlower")
-self.TbDataMgr:RegTbDataFac("DesktopHBetPotGFlower",TbDataFactoryDesktopHBetPotGFlower:new(nil))
-MainC:doString("TbDataDesktopHInfoGFlower")
-self.TbDataMgr:RegTbDataFac("DesktopHInfoGFlower",TbDataFactoryDesktopHInfoGFlower:new(nil))
-MainC:doString("TbDataCfigZhongFBDesktopH")
-self.TbDataMgr:RegTbDataFac("CfigZhongFBDesktopH",TbDataFactoryCfigZhongFBDesktopH:new(nil))
-MainC:doString("TbDataCfigZhongFBDesktopHGoldPercent")
-self.TbDataMgr:RegTbDataFac("CfigZhongFBDesktopHGoldPercent",TbDataFactoryCfigZhongFBDesktopHGoldPercent:new(nil))
-MainC:doString("TbDataCfigZhongFBDesktopHSysBank")
-self.TbDataMgr:RegTbDataFac("CfigZhongFBDesktopHSysBank",TbDataFactoryCfigZhongFBDesktopHSysBank:new(nil))
-MainC:doString("TbDataDesktopHBetOperateZhongFB")
-self.TbDataMgr:RegTbDataFac("DesktopHBetOperateZhongFB",TbDataFactoryDesktopHBetOperateZhongFB:new(nil))
-MainC:doString("TbDataDesktopHBetPotZhongFB")
-self.TbDataMgr:RegTbDataFac("DesktopHBetPotZhongFB",TbDataFactoryDesktopHBetPotZhongFB:new(nil))
-MainC:doString("TbDataDesktopHInfoZhongFB")
-self.TbDataMgr:RegTbDataFac("DesktopHInfoZhongFB",TbDataFactoryDesktopHInfoZhongFB:new(nil))
-MainC:doString("TbDataCfigNiuNiuDesktopH")
-self.TbDataMgr:RegTbDataFac("CfigNiuNiuDesktopH",TbDataFactoryCfigNiuNiuDesktopH:new(nil))
-MainC:doString("TbDataCfigNiuNiuDesktopHGoldPercent")
-self.TbDataMgr:RegTbDataFac("CfigNiuNiuDesktopHGoldPercent",TbDataFactoryCfigNiuNiuDesktopHGoldPercent:new(nil))
-MainC:doString("TbDataCfigNiuNiuDesktopHSysBank")
-self.TbDataMgr:RegTbDataFac("CfigNiuNiuDesktopHSysBank",TbDataFactoryCfigNiuNiuDesktopHSysBank:new(nil))
-MainC:doString("TbDataDesktopHBetOperateNiuNiu")
-self.TbDataMgr:RegTbDataFac("DesktopHBetOperateNiuNiu",TbDataFactoryDesktopHBetOperateNiuNiu:new(nil))
-MainC:doString("TbDataDesktopHBetPotNiuNiu")
-self.TbDataMgr:RegTbDataFac("DesktopHBetPotNiuNiu",TbDataFactoryDesktopHBetPotNiuNiu:new(nil))
-MainC:doString("TbDataDesktopHInfoNiuNiu")
-self.TbDataMgr:RegTbDataFac("DesktopHInfoNiuNiu",TbDataFactoryDesktopHInfoNiuNiu:new(nil))
-MainC:doString("TbDataForestPartyAnimalList")
-self.TbDataMgr:RegTbDataFac("ForestPartyAnimalList",TbDataFactoryForestPartyAnimalList:new(nil))
-MainC:doString("TbDataForestPartyBetOperate")
-self.TbDataMgr:RegTbDataFac("ForestPartyBetOperate",TbDataFactoryForestPartyBetOperate:new(nil))
-MainC:doString("TbDataForestPartyBetPotMultiple")
-self.TbDataMgr:RegTbDataFac("ForestPartyBetPotMultiple",TbDataFactoryForestPartyBetPotMultiple:new(nil))
-MainC:doString("TbDataForestPartyDesktop")
-self.TbDataMgr:RegTbDataFac("ForestPartyDesktop",TbDataFactoryForestPartyDesktop:new(nil))
-MainC:doString("TbDataForestPartyLottery")
-self.TbDataMgr:RegTbDataFac("ForestPartyLottery",TbDataFactoryForestPartyLottery:new(nil))]]--
 end
 
+---------------------------------------
 function KingTexasListener:LoadDataDone()
     MainC:doString("TbDataHelper")
     TbDataHelper:new(nil, self.TbDataMgr)
@@ -985,41 +915,9 @@ function KingTexasListener:LoadDataDone()
     MainC:doString("PicCapture")
     self.PicCapture = PicCapture:new(nil,self.ViewMgr,self)
     self.LoadTbDataDone = true
-    --local mgr = ControllerMgr:new(nil)
-    --self.TbDataMgr:ParseTableAllData("HintsInfoTexas")
-    --[[data_mgr.ParseTableAllData<TbDataLanEn>(_eTableName.LanEn.ToString());
-    data_mgr.ParseTableAllData<TbDataLanZh>(_eTableName.LanZh.ToString());
-    data_mgr.ParseTableAllData<TbDataLans>(_eTableName.Lans.ToString());
-    data_mgr.ParseTableAllData<TbDataLotteryTicketBetOperate>(_eTableName.LotteryTicketBetOperate.ToString());
-    data_mgr.ParseTableAllData<TbDataLotteryTicketGoldPercent>(_eTableName.LotteryTicketGoldPercent.ToString());
-    data_mgr.ParseTableAllData<TbDataActorLevel>(_eTableName.ActorLevel.ToString());
-    data_mgr.ParseTableAllData<TbDataDesktopHBetReward>(_eTableName.DesktopHBetReward.ToString());
-    data_mgr.ParseTableAllData<TbDataDesktopInfoTexas>(_eTableName.DesktopInfoTexas.ToString());
-    data_mgr.ParseTableAllData<TbDataDesktopHInfoTexas>(_eTableName.DesktopHInfoTexas.ToString());
-    data_mgr.ParseTableAllData<TbDataDesktopHBetPotTexas>(_eTableName.DesktopHBetPotTexas.ToString());
-    data_mgr.ParseTableAllData<TbDataDesktopHBetOperateTexas>(_eTableName.DesktopHBetOperateTexas.ToString());
-    data_mgr.ParseTableAllData<TbDataCfigTexasDesktopHGoldPercent>(_eTableName.CfigTexasDesktopHGoldPercent.ToString());
-    data_mgr.ParseTableAllData<TbDataCfigTexasDesktopH>(_eTableName.CfigTexasDesktopH.ToString());
-    data_mgr.ParseTableAllData<TbDataCfigTexasDesktopHSysBank>(_eTableName.CfigTexasDesktopHSysBank.ToString());
-    data_mgr.ParseTableAllData<TbDataExpression>(_eTableName.Expression.ToString());
-    data_mgr.ParseTableAllData<TbDataCommon>(_eTableName.Common.ToString());
-    data_mgr.ParseTableAllData<TbDataDailyReward>(_eTableName.DailyReward.ToString());
-    data_mgr.ParseTableAllData<TbDataItem>(_eTableName.Item.ToString());
-    data_mgr.ParseTableAllData<TbDataItemType>(_eTableName.ItemType.ToString());
-    data_mgr.ParseTableAllData<TbDataPresetMsg>(_eTableName.PresetMsg.ToString());
-    data_mgr.ParseTableAllData<TbDataMustBetDesktopInfoTexas>(_eTableName.MustBetDesktopInfoTexas.ToString());
-    data_mgr.ParseTableAllData<TbDataUnitBilling>(_eTableName.UnitBilling.ToString());
-    data_mgr.ParseTableAllData<TbDataUnitGiftNormal>(_eTableName.UnitGiftNormal.ToString());
-    data_mgr.ParseTableAllData<TbDataUnitGiftTmp>(_eTableName.UnitGiftTmp.ToString());
-    data_mgr.ParseTableAllData<TbDataVIPLevel>(_eTableName.VIPLevel.ToString());
-    data_mgr.ParseTableAllData<TbDataUnitMagicExpression>(_eTableName.UnitMagicExpression.ToString());
-    data_mgr.ParseTableAllData<TbDataForestPartyDesktop>(_eTableName.ForestPartyDesktop.ToString());
-    data_mgr.ParseTableAllData<TbDataForestPartyBetOperate>(_eTableName.ForestPartyBetOperate.ToString());
-    data_mgr.ParseTableAllData<TbDataForestPartyBetPotMultiple>(_eTableName.ForestPartyBetPotMultiple.ToString());
-    data_mgr.ParseTableAllData<TbDataDesktopGFlowerBetOperate>(_eTableName.DesktopGFlowerBetOperate.ToString());
-    data_mgr.ParseTableAllData<TbDataDesktopInfoGFlower>(_eTableName.DesktopInfoGFlower.ToString());--]]
 end
 
+---------------------------------------
 function KingTexasListener:addUiPackage(name)
     local p = CS.FairyGUI.UIPackage.GetByName(name)
     if p ~= nil then

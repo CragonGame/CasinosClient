@@ -1,7 +1,9 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 GoldController = {}
 
+---------------------------------------
 function GoldController:new(o,setgold)
     o = o or {}
     setmetatable(o,self)
@@ -17,6 +19,7 @@ function GoldController:new(o,setgold)
     return o
 end
 
+---------------------------------------
 function GoldController:goldChange(change_reason, delta_gold, user_data)
     local can_changegold = false
 
@@ -50,6 +53,7 @@ function GoldController:goldChange(change_reason, delta_gold, user_data)
     end
 end
 
+---------------------------------------
 function GoldController:addDeltaGold(change_reason)
     local delta_gold = self.MapDeltaGold[change_reason]
     if(delta_gold ~= nil)
@@ -60,6 +64,7 @@ function GoldController:addDeltaGold(change_reason)
     end
 end
 
+---------------------------------------
 function GoldController:refreshGold(gold)
     self.Gold = gold
     self.SetGold(self.Gold)

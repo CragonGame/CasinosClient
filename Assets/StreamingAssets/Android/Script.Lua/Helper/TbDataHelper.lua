@@ -1,7 +1,9 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 TbDataHelper = {}
 
+---------------------------------------
 function TbDataHelper:new(o, tb_datamgr)
     o = o or {}
     setmetatable(o, self)
@@ -103,10 +105,12 @@ function TbDataHelper:new(o, tb_datamgr)
     return self.Instance
 end
 
+---------------------------------------
 function TbDataHelper:GetCommonValue(common_key)
     return self.MapTbDataCommon[common_key]
 end
 
+---------------------------------------
 function TbDataHelper:GetDesktopFastBet(key)
     -- key DesktopId  DesktopType  IsPreflop
     local t = self.MapTbDataDesktopFastBet[key]
@@ -120,10 +124,12 @@ function TbDataHelper:GetDesktopFastBet(key)
     return t_v
 end
 
+---------------------------------------
 function TbDataHelper:GetAllTexasRaiseBlindsByType(blind_type)
     return self.MapTbDataTexasRaiseBlinds[blind_type]
 end
 
+---------------------------------------
 function TbDataHelper:GetTexasRaiseBlindByTypeAndId(blind_type,id)
     local t_b = self.MapTbDataTexasRaiseBlinds[blind_type]
     local tb_blinds = nil
@@ -134,6 +140,7 @@ function TbDataHelper:GetTexasRaiseBlindByTypeAndId(blind_type,id)
     return tb_blinds
 end
 
+---------------------------------------
 function TbDataHelper:GetTexasSnowBallRewradInfoByTableId(table_id)
 	return self.MapTbDataTexasSnowBallRewardInfo[table_id]
 end

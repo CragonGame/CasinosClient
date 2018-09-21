@@ -1,7 +1,9 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 UiChipShowHelper = {}
 
+---------------------------------------
 function UiChipShowHelper:new(o)
     o = o or {}
     setmetatable(o,self)
@@ -18,6 +20,7 @@ function UiChipShowHelper:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function UiChipShowHelper:getGoldShowStr(gold,lan_base,show_short_way1,precision_length1)
     local show_str = ""
     local show_short_way = true
@@ -104,6 +107,7 @@ function UiChipShowHelper:getGoldShowStr(gold,lan_base,show_short_way1,precision
     return show_str
 end
 
+---------------------------------------
 function UiChipShowHelper:getGoldShowStr2(gold,lan_base,show_short_way1,precision_length1)
     local show_str = ""
 
@@ -179,6 +183,7 @@ function UiChipShowHelper:getGoldShowStr2(gold,lan_base,show_short_way1,precisio
     return show_str
 end
 
+---------------------------------------
 function UiChipShowHelper:getGoldShowStr3(gold)
     if(gold<10000)
     then
@@ -192,9 +197,9 @@ function UiChipShowHelper:getGoldShowStr3(gold)
         end
         return temp .. "万"
     end
-
 end
 
+---------------------------------------
 function UiChipShowHelper:getValideGold(gold)
     local valide_gold = math.ceil(gold)
     self.StrFormatTemp = {}

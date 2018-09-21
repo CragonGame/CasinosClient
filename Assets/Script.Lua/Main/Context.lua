@@ -1,23 +1,22 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-LuaContext = {}
+Context = {}
 
 ---------------------------------------
-function LuaContext:new(o)
+function Context:new(o)
     o = o or {}
     setmetatable(o,self)
     self.__index = self
-	print('LuaContext:new(o)')
     return o
 end
 
 ---------------------------------------
-function LuaContext:Init()
-    print('LuaContext:Init()')
+function Context:Init()
+    print('Context:Init()')
 end
 
 ---------------------------------------
 function LuaContext:Release()
-    print('LuaContext:Release()')
+    print('Context:Release()')
 end

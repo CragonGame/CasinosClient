@@ -1,7 +1,9 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 TexasHelper = {}
 
+---------------------------------------
 function TexasHelper:getTbDataDesktopInfoSuitable(data_mgr,chip_acc)
 	local map_tbdatadesktopinfo = data_mgr:GetMapData("DesktopInfoTexas")
     local tbdata_desktopinfo = nil
@@ -27,6 +29,7 @@ function TexasHelper:getTbDataDesktopInfoSuitable(data_mgr,chip_acc)
     return tbdata_desktopinfo
 end
 
+---------------------------------------
 function TexasHelper:getTbDataMustBetDesktopInfoSuitable(data_mgr,chip_acc)
 	local map_tbdatadesktopinfo = data_mgr:GetMapData("MustBetDesktopInfoTexas");
 
@@ -57,6 +60,7 @@ function TexasHelper:getTbDataMustBetDesktopInfoSuitable(data_mgr,chip_acc)
     return tbdata_desktopinfo
 end
 
+---------------------------------------
 function TexasHelper:enoughChip4DesktopBetMin(data_mgr,chip,tbdata_desktopinfo_id)
 	local chip_enough = false
 	local tbdata_desktopinfo = data_mgr:GetData("DesktopInfoTexas",tbdata_desktopinfo_id)
@@ -68,6 +72,7 @@ function TexasHelper:enoughChip4DesktopBetMin(data_mgr,chip,tbdata_desktopinfo_i
     return chip_enough
 end
 
+---------------------------------------
 function TexasHelper:calcAutoPushStack(data_mgr,chip_acc,tbdata_desktopinfo_id)
 	local push_stack = 0
 	local tbdata_desktopinfo = data_mgr:GetData("DesktopInfoTexas",tbdata_desktopinfo_id)
