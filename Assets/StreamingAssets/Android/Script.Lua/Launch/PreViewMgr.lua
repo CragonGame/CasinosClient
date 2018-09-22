@@ -44,7 +44,7 @@ end
 
 ---------------------------------------
 function PreViewMgr:Init()
-	print("PreViewMgr:onCreate")
+	print("PreViewMgr:Init")
 
 	CS.FairyGUI.GRoot.inst:SetContentScaleFactor(PreViewMgr.STANDARD_WIDTH, PreViewMgr.STANDARD_HEIGHT,
 		CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)

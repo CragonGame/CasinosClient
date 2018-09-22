@@ -6,10 +6,11 @@ namespace Casinos
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
+    using System.Threading.Tasks;
     using UnityEngine;
     using XLua;
     using FairyGUI;
-    using System.Threading.Tasks;
+    using GameCloud.Unity.Common;
 
     public enum _eProjectItemDisplayNameKey
     {
@@ -55,6 +56,7 @@ namespace Casinos
         public static CasinosContext Instance { get; private set; }
         public string UCenterDomain { get; private set; }
         public string UCenterAppId { get; private set; }
+        public TimerShaft TimerShaft { get; private set; }
         public MemoryStream MemoryStream { get; private set; }
         public StringBuilder SB { get; private set; }
         public AsyncAssetLoaderMgr AsyncAssetLoaderMgr { get; private set; }
@@ -221,6 +223,7 @@ namespace Casinos
             NativeMgr = new NativeMgr();
             PathMgr = new PathMgr(editor_runsorce, use_persistent);// 初始化PathMgr
             FTMgr = new FTMgr();
+            TimerShaft = new TimerShaft();
 
             Listener = listener;
             MemoryStream = new MemoryStream();
@@ -310,6 +313,11 @@ namespace Casinos
             if (CasinosLua != null)
             {
                 CasinosLua.Update(elapsed_tm);
+            }
+
+            if (TimerShaft != null)
+            {
+                TimerShaft.ProcessTimer((ulong)(Time.deltaTime * 1000));
             }
 
             //if (CopyStreamingAssetsToPersistentDataPath != null)

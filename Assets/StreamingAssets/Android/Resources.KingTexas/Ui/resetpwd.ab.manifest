@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 4489803
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d2e1381cb32a7841b0646c3ce2366fc3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ResetPwd/ResetPwd@atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ResetPwd/ResetPwd.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ResetPwd/ResetPwd@sprites.bytes
+Dependencies: []

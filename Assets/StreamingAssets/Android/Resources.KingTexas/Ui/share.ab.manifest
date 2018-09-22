@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 3058021794
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cbcc30bfd6025b8a9300cc8a2933e9bc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Share/Share@atlas1.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Share/Share@atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Share/Share@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Share/Share.bytes
+Dependencies: []

@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 1123211461
+CRC: 92578894
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: winnerstar.ab
+      Name: selfwin.ab
       Dependencies: {}

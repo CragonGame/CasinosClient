@@ -24,6 +24,7 @@ end
 
 ---------------------------------------
 function Launch:Init()
+    Launch:new(nil)
     print("Launch:Init()")
 
     require 'PreViewMgr'
@@ -35,9 +36,8 @@ function Launch:Init()
     --casinos_context.CasinosLua:DoString("PreViewMgr")
     --casinos_context:setPreViewMgr()
 
-    local launch = Launch:new(nil)
-    launch.PreViewMgr = PreViewMgr:new(nil)
-    launch.PreViewMgr:Init()
+    self.PreViewMgr = PreViewMgr:new(nil)
+    self.PreViewMgr:Init()
 
     local casinos_context = CS.Casinos.CasinosContext.Instance
     --local launch_persistentdata_path = casinos_context.PathMgr:combinePersistentDataPath(casinos_context.ResourcesRowPathRoot .. "Launch/")
@@ -47,6 +47,11 @@ function Launch:Init()
     local ui_path_loading = launch_persistentdata_path .. ui_name_loading .. "/" .. string.lower(ui_name_loading) .. ".ab"
     local ui_name_msgbox = "PreMsgBox"
     local ui_path_msgbox = launch_persistentdata_path .. ui_name_msgbox .. "/" .. string.lower(ui_name_msgbox) .. ".ab"
+
+    print(launch_persistentdata_path)
+    print(ui_path_loading)
+    print(ui_path_msgbox)
+
     casinos_context:LuaAsyncLoadLocalUiBundle(
             function()
                 launch:_loadABDone()

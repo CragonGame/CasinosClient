@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,16 +10,21 @@ public class EditorViewDataPublish : EditorWindow
 {
     //-------------------------------------------------------------------------
     HashSet<string> DoNotPackFileExtention { get; set; } = new HashSet<string> { ".meta", ".DS_Store" };
-    HashSet<string> DoNotCopyFileName { get; set; } = new HashSet<string> { "DataFileList.txt" };
     HashSet<string> DoNotCopyDir { get; set; } = new HashSet<string> { ".idea" };
-    string AssetBundlePkgSingleFoldName { get; set; } = "BuildAssetBundleFromSingle";
+    string AssetBundleSingleFoldName { get; set; } = "BuildAssetBundleFromSingle";
     string AssetBundlePkgFoldFoldName { get; set; } = "BuildAssetBundleFromFold";
+    string AssetBundleLaunchFoldName { get; set; } = "Resources.KingTexasLaunch";
     MD5 MD5 { get; set; } = new MD5CryptoServiceProvider();
     StringBuilder Sb { get; set; } = new StringBuilder();
 
     //-------------------------------------------------------------------------
     void OnGUI()
     {
+        if (EditorContext.Instance == null)
+        {
+            new EditorContext();
+        }
+
         var settings = EditorContext.Instance.Config.CfgProjectSettings;
 
         GUILayout.Space(10);
@@ -53,17 +59,12 @@ public class EditorViewDataPublish : EditorWindow
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.Android, false);
         }
         EditorGUILayout.EndHorizontal();
-        if (GUILayout.Button("ClearRawDataAndLua", GUILayout.Width(200)))
+        if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
         {
             _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.Android);
-        }
-        if (GUILayout.Button("CopyRawData", GUILayout.Width(200)))
-        {
             _copyRawData(Casinos._eEditorRunSourcePlatform.Android);
-        }
-        if (GUILayout.Button("CopyLua", GUILayout.Width(200)))
-        {
             _copyLua(Casinos._eEditorRunSourcePlatform.Android);
+            ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
         }
         if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
         {
@@ -94,17 +95,12 @@ public class EditorViewDataPublish : EditorWindow
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.IOS, false);
         }
         EditorGUILayout.EndHorizontal();
-        if (GUILayout.Button("ClearRawDataAndLua", GUILayout.Width(200)))
+        if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
         {
-            _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.Android);
-        }
-        if (GUILayout.Button("CopyRawData", GUILayout.Width(200)))
-        {
+            _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.IOS);
             _copyRawData(Casinos._eEditorRunSourcePlatform.IOS);
-        }
-        if (GUILayout.Button("CopyLua", GUILayout.Width(200)))
-        {
             _copyLua(Casinos._eEditorRunSourcePlatform.IOS);
+            ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
         }
         if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
         {
@@ -113,10 +109,6 @@ public class EditorViewDataPublish : EditorWindow
 
         GUILayout.Space(20);
         EditorGUILayout.BeginHorizontal();
-        //if (GUILayout.Button("发布", GUILayout.Width(200)))
-        //{
-        //    //SaveBug();
-        //}
         if (GUILayout.Button("关闭", GUILayout.Width(200)))
         {
             Close();
@@ -195,25 +187,34 @@ public class EditorViewDataPublish : EditorWindow
         }
         EditorUserBuildSettings.SwitchActiveBuildTarget(build_target_group, build_target);
 
-        Object[] select_objs = Selection.GetFiltered(typeof(Object), SelectionMode.DeepAssets);
+        UnityEngine.Object[] select_objs = Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.DeepAssets);
 
-        List<string> list_single_pkg = new List<string>();
+        Dictionary<string, List<string>> map_single_pkg = new Dictionary<string, List<string>>();
         Dictionary<string, List<string>> map_fold_pkg = new Dictionary<string, List<string>>();
+        Dictionary<string, List<string>> map_fold_launch = new Dictionary<string, List<string>>();
 
         foreach (var i in select_objs)
         {
             string path_asset = AssetDatabase.GetAssetPath(i);
-            bool is_directory = Directory.Exists(path_asset);
-            if (is_directory) continue;
 
             string extension = Path.GetExtension(path_asset);
-            if (DoNotPackFileExtention.Contains(extension)) continue;
+            if (DoNotPackFileExtention.Contains(extension) || string.IsNullOrEmpty(extension)) continue;
 
             string file_name = Path.GetFileName(path_asset);
 
-            if (path_asset.Contains(AssetBundlePkgSingleFoldName))
+            if (path_asset.Contains(AssetBundleSingleFoldName))
             {
-                list_single_pkg.Add(path_asset);
+                string key = Directory.GetParent(path_asset).Name;
+
+                List<string> list_directory = null;
+                map_single_pkg.TryGetValue(key, out list_directory);
+                if (list_directory == null)
+                {
+                    list_directory = new List<string>();
+                    map_single_pkg[key] = list_directory;
+                }
+
+                list_directory.Add(path_asset);
             }
             else if (path_asset.Contains(AssetBundlePkgFoldFoldName))
             {
@@ -233,122 +234,178 @@ public class EditorViewDataPublish : EditorWindow
 
                 list_directory.Add(path_asset);
             }
+            else if (path_asset.Contains(AssetBundleLaunchFoldName))
+            {
+                string fold = path_asset;
+                fold = fold.Replace("Assets/", "");
+                fold = EditorContext.Instance.PathStreamingAssets + platform.ToString() + "/" + fold;
+                fold = fold.Replace(file_name, "");
+
+                List<string> list_directory = null;
+                map_fold_launch.TryGetValue(fold, out list_directory);
+                if (list_directory == null)
+                {
+                    list_directory = new List<string>();
+                    map_fold_launch[fold] = list_directory;
+                }
+
+                list_directory.Add(path_asset);
+            }
         }
 
-        string path_assetex = "";
-        foreach (var i in list_single_pkg)
+        bool b = _pakABSingleEx(map_single_pkg, platform, build_target);
+        if (!b)
         {
-            path_assetex = i;
-            path_assetex = path_assetex.Replace("Assets/", "");
-            path_assetex = path_assetex.Replace(AssetBundlePkgSingleFoldName + "/", "");
-            path_assetex = EditorContext.Instance.PathStreamingAssets + platform.ToString() + "/" + path_assetex;
-
-            string file_name = Path.GetFileName(path_assetex);
-            string obj_dir = path_assetex.Replace(file_name, "");
-            var names = AssetDatabase.GetDependencies(i);
-            string ab_name = Path.GetFileNameWithoutExtension(path_assetex);
-            _pakABSingleEx(ab_name, names, obj_dir, build_target);
+            Debug.LogError("BuildAssetBundle失败！");
+            return;
         }
 
         foreach (var i in map_fold_pkg)
         {
             List<string> list_samefold_file = i.Value;
-            _pakABFoldEx(i.Key, list_samefold_file, build_target);
+            AssetBundleManifest ab_manifest = _pakABFoldEx(i.Key, list_samefold_file, build_target);
+
+            if (ab_manifest == null)
+            {
+                Debug.LogError("BuildAssetBundle失败！");
+                return;
+            }
+        }
+
+        foreach (var i in map_fold_launch)
+        {
+            List<string> list_samefold_file = i.Value;
+            AssetBundleManifest ab_manifest = _pakABFoldEx(i.Key, list_samefold_file, build_target);
+
+            if (ab_manifest == null)
+            {
+                Debug.LogError("BuildAssetBundle失败！");
+                return;
+            }
         }
 
         ShowNotification(new GUIContent("BuildAssetBundle Finished!"));
     }
 
     //-------------------------------------------------------------------------
-    void _pakABSingleEx(string ab_name, string[] dependence_name, string path, BuildTarget build_target)
+    bool _pakABSingleEx(Dictionary<string, List<string>> map_single_pkg,
+        Casinos._eEditorRunSourcePlatform platform, BuildTarget build_target)
     {
-        if (!Directory.Exists(path))
+        string path_assetex = "";
+        foreach (var i in map_single_pkg)
         {
-            Directory.CreateDirectory(path);
+            path_assetex = i.Value[0];
+            path_assetex = path_assetex.Replace("Assets/", "");
+            path_assetex = path_assetex.Replace(AssetBundleSingleFoldName + "/", "");
+            path_assetex = EditorContext.Instance.PathStreamingAssets + platform.ToString() + "/" + path_assetex;
+            string file_name = Path.GetFileName(path_assetex);
+            string file_extension = Path.GetExtension(path_assetex);
+            string obj_dir = path_assetex.Replace(file_name, "");
+
+            if (!Directory.Exists(obj_dir))
+            {
+                Directory.CreateDirectory(obj_dir);
+            }
+
+            AssetBundleBuild[] arr_abb = new AssetBundleBuild[i.Value.Count];
+            for (int n = 0; n < i.Value.Count; n++)
+            {
+                string f = i.Value[n];
+                string ab_name = Path.GetFileNameWithoutExtension(f);
+
+                AssetBundleBuild abb;
+                abb.assetBundleName = ab_name + ".ab";
+                abb.assetBundleVariant = "";
+                abb.addressableNames = null;
+
+                var dependences = AssetDatabase.GetDependencies(f);
+                List<string> list_needbuildassetname = new List<string>(dependences.Length);
+                foreach (var j in dependences)
+                {
+                    if (j.EndsWith(".cs") || j.EndsWith(".ttf")) continue;
+                    list_needbuildassetname.Add(j);
+                }
+
+                int asset_index = 0;
+                abb.assetNames = new string[list_needbuildassetname.Count];
+                foreach (var j in list_needbuildassetname)
+                {
+                    abb.assetNames[asset_index++] = j;
+                }
+
+                arr_abb[n] = abb;
+            }
+
+            if (file_extension == ".prefab")
+            {
+                foreach (var k in arr_abb)
+                {
+                    AssetBundleBuild[] arr_abb1 = new AssetBundleBuild[1] { k };
+                    AssetBundleManifest ab_manifest = BuildPipeline.BuildAssetBundles(obj_dir, arr_abb1,
+                        BuildAssetBundleOptions.ForceRebuildAssetBundle, build_target);
+                    if (ab_manifest == null)
+                    {
+                        Debug.LogError("BuildAssetBundle失败！");
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                AssetBundleManifest ab_manifest = BuildPipeline.BuildAssetBundles(obj_dir, arr_abb,
+                    BuildAssetBundleOptions.ForceRebuildAssetBundle, build_target);
+                if (ab_manifest == null)
+                {
+                    Debug.LogError("BuildAssetBundle失败！");
+                    return false;
+                }
+            }
         }
 
+        return true;
+    }
+
+    //-------------------------------------------------------------------------
+    AssetBundleManifest _pakABFoldEx(string path, List<string> list_samefold_file, BuildTarget build_target)
+    {
+        AssetBundleBuild[] arr_abb = new AssetBundleBuild[1];
+
+        string fold_name = Directory.GetParent(path).Name;
         AssetBundleBuild abb;
-        abb.assetBundleName = ab_name + ".ab";
+        abb.assetBundleName = fold_name + ".ab";
+        abb.assetNames = null;
         abb.assetBundleVariant = "";
         abb.addressableNames = null;
         int asset_index = 0;
         List<string> list_needbuildassetname = new List<string>();
-        foreach (var j in dependence_name)
-        {
-            if (j.EndsWith(".cs") || j.EndsWith(".ttf")) continue;
-            if (list_needbuildassetname.Contains(j))
-            {
-                continue;
-            }
-            list_needbuildassetname.Add(j);
-        }
-        abb.assetNames = new string[list_needbuildassetname.Count];
 
-        foreach (var i in list_needbuildassetname)
-        {
-            abb.assetNames[asset_index++] = i;
-        }
-
-        AssetBundleBuild[] arr_abb = new AssetBundleBuild[1];
-        arr_abb[0] = abb;
-
-        BuildPipeline.BuildAssetBundles(path, arr_abb,
-            BuildAssetBundleOptions.ForceRebuildAssetBundle,
-            build_target);
-    }
-
-    //-------------------------------------------------------------------------
-    void _pakABFoldEx(string path, List<string> list_samefold_file, BuildTarget build_target)
-    {
-        if (!Directory.Exists(path))
-        {
-            Directory.CreateDirectory(path);
-        }
-
-        AssetBundleBuild[] arr_abb = new AssetBundleBuild[list_samefold_file.Count];
-        int index = 0;
-        string fold_name = "";
         foreach (var file in list_samefold_file)
         {
-            if (File.Exists(file))
+            var names = AssetDatabase.GetDependencies(file);
+            foreach (var j in names)
             {
-                if (string.IsNullOrEmpty(fold_name))
-                {
-                    fold_name = Directory.GetParent(file).Name;
-                }
-
-                var names = AssetDatabase.GetDependencies(file);
-
-                AssetBundleBuild abb;
-                abb.assetBundleName = fold_name + ".ab";
-                abb.assetBundleVariant = "";
-                abb.addressableNames = null;
-                int asset_index = 0;
-                List<string> list_needbuildassetname = new List<string>();
-                foreach (var j in names)
-                {
-                    if (j.EndsWith(".cs") || j.EndsWith(".ttf")) continue;
-                    if (list_needbuildassetname.Contains(j))
-                    {
-                        continue;
-                    }
-                    list_needbuildassetname.Add(j);
-                }
-                abb.assetNames = new string[list_needbuildassetname.Count];
-
-                foreach (var asset in list_needbuildassetname)
-                {
-                    abb.assetNames[asset_index++] = asset;
-                }
-
-                arr_abb[index] = abb;
-                index++;
+                if (j.EndsWith(".cs") || j.EndsWith(".ttf")) continue;
+                if (!list_needbuildassetname.Contains(j)) list_needbuildassetname.Add(j);
             }
         }
 
-        BuildPipeline.BuildAssetBundles(path, arr_abb,
-            BuildAssetBundleOptions.ForceRebuildAssetBundle,
-            build_target);
+        abb.assetNames = new string[list_needbuildassetname.Count];
+        foreach (var asset in list_needbuildassetname)
+        {
+            abb.assetNames[asset_index++] = asset;
+        }
+
+        arr_abb[0] = abb;
+
+        var obj_dir = Directory.GetParent(path).Parent.FullName;
+        if (!Directory.Exists(obj_dir))
+        {
+            Directory.CreateDirectory(obj_dir);
+        }
+        AssetBundleManifest ab_manifest = BuildPipeline.BuildAssetBundles(obj_dir, arr_abb,
+            BuildAssetBundleOptions.ForceRebuildAssetBundle, build_target);
+
+        return ab_manifest;
     }
 
     //-------------------------------------------------------------------------
@@ -359,64 +416,42 @@ public class EditorViewDataPublish : EditorWindow
         switch (platform)
         {
             case Casinos._eEditorRunSourcePlatform.Android:
-                path_rawdata = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexas\\";
+                path_rawdata = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexasRaw\\";
                 path_lua = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Script.Lua\\";
                 break;
             case Casinos._eEditorRunSourcePlatform.IOS:
-                path_rawdata = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexas\\";
+                path_rawdata = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexasRaw\\";
                 path_lua = EditorContext.Instance.PathStreamingAssets + "IOS\\Script.Lua\\";
                 break;
             case Casinos._eEditorRunSourcePlatform.PC:
-                path_rawdata = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexas\\";
+                path_rawdata = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexasRaw\\";
                 path_lua = EditorContext.Instance.PathStreamingAssets + "PC\\Script.Lua\\";
                 break;
         }
 
-        List<string> list_rawdata = new List<string>();
-        DirectoryInfo dir = new DirectoryInfo(path_rawdata);
-        DirectoryInfo[] dir_list = dir.GetDirectories();// 获取目录下（不包含子目录）的子目录
-        foreach (DirectoryInfo i in dir_list)
-        {
-            if (i is DirectoryInfo)
-            {
-                if (i.FullName.Contains("Raw"))
-                {
-                    list_rawdata.Add(i.FullName);
-                }
-            }
-        }
-
-        foreach (var i in list_rawdata)
-        {
-            if (Directory.Exists(i)) Directory.Delete(i, true);
-        }
-
+        if (Directory.Exists(path_rawdata)) Directory.Delete(path_rawdata, true);
         if (Directory.Exists(path_lua)) Directory.Delete(path_lua, true);
-
-        ShowNotification(new GUIContent("ClearRawDataAndLua Finished!"));
     }
 
     //-------------------------------------------------------------------------
     void _copyRawData(Casinos._eEditorRunSourcePlatform platform)
     {
-        string path_src = EditorContext.Instance.PathAssets + "Resources.KingTexas\\Raw\\";
+        string path_src = EditorContext.Instance.PathAssets + "Resources.KingTexasRaw\\";
         string path_dst = string.Empty;
         switch (platform)
         {
             case Casinos._eEditorRunSourcePlatform.Android:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexas\\";
+                path_dst = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexasRaw\\";
                 break;
             case Casinos._eEditorRunSourcePlatform.IOS:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexas\\";
+                path_dst = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexasRaw\\";
                 break;
             case Casinos._eEditorRunSourcePlatform.PC:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexas\\";
+                path_dst = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexasRaw\\";
                 break;
         }
 
         _copyDir(platform, path_src, path_dst);
-
-        ShowNotification(new GUIContent("CopyRawData Finished!"));
     }
 
     //-------------------------------------------------------------------------
@@ -438,8 +473,6 @@ public class EditorViewDataPublish : EditorWindow
         }
 
         _copyDir(platform, path_src, path_dst);
-
-        ShowNotification(new GUIContent("CopyLua Finished!"));
     }
 
     //-------------------------------------------------------------------------
@@ -493,14 +526,15 @@ public class EditorViewDataPublish : EditorWindow
 
         using (StreamWriter sw = File.CreateText(file_datafilelist))
         {
-            _genDataFileList2(sw, path_dst, path_dst);
+            var ignore_files = new HashSet<string> { "DataFileList.txt", "StreamingAssetsInfo.json" };
+            _genDataFileList2(sw, ignore_files, path_dst, path_dst);
         }
 
         ShowNotification(new GUIContent("GenDataFileList Finished!"));
     }
 
     //-------------------------------------------------------------------------
-    void _genDataFileList2(StreamWriter sw, string cur_path, string path_dst)
+    void _genDataFileList2(StreamWriter sw, HashSet<string> ignore_files, string cur_path, string path_dst)
     {
         string[] files = Directory.GetFiles(cur_path);
         foreach (var i in files)
@@ -510,7 +544,7 @@ public class EditorViewDataPublish : EditorWindow
             directory_name = directory_name.Substring(directory_name.LastIndexOf("/") + 1);
             string file_name = Path.GetFileName(i);
 
-            if (DoNotCopyFileName.Contains(file_name)) continue;
+            if (ignore_files.Contains(file_name)) continue;
 
             string file_extension = Path.GetExtension(i);
             if (DoNotPackFileExtention.Contains(file_extension)) continue;
@@ -527,7 +561,7 @@ public class EditorViewDataPublish : EditorWindow
         string[] directorys = Directory.GetDirectories(cur_path);
         foreach (var i in directorys)
         {
-            _genDataFileList2(sw, i, path_dst);
+            _genDataFileList2(sw, ignore_files, i, path_dst);
         }
     }
 

@@ -7,7 +7,7 @@ namespace Casinos
     using System.Collections.Generic;
     using UnityEngine;
     using FairyGUI;
-    
+
     public class KingTexasCasinosListener : CasinosListener
     {
         //---------------------------------------------------------------------        

@@ -1,8 +1,7 @@
 {
   "DataVersion": "1.00.000",
   "ListLaunchDir": [
-    "Resources.KingTexas/Launch",
-    "Script.Lua/Main",
+    "Resources.KingTexasLaunch",
     "Script.Lua/Launch"
   ]
 }

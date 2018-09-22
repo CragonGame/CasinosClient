@@ -1,7 +1,16 @@
 ManifestFileVersion: 0
-CRC: 3228178084
+CRC: 3084750771
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
+      Name: classicbg.ab
+      Dependencies: {}
+    Info_1:
+      Name: mttbg.ab
+      Dependencies: {}
+    Info_2:
       Name: mttdesk.ab
+      Dependencies: {}
+    Info_3:
+      Name: classicdesk.ab
       Dependencies: {}

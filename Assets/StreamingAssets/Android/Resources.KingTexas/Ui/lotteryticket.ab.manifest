@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2216797490
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8a9b6efa8184eb14d3c61133926c03f5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LotteryTicket/LotteryTicket@atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LotteryTicket/LotteryTicket@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LotteryTicket/LotteryTicket.bytes
+Dependencies: []

@@ -142,24 +142,25 @@ namespace FairyGUI
 				if (ta != null)
 					source = ta.bytes;
 			}
-			else
-			{
-				string[] names = desc.GetAllAssetNames();
-				string searchPattern = "_fui";
-				foreach (string n in names)
-				{
-					if (n.IndexOf(searchPattern) != -1)
-					{
-						TextAsset ta = desc.LoadAsset<TextAsset>(n);
-						if (ta != null)
-						{
-							source = ta.bytes;
-							mainAssetName = Path.GetFileNameWithoutExtension(n);
-							break;
-						}
-					}
-				}
-			}
+            else
+            {
+                string[] names = desc.GetAllAssetNames();
+                //string searchPattern = "_fui";
+                string searchPattern = "@";
+                foreach (string n in names)
+                {
+                    if (n.IndexOf(searchPattern) == -1)
+                    {
+                        TextAsset ta = desc.LoadAsset<TextAsset>(n);
+                        if (ta != null)
+                        {
+                            source = ta.bytes;
+                            mainAssetName = Path.GetFileNameWithoutExtension(n);
+                            break;
+                        }
+                    }
+                }
+            }
 #else
 			if (mainAssetName != null)
 			{
@@ -173,7 +174,7 @@ namespace FairyGUI
 				mainAssetName = desc.mainAsset.name;
 			}
 #endif
-			if (source == null)
+            if (source == null)
 				throw new Exception("FairyGUI: no package found in this bundle.");
 
 			if (desc != res)

@@ -58,10 +58,8 @@ namespace Casinos
                 }
             }
 
-            // 预加载Script.Lua/Launch中的所有lua文件
+            // 预加载Script.Lua/Launch中的所有lua文件，显示加载界面
             CasinosContext.Instance.CasinosLua.LoadLuaLaunch();
-
-            // 显示加载界面
             CasinosContext.Instance.CasinosLua.DoString("Launch");
             var lua_launch = CasinosContext.Instance.CasinosLua.LuaEnv.Global.Get<LuaTable>("Launch");
             FuncLuaLaunchInit = lua_launch.Get<Action>("Init");

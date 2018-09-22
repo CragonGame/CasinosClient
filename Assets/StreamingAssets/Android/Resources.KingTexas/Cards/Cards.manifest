@@ -1,7 +1,163 @@
 ManifestFileVersion: 0
-CRC: 4088610494
+CRC: 240895691
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
+      Name: 2_11.ab
+      Dependencies: {}
+    Info_1:
+      Name: 3_8.ab
+      Dependencies: {}
+    Info_2:
+      Name: 3_14.ab
+      Dependencies: {}
+    Info_3:
+      Name: 3_10.ab
+      Dependencies: {}
+    Info_4:
+      Name: cardback.ab
+      Dependencies: {}
+    Info_5:
+      Name: 1_4.ab
+      Dependencies: {}
+    Info_6:
+      Name: 2_14.ab
+      Dependencies: {}
+    Info_7:
+      Name: 3_12.ab
+      Dependencies: {}
+    Info_8:
+      Name: 3_11.ab
+      Dependencies: {}
+    Info_9:
+      Name: 3_13.ab
+      Dependencies: {}
+    Info_10:
+      Name: 1_3.ab
+      Dependencies: {}
+    Info_11:
+      Name: 0_9.ab
+      Dependencies: {}
+    Info_12:
+      Name: 0_13.ab
+      Dependencies: {}
+    Info_13:
+      Name: 0_4.ab
+      Dependencies: {}
+    Info_14:
+      Name: 2_4.ab
+      Dependencies: {}
+    Info_15:
+      Name: 0_7.ab
+      Dependencies: {}
+    Info_16:
+      Name: 1_12.ab
+      Dependencies: {}
+    Info_17:
+      Name: 1_2.ab
+      Dependencies: {}
+    Info_18:
+      Name: 1_5.ab
+      Dependencies: {}
+    Info_19:
+      Name: 1_11.ab
+      Dependencies: {}
+    Info_20:
+      Name: 1_13.ab
+      Dependencies: {}
+    Info_21:
+      Name: 2_7.ab
+      Dependencies: {}
+    Info_22:
+      Name: 3_5.ab
+      Dependencies: {}
+    Info_23:
+      Name: 0_8.ab
+      Dependencies: {}
+    Info_24:
+      Name: 2_5.ab
+      Dependencies: {}
+    Info_25:
+      Name: 2_12.ab
+      Dependencies: {}
+    Info_26:
+      Name: 0_12.ab
+      Dependencies: {}
+    Info_27:
+      Name: 3_9.ab
+      Dependencies: {}
+    Info_28:
+      Name: 3_4.ab
+      Dependencies: {}
+    Info_29:
+      Name: 3_6.ab
+      Dependencies: {}
+    Info_30:
+      Name: 2_13.ab
+      Dependencies: {}
+    Info_31:
+      Name: 3_3.ab
+      Dependencies: {}
+    Info_32:
+      Name: 1_8.ab
+      Dependencies: {}
+    Info_33:
+      Name: 2_2.ab
+      Dependencies: {}
+    Info_34:
+      Name: 0_3.ab
+      Dependencies: {}
+    Info_35:
+      Name: 0_2.ab
+      Dependencies: {}
+    Info_36:
+      Name: 1_14.ab
+      Dependencies: {}
+    Info_37:
       Name: 2_3.ab
+      Dependencies: {}
+    Info_38:
+      Name: 0_6.ab
+      Dependencies: {}
+    Info_39:
+      Name: 2_9.ab
+      Dependencies: {}
+    Info_40:
+      Name: 1_10.ab
+      Dependencies: {}
+    Info_41:
+      Name: 2_6.ab
+      Dependencies: {}
+    Info_42:
+      Name: 3_7.ab
+      Dependencies: {}
+    Info_43:
+      Name: 1_7.ab
+      Dependencies: {}
+    Info_44:
+      Name: 2_10.ab
+      Dependencies: {}
+    Info_45:
+      Name: 2_8.ab
+      Dependencies: {}
+    Info_46:
+      Name: 3_2.ab
+      Dependencies: {}
+    Info_47:
+      Name: 0_14.ab
+      Dependencies: {}
+    Info_48:
+      Name: 1_6.ab
+      Dependencies: {}
+    Info_49:
+      Name: 0_10.ab
+      Dependencies: {}
+    Info_50:
+      Name: 1_9.ab
+      Dependencies: {}
+    Info_51:
+      Name: 0_5.ab
+      Dependencies: {}
+    Info_52:
+      Name: 0_11.ab
       Dependencies: {}

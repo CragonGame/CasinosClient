@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1900610939
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ab9fab5d4b6bc12349c36dc0ea1ff3f6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MTTProcess/MTTProcess@atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MTTProcess/MTTProcess@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MTTProcess/MTTProcess.bytes
+Dependencies: []

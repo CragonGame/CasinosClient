@@ -13,6 +13,11 @@ public class EditorViewProjectConfig : EditorWindow
     //-------------------------------------------------------------------------
     void OnGUI()
     {
+        if (EditorContext.Instance == null)
+        {
+            new EditorContext();
+        }
+
         GUILayout.Space(10);
         GUILayout.Label("Casinos项目配置");
 

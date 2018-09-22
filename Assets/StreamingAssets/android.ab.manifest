@@ -1,0 +1,40 @@
+ManifestFileVersion: 0
+CRC: 473890946
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ea35381a66b8e91bfa419294a1d5419f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7ad9764303ec2bff4e8b3979bba683f4
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexasLaunch/LoadingMarry/Mary_Loading_Atlas.asset
+- Assets/Resources.KingTexasLaunch/PreMsgBox/PreMsgBox@sprites.bytes
+- Assets/Resources.KingTexasLaunch/PreLoading/PreLoading@sprites.bytes
+- Assets/Resources.KingTexasLaunch/PreLoading/PreLoading@atlas0.png
+- Assets/Resources.KingTexasLaunch/LoadingMarry/Mary_LoadingJson.json
+- Assets/Resources.KingTexasLaunch/PreLoading/PreLoading.bytes
+- Assets/Resources.KingTexasLaunch/PreLoading/PreLoading@atlas1.png
+- Assets/Resources.KingTexasLaunch/DengLong/denglong.png
+- Assets/Resources.KingTexasLaunch/LoadingMarry/Mary_Loading.png
+- Assets/Resources.KingTexasLaunch/LoadingMarry/Mary_Loading_SkeletonData.asset
+- Assets/Resources.KingTexasLaunch/PreMsgBox/PreMsgBox@atlas0.png
+- Assets/Resources.KingTexasLaunch/DengLong/denglong_Atlas.asset
+- Assets/Resources.KingTexasLaunch/DengLong/denglong.atlas.txt
+- Assets/Resources.KingTexasLaunch/PreMsgBox/PreMsgBox.bytes
+- Assets/Resources.KingTexasLaunch/DengLong/denglongJson.json
+- Assets/Resources.KingTexasLaunch/LoadingMarry/Mary_Loading.atlas.txt
+- Assets/Resources.KingTexasLaunch/DengLong/denglong_SkeletonData.asset
+Dependencies: []

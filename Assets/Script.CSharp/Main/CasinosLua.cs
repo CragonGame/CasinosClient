@@ -155,7 +155,12 @@ namespace Casinos
 
             typeof(EbTool),
             typeof(TcpClient),
-
+            typeof(EbTimeEvent),
+            typeof(EbDoubleLinkNode<EbTimeEvent>),
+            typeof(EbDoubleLinkList<EbTimeEvent>),
+            typeof(EbTimeWheel),
+            typeof(TimerShaft),
+            
             typeof(Casinos._eProjectItemDisplayNameKey),
             typeof(_eAsyncAssetLoadType),
             typeof(_ePayType),
@@ -315,9 +320,7 @@ namespace Casinos
         {
             var path_launch = CasinosContext.Instance.PathMgr.combinePersistentDataPath("Script.Lua/Launch/");
             string[] list_path = new string[] { path_launch };
-            RegLuaPath(list_path);
-
-            //DoString("Context");
+            LoadLuaFromDir(list_path);
 
             //var lua_context = LuaEnv.Global.Get<LuaTable>("Context");
             //var fun_new = lua_context.Get<DelegateLuaNew>("new");
@@ -330,7 +333,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void RegLuaPath(string[] list_path)
+        public void LoadLuaFromDir(string[] list_path)
         {
             foreach (var k in list_path)
             {

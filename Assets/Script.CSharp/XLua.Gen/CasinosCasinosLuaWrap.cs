@@ -26,7 +26,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadLuaLaunch", _m_LoadLuaLaunch);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RegLuaPath", _m_RegLuaPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadLuaFromDir", _m_LoadLuaFromDir);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddLuaFile", _m_AddLuaFile);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DoString", _m_DoString);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DoMainCLua", _m_DoMainCLua);
@@ -163,7 +163,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_RegLuaPath(RealStatePtr L)
+        static int _m_LoadLuaFromDir(RealStatePtr L)
         {
 		    try {
             
@@ -177,7 +177,7 @@ namespace XLua.CSObjectWrap
                 {
                     string[] _list_path = (string[])translator.GetObject(L, 2, typeof(string[]));
                     
-                    gen_to_be_invoked.RegLuaPath( _list_path );
+                    gen_to_be_invoked.LoadLuaFromDir( _list_path );
                     
                     
                     
