@@ -145,11 +145,10 @@ namespace FairyGUI
             else
             {
                 string[] names = desc.GetAllAssetNames();
-                //string searchPattern = "_fui";
-                string searchPattern = "@";
+                string searchPattern = "_fui";
                 foreach (string n in names)
                 {
-                    if (n.IndexOf(searchPattern) == -1)
+                    if (n.IndexOf(searchPattern) != -1)
                     {
                         TextAsset ta = desc.LoadAsset<TextAsset>(n);
                         if (ta != null)

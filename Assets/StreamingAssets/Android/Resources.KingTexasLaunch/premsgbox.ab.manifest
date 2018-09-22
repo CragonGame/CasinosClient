@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2152329091
+CRC: 1054764462
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9fe87dafee1d38e20bd26be1d3d58058
+    Hash: e04d26bafc1445131c72f1abeb16cf96
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexasLaunch/PreMsgBox/PreMsgBox@sprites.bytes
-- Assets/Resources.KingTexasLaunch/PreMsgBox/PreMsgBox@atlas0.png
-- Assets/Resources.KingTexasLaunch/PreMsgBox/PreMsgBox.bytes
+- Assets/Resources.KingTexasLaunch/PreMsgBox/PreMsgBox_fui.bytes
+- Assets/Resources.KingTexasLaunch/PreMsgBox/PreMsgBox_atlas0.png
 Dependencies: []

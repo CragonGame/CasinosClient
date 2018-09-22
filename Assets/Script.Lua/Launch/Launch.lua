@@ -9,13 +9,14 @@ function Launch:new(o)
     setmetatable(o,self)
     self.__index = self
 
-    if(self.Instance==nil)
+    if(self.Instance == nil)
     then
         self.ControllerName = "Launch"
         self.LaunchConfigLoader = nil
         self.CanCheckLoadDataDone = false
         self.PreViewLoadDone = false
         self.InitializeDone = false
+        self.PreViewMgr = nil
         self.Instance = o
     end
 
@@ -25,6 +26,7 @@ end
 ---------------------------------------
 function Launch:Init()
     Launch:new(nil)
+
     print("Launch:Init()")
 
     require 'PreViewMgr'
@@ -36,25 +38,24 @@ function Launch:Init()
     --casinos_context.CasinosLua:DoString("PreViewMgr")
     --casinos_context:setPreViewMgr()
 
-    self.PreViewMgr = PreViewMgr:new(nil)
-    self.PreViewMgr:Init()
-
     local casinos_context = CS.Casinos.CasinosContext.Instance
-    --local launch_persistentdata_path = casinos_context.PathMgr:combinePersistentDataPath(casinos_context.ResourcesRowPathRoot .. "Launch/")
     local launch_persistentdata_path = casinos_context.PathMgr.PathLaunchRootPersistent
 
     local ui_name_loading = "PreLoading"
-    local ui_path_loading = launch_persistentdata_path .. ui_name_loading .. "/" .. string.lower(ui_name_loading) .. ".ab"
+    local ui_path_loading = launch_persistentdata_path .. string.lower(ui_name_loading) .. ".ab"
     local ui_name_msgbox = "PreMsgBox"
-    local ui_path_msgbox = launch_persistentdata_path .. ui_name_msgbox .. "/" .. string.lower(ui_name_msgbox) .. ".ab"
+    local ui_path_msgbox = launch_persistentdata_path .. string.lower(ui_name_msgbox) .. ".ab"
 
     print(launch_persistentdata_path)
     print(ui_path_loading)
     print(ui_path_msgbox)
 
+    self.PreViewMgr = PreViewMgr:new(nil)
+    self.PreViewMgr:Init()
+
     casinos_context:LuaAsyncLoadLocalUiBundle(
             function()
-                launch:_loadABDone()
+                Launch:_loadABDone()
             end
     ,ui_path_loading,ui_path_msgbox)
 end
@@ -154,13 +155,13 @@ function Launch:_loadABDone()
     end
     view_preloading.setTip(tips)
     self.PreViewLoadDone = true
-    self.LaunchConfigLoader = CS.Casinos.LaunchConfigLoader()
+--[[    self.LaunchConfigLoader = CS.Casinos.LaunchConfigLoader()
     local maic_path = CS.Casinos.CasinosContext.Instance:GetMainCPath()
     self.LaunchConfigLoader:loadConfig(maic_path,
             function(config)
                 self:_loadConfigDone(config)
             end
-    )
+    )]]
 end
 
 ---------------------------------------

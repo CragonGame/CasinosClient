@@ -15,7 +15,7 @@ namespace Casinos
 
     //---------------------------------------------------------------------
     [CSharpCallLua]
-    public delegate void DelegateLuaNew(LuaTable lua_table);
+    public delegate void DelegateLua1(LuaTable lua_table);
 
     [CSharpCallLua]
     public delegate void DelegateLuaUpdate(float tm);
@@ -433,8 +433,6 @@ namespace Casinos
         // 自定义Lua文件加载函数
         byte[] LuaLoaderCustom(ref string file_name)
         {
-            Debug.Log("Lua Load: " + file_name);
-
             var key = file_name.ToLower();
 
             byte[] array_file = null;

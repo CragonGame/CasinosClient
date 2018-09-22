@@ -1215,9 +1215,9 @@ namespace XLua
 		public override Delegate GetDelegateByType(Type type)
 		{
 		
-		    if (type == typeof(Casinos.DelegateLuaNew))
+		    if (type == typeof(Casinos.DelegateLua1))
 			{
-			    return new Casinos.DelegateLuaNew(__Gen_Delegate_Imp0);
+			    return new Casinos.DelegateLua1(__Gen_Delegate_Imp0);
 			}
 		
 		    if (type == typeof(System.Action<XLua.LuaTable>))

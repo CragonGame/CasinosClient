@@ -1,5 +1,5 @@
 {
-	"binaryFormat":false,
+	"binaryFormat":true,
 	"codeGeneration":{
 		"classNamePrefix":"UI_",
 		"codePath":"C:\\Users\\xc\\Desktop\\新建文件夹 (6)",
@@ -12,5 +12,5 @@
 	"compressDesc":true,
 	"fileExtension":"",
 	"packageCount":2,
-	"path":""
+	"path":"D:\\CasinosClientGithub\\Assets\\Resources.KingTexasLaunch"
 }

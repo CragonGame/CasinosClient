@@ -74,7 +74,7 @@ namespace Casinos
             }
 
             PathLuaRootPersistent = combinePersistentDataPath("Script.Lua/");
-            PathLaunchRootPersistent = combinePersistentDataPath("Resources.KingTexas/Launch/");
+            PathLaunchRootPersistent = combinePersistentDataPath("Resources.KingTexasLaunch/");
 
             {
                 string p = Path.Combine(Environment.CurrentDirectory, "./Assets/Script.Lua/");

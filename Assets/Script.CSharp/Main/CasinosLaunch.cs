@@ -19,7 +19,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public string VersionLaunchStreamingAssets { get; set; }
         public string VersionLaunchPersistent { get; set; }
-        Action FuncLuaLaunchInit { get; set; }
+        DelegateLua1 FuncLuaLaunchInit { get; set; }
         DelegateLuaUpdate FuncLuaLaunchUpdate { get; set; }
         Action FuncLuaLaunchRelease { get; set; }
 
@@ -62,10 +62,10 @@ namespace Casinos
             CasinosContext.Instance.CasinosLua.LoadLuaLaunch();
             CasinosContext.Instance.CasinosLua.DoString("Launch");
             var lua_launch = CasinosContext.Instance.CasinosLua.LuaEnv.Global.Get<LuaTable>("Launch");
-            FuncLuaLaunchInit = lua_launch.Get<Action>("Init");
+            FuncLuaLaunchInit = lua_launch.Get<DelegateLua1>("Init");
             FuncLuaLaunchUpdate = lua_launch.Get<DelegateLuaUpdate>("Update");
             FuncLuaLaunchRelease = lua_launch.Get<Action>("Release");
-            FuncLuaLaunchInit();
+            FuncLuaLaunchInit(lua_launch);
         }
 
         //---------------------------------------------------------------------

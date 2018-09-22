@@ -11,5 +11,5 @@
     <image id="lh6bm" name="UI2_通用_底板01.png" path="/Image/" scale="9grid" scale9grid="36,34,10,8"/>
     <image id="lh6bo" name="BtnGreen.png" path="/Image/" scale="9grid" scale9grid="75,28,25,2"/>
   </resources>
-  <publish name="PreMsgBox" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\Launch\PreMsgBox"/>
+  <publish name="PreMsgBox" path="D:\CasinosClientGithub\Assets\Resources.KingTexasLaunch\PreMsgBox"/>
 </packageDescription>

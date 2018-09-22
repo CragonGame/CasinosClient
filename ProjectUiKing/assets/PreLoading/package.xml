@@ -14,5 +14,5 @@
     <component id="jyil13" name="ComMoteParent.xml" path="/Component/"/>
     <image id="l6zb16" name="UISprite.png" path="/Image/" exported="true" scale="9grid" scale9grid="8,8,12,12"/>
   </resources>
-  <publish name="PreLoading" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\Launch\PreLoading"/>
+  <publish name="PreLoading" path="D:\CasinosClientGithub\Assets\Resources.KingTexasLaunch\PreLoading"/>
 </packageDescription>

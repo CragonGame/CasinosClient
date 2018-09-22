@@ -54,12 +54,10 @@ function PreViewLoading:onCreate()
     if(self.ShowSPine)
     then
         image_mote.visible = false
-        local abTextAtlas = p_helper:GetPreSpine("Spine/LoadingMarry/mary_loading.atlas.ab")
-        local atlas = abTextAtlas:LoadAsset("Mary_Loading.atlas")
-        local abtexture = p_helper:GetPreSpine("Spine/LoadingMarry/mary_loading.ab")
-        local texture = abtexture:LoadAsset("Mary_Loading")
-        local abjson = p_helper:GetPreSpine("Spine/LoadingMarry/mary_loadingjson.ab")
-        local json = abjson:LoadAsset("Mary_LoadingJson")
+        local ab_loadingmarry = p_helper:GetPreSpine("LoadingMarry")
+        local atlas = ab_loadingmarry:LoadAsset("Mary_Loading.atlas")
+        local texture = ab_loadingmarry:LoadAsset("Mary_Loading")
+        local json = ab_loadingmarry:LoadAsset("Mary_LoadingJson")
 
         self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas,texture,json,"Spine/Skeleton",314)
         --local moteParent = self.ComUi:GetChild("MoteParent").asCom
@@ -80,12 +78,10 @@ function PreViewLoading:onCreate()
     local bg = com_bg:GetChild("Bg")
     self:makeUiBgFiteScreen(1066,640, self.ComUi.width, self.ComUi.height, bg.width, bg.height,bg,2,{self.HolderMote})
 
-    local abTextAtlas1 = p_helper:GetPreSpine("Spine/DengLong/denglong.atlas.ab")
-    local atlas1 = abTextAtlas1:LoadAsset("denglong.atlas")
-    local abtexture1 = p_helper:GetPreSpine("Spine/DengLong/denglong.ab")
-    local texture1 = abtexture1:LoadAsset("denglong")
-    local abjson1 = p_helper:GetPreSpine("Spine/DengLong/denglongjson.ab")
-    local json1 = abjson1:LoadAsset("denglongJson")
+    local ab_denglong = p_helper:GetPreSpine("DengLong")
+    local atlas1 = ab_denglong:LoadAsset("denglong.atlas")
+    local texture1 = ab_denglong:LoadAsset("denglong")
+    local json1 = ab_denglong:LoadAsset("denglongJson")
 
     self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1,texture1,json1,"Spine/Skeleton",314)
     local denglongParent = self.ComUi:GetChild("DengLongParent").asCom
@@ -398,8 +394,9 @@ function ParticleHelper:GetPreSpine(path)
     local spine = self.TableSpine[path]
     if (spine == nil)
     then
-        local spine_path = self.CasinosContext.PathMgr:combinePersistentDataPath(
-                self.CasinosContext.ResourcesRowPathRoot .. "PreData/Pre" .. path)
+        local casinos_context = CS.Casinos.CasinosContext.Instance
+        local launch_persistentdata_path = casinos_context.PathMgr.PathLaunchRootPersistent
+        local spine_path = launch_persistentdata_path .. string.lower(path) .. ".ab"
         spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
         self.TableSpine[path] = spine
     end
