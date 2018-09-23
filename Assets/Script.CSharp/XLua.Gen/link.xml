@@ -43,14 +43,15 @@
 		<type fullname="FairyGUI.GTweener" preserve="all"/>
 		<type fullname="FairyGUI.EaseType" preserve="all"/>
 		<type fullname="FairyGUI.TweenValue" preserve="all"/>
+		<type fullname="Casinos._eProjectItemDisplayNameKey" preserve="all"/>
+		<type fullname="_eAsyncAssetLoadType" preserve="all"/>
 		<type fullname="TcpClient" preserve="all"/>
 		<type fullname="LoaderTicket" preserve="all"/>
 		<type fullname="AsyncAssetLoaderMgr" preserve="all"/>
 		<type fullname="AsyncAssetLoadGroup" preserve="all"/>
-		<type fullname="Casinos._eProjectItemDisplayNameKey" preserve="all"/>
-		<type fullname="_eAsyncAssetLoadType" preserve="all"/>
 		<type fullname="Casinos.ParseStreamingAssetsDataInfo" preserve="all"/>
-		<type fullname="Casinos.CopyStreamingAssetsToPersistentDataPath" preserve="all"/>
+		<type fullname="Casinos.CopyStreamingAssetsToPersistentData1" preserve="all"/>
+		<type fullname="Casinos.CopyStreamingAssetsToPersistentData2" preserve="all"/>
 		<type fullname="Casinos.UiSoundMgr" preserve="all"/>
 		<type fullname="ChatParser" preserve="all"/>
 		<type fullname="Casinos.UiHelper" preserve="all"/>
@@ -162,14 +163,14 @@
 	</assembly>
 
 	<assembly fullname="Assembly-CSharp-firstpass">
-	    <type fullname="EbTool" preserve="all"/>
+	    <type fullname="_ePayType" preserve="all"/>
+		<type fullname="EbTool" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbTimeEvent" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbTimer" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbDoubleLinkNode`1[GameCloud.Unity.Common.EbTimeEvent]" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbDoubleLinkList`1[GameCloud.Unity.Common.EbTimeEvent]" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbTimeWheel" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.TimerShaft" preserve="all"/>
-		<type fullname="_ePayType" preserve="all"/>
 		<type fullname="Casinos.Card" preserve="all"/>
 		<type fullname="OnePF.Purchase" preserve="all"/>
 		<type fullname="BuglyAgent" preserve="all"/>

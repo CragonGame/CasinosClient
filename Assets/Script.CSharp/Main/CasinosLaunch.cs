@@ -54,10 +54,8 @@ namespace Casinos
             // 将Launch从StreamingAssets拷贝到Persistent
             if (need_copy)
             {
-                foreach (var i in streaming_assets_info.ListLaunchDir)
-                {
-                    var copy_dir = new CopyStreamingAssetsToPersistentData(i);
-                }
+                var copy_dir = new CopyStreamingAssetsToPersistentData1();
+                copy_dir.CopySync(streaming_assets_info.ListLaunchDir);
             }
 
             // 预加载Script.Lua/Launch中的所有lua文件，显示加载界面
@@ -69,7 +67,7 @@ namespace Casinos
             FuncLuaLaunchRelease = lua_launch.Get<Action>("Release");
             FuncLuaLaunchInit(lua_launch);
 
-            Timer = CasinosContext.Instance.TimerShaft.RegisterTimer(1000, _onTimer);
+            //Timer = CasinosContext.Instance.TimerShaft.RegisterTimer(1000, _onTimer);
         }
 
         //---------------------------------------------------------------------

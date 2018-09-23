@@ -69,6 +69,7 @@ namespace GameCloud.Unity.Common
         Action FuncCb { get; set; }
         ulong TmSpan { get; set; }
         ulong LastTimeJeffies { get; set; } = 0;
+        bool Closed { get; set; } = false;
 
         //---------------------------------------------------------------------
         public EbTimer(TimerShaft timer_shaft, ulong tm, Action cb)
@@ -77,6 +78,7 @@ namespace GameCloud.Unity.Common
             TmSpan = tm;
             FuncCb = cb;
             LastTimeJeffies = TimerShaft.GetTimeJeffies() + TmSpan;
+            Closed = false;
 
             var time_ev = new EbTimeEvent()
             {
@@ -90,11 +92,14 @@ namespace GameCloud.Unity.Common
         //---------------------------------------------------------------------
         public void Close()
         {
+            Closed = true;
         }
 
         //---------------------------------------------------------------------
         void _onTimer(object data)
         {
+            if (Closed) return;
+
             LastTimeJeffies += TmSpan;
             var delta_tm = LastTimeJeffies - TimerShaft.GetTimeJeffies();
 

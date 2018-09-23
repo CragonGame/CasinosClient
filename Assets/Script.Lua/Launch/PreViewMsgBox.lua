@@ -74,7 +74,7 @@ function PreViewMsgBox:onHandleEv(ev)
 end
 
 ---------------------------------------
-function PreViewMsgBox.showMsgBox(info,ok,cancel)
+function PreViewMsgBox:showMsgBox(info,ok,cancel)
 	local view = PreViewMsgBox:new(nil)
 	if(view.TextTips ~= nil)
 	then
@@ -86,7 +86,7 @@ function PreViewMsgBox.showMsgBox(info,ok,cancel)
 end
 
 ---------------------------------------
-function PreViewMsgBox.showMsgBoxEx(info,ok)
+function PreViewMsgBox:showMsgBoxEx(info,ok)
 	local view = PreViewMsgBox:new(nil)
     if(view.TextTips ~= nil)
 	then

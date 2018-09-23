@@ -2,10 +2,13 @@
 
 namespace Casinos
 {
+    using UnityEngine;
+
     public class CasinosConfig
     {
         //---------------------------------------------------------------------
         public string Platform { get; private set; }// Android, iOS, PC
+        public string VersionBundle { get; private set; }
 
         //---------------------------------------------------------------------
         public CasinosConfig(_eEditorRunSourcePlatform editor_mode_runsources_platform)
@@ -24,6 +27,8 @@ namespace Casinos
                 default:
                     break;
             }
+
+            VersionBundle = Application.version;
         }
     }
 }

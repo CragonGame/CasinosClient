@@ -44,7 +44,7 @@ function PreViewLoading:onCreate()
     self.OnFinished = nil
     self.IsAuto = false
     self.ListRandomTips = {}
-    CS.FairyGUI.Timers.inst:Add(0, 0, self._updateTips)
+    --CS.FairyGUI.Timers.inst:Add(0, 0, self._updateTips)
 
     local com_bg = self.ComUi:GetChild("ComBg")
     com_bg = self.ComUi:GetChild("ComBg")
@@ -105,10 +105,10 @@ function PreViewLoading:onDestroy()
     CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
     if (self.IsAuto  == true)
     then
-        CS.FairyGUI.Timers.inst:Remove(self._playProgress)
+        --CS.FairyGUI.Timers.inst:Remove(self._playProgress)
     end
 
-    CS.FairyGUI.Timers.inst:Remove(self._updateTips)
+    --CS.FairyGUI.Timers.inst:Remove(self._updateTips)
 end
 
 ---------------------------------------
@@ -125,7 +125,7 @@ function PreViewLoading.fireAutoLoadingProgress()
     loading.GProgressBar.visible = true
     loading.IsAuto = true
 
-    CS.FairyGUI.Timers.inst:Add(0.01, 0, loading._playProgress)
+    --CS.FairyGUI.Timers.inst:Add(0.01, 0, loading._playProgress)
 end
 
 ---------------------------------------
@@ -148,11 +148,25 @@ function PreViewLoading.fireManualLoadingProgress(progress, loading_info)
         else
             if (OnFinished ~= nil)
             then
-                CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
+               -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
                 OnFinished()
             end
         end
     end
+end
+
+---------------------------------------
+-- 更新进度条上方提示文字
+function PreViewLoading:UpdateDesc(desc)
+    self.GTextFieldTips.text = desc
+end
+
+---------------------------------------
+-- 更新进度条
+function PreViewLoading:UpdateLoadingProgress(value, max)
+    self.GProgressBar.visible = true
+    self.GProgressBar.value = value
+    self.GProgressBar.max = max
 end
 
 ---------------------------------------
@@ -167,7 +181,7 @@ function PreViewLoading.setLoadingProgress(progress)
         else
             if (OnFinished ~= nil)
             then
-                CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
+                --CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
                 OnFinished()
             end
         end
@@ -250,7 +264,7 @@ function PreViewLoading._playProgress(param)
             value = value+2
             loading.GProgressBar.value = value
         else
-            CS.FairyGUI.Timers.inst.Remove(loading._playProgress)
+            --CS.FairyGUI.Timers.inst.Remove(loading._playProgress)
 
             if (OnFinished ~= nil)
             then

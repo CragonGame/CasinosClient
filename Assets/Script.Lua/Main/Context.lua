@@ -74,6 +74,8 @@ function Context:new(o)
     o = o or {}
     setmetatable(o,self)
     self.__index = self
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     return o
 end
 
@@ -81,6 +83,16 @@ end
 function Context:Init()
     Context:new(nil)
     print('Context:Init()')
+
+    print('首次运行解压资源，开始')
+    local desc = "首次运行解压资源，不消耗流量"
+    Launch.PreLoading:UpdateDesc(desc)
+    if(self.CopyStreamingAssetsToPersistentData == nil)
+    then
+        self.CopyStreamingAssetsToPersistentData = CS.Casinos.CopyStreamingAssetsToPersistentData2()
+        self.CopyStreamingAssetsToPersistentData:CopyAsync('')
+    end
+    self.TimerUpdateCopyStreamingAssetsToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self._timerUpdateCopyStreamingAssetsToPersistentData)
 
     -- 销毁所有资源，因为可以从Login返回到Launch
     -- Esc可以弹出退出确认对话框，随时退出
@@ -96,5 +108,22 @@ end
 
 ---------------------------------------
 function Context:Release()
+    self.Timer:Close()
     print('Context:Release()')
+end
+
+---------------------------------------
+-- 被C#回调，没有传递self
+function Context:_timerUpdateCopyStreamingAssetsToPersistentData()
+    local is_done = Context.CopyStreamingAssetsToPersistentData:IsDone()
+    if(is_done)
+    then
+        Context.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
+        Context.CopyStreamingAssetsToPersistentData = nil
+        print('首次运行解压资源，结束')
+    else
+        local value = Context.CopyStreamingAssetsToPersistentData.LeftCount
+        local max = Context.CopyStreamingAssetsToPersistentData.TotalCount
+        Launch.PreLoading:UpdateLoadingProgress(max - value, max)
+    end
 end

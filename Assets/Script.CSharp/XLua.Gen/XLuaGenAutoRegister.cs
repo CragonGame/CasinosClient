@@ -205,6 +205,12 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.TweenValue), FairyGUITweenValueWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(Casinos._eProjectItemDisplayNameKey), Casinos_eProjectItemDisplayNameKeyWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(_eAsyncAssetLoadType), _eAsyncAssetLoadTypeWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(_ePayType), _ePayTypeWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(EbTool), EbToolWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(TcpClient), TcpClientWrap.__Register);
@@ -227,15 +233,11 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(AsyncAssetLoadGroup), AsyncAssetLoadGroupWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos._eProjectItemDisplayNameKey), Casinos_eProjectItemDisplayNameKeyWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(_eAsyncAssetLoadType), _eAsyncAssetLoadTypeWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(_ePayType), _ePayTypeWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(Casinos.ParseStreamingAssetsDataInfo), CasinosParseStreamingAssetsDataInfoWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentDataPath), CasinosCopyStreamingAssetsToPersistentDataPathWrap.__Register);
+				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData1), CasinosCopyStreamingAssetsToPersistentData1Wrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData2), CasinosCopyStreamingAssetsToPersistentData2Wrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.UiSoundMgr), CasinosUiSoundMgrWrap.__Register);
 				

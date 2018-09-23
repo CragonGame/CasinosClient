@@ -154,6 +154,10 @@ namespace Casinos
             typeof(FairyGUI.EaseType),
             typeof(FairyGUI.TweenValue),
 
+            // Casinos
+            typeof(_eProjectItemDisplayNameKey),
+            typeof(_eAsyncAssetLoadType),
+            typeof(_ePayType),
             typeof(EbTool),
             typeof(TcpClient),
             typeof(EbTimeEvent),
@@ -165,19 +169,13 @@ namespace Casinos
             typeof(LoaderTicket),
             typeof(AsyncAssetLoaderMgr),
             typeof(AsyncAssetLoadGroup),
-
-            typeof(Casinos._eProjectItemDisplayNameKey),
-            typeof(_eAsyncAssetLoadType),
-            typeof(_ePayType),
-
-            typeof(Casinos.ParseStreamingAssetsDataInfo),
-            typeof(Casinos.CopyStreamingAssetsToPersistentDataPath),
-            //typeof(Casinos.LaunchConfigLoader),
-            typeof(Casinos.UiSoundMgr),
+            typeof(ParseStreamingAssetsDataInfo),
+            typeof(CopyStreamingAssetsToPersistentData1),
+            typeof(CopyStreamingAssetsToPersistentData2),
+            typeof(UiSoundMgr),
             typeof(ChatParser),
             typeof(UiHelper),
             typeof(Card),
-
             typeof(QRCodeMaker),
             typeof(OnePF.Purchase),
             typeof(BuglyAgent),
@@ -193,7 +191,6 @@ namespace Casinos
             typeof(OpenInstallReceiver),
             typeof(OpenInstall),
             typeof(NativeFun),
-
             //typeof(Casinos.ConfigSection),
             //typeof(DevInfoSet),
             //typeof(MobLink),

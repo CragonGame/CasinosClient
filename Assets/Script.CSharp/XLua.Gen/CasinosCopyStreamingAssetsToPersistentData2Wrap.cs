@@ -15,21 +15,20 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class CasinosCopyStreamingAssetsToPersistentDataPathWrap 
+    public class CasinosCopyStreamingAssetsToPersistentData2Wrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(Casinos.CopyStreamingAssetsToPersistentDataPath);
-			Utils.BeginObjectRegister(type, L, translator, 0, 2, 3, 0);
+			System.Type type = typeof(Casinos.CopyStreamingAssetsToPersistentData2);
+			Utils.BeginObjectRegister(type, L, translator, 0, 2, 2, 0);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "startCopy", _m_startCopy);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "update", _m_update);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CopyAsync", _m_CopyAsync);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsDone", _m_IsDone);
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "CurrentDataFile", _g_get_CurrentDataFile);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "TotalCount", _g_get_TotalCount);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "CurrentIndex", _g_get_CurrentIndex);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "TotalCount", _g_get_TotalCount);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "LeftCount", _g_get_LeftCount);
             
 			
 			
@@ -55,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					Casinos.CopyStreamingAssetsToPersistentDataPath gen_ret = new Casinos.CopyStreamingAssetsToPersistentDataPath();
+					Casinos.CopyStreamingAssetsToPersistentData2 gen_ret = new Casinos.CopyStreamingAssetsToPersistentData2();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -65,7 +64,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.CopyStreamingAssetsToPersistentDataPath constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.CopyStreamingAssetsToPersistentData2 constructor!");
             
         }
         
@@ -77,23 +76,21 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_startCopy(RealStatePtr L)
+        static int _m_CopyAsync(RealStatePtr L)
         {
 		    try {
             
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                Casinos.CopyStreamingAssetsToPersistentDataPath gen_to_be_invoked = (Casinos.CopyStreamingAssetsToPersistentDataPath)translator.FastGetCSObj(L, 1);
+                Casinos.CopyStreamingAssetsToPersistentData2 gen_to_be_invoked = (Casinos.CopyStreamingAssetsToPersistentData2)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    System.Collections.Generic.List<Casinos.StreamingAssetsFileInfo> _list_need_copyfile = (System.Collections.Generic.List<Casinos.StreamingAssetsFileInfo>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<Casinos.StreamingAssetsFileInfo>));
-                    System.Action<int, int> _action_pro = translator.GetDelegate<System.Action<int, int>>(L, 3);
-                    System.Action _action_copydown = translator.GetDelegate<System.Action>(L, 4);
+                    string _copy_dir = LuaAPI.lua_tostring(L, 2);
                     
-                    gen_to_be_invoked.startCopy( _list_need_copyfile, _action_pro, _action_copydown );
+                    gen_to_be_invoked.CopyAsync( _copy_dir );
                     
                     
                     
@@ -107,25 +104,25 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_update(RealStatePtr L)
+        static int _m_IsDone(RealStatePtr L)
         {
 		    try {
             
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                Casinos.CopyStreamingAssetsToPersistentDataPath gen_to_be_invoked = (Casinos.CopyStreamingAssetsToPersistentDataPath)translator.FastGetCSObj(L, 1);
+                Casinos.CopyStreamingAssetsToPersistentData2 gen_to_be_invoked = (Casinos.CopyStreamingAssetsToPersistentData2)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    float _tm = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                    gen_to_be_invoked.update( _tm );
+                        bool gen_ret = gen_to_be_invoked.IsDone(  );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
                     
-                    return 0;
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {
@@ -136,20 +133,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_CurrentDataFile(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CopyStreamingAssetsToPersistentDataPath gen_to_be_invoked = (Casinos.CopyStreamingAssetsToPersistentDataPath)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushstring(L, gen_to_be_invoked.CurrentDataFile);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_TotalCount(RealStatePtr L)
@@ -157,7 +140,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                Casinos.CopyStreamingAssetsToPersistentDataPath gen_to_be_invoked = (Casinos.CopyStreamingAssetsToPersistentDataPath)translator.FastGetCSObj(L, 1);
+                Casinos.CopyStreamingAssetsToPersistentData2 gen_to_be_invoked = (Casinos.CopyStreamingAssetsToPersistentData2)translator.FastGetCSObj(L, 1);
                 LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.TotalCount);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -166,13 +149,13 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_CurrentIndex(RealStatePtr L)
+        static int _g_get_LeftCount(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                Casinos.CopyStreamingAssetsToPersistentDataPath gen_to_be_invoked = (Casinos.CopyStreamingAssetsToPersistentDataPath)translator.FastGetCSObj(L, 1);
-                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.CurrentIndex);
+                Casinos.CopyStreamingAssetsToPersistentData2 gen_to_be_invoked = (Casinos.CopyStreamingAssetsToPersistentData2)translator.FastGetCSObj(L, 1);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.LeftCount);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
