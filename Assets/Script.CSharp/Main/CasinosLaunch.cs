@@ -23,6 +23,8 @@ namespace Casinos
         DelegateLuaUpdate FuncLuaLaunchUpdate { get; set; }
         Action FuncLuaLaunchRelease { get; set; }
 
+        GameCloud.Unity.Common.EbTimer Timer { get; set; }
+
         //---------------------------------------------------------------------
         public CasinosLaunch()
         {
@@ -66,6 +68,14 @@ namespace Casinos
             FuncLuaLaunchUpdate = lua_launch.Get<DelegateLuaUpdate>("Update");
             FuncLuaLaunchRelease = lua_launch.Get<Action>("Release");
             FuncLuaLaunchInit(lua_launch);
+
+            Timer = CasinosContext.Instance.TimerShaft.RegisterTimer(1000, _onTimer);
+        }
+
+        //---------------------------------------------------------------------
+        void _onTimer()
+        {
+            Debug.Log("TimeJeffies=" + CasinosContext.Instance.TimerShaft.GetTimeJeffies());
         }
 
         //---------------------------------------------------------------------

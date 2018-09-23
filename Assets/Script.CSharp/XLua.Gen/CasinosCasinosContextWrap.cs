@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosContext);
-			Utils.BeginObjectRegister(type, L, translator, 0, 21, 70, 55);
+			Utils.BeginObjectRegister(type, L, translator, 0, 21, 71, 55);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -49,6 +49,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "UCenterDomain", _g_get_UCenterDomain);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "UCenterAppId", _g_get_UCenterAppId);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "TimerShaft", _g_get_TimerShaft);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "Stopwatch", _g_get_Stopwatch);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "MemoryStream", _g_get_MemoryStream);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "SB", _g_get_SB);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "AsyncAssetLoaderMgr", _g_get_AsyncAssetLoaderMgr);
@@ -885,6 +886,20 @@ namespace XLua.CSObjectWrap
 			
                 Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.TimerShaft);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_Stopwatch(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.Stopwatch);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

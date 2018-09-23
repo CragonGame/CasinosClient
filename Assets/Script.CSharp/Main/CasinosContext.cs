@@ -57,6 +57,7 @@ namespace Casinos
         public string UCenterDomain { get; private set; }
         public string UCenterAppId { get; private set; }
         public TimerShaft TimerShaft { get; private set; }
+        public System.Diagnostics.Stopwatch Stopwatch { get; private set; }
         public MemoryStream MemoryStream { get; private set; }
         public StringBuilder SB { get; private set; }
         public AsyncAssetLoaderMgr AsyncAssetLoaderMgr { get; private set; }
@@ -135,13 +136,10 @@ namespace Casinos
         CSoundMgr SoundMgr { get; set; }
         string LuaProjectListenerName { get; set; }
         string PlatformName { get; set; }
-
+        
         public const string LocalDataVersionKey = "LocalVersionInfo";
         public const string PreDataVersionKey = "PreDataVersion";
         public const string LanKey = "LanKey";
-
-        //public CopyStreamingAssetsToPersistentDataPath CopyStreamingAssetsToPersistentDataPath { get; set; }
-        //public Launch Launch { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosContext(CasinosListener listener,
@@ -223,6 +221,8 @@ namespace Casinos
             NativeMgr = new NativeMgr();
             PathMgr = new PathMgr(editor_runsorce, use_persistent);// 初始化PathMgr
             FTMgr = new FTMgr();
+            Stopwatch = new System.Diagnostics.Stopwatch();
+            Stopwatch.Start();
             TimerShaft = new TimerShaft();
 
             Listener = listener;
@@ -313,13 +313,8 @@ namespace Casinos
 
             if (TimerShaft != null)
             {
-                TimerShaft.ProcessTimer((ulong)(Time.deltaTime * 1000));
+                TimerShaft.ProcessTimer((ulong)Stopwatch.ElapsedMilliseconds);
             }
-
-            //if (CopyStreamingAssetsToPersistentDataPath != null)
-            //{
-            //    CopyStreamingAssetsToPersistentDataPath.update(elapsed_tm);
-            //}
         }
 
         //---------------------------------------------------------------------
@@ -411,43 +406,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        //public void copyStreamingAssetsToPersistentDataPath()
-        //{
-        //    Launch.copyStreamingAssetsToPersistentDataPath();
-        //}
-
-        //---------------------------------------------------------------------
-        //public void LoadConfigDone()
-        //{
-        //}
-
-        //---------------------------------------------------------------------
-        //public void SetLoadDataDone()
-        //{
-        //    LoadDataDone = true;
-
-        //    //var t_lanmgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("LanMgr");
-        //    //var refresh_lan = t_lanmgr.Get<Action>("refreshLan");
-        //    //refresh_lan();
-
-        //    CasinosLua.LuaEnv.Global.Get<LuaTable>(LuaProjectListenerName);
-        //    ViewMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewMgr");
-        //    ViewHelper = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewHelper");
-        //    UiEndWaiting = ViewHelper.Get<Action<LuaTable>>("UiEndWaiting");
-        //    CreateView = ViewMgr.Get<GetView>("createView");
-        //    GetView = ViewMgr.Get<GetView>("getView");
-        //    DestroyView = ViewMgr.Get<Action<LuaTable>>("destroyView");
-        //    if (ProjectListener != null)
-        //    {
-        //        ActionOnApplicationPause = ProjectListener.Get<Action<bool>>("OnApplicationPause");
-        //    }
-
-        //    //ControllerMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ControllerMgr");
-        //    //CreateController = ControllerMgr.Get<CreateController>("CreateController");
-        //    //GetController = ControllerMgr.Get<GetController>("GetController");
-        //}
-
-        //---------------------------------------------------------------------
         public void SetNativeOperate(int native_operate)
         {
 #if UNITY_IOS
@@ -480,12 +438,6 @@ namespace Casinos
 
             return SB.ToString();
         }
-
-        //---------------------------------------------------------------------
-        //public void RegLuaFilePath(string luafile_relativepath, params string[] luafile_name)
-        //{
-        //    CasinosLua.RegLuaFilePath(luafile_relativepath, luafile_name);
-        //}
 
         //---------------------------------------------------------------------
         // 需要调整为可并发调用的接口
@@ -579,6 +531,52 @@ namespace Casinos
         }
     }
 }
+
+//public CopyStreamingAssetsToPersistentDataPath CopyStreamingAssetsToPersistentDataPath { get; set; }
+//public Launch Launch { get; set; }
+
+//---------------------------------------------------------------------
+//public void RegLuaFilePath(string luafile_relativepath, params string[] luafile_name)
+//{
+//    CasinosLua.RegLuaFilePath(luafile_relativepath, luafile_name);
+//}
+
+//---------------------------------------------------------------------
+//public void copyStreamingAssetsToPersistentDataPath()
+//{
+//    Launch.copyStreamingAssetsToPersistentDataPath();
+//}
+
+//---------------------------------------------------------------------
+//public void LoadConfigDone()
+//{
+//}
+
+//---------------------------------------------------------------------
+//public void SetLoadDataDone()
+//{
+//    LoadDataDone = true;
+
+//    //var t_lanmgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("LanMgr");
+//    //var refresh_lan = t_lanmgr.Get<Action>("refreshLan");
+//    //refresh_lan();
+
+//    CasinosLua.LuaEnv.Global.Get<LuaTable>(LuaProjectListenerName);
+//    ViewMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewMgr");
+//    ViewHelper = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewHelper");
+//    UiEndWaiting = ViewHelper.Get<Action<LuaTable>>("UiEndWaiting");
+//    CreateView = ViewMgr.Get<GetView>("createView");
+//    GetView = ViewMgr.Get<GetView>("getView");
+//    DestroyView = ViewMgr.Get<Action<LuaTable>>("destroyView");
+//    if (ProjectListener != null)
+//    {
+//        ActionOnApplicationPause = ProjectListener.Get<Action<bool>>("OnApplicationPause");
+//    }
+
+//    //ControllerMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ControllerMgr");
+//    //CreateController = ControllerMgr.Get<CreateController>("CreateController");
+//    //GetController = ControllerMgr.Get<GetController>("GetController");
+//}
 
 //---------------------------------------------------------------------
 //public void SetPreViewMgr()

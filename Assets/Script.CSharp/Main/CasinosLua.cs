@@ -157,6 +157,7 @@ namespace Casinos
             typeof(EbTool),
             typeof(TcpClient),
             typeof(EbTimeEvent),
+            typeof(EbTimer),
             typeof(EbDoubleLinkNode<EbTimeEvent>),
             typeof(EbDoubleLinkList<EbTimeEvent>),
             typeof(EbTimeWheel),

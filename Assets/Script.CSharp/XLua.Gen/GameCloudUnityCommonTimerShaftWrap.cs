@@ -21,8 +21,9 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(GameCloud.Unity.Common.TimerShaft);
-			Utils.BeginObjectRegister(type, L, translator, 0, 5, 7, 7);
+			Utils.BeginObjectRegister(type, L, translator, 0, 6, 7, 7);
 			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RegisterTimer", _m_RegisterTimer);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddTimer", _m_AddTimer);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DelTimer", _m_DelTimer);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ModTimer", _m_ModTimer);
@@ -89,6 +90,36 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_RegisterTimer(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                GameCloud.Unity.Common.TimerShaft gen_to_be_invoked = (GameCloud.Unity.Common.TimerShaft)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    ulong _tm = LuaAPI.lua_touint64(L, 2);
+                    System.Action _cb = translator.GetDelegate<System.Action>(L, 3);
+                    
+                        GameCloud.Unity.Common.EbTimer gen_ret = gen_to_be_invoked.RegisterTimer( _tm, _cb );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_AddTimer(RealStatePtr L)

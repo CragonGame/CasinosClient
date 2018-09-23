@@ -211,6 +211,8 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbTimeEvent), GameCloudUnityCommonEbTimeEventWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbTimer), GameCloudUnityCommonEbTimerWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>), GameCloudUnityCommonEbDoubleLinkNode_1_GameCloudUnityCommonEbTimeEvent_Wrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>), GameCloudUnityCommonEbDoubleLinkList_1_GameCloudUnityCommonEbTimeEvent_Wrap.__Register);

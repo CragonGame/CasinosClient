@@ -82,8 +82,10 @@ function Context:Init()
     Context:new(nil)
     print('Context:Init()')
 
+    -- 销毁所有资源，因为可以从Login返回到Launch
+    -- Esc可以弹出退出确认对话框，随时退出
     -- 检测Bundle是否需要更新
-    -- 更新Bundle
+    -- 弹框让玩家选择，更新Bundle
     -- 检测是否需要首次运行解压
     -- 首次运行解压
     -- 检测是否需要更新Data

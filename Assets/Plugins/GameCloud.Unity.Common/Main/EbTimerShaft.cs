@@ -8,7 +8,7 @@ namespace GameCloud.Unity.Common
     // 定时事件节点
     public class EbTimeEvent
     {
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public ulong mExpires;// 事件时间
         public delegate void del(object data);
         public del onTime;
@@ -17,12 +17,12 @@ namespace GameCloud.Unity.Common
 
     public class EbTimeWheel
     {
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public List<EbDoubleLinkList<EbTimeEvent>> mListTimerSpoke = null;
         public int mSpokeCount;
         public int mLastSpokeIndex;
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public EbTimeWheel(int spoke_count)
         {
             mLastSpokeIndex = -1;
@@ -36,7 +36,7 @@ namespace GameCloud.Unity.Common
             }
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void Destroy()
         {
             foreach (EbDoubleLinkList<EbTimeEvent> time_event_node in mListTimerSpoke)
@@ -45,14 +45,14 @@ namespace GameCloud.Unity.Common
             }
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 取得某个时间槽下的所有事件
         public EbDoubleLinkList<EbTimeEvent> GetSpoke(int index)
         {
             return mListTimerSpoke[index];
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 取得时间槽的事件队列头
         public EbDoubleLinkNode<EbTimeEvent> GetSpokeHead(int index)
         {
@@ -60,15 +60,62 @@ namespace GameCloud.Unity.Common
         }
     }
 
+    public class EbTimer
+    {
+        //---------------------------------------------------------------------
+        public TimerShaft TimerShaft { get; private set; }
+        public EbTimeEvent TimeEvent { get; private set; }
+        public EbDoubleLinkNode<EbTimeEvent> TimeNode { get; private set; }
+        Action FuncCb { get; set; }
+        ulong TmSpan { get; set; }
+        ulong LastTimeJeffies { get; set; } = 0;
+
+        //---------------------------------------------------------------------
+        public EbTimer(TimerShaft timer_shaft, ulong tm, Action cb)
+        {
+            TimerShaft = timer_shaft;
+            TmSpan = tm;
+            FuncCb = cb;
+            LastTimeJeffies = TimerShaft.GetTimeJeffies() + TmSpan;
+
+            var time_ev = new EbTimeEvent()
+            {
+                mExpires = TimerShaft.GetTimeJeffies() + TmSpan,
+                onTime = _onTimer,
+                mData = null
+            };
+            TimerShaft.AddTimer(time_ev);
+        }
+
+        //---------------------------------------------------------------------
+        public void Close()
+        {
+        }
+
+        //---------------------------------------------------------------------
+        void _onTimer(object data)
+        {
+            LastTimeJeffies += TmSpan;
+            var delta_tm = LastTimeJeffies - TimerShaft.GetTimeJeffies();
+
+            var time_ev = new EbTimeEvent()
+            {
+                mExpires = TimerShaft.GetTimeJeffies() + delta_tm,
+                onTime = _onTimer,
+                mData = null
+            };
+            TimerShaft.AddTimer(time_ev);
+
+            FuncCb();
+        }
+    }
+
     public class TimerShaft
     {
-        //-------------------------------------------------------------------------
-        readonly ulong MIN_WHEEL = 6;
-        readonly ulong MAX_WHEEL = 8;
-        readonly ulong MIN_WHEEL_SIZE = (1 << 6);// 64
-        readonly ulong MAX_WHEEL_SIZE = (1 << 8);// 256
-        readonly ulong MIN_WHEEL_MASK = (64 - 1);
-        readonly ulong MAX_WHEEL_MASK = (256 - 1);
+        //---------------------------------------------------------------------
+        Dictionary<EbTimeEvent, EbDoubleLinkNode<EbTimeEvent>> MapEventNode { get; set; }
+        EbDoubleLinkList<EbTimeEvent> ExcuteList { get; set; }
+
         public EbTimeWheel mWheel1 = null;
         public EbTimeWheel mWheel2 = null;
         public EbTimeWheel mWheel3 = null;
@@ -76,11 +123,20 @@ namespace GameCloud.Unity.Common
         public EbTimeWheel mWheel5 = null;
         public ulong mTimeJeffies;
         public ulong mLastJeffies;
-        Dictionary<EbTimeEvent, EbDoubleLinkNode<EbTimeEvent>> mMapEventNode = new Dictionary<EbTimeEvent, EbDoubleLinkNode<EbTimeEvent>>();
 
-        //-------------------------------------------------------------------------
+        readonly ulong MIN_WHEEL = 6;
+        readonly ulong MAX_WHEEL = 8;
+        readonly ulong MIN_WHEEL_SIZE = (1 << 6);// 64
+        readonly ulong MAX_WHEEL_SIZE = (1 << 8);// 256
+        readonly ulong MIN_WHEEL_MASK = (64 - 1);
+        readonly ulong MAX_WHEEL_MASK = (256 - 1);
+
+        //---------------------------------------------------------------------
         public TimerShaft()
         {
+            MapEventNode = new Dictionary<EbTimeEvent, EbDoubleLinkNode<EbTimeEvent>>();
+            ExcuteList = new EbDoubleLinkList<EbTimeEvent>();
+
             mWheel1 = new EbTimeWheel((int)MAX_WHEEL_SIZE);
             mWheel2 = new EbTimeWheel((int)MIN_WHEEL_SIZE);
             mWheel3 = new EbTimeWheel((int)MIN_WHEEL_SIZE);
@@ -88,25 +144,33 @@ namespace GameCloud.Unity.Common
             mWheel5 = new EbTimeWheel((int)MIN_WHEEL_SIZE);
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
+        public EbTimer RegisterTimer(ulong tm, Action cb)
+        {
+            EbTimer timer = new EbTimer(this, tm, cb);
+            return timer;
+        }
+
+        //---------------------------------------------------------------------
         // 添加一个时间事件
         public void AddTimer(EbTimeEvent time_event)
         {
             EbDoubleLinkNode<EbTimeEvent> timer_node = new EbDoubleLinkNode<EbTimeEvent>();
             timer_node.mObject = time_event;
 
-            mMapEventNode[time_event] = timer_node;
+            MapEventNode[time_event] = timer_node;
 
             _addTimer(timer_node);
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 删除一个时间事件
         public int DelTimer(EbTimeEvent time_event)
         {
-            if (mMapEventNode.ContainsKey(time_event))
+            if (MapEventNode.ContainsKey(time_event))
             {
-                EbDoubleLinkNode<EbTimeEvent> timer_node = mMapEventNode[time_event];
+                EbDoubleLinkNode<EbTimeEvent> timer_node = MapEventNode[time_event];
+                MapEventNode.Remove(time_event);
 
                 _delTimer(timer_node);
             }
@@ -114,7 +178,7 @@ namespace GameCloud.Unity.Common
             return 0;
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 修改一个时间事件的时间
         public int ModTimer(EbTimeEvent time_event, ulong expires)
         {
@@ -125,55 +189,57 @@ namespace GameCloud.Unity.Common
             return 0;
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 根据时间，执行时间事件
         public void ProcessTimer(ulong jeffies)
         {
-            EbDoubleLinkList<EbTimeEvent> excute_time = new EbDoubleLinkList<EbTimeEvent>();
+            ExcuteList.Destroy();
 
             while (jeffies >= mTimeJeffies)
             {
                 ulong index = mTimeJeffies & MAX_WHEEL_MASK;
 
-                if (index == 0 
-                    && _cascadeTimer(mWheel2, 0) == 0 
-                    && _cascadeTimer(mWheel3, 1) == 0 
+                if (index == 0
+                    && _cascadeTimer(mWheel2, 0) == 0
+                    && _cascadeTimer(mWheel3, 1) == 0
                     && _cascadeTimer(mWheel4, 2) == 0)
                 {
                     _cascadeTimer(mWheel5, 3);
                 }
+
                 mTimeJeffies++;
 
-                excute_time.AddTailList(mWheel1.GetSpoke((int)index));
+                ExcuteList.AddTailList(mWheel1.GetSpoke((int)index));
             }
 
             EbDoubleLinkNode<EbTimeEvent> head, curr, next;
-            head = excute_time.Head();
+            head = ExcuteList.Head();
             curr = head.next;
 
             while (curr != head)
             {
                 next = curr.next;
-                _delTimer(curr);
+
+                //_delTimer(curr);
+
+                DelTimer(curr.mObject);
+
+                var node = curr;
+                curr = next;
 
                 // 调用委托
-                if (curr.mObject.onTime != null)
-                {
-                    curr.mObject.onTime(curr.mObject.mData);
-                }
-
-                curr = next;
+                node.mObject.onTime?.Invoke(node.mObject.mData);
             }
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 取得已经执行的时间
         public ulong GetTimeJeffies()
         {
             return mTimeJeffies;
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 调整时间轮上的事件
         int _cascadeTimer(EbTimeWheel timer_wheel, int wheel_index)
         {
@@ -196,12 +262,11 @@ namespace GameCloud.Unity.Common
             return index;
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 添加事件
         void _addTimer(EbDoubleLinkNode<EbTimeEvent> timer)
         {
             ulong expires = timer.mObject.mExpires;
-
             ulong idx = expires - mTimeJeffies;
 
             EbDoubleLinkList<EbTimeEvent> list_timer_spoke = null;
@@ -253,12 +318,11 @@ namespace GameCloud.Unity.Common
             list_timer_spoke.AddTailNode(timer);
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 删除事件
         int _delTimer(EbDoubleLinkNode<EbTimeEvent> timer)
         {
             EbDoubleLinkList<EbTimeEvent>.DelNode(timer);
-
             return 0;
         }
     }

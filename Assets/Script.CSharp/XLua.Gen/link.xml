@@ -164,6 +164,7 @@
 	<assembly fullname="Assembly-CSharp-firstpass">
 	    <type fullname="EbTool" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbTimeEvent" preserve="all"/>
+		<type fullname="GameCloud.Unity.Common.EbTimer" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbDoubleLinkNode`1[GameCloud.Unity.Common.EbTimeEvent]" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbDoubleLinkList`1[GameCloud.Unity.Common.EbTimeEvent]" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbTimeWheel" preserve="all"/>
