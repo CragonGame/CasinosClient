@@ -205,7 +205,7 @@ function PreViewLoading.setTip(tip)
                 data_versionex = "数据版本"
             end
         end
-        version_text.text = string.format("%s：%s %s：%s",app_version, CS.UnityEngine.Application.version,data_versionex, data_version)
+        version_text.text = string.format("%s: %s,  %s: %s",app_version, CS.UnityEngine.Application.version,data_versionex, data_version)
     end
 end
 

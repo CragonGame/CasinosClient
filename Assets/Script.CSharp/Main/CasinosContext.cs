@@ -255,8 +255,6 @@ namespace Casinos
                 EbLog.ErrorCallback = Debug.LogError;
             }
 
-            EbLog.Note("CasinosContext Init");
-
             if (NativeAPIMsgReceiverListner == null)
             {
                 NativeAPIMsgReceiverListner = new NativeAPIMsgReceiverListener();
