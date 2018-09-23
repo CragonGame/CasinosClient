@@ -19,9 +19,9 @@ CommonWWWLoader = 'Helper/WWWLoader.lua'
 CommonLuaLoaderPath = 'Helper/CommonLuaLoader.lua'
 ProjectDataLoaderPath = 'Helper/ProjectDataLoader.lua'
 CommonLuaFileListTxtName = 'CommonLuaFileList.txt'
-DataVersion = '1.00.601'
-ProjectDataRootURL = 'cragon-king-oss.cragon.cn/ANDROID/Data/DataVersion_1.00.601/'
-DataFileListTextName = 'DataFileList.txt'
+DataVersion = '1.00.605'
+DataRootURL = 'cragon-king-oss.cragon.cn/ANDROID/Data_1.00.605/'
+DataFileListFileName = 'datafilelist.txt'
 DBListCommon = 'KingCommon|KingDesktop|KingDesktopH'
 DBListServer = 'KingServer'
 DBListClient = 'KingClient'
@@ -72,10 +72,11 @@ Context = {}
 ---------------------------------------
 function Context:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.Launch = Launch
     return o
 end
 
@@ -84,9 +85,16 @@ function Context:Init()
     Context:new(nil)
     print('Context:Init()')
 
-    print('首次运行解压资源，开始')
-    local desc = "首次运行解压资源，不消耗流量"
-    Launch.PreLoading:UpdateDesc(desc)
+    -- 销毁所有资源，因为可以从Login返回到Launch
+    -- Esc可以弹出退出确认对话框，随时退出
+
+    -- 检测Bundle是否需要更新
+    -- 弹框让玩家选择，更新Bundle
+
+    -- 检测是否需要首次运行解压
+    -- 首次运行解压
+    local desc_copy = "首次运行解压资源，不消耗流量"
+    self.Launch.PreLoading:UpdateDesc(desc_copy)
     if(self.CopyStreamingAssetsToPersistentData == nil)
     then
         self.CopyStreamingAssetsToPersistentData = CS.Casinos.CopyStreamingAssetsToPersistentData2()
@@ -94,36 +102,35 @@ function Context:Init()
     end
     self.TimerUpdateCopyStreamingAssetsToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self._timerUpdateCopyStreamingAssetsToPersistentData)
 
-    -- 销毁所有资源，因为可以从Login返回到Launch
-    -- Esc可以弹出退出确认对话框，随时退出
-    -- 检测Bundle是否需要更新
-    -- 弹框让玩家选择，更新Bundle
-    -- 检测是否需要首次运行解压
-    -- 首次运行解压
     -- 检测是否需要更新Data
     -- 更新Data
+
     -- 卸载Launch
     -- 加载并显示Login
 end
 
 ---------------------------------------
 function Context:Release()
-    self.Timer:Close()
+    if(self.TimerUpdateCopyStreamingAssetsToPersistentData ~= nil)
+    then
+        self.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
+        self.TimerUpdateCopyStreamingAssetsToPersistentData = nil
+    end
     print('Context:Release()')
 end
 
 ---------------------------------------
--- 被C#回调，没有传递self
+-- 定时器，首次运行解压。被C#回调，没有传递self。
 function Context:_timerUpdateCopyStreamingAssetsToPersistentData()
     local is_done = Context.CopyStreamingAssetsToPersistentData:IsDone()
     if(is_done)
     then
         Context.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
+        Context.TimerUpdateCopyStreamingAssetsToPersistentData = nil
         Context.CopyStreamingAssetsToPersistentData = nil
-        print('首次运行解压资源，结束')
     else
         local value = Context.CopyStreamingAssetsToPersistentData.LeftCount
         local max = Context.CopyStreamingAssetsToPersistentData.TotalCount
-        Launch.PreLoading:UpdateLoadingProgress(max - value, max)
+        Context.Launch.PreLoading:UpdateLoadingProgress(max - value, max)
     end
 end

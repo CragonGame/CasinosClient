@@ -72,10 +72,11 @@ Context = {}
 ---------------------------------------
 function Context:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.Launch = Launch
     return o
 end
 
@@ -84,9 +85,8 @@ function Context:Init()
     Context:new(nil)
     print('Context:Init()')
 
-    print('首次运行解压资源，开始')
     local desc = "首次运行解压资源，不消耗流量"
-    Launch.PreLoading:UpdateDesc(desc)
+    self.Launch.PreLoading:UpdateDesc(desc)
     if(self.CopyStreamingAssetsToPersistentData == nil)
     then
         self.CopyStreamingAssetsToPersistentData = CS.Casinos.CopyStreamingAssetsToPersistentData2()
@@ -108,7 +108,11 @@ end
 
 ---------------------------------------
 function Context:Release()
-    self.Timer:Close()
+    if(self.TimerUpdateCopyStreamingAssetsToPersistentData ~= nil)
+    then
+        self.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
+        self.TimerUpdateCopyStreamingAssetsToPersistentData = nil
+    end
     print('Context:Release()')
 end
 
@@ -119,11 +123,11 @@ function Context:_timerUpdateCopyStreamingAssetsToPersistentData()
     if(is_done)
     then
         Context.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
+        Context.TimerUpdateCopyStreamingAssetsToPersistentData = nil
         Context.CopyStreamingAssetsToPersistentData = nil
-        print('首次运行解压资源，结束')
     else
         local value = Context.CopyStreamingAssetsToPersistentData.LeftCount
         local max = Context.CopyStreamingAssetsToPersistentData.TotalCount
-        Launch.PreLoading:UpdateLoadingProgress(max - value, max)
+        Context.Launch.PreLoading:UpdateLoadingProgress(max - value, max)
     end
 end

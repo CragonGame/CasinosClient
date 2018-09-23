@@ -146,12 +146,12 @@ function Launch:_loadABPreLoadingDone()
     --        end
     --)
 
-    local view_premsgbox = self.PreViewMgr.createView("PreMsgBox")
-    view_premsgbox:showMsgBox(self.CasinosContext.Config.VersionBundle,
-            function ()
-                print('ok')
-            end
-    )
+    --local view_premsgbox = self.PreViewMgr.createView("PreMsgBox")
+    --view_premsgbox:showMsgBox(self.CasinosContext.Config.VersionBundle,
+    --        function ()
+    --            print('ok')
+    --        end
+    --)
 
     local http_url = string.format('https://cragon-king-oss.cragon.cn/%s/Bundle_%s/Context.lua',
             self.CasinosContext.Config.Platform, self.CasinosContext.Config.VersionBundle)
