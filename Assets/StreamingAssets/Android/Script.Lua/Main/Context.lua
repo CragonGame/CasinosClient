@@ -13,8 +13,9 @@ end
 
 ---------------------------------------
 function Context:Init()
+    print('Context:Init()')
 end
 
 ---------------------------------------
-function LuaContext:Release()
+function Context:Release()
 end

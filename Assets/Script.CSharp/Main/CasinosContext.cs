@@ -276,13 +276,11 @@ namespace Casinos
             UIObjectFactory.SetLoaderExtension(typeof(GLoaderEx));
 
             CasinosLua = new CasinosLua();
-
             SoundMgr = new CSoundMgr();
+            HeadIconMgr = new HeadIconMgr();
 
             //CopyStreamingAssetsToPersistentDataPath = new CopyStreamingAssetsToPersistentDataPath();
             //Launch = new Launch();
-
-            HeadIconMgr = new HeadIconMgr();
         }
 
         //---------------------------------------------------------------------
@@ -327,7 +325,6 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void FixedUpdate()
         {
-            Listener.OnFixedUpdate(Time.fixedDeltaTime);
         }
 
         //---------------------------------------------------------------------
@@ -365,19 +362,12 @@ namespace Casinos
             }
 
             Screen.sleepTimeout = SleepTimeout.SystemSetting;
-
-            EbLog.Note("Casinos Close()");
         }
 
         //---------------------------------------------------------------------
         public void Launch()
         {
             var launch = new CasinosLaunch();
-
-            // 解析全局函数
-            //FuncLuaInit = CasinosLua.LuaEnv.Global.Get<Action>("MainCInit");
-            //FuncLuaUpdate = LuaEnv.Global.Get<DelegateLuaUpdate>("MainCUpdate");
-            //FuncLuaRelease = LuaEnv.Global.Get<Action>("MainCRelease");
         }
 
         //---------------------------------------------------------------------
@@ -427,35 +417,35 @@ namespace Casinos
         //}
 
         //---------------------------------------------------------------------
-        public void LoadConfigDone()
-        {
-        }
+        //public void LoadConfigDone()
+        //{
+        //}
 
         //---------------------------------------------------------------------
-        public void SetLoadDataDone()
-        {
-            LoadDataDone = true;
+        //public void SetLoadDataDone()
+        //{
+        //    LoadDataDone = true;
 
-            //var t_lanmgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("LanMgr");
-            //var refresh_lan = t_lanmgr.Get<Action>("refreshLan");
-            //refresh_lan();
+        //    //var t_lanmgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("LanMgr");
+        //    //var refresh_lan = t_lanmgr.Get<Action>("refreshLan");
+        //    //refresh_lan();
 
-            CasinosLua.LuaEnv.Global.Get<LuaTable>(LuaProjectListenerName);
-            ViewMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewMgr");
-            ViewHelper = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewHelper");
-            UiEndWaiting = ViewHelper.Get<Action<LuaTable>>("UiEndWaiting");
-            CreateView = ViewMgr.Get<GetView>("createView");
-            GetView = ViewMgr.Get<GetView>("getView");
-            DestroyView = ViewMgr.Get<Action<LuaTable>>("destroyView");
-            if (ProjectListener != null)
-            {
-                ActionOnApplicationPause = ProjectListener.Get<Action<bool>>("OnApplicationPause");
-            }
+        //    CasinosLua.LuaEnv.Global.Get<LuaTable>(LuaProjectListenerName);
+        //    ViewMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewMgr");
+        //    ViewHelper = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewHelper");
+        //    UiEndWaiting = ViewHelper.Get<Action<LuaTable>>("UiEndWaiting");
+        //    CreateView = ViewMgr.Get<GetView>("createView");
+        //    GetView = ViewMgr.Get<GetView>("getView");
+        //    DestroyView = ViewMgr.Get<Action<LuaTable>>("destroyView");
+        //    if (ProjectListener != null)
+        //    {
+        //        ActionOnApplicationPause = ProjectListener.Get<Action<bool>>("OnApplicationPause");
+        //    }
 
-            //ControllerMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ControllerMgr");
-            //CreateController = ControllerMgr.Get<CreateController>("CreateController");
-            //GetController = ControllerMgr.Get<GetController>("GetController");
-        }
+        //    //ControllerMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ControllerMgr");
+        //    //CreateController = ControllerMgr.Get<CreateController>("CreateController");
+        //    //GetController = ControllerMgr.Get<GetController>("GetController");
+        //}
 
         //---------------------------------------------------------------------
         public void SetNativeOperate(int native_operate)
@@ -467,92 +457,15 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void SetPreViewMgr()
-        {
-            PreViewMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("PreViewMgr");
-            var action_new = PreViewMgr.Get<Action<LuaTable>>("new");
-            action_new(CasinosLua.LuaEnv.NewTable());
-            var action_oncreate = PreViewMgr.Get<Action>("onCreate");
-            action_oncreate();
-            CreatePreView = PreViewMgr.Get<GetView>("createView");
-            GetPreView = PreViewMgr.Get<GetView>("getView");
-            DestroyPreView = PreViewMgr.Get<Action<LuaTable>>("destroyView");
-        }
-
-        //---------------------------------------------------------------------
         public LuaTable GetLuaTable(string name)
         {
             return CasinosLua.GetLuaTable(name);
         }
 
         //---------------------------------------------------------------------
-        public LuaTable createView(string view_name)
-        {
-            return CreateView(view_name);
-        }
-
-        //---------------------------------------------------------------------
-        public LuaTable getView(string view_name)
-        {
-            return GetView(view_name);
-        }
-
-        //---------------------------------------------------------------------
-        public void destroyView(LuaTable lua_table)
-        {
-            DestroyView(lua_table);
-        }
-
-        //---------------------------------------------------------------------
-        public LuaTable createPreView(string view_name)
-        {
-            return CreatePreView(view_name);
-        }
-
-        //---------------------------------------------------------------------
-        public LuaTable getPreView(string view_name)
-        {
-            return GetPreView(view_name);
-        }
-
-        //---------------------------------------------------------------------
-        public void destroyPreView(LuaTable lua_table)
-        {
-            DestroyPreView(lua_table);
-        }
-
-        //---------------------------------------------------------------------
-        //public string GetChannelName()
-        //{
-        //    string bundle_id = Application.identifier;
-        //    string channel_name = bundle_id.Replace(Config.AppCommonIdentifier, "");
-        //    return channel_name;
-        //}
-
-        //---------------------------------------------------------------------
-        public string GetMainCUrl()
-        {
-            //ClearSB();
-            SB.Clear();
-            SB.Append("https://cragon-king-oss.cragon.cn/");
-
-#if UNITY_ANDROID
-            SB.Append("ANDROID");
-#elif UNITY_IPHONE
-            SB.Append("IOS");
-#endif
-            SB.Append("/Bundle/");
-            SB.Append(Application.version);
-            SB.Append("/MainC.lua");
-
-            return SB.ToString();
-        }
-
-        //---------------------------------------------------------------------
         public void ClearSB()
         {
             SB.Clear();
-            //SB.Length = 0;
         }
 
         //---------------------------------------------------------------------
@@ -666,3 +579,78 @@ namespace Casinos
         }
     }
 }
+
+//---------------------------------------------------------------------
+//public void SetPreViewMgr()
+//{
+//    PreViewMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("PreViewMgr");
+//    var action_new = PreViewMgr.Get<Action<LuaTable>>("new");
+//    action_new(CasinosLua.LuaEnv.NewTable());
+//    var action_oncreate = PreViewMgr.Get<Action>("onCreate");
+//    action_oncreate();
+//    CreatePreView = PreViewMgr.Get<GetView>("createView");
+//    GetPreView = PreViewMgr.Get<GetView>("getView");
+//    DestroyPreView = PreViewMgr.Get<Action<LuaTable>>("destroyView");
+//}
+
+//---------------------------------------------------------------------
+//public LuaTable createView(string view_name)
+//{
+//    return CreateView(view_name);
+//}
+
+////---------------------------------------------------------------------
+//public LuaTable getView(string view_name)
+//{
+//    return GetView(view_name);
+//}
+
+////---------------------------------------------------------------------
+//public void destroyView(LuaTable lua_table)
+//{
+//    DestroyView(lua_table);
+//}
+
+//---------------------------------------------------------------------
+//public LuaTable createPreView(string view_name)
+//{
+//    return CreatePreView(view_name);
+//}
+
+////---------------------------------------------------------------------
+//public LuaTable getPreView(string view_name)
+//{
+//    return GetPreView(view_name);
+//}
+
+////---------------------------------------------------------------------
+//public void destroyPreView(LuaTable lua_table)
+//{
+//    DestroyPreView(lua_table);
+//}
+
+//---------------------------------------------------------------------
+//public string GetChannelName()
+//{
+//    string bundle_id = Application.identifier;
+//    string channel_name = bundle_id.Replace(Config.AppCommonIdentifier, "");
+//    return channel_name;
+//}
+
+//---------------------------------------------------------------------
+//        public string GetMainCUrl()
+//        {
+//            SB.Clear();
+//            SB.Append("https://cragon-king-oss.cragon.cn/");
+
+//#if UNITY_ANDROID
+//            SB.Append("ANDROID");
+//#elif UNITY_IPHONE
+//            SB.Append("IOS");
+//#endif
+//            SB.Append("/Bundle/");
+//            SB.Append(Application.version);
+//            SB.Append("/MainC.lua");
+
+//            return SB.ToString();
+//        }

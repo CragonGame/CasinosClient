@@ -20,6 +20,13 @@ public class WWWAssetAsyncLoader
     }
 
     //-------------------------------------------------------------------------
+    public LoaderTicket LoadAsync(string url, Action<string, WWW> loaded_action)
+    {
+        var loader_ticket = AsyncAssetLoaderMgr.WWWAsyncLoader.getIsDoneWWW(url, loaded_action);
+        return loader_ticket;
+    }
+
+    //-------------------------------------------------------------------------
     public LoaderTicket getAsset(string asset_path, string asset_name, _eAsyncAssetLoadType loader_type,
         Action<LoaderTicket, string, UnityEngine.Object> bundle_asset_callback)
     {

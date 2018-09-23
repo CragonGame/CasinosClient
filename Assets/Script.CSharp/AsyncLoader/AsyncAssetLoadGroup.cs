@@ -75,6 +75,14 @@ public class AsyncAssetLoadGroup
     }
 
     //-------------------------------------------------------------------------
+    // 异步加载WWW下载回来的资源（新）
+    public LoaderTicket LoadWWWAsync(string url, Action<string, WWW> loaded_action)
+    {
+        LoaderTicket tick = AsyncAssetLoaderMgr.WWWAssetAsyncLoader.LoadAsync(url, loaded_action);
+        return tick;
+    }
+
+    //-------------------------------------------------------------------------
     public LoaderTicket asyncLoadLocalBundle(List<string> list_bundle_path, _eAsyncAssetLoadType loader_type,
        Action<List<AssetBundle>> loaded_action)
     {

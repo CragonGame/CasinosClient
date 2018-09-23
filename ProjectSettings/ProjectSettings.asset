@@ -244,7 +244,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/CasinosClient/Other/KingTexas.keystore
+  AndroidKeystoreName: D:/KingTexas.keystore
   AndroidKeyaliasName: kingtexas
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1

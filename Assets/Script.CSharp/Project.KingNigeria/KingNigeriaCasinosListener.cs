@@ -69,11 +69,6 @@ namespace Casinos
             int vip_limit = CasinosContext.Instance.DesktopCanChatVIPLimit;
             return string.Format("只有VIP{0}才可以聊天", vip_limit);
         }
-
-        //---------------------------------------------------------------------
-        public override void OnFixedUpdate(float elapsed_tm)
-        {
-        }
     }
 #endif
 }

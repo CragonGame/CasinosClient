@@ -63,7 +63,7 @@ namespace Casinos
                 }
                 catch (Exception e)
                 {
-                    UiHelperCasinos.UiShowPreLoading("CopyStreamingAssetsToPersistentDataPath GetFileName " + e.Message, 0);
+                    //UiHelperCasinos.UiShowPreLoading("CopyStreamingAssetsToPersistentDataPath GetFileName " + e.Message, 0);
                     return;
                 }
 
@@ -88,7 +88,7 @@ namespace Casinos
                     else
                     {
                         Debug.Log("Key  " + i.Key.datafile_streamingasset_path + "   Key2  " + i.Key.datafile_persistentdata_path + " url   " + www.url);
-                        UiHelperCasinos.UiShowPreLoading("CopyStreamingAssetsToPersistentDataPath WWWError " + www.error + "  url " + www.url, 0);
+                        //UiHelperCasinos.UiShowPreLoading("CopyStreamingAssetsToPersistentDataPath WWWError " + www.error + "  url " + www.url, 0);
                         return;
                     }
                 }
@@ -118,7 +118,7 @@ namespace Casinos
                     }
                     catch (Exception e)
                     {
-                        UiHelperCasinos.UiShowPreLoading("CopyStreamingAssetsToPersistentDataPath WriteFileError " + e.Message, 0);
+                        //UiHelperCasinos.UiShowPreLoading("CopyStreamingAssetsToPersistentDataPath WriteFileError " + e.Message, 0);
                         return;
                     }
                 }

@@ -4,7 +4,7 @@ namespace Casinos
 {
     using System;
     using System.Collections.Generic;
-    
+
     public abstract class CasinosListener
     {
         //---------------------------------------------------------------------
@@ -37,8 +37,5 @@ namespace Casinos
 
         //---------------------------------------------------------------------
         public abstract string GetCanNotChatTipsDesktop();
-
-        //---------------------------------------------------------------------
-        public abstract void OnFixedUpdate(float elapsed_tm);
     }
 }

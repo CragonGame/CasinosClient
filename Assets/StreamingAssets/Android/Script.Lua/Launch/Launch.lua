@@ -14,7 +14,6 @@ function Launch:new(o)
         self.ControllerName = "Launch"
         self.LaunchConfigLoader = nil
         self.CanCheckLoadDataDone = false
-        self.PreViewLoadDone = false
         self.InitializeDone = false
         self.PreViewMgr = nil
         self.Instance = o
@@ -46,9 +45,9 @@ function Launch:Init()
 
     casinos_context:LuaAsyncLoadLocalUiBundle(
             function()
-                Launch:_loadABDone()
+                Launch:_loadABPreLoadingDone()
             end
-    ,ui_path_loading,ui_path_msgbox)
+    ,ui_path_loading, ui_path_msgbox)
 end
 
 ---------------------------------------
@@ -68,7 +67,7 @@ function Launch:Update(tm)
     then
         local casinos_context = CS.Casinos.CasinosContext.Instance
         local load_datadone = casinos_context.LoadDataDone
-        if (load_datadone==true and launch.PreViewLoadDone == true)
+        if (load_datadone==true)
         then
             launch.CanCheckLoadDataDone = false
 
@@ -92,14 +91,6 @@ function Launch:Update(tm)
                 end)
         end
     end
-end
-
----------------------------------------
-function Launch:onHandleEv(ev)
-end
-
----------------------------------------
-function Launch:getModle()
 end
 
 ---------------------------------------
@@ -131,7 +122,7 @@ function Launch:CopyStreamingAssetsToPersistentDataPath()
 end
 
 ---------------------------------------
-function Launch:_loadABDone()
+function Launch:_loadABPreLoadingDone()
     local view_preloading = self.PreViewMgr.createView("PreLoading")
     local tips = "正在努力加载配置，请耐心等待..."
     local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
@@ -145,14 +136,25 @@ function Launch:_loadABDone()
         end
     end
     view_preloading.setTip(tips)
-    self.PreViewLoadDone = true
---[[    self.LaunchConfigLoader = CS.Casinos.LaunchConfigLoader()
+
+    --[[self.LaunchConfigLoader = CS.Casinos.LaunchConfigLoader()
     local maic_path = CS.Casinos.CasinosContext.Instance:GetMainCPath()
     self.LaunchConfigLoader:loadConfig(maic_path,
             function(config)
                 self:_loadConfigDone(config)
             end
     )]]
+
+    local http_url = 'https://cragon-king-oss.cragon.cn/ANDROID/Bundle_1.10.000/Context.lua'
+    local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
+    async_asset_loadgroup:LoadWWWAsync(http_url,
+            function(url, www)
+                local casinos_lua = CS.Casinos.CasinosContext.Instance.CasinosLua
+                casinos_lua:LoadLuaFromBytes('Context', www.text)
+                require 'Context'
+                Context:Init()
+            end
+    )
 end
 
 ---------------------------------------

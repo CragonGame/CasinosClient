@@ -68,7 +68,7 @@ namespace Casinos
                     }
                     else
                     {
-                        UiHelperCasinos.UiShowPreLoading("DBConfigLoader WWWConfig " + WWWConfig.error, 0);
+                        //UiHelperCasinos.UiShowPreLoading("DBConfigLoader WWWConfig " + WWWConfig.error, 0);
 
                         mRetryCount++;
                         if (mRetryCount > 3)
@@ -145,16 +145,16 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _loadLua(byte[] config)
         {
-            CasinosLua casinos_lua = CasinosContext.Instance.CasinosLua;
-            casinos_lua.AddLuaFile(DBConfigName, config);
-            casinos_lua.DoString(DBConfigName);
+            //CasinosLua casinos_lua = CasinosContext.Instance.CasinosLua;
+            //casinos_lua.AddLuaFile(DBConfigName, config);
+            //casinos_lua.DoString(DBConfigName);
 
-            bool version_issame = false;
-            if (PlayerPrefs.HasKey(Application.identifier + DBVersion))
-            {
-                string local_version = PlayerPrefs.GetString(DBVersion);
-                version_issame = local_version.Equals(RemoteDbVersion);
-            }
+            //bool version_issame = false;
+            //if (PlayerPrefs.HasKey(Application.identifier + DBVersion))
+            //{
+            //    string local_version = PlayerPrefs.GetString(DBVersion);
+            //    version_issame = local_version.Equals(RemoteDbVersion);
+            //}
 
             //string list_dbcommon = casinos_lua.LuaEnv.Global.Get<string>("DBListCommon");
             //var db_names_common = list_dbcommon.Split('|');

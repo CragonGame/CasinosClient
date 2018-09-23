@@ -80,6 +80,7 @@ namespace Casinos
             
             // Sys            
             typeof(Action),
+            typeof(Action<string, WWW>),
             typeof(BitConverter),
             typeof(Array),
             typeof(Hashtable),
@@ -160,7 +161,10 @@ namespace Casinos
             typeof(EbDoubleLinkList<EbTimeEvent>),
             typeof(EbTimeWheel),
             typeof(TimerShaft),
-            
+            typeof(LoaderTicket),
+            typeof(AsyncAssetLoaderMgr),
+            typeof(AsyncAssetLoadGroup),
+
             typeof(Casinos._eProjectItemDisplayNameKey),
             typeof(_eAsyncAssetLoadType),
             typeof(_ePayType),
@@ -211,6 +215,7 @@ namespace Casinos
             typeof(Action<float>),
             typeof(Action<string,Action>),
             typeof(Action<string,Action,Action>),
+            typeof(Action<string,WWW>),
             typeof(Action<string,string>),
             typeof(Action<string,int>),
             typeof(Action<string,float>),
@@ -333,6 +338,16 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void LoadLuaFromBytes(string file_name, string text)
+        {
+            string name = file_name.ToLower();
+            string name1 = name.Replace(".lua", "");
+
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(text);
+            MapLuaFiles[name1] = bytes;
+        }
+
+        //---------------------------------------------------------------------
         public void LoadLuaFromDir(string[] list_path)
         {
             foreach (var k in list_path)
@@ -368,12 +383,6 @@ namespace Casinos
         //        MapLuaFilePath[i] = path;
         //    }
         //}
-
-        //---------------------------------------------------------------------
-        public void AddLuaFile(string file_name, byte[] array_file)
-        {
-            MapLuaFiles[file_name] = array_file;
-        }
 
         //---------------------------------------------------------------------
         public void DoString(string luafile_name)

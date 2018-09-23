@@ -219,6 +219,12 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.TimerShaft), GameCloudUnityCommonTimerShaftWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(LoaderTicket), LoaderTicketWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(AsyncAssetLoaderMgr), AsyncAssetLoaderMgrWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(AsyncAssetLoadGroup), AsyncAssetLoadGroupWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(Casinos._eProjectItemDisplayNameKey), Casinos_eProjectItemDisplayNameKeyWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(_eAsyncAssetLoadType), _eAsyncAssetLoadTypeWrap.__Register);

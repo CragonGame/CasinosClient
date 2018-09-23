@@ -182,16 +182,16 @@ namespace XLua.CSObjectWrap
             
 			    int gen_param_count = LuaAPI.lua_gettop(L);
             
-                //if(gen_param_count == 1&& translator.Assignable<UnityEngine.iOS.ActivityIndicatorStyle>(L, 1)) 
-                //{
-                //    UnityEngine.iOS.ActivityIndicatorStyle _style;translator.Get(L, 1, out _style);
+                if(gen_param_count == 1&& translator.Assignable<UnityEngine.iOS.ActivityIndicatorStyle>(L, 1)) 
+                {
+                    UnityEngine.iOS.ActivityIndicatorStyle _style;translator.Get(L, 1, out _style);
                     
-                //    UnityEngine.Handheld.SetActivityIndicatorStyle( _style );
+                    UnityEngine.Handheld.SetActivityIndicatorStyle( _style );
                     
                     
                     
-                //    return 0;
-                //}
+                    return 0;
+                }
                 if(gen_param_count == 1&& translator.Assignable<UnityEngine.AndroidActivityIndicatorStyle>(L, 1)) 
                 {
                     UnityEngine.AndroidActivityIndicatorStyle _style;translator.Get(L, 1, out _style);

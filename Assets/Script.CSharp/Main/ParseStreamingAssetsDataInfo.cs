@@ -48,7 +48,7 @@ namespace Casinos
             }
             catch (Exception e)
             {
-                UiHelperCasinos.UiShowPreLoading("ParseStreamingAssetsDataInfo Init " + e.Message, 0);
+                //UiHelperCasinos.UiShowPreLoading("ParseStreamingAssetsDataInfo Init " + e.Message, 0);
             }
 
             return false;
@@ -72,7 +72,7 @@ namespace Casinos
             }
             catch (Exception e)
             {
-                UiHelperCasinos.UiShowPreLoading("ParseStreamingAssetsDataInfo WriteDataFileList " + e.Message, 0);
+                //UiHelperCasinos.UiShowPreLoading("ParseStreamingAssetsDataInfo WriteDataFileList " + e.Message, 0);
                 return;
             }
         }
@@ -86,7 +86,7 @@ namespace Casinos
                 {
                     if (!string.IsNullOrEmpty(WWWLoadDataFileList.error))
                     {
-                        UiHelperCasinos.UiShowPreLoading("ParseStreamingAssetsDataInfo WWWLoadDataFileList " + WWWLoadDataFileList.error, 0);
+                        //UiHelperCasinos.UiShowPreLoading("ParseStreamingAssetsDataInfo WWWLoadDataFileList " + WWWLoadDataFileList.error, 0);
                         return;
                     }
 
@@ -146,7 +146,7 @@ namespace Casinos
             }
             catch (Exception e)
             {
-                UiHelperCasinos.UiShowPreLoading("ParseStreamingAssetsDataInfo _parseDataFileList " + e.Message, 0);
+                //UiHelperCasinos.UiShowPreLoading("ParseStreamingAssetsDataInfo _parseDataFileList " + e.Message, 0);
                 return;
             }
         }

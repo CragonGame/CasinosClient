@@ -18,41 +18,41 @@ namespace Casinos
         };
 
         //---------------------------------------------------------------------
-        public static LuaTable UiShowPreMsgBox(string info, Action ok, Action cancel)
-        {
-            LuaTable view = CasinosContext.Instance.createPreView("PreMsgBox");
-            var f = view.Get<Action<string, Action, Action>>("showMsgBox");
-            f(info, ok, cancel);
-            return view;
-        }
+        //public static LuaTable UiShowPreMsgBox(string info, Action ok, Action cancel)
+        //{
+        //    LuaTable view = CasinosContext.Instance.createPreView("PreMsgBox");
+        //    var f = view.Get<Action<string, Action, Action>>("showMsgBox");
+        //    f(info, ok, cancel);
+        //    return view;
+        //}
 
-        //---------------------------------------------------------------------
-        public static LuaTable UiShowPreMsgBoxEx(string info, Action ok)
-        {
-            LuaTable view = CasinosContext.Instance.createPreView("PreMsgBox");
-            var f = view.Get<Action<string, Action>>("showMsgBoxEx");
-            f(info, ok);
-            return view;
-        }
+        ////---------------------------------------------------------------------
+        //public static LuaTable UiShowPreMsgBoxEx(string info, Action ok)
+        //{
+        //    LuaTable view = CasinosContext.Instance.createPreView("PreMsgBox");
+        //    var f = view.Get<Action<string, Action>>("showMsgBoxEx");
+        //    f(info, ok);
+        //    return view;
+        //}
 
-        //---------------------------------------------------------------------
-        public static LuaTable UiShowPreLoading(string tips, float progress)
-        {
-            LuaTable view_loding = CasinosContext.Instance.createPreView("PreLoading");
-            var f_settips = view_loding.Get<Action<string>>("setTip");
-            f_settips(tips);
-            var f_setpro = view_loding.Get<Action<float>>("setLoadingProgress");
-            f_setpro(progress);
+        ////---------------------------------------------------------------------
+        //public static LuaTable UiShowPreLoading(string tips, float progress)
+        //{
+        //    LuaTable view_loding = CasinosContext.Instance.createPreView("PreLoading");
+        //    var f_settips = view_loding.Get<Action<string>>("setTip");
+        //    f_settips(tips);
+        //    var f_setpro = view_loding.Get<Action<float>>("setLoadingProgress");
+        //    f_setpro(progress);
 
-            return view_loding;
-        }
+        //    return view_loding;
+        //}
 
-        //---------------------------------------------------------------------
-        public static void UiEndPreLoading()
-        {
-            LuaTable view_loding = CasinosContext.Instance.getPreView("PreLoading");
-            CasinosContext.Instance.destroyPreView(view_loding);
-        }
+        ////---------------------------------------------------------------------
+        //public static void UiEndPreLoading()
+        //{
+        //    LuaTable view_loding = CasinosContext.Instance.getPreView("PreLoading");
+        //    CasinosContext.Instance.destroyPreView(view_loding);
+        //}
 
         //---------------------------------------------------------------------
         public static string FormatePackageImagePath(string package_name, string image_name)

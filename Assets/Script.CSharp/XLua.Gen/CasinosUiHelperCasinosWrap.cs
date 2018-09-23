@@ -31,12 +31,8 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 19, 0, 0);
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "UiShowPreMsgBox", _m_UiShowPreMsgBox_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "UiShowPreMsgBoxEx", _m_UiShowPreMsgBoxEx_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "UiShowPreLoading", _m_UiShowPreLoading_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "UiEndPreLoading", _m_UiEndPreLoading_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "FormatePackageImagePath", _m_FormatePackageImagePath_xlua_st_);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 15, 0, 0);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "FormatePackageImagePath", _m_FormatePackageImagePath_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetMaJiangCardResName", _m_GetMaJiangCardResName_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetRandomShootingTextColor", _m_GetRandomShootingTextColor_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "setParticle", _m_setParticle_xlua_st_);
@@ -71,114 +67,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_UiShowPreMsgBox_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    string _info = LuaAPI.lua_tostring(L, 1);
-                    System.Action _ok = translator.GetDelegate<System.Action>(L, 2);
-                    System.Action _cancel = translator.GetDelegate<System.Action>(L, 3);
-                    
-                        XLua.LuaTable gen_ret = Casinos.UiHelperCasinos.UiShowPreMsgBox( _info, _ok, _cancel );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_UiShowPreMsgBoxEx_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    string _info = LuaAPI.lua_tostring(L, 1);
-                    System.Action _ok = translator.GetDelegate<System.Action>(L, 2);
-                    
-                        XLua.LuaTable gen_ret = Casinos.UiHelperCasinos.UiShowPreMsgBoxEx( _info, _ok );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_UiShowPreLoading_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    string _tips = LuaAPI.lua_tostring(L, 1);
-                    float _progress = (float)LuaAPI.lua_tonumber(L, 2);
-                    
-                        XLua.LuaTable gen_ret = Casinos.UiHelperCasinos.UiShowPreLoading( _tips, _progress );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_UiEndPreLoading_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    
-                    Casinos.UiHelperCasinos.UiEndPreLoading(  );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_FormatePackageImagePath_xlua_st_(RealStatePtr L)

@@ -44,6 +44,9 @@
 		<type fullname="FairyGUI.EaseType" preserve="all"/>
 		<type fullname="FairyGUI.TweenValue" preserve="all"/>
 		<type fullname="TcpClient" preserve="all"/>
+		<type fullname="LoaderTicket" preserve="all"/>
+		<type fullname="AsyncAssetLoaderMgr" preserve="all"/>
+		<type fullname="AsyncAssetLoadGroup" preserve="all"/>
 		<type fullname="Casinos._eProjectItemDisplayNameKey" preserve="all"/>
 		<type fullname="_eAsyncAssetLoadType" preserve="all"/>
 		<type fullname="Casinos.ParseStreamingAssetsDataInfo" preserve="all"/>
