@@ -1,2 +1,0 @@
-int dimen activity_horizontal_margin 0x7f030000
-int drawable ic_launcher 0x7f020000

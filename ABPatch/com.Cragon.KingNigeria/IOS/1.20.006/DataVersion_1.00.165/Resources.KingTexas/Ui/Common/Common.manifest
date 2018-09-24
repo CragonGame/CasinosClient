@@ -1,7 +1,0 @@
-ManifestFileVersion: 0
-CRC: 2085466124
-AssetBundleManifest:
-  AssetBundleInfos:
-    Info_0:
-      Name: common.ab
-      Dependencies: {}

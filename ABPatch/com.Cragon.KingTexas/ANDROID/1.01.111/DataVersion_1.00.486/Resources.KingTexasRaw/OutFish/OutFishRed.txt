@@ -1,9 +1,0 @@
-{
-	"CommonData": "{\"DestroyTm\":1.0}",
-	"ListGenerator": [{
-		"mTypeName": "RedFishGeneratorData",
-		"mJsonString": "{}"
-	}],
-	"ListAffector": [],
-	"GeneratorAffectorMap": "[]"
-}

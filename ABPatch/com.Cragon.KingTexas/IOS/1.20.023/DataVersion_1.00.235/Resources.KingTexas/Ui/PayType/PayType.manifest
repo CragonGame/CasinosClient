@@ -1,7 +1,0 @@
-ManifestFileVersion: 0
-CRC: 345104546
-AssetBundleManifest:
-  AssetBundleInfos:
-    Info_0:
-      Name: paytype.ab
-      Dependencies: {}

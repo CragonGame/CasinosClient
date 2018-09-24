@@ -1,9 +1,0 @@
-OutFishNormal.txt
-OutFishRed.txt
-OutFishFormation01.txt
-OutFishFormation02.txt
-OutFishFormation03.txt
-OutFishFormation04.txt
-OutFishFormation05.txt
-OutFishFormation06.txt
-OutFishFormation07.txt

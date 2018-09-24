@@ -1,9 +1,0 @@
-{
-	"CommonData": "{\"DestroyTm\":0.0}",
-	"ListGenerator": [{
-		"mTypeName": "NormalGeneratorData",
-		"mJsonString": "{}"
-	}],
-	"ListAffector": [],
-	"GeneratorAffectorMap": "[]"
-}
