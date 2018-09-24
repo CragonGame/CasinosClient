@@ -5,7 +5,7 @@ GetPhoneCodeReson = {
     ResetPwd = 1,
 }
 
-AttachWechatMp ={}
+AttachWechatMp = {}
 function AttachWechatMp:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -25,8 +25,7 @@ function AttachWechatMp:setData(data)
     self.headimgurl = data[4]
 end
 
-
-LoginAccountInfos ={}
+LoginAccountInfos = {}
 function LoginAccountInfos:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -50,7 +49,7 @@ function LoginAccountInfos:setData(data)
     end
 end
 
-LoginAccountInfo ={}
+LoginAccountInfo = {}
 function LoginAccountInfo:new(o)
     o = o or {}
     setmetatable(o, self)

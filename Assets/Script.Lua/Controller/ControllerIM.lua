@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ControllerIM = ControllerBase:new(nil)
 
+---------------------------------------
 function ControllerIM:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
@@ -20,6 +22,7 @@ function ControllerIM:new(o, controller_mgr, controller_data, guid)
     return o
 end
 
+---------------------------------------
 function ControllerIM:onCreate()
     self.ViewMgr:bindEvListener("EvUiCreateMainUi", self)
     self.ViewMgr:bindEvListener("EvUiFindFriend", self)
@@ -123,13 +126,16 @@ function ControllerIM:onCreate()
     self.ControllerMgr.RPC:RPC0(m_c.PlayerFeedbackGetListRequest)
 end
 
+---------------------------------------
 function ControllerIM:onDestroy()
     self.ViewMgr:unbindEvListener(self)
 end
 
+---------------------------------------
 function ControllerIM:onUpdate(tm)
 end
 
+---------------------------------------
 function ControllerIM:onHandleEv(ev)
     if (ev.EventName == "EvUiCreateMainUi")
     then
@@ -298,74 +304,92 @@ function ControllerIM:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ControllerIM:OnIMAddFriendReqRequestResult(result)
     self.IMFriendList:OnIMAddFriendReqRequestResult(result)
 end
 
+---------------------------------------
 function ControllerIM:OnIMAddFriendResRequestResult(result)
     self.IMFriendList:OnIMAddFriendResRequestResult(result)
 end
 
+---------------------------------------
 function ControllerIM:OnIMDeleteFriendRequestResult(result)
     self.IMFriendList:OnIMDeleteFriendRequestResult(result)
 end
 
+---------------------------------------
 function ControllerIM:OnIMFriendLoginNotify(player_guid)
     self.IMFriendList:OnIMFriendLoginNotify(player_guid)
 end
 
+---------------------------------------
 function ControllerIM:OnIMFriendLogoutNotify(player_guid)
     self.IMFriendList:OnIMFriendLogoutNotify(player_guid)
 end
 
+---------------------------------------
 function ControllerIM:OnIMFriendInfoCommonUpdateNotify(player_info_common)
     self.IMFriendList:OnIMFriendInfoCommonUpdateNotify(player_info_common)
 end
 
+---------------------------------------
 function ControllerIM:OnIMFriendInfoMoreUpdateNotify(player_info_more)
     self.IMFriendList:OnIMFriendInfoMoreUpdateNotify(player_info_more)
 end
 
+---------------------------------------
 function ControllerIM:OnIMFriendInfoRealtimeUpdateNotify(player_info_realtime)
     self.IMFriendList:OnIMFriendInfoRealtimeUpdateNotify(player_info_realtime)
 end
 
+---------------------------------------
 function ControllerIM:OnIMFriendListAddNotify(list_player)
     self.IMFriendList:OnIMFriendListAddNotify(list_player)
 end
 
+---------------------------------------
 function ControllerIM:OnIMFriendListRemoveNotify(player_guid)
     self.IMFriendList:OnIMFriendListRemoveNotify(player_guid)
 end
 
+---------------------------------------
 function ControllerIM:OnIMFindFriendNotify(list_player)
     self.IMFriendList:OnIMFindFriendNotify(list_player)
 end
 
+---------------------------------------
 function ControllerIM:OnIMRecommandFriendNotify(list_player)
     self.IMFriendList:OnIMRecommandFriendNotify(list_player)
 end
 
+---------------------------------------
 function ControllerIM:OnIMEventPush2ClientNotify(ev)
     self.IMFriendList:OnIMEventPush2ClientNotify(ev)
 end
 
+---------------------------------------
 function ControllerIM:OnIMFriendGoldUpdate(gold_update)
     self.IMFriendList:OnIMFriendGoldUpdate(gold_update)
 end
 
+---------------------------------------
 function ControllerIM:OnIMChatRecvMsgNotify(msg)
     self.IMChat:OnIMChatRecvMsgNotify(msg)
 end
 
+---------------------------------------
 function ControllerIM:OnPlayerFeedbackRecvMsgNotify(msg)
     self.IMFeedback:OnPlayerFeedbackRecvMsgNotify(msg)
 end
 
+---------------------------------------
 function ControllerIM:OnPlayerFeedbackGetListNotify(list_msg, readconfirm_msg_id)
     self.IMFeedback:OnPlayerFeedbackGetListNotify(list_msg, readconfirm_msg_id)
 end
 
+---------------------------------------
 function ControllerIM:OnIMChatRecvBatchMsgNotify(list_msg)
     local t = nil
     if list_msg ~= nil then
@@ -379,6 +403,7 @@ function ControllerIM:OnIMChatRecvBatchMsgNotify(list_msg)
     self.IMChat:OnIMChatRecvBatchMsgNotify(t)
 end
 
+---------------------------------------
 function ControllerIM:OnIMChatRecordRequestResult(list_msg)
     local t = nil
     if list_msg ~= nil then
@@ -392,18 +417,22 @@ function ControllerIM:OnIMChatRecordRequestResult(list_msg)
     self.IMChat:OnIMChatRecordRequestResult(t)
 end
 
+---------------------------------------
 function ControllerIM:OnIMMailListInitNotify(list_mail)
     self.IMMailBox:OnIMMailListInitNotify(list_mail)
 end
 
+---------------------------------------
 function ControllerIM:OnIMMailAddNotify(mail)
     self.IMMailBox:OnIMMailAddNotify(mail)
 end
 
+---------------------------------------
 function ControllerIM:OnIMMailDeleteNotify(mail_guid)
     self.IMMailBox:OnIMMailDeleteNotify(mail_guid)
 end
 
+---------------------------------------
 function ControllerIM:OnIMMailUpdateNotify(mail)
     self.IMMailBox:OnIMMailUpdateNotify(mail)
 end
@@ -412,6 +441,7 @@ function ControllerIM:OnIMMailOperateRequestResult(result)
     self.IMMailBox:OnIMMailOperateRequestResult(result)
 end
 
+---------------------------------------
 function ControllerIM:setMainUiIMInfo()
     local view_main = self.ControllerMgr.ViewMgr:getView("Main")
     if (view_main ~= nil)
@@ -422,6 +452,7 @@ function ControllerIM:setMainUiIMInfo()
     end
 end
 
+---------------------------------------
 function ControllerIM:showIMResult(result_title, result)
     local msg = ""
     if (result == IMResult.Success)
@@ -464,10 +495,12 @@ function ControllerIM:showIMResult(result_title, result)
     ViewHelper:UiShowInfoFailed(msg)
 end
 
+---------------------------------------
 function ControllerIM:getMails()
     return self.IMMailBox:getMails()
 end
 
+---------------------------------------
 function ControllerIM:haveNewMail()
     local have_new = false
     if (self.IMMailBox ~= nil)
@@ -477,6 +510,7 @@ function ControllerIM:haveNewMail()
     return have_new
 end
 
+---------------------------------------
 function ControllerIM:isFriend(friend_guid)
     if (self.IMFriendList.MapFriendList[friend_guid] ~= nil)
     then
@@ -486,8 +520,10 @@ function ControllerIM:isFriend(friend_guid)
     end
 end
 
+---------------------------------------
 ControllerIMFactory = ControllerFactory:new()
 
+---------------------------------------
 function ControllerIMFactory:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -496,6 +532,7 @@ function ControllerIMFactory:new(o)
     return o
 end
 
+---------------------------------------
 function ControllerIMFactory:createController(controller_mgr, controller_data, guid)
     local controller = ControllerIM:new(nil, controller_mgr, controller_data, guid)
     return controller

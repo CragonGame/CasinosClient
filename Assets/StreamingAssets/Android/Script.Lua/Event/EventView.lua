@@ -680,8 +680,6 @@ function EvUiChatConfirmRead:reset()
     self.msg_id = nil
 end
 
-
-
 EvUiSendFeedbackMsg = EventBase:new(nil)
 function EvUiSendFeedbackMsg:new(o)
     o = o or {}
@@ -1179,7 +1177,6 @@ end
 function EvUiGetRankingWinGold:reset()
 end
 
-
 EvUiGetRankingRedEnvelopes = EventBase:new(nil)
 
 function EvUiGetRankingRedEnvelopes:new(o)
@@ -1656,7 +1653,6 @@ end
 function EvEntityDiamondChanged:reset()
 end
 
-
 EvEntityPointChanged = EventBase:new(nil)
 
 function EvEntityPointChanged:new(o)
@@ -1788,7 +1784,6 @@ function EvEntityReceiveFriendChats:reset()
     self.friend_etguid = nil
 end
 
-
 EvEntityReceiveFeedbackChat = EventBase:new(nil)
 function EvEntityReceiveFeedbackChat:new(o)
     o = o or {}
@@ -1802,7 +1797,6 @@ end
 function EvEntityReceiveFeedbackChat:reset()
     self.chat_msg = nil
 end
-
 
 EvEntityReceiveFeedbackChats = EventBase:new(nil)
 function EvEntityReceiveFeedbackChats:new(o)
@@ -2090,7 +2084,6 @@ function EvEntityGetRankingWinGold:reset()
     self.list_ranking = nil
 end
 
-
 EvEntityGetRankingRedEnvelopes = EventBase:new(nil)
 
 function EvEntityGetRankingRedEnvelopes:new(o)
@@ -2155,8 +2148,6 @@ end
 function EvRequestGetPlayerModuleData:reset()
     self.factory_name = nil
 end
-
-
 
 EvOnGetOnLineReward = EventBase:new(nil)
 function EvOnGetOnLineReward:new(o)
@@ -3549,7 +3540,6 @@ function EvEntityBagUpdateItem:reset()
     self.item = nil
 end
 
-
 EvOpenBag = EventBase:new(nil)
 
 function EvOpenBag:new(o)
@@ -3562,7 +3552,6 @@ end
 
 function EvOpenBag:reset()
 end
-
 
 EvEntityRequestGetLotteryTicketData = EventBase:new(nil)
 
@@ -3978,7 +3967,6 @@ end
 function EvUiMTTCreateRebuyOrAddOn:reset()
 end
 
-
 EvMTTPauseChanged = EventBase:new(nil)
 
 function EvMTTPauseChanged:new(o)
@@ -3994,7 +3982,6 @@ end
 function EvMTTPauseChanged:reset()
     self.pause_info = nil
 end
-
 
 EvEntitySignUpSucceed = EventBase:new(nil)
 
@@ -4342,7 +4329,6 @@ end
 function EvEntityIsFirstRechargeChanged:reset()
 end
 
-
 EvClickIconWithNickName = EventBase:new(nil)
 function EvClickIconWithNickName:new(o)
     o = o or {}
@@ -4358,7 +4344,6 @@ function EvClickIconWithNickName:reset()
     self.player = nil
 end
 
-
 EvRemoveMatch = EventBase:new(nil)
 function EvRemoveMatch:new(o)
     o = o or {}
@@ -4373,7 +4358,6 @@ end
 function EvRemoveMatch:reset()
     self.MatchGuid = nil
 end
-
 
 EvUpdatePlayerScore = EventBase:new(nil)
 function EvUpdatePlayerScore:new(o)
@@ -4391,7 +4375,6 @@ function EvUpdatePlayerScore:reset()
     self.PlayerGuid = nil
     self.Score = 0
 end
-
 
 EvBindWeChat = EventBase:new(nil)
 function EvBindWeChat:new(o)

@@ -273,8 +273,6 @@ namespace Casinos
     {
         //---------------------------------------------------------------------
         public LuaEnv LuaEnv { get; private set; }
-        DelegateLuaUpdate FuncLuaUpdate { get; set; }
-        Action FuncLuaRelease { get; set; }
         Dictionary<string, byte[]> MapLuaFiles { get; set; }
 
         //---------------------------------------------------------------------
@@ -288,14 +286,8 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Release()
         {
-            //var lua_context = LuaEnv.Global.Get<LuaTable>("Context");
-            //var fun_release = lua_context.Get<Action>("Release");
-            //fun_release();
-
             if (LuaEnv != null)
             {
-                FuncLuaRelease?.Invoke();
-
                 LuaEnv.Dispose();
                 LuaEnv = null;
             }
@@ -306,18 +298,8 @@ namespace Casinos
         {
             if (LuaEnv != null)
             {
-                FuncLuaUpdate?.Invoke(elapsed_tm);
-
                 LuaEnv.Tick();
             }
-        }
-
-        //---------------------------------------------------------------------
-        public void LoadLuaLaunch()
-        {
-            var path_launch = CasinosContext.Instance.PathMgr.combinePersistentDataPath("Script.Lua/Launch/");
-            string[] list_path = new string[] { path_launch };
-            LoadLuaFromDir(list_path);
         }
 
         //---------------------------------------------------------------------
@@ -331,7 +313,29 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void LoadLuaFromDir(string[] list_path)
+        public void LoadLuaFromDir(string path)
+        {
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
+            System.IO.FileInfo[] file_list = dir.GetFiles("*.lua", System.IO.SearchOption.AllDirectories);
+            foreach (System.IO.FileInfo i in file_list)
+            {
+                using (System.IO.FileStream fs = new System.IO.FileStream(i.FullName, System.IO.FileMode.Open))
+                {
+                    using (System.IO.StreamReader sr = new System.IO.StreamReader(fs))
+                    {
+                        string s = sr.ReadToEnd();
+                        byte[] data = System.Text.Encoding.UTF8.GetBytes(s);
+
+                        string name = i.Name.ToLower();
+                        string name1 = name.Replace(".lua", "");
+                        MapLuaFiles[name1] = data;
+                    }
+                }
+            }
+        }
+
+        //---------------------------------------------------------------------
+        public void LoadLuaFromDir2(string[] list_path)
         {
             foreach (var k in list_path)
             {
@@ -421,28 +425,3 @@ namespace Casinos
         }
     }
 }
-
-//---------------------------------------------------------------------
-//public void RegLuaFilePath(string luafile_relativepath, params string[] luafile_name)
-//{
-//    foreach (var i in luafile_name)
-//    {
-//        string path = Path.Combine(
-//            CasinosContext.Instance.PathMgr.PathLuaRoot,
-//            string.Format("{0}{1}.lua", luafile_relativepath, i));
-//        MapLuaFilePath[i] = path;
-//    }
-//}
-
-//---------------------------------------------------------------------
-//public void DoMainCLua(string config_name)
-//{
-//    DoString(config_name);
-
-//    // 解析全局函数
-//    FuncLuaInit = LuaEnv.Global.Get<Action>("MainCInit");
-//    FuncLuaUpdate = LuaEnv.Global.Get<DelegateLuaUpdate>("MainCUpdate");
-//    FuncLuaRelease = LuaEnv.Global.Get<Action>("MainCRelease");
-
-//    FuncLuaInit();
-//}

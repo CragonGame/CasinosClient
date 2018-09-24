@@ -1,8 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 商城界面相关，含充值（调用UCenter充值接口），含钱包Wallet
 
+---------------------------------------
 ControllerTrade = ControllerBase:new(nil)
 
+---------------------------------------
 function ControllerTrade:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
@@ -16,6 +18,7 @@ function ControllerTrade:new(o, controller_mgr, controller_data, guid)
     return o
 end
 
+---------------------------------------
 function ControllerTrade:onCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerDesktop = self.ControllerMgr:GetController("Desk")
@@ -33,8 +36,8 @@ function ControllerTrade:onCreate()
     self.ViewMgr:bindEvListener("EvUiRequestBuyItem", self)
     self.ViewMgr:bindEvListener("EvUiRequestGetMoney", self)
     self.ViewMgr:bindEvListener("EvPayWithIAPSuccess", self)
-    self.ViewMgr:bindEvListener("EvUiRequestWebpay",self)
-    self.ViewMgr:bindEvListener("EvUiRequestQuicktellerTransfers",self)
+    self.ViewMgr:bindEvListener("EvUiRequestWebpay", self)
+    self.ViewMgr:bindEvListener("EvUiRequestQuicktellerTransfers", self)
 
     local rpc = self.ControllerMgr.RPC
     local m_c = CommonMethodType
@@ -55,13 +58,16 @@ function ControllerTrade:onCreate()
     end)
 end
 
+---------------------------------------
 function ControllerTrade:onDestroy()
     self.ViewMgr:unbindEvListener(self)
 end
 
+---------------------------------------
 function ControllerTrade:onUpdate(tm)
 end
 
+---------------------------------------
 function ControllerTrade:onHandleEv(ev)
     if (ev.EventName == "EvUiRequestBuyGold")
     then
@@ -185,7 +191,7 @@ function ControllerTrade:onHandleEv(ev)
         r.cbnCode = ev.cbnCode
         r.receiverLastName = ev.receiverLastName
         r.receiverOtherName = ev.receiverOtherName
-        self.ControllerUCenter:quicktellerTransfers(r,function(status, response, error)
+        self.ControllerUCenter:quicktellerTransfers(r, function(status, response, error)
             self:OnQuicktellerTransfers(status, response, error)
         end)
         --elseif (ev.EventName == "EvUiRequestGetMoney")
@@ -198,9 +204,11 @@ function ControllerTrade:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ControllerTrade:getModle()
 end
 
+---------------------------------------
 function ControllerTrade:OnTradeBuyItemResponse(response1)
     local response = BuyItemResponse:new(nil)
     response:setData(response1)
@@ -226,6 +234,7 @@ function ControllerTrade:OnTradeBuyItemResponse(response1)
     end
 end
 
+---------------------------------------
 function ControllerTrade:OnTradeSellItemResponse(response1)
     local response = SellItemResponse:new(nil)
     response:setData(response1)
@@ -235,6 +244,7 @@ function ControllerTrade:OnTradeSellItemResponse(response1)
     end
 end
 
+---------------------------------------
 function ControllerTrade:OnTradeOrderNotify(result, is_firstrecharge, item_tbid)
     print("OnTradeOrderNotify ")
     local item_name = self.ControllerMgr.LanMgr:getLanValue("FirstRechargeTitle")
@@ -255,6 +265,7 @@ function ControllerTrade:OnTradeOrderNotify(result, is_firstrecharge, item_tbid)
     end
 end
 
+---------------------------------------
 function ControllerTrade:OnWalletRechargeNotify(response1)
     local response = WalletRechargeNotify:new(nil)
     response:setData(response1)
@@ -266,6 +277,7 @@ function ControllerTrade:OnWalletRechargeNotify(response1)
     end
 end
 
+---------------------------------------
 function ControllerTrade:OnWalletWithdrawNotify(response1)
     local response = WalletWithdrawNotify:new(nil)
     response:setData(response1)
@@ -277,6 +289,7 @@ function ControllerTrade:OnWalletWithdrawNotify(response1)
     end
 end
 
+---------------------------------------
 function ControllerTrade:OnBuyRMBItemSuccess(purchase_common)
     local purchase = PurchaseCommon:new(nil)
     purchase.OrderId = purchase_common.OrderId
@@ -290,6 +303,7 @@ function ControllerTrade:OnBuyRMBItemSuccess(purchase_common)
     --self.ControllerMgr.RPC:RPC1(CommonMethodType.TradeBuyRMBItemSuccessRequest, purchase:getData4Pack())
 end
 
+---------------------------------------
 function ControllerTrade:RequestBuyItem(buyitem_tbid, target_type, target_etguid)
     local request = BuyItemRequest:new(nil)
     request.buyitem_tbid = buyitem_tbid
@@ -299,14 +313,17 @@ function ControllerTrade:RequestBuyItem(buyitem_tbid, target_type, target_etguid
     self.ControllerMgr.RPC:RPC1(CommonMethodType.TradeBuyItemRequest, request:getData4Pack())
 end
 
+---------------------------------------
 function ControllerTrade:RequestSellItem(item_objid)
     self.ControllerMgr.RPC:RPC1(CommonMethodType.TradeSellItemRequest, item_objid)
 end
 
+---------------------------------------
 function ControllerTrade:BuyItem(charge_data)
     --CS.Pay.pay("", charge_data, CS._ePayType.iap)
 end
 
+---------------------------------------
 function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
     --if (self.CasinosContext.UnityAndroid == true)
     --then
@@ -330,6 +347,7 @@ function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
     --end
 end
 
+---------------------------------------
 function ControllerTrade:BuyItemByIAP(is_first_recharge, tb_id)
     local sku = ""
     if (is_first_recharge)
@@ -346,6 +364,7 @@ function ControllerTrade:BuyItemByIAP(is_first_recharge, tb_id)
     end
 end
 
+---------------------------------------
 function ControllerTrade:OnPayCreateCharge(status, response, error)
     if (status == UCenterResponseStatus.Success)
     then
@@ -360,26 +379,30 @@ function ControllerTrade:OnPayCreateCharge(status, response, error)
             if CS.Casinos.CasinosContext.Instance.UnityIOS then
                 url_s = PayUrlScheme
             end
-            CS.Pay.pay("",response.itemName, self.PayType,tonumber(response.amount),response.chargeId,"",url_s)
+            CS.Pay.pay("", response.itemName, self.PayType, tonumber(response.amount), response.chargeId, "", url_s)
         end
     else
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CreateChargeError"))
     end
 end
 
+---------------------------------------
 function ControllerTrade:OnNigWebpayRequestUrl(status, response, error)
 end
 
+---------------------------------------
 function ControllerTrade:OnQuicktellerTransfers(status, response, error)
     if status == UCenterResponseStatus.Success and response.result == 1 then
-        ViewHelper:UiShowInfoSuccess(string.format("你提取现金%s成功!",response.request.amount))
+        ViewHelper:UiShowInfoSuccess(string.format("你提取现金%s成功!", response.request.amount))
     else
         ViewHelper:UiShowInfoFailed("你提取现金失败!")
     end
 end
 
+---------------------------------------
 ControllerTradeFactory = ControllerFactory:new()
 
+---------------------------------------
 function ControllerTradeFactory:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -388,6 +411,7 @@ function ControllerTradeFactory:new(o)
     return o
 end
 
+---------------------------------------
 function ControllerTradeFactory:createController(controller_mgr, controller_data, guid)
     local controller = ControllerTrade:new(nil, controller_mgr, controller_data, guid)
     return controller

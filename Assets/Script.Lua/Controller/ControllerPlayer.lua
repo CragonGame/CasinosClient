@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ControllerPlayer = ControllerBase:new(nil)
 
+---------------------------------------
 function ControllerPlayer:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
@@ -18,6 +20,7 @@ function ControllerPlayer:new(o, controller_mgr, controller_data, guid)
     return o
 end
 
+---------------------------------------
 function ControllerPlayer:onCreate()
     self.ViewMgr:bindEvListener("EvUiClickHelp", self)
     self.ViewMgr:bindEvListener("EvUiClickEdit", self)
@@ -59,7 +62,7 @@ function ControllerPlayer:onCreate()
     local login = self.ControllerMgr:GetController("Login")
     login:canDestroyViewLogin()
     self.OnLineReward = OnLineReward:new(nil, self.ControllerMgr.ViewMgr)
-    self.TimingReward = TimingReward:new(nil,self.ControllerMgr.ViewMgr)
+    self.TimingReward = TimingReward:new(nil, self.ControllerMgr.ViewMgr)
     self:createMainUi()
     self.QueneHotActivity = {}
     self:CheckNeedShowHotActivity()
@@ -163,7 +166,7 @@ function ControllerPlayer:onCreate()
         self:s2cPlayerGetOnlineRewardNotify(online_reward_state, left_reward_second, next_reward)
     end)
     -- 响应获取其他玩家信息
-    self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerGetPlayerInfoOtherNotify,function(player_info, ticket)
+    self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerGetPlayerInfoOtherNotify, function(player_info, ticket)
         self:s2cPlayerGetPlayerInfoOtherNotify(player_info, ticket)
     end)
     -- 获取在线玩家数
@@ -190,6 +193,7 @@ function ControllerPlayer:onCreate()
     end)
 end
 
+---------------------------------------
 function ControllerPlayer:onDestroy()
     self.ViewMgr:unbindEvListener(self)
     self:destroyMainUi()
@@ -197,6 +201,7 @@ function ControllerPlayer:onDestroy()
     self.CasinosContext:stopAllSceneSound()
 end
 
+---------------------------------------
 function ControllerPlayer:onUpdate(tm)
     self.GetOnlinePlayerNumTimeElapsed = self.GetOnlinePlayerNumTimeElapsed + tm
     if (self.GetOnlinePlayerNumTimeElapsed > 5)
@@ -210,6 +215,7 @@ function ControllerPlayer:onUpdate(tm)
     end
 end
 
+---------------------------------------
 function ControllerPlayer:onHandleEv(ev)
     if (ev.EventName == "EvUiClickHelp")
     then
@@ -294,7 +300,7 @@ function ControllerPlayer:onHandleEv(ev)
         end
     elseif (ev.EventName == "EvRequestGetPlayerModuleData")
     then
-        self.ControllerMgr.RPC:RPC1(self.MC.PlayerGetCasinosModuleDataWithFactoryNameRequest,ev.factory_name)
+        self.ControllerMgr.RPC:RPC1(self.MC.PlayerGetCasinosModuleDataWithFactoryNameRequest, ev.factory_name)
     elseif (ev.EventName == "EvRequestGetOnLineReward")
     then
         self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlineRewardRequest)
@@ -329,17 +335,18 @@ function ControllerPlayer:onHandleEv(ev)
     then
         local share_type = ev.ShareType
         local share = self.ControllerMgr.ViewMgr:createView("Share")
-        share:setPlayerInfo(self.ControllerActor.PropNickName:get(), self.ControllerActor.PropAccountId:get(),share_type)
+        share:setPlayerInfo(self.ControllerActor.PropNickName:get(), self.ControllerActor.PropAccountId:get(), share_type)
     elseif (ev.EventName == "EvGetPicSuccess")
     then
         self:OnGetPicSuccess(ev.pic_data)
     end
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerLevelupNotify(level_new)
-
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerDailyFirstLoginNotify(daily_reward_tbid)
     local map_tbdata = self.ControllerMgr.TbDataMgr:GetMapData("DailyReward")
     local view_daily_reward = self.ControllerMgr.ViewMgr:createView("DailyReward")
@@ -353,6 +360,7 @@ function ControllerPlayer:s2cPlayerDailyFirstLoginNotify(daily_reward_tbid)
     )
 end
 
+---------------------------------------
 function ControllerPlayer:OnPlayerLeaveDesktopNotify()
     ViewHelper:UiEndWaiting()
     local controller_desk = self.ControllerMgr:GetController("Desk")
@@ -360,6 +368,7 @@ function ControllerPlayer:OnPlayerLeaveDesktopNotify()
     self:requestGetOnlinePlayerNum()
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerGetOnlinePlayerNumNotify(num)
     self.OnlinePlayerNum = num
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySetOnLinePlayerNum")
@@ -371,6 +380,7 @@ function ControllerPlayer:s2cPlayerGetOnlinePlayerNumNotify(num)
     self.ControllerMgr.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerGetPlayerInfoOtherNotify(player_info, ticket)
     ViewHelper:UiEndWaiting()
     local p_i = PlayerInfo:new(nil)
@@ -385,14 +395,17 @@ function ControllerPlayer:s2cPlayerGetPlayerInfoOtherNotify(player_info, ticket)
     self.ControllerMgr.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ControllerPlayer:OnPlayerChangeProfileSkinNotify(profileskin_tableid)
     ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("SkinSuccess"))
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerReportPlayerNotify(report)
     ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("ReportSuccess"))
 end
 
+---------------------------------------
 function ControllerPlayer:PlayerInvitePlayerEnterDesktopRequestResult(r)
     if (r == ProtocolResult.Success)
     then
@@ -400,6 +413,7 @@ function ControllerPlayer:PlayerInvitePlayerEnterDesktopRequestResult(r)
     end
 end
 
+---------------------------------------
 function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
     local invite = InvitePlayerEnterDesktop:new(nil)
     invite:setData(invite1)
@@ -440,30 +454,35 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
     )
 end
 
+---------------------------------------
 function ControllerPlayer:OnPlayerGetTimingRewardNotify(invite1)
     local reward = TimingRewardData:new(nil)
     reward:setData(invite1)
     self.TimingReward:setTimingRewardData(reward)
 end
 
+---------------------------------------
 function ControllerPlayer:OnPlayerGetTimingRewardRequestResult(result, reward_gold)
     if result == ProtocolResult.Success then
-        ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:getLanValue("GetRewardSuccess"),tostring(reward_gold)))
+        ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:getLanValue("GetRewardSuccess"), tostring(reward_gold)))
     end
 end
 
+---------------------------------------
 function ControllerPlayer:OnPlayerOpenUrlNotify(url)
     self.ControllerMgr.Listener.UniWebView:Load(url)
     self.ControllerMgr.Listener.UniWebView:Show()
     self.ControllerMgr.Listener.UniWebView:SetShowToolbar(true, false, false)
 end
 
+---------------------------------------
 function ControllerPlayer:OnPlayerDevConsoleCmdNotify(notify)
     if notify ~= nil then
         ViewHelper:UiShowInfoSuccess(notify)
     end
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerGiveChipQueryRangeRequestResult(r, give_gold_min, give_gold_max)
     local is_success = false
     if (r == ProtocolResult.Success)
@@ -494,6 +513,7 @@ function ControllerPlayer:s2cPlayerGiveChipQueryRangeRequestResult(r, give_gold_
     self.ControllerMgr.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerGiveChipRequestResult(r)
     local msg = ""
     if (r == ProtocolResult.Success)
@@ -522,6 +542,7 @@ function ControllerPlayer:s2cPlayerGiveChipRequestResult(r)
     end
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerBankDepositNotify(bank_notify)
     local data = BankNotify:new(nil)
     data:setData(bank_notify)
@@ -535,6 +556,7 @@ function ControllerPlayer:s2cPlayerBankDepositNotify(bank_notify)
     end
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerBankWithdrawNotify(bank_notify)
     local data = BankNotify:new(nil)
     data:setData(bank_notify)
@@ -548,6 +570,7 @@ function ControllerPlayer:s2cPlayerBankWithdrawNotify(bank_notify)
     end
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerGetDailyRewardNotify(r)
     if (r == ProtocolResult.Success)
     then
@@ -557,6 +580,7 @@ function ControllerPlayer:s2cPlayerGetDailyRewardNotify(r)
     end
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerGetOnlineRewardRequestResult(result, reward)
     if (result == ProtocolResult.Success)
     then
@@ -571,14 +595,17 @@ function ControllerPlayer:s2cPlayerGetOnlineRewardRequestResult(result, reward)
     end
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerGetOnlineRewardNotify(online_reward_state, left_reward_second, next_reward)
     self.OnLineReward:setOnlineRewardState(online_reward_state, left_reward_second, next_reward)
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerChangeNickNameNotify(r)
     self.ControllerActor.PropNickName:set(r)
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerRefreshIpAddressNotify(ip_address)
     if (ip_address ~= nil and ip_address ~= "")
     then
@@ -587,10 +614,12 @@ function ControllerPlayer:s2cPlayerRefreshIpAddressNotify(ip_address)
     ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("IPRefresh"))
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerChangeIndividualSignatureNotify(r)
     self.ControllerActor.PropIndividualSignature:set(r)
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerUpdateClientConfigNotify()
     --[[CS.UnityEngine.Debug.Log("OnPlayerUpdateClientConfigNotify")
     self.CasinosContext:loadDbConfig(
@@ -611,6 +640,7 @@ function ControllerPlayer:s2cPlayerUpdateClientConfigNotify()
     )--]]
 end
 
+---------------------------------------
 function ControllerPlayer:OnPlayerGetCasinosModuleDataWithFactoryNameNotify(player_moduledata)
     local p_d = PlayerModuleData:new(nil)
     p_d:setData(player_moduledata)
@@ -623,10 +653,12 @@ function ControllerPlayer:OnPlayerGetCasinosModuleDataWithFactoryNameNotify(play
     self.ControllerMgr.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerGMInitNotify()
     self.IsGm = true
 end
 
+---------------------------------------
 function ControllerPlayer:s2cPlayerChangeLanNotify(lan)
     ViewHelper:UiEndWaiting()
     local tips = self.ControllerMgr.LanMgr:getLanValue(CS.Casinos.IItemLan.ChangeSuccessTipsKey)
@@ -637,41 +669,48 @@ function ControllerPlayer:s2cPlayerChangeLanNotify(lan)
     controller_im:setMainUiIMInfo()
 end
 
+---------------------------------------
 function ControllerPlayer:OnCommonMethordResponse(map_param)
-
 end
 
+---------------------------------------
 function ControllerPlayer:OnCommonMethordNotify(map_param)
-
 end
 
+---------------------------------------
 function ControllerPlayer:requestGetOnlinePlayerNum()
     self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlinePlayerNumRequest)
 end
 
+---------------------------------------
 function ControllerPlayer:requestGetPlayerInfoOther(player_guid)
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("GetPlayerInfo"))
     self.GetOtherPlayerInfoTicket = self.GetOtherPlayerInfoTicket + 1
-    self.ControllerMgr.RPC:RPC2(self.MC.PlayerGetPlayerInfoOtherRequest,player_guid, self.GetOtherPlayerInfoTicket)
+    self.ControllerMgr.RPC:RPC2(self.MC.PlayerGetPlayerInfoOtherRequest, player_guid, self.GetOtherPlayerInfoTicket)
     return self.GetOtherPlayerInfoTicket
 end
 
+---------------------------------------
 function ControllerPlayer:requestChangePlayerProfileSkin(profileskin_tbid)
     --self.SessionBinderPlayer:RequestChangePlayerProfileSkin(profileskin_tbid)
 end
 
+---------------------------------------
 function ControllerPlayer:requestChangeNickName(nick_name)
     self.ControllerMgr.RPC:RPC1(self.MC.PlayerChangeNickNameRequest, nick_name)
 end
 
+---------------------------------------
 function ControllerPlayer:requestRefreshIpAddress()
     self.ControllerMgr.RPC:RPC0(self.MC.PlayerRefreshIpAddressRequest)
 end
 
+---------------------------------------
 function ControllerPlayer:requestChangeIndividualSignature(sign)
     self.ControllerMgr.RPC:RPC1(self.MC.PlayerChangeIndividualSignatureRequest, sign)
 end
 
+---------------------------------------
 function ControllerPlayer:requestReportPlayer(player_guid, report_type)
     local report = ReportPlayer:new(nil)
     report.player_guid = player_guid
@@ -679,24 +718,29 @@ function ControllerPlayer:requestReportPlayer(player_guid, report_type)
     self.ControllerMgr.RPC:RPC1(self.MC.PlayerReportPlayerRequest, report:getData4Pack())
 end
 
+---------------------------------------
 function ControllerPlayer:requestGiveGoldQueryRange()
     self.ControllerMgr.RPC:RPC0(self.MC.PlayerGiveChipQueryRangeRequest)
 end
 
+---------------------------------------
 function ControllerPlayer:requestGivePlayerGold(to_player_guid, give_gold)
     self.ControllerMgr.RPC:RPC2(self.MC.PlayerGiveChipRequest, to_player_guid, give_gold)
 end
 
+---------------------------------------
 function ControllerPlayer:requestBankDeposit(bank_deposit)
     self.ControllerMgr.RPC:RPC1(self.MC.PlayerBankDepositRequest, bank_deposit)
 end
 
+---------------------------------------
 function ControllerPlayer:requestBankWithdraw(bank_withdraw)
     self.ControllerMgr.RPC:RPC1(self.MC.PlayerBankWithdrawRequest, bank_withdraw)
 end
 
+---------------------------------------
 function ControllerPlayer:createMainUi()
-    local index = math.random(1,2)
+    local index = math.random(1, 2)
     local bgm = string.format("MainBg%s", index)
     self.CasinosContext:play(bgm, CS.Casinos._eSoundLayer.Background)
     local view_main = self.ControllerMgr.ViewMgr:createView("Main")
@@ -704,11 +748,13 @@ function ControllerPlayer:createMainUi()
     view_main:setOnlineNum(self.OnlinePlayerNum)
 end
 
+---------------------------------------
 function ControllerPlayer:destroyMainUi()
     local view_main = self.ControllerMgr.ViewMgr:getView("Main")
     self.ControllerMgr.ViewMgr:destroyView(view_main)
 end
 
+---------------------------------------
 function ControllerPlayer:getDesktopChat()
     local map_chat = {}
     if (self.ControllerDesk.DesktopBase ~= nil)
@@ -731,6 +777,7 @@ function ControllerPlayer:getDesktopChat()
     return map_chat
 end
 
+---------------------------------------
 function ControllerPlayer:initStoreItem()
     local t_sku = {}
     local map_tbdata = self.ControllerMgr.TbDataMgr:GetMapData("UnitBilling")
@@ -746,15 +793,17 @@ function ControllerPlayer:initStoreItem()
     CS.Pay.Instant():initInventory(t_sku)
 end
 
+---------------------------------------
 function ControllerPlayer:OnGetPicSuccess(pic_data)
     local c = CS.Casinos.CasinosContext.Instance
     local account_name = self.ControllerActor.PropAccountId:get()
     self.ControllerUCenter:uploadProfileImage(c.Config.AppId, account_name, pic_data,
-            function( status, response, error)
-                self:uploadProfileImageCallBack( status, response, error)
+            function(status, response, error)
+                self:uploadProfileImageCallBack(status, response, error)
             end)
 end
 
+---------------------------------------
 function ControllerPlayer:CheckNeedShowHotActivity()
     if (CS.UnityEngine.PlayerPrefs.HasKey(self.ControllerActivity.CurrentActID))
     then
@@ -770,6 +819,7 @@ function ControllerPlayer:CheckNeedShowHotActivity()
     end
 end
 
+---------------------------------------
 function ControllerPlayer:ShowHotActivity()
     local list_activity = self.ControllerActivity.ListActivity
     if (#list_activity > 0)
@@ -785,6 +835,7 @@ function ControllerPlayer:ShowHotActivity()
     end
 end
 
+---------------------------------------
 function ControllerPlayer:createViewActivityPopUpBox()
     if (#self.QueneHotActivity > 0)
     then
@@ -794,7 +845,8 @@ function ControllerPlayer:createViewActivityPopUpBox()
     end
 end
 
-function ControllerPlayer:uploadProfileImageCallBack( status, response, error)
+---------------------------------------
+function ControllerPlayer:uploadProfileImageCallBack(status, response, error)
     if (status == UCenterResponseStatus.Error)
     then
         local msg_t = {}
@@ -817,22 +869,25 @@ function ControllerPlayer:uploadProfileImageCallBack( status, response, error)
     ViewHelper:UiEndWaiting()
 end
 
-
+---------------------------------------
 -- 控制台命令
 function ControllerPlayer:requestConsoleCmd(list_param)
     self.ControllerMgr.RPC:RPC1(self.MC.PlayerDevConsoleCmdRequest2, list_param)
 end
 
+---------------------------------------
 --请求获取收货地址
 function ControllerPlayer:RequestGetAddress()
     self.ControllerMgr.RPC:RPC0(self.MC.PlayerRequestGetAddress)
 end
 
+---------------------------------------
 --请求编辑收货地址
 function ControllerPlayer:RequestEditAddress(address)
     self.ControllerMgr.RPC:RPC1(self.MC.PlayerRequestEditAddress, address:getData4Pack())
 end
 
+---------------------------------------
 --响应获取收货地址
 function ControllerPlayer:s2cPlayerRequestGetAddressResult(result, address)
     local data_address = PlayerAddress:new(nil)
@@ -854,6 +909,7 @@ function ControllerPlayer:s2cPlayerRequestGetAddressResult(result, address)
     end
 end
 
+---------------------------------------
 --响应编辑收货地址
 function ControllerPlayer:s2cPlayerRequestEditAddressResult(result, address)
     --[[if (result == ProtocolResult.Success)
@@ -867,8 +923,10 @@ function ControllerPlayer:s2cPlayerRequestEditAddressResult(result, address)
     end
 end
 
+---------------------------------------
 ControllerPlayerFactory = ControllerFactory:new()
 
+---------------------------------------
 function ControllerPlayerFactory:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -877,6 +935,7 @@ function ControllerPlayerFactory:new(o)
     return o
 end
 
+---------------------------------------
 function ControllerPlayerFactory:createController(controller_mgr, controller_data, guid)
     local controller = ControllerPlayer:new(nil, controller_mgr, controller_data, guid)
     return controller

@@ -1,7 +1,9 @@
 -- Copyright (c) Cragon. All rights reserved.
 
+---------------------------------------
 RPC = {}
 
+---------------------------------------
 function RPC:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -18,52 +20,62 @@ function RPC:new(o)
     return self.Instance
 end
 
+---------------------------------------
 function RPC:onCreate()
 end
 
+---------------------------------------
 function RPC:onRelease()
 end
 
+---------------------------------------
 function RPC:PackData(data)
     local p_data = self.MessagePack.pack(data)
     return p_data
 end
 
+---------------------------------------
 function RPC:UnPackData(data)
     local p_data = self.MessagePack.unpack(data)
     return p_data
 end
 
+---------------------------------------
 function RPC:RegRpcMethod0(method_id, method)
     local reciver = RPCReciver0:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
+---------------------------------------
 function RPC:RegRpcMethod1(method_id, method)
     local reciver = RPCReciver1:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
+---------------------------------------
 function RPC:RegRpcMethod2(method_id, method)
     local reciver = RPCReciver2:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
+---------------------------------------
 function RPC:RegRpcMethod3(method_id, method)
     local reciver = RPCReciver3:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
+---------------------------------------
 function RPC:RegRpcMethod4(method_id, method)
     local reciver = RPCReciver4:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
+---------------------------------------
 function RPC.OnRpcMethod(method_id, data)
     local rpc = RPC:new(nil)
     local reciver = rpc.MapMethodInfo[method_id]
@@ -73,15 +85,18 @@ function RPC.OnRpcMethod(method_id, data)
     end
 end
 
+---------------------------------------
 function RPC:RPC0(method_id)
     CS.Casinos.CasinosContext.Instance.NetBridge.RpcSession:send(method_id, nil)
 end
 
+---------------------------------------
 function RPC:RPC1(method_id, data1)
     local string1 = self.MessagePack.pack(data1)
     CS.Casinos.CasinosContext.Instance.NetBridge.RpcSession:send(method_id, string1)
 end
 
+---------------------------------------
 function RPC:RPC2(method_id, data1, data2)
     local string1 = self.MessagePack.pack(data1)
     local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1) --string.len(string1)
@@ -100,6 +115,7 @@ function RPC:RPC2(method_id, data1, data2)
     CS.Casinos.CasinosContext.Instance.NetBridge.RpcSession:send(method_id, finale_data)
 end
 
+---------------------------------------
 function RPC:RPC3(method_id, data1, data2, data3)
     local string1 = self.MessagePack.pack(data1)
     local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1)
@@ -124,6 +140,7 @@ function RPC:RPC3(method_id, data1, data2, data3)
     CS.Casinos.CasinosContext.Instance.NetBridge.RpcSession:send(method_id, finale_data)
 end
 
+---------------------------------------
 function RPC:RPC4(method_id, data1, data2, data3, data4)
     local string1 = self.MessagePack.pack(data1)
     local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1)
@@ -154,8 +171,10 @@ function RPC:RPC4(method_id, data1, data2, data3, data4)
     CS.Casinos.CasinosContext.Instance.NetBridge.RpcSession:send(method_id, finale_data)
 end
 
+---------------------------------------
 RPCReciver = {}
 
+---------------------------------------
 function RPCReciver:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -163,11 +182,14 @@ function RPCReciver:new(o)
     return o
 end
 
+---------------------------------------
 function RPCReciver:ReciverData(m_p, data)
 end
 
+---------------------------------------
 RPCReciver0 = RPCReciver:new(nil)
 
+---------------------------------------
 function RPCReciver0:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -175,10 +197,12 @@ function RPCReciver0:new(o)
     return o
 end
 
+---------------------------------------
 function RPCReciver0:SetMethod(method)
     self.Method = method
 end
 
+---------------------------------------
 function RPCReciver0:ReciverData(m_p, data)
     if (self.Method ~= nil)
     then
@@ -186,8 +210,10 @@ function RPCReciver0:ReciverData(m_p, data)
     end
 end
 
+---------------------------------------
 RPCReciver1 = RPCReciver:new(nil)
 
+---------------------------------------
 function RPCReciver1:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -195,10 +221,12 @@ function RPCReciver1:new(o)
     return o
 end
 
+---------------------------------------
 function RPCReciver1:SetMethod(method)
     self.Method = method
 end
 
+---------------------------------------
 function RPCReciver1:ReciverData(m_p, data)
     local data_1 = m_p.unpack(data)
 
@@ -208,8 +236,10 @@ function RPCReciver1:ReciverData(m_p, data)
     end
 end
 
+---------------------------------------
 RPCReciver2 = RPCReciver:new(nil)
 
+---------------------------------------
 function RPCReciver2:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -217,10 +247,12 @@ function RPCReciver2:new(o)
     return o
 end
 
+---------------------------------------
 function RPCReciver2:SetMethod(method)
     self.Method = method
 end
 
+---------------------------------------
 function RPCReciver2:ReciverData(m_p, data)
     local offset = 2
     local length_1 = CS.System.BitConverter.ToInt16(data, 0)
@@ -238,8 +270,10 @@ function RPCReciver2:ReciverData(m_p, data)
     end
 end
 
+---------------------------------------
 RPCReciver3 = RPCReciver:new(nil)
 
+---------------------------------------
 function RPCReciver3:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -247,10 +281,12 @@ function RPCReciver3:new(o)
     return o
 end
 
+---------------------------------------
 function RPCReciver3:SetMethod(method)
     self.Method = method
 end
 
+---------------------------------------
 function RPCReciver3:ReciverData(m_p, data)
     local offset = 2
     local length_1 = CS.System.BitConverter.ToInt16(data, 0)
@@ -275,8 +311,10 @@ function RPCReciver3:ReciverData(m_p, data)
     end
 end
 
+---------------------------------------
 RPCReciver4 = RPCReciver:new(nil)
 
+---------------------------------------
 function RPCReciver4:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -284,10 +322,12 @@ function RPCReciver4:new(o)
     return o
 end
 
+---------------------------------------
 function RPCReciver4:SetMethod(method)
     self.Method = method
 end
 
+---------------------------------------
 function RPCReciver4:ReciverData(m_p, data)
     local offset = 2
     local length_1 = CS.System.BitConverter.ToInt16(data, 0)

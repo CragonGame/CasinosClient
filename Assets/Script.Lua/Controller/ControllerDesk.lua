@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ControllerDesk = ControllerBase:new(nil)
 
+---------------------------------------
 function ControllerDesk:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
@@ -14,6 +16,7 @@ function ControllerDesk:new(o, controller_mgr, controller_data, guid)
     return o
 end
 
+---------------------------------------
 function ControllerDesk:onCreate()
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiRequestLockSystemChat", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvEntityPlayerEnterDesktopH", self)
@@ -108,10 +111,12 @@ function ControllerDesk:onCreate()
     self.MapDesktopHelper[t_fac:GetName()] = t_fac:CreateDesktopHelper()
 end
 
+---------------------------------------
 function ControllerDesk:onDestroy()
     self.ControllerMgr.ViewMgr:unbindEvListener(self)
 end
 
+---------------------------------------
 function ControllerDesk:onUpdate(tm)
     if (self.DesktopBase ~= nil)
     then
@@ -119,6 +124,7 @@ function ControllerDesk:onUpdate(tm)
     end
 end
 
+---------------------------------------
 function ControllerDesk:onHandleEv(ev)
     if (ev.EventName == "EvUiRequestLockSystemChat")
     then
@@ -146,6 +152,7 @@ function ControllerDesk:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cDesktopSnapshotNotify(snapshot_notify)
     ViewHelper:UiEndWaiting()
     local desktop_data1 = snapshot_notify[1]
@@ -183,6 +190,7 @@ function ControllerDesk:s2cDesktopSnapshotNotify(snapshot_notify)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerEnterNotify(player_data)
     if (self.DesktopBase ~= nil)
     then
@@ -190,6 +198,7 @@ function ControllerDesk:s2cPlayerDesktopPlayerEnterNotify(player_data)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerLeaveNotify(player_guid)
     if (self.DesktopBase ~= nil)
     then
@@ -197,6 +206,7 @@ function ControllerDesk:s2cPlayerDesktopPlayerLeaveNotify(player_guid)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerSitdown(sitdown_data)
     if (self.DesktopBase ~= nil)
     then
@@ -204,6 +214,7 @@ function ControllerDesk:s2cPlayerDesktopPlayerSitdown(sitdown_data)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerOb(player_guid)
     if (self.DesktopBase ~= nil)
     then
@@ -211,6 +222,7 @@ function ControllerDesk:s2cPlayerDesktopPlayerOb(player_guid)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerWaitWhile(player_guid)
     if (self.DesktopBase ~= nil)
     then
@@ -218,6 +230,7 @@ function ControllerDesk:s2cPlayerDesktopPlayerWaitWhile(player_guid)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerReturn(return_data)
     if (self.DesktopBase ~= nil)
     then
@@ -225,6 +238,7 @@ function ControllerDesk:s2cPlayerDesktopPlayerReturn(return_data)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cDesktopPlayerGiftChangeNotify(data)
     if (self.DesktopBase ~= nil)
     then
@@ -232,6 +246,7 @@ function ControllerDesk:s2cDesktopPlayerGiftChangeNotify(data)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cDesktopBuyAndSendItemNotify(data)
     if (self.DesktopBase ~= nil)
     then
@@ -239,6 +254,7 @@ function ControllerDesk:s2cDesktopBuyAndSendItemNotify(data)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cPlayerDesktopChat(msg1)
     if (self.DesktopBase ~= nil)
     then
@@ -248,6 +264,7 @@ function ControllerDesk:s2cPlayerDesktopChat(msg1)
     end
 end
 
+---------------------------------------
 function ControllerDesk:OnPlayerInvitePlayerEnterDesktopRequestResult(r)
     if (r == ProtocolResult.Success)
     then
@@ -255,6 +272,7 @@ function ControllerDesk:OnPlayerInvitePlayerEnterDesktopRequestResult(r)
     end
 end
 
+---------------------------------------
 function ControllerDesk:s2cPlayerDesktopUser(info_user)
     if (self.DesktopBase ~= nil)
     then
@@ -262,6 +280,7 @@ function ControllerDesk:s2cPlayerDesktopUser(info_user)
     end
 end
 
+---------------------------------------
 function ControllerDesk:OnMatchTexasRequestRebuyResult(r)
     if (self.DesktopBase == nil)
     then
@@ -287,6 +306,7 @@ function ControllerDesk:OnMatchTexasRequestRebuyResult(r)
     --end
 end
 
+---------------------------------------
 function ControllerDesk:OnMatchTexasRequestAddonResult(r)
     if (self.DesktopBase == nil)
     then
@@ -313,6 +333,7 @@ function ControllerDesk:OnMatchTexasRequestAddonResult(r)
     --end
 end
 
+---------------------------------------
 function ControllerDesk:OnMatchTexasGameOverNotify(r)
     if (self.DesktopBase == nil)
     then
@@ -338,6 +359,7 @@ function ControllerDesk:OnMatchTexasGameOverNotify(r)
     end
 end
 
+---------------------------------------
 function ControllerDesk:requestInvitePlayerEnterDesktop(friend_guid, desktop_guid, desktop_filter, player_num)
     local invite = InvitePlayerEnterDesktop:new(nil)
     invite.player_guid = friend_guid
@@ -350,12 +372,14 @@ function ControllerDesk:requestInvitePlayerEnterDesktop(friend_guid, desktop_gui
     self.ControllerMgr.RPC:RPC1(CommonMethodType.PlayerInvitePlayerEnterDesktopRequest, invite:getData4Pack())
 end
 
+---------------------------------------
 function ControllerDesk:OnPlayerLeaveDesktopNotify()
     ViewHelper:UiEndWaiting()
     self:clearDesktop(true)
     self.ControllerPlayer:requestGetOnlinePlayerNum()
 end
 
+---------------------------------------
 function ControllerDesk:clearDesktop(need_createmainui)
     if (self.DesktopBase ~= nil)
     then
@@ -366,6 +390,7 @@ function ControllerDesk:clearDesktop(need_createmainui)
     self.ListDesktopChat = {}
 end
 
+---------------------------------------
 function ControllerDesk:addDesktopMsg(sender_etguid, sender_name, sender_viplevel, chat_content)
     if ((sender_etguid == nil or sender_etguid == "") and self.LockSysChat)
     then
@@ -392,6 +417,7 @@ function ControllerDesk:addDesktopMsg(sender_etguid, sender_name, sender_vipleve
     self.ControllerMgr.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ControllerDesk:createDesktop(desktop_factory_name)
     self.ControllerPlayer:destroyMainUi()
     if (self.DesktopBase ~= nil)
@@ -403,21 +429,25 @@ function ControllerDesk:createDesktop(desktop_factory_name)
     self.DesktopBase = desktop_factory:CreateDesktop(self.ControllerMgr)
 end
 
+---------------------------------------
 function ControllerDesk:RequestSendMsg(chat_msg)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.DesktopChatRequest, chat_msg)
 end
 
+---------------------------------------
 function ControllerDesk:RequestPlayerWaitWhile()
     local rpc = self.ControllerMgr.RPC
     rpc:RPC0(CommonMethodType.DesktopPlayerWaitWhileRequest)
 end
 
+---------------------------------------
 function ControllerDesk:RequestPlayerOb()
     local rpc = self.ControllerMgr.RPC
     rpc:RPC0(CommonMethodType.DesktopPlayerObRequest)
 end
 
+---------------------------------------
 function ControllerDesk:RequestPlayerReturn(data)
     local rpc = self.ControllerMgr.RPC
     local m = {}
@@ -425,11 +455,13 @@ function ControllerDesk:RequestPlayerReturn(data)
     rpc:RPC1(CommonMethodType.DesktopPlayerReturnRequest, m)
 end
 
+---------------------------------------
 function ControllerDesk:RequestPlayerSitdown(sitdown_info)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.DesktopPlayerSitdownRequest, sitdown_info:getData4Pack())
 end
 
+---------------------------------------
 function ControllerDesk:UserRequest(fac_name, method_info)
     local rpc = self.ControllerMgr.RPC
     local user = MethodInfoDesktopUser:new(nil)
@@ -439,35 +471,43 @@ function ControllerDesk:UserRequest(fac_name, method_info)
     rpc:RPC1(CommonMethodType.DesktopUserRequest, d)
 end
 
+---------------------------------------
 function ControllerDesk:MatchTexasRequestRebuy(match_guid)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.MatchTexasRequestRebuy, match_guid)
 end
 
+---------------------------------------
 function ControllerDesk:MatchTexasRequestAddon(match_guid)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.MatchTexasRequestAddon, match_guid)
 end
 
+---------------------------------------
 function ControllerDesk:MatchTexasRequestGiveUpRebuyOrAddon(match_guid)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.MatchTexasRequestGiveUpRebuyOrAddon, match_guid)
 end
 
+---------------------------------------
 function ControllerDesk:regDesktopBaseFactory(desktop_fac)
     self.MapDesktopBaseFac[desktop_fac:GetName()] = desktop_fac
 end
 
+---------------------------------------
 function ControllerDesk:GetDesktopBaseFactory(fac_name)
     return self.MapDesktopBaseFac[fac_name]
 end
 
+---------------------------------------
 function ControllerDesk:GetDesktopHelperBase(fac_name)
     return self.MapDesktopHelper[fac_name]
 end
 
+---------------------------------------
 ControllerDeskFactory = ControllerFactory:new()
 
+---------------------------------------
 function ControllerDeskFactory:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -476,6 +516,7 @@ function ControllerDeskFactory:new(o)
     return o
 end
 
+---------------------------------------
 function ControllerDeskFactory:createController(controller_mgr, controller_data, guid)
     local controller = ControllerDesk:new(nil, controller_mgr, controller_data, guid)
     return controller

@@ -162,7 +162,7 @@ end
 
 ---------------------------------------
 function KingTexasListener.OnApplicationPause(is_pause)
-    print("OnApplicationPause   "..tostring(is_pause))
+    print("OnApplicationPause   " .. tostring(is_pause))
     if (is_pause == false)
     then
         local lis = KingTexasListener:new(nil)
@@ -197,24 +197,24 @@ function KingTexasListener:_regLuaFilePath()
     casinos_context:regLuaFilePath("Controller/", "ControllerMgr", "ControllerBase", "ControllerFactory",
             "ControllerActivity", "ControllerActor", "ControllerBag", "ControllerDesk", "ControllerDeskH", "ControllerGrow",
             "ControllerIM", "ControllerLobby", "ControllerLotteryTicket", "ControllerMarquee", "ControllerPlayer",
-            "ControllerRanking", "ControllerTrade", "ControllerLogin", "ControllerUCenter", "ControllerMTT", "Prop", "OnLineReward","TimingReward")
-    casinos_context:regLuaFilePath("Item/", "Item", "ItemData1", "Unit", "UnitBilling", "UnitConsume", "UnitGiftNormal","UnitRedEnvelopes", "UnitGiftTmp", "UnitMagicExpression",
-            "UnitGoodsVoucher","UnitGoldPackage","ItemActivity")
-    casinos_context:regLuaFilePath("IM/", "IMChat","IMFeedback", "IMChatRecord", "IMFriendList", "IMMailBox")
+            "ControllerRanking", "ControllerTrade", "ControllerLogin", "ControllerUCenter", "ControllerMTT", "Prop", "OnLineReward", "TimingReward")
+    casinos_context:regLuaFilePath("Item/", "Item", "ItemData1", "Unit", "UnitBilling", "UnitConsume", "UnitGiftNormal", "UnitRedEnvelopes", "UnitGiftTmp", "UnitMagicExpression",
+            "UnitGoodsVoucher", "UnitGoldPackage", "ItemActivity")
+    casinos_context:regLuaFilePath("IM/", "IMChat", "IMFeedback", "IMChatRecord", "IMFriendList", "IMMailBox")
     casinos_context:regLuaFilePath("Desktop/", "DesktopPlayerTexas", "DesktopBase", "DesktopTexas", "DesktopHelperBase", "DesktopHelperTexas",
             "DesktopTypeBase", "DesktopTexasClassic", "DesktopTexasMTT")
     casinos_context:regLuaFilePath("DesktopH/", "DesktopHBase", "DesktopHTexas")
     casinos_context:regLuaFilePath("Model/", "ModelBase", "ModelReaderBase", "ModelCommon", "ModelAccount", "ModelUCenter", "ModelTrade", "ModelDesktop",
-            "ModelDesktopTexas", "ModelDesktopTexasMatch","ModelActor","ModelActivity","ModelGrow","ModelPlayer","ModelRank","ModelMarquee","ModelWallet"
-    ,"ModelBag","ModelDesktopH","ModelIM","ModelIMClientEvent","ModelIMMailBox","ModelLotteryTicket","ModelPlayer","ModelPlayerInfo")
+            "ModelDesktopTexas", "ModelDesktopTexasMatch", "ModelActor", "ModelActivity", "ModelGrow", "ModelPlayer", "ModelRank", "ModelMarquee", "ModelWallet"
+    , "ModelBag", "ModelDesktopH", "ModelIM", "ModelIMClientEvent", "ModelIMMailBox", "ModelLotteryTicket", "ModelPlayer", "ModelPlayerInfo")
     casinos_context:regLuaFilePath("View/", "ViewMgr", "ViewFactory", "ViewBase", "ViewLoading", "ViewMsgBox", "ViewSecurityCode", "ViewDesktopChatParent"
     , "ViewFloatMsg", "ViewHeadIcon", "ViewHeadIconBig", "ViewMailDetail", "ViewNotice", "ViewPayType", "ViewVIPSign", "ViewWaitingCountDown"
-    , "ViewPermanentPosMsg", "ViewPool", "ViewShootingText", "ViewTakePhoto", "ViewWaiting", "ViewWaitingCountDown", "ViewOnlineReward","ViewTimingReward",
-            "UiMainPlayerInfo", "ViewActivityPopUpBox","ViewShare","ViewShareType","UiResetPwd","UiRegister","UiChooseCountryCode","ViewIdCardCheck")
+    , "ViewPermanentPosMsg", "ViewPool", "ViewShootingText", "ViewTakePhoto", "ViewWaiting", "ViewWaitingCountDown", "ViewOnlineReward", "ViewTimingReward",
+            "UiMainPlayerInfo", "ViewActivityPopUpBox", "ViewShare", "ViewShareType", "UiResetPwd", "UiRegister", "UiChooseCountryCode", "ViewIdCardCheck")
     casinos_context:regLuaFilePath("View/Desktop/", "DealerEx", "UiCardCommonEx", "UiCardDealingEx", "UiChipEx", "UiChipMgrEx", "ViewPlayerGiftAndVIP"
     , "ViewDesktopTypeBase", "ViewMTTGameResult", "ViewMTTProcess")
-    casinos_context:regLuaFilePath("View/Desktop/Texas/", "PlayerSeatWidgetControllerTexas","PlayerShowTips","PlayerOperateAni", "ViewDesktopHintsTexas", "ViewDesktopMenuTexas", "ViewDesktopPlayerInfoTexas",
-            "ViewDesktopPlayerOperateTexas", "DesktopFastBet","ViewDesktopTexas", "ViewHandCardTexas", "ViewLockChatTexas", "ViewPotTexasPoker", "ViewTexasClassic", "ViewTexasMTT")
+    casinos_context:regLuaFilePath("View/Desktop/Texas/", "PlayerSeatWidgetControllerTexas", "PlayerShowTips", "PlayerOperateAni", "ViewDesktopHintsTexas", "ViewDesktopMenuTexas", "ViewDesktopPlayerInfoTexas",
+            "ViewDesktopPlayerOperateTexas", "DesktopFastBet", "ViewDesktopTexas", "ViewHandCardTexas", "ViewLockChatTexas", "ViewPotTexasPoker", "ViewTexasClassic", "ViewTexasMTT")
     casinos_context:regLuaFilePath("View/DesktopH/", "DesktopHBankPlayer", "DesktopHBetPot", "DesktopHCard", "DesktopHCards", "DesktopHCardTypeBase", "DesktopHCardTypeTexas"
     , "DesktopHChair", "DesktopHDealer", "DesktopHGoldPool", "DesktopHRewardPot", "DesktopHSelf", "DesktopHStandPlayer"
     , "DesktopHUiGold", "ViewDesktopH", "ViewDesktopHBankList", "ViewDesktopHBase", "ViewDesktopHBetReward", "ViewDesktopHCardType", "ViewDesktopHHelp"
@@ -227,36 +227,36 @@ function KingTexasListener:_regLuaFilePath()
     casinos_context:regLuaFilePath("View/LotteryTicket/", "ViewLotteryTicket", "ViewLotteryTicketBase", "ViewLotteryTicketGFlower", "ViewLotteryTicketRewardPot", "ViewLotteryTicketTexas")
     casinos_context:regLuaFilePath("View/LotteryTicket/Item/", "ItemLotteryTicketBetOperate", "ItemLotteryTicketBetPot", "ItemLotteryTicketCard"
     , "ItemLotteryTicketHistory", "ItemLotteryTicketRewardPotPlayerInfo")
-    casinos_context:regLuaFilePath("View/Item/", "ItemAttachment", "ItemMttRewardItem","ItemBetChipRange", "ItemChatEx", "ItemChatPresetMsg", "ItemDailyReward"
+    casinos_context:regLuaFilePath("View/Item/", "ItemAttachment", "ItemMttRewardItem", "ItemBetChipRange", "ItemChatEx", "ItemChatPresetMsg", "ItemDailyReward"
     , "ItemDesktopHintsInfo", "ItemDesktopRaiseOperateGFlower", "ItemHeadIcon", "ItemHeadIconWithNickName", "ItemMagicExpIcon", "ItemMagicExpSender", "ItemMail"
-    , "ItemNotice", "ItemNumOperate", "ItemPlayerChatLock", "ItemPlayerReport", "ItemChatDesktop","ItemCountryCode")
+    , "ItemNotice", "ItemNumOperate", "ItemPlayerChatLock", "ItemPlayerReport", "ItemChatDesktop", "ItemCountryCode")
     casinos_context:regLuaFilePath("TbData/", "TbDataMgr", "TbDataBase", "TbDataMgrBase", "TbDataHintsInfoTexas", "TbDataActorLevel", "TbDataCommon", "TbDataDailyReward", "TbDataExpression",
             "TbDataItemType", "TbDataLanEn", "TbDataLans", "TbDataLanZh", "TbDataItem", "TbDataDesktopGFlowerBetOperate", "TbDataDesktopHBetPotGFlower",
             "TbDataLotteryTicket", "TbDataLotteryTicketBetOperate", "TbDataLotteryTicketGoldPercent", "TbDataOnlineReward", "TbDataPresetMsg", "TbDataUnitBilling",
-            "TbDataUnitConsume", "TbDataUnitGiftNormal","TbDataUnitRedEnvelopes", "TbDataUnitGiftTmp", "TbDataUnitMagicExpression","TbDataUnitGoldPackage","TbDataUnitGoodsVoucher","TbDataVIPLevel", "TbDataConfigGFlowerDesktop",
+            "TbDataUnitConsume", "TbDataUnitGiftNormal", "TbDataUnitRedEnvelopes", "TbDataUnitGiftTmp", "TbDataUnitMagicExpression", "TbDataUnitGoldPackage", "TbDataUnitGoodsVoucher", "TbDataVIPLevel", "TbDataConfigGFlowerDesktop",
             "TbDataDesktopGFlowerCreateInfo", "TbDataDesktopInfoGFlower", "TbDataConfigTexasDesktop", "TbDataDesktopInfoTexas",
             "TbDataCfigGFlowerDesktopH", "TbDataCfigGFlowerDesktopHGoldPercent", "TbDataCfigGFlowerDesktopHSysBank", "TbDataDesktopHBetOperateGFlower",
             "TbDataDesktopHInfoGFlower", "TbDataCfigNiuNiuDesktopH", "TbDataCfigNiuNiuDesktopHGoldPercent", "TbDataCfigNiuNiuDesktopHSysBank", "TbDataDesktopHBetOperateNiuNiu",
             "TbDataDesktopHBetPotNiuNiu", "TbDataDesktopHInfoNiuNiu", "TbDataCfigTexasDesktopH", "TbDataCfigTexasDesktopHGoldPercent", "TbDataCfigTexasDesktopHSysBank",
             "TbDataDesktopHBetOperateTexas", "TbDataDesktopHBetPotTexas", "TbDataDesktopHInfoTexas", "TbDataCfigZhongFBDesktopH", "TbDataCfigZhongFBDesktopHGoldPercent",
             "TbDataCfigZhongFBDesktopHSysBank", "TbDataDesktopHBetOperateZhongFB", "TbDataDesktopHBetPotZhongFB", "TbDataDesktopHInfoZhongFB", "TbDataDesktopHBetReward",
-            "TbDataDesktopFastBet","TbDataTexasRaiseBlinds","TbDataTexasSnowBallRewardPlayerNum","TbDataTexasSnowBallRewardInfo")
+            "TbDataDesktopFastBet", "TbDataTexasRaiseBlinds", "TbDataTexasSnowBallRewardPlayerNum", "TbDataTexasSnowBallRewardInfo")
     --"TbDataForestPartyAnimalList","TbDataForestPartyBetOperate","TbDataForestPartyBetPotMultiple","TbDataForestPartyDesktop","TbDataForestPartyLottery",
     casinos_context:regLuaFilePath("Event/", "EventSys", "EventBase", "EventView")
     casinos_context:regLuaFilePath("Helper/", "CommonLuaLoader", "ProjectDataLoader", "WWWLoader", "TexasHelper", "ViewHelper",
-            "TbDataHelper", "GoldController", "UiChipShowHelper", "RPC", "CasinoHelper","Native","PicCapture")--"LuaHelper",
+            "TbDataHelper", "GoldController", "UiChipShowHelper", "RPC", "CasinoHelper", "Native", "PicCapture")--"LuaHelper",
     casinos_context:regLuaFilePath("Resources.KingTexasRaw/Lua/View/", "ViewLogin", "ViewAbout", "ViewAgreeOrDisAddFriendRequest", "ViewBag", "ViewBank", "ViewChat"
     , "ViewChatChooseTarget", "ViewChatFriend", "ViewChipOperate", "ViewChooseLan", "ViewCreateDesktop", "ViewDailyReward"
     , "ViewDesktopChatExpression", "ViewDesktopHRewardPot", "ViewEdit", "ViewFriend", "ViewFriendOnLine", "ViewGiftDetail"
-    , "ViewGiftShop", "ViewGoldTree", "ViewInviteFriendPlay", "ViewLobby", "ViewMail", "ViewMain", "ViewFeedback","ViewPlayerInfo", "ViewQuitOrBack"
+    , "ViewGiftShop", "ViewGoldTree", "ViewInviteFriendPlay", "ViewLobby", "ViewMail", "ViewMain", "ViewFeedback", "ViewPlayerInfo", "ViewQuitOrBack"
     , "ViewRanking", "ViewRechargeFirst", "ViewResetPwd", "ViewShop", "ViewPlayerProfile", "ViewActivityCenter", "ViewMatchLobby"
-    , "ViewApplySucceed", "ViewClub","ViewCreateMatch","ViewBlindTable","ViewClubHelp","ViewJoinMatch","ViewGetChipEffect","ViewMatchInfo","ViewEnterMatchNotify"
-    , "ViewSnowBallReward","ViewEditAddress","ViewPurse")
+    , "ViewApplySucceed", "ViewClub", "ViewCreateMatch", "ViewBlindTable", "ViewClubHelp", "ViewJoinMatch", "ViewGetChipEffect", "ViewMatchInfo", "ViewEnterMatchNotify"
+    , "ViewSnowBallReward", "ViewEditAddress", "ViewPurse")
     casinos_context:regLuaFilePath("Resources.KingTexasRaw/Lua/View/Item/", "ItemChatTargetInfo", "ItemChooseChatTargetInfo", "ItemDesktopHRewardPotPlayerInfo", "ItemGift", "ItemGiftType", "ItemInviteFriendPlay"
-    , "ItemLan", "ItemLobbyDesk", "ItemLobbyDeskPlayInfo", "ItemMainOperate", "ItemRank", "ItemReportPlayerOperate", "ItemShowFriendSimple","ItemAnte"
-    , "ItemUiShopConsume", "ItemUiShopDiamond", "ItemUiShopGold", "ItemUiShopVIPInfo", "ItemVIPBuyInfo", "ItemActivityTitle","ItemUiShopGoods","ItemUiPurseGold")
-    casinos_context:regLuaFilePath("Resources.KingTexasRaw/Lua/View/Item/Mtt/", "ItemMatchType", "ItemMatchInfo","ItemBlind","ItemMatchInfoBlind","ItemSnowBallRewardInfo","ItemSnowBallRewardPlayerNum"
-    ,"ItemMatchInfoReward","ItemMatchInfoRank")
+    , "ItemLan", "ItemLobbyDesk", "ItemLobbyDeskPlayInfo", "ItemMainOperate", "ItemRank", "ItemReportPlayerOperate", "ItemShowFriendSimple", "ItemAnte"
+    , "ItemUiShopConsume", "ItemUiShopDiamond", "ItemUiShopGold", "ItemUiShopVIPInfo", "ItemVIPBuyInfo", "ItemActivityTitle", "ItemUiShopGoods", "ItemUiPurseGold")
+    casinos_context:regLuaFilePath("Resources.KingTexasRaw/Lua/View/Item/Mtt/", "ItemMatchType", "ItemMatchInfo", "ItemBlind", "ItemMatchInfoBlind", "ItemSnowBallRewardInfo", "ItemSnowBallRewardPlayerNum"
+    , "ItemMatchInfoReward", "ItemMatchInfoRank")
 end
 
 ---------------------------------------
@@ -911,9 +911,9 @@ function KingTexasListener:LoadDataDone()
     MainC:doString("CasinoHelper")
     CasinoHelper:new(nil, self.ViewMgr.RPC.MessagePack, self.LanMgr)
     MainC:doString("Native")
-    Native:new(nil,self.ViewMgr,self)
+    Native:new(nil, self.ViewMgr, self)
     MainC:doString("PicCapture")
-    self.PicCapture = PicCapture:new(nil,self.ViewMgr,self)
+    self.PicCapture = PicCapture:new(nil, self.ViewMgr, self)
     self.LoadTbDataDone = true
 end
 
@@ -921,7 +921,7 @@ end
 function KingTexasListener:addUiPackage(name)
     local p = CS.FairyGUI.UIPackage.GetByName(name)
     if p ~= nil then
-        CS.FairyGUI.UIPackage.RemovePackage(name,true)
+        CS.FairyGUI.UIPackage.RemovePackage(name, true)
     else
         local s = self.ViewMgr:getUiPackagePath(name)
         CS.Casinos.CasinosContext.Instance.Listener:AddUiPackage(s)

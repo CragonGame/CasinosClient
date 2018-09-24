@@ -6,9 +6,9 @@ LanMgr = {}
 ---------------------------------------
 function LanMgr:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
-    if(self.Instance == nil)
+    if (self.Instance == nil)
     then
         self.Instance = o
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -44,7 +44,7 @@ function LanMgr:getLanValue(lan_key)
     if (self.CasinosContext.UseLan == true)
     then
         local temp = self.LanBase:getValue(lan_key)
-        if(temp ~= nil)
+        if (temp ~= nil)
         then
             value = temp
         end
@@ -75,7 +75,7 @@ function LanMgr:setLan(lan)
         return
     end
 
-    if(self.LanBase ~=nil)
+    if (self.LanBase ~= nil)
     then
         self.LanBase = nil
     end
@@ -95,22 +95,22 @@ function LanMgr:parseComponent(component)
     local pack_name = self.LanBase:getLanPackageName()
     for i = 0, children.Length - 1 do
         local child = children[i]
-        if(CS.Casinos.LuaHelper.objIsBtn(child) == true)
+        if (CS.Casinos.LuaHelper.objIsBtn(child) == true)
         then
             local name = child.name
-            local l = string.find(name,self.LanTitleSign)
+            local l = string.find(name, self.LanTitleSign)
             if (l == nil)
             then
                 self:parseComponent(child.asCom)
             else
                 self:_parseGObject(name, child, pack_name)
             end
-        elseif(CS.Casinos.LuaHelper.objIsComponent(child) == true)
+        elseif (CS.Casinos.LuaHelper.objIsComponent(child) == true)
         then
             self:parseComponent(child.asCom)
         else
             local name = child.name
-            local l = string.find(name,self.LanTitleSign)
+            local l = string.find(name, self.LanTitleSign)
             if (l == nil)
             then
             else
@@ -143,8 +143,8 @@ function LanMgr:_checkAndCreateLanBase()
 end
 
 ---------------------------------------
-function LanMgr:_parseGObject(name,i,pack_name)
-    local strs = CS.Casinos.LuaHelper.spliteStr(name,"_")
+function LanMgr:_parseGObject(name, i, pack_name)
+    local strs = CS.Casinos.LuaHelper.spliteStr(name, "_")
     local l = #strs
     if (l == 3)
     then
@@ -161,9 +161,9 @@ function LanMgr:_parseGObject(name,i,pack_name)
             if resource_url == nil then
                 local p_name = pack_name
                 if CS.Casinos.CasinosContext.Instance.UnityAndroid then
-                    p_name = pack_name.."Android"
+                    p_name = pack_name .. "Android"
                 elseif CS.Casinos.CasinosContext.Instance.UnityIOS then
-                    p_name = pack_name.."IOS"
+                    p_name = pack_name .. "IOS"
                 end
                 resource_url = CS.FairyGUI.UIPackage.GetItemURL(p_name, value)
             end
@@ -189,6 +189,6 @@ function LanMgr:_createLanBase()
     then
         self.LanBase = LanZh:new(nil)
     else
-        self.LanBase = LanEn:new(nil )
+        self.LanBase = LanEn:new(nil)
     end
 end

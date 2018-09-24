@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ControllerUCenter = ControllerBase:new(nil)
 
+---------------------------------------
 function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
@@ -58,14 +60,17 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
     return self.Instance
 end
 
+---------------------------------------
 function ControllerUCenter:onCreate()
     --print("ControllerUCenter:onCreate")
     self.UCenterDomain = CS.Casinos.CasinosContext.Instance.UserConfig.Current.UCenterDomain
 end
 
+---------------------------------------
 function ControllerUCenter:onDestroy()
 end
 
+---------------------------------------
 function ControllerUCenter:onUpdate(tm)
     if (self.WWWGetPhoneVerificationCode ~= nil)
     then
@@ -258,10 +263,11 @@ function ControllerUCenter:onUpdate(tm)
     end
 end
 
+---------------------------------------
 function ControllerUCenter:onHandleEv(ev)
-
 end
 
+---------------------------------------
 function ControllerUCenter:getPhoneVerificationCode(request, handler)
     if (self.WWWGetPhoneVerificationCode ~= nil)
     then
@@ -278,6 +284,7 @@ function ControllerUCenter:getPhoneVerificationCode(request, handler)
     self.WWWGetPhoneVerificationCode = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:register(request, handler)
     if (self.WWWRegister ~= nil)
     then
@@ -294,6 +301,7 @@ function ControllerUCenter:register(request, handler)
     self.WWWRegister = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:login(request, handler)
     if (self.WWWLogin ~= nil)
     then
@@ -310,6 +318,7 @@ function ControllerUCenter:login(request, handler)
     self.WWWLogin = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:resetPasswordWithPhone(request, handler)
     if (self.WWWResetPasswordWithPhone ~= nil)
     then
@@ -326,6 +335,7 @@ function ControllerUCenter:resetPasswordWithPhone(request, handler)
     self.WWWResetPasswordWithPhone = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:wechatAutoLogin(request, handler)
     if (self.WWWWeChatAutoLogin ~= nil)
     then
@@ -342,6 +352,7 @@ function ControllerUCenter:wechatAutoLogin(request, handler)
     self.WWWWeChatAutoLogin = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:wechatLogin(request, handler)
     if (self.WWWWechatLogin ~= nil)
     then
@@ -358,6 +369,7 @@ function ControllerUCenter:wechatLogin(request, handler)
     self.WWWWechatLogin = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:wechatBind(request, handler)
     if (self.WWWWechatBind ~= nil)
     then
@@ -375,6 +387,7 @@ function ControllerUCenter:wechatBind(request, handler)
     self.WWWWechatBind = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:wechatUnbind(request, handler)
     if (self.WWWWechatUnbind ~= nil)
     then
@@ -391,6 +404,7 @@ function ControllerUCenter:wechatUnbind(request, handler)
     self.WWWWechatUnbind = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:guestAccess(request, handler)
     if (self.WWWGuestAccess ~= nil)
     then
@@ -407,6 +421,7 @@ function ControllerUCenter:guestAccess(request, handler)
     self.WWWGuestAccess = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:guestConvert(request, handler)
     if (self.WWWGuestConvert ~= nil)
     then
@@ -423,6 +438,7 @@ function ControllerUCenter:guestConvert(request, handler)
     self.WWWGuestConvert = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:resetPassword(request, handler)
     if (self.WWWResetPassword ~= nil)
     then
@@ -439,6 +455,7 @@ function ControllerUCenter:resetPassword(request, handler)
     self.WWWResetPassword = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:uploadProfileImage(app_id, account_id, bytes, handler)
     if (self.WWWUploadProfileImage ~= nil)
     then
@@ -460,6 +477,7 @@ function ControllerUCenter:uploadProfileImage(app_id, account_id, bytes, handler
     self.WWWUploadProfileImage = CS.UnityEngine.WWW(http_url, www_form)
 end
 
+---------------------------------------
 function ControllerUCenter:payCreateCharge(payment_info, handler)
     if (self.WWWPayCreateCharge ~= nil)
     then
@@ -476,6 +494,7 @@ function ControllerUCenter:payCreateCharge(payment_info, handler)
     self.WWWPayCreateCharge = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:checkCardAndName(request, handler)
     if (self.WWWCheckIdCard ~= nil)
     then
@@ -492,6 +511,7 @@ function ControllerUCenter:checkCardAndName(request, handler)
     self.WWWCheckIdCard = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:nigWebpayRequestUrl(handler)
     if (self.WWWNigWebpayRequestUrl ~= nil)
     then
@@ -503,9 +523,10 @@ function ControllerUCenter:nigWebpayRequestUrl(handler)
     local http_url = self:_genApiUrl("nigeriawebpay")
     local form = CS.UnityEngine.WWWForm()
 
-    self.WWWNigWebpayRequestUrl = CS.UnityEngine.WWW(http_url,form)
+    self.WWWNigWebpayRequestUrl = CS.UnityEngine.WWW(http_url, form)
 end
 
+---------------------------------------
 function ControllerUCenter:nigWebpayQuery(handler)
     if (self.WWWNigWebpayQuery ~= nil)
     then
@@ -519,7 +540,8 @@ function ControllerUCenter:nigWebpayQuery(handler)
     self.WWWNigWebpayQuery = CS.UnityEngine.WWW(http_url)
 end
 
-function ControllerUCenter:quicktellerTransfers(request,handler)
+---------------------------------------
+function ControllerUCenter:quicktellerTransfers(request, handler)
     if (self.WWWQuicktellerTransfers ~= nil)
     then
         return
@@ -532,9 +554,10 @@ function ControllerUCenter:quicktellerTransfers(request,handler)
     local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
     local headers = self:_genHeader(bytes.Length)
 
-    self.WWWQuicktellerTransfers = CS.UnityEngine.WWW(http_url,bytes, headers)
+    self.WWWQuicktellerTransfers = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
+---------------------------------------
 function ControllerUCenter:quicktellerTransfersQuery(handler)
     if (self.WWWQuicktellerTransfersQuery ~= nil)
     then
@@ -546,9 +569,10 @@ function ControllerUCenter:quicktellerTransfersQuery(handler)
     local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfersquery")
     local form = CS.UnityEngine.WWWForm()
 
-    self.WWWQuicktellerTransfersQuery = CS.UnityEngine.WWW(http_url,form)
+    self.WWWQuicktellerTransfersQuery = CS.UnityEngine.WWW(http_url, form)
 end
 
+---------------------------------------
 function ControllerUCenter:ParseUCenterErrorCode(error_code)
     local error_msg = ""
     if (error_code == UCenterErrorCode.NoError)
@@ -637,6 +661,7 @@ function ControllerUCenter:ParseUCenterErrorCode(error_code)
     return self.ControllerMgr.LanMgr:getLanValue(error_msg)
 end
 
+---------------------------------------
 function ControllerUCenter:_genHeader(content_len)
     local headers = {}
     headers["Accept"] = "application/x-www-form-urlencoded"
@@ -648,6 +673,7 @@ function ControllerUCenter:_genHeader(content_len)
     return headers
 end
 
+---------------------------------------
 function ControllerUCenter:_getHostName()
     local host = self.UCenterDomain
 
@@ -662,6 +688,7 @@ function ControllerUCenter:_getHostName()
     return host
 end
 
+---------------------------------------
 function ControllerUCenter:_genUrl(api)
     local http_url = nil
     local index = string.find(self.UCenterDomain, "/", -1)
@@ -677,6 +704,7 @@ function ControllerUCenter:_genUrl(api)
     return http_url
 end
 
+---------------------------------------
 function ControllerUCenter:_genPayUrl(api)
     local http_url = nil
     local index = string.find(self.UCenterDomain, "/", -1)
@@ -692,6 +720,7 @@ function ControllerUCenter:_genPayUrl(api)
     return http_url
 end
 
+---------------------------------------
 function ControllerUCenter:_genIdCardUrl(api)
     local http_url = nil
     local index = string.find(self.UCenterDomain, "/", -1)
@@ -707,6 +736,7 @@ function ControllerUCenter:_genIdCardUrl(api)
     return http_url
 end
 
+---------------------------------------
 function ControllerUCenter:_genApiUrl(api)
     local http_url = nil
     local index = string.find(self.UCenterDomain, "/", -1)
@@ -722,6 +752,7 @@ function ControllerUCenter:_genApiUrl(api)
     return http_url
 end
 
+---------------------------------------
 function ControllerUCenter:_checkResponse(www, handler)
     if (www ~= nil)
     then
@@ -761,8 +792,10 @@ function ControllerUCenter:_checkResponse(www, handler)
     return false
 end
 
+---------------------------------------
 ControllerUCenterFactory = ControllerFactory:new()
 
+---------------------------------------
 function ControllerUCenterFactory:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -771,6 +804,7 @@ function ControllerUCenterFactory:new(o)
     return o
 end
 
+---------------------------------------
 function ControllerUCenterFactory:createController(controller_mgr, controller_data, guid)
     local controller = ControllerUCenter:new(nil, controller_mgr, controller_data, guid)
     controller:onCreate()

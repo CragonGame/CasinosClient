@@ -26,7 +26,7 @@ function Launch:new(o)
 end
 
 ---------------------------------------
-function Launch:Init()
+function Launch:Setup()
     Launch:new(nil)
 
     require 'PreViewMgr'
@@ -52,75 +52,75 @@ function Launch:Init()
 end
 
 ---------------------------------------
-function Launch:Release()
-    print("Launch:Release()")
-end
+--function Launch:Release()
+--    print("Launch:Release()")
+--end
+--
+-----------------------------------------
+--function Launch:Update(tm)
+--    local launch = Launch:new(nil)
+--    if (launch.LaunchConfigLoader ~= nil)
+--    then
+--        launch.LaunchConfigLoader:update(tm)
+--    end
+--
+--    if (launch.CanCheckLoadDataDone)
+--    then
+--        local casinos_context = CS.Casinos.CasinosContext.Instance
+--        local load_datadone = casinos_context.LoadDataDone
+--        if (load_datadone==true)
+--        then
+--            launch.CanCheckLoadDataDone = false
+--
+--            local tips = "正在玩命加载美术资源，稍后即可进入游戏..."
+--            local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
+--            if(lan == "English")
+--            then
+--                tips = "Loading art resources,can enter game soon..."
+--            else
+--                if(lan == "Chinese" or lan == "ChineseSimplified")
+--                then
+--                    tips = "正在玩命加载美术资源，稍后即可进入游戏..."
+--                end
+--            end
+--
+--            local view_preloading = launch.PreViewMgr.createView("PreLoading")
+--            view_preloading.setTip(tips)
+--            casinos_context.Listener:OnInitializeBegin(
+--                function ()
+--                    launch:_initializeDone()
+--                end)
+--        end
+--    end
+--end
 
 ---------------------------------------
-function Launch:Update(tm)
-    local launch = Launch:new(nil)
-    if (launch.LaunchConfigLoader ~= nil)
-    then
-        launch.LaunchConfigLoader:update(tm)
-    end
-
-    if (launch.CanCheckLoadDataDone)
-    then
-        local casinos_context = CS.Casinos.CasinosContext.Instance
-        local load_datadone = casinos_context.LoadDataDone
-        if (load_datadone==true)
-        then
-            launch.CanCheckLoadDataDone = false
-
-            local tips = "正在玩命加载美术资源，稍后即可进入游戏..."
-            local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
-            if(lan == "English")
-            then
-                tips = "Loading art resources,can enter game soon..."
-            else
-                if(lan == "Chinese" or lan == "ChineseSimplified")
-                then
-                    tips = "正在玩命加载美术资源，稍后即可进入游戏..."
-                end
-            end
-
-            local view_preloading = launch.PreViewMgr.createView("PreLoading")
-            view_preloading.setTip(tips)
-            casinos_context.Listener:OnInitializeBegin(
-                function ()
-                    launch:_initializeDone()
-                end)
-        end
-    end
-end
-
----------------------------------------
-function Launch:CopyStreamingAssetsToPersistentDataPath()
-    local controller_launch = Launch:new(nil)
-    local tips = "首次进入游戏，解压资源，该过程不产生任何流量"
-    local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
-    if(lan == "English")
-    then
-        tips = "First game,we need to copy some resources,it's not need any network flow."
-    else
-        if(lan == "Chinese" or lan == "ChineseSimplified")
-        then
-            tips = "首次进入游戏，解压资源，该过程不产生任何流量"
-        end
-    end
-    local view_preloading = controller_launch.PreViewMgr.createView("PreLoading")
-    view_preloading.setTip(tips)
-
-    local launch = CS.Casinos.CasinosContext.Instance.Launch
-    if (launch.ParseStreamingAssetsDataInfo ~= nil)
-    then
-        CS.Casinos.CasinosContext.Instance.CopyStreamingAssetsToPersistentDataPath:startCopy(launch.ParseStreamingAssetsDataInfo.ListData,
-                function(current_index, total_count)
-                    controller_launch:_firstCopyStreamingAssetsDataPro(current_index, total_count)
-                end,
-                Launch._firstCopyStreamingAssetsDataDown)
-    end
-end
+--function Launch:CopyStreamingAssetsToPersistentDataPath()
+--    local controller_launch = Launch:new(nil)
+--    local tips = "首次进入游戏，解压资源，该过程不产生任何流量"
+--    local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
+--    if(lan == "English")
+--    then
+--        tips = "First game,we need to copy some resources,it's not need any network flow."
+--    else
+--        if(lan == "Chinese" or lan == "ChineseSimplified")
+--        then
+--            tips = "首次进入游戏，解压资源，该过程不产生任何流量"
+--        end
+--    end
+--    local view_preloading = controller_launch.PreViewMgr.createView("PreLoading")
+--    view_preloading.setTip(tips)
+--
+--    local launch = CS.Casinos.CasinosContext.Instance.Launch
+--    if (launch.ParseStreamingAssetsDataInfo ~= nil)
+--    then
+--        CS.Casinos.CasinosContext.Instance.CopyStreamingAssetsToPersistentDataPath:startCopy(launch.ParseStreamingAssetsDataInfo.ListData,
+--                function(current_index, total_count)
+--                    controller_launch:_firstCopyStreamingAssetsDataPro(current_index, total_count)
+--                end,
+--                Launch._firstCopyStreamingAssetsDataDown)
+--    end
+--end
 
 ---------------------------------------
 function Launch:_loadABPreLoadingDone()
@@ -167,12 +167,12 @@ function Launch:_loadABPreLoadingDone()
 end
 
 ---------------------------------------
-function Launch:_firstCopyStreamingAssetsDataPro(current_index, total_count)
-    -- local launch = Launch:new(nil)
-    local pro = current_index / total_count
-    local view_preloading = self.PreViewMgr.createView("PreLoading")
-    view_preloading.setLoadingProgress(pro * 100)
-end
+--function Launch:_firstCopyStreamingAssetsDataPro(current_index, total_count)
+--    -- local launch = Launch:new(nil)
+--    local pro = current_index / total_count
+--    local view_preloading = self.PreViewMgr.createView("PreLoading")
+--    view_preloading.setLoadingProgress(pro * 100)
+--end
 
 ---------------------------------------
 function Launch._firstCopyStreamingAssetsDataDown()

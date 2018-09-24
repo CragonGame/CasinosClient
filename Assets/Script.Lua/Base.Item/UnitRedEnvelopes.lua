@@ -1,10 +1,12 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 UnitRedEnvelopes = Unit:new()
 
-function UnitRedEnvelopes:new(o,item)
+---------------------------------------
+function UnitRedEnvelopes:new(o, item)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     o.UnitType = "WechatRedEnvelopes"
     o.Item = item
@@ -21,6 +23,7 @@ function UnitRedEnvelopes:new(o,item)
     return o
 end
 
+---------------------------------------
 function UnitRedEnvelopes:_setup()
     local create_time = self.Item.ItemData.map_unit_data[1]
     if (CS.System.String.IsNullOrEmpty(create_time) == false)
@@ -29,7 +32,7 @@ function UnitRedEnvelopes:_setup()
     end
 
     local value = self.Item.ItemData.map_unit_data[2]
-    local multiple,remainder = math.modf(value/100)
+    local multiple, remainder = math.modf(value / 100)
     local r_v = value / 100
     if remainder == 0 then
         r_v = multiple
@@ -37,6 +40,7 @@ function UnitRedEnvelopes:_setup()
     self.Value = r_v
 end
 
+---------------------------------------
 function UnitRedEnvelopes:_saveData()
     if (self.Item.ItemData.map_unit_data == nil)
     then
@@ -47,18 +51,19 @@ function UnitRedEnvelopes:_saveData()
     self.Item.ItemData.map_unit_data[2] = self.Value
 end
 
-
-
+---------------------------------------
 UnitFacRedEnvelopes = UnitFac:new()
 
+---------------------------------------
 function UnitFacRedEnvelopes:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
 
     return o
 end
 
+---------------------------------------
 function UnitFacRedEnvelopes:createUnit(item)
-    return UnitRedEnvelopes:new(nil,item)
+    return UnitRedEnvelopes:new(nil, item)
 end

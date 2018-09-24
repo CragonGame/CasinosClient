@@ -46,16 +46,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public override void OnInitializeUpdate(float elapsed_tm)
-        {
-        }
-
-        //---------------------------------------------------------------------
-        public override void OnInitializeEnd()
-        {
-        }
-
-        //---------------------------------------------------------------------
         public override string GetCanNotChatTipsDesktopH()
         {
             int vip_limit = CasinosContext.Instance.DesktopHCanChatVIPLimit;

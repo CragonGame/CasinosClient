@@ -27,12 +27,6 @@ namespace Casinos
         public abstract string[] OnInitializeBegin(Action init_done_callback);
 
         //---------------------------------------------------------------------
-        public abstract void OnInitializeUpdate(float elapsed_tm);
-
-        //---------------------------------------------------------------------
-        public abstract void OnInitializeEnd();
-
-        //---------------------------------------------------------------------
         public abstract string GetCanNotChatTipsDesktopH();
 
         //---------------------------------------------------------------------

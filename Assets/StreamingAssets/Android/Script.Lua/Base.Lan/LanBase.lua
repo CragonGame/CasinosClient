@@ -6,7 +6,7 @@ LanBase = {}
 ---------------------------------------
 function LanBase:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     return o
 end
@@ -24,9 +24,9 @@ function LanBase:getLanPackageName()
 end
 
 ---------------------------------------
-function LanBase:getGoldShowStr(gold,show_short_way,precision_length)
+function LanBase:getGoldShowStr(gold, show_short_way, precision_length)
 end
 
 ---------------------------------------
-function LanBase:getGoldShowStr2(gold,show_short_way,precision_length)
+function LanBase:getGoldShowStr2(gold, show_short_way, precision_length)
 end

@@ -17,12 +17,11 @@ namespace Casinos
     public class CasinosLaunch
     {
         //---------------------------------------------------------------------
-        public string VersionLaunchStreamingAssets { get; set; }
-        public string VersionLaunchPersistent { get; set; }
-        DelegateLua1 FuncLuaLaunchInit { get; set; }
-        DelegateLuaUpdate FuncLuaLaunchUpdate { get; set; }
-        Action FuncLuaLaunchRelease { get; set; }
-
+        //public string VersionLaunchStreamingAssets { get; set; }
+        //public string VersionLaunchPersistent { get; set; }
+        //DelegateLua1 FuncLuaLaunchInit { get; set; }
+        //DelegateLuaUpdate FuncLuaLaunchUpdate { get; set; }
+        //Action FuncLuaLaunchRelease { get; set; }
         //GameCloud.Unity.Common.EbTimer Timer { get; set; }
 
         //---------------------------------------------------------------------
@@ -48,22 +47,20 @@ namespace Casinos
             var casinos_lua = CasinosContext.Instance.CasinosLua;
             var path_launch = CasinosContext.Instance.PathMgr.combinePersistentDataPath("Script.Lua/Launch/");
             string[] list_path = new string[] { path_launch };
-            casinos_lua.LoadLuaFromDir(list_path);
+            casinos_lua.LoadLuaFromDir2(list_path);
             casinos_lua.DoString("Launch");
             var lua_launch = casinos_lua.LuaEnv.Global.Get<LuaTable>("Launch");
-            FuncLuaLaunchInit = lua_launch.Get<DelegateLua1>("Init");
-            FuncLuaLaunchUpdate = lua_launch.Get<DelegateLuaUpdate>("Update");
-            FuncLuaLaunchRelease = lua_launch.Get<Action>("Release");
-            FuncLuaLaunchInit(lua_launch);
+            var func_setup = lua_launch.Get<DelegateLua1>("Setup");
+            func_setup(lua_launch);
 
             //Timer = CasinosContext.Instance.TimerShaft.RegisterTimer(1000, _onTimer);
         }
 
         //---------------------------------------------------------------------
-        void _onTimer()
-        {
-            Debug.Log("TimeJeffies=" + CasinosContext.Instance.TimerShaft.GetTimeJeffies());
-        }
+        //void _onTimer()
+        //{
+        //    Debug.Log("TimeJeffies=" + CasinosContext.Instance.TimerShaft.GetTimeJeffies());
+        //}
 
         //---------------------------------------------------------------------
         //public async Task Fire()

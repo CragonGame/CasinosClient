@@ -1,32 +1,38 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ControllerBase = {
-	ControllerMgr = nil,
-	ControllerName = nil,
-	ControllerData = nil,
-	Model = nil
+    ControllerMgr = nil,
+    ControllerName = nil,
+    ControllerData = nil,
+    Model = nil
 }
 
-function ControllerBase:new(o,controller_mgr,controller_data,guid)
-	o = o or {}
-    setmetatable(o,self)
+---------------------------------------
+function ControllerBase:new(o, controller_mgr, controller_data, guid)
+    o = o or {}
+    setmetatable(o, self)
     self.__index = self
-	-- self.ControllerData = controller_data
-
+    -- self.ControllerData = controller_data
     return o
 end
 
+---------------------------------------
 function ControllerBase:onCreate()
 end
 
+---------------------------------------
 function ControllerBase:onDestroy()
 end
 
+---------------------------------------
 function ControllerBase:onUpdate(tm)
 end
 
+---------------------------------------
 function ControllerBase:onHandleEv(ev)
 end
 
+---------------------------------------
 function ControllerBase:getModle()
 end

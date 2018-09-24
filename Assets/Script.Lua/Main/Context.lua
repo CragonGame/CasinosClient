@@ -184,7 +184,13 @@ function Context:_nextLaunchStep()
 
         local desc_copy = "准备进入登录界面"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
-        Context.Launch.PreLoading:UpdateLoadingProgress(100, 100)
+        self.Launch.PreLoading:UpdateLoadingProgress(100, 100)
+
+        local path_lua_root = self.CasinosContext.PathMgr:combinePersistentDataPath("Script.Lua/");
+        self.CasinosLua:LoadLuaFromDir(path_lua_root);
+
+        -- 加载登录界面
+
     end
 end
 
