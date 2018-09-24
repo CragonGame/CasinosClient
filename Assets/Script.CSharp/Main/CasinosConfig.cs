@@ -53,5 +53,12 @@ namespace Casinos
                 VersionDataPersistent = PlayerPrefs.GetString("VersionDataPersistent");
             }
         }
+
+        //---------------------------------------------------------------------
+        public void WriteVersionDataPersistent(string version_data_persistent_new)
+        {
+            VersionDataPersistent = version_data_persistent_new;
+            PlayerPrefs.SetString("VersionDataPersistent", VersionDataPersistent);
+        }
     }
 }

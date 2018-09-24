@@ -180,6 +180,11 @@ function Context:_nextLaunchStep()
     -- 卸载Launch，加载并显示Login
     if (self.LaunchStep[4] ~= nil)
     then
+        self.LaunchStep[4] = nil
+
+        local desc_copy = "准备进入登录界面"
+        self.Launch.PreLoading:UpdateDesc(desc_copy)
+        Context.Launch.PreLoading:UpdateLoadingProgress(100, 100)
     end
 end
 
@@ -217,6 +222,7 @@ function Context:_timerUpdateRemoteToPersistentData()
         local datafilelist_persistent = Context.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
         CS.System.IO.File.WriteAllText(datafilelist_persistent, Context.RemoteDataFileListContent)
         Context.RemoteDataFileListContent = nil
+        Context.CasinosContext.Config:WriteVersionDataPersistent(DataVersion)
 
         -- 执行下一步LaunchStep
         Context.LaunchStep[3] = nil
@@ -238,27 +244,7 @@ function string:split(sep)
 end
 
 ---------------------------------------
--- 字符串分隔方法
---function string.split(input, delimiter)
---    input = tostring(input)
---    delimiter = tostring(delimiter)
---    if (delimiter == '') then
---        return false
---    end
---    local pos, arr = 0, {}
---    -- for each divider found
---    for st, sp in function()
---        return string.find(input, delimiter, pos, true)
---    end do
---        table.insert(arr, string.sub(input, pos, st - 1))
---        pos = sp + 1
---    end
---    table.insert(arr, string.sub(input, pos))
---    return arr
---end
-
----------------------------------------
--- 打印table
+-- 打印Table
 function PrintTable(t)
     local print_r_cache = {}
     local function sub_print_r(t, indent)
