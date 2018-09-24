@@ -47,6 +47,7 @@ namespace Casinos
             }
 
             TotalCount = QueCopyFile.Count;
+            LeftCount = QueCopyFile.Count;
         }
 
         //---------------------------------------------------------------------

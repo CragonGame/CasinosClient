@@ -103,6 +103,16 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(System.Text.RegularExpressions.MatchCollection), SystemTextRegularExpressionsMatchCollectionWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(System.IO.Directory), SystemIODirectoryWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(System.IO.File), SystemIOFileWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(System.IO.FileStream), SystemIOFileStreamWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(System.IO.MemoryStream), SystemIOMemoryStreamWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(System.IO.Path), SystemIOPathWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(DG.Tweening.DOTween), DGTweeningDOTweenWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(DG.Tweening.Tween), DGTweeningTweenWrap.__Register);
@@ -233,11 +243,11 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(AsyncAssetLoadGroup), AsyncAssetLoadGroupWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos.ParseStreamingAssetsDataInfo), CasinosParseStreamingAssetsDataInfoWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData1), CasinosCopyStreamingAssetsToPersistentData1Wrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData2), CasinosCopyStreamingAssetsToPersistentData2Wrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos.UpdateRemoteToPersistentData), CasinosUpdateRemoteToPersistentDataWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.UiSoundMgr), CasinosUiSoundMgrWrap.__Register);
 				

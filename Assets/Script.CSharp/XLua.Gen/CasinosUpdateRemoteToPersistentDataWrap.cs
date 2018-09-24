@@ -15,21 +15,20 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class CasinosParseStreamingAssetsDataInfoWrap 
+    public class CasinosUpdateRemoteToPersistentDataWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(Casinos.ParseStreamingAssetsDataInfo);
-			Utils.BeginObjectRegister(type, L, translator, 0, 3, 2, 0);
+			System.Type type = typeof(Casinos.UpdateRemoteToPersistentData);
+			Utils.BeginObjectRegister(type, L, translator, 0, 2, 2, 0);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "startPaseData", _m_startPaseData);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "writeStreamingAssetsDataFileList2Persistent", _m_writeStreamingAssetsDataFileList2Persistent);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "update", _m_update);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "UpateAsync", _m_UpateAsync);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsDone", _m_IsDone);
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "ListPreData", _g_get_ListPreData);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "ListData", _g_get_ListData);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "TotalCount", _g_get_TotalCount);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "LeftCount", _g_get_LeftCount);
             
 			
 			
@@ -52,11 +51,10 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<System.Action>(L, 2))
+				if(LuaAPI.lua_gettop(L) == 1)
 				{
-					System.Action _parse_down = translator.GetDelegate<System.Action>(L, 2);
 					
-					Casinos.ParseStreamingAssetsDataInfo gen_ret = new Casinos.ParseStreamingAssetsDataInfo(_parse_down);
+					Casinos.UpdateRemoteToPersistentData gen_ret = new Casinos.UpdateRemoteToPersistentData();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -66,7 +64,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.ParseStreamingAssetsDataInfo constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.UpdateRemoteToPersistentData constructor!");
             
         }
         
@@ -78,21 +76,24 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_startPaseData(RealStatePtr L)
+        static int _m_UpateAsync(RealStatePtr L)
         {
 		    try {
             
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                Casinos.ParseStreamingAssetsDataInfo gen_to_be_invoked = (Casinos.ParseStreamingAssetsDataInfo)translator.FastGetCSObj(L, 1);
+                Casinos.UpdateRemoteToPersistentData gen_to_be_invoked = (Casinos.UpdateRemoteToPersistentData)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
+                    string _datafilelist_remote = LuaAPI.lua_tostring(L, 2);
+                    string _datafilelist_persistent = LuaAPI.lua_tostring(L, 3);
+                    string _remotedata_root_url = LuaAPI.lua_tostring(L, 4);
                     
-                        bool gen_ret = gen_to_be_invoked.startPaseData(  );
-                        LuaAPI.lua_pushboolean(L, gen_ret);
+                        int gen_ret = gen_to_be_invoked.UpateAsync( _datafilelist_remote, _datafilelist_persistent, _remotedata_root_url );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
                     
@@ -106,52 +107,25 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_writeStreamingAssetsDataFileList2Persistent(RealStatePtr L)
+        static int _m_IsDone(RealStatePtr L)
         {
 		    try {
             
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                Casinos.ParseStreamingAssetsDataInfo gen_to_be_invoked = (Casinos.ParseStreamingAssetsDataInfo)translator.FastGetCSObj(L, 1);
+                Casinos.UpdateRemoteToPersistentData gen_to_be_invoked = (Casinos.UpdateRemoteToPersistentData)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
                     
-                    gen_to_be_invoked.writeStreamingAssetsDataFileList2Persistent(  );
+                        bool gen_ret = gen_to_be_invoked.IsDone(  );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
                     
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_update(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                Casinos.ParseStreamingAssetsDataInfo gen_to_be_invoked = (Casinos.ParseStreamingAssetsDataInfo)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    float _tm = (float)LuaAPI.lua_tonumber(L, 2);
-                    
-                    gen_to_be_invoked.update( _tm );
-                    
-                    
-                    
-                    return 0;
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {
@@ -164,13 +138,13 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_ListPreData(RealStatePtr L)
+        static int _g_get_TotalCount(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                Casinos.ParseStreamingAssetsDataInfo gen_to_be_invoked = (Casinos.ParseStreamingAssetsDataInfo)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.ListPreData);
+                Casinos.UpdateRemoteToPersistentData gen_to_be_invoked = (Casinos.UpdateRemoteToPersistentData)translator.FastGetCSObj(L, 1);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.TotalCount);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -178,13 +152,13 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_ListData(RealStatePtr L)
+        static int _g_get_LeftCount(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                Casinos.ParseStreamingAssetsDataInfo gen_to_be_invoked = (Casinos.ParseStreamingAssetsDataInfo)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.ListData);
+                Casinos.UpdateRemoteToPersistentData gen_to_be_invoked = (Casinos.UpdateRemoteToPersistentData)translator.FastGetCSObj(L, 1);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.LeftCount);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

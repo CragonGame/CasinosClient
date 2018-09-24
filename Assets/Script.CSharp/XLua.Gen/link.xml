@@ -49,9 +49,9 @@
 		<type fullname="LoaderTicket" preserve="all"/>
 		<type fullname="AsyncAssetLoaderMgr" preserve="all"/>
 		<type fullname="AsyncAssetLoadGroup" preserve="all"/>
-		<type fullname="Casinos.ParseStreamingAssetsDataInfo" preserve="all"/>
 		<type fullname="Casinos.CopyStreamingAssetsToPersistentData1" preserve="all"/>
 		<type fullname="Casinos.CopyStreamingAssetsToPersistentData2" preserve="all"/>
+		<type fullname="Casinos.UpdateRemoteToPersistentData" preserve="all"/>
 		<type fullname="Casinos.UiSoundMgr" preserve="all"/>
 		<type fullname="ChatParser" preserve="all"/>
 		<type fullname="Casinos.UiHelper" preserve="all"/>
@@ -135,6 +135,11 @@
 	    <type fullname="System.BitConverter" preserve="all"/>
 		<type fullname="System.Array" preserve="all"/>
 		<type fullname="System.Collections.Hashtable" preserve="all"/>
+		<type fullname="System.IO.Directory" preserve="all"/>
+		<type fullname="System.IO.File" preserve="all"/>
+		<type fullname="System.IO.FileStream" preserve="all"/>
+		<type fullname="System.IO.MemoryStream" preserve="all"/>
+		<type fullname="System.IO.Path" preserve="all"/>
 		
 	</assembly>
 
