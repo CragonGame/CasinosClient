@@ -8,6 +8,9 @@ namespace Casinos
     public class KingTexasStartup : MonoBehaviour
     {
         //---------------------------------------------------------------------
+        CasinosContext Context { get; set; }
+
+        //---------------------------------------------------------------------
         void Awake()
         {
             bool use_persistent = true;
@@ -18,7 +21,7 @@ namespace Casinos
 
             KingTexasCasinosListener listener = new KingTexasCasinosListener();
 
-            var casinos_context = new CasinosContext(listener,
+            Context = new CasinosContext(listener,
                 use_persistent,
                 "KingTexasListener",
                 "Resources.KingTexas/Ui/",
@@ -26,54 +29,32 @@ namespace Casinos
                 "Resources.KingTexas/",
                 "Texas");
 
-            casinos_context.Launch();
-
-            //casinos_context.RegLuaFilePath(
-            //    "Launch/",
-            //    "Launch",
-            //    "PreViewMgr",
-            //    "PreViewFactory",
-            //    "PreViewBase",
-            //    "PreViewLoading",
-            //    "PreViewMsgBox");
+            Context.Launch();
         }
 
         //---------------------------------------------------------------------
         void Update()
         {
-            var context = CasinosContext.Instance;
-
-            if (context == null || context.Pause)
+            if (!Context.Pause)
             {
-                return;
+                Context.Update(Time.deltaTime);
             }
-
-            context.Update(Time.deltaTime);
         }
 
         //---------------------------------------------------------------------
         void OnDestroy()
         {
-            if (CasinosContext.Instance != null)
-            {
-                CasinosContext.Instance.Close();
-            }
+            Context.Close();
         }
 
         //-------------------------------------------------------------------------
         void OnApplicationPause(bool pause)
         {
-            var context = CasinosContext.Instance;
-
 #if UNITY_EDITOR
-            if (context == null) return;
-            context.Pause = pause;
+            Context.Pause = pause;
 #endif
 
-            if (context.MainCLua != null && context.ProjectListener != null)
-            {
-                context.ActionOnApplicationPause(pause);
-            }
+            Context.ActionOnApplicationPause?.Invoke(pause);
         }
 
         //-------------------------------------------------------------------------

@@ -14,10 +14,6 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void CopySync(List<string> list_copy_dir)
         {
-            string pd_path = CasinosContext.Instance.PathMgr.getPersistentDataPath();
-            var pd_path1 = pd_path.ToLower();
-            var pd_path2 = pd_path1.Replace('/', '\\');
-
             foreach (var copy_dir in list_copy_dir)
             {
                 // 遍历copy_dir中的所有文件

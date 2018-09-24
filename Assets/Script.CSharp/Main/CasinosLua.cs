@@ -332,6 +332,8 @@ namespace Casinos
                     }
                 }
             }
+
+            Debug.Log("LoadLuaFromDir() 文件数量=" + file_list.Length);
         }
 
         //---------------------------------------------------------------------

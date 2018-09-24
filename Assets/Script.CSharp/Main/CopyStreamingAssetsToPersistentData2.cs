@@ -21,10 +21,6 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void CopyAsync(string copy_dir)
         {
-            string pd_path = CasinosContext.Instance.PathMgr.getPersistentDataPath();
-            var pd_path1 = pd_path.ToLower();
-            var pd_path2 = pd_path1.Replace('/', '\\');
-
             // 遍历copy_dir中的所有文件
             string sa_path = CasinosContext.Instance.PathMgr.getStreamingAssetsPath();
             var sa_path1 = sa_path.ToLower();

@@ -2,7 +2,14 @@
 
 namespace Casinos
 {
+    using System.Collections.Generic;
     using UnityEngine;
+
+    public class StreamingAssetsInfo
+    {
+        public string DataVersion { get; set; }
+        public List<string> ListLaunchDir { get; set; }
+    }
 
     public class CasinosConfig
     {

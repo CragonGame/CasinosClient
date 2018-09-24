@@ -136,7 +136,7 @@ namespace Casinos
         CSoundMgr SoundMgr { get; set; }
         string LuaProjectListenerName { get; set; }
         string PlatformName { get; set; }
-        
+
         public const string LocalDataVersionKey = "LocalVersionInfo";
         public const string PreDataVersionKey = "PreDataVersion";
         public const string LanKey = "LanKey";
@@ -362,7 +362,28 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Launch()
         {
-            var launch = new CasinosLaunch();
+            // 比较Launch版本，决定是否将Launch从StreamingAssets拷贝到Persistent
+            bool need_copy = false;
+            if (string.IsNullOrEmpty(Config.VersionLaunchPersistent))
+            {
+                need_copy = true;
+            }
+
+            // 将Launch从StreamingAssets拷贝到Persistent
+            if (need_copy)
+            {
+                var copy_dir = new CopyStreamingAssetsToPersistentData1();
+                copy_dir.CopySync(Config.StreamingAssetsInfo.ListLaunchDir);
+            }
+
+            // 预加载Script.Lua/Launch中的所有lua文件，显示加载界面
+            var path_launch = PathMgr.combinePersistentDataPath("Script.Lua/Launch/");
+            string[] list_path = new string[] { path_launch };
+            CasinosLua.LoadLuaFromDir2(list_path);
+            CasinosLua.DoString("Launch");
+            var lua_launch = CasinosLua.LuaEnv.Global.Get<LuaTable>("Launch");
+            var func_setup = lua_launch.Get<DelegateLua1>("Setup");
+            func_setup(lua_launch);
         }
 
         //---------------------------------------------------------------------
