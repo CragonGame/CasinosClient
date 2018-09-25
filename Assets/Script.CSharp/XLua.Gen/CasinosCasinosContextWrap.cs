@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosContext);
-			Utils.BeginObjectRegister(type, L, translator, 0, 21, 71, 55);
+			Utils.BeginObjectRegister(type, L, translator, 0, 21, 63, 47);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -96,10 +96,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "PushAppSecret", _g_get_PushAppSecret);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "ShareSDKAppKey", _g_get_ShareSDKAppKey);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "ShareSDKAppSecret", _g_get_ShareSDKAppSecret);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "MainCLua", _g_get_MainCLua);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "ProjectListener", _g_get_ProjectListener);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "TbDataMgrLua", _g_get_TbDataMgrLua);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "PreViewMgr", _g_get_PreViewMgr);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "UseLan", _g_get_UseLan);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "UseDefaultLan", _g_get_UseDefaultLan);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "DefaultLan", _g_get_DefaultLan);
@@ -111,10 +107,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "AccountId", _g_get_AccountId);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsSqliteUnity", _g_get_IsSqliteUnity);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "CSharpLastMethodId", _g_get_CSharpLastMethodId);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "ViewMgr", _g_get_ViewMgr);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "ViewHelper", _g_get_ViewHelper);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "UiEndWaiting", _g_get_UiEndWaiting);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "ActionOnApplicationPause", _g_get_ActionOnApplicationPause);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "AsyncAssetLoadGroup", _g_get_AsyncAssetLoadGroup);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "NativeAPIMsgReceiverListner", _g_get_NativeAPIMsgReceiverListner);
             
@@ -153,10 +145,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "PushAppSecret", _s_set_PushAppSecret);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "ShareSDKAppKey", _s_set_ShareSDKAppKey);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "ShareSDKAppSecret", _s_set_ShareSDKAppSecret);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "MainCLua", _s_set_MainCLua);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "ProjectListener", _s_set_ProjectListener);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "TbDataMgrLua", _s_set_TbDataMgrLua);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "PreViewMgr", _s_set_PreViewMgr);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "UseLan", _s_set_UseLan);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "UseDefaultLan", _s_set_UseDefaultLan);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "DefaultLan", _s_set_DefaultLan);
@@ -168,10 +156,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "AccountId", _s_set_AccountId);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "IsSqliteUnity", _s_set_IsSqliteUnity);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "CSharpLastMethodId", _s_set_CSharpLastMethodId);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "ViewMgr", _s_set_ViewMgr);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "ViewHelper", _s_set_ViewHelper);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "UiEndWaiting", _s_set_UiEndWaiting);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "ActionOnApplicationPause", _s_set_ActionOnApplicationPause);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "NativeAPIMsgReceiverListner", _s_set_NativeAPIMsgReceiverListner);
             
 			
@@ -1551,62 +1535,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_MainCLua(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.MainCLua);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_ProjectListener(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.ProjectListener);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_TbDataMgrLua(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.TbDataMgrLua);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_PreViewMgr(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.PreViewMgr);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_UseLan(RealStatePtr L)
         {
 		    try {
@@ -1754,62 +1682,6 @@ namespace XLua.CSObjectWrap
 			
                 Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
                 LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.CSharpLastMethodId);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_ViewMgr(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.ViewMgr);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_ViewHelper(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.ViewHelper);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_UiEndWaiting(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.UiEndWaiting);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_ActionOnApplicationPause(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.ActionOnApplicationPause);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -2373,66 +2245,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_MainCLua(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.MainCLua = (XLua.LuaTable)translator.GetObject(L, 2, typeof(XLua.LuaTable));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_ProjectListener(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.ProjectListener = (XLua.LuaTable)translator.GetObject(L, 2, typeof(XLua.LuaTable));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_TbDataMgrLua(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.TbDataMgrLua = (XLua.LuaTable)translator.GetObject(L, 2, typeof(XLua.LuaTable));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_PreViewMgr(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.PreViewMgr = (XLua.LuaTable)translator.GetObject(L, 2, typeof(XLua.LuaTable));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _s_set_UseLan(RealStatePtr L)
         {
 		    try {
@@ -2590,66 +2402,6 @@ namespace XLua.CSObjectWrap
 			
                 Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.CSharpLastMethodId = (ushort)LuaAPI.xlua_tointeger(L, 2);
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_ViewMgr(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.ViewMgr = (XLua.LuaTable)translator.GetObject(L, 2, typeof(XLua.LuaTable));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_ViewHelper(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.ViewHelper = (XLua.LuaTable)translator.GetObject(L, 2, typeof(XLua.LuaTable));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_UiEndWaiting(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.UiEndWaiting = translator.GetDelegate<System.Action<XLua.LuaTable>>(L, 2);
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_ActionOnApplicationPause(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.ActionOnApplicationPause = translator.GetDelegate<System.Action<bool>>(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

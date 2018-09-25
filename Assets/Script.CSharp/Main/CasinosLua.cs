@@ -12,7 +12,6 @@ namespace Casinos
     using cn.sharesdk.unity3d;
     using GameCloud.Unity.Common;
 
-    //---------------------------------------------------------------------
     [CSharpCallLua]
     public delegate void DelegateLua1(LuaTable lua_table);
 
@@ -28,7 +27,6 @@ namespace Casinos
     [CSharpCallLua]
     public delegate LuaTable GetController(string controller_name);
 
-    //---------------------------------------------------------------------
     public static class LuaCustomSettings
     {
         //---------------------------------------------------------------------
@@ -274,6 +272,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public LuaEnv LuaEnv { get; private set; }
         Dictionary<string, byte[]> MapLuaFiles { get; set; }
+        DelegateLua1 FuncLaunchClose { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosLua()
@@ -286,6 +285,10 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Release()
         {
+            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+            FuncLaunchClose?.Invoke(lua_launch);
+            FuncLaunchClose = null;
+
             if (LuaEnv != null)
             {
                 LuaEnv.Dispose();
@@ -300,6 +303,21 @@ namespace Casinos
             {
                 LuaEnv.Tick();
             }
+        }
+
+        //---------------------------------------------------------------------
+        public void Launch()
+        {
+            // 预加载Script.Lua/Launch中的所有lua文件，显示加载界面
+            var path_mgr = CasinosContext.Instance.PathMgr;
+            var path_launch = path_mgr.combinePersistentDataPath("Script.Lua/Launch/");
+            string[] list_path = new string[] { path_launch };
+            LoadLuaFromDir2(list_path);
+            DoString("Launch");
+            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+            FuncLaunchClose = lua_launch.Get<DelegateLua1>("Close");
+            var func_setup = lua_launch.Get<DelegateLua1>("Setup");
+            func_setup(lua_launch);
         }
 
         //---------------------------------------------------------------------
@@ -408,6 +426,22 @@ namespace Casinos
                 all_text = System.IO.File.ReadAllText(full_filename);
             }
             return all_text;
+        }
+
+        //---------------------------------------------------------------------
+        // 分割字符串
+        public LuaTable SpliteStr(string str, string splite_s)
+        {
+            var splite_str = str.Split(new string[] { splite_s }, StringSplitOptions.RemoveEmptyEntries);
+            var t = LuaEnv.NewTable();
+            int index = 1;
+            foreach (var i in splite_str)
+            {
+                t.Set(index, i);
+                index++;
+            }
+
+            return t;
         }
 
         //---------------------------------------------------------------------

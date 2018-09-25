@@ -54,7 +54,7 @@ namespace Casinos
             Context.Pause = pause;
 #endif
 
-            Context.ActionOnApplicationPause?.Invoke(pause);
+            //Context.ActionOnApplicationPause?.Invoke(pause);
         }
 
         //-------------------------------------------------------------------------

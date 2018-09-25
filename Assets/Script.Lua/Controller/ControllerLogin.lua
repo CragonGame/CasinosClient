@@ -208,9 +208,9 @@ function ControllerLogin:onHandleEv(ev)
             self.RemeberPwd = remeber_pwd
             self.Phone = ev.phone
 
-            MainC:LoadConfig(true, function(bo)
-                self:_clickCheckDataCallBack(bo)
-            end)
+            --MainC:LoadConfig(true, function(bo)
+            --    self:_clickCheckDataCallBack(bo)
+            --end)
         elseif (ev.EventName == "EvUiLoginClickBtnRegister")
         then
             if (self.ControllerUCenter.WWWRegister ~= null)
@@ -855,8 +855,8 @@ function ControllerLogin:_init(is_init)
 
     -- 显示登录界面
     ViewHelper:UiEndWaiting()
-    local pre_loading = c:getPreView("PreLoading")
-    c:destroyPreView(pre_loading)
+    --local pre_loading = c:getPreView("PreLoading")
+    --c:destroyPreView(pre_loading)
     local acc = ""
     local pwd = ""
     local view_login = self.ViewMgr:createView("Login")

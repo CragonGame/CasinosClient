@@ -24,7 +24,7 @@ end
 ---------------------------------------
 function EventSys:onCreate()
     print("EventSys:onCreate")
-    MainC:doString("EventBase")
+    Context:DoString("EventBase")
 end
 
 ---------------------------------------

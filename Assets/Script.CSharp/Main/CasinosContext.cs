@@ -104,10 +104,6 @@ namespace Casinos
         public string PushAppSecret { get; set; }
         public string ShareSDKAppKey { get; set; }
         public string ShareSDKAppSecret { get; set; }
-        public LuaTable MainCLua { get; set; }
-        public LuaTable ProjectListener { get; set; }
-        public LuaTable TbDataMgrLua { get; set; }
-        public LuaTable PreViewMgr { get; set; }
         public bool UseLan { get; set; }
         public bool UseDefaultLan { get; set; }
         public string DefaultLan { get; set; }
@@ -119,18 +115,8 @@ namespace Casinos
         public string AccountId { get; set; }
         public bool IsSqliteUnity { get; set; }
         public ushort CSharpLastMethodId { get; set; }
-        public LuaTable ViewMgr { get; set; }
-        public LuaTable ViewHelper { get; set; }
-        public Action<LuaTable> UiEndWaiting { get; set; }
-        public Action<bool> ActionOnApplicationPause { get; set; }
         public AsyncAssetLoadGroup AsyncAssetLoadGroup { get; private set; }
         public NativeAPIMsgReceiverListener NativeAPIMsgReceiverListner { get; set; }
-        GetView CreateView { get; set; }
-        GetView GetView { get; set; }
-        Action<LuaTable> DestroyView { get; set; }
-        GetView CreatePreView { get; set; }
-        GetView GetPreView { get; set; }
-        Action<LuaTable> DestroyPreView { get; set; }
         FTMgr FTMgr { get; set; }
         HeadIconMgr HeadIconMgr { get; set; }
         CSoundMgr SoundMgr { get; set; }
@@ -140,6 +126,21 @@ namespace Casinos
         public const string LocalDataVersionKey = "LocalVersionInfo";
         public const string PreDataVersionKey = "PreDataVersion";
         public const string LanKey = "LanKey";
+
+        //public LuaTable MainCLua { get; set; }
+        //public LuaTable ProjectListener { get; set; }
+        //public LuaTable TbDataMgrLua { get; set; }
+        //public LuaTable PreViewMgr { get; set; }
+        //public LuaTable ViewMgr { get; set; }
+        //public LuaTable ViewHelper { get; set; }
+        //public Action<LuaTable> UiEndWaiting { get; set; }
+        //public Action<bool> ActionOnApplicationPause { get; set; }
+        //GetView CreateView { get; set; }
+        //GetView GetView { get; set; }
+        //Action<LuaTable> DestroyView { get; set; }
+        //GetView CreatePreView { get; set; }
+        //GetView GetPreView { get; set; }
+        //Action<LuaTable> DestroyPreView { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosContext(CasinosListener listener,
@@ -376,14 +377,7 @@ namespace Casinos
                 copy_dir.CopySync(Config.StreamingAssetsInfo.ListLaunchDir);
             }
 
-            // 预加载Script.Lua/Launch中的所有lua文件，显示加载界面
-            var path_launch = PathMgr.combinePersistentDataPath("Script.Lua/Launch/");
-            string[] list_path = new string[] { path_launch };
-            CasinosLua.LoadLuaFromDir2(list_path);
-            CasinosLua.DoString("Launch");
-            var lua_launch = CasinosLua.LuaEnv.Global.Get<LuaTable>("Launch");
-            var func_setup = lua_launch.Get<DelegateLua1>("Setup");
-            func_setup(lua_launch);
+            CasinosLua.Launch();
         }
 
         //---------------------------------------------------------------------

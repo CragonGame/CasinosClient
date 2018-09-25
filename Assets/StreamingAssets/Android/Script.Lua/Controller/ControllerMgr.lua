@@ -31,8 +31,8 @@ function ControllerMgr:OnCreate()
     print("ControllerMgr:onCreate")
     self.EventSys = EventSys:new(nil)
     self.ViewMgr = ViewMgr:new(nil)
-    MainC:doString("ControllerBase")
-    MainC:doString("ControllerFactory")
+    Context:DoString("ControllerBase")
+    Context:DoString("ControllerFactory")
 end
 
 ---------------------------------------

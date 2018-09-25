@@ -62,8 +62,8 @@ end
 
 ---------------------------------------
 function ControllerUCenter:onCreate()
-    --print("ControllerUCenter:onCreate")
-    self.UCenterDomain = CS.Casinos.CasinosContext.Instance.UserConfig.Current.UCenterDomain
+    print("ControllerUCenter:onCreate")
+    self.UCenterDomain = UCenterDomain
 end
 
 ---------------------------------------

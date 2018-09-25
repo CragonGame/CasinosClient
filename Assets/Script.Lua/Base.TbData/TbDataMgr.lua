@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 TbDataMgr = {
 	Instance = nil,
 	MapTbDataFac = {},
@@ -10,6 +11,7 @@ TbDataMgr = {
 	FinishedCallBack = nil,
 }
 
+---------------------------------------
 function TbDataMgr:new(o)
 	o = o or {}
 	setmetatable(o,self)
@@ -22,13 +24,15 @@ function TbDataMgr:new(o)
 	return self.Instance
 end
 
-function TbDataMgr:onCreate()
-	CS.Casinos.CasinosContext.Instance.TbDataMgrLua = self
-end
-            
+---------------------------------------
+--function TbDataMgr:onCreate()
+--	CS.Casinos.CasinosContext.Instance.TbDataMgrLua = self
+--end
+
+---------------------------------------
 function TbDataMgr:Setup(db_filename, finished_callback)                    
 	self.FinishedCallBack = finished_callback
-	
+
 	if(CS.Casinos.CasinosContext.Instance.IsSqliteUnity)	
 	then
 		self.Sqlite = CS.GameCloud.Unity.Common.SqliteUnity()
@@ -43,18 +47,18 @@ function TbDataMgr:Setup(db_filename, finished_callback)
 	    print("EbDataMgr.setup() failed! Can not Open File! db_filename=" .. db_filename)
 	    return
 	end
-	
-	-- ��������Table����
+
 	local list_tablename = self:_loadAllTableName()
 	for i = 0, list_tablename.Count - 1 do  		
 		self.QueLoadTbName[i] = list_tablename[i]
 	end 	
 end
-        
-function TbDataMgr:Close()
 
+---------------------------------------
+function TbDataMgr:Close()
 end
 
+---------------------------------------
 function TbDataMgr:onUpdate(tm)
 	 local tb_count = LuaHelper:GetTableCount(self.QueLoadTbName)	 
      if (tb_count > 0)
@@ -73,10 +77,12 @@ function TbDataMgr:onUpdate(tm)
      end
 end
 
+---------------------------------------
 function TbDataMgr:RegTbDataFac(tb_name,fac)
 	self.MapTbDataFac[tb_name] = fac
 end
-        
+
+---------------------------------------
 function TbDataMgr:ParseTableAllData(table_name,list_t)            
      local map_data = {}
      self.MapData[table_name] = map_data
@@ -93,7 +99,8 @@ function TbDataMgr:ParseTableAllData(table_name,list_t)
         map_data[tb_data.Id] = tb_data
 	 end            
 end
-        
+
+---------------------------------------
 function TbDataMgr:GetData(table_name,id)            
     local map_data = self.MapData[table_name]
     if (map_data == nil)
@@ -103,19 +110,21 @@ function TbDataMgr:GetData(table_name,id)
 	local tb_data = map_data[id]                        
     return tb_data
 end
-        
+
+---------------------------------------
 function TbDataMgr:GetMapData(table_name)
     local map_data = self.MapData[table_name]
     return map_data
 end
-        
---��ȡDb�����б���
+
+---------------------------------------
 function TbDataMgr:_loadAllTableName()                    
     local str_query = "SELECT * FROM sqlite_master;"
 	local list_tablename = self.Sqlite:getAllTableName(str_query)
     return list_tablename
 end
 
+---------------------------------------
 function TbDataMgr:_loadTable(table_name)
     local str_query_select = "SELECT * FROM "..table_name ..";"	
 	local list_data = self.Sqlite:getTableData(str_query_select)

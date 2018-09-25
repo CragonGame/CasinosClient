@@ -26,7 +26,7 @@ ViewMgr = {
 	STANDARD_HEIGHT = 640,
 	LayerDistance = 1,
 	Instance = nil,
-	MainC = nil,
+	Context = nil,
 	EventSys = nil,
 	TableViewFactory = {},
 	TableViewSingle = {},
@@ -46,7 +46,7 @@ function ViewMgr:new(o)
 		self.UiPathRoot = nil
 		self.ResourcesRowPathRoot = nil
 		self.LayerDistance = 1
-		self.MainC = nil
+		self.Context = nil
 		self.EventSys = nil
 		self.TableViewFactory = {}
 		self.TableViewSingle = {}
@@ -81,11 +81,11 @@ function ViewMgr:onCreate(uipath_root,resourcesrow_pathroot)
 			CS.UnityEngine.Screen.autorotateToPortrait = false
 		end
 	end
-	self.MainC = MainC:new(nil)
+	self.Context = Context
 	self.EventSys = EventSys:new(nil)
-	MainC:doString("EventView")
-	MainC:doString("ViewBase")
-	MainC:doString("ViewFactory")
+	self.Context:DoString("EventView")
+	self.Context:DoString("ViewBase")
+	self.Context:DoString("ViewFactory")
 end
 
 ---------------------------------------
@@ -343,7 +343,7 @@ end
 ---------------------------------------
 function ViewMgr:getUiPackagePath(package_name)
 	local s = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(
-			self.UiPathRoot .. package_name .. "/" .. string.lower(package_name) .. ".ab")
+			self.UiPathRoot .. string.lower(package_name) .. ".ab")
 	return s
 end
 

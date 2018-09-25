@@ -57,13 +57,13 @@ namespace Casinos
             context.Pause = pause;
 #endif
 
-            if (context.MainCLua != null && context.ProjectListener != null)
-            {
-                if (context.ActionOnApplicationPause != null)
-                {
-                    context.ActionOnApplicationPause(pause);
-                }
-            }
+            //if (context.MainCLua != null && context.ProjectListener != null)
+            //{
+            //    if (context.ActionOnApplicationPause != null)
+            //    {
+            //        context.ActionOnApplicationPause(pause);
+            //    }
+            //}
         }
 
         //-------------------------------------------------------------------------

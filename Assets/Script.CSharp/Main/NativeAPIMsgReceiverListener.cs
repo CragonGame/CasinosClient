@@ -38,8 +38,8 @@ namespace Casinos
         public void getPicFail(string fail)
         {
             // 加载图片失败
-            CasinosContext.Instance.UiEndWaiting(CasinosContext.Instance.ViewHelper);
-            Debug.Log("加载图片失败");
+            //CasinosContext.Instance.UiEndWaiting(CasinosContext.Instance.ViewHelper);
+            //Debug.Log("加载图片失败");
         }
 
         //---------------------------------------------------------------------
@@ -84,7 +84,7 @@ namespace Casinos
                 case _ePayOptionType.QueryInventory:
                     break;
                 case _ePayOptionType.PurchaseProduct:
-                    CasinosContext.Instance.UiEndWaiting(CasinosContext.Instance.ViewHelper);
+                    //CasinosContext.Instance.UiEndWaiting(CasinosContext.Instance.ViewHelper);
                     if (is_success)
                     {
                         Purchase purchase = (Purchase)result;
@@ -125,7 +125,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void loginSuccess(string token)
         {
-            CasinosContext.Instance.UiEndWaiting(CasinosContext.Instance.ViewHelper);
+            //CasinosContext.Instance.UiEndWaiting(CasinosContext.Instance.ViewHelper);
 
             string msg = token;
             //var splite_index = msg.IndexOf("|");

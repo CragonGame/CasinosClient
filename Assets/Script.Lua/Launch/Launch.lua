@@ -6,19 +6,18 @@ Launch = {}
 ---------------------------------------
 function Launch:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
 
-    if(self.Instance == nil)
+    if (self.Instance == nil)
     then
-        self.ControllerName = "Launch"
-        self.LaunchConfigLoader = nil
-        self.CanCheckLoadDataDone = false
-        self.InitializeDone = false
         self.PreViewMgr = nil
         self.PreLoading = nil
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+        self.Context = nil
+        self.UIPackagePreLoading = nil
+        self.UIPackageMsgbox = nil
         self.Instance = o
     end
 
@@ -26,6 +25,7 @@ function Launch:new(o)
 end
 
 ---------------------------------------
+-- 初始化
 function Launch:Setup()
     Launch:new(nil)
 
@@ -43,19 +43,117 @@ function Launch:Setup()
     local launch_persistentdata_path = self.CasinosContext.PathMgr.PathLaunchRootPersistent
     local ui_path_loading = launch_persistentdata_path .. string.lower(ui_name_loading) .. ".ab"
     local ui_path_msgbox = launch_persistentdata_path .. string.lower(ui_name_msgbox) .. ".ab"
+    local ab_preloading = CS.UnityEngine.AssetBundle.LoadFromFile(ui_path_loading)
+    local ab_premsgbox = CS.UnityEngine.AssetBundle.LoadFromFile(ui_path_msgbox)
+    self.UIPackagePreLoading = CS.FairyGUI.UIPackage.AddPackage(ab_preloading)
+    self.UIPackagePreMsgbox = CS.FairyGUI.UIPackage.AddPackage(ab_premsgbox)
 
-    self.CasinosContext:LuaAsyncLoadLocalUiBundle(
-            function()
-                Launch:_loadABPreLoadingDone()
-            end,
-            ui_path_loading, ui_path_msgbox)
+    self.PreLoading = self.PreViewMgr.createView("PreLoading")
+    local tips = "正在努力加载配置，请耐心等待..."
+    local lan = self.CasinosContext.CurrentLan
+    if (lan == "English")
+    then
+        tips = "Try to loading the config,please wait..."
+    else
+        if (lan == "Chinese" or lan == "ChineseSimplified")
+        then
+            tips = "正在努力加载配置，请耐心等待..."
+        end
+    end
+    self.PreLoading:setTip(tips)
+
+    -- 下载并加载Context.lua
+    local http_url = string.format('https://cragon-king-oss.cragon.cn/%s/Bundle_%s/Context.lua',
+            self.CasinosContext.Config.Platform, self.CasinosContext.Config.VersionBundle)
+    print(http_url)
+    local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
+    async_asset_loadgroup:LoadWWWAsync(http_url,
+            function(url, www)
+                self.CasinosLua:LoadLuaFromBytes('Context', www.text)
+                require 'Context'
+                self.Context = Context
+                self.Context:Init()
+            end
+    )
 end
 
 ---------------------------------------
---function Launch:Release()
---    print("Launch:Release()")
+-- Launch阶段完成
+function Launch:Finish()
+
+    package.preload['PreViewMsgBox'] = nil
+    package.loaded['PreViewMsgBox'] = nil
+    package.preload['PreViewLoading'] = nil
+    package.loaded['PreViewLoading'] = nil
+    package.preload['PreViewMgr'] = nil
+    package.loaded['PreViewMgr'] = nil
+    package.preload['PreViewFactory'] = nil
+    package.loaded['PreViewFactory'] = nil
+    package.preload['PreViewBase'] = nil
+    package.loaded['PreViewBase'] = nil
+
+    if (self.UIPackagePreLoading ~= nil)
+    then
+        self.UIPackagePreLoading:UnloadAssets()
+        self.UIPackagePreLoading = nil
+    end
+
+    if (self.UIPackageMsgbox ~= nil)
+    then
+        self.UIPackageMsgbox:UnloadAssets()
+        self.UIPackageMsgbox = nil
+    end
+
+    print("Launch:Finish()")
+end
+
+---------------------------------------
+-- 应用程序退出
+function Launch:Close()
+    if (self.Context ~= nil)
+    then
+        self.Context:Release()
+        self.Context = nil
+    end
+
+   self:Finish()
+
+    print("Launch:Release()")
+end
+
+---------------------------------------
+--function Launch._firstCopyStreamingAssetsDataDown()
+--    local launch = CS.Casinos.CasinosContext.Instance.Launch
+--    launch.ParseStreamingAssetsDataInfo:writeStreamingAssetsDataFileList2Persistent()
+--    CS.UnityEngine.PlayerPrefs.SetString(CS.Casinos.CasinosContext.LocalDataVersionKey,
+--            CS.Casinos.CasinosContext.Instance.Config.InitDataVersion)
+--    launch.ParseStreamingAssetsDataInfo = nil
 --end
---
+
+---------------------------------------
+--function Launch:_loadConfigDone(config)
+--    local casinos_context = CS.Casinos.CasinosContext.Instance
+--    casinos_context.CasinosLua:addLuaFile(casinos_context.Config.ConfigName, config)
+--    casinos_context.CasinosLua:doMainCLua(casinos_context.Config.ConfigName)
+--    casinos_context.MainCLua = MainC
+--    self.CanCheckLoadDataDone = true
+--end
+
+---------------------------------------
+--function Launch:_initializeDone()
+--    self.InitializeDone = true
+--    CS.Casinos.CasinosContext.Instance.Listener:OnInitializeEnd()
+--end
+
+---------------------------------------
+--self.LaunchConfigLoader = CS.Casinos.LaunchConfigLoader()
+--local maic_path = CS.Casinos.CasinosContext.Instance:GetMainCPath()
+--self.LaunchConfigLoader:loadConfig(maic_path,
+--        function(config)
+--            self:_loadConfigDone(config)
+--        end
+--)
+
 -----------------------------------------
 --function Launch:Update(tm)
 --    local launch = Launch:new(nil)
@@ -123,50 +221,6 @@ end
 --end
 
 ---------------------------------------
-function Launch:_loadABPreLoadingDone()
-    self.PreLoading = self.PreViewMgr.createView("PreLoading")
-    local tips = "正在努力加载配置，请耐心等待..."
-    local lan = self.CasinosContext.CurrentLan
-    if(lan == "English")
-    then
-        tips = "Try to loading the config,please wait..."
-    else
-        if(lan == "Chinese" or lan == "ChineseSimplified")
-        then
-            tips = "正在努力加载配置，请耐心等待..."
-        end
-    end
-    self.PreLoading:setTip(tips)
-
-    --self.LaunchConfigLoader = CS.Casinos.LaunchConfigLoader()
-    --local maic_path = CS.Casinos.CasinosContext.Instance:GetMainCPath()
-    --self.LaunchConfigLoader:loadConfig(maic_path,
-    --        function(config)
-    --            self:_loadConfigDone(config)
-    --        end
-    --)
-
-    --local view_premsgbox = self.PreViewMgr.createView("PreMsgBox")
-    --view_premsgbox:showMsgBox(self.CasinosContext.Config.VersionBundle,
-    --        function ()
-    --            print('ok')
-    --        end
-    --)
-
-    local http_url = string.format('https://cragon-king-oss.cragon.cn/%s/Bundle_%s/Context.lua',
-            self.CasinosContext.Config.Platform, self.CasinosContext.Config.VersionBundle)
-    print(http_url)
-    local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
-    async_asset_loadgroup:LoadWWWAsync(http_url,
-            function(url, www)
-                self.CasinosLua:LoadLuaFromBytes('Context', www.text)
-                require 'Context'
-                Context:Init()
-            end
-    )
-end
-
----------------------------------------
 --function Launch:_firstCopyStreamingAssetsDataPro(current_index, total_count)
 --    -- local launch = Launch:new(nil)
 --    local pro = current_index / total_count
@@ -174,27 +228,23 @@ end
 --    view_preloading.setLoadingProgress(pro * 100)
 --end
 
----------------------------------------
-function Launch._firstCopyStreamingAssetsDataDown()
-    local launch = CS.Casinos.CasinosContext.Instance.Launch
-    launch.ParseStreamingAssetsDataInfo:writeStreamingAssetsDataFileList2Persistent()
-    CS.UnityEngine.PlayerPrefs.SetString(CS.Casinos.CasinosContext.LocalDataVersionKey,
-            CS.Casinos.CasinosContext.Instance.Config.InitDataVersion)
-    launch.ParseStreamingAssetsDataInfo = nil
-end
+--self.LaunchConfigLoader = CS.Casinos.LaunchConfigLoader()
+--local maic_path = CS.Casinos.CasinosContext.Instance:GetMainCPath()
+--self.LaunchConfigLoader:loadConfig(maic_path,
+--        function(config)
+--            self:_loadConfigDone(config)
+--        end
+--)
 
----------------------------------------
-function Launch:_loadConfigDone(config)
-    -- local launch = Launch:new(nil)
-    local casinos_context = CS.Casinos.CasinosContext.Instance
-    casinos_context.CasinosLua:addLuaFile(casinos_context.Config.ConfigName, config)
-    casinos_context.CasinosLua:doMainCLua(casinos_context.Config.ConfigName)
-    casinos_context.MainCLua = MainC
-    self.CanCheckLoadDataDone = true
-end
+--local view_premsgbox = self.PreViewMgr.createView("PreMsgBox")
+--view_premsgbox:showMsgBox(self.CasinosContext.Config.VersionBundle,
+--        function ()
+--            print('ok')
+--        end
+--)
 
----------------------------------------
-function Launch:_initializeDone()
-    self.InitializeDone = true
-    CS.Casinos.CasinosContext.Instance.Listener:OnInitializeEnd()
-end
+--self.CasinosContext:LuaAsyncLoadLocalUiBundle(
+--        function()
+--            Launch:_loadABPreLoadingDone()
+--        end,
+--        ui_path_loading, ui_path_msgbox)
