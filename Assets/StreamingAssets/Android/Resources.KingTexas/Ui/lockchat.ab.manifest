@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 357117644
+CRC: 1416082802
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e5f7b9dad4dc93d7554891a20959f04b
+    Hash: c83676af926991ced23bfbdb507a2459
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LockChat/LockChat@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LockChat/LockChat@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LockChat/LockChat.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LockChat/LockChat_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LockChat/LockChat_fui.bytes
 Dependencies: []

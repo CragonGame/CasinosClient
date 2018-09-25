@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2145508582
+CRC: 4046905742
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b04c76c45986a4092bc645ce0027d279
+    Hash: 9930c3481190b68e10edfe76b4c17233
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChooseLan/ChooseLan.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChooseLan/ChooseLan@atlas_ef0j2.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChooseLan/ChooseLan@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChooseLan/ChooseLan_atlas_ef0j2.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChooseLan/ChooseLan_fui.bytes
 Dependencies: []

@@ -17,5 +17,5 @@
     <component id="v4efj" name="ProgressBar.xml" path="/Component/"/>
     <component id="abqrk" name="ComTips.xml" path="/Component/"/>
   </resources>
-  <publish name="DesktopHBetReward" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHBetReward"/>
+  <publish name="DesktopHBetReward" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHBetReward"/>
 </packageDescription>

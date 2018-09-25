@@ -5,5 +5,5 @@
     <component id="excb2" name="BtnBuyMore.xml" path="/Component/"/>
     <image id="pucj3" name="D_bb.png" path="/Image/"/>
   </resources>
-  <publish name="Bag" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Bag"/>
+  <publish name="Bag" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Bag"/>
 </packageDescription>

@@ -95,5 +95,5 @@
     <image id="rxsg6o" name="AliPay.png" path="/Image/" exported="true"/>
     <image id="rxsg6p" name="WeChatPay.png" path="/Image/" exported="true"/>
   </resources>
-  <publish name="LanEn" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\LanEn"/>
+  <publish name="LanEn" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\LanEn"/>
 </packageDescription>

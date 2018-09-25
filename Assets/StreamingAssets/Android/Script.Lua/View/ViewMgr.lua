@@ -177,7 +177,7 @@ function ViewMgr:createView(view_key)
 			view_factory.UILayer == "NomalUi" or
 			view_factory.UILayer == "QuitGame")
 	then
-		CS.Casinos.CasinosContext.Instance:play("CreateDialog", CS.Casinos._eSoundLayer.LayerReplace)
+		CS.Casinos.CasinosContext.Instance:Play("CreateDialog", CS.Casinos._eSoundLayer.LayerReplace)
 	end
 	return view
 end
@@ -208,7 +208,7 @@ function ViewMgr:destroyView(view)
 				view.UILayer == "NomalUi" or
 				view.UILayer == "QuitGame")
 		then
-			CS.Casinos.CasinosContext.Instance:play("DestroyDialog", CS.Casinos._eSoundLayer.LayerReplace)
+			CS.Casinos.CasinosContext.Instance:Play("DestroyDialog", CS.Casinos._eSoundLayer.LayerReplace)
 		end
 		view = nil
 	end

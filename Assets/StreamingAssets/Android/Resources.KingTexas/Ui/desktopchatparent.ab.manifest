@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 440445339
+CRC: 939073739
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8e4422977f6421761027164057a5848b
+    Hash: 3e572e6dec73ddc9b256d67b11071748
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopChatParent/DesktopChatParent@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopChatParent/DesktopChatParent.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopChatParent/DesktopChatParent_fui.bytes
 Dependencies: []

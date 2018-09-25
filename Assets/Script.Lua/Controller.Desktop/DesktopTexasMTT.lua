@@ -29,7 +29,7 @@ function DesktopTexasMTT:onDestroy(need_createmainui)
             match_lobby = view_mgr:createView("MatchLobby")
         end
 
-        CS.Casinos.CasinosContext.Instance:play("MainBg1", CS.Casinos._eSoundLayer.Background)
+        CS.Casinos.CasinosContext.Instance:Play("MainBg1", CS.Casinos._eSoundLayer.Background)
     end
 end
 

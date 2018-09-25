@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2632115895
+CRC: 2198266792
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e3764ae18feea7baef38380c848a4168
+    Hash: fe8edf6ce98e15673cee68ca9769a1be
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Feedback/Feedback@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Feedback/Feedback.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Feedback/Feedback_fui.bytes
 Dependencies: []

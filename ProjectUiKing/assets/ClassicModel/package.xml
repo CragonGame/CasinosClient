@@ -35,5 +35,5 @@
     <image id="vwta21" name="zi_d.png" path="/Image/"/>
     <image id="fpah23" name="zi_d_l - 副本.png" path="/Image/"/>
   </resources>
-  <publish name="ClassicModel" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\ClassicModel"/>
+  <publish name="ClassicModel" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ClassicModel"/>
 </packageDescription>

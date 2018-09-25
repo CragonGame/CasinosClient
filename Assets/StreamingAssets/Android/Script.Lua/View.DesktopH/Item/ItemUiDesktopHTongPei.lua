@@ -31,7 +31,7 @@ function ItemUiDesktopHTongPei:showEffect(show_end)
     self.ComUi.visible = true
     self.GoTongPei:SetXY(self.ComUi.width / 2 - self.GoTongPei.width / 2,-self.GoTongPei.height)
     self.GoTongPei:TweenMoveY(self.ComUi.height / 2 - self.GoTongPei.height / 2, 0.5)
-    CS.Casinos.CasinosContext.Instance:play("AllFailedEffect", CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play("AllFailedEffect", CS.Casinos._eSoundLayer.LayerNormal)
     self:_cancelTask()
     local t = CS.Casinos.FTMgr.Instance:startTask(ItemUiDesktopHTongPei.AutoDestroyTm)
     self.FTaskerHideSelf = CS.Casinos.FTMgr.Instance:whenAll(nil,

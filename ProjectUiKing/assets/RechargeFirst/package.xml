@@ -14,5 +14,5 @@
     <image id="njukm" name="CommonMsgBg.png" path="/Image/"/>
     <image id="njukn" name="CommonMsgTitleBg.png" path="/Image/"/>
   </resources>
-  <publish name="RechargeFirst" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\RechargeFirst"/>
+  <publish name="RechargeFirst" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\RechargeFirst"/>
 </packageDescription>

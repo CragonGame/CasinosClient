@@ -40,5 +40,5 @@
     <image id="awzv25" name="003.png" path="/Image/" scale="9grid" scale9grid="24,15,48,6"/>
     <image id="awzv26" name="004.png" path="/Image/" scale="9grid" scale9grid="24,15,48,6"/>
   </resources>
-  <publish name="DesktopPlayerOperate" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopPlayerOperate"/>
+  <publish name="DesktopPlayerOperate" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopPlayerOperate"/>
 </packageDescription>

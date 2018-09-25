@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="1060,640" adaptationTest="FitSize">
-  <displayList>
-    <component id="n1_ay3t" name="ComBetPanel" src="ieud2j" xy="1060,0" size="1060,640">
-      <relation target="" sidePair="left-right,middle-middle"/>
-      <relation target="" sidePair="width-width,height-height"/>
-    </component>
-  </displayList>
-</component>

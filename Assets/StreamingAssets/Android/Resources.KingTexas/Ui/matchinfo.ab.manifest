@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1184063706
+CRC: 3118860317
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1bf23c73ecf8305823ea157bc20aa11e
+    Hash: e7e8644e94500ece81d1c47876fd47e8
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchInfo/MatchInfo@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchInfo/MatchInfo.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchInfo/MatchInfo_fui.bytes
 Dependencies: []

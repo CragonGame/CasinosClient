@@ -4,5 +4,5 @@
     <component id="eh360" name="InviteFriendPlay.xml" path="/" exported="true"/>
     <component id="eh362" name="ItemPlayerInfo.xml" path="/Component/" exported="true"/>
   </resources>
-  <publish name="InviteFriendPlay" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\InviteFriendPlay"/>
+  <publish name="InviteFriendPlay" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\InviteFriendPlay"/>
 </packageDescription>

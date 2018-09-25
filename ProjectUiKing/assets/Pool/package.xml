@@ -3,5 +3,5 @@
   <resources>
     <component id="czif0" name="Pool.xml" path="/" exported="true"/>
   </resources>
-  <publish name="Pool" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.King\PkgFold\Ui\Pool"/>
+  <publish name="Pool" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Pool"/>
 </packageDescription>

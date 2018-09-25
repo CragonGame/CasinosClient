@@ -10,5 +10,5 @@
     <image id="eccyc" name="BtnSubtract.png" path="/Image/"/>
     <image id="h1h1d" name="bt_y.png" path="/Image/"/>
   </resources>
-  <publish name="ChipOperate" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\ChipOperate"/>
+  <publish name="ChipOperate" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ChipOperate"/>
 </packageDescription>

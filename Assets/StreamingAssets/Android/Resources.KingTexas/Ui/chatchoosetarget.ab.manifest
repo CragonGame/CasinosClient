@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2704965242
+CRC: 1158712163
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a31a972fad3be69556b4d5666db0743d
+    Hash: a960e44fdf3fdac8971c6a209735c1be
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatChooseTarget/ChatChooseTarget@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatChooseTarget/ChatChooseTarget.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatChooseTarget/ChatChooseTarget_fui.bytes
 Dependencies: []

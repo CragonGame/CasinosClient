@@ -7,5 +7,5 @@
     <component id="czifg" name="ComboBoxCardType_popup.xml" path="/Component/" exported="true"/>
     <component id="czifh" name="ComboBoxCardType.xml" path="/Component/" exported="true"/>
   </resources>
-  <publish name="DesktopHSetCardType" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\DesktopHSetCardType"/>
+  <publish name="DesktopHSetCardType" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHSetCardType"/>
 </packageDescription>

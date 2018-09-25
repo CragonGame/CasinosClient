@@ -8,5 +8,5 @@
     <component id="jyu45" name="BtnClose.xml" path="/Component/"/>
     <image id="mbom6" name="BgCardType.png" path="/Image/" scale="9grid" scale9grid="22,22,44,44"/>
   </resources>
-  <publish name="DesktopHints" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHints"/>
+  <publish name="DesktopHints" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHints"/>
 </packageDescription>

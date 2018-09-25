@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3603074192
+CRC: 847084623
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8430046d5a502c7673684f4d439d719b
+    Hash: bcb58b1edb76a19b227de7b63edeab6c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChipNotEnough/ChipNotEnough@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChipNotEnough/ChipNotEnough.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChipNotEnough/ChipNotEnough_fui.bytes
 Dependencies: []

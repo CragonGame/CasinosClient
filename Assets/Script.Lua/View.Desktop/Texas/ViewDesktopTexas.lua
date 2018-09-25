@@ -671,7 +671,7 @@ function ViewDesktopTexas:_haveNewChatOrMailRecord()
             ViewHelper:setGObjectVisible(true, com_mailTips)
             local transition_newMsg = com_mailTips:GetTransition("TransitionNewMsg")
             transition_newMsg:Play()
-            CS.Casinos.CasinosContext.Instance:play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
+            CS.Casinos.CasinosContext.Instance:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
         else
             ViewHelper:setGObjectVisible(false, com_mailTips)
         end
@@ -681,7 +681,7 @@ function ViewDesktopTexas:_haveNewChatOrMailRecord()
         ViewHelper:setGObjectVisible(true, self.GComMsgTips)
         self.TransitionNewMsg:Play()
         self.GTextMsgTips.text = tostring(self.NewFriendChatCount)
-        CS.Casinos.CasinosContext.Instance:play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
+        CS.Casinos.CasinosContext.Instance:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
     else
         ViewHelper:setGObjectVisible(false, self.GComMsgTips)
     end
@@ -1062,7 +1062,7 @@ end
 -- 播放本人“你赢了”3个字的动画
 function ViewDesktopTexas:showMeWin()
     ViewHelper:setGObjectVisible(true, self.ComMeWin)
-    CS.Casinos.CasinosContext.Instance:play("ying", CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play("ying", CS.Casinos._eSoundLayer.LayerNormal)
     self.TransitionMeWin:Play(function()
         ViewHelper:setGObjectVisible(false, self.ComMeWin)
     end)

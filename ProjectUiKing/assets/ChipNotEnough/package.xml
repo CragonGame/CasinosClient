@@ -3,5 +3,5 @@
   <resources>
     <component id="eh360" name="ChipNotEnough.xml" path="/" exported="true"/>
   </resources>
-  <publish name="ChipNotEnough" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\ChipNotEnough"/>
+  <publish name="ChipNotEnough" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ChipNotEnough"/>
 </packageDescription>

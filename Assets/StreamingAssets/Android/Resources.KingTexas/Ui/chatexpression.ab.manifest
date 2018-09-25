@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4129875406
+CRC: 2598913910
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 59696f4d6d9273164807f88ec0cffee6
+    Hash: feacaba22e00c28050b98c44b805d46e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatExPression/ChatExPression.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatExPression/ChatExPression@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatExPression/ChatExPression@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatExPression/ChatExPression_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatExPression/ChatExPression_fui.bytes
 Dependencies: []

@@ -8,5 +8,5 @@
     <component id="eh36p" name="ComExpression.xml" path="/Component/"/>
     <component id="eh36r" name="BtnSend.xml" path="/Component/"/>
   </resources>
-  <publish name="ChatExPression" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\ChatExPression"/>
+  <publish name="ChatExPression" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ChatExPression"/>
 </packageDescription>

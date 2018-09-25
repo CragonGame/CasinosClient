@@ -10,5 +10,5 @@
     <image id="w07g26" name="bt_01.png" path="/Image/"/>
     <image id="w07g27" name="bt_03.png" path="/Image/"/>
   </resources>
-  <publish name="GoldTree" path="E:\Cragon.Casinos.Client\branches\KingTexas12.28\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\GoldTree"/>
+  <publish name="GoldTree" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\GoldTree"/>
 </packageDescription>

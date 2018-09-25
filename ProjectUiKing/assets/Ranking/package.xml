@@ -8,5 +8,5 @@
     <component id="nmmo19" name="ComItemRank.xml" path="/component/"/>
     <component id="nmmo1a" name="ComRankSign.xml" path="/component/"/>
   </resources>
-  <publish name="Ranking" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Ranking"/>
+  <publish name="Ranking" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Ranking"/>
 </packageDescription>

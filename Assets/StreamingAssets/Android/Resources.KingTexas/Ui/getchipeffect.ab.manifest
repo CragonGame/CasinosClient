@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1297864305
+CRC: 2034844611
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: dd7ec105d158c6401d8b6a6bbce3df98
+    Hash: 60b1c17825430843f312bb0c014cc915
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,8 +14,7 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GetChipEffect/ViewGetChipEffect.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GetChipEffect/ViewGetChipEffect@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GetChipEffect/ViewGetChipEffect@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GetChipEffect/ViewGetChipEffect@atlas0!a.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GetChipEffect/ViewGetChipEffect_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GetChipEffect/ViewGetChipEffect_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GetChipEffect/ViewGetChipEffect_atlas0!a.png
 Dependencies: []

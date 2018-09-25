@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="110,36" extention="Button">
-  <displayList>
-    <text id="n3_filf" name="n3" xy="21,-1" size="66,39" fontSize="30" color="#ecffff" bold="true" text="返回"/>
-  </displayList>
-  <Button/>
-</component>

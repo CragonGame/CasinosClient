@@ -18,5 +18,5 @@
     <image id="ppk5t" name="背景-补缺角.png" path="/Image/"/>
     <image id="ppk5u" name="背景-补缺角白底.png" path="/Image/"/>
   </resources>
-  <publish name="Chat" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Chat"/>
+  <publish name="Chat" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Chat"/>
 </packageDescription>

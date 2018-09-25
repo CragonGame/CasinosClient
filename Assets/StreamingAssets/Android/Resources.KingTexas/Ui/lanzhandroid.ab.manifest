@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3711848531
+CRC: 2347750590
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a289ed056f02a7835a82214706478ba6
+    Hash: 0e3f72dddc6e9361e97e5a24d5e92fd0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,8 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZhAndroid/LanZhAndroid.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZhAndroid/LanZhAndroid@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZhAndroid/LanZhAndroid@atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZhAndroid/LanZhAndroid_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZhAndroid/LanZhAndroid_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZhAndroid/LanEnAndroid_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZhAndroid/LanEnAndroid_atlas0.png
 Dependencies: []

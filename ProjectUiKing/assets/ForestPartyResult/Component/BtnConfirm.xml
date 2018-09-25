@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="135,56" extention="Button" initName="BtnConfirm">
-  <displayList>
-    <image id="n0_xkvh" name="n0" src="ieudz" xy="0,0"/>
-  </displayList>
-  <Button downEffect="scale" downEffectValue="1.10"/>
-</component>

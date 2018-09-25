@@ -192,7 +192,7 @@ function ViewDesktopHTexas:setCountDown(current_tm)
                 if (CS.System.String.IsNullOrEmpty(sound) == false and sound ~= self.Sound)
                 then
                     self.Sound = sound
-                    CS.Casinos.CasinosContext.Instance:play(sound, CS.Casinos._eSoundLayer.LayerNormal)
+                    CS.Casinos.CasinosContext.Instance:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
                 end
             elseif (self.DesktopHState == _eDesktopHState.Bet)
             then

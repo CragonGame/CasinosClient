@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 244307354
+CRC: 530459358
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 096230f7ba8e76ca34f734f57baa23d1
+    Hash: eeae1d07d690fc2622581b1c710761a9
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Bank/Bank.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Bank/Bank@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Bank/Bank_fui.bytes
 Dependencies: []

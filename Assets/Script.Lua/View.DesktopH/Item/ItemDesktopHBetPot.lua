@@ -80,7 +80,7 @@ function ItemDesktopHBetPot:showCardsEnd()
     local cardtype_info = self.ViewDesktopH.UiDesktopHBase:getCardTypeAndSoundPath(card_type, self.IsWin)
     if (CS.System.String.IsNullOrEmpty(cardtype_info.CardTypeSoundPath) == false)
     then
-        CS.Casinos.CasinosContext.Instance:play(cardtype_info.CardTypeSoundPath, CS.Casinos._eSoundLayer.LayerNormal)
+        CS.Casinos.CasinosContext.Instance:Play(cardtype_info.CardTypeSoundPath, CS.Casinos._eSoundLayer.LayerNormal)
     end
 
     if (self.FTasker ~= nil)

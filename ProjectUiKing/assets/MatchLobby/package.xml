@@ -38,5 +38,5 @@
     <image id="6ey610" name="Normal.png" path="/Image/" exported="true"/>
     <component id="j1yr13" name="ComAddChip1.xml" path="/Component/"/>
   </resources>
-  <publish name="MatchLobby" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\MatchLobby"/>
+  <publish name="MatchLobby" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\MatchLobby"/>
 </packageDescription>

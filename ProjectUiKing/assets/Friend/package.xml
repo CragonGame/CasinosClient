@@ -10,5 +10,5 @@
     <image id="fol715" name="ItemBgChoose.png" path="/Image/"/>
     <component id="jyil18" name="ComReportPlayer.xml" path="/Component/"/>
   </resources>
-  <publish name="Friend" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Friend"/>
+  <publish name="Friend" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Friend"/>
 </packageDescription>

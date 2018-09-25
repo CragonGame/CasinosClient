@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1179194944
+CRC: 2434842432
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f00ba50bfe85062d2f19cc04714a3375
+    Hash: f76627501e5d8303d8bea98fb551d3e1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/AgreeOrDisAddFriendRequest/AgreeOrDisAddFriendRequest.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/AgreeOrDisAddFriendRequest/AgreeOrDisAddFriendRequest@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/AgreeOrDisAddFriendRequest/AgreeOrDisAddFriendRequest_fui.bytes
 Dependencies: []

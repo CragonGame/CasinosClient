@@ -3,5 +3,5 @@
   <resources>
     <component id="qsg81" name="AgreeOrDisAddFriendRequest.xml" path="/" exported="true"/>
   </resources>
-  <publish name="AgreeOrDisAddFriendRequest" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\AgreeOrDisAddFriendRequest"/>
+  <publish name="AgreeOrDisAddFriendRequest" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\AgreeOrDisAddFriendRequest"/>
 </packageDescription>

@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 2622003903
+CRC: 2194655808
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: ranking.ab
+      Name: pool.ab
       Dependencies: {}

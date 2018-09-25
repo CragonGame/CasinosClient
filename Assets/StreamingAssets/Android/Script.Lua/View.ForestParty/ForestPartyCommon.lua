@@ -136,17 +136,17 @@ function ForestPartyCommon:Update(elapsed_tm)
         local text_time = string.format(%u,CS.System.Math.Ceiling(self.CountDownTime))
         if (text_time == 3 and self.HasPlayCountDown3 == false)
 		then
-			CS.Casinos.CasinosContext.Instance:play(self.BetCountDownSound, CS.Casinos._eSoundLayer.LayerNormal)
+			CS.Casinos.CasinosContext.Instance:Play(self.BetCountDownSound, CS.Casinos._eSoundLayer.LayerNormal)
             self.HasPlayCountDown3 = true
 		end
         if (text_time == 2 and self.HasPlayCountDown2 == false)
 		then
-			CS.Casinos.CasinosContext.Instance:play(self.BetCountDownSound, CS.Casinos._eSoundLayer.LayerNormal)
+			CS.Casinos.CasinosContext.Instance:Play(self.BetCountDownSound, CS.Casinos._eSoundLayer.LayerNormal)
             self.HasPlayCountDown2 = true
 		end
         if (text_time == 1 and self.HasPlayCountDown1 == false)
 		then
-			CS.Casinos.CasinosContext.Instance:play(self.BetCountDownSound, CS.Casinos._eSoundLayer.LayerNormal)
+			CS.Casinos.CasinosContext.Instance:Play(self.BetCountDownSound, CS.Casinos._eSoundLayer.LayerNormal)
             self.HasPlayCountDown1 = true
 		end
         self.GTextCountDown.text = tostring(text_time)

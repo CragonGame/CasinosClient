@@ -25,7 +25,7 @@ function ItemUiDesktopHTongSha:showEffect(show_end)
     self.ActionShowEnd = show_end
     self.ComUi.visible = true
     self.AniTongSha:Play()
-    CS.Casinos.CasinosContext.Instance:play("AllWinEffect", CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play("AllWinEffect", CS.Casinos._eSoundLayer.LayerNormal)
     self:_cancelTask()
     local t = CS.Casinos.FTMgr.Instance:startTask(ItemUiDesktopHTongSha.AutoDestroyTm)
     self.FTaskerHideSelf = CS.Casinos.FTMgr.Instance:whenAll(nil,

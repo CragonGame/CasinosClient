@@ -4,5 +4,5 @@
     <component id="fb5j0" name="DesktopHHelp.xml" path="/" exported="true"/>
     <component id="fb5j1" name="ComHelpParent.xml" path="/Component/" exported="true"/>
   </resources>
-  <publish name="DesktopHHelp" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\DesktopHHelp"/>
+  <publish name="DesktopHHelp" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHHelp"/>
 </packageDescription>

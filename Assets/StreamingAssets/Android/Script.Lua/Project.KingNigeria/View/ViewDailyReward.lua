@@ -119,7 +119,7 @@ function ViewDailyReward:onClickBtnGetReward()
 	--)
     if (self.mOperateAction ~= nil)
 	then
-		CS.Casinos.CasinosContext.Instance:play(self.REWARD_SOUND, CS.Casinos._eSoundLayer.LayerNormal)
+		CS.Casinos.CasinosContext.Instance:Play(self.REWARD_SOUND, CS.Casinos._eSoundLayer.LayerNormal)
         self.mOperateAction(true)
 	end
 end

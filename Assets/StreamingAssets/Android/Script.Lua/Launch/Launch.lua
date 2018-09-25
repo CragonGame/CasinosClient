@@ -13,6 +13,7 @@ function Launch:new(o)
     then
         self.PreViewMgr = nil
         self.PreLoading = nil
+        self.PreMsgBox  =nil
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
         self.Context = nil
@@ -78,8 +79,23 @@ function Launch:Setup()
 end
 
 ---------------------------------------
+-- 卸载Spine动画
+--function Launch:ClearSpine()
+--end
+
+---------------------------------------
 -- Launch阶段完成
 function Launch:Finish()
+
+    if (self.PreMsgBox ~= nil) then
+        self.PreViewMgr.destroyView(self.PreMsgBox)
+        self.PreMsgBox = nil
+    end
+
+    if (self.PreLoading ~= nil) then
+        self.PreViewMgr.destroyView(self.PreLoading)
+        self.PreLoading = nil
+    end
 
     package.preload['PreViewMsgBox'] = nil
     package.loaded['PreViewMsgBox'] = nil

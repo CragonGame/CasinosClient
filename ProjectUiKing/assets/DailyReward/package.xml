@@ -20,5 +20,5 @@
     <image id="lh6bw" name="筹码按钮选中勾选.png" path="/Image/"/>
     <component id="pcq4x" name="ComPos.xml" path="/Component/"/>
   </resources>
-  <publish name="DailyReward" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\DailyReward"/>
+  <publish name="DailyReward" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DailyReward"/>
 </packageDescription>

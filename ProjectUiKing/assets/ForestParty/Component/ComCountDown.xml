@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="80,80" initName="ComCountDown">
-  <displayList>
-    <text id="n0_ay3t" name="TextCount" xy="0,3" pivot="0.5,0.5" size="80,74" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" bold="true" strokeColor="#89aab1" text="56"/>
-  </displayList>
-</component>

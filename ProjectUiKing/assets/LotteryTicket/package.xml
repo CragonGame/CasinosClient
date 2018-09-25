@@ -45,5 +45,5 @@
     <image id="h1h169" name="S_gdt.png" path="/Image/" scale="9grid"/>
     <component id="h1fp6a" name="ComRule.xml" path="/ComPonent/"/>
   </resources>
-  <publish name="LotteryTicket" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\LotteryTicket"/>
+  <publish name="LotteryTicket" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\LotteryTicket"/>
 </packageDescription>

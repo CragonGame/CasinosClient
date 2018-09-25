@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1678956054
+CRC: 4278670940
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4a4ec9e5f11b52fac3586802eb72f701
+    Hash: d70e8035ceaf6b7caf5c665fe822e341
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/RechargeFirst/RechargeFirst@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/RechargeFirst/RechargeFirst.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/RechargeFirst/RechargeFirst_fui.bytes
 Dependencies: []

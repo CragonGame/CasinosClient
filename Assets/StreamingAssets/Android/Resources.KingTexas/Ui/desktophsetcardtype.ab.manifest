@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2746387502
+CRC: 694197099
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 00ba554d083f0f18f0f9d82f9a001f3f
+    Hash: 975ad4d71000af3fa571f5c991bbcba0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHSetCardType/DesktopHSetCardType@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHSetCardType/DesktopHSetCardType.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHSetCardType/DesktopHSetCardType_fui.bytes
 Dependencies: []

@@ -10,5 +10,5 @@
     <component id="hp40g" name="BtnCheck1.xml" path="/Component/" exported="true"/>
     <component id="tabch" name="ComBgAndClose.xml" path="/Component/"/>
   </resources>
-  <publish name="LockChat" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\LockChat"/>
+  <publish name="LockChat" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\LockChat"/>
 </packageDescription>

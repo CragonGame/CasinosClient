@@ -20,7 +20,7 @@ function ItemMagicExpSender:sendMagicExp(from_pos, to_pos,exp_tbid)
     then
         return
     end
-    CS.Casinos.CasinosContext.Instance:play(tb_magicexp.AudioName .. "m", CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play(tb_magicexp.AudioName .. "m", CS.Casinos._eSoundLayer.LayerNormal)
     self.GLoaderIcon.visible = true
     self.GLoaderIcon.icon = ViewHelper:FormatePackageImagePath("PlayerProfile", tb_magicexp.ExpIcon)
     local pos_co_magic_exp = from_pos

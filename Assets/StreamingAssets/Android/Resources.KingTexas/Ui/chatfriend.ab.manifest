@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3998163971
+CRC: 4187759429
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c06f4589311df06ade2926f651eaf702
+    Hash: f550e9a5f2b09bac59c7aeb0f2338fc5
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatFriend/ChatFriend@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatFriend/ChatFriend@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatFriend/ChatFriend.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatFriend/ChatFriend_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ChatFriend/ChatFriend_fui.bytes
 Dependencies: []

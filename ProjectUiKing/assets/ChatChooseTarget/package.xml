@@ -5,5 +5,5 @@
     <component id="l4111" name="ComChatTarget.xml" path="/Component/"/>
     <component id="n8cl6" name="Lan_Btn_Choose.xml" path="/Component/"/>
   </resources>
-  <publish name="ChatChooseTarget" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\ChatChooseTarget"/>
+  <publish name="ChatChooseTarget" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ChatChooseTarget"/>
 </packageDescription>

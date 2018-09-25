@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3074547084
+CRC: 2078221103
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 057199da1a3efe7e62419b8b22814f08
+    Hash: 47bbc3196bc37a77e0eeb9cdbf05ab92
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,9 +14,8 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZh/LanZh@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZh/LanZh@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZh/LanZh.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZh/LanZh@atlas3.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZh/LanZh@atlas1.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZh/LanZh_atlas1.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZh/LanZh_atlas3.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZh/LanZh_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanZh/LanZh_atlas0.png
 Dependencies: []

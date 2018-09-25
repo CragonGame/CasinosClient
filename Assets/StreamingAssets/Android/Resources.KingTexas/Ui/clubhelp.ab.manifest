@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 736873082
+CRC: 4261566186
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: cf59b8ddc78b021ba2eb6190ee67c95a
+    Hash: 0be6185446a2b5b02fd3c1433431c0c6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ClubHelp/ClubHelp.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ClubHelp/ClubHelp@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ClubHelp/ClubHelp_fui.bytes
 Dependencies: []

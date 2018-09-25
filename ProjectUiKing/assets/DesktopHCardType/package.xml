@@ -3,5 +3,5 @@
   <resources>
     <component id="fb5j0" name="DesktopHCardType.xml" path="/" exported="true"/>
   </resources>
-  <publish name="DesktopHCardType" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.King\PkgFold\Ui\DesktopHCardType"/>
+  <publish name="DesktopHCardType" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHCardType"/>
 </packageDescription>

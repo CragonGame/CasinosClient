@@ -7,5 +7,5 @@
     <image id="sd6w3" name="退出.png" path="/Component/"/>
     <component id="sd6w4" name="ComBgAndClose.xml" path="/Component/"/>
   </resources>
-  <publish name="JoinMatch" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\JoinMatch"/>
+  <publish name="JoinMatch" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\JoinMatch"/>
 </packageDescription>

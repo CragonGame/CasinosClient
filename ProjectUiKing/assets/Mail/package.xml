@@ -9,5 +9,5 @@
     <image id="lh6bs" name="邮件没有时mary_03.png" path="/Image/" exported="true"/>
     <image id="lh6bt" name="UI2_Icon_邮件.png" path="/Image/"/>
   </resources>
-  <publish name="Mail" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Mail"/>
+  <publish name="Mail" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Mail"/>
 </packageDescription>

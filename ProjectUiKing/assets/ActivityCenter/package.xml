@@ -9,5 +9,5 @@
     <image id="rbumh" name="Share.png" path="/Image/"/>
     <image id="ok08j" name="AddWeChatGroup.png" path="/Image/"/>
   </resources>
-  <publish name="ActivityCenter" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\ActivityCenter"/>
+  <publish name="ActivityCenter" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ActivityCenter"/>
 </packageDescription>

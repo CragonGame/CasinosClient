@@ -5,5 +5,5 @@
     <component id="rhkp1" name="ItemLanguage.xml" path="/Component/" exported="true"/>
     <image id="ef0j2" name="Bg5.png" path="/Image/" atlas="alone"/>
   </resources>
-  <publish name="ChooseLan" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\ChooseLan"/>
+  <publish name="ChooseLan" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ChooseLan"/>
 </packageDescription>

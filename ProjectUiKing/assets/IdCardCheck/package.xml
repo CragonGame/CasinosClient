@@ -4,5 +4,5 @@
     <component id="nsqm0" name="IdCardCheck.xml" path="/" exported="true"/>
     <component id="nrzk1" name="ComInput.xml" path="/Component/"/>
   </resources>
-  <publish name="IdCardCheck" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\IdCardCheck"/>
+  <publish name="IdCardCheck" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\IdCardCheck"/>
 </packageDescription>

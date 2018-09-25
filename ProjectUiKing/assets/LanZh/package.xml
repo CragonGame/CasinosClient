@@ -136,5 +136,5 @@
     <image id="rxsg88" name="WeChatPay.png" path="/Image/" exported="true" scale="" atlas="3"/>
     <image id="ddfw89" name="RechargeFirstContent.jpg" path="/Image/" exported="true"/>
   </resources>
-  <publish name="LanZh" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\LanZh"/>
+  <publish name="LanZh" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\LanZh"/>
 </packageDescription>

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1495161852
+CRC: 1825430652
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 49a8fac744a47791543bfbfab992069c
+    Hash: 1d687f18c0dfcce16ff2549383460c68
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,8 +14,7 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreLoading/PreLoading@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreLoading/PreLoading.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreLoading/PreLoading@atlas1.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreLoading/PreLoading@atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreLoading/PreLoading_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreLoading/PreLoading_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PreLoading/PreLoading_atlas1.png
 Dependencies: []

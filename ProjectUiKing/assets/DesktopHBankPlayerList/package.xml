@@ -4,5 +4,5 @@
     <component id="fb5j0" name="DesktopHBankPlayerList.xml" path="/" exported="true"/>
     <component id="fb5j2" name="CoBankPlayerInfo.xml" path="/Component/" exported="true"/>
   </resources>
-  <publish name="DesktopHBankPlayerList" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\DesktopHBankPlayerList"/>
+  <publish name="DesktopHBankPlayerList" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHBankPlayerList"/>
 </packageDescription>

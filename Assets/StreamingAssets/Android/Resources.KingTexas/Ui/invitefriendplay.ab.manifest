@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1280061228
+CRC: 3643154844
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0337aff4d971b5439cb73128cba5ddfa
+    Hash: c55a66080c6dccf2f1da37c5348be670
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/InviteFriendPlay/InviteFriendPlay@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/InviteFriendPlay/InviteFriendPlay.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/InviteFriendPlay/InviteFriendPlay_fui.bytes
 Dependencies: []

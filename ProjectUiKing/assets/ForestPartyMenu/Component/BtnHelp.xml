@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="110,36" extention="Button">
-  <displayList>
-    <text id="n1_filf" name="n1" xy="21,-1" size="66,39" fontSize="30" color="#ecffff" bold="true" text="规则"/>
-  </displayList>
-  <Button/>
-</component>

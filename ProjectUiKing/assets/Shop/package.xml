@@ -89,5 +89,5 @@
     <component id="j1yr40" name="BtnAddDiamond1.xml" path="/Component/New/"/>
     <component id="j1yr42" name="Component3.xml" path="/Component/New/"/>
   </resources>
-  <publish name="Shop" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Shop"/>
+  <publish name="Shop" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Shop"/>
 </packageDescription>

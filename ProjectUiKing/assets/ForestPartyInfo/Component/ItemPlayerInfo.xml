@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="420,90">
-  <displayList>
-    <component id="n5_sak4" name="ComHeadIcon" src="ieud6" xy="3,3" size="85,85"/>
-    <text id="n2_lh90" name="NickName" xy="90,25" size="137,39" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" bold="true" singleLine="true" text="速度发射点"/>
-    <text id="n4_lh90" name="GoldAmount" xy="256,25" size="161,39" fontSize="30" color="#ffc001" align="center" vAlign="middle" autoSize="shrink" bold="true" singleLine="true" text="阿斯顿发大水"/>
-  </displayList>
-</component>

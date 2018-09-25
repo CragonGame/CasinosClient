@@ -134,7 +134,7 @@ function Context:AddUiPackage(package_name)
 
     local full_name = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(
             "resources.kingtexas/ui/" .. string.lower(package_name) .. ".ab")
-    print(full_name)
+    --print(full_name)
     local ab = CS.UnityEngine.AssetBundle.LoadFromFile(full_name)
     CS.FairyGUI.UIPackage.AddPackage(ab)
 end
@@ -295,6 +295,11 @@ function Context:_nextLaunchStep()
         self.CasinosContext.ShareSDKAppKey = ShareSDKAppKey
         self.CasinosContext.ShareSDKAppSecret = ShareSDKAppSecret
 
+        self:DoString("MessagePack")
+        self:DoString("json")
+        self.Json = require("json")
+        self:DoString("RPC")
+        local rpc = RPC:new(nil)
         self:DoString("LuaHelper")
         self.LuaHelper = LuaHelper:new(nil)
         self:DoString("TexasHelper")
@@ -311,36 +316,42 @@ function Context:_nextLaunchStep()
         end
         self.TbDataMgrBase = TbDataMgrBase:new(nil, self.TbDataMgr, t_db,
                 function()
-                    self:LoadDataDone()
+                    --self:LoadDataDone()
                 end
         )
 
-        self:DoString("EventSys")
-        self.EventSys = EventSys:new(nil)
-        self.EventSys:onCreate()
-
-        self:DoString("ViewMgr")
-        self.ViewMgr = ViewMgr:new(nil)
-        self.ViewMgr:onCreate("Resources.KingTexas/Ui/", "Resources.KingTexasRaw/")
-        self.ViewMgr.TbDataMgr = self.TbDataMgr
-        self:_regView()
-        self:DoString("ViewHelper")
-        ViewHelper:new(nil)
+        self:_regModel()
 
         self:DoString("LanBase")
         self:DoString("LanEn")
         self:DoString("LanMgr")
         self:DoString("LanZh")
+        self.LanMgr = LanMgr:new(nil)
+        self.LanMgr:parseLanKeyValue()
+
+        self:DoString("CasinoHelper")
+        CasinoHelper:new(nil, rpc.MessagePack, self.LanMgr)
+        self:DoString("Native")
+        Native:new(nil, self.ViewMgr, self)
+        self:DoString("PicCapture")
+        self.PicCapture = PicCapture:new(nil, self.ViewMgr, self)
+
+        self:DoString("EventSys")
+        self.EventSys = EventSys:new(nil)
+        self.EventSys:onCreate()
 
         self:DoString("UiChipShowHelper")
         self.UiChipShowHelper = UiChipShowHelper:new(nil)
         --self:DoString("ParticleHelper")
 
-        self:DoString("MessagePack")
-        self:DoString("json")
-        self.Json = require("json")
-        self:DoString("RPC")
-        local rpc = RPC:new(nil)
+        self:DoString("ViewMgr")
+        self.ViewMgr = ViewMgr:new(nil)
+        self.ViewMgr.LanMgr = self.LanMgr
+        self.ViewMgr.TbDataMgr = self.TbDataMgr
+        self.ViewMgr:onCreate("Resources.KingTexas/Ui/", "Resources.KingTexasRaw/")
+        self:_regView()
+        self:DoString("ViewHelper")
+        ViewHelper:new(nil)
 
         self:DoString("ControllerMgr")
         self.ControllerMgr = ControllerMgr:new(nil)
@@ -348,18 +359,20 @@ function Context:_nextLaunchStep()
         self.ControllerMgr.TbDataMgr = self.TbDataMgr
         self.ControllerMgr.RPC = rpc
         self.ControllerMgr.Listener = self
+        self.ControllerMgr.LanMgr = self.LanMgr
         self:_regController()
         self.ViewMgr.ControllerMgr = self.ControllerMgr
         self.ViewMgr.RPC = rpc
         self.ViewMgr.Listener = self
 
         self:_addUiPackage()
+
+        -- 销毁Launch相关资源
+        self.Launch:Finish()
         
         -- 加载登录界面
         self.ControllerMgr:CreateController("UCenter", nil, nil)
         self.ControllerMgr:CreateController("Login", nil, nil)
-        PreViewMgr:destroyView(self.Launch.PreLoading)
-        PreViewMgr:destroyView(self.Launch.PreMsgBox)
     end
 end
 
@@ -407,6 +420,35 @@ function Context:_timerUpdateRemoteToPersistentData()
         local max = Context.UpdateRemoteToPersistentData.TotalCount
         Context.Launch.PreLoading:UpdateLoadingProgress(max - value, max)
     end
+end
+
+---------------------------------------
+function Context:_regModel()
+    self:DoString("TbDataHelper")
+    --TbDataHelper:new(nil, self.TbDataMgr)
+    self:DoString("ModelCommon")
+    self:DoString("ModelAccount")
+    self:DoString("ModelActor")
+    self:DoString("ModelWallet")
+    self:DoString("ModelUCenter")
+    self:DoString("ModelTrade")
+    self:DoString("ModelDesktop")
+    self:DoString("ModelDesktopTexas")
+    self:DoString("ModelDesktopTexasMatch")
+    self:DoString("ModelActivity")
+    self:DoString("ModelGrow")
+    self:DoString("ModelPlayer")
+    self:DoString("ModelRank")
+    self:DoString("ModelMarquee")
+    self:DoString("ModelWallet")
+    self:DoString("ModelBag")
+    self:DoString("ModelDesktopH")
+    self:DoString("ModelIM")
+    self:DoString("ModelIMClientEvent")
+    self:DoString("ModelIMMailBox")
+    self:DoString("ModelLotteryTicket")
+    self:DoString("ModelPlayer")
+    self:DoString("ModelPlayerInfo")
 end
 
 ---------------------------------------

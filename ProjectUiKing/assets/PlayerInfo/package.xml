@@ -14,5 +14,5 @@
     <image id="nmmo2n" name="shuxin1.png" path="/Image/"/>
     <component id="nmmo2o" name="BtnRefresh.xml" path="/Component/"/>
   </resources>
-  <publish name="PlayerInfo" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\PlayerInfo"/>
+  <publish name="PlayerInfo" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\PlayerInfo"/>
 </packageDescription>

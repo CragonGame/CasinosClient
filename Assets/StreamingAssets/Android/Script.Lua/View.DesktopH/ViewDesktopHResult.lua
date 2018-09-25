@@ -120,7 +120,7 @@ function ViewDesktopHResult:setGameResult(bank_name, self_wingolds, self_betgold
     then
         sound = "deskhundred_win"
     end
-    CS.Casinos.CasinosContext.Instance:play(sound, CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
 end
 
 function ViewDesktopHResult:_setCloseTime()

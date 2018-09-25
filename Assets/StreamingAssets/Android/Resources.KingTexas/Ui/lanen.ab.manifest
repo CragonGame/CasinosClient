@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3610943923
+CRC: 3159075652
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c97759178e184e2275826f0fa6b59e72
+    Hash: f0fe8a5d26965f8fe50611c5298c9e9b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,9 +14,8 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanEn/LanEn@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanEn/LanEn@atlas3.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanEn/LanEn@atlas1.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanEn/LanEn.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanEn/LanEn@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanEn/LanEn_atlas3.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanEn/LanEn_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanEn/LanEn_atlas1.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/LanEn/LanEn_atlas0.png
 Dependencies: []

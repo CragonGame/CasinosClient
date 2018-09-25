@@ -533,7 +533,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
             play_sound = false
             sound = "dongdong"
             if self.Player.DesktopTexas.IsSnapshot == false then
-                CS.Casinos.CasinosContext.Instance:play(sound, CS.Casinos._eSoundLayer.LayerNormal)
+                CS.Casinos.CasinosContext.Instance:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
             end
             action_name = self.ViewMgr.LanMgr:getLanValue("Check")
         elseif (action == PlayerActionTypeTexas.Call)
@@ -569,7 +569,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
 
     if (play_sound and self.Player.DesktopTexas.IsSnapshot == false)
     then
-        CS.Casinos.CasinosContext.Instance:play(sound, CS.Casinos._eSoundLayer.LayerNormal)
+        CS.Casinos.CasinosContext.Instance:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
     end
 
     self:_resetThinkTimePro()
@@ -1095,7 +1095,7 @@ function ViewDesktopPlayerInfoTexas:_setThinkingTimeSprite(fill_amount, need_vib
         CS.UnityEngine.Handheld.Vibrate()
         --#endif
         self.VibrateOnce = false
-        CS.Casinos.CasinosContext.Instance:play("half_time", CS.Casinos._eSoundLayer.LayerNormal)
+        CS.Casinos.CasinosContext.Instance:Play("half_time", CS.Casinos._eSoundLayer.LayerNormal)
     end
 
     if (persent <= 0.5)

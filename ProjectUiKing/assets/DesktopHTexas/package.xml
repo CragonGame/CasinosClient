@@ -43,5 +43,5 @@
     <image id="ii4z32" name="桌右上长底框.png" path="/Image/"/>
     <image id="ii4z33" name="桌面左上长底框.png" path="/Image/"/>
   </resources>
-  <publish name="DesktopHTexas" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHTexas"/>
+  <publish name="DesktopHTexas" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHTexas"/>
 </packageDescription>

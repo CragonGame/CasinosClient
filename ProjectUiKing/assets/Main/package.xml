@@ -108,5 +108,5 @@
     <component id="ncj59f" name="BtnFeedback.xml" path="/Component/"/>
     <image id="f70a9g" name="Service_icon.png" path="/Image/"/>
   </resources>
-  <publish name="Main" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Main"/>
+  <publish name="Main" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Main"/>
 </packageDescription>

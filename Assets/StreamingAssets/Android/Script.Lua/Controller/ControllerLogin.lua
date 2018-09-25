@@ -911,7 +911,7 @@ function ControllerLogin:_init(is_init)
             c.ServerIsInvalid, c.ServerStateInfo)
     view_login:SetAccPwd(acc, pwd)
     self.ViewMgr:createView("Pool")
-    c:play("background", CS.Casinos._eSoundLayer.Background)
+    c:Play("background", CS.Casinos._eSoundLayer.Background)
 end
 
 ---------------------------------------

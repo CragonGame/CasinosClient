@@ -53,5 +53,5 @@
     <movieclip id="9ehf28" name="MovieAllIn.jta" path="/Component/"/>
     <component id="iuh229" name="ComWinInfo.xml" path="/Component/"/>
   </resources>
-  <publish name="DesktopPlayerInfo" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopPlayerInfo"/>
+  <publish name="DesktopPlayerInfo" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopPlayerInfo"/>
 </packageDescription>

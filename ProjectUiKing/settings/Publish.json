@@ -2,7 +2,7 @@
 	"binaryFormat":true,
 	"codeGeneration":{
 		"classNamePrefix":"UI_",
-		"codePath":"C:\\Users\\xc\\Desktop\\新建文件夹 (6)",
+		"codePath":"",
 		"codeType":"",
 		"getMemberByName":false,
 		"ignoreNoname":false,
@@ -12,5 +12,5 @@
 	"compressDesc":true,
 	"fileExtension":"",
 	"packageCount":2,
-	"path":"D:\\CasinosClientGithub\\Assets\\Resources.KingTexasLaunch"
+	"path":"D:\\CasinosClientGithub\\Assets\\Resources.KingTexas\\BuildAssetBundleFromFold\\Ui"
 }

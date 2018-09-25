@@ -10,5 +10,5 @@
     <component id="lil3j" name="BtnHorn.xml" path="/Component/"/>
     <component id="lil3k" name="BtnPen.xml" path="/Component/" exported="true"/>
   </resources>
-  <publish name="ShootingText" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\ShootingText"/>
+  <publish name="ShootingText" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ShootingText"/>
 </packageDescription>

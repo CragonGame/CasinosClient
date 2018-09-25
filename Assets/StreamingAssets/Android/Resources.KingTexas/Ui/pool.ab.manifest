@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1709928896
+CRC: 3097629466
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f47b66823daaf0d7adc4f3462945ae57
+    Hash: dac2b68c7d8786ffd4369553368e60b6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Pool/Pool@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Pool/Pool.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Pool/Pool_fui.bytes
 Dependencies: []

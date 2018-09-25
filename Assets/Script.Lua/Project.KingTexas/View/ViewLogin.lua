@@ -196,12 +196,10 @@ function ViewLogin:onCreate()
     if (self.CasinosContext.NeedHideClientUi == false)
     then
         image_bg.visible = false
-        local abTextAtlas = p_helper:GetSpine("Spine/LoadingMarry/mary_loading.atlas.ab")
-        local atlas = abTextAtlas:LoadAsset("Mary_Loading.atlas")
-        local abtexture = p_helper:GetSpine("Spine/LoadingMarry/mary_loading.ab")
-        local texture = abtexture:LoadAsset("Mary_Loading")
-        local abjson = p_helper:GetSpine("Spine/LoadingMarry/mary_loadingjson.ab")
-        local json = abjson:LoadAsset("Mary_LoadingJson")
+        local ab_mary_loading = p_helper:GetSpine("Spine/loadingmarry.ab")
+        local atlas = ab_mary_loading:LoadAsset("Mary_Loading.atlas")
+        local texture = ab_mary_loading:LoadAsset("Mary_Loading")
+        local json = ab_mary_loading:LoadAsset("Mary_LoadingJson")
 
         self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton", 314)
         --local moteParent = self.ComUi:GetChild("MoteParent").asCom
@@ -220,12 +218,10 @@ function ViewLogin:onCreate()
         image_bg.visible = true
     end
 
-    local abTextAtlas1 = p_helper:GetSpine("Spine/DengLong/denglong.atlas.ab")
-    local atlas1 = abTextAtlas1:LoadAsset("denglong.atlas")
-    local abtexture1 = p_helper:GetSpine("Spine/DengLong/denglong.ab")
-    local texture1 = abtexture1:LoadAsset("denglong")
-    local abjson1 = p_helper:GetSpine("Spine/DengLong/denglongjson.ab")
-    local json1 = abjson1:LoadAsset("denglongJson")
+    local ab_denglong = p_helper:GetSpine("Spine/denglong.ab")
+    local atlas1 = ab_denglong:LoadAsset("denglong.atlas")
+    local texture1 = ab_denglong:LoadAsset("denglong")
+    local json1 = ab_denglong:LoadAsset("denglongJson")
 
     self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton", 314)
     local denglongParent = self.ComUi:GetChild("DengLongParent").asCom

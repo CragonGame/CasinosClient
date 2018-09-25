@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 154376211
+CRC: 702351777
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 93ecd8ed2ee1f450e058e6fa23a8c368
+    Hash: a1d2a23d7c239967f161f8312b03cc1b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHMenu/DesktopHMenu.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHMenu/DesktopHMenu@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHMenu/DesktopHMenu_fui.bytes
 Dependencies: []

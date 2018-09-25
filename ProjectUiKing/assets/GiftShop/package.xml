@@ -7,5 +7,5 @@
     <image id="qeuch" name="ItemChoose.png" path="/Image/"/>
     <component id="qeuci" name="ComGiftItem.xml" path="/Component/" exported="true"/>
   </resources>
-  <publish name="GiftShop" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\GiftShop"/>
+  <publish name="GiftShop" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\GiftShop"/>
 </packageDescription>

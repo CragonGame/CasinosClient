@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3767071569
+CRC: 1750541210
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7bb43234af480ee08003e35a1d8dc19c
+    Hash: 31464b8f16d9b08aa3e39c07e66b2d32
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,11 +14,10 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop@atlas1.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop@atlas3.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop@atlas2.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop@atlas4.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop_atlas4.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop_atlas3.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop_atlas2.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Desktop/Desktop_atlas1.png
 Dependencies: []

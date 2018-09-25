@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3919021
+CRC: 4047230346
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c53f1d2c12221468a86877186e8e98d6
+    Hash: b099f12400fbd25b118db6a4794672ab
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,10 +14,9 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club@atlas1!a.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club@atlas1.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club@atlas0!a.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club_atlas1.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club_atlas1!a.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club_atlas0!a.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Club/Club_atlas0.png
 Dependencies: []

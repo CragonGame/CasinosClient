@@ -274,7 +274,7 @@ function PlayerSeatWidgetControllerTexas:raiseChips()
 
                 if (self.SeatWidget ~= nil)
                 then
-                    CS.Casinos.CasinosContext.Instance:play("chip", CS.Casinos._eSoundLayer.LayerNormal)
+                    CS.Casinos.CasinosContext.Instance:Play("chip", CS.Casinos._eSoundLayer.LayerNormal)
                     self:_showBet()
                 end
 
@@ -284,7 +284,7 @@ function PlayerSeatWidgetControllerTexas:raiseChips()
             function()
                 if (self.PlayerInfo.ComUi.displayObject ~= nil and self.PlayerInfo.ComUi.displayObject.gameObject ~= nil)
                 then
-                    CS.Casinos.CasinosContext.Instance:play("chip", CS.Casinos._eSoundLayer.LayerNormal)
+                    CS.Casinos.CasinosContext.Instance:Play("chip", CS.Casinos._eSoundLayer.LayerNormal)
                 end
             end
     )
@@ -332,7 +332,7 @@ function PlayerSeatWidgetControllerTexas:sendWinnerChips(winner_golds, map_win_p
 
                         if (self.PlayerInfo.ComUi.displayObject ~= nil and self.PlayerInfo.ComUi.displayObject.gameObject ~= nil)
                         then
-                            CS.Casinos.CasinosContext.Instance:play("chipfly", CS.Casinos._eSoundLayer.LayerNormal)
+                            CS.Casinos.CasinosContext.Instance:Play("chipfly", CS.Casinos._eSoundLayer.LayerNormal)
                         end
                     end
             )
@@ -395,7 +395,7 @@ function PlayerSeatWidgetControllerTexas:goldsInMainPot(t_playerchips_inpot)
                     function()
                         if (self.PlayerInfo.ComUi.displayObject ~= nil and self.PlayerInfo.ComUi.displayObject.gameObject ~= nil)
                         then
-                            CS.Casinos.CasinosContext.Instance:play("hechip", CS.Casinos._eSoundLayer.LayerNormal)
+                            CS.Casinos.CasinosContext.Instance:Play("hechip", CS.Casinos._eSoundLayer.LayerNormal)
                         end
                         if (self.SeatWidget ~= nil)
                         then

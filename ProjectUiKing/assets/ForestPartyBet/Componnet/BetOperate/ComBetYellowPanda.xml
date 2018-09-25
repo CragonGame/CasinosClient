@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="199,100" initName="ComBetYellowPanda">
-  <displayList>
-    <image id="n7_np4u" name="n7" src="ieud2d" xy="99,0"/>
-    <image id="n8_np4u" name="n8" src="ieud22" xy="123,0" size="52,71"/>
-    <component id="n12_g9bo" name="ComText" src="ieud1y" xy="0,28"/>
-  </displayList>
-</component>

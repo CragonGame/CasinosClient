@@ -26,5 +26,5 @@
     <component id="d6x8t" name="BtnReward.xml" path="/Component/" exported="true"/>
     <image id="d6x8u" name="福利Icon.png" path="/Image/" exported="true"/>
   </resources>
-  <publish name="DesktopMenu" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DeskTopMenu"/>
+  <publish name="DesktopMenu" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DeskTopMenu"/>
 </packageDescription>

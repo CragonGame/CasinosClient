@@ -105,7 +105,7 @@ function DesktopHUiGold:_moveStart()
 
     if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false)
     then
-        CS.Casinos.CasinosContext.Instance:play(self.MoveSound, CS.Casinos._eSoundLayer.LayerReplace)
+        CS.Casinos.CasinosContext.Instance:Play(self.MoveSound, CS.Casinos._eSoundLayer.LayerReplace)
     end
 end
 

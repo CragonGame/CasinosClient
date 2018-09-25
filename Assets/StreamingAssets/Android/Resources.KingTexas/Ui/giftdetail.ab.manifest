@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3348994872
+CRC: 3820554254
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a52cd4c2b009fe95b6c923b67d2aa8f7
+    Hash: 71b41908e360d5f88dd493567ab2a88b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GiftDetail/GiftDetail.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GiftDetail/GiftDetail@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/GiftDetail/GiftDetail_fui.bytes
 Dependencies: []

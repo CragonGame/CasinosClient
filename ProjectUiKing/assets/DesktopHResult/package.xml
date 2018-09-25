@@ -4,5 +4,5 @@
     <component id="fb5j0" name="DesktopHResult.xml" path="/" exported="true"/>
     <component id="wp1hh" name="CoWinPlayer.xml" path="/Component/"/>
   </resources>
-  <publish name="DesktopHResult" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHResult"/>
+  <publish name="DesktopHResult" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHResult"/>
 </packageDescription>

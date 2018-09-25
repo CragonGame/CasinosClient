@@ -248,5 +248,5 @@
     <image id="kd14mg" name="ChatBgRight1.png" path="/Image/" scale="9grid" scale9grid="20,26,5,3"/>
     <component id="h1fymh" name="BtnShare1.xml" path="/Component/Btn/" exported="true"/>
   </resources>
-  <publish name="Common" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Common"/>
+  <publish name="Common" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Common"/>
 </packageDescription>

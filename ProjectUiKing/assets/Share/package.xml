@@ -12,5 +12,5 @@
     <image id="rjau8" name="nv.png" path="/Image/"/>
     <image id="rjau9" name="logo.png" path="/Image/"/>
   </resources>
-  <publish name="Share" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Share"/>
+  <publish name="Share" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Share"/>
 </packageDescription>

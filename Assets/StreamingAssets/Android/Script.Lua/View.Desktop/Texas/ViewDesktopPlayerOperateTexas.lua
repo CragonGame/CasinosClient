@@ -82,7 +82,7 @@ function ViewDesktopPlayerOperateTexas:onCreate()
                     need_getvalidegold = false
                     raise_gold = max_gold
                 end
-                CS.Casinos.CasinosContext.Instance:play("addchip", CS.Casinos._eSoundLayer.LayerReplace)
+                CS.Casinos.CasinosContext.Instance:Play("addchip", CS.Casinos._eSoundLayer.LayerReplace)
                 self:_setCurrentRaiseChip(raise_gold, need_getvalidegold)
             end
     )
@@ -359,7 +359,7 @@ function ViewDesktopPlayerOperateTexas:_setCurrentRaiseChip(current_gold, need_g
     if (self.CurrentRaiseGold == self.DesktopPlayerTexas.PlayerDataDesktop.Stack)
     then
         ViewHelper:setGObjectVisible(false, self.GTextTopRaiseChip)
-        CS.Casinos.CasinosContext.Instance:play("allin", CS.Casinos._eSoundLayer.LayerNormal)
+        CS.Casinos.CasinosContext.Instance:Play("allin", CS.Casinos._eSoundLayer.LayerNormal)
         self.GTextCurrentRaiseChip.text = self.ViewMgr.LanMgr:getLanValue("All-in")
     else
         ViewHelper:setGObjectVisible(true, self.GTextTopRaiseChip)
@@ -456,7 +456,7 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
     then
         self:_resetAutoChooseOperate(nil)
         if self.DesktopPlayerTexas.DesktopTexas.IsSnapshot == false then
-            CS.Casinos.CasinosContext.Instance:play("on_turn", CS.Casinos._eSoundLayer.LayerNormal)
+            CS.Casinos.CasinosContext.Instance:Play("on_turn", CS.Casinos._eSoundLayer.LayerNormal)
         end
         --self.ControllerTurn.selectedIndex = 2
         self.ControllerSelfRaise.selectedIndex = 1

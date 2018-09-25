@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1427354831
+CRC: 547496290
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2ca9c0f213ce80261b45460f374ad88b
+    Hash: bc306457a9b735817e1ea2c413003b2e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,8 +14,7 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchLobby/MatchLobby@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchLobby/MatchLobby@atlas_wb2ec.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchLobby/MatchLobby@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchLobby/MatchLobby.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchLobby/MatchLobby_atlas_wb2ec.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchLobby/MatchLobby_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MatchLobby/MatchLobby_fui.bytes
 Dependencies: []

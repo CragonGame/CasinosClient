@@ -30,5 +30,5 @@
     <component id="donus" name="BtnEnsure.xml" path="/Component/"/>
     <image id="ii4zt" name="36.png" path="/Image/" exported="true"/>
   </resources>
-  <publish name="CreateMatch" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\CreateMatch" extractAlpha="true"/>
+  <publish name="CreateMatch" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\CreateMatch" extractAlpha="true"/>
 </packageDescription>

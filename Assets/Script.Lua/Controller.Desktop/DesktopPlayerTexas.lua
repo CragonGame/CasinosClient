@@ -436,7 +436,7 @@ function DesktopPlayerTexas:playerSitdown(seat_index, stack, state, action)
     self.PlayerDataDesktop.DesktopPlayerState = state
     self.PlayerDataDesktop.PlayerActionType = action
 
-    CS.Casinos.CasinosContext.Instance:play("sit", CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play("sit", CS.Casinos._eSoundLayer.LayerNormal)
     if (self.IsMe)
     then
         self.UiSeatIndex = 4 -- math.floor(self.DesktopTexas.SeatNum / 2)

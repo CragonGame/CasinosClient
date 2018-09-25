@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4197293822
+CRC: 2547344777
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3dd25c67eebf8be7f5136d7334cad960
+    Hash: c59538238e8a6d09537d9725a64520a0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHBetReward/DesktopHBetReward.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHBetReward/DesktopHBetReward@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHBetReward/DesktopHBetReward@atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHBetReward/DesktopHBetReward_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHBetReward/DesktopHBetReward_fui.bytes
 Dependencies: []

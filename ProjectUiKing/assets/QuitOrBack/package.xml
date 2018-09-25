@@ -5,5 +5,5 @@
     <component id="eccy8" name="BtnLogin.xml" path="/Component/"/>
     <image id="v4efc" name="Mote.png" path="/Image/"/>
   </resources>
-  <publish name="QuitOrBack" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\QuitOrBack"/>
+  <publish name="QuitOrBack" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\QuitOrBack"/>
 </packageDescription>

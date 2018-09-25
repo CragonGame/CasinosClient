@@ -4,5 +4,5 @@
     <component id="sd6w0" name="ClubHelp.xml" path="/" exported="true"/>
     <component id="sd6w1" name="ComConten.xml" path="/Component/"/>
   </resources>
-  <publish name="ClubHelp" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\ClubHelp"/>
+  <publish name="ClubHelp" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ClubHelp"/>
 </packageDescription>

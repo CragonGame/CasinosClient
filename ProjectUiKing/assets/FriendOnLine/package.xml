@@ -4,5 +4,5 @@
     <component id="je850" name="FriendOnLine.xml" path="/" exported="true"/>
     <image id="je851" name="PokerView.png" path="/Image/" exported="true"/>
   </resources>
-  <publish name="FriendOnLine" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\FriendOnLine"/>
+  <publish name="FriendOnLine" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\FriendOnLine"/>
 </packageDescription>

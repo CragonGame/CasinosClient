@@ -12,5 +12,5 @@
     <component id="or7lq" name="ComLogo.xml" path="/Component/"/>
     <component id="jyils" name="ComMoteParent.xml" path="/Component/"/>
   </resources>
-  <publish name="Loading" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Loading"/>
+  <publish name="Loading" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Loading"/>
 </packageDescription>

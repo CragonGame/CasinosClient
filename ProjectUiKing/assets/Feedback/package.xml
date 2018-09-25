@@ -4,5 +4,5 @@
     <component id="souu0" name="Feedback.xml" path="/" exported="true"/>
     <component id="souu2" name="ComInput.xml" path="/Component/"/>
   </resources>
-  <publish name="Feedback" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Feedback"/>
+  <publish name="Feedback" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Feedback"/>
 </packageDescription>

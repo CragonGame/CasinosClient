@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="517,56">
-  <displayList>
-    <image id="n0_lxy5" name="n0" src="gp486" xy="0,0"/>
-    <richtext id="n1_lxy5" name="TextSigleBet" xy="77,6" pivot="0.5,0.5" size="105,35" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
-    <richtext id="n3_lxy5" name="TextAllBet" xy="250,6" pivot="0.5,0.5" size="105,35" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
-    <richtext id="n4_lxy5" name="TextCurrentRound" xy="415,6" pivot="0.5,0.5" size="45,35" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
-  </displayList>
-</component>

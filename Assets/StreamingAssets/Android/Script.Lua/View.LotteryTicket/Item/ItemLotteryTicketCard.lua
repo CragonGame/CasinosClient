@@ -54,7 +54,7 @@ function ItemLotteryTicketCard:showCard(card_data)
 			self.TweenerTurnCard = nil
 		end
 	)
-	CS.Casinos.CasinosContext.Instance:play("desk_new_card", CS.Casinos._eSoundLayer.LayerNormal)
+	CS.Casinos.CasinosContext.Instance:Play("desk_new_card", CS.Casinos._eSoundLayer.LayerNormal)
 end
 
 function ItemLotteryTicketCard:resetCard()

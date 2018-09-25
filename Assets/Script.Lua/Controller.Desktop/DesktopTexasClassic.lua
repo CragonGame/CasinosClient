@@ -27,7 +27,7 @@ function DesktopTexasClassic:onDestroy(need_createmainui)
             ui_classicmodel:setLobbyModel()
         end
 
-        CS.Casinos.CasinosContext.Instance:play("MainBg1", CS.Casinos._eSoundLayer.Background)
+        CS.Casinos.CasinosContext.Instance:Play("MainBg1", CS.Casinos._eSoundLayer.Background)
     end
 end
 

@@ -4,5 +4,5 @@
     <component id="pik73" name="Bank.xml" path="/" exported="true"/>
     <component id="x8p04" name="ComOperate.xml" path="/Component/"/>
   </resources>
-  <publish name="Bank" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Bank"/>
+  <publish name="Bank" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Bank"/>
 </packageDescription>

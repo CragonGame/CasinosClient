@@ -86,5 +86,5 @@
     <component id="hrhq6r" name="ComReport.xml" path="/Component/" exported="true"/>
     <component id="s17d6s" name="ComBgAndClose.xml" path="/Component/"/>
   </resources>
-  <publish name="PlayerProfile" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\PlayerProfile"/>
+  <publish name="PlayerProfile" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\PlayerProfile"/>
 </packageDescription>

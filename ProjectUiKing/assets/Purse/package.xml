@@ -37,5 +37,5 @@
     <image id="j1yr1c" name="Logo.png" path="/Image/"/>
     <component id="tjym1d" name="ComOperate.xml" path="/Component/"/>
   </resources>
-  <publish name="Purse" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\Purse"/>
+  <publish name="Purse" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Purse"/>
 </packageDescription>

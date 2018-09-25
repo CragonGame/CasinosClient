@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1705023186
+CRC: 2174309734
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e88d4bd5929604d305c04e03d20f07a5
+    Hash: 8a1ee0828a1e72284594ae8db48c6f35
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MTTGameResult/MTTGameResult@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MTTGameResult/MTTGameResult@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MTTGameResult/MTTGameResult.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MTTGameResult/MTTGameResult_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/MTTGameResult/MTTGameResult_fui.bytes
 Dependencies: []

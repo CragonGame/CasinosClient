@@ -5,5 +5,5 @@
     <component id="s17d1" name="ItemRankAndReward.xml" path="/Component/"/>
     <component id="s17d2" name="ItemApplyReward.xml" path="/Component/"/>
   </resources>
-  <publish name="SnowBallReward" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\SnowBallReward"/>
+  <publish name="SnowBallReward" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\SnowBallReward"/>
 </packageDescription>

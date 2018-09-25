@@ -4,5 +4,5 @@
     <component id="fb5j0" name="DesktopHRewardPot.xml" path="/" exported="true"/>
     <component id="etcz6" name="CoRewardPotPlayerInfo.xml" path="/Component/" exported="true"/>
   </resources>
-  <publish name="DesktopHRewardPot" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHRewardPot"/>
+  <publish name="DesktopHRewardPot" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHRewardPot"/>
 </packageDescription>

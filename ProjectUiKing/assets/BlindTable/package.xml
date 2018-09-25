@@ -4,5 +4,5 @@
     <component id="scf70" name="BlindTable.xml" path="/" exported="true"/>
     <component id="scf71" name="ItemBlind.xml" path="/Component/"/>
   </resources>
-  <publish name="BlindTable" path="E:\Cragon.Casinos.Client\trunk\Casinos.Client\Assets\Resources.KingTexas\PkgFold\Ui\BlindTable"/>
+  <publish name="BlindTable" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\BlindTable"/>
 </packageDescription>

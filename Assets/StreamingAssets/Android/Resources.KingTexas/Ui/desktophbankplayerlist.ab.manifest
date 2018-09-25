@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2843962753
+CRC: 4036239613
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6eeac014cdcbb51c342a85f504c1a37a
+    Hash: 199542d1124f77e4085373162a354012
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHBankPlayerList/DesktopHBankPlayerList@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHBankPlayerList/DesktopHBankPlayerList.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHBankPlayerList/DesktopHBankPlayerList_fui.bytes
 Dependencies: []

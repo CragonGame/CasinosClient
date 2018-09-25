@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="76,76">
-  <displayList>
-    <image id="n2_lxy5" name="n2" src="gp48c" xy="-1,-1"/>
-    <image id="n0_lxy5" name="TimeCircle" src="gp48d" xy="0,0" color="#00ff00" fillMethod="radial360" fillClockwise="false"/>
-    <text id="n1_lxy5" name="TextTm" xy="18,18" size="40,39" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="shrink" singleLine="true" text=""/>
-  </displayList>
-</component>

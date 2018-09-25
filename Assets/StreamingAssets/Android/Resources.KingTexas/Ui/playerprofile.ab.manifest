@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4245985600
+CRC: 3895894526
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: dfc68f9cfae7de5d60b96a7e6bca0f84
+    Hash: 89ac8b40a475c02963e54a8607ae3ca3
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PlayerProfile/PlayerProfile.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PlayerProfile/PlayerProfile@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PlayerProfile/PlayerProfile@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PlayerProfile/PlayerProfile_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PlayerProfile/PlayerProfile_fui.bytes
 Dependencies: []

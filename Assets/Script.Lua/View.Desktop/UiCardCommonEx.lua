@@ -73,7 +73,7 @@ function UiCardCommonEx:show(with_animation, call_back)
                                     )
                                 end
                         )
-                        CS.Casinos.CasinosContext.Instance:play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
+                        CS.Casinos.CasinosContext.Instance:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
                     else
                         CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard, self.GLoaderCard)
                         CS.Casinos.UiHelper.setGObjectVisible(false, self.GImageCardBack)
@@ -100,7 +100,7 @@ function UiCardCommonEx:deal(call_back)
                 end
             end
     )
-    CS.Casinos.CasinosContext.Instance:play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
 end
 
 function UiCardCommonEx:reset(with_ani, call_bak)
@@ -121,7 +121,7 @@ function UiCardCommonEx:reset(with_ani, call_bak)
                 self:_reset()
             end
     )
-    CS.Casinos.CasinosContext.Instance:play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
     self.Card = nil
     self.ResetCallBack = call_bak
 end

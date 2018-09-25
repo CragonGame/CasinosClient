@@ -4,5 +4,5 @@
     <component id="uvmq0" name="ApplySucceed.xml" path="/" exported="true"/>
     <component id="j8ql1" name="ComBgAndClose.xml" path="/Component/"/>
   </resources>
-  <publish name="ApplySuccedd" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\ApplySucceed"/>
+  <publish name="ApplySuccedd" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ApplySucceed"/>
 </packageDescription>

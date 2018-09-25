@@ -4,5 +4,5 @@
     <image id="p9h40" name="AliPay.png" path="/" exported="true"/>
     <image id="p9h42" name="WeChatPay.png" path="/" exported="true"/>
   </resources>
-  <publish name="LanZhAndroid" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\LanZhAndroid"/>
+  <publish name="LanZhAndroid" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\LanZhAndroid"/>
 </packageDescription>

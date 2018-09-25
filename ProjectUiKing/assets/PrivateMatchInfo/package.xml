@@ -11,5 +11,5 @@
     <component id="nhy48" name="BtnDismiss.xml" path="/Component/"/>
     <image id="nhy49" name="UI2_赛事详情-概述_解散按钮.png" path="/Image/"/>
   </resources>
-  <publish name="PrivateMatchInfo" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\PrivateMatchInfo"/>
+  <publish name="PrivateMatchInfo" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\PrivateMatchInfo"/>
 </packageDescription>

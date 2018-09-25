@@ -4,5 +4,5 @@
     <component id="j0ra0" name="CreateDeskTop.xml" path="/" exported="true"/>
     <component id="pm2d1" name="BtnAnte.xml" path="/Component/"/>
   </resources>
-  <publish name="CreateDeskTop" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\CreateDeskTop"/>
+  <publish name="CreateDeskTop" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\CreateDeskTop"/>
 </packageDescription>

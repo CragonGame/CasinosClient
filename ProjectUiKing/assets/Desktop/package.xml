@@ -86,5 +86,5 @@
     <image id="ow3k27p" name="MTTBg.png" path="/Image/" exported="true" scale="" atlas="1"/>
     <image id="ow3k27q" name="MTTDesk.png" path="/Image/" exported="true" scale="" atlas="2"/>
   </resources>
-  <publish name="Desktop" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Desktop"/>
+  <publish name="Desktop" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Desktop"/>
 </packageDescription>

@@ -4,5 +4,5 @@
     <component id="hrhq0" name="EditAddress.xml" path="/" exported="true"/>
     <component id="j3hl1" name="BtnSave.xml" path="/Component/"/>
   </resources>
-  <publish name="EditAddress" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\EditAddress"/>
+  <publish name="EditAddress" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\EditAddress"/>
 </packageDescription>

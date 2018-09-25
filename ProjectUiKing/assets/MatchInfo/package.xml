@@ -18,5 +18,5 @@
     <component id="inauf" name="ComTab.xml" path="/Component/"/>
     <component id="flnpg" name="ComRewardExplain.xml" path="/Component/"/>
   </resources>
-  <publish name="MatchInfo" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\MatchInfo"/>
+  <publish name="MatchInfo" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\MatchInfo"/>
 </packageDescription>

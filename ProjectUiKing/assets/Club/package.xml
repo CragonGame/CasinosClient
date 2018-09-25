@@ -23,5 +23,5 @@
     <image id="qkn2j" name="11.png" path="/Image/"/>
     <image id="qkn2k" name="俱乐部.png" path="/Image/"/>
   </resources>
-  <publish name="Club" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Club" extractAlpha="true"/>
+  <publish name="Club" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Club" extractAlpha="true"/>
 </packageDescription>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="123,99" extention="Button" initName="BtnChat">
-  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
-  <displayList>
-    <image id="n6_q6q3" name="n6" src="q6q3l2" xy="0,0"/>
-    <image id="n4_fy98" name="n4" src="ieuddw" xy="35,25"/>
-  </displayList>
-  <Button/>
-</component>

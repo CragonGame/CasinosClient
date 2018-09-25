@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1834941699
+CRC: 1717432075
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 66f8294d0bed14285a259b102bb69895
+    Hash: f739acb5745d20876ff231dfc696f08a
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHTongPei/DesktopHTongPei@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHTongPei/DesktopHTongPei.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHTongPei/DesktopHTongPei_fui.bytes
 Dependencies: []

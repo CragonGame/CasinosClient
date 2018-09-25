@@ -62,7 +62,7 @@ function DesktopHCard:dealCardToPosThenTranslation(to_pos, move_cardwidth_percen
             end
     )
 
-    CS.Casinos.CasinosContext.Instance:play("desk_new_card", CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play("desk_new_card", CS.Casinos._eSoundLayer.LayerNormal)
 end
 
 function DesktopHCard:dealCardToPosAtFirstTm(card_index, from, to_pos, delay, move_cardwidth_percent)
@@ -81,7 +81,7 @@ function DesktopHCard:dealCardToPosAtFirstTm(card_index, from, to_pos, delay, mo
             end
     )
 
-    CS.Casinos.CasinosContext.Instance:play("desk_new_card", CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play("desk_new_card", CS.Casinos._eSoundLayer.LayerNormal)
 end
 
 function DesktopHCard:dealCardAtPos2(to_pos, move_cardwidth_percent)
@@ -131,7 +131,7 @@ function DesktopHCard:showCard(action)
                     end
 
                     self.GLoaderCard.visible = true
-                    CS.Casinos.CasinosContext.Instance:play(self.ViewDesktopH.UiDesktopHBase:getTurnCardSound(), CS.Casinos._eSoundLayer.LayerNormal)
+                    CS.Casinos.CasinosContext.Instance:Play(self.ViewDesktopH.UiDesktopHBase:getTurnCardSound(), CS.Casinos._eSoundLayer.LayerNormal)
                     action()
                 end
         )
@@ -203,7 +203,7 @@ function DesktopHCard:showCard(action)
                 end
         )
 
-        CS.Casinos.CasinosContext.Instance:play(self.ViewDesktopH.UiDesktopHBase:getTurnCardSound(), CS.Casinos._eSoundLayer.LayerNormal)
+        CS.Casinos.CasinosContext.Instance:Play(self.ViewDesktopH.UiDesktopHBase:getTurnCardSound(), CS.Casinos._eSoundLayer.LayerNormal)
     end
 end
 

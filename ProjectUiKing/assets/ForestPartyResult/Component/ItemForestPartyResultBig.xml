@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="111,122">
-  <displayList>
-    <loader id="n0_xkvh" name="LoaderAnimal" xy="19,0" size="72,94" url="ui://rug9oibjieud11" align="center" vAlign="middle" fill="scale"/>
-    <image id="n1_xkvh" name="n1" src="ieud12" xy="0,94" size="84,27"/>
-    <text id="n2_xkvh" name="TextMultiple" xy="83,93" size="27,28" fontSize="20" color="#fffb8c" bold="true" text="15"/>
-  </displayList>
-</component>

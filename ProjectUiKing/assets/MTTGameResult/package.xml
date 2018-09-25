@@ -28,5 +28,5 @@
     <image id="cvtgp" name="UI2_公用数字_名.png" path="/Image/Num/"/>
     <image id="cvtgq" name="UI2_胜利结算_名次待定.png" path="/Image/"/>
   </resources>
-  <publish name="MTTGameResult" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\MTTGameResult"/>
+  <publish name="MTTGameResult" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\MTTGameResult"/>
 </packageDescription>

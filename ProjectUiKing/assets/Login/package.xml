@@ -33,5 +33,5 @@
     <image id="h9va1m" name="放大镜.png" path="/Image/"/>
     <image id="leuv1p" name="icon-152.jpg" path="/Image/"/>
   </resources>
-  <publish name="Login" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\Login"/>
+  <publish name="Login" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Login"/>
 </packageDescription>

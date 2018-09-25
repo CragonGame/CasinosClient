@@ -315,6 +315,7 @@ function ControllerUCenter:login(request, handler)
     local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
     local headers = self:_genHeader(bytes.Length)
 
+    print(http_url)
     self.WWWLogin = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 

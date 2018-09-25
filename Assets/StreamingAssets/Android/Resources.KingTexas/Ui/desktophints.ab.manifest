@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 116027671
+CRC: 4020971711
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2091111418dbb7fcf2fabe5c969e5308
+    Hash: 3cc7958c01d281282a60913a079ff19d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHints/DesktopHints@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHints/DesktopHints.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHints/DesktopHints@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHints/DesktopHints_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHints/DesktopHints_atlas0.png
 Dependencies: []

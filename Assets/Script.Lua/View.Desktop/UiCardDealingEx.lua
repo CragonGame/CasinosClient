@@ -43,7 +43,7 @@ function UiCardDealingEx:deal(call_back)
     self.TweenerRotate = CS.Casinos.UiDoTweenHelper.TweenRotate(self.GComCard, self.GComCard.rotation, self.RotateTo, self.MoveTime)
     if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false)
     then
-        CS.Casinos.CasinosContext.Instance:play(self.MoveSound, CS.Casinos._eSoundLayer.LayerNormal)
+        CS.Casinos.CasinosContext.Instance:Play(self.MoveSound, CS.Casinos._eSoundLayer.LayerNormal)
     end
 end
 

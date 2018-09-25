@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 203106173
+CRC: 2193903658
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a6b997d9b21b1b0ec000fa06b51a0ced
+    Hash: f43b9dc42e4e037086c6ba94b2996255
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,10 +14,9 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch@atlas3!a.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch@atlas3.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch@atlas0!a.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch_atlas0!a.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch_atlas3!a.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch_atlas3.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/CreateMatch/CreateMatch_atlas0.png
 Dependencies: []

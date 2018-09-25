@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4088819774
+CRC: 1696226765
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 51db6391d2e869d524f8af9f4b6e8710
+    Hash: cd7959b8361b05ae03532c8447c065a6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,7 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopH/DesktopH@atlas0.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopH/DesktopH.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopH/DesktopH@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopH/DesktopH_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopH/DesktopH_atlas0.png
 Dependencies: []

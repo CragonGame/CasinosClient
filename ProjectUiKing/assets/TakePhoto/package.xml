@@ -3,5 +3,5 @@
   <resources>
     <component id="umbb0" name="TakePhoto.xml" path="/" exported="true"/>
   </resources>
-  <publish name="TakePhoto" path="E:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\TakePhoto"/>
+  <publish name="TakePhoto" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\TakePhoto"/>
 </packageDescription>

@@ -52,22 +52,22 @@ function ViewForestParty:onCreate()
     self.TransitionFlashingZongHengSiHai = self.ComZongHengSiHai:GetTransition("TransitionFlashing")
     self.TransitionCountDown:SetHook("3",
 		function()
-			CS.Casinos.CasinosContext.Instance:play("CountDown3", CS.Casinos._eSoundLayer.LayerNormal)
+			CS.Casinos.CasinosContext.Instance:Play("CountDown3", CS.Casinos._eSoundLayer.LayerNormal)
 		end
 	)
     self.TransitionCountDown:SetHook("2",
 		function()
-			CS.Casinos.CasinosContext.Instance:play("CountDown2", CS.Casinos._eSoundLayer.LayerNormal)
+			CS.Casinos.CasinosContext.Instance:Play("CountDown2", CS.Casinos._eSoundLayer.LayerNormal)
 		end
 	) 
     self.TransitionCountDown:SetHook("1",
 		function()
-			CS.Casinos.CasinosContext.Instance:play("CountDown1", CS.Casinos._eSoundLayer.LayerNormal)
+			CS.Casinos.CasinosContext.Instance:Play("CountDown1", CS.Casinos._eSoundLayer.LayerNormal)
 		end
 	)
     self.TransitionCountDown:SetHook("Go", 
 		function()
-			CS.Casinos.CasinosContext.Instance:play("CountDownGo", CS.Casinos._eSoundLayer.LayerNormal)
+			CS.Casinos.CasinosContext.Instance:Play("CountDownGo", CS.Casinos._eSoundLayer.LayerNormal)
 		end
 	)
     self.MoveClipShanDian = self.ComUi:GetChild("MoveClipShanDian").asMovieClip
@@ -186,7 +186,7 @@ function ViewForestParty:InitForestParty()
         local left_time = ControllerForestParty.BetLeftTime
         self:ForestPartyCommon:StartCoutDown()
         self:changeAllAnimalsState(false)
-        CS.Casinos.CasinosContext.Instance:play(self.BetBgMusic, CS.Casinos._eSoundLayer.Background)
+        CS.Casinos.CasinosContext.Instance:Play(self.BetBgMusic, CS.Casinos._eSoundLayer.Background)
 	else if(game_state == CS.Casinos._eForestPartyState.GameEnd)
 	then
 		self:gameEnd()
@@ -194,7 +194,7 @@ function ViewForestParty:InitForestParty()
 end
 
 function ViewForestParty:bet()
-	CS.Casinos.CasinosContext.Instance:play(self.BetBgMusic, CS.Casinos._eSoundLayer.Background)
+	CS.Casinos.CasinosContext.Instance:Play(self.BetBgMusic, CS.Casinos._eSoundLayer.Background)
     self.BtnBetPanel.enabled = true
     self.ImageBetPanel.grayed = false
     self.ForestPartyCommon:StartCoutDown()
@@ -203,7 +203,7 @@ function ViewForestParty:bet()
 end
 
 function ViewForestParty:gameEnd()
-	CS.Casinos.CasinosContext.Instance:play(self.RotateMusic, CS.Casinos._eSoundLayer.Background)
+	CS.Casinos.CasinosContext.Instance:Play(self.RotateMusic, CS.Casinos._eSoundLayer.Background)
     self.BtnBetPanel.enabled = false
     self.ImageBetPanel.grayed = true
     self:changeAllAnimalsState(true)
@@ -398,12 +398,12 @@ function ViewForestParty:showNextLamp(lamp)
     local animal_index = lamp.AnimalIndex
     local color_type = lamp.BlockColor
     local game_result = ControllerForestParty.GameResult
-    CS.Casinos.CasinosContext.Instance:play("ForestPartyLottery" .. game_result.ResultLotteryType.ToString(), CS.Casinos._eSoundLayer.Background)
+    CS.Casinos.CasinosContext.Instance:Play("ForestPartyLottery" .. game_result.ResultLotteryType.ToString(), CS.Casinos._eSoundLayer.Background)
     if (game_result.ResultLotteryType == CS.Casinos.LotteryType.Normal ||
         game_result.ResultLotteryType == CS.Casinos.LotteryType.CaiJin ||
         game_result.ResultLotteryType == CS.Casinos.LotteryType.FanBei)
 	then
-		CS.Casinos.CasinosContext.Instance:play("ForestParty" .. lamp.BlockColor.ToString() .. lamp.AnimalType.ToString(), CS.Casinos._eSoundLayer.LayerNormal)
+		CS.Casinos.CasinosContext.Instance:Play("ForestParty" .. lamp.BlockColor.ToString() .. lamp.AnimalType.ToString(), CS.Casinos._eSoundLayer.LayerNormal)
         if (game_result.ResultLotteryType == CS.Casinos.LotteryType.Normal)
 		then
 			self.ArrayTransitionYezi[CS.Casinos.BlockColor.__CastFrom(color_type)]:Play(6, 0, nil)

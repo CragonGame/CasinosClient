@@ -4,5 +4,5 @@
     <component id="oypw0" name="DesktopHTongSha.xml" path="/" exported="true"/>
     <image id="oypw1" name="TongShaBg.png" path="/Image/" exported="true"/>
   </resources>
-  <publish name="DesktopHTongSha" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\DesktopHTongSha"/>
+  <publish name="DesktopHTongSha" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopHTongSha"/>
 </packageDescription>

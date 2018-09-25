@@ -30,7 +30,7 @@ function ItemForestPartyBetOperate:onClickComBetOperate()
 	end
     ev.BetIndex = self.BetId
 	view_mgr:sendEv(ev)
-    CS.Casinos.CasinosContext.Instance:play(self.BetSound, CS.Casinos._eSoundLayer.LayerNormal)
+    CS.Casinos.CasinosContext.Instance:Play(self.BetSound, CS.Casinos._eSoundLayer.LayerNormal)
 end
 
 function ItemForestPartyBetOperate:UpdataBetMultiple(multiple)

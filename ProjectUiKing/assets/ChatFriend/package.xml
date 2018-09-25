@@ -12,5 +12,5 @@
     <image id="qeucz" name="ItemBgChoose.png" path="/Image/"/>
     <component id="vzxh10" name="Btnsend.xml" path="/Component/"/>
   </resources>
-  <publish name="ChatFriend" path="G:\CasinosClient\Assets\Resources.KingTexas\PkgFold\Ui\ChatFriend"/>
+  <publish name="ChatFriend" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ChatFriend"/>
 </packageDescription>

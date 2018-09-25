@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2634951776
+CRC: 127520937
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7f71c467577b9e2beb1f1ffa6d4865ce
+    Hash: b6e7a29eebd05c87f5289ae59a15f385
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PayType/PayType.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PayType/PayType@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/PayType/PayType_fui.bytes
 Dependencies: []

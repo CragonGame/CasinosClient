@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 102062878
+CRC: 939462616
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 14b2e04c5a2c9a7256eebad8d120cefe
+    Hash: d1ff3c96ae5e11027407130151f373b0
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/QuitOrBack/QuitOrBack.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/QuitOrBack/QuitOrBack@sprites.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/QuitOrBack/QuitOrBack_fui.bytes
 Dependencies: []

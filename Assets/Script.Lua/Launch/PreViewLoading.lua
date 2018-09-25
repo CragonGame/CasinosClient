@@ -6,7 +6,7 @@ PreViewLoading = PreViewBase:new()
 ---------------------------------------
 function PreViewLoading:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     self.ViewMgr = nil
     self.GoUi = nil
@@ -16,8 +16,10 @@ function PreViewLoading:new(o)
     self.InitDepth = nil
     self.ViewKey = nil
     self.ShowSPine = true
+    self.AbLoadingMarry = nil
+    self.AbDenglong = nil
 
-    if(self.Instance==nil)
+    if (self.Instance == nil)
     then
         self.Instance = o
     end
@@ -28,7 +30,7 @@ end
 ---------------------------------------
 function PreViewLoading:onCreate()
     local pro = self.ComUi:GetChild("Progress")
-    if(pro ~= nil)
+    if (pro ~= nil)
     then
         self.GProgressBar = pro.asProgress
         self.GProgressBar.max = 100
@@ -36,7 +38,7 @@ function PreViewLoading:onCreate()
     end
 
     local text = self.ComUi:GetChild("Tips")
-    if(text ~= nil)
+    if (text ~= nil)
     then
         self.GTextFieldTips = text.asTextField
     end
@@ -51,15 +53,15 @@ function PreViewLoading:onCreate()
     local image_mote = com_bg:GetChild("ImageMote").asImage
     local p_helper = ParticleHelper:new(nil)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    if(self.ShowSPine)
+    if (self.ShowSPine)
     then
         image_mote.visible = false
-        local ab_loadingmarry = p_helper:GetPreSpine("LoadingMarry")
-        local atlas = ab_loadingmarry:LoadAsset("Mary_Loading.atlas")
-        local texture = ab_loadingmarry:LoadAsset("Mary_Loading")
-        local json = ab_loadingmarry:LoadAsset("Mary_LoadingJson")
+        self.AbLoadingMarry = p_helper:GetPreSpine("LoadingMarry")
+        local atlas = self.AbLoadingMarry:LoadAsset("Mary_Loading.atlas")
+        local texture = self.AbLoadingMarry:LoadAsset("Mary_Loading")
+        local json = self.AbLoadingMarry:LoadAsset("Mary_LoadingJson")
 
-        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas,texture,json,"Spine/Skeleton",314)
+        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton", 314)
         --local moteParent = self.ComUi:GetChild("MoteParent").asCom
         self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
         --self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
@@ -76,17 +78,17 @@ function PreViewLoading:onCreate()
         image_mote.visible = true
     end
     local bg = com_bg:GetChild("Bg")
-    self:makeUiBgFiteScreen(1066,640, self.ComUi.width, self.ComUi.height, bg.width, bg.height,bg,2,{self.HolderMote})
+    self:makeUiBgFiteScreen(1066, 640, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, 2, { self.HolderMote })
 
-    local ab_denglong = p_helper:GetPreSpine("DengLong")
-    local atlas1 = ab_denglong:LoadAsset("denglong.atlas")
-    local texture1 = ab_denglong:LoadAsset("denglong")
-    local json1 = ab_denglong:LoadAsset("denglongJson")
+    self.AbDenglong = p_helper:GetPreSpine("DengLong")
+    local atlas1 = self.AbDenglong:LoadAsset("denglong.atlas")
+    local texture1 = self.AbDenglong:LoadAsset("denglong")
+    local json1 = self.AbDenglong:LoadAsset("denglongJson")
 
-    self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1,texture1,json1,"Spine/Skeleton",314)
+    self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton", 314)
     local denglongParent = self.ComUi:GetChild("DengLongParent").asCom
     self.DengLongAnim.transform.position = denglongParent.displayObject.gameObject.transform.position
-    self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(1.1,1.1,1.1)
+    self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(1.1, 1.1, 1.1)
     self.DengLongAnim.transform.gameObject.layer = denglongParent.displayObject.gameObject.layer
     self.DengLongAnim:Initialize(false)
     self.DengLongAnim.loop = true
@@ -98,16 +100,26 @@ end
 
 ---------------------------------------
 function PreViewLoading:onDestroy()
-    if(self.ShowSPine)
+    if (self.ShowSPine)
     then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
-    if (self.IsAuto  == true)
+
+    if (self.AbLoadingMarry ~= nil) then
+        self.AbLoadingMarry:Unload(true)
+        self.AbLoadingMarry = nil
+    end
+
+    if (self.AbDenglong ~= nil) then
+        self.AbDenglong:Unload(true)
+        self.AbDenglong = nil
+    end
+
+    if (self.IsAuto == true)
     then
         --CS.FairyGUI.Timers.inst:Remove(self._playProgress)
     end
-
     --CS.FairyGUI.Timers.inst:Remove(self._updateTips)
 end
 
@@ -148,7 +160,7 @@ function PreViewLoading.fireManualLoadingProgress(progress, loading_info)
         else
             if (OnFinished ~= nil)
             then
-               -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
+                -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
                 OnFinished()
             end
         end
@@ -208,18 +220,18 @@ function PreViewLoading.setTip(tip)
         local app_version = "应用版本"
         local data_versionex = "数据版本"
         local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
-        if(lan == "English")
+        if (lan == "English")
         then
             app_version = "AppVersion"
             data_versionex = "DataVersion"
         else
-            if(lan == "Chinese" or lan == "ChineseSimplified")
+            if (lan == "Chinese" or lan == "ChineseSimplified")
             then
                 app_version = "应用版本"
                 data_versionex = "数据版本"
             end
         end
-        version_text.text = string.format("%s: %s,  %s: %s",app_version, CS.UnityEngine.Application.version,data_versionex, data_version)
+        version_text.text = string.format("%s: %s,  %s: %s", app_version, CS.UnityEngine.Application.version, data_versionex, data_version)
     end
 end
 
@@ -227,7 +239,7 @@ end
 function PreViewLoading.setTips(list_tips)
     local loading = PreViewLoading:new(nil)
     loading.ListRandomTips = {}
-    for k,v in pairs(list_tips) do
+    for k, v in pairs(list_tips) do
         loading.ListRandomTips[k] = v
     end
 end
@@ -235,17 +247,17 @@ end
 ---------------------------------------
 function PreViewLoading._updateTips(param)
     local loading = PreViewLoading:new(nil)
-    local tips_key,tips_value = nil
+    local tips_key, tips_value = nil
     local count = loading.PreViewMgr:GetTableCount(loading.ListRandomTips)
 
     if (count > 0)
     then
-        tips_key,tips_value = loading.PreViewMgr:GetAndRemoveTableFirstEle(loading.ListRandomTips)
+        tips_key, tips_value = loading.PreViewMgr:GetAndRemoveTableFirstEle(loading.ListRandomTips)
     end
 
     if ((tips_key ~= nil and string.len(tips_key) > 0))
     then
-        if(loading.GTextFieldTips ~= nil)
+        if (loading.GTextFieldTips ~= nil)
         then
             loading.GTextFieldTips.text = tips_key
         end
@@ -261,7 +273,7 @@ function PreViewLoading._playProgress(param)
         if (loading.GProgressBar.value <= loading.GProgressBar.max)
         then
             local value = loading.GProgressBar.value
-            value = value+2
+            value = value + 2
             loading.GProgressBar.value = value
         else
             --CS.FairyGUI.Timers.inst.Remove(loading._playProgress)
@@ -275,7 +287,7 @@ function PreViewLoading._playProgress(param)
 end
 
 ---------------------------------------
-function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode,t_anchor_point)
+function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode, t_anchor_point)
     local w = logic_width / design_width
     local h = logic_height / design_height
     if (w >= h)
@@ -290,7 +302,7 @@ function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_wi
                 for i, v in pairs(t_anchor_point) do
                     local p = v.xy
                     local p_y = p.y
-                    local p_p = CS.Casinos.LuaHelper.GetVector2(p.x,p_y - p_y/2 * w)
+                    local p_p = CS.Casinos.LuaHelper.GetVector2(p.x, p_y - p_y / 2 * w)
                     v.xy = p_p
                 end
             end
@@ -300,7 +312,7 @@ function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_wi
                 for i, v in pairs(t_anchor_point) do
                     local p = v.xy
                     local p_y = p.y
-                    local p_p = CS.Casinos.LuaHelper.GetVector2(p.x,p_y + p_y / 2 * (w-h) / 2)
+                    local p_p = CS.Casinos.LuaHelper.GetVector2(p.x, p_y + p_y / 2 * (w - h) / 2)
                     v.xy = p_p
                 end
             end
@@ -310,7 +322,7 @@ function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_wi
                 for i, v in pairs(t_anchor_point) do
                     local p = v.xy
                     local p_y = p.y
-                    local p_p = CS.Casinos.LuaHelper.GetVector2(p.x,p_y + p_y/2 * w)
+                    local p_p = CS.Casinos.LuaHelper.GetVector2(p.x, p_y + p_y / 2 * w)
                     v.xy = p_p
                 end
             end
@@ -325,7 +337,7 @@ function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_wi
             for i, v in pairs(t_anchor_point) do
                 local p = v.xy
                 local p_y = p.y
-                local p_p = CS.Casinos.LuaHelper.GetVector2(p.x,p_y + p_y / 2 * (h-w) / 2)
+                local p_p = CS.Casinos.LuaHelper.GetVector2(p.x, p_y + p_y / 2 * (h - w) / 2)
                 v.xy = p_p
             end
         end
@@ -336,10 +348,10 @@ end
 PreViewLoadingFactory = PreViewFactory:new()
 
 ---------------------------------------
-function PreViewLoadingFactory:new(o,ui_package_name,ui_component_name,
-                                   ui_layer,is_single,fit_screen)
+function PreViewLoadingFactory:new(o, ui_package_name, ui_component_name,
+                                   ui_layer, is_single, fit_screen)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     self.PackageName = ui_package_name
     self.ComponentName = ui_component_name

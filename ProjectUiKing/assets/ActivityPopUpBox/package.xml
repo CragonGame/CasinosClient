@@ -4,5 +4,5 @@
     <component id="lacn0" name="ActivityPopUpBox.xml" path="/" exported="true"/>
     <component id="s17d1" name="ComBgAndClose.xml" path="/Component/"/>
   </resources>
-  <publish name="ActivityPopUpBox" path="E:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\ActivityPopUpBox"/>
+  <publish name="ActivityPopUpBox" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ActivityPopUpBox"/>
 </packageDescription>

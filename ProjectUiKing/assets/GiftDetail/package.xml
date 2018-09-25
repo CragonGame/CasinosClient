@@ -5,5 +5,5 @@
     <component id="nmmo2" name="BtnBuy.xml" path="/Component/"/>
     <component id="nmmo3" name="BtnBuy1.xml" path="/Component/"/>
   </resources>
-  <publish name="GiftDetail" path="G:\CasinosClient\Assets\Resources.KingNigeria\PkgFold\Ui\GiftDetail"/>
+  <publish name="GiftDetail" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\GiftDetail"/>
 </packageDescription>

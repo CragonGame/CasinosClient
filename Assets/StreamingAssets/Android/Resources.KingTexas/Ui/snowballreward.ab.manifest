@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1835793785
+CRC: 3134845065
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 892b6b639fce792a71baf4a42ceda6da
+    Hash: 491bb12aa6a9b1c653db8fbaf99e2472
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,6 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/SnowBallReward/SnowBallReward@sprites.bytes
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/SnowBallReward/SnowBallReward.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/SnowBallReward/SnowBallReward_fui.bytes
 Dependencies: []
