@@ -341,7 +341,9 @@ function ViewLogin:SetVersionAndServerStateInfo(bundle_version, data_version, se
         if string.find(GatewayIp,"dev") then
             en = " Dev"
         end
-        self.GTextVersion.text = string.format(version_tips, bundle_version, data_version) .. en
+        local version_info = string.format(version_tips, bundle_version, data_version) .. en
+        print(version_info)
+        self.GTextVersion.text = version_info
     end
 
     if (self.GTextServerState ~= nil)

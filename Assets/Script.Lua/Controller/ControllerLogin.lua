@@ -248,7 +248,7 @@ function ControllerLogin:onHandleEv(ev)
             end
         elseif (ev.EventName == "EvUiRequestGetPhoneCode")
         then
-            --获取验证码
+            -- 获取验证码
             local phone = ev.Phone
             local request = GetPhoneVerificationCodeRequest:new(nil)
             request.Phone = phone

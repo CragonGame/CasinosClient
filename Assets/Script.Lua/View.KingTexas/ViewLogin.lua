@@ -1,7 +1,10 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 登录界面
 
+---------------------------------------
 ViewLogin = ViewBase:new()
 
+---------------------------------------
 function ViewLogin:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -19,7 +22,10 @@ function ViewLogin:new(o)
     return o
 end
 
+---------------------------------------
 function ViewLogin:onCreate()
+    print('ViewLogin:OnCreate()')
+
     self.ViewMgr:bindEvListener("EvUiChooseCountry", self)
 
     self:_switchController("LoginState", "LoginMain")
@@ -270,8 +276,14 @@ function ViewLogin:onCreate()
 
     ViewHelper:setGObjectVisible(show_combo, self.ComboChooseUCenter)
     ViewHelper:setGObjectVisible(show_combo, self.ComboChooseGateWay)
+
+    -- 显示版本信息
+    local version_bundle = CS.UnityEngine.Application.version
+    local version_data = CS.UnityEngine.PlayerPrefs.GetString(data_version_key)
+    self:SetVersionAndServerStateInfo(version_bundle, version_data, ServerState, ServerStateInfo)
 end
 
+---------------------------------------
 function ViewLogin:onClickUCenter()
     local ev = self.ViewMgr:getEv("EvUiChooseUCenter")
     if (ev == nil)
@@ -282,6 +294,7 @@ function ViewLogin:onClickUCenter()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewLogin:onClickGateWay()
     local ev = self.ViewMgr:getEv("EvUiChooseGateWay")
     if (ev == nil)
@@ -292,6 +305,7 @@ function ViewLogin:onClickGateWay()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewLogin:onDestroy()
     if (self.CasinosContext.NeedHideClientUi == false)
     then
@@ -300,6 +314,7 @@ function ViewLogin:onDestroy()
     CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
 end
 
+---------------------------------------
 function ViewLogin:onUpdate(tm)
     if self.UiRegister ~= nil then
         self.UiRegister:OnUpdate(tm)
@@ -309,6 +324,7 @@ function ViewLogin:onUpdate(tm)
     end
 end
 
+---------------------------------------
 function ViewLogin:onHandleEv(ev)
     if (ev ~= nil)
     then
@@ -325,11 +341,13 @@ function ViewLogin:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ViewLogin:_switchController(controller_name, page_name)
     local controller = self.ComUi:GetController(controller_name)
     controller:SetSelectedPage(page_name)
 end
 
+---------------------------------------
 function ViewLogin:SetVersionAndServerStateInfo(bundle_version, data_version, server_is_invalid, serverstate_info)
     if (self.GTextVersion ~= nil)
     then
@@ -338,7 +356,9 @@ function ViewLogin:SetVersionAndServerStateInfo(bundle_version, data_version, se
         if string.find(GatewayIp,"dev") then
             en = " Dev"
         end
-        self.GTextVersion.text = string.format(version_tips, bundle_version, data_version) .. en
+        local version_info = string.format(version_tips, bundle_version, data_version) .. en
+        print(version_info)
+        self.GTextVersion.text = version_info
     end
 
     if (self.GTextServerState ~= nil)
@@ -348,6 +368,7 @@ function ViewLogin:SetVersionAndServerStateInfo(bundle_version, data_version, se
     end
 end
 
+---------------------------------------
 function ViewLogin:SetAccPwd(acc, pwd)
     self.TextCountryCode.text = self.UiChooseCountryCode.KeyAndCodeFormat
     self.GTextInputAccLogin.text = acc
@@ -355,6 +376,7 @@ function ViewLogin:SetAccPwd(acc, pwd)
     self:_checkloginInput()
 end
 
+---------------------------------------
 function ViewLogin:Switch2DlgLogin(acc, pwd)
     if (self:_hasAgreeAgreement() == false)
     then
@@ -364,6 +386,7 @@ function ViewLogin:Switch2DlgLogin(acc, pwd)
     self:SetAccPwd(acc, pwd)
 end
 
+---------------------------------------
 function ViewLogin:Switch2RegisterCode()
     if (self:_hasAgreeAgreement() == false)
     then
@@ -372,6 +395,7 @@ function ViewLogin:Switch2RegisterCode()
     self:_switchController("LoginState", "RegisterCode")
 end
 
+---------------------------------------
 function ViewLogin:Switch2ResetPwd()
     if (self:_hasAgreeAgreement() == false)
     then
@@ -380,6 +404,7 @@ function ViewLogin:Switch2ResetPwd()
     self:_switchController("LoginState", "ResetPwd")
 end
 
+---------------------------------------
 function ViewLogin:Switch2ResetPwdCode()
     if (self:_hasAgreeAgreement() == false)
     then
@@ -388,11 +413,13 @@ function ViewLogin:Switch2ResetPwdCode()
     self:_switchController("LoginState", "ResetPwdCode")
 end
 
+---------------------------------------
 function ViewLogin:Switch2Logining()
     self:_switchController("LoginState", "Logining")
     self.Tips.text = self.ViewMgr.LanMgr:getLanValue("Logining")
 end
 
+---------------------------------------
 -- 点击登录按钮
 function ViewLogin:_onClickBtnLogin()
     if (self:_hasAgreeAgreement() == false)
@@ -412,6 +439,7 @@ function ViewLogin:_onClickBtnLogin()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 -- 游客Access
 function ViewLogin:_onClickBtnGuestAccess()
     if (self:_hasAgreeAgreement() == false)
@@ -438,6 +466,7 @@ function ViewLogin:_onClickBtnGuestAccess()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewLogin:_onClickWeiXin()
     if (self:_hasAgreeAgreement() == false)
     then
@@ -463,10 +492,12 @@ function ViewLogin:_onClickWeiXin()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewLogin:_onClickBtnForgetPwd()
     self:Switch2ResetPwd()
 end
 
+---------------------------------------
 -- 切换到注册对话框
 function ViewLogin:_onClickBtnShowRegister()
     if (self:_hasAgreeAgreement() == false)
@@ -476,6 +507,7 @@ function ViewLogin:_onClickBtnShowRegister()
     self:_switchController("LoginState", "Register")
 end
 
+---------------------------------------
 -- 返回登录对话框
 function ViewLogin:_onClickBtnReturn()
     self:_switchController("LoginState", "Login")
@@ -495,10 +527,12 @@ function ViewLogin:_switchLoginState()
     self:_switchController("LoginState", "Login")
 end
 
+---------------------------------------
 function ViewLogin:_onClickBtnAgreement()
     self:_switchController("LoginState", "Agreement")
 end
 
+---------------------------------------
 function ViewLogin:_checkloginInput()
     if (self.GTextInputAccLogin == nil or self.GTextInputPwdLogin == nil)
     then
@@ -516,6 +550,7 @@ function ViewLogin:_checkloginInput()
     end
 end
 
+---------------------------------------
 function ViewLogin:_onClickBtnAgree()
     if (self.AgreeAgreement == true)
     then
@@ -525,14 +560,17 @@ function ViewLogin:_onClickBtnAgree()
     end
 end
 
+---------------------------------------
 function ViewLogin:_onClickComLink()
     self.ViewMgr:createView("About")
 end
 
+---------------------------------------
 function ViewLogin:_switch2LoginMain()
     self:_switchController("LoginState", "LoginMain")
 end
 
+---------------------------------------
 function ViewLogin:_hasAgreeAgreement()
     if (self.AgreeAgreement == true)
     then
@@ -543,8 +581,10 @@ function ViewLogin:_hasAgreeAgreement()
     end
 end
 
+---------------------------------------
 ViewLoginFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewLoginFactory:new(o, ui_package_name, ui_component_name,
                               ui_layer, is_single, fit_screen)
     o = o or {}
@@ -558,6 +598,7 @@ function ViewLoginFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewLoginFactory:createView()
     local view = ViewLogin:new(nil)
     return view

@@ -1,9 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 登录界面，选择手机国际区号的Ui类
 
+---------------------------------------
 UiChooseCountryCode = {}
 
-function UiChooseCountryCode:new(view,default_code)
+---------------------------------------
+function UiChooseCountryCode:new(view, default_code)
     local o = {}
     setmetatable(o, self)
     self.__index = self
@@ -11,7 +13,7 @@ function UiChooseCountryCode:new(view,default_code)
     local com_choose = view.ComUi:GetChild("ComCountryCodeChoose").asCom
     o.ControllerChooseCountryCode = view.ComUi:GetController("ControllerChooseCountryCode")
     o.TextSearchCountry = com_choose:GetChild("TextSearchCountry").asTextInput
-    o.TextSearchCountry.promptText = string.format("[color=#999999]%s[/color]",view.ViewMgr.LanMgr:getLanValue("SearchCountry"))
+    o.TextSearchCountry.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:getLanValue("SearchCountry"))
     o.TextSearchCountry.onChanged:Set(
             function()
                 o:_checkInput()
@@ -37,8 +39,8 @@ function UiChooseCountryCode:new(view,default_code)
     else
         if CS.Casinos.CasinosContext.Instance.IsEditor == false then
             c_k = CS.NativeFun.getCountryCode()-- 获取当前手机的当前国际区号
-        --else
-        --    c_k = "CN"
+            --else
+            --    c_k = "CN"
         end
     end
 
@@ -46,12 +48,13 @@ function UiChooseCountryCode:new(view,default_code)
         c_k = default_code
     end
 
-    o:setCurrentCode(c_k,true)
+    o:setCurrentCode(c_k, true)
 
     return o
 end
 
-function UiChooseCountryCode:setCurrentCode(key,set_self)
+---------------------------------------
+function UiChooseCountryCode:setCurrentCode(key, set_self)
     self.CountryKey = key
     local v = PhoneCountryCode[key]
     if v == nil then
@@ -71,19 +74,22 @@ function UiChooseCountryCode:setCurrentCode(key,set_self)
     end
 end
 
+---------------------------------------
 function UiChooseCountryCode:show()
     self.ControllerChooseCountryCode.selectedIndex = 1
 end
 
+---------------------------------------
 function UiChooseCountryCode:_onClickBtnCancel()
     self.ControllerChooseCountryCode.selectedIndex = 0
 end
 
+---------------------------------------
 function UiChooseCountryCode:_checkInput()
     local country = self.TextSearchCountry.text
-
 end
 
+---------------------------------------
 function UiChooseCountryCode:createListItem(list_item)
     self.ListCountryCode:RemoveChildrenToPool()
     local l = #list_item
