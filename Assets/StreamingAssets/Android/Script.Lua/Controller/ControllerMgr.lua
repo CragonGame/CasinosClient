@@ -40,16 +40,16 @@ function ControllerMgr:OnDestroy()
 end
 
 ---------------------------------------
-function ControllerMgr:OnUpdate(tm)
-    --ControllerMgr.LuaHelper:CloneTableData(ControllerMgr.TableController,ControllerMgr.TableControllerUpdate)
-    for k, v in pairs(self.TableController) do
-        if (v ~= nil)
-        then
-            v:onUpdate(tm)
-        end
-    end
-    --ControllerMgr.TableControllerUpdate = {}
-end
+--function ControllerMgr:OnUpdate(tm)
+--    --ControllerMgr.LuaHelper:CloneTableData(ControllerMgr.TableController,ControllerMgr.TableControllerUpdate)
+--    for k, v in pairs(self.TableController) do
+--        if (v ~= nil)
+--        then
+--            v:onUpdate(tm)
+--        end
+--    end
+--    --ControllerMgr.TableControllerUpdate = {}
+--end
 
 ---------------------------------------
 function ControllerMgr:CreatePlayerControllers(player_data, guid)
