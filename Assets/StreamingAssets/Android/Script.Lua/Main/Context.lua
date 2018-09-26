@@ -330,7 +330,6 @@ function Context:_nextLaunchStep()
 
         self:DoString("UiChipShowHelper")
         self.UiChipShowHelper = UiChipShowHelper:new(nil)
-        --self:DoString("ParticleHelper")
 
         self:DoString("ViewMgr")
         self.ViewMgr = ViewMgr:new(nil)
@@ -357,7 +356,7 @@ function Context:_nextLaunchStep()
 
         -- 销毁Launch相关资源
         self.Launch:Finish()
-        
+
         -- 加载登录界面
         self.ControllerMgr:CreateController("UCenter", nil, nil)
         self.ControllerMgr:CreateController("Login", nil, nil)
@@ -1056,11 +1055,23 @@ function Context:_regTbData()
 end
 
 ---------------------------------------
+-- 计算BotIcon Url
+function Context:CalcBotIconUrl(is_small, icon)
+    if (is_small == true) then
+        return BotIconDomain .. 'boticonsmall' .. icon .. '.jpg'
+    else
+        return BotIconDomain .. 'boticon' .. icon .. '.jpg'
+    end
+end
+
+---------------------------------------
 -- 字符串分隔方法
 function string:split(sep)
     local sep, fields = sep or ":", {}
     local pattern = string.format("([^%s]+)", sep)
-    self:gsub(pattern, function (c) fields[#fields + 1] = c end)
+    self:gsub(pattern, function(c)
+        fields[#fields + 1] = c
+    end)
     return fields
 end
 

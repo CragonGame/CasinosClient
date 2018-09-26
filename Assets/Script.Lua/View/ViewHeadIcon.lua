@@ -202,7 +202,7 @@ function ViewHeadIcon:setPlayerIcon(icon, account_id)
     self.GLoaderPlayerIcon.icon = nil
     if (icon ~= nil and string.len(icon) > 0)
     then
-        self.GLoaderPlayerIcon.icon = CS.Casinos.HeadIconMgr.getIconURL(true, icon)
+        self.GLoaderPlayerIcon.icon = Context:CalcBotIconUrl(true, icon)
     else
         if (account_id ~= nil and string.len(account_id) > 0)
         then

@@ -259,7 +259,7 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     if (ui_desk == nil)
     then
         ui_desk = view_mgr:createView("DesktopTexas")
-        CS.Casinos.CasinosContext.Instance:stopAllSceneSound()
+        CS.Casinos.CasinosContext.Instance:StopAllSceneSound()
     end
 
     self.AllSeat = {}

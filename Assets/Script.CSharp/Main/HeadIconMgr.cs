@@ -9,6 +9,7 @@ namespace Casinos
 
     public class HeadIconMgr
     {
+        //-------------------------------------------------------------------------
         public const string mDefaultIconLocalPath = "Ui/Texture/PlayerShadow";
         Dictionary<string, Texture> MapHeadIconResources { get; set; }
         Dictionary<string, string> MapLoadingIcon { get; set; }
@@ -109,21 +110,6 @@ namespace Casinos
 
             return icon_name;
         }
-
-        //-------------------------------------------------------------------------
-        //public static string getIconURL(bool is_small, string icon_name)
-        //{
-        //    CasinosContext.Instance.ClearSB();
-
-        //    var sb = CasinosContext.Instance.SB;
-        //    sb.Append(BotIconDomain);
-        //    if (is_small) sb.Append(mBotIconSmall);
-        //    else sb.Append(mBotIcon);
-        //    sb.Append(icon_name);
-        //    sb.Append(".jpg");
-
-        //    return sb.ToString();
-        //}
 
         //-------------------------------------------------------------------------
         public void destroyCurrentResources()

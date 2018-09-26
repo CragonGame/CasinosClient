@@ -462,7 +462,7 @@ function ControllerDeskH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_bet
         self.IsBankPlayer = true
     end
 
-    self.CasinosContext:stopAllSceneSound()
+    self.CasinosContext:StopAllSceneSound()
     self.ControllerPlayer:destroyMainUi()
     local ui_desktoph = self.ControllerMgr.ViewMgr:getView("DesktopH")
     if (ui_desktoph == nil)

@@ -10,7 +10,8 @@ ControllerMgr = {
     EventSys = nil,
     TableControllerFactory = {},
     TableController = {},
-    TableControllerUpdate = {}
+    TableControllerUpdate = {},
+    Context = Context
 }
 
 ---------------------------------------
@@ -31,8 +32,8 @@ function ControllerMgr:OnCreate()
     print("ControllerMgr:onCreate")
     self.EventSys = EventSys:new(nil)
     self.ViewMgr = ViewMgr:new(nil)
-    Context:DoString("ControllerBase")
-    Context:DoString("ControllerFactory")
+    self.Context:DoString("ControllerBase")
+    self.Context:DoString("ControllerFactory")
 end
 
 ---------------------------------------

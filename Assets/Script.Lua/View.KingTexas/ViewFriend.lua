@@ -16,7 +16,7 @@ function ViewFriend:new(o)
 end
 
 function ViewFriend:onCreate()
-    ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("Friend"))
+    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Friend"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
@@ -135,7 +135,7 @@ function ViewFriend:onHandleEv(ev)
     elseif (ev.EventName == "EvEntityFriendGoldChange")
     then
         local friend_guid = ev.friend_guid
-        local friend_gold =ev.current_gold
+        local friend_gold = ev.current_gold
         if (self.CurrentFriendInfo ~= nil and
                 friend_guid == self.CurrentFriendInfo.PlayerInfoCommon.PlayerGuid)
         then
@@ -370,7 +370,7 @@ function ViewFriend:rendererItemFriend(index, item)
     then
         local friend_info = self.ListPlayerInfoFriend[index + 1]
         local com = CS.Casinos.LuaHelper.GObjectCastToGCom(item)
-        local friend_item = ItemShowFriendSimple:new(nil, com,self)
+        local friend_item = ItemShowFriendSimple:new(nil, com, self)
         if (self.CurrentFriendInfo == nil)
         then
             self.CurrentFriendInfo = friend_info
@@ -395,7 +395,7 @@ function ViewFriend:rendererItemFriendRecommend(index, item)
     then
         local friend_info = self.ListPlayerInfoFriendRecommend[index + 1]
         local com = CS.Casinos.LuaHelper.GObjectCastToGCom(item)
-        local friend_item = ItemShowFriendSimple:new(nil, com,self)
+        local friend_item = ItemShowFriendSimple:new(nil, com, self)
         if (self.CurrentFriendRemommendInfo == nil)
         then
             self.CurrentFriendRemommendInfo = friend_info
@@ -491,10 +491,10 @@ function ViewShowFriendDetail:new(o, com_friend, is_friend_detail)
     o.ControllerActor = o.ViewMgr.ControllerMgr:GetController("Actor")
     o.GComReportPlayer = com_friend:GetChild("ComReportPlayer").asCom
     local list_report = o.GComReportPlayer:GetChild("ContentList").asList
-    for key,value in pairs(ReportPlayerType)do
+    for key, value in pairs(ReportPlayerType) do
         local com_report = list_report:AddItemFromPool().asCom
-        local item = ItemReportPlayerOperate:new(nil,com_report,o)
-        item:setReportType(value,et_guid)
+        local item = ItemReportPlayerOperate:new(nil, com_report, o)
+        item:setReportType(value, et_guid)
     end
     return o
 end
@@ -614,13 +614,13 @@ function ViewShowFriendDetail:onClickCommonHeadIcon()
     local icon_name = self.CurrentFriendInfo.PlayerInfoCommon.IconName
     if (icon_name ~= nil and icon_name ~= "")
     then
-        CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_name .. "_Big", CS.Casinos.HeadIconMgr.getIconURL(false, icon_name), icon_name, nil,
+        CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_name .. "_Big", Context:CalcBotIconUrl(false, icon_name), icon_name, nil,
                 function(ex, tick)
                     ViewHelper:UiEndWaiting()
                     if (ex ~= nil)
                     then
                         local ui_iconbig = self.ViewMgr:createView("HeadIconBig")
-                        ex = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex,true)
+                        ex = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
                         ui_iconbig:setIcon(ex)
                     end
                 end
@@ -634,15 +634,13 @@ function ViewShowFriendDetail:onClickCommonHeadIcon()
                     if (ex ~= nil)
                     then
                         local ui_iconbig = self.ViewMgr:createView("HeadIconBig")
-                        ex = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex,true)
+                        ex = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
                         ui_iconbig:setIcon(ex)
                     end
                 end
         )
     end
 end
-
-
 
 function ViewShowFriendDetail:onClickBtnJoin()
     if (self.IsFriendDetail == false)
@@ -734,7 +732,7 @@ function ViewShowFriendDetail:onClickAddFriend()
 end
 
 function ViewShowFriendDetail:onClickReport()
-    if(self.GComReportPlayer.visible == true)
+    if (self.GComReportPlayer.visible == true)
     then
         self:HideComReportPlayer()
     else
@@ -749,7 +747,6 @@ end
 function ViewShowFriendDetail:ShowComReportPlayer()
     self.GComReportPlayer.visible = true
 end
-
 
 ViewFriendFactory = ViewFactory:new()
 

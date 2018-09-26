@@ -208,10 +208,11 @@ function ControllerLogin:onHandleEv(ev)
             local remeber_pwd = ev.remeber_pwd
             self.RemeberPwd = remeber_pwd
             self.Phone = ev.phone
-
+            -- todo，还原点击登录时，检测更新的功能
             --MainC:LoadConfig(true, function(bo)
             --    self:_clickCheckDataCallBack(bo)
             --end)
+            self:_clickCheckDataCallBack(false)
         elseif (ev.EventName == "EvUiLoginClickBtnRegister")
         then
             if (self.ControllerUCenter.WWWRegister ~= null)
@@ -220,11 +221,8 @@ function ControllerLogin:onHandleEv(ev)
                 ViewHelper:UiShowInfoFailed(info)
             else
                 local acc = ev.AccountName
-                --print(acc)
                 local pwd = ev.Password
-                --print(pwd)
                 local super_pwd = ev.SuperPassword
-                --print(super_pwd)
                 local remeber_pwd = ev.remeber_pwd
                 self.Password = pwd
                 self.RemeberPwd = remeber_pwd
@@ -253,7 +251,7 @@ function ControllerLogin:onHandleEv(ev)
             local phone = ev.Phone
             local request = GetPhoneVerificationCodeRequest:new(nil)
             request.Phone = phone
-            self.ControllerUCenter:getPhoneVerificationCode(request,
+            self.ControllerUCenter:RequestGetPhoneVerificationCode(request,
                     function(status, response, error)
                         self:onUCenterPhoneVerificationCode(status, response, error)
                     end)
@@ -283,7 +281,7 @@ function ControllerLogin:onHandleEv(ev)
                 print(request.accountId)
                 request.token = self.Token
                 print(request.token)
-                self.ControllerUCenter:wechatBind(request,
+                self.ControllerUCenter:RequestWechatBind(request,
                         function(status, response, error)
                             self:onUCenterBindWeChat(status, response, error)
                         end)
@@ -309,7 +307,7 @@ function ControllerLogin:onHandleEv(ev)
                 request.openId = open_id
                 request.accountId = self.AccId
                 request.token = self.Token
-                self.ControllerUCenter:wechatUnbind(request,
+                self.ControllerUCenter:RequestWechatUnbind(request,
                         function(status, response, error)
                             self:onUCenterUnbindWeChat(status, response, error)
                         end)
@@ -351,7 +349,7 @@ function ControllerLogin:requestGuestAccess()
     guest_accessinfo.Device = self:getDeviceInfo()
     --print("requestGuestAccess_" .. guest_accessinfo.Device.Id)
     -- print(guest_accessinfo.AppId.."  "..guest_accessinfo.Device.Name)
-    self.ControllerUCenter:guestAccess(guest_accessinfo,
+    self.ControllerUCenter:RequestGuestAccess(guest_accessinfo,
             function(status, response, error)
                 self:onUCenterGuestAccess(status, response, error)
             end)
@@ -361,7 +359,7 @@ end
 ---------------------------------------
 function ControllerLogin:requestRegister(register_acc_data)
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Registering"))
-    self.ControllerUCenter:register(register_acc_data,
+    self.ControllerUCenter:RequestRegister(register_acc_data,
             function(status, response, error)
                 self:onUCenterRegister(status, response, error)
             end)
@@ -394,7 +392,7 @@ function ControllerLogin:resetPwd(phone, phone_code, new_pwd)
     resetPwd_info.Email = ""
     resetPwd_info.NewPassword = new_pwd
     resetPwd_info.PhoneVerificationCode = phone_code
-    self.ControllerUCenter:resetPasswordWithPhone(resetPwd_info,
+    self.ControllerUCenter:RequestResetPasswordWithPhone(resetPwd_info,
             function(status, response, error)
                 self:onUCenterResetPasswordWithPhone(status, response, error)
             end)
@@ -408,7 +406,7 @@ function ControllerLogin:checkIdCard(id_card, name)
     r.CardNo = id_card
     r.Token = self.Token
     r.RealName = name
-    self.ControllerUCenter:checkCardAndName(r,
+    self.ControllerUCenter:RequestCheckCardAndName(r,
             function(status, response, error)
                 self:onUCenterCheckIdCard(status, response, error)
             end)
@@ -873,11 +871,9 @@ function ControllerLogin:_init(is_init)
                 self.RemeberPwd = true
                 self.Phone = a_info_last_login.AccName
                 self.Password = pwd
-                print("auto requestLogin")
                 self:requestLogin("", pwd, a_info_last_login.Phone, "", "")
             elseif (a_info_last_login.LoginType == 1)
             then
-                print("auto requestGuestAccess")
                 self:requestGuestAccess()
             elseif (a_info_last_login.LoginType == 2)
             then
@@ -886,8 +882,7 @@ function ControllerLogin:_init(is_init)
                 r.AppId = CS.Casinos.CasinosContext.Instance.Config.WeChatAppId
                 r.OpenId = a_info_last_login.AccName
                 r.Device = self:getDeviceInfo()
-                print("auto wechatAutoLogin")
-                self.ControllerUCenter:wechatAutoLogin(r,
+                self.ControllerUCenter:RequestWechatAutoLogin(r,
                         function(status, response, error)
                             self:onUCenterLogin(status, response, error)
                         end)
