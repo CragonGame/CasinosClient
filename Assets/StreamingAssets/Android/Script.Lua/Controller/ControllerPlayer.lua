@@ -60,10 +60,14 @@ function ControllerPlayer:onCreate()
     self.GetOnlinePlayerNumTimeElapsed = 0
     self.GetOtherPlayerInfoTicket = 1
     local login = self.ControllerMgr:GetController("Login")
+
     login:canDestroyViewLogin()
+
     self.OnLineReward = OnLineReward:new(nil, self.ControllerMgr.ViewMgr)
     self.TimingReward = TimingReward:new(nil, self.ControllerMgr.ViewMgr)
+
     self:createMainUi()
+
     self.QueneHotActivity = {}
     self:CheckNeedShowHotActivity()
 
@@ -71,10 +75,12 @@ function ControllerPlayer:onCreate()
     then
         self:initStoreItem()
     end
+
     self.ControllerMgr.RPC = self.ControllerMgr.RPC
     self.MC = CommonMethodType
     self.ControllerMgr.RPC:RPC0(self.MC.PlayerClientInitDoneRequest)
     self:requestGetOnlinePlayerNum()
+
     local c_login = self.ControllerMgr:GetController("Login")
     local player_play_state = c_login:getClientEnterWorldNotify().player_play_state
     if (player_play_state ~= nil)
@@ -87,12 +93,14 @@ function ControllerPlayer:onCreate()
             self.ControllerMgr.RPC:RPC0(self.MC.DesktopHRequestSnapshot)
         end
     end
+
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityPlayerInitDone")
     if (ev == nil)
     then
         ev = EvEntityPlayerInitDone:new(nil)
     end
     self.ControllerMgr.ViewMgr:sendEv(ev)
+
     -- 请求获取收货地址响应
     self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerRequestGetAddressResult, function(result, address)
         self:s2cPlayerRequestGetAddressResult(result, address)
@@ -198,7 +206,7 @@ function ControllerPlayer:onDestroy()
     self.ViewMgr:unbindEvListener(self)
     self:destroyMainUi()
     self.ControllerMgr.ViewMgr:destroyAllView()
-    self.CasinosContext:stopAllSceneSound()
+    self.CasinosContext:StopAllSceneSound()
 end
 
 ---------------------------------------
@@ -742,7 +750,7 @@ end
 function ControllerPlayer:createMainUi()
     local index = math.random(1, 2)
     local bgm = string.format("MainBg%s", index)
-    self.CasinosContext:play(bgm, CS.Casinos._eSoundLayer.Background)
+    self.CasinosContext:Play(bgm, CS.Casinos._eSoundLayer.Background)
     local view_main = self.ControllerMgr.ViewMgr:createView("Main")
     view_main:setPlayerInfo()
     view_main:setOnlineNum(self.OnlinePlayerNum)

@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 与ControllerPlayer对应，响应福利按钮消息（ViewDesktop也响应福利消息）
 -- 好友列表
 -- 推荐好友列表
@@ -5,8 +6,10 @@
 -- 3个主按钮(粒子特效)，右下方一排功能按钮
 -- 父层小红点处理，首次查询+后续消息响应(响应小红点相关的业务消息)
 
+---------------------------------------
 ViewMain = ViewBase:new()
 
+---------------------------------------
 function ViewMain:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -24,6 +27,7 @@ function ViewMain:new(o)
     return o
 end
 
+---------------------------------------
 function ViewMain:onCreate()
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
@@ -309,7 +313,7 @@ function ViewMain:onCreate()
     )
     self.TransitionShowMore = self.ComUi:GetTransition("TansitionShowComMore")
     self.GTextPlayerNum = self.ComUi:GetChild("TextPlayerNum").asTextField
-    ViewHelper:setGObjectVisible(false,self.GTextPlayerNum)
+    ViewHelper:setGObjectVisible(false, self.GTextPlayerNum)
     self.GListFriend = self.ComUi:GetChild("ListFriend").asList
     self.GListFriend:SetVirtual()
     self.GListFriend.itemRenderer = function(index, item)
@@ -377,12 +381,10 @@ function ViewMain:onCreate()
     if (self.CasinosContext.NeedHideClientUi == false)
     then
         image_bg.visible = false
-        local abTextAtlas = p_helper:GetSpine("Spine/MainMarry/mary.atlas.ab")
-        local atlas = abTextAtlas:LoadAsset("Mary.atlas")
-        local abtexture = p_helper:GetSpine("Spine/MainMarry/mary.ab")
-        local texture = abtexture:LoadAsset("Mary")
-        local abjson = p_helper:GetSpine("Spine/MainMarry/maryjson.ab")
-        local json = abjson:LoadAsset("MaryJson")
+        local ab_mainmarry = p_helper:GetSpine("Spine/mainmarry.ab")
+        local atlas = ab_mainmarry:LoadAsset("Mary.atlas")
+        local texture = ab_mainmarry:LoadAsset("Mary")
+        local json = ab_mainmarry:LoadAsset("MaryJson")
 
         self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton", 314)
         --local moteParent = self.ComUi:GetChild("MoteParent").asCom
@@ -405,7 +407,7 @@ function ViewMain:onCreate()
     local bg = self.ComUi:GetChild("Bg")
     if (bg ~= nil)
     then
-        ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height,bg,BgAttachMode.Center)
+        ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
 
     --self.ComHeadIconCenter = self.ComUi:GetChild("ComPosEnd").asCom
@@ -451,9 +453,11 @@ function ViewMain:onCreate()
     self:setHaveFeedback()
 end
 
+---------------------------------------
 function ViewMain:onUpdate(tm)
 end
 
+---------------------------------------
 function ViewMain:onDestroy()
     if (self.CasinosContext.NeedHideClientUi == false)
     then
@@ -466,10 +470,12 @@ function ViewMain:onDestroy()
     self.ViewMgr:destroyView(view_shootingtext)
 end
 
+---------------------------------------
 function ViewMain:Close()
     self.GTransitionShow:PlayReverse()
 end
 
+---------------------------------------
 function ViewMain:onHandleEv(ev)
     if (ev ~= nil)
     then
@@ -620,6 +626,7 @@ function ViewMain:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ViewMain:updateLotteryTickTm(tm)
     if (tm > 0)
     then
@@ -629,23 +636,28 @@ function ViewMain:updateLotteryTickTm(tm)
     end
 end
 
+---------------------------------------
 function ViewMain:setPlayerInfo()
     local name = self.ControllerActor.PropNickName:get()
     local gold_acc = self.ControllerActor.PropGoldAcc:get()
     local diamond = self.ControllerActor.PropDiamond:get()
-    self.UiPlayerInfoSelf:setPlayerInfo(name,
-            UiChipShowHelper:getGoldShowStr(gold_acc, self.ViewMgr.LanMgr.LanBase, true, 2),
-            UiChipShowHelper:getGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase, true, 2),
-            self.ControllerActor.PropIcon:get(), self.ControllerActor.PropAccountId:get(), self.ControllerActor.PropVIPLevel:get(),
-            true)
+
+    local str_goldacc = UiChipShowHelper:getGoldShowStr(gold_acc, self.ViewMgr.LanMgr.LanBase, true, 2)
+    local str_diamond = UiChipShowHelper:getGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase, true, 2)
+    local icon = self.ControllerActor.PropIcon:get()
+    local acc_id = self.ControllerActor.PropAccountId:get()
+    local vip_level = self.ControllerActor.PropVIPLevel:get()
+    self.UiPlayerInfoSelf:setPlayerInfo(name, str_goldacc, str_diamond, icon, acc_id, vip_level, true)
 end
 
+---------------------------------------
 function ViewMain:setOnlineNum(num)
     local online_player = self.ViewMgr.LanMgr:getLanValue("OnlinePlayer")
     local tip = self.CasinosContext:AppendStrWithSB(tostring(num), " ", online_player)
     self.GTextPlayerNum.text = tip
 end
 
+---------------------------------------
 function ViewMain:setFriendInfo(map_friend)
     self.ListFriendInfo = {}
     self.MapFriend = {}
@@ -706,11 +718,13 @@ function ViewMain:setFriendInfo(map_friend)
     self.GListFriend.numItems = #self.ListFriendInfo
 end
 
+---------------------------------------
 function ViewMain:setNewChatCount(chat_count)
     self.NewFriendChatCount = chat_count
     self:setNewRecord()
 end
 
+---------------------------------------
 function ViewMain:setRecommandFriendInfo(list_friend)
     self.GLoaderWaiting.visible = false
     self.ListFriendInfoRecommend = {}
@@ -720,6 +734,7 @@ function ViewMain:setRecommandFriendInfo(list_friend)
     self.GListRecommend.numItems = #self.ListFriendInfoRecommend
 end
 
+---------------------------------------
 function ViewMain:setCurrentFriendInfo(friend_item)
     self.CurrentFriendItem = friend_item
     local item_ico = ""
@@ -740,6 +755,7 @@ function ViewMain:setCurrentFriendInfo(friend_item)
             self.CurrentFriendItem.PlayerInfoMore.OnlineState == PlayerOnlineState.Online)
 end
 
+---------------------------------------
 function ViewMain:setLotteryTicketInfo(state, left_tm)
     local tips = ""
     if (state == LotteryTicketStateEnum.Bet)
@@ -751,6 +767,7 @@ function ViewMain:setLotteryTicketInfo(state, left_tm)
     self.GTextLotteryTicketTips.text = tips
 end
 
+---------------------------------------
 function ViewMain:setNewRecord()
     local have_newMail = false
     if (self.ControllerIM:haveNewMail())
@@ -768,7 +785,7 @@ function ViewMain:setNewRecord()
             self.TransitionNewMail:Play()
         end
 
-        self.CasinosContext:play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
+        self.CasinosContext:Play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
     end
 
     local have_newMsg = false
@@ -787,10 +804,11 @@ function ViewMain:setNewRecord()
         then
             self.TransitionNewMsg:Play()
         end
-        self.CasinosContext:play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
+        self.CasinosContext:Play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
     end
 end
 
+---------------------------------------
 function ViewMain:setNewReward()
     local have_newreward = false
     if (self.CanGetOnLineReward or self.CanGetTimingReward)
@@ -810,6 +828,7 @@ function ViewMain:setNewReward()
     end
 end
 
+---------------------------------------
 function ViewMain:setHaveFeedback()
     local have = self.ControllerIM.IMFeedback.HaveNewMsg
     if (have == false)
@@ -825,6 +844,7 @@ function ViewMain:setHaveFeedback()
     self:haveMoreTips()
 end
 
+---------------------------------------
 function ViewMain:setNewItem()
     local have = self.ControllerBag.HaveNewItem
     if (have == false)
@@ -840,6 +860,7 @@ function ViewMain:setNewItem()
     self:haveMoreTips()
 end
 
+---------------------------------------
 function ViewMain:haveMoreTips()
     local have_msg = self.ControllerIM.IMFeedback.HaveNewMsg
     local have_item = self.ControllerBag.HaveNewItem
@@ -855,6 +876,7 @@ function ViewMain:haveMoreTips()
     end
 end
 
+---------------------------------------
 function ViewMain:onClickComForestParty()
     local ev = self.ViewMgr:getEv("EvUiForestPartyEnterDesktop")
     if (ev == nil)
@@ -863,6 +885,7 @@ function ViewMain:onClickComForestParty()
     end
 end
 
+---------------------------------------
 function ViewMain:onClickRecommendFriend(ev)
     local item_friend_recommend = nil
     local sender = CS.Casinos.LuaHelper.EventDispatcherCastToGComponent(ev.sender)
@@ -883,6 +906,7 @@ function ViewMain:onClickRecommendFriend(ev)
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewMain:onClickBtnLotteryTicket()
     local ev = self.ViewMgr:getEv("EvEntityRequestGetLotteryTicketData")
     if (ev == nil)
@@ -893,6 +917,7 @@ function ViewMain:onClickBtnLotteryTicket()
     self.ViewMgr:createView("LotteryTicket")
 end
 
+---------------------------------------
 function ViewMain:onClickFriendIcon(ev)
     local item_friend = nil
     local sender = CS.Casinos.LuaHelper.EventDispatcherCastToGComponent(ev.sender)
@@ -910,6 +935,7 @@ function ViewMain:onClickFriendIcon(ev)
     self:setCurrentFriendInfo(friend_info)
 end
 
+---------------------------------------
 function ViewMain:onClickComPlayerInfoCurrentFriend()
     local is_recommand = false
 
@@ -929,10 +955,12 @@ function ViewMain:onClickComPlayerInfoCurrentFriend()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewMain:onClickComPlayerInfoSelf()
     local player_info = self.ViewMgr:createView("PlayerInfo")
 end
 
+---------------------------------------
 function ViewMain:onClickBtnShop()
     local ev = self.ViewMgr:getEv("EvUiClickShop")
     if (ev == nil)
@@ -942,10 +970,12 @@ function ViewMain:onClickBtnShop()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewMain:onClickBtnPurse()
     self.ViewMgr:createView("Purse")
 end
 
+---------------------------------------
 function ViewMain:onClickBtnFriend()
     local ev = self.ViewMgr:getEv("EvUiClickFriend")
     if (ev == nil)
@@ -955,10 +985,12 @@ function ViewMain:onClickBtnFriend()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewMain:onClickBtnMail()
     self.ViewMgr:createView("Mail")
 end
 
+---------------------------------------
 function ViewMain:onClickBtnDeskTop()
     self:hideMote()
     self.GTransitionShow:PlayReverse(
@@ -969,6 +1001,7 @@ function ViewMain:onClickBtnDeskTop()
     )
 end
 
+---------------------------------------
 function ViewMain:onClickBtnDesktopH()
     self:hideMote()
     self.GTransitionShow:PlayReverse(
@@ -984,6 +1017,7 @@ function ViewMain:onClickBtnDesktopH()
     )
 end
 
+---------------------------------------
 function ViewMain:onClickBtnMatch()
     self:hideMote()
     self.GTransitionShow:PlayReverse(
@@ -991,9 +1025,9 @@ function ViewMain:onClickBtnMatch()
                 self.ViewMgr:createView("MatchLobby")
             end
     )
-
 end
 
+---------------------------------------
 function ViewMain:onClickBtnCircleOfCardFriends()
     self:hideMote()
     self.GTransitionShow:PlayReverse(
@@ -1003,6 +1037,7 @@ function ViewMain:onClickBtnCircleOfCardFriends()
     )
 end
 
+---------------------------------------
 function ViewMain:onClickBtnRanking()
     local view_ranking = self.ViewMgr:getView("Ranking")
     if (view_ranking == nil)
@@ -1013,6 +1048,7 @@ function ViewMain:onClickBtnRanking()
     end
 end
 
+---------------------------------------
 function ViewMain:onClickBtnMore()
     local index = self.ControllerMoreBtn.selectedIndex
     if (index == 0)
@@ -1027,6 +1063,7 @@ function ViewMain:onClickBtnMore()
     end
 end
 
+---------------------------------------
 function ViewMain:onClickBtnSet()
     local view_edit = self.ViewMgr:getView("Edit")
     if (view_edit == nil)
@@ -1037,14 +1074,17 @@ function ViewMain:onClickBtnSet()
     end
 end
 
+---------------------------------------
 function ViewMain:onClickBtnGoldTree()
     self.ViewMgr:createView("GoldTree")
 end
 
+---------------------------------------
 function ViewMain:onClickBtnWa()
     ViewHelper:UiShowInfoSuccess("施工中，敬请期待")
 end
 
+---------------------------------------
 function ViewMain:onClickBtnChat()
     self.ViewMgr:createView("Bag")
     local ev = self.ViewMgr:getEv("EvOpenBag")
@@ -1056,6 +1096,7 @@ function ViewMain:onClickBtnChat()
     self:setNewItem()
 end
 
+---------------------------------------
 function ViewMain:onClickBtnChatFriend()
     local ev = self.ViewMgr:getEv("EvUiClickChatmsg")
     if (ev == nil)
@@ -1065,18 +1106,22 @@ function ViewMain:onClickBtnChatFriend()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewMain:onClickBtnBank()
     self.ViewMgr:createView("Bank")
 end
 
+---------------------------------------
 function ViewMain:onClickBtnFeedback()
     ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("Testing"))
 end
 
+---------------------------------------
 function ViewMain:onClickComRechargeFirst()
     self.ViewMgr:createView("RechargeFirst")
 end
 
+---------------------------------------
 function ViewMain:rendererFriend(index, item)
     local l = #self.ListFriendInfo
     if (l > index)
@@ -1098,6 +1143,7 @@ function ViewMain:rendererFriend(index, item)
     end
 end
 
+---------------------------------------
 function ViewMain:rendererFriendRecommend(index, item)
     if (#self.ListFriendInfoRecommend > index)
     then
@@ -1112,6 +1158,7 @@ function ViewMain:rendererFriendRecommend(index, item)
     end
 end
 
+---------------------------------------
 function ViewMain:refreshCurrentFriendInfo(player_info)
     if (player_info ~= nil)
     then
@@ -1124,10 +1171,12 @@ function ViewMain:refreshCurrentFriendInfo(player_info)
     end
 end
 
+---------------------------------------
 function ViewMain:onClickBtnActivity()
     self.ViewMgr:createView("ActivityCenter")
 end
 
+---------------------------------------
 function ViewMain:hideMote()
     if (self.CasinosContext.NeedHideClientUi == false)
     then
@@ -1135,16 +1184,18 @@ function ViewMain:hideMote()
     end
 end
 
+---------------------------------------
 function ViewMain:ShowGetChipEffect()
     --local view_getChipEffect = self.ViewMgr:createView("GetChipEffect")
     --local pos = self.ComUi:TransformPoint(CS.UnityEngine.Vector2(self.ComHeadIconCenter.position.x,self.ComHeadIconCenter.position.y),view_getChipEffect.ComUi)
     --view_getChipEffect:ShowEffect(nil,pos)
 end
 
+---------------------------------------
 ViewMainFactory = ViewFactory:new()
 
-function ViewMainFactory:new(o, ui_package_name, ui_component_name,
-                             ui_layer, is_single, fit_screen)
+---------------------------------------
+function ViewMainFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -1156,6 +1207,7 @@ function ViewMainFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewMainFactory:createView()
     local view = ViewMain:new(nil)
     return view

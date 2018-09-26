@@ -168,30 +168,30 @@ function ControllerLogin:onDestroy()
 end
 
 ---------------------------------------
-function ControllerLogin:onUpdate(tm)
-    if (self.RequestThirdPartyLogin)
-    then
-        self.RequestThirdPartyLogin = false
-        if (CS.Casinos.CasinosContext.Instance.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat)
-        then
-            CS.Casinos.CasinosContext.Instance:setNativeOperate(1)
-            CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat,
-                    CS.Casinos.CasinosContext.Instance.Config.WeChatState, "Login")
-        end
-    end
-
-    if self.AutoLogin then
-        self.AutoLoginTm = self.AutoLoginTm + tm
-        if self.AutoLoginTm >= 5 then
-            self.AutoLoginTm = 0
-            self.AutoLogin = false
-            local view_login = self.ViewMgr:getView("Login")
-            if view_login ~= nil then
-                view_login:_switch2LoginMain()
-            end
-        end
-    end
-end
+--function ControllerLogin:onUpdate(tm)
+--    if (self.RequestThirdPartyLogin)
+--    then
+--        self.RequestThirdPartyLogin = false
+--        if (CS.Casinos.CasinosContext.Instance.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat)
+--        then
+--            CS.Casinos.CasinosContext.Instance:setNativeOperate(1)
+--            CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat,
+--                    CS.Casinos.CasinosContext.Instance.Config.WeChatState, "Login")
+--        end
+--    end
+--
+--    if self.AutoLogin then
+--        self.AutoLoginTm = self.AutoLoginTm + tm
+--        if self.AutoLoginTm >= 5 then
+--            self.AutoLoginTm = 0
+--            self.AutoLogin = false
+--            local view_login = self.ViewMgr:getView("Login")
+--            if view_login ~= nil then
+--                view_login:_switch2LoginMain()
+--            end
+--        end
+--    end
+--end
 
 ---------------------------------------
 function ControllerLogin:onHandleEv(ev)
@@ -264,17 +264,17 @@ function ControllerLogin:onHandleEv(ev)
             self.Phone = ev.phone
             self:resetPwd(ev.formatphone, phone_code, new_pwd)
         elseif (ev.EventName == "EvUiChooseUCenter") then
-            CS.Casinos.CasinosContext.Instance.UserConfig.Current.UCenterDomain = ev.ucenter
+            UCenterDomain = ev.ucenter
             self.ControllerUCenter.UCenterDomain = ev.ucenter
         elseif (ev.EventName == "EvUiChooseGateWay") then
-            CS.Casinos.CasinosContext.Instance.UserConfig.Current.GatewayIp = ev.gateway
+            GatewayIp = ev.gateway
         elseif (ev.EventName == "EvUiLoginSuccessEx") then
             if self.BindingWeChat == false then
-                self:weChatLogin(ev.token, CS.Casinos.CasinosContext.Instance.Config.WeChatAppId)
+                self:weChatLogin(ev.token, WeChatAppId)
             else
                 print("AccountWeChatBindRequest")
                 local request = AccountWeChatBindRequest:new(nil)
-                request.ucenterAppId = CS.Casinos.CasinosContext.Instance.Config.AppId
+                request.ucenterAppId = AppId
                 print(request.ucenterAppId)
                 request.code = ev.token
                 print(request.code)
@@ -326,18 +326,19 @@ function ControllerLogin:requestLogin(acc, pwd, phone, email, phone_verification
     CS.Casinos.CasinosContext.Instance.LoginType = 0
     self.Password = pwd
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
-    local request = AccountLoginInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.AccountLoginInfo()
+
+    local request = AccountLoginInfo:new(nil)
     request.AccountName = acc
     request.Phone = phone
     request.Email = email
     request.Password = pwd
     request.PhoneVerificationCode = phone_verification_code
     request.Device = self:getDeviceInfo()
-    self.ControllerUCenter:login(request,
+    self.ControllerUCenter:RequestLogin(request,
             function(status, response, error)
                 self:onUCenterLogin(status, response, error)
-            end)
-    --CS.Casinos.CasinosContext.Instance.WrapMgr.WrapClientUCenter:requestLogin(request)
+            end
+    )
 end
 
 ---------------------------------------
@@ -520,9 +521,7 @@ function ControllerLogin:onUCenterLogin(status, response, error)
         -- DataEye登陆
         -- CoApp.CoDataEye.login(Acc, AccId);
         CS.DataEye.login(self.Acc .. "_" .. self.AccId)
-        c.NetBridge:connectBase(
-                c.UserConfig.Current.GatewayIp,
-                c.UserConfig.Current.GatewayPort)
+        c.NetBridge:connectBase(GatewayIp, GatewayPort)
     else
         if (error ~= nil)
         then
@@ -691,6 +690,7 @@ end
 ---------------------------------------
 function ControllerLogin:OnAccountGatewayConnected()
     print("OnAccountGatewayConnected")
+
     local login_request = ClientLoginAppRequest:new(nil)
     login_request.acc_id = self.AccId
     login_request.acc_name = self.Acc
@@ -701,11 +701,11 @@ function ControllerLogin:OnAccountGatewayConnected()
     then
         nick_name = "ac" .. CS.UnityEngine.Random.Range(100000, 999999)
     end
+
     nick_name = ViewHelper:subStrToTargetLength(nick_name, 9)
     login_request.nick_name = nick_name
-    local channel_name = CS.Casinos.CasinosContext.Instance:GetChannelName()
-    login_request.channel_id = channel_name
-    login_request.platform = CS.Casinos.CasinosContext.Instance:getPlatformName(true)
+    login_request.channel_id = CS.Casinos.CasinosContext.Instance.Config.Channel
+    login_request.platform = CS.Casinos.CasinosContext.Instance.Config.Platform
     self.ControllerMgr.RPC:RPC1(CommonMethodType.AccountLoginAppRequest, login_request:getData4Pack())
 end
 
@@ -739,8 +739,7 @@ function ControllerLogin:OnAccountEnterWorldResponse(enterworld_notify1)
     local enterworld_notify = ClientEnterWorldNotify:new(nil)
     enterworld_notify:setData(enterworld_notify1)
 
-    if (enterworld_notify.result ~= ProtocolResult.Success
-            or enterworld_notify.player_data == nil)
+    if (enterworld_notify.result ~= ProtocolResult.Success or enterworld_notify.player_data == nil)
     then
         -- 进入游戏世界失败，则断开连接
         local s = self.ControllerMgr.LanMgr:getLanValue("EnterGameFailed")
@@ -806,14 +805,14 @@ end
 
 ---------------------------------------
 function ControllerLogin:OnSocketClose()
-    ControllerLogin.ControllerMgr:DestroyPlayerControllers()
-    ControllerLogin:_init(false)
-    if (ControllerLogin.ShowKickOutInfo)
-    then
-        ControllerLogin.ShowKickOutInfo = false
-        local info = ControllerLogin.ControllerMgr.LanMgr:getLanValue("AlreadyLogin")
-        ViewHelper:UiShowInfoFailed(info)
-    end
+    --ControllerLogin.ControllerMgr:DestroyPlayerControllers()
+    --ControllerLogin:_init(false)
+    --if (ControllerLogin.ShowKickOutInfo)
+    --then
+    --    ControllerLogin.ShowKickOutInfo = false
+    --    local info = ControllerLogin.ControllerMgr.LanMgr:getLanValue("AlreadyLogin")
+    --    ViewHelper:UiShowInfoFailed(info)
+    --end
 end
 
 ---------------------------------------

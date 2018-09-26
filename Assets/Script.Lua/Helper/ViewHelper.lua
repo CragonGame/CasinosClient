@@ -180,7 +180,6 @@ function ViewHelper:subStrToTargetLength(str, target_length)
     then
         str = string.sub(str, 0, target_length)
     end
-
     return str
 end
 
@@ -265,7 +264,7 @@ function ViewHelper:PopUi(comui, title)
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade:SetPivot(0.5, 0.5)
     com_shade:SetScale(scale.x * (1 / proportion), scale.y * (1 / proportion))
-    comui:TweenScale(scale, tween_time):SetEase(CS.DG.Tweening.Ease.OutBack)
+    comui:TweenScale(scale, tween_time):SetEase(CS.FairyGUI.EaseType.BackOut)
     if (title ~= nil)
     then
         local text_title = comui:GetChild("TextTitle").asTextField

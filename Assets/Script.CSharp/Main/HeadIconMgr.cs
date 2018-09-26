@@ -116,7 +116,7 @@ namespace Casinos
         //    CasinosContext.Instance.ClearSB();
 
         //    var sb = CasinosContext.Instance.SB;
-        //    sb.Append(CasinosContext.Instance.UserConfig.Current.BotIconDomain);
+        //    sb.Append(BotIconDomain);
         //    if (is_small) sb.Append(mBotIconSmall);
         //    else sb.Append(mBotIcon);
         //    sb.Append(icon_name);

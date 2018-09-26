@@ -45,17 +45,18 @@
 		<type fullname="FairyGUI.TweenValue" preserve="all"/>
 		<type fullname="Casinos._eProjectItemDisplayNameKey" preserve="all"/>
 		<type fullname="_eAsyncAssetLoadType" preserve="all"/>
-		<type fullname="TcpClient" preserve="all"/>
-		<type fullname="LoaderTicket" preserve="all"/>
 		<type fullname="AsyncAssetLoaderMgr" preserve="all"/>
 		<type fullname="AsyncAssetLoadGroup" preserve="all"/>
+		<type fullname="ChatParser" preserve="all"/>
 		<type fullname="Casinos.CopyStreamingAssetsToPersistentData1" preserve="all"/>
 		<type fullname="Casinos.CopyStreamingAssetsToPersistentData2" preserve="all"/>
-		<type fullname="Casinos.UpdateRemoteToPersistentData" preserve="all"/>
-		<type fullname="Casinos.UiSoundMgr" preserve="all"/>
-		<type fullname="ChatParser" preserve="all"/>
-		<type fullname="Casinos.UiHelper" preserve="all"/>
+		<type fullname="Casinos.KingTexasHelper" preserve="all"/>
+		<type fullname="LoaderTicket" preserve="all"/>
 		<type fullname="QRCodeMaker" preserve="all"/>
+		<type fullname="TcpClient" preserve="all"/>
+		<type fullname="Casinos.UiSoundMgr" preserve="all"/>
+		<type fullname="Casinos.UiHelper" preserve="all"/>
+		<type fullname="Casinos.UpdateRemoteToPersistentData" preserve="all"/>
 		<type fullname="Casinos.CasinosLua" preserve="all"/>
 		<type fullname="Casinos.LuaHelper" preserve="all"/>
 		<type fullname="Casinos._eEditorRunSourcePlatform" preserve="all"/>
@@ -169,26 +170,26 @@
 
 	<assembly fullname="Assembly-CSharp-firstpass">
 	    <type fullname="_ePayType" preserve="all"/>
+		<type fullname="BuglyAgent" preserve="all"/>
+		<type fullname="Casinos.Card" preserve="all"/>
+		<type fullname="DataEye" preserve="all"/>
 		<type fullname="EbTool" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbTimeEvent" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbTimer" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbDoubleLinkNode`1[GameCloud.Unity.Common.EbTimeEvent]" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbDoubleLinkList`1[GameCloud.Unity.Common.EbTimeEvent]" preserve="all"/>
 		<type fullname="GameCloud.Unity.Common.EbTimeWheel" preserve="all"/>
-		<type fullname="GameCloud.Unity.Common.TimerShaft" preserve="all"/>
-		<type fullname="Casinos.Card" preserve="all"/>
-		<type fullname="OnePF.Purchase" preserve="all"/>
-		<type fullname="BuglyAgent" preserve="all"/>
-		<type fullname="ThirdPartyLogin" preserve="all"/>
-		<type fullname="DataEye" preserve="all"/>
-		<type fullname="Push" preserve="all"/>
-		<type fullname="cn.sharesdk.unity3d.ShareSDK" preserve="all"/>
-		<type fullname="cn.sharesdk.unity3d.ShareContent" preserve="all"/>
-		<type fullname="ShareSDKReceiver" preserve="all"/>
-		<type fullname="PushReceiver" preserve="all"/>
-		<type fullname="OpenInstallReceiver" preserve="all"/>
-		<type fullname="OpenInstall" preserve="all"/>
 		<type fullname="NativeFun" preserve="all"/>
+		<type fullname="OpenInstall" preserve="all"/>
+		<type fullname="OpenInstallReceiver" preserve="all"/>
+		<type fullname="OnePF.Purchase" preserve="all"/>
+		<type fullname="Push" preserve="all"/>
+		<type fullname="PushReceiver" preserve="all"/>
+		<type fullname="cn.sharesdk.unity3d.ShareContent" preserve="all"/>
+		<type fullname="cn.sharesdk.unity3d.ShareSDK" preserve="all"/>
+		<type fullname="ShareSDKReceiver" preserve="all"/>
+		<type fullname="ThirdPartyLogin" preserve="all"/>
+		<type fullname="GameCloud.Unity.Common.TimerShaft" preserve="all"/>
 		
 	</assembly>
 

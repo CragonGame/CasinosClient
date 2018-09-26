@@ -25,9 +25,9 @@ function TbDataMgr:new(o)
 end
 
 ---------------------------------------
---function TbDataMgr:onCreate()
---	CS.Casinos.CasinosContext.Instance.TbDataMgrLua = self
---end
+function TbDataMgr:onCreate()
+	CS.Casinos.CasinosContext.Instance.TbDataMgrLua = self
+end
 
 ---------------------------------------
 function TbDataMgr:Setup(db_filename, finished_callback)                    

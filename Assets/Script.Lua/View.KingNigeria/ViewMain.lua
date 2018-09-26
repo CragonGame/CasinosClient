@@ -753,7 +753,7 @@ function ViewMain:setNewRecord()
             self.TransitionNewMail:Play()
         end
 
-        self.CasinosContext:play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
+        self.CasinosContext:Play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
     end
 
     local have_newMsg = false
@@ -772,7 +772,7 @@ function ViewMain:setNewRecord()
         then
             self.TransitionNewMsg:Play()
         end
-        self.CasinosContext:play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
+        self.CasinosContext:Play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
     end
 end
 

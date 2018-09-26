@@ -87,17 +87,20 @@ end
 
 ---------------------------------------
 function RPC:RPC0(method_id)
+    print('RPC:RPC0() method_id=' .. method_id)
     CS.Casinos.CasinosContext.Instance.NetBridge.RpcSession:send(method_id, nil)
 end
 
 ---------------------------------------
 function RPC:RPC1(method_id, data1)
+    print('RPC:RPC1() method_id=' .. method_id)
     local string1 = self.MessagePack.pack(data1)
     CS.Casinos.CasinosContext.Instance.NetBridge.RpcSession:send(method_id, string1)
 end
 
 ---------------------------------------
 function RPC:RPC2(method_id, data1, data2)
+    print('RPC:RPC2() method_id=' .. method_id)
     local string1 = self.MessagePack.pack(data1)
     local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1) --string.len(string1)
     local byte_1 = CS.System.BitConverter.GetBytes(string1_l)
@@ -117,6 +120,7 @@ end
 
 ---------------------------------------
 function RPC:RPC3(method_id, data1, data2, data3)
+    print('RPC:RPC3() method_id=' .. method_id)
     local string1 = self.MessagePack.pack(data1)
     local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1)
     local byte_1 = CS.System.BitConverter.GetBytes(string1_l)
@@ -142,6 +146,7 @@ end
 
 ---------------------------------------
 function RPC:RPC4(method_id, data1, data2, data3, data4)
+    print('RPC:RPC4() method_id=' .. method_id)
     local string1 = self.MessagePack.pack(data1)
     local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1)
     local byte_1 = CS.System.BitConverter.GetBytes(string1_l)

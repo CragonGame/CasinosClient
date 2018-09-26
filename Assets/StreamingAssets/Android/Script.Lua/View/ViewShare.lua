@@ -45,7 +45,7 @@ function ViewShare:setPlayerInfo(nick_name,account_id,share_type)
     local icon = temp_table[1]
     if (icon ~= nil and string.len(icon) > 0)
     then
-        self.LoaderIcon.icon = CS.Casinos.CasinosContext.Instance.UserConfig.Current.PlayerIconDomain .. icon
+        self.LoaderIcon.icon = PlayerIconDomain .. icon
     end
     self.LoaderQRCode.texture = CS.FairyGUI.NTexture(Native.Instance.PlayerQRCodeTexture)
 end

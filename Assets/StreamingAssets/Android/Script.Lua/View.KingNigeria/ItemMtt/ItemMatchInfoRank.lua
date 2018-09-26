@@ -21,7 +21,7 @@ function ItemMatchInfoRank:new(o,com,info,rank,lan_base)
 	local icon = temp_table[1]
 	if(icon ~= nil and string.len(icon) > 0)
 	then
-        loader_headicon.icon = CS.Casinos.CasinosContext.Instance.UserConfig.Current.PlayerIconDomain .. icon
+        loader_headicon.icon = PlayerIconDomain .. icon
 	end
 	return o
 end

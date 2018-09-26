@@ -123,13 +123,14 @@ namespace Casinos
         string LuaProjectListenerName { get; set; }
         string PlatformName { get; set; }
 
+        public LuaTable TbDataMgrLua { get; set; }
+
         public const string LocalDataVersionKey = "LocalVersionInfo";
         public const string PreDataVersionKey = "PreDataVersion";
         public const string LanKey = "LanKey";
 
         //public LuaTable MainCLua { get; set; }
         //public LuaTable ProjectListener { get; set; }
-        //public LuaTable TbDataMgrLua { get; set; }
         //public LuaTable PreViewMgr { get; set; }
         //public LuaTable ViewMgr { get; set; }
         //public LuaTable ViewHelper { get; set; }

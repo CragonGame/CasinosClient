@@ -10,11 +10,12 @@
 --CommonLuaLoaderPath = 'Helper/CommonLuaLoader.lua'
 --ProjectDataLoaderPath = 'Helper/ProjectDataLoader.lua'
 --CommonLuaFileListTxtName = 'CommonLuaFileList.txt'
-UCenterDomain = 'http://ucenter.cragon.cn'
-AutopatcherUrl = 'cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml'
-PlayerIconDomain = 'cragon-king-oss.cragon.cn/images/'
-BotIconDomain = 'cragon-king-oss.cragon.cn/ucenter/'
+OssRootUrl = 'http://cragon-king-oss.cragon.cn'
+AutopatcherUrl = 'http://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml'
+PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
+BotIconDomain = 'http://cragon-king-oss.cragon.cn/ucenter/'
 SysNoticeInfoUrl = ''
+UCenterDomain = 'http://ucenter.cragon.cn'
 GatewayIp = 'king-gateway.cragon.cn'
 GatewayPort = 5882
 BundleUpdateStata = 0
@@ -236,15 +237,6 @@ function Context:_nextLaunchStep()
         local path_lua_root = self.CasinosContext.PathMgr:combinePersistentDataPath("Script.Lua/");
         self.CasinosLua:LoadLuaFromDir(path_lua_root);
 
-        --local config_production = CS.Casinos.ConfigSection()
-        --config_production.UCenterDomain = CS.Casinos.UiHelper.formateAndoridIOSUrl(UCenterDomain)
-        --config_production.AutopatcherUrl = CS.Casinos.UiHelper.formateAndoridIOSUrl(AutopatcherUrl)
-        --config_production.PlayerIconDomain = CS.Casinos.UiHelper.formateAndoridIOSUrl(PlayerIconDomain)
-        --config_production.BotIconDomain = CS.Casinos.UiHelper.formateAndoridIOSUrl(BotIconDomain)
-        --config_production.GatewayIp = GatewayIp
-        --config_production.GatewayPort = GatewayPort
-        --config_production.Tips = casinos_context.UserConfig.ConfigProduction.Tips
-        --casinos_context.UserConfig.ConfigProduction = config_production
         local show_fps = ClientShowFPS
         local show_fps_obj = self.CasinosContext.Config.GoConfig:GetComponent("ShowFPS")
         show_fps_obj.enabled = show_fps
@@ -307,7 +299,7 @@ function Context:_nextLaunchStep()
         self:DoString("TbDataBase")
         self:DoString("TbDataMgrBase")
         self.TbDataMgr = TbDataMgr:new(nil)
-        --self.TbDataMgr:onCreate()
+        self.TbDataMgr:onCreate()
         self:_regTbData()
 
         local t_db = {}

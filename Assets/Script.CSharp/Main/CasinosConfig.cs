@@ -15,7 +15,9 @@ namespace Casinos
     {
         //---------------------------------------------------------------------
         public GameObject GoConfig { get; private set; }
+        public GameObject GoMain { get; private set; }
         public string Platform { get; private set; }// Android, iOS, PC
+        public string Channel { get; private set; } = "";
         public StreamingAssetsInfo StreamingAssetsInfo { get; private set; }
         public string VersionBundle { get; private set; }
         public string VersionDataPersistent { get; private set; }
@@ -39,6 +41,7 @@ namespace Casinos
                     break;
             }
 
+            GoMain = GameObject.Find("Main Object");
             GoConfig = GameObject.Find("Main Config");
             VersionBundle = Application.version;
 

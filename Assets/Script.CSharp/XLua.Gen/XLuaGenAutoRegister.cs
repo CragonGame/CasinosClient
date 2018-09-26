@@ -221,9 +221,25 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(_ePayType), _ePayTypeWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(EbTool), EbToolWrap.__Register);
+				translator.DelayWrapLoader(typeof(AsyncAssetLoaderMgr), AsyncAssetLoaderMgrWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(TcpClient), TcpClientWrap.__Register);
+				translator.DelayWrapLoader(typeof(AsyncAssetLoadGroup), AsyncAssetLoadGroupWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(ZXing.BarcodeWriter), ZXingBarcodeWriterWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(BuglyAgent), BuglyAgentWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos.Card), CasinosCardWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(ChatParser), ChatParserWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData1), CasinosCopyStreamingAssetsToPersistentData1Wrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData2), CasinosCopyStreamingAssetsToPersistentData2Wrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(DataEye), DataEyeWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(EbTool), EbToolWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbTimeEvent), GameCloudUnityCommonEbTimeEventWrap.__Register);
 				
@@ -235,57 +251,43 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbTimeWheel), GameCloudUnityCommonEbTimeWheelWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.TimerShaft), GameCloudUnityCommonTimerShaftWrap.__Register);
+				translator.DelayWrapLoader(typeof(Casinos.KingTexasHelper), CasinosKingTexasHelperWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(LoaderTicket), LoaderTicketWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(AsyncAssetLoaderMgr), AsyncAssetLoaderMgrWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(AsyncAssetLoadGroup), AsyncAssetLoadGroupWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData1), CasinosCopyStreamingAssetsToPersistentData1Wrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData2), CasinosCopyStreamingAssetsToPersistentData2Wrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.UpdateRemoteToPersistentData), CasinosUpdateRemoteToPersistentDataWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.UiSoundMgr), CasinosUiSoundMgrWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(ChatParser), ChatParserWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.UiHelper), CasinosUiHelperWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.Card), CasinosCardWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(QRCodeMaker), QRCodeMakerWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(OnePF.Purchase), OnePFPurchaseWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(BuglyAgent), BuglyAgentWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(ThirdPartyLogin), ThirdPartyLoginWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(DataEye), DataEyeWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Push), PushWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(cn.sharesdk.unity3d.ShareSDK), cnsharesdkunity3dShareSDKWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(cn.sharesdk.unity3d.ShareContent), cnsharesdkunity3dShareContentWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(ShareSDKReceiver), ShareSDKReceiverWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(ZXing.BarcodeWriter), ZXingBarcodeWriterWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(ZXing.QrCode.QrCodeEncodingOptions), ZXingQrCodeQrCodeEncodingOptionsWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(PushReceiver), PushReceiverWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(OpenInstallReceiver), OpenInstallReceiverWrap.__Register);
+				translator.DelayWrapLoader(typeof(NativeFun), NativeFunWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(OpenInstall), OpenInstallWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(NativeFun), NativeFunWrap.__Register);
+				translator.DelayWrapLoader(typeof(OpenInstallReceiver), OpenInstallReceiverWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(OnePF.Purchase), OnePFPurchaseWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Push), PushWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(PushReceiver), PushReceiverWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(ZXing.QrCode.QrCodeEncodingOptions), ZXingQrCodeQrCodeEncodingOptionsWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(QRCodeMaker), QRCodeMakerWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(cn.sharesdk.unity3d.ShareContent), cnsharesdkunity3dShareContentWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(cn.sharesdk.unity3d.ShareSDK), cnsharesdkunity3dShareSDKWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(ShareSDKReceiver), ShareSDKReceiverWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(TcpClient), TcpClientWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(ThirdPartyLogin), ThirdPartyLoginWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.TimerShaft), GameCloudUnityCommonTimerShaftWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos.UiSoundMgr), CasinosUiSoundMgrWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos.UiHelper), CasinosUiHelperWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos.UpdateRemoteToPersistentData), CasinosUpdateRemoteToPersistentDataWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.CasinosLua), CasinosCasinosLuaWrap.__Register);
 				

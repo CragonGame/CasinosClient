@@ -586,7 +586,7 @@ function ViewDesktopH:initDesktopHundred(hundred_data, map_my_betinfo, map_my_wi
         self.UiDesktopHBase = self.MapDesktopHBaseFactory[self.FactoryName]:CreateViewDesktopHBase(self)
         self.DesktopHGameResult = self.UiDesktopHBase:getGoldOperateList()
         local bg_music = self.UiDesktopHBase:getBgMusic()
-        self.CasinosContext:play(bg_music, CS.Casinos._eSoundLayer.Background)
+        self.CasinosContext:Play(bg_music, CS.Casinos._eSoundLayer.Background)
         local btn_bankplayerlist = self.GCoDesktopH:GetChild("Lan_Btn_BeBank").asButton
         btn_bankplayerlist.onClick:Add(
                 function()
@@ -1269,7 +1269,7 @@ function ViewDesktopH:_haveNewChatOrMailRecord()
         then
             CS.Casinos.UiHelper.setGObjectVisible(true, self.GComMsgTips)
             self.GTextMsgTips.text = tostring(self.NewFriendChatCount)
-            self.CasinosContext:play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
+            self.CasinosContext:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
         else
             CS.Casinos.UiHelper.setGObjectVisible(false, self.GComMsgTips)
         end

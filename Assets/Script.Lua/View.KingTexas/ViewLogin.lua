@@ -24,7 +24,7 @@ end
 
 ---------------------------------------
 function ViewLogin:onCreate()
-    print('ViewLogin:OnCreate()')
+    print('ViewLogin:onCreate()')
 
     self.ViewMgr:bindEvListener("EvUiChooseCountry", self)
 
@@ -284,29 +284,9 @@ function ViewLogin:onCreate()
 end
 
 ---------------------------------------
-function ViewLogin:onClickUCenter()
-    local ev = self.ViewMgr:getEv("EvUiChooseUCenter")
-    if (ev == nil)
-    then
-        ev = EvUiChooseUCenter:new(nil)
-    end
-    ev.ucenter = self.ComboChooseUCenter.text
-    self.ViewMgr:sendEv(ev)
-end
-
----------------------------------------
-function ViewLogin:onClickGateWay()
-    local ev = self.ViewMgr:getEv("EvUiChooseGateWay")
-    if (ev == nil)
-    then
-        ev = EvUiChooseGateWay:new(nil)
-    end
-    ev.gateway = self.ComboChooseGateWay.text
-    self.ViewMgr:sendEv(ev)
-end
-
----------------------------------------
 function ViewLogin:onDestroy()
+    print('ViewLogin:onDestroy()')
+
     if (self.CasinosContext.NeedHideClientUi == false)
     then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
@@ -339,6 +319,28 @@ function ViewLogin:onHandleEv(ev)
             self.TextCountryCode.text = ev.KeyAndCodeFormat
         end
     end
+end
+
+---------------------------------------
+function ViewLogin:onClickUCenter()
+    local ev = self.ViewMgr:getEv("EvUiChooseUCenter")
+    if (ev == nil)
+    then
+        ev = EvUiChooseUCenter:new(nil)
+    end
+    ev.ucenter = self.ComboChooseUCenter.text
+    self.ViewMgr:sendEv(ev)
+end
+
+---------------------------------------
+function ViewLogin:onClickGateWay()
+    local ev = self.ViewMgr:getEv("EvUiChooseGateWay")
+    if (ev == nil)
+    then
+        ev = EvUiChooseGateWay:new(nil)
+    end
+    ev.gateway = self.ComboChooseGateWay.text
+    self.ViewMgr:sendEv(ev)
 end
 
 ---------------------------------------

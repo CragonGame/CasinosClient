@@ -17,7 +17,6 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
         self.Guid = guid
         self.WWWGetPhoneVerificationCode = nil
         self.WWWRegister = nil
-        self.WWWLogin = nil
         self.WWWResetPasswordWithPhone = nil
         self.WWWWeChatAutoLogin = nil
         self.WWWWechatLogin = nil
@@ -36,7 +35,6 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
         self.WWWQuicktellerTransfersQuery = nil
         self.GetPhoneVerificationCodeHandler = nil
         self.RegisterHandler = nil
-        self.LoginHandler = nil
         self.ResetPasswordWithPhoneHandler = nil
         self.WeChatAutoLoginHandler = nil
         self.WechatLoginHandler = nil
@@ -54,6 +52,7 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
         self.QuicktellerTransfersHandler = nil
         self.QuicktellerTransfersQueryHandler = nil
         self.UCenterDomain = nil
+        self.MbKingTexasHelper = nil
         self.Instance = o
     end
 
@@ -64,6 +63,7 @@ end
 function ControllerUCenter:onCreate()
     print("ControllerUCenter:onCreate")
     self.UCenterDomain = UCenterDomain
+    self.MbKingTexasHelper = CS.Casinos.CasinosContext.Instance.Config.GoMain:GetComponent("Casinos.KingTexasHelper")
 end
 
 ---------------------------------------
@@ -71,204 +71,12 @@ function ControllerUCenter:onDestroy()
 end
 
 ---------------------------------------
-function ControllerUCenter:onUpdate(tm)
-    if (self.WWWGetPhoneVerificationCode ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWGetPhoneVerificationCode, self.GetPhoneVerificationCodeHandler)
-        if (r == true)
-        then
-            self.WWWGetPhoneVerificationCode = nil
-            self.GetPhoneVerificationCodeHandler = nil
-        end
-    end
-
-    if (self.WWWRegister ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWRegister, self.RegisterHandler)
-        if (r == true)
-        then
-            self.WWWRegister = nil
-            self.RegisterHandler = nil
-        end
-    end
-
-    if (self.WWWLogin ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWLogin, self.LoginHandler)
-        if (r == true)
-        then
-            self.WWWLogin = nil
-            self.LoginHandler = nil
-        end
-    end
-
-    if (self.WWWResetPasswordWithPhone ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWResetPasswordWithPhone, self.ResetPasswordWithPhoneHandler)
-        if (r == true)
-        then
-            self.WWWResetPasswordWithPhone = nil
-            self.ResetPasswordWithPhoneHandler = nil
-        end
-    end
-
-    if (self.WWWWeChatAutoLogin ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWWeChatAutoLogin, self.WeChatAutoLoginHandler)
-        if (r == true)
-        then
-            self.WWWWeChatAutoLogin = nil
-            self.WeChatAutoLoginHandler = nil
-        end
-    end
-
-    if (self.WWWWechatLogin ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWWechatLogin, self.WechatLoginHandler)
-        if (r == true)
-        then
-            self.WWWWechatLogin = nil
-            self.WechatLoginHandler = nil
-        end
-    end
-
-    if (self.WWWWechatBind ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWWechatBind, self.WechatBindHandler)
-        if (r == true)
-        then
-            self.WWWWechatBind = nil
-            self.WechatBindHandler = nil
-        end
-    end
-
-    if (self.WWWWechatUnbind ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWWechatUnbind, self.WechatUnbindHandler)
-        if (r == true)
-        then
-            self.WWWWechatUnbind = nil
-            self.WechatUnbindHandler = nil
-        end
-    end
-
-    if (self.WWWGuestAccess ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWGuestAccess, self.GuestAccessHandler)
-        if (r == true)
-        then
-            self.WWWGuestAccess = nil
-            self.GuestAccessHandler = nil
-        end
-    end
-
-    if (self.WWWGuestConvert ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWGuestConvert, self.GuestConvertHandler)
-        if (r == true)
-        then
-            self.WWWGuestConvert = nil
-            self.GuestConvertHandler = nil
-        end
-    end
-
-    if (self.WWWResetPassword ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWResetPassword, self.ResetPasswordHandler)
-        if (r == true)
-        then
-            self.WWWResetPassword = nil
-            self.ResetPasswordHandler = nil
-        end
-    end
-
-    if (self.WWWUploadProfileImage ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWUploadProfileImage, self.UploadProfileImageHandler)
-        if (r == true)
-        then
-            self.WWWUploadProfileImage = nil
-            self.UploadProfileImageHandler = nil
-        end
-    end
-
-    if (self.WWWGetAppConfig ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWGetAppConfig, self.GetAppConfigHandler)
-        if (r == true)
-        then
-            self.WWWGetAppConfig = nil
-            self.GetAppConfigHandler = nil
-        end
-    end
-
-    if (self.WWWPayCreateCharge ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWPayCreateCharge, self.PayCreateChargeHandler)
-        if (r == true)
-        then
-            self.WWWPayCreateCharge = nil
-            self.PayCreateChargeHandler = nil
-        end
-    end
-
-    if (self.WWWCheckIdCard ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWCheckIdCard, self.CheckIdCardHandler)
-        if (r == true)
-        then
-            self.WWWCheckIdCard = nil
-            self.CheckIdCardHandler = nil
-        end
-    end
-
-    if (self.WWWNigWebpayRequestUrl ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWNigWebpayRequestUrl, self.NigWebpayRequestUrlHandler)
-        if (r == true)
-        then
-            self.WWWNigWebpayRequestUrl = nil
-            self.NigWebpayRequestUrlHandler = nil
-        end
-    end
-
-    if (self.WWWNigWebpayQuery ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWNigWebpayQuery, self.NigWebpayQueryHandler)
-        if (r == true)
-        then
-            self.WWWNigWebpayQuery = nil
-            self.NigWebpayQueryHandler = nil
-        end
-    end
-
-    if (self.WWWQuicktellerTransfers ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWQuicktellerTransfers, self.QuicktellerTransfersHandler)
-        if (r == true)
-        then
-            self.WWWQuicktellerTransfers = nil
-            self.QuicktellerTransfersHandler = nil
-        end
-    end
-
-    if (self.WWWQuicktellerTransfersQuery ~= nil)
-    then
-        local r = self:_checkResponse(self.WWWQuicktellerTransfersQuery, self.QuicktellerTransfersQueryHandler)
-        if (r == true)
-        then
-            self.WWWQuicktellerTransfersQuery = nil
-            self.QuicktellerTransfersQueryHandler = nil
-        end
-    end
-end
-
----------------------------------------
 function ControllerUCenter:onHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerUCenter:getPhoneVerificationCode(request, handler)
+-- 请求获取手机验证码
+function ControllerUCenter:RequestGetPhoneVerificationCode(request, handler)
     if (self.WWWGetPhoneVerificationCode ~= nil)
     then
         return
@@ -285,7 +93,8 @@ function ControllerUCenter:getPhoneVerificationCode(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:register(request, handler)
+-- 请求注册
+function ControllerUCenter:RequestRegister(request, handler)
     if (self.WWWRegister ~= nil)
     then
         return
@@ -302,25 +111,26 @@ function ControllerUCenter:register(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:login(request, handler)
-    if (self.WWWLogin ~= nil)
-    then
-        return
-    end
-
-    self.LoginHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
-
+-- 请求登录
+function ControllerUCenter:RequestLogin(request, handler)
     local http_url = self:_genUrl("login")
     local param = self.ControllerMgr.Listener.Json.encode(request)
-    local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
-    local headers = self:_genHeader(bytes.Length)
-
+    --local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
+    --local headers = self:_genHeader(bytes.Length)
+    --self.LoginHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
+    --self.WWWLogin = CS.UnityEngine.WWW(http_url, bytes, headers)
     print(http_url)
-    self.WWWLogin = CS.UnityEngine.WWW(http_url, bytes, headers)
+
+    self.MbKingTexasHelper:PostUrl(http_url, param,
+            function(response_data)
+                self:_onResponse(response_data, handler)
+            end
+    )
 end
 
 ---------------------------------------
-function ControllerUCenter:resetPasswordWithPhone(request, handler)
+-- 请求通过手机验证码重置密码
+function ControllerUCenter:RequestResetPasswordWithPhone(request, handler)
     if (self.WWWResetPasswordWithPhone ~= nil)
     then
         return
@@ -337,7 +147,8 @@ function ControllerUCenter:resetPasswordWithPhone(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:wechatAutoLogin(request, handler)
+-- 请求微信自动登录
+function ControllerUCenter:RequestWechatAutoLogin(request, handler)
     if (self.WWWWeChatAutoLogin ~= nil)
     then
         return
@@ -350,11 +161,14 @@ function ControllerUCenter:wechatAutoLogin(request, handler)
     local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
     local headers = self:_genHeader(bytes.Length)
 
+    print('ControllerUCenter:wechatAutoLogin()')
+
     self.WWWWeChatAutoLogin = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
 ---------------------------------------
-function ControllerUCenter:wechatLogin(request, handler)
+-- 请求微信登录
+function ControllerUCenter:RequestWechatLogin(request, handler)
     if (self.WWWWechatLogin ~= nil)
     then
         return
@@ -367,11 +181,14 @@ function ControllerUCenter:wechatLogin(request, handler)
     local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
     local headers = self:_genHeader(bytes.Length)
 
+    print('ControllerUCenter:wechatLogin()')
+
     self.WWWWechatLogin = CS.UnityEngine.WWW(http_url, bytes, headers)
 end
 
 ---------------------------------------
-function ControllerUCenter:wechatBind(request, handler)
+-- 请求微信绑定
+function ControllerUCenter:RequestWechatBind(request, handler)
     if (self.WWWWechatBind ~= nil)
     then
         return
@@ -389,7 +206,8 @@ function ControllerUCenter:wechatBind(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:wechatUnbind(request, handler)
+-- 请求微信解绑
+function ControllerUCenter:RequestWechatUnbind(request, handler)
     if (self.WWWWechatUnbind ~= nil)
     then
         return
@@ -406,7 +224,8 @@ function ControllerUCenter:wechatUnbind(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:guestAccess(request, handler)
+-- 请求游客访问
+function ControllerUCenter:RequestGuestAccess(request, handler)
     if (self.WWWGuestAccess ~= nil)
     then
         return
@@ -423,7 +242,8 @@ function ControllerUCenter:guestAccess(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:guestConvert(request, handler)
+-- 请求游客转正
+function ControllerUCenter:RequestGuestConvert(request, handler)
     if (self.WWWGuestConvert ~= nil)
     then
         return
@@ -440,7 +260,8 @@ function ControllerUCenter:guestConvert(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:resetPassword(request, handler)
+-- 请求重置密码
+function ControllerUCenter:RequestResetPassword(request, handler)
     if (self.WWWResetPassword ~= nil)
     then
         return
@@ -457,7 +278,8 @@ function ControllerUCenter:resetPassword(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:uploadProfileImage(app_id, account_id, bytes, handler)
+-- 请求上传头像
+function ControllerUCenter:RequestUploadProfileImage(app_id, account_id, bytes, handler)
     if (self.WWWUploadProfileImage ~= nil)
     then
         return
@@ -479,7 +301,8 @@ function ControllerUCenter:uploadProfileImage(app_id, account_id, bytes, handler
 end
 
 ---------------------------------------
-function ControllerUCenter:payCreateCharge(payment_info, handler)
+-- 请求支付
+function ControllerUCenter:RequestPayCreateCharge(payment_info, handler)
     if (self.WWWPayCreateCharge ~= nil)
     then
         return
@@ -496,7 +319,8 @@ function ControllerUCenter:payCreateCharge(payment_info, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:checkCardAndName(request, handler)
+-- 请求身份证实名认证（国内）
+function ControllerUCenter:RequestCheckCardAndName(request, handler)
     if (self.WWWCheckIdCard ~= nil)
     then
         return
@@ -513,7 +337,8 @@ function ControllerUCenter:checkCardAndName(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:nigWebpayRequestUrl(handler)
+-- 请求尼日利亚Webpay支付
+function ControllerUCenter:RequestNigWebpayRequestUrl(handler)
     if (self.WWWNigWebpayRequestUrl ~= nil)
     then
         return
@@ -528,7 +353,8 @@ function ControllerUCenter:nigWebpayRequestUrl(handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:nigWebpayQuery(handler)
+-- 请求尼日利亚Webpay查询
+function ControllerUCenter:RequestNigWebpayQuery(handler)
     if (self.WWWNigWebpayQuery ~= nil)
     then
         return
@@ -542,7 +368,8 @@ function ControllerUCenter:nigWebpayQuery(handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:quicktellerTransfers(request, handler)
+-- 请求尼日利亚Quickteller支付
+function ControllerUCenter:RequestQuicktellerTransfers(request, handler)
     if (self.WWWQuicktellerTransfers ~= nil)
     then
         return
@@ -559,7 +386,8 @@ function ControllerUCenter:quicktellerTransfers(request, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:quicktellerTransfersQuery(handler)
+-- 请求尼日利亚Quickteller查询
+function ControllerUCenter:RequestQuicktellerTransfersQuery(handler)
     if (self.WWWQuicktellerTransfersQuery ~= nil)
     then
         return
@@ -574,6 +402,7 @@ function ControllerUCenter:quicktellerTransfersQuery(handler)
 end
 
 ---------------------------------------
+-- 解析UCenter错误码
 function ControllerUCenter:ParseUCenterErrorCode(error_code)
     local error_msg = ""
     if (error_code == UCenterErrorCode.NoError)
@@ -663,13 +492,31 @@ function ControllerUCenter:ParseUCenterErrorCode(error_code)
 end
 
 ---------------------------------------
+function ControllerUCenter:_onResponse(response_data, handler)
+    --print(response_data)
+    local response = self.ControllerMgr.Listener.Json.decode(response_data)
+    if (handler ~= nil)
+    then
+        if (response ~= nil)
+        then
+            handler(response.status, response.result, response.error)
+        else
+            local error = UCenterError:new(nil)
+            error.ErrorCode = UCenterErrorCode.ServiceUnavailable
+            error.Message = ""
+            handler(UCenterResponseStatus.Error, nil, error)
+        end
+    end
+end
+
+---------------------------------------
 function ControllerUCenter:_genHeader(content_len)
     local headers = {}
     headers["Accept"] = "application/x-www-form-urlencoded"
     headers["Content-Type"] = "application/json charset=utf-8"
-    --headers["Content-Length"] = tostring(content_len)
     headers["host"] = self:_getHostName()
     headers["User-Agent"] = ""
+    --headers["Content-Length"] = tostring(content_len)
 
     return headers
 end
@@ -677,7 +524,6 @@ end
 ---------------------------------------
 function ControllerUCenter:_getHostName()
     local host = self.UCenterDomain
-
     host = string.gsub(host, "https://", "")--host:Replace("https://", "")
     host = string.gsub(host, "http://", "")--host:Replace("http://", "")
 
@@ -811,3 +657,196 @@ function ControllerUCenterFactory:createController(controller_mgr, controller_da
     controller:onCreate()
     return controller
 end
+
+---------------------------------------
+--function ControllerUCenter:onUpdate(tm)
+--    if (self.WWWGetPhoneVerificationCode ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWGetPhoneVerificationCode, self.GetPhoneVerificationCodeHandler)
+--        if (r == true)
+--        then
+--            self.WWWGetPhoneVerificationCode = nil
+--            self.GetPhoneVerificationCodeHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWRegister ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWRegister, self.RegisterHandler)
+--        if (r == true)
+--        then
+--            self.WWWRegister = nil
+--            self.RegisterHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWLogin ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWLogin, self.LoginHandler)
+--        if (r == true)
+--        then
+--            self.WWWLogin = nil
+--            self.LoginHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWResetPasswordWithPhone ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWResetPasswordWithPhone, self.ResetPasswordWithPhoneHandler)
+--        if (r == true)
+--        then
+--            self.WWWResetPasswordWithPhone = nil
+--            self.ResetPasswordWithPhoneHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWWeChatAutoLogin ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWWeChatAutoLogin, self.WeChatAutoLoginHandler)
+--        if (r == true)
+--        then
+--            self.WWWWeChatAutoLogin = nil
+--            self.WeChatAutoLoginHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWWechatLogin ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWWechatLogin, self.WechatLoginHandler)
+--        if (r == true)
+--        then
+--            self.WWWWechatLogin = nil
+--            self.WechatLoginHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWWechatBind ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWWechatBind, self.WechatBindHandler)
+--        if (r == true)
+--        then
+--            self.WWWWechatBind = nil
+--            self.WechatBindHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWWechatUnbind ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWWechatUnbind, self.WechatUnbindHandler)
+--        if (r == true)
+--        then
+--            self.WWWWechatUnbind = nil
+--            self.WechatUnbindHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWGuestAccess ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWGuestAccess, self.GuestAccessHandler)
+--        if (r == true)
+--        then
+--            self.WWWGuestAccess = nil
+--            self.GuestAccessHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWGuestConvert ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWGuestConvert, self.GuestConvertHandler)
+--        if (r == true)
+--        then
+--            self.WWWGuestConvert = nil
+--            self.GuestConvertHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWResetPassword ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWResetPassword, self.ResetPasswordHandler)
+--        if (r == true)
+--        then
+--            self.WWWResetPassword = nil
+--            self.ResetPasswordHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWUploadProfileImage ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWUploadProfileImage, self.UploadProfileImageHandler)
+--        if (r == true)
+--        then
+--            self.WWWUploadProfileImage = nil
+--            self.UploadProfileImageHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWGetAppConfig ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWGetAppConfig, self.GetAppConfigHandler)
+--        if (r == true)
+--        then
+--            self.WWWGetAppConfig = nil
+--            self.GetAppConfigHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWPayCreateCharge ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWPayCreateCharge, self.PayCreateChargeHandler)
+--        if (r == true)
+--        then
+--            self.WWWPayCreateCharge = nil
+--            self.PayCreateChargeHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWCheckIdCard ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWCheckIdCard, self.CheckIdCardHandler)
+--        if (r == true)
+--        then
+--            self.WWWCheckIdCard = nil
+--            self.CheckIdCardHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWNigWebpayRequestUrl ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWNigWebpayRequestUrl, self.NigWebpayRequestUrlHandler)
+--        if (r == true)
+--        then
+--            self.WWWNigWebpayRequestUrl = nil
+--            self.NigWebpayRequestUrlHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWNigWebpayQuery ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWNigWebpayQuery, self.NigWebpayQueryHandler)
+--        if (r == true)
+--        then
+--            self.WWWNigWebpayQuery = nil
+--            self.NigWebpayQueryHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWQuicktellerTransfers ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWQuicktellerTransfers, self.QuicktellerTransfersHandler)
+--        if (r == true)
+--        then
+--            self.WWWQuicktellerTransfers = nil
+--            self.QuicktellerTransfersHandler = nil
+--        end
+--    end
+--
+--    if (self.WWWQuicktellerTransfersQuery ~= nil)
+--    then
+--        local r = self:_checkResponse(self.WWWQuicktellerTransfersQuery, self.QuicktellerTransfersQueryHandler)
+--        if (r == true)
+--        then
+--            self.WWWQuicktellerTransfersQuery = nil
+--            self.QuicktellerTransfersQueryHandler = nil
+--        end
+--    end
+--end
