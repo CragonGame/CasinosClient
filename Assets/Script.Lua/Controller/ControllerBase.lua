@@ -26,10 +26,6 @@ function ControllerBase:onDestroy()
 end
 
 ---------------------------------------
---function ControllerBase:onUpdate(tm)
---end
-
----------------------------------------
 function ControllerBase:onHandleEv(ev)
 end
 

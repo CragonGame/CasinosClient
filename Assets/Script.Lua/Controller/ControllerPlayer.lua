@@ -8,15 +8,16 @@ function ControllerPlayer:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ControllerName = "Player"
-    o.ViewMgr = ViewMgr:new(nil)
-    o.TopStarBundleId = "com.QuLing.TexasPoker"
-
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.ControllerData = controller_data
+    self.ControllerMgr = controller_mgr
+    self.Guid = guid
+    self.ControllerName = "Player"
+    self.ViewMgr = ViewMgr:new(nil)
+    self.TopStarBundleId = "com.QuLing.TexasPoker"
+    self.TimerUpdate = nil
+    self.GetOnlinePlayerNumTimeElapsed = 0
+    self.MC = CommonMethodType
     return o
 end
 
@@ -57,10 +58,10 @@ function ControllerPlayer:onCreate()
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
     self.ControllerTrade = self.ControllerMgr:GetController("Trade")
     self.OnlinePlayerNum = 0
-    self.GetOnlinePlayerNumTimeElapsed = 0
     self.GetOtherPlayerInfoTicket = 1
-    local login = self.ControllerMgr:GetController("Login")
+    self.GetOnlinePlayerNumTimeElapsed = 0
 
+    local login = self.ControllerMgr:GetController("Login")
     login:canDestroyViewLogin()
 
     self.OnLineReward = OnLineReward:new(nil, self.ControllerMgr.ViewMgr)
@@ -71,23 +72,19 @@ function ControllerPlayer:onCreate()
     self.QueneHotActivity = {}
     self:CheckNeedShowHotActivity()
 
-    if (self.CasinosContext.UnityIOS == true)
-    then
+    if (self.CasinosContext.UnityIOS == true) then
         self:initStoreItem()
     end
 
     self.ControllerMgr.RPC = self.ControllerMgr.RPC
-    self.MC = CommonMethodType
     self.ControllerMgr.RPC:RPC0(self.MC.PlayerClientInitDoneRequest)
     self:requestGetOnlinePlayerNum()
 
     local c_login = self.ControllerMgr:GetController("Login")
     local player_play_state = c_login:getClientEnterWorldNotify().player_play_state
-    if (player_play_state ~= nil)
-    then
+    if (player_play_state ~= nil) then
         ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetTable"))
-        if (player_play_state.DesktopType == DesktopTypeEx.Desktop)
-        then
+        if (player_play_state.DesktopType == DesktopTypeEx.Desktop) then
             self.ControllerMgr.RPC:RPC0(self.MC.DesktopSnapshotRequest)
         else
             self.ControllerMgr.RPC:RPC0(self.MC.DesktopHRequestSnapshot)
@@ -95,11 +92,12 @@ function ControllerPlayer:onCreate()
     end
 
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityPlayerInitDone")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityPlayerInitDone:new(nil)
     end
     self.ControllerMgr.ViewMgr:sendEv(ev)
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(1000, self._timerUpdate)
 
     -- 请求获取收货地址响应
     self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerRequestGetAddressResult, function(result, address)
@@ -203,6 +201,10 @@ end
 
 ---------------------------------------
 function ControllerPlayer:onDestroy()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
     self.ViewMgr:unbindEvListener(self)
     self:destroyMainUi()
     self.ControllerMgr.ViewMgr:destroyAllView()
@@ -210,142 +212,95 @@ function ControllerPlayer:onDestroy()
 end
 
 ---------------------------------------
-function ControllerPlayer:onUpdate(tm)
-    self.GetOnlinePlayerNumTimeElapsed = self.GetOnlinePlayerNumTimeElapsed + tm
-    if (self.GetOnlinePlayerNumTimeElapsed > 5)
-    then
-        self.GetOnlinePlayerNumTimeElapsed = 0
-        self:requestGetOnlinePlayerNum()
-    end
-    if (self.OnLineReward ~= nil)
-    then
-        self.OnLineReward:update(tm)
-    end
-end
-
----------------------------------------
 function ControllerPlayer:onHandleEv(ev)
-    if (ev.EventName == "EvUiClickHelp")
-    then
-    elseif (ev.EventName == "EvUiClickEdit")
-    then
-    elseif (ev.EventName == "EvUiClickLogin")
-    then
+    if (ev.EventName == "EvUiClickHelp") then
+    elseif (ev.EventName == "EvUiClickEdit") then
+    elseif (ev.EventName == "EvUiClickLogin") then
         local title = self.ControllerMgr.LanMgr:getLanValue("ReturnLogin")
         local tips = self.ControllerMgr.LanMgr:getLanValue("ExitCanLogin")
         local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
         msg_box:showMsgBox1(title, tips,
                 function(bo)
-                    if (bo)
-                    then
+                    if (bo) then
                         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logouting"))
                         self.CasinosContext:Disconnect()
                     end
                 end
         )
-    elseif (ev.EventName == "EvEntityResetPwdSuccess")
-    then
+    elseif (ev.EventName == "EvEntityResetPwdSuccess") then
         self.CasinosContext:Disconnect()
-    elseif (ev.EventName == "EvUiClickChangePlayerNickName")
-    then
+    elseif (ev.EventName == "EvUiClickChangePlayerNickName") then
         self:requestChangeNickName(ev.new_name)
-    elseif (ev.EventName == "EvUiClickRefreshIPAddress")
-    then
+    elseif (ev.EventName == "EvUiClickRefreshIPAddress") then
         self:requestRefreshIpAddress()
-    elseif (ev.EventName == "EvUiClickChangePlayerIndividualSignature")
-    then
+    elseif (ev.EventName == "EvUiClickChangePlayerIndividualSignature") then
         self:requestChangeIndividualSignature(ev.new_individual_signature)
-    elseif (ev.EventName == "EvUiClickChangePlayerProfileSkin")
-    then
+    elseif (ev.EventName == "EvUiClickChangePlayerProfileSkin") then
         self:requestChangePlayerProfileSkin(ev.skin_id)
-    elseif (ev.EventName == "EvUiReportFriend")
-    then
+    elseif (ev.EventName == "EvUiReportFriend") then
         local et_guid = ev.friend_etguid
         local report_type = ev.report_type
         self:requestReportPlayer(et_guid, report_type)
-    elseif (ev.EventName == "EvUiClickChipTransaction")
-    then
+    elseif (ev.EventName == "EvUiClickChipTransaction") then
         self:requestGiveGoldQueryRange()
-    elseif (ev.EventName == "EvUiClickConfirmChipTransaction")
-    then
+    elseif (ev.EventName == "EvUiClickConfirmChipTransaction") then
         self:requestGivePlayerGold(ev.send_target_etguid, ev.chip)
-    elseif (ev.EventName == "EvUiCreateMainUi")
-    then
+    elseif (ev.EventName == "EvUiCreateMainUi") then
         self:createMainUi()
-    elseif (ev.EventName == "EvUiRequestGetRankPlayerInfo")
-    then
+    elseif (ev.EventName == "EvUiRequestGetRankPlayerInfo") then
         self:requestGetPlayerInfoOther(ev.player_guid)
-    elseif (ev.EventName == "EvUiRequestBankWithdraw")
-    then
+    elseif (ev.EventName == "EvUiRequestBankWithdraw") then
         self:requestBankWithdraw(ev.withdraw_chip)
-    elseif (ev.EventName == "EvUiRequestBankDeposit")
-    then
+    elseif (ev.EventName == "EvUiRequestBankDeposit") then
         self:requestBankDeposit(ev.deposit_chip)
-    elseif (ev.EventName == "EvCreateGiftShop")
-    then
+    elseif (ev.EventName == "EvCreateGiftShop") then
         local can_creategiftshop = true
-        if (ev.not_indesktop == false and ev.is_tmp_gift)
-        then
-            if (self.ControllerDesk.DesktopBase ~= nil)
-            then
-                if (self.ControllerDesk.DesktopBase.MePlayer.IsInGame == false)
-                then
+        if (ev.not_indesktop == false and ev.is_tmp_gift) then
+            if (self.ControllerDesk.DesktopBase ~= nil) then
+                if (self.ControllerDesk.DesktopBase.MePlayer.IsInGame == false) then
                     can_creategiftshop = false
                 end
             else
-                if (self.ControllerDeskH.DesktopHBase == nil)
-                then
+                if (self.ControllerDeskH.DesktopHBase == nil) then
                     can_creategiftshop = false
                 end
             end
         end
-        if (can_creategiftshop)
-        then
+        if (can_creategiftshop) then
             local gift_shop = self.ControllerMgr.ViewMgr:createView("GiftShop")
             gift_shop:setGiftShopInfo(ev.is_tmp_gift, self.Guid, ev.to_player_etguid)
         else
             ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("SitTableSendGift"))
         end
-    elseif (ev.EventName == "EvRequestGetPlayerModuleData")
-    then
+    elseif (ev.EventName == "EvRequestGetPlayerModuleData") then
         self.ControllerMgr.RPC:RPC1(self.MC.PlayerGetCasinosModuleDataWithFactoryNameRequest, ev.factory_name)
-    elseif (ev.EventName == "EvRequestGetOnLineReward")
-    then
+    elseif (ev.EventName == "EvRequestGetOnLineReward") then
         self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlineRewardRequest)
-    elseif (ev.EventName == "EvOnGetOnLineReward")
-    then
+    elseif (ev.EventName == "EvOnGetOnLineReward") then
         self.OnLineReward:onGetReward()
-    elseif (ev.EventName == "EvRequestGetTimingReward")
-    then
+    elseif (ev.EventName == "EvRequestGetTimingReward") then
         local can_get = self.TimingReward:onGetReward()
         if can_get then
             self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetTimingRewardRequest)
         end
-    elseif (ev.EventName == "EvUiChangeLan")
-    then
+    elseif (ev.EventName == "EvUiChangeLan") then
         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("ChangeLaning"), 10)
         self.ControllerMgr.RPC:RPC1(self.MC.PlayerChangeLanRequest, ev.lan)
-    elseif (ev.EventName == "EvUiCloseActivityPopUpBox")
-    then
+    elseif (ev.EventName == "EvUiCloseActivityPopUpBox") then
         CS.UnityEngine.PlayerPrefs.SetString(self.ControllerActivity.CurrentActID, "true")
         self:createViewActivityPopUpBox()
-    elseif (ev.EventName == "EvUiRequestGetReceiverAddress")
-    then
+    elseif (ev.EventName == "EvUiRequestGetReceiverAddress") then
         self:RequestGetAddress()
-    elseif (ev.EventName == "EvUiRequestEditReceiverAddress")
-    then
+    elseif (ev.EventName == "EvUiRequestEditReceiverAddress") then
         local address = ev.Address
         self:RequestEditAddress(address)
-    elseif (ev.EventName == "EvConsoleCmd")
-    then
+    elseif (ev.EventName == "EvConsoleCmd") then
         self:requestConsoleCmd(ev.ListParam)
-    elseif (ev.EventName == "EvClickShare")
-    then
+    elseif (ev.EventName == "EvClickShare") then
         local share_type = ev.ShareType
         local share = self.ControllerMgr.ViewMgr:createView("Share")
         share:setPlayerInfo(self.ControllerActor.PropNickName:get(), self.ControllerActor.PropAccountId:get(), share_type)
-    elseif (ev.EventName == "EvGetPicSuccess")
-    then
+    elseif (ev.EventName == "EvGetPicSuccess") then
         self:OnGetPicSuccess(ev.pic_data)
     end
 end
@@ -360,8 +315,7 @@ function ControllerPlayer:s2cPlayerDailyFirstLoginNotify(daily_reward_tbid)
     local view_daily_reward = self.ControllerMgr.ViewMgr:createView("DailyReward")
     view_daily_reward:setRewardInfo(map_tbdata, daily_reward_tbid,
             function(bo)
-                if (bo)
-                then
+                if (bo) then
                     self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetDailyRewardRequest)
                 end
             end
@@ -380,8 +334,7 @@ end
 function ControllerPlayer:s2cPlayerGetOnlinePlayerNumNotify(num)
     self.OnlinePlayerNum = num
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySetOnLinePlayerNum")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntitySetOnLinePlayerNum:new(nil)
     end
     ev.online_num = self.OnlinePlayerNum
@@ -394,8 +347,7 @@ function ControllerPlayer:s2cPlayerGetPlayerInfoOtherNotify(player_info, ticket)
     local p_i = PlayerInfo:new(nil)
     p_i:setData(player_info)
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityGetPlayerInfoOther")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityGetPlayerInfoOther:new(nil)
     end
     ev.player_info = p_i
@@ -415,8 +367,7 @@ end
 
 ---------------------------------------
 function ControllerPlayer:PlayerInvitePlayerEnterDesktopRequestResult(r)
-    if (r == ProtocolResult.Success)
-    then
+    if (r == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("InviteFriendToTable"))
     end
 end
@@ -426,8 +377,7 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
     local invite = InvitePlayerEnterDesktop:new(nil)
     invite:setData(invite1)
     local desktop_helper = self.ControllerDesk:GetDesktopHelperBase(invite.desktop_filter.FactoryName)
-    if (desktop_helper == nil)
-    then
+    if (desktop_helper == nil) then
         return
     end
     local desktopinfo_format = desktop_helper:GetDesktopInfoFormat(self.ControllerMgr.RPC.MessagePack, self.ControllerMgr.TbDataMgr,
@@ -438,12 +388,9 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
             self.ControllerMgr.LanMgr:getLanValue("Player"), tostring(invite.player_num), "/", desktopinfo_format.Param)
     msg_box:showMsgBox1(self.ControllerMgr.LanMgr:getLanValue("InviteFriendPlay"), tips,
             function(accept)
-                if (accept)
-                then
-                    if (self.ControllerDeskH.DesktopHBase == nil)
-                    then
-                        if (self.ControllerDesk.DesktopBase == nil)
-                        then
+                if (accept) then
+                    if (self.ControllerDeskH.DesktopHBase == nil) then
+                        if (self.ControllerDesk.DesktopBase == nil) then
                             self.ControllerLobby:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
                         else
                             local msg_boxex = self.ControllerMgr.ViewMgr:createView("MsgBox")
@@ -493,26 +440,22 @@ end
 ---------------------------------------
 function ControllerPlayer:s2cPlayerGiveChipQueryRangeRequestResult(r, give_gold_min, give_gold_max)
     local is_success = false
-    if (r == ProtocolResult.Success)
-    then
+    if (r == ProtocolResult.Success) then
         is_success = true
     else
         local msg = ""
-        if (r == ProtocolResult.GiveChipBeyondTheLimit)
-        then
+        if (r == ProtocolResult.GiveChipBeyondTheLimit) then
             local tips = self.ControllerMgr.LanMgr:getLanValue("MoreThanEachDayNoSend")
             msg = string.format(tips, self.ViewMgr.LanMgr:getLanValue("Chip"))
             ViewHelper:UiShowInfoFailed(msg)
-        elseif (r == ProtocolResult.GiveChipNotEnoughChip)
-        then
+        elseif (r == ProtocolResult.GiveChipNotEnoughChip) then
             local tips = self.ControllerMgr.LanMgr:getLanValue("CarrySmallNoSend")
             msg = string.format(tips, self.ViewMgr.LanMgr:getLanValue("Chip"))
             ViewHelper:UiShowInfoFailed(msg)
         end
     end
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityPlayerGiveChipQueryRangeRequestResult")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityPlayerGiveChipQueryRangeRequestResult:new(nil)
     end
     ev.give_chip_max = give_gold_max
@@ -524,22 +467,17 @@ end
 ---------------------------------------
 function ControllerPlayer:s2cPlayerGiveChipRequestResult(r)
     local msg = ""
-    if (r == ProtocolResult.Success)
-    then
+    if (r == ProtocolResult.Success) then
         msg = string.format(self.ControllerMgr.LanMgr:getLanValue("GiveSuccess"), self.ViewMgr.LanMgr:getLanValue("Chip"))
         ViewHelper:UiShowInfoSuccess(msg)
     else
-        if (r == ProtocolResult.GiveChipNotEnoughChip)
-        then
+        if (r == ProtocolResult.GiveChipNotEnoughChip) then
             msg = self.ControllerMgr.LanMgr:getLanValue("HaveTooLittleFail")
-        elseif (r == ProtocolResult.GiveChipMoreThanMine)
-        then
+        elseif (r == ProtocolResult.GiveChipMoreThanMine) then
             msg = self.ControllerMgr.LanMgr:getLanValue("GiveMoreIOwnFail")
-        elseif (r == ProtocolResult.GiveChipTooSmall)
-        then
+        elseif (r == ProtocolResult.GiveChipTooSmall) then
             msg = self.ControllerMgr.LanMgr:getLanValue("GiveSmallFail")
-        elseif (r == ProtocolResult.GiveChipBeyondTheLimit)
-        then
+        elseif (r == ProtocolResult.GiveChipBeyondTheLimit) then
             msg = self.ControllerMgr.LanMgr:getLanValue("GiveMoreFail")
         else
             msg = self.ControllerMgr.LanMgr:getLanValue("GivePlayerFail")
@@ -554,8 +492,7 @@ end
 function ControllerPlayer:s2cPlayerBankDepositNotify(bank_notify)
     local data = BankNotify:new(nil)
     data:setData(bank_notify)
-    if (data.result == ProtocolResult.Success)
-    then
+    if (data.result == ProtocolResult.Success) then
         self.ControllerActor.PropGoldAcc:set(data.acc_golds)
         self.ControllerActor.PropGoldBank:set(data.bank_golds)
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("SaveSuccess"))
@@ -568,8 +505,7 @@ end
 function ControllerPlayer:s2cPlayerBankWithdrawNotify(bank_notify)
     local data = BankNotify:new(nil)
     data:setData(bank_notify)
-    if (data.result == ProtocolResult.Success)
-    then
+    if (data.result == ProtocolResult.Success) then
         self.ControllerActor.PropGoldAcc:set(data.acc_golds)
         self.ControllerActor.PropGoldBank:set(data.bank_golds)
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("WithdrawalSuccess"))
@@ -580,8 +516,7 @@ end
 
 ---------------------------------------
 function ControllerPlayer:s2cPlayerGetDailyRewardNotify(r)
-    if (r == ProtocolResult.Success)
-    then
+    if (r == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("GetDailyReward"))
     else
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("GetDailyRewardFail"))
@@ -590,8 +525,7 @@ end
 
 ---------------------------------------
 function ControllerPlayer:s2cPlayerGetOnlineRewardRequestResult(result, reward)
-    if (result == ProtocolResult.Success)
-    then
+    if (result == ProtocolResult.Success) then
         --[[local view_main = self.ControllerMgr.ViewMgr:getView("Main")
         if(view_main ~= nil)
         then
@@ -615,8 +549,7 @@ end
 
 ---------------------------------------
 function ControllerPlayer:s2cPlayerRefreshIpAddressNotify(ip_address)
-    if (ip_address ~= nil and ip_address ~= "")
-    then
+    if (ip_address ~= nil and ip_address ~= "") then
         self.ControllerActor.PropIpAddress:set(ip_address)
     end
     ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("IPRefresh"))
@@ -653,8 +586,7 @@ function ControllerPlayer:OnPlayerGetCasinosModuleDataWithFactoryNameNotify(play
     local p_d = PlayerModuleData:new(nil)
     p_d:setData(player_moduledata)
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityGetPlayerModuleDataSuccess")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityGetPlayerModuleDataSuccess:new(nil)
     end
     ev.player_moduledata = p_d
@@ -765,16 +697,14 @@ end
 ---------------------------------------
 function ControllerPlayer:getDesktopChat()
     local map_chat = {}
-    if (self.ControllerDesk.DesktopBase ~= nil)
-    then
+    if (self.ControllerDesk.DesktopBase ~= nil) then
         local index = #self.ControllerDesk.ListDesktopChat - 1
         for key, value in pairs(self.ControllerDesk.ListDesktopChat) do
             map_chat[index] = value
             index = index - 1
         end
     else
-        if (self.ControllerDeskH.DesktopHBase ~= nil)
-        then
+        if (self.ControllerDeskH.DesktopHBase ~= nil) then
             local index = #self.ControllerDeskH.ListDesktopChat - 1
             for key, value in pairs(self.ControllerDeskH.ListDesktopChat) do
                 map_chat[index] = value
@@ -793,11 +723,9 @@ function ControllerPlayer:initStoreItem()
         table.insert(t_sku, value.StoreSKU)
     end
     local first_recharge_sku = TbDataHelper:GetCommonValue("FirstRechargeStoreSKU")
-    if (first_recharge_sku ~= nil and first_recharge_sku ~= "")
-    then
+    if (first_recharge_sku ~= nil and first_recharge_sku ~= "") then
         table.insert(t_sku, first_recharge_sku)
     end
-
     CS.Pay.Instant():initInventory(t_sku)
 end
 
@@ -813,10 +741,8 @@ end
 
 ---------------------------------------
 function ControllerPlayer:CheckNeedShowHotActivity()
-    if (CS.UnityEngine.PlayerPrefs.HasKey(self.ControllerActivity.CurrentActID))
-    then
-        if (CS.UnityEngine.PlayerPrefs.GetString(self.ControllerActivity.CurrentActID) == "true")
-        then
+    if (CS.UnityEngine.PlayerPrefs.HasKey(self.ControllerActivity.CurrentActID)) then
+        if (CS.UnityEngine.PlayerPrefs.GetString(self.ControllerActivity.CurrentActID) == "true") then
             return
         else
             self:ShowHotActivity()
@@ -830,12 +756,10 @@ end
 ---------------------------------------
 function ControllerPlayer:ShowHotActivity()
     local list_activity = self.ControllerActivity.ListActivity
-    if (#list_activity > 0)
-    then
+    if (#list_activity > 0) then
         for i = 1, #list_activity do
             local temp = list_activity[i]
-            if (temp.Type == "Hot")
-            then
+            if (temp.Type == "Hot") then
                 table.insert(self.QueneHotActivity, temp)
             end
         end
@@ -845,8 +769,7 @@ end
 
 ---------------------------------------
 function ControllerPlayer:createViewActivityPopUpBox()
-    if (#self.QueneHotActivity > 0)
-    then
+    if (#self.QueneHotActivity > 0) then
         local temp = table.remove(self.QueneHotActivity, 1)
         local view_activitypopupbox = self.ControllerMgr.ViewMgr:createView("ActivityPopUpBox")
         view_activitypopupbox:SetActivityInfo(temp)
@@ -855,8 +778,7 @@ end
 
 ---------------------------------------
 function ControllerPlayer:uploadProfileImageCallBack(status, response, error)
-    if (status == UCenterResponseStatus.Error)
-    then
+    if (status == UCenterResponseStatus.Error) then
         local msg_t = {}
         table.insert(msg_t, self.ControllerMgr.LanMgr:getLanValue("UploadPicFailed"))
         table.insert(msg_t, "! ErrorCode: ")
@@ -867,13 +789,11 @@ function ControllerPlayer:uploadProfileImageCallBack(status, response, error)
         ViewHelper:UiShowInfoFailed(msg)
     else
         local ev = self.ControllerMgr.ViewMgr:getEv("EvGetPicUpLoadSuccess")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvGetPicUpLoadSuccess:new(nil)
         end
         self.ControllerMgr.ViewMgr:sendEv(ev)
     end
-
     ViewHelper:UiEndWaiting()
 end
 
@@ -884,50 +804,60 @@ function ControllerPlayer:requestConsoleCmd(list_param)
 end
 
 ---------------------------------------
---请求获取收货地址
+-- 请求获取收货地址
 function ControllerPlayer:RequestGetAddress()
     self.ControllerMgr.RPC:RPC0(self.MC.PlayerRequestGetAddress)
 end
 
 ---------------------------------------
---请求编辑收货地址
+-- 请求编辑收货地址
 function ControllerPlayer:RequestEditAddress(address)
     self.ControllerMgr.RPC:RPC1(self.MC.PlayerRequestEditAddress, address:getData4Pack())
 end
 
 ---------------------------------------
---响应获取收货地址
+-- 响应获取收货地址
 function ControllerPlayer:s2cPlayerRequestGetAddressResult(result, address)
     local data_address = PlayerAddress:new(nil)
     data_address:setData(address)
-    if (result == ProtocolResult.Success)
-    then
+    if (result == ProtocolResult.Success) then
         local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityResponseGetReceiverAddress")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityResponseGetReceiverAddress:new(nil)
         end
 
         ev.Address = data_address
         self.ControllerMgr.ViewMgr:sendEv(ev)
-    elseif (result == ProtocolResult.Failed)
-    then
+    elseif (result == ProtocolResult.Failed) then
         local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
         msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("GetAddressFailed"))
     end
 end
 
 ---------------------------------------
---响应编辑收货地址
+-- 响应编辑收货地址
 function ControllerPlayer:s2cPlayerRequestEditAddressResult(result, address)
     --[[if (result == ProtocolResult.Success)
     then
         local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
         msg_box:showMsgBox1("", "信息提交成功")]]
-    if (result == ProtocolResult.Failed)
-    then
+    if (result == ProtocolResult.Failed) then
         local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
         msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("UploadAddressFailed"))
+    end
+end
+
+---------------------------------------
+-- 定时更新
+function ControllerPlayer:_timerUpdate()
+    local this = ControllerPlayer
+    this.GetOnlinePlayerNumTimeElapsed = this.GetOnlinePlayerNumTimeElapsed + 1
+    if (this.GetOnlinePlayerNumTimeElapsed >= 5) then
+        this.GetOnlinePlayerNumTimeElapsed = 0
+        this:requestGetOnlinePlayerNum()
+    end
+    if (this.OnLineReward ~= nil) then
+        this.OnLineReward:Update()
     end
 end
 

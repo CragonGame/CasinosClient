@@ -64,8 +64,8 @@ function DesktopHBase:getWinOrLoosePercent(card_type)
 end
 
 ---------------------------------------
-function DesktopHBase:getGameReusltTips(card_type, self_betgolds)
-end
+--function DesktopHBase:getGameReusltTips(card_type, self_betgolds)
+--end
 
 ---------------------------------------
 DesktopHBaseFactory = {}

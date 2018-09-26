@@ -1,7 +1,5 @@
 -- Copyright(c) Cragon. All rights reserved.
--- ControllerLaunch是直接被new出来，不受ControllerMgr管理
--- 登录界面，由MainC调用ControllerMgr创建Login
--- 进入游戏，由ControllerMgr创建ControllerPlayer等一组Controller
+-- 登录界面，由Context调用ControllerMgr创建Login
 
 ---------------------------------------
 ControllerMgr = {
@@ -107,13 +105,10 @@ end
 
 ---------------------------------------
 function ControllerMgr:CreateController(controller_name, controller_data, guid)
-    -- local controller_mgr = ControllerMgr:new(nil)
     local controller_factory = self.TableControllerFactory[controller_name]
-    if (controller_factory == nil)
-    then
+    if (controller_factory == nil) then
         return nil
     end
-
     local controller = controller_factory:createController(self, controller_data, guid)
     self.TableController[controller_name] = controller
     return controller
@@ -122,8 +117,7 @@ end
 ---------------------------------------
 function ControllerMgr:DestroyController(is_kickout)
     for k, v in pairs(self.TableController) do
-        if (v ~= nil)
-        then
+        if (v ~= nil) then
             local controller_name = v.ControllerName
             v:onDestroy()
             self.TableController[controller_name] = nil
@@ -134,8 +128,7 @@ end
 
 ---------------------------------------
 function ControllerMgr:RegController(controller_name, controller_factory)
-    if (controller_factory ~= nil)
-    then
+    if (controller_factory ~= nil) then
         self.TableControllerFactory[controller_name] = controller_factory
     end
 end
@@ -148,16 +141,14 @@ end
 
 ---------------------------------------
 function ControllerMgr:bindEvListener(ev_name, ev_listener)
-    if (ControllerMgr.EventSys ~= nil)
-    then
+    if (ControllerMgr.EventSys ~= nil) then
         ControllerMgr.EventSys:bindEvListener(ev_name, ev_listener)
     end
 end
 
 ---------------------------------------
 function ControllerMgr:unbindEvListener(ev_listener)
-    if (ControllerMgr.EventSys ~= nil)
-    then
+    if (ControllerMgr.EventSys ~= nil) then
         ControllerMgr.EventSys:unbindEvListener(ev_listener)
     end
 end
@@ -165,8 +156,7 @@ end
 ---------------------------------------
 function ControllerMgr:getEv(ev_name)
     local ev = nil
-    if (ControllerMgr.EventSys ~= nil)
-    then
+    if (ControllerMgr.EventSys ~= nil) then
         ev = ControllerMgr.EventSys:getEv(ev_name)
     end
     return ev
@@ -174,8 +164,7 @@ end
 
 ---------------------------------------
 function ControllerMgr:sendEv(ev)
-    if (ControllerMgr.EventSys ~= nil)
-    then
+    if (ControllerMgr.EventSys ~= nil) then
         ControllerMgr.EventSys:sendEv(ev)
     end
 end

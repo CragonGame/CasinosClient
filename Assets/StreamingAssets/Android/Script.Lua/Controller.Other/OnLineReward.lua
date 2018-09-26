@@ -15,21 +15,18 @@ function OnLineReward:new(o, view_mgr)
     o.CanGetReward = false
     o.NextReward = 0
     o.FormatLeftTm = ""
-
     return o
 end
 
 ---------------------------------------
-function OnLineReward:update(tm)
-    if (self.CanGetReward == false)
-    then
-        if (self.LeftTm > 0)
-        then
+function OnLineReward:Update()
+    local tm = 1
+    if (self.CanGetReward == false) then
+        if (self.LeftTm > 0) then
             self.LeftTm = self.LeftTm - tm
             self.FormatLeftTm = CS.Casinos.LuaHelper.FormatTmFromSecondToMinute(self.LeftTm, false)
             local ev = self.ViewMgr:getEv("EvEntityRefreshLeftOnlineRewardTm")
-            if (ev == nil)
-            then
+            if (ev == nil) then
                 ev = EvEntityRefreshLeftOnlineRewardTm:new(nil)
             end
             ev.left_reward_second = self.FormatLeftTm
@@ -37,8 +34,7 @@ function OnLineReward:update(tm)
             ev.is_success = is_success
             self.ViewMgr:sendEv(ev)
 
-            if (self.LeftTm <= 0)
-            then
+            if (self.LeftTm <= 0) then
                 self.CanGetReward = true
                 self:_sendCanGetReward()
             end

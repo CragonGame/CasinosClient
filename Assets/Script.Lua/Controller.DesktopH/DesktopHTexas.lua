@@ -113,8 +113,8 @@ function DesktopHTexas:getWinOrLoosePercent(card_type)
 end
 
 ---------------------------------------
-function DesktopHTexas:getGameReusltTips(card_type, self_betgolds)
-end
+--function DesktopHTexas:getGameReusltTips(card_type, self_betgolds)
+--end
 
 ---------------------------------------
 function DesktopHTexas:_setGoldPercent()
