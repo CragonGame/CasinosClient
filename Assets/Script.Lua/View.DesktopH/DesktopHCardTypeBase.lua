@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopHCardTypeBase = {
 	ListCard = nil
 }

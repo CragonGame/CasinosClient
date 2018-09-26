@@ -170,10 +170,6 @@ function ControllerDeskH:onDestroy()
 end
 
 ---------------------------------------
-function ControllerDeskH:onUpdate(tm)
-end
-
----------------------------------------
 function ControllerDeskH:onHandleEv(ev)
     if (self.DesktopHBase ~= nil)
     then

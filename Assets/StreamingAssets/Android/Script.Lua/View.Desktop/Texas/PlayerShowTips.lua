@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 PlayerShowTips = {}
 
 function PlayerShowTips:new(o, player_info)

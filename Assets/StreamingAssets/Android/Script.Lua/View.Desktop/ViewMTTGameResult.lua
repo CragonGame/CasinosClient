@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewMTTGameResult = ViewBase:new()
 
 function ViewMTTGameResult:new(o)

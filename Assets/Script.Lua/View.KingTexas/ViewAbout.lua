@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewAbout = ViewBase:new()
 
 function ViewAbout:new(o)

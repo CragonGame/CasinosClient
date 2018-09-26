@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 商城界面，与ControllerTrade交互
 
 ViewShop = ViewBase:new()

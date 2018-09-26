@@ -9,8 +9,7 @@ function RPC:new(o)
     setmetatable(o, self)
     self.__index = self
 
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
         self.MapMethodInfo = {}
         self.MessagePack = require("MessagePack")
@@ -79,8 +78,7 @@ end
 function RPC.OnRpcMethod(method_id, data)
     local rpc = RPC:new(nil)
     local reciver = rpc.MapMethodInfo[method_id]
-    if (reciver ~= nil)
-    then
+    if (reciver ~= nil) then
         reciver:ReciverData(rpc.MessagePack, data)
     end
 end
@@ -235,8 +233,7 @@ end
 function RPCReciver1:ReciverData(m_p, data)
     local data_1 = m_p.unpack(data)
 
-    if (self.Method ~= nil)
-    then
+    if (self.Method ~= nil) then
         self.Method(data_1)
     end
 end
@@ -269,8 +266,7 @@ function RPCReciver2:ReciverData(m_p, data)
     offset = offset + 2
     local bytes_data_2 = CS.Casinos.LuaHelper.readBytesWithLength(data, offset, length_2)
     local data_2 = m_p.unpack(bytes_data_2)
-    if (self.Method ~= nil)
-    then
+    if (self.Method ~= nil) then
         self.Method(data_1, data_2)
     end
 end
@@ -310,8 +306,7 @@ function RPCReciver3:ReciverData(m_p, data)
     local bytes_data_3 = CS.Casinos.LuaHelper.readBytesWithLength(data, offset, length_3)
     local data_3 = m_p.unpack(bytes_data_3)
 
-    if (self.Method ~= nil)
-    then
+    if (self.Method ~= nil) then
         self.Method(data_1, data_2, data_3)
     end
 end
@@ -357,8 +352,7 @@ function RPCReciver4:ReciverData(m_p, data)
     local bytes_data_4 = CS.Casinos.LuaHelper.readBytesWithLength(data, offset, length_4)
     local data_4 = m_p.unpack(bytes_data_4)
 
-    if (self.Method ~= nil)
-    then
+    if (self.Method ~= nil) then
         self.Method(data_1, data_2, data_3, data_4)
     end
 end

@@ -1,10 +1,11 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopHBase = {}
 
 function ViewDesktopHBase:new(o,ui_desktoph)
     o = o or {}
     setmetatable(o,self)
-    self.__index = self	
-	
+    self.__index = self
     return o
 end        
         
@@ -14,7 +15,6 @@ end
 function ViewDesktopHBase:idleState(is_screenshot)
 end
 
-        
 function ViewDesktopHBase:readyState(is_screenshot,map_userdata)
 end
      
@@ -99,8 +99,6 @@ end
 function ViewDesktopHBase:getTongPeiImageName()
 end
 
-
-		
 ViewDesktopHBaseFactory = {}
 
 function ViewDesktopHBaseFactory:new(o)
@@ -117,8 +115,6 @@ end
 function ViewDesktopHBaseFactory:CreateViewDesktopHBase(ui_desktoph)
 end
 
-
-    
 _tCardTypeInfo = {}
 
 function _tCardTypeInfo:new(o,cardtype_path,cardtype_soundpath)
@@ -131,8 +127,6 @@ function _tCardTypeInfo:new(o,cardtype_path,cardtype_soundpath)
     return o
 end     
 
-
-        
 _tBeBankGoldsInfo = {}
 
 function _tBeBankGoldsInfo:new(o,mintake_golds,min_leavegold)

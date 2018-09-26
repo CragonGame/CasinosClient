@@ -49,10 +49,6 @@ function ControllerLobby:onDestroy()
 end
 
 ---------------------------------------
-function ControllerLobby:onUpdate(tm)
-end
-
----------------------------------------
 function ControllerLobby:onHandleEv(ev)
     if (ev.EventName == "EvUiClickSearchDesk")
     then

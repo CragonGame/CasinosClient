@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 管理本人信息，左下角头像；如果本人是有座玩家或庄家，同时还刷新本人座位或庄家头像相关信息
 
 DesktopHSelf = {}

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewRanking = ViewBase:new()
 
 function ViewRanking:new(o)

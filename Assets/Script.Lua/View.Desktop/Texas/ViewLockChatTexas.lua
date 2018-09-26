@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewLockChatTexas = ViewBase:new()
 
 function ViewLockChatTexas:new(o)

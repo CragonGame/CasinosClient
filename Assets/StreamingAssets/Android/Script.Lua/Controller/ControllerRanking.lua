@@ -61,10 +61,6 @@ function ControllerRanking:onDestroy()
 end
 
 ---------------------------------------
-function ControllerRanking:onUpdate(tm)
-end
-
----------------------------------------
 function ControllerRanking:onHandleEv(ev)
     if (ev.EventName == "EvUiGetRankingGold")
     then

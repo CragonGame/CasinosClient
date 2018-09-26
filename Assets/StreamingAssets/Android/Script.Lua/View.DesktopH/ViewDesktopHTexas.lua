@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopHTexas = {}
 
 function ViewDesktopHTexas:new(o,ui_desktoph)

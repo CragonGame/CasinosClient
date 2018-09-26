@@ -68,7 +68,7 @@ function BLotteryTicketGameEndDetail:setData(data)
         for i, v in pairs(l_c) do
             local c_d = CardData:new(nil)
             c_d:setData(v)
-            table.insert(t_c,c_d)
+            table.insert(t_c, c_d)
         end
         self.ListCard = t_c
     end
@@ -155,7 +155,7 @@ function BLotteryTicketData:setData(data)
         for i, v in pairs(l_c) do
             local c_d = CardData:new(nil)
             c_d:setData(v)
-            table.insert(t_c,c_d)
+            table.insert(t_c, c_d)
         end
         self.ListCard = t_c
     end

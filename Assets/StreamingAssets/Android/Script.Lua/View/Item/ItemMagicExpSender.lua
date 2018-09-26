@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 播放中的魔法表情
 
 ItemMagicExpSender = {}

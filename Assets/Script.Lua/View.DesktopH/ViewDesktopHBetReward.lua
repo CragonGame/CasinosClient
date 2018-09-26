@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopHBetReward = ViewBase:new()
 
 function ViewDesktopHBetReward:new(o)

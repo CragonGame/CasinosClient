@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewHandCardTexas = ViewBase:new()
 
 function ViewHandCardTexas:new(o, com_card, guid, index)

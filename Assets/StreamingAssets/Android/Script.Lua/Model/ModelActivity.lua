@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 BActivity = {}
 
 function BActivity:new(o)

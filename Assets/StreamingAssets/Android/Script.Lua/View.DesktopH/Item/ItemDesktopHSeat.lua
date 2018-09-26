@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 一个座位
 
 ItemDesktopHSeat = {}

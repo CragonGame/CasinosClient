@@ -64,10 +64,6 @@ function ControllerTrade:onDestroy()
 end
 
 ---------------------------------------
-function ControllerTrade:onUpdate(tm)
-end
-
----------------------------------------
 function ControllerTrade:onHandleEv(ev)
     if (ev.EventName == "EvUiRequestBuyGold")
     then

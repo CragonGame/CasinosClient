@@ -62,8 +62,8 @@ MethodTypeTexasDesktop = {
     TexasMTTUpdateRealtimeInfoNotify = 130, -- MTT，通知刷新赛况实时简要信息，全桌广播
     TexasMTTServerAutoActionStateChangeNotify = 131, -- MTT，服务端托管状态变更通知，仅本人收到
     TexasMTTUpdateProcessNotify = 132, -- MTT，进入前50%，30%，奖励圈，决赛桌，终极对决通知，全桌广播
-    TexasMTTDesktopStartOrPause = 133,-- MTT，桌子暂停或启动。参数：BMatchTexasDesktopStartOrPauseNotify
-    TexasMTTDesktoPlayerInfoUpdate = 134,-- MTT，桌子中玩家的赛事信息更新通知，全桌广播。参数：BMatchTexasPlayerInfo
+    TexasMTTDesktopStartOrPause = 133, -- MTT，桌子暂停或启动。参数：BMatchTexasDesktopStartOrPauseNotify
+    TexasMTTDesktoPlayerInfoUpdate = 134, -- MTT，桌子中玩家的赛事信息更新通知，全桌广播。参数：BMatchTexasPlayerInfo
 }
 
 TexasDesktopSeatNum = {
@@ -127,7 +127,7 @@ DesktopStackChangeTypeTexas = {
     [2] = "ChargeForDeskUse", -- 台费
     [3] = "PushStack",
 }
---
+
 --DesktopTypeTexas = {
 --    Classic = 0,
 --    MustBet = 1,

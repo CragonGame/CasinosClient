@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopHBankList = ViewBase:new()
 
 function ViewDesktopHBankList:new(o)

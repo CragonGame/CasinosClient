@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopHCard = {}
 
 function DesktopHCard:new(o, dealer, is_bankplayer)

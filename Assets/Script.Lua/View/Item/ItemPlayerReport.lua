@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 举报玩家中的一个Item
 
 ItemPlayerReport = {}

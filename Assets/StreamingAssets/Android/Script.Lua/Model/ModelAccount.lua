@@ -1,11 +1,14 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 GetPhoneCodeReson = {
     Register = 0,
     ResetPwd = 1,
 }
 
+---------------------------------------
 AttachWechatMp = {}
+
 function AttachWechatMp:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -25,7 +28,9 @@ function AttachWechatMp:setData(data)
     self.headimgurl = data[4]
 end
 
+---------------------------------------
 LoginAccountInfos = {}
+
 function LoginAccountInfos:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -49,7 +54,9 @@ function LoginAccountInfos:setData(data)
     end
 end
 
+---------------------------------------
 LoginAccountInfo = {}
+
 function LoginAccountInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -69,6 +76,7 @@ function LoginAccountInfo:setData(data)
     self.Pwd = data["Pwd"]
 end
 
+---------------------------------------
 ClientLoginAppRequest = {}
 
 function ClientLoginAppRequest:new(o)
@@ -98,6 +106,7 @@ function ClientLoginAppRequest:getData4Pack()
     return t
 end
 
+---------------------------------------
 ClientLoginAppNotify = {}
 
 function ClientLoginAppNotify:new(o)
@@ -113,6 +122,7 @@ function ClientLoginAppNotify:setData(data)
     self.result = data[1]
 end
 
+---------------------------------------
 ClientEnterWorldRequest = {}
 
 function ClientEnterWorldRequest:new(o)
@@ -137,6 +147,7 @@ function ClientEnterWorldRequest:getData4Pack()
     return t
 end
 
+---------------------------------------
 ClientEnterWorldNotify = {}
 
 function ClientEnterWorldNotify:new(o)
@@ -172,6 +183,7 @@ function ClientEnterWorldNotify:setData(data)
     end
 end
 
+---------------------------------------
 PlayerPlayState1 = {}
 
 function PlayerPlayState1:new(o)

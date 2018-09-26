@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopHCardTypeTexas = DesktopHCardTypeBase:new(nil)
 
 function DesktopHCardTypeTexas:new(o)

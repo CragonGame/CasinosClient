@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- MTT报名成功对话框提示
 
 ViewApplySucceed = ViewBase:new()

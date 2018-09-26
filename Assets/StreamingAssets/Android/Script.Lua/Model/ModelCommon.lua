@@ -1,24 +1,25 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 CommonMethodType = {
     None = 0, -- 无效
     MsgPack = 50,
     MsgPackAccountBegin = 51,
 
--- Account
+    -- Account
     AccountGatewayConnected = 52,
     AccountLoginAppRequest = 53, -- c->s, 请求登录App，连接UCenter验证
     AccountLoginAppResponse = 54, -- s->c, 响应登录App请求，连接UCenter验证
     AccountEnterWorldRequest = 55, -- c->s, 请求进入游戏世界
     AccountEnterWorldResponse = 56, -- s->c, 响应进入游戏世界请求
     AccountLogoutNotify = 57, -- s->c，登出通知
-    AccountUpdateDataFromUCenterRequest = 58,-- c->s，请求从UCenter中同步AppAccountData数据，无参
-    AccountUpdateDataFromUCenterNotify = 59,-- s->c，响应从UCenter中同步AppAccountData数据，AttachWechatMp
+    AccountUpdateDataFromUCenterRequest = 58, -- c->s，请求从UCenter中同步AppAccountData数据，无参
+    AccountUpdateDataFromUCenterNotify = 59, -- s->c，响应从UCenter中同步AppAccountData数据，AttachWechatMp
 
     MsgPackAccountEnd = 65,
     MsgPackPlayerBegin = 299,
 
--- Player
+    -- Player
     PlayerClientInitDoneRequest = 300, -- 客户端初始化完成
     PlayerGMInitNotify = 302, -- GM初始化通知
     PlayerUpdateClientConfigNotify = 304, -- Client配置改变通知
@@ -92,7 +93,7 @@ CommonMethodType = {
     PlayerGetPlayerInfoOtherRequest = 492, -- 请求获取其他玩家信息
     PlayerGetPlayerInfoOtherNotify = 493, -- 响应获取其他玩家信息
 
--- Bag
+    -- Bag
     BagItemPush2ClientNotify = 570, -- c->s, 背包中所有道具推送给Client的通知
     BagGiftChangedNotify = 571, -- c->s, 背包中礼物变更通知
     BagOperateItemRequest = 572, -- c->s, 请求使用道具
@@ -102,30 +103,30 @@ CommonMethodType = {
     BagAddItemNotify = 576, -- s->c, 通知添加道具
     BagUpdateItemNotify = 577, -- s->c，通知更新道具
 
--- Trade
+    -- Trade
     TradeBuyItemRequest = 600, -- c->s, 商店，请求购买商品
     TradeBuyItemResponse = 601, -- s->c, 商店，响应购买商品
     TradeSellItemRequest = 602, -- c->s, 商店，请求出售商品
     TradeSellItemResponse = 603, -- s->c, 商店，响应出售商品
---TradeBuyRMBItemSuccessRequest = 604, -- 购买人民币物品成功
---TradeBuyRMBItemSuccessResponse = 605, -- 购买人民币物品成功
+    --TradeBuyRMBItemSuccessRequest = 604, -- 购买人民币物品成功
+    --TradeBuyRMBItemSuccessResponse = 605, -- 购买人民币物品成功
     TradeOrderNotify = 606, -- 订单结果通知
 
--- Wallet
+    -- Wallet
     WalletRechargeRequest = 610, -- 请求充值
     WalletRechargeNotify = 611, -- 充值通知
     WalletWithdrawRequest = 612, -- 请求提现
     WalletWithdrawNotify = 613, -- 提现通知
 
--- Task
+    -- Task
     TaskRequest = 620, -- c->s, 任务请求
     TaskNotify = 621, -- s->c, 任务通知
 
--- Activity
+    -- Activity
     ActivityRequest = 650, -- c->s，活动拉取请求
     ActivityNotify = 651, -- s->c，活动推送通知
 
--- Ranking
+    -- Ranking
     RankingRequest = 660, -- c->s, 获取排行榜
     RankingChipNotify = 661, -- s->c, 获取金币排行榜
     RankingGoldNotify = 662, -- s->c, 获取钻石排行榜
@@ -134,7 +135,7 @@ CommonMethodType = {
     RankingWinGoldNotify = 665, -- s->c, 获取豪胜排行榜
     RankingWechatRedEnvelopesNotify = 666, -- s->c, 获取红包排行榜
 
--- Desktop
+    -- Desktop
     DesktopUserRequest = 700, -- 桌子自定义协议
     DesktopUserNotify = 701, -- 桌子自定义协议
     DesktopSnapshotRequest = 702, -- 桌子初始化
@@ -157,13 +158,13 @@ CommonMethodType = {
     DesktopChatNotify = 719, -- 玩家聊天响应
     DesktopPlayerChangeDeskRequest = 720, -- 玩家换桌请求
 
--- DesktopService
+    -- DesktopService
     SearchDesktopListRequest = 760, -- 请求获取桌子列表
     SearchDesktopListNotify = 761, -- 响应获取桌子列表请求
     SearchDesktopByPlayerGuidRequest = 762, -- 请求获取好友所在桌
     SearchDesktopByPlayerGuidNotify = 763, -- 响应获取好友所在桌请求
 
--- MatchTexas
+    -- MatchTexas
     MatchTexasRequestGetList = 800, -- 请求获取赛事信息列表，参数MatchTexasScopeType
     MatchTexasRequestGetListResult = 801, -- 响应获取赛事信息列表，返回值List<>
     MatchTexasRequestUpdatePlayerNumInList = 802, -- 请求更新赛事信息列表中的参赛人数
@@ -189,10 +190,10 @@ CommonMethodType = {
     MatchTexasRequestAddon = 852, -- MTT，玩家请求增购
     MatchTexasRequestAddonResult = 853, -- MTT，玩家增购结果
     MatchTexasRequestGiveUpRebuyOrAddon = 854, -- MTT，玩家Score变为0，且有机会重购增购继续比赛期间，玩家请求放弃复活从而完成比赛。仅在结束倒计时中有效
-MatchTexasPlayerFinishedNotify = 855,-- MTT，玩家比赛结束通知（紧接着玩家离桌通知后收到，用于客户端弹出比赛结束结算界面，客户端只有在该比赛的比赛桌内时才处理该消息），只通知给玩家本人
-MatchTexasPlayerGameEndNotify = 856,-- MTT，比赛异常解散广播通知，同时导致玩家异常完成比赛
+    MatchTexasPlayerFinishedNotify = 855, -- MTT，玩家比赛结束通知（紧接着玩家离桌通知后收到，用于客户端弹出比赛结束结算界面，客户端只有在该比赛的比赛桌内时才处理该消息），只通知给玩家本人
+    MatchTexasPlayerGameEndNotify = 856, -- MTT，比赛异常解散广播通知，同时导致玩家异常完成比赛
 
--- DesktopH
+    -- DesktopH
     DesktopHRequestEnter = 900, -- 请求进入百人桌
     DesktopHRequestLeave = 901, -- 请求离开百人桌
     DesktopHRequestSnapshot = 902, -- 请求获取百人桌快照
@@ -241,7 +242,7 @@ MatchTexasPlayerGameEndNotify = 856,-- MTT，比赛异常解散广播通知，�
     DesktopHResponseInitDailyBetReward = 978, -- 响应获取玩家在各个百人桌中的每日下注奖励的初始化信息
     DesktopHResponseGetDailyBetReward = 979, -- 响应获取玩家在各个百人桌中的每日下注奖励
 
--- LotteryTicket
+    -- LotteryTicket
     LotteryTicketSnapshot = 1000, -- c->s, 时时彩请求获取快照
     LotteryTicketRequestBet = 1001, -- c->s, 时时彩请求下注
     LotteryTicketRequestBetRepeat = 1002, -- c->s, 时时彩请求重复下注
@@ -259,7 +260,7 @@ MatchTexasPlayerGameEndNotify = 856,-- MTT，比赛异常解散广播通知，�
     LotteryTicketResponseSetCardsType = 1037, -- s->c, 时时彩响应，设置牌型
     LotteryTicketResponseGetRewardPotPlayerInfo = 1038, -- s->c, 时时彩响应，获取大奖玩家列表
 
--- ForestParty
+    -- ForestParty
     ForestPartyRequestEnterDesktop = 1050, -- 请求进入森林舞会
     ForestPartyRequestLeaveDesktop = 1051, -- 请求离开森林舞会
     ForestPartyRequestSnapshot = 1052, -- 请求获取森林舞会快照
@@ -338,6 +339,7 @@ MatchTexasPlayerGameEndNotify = 856,-- MTT，比赛异常解散广播通知，�
     MsgPackIMEnd = 20999,
 }
 
+---------------------------------------
 ProtocolResult = {
     Success = 0, -- 通用，成功
     Failed = 1, -- 失败
@@ -371,17 +373,18 @@ ProtocolResult = {
     DiamondNotEnough = 24, -- 钻石不够
     PointNotEnough = 50, -- 积分不足
 
-    MatchTexasNotExist = 100,-- 德州赛事，不存在
-    MatchTexasNotEnoughGold = 101,-- 德州赛事，金币不够（如报名费不够导致报名失败等）
-    MatchTexasNotSignUp = 102,-- 德州赛事，该玩家未报名
-    MatchTexasTimeOver = 103,-- 德州赛事，已超时，无法执行某件事
-    MatchTexasExist = 104,-- 德州赛事，已存在，如玩家已报名
-    MatchTexasNotEnoughPlayer = 105,-- 德州赛事，参赛玩家不足
-    MatchTexasPlayerNumMax = 106,-- 德州赛事，比赛人数超过上限
-    MatchTexasMatchEnd = 107,-- 德州赛事，比赛已经结束
-    MatchTexasSignUpCheating = 108,-- 德州赛事，未通过防伙牌作弊检测
+    MatchTexasNotExist = 100, -- 德州赛事，不存在
+    MatchTexasNotEnoughGold = 101, -- 德州赛事，金币不够（如报名费不够导致报名失败等）
+    MatchTexasNotSignUp = 102, -- 德州赛事，该玩家未报名
+    MatchTexasTimeOver = 103, -- 德州赛事，已超时，无法执行某件事
+    MatchTexasExist = 104, -- 德州赛事，已存在，如玩家已报名
+    MatchTexasNotEnoughPlayer = 105, -- 德州赛事，参赛玩家不足
+    MatchTexasPlayerNumMax = 106, -- 德州赛事，比赛人数超过上限
+    MatchTexasMatchEnd = 107, -- 德州赛事，比赛已经结束
+    MatchTexasSignUpCheating = 108, -- 德州赛事，未通过防伙牌作弊检测
 }
 
+---------------------------------------
 CasinosModule = {
     Fishing = 0, -- 捕鱼
     GFlower = 1, -- 炸金花
@@ -391,37 +394,43 @@ CasinosModule = {
     ForestParty = 5,
 }
 
+---------------------------------------
 ProjectType = {
 }
 
+---------------------------------------
 MagicExpLimit = {
     NormalPlayer = 0,
     VIPPlayer = 1,
 }
 
+---------------------------------------
 DesktopTypeEx = {
     Desktop = 0,
     DesktopH = 1,
     DesktopMatch = 2,
 }
 
+---------------------------------------
 _eMagicExpMoveType = {
     Rotate = 0,
     Line = 1,
 }
 
+---------------------------------------
 _eUiChatType = {
     Desktop = 0,
     DesktopH = 1,
 }
 
+---------------------------------------
 PresetMsgType = {
     Desktop = 0,
     DesktopH = 1,
 }
 
-_eFriendStateClient =
-{
+---------------------------------------
+_eFriendStateClient = {
     Offline = 0,
     Fishing = 1,
     GFlowerDesktopH = 2,
@@ -438,8 +447,10 @@ _eFriendStateClient =
     DesktopMatch = 13,
 }
 
---银行操作通知
+---------------------------------------
+-- 银行操作通知
 CardData = {}
+
 function CardData:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -462,6 +473,7 @@ function CardData:getData4Pack()
     return p_d
 end
 
+---------------------------------------
 ShareType = {
     WeChat = 0,
     WeChatMoments = 1,

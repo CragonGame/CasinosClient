@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewPotTexasPoker = {}
 
 function ViewPotTexasPoker:new(o, view_desktop)

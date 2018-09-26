@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewTexasMTT = ViewDesktopTypeBase:new()
 
 function ViewTexasMTT:new(o, view_desktop)

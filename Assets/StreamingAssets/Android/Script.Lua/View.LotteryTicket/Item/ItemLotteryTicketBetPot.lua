@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemLotteryTicketBetPot = {}
 
 function ItemLotteryTicketBetPot:new(o,co_betpot,gold_percent,lottery_ticket)

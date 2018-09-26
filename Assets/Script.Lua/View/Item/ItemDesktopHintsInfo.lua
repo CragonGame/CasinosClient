@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 普通桌牌型的其中一条
 
 ItemDesktopHintsInfo = {}

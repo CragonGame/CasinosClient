@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopHCards = {
     DEAL_CARD_TM = 0.1,
     SHOW_CARD_TM = 5,

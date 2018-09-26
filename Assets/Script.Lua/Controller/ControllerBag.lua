@@ -77,10 +77,6 @@ function ControllerBag:onDestroy()
 end
 
 ---------------------------------------
-function ControllerBag:onUpdate(tm)
-end
-
----------------------------------------
 function ControllerBag:onHandleEv(ev)
     if (ev.EventName == "EvUiRemoveItem")
     then

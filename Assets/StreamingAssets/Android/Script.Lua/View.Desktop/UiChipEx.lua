@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 UiChipEx = {}
 
 function UiChipEx:new(o, com_chip, chip_mgr)

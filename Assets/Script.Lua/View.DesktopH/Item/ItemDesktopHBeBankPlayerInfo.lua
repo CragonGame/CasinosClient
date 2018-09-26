@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 申请上庄列表中的一个Item；被ViewDesktopHBankList持有
 
 ItemDesktopHBeBankPlayerInfo = {}

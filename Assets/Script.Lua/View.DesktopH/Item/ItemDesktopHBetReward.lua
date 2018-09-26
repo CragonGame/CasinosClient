@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 代表一个宝箱
 
 ItemDesktopHBetReward = ViewBase:new()

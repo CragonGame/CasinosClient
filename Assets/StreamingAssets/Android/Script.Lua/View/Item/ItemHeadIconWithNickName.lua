@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 普通桌列表中的好友头像加昵称
 
 ItemHeadIconWithNickName = {}

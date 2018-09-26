@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 一封邮件
 
 ItemMail = {}

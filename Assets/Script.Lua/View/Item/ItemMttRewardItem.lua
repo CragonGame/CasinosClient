@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 赛事结束后的比赛结果全屏界面中的一个奖励Item
 
 ItemMttRewardItem = {}

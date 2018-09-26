@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopHHistory = ViewBase:new()
 
 function ViewDesktopHHistory:new(o)

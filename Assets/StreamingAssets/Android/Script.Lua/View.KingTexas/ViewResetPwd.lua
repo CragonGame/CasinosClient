@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewResetPwd = ViewBase:new()
 
 function ViewResetPwd:new(o)

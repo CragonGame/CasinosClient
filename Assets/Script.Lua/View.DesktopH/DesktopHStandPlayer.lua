@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopHStandPlayer = {}
 
 function DesktopHStandPlayer:new(o,btn_stand_player,chat_parent,view_desktop)

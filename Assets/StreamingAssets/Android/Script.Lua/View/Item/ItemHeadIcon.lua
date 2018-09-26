@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 好友头像，主界面上。不包含好友对话框中的
 
 ItemHeadIcon = {}

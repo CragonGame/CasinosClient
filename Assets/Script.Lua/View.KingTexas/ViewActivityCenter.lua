@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 如果活动Item中有按钮之类功能，消息在ViewActiveCenter中响应。如分享按钮
 
 ViewActivityCenter = ViewBase:new()

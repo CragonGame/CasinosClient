@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewMTTProcess = ViewBase:new()
 
 function ViewMTTProcess:new(o)

@@ -41,10 +41,6 @@ function ControllerMarquee:onDestroy()
 end
 
 ---------------------------------------
-function ControllerMarquee:onUpdate(tm)
-end
-
----------------------------------------
 function ControllerMarquee:onHandleEv(ev)
     if (ev ~= nil)
     then

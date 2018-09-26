@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopTypeBase = {}
 
 function ViewDesktopTypeBase:new(o,view_desktop)

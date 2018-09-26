@@ -10,10 +10,10 @@ MatchTexasProcessType = {
 
 MatchTexasIconType = {
     Normal = 0,
--- 红包赛
--- 狂欢赛
--- 深筹赛
--- iPhoneX赛
+    -- 红包赛
+    -- 狂欢赛
+    -- 深筹赛
+    -- iPhoneX赛
 }
 
 MatchTexasScopeType = {
@@ -94,28 +94,28 @@ end
 --获取赛事列表响应
 BMatchTexasGetListResponse = {}
 function BMatchTexasGetListResponse:new(o)
-	o = o or {}
-	setmetatable(o, self)
-	self.__index = self
-	o.ListMatchTexasInfo = nil
-	o.ListMyMatch = nil
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.ListMatchTexasInfo = nil
+    o.ListMyMatch = nil
 
-	return o
+    return o
 end
 
 function BMatchTexasGetListResponse:setData(data)
-	self.ListMatchTexasInfo = {}
-	if(data[1] ~= nil and #data[1] > 0)
-	then
-		for i = 1 ,#data[1] do
-			local temp_matchInfo = BMatchTexasInfo:new(nil)
-			temp_matchInfo:setData(data[1][i])
-			data[1][i] = temp_matchInfo
-		end
-	end
+    self.ListMatchTexasInfo = {}
+    if (data[1] ~= nil and #data[1] > 0)
+    then
+        for i = 1, #data[1] do
+            local temp_matchInfo = BMatchTexasInfo:new(nil)
+            temp_matchInfo:setData(data[1][i])
+            data[1][i] = temp_matchInfo
+        end
+    end
 
-	self.ListMatchTexasInfo = data[1]
-	self.ListMyMatch = data[2]
+    self.ListMatchTexasInfo = data[1]
+    self.ListMyMatch = data[2]
 end
 
 BMatchTexasPlayerInfo = {}
@@ -146,7 +146,7 @@ function BMatchTexasPlayerRankingInfo:new(o)
     o.PlayerGuid = "" --玩家Guid
     o.NickName = "" -- 昵称
     o.AccId = "" -- 用于玩家头像显示
-	o.Icon = "" --用于玩家头像显示
+    o.Icon = "" --用于玩家头像显示
     o.Ranking = 0 --名次
     o.Score = 0 --记分牌
 
@@ -157,7 +157,7 @@ function BMatchTexasPlayerRankingInfo:setData(data)
     self.PlayerGuid = data[1]
     self.NickName = data[2]
     self.AccId = data[3]
-	self.Icon = data[4]
+    self.Icon = data[4]
     self.Ranking = data[5]
     self.Score = data[6]
 end
@@ -222,8 +222,8 @@ function BMatchTexasInfo:setData(data)
     self.DtMatchBegin = CS.System.DateTime.Parse(data[10]):ToLocalTime()
     self.DtSignupClose = CS.System.DateTime.Parse(data[11]):ToLocalTime()
     self.PlayerNum = data[12]
-	self.InitScore = data[13]
-self.SignupCostOneOrTwo = data[14]
+    self.InitScore = data[13]
+    self.SignupCostOneOrTwo = data[14]
     self.SignupItemId = data[15]
     self.SignupFee = data[16]
     self.ServiceFee = data[17]
@@ -232,12 +232,12 @@ self.SignupCostOneOrTwo = data[14]
     self.IsSnowballReward = data[20]
     self.TotalRewardGold = data[21]
     self.SeatNum = data[22]
-	if(data[23] ~= nil)
-	then
-		local raiseBlindInfo = BMatchTexasRaiseBlindTbInfo:new(nil)
-		raiseBlindInfo:setData(data[23])
-		self.RaiseBlindTbInfo = raiseBlindInfo
-	end
+    if (data[23] ~= nil)
+    then
+        local raiseBlindInfo = BMatchTexasRaiseBlindTbInfo:new(nil)
+        raiseBlindInfo:setData(data[23])
+        self.RaiseBlindTbInfo = raiseBlindInfo
+    end
 end
 
 BMatchTexasMoreInfo = {}--赛事详细信息，点击赛事列表Item后，弹出的赛事详细信息对话框
@@ -245,7 +245,7 @@ function BMatchTexasMoreInfo:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-	o.Info = nil --赛事信息
+    o.Info = nil --赛事信息
     o.PlayerNumMin = 0 --参赛人数，最少
     o.PlayerNumMax = 0  --参赛人数，最多
     o.InvitationCode = nil  --邀请码
@@ -253,84 +253,83 @@ function BMatchTexasMoreInfo:new(o)
     o.CreatePlayerNickName = nil  --赛事创建者昵称
     o.CreatePlayerAccId = nil  --赛事创建者AccId，用于显示头像
     o.RealtimeMoreInfo = nil  --实时详细信息
-	o.Reward = nil  --奖励信息
+    o.Reward = nil  --奖励信息
     return o
 end
 
 function BMatchTexasMoreInfo:setData(data)
-    if data[1] ~= nil 
-	then
+    if data[1] ~= nil
+    then
         local match_info = BMatchTexasInfo:new(nil)
         match_info:setData(data[1])
-		self.Info = match_info
+        self.Info = match_info
     end
-	self.PlayerNumMin = data[2] 
-    self.PlayerNumMax = data[3]  
-    self.InvitationCode = data[4] 
-    self.CreatePlayerGuid = data[5]  
+    self.PlayerNumMin = data[2]
+    self.PlayerNumMax = data[3]
+    self.InvitationCode = data[4]
+    self.CreatePlayerGuid = data[5]
     self.CreatePlayerNickName = data[6]
     self.CreatePlayerAccId = data[7]
-	if(data[8] ~= nil)
-	then
-		local realtimeMoreInfo = BMatchTexasRealtimeMoreInfo:new(nil)
-		realtimeMoreInfo:setData(data[8])
-		self.RealtimeMoreInfo = realtimeMoreInfo
-	end
-	local reward = BMatchTexasReward:new(nil)
-	reward:setData(data[9])
-	self.Reward = reward
+    if (data[8] ~= nil)
+    then
+        local realtimeMoreInfo = BMatchTexasRealtimeMoreInfo:new(nil)
+        realtimeMoreInfo:setData(data[8])
+        self.RealtimeMoreInfo = realtimeMoreInfo
+    end
+    local reward = BMatchTexasReward:new(nil)
+    reward:setData(data[9])
+    self.Reward = reward
 end
 
 -- 比赛奖励信息       
 BMatchTexasReward = {}
 
 function BMatchTexasReward:new(o)
-	o = o or {}
+    o = o or {}
     setmetatable(o, self)
     self.__index = self
-	o.SnowballTotalReward = nil
-	o.SnowballTotalRewardCurrent = nil
-	o.ListReward = {}
-	return o
+    o.SnowballTotalReward = nil
+    o.SnowballTotalRewardCurrent = nil
+    o.ListReward = {}
+    return o
 end
 
 function BMatchTexasReward:setData(data)
-	self.SnowballTotalReward = data[1]
-	self.SnowballTotalRewardCurrent = data[2]
-	if(#data[3] > 0)
-	then
-		for i = 1,#data[3] do
-			local temp = BMatchTexasRewardItem:new(nil)
-			temp:setData(data[3][i])
-			if(temp.RankingBegin ~= 0)
-			then
-				table.insert(self.ListReward,temp)
-			end
-		end
-	end
+    self.SnowballTotalReward = data[1]
+    self.SnowballTotalRewardCurrent = data[2]
+    if (#data[3] > 0)
+    then
+        for i = 1, #data[3] do
+            local temp = BMatchTexasRewardItem:new(nil)
+            temp:setData(data[3][i])
+            if (temp.RankingBegin ~= 0)
+            then
+                table.insert(self.ListReward, temp)
+            end
+        end
+    end
 end
 
 BMatchTexasRewardItem = {}
-function BMatchTexasRewardItem:new(o)	
-	o = o or {}
+function BMatchTexasRewardItem:new(o)
+    o = o or {}
     setmetatable(o, self)
     self.__index = self
-	o.RankingBegin = 0 --从1开始，<=0都是无效排名，丢弃
-	o.RankingEnd = 0 --End>=Begin
-	o.Gold = 0 --单人奖励值。如果RankingBegin=1，RankingEnd=10，Value=1w，则该项总奖励为10w
-	o.RedEnvelopes = 0 --红包，单位：分
-	o.ItemId = 0 --奖励道具Id
-	return o
+    o.RankingBegin = 0 --从1开始，<=0都是无效排名，丢弃
+    o.RankingEnd = 0 --End>=Begin
+    o.Gold = 0 --单人奖励值。如果RankingBegin=1，RankingEnd=10，Value=1w，则该项总奖励为10w
+    o.RedEnvelopes = 0 --红包，单位：分
+    o.ItemId = 0 --奖励道具Id
+    return o
 end
 
 function BMatchTexasRewardItem:setData(data)
-	self.RankingBegin = data[1]
-	self.RankingEnd = data[2]
-	self.Gold = data[3]
-	self.RedEnvelopes = data[4]
-	self.ItemId = data[5]
+    self.RankingBegin = data[1]
+    self.RankingEnd = data[2]
+    self.Gold = data[3]
+    self.RedEnvelopes = data[4]
+    self.ItemId = data[5]
 end
-
 
 BMatchTexasRealtimeInfo = {}--升盲表实时信息
 function BMatchTexasRealtimeInfo:new(o)
@@ -367,7 +366,7 @@ function BMatchTexasRealtimeInfo:setData(data)
     self.TotalRewardGold = data[5]
     self.CurrentRaiseBlindTbId = data[6]
     self.RaiseBlindLeftSecond = data[7]
-    self.RaiseBlindIdNext= data[8]
+    self.RaiseBlindIdNext = data[8]
 
     --self.CurrentRaiseBlindTbId = data[7]
     --self.CurrentRaiseBlindSb = data[8]
@@ -400,16 +399,16 @@ end
 
 function BMatchTexasRaiseBlindTbInfo:setData(data)
     self.BlindType = data[1]
-	if(data[2] < 1)
-	then
-		data[2] = 1
-	end
-	self.BeginId = data[2]
-	local raise_blindTable = TbDataHelper:GetAllTexasRaiseBlindsByType(self.BlindType)
-	if(data[3] > #raise_blindTable)
-	then
-		data[3] = #raise_blindTable
-	end
+    if (data[2] < 1)
+    then
+        data[2] = 1
+    end
+    self.BeginId = data[2]
+    local raise_blindTable = TbDataHelper:GetAllTexasRaiseBlindsByType(self.BlindType)
+    if (data[3] > #raise_blindTable)
+    then
+        data[3] = #raise_blindTable
+    end
     self.EndId = data[3]
     self.ListRaiseBlindTbIdCanRebuy = data[4]
     self.ListRaiseBlindTbIdCanAddon = data[5]
@@ -417,7 +416,7 @@ function BMatchTexasRaiseBlindTbInfo:setData(data)
     self.RebuyScore = data[7]
     self.AddonGold = data[8]
     self.AddonScore = data[9]
-	self.RaiseBlindTmSpan = data[10]
+    self.RaiseBlindTmSpan = data[10]
 end
 
 BMatchTexasRealtimeMoreInfo = {}--赛事实时详细信息
@@ -581,18 +580,18 @@ end
 BMatchTexasStartNotify = {}
 
 function BMatchTexasStartNotify:new(o)
-	o = o or {}
+    o = o or {}
     setmetatable(o, self)
     self.__index = self
-	o.MatchGuid = nil
+    o.MatchGuid = nil
     o.MatchName = nil
     o.DtMatchBegin = nil --比赛开始时间
 
-	return o
+    return o
 end
 
 function BMatchTexasStartNotify:setData(data)
-	self.MatchGuid = data[1]
+    self.MatchGuid = data[1]
     self.MatchName = data[2]
     self.DtMatchBegin = CS.System.DateTime.Parse(data[3]):ToLocalTime()
 end
@@ -601,22 +600,22 @@ end
 BMatchTexasPlayerGameEndNotify = {}
 
 function BMatchTexasPlayerGameEndNotify:new(o)
-	o = o or {}
+    o = o or {}
     setmetatable(o, self)
     self.__index = self
-	o.Result = nil
-	o.MatchGuid = nil
+    o.Result = nil
+    o.MatchGuid = nil
     o.MatchName = nil
     o.MatchTemplateId = 0
     o.SignupFee = 0
     o.ServiceFee = 0
     o.ItemId = 0
-	return o
+    return o
 end
 
 function BMatchTexasPlayerGameEndNotify:setData(data)
-	self.Result = data[1]
-	self.MatchGuid = data[2]
+    self.Result = data[1]
+    self.MatchGuid = data[2]
     self.MatchName = data[3]
     self.MatchTemplateId = data[4]
     self.SignupFee = data[5]
@@ -628,20 +627,20 @@ end
 BMatchTexasSignUpResponse = {}
 
 function BMatchTexasSignUpResponse:new(o)
-	o = o or {}
+    o = o or {}
     setmetatable(o, self)
     self.__index = self
-	o.Result = nil
+    o.Result = nil
     o.MatchGuid = nil
     o.ItemTbId = nil
     o.SignupFee = 0
     o.ServiceFee = 0
 
-	return o
+    return o
 end
 
 function BMatchTexasSignUpResponse:setData(data)
-	self.Result = data[1]
+    self.Result = data[1]
     self.MatchGuid = data[2]
     self.ItemTbId = data[3]
     self.SignupFee = data[4]
@@ -652,7 +651,7 @@ end
 BMatchTexasCancelSignUpResponse = {}
 
 function BMatchTexasCancelSignUpResponse:new(o)
-	o = o or {}
+    o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.Result = nil
@@ -662,11 +661,11 @@ function BMatchTexasCancelSignUpResponse:new(o)
     o.ServiceFee = 0
     o.MatchName = nil
 
-	return o
+    return o
 end
 
 function BMatchTexasCancelSignUpResponse:setData(data)
-	self.Result = data[1]
+    self.Result = data[1]
     self.MatchGuid = data[2]
     self.ItemTbId = data[3]
     self.SignupFee = data[4]
@@ -677,17 +676,17 @@ end
 --进入比赛结果响应
 BMatchTexasEnterResponse = {}
 function BMatchTexasEnterResponse:new(o)
-	o = o or {}
+    o = o or {}
     setmetatable(o, self)
     self.__index = self
-	o.Result = nil
+    o.Result = nil
     o.MatchGuid = nil
 
-	return  o
+    return o
 end
 
 function BMatchTexasEnterResponse:setData(data)
-	self.Result = data[1]
+    self.Result = data[1]
     self.MatchGuid = data[2]
 end
 
@@ -702,7 +701,7 @@ function BMatchTexasRebuyResponse:new(o)
     --o.RebuyNum = 0 -- 已重购次数，已用掉次数，非剩余次数
     --o.CurrentScore = 0 -- 购买后当前记分牌
 
-    return  o
+    return o
 end
 
 function BMatchTexasRebuyResponse:setData(data)
@@ -723,7 +722,7 @@ function BMatchTexasAddonResponse:new(o)
     --o.AddonNum = 0 -- 已增购次数，已用掉次数，非剩余次数
     --o.CurrentScore = 0 -- 购买后当前记分牌
 
-    return  o
+    return o
 end
 
 function BMatchTexasAddonResponse:setData(data)
@@ -742,7 +741,7 @@ function BMatchTexasDesktopStartOrPauseNotify:new(o)
     o.Pause = true
     o.PauseCountdownLeftSec = 0 -- 暂停剩余秒数
 
-    return  o
+    return o
 end
 
 function BMatchTexasDesktopStartOrPauseNotify:setData(data)

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopHChair = {}
 
 function DesktopHChair:new(o,ui_desktoph,co_chair,chair_index,is_left)

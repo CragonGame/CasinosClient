@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 牌型界面，后续与普通桌中牌型界面命名调成一致
 
 ViewDesktopHCardType = ViewBase:new()

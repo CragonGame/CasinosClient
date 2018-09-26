@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemCountryCode = {}
 
 function ItemCountryCode:new(o,com,view_mgr,ui_choose_code,is_last)

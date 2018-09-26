@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewLotteryTicketRewardPot = {}
 
 function ViewLotteryTicketRewardPot:new(o,reward_pot,btn_rewardpot,lottery_ticket)

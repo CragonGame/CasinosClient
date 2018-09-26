@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopFastBet = {}
 
 function DesktopFastBet:new(o, btn, index, view_mgr)

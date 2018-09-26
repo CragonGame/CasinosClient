@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopHintsTexas = ViewBase:new(nil)
 
 function ViewDesktopHintsTexas:new(o)

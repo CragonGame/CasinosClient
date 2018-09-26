@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 举报玩家对话框
 
 ViewReportPlayer = ViewBase:new()

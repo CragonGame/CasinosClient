@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 结算对话框中的5个Item中的一个
 
 ItemDesktopHGameEndPotResult = {}

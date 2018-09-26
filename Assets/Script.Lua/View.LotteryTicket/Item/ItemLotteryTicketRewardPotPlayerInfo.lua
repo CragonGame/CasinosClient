@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemLotteryTicketRewardPotPlayerInfo = {}
 
 function ItemLotteryTicketRewardPotPlayerInfo:new(o,view_lottery, com,player_info,tm)
@@ -18,4 +20,3 @@ function ItemLotteryTicketRewardPotPlayerInfo:refreshPlayerInfo(player_info)
 	self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.Nickname,27,8)
     self.GTextGolds.text = UiChipShowHelper:getGoldShowStr(player_info.WinGold, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
 end
-

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemLotteryTicketHistory = {}
 
 function ItemLotteryTicketHistory:new(o,lottery_ticket,com_history,is_new,rank_type)

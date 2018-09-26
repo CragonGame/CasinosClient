@@ -175,10 +175,10 @@ end
 UCenterErrorCode = {
     NoError = 0,
 
--- Error sends http request on client side
+    -- Error sends http request on client side
     ClientError = 1,
 
--- BadRequest - 400
+    -- BadRequest - 400
     InvalidAccountName = 400001,
     InvalidAccountPassword = 400002,
     InvalidAccountEmail = 400003,
@@ -186,32 +186,32 @@ UCenterErrorCode = {
     DeviceInfoNull = 400010,
     DeviceIdNull = 400011,
 
--- Unauthorized - 401
+    -- Unauthorized - 401
     AccountPasswordUnauthorized = 401001,
     AccountTokenUnauthorized = 401002,
     AppTokenUnauthorized = 401003,
     AccountDisabled = 401004,
     AccountOAuthTokenUnauthorized = 401005,
-    PhoneVerificationCodeError = 401006,-- 手机验证码错误
-    PayUnauthorized = 401007,-- 支付签名验证错误
+    PhoneVerificationCodeError = 401006, -- 手机验证码错误
+    PayUnauthorized = 401007, -- 支付签名验证错误
 
--- NotFound - 404
+    -- NotFound - 404
     AccountNotExist = 404001,
     AppNotExists = 404002,
     OrderNotExists = 404003,
 
--- Conflict - 409
+    -- Conflict - 409
     AccountNameAlreadyExist = 409001,
     AppNameAlreadyExist = 409002,
-    WechatAccountCanntAttachWechat = 409003,-- 微信登陆的账号无需再次绑定微信
-    AttachWechatExists = 409004,-- 该账号已经绑定微信，无法重复绑定
-    AttachWechatAttachCountMax = 409005,-- 该微信绑定账号次数已经达到上限，无法绑定新账号
+    WechatAccountCanntAttachWechat = 409003, -- 微信登陆的账号无需再次绑定微信
+    AttachWechatExists = 409004, -- 该账号已经绑定微信，无法重复绑定
+    AttachWechatAttachCountMax = 409005, -- 该微信绑定账号次数已经达到上限，无法绑定新账号
 
--- InternalServerError - 500
+    -- InternalServerError - 500
     InternalDatabaseError = 500001,
     InternalHttpServerError = 500002,
 
--- ServiceUnavailable - 503
+    -- ServiceUnavailable - 503
     ServiceUnavailable = 503001,
 }
 
@@ -246,7 +246,7 @@ function UCenterResponse:new(o)
     return o
 end
 
-AccountType ={
+AccountType = {
     NormalAccount = 0,
     Guest = 1,
 }
@@ -476,7 +476,6 @@ function AccountWeChatUnbindRequest:new(o)
     return o
 end
 
-
 NigWebPayRequest = {}
 function NigWebPayRequest:new(o)
     o = o or {}
@@ -487,7 +486,6 @@ function NigWebPayRequest:new(o)
 
     return o
 end
-
 
 NigWebPayResponse = {}
 function NigWebPayResponse:new(o)

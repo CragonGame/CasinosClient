@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemLotteryTicketBetOperate = {}
 
 function ItemLotteryTicketBetOperate:new(o,bet_operat,view_lotteryticket)

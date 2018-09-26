@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 一个下注池，4个池即有4个该类的实例；被DesktopHBetPot持有
 
 ItemDesktopHBetPot = {}

@@ -18,28 +18,23 @@ function PreViewLoading:new(o)
     self.ShowSPine = true
     self.AbLoadingMarry = nil
     self.AbDenglong = nil
-
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
     end
-
     return self.Instance
 end
 
 ---------------------------------------
 function PreViewLoading:onCreate()
     local pro = self.ComUi:GetChild("Progress")
-    if (pro ~= nil)
-    then
+    if (pro ~= nil) then
         self.GProgressBar = pro.asProgress
         self.GProgressBar.max = 100
         self.GProgressBar.value = 0
     end
 
     local text = self.ComUi:GetChild("Tips")
-    if (text ~= nil)
-    then
+    if (text ~= nil) then
         self.GTextFieldTips = text.asTextField
     end
 
@@ -53,8 +48,7 @@ function PreViewLoading:onCreate()
     local image_mote = com_bg:GetChild("ImageMote").asImage
     local p_helper = ParticleHelper:new(nil)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    if (self.ShowSPine)
-    then
+    if (self.ShowSPine) then
         image_mote.visible = false
         self.AbLoadingMarry = p_helper:GetPreSpine("LoadingMarry")
         local atlas = self.AbLoadingMarry:LoadAsset("Mary_Loading.atlas")
@@ -100,8 +94,7 @@ end
 
 ---------------------------------------
 function PreViewLoading:onDestroy()
-    if (self.ShowSPine)
-    then
+    if (self.ShowSPine) then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
@@ -116,8 +109,7 @@ function PreViewLoading:onDestroy()
         self.AbDenglong = nil
     end
 
-    if (self.IsAuto == true)
-    then
+    if (self.IsAuto == true) then
         --CS.FairyGUI.Timers.inst:Remove(self._playProgress)
     end
     --CS.FairyGUI.Timers.inst:Remove(self._updateTips)
@@ -136,7 +128,6 @@ function PreViewLoading.fireAutoLoadingProgress()
     local loading = PreViewLoading:new(nil)
     loading.GProgressBar.visible = true
     loading.IsAuto = true
-
     --CS.FairyGUI.Timers.inst:Add(0.01, 0, loading._playProgress)
 end
 
@@ -144,22 +135,18 @@ end
 function PreViewLoading.fireManualLoadingProgress(progress, loading_info)
     local loading = PreViewLoading:new(nil)
     loading.IsAuto = false
-    if (progress ~= 0)
-    then
+    if (progress ~= 0) then
         loading.GProgressBar.visible = true
     end
 
     setTip(loading_info)
     local cur = loading.GProgressBar.value
     cur = cur + progress
-    if (loading.GProgressBar ~= nil)
-    then
+    if (loading.GProgressBar ~= nil) then
         loading.GProgressBar.value = cur
-        if (loading.GProgressBar.value < loading.GProgressBar.max)
-        then
+        if (loading.GProgressBar.value < loading.GProgressBar.max) then
         else
-            if (OnFinished ~= nil)
-            then
+            if (OnFinished ~= nil) then
                 -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
                 OnFinished()
             end
@@ -185,14 +172,11 @@ end
 function PreViewLoading.setLoadingProgress(progress)
     local loading = PreViewLoading:new(nil)
     loading.GProgressBar.visible = true
-    if (loading.GProgressBar ~= nil)
-    then
+    if (loading.GProgressBar ~= nil) then
         loading.GProgressBar.value = progress
-        if (loading.GProgressBar.value < loading.GProgressBar.max)
-        then
+        if (loading.GProgressBar.value < loading.GProgressBar.max) then
         else
-            if (OnFinished ~= nil)
-            then
+            if (OnFinished ~= nil) then
                 --CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
                 OnFinished()
             end
@@ -205,33 +189,30 @@ function PreViewLoading.setTip(tip)
     local loading = PreViewLoading:new(nil)
     loading.ListRandomTips = {}
     loading.ListRandomTips[tip] = tip
-
-    local data_version = CS.Casinos.CasinosContext.Instance.Config.InitDataVersion
-    local data_version_key = CS.Casinos.CasinosContext.LocalDataVersionKey
-    if (CS.UnityEngine.PlayerPrefs.HasKey(data_version_key))
-    then
-        data_version = CS.UnityEngine.PlayerPrefs.GetString(data_version_key)
-    end
+    local c = CS.Casinos.CasinosContext.Instance
 
     local gtext_version = loading.ComUi:GetChild("Version")
-    if (gtext_version ~= nil)
-    then
+    if (gtext_version ~= nil) then
         local version_text = gtext_version.asTextField
         local app_version = "应用版本"
         local data_versionex = "数据版本"
-        local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
-        if (lan == "English")
-        then
+        local lan = c.CurrentLan
+        if (lan == "English") then
             app_version = "AppVersion"
             data_versionex = "DataVersion"
         else
-            if (lan == "Chinese" or lan == "ChineseSimplified")
-            then
+            if (lan == "Chinese" or lan == "ChineseSimplified") then
                 app_version = "应用版本"
                 data_versionex = "数据版本"
             end
         end
-        version_text.text = string.format("%s: %s,  %s: %s", app_version, CS.UnityEngine.Application.version, data_versionex, data_version)
+        local en = "Pro"
+        if GatewayIp ~= nil and string.find(GatewayIp, "dev") then
+            en = "Dev"
+        end
+        local version_bundle = c.Config.VersionBundle
+        local version_data = c.Config.VersionDataPersistent
+        version_text.text = string.format("%s: %s,  %s: %s %s", app_version, version_bundle, data_versionex, version_data, en)
     end
 end
 

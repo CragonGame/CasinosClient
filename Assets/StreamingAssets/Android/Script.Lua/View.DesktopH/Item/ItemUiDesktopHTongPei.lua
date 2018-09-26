@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 通赔动画，ViewDesktopH持有
 
 ItemUiDesktopHTongPei = {

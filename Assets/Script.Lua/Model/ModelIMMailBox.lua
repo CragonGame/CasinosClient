@@ -70,7 +70,7 @@ function MailOperateRequestResult:setData(data)
     self.OperateType = data[3]
     local a = data[4]
     if a ~= nil then
-        local a_t =MailAttachment:new(nil)
+        local a_t = MailAttachment:new(nil)
         a_t:setData(a)
         self.Attachment = a_t
     end
@@ -123,7 +123,7 @@ function MailClient:setData(data)
     self.CreateTime = data[11]
     local a = data[12]
     if a ~= nil then
-        local a_t =MailAttachment:new(nil)
+        local a_t = MailAttachment:new(nil)
         a_t:setData(a)
         self.Attachment = a_t
     end

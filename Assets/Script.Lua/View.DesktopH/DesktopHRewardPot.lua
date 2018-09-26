@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopHRewardPot = ViewBase:new()
 
 function DesktopHRewardPot:new(o,reward_pot,view_desktop)

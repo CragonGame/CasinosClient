@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 UiCardDealingEx = {}
 
 function UiCardDealingEx:new(o,com_card)

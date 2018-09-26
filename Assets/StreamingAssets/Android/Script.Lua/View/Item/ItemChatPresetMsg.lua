@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 一条预设消息
 
 ItemChatPresetMsg = {}

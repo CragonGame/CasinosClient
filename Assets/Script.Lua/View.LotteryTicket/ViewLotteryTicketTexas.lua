@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewLotteryTicketTexas = {}
 
 function ViewLotteryTicketTexas:new(o,view_lotteryticket)

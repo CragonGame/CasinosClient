@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 已废弃，原先银行界面拉条中使用，现在改成输入数字了。
 
 ItemNumOperate = {}

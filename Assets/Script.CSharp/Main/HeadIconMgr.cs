@@ -4,37 +4,32 @@ namespace Casinos
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using UnityEngine;
 
     public class HeadIconMgr
     {
-        //-------------------------------------------------------------------------
-        public const string mDefaultIconLocalPath = "Ui/Texture/PlayerShadow";
+        //----------------------------------------------------------------------
         Dictionary<string, Texture> MapHeadIconResources { get; set; }
         Dictionary<string, string> MapLoadingIcon { get; set; }
 
-        static HeadIconMgr mHeadIconMgr;
-
-        const string mBotIcon = "boticon/";
-        const string mBotIconSmall = "boticonsmall/";
         const string mDefaultIcon = "playershadow";
         const string mDefaultIconStr = "profile_";
         const string mSmallIcon = "thumbnail_";
         const string mLargeIcon = "image_";
+        //public const string mDefaultIconLocalPath = "Ui/Texture/PlayerShadow";
 
-        //-------------------------------------------------------------------------  
-        public static HeadIconMgr Instant { get { return mHeadIconMgr; } }
+        //----------------------------------------------------------------------  
+        public static HeadIconMgr Instant { get; private set; }
 
-        //-------------------------------------------------------------------------
+        //----------------------------------------------------------------------
         public HeadIconMgr()
         {
-            mHeadIconMgr = this;
+            Instant = this;
             MapHeadIconResources = new Dictionary<string, Texture>();
             MapLoadingIcon = new Dictionary<string, string>();
         }
 
-        //-------------------------------------------------------------------------
+        //----------------------------------------------------------------------
         public LoaderTicket asyncLoadIcon(string id, string resource_path,
             string resource_name, GameObject head_icon,
             Action<UnityEngine.Object, LoaderTicket> load_callback = null)
@@ -87,7 +82,7 @@ namespace Casinos
             return loader_ticket;
         }
 
-        //-------------------------------------------------------------------------
+        //----------------------------------------------------------------------
         public static string getIconName(bool is_small, string icon_name, ref string icon_resource_name)
         {
             string icon_str = mSmallIcon;
@@ -111,7 +106,7 @@ namespace Casinos
             return icon_name;
         }
 
-        //-------------------------------------------------------------------------
+        //----------------------------------------------------------------------
         public void destroyCurrentResources()
         {
             foreach (var i in MapHeadIconResources)
@@ -125,7 +120,7 @@ namespace Casinos
             MapHeadIconResources.Clear();
         }
 
-        //-------------------------------------------------------------------------
+        //----------------------------------------------------------------------
         public void destroy()
         {
             foreach (var i in MapHeadIconResources)

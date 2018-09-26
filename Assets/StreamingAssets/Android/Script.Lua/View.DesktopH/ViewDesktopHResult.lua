@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopHResult = ViewBase:new()
 
 function ViewDesktopHResult:new(o)

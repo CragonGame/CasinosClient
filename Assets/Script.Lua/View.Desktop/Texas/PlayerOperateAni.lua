@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 PlayerOperateAni = {}
 
 function PlayerOperateAni:new(o, com_ui)

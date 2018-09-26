@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 首充对话框
 
 ViewRechargeFirst = ViewBase:new()

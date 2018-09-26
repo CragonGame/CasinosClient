@@ -60,7 +60,7 @@ function PlayerInfoMore:setData(data)
         for i, v in pairs(l_i) do
             local i_d = ItemData1:new(nil)
             i_d:setData(v)
-            table.insert(t_i,i_d)
+            table.insert(t_i, i_d)
         end
         self.ListItemData = t_i
     end
@@ -137,7 +137,7 @@ function PlayerInfo:new(o)
 end
 
 function PlayerInfo:setData(data)
-    local t_c =data[1]
+    local t_c = data[1]
     if t_c ~= nil then
         local t_c_ex = PlayerInfoCommon:new(nil)
         t_c_ex:setData(t_c)

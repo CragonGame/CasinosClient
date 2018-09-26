@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemLotteryTicketCard = {}
 
 function ItemLotteryTicketCard:new(o,co_card,lottery_ticket)

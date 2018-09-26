@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopHHelp = ViewBase:new()
 
 function ViewDesktopHHelp:new(o)

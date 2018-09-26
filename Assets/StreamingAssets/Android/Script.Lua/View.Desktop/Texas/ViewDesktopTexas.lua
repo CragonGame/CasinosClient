@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopTexas = ViewBase:new()
 
 function ViewDesktopTexas:new(o)

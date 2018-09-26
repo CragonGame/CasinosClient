@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopHBetPot = {
     GivePlayerAniTm = 3.2,
     WinShowAniTm = 2

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemDesktopRaiseOperateGFlower = {}
 
 function ItemDesktopRaiseOperateGFlower:New(o,ui_operate,com,tb_operateid)

@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 普通桌屏蔽聊天界面中的一个头像
 
 ItemPlayerChatLock = { SystemName = "发牌员" }

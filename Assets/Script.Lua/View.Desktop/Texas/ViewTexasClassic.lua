@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewTexasClassic = ViewDesktopTypeBase:new()
 
 function ViewTexasClassic:new(o,view_desktop)

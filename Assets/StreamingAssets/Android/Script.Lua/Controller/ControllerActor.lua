@@ -189,10 +189,6 @@ function ControllerActor:onDestroy()
 end
 
 ---------------------------------------
-function ControllerActor:onUpdate(tm)
-end
-
----------------------------------------
 function ControllerActor:onHandleEv(ev)
     if (ev.EventName == "EvBindWeChatSuccess")
     then

@@ -19,7 +19,7 @@ AddFriendResult = {
     None = 0, -- 未处理
     Ignore = 1, -- 忽略处理
     Agree = 2, -- 同意处理
-    Reject = 3,-- 拒绝处理
+    Reject = 3, -- 拒绝处理
 }
 
 ChatMsg = {}

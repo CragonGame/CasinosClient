@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 点击奖励问号弹出的滚雪球信息对话框
 
 ViewSnowBallReward = ViewBase:new()

@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 魔法表情列表中的一个Item
 
 ItemMagicExpIcon = {}

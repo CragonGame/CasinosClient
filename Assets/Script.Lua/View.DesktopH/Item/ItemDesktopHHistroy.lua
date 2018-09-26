@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 持有10个历史元素
 
 ItemDesktopHHistroy = {}

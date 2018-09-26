@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopPlayerOperateTexas = ViewBase:new()
 
 function ViewDesktopPlayerOperateTexas:new(o)

@@ -132,10 +132,6 @@ function ControllerIM:onDestroy()
 end
 
 ---------------------------------------
-function ControllerIM:onUpdate(tm)
-end
-
----------------------------------------
 function ControllerIM:onHandleEv(ev)
     if (ev.EventName == "EvUiCreateMainUi")
     then

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewLotteryTicket = ViewBase:new(nil)
 
 function ViewLotteryTicket:new(o)

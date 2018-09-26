@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopMenuTexas = ViewBase:new()
 
 function ViewDesktopMenuTexas:new(o)

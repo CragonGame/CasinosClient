@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 管理DesktopHUiGold
 
 DesktopHGoldPool = {}

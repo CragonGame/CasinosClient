@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewLotteryTicketBase = {}
 
 function ViewLotteryTicketBase:new(o,view_lotteryticket)

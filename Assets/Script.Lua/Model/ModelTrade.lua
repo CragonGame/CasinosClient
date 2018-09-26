@@ -92,7 +92,6 @@ function BuyRMBItemSuccessResponse:setData(data)
     self.result = data[1]
 end
 
-
 PurchaseCommon = {}
 
 function PurchaseCommon:new(o)

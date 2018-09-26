@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DesktopHBankPlayer = {
     ShowCardEndTime = 0.5,
     BankerIndex = 255,

@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 一枚筹码，有多少筹码就有多少个该类的实例
 
 DesktopHUiGold = {

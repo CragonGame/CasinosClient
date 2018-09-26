@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 DealerEx = {}
 
 function DealerEx:new(o, ui_desktop, dealer_listener, card1, card2, card3, card4, card5)

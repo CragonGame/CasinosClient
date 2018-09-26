@@ -1,4 +1,5 @@
---预设下注筹码按钮的一个按钮；被ViewDesktopH持有
+-- Copyright(c) Cragon. All rights reserved.
+-- 预设下注筹码按钮的一个按钮；被ViewDesktopH持有
 
 ItemDesktopHBetOperate = {}
 

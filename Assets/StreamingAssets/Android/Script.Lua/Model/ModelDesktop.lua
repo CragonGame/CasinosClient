@@ -175,10 +175,10 @@ end
 
 function DesktopSitdownRequest:getData4Pack()
     local t = {}
-    table.insert(t,self.player_guid)
-    table.insert(t,self.seat_index)
-    table.insert(t,self.user_data1)
-    table.insert(t,self.user_data2)
+    table.insert(t, self.player_guid)
+    table.insert(t, self.seat_index)
+    table.insert(t, self.user_data1)
+    table.insert(t, self.user_data2)
     return t
 end
 
@@ -281,12 +281,12 @@ end
 
 function InvitePlayerEnterDesktop:getData4Pack()
     local t = {}
-    table.insert(t,self.player_guid)
-    table.insert(t,self.player_nickname)
-    table.insert(t,self.player_accid)
-    table.insert(t,self.desktop_guid)
-    table.insert(t,self.desktop_filter)
-    table.insert(t,self.player_num)
+    table.insert(t, self.player_guid)
+    table.insert(t, self.player_nickname)
+    table.insert(t, self.player_accid)
+    table.insert(t, self.desktop_guid)
+    table.insert(t, self.desktop_filter)
+    table.insert(t, self.player_num)
 
     return t
 end

@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 每日首次登陆奖励的一格
 
 ItemDailyReward = {}

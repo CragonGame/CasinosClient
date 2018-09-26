@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewPlayerGiftAndVIP = {
     GiftMoveTime = 1,
     GiftPlayerWinMoveTime = 0.1,

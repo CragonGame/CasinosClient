@@ -121,7 +121,7 @@ function BDesktopHNotifyBetDeltaInfo:setData(data)
         for i, v in pairs(l) do
             local s_b = BDesktopHNotifySeatPlayerBet:new(nil)
             s_b:setData(v)
-            table.insert(t_l,s_b)
+            table.insert(t_l, s_b)
         end
         self.list_seatplayer_betdeltainfo = t_l
     end
@@ -152,13 +152,13 @@ function BDesktopHNotifyGameEndBetPot:new(o)
 end
 
 function BDesktopHNotifyGameEndBetPot:setData(data)
-    local l  = data[1]
+    local l = data[1]
     if l ~= nil then
         local l_t = {}
         for i, v in pairs(l) do
             local c_d = CardData:new(nil)
             c_d:setData(v)
-            table.insert(l_t,c_d)
+            table.insert(l_t, c_d)
         end
         self.list_card = l_t
     end
@@ -205,13 +205,13 @@ function BDesktopHNotifyGameEndBankerPot:new(o)
 end
 
 function BDesktopHNotifyGameEndBankerPot:setData(data)
-    local l  = data[1]
+    local l = data[1]
     if l ~= nil then
         local l_t = {}
         for i, v in pairs(l) do
             local c_d = CardData:new(nil)
             c_d:setData(v)
-            table.insert(l_t,c_d)
+            table.insert(l_t, c_d)
         end
         self.list_card = l_t
     end
@@ -313,7 +313,7 @@ function BDesktopHGameResult:setData(data)
                 for v_i, v_v in pairs(v) do
                     local b_winloose = BDesktopHNotifyGameEndBetPotPlayerWinLooseInfo:new(nil)
                     b_winloose:setData(v_v)
-                    table.insert(v_t,b_winloose)
+                    table.insert(v_t, b_winloose)
                 end
                 t[i] = v_t
             end
@@ -327,7 +327,7 @@ function BDesktopHGameResult:setData(data)
         for i, v in pairs(l_p) do
             local b_p = BDesktopHGameEndWinPlayer:new(nil)
             b_p:setData(v)
-            table.insert(t,b_p)
+            table.insert(t, b_p)
         end
         self.ListGameEndWinPlayer = t
     end
@@ -382,7 +382,7 @@ function BDesktopHData:setData(data)
         for i, v in pairs(l_p) do
             local p = PlayerDataDesktopH:new(nil)
             p:setData(v)
-            table.insert(t_lp,p)
+            table.insert(t_lp, p)
         end
         self.list_bebanker = t_lp
     end
@@ -454,7 +454,7 @@ function BDesktopHWinRewardPotInfo:setData(data)
         for i, v in pairs(l_c) do
             local c_d = CardData:new(nil)
             c_d:setData(v)
-            table.insert(t_c,c_d)
+            table.insert(t_c, c_d)
         end
         self.list_card = t_c
     end
@@ -462,11 +462,11 @@ function BDesktopHWinRewardPotInfo:setData(data)
     self.date_time = data[3]
     local l_p = data[4]
     if l_p ~= nil then
-        local t_p= {}
+        local t_p = {}
         for i, v in pairs(l_p) do
             local d_p = BDesktopHWinRewardPotPlayer:new(nil)
             d_p:setData(v)
-            table.insert(t_p,d_p)
+            table.insert(t_p, d_p)
         end
         self.list_playerinfo = t_p
     end

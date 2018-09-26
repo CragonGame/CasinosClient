@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 UiCardCommonEx = {
     RotateTime = 0.15
 }

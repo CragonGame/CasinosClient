@@ -23,7 +23,7 @@ function Native:new(o, view_mgr, listner)
         end
         CS.DataEye.initWithAppIdAndChannelId(CS.Casinos.CasinosContext.Instance.DataEyeId, "")
         CS.ShareSDKReceiver.instance(CS.Casinos.CasinosContext.Instance.ShareSDKAppKey, CS.Casinos.CasinosContext.Instance.ShareSDKAppSecret)
-        print("ShareSDK ", CS.Casinos.CasinosContext.Instance.ShareSDKAppKey, CS.Casinos.CasinosContext.Instance.ShareSDKAppSecret)
+        --print("ShareSDK ", CS.Casinos.CasinosContext.Instance.ShareSDKAppKey, CS.Casinos.CasinosContext.Instance.ShareSDKAppSecret)
         CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()
         CS.ShareSDKReceiver.mShareSDK.devInfo.wechat = CS.cn.sharesdk.unity3d.WeChat()
         if CS.Casinos.CasinosContext.Instance.UnityAndroid then
@@ -33,7 +33,7 @@ function Native:new(o, view_mgr, listner)
         elseif CS.Casinos.CasinosContext.Instance.UnityIOS then
             CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = CS.Casinos.CasinosContext.Instance.WeChatAppId
             CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_secret = WeChatAppSecret
-            print("ShareSDK WeiXin ", CS.Casinos.CasinosContext.Instance.WeChatAppId, WeChatAppSecret)
+            --print("ShareSDK WeiXin ", CS.Casinos.CasinosContext.Instance.WeChatAppId, WeChatAppSecret)
         end
 
         CS.ShareSDKReceiver.mShareSDK:init()
@@ -58,7 +58,7 @@ function Native:new(o, view_mgr, listner)
         if PayUseTestMode then
             secrete = BeeCloudTestSecret
         end
-        CS.Pay.payInit(BeeCloudId,secrete,WeChatAppId)
+        CS.Pay.payInit(BeeCloudId, secrete, WeChatAppId)
         CS.Pay.useTestMode(PayUseTestMode)
     end
 
@@ -120,7 +120,7 @@ end
 ---------------------------------------
 function Native:OnMobIdHandler(mobid)
     --local url = CS.Casinos.CasinosContext.Config.ConfigUrl
-    print("OnMobIdHandler  " .. mobid)
+    --print("OnMobIdHandler  " .. mobid)
     self.ShareUrl = 'https://www.cragon.cn/gpdz.html?mobid=' .. mobid --'https://www.cragon.cn/gpdz1.html?mobid=' .. mobid  'http://cragon-king.oss-cn-shanghai.aliyuncs.com/Test.html?mobid=' .. mobid
     local t = CS.UnityEngine.Texture2D(256, 256)
     local colors = CS.QRCodeMaker.createQRCode(self.ShareUrl, t.width, t.height)
@@ -133,7 +133,7 @@ end
 ---------------------------------------
 function Native:CreateShareUrlAndQRCode(player_id)
     --local url = CS.Casinos.CasinosContext.Config.ConfigUrl
-    print("CreateShareUrlAndQRCode  " .. player_id)
+    --print("CreateShareUrlAndQRCode  " .. player_id)
     self.ShareUrl = 'https://www.cragon.cn/gpdz.html?PlayerId=' .. player_id --'https://www.cragon.cn/gpdz1.html?mobid=' .. mobid  'http://cragon-king.oss-cn-shanghai.aliyuncs.com/Test.html?mobid=' .. mobid
     local t = CS.UnityEngine.Texture2D(256, 256)
     local colors = CS.QRCodeMaker.createQRCode(self.ShareUrl, t.width, t.height)
@@ -146,13 +146,13 @@ end
 ---------------------------------------
 function Native:OnRestoreScene(scene)
     local params = scene.customParams
-    print("OnRestoreScene")
+    --print("OnRestoreScene")
     if params == nil then
         return
     end
 
     local player_id = CS.Casinos.LuaHelper.GetHashTableValue(params, "PlayerId") --params["PlayerId"]
-    print("player_id  " .. player_id)
+    --print("player_id  " .. player_id)
     local invite_payerid = "InvitePlayerId"
     if (CS.UnityEngine.PlayerPrefs.HasKey(invite_payerid) == false)
     then
@@ -160,7 +160,7 @@ function Native:OnRestoreScene(scene)
         t["PlayerId"] = player_id
         t["IsNew"] = true
         local t_encode = self.Listner.Json.encode(t)
-        print("t_encode  " .. t_encode)
+        --print("t_encode  " .. t_encode)
         CS.UnityEngine.PlayerPrefs.SetString(invite_payerid, t_encode)
     end
 end
@@ -168,18 +168,17 @@ end
 ---------------------------------------
 function Native:OpenInstallResult(result, is_install)
     if CS.System.String.IsNullOrEmpty(result) then
-        print("OpenInstallResult i null")
+        --print("OpenInstallResult i null")
         return
     end
 
-    print("result  " .. result .. "  is_install  " .. tostring(is_install))
+    --print("result  " .. result .. "  is_install  " .. tostring(is_install))
     if is_install then
         local t_result = self.Listner.Json.decode(result)
         local data = t_result["Data"]
         local channel_code = t_result["ChannelCode"]
         local invite_payerid = "InvitePlayerId"
-        if (CS.UnityEngine.PlayerPrefs.HasKey(invite_payerid) == false)
-        then
+        if (CS.UnityEngine.PlayerPrefs.HasKey(invite_payerid) == false) then
             local player_id = data["PlayerId"]
             if player_id ~= nil then
                 local t = {}
@@ -196,8 +195,7 @@ end
 ---------------------------------------
 function Native:ActionGetPicSuccess(getpic_result)
     ViewHelper:UiEndWaiting()
-    if (CS.System.String.IsNullOrEmpty(getpic_result) == false)
-    then
+    if (CS.System.String.IsNullOrEmpty(getpic_result) == false) then
         ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("UploadPic"), 5)
     end
 end
@@ -205,8 +203,7 @@ end
 ---------------------------------------
 function Native:ActionGetPicSuccessWithBytes(pic_data)
     local ev = self.ViewMgr:getEv("EvGetPicSuccess")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvGetPicSuccess:new(nil)
     end
     ev.pic_data = pic_data
@@ -221,8 +218,7 @@ end
 ---------------------------------------
 function Native:ActionPayWithIAPSuccess(purchase)
     local ev = self.ViewMgr:getEv("EvPayWithIAPSuccess")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvPayWithIAPSuccess:new(nil)
     end
     ev.purchase = purchase
@@ -231,8 +227,7 @@ end
 
 ---------------------------------------
 function Native:ActionPayResult(pay_result)
-    if (pay_result.Length <= 0)
-    then
+    if (pay_result.Length <= 0) then
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("BuyItemFailed"))
         return
     else
@@ -276,19 +271,16 @@ function Native:ActionLoginFailed(fail_type)
             tips = string.format(t, fail_type)
         end
     end
-    if (CS.System.String.IsNullOrEmpty(tips) == false)
-    then
+    if (CS.System.String.IsNullOrEmpty(tips) == false) then
         ViewHelper:UiShowPermanentPosMsg(tips)
     end
 end
 
 ---------------------------------------
 function Native:ActionLoginSuccess(param, real_token)
-    if(param == "Login")
-    then
+    if (param == "Login") then
         local ev = self.ViewMgr:getEv("EvUiLoginSuccessEx")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvUiLoginSuccessEx:new(nil)
         end
         ev.token = real_token

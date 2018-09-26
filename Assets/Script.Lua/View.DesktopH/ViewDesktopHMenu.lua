@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDesktopHMenu = ViewBase:new()
 
 function ViewDesktopHMenu:new(o)
