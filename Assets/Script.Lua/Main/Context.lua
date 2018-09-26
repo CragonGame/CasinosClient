@@ -1,15 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
---BundleUpdateURL = ''
---BundleVersionState = ''
---CommonLuaVersion = '1.00.652'
---CommonLuaRootURL = 'cragon-lua-oss.cragon.cn/1.00.652/'
---CommonLuaHelper = 'Helper/LuaHelper.lua'
---CommonWWWLoader = 'Helper/WWWLoader.lua'
---CommonLuaLoaderPath = 'Helper/CommonLuaLoader.lua'
---ProjectDataLoaderPath = 'Helper/ProjectDataLoader.lua'
---CommonLuaFileListTxtName = 'CommonLuaFileList.txt'
 OssRootUrl = 'http://cragon-king-oss.cragon.cn'
 AutopatcherUrl = 'http://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml'
 PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
