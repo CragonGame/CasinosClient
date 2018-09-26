@@ -141,7 +141,7 @@ function ViewLogin:onCreate()
             end)
     self.TextCountryCode = com_text_code:GetChild("TextCountryCord").asTextField
     self.GTextInputAccLogin = com_input_acclogin:GetChild("InputAccLogin").asTextInput
-    self.GTextInputAccLogin.promptText = string.format("[color=#999999]%s[/color]",self.ViewMgr.LanMgr:getLanValue("EnterPhone"))
+    self.GTextInputAccLogin.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:getLanValue("EnterPhone"))
     self.GTextInputAccLogin.onChanged:Set(
             function()
                 self:_checkloginInput()
@@ -150,7 +150,7 @@ function ViewLogin:onCreate()
 
     local com_input_pwdlogin = self.ComUi:GetChild("InputPwdLogin").asCom
     self.GTextInputPwdLogin = com_input_pwdlogin:GetChild("InputPwdRegister").asTextInput
-    self.GTextInputPwdLogin.promptText = string.format("[color=#999999]%s[/color]",self.ViewMgr.LanMgr:getLanValue("EnterPwdTips1"))
+    self.GTextInputPwdLogin.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:getLanValue("EnterPwdTips1"))
     self.GTextInputPwdLogin.onChanged:Set(
             function()
                 self:_checkloginInput()
@@ -241,7 +241,7 @@ function ViewLogin:onCreate()
     self.DengLongRender.sortingOrder = 316
     self.DengLongAnim.transform.gameObject.name = "DengLong"
     local bg = com_bg:GetChild("bg")
-    ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height,bg,BgAttachMode.Center,{self.HolderMote})
+    ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center, { self.HolderMote })
 
     self.ComboChooseUCenter = self.ComUi:GetChild("ComboChooseUCenter").asComboBox
     self.ComboChooseGateWay = self.ComUi:GetChild("ComboChooseGateWay").asComboBox
@@ -278,8 +278,8 @@ function ViewLogin:onCreate()
     ViewHelper:setGObjectVisible(show_combo, self.ComboChooseGateWay)
 
     -- 显示版本信息
-    local version_bundle = CS.UnityEngine.Application.version
-    local version_data = CS.UnityEngine.PlayerPrefs.GetString(data_version_key)
+    local version_bundle = self.CasinosContext.Config.VersionBundle
+    local version_data = self.CasinosContext.Config.VersionDataPersistent
     self:SetVersionAndServerStateInfo(version_bundle, version_data, ServerState, ServerStateInfo)
 end
 
@@ -310,11 +310,11 @@ function ViewLogin:onHandleEv(ev)
     then
         if (ev.EventName == "EvUiChooseCountry")
         then
-            if self.UiRegister~=nil then
-                self.UiRegister:setCurrentCountryCode(ev.CountryKey,ev.CountryCode,ev.KeyAndCodeFormat)
+            if self.UiRegister ~= nil then
+                self.UiRegister:setCurrentCountryCode(ev.CountryKey, ev.CountryCode, ev.KeyAndCodeFormat)
             end
-            if self.UiResetPwd~=nil then
-                self.UiResetPwd:setCurrentCountryCode(ev.CountryKey,ev.CountryCode,ev.KeyAndCodeFormat)
+            if self.UiResetPwd ~= nil then
+                self.UiResetPwd:setCurrentCountryCode(ev.CountryKey, ev.CountryCode, ev.KeyAndCodeFormat)
             end
             self.TextCountryCode.text = ev.KeyAndCodeFormat
         end
@@ -355,7 +355,7 @@ function ViewLogin:SetVersionAndServerStateInfo(bundle_version, data_version, se
     then
         local version_tips = self.ViewMgr.LanMgr:getLanValue("AppVersion") .. "：%s " .. self.ViewMgr.LanMgr:getLanValue("DataVersion") .. "：%s"
         local en = " Pro"
-        if string.find(GatewayIp,"dev") then
+        if string.find(GatewayIp, "dev") then
             en = " Dev"
         end
         local version_info = string.format(version_tips, bundle_version, data_version) .. en

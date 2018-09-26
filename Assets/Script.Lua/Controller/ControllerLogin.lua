@@ -143,6 +143,7 @@ function ControllerLogin:onCreate()
 
     self:_init(true)
     c.NetBridge:blindTable(self)
+
     local rpc = self.ControllerMgr.RPC
     local m_c = CommonMethodType
     rpc:RegRpcMethod0(m_c.AccountGatewayConnected, function()
@@ -805,14 +806,14 @@ end
 
 ---------------------------------------
 function ControllerLogin:OnSocketClose()
-    --ControllerLogin.ControllerMgr:DestroyPlayerControllers()
-    --ControllerLogin:_init(false)
-    --if (ControllerLogin.ShowKickOutInfo)
-    --then
-    --    ControllerLogin.ShowKickOutInfo = false
-    --    local info = ControllerLogin.ControllerMgr.LanMgr:getLanValue("AlreadyLogin")
-    --    ViewHelper:UiShowInfoFailed(info)
-    --end
+    ControllerLogin.ControllerMgr:DestroyPlayerControllers()
+    ControllerLogin:_init(false)
+    if (ControllerLogin.ShowKickOutInfo)
+    then
+        ControllerLogin.ShowKickOutInfo = false
+        local info = ControllerLogin.ControllerMgr.LanMgr:getLanValue("AlreadyLogin")
+        ViewHelper:UiShowInfoFailed(info)
+    end
 end
 
 ---------------------------------------
@@ -845,12 +846,6 @@ end
 ---------------------------------------
 function ControllerLogin:_init(is_init)
     local c = CS.Casinos.CasinosContext.Instance
-    local data_version = c.Config.InitDataVersion
-    local data_version_key = CS.Casinos.CasinosContext.LocalDataVersionKey
-    if (CS.UnityEngine.PlayerPrefs.HasKey(data_version_key))
-    then
-        data_version = CS.UnityEngine.PlayerPrefs.GetString(data_version_key)
-    end
 
     -- 显示登录界面
     ViewHelper:UiEndWaiting()
@@ -906,8 +901,7 @@ function ControllerLogin:_init(is_init)
             end
         end
     end
-    view_login:SetVersionAndServerStateInfo(CS.UnityEngine.Application.version, data_version,
-            c.ServerIsInvalid, c.ServerStateInfo)
+
     view_login:SetAccPwd(acc, pwd)
     self.ViewMgr:createView("Pool")
     c:Play("background", CS.Casinos._eSoundLayer.Background)
@@ -918,11 +912,9 @@ function ControllerLogin:needCheckIdCard()
     if CS.Casinos.CasinosContext.Instance.LoginType == CS.Casinos._eLoginType.Guest then
         return false
     end
-
     if self.Identity == nil or #self.Identity == 0 then
         return true
     end
-
     return false
 end
 

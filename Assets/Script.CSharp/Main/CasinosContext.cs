@@ -484,20 +484,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void PlayBackgroundSound(string snd_name, bool is_loop = false)
-        {
-            //if (string.IsNullOrEmpty(snd_name))
-            //{
-            //    EbLog.Note("ClientSound.playBackgroundSound() 声音名称为空");
-            //}
-
-            //string full_snd_name = "Audio/" + snd_name;
-            //AudioClip audio_clip = (AudioClip)Resources.Load(full_snd_name, typeof(AudioClip));
-
-            //SoundManager.Play(audio_clip, is_loop);
-        }
-
-        //---------------------------------------------------------------------
         public void Play(string file_name, _eSoundLayer sound_layer)
         {
             SoundMgr.play(file_name, sound_layer);
@@ -547,6 +533,20 @@ namespace Casinos
         }
     }
 }
+
+//---------------------------------------------------------------------
+//public void PlayBackgroundSound(string snd_name, bool is_loop = false)
+//{
+//    //if (string.IsNullOrEmpty(snd_name))
+//    //{
+//    //    EbLog.Note("ClientSound.playBackgroundSound() 声音名称为空");
+//    //}
+
+//    //string full_snd_name = "Audio/" + snd_name;
+//    //AudioClip audio_clip = (AudioClip)Resources.Load(full_snd_name, typeof(AudioClip));
+
+//    //SoundManager.Play(audio_clip, is_loop);
+//}
 
 //public CopyStreamingAssetsToPersistentDataPath CopyStreamingAssetsToPersistentDataPath { get; set; }
 //public Launch Launch { get; set; }

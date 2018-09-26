@@ -239,13 +239,13 @@ function ControllerPlayer:onHandleEv(ev)
                     if (bo)
                     then
                         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logouting"))
-                        self.CasinosContext:disconnect()
+                        self.CasinosContext:Disconnect()
                     end
                 end
         )
     elseif (ev.EventName == "EvEntityResetPwdSuccess")
     then
-        self.CasinosContext:disconnect()
+        self.CasinosContext:Disconnect()
     elseif (ev.EventName == "EvUiClickChangePlayerNickName")
     then
         self:requestChangeNickName(ev.new_name)

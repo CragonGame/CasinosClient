@@ -288,15 +288,15 @@ function Context:_nextLaunchStep()
         self.CasinosContext.ShareSDKAppSecret = ShareSDKAppSecret
 
         self:DoString("MessagePack")
-        self:DoString("json")
+        --self:DoString("json")
         self.Json = require("json")
         self:DoString("RPC")
         local rpc = RPC:new(nil)
         self:DoString("LuaHelper")
         self.LuaHelper = LuaHelper:new(nil)
         self:DoString("TexasHelper")
-        self:DoString("TbDataMgr")
         self:DoString("TbDataBase")
+        self:DoString("TbDataMgr")
 
         local t_db = {}
         for i, v in pairs(TbFileList) do
@@ -305,12 +305,7 @@ function Context:_nextLaunchStep()
         self.TbDataMgr = TbDataMgr:new(nil)
         self:_regTbData()
         self.TbDataMgr:Setup(t_db)
-
-        --self:DoString("TbDataMgrBase")
-        --self.TbDataMgrBase = TbDataMgrBase:new(nil, self.TbDataMgr, t_db)
-
-        self:_regModel()
-
+        self:DoString("TbDataHelper")
         TbDataHelper:new(nil, self.TbDataMgr)
 
         self:DoString("LanBase")
@@ -319,6 +314,8 @@ function Context:_nextLaunchStep()
         self:DoString("LanZh")
         self.LanMgr = LanMgr:new(nil)
         self.LanMgr:parseLanKeyValue()
+
+        self:_regModel()
 
         self:DoString("CasinoHelper")
         CasinoHelper:new(nil, rpc.MessagePack, self.LanMgr)

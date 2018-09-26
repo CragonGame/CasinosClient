@@ -3,6 +3,7 @@
 namespace Casinos
 {
     using System;
+    using UnityEngine;
     using XLua;
     using GameCloud.Unity.Common;
 
@@ -30,6 +31,7 @@ namespace Casinos
         public void blindTable(LuaTable lua_table)
         {
             LuaOnSocketClose = lua_table.Get<Action>("OnSocketClose");
+
             var lua_rpc = CasinosContext.Instance.CasinosLua.LuaEnv.Global.Get<LuaTable>("RPC");
             LuaOnRpcMethod = lua_rpc.Get<Action<ushort, byte[]>>("OnRpcMethod");
         }
@@ -64,6 +66,8 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _onSocketError(object rec, SocketErrorEventArgs args)
         {
+            Debug.LogError(args.Exception.Message);
+
             BuglyAgent.PrintLog(LogSeverity.Log, args.Exception.Message);
             BuglyAgent.ReportException(args.Exception, args.Exception.Message);
 

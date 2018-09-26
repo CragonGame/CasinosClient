@@ -221,7 +221,7 @@ function ViewMain:onCreate()
             function()
                 ViewHelper:UiShowMsgBox(self.ViewMgr.LanMgr:getLanValue("GuestRegisterTips"),
                         function()
-                            CS.Casinos.CasinosContext.Instance:disconnect()
+                            CS.Casinos.CasinosContext.Instance:Disconnect()
                             local login = self.ViewMgr:getView("Login")
                             if login ~= nil then
                                 login:_onClickBtnShowRegister()

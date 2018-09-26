@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosContext);
-			Utils.BeginObjectRegister(type, L, translator, 0, 21, 64, 48);
+			Utils.BeginObjectRegister(type, L, translator, 0, 20, 64, 48);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -37,7 +37,6 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AppendStrWithSB", _m_AppendStrWithSB);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LuaAsyncLoadLocalUiBundle", _m_LuaAsyncLoadLocalUiBundle);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Disconnect", _m_Disconnect);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PlayBackgroundSound", _m_PlayBackgroundSound);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Play", _m_Play);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "BgVolumeChange", _m_BgVolumeChange);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetAudioSource", _m_GetAudioSource);
@@ -608,49 +607,6 @@ namespace XLua.CSObjectWrap
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_PlayBackgroundSound(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 3)) 
-                {
-                    string _snd_name = LuaAPI.lua_tostring(L, 2);
-                    bool _is_loop = LuaAPI.lua_toboolean(L, 3);
-                    
-                    gen_to_be_invoked.PlayBackgroundSound( _snd_name, _is_loop );
-                    
-                    
-                    
-                    return 0;
-                }
-                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _snd_name = LuaAPI.lua_tostring(L, 2);
-                    
-                    gen_to_be_invoked.PlayBackgroundSound( _snd_name );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.CasinosContext.PlayBackgroundSound!");
             
         }
         

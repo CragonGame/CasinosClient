@@ -37,14 +37,12 @@ function TbDataMgr:Setup(list_db_filename)
         local open_db = self.Sqlite:openDb(v)
         if (open_db == false)
         then
-            print("TbDataMgr__" .. v)
-            print("EbDataMgr.setup() failed! Can not Open File! db_filename=" .. v)
+            print("TbDataMgr:Setup() failed! Can not Open File! db_filename=" .. v)
             return
         end
 
         local list_tablename = self:_loadAllTableName()
         for i = 0, list_tablename.Count - 1 do
-            --self.QueLoadTbName[i] = list_tablename[i]
             local tb_name = list_tablename[i]
             local list_tb_data = self:_loadTable(tb_name)
             self:ParseTableAllData(tb_name, list_tb_data)
@@ -52,46 +50,6 @@ function TbDataMgr:Setup(list_db_filename)
         self.Sqlite:closeDb()
     end
 end
-
---t_db[i] = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath("resources.kingtexasraw/tbdata/" .. v .. ".db")
-
---local tb_count = LuaHelper:GetTableCount(self.QueLoadTbName)
---if (tb_count > 0)
---then
---	local tb_key,tb_value = LuaHelper:GetAndRemoveTableFirstEle(self.QueLoadTbName)
---	local list_tb_data = self:_loadTable(tb_value)
---	self:ParseTableAllData(tb_value,list_tb_data)
---else
---	if (self.FinishedCallBack ~= nil)
---	then
---		local call_back = self.FinishedCallBack
---		self.FinishedCallBack = nil
---		call_back()
---	end
---end
-
----------------------------------------
---function TbDataMgr:Close()
---end
-
----------------------------------------
---function TbDataMgr:onUpdate(tm)
---	 local tb_count = LuaHelper:GetTableCount(self.QueLoadTbName)
---     if (tb_count > 0)
---     then
---         local tb_key,tb_value = LuaHelper:GetAndRemoveTableFirstEle(self.QueLoadTbName)
---		 local list_tb_data = self:_loadTable(tb_value)
---		 self:ParseTableAllData(tb_value,list_tb_data)
---     else
---         if (self.FinishedCallBack ~= nil)
---         then
---             self.Sqlite:closeDb()
---             local call_back = self.FinishedCallBack
---             self.FinishedCallBack = nil
---             call_back()
---         end
---     end
---end
 
 ---------------------------------------
 function TbDataMgr:RegTbDataFac(tb_name, fac)
