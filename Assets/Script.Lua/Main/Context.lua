@@ -297,22 +297,21 @@ function Context:_nextLaunchStep()
         self:DoString("TexasHelper")
         self:DoString("TbDataMgr")
         self:DoString("TbDataBase")
-        self:DoString("TbDataMgrBase")
-        self.TbDataMgr = TbDataMgr:new(nil)
-        self.TbDataMgr:onCreate()
-        self:_regTbData()
 
         local t_db = {}
         for i, v in pairs(TbFileList) do
             t_db[i] = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath("resources.kingtexasraw/tbdata/" .. v .. ".db")
         end
-        self.TbDataMgrBase = TbDataMgrBase:new(nil, self.TbDataMgr, t_db,
-                function()
-                    --self:LoadDataDone()
-                end
-        )
+        self.TbDataMgr = TbDataMgr:new(nil)
+        self:_regTbData()
+        self.TbDataMgr:Setup(t_db)
+
+        --self:DoString("TbDataMgrBase")
+        --self.TbDataMgrBase = TbDataMgrBase:new(nil, self.TbDataMgr, t_db)
 
         self:_regModel()
+
+        TbDataHelper:new(nil, self.TbDataMgr)
 
         self:DoString("LanBase")
         self:DoString("LanEn")
@@ -417,7 +416,6 @@ end
 ---------------------------------------
 function Context:_regModel()
     self:DoString("TbDataHelper")
-    --TbDataHelper:new(nil, self.TbDataMgr)
     self:DoString("ModelCommon")
     self:DoString("ModelAccount")
     self:DoString("ModelActor")
