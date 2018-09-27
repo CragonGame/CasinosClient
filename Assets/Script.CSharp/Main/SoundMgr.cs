@@ -622,7 +622,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void update()
+        public void Update()
         {
             foreach (var i in mMapSoundLayer)
             {

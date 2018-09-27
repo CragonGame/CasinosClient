@@ -386,7 +386,7 @@ function ViewMain:onCreate()
         local texture = ab_mainmarry:LoadAsset("Mary")
         local json = ab_mainmarry:LoadAsset("MaryJson")
 
-        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton", 314)
+        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
         --local moteParent = self.ComUi:GetChild("MoteParent").asCom
         --self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
         self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph

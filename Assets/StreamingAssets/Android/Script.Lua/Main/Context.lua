@@ -1,15 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
---BundleUpdateURL = ''
---BundleVersionState = ''
---CommonLuaVersion = '1.00.652'
---CommonLuaRootURL = 'cragon-lua-oss.cragon.cn/1.00.652/'
---CommonLuaHelper = 'Helper/LuaHelper.lua'
---CommonWWWLoader = 'Helper/WWWLoader.lua'
---CommonLuaLoaderPath = 'Helper/CommonLuaLoader.lua'
---ProjectDataLoaderPath = 'Helper/ProjectDataLoader.lua'
---CommonLuaFileListTxtName = 'CommonLuaFileList.txt'
 OssRootUrl = 'http://cragon-king-oss.cragon.cn'
 AutopatcherUrl = 'http://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml'
 PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
@@ -213,12 +204,10 @@ function Context:_nextLaunchStep()
                 function(url, www)
                     -- 比较Oss上的datafilelist.txt和Persistent中的datafilelist.txt差异集，获取需要更新的Data列表
                     local datafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
-                    print(datafilelist_persistent)
                     self.RemoteDataFileListContent = www.text
                     local persistent_datafilelist_content = self.CasinosLua:ReadAllText(datafilelist_persistent)
                     self.UpdateRemoteToPersistentData = CS.Casinos.UpdateRemoteToPersistentData()
-                    local update_data_count = self.UpdateRemoteToPersistentData:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, DataRootURL)
-                    print('需更新Data数量：' .. update_data_count)
+                    self.UpdateRemoteToPersistentData:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, DataRootURL)
                     self.TimerUpdateRemoteToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self._timerUpdateRemoteToPersistentData)
                 end
         )

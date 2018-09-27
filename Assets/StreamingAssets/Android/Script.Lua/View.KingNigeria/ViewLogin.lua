@@ -202,7 +202,7 @@ function ViewLogin:onCreate()
         local abjson = p_helper:GetSpine("Spine/LoadingMarry/mary_loadingjson.ab")
         local json = abjson:LoadAsset("Mary_LoadingJson")
 
-        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton", 314)
+        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
         --local moteParent = self.ComUi:GetChild("MoteParent").asCom
         self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
         --self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
@@ -226,7 +226,7 @@ function ViewLogin:onCreate()
     local abjson1 = p_helper:GetSpine("Spine/DengLong/denglongjson.ab")
     local json1 = abjson1:LoadAsset("denglongJson")
 
-    self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton", 314)
+    self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton")
     local denglongParent = self.ComUi:GetChild("DengLongParent").asCom
     self.DengLongAnim.transform.position = denglongParent.displayObject.gameObject.transform.position
     self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(1.1, 1.1, 1.1)

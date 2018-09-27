@@ -372,7 +372,7 @@ function ViewMain:onCreate()
         local abjson = p_helper:GetSpine("Spine/MainMarry/maryjson.ab")
         local json = abjson:LoadAsset("MaryJson")
 
-        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton", 314)
+        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
         --local moteParent = self.ComUi:GetChild("MoteParent").asCom
         --self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
         self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
@@ -393,7 +393,7 @@ function ViewMain:onCreate()
     local bg = self.ComUi:GetChild("Bg")
     if (bg ~= nil)
     then
-        ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height,bg,BgAttachMode.Center)
+        ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
 
     --self.ComHeadIconCenter = self.ComUi:GetChild("ComPosEnd").asCom

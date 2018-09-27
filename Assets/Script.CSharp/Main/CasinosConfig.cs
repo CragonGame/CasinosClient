@@ -8,7 +8,7 @@ namespace Casinos
     public class StreamingAssetsInfo
     {
         public string DataVersion { get; set; }
-        public List<string> ListLaunchDir { get; set; }
+        public List<string> ListLaunchFile { get; set; }
     }
 
     public class CasinosConfig
@@ -63,6 +63,10 @@ namespace Casinos
             if (PlayerPrefs.HasKey("VersionDataPersistent"))
             {
                 VersionDataPersistent = PlayerPrefs.GetString("VersionDataPersistent");
+            }
+            else
+            {
+                VersionDataPersistent = StreamingAssetsInfo.DataVersion;
             }
         }
 

@@ -21,25 +21,17 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void CopyAsync(string copy_dir)
         {
-            // 遍历copy_dir中的所有文件
-            string sa_path = CasinosContext.Instance.PathMgr.getStreamingAssetsPath();
-            var sa_path1 = sa_path.ToLower();
-            var sa_path2 = sa_path1.Replace('/', '\\');
-            var p = CasinosContext.Instance.PathMgr.combineStreamingAssetsPath(copy_dir);
+            // 读取DataFileList.txt
+            var path_www_streamingassets_file = CasinosContext.Instance.PathMgr.combineWWWStreamingAssetsPath("DataFileList.txt");
+            WWW www = new WWW(path_www_streamingassets_file);
+            while (!www.isDone) { }
 
-            DirectoryInfo dir = new DirectoryInfo(p);
             QueCopyFile.Clear();
-
-            FileInfo[] file_list = dir.GetFiles("*.*", SearchOption.AllDirectories);
-            foreach (FileInfo i in file_list)
+            string[] arr_str = www.text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var i in arr_str)
             {
-                if (i.Name.EndsWith(".meta")) continue;
-
-                var s = i.FullName.ToLower();
-                var s1 = s.Replace('/', '\\');
-                var s2 = s1.Replace(sa_path2, "");
-
-                QueCopyFile.Enqueue(s2);
+                var arr = i.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                QueCopyFile.Enqueue(arr[0]);
             }
 
             TotalCount = QueCopyFile.Count;
@@ -72,6 +64,8 @@ namespace Casinos
                 {
                     fs.Write(i.Value.bytes, 0, i.Value.bytes.Length);
                 }
+
+                i.Value.Dispose();
             }
 
             foreach (var i in ListFinished)
@@ -86,3 +80,24 @@ namespace Casinos
         }
     }
 }
+
+// 遍历copy_dir中的所有文件
+//string sa_path = CasinosContext.Instance.PathMgr.getStreamingAssetsPath();
+//var sa_path1 = sa_path.ToLower();
+//var sa_path2 = sa_path1.Replace('/', '\\');
+//var p = CasinosContext.Instance.PathMgr.combineStreamingAssetsPath(copy_dir);
+
+//DirectoryInfo dir = new DirectoryInfo(p);
+//QueCopyFile.Clear();
+
+//FileInfo[] file_list = dir.GetFiles("*.*", SearchOption.AllDirectories);
+//foreach (FileInfo i in file_list)
+//{
+//    if (i.Name.EndsWith(".meta")) continue;
+
+//    var s = i.FullName.ToLower();
+//    var s1 = s.Replace('/', '\\');
+//    var s2 = s1.Replace(sa_path2, "");
+
+//    QueCopyFile.Enqueue(s2);
+//}

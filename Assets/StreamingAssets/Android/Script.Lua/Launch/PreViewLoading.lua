@@ -18,6 +18,7 @@ function PreViewLoading:new(o)
     self.ShowSPine = true
     self.AbLoadingMarry = nil
     self.AbDenglong = nil
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     if (self.Instance == nil) then
         self.Instance = o
     end
@@ -44,18 +45,18 @@ function PreViewLoading:onCreate()
     --CS.FairyGUI.Timers.inst:Add(0, 0, self._updateTips)
 
     local com_bg = self.ComUi:GetChild("ComBg")
-    com_bg = self.ComUi:GetChild("ComBg")
+    --com_bg = self.ComUi:GetChild("ComBg")
     local image_mote = com_bg:GetChild("ImageMote").asImage
     local p_helper = ParticleHelper:new(nil)
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+
     if (self.ShowSPine) then
         image_mote.visible = false
         self.AbLoadingMarry = p_helper:GetPreSpine("LoadingMarry")
         local atlas = self.AbLoadingMarry:LoadAsset("Mary_Loading.atlas")
         local texture = self.AbLoadingMarry:LoadAsset("Mary_Loading")
         local json = self.AbLoadingMarry:LoadAsset("Mary_LoadingJson")
-
-        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton", 314)
+        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
+        print('asdfasdfsafasdfasdfasdfffffffffffffffffffffffffffff')
         --local moteParent = self.ComUi:GetChild("MoteParent").asCom
         self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
         --self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
@@ -79,7 +80,7 @@ function PreViewLoading:onCreate()
     local texture1 = self.AbDenglong:LoadAsset("denglong")
     local json1 = self.AbDenglong:LoadAsset("denglongJson")
 
-    self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton", 314)
+    self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton")
     local denglongParent = self.ComUi:GetChild("DengLongParent").asCom
     self.DengLongAnim.transform.position = denglongParent.displayObject.gameObject.transform.position
     self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(1.1, 1.1, 1.1)
@@ -94,10 +95,10 @@ end
 
 ---------------------------------------
 function PreViewLoading:onDestroy()
-    if (self.ShowSPine) then
-        CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
-    end
-    CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
+    --if (self.ShowSPine) then
+    --    CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
+    --end
+    --CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
 
     if (self.AbLoadingMarry ~= nil) then
         self.AbLoadingMarry:Unload(true)
@@ -349,8 +350,7 @@ function PreViewLoadingFactory:createView()
 end
 
 ---------------------------------------
-ParticleHelper = {
-}
+ParticleHelper = {}
 
 ---------------------------------------
 function ParticleHelper:new(o)
@@ -358,55 +358,47 @@ function ParticleHelper:new(o)
     setmetatable(o, self)
     self.__index = self
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
         self.TableParticle = {}
         self.TableSpine = {}
     end
-
     return self.Instance
 end
 
 ---------------------------------------
 function ParticleHelper:GetParticel(path)
     local particle = self.TableParticle[path]
-    if (particle == nil)
-    then
+    if (particle == nil) then
         local particle_path = self.CasinosContext.PathMgr:combinePersistentDataPath(
                 ViewHelper:getABParticleResourceTitlePath() .. path)
         particle = CS.UnityEngine.AssetBundle.LoadFromFile(particle_path)
         self.TableParticle[path] = particle
     end
-
     return particle
 end
 
 ---------------------------------------
 function ParticleHelper:GetSpine(path)
     local spine = self.TableSpine[path]
-    if (spine == nil)
-    then
+    if (spine == nil) then
         local spine_path = self.CasinosContext.PathMgr:combinePersistentDataPath(
                 self.CasinosContext.ABResourcePathTitle .. path)
         spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
         self.TableSpine[path] = spine
     end
-
     return spine
 end
 
 ---------------------------------------
 function ParticleHelper:GetPreSpine(path)
     local spine = self.TableSpine[path]
-    if (spine == nil)
-    then
+    if (spine == nil) then
         local casinos_context = CS.Casinos.CasinosContext.Instance
         local launch_persistentdata_path = casinos_context.PathMgr.PathLaunchRootPersistent
         local spine_path = launch_persistentdata_path .. string.lower(path) .. ".ab"
         spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
         self.TableSpine[path] = spine
     end
-
     return spine
 end

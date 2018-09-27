@@ -6,9 +6,7 @@ namespace Casinos
     using System.Collections;
     using System.IO;
     using System.Threading;
-    using UnityEngine;
     using ICSharpCode.SharpZipLib.Zip;
-    using ICSharpCode.SharpZipLib.Core;
 
     public class AndroidJarDecompressor
     {

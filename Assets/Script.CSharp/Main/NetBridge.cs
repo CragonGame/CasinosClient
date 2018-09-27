@@ -22,7 +22,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void update(float tm)
+        public void Update(float tm)
         {
             RpcSession.update(tm);
         }

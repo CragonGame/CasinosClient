@@ -45,8 +45,7 @@ function ViewLoading:onCreate()
 	--then
 	--	CS.Casinos.UiHelperCasinos.makeUiBgFiteScreen(bg, self.ComUi.width, self.ComUi.height, bg.width, bg.height)
 	--end
-	
-	
+
 	local com_bg = self.ComUi:GetChild("ComBg").asCom
 	local image_bg = com_bg:GetChild("ImageMote").asImage
 	self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -61,7 +60,7 @@ function ViewLoading:onCreate()
 		local abjson = p_helper:GetSpine("Spine/LoadingMarry/mary_loadingjson.ab")
 		local json = abjson:LoadAsset("Mary_LoadingJson")
 		
-		self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas,texture,json,"Spine/Skeleton",314)
+		self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas,texture,json,"Spine/Skeleton")
 		local moteParent = self.ComUi:GetChild("MoteParent").asCom
 		self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
 		self.PlayerAnim.transform.localScale = CS.UnityEngine.Vector3(1.25,1.25,1)

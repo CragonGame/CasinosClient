@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosContext);
-			Utils.BeginObjectRegister(type, L, translator, 0, 20, 64, 48);
+			Utils.BeginObjectRegister(type, L, translator, 0, 20, 63, 48);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -55,7 +55,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathMgr", _g_get_PathMgr);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "PlayerPrefs", _g_get_PlayerPrefs);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "Config", _g_get_Config);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "Listener", _g_get_Listener);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "TextureMgr", _g_get_TextureMgr);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "CasinosLua", _g_get_CasinosLua);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "NetBridge", _g_get_NetBridge);
@@ -183,17 +182,16 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 8 && translator.Assignable<Casinos.CasinosListener>(L, 2) && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 3) && (LuaAPI.lua_isnil(L, 4) || LuaAPI.lua_type(L, 4) == LuaTypes.LUA_TSTRING) && (LuaAPI.lua_isnil(L, 5) || LuaAPI.lua_type(L, 5) == LuaTypes.LUA_TSTRING) && (LuaAPI.lua_isnil(L, 6) || LuaAPI.lua_type(L, 6) == LuaTypes.LUA_TSTRING) && (LuaAPI.lua_isnil(L, 7) || LuaAPI.lua_type(L, 7) == LuaTypes.LUA_TSTRING) && (LuaAPI.lua_isnil(L, 8) || LuaAPI.lua_type(L, 8) == LuaTypes.LUA_TSTRING))
+				if(LuaAPI.lua_gettop(L) == 7 && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 2) && (LuaAPI.lua_isnil(L, 3) || LuaAPI.lua_type(L, 3) == LuaTypes.LUA_TSTRING) && (LuaAPI.lua_isnil(L, 4) || LuaAPI.lua_type(L, 4) == LuaTypes.LUA_TSTRING) && (LuaAPI.lua_isnil(L, 5) || LuaAPI.lua_type(L, 5) == LuaTypes.LUA_TSTRING) && (LuaAPI.lua_isnil(L, 6) || LuaAPI.lua_type(L, 6) == LuaTypes.LUA_TSTRING) && (LuaAPI.lua_isnil(L, 7) || LuaAPI.lua_type(L, 7) == LuaTypes.LUA_TSTRING))
 				{
-					Casinos.CasinosListener _listener = (Casinos.CasinosListener)translator.GetObject(L, 2, typeof(Casinos.CasinosListener));
-					bool _use_persistent = LuaAPI.lua_toboolean(L, 3);
-					string _lua_project_listener_name = LuaAPI.lua_tostring(L, 4);
-					string _ui_pathroot = LuaAPI.lua_tostring(L, 5);
-					string _resourcesrow_pathroot = LuaAPI.lua_tostring(L, 6);
-					string _ab_resource_title = LuaAPI.lua_tostring(L, 7);
-					string _lotteryticket_factoryname = LuaAPI.lua_tostring(L, 8);
+					bool _use_persistent = LuaAPI.lua_toboolean(L, 2);
+					string _lua_project_listener_name = LuaAPI.lua_tostring(L, 3);
+					string _ui_pathroot = LuaAPI.lua_tostring(L, 4);
+					string _resourcesrow_pathroot = LuaAPI.lua_tostring(L, 5);
+					string _ab_resource_title = LuaAPI.lua_tostring(L, 6);
+					string _lotteryticket_factoryname = LuaAPI.lua_tostring(L, 7);
 					
-					Casinos.CasinosContext gen_ret = new Casinos.CasinosContext(_listener, _use_persistent, _lua_project_listener_name, _ui_pathroot, _resourcesrow_pathroot, _ab_resource_title, _lotteryticket_factoryname);
+					Casinos.CasinosContext gen_ret = new Casinos.CasinosContext(_use_persistent, _lua_project_listener_name, _ui_pathroot, _resourcesrow_pathroot, _ab_resource_title, _lotteryticket_factoryname);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -926,20 +924,6 @@ namespace XLua.CSObjectWrap
 			
                 Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.Config);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_Listener(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.Listener);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

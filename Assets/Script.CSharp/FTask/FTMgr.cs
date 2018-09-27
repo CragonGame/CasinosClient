@@ -27,7 +27,7 @@ namespace Casinos
         }
 
         //-------------------------------------------------------------------------
-        public void update(float tm)
+        public void Update(float tm)
         {
             ListTaskerCopy.Clear();
             ListTaskerCopy.AddRange(ListTaskerAll);

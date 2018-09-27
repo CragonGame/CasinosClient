@@ -22,10 +22,9 @@ namespace Casinos
             use_persistent = casinos_editor_cfg.CfgUserSettings.UseTmpDirRes;
 #endif
 
-            KingTexasCasinosListener listener = new KingTexasCasinosListener();
+            //KingTexasCasinosListener listener = new KingTexasCasinosListener();
 
-            Context = new CasinosContext(listener,
-                use_persistent,
+            Context = new CasinosContext(use_persistent,
                 "KingTexasListener",
                 "Resources.KingTexas/Ui/",
                 "Resources.KingTexasRaw/",

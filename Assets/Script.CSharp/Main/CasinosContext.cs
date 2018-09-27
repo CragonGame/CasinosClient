@@ -64,7 +64,7 @@ namespace Casinos
         public PathMgr PathMgr { get; private set; }
         public CasinosPlayerPrefs PlayerPrefs { get; private set; }
         public CasinosConfig Config { get; private set; }
-        public CasinosListener Listener { get; private set; }
+        //public CasinosListener Listener { get; private set; }
         public TextureMgr TextureMgr { get; private set; }
         public CasinosLua CasinosLua { get; private set; }
         public NetBridge NetBridge { get; private set; }
@@ -144,8 +144,7 @@ namespace Casinos
         //Action<LuaTable> DestroyPreView { get; set; }
 
         //---------------------------------------------------------------------
-        public CasinosContext(CasinosListener listener,
-            bool use_persistent,
+        public CasinosContext(bool use_persistent,
             string lua_project_listener_name,
             string ui_pathroot,
             string resourcesrow_pathroot,
@@ -227,14 +226,9 @@ namespace Casinos
             Stopwatch.Start();
             TimerShaft = new TimerShaft();
 
-            Listener = listener;
             MemoryStream = new MemoryStream();
             SB = new StringBuilder();
             Config = new CasinosConfig(editor_runsorce);
-
-            //Config = GameObject.FindObjectOfType<MbCasinosConfig>();
-            //Config.FormatConfigUrl();
-            //UserConfig = GameObject.FindObjectOfType<MbCasinosUserConfig>();
 
             // 初始化系统参数
             {
@@ -280,9 +274,6 @@ namespace Casinos
             CasinosLua = new CasinosLua();
             SoundMgr = new CSoundMgr();
             HeadIconMgr = new HeadIconMgr();
-
-            //CopyStreamingAssetsToPersistentDataPath = new CopyStreamingAssetsToPersistentDataPath();
-            //Launch = new Launch();
         }
 
         //---------------------------------------------------------------------
@@ -290,17 +281,17 @@ namespace Casinos
         {
             if (SoundMgr != null)
             {
-                SoundMgr.update();
+                SoundMgr.Update();
             }
 
             if (FTMgr != null)
             {
-                FTMgr.update(elapsed_tm);
+                FTMgr.Update(elapsed_tm);
             }
 
             if (NetBridge != null)
             {
-                NetBridge.update(elapsed_tm);
+                NetBridge.Update(elapsed_tm);
             }
 
             if (AsyncAssetLoaderMgr != null)
@@ -333,12 +324,6 @@ namespace Casinos
                 SoundMgr = null;
             }
 
-            if (MemoryStream != null)
-            {
-                MemoryStream.Close();
-                MemoryStream = null;
-            }
-
             if (CasinosLua != null)
             {
                 CasinosLua.Release();
@@ -358,6 +343,12 @@ namespace Casinos
                 AsyncAssetLoadGroup = null;
             }
 
+            if (MemoryStream != null)
+            {
+                MemoryStream.Close();
+                MemoryStream = null;
+            }
+
             Screen.sleepTimeout = SleepTimeout.SystemSetting;
         }
 
@@ -375,7 +366,7 @@ namespace Casinos
             if (need_copy)
             {
                 var copy_dir = new CopyStreamingAssetsToPersistentData1();
-                copy_dir.CopySync(Config.StreamingAssetsInfo.ListLaunchDir);
+                copy_dir.CopySync(Config.StreamingAssetsInfo.ListLaunchFile);
             }
 
             CasinosLua.Launch();
@@ -548,24 +539,10 @@ namespace Casinos
 //    //SoundManager.Play(audio_clip, is_loop);
 //}
 
-//public CopyStreamingAssetsToPersistentDataPath CopyStreamingAssetsToPersistentDataPath { get; set; }
-//public Launch Launch { get; set; }
-
 //---------------------------------------------------------------------
 //public void RegLuaFilePath(string luafile_relativepath, params string[] luafile_name)
 //{
 //    CasinosLua.RegLuaFilePath(luafile_relativepath, luafile_name);
-//}
-
-//---------------------------------------------------------------------
-//public void copyStreamingAssetsToPersistentDataPath()
-//{
-//    Launch.copyStreamingAssetsToPersistentDataPath();
-//}
-
-//---------------------------------------------------------------------
-//public void LoadConfigDone()
-//{
 //}
 
 //---------------------------------------------------------------------
@@ -650,21 +627,3 @@ namespace Casinos
 //    string channel_name = bundle_id.Replace(Config.AppCommonIdentifier, "");
 //    return channel_name;
 //}
-
-//---------------------------------------------------------------------
-//        public string GetMainCUrl()
-//        {
-//            SB.Clear();
-//            SB.Append("https://cragon-king-oss.cragon.cn/");
-
-//#if UNITY_ANDROID
-//            SB.Append("ANDROID");
-//#elif UNITY_IPHONE
-//            SB.Append("IOS");
-//#endif
-//            SB.Append("/Bundle/");
-//            SB.Append(Application.version);
-//            SB.Append("/MainC.lua");
-
-//            return SB.ToString();
-//        }

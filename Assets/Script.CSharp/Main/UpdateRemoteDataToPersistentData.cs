@@ -27,10 +27,9 @@ namespace Casinos
             Dictionary<string, string> map_remote = new Dictionary<string, string>();
             Dictionary<string, string> map_persistent = new Dictionary<string, string>();
 
-            string[] arr_remote = null;
             if (!string.IsNullOrEmpty(datafilelist_remote))
             {
-                arr_remote = datafilelist_remote.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] arr_remote = datafilelist_remote.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var i in arr_remote)
                 {
                     var arr = i.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -38,10 +37,9 @@ namespace Casinos
                 }
             }
 
-            string[] arr_persistent = null;
             if (!string.IsNullOrEmpty(datafilelist_persistent))
             {
-                arr_persistent = datafilelist_persistent.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] arr_persistent = datafilelist_persistent.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var i in arr_persistent)
                 {
                     var arr = i.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -64,7 +62,7 @@ namespace Casinos
 
             TotalCount = QueUpdateFile.Count;
             LeftCount = QueUpdateFile.Count;
-            
+
             return QueUpdateFile.Count;
         }
 
