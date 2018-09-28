@@ -31,29 +31,34 @@ function ItemLotteryTicketCard:showCard(card_data)
 	else
 		to_open = true
 	end
-    self.TweenerTurnCard = CS.DG.Tweening.DOTween.To(
-		function()
-			return 0
-		end,
-		function(x)
-			if (to_open) then
-				self.GImageCardBack.rotationY = x
-				self.GLoaderCard.rotationY = -180 + x
-				if (x > 90) then
-					self.GLoaderCard.visible = true
-					self.GImageCardBack.visible = false
-					local card_name = string.format("%u",card_data.suit) .. "_" .. string.format("%u",card_data.type)
-					self.GLoaderCard.icon = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath
-                      (CS.Casinos.UiHelperCasinos:getABCardResourceTitlePath() .. tostring(card_name) .. ".ab")
-				end
-			end
-		end,
-		180, 0.8
-	):SetTarget(self.GImageCardBack):SetEase(CS.FairyGUI.EaseType.QuadOut):OnComplete(
-		function()
-			self.TweenerTurnCard = nil
-		end
+
+	self.TweenerTurnCard = CS.FairyGUI.GTween.To(
+	--function()
+	--	return 0
+	--end,
+			0, 180, 0.8
 	)
+
+	self.TweenerTurnCard:SetTarget(self.GImageCardBack):SetEase(CS.FairyGUI.EaseType.QuadOut)
+		:OnUpdate(
+			function()
+				local x = self.TweenerTurnCard.value.x
+				if (to_open) then
+					self.GImageCardBack.rotationY = x
+					self.GLoaderCard.rotationY = -180 + x
+					if (x > 90) then
+						self.GLoaderCard.visible = true
+						self.GImageCardBack.visible = false
+						local card_name = string.format("%u", card_data.suit) .. "_" .. string.format("%u", card_data.type)
+						self.GLoaderCard.icon = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(CS.Casinos.UiHelperCasinos:getABCardResourceTitlePath() .. tostring(card_name) .. ".ab")
+					end
+				end
+			end)
+		:OnComplete(
+			function()
+				self.TweenerTurnCard = nil
+			end)
+
 	CS.Casinos.CasinosContext.Instance:Play("desk_new_card", CS.Casinos._eSoundLayer.LayerNormal)
 end
 

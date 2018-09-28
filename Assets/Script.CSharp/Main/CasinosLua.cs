@@ -120,6 +120,8 @@ namespace Casinos
             typeof(FairyGUI.GSlider),
             typeof(FairyGUI.GTween),
             typeof(FairyGUI.GTweener),
+            typeof(FairyGUI.GTweenCallback),
+            typeof(FairyGUI.GTweenCallback1),
             typeof(FairyGUI.ListItemRenderer),
             typeof(FairyGUI.Stage),
             typeof(FairyGUI.PlayCompleteCallback),
@@ -228,6 +230,8 @@ namespace Casinos
             // FairyGUI
             typeof(FairyGUI.EventCallback0),
             typeof(FairyGUI.EventCallback1),
+            typeof(FairyGUI.GTweenCallback),
+            typeof(FairyGUI.GTweenCallback1),
             typeof(FairyGUI.ListItemRenderer),
 
             // SDKs

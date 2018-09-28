@@ -152,20 +152,22 @@ function DesktopHCard:showCard(action)
             to_open = true
         end
         local tweener = CS.FairyGUI.GTween.To(
+                --function()
+                --    local t = math.ceil(0)
+                --    return t
+                --end,
+                0, 180, 0.8
+        )
+
+        tweener:SetTarget(self.GImageCardBack):SetEase(CS.FairyGUI.EaseType.QuadOut)
+               :OnUpdate(
                 function()
-                    local t = math.ceil(0)
-                    return t
-                end,
-                function(x)
+                    local x = tweener.value.x
                     if (self.IsReset == true) then
                         return
                     end
 
                     if (to_open) then
-                        --if (self.IsReset == true) then
-                        --    return
-                        --end
-
                         self.GImageCardBack.rotationY = x
                         self.GLoaderCard.rotationY = -180 + x
                         if (x > 90) then
@@ -173,10 +175,6 @@ function DesktopHCard:showCard(action)
                             self.GImageCardBack.visible = false
                         end
                     else
-                        --if (self.IsReset == true) then
-                        --    return
-                        --end
-
                         self.GImageCardBack.rotationY = -180 + x
                         self.GLoaderCard.rotationY = x
                         if (x > 90) then
@@ -184,10 +182,8 @@ function DesktopHCard:showCard(action)
                             self.GImageCardBack.visible = true
                         end
                     end
-                end,
-                180, 0.8
-        )
-        tweener:SetTarget(self.GImageCardBack):SetEase(CS.FairyGUI.EaseType.QuadOut):OnComplete(
+                end)
+               :OnComplete(
                 function()
                     if (self.IsReset == true) then
                         return

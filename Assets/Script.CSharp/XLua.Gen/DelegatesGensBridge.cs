@@ -1097,7 +1097,34 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp39(int p0, FairyGUI.GObject p1)
+		public void __Gen_Delegate_Imp39(FairyGUI.GTweener p0)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                ObjectTranslator translator = luaEnv.translator;
+                
+                LuaAPI.lua_getref(L, luaReference);
+                
+                translator.Push(L, p0);
+                
+                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
+                if (__gen_error != 0)
+                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                
+                
+                
+                LuaAPI.lua_settop(L, err_func - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public void __Gen_Delegate_Imp40(int p0, FairyGUI.GObject p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1125,7 +1152,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp40(int p0, cn.sharesdk.unity3d.ResponseState p1, cn.sharesdk.unity3d.PlatformType p2, System.Collections.Hashtable p3)
+		public void __Gen_Delegate_Imp41(int p0, cn.sharesdk.unity3d.ResponseState p1, cn.sharesdk.unity3d.PlatformType p2, System.Collections.Hashtable p3)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1207,6 +1234,11 @@ namespace XLua
 		    if (type == typeof(FairyGUI.EventCallback0))
 			{
 			    return new FairyGUI.EventCallback0(__Gen_Delegate_Imp4);
+			}
+		
+		    if (type == typeof(FairyGUI.GTweenCallback))
+			{
+			    return new FairyGUI.GTweenCallback(__Gen_Delegate_Imp4);
 			}
 		
 		    if (type == typeof(System.Action<string>))
@@ -1389,14 +1421,19 @@ namespace XLua
 			    return new FairyGUI.EventCallback1(__Gen_Delegate_Imp38);
 			}
 		
+		    if (type == typeof(FairyGUI.GTweenCallback1))
+			{
+			    return new FairyGUI.GTweenCallback1(__Gen_Delegate_Imp39);
+			}
+		
 		    if (type == typeof(FairyGUI.ListItemRenderer))
 			{
-			    return new FairyGUI.ListItemRenderer(__Gen_Delegate_Imp39);
+			    return new FairyGUI.ListItemRenderer(__Gen_Delegate_Imp40);
 			}
 		
 		    if (type == typeof(cn.sharesdk.unity3d.ShareSDK.EventHandler))
 			{
-			    return new cn.sharesdk.unity3d.ShareSDK.EventHandler(__Gen_Delegate_Imp40);
+			    return new cn.sharesdk.unity3d.ShareSDK.EventHandler(__Gen_Delegate_Imp41);
 			}
 		
 		    return null;
