@@ -238,9 +238,9 @@ namespace Casinos
                 Application.runInBackground = true;
                 Screen.sleepTimeout = SleepTimeout.NeverSleep;
 #endif
-                Time.fixedDeltaTime = 0.03f;
+                Time.fixedDeltaTime = 0.033f;
                 QualitySettings.vSyncCount = 1;
-                //Application.targetFrameRate = 30;
+                //Application.targetFrameRate = 1000;
             }
 
             // 初始化日志
@@ -278,6 +278,9 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Update(float elapsed_tm)
         {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 1000;
+
             if (SoundMgr != null)
             {
                 SoundMgr.Update();

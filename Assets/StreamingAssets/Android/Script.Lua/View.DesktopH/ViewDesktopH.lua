@@ -65,6 +65,8 @@ function ViewDesktopH:new(o)
     self.TongPeiPackName = "DesktopHTongPei"
     self.ShowTongShaTongPeiTime = 1
     self.MaxUiChipNum = 60
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.TimerUpdate = nil
     return o
 end
 
@@ -254,20 +256,16 @@ function ViewDesktopH:onCreate()
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     self:setNewReward()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionReward")
-end
 
----------------------------------------
-function ViewDesktopH:getMoveIntervalTm(count)
-    local delay_t = DesktopHUiGold.MAX_CHIP_MOVE_TM / count
-    if (delay_t > DesktopHUiGold.MAX_CHIP_MOVE_INTERVAL_TM) then
-        delay_t = DesktopHUiGold.MAX_CHIP_MOVE_INTERVAL_TM
-    end
-
-    return delay_t
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
 ---------------------------------------
 function ViewDesktopH:onDestroy()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
     self.ViewMgr:unbindEvListener(self)
     self:_cancelTaskAndDestroyUiResult()
     self.DesktopHBankPlayer:destroy()
@@ -298,40 +296,6 @@ function ViewDesktopH:onDestroy()
     if (ui_shootingtext ~= nil) then
         self.ViewMgr:destroyView(ui_shootingtext)
     end
-end
-
----------------------------------------
-function ViewDesktopH:onUpdate(elapsed_tm)
-    if (self.CasinosContext.Pause == true) then
-        return
-    end
-
-    self.CheckTimeTime = self.CheckTimeTime + elapsed_tm
-    if (self.CheckTimeTime >= 60) then
-        self:_checkTime()
-        self.CheckTimeTime = 0
-    end
-
-    if (self.DesktopHDealer ~= nil) then
-        self.DesktopHDealer:update(elapsed_tm)
-    end
-
-    if (self.StateTm > 0) then
-        self.StateTm = self.StateTm - elapsed_tm
-        if (self.StateTm > 0) then
-            self.UiDesktopHBase:setCountDown(math.ceil(self.StateTm))
-        else
-            self.CanBet = false
-            self.GCotips.visible = false
-        end
-    end
-
-    for i, v in pairs(self.MapDesktopHChair) do
-        v:update(elapsed_tm)
-    end
-
-    self.DesktopHBankPlayer:update(elapsed_tm)
-    self.DesktopHStandPlayer:update(elapsed_tm)
 end
 
 ---------------------------------------
@@ -678,6 +642,49 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         end
     end
     self:_setNewChatCount(self.ControllerIM.IMChat:getAllNewChatCount())
+end
+
+---------------------------------------
+function ViewDesktopH:_timerUpdate(elapsed_tm)
+    if (self.CasinosContext.Pause == true) then
+        return
+    end
+
+    self.CheckTimeTime = self.CheckTimeTime + elapsed_tm
+    if (self.CheckTimeTime >= 60) then
+        self:_checkTime()
+        self.CheckTimeTime = 0
+    end
+
+    if (self.DesktopHDealer ~= nil) then
+        self.DesktopHDealer:update(elapsed_tm)
+    end
+
+    if (self.StateTm > 0) then
+        self.StateTm = self.StateTm - elapsed_tm
+        if (self.StateTm > 0) then
+            self.UiDesktopHBase:setCountDown(math.ceil(self.StateTm))
+        else
+            self.CanBet = false
+            self.GCotips.visible = false
+        end
+    end
+
+    for i, v in pairs(self.MapDesktopHChair) do
+        v:update(elapsed_tm)
+    end
+
+    self.DesktopHBankPlayer:update(elapsed_tm)
+    self.DesktopHStandPlayer:update(elapsed_tm)
+end
+
+---------------------------------------
+function ViewDesktopH:getMoveIntervalTm(count)
+    local delay_t = DesktopHUiGold.MAX_CHIP_MOVE_TM / count
+    if (delay_t > DesktopHUiGold.MAX_CHIP_MOVE_INTERVAL_TM) then
+        delay_t = DesktopHUiGold.MAX_CHIP_MOVE_INTERVAL_TM
+    end
+    return delay_t
 end
 
 ---------------------------------------
