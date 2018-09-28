@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemInviteFriendPlay = {}
 
 function ItemInviteFriendPlay:new(o,com,view)

@@ -1,8 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 选择分享类型的对话框
 
+---------------------------------------
 ViewShareType = ViewBase:new()
 
+---------------------------------------
 function ViewShareType:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -14,10 +16,10 @@ function ViewShareType:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
-
     return o
 end
 
+---------------------------------------
 function ViewShareType:onCreate()
     self.ComUi.onClick:Add(
             function()
@@ -38,37 +40,41 @@ function ViewShareType:onCreate()
     )
 end
 
+---------------------------------------
 function ViewShareType:onUpdate(tm)
 end
 
+---------------------------------------
 function ViewShareType:onClickBtnWeChat()
     local ev = self.ViewMgr:getEv("EvClickShare")
-    if(ev == nil)
-    then
+    if (ev == nil) then
         ev = EvClickShare:new(nil)
     end
     ev.ShareType = ShareType.WeChat
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewShareType:onClickBtnWeChatMoments()
     local ev = self.ViewMgr:getEv("EvClickShare")
-    if(ev == nil)
-    then
+    if (ev == nil) then
         ev = EvClickShare:new(nil)
     end
     ev.ShareType = ShareType.WeChatMoments
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewShareType:onClickClose()
     self.ViewMgr:destroyView(self)
 end
 
+---------------------------------------
 ViewShareTypeFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewShareTypeFactory:new(o, ui_package_name, ui_component_name,
-                              ui_layer, is_single, fit_screen)
+                                  ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -80,6 +86,7 @@ function ViewShareTypeFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewShareTypeFactory:createView()
     local view = ViewShareType:new(nil)
     return view

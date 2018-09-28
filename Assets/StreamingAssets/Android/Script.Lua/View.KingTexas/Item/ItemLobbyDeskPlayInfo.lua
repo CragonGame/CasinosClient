@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 桌子列表单个桌子中的一个玩家头像
 
 ItemLobbyDeskPlayInfo = {}

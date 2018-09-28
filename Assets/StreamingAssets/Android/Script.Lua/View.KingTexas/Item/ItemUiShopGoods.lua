@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemUiShopGoods = {}
 
 function ItemUiShopGoods:new(o,com,describe,icon_url,btn_title,function_btnOnClick)
@@ -15,4 +17,3 @@ function ItemUiShopGoods:new(o,com,describe,icon_url,btn_title,function_btnOnCli
 	text_btn_title.text = btn_title
     return o
 end
-

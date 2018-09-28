@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 他人详细信息
 
 ViewPlayerProfile = ViewBase:new()

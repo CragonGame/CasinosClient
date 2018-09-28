@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemChatTargetInfo = {}
 
 function ItemChatTargetInfo:new(o,com)

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewFriend = ViewBase:new()
 
 function ViewFriend:new(o)

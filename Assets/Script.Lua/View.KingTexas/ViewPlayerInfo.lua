@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 本人详细信息对话框
 
 ViewPlayerInfo = ViewBase:new()

@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 百人桌唯一的项目特有View，点开奖池对话框弹出的信息，主要就是排版以及某些元素不一致
 
 ViewDesktopHRewardPot = ViewBase:new()

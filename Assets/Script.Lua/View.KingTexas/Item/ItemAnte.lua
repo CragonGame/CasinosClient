@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 废弃
 
 ItemAnte = {}

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemMatchInfo = {}
 
 function ItemMatchInfo:new(o,com,match_info,self_join,view_mgr)

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewInviteFriendPlay = ViewBase:new()
 
 function ViewInviteFriendPlay:new(o)

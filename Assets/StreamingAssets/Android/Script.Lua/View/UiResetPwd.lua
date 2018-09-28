@@ -26,8 +26,7 @@ function UiResetPwd:new(view)
                 o.ViewLogin.UiChooseCountryCode.KeyAndCodeFormat)
 
         local btn_return = view.ComUi:GetChildInGroup(group_resetpwd, "BtnReturn")
-        if (btn_return ~= nil)
-        then
+        if (btn_return ~= nil) then
             btn_return.asButton.onClick:Add(
                     function()
                         o:_onClickBtnReturn()
@@ -54,8 +53,7 @@ function UiResetPwd:new(view)
     end
 
     local obj_resetpwdcode = view.ComUi:GetChild("ResetPwdCode")
-    if (obj_resetpwdcode ~= nil)
-    then
+    if (obj_resetpwdcode ~= nil) then
         local group_resetpwdcode = obj_resetpwdcode.asGroup
         o.BtnResetCodeNext = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnNext").asButton
         o.BtnResetCodeNext.onClick:Add(
@@ -81,8 +79,7 @@ function UiResetPwd:new(view)
                 end
         )
         local btn_return = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnReturn")
-        if (btn_return ~= nil)
-        then
+        if (btn_return ~= nil) then
             btn_return.asButton.onClick:Add(
                     function()
                         o:_onClickBtnReturnRegisterCode()
@@ -138,13 +135,11 @@ end
 
 ---------------------------------------
 function UiResetPwd:_checkResetInput()
-    if (self.GTextInputReset == nil)
-    then
+    if (self.GTextInputReset == nil) then
         return
     end
 
-    if ((self.GTextInputReset ~= nil and string.len(self.GTextInputReset.text) > 0))
-    then
+    if ((self.GTextInputReset ~= nil and string.len(self.GTextInputReset.text) > 0)) then
         self.BtnNext.alpha = 1
         self.BtnNext.enabled = true
     else
@@ -155,14 +150,12 @@ end
 
 ---------------------------------------
 function UiResetPwd:_checkResetCodeInput()
-    if (self.TextRegisterCode == nil or self.TextResetPwd == nil)
-    then
+    if (self.TextRegisterCode == nil or self.TextResetPwd == nil) then
         return
     end
 
     if ((self.TextRegisterCode ~= nil and string.len(self.TextRegisterCode.text) > 0)
-            and (self.TextResetPwd ~= nil and string.len(self.TextResetPwd.text) > 0))
-    then
+            and (self.TextResetPwd ~= nil and string.len(self.TextResetPwd.text) > 0)) then
         self.BtnResetCodeNext.alpha = 1
         self.BtnResetCodeNext.enabled = true
     else
@@ -184,8 +177,7 @@ function UiResetPwd:_onClickResetPwdBtnNext()
                 local p_f = "+" .. self.CountryCode .. " " .. self.GTextInputReset.text
                 self.TextRegisterPhone.text = p_f
                 local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiRequestGetPhoneCode:new(nil)
                 end
                 ev.Phone = self.PhoneFormat
@@ -232,8 +224,7 @@ function UiResetPwd:_onClickBtnResend()
     msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("Confirm"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("ResendCode"),
             function()
                 local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiRequestGetPhoneCode:new(nil)
                 end
                 ev.Phone = self.PhoneFormat
@@ -252,8 +243,7 @@ end
 ---------------------------------------
 function UiResetPwd:_onClickResetPwdCodeBtnNext()
     local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestResetPwd")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiRequestResetPwd:new(nil)
     end
     ev.phone = self.Phone

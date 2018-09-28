@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 --GiftShop在用，左侧类型分类
 
 ItemGiftType = {}

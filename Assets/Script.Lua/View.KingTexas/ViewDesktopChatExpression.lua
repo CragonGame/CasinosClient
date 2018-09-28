@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 普通桌本人头像点击弹出的半圆对话框
 
 ViewDesktopChatExpression = ViewBase:new()

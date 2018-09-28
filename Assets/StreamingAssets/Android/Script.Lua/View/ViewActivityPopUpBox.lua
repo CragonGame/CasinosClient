@@ -44,8 +44,7 @@ end
 ---------------------------------------
 function ViewActivityPopUpBox:onDestroy()
     local ev = self.ViewMgr:getEv("EvUiCloseActivityPopUpBox")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiCloseActivityPopUpBox:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -58,13 +57,11 @@ end
 
 ---------------------------------------
 function ViewActivityPopUpBox:SetActivityInfo(item)
-    if (item.ContenText ~= nil)
-    then
+    if (item.ContenText ~= nil) then
         self.GTextContent.text = item.ContenText
     end
 
-    if (item.ContentImage ~= nil)
-    then
+    if (item.ContentImage ~= nil) then
         local content_image = item.ContentImage
         local t = {}
         table.insert(t, OssRootUrl)
@@ -75,8 +72,7 @@ function ViewActivityPopUpBox:SetActivityInfo(item)
 
         CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(content_image, t_str, content_image, nil,
                 function(ex, tick)
-                    if (ex ~= nil and self.GLoaderContent ~= nil and self.GLoaderContent.displayObject ~= nil and self.GLoaderContent.displayObject.gameObject ~= nil)
-                    then
+                    if (ex ~= nil and self.GLoaderContent ~= nil and self.GLoaderContent.displayObject ~= nil and self.GLoaderContent.displayObject.gameObject ~= nil) then
                         local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
                         self.GLoaderContent.texture = CS.FairyGUI.NTexture(texture)
                     end

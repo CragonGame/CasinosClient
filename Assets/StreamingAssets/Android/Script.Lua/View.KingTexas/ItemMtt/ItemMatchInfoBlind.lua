@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemMatchInfoBlind = {}
 
 function ItemMatchInfoBlind:new(o,com,info,level,can_rebuy,can_addon,raiseBlindTime,view_mgr)

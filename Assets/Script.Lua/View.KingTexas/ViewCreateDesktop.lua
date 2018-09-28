@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewCreateDesktop = ViewBase:new()
 
 function ViewCreateDesktop:new(o)

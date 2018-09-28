@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemSnowBallRewardPlayerNum = {}
 
 function ItemSnowBallRewardPlayerNum:new(o,com,data,view_snowBallReward)

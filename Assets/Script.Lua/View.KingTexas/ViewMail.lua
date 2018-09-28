@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewMail = ViewBase:new()
 
 function ViewMail:new(o)

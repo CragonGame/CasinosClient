@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 已废弃
 
 ItemMainOperate = {}

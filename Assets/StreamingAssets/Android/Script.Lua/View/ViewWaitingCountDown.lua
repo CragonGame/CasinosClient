@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewWaitingCountDown = ViewBase:new()
 
+---------------------------------------
 function ViewWaitingCountDown:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -13,14 +15,13 @@ function ViewWaitingCountDown:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
-
     return o
 end
 
+---------------------------------------
 function ViewWaitingCountDown:onCreate()
     local text = self.ComUi:GetChild("Tips")
-    if (text ~= nil)
-    then
+    if (text ~= nil) then
         self.GTextTips = text.asTextField
     end
 
@@ -29,9 +30,11 @@ function ViewWaitingCountDown:onCreate()
     self.UpdateTimeTm = 0
 end
 
+---------------------------------------
 function ViewWaitingCountDown:onDestroy()
 end
 
+---------------------------------------
 function ViewWaitingCountDown:onUpdate(tm)
     self.Tm = self.Tm - tm
     self:setTm()
@@ -46,15 +49,18 @@ function ViewWaitingCountDown:onUpdate(tm)
     --end
 end
 
+---------------------------------------
 function ViewWaitingCountDown:onHandleEv(ev)
 end
 
+---------------------------------------
 function ViewWaitingCountDown:setTips(tips, tm)
     self.GTextTips.text = tips
     self.Tm = tm
     self:setTm()
 end
 
+---------------------------------------
 function ViewWaitingCountDown:setTm()
     if self.Tm < 0 then
         self.Tm = 0
@@ -79,8 +85,10 @@ function ViewWaitingCountDown:setTm()
     self.TextSec.text = sec
 end
 
+---------------------------------------
 ViewWaitingCountDownFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewWaitingCountDownFactory:new(o, ui_package_name, ui_component_name,
                                          ui_layer, is_single, fit_screen)
     o = o or {}
@@ -94,6 +102,7 @@ function ViewWaitingCountDownFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewWaitingCountDownFactory:createView()
     local view = ViewWaitingCountDown:new(nil)
     return view

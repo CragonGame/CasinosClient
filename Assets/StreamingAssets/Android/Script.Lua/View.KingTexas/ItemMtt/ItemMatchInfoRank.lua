@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemMatchInfoRank = {}
 
 function ItemMatchInfoRank:new(o,com,info,rank,lan_base)

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemReportPlayerOperate = {}
 
 function ItemReportPlayerOperate:new(o,com,view_playerprofile)

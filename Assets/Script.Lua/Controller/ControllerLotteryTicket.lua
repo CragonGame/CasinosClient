@@ -183,6 +183,7 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyBet(tm)
 end
 
 ---------------------------------------
+-- 游戏详细结算
 function ControllerLotteryTicket:OnLotteryTicketNotifyGameEndDetail(gameend_detail, me_win_gold)
     self.BetStateTm = 0
     self.MapTotalBetGolds = {}
@@ -200,15 +201,14 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyGameEndDetail(gameend_deta
         local card_type = view_lotteryticket:getCardType(l_c)
         table.insert(self.ListLotteryTicketWinlooseResult, 1, card_type)
     end
+
     local l = #self.ListLotteryTicketWinlooseResult
-    if (l > self.QUE_BETPOT_WINLOOSE_RESULT_COUNT)
-    then
+    if (l > self.QUE_BETPOT_WINLOOSE_RESULT_COUNT) then
         table.remove(self.ListLotteryTicketWinlooseResult, l)
     end
 
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityLotteryTicketGameEndState")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityLotteryTicketGameEndState:new(nil)
     end
     ev.gameend_detail = g_d

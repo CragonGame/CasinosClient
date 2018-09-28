@@ -1,4 +1,4 @@
-
+-- Copyright(c) Cragon. All rights reserved.
 
 ViewLobby = ViewBase:new()
 

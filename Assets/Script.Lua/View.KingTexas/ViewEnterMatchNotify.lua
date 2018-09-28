@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewEnterMatchNotify = ViewBase:new()
 
 function ViewEnterMatchNotify:new(o)

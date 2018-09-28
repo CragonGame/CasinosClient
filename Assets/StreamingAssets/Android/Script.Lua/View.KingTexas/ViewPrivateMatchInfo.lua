@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewPrivateMatchInfo = ViewBase:new()
 
 function ViewPrivateMatchInfo:new(o)

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewChatChooseTarget = ViewBase:new()
 
 function ViewChatChooseTarget:new(o)

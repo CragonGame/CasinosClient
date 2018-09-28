@@ -11,12 +11,10 @@ function UiRegister:new(view)
     self.__index = self
     o.ViewLogin = view
     local obj_register = view.ComUi:GetChild("Register")
-    if (obj_register ~= nil)
-    then
+    if (obj_register ~= nil) then
         local group_register = obj_register.asGroup
         local obj_btn_register = view.ComUi:GetChildInGroup(group_register, "BtnRegister")
-        if (obj_btn_register ~= nil)
-        then
+        if (obj_btn_register ~= nil) then
             o.BtnRegister = obj_btn_register.asButton
             o.BtnRegister.onClick:Add(
                     function()
@@ -26,8 +24,7 @@ function UiRegister:new(view)
         end
 
         local btn_return = view.ComUi:GetChildInGroup(group_register, "BtnReturn")
-        if (btn_return ~= nil)
-        then
+        if (btn_return ~= nil) then
             btn_return.asButton.onClick:Add(
                     function()
                         o:_onClickBtnReturn()
@@ -67,8 +64,7 @@ function UiRegister:new(view)
     end
 
     local obj_registercode = view.ComUi:GetChild("RegisterCode")
-    if (obj_registercode ~= nil)
-    then
+    if (obj_registercode ~= nil) then
         local group_registercode = obj_registercode.asGroup
         o.TextRegisterPhone = view.ComUi:GetChildInGroup(group_registercode, "TextRegisterPhone").asTextField
         o.TextRegisterCode = view.ComUi:GetChildInGroup(group_registercode, "TextRegisterCode").asTextInput
@@ -81,8 +77,7 @@ function UiRegister:new(view)
         o.TextResend = view.ComUi:GetChildInGroup(group_registercode, "Lan_Text_Resend").asTextField
 
         local btn_return = view.ComUi:GetChildInGroup(group_registercode, "BtnReturn")
-        if (btn_return ~= nil)
-        then
+        if (btn_return ~= nil) then
             btn_return.asButton.onClick:Add(
                     function()
                         o:_onClickBtnReturnRegisterCode()
@@ -138,12 +133,10 @@ end
 
 ---------------------------------------
 function UiRegister:_onClickBtnRegister()
-    if (self.ViewLogin:_hasAgreeAgreement() == false)
-    then
+    if (self.ViewLogin:_hasAgreeAgreement() == false) then
         return
     end
-    if (self.ViewLogin.CasinosContext.ServerIsInvalid)
-    then
+    if (self.ViewLogin.CasinosContext.ServerIsInvalid) then
         ViewHelper:UiShowInfoSuccess(self.ViewLogin.CasinosContext.ServerStateInfo)
         return
     end
@@ -161,8 +154,7 @@ function UiRegister:_onClickBtnRegister()
                 local p_f = "+" .. self.CountryCode .. " " .. self.GTextInputAccRegister.text
                 self.TextRegisterPhone.text = p_f
                 local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiRequestGetPhoneCode:new(nil)
                 end
                 ev.Phone = self.PhoneFormat
@@ -186,14 +178,12 @@ end
 
 ---------------------------------------
 function UiRegister:_checkRegisterInput()
-    if (self.GTextInputAccRegister == nil or self.GTextInputPwdRegister == nil)
-    then
+    if (self.GTextInputAccRegister == nil or self.GTextInputPwdRegister == nil) then
         return
     end
 
     if ((self.GTextInputAccRegister ~= nil and string.len(self.GTextInputAccRegister.text) > 0)
-            and (self.GTextInputPwdRegister ~= nil and string.len(self.GTextInputPwdRegister.text) > 0))
-    then
+            and (self.GTextInputPwdRegister ~= nil and string.len(self.GTextInputPwdRegister.text) > 0)) then
         self.BtnRegister.alpha = 1
         self.BtnRegister.enabled = true
     else
@@ -204,13 +194,11 @@ end
 
 ---------------------------------------
 function UiRegister:_checkRegisterCodeInput()
-    if (self.TextRegisterCode == nil)
-    then
+    if (self.TextRegisterCode == nil) then
         return
     end
 
-    if ((self.TextRegisterCode ~= nil and string.len(self.TextRegisterCode.text) > 0))
-    then
+    if ((self.TextRegisterCode ~= nil and string.len(self.TextRegisterCode.text) > 0)) then
         self.BtnNext.alpha = 1
         self.BtnNext.enabled = true
     else
@@ -247,8 +235,7 @@ function UiRegister:_onClickBtnResend()
     msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("Confirm"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("ResendCode"),
             function()
                 local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiRequestGetPhoneCode:new(nil)
                 end
                 ev.Phone = self.PhoneFormat
@@ -267,8 +254,7 @@ end
 ---------------------------------------
 function UiRegister:_onClickBtnNext()
     local ev = self.ViewLogin.ViewMgr:getEv("EvUiLoginClickBtnRegister")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiLoginClickBtnRegister:new(nil)
     end
     ev.AccountName = ""

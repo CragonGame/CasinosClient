@@ -1046,9 +1046,9 @@ end
 -- 计算BotIcon Url
 function Context:CalcBotIconUrl(is_small, icon)
     if (is_small == true) then
-        return BotIconDomain .. 'boticonsmall' .. icon .. '.jpg'
+        return BotIconDomain .. 'boticonsmall/' .. icon .. '.jpg'
     else
-        return BotIconDomain .. 'boticon' .. icon .. '.jpg'
+        return BotIconDomain .. 'boticon/' .. icon .. '.jpg'
     end
 end
 

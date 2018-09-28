@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewCreateMatch = ViewBase:new()
 
 function ViewCreateMatch:new(o)

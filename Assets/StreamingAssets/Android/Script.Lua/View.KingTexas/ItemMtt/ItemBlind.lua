@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemBlind = {}
 
 function ItemBlind:new(o,com,data,lanbase)
@@ -13,5 +15,3 @@ function ItemBlind:new(o,com,data,lanbase)
 
     return o
 end
-
-

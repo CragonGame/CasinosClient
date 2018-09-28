@@ -103,13 +103,11 @@ end
 ---------------------------------------
 function ViewMgr:createView(view_key)
     local view_factory = self.TableViewFactory[view_key]
-    if (view_factory == nil)
-    then
+    if (view_factory == nil) then
         return nil
     end
     local view = self.TableViewSingle[view_key]
-    if (view_factory.IsSingle and view ~= nil)
-    then
+    if (view_factory.IsSingle and view ~= nil) then
         return view
     end
     self:_checkDestroyUi(view_factory.UILayer)
@@ -130,21 +128,18 @@ function ViewMgr:createView(view_key)
     view.UILayer = view_factory.UILayer
     view.ViewKey = view_key
     view:onCreate()
-    if (view_factory.IsSingle)
-    then
+    if (view_factory.IsSingle) then
         self.TableViewSingle[view_key] = view
     else
         local table_multiple = self.TableViewMultiple[view_key]
-        if (table_multiple == nil)
-        then
+        if (table_multiple == nil) then
             table_multiple = {}
             self.TableViewMultiple[view_key] = table_multiple
         end
         table_multiple[view] = view
     end
     local depth_layer = self.TableMaxDepth[view_factory.UILayer]
-    if (depth_layer == nil)
-    then
+    if (depth_layer == nil) then
         depth_layer = TableUiLayer[view_factory.UILayer]
         view.InitDepth = depth_layer
     else
@@ -157,8 +152,7 @@ function ViewMgr:createView(view_key)
     if (view_factory.UILayer == "MessgeBox" or
             view_factory.UILayer == "NomalUiMain" or
             view_factory.UILayer == "NomalUi" or
-            view_factory.UILayer == "QuitGame")
-    then
+            view_factory.UILayer == "QuitGame") then
         CS.Casinos.CasinosContext.Instance:Play("CreateDialog", CS.Casinos._eSoundLayer.LayerReplace)
     end
     return view
@@ -166,18 +160,15 @@ end
 
 ---------------------------------------
 function ViewMgr:destroyView(view)
-    if (view ~= nil)
-    then
+    if (view ~= nil) then
         local view_key = view.ViewKey
         local view_ex = self.TableViewSingle[view_key]
-        if (view_ex ~= nil)
-        then
+        if (view_ex ~= nil) then
             self.TableViewSingle[view_key] = nil
             view:onDestroy()
         else
             local table_multiple = self.TableViewMultiple[view_key]
-            if (table_multiple ~= nil and #table_multiple > 0)
-            then
+            if (table_multiple ~= nil and #table_multiple > 0) then
                 LuaHelper:TableRemoveV(table_multiple, view)
                 view:onDestroy()
             end
@@ -188,8 +179,7 @@ function ViewMgr:destroyView(view)
         if (view.UILayer == "MessgeBox" or
                 view.UILayer == "NomalUiMain" or
                 view.UILayer == "NomalUi" or
-                view.UILayer == "QuitGame")
-        then
+                view.UILayer == "QuitGame") then
             CS.Casinos.CasinosContext.Instance:Play("DestroyDialog", CS.Casinos._eSoundLayer.LayerReplace)
         end
         view = nil
@@ -229,8 +219,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
             or t_layer == "MessgeBox"
             or t_layer == "SceneActor"
             or t_layer == "PlayerOperateUi"
-            or t_layer == "ShootingText")
-    then
+            or t_layer == "ShootingText") then
         return
     end
     local layer_v = TableUiLayer[t_layer]
@@ -238,16 +227,14 @@ function ViewMgr:_checkDestroyUi(t_layer)
     for i, v in pairs(self.TableViewSingle) do
         local v_layer_v = TableUiLayer[v.UILayer]
         if ((t_layer == "MessgeBox" and t_layer == v.UILayer) or (t_layer == "NomalUi" and t_layer == v.UILayer)
-                or (layer_v > v_layer_v))
-        then
+                or (layer_v > v_layer_v)) then
         else
             map_need_destroyui[i] = v
         end
     end
     for i, v in pairs(map_need_destroyui) do
         local view = self.TableViewSingle[i]
-        if (view ~= nil)
-        then
+        if (view ~= nil) then
             self.TableViewSingle[i] = nil
             local layer = v.UILayer
             self.TableMaxDepth[layer] = v.InitDepth
@@ -262,23 +249,20 @@ function ViewMgr:_checkDestroyUi(t_layer)
         local can_destroy = false
         for i_i, v_v in pairs(v) do
             local v_v_layer_v = TableUiLayer[v_v.UILayer]
-            if (t_layer == v_v.UILayer or (layer_v > v_v_layer_v))
-            then
+            if (t_layer == v_v.UILayer or (layer_v > v_v_layer_v)) then
             else
                 can_destroy = true
             end
         end
 
-        if (can_destroy)
-        then
+        if (can_destroy) then
             map_need_destroyuis[i] = v
         end
     end
     for i, v in pairs(map_need_destroyuis) do
         for i_i, v_v in pairs(v) do
             local views = self.TableViewMultiple[i]
-            if (views ~= nil)
-            then
+            if (views ~= nil) then
                 self.TableViewMultiple[i] = nil
                 local layer = v_v.UILayer
                 self.TableMaxDepth[layer] = v_v.InitDepth
@@ -293,16 +277,14 @@ end
 
 ---------------------------------------
 function ViewMgr:bindEvListener(ev_name, ev_listener)
-    if (self.EventSys ~= nil)
-    then
+    if (self.EventSys ~= nil) then
         self.EventSys:bindEvListener(ev_name, ev_listener)
     end
 end
 
 ---------------------------------------
 function ViewMgr:unbindEvListener(ev_listener)
-    if (self.EventSys ~= nil)
-    then
+    if (self.EventSys ~= nil) then
         self.EventSys:unbindEvListener(ev_listener)
     end
 end
@@ -310,8 +292,7 @@ end
 ---------------------------------------
 function ViewMgr:getEv(ev_name)
     local ev = nil
-    if (self.EventSys ~= nil)
-    then
+    if (self.EventSys ~= nil) then
         ev = self.EventSys:getEv(ev_name)
     end
     return ev
@@ -319,8 +300,7 @@ end
 
 ---------------------------------------
 function ViewMgr:sendEv(ev)
-    if (self.EventSys ~= nil)
-    then
+    if (self.EventSys ~= nil) then
         self.EventSys:sendEv(ev)
     end
 end

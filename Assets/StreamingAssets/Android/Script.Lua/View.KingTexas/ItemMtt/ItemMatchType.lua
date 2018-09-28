@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemMatchType = {}
 
 function ItemMatchType:new(o,com,match_type,match_title,view_matchlobby)

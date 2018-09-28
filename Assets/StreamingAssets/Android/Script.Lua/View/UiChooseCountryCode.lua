@@ -32,8 +32,7 @@ function UiChooseCountryCode:new(view, default_code)
 
     local current_code = "CurrentCountryCode"
     local c_k = ""
-    if (CS.UnityEngine.PlayerPrefs.HasKey(current_code))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey(current_code)) then
         local s = CS.UnityEngine.PlayerPrefs.GetString(current_code)
         c_k = s
     else

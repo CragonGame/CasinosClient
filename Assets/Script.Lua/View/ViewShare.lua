@@ -1,8 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 点了分享按钮后弹出的全屏界面
 
+---------------------------------------
 ViewShare = ViewBase:new()
 
+---------------------------------------
 function ViewShare:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -14,10 +16,10 @@ function ViewShare:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
-
     return o
 end
 
+---------------------------------------
 function ViewShare:onCreate()
     self.ComUi.onClick:Add(
             function()
@@ -34,29 +36,31 @@ function ViewShare:onCreate()
     self.LoaderQRCode = self.ComUi:GetChild("LoaderQRCode").asLoader
 end
 
+---------------------------------------
 function ViewShare:onUpdate(tm)
 end
 
-function ViewShare:setPlayerInfo(nick_name,account_id,share_type)
+---------------------------------------
+function ViewShare:setPlayerInfo(nick_name, account_id, share_type)
     self.ShareType = share_type
-    self.NickName.text = string.format("%s:%s",self.ViewMgr.LanMgr:getLanValue("NickName"),nick_name)
+    self.NickName.text = string.format("%s:%s", self.ViewMgr.LanMgr:getLanValue("NickName"), nick_name)
     local icon_resource_name = ""
     local temp_table = CS.Casinos.LuaHelper.getIconName(true, account_id, icon_resource_name)
     local icon = temp_table[1]
-    if (icon ~= nil and string.len(icon) > 0)
-    then
+    if (icon ~= nil and string.len(icon) > 0) then
         self.LoaderIcon.icon = PlayerIconDomain .. icon
     end
     self.LoaderQRCode.texture = CS.FairyGUI.NTexture(Native.Instance.PlayerQRCodeTexture)
 end
 
+---------------------------------------
 function ViewShare:loadIconDone(is_success)
     local pic_name = "Share.png"
     local pic_path = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(pic_name)
     local p_t = CS.cn.sharesdk.unity3d.PlatformType.WeChat
     if self.ShareType == ShareType.WeChat then
         p_t = CS.cn.sharesdk.unity3d.PlatformType.WeChat
-    elseif(self.ShareType == ShareType.WeChatMoments) then
+    elseif (self.ShareType == ShareType.WeChatMoments) then
         p_t = CS.cn.sharesdk.unity3d.PlatformType.WeChatMoments
     end
     PicCapture.Instance:CapturePic(pic_name, function()
@@ -65,12 +69,15 @@ function ViewShare:loadIconDone(is_success)
     end)
 end
 
+---------------------------------------
 function ViewShare:onClickClose()
     self.ViewMgr:destroyView(self)
 end
 
+---------------------------------------
 ViewShareFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewShareFactory:new(o, ui_package_name, ui_component_name,
                               ui_layer, is_single, fit_screen)
     o = o or {}
@@ -84,6 +91,7 @@ function ViewShareFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewShareFactory:createView()
     local view = ViewShare:new(nil)
     return view

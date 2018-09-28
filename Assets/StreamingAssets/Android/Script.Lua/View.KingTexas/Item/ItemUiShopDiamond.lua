@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemUiShopDiamond = {}
 
 function ItemUiShopDiamond:new(o,view_shop,diamond,tb_item)

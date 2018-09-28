@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemRank = {}
 
 function ItemRank:new(o,com)

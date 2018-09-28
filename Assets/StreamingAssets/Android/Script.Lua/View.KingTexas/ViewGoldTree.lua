@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewGoldTree = ViewBase:new()
 
 function ViewGoldTree:new(o)

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewEditAddress = ViewBase:new()
 
 function ViewEditAddress:new(o)

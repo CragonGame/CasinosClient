@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 好友对话框左侧的一个Item
 
 ItemShowFriendSimple = {}

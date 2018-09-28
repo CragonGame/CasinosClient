@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewFeedback = ViewBase:new()
 
 function ViewFeedback:new(o)

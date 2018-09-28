@@ -1,9 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 播放中的魔法表情
 
+---------------------------------------
 ItemMagicExpSender = {}
 
-function ItemMagicExpSender:new(o,view_mgr)
+---------------------------------------
+function ItemMagicExpSender:new(o, view_mgr)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -15,10 +17,10 @@ function ItemMagicExpSender:new(o,view_mgr)
     return o
 end
 
-function ItemMagicExpSender:sendMagicExp(from_pos, to_pos,exp_tbid)
-    local tb_magicexp = CS.Casinos.CasinosContext.Instance.TbDataMgrLua:GetData("UnitMagicExpression",exp_tbid)
-    if (tb_magicexp == nil)
-    then
+---------------------------------------
+function ItemMagicExpSender:sendMagicExp(from_pos, to_pos, exp_tbid)
+    local tb_magicexp = CS.Casinos.CasinosContext.Instance.TbDataMgrLua:GetData("UnitMagicExpression", exp_tbid)
+    if (tb_magicexp == nil) then
         return
     end
     CS.Casinos.CasinosContext.Instance:Play(tb_magicexp.AudioName .. "m", CS.Casinos._eSoundLayer.LayerNormal)
@@ -30,10 +32,9 @@ function ItemMagicExpSender:sendMagicExp(from_pos, to_pos,exp_tbid)
     self.GCoMagicExpSender.xy = pos_co_magic_exp
     local movie_magic_exp = CS.FairyGUI.UIPackage.CreateObject("PlayerProfile", tb_magicexp.AniName).asMovieClip
     self.GCoMagicExpSender:AddChild(movie_magic_exp)
-    movie_magic_exp:SetXY((self.GCoMagicExpSender.width - movie_magic_exp.width) / 2,(self.GCoMagicExpSender.height - movie_magic_exp.height) / 2)
+    movie_magic_exp:SetXY((self.GCoMagicExpSender.width - movie_magic_exp.width) / 2, (self.GCoMagicExpSender.height - movie_magic_exp.height) / 2)
     movie_magic_exp.visible = false
-    if (tb_magicexp.MagicExpMoveType == _eMagicExpMoveType.Rotate)
-    then
+    if (tb_magicexp.MagicExpMoveType == _eMagicExpMoveType.Rotate) then
         local ani_rotate = self.GCoMagicExpSender:GetTransition("AniRotate")
         ani_rotate:Play()
     end

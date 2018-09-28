@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewClub = ViewBase:new()
 
 function ViewClub:new(o)

@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemUiShopVIPInfo = {}
 
 function ItemUiShopVIPInfo:new(o,view_shop,com,tb_viplevel)
@@ -14,7 +16,5 @@ function ItemUiShopVIPInfo:new(o,view_shop,com,tb_viplevel)
     o.GTextLooseSendGoldPercent.text = tb_viplevel.LooseSendGoldPercent .. view_shop.ViewMgr.LanMgr:getLanValue("Times")
     o.GTextSafeBox.text = UiChipShowHelper:getGoldShowStr(tb_viplevel.VIPPoint, view_shop.ViewMgr.LanMgr.LanBase, false)
     o.GTextChargeSend.text = tb_viplevel.ChargeSendPercent * 100 .. "%"
-
 	return o
 end
-

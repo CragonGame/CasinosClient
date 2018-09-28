@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 商城，消耗品
 
 ItemUiShopConsume = {}

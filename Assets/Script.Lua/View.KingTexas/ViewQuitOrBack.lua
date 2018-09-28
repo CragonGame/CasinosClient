@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewQuitOrBack = ViewBase:new()
 
 function ViewQuitOrBack:new(o)

@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 钱包的一个Item
 
 ItemUiPurseGold = {}

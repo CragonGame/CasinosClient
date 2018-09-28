@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemUiShopGold = {}
 
 function ItemUiShopGold:new(o,view_shop,gold,tb_item)
@@ -45,4 +47,3 @@ end
 function ItemUiShopGold:onClick()
     --self.ViewShop:setCurrentGold(self.TbDataItem)
 end
-

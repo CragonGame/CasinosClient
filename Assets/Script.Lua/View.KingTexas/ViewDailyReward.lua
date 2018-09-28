@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewDailyReward = ViewBase:new()
 
 function ViewDailyReward:new(o)

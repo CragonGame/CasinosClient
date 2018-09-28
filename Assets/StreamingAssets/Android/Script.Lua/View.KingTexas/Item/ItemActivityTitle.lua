@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 活动对话框左侧的一条Item
 
 ItemActivityTitle = {}

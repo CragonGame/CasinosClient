@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 普通桌，百人桌的桌内群聊
 
 ViewChat = ViewBase:new()

@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 加入玩家创建的赛事
 
 ViewJoinMatch = ViewBase:new()

@@ -1,4 +1,5 @@
---Nigeria钱包界面
+-- Copyright(c) Cragon. All rights reserved.
+-- Nigeria钱包界面
 
 ViewPurse = ViewBase:new()
 

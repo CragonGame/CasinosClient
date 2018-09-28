@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemChooseChatTargetInfo = {}
 
 function ItemChooseChatTargetInfo:new(o,com,controller_im)

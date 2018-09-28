@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 关于对话框的设置模块
 
 ViewEdit = ViewBase:new()

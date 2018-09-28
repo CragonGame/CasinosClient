@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 好友私聊
 
 ViewChatFriend = ViewBase:new()

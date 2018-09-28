@@ -1,12 +1,15 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 LotteryTicketStateEnum = {
     Close = 0, -- 关闭
     Bet = 1, -- 下注
     GameEnd = 2, -- 游戏结束
 }
 
+---------------------------------------
 BLotteryTicketPlayerInfo = {}
+
 function BLotteryTicketPlayerInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -18,7 +21,6 @@ function BLotteryTicketPlayerInfo:new(o)
     o.VIPLevel = 0
     o.Dt = nil
     o.WinGold = 0 -- 赢的总金币，包括本钱（待确认）
-
     return o
 end
 
@@ -41,11 +43,12 @@ function BLotteryTicketPlayerInfo:getData4Pack()
     table.insert(temp, self.VIPLevel)
     table.insert(temp, self.Dt)
     table.insert(temp, self.WinGold)
-
     return temp
 end
 
+---------------------------------------
 BLotteryTicketGameEndDetail = {}
+
 function BLotteryTicketGameEndDetail:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -56,7 +59,6 @@ function BLotteryTicketGameEndDetail:new(o)
     o.RewardPotGold = 0 -- 奖池中当前金币总额
     o.LastBaoZiDt = nil
     o.LastMaxWinner = nil -- 本轮最大赢家
-
     return o
 end
 
@@ -93,11 +95,12 @@ function BLotteryTicketGameEndDetail:getData4Pack()
     if self.LastMaxWinner ~= nil then
         table.insert(temp, self.LastMaxWinner:getData4Pack())
     end
-
     return temp
 end
 
+---------------------------------------
 BLotteryTicketPlayerBetInfo = {}
+
 function BLotteryTicketPlayerBetInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -105,7 +108,6 @@ function BLotteryTicketPlayerBetInfo:new(o)
     o.PlayerGuid = nil
     o.BetGold = 0
     o.BetPotIndex = 0
-
     return o
 end
 
@@ -120,11 +122,12 @@ function BLotteryTicketPlayerBetInfo:getData4Pack()
     table.insert(temp, self.PlayerGuid)
     table.insert(temp, self.BetGold)
     table.insert(temp, self.BetPotIndex)
-
     return temp
 end
 
+---------------------------------------
 BLotteryTicketData = {}
+
 function BLotteryTicketData:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -138,7 +141,6 @@ function BLotteryTicketData:new(o)
     o.ListCard = nil -- 牌信息
     o.WinCardType = 0 -- 牌型信息
     o.LastMaxWinner = nil -- 上轮最大赢家
-
     return o
 end
 
@@ -181,6 +183,5 @@ function BLotteryTicketData:getData4Pack()
     if self.LastMaxWinner ~= nil then
         table.insert(temp, self.LastMaxWinner:getData4Pack())
     end
-
     return temp
 end

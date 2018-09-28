@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 未使用
 
 ViewGetChipEffect = ViewBase:new()

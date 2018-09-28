@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 --道具点击后的详情对话框显示，不仅是Gift，是所有Item类型的对话框
 --普通桌给所有人购买并赠送礼物对话框也是该View管理
 

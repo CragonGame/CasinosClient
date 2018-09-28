@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemSnowBallRewardInfo = {}
 
 function ItemSnowBallRewardInfo:new(o,com,data)

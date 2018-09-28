@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ViewChooseLan = ViewBase:new()
 
 function ViewChooseLan:new(o)

@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 盲注表，玩家创建赛事处使用
 
 ViewBlindTable = ViewBase:new()

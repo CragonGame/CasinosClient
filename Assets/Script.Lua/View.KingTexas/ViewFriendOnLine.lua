@@ -1,3 +1,4 @@
+-- Copyright(c) Cragon. All rights reserved.
 -- 好友上线左上角提示
 
 ViewFriendOnLine = ViewBase:new()

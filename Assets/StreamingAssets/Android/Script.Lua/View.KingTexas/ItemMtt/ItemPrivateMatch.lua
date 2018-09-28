@@ -1,3 +1,5 @@
+-- Copyright(c) Cragon. All rights reserved.
+
 ItemPrivateMatch = {}
 
 function ItemPrivateMatch:new(o,com,match_info,view_mgr)

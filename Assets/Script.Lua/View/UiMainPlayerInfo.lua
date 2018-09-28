@@ -21,24 +21,20 @@ function UiMainPlayerInfo:new(com, show_invite, action_click)
     o.GTextChips = o.ComPlayerInfo:GetChild("TextChips").asTextField
     o.GTextGolds = o.ComPlayerInfo:GetChild("TextGolds").asTextField
     local image_invite = o.ComPlayerInfo:GetChild("ImageInvite")
-    if (image_invite ~= nil)
-    then
+    if (image_invite ~= nil) then
         o.GImageInvite = image_invite.asImage
         o.GImageInvite.visible = show_invite
     end
-    if (show_invite == true)
-    then
+    if (show_invite == true) then
         o.UiHeadIcon:hideIcon()
     end
 
     local image_iconGold = o.ComPlayerInfo:GetChild("IconGold" .. ChipIconSolustion)
-    if (image_iconGold ~= nil)
-    then
+    if (image_iconGold ~= nil) then
         o.GImageIconGold = image_iconGold.asImage
     end
     local image_iconDiamond = o.ComPlayerInfo:GetChild("IconDiamond" .. ChipIconSolustion)
-    if (image_iconDiamond ~= nil)
-    then
+    if (image_iconDiamond ~= nil) then
         o.GImageIconDiamond = image_iconDiamond.asImage
     end
 
@@ -47,12 +43,10 @@ end
 
 ---------------------------------------
 function UiMainPlayerInfo:setPlayerInfo(name, chips, golds, icon_name, acount_id, vip_level, is_online)
-    if (self.GImageIconGold ~= nil)
-    then
+    if (self.GImageIconGold ~= nil) then
         self.GImageIconGold.visible = true
     end
-    if (self.GImageIconDiamond ~= nil)
-    then
+    if (self.GImageIconDiamond ~= nil) then
         self.GImageIconDiamond.visible = true
     end
     self.UiHeadIcon:setPlayerInfo(icon_name, acount_id, vip_level, is_online)
@@ -63,20 +57,17 @@ end
 
 ---------------------------------------
 function UiMainPlayerInfo:setPlayerInfo1(name, chips, golds, is_online)
-    if (self.GImageIconGold ~= nil)
-    then
+    if (self.GImageIconGold ~= nil) then
         self.GImageIconGold.visible = true
     end
-    if (self.GImageIconDiamond ~= nil)
-    then
+    if (self.GImageIconDiamond ~= nil) then
         self.GImageIconDiamond.visible = true
     end
     self.GTextName.text = CS.Casinos.UiHelper.addEllipsisToStr(name, 18, 5)
     self.GTextChips.text = chips
     self.GTextGolds.text = golds
     local show_shade = false
-    if (is_online == false)
-    then
+    if (is_online == false) then
         show_shade = true
     end
     self.UiHeadIcon:showShade(show_shade)
@@ -99,12 +90,10 @@ end
 
 ---------------------------------------
 function UiMainPlayerInfo:hidePlayerInfo(show_invite)
-    if (self.GImageIconGold ~= nil)
-    then
+    if (self.GImageIconGold ~= nil) then
         self.GImageIconGold.visible = false
     end
-    if (self.GImageIconDiamond ~= nil)
-    then
+    if (self.GImageIconDiamond ~= nil) then
         self.GImageIconDiamond.visible = false
     end
     self.UiHeadIcon:setIcon1("")
@@ -112,16 +101,14 @@ function UiMainPlayerInfo:hidePlayerInfo(show_invite)
     self.GTextName.text = ""
     self.GTextChips.text = ""
     self.GTextGolds.text = ""
-    if (self.GImageInvite ~= nil)
-    then
+    if (self.GImageInvite ~= nil) then
         CS.Casinos.UiHelper.setGObjectVisible(show_invite, self.GImageInvite)
     end
 end
 
 ---------------------------------------
 function UiMainPlayerInfo:_loadHeadIconDown(is_success)
-    if (self.GImageInvite ~= nil)
-    then
+    if (self.GImageInvite ~= nil) then
         CS.Casinos.UiHelper.setGObjectVisible(false, self.GImageInvite)
     end
 end
