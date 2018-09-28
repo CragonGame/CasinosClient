@@ -26,6 +26,7 @@ end
 -- 初始化
 function Launch:Setup()
     Launch:new(nil)
+    print('Launch:Setup()')
 
     require 'PreViewMgr'
     require 'PreViewBase'

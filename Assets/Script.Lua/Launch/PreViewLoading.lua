@@ -45,7 +45,6 @@ function PreViewLoading:onCreate()
     --CS.FairyGUI.Timers.inst:Add(0, 0, self._updateTips)
 
     local com_bg = self.ComUi:GetChild("ComBg")
-    --com_bg = self.ComUi:GetChild("ComBg")
     local image_mote = com_bg:GetChild("ImageMote").asImage
     local p_helper = ParticleHelper:new(nil)
 
@@ -56,7 +55,6 @@ function PreViewLoading:onCreate()
         local texture = self.AbLoadingMarry:LoadAsset("Mary_Loading")
         local json = self.AbLoadingMarry:LoadAsset("Mary_LoadingJson")
         self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
-        print('asdfasdfsafasdfasdfasdfffffffffffffffffffffffffffff')
         --local moteParent = self.ComUi:GetChild("MoteParent").asCom
         self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
         --self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
