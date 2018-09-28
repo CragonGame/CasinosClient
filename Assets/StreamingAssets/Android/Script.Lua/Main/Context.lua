@@ -306,13 +306,6 @@ function Context:_nextLaunchStep()
 
         self:_regModel()
 
-        self:DoString("CasinoHelper")
-        CasinoHelper:new(nil, rpc.MessagePack, self.LanMgr)
-        self:DoString("Native")
-        Native:new(nil, self.ViewMgr, self)
-        self:DoString("PicCapture")
-        self.PicCapture = PicCapture:new(nil, self.ViewMgr, self)
-
         self:DoString("EventSys")
         self.EventSys = EventSys:new(nil)
         self.EventSys:onCreate()
@@ -328,6 +321,13 @@ function Context:_nextLaunchStep()
         self:_regView()
         self:DoString("ViewHelper")
         ViewHelper:new(nil)
+
+        self:DoString("CasinoHelper")
+        CasinoHelper:new(nil, rpc.MessagePack, self.LanMgr)
+        self:DoString("Native")
+        Native:new(nil, self.ViewMgr, self)
+        self:DoString("PicCapture")
+        self.PicCapture = PicCapture:new(nil, self.ViewMgr, self)
 
         self:DoString("ControllerMgr")
         self.ControllerMgr = ControllerMgr:new(nil)
@@ -400,7 +400,6 @@ end
 
 ---------------------------------------
 function Context:_regModel()
-    self:DoString("TbDataHelper")
     self:DoString("ModelCommon")
     self:DoString("ModelAccount")
     self:DoString("ModelActor")

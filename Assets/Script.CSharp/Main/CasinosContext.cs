@@ -416,7 +416,7 @@ namespace Casinos
         {
 #if UNITY_IOS
             NativeOperateType operate = (NativeOperateType)native_operate;
-            CasinosContext.Instance.NativeMgr.nativeOperate(operate);
+            NativeMgr.nativeOperate(operate);
 #endif
         }
 

@@ -8,11 +8,9 @@ function ControllerDesk:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
-
     return o
 end
 
@@ -118,36 +116,29 @@ end
 
 ---------------------------------------
 function ControllerDesk:onUpdate(tm)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:onUpdate(tm)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:onHandleEv(ev)
-    if (ev.EventName == "EvUiRequestLockSystemChat")
-    then
+    if (ev.EventName == "EvUiRequestLockSystemChat") then
         self.LockSysChat = ev.requestLock
-    elseif (ev.EventName == "EvEntityPlayerEnterDesktopH")
-    then
+    elseif (ev.EventName == "EvEntityPlayerEnterDesktopH") then
         self:clearDesktop(false)
-    elseif (ev.EventName == "EvUiRequestChangeDesk")
-    then
+    elseif (ev.EventName == "EvUiRequestChangeDesk") then
         local rpc = self.ControllerMgr.RPC
         rpc:RPC0(CommonMethodType.DesktopPlayerChangeDeskRequest)
-    elseif (ev.EventName == "EvEntityGetDesktopData")
-    then
-        if (self.DesktopBase == nil)
-        then
+    elseif (ev.EventName == "EvEntityGetDesktopData") then
+        if (self.DesktopBase == nil) then
             return
         end
         local rpc = self.ControllerMgr.RPC
         rpc:RPC0(CommonMethodType.DesktopSnapshotRequest)
     end
 
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:onHandleEv(ev)
     end
 end
@@ -158,29 +149,24 @@ function ControllerDesk:s2cDesktopSnapshotNotify(snapshot_notify)
     local desktop_data1 = snapshot_notify[1]
     local desktop_data = DesktopSnapshotData:new(nil)
     desktop_data:setData(desktop_data1)
-    if (desktop_data1 == nil or desktop_data.DesktopData == nil)
-    then
+    if (desktop_data1 == nil or desktop_data.DesktopData == nil) then
         local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityPlayerEnterDesktopFailed")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityPlayerEnterDesktopFailed:new(nil)
         end
         self.ControllerMgr.ViewMgr:sendEv(ev)
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("EnterTableFailed"))
     else
         local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityPlayerEnterDesktop")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityPlayerEnterDesktop:new(nil)
         end
         self.ControllerMgr.ViewMgr:sendEv(ev)
         local is_init = snapshot_notify[2]
-        if (is_init)
-        then
+        if (is_init) then
             self:createDesktop(desktop_data.FactoryName)
         else
-            if (self.DesktopBase == nil)
-            then
+            if (self.DesktopBase == nil) then
                 is_init = true
                 self:createDesktop(desktop_data.FactoryName)
             end
@@ -192,72 +178,63 @@ end
 
 ---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerEnterNotify(player_data)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerEnter(player_data)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerLeaveNotify(player_guid)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerLeave(player_guid)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerSitdown(sitdown_data)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerSitdown(sitdown_data)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerOb(player_guid)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerOb(player_guid)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerWaitWhile(player_guid)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerWaitWhile(player_guid)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:s2cPlayerDesktopPlayerReturn(return_data)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerReturn(return_data)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:s2cDesktopPlayerGiftChangeNotify(data)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:DesktopPlayerGiftChangeNotify(data)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:s2cDesktopBuyAndSendItemNotify(data)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:DesktopBuyAndSendItemNotify(data)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:s2cPlayerDesktopChat(msg1)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         local msg = ChatMsg:new(nil)
         msg:setData(msg1)
         self.DesktopBase:DesktopChat(msg)
@@ -266,29 +243,25 @@ end
 
 ---------------------------------------
 function ControllerDesk:OnPlayerInvitePlayerEnterDesktopRequestResult(r)
-    if (r == ProtocolResult.Success)
-    then
+    if (r == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("InviteFriendToTable"))
     end
 end
 
 ---------------------------------------
 function ControllerDesk:s2cPlayerDesktopUser(info_user)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:DesktopUser(info_user)
     end
 end
 
 ---------------------------------------
 function ControllerDesk:OnMatchTexasRequestRebuyResult(r)
-    if (self.DesktopBase == nil)
-    then
+    if (self.DesktopBase == nil) then
         return
     end
 
-    if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid))
-    then
+    if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid)) then
         return
     end
 
@@ -308,13 +281,11 @@ end
 
 ---------------------------------------
 function ControllerDesk:OnMatchTexasRequestAddonResult(r)
-    if (self.DesktopBase == nil)
-    then
+    if (self.DesktopBase == nil) then
         return
     end
 
-    if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid))
-    then
+    if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid)) then
         return
     end
 
@@ -335,13 +306,11 @@ end
 
 ---------------------------------------
 function ControllerDesk:OnMatchTexasGameOverNotify(r)
-    if (self.DesktopBase == nil)
-    then
+    if (self.DesktopBase == nil) then
         return
     end
 
-    if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid))
-    then
+    if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid)) then
         return
     end
 
@@ -381,8 +350,7 @@ end
 
 ---------------------------------------
 function ControllerDesk:clearDesktop(need_createmainui)
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self.DesktopBase:onDestroy(need_createmainui)
         self.DesktopBase = nil
     end
@@ -392,8 +360,7 @@ end
 
 ---------------------------------------
 function ControllerDesk:addDesktopMsg(sender_etguid, sender_name, sender_viplevel, chat_content)
-    if ((sender_etguid == nil or sender_etguid == "") and self.LockSysChat)
-    then
+    if ((sender_etguid == nil or sender_etguid == "") and self.LockSysChat) then
         return
     end
     local chat_info = ChatTextInfo:new(nil)
@@ -403,14 +370,12 @@ function ControllerDesk:addDesktopMsg(sender_etguid, sender_name, sender_vipleve
     chat_info.sender_viplevel = sender_viplevel
     table.insert(self.ListDesktopChat, chat_info)
 
-    if (#self.ListDesktopChat > 50)
-    then
+    if (#self.ListDesktopChat > 50) then
         table.remove(self.ListDesktopChat, 1)
     end
 
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityRecvChatFromDesktop")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityRecvChatFromDesktop:new(nil)
     end
     ev.chat_info = chat_info
@@ -420,8 +385,7 @@ end
 ---------------------------------------
 function ControllerDesk:createDesktop(desktop_factory_name)
     self.ControllerPlayer:destroyMainUi()
-    if (self.DesktopBase ~= nil)
-    then
+    if (self.DesktopBase ~= nil) then
         self:clearDesktop(false)
     end
 

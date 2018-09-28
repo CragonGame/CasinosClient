@@ -6,8 +6,7 @@ namespace Casinos
     using System;
     using System.Collections;
     using UnityEngine;
-    using UnityEngine.Networking;
-
+    
     public class KingTexasStartup : MonoBehaviour
     {
         //---------------------------------------------------------------------
@@ -21,8 +20,6 @@ namespace Casinos
             CasinosEditorConfig casinos_editor_cfg = new CasinosEditorConfig();
             use_persistent = casinos_editor_cfg.CfgUserSettings.UseTmpDirRes;
 #endif
-
-            //KingTexasCasinosListener listener = new KingTexasCasinosListener();
 
             Context = new CasinosContext(use_persistent,
                 "KingTexasListener",

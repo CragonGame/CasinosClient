@@ -96,9 +96,7 @@ function ControllerLogin:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.ControllerName = "Login"
         self.ControllerData = controller_data
         self.ControllerMgr = controller_mgr
@@ -119,9 +117,10 @@ function ControllerLogin:new(o, controller_mgr, controller_data, guid)
         self.ClientEnterWorldNotify = nil
         self.ShowKickOutInfo = false
         self.LoginAccountInfoKey = "LoginAccountInfo2"
+        self.TimerUpdate = nil
+        self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.Instance = o
     end
-
     return self.Instance
 end
 
@@ -144,6 +143,8 @@ function ControllerLogin:onCreate()
     self:_init(true)
     c.NetBridge:blindTable(self)
 
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
+
     local rpc = self.ControllerMgr.RPC
     local m_c = CommonMethodType
     rpc:RegRpcMethod0(m_c.AccountGatewayConnected, function()
@@ -165,34 +166,12 @@ end
 
 ---------------------------------------
 function ControllerLogin:onDestroy()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
     self.ViewMgr:unbindEvListener(self)
 end
-
----------------------------------------
---function ControllerLogin:onUpdate(tm)
---    if (self.RequestThirdPartyLogin)
---    then
---        self.RequestThirdPartyLogin = false
---        if (CS.Casinos.CasinosContext.Instance.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat)
---        then
---            CS.Casinos.CasinosContext.Instance:setNativeOperate(1)
---            CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat,
---                    CS.Casinos.CasinosContext.Instance.Config.WeChatState, "Login")
---        end
---    end
---
---    if self.AutoLogin then
---        self.AutoLoginTm = self.AutoLoginTm + tm
---        if self.AutoLoginTm >= 5 then
---            self.AutoLoginTm = 0
---            self.AutoLogin = false
---            local view_login = self.ViewMgr:getView("Login")
---            if view_login ~= nil then
---                view_login:_switch2LoginMain()
---            end
---        end
---    end
---end
 
 ---------------------------------------
 function ControllerLogin:onHandleEv(ev)
@@ -312,6 +291,30 @@ function ControllerLogin:onHandleEv(ev)
                             self:onUCenterUnbindWeChat(status, response, error)
                         end)
             end)
+        end
+    end
+end
+
+---------------------------------------
+function ControllerLogin:_timerUpdate(tm)
+    if (self.RequestThirdPartyLogin)
+    then
+        self.RequestThirdPartyLogin = false
+        if (self.CasinosContext.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat) then
+            self.CasinosContext:SetNativeOperate(1)
+            CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.CasinosContext.WeChatState, "Login")
+        end
+    end
+
+    if self.AutoLogin then
+        self.AutoLoginTm = self.AutoLoginTm + tm
+        if self.AutoLoginTm >= 5 then
+            self.AutoLoginTm = 0
+            self.AutoLogin = false
+            local view_login = self.ViewMgr:getView("Login")
+            if view_login ~= nil then
+                view_login:_switch2LoginMain()
+            end
         end
     end
 end

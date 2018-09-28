@@ -36,7 +36,7 @@ public class ThirdPartyLogin
     //-------------------------------------------------------------------------
     public void initLogin(string app_id)
     {
-        mIThirdPartyLogin.Init(app_id);        
+        mIThirdPartyLogin.Init(app_id);
     }
 
     //-------------------------------------------------------------------------
