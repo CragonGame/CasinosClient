@@ -275,7 +275,7 @@ function DesktopHChair:_playBetGoldsAni()
     if (self.ViewDesktopH.FactoryName == "ZhongFB")
     then
         local chair_y = self.GCoChair.y
-        if (CS.DG.Tweening.DOTween.IsTweening(self.GCoChair) == false)
+        if (CS.FairyGUI.GTween.IsTweening(self.GCoChair) == false)
         then
             self.GCoChair:TweenMoveY(chair_y + self.ViewDesktopH.BetAniX, 0.1):OnComplete(
                     function()
@@ -291,7 +291,7 @@ function DesktopHChair:_playBetGoldsAni()
         end
 
         local chair_x = self.GCoChair.x
-        if (CS.DG.Tweening.DOTween.IsTweening(self.GCoChair) == false)
+        if (CS.FairyGUI.GTween.IsTweening(self.GCoChair) == false)
         then
             self.GCoChair:TweenMoveX(chair_x + move_x, 0.1):OnComplete(
                     function()

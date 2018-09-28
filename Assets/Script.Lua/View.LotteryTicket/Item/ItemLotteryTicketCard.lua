@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ItemLotteryTicketCard = {}
 
+---------------------------------------
 function ItemLotteryTicketCard:new(o,co_card,lottery_ticket)
 	o = o or {}
 	setmetatable(o,self)
@@ -15,33 +17,29 @@ function ItemLotteryTicketCard:new(o,co_card,lottery_ticket)
 	return o
 end
 
+---------------------------------------
 function ItemLotteryTicketCard:showCard(card_data)
-	if (card_data == nil)
-	then
+	if (card_data == nil) then
 		return
 	end
-    if (CS.DG.Tweening.DOTween.IsTweening(self.GImageCardBack))
-	then
+    if (CS.FairyGUI.GTween.IsTweening(self.GImageCardBack)) then
 		return
 	end
-	local toOpen = false
-	if(self.GLoaderCard.visible)
-	then
-		toOpen = false
+	local to_open = false
+	if(self.GLoaderCard.visible) then
+		to_open = false
 	else
-		toOpen = true
+		to_open = true
 	end
     self.TweenerTurnCard = CS.DG.Tweening.DOTween.To(
 		function()
 			return 0
 		end,
 		function(x)
-			if (toOpen)
-			then
+			if (to_open) then
 				self.GImageCardBack.rotationY = x
 				self.GLoaderCard.rotationY = -180 + x
-				if (x > 90)
-				then
+				if (x > 90) then
 					self.GLoaderCard.visible = true
 					self.GImageCardBack.visible = false
 					local card_name = string.format("%u",card_data.suit) .. "_" .. string.format("%u",card_data.type)
@@ -51,7 +49,7 @@ function ItemLotteryTicketCard:showCard(card_data)
 			end
 		end,
 		180, 0.8
-	):SetTarget(self.GImageCardBack):SetEase(CS.DG.Tweening.Ease.OutQuad):OnComplete(
+	):SetTarget(self.GImageCardBack):SetEase(CS.FairyGUI.EaseType.QuadOut):OnComplete(
 		function()
 			self.TweenerTurnCard = nil
 		end
@@ -59,9 +57,9 @@ function ItemLotteryTicketCard:showCard(card_data)
 	CS.Casinos.CasinosContext.Instance:Play("desk_new_card", CS.Casinos._eSoundLayer.LayerNormal)
 end
 
+---------------------------------------
 function ItemLotteryTicketCard:resetCard()
-	if (self.TweenerTurnCard ~= nil)
-	then
+	if (self.TweenerTurnCard ~= nil) then
 		self.TweenerTurnCard:Kill()
         self.TweenerTurnCard = nil
 	end

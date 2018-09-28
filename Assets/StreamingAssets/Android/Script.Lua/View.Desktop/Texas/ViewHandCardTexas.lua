@@ -56,13 +56,13 @@ function ViewHandCardTexas:showCard(delay_tm)
     if self.CancelShowCard then
         ViewHelper:setGObjectVisible(true, self.GComCard)
         ViewHelper:setGObjectVisible(false, self.GImageCardBack)
-        self.TweenerRotate = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GLoaderCard, 0, 90, UiCardCommonEx.RotateTime):SetEase(CS.DG.Tweening.Ease.Linear):OnComplete(
+        self.TweenerRotate = self.GLoaderCard.TweenRotateY(0, 90, UiCardCommonEx.RotateTime):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                 function()
                     ViewHelper:setGObjectVisible(true, self.GImageCardBack)
                     ViewHelper:setGObjectVisible(false, self.GLoaderCard)
                     self.GImageCardBack.rotationY = 90
                     self.GLoaderCard.rotationY = 90
-                    self.TweenerRotate = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GImageCardBack, 90, 180, UiCardCommonEx.RotateTime):SetEase(CS.DG.Tweening.Ease.Linear):OnComplete(
+                    self.TweenerRotate = self.GImageCardBack.TweenRotateY(90, 180, UiCardCommonEx.RotateTime):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                             function()
                                 self.GImageCardBack.rotationY = 180
                             end
@@ -75,25 +75,21 @@ function ViewHandCardTexas:showCard(delay_tm)
             ViewHelper:setGObjectVisible(true, self.GImageCardBack)
             ViewHelper:setGObjectVisible(false, self.GLoaderCard)
         else
-            if (self.CardData == nil)
-            then
+            if (self.CardData == nil) then
                 return
             end
 
             local card_resouce_name = self.CardData.suit .. "_" .. self.CardData.type
 
             local l_card_resouce_name = string.lower(card_resouce_name)
-            if (CS.System.String.IsNullOrEmpty(card_resouce_name) == false)
-            then
+            if (CS.System.String.IsNullOrEmpty(card_resouce_name) == false) then
                 self.LoaderTicket = CS.Casinos.CasinosContext.Instance.TextureMgr:getTexture(l_card_resouce_name, CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(CS.Casinos.UiHelperCasinos.getABCardResourceTitlePath() .. l_card_resouce_name .. ".ab"),
                         function(ticket, t)
-                            if (self.GComCard == nil or self.GComCard.displayObject.gameObject == nil)
-                            then
+                            if (self.GComCard == nil or self.GComCard.displayObject.gameObject == nil) then
                                 return
                             end
 
-                            if (self.LoaderTicket ~= ticket)
-                            then
+                            if (self.LoaderTicket ~= ticket) then
                                 return
                             end
                             self.LoaderTicket = nil
@@ -102,13 +98,13 @@ function ViewHandCardTexas:showCard(delay_tm)
                             ViewHelper:setGObjectVisible(true, self.GComCard)
                             ViewHelper:setGObjectVisible(true, self.GImageCardBack)
 
-                            self.TweenerRotate = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GImageCardBack, 180, 90, UiCardCommonEx.RotateTime):SetDelay(delay_tm):SetEase(CS.DG.Tweening.Ease.Linear):OnComplete(
+                            self.TweenerRotate = self.GImageCardBack.TweenRotate(180, 90, UiCardCommonEx.RotateTime):SetDelay(delay_tm):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                                     function()
                                         ViewHelper:setGObjectVisible(false, self.GImageCardBack)
                                         ViewHelper:setGObjectVisible(true, self.GLoaderCard)
                                         self.GImageCardBack.rotationY = 180
                                         self.GLoaderCard.rotationY = 90
-                                        self.TweenerRotate = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GLoaderCard, 90, 0, UiCardCommonEx.RotateTime):SetEase(CS.DG.Tweening.Ease.Linear):OnComplete(
+                                        self.TweenerRotate = self.GLoaderCard.TweenRotate(90, 0, UiCardCommonEx.RotateTime):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                                                 function()
                                                     self.GLoaderCard.rotationY = 0
                                                 end
@@ -142,8 +138,7 @@ end
 
 function ViewHandCardTexas:showHighLight(show_highlight,not_dark)
     ViewHelper:setGObjectVisible(show_highlight, self.GImageCardHighLight)
-    if (not_dark == false)
-    then
+    if (not_dark == false) then
         self.GLoaderCard.color = CS.UnityEngine.Color.gray
     else
         self.GLoaderCard.color = CS.UnityEngine.Color.white
@@ -156,8 +151,7 @@ function ViewHandCardTexas:hideHighLight()
 end
 
 function ViewHandCardTexas:killTween(tweener, is_complete)
-    if (tweener ~= nil)
-    then
+    if (tweener ~= nil) then
         tweener:Kill(is_complete)
         tweener = nil
     end

@@ -1,6 +1,7 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 一枚筹码，有多少筹码就有多少个该类的实例
 
+---------------------------------------
 DesktopHUiGold = {
     MOVE_CHIP_TM = 0.5,
     MOVE_SOUND = "jettonmoney",
@@ -8,6 +9,7 @@ DesktopHUiGold = {
     MAX_CHIP_MOVE_INTERVAL_TM = 0.05,
 }
 
+---------------------------------------
 function DesktopHUiGold:new(o)
     o = o or {}
     setmetatable(o,self)
@@ -23,10 +25,10 @@ function DesktopHUiGold:new(o)
     o.AutoEndEnPool = false
     o.ParentSortOrder = 0
     o.ViewDesktopH = nil
-
     return o
 end
 
+---------------------------------------
 function DesktopHUiGold:onCreate()
     local view_mgr = ViewMgr:new(nil)
     self.ViewDesktopH = view_mgr:getView("DesktopH")
@@ -38,11 +40,13 @@ function DesktopHUiGold:onCreate()
     self.FTaskerReset = CS.Casinos.FTasker()
 end
 
+---------------------------------------
 function DesktopHUiGold:setGoldSortOrderOffset(offset)
     self.SortOrderOffset = offset
     self.GCoGold.sortingOrder = self.ParentSortOrder + offset
 end
 
+---------------------------------------
 function DesktopHUiGold:initMove(from, to, move_time,
                                  move_sound, move_end, move_start ,
                                  auto_end_enpool, delay_tm, fix_pos)
@@ -50,8 +54,7 @@ function DesktopHUiGold:initMove(from, to, move_time,
     self.MoveStartCallback = move_start
     local f_x = 0
     local f_y = 0
-    if (fix_pos)
-    then
+    if (fix_pos) then
         f_x = from.x - self.GCoGold.width / 2
         f_y = from.y - self.GCoGold.height / 2
     else
@@ -75,18 +78,21 @@ function DesktopHUiGold:initMove(from, to, move_time,
     self.AutoEndEnPool = auto_end_enpool
 end
 
+---------------------------------------
 function DesktopHUiGold:setPostion(pos)
     local p_x = pos.x - self.GCoGold.width / 2
     local p_y = pos.y - self.GCoGold.height / 2
     self.GCoGold:SetXY(p_x,p_y)
 end
 
+---------------------------------------
 function DesktopHUiGold:reset()
     self:_reset()
     self.MoveEndCallback = nil
     self.MoveStartCallback = nil
 end
 
+---------------------------------------
 function DesktopHUiGold:needDelayEnPool(after_tm)
     self.ViewDesktopH.DesktopHGoldPool:goldHNeedDelayEnPool(self)
     self.FTaskReset:startAutoTask(after_tm)
@@ -98,47 +104,44 @@ function DesktopHUiGold:needDelayEnPool(after_tm)
     CS.Casinos.FTMgr.Instance:startTask(self.FTaskerReset)
 end
 
+---------------------------------------
 function DesktopHUiGold:_moveStart()
-    if (self.MoveStartCallback ~= nil)
-    then
+    if (self.MoveStartCallback ~= nil) then
         self.MoveStartCallback()
     end
 
-    if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false)
-    then
+    if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false) then
         CS.Casinos.CasinosContext.Instance:Play(self.MoveSound, CS.Casinos._eSoundLayer.LayerReplace)
     end
 end
 
+---------------------------------------
 function DesktopHUiGold:_moveEnd()
-    if (self.MoveEndCallback ~= nil)
-    then
+    if (self.MoveEndCallback ~= nil) then
         self.MoveEndCallback()
     end
 
-    if (self.AutoEndEnPool)
-    then
+    if (self.AutoEndEnPool) then
         self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(self)
     end
 end
 
+---------------------------------------
 function DesktopHUiGold:_reset1(map_param)
-    if (self.GCoGold ~= nil and self.GCoGold.displayObject.gameObject ~= nil)
-    then
+    if (self.GCoGold ~= nil and self.GCoGold.displayObject.gameObject ~= nil) then
         self.ViewDesktopH.DesktopHGoldPool:delayGoldHEnPool(self)
     end
 end
 
+---------------------------------------
 function DesktopHUiGold:_reset()
-    if (self.FTaskerReset ~= nil)
-    then
+    if (self.FTaskerReset ~= nil) then
         self.FTaskerReset:cancelTask()
     end
     if self.Tweener ~= nil then
         self.Tweener:Kill(true)
     end
-    if (self.GCoGold ~= nil and self.GCoGold.displayObject.gameObject ~= nil)
-    then
+    if (self.GCoGold ~= nil and self.GCoGold.displayObject.gameObject ~= nil) then
         self.GCoGold:SetXY(10000,10000)
     end
 end

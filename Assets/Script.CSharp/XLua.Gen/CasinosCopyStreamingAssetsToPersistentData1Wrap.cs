@@ -85,9 +85,9 @@ namespace XLua.CSObjectWrap
             
                 
                 {
-                    System.Collections.Generic.List<string> _list_copy_dir = (System.Collections.Generic.List<string>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<string>));
+                    System.Collections.Generic.List<string> _list_copyfile = (System.Collections.Generic.List<string>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<string>));
                     
-                    gen_to_be_invoked.CopySync( _list_copy_dir );
+                    gen_to_be_invoked.CopySync( _list_copyfile );
                     
                     
                     

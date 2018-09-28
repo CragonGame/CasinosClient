@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 PlayerShowTips = {}
 
+---------------------------------------
 function PlayerShowTips:new(o, player_info)
     o = o or {}
     setmetatable(o, self)
@@ -44,6 +46,7 @@ function PlayerShowTips:new(o, player_info)
     return o
 end
 
+---------------------------------------
 function PlayerShowTips:showWinGold(win_gold)
     ViewHelper:setGObjectVisible(false, self.ComWinGold)
     local t = {}
@@ -51,7 +54,7 @@ function PlayerShowTips:showWinGold(win_gold)
     table.insert(t, win_gold)
     local tips = table.concat(t)
     self.TextWinGold.text = tips
-    self.TweenWinGold = self.ComWinGold:TweenMoveY(-20, 1.5):SetDelay(0.5):SetEase(CS.DG.Tweening.Ease.OutExpo):OnStart(
+    self.TweenWinGold = self.ComWinGold:TweenMoveY(-20, 1.5):SetDelay(0.5):SetEase(CS.FairyGUI.EaseType.ExpoOut):OnStart(
             function()
                 ViewHelper:setGObjectVisible(true, self.ComWinGold)
             end):OnComplete(
@@ -62,6 +65,7 @@ function PlayerShowTips:showWinGold(win_gold)
             end)
 end
 
+---------------------------------------
 function PlayerShowTips:showExpAndPoint(exp, point)
     if exp > 0 then
         ViewHelper:setGObjectVisible(true, self.ComExp)
@@ -70,7 +74,7 @@ function PlayerShowTips:showExpAndPoint(exp, point)
         table.insert(t, "+")
         table.insert(t, exp)
         self.TextExp.text = table.concat(t)
-        self.TweenExp = self.ComExp:TweenMoveY(-16, 1):SetEase(CS.DG.Tweening.Ease.OutBack):OnComplete(
+        self.TweenExp = self.ComExp:TweenMoveY(-16, 1):SetEase(CS.FairyGUI.EaseType.BackOut):OnComplete(
                 function()
                     self.ComExp.y = 59
                     self.TextExp.text = ""
@@ -83,7 +87,7 @@ function PlayerShowTips:showExpAndPoint(exp, point)
         table.insert(t, "+")
         table.insert(t, point)
         self.TextPoint.text = table.concat(t)
-        self.TweenPoint = self.ComPoint:TweenMoveY(-16, 1):SetEase(CS.DG.Tweening.Ease.OutBack):SetDelay(0.2):OnStart(
+        self.TweenPoint = self.ComPoint:TweenMoveY(-16, 1):SetEase(CS.FairyGUI.EaseType.BackOut):SetDelay(0.2):OnStart(
                 function()
                     ViewHelper:setGObjectVisible(true, self.ComPoint)
                 end):OnComplete(
@@ -95,6 +99,7 @@ function PlayerShowTips:showExpAndPoint(exp, point)
     end
 end
 
+---------------------------------------
 function PlayerShowTips:reset()
     if self.TweenWinGold ~= nil then
         self.TweenWinGold:Kill(true)

@@ -16,792 +16,6 @@ namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
     
-    public class DGTweeningEaseWrap
-    {
-		public static void __Register(RealStatePtr L)
-        {
-		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-		    Utils.BeginObjectRegister(typeof(DG.Tweening.Ease), L, translator, 0, 0, 0, 0);
-			Utils.EndObjectRegister(typeof(DG.Tweening.Ease), L, translator, null, null, null, null, null);
-			
-			Utils.BeginClassRegister(typeof(DG.Tweening.Ease), L, null, 39, 0, 0);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Unset", DG.Tweening.Ease.Unset);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Linear", DG.Tweening.Ease.Linear);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InSine", DG.Tweening.Ease.InSine);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutSine", DG.Tweening.Ease.OutSine);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutSine", DG.Tweening.Ease.InOutSine);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InQuad", DG.Tweening.Ease.InQuad);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutQuad", DG.Tweening.Ease.OutQuad);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutQuad", DG.Tweening.Ease.InOutQuad);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InCubic", DG.Tweening.Ease.InCubic);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutCubic", DG.Tweening.Ease.OutCubic);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutCubic", DG.Tweening.Ease.InOutCubic);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InQuart", DG.Tweening.Ease.InQuart);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutQuart", DG.Tweening.Ease.OutQuart);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutQuart", DG.Tweening.Ease.InOutQuart);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InQuint", DG.Tweening.Ease.InQuint);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutQuint", DG.Tweening.Ease.OutQuint);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutQuint", DG.Tweening.Ease.InOutQuint);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InExpo", DG.Tweening.Ease.InExpo);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutExpo", DG.Tweening.Ease.OutExpo);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutExpo", DG.Tweening.Ease.InOutExpo);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InCirc", DG.Tweening.Ease.InCirc);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutCirc", DG.Tweening.Ease.OutCirc);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutCirc", DG.Tweening.Ease.InOutCirc);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InElastic", DG.Tweening.Ease.InElastic);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutElastic", DG.Tweening.Ease.OutElastic);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutElastic", DG.Tweening.Ease.InOutElastic);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InBack", DG.Tweening.Ease.InBack);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutBack", DG.Tweening.Ease.OutBack);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutBack", DG.Tweening.Ease.InOutBack);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InBounce", DG.Tweening.Ease.InBounce);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutBounce", DG.Tweening.Ease.OutBounce);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutBounce", DG.Tweening.Ease.InOutBounce);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Flash", DG.Tweening.Ease.Flash);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InFlash", DG.Tweening.Ease.InFlash);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OutFlash", DG.Tweening.Ease.OutFlash);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "InOutFlash", DG.Tweening.Ease.InOutFlash);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "INTERNAL_Zero", DG.Tweening.Ease.INTERNAL_Zero);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "INTERNAL_Custom", DG.Tweening.Ease.INTERNAL_Custom);
-            
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
-            
-            Utils.EndClassRegister(typeof(DG.Tweening.Ease), L, translator);
-        }
-		
-		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int __CastFrom(RealStatePtr L)
-		{
-			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
-            if (lua_type == LuaTypes.LUA_TNUMBER)
-            {
-                translator.PushDGTweeningEase(L, (DG.Tweening.Ease)LuaAPI.xlua_tointeger(L, 1));
-            }
-			
-            else if(lua_type == LuaTypes.LUA_TSTRING)
-            {
-			    if (LuaAPI.xlua_is_eq_str(L, 1, "Unset"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.Unset);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Linear"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.Linear);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InSine"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InSine);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutSine"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutSine);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutSine"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutSine);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InQuad"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InQuad);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutQuad"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutQuad);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutQuad"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutQuad);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InCubic"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InCubic);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutCubic"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutCubic);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutCubic"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutCubic);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InQuart"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InQuart);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutQuart"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutQuart);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutQuart"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutQuart);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InQuint"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InQuint);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutQuint"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutQuint);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutQuint"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutQuint);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InExpo"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InExpo);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutExpo"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutExpo);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutExpo"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutExpo);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InCirc"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InCirc);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutCirc"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutCirc);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutCirc"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutCirc);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InElastic"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InElastic);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutElastic"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutElastic);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutElastic"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutElastic);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InBack"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InBack);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutBack"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutBack);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutBack"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutBack);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InBounce"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InBounce);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutBounce"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutBounce);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutBounce"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutBounce);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Flash"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.Flash);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InFlash"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InFlash);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "OutFlash"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.OutFlash);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "InOutFlash"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.InOutFlash);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "INTERNAL_Zero"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.INTERNAL_Zero);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "INTERNAL_Custom"))
-                {
-                    translator.PushDGTweeningEase(L, DG.Tweening.Ease.INTERNAL_Custom);
-                }
-				else
-                {
-                    return LuaAPI.luaL_error(L, "invalid string for DG.Tweening.Ease!");
-                }
-            }
-			
-            else
-            {
-                return LuaAPI.luaL_error(L, "invalid lua type for DG.Tweening.Ease! Expect number or string, got + " + lua_type);
-            }
-
-            return 1;
-		}
-	}
-    
-    public class DGTweeningLoopTypeWrap
-    {
-		public static void __Register(RealStatePtr L)
-        {
-		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-		    Utils.BeginObjectRegister(typeof(DG.Tweening.LoopType), L, translator, 0, 0, 0, 0);
-			Utils.EndObjectRegister(typeof(DG.Tweening.LoopType), L, translator, null, null, null, null, null);
-			
-			Utils.BeginClassRegister(typeof(DG.Tweening.LoopType), L, null, 4, 0, 0);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Restart", DG.Tweening.LoopType.Restart);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Yoyo", DG.Tweening.LoopType.Yoyo);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Incremental", DG.Tweening.LoopType.Incremental);
-            
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
-            
-            Utils.EndClassRegister(typeof(DG.Tweening.LoopType), L, translator);
-        }
-		
-		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int __CastFrom(RealStatePtr L)
-		{
-			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
-            if (lua_type == LuaTypes.LUA_TNUMBER)
-            {
-                translator.PushDGTweeningLoopType(L, (DG.Tweening.LoopType)LuaAPI.xlua_tointeger(L, 1));
-            }
-			
-            else if(lua_type == LuaTypes.LUA_TSTRING)
-            {
-			    if (LuaAPI.xlua_is_eq_str(L, 1, "Restart"))
-                {
-                    translator.PushDGTweeningLoopType(L, DG.Tweening.LoopType.Restart);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Yoyo"))
-                {
-                    translator.PushDGTweeningLoopType(L, DG.Tweening.LoopType.Yoyo);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Incremental"))
-                {
-                    translator.PushDGTweeningLoopType(L, DG.Tweening.LoopType.Incremental);
-                }
-				else
-                {
-                    return LuaAPI.luaL_error(L, "invalid string for DG.Tweening.LoopType!");
-                }
-            }
-			
-            else
-            {
-                return LuaAPI.luaL_error(L, "invalid lua type for DG.Tweening.LoopType! Expect number or string, got + " + lua_type);
-            }
-
-            return 1;
-		}
-	}
-    
-    public class DGTweeningPathModeWrap
-    {
-		public static void __Register(RealStatePtr L)
-        {
-		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-		    Utils.BeginObjectRegister(typeof(DG.Tweening.PathMode), L, translator, 0, 0, 0, 0);
-			Utils.EndObjectRegister(typeof(DG.Tweening.PathMode), L, translator, null, null, null, null, null);
-			
-			Utils.BeginClassRegister(typeof(DG.Tweening.PathMode), L, null, 5, 0, 0);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Ignore", DG.Tweening.PathMode.Ignore);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Full3D", DG.Tweening.PathMode.Full3D);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "TopDown2D", DG.Tweening.PathMode.TopDown2D);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Sidescroller2D", DG.Tweening.PathMode.Sidescroller2D);
-            
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
-            
-            Utils.EndClassRegister(typeof(DG.Tweening.PathMode), L, translator);
-        }
-		
-		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int __CastFrom(RealStatePtr L)
-		{
-			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
-            if (lua_type == LuaTypes.LUA_TNUMBER)
-            {
-                translator.PushDGTweeningPathMode(L, (DG.Tweening.PathMode)LuaAPI.xlua_tointeger(L, 1));
-            }
-			
-            else if(lua_type == LuaTypes.LUA_TSTRING)
-            {
-			    if (LuaAPI.xlua_is_eq_str(L, 1, "Ignore"))
-                {
-                    translator.PushDGTweeningPathMode(L, DG.Tweening.PathMode.Ignore);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Full3D"))
-                {
-                    translator.PushDGTweeningPathMode(L, DG.Tweening.PathMode.Full3D);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "TopDown2D"))
-                {
-                    translator.PushDGTweeningPathMode(L, DG.Tweening.PathMode.TopDown2D);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Sidescroller2D"))
-                {
-                    translator.PushDGTweeningPathMode(L, DG.Tweening.PathMode.Sidescroller2D);
-                }
-				else
-                {
-                    return LuaAPI.luaL_error(L, "invalid string for DG.Tweening.PathMode!");
-                }
-            }
-			
-            else
-            {
-                return LuaAPI.luaL_error(L, "invalid lua type for DG.Tweening.PathMode! Expect number or string, got + " + lua_type);
-            }
-
-            return 1;
-		}
-	}
-    
-    public class DGTweeningPathTypeWrap
-    {
-		public static void __Register(RealStatePtr L)
-        {
-		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-		    Utils.BeginObjectRegister(typeof(DG.Tweening.PathType), L, translator, 0, 0, 0, 0);
-			Utils.EndObjectRegister(typeof(DG.Tweening.PathType), L, translator, null, null, null, null, null);
-			
-			Utils.BeginClassRegister(typeof(DG.Tweening.PathType), L, null, 3, 0, 0);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Linear", DG.Tweening.PathType.Linear);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "CatmullRom", DG.Tweening.PathType.CatmullRom);
-            
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
-            
-            Utils.EndClassRegister(typeof(DG.Tweening.PathType), L, translator);
-        }
-		
-		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int __CastFrom(RealStatePtr L)
-		{
-			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
-            if (lua_type == LuaTypes.LUA_TNUMBER)
-            {
-                translator.PushDGTweeningPathType(L, (DG.Tweening.PathType)LuaAPI.xlua_tointeger(L, 1));
-            }
-			
-            else if(lua_type == LuaTypes.LUA_TSTRING)
-            {
-			    if (LuaAPI.xlua_is_eq_str(L, 1, "Linear"))
-                {
-                    translator.PushDGTweeningPathType(L, DG.Tweening.PathType.Linear);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "CatmullRom"))
-                {
-                    translator.PushDGTweeningPathType(L, DG.Tweening.PathType.CatmullRom);
-                }
-				else
-                {
-                    return LuaAPI.luaL_error(L, "invalid string for DG.Tweening.PathType!");
-                }
-            }
-			
-            else
-            {
-                return LuaAPI.luaL_error(L, "invalid lua type for DG.Tweening.PathType! Expect number or string, got + " + lua_type);
-            }
-
-            return 1;
-		}
-	}
-    
-    public class DGTweeningRotateModeWrap
-    {
-		public static void __Register(RealStatePtr L)
-        {
-		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-		    Utils.BeginObjectRegister(typeof(DG.Tweening.RotateMode), L, translator, 0, 0, 0, 0);
-			Utils.EndObjectRegister(typeof(DG.Tweening.RotateMode), L, translator, null, null, null, null, null);
-			
-			Utils.BeginClassRegister(typeof(DG.Tweening.RotateMode), L, null, 5, 0, 0);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Fast", DG.Tweening.RotateMode.Fast);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "FastBeyond360", DG.Tweening.RotateMode.FastBeyond360);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WorldAxisAdd", DG.Tweening.RotateMode.WorldAxisAdd);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LocalAxisAdd", DG.Tweening.RotateMode.LocalAxisAdd);
-            
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
-            
-            Utils.EndClassRegister(typeof(DG.Tweening.RotateMode), L, translator);
-        }
-		
-		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int __CastFrom(RealStatePtr L)
-		{
-			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
-            if (lua_type == LuaTypes.LUA_TNUMBER)
-            {
-                translator.PushDGTweeningRotateMode(L, (DG.Tweening.RotateMode)LuaAPI.xlua_tointeger(L, 1));
-            }
-			
-            else if(lua_type == LuaTypes.LUA_TSTRING)
-            {
-			    if (LuaAPI.xlua_is_eq_str(L, 1, "Fast"))
-                {
-                    translator.PushDGTweeningRotateMode(L, DG.Tweening.RotateMode.Fast);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "FastBeyond360"))
-                {
-                    translator.PushDGTweeningRotateMode(L, DG.Tweening.RotateMode.FastBeyond360);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "WorldAxisAdd"))
-                {
-                    translator.PushDGTweeningRotateMode(L, DG.Tweening.RotateMode.WorldAxisAdd);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "LocalAxisAdd"))
-                {
-                    translator.PushDGTweeningRotateMode(L, DG.Tweening.RotateMode.LocalAxisAdd);
-                }
-				else
-                {
-                    return LuaAPI.luaL_error(L, "invalid string for DG.Tweening.RotateMode!");
-                }
-            }
-			
-            else
-            {
-                return LuaAPI.luaL_error(L, "invalid lua type for DG.Tweening.RotateMode! Expect number or string, got + " + lua_type);
-            }
-
-            return 1;
-		}
-	}
-    
-    public class DGTweeningScrambleModeWrap
-    {
-		public static void __Register(RealStatePtr L)
-        {
-		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-		    Utils.BeginObjectRegister(typeof(DG.Tweening.ScrambleMode), L, translator, 0, 0, 0, 0);
-			Utils.EndObjectRegister(typeof(DG.Tweening.ScrambleMode), L, translator, null, null, null, null, null);
-			
-			Utils.BeginClassRegister(typeof(DG.Tweening.ScrambleMode), L, null, 7, 0, 0);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "None", DG.Tweening.ScrambleMode.None);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "All", DG.Tweening.ScrambleMode.All);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Uppercase", DG.Tweening.ScrambleMode.Uppercase);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Lowercase", DG.Tweening.ScrambleMode.Lowercase);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Numerals", DG.Tweening.ScrambleMode.Numerals);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Custom", DG.Tweening.ScrambleMode.Custom);
-            
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
-            
-            Utils.EndClassRegister(typeof(DG.Tweening.ScrambleMode), L, translator);
-        }
-		
-		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int __CastFrom(RealStatePtr L)
-		{
-			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
-            if (lua_type == LuaTypes.LUA_TNUMBER)
-            {
-                translator.PushDGTweeningScrambleMode(L, (DG.Tweening.ScrambleMode)LuaAPI.xlua_tointeger(L, 1));
-            }
-			
-            else if(lua_type == LuaTypes.LUA_TSTRING)
-            {
-			    if (LuaAPI.xlua_is_eq_str(L, 1, "None"))
-                {
-                    translator.PushDGTweeningScrambleMode(L, DG.Tweening.ScrambleMode.None);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "All"))
-                {
-                    translator.PushDGTweeningScrambleMode(L, DG.Tweening.ScrambleMode.All);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Uppercase"))
-                {
-                    translator.PushDGTweeningScrambleMode(L, DG.Tweening.ScrambleMode.Uppercase);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Lowercase"))
-                {
-                    translator.PushDGTweeningScrambleMode(L, DG.Tweening.ScrambleMode.Lowercase);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Numerals"))
-                {
-                    translator.PushDGTweeningScrambleMode(L, DG.Tweening.ScrambleMode.Numerals);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Custom"))
-                {
-                    translator.PushDGTweeningScrambleMode(L, DG.Tweening.ScrambleMode.Custom);
-                }
-				else
-                {
-                    return LuaAPI.luaL_error(L, "invalid string for DG.Tweening.ScrambleMode!");
-                }
-            }
-			
-            else
-            {
-                return LuaAPI.luaL_error(L, "invalid lua type for DG.Tweening.ScrambleMode! Expect number or string, got + " + lua_type);
-            }
-
-            return 1;
-		}
-	}
-    
-    public class FairyGUIRelationTypeWrap
-    {
-		public static void __Register(RealStatePtr L)
-        {
-		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-		    Utils.BeginObjectRegister(typeof(FairyGUI.RelationType), L, translator, 0, 0, 0, 0);
-			Utils.EndObjectRegister(typeof(FairyGUI.RelationType), L, translator, null, null, null, null, null);
-			
-			Utils.BeginClassRegister(typeof(FairyGUI.RelationType), L, null, 26, 0, 0);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Left_Left", FairyGUI.RelationType.Left_Left);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Left_Center", FairyGUI.RelationType.Left_Center);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Left_Right", FairyGUI.RelationType.Left_Right);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Center_Center", FairyGUI.RelationType.Center_Center);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Right_Left", FairyGUI.RelationType.Right_Left);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Right_Center", FairyGUI.RelationType.Right_Center);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Right_Right", FairyGUI.RelationType.Right_Right);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Top_Top", FairyGUI.RelationType.Top_Top);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Top_Middle", FairyGUI.RelationType.Top_Middle);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Top_Bottom", FairyGUI.RelationType.Top_Bottom);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Middle_Middle", FairyGUI.RelationType.Middle_Middle);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Bottom_Top", FairyGUI.RelationType.Bottom_Top);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Bottom_Middle", FairyGUI.RelationType.Bottom_Middle);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Bottom_Bottom", FairyGUI.RelationType.Bottom_Bottom);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Width", FairyGUI.RelationType.Width);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Height", FairyGUI.RelationType.Height);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LeftExt_Left", FairyGUI.RelationType.LeftExt_Left);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LeftExt_Right", FairyGUI.RelationType.LeftExt_Right);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "RightExt_Left", FairyGUI.RelationType.RightExt_Left);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "RightExt_Right", FairyGUI.RelationType.RightExt_Right);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "TopExt_Top", FairyGUI.RelationType.TopExt_Top);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "TopExt_Bottom", FairyGUI.RelationType.TopExt_Bottom);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "BottomExt_Top", FairyGUI.RelationType.BottomExt_Top);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "BottomExt_Bottom", FairyGUI.RelationType.BottomExt_Bottom);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Size", FairyGUI.RelationType.Size);
-            
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
-            
-            Utils.EndClassRegister(typeof(FairyGUI.RelationType), L, translator);
-        }
-		
-		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int __CastFrom(RealStatePtr L)
-		{
-			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
-            if (lua_type == LuaTypes.LUA_TNUMBER)
-            {
-                translator.PushFairyGUIRelationType(L, (FairyGUI.RelationType)LuaAPI.xlua_tointeger(L, 1));
-            }
-			
-            else if(lua_type == LuaTypes.LUA_TSTRING)
-            {
-			    if (LuaAPI.xlua_is_eq_str(L, 1, "Left_Left"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Left_Left);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Left_Center"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Left_Center);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Left_Right"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Left_Right);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Center_Center"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Center_Center);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Right_Left"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Right_Left);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Right_Center"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Right_Center);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Right_Right"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Right_Right);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Top_Top"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Top_Top);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Top_Middle"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Top_Middle);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Top_Bottom"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Top_Bottom);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Middle_Middle"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Middle_Middle);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Bottom_Top"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Bottom_Top);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Bottom_Middle"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Bottom_Middle);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Bottom_Bottom"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Bottom_Bottom);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Width"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Width);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Height"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Height);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "LeftExt_Left"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.LeftExt_Left);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "LeftExt_Right"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.LeftExt_Right);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "RightExt_Left"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.RightExt_Left);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "RightExt_Right"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.RightExt_Right);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "TopExt_Top"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.TopExt_Top);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "TopExt_Bottom"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.TopExt_Bottom);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "BottomExt_Top"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.BottomExt_Top);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "BottomExt_Bottom"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.BottomExt_Bottom);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Size"))
-                {
-                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Size);
-                }
-				else
-                {
-                    return LuaAPI.luaL_error(L, "invalid string for FairyGUI.RelationType!");
-                }
-            }
-			
-            else
-            {
-                return LuaAPI.luaL_error(L, "invalid lua type for FairyGUI.RelationType! Expect number or string, got + " + lua_type);
-            }
-
-            return 1;
-		}
-	}
-    
     public class FairyGUIEaseTypeWrap
     {
 		public static void __Register(RealStatePtr L)
@@ -1030,6 +244,342 @@ namespace XLua.CSObjectWrap
             else
             {
                 return LuaAPI.luaL_error(L, "invalid lua type for FairyGUI.EaseType! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class FairyGUIRelationTypeWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(FairyGUI.RelationType), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(FairyGUI.RelationType), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(FairyGUI.RelationType), L, null, 26, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Left_Left", FairyGUI.RelationType.Left_Left);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Left_Center", FairyGUI.RelationType.Left_Center);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Left_Right", FairyGUI.RelationType.Left_Right);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Center_Center", FairyGUI.RelationType.Center_Center);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Right_Left", FairyGUI.RelationType.Right_Left);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Right_Center", FairyGUI.RelationType.Right_Center);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Right_Right", FairyGUI.RelationType.Right_Right);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Top_Top", FairyGUI.RelationType.Top_Top);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Top_Middle", FairyGUI.RelationType.Top_Middle);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Top_Bottom", FairyGUI.RelationType.Top_Bottom);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Middle_Middle", FairyGUI.RelationType.Middle_Middle);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Bottom_Top", FairyGUI.RelationType.Bottom_Top);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Bottom_Middle", FairyGUI.RelationType.Bottom_Middle);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Bottom_Bottom", FairyGUI.RelationType.Bottom_Bottom);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Width", FairyGUI.RelationType.Width);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Height", FairyGUI.RelationType.Height);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LeftExt_Left", FairyGUI.RelationType.LeftExt_Left);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LeftExt_Right", FairyGUI.RelationType.LeftExt_Right);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "RightExt_Left", FairyGUI.RelationType.RightExt_Left);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "RightExt_Right", FairyGUI.RelationType.RightExt_Right);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "TopExt_Top", FairyGUI.RelationType.TopExt_Top);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "TopExt_Bottom", FairyGUI.RelationType.TopExt_Bottom);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "BottomExt_Top", FairyGUI.RelationType.BottomExt_Top);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "BottomExt_Bottom", FairyGUI.RelationType.BottomExt_Bottom);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Size", FairyGUI.RelationType.Size);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(FairyGUI.RelationType), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushFairyGUIRelationType(L, (FairyGUI.RelationType)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "Left_Left"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Left_Left);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Left_Center"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Left_Center);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Left_Right"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Left_Right);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Center_Center"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Center_Center);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Right_Left"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Right_Left);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Right_Center"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Right_Center);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Right_Right"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Right_Right);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Top_Top"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Top_Top);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Top_Middle"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Top_Middle);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Top_Bottom"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Top_Bottom);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Middle_Middle"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Middle_Middle);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Bottom_Top"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Bottom_Top);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Bottom_Middle"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Bottom_Middle);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Bottom_Bottom"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Bottom_Bottom);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Width"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Width);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Height"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Height);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "LeftExt_Left"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.LeftExt_Left);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "LeftExt_Right"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.LeftExt_Right);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "RightExt_Left"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.RightExt_Left);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "RightExt_Right"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.RightExt_Right);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "TopExt_Top"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.TopExt_Top);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "TopExt_Bottom"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.TopExt_Bottom);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "BottomExt_Top"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.BottomExt_Top);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "BottomExt_Bottom"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.BottomExt_Bottom);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Size"))
+                {
+                    translator.PushFairyGUIRelationType(L, FairyGUI.RelationType.Size);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for FairyGUI.RelationType!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for FairyGUI.RelationType! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class FairyGUITweenPropTypeWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(FairyGUI.TweenPropType), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(FairyGUI.TweenPropType), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(FairyGUI.TweenPropType), L, null, 18, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "None", FairyGUI.TweenPropType.None);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "X", FairyGUI.TweenPropType.X);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Y", FairyGUI.TweenPropType.Y);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Z", FairyGUI.TweenPropType.Z);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "XY", FairyGUI.TweenPropType.XY);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Position", FairyGUI.TweenPropType.Position);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Width", FairyGUI.TweenPropType.Width);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Height", FairyGUI.TweenPropType.Height);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Size", FairyGUI.TweenPropType.Size);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "ScaleX", FairyGUI.TweenPropType.ScaleX);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "ScaleY", FairyGUI.TweenPropType.ScaleY);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Scale", FairyGUI.TweenPropType.Scale);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Rotation", FairyGUI.TweenPropType.Rotation);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "RotationX", FairyGUI.TweenPropType.RotationX);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "RotationY", FairyGUI.TweenPropType.RotationY);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Alpha", FairyGUI.TweenPropType.Alpha);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Progress", FairyGUI.TweenPropType.Progress);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(FairyGUI.TweenPropType), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushFairyGUITweenPropType(L, (FairyGUI.TweenPropType)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "None"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.None);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "X"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.X);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Y"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Y);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Z"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Z);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "XY"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.XY);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Position"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Position);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Width"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Width);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Height"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Height);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Size"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Size);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "ScaleX"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.ScaleX);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "ScaleY"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.ScaleY);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Scale"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Scale);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Rotation"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Rotation);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "RotationX"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.RotationX);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "RotationY"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.RotationY);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Alpha"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Alpha);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Progress"))
+                {
+                    translator.PushFairyGUITweenPropType(L, FairyGUI.TweenPropType.Progress);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for FairyGUI.TweenPropType!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for FairyGUI.TweenPropType! Expect number or string, got + " + lua_type);
             }
 
             return 1;

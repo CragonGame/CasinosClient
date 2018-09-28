@@ -113,31 +113,17 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(System.IO.Path), SystemIOPathWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(DG.Tweening.DOTween), DGTweeningDOTweenWrap.__Register);
+				translator.DelayWrapLoader(typeof(FairyGUI.EaseType), FairyGUIEaseTypeWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(DG.Tweening.Tween), DGTweeningTweenWrap.__Register);
+				translator.DelayWrapLoader(typeof(FairyGUI.RelationType), FairyGUIRelationTypeWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(DG.Tweening.Sequence), DGTweeningSequenceWrap.__Register);
+				translator.DelayWrapLoader(typeof(FairyGUI.TweenPropType), FairyGUITweenPropTypeWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(DG.Tweening.Tweener), DGTweeningTweenerWrap.__Register);
+				translator.DelayWrapLoader(typeof(FairyGUI.Container), FairyGUIContainerWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(DG.Tweening.Ease), DGTweeningEaseWrap.__Register);
+				translator.DelayWrapLoader(typeof(FairyGUI.Controller), FairyGUIControllerWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(DG.Tweening.LoopType), DGTweeningLoopTypeWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(DG.Tweening.PathMode), DGTweeningPathModeWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(DG.Tweening.PathType), DGTweeningPathTypeWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(DG.Tweening.RotateMode), DGTweeningRotateModeWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(DG.Tweening.ScrambleMode), DGTweeningScrambleModeWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(DG.Tweening.TweenExtensions), DGTweeningTweenExtensionsWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(DG.Tweening.TweenSettingsExtensions), DGTweeningTweenSettingsExtensionsWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(DG.Tweening.ShortcutExtensions), DGTweeningShortcutExtensionsWrap.__Register);
+				translator.DelayWrapLoader(typeof(FairyGUI.DisplayObject), FairyGUIDisplayObjectWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.EventContext), FairyGUIEventContextWrap.__Register);
 				
@@ -146,14 +132,6 @@ namespace XLua.CSObjectWrap
 				translator.DelayWrapLoader(typeof(FairyGUI.EventListener), FairyGUIEventListenerWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.InputEvent), FairyGUIInputEventWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.DisplayObject), FairyGUIDisplayObjectWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.Container), FairyGUIContainerWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.Stage), FairyGUIStageWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.Controller), FairyGUIControllerWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.GObject), FairyGUIGObjectWrap.__Register);
 				
@@ -166,8 +144,6 @@ namespace XLua.CSObjectWrap
 				translator.DelayWrapLoader(typeof(FairyGUI.GLoader), FairyGUIGLoaderWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.GMovieClip), FairyGUIGMovieClipWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.TextFormat), FairyGUITextFormatWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.GTextField), FairyGUIGTextFieldWrap.__Register);
 				
@@ -187,33 +163,33 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.GComboBox), FairyGUIGComboBoxWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(FairyGUI.GObjectPool), FairyGUIGObjectPoolWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(FairyGUI.GProgressBar), FairyGUIGProgressBarWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.GSlider), FairyGUIGSliderWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.PopupMenu), FairyGUIPopupMenuWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.ScrollPane), FairyGUIScrollPaneWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.Transition), FairyGUITransitionWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.UIPackage), FairyGUIUIPackageWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.Window), FairyGUIWindowWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.GObjectPool), FairyGUIGObjectPoolWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.Relations), FairyGUIRelationsWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(FairyGUI.RelationType), FairyGUIRelationTypeWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.GTween), FairyGUIGTweenWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.GTweener), FairyGUIGTweenerWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(FairyGUI.EaseType), FairyGUIEaseTypeWrap.__Register);
+				translator.DelayWrapLoader(typeof(FairyGUI.Stage), FairyGUIStageWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(FairyGUI.PopupMenu), FairyGUIPopupMenuWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(FairyGUI.Relations), FairyGUIRelationsWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(FairyGUI.ScrollPane), FairyGUIScrollPaneWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(FairyGUI.TextFormat), FairyGUITextFormatWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(FairyGUI.Transition), FairyGUITransitionWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.TweenValue), FairyGUITweenValueWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(FairyGUI.UIPackage), FairyGUIUIPackageWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(FairyGUI.Window), FairyGUIWindowWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos._eProjectItemDisplayNameKey), Casinos_eProjectItemDisplayNameKeyWrap.__Register);
 				
@@ -224,10 +200,6 @@ namespace XLua.CSObjectWrap
 				translator.DelayWrapLoader(typeof(AsyncAssetLoaderMgr), AsyncAssetLoaderMgrWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(AsyncAssetLoadGroup), AsyncAssetLoadGroupWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(ZXing.BarcodeWriter), ZXingBarcodeWriterWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(BuglyAgent), BuglyAgentWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.Card), CasinosCardWrap.__Register);
 				
@@ -261,19 +233,11 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(OpenInstallReceiver), OpenInstallReceiverWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(OnePF.Purchase), OnePFPurchaseWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(Push), PushWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(PushReceiver), PushReceiverWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(ZXing.QrCode.QrCodeEncodingOptions), ZXingQrCodeQrCodeEncodingOptionsWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(QRCodeMaker), QRCodeMakerWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(cn.sharesdk.unity3d.ShareContent), cnsharesdkunity3dShareContentWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(cn.sharesdk.unity3d.ShareSDK), cnsharesdkunity3dShareSDKWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(ShareSDKReceiver), ShareSDKReceiverWrap.__Register);
 				
@@ -289,6 +253,18 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(Casinos.UpdateRemoteToPersistentData), CasinosUpdateRemoteToPersistentDataWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(BuglyAgent), BuglyAgentWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(OnePF.Purchase), OnePFPurchaseWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(cn.sharesdk.unity3d.ShareContent), cnsharesdkunity3dShareContentWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(cn.sharesdk.unity3d.ShareSDK), cnsharesdkunity3dShareSDKWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(ZXing.BarcodeWriter), ZXingBarcodeWriterWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(ZXing.QrCode.QrCodeEncodingOptions), ZXingQrCodeQrCodeEncodingOptionsWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(Casinos.CasinosLua), CasinosCasinosLuaWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.LuaHelper), CasinosLuaHelperWrap.__Register);
@@ -298,8 +274,6 @@ namespace XLua.CSObjectWrap
 				translator.DelayWrapLoader(typeof(Casinos.PathMgr), CasinosPathMgrWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.SpineHelper), CasinosSpineHelperWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.UiDoTweenHelper), CasinosUiDoTweenHelperWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.UiHelperCasinos), CasinosUiHelperCasinosWrap.__Register);
 				

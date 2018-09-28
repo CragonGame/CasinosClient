@@ -64,7 +64,6 @@ namespace Casinos
         public PathMgr PathMgr { get; private set; }
         public CasinosPlayerPrefs PlayerPrefs { get; private set; }
         public CasinosConfig Config { get; private set; }
-        //public CasinosListener Listener { get; private set; }
         public TextureMgr TextureMgr { get; private set; }
         public CasinosLua CasinosLua { get; private set; }
         public NetBridge NetBridge { get; private set; }
@@ -296,7 +295,7 @@ namespace Casinos
 
             if (AsyncAssetLoaderMgr != null)
             {
-                AsyncAssetLoaderMgr.update(Time.deltaTime);
+                AsyncAssetLoaderMgr.Update(Time.deltaTime);
             }
 
             if (CasinosLua != null)

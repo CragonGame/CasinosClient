@@ -47,7 +47,7 @@ public class AsyncAssetLoaderMgr
     }
 
     //-------------------------------------------------------------------------
-    public void update(float time)
+    public void Update(float time)
     {
         WWWAsyncLoader.update(time);
         LocalBundleAsyncLoader.update(time);

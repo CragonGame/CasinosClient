@@ -7,8 +7,6 @@ namespace Casinos
     using System.Collections.Generic;
     using System.IO;
     using UnityEngine;
-    using DG.Tweening;
-    using DG.Tweening.Core;
     using FairyGUI;
     using XLua;
 
@@ -212,11 +210,11 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static Tweener DoTweenTo(DOGetter<int> g, DOSetter<int> s, int endValue, float duration)
-        {
-            var t = DOTween.To(g, s, endValue, duration);
-            return t;
-        }
+        //public static Tweener DoTweenTo(DOGetter<int> g, DOSetter<int> s, int endValue, float duration)
+        //{
+        //    var t = DOTween.To(g, s, endValue, duration);
+        //    return t;
+        //}
 
         //---------------------------------------------------------------------
         public static LuaTable getIconName(bool is_small, string icon_name, string icon_resource_name1)

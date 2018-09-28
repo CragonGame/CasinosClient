@@ -31,7 +31,7 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 70, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 69, 0, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "readAllText", _m_readAllText_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "writeFile", _m_writeFile_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GObjectCastToGCom", _m_GObjectCastToGCom_xlua_st_);
@@ -55,7 +55,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_IDX, "getDevicedeviceType", _m_getDevicedeviceType_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GLoaderCastToGLoaderEx", _m_GLoaderCastToGLoaderEx_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "EventDispatcherCastToGComponent", _m_EventDispatcherCastToGComponent_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "DoTweenTo", _m_DoTweenTo_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "getIconName", _m_getIconName_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "bytes2StringByDefault", _m_bytes2StringByDefault_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "bytes2StringByUTF8", _m_bytes2StringByUTF8_xlua_st_);
@@ -725,36 +724,6 @@ namespace XLua.CSObjectWrap
                     FairyGUI.EventDispatcher _ev = (FairyGUI.EventDispatcher)translator.GetObject(L, 1, typeof(FairyGUI.EventDispatcher));
                     
                         FairyGUI.GComponent gen_ret = Casinos.LuaHelper.EventDispatcherCastToGComponent( _ev );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_DoTweenTo_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    DG.Tweening.Core.DOGetter<int> _g = translator.GetDelegate<DG.Tweening.Core.DOGetter<int>>(L, 1);
-                    DG.Tweening.Core.DOSetter<int> _s = translator.GetDelegate<DG.Tweening.Core.DOSetter<int>>(L, 2);
-                    int _endValue = LuaAPI.xlua_tointeger(L, 3);
-                    float _duration = (float)LuaAPI.lua_tonumber(L, 4);
-                    
-                        DG.Tweening.Tweener gen_ret = Casinos.LuaHelper.DoTweenTo( _g, _s, _endValue, _duration );
                         translator.Push(L, gen_ret);
                     
                     

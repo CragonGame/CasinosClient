@@ -189,7 +189,7 @@ function ItemChatEx:moveItem(move_speed, pos, moveend_callback)
         to_x = to_x + self.ViewVIPSign.GCoVIP.width
     end
     local move_tm = (pos.x + to_x) / move_speed
-    self.TweenerMove = self.Com:TweenMoveX(-to_x, move_tm):SetEase(CS.DG.Tweening.Ease.Linear):OnComplete(
+    self.TweenerMove = self.Com:TweenMoveX(-to_x, move_tm):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
             function()
                 if self.MoveEndCallback ~= nil then
                     self.MoveEndCallback(self, self.ItemType)

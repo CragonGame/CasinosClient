@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 UiChipEx = {}
 
+---------------------------------------
 function UiChipEx:new(o, com_chip, chip_mgr)
     o = o or {}
     setmetatable(o, self)
@@ -18,16 +20,13 @@ function UiChipEx:new(o, com_chip, chip_mgr)
     o.ChipMoveType = nil
     o.MoveEndCallBack = nil
     o.StartMove = nil
-
     o:_resetChip()
-
     return o
 end
 
-function UiChipEx:init(from, to, move_time,delay,
-                       move_sound, chip_type, move_end, start_movenotify)
-    if (self.GComChip == nil)
-    then
+---------------------------------------
+function UiChipEx:init(from, to, move_time,delay, move_sound, chip_type, move_end, start_movenotify)
+    if (self.GComChip == nil) then
         self:_resetChip()
     end
 
@@ -42,9 +41,9 @@ function UiChipEx:init(from, to, move_time,delay,
     self.StartMove = start_movenotify
 end
 
+---------------------------------------
 function UiChipEx:reset()
-    if (self.GComChip == nil)
-    then
+    if (self.GComChip == nil) then
         self:_resetChip()
         return
     end
@@ -54,68 +53,66 @@ function UiChipEx:reset()
     self:_resetChip()
     ViewHelper:setGObjectVisible(false, self.GComChip)
     self.MoveEndCallBack = nil
-    if (self.StartMove ~= nil)
-    then
+    if (self.StartMove ~= nil) then
         self.StartMove()
         self.StartMove = nil
     end
 end
 
+---------------------------------------
 function UiChipEx:getChipType()
     return self.ChipMoveType
 end
 
+---------------------------------------
 function UiChipEx:getChipCom()
     return self.GComChip
 end
 
+---------------------------------------
 function UiChipEx:moveAndScale()
-    if (self.GComChip == nil)
-    then
+    if (self.GComChip == nil) then
         self:_resetChip()
         return
     end
 
-    if (self.StartMove ~= nil)
-    then
+    if (self.StartMove ~= nil) then
         self.StartMove()
         self.StartMove = nil
     end
 
     CS.Casinos.UiHelper.setGObjectVisible(true, self.GComChip)
-    self.TweenerMove = CS.Casinos.UiDoTweenHelper.TweenMove(self.GComChip, self.From, self.To, self.MoveTime, true):SetDelay(self.Delay):SetEase(CS.DG.Tweening.Ease.InOutSine):OnComplete(
+    self.TweenerMove = self.GComChip.TweenMove(self.From, self.To, self.MoveTime, true):SetDelay(self.Delay):SetEase(CS.FairyGUI.EaseType.SineInOut):OnComplete(
             function()
                 self.ChipMgr:chipEnquee(self)
             end)
     --self.TweenerScale = CS.Casinos.UiDoTweenHelper.TweenScale(self.GComChip, CS.UnityEngine.Vector2.zero, CS.UnityEngine.Vector2.one, self.MoveTime)
 end
 
+---------------------------------------
 function UiChipEx:move(from, to, move_end)
-    if (self.GComChip == nil)
-    then
+    if (self.GComChip == nil) then
         self:_resetChip()
         return
     end
-
     self.TweenerMove = CS.Casinos.UiDoTweenHelper.TweenMove(self.GComChip, from, to, self.MoveTime, true):OnComplete(move_end)
 end
 
+---------------------------------------
 function UiChipEx:moveEnd()
-    if (self.MoveEndCallBack ~= nil)
-    then
+    if (self.MoveEndCallBack ~= nil) then
         self.MoveEndCallBack()
         self.MoveEndCallBack = nil
     end
 end
 
+---------------------------------------
 function UiChipEx:_resetChip()
-    if (self.TweenerMove ~= nil)
-    then
+    if (self.TweenerMove ~= nil) then
         self.TweenerMove:Kill()
         self.TweenerMove = nil
     end
-    if (self.TweenerScale ~= nil)
-    then
+    if (self.TweenerScale ~= nil) then
         self.TweenerScale:Kill()
         self.TweenerScale = nil
     end

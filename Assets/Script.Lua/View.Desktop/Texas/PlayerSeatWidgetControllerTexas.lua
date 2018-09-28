@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 PlayerSeatWidgetControllerTexas = {
     GroupTitle = "Group",
     TransitionTitle = "Transition",
@@ -14,6 +15,7 @@ PlayerSeatWidgetControllerTexas = {
     EndSeatName = "EndSeat"
 }
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:new(o, player_info, com_playercenter)
     o = o or {}
     setmetatable(o, self)
@@ -52,6 +54,7 @@ function PlayerSeatWidgetControllerTexas:new(o, player_info, com_playercenter)
     return o
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:init()
     self.UiGoldMgr = self.PlayerInfo.ViewDesktop.UiChipMgr
     self.SeatIndex = self.PlayerInfo.Player.UiSeatIndex
@@ -60,23 +63,23 @@ function PlayerSeatWidgetControllerTexas:init()
     self:_showSeatWidget()
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:destroy()
     self:_destroyMoveGold()
 
-    if (self.SeatWidget ~= nil)
-    then
+    if (self.SeatWidget ~= nil) then
         self.SeatWidget = nil
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:release()
     self.LoaderTicket1 = nil
     self.LoaderTicket2 = nil
     self:hideHighLight()
     self:_resetGold()
     self:_resetCard(true)
-    if (self.SeatWidget ~= nil)
-    then
+    if (self.SeatWidget ~= nil) then
         self.SeatWidget = nil
     end
     self.CardFirst = nil
@@ -86,24 +89,25 @@ function PlayerSeatWidgetControllerTexas:release()
     self:_destroyMoveGold()
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:deskIdle()
     ViewHelper:setGObjectVisible(false, self.SeatWidget.GGroupChipValue)
     ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageDealerSign)
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:setIsBtn(is_btn)
     ViewHelper:setGObjectVisible(is_btn, self.SeatWidget.GImageDealerSign)
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:dealCard()
     local notshow_loader_card = false
-    if (self.SeatWidget.GLoaderCardFirst ~= nil and self.PlayerInfo.Player.IsMe)
-    then
+    if (self.SeatWidget.GLoaderCardFirst ~= nil and self.PlayerInfo.Player.IsMe) then
         notshow_loader_card = true
     end
 
-    if (self.PlayerInfo.Player.IsMe)
-    then
+    if (self.PlayerInfo.Player.IsMe) then
         self.PlayerInfo.ViewDesktop:showCommonCardType(self.PlayerInfo.Player.DesktopTexas.GameEnd)
     end
 
@@ -111,53 +115,44 @@ function PlayerSeatWidgetControllerTexas:dealCard()
     self.SeatWidget.TransitionCardInit:Play()
     ViewHelper:setGObjectVisible(true, self.SeatWidget.GImageCardFirst)
     ViewHelper:setGObjectVisible(true, self.SeatWidget.GImageCardSecond)
-    if (self.SeatWidget.GLoaderCardFirst ~= nil)
-    then
+    if (self.SeatWidget.GLoaderCardFirst ~= nil) then
         ViewHelper:setGObjectVisible(notshow_loader_card, self.SeatWidget.GLoaderCardFirst)
         ViewHelper:setGObjectVisible(notshow_loader_card, self.SeatWidget.GLoaderCardSecond)
     end
 
-    if (self.PlayerInfo.Player.PlayerDataDesktop.PlayerActionType == PlayerActionTypeTexas.Fold and self.PlayerInfo.Player.IsMe == false)
-    then
+    if (self.PlayerInfo.Player.PlayerDataDesktop.PlayerActionType == PlayerActionTypeTexas.Fold and self.PlayerInfo.Player.IsMe == false) then
         self:playerFold()
     end
 end
 
-function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_second, show_card,is_init)
+---------------------------------------
+function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_second, show_card, is_init)
     local is_same = self:_cardsIsTheSame(self.CardFirst, card_first)
-    if (is_same)
-    then
+    if (is_same) then
         is_same = self:_cardsIsTheSame(self.CardSecond, card_second)
     end
     self.CardFirst = card_first
     self.CardSecond = card_second
     self.ShowCard = show_card
-    if (self.PlayerInfo.Player.IsMe == true and self.CardFirst ~= nil)
-    then
+    if (self.PlayerInfo.Player.IsMe == true and self.CardFirst ~= nil) then
         self:_resetCard(false)
         local me_first_card_name = self.CardFirst.Suit .. "_" .. self.CardFirst.Type
         local l_me_first_card_name = string.lower(me_first_card_name)
         --print("l_me_first_card_name             "..l_me_first_card_name)
         self.SeatWidget.GLoaderCardFirst.color = CS.UnityEngine.Color.white
         self.SeatWidget.GLoaderCardFirst.color = CS.UnityEngine.Color.white
-        if (self.SeatWidget.GLoaderCardFirst.texture == nil or is_same == false)
-        then
-            if (CS.System.String.IsNullOrEmpty(me_first_card_name) == false)
-            then
+        if (self.SeatWidget.GLoaderCardFirst.texture == nil or is_same == false) then
+            if (CS.System.String.IsNullOrEmpty(me_first_card_name) == false) then
                 self.LoaderTicket1 = self.CasinosContext.TextureMgr:getTexture(l_me_first_card_name, self.CasinosContext.PathMgr:combinePersistentDataPath(CS.Casinos.UiHelperCasinos.getABCardResourceTitlePath() .. l_me_first_card_name .. ".ab"),
                         function(ticket, t)
-                            if (self.SeatWidget ~= nil)
-                            then
-                                if ((self.LoaderTicket1 ~= ticket))
-                                then
+                            if (self.SeatWidget ~= nil) then
+                                if ((self.LoaderTicket1 ~= ticket)) then
                                     return
                                 end
                                 self.LoaderTicket1 = nil
 
-                                if (self.ShowCard)
-                                then
-                                    if (self.SeatWidget.GLoaderCardFirst ~= nil and self.SeatWidget.GLoaderCardFirst.displayObject.gameObject ~= nil)
-                                    then
+                                if (self.ShowCard) then
+                                    if (self.SeatWidget.GLoaderCardFirst ~= nil and self.SeatWidget.GLoaderCardFirst.displayObject.gameObject ~= nil) then
                                         ViewHelper:setGObjectVisible(true, self.SeatWidget.GLoaderCardFirst)
                                         ViewHelper:setGObjectVisible(true, self.SeatWidget.GLoaderCardSecond)
                                     end
@@ -166,8 +161,7 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
                                     self.PlayerInfo.ViewDesktop:showCommonCardType(self.PlayerInfo.Player.DesktopTexas.GameEnd)
                                 end
 
-                                if (t ~= nil and self.SeatWidget.GLoaderCardFirst.displayObject.gameObject ~= nil)
-                                then
+                                if (t ~= nil and self.SeatWidget.GLoaderCardFirst.displayObject.gameObject ~= nil) then
                                     self.SeatWidget.GLoaderCardFirst.texture = CS.FairyGUI.NTexture(t)
                                 end
                             end
@@ -181,20 +175,16 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
         --print("l_me_second_card_name        "..l_me_second_card_name)
         if (self.SeatWidget.GLoaderCardSecond.texture == nil or is_same == false)
         then
-            if (CS.System.String.IsNullOrEmpty(me_second_card_name) == false)
-            then
+            if (CS.System.String.IsNullOrEmpty(me_second_card_name) == false) then
                 self.LoaderTicket2 = self.CasinosContext.TextureMgr:getTexture(l_me_second_card_name, self.CasinosContext.PathMgr:combinePersistentDataPath(CS.Casinos.UiHelperCasinos.getABCardResourceTitlePath() .. l_me_second_card_name .. ".ab"),
                         function(ticket, t)
-                            if (self.SeatWidget ~= nil)
-                            then
-                                if ((self.LoaderTicket2 ~= ticket))
-                                then
+                            if (self.SeatWidget ~= nil) then
+                                if ((self.LoaderTicket2 ~= ticket)) then
                                     return
                                 end
                                 self.LoaderTicket2 = nil
 
-                                if (t ~= nil and self.SeatWidget.GLoaderCardSecond.displayObject.gameObject ~= nil)
-                                then
+                                if (t ~= nil and self.SeatWidget.GLoaderCardSecond.displayObject.gameObject ~= nil) then
                                     self.SeatWidget.GLoaderCardSecond.texture = CS.FairyGUI.NTexture(t)
                                 end
                             end
@@ -207,8 +197,7 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
             ViewHelper:setGObjectVisible(show, self.SeatWidget.GImageCardFirst)
             ViewHelper:setGObjectVisible(show, self.SeatWidget.GImageCardSecond)
 
-            if (show == false)
-            then
+            if (show == false) then
                 self:_resetCard(true)
             end
         end
@@ -218,46 +207,49 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:showcard1()
-    self.TweenerRotate1 = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GLoaderCardFirst, 0, 90, 0.1):SetEase(CS.DG.Tweening.Ease.Linear):OnComplete(
+    self.TweenerRotate1 = self.GLoaderCardFirst.TweenRotate(0, 90, 0.1):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
             function()
                 ViewHelper:setGObjectVisible(true, self.GImageCardFirst)
                 ViewHelper:setGObjectVisible(false, self.GLoaderCardFirst)
                 self.GImageCardFirst.rotationY = 90
                 self.GLoaderCardFirst.rotationY = 90
-                self.TweenerRotate1 = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GImageCardFirst, 90, 270, 0.1):SetEase(CS.DG.Tweening.Ease.Linear):OnComplete(
+                self.TweenerRotate1 = self.GImageCardFirst.TweenRotate(90, 270, 0.1):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                         function()
                             self.GImageCardFirst.rotationY = 0
                             self.GLoaderCardFirst.rotationY = 270
                             ViewHelper:setGObjectVisible(false, self.GImageCardFirst)
                             ViewHelper:setGObjectVisible(true, self.GLoaderCardFirst)
-                            self.TweenerRotate1 = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GLoaderCardFirst, 270, 0, 0.1):SetEase(CS.DG.Tweening.Ease.Linear)
+                            self.TweenerRotate1 = self.GLoaderCardFirst.TweenRotate(270, 0, 0.1):SetEase(CS.FairyGUI.EaseType.Linear)
                         end
                 )
             end
     )
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:showcard2()
-    self.TweenerRotate2 = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GLoaderCardSecond, 0, 90, 0.1):SetEase(CS.DG.Tweening.Ease.Linear):OnComplete(
+    self.TweenerRotate2 = self.GLoaderCardSecond.TweenRotate(0, 90, 0.1):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
             function()
                 ViewHelper:setGObjectVisible(true, self.GImageCardSecond)
                 ViewHelper:setGObjectVisible(false, self.GLoaderCardSecond)
                 self.GImageCardSecond.rotationY = 90
                 self.GLoaderCardSecond.rotationY = 90
-                self.TweenerRotate2 = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GImageCardSecond, 90, 270, 0.1):SetEase(CS.DG.Tweening.Ease.Linear):OnComplete(
+                self.TweenerRotate2 = self.GImageCardSecond.TweenRotate(90, 270, 0.1):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                         function()
                             self.GImageCardSecond.rotationY = 0
                             self.GLoaderCardSecond.rotationY = 270
                             ViewHelper:setGObjectVisible(false, self.GImageCardSecond)
                             ViewHelper:setGObjectVisible(true, self.GLoaderCardSecond)
-                            self.TweenerRotate2 = CS.Casinos.UiDoTweenHelper.TweenRotateY(self.GLoaderCardSecond, 270, 0, 0.1):SetEase(CS.DG.Tweening.Ease.Linear)
+                            self.TweenerRotate2 = self.GLoaderCardSecond.TweenRotate(270, 0, 0.1):SetEase(CS.FairyGUI.EaseType.Linear)
                         end
                 )
             end
     )
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:raiseChips()
     if (self.ChipRaise ~= nil)
     then
@@ -292,6 +284,7 @@ function PlayerSeatWidgetControllerTexas:raiseChips()
     )
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:sendWinnerChips(winner_golds, map_win_pot)
     if (self.TChipGetWin ~= nil)
     then
@@ -343,6 +336,7 @@ function PlayerSeatWidgetControllerTexas:sendWinnerChips(winner_golds, map_win_p
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:playerFold()
     if (self.SeatWidget ~= nil)
     then
@@ -361,6 +355,7 @@ function PlayerSeatWidgetControllerTexas:playerFold()
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:goldsInMainPot(t_playerchips_inpot)
     if (self.TChipInPot ~= nil)
     then
@@ -410,11 +405,13 @@ function PlayerSeatWidgetControllerTexas:goldsInMainPot(t_playerchips_inpot)
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:resetSeatIndex()
     self.SeatIndex = self.PlayerInfo.Player.UiSeatIndex
     self:_showSeatWidget()
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:preflopBegin()
     self.IsGameEnd = false
     self.AlreadyGetWinGold = false
@@ -425,18 +422,22 @@ function PlayerSeatWidgetControllerTexas:preflopBegin()
     self:hideHighLight()
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:flop()
     self:_showBet()
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:turn()
     self:_showBet()
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:river()
     self:_showBet()
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:gameEnd()
     self:_showBet()
     self.IsGameEnd = true
@@ -444,11 +445,13 @@ function PlayerSeatWidgetControllerTexas:gameEnd()
     self.CardSecond = nil
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:reset()
     self:_resetGold()
     self:_resetCard(true)
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:hideHighLight()
     if (self.SeatWidget.GImageCardFirstHighLight ~= nil)
     then
@@ -457,6 +460,7 @@ function PlayerSeatWidgetControllerTexas:hideHighLight()
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:showHandCardHighLight(best_hand, card_type_str)
     local show_cardtype_tips = true
     local hand_type = best_hand.RankType
@@ -479,11 +483,13 @@ function PlayerSeatWidgetControllerTexas:showHandCardHighLight(best_hand, card_t
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:hideBetInfoAndCards()
     self:_resetGold()
     self:_setCardVisible(false)
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:setShowCardState(showcard_state)
     if self.SeatWidget.GImageShowCard1 == nil then
         return
@@ -504,6 +510,7 @@ function PlayerSeatWidgetControllerTexas:setShowCardState(showcard_state)
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:_resetCard(hide_card)
     if (self.SeatWidget == nil)
     then
@@ -534,6 +541,7 @@ function PlayerSeatWidgetControllerTexas:_resetCard(hide_card)
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:_cardsIsTheSame(card, card_compare)
     local is_same = true
     if (card ~= nil)
@@ -559,6 +567,7 @@ function PlayerSeatWidgetControllerTexas:_cardsIsTheSame(card, card_compare)
     return is_same
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:_showSeatWidget()
     local seatwidget_name = self:_getSeatWidgetName()
     if (CS.System.String.IsNullOrEmpty(seatwidget_name))
@@ -651,17 +660,19 @@ function PlayerSeatWidgetControllerTexas:_showSeatWidget()
     self:hideHighLight()
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:_showBet()
     if (self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet > 0)
     then
         ViewHelper:setGObjectVisible(true, self.SeatWidget.GGroupChipValue)
         self.SeatWidget.GTextChipValue.text = UiChipShowHelper:getGoldShowStr(self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet,
-                self.PlayerInfo.ViewMgr.LanMgr.LanBase,true,1)
+                self.PlayerInfo.ViewMgr.LanMgr.LanBase, true, 1)
     else
         self:_resetGold()
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:_setCardVisible(is_visible)
     ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardFirst)
     ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardSecond)
@@ -684,6 +695,7 @@ function PlayerSeatWidgetControllerTexas:_setCardVisible(is_visible)
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:_getSeatWidgetName()
     local seatwidget_name = ""
     if (self.PlayerInfo.DesktopSeatCount == 5)
@@ -739,6 +751,7 @@ function PlayerSeatWidgetControllerTexas:_getSeatWidgetName()
     return seatwidget_name
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:_resetGold()
     if (self.SeatWidget ~= nil)
     then
@@ -747,6 +760,7 @@ function PlayerSeatWidgetControllerTexas:_resetGold()
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:_checkSelfHand(list_card, image_highlight, card)
     if (card == nil)
     then
@@ -778,6 +792,7 @@ function PlayerSeatWidgetControllerTexas:_checkSelfHand(list_card, image_highlig
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:_destroyMoveGold()
     if (self.TChipInPot ~= nil)
     then
@@ -802,6 +817,7 @@ function PlayerSeatWidgetControllerTexas:_destroyMoveGold()
     end
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:onClickCard1(ev)
     ev:StopPropagation()
 
@@ -814,6 +830,7 @@ function PlayerSeatWidgetControllerTexas:onClickCard1(ev)
     self.PlayerInfo.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function PlayerSeatWidgetControllerTexas:onClickCard2(ev)
     ev:StopPropagation()
     local ev = self.PlayerInfo.ViewMgr:getEv("EvUiClickShowCard")
@@ -825,8 +842,10 @@ function PlayerSeatWidgetControllerTexas:onClickCard2(ev)
     self.PlayerInfo.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 _tSeatWidgetEx = {}
 
+---------------------------------------
 function _tSeatWidgetEx:new(o)
     o = {} or o
     setmetatable(o, self)

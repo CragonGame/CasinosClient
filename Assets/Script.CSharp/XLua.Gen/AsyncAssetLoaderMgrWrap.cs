@@ -24,7 +24,7 @@ namespace XLua.CSObjectWrap
 			Utils.BeginObjectRegister(type, L, translator, 0, 2, 5, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "createAsyncAssetLoadGroup", _m_createAsyncAssetLoadGroup);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "update", _m_update);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "WWWAsyncLoader", _g_get_WWWAsyncLoader);
@@ -107,7 +107,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_update(RealStatePtr L)
+        static int _m_Update(RealStatePtr L)
         {
 		    try {
             
@@ -121,7 +121,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _time = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                    gen_to_be_invoked.update( _time );
+                    gen_to_be_invoked.Update( _time );
                     
                     
                     

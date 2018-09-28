@@ -17,8 +17,8 @@ namespace Casinos
         public GameObject GoConfig { get; private set; }
         public GameObject GoMain { get; private set; }
         public string Platform { get; private set; }// Android, iOS, PC
-        public string Channel { get; private set; } = "";
-        public StreamingAssetsInfo StreamingAssetsInfo { get; private set; }
+        public string Channel { get; private set; } = "";// 渠道
+        public StreamingAssetsInfo StreamingAssetsInfo { get; private set; }// StreamingAssets配置信息
         public string VersionBundle { get; private set; }
         public string VersionDataPersistent { get; private set; }
         public string VersionLaunchPersistent { get; private set; }

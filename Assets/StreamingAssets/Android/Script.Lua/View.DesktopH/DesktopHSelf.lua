@@ -82,7 +82,7 @@ function DesktopHSelf:setBetSelfChipsToPot(bet_potindex, betchips)
             local from = self:_getSelfIconCenterPos()
             bet_pot:betGolds(from, operate_golds)
             local self_y = self.UiHeadIcon.GCoHeadIcon.y
-            if (CS.DOTween.IsTweening(self.UiHeadIcon.GCoHeadIcon) == false)
+            if (CS.FairyGUI.GTween.IsTweening(self.UiHeadIcon.GCoHeadIcon) == false)
             then
                 self.UiHeadIcon.GCoHeadIcon:TweenMoveY(self_y - self.ViewDesktopH.BetAniX, 0.1):OnComplete(
 					function()

@@ -6,10 +6,7 @@ namespace Casinos
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
-    using ZXing;
-    using ZXing.QrCode;
     using XLua;
-    using cn.sharesdk.unity3d;
     using GameCloud.Unity.Common;
 
     [CSharpCallLua]
@@ -90,41 +87,25 @@ namespace Casinos
             typeof(System.IO.MemoryStream),
             typeof(System.IO.Path),
             
-            // DoTween
-            typeof(DG.Tweening.DOTween),
-            typeof(DG.Tweening.Tween),
-            typeof(DG.Tweening.Sequence),
-            typeof(DG.Tweening.Tweener),
-            typeof(DG.Tweening.TweenCallback),
-            typeof(DG.Tweening.Ease),
-            typeof(DG.Tweening.LoopType),
-            typeof(DG.Tweening.PathMode),
-            typeof(DG.Tweening.PathType),
-            typeof(DG.Tweening.RotateMode),
-            typeof(DG.Tweening.ScrambleMode),
-            typeof(DG.Tweening.TweenExtensions),
-            typeof(DG.Tweening.TweenSettingsExtensions),
-            typeof(DG.Tweening.ShortcutExtensions),
-            //typeof(DG.Tweening.ShortcutExtensions43),
-            //typeof(DG.Tweening.ShortcutExtensions46),
-            //typeof(DG.Tweening.ShortcutExtensions50),
-
             // FairyGui
+            typeof(FairyGUI.EaseType),
+            typeof(FairyGUI.RelationType),
+            typeof(FairyGUI.TweenPropType),
+            typeof(FairyGUI.Container),
+            typeof(FairyGUI.Controller),
+            typeof(FairyGUI.DisplayObject),
+            typeof(FairyGUI.EventCallback0),
+            typeof(FairyGUI.EventCallback1),
             typeof(FairyGUI.EventContext),
             typeof(FairyGUI.EventDispatcher),
             typeof(FairyGUI.EventListener),
             typeof(FairyGUI.InputEvent),
-            typeof(FairyGUI.DisplayObject),
-            typeof(FairyGUI.Container),
-            typeof(FairyGUI.Stage),
-            typeof(FairyGUI.Controller),
             typeof(FairyGUI.GObject),
             typeof(FairyGUI.GGraph),
             typeof(FairyGUI.GGroup),
             typeof(FairyGUI.GImage),
             typeof(FairyGUI.GLoader),
             typeof(FairyGUI.GMovieClip),
-            typeof(FairyGUI.TextFormat),
             typeof(FairyGUI.GTextField),
             typeof(FairyGUI.GRichTextField),
             typeof(FairyGUI.GTextInput),
@@ -134,20 +115,24 @@ namespace Casinos
             typeof(FairyGUI.GLabel),
             typeof(FairyGUI.GButton),
             typeof(FairyGUI.GComboBox),
+            typeof(FairyGUI.GObjectPool),
             typeof(FairyGUI.GProgressBar),
             typeof(FairyGUI.GSlider),
-            typeof(FairyGUI.PopupMenu),
-            typeof(FairyGUI.ScrollPane),
-            typeof(FairyGUI.Transition),
-            typeof(FairyGUI.UIPackage),
-            typeof(FairyGUI.Window),
-            typeof(FairyGUI.GObjectPool),
-            typeof(FairyGUI.Relations),
-            typeof(FairyGUI.RelationType),
             typeof(FairyGUI.GTween),
             typeof(FairyGUI.GTweener),
-            typeof(FairyGUI.EaseType),
+            typeof(FairyGUI.ListItemRenderer),
+            typeof(FairyGUI.Stage),
+            typeof(FairyGUI.PlayCompleteCallback),
+            typeof(FairyGUI.PopupMenu),
+            typeof(FairyGUI.Relations),
+            typeof(FairyGUI.ScrollPane),
+            typeof(FairyGUI.TextFormat),
+            typeof(FairyGUI.TimerCallback),
+            typeof(FairyGUI.Transition),
+            typeof(FairyGUI.TransitionHook),
             typeof(FairyGUI.TweenValue),
+            typeof(FairyGUI.UIPackage),
+            typeof(FairyGUI.Window),
 
             // Casinos
             typeof(_eProjectItemDisplayNameKey),
@@ -155,8 +140,6 @@ namespace Casinos
             typeof(_ePayType),
             typeof(AsyncAssetLoaderMgr),
             typeof(AsyncAssetLoadGroup),
-            typeof(BarcodeWriter),
-            typeof(BuglyAgent),
             typeof(Card),
             typeof(ChatParser),
             typeof(CopyStreamingAssetsToPersistentData1),
@@ -173,13 +156,9 @@ namespace Casinos
             typeof(NativeFun),
             typeof(OpenInstall),
             typeof(OpenInstallReceiver),
-            typeof(OnePF.Purchase),
             typeof(Push),
             typeof(PushReceiver),
-            typeof(QrCodeEncodingOptions),
             typeof(QRCodeMaker),
-            typeof(ShareContent),
-            typeof(ShareSDK),
             typeof(ShareSDKReceiver),
             typeof(TcpClient),
             typeof(ThirdPartyLogin),
@@ -187,19 +166,27 @@ namespace Casinos
             typeof(UiSoundMgr),
             typeof(UiHelper),
             typeof(UpdateRemoteToPersistentData),
-            //typeof(Casinos.ConfigSection),
             //typeof(DevInfoSet),
             //typeof(MobLink),
             //typeof(MobLinkScene),
             //typeof(MobLinkReceiver),
             //typeof(UniWebView),
             //typeof(UniWebViewMessage),
+
+            // SDKs
+            typeof(BuglyAgent),
+            typeof(OnePF.Purchase),
+            typeof(cn.sharesdk.unity3d.ShareContent),
+            typeof(cn.sharesdk.unity3d.ShareSDK),
+            typeof(ZXing.BarcodeWriter),
+            typeof(ZXing.QrCode.QrCodeEncodingOptions),
         };
 
         //---------------------------------------------------------------------
         [CSharpCallLua]
         public static List<Type> CustomType2 = new List<Type>()
         {
+            typeof(Action),
             typeof(Action<string>),
             typeof(Action<string[]>),
             typeof(Action<System.Byte[]>),
@@ -233,25 +220,17 @@ namespace Casinos
             typeof(OnSocketConnected),
             typeof(OnSocketClosed),
             typeof(OnSocketError),
-
-            typeof(FairyGUI.TimerCallback),
-            typeof(FairyGUI.EventCallback0),
-            typeof(FairyGUI.EventCallback1),
-            typeof(FairyGUI.PlayCompleteCallback),
-            typeof(FairyGUI.EventContext),
-            typeof(FairyGUI.ListItemRenderer),
-            typeof(FairyGUI.TransitionHook),
-            typeof(DG.Tweening.TweenCallback),
-            typeof(DG.Tweening.Core.DOGetter<int>),
-            typeof(DG.Tweening.Core.DOSetter<int>),
-            typeof(DG.Tweening.Core.DOGetter<float>),
-            typeof(DG.Tweening.Core.DOSetter<float>),
-
             typeof(Action<UnityEngine.Object, LoaderTicket>),
             typeof(Action<LoaderTicket, Texture>),
             typeof(AllTaskDoneCallBack),
-
             typeof(EventHandler),
+
+            // FairyGUI
+            typeof(FairyGUI.EventCallback0),
+            typeof(FairyGUI.EventCallback1),
+            typeof(FairyGUI.ListItemRenderer),
+
+            // SDKs
             typeof(cn.sharesdk.unity3d.ShareSDK.EventHandler),
 
             //typeof(MobLink.GetMobIdHandler),

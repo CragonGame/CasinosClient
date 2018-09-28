@@ -39,7 +39,7 @@ function DesktopHStandPlayer:betGolds(bet_potindex, chip_value)
     local bet_pot = self.ViewDesktopH:getDesktopHBetPot(bet_potindex)
     bet_pot:betGolds(from, chip_value)
     local standplayer_x = self.GBtnStandPlayer.x
-    if (CS.DG.Tweening.DOTween.IsTweening(self.GBtnStandPlayer) == false)
+    if (CS.FairyGUI.GTween.IsTweening(self.GBtnStandPlayer) == false)
     then
        self.GBtnStandPlayer:TweenMoveX(standplayer_x + self.ViewDesktopH.BetAniX, 0.1):OnComplete(
        function()
