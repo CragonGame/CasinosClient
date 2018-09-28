@@ -22,7 +22,7 @@ end
 function ControllerLobby:onCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerIM = self.ControllerMgr:GetController("IM")
-    self.ControllerDesktop = self.ControllerMgr:GetController("Desk")
+    self.ControllerDesktop = self.ControllerMgr:GetController("Desktop")
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.ViewMgr:bindEvListener("EvUiClickSearchDesk", self)
     self.ViewMgr:bindEvListener("EvUiClickSearchFriendsDesk", self)

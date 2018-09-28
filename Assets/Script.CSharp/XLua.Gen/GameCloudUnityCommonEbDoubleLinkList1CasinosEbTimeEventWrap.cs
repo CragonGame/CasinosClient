@@ -15,12 +15,12 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class GameCloudUnityCommonEbDoubleLinkList_1_GameCloudUnityCommonEbTimeEvent_Wrap 
+    public class GameCloudUnityCommonEbDoubleLinkList_1_CasinosEbTimeEvent_Wrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>);
+			System.Type type = typeof(GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>);
 			Utils.BeginObjectRegister(type, L, translator, 0, 16, 1, 1);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Destroy", _m_Destroy);
@@ -69,7 +69,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_ret = new GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>();
+					GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_ret = new GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -79,7 +79,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> constructor!");
             
         }
         
@@ -98,7 +98,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -125,7 +125,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -152,12 +152,12 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> _pnew = (GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> _pnew = (GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>));
                     
                     gen_to_be_invoked.AddNode( _pnew );
                     
@@ -180,12 +180,12 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> _pnew = (GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> _pnew = (GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>));
                     
                     gen_to_be_invoked.AddTailNode( _pnew );
                     
@@ -211,9 +211,9 @@ namespace XLua.CSObjectWrap
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> _entry = (GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 1, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> _entry = (GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>)translator.GetObject(L, 1, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>));
                     
-                    GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>.DelNode( _entry );
+                    GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>.DelNode( _entry );
                     
                     
                     
@@ -234,13 +234,13 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> _old = (GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>));
-                    GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> _pnew = (GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 3, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> _old = (GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> _pnew = (GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>)translator.GetObject(L, 3, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>));
                     
                     gen_to_be_invoked.ReplaceNode( _old, _pnew );
                     
@@ -263,12 +263,12 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> _list = (GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> _list = (GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>));
                     
                         bool gen_ret = gen_to_be_invoked.IsLast( _list );
                         LuaAPI.lua_pushboolean(L, gen_ret);
@@ -292,7 +292,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -320,12 +320,12 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> _pnew_list = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> _pnew_list = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>));
                     
                     gen_to_be_invoked.MoveList( _pnew_list );
                     
@@ -348,12 +348,12 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> _plist = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> _plist = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>));
                     
                     gen_to_be_invoked.AddList( _plist );
                     
@@ -376,12 +376,12 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> _plist = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> _plist = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>));
                     
                     gen_to_be_invoked.AddTailList( _plist );
                     
@@ -404,13 +404,13 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
                     
-                        GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> gen_ret = gen_to_be_invoked.FirstNode(  );
+                        GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> gen_ret = gen_to_be_invoked.FirstNode(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -432,13 +432,13 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
                     
-                        GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> gen_ret = gen_to_be_invoked.LastNode(  );
+                        GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> gen_ret = gen_to_be_invoked.LastNode(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -460,13 +460,13 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
                     
-                        GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> gen_ret = gen_to_be_invoked.Head(  );
+                        GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> gen_ret = gen_to_be_invoked.Head(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -488,14 +488,14 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> _pnode = (GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> _pnode = (GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>));
                     
-                        GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> gen_ret = gen_to_be_invoked.NextNode( _pnode );
+                        GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> gen_ret = gen_to_be_invoked.NextNode( _pnode );
                         translator.Push(L, gen_ret);
                     
                     
@@ -517,14 +517,14 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> _pnode = (GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>));
+                    GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> _pnode = (GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>));
                     
-                        GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent> gen_ret = gen_to_be_invoked.PrevNode( _pnode );
+                        GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent> gen_ret = gen_to_be_invoked.PrevNode( _pnode );
                         translator.Push(L, gen_ret);
                     
                     
@@ -546,7 +546,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -575,7 +575,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.mpHead);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -591,8 +591,8 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.mpHead = (GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>));
+                GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent> gen_to_be_invoked = (GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.mpHead = (GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

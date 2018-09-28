@@ -522,10 +522,10 @@ function PlayerSeatWidgetControllerTexas:_resetCard(hide_card)
     end
     self.SeatWidget.TransitionCardInit:Play()
     if self.TweenerRotate1 ~= nil then
-        self.TweenerRotate1:Kill(true)
+        self.TweenerRotate1:Kill()
     end
     if self.TweenerRotate2 ~= nil then
-        self.TweenerRotate2:Kill(true)
+        self.TweenerRotate2:Kill()
     end
     self.LoaderTicket1 = nil
     self.LoaderTicket2 = nil

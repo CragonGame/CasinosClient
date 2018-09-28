@@ -13,6 +13,9 @@ namespace Casinos
     public delegate void DelegateLua1(LuaTable lua_table);
 
     [CSharpCallLua]
+    public delegate void DelegateLua2(LuaTable lua_table, float tm);
+
+    [CSharpCallLua]
     public delegate void DelegateLuaUpdate(float tm);
 
     [CSharpCallLua]

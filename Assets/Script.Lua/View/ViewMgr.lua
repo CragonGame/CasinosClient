@@ -93,24 +93,6 @@ function ViewMgr:onDestroy()
 end
 
 ---------------------------------------
---function ViewMgr:onUpdate(tm)
---	for k,v in pairs(self.TableViewSingle) do
---		if(v~=nil)
---		then
---			v:onUpdate(tm)
---		end
---	end
---	for i, v in pairs(self.TableViewMultiple) do
---		if(v ~= nil)
---		then
---			for i_i, v_v in pairs(v) do
---				v_v:onUpdate(tm)
---			end
---		end
---	end
---end
-
----------------------------------------
 function ViewMgr:regView(view_key, view_factory)
     if (view_factory ~= nil)
     then

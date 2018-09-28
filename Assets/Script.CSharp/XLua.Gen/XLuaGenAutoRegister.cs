@@ -213,15 +213,15 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(EbTool), EbToolWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbTimeEvent), GameCloudUnityCommonEbTimeEventWrap.__Register);
+				translator.DelayWrapLoader(typeof(Casinos.EbTimeEvent), CasinosEbTimeEventWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbTimer), GameCloudUnityCommonEbTimerWrap.__Register);
+				translator.DelayWrapLoader(typeof(Casinos.EbTimer), CasinosEbTimerWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbDoubleLinkNode<GameCloud.Unity.Common.EbTimeEvent>), GameCloudUnityCommonEbDoubleLinkNode_1_GameCloudUnityCommonEbTimeEvent_Wrap.__Register);
+				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbDoubleLinkNode<Casinos.EbTimeEvent>), GameCloudUnityCommonEbDoubleLinkNode_1_CasinosEbTimeEvent_Wrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbDoubleLinkList<GameCloud.Unity.Common.EbTimeEvent>), GameCloudUnityCommonEbDoubleLinkList_1_GameCloudUnityCommonEbTimeEvent_Wrap.__Register);
+				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbDoubleLinkList<Casinos.EbTimeEvent>), GameCloudUnityCommonEbDoubleLinkList_1_CasinosEbTimeEvent_Wrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.EbTimeWheel), GameCloudUnityCommonEbTimeWheelWrap.__Register);
+				translator.DelayWrapLoader(typeof(Casinos.EbTimeWheel), CasinosEbTimeWheelWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.KingTexasHelper), CasinosKingTexasHelperWrap.__Register);
 				
@@ -245,7 +245,7 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(ThirdPartyLogin), ThirdPartyLoginWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(GameCloud.Unity.Common.TimerShaft), GameCloudUnityCommonTimerShaftWrap.__Register);
+				translator.DelayWrapLoader(typeof(Casinos.TimerShaft), CasinosTimerShaftWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.UiSoundMgr), CasinosUiSoundMgrWrap.__Register);
 				

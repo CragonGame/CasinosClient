@@ -8,7 +8,7 @@ namespace Casinos
 
     public class FTasker
     {
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         bool IsAllDone { get; set; }
         bool CancelTask { get; set; }
         List<FTask> ListFTask { get; set; }
@@ -16,14 +16,14 @@ namespace Casinos
         AllTaskDoneCallBack AllTaskDoneCallBack { get; set; }
         Dictionary<byte, object> MapParam { get; set; }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public FTasker()
         {
             ListFTask = new List<FTask>();
             ListDoneTask = new List<FTask>();
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public FTasker(Dictionary<byte, object> map_param, AllTaskDoneCallBack alltask_done_callback, params FTask[] task)
         {
             MapParam = map_param;
@@ -38,10 +38,10 @@ namespace Casinos
             CancelTask = false;
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void whenAll(Dictionary<byte, object> map_param, AllTaskDoneCallBack alltask_done_callback, params FTask[] task)
         {
-            MapParam = map_param;              
+            MapParam = map_param;
             AllTaskDoneCallBack = alltask_done_callback;
             foreach (var i in task)
             {
@@ -51,7 +51,7 @@ namespace Casinos
             CancelTask = false;
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void update(float tm)
         {
             foreach (var i in ListFTask)
@@ -79,13 +79,13 @@ namespace Casinos
             }
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public bool isAllDone()
         {
             return IsAllDone;
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void cancelTask()
         {
             CancelTask = true;

@@ -101,7 +101,7 @@ function ViewDesktopTexas:onCreate()
 
     self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
-    self.ControllerDesktop = self.ViewMgr.ControllerMgr:GetController("Desk")
+    self.ControllerDesktop = self.ViewMgr.ControllerMgr:GetController("Desktop")
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
     self.UiChipMgr = UiChipMgrEx:new(nil, false)
     self.UiDesktopChatParent = self.ViewMgr:createView("DesktopChatParent")

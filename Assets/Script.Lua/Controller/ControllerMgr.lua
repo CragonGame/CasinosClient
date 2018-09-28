@@ -39,25 +39,13 @@ function ControllerMgr:OnDestroy()
 end
 
 ---------------------------------------
---function ControllerMgr:OnUpdate(tm)
---    --ControllerMgr.LuaHelper:CloneTableData(ControllerMgr.TableController,ControllerMgr.TableControllerUpdate)
---    for k, v in pairs(self.TableController) do
---        if (v ~= nil)
---        then
---            v:onUpdate(tm)
---        end
---    end
---    --ControllerMgr.TableControllerUpdate = {}
---end
-
----------------------------------------
 function ControllerMgr:CreatePlayerControllers(player_data, guid)
     local c_actor = self:CreateController("Actor", player_data, guid)
     local c_player = self:CreateController("Player", nil, guid)
     local c_activity = self:CreateController("Activity", nil, guid)
     local c_bag = self:CreateController("Bag", nil, guid)
-    local c_desk = self:CreateController("Desk", nil, guid)
-    local c_deskh = self:CreateController("DeskH", nil, guid)
+    local c_desk = self:CreateController("Desktop", nil, guid)
+    local c_deskh = self:CreateController("DesktopH", nil, guid)
     local c_grow = self:CreateController("Grow", nil, guid)
     local c_im = self:CreateController("IM", nil, guid)
     local c_lobby = self:CreateController("Lobby", nil, guid)

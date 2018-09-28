@@ -396,8 +396,7 @@ function ControllerDeskH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_bet
     ViewHelper:UiEndWaiting()
     local can_enter = true
     local d_d = nil
-    if (desktoph_snapshot == nil)
-    then
+    if (desktoph_snapshot == nil) then
         can_enter = false
     else
         d_d = BDesktopHData:new(nil)
@@ -408,8 +407,7 @@ function ControllerDeskH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_bet
     end
     if can_enter == false then
         local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityPlayerEnterDesktopHFailed")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityPlayerEnterDesktopHFailed:new(nil)
         end
         self.ControllerMgr.ViewMgr:sendEv(ev)
@@ -418,14 +416,12 @@ function ControllerDeskH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_bet
     end
 
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityPlayerEnterDesktopH")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityPlayerEnterDesktopH:new(nil)
     end
     self.ControllerMgr.ViewMgr:sendEv(ev)
     self.DesktopHGuid = d_d.desktoph_guid
-    if (d_d.list_bebanker ~= nil)
-    then
+    if (d_d.list_bebanker ~= nil) then
         self.ListBeBankPlayer = d_d.list_bebanker
     end
     local fac = self:GetDesktopHBaseFactory(d_d.factory_name)
@@ -434,15 +430,13 @@ function ControllerDeskH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_bet
     self.DesktopHState = d_d.state
     self.TotalBetGolds = 0
 
-    if (d_d.map_betpot_winloose_record ~= nil)
-    then
+    if (d_d.map_betpot_winloose_record ~= nil) then
         for i, v in pairs(d_d.map_betpot_winloose_record) do
             self.MapBetPotWinlooseRecord[i] = v
         end
     end
 
-    if (d_d.map_seatplayer ~= nil)
-    then
+    if (d_d.map_seatplayer ~= nil) then
         self.MapSeatPlayer = d_d.map_seatplayer
     end
     for key, value in pairs(map_my_betinfo) do
@@ -453,16 +447,14 @@ function ControllerDeskH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_bet
     self.BankPlayer = d_d.banker_player
     self.RewardPotGolds = d_d.reward_pot
     self.IsBankPlayer = false
-    if (self.BankPlayer.PlayerInfoCommon.PlayerGuid == self.Guid)
-    then
+    if (self.BankPlayer.PlayerInfoCommon.PlayerGuid == self.Guid) then
         self.IsBankPlayer = true
     end
 
     self.CasinosContext:StopAllSceneSound()
     self.ControllerPlayer:destroyMainUi()
     local ui_desktoph = self.ControllerMgr.ViewMgr:getView("DesktopH")
-    if (ui_desktoph == nil)
-    then
+    if (ui_desktoph == nil) then
         ui_desktoph = self.ControllerMgr.ViewMgr:createView("DesktopH")
     end
 
@@ -475,7 +467,7 @@ function ControllerDeskH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_bet
             t_map_my_winlooseinfo[i] = w_l
         end
     end
-    ui_desktoph:initDesktopHundred(d_d, map_my_betinfo, t_map_my_winlooseinfo)
+    ui_desktoph:InitDesktopH(d_d, map_my_betinfo, t_map_my_winlooseinfo)
 end
 
 ---------------------------------------
@@ -1144,10 +1136,9 @@ function ControllerDeskH:betGold(bet_betpot_index, bet_golds)
 end
 
 ---------------------------------------
--- 更新可下注筹码，AccGold不够，某些筹码置灰
+-- 更新可下注筹码，AccGold不够时，相关筹码置灰
 function ControllerDeskH:updateSuitBetOperateId()
-    if (self.DesktopHBase ~= nil)
-    then
+    if (self.DesktopHBase ~= nil) then
         local map_canoperateid = self.MapCanOperateId
         local list_operatesid = self.DesktopHBase:getBetOperateId()
         for key, value in pairs(list_operatesid) do
@@ -1166,22 +1157,18 @@ function ControllerDeskH:updateSuitBetOperateId()
             local can_operate = map_canoperateid[operatefloor]
             local operatefloor_gold = self.DesktopHBase:getOperateGold(operatefloor)
             local operateceiling_gold = self.DesktopHBase:getOperateGold(operateceiling)
-            if (max_betchips >= operatefloor_gold)
-            then
-                if (max_betchips < operateceiling_gold)
-                then
+            if (max_betchips >= operatefloor_gold) then
+                if (max_betchips < operateceiling_gold) then
                     operate_id = operatefloor
                 end
 
                 map_canoperateid[operatefloor] = true
-                if (can_operate == false)
-                then
+                if (can_operate == false) then
                     map_changed_operate[operatefloor] = true
                 end
             else
                 map_canoperateid[operatefloor] = false
-                if (can_operate)
-                then
+                if (can_operate) then
                     map_changed_operate[operatefloor] = false
                 end
             end
@@ -1189,39 +1176,31 @@ function ControllerDeskH:updateSuitBetOperateId()
         local max_operateid = list_operatesid[#list_operatesid]
         local max_can_operate = map_canoperateid[max_operateid]
         local max_operategold = self.DesktopHBase:getOperateGold(max_operateid)
-        if (max_betchips >= max_operategold)
-        then
+        if (max_betchips >= max_operategold) then
             map_canoperateid[max_operateid] = true
-            if (max_can_operate == false)
-            then
+            if (max_can_operate == false) then
                 map_changed_operate[max_operateid] = true
             end
-
             operate_id = max_operateid
         else
             map_canoperateid[max_operateid] = false
-            if (max_can_operate)
-            then
+            if (max_can_operate) then
                 map_changed_operate[max_operateid] = false
             end
         end
 
-        if (self.CurrentTbBetOperateId ~= -1)
-        then
+        if (self.CurrentTbBetOperateId ~= -1) then
             local if_current_canoperate = map_canoperateid[self.CurrentTbBetOperateId]
-            if (if_current_canoperate == false)
-            then
+            if (if_current_canoperate == false) then
                 self.CurrentTbBetOperateId = operate_id
             end
         else
             CS.UnityEngine.PlayerPrefs.SetInt("CurrentTbBetOperateIdDesktopH", operate_id)
             self.CurrentTbBetOperateId = operate_id
         end
-        if (LuaHelper:GetTableCount(map_changed_operate) > 0)
-        then
+        if (LuaHelper:GetTableCount(map_changed_operate) > 0) then
             local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityDesktopHBetOperateTypeChange")
-            if (ev == nil)
-            then
+            if (ev == nil) then
                 ev = EvEntityDesktopHBetOperateTypeChange:new(nil)
             end
             ev.map_changeoperate = map_changed_operate
@@ -1270,7 +1249,7 @@ function ControllerDeskHFactory:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.ControllerName = "DeskH"
+    self.ControllerName = "DesktopH"
     return o
 end
 

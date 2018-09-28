@@ -187,7 +187,7 @@ function Context:_nextLaunchStep()
             self.CopyStreamingAssetsToPersistentData = CS.Casinos.CopyStreamingAssetsToPersistentData2()
             self.CopyStreamingAssetsToPersistentData:CopyAsync('')
         end
-        self.TimerUpdateCopyStreamingAssetsToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self._timerUpdateCopyStreamingAssetsToPersistentData)
+        self.TimerUpdateCopyStreamingAssetsToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateCopyStreamingAssetsToPersistentData)
         return
     end
 
@@ -208,7 +208,7 @@ function Context:_nextLaunchStep()
                     local persistent_datafilelist_content = self.CasinosLua:ReadAllText(datafilelist_persistent)
                     self.UpdateRemoteToPersistentData = CS.Casinos.UpdateRemoteToPersistentData()
                     self.UpdateRemoteToPersistentData:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, DataRootURL)
-                    self.TimerUpdateRemoteToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self._timerUpdateRemoteToPersistentData)
+                    self.TimerUpdateRemoteToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteToPersistentData)
                 end
         )
         return
@@ -353,48 +353,48 @@ function Context:_nextLaunchStep()
 end
 
 ---------------------------------------
--- 定时器，首次运行解压。被C#回调，没有传递self。
-function Context:_timerUpdateCopyStreamingAssetsToPersistentData()
-    local is_done = Context.CopyStreamingAssetsToPersistentData:IsDone()
+-- 定时器，首次运行解压
+function Context:_timerUpdateCopyStreamingAssetsToPersistentData(tm)
+    local is_done = self.CopyStreamingAssetsToPersistentData:IsDone()
     if (is_done)
     then
-        Context.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
-        Context.TimerUpdateCopyStreamingAssetsToPersistentData = nil
-        Context.CopyStreamingAssetsToPersistentData = nil
+        self.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
+        self.TimerUpdateCopyStreamingAssetsToPersistentData = nil
+        self.CopyStreamingAssetsToPersistentData = nil
 
         -- 执行下一步LaunchStep
-        Context.LaunchStep[2] = nil
-        Context:_nextLaunchStep()
+        self.LaunchStep[2] = nil
+        self:_nextLaunchStep()
     else
-        local value = Context.CopyStreamingAssetsToPersistentData.LeftCount
-        local max = Context.CopyStreamingAssetsToPersistentData.TotalCount
-        Context.Launch.PreLoading:UpdateLoadingProgress(max - value, max)
+        local value = self.CopyStreamingAssetsToPersistentData.LeftCount
+        local max = self.CopyStreamingAssetsToPersistentData.TotalCount
+        self.Launch.PreLoading:UpdateLoadingProgress(max - value, max)
     end
 end
 
 ---------------------------------------
--- 定时器，更新Data。被C#回调，没有传递self。
-function Context:_timerUpdateRemoteToPersistentData()
-    local is_done = Context.UpdateRemoteToPersistentData:IsDone()
+-- 定时器，更新Data
+function Context:_timerUpdateRemoteToPersistentData(tm)
+    local is_done = self.UpdateRemoteToPersistentData:IsDone()
     if (is_done)
     then
-        Context.TimerUpdateRemoteToPersistentData:Close()
-        Context.TimerUpdateRemoteToPersistentData = nil
-        Context.UpdateRemoteToPersistentData = nil
+        self.TimerUpdateRemoteToPersistentData:Close()
+        self.TimerUpdateRemoteToPersistentData = nil
+        self.UpdateRemoteToPersistentData = nil
 
         -- 用Remote DataFileList.txt覆盖Persistent中的；并更新VersionDataPersistent
-        local datafilelist_persistent = Context.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
-        CS.System.IO.File.WriteAllText(datafilelist_persistent, Context.RemoteDataFileListContent)
-        Context.RemoteDataFileListContent = nil
-        Context.CasinosContext.Config:WriteVersionDataPersistent(DataVersion)
+        local datafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
+        CS.System.IO.File.WriteAllText(datafilelist_persistent, self.RemoteDataFileListContent)
+        self.RemoteDataFileListContent = nil
+        self.CasinosContext.Config:WriteVersionDataPersistent(DataVersion)
 
         -- 执行下一步LaunchStep
-        Context.LaunchStep[3] = nil
-        Context:_nextLaunchStep()
+        self.LaunchStep[3] = nil
+        self:_nextLaunchStep()
     else
-        local value = Context.UpdateRemoteToPersistentData.LeftCount
-        local max = Context.UpdateRemoteToPersistentData.TotalCount
-        Context.Launch.PreLoading:UpdateLoadingProgress(max - value, max)
+        local value = self.UpdateRemoteToPersistentData.LeftCount
+        local max = self.UpdateRemoteToPersistentData.TotalCount
+        self.Launch.PreLoading:UpdateLoadingProgress(max - value, max)
     end
 end
 
@@ -445,10 +445,10 @@ function Context:_regController()
     self.ControllerMgr:RegController("Bag", con_bag_fac)
     self:DoString("ControllerDesk")
     local con_desk_fac = ControllerDeskFactory:new(nil)
-    self.ControllerMgr:RegController("Desk", con_desk_fac)
+    self.ControllerMgr:RegController("Desktop", con_desk_fac)
     self:DoString("ControllerDeskH")
     local con_deskh_fac = ControllerDeskHFactory:new(nil)
-    self.ControllerMgr:RegController("DeskH", con_deskh_fac)
+    self.ControllerMgr:RegController("DesktopH", con_deskh_fac)
     self:DoString("ControllerGrow")
     local con_grow_fac = ControllerGrowFactory:new(nil)
     self.ControllerMgr:RegController("Grow", con_grow_fac)

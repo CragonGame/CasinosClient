@@ -19,8 +19,8 @@ function DesktopHUiGold:new(o)
     o.MoveEndCallback = nil
     o.MoveStartCallback = nil
     o.Tweener = nil
-    o.FTaskerReset = nil
-    o.FTaskReset = nil
+    --o.FTaskerReset = nil
+    --o.FTaskReset = nil
     o.MoveSound = nil
     o.AutoEndEnPool = false
     o.ParentSortOrder = 0
@@ -36,8 +36,8 @@ function DesktopHUiGold:onCreate()
     self.ViewDesktopH.GCoDesktopHPoolParent:AddChild(self.GCoGold)
     self.ParentSortOrder = self.ViewDesktopH.ComUi.sortingOrder
     self:_reset()
-    self.FTaskReset = CS.Casinos.FTask(0)
-    self.FTaskerReset = CS.Casinos.FTasker()
+    --self.FTaskReset = CS.Casinos.FTask(0)
+    --self.FTaskerReset = CS.Casinos.FTasker()
 end
 
 ---------------------------------------
@@ -64,15 +64,15 @@ function DesktopHUiGold:initMove(from, to, move_time,
     self.GCoGold:SetXY(f_x,f_y)
     local to1 = CS.Casinos.LuaHelper.GetVector2(to.x - self.GCoGold.width / 2,to.y - self.GCoGold.height / 2)
     self.Tweener = self.GCoGold:TweenMove(to1, move_time)
-    self.Tweener = self.Tweener:SetDelay(delay_tm)
-    self.Tweener =  self.Tweener:OnStart(
+    self.Tweener:SetDelay(delay_tm)
+        :OnStart(
             function()
                 self:_moveStart()
             end)
-    self.Tweener =  self.Tweener:OnComplete(
+        :OnComplete(
             function()
                 self:_moveEnd()
-            end )
+            end)
     self.GCoGold.visible = true
     self.MoveSound = move_sound
     self.AutoEndEnPool = auto_end_enpool
@@ -94,14 +94,15 @@ end
 
 ---------------------------------------
 function DesktopHUiGold:needDelayEnPool(after_tm)
+    --self:_reset1(map_param)
     self.ViewDesktopH.DesktopHGoldPool:goldHNeedDelayEnPool(self)
-    self.FTaskReset:startAutoTask(after_tm)
-    self.FTaskerReset:whenAll(nil,
-            function(map_param)
-                self:_reset1(map_param)
-            end
-    , self.FTaskReset)
-    CS.Casinos.FTMgr.Instance:startTask(self.FTaskerReset)
+    --self.FTaskReset:startAutoTask(after_tm)
+    --self.FTaskerReset:whenAll(nil,
+    --        function(map_param)
+    --            self:_reset1(map_param)
+    --        end,
+    --        self.FTaskReset)
+    --CS.Casinos.FTMgr.Instance:startTask(self.FTaskerReset)
 end
 
 ---------------------------------------
@@ -135,11 +136,11 @@ end
 
 ---------------------------------------
 function DesktopHUiGold:_reset()
-    if (self.FTaskerReset ~= nil) then
-        self.FTaskerReset:cancelTask()
-    end
+    --if (self.FTaskerReset ~= nil) then
+    --    self.FTaskerReset:cancelTask()
+    --end
     if self.Tweener ~= nil then
-        self.Tweener:Kill(true)
+        self.Tweener:Kill()
     end
     if (self.GCoGold ~= nil and self.GCoGold.displayObject.gameObject ~= nil) then
         self.GCoGold:SetXY(10000,10000)

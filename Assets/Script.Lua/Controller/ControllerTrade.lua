@@ -21,8 +21,8 @@ end
 ---------------------------------------
 function ControllerTrade:onCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerDesktop = self.ControllerMgr:GetController("Desk")
-    self.ControllerDesktopH = self.ControllerMgr:GetController("DeskH")
+    self.ControllerDesktop = self.ControllerMgr:GetController("Desktop")
+    self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
     self.ViewMgr:bindEvListener("EvUiRequestBuyGold", self)

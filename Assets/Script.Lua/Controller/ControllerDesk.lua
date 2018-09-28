@@ -512,7 +512,7 @@ function ControllerDeskFactory:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.ControllerName = "Desk"
+    self.ControllerName = "Desktop"
     return o
 end
 

@@ -102,13 +102,13 @@ end
 ---------------------------------------
 function PlayerShowTips:reset()
     if self.TweenWinGold ~= nil then
-        self.TweenWinGold:Kill(true)
+        self.TweenWinGold:Kill()
     end
     if self.TweenExp ~= nil then
-        self.TweenExp:Kill(true)
+        self.TweenExp:Kill()
     end
     if self.TweenPoint ~= nil then
-        self.TweenPoint:Kill(true)
+        self.TweenPoint:Kill()
     end
     self.ComPoint.y = 59
     self.TextPoint.text = ""

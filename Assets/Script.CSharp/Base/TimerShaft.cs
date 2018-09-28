@@ -1,9 +1,12 @@
 ﻿// Copyright (c) Cragon. All rights reserved.
 
-namespace GameCloud.Unity.Common
+namespace Casinos
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
+    using XLua;
+    using GameCloud.Unity.Common;
 
     // 定时事件节点
     public class EbTimeEvent
@@ -66,19 +69,24 @@ namespace GameCloud.Unity.Common
         public TimerShaft TimerShaft { get; private set; }
         public EbTimeEvent TimeEvent { get; private set; }
         public EbDoubleLinkNode<EbTimeEvent> TimeNode { get; private set; }
-        Action FuncCb { get; set; }
         ulong TmSpan { get; set; }
         ulong LastTimeJeffies { get; set; } = 0;
         bool Closed { get; set; } = false;
+        LuaTable LuaTable { get; set; }
+        DelegateLua2 FuncCb { get; set; }
+        Stopwatch Stopwatch { get; set; }
 
         //---------------------------------------------------------------------
-        public EbTimer(TimerShaft timer_shaft, ulong tm, Action cb)
+        public EbTimer(TimerShaft timer_shaft, ulong tm, LuaTable lua_table, DelegateLua2 cb)
         {
             TimerShaft = timer_shaft;
             TmSpan = tm;
+            LuaTable = lua_table;
             FuncCb = cb;
             LastTimeJeffies = TimerShaft.GetTimeJeffies() + TmSpan;
             Closed = false;
+            Stopwatch = new Stopwatch();
+            Stopwatch.Start();
 
             var time_ev = new EbTimeEvent()
             {
@@ -92,7 +100,11 @@ namespace GameCloud.Unity.Common
         //---------------------------------------------------------------------
         public void Close()
         {
+            Stopwatch.Stop();
+            Stopwatch = null;
             Closed = true;
+            LuaTable = null;
+            FuncCb = null;
         }
 
         //---------------------------------------------------------------------
@@ -111,7 +123,9 @@ namespace GameCloud.Unity.Common
             };
             TimerShaft.AddTimer(time_ev);
 
-            FuncCb();
+            float tm = (float)Stopwatch.Elapsed.TotalSeconds;
+            Stopwatch.Restart();
+            FuncCb(LuaTable, tm);
         }
     }
 
@@ -150,9 +164,9 @@ namespace GameCloud.Unity.Common
         }
 
         //---------------------------------------------------------------------
-        public EbTimer RegisterTimer(ulong tm, Action cb)
+        public EbTimer RegisterTimer(ulong tm, LuaTable lua_table, DelegateLua2 cb)
         {
-            EbTimer timer = new EbTimer(this, tm, cb);
+            EbTimer timer = new EbTimer(this, tm, lua_table, cb);
             return timer;
         }
 

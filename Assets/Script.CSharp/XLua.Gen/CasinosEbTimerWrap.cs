@@ -15,12 +15,12 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class GameCloudUnityCommonEbTimerWrap 
+    public class CasinosEbTimerWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(GameCloud.Unity.Common.EbTimer);
+			System.Type type = typeof(Casinos.EbTimer);
 			Utils.BeginObjectRegister(type, L, translator, 0, 1, 3, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Close", _m_Close);
@@ -51,13 +51,14 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 4 && translator.Assignable<GameCloud.Unity.Common.TimerShaft>(L, 2) && (LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3) || LuaAPI.lua_isuint64(L, 3)) && translator.Assignable<System.Action>(L, 4))
+				if(LuaAPI.lua_gettop(L) == 5 && translator.Assignable<Casinos.TimerShaft>(L, 2) && (LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3) || LuaAPI.lua_isuint64(L, 3)) && (LuaAPI.lua_isnil(L, 4) || LuaAPI.lua_type(L, 4) == LuaTypes.LUA_TTABLE) && translator.Assignable<Casinos.DelegateLua2>(L, 5))
 				{
-					GameCloud.Unity.Common.TimerShaft _timer_shaft = (GameCloud.Unity.Common.TimerShaft)translator.GetObject(L, 2, typeof(GameCloud.Unity.Common.TimerShaft));
+					Casinos.TimerShaft _timer_shaft = (Casinos.TimerShaft)translator.GetObject(L, 2, typeof(Casinos.TimerShaft));
 					ulong _tm = LuaAPI.lua_touint64(L, 3);
-					System.Action _cb = translator.GetDelegate<System.Action>(L, 4);
+					XLua.LuaTable _lua_table = (XLua.LuaTable)translator.GetObject(L, 4, typeof(XLua.LuaTable));
+					Casinos.DelegateLua2 _cb = translator.GetDelegate<Casinos.DelegateLua2>(L, 5);
 					
-					GameCloud.Unity.Common.EbTimer gen_ret = new GameCloud.Unity.Common.EbTimer(_timer_shaft, _tm, _cb);
+					Casinos.EbTimer gen_ret = new Casinos.EbTimer(_timer_shaft, _tm, _lua_table, _cb);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -67,7 +68,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to GameCloud.Unity.Common.EbTimer constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.EbTimer constructor!");
             
         }
         
@@ -86,7 +87,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                GameCloud.Unity.Common.EbTimer gen_to_be_invoked = (GameCloud.Unity.Common.EbTimer)translator.FastGetCSObj(L, 1);
+                Casinos.EbTimer gen_to_be_invoked = (Casinos.EbTimer)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -114,7 +115,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                GameCloud.Unity.Common.EbTimer gen_to_be_invoked = (GameCloud.Unity.Common.EbTimer)translator.FastGetCSObj(L, 1);
+                Casinos.EbTimer gen_to_be_invoked = (Casinos.EbTimer)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.TimerShaft);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -128,7 +129,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                GameCloud.Unity.Common.EbTimer gen_to_be_invoked = (GameCloud.Unity.Common.EbTimer)translator.FastGetCSObj(L, 1);
+                Casinos.EbTimer gen_to_be_invoked = (Casinos.EbTimer)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.TimeEvent);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -142,7 +143,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                GameCloud.Unity.Common.EbTimer gen_to_be_invoked = (GameCloud.Unity.Common.EbTimer)translator.FastGetCSObj(L, 1);
+                Casinos.EbTimer gen_to_be_invoked = (Casinos.EbTimer)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.TimeNode);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

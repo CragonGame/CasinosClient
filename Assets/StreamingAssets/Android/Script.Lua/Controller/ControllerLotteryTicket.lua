@@ -8,16 +8,15 @@ function ControllerLotteryTicket:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    o.QUE_BETPOT_WINLOOSE_RESULT_COUNT = 10
-    o.BetStateTm = 0
-    o.UpdateUiTime = 1
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-
+    self.ControllerData = controller_data
+    self.ControllerMgr = controller_mgr
+    self.Guid = guid
+    self.ViewMgr = ViewMgr:new(nil)
+    self.QUE_BETPOT_WINLOOSE_RESULT_COUNT = 10
+    self.BetStateTm = 0
+    self.UpdateUiTime = 1
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.TimerUpdate = nil
     return o
 end
 
@@ -45,6 +44,9 @@ function ControllerLotteryTicket:onCreate()
     self.BetStateTm = 0
     self.UpdateUiTm = 0
     self.MapLotteryTicketBaseFac = {}
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
+
     self:regLotteryTicketBaseFactory(UiLotteryTicketTexasFactory:new(nil))
     local rpc = self.ControllerMgr.RPC
     local m_c = CommonMethodType
@@ -79,33 +81,11 @@ end
 
 ---------------------------------------
 function ControllerLotteryTicket:onDestroy()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
     self.ViewMgr:unbindEvListener(self)
-end
-
----------------------------------------
-function ControllerLotteryTicket:onUpdate(tm)
-    if (self.BetStateTm > 0)
-    then
-        self.BetStateTm = self.BetStateTm - tm
-        if (self.BetStateTm < 0)
-        then
-            self.BetStateTm = 0
-        end
-    end
-
-    self.UpdateUiTm = self.UpdateUiTm + tm
-    if (self.UpdateUiTm >= self.UpdateUiTime)
-    then
-        self.UpdateUiTm = 0
-        local tm = math.ceil(self.BetStateTm)
-        local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityLotteryTicketUpdateTm")
-        if (ev == nil)
-        then
-            ev = EvEntityLotteryTicketUpdateTm:new(nil)
-        end
-        ev.tm = tm
-        self.ControllerMgr.ViewMgr:sendEv(ev)
-    end
 end
 
 ---------------------------------------
@@ -138,6 +118,28 @@ function ControllerLotteryTicket:onHandleEv(ev)
     elseif (ev.EventName == "EvEntityGoldChanged")
     then
         self:updateSuitBetOperateId()
+    end
+end
+
+---------------------------------------
+function ControllerLotteryTicket:_timerUpdate(tm)
+    if (self.BetStateTm > 0) then
+        self.BetStateTm = self.BetStateTm - tm
+        if (self.BetStateTm < 0) then
+            self.BetStateTm = 0
+        end
+    end
+
+    self.UpdateUiTm = self.UpdateUiTm + tm
+    if (self.UpdateUiTm >= self.UpdateUiTime) then
+        self.UpdateUiTm = 0
+        local tm1 = math.ceil(self.BetStateTm)
+        local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityLotteryTicketUpdateTm")
+        if (ev == nil) then
+            ev = EvEntityLotteryTicketUpdateTm:new(nil)
+        end
+        ev.tm = tm1
+        self.ControllerMgr.ViewMgr:sendEv(ev)
     end
 end
 

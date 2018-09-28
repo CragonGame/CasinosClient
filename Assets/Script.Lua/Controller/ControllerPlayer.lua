@@ -51,8 +51,8 @@ function ControllerPlayer:onCreate()
     self.ViewMgr:bindEvListener("EvClickShare", self)
     self.ViewMgr:bindEvListener("EvGetPicSuccess", self)
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
-    self.ControllerDesk = self.ControllerMgr:GetController("Desk")
-    self.ControllerDeskH = self.ControllerMgr:GetController("DeskH")
+    self.ControllerDesk = self.ControllerMgr:GetController("Desktop")
+    self.ControllerDeskH = self.ControllerMgr:GetController("DesktopH")
     self.ControllerLobby = self.ControllerMgr:GetController("Lobby")
     self.ControllerActivity = self.ControllerMgr:GetController("Activity")
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
@@ -97,7 +97,7 @@ function ControllerPlayer:onCreate()
     end
     self.ControllerMgr.ViewMgr:sendEv(ev)
 
-    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(1000, self._timerUpdate)
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(1000, self, self._timerUpdate)
 
     -- 请求获取收货地址响应
     self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerRequestGetAddressResult, function(result, address)
@@ -325,7 +325,7 @@ end
 ---------------------------------------
 function ControllerPlayer:OnPlayerLeaveDesktopNotify()
     ViewHelper:UiEndWaiting()
-    local controller_desk = self.ControllerMgr:GetController("Desk")
+    local controller_desk = self.ControllerMgr:GetController("Desktop")
     controller_desk:clearDesktop(true)
     self:requestGetOnlinePlayerNum()
 end
@@ -849,15 +849,14 @@ end
 
 ---------------------------------------
 -- 定时更新
-function ControllerPlayer:_timerUpdate()
-    local this = ControllerPlayer
-    this.GetOnlinePlayerNumTimeElapsed = this.GetOnlinePlayerNumTimeElapsed + 1
-    if (this.GetOnlinePlayerNumTimeElapsed >= 5) then
-        this.GetOnlinePlayerNumTimeElapsed = 0
-        this:requestGetOnlinePlayerNum()
+function ControllerPlayer:_timerUpdate(tm)
+    self.GetOnlinePlayerNumTimeElapsed = self.GetOnlinePlayerNumTimeElapsed + tm
+    if (self.GetOnlinePlayerNumTimeElapsed >= 5) then
+        self.GetOnlinePlayerNumTimeElapsed = 0
+        self:requestGetOnlinePlayerNum()
     end
-    if (this.OnLineReward ~= nil) then
-        this.OnLineReward:Update()
+    if (self.OnLineReward ~= nil) then
+        self.OnLineReward:Update()
     end
 end
 

@@ -10,7 +10,7 @@ function GoldController:new(o,setgold)
     self.__index = self
     local controller_mgr = ControllerMgr:new(nil)
     o.ControllerActor = controller_mgr:GetController("Actor")
-    o.ControllerDesktopH = controller_mgr:GetController("DeskH")
+    o.ControllerDesktopH = controller_mgr:GetController("DesktopH")
     o.Gold = o.ControllerActor.PropGoldAcc:get()
     o.MapDeltaGold = {}
     o.SetGold = setgold

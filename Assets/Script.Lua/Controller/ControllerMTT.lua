@@ -29,7 +29,7 @@ function ControllerMTT:onCreate()
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiRequestEnterMatch", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiRequestCancelSignupMatch", self)
     self.RPC = self.ControllerMgr.RPC
-    self.ControllerDesktop = self.ControllerMgr:GetController("Desk")
+    self.ControllerDesktop = self.ControllerMgr:GetController("Desktop")
     self.MC = CommonMethodType
     self.RPC:RegRpcMethod1(self.MC.MatchTexasRequestGetListResult, function(matchTexasGetListResponse)
         self:s2cMatchTexasRequestGetListResult(matchTexasGetListResponse)
@@ -77,40 +77,30 @@ end
 
 ---------------------------------------
 function ControllerMTT:onHandleEv(ev)
-    if (ev.EventName == "EvUiRequestPublicMatchList")
-    then
+    if (ev.EventName == "EvUiRequestPublicMatchList") then
         self:requestGetMatchTexasList(MatchTexasScopeType.Public)
-    elseif (ev.EventName == "EvUiRequestPrivateMatchList")
-    then
+    elseif (ev.EventName == "EvUiRequestPrivateMatchList") then
         self:requestGetMatchTexasList(MatchTexasScopeType.Private)
-    elseif (ev.EventName == "EvUiRequestUpdatePublicMatchPlayerNum")
-    then
+    elseif (ev.EventName == "EvUiRequestUpdatePublicMatchPlayerNum") then
         self:requestUpdatePlayerNumInMatchTexasList(MatchTexasScopeType.Public)
-    elseif (ev.EventName == "EvUiRequestUpdatePrivateMatchPlayerNum")
-    then
+    elseif (ev.EventName == "EvUiRequestUpdatePrivateMatchPlayerNum") then
         self:requestUpdatePlayerNumInMatchTexasList(MatchTexasScopeType.Private)
-    elseif (ev.EventName == "EvUiRequestSignUpMatch")
-    then
+    elseif (ev.EventName == "EvUiRequestSignUpMatch") then
         local match_guid = ev.MatchGuid
         self:requestSignupMatchTexas(match_guid)
-    elseif (ev.EventName == "EvUiRequestMatchDetailedInfo")
-    then
+    elseif (ev.EventName == "EvUiRequestMatchDetailedInfo") then
         local match_guid = ev.MatchGuid
         local match_type = ev.MatchType
         self:requestGetMatchDetailedInfo(match_type, match_guid)
-    elseif (ev.EventName == "EvUiRequestCancelSignupMatch")
-    then
+    elseif (ev.EventName == "EvUiRequestCancelSignupMatch") then
         self:requestCancelSignupMatchTexas(ev.MatchGuid)
-    elseif (ev.EventName == "EvUiRequestCreatePrivateMatch")
-    then
+    elseif (ev.EventName == "EvUiRequestCreatePrivateMatch") then
         local createMatchInfo = ev.CreateMatchInfo
         self:requestCreateMatchTexas(createMatchInfo)
-    elseif (ev.EventName == "EvUiRequestEnterMatch")
-    then
+    elseif (ev.EventName == "EvUiRequestEnterMatch") then
         local match_guid = ev.MatchGuid
         self:requestEnterMatch(match_guid)
-    elseif (ev.EventName == "EvUiRequestGetMatchDetailedInfoByInvitation")
-    then
+    elseif (ev.EventName == "EvUiRequestGetMatchDetailedInfoByInvitation") then
         local invitationCode = ev.InvitationCode
         self:requestGetMatchDetailedInfoByInvitation(invitationCode)
     end
@@ -131,10 +121,6 @@ end
 ---------------------------------------
 -- 请求报名或者延迟报名
 function ControllerMTT:requestSignupMatchTexas(match_guid)
-    --if #self.ListSelfMatch > 0 then
-    --	ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("SignupMatchTip"))
-    --	return
-    --end
     self.RPC:RPC1(self.MC.MatchTexasRequestSignup, match_guid)
 end
 
@@ -186,16 +172,14 @@ function ControllerMTT:s2cMatchTexasRequestGetListResult(matchTexasGetListRespon
         local match_guid = data.ListMyMatch[i]
         for i = 1, #self.ListAllMatch do
             local match = self.ListAllMatch[i]
-            if (match_guid == match.Guid)
-            then
+            if (match_guid == match.Guid) then
                 table.insert(self.ListSelfMatch, match)
                 break
             end
         end
     end
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySetPublicMatchLsit")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntitySetPublicMatchLsit:new(nil)
     end
     ev.SelfMatchNum = #self.ListSelfMatch
@@ -205,8 +189,7 @@ end
 ---------------------------------------
 -- 响应更新赛事信息列表中的参赛人数
 function ControllerMTT:s2cMatchTexasRequestUpdatePlayerNumInListResult(list_matchPlayerNum)
-    if (list_matchPlayerNum ~= nil and #list_matchPlayerNum > 0)
-    then
+    if (list_matchPlayerNum ~= nil and #list_matchPlayerNum > 0) then
         for i = 1, #list_matchPlayerNum do
             local temp = BMatchTexasPlayerNumUpdate:new(nil)
             temp:setData(list_matchPlayerNum[i])
@@ -218,8 +201,7 @@ function ControllerMTT:s2cMatchTexasRequestUpdatePlayerNumInListResult(list_matc
         --	return
         --end
         local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityUpdatePublicMatchPlayerNum")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityUpdatePublicMatchPlayerNum:new(nil)
         end
         ev.ListMatchNum = list_matchPlayerNum
@@ -234,21 +216,21 @@ function ControllerMTT:s2cMatchTexasRequestSignupResult(matchTexasSignUpResponse
     data:setData(matchTexasSignUpResponse)
     local result = data.Result
     local match_guid = data.MatchGuid
-    if (result == ProtocolResult.Success)-- 报名成功
-    then
+
+    if (result == ProtocolResult.Success) then
+        -- 报名成功
         local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySignUpSucceed")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntitySignUpSucceed:new(nil)
         end
         ev.MatchGuid = match_guid
         self.ControllerMgr.ViewMgr:sendEv(ev)
-    elseif (result == ProtocolResult.MatchTexasNotExist)-- 报名失败,比赛已经解散
-    then
+    elseif (result == ProtocolResult.MatchTexasNotExist) then
+        -- 报名失败,比赛已经解散
         local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
         msg_box:showMsgBox1("", string.format(self.ControllerMgr.LanMgr:getLanValue("MatchNotExist"), data.MatchName))
-    elseif (result == ProtocolResult.MatchTexasNotEnoughGold or result == ProtocolResult.ChipNotEnough)-- 报名失败,筹码不足
-    then
+    elseif (result == ProtocolResult.MatchTexasNotEnoughGold or result == ProtocolResult.ChipNotEnough) then
+        -- 报名失败,筹码不足
         local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
         msg_box:showMsgBox2("", self.ControllerMgr.LanMgr:getLanValue("BuyChipInShop"),
                 function()
@@ -258,27 +240,22 @@ function ControllerMTT:s2cMatchTexasRequestSignupResult(matchTexasSignUpResponse
                     self.ControllerMgr.ViewMgr:destroyView(msg_box)
                 end
         )
-    elseif (result == ProtocolResult.MatchTexasTimeOver)
-    then
+    elseif (result == ProtocolResult.MatchTexasTimeOver) then
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchTexasTimeOver"))
-    elseif (result == ProtocolResult.MatchTexasExist)
-    then
+    elseif (result == ProtocolResult.MatchTexasExist) then
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchTexasExist"))
-    elseif (result == ProtocolResult.MatchTexasPlayerNumMax)
-    then
+    elseif (result == ProtocolResult.MatchTexasPlayerNumMax) then
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchTexasPlayerNumMax"))
-    elseif (result == ProtocolResult.MatchTexasMatchEnd)
-    then
+    elseif (result == ProtocolResult.MatchTexasMatchEnd) then
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchTexasMatchEnd"))
         local ev = self.ControllerMgr.ViewMgr:getEv("EvRemoveMatch")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvRemoveMatch:new(nil)
         end
         ev.MatchGuid = match_guid
         self.ControllerMgr.ViewMgr:sendEv(ev)
-    elseif (result == ProtocolResult.MatchTexasSignUpCheating)-- 德州赛事，未通过防伙牌作弊检测
-    then
+    elseif (result == ProtocolResult.MatchTexasSignUpCheating) then
+        -- 德州赛事，未通过防伙牌作弊检测
         ViewHelper:UiShowInfoFailed('未通过防伙牌检测，很遗憾报名本场赛事失败。多次出现可能会导致账号信誉度下降！')-- todo
     end
 end
@@ -289,8 +266,7 @@ function ControllerMTT:s2cMatchTexasRequestGetMoreInfoResult(detailedMatchInfo)
     local data = BMatchTexasMoreInfo:new(nil)
     data:setData(detailedMatchInfo)
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySetMatchDetailedInfo")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntitySetMatchDetailedInfo:new(nil)
     end
     ev.MatchDetailedInfo = data
@@ -304,8 +280,7 @@ function ControllerMTT:s2cMatchTexasRequestCancelSignupResult(matchTexasCancelSi
     data:setData(matchTexasCancelSignUpResponse)
     local result = data.Result
     local match_guid = data.MatchGuid
-    if (result == ProtocolResult.Success)
-    then
+    if (result == ProtocolResult.Success) then
         --self:requestGetMatchTexasList(MatchTexasScopeType.Public)
         local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
         local tips = self.ControllerMgr.LanMgr:getLanValue("CancelMatchSuccess")
@@ -322,14 +297,11 @@ function ControllerMTT:s2cMatchTexasRequestCancelSignupResult(matchTexasCancelSi
         end
         ev.MatchGuid = match_guid
         self.ControllerMgr.ViewMgr:sendEv(ev)]]
-    elseif (result == ProtocolResult.MatchTexasNotExist)
-    then
+    elseif (result == ProtocolResult.MatchTexasNotExist) then
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CancelMatchFailed1"))
-    elseif (result == ProtocolResult.MatchTexasNotSignUp)
-    then
+    elseif (result == ProtocolResult.MatchTexasNotSignUp) then
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CancelMatchFailed2"))
-    elseif (result == ProtocolResult.MatchTexasTimeOver)
-    then
+    elseif (result == ProtocolResult.MatchTexasTimeOver) then
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CancelMatchFailed3"))
     else
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CancelMatchFailed"))
@@ -359,18 +331,14 @@ end
 ---------------------------------------
 -- 响应通过邀请码获取到赛事信息
 function ControllerMTT:s2cMatchTexasRequestJoinNotPublicResult(result, match_info)
-    if (result == ProtocolResult.Success)
-    then
+    if (result == ProtocolResult.Success) then
         local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityGetMatchInfoByInvitationCodeSucceed")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityGetMatchInfoByInvitationCodeSucceed:new(nil)
         end
         ev.MatchInfo = match_info
         self.ControllerMgr.ViewMgr:sendEv(ev)
-    elseif (result == ProtocolResult.Failed)
-    then
-
+    elseif (result == ProtocolResult.Failed) then
     end
 end
 
@@ -379,35 +347,29 @@ end
 function ControllerMTT:s2cMatchTexasDisbandNotify(matchTexasDisbandNotify)
     local data = BMatchTexasPlayerGameEndNotify:new(nil)
     data:setData(matchTexasDisbandNotify)
-    if (#self.ListAllMatch > 0)
-    then
+    if (#self.ListAllMatch > 0) then
         for i = 1, #self.ListAllMatch do
-            if (self.ListAllMatch[i].Guid == data.MatchGuid)
-            then
+            if (self.ListAllMatch[i].Guid == data.MatchGuid) then
                 table.remove(self.ListAllMatch, i)
                 break
             end
         end
     end
-    if (#self.ListSelfMatch > 0)
-    then
+    if (#self.ListSelfMatch > 0) then
         for i = 1, #self.ListSelfMatch do
-            if (self.ListSelfMatch[i].Guid == data.MatchGuid)
-            then
+            if (self.ListSelfMatch[i].Guid == data.MatchGuid) then
                 table.remove(self.ListSelfMatch, i)
                 break
             end
         end
     end
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySetPublicMatchLsit")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntitySetPublicMatchLsit:new(nil)
     end
     ev.SelfMatchNum = #self.ListSelfMatch
     self.ControllerMgr.ViewMgr:sendEv(ev)
-    if (data.Result == ProtocolResult.Failed)
-    then
+    if (data.Result == ProtocolResult.Failed) then
         local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
         msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("YourMatchDisband"),
                 function()
@@ -423,8 +385,7 @@ function ControllerMTT:s2cMatchTexasStartNotify(matchTexasStartNotify)
     local data = BMatchTexasStartNotify:new(nil)
     data:setData(matchTexasStartNotify)
 
-    if (self.ControllerDesktop.DesktopBase == nil)
-    then
+    if (self.ControllerDesktop.DesktopBase == nil) then
         local view_enterMatchNotify = self.ControllerMgr.ViewMgr:createView("EnterMatchNotify")
         view_enterMatchNotify:Init(data.DtMatchBegin, data.MatchGuid, data.MatchName)
     end
