@@ -46,7 +46,7 @@ function UiCardDealingEx:deal(call_back)
     )
 
     self.TweenerScale = self.GComCard:TweenResize(self.ResizeTo, self.MoveTime)-- CS.Casinos.UiDoTweenHelper.TweenResize(self.GComCard, self.GComCard.size, self.ResizeTo, self.MoveTime,false)
-    self.TweenerRotate = CS.FairyGUI.GTween.To(self.RotateTo, self.MoveTime):SetTarget(self.GComCard, CS.FairyGUI.TweenPropType.RotationY)
+    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GComCard.rotationY, self.RotateTo, self.MoveTime):SetTarget(self.GComCard, CS.FairyGUI.TweenPropType.RotationY)
     if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false) then
         CS.Casinos.CasinosContext.Instance:Play(self.MoveSound, CS.Casinos._eSoundLayer.LayerNormal)
     end

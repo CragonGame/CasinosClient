@@ -400,8 +400,6 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init, desktoptype_facname)
-    print('ViewDesktopTexas:setDesktopSnapshotData()')
-
     self.DesktopBase = desktop
     local desktop_texas = desktop
     local snapshot_data = desktop_data

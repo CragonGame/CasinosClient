@@ -209,19 +209,19 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:showcard1()
-    self.TweenerRotate1 = CS.FairyGUI.GTween.To(90, 0.1):SetTarget(self.GLoaderCardFirst, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+    self.TweenerRotate1 = CS.FairyGUI.GTween.To(self.GLoaderCardFirst.rotationY, 90, 0.1):SetTarget(self.GLoaderCardFirst, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
             function()
                 ViewHelper:setGObjectVisible(true, self.GImageCardFirst)
                 ViewHelper:setGObjectVisible(false, self.GLoaderCardFirst)
                 self.GImageCardFirst.rotationY = 90
                 self.GLoaderCardFirst.rotationY = 90
-                self.TweenerRotate1 = CS.FairyGUI.GTween.To(270, 0.1):SetTarget(self.GImageCardFirst, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+                self.TweenerRotate1 = CS.FairyGUI.GTween.To(self.GImageCardFirst.rotationY, 270, 0.1):SetTarget(self.GImageCardFirst, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                         function()
                             self.GImageCardFirst.rotationY = 0
                             self.GLoaderCardFirst.rotationY = 270
                             ViewHelper:setGObjectVisible(false, self.GImageCardFirst)
                             ViewHelper:setGObjectVisible(true, self.GLoaderCardFirst)
-                            self.TweenerRotate1 = CS.FairyGUI.GTween.To(0, 0.1):SetTarget(self.GLoaderCardFirst, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear)
+                            self.TweenerRotate1 = CS.FairyGUI.GTween.To(self.GLoaderCardFirst.rotationY, 0, 0.1):SetTarget(self.GLoaderCardFirst, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear)
                         end
                 )
             end
@@ -230,19 +230,19 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:showcard2()
-    self.TweenerRotate2 = CS.FairyGUI.GTween.To(90, 0.1):SetTarget(self.GLoaderCardSecond, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+    self.TweenerRotate2 = CS.FairyGUI.GTween.To(self.GLoaderCardSecond.rotationY, 90, 0.1):SetTarget(self.GLoaderCardSecond, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
             function()
                 ViewHelper:setGObjectVisible(true, self.GImageCardSecond)
                 ViewHelper:setGObjectVisible(false, self.GLoaderCardSecond)
                 self.GImageCardSecond.rotationY = 90
                 self.GLoaderCardSecond.rotationY = 90
-                self.TweenerRotate2 = CS.FairyGUI.GTween.To(270, 0.1):SetTarget(self.GImageCardSecond, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+                self.TweenerRotate2 = CS.FairyGUI.GTween.To(self.GImageCardSecond.rotationY, 270, 0.1):SetTarget(self.GImageCardSecond, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                         function()
                             self.GImageCardSecond.rotationY = 0
                             self.GLoaderCardSecond.rotationY = 270
                             ViewHelper:setGObjectVisible(false, self.GImageCardSecond)
                             ViewHelper:setGObjectVisible(true, self.GLoaderCardSecond)
-                            self.TweenerRotate2 = CS.FairyGUI.GTween.To(0, 0.1):SetTarget(self.GLoaderCardSecond, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear)
+                            self.TweenerRotate2 = CS.FairyGUI.GTween.To(self.GLoaderCardSecond.rotationY, 0, 0.1):SetTarget(self.GLoaderCardSecond, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear)
                         end
                 )
             end

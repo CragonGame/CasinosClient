@@ -58,7 +58,7 @@ function UiCardCommonEx:show(with_animation, call_back)
                     self.GLoaderCard.texture = CS.FairyGUI.NTexture(t)
 
                     if (with_animation == true) then
-                        self.TweenerRotate = CS.FairyGUI.GTweener.To(90, UiCardCommonEx.RotateTime)
+                        self.TweenerRotate = CS.FairyGUI.GTweener.To(self.GImageCardBack.rotationY, 90, UiCardCommonEx.RotateTime)
                                 :SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY)
                                 :SetEase(CS.FairyGUI.EaseType.Linear)
                                 :OnComplete(
@@ -99,7 +99,7 @@ function UiCardCommonEx:deal(call_back)
     CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard, self.GImageCardBack)
     self:killTween(self.TweenerRotate)
 
-    self.TweenerRotate = CS.FairyGUI.GTween.To(180, UiCardCommonEx.RotateTime):SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GImageCardBack.rotationY, 180, UiCardCommonEx.RotateTime):SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
             function()
                 self.GImageCardBack.rotationY = 180
                 if (call_back ~= nil) then
@@ -122,7 +122,7 @@ function UiCardCommonEx:reset(with_ani, call_bak)
     end
 
     self:killTween(self.TweenerRotate)
-    self.TweenerRotate = CS.FairyGUI.GTween.To(90, UiCardCommonEx.RotateTime):SetTarget(self.GComCard, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GComCard.rotationY, 90, UiCardCommonEx.RotateTime):SetTarget(self.GComCard, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
             function()
                 self:_reset()
             end
