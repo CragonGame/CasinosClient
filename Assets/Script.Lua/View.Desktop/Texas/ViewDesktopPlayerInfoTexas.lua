@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewDesktopPlayerInfoTexas = ViewBase:new()
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -44,6 +46,7 @@ function ViewDesktopPlayerInfoTexas:new(o)
     return o
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:onCreate()
     self.ViewMgr:bindEvListener("EvEntityRecvChatFromDesktop", self)
     self.ViewMgr:bindEvListener("EvCurrentWinner", self)
@@ -99,6 +102,7 @@ function ViewDesktopPlayerInfoTexas:onCreate()
     self.IsRelease = false
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:onDestroy()
     self.ViewMgr:unbindEvListener(self)
     if (self.ItemChatDesktop ~= nil)
@@ -107,6 +111,7 @@ function ViewDesktopPlayerInfoTexas:onDestroy()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:release()
     self.IsRelease = true
     self.IsGameEnd = false
@@ -131,7 +136,7 @@ function ViewDesktopPlayerInfoTexas:release()
     then
         self.UiSingleEmotion:resetEmotion()
     end
-    self.ComUi:SetXY(10000,10000)
+    self.ComUi:SetXY(10000, 10000)
     ViewHelper:setGObjectVisible(false, self.ImageAutoAction)
     ViewHelper:setGObjectVisible(false, self.ComUi)
     if (self.PlayerSeatWidgetControllerEx ~= nil)
@@ -140,6 +145,7 @@ function ViewDesktopPlayerInfoTexas:release()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:onHandleEv(ev)
     if (self.IsRelease)
     then
@@ -236,11 +242,11 @@ function ViewDesktopPlayerInfoTexas:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:onUpdate(elapsed_tm)
-    if (CS.Casinos.CasinosContext.Instance.Pause or self.IsRelease)
-    then
-        return
-    end
+    --if (CS.Casinos.CasinosContext.Instance.Pause or self.IsRelease) then
+    --    return
+    --end
 
     if (self.IsGameEnd)
     then
@@ -289,6 +295,7 @@ function ViewDesktopPlayerInfoTexas:onUpdate(elapsed_tm)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:gameEnd()
     self.IsShowDown = false
     self:_hideHighLight()
@@ -303,22 +310,22 @@ function ViewDesktopPlayerInfoTexas:gameEnd()
     self.IsGameEnd = true
     self:_resetThinkTimePro()
     if self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile then
-        self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName,15,4), CS.UnityEngine.Color.white)
+        self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
     end
     ViewHelper:setGObjectVisible(false, self.GMovieAllIn)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:addExpAndPoint(exp, point)
     self.Exp = exp
     self.Point = point
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerChangeSeat()
-    if (self.ViewDesktop ~= nil)
-    then
+    if (self.ViewDesktop ~= nil) then
         local change_seat = self.ViewDesktop:getUiSeatInfo(self.Player.UiSeatIndex)
-        if (change_seat ~= nil)
-        then
+        if (change_seat ~= nil) then
             local pos_e = change_seat.GComSeatPlayerParent.xy
             local pos_ex = pos_e.x
             pos_ex = pos_ex - self.GImagePlayerShadow.width / 2
@@ -327,10 +334,9 @@ function ViewDesktopPlayerInfoTexas:playerChangeSeat()
             pos_ey = pos_ey - self.GImagePlayerShadow.height / 2
             pos_e.y = pos_ey
 
-            CS.Casinos.UiDoTweenHelper.TweenMove(self.ComUi, self.ComUi.xy, pos_e, 0.4, true)
+            self.ComUi:TweenMove(pos_e, 0.4):SetSnapping(true)
 
-            if (self.PlayerSeatWidgetControllerEx ~= nil)
-            then
+            if (self.PlayerSeatWidgetControllerEx ~= nil) then
                 self.PlayerSeatWidgetControllerEx:resetSeatIndex()
             end
 
@@ -339,14 +345,15 @@ function ViewDesktopPlayerInfoTexas:playerChangeSeat()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerOb(seat_index)
     self.ViewDesktop:playerOB(seat_index)
-    if (self.Player ~= nil and self.Player.IsMe)
-    then
+    if (self.Player ~= nil and self.Player.IsMe) then
         self.ViewDesktop:showCommonCardType(self.IsGameEnd)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerWait4Next()
     self:_resetThinkTimePro()
     if (self.PlayerSeatWidgetControllerEx ~= nil)
@@ -356,6 +363,7 @@ function ViewDesktopPlayerInfoTexas:playerWait4Next()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerWaitWhile()
     self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("StepOut"), CS.UnityEngine.Color.white)
     self.UiPlayerGiftAndVIP:reset()
@@ -365,11 +373,13 @@ function ViewDesktopPlayerInfoTexas:playerWaitWhile()
     ViewHelper:setGObjectVisible(false, self.GMovieAllIn)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerReturn()
     self:setNickName()
     self:_setAmontChip(self.Player.PlayerDataDesktop.Stack)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerInGame()
     if (self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold)
     then
@@ -380,6 +390,7 @@ function ViewDesktopPlayerInfoTexas:playerInGame()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerTurn(is_player_turn, turn_tm)
     self:_resetThinkTimePro()
 
@@ -399,14 +410,17 @@ function ViewDesktopPlayerInfoTexas:playerTurn(is_player_turn, turn_tm)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerStackChange()
     self:_setAmontChip(self.Player.PlayerDataDesktop.Stack)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:allIn()
     --ViewHelper:setGObjectVisible(true, self.GGraphAllInParent)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:reset()
     if (self.PlayerSeatWidgetControllerEx ~= nil)
     then
@@ -414,6 +428,7 @@ function ViewDesktopPlayerInfoTexas:reset()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setPlayerInfo(player, parent, pos, desk_seatcount, action_waiting_time, is_gameend)
     ViewHelper:setGObjectVisible(true, self.ComUi)
     self.IsRelease = false
@@ -453,7 +468,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerInfo(player, parent, pos, desk_seat
         if player_state == TexasDesktopPlayerState.WaitWhile then
             self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("StepOut"), CS.UnityEngine.Color.white)
         else
-            self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName,15,4), CS.UnityEngine.Color.white)
+            self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
         end
     else
         local current_showindex = self:getActionIndex(self.Player.PlayerDataDesktop.PlayerActionType)
@@ -487,6 +502,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerInfo(player, parent, pos, desk_seat
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setCard(show_card, card1, card2, is_init)
     if (self.PlayerSeatWidgetControllerEx ~= nil)
     then
@@ -495,8 +511,9 @@ function ViewDesktopPlayerInfoTexas:setCard(show_card, card1, card2, is_init)
     end
 end
 
-function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action_type,is_init)
-    local action_name = CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName,15,4)
+---------------------------------------
+function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action_type, is_init)
+    local action_name = CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4)
     local show_shadow = false
     local sound = "chip"
     local play_sound = true
@@ -577,9 +594,10 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
     self:_resetThinkTimePro()
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setGift(current_item, target_etguid, is_sendgift)
     local item = nil
-    local from_pos = CS.Casinos.LuaHelper.GetVector2(0,0)
+    local from_pos = CS.Casinos.LuaHelper.GetVector2(0, 0)
     if (current_item ~= nil)
     then
         local item_data = ItemData1:new(nil)
@@ -610,6 +628,7 @@ function ViewDesktopPlayerInfoTexas:setGift(current_item, target_etguid, is_send
     self.UiPlayerGiftAndVIP:setGift(item, from_pos, is_sendgift)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:sendMagicExp(exp)
     local tb_magicexp = self.ViewMgr.TbDataMgr:GetData("UnitMagicExpression", exp.item_tbid)
     if (tb_magicexp == nil)
@@ -638,22 +657,27 @@ function ViewDesktopPlayerInfoTexas:sendMagicExp(exp)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:sendWinnerGolds(winner_golds, map_win_pot)
     self.PlayerSeatWidgetControllerEx:sendWinnerChips(winner_golds, map_win_pot)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setIsBtn(is_btn)
     self.PlayerSeatWidgetControllerEx:setIsBtn(is_btn)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setSmallBlind()
     --self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("小盲注", "SmallBlind"), CS.UnityEngine.Color.yellow)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setBigBlind()
     --self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("大盲注", "BigBlind"), CS.UnityEngine.Color.yellow)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:deskIdle()
     if (self.Player.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.WaitWhile)
     then
@@ -670,6 +694,7 @@ function ViewDesktopPlayerInfoTexas:deskIdle()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:dealCardDone()
     if (self.PlayerSeatWidgetControllerEx ~= nil)
     then
@@ -677,6 +702,7 @@ function ViewDesktopPlayerInfoTexas:dealCardDone()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:preflopBegin()
     self.IsGameEnd = false
     self.IsShowDown = false
@@ -696,6 +722,7 @@ function ViewDesktopPlayerInfoTexas:preflopBegin()
     self.PlayerShowTips:reset()
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:roundEnd(t_playerchips_inpot)
     if (t_playerchips_inpot ~= nil and #t_playerchips_inpot > 0)
     then
@@ -703,6 +730,7 @@ function ViewDesktopPlayerInfoTexas:roundEnd(t_playerchips_inpot)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:flop()
     if (self.PlayerSeatWidgetControllerEx ~= nil)
     then
@@ -711,6 +739,7 @@ function ViewDesktopPlayerInfoTexas:flop()
     self:setNickName()
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:turn()
     if (self.PlayerSeatWidgetControllerEx ~= nil)
     then
@@ -719,6 +748,7 @@ function ViewDesktopPlayerInfoTexas:turn()
     self:setNickName()
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:river()
     if (self.PlayerSeatWidgetControllerEx ~= nil)
     then
@@ -727,6 +757,7 @@ function ViewDesktopPlayerInfoTexas:river()
     self:setNickName()
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setShowCardState(showcard_state)
     if (self.PlayerSeatWidgetControllerEx ~= nil)
     then
@@ -734,6 +765,7 @@ function ViewDesktopPlayerInfoTexas:setShowCardState(showcard_state)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setShowCardData(first_card, second_card)
     local f_c = nil
     if first_card ~= nil then
@@ -762,6 +794,7 @@ function ViewDesktopPlayerInfoTexas:setShowCardData(first_card, second_card)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:showDown(card_first, card_second, carddata_left)
     if (card_first == nil)
     then
@@ -789,6 +822,7 @@ function ViewDesktopPlayerInfoTexas:showDown(card_first, card_second, carddata_l
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
     --ViewHelper:setGObjectVisible(false, self.GImagePlayerShadow)
     self:showShade(false)
@@ -870,9 +904,9 @@ function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
                 end
             end
 
-            self.UiHandCardFirst:showHighLight(show_firstcard_highlight,first_not_dark)
-            self.UiHandCardSecond:showHighLight(show_secondcard_highlight,s_not_dark)
-            self.ViewDesktop:showCardTips(best_hand.RankType, best_hand.RankTypeCards,best_hand.Cards, type_name, true, true)
+            self.UiHandCardFirst:showHighLight(show_firstcard_highlight, first_not_dark)
+            self.UiHandCardSecond:showHighLight(show_secondcard_highlight, s_not_dark)
+            self.ViewDesktop:showCardTips(best_hand.RankType, best_hand.RankTypeCards, best_hand.Cards, type_name, true, true)
         end
     end
 
@@ -882,6 +916,7 @@ function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:showWinnerHandType(win_golds)
     local best_hand = nil
 
@@ -949,6 +984,7 @@ function ViewDesktopPlayerInfoTexas:showWinnerHandType(win_golds)
     ViewHelper:setGObjectVisible(false, self.GMovieAllIn)
 end
 
+---------------------------------------
 -- 手牌+公共牌高亮
 function ViewDesktopPlayerInfoTexas:showHandCardHighLight(best_hand, card_type_str)
     if (self.PlayerSeatWidgetControllerEx ~= nil)
@@ -957,6 +993,7 @@ function ViewDesktopPlayerInfoTexas:showHandCardHighLight(best_hand, card_type_s
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:raiseChips()
     if (self.PlayerSeatWidgetControllerEx ~= nil)
     then
@@ -964,6 +1001,7 @@ function ViewDesktopPlayerInfoTexas:raiseChips()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerFold()
     if (self.PlayerSeatWidgetControllerEx ~= nil)
     then
@@ -971,6 +1009,7 @@ function ViewDesktopPlayerInfoTexas:playerFold()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:getPlayerInfo(player_guid)
     local player = self.Player.DesktopTexas.MapPlayerTexas[player_guid]
     local to_playerinfo = nil
@@ -982,6 +1021,7 @@ function ViewDesktopPlayerInfoTexas:getPlayerInfo(player_guid)
     return to_playerinfo
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:_resetThinkTimePro()
     self.CurrentActionTime = 0.0
     if (self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile)
@@ -991,6 +1031,7 @@ function ViewDesktopPlayerInfoTexas:_resetThinkTimePro()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:_resetPlayerInfo()
     self.UiHandCardFirst:resetCard(false)
     self.UiHandCardSecond:resetCard(false)
@@ -1008,8 +1049,8 @@ function ViewDesktopPlayerInfoTexas:_resetPlayerInfo()
     ViewHelper:setGObjectVisible(false, self.GImagePlayerWinner)
     --ViewHelper:setGObjectVisible(false, self.GGraphWinStarParent)
     ViewHelper:setGObjectVisible(false, self.GMovieAllIn)
-    if self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold  and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile then
-        self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName,15,4), CS.UnityEngine.Color.white)
+    if self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile then
+        self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
     end
     if (self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile)
     then
@@ -1018,12 +1059,14 @@ function ViewDesktopPlayerInfoTexas:_resetPlayerInfo()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setNickName()
     if self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold and self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.AllIn and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile then
-        self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName,15,4), CS.UnityEngine.Color.white)
+        self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:_setNameOrAction(name_or_action, color)
     self.GTextActionOrName.text = name_or_action
     self.GTextActionOrName.color = color
@@ -1031,10 +1074,11 @@ function ViewDesktopPlayerInfoTexas:_setNameOrAction(name_or_action, color)
     ViewHelper:setGObjectVisible(false, self.ComAction)
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:setLeaveWhileTime(rest_time)
     if (rest_time <= 0)
     then
-        self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName,15,4), CS.UnityEngine.Color.white)
+        self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
         --ViewHelper:setGObjectVisible(false, self.GImagePlayerShadow)
         self:showShade(false)
         ViewHelper:setGObjectVisible(false, self.GImagePlayerActionProgress)
@@ -1047,6 +1091,7 @@ function ViewDesktopPlayerInfoTexas:setLeaveWhileTime(rest_time)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:showShade(show_shade)
     ViewHelper:setGObjectVisible(show_shade, self.GImagePlayerShadow)
     local lable_a = 1
@@ -1056,6 +1101,7 @@ function ViewDesktopPlayerInfoTexas:showShade(show_shade)
     self.GTextActionOrName.alpha = lable_a
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:_onClickSelf()
     if (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid)
     then
@@ -1070,22 +1116,26 @@ function ViewDesktopPlayerInfoTexas:_onClickSelf()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:_playerInfo(player_info, head_icon)
     if self.UiHeadIcon ~= nil and self.UiHeadIcon.GLoaderPlayerIcon ~= nil then
         self.UiHeadIcon.GLoaderPlayerIcon.texture = CS.FairyGUI.NTexture(head_icon)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:_hideHighLight()
     self.UiHandCardFirst:hideHighLight()
     self.UiHandCardSecond:hideHighLight()
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:_setAmontChip(chips)
     local chips_show = UiChipShowHelper:getGoldShowStr(chips, self.ViewMgr.LanMgr.LanBase, true, 1)
     self.GTextDesktopAmount.text = chips_show
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:_setThinkingTimeSprite(fill_amount, need_vibrate)
     ViewHelper:setGObjectVisible(true, self.GImagePlayerActionProgress)
     local persent = fill_amount
@@ -1111,6 +1161,7 @@ function ViewDesktopPlayerInfoTexas:_setThinkingTimeSprite(fill_amount, need_vib
     self.GImagePlayerActionProgress.color = color
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexas:getActionIndex(action)
     local current_showindex = -1
     if (action == PlayerActionTypeTexas.None)
@@ -1141,8 +1192,10 @@ function ViewDesktopPlayerInfoTexas:getActionIndex(action)
     return current_showindex
 end
 
+---------------------------------------
 ViewDesktopPlayerInfoTexasFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexasFactory:new(o, ui_package_name, ui_component_name,
                                                ui_layer, is_single, fit_screen)
     o = o or {}
@@ -1156,6 +1209,7 @@ function ViewDesktopPlayerInfoTexasFactory:new(o, ui_package_name, ui_component_
     return o
 end
 
+---------------------------------------
 function ViewDesktopPlayerInfoTexasFactory:createView()
     local view = ViewDesktopPlayerInfoTexas:new(nil)
     return view

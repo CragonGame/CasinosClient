@@ -11,6 +11,8 @@ function ControllerDesk:new(o, controller_mgr, controller_data, guid)
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.TimerUpdate = nil
     return o
 end
 
@@ -107,18 +109,17 @@ function ControllerDesk:onCreate()
     self.MapDesktopHelper = {}
     local t_fac = DesktopHelperTexasFactory:new(nil)
     self.MapDesktopHelper[t_fac:GetName()] = t_fac:CreateDesktopHelper()
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
 ---------------------------------------
 function ControllerDesk:onDestroy()
-    self.ControllerMgr.ViewMgr:unbindEvListener(self)
-end
-
----------------------------------------
-function ControllerDesk:onUpdate(tm)
-    if (self.DesktopBase ~= nil) then
-        self.DesktopBase:onUpdate(tm)
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
     end
+    self.ControllerMgr.ViewMgr:unbindEvListener(self)
 end
 
 ---------------------------------------
@@ -140,6 +141,13 @@ function ControllerDesk:onHandleEv(ev)
 
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:onHandleEv(ev)
+    end
+end
+
+---------------------------------------
+function ControllerDesk:_timerUpdate(tm)
+    if (self.DesktopBase ~= nil) then
+        self.DesktopBase:onUpdate(tm)
     end
 end
 

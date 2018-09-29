@@ -56,13 +56,13 @@ function ViewHandCardTexas:showCard(delay_tm)
     if self.CancelShowCard then
         ViewHelper:setGObjectVisible(true, self.GComCard)
         ViewHelper:setGObjectVisible(false, self.GImageCardBack)
-        self.TweenerRotate = self.GLoaderCard.TweenRotateY(0, 90, UiCardCommonEx.RotateTime):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+        self.TweenerRotate = CS.FairyGUI.GTween.To(90, UiCardCommonEx.RotateTime):SetTarget(self.GLoaderCard, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                 function()
                     ViewHelper:setGObjectVisible(true, self.GImageCardBack)
                     ViewHelper:setGObjectVisible(false, self.GLoaderCard)
                     self.GImageCardBack.rotationY = 90
                     self.GLoaderCard.rotationY = 90
-                    self.TweenerRotate = self.GImageCardBack.TweenRotateY(90, 180, UiCardCommonEx.RotateTime):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+                    self.TweenerRotate =  CS.FairyGUI.GTween.To(180, UiCardCommonEx.RotateTime):SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                             function()
                                 self.GImageCardBack.rotationY = 180
                             end
@@ -98,13 +98,13 @@ function ViewHandCardTexas:showCard(delay_tm)
                             ViewHelper:setGObjectVisible(true, self.GComCard)
                             ViewHelper:setGObjectVisible(true, self.GImageCardBack)
 
-                            self.TweenerRotate = self.GImageCardBack.TweenRotate(180, 90, UiCardCommonEx.RotateTime):SetDelay(delay_tm):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+                            self.TweenerRotate = CS.FairyGUI.GTween.To(90, UiCardCommonEx.RotateTime):SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY):SetDelay(delay_tm):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                                     function()
                                         ViewHelper:setGObjectVisible(false, self.GImageCardBack)
                                         ViewHelper:setGObjectVisible(true, self.GLoaderCard)
                                         self.GImageCardBack.rotationY = 180
                                         self.GLoaderCard.rotationY = 90
-                                        self.TweenerRotate = self.GLoaderCard.TweenRotate(90, 0, UiCardCommonEx.RotateTime):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+                                        self.TweenerRotate = CS.FairyGUI.GTween.To(0, UiCardCommonEx.RotateTime):SetTarget(self.GLoaderCard, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                                                 function()
                                                     self.GLoaderCard.rotationY = 0
                                                 end

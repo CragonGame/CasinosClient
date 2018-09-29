@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewTexasMTT = ViewDesktopTypeBase:new()
 
+---------------------------------------
 function ViewTexasMTT:new(o, view_desktop)
     o = o or {}
     setmetatable(o, self)
@@ -30,12 +32,12 @@ function ViewTexasMTT:new(o, view_desktop)
     local loader_bg = com_desktop:GetChild("LoaderBg").asLoader
     --local bg_path = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(CS.Casinos.CasinosContext.Instance.ABResourcePathTitle,
     --        "DesktopImage/mttbg.ab")
-    loader_bg.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop","MTTBg")--CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(bg_path)
-    ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, o.ViewDesktop.ComUi.width, o.ViewDesktop.ComUi.height, loader_bg.width, loader_bg.height,loader_bg,BgAttachMode.Center)
+    loader_bg.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop", "MTTBg")--CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(bg_path)
+    ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, o.ViewDesktop.ComUi.width, o.ViewDesktop.ComUi.height, loader_bg.width, loader_bg.height, loader_bg, BgAttachMode.Center)
     local loader_desk = com_desktop:GetChild("LoaderDesk").asLoader
     --local desk_path = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(CS.Casinos.CasinosContext.Instance.ABResourcePathTitle,
     --        "DesktopImage/mttdesk.ab")
-    loader_desk.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop","MTTDesk")--CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(desk_path)
+    loader_desk.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop", "MTTDesk")--CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(desk_path)
 
     o.ComRealTimeInfo = com_desktop:GetChild("ComRealTimeInfo").asCom
     o.ComRealTimeInfo.onClick:Add(
@@ -47,6 +49,7 @@ function ViewTexasMTT:new(o, view_desktop)
     return o
 end
 
+---------------------------------------
 function ViewTexasMTT:onHandleEv(ev)
     if ev ~= nil then
         if ev.EventName == "EvEntityMTTUpdateRealtimeInfo" then
@@ -81,6 +84,7 @@ function ViewTexasMTT:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ViewTexasMTT:setSnapShot(snapshot, is_init)
     local match_texas = snapshot.match_texas
     self.MatchTexas = match_texas
@@ -149,6 +153,7 @@ function ViewTexasMTT:setSnapShot(snapshot, is_init)
     ViewHelper:setGObjectVisible(true, self.ComRealTimeInfo)
 end
 
+---------------------------------------
 function ViewTexasMTT:preflopBegin()
     self:_showRebuyAndAddonBtnAndRealTimeInfo()
     local current_blindid = self.MatchTexas.RealtimeInfo.CurrentRaiseBlindTbId
@@ -156,6 +161,7 @@ function ViewTexasMTT:preflopBegin()
     self:setMatchDescribe(t_blind.BlindsSmall, t_blind.BlindsBig, t_blind.Ante)
 end
 
+---------------------------------------
 function ViewTexasMTT:_showRebuyAndAddonBtnAndRealTimeInfo()
     if self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.Ob then
         ViewHelper:setGObjectVisible(false, self.ComRealTimeInfo)
@@ -170,6 +176,7 @@ function ViewTexasMTT:_showRebuyAndAddonBtnAndRealTimeInfo()
     end
 end
 
+---------------------------------------
 function ViewTexasMTT:_checkSeat()
     for k, v in pairs(self.ViewDesktop.MapAllValidPlayerSeat)
     do
@@ -188,6 +195,7 @@ function ViewTexasMTT:_checkSeat()
     end
 end
 
+---------------------------------------
 function ViewTexasMTT:setRealTimeInfo(realtime_info, blind_type)
     local view_mgr = self.ViewDesktop.ViewMgr
     local t_ranking_score = {}
@@ -224,6 +232,7 @@ function ViewTexasMTT:setRealTimeInfo(realtime_info, blind_type)
     end
 end
 
+---------------------------------------
 function ViewTexasMTT:setRaiseBlindTm(tm)
     local raise_tm = ""
     local view_mgr = self.ViewDesktop.ViewMgr
@@ -247,6 +256,7 @@ function ViewTexasMTT:setRaiseBlindTm(tm)
     self.TextBlind.text = raise_tm
 end
 
+---------------------------------------
 function ViewTexasMTT:setMatchDescribe(s_b, b_b, ante)
     local view_mgr = self.ViewDesktop.ViewMgr
     local t_describe = {}
@@ -262,6 +272,7 @@ function ViewTexasMTT:setMatchDescribe(s_b, b_b, ante)
     self.ViewDesktop.TextDesktopDescribe.text = table.concat(t_describe)
 end
 
+---------------------------------------
 function ViewTexasMTT:_onClickMenu()
     local view_mgr = self.ViewDesktop.ViewMgr
     local msg_box = view_mgr:getView("MsgBox")
@@ -284,6 +295,7 @@ function ViewTexasMTT:_onClickMenu()
     )
 end
 
+---------------------------------------
 function ViewTexasMTT:_onClickRealTimeInfo()
     local view_matchinfo = self.ViewDesktop.ViewMgr:getView("MatchInfo")
     if view_matchinfo == nil then
@@ -292,6 +304,7 @@ function ViewTexasMTT:_onClickRealTimeInfo()
     view_matchinfo:Init(self.MatchGuid, true, true)
 end
 
+---------------------------------------
 function ViewTexasMTT:_onClickBtnRebuyOrAddon()
     local view_mgr = self.ViewDesktop.ViewMgr
     local ev = view_mgr:getEv("EvUiMTTCreateRebuyOrAddOn")
@@ -302,20 +315,23 @@ function ViewTexasMTT:_onClickBtnRebuyOrAddon()
     view_mgr:sendEv(ev)
 end
 
+---------------------------------------
 ViewTexasMTTTypeFactory = {}
 
+---------------------------------------
 function ViewTexasMTTTypeFactory:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     return o
 end
 
+---------------------------------------
 function ViewTexasMTTTypeFactory:GetName()
     return "TexasMTT"
 end
 
+---------------------------------------
 function ViewTexasMTTTypeFactory:CreateViewDesktopType(view_desktop)
     local l = ViewTexasMTT:new(nil, view_desktop)
     return l

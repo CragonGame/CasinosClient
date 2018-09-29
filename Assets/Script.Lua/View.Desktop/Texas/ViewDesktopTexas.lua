@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewDesktopTexas = ViewBase:new()
 
+---------------------------------------
 function ViewDesktopTexas:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -61,11 +63,15 @@ function ViewDesktopTexas:new(o)
     self.SeatPlayerParentTitle = "ComSeatPlayerParent"-- 前缀
     self.ChairTitle = "ComSeat"-- 前缀
     self.PokerGirlDesk = "DeskGirl"
-
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.TimerUpdate = nil
     return o
 end
 
+---------------------------------------
 function ViewDesktopTexas:onCreate()
+    print('ViewDesktopTexas:onCreate()')
+
     self.ViewMgr:bindEvListener("EvEntityReceiveFriendSingleChat", self)
     self.ViewMgr:bindEvListener("EvEntityReceiveFriendChats", self)
     self.ViewMgr:bindEvListener("EvEntityUnreadChatsChanged", self)
@@ -234,55 +240,144 @@ function ViewDesktopTexas:onCreate()
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     self:setNewReward()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionReward")
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
+---------------------------------------
 function ViewDesktopTexas:onDestroy()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
     self.ViewMgr:unbindEvListener(self)
-    if (self.UiChipMgr ~= nil)
-    then
+    if (self.UiChipMgr ~= nil) then
         self.UiChipMgr:destroy()
     end
 
-    if (self.UiDesktopChatParent ~= nil)
-    then
+    if (self.UiDesktopChatParent ~= nil) then
         self.ViewMgr:destroyView(self.UiDesktopChatParent)
     end
 
     local ui_shootingtext = self.ViewMgr:getView("ShootingText")
-    if (ui_shootingtext ~= nil)
-    then
+    if (ui_shootingtext ~= nil) then
         self.ViewMgr:destroyView(ui_shootingtext)
     end
 
-    if (self.DealerEx ~= nil)
-    then
+    if (self.DealerEx ~= nil) then
         self.DealerEx:destroy()
         self.DealerEx = nil
     end
+    print('ViewDesktopTexas:onDestroy()')
 end
 
-function ViewDesktopTexas:onUpdate(elapsed_tm)
-    if (CS.Casinos.CasinosContext.Instance.Pause)
-    then
-        return
+---------------------------------------
+function ViewDesktopTexas:onHandleEv(ev)
+    if self.ViewDesktopTypeBase ~= nil then
+        self.ViewDesktopTypeBase:onHandleEv(ev)
     end
 
-    if (self.UiChipMgr ~= nil)
-    then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvEntityReceiveFriendSingleChat") then
+            if (ev.chat_msg.sender_guid ~= self.ControllerIM.Guid) then
+                local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
+                self:_setNewChatCount(all_unreadchat_count)
+            end
+        elseif (ev.EventName == "EvEntityReceiveFriendChats") then
+            local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
+            self:_setNewChatCount(all_unreadchat_count)
+        elseif (ev.EventName == "EvEntityUnreadChatsChanged") then
+            local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
+            self:_setNewChatCount(all_unreadchat_count)
+        elseif (ev.EventName == "EvEntityMailListInit") then
+            self:_haveNewChatOrMailRecord()
+        elseif (ev.EventName == "EvEntityMailAdd") then
+            self:_haveNewChatOrMailRecord()
+        elseif (ev.EventName == "EvEntityMailDelete") then
+            self:_haveNewChatOrMailRecord()
+        elseif (ev.EventName == "EvEntityMailUpdate") then
+            self:_haveNewChatOrMailRecord()
+        elseif (ev.EventName == "EvEntityRecvChatFromDesktop") then
+            local chat_info = ev.chat_info
+            if (CS.System.String.IsNullOrEmpty(chat_info.sender_etguid) == false) then
+                local seat_info = self.Desktop:getSeatByGuid(chat_info.sender_etguid)
+                if (seat_info == nil) then
+                    if (self.ItemChatDesktop == nil) then
+                        local co_chatname = "CoChatRight"
+                        self.ItemChatDesktop = self.UiDesktopChatParent:addChat(co_chatname, self.ComUi, self.GBtnChat.xy)
+                        self.ItemChatDesktop:setChatTextAndSortingOrder(chat_info, self.ComUi.sortingOrder)
+                    else
+                        self.ItemChatDesktop:setChatTextAndSortingOrder(chat_info, self.ComUi.sortingOrder)
+                    end
+                end
+            end
+        elseif (ev.EventName == "EvEntityDesktopIdleNotify") then
+            self:_deskIdle()
+        elseif (ev.EventName == "EvEntityDesktopPreFlopNotify") then
+            self:_preflopBegin(ev.pot_total, ev.list_pot)
+        elseif (ev.EventName == "EvEntityDesktopFlopNotify") then
+            self:_flop(ev.first_card, ev.second_card, ev.third_card, ev.bet_player_count)
+        elseif (ev.EventName == "EvEntityDesktopTurnNotify") then
+            self:_turn(ev.turn_card, ev.bet_player_count)
+        elseif (ev.EventName == "EvEntityDesktopRiverNotify") then
+            self:_river(ev.river_card, ev.bet_player_count)
+        elseif (ev.EventName == "EvEntityDesktopShowdownNotify") then
+            self:_showDown(ev.desktop_showdown)
+        elseif (ev.EventName == "EvEntityDesktopGameEndNotifyTexas") then
+            self:_gameEnd(ev.list_winner)
+        elseif (ev.EventName == "EvEntityGetLotteryTicketDataSuccess") then
+            self:_setLotteryTicketInfo(ev.lotteryticket_data.State, ev.lotteryticket_data.StateLeftTm)
+        elseif (ev.EventName == "EvEntityLotteryTicketGameEndStateSimple") then
+            if (self.GTextLotteryTicketTips ~= nil) then
+                self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
+            end
+        elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
+            self:updateLotteryTickTm(ev.tm)
+        elseif (ev.EventName == "EvUiPotMainChanged") then
+            -- 从Model发出
+            self.UiPot:showAllPotValue(ev.pot_mian)
+        elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
+            self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
+        elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
+            -- Model告知可领，Ui刷新小红点
+            self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
+            self.CanGetOnLineReward = ev.can_getreward
+            self:setNewReward()
+        elseif (ev.EventName == "EvEntityCanGetTimingReward") then
+            -- Model告知可领，Ui刷新小红点
+            self.ViewTimingReward:setCanGetReward(ev.can_getreward)
+            self.CanGetTimingReward = ev.can_getreward
+            self:setNewReward()
+        elseif (ev.EventName == "EvClickShowReward") then
+            -- 弹出横条
+            self.ComShadeReward.visible = true
+            self.TransitionShowReward:Play()
+        elseif (ev.EventName == "EvRequestGetTimingReward" or ev.EventName == "EvOnGetOnLineReward") then
+            -- 弹回横条
+            self.ComShadeReward.visible = false
+            self.TransitionShowReward:PlayReverse()
+        end
+    end
+end
+
+---------------------------------------
+function ViewDesktopTexas:_timerUpdate(elapsed_tm)
+    --if (CS.Casinos.CasinosContext.Instance.Pause) then
+    --    return
+    --end
+
+    if (self.UiChipMgr ~= nil) then
         self.UiChipMgr:update(elapsed_tm)
     end
     self.CheckTimeTime = self.CheckTimeTime + elapsed_tm
-    if (self.CheckTimeTime >= 60)
-    then
+    if (self.CheckTimeTime >= 60) then
         self:_showCurrentLocalTm()
         self.CheckTimeTime = 0
     end
 
-    if (self.ClearDesktopTm > 0)
-    then
+    if (self.ClearDesktopTm > 0) then
         self.ClearDesktopTm = self.ClearDesktopTm - elapsed_tm
-        if (self.ClearDesktopTm <= 0)
-        then
+        if (self.ClearDesktopTm <= 0) then
             --self:resetComminityShow()
             self.DealerEx:resetCommonCardType(
                     function()
@@ -294,131 +389,19 @@ function ViewDesktopTexas:onUpdate(elapsed_tm)
         end
     end
 
-    if (self.DealerEx ~= nil)
-    then
+    if (self.DealerEx ~= nil) then
         self.DealerEx:update(elapsed_tm)
     end
 
-    if (self.ItemChatDesktop ~= nil)
-    then
+    if (self.ItemChatDesktop ~= nil) then
         self.ItemChatDesktop:update(elapsed_tm)
     end
 end
 
-function ViewDesktopTexas:onHandleEv(ev)
-    if self.ViewDesktopTypeBase ~= nil then
-        self.ViewDesktopTypeBase:onHandleEv(ev)
-    end
-
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvEntityReceiveFriendSingleChat")
-        then
-            if (ev.chat_msg.sender_guid ~= self.ControllerIM.Guid)
-            then
-                local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
-                self:_setNewChatCount(all_unreadchat_count)
-            end
-        elseif (ev.EventName == "EvEntityReceiveFriendChats")
-        then
-            local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
-            self:_setNewChatCount(all_unreadchat_count)
-        elseif (ev.EventName == "EvEntityUnreadChatsChanged")
-        then
-            local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
-            self:_setNewChatCount(all_unreadchat_count)
-        elseif (ev.EventName == "EvEntityMailListInit")
-        then
-            self:_haveNewChatOrMailRecord()
-        elseif (ev.EventName == "EvEntityMailAdd")
-        then
-            self:_haveNewChatOrMailRecord()
-        elseif (ev.EventName == "EvEntityMailDelete")
-        then
-            self:_haveNewChatOrMailRecord()
-        elseif (ev.EventName == "EvEntityMailUpdate")
-        then
-            self:_haveNewChatOrMailRecord()
-        elseif (ev.EventName == "EvEntityRecvChatFromDesktop")
-        then
-            local chat_info = ev.chat_info
-            if (CS.System.String.IsNullOrEmpty(chat_info.sender_etguid) == false)
-            then
-                local seat_info = self.Desktop:getSeatByGuid(chat_info.sender_etguid)
-                if (seat_info == nil)
-                then
-                    if (self.ItemChatDesktop == nil)
-                    then
-                        local co_chatname = "CoChatRight"
-                        self.ItemChatDesktop = self.UiDesktopChatParent:addChat(co_chatname, self.ComUi, self.GBtnChat.xy)
-                        self.ItemChatDesktop:setChatTextAndSortingOrder(chat_info, self.ComUi.sortingOrder)
-                    else
-                        self.ItemChatDesktop:setChatTextAndSortingOrder(chat_info, self.ComUi.sortingOrder)
-                    end
-                end
-            end
-        elseif (ev.EventName == "EvEntityDesktopIdleNotify")
-        then
-            self:_deskIdle()
-        elseif (ev.EventName == "EvEntityDesktopPreFlopNotify")
-        then
-            self:_preflopBegin(ev.pot_total, ev.list_pot)
-        elseif (ev.EventName == "EvEntityDesktopFlopNotify")
-        then
-            self:_flop(ev.first_card, ev.second_card, ev.third_card, ev.bet_player_count)
-        elseif (ev.EventName == "EvEntityDesktopTurnNotify")
-        then
-            self:_turn(ev.turn_card, ev.bet_player_count)
-        elseif (ev.EventName == "EvEntityDesktopRiverNotify")
-        then
-            self:_river(ev.river_card, ev.bet_player_count)
-        elseif (ev.EventName == "EvEntityDesktopShowdownNotify")
-        then
-            self:_showDown(ev.desktop_showdown)
-        elseif (ev.EventName == "EvEntityDesktopGameEndNotifyTexas")
-        then
-            self:_gameEnd(ev.list_winner)
-        elseif (ev.EventName == "EvEntityGetLotteryTicketDataSuccess")
-        then
-            self:_setLotteryTicketInfo(ev.lotteryticket_data.State, ev.lotteryticket_data.StateLeftTm)
-        elseif (ev.EventName == "EvEntityLotteryTicketGameEndStateSimple")
-        then
-            if (self.GTextLotteryTicketTips ~= nil)
-            then
-                self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
-            end
-        elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm")
-        then
-            self:updateLotteryTickTm(ev.tm)
-        elseif (ev.EventName == "EvUiPotMainChanged")--从Model发出
-        then
-            self.UiPot:showAllPotValue(ev.pot_mian)
-        elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm")
-        then
-            self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
-        elseif (ev.EventName == "EvEntityCanGetOnlineReward")-- Model告知可领，Ui刷新小红点
-        then
-            self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
-            self.CanGetOnLineReward = ev.can_getreward
-            self:setNewReward()
-        elseif (ev.EventName == "EvEntityCanGetTimingReward")-- Model告知可领，Ui刷新小红点
-        then
-            self.ViewTimingReward:setCanGetReward(ev.can_getreward)
-            self.CanGetTimingReward = ev.can_getreward
-            self:setNewReward()
-        elseif (ev.EventName == "EvClickShowReward")-- 弹出横条
-        then
-            self.ComShadeReward.visible = true
-            self.TransitionShowReward:Play()
-        elseif (ev.EventName == "EvRequestGetTimingReward" or ev.EventName == "EvOnGetOnLineReward")-- 弹回横条
-        then
-            self.ComShadeReward.visible = false
-            self.TransitionShowReward:PlayReverse()
-        end
-    end
-end
-
+---------------------------------------
 function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init, desktoptype_facname)
+    print('ViewDesktopTexas:setDesktopSnapshotData()')
+
     self.DesktopBase = desktop
     local desktop_texas = desktop
     local snapshot_data = desktop_data
@@ -427,8 +410,8 @@ function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init,
     self.UiPot:resetPot()
     --ViewHelper:setGObjectVisible(false, self.GGroupActionTips)
     --ViewHelper:setGObjectVisible(false, self.GGroupCardTypeTips)
-    if (is_init)
-    then
+
+    if (is_init) then
         local viewdesktoptype_factory = self:GetViewDesktopTypeBaseFactory(desktoptype_facname)
         self.ViewDesktopTypeBase = viewdesktoptype_factory:CreateViewDesktopType(self)
         self.Desktop = desktop_texas
@@ -457,10 +440,10 @@ function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init,
     if desktop_texas.IsPrivate then
         local t = {}
         table.insert(t, self.ViewMgr.LanMgr:getLanValue("Private"))
-        table.insert(t," ")
+        table.insert(t, " ")
         table.insert(t, tips)
         if self.ViewDesktopTypeBase.Ante > 0 then
-            table.insert(t,",")
+            table.insert(t, ",")
             table.insert(t, self.ViewDesktopTypeBase.Ante)
         end
         tips = table.concat(t)
@@ -468,7 +451,7 @@ function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init,
         local t = {}
         table.insert(t, tips)
         if self.ViewDesktopTypeBase.Ante > 0 then
-            table.insert(t,",")
+            table.insert(t, ",")
             table.insert(t, self.ViewDesktopTypeBase.Ante)
         end
         tips = table.concat(t)
@@ -476,19 +459,21 @@ function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init,
     self.TextDesktopDescribe.text = tips
 end
 
+---------------------------------------
 function ViewDesktopTexas:playerSitInDesk(seat_index)
     local chair_info = self:_getSeatInfoFromNoPlayerSeat(seat_index)
-    if (chair_info ~= nil)
-    then
+    if (chair_info ~= nil) then
         self.MapValidNoPlayerSeat[seat_index] = nil
     end
     self.ViewDesktopTypeBase:_checkSeat()
 end
 
+---------------------------------------
 function ViewDesktopTexas:playerLeaveDesk(seat_index)
     self:_playerLeaveSeat(seat_index)
 end
 
+---------------------------------------
 function ViewDesktopTexas:playerOB(seat_index)
     self:_playerLeaveSeat(seat_index)
     --if (self:_meIsSeat() == false)
@@ -497,9 +482,9 @@ function ViewDesktopTexas:playerOB(seat_index)
     --end
 end
 
+---------------------------------------
 function ViewDesktopTexas:playerBuyAndSendItem(map_items)
-    if (map_items == nil)
-    then
+    if (map_items == nil) then
         return
     end
 
@@ -508,19 +493,17 @@ function ViewDesktopTexas:playerBuyAndSendItem(map_items)
         item_data:setData(v)
         local tb_item = self.ViewMgr.TbDataMgr:GetData("Item", item_data.item_tbid)
         local seat_info = self.Desktop:getSeatByGuid(k)
-        if (seat_info ~= nil)
-        then
-            if (tb_item.UnitType == "GiftTmp")
-            then
+        if (seat_info ~= nil) then
+            if (tb_item.UnitType == "GiftTmp") then
                 seat_info.player_texas:setGift(item_data, true)
-            elseif (tb_item.UnitType == "MagicExpression")
-            then
+            elseif (tb_item.UnitType == "MagicExpression") then
                 seat_info.player_texas:sendMagicExp(item_data)
             end
         end
     end
 end
 
+---------------------------------------
 -- Model层有玩家座位改变后，Ui模块跟随刷新
 function ViewDesktopTexas:setCurrentSeatActor(list_player)
     self.MapValidNoPlayerSeat = {}
@@ -528,13 +511,11 @@ function ViewDesktopTexas:setCurrentSeatActor(list_player)
     for k, v in pairs(self.MapAllValidPlayerSeat) do
         local have_actor = false
         for p_k, p_v in pairs(list_player) do
-            if (k == p_v.UiSeatIndex)
-            then
+            if (k == p_v.UiSeatIndex) then
                 have_actor = true
             end
         end
-        if (have_actor == false)
-        then
+        if (have_actor == false) then
             self.MapValidNoPlayerSeat[k] = v
         end
     end
@@ -542,6 +523,7 @@ function ViewDesktopTexas:setCurrentSeatActor(list_player)
     self.ViewDesktopTypeBase:_checkSeat()
 end
 
+---------------------------------------
 function ViewDesktopTexas:showCardTips(best_hand_type, list_cards_type_data, list_cards_all_data, tips, show_tips, is_end)
     local rank_type = best_hand_type--CS.Casinos.HandRankTypeTexas.__CastFrom()
     local need_showhighlight = rank_type ~= CS.Casinos.HandRankTypeTexas.HighCard and rank_type ~= CS.Casinos.HandRankTypeTexas.None
@@ -550,6 +532,7 @@ function ViewDesktopTexas:showCardTips(best_hand_type, list_cards_type_data, lis
     self.DealerEx:showCommonCardType(need_showhighlight, t_list_cards_data, t_list_cards_all_data, is_end)
 end
 
+---------------------------------------
 function ViewDesktopTexas:commonCardShowEnd()
     local ev = self.ViewMgr:getEv("EvCommonCardShowEnd")
     if (ev == nil)
@@ -561,15 +544,16 @@ function ViewDesktopTexas:commonCardShowEnd()
     self:showCommonCardType(false)
 end
 
+---------------------------------------
 function ViewDesktopTexas:commonCardDealEnd()
     local ev = self.ViewMgr:getEv("EvCommonCardDealEnd")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvCommonCardDealEnd:new(nil)
     end
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 -- 仅仅本人在调用，显示公共牌+本人手牌组合后的牌型和黄框
 function ViewDesktopTexas:showCommonCardType(is_gameend)
     self.ListSelfAndCommonCard:Clear()
@@ -590,7 +574,7 @@ function ViewDesktopTexas:showCommonCardType(is_gameend)
     then
         show_cardtype_tips = false
     else
-        card_type_str = self.ViewMgr.LanMgr:getLanValue( CS.Casinos.LuaHelper.ParseHandRankTypeTexasToStr(hand_type))
+        card_type_str = self.ViewMgr.LanMgr:getLanValue(CS.Casinos.LuaHelper.ParseHandRankTypeTexasToStr(hand_type))
     end
 
     self:showCardTips(best_hand.RankType, best_hand.RankTypeCards, best_hand.Cards, card_type_str, show_cardtype_tips, is_gameend)
@@ -603,26 +587,28 @@ function ViewDesktopTexas:showCommonCardType(is_gameend)
     self.ListSelfAndCommonCard:Clear()
 end
 
+---------------------------------------
 function ViewDesktopTexas:getUiSeatInfo(seat_index)
     local chair_info = self.MapAllValidPlayerSeat[seat_index]
     return chair_info
 end
 
+---------------------------------------
 function ViewDesktopTexas:playerSendChipsToPotDone()
     self.UiPot:showPotValue()
 end
 
+---------------------------------------
 function ViewDesktopTexas:_meIsSeat()
     local me_seated = false
-    if (self.Desktop.MeP ~= nil)
-    then
+    if (self.Desktop.MeP ~= nil) then
         local me_seatindex = self.Desktop.MeP.UiSeatIndex
         me_seated = self.Desktop:isValidSeatIndex(me_seatindex)
     end
-
     return me_seated
 end
 
+---------------------------------------
 -- 快照消息中，View处理自身所需显示内容。Screenshot->Snapshot
 function ViewDesktopTexas:_showCurrentScreenshot(current_state, gotoend_state)
     self.UiChipMgr:resetChips()
@@ -638,6 +624,7 @@ function ViewDesktopTexas:_showCurrentScreenshot(current_state, gotoend_state)
     end
 end
 
+---------------------------------------
 function ViewDesktopTexas:_playerLeaveSeat(seat_index)
     local seat_logic = seat_index
     if (self.Desktop.SeatNum == 5)
@@ -658,11 +645,13 @@ function ViewDesktopTexas:_playerLeaveSeat(seat_index)
     end
 end
 
+---------------------------------------
 function ViewDesktopTexas:_setNewChatCount(chat_count)
     self.NewFriendChatCount = chat_count
     self:_haveNewChatOrMailRecord()
 end
 
+---------------------------------------
 function ViewDesktopTexas:_haveNewChatOrMailRecord()
     local com_mailTips_temp = self.ComUi:GetChild("ComMailTips")
     if (com_mailTips_temp ~= nil)
@@ -689,16 +678,19 @@ function ViewDesktopTexas:_haveNewChatOrMailRecord()
     end
 end
 
+---------------------------------------
 function ViewDesktopTexas:_showCurrentLocalTm()
     local tm = self:_getCurrentLocalTime()
     self.GTextTm.text = tm
 end
 
+---------------------------------------
 function ViewDesktopTexas:_onClickDesktopChat()
     local ui_chat = self.ViewMgr:createView("Chat")
     ui_chat:init(_eUiChatType.Desktop)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_onClickFriend()
     local ev = self.ViewMgr:getEv("EvUiClickFriend")
     if (ev == nil)
@@ -708,10 +700,12 @@ function ViewDesktopTexas:_onClickFriend()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 --function ViewDesktopTexas:_onClickHelp()
 --    self.ViewMgr:createView("DesktopHintsTexas")
 --end
 
+---------------------------------------
 function ViewDesktopTexas:_onClickLockChat()
     local ev = self.ViewMgr:getEv("EvUiDesktopClickLockChat")
     if (ev == nil)
@@ -721,6 +715,7 @@ function ViewDesktopTexas:_onClickLockChat()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_onClickFriendChat()
     local ev = self.ViewMgr:getEv("EvUiClickChatmsg")
     if (ev == nil)
@@ -730,10 +725,12 @@ function ViewDesktopTexas:_onClickFriendChat()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_onClickNotice()
     self.ViewMgr:createView("Notice")
 end
 
+---------------------------------------
 function ViewDesktopTexas:_onClickChair(context)
     local s = CS.Casinos.LuaHelper.EventDispatcherCastToGComponent(context.sender)
     for k, v in pairs(self.MapValidNoPlayerSeat) do
@@ -765,10 +762,12 @@ function ViewDesktopTexas:_onClickChair(context)
     end
 end
 
+---------------------------------------
 function ViewDesktopTexas:_deskIdle()
     ViewHelper:setGObjectVisible(false, self.GGroupCard)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_preflopBegin(pot_total, list_pot)
     ViewHelper:setGObjectVisible(false, self.ComWaitingBegine)
     self.UiPot:resetPot()
@@ -778,6 +777,7 @@ function ViewDesktopTexas:_preflopBegin(pot_total, list_pot)
     --self:resetComminityShow()
 end
 
+---------------------------------------
 function ViewDesktopTexas:_flop(first_card, second_card, third_card, bet_player_count)
     self.DealerEx:showCommonCard(first_card, self.GComCommunityCard1, bet_player_count)
     self.DealerEx:showCommonCard(second_card, self.GComCommunityCard2, bet_player_count)
@@ -786,15 +786,18 @@ function ViewDesktopTexas:_flop(first_card, second_card, third_card, bet_player_
     self.DealerEx:resetCard(self.GComCommunityCard5)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_turn(turn_card, bet_player_count)
     self.DealerEx:showCommonCard(turn_card, self.GComCommunityCard4, bet_player_count)
     self.DealerEx:resetCard(self.GComCommunityCard5)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_river(river_card, bet_player_count)
     self.DealerEx:showCommonCard(river_card, self.GComCommunityCard5, bet_player_count)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_showDown(desktop_showdown)
     local carddata_left = desktop_showdown.list_carddata_left
     local left_cards = #carddata_left
@@ -831,6 +834,7 @@ function ViewDesktopTexas:_showDown(desktop_showdown)
     end
 end
 
+---------------------------------------
 function ViewDesktopTexas:_gameEnd(list_winner)
     self.ListWinnerPlayerInfo = {}
     self.DealerEx:hideCommonCardType()
@@ -853,6 +857,7 @@ function ViewDesktopTexas:_gameEnd(list_winner)
     )
 end
 
+---------------------------------------
 function ViewDesktopTexas:_onClickBtnLotteryTicket()
     local ev = self.ViewMgr:getEv("EvEntityRequestGetLotteryTicketData")
     if (ev == nil)
@@ -864,6 +869,7 @@ function ViewDesktopTexas:_onClickBtnLotteryTicket()
     self.ViewMgr:createView("LotteryTicket")
 end
 
+---------------------------------------
 -- 所有玩家发牌
 function ViewDesktopTexas:_dealCard()
     ViewHelper:setGObjectVisible(true, self.GGroupCard)
@@ -882,14 +888,14 @@ function ViewDesktopTexas:_dealCard()
     self.DealerEx:dealPlayerCard(self.ListAllPlayer,
             function()
                 self:_dealCardDone()
-            end
-    , function(player)
+            end, function(player)
                 self:_dealOnePlayerCard(player)
             end
     )
     self.ListAllPlayer = {}
 end
 
+---------------------------------------
 function ViewDesktopTexas:_dealOnePlayerCard(player)
     if (player == nil or player.UiDesktopPlayerInfo == nil)
     then
@@ -904,7 +910,7 @@ function ViewDesktopTexas:_dealOnePlayerCard(player)
     local player_info = player_texas.UiDesktopPlayerInfo
     local seat_widget = player_info.PlayerSeatWidgetControllerEx.SeatWidget
     local one_p = seat_widget.GImageCardFirst.displayObject.gameObject.transform.localPosition
-    local one_p2 = CS.Casinos.LuaHelper.GetVector2(one_p.x,-one_p.y)
+    local one_p2 = CS.Casinos.LuaHelper.GetVector2(one_p.x, -one_p.y)
     local one_to_p = player_info.ComUi:TransformPoint(one_p2, self.ComUi)
     card_one_clone:init(self.GComDealer.xy, one_to_p, seat_widget.GImageCardFirst.size, seat_widget.GImageCardFirst.rotation,
             0.5, "fapai",
@@ -919,7 +925,7 @@ function ViewDesktopTexas:_dealOnePlayerCard(player)
     )
     card_one_clone:deal()
     local two_p = seat_widget.GImageCardSecond.displayObject.gameObject.transform.localPosition
-    local two_p2 = CS.Casinos.LuaHelper.GetVector2(two_p.x,-two_p.y)
+    local two_p2 = CS.Casinos.LuaHelper.GetVector2(two_p.x, -two_p.y)
     local two_to_p = player_info.ComUi:TransformPoint(two_p2, self.ComUi)
     card_two_clone:init(self.GComDealer.xy, two_to_p, seat_widget.GImageCardSecond.size, seat_widget.GImageCardSecond.rotation,
             0.5, "fapai",
@@ -930,6 +936,7 @@ function ViewDesktopTexas:_dealOnePlayerCard(player)
     card_two_clone:deal()
 end
 
+---------------------------------------
 -- 所有玩家发牌完成后的回调
 function ViewDesktopTexas:_dealCardDone()
     if (self.Desktop.DesktopState == TexasDesktopState.PreFlop)
@@ -942,11 +949,13 @@ function ViewDesktopTexas:_dealCardDone()
     end
 end
 
+---------------------------------------
 function ViewDesktopTexas:_getSeatInfoFromNoPlayerSeat(chair_index)
     local seat_info = self.MapValidNoPlayerSeat[chair_index]
     return seat_info
 end
 
+---------------------------------------
 function ViewDesktopTexas:_showDesktopScreenshot(goto_endstate, is_gameend)
     if (goto_endstate == TexasDesktopState.PreFlop)
     then
@@ -974,6 +983,7 @@ function ViewDesktopTexas:_showDesktopScreenshot(goto_endstate, is_gameend)
     end
 end
 
+---------------------------------------
 function ViewDesktopTexas:_showPreflopScreenshot()
     self.DealerEx:showCommonCardScreenshot(nil, self.GComCommunityCard1)
     self.DealerEx:showCommonCardScreenshot(nil, self.GComCommunityCard2)
@@ -982,22 +992,26 @@ function ViewDesktopTexas:_showPreflopScreenshot()
     self.DealerEx:resetCard(self.GComCommunityCard5)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_showFlopScreenshot()
     self.DealerEx:showCommonCardScreenshot(self.Desktop.CommunityCards[1], self.GComCommunityCard1)
     self.DealerEx:showCommonCardScreenshot(self.Desktop.CommunityCards[2], self.GComCommunityCard2)
     self.DealerEx:showCommonCardScreenshot(self.Desktop.CommunityCards[3], self.GComCommunityCard3)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_showTurnScreenshot()
     self:_showFlopScreenshot()
     self.DealerEx:showCommonCardScreenshot(self.Desktop.CommunityCards[4], self.GComCommunityCard4)
 end
 
+---------------------------------------
 function ViewDesktopTexas:_showRiverScreenshot()
     self:_showTurnScreenshot()
     self.DealerEx:showCommonCardScreenshot(self.Desktop.CommunityCards[5], self.GComCommunityCard5)
 end
 
+---------------------------------------
 function ViewDesktopTexas:updateLotteryTickTm(tm)
     if (self.GTextLotteryTicketTips == nil)
     then
@@ -1006,12 +1020,13 @@ function ViewDesktopTexas:updateLotteryTickTm(tm)
 
     if (tm > 0)
     then
-        self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:getLanValue( "S")
+        self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:getLanValue("S")
     else
-        self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue( "Settlement")
+        self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
     end
 end
 
+---------------------------------------
 function ViewDesktopTexas:_setLotteryTicketInfo(state, left_tm)
     local tips = ""
     if (state == LotteryTicketStateEnum.Bet)
@@ -1019,7 +1034,7 @@ function ViewDesktopTexas:_setLotteryTicketInfo(state, left_tm)
         local tm = math.ceil(left_tm)
         tips = tm .. self.ViewMgr.LanMgr:getLanValue("S")
     else
-        tips = self.ViewMgr.LanMgr:getLanValue( "Settlement")
+        tips = self.ViewMgr.LanMgr:getLanValue("Settlement")
     end
     if (self.GTextLotteryTicketTips ~= nil)
     then
@@ -1027,11 +1042,13 @@ function ViewDesktopTexas:_setLotteryTicketInfo(state, left_tm)
     end
 end
 
+---------------------------------------
 function ViewDesktopTexas:getPlayer(player_guid)
     local l = self.DesktopBase:GetDesktopPlayerByGuid(player_guid)
     return l
 end
 
+---------------------------------------
 function ViewDesktopTexas:_getNewWorkSignName()
     local net_work_sign = ""
     if (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.NotReachable)
@@ -1048,19 +1065,23 @@ function ViewDesktopTexas:_getNewWorkSignName()
     return net_work_sign
 end
 
+---------------------------------------
 function ViewDesktopTexas:_getCurrentLocalTime()
     local now = CS.Casinos.LuaHelper.GetNowFormat("HH:mm")
     return now
 end
 
+---------------------------------------
 function ViewDesktopTexas:regViewDesktopTypeBaseFactory(desktop_fac)
     self.MapViewDesktopTypeBaseFac[desktop_fac:GetName()] = desktop_fac
 end
 
+---------------------------------------
 function ViewDesktopTexas:GetViewDesktopTypeBaseFactory(fac_name)
     return self.MapViewDesktopTypeBaseFac[fac_name]
 end
 
+---------------------------------------
 -- 播放本人“你赢了”3个字的动画
 function ViewDesktopTexas:showMeWin()
     ViewHelper:setGObjectVisible(true, self.ComMeWin)
@@ -1070,6 +1091,7 @@ function ViewDesktopTexas:showMeWin()
     end)
 end
 
+---------------------------------------
 -- 左上角菜单按钮小红点呼吸动画
 function ViewDesktopTexas:setNewReward()
     local have_newreward = false
@@ -1090,8 +1112,10 @@ function ViewDesktopTexas:setNewReward()
     end
 end
 
+---------------------------------------
 ViewDesktopTexasFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewDesktopTexasFactory:new(o, ui_package_name, ui_component_name,
                                      ui_layer, is_single, fit_screen)
     o = o or {}
@@ -1105,6 +1129,7 @@ function ViewDesktopTexasFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewDesktopTexasFactory:createView()
     local view = ViewDesktopTexas:new(nil)
     return view

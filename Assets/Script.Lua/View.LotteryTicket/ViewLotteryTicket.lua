@@ -112,9 +112,9 @@ end
 
 ---------------------------------------
 function ViewLotteryTicket:onUpdate(tm)
-    if (self.CasinosContext.Pause) then
-        return
-    end
+    --if (self.CasinosContext.Pause) then
+    --    return
+    --end
 end
 
 ---------------------------------------

@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewTexasClassic = ViewDesktopTypeBase:new()
 
+---------------------------------------
 function ViewTexasClassic:new(o,view_desktop)
     o = o or {}
     setmetatable(o,self)
@@ -37,10 +39,11 @@ function ViewTexasClassic:new(o,view_desktop)
     return o
 end
 
+---------------------------------------
 function ViewTexasClassic:onHandleEv(ev)
-
 end
 
+---------------------------------------
 function ViewTexasClassic:setSnapShot(snapshot,is_init)
     self.Ante = snapshot.normal_texas.Ante
     if is_init == true then
@@ -75,10 +78,11 @@ function ViewTexasClassic:setSnapShot(snapshot,is_init)
     end
 end
 
+---------------------------------------
 function ViewTexasClassic:preflopBegin()
-
 end
 
+---------------------------------------
 function ViewTexasClassic:_checkSeat()
     for k, v in pairs(self.ViewDesktop.MapAllValidPlayerSeat)
     do
@@ -110,6 +114,7 @@ function ViewTexasClassic:_checkSeat()
     end
 end
 
+---------------------------------------
 function ViewTexasClassic:_onClickMenu()
     local desk_menu = self.ViewDesktop.ViewMgr:createView("DesktopMenuTexas")
     desk_menu:setPlayerState(self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.Ob,
@@ -117,6 +122,7 @@ function ViewTexasClassic:_onClickMenu()
             self.ViewDesktop.CanGetOnLineReward or self.ViewDesktop.CanGetTimingReward)
 end
 
+---------------------------------------
 function ViewTexasClassic:_onClickShop()
     local ev = self.ViewDesktop.ViewMgr:getEv("EvUiClickShop")
     if (ev == nil)
@@ -126,20 +132,23 @@ function ViewTexasClassic:_onClickShop()
     self.ViewDesktop.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 ViewTexasClassicTypeFactory = {}
 
+---------------------------------------
 function ViewTexasClassicTypeFactory:new(o)
     o = o or {}
     setmetatable(o,self)
     self.__index = self
-
     return o
 end
 
+---------------------------------------
 function ViewTexasClassicTypeFactory:GetName()
     return "TexasClassic"
 end
 
+---------------------------------------
 function ViewTexasClassicTypeFactory:CreateViewDesktopType(view_desktop)
     local l = ViewTexasClassic:new(nil, view_desktop)
     return l

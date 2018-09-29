@@ -141,6 +141,7 @@ function DesktopHUiGold:_reset()
     --end
     if self.Tweener ~= nil then
         self.Tweener:Kill()
+        self.Tweener = nil
     end
     if (self.GCoGold ~= nil and self.GCoGold.displayObject.gameObject ~= nil) then
         self.GCoGold:SetXY(10000,10000)

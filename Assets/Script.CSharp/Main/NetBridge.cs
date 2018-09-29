@@ -66,10 +66,11 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _onSocketError(object rec, SocketErrorEventArgs args)
         {
-            Debug.LogError(args.Exception.Message);
-
-            BuglyAgent.PrintLog(LogSeverity.Log, args.Exception.Message);
-            BuglyAgent.ReportException(args.Exception, args.Exception.Message);
+            if (args != null && args.Exception != null)
+            {
+                BuglyAgent.PrintLog(LogSeverity.Log, args.Exception.Message);
+                BuglyAgent.ReportException(args.Exception, args.Exception.Message);
+            }
 
             _onSocketClose();
         }

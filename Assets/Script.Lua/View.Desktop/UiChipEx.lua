@@ -25,7 +25,7 @@ function UiChipEx:new(o, com_chip, chip_mgr)
 end
 
 ---------------------------------------
-function UiChipEx:init(from, to, move_time,delay, move_sound, chip_type, move_end, start_movenotify)
+function UiChipEx:init(from, to, move_time, delay, move_sound, chip_type, move_end, start_movenotify)
     if (self.GComChip == nil) then
         self:_resetChip()
     end
@@ -48,8 +48,8 @@ function UiChipEx:reset()
         return
     end
 
-    self.From = CS.Casinos.LuaHelper.GetVector2(0,0)
-    self.To = CS.Casinos.LuaHelper.GetVector2(0,0)
+    self.From = CS.Casinos.LuaHelper.GetVector2(0, 0)
+    self.To = CS.Casinos.LuaHelper.GetVector2(0, 0)
     self:_resetChip()
     ViewHelper:setGObjectVisible(false, self.GComChip)
     self.MoveEndCallBack = nil
@@ -82,7 +82,7 @@ function UiChipEx:moveAndScale()
     end
 
     CS.Casinos.UiHelper.setGObjectVisible(true, self.GComChip)
-    self.TweenerMove = self.GComChip.TweenMove(self.From, self.To, self.MoveTime, true):SetDelay(self.Delay):SetEase(CS.FairyGUI.EaseType.SineInOut):OnComplete(
+    self.TweenerMove = self.GComChip:TweenMove(self.To, self.MoveTime):SetSnapping(true):SetDelay(self.Delay):SetEase(CS.FairyGUI.EaseType.SineInOut):OnComplete(
             function()
                 self.ChipMgr:chipEnquee(self)
             end)
@@ -95,7 +95,7 @@ function UiChipEx:move(from, to, move_end)
         self:_resetChip()
         return
     end
-    self.TweenerMove = CS.Casinos.UiDoTweenHelper.TweenMove(self.GComChip, from, to, self.MoveTime, true):OnComplete(move_end)
+    self.TweenerMove = self.GComChip:TweenMove(to, self.MoveTime):SetSnapping(true):OnComplete(move_end)
 end
 
 ---------------------------------------
@@ -116,6 +116,6 @@ function UiChipEx:_resetChip()
         self.TweenerScale:Kill()
         self.TweenerScale = nil
     end
-    self.GComChip:SetXY(10000,10000)
-    self.GComChip.scale = CS.Casinos.LuaHelper.GetVector2(1,1)
+    self.GComChip:SetXY(10000, 10000)
+    self.GComChip.scale = CS.Casinos.LuaHelper.GetVector2(1, 1)
 end

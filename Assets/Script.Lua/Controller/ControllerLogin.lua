@@ -841,13 +841,11 @@ end
 function ControllerLogin:_disconnect()
     self.AccId = nil
     self.Token = nil
-    c.NetBridge:disconnect()
+    self.CasinosContext.NetBridge:disconnect()
 end
 
 ---------------------------------------
 function ControllerLogin:_init(is_init)
-    local c = CS.Casinos.CasinosContext.Instance
-
     -- 显示登录界面
     ViewHelper:UiEndWaiting()
     --local pre_loading = c:getPreView("PreLoading")
@@ -856,8 +854,7 @@ function ControllerLogin:_init(is_init)
     local pwd = ""
     local view_login = self.ViewMgr:createView("Login")
     self.RequestThirdPartyLogin = false
-    if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey)) then
         local s = CS.UnityEngine.PlayerPrefs.GetString(self.LoginAccountInfoKey)
         local t_decode = self.ControllerMgr.Listener.Json.decode(s)
         local infos = LoginAccountInfos:new(nil)
@@ -867,19 +864,16 @@ function ControllerLogin:_init(is_init)
         if is_init then
             self.AutoLogin = true
             view_login:Switch2Logining()
-            if (a_info_last_login.LoginType == 0)
-            then
+            if (a_info_last_login.LoginType == 0) then
                 acc = a_info_last_login.AccName
                 pwd = a_info_last_login.Pwd
                 self.RemeberPwd = true
                 self.Phone = a_info_last_login.AccName
                 self.Password = pwd
                 self:requestLogin("", pwd, a_info_last_login.Phone, "", "")
-            elseif (a_info_last_login.LoginType == 1)
-            then
+            elseif (a_info_last_login.LoginType == 1) then
                 self:requestGuestAccess()
-            elseif (a_info_last_login.LoginType == 2)
-            then
+            elseif (a_info_last_login.LoginType == 2) then
                 CS.Casinos.CasinosContext.Instance.LoginType = 2
                 local r = AccountWeChatAutoLoginRequest:new(nil)
                 r.AppId = CS.Casinos.CasinosContext.Instance.Config.WeChatAppId
@@ -892,8 +886,7 @@ function ControllerLogin:_init(is_init)
             end
         else
             local a_info_acc_login = infos.TLoginAccountInfo["0"]
-            if (a_info_acc_login ~= nil)
-            then
+            if (a_info_acc_login ~= nil) then
                 acc = a_info_acc_login.AccName
                 pwd = a_info_acc_login.Pwd
             end
@@ -902,7 +895,7 @@ function ControllerLogin:_init(is_init)
 
     view_login:SetAccPwd(acc, pwd)
     self.ViewMgr:createView("Pool")
-    c:Play("background", CS.Casinos._eSoundLayer.Background)
+    self.CasinosContext:Play("background", CS.Casinos._eSoundLayer.Background)
 end
 
 ---------------------------------------
@@ -919,23 +912,19 @@ end
 ---------------------------------------
 function ControllerLogin:_clickCheckDataCallBack(bo)
     if bo == false then
-        if (self.ControllerUCenter.WWWLogin ~= nil)
-        then
+        if (self.ControllerUCenter.WWWLogin ~= nil) then
             local info = self.ControllerMgr.LanMgr:getLanValue("Logining")
             ViewHelper:UiShowInfoFailed(info)
         else
-            if (self.LoginType == 1)
-            then
+            if (self.LoginType == 1) then
                 self:requestGuestAccess()
             end
 
-            if (self.LoginType == 0)
-            then
+            if (self.LoginType == 0) then
                 self:requestLogin("", self.Pwd, self.Acc, "", "")
             end
 
-            if (self.LoginType == 2)
-            then
+            if (self.LoginType == 2) then
                 ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("WeChatLogining"), 10)
                 self.RequestThirdPartyLogin = true
             end
@@ -951,23 +940,19 @@ end
 ---------------------------------------
 function ControllerLogin:_autoCheckDataCallBack(bo)
     if bo == false then
-        if (self.ControllerUCenter.WWWLogin ~= nil)
-        then
+        if (self.ControllerUCenter.WWWLogin ~= nil) then
             local info = self.ControllerMgr.LanMgr:getLanValue("Logining")
             ViewHelper:UiShowInfoFailed(info)
         else
-            if (self.LoginType == 1)
-            then
+            if (self.LoginType == 1) then
                 self:requestGuestAccess()
             end
 
-            if (self.LoginType == 0)
-            then
+            if (self.LoginType == 0) then
                 self:requestLogin("", self.Pwd, self.Acc, "", "")
             end
 
-            if (self.LoginType == 2)
-            then
+            if (self.LoginType == 2) then
                 ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("WeChatLogining"), 10)
                 self.RequestThirdPartyLogin = true
             end
