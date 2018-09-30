@@ -66,10 +66,6 @@ function PreViewMsgBox:onDestroy()
 end
 
 ---------------------------------------
-function PreViewMsgBox:onUpdate(tm)		
-end
-
----------------------------------------
 function PreViewMsgBox:onHandleEv(ev)	
 end
 

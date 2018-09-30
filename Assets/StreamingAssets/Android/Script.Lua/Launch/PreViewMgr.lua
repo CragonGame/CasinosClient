@@ -28,6 +28,8 @@ PreViewMgr = {
     TableViewMultiple = {},
     TableMaxDepth = {},
     TableUpdateView = {},
+    CasinosContext = CS.Casinos.CasinosContext.Instance,
+    CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
 }
 
 ---------------------------------------
@@ -35,8 +37,7 @@ function PreViewMgr:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
     end
     return self.Instance
@@ -59,19 +60,8 @@ function PreViewMgr:Release()
 end
 
 ---------------------------------------
-function PreViewMgr:Update(tm)
-    for k, v in pairs(PreViewMgr.TableViewSingle) do
-        if (v ~= nil)
-        then
-            v:onUpdate(tm)
-        end
-    end
-end
-
----------------------------------------
 function PreViewMgr.regView(view_key, view_factory)
-    if (view_factory ~= nil)
-    then
+    if (view_factory ~= nil) then
         PreViewMgr.TableViewFactory[view_key] = view_factory
     end
 end
@@ -79,14 +69,12 @@ end
 ---------------------------------------
 function PreViewMgr.createView(view_key)
     local view_factory = PreViewMgr.TableViewFactory[view_key]
-    if (view_factory == nil)
-    then
+    if (view_factory == nil) then
         return nil
     end
 
     local view = PreViewMgr.TableViewSingle[view_key]
-    if (view_factory.IsSingle and view ~= nil)
-    then
+    if (view_factory.IsSingle and view ~= nil) then
         return view
     end
 
@@ -108,13 +96,11 @@ function PreViewMgr.createView(view_key)
     view.ViewKey = view_key
     view:onCreate()
 
-    if (view_factory.IsSingle)
-    then
+    if (view_factory.IsSingle) then
         PreViewMgr.TableViewSingle[view_key] = view
     else
         local table_multiple = PreViewMgr.TableViewMultiple[view_key]
-        if (table_multiple == nil)
-        then
+        if (table_multiple == nil) then
             table_multiple = {}
             PreViewMgr.TableViewMultiple[view_key] = table_multiple
         end
@@ -122,8 +108,7 @@ function PreViewMgr.createView(view_key)
     end
 
     local depth_layer = PreViewMgr.TableMaxDepth[view_factory.UILayer]
-    if (depth_layer == nil)
-    then
+    if (depth_layer == nil) then
         depth_layer = PreTableUiLayer[view_factory.UILayer]
         view.InitDepth = depth_layer
     else
@@ -139,24 +124,22 @@ end
 
 ---------------------------------------
 function PreViewMgr.destroyView(view)
-    if (view ~= nil)
-    then
+    if (view ~= nil) then
         local view_key = view.ViewKey
         local view_ex = PreViewMgr.TableViewSingle[view_key]
-        if (view_ex ~= nil)
-        then
+        if (view_ex ~= nil) then
             view:onDestroy()
             PreViewMgr.TableViewSingle[view_key] = nil
         else
             local table_multiple = PreViewMgr.TableViewMultiple[view_key]
-            if (table_multiple ~= null)
-            then
+            if (table_multiple ~= null) then
                 view:onDestroy()
                 table_multiple[view] = nil
             end
         end
-        PreViewMgr.TableMaxDepth[view.UILayer] = view.InitDepth;
-        CS.UnityEngine.GameObject.Destroy(view.GoUi)
+        PreViewMgr.TableMaxDepth[view.UILayer] = view.InitDepth
+        PreViewMgr.CasinosLua:DestroyGameObject(view.GoUi)
+        view = nil
     end
 end
 
@@ -171,30 +154,29 @@ function PreViewMgr.destroyAllView()
     for k, v in pairs(PreViewMgr.TableViewSingle) do
         PreViewMgr.TableMaxDepth[v.UILayer] = v.InitDepth
         v:onDestroy()
-        CS.UnityEngine.GameObject.Destroy(v.GoUi)
+        PreViewMgr.CasinosLua:DestroyGameObject(v.GoUi)
+        --CS.UnityEngine.GameObject.Destroy(v.GoUi)
     end
 
     for k, v in pairs(PreViewMgr.TableViewMultiple) do
         for k1, v1 in pairs(v) do
             PreViewMgr.TableMaxDepth[v.UILayer] = v.InitDepth
             v:onDestroy()
-            CS.UnityEngine.GameObject.Destroy(v.GoUi)
+            PreViewMgr.CasinosLua:DestroyGameObject(v.GoUi)
         end
     end
 end
 
 ---------------------------------------
 function PreViewMgr:bindEvListener(ev_name, ev_listener)
-    if (PreViewMgr.EventSys ~= nil)
-    then
+    if (PreViewMgr.EventSys ~= nil) then
         PreViewMgr.EventSys:bindEvListener(ev_name, ev_listener)
     end
 end
 
 ---------------------------------------
 function PreViewMgr:unbindEvListener(ev_listener)
-    if (PreViewMgr.EventSys ~= nil)
-    then
+    if (PreViewMgr.EventSys ~= nil) then
         PreViewMgr.EventSys:unbindEvListener(ev_listener)
     end
 end
@@ -202,8 +184,7 @@ end
 ---------------------------------------
 function PreViewMgr:getEv(ev_name)
     local ev = nil
-    if (PreViewMgr.EventSys ~= nil)
-    then
+    if (PreViewMgr.EventSys ~= nil) then
         ev = PreViewMgr.EventSys:getEv(ev_name)
     end
     return ev
@@ -211,8 +192,7 @@ end
 
 ---------------------------------------
 function PreViewMgr:sendEv(ev)
-    if (PreViewMgr.EventSys ~= nil)
-    then
+    if (PreViewMgr.EventSys ~= nil) then
         PreViewMgr.EventSys:sendEv(ev)
     end
 end
@@ -223,7 +203,6 @@ function PreViewMgr:GetTableCount(t)
     for k, v in pairs(t) do
         count = count + 1
     end
-
     return count
 end
 
@@ -231,14 +210,11 @@ end
 function PreViewMgr:GetAndRemoveTableFirstEle(t)
     local key = nil
     local value = nil
-
     for k, v in pairs(t) do
         key = k
         value = v
         break
     end
-
     t[key] = nil
-
     return key, value
 end

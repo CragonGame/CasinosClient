@@ -113,10 +113,6 @@ function PreViewLoading:onDestroy()
 end
 
 ---------------------------------------
-function PreViewLoading:onUpdate(tm)
-end
-
----------------------------------------
 function PreViewLoading:onHandleEv(ev)
 end
 

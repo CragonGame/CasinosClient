@@ -55,6 +55,8 @@ function ViewMgr:new(o)
         self.TableUpdateView = {}
         self.ControllerMgr = nil
         self.LanMgr = nil
+        self.CasinosContext = CS.Casinos.CasinosContext.Instance
+        self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     end
     return self.Instance
 end
@@ -94,8 +96,7 @@ end
 
 ---------------------------------------
 function ViewMgr:regView(view_key, view_factory)
-    if (view_factory ~= nil)
-    then
+    if (view_factory ~= nil) then
         self.TableViewFactory[view_key] = view_factory
     end
 end
@@ -155,7 +156,7 @@ function ViewMgr:createView(view_key)
             view_factory.UILayer == "NomalUiMain" or
             view_factory.UILayer == "NomalUi" or
             view_factory.UILayer == "QuitGame") then
-        CS.Casinos.CasinosContext.Instance:Play("CreateDialog", CS.Casinos._eSoundLayer.LayerReplace)
+        self.CasinosContext:Play("CreateDialog", CS.Casinos._eSoundLayer.LayerReplace)
     end
     return view
 end
@@ -182,7 +183,7 @@ function ViewMgr:destroyView(view)
                 view.UILayer == "NomalUiMain" or
                 view.UILayer == "NomalUi" or
                 view.UILayer == "QuitGame") then
-            CS.Casinos.CasinosContext.Instance:Play("DestroyDialog", CS.Casinos._eSoundLayer.LayerReplace)
+            self.CasinosContext:Play("DestroyDialog", CS.Casinos._eSoundLayer.LayerReplace)
         end
         view = nil
     end
@@ -208,7 +209,7 @@ function ViewMgr:destroyAllView()
     for k, v in pairs(table_need_destroyui) do
         self.TableMaxDepth[v.UILayer] = v.InitDepth
         v:onDestroy()
-        CS.UnityEngine.GameObject.Destroy(v.GoUi)
+        self.CasinosLua:DestroyGameObject(v.GoUi)
         v = nil
     end
     self.TableViewSingle = {}
@@ -242,7 +243,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
             self.TableMaxDepth[layer] = v.InitDepth
             v:onDestroy()
             v.ComUi:Dispose()
-            CS.UnityEngine.GameObject.Destroy(v.GoUi)
+            self.CasinosLua:DestroyGameObject(v.GoUi)
         end
     end
     map_need_destroyui = {}
@@ -270,7 +271,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
                 self.TableMaxDepth[layer] = v_v.InitDepth
                 v_v:onDestroy()
                 v_v.ComUi:Dispose()
-                CS.UnityEngine.GameObject.Destroy(v_v.GoUi)
+                self.CasinosLua:DestroyGameObject(v.GoUi)
             end
         end
     end

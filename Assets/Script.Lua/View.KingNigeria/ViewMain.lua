@@ -443,8 +443,7 @@ function ViewMain:onUpdate(tm)
 end
 
 function ViewMain:onDestroy()
-    if (self.CasinosContext.NeedHideClientUi == false)
-    then
+    if (self.CasinosContext.NeedHideClientUi == false) then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.ParticleDeskTop)

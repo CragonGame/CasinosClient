@@ -80,12 +80,10 @@ end
 ---------------------------------------
 -- Launch阶段完成
 function Launch:Finish()
-
     if (self.PreMsgBox ~= nil) then
         self.PreViewMgr.destroyView(self.PreMsgBox)
         self.PreMsgBox = nil
     end
-
     if (self.PreLoading ~= nil) then
         self.PreViewMgr.destroyView(self.PreLoading)
         self.PreLoading = nil
@@ -102,14 +100,11 @@ function Launch:Finish()
     package.preload['PreViewBase'] = nil
     package.loaded['PreViewBase'] = nil
 
-    if (self.UIPackagePreLoading ~= nil)
-    then
+    if (self.UIPackagePreLoading ~= nil) then
         self.UIPackagePreLoading:UnloadAssets()
         self.UIPackagePreLoading = nil
     end
-
-    if (self.UIPackageMsgbox ~= nil)
-    then
+    if (self.UIPackageMsgbox ~= nil) then
         self.UIPackageMsgbox:UnloadAssets()
         self.UIPackageMsgbox = nil
     end

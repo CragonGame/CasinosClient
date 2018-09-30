@@ -420,6 +420,12 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void DestroyGameObject(GameObject o)
+        {
+            UnityEngine.Object.Destroy(o);
+        }
+
+        //---------------------------------------------------------------------
         // 自定义Lua文件加载函数
         byte[] LuaLoaderCustom(ref string file_name)
         {
