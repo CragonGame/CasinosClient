@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewDesktopPlayerOperateTexas = ViewBase:new()
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -38,10 +40,10 @@ function ViewDesktopPlayerOperateTexas:new(o)
     o.MeTurnData = nil-- 是服务器传过来的本人TurnData的副本，会被延时使用，使用时根据服务端传过来的可操作列表显示对应的操作条
     o.CanShowOperate = false-- 判定上面变量的延时是否完成
     o.SliderMoved = false-- 滑条bug保护，丢弃首次自动Click按钮事件
-
     return o
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:onCreate()
     self.ViewMgr:bindEvListener("EvCommonCardShowEnd", self)
     self.ViewMgr:bindEvListener("EvCommonCardDealEnd", self)
@@ -180,10 +182,12 @@ function ViewDesktopPlayerOperateTexas:onCreate()
     self.PlayerOperateAni = PlayerOperateAni:new(nil, self.ComUi)
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:onDestroy()
     self.ViewMgr:unbindEvListener(self)
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:onHandleEv(ev)
     if (ev ~= nil)
     then
@@ -218,6 +222,7 @@ function ViewDesktopPlayerOperateTexas:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:setMeActorMirror(player)
     self.DesktopPlayerTexas = player
     self:meStateChange(self.DesktopPlayerTexas.PlayerDataDesktop.DesktopPlayerState)
@@ -229,6 +234,7 @@ function ViewDesktopPlayerOperateTexas:setMeActorMirror(player)
     self.CurrentRaiseGold = 0
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:showDown()
     self.CanShowOperate = false
     ViewHelper:setGObjectVisible(false, self.GSliderRise)
@@ -238,6 +244,7 @@ function ViewDesktopPlayerOperateTexas:showDown()
     self.PlayerOperateAni:reset()
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:gameEnd()
     self.CanShowOperate = false
     ViewHelper:setGObjectVisible(false, self.GSliderRise)
@@ -247,6 +254,7 @@ function ViewDesktopPlayerOperateTexas:gameEnd()
     self.PlayerOperateAni:reset()
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:meStateChange(player_state)
     local player_s = player_state--TexasDesktopPlayerState.__CastFrom(player_state)
     if (player_s == TexasDesktopPlayerState.Wait4Next)
@@ -265,6 +273,7 @@ function ViewDesktopPlayerOperateTexas:meStateChange(player_state)
     self.SliderMoved = false
 end
 
+---------------------------------------
 -- 参数含义：call_chip，如果别人Turn，本人需要跟注多少；is_mechange，我的Turn转到别人；is_me，当前Turn是我
 function ViewDesktopPlayerOperateTexas:playerTurnChanged(call_chip, is_mechange, is_me)
     self.IsMeTurn = false
@@ -285,10 +294,12 @@ function ViewDesktopPlayerOperateTexas:playerTurnChanged(call_chip, is_mechange,
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:selfAction()
     self:_resetAutoChooseOperate(nil)
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:isMeTurn(turn_data, auto_show_operate, t_fastbet, call_chip)
     local player_turn_data = turn_data
     for i, v in pairs(t_fastbet) do
@@ -309,6 +320,7 @@ function ViewDesktopPlayerOperateTexas:isMeTurn(turn_data, auto_show_operate, t_
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:preflopBegin()
     self.CanShowOperate = false
     ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
@@ -318,6 +330,7 @@ function ViewDesktopPlayerOperateTexas:preflopBegin()
     ViewHelper:setGObjectVisible(false, self.GSliderRise)
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:stand()
     self.CanShowOperate = false
     ViewHelper:setGObjectVisible(false, self.GSliderRise)
@@ -327,6 +340,7 @@ function ViewDesktopPlayerOperateTexas:stand()
     self.PlayerOperateAni:reset()
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:setLeaveWhileTips(leave_time)
     if (leave_time <= 0)
     then
@@ -337,11 +351,12 @@ function ViewDesktopPlayerOperateTexas:setLeaveWhileTips(leave_time)
         ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
         ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
         ViewHelper:setGObjectVisible(true, self.GGroupLeaveWhile)
-        local tips = string.format("%s(%s)",self.ViewMgr.LanMgr:getLanValue("Continue"), tostring(leave_time))
+        local tips = string.format("%s(%s)", self.ViewMgr.LanMgr:getLanValue("Continue"), tostring(leave_time))
         self.GLeaveTips.text = tips
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_showWait4Next()
     self:_resetAutoChooseOperate(nil)
     ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
@@ -350,6 +365,7 @@ function ViewDesktopPlayerOperateTexas:_showWait4Next()
     ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_setCurrentRaiseChip(current_gold, need_getvalidegold)
     self.CurrentRaiseGold = math.ceil(current_gold)
     if (need_getvalidegold)
@@ -368,6 +384,7 @@ function ViewDesktopPlayerOperateTexas:_setCurrentRaiseChip(current_gold, need_g
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_raise(raise_gold)
     --self.ViewDesktop:setActionTips("")
     local ev = self.ViewMgr:getEv("EvUiClickRaise")
@@ -381,6 +398,7 @@ function ViewDesktopPlayerOperateTexas:_raise(raise_gold)
     ViewHelper:setGObjectVisible(false, self.GSliderRise)
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_resetAutoChooseOperate(obj)
     if obj == nil then
         for i, v in pairs(self.ListAutoOperate) do
@@ -396,6 +414,7 @@ function ViewDesktopPlayerOperateTexas:_resetAutoChooseOperate(obj)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_checkPlayerOperate(is_me_turn, turn_data, call_chip)
     if (self.DesktopPlayerTexas.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.InGame)
     then
@@ -419,6 +438,7 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperate(is_me_turn, turn_data
     end
 end
 
+---------------------------------------
 -- 设置本人操作条和托管操作条的所有按钮以及按钮状态
 function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_data, call_chip)
     local list_valid_action = nil
@@ -544,12 +564,11 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickFold()
-    if (self.DesktopPlayerTexas.DesktopTexas.PlayerTurn.player_guid == self.DesktopPlayerTexas.Guid)
-    then
+    if (self.DesktopPlayerTexas.DesktopTexas.PlayerTurn.player_guid == self.DesktopPlayerTexas.Guid) then
         local ev = self.ViewMgr:getEv("EvUiClickFlod")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvUiClickFlod:new(nil)
         end
         self.ViewMgr:sendEv(ev)
@@ -559,6 +578,7 @@ function ViewDesktopPlayerOperateTexas:_onClickFold()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickFoldOrCheck()
     if ((self.DesktopPlayerTexas.DesktopTexas.PlayerTurn.player_guid ~= self.DesktopPlayerTexas.Guid))
     then
@@ -584,20 +604,18 @@ function ViewDesktopPlayerOperateTexas:_onClickFoldOrCheck()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickCheckOrCall()
-    if (self.DesktopPlayerTexas.DesktopTexas.PlayerTurn.player_guid == self.DesktopPlayerTexas.Guid)
-    then
+    if (self.DesktopPlayerTexas.DesktopTexas.PlayerTurn.player_guid == self.DesktopPlayerTexas.Guid) then
         if self.IsCallOrCheck == true then
             local ev = self.ViewMgr:getEv("EvUiClickCall")
-            if (ev == nil)
-            then
+            if (ev == nil) then
                 ev = EvUiClickCall:new(nil)
             end
             self.ViewMgr:sendEv(ev)
         else
             local ev = self.ViewMgr:getEv("EvUiClickCheck")
-            if (ev == nil)
-            then
+            if (ev == nil) then
                 ev = EvUiClickCheck:new(nil)
             end
             self.ViewMgr:sendEv(ev)
@@ -607,27 +625,23 @@ function ViewDesktopPlayerOperateTexas:_onClickCheckOrCall()
         self.PlayerOperateAni:showAutoOperate(false)
     else
         self:_resetAutoChooseOperate(self.GBtnAutoCheckOrCall)
-        if (self.GBtnAutoCheckOrCall.selected == false)
-        then
+        if (self.GBtnAutoCheckOrCall.selected == false) then
             local ev = self.ViewMgr:getEv("EvUiClickCancelAutoAction")
-            if (ev == nil)
-            then
+            if (ev == nil) then
                 ev = EvUiClickCancelAutoAction:new(nil)
             end
             self.ViewMgr:sendEv(ev)
         else
             if self.IsAutoCallOrCheck == true then
                 local ev = self.ViewMgr:getEv("EvUiClickAutoAction")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiClickAutoAction:new(nil)
                 end
                 ev.auto_action_type = PlayerAutoActionTypeTexas.CallAny
                 self.ViewMgr:sendEv(ev)
             else
                 local ev = self.ViewMgr:getEv("EvUiClickAutoAction")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiClickAutoAction:new(nil)
                 end
                 ev.auto_action_type = PlayerAutoActionTypeTexas.Check
@@ -637,6 +651,7 @@ function ViewDesktopPlayerOperateTexas:_onClickCheckOrCall()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickCall()
     self:_resetAutoChooseOperate(self.GBtnAutoCall)
     if (self.GBtnAutoCall.selected == false)
@@ -658,6 +673,7 @@ function ViewDesktopPlayerOperateTexas:_onClickCall()
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickRaise(context)
     context:StopPropagation()
     local s = self.GSliderRise.visible
@@ -683,10 +699,12 @@ function ViewDesktopPlayerOperateTexas:_onClickRaise(context)
     end
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickConfirmRaise()
     self:_raise(self.CurrentRaiseGold)
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickContinue()
     local ev = self.ViewMgr:getEv("EvUiClickPlayerReturn")
     if (ev == nil)
@@ -696,6 +714,7 @@ function ViewDesktopPlayerOperateTexas:_onClickContinue()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickBack()
     local ev = self.ViewMgr:getEv("EvUiClickCancelAutoAction")
     if (ev == nil)
@@ -705,8 +724,10 @@ function ViewDesktopPlayerOperateTexas:_onClickBack()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 ViewDesktopPlayerOperateTexasFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexasFactory:new(o, ui_package_name, ui_component_name,
                                                   ui_layer, is_single, fit_screen)
     o = o or {}
@@ -720,6 +741,7 @@ function ViewDesktopPlayerOperateTexasFactory:new(o, ui_package_name, ui_compone
     return o
 end
 
+---------------------------------------
 function ViewDesktopPlayerOperateTexasFactory:createView()
     local view = ViewDesktopPlayerOperateTexas:new(nil)
     return view

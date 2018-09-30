@@ -68,7 +68,6 @@ namespace Casinos
         public CasinosLua CasinosLua { get; private set; }
         public NetBridge NetBridge { get; private set; }
         public NativeMgr NativeMgr { get; set; }
-        public bool IsDev { get; set; }
         public bool Pause { get; set; }
         public bool LoadDataDone { get; set; }
         public string ABResourcePathTitle { get; set; }
@@ -121,26 +120,11 @@ namespace Casinos
         CSoundMgr SoundMgr { get; set; }
         string LuaProjectListenerName { get; set; }
         string PlatformName { get; set; }
-
         public LuaTable TbDataMgrLua { get; set; }
 
         public const string LocalDataVersionKey = "LocalVersionInfo";
         public const string PreDataVersionKey = "PreDataVersion";
         public const string LanKey = "LanKey";
-
-        //public LuaTable MainCLua { get; set; }
-        //public LuaTable ProjectListener { get; set; }
-        //public LuaTable PreViewMgr { get; set; }
-        //public LuaTable ViewMgr { get; set; }
-        //public LuaTable ViewHelper { get; set; }
-        //public Action<LuaTable> UiEndWaiting { get; set; }
-        //public Action<bool> ActionOnApplicationPause { get; set; }
-        //GetView CreateView { get; set; }
-        //GetView GetView { get; set; }
-        //Action<LuaTable> DestroyView { get; set; }
-        //GetView CreatePreView { get; set; }
-        //GetView GetPreView { get; set; }
-        //Action<LuaTable> DestroyPreView { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosContext(bool use_persistent,
@@ -185,12 +169,6 @@ namespace Casinos
             IsSqliteUnity = false;
 #endif
 
-#if IsDev
-            IsDev = true;
-#else
-            IsDev = false;
-#endif
-
 #if UNITY_IOS
             PlatformName = "IOS";
             string version = UnityEngine.iOS.Device.systemVersion;
@@ -224,7 +202,6 @@ namespace Casinos
             Stopwatch = new System.Diagnostics.Stopwatch();
             Stopwatch.Start();
             TimerShaft = new TimerShaft();
-
             MemoryStream = new MemoryStream();
             SB = new StringBuilder();
             Config = new CasinosConfig(editor_runsorce);
@@ -234,13 +211,15 @@ namespace Casinos
 #if UNITY_EDITOR
                 Application.runInBackground = false;
                 Screen.sleepTimeout = SleepTimeout.SystemSetting;
+                QualitySettings.vSyncCount = 0;
+                Application.targetFrameRate = -1;
 #else
                 Application.runInBackground = true;
                 Screen.sleepTimeout = SleepTimeout.NeverSleep;
-#endif
-                Time.fixedDeltaTime = 0.033f;
+                //Time.fixedDeltaTime = 0.033f;
                 QualitySettings.vSyncCount = 1;
-                //Application.targetFrameRate = 1000;
+                Application.targetFrameRate = 60;
+#endif
             }
 
             // 初始化日志
@@ -278,9 +257,6 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Update(float elapsed_tm)
         {
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = 1000;
-
             if (SoundMgr != null)
             {
                 SoundMgr.Update();
@@ -320,16 +296,16 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Close()
         {
+            if (TimerShaft != null)
+            {
+                TimerShaft.Destroy();
+                TimerShaft = null;
+            }
+
             if (SoundMgr != null)
             {
                 SoundMgr.destroy();
                 SoundMgr = null;
-            }
-
-            if (CasinosLua != null)
-            {
-                CasinosLua.Release();
-                CasinosLua = null;
             }
 
             if (HeadIconMgr != null)
@@ -343,6 +319,12 @@ namespace Casinos
             {
                 AsyncAssetLoadGroup.destroy();
                 AsyncAssetLoadGroup = null;
+            }
+
+            if (CasinosLua != null)
+            {
+                CasinosLua.Release();
+                CasinosLua = null;
             }
 
             if (MemoryStream != null)
@@ -571,55 +553,6 @@ namespace Casinos
 //    //ControllerMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ControllerMgr");
 //    //CreateController = ControllerMgr.Get<CreateController>("CreateController");
 //    //GetController = ControllerMgr.Get<GetController>("GetController");
-//}
-
-//---------------------------------------------------------------------
-//public void SetPreViewMgr()
-//{
-//    PreViewMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("PreViewMgr");
-//    var action_new = PreViewMgr.Get<Action<LuaTable>>("new");
-//    action_new(CasinosLua.LuaEnv.NewTable());
-//    var action_oncreate = PreViewMgr.Get<Action>("onCreate");
-//    action_oncreate();
-//    CreatePreView = PreViewMgr.Get<GetView>("createView");
-//    GetPreView = PreViewMgr.Get<GetView>("getView");
-//    DestroyPreView = PreViewMgr.Get<Action<LuaTable>>("destroyView");
-//}
-
-//---------------------------------------------------------------------
-//public LuaTable createView(string view_name)
-//{
-//    return CreateView(view_name);
-//}
-
-////---------------------------------------------------------------------
-//public LuaTable getView(string view_name)
-//{
-//    return GetView(view_name);
-//}
-
-////---------------------------------------------------------------------
-//public void destroyView(LuaTable lua_table)
-//{
-//    DestroyView(lua_table);
-//}
-
-//---------------------------------------------------------------------
-//public LuaTable createPreView(string view_name)
-//{
-//    return CreatePreView(view_name);
-//}
-
-////---------------------------------------------------------------------
-//public LuaTable getPreView(string view_name)
-//{
-//    return GetPreView(view_name);
-//}
-
-////---------------------------------------------------------------------
-//public void destroyPreView(LuaTable lua_table)
-//{
-//    DestroyPreView(lua_table);
 //}
 
 //---------------------------------------------------------------------

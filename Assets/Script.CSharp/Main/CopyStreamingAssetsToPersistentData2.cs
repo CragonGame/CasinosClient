@@ -17,6 +17,7 @@ namespace Casinos
         Queue<string> QueCopyFile { get; set; } = new Queue<string>(4096);
         Dictionary<string, WWW> MapWWW { get; set; } = new Dictionary<string, WWW>();
         List<string> ListFinished { get; set; } = new List<string>(5);
+        string DataFileListContent { get; set; }
 
         //---------------------------------------------------------------------
         public void CopyAsync(string copy_dir)
@@ -26,8 +27,11 @@ namespace Casinos
             WWW www = new WWW(path_www_streamingassets_file);
             while (!www.isDone) { }
 
+            DataFileListContent = www.text;
+            www.Dispose();
+
             QueCopyFile.Clear();
-            string[] arr_str = www.text.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] arr_str = DataFileListContent.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var i in arr_str)
             {
                 var arr = i.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -74,30 +78,15 @@ namespace Casinos
             }
             ListFinished.Clear();
 
+            if (!string.IsNullOrEmpty(DataFileListContent))
+            {
+                var f = CasinosContext.Instance.PathMgr.combinePersistentDataPath("DataFileList.txt");
+                File.WriteAllText(f, DataFileListContent);
+            }
+
             LeftCount = QueCopyFile.Count;
 
             return QueCopyFile.Count > 0 || MapWWW.Count > 0 ? false : true;
         }
     }
 }
-
-// 遍历copy_dir中的所有文件
-//string sa_path = CasinosContext.Instance.PathMgr.getStreamingAssetsPath();
-//var sa_path1 = sa_path.ToLower();
-//var sa_path2 = sa_path1.Replace('/', '\\');
-//var p = CasinosContext.Instance.PathMgr.combineStreamingAssetsPath(copy_dir);
-
-//DirectoryInfo dir = new DirectoryInfo(p);
-//QueCopyFile.Clear();
-
-//FileInfo[] file_list = dir.GetFiles("*.*", SearchOption.AllDirectories);
-//foreach (FileInfo i in file_list)
-//{
-//    if (i.Name.EndsWith(".meta")) continue;
-
-//    var s = i.FullName.ToLower();
-//    var s1 = s.Replace('/', '\\');
-//    var s2 = s1.Replace(sa_path2, "");
-
-//    QueCopyFile.Enqueue(s2);
-//}

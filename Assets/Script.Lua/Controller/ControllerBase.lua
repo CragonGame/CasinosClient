@@ -28,7 +28,3 @@ end
 ---------------------------------------
 function ControllerBase:onHandleEv(ev)
 end
-
----------------------------------------
-function ControllerBase:getModle()
-end

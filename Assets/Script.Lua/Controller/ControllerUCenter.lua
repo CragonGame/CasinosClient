@@ -42,7 +42,7 @@ end
 -- 请求获取手机验证码
 function ControllerUCenter:RequestGetPhoneVerificationCode(request, handler)
     local http_url = self:_genUrl("getphoneverificationcode")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -55,7 +55,7 @@ end
 -- 请求注册
 function ControllerUCenter:RequestRegister(request, handler)
     local http_url = self:_genUrl("register")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -68,7 +68,7 @@ end
 -- 请求登录
 function ControllerUCenter:RequestLogin(request, handler)
     local http_url = self:_genUrl("login")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -81,7 +81,7 @@ end
 -- 请求通过手机验证码重置密码
 function ControllerUCenter:RequestResetPasswordWithPhone(request, handler)
     local http_url = self:_genUrl("resetpasswordbyphone")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -94,7 +94,7 @@ end
 -- 请求微信自动登录
 function ControllerUCenter:RequestWechatAutoLogin(request, handler)
     local http_url = self:_genUrl("wechatautologin")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -107,7 +107,7 @@ end
 -- 请求微信登录
 function ControllerUCenter:RequestWechatLogin(request, handler)
     local http_url = self:_genUrl("wechatlogin")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -120,7 +120,7 @@ end
 -- 请求微信绑定
 function ControllerUCenter:RequestWechatBind(request, handler)
     local http_url = self:_genUrl("wechatattach")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -133,7 +133,7 @@ end
 -- 请求微信解绑
 function ControllerUCenter:RequestWechatUnbind(request, handler)
     local http_url = self:_genUrl("wechatdeattach")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -146,7 +146,7 @@ end
 -- 请求游客访问
 function ControllerUCenter:RequestGuestAccess(request, handler)
     local http_url = self:_genUrl("guestaccess")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -159,7 +159,7 @@ end
 -- 请求游客转正
 function ControllerUCenter:RequestGuestConvert(request, handler)
     local http_url = self:_genUrl("guestconvert")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -172,7 +172,7 @@ end
 -- 请求重置密码
 function ControllerUCenter:RequestResetPassword(request, handler)
     local http_url = self:_genUrl("resetpassword")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -208,7 +208,7 @@ end
 -- 请求支付
 function ControllerUCenter:RequestPayCreateCharge(payment_info, handler)
     local http_url = self:_genPayUrl("createcharge")
-    local param = self.ControllerMgr.Listener.Json.encode(payment_info)
+    local param = self.ControllerMgr.Json.encode(payment_info)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -221,7 +221,7 @@ end
 -- 请求身份证实名认证（国内）
 function ControllerUCenter:RequestCheckCardAndName(request, handler)
     local http_url = self:_genIdCardUrl("checkcardandname")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
     self.MbKingTexasHelper:PostUrl(http_url, param,
             function(response_data)
@@ -268,7 +268,7 @@ function ControllerUCenter:RequestQuicktellerTransfers(request, handler)
     end
     self.QuicktellerTransfersHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
     local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfers")
-    local param = self.ControllerMgr.Listener.Json.encode(request)
+    local param = self.ControllerMgr.Json.encode(request)
     local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
     local headers = self:_genHeader(bytes.Length)
     self.WWWQuicktellerTransfers = CS.UnityEngine.WWW(http_url, bytes, headers)
@@ -351,7 +351,7 @@ end
 ---------------------------------------
 function ControllerUCenter:_onResponse(response_data, handler)
     --print(response_data)
-    local response = self.ControllerMgr.Listener.Json.decode(response_data)
+    local response = self.ControllerMgr.Json.decode(response_data)
     if (handler ~= nil) then
         if (response ~= nil) then
             handler(response.status, response.result, response.error)

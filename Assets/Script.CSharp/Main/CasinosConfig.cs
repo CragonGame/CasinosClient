@@ -14,7 +14,6 @@ namespace Casinos
     public class CasinosConfig
     {
         //---------------------------------------------------------------------
-        public GameObject GoConfig { get; private set; }
         public GameObject GoMain { get; private set; }
         public string Platform { get; private set; }// Android, iOS, PC
         public string Channel { get; private set; } = "";// 渠道
@@ -42,7 +41,6 @@ namespace Casinos
             }
 
             GoMain = GameObject.Find("Main Object");
-            GoConfig = GameObject.Find("Main Config");
             VersionBundle = Application.version;
 
             // 读取VersionLaunchStreamingAssets

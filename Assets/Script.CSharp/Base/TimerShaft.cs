@@ -164,6 +164,16 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void Destroy()
+        {
+            mWheel5.Destroy();
+            mWheel4.Destroy();
+            mWheel3.Destroy();
+            mWheel2.Destroy();
+            mWheel1.Destroy();
+        }
+
+        //---------------------------------------------------------------------
         public EbTimer RegisterTimer(ulong tm, LuaTable lua_table, DelegateLua2 cb)
         {
             EbTimer timer = new EbTimer(this, tm, lua_table, cb);

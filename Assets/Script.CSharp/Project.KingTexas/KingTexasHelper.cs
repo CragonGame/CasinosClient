@@ -30,7 +30,7 @@ namespace Casinos
                 yield return www_request.SendWebRequest();
                 if (www_request.error != null)
                 {
-                    Debug.Log(www_request.error);
+                    BuglyAgent.PrintLog(LogSeverity.LogError, www_request.error);
                 }
                 else
                 {
@@ -57,7 +57,7 @@ namespace Casinos
 
                 if (www_request.isNetworkError)
                 {
-                    Debug.Log(www_request.error);
+                    BuglyAgent.PrintLog(LogSeverity.LogError, www_request.error);
                 }
                 else
                 {

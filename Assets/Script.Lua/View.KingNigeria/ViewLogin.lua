@@ -212,7 +212,7 @@ function ViewLogin:onCreate()
         self.PlayerAnim.loop = true
         self.MoteRender = self.PlayerAnim.transform.gameObject:GetComponent("MeshRenderer")
         self.PlayerAnim.AnimationName = "animation"
-        self.MoteRender.sortingOrder = 316
+        self.MoteRender.sortingOrder = 4
         self.PlayerAnim.transform.gameObject.name = "LoadingMote"
         self.HolderMote:SetNativeObject(CS.FairyGUI.GoWrapper(self.PlayerAnim.transform.gameObject))
     else
@@ -243,7 +243,7 @@ function ViewLogin:onCreate()
     self.ComboChooseUCenter = self.ComUi:GetChild("ComboChooseUCenter").asComboBox
     self.ComboChooseGateWay = self.ComUi:GetChild("ComboChooseGateWay").asComboBox
     local show_combo = false
-    if CS.Casinos.CasinosContext.Instance.IsDev then
+    if IsDev then
         show_combo = true
         local items = {}
         items[1] = "http://ucenter.cragon.cn"

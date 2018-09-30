@@ -21,8 +21,9 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.TimerShaft);
-			Utils.BeginObjectRegister(type, L, translator, 0, 6, 7, 7);
+			Utils.BeginObjectRegister(type, L, translator, 0, 7, 7, 7);
 			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Destroy", _m_Destroy);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RegisterTimer", _m_RegisterTimer);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddTimer", _m_AddTimer);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DelTimer", _m_DelTimer);
@@ -90,6 +91,33 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Destroy(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.TimerShaft gen_to_be_invoked = (Casinos.TimerShaft)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.Destroy(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_RegisterTimer(RealStatePtr L)

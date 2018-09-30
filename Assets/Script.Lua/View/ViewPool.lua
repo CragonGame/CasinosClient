@@ -28,6 +28,7 @@ function ViewPool:onCreate()
     self.ItemChatExPool = ItemChatExPool:new(nil, self)
     self.ItemChatTargetInfoPool = ItemChatTargetInfoPool:new(nil, self)
     self.ItemGiftPool = ItemGiftPool:new(nil, self)
+    self.GoUi:SetActive(false)
 end
 
 ---------------------------------------
@@ -152,7 +153,9 @@ function ItemShootingTextPool:getShootingTextItem()
         self:createShootingText()
     end
     local item = table.remove(self.QueShootingText, 1)
-    CS.Casinos.UiHelper.setGObjectVisible(true, item)
+    --CS.Casinos.UiHelper.setGObjectVisible(true, item)
+    item.displayObject.gameObject:SetActive(true)
+    item.visible = true
     return item
 end
 
@@ -163,6 +166,7 @@ function ItemShootingTextPool:shootingTextEnque(item)
             and self.UiPool.ComUi.displayObject.gameObject ~= nil) then
         self.UiPool.ComUi:AddChild(item.Com)
         item:reset()
+        item.Com.displayObject.gameObject:SetActive(false)
         table.insert(self.QueShootingText, item)
     end
 end
@@ -173,6 +177,7 @@ function ItemShootingTextPool:createShootingText()
     local co_text = CS.FairyGUI.UIPackage.CreateObject("Common", "ComChatText").asCom
     local item_shootingtext = ItemChatEx:new(nil)
     item_shootingtext:setObj(co_text)
+    co_text.displayObject.gameObject:SetActive(false)
     self.UiPool.ComUi:AddChild(co_text)
     table.insert(self.QueShootingText, item_shootingtext)
 end

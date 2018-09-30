@@ -42,7 +42,6 @@ function ViewDesktopPlayerInfoTexas:new(o)
     o.IsGameEnd = false
     o.VibrateOnce = true
     o.IsRelease = false-- 是否已经被回收，切换快照时使用
-
     return o
 end
 
@@ -105,8 +104,7 @@ end
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:onDestroy()
     self.ViewMgr:unbindEvListener(self)
-    if (self.ItemChatDesktop ~= nil)
-    then
+    if (self.ItemChatDesktop ~= nil) then
         self.ViewDesktop.UiDesktopChatParent:destroyChat(self.ItemChatDesktop)
     end
 end
@@ -128,53 +126,43 @@ function ViewDesktopPlayerInfoTexas:release()
     self.UiHandCardSecond:hideCard()
     self.UiPlayerGiftAndVIP:release()
     self.PlayerShowTips:reset()
-    if (self.ItemChatDesktop ~= nil)
-    then
+    if (self.ItemChatDesktop ~= nil) then
         self.ItemChatDesktop:reset()
     end
-    if (self.UiSingleEmotion ~= nil)
-    then
+    if (self.UiSingleEmotion ~= nil) then
         self.UiSingleEmotion:resetEmotion()
     end
     self.ComUi:SetXY(10000, 10000)
     ViewHelper:setGObjectVisible(false, self.ImageAutoAction)
     ViewHelper:setGObjectVisible(false, self.ComUi)
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:release()
     end
 end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:onHandleEv(ev)
-    if (self.IsRelease)
-    then
+    if (self.IsRelease) then
         return
     end
 
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvEntityRecvChatFromDesktop")
-        then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvEntityRecvChatFromDesktop") then
             local chat_info = ev.chat_info
 
-            if (chat_info.sender_etguid == self.Player.Guid)
-            then
+            if (chat_info.sender_etguid == self.Player.Guid) then
                 local chat_is_remotion = false
                 local map_exp = self.ViewMgr.TbDataMgr:GetMapData("Expression")
                 for k, v in pairs(map_exp) do
                     local tb_expression = v
-                    if (tb_expression.ExpressionName == chat_info.chat_content)
-                    then
+                    if (tb_expression.ExpressionName == chat_info.chat_content) then
                         chat_is_remotion = true
                         break
                     end
                 end
 
-                if (chat_is_remotion)
-                then
-                    if (self.UiSingleEmotion == nil)
-                    then
+                if (chat_is_remotion) then
+                    if (self.UiSingleEmotion == nil) then
                         local co_chat = CS.FairyGUI.UIPackage.CreateObject("Common", "ComChatEmotion").asCom
                         self.ComUi:AddChild(co_chat)
                         local pos = self.GComChatParent.xy
@@ -189,19 +177,16 @@ function ViewDesktopPlayerInfoTexas:onHandleEv(ev)
                     end
                     self.UiSingleEmotion:setEmotion(chat_info.chat_content, true)
                 else
-                    if (self.ItemChatDesktop ~= nil)
-                    then
+                    if (self.ItemChatDesktop ~= nil) then
                         self.ViewDesktop.UiDesktopChatParent:destroyChat(self.ItemChatDesktop)
                     end
 
                     local co_chatname = "CoChatLeft"
-                    if (self.UiPlayerGiftAndVIP.ShowLeftGift)
-                    then
+                    if (self.UiPlayerGiftAndVIP.ShowLeftGift) then
                         co_chatname = "CoChatRight"
                     end
 
-                    if (chat_info.sender_etguid == self.ViewDesktop.ControllerDesktop.Guid)
-                    then
+                    if (chat_info.sender_etguid == self.ViewDesktop.ControllerDesktop.Guid) then
                         co_chatname = "CoChatLeft"
                     end
 
@@ -209,27 +194,21 @@ function ViewDesktopPlayerInfoTexas:onHandleEv(ev)
                     self.ItemChatDesktop:setChatTextAndSortingOrder(chat_info, self.ComUi.sortingOrder)
                 end
             end
-        elseif (ev.EventName == "EvCurrentWinner")
-        then
-            if (ev.player ~= self.Player)
-            then
+        elseif (ev.EventName == "EvCurrentWinner") then
+            if (ev.player ~= self.Player) then
                 --ViewHelper:setGObjectVisible(true, self.GImagePlayerShadow)
                 self:showShade(true)
                 self:_hideHighLight()
             end
-        elseif (ev.EventName == "EvEntityDesktopShowdownNotify")
-        then
+        elseif (ev.EventName == "EvEntityDesktopShowdownNotify") then
             self.PlayerSeatWidgetControllerEx:hideHighLight()
-        elseif (ev.EventName == "EvEntityDesktopGameEndNotifyTexas")
-        then
+        elseif (ev.EventName == "EvEntityDesktopGameEndNotifyTexas") then
             self.PlayerSeatWidgetControllerEx:hideHighLight()
-        elseif (ev.EventName == "EvEntitySelfAutoActionChange")
-        then
+        elseif (ev.EventName == "EvEntitySelfAutoActionChange") then
             if self.Player.IsMe then
                 ViewHelper:setGObjectVisible(ev.is_autoaction, self.ImageAutoAction)
             end
-        elseif (ev.EventName == "EvCommonCardShowEnd")
-        then
+        elseif (ev.EventName == "EvCommonCardShowEnd") then
             if self.IsShowDown then
                 self:_hideHighLight()
                 self.UiHandCardFirst:showCard(0.2)
@@ -248,15 +227,12 @@ function ViewDesktopPlayerInfoTexas:onUpdate(elapsed_tm)
     --    return
     --end
 
-    if (self.IsGameEnd)
-    then
+    if (self.IsGameEnd) then
         if self.GameEndResetPlayerInfoTime > 0 then
             self.GameEndResetPlayerInfoTime = self.GameEndResetPlayerInfoTime - elapsed_tm
-            if (self.GameEndResetPlayerInfoTime <= 0)
-            then
+            if (self.GameEndResetPlayerInfoTime <= 0) then
                 self:_resetPlayerInfo()
-                if (self.PlayerSeatWidgetControllerEx ~= nil)
-                then
+                if (self.PlayerSeatWidgetControllerEx ~= nil) then
                     self.PlayerSeatWidgetControllerEx:reset()
                 end
                 self.GameEndResetPlayerInfoTime = 255
@@ -264,8 +240,7 @@ function ViewDesktopPlayerInfoTexas:onUpdate(elapsed_tm)
         end
         if self.GameEndShowExpTime > 0 then
             self.GameEndShowExpTime = self.GameEndShowExpTime - elapsed_tm
-            if (self.GameEndShowExpTime <= 0)
-            then
+            if (self.GameEndShowExpTime <= 0) then
                 self.PlayerShowTips:showExpAndPoint(self.Exp, self.Point)
                 self.GameEndShowExpTime = 255
                 self.IsGameEnd = false
@@ -276,21 +251,18 @@ function ViewDesktopPlayerInfoTexas:onUpdate(elapsed_tm)
     end
 
     if (CS.System.String.IsNullOrEmpty(self.Player.DesktopTexas.PlayerTurn.player_guid) == false and
-            self.Player.DesktopTexas.PlayerTurn.player_guid == self.Player.Guid and self.IsGameEnd == false)
-    then
+            self.Player.DesktopTexas.PlayerTurn.player_guid == self.Player.Guid and self.IsGameEnd == false) then
         self.CurrentActionTime = self.CurrentActionTime + elapsed_tm
 
         local rest_time = self.ActionWaitingTime - self.CurrentActionTime
-        if (rest_time <= 0)
-        then
+        if (rest_time <= 0) then
             rest_time = 0
         end
 
         self:_setThinkingTimeSprite(rest_time / self.ActionWaitingTime, true)
     end
 
-    if (self.ItemChatDesktop ~= nil)
-    then
+    if (self.ItemChatDesktop ~= nil) then
         self.ItemChatDesktop:update(elapsed_tm)
     end
 end
@@ -300,8 +272,7 @@ function ViewDesktopPlayerInfoTexas:gameEnd()
     self.IsShowDown = false
     self:_hideHighLight()
 
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:gameEnd()
     end
 
@@ -356,8 +327,7 @@ end
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerWait4Next()
     self:_resetThinkTimePro()
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         --ViewHelper:setGObjectVisible(false, self.GGraphWinStarParent)
         ViewHelper:setGObjectVisible(false, self.GMovieAllIn)
     end
@@ -381,8 +351,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerInGame()
-    if (self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold)
-    then
+    if (self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold) then
         --ViewHelper:setGObjectVisible(false, self.GImagePlayerShadow)
 
         self:showShade(false)
@@ -394,8 +363,7 @@ end
 function ViewDesktopPlayerInfoTexas:playerTurn(is_player_turn, turn_tm)
     self:_resetThinkTimePro()
 
-    if (is_player_turn == false)
-    then
+    if (is_player_turn == false) then
         ViewHelper:setGObjectVisible(false, self.GImagePlayerActionProgress)
     else
         self.VibrateOnce = true
@@ -422,8 +390,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:reset()
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:resetSeatIndex()
     end
 end
@@ -450,16 +417,14 @@ function ViewDesktopPlayerInfoTexas:setPlayerInfo(player, parent, pos, desk_seat
     self.UiHandCardFirst:hideHighLight()
     self.UiHandCardSecond:hideHighLight()
     ViewHelper:setGObjectVisible(false, self.GImageFriendMark)
-    if (self.ViewDesktop ~= nil)
-    then
+    if (self.ViewDesktop ~= nil) then
         self.ViewDesktop:playerSitInDesk(self.Player.UiSeatIndex)
     end
     self.PlayerSeatWidgetControllerEx:init()
 
     local show_shadow = true
     local player_state = self.Player.PlayerDataDesktop.DesktopPlayerState
-    if (player_state == TexasDesktopPlayerState.InGame and self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold)
-    then
+    if (player_state == TexasDesktopPlayerState.InGame and self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold) then
         show_shadow = false
     end
     --ViewHelper:setGObjectVisible(show_shadow, self.GImagePlayerShadow)
@@ -492,11 +457,9 @@ function ViewDesktopPlayerInfoTexas:setPlayerInfo(player, parent, pos, desk_seat
     self.UiPlayerGiftAndVIP:checkGiftAndVIPPos(self.DesktopSeatCount, self.Player.UiSeatIndex, vip_level)
 
     local current_itemdata = self.Player.PlayerDataDesktop.CurrentGiftItemData
-    if (current_itemdata ~= nil and CS.System.String.IsNullOrEmpty(current_itemdata.item_objid) == false)
-    then
+    if (current_itemdata ~= nil and CS.System.String.IsNullOrEmpty(current_itemdata.item_objid) == false) then
         local tb_item = self.ViewMgr.TbDataMgr:GetData("Item", current_itemdata.item_tbid)
-        if (tb_item.UnitType == "GiftTmp")
-        then
+        if (tb_item.UnitType == "GiftTmp") then
             self:setGift(current_itemdata, self.Player.Guid, false)
         end
     end
@@ -504,8 +467,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:setCard(show_card, card1, card2, is_init)
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         ViewHelper:setGObjectVisible(false, self.GImagePlayerActionProgress)
         self.PlayerSeatWidgetControllerEx:showCardAndBetInfo(card1, card2, show_card, is_init)
     end
@@ -518,8 +480,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
     local sound = "chip"
     local play_sound = true
     local state = player_state
-    if (state ~= TexasDesktopPlayerState.InGame)
-    then
+    if (state ~= TexasDesktopPlayerState.InGame) then
         if is_init then
             show_shadow = true
         else
@@ -535,40 +496,32 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
         self:setNickName()
     else
         local action = action_type--PlayerActionTypeTexas.__CastFrom()
-        if (action == PlayerActionTypeTexas.None)
-        then
+        if (action == PlayerActionTypeTexas.None) then
             play_sound = false
-        elseif (action == PlayerActionTypeTexas.Bet)
-        then
+        elseif (action == PlayerActionTypeTexas.Bet) then
             action_name = self.ViewMgr.LanMgr:getLanValue("BetOn")
             play_sound = false
-        elseif (action == PlayerActionTypeTexas.Fold)
-        then
+        elseif (action == PlayerActionTypeTexas.Fold) then
             show_shadow = true
             sound = "desk_player_fold"
             action_name = self.ViewMgr.LanMgr:getLanValue("Fold")
-        elseif (action == PlayerActionTypeTexas.Check)
-        then
+        elseif (action == PlayerActionTypeTexas.Check) then
             play_sound = false
             sound = "dongdong"
             if self.Player.DesktopTexas.IsSnapshot == false then
                 CS.Casinos.CasinosContext.Instance:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
             end
             action_name = self.ViewMgr.LanMgr:getLanValue("Check")
-        elseif (action == PlayerActionTypeTexas.Call)
-        then
+        elseif (action == PlayerActionTypeTexas.Call) then
             sound = "desk_post_bet"
             action_name = self.ViewMgr.LanMgr:getLanValue("Call")
-        elseif (action == PlayerActionTypeTexas.Raise)
-        then
+        elseif (action == PlayerActionTypeTexas.Raise) then
             action_name = self.ViewMgr.LanMgr:getLanValue("AddBet")
             play_sound = false
-        elseif (action == PlayerActionTypeTexas.ReRaise)
-        then
+        elseif (action == PlayerActionTypeTexas.ReRaise) then
             action_name = self.ViewMgr.LanMgr:getLanValue("AgainAddBet")
             play_sound = false
-        elseif (action == PlayerActionTypeTexas.AllIn)
-        then
+        elseif (action == PlayerActionTypeTexas.AllIn) then
             action_name = self.ViewMgr.LanMgr:getLanValue("All-in")
             ViewHelper:setGObjectVisible(true, self.GMovieAllIn)
             play_sound = false
@@ -586,8 +539,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
     --ViewHelper:setGObjectVisible(show_shadow, self.GImagePlayerShadow)
     self:showShade(show_shadow)
 
-    if (play_sound and self.Player.DesktopTexas.IsSnapshot == false)
-    then
+    if (play_sound and self.Player.DesktopTexas.IsSnapshot == false) then
         CS.Casinos.CasinosContext.Instance:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
     end
 
@@ -598,29 +550,25 @@ end
 function ViewDesktopPlayerInfoTexas:setGift(current_item, target_etguid, is_sendgift)
     local item = nil
     local from_pos = CS.Casinos.LuaHelper.GetVector2(0, 0)
-    if (current_item ~= nil)
-    then
+    if (current_item ~= nil) then
         local item_data = ItemData1:new(nil)
         item_data.item_objid = current_item.item_objid
         item_data.item_tbid = current_item.item_tbid
         item_data.count = current_item.count
         item_data.map_unit_data = current_item.map_unit_data
         item = Item:new(nil, self.ViewMgr.TbDataMgr, item_data)
-        if (item.TbDataItem.UnitType ~= "GiftTmp")
-        then
+        if (item.TbDataItem.UnitType ~= "GiftTmp") then
             return
         end
 
         local unit_tmp = item.UnitLink
         local sender_etguid = unit_tmp.GiveEtGuid
-        if (CS.System.String.IsNullOrEmpty(sender_etguid))
-        then
+        if (CS.System.String.IsNullOrEmpty(sender_etguid)) then
             return
         end
 
         local from_playerinfo = self:getPlayerInfo(sender_etguid)
-        if (from_playerinfo ~= nil)
-        then
+        if (from_playerinfo ~= nil) then
             from_pos = self.ViewDesktop.ComUi:TransformPoint(from_playerinfo.ComUi.xy, self.ComUi)
         end
     end
@@ -631,8 +579,7 @@ end
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:sendMagicExp(exp)
     local tb_magicexp = self.ViewMgr.TbDataMgr:GetData("UnitMagicExpression", exp.item_tbid)
-    if (tb_magicexp == nil)
-    then
+    if (tb_magicexp == nil) then
         return
     end
 
@@ -644,8 +591,7 @@ function ViewDesktopPlayerInfoTexas:sendMagicExp(exp)
     local item = Item:new(nil, self.ViewMgr.TbDataMgr, item_data)
     local unit_link = item.UnitLink
     local from_seat = self.ViewDesktop.Desktop:getSeatByGuid(unit_link.GiveEtGuid)
-    if (from_seat ~= nil)
-    then
+    if (from_seat ~= nil) then
         local from_player = from_seat.player_texas
         local from_pos = from_player.UiDesktopPlayerInfo.PlayerSeatWidgetControllerEx.SeatWidget.GComChipStart.xy
         from_pos = from_player.UiDesktopPlayerInfo.ComUi:TransformPoint(from_pos, self.ComUi)
@@ -679,8 +625,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:deskIdle()
-    if (self.Player.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.WaitWhile)
-    then
+    if (self.Player.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.WaitWhile) then
         return
     end
 
@@ -688,16 +633,14 @@ function ViewDesktopPlayerInfoTexas:deskIdle()
     self:_resetPlayerInfo()
     self.UiPlayerGiftAndVIP:reset()
 
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:deskIdle()
     end
 end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:dealCardDone()
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:dealCard()
     end
 end
@@ -712,8 +655,7 @@ function ViewDesktopPlayerInfoTexas:preflopBegin()
     self.Point = 0
     self.ListPlayerCard:Clear()
 
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:preflopBegin()
     end
 
@@ -724,16 +666,14 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:roundEnd(t_playerchips_inpot)
-    if (t_playerchips_inpot ~= nil and #t_playerchips_inpot > 0)
-    then
+    if (t_playerchips_inpot ~= nil and #t_playerchips_inpot > 0) then
         self.PlayerSeatWidgetControllerEx:goldsInMainPot(t_playerchips_inpot)
     end
 end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:flop()
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:flop()
     end
     self:setNickName()
@@ -741,8 +681,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:turn()
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:turn()
     end
     self:setNickName()
@@ -750,8 +689,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:river()
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:river()
     end
     self:setNickName()
@@ -759,8 +697,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:setShowCardState(showcard_state)
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:setShowCardState(showcard_state)
     end
 end
@@ -796,8 +733,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:showDown(card_first, card_second, carddata_left)
-    if (card_first == nil)
-    then
+    if (card_first == nil) then
         return
     end
     self.FirstCard = card_first
@@ -827,8 +763,7 @@ function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
     --ViewHelper:setGObjectVisible(false, self.GImagePlayerShadow)
     self:showShade(false)
     local ev = self.ViewMgr:getEv("EvCurrentWinner")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvCurrentWinner:new(nil)
     end
     ev.player = self.Player
@@ -838,8 +773,7 @@ function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
 
     local best_hand = nil
 
-    if (self.ListPlayerCard ~= nil and self.ListPlayerCard.Count > 0)
-    then
+    if (self.ListPlayerCard ~= nil and self.ListPlayerCard.Count > 0) then
         best_hand = CS.Casinos.CardTypeHelperTexas.GetBestHand(self.ListPlayerCard)
         for i = 0, self.ListPlayerCard.Count - 1 do
             local c = self.ListPlayerCard[i]
@@ -848,13 +782,11 @@ function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
 
     local type_name = ""
     local show_winner_tips = true
-    if (best_hand == nil)
-    then
+    if (best_hand == nil) then
         type_name = self.ViewMgr.LanMgr:getLanValue("Winner")
         show_winner_tips = false
     else
-        if (best_hand.RankType == CS.Casinos.HandRankTypeTexas.None)
-        then
+        if (best_hand.RankType == CS.Casinos.HandRankTypeTexas.None) then
             type_name = self.ViewMgr.LanMgr:getLanValue("Winner")
             show_winner_tips = false
         end
@@ -862,30 +794,24 @@ function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
 
     self:_setAmontChip(self.Player.PlayerDataDesktop.Stack)
 
-    if (show_winner_tips)
-    then
-        if (self.FirstCard ~= nil)
-        then
+    if (show_winner_tips) then
+        if (self.FirstCard ~= nil) then
             local t_ranktype_cards = CS.Casinos.LuaHelper.ListToLuatable(best_hand.RankTypeCards)
             local t_ranktype_cards_all = CS.Casinos.LuaHelper.ListToLuatable(best_hand.Cards)
             local hand_type = best_hand.RankType
             local show_cardtype_tips = true
-            if (hand_type == CS.Casinos.HandRankTypeTexas.HighCard)
-            then
+            if (hand_type == CS.Casinos.HandRankTypeTexas.HighCard) then
                 show_cardtype_tips = false
             end
 
             local show_firstcard_highlight = false
             local show_secondcard_highlight = false
-            if (show_cardtype_tips)
-            then
+            if (show_cardtype_tips) then
                 for i, v in pairs(t_ranktype_cards) do
                     local card = v
-                    if (self.FirstCard.Type == card.type and self.FirstCard.Suit == card.suit)
-                    then
+                    if (self.FirstCard.Type == card.type and self.FirstCard.Suit == card.suit) then
                         show_firstcard_highlight = true
-                    elseif (self.SecondCard.Type == card.type and self.SecondCard.Suit == card.suit)
-                    then
+                    elseif (self.SecondCard.Type == card.type and self.SecondCard.Suit == card.suit) then
                         show_secondcard_highlight = true
                     end
                 end
@@ -895,11 +821,9 @@ function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
             local s_not_dark = false
             for i, v in pairs(t_ranktype_cards_all) do
                 local card = v
-                if (self.FirstCard.Type == card.type and self.FirstCard.Suit == card.suit)
-                then
+                if (self.FirstCard.Type == card.type and self.FirstCard.Suit == card.suit) then
                     first_not_dark = true
-                elseif (self.SecondCard.Type == card.type and self.SecondCard.Suit == card.suit)
-                then
+                elseif (self.SecondCard.Type == card.type and self.SecondCard.Suit == card.suit) then
                     s_not_dark = true
                 end
             end
@@ -920,8 +844,7 @@ end
 function ViewDesktopPlayerInfoTexas:showWinnerHandType(win_golds)
     local best_hand = nil
 
-    if (self.ListPlayerCard ~= nil and self.ListPlayerCard.Count > 0)
-    then
+    if (self.ListPlayerCard ~= nil and self.ListPlayerCard.Count > 0) then
         best_hand = CS.Casinos.CardTypeHelperTexas.GetBestHand(self.ListPlayerCard)
         for i = 0, self.ListPlayerCard.Count - 1 do
             local c = self.ListPlayerCard[i]
@@ -931,43 +854,33 @@ function ViewDesktopPlayerInfoTexas:showWinnerHandType(win_golds)
     local type_name = ""
     local show_winner_tips = true
     local add_win = true
-    if (best_hand == nil)
-    then
+    if (best_hand == nil) then
         type_name = self.ViewMgr.LanMgr:getLanValue("Winner")
         show_winner_tips = false
         add_win = false
     else
-        if (best_hand.RankType == CS.Casinos.HandRankTypeTexas.None)
-        then
+        if (best_hand.RankType == CS.Casinos.HandRankTypeTexas.None) then
             type_name = self.ViewMgr.LanMgr:getLanValue("Winner")
             show_winner_tips = false
             add_win = false
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.HighCard)
         then
             type_name = self.ViewMgr.LanMgr:getLanValue("HighCard")
-        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Pair)
-        then
+        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Pair) then
             type_name = self.ViewMgr.LanMgr:getLanValue("Pair")
-        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.TwoPairs)
-        then
+        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.TwoPairs) then
             type_name = self.ViewMgr.LanMgr:getLanValue("TwoPairs")
-        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.ThreeOfAKind)
-        then
+        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.ThreeOfAKind) then
             type_name = self.ViewMgr.LanMgr:getLanValue("ThreeOfAKind")
-        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Straight)
-        then
+        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Straight) then
             type_name = self.ViewMgr.LanMgr:getLanValue("Straight")
-        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Flush)
-        then
+        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Flush) then
             type_name = self.ViewMgr.LanMgr:getLanValue("Flush")
-        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.FullHouse)
-        then
+        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.FullHouse) then
             type_name = self.ViewMgr.LanMgr:getLanValue("FullHouse")
-        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.FourOfAKind)
-        then
+        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.FourOfAKind) then
             type_name = self.ViewMgr.LanMgr:getLanValue("FourOfAKind")
-        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.StraightFlush)
-        then
+        elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.StraightFlush) then
             type_name = self.ViewMgr.LanMgr:getLanValue("StraightFlush")
         end
     end
@@ -987,24 +900,21 @@ end
 ---------------------------------------
 -- 手牌+公共牌高亮
 function ViewDesktopPlayerInfoTexas:showHandCardHighLight(best_hand, card_type_str)
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:showHandCardHighLight(best_hand, card_type_str)
     end
 end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:raiseChips()
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:raiseChips()
     end
 end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerFold()
-    if (self.PlayerSeatWidgetControllerEx ~= nil)
-    then
+    if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:playerFold()
     end
 end
@@ -1013,19 +923,16 @@ end
 function ViewDesktopPlayerInfoTexas:getPlayerInfo(player_guid)
     local player = self.Player.DesktopTexas.MapPlayerTexas[player_guid]
     local to_playerinfo = nil
-    if (player ~= nil)
-    then
+    if (player ~= nil) then
         to_playerinfo = player.UiDesktopPlayerInfo
     end
-
     return to_playerinfo
 end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:_resetThinkTimePro()
     self.CurrentActionTime = 0.0
-    if (self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile)
-    then
+    if (self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile) then
         self.GImagePlayerActionProgress.fillAmount = 1
         ViewHelper:setGObjectVisible(false, self.GImagePlayerActionProgress)
     end
@@ -1041,8 +948,7 @@ function ViewDesktopPlayerInfoTexas:_resetPlayerInfo()
     --ViewHelper:setGObjectVisible(false, self.GImagePlayerShadow)
 
     if self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile and self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold
-            and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.HoldSeat
-    then
+            and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.HoldSeat then
         self:showShade(false)
     end
 
@@ -1052,8 +958,7 @@ function ViewDesktopPlayerInfoTexas:_resetPlayerInfo()
     if self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile then
         self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
     end
-    if (self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile)
-    then
+    if (self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile) then
         self:_resetThinkTimePro()
         self:_setAmontChip(self.Player.PlayerDataDesktop.Stack)
     end
@@ -1076,8 +981,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:setLeaveWhileTime(rest_time)
-    if (rest_time <= 0)
-    then
+    if (rest_time <= 0) then
         self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
         --ViewHelper:setGObjectVisible(false, self.GImagePlayerShadow)
         self:showShade(false)
@@ -1103,8 +1007,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:_onClickSelf()
-    if (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid)
-    then
+    if (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid) then
         self.ViewMgr:createView("ChatExPression")
     else
         local ui_profile = self.ViewMgr:createView("PlayerProfile")
@@ -1141,8 +1044,7 @@ function ViewDesktopPlayerInfoTexas:_setThinkingTimeSprite(fill_amount, need_vib
     local persent = fill_amount
     local color = CS.UnityEngine.Color()
 
-    if (persent <= 0.5 and persent >= 0.48 and (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid) and self.VibrateOnce and need_vibrate)
-    then
+    if (persent <= 0.5 and persent >= 0.48 and (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid) and self.VibrateOnce and need_vibrate) then
         --#if UNITY_ANDROID || UNITY_IOS
         CS.UnityEngine.Handheld.Vibrate()
         --#endif
@@ -1150,8 +1052,7 @@ function ViewDesktopPlayerInfoTexas:_setThinkingTimeSprite(fill_amount, need_vib
         CS.Casinos.CasinosContext.Instance:Play("half_time", CS.Casinos._eSoundLayer.LayerNormal)
     end
 
-    if (persent <= 0.5)
-    then
+    if (persent <= 0.5) then
         color = CS.UnityEngine.Color.Lerp(self.ThinkingActionColorMiddle, self.ThinkingActionColorEnd, 1 - persent * 2)
     else
         color = CS.UnityEngine.Color.Lerp(self.ThinkingActionColorBegin, self.ThinkingActionColorMiddle, (1 - persent) * 2)
@@ -1164,31 +1065,22 @@ end
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:getActionIndex(action)
     local current_showindex = -1
-    if (action == PlayerActionTypeTexas.None)
-    then
-    elseif (action == PlayerActionTypeTexas.Bet)
-    then
+    if (action == PlayerActionTypeTexas.None) then
+    elseif (action == PlayerActionTypeTexas.Bet) then
         current_showindex = 3
-    elseif (action == PlayerActionTypeTexas.Fold)
-    then
+    elseif (action == PlayerActionTypeTexas.Fold) then
         current_showindex = 0
-    elseif (action == PlayerActionTypeTexas.Check)
-    then
+    elseif (action == PlayerActionTypeTexas.Check) then
         current_showindex = 1
-    elseif (action == PlayerActionTypeTexas.Call)
-    then
+    elseif (action == PlayerActionTypeTexas.Call) then
         current_showindex = 2
-    elseif (action == PlayerActionTypeTexas.Raise)
-    then
+    elseif (action == PlayerActionTypeTexas.Raise) then
         current_showindex = 3
-    elseif (action == PlayerActionTypeTexas.ReRaise)
-    then
+    elseif (action == PlayerActionTypeTexas.ReRaise) then
         current_showindex = 3
-    elseif (action == PlayerActionTypeTexas.AllIn)
-    then
+    elseif (action == PlayerActionTypeTexas.AllIn) then
         current_showindex = 4
     end
-
     return current_showindex
 end
 

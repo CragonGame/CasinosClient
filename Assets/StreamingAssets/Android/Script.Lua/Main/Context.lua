@@ -14,10 +14,11 @@ BundleUpdateVersion = '1.00.067'
 BundleUpdateURL = 'https://cragon-king-oss.cragon.cn/KingTexas.apk'
 DataVersion = '1.00.605'
 DataRootURL = 'https://cragon-king-oss.cragon.cn/ANDROID/Data_1.00.605/'
-DataFileListFileName = 'datafilelist.txt'
+DataFileListFileName = 'DataFileList.txt'
 TbFileList = { 'KingCommon', 'KingDesktop', 'KingDesktopH', 'KingClient' }
 ServerState = 0-- 服务器状态: 0正常,1维护
 ServerStateInfo = ''-- 系统公告
+IsDev = false
 ClientShowFPS = true-- 客户端显示FPS信息 false 不显示 true 显示
 FPSLimit = 60
 ClientShowWeiChat = true-- 客户端显示微信登录按钮 false 不显示 true 显示
@@ -72,6 +73,8 @@ function Context:new(o)
     self.ControllerMgr = nil
     self.ViewMgr = nil
     self.TbDataMgr = nil
+    self.Json = nil
+    self.Rpc = nil
     self.LuaHelper = nil
     return o
 end
@@ -80,6 +83,19 @@ end
 function Context:Init()
     Context:new(nil)
     print('Context:Init()')
+
+    local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("ShowFPS")
+    show_fps_obj.enabled = ClientShowFPS
+    --if (FPSLimit == -1) then
+    --    CS.UnityEngine.QualitySettings.vSyncCount = 0
+    --elseif (FPSLimit == 30) then
+    --    CS.UnityEngine.QualitySettings.vSyncCount = 2
+    --elseif (FPSLimit == 60) then
+    --    CS.UnityEngine.QualitySettings.vSyncCount = 1
+    --else
+    --    CS.UnityEngine.QualitySettings.vSyncCount = 0
+    --    CS.UnityEngine.Application.targetFrameRate = 60
+    --end
 
     -- 销毁所有资源，因为可以从Login返回到Launch
     -- Esc可以弹出退出确认对话框，随时退出
@@ -92,14 +108,12 @@ end
 
 ---------------------------------------
 function Context:Release()
-    if (self.TimerUpdateCopyStreamingAssetsToPersistentData ~= nil)
-    then
+    if (self.TimerUpdateCopyStreamingAssetsToPersistentData ~= nil) then
         self.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
         self.TimerUpdateCopyStreamingAssetsToPersistentData = nil
     end
 
-    if (self.TimerUpdateRemoteToPersistentData ~= nil)
-    then
+    if (self.TimerUpdateRemoteToPersistentData ~= nil) then
         self.TimerUpdateRemoteToPersistentData:Close()
         self.TimerUpdateRemoteToPersistentData = nil
     end
@@ -126,7 +140,6 @@ function Context:AddUiPackage(package_name)
 
     local full_name = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(
             "resources.kingtexas/ui/" .. string.lower(package_name) .. ".ab")
-    --print(full_name)
     local ab = CS.UnityEngine.AssetBundle.LoadFromFile(full_name)
     CS.FairyGUI.UIPackage.AddPackage(ab)
 end
@@ -135,8 +148,7 @@ end
 -- 初始化LaunchStep
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
-    if (BundleUpdateStata == 1 and BundleUpdateVersion ~= nil and BundleUpdateURL ~= nil and self.CasinosContext.Config.VersionBundle ~= BundleUpdateVersion)
-    then
+    if (BundleUpdateStata == 1 and BundleUpdateVersion ~= nil and BundleUpdateURL ~= nil and self.CasinosContext.Config.VersionBundle ~= BundleUpdateVersion) then
         self.LaunchStep[1] = "UpdateBundle"
     end
 
@@ -144,8 +156,7 @@ function Context:_initLaunchStep()
     self.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
 
     -- 检测是否需要更新Data
-    if (DataVersion ~= self.CasinosContext.Config.VersionDataPersistent)
-    then
+    if (DataVersion ~= self.CasinosContext.Config.VersionDataPersistent) then
         self.LaunchStep[3] = "UpdateData"
     end
 
@@ -157,8 +168,7 @@ end
 -- 执行下一步LaunchStep
 function Context:_nextLaunchStep()
     -- 更新Bundle
-    if (self.LaunchStep[1] ~= nil)
-    then
+    if (self.LaunchStep[1] ~= nil) then
         local desc_copy = "准备更新安装包"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
         self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
@@ -177,13 +187,11 @@ function Context:_nextLaunchStep()
     end
 
     -- 首次运行解压
-    if (self.LaunchStep[2] ~= nil)
-    then
+    if (self.LaunchStep[2] ~= nil) then
         local desc_copy = "首次运行解压资源，不消耗流量"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
         self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
-        if (self.CopyStreamingAssetsToPersistentData == nil)
-        then
+        if (self.CopyStreamingAssetsToPersistentData == nil) then
             self.CopyStreamingAssetsToPersistentData = CS.Casinos.CopyStreamingAssetsToPersistentData2()
             self.CopyStreamingAssetsToPersistentData:CopyAsync('')
         end
@@ -192,8 +200,7 @@ function Context:_nextLaunchStep()
     end
 
     -- 更新Data
-    if (self.LaunchStep[3] ~= nil)
-    then
+    if (self.LaunchStep[3] ~= nil) then
         local desc_copy = "更新游戏数据"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
         self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
@@ -205,7 +212,9 @@ function Context:_nextLaunchStep()
                     -- 比较Oss上的datafilelist.txt和Persistent中的datafilelist.txt差异集，获取需要更新的Data列表
                     local datafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
                     self.RemoteDataFileListContent = www.text
+                    --print(self.RemoteDataFileListContent)
                     local persistent_datafilelist_content = self.CasinosLua:ReadAllText(datafilelist_persistent)
+                    --print(persistent_datafilelist_content)
                     self.UpdateRemoteToPersistentData = CS.Casinos.UpdateRemoteToPersistentData()
                     self.UpdateRemoteToPersistentData:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, DataRootURL)
                     self.TimerUpdateRemoteToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteToPersistentData)
@@ -215,8 +224,7 @@ function Context:_nextLaunchStep()
     end
 
     -- 卸载Launch，加载并显示Login
-    if (self.LaunchStep[4] ~= nil)
-    then
+    if (self.LaunchStep[4] ~= nil) then
         self.LaunchStep[4] = nil
 
         local desc_copy = "准备进入登录界面"
@@ -225,23 +233,6 @@ function Context:_nextLaunchStep()
 
         local path_lua_root = self.CasinosContext.PathMgr:combinePersistentDataPath("Script.Lua/");
         self.CasinosLua:LoadLuaFromDir(path_lua_root);
-
-        local show_fps = ClientShowFPS
-        local show_fps_obj = self.CasinosContext.Config.GoConfig:GetComponent("ShowFPS")
-        show_fps_obj.enabled = show_fps
-        if (FPSLimit == -1)
-        then
-            CS.UnityEngine.QualitySettings.vSyncCount = 0
-        elseif (FPSLimit == 30)
-        then
-            CS.UnityEngine.QualitySettings.vSyncCount = 2
-        elseif (FPSLimit == 60)
-        then
-            CS.UnityEngine.QualitySettings.vSyncCount = 1
-        else
-            CS.UnityEngine.QualitySettings.vSyncCount = 0
-            CS.UnityEngine.Application.targetFrameRate = 60
-        end
 
         local show_weichat = ClientShowWeiChat
         self.CasinosContext.ShowWeiChat = show_weichat
@@ -255,8 +246,7 @@ function Context:_nextLaunchStep()
         self.CasinosContext.CanReportLogDeviceId = CanReportLogDeviceId
         self.CasinosContext.CanReportLogPlayerId = CanReportLogPlayerId
         self.CasinosContext.ShowGoldTree = ShowGoldTree
-        if (self.CasinosContext.UnityAndroid == true)
-        then
+        if (self.CasinosContext.UnityAndroid == true) then
             self.CasinosContext.UseWeiChatPay = UseWeiChatPay
             self.CasinosContext.UseALiPay = UseALiPay
         end
@@ -277,10 +267,9 @@ function Context:_nextLaunchStep()
         self.CasinosContext.ShareSDKAppSecret = ShareSDKAppSecret
 
         self:DoString("MessagePack")
-        --self:DoString("json")
         self.Json = require("json")
         self:DoString("RPC")
-        local rpc = RPC:new(nil)
+        self.Rpc = RPC:new(nil)
         self:DoString("LuaHelper")
         self.LuaHelper = LuaHelper:new(nil)
         self:DoString("TexasHelper")
@@ -323,7 +312,7 @@ function Context:_nextLaunchStep()
         ViewHelper:new(nil)
 
         self:DoString("CasinoHelper")
-        CasinoHelper:new(nil, rpc.MessagePack, self.LanMgr)
+        CasinoHelper:new(nil, self.Rpc.MessagePack, self.LanMgr)
         self:DoString("Native")
         Native:new(nil, self.ViewMgr, self)
         self:DoString("PicCapture")
@@ -333,13 +322,11 @@ function Context:_nextLaunchStep()
         self.ControllerMgr = ControllerMgr:new(nil)
         self.ControllerMgr:OnCreate()
         self.ControllerMgr.TbDataMgr = self.TbDataMgr
-        self.ControllerMgr.RPC = rpc
-        self.ControllerMgr.Listener = self
+        self.ControllerMgr.RPC = self.Rpc
         self.ControllerMgr.LanMgr = self.LanMgr
         self:_regController()
         self.ViewMgr.ControllerMgr = self.ControllerMgr
-        self.ViewMgr.RPC = rpc
-        self.ViewMgr.Listener = self
+        self.ViewMgr.RPC = self.Rpc
 
         self:_addUiPackage()
 
@@ -356,8 +343,7 @@ end
 -- 定时器，首次运行解压
 function Context:_timerUpdateCopyStreamingAssetsToPersistentData(tm)
     local is_done = self.CopyStreamingAssetsToPersistentData:IsDone()
-    if (is_done)
-    then
+    if (is_done) then
         self.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
         self.TimerUpdateCopyStreamingAssetsToPersistentData = nil
         self.CopyStreamingAssetsToPersistentData = nil
@@ -376,8 +362,7 @@ end
 -- 定时器，更新Data
 function Context:_timerUpdateRemoteToPersistentData(tm)
     local is_done = self.UpdateRemoteToPersistentData:IsDone()
-    if (is_done)
-    then
+    if (is_done) then
         self.TimerUpdateRemoteToPersistentData:Close()
         self.TimerUpdateRemoteToPersistentData = nil
         self.UpdateRemoteToPersistentData = nil

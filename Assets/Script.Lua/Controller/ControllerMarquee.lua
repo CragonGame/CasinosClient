@@ -58,10 +58,6 @@ function ControllerMarquee:onHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerMarquee:getModle()
-end
-
----------------------------------------
 function ControllerMarquee:s2cMarqueeRequestResult(result)
     if (result == ProtocolResult.Failed)
     then

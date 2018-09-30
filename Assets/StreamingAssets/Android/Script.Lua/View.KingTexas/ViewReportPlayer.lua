@@ -65,7 +65,7 @@ function ViewReportPlayer:setReportPlayerInfo(player_info)
     local state = CasinoHelper:TranslateFriendStateEx(player_info)
     local friend_state_str = CasinoHelper:TranslateFriendState(state)
     self.GTextState.text = friend_state_str
-    self.GTextID.text = "ID:" .. id
+    self.GTextID.text = "ID: " .. id
     local address = ip_address
 	if(address == nil or address == "")
 	then

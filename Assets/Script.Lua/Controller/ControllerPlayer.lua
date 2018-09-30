@@ -425,9 +425,9 @@ end
 
 ---------------------------------------
 function ControllerPlayer:OnPlayerOpenUrlNotify(url)
-    self.ControllerMgr.Listener.UniWebView:Load(url)
-    self.ControllerMgr.Listener.UniWebView:Show()
-    self.ControllerMgr.Listener.UniWebView:SetShowToolbar(true, false, false)
+    self.ControllerMgr.UniWebView:Load(url)
+    self.ControllerMgr.UniWebView:Show()
+    self.ControllerMgr.UniWebView:SetShowToolbar(true, false, false)
 end
 
 ---------------------------------------

@@ -59,7 +59,7 @@ function ViewPlayerProfile:onCreate()
                 else
                     local icon_resource_name = ""
                     local player_icon, icon_resource_name = CS.Casinos.HeadIconMgr.getIconName(false, self.PlayerInfo.PlayerInfoCommon.AccountId, icon_resource_name)
-                    CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", self.CasinosContext.UserConfig.Current.PlayerIconDomain .. player_icon, icon_resource_name, nil,
+                    CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", PlayerIconDomain .. player_icon, icon_resource_name, nil,
                             function(ex, tick)
                                 ViewHelper:UiEndWaiting()
                                 if (ex ~= nil)
@@ -288,7 +288,7 @@ function ViewPlayerProfile:setPlayerInfo(player_info)
     self.GTextPlayerNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(self.PlayerInfo.PlayerInfoCommon.NickName, 21, 6)
     self.GTextPlayerGolds.text = UiChipShowHelper:getGoldShowStr(self.PlayerInfo.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, false)
     self.GTextPlayerSign.text = self.PlayerInfo.PlayerInfoMore.IndividualSignature
-    self.GTextId.text = "ID:" .. CS.Casinos.LuaHelper.FormatPlayerActorId(self.PlayerInfo.PlayerInfoMore.PlayerId)
+    self.GTextId.text = "ID: " .. CS.Casinos.LuaHelper.FormatPlayerActorId(self.PlayerInfo.PlayerInfoMore.PlayerId)
 
     local address = self.ViewMgr.LanMgr:getLanValue("Address")
     local real_address = self.PlayerInfo.PlayerInfoMore.IPAddress

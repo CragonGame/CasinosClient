@@ -3,30 +3,37 @@
 public class ShowFPS : MonoBehaviour
 {
     //-------------------------------------------------------------------------
-    float ShowTime { get; set; } = 1f;
-    float DeltaTime { get; set; } = 0f;
-    int FrameUpdate { get; set; } = 0;
     float FPS { get; set; } = 0;
-    float MilliSecond { get; set; } = 0;
+    float MS { get; set; } = 0;
+
+    private Rect rect;
+    private int count = 0;
+    private float deltaTime = 0f;
+
+    //-------------------------------------------------------------------------
+    private void Start()
+    {
+        rect = new Rect(Screen.width / 2, 0, 200, 50);
+    }
 
     //-------------------------------------------------------------------------
     void Update()
     {
-        FrameUpdate++;
-        DeltaTime += Time.deltaTime;
-        if (DeltaTime >= ShowTime)
+        count++;
+        deltaTime += Time.unscaledDeltaTime;
+        if (deltaTime >= 1f)
         {
-            FPS = FrameUpdate / DeltaTime;
-            MilliSecond = DeltaTime * 1000 / FrameUpdate;
-            FrameUpdate = 0;
-            DeltaTime = 0f;
+            FPS = count / deltaTime;
+            MS = deltaTime * 1000 / count;
+            count = 0;
+            deltaTime = 0f;
         }
     }
 
     //-------------------------------------------------------------------------
     void OnGUI()
     {
-        GUI.Label(new Rect(Screen.width / 2, 0, 1000, 1000),
-            string.Format(" 当前每帧渲染间隔：{0:0.0}ms，({1:0.}帧每秒)", MilliSecond, FPS));
+        string info = string.Format("{0:0.0}fps，{1:0.0}ms", FPS, MS);
+        GUI.Label(rect, info);
     }
 }

@@ -80,7 +80,7 @@ function ViewFriend:onCreate()
     local str_id_1 = string.sub(str_id, 1, 2)
     local str_id_2 = string.sub(str_id, 3, 5)
     local str_id_3 = string.sub(str_id, 6, 7)
-    self.GTextID.text = self.ViewMgr.LanMgr:getLanValue("My") .. "ID:" .. str_id_1 .. "-" .. str_id_2 .. "-" .. str_id_3
+    self.GTextID.text = self.ViewMgr.LanMgr:getLanValue("My") .. "ID: " .. str_id_1 .. "-" .. str_id_2 .. "-" .. str_id_3
     self.ViewMgr:bindEvListener("EvEntityNotifyDeleteFriend", self)
     self.ViewMgr:bindEvListener("EvEntityFriendOnlineStateChange", self)
     self.ViewMgr:bindEvListener("EvEntityRefreshFriendList", self)
@@ -515,7 +515,7 @@ function ViewShowFriendDetail:setFriendInfo(friend_item)
         friend_state_str = CasinoHelper:TranslateFriendState(state)
     end
     self.GTextState.text = friend_state_str
-    self.GTxetDetailID.text = "ID:" .. CS.Casinos.UiHelperCasinos.FormatPlayerActorId(self.CurrentFriendInfo.PlayerInfoMore.PlayerId)
+    self.GTxetDetailID.text = "ID: " .. CS.Casinos.UiHelperCasinos.FormatPlayerActorId(self.CurrentFriendInfo.PlayerInfoMore.PlayerId)
     local address = self.CurrentFriendInfo.PlayerInfoMore.IPAddress
     if (address == nil or address == "")
     then
@@ -628,7 +628,7 @@ function ViewShowFriendDetail:onClickCommonHeadIcon()
     else
         local icon_resource_name = ""
         local player_icon, icon_resource_name = CS.Casinos.HeadIconMgr.getIconName(false, self.CurrentFriendInfo.PlayerInfoCommon.AccountId, icon_resource_name)
-        CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", self.CasinosContext.UserConfig.Current.PlayerIconDomain .. player_icon, icon_resource_name, nil,
+        CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", PlayerIconDomain .. player_icon, icon_resource_name, nil,
                 function(ex, tick)
                     ViewHelper:UiEndWaiting()
                     if (ex ~= nil)

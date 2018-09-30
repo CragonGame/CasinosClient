@@ -163,10 +163,6 @@ function ControllerRanking:onHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerRanking:getModle()
-end
-
----------------------------------------
 function ControllerRanking:s2cRankingChipNotify(list_gold)
     if (list_gold ~= nil and #list_gold > 0)
     then

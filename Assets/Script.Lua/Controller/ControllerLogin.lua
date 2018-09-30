@@ -175,10 +175,8 @@ end
 
 ---------------------------------------
 function ControllerLogin:onHandleEv(ev)
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvUiLogin")
-        then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvUiLogin") then
             local login_type = ev.login_type
             CS.Casinos.CasinosContext.Instance.LoginType = login_type
             self.LoginType = login_type
@@ -192,10 +190,8 @@ function ControllerLogin:onHandleEv(ev)
             --    self:_clickCheckDataCallBack(bo)
             --end)
             self:_clickCheckDataCallBack(false)
-        elseif (ev.EventName == "EvUiLoginClickBtnRegister")
-        then
-            if (self.ControllerUCenter.WWWRegister ~= null)
-            then
+        elseif (ev.EventName == "EvUiLoginClickBtnRegister") then
+            if (self.ControllerUCenter.WWWRegister ~= null) then
                 local info = self.ControllerMgr.LanMgr:getLanValue("Registering")
                 ViewHelper:UiShowInfoFailed(info)
             else
@@ -224,8 +220,7 @@ function ControllerLogin:onHandleEv(ev)
                 register_acc_data.AppId = CS.Casinos.CasinosContext.Instance.Config.AppId
                 self:requestRegister(register_acc_data)
             end
-        elseif (ev.EventName == "EvUiRequestGetPhoneCode")
-        then
+        elseif (ev.EventName == "EvUiRequestGetPhoneCode") then
             -- 获取验证码
             local phone = ev.Phone
             local request = GetPhoneVerificationCodeRequest:new(nil)
@@ -234,8 +229,7 @@ function ControllerLogin:onHandleEv(ev)
                     function(status, response, error)
                         self:onUCenterPhoneVerificationCode(status, response, error)
                     end)
-        elseif (ev.EventName == "EvUiRequestResetPwd")
-        then
+        elseif (ev.EventName == "EvUiRequestResetPwd") then
             local phone_code = ev.phone_code
             local new_pwd = ev.new_pwd
             self.Password = new_pwd
@@ -297,8 +291,7 @@ end
 
 ---------------------------------------
 function ControllerLogin:_timerUpdate(tm)
-    if (self.RequestThirdPartyLogin)
-    then
+    if (self.RequestThirdPartyLogin) then
         self.RequestThirdPartyLogin = false
         if (self.CasinosContext.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat) then
             self.CasinosContext:SetNativeOperate(1)
@@ -317,10 +310,6 @@ function ControllerLogin:_timerUpdate(tm)
             end
         end
     end
-end
-
----------------------------------------
-function ControllerLogin:getModle()
 end
 
 ---------------------------------------
@@ -478,7 +467,7 @@ function ControllerLogin:onUCenterLogin(status, response, error)
         if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey))
         then
             local s = CS.UnityEngine.PlayerPrefs.GetString(self.LoginAccountInfoKey)
-            local d = self.ControllerMgr.Listener.Json.decode(s)
+            local d = self.ControllerMgr.Json.decode(s)
             infos:setData(d)
         end
 
@@ -517,7 +506,7 @@ function ControllerLogin:onUCenterLogin(status, response, error)
         a_info.Pwd = pwd
         infos.TLoginAccountInfo[s_login_type] = a_info
 
-        local t_encode = self.ControllerMgr.Listener.Json.encode(infos)
+        local t_encode = self.ControllerMgr.Json.encode(infos)
         CS.UnityEngine.PlayerPrefs.SetString(self.LoginAccountInfoKey, t_encode)
 
         -- DataEye登陆
@@ -553,7 +542,7 @@ function ControllerLogin:onUCenterGuestAccess(status, response, error)
         if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey))
         then
             local s = CS.UnityEngine.PlayerPrefs.GetString(self.LoginAccountInfoKey)
-            local d = self.ControllerMgr.Listener.Json.decode(s)
+            local d = self.ControllerMgr.Json.decode(s)
             infos:setData(d)
         end
 
@@ -568,15 +557,13 @@ function ControllerLogin:onUCenterGuestAccess(status, response, error)
         a_info.Pwd = ""
         infos.TLoginAccountInfo["1"] = a_info
 
-        local t_encode = self.ControllerMgr.Listener.Json.encode(infos)
+        local t_encode = self.ControllerMgr.Json.encode(infos)
         CS.UnityEngine.PlayerPrefs.SetString(self.LoginAccountInfoKey, t_encode)
 
         -- DataEye登陆
         --CasinosContext.Instance.CoDataEye.login(c.CoNetMonitor.Acc, c.CoNetMonitor.AccId);
         CS.DataEye.login(self.Acc .. "_" .. self.AccId)
-        c.NetBridge:connectBase(
-                c.UserConfig.Current.GatewayIp,
-                c.UserConfig.Current.GatewayPort)
+        c.NetBridge:connectBase(GatewayIp, GatewayPort)
     else
         if (error ~= nil)
         then
@@ -724,7 +711,7 @@ function ControllerLogin:OnAccountLoginAppResponse(login_response)
     then
         local s = CS.UnityEngine.PlayerPrefs.GetString(invite_payerid)
         print("s   " .. s)
-        local t_decode = self.ControllerMgr.Listener.Json.decode(s)
+        local t_decode = self.ControllerMgr.Json.decode(s)
         local new = t_decode["IsNew"]
         print("new   " .. tostring(new))
         if new then
@@ -757,9 +744,9 @@ function ControllerLogin:OnAccountEnterWorldResponse(enterworld_notify1)
         if (CS.UnityEngine.PlayerPrefs.HasKey(invite_payerid))
         then
             local s = CS.UnityEngine.PlayerPrefs.GetString(invite_payerid)
-            local t_decode = self.ControllerMgr.Listener.Json.decode(s)
+            local t_decode = self.ControllerMgr.Json.decode(s)
             t_decode["IsNew"] = false
-            local t_encode = self.ControllerMgr.Listener.Json.encode(t_decode)
+            local t_encode = self.ControllerMgr.Json.encode(t_decode)
             CS.UnityEngine.PlayerPrefs.SetString(invite_payerid, t_encode)
         end
         self.ClientEnterWorldNotify = enterworld_notify
@@ -856,7 +843,7 @@ function ControllerLogin:_init(is_init)
     self.RequestThirdPartyLogin = false
     if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey)) then
         local s = CS.UnityEngine.PlayerPrefs.GetString(self.LoginAccountInfoKey)
-        local t_decode = self.ControllerMgr.Listener.Json.decode(s)
+        local t_decode = self.ControllerMgr.Json.decode(s)
         local infos = LoginAccountInfos:new(nil)
         infos:setData(t_decode)
         local a_info_last_login = infos.TLoginAccountInfo[tostring(infos.LastLoginType)]
@@ -894,8 +881,10 @@ function ControllerLogin:_init(is_init)
     end
 
     view_login:SetAccPwd(acc, pwd)
-    self.ViewMgr:createView("Pool")
+
     self.CasinosContext:Play("background", CS.Casinos._eSoundLayer.Background)
+
+    self.ViewMgr:createView("Pool")
 end
 
 ---------------------------------------

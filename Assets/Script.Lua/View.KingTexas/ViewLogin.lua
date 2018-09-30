@@ -9,7 +9,6 @@ function ViewLogin:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     self.ViewMgr = nil
     self.GoUi = nil
     self.ComUi = nil
@@ -18,7 +17,6 @@ function ViewLogin:new(o)
     self.InitDepth = nil
     self.ViewKey = nil
     self.AgreeAgreement = true
-
     return o
 end
 
@@ -32,10 +30,8 @@ function ViewLogin:onCreate()
     ViewHelper:UiEndWaiting()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     local controller_wechat = self.ComUi:GetController("ControllerWeChat")
-    if (controller_wechat ~= nil)
-    then
-        if (self.CasinosContext.ShowWeiChat == true)
-        then
+    if (controller_wechat ~= nil) then
+        if (self.CasinosContext.ShowWeiChat == true) then
             controller_wechat.selectedIndex = 0
         else
             controller_wechat.selectedIndex = 1
@@ -43,8 +39,7 @@ function ViewLogin:onCreate()
     end
 
     local btn_otherlogin = self.ComUi:GetChild("BtnOtherLogin")
-    if (btn_otherlogin ~= nil)
-    then
+    if (btn_otherlogin ~= nil) then
         btn_otherlogin.asButton.onClick:Add(
                 function()
                     self:_switchLoginState()
@@ -53,8 +48,7 @@ function ViewLogin:onCreate()
     end
 
     local btn_otherloginex = self.ComUi:GetChild("BtnOtherLoginEx")
-    if (btn_otherloginex ~= nil)
-    then
+    if (btn_otherloginex ~= nil) then
         btn_otherloginex.asButton.onClick:Add(
                 function()
                     self:_switchLoginState()
@@ -63,8 +57,7 @@ function ViewLogin:onCreate()
     end
 
     local btn_weixin = self.ComUi:GetChild("BtnWeiXin")
-    if (btn_weixin ~= nil)
-    then
+    if (btn_weixin ~= nil) then
         btn_weixin.asButton.onClick:Add(
                 function()
                     self:_onClickWeiXin()
@@ -73,8 +66,7 @@ function ViewLogin:onCreate()
     end
 
     local com_shadelogin = self.ComUi:GetChild("CoShadeLogin")
-    if (com_shadelogin ~= nil)
-    then
+    if (com_shadelogin ~= nil) then
         com_shadelogin.asCom.onClick:Add(
                 function()
                     self:_switch2LoginMain()
@@ -83,8 +75,7 @@ function ViewLogin:onCreate()
     end
 
     self.BtnLogin = self.ComUi:GetChild("Lan_Btn_Login1")
-    if (self.BtnLogin ~= nil)
-    then
+    if (self.BtnLogin ~= nil) then
         self.BtnLogin.asButton.onClick:Add(
                 function()
                     self:_onClickBtnLogin()
@@ -93,8 +84,7 @@ function ViewLogin:onCreate()
     end
 
     local btn_show_register = self.ComUi:GetChild("Lan_Btn_Register")
-    if (btn_show_register ~= nil)
-    then
+    if (btn_show_register ~= nil) then
         btn_show_register.asButton.onClick:Add(
                 function()
                     self:_onClickBtnShowRegister()
@@ -103,8 +93,7 @@ function ViewLogin:onCreate()
     end
 
     local btn_guestaccess = self.ComUi:GetChild("BtnGuest")
-    if (btn_guestaccess ~= nil)
-    then
+    if (btn_guestaccess ~= nil) then
         btn_guestaccess.asButton.onClick:Add(
                 function()
                     self:_onClickBtnGuestAccess()
@@ -120,8 +109,7 @@ function ViewLogin:onCreate()
     )
 
     local btn_fogetpwd = self.ComUi:GetChild("Lan_Btn_ResetPwd")
-    if (btn_fogetpwd ~= nil)
-    then
+    if (btn_fogetpwd ~= nil) then
         btn_fogetpwd.asButton.onClick:Add(
                 function()
                     self:_onClickBtnForgetPwd()
@@ -158,11 +146,9 @@ function ViewLogin:onCreate()
     )
 
     local group_agreement = self.ComUi:GetChild("Agreement")
-    if (group_agreement ~= nil)
-    then
+    if (group_agreement ~= nil) then
         local btn_returnagreement = self.ComUi:GetChildInGroup(group_agreement.asGroup, "Lan_Btn_Return")
-        if (btn_returnagreement ~= nil)
-        then
+        if (btn_returnagreement ~= nil) then
             btn_returnagreement.asButton.onClick:Add(
                     function()
                         self:_onClickBtnReturn()
@@ -172,14 +158,12 @@ function ViewLogin:onCreate()
     end
 
     local text_version = self.ComUi:GetChild("Version")
-    if (text_version ~= nil)
-    then
+    if (text_version ~= nil) then
         self.GTextVersion = text_version.asTextField
     end
 
     local server_state = self.ComUi:GetChild("SeverStateInfo")
-    if (server_state ~= nil)
-    then
+    if (server_state ~= nil) then
         self.GTextServerState = server_state.asTextField
     end
 
@@ -199,8 +183,7 @@ function ViewLogin:onCreate()
     local p_helper = ParticleHelper:new(nil)
     local com_bg = self.ComUi:GetChild("ComBg")
     local image_bg = com_bg:GetChild("ImageMote").asImage
-    if (self.CasinosContext.NeedHideClientUi == false)
-    then
+    if (self.CasinosContext.NeedHideClientUi == false) then
         image_bg.visible = false
         local ab_mary_loading = p_helper:GetSpine("Spine/loadingmarry.ab")
         local atlas = ab_mary_loading:LoadAsset("Mary_Loading.atlas")
@@ -208,17 +191,14 @@ function ViewLogin:onCreate()
         local json = ab_mary_loading:LoadAsset("Mary_LoadingJson")
 
         self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
-        --local moteParent = self.ComUi:GetChild("MoteParent").asCom
-        self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
-        --self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
         self.PlayerAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(70, 70, 1000)
-        --self.PlayerAnim.transform.gameObject.layer = moteParent.displayObject.gameObject.layer
         self.PlayerAnim:Initialize(false)
         self.PlayerAnim.loop = true
-        self.MoteRender = self.PlayerAnim.transform.gameObject:GetComponent("MeshRenderer")
         self.PlayerAnim.AnimationName = "animation"
-        self.MoteRender.sortingOrder = 316
+        self.MoteRender = self.PlayerAnim.transform.gameObject:GetComponent("MeshRenderer")
+        self.MoteRender.sortingOrder = 315
         self.PlayerAnim.transform.gameObject.name = "LoadingMote"
+        self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
         self.HolderMote:SetNativeObject(CS.FairyGUI.GoWrapper(self.PlayerAnim.transform.gameObject))
     else
         image_bg.visible = true
@@ -230,23 +210,24 @@ function ViewLogin:onCreate()
     local json1 = ab_denglong:LoadAsset("denglongJson")
 
     self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton")
-    local denglongParent = self.ComUi:GetChild("DengLongParent").asCom
-    self.DengLongAnim.transform.position = denglongParent.displayObject.gameObject.transform.position
+    local denglong_parent = self.ComUi:GetChild("DengLongParent").asCom
+    self.DengLongAnim.transform.position = denglong_parent.displayObject.gameObject.transform.position
     self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(1.1, 1.1, 1.1)
-    self.DengLongAnim.transform.gameObject.layer = denglongParent.displayObject.gameObject.layer
+    self.DengLongAnim.transform.gameObject.layer = denglong_parent.displayObject.gameObject.layer
     self.DengLongAnim:Initialize(false)
     self.DengLongAnim.loop = true
-    self.DengLongRender = self.DengLongAnim.transform.gameObject:GetComponent("MeshRenderer")
     self.DengLongAnim.AnimationName = "animation"
-    self.DengLongRender.sortingOrder = 316
     self.DengLongAnim.transform.gameObject.name = "DengLong"
+    self.DengLongRender = self.DengLongAnim.transform.gameObject:GetComponent("MeshRenderer")
+    self.DengLongRender.sortingOrder = 4
+
     local bg = com_bg:GetChild("bg")
     ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center, { self.HolderMote })
 
     self.ComboChooseUCenter = self.ComUi:GetChild("ComboChooseUCenter").asComboBox
     self.ComboChooseGateWay = self.ComUi:GetChild("ComboChooseGateWay").asComboBox
     local show_combo = false
-    if CS.Casinos.CasinosContext.Instance.IsDev then
+    if IsDev then
         show_combo = true
         local items = {}
         items[1] = "http://ucenter.cragon.cn"
@@ -287,8 +268,7 @@ end
 function ViewLogin:onDestroy()
     print('ViewLogin:onDestroy()')
 
-    if (self.CasinosContext.NeedHideClientUi == false)
-    then
+    if (self.CasinosContext.NeedHideClientUi == false) then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
@@ -306,10 +286,8 @@ end
 
 ---------------------------------------
 function ViewLogin:onHandleEv(ev)
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvUiChooseCountry")
-        then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvUiChooseCountry") then
             if self.UiRegister ~= nil then
                 self.UiRegister:setCurrentCountryCode(ev.CountryKey, ev.CountryCode, ev.KeyAndCodeFormat)
             end
@@ -324,8 +302,7 @@ end
 ---------------------------------------
 function ViewLogin:onClickUCenter()
     local ev = self.ViewMgr:getEv("EvUiChooseUCenter")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiChooseUCenter:new(nil)
     end
     ev.ucenter = self.ComboChooseUCenter.text
@@ -335,8 +312,7 @@ end
 ---------------------------------------
 function ViewLogin:onClickGateWay()
     local ev = self.ViewMgr:getEv("EvUiChooseGateWay")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiChooseGateWay:new(nil)
     end
     ev.gateway = self.ComboChooseGateWay.text
@@ -351,8 +327,7 @@ end
 
 ---------------------------------------
 function ViewLogin:SetVersionAndServerStateInfo(bundle_version, data_version, server_is_invalid, serverstate_info)
-    if (self.GTextVersion ~= nil)
-    then
+    if (self.GTextVersion ~= nil) then
         local version_tips = self.ViewMgr.LanMgr:getLanValue("AppVersion") .. "：%s " .. self.ViewMgr.LanMgr:getLanValue("DataVersion") .. "：%s"
         local en = " Pro"
         if string.find(GatewayIp, "dev") then
@@ -363,8 +338,7 @@ function ViewLogin:SetVersionAndServerStateInfo(bundle_version, data_version, se
         self.GTextVersion.text = version_info
     end
 
-    if (self.GTextServerState ~= nil)
-    then
+    if (self.GTextServerState ~= nil) then
         self.GTextServerState.visible = server_is_invalid
         self.GTextServerState.text = serverstate_info
     end
@@ -380,8 +354,7 @@ end
 
 ---------------------------------------
 function ViewLogin:Switch2DlgLogin(acc, pwd)
-    if (self:_hasAgreeAgreement() == false)
-    then
+    if (self:_hasAgreeAgreement() == false) then
         return
     end
     self:_switchController("LoginState", "Login")
@@ -390,8 +363,7 @@ end
 
 ---------------------------------------
 function ViewLogin:Switch2RegisterCode()
-    if (self:_hasAgreeAgreement() == false)
-    then
+    if (self:_hasAgreeAgreement() == false) then
         return
     end
     self:_switchController("LoginState", "RegisterCode")
@@ -399,8 +371,7 @@ end
 
 ---------------------------------------
 function ViewLogin:Switch2ResetPwd()
-    if (self:_hasAgreeAgreement() == false)
-    then
+    if (self:_hasAgreeAgreement() == false) then
         return
     end
     self:_switchController("LoginState", "ResetPwd")
@@ -408,8 +379,7 @@ end
 
 ---------------------------------------
 function ViewLogin:Switch2ResetPwdCode()
-    if (self:_hasAgreeAgreement() == false)
-    then
+    if (self:_hasAgreeAgreement() == false) then
         return
     end
     self:_switchController("LoginState", "ResetPwdCode")
@@ -424,13 +394,11 @@ end
 ---------------------------------------
 -- 点击登录按钮
 function ViewLogin:_onClickBtnLogin()
-    if (self:_hasAgreeAgreement() == false)
-    then
+    if (self:_hasAgreeAgreement() == false) then
         return
     end
     local ev = self.ViewMgr:getEv("EvUiLogin")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiLogin:new(nil)
     end
     ev.login_type = 0
@@ -444,19 +412,16 @@ end
 ---------------------------------------
 -- 游客Access
 function ViewLogin:_onClickBtnGuestAccess()
-    if (self:_hasAgreeAgreement() == false)
-    then
+    if (self:_hasAgreeAgreement() == false) then
         return
     end
-    if (self.CasinosContext.ServerIsInvalid)
-    then
+    if (self.CasinosContext.ServerIsInvalid) then
         ViewHelper:UiShowInfoSuccess(self.CasinosContext.ServerStateInfo)
         return
     end
 
     local ev = self.ViewMgr:getEv("EvUiLogin")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiLogin:new(nil)
     end
     ev.login_type = 1
@@ -470,19 +435,16 @@ end
 
 ---------------------------------------
 function ViewLogin:_onClickWeiXin()
-    if (self:_hasAgreeAgreement() == false)
-    then
+    if (self:_hasAgreeAgreement() == false) then
         return
     end
-    if (self.CasinosContext.ServerIsInvalid)
-    then
+    if (self.CasinosContext.ServerIsInvalid) then
         ViewHelper:UiShowInfoSuccess(self.CasinosContext.ServerStateInfo)
         return
     end
 
     local ev = self.ViewMgr:getEv("EvUiLogin")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiLogin:new(nil)
     end
     ev.login_type = 2
@@ -502,8 +464,7 @@ end
 ---------------------------------------
 -- 切换到注册对话框
 function ViewLogin:_onClickBtnShowRegister()
-    if (self:_hasAgreeAgreement() == false)
-    then
+    if (self:_hasAgreeAgreement() == false) then
         return
     end
     self:_switchController("LoginState", "Register")
@@ -515,13 +476,12 @@ function ViewLogin:_onClickBtnReturn()
     self:_switchController("LoginState", "Login")
 end
 
+---------------------------------------
 function ViewLogin:_switchLoginState()
-    if (self:_hasAgreeAgreement() == false)
-    then
+    if (self:_hasAgreeAgreement() == false) then
         return
     end
-    if (self.CasinosContext.ServerIsInvalid)
-    then
+    if (self.CasinosContext.ServerIsInvalid) then
         ViewHelper:UiShowInfoSuccess(self.CasinosContext.ServerStateInfo)
         return
     end
@@ -536,14 +496,12 @@ end
 
 ---------------------------------------
 function ViewLogin:_checkloginInput()
-    if (self.GTextInputAccLogin == nil or self.GTextInputPwdLogin == nil)
-    then
+    if (self.GTextInputAccLogin == nil or self.GTextInputPwdLogin == nil) then
         return
     end
 
     if ((self.GTextInputAccLogin ~= nil and string.len(self.GTextInputAccLogin.text) > 0)
-            and (self.GTextInputPwdLogin ~= nil and string.len(self.GTextInputPwdLogin.text) > 0))
-    then
+            and (self.GTextInputPwdLogin ~= nil and string.len(self.GTextInputPwdLogin.text) > 0)) then
         self.BtnLogin.alpha = 1
         self.BtnLogin.enabled = true
     else
@@ -554,8 +512,7 @@ end
 
 ---------------------------------------
 function ViewLogin:_onClickBtnAgree()
-    if (self.AgreeAgreement == true)
-    then
+    if (self.AgreeAgreement == true) then
         self.AgreeAgreement = false
     else
         self.AgreeAgreement = true
@@ -574,8 +531,7 @@ end
 
 ---------------------------------------
 function ViewLogin:_hasAgreeAgreement()
-    if (self.AgreeAgreement == true)
-    then
+    if (self.AgreeAgreement == true) then
         return true
     else
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("AgreePrivacyStatement"))

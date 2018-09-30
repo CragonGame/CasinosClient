@@ -9,7 +9,9 @@ ControllerMgr = {
     TableControllerFactory = {},
     TableController = {},
     TableControllerUpdate = {},
-    Context = Context
+    Context = Context,
+    Json = Context.Json,
+    Rpc = Context.Rpc
 }
 
 ---------------------------------------
@@ -17,8 +19,7 @@ function ControllerMgr:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
         self.LanMgr = nil
     end
@@ -74,8 +75,7 @@ end
 function ControllerMgr:DestroyPlayerControllers()
     local t = {}
     for i, v in pairs(self.TableController) do
-        if (i ~= "Login" and i ~= "UCenter")
-        then
+        if (i ~= "Login" and i ~= "UCenter") then
             t[i] = v
         end
     end
@@ -83,8 +83,7 @@ function ControllerMgr:DestroyPlayerControllers()
     for i, v in pairs(t) do
         v:onDestroy()
         local l = self.TableController[i]
-        if (l ~= nil)
-        then
+        if (l ~= nil) then
             l = nil
             self.TableController[i] = nil
         end

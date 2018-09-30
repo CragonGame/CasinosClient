@@ -23,7 +23,6 @@ function ViewMain:new(o)
     self.ViewKey = nil
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.PokerGirlMain = "PokerGirMain"
-
     return o
 end
 
@@ -91,8 +90,7 @@ function ViewMain:onCreate()
             end
     )
     local show_goldtree = false
-    if (self.CasinosContext.ShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true)
-    then
+    if (self.CasinosContext.ShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true) then
         show_goldtree = true
     end
     ViewHelper:setGObjectVisible(show_goldtree, btn_goldtree)
@@ -105,8 +103,7 @@ function ViewMain:onCreate()
     gold_par_parent:SetNativeObject(CS.FairyGUI.GoWrapper(g_p))
 
     local com_more = nil
-    if (self.CasinosContext.NeedHideClientUi)
-    then
+    if (self.CasinosContext.NeedHideClientUi) then
         com_more = self.ComUi:GetChild("ComMoreHideRank").asCom
         btn_match.visible = false
         --btn_wa.visible = false
@@ -121,8 +118,7 @@ function ViewMain:onCreate()
                 end
         )
     end
-    if (com_more ~= nil)
-    then
+    if (com_more ~= nil) then
         com_more.visible = true
     end
 
@@ -242,8 +238,7 @@ function ViewMain:onCreate()
             end
     )
     local show_first = false
-    if (self.CasinosContext.ClientShowFirstRecharge == true and is_firstrecharge == true)
-    then
+    if (self.CasinosContext.ClientShowFirstRecharge == true and is_firstrecharge == true) then
         show_first = true
     else
         self.BtnRegister.position = com_recharge_first.position
@@ -387,16 +382,13 @@ function ViewMain:onCreate()
         local json = ab_mainmarry:LoadAsset("MaryJson")
 
         self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
-        --local moteParent = self.ComUi:GetChild("MoteParent").asCom
-        --self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
-        self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
         self.PlayerAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(81, 81, 1000)
         self.PlayerAnim:Initialize(false)
         self.PlayerAnim.loop = true
         self.PlayerAnim.AnimationName = "animation"
         self.MoteRender = self.PlayerAnim.transform.gameObject:GetComponent("MeshRenderer")
         self.MoteRender.sortingOrder = 315
-        --self.PlayerAnim.transform.gameObject.layer = moteParent.displayObject.gameObject.layer
+        self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
         self.HolderMote:SetNativeObject(CS.FairyGUI.GoWrapper(self.PlayerAnim.transform.gameObject))
     else
         image_bg.visible = true

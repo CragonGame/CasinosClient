@@ -45,6 +45,9 @@ function PreViewLoading:onCreate()
     --CS.FairyGUI.Timers.inst:Add(0, 0, self._updateTips)
 
     local com_bg = self.ComUi:GetChild("ComBg")
+    local bg = com_bg:GetChild("Bg")
+    self:makeUiBgFiteScreen(1066, 640, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, 2, { self.HolderMote })
+
     local image_mote = com_bg:GetChild("ImageMote").asImage
     local p_helper = ParticleHelper:new(nil)
 
@@ -55,23 +58,18 @@ function PreViewLoading:onCreate()
         local texture = self.AbLoadingMarry:LoadAsset("Mary_Loading")
         local json = self.AbLoadingMarry:LoadAsset("Mary_LoadingJson")
         self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
-        --local moteParent = self.ComUi:GetChild("MoteParent").asCom
-        self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
-        --self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
         self.PlayerAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(70, 70, 1000)
-        --self.PlayerAnim.transform.gameObject.layer = moteParent.displayObject.gameObject.layer
         self.PlayerAnim:Initialize(false)
         self.PlayerAnim.loop = true
-        self.MoteRender = self.PlayerAnim.transform.gameObject:GetComponent("MeshRenderer")
         self.PlayerAnim.AnimationName = "animation"
-        self.MoteRender.sortingOrder = 4
         self.PlayerAnim.transform.gameObject.name = "LoadingMote"
+        self.MoteRender = self.PlayerAnim.transform.gameObject:GetComponent("MeshRenderer")
+        self.MoteRender.sortingOrder = 4
+        self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
         self.HolderMote:SetNativeObject(CS.FairyGUI.GoWrapper(self.PlayerAnim.transform.gameObject))
     else
         image_mote.visible = true
     end
-    local bg = com_bg:GetChild("Bg")
-    self:makeUiBgFiteScreen(1066, 640, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, 2, { self.HolderMote })
 
     self.AbDenglong = p_helper:GetPreSpine("DengLong")
     local atlas1 = self.AbDenglong:LoadAsset("denglong.atlas")
@@ -85,10 +83,10 @@ function PreViewLoading:onCreate()
     self.DengLongAnim.transform.gameObject.layer = denglongParent.displayObject.gameObject.layer
     self.DengLongAnim:Initialize(false)
     self.DengLongAnim.loop = true
+    self.DengLongAnim.transform.gameObject.name = "DengLong"
     self.DengLongRender = self.DengLongAnim.transform.gameObject:GetComponent("MeshRenderer")
     self.DengLongAnim.AnimationName = "animation"
     self.DengLongRender.sortingOrder = 4
-    self.DengLongAnim.transform.gameObject.name = "DengLong"
 end
 
 ---------------------------------------

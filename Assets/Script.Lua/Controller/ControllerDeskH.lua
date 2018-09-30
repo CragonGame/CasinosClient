@@ -50,8 +50,7 @@ function ControllerDeskH:onCreate()
     self.IsBankPlayer = false
     self.SeatIndex = 255
     local operate_id = -1
-    if (CS.UnityEngine.PlayerPrefs.HasKey("CurrentTbBetOperateIdDesktopH"))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey("CurrentTbBetOperateIdDesktopH")) then
         operate_id = CS.UnityEngine.PlayerPrefs.GetInt("CurrentTbBetOperateIdDesktopH")
     end
     self.CurrentTbBetOperateId = operate_id
@@ -941,7 +940,7 @@ end
 ---------------------------------------
 function ControllerDeskH:receiveInvitePlayerEnterDesktop(desktop_guid, desktop_filter)
     self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestLeave)
-    local t_encode = self.ControllerMgr.Listener.Json.encode(desktop_filter)
+    local t_encode = self.ControllerMgr.Json.encode(desktop_filter)
     local map_param = {}
     map_param[0] = desktop_guid
     map_param[1] = t_encode
@@ -1116,7 +1115,7 @@ end
 function ControllerDeskH:playerLeaveDesktopH(map_param)
     local desktop_guid = tostring(map_param[0])
     local f = tostring(map_param[1])
-    local t_decode = self.ControllerMgr.Listener.Json.decode(f)
+    local t_decode = self.ControllerMgr.Json.decode(f)
     local desktop_filter = DesktopFilter:new(nil)
     desktop_filter:setData(t_decode)
     local controller_lobby = self.ControllerMgr:GetController("Lobby")

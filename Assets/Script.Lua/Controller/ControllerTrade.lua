@@ -173,9 +173,9 @@ function ControllerTrade:onHandleEv(ev)
     then
         local a = ev.Amount
         local url = "http://kingnigeria-ucenter.cragon.cn:81/nigeriawebpay" .. "?amount=" .. a
-        self.ControllerMgr.Listener.UniWebView:Load(url)
-        self.ControllerMgr.Listener.UniWebView:Show()
-        self.ControllerMgr.Listener.UniWebView:SetShowToolbar(true, false, false)
+        self.ControllerMgr.UniWebView:Load(url)
+        self.ControllerMgr.UniWebView:Show()
+        self.ControllerMgr.UniWebView:SetShowToolbar(true, false, false)
         --self.ControllerUCenter:nigWebpayRequestUrl( function(status, response, error)
         --    self:OnNigWebpayRequestUrl(status, response, error)
         --end)
@@ -198,10 +198,6 @@ function ControllerTrade:onHandleEv(ev)
         --    r.MoneyType = CurrentMoneyType
         --    self.ControllerMgr.RPC:RPC1(CommonMethodType.WalletWithdrawRequest, r:getData4Pack())
     end
-end
-
----------------------------------------
-function ControllerTrade:getModle()
 end
 
 ---------------------------------------

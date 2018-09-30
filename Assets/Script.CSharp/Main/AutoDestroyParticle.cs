@@ -3,7 +3,6 @@
 namespace Casinos
 {
     using System;
-    using System.Collections.Generic;
     using UnityEngine;
 
     public class AutoDestroyParticle : MonoBehaviour
@@ -26,11 +25,8 @@ namespace Casinos
         {
             if (mCanCheckDestroy && !mParticleSystem.isPlaying)
             {
-                if (DestroyCallBack != null)
-                {
-                    DestroyCallBack();
-                }
-                GameObject.Destroy(gameObject);
+                DestroyCallBack?.Invoke();
+                Destroy(gameObject);
             }
         }
     }

@@ -15,18 +15,6 @@ namespace Casinos
     [CSharpCallLua]
     public delegate void DelegateLua2(LuaTable lua_table, float tm);
 
-    [CSharpCallLua]
-    public delegate void DelegateLuaUpdate(float tm);
-
-    [CSharpCallLua]
-    public delegate LuaTable GetView(string view_key);
-
-    [CSharpCallLua]
-    public delegate LuaTable CreateController(LuaTable lua_table, string controller_name, Dictionary<string, string> controller_data);
-
-    [CSharpCallLua]
-    public delegate LuaTable GetController(string controller_name);
-
     public static class LuaCustomSettings
     {
         //---------------------------------------------------------------------

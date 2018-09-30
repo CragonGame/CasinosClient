@@ -148,7 +148,9 @@ function ViewMgr:createView(view_key)
     end
     ui_panel:SetSortingOrder(depth_layer, true)
     self.TableMaxDepth[view_factory.UILayer] = depth_layer
+
     self.LanMgr:parseComponent(ui_panel.ui)-- 多语言自动替换
+
     if (view_factory.UILayer == "MessgeBox" or
             view_factory.UILayer == "NomalUiMain" or
             view_factory.UILayer == "NomalUi" or

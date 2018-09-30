@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosContext);
-			Utils.BeginObjectRegister(type, L, translator, 0, 20, 63, 48);
+			Utils.BeginObjectRegister(type, L, translator, 0, 20, 62, 47);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
@@ -59,7 +59,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "CasinosLua", _g_get_CasinosLua);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "NetBridge", _g_get_NetBridge);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "NativeMgr", _g_get_NativeMgr);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsDev", _g_get_IsDev);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "Pause", _g_get_Pause);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "LoadDataDone", _g_get_LoadDataDone);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "ABResourcePathTitle", _g_get_ABResourcePathTitle);
@@ -110,7 +109,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "TbDataMgrLua", _g_get_TbDataMgrLua);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "NativeMgr", _s_set_NativeMgr);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "IsDev", _s_set_IsDev);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "Pause", _s_set_Pause);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "LoadDataDone", _s_set_LoadDataDone);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "ABResourcePathTitle", _s_set_ABResourcePathTitle);
@@ -987,20 +985,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_IsDev(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.IsDev);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_Pause(RealStatePtr L)
         {
 		    try {
@@ -1682,21 +1666,6 @@ namespace XLua.CSObjectWrap
 			
                 Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.NativeMgr = (Casinos.NativeMgr)translator.GetObject(L, 2, typeof(Casinos.NativeMgr));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_IsDev(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.IsDev = LuaAPI.lua_toboolean(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

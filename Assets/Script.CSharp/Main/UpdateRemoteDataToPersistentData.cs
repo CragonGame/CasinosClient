@@ -80,7 +80,7 @@ namespace Casinos
             {
                 if (!i.Value.isDone) continue;
                 ListFinished.Add(i.Key);
-
+                
                 var str = CasinosContext.Instance.PathMgr.combinePersistentDataPath(i.Key);
                 string d = Path.GetDirectoryName(str);
                 if (!Directory.Exists(d))
@@ -92,6 +92,8 @@ namespace Casinos
                 {
                     fs.Write(i.Value.bytes, 0, i.Value.bytes.Length);
                 }
+
+                i.Value.Dispose();
             }
 
             foreach (var i in ListFinished)
