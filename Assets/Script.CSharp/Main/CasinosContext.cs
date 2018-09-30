@@ -524,12 +524,6 @@ namespace Casinos
 //}
 
 //---------------------------------------------------------------------
-//public void RegLuaFilePath(string luafile_relativepath, params string[] luafile_name)
-//{
-//    CasinosLua.RegLuaFilePath(luafile_relativepath, luafile_name);
-//}
-
-//---------------------------------------------------------------------
 //public void SetLoadDataDone()
 //{
 //    LoadDataDone = true;

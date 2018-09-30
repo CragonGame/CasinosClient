@@ -42,6 +42,8 @@ function ViewDesktopPlayerInfoTexas:new(o)
     o.IsGameEnd = false
     o.VibrateOnce = true
     o.IsRelease = false-- 是否已经被回收，切换快照时使用
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.TimerUpdate = nil
     return o
 end
 
@@ -99,10 +101,16 @@ function ViewDesktopPlayerInfoTexas:onCreate()
     self.Point = 0
     self.VibrateOnce = true
     self.IsRelease = false
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(33, self, self._timerUpdate)
 end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:onDestroy()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
     self.ViewMgr:unbindEvListener(self)
     if (self.ItemChatDesktop ~= nil) then
         self.ViewDesktop.UiDesktopChatParent:destroyChat(self.ItemChatDesktop)
@@ -111,6 +119,10 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:release()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
     self.IsRelease = true
     self.IsGameEnd = false
     self.FirstCard = nil
@@ -222,7 +234,7 @@ function ViewDesktopPlayerInfoTexas:onHandleEv(ev)
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:onUpdate(elapsed_tm)
+function ViewDesktopPlayerInfoTexas:_timerUpdate(elapsed_tm)
     --if (CS.Casinos.CasinosContext.Instance.Pause or self.IsRelease) then
     --    return
     --end

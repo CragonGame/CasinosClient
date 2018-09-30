@@ -113,7 +113,7 @@ function DesktopPlayerTexas:destroy()
 end
 
 ---------------------------------------
-function DesktopPlayerTexas:onUpdate(elapsed_tm)
+function DesktopPlayerTexas:Update(elapsed_tm)
     if (self.IsMe) then
         if (self.IsGameEnd and self.GameEndCheckChipTime > 0) then
             self.GameEndCheckChipTime = self.GameEndCheckChipTime - elapsed_tm

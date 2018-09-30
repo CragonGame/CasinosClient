@@ -241,7 +241,7 @@ function ViewDesktopTexas:onCreate()
     self:setNewReward()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionReward")
 
-    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(33, self, self._timerUpdate)
 end
 
 ---------------------------------------
