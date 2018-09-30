@@ -77,7 +77,7 @@ end
 ---------------------------------------
 function UiCardDealingEx:killTween(tweener, is_complete)
     if (tweener ~= nil) then
-        tweener:Kill(is_complete)
+        tweener:Kill(false)
         tweener = nil
     end
 end

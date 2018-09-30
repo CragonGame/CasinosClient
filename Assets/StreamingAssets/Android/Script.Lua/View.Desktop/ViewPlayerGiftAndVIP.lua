@@ -37,18 +37,15 @@ end
 
 ---------------------------------------
 function ViewPlayerGiftAndVIP:release()
-    if (self.TweenerWinMove ~= nil)
-    then
-        self.TweenerWinMove:Kill()
+    if (self.TweenerWinMove ~= nil) then
+        self.TweenerWinMove:Kill(false)
         self.TweenerWinMove = nil
     end
-    if (self.TweenerSendGiftMove ~= nil)
-    then
-        self.TweenerSendGiftMove:Kill()
+    if (self.TweenerSendGiftMove ~= nil) then
+        self.TweenerSendGiftMove:Kill(false)
         self.TweenerSendGiftMove = nil
     end
-    if (self.GLoaderCurrentShowGift ~= nil)
-    then
+    if (self.GLoaderCurrentShowGift ~= nil) then
         self.GLoaderCurrentShowGift.icon = nil
     end
 end
@@ -150,10 +147,10 @@ function ViewPlayerGiftAndVIP:playerIsShowDown()
     end
     if (self.GComCurrentShowGift ~= nil) then
         to = to + self.GComCurrentShowGift.x
-        self.TweenerWinMove = self.GComCurrentShowGift:TweenMoveX(to, ViewPlayerGiftAndVIP.GiftPlayerWinMoveTime):SetSnapping(true)
+        self.TweenerWinMove = self.GComCurrentShowGift:TweenMoveX(to, self.GiftPlayerWinMoveTime):SetSnapping(true)
     else
         to = to + self.GImageCurrentGift.x
-        self.TweenerWinMove = self.GComCurrentShowGift:TweenMoveX(to, ViewPlayerGiftAndVIP.GiftPlayerWinMoveTime):SetSnapping(true)
+        self.TweenerWinMove = self.GImageCurrentGift:TweenMoveX(to, self.GiftPlayerWinMoveTime):SetSnapping(true)
     end
     -- todo
     --self.TweenerWinMove:SetAutoKill(false)

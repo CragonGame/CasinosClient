@@ -58,19 +58,19 @@ function UiCardCommonEx:show(with_animation, call_back)
                     self.GLoaderCard.texture = CS.FairyGUI.NTexture(t)
 
                     if (with_animation == true) then
-                        self.TweenerRotate = CS.FairyGUI.GTweener.To(self.GImageCardBack.rotationY, 90, UiCardCommonEx.RotateTime)
-                                :SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY)
-                                :SetEase(CS.FairyGUI.EaseType.Linear)
-                                :OnComplete(
+                        self.TweenerRotate = CS.FairyGUI.GTween.To(self.GImageCardBack.rotationY, 90, UiCardCommonEx.RotateTime)
+                                               :SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY)
+                                               :SetEase(CS.FairyGUI.EaseType.Linear)
+                                               :OnComplete(
                                 function()
                                     CS.Casinos.UiHelper.setGObjectVisible(false, self.GImageCardBack)
                                     CS.Casinos.UiHelper.setGObjectVisible(true, self.GLoaderCard)
                                     self.GImageCardBack.rotationY = 180
                                     self.GLoaderCard.rotationY = 90
-                                    self.TweenerRotate =  CS.FairyGUI.GTweener.To(90, 0, UiCardCommonEx.RotateTime)
-                                            :SetTarget(self.GLoaderCard, CS.FairyGUI.TweenPropType.RotationY)
-                                            :SetEase(CS.FairyGUI.EaseType.Linear)
-                                            :OnComplete(
+                                    self.TweenerRotate = CS.FairyGUI.GTween.To(90, 0, UiCardCommonEx.RotateTime)
+                                                           :SetTarget(self.GLoaderCard, CS.FairyGUI.TweenPropType.RotationY)
+                                                           :SetEase(CS.FairyGUI.EaseType.Linear)
+                                                           :OnComplete(
                                             function()
                                                 self.GLoaderCard.rotationY = 0
                                                 if (call_back ~= nil) then
@@ -195,13 +195,13 @@ function UiCardCommonEx:_reset()
 end
 
 ---------------------------------------
-function UiCardCommonEx:killTween(tweener, is_complete)
-    local is_com = false
-    if (is_complete == nil) then
-        is_com = is_complete
-    end
+function UiCardCommonEx:killTween(tweener)
+    --local is_com = false
+    --if (is_complete == nil) then
+    --    is_com = is_complete
+    --end
     if (tweener ~= nil) then
-        tweener.Kill(is_com)
+        tweener:Kill(false)
         tweener = nil
     end
 end

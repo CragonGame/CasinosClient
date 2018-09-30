@@ -109,11 +109,11 @@ end
 ---------------------------------------
 function UiChipEx:_resetChip()
     if (self.TweenerMove ~= nil) then
-        self.TweenerMove:Kill()
+        self.TweenerMove:Kill(false)
         self.TweenerMove = nil
     end
     if (self.TweenerScale ~= nil) then
-        self.TweenerScale:Kill()
+        self.TweenerScale:Kill(false)
         self.TweenerScale = nil
     end
     self.GComChip:SetXY(10000, 10000)
