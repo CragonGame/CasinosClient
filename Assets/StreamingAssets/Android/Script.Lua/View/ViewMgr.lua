@@ -40,8 +40,7 @@ function ViewMgr:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
         self.UiPathRoot = nil
         self.ResourcesRowPathRoot = nil
@@ -92,6 +91,8 @@ end
 
 ---------------------------------------
 function ViewMgr:onDestroy()
+    self.CasinosContext = nil
+    self.CasinosLua = nil
 end
 
 ---------------------------------------

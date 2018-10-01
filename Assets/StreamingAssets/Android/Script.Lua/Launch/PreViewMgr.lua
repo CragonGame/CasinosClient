@@ -27,7 +27,6 @@ PreViewMgr = {
     TableViewSingle = {},
     TableViewMultiple = {},
     TableMaxDepth = {},
-    TableUpdateView = {},
     CasinosContext = CS.Casinos.CasinosContext.Instance,
     CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
 }
@@ -37,6 +36,7 @@ function PreViewMgr:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.TableViewFactory = {}
     if (self.Instance == nil) then
         self.Instance = o
     end
@@ -50,30 +50,33 @@ function PreViewMgr:Init()
     CS.FairyGUI.UIConfig.defaultFont = "Microsoft YaHei"
 
     local view_loading_fac = PreViewLoadingFactory:new(nil, "PreLoading", "PreLoading", "Loading", true, CS.FairyGUI.FitScreen.FitSize)
-    PreViewMgr.regView("PreLoading", view_loading_fac)
+    self:regView("PreLoading", view_loading_fac)
     local view_msgbox_fac = PreViewMsgBoxFactory:new(nil, "PreMsgBox", "PreMsgBox", "Waiting", true, CS.FairyGUI.FitScreen.FitSize)
-    PreViewMgr.regView("PreMsgBox", view_msgbox_fac)
+    self:regView("PreMsgBox", view_msgbox_fac)
 end
 
 ---------------------------------------
 function PreViewMgr:Release()
+    self:destroyAllView()
+    self.CasinosContext = nil
+    self.CasinosLua = nil
 end
 
 ---------------------------------------
-function PreViewMgr.regView(view_key, view_factory)
+function PreViewMgr:regView(view_key, view_factory)
     if (view_factory ~= nil) then
-        PreViewMgr.TableViewFactory[view_key] = view_factory
+        self.TableViewFactory[view_key] = view_factory
     end
 end
 
 ---------------------------------------
-function PreViewMgr.createView(view_key)
-    local view_factory = PreViewMgr.TableViewFactory[view_key]
+function PreViewMgr:createView(view_key)
+    local view_factory = self.TableViewFactory[view_key]
     if (view_factory == nil) then
         return nil
     end
 
-    local view = PreViewMgr.TableViewSingle[view_key]
+    local view = self.TableViewSingle[view_key]
     if (view_factory.IsSingle and view ~= nil) then
         return view
     end
@@ -88,7 +91,7 @@ function PreViewMgr.createView(view_key)
     ui_panel.fitScreen = view_factory.FitScreen
     ui_panel:ApplyModifiedProperties(false, true)
     view = view_factory:createView()
-    view.PreViewMgr = PreViewMgr
+    view.PreViewMgr = self
     view.GoUi = go
     view.ComUi = ui_panel.ui
     view.Panel = ui_panel
@@ -97,103 +100,103 @@ function PreViewMgr.createView(view_key)
     view:onCreate()
 
     if (view_factory.IsSingle) then
-        PreViewMgr.TableViewSingle[view_key] = view
+        self.TableViewSingle[view_key] = view
     else
-        local table_multiple = PreViewMgr.TableViewMultiple[view_key]
+        local table_multiple = self.TableViewMultiple[view_key]
         if (table_multiple == nil) then
             table_multiple = {}
-            PreViewMgr.TableViewMultiple[view_key] = table_multiple
+            self.TableViewMultiple[view_key] = table_multiple
         end
         table_multiple[view] = view
     end
 
-    local depth_layer = PreViewMgr.TableMaxDepth[view_factory.UILayer]
+    local depth_layer = self.TableMaxDepth[view_factory.UILayer]
     if (depth_layer == nil) then
         depth_layer = PreTableUiLayer[view_factory.UILayer]
         view.InitDepth = depth_layer
     else
         view.InitDepth = depth_layer
-        depth_layer = depth_layer + PreViewMgr.LayerDistance
+        depth_layer = depth_layer + self.LayerDistance
     end
 
     ui_panel:SetSortingOrder(depth_layer, true)
-    PreViewMgr.TableMaxDepth[view_factory.UILayer] = depth_layer
+    self.TableMaxDepth[view_factory.UILayer] = depth_layer
 
     return view
 end
 
 ---------------------------------------
-function PreViewMgr.destroyView(view)
+function PreViewMgr:destroyView(view)
     if (view ~= nil) then
         local view_key = view.ViewKey
-        local view_ex = PreViewMgr.TableViewSingle[view_key]
+        local view_ex = self.TableViewSingle[view_key]
         if (view_ex ~= nil) then
             view:onDestroy()
-            PreViewMgr.TableViewSingle[view_key] = nil
+            self.TableViewSingle[view_key] = nil
         else
-            local table_multiple = PreViewMgr.TableViewMultiple[view_key]
+            local table_multiple = self.TableViewMultiple[view_key]
             if (table_multiple ~= null) then
                 view:onDestroy()
                 table_multiple[view] = nil
             end
         end
-        PreViewMgr.TableMaxDepth[view.UILayer] = view.InitDepth
-        PreViewMgr.CasinosLua:DestroyGameObject(view.GoUi)
+        self.TableMaxDepth[view.UILayer] = view.InitDepth
+        self.CasinosLua:DestroyGameObject(view.GoUi)
         view = nil
     end
 end
 
 ---------------------------------------
-function PreViewMgr.getView(view_key)
-    local view = PreViewMgr.TableViewSingle[view_key]
+function PreViewMgr:getView(view_key)
+    local view = self.TableViewSingle[view_key]
     return view
 end
 
 ---------------------------------------
-function PreViewMgr.destroyAllView()
-    for k, v in pairs(PreViewMgr.TableViewSingle) do
-        PreViewMgr.TableMaxDepth[v.UILayer] = v.InitDepth
+function PreViewMgr:destroyAllView()
+    for k, v in pairs(self.TableViewSingle) do
+        self.TableMaxDepth[v.UILayer] = v.InitDepth
         v:onDestroy()
-        PreViewMgr.CasinosLua:DestroyGameObject(v.GoUi)
+        self.CasinosLua:DestroyGameObject(v.GoUi)
         --CS.UnityEngine.GameObject.Destroy(v.GoUi)
     end
 
     for k, v in pairs(PreViewMgr.TableViewMultiple) do
         for k1, v1 in pairs(v) do
-            PreViewMgr.TableMaxDepth[v.UILayer] = v.InitDepth
+            self.TableMaxDepth[v.UILayer] = v.InitDepth
             v:onDestroy()
-            PreViewMgr.CasinosLua:DestroyGameObject(v.GoUi)
+            self.CasinosLua:DestroyGameObject(v.GoUi)
         end
     end
 end
 
 ---------------------------------------
 function PreViewMgr:bindEvListener(ev_name, ev_listener)
-    if (PreViewMgr.EventSys ~= nil) then
-        PreViewMgr.EventSys:bindEvListener(ev_name, ev_listener)
+    if (self.EventSys ~= nil) then
+        self.EventSys:bindEvListener(ev_name, ev_listener)
     end
 end
 
 ---------------------------------------
 function PreViewMgr:unbindEvListener(ev_listener)
-    if (PreViewMgr.EventSys ~= nil) then
-        PreViewMgr.EventSys:unbindEvListener(ev_listener)
+    if (self.EventSys ~= nil) then
+        self.EventSys:unbindEvListener(ev_listener)
     end
 end
 
 ---------------------------------------
 function PreViewMgr:getEv(ev_name)
     local ev = nil
-    if (PreViewMgr.EventSys ~= nil) then
-        ev = PreViewMgr.EventSys:getEv(ev_name)
+    if (self.EventSys ~= nil) then
+        ev = self.EventSys:getEv(ev_name)
     end
     return ev
 end
 
 ---------------------------------------
 function PreViewMgr:sendEv(ev)
-    if (PreViewMgr.EventSys ~= nil) then
-        PreViewMgr.EventSys:sendEv(ev)
+    if (self.EventSys ~= nil) then
+        self.EventSys:sendEv(ev)
     end
 end
 

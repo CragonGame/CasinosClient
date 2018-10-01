@@ -1,6 +1,60 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
+ParticleHelper = {}
+
+---------------------------------------
+function ParticleHelper:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    if (self.Instance == nil) then
+        self.Instance = o
+        self.TableParticle = {}
+        self.TableSpine = {}
+    end
+    return self.Instance
+end
+
+---------------------------------------
+function ParticleHelper:GetParticel(path)
+    local particle = self.TableParticle[path]
+    if (particle == nil) then
+        local particle_path = self.CasinosContext.PathMgr:combinePersistentDataPath(
+                ViewHelper:getABParticleResourceTitlePath() .. path)
+        particle = CS.UnityEngine.AssetBundle.LoadFromFile(particle_path)
+        self.TableParticle[path] = particle
+    end
+    return particle
+end
+
+---------------------------------------
+function ParticleHelper:GetSpine(path)
+    local spine = self.TableSpine[path]
+    if (spine == nil) then
+        local spine_path = self.CasinosContext.PathMgr:combinePersistentDataPath(
+                self.CasinosContext.ABResourcePathTitle .. path)
+        spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
+        self.TableSpine[path] = spine
+    end
+    return spine
+end
+
+---------------------------------------
+function ParticleHelper:GetPreSpine(path)
+    local spine = self.TableSpine[path]
+    if (spine == nil) then
+        local casinos_context = CS.Casinos.CasinosContext.Instance
+        local launch_persistentdata_path = casinos_context.PathMgr.PathLaunchRootPersistent
+        local spine_path = launch_persistentdata_path .. string.lower(path) .. ".ab"
+        spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
+        self.TableSpine[path] = spine
+    end
+    return spine
+end
+
+---------------------------------------
 PreViewLoading = PreViewBase:new()
 
 ---------------------------------------
@@ -16,9 +70,15 @@ function PreViewLoading:new(o)
     self.InitDepth = nil
     self.ViewKey = nil
     self.ShowSPine = true
+    self.PlayerAnim = nil
+    self.MoteRender = nil
+    self.HolderMote = nil
+    self.DengLongAnim = nil
+    self.DengLongRender = nil
     self.AbLoadingMarry = nil
     self.AbDenglong = nil
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     if (self.Instance == nil) then
         self.Instance = o
     end
@@ -76,40 +136,45 @@ function PreViewLoading:onCreate()
     local texture1 = self.AbDenglong:LoadAsset("denglong")
     local json1 = self.AbDenglong:LoadAsset("denglongJson")
 
+    local denglong_parent = self.ComUi:GetChild("DengLongParent").asCom
     self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton")
-    local denglongParent = self.ComUi:GetChild("DengLongParent").asCom
-    self.DengLongAnim.transform.position = denglongParent.displayObject.gameObject.transform.position
-    self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(1.1, 1.1, 1.1)
-    self.DengLongAnim.transform.gameObject.layer = denglongParent.displayObject.gameObject.layer
+    self.DengLongAnim.transform.parent = denglong_parent.displayObject.gameObject.transform
+    self.DengLongAnim.transform.localPosition =  CS.Casinos.LuaHelper.GetVector3(-10, -90, -318)
+    self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(90, 90, 90)
+    self.DengLongAnim.transform.gameObject.layer = denglong_parent.displayObject.gameObject.layer
     self.DengLongAnim:Initialize(false)
     self.DengLongAnim.loop = true
     self.DengLongAnim.transform.gameObject.name = "DengLong"
-    self.DengLongRender = self.DengLongAnim.transform.gameObject:GetComponent("MeshRenderer")
     self.DengLongAnim.AnimationName = "animation"
+    self.DengLongRender = self.DengLongAnim.transform.gameObject:GetComponent("MeshRenderer")
     self.DengLongRender.sortingOrder = 4
 end
 
 ---------------------------------------
 function PreViewLoading:onDestroy()
-    --if (self.ShowSPine) then
-    --    CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
-    --end
-    --CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
+    if (self.PlayerAnim ~= nil) then
+        --self.CasinosLua:DestroyGameObject(self.PlayerAnim.transform.gameObject)
+        self.PlayerAnim = nil
+        self.MoteRender = nil
+        self.HolderMote = nil
+    end
+    if (self.DengLongAnim ~= nil) then
+        --self.CasinosLua:DestroyGameObject(self.DengLongAnim.transform.gameObject)
+        self.DengLongAnim = nil
+        self.DengLongRender = nil
+    end
 
     if (self.AbLoadingMarry ~= nil) then
         self.AbLoadingMarry:Unload(true)
         self.AbLoadingMarry = nil
     end
-
     if (self.AbDenglong ~= nil) then
         self.AbDenglong:Unload(true)
         self.AbDenglong = nil
     end
 
-    if (self.IsAuto == true) then
-        --CS.FairyGUI.Timers.inst:Remove(self._playProgress)
-    end
-    --CS.FairyGUI.Timers.inst:Remove(self._updateTips)
+    self.CasinosContext = nil
+    self.Instance = nil
 end
 
 ---------------------------------------
@@ -117,31 +182,28 @@ function PreViewLoading:onHandleEv(ev)
 end
 
 ---------------------------------------
-function PreViewLoading.fireAutoLoadingProgress()
-    local loading = PreViewLoading:new(nil)
-    loading.GProgressBar.visible = true
-    loading.IsAuto = true
-    --CS.FairyGUI.Timers.inst:Add(0.01, 0, loading._playProgress)
+function PreViewLoading:fireAutoLoadingProgress()
+    self.GProgressBar.visible = true
+    self.IsAuto = true
 end
 
 ---------------------------------------
-function PreViewLoading.fireManualLoadingProgress(progress, loading_info)
-    local loading = PreViewLoading:new(nil)
-    loading.IsAuto = false
+function PreViewLoading:fireManualLoadingProgress(progress, loading_info)
+    self.IsAuto = false
     if (progress ~= 0) then
-        loading.GProgressBar.visible = true
+        self.GProgressBar.visible = true
     end
 
-    setTip(loading_info)
-    local cur = loading.GProgressBar.value
+    self:setTip(loading_info)
+    local cur = self.GProgressBar.value
     cur = cur + progress
-    if (loading.GProgressBar ~= nil) then
-        loading.GProgressBar.value = cur
-        if (loading.GProgressBar.value < loading.GProgressBar.max) then
+    if (self.GProgressBar ~= nil) then
+        self.GProgressBar.value = cur
+        if (self.GProgressBar.value < loading.GProgressBar.max) then
         else
-            if (OnFinished ~= nil) then
+            if (self.OnFinished ~= nil) then
                 -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
-                OnFinished()
+                self:OnFinished()
             end
         end
     end
@@ -162,29 +224,27 @@ function PreViewLoading:UpdateLoadingProgress(value, max)
 end
 
 ---------------------------------------
-function PreViewLoading.setLoadingProgress(progress)
-    local loading = PreViewLoading:new(nil)
-    loading.GProgressBar.visible = true
-    if (loading.GProgressBar ~= nil) then
-        loading.GProgressBar.value = progress
-        if (loading.GProgressBar.value < loading.GProgressBar.max) then
+function PreViewLoading:setLoadingProgress(progress)
+    self.GProgressBar.visible = true
+    if (self.GProgressBar ~= nil) then
+        self.GProgressBar.value = progress
+        if (self.GProgressBar.value < self.GProgressBar.max) then
         else
-            if (OnFinished ~= nil) then
+            if (self.OnFinished ~= nil) then
                 --CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
-                OnFinished()
+                self:OnFinished()
             end
         end
     end
 end
 
 ---------------------------------------
-function PreViewLoading.setTip(tip)
-    local loading = PreViewLoading:new(nil)
-    loading.ListRandomTips = {}
-    loading.ListRandomTips[tip] = tip
+function PreViewLoading:setTip(tip)
+    self.ListRandomTips = {}
+    self.ListRandomTips[tip] = tip
     local c = CS.Casinos.CasinosContext.Instance
 
-    local gtext_version = loading.ComUi:GetChild("Version")
+    local gtext_version = self.ComUi:GetChild("Version")
     if (gtext_version ~= nil) then
         local version_text = gtext_version.asTextField
         local app_version = "应用版本"
@@ -210,51 +270,38 @@ function PreViewLoading.setTip(tip)
 end
 
 ---------------------------------------
-function PreViewLoading.setTips(list_tips)
-    local loading = PreViewLoading:new(nil)
-    loading.ListRandomTips = {}
+function PreViewLoading:setTips(list_tips)
+    self.ListRandomTips = {}
     for k, v in pairs(list_tips) do
-        loading.ListRandomTips[k] = v
+        self.ListRandomTips[k] = v
     end
 end
 
 ---------------------------------------
-function PreViewLoading._updateTips(param)
-    local loading = PreViewLoading:new(nil)
+function PreViewLoading:_updateTips(param)
     local tips_key, tips_value = nil
-    local count = loading.PreViewMgr:GetTableCount(loading.ListRandomTips)
-
-    if (count > 0)
-    then
-        tips_key, tips_value = loading.PreViewMgr:GetAndRemoveTableFirstEle(loading.ListRandomTips)
+    local count = self.PreViewMgr:GetTableCount(self.ListRandomTips)
+    if (count > 0) then
+        tips_key, tips_value = self.PreViewMgr:GetAndRemoveTableFirstEle(self.ListRandomTips)
     end
-
-    if ((tips_key ~= nil and string.len(tips_key) > 0))
-    then
-        if (loading.GTextFieldTips ~= nil)
-        then
-            loading.GTextFieldTips.text = tips_key
+    if ((tips_key ~= nil and string.len(tips_key) > 0)) then
+        if (self.GTextFieldTips ~= nil) then
+            self.GTextFieldTips.text = tips_key
         end
     end
 end
 
 ---------------------------------------
-function PreViewLoading._playProgress(param)
-    local loading = PreViewLoading:new(nil)
-    if (loading.GProgressBar ~= nil)
-    then
-        loading.GProgressBar.visible = true
-        if (loading.GProgressBar.value <= loading.GProgressBar.max)
-        then
-            local value = loading.GProgressBar.value
+function PreViewLoading:_playProgress(param)
+    if (self.GProgressBar ~= nil) then
+        self.GProgressBar.visible = true
+        if (self.GProgressBar.value <= self.GProgressBar.max) then
+            local value = self.GProgressBar.value
             value = value + 2
-            loading.GProgressBar.value = value
+            self.GProgressBar.value = value
         else
-            --CS.FairyGUI.Timers.inst.Remove(loading._playProgress)
-
-            if (OnFinished ~= nil)
-            then
-                OnFinished()
+            if (self.OnFinished ~= nil) then
+                self:OnFinished()
             end
         end
     end
@@ -264,8 +311,7 @@ end
 function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode, t_anchor_point)
     local w = logic_width / design_width
     local h = logic_height / design_height
-    if (w >= h)
-    then
+    if (w >= h) then
         obj.width = logic_width
         obj.height = logic_width * image_height / image_width
         obj.x = 0
@@ -341,56 +387,13 @@ function PreViewLoadingFactory:createView()
     return view
 end
 
----------------------------------------
-ParticleHelper = {}
-
----------------------------------------
-function ParticleHelper:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    if (self.Instance == nil) then
-        self.Instance = o
-        self.TableParticle = {}
-        self.TableSpine = {}
-    end
-    return self.Instance
-end
-
----------------------------------------
-function ParticleHelper:GetParticel(path)
-    local particle = self.TableParticle[path]
-    if (particle == nil) then
-        local particle_path = self.CasinosContext.PathMgr:combinePersistentDataPath(
-                ViewHelper:getABParticleResourceTitlePath() .. path)
-        particle = CS.UnityEngine.AssetBundle.LoadFromFile(particle_path)
-        self.TableParticle[path] = particle
-    end
-    return particle
-end
-
----------------------------------------
-function ParticleHelper:GetSpine(path)
-    local spine = self.TableSpine[path]
-    if (spine == nil) then
-        local spine_path = self.CasinosContext.PathMgr:combinePersistentDataPath(
-                self.CasinosContext.ABResourcePathTitle .. path)
-        spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
-        self.TableSpine[path] = spine
-    end
-    return spine
-end
-
----------------------------------------
-function ParticleHelper:GetPreSpine(path)
-    local spine = self.TableSpine[path]
-    if (spine == nil) then
-        local casinos_context = CS.Casinos.CasinosContext.Instance
-        local launch_persistentdata_path = casinos_context.PathMgr.PathLaunchRootPersistent
-        local spine_path = launch_persistentdata_path .. string.lower(path) .. ".ab"
-        spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
-        self.TableSpine[path] = spine
-    end
-    return spine
-end
+--CS.FairyGUI.Timers.inst.Remove(loading._playProgress)
+--CS.FairyGUI.Timers.inst:Add(0.01, 0, loading._playProgress)
+--if (self.ShowSPine) then
+--    CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
+--end
+--CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
+--if (self.IsAuto == true) then
+--    --CS.FairyGUI.Timers.inst:Remove(self._playProgress)
+--end
+--CS.FairyGUI.Timers.inst:Remove(self._updateTips)

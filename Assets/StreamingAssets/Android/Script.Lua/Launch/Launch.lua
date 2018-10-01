@@ -47,16 +47,14 @@ function Launch:Setup()
     self.UIPackagePreLoading = CS.FairyGUI.UIPackage.AddPackage(ab_preloading)
     self.UIPackagePreMsgbox = CS.FairyGUI.UIPackage.AddPackage(ab_premsgbox)
 
-    self.PreLoading = self.PreViewMgr.createView("PreLoading")
+    self.PreLoading = self.PreViewMgr:createView("PreLoading")
 
     local tips = "正在努力加载配置，请耐心等待..."
     local lan = self.CasinosContext.CurrentLan
-    if (lan == "English")
-    then
+    if (lan == "English") then
         tips = "Try to loading the config,please wait..."
     else
-        if (lan == "Chinese" or lan == "ChineseSimplified")
-        then
+        if (lan == "Chinese" or lan == "ChineseSimplified") then
             tips = "正在努力加载配置，请耐心等待..."
         end
     end
@@ -80,13 +78,11 @@ end
 ---------------------------------------
 -- Launch阶段完成
 function Launch:Finish()
-    if (self.PreMsgBox ~= nil) then
-        self.PreViewMgr.destroyView(self.PreMsgBox)
-        self.PreMsgBox = nil
-    end
-    if (self.PreLoading ~= nil) then
-        self.PreViewMgr.destroyView(self.PreLoading)
+    if (self.PreViewMgr ~= nil) then
+        self.PreViewMgr:Release()
+        self.PreViewMgr = nil
         self.PreLoading = nil
+        self.PreMsgBox = nil
     end
 
     package.preload['PreViewMsgBox'] = nil
@@ -99,6 +95,8 @@ function Launch:Finish()
     package.loaded['PreViewFactory'] = nil
     package.preload['PreViewBase'] = nil
     package.loaded['PreViewBase'] = nil
+    package.preload['ParticleHelper'] = nil
+    package.loaded['ParticleHelper'] = nil
 
     if (self.UIPackagePreLoading ~= nil) then
         self.UIPackagePreLoading:UnloadAssets()
@@ -115,13 +113,16 @@ end
 ---------------------------------------
 -- 应用程序退出
 function Launch:Close()
-    if (self.Context ~= nil)
-    then
+    if (self.Context ~= nil) then
         self.Context:Release()
         self.Context = nil
     end
 
     self:Finish()
+
+    self.CasinosContext = nil
+    self.CasinosLua = nil
+    self.Instance = nil
 
     print("Launch:Release()")
 end
