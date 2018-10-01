@@ -74,5 +74,29 @@ namespace Casinos
             VersionDataPersistent = version_data_persistent_new;
             PlayerPrefs.SetString("VersionDataPersistent", VersionDataPersistent);
         }
+
+        //---------------------------------------------------------------------
+        public void WriteVersionLaunchPersistent(string version_launch_persistent_new)
+        {
+            VersionLaunchPersistent = version_launch_persistent_new;
+            PlayerPrefs.SetString("VersionLaunchPersistent", VersionLaunchPersistent);
+        }
+
+        //---------------------------------------------------------------------
+        // v1>v2,return 1; v1=v2, return 0; v1<v2,return -1;
+        public int VersionCompare(string v1, string v2)
+        {
+            if (string.IsNullOrEmpty(v1)) return -1;
+            if (string.IsNullOrEmpty(v2)) return 1;
+
+            string v11 = v1.Replace(".", "");
+            string v22 = v2.Replace(".", "");
+            long i1 = long.Parse(v11);
+            long i2 = long.Parse(v22);
+
+            if (i1 > i2) return 1;
+            else if (i1 == i2) return 0;
+            else return -1;
+        }
     }
 }

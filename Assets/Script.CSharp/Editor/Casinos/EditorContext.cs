@@ -95,4 +95,59 @@ public class EditorContext
         editor.maxSize = new Vector2(1024, 768);
         editor.Show();
     }
+
+    //-------------------------------------------------------------------------
+    [MenuItem("CasinosPublish/批处理", false, 103)]
+    static void MenuItemSyc()
+    {
+        if (Instance == null)
+        {
+            new EditorContext();
+        }
+
+        Debug.Log("执行批处理，镜像同步StreamingAssets/Android目录和PersistentData/Android");
+        ExecuteProgram("_SyncStreamingAssets2PersistentData.bat", "");
+    }
+
+    //-------------------------------------------------------------------------
+    static bool ExecuteProgram(string exe_filename, string args)
+    {
+        System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo();
+        info.FileName = exe_filename;
+        info.WorkingDirectory = Environment.CurrentDirectory;
+        info.UseShellExecute = true;
+        info.Arguments = args;
+        info.CreateNoWindow = true;
+        info.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+
+        System.Diagnostics.Process task = null;
+        bool rt = true;
+        try
+        {
+            task = System.Diagnostics.Process.Start(info);
+            if (task != null)
+            {
+                //task.WaitForExit();
+                //task.WaitForExit(100000);
+                //task.StandardOutput.ReadToEnd();
+            }
+            else
+            {
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("执行批处理: " + e.ToString());
+            return false;
+        }
+        finally
+        {
+            if (task != null && task.HasExited)
+            {
+                rt = (task.ExitCode == 0);
+            }
+        }
+        return rt;
+    }
 }

@@ -58,7 +58,7 @@ function Launch:Setup()
             tips = "正在努力加载配置，请耐心等待..."
         end
     end
-    self.PreLoading:setTip(tips)
+    self.PreLoading:UpdateDesc(tips)
 
     -- 下载并加载Context.lua
     local http_url = string.format('https://cragon-king-oss.cragon.cn/%s/Bundle_%s/Context.lua',

@@ -102,7 +102,6 @@ function PreViewLoading:onCreate()
     self.OnFinished = nil
     self.IsAuto = false
     self.ListRandomTips = {}
-    --CS.FairyGUI.Timers.inst:Add(0, 0, self._updateTips)
 
     local com_bg = self.ComUi:GetChild("ComBg")
     local bg = com_bg:GetChild("Bg")
@@ -139,7 +138,7 @@ function PreViewLoading:onCreate()
     local denglong_parent = self.ComUi:GetChild("DengLongParent").asCom
     self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton")
     self.DengLongAnim.transform.parent = denglong_parent.displayObject.gameObject.transform
-    self.DengLongAnim.transform.localPosition =  CS.Casinos.LuaHelper.GetVector3(-10, -90, -318)
+    self.DengLongAnim.transform.localPosition = CS.Casinos.LuaHelper.GetVector3(-10, -90, -318)
     self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(90, 90, 90)
     self.DengLongAnim.transform.gameObject.layer = denglong_parent.displayObject.gameObject.layer
     self.DengLongAnim:Initialize(false)
@@ -182,32 +181,32 @@ function PreViewLoading:onHandleEv(ev)
 end
 
 ---------------------------------------
-function PreViewLoading:fireAutoLoadingProgress()
-    self.GProgressBar.visible = true
-    self.IsAuto = true
-end
+--function PreViewLoading:fireAutoLoadingProgress()
+--    self.GProgressBar.visible = true
+--    self.IsAuto = true
+--end
 
 ---------------------------------------
-function PreViewLoading:fireManualLoadingProgress(progress, loading_info)
-    self.IsAuto = false
-    if (progress ~= 0) then
-        self.GProgressBar.visible = true
-    end
-
-    self:setTip(loading_info)
-    local cur = self.GProgressBar.value
-    cur = cur + progress
-    if (self.GProgressBar ~= nil) then
-        self.GProgressBar.value = cur
-        if (self.GProgressBar.value < loading.GProgressBar.max) then
-        else
-            if (self.OnFinished ~= nil) then
-                -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
-                self:OnFinished()
-            end
-        end
-    end
-end
+--function PreViewLoading:fireManualLoadingProgress(progress, loading_info)
+--    self.IsAuto = false
+--    if (progress ~= 0) then
+--        self.GProgressBar.visible = true
+--    end
+--
+--    self:setTip(loading_info)
+--    local cur = self.GProgressBar.value
+--    cur = cur + progress
+--    if (self.GProgressBar ~= nil) then
+--        self.GProgressBar.value = cur
+--        if (self.GProgressBar.value < loading.GProgressBar.max) then
+--        else
+--            if (self.OnFinished ~= nil) then
+--                -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
+--                self:OnFinished()
+--            end
+--        end
+--    end
+--end
 
 ---------------------------------------
 -- 更新进度条上方提示文字
@@ -292,20 +291,20 @@ function PreViewLoading:_updateTips(param)
 end
 
 ---------------------------------------
-function PreViewLoading:_playProgress(param)
-    if (self.GProgressBar ~= nil) then
-        self.GProgressBar.visible = true
-        if (self.GProgressBar.value <= self.GProgressBar.max) then
-            local value = self.GProgressBar.value
-            value = value + 2
-            self.GProgressBar.value = value
-        else
-            if (self.OnFinished ~= nil) then
-                self:OnFinished()
-            end
-        end
-    end
-end
+--function PreViewLoading:_playProgress(param)
+--    if (self.GProgressBar ~= nil) then
+--        self.GProgressBar.visible = true
+--        if (self.GProgressBar.value <= self.GProgressBar.max) then
+--            local value = self.GProgressBar.value
+--            value = value + 2
+--            self.GProgressBar.value = value
+--        else
+--            if (self.OnFinished ~= nil) then
+--                self:OnFinished()
+--            end
+--        end
+--    end
+--end
 
 ---------------------------------------
 function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode, t_anchor_point)
@@ -387,6 +386,7 @@ function PreViewLoadingFactory:createView()
     return view
 end
 
+--CS.FairyGUI.Timers.inst:Add(0, 0, self._updateTips)
 --CS.FairyGUI.Timers.inst.Remove(loading._playProgress)
 --CS.FairyGUI.Timers.inst:Add(0.01, 0, loading._playProgress)
 --if (self.ShowSPine) then

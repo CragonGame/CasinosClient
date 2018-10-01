@@ -153,7 +153,10 @@ function Context:_initLaunchStep()
     end
 
     -- 检测是否需要首次运行解压
-    self.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
+    local r = self.CasinosContext.Config:VersionCompare(self.CasinosContext.Config.VersionDataPersistent, self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
+    if (r < 0) then
+        self.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
+    end
 
     -- 检测是否需要更新Data
     if (DataVersion ~= self.CasinosContext.Config.VersionDataPersistent) then
@@ -201,6 +204,9 @@ function Context:_nextLaunchStep()
 
     -- 更新Data
     if (self.LaunchStep[3] ~= nil) then
+        --if (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork) then
+        --end
+
         local desc_copy = "更新游戏数据"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
         self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
@@ -347,6 +353,9 @@ function Context:_timerUpdateCopyStreamingAssetsToPersistentData(tm)
         self.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
         self.TimerUpdateCopyStreamingAssetsToPersistentData = nil
         self.CopyStreamingAssetsToPersistentData = nil
+
+        -- 用StreamingAssetsInfo.DataVersion覆盖Persistent中的；并更新VersionDataPersistent
+        self.CasinosContext.Config:WriteVersionDataPersistent(self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
 
         -- 执行下一步LaunchStep
         self.LaunchStep[2] = nil

@@ -6,12 +6,10 @@ namespace Casinos
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-    using System.Threading.Tasks;
     using UnityEngine;
     using XLua;
     using FairyGUI;
-    using GameCloud.Unity.Common;
-
+    
     public enum _eProjectItemDisplayNameKey
     {
         Gold,
@@ -341,7 +339,8 @@ namespace Casinos
         {
             // 比较Launch版本，决定是否将Launch从StreamingAssets拷贝到Persistent
             bool need_copy = false;
-            if (string.IsNullOrEmpty(Config.VersionLaunchPersistent))
+            if (string.IsNullOrEmpty(Config.VersionLaunchPersistent)
+                || Config.VersionLaunchPersistent != Config.StreamingAssetsInfo.DataVersion)
             {
                 need_copy = true;
             }
@@ -351,6 +350,7 @@ namespace Casinos
             {
                 var copy_dir = new CopyStreamingAssetsToPersistentData1();
                 copy_dir.CopySync(Config.StreamingAssetsInfo.ListLaunchFile);
+                Config.WriteVersionLaunchPersistent(Config.StreamingAssetsInfo.DataVersion);
             }
 
             CasinosLua.Launch();
