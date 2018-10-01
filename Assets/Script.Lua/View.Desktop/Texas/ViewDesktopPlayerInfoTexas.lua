@@ -43,6 +43,7 @@ function ViewDesktopPlayerInfoTexas:new(o)
     o.VibrateOnce = true
     o.IsRelease = false-- 是否已经被回收，切换快照时使用
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     self.TimerUpdate = nil
     return o
 end
@@ -521,7 +522,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
             play_sound = false
             sound = "dongdong"
             if self.Player.DesktopTexas.IsSnapshot == false then
-                CS.Casinos.CasinosContext.Instance:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
+                self.CasinosContext:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
             end
             action_name = self.ViewMgr.LanMgr:getLanValue("Check")
         elseif (action == PlayerActionTypeTexas.Call) then
@@ -552,7 +553,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
     self:showShade(show_shadow)
 
     if (play_sound and self.Player.DesktopTexas.IsSnapshot == false) then
-        CS.Casinos.CasinosContext.Instance:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
+        self.CasinosContext:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
     end
 
     self:_resetThinkTimePro()
@@ -1057,11 +1058,9 @@ function ViewDesktopPlayerInfoTexas:_setThinkingTimeSprite(fill_amount, need_vib
     local color = CS.UnityEngine.Color()
 
     if (persent <= 0.5 and persent >= 0.48 and (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid) and self.VibrateOnce and need_vibrate) then
-        --#if UNITY_ANDROID || UNITY_IOS
-        CS.UnityEngine.Handheld.Vibrate()
-        --#endif
+        self.CasinosLua:Vibrate()
         self.VibrateOnce = false
-        CS.Casinos.CasinosContext.Instance:Play("half_time", CS.Casinos._eSoundLayer.LayerNormal)
+        self.CasinosContext:Play("half_time", CS.Casinos._eSoundLayer.LayerNormal)
     end
 
     if (persent <= 0.5) then

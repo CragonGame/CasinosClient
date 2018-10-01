@@ -212,13 +212,16 @@ function PreViewLoading:_initVersionInfo()
                 data_versionex = "数据版本"
             end
         end
-        local en = "Pro"
+        local env = "Pro"
         if GatewayIp ~= nil and string.find(GatewayIp, "dev") then
-            en = "Dev"
+            env = "Dev"
         end
         local version_bundle = self.CasinosContext.Config.VersionBundle
         local version_data = self.CasinosContext.Config.VersionDataPersistent
-        version_text.text = string.format("%s: %s,  %s: %s %s", app_version, version_bundle, data_versionex, version_data, en)
+        if (version_data == nil) then
+            version_data = ' '
+        end
+        version_text.text = string.format("%s: %s,  %s: %s %s", app_version, version_bundle, data_versionex, version_data, env)
     end
 end
 

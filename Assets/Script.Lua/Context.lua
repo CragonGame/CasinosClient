@@ -159,7 +159,7 @@ function Context:_initLaunchStep()
     end
 
     -- 检测是否需要更新Data
-    if (DataVersion ~= self.CasinosContext.Config.VersionDataPersistent) then
+    if (self.CasinosContext.Config.VersionDataPersistent ~= DataVersion) then
         self.LaunchStep[3] = "UpdateData"
     end
 

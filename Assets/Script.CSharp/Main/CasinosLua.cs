@@ -22,15 +22,8 @@ namespace Casinos
         public static List<Type> CustomType = new List<Type>()
         {
             // Unity3D
-            typeof(UnityEngine.AssetBundle),
             typeof(UnityEngine.Application),
-            typeof(UnityEngine.ScreenCapture),
-            typeof(UnityEngine.GameObject),
-            typeof(UnityEngine.PlayerPrefs),
-            typeof(UnityEngine.Rect),
-            typeof(UnityEngine.ParticleSystem),
-            typeof(UnityEngine.Renderer),
-            typeof(UnityEngine.Resources),
+            typeof(UnityEngine.AssetBundle),
             typeof(UnityEngine.AudioClip),
             typeof(UnityEngine.AudioSource),
             typeof(UnityEngine.Camera),
@@ -38,23 +31,31 @@ namespace Casinos
             typeof(UnityEngine.Color32),
             typeof(UnityEngine.Coroutine),
             typeof(UnityEngine.Font),
-            typeof(UnityEngine.Handheld),
+            typeof(UnityEngine.GameObject),
             typeof(UnityEngine.Hash128),
             typeof(UnityEngine.Material),
-            typeof(UnityEngine.Mesh),
             typeof(UnityEngine.Mathf),
             typeof(UnityEngine.Matrix4x4),
-            typeof(UnityEngine.WWW),
-            typeof(UnityEngine.WWWForm),
+            typeof(UnityEngine.Mesh),
+            typeof(UnityEngine.ParticleSystem),
             typeof(UnityEngine.Ping),
+            typeof(UnityEngine.PlayerPrefs),
             typeof(UnityEngine.Quaternion),
-            typeof(UnityEngine.Screen),
-            typeof(UnityEngine.SystemInfo),
             typeof(UnityEngine.Random),
+            typeof(UnityEngine.Rect),
+            typeof(UnityEngine.Renderer),
+            typeof(UnityEngine.Resources),
+            typeof(UnityEngine.Screen),
+            typeof(UnityEngine.ScreenCapture),
+            typeof(UnityEngine.SystemInfo),
+            typeof(UnityEngine.Time),
+            typeof(UnityEngine.Networking.UnityWebRequest),
             typeof(UnityEngine.Vector3),
             typeof(UnityEngine.Vector2),
             typeof(UnityEngine.Vector4),
-            typeof(UnityEngine.Time),
+            typeof(UnityEngine.WWW),
+            typeof(UnityEngine.WWWForm),
+            //typeof(UnityEngine.Handheld),
             //typeof(UnityEngine.QualitySettings),
             //typeof(UnityEngine.Texture),
             //typeof(UnityEngine.Texture2D),
@@ -423,6 +424,12 @@ namespace Casinos
         public void DestroyGameObject(GameObject o)
         {
             UnityEngine.Object.Destroy(o);
+        }
+
+        //---------------------------------------------------------------------
+        public void Vibrate()
+        {
+            Handheld.Vibrate();
         }
 
         //---------------------------------------------------------------------

@@ -62,10 +62,6 @@ namespace Casinos
             {
                 VersionDataPersistent = PlayerPrefs.GetString("VersionDataPersistent");
             }
-            else
-            {
-                VersionDataPersistent = StreamingAssetsInfo.DataVersion;
-            }
         }
 
         //---------------------------------------------------------------------
