@@ -53,10 +53,12 @@ public class EditorViewDataPublish : EditorWindow
         if (GUILayout.Button("生成AssetBundle（选中）", GUILayout.Width(200)))
         {
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.Android, true);
+            AssetDatabase.Refresh();
         }
         if (GUILayout.Button("生成AssetBundle（全部）", GUILayout.Width(200)))
         {
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.Android, false);
+            AssetDatabase.Refresh();
         }
         EditorGUILayout.EndHorizontal();
         if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
@@ -65,10 +67,12 @@ public class EditorViewDataPublish : EditorWindow
             _copyRawData(Casinos._eEditorRunSourcePlatform.Android);
             _copyLua(Casinos._eEditorRunSourcePlatform.Android);
             ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
+            AssetDatabase.Refresh();
         }
         if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
         {
             _genDataFileList(Casinos._eEditorRunSourcePlatform.Android);
+            AssetDatabase.Refresh();
         }
 
         GUILayout.Space(10);
@@ -89,10 +93,12 @@ public class EditorViewDataPublish : EditorWindow
         if (GUILayout.Button("生成AssetBundle（选中）", GUILayout.Width(200)))
         {
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.IOS, true);
+            AssetDatabase.Refresh();
         }
         if (GUILayout.Button("生成AssetBundle（全部）", GUILayout.Width(200)))
         {
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.IOS, false);
+            AssetDatabase.Refresh();
         }
         EditorGUILayout.EndHorizontal();
         if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
@@ -100,11 +106,13 @@ public class EditorViewDataPublish : EditorWindow
             _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.IOS);
             _copyRawData(Casinos._eEditorRunSourcePlatform.IOS);
             _copyLua(Casinos._eEditorRunSourcePlatform.IOS);
+            AssetDatabase.Refresh();
             ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
         }
         if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
         {
             _genDataFileList(Casinos._eEditorRunSourcePlatform.IOS);
+            AssetDatabase.Refresh();
         }
 
         GUILayout.Space(20);
@@ -493,7 +501,7 @@ public class EditorViewDataPublish : EditorWindow
             else
             {
                 string file_extension = Path.GetExtension(i.FullName);
-                if (DoNotPackFileExtention.Contains(file_extension)) continue;
+                if (DoNotPackFileExtention.Contains(file_extension) || i.Name == "Context.lua") continue;
 
                 File.Copy(i.FullName, path_dst + "\\" + i.Name, true);// 不是文件夹即复制文件，true表示可以覆盖同名文件
             }

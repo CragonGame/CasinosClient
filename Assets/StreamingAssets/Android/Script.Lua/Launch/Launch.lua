@@ -60,17 +60,29 @@ function Launch:Setup()
     end
     self.PreLoading:UpdateDesc(tips)
 
-    -- 下载并加载Context.lua
-    local http_url = string.format('https://cragon-king-oss.cragon.cn/%s/Bundle_%s/Context.lua',
-            self.CasinosContext.Config.Platform, self.CasinosContext.Config.VersionBundle)
-    print(http_url)
-    local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
-    async_asset_loadgroup:LoadWWWAsync(http_url,
+    -- 下载并加载bundle_xxx.lua
+    local lua_pkg_name = string.format('bundle_%s', self.CasinosContext.Config.VersionBundle)
+    local async_asset_loadgroup = self.CasinosContext.AsyncAssetLoadGroup
+    local http_url_bundlexxx = string.format('https://cragon-king-oss.cragon.cn/%s/%s.lua',
+            self.CasinosContext.Config.Platform, lua_pkg_name)
+    print(http_url_bundlexxx)
+    async_asset_loadgroup:LoadWWWAsync(http_url_bundlexxx,
             function(url, www)
-                self.CasinosLua:LoadLuaFromBytes('Context', www.text)
-                require 'Context'
-                self.Context = Context
-                self.Context:Init()
+                self.CasinosLua:LoadLuaFromBytes(lua_pkg_name, www.text)
+                self.CasinosLua:DoString(lua_pkg_name)
+
+                -- 下载并加载Context.lua
+                local http_url_context = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/Context.lua',
+                        self.CasinosContext.Config.Platform, DataSelect)
+                print(http_url_context)
+                async_asset_loadgroup:LoadWWWAsync(http_url_context,
+                        function(url, www)
+                            self.CasinosLua:LoadLuaFromBytes('Context', www.text)
+                            self.CasinosLua:DoString('Context')
+                            self.Context = Context
+                            self.Context:Init()
+                        end
+                )
             end
     )
 end

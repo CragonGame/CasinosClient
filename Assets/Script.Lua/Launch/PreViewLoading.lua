@@ -100,12 +100,10 @@ function PreViewLoading:onCreate()
     end
 
     self.OnFinished = nil
-    self.IsAuto = false
-    self.ListRandomTips = {}
 
     local com_bg = self.ComUi:GetChild("ComBg")
     local bg = com_bg:GetChild("Bg")
-    self:makeUiBgFiteScreen(1066, 640, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, 2, { self.HolderMote })
+    self:MakeUiBgFiteScreen(1066, 640, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, 2, { self.HolderMote })
 
     local image_mote = com_bg:GetChild("ImageMote").asImage
     local p_helper = ParticleHelper:new(nil)
@@ -147,6 +145,8 @@ function PreViewLoading:onCreate()
     self.DengLongAnim.AnimationName = "animation"
     self.DengLongRender = self.DengLongAnim.transform.gameObject:GetComponent("MeshRenderer")
     self.DengLongRender.sortingOrder = 4
+
+    self:_initVersionInfo()
 end
 
 ---------------------------------------
@@ -181,34 +181,6 @@ function PreViewLoading:onHandleEv(ev)
 end
 
 ---------------------------------------
---function PreViewLoading:fireAutoLoadingProgress()
---    self.GProgressBar.visible = true
---    self.IsAuto = true
---end
-
----------------------------------------
---function PreViewLoading:fireManualLoadingProgress(progress, loading_info)
---    self.IsAuto = false
---    if (progress ~= 0) then
---        self.GProgressBar.visible = true
---    end
---
---    self:setTip(loading_info)
---    local cur = self.GProgressBar.value
---    cur = cur + progress
---    if (self.GProgressBar ~= nil) then
---        self.GProgressBar.value = cur
---        if (self.GProgressBar.value < loading.GProgressBar.max) then
---        else
---            if (self.OnFinished ~= nil) then
---                -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
---                self:OnFinished()
---            end
---        end
---    end
---end
-
----------------------------------------
 -- 更新进度条上方提示文字
 function PreViewLoading:UpdateDesc(desc)
     self.GTextFieldTips.text = desc
@@ -223,32 +195,14 @@ function PreViewLoading:UpdateLoadingProgress(value, max)
 end
 
 ---------------------------------------
-function PreViewLoading:setLoadingProgress(progress)
-    self.GProgressBar.visible = true
-    if (self.GProgressBar ~= nil) then
-        self.GProgressBar.value = progress
-        if (self.GProgressBar.value < self.GProgressBar.max) then
-        else
-            if (self.OnFinished ~= nil) then
-                --CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
-                self:OnFinished()
-            end
-        end
-    end
-end
-
----------------------------------------
-function PreViewLoading:setTip(tip)
-    self.ListRandomTips = {}
-    self.ListRandomTips[tip] = tip
-    local c = CS.Casinos.CasinosContext.Instance
-
+-- 左上角显示版本信息
+function PreViewLoading:_initVersionInfo()
     local gtext_version = self.ComUi:GetChild("Version")
     if (gtext_version ~= nil) then
         local version_text = gtext_version.asTextField
         local app_version = "应用版本"
         local data_versionex = "数据版本"
-        local lan = c.CurrentLan
+        local lan = self.CasinosContext.CurrentLan
         if (lan == "English") then
             app_version = "AppVersion"
             data_versionex = "DataVersion"
@@ -262,52 +216,15 @@ function PreViewLoading:setTip(tip)
         if GatewayIp ~= nil and string.find(GatewayIp, "dev") then
             en = "Dev"
         end
-        local version_bundle = c.Config.VersionBundle
-        local version_data = c.Config.VersionDataPersistent
+        local version_bundle = self.CasinosContext.Config.VersionBundle
+        local version_data = self.CasinosContext.Config.VersionDataPersistent
         version_text.text = string.format("%s: %s,  %s: %s %s", app_version, version_bundle, data_versionex, version_data, en)
     end
 end
 
 ---------------------------------------
-function PreViewLoading:setTips(list_tips)
-    self.ListRandomTips = {}
-    for k, v in pairs(list_tips) do
-        self.ListRandomTips[k] = v
-    end
-end
-
----------------------------------------
-function PreViewLoading:_updateTips(param)
-    local tips_key, tips_value = nil
-    local count = self.PreViewMgr:GetTableCount(self.ListRandomTips)
-    if (count > 0) then
-        tips_key, tips_value = self.PreViewMgr:GetAndRemoveTableFirstEle(self.ListRandomTips)
-    end
-    if ((tips_key ~= nil and string.len(tips_key) > 0)) then
-        if (self.GTextFieldTips ~= nil) then
-            self.GTextFieldTips.text = tips_key
-        end
-    end
-end
-
----------------------------------------
---function PreViewLoading:_playProgress(param)
---    if (self.GProgressBar ~= nil) then
---        self.GProgressBar.visible = true
---        if (self.GProgressBar.value <= self.GProgressBar.max) then
---            local value = self.GProgressBar.value
---            value = value + 2
---            self.GProgressBar.value = value
---        else
---            if (self.OnFinished ~= nil) then
---                self:OnFinished()
---            end
---        end
---    end
---end
-
----------------------------------------
-function PreViewLoading:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode, t_anchor_point)
+-- 全屏背景屏幕适配
+function PreViewLoading:MakeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode, t_anchor_point)
     local w = logic_width / design_width
     local h = logic_height / design_height
     if (w >= h) then
@@ -386,6 +303,7 @@ function PreViewLoadingFactory:createView()
     return view
 end
 
+--CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
 --CS.FairyGUI.Timers.inst:Add(0, 0, self._updateTips)
 --CS.FairyGUI.Timers.inst.Remove(loading._playProgress)
 --CS.FairyGUI.Timers.inst:Add(0.01, 0, loading._playProgress)
@@ -397,3 +315,83 @@ end
 --    --CS.FairyGUI.Timers.inst:Remove(self._playProgress)
 --end
 --CS.FairyGUI.Timers.inst:Remove(self._updateTips)
+
+---------------------------------------
+--function PreViewLoading:setLoadingProgress(progress)
+--    self.GProgressBar.visible = true
+--    if (self.GProgressBar ~= nil) then
+--        self.GProgressBar.value = progress
+--        if (self.GProgressBar.value < self.GProgressBar.max) then
+--        else
+--            if (self.OnFinished ~= nil) then
+--                self:OnFinished()
+--            end
+--        end
+--    end
+--end
+
+---------------------------------------
+--function PreViewLoading:setTips(list_tips)
+--    self.ListRandomTips = {}
+--    for k, v in pairs(list_tips) do
+--        self.ListRandomTips[k] = v
+--    end
+--end
+
+---------------------------------------
+--function PreViewLoading:_updateTips(param)
+--    local tips_key, tips_value = nil
+--    local count = self.PreViewMgr:GetTableCount(self.ListRandomTips)
+--    if (count > 0) then
+--        tips_key, tips_value = self.PreViewMgr:GetAndRemoveTableFirstEle(self.ListRandomTips)
+--    end
+--    if ((tips_key ~= nil and string.len(tips_key) > 0)) then
+--        if (self.GTextFieldTips ~= nil) then
+--            self.GTextFieldTips.text = tips_key
+--        end
+--    end
+--end
+
+---------------------------------------
+--function PreViewLoading:_playProgress(param)
+--    if (self.GProgressBar ~= nil) then
+--        self.GProgressBar.visible = true
+--        if (self.GProgressBar.value <= self.GProgressBar.max) then
+--            local value = self.GProgressBar.value
+--            value = value + 2
+--            self.GProgressBar.value = value
+--        else
+--            if (self.OnFinished ~= nil) then
+--                self:OnFinished()
+--            end
+--        end
+--    end
+--end
+
+---------------------------------------
+--function PreViewLoading:fireAutoLoadingProgress()
+--    self.GProgressBar.visible = true
+--    self.IsAuto = true
+--end
+
+---------------------------------------
+--function PreViewLoading:fireManualLoadingProgress(progress, loading_info)
+--    self.IsAuto = false
+--    if (progress ~= 0) then
+--        self.GProgressBar.visible = true
+--    end
+--
+--    self:setTip(loading_info)
+--    local cur = self.GProgressBar.value
+--    cur = cur + progress
+--    if (self.GProgressBar ~= nil) then
+--        self.GProgressBar.value = cur
+--        if (self.GProgressBar.value < loading.GProgressBar.max) then
+--        else
+--            if (self.OnFinished ~= nil) then
+--                -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
+--                self:OnFinished()
+--            end
+--        end
+--    end
+--end
