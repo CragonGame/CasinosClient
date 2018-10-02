@@ -89,15 +89,13 @@ end
 
 function ViewDesktopHTexas:getCardTypeAndSoundPath(cardtype_name, is_win)
 			local audio_path = "DeskTopH" .. cardtype_name
-            if (is_win)
-            then
+            if (is_win) then
                 cardtype_name =cardtype_name .. "Win"            
             else            
                 cardtype_name =cardtype_name .. "Loose"
             end
             local pack_name = self.PackageName
-            if (CS.Casinos.CasinosContext.Instance.UseLan)
-            then
+            if (UseLan) then
                 pack_name = self.ViewDesktopH.ViewMgr.LanMgr:getLanPackageName()
             end
             local  path = CS.FairyGUI.UIPackage.GetItemURL(pack_name, cardtype_name)

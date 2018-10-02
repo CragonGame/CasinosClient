@@ -23,38 +23,30 @@ function ItemDesktopHGameEndPotResult:new(o,ui_desktoph,com,list_card,is_win,pot
 
             o.GLoaderBankSign = o.GCom:GetChild("LoaderBankSign").asLoader
             local bank_sign = ""
-			if(pot_index == 255)
-			then
+			if(pot_index == 255) then
 				 local packageName = ui_desktoph:getDesktopBasePackageName()
-                    if (CS.Casinos.CasinosContext.Instance.UseLan == true)
-                    then
+                    if (UseLan == true) then
                         packageName = ui_desktoph.ViewMgr.LanMgr:getLanPackageName()
                     end
                     bank_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(packageName, "BankSign")
-			elseif(pot_index == 0)
-            then
+			elseif(pot_index == 0) then
 				bank_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(ui_desktoph:getDesktopBasePackageName(), "Pot0Sign")
-			elseif(pot_index == 1)
-            then
+			elseif(pot_index == 1) then
 				bank_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(ui_desktoph:getDesktopBasePackageName(), "Pot1Sign")
-			elseif(pot_index == 2)
-            then
+			elseif(pot_index == 2) then
 				bank_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(ui_desktoph:getDesktopBasePackageName(), "Pot2Sign")
-			elseif(pot_index == 3)
-            then
+			elseif(pot_index == 3) then
 				bank_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(ui_desktoph:getDesktopBasePackageName(), "Pot3Sign")
 			end
            
             o.GLoaderBankSign.icon = bank_sign
             o.GLoaderWinLoose = o.GCom:GetChild("LoaderWinLoose").asLoader
     local win_loose = "LooseSign"
-    if(is_win)
-    then
+    if(is_win) then
         win_loose = "WinSign"
     end
             local win_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(ui_desktoph:getDesktopBasePackageName(), win_loose)
-            if (CS.Casinos.CasinosContext.Instance.UseLan == true)
-            then
+            if (UseLan == true) then
                 local pack_name = ui_desktoph.ViewMgr.LanMgr:getLanPackageName()
                 win_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(pack_name, win_loose)
             end

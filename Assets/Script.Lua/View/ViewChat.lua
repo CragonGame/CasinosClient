@@ -194,13 +194,13 @@ function ViewChat:onClickSendChat()
 	local can_chat = false
 	if (self.UiChatType == _eUiChatType.Desktop)
 	then
-		if (self.ControllerActor.PropVIPLevel:get() >= self.CasinosContext.DesktopCanChatVIPLimit)
+		if (self.ControllerActor.PropVIPLevel:get() >= DesktopCanChatVIPLimit)
 		then
 			can_chat = true
 		end
 	elseif(self.UiChatType == _eUiChatType.DesktopH)
 	then
-		if (self.ControllerActor.PropVIPLevel:get() >= self.CasinosContext.DesktopHCanChatVIPLimit)
+		if (self.ControllerActor.PropVIPLevel:get() >= DesktopHCanChatVIPLimit)
 		then
 			can_chat = true
 		else

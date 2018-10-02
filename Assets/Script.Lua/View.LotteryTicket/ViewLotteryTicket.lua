@@ -37,7 +37,7 @@ function ViewLotteryTicket:onCreate()
     self.ViewMgr:bindEvListener("EvEntityLotteryTicketUpdateTm", self)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
-    local fac = self.ControllerLotteryTicket:GetLotteryTicketBaseFactory(self.CasinosContext.LotteryTicketFactoryName)
+    local fac = self.ControllerLotteryTicket:GetLotteryTicketBaseFactory(LotteryTicketFactoryName)
     self.ViewLotteryTicketBase = fac:CreateUiDesktopHBase(self)
     local co_bg = self.ComUi:GetChild("CommonMsgBgAndClose").asCom
     local btn_close = co_bg:GetChild("BtnClose").asButton
@@ -155,7 +155,7 @@ function ViewLotteryTicket:onHandleEv(ev)
             icon_name = "Ending"
         end
         local package_name = self.LotteryTicketPackName
-        if (self.CasinosContext.UseLan) then
+        if (UseLan) then
             package_name = self.ViewMgr.LanMgr:getLanPackageName()
         end
         self.GLoaderLotteryTicketTips.icon = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(package_name, icon_name)
@@ -228,7 +228,7 @@ function ViewLotteryTicket:updateLotteryTickTm(tm)
     end
 
     local package_name = self.LotteryTicketPackName
-    if (self.CasinosContext.UseLan) then
+    if (UseLan) then
         package_name = self.ViewMgr.LanMgr:getLanPackageName()
     end
     self.GLoaderLotteryTicketTips.icon = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(package_name, icon_name)

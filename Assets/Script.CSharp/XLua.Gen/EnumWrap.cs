@@ -16,6 +16,720 @@ namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
     
+    public class UnityEngineApplicationInstallModeWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(UnityEngine.ApplicationInstallMode), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(UnityEngine.ApplicationInstallMode), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(UnityEngine.ApplicationInstallMode), L, null, 7, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Unknown", UnityEngine.ApplicationInstallMode.Unknown);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Store", UnityEngine.ApplicationInstallMode.Store);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "DeveloperBuild", UnityEngine.ApplicationInstallMode.DeveloperBuild);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Adhoc", UnityEngine.ApplicationInstallMode.Adhoc);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Enterprise", UnityEngine.ApplicationInstallMode.Enterprise);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Editor", UnityEngine.ApplicationInstallMode.Editor);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(UnityEngine.ApplicationInstallMode), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushUnityEngineApplicationInstallMode(L, (UnityEngine.ApplicationInstallMode)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "Unknown"))
+                {
+                    translator.PushUnityEngineApplicationInstallMode(L, UnityEngine.ApplicationInstallMode.Unknown);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Store"))
+                {
+                    translator.PushUnityEngineApplicationInstallMode(L, UnityEngine.ApplicationInstallMode.Store);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "DeveloperBuild"))
+                {
+                    translator.PushUnityEngineApplicationInstallMode(L, UnityEngine.ApplicationInstallMode.DeveloperBuild);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Adhoc"))
+                {
+                    translator.PushUnityEngineApplicationInstallMode(L, UnityEngine.ApplicationInstallMode.Adhoc);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Enterprise"))
+                {
+                    translator.PushUnityEngineApplicationInstallMode(L, UnityEngine.ApplicationInstallMode.Enterprise);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Editor"))
+                {
+                    translator.PushUnityEngineApplicationInstallMode(L, UnityEngine.ApplicationInstallMode.Editor);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for UnityEngine.ApplicationInstallMode!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for UnityEngine.ApplicationInstallMode! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class UnityEngineApplicationSandboxTypeWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(UnityEngine.ApplicationSandboxType), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(UnityEngine.ApplicationSandboxType), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(UnityEngine.ApplicationSandboxType), L, null, 5, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Unknown", UnityEngine.ApplicationSandboxType.Unknown);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "NotSandboxed", UnityEngine.ApplicationSandboxType.NotSandboxed);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Sandboxed", UnityEngine.ApplicationSandboxType.Sandboxed);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "SandboxBroken", UnityEngine.ApplicationSandboxType.SandboxBroken);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(UnityEngine.ApplicationSandboxType), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushUnityEngineApplicationSandboxType(L, (UnityEngine.ApplicationSandboxType)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "Unknown"))
+                {
+                    translator.PushUnityEngineApplicationSandboxType(L, UnityEngine.ApplicationSandboxType.Unknown);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "NotSandboxed"))
+                {
+                    translator.PushUnityEngineApplicationSandboxType(L, UnityEngine.ApplicationSandboxType.NotSandboxed);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Sandboxed"))
+                {
+                    translator.PushUnityEngineApplicationSandboxType(L, UnityEngine.ApplicationSandboxType.Sandboxed);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "SandboxBroken"))
+                {
+                    translator.PushUnityEngineApplicationSandboxType(L, UnityEngine.ApplicationSandboxType.SandboxBroken);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for UnityEngine.ApplicationSandboxType!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for UnityEngine.ApplicationSandboxType! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class UnityEngineNetworkReachabilityWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(UnityEngine.NetworkReachability), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(UnityEngine.NetworkReachability), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(UnityEngine.NetworkReachability), L, null, 4, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "NotReachable", UnityEngine.NetworkReachability.NotReachable);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "ReachableViaCarrierDataNetwork", UnityEngine.NetworkReachability.ReachableViaCarrierDataNetwork);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "ReachableViaLocalAreaNetwork", UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(UnityEngine.NetworkReachability), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushUnityEngineNetworkReachability(L, (UnityEngine.NetworkReachability)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "NotReachable"))
+                {
+                    translator.PushUnityEngineNetworkReachability(L, UnityEngine.NetworkReachability.NotReachable);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "ReachableViaCarrierDataNetwork"))
+                {
+                    translator.PushUnityEngineNetworkReachability(L, UnityEngine.NetworkReachability.ReachableViaCarrierDataNetwork);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "ReachableViaLocalAreaNetwork"))
+                {
+                    translator.PushUnityEngineNetworkReachability(L, UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for UnityEngine.NetworkReachability!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for UnityEngine.NetworkReachability! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class UnityEngineRuntimePlatformWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(UnityEngine.RuntimePlatform), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(UnityEngine.RuntimePlatform), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(UnityEngine.RuntimePlatform), L, null, 35, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OSXEditor", UnityEngine.RuntimePlatform.OSXEditor);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "OSXPlayer", UnityEngine.RuntimePlatform.OSXPlayer);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WindowsPlayer", UnityEngine.RuntimePlatform.WindowsPlayer);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WindowsEditor", UnityEngine.RuntimePlatform.WindowsEditor);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "IPhonePlayer", UnityEngine.RuntimePlatform.IPhonePlayer);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Android", UnityEngine.RuntimePlatform.Android);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LinuxPlayer", UnityEngine.RuntimePlatform.LinuxPlayer);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LinuxEditor", UnityEngine.RuntimePlatform.LinuxEditor);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WebGLPlayer", UnityEngine.RuntimePlatform.WebGLPlayer);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WSAPlayerX86", UnityEngine.RuntimePlatform.WSAPlayerX86);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WSAPlayerX64", UnityEngine.RuntimePlatform.WSAPlayerX64);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WSAPlayerARM", UnityEngine.RuntimePlatform.WSAPlayerARM);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "PSP2", UnityEngine.RuntimePlatform.PSP2);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "PS4", UnityEngine.RuntimePlatform.PS4);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "XboxOne", UnityEngine.RuntimePlatform.XboxOne);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "tvOS", UnityEngine.RuntimePlatform.tvOS);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Switch", UnityEngine.RuntimePlatform.Switch);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(UnityEngine.RuntimePlatform), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushUnityEngineRuntimePlatform(L, (UnityEngine.RuntimePlatform)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "OSXEditor"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.OSXEditor);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "OSXPlayer"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.OSXPlayer);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "WindowsPlayer"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WindowsPlayer);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "WindowsEditor"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WindowsEditor);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "IPhonePlayer"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.IPhonePlayer);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Android"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.Android);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "LinuxPlayer"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.LinuxPlayer);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "LinuxEditor"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.LinuxEditor);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "WebGLPlayer"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WebGLPlayer);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "WSAPlayerX86"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WSAPlayerX86);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "WSAPlayerX64"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WSAPlayerX64);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "WSAPlayerARM"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.WSAPlayerARM);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "PSP2"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.PSP2);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "PS4"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.PS4);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "XboxOne"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.XboxOne);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "tvOS"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.tvOS);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Switch"))
+                {
+                    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.RuntimePlatform.Switch);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for UnityEngine.RuntimePlatform!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for UnityEngine.RuntimePlatform! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class UnityEngineSystemLanguageWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(UnityEngine.SystemLanguage), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(UnityEngine.SystemLanguage), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(UnityEngine.SystemLanguage), L, null, 45, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Afrikaans", UnityEngine.SystemLanguage.Afrikaans);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Arabic", UnityEngine.SystemLanguage.Arabic);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Basque", UnityEngine.SystemLanguage.Basque);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Belarusian", UnityEngine.SystemLanguage.Belarusian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Bulgarian", UnityEngine.SystemLanguage.Bulgarian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Catalan", UnityEngine.SystemLanguage.Catalan);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Chinese", UnityEngine.SystemLanguage.Chinese);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Czech", UnityEngine.SystemLanguage.Czech);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Danish", UnityEngine.SystemLanguage.Danish);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Dutch", UnityEngine.SystemLanguage.Dutch);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "English", UnityEngine.SystemLanguage.English);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Estonian", UnityEngine.SystemLanguage.Estonian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Faroese", UnityEngine.SystemLanguage.Faroese);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Finnish", UnityEngine.SystemLanguage.Finnish);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "French", UnityEngine.SystemLanguage.French);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "German", UnityEngine.SystemLanguage.German);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Greek", UnityEngine.SystemLanguage.Greek);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Hebrew", UnityEngine.SystemLanguage.Hebrew);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Icelandic", UnityEngine.SystemLanguage.Icelandic);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Indonesian", UnityEngine.SystemLanguage.Indonesian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Italian", UnityEngine.SystemLanguage.Italian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Japanese", UnityEngine.SystemLanguage.Japanese);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Korean", UnityEngine.SystemLanguage.Korean);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Latvian", UnityEngine.SystemLanguage.Latvian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Lithuanian", UnityEngine.SystemLanguage.Lithuanian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Norwegian", UnityEngine.SystemLanguage.Norwegian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Polish", UnityEngine.SystemLanguage.Polish);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Portuguese", UnityEngine.SystemLanguage.Portuguese);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Romanian", UnityEngine.SystemLanguage.Romanian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Russian", UnityEngine.SystemLanguage.Russian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "SerboCroatian", UnityEngine.SystemLanguage.SerboCroatian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Slovak", UnityEngine.SystemLanguage.Slovak);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Slovenian", UnityEngine.SystemLanguage.Slovenian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Spanish", UnityEngine.SystemLanguage.Spanish);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Swedish", UnityEngine.SystemLanguage.Swedish);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Thai", UnityEngine.SystemLanguage.Thai);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Turkish", UnityEngine.SystemLanguage.Turkish);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Ukrainian", UnityEngine.SystemLanguage.Ukrainian);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Vietnamese", UnityEngine.SystemLanguage.Vietnamese);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "ChineseSimplified", UnityEngine.SystemLanguage.ChineseSimplified);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "ChineseTraditional", UnityEngine.SystemLanguage.ChineseTraditional);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Unknown", UnityEngine.SystemLanguage.Unknown);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Hungarian", UnityEngine.SystemLanguage.Hungarian);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(UnityEngine.SystemLanguage), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushUnityEngineSystemLanguage(L, (UnityEngine.SystemLanguage)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "Afrikaans"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Afrikaans);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Arabic"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Arabic);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Basque"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Basque);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Belarusian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Belarusian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Bulgarian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Bulgarian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Catalan"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Catalan);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Chinese"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Chinese);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Czech"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Czech);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Danish"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Danish);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Dutch"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Dutch);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "English"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.English);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Estonian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Estonian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Faroese"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Faroese);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Finnish"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Finnish);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "French"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.French);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "German"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.German);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Greek"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Greek);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Hebrew"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Hebrew);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Icelandic"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Icelandic);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Indonesian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Indonesian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Italian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Italian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Japanese"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Japanese);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Korean"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Korean);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Latvian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Latvian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Lithuanian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Lithuanian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Norwegian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Norwegian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Polish"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Polish);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Portuguese"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Portuguese);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Romanian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Romanian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Russian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Russian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "SerboCroatian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.SerboCroatian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Slovak"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Slovak);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Slovenian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Slovenian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Spanish"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Spanish);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Swedish"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Swedish);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Thai"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Thai);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Turkish"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Turkish);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Ukrainian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Ukrainian);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Vietnamese"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Vietnamese);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "ChineseSimplified"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.ChineseSimplified);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "ChineseTraditional"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.ChineseTraditional);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Unknown"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Unknown);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Hungarian"))
+                {
+                    translator.PushUnityEngineSystemLanguage(L, UnityEngine.SystemLanguage.Hungarian);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for UnityEngine.SystemLanguage!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for UnityEngine.SystemLanguage! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class UnityEngineThreadPriorityWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(UnityEngine.ThreadPriority), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(UnityEngine.ThreadPriority), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(UnityEngine.ThreadPriority), L, null, 5, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Low", UnityEngine.ThreadPriority.Low);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "BelowNormal", UnityEngine.ThreadPriority.BelowNormal);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Normal", UnityEngine.ThreadPriority.Normal);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "High", UnityEngine.ThreadPriority.High);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(UnityEngine.ThreadPriority), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushUnityEngineThreadPriority(L, (UnityEngine.ThreadPriority)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "Low"))
+                {
+                    translator.PushUnityEngineThreadPriority(L, UnityEngine.ThreadPriority.Low);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "BelowNormal"))
+                {
+                    translator.PushUnityEngineThreadPriority(L, UnityEngine.ThreadPriority.BelowNormal);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Normal"))
+                {
+                    translator.PushUnityEngineThreadPriority(L, UnityEngine.ThreadPriority.Normal);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "High"))
+                {
+                    translator.PushUnityEngineThreadPriority(L, UnityEngine.ThreadPriority.High);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for UnityEngine.ThreadPriority!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for UnityEngine.ThreadPriority! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
     public class FairyGUIEaseTypeWrap
     {
 		public static void __Register(RealStatePtr L)

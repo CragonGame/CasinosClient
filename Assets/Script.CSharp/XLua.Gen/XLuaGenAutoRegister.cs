@@ -25,6 +25,18 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(Casinos.CasinosContext), CasinosCasinosContextWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(UnityEngine.ApplicationInstallMode), UnityEngineApplicationInstallModeWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(UnityEngine.ApplicationSandboxType), UnityEngineApplicationSandboxTypeWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(UnityEngine.NetworkReachability), UnityEngineNetworkReachabilityWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(UnityEngine.RuntimePlatform), UnityEngineRuntimePlatformWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(UnityEngine.SystemLanguage), UnityEngineSystemLanguageWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(UnityEngine.ThreadPriority), UnityEngineThreadPriorityWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(UnityEngine.Application), UnityEngineApplicationWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(UnityEngine.AssetBundle), UnityEngineAssetBundleWrap.__Register);

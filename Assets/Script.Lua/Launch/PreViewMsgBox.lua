@@ -36,7 +36,7 @@ function PreViewMsgBox:onCreate()
     local obj_ok = self.ComUi:GetChild("BtnConfirm")
     if (obj_ok ~= nil) then
         local tips = "确定"
-        local lan = CS.Casinos.CasinosContext.Instance.CurrentLan
+        local lan = CurrentLan
         if (lan == "English") then
             tips = "Confirm"
         else

@@ -190,7 +190,7 @@ function ViewDesktopHBankList:_updateBankPlayerInfo(bank_player)
            self.GTextBankPlayerNickName.text = bank_player.PlayerInfoCommon.NickName
 
            local gold_str = UiChipShowHelper:getGoldShowStr(bank_player.Gold, self.ViewMgr.LanMgr.LanBase)
-           if (CS.Casinos.CasinosContext.Instance.DesktopHSysBankShowDBValue and
+           if (DesktopHSysBankShowDBValue and
                CS.System.String.IsNullOrEmpty(bank_player.PlayerInfoCommon.PlayerGuid))
            then
                local sys_bank_initgold = self.ViewDesktopH.UiDesktopHBase:getSysBankPlayerInitGold()

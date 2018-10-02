@@ -136,8 +136,8 @@ function UiRegister:_onClickBtnRegister()
     if (self.ViewLogin:_hasAgreeAgreement() == false) then
         return
     end
-    if (self.ViewLogin.CasinosContext.ServerIsInvalid) then
-        ViewHelper:UiShowInfoSuccess(self.ViewLogin.CasinosContext.ServerStateInfo)
+    if (ServerState > 0) then
+        ViewHelper:UiShowInfoSuccess(ServerStateInfo)
         return
     end
 

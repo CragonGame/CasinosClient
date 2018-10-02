@@ -245,7 +245,7 @@ end
 function DesktopHBankPlayer:_setBankPlayerGolds()
     local gold_str = UiChipShowHelper:getGoldShowStr(self.BankPlayerDataDesktopH.Gold,
             self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
-    if (CS.Casinos.CasinosContext.Instance.DesktopHSysBankShowDBValue and
+    if (DesktopHSysBankShowDBValue and
             CS.System.String.IsNullOrEmpty(self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid)) then
         local sys_bank_initgold = self.ViewDesktopH.UiDesktopHBase:getSysBankPlayerInitGold()
         gold_str = UiChipShowHelper:getGoldShowStr(sys_bank_initgold, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)

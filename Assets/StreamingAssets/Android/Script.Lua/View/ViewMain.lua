@@ -90,7 +90,7 @@ function ViewMain:onCreate()
             end
     )
     local show_goldtree = false
-    if (self.CasinosContext.ShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true) then
+    if (ShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true) then
         show_goldtree = true
     end
     ViewHelper:setGObjectVisible(show_goldtree, btn_goldtree)
@@ -103,7 +103,7 @@ function ViewMain:onCreate()
     gold_par_parent:SetNativeObject(CS.FairyGUI.GoWrapper(g_p))
 
     local com_more = nil
-    if (self.CasinosContext.NeedHideClientUi) then
+    if (NeedHideClientUi) then
         com_more = self.ComUi:GetChild("ComMoreHideRank").asCom
         btn_match.visible = false
         --btn_wa.visible = false
@@ -238,7 +238,7 @@ function ViewMain:onCreate()
             end
     )
     local show_first = false
-    if (self.CasinosContext.ClientShowFirstRecharge == true and is_firstrecharge == true) then
+    if (ClientShowFirstRecharge == true and is_firstrecharge == true) then
         show_first = true
     else
         self.BtnRegister.position = com_recharge_first.position
@@ -373,7 +373,7 @@ function ViewMain:onCreate()
     holder_matchParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleMatch))
 
     local image_bg = self.ComUi:GetChild("ImageMote").asImage
-    if (self.CasinosContext.NeedHideClientUi == false)
+    if (NeedHideClientUi == false)
     then
         image_bg.visible = false
         local ab_mainmarry = p_helper:GetSpine("Spine/mainmarry.ab")
@@ -447,7 +447,7 @@ end
 
 ---------------------------------------
 function ViewMain:onDestroy()
-    if (self.CasinosContext.NeedHideClientUi == false)
+    if (NeedHideClientUi == false)
     then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
@@ -1166,7 +1166,7 @@ end
 
 ---------------------------------------
 function ViewMain:hideMote()
-    if (self.CasinosContext.NeedHideClientUi == false)
+    if (NeedHideClientUi == false)
     then
         self.MoteRender.transform.gameObject:SetActive(false)
     end

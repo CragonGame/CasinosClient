@@ -28,7 +28,7 @@ function ItemDesktopHBetOperate:setOperateInfo(tb_operate_id, operate_value, can
             self.mIsCurrentOperate = is_currentoperate
             self.GLoaderOperateBg = self.GComBetOperate:GetChild("GoldIcon").asLoader
             local package_name = self.ViewDesktopH.UiDesktopHPackageNameTitle
-            if (CS.Casinos.CasinosContext.Instance.UseLan)
+            if (UseLan)
             then
                 package_name = self.ViewDesktopH.ViewMgr.LanMgr:getLanPackageName()
             end

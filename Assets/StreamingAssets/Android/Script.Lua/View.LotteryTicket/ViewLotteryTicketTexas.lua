@@ -39,7 +39,7 @@ end
 function ViewLotteryTicketTexas:initBetPot(bet_pot, gold_percent)
     local loader_betpotinfo = bet_pot:GetChild("LoaderCardType").asLoader
     local packageName = self.ViewLotteryTicket.LotteryTicketPackName
-    if (self.CasinosContext.UseLan) then
+    if (UseLan) then
         packageName = self.ViewLotteryTicket.ViewMgr.LanMgr:getLanPackageName()
     end
     loader_betpotinfo.url = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(packageName, "BetPotInfo" .. tostring(gold_percent.Id))

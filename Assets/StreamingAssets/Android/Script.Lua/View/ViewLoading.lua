@@ -49,7 +49,7 @@ function ViewLoading:onCreate()
 	local com_bg = self.ComUi:GetChild("ComBg").asCom
 	local image_bg = com_bg:GetChild("ImageMote").asImage
 	self.CasinosContext = CS.Casinos.CasinosContext.Instance
-	if(self.CasinosContext.NeedHideClientUi == false)
+	if(NeedHideClientUi == false)
 	then
 		image_bg.visible = false
 		local p_helper = ParticleHelper:new(nil)
@@ -76,7 +76,7 @@ function ViewLoading:onCreate()
 end
 
 function ViewLoading:onDestroy()	
-	if(self.CasinosContext.NeedHideClientUi == false)
+	if(NeedHideClientUi == false)
 	then
 		CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
 	end

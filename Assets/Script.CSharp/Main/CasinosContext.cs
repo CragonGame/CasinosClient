@@ -73,44 +73,17 @@ namespace Casinos
         public string UiPathRoot { get; set; }
         public string ResourcesRowPathRoot { get; set; }
         public _eLoginType LoginType { get; set; }
-        public bool ServerIsInvalid { get; set; }
-        public string ServerStateInfo { get; set; }
         public bool UseHttps { get; set; }
-        public bool NeedHideClientUi { get; set; }
-        public bool ClientShowFirstRecharge { get; set; }
-        public bool DesktopHSysBankShowDBValue { get; set; }
         public bool CanReportLog { get; set; }
         public string CanReportLogDeviceId { get; set; }
         public string CanReportLogPlayerId { get; set; }
-        public int ShootingTextShowVIPLimit { get; set; }
-        public int DesktopHCanChatVIPLimit { get; set; }
-        public int DesktopCanChatVIPLimit { get; set; }
-        public bool ShowGoldTree { get; set; }
-        public bool UseWeiChatPay { get; set; }
-        public bool UseALiPay { get; set; }
-        public string BuglyAppId { get; set; }
-        public string PinggPPAppId { get; set; }
-        public string WeChatAppId { get; set; }
-        public string WeChatState { get; set; }
-        public string DataEyeId { get; set; }
-        public string PushAppId { get; set; }
-        public string PushAppKey { get; set; }
-        public string PushAppSecret { get; set; }
-        public string ShareSDKAppKey { get; set; }
-        public string ShareSDKAppSecret { get; set; }
-        public bool UseLan { get; set; }
-        public bool UseDefaultLan { get; set; }
-        public string DefaultLan { get; set; }
-        public string CurrentLan { get; set; }
         public bool UnityAndroid { get; set; }
         public bool UnityIOS { get; set; }
         public bool IsEditor { get; set; }
-        public string LotteryTicketFactoryName { get; set; }
         public bool IsSqliteUnity { get; set; }
         FTMgr FTMgr { get; set; }
         HeadIconMgr HeadIconMgr { get; set; }
         CSoundMgr SoundMgr { get; set; }
-        string PlatformName { get; set; }
         public LuaTable TbDataMgrLua { get; set; }
 
         public const string LocalDataVersionKey = "LocalVersionInfo";
@@ -121,8 +94,7 @@ namespace Casinos
         public CasinosContext(bool use_persistent,
             string ui_pathroot,
             string resourcesrow_pathroot,
-            string ab_resource_title,
-            string lotteryticket_factoryname)
+            string ab_resource_title)
         {
             _eEditorRunSourcePlatform editor_runsorce = _eEditorRunSourcePlatform.Android;
 #if UNITY_STANDALONE_WIN
@@ -139,9 +111,6 @@ namespace Casinos
             ABResourcePathTitle = ab_resource_title;
             ResourcesRowPathRoot = resourcesrow_pathroot;
             UiPathRoot = ui_pathroot;
-            LotteryTicketFactoryName = lotteryticket_factoryname;
-            UseLan = true;
-            _checkLan();
 
 #if UNITY_EDITOR
             IsEditor = true;
@@ -156,7 +125,6 @@ namespace Casinos
 #endif
 
 #if UNITY_IOS
-            PlatformName = "IOS";
             string version = UnityEngine.iOS.Device.systemVersion;
             var arr_version = version.Split('.');
             int first_version_code = 0;
@@ -175,12 +143,10 @@ namespace Casinos
             UnityIOS = true;
             UnityAndroid = false;
 #elif UNITY_ANDROID
-            PlatformName = "ANDROID";
             UseHttps = false;
             UnityAndroid = true;
             UnityIOS = false;
 #elif UNITY_STANDALONE_WIN
-            PlatformName = "PC";
 #endif
             NativeMgr = new NativeMgr();
             PathMgr = new PathMgr(editor_runsorce, use_persistent);// 初始化PathMgr
@@ -349,17 +315,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public string GetPlatformName(bool to_lower)
-        {
-            string platform = PlatformName;
-            if (to_lower)
-            {
-                platform = PlatformName.ToLower();
-            }
-            return platform;
-        }
-
-        //---------------------------------------------------------------------
         public void ReportLogWithDeviceId(string name, string message, string stackTrace)
         {
             string device_id = SystemInfo.deviceUniqueIdentifier;
@@ -475,19 +430,6 @@ namespace Casinos
         public void FreeAudioSource(AudioSource audio_src)
         {
             SoundMgr.freeAudioSource(audio_src);
-        }
-
-        //---------------------------------------------------------------------
-        void _checkLan()
-        {
-            if (UnityEngine.PlayerPrefs.HasKey(LanKey))
-            {
-                CurrentLan = UnityEngine.PlayerPrefs.GetString(LanKey);
-            }
-            else
-            {
-                CurrentLan = Application.systemLanguage.ToString();
-            }
         }
     }
 }

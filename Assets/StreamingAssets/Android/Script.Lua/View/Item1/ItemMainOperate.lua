@@ -23,8 +23,7 @@ function ItemMainOperate:setCurrentOperateInfo(main_operate)
 		icon_bg = "BtnBgRed"
         icon_name = "Championship"
         main_operate_name = "必下模式"
-        if (CS.Casinos.CasinosContext.Instance.UseLan)
-		then
+        if (UseLan) then
 			main_operate_name = CS.Casinos.CasinosContext.Instance.LanMgr:getLanValue("MustBetModel")
 		end
         self.GButton.onClick:Add(
@@ -32,19 +31,15 @@ function ItemMainOperate:setCurrentOperateInfo(main_operate)
 				self:onClickMustBet()
 			end
 		)
-	elseif(main_operate == CS.Casinos._eMainOperate.Login)
-	then
+	elseif(main_operate == CS.Casinos._eMainOperate.Login) then
 		icon_bg = "BtnBgPurple"
         main_operate_name = "登录"
-        if (CS.Casinos.CasinosContext.Instance.UseLan)
-		then
+        if (UseLan) then
 			main_operate_name = CS.Casinos.CasinosContext.Instance.LanMgr:getLanValue("Login")
 		end
-        if (CS.Casinos.CasinosContext.Instance.CoApp.IsVisiter == false)
-		then
+        if (CS.Casinos.CasinosContext.Instance.CoApp.IsVisiter == false) then
 			main_operate_name = "注销"
-            if (CS.Casinos.CasinosContext.Instance.UseLan)
-			then
+            if (UseLan) then
 				main_operate_name = CS.Casinos.CasinosContext.Instance.LanMgr:getLanValue("Logout");
 			end
 		end
@@ -53,12 +48,10 @@ function ItemMainOperate:setCurrentOperateInfo(main_operate)
 				self:onClickLogin()
 			end
 		)
-	elseif(main_operate == CS.Casinos._eMainOperate.Ranking)
-	then
+	elseif(main_operate == CS.Casinos._eMainOperate.Ranking) then
 		icon_bg = "BtnBgRed"
         main_operate_name = "排行"
-        if (CS.Casinos.CasinosContext.Instance.UseLan)
-		then
+        if (UseLan) then
 			main_operate_name = CS.Casinos.CasinosContext.Instance.LanMgr:getLanValue("Ranking")
 		end
         self.GButton.onClick:Add(
@@ -66,12 +59,10 @@ function ItemMainOperate:setCurrentOperateInfo(main_operate)
 				self:onClickRanking()
 			end
 		)
-	elseif(main_operate == CS.Casinos._eMainOperate.Invite)
-	then
+	elseif(main_operate == CS.Casinos._eMainOperate.Invite) then
 		icon_bg = "BtnBgOrange"
         main_operate_name = "邀请"
-        if (CS.Casinos.CasinosContext.Instance.UseLan)
-		then
+        if (UseLan) then
 			main_operate_name = CS.Casinos.CasinosContext.Instance.LanMgr.getLanValue("Invitation")
 		end
         self.GButton.onClick:Add(
@@ -79,12 +70,10 @@ function ItemMainOperate:setCurrentOperateInfo(main_operate)
 				self:onClickInvite()
 			end
 		)
-	elseif(main_operate == CS.Casinos._eMainOperate.Shop)
-	then
+	elseif(main_operate == CS.Casinos._eMainOperate.Shop) then
 		icon_bg = "BtnBgPurple"
         main_operate_name = "商店"
-        if (CS.Casinos.CasinosContext.Instance.UseLan)
-		then
+        if (UseLan) then
 			main_operate_name = CS.Casinos.CasinosContext.Instance.LanMgr:getLanValue("Shop")
 		end
         self.GButton.onClick:Add(
@@ -92,12 +81,10 @@ function ItemMainOperate:setCurrentOperateInfo(main_operate)
 				self:onClickShop()
 			end
 		)
-	elseif(main_operate == CS.Casinos._eMainOperate.Vip)
-	then
+	elseif(main_operate == CS.Casinos._eMainOperate.Vip) then
 		icon_bg = "BtnBgRed"
         main_operate_name = "贵宾"
-        if (CS.Casinos.CasinosContext.Instance.UseLan)
-		then
+        if (UseLan) then
 			main_operate_name = CS.Casinos.CasinosContext.Instance.LanMgr:getLanValue("Vip")
 		end
         self.GButton.onClick:Add(

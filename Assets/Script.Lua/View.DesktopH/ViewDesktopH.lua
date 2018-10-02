@@ -389,8 +389,8 @@ function ViewDesktopH:onHandleEv(ev)
             local chat_info = ev.chat_info
             local use_tanmu = true
             local show_chat = true
-            if (self.CasinosContext.ShootingTextShowVIPLimit ~= 0) then
-                if (chat_info.sender_viplevel >= self.CasinosContext.ShootingTextShowVIPLimit) then
+            if (ShootingTextShowVIPLimit ~= 0) then
+                if (chat_info.sender_viplevel >= ShootingTextShowVIPLimit) then
                     show_chat = true
                 else
                     show_chat = false

@@ -39,14 +39,14 @@ function ViewPayType:onCreate()
                 self:onClickWeiChat()
             end
     )
-    ViewHelper:setGObjectVisible(UseWeiChatPay, self.GBtnWeiChat)
+    ViewHelper:setGObjectVisible(UseWechatPay, self.GBtnWeiChat)
     self.GBtnZhiFuBao = self.ComUi:GetChildInGroup(group_parent, "BtnAliPay").asButton
     self.GBtnZhiFuBao.onClick:Add(
             function()
                 self:onClickZhiFuBao()
             end
     )
-    ViewHelper:setGObjectVisible(UseALiPay, self.GBtnZhiFuBao)
+    ViewHelper:setGObjectVisible(UseAliPay, self.GBtnZhiFuBao)
     local btn = self.ComUi:GetChild("BtnNeiGou").asButton
     btn.onClick:Add(
             function()

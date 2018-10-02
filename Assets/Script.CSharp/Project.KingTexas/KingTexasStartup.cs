@@ -6,7 +6,7 @@ namespace Casinos
     using System;
     using System.Collections;
     using UnityEngine;
-    
+
     public class KingTexasStartup : MonoBehaviour
     {
         //---------------------------------------------------------------------
@@ -24,8 +24,7 @@ namespace Casinos
             Context = new CasinosContext(use_persistent,
                 "Resources.KingTexas/Ui/",
                 "Resources.KingTexasRaw/",
-                "Resources.KingTexas/",
-                "Texas");
+                "Resources.KingTexas/");
 
             Context.Launch();
         }

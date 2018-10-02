@@ -202,7 +202,7 @@ function PreViewLoading:_initVersionInfo()
         local version_text = gtext_version.asTextField
         local app_version = "应用版本"
         local data_versionex = "数据版本"
-        local lan = self.CasinosContext.CurrentLan
+        local lan = CurrentLan
         if (lan == "English") then
             app_version = "AppVersion"
             data_versionex = "DataVersion"

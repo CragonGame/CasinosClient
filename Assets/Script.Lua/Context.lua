@@ -21,6 +21,7 @@ ServerStateInfo = ''-- 系统公告
 IsDev = false
 ClientShowFPS = true-- 客户端显示FPS信息 false 不显示 true 显示
 FPSLimit = 60
+LotteryTicketFactoryName = 'Texas'
 ClientWechatIsInstalled = true
 ClientShowWechat = true-- 客户端显示微信登录按钮 false 不显示 true 显示
 ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
@@ -33,8 +34,8 @@ CanReportLog = false-- 是否开启上传日志到Bugly后台
 CanReportLogDeviceId = ""-- 可以上传的机器码
 CanReportLogPlayerId = ""-- 可以上传的玩家Id
 ShowGoldTree = false
-UseWeiChatPay = true
-UseALiPay = true
+UseWechatPay = true
+UseAliPay = true
 UseIAP = true
 UseLan = true
 UseDefaultLan = false
@@ -240,34 +241,12 @@ function Context:_nextLaunchStep()
         local path_lua_root = self.CasinosContext.PathMgr:combinePersistentDataPath("Script.Lua/");
         self.CasinosLua:LoadLuaFromDir(path_lua_root);
 
-        self.CasinosContext.NeedHideClientUi = NeedHideClientUi
-        self.CasinosContext.ClientShowFirstRecharge = ClientShowFirstRecharge
-        self.CasinosContext.DesktopHSysBankShowDBValue = DesktopHSysBankShowDBValue
-        self.CasinosContext.ShootingTextShowVIPLimit = ShootingTextShowVIPLimit
-        self.CasinosContext.DesktopHCanChatVIPLimit = DesktopHCanChatVIPLimit
-        self.CasinosContext.DesktopCanChatVIPLimit = DesktopCanChatVIPLimit
         self.CasinosContext.CanReportLog = CanReportLog
         self.CasinosContext.CanReportLogDeviceId = CanReportLogDeviceId
         self.CasinosContext.CanReportLogPlayerId = CanReportLogPlayerId
-        self.CasinosContext.ShowGoldTree = ShowGoldTree
         if (self.CasinosContext.UnityAndroid == true) then
-            self.CasinosContext.UseWeiChatPay = UseWeiChatPay
-            self.CasinosContext.UseALiPay = UseALiPay
         end
         --self.CasinosContext.UseIAP = UseIAP
-        self.CasinosContext.UseLan = UseLan
-        self.CasinosContext.UseDefaultLan = UseDefaultLan
-        self.CasinosContext.DefaultLan = DefaultLan
-        self.CasinosContext.BuglyAppId = BuglyAppId
-        self.CasinosContext.PinggPPAppId = PinggPPAppId
-        self.CasinosContext.WeChatAppId = WeChatAppId
-        self.CasinosContext.WeChatState = WeChatState
-        self.CasinosContext.DataEyeId = DataEyeId
-        self.CasinosContext.PushAppId = PushAppId
-        self.CasinosContext.PushAppKey = PushAppKey
-        self.CasinosContext.PushAppSecret = PushAppSecret
-        self.CasinosContext.ShareSDKAppKey = ShareSDKAppKey
-        self.CasinosContext.ShareSDKAppSecret = ShareSDKAppSecret
 
         self:DoString("MessagePack")
         self.Json = require("json")

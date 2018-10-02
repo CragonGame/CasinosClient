@@ -295,7 +295,7 @@ function ControllerLogin:_timerUpdate(tm)
         self.RequestThirdPartyLogin = false
         if (self.CasinosContext.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat) then
             self.CasinosContext:SetNativeOperate(1)
-            CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.CasinosContext.WeChatState, "Login")
+            CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, WeChatState, "Login")
         end
     end
 
@@ -863,7 +863,7 @@ function ControllerLogin:_init(is_init)
             elseif (a_info_last_login.LoginType == 2) then
                 CS.Casinos.CasinosContext.Instance.LoginType = 2
                 local r = AccountWeChatAutoLoginRequest:new(nil)
-                r.AppId = CS.Casinos.CasinosContext.Instance.Config.WeChatAppId
+                r.AppId = WeChatAppId
                 r.OpenId = a_info_last_login.AccName
                 r.Device = self:getDeviceInfo()
                 self.ControllerUCenter:RequestWechatAutoLogin(r,

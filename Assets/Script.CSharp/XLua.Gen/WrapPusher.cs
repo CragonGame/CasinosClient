@@ -34,6 +34,12 @@ namespace XLua
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Ray>(translator.PushUnityEngineRay, translator.Get, translator.UpdateUnityEngineRay);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Bounds>(translator.PushUnityEngineBounds, translator.Get, translator.UpdateUnityEngineBounds);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Ray2D>(translator.PushUnityEngineRay2D, translator.Get, translator.UpdateUnityEngineRay2D);
+				translator.RegisterPushAndGetAndUpdate<UnityEngine.ApplicationInstallMode>(translator.PushUnityEngineApplicationInstallMode, translator.Get, translator.UpdateUnityEngineApplicationInstallMode);
+				translator.RegisterPushAndGetAndUpdate<UnityEngine.ApplicationSandboxType>(translator.PushUnityEngineApplicationSandboxType, translator.Get, translator.UpdateUnityEngineApplicationSandboxType);
+				translator.RegisterPushAndGetAndUpdate<UnityEngine.NetworkReachability>(translator.PushUnityEngineNetworkReachability, translator.Get, translator.UpdateUnityEngineNetworkReachability);
+				translator.RegisterPushAndGetAndUpdate<UnityEngine.RuntimePlatform>(translator.PushUnityEngineRuntimePlatform, translator.Get, translator.UpdateUnityEngineRuntimePlatform);
+				translator.RegisterPushAndGetAndUpdate<UnityEngine.SystemLanguage>(translator.PushUnityEngineSystemLanguage, translator.Get, translator.UpdateUnityEngineSystemLanguage);
+				translator.RegisterPushAndGetAndUpdate<UnityEngine.ThreadPriority>(translator.PushUnityEngineThreadPriority, translator.Get, translator.UpdateUnityEngineThreadPriority);
 				translator.RegisterPushAndGetAndUpdate<FairyGUI.EaseType>(translator.PushFairyGUIEaseType, translator.Get, translator.UpdateFairyGUIEaseType);
 				translator.RegisterPushAndGetAndUpdate<FairyGUI.RelationType>(translator.PushFairyGUIRelationType, translator.Get, translator.UpdateFairyGUIRelationType);
 				translator.RegisterPushAndGetAndUpdate<FairyGUI.TweenPropType>(translator.PushFairyGUITweenPropType, translator.Get, translator.UpdateFairyGUITweenPropType);
@@ -568,6 +574,510 @@ namespace XLua
                 if (!CopyByValue.Pack(buff, 0,  val))
                 {
                     throw new Exception("pack fail for UnityEngine.Ray2D ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int UnityEngineApplicationInstallMode_TypeID = -1;
+		int UnityEngineApplicationInstallMode_EnumRef = -1;
+        
+        public void PushUnityEngineApplicationInstallMode(RealStatePtr L, UnityEngine.ApplicationInstallMode val)
+        {
+            if (UnityEngineApplicationInstallMode_TypeID == -1)
+            {
+			    bool is_first;
+                UnityEngineApplicationInstallMode_TypeID = getTypeId(L, typeof(UnityEngine.ApplicationInstallMode), out is_first);
+				
+				if (UnityEngineApplicationInstallMode_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(UnityEngine.ApplicationInstallMode));
+				    UnityEngineApplicationInstallMode_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, UnityEngineApplicationInstallMode_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, UnityEngineApplicationInstallMode_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for UnityEngine.ApplicationInstallMode ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, UnityEngineApplicationInstallMode_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out UnityEngine.ApplicationInstallMode val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineApplicationInstallMode_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.ApplicationInstallMode");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for UnityEngine.ApplicationInstallMode");
+                }
+				val = (UnityEngine.ApplicationInstallMode)e;
+                
+            }
+            else
+            {
+                val = (UnityEngine.ApplicationInstallMode)objectCasters.GetCaster(typeof(UnityEngine.ApplicationInstallMode))(L, index, null);
+            }
+        }
+		
+        public void UpdateUnityEngineApplicationInstallMode(RealStatePtr L, int index, UnityEngine.ApplicationInstallMode val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineApplicationInstallMode_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.ApplicationInstallMode");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for UnityEngine.ApplicationInstallMode ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int UnityEngineApplicationSandboxType_TypeID = -1;
+		int UnityEngineApplicationSandboxType_EnumRef = -1;
+        
+        public void PushUnityEngineApplicationSandboxType(RealStatePtr L, UnityEngine.ApplicationSandboxType val)
+        {
+            if (UnityEngineApplicationSandboxType_TypeID == -1)
+            {
+			    bool is_first;
+                UnityEngineApplicationSandboxType_TypeID = getTypeId(L, typeof(UnityEngine.ApplicationSandboxType), out is_first);
+				
+				if (UnityEngineApplicationSandboxType_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(UnityEngine.ApplicationSandboxType));
+				    UnityEngineApplicationSandboxType_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, UnityEngineApplicationSandboxType_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, UnityEngineApplicationSandboxType_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for UnityEngine.ApplicationSandboxType ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, UnityEngineApplicationSandboxType_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out UnityEngine.ApplicationSandboxType val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineApplicationSandboxType_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.ApplicationSandboxType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for UnityEngine.ApplicationSandboxType");
+                }
+				val = (UnityEngine.ApplicationSandboxType)e;
+                
+            }
+            else
+            {
+                val = (UnityEngine.ApplicationSandboxType)objectCasters.GetCaster(typeof(UnityEngine.ApplicationSandboxType))(L, index, null);
+            }
+        }
+		
+        public void UpdateUnityEngineApplicationSandboxType(RealStatePtr L, int index, UnityEngine.ApplicationSandboxType val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineApplicationSandboxType_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.ApplicationSandboxType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for UnityEngine.ApplicationSandboxType ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int UnityEngineNetworkReachability_TypeID = -1;
+		int UnityEngineNetworkReachability_EnumRef = -1;
+        
+        public void PushUnityEngineNetworkReachability(RealStatePtr L, UnityEngine.NetworkReachability val)
+        {
+            if (UnityEngineNetworkReachability_TypeID == -1)
+            {
+			    bool is_first;
+                UnityEngineNetworkReachability_TypeID = getTypeId(L, typeof(UnityEngine.NetworkReachability), out is_first);
+				
+				if (UnityEngineNetworkReachability_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(UnityEngine.NetworkReachability));
+				    UnityEngineNetworkReachability_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, UnityEngineNetworkReachability_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, UnityEngineNetworkReachability_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for UnityEngine.NetworkReachability ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, UnityEngineNetworkReachability_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out UnityEngine.NetworkReachability val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineNetworkReachability_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.NetworkReachability");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for UnityEngine.NetworkReachability");
+                }
+				val = (UnityEngine.NetworkReachability)e;
+                
+            }
+            else
+            {
+                val = (UnityEngine.NetworkReachability)objectCasters.GetCaster(typeof(UnityEngine.NetworkReachability))(L, index, null);
+            }
+        }
+		
+        public void UpdateUnityEngineNetworkReachability(RealStatePtr L, int index, UnityEngine.NetworkReachability val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineNetworkReachability_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.NetworkReachability");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for UnityEngine.NetworkReachability ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int UnityEngineRuntimePlatform_TypeID = -1;
+		int UnityEngineRuntimePlatform_EnumRef = -1;
+        
+        public void PushUnityEngineRuntimePlatform(RealStatePtr L, UnityEngine.RuntimePlatform val)
+        {
+            if (UnityEngineRuntimePlatform_TypeID == -1)
+            {
+			    bool is_first;
+                UnityEngineRuntimePlatform_TypeID = getTypeId(L, typeof(UnityEngine.RuntimePlatform), out is_first);
+				
+				if (UnityEngineRuntimePlatform_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(UnityEngine.RuntimePlatform));
+				    UnityEngineRuntimePlatform_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, UnityEngineRuntimePlatform_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, UnityEngineRuntimePlatform_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for UnityEngine.RuntimePlatform ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, UnityEngineRuntimePlatform_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out UnityEngine.RuntimePlatform val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineRuntimePlatform_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.RuntimePlatform");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for UnityEngine.RuntimePlatform");
+                }
+				val = (UnityEngine.RuntimePlatform)e;
+                
+            }
+            else
+            {
+                val = (UnityEngine.RuntimePlatform)objectCasters.GetCaster(typeof(UnityEngine.RuntimePlatform))(L, index, null);
+            }
+        }
+		
+        public void UpdateUnityEngineRuntimePlatform(RealStatePtr L, int index, UnityEngine.RuntimePlatform val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineRuntimePlatform_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.RuntimePlatform");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for UnityEngine.RuntimePlatform ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int UnityEngineSystemLanguage_TypeID = -1;
+		int UnityEngineSystemLanguage_EnumRef = -1;
+        
+        public void PushUnityEngineSystemLanguage(RealStatePtr L, UnityEngine.SystemLanguage val)
+        {
+            if (UnityEngineSystemLanguage_TypeID == -1)
+            {
+			    bool is_first;
+                UnityEngineSystemLanguage_TypeID = getTypeId(L, typeof(UnityEngine.SystemLanguage), out is_first);
+				
+				if (UnityEngineSystemLanguage_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(UnityEngine.SystemLanguage));
+				    UnityEngineSystemLanguage_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, UnityEngineSystemLanguage_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, UnityEngineSystemLanguage_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for UnityEngine.SystemLanguage ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, UnityEngineSystemLanguage_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out UnityEngine.SystemLanguage val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineSystemLanguage_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.SystemLanguage");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for UnityEngine.SystemLanguage");
+                }
+				val = (UnityEngine.SystemLanguage)e;
+                
+            }
+            else
+            {
+                val = (UnityEngine.SystemLanguage)objectCasters.GetCaster(typeof(UnityEngine.SystemLanguage))(L, index, null);
+            }
+        }
+		
+        public void UpdateUnityEngineSystemLanguage(RealStatePtr L, int index, UnityEngine.SystemLanguage val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineSystemLanguage_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.SystemLanguage");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for UnityEngine.SystemLanguage ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int UnityEngineThreadPriority_TypeID = -1;
+		int UnityEngineThreadPriority_EnumRef = -1;
+        
+        public void PushUnityEngineThreadPriority(RealStatePtr L, UnityEngine.ThreadPriority val)
+        {
+            if (UnityEngineThreadPriority_TypeID == -1)
+            {
+			    bool is_first;
+                UnityEngineThreadPriority_TypeID = getTypeId(L, typeof(UnityEngine.ThreadPriority), out is_first);
+				
+				if (UnityEngineThreadPriority_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(UnityEngine.ThreadPriority));
+				    UnityEngineThreadPriority_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, UnityEngineThreadPriority_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, UnityEngineThreadPriority_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for UnityEngine.ThreadPriority ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, UnityEngineThreadPriority_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out UnityEngine.ThreadPriority val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineThreadPriority_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.ThreadPriority");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for UnityEngine.ThreadPriority");
+                }
+				val = (UnityEngine.ThreadPriority)e;
+                
+            }
+            else
+            {
+                val = (UnityEngine.ThreadPriority)objectCasters.GetCaster(typeof(UnityEngine.ThreadPriority))(L, index, null);
+            }
+        }
+		
+        public void UpdateUnityEngineThreadPriority(RealStatePtr L, int index, UnityEngine.ThreadPriority val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineThreadPriority_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.ThreadPriority");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for UnityEngine.ThreadPriority ,value="+val);
                 }
             }
 			
@@ -1224,6 +1734,42 @@ namespace XLua
 				translator.PushUnityEngineRay2D(L, array[index]);
 				return true;
 			}
+			else if (type == typeof(UnityEngine.ApplicationInstallMode[]))
+			{
+			    UnityEngine.ApplicationInstallMode[] array = obj as UnityEngine.ApplicationInstallMode[];
+				translator.PushUnityEngineApplicationInstallMode(L, array[index]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.ApplicationSandboxType[]))
+			{
+			    UnityEngine.ApplicationSandboxType[] array = obj as UnityEngine.ApplicationSandboxType[];
+				translator.PushUnityEngineApplicationSandboxType(L, array[index]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.NetworkReachability[]))
+			{
+			    UnityEngine.NetworkReachability[] array = obj as UnityEngine.NetworkReachability[];
+				translator.PushUnityEngineNetworkReachability(L, array[index]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.RuntimePlatform[]))
+			{
+			    UnityEngine.RuntimePlatform[] array = obj as UnityEngine.RuntimePlatform[];
+				translator.PushUnityEngineRuntimePlatform(L, array[index]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.SystemLanguage[]))
+			{
+			    UnityEngine.SystemLanguage[] array = obj as UnityEngine.SystemLanguage[];
+				translator.PushUnityEngineSystemLanguage(L, array[index]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.ThreadPriority[]))
+			{
+			    UnityEngine.ThreadPriority[] array = obj as UnityEngine.ThreadPriority[];
+				translator.PushUnityEngineThreadPriority(L, array[index]);
+				return true;
+			}
 			else if (type == typeof(FairyGUI.EaseType[]))
 			{
 			    FairyGUI.EaseType[] array = obj as FairyGUI.EaseType[];
@@ -1317,6 +1863,42 @@ namespace XLua
 			else if (type == typeof(UnityEngine.Ray2D[]))
 			{
 			    UnityEngine.Ray2D[] array = obj as UnityEngine.Ray2D[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.ApplicationInstallMode[]))
+			{
+			    UnityEngine.ApplicationInstallMode[] array = obj as UnityEngine.ApplicationInstallMode[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.ApplicationSandboxType[]))
+			{
+			    UnityEngine.ApplicationSandboxType[] array = obj as UnityEngine.ApplicationSandboxType[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.NetworkReachability[]))
+			{
+			    UnityEngine.NetworkReachability[] array = obj as UnityEngine.NetworkReachability[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.RuntimePlatform[]))
+			{
+			    UnityEngine.RuntimePlatform[] array = obj as UnityEngine.RuntimePlatform[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.SystemLanguage[]))
+			{
+			    UnityEngine.SystemLanguage[] array = obj as UnityEngine.SystemLanguage[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.ThreadPriority[]))
+			{
+			    UnityEngine.ThreadPriority[] array = obj as UnityEngine.ThreadPriority[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}

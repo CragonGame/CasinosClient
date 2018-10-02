@@ -22,6 +22,12 @@ namespace Casinos
         public static List<Type> CustomType = new List<Type>()
         {
             // Unity3D
+            typeof(UnityEngine.ApplicationInstallMode),
+            typeof(UnityEngine.ApplicationSandboxType),
+            typeof(UnityEngine.NetworkReachability),
+            typeof(UnityEngine.RuntimePlatform),
+            typeof(UnityEngine.SystemLanguage),
+            typeof(UnityEngine.ThreadPriority),
             typeof(UnityEngine.Application),
             typeof(UnityEngine.AssetBundle),
             typeof(UnityEngine.AudioClip),
@@ -430,6 +436,12 @@ namespace Casinos
         public void Vibrate()
         {
             Handheld.Vibrate();
+        }
+
+        //---------------------------------------------------------------------
+        public string GetSystemLanguageAsString()
+        {
+            return Application.systemLanguage.ToString();
         }
 
         //---------------------------------------------------------------------

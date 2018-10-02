@@ -26,13 +26,11 @@ function ItemDesktopHHistroy:refreshHistory(list_history)
     for i = 1, #list_history do
         local l = list_history[i]
         local win_loose = "Loose"
-        if(l == true)
-        then
+        if(l == true) then
             win_loose = "Win"
         end
         local icon_name = CS.Casinos.UiHelperCasinos.FormatePackageImagePath("DesktopHHistory", win_loose)
-        if (CS.Casinos.CasinosContext.Instance.UseLan == true)
-        then
+        if (UseLan == true) then
             local pack_name = self.ViewDesktoph.ViewMgr.LanMgr:getLanPackageName()
             icon_name = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(pack_name, win_loose)
         end

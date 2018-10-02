@@ -474,7 +474,7 @@ namespace XLua.CSObjectWrap
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    translator.Push(L, UnityEngine.Application.platform);
+			    translator.PushUnityEngineRuntimePlatform(L, UnityEngine.Application.platform);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -654,7 +654,7 @@ namespace XLua.CSObjectWrap
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    translator.Push(L, UnityEngine.Application.installMode);
+			    translator.PushUnityEngineApplicationInstallMode(L, UnityEngine.Application.installMode);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -666,7 +666,7 @@ namespace XLua.CSObjectWrap
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    translator.Push(L, UnityEngine.Application.sandboxType);
+			    translator.PushUnityEngineApplicationSandboxType(L, UnityEngine.Application.sandboxType);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -726,7 +726,7 @@ namespace XLua.CSObjectWrap
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    translator.Push(L, UnityEngine.Application.systemLanguage);
+			    translator.PushUnityEngineSystemLanguage(L, UnityEngine.Application.systemLanguage);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -738,7 +738,7 @@ namespace XLua.CSObjectWrap
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    translator.Push(L, UnityEngine.Application.backgroundLoadingPriority);
+			    translator.PushUnityEngineThreadPriority(L, UnityEngine.Application.backgroundLoadingPriority);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -750,7 +750,7 @@ namespace XLua.CSObjectWrap
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    translator.Push(L, UnityEngine.Application.internetReachability);
+			    translator.PushUnityEngineNetworkReachability(L, UnityEngine.Application.internetReachability);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

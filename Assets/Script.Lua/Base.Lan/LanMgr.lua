@@ -31,7 +31,7 @@ end
 
 ---------------------------------------
 function LanMgr:parseLanKeyValue()
-    if (self.CasinosContext.UseLan == true) then
+    if (UseLan == true) then
         self.LanBase:parseLanKeyValue(self.TbDataMgr)
     end
 end
@@ -39,7 +39,7 @@ end
 ---------------------------------------
 function LanMgr:getLanValue(lan_key)
     local value = ""
-    if (self.CasinosContext.UseLan == true) then
+    if (UseLan == true) then
         local temp = self.LanBase:getValue(lan_key)
         if (temp ~= nil) then
             value = temp
@@ -52,7 +52,7 @@ end
 ---------------------------------------
 function LanMgr:getLanPackageName()
     local value = ""
-    if (self.CasinosContext.UseLan == true) then
+    if (UseLan == true) then
         value = self.LanBase:getLanPackageName()
     end
     return value
@@ -60,7 +60,7 @@ end
 
 ---------------------------------------
 function LanMgr:setLan(lan)
-    if (self.CasinosContext.UseLan == false) then
+    if (UseLan == false) then
         return
     end
 
@@ -79,7 +79,7 @@ end
 
 ---------------------------------------
 function LanMgr:parseComponent(component)
-    if (self.CasinosContext.UseLan == false) then
+    if (UseLan == false) then
         return
     end
     local children = component:GetChildren()
@@ -109,14 +109,14 @@ end
 
 ---------------------------------------
 function LanMgr:_checkAndCreateLanBase()
-    if (self.CasinosContext.UseLan == true) then
-        if (self.CasinosContext.UseDefaultLan == false) then
+    if (UseLan == true) then
+        if (UseDefaultLan == false) then
             self.CurrentLan = self.SystemLanguage
             if (CS.UnityEngine.PlayerPrefs.HasKey(self.LanKey) == true) then
                 self.CurrentLan = CS.UnityEngine.PlayerPrefs.GetString(self.LanKey)
             end
         else
-            self.CurrentLan = self.CasinosContext.DefaultLan
+            self.CurrentLan = DefaultLan
         end
         self:_createLanBase()
     else

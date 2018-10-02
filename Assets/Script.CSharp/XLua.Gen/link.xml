@@ -72,7 +72,13 @@
 	</assembly>
 
 	<assembly fullname="UnityEngine.CoreModule">
-	    <type fullname="UnityEngine.Application" preserve="all"/>
+	    <type fullname="UnityEngine.ApplicationInstallMode" preserve="all"/>
+		<type fullname="UnityEngine.ApplicationSandboxType" preserve="all"/>
+		<type fullname="UnityEngine.NetworkReachability" preserve="all"/>
+		<type fullname="UnityEngine.RuntimePlatform" preserve="all"/>
+		<type fullname="UnityEngine.SystemLanguage" preserve="all"/>
+		<type fullname="UnityEngine.ThreadPriority" preserve="all"/>
+		<type fullname="UnityEngine.Application" preserve="all"/>
 		<type fullname="UnityEngine.Camera" preserve="all"/>
 		<type fullname="UnityEngine.Color" preserve="all"/>
 		<type fullname="UnityEngine.Color32" preserve="all"/>

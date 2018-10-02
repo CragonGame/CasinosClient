@@ -71,17 +71,14 @@ end
 function ViewChatChooseTarget:RenderListItemChatTarget(index, obj)
 	local list_have_record_friend = self.ControllerIM.IMFriendList.ListFriendGuid
 	local com = CS.Casinos.LuaHelper.GObjectCastToGCom(obj)
-    if (self.CasinosContext.UseLan)
-	then
+    if (UseLan) then
 		self.ViewMgr.LanMgr:parseComponent(com)
 	end
     local item = ItemChooseChatTargetInfo:new(nil,com,self.ControllerIM)
-    if (#list_have_record_friend > index)
-	then
+    if (#list_have_record_friend > index) then
 		local friend_guid = list_have_record_friend[index + 1]
         local player_info = self.ControllerIM.IMFriendList.MapFriendList[friend_guid]
-        if (player_info ~= nil)
-		then
+        if (player_info ~= nil) then
 			item:setFriendInfo(player_info)
 		end
 	end

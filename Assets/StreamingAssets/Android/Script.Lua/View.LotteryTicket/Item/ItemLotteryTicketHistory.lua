@@ -11,8 +11,7 @@ function ItemLotteryTicketHistory:new(o,lottery_ticket,com_history,is_new,rank_t
     o.GImageNewSign = o.GCoHistroy:GetChild("NewSign").asImage
     local type_name = lottery_ticket.ViewLotteryTicketBase:getCardTypeName(rank_type)
     local packageName = lottery_ticket.LotteryTicketPackName
-    if (CS.Casinos.CasinosContext.Instance.UseLan == true)
-	then
+    if (UseLan == true) then
 		packageName = lottery_ticket.ViewMgr.LanMgr:getLanPackageName()
 	end
     o.GLoaderHistory.icon = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(packageName, type_name)

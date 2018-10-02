@@ -183,7 +183,7 @@ function ViewLogin:onCreate()
     local p_helper = ParticleHelper:new(nil)
     local com_bg = self.ComUi:GetChild("ComBg")
     local image_bg = com_bg:GetChild("ImageMote").asImage
-    if (self.CasinosContext.NeedHideClientUi == false) then
+    if (NeedHideClientUi == false) then
         image_bg.visible = false
         local ab_mary_loading = p_helper:GetSpine("Spine/loadingmarry.ab")
         local atlas = ab_mary_loading:LoadAsset("Mary_Loading.atlas")
@@ -269,7 +269,7 @@ end
 function ViewLogin:onDestroy()
     print('ViewLogin:onDestroy()')
 
-    if (self.CasinosContext.NeedHideClientUi == false) then
+    if (NeedHideClientUi == false) then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
@@ -416,8 +416,8 @@ function ViewLogin:_onClickBtnGuestAccess()
     if (self:_hasAgreeAgreement() == false) then
         return
     end
-    if (self.CasinosContext.ServerIsInvalid) then
-        ViewHelper:UiShowInfoSuccess(self.CasinosContext.ServerStateInfo)
+    if (ServerState > 0) then
+        ViewHelper:UiShowInfoSuccess(ServerStateInfo)
         return
     end
 
@@ -439,8 +439,8 @@ function ViewLogin:_onClickWeiXin()
     if (self:_hasAgreeAgreement() == false) then
         return
     end
-    if (self.CasinosContext.ServerIsInvalid) then
-        ViewHelper:UiShowInfoSuccess(self.CasinosContext.ServerStateInfo)
+    if (ServerState > 0) then
+        ViewHelper:UiShowInfoSuccess(ServerStateInfo)
         return
     end
 
@@ -482,8 +482,8 @@ function ViewLogin:_switchLoginState()
     if (self:_hasAgreeAgreement() == false) then
         return
     end
-    if (self.CasinosContext.ServerIsInvalid) then
-        ViewHelper:UiShowInfoSuccess(self.CasinosContext.ServerStateInfo)
+    if (ServerState > 0) then
+        ViewHelper:UiShowInfoSuccess(ServerStateInfo)
         return
     end
 

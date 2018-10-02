@@ -15,25 +15,25 @@ function Native:new(o, view_mgr, listner)
         self.Listner = listner
 
         CS.BuglyAgent.ConfigAutoQuitApplication(true)
-        CS.BuglyAgent.InitWithAppId(CS.Casinos.CasinosContext.Instance.BuglyAppId)
+        CS.BuglyAgent.InitWithAppId(BuglyAppId)
         CS.BuglyAgent.EnableExceptionHandler()
         if CS.Casinos.CasinosContext.Instance.IsEditor == false then
-            CS.ThirdPartyLogin.Instantce():initLogin(CS.Casinos.CasinosContext.Instance.WeChatAppId)
-            CS.Push.Instant():initPush(CS.Casinos.CasinosContext.Instance.PushAppId, CS.Casinos.CasinosContext.Instance.PushAppKey, CS.Casinos.CasinosContext.Instance.PushAppSecret)
+            CS.ThirdPartyLogin.Instantce():initLogin(WeChatAppId)
+            CS.Push.Instant():initPush(PushAppId, PushAppKey, PushAppSecret)
         end
-        CS.DataEye.initWithAppIdAndChannelId(CS.Casinos.CasinosContext.Instance.DataEyeId, "")
-        CS.ShareSDKReceiver.instance(CS.Casinos.CasinosContext.Instance.ShareSDKAppKey, CS.Casinos.CasinosContext.Instance.ShareSDKAppSecret)
-        --print("ShareSDK ", CS.Casinos.CasinosContext.Instance.ShareSDKAppKey, CS.Casinos.CasinosContext.Instance.ShareSDKAppSecret)
+        CS.DataEye.initWithAppIdAndChannelId(DataEyeId, "")
+        CS.ShareSDKReceiver.instance(ShareSDKAppKey, ShareSDKAppSecret)
+        --print("ShareSDK ", ShareSDKAppKey, ShareSDKAppSecret)
         CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()
         CS.ShareSDKReceiver.mShareSDK.devInfo.wechat = CS.cn.sharesdk.unity3d.WeChat()
         if CS.Casinos.CasinosContext.Instance.UnityAndroid then
-            CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppId = CS.Casinos.CasinosContext.Instance.WeChatAppId
+            CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppId = WeChatAppId
             CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppSecret = WeChatAppSecret
             CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.BypassApproval = false
         elseif CS.Casinos.CasinosContext.Instance.UnityIOS then
-            CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = CS.Casinos.CasinosContext.Instance.WeChatAppId
+            CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = WeChatAppId
             CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_secret = WeChatAppSecret
-            --print("ShareSDK WeiXin ", CS.Casinos.CasinosContext.Instance.WeChatAppId, WeChatAppSecret)
+            --print("ShareSDK WeiXin ", WeChatAppId, WeChatAppSecret)
         end
 
         CS.ShareSDKReceiver.mShareSDK:init()

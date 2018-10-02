@@ -169,7 +169,7 @@ function ViewDailyReward:getTitle(day)
     elseif (day == 7) then
         icon_url = "ui://DailyReward/Chips" .. day
     end
-    if (self.CasinosContext.UseLan == true) then
+    if (UseLan == true) then
         title = self.ViewMgr.LanMgr:getLanValue("Day" .. day)
     end
     reward_info.title = title

@@ -9,6 +9,7 @@ function Launch:new(o)
     setmetatable(o, self)
     self.__index = self
     if (self.Instance == nil) then
+        self.CurrentLan = 'ChineseSimplified'
         self.PreViewMgr = nil
         self.PreLoading = nil
         self.PreMsgBox = nil
@@ -27,6 +28,8 @@ end
 function Launch:Setup()
     Launch:new(nil)
     print('Launch:Setup()')
+
+    self:_checkCurrentLan()
 
     require 'PreViewMgr'
     require 'PreViewBase'
@@ -50,7 +53,7 @@ function Launch:Setup()
     self.PreLoading = self.PreViewMgr:createView("PreLoading")
 
     local tips = "正在努力加载配置，请耐心等待..."
-    local lan = self.CasinosContext.CurrentLan
+    local lan = CurrentLan
     if (lan == "English") then
         tips = "Try to loading the config,please wait..."
     else
@@ -139,6 +142,17 @@ function Launch:Close()
     print("Launch:Release()")
 end
 
+---------------------------------------
+function Launch:_checkCurrentLan()
+    local lan_key = "LanKey"
+    if (CS.UnityEngine.PlayerPrefs.HasKey(lan_key) == true) then
+        self.CurrentLan = CS.UnityEngine.PlayerPrefs.GetString(lan_key)
+    else
+        self.CurrentLan = self.CasinosLua:GetSystemLanguageAsString()
+    end
+end
+
+---------------------------------------
 --local view_premsgbox = self.PreViewMgr.createView("PreMsgBox")
 --view_premsgbox:showMsgBox(self.CasinosContext.Config.VersionBundle,
 --        function ()

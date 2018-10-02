@@ -20,7 +20,7 @@ function ItemUiPurseGold:new(o,view_shop,gold,tb_item)
     )
     o.TbDataItem = tb_item
     --local chip = "筹码"
-    --if (CS.Casinos.CasinosContext.Instance.UseLan)
+    --if (UseLan)
     --then
     --    chip = view_shop.ViewMgr.LanMgr:getLanValue("筹码","Chip")
     --end
