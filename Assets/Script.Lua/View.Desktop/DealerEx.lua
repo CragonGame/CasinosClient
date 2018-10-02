@@ -1,6 +1,51 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
+_tWinnerDataEx = {}
+
+---------------------------------------
+function _tWinnerDataEx:new(player, win_chips, map_win_pot)
+    o = {}
+    setmetatable(o, self)
+    self.__index = self
+    o.player = player
+    o.win_chips = win_chips
+    o.map_win_pot = map_win_pot
+    return o
+end
+
+---------------------------------------
+_WinnerPlayerInfo = {}
+
+---------------------------------------
+function _WinnerPlayerInfo:new(win_playerguid, win_golds, map_win_pot)
+    o = {}
+    setmetatable(o, self)
+    self.__index = self
+    o.win_playerguid = win_playerguid
+    o.win_golds = win_golds
+    o.map_win_pot = map_win_pot
+    return o
+end
+
+---------------------------------------
+_tChairInfo = {}
+
+---------------------------------------
+function _tChairInfo:new(o, com_chair, com_sit, com_seatparent, image_sit, image_invite, index)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.GComChair = com_chair
+    o.GComSitOrInvite = com_sit
+    o.GComSeatPlayerParent = com_seatparent
+    o.GImagePlayerSit = image_sit
+    o.GImagePlayerInvite = image_invite
+    o.ChairIndex = index
+    return o
+end
+
+---------------------------------------
 DealerEx = {}
 
 ---------------------------------------
@@ -45,7 +90,6 @@ function DealerEx:new(o, ui_desktop, dealer_listener, card1, card2, card3, card4
     o.ShowCommonCardTm = 0.2
     o.ShowWinnerCardTm = 1
     o.GiveChipsTm = 0.5
-
     return o
 end
 
@@ -88,18 +132,15 @@ function DealerEx:update(time)
     --    end
     --end
 
-    if (self.mCanGiveWinnerChips)
-    then
+    if (self.mCanGiveWinnerChips) then
         self.mGiveChipsTm = self.mGiveChipsTm + time
-        if (self.mGiveChipsTm >= self.GiveChipsTm)
-        then
+        if (self.mGiveChipsTm >= self.GiveChipsTm) then
             self.mGiveChipsTm = 0
             if self.GiveChipsTm ~= 1.5 then
                 self.GiveChipsTm = self.GiveChipsTm + 1
             end
             local show_winnerchips_count = #self.mQueueGiveWinnerChips
-            if (show_winnerchips_count > 0)
-            then
+            if (show_winnerchips_count > 0) then
                 self:_giveChipsToPlayer()
             else
                 self.mCanGiveWinnerChips = false
@@ -107,22 +148,17 @@ function DealerEx:update(time)
         end
     end
 
-    if (self.mShowCommonCardTm > 0)
-    then
+    if (self.mShowCommonCardTm > 0) then
         self.mShowCommonCardTm = self.mShowCommonCardTm - time
-        if (self.mShowCommonCardTm <= 0)
-        then
+        if (self.mShowCommonCardTm <= 0) then
             self.mCanShowCommonCard = true
         end
     end
 
-    if (self.mCanShowCommonCard)
-    then
+    if (self.mCanShowCommonCard) then
         local show_enabled_cardcommon_count = #self.mQueueShowEnabledCardCommon
-        if (show_enabled_cardcommon_count > 0)
-        then
-            if (self.mCurrentShowingCardCommon == nil)
-            then
+        if (show_enabled_cardcommon_count > 0) then
+            if (self.mCurrentShowingCardCommon == nil) then
                 self.mCurrentShowingCardCommon = table.remove(self.mQueueShowEnabledCardCommon, 1)
                 self.mCurrentShowingCardCommon:show(true,
                         function()
@@ -226,7 +262,7 @@ end
 
 ---------------------------------------
 function DealerEx:showCommonCardScreenshot(card, com_card)
-    local common_name = com_card.name
+    --local common_name = com_card.name
     local card_common = self.mMapCardCommon[com_card.name]
     if (card_common ~= nil) then
         card_common:setCardData(card)
@@ -493,49 +529,4 @@ function DealerEx:_createUiCardCommon(card)
     local name = card.name
     local card_common = UiCardCommonEx:new(nil, card)
     self.mMapCardCommon[name] = card_common
-end
-
----------------------------------------
-_tWinnerDataEx = {}
-
----------------------------------------
-function _tWinnerDataEx:new(player, win_chips, map_win_pot)
-    o = {}
-    setmetatable(o, self)
-    self.__index = self
-    o.player = player
-    o.win_chips = win_chips
-    o.map_win_pot = map_win_pot
-    return o
-end
-
----------------------------------------
-_WinnerPlayerInfo = {}
-
----------------------------------------
-function _WinnerPlayerInfo:new(win_playerguid, win_golds, map_win_pot)
-    o = {}
-    setmetatable(o, self)
-    self.__index = self
-    o.win_playerguid = win_playerguid
-    o.win_golds = win_golds
-    o.map_win_pot = map_win_pot
-    return o
-end
-
----------------------------------------
-_tChairInfo = {}
-
----------------------------------------
-function _tChairInfo:new(o, com_chair, com_sit, com_seatparent, image_sit, image_invite, index)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.GComChair = com_chair
-    o.GComSitOrInvite = com_sit
-    o.GComSeatPlayerParent = com_seatparent
-    o.GImagePlayerSit = image_sit
-    o.GImagePlayerInvite = image_invite
-    o.ChairIndex = index
-    return o
 end

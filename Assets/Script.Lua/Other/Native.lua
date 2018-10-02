@@ -262,7 +262,7 @@ function Native:ActionLoginFailed(fail_type)
     elseif fail_type == "ERR_UNSUPPORT" then
         tips = native.ViewMgr.LanMgr:getLanValue("ERRUNSUPPORT")
     elseif fail_type == "ERR_NOTINSTALLEDWECHAT" then
-        CS.Casinos.CasinosContext.Instance.WeiChatIsInstalled = false
+        ClientWechatIsInstalled = false
     else
         if fail_type == "-2" then
             tips = native.ViewMgr.LanMgr:getLanValue("ERRUSERCANCEL")

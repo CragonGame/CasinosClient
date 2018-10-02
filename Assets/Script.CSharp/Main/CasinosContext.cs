@@ -9,7 +9,7 @@ namespace Casinos
     using UnityEngine;
     using XLua;
     using FairyGUI;
-    
+
     public enum _eProjectItemDisplayNameKey
     {
         Gold,
@@ -59,6 +59,7 @@ namespace Casinos
         public MemoryStream MemoryStream { get; private set; }
         public StringBuilder SB { get; private set; }
         public AsyncAssetLoaderMgr AsyncAssetLoaderMgr { get; private set; }
+        public AsyncAssetLoadGroup AsyncAssetLoadGroup { get; private set; }
         public PathMgr PathMgr { get; private set; }
         public CasinosPlayerPrefs PlayerPrefs { get; private set; }
         public CasinosConfig Config { get; private set; }
@@ -66,18 +67,15 @@ namespace Casinos
         public CasinosLua CasinosLua { get; private set; }
         public NetBridge NetBridge { get; private set; }
         public NativeMgr NativeMgr { get; set; }
+        public NativeAPIMsgReceiverListener NativeAPIMsgReceiverListner { get; set; }
         public bool Pause { get; set; }
-        public bool LoadDataDone { get; set; }
         public string ABResourcePathTitle { get; set; }
         public string UiPathRoot { get; set; }
         public string ResourcesRowPathRoot { get; set; }
         public _eLoginType LoginType { get; set; }
-        public bool WeiChatIsInstalled { get; set; }
-        public bool ShowWeiChat { get; set; }
         public bool ServerIsInvalid { get; set; }
         public string ServerStateInfo { get; set; }
         public bool UseHttps { get; set; }
-        public bool UseBindPhoneAndWeiChat { get; private set; }
         public bool NeedHideClientUi { get; set; }
         public bool ClientShowFirstRecharge { get; set; }
         public bool DesktopHSysBankShowDBValue { get; set; }
@@ -108,15 +106,10 @@ namespace Casinos
         public bool UnityIOS { get; set; }
         public bool IsEditor { get; set; }
         public string LotteryTicketFactoryName { get; set; }
-        public string AccountId { get; set; }
         public bool IsSqliteUnity { get; set; }
-        public ushort CSharpLastMethodId { get; set; }
-        public AsyncAssetLoadGroup AsyncAssetLoadGroup { get; private set; }
-        public NativeAPIMsgReceiverListener NativeAPIMsgReceiverListner { get; set; }
         FTMgr FTMgr { get; set; }
         HeadIconMgr HeadIconMgr { get; set; }
         CSoundMgr SoundMgr { get; set; }
-        string LuaProjectListenerName { get; set; }
         string PlatformName { get; set; }
         public LuaTable TbDataMgrLua { get; set; }
 
@@ -126,7 +119,6 @@ namespace Casinos
 
         //---------------------------------------------------------------------
         public CasinosContext(bool use_persistent,
-            string lua_project_listener_name,
             string ui_pathroot,
             string resourcesrow_pathroot,
             string ab_resource_title,
@@ -147,10 +139,6 @@ namespace Casinos
             ABResourcePathTitle = ab_resource_title;
             ResourcesRowPathRoot = resourcesrow_pathroot;
             UiPathRoot = ui_pathroot;
-            WeiChatIsInstalled = true;
-            ShowWeiChat = true;
-            UseBindPhoneAndWeiChat = false;
-            LuaProjectListenerName = lua_project_listener_name;
             LotteryTicketFactoryName = lotteryticket_factoryname;
             UseLan = true;
             _checkLan();
@@ -284,11 +272,6 @@ namespace Casinos
             {
                 TimerShaft.ProcessTimer((ulong)Stopwatch.ElapsedMilliseconds);
             }
-        }
-
-        //---------------------------------------------------------------------
-        public void FixedUpdate()
-        {
         }
 
         //---------------------------------------------------------------------
@@ -516,22 +499,17 @@ namespace Casinos
 //    //{
 //    //    EbLog.Note("ClientSound.playBackgroundSound() 声音名称为空");
 //    //}
-
 //    //string full_snd_name = "Audio/" + snd_name;
 //    //AudioClip audio_clip = (AudioClip)Resources.Load(full_snd_name, typeof(AudioClip));
-
 //    //SoundManager.Play(audio_clip, is_loop);
 //}
 
 //---------------------------------------------------------------------
 //public void SetLoadDataDone()
 //{
-//    LoadDataDone = true;
-
 //    //var t_lanmgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("LanMgr");
 //    //var refresh_lan = t_lanmgr.Get<Action>("refreshLan");
 //    //refresh_lan();
-
 //    CasinosLua.LuaEnv.Global.Get<LuaTable>(LuaProjectListenerName);
 //    ViewMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewMgr");
 //    ViewHelper = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewHelper");
@@ -543,7 +521,6 @@ namespace Casinos
 //    {
 //        ActionOnApplicationPause = ProjectListener.Get<Action<bool>>("OnApplicationPause");
 //    }
-
 //    //ControllerMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ControllerMgr");
 //    //CreateController = ControllerMgr.Get<CreateController>("CreateController");
 //    //GetController = ControllerMgr.Get<GetController>("GetController");

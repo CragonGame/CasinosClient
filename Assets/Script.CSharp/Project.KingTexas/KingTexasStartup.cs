@@ -22,7 +22,6 @@ namespace Casinos
 #endif
 
             Context = new CasinosContext(use_persistent,
-                "KingTexasListener",
                 "Resources.KingTexas/Ui/",
                 "Resources.KingTexasRaw/",
                 "Resources.KingTexas/",

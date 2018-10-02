@@ -10,6 +10,7 @@ function UiCardCommonEx:new(o, com_card)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.Card = nil
     o.ResetCallBack = nil
     o.LoaderTicket = nil
@@ -20,15 +21,13 @@ function UiCardCommonEx:new(o, com_card)
     o.GImageCardHighLight = o.GComCard:GetChild("ImageCardHighLight").asImage
     o.Name = o.GComCard.name
     o:hideHightLight()
-
     return o
 end
 
 ---------------------------------------
 function UiCardCommonEx:setCardData(card)
     self.Card = card
-    if (self.GComCard.displayObject.gameObject ~= nil)
-    then
+    if (self.GComCard.displayObject.gameObject ~= nil) then
         self.GComCard.rotationY = 0
     end
 
@@ -44,7 +43,7 @@ function UiCardCommonEx:show(with_animation, call_back)
         CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard, self.GImageCardBack)
         local card_name = tostring(self.Card.Suit) .. "_" .. tostring(self.Card.Type)
         local l_card_name = string.lower(card_name)
-        self.LoaderTicket = CS.Casinos.CasinosContext.Instance.TextureMgr:getTexture(l_card_name, CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(CS.Casinos.UiHelperCasinos.getABCardResourceTitlePath() .. l_card_name .. ".ab"),
+        self.LoaderTicket = CS.Casinos.CasinosContext.Instance.TextureMgr:getTexture(l_card_name, self.CasinosContext.PathMgr:combinePersistentDataPath(CS.Casinos.UiHelperCasinos.getABCardResourceTitlePath() .. l_card_name .. ".ab"),
                 function(tick, t)
                     if (self.GComCard == nil or self.GComCard.displayObject.gameObject == nil) then
                         return
@@ -80,7 +79,7 @@ function UiCardCommonEx:show(with_animation, call_back)
                                     )
                                 end
                         )
-                        CS.Casinos.CasinosContext.Instance:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
+                        self.CasinosContext:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
                     else
                         CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard, self.GLoaderCard)
                         CS.Casinos.UiHelper.setGObjectVisible(false, self.GImageCardBack)
@@ -99,15 +98,17 @@ function UiCardCommonEx:deal(call_back)
     CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard, self.GImageCardBack)
     self:killTween(self.TweenerRotate)
 
-    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GImageCardBack.rotationY, 180, UiCardCommonEx.RotateTime):SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GImageCardBack.rotationY, 180, UiCardCommonEx.RotateTime)
+                           :SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY)
+                           :SetEase(CS.FairyGUI.EaseType.Linear)
+                           :OnComplete(
             function()
                 self.GImageCardBack.rotationY = 180
                 if (call_back ~= nil) then
                     call_back()
                 end
-            end
-    )
-    CS.Casinos.CasinosContext.Instance:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
+            end)
+    self.CasinosContext:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
 end
 
 ---------------------------------------
@@ -122,12 +123,14 @@ function UiCardCommonEx:reset(with_ani, call_bak)
     end
 
     self:killTween(self.TweenerRotate)
-    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GComCard.rotationY, 90, UiCardCommonEx.RotateTime):SetTarget(self.GComCard, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GComCard.rotationY, 90, UiCardCommonEx.RotateTime)
+                           :SetTarget(self.GComCard, CS.FairyGUI.TweenPropType.RotationY)
+                           :SetEase(CS.FairyGUI.EaseType.Linear)
+                           :OnComplete(
             function()
                 self:_reset()
-            end
-    )
-    CS.Casinos.CasinosContext.Instance:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
+            end)
+    self.CasinosContext:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
     self.Card = nil
     self.ResetCallBack = call_bak
 end

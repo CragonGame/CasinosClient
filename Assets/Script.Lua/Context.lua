@@ -21,7 +21,8 @@ ServerStateInfo = ''-- 系统公告
 IsDev = false
 ClientShowFPS = true-- 客户端显示FPS信息 false 不显示 true 显示
 FPSLimit = 60
-ClientShowWeiChat = true-- 客户端显示微信登录按钮 false 不显示 true 显示
+ClientShowWechat = true-- 客户端显示微信登录按钮 false 不显示 true 显示
+ClientWechatIsInstalled = true
 ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
 NeedHideClientUi = false-- 客户端排行等界面显示与隐藏
 DesktopHSysBankShowDBValue = true-- 百人系统庄是否显示SQlite配置值
@@ -40,7 +41,6 @@ UseDefaultLan = false
 DefaultLan = 'Chinese'
 ChipIconSolustion = 0
 CurrentMoneyType = 0
-CSharpLastMethodId = 0
 BuglyAppId = '0aed5e7e56'
 PinggPPAppId = 'app_TCi58CGKCSaHGCuP'
 WeChatAppId = 'wxff929d92c3997b5d'
@@ -240,8 +240,6 @@ function Context:_nextLaunchStep()
         local path_lua_root = self.CasinosContext.PathMgr:combinePersistentDataPath("Script.Lua/");
         self.CasinosLua:LoadLuaFromDir(path_lua_root);
 
-        local show_weichat = ClientShowWeiChat
-        self.CasinosContext.ShowWeiChat = show_weichat
         self.CasinosContext.NeedHideClientUi = NeedHideClientUi
         self.CasinosContext.ClientShowFirstRecharge = ClientShowFirstRecharge
         self.CasinosContext.DesktopHSysBankShowDBValue = DesktopHSysBankShowDBValue
@@ -260,7 +258,6 @@ function Context:_nextLaunchStep()
         self.CasinosContext.UseLan = UseLan
         self.CasinosContext.UseDefaultLan = UseDefaultLan
         self.CasinosContext.DefaultLan = DefaultLan
-        self.CasinosContext.CSharpLastMethodId = CSharpLastMethodId
         self.CasinosContext.BuglyAppId = BuglyAppId
         self.CasinosContext.PinggPPAppId = PinggPPAppId
         self.CasinosContext.WeChatAppId = WeChatAppId

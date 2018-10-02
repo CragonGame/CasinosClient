@@ -9,42 +9,42 @@ public class RpcSessionTcpClient : RpcSession
     //-------------------------------------------------------------------------
     public RpcSessionTcpClient()
     {
-        this.tcpSocket = new TcpClient();
-        this.tcpSocket.OnSocketReceive += _onSocketReceive;
-        this.tcpSocket.OnSocketConnected += _onSocketConnected;
-        this.tcpSocket.OnSocketClosed += _onSocketClosed;
-        this.tcpSocket.OnSocketError += _onSocketError;
+        tcpSocket = new TcpClient();
+        tcpSocket.OnSocketReceive += _onSocketReceive;
+        tcpSocket.OnSocketConnected += _onSocketConnected;
+        tcpSocket.OnSocketClosed += _onSocketClosed;
+        tcpSocket.OnSocketError += _onSocketError;
     }
 
     //-------------------------------------------------------------------------
     public override bool isConnect()
     {
-        if (this.tcpSocket == null) return false;
+        if (tcpSocket == null) return false;
 
-        return this.tcpSocket.IsConnected;
+        return tcpSocket.IsConnected;
     }
 
     //-------------------------------------------------------------------------
     public override void connect(string ip, int port)
     {
-        if (this.tcpSocket == null)
+        if (tcpSocket == null)
         {
-            this.tcpSocket = new TcpClient();
-            this.tcpSocket.OnSocketReceive += _onSocketReceive;
-            this.tcpSocket.OnSocketConnected += _onSocketConnected;
-            this.tcpSocket.OnSocketClosed += _onSocketClosed;
-            this.tcpSocket.OnSocketError += _onSocketError;
+            tcpSocket = new TcpClient();
+            tcpSocket.OnSocketReceive += _onSocketReceive;
+            tcpSocket.OnSocketConnected += _onSocketConnected;
+            tcpSocket.OnSocketClosed += _onSocketClosed;
+            tcpSocket.OnSocketError += _onSocketError;
         }
 
-        this.tcpSocket.connect(ip, port);
+        tcpSocket.connect(ip, port);
     }
 
     //-------------------------------------------------------------------------
     public override void send(ushort method_id, byte[] data)
     {
-        if (this.tcpSocket != null)
+        if (tcpSocket != null)
         {
-            this.tcpSocket.send(method_id, data);
+            tcpSocket.send(method_id, data);
         }
     }
 
@@ -56,19 +56,19 @@ public class RpcSessionTcpClient : RpcSession
     //-------------------------------------------------------------------------
     public override void close()
     {
-        if (this.tcpSocket != null)
+        if (tcpSocket != null)
         {
-            this.tcpSocket.close();
-            this.tcpSocket = null;
+            tcpSocket.close();
+            tcpSocket = null;
         }
     }
 
     //-------------------------------------------------------------------------
     public override void update(float elapsed_tm)
     {
-        if (this.tcpSocket != null)
+        if (tcpSocket != null)
         {
-            this.tcpSocket.update(elapsed_tm);
+            tcpSocket.update(elapsed_tm);
         }
     }
 
@@ -87,15 +87,6 @@ public class RpcSessionTcpClient : RpcSession
         else buf = new byte[0];
 
         Casinos.CasinosContext.Instance.NetBridge.LuaOnRpcMethod(method_id, buf);
-
-        //if (method_id >= Casinos.CasinosContext.Instance.CSharpLastMethodId)
-        //{          
-        //    Casinos.CasinosContext.Instance.NetBridge.LuaOnRpcMethod(method_id, buf);
-        //}
-        //else
-        //{
-        //    onRpcMethod(method_id, buf);
-        //}
     }
 
     //-------------------------------------------------------------------------
@@ -103,19 +94,13 @@ public class RpcSessionTcpClient : RpcSession
     {
         //this.tcpSocket = null;
 
-        if (OnSocketError != null)
-        {
-            OnSocketError(this, args);
-        }
+        OnSocketError?.Invoke(this, args);
     }
 
     //-------------------------------------------------------------------------
     void _onSocketConnected(object client, EventArgs args)
     {
-        if (OnSocketConnected != null)
-        {
-            OnSocketConnected(this, args);
-        }
+        OnSocketConnected?.Invoke(this, args);
     }
 
     //-------------------------------------------------------------------------
@@ -123,10 +108,7 @@ public class RpcSessionTcpClient : RpcSession
     {
         //this.tcpSocket = null;
 
-        if (OnSocketClosed != null)
-        {
-            OnSocketClosed(this, args);
-        }
+        OnSocketClosed?.Invoke(this, args);
     }
 }
 
