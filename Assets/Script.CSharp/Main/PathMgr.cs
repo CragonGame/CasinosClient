@@ -4,6 +4,7 @@ namespace Casinos
 {
     using System;
     using System.IO;
+    using System.Text;
     using UnityEngine;
     using XLua;
 
@@ -28,6 +29,11 @@ namespace Casinos
         public string PathLuaRootAssets { get; private set; }// Lua文件所在根目录
         _eEditorRunSourcePlatform EditorModeRunsourcesPlatform { get; set; }
         string NeedCombinePath { get; set; }
+        StringBuilder Sb { get; set; } = new StringBuilder(256);
+        string WWWPersistentDataPath { get; set; }
+        string PersistentDataPath { get; set; }
+        string StreamingAssetsPath { get; set; }
+        string WWWStreamingAssetsPath { get; set; }
 
         //---------------------------------------------------------------------
         public PathMgr(_eEditorRunSourcePlatform editor_mode_runsources_platform, bool use_persistent)
@@ -50,6 +56,69 @@ namespace Casinos
                     break;
                 default:
                     break;
+            }
+
+            // WWWPersistentDataPath
+            {
+                WWWPersistentDataPath =
+#if UNITY_STANDALONE_WIN && UNITY_EDITOR
+                "file:///" + Application.persistentDataPath + "/"+ NeedCombinePath;
+#elif UNITY_ANDROID && UNITY_EDITOR
+                "file:///" + Application.persistentDataPath + "/" + NeedCombinePath;
+#elif UNITY_IPHONE && UNITY_EDITOR
+                "file:///" + Application.persistentDataPath + "/" + NeedCombinePath;
+#elif UNITY_ANDROID
+                "file:///" + Application.persistentDataPath;
+#elif UNITY_IPHONE
+                "file:///" + Application.persistentDataPath;
+#else
+                string.Empty;
+#endif
+            }
+
+            // PersistentDataPath
+            {
+                PersistentDataPath =
+#if UNITY_STANDALONE_WIN && UNITY_EDITOR
+                Application.persistentDataPath +"/"+ NeedCombinePath;
+#elif UNITY_ANDROID && UNITY_EDITOR
+                Application.persistentDataPath + "/" + NeedCombinePath;
+#elif UNITY_IPHONE && UNITY_EDITOR
+                Application.persistentDataPath + "/" + NeedCombinePath;
+#elif UNITY_ANDROID
+                Application.persistentDataPath;
+#elif UNITY_IPHONE
+                Application.persistentDataPath;
+#else
+                string.Empty;
+#endif
+            }
+
+            // StreamingAssetsPath
+            {
+                StreamingAssetsPath =
+
+#if UNITY_EDITOR
+                Application.streamingAssetsPath;
+#elif UNITY_IPHONE
+                Application.streamingAssetsPath;
+#elif UNITY_ANDROID
+                Application.streamingAssetsPath;
+#endif
+                StreamingAssetsPath += "/" + EditorModeRunsourcesPlatform.ToString();
+            }
+
+            // WWWStreamingAssetsPath
+            {
+                WWWStreamingAssetsPath =
+#if UNITY_EDITOR
+                "file:///" + Application.streamingAssetsPath;
+#elif UNITY_IPHONE
+                "file:///" + Application.streamingAssetsPath;
+#elif UNITY_ANDROID
+                "jar:file://" + Application.dataPath + "!/assets";
+#endif
+                WWWStreamingAssetsPath += "/" + EditorModeRunsourcesPlatform.ToString();
             }
 
             // PathAssets
@@ -86,108 +155,65 @@ namespace Casinos
         //---------------------------------------------------------------------
         public string getWWWPersistentDataPath()
         {
-            string persistent_path =
-
-#if UNITY_STANDALONE_WIN && UNITY_EDITOR
-            "file:///" + Application.persistentDataPath + "/"+ NeedCombinePath;
-#elif UNITY_ANDROID && UNITY_EDITOR
-            "file:///" + Application.persistentDataPath + "/" + NeedCombinePath;
-#elif UNITY_IPHONE && UNITY_EDITOR
-            "file:///" + Application.persistentDataPath + "/" + NeedCombinePath;
-#elif UNITY_ANDROID
-            "file:///" + Application.persistentDataPath;
-#elif UNITY_IPHONE
-            "file:///" + Application.persistentDataPath;
-#else
-            string.Empty;
-#endif
-
-            return persistent_path;
+            return WWWPersistentDataPath;
         }
 
         //---------------------------------------------------------------------
         public string combineWWWPersistentDataPath(string path)
         {
-            return getWWWPersistentDataPath() + "/" + path;
+            Sb.Clear();
+            Sb.Append(WWWPersistentDataPath);
+            Sb.Append("/");
+            Sb.Append(path);
+            return Sb.ToString();
         }
 
         //---------------------------------------------------------------------
         public string getPersistentDataPath()
         {
-            string persistent_path =
-
-#if UNITY_STANDALONE_WIN && UNITY_EDITOR
-            Application.persistentDataPath +"/"+ NeedCombinePath;
-#elif UNITY_ANDROID && UNITY_EDITOR
-            Application.persistentDataPath + "/" + NeedCombinePath;
-#elif UNITY_IPHONE && UNITY_EDITOR
-            Application.persistentDataPath + "/" + NeedCombinePath;
-#elif UNITY_ANDROID
-            Application.persistentDataPath;
-#elif UNITY_IPHONE
-            Application.persistentDataPath;
-#else
-            string.Empty;
-#endif
-
-            return persistent_path;
+            return PersistentDataPath;
         }
 
         //---------------------------------------------------------------------
         public string combinePersistentDataPath(string path, bool for_lua = false)
         {
-            string p = getPersistentDataPath() + "/" + path;
-
-            return p;
+            Sb.Clear();
+            Sb.Append(PersistentDataPath);
+            Sb.Append("/");
+            Sb.Append(path);
+            return Sb.ToString();
         }
 
         //---------------------------------------------------------------------
         public string getStreamingAssetsPath()
         {
-            string assetbundlePath =
-
-#if UNITY_EDITOR
-            Application.streamingAssetsPath;
-#elif UNITY_IPHONE
-            Application.streamingAssetsPath;
-#elif UNITY_ANDROID
-            Application.streamingAssetsPath;
-#endif
-
-            assetbundlePath += "/" + EditorModeRunsourcesPlatform.ToString();
-
-            return assetbundlePath;
+            return StreamingAssetsPath;
         }
 
         //---------------------------------------------------------------------
         public string combineStreamingAssetsPath(string path)
         {
-            return getStreamingAssetsPath() + "/" + path;
+            Sb.Clear();
+            Sb.Append(StreamingAssetsPath);
+            Sb.Append("/");
+            Sb.Append(path);
+            return Sb.ToString();
         }
 
         //---------------------------------------------------------------------
         public string getWWWStreamingAssetsPath()
         {
-            string assetbundlePath =
-
-#if UNITY_EDITOR
-            "file:///" + Application.streamingAssetsPath;
-#elif UNITY_IPHONE
-            "file:///" + Application.streamingAssetsPath;
-#elif UNITY_ANDROID
-            "jar:file://" + Application.dataPath + "!/assets";
-#endif
-
-            assetbundlePath += "/" + EditorModeRunsourcesPlatform.ToString();
-
-            return assetbundlePath;
+            return WWWStreamingAssetsPath;
         }
 
         //---------------------------------------------------------------------
         public string combineWWWStreamingAssetsPath(string path)
         {
-            var path_combine = getWWWStreamingAssetsPath() + "/" + path;
-            return path_combine;
+            Sb.Clear();
+            Sb.Append(WWWStreamingAssetsPath);
+            Sb.Append("/");
+            Sb.Append(path);
+            return Sb.ToString();
         }
     }
 }
