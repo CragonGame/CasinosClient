@@ -63,6 +63,7 @@ public class EditorViewDataPublish : EditorWindow
         EditorGUILayout.EndHorizontal();
         if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
         {
+            AssetDatabase.Refresh();
             _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.Android);
             _copyRawData(Casinos._eEditorRunSourcePlatform.Android);
             _copyLua(Casinos._eEditorRunSourcePlatform.Android);
@@ -71,6 +72,7 @@ public class EditorViewDataPublish : EditorWindow
         }
         if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
         {
+            AssetDatabase.Refresh();
             _genDataFileList(Casinos._eEditorRunSourcePlatform.Android);
             AssetDatabase.Refresh();
         }
@@ -103,6 +105,7 @@ public class EditorViewDataPublish : EditorWindow
         EditorGUILayout.EndHorizontal();
         if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
         {
+            AssetDatabase.Refresh();
             _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.IOS);
             _copyRawData(Casinos._eEditorRunSourcePlatform.IOS);
             _copyLua(Casinos._eEditorRunSourcePlatform.IOS);
@@ -111,6 +114,7 @@ public class EditorViewDataPublish : EditorWindow
         }
         if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
         {
+            AssetDatabase.Refresh();
             _genDataFileList(Casinos._eEditorRunSourcePlatform.IOS);
             AssetDatabase.Refresh();
         }

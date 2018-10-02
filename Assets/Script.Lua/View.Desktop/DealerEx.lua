@@ -94,7 +94,7 @@ function DealerEx:new(o, ui_desktop, dealer_listener, card1, card2, card3, card4
 end
 
 ---------------------------------------
-function DealerEx:update(time)
+function DealerEx:Update(time)
     if (self.mCanDeal == true) then
         self.mDealCardTm = self.mDealCardTm + time
         if (self.mDealCardTm >= self.DealPlayerCardTm) then
@@ -171,7 +171,7 @@ function DealerEx:update(time)
 end
 
 ---------------------------------------
-function DealerEx:destroy()
+function DealerEx:Destroy()
     self.mQueueDealCards = {}
     self.mQueueDealCards = nil
     --self.mQueueShowWinnerCard = {}

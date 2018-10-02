@@ -985,7 +985,7 @@ Script.Lua/Base.TbData/TbDataUnitMagicExpression.lua 8368DF8EED382AD89C2DAB450A7
 Script.Lua/Base.TbData/TbDataUnitRedEnvelopes.lua 078AE77F5DDA3B0B79C6DED1C737FBF8
 Script.Lua/Base.TbData/TbDataVIPLevel.lua D832522A9DD26303FFB38BD185AF77AC
 Script.Lua/Controller/ControllerActivity.lua BB2D78FDE7F774C8661DA6925D8DBB54
-Script.Lua/Controller/ControllerActor.lua 8FDFFD93D6414DDAB6FB388DB71C5FDE
+Script.Lua/Controller/ControllerActor.lua 5F0E2A3B9AA833F708250611EEB3DAA1
 Script.Lua/Controller/ControllerBag.lua 7F76AC5AC5544D1F3B3708E5D4E45F27
 Script.Lua/Controller/ControllerBase.lua C7A04224F5FF9E07B7CDC1F099866421
 Script.Lua/Controller/ControllerDesk.lua 911EDEE9A24E870AB5104B55ADE56B3E

@@ -110,7 +110,7 @@ function Native:GetMobId(player_id)
     c:Add("PlayerId", player_id)
     local scene = CS.com.moblink.unity3d.MobLinkScene("", "", c)
     if CS.Casinos.CasinosContext.Instance.IsEditor == false then
-        print("GetMobId " .. player_id)
+        --print("GetMobId " .. player_id)
         CS.com.moblink.unity3d.MobLink.getMobId(scene, function(mob_id)
             self:OnMobIdHandler(mob_id)
         end)
@@ -154,8 +154,7 @@ function Native:OnRestoreScene(scene)
     local player_id = CS.Casinos.LuaHelper.GetHashTableValue(params, "PlayerId") --params["PlayerId"]
     --print("player_id  " .. player_id)
     local invite_payerid = "InvitePlayerId"
-    if (CS.UnityEngine.PlayerPrefs.HasKey(invite_payerid) == false)
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey(invite_payerid) == false) then
         local t = {}
         t["PlayerId"] = player_id
         t["IsNew"] = true

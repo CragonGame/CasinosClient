@@ -18,13 +18,11 @@ function ControllerActor:new(o, controller_mgr, controller_data, guid)
     o.PropBotTbId = Prop:new(tonumber(BotTbId))
     local AccountId = o.ControllerData["AccountId"]
     o.PropAccountId = Prop:new(AccountId)
-    CS.Casinos.CasinosContext.Instance.AccountId = AccountId
     local ActorId = o.ControllerData["ActorId"]
     o.PropActorId = Prop:new(tonumber(ActorId))
     local Gender = o.ControllerData["Gender"]
     local gender = false
-    if (string.lower(Gender) == "true")
-    then
+    if (string.lower(Gender) == "true") then
         gender = true
     end
     o.PropGender = Prop:new(gender)
@@ -48,8 +46,7 @@ function ControllerActor:new(o, controller_mgr, controller_data, guid)
     o.PropRechargePoint = Prop:new(tonumber(RechargePoint))
     local IsFirstRecharge = o.ControllerData["IsFirstRecharge"]
     local is_first = false
-    if (string.lower(IsFirstRecharge) == "true")
-    then
+    if (string.lower(IsFirstRecharge) == "true") then
         is_first = true
     end
     o.PropIsFirstRecharge = Prop:new(is_first)
@@ -107,9 +104,9 @@ function ControllerActor:onCreate()
     if attach_wechat ~= nil then
         wechat_openid = attach_wechat.open_id
         wechat_name = attach_wechat.nick_name
-        print("wechat_openid   " .. wechat_openid)
+        --print("wechat_openid   " .. wechat_openid)
     else
-        print("attach_wechat  is null")
+        --print("attach_wechat  is null")
     end
     self.WeChatOpenId = Prop:new(wechat_openid)
     self.WeChatName = Prop:new(wechat_name)

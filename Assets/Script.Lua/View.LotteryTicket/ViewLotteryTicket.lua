@@ -8,6 +8,7 @@ function ViewLotteryTicket:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.LotteryTicketPackName = "LotteryTicket"
     if (self.Instance == nil) then
         self.ViewMgr = nil

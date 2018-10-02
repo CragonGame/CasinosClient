@@ -176,8 +176,11 @@ function ViewDesktopTexas:onCreate()
     self.GComCommunityCard4 = self.ComUi:GetChild("ComCard4").asCom
     self.GComCommunityCard5 = self.ComUi:GetChild("ComCard5").asCom
     self.GComDealer = self.ComUi:GetChild("ComDealer").asCom
-    self.DealerEx = DealerEx:new(nil, self, self, self.GComCommunityCard1,
-            self.GComCommunityCard2, self.GComCommunityCard3, self.GComCommunityCard4,
+    self.DealerEx = DealerEx:new(nil, self, self,
+            self.GComCommunityCard1,
+            self.GComCommunityCard2,
+            self.GComCommunityCard3,
+            self.GComCommunityCard4,
             self.GComCommunityCard5)
     self.TransitionNewMsg = self.ComUi:GetTransition("TransitionNewMsg")
     self.MapAllUiChairInfo = {}
@@ -265,7 +268,7 @@ function ViewDesktopTexas:onDestroy()
     end
 
     if (self.DealerEx ~= nil) then
-        self.DealerEx:destroy()
+        self.DealerEx:Destroy()
         self.DealerEx = nil
     end
     print('ViewDesktopTexas:onDestroy()')
@@ -390,7 +393,7 @@ function ViewDesktopTexas:_timerUpdate(elapsed_tm)
     end
 
     if (self.DealerEx ~= nil) then
-        self.DealerEx:update(elapsed_tm)
+        self.DealerEx:Update(elapsed_tm)
     end
 
     if (self.ItemChatDesktop ~= nil) then
@@ -533,8 +536,7 @@ end
 ---------------------------------------
 function ViewDesktopTexas:commonCardShowEnd()
     local ev = self.ViewMgr:getEv("EvCommonCardShowEnd")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvCommonCardShowEnd:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -612,12 +614,10 @@ function ViewDesktopTexas:_showCurrentScreenshot(current_state, gotoend_state)
     self.UiChipMgr:resetChips()
     self.DealerEx:clearQueue()
     if (current_state == TexasDesktopState.PreFlop or current_state == TexasDesktopState.Flop
-            or current_state == TexasDesktopState.Turn or current_state == TexasDesktopState.River)
-    then
+            or current_state == TexasDesktopState.Turn or current_state == TexasDesktopState.River) then
         self.ClearDesktopTm = 0
         self:_showDesktopScreenshot(current_state, false)
-    elseif (current_state == TexasDesktopState.GameEnd)
-    then
+    elseif (current_state == TexasDesktopState.GameEnd) then
         ViewHelper:setGObjectVisible(true, self.ComWaitingBegine)
     end
 end
@@ -625,19 +625,16 @@ end
 ---------------------------------------
 function ViewDesktopTexas:_playerLeaveSeat(seat_index)
     local seat_logic = seat_index
-    if (self.Desktop.SeatNum == 5)
-    then
+    if (self.Desktop.SeatNum == 5) then
         seat_logic = math.floor(seat_index / 2)
     end
 
-    if (self.Desktop:isValidSeatIndex(seat_logic) == false)
-    then
+    if (self.Desktop:isValidSeatIndex(seat_logic) == false) then
         return
     end
 
     local seat_info = self.MapAllValidPlayerSeat[seat_index]
-    if (seat_info ~= nil)
-    then
+    if (seat_info ~= nil) then
         self.MapValidNoPlayerSeat[seat_index] = seat_info
         self.ViewDesktopTypeBase:_checkSeat()
     end
@@ -652,11 +649,9 @@ end
 ---------------------------------------
 function ViewDesktopTexas:_haveNewChatOrMailRecord()
     local com_mailTips_temp = self.ComUi:GetChild("ComMailTips")
-    if (com_mailTips_temp ~= nil)
-    then
+    if (com_mailTips_temp ~= nil) then
         local com_mailTips = com_mailTips_temp.asCom
-        if (self.ControllerIM:haveNewMail())
-        then
+        if (self.ControllerIM:haveNewMail()) then
             ViewHelper:setGObjectVisible(true, com_mailTips)
             local transition_newMsg = com_mailTips:GetTransition("TransitionNewMsg")
             transition_newMsg:Play()
@@ -665,8 +660,7 @@ function ViewDesktopTexas:_haveNewChatOrMailRecord()
             ViewHelper:setGObjectVisible(false, com_mailTips)
         end
     end
-    if (self.NewFriendChatCount > 0)
-    then
+    if (self.NewFriendChatCount > 0) then
         ViewHelper:setGObjectVisible(true, self.GComMsgTips)
         self.TransitionNewMsg:Play()
         self.GTextMsgTips.text = tostring(self.NewFriendChatCount)
@@ -691,8 +685,7 @@ end
 ---------------------------------------
 function ViewDesktopTexas:_onClickFriend()
     local ev = self.ViewMgr:getEv("EvUiClickFriend")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickFriend:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -706,8 +699,7 @@ end
 ---------------------------------------
 function ViewDesktopTexas:_onClickLockChat()
     local ev = self.ViewMgr:getEv("EvUiDesktopClickLockChat")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiDesktopClickLockChat:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -716,8 +708,7 @@ end
 ---------------------------------------
 function ViewDesktopTexas:_onClickFriendChat()
     local ev = self.ViewMgr:getEv("EvUiClickChatmsg")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickChatmsg:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -732,26 +723,21 @@ end
 function ViewDesktopTexas:_onClickChair(context)
     local s = CS.Casinos.LuaHelper.EventDispatcherCastToGComponent(context.sender)
     for k, v in pairs(self.MapValidNoPlayerSeat) do
-        if (s == v.GComSitOrInvite)
-        then
-            if (self:_meIsSeat() == false)
-            then
+        if (s == v.GComSitOrInvite) then
+            if (self:_meIsSeat() == false) then
                 local index = v.ChairIndex
-                if (self.Desktop.SeatNum == 5)
-                then
+                if (self.Desktop.SeatNum == 5) then
                     index = math.ceil(index / 2)
                 end
                 local ev = self.ViewMgr:getEv("EvUiClickSeat")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiClickSeat:new(nil)
                 end
                 ev.seat_index = index
                 self.ViewMgr:sendEv(ev)
             else
                 local ev = self.ViewMgr:getEv("EvUiClickInviteFriendPlay")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiClickInviteFriendPlay:new(nil)
                 end
                 self.ViewMgr:sendEv(ev)
@@ -858,8 +844,7 @@ end
 ---------------------------------------
 function ViewDesktopTexas:_onClickBtnLotteryTicket()
     local ev = self.ViewMgr:getEv("EvEntityRequestGetLotteryTicketData")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityRequestGetLotteryTicketData:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -895,8 +880,7 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:_dealOnePlayerCard(player)
-    if (player == nil or player.UiDesktopPlayerInfo == nil)
-    then
+    if (player == nil or player.UiDesktopPlayerInfo == nil) then
         return
     end
 
@@ -913,8 +897,7 @@ function ViewDesktopTexas:_dealOnePlayerCard(player)
     card_one_clone:init(self.GComDealer.xy, one_to_p, seat_widget.GImageCardFirst.size, seat_widget.GImageCardFirst.rotation,
             0.5, "fapai",
             function()
-                if (player ~= nil and player.UiDesktopPlayerInfo ~= nil)
-                then
+                if (player ~= nil and player.UiDesktopPlayerInfo ~= nil) then
                     player_info:dealCardDone()
                 end
 
@@ -937,8 +920,7 @@ end
 ---------------------------------------
 -- 所有玩家发牌完成后的回调
 function ViewDesktopTexas:_dealCardDone()
-    if (self.Desktop.DesktopState == TexasDesktopState.PreFlop)
-    then
+    if (self.Desktop.DesktopState == TexasDesktopState.PreFlop) then
         self.DealerEx:dealCommonCard(nil, self.GComCommunityCard1)
         self.DealerEx:dealCommonCard(nil, self.GComCommunityCard2)
         self.DealerEx:dealCommonCard(nil, self.GComCommunityCard3)
@@ -955,26 +937,22 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:_showDesktopScreenshot(goto_endstate, is_gameend)
-    if (goto_endstate == TexasDesktopState.PreFlop)
-    then
+    if (goto_endstate == TexasDesktopState.PreFlop) then
         ViewHelper:setGObjectVisible(true, self.GGroupCard)
         self:_showPreflopScreenshot()
         self:showCommonCardType(is_gameend)
-    elseif (goto_endstate == TexasDesktopState.Flop)
-    then
+    elseif (goto_endstate == TexasDesktopState.Flop) then
         ViewHelper:setGObjectVisible(true, self.GGroupCard)
         self:_showFlopScreenshot()
         self.DealerEx:resetCard(self.GComCommunityCard4)
         self.DealerEx:resetCard(self.GComCommunityCard5)
         self:showCommonCardType(is_gameend)
-    elseif (goto_endstate == TexasDesktopState.Turn)
-    then
+    elseif (goto_endstate == TexasDesktopState.Turn) then
         ViewHelper:setGObjectVisible(true, self.GGroupCard)
         self:_showTurnScreenshot()
         self.DealerEx:resetCard(self.GComCommunityCard5)
         self:showCommonCardType(is_gameend)
-    elseif (goto_endstate == TexasDesktopState.River)
-    then
+    elseif (goto_endstate == TexasDesktopState.River) then
         ViewHelper:setGObjectVisible(true, self.GGroupCard)
         self:_showRiverScreenshot()
         self:showCommonCardType(is_gameend)
@@ -1011,13 +989,11 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:updateLotteryTickTm(tm)
-    if (self.GTextLotteryTicketTips == nil)
-    then
+    if (self.GTextLotteryTicketTips == nil) then
         return
     end
 
-    if (tm > 0)
-    then
+    if (tm > 0) then
         self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:getLanValue("S")
     else
         self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
@@ -1027,15 +1003,13 @@ end
 ---------------------------------------
 function ViewDesktopTexas:_setLotteryTicketInfo(state, left_tm)
     local tips = ""
-    if (state == LotteryTicketStateEnum.Bet)
-    then
+    if (state == LotteryTicketStateEnum.Bet) then
         local tm = math.ceil(left_tm)
         tips = tm .. self.ViewMgr.LanMgr:getLanValue("S")
     else
         tips = self.ViewMgr.LanMgr:getLanValue("Settlement")
     end
-    if (self.GTextLotteryTicketTips ~= nil)
-    then
+    if (self.GTextLotteryTicketTips ~= nil) then
         self.GTextLotteryTicketTips.text = tips
     end
 end
@@ -1049,14 +1023,11 @@ end
 ---------------------------------------
 function ViewDesktopTexas:_getNewWorkSignName()
     local net_work_sign = ""
-    if (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.NotReachable)
-    then
+    if (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.NotReachable) then
         net_work_sign = "NoNetwork"
-    elseif (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaCarrierDataNetwork)
-    then
+    elseif (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaCarrierDataNetwork) then
         net_work_sign = "MoblieNetWork"
-    elseif (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork)
-    then
+    elseif (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork) then
         net_work_sign = "Wifi"
     end
 
@@ -1084,27 +1055,25 @@ end
 function ViewDesktopTexas:showMeWin()
     ViewHelper:setGObjectVisible(true, self.ComMeWin)
     CS.Casinos.CasinosContext.Instance:Play("ying", CS.Casinos._eSoundLayer.LayerNormal)
-    self.TransitionMeWin:Play(function()
-        ViewHelper:setGObjectVisible(false, self.ComMeWin)
-    end)
+    self.TransitionMeWin:Play(
+            function()
+                ViewHelper:setGObjectVisible(false, self.ComMeWin)
+            end)
 end
 
 ---------------------------------------
 -- 左上角菜单按钮小红点呼吸动画
 function ViewDesktopTexas:setNewReward()
     local have_newreward = false
-    if (self.CanGetOnLineReward or self.CanGetTimingReward)
-    then
+    if (self.CanGetOnLineReward or self.CanGetTimingReward) then
         have_newreward = true
     end
 
-    if (have_newreward == false)
-    then
+    if (have_newreward == false) then
         ViewHelper:setGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:setGObjectVisible(true, self.ComRewardTips)
-        if (self.TransitionNewReward.playing == false)
-        then
+        if (self.TransitionNewReward.playing == false) then
             self.TransitionNewReward:Play()
         end
     end

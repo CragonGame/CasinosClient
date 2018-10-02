@@ -2,7 +2,7 @@
 
 ---------------------------------------
 UiCardCommonEx = {
-    RotateTime = 0.15
+    RotateTime = 1
 }
 
 ---------------------------------------
@@ -30,7 +30,6 @@ function UiCardCommonEx:setCardData(card)
     if (self.GComCard.displayObject.gameObject ~= nil) then
         self.GComCard.rotationY = 0
     end
-
     self:hideHightLight()
 end
 
@@ -43,12 +42,12 @@ function UiCardCommonEx:show(with_animation, call_back)
         CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard, self.GImageCardBack)
         local card_name = tostring(self.Card.Suit) .. "_" .. tostring(self.Card.Type)
         local l_card_name = string.lower(card_name)
-        self.LoaderTicket = CS.Casinos.CasinosContext.Instance.TextureMgr:getTexture(l_card_name, self.CasinosContext.PathMgr:combinePersistentDataPath(CS.Casinos.UiHelperCasinos.getABCardResourceTitlePath() .. l_card_name .. ".ab"),
+        local ab_card_name = self.CasinosContext.PathMgr:combinePersistentDataPath(CS.Casinos.UiHelperCasinos.getABCardResourceTitlePath() .. l_card_name .. ".ab")
+        self.LoaderTicket = self.CasinosContext.TextureMgr:getTexture(l_card_name, ab_card_name,
                 function(tick, t)
                     if (self.GComCard == nil or self.GComCard.displayObject.gameObject == nil) then
                         return
                     end
-
                     if (self.LoaderTicket ~= tick) then
                         return
                     end
