@@ -41,10 +41,6 @@ function ViewShareType:onCreate()
 end
 
 ---------------------------------------
-function ViewShareType:onUpdate(tm)
-end
-
----------------------------------------
 function ViewShareType:onClickBtnWeChat()
     local ev = self.ViewMgr:getEv("EvClickShare")
     if (ev == nil) then

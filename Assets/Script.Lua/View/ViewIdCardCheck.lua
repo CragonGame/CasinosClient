@@ -52,9 +52,6 @@ function ViewIdCardCheck:onCreate()
     self:_checkIdCardInput()
 end
 
-function ViewIdCardCheck:onUpdate(tm)
-end
-
 function ViewIdCardCheck:onClickBtnOK()
     self.ViewMgr:destroyView(self)
     local ev = self.ViewMgr:getEv("EvCheckIdCard")

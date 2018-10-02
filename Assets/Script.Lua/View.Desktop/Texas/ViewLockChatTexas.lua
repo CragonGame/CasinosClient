@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewLockChatTexas = ViewBase:new()
 
+---------------------------------------
 function ViewLockChatTexas:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -28,12 +30,12 @@ function ViewLockChatTexas:new(o)
     o.BtnLockedName = "BtnLocked"
     o.BtnUnLockName = "BtnUnlock"
     o.SystemIconKey = "System"
-
     return o
 end
 
+---------------------------------------
 function ViewLockChatTexas:onCreate()
-	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("LockChat"))
+    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("LockChat"))
     self.ViewMgr:bindEvListener("EvEntityDesktopPlayerSit", self)
     self.ViewMgr:bindEvListener("EvEntityDesktopPlayerLeaveChair", self)
     self.ViewDesktop = self.ViewMgr:getView("DesktopTexas")
@@ -44,12 +46,12 @@ function ViewLockChatTexas:onCreate()
                 self:_onClickClose()
             end
     )
-	local com_shade = com_bg:GetChild("ComShade").asCom
-	com_shade.onClick:Add(
-		function()
-		    self:_onClickClose()
-		end
-	)
+    local com_shade = com_bg:GetChild("ComShade").asCom
+    com_shade.onClick:Add(
+            function()
+                self:_onClickClose()
+            end
+    )
     self.GBtnLockAllSeatPlayer = self.ComUi:GetChild("Lan_Btn_AllPlayer").asButton
     self.GBtnLockAllSeatPlayer.onClick:Add(
             function()
@@ -74,34 +76,32 @@ function ViewLockChatTexas:onCreate()
     self.MapPlayerChat = {}
 end
 
+---------------------------------------
 function ViewLockChatTexas:onDestroy()
     self.ViewMgr:unbindEvListener(self)
     self.MapPlayerChat = {}
 end
 
+---------------------------------------
 function ViewLockChatTexas:onHandleEv(ev)
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvEntityDesktopPlayerSit")
-        then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvEntityDesktopPlayerSit") then
             self:_playerEnter(ev.guid, ev.icon_name, ev.account_id, ev.nick_name, ev.vip_level)
-        elseif (ev.EventName == "EvEntityDesktopPlayerLeaveChair")
-        then
+        elseif (ev.EventName == "EvEntityDesktopPlayerLeaveChair") then
             self:_playerLeave(ev.guid)
         end
     end
 end
 
+---------------------------------------
 function ViewLockChatTexas:initLockChat(all_seat)
-    if (CS.UnityEngine.PlayerPrefs.HasKey(self.LockAllDesktopPlayerKey))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey(self.LockAllDesktopPlayerKey)) then
         self.GBtnLockAllSeatPlayer.selected = CS.System.Boolean.Parse(CS.UnityEngine.PlayerPrefs.GetString(self.LockAllDesktopPlayerKey))
     else
         self.GBtnLockAllSeatPlayer.selected = false
         CS.UnityEngine.PlayerPrefs.SetString(self.LockAllDesktopPlayerKey, tostring(self.GBtnLockAllSeatPlayer.selected))
     end
-    if (CS.UnityEngine.PlayerPrefs.HasKey(self.LockAllSpectator))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey(self.LockAllSpectator)) then
         self.GBtnLockAllStandPlayer.selected = CS.System.Boolean.Parse(CS.UnityEngine.PlayerPrefs.GetString(self.LockAllSpectator))
     else
         self.GBtnLockAllStandPlayer.selected = false
@@ -117,10 +117,8 @@ function ViewLockChatTexas:initLockChat(all_seat)
         local name = ""
         local account_id = ""
         local vip_level = 0
-        if (seat_info ~= nil and seat_info.player_texas ~= nil)
-        then
-            if (seat_info.player_texas ~= nil)
-            then
+        if (seat_info ~= nil and seat_info.player_texas ~= nil) then
+            if (seat_info.player_texas ~= nil) then
                 et_guid = seat_info.player_texas.Guid
                 icon = seat_info.player_texas.PlayerDataDesktop.IconName
                 name = seat_info.player_texas.PlayerDataDesktop.NickName
@@ -133,10 +131,10 @@ function ViewLockChatTexas:initLockChat(all_seat)
     end
 end
 
+---------------------------------------
 function ViewLockChatTexas:_createPlayerChatLock(et_guid, icon, name, account_id, vip_level, is_system)
     local is_lock = false
-    if (is_system)
-    then
+    if (is_system) then
         is_lock = self.ViewDesktop.ControllerDesktop.LockSysChat
     else
         is_lock = self.ViewDesktop.Desktop.MapSeatPlayerChatIsLock[et_guid]
@@ -149,12 +147,12 @@ function ViewLockChatTexas:_createPlayerChatLock(et_guid, icon, name, account_id
     player_chat:setPlayerChatInfo(et_guid, icon, name, account_id, vip_level, is_lock, is_system)
 end
 
+---------------------------------------
 function ViewLockChatTexas:_playerEnter(guid, icon, account_id, nick_name, vip_level)
     local frist_emptylockpLayer = nil
     for k, v in pairs(self.MapPlayerChat) do
         local lock_player = v
-        if (lock_player.IsSystem == false and CS.System.String.IsNullOrEmpty(lock_player.PlayerEtguid))
-        then
+        if (lock_player.IsSystem == false and CS.System.String.IsNullOrEmpty(lock_player.PlayerEtguid)) then
             frist_emptylockpLayer = lock_player
             break
         end
@@ -164,42 +162,41 @@ function ViewLockChatTexas:_playerEnter(guid, icon, account_id, nick_name, vip_l
     frist_emptylockpLayer:setPlayerChatInfo(guid, icon, nick_name, account_id, vip_level, is_lock, false)
 end
 
+---------------------------------------
 function ViewLockChatTexas:_playerLeave(guid)
     for k, v in pairs(self.MapPlayerChat) do
         local lock_player = v
-        if (lock_player.PlayerEtguid == guid)
-        then
+        if (lock_player.PlayerEtguid == guid) then
             lock_player:setPlayerChatInfo("", "", "", "", 0, self.GBtnLockAllSeatPlayer.selected, false)
             break
         end
     end
 end
 
+---------------------------------------
 function ViewLockChatTexas:_onClickBtnAllSpectator()
     CS.UnityEngine.PlayerPrefs.SetString(self.LockAllSpectator, tostring(self.GBtnLockAllStandPlayer.selected))
     local lock_name = self.TextureUnLockName
-    if (self.GBtnLockAllStandPlayer.selected)
-    then
+    if (self.GBtnLockAllStandPlayer.selected) then
         lock_name = self.TextureLockedName
     end
     self.GLoadSpectatorLock1.icon = CS.FairyGUI.UIPackage.GetItemURL("LockChat", lock_name)
     self.GLoadSpectatorLock2.icon = CS.FairyGUI.UIPackage.GetItemURL("LockChat", lock_name)
 
     local ev = self.ViewMgr:getEv("EvUiRequestLockAllSpectator")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiRequestLockAllSpectator:new(nil)
     end
     ev.requestLock = self.GBtnLockAllStandPlayer.selected
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewLockChatTexas:_onClickBtnAllPlayer()
     CS.UnityEngine.PlayerPrefs.SetString(self.LockAllDesktopPlayerKey, tostring(self.GBtnLockAllSeatPlayer.selected))
 
     local ev = self.ViewMgr:getEv("EvUiRequestLockAllDesktopPlayer")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiRequestLockAllDesktopPlayer:new(nil)
     end
     ev.requestLock = self.GBtnLockAllSeatPlayer.selected
@@ -211,12 +208,15 @@ function ViewLockChatTexas:_onClickBtnAllPlayer()
     end
 end
 
+---------------------------------------
 function ViewLockChatTexas:_onClickClose()
     self.ViewMgr:destroyView(self)
 end
 
+---------------------------------------
 ViewLockChatTexasFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewLockChatTexasFactory:new(o, ui_package_name, ui_component_name,
                                       ui_layer, is_single, fit_screen)
     o = o or {}
@@ -230,6 +230,7 @@ function ViewLockChatTexasFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewLockChatTexasFactory:createView()
     local view = ViewLockChatTexas:new(nil)
     return view

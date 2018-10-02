@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewHandCardTexas = ViewBase:new()
 
+---------------------------------------
 function ViewHandCardTexas:new(o, com_card, guid, index)
     o = o or {}
     setmetatable(o, self)
@@ -13,14 +15,12 @@ function ViewHandCardTexas:new(o, com_card, guid, index)
     o.CancelShowCard = false
     o.ShowBack = false
     local loader_card = o.GComCard:GetChild("LoaderCard")
-    if (loader_card ~= nil)
-    then
+    if (loader_card ~= nil) then
         o.GLoaderCard = CS.Casinos.LuaHelper.GLoaderCastToGLoaderEx(loader_card.asLoader)
         o.GImageCardBack = o.GComCard:GetChild("CardBack").asImage
     end
     local card_highlight = o.GComCard:GetChild("ImageCardHighLight")
-    if (card_highlight ~= nil)
-    then
+    if (card_highlight ~= nil) then
         o.GImageCardHighLight = card_highlight.asImage
     end
     o.TweenerScale = nil
@@ -29,9 +29,9 @@ function ViewHandCardTexas:new(o, com_card, guid, index)
     return o
 end
 
+---------------------------------------
 function ViewHandCardTexas:setCardData(card_data)
-    if (self.GLoaderCard == nil)
-    then
+    if (self.GLoaderCard == nil) then
         return
     end
     if self.CardData ~= nil and card_data == nil then
@@ -44,14 +44,15 @@ function ViewHandCardTexas:setCardData(card_data)
     self.CardData = card_data
 end
 
+---------------------------------------
 function ViewHandCardTexas:setShowCardData(card_data)
-    if (self.GLoaderCard == nil)
-    then
+    if (self.GLoaderCard == nil) then
         return
     end
     self.ShowCardData = card_data
 end
 
+---------------------------------------
 function ViewHandCardTexas:showCard(delay_tm)
     if self.CancelShowCard then
         ViewHelper:setGObjectVisible(true, self.GComCard)
@@ -62,7 +63,7 @@ function ViewHandCardTexas:showCard(delay_tm)
                     ViewHelper:setGObjectVisible(false, self.GLoaderCard)
                     self.GImageCardBack.rotationY = 90
                     self.GLoaderCard.rotationY = 90
-                    self.TweenerRotate =  CS.FairyGUI.GTween.To(self.GImageCardBack.rotationY, 180, UiCardCommonEx.RotateTime):SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
+                    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GImageCardBack.rotationY, 180, UiCardCommonEx.RotateTime):SetTarget(self.GImageCardBack, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                             function()
                                 self.GImageCardBack.rotationY = 180
                             end
@@ -118,11 +119,13 @@ function ViewHandCardTexas:showCard(delay_tm)
     end
 end
 
+---------------------------------------
 function ViewHandCardTexas:hideCard()
     self.GLoaderCard.icon = nil
     ViewHelper:setGObjectVisible(false, self.GComCard)
 end
 
+---------------------------------------
 function ViewHandCardTexas:resetCard(with_ani)
     self.GLoaderCard.icon = nil
     self.GLoaderCard.color = CS.UnityEngine.Color.white
@@ -136,7 +139,8 @@ function ViewHandCardTexas:resetCard(with_ani)
     ViewHelper:setGObjectVisible(false, self.GImageCardHighLight)
 end
 
-function ViewHandCardTexas:showHighLight(show_highlight,not_dark)
+---------------------------------------
+function ViewHandCardTexas:showHighLight(show_highlight, not_dark)
     ViewHelper:setGObjectVisible(show_highlight, self.GImageCardHighLight)
     if (not_dark == false) then
         self.GLoaderCard.color = CS.UnityEngine.Color.gray
@@ -145,11 +149,13 @@ function ViewHandCardTexas:showHighLight(show_highlight,not_dark)
     end
 end
 
+---------------------------------------
 function ViewHandCardTexas:hideHighLight()
     ViewHelper:setGObjectVisible(false, self.GImageCardHighLight)
     self.GLoaderCard.color = CS.UnityEngine.Color.white
 end
 
+---------------------------------------
 function ViewHandCardTexas:killTween(tweener, is_complete)
     if (tweener ~= nil) then
         tweener:Kill(false)

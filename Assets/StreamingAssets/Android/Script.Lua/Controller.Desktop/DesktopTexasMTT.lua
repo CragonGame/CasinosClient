@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 DesktopTexasMTT = DesktopTypeBase:new(nil)
 
+---------------------------------------
 function DesktopTexasMTT:new(o, desktop_base, co_mgr)
     o = o or {}
     setmetatable(o, self)
@@ -19,6 +21,7 @@ function DesktopTexasMTT:new(o, desktop_base, co_mgr)
     return o
 end
 
+---------------------------------------
 function DesktopTexasMTT:onDestroy(need_createmainui)
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
     if (need_createmainui)
@@ -33,7 +36,8 @@ function DesktopTexasMTT:onDestroy(need_createmainui)
     end
 end
 
-function DesktopTexasMTT:onUpdate(elapsed_tm)
+---------------------------------------
+function DesktopTexasMTT:Update(elapsed_tm)
     if self.CanUpdateT then
         local raise_blind_lefts = self.RaiseBlindLeftSecond
         if raise_blind_lefts > 0 then
@@ -46,8 +50,7 @@ function DesktopTexasMTT:onUpdate(elapsed_tm)
             self.UpdateRaiseBlindTm = 0
             local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
             local ev = view_mgr:getEv("EvEntityMTTUpdateRaiseBlindTm")
-            if (ev == nil)
-            then
+            if (ev == nil) then
                 ev = EvEntityMTTUpdateRaiseBlindTm:new(nil)
             end
             ev.RaiseBlindTm = math.ceil(self.RaiseBlindLeftSecond)
@@ -56,22 +59,19 @@ function DesktopTexasMTT:onUpdate(elapsed_tm)
     end
 end
 
+---------------------------------------
 function DesktopTexasMTT:onHandleEv(ev)
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvUiClickPlayerReturn")
-        then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvUiClickPlayerReturn") then
             local method_info = MethodInfoTexasDesktop:new(nil)
             method_info.id = MethodTypeTexasDesktop.PlayerCancelAutoActionRequest
             method_info.data = nil
 
             self:_userRequest(method_info)
-        elseif (ev.EventName == "EvUiClickCancelAutoAction")
-        then
+        elseif (ev.EventName == "EvUiClickCancelAutoAction") then
             local method_info = MethodInfoTexasDesktop:new(nil)
             method_info.id = MethodTypeTexasDesktop.PlayerCancelAutoActionRequest
             method_info.data = nil
-
             self:_userRequest(method_info)
         elseif ev.EventName == "EvUiMTTCreateRebuyOrAddOn" then
             self:createRebuyOrAddon(0)
@@ -89,8 +89,7 @@ function DesktopTexasMTT:onHandleEv(ev)
         elseif ev.EventName == "EvEntitySetMatchDetailedInfo" then
             local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
             local ev = view_mgr:getEv("EvEntitySetRaiseBlindTbInfo")
-            if (ev == nil)
-            then
+            if (ev == nil) then
                 ev = EvEntitySetRaiseBlindTbInfo:new(nil)
             end
             ev.raise_blind_info = self.BDesktopSnapshotMatchTexas.RaiseBlindTbInfo
@@ -103,8 +102,7 @@ function DesktopTexasMTT:onHandleEv(ev)
                     local msg_box = ViewHelper:UiShowMsgBox(self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("NoPlayer"), function()
                         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
                         local ev = view_mgr:getEv("EvUiClickExitDesk")
-                        if (ev == nil)
-                        then
+                        if (ev == nil) then
                             ev = EvUiClickExitDesk:new(nil)
                         end
                         view_mgr:sendEv(ev)
@@ -116,6 +114,7 @@ function DesktopTexasMTT:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function DesktopTexasMTT:SetDesktopSnapshotData(snapshot_data)
     self.BDesktopSnapshotMatchTexas = snapshot_data.match_texas
     self.MatchGuid = snapshot_data.match_texas.MatchGuid
@@ -145,6 +144,7 @@ function DesktopTexasMTT:SetDesktopSnapshotData(snapshot_data)
     --end
 end
 
+---------------------------------------
 function DesktopTexasMTT:DesktopUser(method_id, method_data)
     if (method_id == MethodTypeTexasDesktop.TexasMTTServerAutoActionStateChangeNotify)
     then
@@ -246,7 +246,7 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
             self.BDesktopSnapshotMatchTexas.MyInfo.AddonNum = player_info.AddonCount
             --self.DesktopBase.MeP:rebuyOrAddOn(player_info.Score)
             self:refreshBtnRebuyAddOnStat()
-            ViewHelper:UiShowMsgBox(string.format(self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("RebuySuccess"),self.BDesktopSnapshotMatchTexas.RaiseBlindTbInfo.AddonScore)) -- "RebuyTip1"  "AddonSuccess"
+            ViewHelper:UiShowMsgBox(string.format(self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("RebuySuccess"), self.BDesktopSnapshotMatchTexas.RaiseBlindTbInfo.AddonScore)) -- "RebuyTip1"  "AddonSuccess"
         else
             --local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
             --local ev = view_mgr:getEv("EvUpdatePlayerScore")
@@ -261,32 +261,32 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
     end
 end
 
+---------------------------------------
 function DesktopTexasMTT:preflopBegin()
     self.CanUpdateT = true
 end
 
+---------------------------------------
 function DesktopTexasMTT:_userRequest(method_info)
     self.ControllerDesktop:UserRequest("Texas", method_info:getData4Pack())
 end
 
+---------------------------------------
 function DesktopTexasMTT:chipIsEnough(need_chip)
     local enough = self.ControllerActor.PropGoldAcc:get() >= need_chip
 
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-    if (enough == false)
-    then
+    if (enough == false) then
         local msg_box = view_mgr:createView("MsgBox")
         local tips = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
         tips = string.format(tips, UiChipShowHelper:getGoldShowStr(need_chip, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
         local title = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
         msg_box:showMsgBox1(title, tips,
                 function(bo)
-                    if (bo)
-                    then
+                    if (bo) then
                         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
                         local ev = view_mgr:getEv("EvUiClickShop")
-                        if (ev == nil)
-                        then
+                        if (ev == nil) then
                             ev = EvUiClickShop:new(nil)
                         end
                         view_mgr:sendEv(ev)
@@ -298,14 +298,15 @@ function DesktopTexasMTT:chipIsEnough(need_chip)
     return enough
 end
 
+---------------------------------------
 function DesktopTexasMTT:checkMeStack(me_stack)
-    if (me_stack == 0)
-    then
+    if (me_stack == 0) then
         self.NeedRebuyOrAddOn = true
         self:createRebuyOrAddon(8)
     end
 end
 
+---------------------------------------
 function DesktopTexasMTT:createRebuyOrAddon(tm)
     local match_texas = self.BDesktopSnapshotMatchTexas
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
@@ -335,6 +336,7 @@ function DesktopTexasMTT:createRebuyOrAddon(tm)
             end)
 end
 
+---------------------------------------
 function DesktopTexasMTT:refreshBtnRebuyAddOnStat()
     local match_texas = self.BDesktopSnapshotMatchTexas
     local can_rebuy = false
@@ -376,6 +378,7 @@ function DesktopTexasMTT:refreshBtnRebuyAddOnStat()
     view_mgr:sendEv(ev)
 end
 
+---------------------------------------
 function DesktopTexasMTT:_confirmRebuyOrAddon()
     if self.MeCanRebuy == true then
         local enough = self:chipIsEnough(self.BDesktopSnapshotMatchTexas.RaiseBlindTbInfo.RebuyGold)
@@ -390,6 +393,7 @@ function DesktopTexasMTT:_confirmRebuyOrAddon()
     end
 end
 
+---------------------------------------
 function DesktopTexasMTT:_cancelRebuyOrAddon()
     if self.NeedRebuyOrAddOn then
         self.ControllerDesktop:MatchTexasRequestGiveUpRebuyOrAddon(self.MatchGuid)
@@ -397,6 +401,7 @@ function DesktopTexasMTT:_cancelRebuyOrAddon()
     end
 end
 
+---------------------------------------
 function DesktopTexasMTT:getFastBetKey()
     local desktop_id = self.BlindType
     local t_preflop = {}
@@ -413,20 +418,23 @@ function DesktopTexasMTT:getFastBetKey()
     return t_p_s, t_np_s
 end
 
+---------------------------------------
 DesktopTexasMTTFactory = DesktopTypeBaseFactory:new(nil)
 
+---------------------------------------
 function DesktopTexasMTTFactory:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     return o
 end
 
+---------------------------------------
 function DesktopTexasMTTFactory:GetName()
     return "TexasMTT"
 end
 
+---------------------------------------
 function DesktopTexasMTTFactory:CreateDesktopType(desktop_base, co_mgr)
     local l = DesktopTexasMTT:new(nil, desktop_base, co_mgr)
     return l

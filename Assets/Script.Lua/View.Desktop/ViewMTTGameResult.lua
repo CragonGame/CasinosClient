@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewMTTGameResult = ViewBase:new()
 
+---------------------------------------
 function ViewMTTGameResult:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -17,16 +19,15 @@ function ViewMTTGameResult:new(o)
         [1] = "MTTResultTip1",
         [2] = "MTTResultTip2"
     }
-
     return o
 end
 
+---------------------------------------
 function ViewMTTGameResult:onCreate()
-	local view_matchInfo = self.ViewMgr:getView("MatchInfo")
-	if(view_matchInfo ~= nil)
-	then
-		self.ViewMgr:destroyView(view_matchInfo)
-	end
+    local view_matchInfo = self.ViewMgr:getView("MatchInfo")
+    if (view_matchInfo ~= nil) then
+        self.ViewMgr:destroyView(view_matchInfo)
+    end
     local com_ui = self.ComUi
     self.ControllerShare = com_ui:GetController("ControllerShare")
     self.ControllerRank = com_ui:GetController("ControllerRank")
@@ -50,14 +51,15 @@ function ViewMTTGameResult:onCreate()
     p_p:SetNativeObject(CS.FairyGUI.GoWrapper(p_p2))
 end
 
+---------------------------------------
 function ViewMTTGameResult:OnDestroy()
-
 end
 
+---------------------------------------
 function ViewMTTGameResult:onHandleEv(ev)
-
 end
 
+---------------------------------------
 function ViewMTTGameResult:setResult(game_over, cannot_ob)
     local com_ui = self.ComUi
     local group_multi_share = com_ui:GetChild("GroupMultiCanShare").asGroup
@@ -128,6 +130,7 @@ function ViewMTTGameResult:setResult(game_over, cannot_ob)
             end)
 end
 
+---------------------------------------
 function ViewMTTGameResult:createItem(reward_gold, reward_diamond, list_reward)
     if (reward_gold > 0)
     then
@@ -151,6 +154,7 @@ function ViewMTTGameResult:createItem(reward_gold, reward_diamond, list_reward)
     end
 end
 
+---------------------------------------
 function ViewMTTGameResult:_onClickBtnLeave()
     local ev = self.ViewMgr:getEv("EvUiClickExitDesk")
     if (ev == nil)
@@ -161,6 +165,7 @@ function ViewMTTGameResult:_onClickBtnLeave()
     self:_onClickClose()
 end
 
+---------------------------------------
 function ViewMTTGameResult:_onClickBtnShare()
     local pic_name = "Share.png"
     local pic_path = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(pic_name)
@@ -170,6 +175,7 @@ function ViewMTTGameResult:_onClickBtnShare()
     end)
 end
 
+---------------------------------------
 function ViewMTTGameResult:_onClickBtnOB()
     local ev = self.ViewMgr:getEv("EvUiClickOB")
     if (ev == nil)
@@ -180,12 +186,15 @@ function ViewMTTGameResult:_onClickBtnOB()
     self:_onClickClose()
 end
 
+---------------------------------------
 function ViewMTTGameResult:_onClickClose()
     self.ViewMgr:destroyView(self)
 end
 
+---------------------------------------
 ViewMTTGameResultFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewMTTGameResultFactory:new(o, ui_package_name, ui_component_name,
                                       ui_layer, is_single, fit_screen)
     o = o or {}
@@ -199,6 +208,7 @@ function ViewMTTGameResultFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewMTTGameResultFactory:createView()
     local view = ViewMTTGameResult:new(nil)
     return view

@@ -51,7 +51,6 @@ function DesktopTexas:new(o, co_mgr)
     o.DesktopTypeBase = nil
     o.TFastBetInfoPreFlop = {}
     o.TFastBetInfoNotPreFlop = {}
-    self.TimerUpdate = nil
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     return o
 end
@@ -67,17 +66,10 @@ function DesktopTexas:onCreate()
     self.MapDesktopTypeBaseFac = {}
     self:regDesktopTypeBaseFactory(DesktopTexasClassicFactory:new(nil))
     self:regDesktopTypeBaseFactory(DesktopTexasMTTFactory:new(nil))
-
-    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(33, self, self._timerUpdate)
 end
 
 ---------------------------------------
 function DesktopTexas:onDestroy(need_createmainui)
-    if (self.TimerUpdate ~= nil) then
-        self.TimerUpdate:Close()
-        self.TimerUpdate = nil
-    end
-
     self.MePlayer = nil
     self.MeP = nil
     for k, v in pairs(self.MapPlayerTexas) do
@@ -113,9 +105,9 @@ function DesktopTexas:onDestroy(need_createmainui)
 end
 
 ---------------------------------------
-function DesktopTexas:_timerUpdate(elapsed_tm)
+function DesktopTexas:Update(elapsed_tm)
     if self.DesktopTypeBase ~= nil then
-        self.DesktopTypeBase:onUpdate(elapsed_tm)
+        self.DesktopTypeBase:Update(elapsed_tm)
     end
     for k, v in pairs(self.MapPlayerTexas) do
         v:Update(elapsed_tm)

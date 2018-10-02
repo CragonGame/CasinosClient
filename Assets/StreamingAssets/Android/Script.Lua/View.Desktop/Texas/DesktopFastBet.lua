@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 DesktopFastBet = {}
 
+---------------------------------------
 function DesktopFastBet:new(o, btn, index, view_mgr)
     o = o or {}
     setmetatable(o, self)
@@ -13,10 +15,10 @@ function DesktopFastBet:new(o, btn, index, view_mgr)
             function()
                 o:_onClickFastBet()
             end)
-
     return o
 end
 
+---------------------------------------
 function DesktopFastBet:setValue(fast_betinfo)
     self.FastInfo = fast_betinfo
     local title = {}
@@ -57,10 +59,10 @@ function DesktopFastBet:setValue(fast_betinfo)
     self.BtnFastBet.touchable = enabled
 end
 
+---------------------------------------
 function DesktopFastBet:_onClickFastBet()
     local ev = self.ViewMgr:getEv("EvUiClickFastBet")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickFastBet:new(nil)
     end
     ev.bet_value = self.FastInfo.NeedBetValue

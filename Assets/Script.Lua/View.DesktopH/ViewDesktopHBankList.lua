@@ -90,7 +90,6 @@ function ViewDesktopHBankList:onDestroy()
 end
 
 function ViewDesktopHBankList:onUpdate(elapsed_tm)
-
 end
 
 function ViewDesktopHBankList:onHandleEv(ev)   

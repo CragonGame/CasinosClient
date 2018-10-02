@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 DesktopTexasClassic = DesktopTypeBase:new(nil)
 
+---------------------------------------
 function DesktopTexasClassic:new(o, desktop_base, co_mgr)
     o = o or {}
     setmetatable(o, self)
@@ -12,10 +14,10 @@ function DesktopTexasClassic:new(o, desktop_base, co_mgr)
     o.ControllerDesktop = co_mgr:GetController("Desktop")
     o.DesktopBase = desktop_base
     o.Name = "TexasClassic"
-
     return o
 end
 
+---------------------------------------
 function DesktopTexasClassic:onDestroy(need_createmainui)
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
     if (need_createmainui)
@@ -31,9 +33,11 @@ function DesktopTexasClassic:onDestroy(need_createmainui)
     end
 end
 
-function DesktopTexasClassic:onUpdate(elapsed_tm)
+---------------------------------------
+function DesktopTexasClassic:Update(elapsed_tm)
 end
 
+---------------------------------------
 function DesktopTexasClassic:onHandleEv(ev)
     if (ev ~= nil)
     then
@@ -210,6 +214,7 @@ function DesktopTexasClassic:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function DesktopTexasClassic:SetDesktopSnapshotData(snapshot_data)
     self.NormalTexas = snapshot_data.normal_texas
     local tbdata_desktopinfo = self.ControllerPlayer.ControllerMgr.TbDataMgr:GetData("DesktopInfoTexas", snapshot_data.normal_texas.DesktopTbId)
@@ -222,65 +227,59 @@ function DesktopTexasClassic:SetDesktopSnapshotData(snapshot_data)
     self.ServerAutoAction = false
 end
 
+---------------------------------------
 function DesktopTexasClassic:DesktopUser(method_id, method_data)
-    if (method_id == MethodTypeTexasDesktop.PlayerPushStackNotify)
-    then
-        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid))
-        then
+    if (method_id == MethodTypeTexasDesktop.PlayerPushStackNotify) then
+        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid)) then
             return
         end
         local data1 = self.ControllerDesktop.ControllerMgr:unpackData(method_data)
         local data = DesktopNotifyPlayerPushStackTexas:new(nil)
         data:setData(data1)
         local player_texas = self.DesktopBase.MapPlayerTexas[data.player_guid]
-        if (player_texas ~= nil)
-        then
+        if (player_texas ~= nil) then
             player_texas:pushStack(data.stack)
         end
-    elseif (method_id == MethodTypeTexasDesktop.PlayerPushStackResultNotify)
-    then
+    elseif (method_id == MethodTypeTexasDesktop.PlayerPushStackResultNotify) then
         local result = self.ControllerDesktop.ControllerMgr:unpackData(method_data)
-        if (result == ProtocolResult.Success)
-        then
+        if (result == ProtocolResult.Success) then
             ViewHelper:UiShowInfoSuccess(self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ExchangeMoneySuccess"))
-        elseif (result == ProtocolResult.GiveChipNotEnoughChip)
-        then
+        elseif (result == ProtocolResult.GiveChipNotEnoughChip) then
             ViewHelper:UiShowInfoFailed(self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ExchangeMoneyFailed"))
         end
     end
 end
 
+---------------------------------------
 function DesktopTexasClassic:preflopBegin()
-
 end
 
+---------------------------------------
 function DesktopTexasClassic:requestPlayerReturn(chip)
     self.ControllerDesktop:RequestPlayerReturn(chip)
 end
 
+---------------------------------------
 function DesktopTexasClassic:_userRequest(method_info)
     self.ControllerDesktop:UserRequest("Texas", method_info:getData4Pack())
 end
 
+---------------------------------------
 function DesktopTexasClassic:checkMeStack(stack)
-    if (stack <= self.DesktopFee)
-    then
+    if (stack <= self.DesktopFee) then
         local player_left_golds = self.DesktopBase.ControllerActor.PropGoldAcc:get()
-        if (player_left_golds < self.BetMin)
-        then
+        if (player_left_golds < self.BetMin) then
             -- 筹码（账户）不够
             local msg_box = self.DesktopBase.ControllerPlayer.ControllerMgr.ViewMgr:createView("MsgBox")
             local tips = self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-            tips = string.format(tips, UiChipShowHelper:getGoldShowStr( self.BetMin, self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr.LanBase))
+            tips = string.format(tips, UiChipShowHelper:getGoldShowStr(self.BetMin, self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr.LanBase))
             local title = self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("ChipNotEnough")
             msg_box:showMsgBox1(title, tips,
                     function(bo)
-                        if (bo)
-                        then
+                        if (bo) then
                             local view_mgr = self.DesktopBase.ControllerPlayer.ControllerMgr.ViewMgr
                             local ev = view_mgr:getEv("EvUiClickShop")
-                            if (ev == nil)
-                            then
+                            if (ev == nil) then
                                 ev = EvUiClickShop:new(nil)
                             end
                             view_mgr:sendEv(ev)
@@ -291,8 +290,7 @@ function DesktopTexasClassic:checkMeStack(stack)
             -- 筹码（账户）足够
             self.DesktopBase:createBetGame(
                     function(ok, chip)
-                        if (ok == false)
-                        then
+                        if (ok == false) then
                             self.DesktopBase:requestPlayerOb()
                             return
                         else
@@ -304,6 +302,7 @@ function DesktopTexasClassic:checkMeStack(stack)
     end
 end
 
+---------------------------------------
 function DesktopTexasClassic:getFastBetKey()
     local desktop_id = self.NormalTexas.DesktopTbId
     local t_preflop = {}
@@ -315,23 +314,26 @@ function DesktopTexasClassic:getFastBetKey()
     table.insert(t_not_preflop, DesktopType.Classic)
     table.insert(t_not_preflop, "false")
 
-    return table.concat(t_preflop),table.concat(t_not_preflop)
+    return table.concat(t_preflop), table.concat(t_not_preflop)
 end
 
+---------------------------------------
 DesktopTexasClassicFactory = DesktopTypeBaseFactory:new(nil)
 
+---------------------------------------
 function DesktopTexasClassicFactory:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     return o
 end
 
+---------------------------------------
 function DesktopTexasClassicFactory:GetName()
     return "TexasClassic"
 end
 
+---------------------------------------
 function DesktopTexasClassicFactory:CreateDesktopType(desktop_base, co_mgr)
     local l = DesktopTexasClassic:new(nil, desktop_base, co_mgr)
     return l

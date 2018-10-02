@@ -110,7 +110,7 @@ function ControllerDesk:onCreate()
     local t_fac = DesktopHelperTexasFactory:new(nil)
     self.MapDesktopHelper[t_fac:GetName()] = t_fac:CreateDesktopHelper()
 
-    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(33, self, self._timerUpdate)
 end
 
 ---------------------------------------
@@ -145,9 +145,9 @@ function ControllerDesk:onHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerDesk:_timerUpdate(tm)
+function ControllerDesk:_timerUpdate(elapsed_tm)
     if (self.DesktopBase ~= nil) then
-        self.DesktopBase:onUpdate(tm)
+        self.DesktopBase:Update(elapsed_tm)
     end
 end
 

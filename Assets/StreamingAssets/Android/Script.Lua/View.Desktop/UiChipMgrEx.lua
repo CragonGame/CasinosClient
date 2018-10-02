@@ -1,9 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 UiChipMgrEx = {
     MoveTm = 0.2
 }
 
+---------------------------------------
 function UiChipMgrEx:new(o, move_chip_onebyone)
     o = o or {}
     setmetatable(o, self)
@@ -22,17 +24,17 @@ function UiChipMgrEx:new(o, move_chip_onebyone)
     return o
 end
 
+---------------------------------------
 function UiChipMgrEx:update(tm)
-    if (self.MoveChipOneByOne and self.CurrentEnabledChip ~= nil)
-    then
+    if (self.MoveChipOneByOne and self.CurrentEnabledChip ~= nil) then
         self.Tm = self.Tm + tm
-        if (self.Tm >= UiChipMgrEx.MoveTm)
-        then
+        if (self.Tm >= UiChipMgrEx.MoveTm) then
             self:_currentChipMoveEnd()
         end
     end
 end
 
+---------------------------------------
 function UiChipMgrEx:destroy()
     self.ListChipDisabledPool = {}
     self.ListChipDisabledPool = nil
@@ -40,18 +42,16 @@ function UiChipMgrEx:destroy()
     self.CurrentEnabledChip = nil
 end
 
+---------------------------------------
 function UiChipMgrEx:resetChips()
-    if (self.ListChipEnabled == nil)
-    then
+    if (self.ListChipEnabled == nil) then
         return
     end
 
-    if (self.CurrentEnabledChip ~= nil)
-    then
+    if (self.CurrentEnabledChip ~= nil) then
         self.CurrentEnabledChip:reset()
         local have = LuaHelper:TableContainsV(self.ListChipDisabledPool, self.CurrentEnabledChip)
-        if (have == false)
-        then
+        if (have == false) then
             table.insert(self.ListChipDisabledPool, self.CurrentEnabledChip)
         end
         self.CurrentEnabledChip = nil
@@ -59,8 +59,7 @@ function UiChipMgrEx:resetChips()
     for k, v in pairs(self.ListChipEnabled) do
         v:reset()
         local have = LuaHelper:TableContainsV(self.ListChipDisabledPool, self.CurrentEnabledChip)
-        if (have == false)
-        then
+        if (have == false) then
             table.insert(self.ListChipDisabledPool, self.CurrentEnabledChip)
         end
     end
@@ -71,6 +70,7 @@ function UiChipMgrEx:resetChips()
     end
 end
 
+---------------------------------------
 function UiChipMgrEx:chipEnquee(chip)
     if chip.ChipMoveType == CS.Casinos.ChipMoveType.RunOutOfMainPot then
         chip:moveEnd()
@@ -97,9 +97,9 @@ function UiChipMgrEx:chipEnquee(chip)
     end
 end
 
+---------------------------------------
 function UiChipMgrEx:_currentChipMoveEnd()
-    if (self.ListChipEnabled == nil)
-    then
+    if (self.ListChipEnabled == nil) then
         return
     end
 
@@ -107,29 +107,26 @@ function UiChipMgrEx:_currentChipMoveEnd()
     self.CurrentEnabledChip:moveEnd()
     self.CurrentEnabledChip:reset()
     local have = LuaHelper:TableContainsV(self.ListChipDisabledPool, self.CurrentEnabledChip)
-    if (have == false)
-    then
+    if (have == false) then
         table.insert(self.ListChipDisabledPool, self.CurrentEnabledChip)
     end
     self.CurrentEnabledChip = nil
 
     local l = #self.ListChipEnabled
-    if (l > 0)
-    then
+    if (l > 0) then
         self.CurrentEnabledChip = table.remove(self.ListChipEnabled, 1)
-        if (self.CurrentEnabledChip ~= nil)
-        then
+        if (self.CurrentEnabledChip ~= nil) then
             self.CurrentEnabledChip:moveAndScale()
         end
     end
 end
 
+---------------------------------------
 function UiChipMgrEx:moveChip(from, to, move_time, move_sound, chip_type, parent, move_end, start_movenotify)
     local chip = nil
 
     local l = #self.ListChipDisabledPool
-    if (l > 0)
-    then
+    if (l > 0) then
         chip = table.remove(self.ListChipDisabledPool, 1)
     else
         local com_chip = CS.FairyGUI.UIPackage.CreateObject("Common", "ComChip")
@@ -140,19 +137,15 @@ function UiChipMgrEx:moveChip(from, to, move_time, move_sound, chip_type, parent
 
     chip:init(from, to, move_time, 0, move_sound, chip_type, move_end, start_movenotify)
 
-    if (self.MoveChipOneByOne == true)
-    then
+    if (self.MoveChipOneByOne == true) then
         local have = LuaHelper:TableContainsV(self.ListChipEnabled, chip)
-        if (have == false)
-        then
+        if (have == false) then
             table.insert(self.ListChipEnabled, chip)
         end
 
-        if (self.CurrentEnabledChip == nil)
-        then
+        if (self.CurrentEnabledChip == nil) then
             local l = #self.ListChipEnabled
-            if (l > 0)
-            then
+            if (l > 0) then
                 self.CurrentEnabledChip = table.remove(self.ListChipEnabled, 1)
                 self.CurrentEnabledChip:moveAndScale()
             end
@@ -164,6 +157,7 @@ function UiChipMgrEx:moveChip(from, to, move_time, move_sound, chip_type, parent
     return chip
 end
 
+---------------------------------------
 function UiChipMgrEx:moveWinChip(index,from, to, move_time, move_sound, chip_type, parent, move_end, start_movenotify)
     local l = self.ListWinChips[index]
     if l~= nil then
@@ -171,7 +165,10 @@ function UiChipMgrEx:moveWinChip(index,from, to, move_time, move_sound, chip_typ
     end
 end
 
+---------------------------------------
 WinGolds = {}
+
+---------------------------------------
 function WinGolds:new(o, chip_mgr)
     o = o or {}
     setmetatable(o, self)
@@ -202,6 +199,7 @@ function WinGolds:new(o, chip_mgr)
     return o
 end
 
+---------------------------------------
 function WinGolds:moveGolds(from, to, move_time, move_sound, chip_type, parent, move_end, start_movenotify)
     local delay = 0
     local delay_t = 1 / 7
@@ -219,6 +217,7 @@ function WinGolds:moveGolds(from, to, move_time, move_sound, chip_type, parent, 
     end
 end
 
+---------------------------------------
 function WinGolds:reset()
     for i, v in pairs(self.TGolds) do
         v:reset()

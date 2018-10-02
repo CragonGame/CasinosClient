@@ -88,9 +88,6 @@ function ViewLoading:onDestroy()
     --CS.FairyGUI.Timers.inst:Remove(self._updateTips)
 end
 
-function ViewLoading:onUpdate(tm)		
-end
-
 function ViewLoading:onHandleEv(ev)	
 end
         

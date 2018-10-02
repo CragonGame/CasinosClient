@@ -446,10 +446,6 @@ function ViewMain:onCreate()
 end
 
 ---------------------------------------
-function ViewMain:onUpdate(tm)
-end
-
----------------------------------------
 function ViewMain:onDestroy()
     if (self.CasinosContext.NeedHideClientUi == false)
     then

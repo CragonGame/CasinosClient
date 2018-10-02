@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewDesktopMenuTexas = ViewBase:new()
 
+---------------------------------------
 function ViewDesktopMenuTexas:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -14,10 +16,10 @@ function ViewDesktopMenuTexas:new(o)
     o.InitDepth = nil
     o.ViewKey = nil
     o.GCoCardType = nil
-
     return o
 end
 
+---------------------------------------
 function ViewDesktopMenuTexas:onCreate()
     self.GBtnStandUp = self.ComUi:GetChild("Lan_Btn_StandUp").asButton
     self.GBtnStandUp.onClick:Add(
@@ -63,54 +65,52 @@ function ViewDesktopMenuTexas:onCreate()
             function()
                 self:close()
                 local ev = self.ViewMgr:getEv("EvClickShowReward")
-                if(ev == nil)
+                if (ev == nil)
                 then
                     ev = EvClickShowReward:new(nil)
                 end
                 self.ViewMgr:sendEv(ev)
-            end    )
+            end)
     self.mIsOb = false
     self.mIsWaitwhile = false
 end
 
-function ViewDesktopMenuTexas:setPlayerState(is_ob, is_waitwhile,have_reward)
+---------------------------------------
+function ViewDesktopMenuTexas:setPlayerState(is_ob, is_waitwhile, have_reward)
     self.mIsOb = is_ob
     self.mIsWaitwhile = is_waitwhile
-    if (is_ob)
-    then
+    if (is_ob) then
         self.GBtnStandUp.enabled = false
         self.GBtnLeaveInMiddle.enabled = false
-    elseif (is_waitwhile)
-    then
+    elseif (is_waitwhile) then
         self.GBtnLeaveInMiddle.enabled = false
     else
         self.GBtnStandUp.enabled = true
         self.GBtnLeaveInMiddle.enabled = true
     end
 
-    if (have_reward == false)
-    then
+    if (have_reward == false) then
         ViewHelper:setGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:setGObjectVisible(true, self.ComRewardTips)
-        if (self.TransitionNewReward.playing == false)
-        then
+        if (self.TransitionNewReward.playing == false) then
             self.TransitionNewReward:Play()
         end
     end
 end
 
+---------------------------------------
 function ViewDesktopMenuTexas:_onClickContinue()
     self:close()
 end
 
+---------------------------------------
 function ViewDesktopMenuTexas:_onClickExit()
     self.TransitionCreate:PlayReverse(
             function()
                 self.ViewMgr:destroyView(self)
                 local ev = self.ViewMgr:getEv("EvUiClickExitDesk")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiClickExitDesk:new(nil)
                 end
                 self.ViewMgr:sendEv(ev)
@@ -118,22 +118,21 @@ function ViewDesktopMenuTexas:_onClickExit()
     )
 end
 
+---------------------------------------
 function ViewDesktopMenuTexas: _onClickInviteFriend()
     local ev = self.ViewMgr:getEv("EvUiClickInviteFriendPlay")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickInviteFriendPlay:new(nil)
     end
     self.ViewMgr:sendEv(ev)
     self:close()
 end
 
+---------------------------------------
 function ViewDesktopMenuTexas: _onClickLeaveInMiddle()
-    if (self.mIsOb == false and self.mIsWaitwhile == false)
-    then
+    if (self.mIsOb == false and self.mIsWaitwhile == false) then
         local ev = self.ViewMgr:getEv("EvUiClickWaitWhile")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvUiClickWaitWhile:new(nil)
         end
         self.ViewMgr:sendEv(ev)
@@ -141,12 +140,11 @@ function ViewDesktopMenuTexas: _onClickLeaveInMiddle()
     self:close()
 end
 
+---------------------------------------
 function ViewDesktopMenuTexas:_onClickStandUp()
-    if (self.mIsOb == false)
-    then
+    if (self.mIsOb == false) then
         local ev = self.ViewMgr:getEv("EvUiClickOB")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvUiClickOB:new(nil)
         end
         self.ViewMgr:sendEv(ev)
@@ -154,21 +152,25 @@ function ViewDesktopMenuTexas:_onClickStandUp()
     self:close()
 end
 
+---------------------------------------
 function ViewDesktopMenuTexas:_onClickHelp()
     self.ViewMgr:createView("DesktopHintsTexas")
     self:close()
 end
 
+---------------------------------------
 function ViewDesktopMenuTexas:close()
     self.TransitionCreate:PlayReverse(
-		function()
-			self.ViewMgr:destroyView(self)
-		end
+            function()
+                self.ViewMgr:destroyView(self)
+            end
     )
 end
 
+---------------------------------------
 ViewDesktopMenuTexasFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewDesktopMenuTexasFactory:new(o, ui_package_name, ui_component_name,
                                          ui_layer, is_single, fit_screen)
     o = o or {}
@@ -182,6 +184,7 @@ function ViewDesktopMenuTexasFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewDesktopMenuTexasFactory:createView()
     local view = ViewDesktopMenuTexas:new(nil)
     return view

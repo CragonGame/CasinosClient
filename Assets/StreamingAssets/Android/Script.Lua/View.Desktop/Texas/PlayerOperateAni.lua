@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 PlayerOperateAni = {}
 
+---------------------------------------
 function PlayerOperateAni:new(o, com_ui)
     o = o or {}
     setmetatable(o, self)
@@ -13,10 +15,10 @@ function PlayerOperateAni:new(o, com_ui)
     o.ShowOtherIsPlayed = false
     o.AutoOperateIsPlayState = true
     o.ShowOtherIsPlayState = true
-
     return o
 end
 
+---------------------------------------
 -- 本人托管操作条隐藏动画播完后，紧接着播放操作条显示动画
 function PlayerOperateAni:showAutoOperate(play_single)
     if self.AutoOperateIsPlayed == false or self.AutoOperateIsPlayState then
@@ -47,6 +49,7 @@ function PlayerOperateAni:showAutoOperate(play_single)
     end
 end
 
+---------------------------------------
 -- 本人操作条隐藏动画播完后，紧接着播放托管操作条显示动画
 function PlayerOperateAni:showOtherOperate(play_single)
     if self.ShowOtherIsPlayed == false or self.ShowOtherIsPlayState then
@@ -75,6 +78,7 @@ function PlayerOperateAni:showOtherOperate(play_single)
     end
 end
 
+---------------------------------------
 function PlayerOperateAni:reset()
     self.TransitionShowOther:PlayReverse()
     self.TransitionShowAutoOperate:PlayReverse()

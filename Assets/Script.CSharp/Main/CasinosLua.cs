@@ -183,7 +183,7 @@ namespace Casinos
             typeof(Action),
             typeof(Action<string>),
             typeof(Action<string[]>),
-            typeof(Action<System.Byte[]>),
+            typeof(Action<byte[]>),
             typeof(Action<LuaTable>),
             typeof(Action<LuaTable,string>),
             typeof(Action<LuaTable,string,float>),

@@ -111,13 +111,6 @@ function ViewLotteryTicket:onDestroy()
 end
 
 ---------------------------------------
-function ViewLotteryTicket:onUpdate(tm)
-    --if (self.CasinosContext.Pause) then
-    --    return
-    --end
-end
-
----------------------------------------
 function ViewLotteryTicket:onHandleEv(ev)
     if (ev.EventName == "EvEntityLotteryTicketBetOperateTypeChange") then
         for key, value in pairs(ev.map_changeoperate) do

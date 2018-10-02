@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 DealerEx = {}
 
+---------------------------------------
 function DealerEx:new(o, ui_desktop, dealer_listener, card1, card2, card3, card4, card5)
     o = o or {}
     setmetatable(o, self)
@@ -47,24 +49,20 @@ function DealerEx:new(o, ui_desktop, dealer_listener, card1, card2, card3, card4
     return o
 end
 
+---------------------------------------
 function DealerEx:update(time)
-    if (self.mCanDeal == true)
-    then
+    if (self.mCanDeal == true) then
         self.mDealCardTm = self.mDealCardTm + time
-        if (self.mDealCardTm >= self.DealPlayerCardTm)
-        then
+        if (self.mDealCardTm >= self.DealPlayerCardTm) then
             self.mDealCardTm = 0
             local l = #self.mQueueDealCards
-            if (l > 0)
-            then
-                if (self.mActionDealOnePlayer ~= nil)
-                then
+            if (l > 0) then
+                if (self.mActionDealOnePlayer ~= nil) then
                     local player = table.remove(self.mQueueDealCards, 1)
                     self.mActionDealOnePlayer(player)
                 end
             else
-                if (self.mActionDealCardDone ~= nil)
-                then
+                if (self.mActionDealCardDone ~= nil) then
                     self.mActionDealCardDone()
                 end
 
@@ -136,6 +134,7 @@ function DealerEx:update(time)
     end
 end
 
+---------------------------------------
 function DealerEx:destroy()
     self.mQueueDealCards = {}
     self.mQueueDealCards = nil
@@ -161,14 +160,14 @@ function DealerEx:destroy()
     self.mIDealerListener = nil
 end
 
+---------------------------------------
 function DealerEx:dealPlayerCard(list_player, action_dealcarddone, deal_oneplayer)
     self.mActionDealCardDone = action_dealcarddone
     self.mActionDealOnePlayer = deal_oneplayer
 
     for k, v in pairs(list_player) do
         local c_p = LuaHelper:TableContainsV(self.mQueueDealCards, v)
-        if (c_p == false)
-        then
+        if (c_p == false) then
             table.insert(self.mQueueDealCards, v)
         end
     end
@@ -176,24 +175,22 @@ function DealerEx:dealPlayerCard(list_player, action_dealcarddone, deal_oneplaye
     self.mCanDeal = true
 end
 
+---------------------------------------
 function DealerEx:dealCommonCard(card, com_card)
     local card_common = self.mMapCardCommon[com_card.name]
     card_common:setCardData(card)
 
     local c = LuaHelper:TableContainsV(self.mQueueDealingEnabledCardCommon, card_common)
-    if (c == false)
-    then
+    if (c == false) then
         table.insert(self.mQueueDealingEnabledCardCommon, card_common)
     end
 
     local c1 = LuaHelper:TableContainsV(self.mQueueResetCardCommon, card_common)
-    if (c1 == false)
-    then
+    if (c1 == false) then
         table.insert(self.mQueueResetCardCommon, card_common)
     end
 
-    if (self.mCurrentDealingCardCommon == nil)
-    then
+    if (self.mCurrentDealingCardCommon == nil) then
         self.mCurrentDealingCardCommon = table.remove(self.mQueueDealingEnabledCardCommon, 1)
         self.mCurrentDealingCardCommon:deal(
                 function()
@@ -203,9 +200,9 @@ function DealerEx:dealCommonCard(card, com_card)
     end
 end
 
+---------------------------------------
 function DealerEx:showCommonCard(card, com_card, bet_player_count)
-    if (bet_player_count > 0)
-    then
+    if (bet_player_count > 0) then
         self.mShowCommonCardTm = self.ShowCommonCardTm * bet_player_count
         self.mCanShowCommonCard = false
     else
@@ -217,53 +214,52 @@ function DealerEx:showCommonCard(card, com_card, bet_player_count)
     card_common:setCardData(card)
 
     local c = LuaHelper:TableContainsV(self.mQueueResetCardCommon, card_common)
-    if (c == false)
-    then
+    if (c == false) then
         table.insert(self.mQueueResetCardCommon, card_common)
     end
 
     local cl = LuaHelper:TableContainsV(self.mQueueShowEnabledCardCommon, card_common)
-    if (cl == false)
-    then
+    if (cl == false) then
         table.insert(self.mQueueShowEnabledCardCommon, card_common)
     end
 end
 
+---------------------------------------
 function DealerEx:showCommonCardScreenshot(card, com_card)
     local common_name = com_card.name
     local card_common = self.mMapCardCommon[com_card.name]
-    if (card_common ~= nil)
-    then
+    if (card_common ~= nil) then
         card_common:setCardData(card)
         card_common:show(false)
 
         local c = LuaHelper:TableContainsV(self.mQueueResetCardCommon, card_common)
-        if (c == false)
-        then
+        if (c == false) then
             table.insert(self.mQueueResetCardCommon, card_common)
         end
     end
 end
 
-function DealerEx:showCommonCardType(need_showhighlight, list_cards_data,list_cards_all_data, is_end)
+---------------------------------------
+function DealerEx:showCommonCardType(need_showhighlight, list_cards_data, list_cards_all_data, is_end)
     for k, v in pairs(self.mMapCardCommon) do
-        v:showHighLight(need_showhighlight, list_cards_data,list_cards_all_data, is_end)
+        v:showHighLight(need_showhighlight, list_cards_data, list_cards_all_data, is_end)
     end
 end
 
+---------------------------------------
 function DealerEx:hideCommonCardType()
     for k, v in pairs(self.mMapCardCommon) do
         v:hideHightLight()
     end
 end
 
+---------------------------------------
 function DealerEx:resetCommonCardType(action_resetend)
     self:_clearDealingAndShowQue()
     self.mActionResetCommonCardEnd = action_resetend
 
     local l = #self.mQueueResetCardCommon
-    if (self.mCurrentResetCardCommon == nil and l > 0)
-    then
+    if (self.mCurrentResetCardCommon == nil and l > 0) then
         self.mCurrentResetCardCommon = table.remove(self.mQueueResetCardCommon, 1)
         self.mCurrentResetCardCommon:reset(true,
                 function(card)
@@ -273,14 +269,15 @@ function DealerEx:resetCommonCardType(action_resetend)
     end
 end
 
+---------------------------------------
 function DealerEx:resetCard(com_card)
     local card_common = self.mMapCardCommon[com_card.name]
-    if (card_common ~= nil)
-    then
+    if (card_common ~= nil) then
         card_common:reset(false)
     end
 end
 
+---------------------------------------
 function DealerEx:clearCurrentResetCard()
     self:_clearDealingAndShowQue()
 
@@ -296,6 +293,7 @@ function DealerEx:clearCurrentResetCard()
     self.mCurrentResetCardCommon = nil
 end
 
+---------------------------------------
 function DealerEx:clearQueue()
     self.mCanShowCommonCard = false
     self.mCanShowWinnerCard = false
@@ -310,6 +308,7 @@ function DealerEx:clearQueue()
     self:_clearDealingAndShowQue()
 end
 
+---------------------------------------
 function DealerEx:_clearDealingAndShowQue()
     self.mCanDeal = false
     self.mDealCardTm = 0
@@ -320,14 +319,14 @@ function DealerEx:_clearDealingAndShowQue()
     self.mCurrentShowingCardCommon = nil
 end
 
+---------------------------------------
 function DealerEx:giveWinnerChips(list_winner, action_givechipsdone)
     self.mActionGiveWinnerChipsDone = action_givechipsdone
     local t_loser = {}
     for k, v in pairs(list_winner) do
         local player = self.mUiDesktop:getPlayer(v.win_playerguid)
 
-        if (player ~= nil)
-        then
+        if (player ~= nil) then
             local winner_data = _tWinnerDataEx:new(player, v.win_golds, v.map_win_pot)
             if v.win_golds > 0 then
                 local t_win = {}
@@ -352,8 +351,7 @@ function DealerEx:giveWinnerChips(list_winner, action_givechipsdone)
             end
         end
         self.mQueueGiveWinnerChips = {}
-        if (self.mActionGiveWinnerChipsDone ~= nil)
-        then
+        if (self.mActionGiveWinnerChipsDone ~= nil) then
             self.mActionGiveWinnerChipsDone()
             self.mActionGiveWinnerChipsDone = nil
         end
@@ -377,11 +375,11 @@ function DealerEx:giveWinnerChips(list_winner, action_givechipsdone)
     end
 end
 
+---------------------------------------
 function DealerEx:getCardDealing()
     local card = table.remove(self.mQueueDisabledCardDealing, 1)
 
-    if (card == nil)
-    then
+    if (card == nil) then
         local co_carddealing = CS.FairyGUI.UIPackage.CreateObject(self.DesktopPackageName, self.CardDealingName)
         self.mUiDesktop.ComUi:AddChild(co_carddealing)
         card = UiCardDealingEx:new(nil, co_carddealing.asCom)
@@ -390,11 +388,13 @@ function DealerEx:getCardDealing()
     return card
 end
 
+---------------------------------------
 function DealerEx:cardObjDealingEnqueue(card)
     card:reset(false)
     table.insert(self.mQueueDisabledCardDealing, card)
 end
 
+---------------------------------------
 --function DealerEx:_showWinnerCard()
 --    local winner_data = table.remove(self.mQueueShowWinnerCard, 1)
 --
@@ -408,11 +408,11 @@ end
 --    winner_data.player.UiDesktopPlayerInfo:showWinnerCard()
 --end
 
+---------------------------------------
 function DealerEx:_giveChipsToPlayer()
     local t_winner = table.remove(self.mQueueGiveWinnerChips, 1)
 
-    if (t_winner == nil or #t_winner == 0)
-    then
+    if (t_winner == nil or #t_winner == 0) then
         return
     end
 
@@ -423,21 +423,19 @@ function DealerEx:_giveChipsToPlayer()
     end
 
     local l = #self.mQueueGiveWinnerChips
-    if (l == 0)
-    then
-        if (self.mActionGiveWinnerChipsDone ~= nil)
-        then
+    if (l == 0) then
+        if (self.mActionGiveWinnerChipsDone ~= nil) then
             self.mActionGiveWinnerChipsDone()
             self.mActionGiveWinnerChipsDone = nil
         end
     end
 end
 
+---------------------------------------
 function DealerEx:_dealCommonCardCallBack()
     if self.mQueueDealingEnabledCardCommon ~= nil then
         local l = #self.mQueueDealingEnabledCardCommon
-        if (l > 0)
-        then
+        if (l > 0) then
             self.mCurrentDealingCardCommon = table.remove(self.mQueueDealingEnabledCardCommon, 1)
             self.mCurrentDealingCardCommon:deal(
                     function()
@@ -451,10 +449,10 @@ function DealerEx:_dealCommonCardCallBack()
     end
 end
 
+---------------------------------------
 function DealerEx:_showCommonCardCallBack()
     local l = #self.mQueueShowEnabledCardCommon
-    if (l > 0)
-    then
+    if (l > 0) then
         self.mCurrentShowingCardCommon = table.remove(self.mQueueShowEnabledCardCommon, 1)
         self.mCurrentShowingCardCommon:show(true,
                 function()
@@ -468,13 +466,12 @@ function DealerEx:_showCommonCardCallBack()
     end
 end
 
+---------------------------------------
 function DealerEx:_resetCommonCardCallBack(ui_card)
     local card_common = ui_card
-    if (self.mCurrentResetCardCommon == card_common)
-    then
+    if (self.mCurrentResetCardCommon == card_common) then
         local l = #self.mQueueResetCardCommon
-        if (l > 0)
-        then
+        if (l > 0) then
             self.mCurrentResetCardCommon = table.remove(self.mQueueResetCardCommon, 1)
             self.mCurrentResetCardCommon:reset(true,
                     function(card)
@@ -491,14 +488,17 @@ function DealerEx:_resetCommonCardCallBack(ui_card)
     end
 end
 
+---------------------------------------
 function DealerEx:_createUiCardCommon(card)
     local name = card.name
     local card_common = UiCardCommonEx:new(nil, card)
     self.mMapCardCommon[name] = card_common
 end
 
+---------------------------------------
 _tWinnerDataEx = {}
 
+---------------------------------------
 function _tWinnerDataEx:new(player, win_chips, map_win_pot)
     o = {}
     setmetatable(o, self)
@@ -506,12 +506,13 @@ function _tWinnerDataEx:new(player, win_chips, map_win_pot)
     o.player = player
     o.win_chips = win_chips
     o.map_win_pot = map_win_pot
-
     return o
 end
 
+---------------------------------------
 _WinnerPlayerInfo = {}
 
+---------------------------------------
 function _WinnerPlayerInfo:new(win_playerguid, win_golds, map_win_pot)
     o = {}
     setmetatable(o, self)
@@ -519,12 +520,13 @@ function _WinnerPlayerInfo:new(win_playerguid, win_golds, map_win_pot)
     o.win_playerguid = win_playerguid
     o.win_golds = win_golds
     o.map_win_pot = map_win_pot
-
     return o
 end
 
+---------------------------------------
 _tChairInfo = {}
 
+---------------------------------------
 function _tChairInfo:new(o, com_chair, com_sit, com_seatparent, image_sit, image_invite, index)
     o = o or {}
     setmetatable(o, self)
@@ -535,6 +537,5 @@ function _tChairInfo:new(o, com_chair, com_sit, com_seatparent, image_sit, image
     o.GImagePlayerSit = image_sit
     o.GImagePlayerInvite = image_invite
     o.ChairIndex = index
-
     return o
 end

@@ -37,10 +37,6 @@ function ViewShare:onCreate()
 end
 
 ---------------------------------------
-function ViewShare:onUpdate(tm)
-end
-
----------------------------------------
 function ViewShare:setPlayerInfo(nick_name, account_id, share_type)
     self.ShareType = share_type
     self.NickName.text = string.format("%s:%s", self.ViewMgr.LanMgr:getLanValue("NickName"), nick_name)
