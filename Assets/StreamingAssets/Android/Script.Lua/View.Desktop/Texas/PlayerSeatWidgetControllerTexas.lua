@@ -1,6 +1,35 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
+_tSeatWidgetEx = {}
+
+---------------------------------------
+function _tSeatWidgetEx:new(o)
+    o = {} or o
+    setmetatable(o, self)
+    self.__index = self
+    o.GImageDealerSign = nil
+    o.GGroupChipValue = nil-- 下注筹码显示组
+    o.GTextChipValue = nil
+    o.GLoaderChipSign = nil
+    o.GComChipStart = nil-- 飞筹码起点位置
+    o.GComChipEnd = nil-- 飞筹码终点位置
+    o.GLoaderCardFirst = nil-- 居中位置的右侧手牌
+    o.GImageCardFirst = nil-- 所有位置的手牌背面
+    o.GImageCardFirstHighLight = nil-- 居中位置的右侧手牌黄框
+    o.GImageShowCard1 = nil-- 亮牌眼睛图标
+    o.GLoaderCardSecond = nil-- 同上4个变量
+    o.GImageCardSecond = nil
+    o.GImageCardSecondHighLight = nil
+    o.GImageShowCard2 = nil
+    o.TransitionCardFold = nil-- 盖牌动画
+    o.TransitionCardInit = nil-- 盖牌动画过后一组元素的瞬间还原
+    o.GroupCardType = nil-- 组，包含本人专用的牌型提示文字等
+    o.TextCardType = nil-- 本人专用的牌型提示文字
+    return o
+end
+
+---------------------------------------
 PlayerSeatWidgetControllerTexas = {
     GroupTitle = "Group",
     TransitionTitle = "Transition",
@@ -251,33 +280,26 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:raiseChips()
-    if (self.ChipRaise ~= nil)
-    then
+    if (self.ChipRaise ~= nil) then
         self.UiGoldMgr:chipEnquee(self.ChipRaise)
         self.ChipRaise = nil
     end
     local from = self.SeatWidget.GComChipStart.xy
     local to = self.SeatWidget.GComChipEnd.xy
-    self.ChipRaise = self.UiGoldMgr:moveChip(from, to,
-            0.3, "chip", CS.Casinos.ChipMoveType.Raise, self.PlayerInfo.ComUi,
+
+    self.ChipRaise = self.UiGoldMgr:moveChip(from, to, 0.25, "chip", CS.Casinos.ChipMoveType.Raise, self.PlayerInfo.ComUi,
             function()
-                if (self.ChipRaise == nil)
-                then
+                if (self.ChipRaise == nil) then
                     return
                 end
-
-                if (self.SeatWidget ~= nil)
-                then
+                if (self.SeatWidget ~= nil) then
                     CS.Casinos.CasinosContext.Instance:Play("chip", CS.Casinos._eSoundLayer.LayerNormal)
                     self:_showBet()
                 end
-
                 self.ChipRaise = nil
-            end
-    ,
+            end,
             function()
-                if (self.PlayerInfo.ComUi.displayObject ~= nil and self.PlayerInfo.ComUi.displayObject.gameObject ~= nil)
-                then
+                if (self.PlayerInfo.ComUi.displayObject ~= nil and self.PlayerInfo.ComUi.displayObject.gameObject ~= nil) then
                     CS.Casinos.CasinosContext.Instance:Play("chip", CS.Casinos._eSoundLayer.LayerNormal)
                 end
             end
@@ -286,8 +308,7 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:sendWinnerChips(winner_golds, map_win_pot)
-    if (self.TChipGetWin ~= nil)
-    then
+    if (self.TChipGetWin ~= nil) then
         for i, v in pairs(self.TChipGetWin) do
             self.UiGoldMgr:chipEnquee(v)
         end
@@ -302,14 +323,12 @@ function PlayerSeatWidgetControllerTexas:sendWinnerChips(winner_golds, map_win_p
             local get_pot = self.UiGoldMgr:moveWinChip(i + 1, from, to,
                     0.3, "chipfly", CS.Casinos.ChipMoveType.RunOutOfMainPot, self.PlayerInfo.ComUi,
                     function()
-                        if (self.AlreadyGetWinGold)
-                        then
+                        if (self.AlreadyGetWinGold) then
                             return
                         end
                         self.AlreadyGetWinGold = true
 
-                        if (self.SeatWidget ~= nil)
-                        then
+                        if (self.SeatWidget ~= nil) then
                             if winner_golds > 0 then
                                 self.PlayerInfo:showWinStar(winner_golds)
                             else
@@ -325,8 +344,7 @@ function PlayerSeatWidgetControllerTexas:sendWinnerChips(winner_golds, map_win_p
                             self.PlayerInfo.ViewDesktop.UiPot:resetViewPot(i + 1)
                         end
 
-                        if (self.PlayerInfo.ComUi.displayObject ~= nil and self.PlayerInfo.ComUi.displayObject.gameObject ~= nil)
-                        then
+                        if (self.PlayerInfo.ComUi.displayObject ~= nil and self.PlayerInfo.ComUi.displayObject.gameObject ~= nil) then
                             CS.Casinos.CasinosContext.Instance:Play("chipfly", CS.Casinos._eSoundLayer.LayerNormal)
                         end
                     end
@@ -338,12 +356,10 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:playerFold()
-    if (self.SeatWidget ~= nil)
-    then
+    if (self.SeatWidget ~= nil) then
         self.SeatWidget.TransitionCardFold:Play(
                 function()
-                    if (self.SeatWidget ~= nil)
-                    then
+                    if (self.SeatWidget ~= nil) then
                         local player_state = self.PlayerInfo.Player.PlayerDataDesktop.DesktopPlayerState
                         local action_type = self.PlayerInfo.Player.PlayerDataDesktop.PlayerActionType
                         local show_card = (player_state == TexasDesktopPlayerState.InGame) and
@@ -357,8 +373,7 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:goldsInMainPot(t_playerchips_inpot)
-    if (self.TChipInPot ~= nil)
-    then
+    if (self.TChipInPot ~= nil) then
         for i, v in pairs(self.TChipInPot) do
             self.UiGoldMgr:chipEnquee(v)
         end
@@ -370,32 +385,26 @@ function PlayerSeatWidgetControllerTexas:goldsInMainPot(t_playerchips_inpot)
         local current_pot_xy = self.PlayerInfo.ViewDesktop.UiPot:getPotPos(i)
         if current_pot_xy ~= nil then
             local to = self.PlayerInfo.ViewDesktop.ComUi:TransformPoint(current_pot_xy, self.PlayerInfo.ComUi)
-            local chip_in_pot = self.UiGoldMgr:moveChip(from, to,
-                    0.3, "hechip", CS.Casinos.ChipMoveType.GoToMainPot, self.PlayerInfo.ComUi,
+            local chip_in_pot = self.UiGoldMgr:moveChip(from, to, 0.4, "hechip", CS.Casinos.ChipMoveType.GoToMainPot, self.PlayerInfo.ComUi,
                     function()
-                        if (self.AlreadyGoldInPot)
-                        then
+                        if (self.AlreadyGoldInPot) then
                             return
                         end
                         self.AlreadyGoldInPot = false
 
-                        if (self.SeatWidget ~= nil)
-                        then
+                        if (self.SeatWidget ~= nil) then
                             self:_resetGold()
-                            if (self.PlayerInfo.ViewDesktop ~= nil)
-                            then
+                            if (self.PlayerInfo.ViewDesktop ~= nil) then
                                 self.PlayerInfo.ViewDesktop:playerSendChipsToPotDone()
                             end
                         end
                     end
             ,
                     function()
-                        if (self.PlayerInfo.ComUi.displayObject ~= nil and self.PlayerInfo.ComUi.displayObject.gameObject ~= nil)
-                        then
+                        if (self.PlayerInfo.ComUi.displayObject ~= nil and self.PlayerInfo.ComUi.displayObject.gameObject ~= nil) then
                             CS.Casinos.CasinosContext.Instance:Play("hechip", CS.Casinos._eSoundLayer.LayerNormal)
                         end
-                        if (self.SeatWidget ~= nil)
-                        then
+                        if (self.SeatWidget ~= nil) then
                             self:_resetGold()
                         end
                     end
@@ -453,8 +462,7 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:hideHighLight()
-    if (self.SeatWidget.GImageCardFirstHighLight ~= nil)
-    then
+    if (self.SeatWidget.GImageCardFirstHighLight ~= nil) then
         ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageCardFirstHighLight)
         ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageCardSecondHighLight)
     end
@@ -464,13 +472,11 @@ end
 function PlayerSeatWidgetControllerTexas:showHandCardHighLight(best_hand, card_type_str)
     local show_cardtype_tips = true
     local hand_type = best_hand.RankType
-    if (hand_type == CS.Casinos.HandRankTypeTexas.None or hand_type == CS.Casinos.HandRankTypeTexas.HighCard)
-    then
+    if (hand_type == CS.Casinos.HandRankTypeTexas.None or hand_type == CS.Casinos.HandRankTypeTexas.HighCard) then
         show_cardtype_tips = false
     end
 
-    if (show_cardtype_tips and self.SeatWidget.GLoaderCardFirst.visible)
-    then
+    if (show_cardtype_tips and self.SeatWidget.GLoaderCardFirst.visible) then
         if self.PlayerInfo.Player.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.InGame and CS.System.String.IsNullOrEmpty(card_type_str) == false then
             if self.SeatWidget.GroupCardType ~= nil then
                 ViewHelper:setGObjectVisible(true, self.SeatWidget.GroupCardType)
@@ -512,8 +518,7 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_resetCard(hide_card)
-    if (self.SeatWidget == nil)
-    then
+    if (self.SeatWidget == nil) then
         return
     end
 
@@ -529,14 +534,12 @@ function PlayerSeatWidgetControllerTexas:_resetCard(hide_card)
     end
     self.LoaderTicket1 = nil
     self.LoaderTicket2 = nil
-    if (self.SeatWidget.GLoaderCardFirst ~= nil)
-    then
+    if (self.SeatWidget.GLoaderCardFirst ~= nil) then
         self.SeatWidget.GLoaderCardFirst.icon = nil
         self.SeatWidget.GLoaderCardSecond.icon = nil
     end
 
-    if (hide_card == true)
-    then
+    if (hide_card == true) then
         self:_setCardVisible(false)
     end
 end
@@ -544,20 +547,16 @@ end
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_cardsIsTheSame(card, card_compare)
     local is_same = true
-    if (card ~= nil)
-    then
-        if (card_compare ~= nil)
-        then
-            if (card.Suit ~= card_compare.Suit or card.Type ~= card_compare.Type)
-            then
+    if (card ~= nil) then
+        if (card_compare ~= nil) then
+            if (card.Suit ~= card_compare.Suit or card.Type ~= card_compare.Type) then
                 is_same = false
             end
         else
             is_same = false
         end
     else
-        if (card_compare ~= nil)
-        then
+        if (card_compare ~= nil) then
             is_same = false
         else
             print("New Card Is Null")
@@ -570,8 +569,7 @@ end
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_showSeatWidget()
     local seatwidget_name = self:_getSeatWidgetName()
-    if (CS.System.String.IsNullOrEmpty(seatwidget_name))
-    then
+    if (CS.System.String.IsNullOrEmpty(seatwidget_name)) then
         print("Player self.SeatIndex Invalid!")
         return
     end
@@ -580,8 +578,7 @@ function PlayerSeatWidgetControllerTexas:_showSeatWidget()
     local current_widget_group = nil
     for k, v in pairs(self.MapAllSeatWidgetGroup) do
         local widget_group = v
-        if (seatwidget_name == k)
-        then
+        if (seatwidget_name == k) then
             widget_group.visible = true
             current_widget_group = widget_group
         else
@@ -662,8 +659,7 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_showBet()
-    if (self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet > 0)
-    then
+    if (self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet > 0) then
         ViewHelper:setGObjectVisible(true, self.SeatWidget.GGroupChipValue)
         self.SeatWidget.GTextChipValue.text = UiChipShowHelper:getGoldShowStr(self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet,
                 self.PlayerInfo.ViewMgr.LanMgr.LanBase, true, 1)
@@ -676,15 +672,13 @@ end
 function PlayerSeatWidgetControllerTexas:_setCardVisible(is_visible)
     ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardFirst)
     ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardSecond)
-    if (self.SeatWidget.GImageCardFirstHighLight ~= nil and is_visible == false)
-    then
+    if (self.SeatWidget.GImageCardFirstHighLight ~= nil and is_visible == false) then
         ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardFirstHighLight)
         ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardSecondHighLight)
         ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageShowCard1)
         ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageShowCard2)
     end
-    if (self.SeatWidget.GLoaderCardFirst ~= nil)
-    then
+    if (self.SeatWidget.GLoaderCardFirst ~= nil) then
         ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GLoaderCardFirst)
         ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GLoaderCardSecond)
         if is_visible == false then
@@ -698,52 +692,36 @@ end
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_getSeatWidgetName()
     local seatwidget_name = ""
-    if (self.PlayerInfo.DesktopSeatCount == 5)
-    then
-        if (self.PlayerInfo.Player.UiSeatIndex == 0)
-        then
+    if (self.PlayerInfo.DesktopSeatCount == 5) then
+        if (self.PlayerInfo.Player.UiSeatIndex == 0) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.FirstSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 2)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 2) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.RightSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 4)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 4) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.BottomSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 6)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 6) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.LeftSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 8)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 8) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.EndSeatName
         end
-    elseif (self.PlayerInfo.DesktopSeatCount == 9 or self.PlayerInfo.DesktopSeatCount == 6)
-    then
-        if (self.PlayerInfo.Player.UiSeatIndex == 0)
-        then
+    elseif (self.PlayerInfo.DesktopSeatCount == 9 or self.PlayerInfo.DesktopSeatCount == 6) then
+        if (self.PlayerInfo.Player.UiSeatIndex == 0) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.FirstSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 1)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 1) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.TopRightSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 2)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 2) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.RightSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 3)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 3) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.BottomRightSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 4)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 4) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.BottomSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 5)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 5) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.BottomLeftSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 6)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 6) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.LeftSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 7)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 7) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.TopLeftSeatName
-        elseif (self.PlayerInfo.Player.UiSeatIndex == 8)
-        then
+        elseif (self.PlayerInfo.Player.UiSeatIndex == 8) then
             seatwidget_name = PlayerSeatWidgetControllerTexas.EndSeatName
         end
     end
@@ -753,8 +731,7 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_resetGold()
-    if (self.SeatWidget ~= nil)
-    then
+    if (self.SeatWidget ~= nil) then
         self.SeatWidget.GTextChipValue.text = ""
         ViewHelper:setGObjectVisible(false, self.SeatWidget.GGroupChipValue)
     end
@@ -762,29 +739,24 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_checkSelfHand(list_card, image_highlight, card)
-    if (card == nil)
-    then
+    if (card == nil) then
         return
     end
 
     local show_hightlight = false
     for i, v in pairs(list_card) do
-        if (card.Suit == v.suit and card.Type == v.type)
-        then
+        if (card.Suit == v.suit and card.Type == v.type) then
             show_hightlight = true
             break
         end
     end
 
-    if (image_highlight ~= nil)
-    then
+    if (image_highlight ~= nil) then
         ViewHelper:setGObjectVisible(show_hightlight, image_highlight)
     end
 
-    if (self.IsGameEnd and show_hightlight == false)
-    then
-        if (card == self.CardFirst)
-        then
+    if (self.IsGameEnd and show_hightlight == false) then
+        if (card == self.CardFirst) then
             self.SeatWidget.GLoaderCardFirst.color = CS.UnityEngine.Color.gray
         else
             self.SeatWidget.GLoaderCardFirst.color = CS.UnityEngine.Color.gray
@@ -794,24 +766,21 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_destroyMoveGold()
-    if (self.TChipInPot ~= nil)
-    then
+    if (self.TChipInPot ~= nil) then
         for i, v in pairs(self.TChipInPot) do
             self.UiGoldMgr:chipEnquee(v)
         end
         self.TChipInPot = {}
     end
 
-    if (self.TChipGetWin ~= nil)
-    then
+    if (self.TChipGetWin ~= nil) then
         for i, v in pairs(self.TChipGetWin) do
             self.UiGoldMgr:chipEnquee(v)
         end
         self.TChipGetWin = {}
     end
 
-    if (self.ChipRaise ~= nil)
-    then
+    if (self.ChipRaise ~= nil) then
         self.UiGoldMgr:chipEnquee(self.ChipRaise)
         self.ChipRaise = nil
     end
@@ -822,8 +791,7 @@ function PlayerSeatWidgetControllerTexas:onClickCard1(ev)
     ev:StopPropagation()
 
     local ev = self.PlayerInfo.ViewMgr:getEv("EvUiClickShowCard")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickShowCard:new(nil)
     end
     ev.click_card1 = true
@@ -834,40 +802,9 @@ end
 function PlayerSeatWidgetControllerTexas:onClickCard2(ev)
     ev:StopPropagation()
     local ev = self.PlayerInfo.ViewMgr:getEv("EvUiClickShowCard")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickShowCard:new(nil)
     end
     ev.click_card1 = false
     self.PlayerInfo.ViewMgr:sendEv(ev)
-end
-
----------------------------------------
-_tSeatWidgetEx = {}
-
----------------------------------------
-function _tSeatWidgetEx:new(o)
-    o = {} or o
-    setmetatable(o, self)
-    self.__index = self
-    o.GImageDealerSign = nil
-    o.GGroupChipValue = nil-- 下注筹码显示组
-    o.GTextChipValue = nil
-    o.GLoaderChipSign = nil
-    o.GComChipStart = nil-- 飞筹码起点位置
-    o.GComChipEnd = nil-- 飞筹码终点位置
-    o.GLoaderCardFirst = nil-- 居中位置的右侧手牌
-    o.GImageCardFirst = nil-- 所有位置的手牌背面
-    o.GImageCardFirstHighLight = nil-- 居中位置的右侧手牌黄框
-    o.GImageShowCard1 = nil-- 亮牌眼睛图标
-    o.GLoaderCardSecond = nil-- 同上4个变量
-    o.GImageCardSecond = nil
-    o.GImageCardSecondHighLight = nil
-    o.GImageShowCard2 = nil
-    o.TransitionCardFold = nil-- 盖牌动画
-    o.TransitionCardInit = nil-- 盖牌动画过后一组元素的瞬间还原
-    o.GroupCardType = nil-- 组，包含本人专用的牌型提示文字等
-    o.TextCardType = nil-- 本人专用的牌型提示文字
-
-    return o
 end

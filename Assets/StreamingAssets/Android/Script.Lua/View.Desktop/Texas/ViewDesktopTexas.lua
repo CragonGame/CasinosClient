@@ -255,7 +255,7 @@ function ViewDesktopTexas:onDestroy()
     end
     self.ViewMgr:unbindEvListener(self)
     if (self.UiChipMgr ~= nil) then
-        self.UiChipMgr:destroy()
+        self.UiChipMgr:Destroy()
     end
 
     if (self.UiDesktopChatParent ~= nil) then
@@ -370,7 +370,7 @@ function ViewDesktopTexas:_timerUpdate(elapsed_tm)
     --end
 
     if (self.UiChipMgr ~= nil) then
-        self.UiChipMgr:update(elapsed_tm)
+        self.UiChipMgr:Update(elapsed_tm)
     end
     self.CheckTimeTime = self.CheckTimeTime + elapsed_tm
     if (self.CheckTimeTime >= 60) then

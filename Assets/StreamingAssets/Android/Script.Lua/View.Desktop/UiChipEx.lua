@@ -29,7 +29,6 @@ function UiChipEx:init(from, to, move_time, delay, move_sound, chip_type, move_e
     if (self.GComChip == nil) then
         self:_resetChip()
     end
-
     ViewHelper:setGObjectVisible(false, self.GComChip)
     self.From = from
     self.To = to
@@ -39,6 +38,7 @@ function UiChipEx:init(from, to, move_time, delay, move_sound, chip_type, move_e
     self.ChipMoveType = chip_type
     self.MoveEndCallBack = move_end
     self.StartMove = start_movenotify
+    self.GComChip.xy = self.From
 end
 
 ---------------------------------------
@@ -47,7 +47,6 @@ function UiChipEx:reset()
         self:_resetChip()
         return
     end
-
     self.From = CS.Casinos.LuaHelper.GetVector2(0, 0)
     self.To = CS.Casinos.LuaHelper.GetVector2(0, 0)
     self:_resetChip()
@@ -82,10 +81,15 @@ function UiChipEx:moveAndScale()
     end
 
     CS.Casinos.UiHelper.setGObjectVisible(true, self.GComChip)
-    self.TweenerMove = self.GComChip:TweenMove(self.To, self.MoveTime):SetSnapping(true):SetDelay(self.Delay):SetEase(CS.FairyGUI.EaseType.SineInOut):OnComplete(
+    self.TweenerMove = self.GComChip:TweenMove(self.To, self.MoveTime)
+                           --:SetSnapping(true)
+                           :SetDelay(self.Delay)
+                           :SetEase(CS.FairyGUI.EaseType.Linear)
+                           :OnComplete(
             function()
                 self.ChipMgr:chipEnquee(self)
             end)
+
     --self.TweenerScale = CS.Casinos.UiDoTweenHelper.TweenScale(self.GComChip, CS.UnityEngine.Vector2.zero, CS.UnityEngine.Vector2.one, self.MoveTime)
 end
 
@@ -95,7 +99,10 @@ function UiChipEx:move(from, to, move_end)
         self:_resetChip()
         return
     end
-    self.TweenerMove = self.GComChip:TweenMove(to, self.MoveTime):SetSnapping(true):OnComplete(move_end)
+
+    self.TweenerMove = self.GComChip:TweenMove(to, self.MoveTime)
+                           --:SetSnapping(true)
+                           :OnComplete(move_end)
 end
 
 ---------------------------------------

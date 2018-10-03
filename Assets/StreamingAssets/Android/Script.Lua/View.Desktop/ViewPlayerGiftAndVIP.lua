@@ -15,6 +15,7 @@ function ViewPlayerGiftAndVIP:new(o, player_guid, com_gift_left, com_gift_right,
     o.ViewMgr = view_mgr
     o.GComPlayer = com_player
     o.PlayerGuid = player_guid
+
     o.GComGiftAndVIPLeft = com_gift_left
     o.GComGiftAndVIPLeft.onClick:Add(
             function(ev)
@@ -23,6 +24,7 @@ function ViewPlayerGiftAndVIP:new(o, player_guid, com_gift_left, com_gift_right,
     )
     o.GImageGiftLeft = o.GComGiftAndVIPLeft:GetChild("Gift").asImage
     o.GImageVIPLeft = o.GComGiftAndVIPLeft:GetChild("VipSign").asImage
+
     o.GComGiftAndVIPRight = com_gift_right
     o.GComGiftAndVIPRight.onClick:Add(
             function(ev)
@@ -32,6 +34,7 @@ function ViewPlayerGiftAndVIP:new(o, player_guid, com_gift_left, com_gift_right,
     o.GImageGiftRight = o.GComGiftAndVIPRight:GetChild("Gift").asImage
     o.GImageVIPRight = o.GComGiftAndVIPRight:GetChild("VipSign").asImage
 
+    o.OriginX = 0
     return o
 end
 
@@ -56,35 +59,41 @@ function ViewPlayerGiftAndVIP:checkGiftAndVIPPos(desk_seatcount, ui_index, vip_l
     self.GComCurrentGiftParent = self.GComGiftAndVIPLeft
     self.GImageCurrentGift = self.GImageGiftLeft
     self.GImageCurrentVIP = self.GImageVIPLeft
+
     local half_index = math.floor(desk_seatcount / 2)
     if (desk_seatcount == 5) then
         half_index = half_index * 2
     end
     if (half_index < ui_index) then
+        self.ShowLeftGift = false
         self.GComCurrentGiftParent = self.GComGiftAndVIPRight
         self.GImageCurrentGift = self.GImageGiftRight
-        self.ShowLeftGift = false
         self.GImageCurrentVIP = self.GImageVIPRight
     end
+
     self.GComGiftAndVIPLeft.visible = self.ShowLeftGift
     if (self.ShowLeftGift) then
         self.GComGiftAndVIPRight.visible = false
     else
         self.GComGiftAndVIPRight.visible = true
     end
-    CS.Casinos.UiHelper.setGObjectVisible(false, self.GImageVIPLeft, self.GImageVIPRight)
-    local is_vip = vip_level > 0
+
+    --local is_vip = vip_level > 0
     --self.GImageCurrentVIP.visible = is_vip
+    CS.Casinos.UiHelper.setGObjectVisible(false, self.GImageVIPLeft, self.GImageVIPRight)
+
     local gift_parent_pos = self.GComCurrentGiftParent.xy
     local parent_w = self.GComCurrentGiftParent.width
     local parent_h = self.GComCurrentGiftParent.height
     gift_parent_pos.x = gift_parent_pos.x + (parent_w / 2)
     gift_parent_pos.y = gift_parent_pos.y + (parent_h / 2)
     self.GiftCenterPos = gift_parent_pos
+
     if (self.GComCurrentShowGift ~= nil) then
         CS.Casinos.UiHelper.setGObjectVisible(false, self.GImageCurrentGift)
         self:setGiftPos()
     end
+    self.OriginX = self.GiftCenterPos.x
 end
 
 ---------------------------------------
@@ -120,7 +129,9 @@ function ViewPlayerGiftAndVIP:setGift(item, from_pos, is_sendgift)
             end
             self:loadGiftIcon(item.TbDataItem.Id,
                     function()
-                        self.TweenerSendGiftMove = self.GComCurrentShowGift:TweenMove(to_pos, 1):SetSnapping(true):OnComplete(
+                        self.TweenerSendGiftMove = self.GComCurrentShowGift:TweenMove(to_pos, 1)
+                        --:SetSnapping(true)
+                                                       :OnComplete(
                                 function()
                                     self.TweenerSendGiftMove = nil
                                 end)
@@ -131,6 +142,7 @@ function ViewPlayerGiftAndVIP:setGift(item, from_pos, is_sendgift)
         end
         CS.Casinos.UiHelper.setGObjectVisible(false, self.GImageCurrentGift)
     end
+
     if (self.GComCurrentShowGift ~= nil) then
         self:setGiftPos()
     end
@@ -146,25 +158,31 @@ function ViewPlayerGiftAndVIP:playerIsShowDown()
         to = ViewPlayerGiftAndVIP.GiftMoveDis
     end
     if (self.GComCurrentShowGift ~= nil) then
-        to = to + self.GComCurrentShowGift.x
-        self.TweenerWinMove = self.GComCurrentShowGift:TweenMoveX(to, self.GiftPlayerWinMoveTime):SetSnapping(true)
+        to = to + self:getGiftPos().x
+        self.TweenerWinMove = self.GComCurrentShowGift:TweenMoveX(to, self.GiftPlayerWinMoveTime)
     else
-        to = to + self.GImageCurrentGift.x
-        self.TweenerWinMove = self.GImageCurrentGift:TweenMoveX(to, self.GiftPlayerWinMoveTime):SetSnapping(true)
+        to = to + self.GiftCenterPos.x
+        self.TweenerWinMove = self.GImageCurrentGift:TweenMoveX(to, self.GiftPlayerWinMoveTime)
     end
-    -- todo
-    --self.TweenerWinMove:SetAutoKill(false)
 end
 
 ---------------------------------------
 function ViewPlayerGiftAndVIP:reset()
+    if (self.TweenerWinMove ~= nil) then
+        self.TweenerWinMove:Kill(false)
+        self.TweenerWinMove = nil
+    end
+
     if (self.IsShowDown) then
-        if (self.TweenerWinMove ~= nil) then
-            -- todo
-            --self.TweenerWinMove:PlayBackwards()
-            self.TweenerWinMove = nil
-        end
         self.IsShowDown = false
+
+        if (self.GComCurrentShowGift ~= nil) then
+            local to = self:getGiftPos().x
+            self.TweenerWinMove = self.GComCurrentShowGift:TweenMoveX(to, self.GiftPlayerWinMoveTime)
+        else
+            local to = self.GiftCenterPos.x
+            self.TweenerWinMove = self.GImageCurrentGift:TweenMoveX(to, self.GiftPlayerWinMoveTime)
+        end
     end
 end
 

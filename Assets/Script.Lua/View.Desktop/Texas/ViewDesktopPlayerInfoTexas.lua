@@ -318,7 +318,7 @@ function ViewDesktopPlayerInfoTexas:playerChangeSeat()
             pos_ey = pos_ey - self.GImagePlayerShadow.height / 2
             pos_e.y = pos_ey
 
-            self.ComUi:TweenMove(pos_e, 0.4):SetSnapping(true)
+            self.ComUi:TweenMove(pos_e, 0.4)--:SetSnapping(true)
 
             if (self.PlayerSeatWidgetControllerEx ~= nil) then
                 self.PlayerSeatWidgetControllerEx:resetSeatIndex()

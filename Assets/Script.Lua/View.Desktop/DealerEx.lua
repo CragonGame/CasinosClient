@@ -94,9 +94,9 @@ function DealerEx:new(o, ui_desktop, dealer_listener, card1, card2, card3, card4
 end
 
 ---------------------------------------
-function DealerEx:Update(time)
+function DealerEx:Update(elapsed_tm)
     if (self.mCanDeal == true) then
-        self.mDealCardTm = self.mDealCardTm + time
+        self.mDealCardTm = self.mDealCardTm + elapsed_tm
         if (self.mDealCardTm >= self.DealPlayerCardTm) then
             self.mDealCardTm = 0
             local l = #self.mQueueDealCards
@@ -133,7 +133,7 @@ function DealerEx:Update(time)
     --end
 
     if (self.mCanGiveWinnerChips) then
-        self.mGiveChipsTm = self.mGiveChipsTm + time
+        self.mGiveChipsTm = self.mGiveChipsTm + elapsed_tm
         if (self.mGiveChipsTm >= self.GiveChipsTm) then
             self.mGiveChipsTm = 0
             if self.GiveChipsTm ~= 1.5 then
@@ -149,7 +149,7 @@ function DealerEx:Update(time)
     end
 
     if (self.mShowCommonCardTm > 0) then
-        self.mShowCommonCardTm = self.mShowCommonCardTm - time
+        self.mShowCommonCardTm = self.mShowCommonCardTm - elapsed_tm
         if (self.mShowCommonCardTm <= 0) then
             self.mCanShowCommonCard = true
         end

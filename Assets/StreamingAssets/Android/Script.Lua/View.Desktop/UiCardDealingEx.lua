@@ -34,13 +34,14 @@ function UiCardDealingEx:init(move_from, move_to, resize_to, rotate_to, move_tim
     self.MoveTime = move_time
     self.MoveSound = move_sound
     self.MoveEndCallBack = moveend_callback
+    self.GComCard.xy = self.MoveFrom
 end
 
 ---------------------------------------
 function UiCardDealingEx:deal(call_back)
     CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard)
     self.TweenerPos = self.GComCard:TweenMove(self.MoveTo, self.MoveTime)
-                          :SetSnapping(true)
+                          --:SetSnapping(true)
                           :OnComplete(
             function()
                 self:moveEnd()
@@ -50,7 +51,9 @@ function UiCardDealingEx:deal(call_back)
     -- CS.Casinos.UiDoTweenHelper.TweenResize(self.GComCard, self.GComCard.size, self.ResizeTo, self.MoveTime,false)
     self.TweenerScale = self.GComCard:TweenResize(self.ResizeTo, self.MoveTime)
 
-    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GComCard.rotationY, self.RotateTo, self.MoveTime):SetTarget(self.GComCard, CS.FairyGUI.TweenPropType.RotationY)
+    self.TweenerRotate = CS.FairyGUI.GTween.To(self.GComCard.rotationY, self.RotateTo, self.MoveTime)
+            :SetTarget(self.GComCard, CS.FairyGUI.TweenPropType.RotationY)
+
     if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false) then
         self.CasinosContext:Play(self.MoveSound, CS.Casinos._eSoundLayer.LayerNormal)
     end
