@@ -9,12 +9,10 @@ function ControllerLobby:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
     o.ViewMgr = ViewMgr:new(nil)
-
     return o
 end
 
@@ -50,49 +48,37 @@ end
 
 ---------------------------------------
 function ControllerLobby:onHandleEv(ev)
-    if (ev.EventName == "EvUiClickSearchDesk")
-    then
+    if (ev.EventName == "EvUiClickSearchDesk") then
         self:RequestSearchDesktop(ev.desktop_searchfilter)
-    elseif (ev.EventName == "EvUiClickSearchFriendsDesk")
-    then
+    elseif (ev.EventName == "EvUiClickSearchFriendsDesk") then
         local list_playerinfo = self.ControllerIM.IMFriendList:getInDesktopFriendList(ev.friend_state)
         local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySearchPlayingFriend")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntitySearchPlayingFriend:new(nil)
         end
         ev.list_playerinfo = list_playerinfo
         self.ControllerMgr.ViewMgr:sendEv(ev)
-    elseif (ev.EventName == "EvUiClickPlayInDesk")
-    then
+    elseif (ev.EventName == "EvUiClickPlayInDesk") then
         self:RequestEnterDesktop(ev.desk_etguid, true, ev.seat_index, ev.desktop_filter:getData4Pack())
-    elseif (ev.EventName == "EvUiClickViewInDesk")
-    then
+    elseif (ev.EventName == "EvUiClickViewInDesk") then
         local self_desktop_etguid = ""
-        if (self.ControllerDesktop.DesktopBase ~= nil)
-        then
+        if (self.ControllerDesktop.DesktopBase ~= nil) then
             self_desktop_etguid = self.ControllerDesktop.DesktopBase.Guid
         end
-        if ((ev.desk_etguid ~= self_desktop_etguid) and (ev.desk_etguid ~= nil and ev.desk_etguid ~= ""))
-        then
+        if ((ev.desk_etguid ~= self_desktop_etguid) and (ev.desk_etguid ~= nil and ev.desk_etguid ~= "")) then
             self:RequestEnterDesktop(ev.desk_etguid, false, ev.seat_index, ev.desktop_filter)
         else
             ViewHelper:UiShowInfoSuccess(self.ControllerMgr.ViewMgr.LanMgr:getLanValue("SameTableTips"))
         end
-    elseif (ev.EventName == "EvUiClickLeaveLobby")
-    then
+    elseif (ev.EventName == "EvUiClickLeaveLobby") then
         self:LeavePlayModel()
-    elseif (ev.EventName == "EvUiRequestGetCurrentFriendPlayDesk")
-    then
+    elseif (ev.EventName == "EvUiRequestGetCurrentFriendPlayDesk") then
         self.ControllerMgr.RPC:RPC1(CommonMethodType.SearchDesktopByPlayerGuidRequest, ev.player_guid)
-    elseif (ev.EventName == "EvUiClickCreateDeskTop")
-    then
+    elseif (ev.EventName == "EvUiClickCreateDeskTop") then
         self:RequestCreatePrivateDesktop(ev.create_info)
-    elseif (ev.EventName == "EvUiClickExitDesk")
-    then
+    elseif (ev.EventName == "EvUiClickExitDesk") then
         self:RequestLeaveDesktop()
-    elseif (ev.EventName == "EvUiRequestEnterDesktopGFlower")
-    then
+    elseif (ev.EventName == "EvUiRequestEnterDesktopGFlower") then
         self:RequestPlayNow(ev.DesktopFilter)
     end
 end
@@ -120,8 +106,7 @@ function ControllerLobby:OnSearchDesktopListNotify(list_desktopinfo)
         table.insert(l_desktopinfo, d_info)
     end
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityGetLobbyDeskList")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityGetLobbyDeskList:new()
     end
     ev.list_desktop = l_desktopinfo
@@ -135,8 +120,7 @@ function ControllerLobby:OnSearchDesktopByPlayerGuidNotify(desktop_info)
     d_info.DesktopGuid = desktop_info[2]
     d_info.DesktopData = desktop_info[3]
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySearchDesktopFollowFriend")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntitySearchDesktopFollowFriend:new()
     end
     ev.desktop_info = d_info
@@ -166,8 +150,7 @@ function ControllerLobby:RequestEnterDesktop(desktop_etguid, player_or_view, sea
     local enter_request = DesktopEnterRequest:new(nil)
     enter_request.desktop_guid = desktop_etguid
     enter_request.seat_index = seat_index
-    if (player_or_view == false)
-    then
+    if (player_or_view == false) then
         enter_request.is_ob = true
     else
         enter_request.is_ob = false

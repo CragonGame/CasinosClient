@@ -27,7 +27,7 @@ end
 -- 初始化
 function Launch:Setup()
     Launch:new(nil)
-    print('Launch:Setup()')
+    --print('Launch:Setup()')
 
     self:_checkCurrentLan()
 
@@ -68,7 +68,7 @@ function Launch:Setup()
     local async_asset_loadgroup = self.CasinosContext.AsyncAssetLoadGroup
     local http_url_bundlexxx = string.format('https://cragon-king-oss.cragon.cn/%s/%s.lua',
             self.CasinosContext.Config.Platform, lua_pkg_name)
-    print(http_url_bundlexxx)
+    --print(http_url_bundlexxx)
     async_asset_loadgroup:LoadWWWAsync(http_url_bundlexxx,
             function(url, www)
                 self.CasinosLua:LoadLuaFromBytes(lua_pkg_name, www.text)
@@ -77,7 +77,7 @@ function Launch:Setup()
                 -- 下载并加载Context.lua
                 local http_url_context = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/Context.lua',
                         self.CasinosContext.Config.Platform, DataSelect)
-                print(http_url_context)
+                --print(http_url_context)
                 async_asset_loadgroup:LoadWWWAsync(http_url_context,
                         function(url, www)
                             self.CasinosLua:LoadLuaFromBytes('Context', www.text)

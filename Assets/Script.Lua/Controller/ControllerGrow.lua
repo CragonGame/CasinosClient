@@ -8,13 +8,11 @@ function ControllerGrow:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
     o.ViewMgr = ViewMgr:new(nil)
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
-
     return o
 end
 
@@ -40,13 +38,10 @@ end
 
 ---------------------------------------
 function ControllerGrow:onUpdate(tm)
-    if (self.BGrowData ~= nil)
-    then
-        if (self.BGrowData.NextGetRewardLeftTm > 0)
-        then
+    if (self.BGrowData ~= nil) then
+        if (self.BGrowData.NextGetRewardLeftTm > 0) then
             self.BGrowData.NextGetRewardLeftTm = self.BGrowData.NextGetRewardLeftTm - tm
-            if (self.BGrowData.NextGetRewardLeftTm < 0)
-            then
+            if (self.BGrowData.NextGetRewardLeftTm < 0) then
                 self.BGrowData.NextGetRewardLeftTm = 0
             end
         end
@@ -55,8 +50,7 @@ end
 
 ---------------------------------------
 function ControllerGrow:onHandleEv(ev)
-    if (ev.EventName == "EvUiRequestGetGrowReward")
-    then
+    if (ev.EventName == "EvUiRequestGetGrowReward") then
         self.RPC:RPC0(self.MC.PlayerGetGrowRewardRequest)
     end
 end
@@ -68,8 +62,7 @@ end
 
 ---------------------------------------
 function ControllerGrow:s2cPlayerGetGrowRewardNotify(result, get_golds)
-    if (result == ProtocolResult.Success)
-    then
+    if (result == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(
                 self.ViewMgr.LanMgr:getLanValue("SuccessGet") .. UiChipShowHelper:getGoldShowStr(get_golds, self.ViewMgr.LanMgr.LanBase) ..
                         self.ViewMgr.LanMgr:getLanValue("Chip"))
@@ -87,8 +80,7 @@ function ControllerGrow:s2cPlayerGrowRewardSnapshotNotify(grow_data)
     data:setData(grow_data)
     self.BGrowData = data
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityOnGrowRewardSnapshot")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityOnGrowRewardSnapshot:new(nil)
     end
     ev.grow_data = data

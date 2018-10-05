@@ -189,34 +189,25 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:onHandleEv(ev)
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvCommonCardShowEnd")
-        then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvCommonCardShowEnd") then
             self.CanShowOperate = true
-            if (self.IsMeTurn and self.MeTurnData ~= nil)
-            then
+            if (self.IsMeTurn and self.MeTurnData ~= nil) then
                 self:_checkPlayerOperate(self.IsMeTurn, self.MeTurnData, 0)
             end
-        elseif (ev.EventName == "EvCommonCardDealEnd")
-        then
+        elseif (ev.EventName == "EvCommonCardDealEnd") then
             self.CanShowOperate = true
-            if (self.IsMeTurn and self.MeTurnData ~= nil)
-            then
+            if (self.IsMeTurn and self.MeTurnData ~= nil) then
                 self:_checkPlayerOperate(self.IsMeTurn, self.MeTurnData, 0)
             end
-        elseif (ev.EventName == "EvUiClickDesktop")
-        then
+        elseif (ev.EventName == "EvUiClickDesktop") then
             ViewHelper:setGObjectVisible(false, self.GSliderRise)
             self.ControllerSelfRaise.selectedIndex = 1
-        elseif (ev.EventName == "EvEntitySelfAutoActionChange")
-        then
+        elseif (ev.EventName == "EvEntitySelfAutoActionChange") then
             ViewHelper:setGObjectVisible(ev.is_autoaction, self.ComAutoAction)
-        elseif (ev.EventName == "EvUiClickFastBet")
-        then
+        elseif (ev.EventName == "EvUiClickFastBet") then
             self:_raise(ev.bet_value)
-        elseif (ev.EventName == "EvEntitySelfIsOB")
-        then
+        elseif (ev.EventName == "EvEntitySelfIsOB") then
             self:stand()
         end
     end
@@ -416,14 +407,12 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_checkPlayerOperate(is_me_turn, turn_data, call_chip)
-    if (self.DesktopPlayerTexas.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.InGame)
-    then
+    if (self.DesktopPlayerTexas.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.InGame) then
         return
     end
 
     if (self.DesktopPlayerTexas.PlayerDataDesktop.PlayerActionType == PlayerActionTypeTexas.Fold
-            or self.DesktopPlayerTexas.PlayerDataDesktop.PlayerActionType == PlayerActionTypeTexas.AllIn)
-    then
+            or self.DesktopPlayerTexas.PlayerDataDesktop.PlayerActionType == PlayerActionTypeTexas.AllIn) then
         ViewHelper:setGObjectVisible(false, self.GGroupLeaveWhile)
         ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
         ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
@@ -442,8 +431,7 @@ end
 -- 设置本人操作条和托管操作条的所有按钮以及按钮状态
 function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_data, call_chip)
     local list_valid_action = nil
-    if (self_acting and turn_data ~= nil)
-    then
+    if (self_acting and turn_data ~= nil) then
         list_valid_action = {}
         local can_action1 = PlayerCanActionDataTexas:new(nil)
         can_action1.can_action = PlayerCanActionTypeTexas.Fold
@@ -474,8 +462,7 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
         table.insert(list_valid_action, can_action3)
     end
 
-    if (list_valid_action ~= nil)
-    then
+    if (list_valid_action ~= nil) then
         self:_resetAutoChooseOperate(nil)
         if self.DesktopPlayerTexas.DesktopTexas.IsSnapshot == false then
             CS.Casinos.CasinosContext.Instance:Play("on_turn", CS.Casinos._eSoundLayer.LayerNormal)
@@ -494,14 +481,11 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
         for i, v in pairs(list_valid_action) do
             local c_a = v
             local action = c_a.can_action
-            if (action == PlayerCanActionTypeTexas.Fold)
-            then
-            elseif (action == PlayerCanActionTypeTexas.Check)
-            then
+            if (action == PlayerCanActionTypeTexas.Fold) then
+            elseif (action == PlayerCanActionTypeTexas.Check) then
                 self.IsCallOrCheck = false
                 self.GComCheckOrCall.title = self.ViewMgr.LanMgr:getLanValue("Check")
-            elseif (action == PlayerCanActionTypeTexas.Call)
-            then
+            elseif (action == PlayerCanActionTypeTexas.Call) then
                 self.IsCallOrCheck = true
                 local call_tips = self.ViewMgr.LanMgr:getLanValue("Call")
                 local tips = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(call_tips, UiChipShowHelper:getGoldShowStr(c_a.chip, self.ViewMgr.LanMgr.LanBase))
@@ -512,8 +496,7 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
 
                 self.GComCheckOrCall.title = tips
                 can_call = true
-            elseif (action == PlayerCanActionTypeTexas.Raise)
-            then
+            elseif (action == PlayerCanActionTypeTexas.Raise) then
                 if call_allin == true then
                     can_raise = false
                 else
@@ -580,22 +563,18 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickFoldOrCheck()
-    if ((self.DesktopPlayerTexas.DesktopTexas.PlayerTurn.player_guid ~= self.DesktopPlayerTexas.Guid))
-    then
+    if ((self.DesktopPlayerTexas.DesktopTexas.PlayerTurn.player_guid ~= self.DesktopPlayerTexas.Guid)) then
         self:_resetAutoChooseOperate(self.GBtnAutoFoldOrCheck)
         --self.ControllerTurn.selectedIndex = 0
-        if (self.GBtnAutoFoldOrCheck.selected == false)
-        then
+        if (self.GBtnAutoFoldOrCheck.selected == false) then
             local ev = self.ViewMgr:getEv("EvUiClickCancelAutoAction")
-            if (ev == nil)
-            then
+            if (ev == nil) then
                 ev = EvUiClickCancelAutoAction:new(nil)
             end
             self.ViewMgr:sendEv(ev)
         else
             local ev = self.ViewMgr:getEv("EvUiClickAutoAction")
-            if (ev == nil)
-            then
+            if (ev == nil) then
                 ev = EvUiClickAutoAction:new(nil)
             end
             ev.auto_action_type = PlayerAutoActionTypeTexas.CheckFold
@@ -654,18 +633,15 @@ end
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickCall()
     self:_resetAutoChooseOperate(self.GBtnAutoCall)
-    if (self.GBtnAutoCall.selected == false)
-    then
+    if (self.GBtnAutoCall.selected == false) then
         local ev = self.ViewMgr:getEv("EvUiClickCancelAutoAction")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvUiClickCancelAutoAction:new(nil)
         end
         self.ViewMgr:sendEv(ev)
     else
         local ev = self.ViewMgr:getEv("EvUiClickAutoAction")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvUiClickAutoAction:new(nil)
         end
         ev.auto_action_type = PlayerAutoActionTypeTexas.CallAny
@@ -677,11 +653,9 @@ end
 function ViewDesktopPlayerOperateTexas:_onClickRaise(context)
     context:StopPropagation()
     local s = self.GSliderRise.visible
-    if (s == false)
-    then
+    if (s == false) then
         local me_stack = self.DesktopPlayerTexas.PlayerDataDesktop.Stack
-        if (me_stack <= self.CurrentBottomRaiseGoldValue)
-        then
+        if (me_stack <= self.CurrentBottomRaiseGoldValue) then
             self:_raise(me_stack)
         else
             --self.ControllerTurn.selectedIndex = 1
@@ -707,8 +681,7 @@ end
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickContinue()
     local ev = self.ViewMgr:getEv("EvUiClickPlayerReturn")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickPlayerReturn:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -717,8 +690,7 @@ end
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickBack()
     local ev = self.ViewMgr:getEv("EvUiClickCancelAutoAction")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickCancelAutoAction:new(nil)
     end
     self.ViewMgr:sendEv(ev)

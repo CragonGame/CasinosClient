@@ -1,7 +1,7 @@
 -- Copyright (c) Cragon. All rights reserved.
 
 ---------------------------------------
-EvUiLoginDeleteGuest = EventBase:new(nil) -- ui��Ϣ�������¼����ɾ���ο��˺�
+EvUiLoginDeleteGuest = EventBase:new(nil)
 
 function EvUiLoginDeleteGuest:new(o)
     o = o or {}
@@ -15,7 +15,7 @@ function EvUiLoginDeleteGuest:reset()
 end
 
 ---------------------------------------
-EvUiLoginRequestGetPwd = EventBase:new(nil)-- Ui��Ϣ�������һ�����
+EvUiLoginRequestGetPwd = EventBase:new(nil)
 
 function EvUiLoginRequestGetPwd:new(o)
     o = o or {}
@@ -31,7 +31,7 @@ function EvUiLoginRequestGetPwd:reset()
 end
 
 ---------------------------------------
-EvUiReportFriend = EventBase:new(nil)-- Ui��Ϣ�������һ�����
+EvUiReportFriend = EventBase:new(nil)
 
 function EvUiReportFriend:new(o)
     o = o or {}
@@ -49,7 +49,7 @@ function EvUiReportFriend:reset()
 end
 
 ---------------------------------------
-EvUiCloseActivityPopUpBox = EventBase:new(nil)-- Ui��Ϣ�������һ�����
+EvUiCloseActivityPopUpBox = EventBase:new(nil)
 
 function EvUiCloseActivityPopUpBox:new(o)
     o = o or {}
@@ -63,7 +63,7 @@ function EvUiCloseActivityPopUpBox:reset()
 end
 
 ---------------------------------------
-EvUiRequestFriendAddOrRemove = EventBase:new(nil)-- Ui��Ϣ�������һ�����
+EvUiRequestFriendAddOrRemove = EventBase:new(nil)
 
 function EvUiRequestFriendAddOrRemove:new(o)
     o = o or {}
@@ -83,7 +83,7 @@ function EvUiRequestFriendAddOrRemove:reset()
 end
 
 ---------------------------------------
-EvUiRequestMailRead = EventBase:new(nil)-- Ui��Ϣ�������һ�����
+EvUiRequestMailRead = EventBase:new(nil)
 
 function EvUiRequestMailRead:new(o)
     o = o or {}
@@ -98,7 +98,7 @@ function EvUiRequestMailRead:reset()
     self.mail_guid = nil
 end
 
-EvUiSellItem = EventBase:new(nil)-- Ui��Ϣ�������һ�����
+EvUiSellItem = EventBase:new(nil)
 
 function EvUiSellItem:new(o)
     o = o or {}
@@ -113,7 +113,7 @@ function EvUiSellItem:reset()
     self.item_objid = nil
 end
 
-EvUiRemoveItem = EventBase:new(nil)-- Ui��Ϣ�������һ�����
+EvUiRemoveItem = EventBase:new(nil)
 
 function EvUiRemoveItem:new(o)
     o = o or {}
@@ -128,7 +128,7 @@ function EvUiRemoveItem:reset()
     self.obj_id = nil
 end
 
-EvUiRequestResetPwd = EventBase:new(nil)-- Ui��Ϣ��������������
+EvUiRequestResetPwd = EventBase:new(nil)
 
 function EvUiRequestResetPwd:new(o)
     o = o or {}
@@ -149,7 +149,7 @@ function EvUiRequestResetPwd:reset()
     self.new_pwd = nil
 end
 
-EvUiLogin = EventBase:new(nil)-- Ui��Ϣ�������½�����½��ť
+EvUiLogin = EventBase:new(nil)
 function EvUiLogin:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -187,7 +187,7 @@ function EvUiLoginSuccessEx:reset()
     self.token = nil
 end
 
-EvUiLoginClickBtnRegister = EventBase:new(nil)-- Ui��Ϣ�������½����ע�ᰴť
+EvUiLoginClickBtnRegister = EventBase:new(nil)
 
 function EvUiLoginClickBtnRegister:new(o)
     o = o or {}
@@ -226,7 +226,7 @@ function EvUiLoginClickBtnRegister:reset()
     self.FormatPhone = nil
 end
 
-EvUiRequestGetPhoneCode = EventBase:new(nil)-- Ui��Ϣ�������½����ע�ᰴť
+EvUiRequestGetPhoneCode = EventBase:new(nil)
 
 function EvUiRequestGetPhoneCode:new(o)
     o = o or {}
@@ -244,7 +244,7 @@ function EvUiRequestGetPhoneCode:reset()
     self.Reson = 0
 end
 
-EvUiChooseCountry = EventBase:new(nil)-- Ui��Ϣ�������½����ע�ᰴť
+EvUiChooseCountry = EventBase:new(nil)
 
 function EvUiChooseCountry:new(o)
     o = o or {}
@@ -264,7 +264,7 @@ function EvUiChooseCountry:reset()
     self.KeyAndCodeFormat = nil
 end
 
-EvUiLoginClickBtnVisiter = EventBase:new(nil)-- Ui��Ϣ�������½�����οͰ�ť
+EvUiLoginClickBtnVisiter = EventBase:new(nil)
 
 function EvUiLoginClickBtnVisiter:new(o)
     o = o or {}
@@ -277,7 +277,7 @@ end
 function EvUiLoginClickBtnVisiter:reset()
 end
 
-EvUiLoginClickBtnFacebook = EventBase:new(nil)-- Ui��Ϣ�������½����Facebook��ť
+EvUiLoginClickBtnFacebook = EventBase:new(nil)
 
 function EvUiLoginClickBtnFacebook:new(o)
     o = o or {}
@@ -290,8 +290,6 @@ end
 function EvUiLoginClickBtnFacebook:reset()
 end
 
-
--- Ui��Ϣ�������½����Facebook��ť
 EvUiSendSecurityCode = EventBase:new(nil)
 
 function EvUiSendSecurityCode:new(o)
@@ -307,8 +305,6 @@ function EvUiSendSecurityCode:reset()
     self.PhoneNum = nil
 end
 
-
--- Ui��Ϣ�������½����Facebook��ť
 EvRegisterDestroy = EventBase:new(nil)
 
 function EvRegisterDestroy:new(o)
@@ -322,8 +318,6 @@ end
 function EvRegisterDestroy:reset()
 end
 
-
--- Ui��Ϣ��������סϵͳ��Ϣ
 EvUiRequestLockSystemChat = EventBase:new(nil)
 
 function EvUiRequestLockSystemChat:new(o)

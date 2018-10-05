@@ -36,7 +36,7 @@ CanReportLogPlayerId = ""-- 可以上传的玩家Id
 ShowGoldTree = false
 UseWechatPay = true
 UseAliPay = true
-UseIAP = true
+UseIAP = false
 UseLan = true
 UseDefaultLan = false
 DefaultLan = 'Chinese'
@@ -134,15 +134,15 @@ end
 
 ---------------------------------------
 function Context:AddUiPackage(package_name)
-    local p = CS.FairyGUI.UIPackage.GetByName(package_name)
+    local ui_package = CS.FairyGUI.UIPackage
+    local p = ui_package.GetByName(package_name)
     if p ~= nil then
-        CS.FairyGUI.UIPackage.RemovePackage(package_name, true)
+        ui_package.RemovePackage(package_name, true)
     end
 
-    local full_name = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(
-            "resources.kingtexas/ui/" .. string.lower(package_name) .. ".ab")
+    local full_name = self.CasinosContext.PathMgr:combinePersistentDataPath("resources.kingtexas/ui/" .. string.lower(package_name) .. ".ab")
     local ab = CS.UnityEngine.AssetBundle.LoadFromFile(full_name)
-    CS.FairyGUI.UIPackage.AddPackage(ab)
+    ui_package.AddPackage(ab)
 end
 
 ---------------------------------------
@@ -246,7 +246,6 @@ function Context:_nextLaunchStep()
         self.CasinosContext.CanReportLogPlayerId = CanReportLogPlayerId
         if (self.CasinosContext.UnityAndroid == true) then
         end
-        --self.CasinosContext.UseIAP = UseIAP
 
         self:DoString("MessagePack")
         self.Json = require("json")
@@ -260,7 +259,7 @@ function Context:_nextLaunchStep()
 
         local t_db = {}
         for i, v in pairs(TbFileList) do
-            t_db[i] = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath("resources.kingtexasraw/tbdata/" .. v .. ".db")
+            t_db[i] = self.CasinosContext.PathMgr:combinePersistentDataPath("resources.kingtexasraw/tbdata/" .. v .. ".db")
         end
         self.TbDataMgr = TbDataMgr:new(nil)
         self:_regTbData()
@@ -412,8 +411,8 @@ function Context:_regController()
     self:DoString("ControllerBag")
     local con_bag_fac = ControllerBagFactory:new(nil)
     self.ControllerMgr:RegController("Bag", con_bag_fac)
-    self:DoString("ControllerDesk")
-    local con_desk_fac = ControllerDeskFactory:new(nil)
+    self:DoString("ControllerDesktopTexas")
+    local con_desk_fac = ControllerDesktopTexasFactory:new(nil)
     self.ControllerMgr:RegController("Desktop", con_desk_fac)
     self:DoString("ControllerDeskH")
     local con_deskh_fac = ControllerDeskHFactory:new(nil)
@@ -844,19 +843,19 @@ end
 
 ---------------------------------------
 function Context:_addUiPackage()
+    self:AddUiPackage("Common")
     self:AddUiPackage("LotteryTicket")
     self:AddUiPackage("Chat")
     self:AddUiPackage("ChatFriend")
     self:AddUiPackage("About")
     self:AddUiPackage("Mail")
     self:AddUiPackage("PayType")
-    self:AddUiPackage("Common")
     self:AddUiPackage("ChooseLan")
     self:AddUiPackage("Share")
     self:AddUiPackage("ShareType")
     self:AddUiPackage("Loading")
     self:AddUiPackage("LanZh")
-    if CS.Casinos.CasinosContext.Instance.UnityAndroid then
+    if self.CasinosContext.UnityAndroid then
         self:AddUiPackage("LanEn")
         self:AddUiPackage("LanZhAndroid")
     end
@@ -878,7 +877,7 @@ function Context:_addUiPackage()
     self:AddUiPackage("DesktopPlayerInfo")
     self:AddUiPackage("DesktopPlayerOperate")
     local d_m = "DeskTopMenu"
-    if CS.Casinos.CasinosContext.Instance.UnityAndroid then
+    if self.CasinosContext.UnityAndroid then
         d_m = "DesktopMenu"
     end
     self:AddUiPackage(d_m)

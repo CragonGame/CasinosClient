@@ -153,7 +153,6 @@ function ItemShootingTextPool:getShootingTextItem()
         self:createShootingText()
     end
     local item = table.remove(self.QueShootingText, 1)
-    --CS.Casinos.UiHelper.setGObjectVisible(true, item)
     item.displayObject.gameObject:SetActive(true)
     item.visible = true
     return item

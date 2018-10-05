@@ -19,9 +19,7 @@ end
 ---------------------------------------
 function ControllerDesk:onCreate()
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiRequestLockSystemChat", self)
-    self.ControllerMgr.ViewMgr:bindEvListener("EvEntityPlayerEnterDesktopH", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiRequestChangeDesk", self)
-    self.ControllerMgr.ViewMgr:bindEvListener("EvEntityGetDesktopData", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiClickFlod", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiClickCheck", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiClickCall", self)
@@ -41,9 +39,11 @@ function ControllerDesk:onCreate()
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiSetUnSendDesktopMsg", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiDesktopClickLockChat", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvUiClickShowCard", self)
+    self.ControllerMgr.ViewMgr:bindEvListener("EvUiMTTCreateRebuyOrAddOn", self)
+    self.ControllerMgr.ViewMgr:bindEvListener("EvEntityPlayerEnterDesktopH", self)
+    self.ControllerMgr.ViewMgr:bindEvListener("EvEntityGetDesktopData", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvEntityMTTPlayerRebuy", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvEntityMTTPlayerAddon", self)
-    self.ControllerMgr.ViewMgr:bindEvListener("EvUiMTTCreateRebuyOrAddOn", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvEntityMatchGameOver", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvEntityDesktopPlayerLeaveChair", self)
     self.ControllerMgr.ViewMgr:bindEvListener("EvEntitySetMatchDetailedInfo", self)
@@ -109,8 +109,6 @@ function ControllerDesk:onCreate()
     self.MapDesktopHelper = {}
     local t_fac = DesktopHelperTexasFactory:new(nil)
     self.MapDesktopHelper[t_fac:GetName()] = t_fac:CreateDesktopHelper()
-
-    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(33, self, self._timerUpdate)
 end
 
 ---------------------------------------
@@ -154,6 +152,11 @@ end
 ---------------------------------------
 function ControllerDesk:s2cDesktopSnapshotNotify(snapshot_notify)
     ViewHelper:UiEndWaiting()
+
+    if (self.TimerUpdate == nil) then
+        self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(33, self, self._timerUpdate)
+    end
+
     local desktop_data1 = snapshot_notify[1]
     local desktop_data = DesktopSnapshotData:new(nil)
     desktop_data:setData(desktop_data1)
@@ -358,11 +361,14 @@ end
 
 ---------------------------------------
 function ControllerDesk:clearDesktop(need_createmainui)
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:onDestroy(need_createmainui)
         self.DesktopBase = nil
     end
-
     self.ListDesktopChat = {}
 end
 
@@ -477,10 +483,10 @@ function ControllerDesk:GetDesktopHelperBase(fac_name)
 end
 
 ---------------------------------------
-ControllerDeskFactory = ControllerFactory:new()
+ControllerDesktopTexasFactory = ControllerFactory:new()
 
 ---------------------------------------
-function ControllerDeskFactory:new(o)
+function ControllerDesktopTexasFactory:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -489,7 +495,7 @@ function ControllerDeskFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerDeskFactory:createController(controller_mgr, controller_data, guid)
+function ControllerDesktopTexasFactory:createController(controller_mgr, controller_data, guid)
     local controller = ControllerDesk:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

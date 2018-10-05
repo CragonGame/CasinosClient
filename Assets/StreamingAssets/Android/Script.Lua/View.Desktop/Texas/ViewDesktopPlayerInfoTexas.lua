@@ -236,10 +236,6 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:_timerUpdate(elapsed_tm)
-    --if (CS.Casinos.CasinosContext.Instance.Pause or self.IsRelease) then
-    --    return
-    --end
-
     if (self.IsGameEnd) then
         if self.GameEndResetPlayerInfoTime > 0 then
             self.GameEndResetPlayerInfoTime = self.GameEndResetPlayerInfoTime - elapsed_tm
@@ -266,12 +262,10 @@ function ViewDesktopPlayerInfoTexas:_timerUpdate(elapsed_tm)
     if (CS.System.String.IsNullOrEmpty(self.Player.DesktopTexas.PlayerTurn.player_guid) == false and
             self.Player.DesktopTexas.PlayerTurn.player_guid == self.Player.Guid and self.IsGameEnd == false) then
         self.CurrentActionTime = self.CurrentActionTime + elapsed_tm
-
         local rest_time = self.ActionWaitingTime - self.CurrentActionTime
         if (rest_time <= 0) then
             rest_time = 0
         end
-
         self:_setThinkingTimeSprite(rest_time / self.ActionWaitingTime, true)
     end
 
@@ -296,7 +290,7 @@ function ViewDesktopPlayerInfoTexas:gameEnd()
     if self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile then
         self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
     end
-    ViewHelper:setGObjectVisible(false, self.GMovieAllIn)
+    self.GMovieAllIn.visible = false
 end
 
 ---------------------------------------
@@ -318,7 +312,7 @@ function ViewDesktopPlayerInfoTexas:playerChangeSeat()
             pos_ey = pos_ey - self.GImagePlayerShadow.height / 2
             pos_e.y = pos_ey
 
-            self.ComUi:TweenMove(pos_e, 0.4)--:SetSnapping(true)
+            self.ComUi:TweenMove(pos_e, 0.4)
 
             if (self.PlayerSeatWidgetControllerEx ~= nil) then
                 self.PlayerSeatWidgetControllerEx:resetSeatIndex()

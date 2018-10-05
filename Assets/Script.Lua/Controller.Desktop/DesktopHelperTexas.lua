@@ -18,24 +18,6 @@ function DesktopHelperTexas:GetDesktopRedisKeyPrefix(desktop_filter, is_private)
     if (is_private) then
         table.insert(sb, "_private")
     end
-
-    --local desktop_f = CS.Casinos.LuaHelper.ProtobufDeserializeDesktopFilterTexas(desktop_filter.FilterData)
-    --if (desktop_f.seat_num == TexasDesktopSeatNum.Five)
-    --then
-    --    table.insert(sb, "_5")
-    --else
-    --    table.insert(sb, "_9")
-    --end
-    --
-    ----if (desktop_f.desktoptype_texas == DesktopTypeTexas.MustBet)
-    ----then
-    ----    table.insert(sb, "_mustbet")
-    ----else
-    --    table.insert(sb, "_classic")
-    ----end
-    --
-    --table.insert(sb, "_")
-    --table.insert(sb, desktop_f.desktop_tableid)
     local l = table.concat(sb)
     return l
 end
@@ -48,31 +30,8 @@ end
 ---------------------------------------
 function DesktopHelperTexas:IsFull(desktop_filter, playerCount)
     local is_full = false
-
-    --local desktop_f = CS.Casinos.LuaHelper.ProtobufDeserializeDesktopFilterTexas(desktop_filter.FilterData)
-    --if (desktop_f.seat_num == TexasDesktopSeatNum.Five)
-    --then
-    --    is_full = playerCount > 5
-    --elseif (desktop_f.seat_num == TexasDesktopSeatNum.Nine)
-    --then
-    --    is_full = playerCount > 9
-    --end
-
     return is_full
 end
-
----------------------------------------
---function DesktopHelperTexas:GetPlayerPlayState(filter, desktop_type, desktop_guid)
---    local player_playstate = CS.Casinos.PlayerPlayState()
---    local desktop_f = CS.Casinos.LuaHelper.ProtobufDeserializeDesktopFilterTexas(filter.FilterData)
---    player_playstate.CasinosModule = CasinosModule.__CastFrom(filter.FactoryName)
---    player_playstate.DesktopType = desktop_type
---    player_playstate.DesktopGuid = desktop_guid
---    player_playstate.UserData1 = desktop_f.desktoptype_texas.ToString()
---    player_playstate.UserData2 = CS.Casinos.LuaHelper.JsonSerializeDesktopFilter(filter)
---
---    return player_playstate
---end
 
 ---------------------------------------
 function DesktopHelperTexas:GetDesktopInfoFormat(m_p, data_mgr, desktop_filter, lan_base)

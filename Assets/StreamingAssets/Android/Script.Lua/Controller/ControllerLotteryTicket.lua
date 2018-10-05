@@ -36,8 +36,7 @@ function ControllerLotteryTicket:onCreate()
     self.MapBetRepeatInfo = {}
     self.MapTotalBetGolds = {}
     local operate_id = -1
-    if (CS.UnityEngine.PlayerPrefs.HasKey("CurrentTbBetOperateIdLottery"))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey("CurrentTbBetOperateIdLottery")) then
         operate_id = CS.UnityEngine.PlayerPrefs.GetInt("CurrentTbBetOperateIdLottery")
     end
     self.CurrentTbBetOperateId = operate_id

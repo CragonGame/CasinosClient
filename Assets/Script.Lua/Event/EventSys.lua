@@ -5,7 +5,7 @@ EventSys = {
     Instance = nil,
     TableEvListener = {}, -- key evname value table listener
     TableListenerEv = {}, -- key listener value table evname
-    TableEvListenerTransfer = {}, -- value listener ����Event��Listener��ʱ���������������
+    TableEvListenerTransfer = {}, -- value listener
     TableEvEv = {} -- key evname value ev evPool
 }
 
@@ -60,9 +60,7 @@ end
 ---------------------------------------
 function EventSys:sendEv(ev)
     local ev_name = ev.EventName
-    --EventSys.TableEvListenerTransfer = {}
     local table_listener = self.TableEvListener[ev_name]
-    --EventSys.LuaHelper:CloneTableData(table_listener,EventSys.TableEvListenerTransfer)
     if (table_listener ~= nil) then
         for k, v in pairs(table_listener) do
             if (v ~= nil) then
@@ -70,7 +68,7 @@ function EventSys:sendEv(ev)
             end
         end
     end
-    --EventSys.TableEvListenerTransfer = {}
+
     ev:reset()
     self.TableEvEv[ev_name] = ev
 end

@@ -8,7 +8,6 @@ function ControllerIM:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -18,7 +17,6 @@ function ControllerIM:new(o, controller_mgr, controller_data, guid)
     o.IMFriendList = IMFriendList:new(nil, o)
     o.IMMailBox = IMMailBox:new(nil, o)
     o.IMChatRecord = IMChatRecord:new(nil, o)
-
     return o
 end
 
@@ -133,94 +131,73 @@ end
 
 ---------------------------------------
 function ControllerIM:onHandleEv(ev)
-    if (ev.EventName == "EvUiCreateMainUi")
-    then
+    if (ev.EventName == "EvUiCreateMainUi") then
         self:setMainUiIMInfo()
-    elseif (ev.EventName == "EvUiFindFriend")
-    then
+    elseif (ev.EventName == "EvUiFindFriend") then
         self.IMFriendList:RequestIMFindFriend(ev.search_filter)
-    elseif (ev.EventName == "EvUiDeleteFriend")
-    then
+    elseif (ev.EventName == "EvUiDeleteFriend") then
         self.IMFriendList:RequestIMDeleteFriend(ev.friend_etguid)
-    elseif (ev.EventName == "EvUiAddFriend")
-    then
+    elseif (ev.EventName == "EvUiAddFriend") then
         self.IMFriendList:RequestIMAddFriendReq(ev.friend_etguid)
-    elseif (ev.EventName == "EvUiAgreeAddFriend")
-    then
+    elseif (ev.EventName == "EvUiAgreeAddFriend") then
         local offline_ev = ev.ev
         self.ControllerMgr.RPC:RPC2(CommonMethodType.IMEventClientConfirm, offline_ev._id, "")
         self.IMFriendList:RequestIMAddFriendRes(ev.from_etguid, AddFriendResult.Agree)
-    elseif (ev.EventName == "EvUiRefuseAddFriend")
-    then
+    elseif (ev.EventName == "EvUiRefuseAddFriend") then
         local offline_ev = ev.ev
         self.ControllerMgr.RPC:RPC2(CommonMethodType.IMEventClientConfirm, offline_ev._id, "")
         self.IMFriendList:RequestIMAddFriendRes(ev.from_etguid, AddFriendResult.Reject)
     end
-    if (ev.EventName == "EvUiSendMsg")
-    then
+    if (ev.EventName == "EvUiSendMsg") then
         local chat_msg = ev.chat_msg
         self.IMChat:requestIMChatSendMsg(chat_msg)
-    elseif (ev.EventName == "EvUiChatConfirmRead")
-    then
+    elseif (ev.EventName == "EvUiChatConfirmRead") then
         local friend_etguid = ev.friend_etguid
         self.IMChat.MapUnReadChats[friend_etguid] = nil
         self.IMChat:requestChatReadConfirm(friend_etguid, ev.msg_id)
         local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityUnreadChatsChanged")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityUnreadChatsChanged:new(nil)
         end
         ev.friend_etguid = friend_etguid
         self.ControllerMgr.ViewMgr:sendEv(ev)
-    elseif (ev.EventName == "EvUiSendFeedbackMsg")
-    then
+    elseif (ev.EventName == "EvUiSendFeedbackMsg") then
         self.IMFeedback:requestIMFeedbackSendMsg(ev.chat_msg)
-    elseif (ev.EventName == "EvUiFeedbackConfirmRead")
-    then
+    elseif (ev.EventName == "EvUiFeedbackConfirmRead") then
         self.IMFeedback:requestChatReadConfirm()
-    elseif (ev.EventName == "EvUiClickChatmsg")
-    then
+    elseif (ev.EventName == "EvUiClickChatmsg") then
         local ui_chatfriend = self.ControllerMgr.ViewMgr:getView("ChatFriend")
-        if (ui_chatfriend == nil)
-        then
+        if (ui_chatfriend == nil) then
             ui_chatfriend = self.ControllerMgr.ViewMgr:createView("ChatFriend")
             ui_chatfriend:initChatMsg(self.CurrentChatTargetGuid)
         else
             self.ControllerMgr.ViewMgr.destroyView(ui_chatfriend)
         end
-    elseif (ev.EventName == "EvUiClickChooseFriendChatTarget")
-    then
+    elseif (ev.EventName == "EvUiClickChooseFriendChatTarget") then
         local ui_choose_target = self.ControllerMgr.ViewMgr:createView("ChatChooseTarget")
         ui_choose_target:setFriendInfo(self.IMFriendList.MapFriendList)
-    elseif (ev.EventName == "EvUiClickFriend")
-    then
+    elseif (ev.EventName == "EvUiClickFriend") then
         local ui_friend = self.ControllerMgr.ViewMgr:getView("Friend")
-        if (ui_friend == nil)
-        then
+        if (ui_friend == nil) then
             ui_friend = self.ControllerMgr.ViewMgr:createView("Friend")
             ui_friend:setFriends(nil)
         else
             self.ControllerMgr.ViewMgr:destroyView(ui_friend)
         end
-    elseif (ev.EventName == "EvUiClickChooseFriend")
-    then
-        if (ev.is_choosechat)
-        then
+    elseif (ev.EventName == "EvUiClickChooseFriend") then
+        if (ev.is_choosechat) then
             local friend_guid = ev.friend_info.PlayerInfoCommon.PlayerGuid
             local list_records = self.IMChat:getChatRecords(friend_guid)
-            if (list_records == nil)
-            then
+            if (list_records == nil) then
                 self.IMChat:addNewChatTarget(friend_guid)
             end
             local ui_chatfriend = self.ControllerMgr.ViewMgr:getView("ChatFriend")
-            if (ui_chatfriend == nil)
-            then
+            if (ui_chatfriend == nil) then
                 ui_chatfriend = self.ControllerMgr.ViewMgr:createView("ChatFriend")
             end
             ui_chatfriend:initChatMsg(friend_guid)
             self.CurrentChatTargetGuid = friend_guid
-        elseif (ev.is_recommand)
-        then
+        elseif (ev.is_recommand) then
             local friend = self.ControllerMgr.ViewMgr:createView("Friend")
             friend:setCurrentRecommandFriend(ev.friend_info)
         else
@@ -229,36 +206,28 @@ function ControllerIM:onHandleEv(ev)
             local friend = self.ControllerMgr.ViewMgr:createView("Friend")
             friend:setFriends(current_friend)
         end
-    elseif (ev.EventName == "EvUiCurrentChatTargetChange")
-    then
+    elseif (ev.EventName == "EvUiCurrentChatTargetChange") then
         self.CurrentChatTargetGuid = ev.current_chattarget
-    elseif (ev.EventName == "EvUiClickInviteFriendPlay")
-    then
+    elseif (ev.EventName == "EvUiClickInviteFriendPlay") then
         local invite_friend = self.ControllerMgr.ViewMgr:createView("InviteFriendPlay")
         invite_friend:setFriend()
-    elseif (ev.EventName == "EvUiClickDeleteFriendChatRecord")
-    then
-        if (self.CurrentChatTargetGuid == ev.friend_etguid)
-        then
+    elseif (ev.EventName == "EvUiClickDeleteFriendChatRecord") then
+        if (self.CurrentChatTargetGuid == ev.friend_etguid) then
             self.CurrentChatTargetGuid = ""
         end
         self.IMChat:deletePlayerChatRecord(ev.friend_etguid)
-    elseif (ev.EventName == "EvUiRequestMailRead")
-    then
+    elseif (ev.EventName == "EvUiRequestMailRead") then
         local mail_guid = ev.mail_guid
         self.IMMailBox:RequestOperateMail(mail_guid, MailOperateType.Read)
-    elseif (ev.EventName == "EvUiRequestMailRecvAttachment")
-    then
+    elseif (ev.EventName == "EvUiRequestMailRecvAttachment") then
         local mail_guid = ev.mail_guid
         self.IMMailBox:RequestOperateMail(mail_guid, MailOperateType.RecvAttachment)
-    elseif (ev.EventName == "EvUiRequestFriendAddOrRemove")
-    then
+    elseif (ev.EventName == "EvUiRequestFriendAddOrRemove") then
         local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
         local title = ""
         local content = ""
         local is_add = ev.is_add
-        if (is_add == false)
-        then
+        if (is_add == false) then
             title = self.ControllerMgr.LanMgr:getLanValue("RemoveFrined")
             content = self.ControllerMgr.LanMgr:getLanValue("DeleteFriend") .. ev.friend_nickname
         else
@@ -272,23 +241,19 @@ function ControllerIM:onHandleEv(ev)
 
         msg_box:showMsgBox2(title, content, map_param,
                 function(bo, map_pram)
-                    if (bo)
-                    then
+                    if (bo) then
                         local is_addex = map_param[0]
                         local friend_guid = map_param[1]
-                        if (is_addex)
-                        then
+                        if (is_addex) then
                             local ev = self.ControllerMgr.ViewMgr:getEv("EvUiAddFriend")
-                            if (ev == nil)
-                            then
+                            if (ev == nil) then
                                 ev = EvUiAddFriend:new(nil)
                             end
                             ev.friend_etguid = friend_guid
                             self.ControllerMgr.ViewMgr:sendEv(ev)
                         else
                             local ev = self.ControllerMgr.ViewMgr:getEv("EvUiDeleteFriend")
-                            if (ev == nil)
-                            then
+                            if (ev == nil) then
                                 ev = EvUiDeleteFriend:new(nil)
                             end
                             ev.friend_etguid = friend_guid
@@ -440,8 +405,7 @@ end
 ---------------------------------------
 function ControllerIM:setMainUiIMInfo()
     local view_main = self.ControllerMgr.ViewMgr:getView("Main")
-    if (view_main ~= nil)
-    then
+    if (view_main ~= nil) then
         view_main:setFriendInfo(self.IMFriendList.MapFriendList)
         view_main:setRecommandFriendInfo(self.IMFriendList.ListRecommendPlayer)
         view_main:setNewChatCount(self.IMChat:getAllNewChatCount())
@@ -451,40 +415,29 @@ end
 ---------------------------------------
 function ControllerIM:showIMResult(result_title, result)
     local msg = ""
-    if (result == IMResult.Success)
-    then
+    if (result == IMResult.Success) then
         msg = result_title .. self.ControllerMgr.LanMgr:getLanValue("Success");
         ViewHelper:UiShowInfoSuccess(msg)
         return
-    elseif (result == IMResult.Failed)
-    then
+    elseif (result == IMResult.Failed) then
         msg = result_title .. self.ControllerMgr.LanMgr:getLanValue("Failed")
-    elseif (result == IMResult.Exist)
-    then
+    elseif (result == IMResult.Exist) then
         msg = result_title .. self.ControllerMgr.LanMgr:getLanValue("Exists")
-    elseif (result == IMResult.Timeout)
-    then
+    elseif (result == IMResult.Timeout) then
         msg = result_title .. self.ControllerMgr.LanMgr:getLanValue("TimeOut")
-    elseif (result == IMResult.DbError)
-    then
+    elseif (result == IMResult.DbError) then
         msg = self.ControllerMgr.LanMgr:getLanValue("ServerError")
-    elseif (result == IMResult.FriendExist)
-    then
+    elseif (result == IMResult.FriendExist) then
         msg = self.ControllerMgr.LanMgr:getLanValue("FriendExists")
-    elseif (result == IMResult.FriendNotExist)
-    then
+    elseif (result == IMResult.FriendNotExist) then
         msg = self.ControllerMgr.LanMgr:getLanValue("FriendNotExists")
-    elseif (result == IMResult.AddFriendCanntAddSelf)
-    then
+    elseif (result == IMResult.AddFriendCanntAddSelf) then
         msg = self.ControllerMgr.LanMgr:getLanValue("AddSelfFriendTips")
-    elseif (result == IMResult.AddFriendInBlackList)
-    then
+    elseif (result == IMResult.AddFriendInBlackList) then
         msg = self.ControllerMgr.LanMgr:getLanValue("FrinedInBlackListTips")
-    elseif (result == IMResult.AddFriendEventExist)
-    then
+    elseif (result == IMResult.AddFriendEventExist) then
         msg = self.ControllerMgr.LanMgr:getLanValue("AddFriendRequestExists")
-    elseif (result == IMResult.AddFriendEventNotExist)
-    then
+    elseif (result == IMResult.AddFriendEventNotExist) then
         msg = self.ControllerMgr.LanMgr:getLanValue("HandleAddFriendRequestFailed")
     end
 
@@ -499,8 +452,7 @@ end
 ---------------------------------------
 function ControllerIM:haveNewMail()
     local have_new = false
-    if (self.IMMailBox ~= nil)
-    then
+    if (self.IMMailBox ~= nil) then
         have_new = self.IMMailBox:haveNewMail()
     end
     return have_new
@@ -508,8 +460,7 @@ end
 
 ---------------------------------------
 function ControllerIM:isFriend(friend_guid)
-    if (self.IMFriendList.MapFriendList[friend_guid] ~= nil)
-    then
+    if (self.IMFriendList.MapFriendList[friend_guid] ~= nil) then
         return true
     else
         return false

@@ -17,21 +17,17 @@ function DesktopTexasMTT:new(o, desktop_base, co_mgr)
     o.CanUpdateT = false
     o.Name = "TexasMTT"
     self.ConstUpdateRaiseBlindTm = 1
-
     return o
 end
 
 ---------------------------------------
 function DesktopTexasMTT:onDestroy(need_createmainui)
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-    if (need_createmainui)
-    then
+    if (need_createmainui) then
         local match_lobby = view_mgr:getView("MatchLobby")
-        if (match_lobby == nil)
-        then
+        if (match_lobby == nil) then
             match_lobby = view_mgr:createView("MatchLobby")
         end
-
         CS.Casinos.CasinosContext.Instance:Play("MainBg1", CS.Casinos._eSoundLayer.Background)
     end
 end
@@ -66,7 +62,6 @@ function DesktopTexasMTT:onHandleEv(ev)
             local method_info = MethodInfoTexasDesktop:new(nil)
             method_info.id = MethodTypeTexasDesktop.PlayerCancelAutoActionRequest
             method_info.data = nil
-
             self:_userRequest(method_info)
         elseif (ev.EventName == "EvUiClickCancelAutoAction") then
             local method_info = MethodInfoTexasDesktop:new(nil)
@@ -146,10 +141,8 @@ end
 
 ---------------------------------------
 function DesktopTexasMTT:DesktopUser(method_id, method_data)
-    if (method_id == MethodTypeTexasDesktop.TexasMTTServerAutoActionStateChangeNotify)
-    then
-        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid))
-        then
+    if (method_id == MethodTypeTexasDesktop.TexasMTTServerAutoActionStateChangeNotify) then
+        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid)) then
             return
         end
         local auto_action = self.ControllerDesktop.ControllerMgr:unpackData(method_data)
@@ -158,10 +151,8 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
         if m_p ~= nil then
             m_p:mttAutoAction(auto_action)
         end
-    elseif (method_id == MethodTypeTexasDesktop.TexasMTTUpdateRealtimeInfoNotify)
-    then
-        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid))
-        then
+    elseif (method_id == MethodTypeTexasDesktop.TexasMTTUpdateRealtimeInfoNotify) then
+        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid)) then
             return
         end
 
@@ -181,17 +172,14 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
 
         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
         local ev = view_mgr:getEv("EvEntityMTTUpdateRealtimeInfo")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityMTTUpdateRealtimeInfo:new(nil)
         end
         ev.RealtimeInfo = realtime_info
         ev.blind_type = self.BlindType
         view_mgr:sendEv(ev)
-    elseif (method_id == MethodTypeTexasDesktop.TexasMTTUpdateProcessNotify)
-    then
-        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid))
-        then
+    elseif (method_id == MethodTypeTexasDesktop.TexasMTTUpdateProcessNotify) then
+        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid)) then
             return
         end
 
@@ -205,10 +193,8 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
             view_process = view_mgr:createView("MTTProcess")
         end
         view_process:setProcess(process_type)
-    elseif (method_id == MethodTypeTexasDesktop.TexasMTTDesktopStartOrPause)
-    then
-        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid))
-        then
+    elseif (method_id == MethodTypeTexasDesktop.TexasMTTDesktopStartOrPause) then
+        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid)) then
             return
         end
 
@@ -223,16 +209,13 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
 
         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
         local ev = view_mgr:getEv("EvMTTPauseChanged")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvMTTPauseChanged:new(nil)
         end
         ev.pause_info = notifyex
         view_mgr:sendEv(ev)
-    elseif (method_id == MethodTypeTexasDesktop.TexasMTTDesktoPlayerInfoUpdate)
-    then
-        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid))
-        then
+    elseif (method_id == MethodTypeTexasDesktop.TexasMTTDesktoPlayerInfoUpdate) then
+        if (CS.System.String.IsNullOrEmpty(self.DesktopBase.DesktopGuid)) then
             return
         end
 
@@ -369,8 +352,7 @@ function DesktopTexasMTT:refreshBtnRebuyAddOnStat()
     self.MeCanAddon = can_addon1 and self.BDesktopSnapshotMatchTexas.Pause == false
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
     local ev = view_mgr:getEv("EvEntityMTTPlayerRebuyOrAddonRefresh")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityMTTPlayerRebuyOrAddonRefresh:new(nil)
     end
     ev.can_rebuy = self.MeCanRebuy
@@ -412,7 +394,6 @@ function DesktopTexasMTT:getFastBetKey()
     table.insert(t_not_preflop, desktop_id)
     table.insert(t_not_preflop, DesktopType.MTT)
     table.insert(t_not_preflop, "false")
-
     local t_p_s = table.concat(t_preflop)
     local t_np_s = table.concat(t_not_preflop)
     return t_p_s, t_np_s

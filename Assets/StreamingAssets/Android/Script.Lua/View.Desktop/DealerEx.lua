@@ -54,7 +54,6 @@ function DealerEx:new(o, ui_desktop, dealer_listener, card1, card2, card3, card4
     setmetatable(o, self)
     self.__index = self
     o.mQueueDealCards = {}
-    --o.mQueueShowWinnerCard = {}
     o.mQueueGiveWinnerChips = {}
     o.mQueueDisabledCardDealing = {}
     o.mQueueDealingEnabledCardCommon = {}
@@ -115,23 +114,6 @@ function DealerEx:Update(elapsed_tm)
         end
     end
 
-    --if (self.mCanShowWinnerCard == true)
-    --then
-    --    self.mShowWinnerCardTm = self.mShowWinnerCardTm + time
-    --    if (self.mShowWinnerCardTm >= self.GiveChipsTm)
-    --    then
-    --        self.mShowWinnerCardTm = 0
-    --        local show_winnercard_count = #self.mQueueShowWinnerCard
-    --        if (show_winnercard_count > 0)
-    --        then
-    --            self:_showWinnerCard()
-    --        else
-    --            self.mCanShowWinnerCard = false
-    --            self.mCanGiveWinnerChips = true
-    --        end
-    --    end
-    --end
-
     if (self.mCanGiveWinnerChips) then
         self.mGiveChipsTm = self.mGiveChipsTm + elapsed_tm
         if (self.mGiveChipsTm >= self.GiveChipsTm) then
@@ -174,8 +156,6 @@ end
 function DealerEx:Destroy()
     self.mQueueDealCards = {}
     self.mQueueDealCards = nil
-    --self.mQueueShowWinnerCard = {}
-    --self.mQueueShowWinnerCard = nil
     self.mQueueGiveWinnerChips = {}
     self.mQueueGiveWinnerChips = nil
     self.mQueueDisabledCardDealing = {}
@@ -216,6 +196,7 @@ function DealerEx:dealCommonCard(card, com_card)
     local card_common = self.mMapCardCommon[com_card.name]
     card_common:setCardData(card)
 
+    print('3张公共牌发牌 开始')--被调用了3次
     local c = LuaHelper:TableContainsV(self.mQueueDealingEnabledCardCommon, card_common)
     if (c == false) then
         table.insert(self.mQueueDealingEnabledCardCommon, card_common)
@@ -230,6 +211,7 @@ function DealerEx:dealCommonCard(card, com_card)
         self.mCurrentDealingCardCommon = table.remove(self.mQueueDealingEnabledCardCommon, 1)
         self.mCurrentDealingCardCommon:deal(
                 function()
+                    print('3张公共牌发牌 完毕')-- 被调用了1次
                     self:_dealCommonCardCallBack()
                 end
         )
@@ -262,7 +244,6 @@ end
 
 ---------------------------------------
 function DealerEx:showCommonCardScreenshot(card, com_card)
-    --local common_name = com_card.name
     local card_common = self.mMapCardCommon[com_card.name]
     if (card_common ~= nil) then
         card_common:setCardData(card)
@@ -339,7 +320,6 @@ function DealerEx:clearQueue()
     self.mShowCommonCardTm = 0
     self.mQueueResetCardCommon = {}
     self.mCurrentResetCardCommon = nil
-    --self.mQueueShowWinnerCard = {}
     self.mQueueGiveWinnerChips = {}
     self:_clearDealingAndShowQue()
 end
@@ -381,7 +361,6 @@ function DealerEx:giveWinnerChips(list_winner, action_givechipsdone)
     local l = #self.mQueueGiveWinnerChips
     if l > 3 then
         for i, v in pairs(self.mQueueGiveWinnerChips) do
-            --v.player.UiDesktopPlayerInfo:showWinnerCard()
             for j, j_v in pairs(v) do
                 j_v.player.UiDesktopPlayerInfo:sendWinnerGolds(j_v.win_chips, j_v.map_win_pot)
             end
@@ -392,57 +371,29 @@ function DealerEx:giveWinnerChips(list_winner, action_givechipsdone)
             self.mActionGiveWinnerChipsDone = nil
         end
     else
-        --if l >= 2 then
-        --    self.mCanShowWinnerCard = true
-        --else
-        --    if l == 1 then
-        --        self.mCanGiveWinnerChips = true
-        --    end
-        --end
-
         if l >= 1 then
             self.GiveChipsTm = 0.5
             self.mCanGiveWinnerChips = true
         end
-        --
-        --if l > 0 then
-        --    self:_giveChipsToPlayer()
-        --end
     end
 end
 
 ---------------------------------------
 function DealerEx:getCardDealing()
     local card = table.remove(self.mQueueDisabledCardDealing, 1)
-
     if (card == nil) then
         local co_carddealing = CS.FairyGUI.UIPackage.CreateObject(self.DesktopPackageName, self.CardDealingName)
         self.mUiDesktop.ComUi:AddChild(co_carddealing)
         card = UiCardDealingEx:new(nil, co_carddealing.asCom)
     end
-
     return card
 end
 
 ---------------------------------------
 function DealerEx:cardObjDealingEnqueue(card)
-    card:reset(false)
+    card:reset()
     table.insert(self.mQueueDisabledCardDealing, card)
 end
-
----------------------------------------
---function DealerEx:_showWinnerCard()
---    local winner_data = table.remove(self.mQueueShowWinnerCard, 1)
---
---    if (winner_data.player == nil or winner_data.player.UiDesktopPlayerInfo == nil)
---    then
---        return
---    end
---
---    table.insert(self.mQueueGiveWinnerChips, winner_data)
---
---    winner_data.player.UiDesktopPlayerInfo:showWinnerCard()
---end
 
 ---------------------------------------
 function DealerEx:_giveChipsToPlayer()

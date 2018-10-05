@@ -35,17 +35,12 @@ function ViewDesktopTexas:new(o)
     o.GTextTm = nil-- 当前时间
     o.GLoaderDealerGirl = nil
     o.GComDealer = nil-- Dealer发牌起始点
-    --o.GTextMsgNum = nil
     o.GGroupCard = nil-- 5张公共牌的组
     o.GComCommunityCard1 = nil
     o.GComCommunityCard2 = nil
     o.GComCommunityCard3 = nil
     o.GComCommunityCard4 = nil
     o.GComCommunityCard5 = nil
-    --o.GGroupCardTypeTips = nil
-    --o.GTextCardTypeTips = nil
-    --o.GGroupActionTips = nil
-    --o.GTextActionTips = nil
     o.GComMsgTips = nil-- 聊天按钮的小红点
     o.GTextMsgTips = nil-- 聊天按钮的提示文字，暂未使用
     o.TransitionNewMsg = nil-- 聊天按钮小红点呼吸动画
@@ -58,7 +53,6 @@ function ViewDesktopTexas:new(o)
     o.NewFriendChatCount = 0-- 好友聊天未读消息数量
     o.ClearDesktopTm = 0-- 即GameEnd状态持续时长
     o.CheckTimeTime = 0-- 控制当前时间刷新频率的中间变量
-    --o.ViewMTTTexas = nil
     self.SeatAndInviteTitle = "ComSeatAndInvite"-- 前缀
     self.SeatPlayerParentTitle = "ComSeatPlayerParent"-- 前缀
     self.ChairTitle = "ComSeat"-- 前缀
@@ -112,8 +106,7 @@ function ViewDesktopTexas:onCreate()
     self.UiChipMgr = UiChipMgrEx:new(nil, false)
     self.UiDesktopChatParent = self.ViewMgr:createView("DesktopChatParent")
     local ui_shootingtext = self.ViewMgr:getView("ShootingText")
-    if (ui_shootingtext == nil)
-    then
+    if (ui_shootingtext == nil) then
         ui_shootingtext = self.ViewMgr:createView("ShootingText")
         ui_shootingtext:init(true, false, false)
     end
@@ -154,8 +147,7 @@ function ViewDesktopTexas:onCreate()
     self.GLoaderDealerGirl = self.ComUi:GetChild("LoaderDealerGirl").asLoader
     self.GTextTm = self.ComUi:GetChild("TextTime").asTextField
     local com_lottryticket = self.ComUi:GetChild("ComLotteryTicket")
-    if (com_lottryticket ~= nil)
-    then
+    if (com_lottryticket ~= nil) then
         local com_lottryticket1 = com_lottryticket.asCom
         com_lottryticket.onClick:Add(
                 function()
@@ -201,8 +193,7 @@ function ViewDesktopTexas:onCreate()
     self.ComUi.onClick:Add(
             function()
                 local ev = self.ViewMgr:getEv("EvUiClickDesktop")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiClickDesktop:new(nil)
                 end
                 self.ViewMgr:sendEv(ev)
@@ -365,7 +356,7 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:_timerUpdate(elapsed_tm)
-    --if (CS.Casinos.CasinosContext.Instance.Pause) then
+    --if (self.CasinosContext.Pause) then
     --    return
     --end
 
@@ -420,9 +411,9 @@ function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init,
         self.GLoaderNetwork.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop", network_sign)
         self:_showCurrentLocalTm()
         self.ActionWaitingTime = desktop_texas.ActionWaitingTm
-        local poker_girl_path = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(CS.Casinos.CasinosContext.Instance.ABResourcePathTitle,
+        local poker_girl_path = self.CasinosContext:AppendStrWithSB(self.CasinosContext.ABResourcePathTitle,
                 "PokerGirl/", string.lower(self.PokerGirlDesk), ".ab")
-        self.GLoaderDealerGirl.icon = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(poker_girl_path)
+        self.GLoaderDealerGirl.icon = self.CasinosContext.PathMgr:combinePersistentDataPath(poker_girl_path)
     end
     self:_showCurrentScreenshot(snapshot_data.desktop_state, snapshot_data.goto_endstate)
 
@@ -477,10 +468,6 @@ end
 ---------------------------------------
 function ViewDesktopTexas:playerOB(seat_index)
     self:_playerLeaveSeat(seat_index)
-    --if (self:_meIsSeat() == false)
-    --then
-    --    ViewHelper:setGObjectVisible(false, self.GTextActionTips)
-    --end
 end
 
 ---------------------------------------
@@ -557,8 +544,7 @@ end
 -- 仅仅本人在调用，显示公共牌+本人手牌组合后的牌型和黄框
 function ViewDesktopTexas:showCommonCardType(is_gameend)
     self.ListSelfAndCommonCard:Clear()
-    if (self.Desktop.MeP ~= nil and self.Desktop.MeP.FirstCard ~= nil)
-    then
+    if (self.Desktop.MeP ~= nil and self.Desktop.MeP.FirstCard ~= nil) then
         self.ListSelfAndCommonCard:Add(self.Desktop.MeP.FirstCard)
         self.ListSelfAndCommonCard:Add(self.Desktop.MeP.SecondCard)
     end
@@ -570,8 +556,7 @@ function ViewDesktopTexas:showCommonCardType(is_gameend)
     local hand_type = best_hand.RankType
     local card_type_str = ""
     local show_cardtype_tips = true
-    if (hand_type == CS.Casinos.HandRankTypeTexas.None or hand_type == CS.Casinos.HandRankTypeTexas.HighCard)
-    then
+    if (hand_type == CS.Casinos.HandRankTypeTexas.None or hand_type == CS.Casinos.HandRankTypeTexas.HighCard) then
         show_cardtype_tips = false
     else
         card_type_str = self.ViewMgr.LanMgr:getLanValue(CS.Casinos.LuaHelper.ParseHandRankTypeTexasToStr(hand_type))
@@ -579,8 +564,7 @@ function ViewDesktopTexas:showCommonCardType(is_gameend)
 
     self:showCardTips(best_hand.RankType, best_hand.RankTypeCards, best_hand.Cards, card_type_str, show_cardtype_tips, is_gameend)
 
-    if (self.Desktop.MeP ~= nil and self.Desktop.MeP.UiDesktopPlayerInfo ~= nil)
-    then
+    if (self.Desktop.MeP ~= nil and self.Desktop.MeP.UiDesktopPlayerInfo ~= nil) then
         local player_info = self.Desktop.MeP.UiDesktopPlayerInfo
         player_info:showHandCardHighLight(best_hand, card_type_str)
     end
@@ -655,7 +639,7 @@ function ViewDesktopTexas:_haveNewChatOrMailRecord()
             ViewHelper:setGObjectVisible(true, com_mailTips)
             local transition_newMsg = com_mailTips:GetTransition("TransitionNewMsg")
             transition_newMsg:Play()
-            CS.Casinos.CasinosContext.Instance:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
+            self.CasinosContext:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
         else
             ViewHelper:setGObjectVisible(false, com_mailTips)
         end
@@ -664,7 +648,7 @@ function ViewDesktopTexas:_haveNewChatOrMailRecord()
         ViewHelper:setGObjectVisible(true, self.GComMsgTips)
         self.TransitionNewMsg:Play()
         self.GTextMsgTips.text = tostring(self.NewFriendChatCount)
-        CS.Casinos.CasinosContext.Instance:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
+        self.CasinosContext:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
     else
         ViewHelper:setGObjectVisible(false, self.GComMsgTips)
     end
@@ -690,11 +674,6 @@ function ViewDesktopTexas:_onClickFriend()
     end
     self.ViewMgr:sendEv(ev)
 end
-
----------------------------------------
---function ViewDesktopTexas:_onClickHelp()
---    self.ViewMgr:createView("DesktopHintsTexas")
---end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickLockChat()
@@ -758,7 +737,6 @@ function ViewDesktopTexas:_preflopBegin(pot_total, list_pot)
     self.UiPot:setSnapShotData(pot_total, list_pot)
     self:_dealCard()
     self.ViewDesktopTypeBase:preflopBegin()
-    --self:resetComminityShow()
 end
 
 ---------------------------------------
@@ -900,7 +878,6 @@ function ViewDesktopTexas:_dealOnePlayerCard(player)
                 if (player ~= nil and player.UiDesktopPlayerInfo ~= nil) then
                     player_info:dealCardDone()
                 end
-
                 self.DealerEx:cardObjDealingEnqueue(card_one_clone)
             end
     )
@@ -1054,7 +1031,7 @@ end
 -- 播放本人“你赢了”3个字的动画
 function ViewDesktopTexas:showMeWin()
     ViewHelper:setGObjectVisible(true, self.ComMeWin)
-    CS.Casinos.CasinosContext.Instance:Play("ying", CS.Casinos._eSoundLayer.LayerNormal)
+    self.CasinosContext:Play("ying", CS.Casinos._eSoundLayer.LayerNormal)
     self.TransitionMeWin:Play(
             function()
                 ViewHelper:setGObjectVisible(false, self.ComMeWin)

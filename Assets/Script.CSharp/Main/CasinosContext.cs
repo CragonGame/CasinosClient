@@ -306,15 +306,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public string GetRandomTips()
-        {
-            return "确认退出吗";
-
-            //var arr_tip = UserConfig.Current.Tips;
-            //return arr_tip[UnityEngine.Random.Range(0, arr_tip.Length)];
-        }
-
-        //---------------------------------------------------------------------
         public void ReportLogWithDeviceId(string name, string message, string stackTrace)
         {
             string device_id = SystemInfo.deviceUniqueIdentifier;
@@ -344,12 +335,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public LuaTable GetLuaTable(string name)
-        {
-            return CasinosLua.GetLuaTable(name);
-        }
-
-        //---------------------------------------------------------------------
         public void ClearSB()
         {
             SB.Clear();
@@ -366,28 +351,6 @@ namespace Casinos
             }
 
             return SB.ToString();
-        }
-
-        //---------------------------------------------------------------------
-        // 需要调整为可并发调用的接口
-        public void LuaAsyncLoadLocalUiBundle(Action loaddone_callback, params string[] need_load_ab_path)
-        {
-            List<string> list_ab = new List<string>();
-            foreach (var i in need_load_ab_path)
-            {
-                list_ab.Add(i);
-            }
-
-            AsyncAssetLoadGroup.asyncLoadLocalBundle(
-                list_ab, _eAsyncAssetLoadType.LocalBundle, (List<AssetBundle> list_abex) =>
-            {
-                foreach (var i in list_abex)
-                {
-                    UIPackage.AddPackage(i);
-                }
-
-                loaddone_callback();
-            });
         }
 
         //---------------------------------------------------------------------

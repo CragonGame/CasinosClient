@@ -82,7 +82,6 @@ function UiChipEx:moveAndScale()
 
     CS.Casinos.UiHelper.setGObjectVisible(true, self.GComChip)
     self.TweenerMove = self.GComChip:TweenMove(self.To, self.MoveTime)
-                           --:SetSnapping(true)
                            :SetDelay(self.Delay)
                            :SetEase(CS.FairyGUI.EaseType.Linear)
                            :OnComplete(
@@ -94,16 +93,15 @@ function UiChipEx:moveAndScale()
 end
 
 ---------------------------------------
-function UiChipEx:move(from, to, move_end)
-    if (self.GComChip == nil) then
-        self:_resetChip()
-        return
-    end
-
-    self.TweenerMove = self.GComChip:TweenMove(to, self.MoveTime)
-                           --:SetSnapping(true)
-                           :OnComplete(move_end)
-end
+--function UiChipEx:move(from, to, move_end)
+--    if (self.GComChip == nil) then
+--        self:_resetChip()
+--        return
+--    end
+--
+--    self.TweenerMove = self.GComChip:TweenMove(to, self.MoveTime)
+--                           :OnComplete(move_end)
+--end
 
 ---------------------------------------
 function UiChipEx:moveEnd()

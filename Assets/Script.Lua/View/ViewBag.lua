@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewBag = ViewBase:new()
 
+---------------------------------------
 function ViewBag:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -13,10 +15,10 @@ function ViewBag:new(o)
     self.UILayer = nil
     self.InitDepth = nil
     self.ViewKey = nil
-
     return o
 end
 
+---------------------------------------
 function ViewBag:onCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Bag1"))
     self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
@@ -67,11 +69,13 @@ function ViewBag:onCreate()
     self.ViewMgr:bindEvListener("EvEntityBagAddItem", self)
 end
 
+---------------------------------------
 function ViewBag:onDestroy()
     self.ViewMgr:unbindEvListener(self)
     self.ViewPool:itemGiftAllEnque()
 end
 
+---------------------------------------
 function ViewBag:onHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityBagDeleteItem") then
@@ -82,6 +86,7 @@ function ViewBag:onHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ViewBag:rendererGiftNormal(index, item)
     if (self.GControllerBag.selectedIndex == 0) then
         if (#self.ControllerBag.ListItemConsume > index) then
@@ -112,6 +117,7 @@ function ViewBag:rendererGiftNormal(index, item)
     end
 end
 
+---------------------------------------
 function ViewBag:updateBag()
     if (self.GControllerBag.selectedIndex == 0) then
         self.ListGiftNormal.numItems = #self.ControllerBag.ListItemConsume
@@ -121,6 +127,7 @@ function ViewBag:updateBag()
     self:showTips()
 end
 
+---------------------------------------
 function ViewBag:showTips()
     if (self.GControllerBag.selectedIndex == 0 and #self.ControllerBag.ListItemConsume == 0) then
         self.ControllerTips.selectedIndex = 2
@@ -131,6 +138,7 @@ function ViewBag:showTips()
     end
 end
 
+---------------------------------------
 function ViewBag:onClickBtnShopMore()
     local ev = self.ViewMgr:getEv("EvCreateGiftShop")
     if (ev == nil) then
@@ -142,24 +150,29 @@ function ViewBag:onClickBtnShopMore()
     self.ViewMgr:sendEv(ev)
 end
 
+---------------------------------------
 function ViewBag:onClickBtnGift()
     self.GControllerBag.selectedIndex = 1
     self:updateBag()
     self:showTips()
 end
 
+---------------------------------------
 function ViewBag:onClickBtnItem()
     self.GControllerBag.selectedIndex = 0
     self:updateBag()
     self:showTips()
 end
 
+---------------------------------------
 function ViewBag:onClickBtnClose()
     self.ViewMgr:destroyView(self)
 end
 
+---------------------------------------
 ViewBagFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewBagFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
@@ -172,6 +185,7 @@ function ViewBagFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_
     return o
 end
 
+---------------------------------------
 function ViewBagFactory:createView()
     local view = ViewBag:new(nil)
     return view

@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosLua);
-			Utils.BeginObjectRegister(type, L, translator, 0, 13, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 14, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
@@ -31,6 +31,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadLuaFromDir2", _m_LoadLuaFromDir2);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DoString", _m_DoString);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetLuaTable", _m_GetLuaTable);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadLocalBundleAsync", _m_LoadLocalBundleAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ReadAllText", _m_ReadAllText);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SpliteStr", _m_SpliteStr);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DestroyGameObject", _m_DestroyGameObject);
@@ -301,6 +302,36 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_LoadLocalBundleAsync(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.CasinosLua gen_to_be_invoked = (Casinos.CasinosLua)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    XLua.LuaTable _lua_table = (XLua.LuaTable)translator.GetObject(L, 2, typeof(XLua.LuaTable));
+                    Casinos.DelegateLua1 _loaded_callback = translator.GetDelegate<Casinos.DelegateLua1>(L, 3);
+                    string[] _need_load_ab_path = translator.GetParams<string>(L, 4);
+                    
+                    gen_to_be_invoked.LoadLocalBundleAsync( _lua_table, _loaded_callback, _need_load_ab_path );
+                    
+                    
+                    
+                    return 0;
                 }
                 
             } catch(System.Exception gen_e) {

@@ -18,7 +18,6 @@ function PreViewMsgBox:new(o)
     if (self.Instance == nil) then
         self.Instance = o
     end
-
     return self.Instance
 end
 
@@ -69,7 +68,6 @@ function PreViewMsgBox:showMsgBox(info, ok, cancel)
     if (view.TextTips ~= nil) then
         view.TextTips.text = info
     end
-
     view.ActionOk = ok
     view.ActionCancel = cancel
 end
@@ -80,7 +78,6 @@ function PreViewMsgBox:showMsgBoxEx(info, ok)
     if (view.TextTips ~= nil) then
         view.TextTips.text = info
     end
-
     view.ActionOk = ok
 end
 
@@ -90,7 +87,6 @@ function PreViewMsgBox._onClickBtnOK()
     if (view.ActionOk ~= nil) then
         view.ActionOk()
     end
-
     view.PreViewMgr.destroyView(view)
 end
 
@@ -100,7 +96,6 @@ function PreViewMsgBox._onClickBtnCancel()
     if (view.ActionCancel ~= nil) then
         view.ActionCancel()
     end
-
     view.PreViewMgr.destroyView(view)
 end
 

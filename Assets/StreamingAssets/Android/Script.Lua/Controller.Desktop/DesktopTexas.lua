@@ -138,7 +138,6 @@ function DesktopTexas:onHandleEv(ev)
         elseif (ev.EventName == "EvUiRequestLockPlayerChat") then
             local player_guid = ev.player_guid
             local lock_player = ev.requestLock
-
             self.MapSeatPlayerChatIsLock[player_guid] = lock_player
         elseif (ev.EventName == "EvUiRequestLockAllDesktopPlayer") then
             for k, v in pairs(self.MapSeatPlayerChatIsLock) do
@@ -183,7 +182,6 @@ function DesktopTexas:onHandleEv(ev)
                         change_to = TexasPlayerShowCardState.Second
                     end
                 end
-
                 self:requestShowCard(change_to)
                 self.MeP:setShowCardState(change_to)
             end
@@ -243,7 +241,6 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     self.CommunityCards = {}
     local list_commoncard = snapshot_data.list_community_cards
     if (list_commoncard ~= nil) then
-        --local t_list_commoncard = CS.Casinos.LuaHelper.ListToLuatable(list_commoncard)
         for i, v in pairs(list_commoncard) do
             local suit = v[1]
             local type = v[2]
@@ -393,7 +390,7 @@ function DesktopTexas:PlayerEnter(player_data)
 
     self:_initActorMirror(player_d)
 
-    local content = string.format("%s%s", player_d.NickName, self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("EnterDesk"))--CS.Casinos.CasinosContext.Instance:AppendStrWithSB(player_data.PlayerInfoCommon.NickName, "进入桌子")
+    local content = string.format("%s%s", player_d.NickName, self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("EnterDesk"))
     self.ControllerDesktop:addDesktopMsg("", self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("TheDealer"), 0, content)
     self.CurrentUnSendDesktopMsg = ""
 end
@@ -1211,119 +1208,6 @@ function DesktopTexas:changeOtherPlayerUiSeatIndex()
         ui_desk:setCurrentSeatActor(all_player)
     end
 end
-
----------------------------------------
---function DesktopTexas:getWinnerBestCard(card_first, card_second)
---    local card_type = ""
---    local list_card = CS.Casinos.LuaHelper.GetNewCardList()
---    for i, v in pairs(self.CommunityCards) do
---        list_card:Add(v)
---    end
---    local first_card = CS.Casinos.Card(card_first[1], card_first[2])
---    list_card:Add(first_card)
---    local second_card = CS.Casinos.Card(card_second[1], card_second[2])
---    list_card:Add(second_card)
---
---    local best_hand = CS.Casinos.CardTypeHelperTexas.GetBestHand(list_card)
---    if (best_hand.RankType == CS.Casinos.HandRankTypeTexas.None)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("TexasTypeNone")
---    elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.HighCard)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("HighCard")
---    elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Pair)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("APair")
---    elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.TwoPairs)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("TwoPairs")
---    elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.ThreeOfAKind)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("ThreeOfAKind")
---    elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Straight)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("Straight")
---    elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Flush)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("Flush")
---    elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.FullHouse)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("FullHouse")
---    elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.FourOfAKind)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("FourOfAKind")
---    elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.StraightFlush)
---    then
---        card_type = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("StraightFlush")
---    end
---
---    local card_str = ""
---    local l_c = best_hand.Cards.Count
---    if (l_c > 0)
---    then
---        for i = 0, l_c - 1 do
---            local card = best_hand.Cards[i]
---            local card_suit = CS.Casinos.CardSuit.__CastFrom(card.suit)
---            if (card_suit == CS.Casinos.CardSuit.Club)
---            then
---                card_str = card_str .. " [pot2]"
---            elseif (card_suit == CS.Casinos.CardSuit.Diamond)
---            then
---                card_str = card_str .. " [pot3]"
---            elseif (card_suit == CS.Casinos.CardSuit.Heart)
---            then
---                card_str = card_str .. " [pot1]"
---            elseif (card_suit == CS.Casinos.CardSuit.Spade)
---            then
---                card_str = card_str .. " [pot0]"
---            end
---
---            local card_typeex = CS.Casinos.CardType.__CastFrom(card.type)
---            if (card_typeex == CS.Casinos.CardType.Two)
---            then
---                card_str = card_str .. "2"
---            elseif (card_typeex == CS.Casinos.CardType.Three)
---            then
---                card_str = card_str .. "3"
---            elseif (card_typeex == CS.Casinos.CardType.Four)
---            then
---                card_str = card_str .. "4"
---            elseif (card_typeex == CS.Casinos.CardType.Five)
---            then
---                card_str = card_str .. "5"
---            elseif (card_typeex == CS.Casinos.CardType.Six)
---            then
---                card_str = card_str .. "6"
---            elseif (card_typeex == CS.Casinos.CardType.Seven)
---            then
---                card_str = card_str .. "7"
---            elseif (card_typeex == CS.Casinos.CardType.Eight)
---            then
---                card_str = card_str .. "8"
---            elseif (card_typeex == CS.Casinos.CardType.Nine)
---            then
---                card_str = card_str .. "9"
---            elseif (card_typeex == CS.Casinos.CardType.Ten)
---            then
---                card_str = card_str .. "10"
---            elseif (card_typeex == CS.Casinos.CardType.Jack)
---            then
---                card_str = card_str .. "J"
---            elseif (card_typeex == CS.Casinos.CardType.Queen)
---            then
---                card_str = card_str .. "Q"
---            elseif (card_typeex == CS.Casinos.CardType.King)
---            then
---                card_str = card_str .. "K"
---            elseif (card_typeex == CS.Casinos.CardType.Ace)
---            then
---                card_str = card_str .. "A"
---            end
---        end
---    end
---
---    return card_str, card_type
---end
 
 ---------------------------------------
 function DesktopTexas:getSeatByGuid(et_player_guid)

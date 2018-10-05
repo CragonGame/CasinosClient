@@ -255,10 +255,12 @@ namespace Casinos
         public LuaEnv LuaEnv { get; private set; }
         Dictionary<string, byte[]> MapLuaFiles { get; set; }
         DelegateLua1 FuncLaunchClose { get; set; }
+        CasinosContext Context { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosLua()
         {
+            Context = CasinosContext.Instance;
             MapLuaFiles = new Dictionary<string, byte[]>();
             LuaEnv = new LuaEnv();
             LuaEnv.AddLoader(LuaLoaderCustom);
@@ -372,6 +374,23 @@ namespace Casinos
         public LuaTable GetLuaTable(string name)
         {
             return CasinosContext.Instance.CasinosLua.LuaEnv.Global.Get<LuaTable>(name);
+        }
+
+        //---------------------------------------------------------------------
+        // 异步加载本地的AssetBundle
+        public void LoadLocalBundleAsync(LuaTable lua_table, DelegateLua1 loaded_callback, params string[] need_load_ab_path)
+        {
+            List<string> list_ab = new List<string>();
+            foreach (var i in need_load_ab_path)
+            {
+                list_ab.Add(i);
+            }
+
+            Context.AsyncAssetLoadGroup.asyncLoadLocalBundle(
+                list_ab, _eAsyncAssetLoadType.LocalBundle, (List<AssetBundle> list_abex) =>
+                {
+                    loaded_callback?.Invoke(lua_table);
+                });
         }
 
         //---------------------------------------------------------------------

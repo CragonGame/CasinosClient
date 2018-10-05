@@ -34,6 +34,7 @@ function UiCardCommonEx:setCardData(card)
 end
 
 ---------------------------------------
+-- 公共牌翻牌
 function UiCardCommonEx:show(with_animation, call_back)
     if (self.Card == nil) then
         CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard, self.GImageCardBack)
@@ -93,6 +94,7 @@ function UiCardCommonEx:show(with_animation, call_back)
 end
 
 ---------------------------------------
+-- 3张公共牌发牌
 function UiCardCommonEx:deal(call_back)
     CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard, self.GImageCardBack)
     self:killTween(self.TweenerRotate)
