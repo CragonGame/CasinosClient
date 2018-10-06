@@ -380,7 +380,6 @@ function ViewDesktopTexas:_timerUpdate(elapsed_tm)
     if (self.ClearDesktopTm > 0) then
         self.ClearDesktopTm = self.ClearDesktopTm - elapsed_tm
         if (self.ClearDesktopTm <= 0) then
-            --self:resetComminityShow()
             self.DealerEx:resetCommonCardType(
                     function()
                         if self.Desktop.DesktopState == TexasDesktopState.GameEnd then
