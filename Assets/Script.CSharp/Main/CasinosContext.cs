@@ -68,7 +68,6 @@ namespace Casinos
         public NetBridge NetBridge { get; private set; }
         public NativeMgr NativeMgr { get; set; }
         public NativeAPIMsgReceiverListener NativeAPIMsgReceiverListner { get; set; }
-        public bool Pause { get; set; }
         public string ABResourcePathTitle { get; set; }
         public string UiPathRoot { get; set; }
         public string ResourcesRowPathRoot { get; set; }
@@ -303,6 +302,18 @@ namespace Casinos
             }
 
             CasinosLua.Launch();
+        }
+
+        //-------------------------------------------------------------------------
+        public void OnApplicationPause(bool pause)
+        {
+            CasinosLua._CSharpCallOnApplicationPause(pause);
+        }
+
+        //-------------------------------------------------------------------------
+        public void OnApplicationFocus(bool focus_status)
+        {
+            CasinosLua._CSharpCallOnApplicationFocus(focus_status);
         }
 
         //---------------------------------------------------------------------

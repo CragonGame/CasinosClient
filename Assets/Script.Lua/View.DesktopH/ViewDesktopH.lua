@@ -646,10 +646,6 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_timerUpdate(elapsed_tm)
-    --if (self.CasinosContext.Pause == true) then
-    --    return
-    --end
-
     self.CheckTimeTime = self.CheckTimeTime + elapsed_tm
     if (self.CheckTimeTime >= 60) then
         self:_checkTime()

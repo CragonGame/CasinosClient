@@ -15,6 +15,9 @@ namespace Casinos
     [CSharpCallLua]
     public delegate void DelegateLua2(LuaTable lua_table, float tm);
 
+    [CSharpCallLua]
+    public delegate void DelegateLua3(LuaTable lua_table, bool b);
+
     public static class LuaCustomSettings
     {
         //---------------------------------------------------------------------
@@ -228,6 +231,8 @@ namespace Casinos
             // FairyGUI
             typeof(FairyGUI.EventCallback0),
             typeof(FairyGUI.EventCallback1),
+            typeof(FairyGUI.EventContext),
+            typeof(FairyGUI.EventListener),
             typeof(FairyGUI.GTweenCallback),
             typeof(FairyGUI.GTweenCallback1),
             typeof(FairyGUI.ListItemRenderer),
@@ -255,6 +260,8 @@ namespace Casinos
         public LuaEnv LuaEnv { get; private set; }
         Dictionary<string, byte[]> MapLuaFiles { get; set; }
         DelegateLua1 FuncLaunchClose { get; set; }
+        DelegateLua3 FuncLaunchOnApplicationPause { get; set; }
+        DelegateLua3 FuncLaunchOnApplicationFocus { get; set; }
         CasinosContext Context { get; set; }
 
         //---------------------------------------------------------------------
@@ -272,6 +279,8 @@ namespace Casinos
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
             FuncLaunchClose?.Invoke(lua_launch);
             FuncLaunchClose = null;
+            FuncLaunchOnApplicationPause = null;
+            FuncLaunchOnApplicationFocus = null;
 
             if (LuaEnv != null)
             {
@@ -300,6 +309,8 @@ namespace Casinos
             DoString("Launch");
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
             FuncLaunchClose = lua_launch.Get<DelegateLua1>("Close");
+            FuncLaunchOnApplicationPause = lua_launch.Get<DelegateLua3>("OnApplicationPause");
+            FuncLaunchOnApplicationFocus = lua_launch.Get<DelegateLua3>("OnApplicationFocus");
             var func_setup = lua_launch.Get<DelegateLua1>("Setup");
             func_setup(lua_launch);
         }
@@ -461,6 +472,20 @@ namespace Casinos
         public string GetSystemLanguageAsString()
         {
             return Application.systemLanguage.ToString();
+        }
+
+        //---------------------------------------------------------------------
+        public void _CSharpCallOnApplicationPause(bool pause)
+        {
+            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+            FuncLaunchOnApplicationPause?.Invoke(lua_launch, pause);
+        }
+
+        //-------------------------------------------------------------------------
+        public void _CSharpCallOnApplicationFocus(bool focus_status)
+        {
+            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+            FuncLaunchOnApplicationFocus?.Invoke(lua_launch, focus_status);
         }
 
         //---------------------------------------------------------------------

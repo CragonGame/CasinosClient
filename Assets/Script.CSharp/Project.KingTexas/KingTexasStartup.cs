@@ -2,9 +2,6 @@
 
 namespace Casinos
 {
-#if UNITY_EDITOR || KINGTEXAS_VIEW
-    using System;
-    using System.Collections;
     using UnityEngine;
 
     public class KingTexasStartup : MonoBehaviour
@@ -32,10 +29,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         void Update()
         {
-            if (!Context.Pause)
-            {
-                Context.Update(Time.deltaTime);
-            }
+            Context.Update(Time.deltaTime);
         }
 
         //---------------------------------------------------------------------
@@ -47,17 +41,13 @@ namespace Casinos
         //-------------------------------------------------------------------------
         void OnApplicationPause(bool pause)
         {
-#if UNITY_EDITOR
-            Context.Pause = pause;
-#endif
-
-            //Context.ActionOnApplicationPause?.Invoke(pause);
+            Context.OnApplicationPause(pause);
         }
 
         //-------------------------------------------------------------------------
         void OnApplicationFocus(bool focusStatus)
         {
+            Context.OnApplicationFocus(focusStatus);
         }
-#endif
     }
 }

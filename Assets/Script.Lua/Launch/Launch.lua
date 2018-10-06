@@ -58,6 +58,26 @@ function Launch:Setup()
     self.UIPackagePreLoading = CS.FairyGUI.UIPackage.AddPackage(ab_preloading)
     self.UIPackagePreMsgbox = CS.FairyGUI.UIPackage.AddPackage(ab_premsgbox)
 
+    CS.FairyGUI.Stage.inst.onKeyDown:Add(
+            function(context)
+                local key_code = context.inputEvent.keyCode
+                print('KeyDown KeyCode=' .. tostring(key_code))
+                if (key_code == CS.UnityEngine.KeyCode.Escape) then
+                    local view_premsgbox = PreViewMgr:createView("PreMsgBox")
+                    view_premsgbox:showMsgBox('确认退出吗',
+                            function()
+                                print('ok')
+                                PreViewMgr:destroyView(view_premsgbox)
+                                CS.UnityEngine.Application.Quit()
+                            end,
+                            function()
+                                print('cancel')
+                                PreViewMgr:destroyView(view_premsgbox)
+                            end
+                    )
+                end
+            end)
+
     self.PreLoading = self.PreViewMgr:createView("PreLoading")
 
     local tips = "正在努力加载配置，请耐心等待..."
@@ -155,6 +175,33 @@ function Launch:Close()
 end
 
 ---------------------------------------
+-- App暂停，恢复运行
+function Launch:OnApplicationPause(pause)
+    --print('OnApplicationPause, Pause=' .. tostring(pause))
+    if (self.Context ~= nil) then
+    else
+    end
+end
+
+---------------------------------------
+-- App获取，失去焦点
+function Launch:OnApplicationFocus(focus_state)
+    --print('OnApplicationFocus, FocusState=' .. tostring(focus_state))
+    if (self.Context ~= nil) then
+    else
+    end
+end
+
+---------------------------------------
+-- Android的退出确认
+function Launch:OnAndroidQuitConfirm()
+    print('OnAndroidQuitConfirm')
+    if (self.Context ~= nil) then
+    else
+    end
+end
+
+---------------------------------------
 function Launch:_checkCurrentLan()
     local lan_key = "LanKey"
     if (CS.UnityEngine.PlayerPrefs.HasKey(lan_key) == true) then
@@ -165,13 +212,6 @@ function Launch:_checkCurrentLan()
 end
 
 ---------------------------------------
---local view_premsgbox = self.PreViewMgr.createView("PreMsgBox")
---view_premsgbox:showMsgBox(self.CasinosContext.Config.VersionBundle,
---        function ()
---            print('ok')
---        end
---)
-
 --self.CasinosContext:LuaAsyncLoadLocalUiBundle(
 --        function()
 --            Launch:_loadABPreLoadingDone()

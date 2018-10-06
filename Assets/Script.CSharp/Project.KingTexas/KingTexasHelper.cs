@@ -2,7 +2,6 @@
 
 namespace Casinos
 {
-#if UNITY_EDITOR || KINGTEXAS_VIEW
     using System;
     using System.Collections;
     using UnityEngine;
@@ -70,5 +69,4 @@ namespace Casinos
             }
         }
     }
-#endif
 }
