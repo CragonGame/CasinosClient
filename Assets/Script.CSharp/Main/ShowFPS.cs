@@ -8,8 +8,8 @@ public class ShowFPS : MonoBehaviour
 
     private GUIStyle FontStyle1;
     private Rect Rect;
-    private int count = 0;
-    private float deltaTime = 0f;
+    private int Count = 0;
+    private float DeltaTime = 0f;
 
     //-------------------------------------------------------------------------
     private void Start()
@@ -26,14 +26,14 @@ public class ShowFPS : MonoBehaviour
     //-------------------------------------------------------------------------
     void Update()
     {
-        count++;
-        deltaTime += Time.unscaledDeltaTime;
-        if (deltaTime >= 1f)
+        Count++;
+        DeltaTime += Time.deltaTime;
+        if (DeltaTime >= 1f)
         {
-            FPS = count / deltaTime;
-            MS = deltaTime * 1000 / count;
-            count = 0;
-            deltaTime = 0f;
+            FPS = Count / DeltaTime;
+            MS = DeltaTime * 1000 / Count;
+            Count = 0;
+            DeltaTime = 0f;
         }
     }
 
