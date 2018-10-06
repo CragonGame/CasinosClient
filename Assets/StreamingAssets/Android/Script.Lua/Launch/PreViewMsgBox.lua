@@ -28,8 +28,24 @@ function PreViewMsgBox:onCreate()
 
     local obj_cancel = self.ComUi:GetChild("BtnClose")
     if (obj_cancel ~= nil) then
+        local tips = "取消"
+        local lan = CurrentLan
+        if (lan == "English") then
+            tips = "Cancel"
+        else
+            if (lan == "Chinese" or lan == "ChineseSimplified") then
+                tips = "取消"
+            end
+        end
         local btn_cancel = obj_cancel.asButton
+        btn_cancel.title = tips
         btn_cancel.onClick:Add(self._onClickBtnCancel)
+    end
+
+    local obj_bg = self.ComUi:GetChild("ComBgAndClose")
+    if (obj_bg ~= nil) then
+        local com_bg = obj_bg.asCom
+        com_bg.onClick:Add(self._onClickBtnCancel)
     end
 
     local obj_ok = self.ComUi:GetChild("BtnConfirm")
@@ -46,6 +62,22 @@ function PreViewMsgBox:onCreate()
         local btn_ok = obj_ok.asButton
         btn_ok.title = tips
         btn_ok.onClick:Add(self._onClickBtnOK)
+    end
+
+    local obj_ok1 = self.ComUi:GetChild("BtnConfirm1")
+    if (obj_ok1 ~= nil) then
+        local tips = "确定"
+        local lan = CurrentLan
+        if (lan == "English") then
+            tips = "Confirm"
+        else
+            if (lan == "Chinese" or lan == "ChineseSimplified") then
+                tips = "确定"
+            end
+        end
+        local btn_ok1 = obj_ok1.asButton
+        btn_ok1.title = tips
+        btn_ok1.onClick:Add(self._onClickBtnOK)
     end
 
     local text = self.ComUi:GetChild("Tips")
@@ -65,6 +97,8 @@ end
 ---------------------------------------
 function PreViewMsgBox:showMsgBox(info, ok, cancel)
     local view = PreViewMsgBox:new(nil)
+    local ctrl_btncount = view.ComUi:GetController('BtnCount')
+    ctrl_btncount.selectedIndex = 1
     if (view.TextTips ~= nil) then
         view.TextTips.text = info
     end
@@ -75,6 +109,8 @@ end
 ---------------------------------------
 function PreViewMsgBox:showMsgBoxEx(info, ok)
     local view = PreViewMsgBox:new(nil)
+    local ctrl_btncount = view.ComUi:GetController('BtnCount')
+    ctrl_btncount.selectedIndex = 0
     if (view.TextTips ~= nil) then
         view.TextTips.text = info
     end

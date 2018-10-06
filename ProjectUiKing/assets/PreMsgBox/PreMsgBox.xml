@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1066,640">
+  <controller name="BtnCount" pages="0,1,1,2" selected="0"/>
   <displayList>
     <component id="n10_d5pu" name="ComBgAndClose" src="lh6bj" fileName="Component/ComBgAndCloseSmall.xml" xy="0,0" size="1066,640">
       <relation target="" sidePair="width-width,height-height"/>
     </component>
     <text id="n5" name="Tips" xy="281,251" size="502,36" group="n16_bci4" fontSize="28" color="#eef2d0" align="center" vAlign="middle" autoSize="height" text=""/>
-    <component id="n11_d5pu" name="BtnConfirm" src="d5pu9" fileName="Component/BtnBlue.xml" xy="448,416" group="n16_bci4"/>
-    <group id="n16_bci4" name="n16" xy="281,250" size="502,230" advanced="true">
+    <component id="n11_d5pu" name="BtnConfirm" src="d5pu9" fileName="Component/BtnBlue.xml" xy="337,415" group="n16_bci4">
+      <gearDisplay controller="BtnCount" pages="1"/>
+    </component>
+    <component id="n17_nhy6" name="BtnClose" src="d5pu9" fileName="Component/BtnBlue.xml" xy="557,415" group="n16_bci4">
+      <gearDisplay controller="BtnCount" pages="1"/>
+    </component>
+    <component id="n18_nhy6" name="BtnConfirm1" src="d5pu9" fileName="Component/BtnBlue.xml" xy="446,416" group="n16_bci4">
+      <gearDisplay controller="BtnCount" pages="0"/>
+    </component>
+    <group id="n16_bci4" name="n16" xy="281,251" size="502,229" advanced="true">
       <relation target="" sidePair="center-center,middle-middle"/>
     </group>
   </displayList>
