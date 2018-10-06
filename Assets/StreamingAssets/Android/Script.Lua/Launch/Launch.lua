@@ -13,6 +13,7 @@ function Launch:new(o)
         self.PreViewMgr = nil
         self.PreLoading = nil
         self.PreMsgBox = nil
+        self.Env = 'Pro'
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
         self.Context = nil
@@ -27,7 +28,14 @@ end
 -- 初始化
 function Launch:Setup()
     Launch:new(nil)
-    --print('Launch:Setup()')
+
+    -- 获取Env值
+    local env_key = "Env"
+    if (CS.UnityEngine.PlayerPrefs.HasKey(env_key) == true) then
+        self.Env = CS.UnityEngine.PlayerPrefs.GetString(env_key)
+    end
+
+    print('Launch:Setup() Env=' .. self.Env)
 
     self:_checkCurrentLan()
 
@@ -75,15 +83,19 @@ function Launch:Setup()
                 self.CasinosLua:DoString(lua_pkg_name)
 
                 -- 下载并加载Context.lua
+                local data_select = DataSelectPro
+                if (self.Env ~= nil and self.Env == 'Dev') then
+                    data_select = DataSelectDev
+                end
                 local http_url_context = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/Context.lua',
-                        self.CasinosContext.Config.Platform, DataSelect)
+                        self.CasinosContext.Config.Platform, data_select)
                 --print(http_url_context)
                 async_asset_loadgroup:LoadWWWAsync(http_url_context,
                         function(url, www)
                             self.CasinosLua:LoadLuaFromBytes('Context', www.text)
                             self.CasinosLua:DoString('Context')
                             self.Context = Context
-                            self.Context:Init()
+                            self.Context:Init(self.Env)
                         end
                 )
             end

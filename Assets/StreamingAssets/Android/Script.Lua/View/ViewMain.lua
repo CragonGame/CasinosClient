@@ -321,8 +321,7 @@ function ViewMain:onCreate()
     end
     self.GLoaderWaiting = self.ComUi:GetChild("Wating").asLoader
     local view_shootingtext = self.ViewMgr:getView("ShootingText")
-    if (view_shootingtext == nil)
-    then
+    if (view_shootingtext == nil) then
         view_shootingtext = self.ViewMgr:createView("ShootingText")
         view_shootingtext:init(true, false, true)
     end
@@ -373,8 +372,7 @@ function ViewMain:onCreate()
     holder_matchParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleMatch))
 
     local image_bg = self.ComUi:GetChild("ImageMote").asImage
-    if (NeedHideClientUi == false)
-    then
+    if (NeedHideClientUi == false) then
         image_bg.visible = false
         local ab_mainmarry = p_helper:GetSpine("Spine/mainmarry.ab")
         local atlas = ab_mainmarry:LoadAsset("Mary.atlas")
@@ -397,19 +395,16 @@ function ViewMain:onCreate()
     end
 
     local bg = self.ComUi:GetChild("Bg")
-    if (bg ~= nil)
-    then
+    if (bg ~= nil) then
         ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
 
-    --self.ComHeadIconCenter = self.ComUi:GetChild("ComPosEnd").asCom
     local btn_console = self.ComUi:GetChild("BtnConsole").asButton
     btn_console.visible = self.ControllerPlayer.IsGm
     local com_console = self.ComUi:GetChild("ComConsole")
     btn_console.onClick:Add(
             function()
-                if (com_console.visible == true)
-                then
+                if (com_console.visible == true) then
                     com_console.visible = false
                 else
                     com_console.visible = true
@@ -421,8 +416,7 @@ function ViewMain:onCreate()
     btn_send.onClick:Add(
             function()
                 local ev = self.ViewMgr:getEv("EvConsoleCmd")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvConsoleCmd:new(nil)
                 end
                 local splitStr = LuaHelper:SplitStr(text_console.text, " ")
@@ -436,8 +430,7 @@ function ViewMain:onCreate()
     local need_checkid = self.ControllerLogin:needCheckIdCard()
     if need_checkid then
         local id_card = self.ViewMgr:getView("IdCardCheck")
-        if (id_card == nil)
-        then
+        if (id_card == nil) then
             id_card = self.ViewMgr:createView("IdCardCheck")
 
         end
@@ -447,8 +440,7 @@ end
 
 ---------------------------------------
 function ViewMain:onDestroy()
-    if (NeedHideClientUi == false)
-    then
+    if (NeedHideClientUi == false) then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.ParticleDeskTop)
@@ -465,88 +457,64 @@ end
 
 ---------------------------------------
 function ViewMain:onHandleEv(ev)
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvEntityNotifyDeleteFriend")
-        then
-            if (ev.friend_etguid == self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid)
-            then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvEntityNotifyDeleteFriend") then
+            if (ev.friend_etguid == self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid) then
                 self.CurrentFriendItem = nil
             end
             self:setFriendInfo(ev.map_friend)
-        elseif (ev.EventName == "EvEntityGoldChanged")
-        then
+        elseif (ev.EventName == "EvEntityGoldChanged") then
             self.UiPlayerInfoSelf:updatePlayerGold(UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, true, 2))
-        elseif (ev.EventName == "EvEntityDiamondChanged")
-        then
+        elseif (ev.EventName == "EvEntityDiamondChanged") then
             self.UiPlayerInfoSelf:updatePlayerDiamond(UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, true, 2))
-        elseif (ev.EventName == "EvEntityRecommendPlayerList")
-        then
+        elseif (ev.EventName == "EvEntityRecommendPlayerList") then
             self:setRecommandFriendInfo(ev.list_recommend)
-        elseif (ev.EventName == "EvEntityPlayerInfoChanged")
-        then
+        elseif (ev.EventName == "EvEntityPlayerInfoChanged") then
             self:setPlayerInfo()
-        elseif (ev.EventName == "EvEntitySetOnLinePlayerNum")
-        then
+        elseif (ev.EventName == "EvEntitySetOnLinePlayerNum") then
             self:setOnlineNum(ev.online_num)
-        elseif (ev.EventName == "EvEntityReceiveFriendSingleChat")
-        then
-            if (ev.chat_msg.sender_guid ~= self.ControllerPlayer.Guid)
-            then
+        elseif (ev.EventName == "EvEntityReceiveFriendSingleChat") then
+            if (ev.chat_msg.sender_guid ~= self.ControllerPlayer.Guid) then
                 local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
                 self:setNewChatCount(all_unreadchat_count)
             end
-        elseif (ev.EventName == "EvEntityReceiveFriendChats")
-        then
+        elseif (ev.EventName == "EvEntityReceiveFriendChats") then
             local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
             self:setNewChatCount(all_unreadchat_count)
-        elseif (ev.EventName == "EvEntityUnreadChatsChanged")
-        then
+        elseif (ev.EventName == "EvEntityUnreadChatsChanged") then
             local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
             self:setNewChatCount(all_unreadchat_count)
-        elseif (ev.EventName == "EvGetPicUpLoadSuccess")
-        then
+        elseif (ev.EventName == "EvGetPicUpLoadSuccess") then
             local icon = self.ControllerActor.PropAccountId:get()
             self.UiPlayerInfoSelf:refreshHeadIcon(self.ControllerActor.PropIcon:get(), icon)
-        elseif (ev.EventName == "EvEntityRefreshFriendList")
-        then
-            if (self.CurrentFriendItem ~= nil)
-            then
+        elseif (ev.EventName == "EvEntityRefreshFriendList") then
+            if (self.CurrentFriendItem ~= nil) then
                 local player_info = self.ControllerIM.IMFriendList:getFriendInfo(self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid)
                 self:refreshCurrentFriendInfo(player_info)
             end
-
             self:setFriendInfo(ev.map_friendinfo)
-        elseif (ev.EventName == "EvEntityRefreshFriendInfo")
-        then
-            if (self.CurrentFriendItem ~= nil and self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid == ev.player_info.PlayerInfoCommon.PlayerGuid)
-            then
+        elseif (ev.EventName == "EvEntityRefreshFriendInfo") then
+            if (self.CurrentFriendItem ~= nil and self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid == ev.player_info.PlayerInfoCommon.PlayerGuid) then
                 self:refreshCurrentFriendInfo(ev.player_info)
             end
-        elseif (ev.EventName == "EvEntityFriendGoldChange")
-        then
+        elseif (ev.EventName == "EvEntityFriendGoldChange") then
             local friend_guid = ev.friend_guid
             local friend_gold = ev.current_gold
-            if (self.CurrentFriendItem ~= nil and self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid == friend_guid)
-            then
+            if (self.CurrentFriendItem ~= nil and self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid == friend_guid) then
                 local str_gold = UiChipShowHelper:getGoldShowStr(friend_gold, self.ViewMgr.LanMgr.LanBase, true, 2)
                 self.UiPlayerInfoCurrentFriend:updatePlayerGold(str_gold)
             end
-        elseif (ev.EventName == "EvEntityFriendOnlineStateChange")
-        then
+        elseif (ev.EventName == "EvEntityFriendOnlineStateChange") then
             local player_guid = ev.player_info.PlayerInfoCommon.PlayerGuid
-            if (self.CurrentFriendItem ~= nil and self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid == player_guid)
-            then
+            if (self.CurrentFriendItem ~= nil and self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid == player_guid) then
                 self:refreshCurrentFriendInfo(ev.player_info)
             end
 
             local head_icon = nil
-            if (self.MapFriend[player_guid] ~= nil)
-            then
+            if (self.MapFriend[player_guid] ~= nil) then
                 head_icon = self.MapFriend[player_guid]
                 local player_info = head_icon:getFriendInfo()
-                if (player_info.PlayerInfoCommon.PlayerGuid == player_guid)
-                then
+                if (player_info.PlayerInfoCommon.PlayerGuid == player_guid) then
                     head_icon:setFriendInfo(ev.player_info,
                             function(ev)
                                 self:onClickFriendIcon(ev)
@@ -554,61 +522,45 @@ function ViewMain:onHandleEv(ev)
                     )
                 end
             end
-        elseif (ev.EventName == "EvEntityMailListInit")
-        then
+        elseif (ev.EventName == "EvEntityMailListInit") then
             self:setNewRecord()
-        elseif (ev.EventName == "EvEntityMailAdd")
-        then
+        elseif (ev.EventName == "EvEntityMailAdd") then
             self:setNewRecord()
-        elseif (ev.EventName == "EvEntityMailDelete")
-        then
+        elseif (ev.EventName == "EvEntityMailDelete") then
             self:setNewRecord()
-        elseif (ev.EventName == "EvEntityMailUpdate")
-        then
+        elseif (ev.EventName == "EvEntityMailUpdate") then
             self:setNewRecord()
-        elseif (ev.EventName == "EvUiClickVip")
-        then
+        elseif (ev.EventName == "EvUiClickVip") then
             local player_info = self.ViewMgr:createView("PlayerInfo")
             player_info:setVIPInfo()
-        elseif (ev.EventName == "EvEntityGetLotteryTicketDataSuccess")
-        then
+        elseif (ev.EventName == "EvEntityGetLotteryTicketDataSuccess") then
             self:setLotteryTicketInfo(ev.lotteryticket_data.State, ev.lotteryticket_data.StateLeftTm)
-        elseif (ev.EventName == "EvEntityLotteryTicketGameEndStateSimple")
-        then
+        elseif (ev.EventName == "EvEntityLotteryTicketGameEndStateSimple") then
             self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
-        elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm")
-        then
+        elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
             self:updateLotteryTickTm(ev.tm)
-        elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm")
-        then
+        elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
             self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
-        elseif (ev.EventName == "EvEntityCanGetOnlineReward")
-        then
+        elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
             self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
             self.CanGetOnLineReward = ev.can_getreward
             self:setNewReward()
-        elseif (ev.EventName == "EvEntityCanGetTimingReward")
-        then
+        elseif (ev.EventName == "EvEntityCanGetTimingReward") then
             self.ViewTimingReward:setCanGetReward(ev.can_getreward)
             self.CanGetTimingReward = ev.can_getreward
             self:setNewReward()
-        elseif (ev.EventName == "EvEntityIsFirstRechargeChanged")
-        then
+        elseif (ev.EventName == "EvEntityIsFirstRechargeChanged") then
             local com_recharge_first = self.ComUi:GetChild("ComRechargeFirst").asCom
             com_recharge_first.visible = false
             self.BtnRegister.position = com_recharge_first.position
-        elseif (ev.EventName == "EvRequestGetTimingReward" or ev.EventName == "EvOnGetOnLineReward")
-        then
+        elseif (ev.EventName == "EvRequestGetTimingReward" or ev.EventName == "EvOnGetOnLineReward") then
             self.ComShadeReward.visible = false
             self.TransitionShowReward:PlayReverse()
-        elseif (ev.EventName == "EvEntityReceiveFeedbackChat")
-        then
+        elseif (ev.EventName == "EvEntityReceiveFeedbackChat") then
             self:setHaveFeedback()
-        elseif (ev.EventName == "EvEntityReceiveFeedbackChats")
-        then
+        elseif (ev.EventName == "EvEntityReceiveFeedbackChats") then
             self:setHaveFeedback()
-        elseif (ev.EventName == "EvEntityBagAddItem")
-        then
+        elseif (ev.EventName == "EvEntityBagAddItem") then
             self:setNewItem()
         end
     end
@@ -616,8 +568,7 @@ end
 
 ---------------------------------------
 function ViewMain:updateLotteryTickTm(tm)
-    if (tm > 0)
-    then
+    if (tm > 0) then
         self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:getLanValue("S")
     else
         self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
@@ -650,8 +601,7 @@ function ViewMain:setFriendInfo(map_friend)
     self.ListFriendInfo = {}
     self.MapFriend = {}
     local lua_helper = LuaHelper:new(nil)
-    if (map_friend == nil or lua_helper:GetTableCount(map_friend) == 0)
-    then
+    if (map_friend == nil or lua_helper:GetTableCount(map_friend) == 0) then
         self.UiPlayerInfoCurrentFriend:hidePlayerInfo(true)
         self.BtnInviteFriend.visible = true
         self.ListHeadIconFriend = {}
@@ -663,44 +613,6 @@ function ViewMain:setFriendInfo(map_friend)
     for key, value in pairs(map_friend) do
         table.insert(self.ListFriendInfo, value)
     end
-    --table.sort(self.ListFriendInfo,
-    --        function(f1, f2)
-    --            local sort_f1 = CS.Casinos.LuaHelper.EnumCastToInt(f1.PlayerInfoMore.OnlineState)
-    --            local sort_f2 = CS.Casinos.LuaHelper.EnumCastToInt(f2.PlayerInfoMore.OnlineState)
-    --            if (sort_f1 ~= sort_f2)
-    --            then
-    --                return sort_f1 > sort_f2
-    --            else
-    --                if (f1.PlayerInfoMore.OnlineState == PlayerOnlineState.Online)
-    --                then
-    --                    local player_playstate1 = f1.PlayerPlayState
-    --                    local player_playstate2 = f2.PlayerPlayState
-    --                    local is_playindesk1 = player_playstate1 ~= nil and (player_playstate1.DesktopGuid ~= nil and player_playstate1.DesktopGuid ~= "")
-    --                    local is_playindesk2 = player_playstate2 ~= nil and (player_playstate2.DesktopGuid ~= nil and player_playstate2.DesktopGuid ~= "")
-    --                    if (is_playindesk1)
-    --                    then
-    --                        sort_f1 = 1
-    --                    else
-    --                        sort_f1 = -1
-    --                    end
-    --                    if (is_playindesk2)
-    --                    then
-    --                        sort_f2 = 1
-    --                    else
-    --                        sort_f2 = -1
-    --                    end
-    --                    if (sort_f1 ~= sort_f2)
-    --                    then
-    --                        return sort_f1 > sort_f2
-    --                    else
-    --                        return f1.PlayerInfoMore.Gold > f2.PlayerInfoMore.Gold
-    --                    end
-    --                else
-    --                    return f1.PlayerInfoMore.Gold > f2.PlayerInfoMore.Gold
-    --                end
-    --            end
-    --        end
-    --)
 
     self.ListHeadIconFriend = {}
     self.GListFriend.numItems = #self.ListFriendInfo
@@ -727,8 +639,7 @@ function ViewMain:setCurrentFriendInfo(friend_item)
     self.CurrentFriendItem = friend_item
     local item_ico = ""
     local icon_resource_name = ""
-    if (self.CurrentFriendItem == nil)
-    then
+    if (self.CurrentFriendItem == nil) then
         self.BtnInviteFriend.visible = true
         self.UiPlayerInfoCurrentFriend:hidePlayerInfo(true)
         return
@@ -746,8 +657,7 @@ end
 ---------------------------------------
 function ViewMain:setLotteryTicketInfo(state, left_tm)
     local tips = ""
-    if (state == LotteryTicketStateEnum.Bet)
-    then
+    if (state == LotteryTicketStateEnum.Bet) then
         tips = math.ceil(left_tm) .. self.ViewMgr.LanMgr:getLanValue("S")
     else
         tips = self.ViewMgr.LanMgr:getLanValue("Settlement")
@@ -758,18 +668,15 @@ end
 ---------------------------------------
 function ViewMain:setNewRecord()
     local have_newMail = false
-    if (self.ControllerIM:haveNewMail())
-    then
+    if (self.ControllerIM:haveNewMail()) then
         have_newMail = true
     end
 
-    if (have_newMail == false)
-    then
+    if (have_newMail == false) then
         ViewHelper:setGObjectVisible(false, self.ComMailTips)
     else
         ViewHelper:setGObjectVisible(true, self.ComMailTips)
-        if (self.TransitionNewMail.playing == false)
-        then
+        if (self.TransitionNewMail.playing == false) then
             self.TransitionNewMail:Play()
         end
 
@@ -777,19 +684,16 @@ function ViewMain:setNewRecord()
     end
 
     local have_newMsg = false
-    if (self.NewFriendChatCount > 0)
-    then
+    if (self.NewFriendChatCount > 0) then
         have_newMsg = true
     end
 
-    if (have_newMsg == false)
-    then
+    if (have_newMsg == false) then
         ViewHelper:setGObjectVisible(false, self.ComMsgTips)
     else
         ViewHelper:setGObjectVisible(true, self.ComMsgTips)
         self.GTextMsgNum.text = tostring(self.NewFriendChatCount)
-        if (self.TransitionNewMsg.playing == false)
-        then
+        if (self.TransitionNewMsg.playing == false) then
             self.TransitionNewMsg:Play()
         end
         self.CasinosContext:Play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
@@ -799,18 +703,15 @@ end
 ---------------------------------------
 function ViewMain:setNewReward()
     local have_newreward = false
-    if (self.CanGetOnLineReward or self.CanGetTimingReward)
-    then
+    if (self.CanGetOnLineReward or self.CanGetTimingReward) then
         have_newreward = true
     end
 
-    if (have_newreward == false)
-    then
+    if (have_newreward == false) then
         ViewHelper:setGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:setGObjectVisible(true, self.ComRewardTips)
-        if (self.TransitionNewReward.playing == false)
-        then
+        if (self.TransitionNewReward.playing == false) then
             self.TransitionNewReward:Play()
         end
     end
@@ -819,13 +720,11 @@ end
 ---------------------------------------
 function ViewMain:setHaveFeedback()
     local have = self.ControllerIM.IMFeedback.HaveNewMsg
-    if (have == false)
-    then
+    if (have == false) then
         ViewHelper:setGObjectVisible(false, self.ComFeedbackTips)
     else
         ViewHelper:setGObjectVisible(true, self.ComFeedbackTips)
-        if (self.TransitionFeedbackTips.playing == false)
-        then
+        if (self.TransitionFeedbackTips.playing == false) then
             self.TransitionFeedbackTips:Play()
         end
     end
@@ -835,13 +734,11 @@ end
 ---------------------------------------
 function ViewMain:setNewItem()
     local have = self.ControllerBag.HaveNewItem
-    if (have == false)
-    then
+    if (have == false) then
         ViewHelper:setGObjectVisible(false, self.ComBagTips)
     else
         ViewHelper:setGObjectVisible(true, self.ComBagTips)
-        if (self.TransitionBagTips.playing == false)
-        then
+        if (self.TransitionBagTips.playing == false) then
             self.TransitionBagTips:Play()
         end
     end
@@ -852,11 +749,9 @@ end
 function ViewMain:haveMoreTips()
     local have_msg = self.ControllerIM.IMFeedback.HaveNewMsg
     local have_item = self.ControllerBag.HaveNewItem
-    if (have_msg or have_item)
-    then
+    if (have_msg or have_item) then
         ViewHelper:setGObjectVisible(true, self.ComMoreTips)
-        if (self.TransitionComMore.playing == false)
-        then
+        if (self.TransitionComMore.playing == false) then
             self.TransitionComMore:Play()
         end
     else
@@ -867,8 +762,7 @@ end
 ---------------------------------------
 function ViewMain:onClickComForestParty()
     local ev = self.ViewMgr:getEv("EvUiForestPartyEnterDesktop")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiForestPartyEnterDesktop:new(nil)
     end
 end
@@ -878,14 +772,12 @@ function ViewMain:onClickRecommendFriend(ev)
     local item_friend_recommend = nil
     local sender = CS.Casinos.LuaHelper.EventDispatcherCastToGComponent(ev.sender)
     for key, value in pairs(self.ListHeadIconRecommond) do
-        if (value.Com == sender)
-        then
+        if (value.Com == sender) then
             item_friend_recommend = value
         end
     end
     local ev = self.ViewMgr:getEv("EvUiClickChooseFriend")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickChooseFriend:new(nil)
     end
     ev.friend_info = item_friend_recommend:getFriendInfo()
@@ -897,8 +789,7 @@ end
 ---------------------------------------
 function ViewMain:onClickBtnLotteryTicket()
     local ev = self.ViewMgr:getEv("EvEntityRequestGetLotteryTicketData")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityRequestGetLotteryTicketData:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -910,14 +801,12 @@ function ViewMain:onClickFriendIcon(ev)
     local item_friend = nil
     local sender = CS.Casinos.LuaHelper.EventDispatcherCastToGComponent(ev.sender)
     for key, value in pairs(self.ListHeadIconFriend) do
-        if (value.Com == sender)
-        then
+        if (value.Com == sender) then
             item_friend = value
         end
     end
     local friend_info = item_friend:getFriendInfo()
-    if (friend_info.PlayerInfoCommon.PlayerGuid == self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid)
-    then
+    if (friend_info.PlayerInfoCommon.PlayerGuid == self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid) then
         return
     end
     self:setCurrentFriendInfo(friend_info)
@@ -927,14 +816,12 @@ end
 function ViewMain:onClickComPlayerInfoCurrentFriend()
     local is_recommand = false
 
-    if (self.CurrentFriendItem == nil)
-    then
+    if (self.CurrentFriendItem == nil) then
         is_recommand = true
     end
 
     local ev = self.ViewMgr:getEv("EvUiClickChooseFriend")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickChooseFriend:new(nil)
     end
     ev.friend_info = self.CurrentFriendItem
@@ -951,8 +838,7 @@ end
 ---------------------------------------
 function ViewMain:onClickBtnShop()
     local ev = self.ViewMgr:getEv("EvUiClickShop")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickShop:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -966,8 +852,7 @@ end
 ---------------------------------------
 function ViewMain:onClickBtnFriend()
     local ev = self.ViewMgr:getEv("EvUiClickFriend")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickFriend:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -1028,8 +913,7 @@ end
 ---------------------------------------
 function ViewMain:onClickBtnRanking()
     local view_ranking = self.ViewMgr:getView("Ranking")
-    if (view_ranking == nil)
-    then
+    if (view_ranking == nil) then
         self.ViewMgr:createView("Ranking")
     else
         self.ViewMgr:destroyView(view_ranking)
@@ -1039,8 +923,7 @@ end
 ---------------------------------------
 function ViewMain:onClickBtnMore()
     local index = self.ControllerMoreBtn.selectedIndex
-    if (index == 0)
-    then
+    if (index == 0) then
         self.ControllerMoreBtn.selectedIndex = 1
         self.ComShadeMore.visible = true
         self.TransitionShowMore:Play()
@@ -1054,8 +937,7 @@ end
 ---------------------------------------
 function ViewMain:onClickBtnSet()
     local view_edit = self.ViewMgr:getView("Edit")
-    if (view_edit == nil)
-    then
+    if (view_edit == nil) then
         self.ViewMgr:createView("Edit")
     else
         self.ViewMgr:destroyView(view_edit)
@@ -1076,8 +958,7 @@ end
 function ViewMain:onClickBtnChat()
     self.ViewMgr:createView("Bag")
     local ev = self.ViewMgr:getEv("EvOpenBag")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvOpenBag:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -1087,8 +968,7 @@ end
 ---------------------------------------
 function ViewMain:onClickBtnChatFriend()
     local ev = self.ViewMgr:getEv("EvUiClickChatmsg")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickChatmsg:new(nil)
     end
     self.ViewMgr:sendEv(ev)
@@ -1112,8 +992,7 @@ end
 ---------------------------------------
 function ViewMain:rendererFriend(index, item)
     local l = #self.ListFriendInfo
-    if (l > index)
-    then
+    if (l > index) then
         local friend_info = self.ListFriendInfo[index + 1]
         local head_icon = ItemHeadIcon:new(nil, item)
         head_icon:setFriendInfo(friend_info,
@@ -1122,8 +1001,7 @@ function ViewMain:rendererFriend(index, item)
                 end
         )
         self.MapFriend[friend_info.PlayerInfoCommon.PlayerGuid] = head_icon
-        if (self.CurrentFriendItem == nil)
-        then
+        if (self.CurrentFriendItem == nil) then
             self.CurrentFriendItem = friend_info
             self:setCurrentFriendInfo(self.CurrentFriendItem)
         end
@@ -1133,8 +1011,7 @@ end
 
 ---------------------------------------
 function ViewMain:rendererFriendRecommend(index, item)
-    if (#self.ListFriendInfoRecommend > index)
-    then
+    if (#self.ListFriendInfoRecommend > index) then
         local friend_info = self.ListFriendInfoRecommend[index + 1]
         local head_icon = ItemHeadIcon:new(nil, item)
         head_icon:setFriendInfo(friend_info,
@@ -1148,8 +1025,7 @@ end
 
 ---------------------------------------
 function ViewMain:refreshCurrentFriendInfo(player_info)
-    if (player_info ~= nil)
-    then
+    if (player_info ~= nil) then
         self.CurrentFriendItem = player_info
         local friend_state = self.ControllerIM.IMFriendList:getFriendStateStr(self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid)
         self.UiPlayerInfoCurrentFriend:setPlayerInfo1(player_info.PlayerInfoCommon.NickName,
@@ -1166,8 +1042,7 @@ end
 
 ---------------------------------------
 function ViewMain:hideMote()
-    if (NeedHideClientUi == false)
-    then
+    if (NeedHideClientUi == false) then
         self.MoteRender.transform.gameObject:SetActive(false)
     end
 end

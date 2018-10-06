@@ -71,6 +71,7 @@ function Context:new(o)
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     self.Launch = Launch
     self.LaunchStep = {}
+    self.Env = nil
     self.ControllerMgr = nil
     self.ViewMgr = nil
     self.TbDataMgr = nil
@@ -81,8 +82,9 @@ function Context:new(o)
 end
 
 ---------------------------------------
-function Context:Init()
+function Context:Init(env)
     Context:new(nil)
+    self.Env = env
     print('Context:Init()')
 
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("ShowFPS")

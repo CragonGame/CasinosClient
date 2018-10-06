@@ -505,7 +505,9 @@ public class EditorViewDataPublish : EditorWindow
             else
             {
                 string file_extension = Path.GetExtension(i.FullName);
-                if (DoNotPackFileExtention.Contains(file_extension) || i.Name == "Context.lua") continue;
+                if (DoNotPackFileExtention.Contains(file_extension)
+                    || i.Name == "Context.lua"
+                    || i.Name == "Bundle.lua") continue;
 
                 File.Copy(i.FullName, path_dst + "\\" + i.Name, true);// 不是文件夹即复制文件，true表示可以覆盖同名文件
             }

@@ -16,7 +16,6 @@ function ViewMatchInfo:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
-
     return o
 end
 
@@ -24,7 +23,7 @@ end
 function ViewMatchInfo:onCreate()
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerActor = controller_mgr:GetController("Actor")
-    ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("MatchInfo"))
+    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("MatchInfo"))
     self.ViewMgr:bindEvListener("EvEntitySetMatchDetailedInfo", self)
     self.ViewMgr:bindEvListener("EvEntitySetRaiseBlindTbInfo", self)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -147,15 +146,13 @@ end
 ---------------------------------------
 function ViewMatchInfo:Init(match_guid, isIndesk, isSelfJoin)
     local ev = self.ViewMgr:getEv("EvUiRequestMatchDetailedInfo")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiRequestMatchDetailedInfo:new(nil)
     end
     ev.MatchGuid = match_guid
     ev.MatchType = MatchTexasScopeType.Public
     self.ViewMgr:sendEv(ev)
-    if (isIndesk)
-    then
+    if (isIndesk) then
         self.GControllerRank:SetSelectedIndex(0)
         self.GControllerOverView:SetSelectedIndex(0)
         self.GControllerMatchState:SetSelectedIndex(0)
@@ -171,16 +168,14 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:onHandleEv(ev)
-    if (ev.EventName == "EvEntitySetMatchDetailedInfo")
-    then
+    if (ev.EventName == "EvEntitySetMatchDetailedInfo") then
         self:SetMatchInfo(ev.MatchDetailedInfo)
-    elseif (ev.EventName == "EvEntitySetRaiseBlindTbInfo")
-    then
+    elseif (ev.EventName == "EvEntitySetRaiseBlindTbInfo") then
         local raise_blind_info = ev.raise_blind_info
         local current_raiseblind_tbid = ev.current_raiseblind_tbid
         local allBlindLevel = raise_blind_info.EndId - raise_blind_info.BeginId
         local currentLevel = current_raiseblind_tbid - raise_blind_info.BeginId + 1
-        self.GTextMatchStateCurrentLevel.text = tostring(currentLevel) .. "/" ..tostring(allBlindLevel)
+        self.GTextMatchStateCurrentLevel.text = tostring(currentLevel) .. "/" .. tostring(allBlindLevel)
         local table_type = raise_blind_info.BlindType
         local current_bindInfo = TbDataHelper:GetTexasRaiseBlindByTypeAndId(table_type, current_raiseblind_tbid)
         self.GTextMatchStateCurrentAnte.text = tostring(current_bindInfo.Ante)
@@ -193,23 +188,19 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:onUpdate(tm)
-    if (self.GControllerMatchInfo.selectedIndex == 1 and self.GControllerMatchState.selectedIndex == 0)
-    then
+    if (self.GControllerMatchInfo.selectedIndex == 1 and self.GControllerMatchState.selectedIndex == 0) then
         local matchUseTime = CS.System.DateTime.Now - self.MatchInfo.DtMatchBegin
         self.GTextMatchUsedTime.text = string.format("%02s", matchUseTime.Minutes) .. ":" .. string.format("%02s", matchUseTime.Seconds)
-        if (self.CurrentLevelLeftSeconds > 0)
-        then
+        if (self.CurrentLevelLeftSeconds > 0) then
             self.CurrentLevelLeftSeconds = self.CurrentLevelLeftSeconds - tm
             local intSeconds = math.ceil(self.CurrentLevelLeftSeconds)
             local hours = nil
             local minutes = nil
             local seconds = nil
-            if (intSeconds >= 3600)
-            then
+            if (intSeconds >= 3600) then
                 hours, t = math.modf(intSeconds / 3600)
                 local left_seconds = intSeconds - hours * 3600
-                if (left_seconds >= 60)
-                then
+                if (left_seconds >= 60) then
                     minutes, t = math.modf(left_seconds / 60)
                     seconds = left_seconds - minutes * 60
                 else
@@ -218,8 +209,7 @@ function ViewMatchInfo:onUpdate(tm)
                 end
             else
                 hours = 0
-                if (intSeconds >= 60)
-                then
+                if (intSeconds >= 60) then
                     minutes, t = math.modf(intSeconds / 60)
                     seconds = intSeconds - minutes * 60
                 else
@@ -242,21 +232,19 @@ end
 ---------------------------------------
 function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
     local match_info = detailedMatchInfo.Info
-    self.TextUniqId.text = string.format("Id:%s",match_info.UniqId)
+    self.TextUniqId.text = string.format("Id:%s", match_info.UniqId)
     self.MatchInfo = match_info
     self.GBtnShare.enabled = true
     self.GBtnApply.enabled = true
     local raiseBlindInfo = match_info.RaiseBlindTbInfo
     local table_type = raiseBlindInfo.BlindType
     --概述
-    if (self.IsInDesk == false)
-    then
+    if (self.IsInDesk == false) then
         self:getBtnApplyState()
     end
     self.GMatchTitle.text = match_info.Name
     local text_signUpfee = nil
-    if (match_info.SignupFee == 0)
-    then
+    if (match_info.SignupFee == 0) then
         text_signUpfee = self.ViewMgr.LanMgr:getLanValue("FreeMatch")
     else
         text_signUpfee = UiChipShowHelper:getGoldShowStr3(match_info.SignupFee) .. "+" .. UiChipShowHelper:getGoldShowStr3(match_info.ServiceFee) .. self.ViewMgr.LanMgr:getLanValue("MatchFee")
@@ -264,50 +252,43 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
     self.GTextApplyFee.text = text_signUpfee
     self.GTextMatchTime.text = self:formatTime(match_info.DtMatchBegin)
     self.GTextStopApplyTime.text = self:formatTime(match_info.DtSignupClose)
-    self.GTextEntryNumber.text = string.format("%s%s - %s%s",detailedMatchInfo.PlayerNumMin,self.ViewMgr.LanMgr:getLanValue("People"),detailedMatchInfo.PlayerNumMax,self.ViewMgr.LanMgr:getLanValue("People"))
+    self.GTextEntryNumber.text = string.format("%s%s - %s%s", detailedMatchInfo.PlayerNumMin, self.ViewMgr.LanMgr:getLanValue("People"), detailedMatchInfo.PlayerNumMax, self.ViewMgr.LanMgr:getLanValue("People"))
     self.GTextInitialChip.text = UiChipShowHelper:getGoldShowStr3(match_info.InitScore)
-    if (match_info.CanRebuyCount > 0)
-    then
+    if (match_info.CanRebuyCount > 0) then
         local blind_list = raiseBlindInfo.ListRaiseBlindTbIdCanRebuy
         local format_info = ""
-        if (#blind_list == 1)
-        then
+        if (#blind_list == 1) then
             local level = blind_list[1] - raiseBlindInfo.BeginId + 1
             format_info = tostring(level)
-        elseif (#blind_list > 1)
-        then
+        elseif (#blind_list > 1) then
             local start_level = blind_list[1] - raiseBlindInfo.BeginId + 1
             local end_level = blind_list[#blind_list] - raiseBlindInfo.BeginId + 1
             format_info = tostring(start_level) .. "-" .. tostring(end_level)
         end
         self.GComReBuy.visible = true
-        self.GTextReBuyTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("RebuyTip"),tostring(match_info.CanRebuyCount),format_info,
-                UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.RebuyGold),UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.RebuyScore))
+        self.GTextReBuyTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("RebuyTip"), tostring(match_info.CanRebuyCount), format_info,
+                UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.RebuyGold), UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.RebuyScore))
     else
         self.GComReBuy.visible = false
     end
-    if (match_info.CanAddonCount > 0)
-    then
+    if (match_info.CanAddonCount > 0) then
         local addon_list = raiseBlindInfo.ListRaiseBlindTbIdCanAddon
         local format_info = ""
-        if (#addon_list == 1)
-        then
+        if (#addon_list == 1) then
             local level = addon_list[1] - raiseBlindInfo.BeginId + 1
             format_info = tostring(level)
-        elseif (#addon_list > 1)
-        then
+        elseif (#addon_list > 1) then
             local start_level = addon_list[1] - raiseBlindInfo.BeginId + 1
             local end_level = addon_list[#addon_list] - raiseBlindInfo.BeginId + 1
             format_info = tostring(start_level) .. "-" .. tostring(end_level)
         end
         self.GGroupAddon.visible = true
-        self.GTextAddonTips.text =  string.format(self.ViewMgr.LanMgr:getLanValue("AddOnTip"),tostring(match_info.CanAddonCount),format_info,
-                UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.AddonGold),UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.AddonScore))
+        self.GTextAddonTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("AddOnTip"), tostring(match_info.CanAddonCount), format_info,
+                UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.AddonGold), UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.AddonScore))
     else
         self.GGroupAddon.visible = false
     end
-    if (self.IsInDesk)
-    then
+    if (self.IsInDesk) then
         local currentInfo = detailedMatchInfo.RealtimeMoreInfo
         -- 赛况
         self.GTextMatchStateRank.text = tostring(currentInfo.Info.MyRanking) .. "/" .. tostring(currentInfo.Info.PlayerLeftNum)
@@ -318,22 +299,19 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
         self.CurrentLevelLeftSeconds = currentInfo.Info.RaiseBlindLeftSecond
         -- 排名
         local list_rank = currentInfo.ListPlayerRanking
-        if (list_rank ~= nil and #list_rank > 0)
-        then
+        if (list_rank ~= nil and #list_rank > 0) then
             for i = 1, #list_rank do
                 local item = list_rank[i]
                 local com = self.GListRank:AddItemFromPool()
-                ItemMatchInfoRank:new(nil,com,item,i,self.ViewMgr.LanMgr.LanBase)
+                ItemMatchInfoRank:new(nil, com, item, i, self.ViewMgr.LanMgr.LanBase)
             end
         end
     end
     -- 盲注
     local tabletips = nil
-    if (match_info.SeatNum == 6)
-    then
+    if (match_info.SeatNum == 6) then
         tabletips = self.ViewMgr.LanMgr:getLanValue("SixSeat")
-    elseif (match_info.SeatNum == 9)
-    then
+    elseif (match_info.SeatNum == 9) then
         tabletips = self.ViewMgr.LanMgr:getLanValue("NineSeat")
     end
     self.GTextBindTips.text = match_info.Name .. tabletips
@@ -343,22 +321,20 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
         local canRebuy = false
         local canAddon = false
         for a = 1, #raiseBlindInfo.ListRaiseBlindTbIdCanRebuy do
-            if (i == raiseBlindInfo.ListRaiseBlindTbIdCanRebuy[a])
-            then
+            if (i == raiseBlindInfo.ListRaiseBlindTbIdCanRebuy[a]) then
                 canRebuy = true
                 break
             end
         end
         for a = 1, #raiseBlindInfo.ListRaiseBlindTbIdCanAddon do
-            if (i == raiseBlindInfo.ListRaiseBlindTbIdCanAddon[a])
-            then
+            if (i == raiseBlindInfo.ListRaiseBlindTbIdCanAddon[a]) then
                 canAddon = true
                 break
             end
         end
         local data = TbDataHelper:GetTexasRaiseBlindByTypeAndId(table_type, i)
         local com = self.GListBlind:AddItemFromPool()
-        ItemMatchInfoBlind:new(nil, com, data, blind_level, canRebuy, canAddon, raiseBlindInfo.RaiseBlindTmSpan,self.ViewMgr)
+        ItemMatchInfoBlind:new(nil, com, data, blind_level, canRebuy, canAddon, raiseBlindInfo.RaiseBlindTmSpan, self.ViewMgr)
         blind_level = blind_level + 1
     end
     -- 奖励
@@ -366,10 +342,9 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
     local isSnowBallReward = match_info.IsSnowballReward
     local tips = ""
     local l_reward = reward_info.ListReward
-    if(isSnowBallReward)
-    then
+    if (isSnowBallReward) then
         self.GComRewardExplain.visible = true
-        tips = string.format(self.ViewMgr.LanMgr:getLanValue("SnowBallMatchReward"),reward_info.SnowballTotalReward)
+        tips = string.format(self.ViewMgr.LanMgr:getLanValue("SnowBallMatchReward"), reward_info.SnowballTotalReward)
         local table_playerNum = self.ViewMgr.TbDataMgr:GetMapData("TexasSnowBallRewardPlayerNum")
         local current_rewardid
         for i, v in pairs(table_playerNum) do
@@ -390,12 +365,12 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
                 local r_i = BMatchTexasRewardItem:new(nil)
                 r_i.RankingBegin = v.StartRank
                 local e_r = v.EndRank
-                if e_r ==0 then
+                if e_r == 0 then
                     e_r = v.StartRank
                 end
                 r_i.RankingEnd = e_r
                 r_i.Gold = reward_gold
-                table.insert(l_reward,r_i)
+                table.insert(l_reward, r_i)
             end
         end
     else
@@ -403,19 +378,17 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
         tips = match_info.Name .. tabletips
     end
     self.GTextRewardTips.text = tips
-    if(#l_reward > 0)
-    then
-        for  i = 1,#l_reward do
+    if (#l_reward > 0) then
+        for i = 1, #l_reward do
             local reward = l_reward[i]
             local com = self.GListReward:AddItemFromPool()
-            ItemMatchInfoReward:new(nil,com,reward,self.ViewMgr)
-            if(i == #l_reward and isSnowBallReward)
-            then
+            ItemMatchInfoReward:new(nil, com, reward, self.ViewMgr)
+            if (i == #l_reward and isSnowBallReward) then
                 local aTextField = CS.FairyGUI.GTextField()
                 com:AddChild(aTextField)
-                aTextField.pivotX  = 0.5
-                aTextField.pivotY  = 0.5
-                aTextField:SetSize(710,40)
+                aTextField.pivotX = 0.5
+                aTextField.pivotY = 0.5
+                aTextField:SetSize(710, 40)
                 aTextField.x = 4
                 aTextField.y = 82
                 aTextField.align = CS.FairyGUI.AlignType.Center
@@ -429,12 +402,10 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:updateMatchState(left_seconds, begin_time)
-    if (left_seconds >= 3600)
-    then
+    if (left_seconds >= 3600) then
         hours, t = math.modf(left_seconds / 3600)
         local left_seconds = left_seconds - hours * 3600
-        if (left_seconds >= 60)
-        then
+        if (left_seconds >= 60) then
             minutes, t = math.modf(left_seconds / 60)
             seconds = left_seconds - minutes * 60
         else
@@ -443,8 +414,7 @@ function ViewMatchInfo:updateMatchState(left_seconds, begin_time)
         end
     else
         hours = 0
-        if (left_seconds >= 60)
-        then
+        if (left_seconds >= 60) then
             minutes, t = math.modf(left_seconds / 60)
             seconds = left_seconds - minutes * 60
         else
@@ -462,35 +432,33 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:onClickShare()
-    local content = string.format(self.ViewMgr.LanMgr:getLanValue("MatchInviteTip"),self.ControllerActor.PropNickName:get(),
-            self:formatTime(self.MatchInfo.DtMatchBegin),self.MatchInfo.Name)
+    local content = string.format(self.ViewMgr.LanMgr:getLanValue("MatchInviteTip"), self.ControllerActor.PropNickName:get(),
+            self:formatTime(self.MatchInfo.DtMatchBegin), self.MatchInfo.Name)
     local pic_name = "Resources.KingTexasRaw/Icon/ShareIcon.png"
     local pic_path = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(pic_name)
-    Native.Instance:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, content, pic_path, self.MatchInfo.Name..self.ViewMgr.LanMgr:getLanValue("MatchInvite"),
+    Native.Instance:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, content, pic_path, self.MatchInfo.Name .. self.ViewMgr.LanMgr:getLanValue("MatchInvite"),
             Native.Instance.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Webpage)
 end
 
 ---------------------------------------
 function ViewMatchInfo:onClickBtnApply()
     local btnApplyState = self:getBtnApplyState()
-    if (btnApplyState == 2) -- 进入
-    then
+    if (btnApplyState == 2) then
+        -- 进入
         local ev = self.ViewMgr:getEv("EvUiRequestEnterMatch")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvUiRequestEnterMatch:new(nil)
         end
         ev.MatchGuid = self.MatchInfo.Guid
         self.ViewMgr:sendEv(ev)
-    elseif (btnApplyState == 3) -- 退赛
-    then
+    elseif (btnApplyState == 3) then
+        -- 退赛
         local msg_box = self.ViewMgr:createView("MsgBox")
         local content = self.ViewMgr.LanMgr:getLanValue("QuitMatchTip")
         msg_box:useTwoBtn("", content,
                 function()
                     local ev = self.ViewMgr:getEv("EvUiRequestCancelSignupMatch")
-                    if (ev == nil)
-                    then
+                    if (ev == nil) then
                         ev = EvUiRequestCancelSignupMatch:new(nil)
                     end
                     ev.MatchGuid = self.MatchGuid
@@ -503,14 +471,13 @@ function ViewMatchInfo:onClickBtnApply()
                     self.ViewMgr:destroyView(self)
                 end
         )
-    elseif (btnApplyState == 4) -- 报名
-    then
+    elseif (btnApplyState == 4) then
+        -- 报名
         local msg_box = self.ViewMgr:createView("MsgBox")
-        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"),UiChipShowHelper:getGoldShowStr3(self.MatchInfo.SignupFee),UiChipShowHelper:getGoldShowStr3(self.MatchInfo.ServiceFee)),
+        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:getGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:getGoldShowStr3(self.MatchInfo.ServiceFee)),
                 function()
                     local ev = self.ViewMgr:getEv("EvUiRequestSignUpMatch")
-                    if (ev == nil)
-                    then
+                    if (ev == nil) then
                         ev = EvUiRequestSignUpMatch:new(nil)
                     end
                     ev.MatchGuid = self.MatchGuid
@@ -537,16 +504,13 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:getBtnApplyState()
-    if (self.IsSelfJoin)
-    then
+    if (self.IsSelfJoin) then
         local leftMatchBeginTime = self.MatchInfo.DtMatchBegin - CS.System.DateTime.Now
-        if (leftMatchBeginTime.Minutes <= 4 and leftMatchBeginTime.Minutes > 0)
-        then
+        if (leftMatchBeginTime.Minutes <= 4 and leftMatchBeginTime.Minutes > 0) then
             --self.GBtnApply.enabled = false
             self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:getLanValue("QuitMatch")
             return 3 -- 已经报名，但不可退赛
-        elseif (leftMatchBeginTime.Minutes <= 0)
-        then
+        elseif (leftMatchBeginTime.Minutes <= 0) then
             self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:getLanValue("Enter")
             return 2 -- 已经报名，可以进入
         else
@@ -564,17 +528,14 @@ function ViewMatchInfo:formatTime(dtTime)
     local nowtm = CS.System.DateTime.Now
     local day = dtTime.Day - nowtm.Day
     local text_day = nil
-    if (day == 0)
-    then
+    if (day == 0) then
         text_day = self.ViewMgr.LanMgr:getLanValue("Today")
-    elseif (day == 1)
-    then
+    elseif (day == 1) then
         text_day = self.ViewMgr.LanMgr:getLanValue("Tomorrow")
-    elseif (day == 2)
-    then
+    elseif (day == 2) then
         text_day = self.ViewMgr.LanMgr:getLanValue("AfterTomorrow")
     else
-        text_day = string.format("%02s%s%s",dtTime.Month,".",tostring(dtTime.Day))
+        text_day = string.format("%02s%s%s", dtTime.Month, ".", tostring(dtTime.Day))
     end
     local temp = {}
     temp[1] = string.format("%02s", dtTime.Hour)
