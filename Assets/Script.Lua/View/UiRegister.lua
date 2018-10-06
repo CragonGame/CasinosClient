@@ -107,7 +107,7 @@ function UiRegister:new(view)
 end
 
 ---------------------------------------
-function UiRegister:OnUpdate(tm)
+function UiRegister:Update(tm)
     if self.PhoneCodeIsSend then
         local next_tm = self.NextPhoneCodeSendTm
         next_tm = next_tm - tm

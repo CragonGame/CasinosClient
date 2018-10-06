@@ -235,9 +235,9 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(Casinos.EbTimeWheel), CasinosEbTimeWheelWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos.KingTexasHelper), CasinosKingTexasHelperWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(LoaderTicket), LoaderTicketWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos.MbHelper), CasinosMbHelperWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(NativeFun), NativeFunWrap.__Register);
 				

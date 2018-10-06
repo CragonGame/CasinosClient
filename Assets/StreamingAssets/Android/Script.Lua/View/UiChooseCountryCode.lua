@@ -38,8 +38,6 @@ function UiChooseCountryCode:new(view, default_code)
     else
         if CS.Casinos.CasinosContext.Instance.IsEditor == false then
             c_k = CS.NativeFun.getCountryCode()-- 获取当前手机的当前国际区号
-            --else
-            --    c_k = "CN"
         end
     end
 
@@ -85,7 +83,7 @@ end
 
 ---------------------------------------
 function UiChooseCountryCode:_checkInput()
-    local country = self.TextSearchCountry.text
+    --local country = self.TextSearchCountry.text
 end
 
 ---------------------------------------

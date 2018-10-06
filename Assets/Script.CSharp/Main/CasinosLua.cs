@@ -88,7 +88,7 @@ namespace Casinos
             typeof(System.IO.MemoryStream),
             typeof(System.IO.Path),
             
-            // FairyGui
+            // FairyGUI
             typeof(FairyGUI.EaseType),
             typeof(FairyGUI.RelationType),
             typeof(FairyGUI.TweenPropType),
@@ -154,8 +154,8 @@ namespace Casinos
             typeof(EbDoubleLinkNode<EbTimeEvent>),
             typeof(EbDoubleLinkList<EbTimeEvent>),
             typeof(EbTimeWheel),
-            typeof(KingTexasHelper),
             typeof(LoaderTicket),
+            typeof(MbHelper),
             typeof(NativeFun),
             typeof(OpenInstall),
             typeof(OpenInstallReceiver),

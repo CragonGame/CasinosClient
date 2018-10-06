@@ -54,8 +54,8 @@
 		<type fullname="Casinos.EbTimeEvent" preserve="all"/>
 		<type fullname="Casinos.EbTimer" preserve="all"/>
 		<type fullname="Casinos.EbTimeWheel" preserve="all"/>
-		<type fullname="Casinos.KingTexasHelper" preserve="all"/>
 		<type fullname="LoaderTicket" preserve="all"/>
+		<type fullname="Casinos.MbHelper" preserve="all"/>
 		<type fullname="QRCodeMaker" preserve="all"/>
 		<type fullname="TcpClient" preserve="all"/>
 		<type fullname="Casinos.TimerShaft" preserve="all"/>

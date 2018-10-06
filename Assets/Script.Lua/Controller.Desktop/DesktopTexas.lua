@@ -200,7 +200,7 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     self.ControllerLobby:HideLobby()
 
     self.IsSnapshot = true
-    local snapshot_data1 = self.ControllerDesktop.ControllerMgr:unpackData(desktop_data.DesktopData) --CS.Casinos.LuaHelper.ProtobufDeserializeDesktopSnapshotDataTexas(desktop_data.DesktopData)
+    local snapshot_data1 = self.ControllerDesktop.ControllerMgr:unpackData(desktop_data.DesktopData)
     local snapshot_data = DesktopSnapshotDataTexas:new(nil)
     snapshot_data:setData(snapshot_data1)
     local desktoptype_facname = "TexasClassic"
@@ -213,7 +213,6 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     local desktoptype_factory = self:GetDesktopTypeBaseFactory(desktoptype_facname)
     self.DesktopTypeBase = desktoptype_factory:CreateDesktopType(self, self.ControllerDesktop.ControllerMgr)
     self.DesktopTypeBase.DesktopTexas = self
-
     self.DesktopGuid = snapshot_data.desktop_guid
     self.SeatNum = snapshot_data.seat_num
     self.IsVIP = snapshot_data.is_vip
@@ -253,7 +252,7 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     local ui_desk = view_mgr:getView("DesktopTexas")
     if (ui_desk == nil) then
         ui_desk = view_mgr:createView("DesktopTexas")
-        CS.Casinos.CasinosContext.Instance:StopAllSceneSound()
+        self.CasinosContext:StopAllSceneSound()
     end
 
     self.AllSeat = {}
@@ -285,7 +284,7 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     end
 
     if (snapshot_data.list_actorinfo ~= nil) then
-        local t_list_actorinfo = snapshot_data.list_actorinfo--CS.Casinos.LuaHelper.ListToLuatable(snapshot_data.list_actorinfo)
+        local t_list_actorinfo = snapshot_data.list_actorinfo
         local me_data = nil
         for i, v in pairs(t_list_actorinfo) do
             if (v.PlayerGuid == self.ControllerPlayer.Guid) then

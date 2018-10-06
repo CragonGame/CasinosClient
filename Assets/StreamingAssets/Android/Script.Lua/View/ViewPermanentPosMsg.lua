@@ -16,6 +16,8 @@ function ViewPermanentPosMsg:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    self.TimerUpdate = nil
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     return o
 end
 
@@ -29,22 +31,28 @@ function ViewPermanentPosMsg:onCreate()
     self.AutoDestroyTm = 3
     self.Tm = 0
     self.ComUi.touchable = false
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
 end
 
 ---------------------------------------
 function ViewPermanentPosMsg:onDestroy()
-end
-
----------------------------------------
-function ViewPermanentPosMsg:onUpdate(tm)
-    self.Tm = self.Tm + tm
-    if (self.Tm >= self.AutoDestroyTm) then
-        self.ViewMgr:destroyView(self)
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
     end
 end
 
 ---------------------------------------
 function ViewPermanentPosMsg:onHandleEv(ev)
+end
+
+---------------------------------------
+function ViewPermanentPosMsg:_timerUpdate(tm)
+    self.Tm = self.Tm + tm
+    if (self.Tm >= self.AutoDestroyTm) then
+        self.ViewMgr:destroyView(self)
+    end
 end
 
 ---------------------------------------

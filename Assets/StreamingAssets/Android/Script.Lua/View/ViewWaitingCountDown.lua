@@ -15,6 +15,8 @@ function ViewWaitingCountDown:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    self.TimerUpdate = nil
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     return o
 end
 
@@ -28,29 +30,29 @@ function ViewWaitingCountDown:onCreate()
     self.TextMin = self.ComUi:GetChild("TextMin").asTextField
     self.TextSec = self.ComUi:GetChild("TextSec").asTextField
     self.UpdateTimeTm = 0
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
 ---------------------------------------
 function ViewWaitingCountDown:onDestroy()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
 end
 
 ---------------------------------------
-function ViewWaitingCountDown:onUpdate(tm)
+function ViewWaitingCountDown:onHandleEv(ev)
+end
+
+---------------------------------------
+function ViewWaitingCountDown:_timerUpdate(tm)
     self.Tm = self.Tm - tm
     self:setTm()
     if self.Tm <= 0 then
         self.ViewMgr:destroyView(self)
     end
-    --self.UpdateTimeTm = self.UpdateTimeTm + tm
-    --if (self.UpdateTimeTm >= 1)
-    --then
-    --    self.UpdateTimeTm = 0
-    --    self:setTm()
-    --end
-end
-
----------------------------------------
-function ViewWaitingCountDown:onHandleEv(ev)
 end
 
 ---------------------------------------

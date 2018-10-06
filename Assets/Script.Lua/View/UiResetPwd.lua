@@ -104,7 +104,7 @@ function UiResetPwd:new(view)
 end
 
 ---------------------------------------
-function UiResetPwd:OnUpdate(tm)
+function UiResetPwd:Update(tm)
     if self.PhoneCodeIsSend then
         local next_tm = self.NextPhoneCodeSendTm
         next_tm = next_tm - tm

@@ -52,8 +52,6 @@ namespace Casinos
     {
         //---------------------------------------------------------------------
         public static CasinosContext Instance { get; private set; }
-        public string UCenterDomain { get; private set; }
-        public string UCenterAppId { get; private set; }
         public TimerShaft TimerShaft { get; private set; }
         public System.Diagnostics.Stopwatch Stopwatch { get; private set; }
         public MemoryStream MemoryStream { get; private set; }
@@ -407,45 +405,3 @@ namespace Casinos
         }
     }
 }
-
-//---------------------------------------------------------------------
-//public void PlayBackgroundSound(string snd_name, bool is_loop = false)
-//{
-//    //if (string.IsNullOrEmpty(snd_name))
-//    //{
-//    //    EbLog.Note("ClientSound.playBackgroundSound() 声音名称为空");
-//    //}
-//    //string full_snd_name = "Audio/" + snd_name;
-//    //AudioClip audio_clip = (AudioClip)Resources.Load(full_snd_name, typeof(AudioClip));
-//    //SoundManager.Play(audio_clip, is_loop);
-//}
-
-//---------------------------------------------------------------------
-//public void SetLoadDataDone()
-//{
-//    //var t_lanmgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("LanMgr");
-//    //var refresh_lan = t_lanmgr.Get<Action>("refreshLan");
-//    //refresh_lan();
-//    CasinosLua.LuaEnv.Global.Get<LuaTable>(LuaProjectListenerName);
-//    ViewMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewMgr");
-//    ViewHelper = CasinosLua.LuaEnv.Global.Get<LuaTable>("ViewHelper");
-//    UiEndWaiting = ViewHelper.Get<Action<LuaTable>>("UiEndWaiting");
-//    CreateView = ViewMgr.Get<GetView>("createView");
-//    GetView = ViewMgr.Get<GetView>("getView");
-//    DestroyView = ViewMgr.Get<Action<LuaTable>>("destroyView");
-//    if (ProjectListener != null)
-//    {
-//        ActionOnApplicationPause = ProjectListener.Get<Action<bool>>("OnApplicationPause");
-//    }
-//    //ControllerMgr = CasinosLua.LuaEnv.Global.Get<LuaTable>("ControllerMgr");
-//    //CreateController = ControllerMgr.Get<CreateController>("CreateController");
-//    //GetController = ControllerMgr.Get<GetController>("GetController");
-//}
-
-//---------------------------------------------------------------------
-//public string GetChannelName()
-//{
-//    string bundle_id = Application.identifier;
-//    string channel_name = bundle_id.Replace(Config.AppCommonIdentifier, "");
-//    return channel_name;
-//}

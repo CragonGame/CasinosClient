@@ -33,3 +33,11 @@
 //        public abstract string GetCanNotChatTipsDesktop();
 //    }
 //}
+
+//---------------------------------------------------------------------
+//public string GetChannelName()
+//{
+//    string bundle_id = Application.identifier;
+//    string channel_name = bundle_id.Replace(Config.AppCommonIdentifier, "");
+//    return channel_name;
+//}

@@ -16,6 +16,8 @@ function ViewWaiting:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    self.TimerUpdate = nil
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     return o
 end
 
@@ -49,22 +51,28 @@ function ViewWaiting:onCreate()
     table.insert(self.RandomTips, self.ViewMgr.LanMgr:getLanValue("WaitingTips18"))
     table.insert(self.RandomTips, self.ViewMgr.LanMgr:getLanValue("WaitingTips19"))
     table.insert(self.RandomTips, self.ViewMgr.LanMgr:getLanValue("WaitingTips20"))
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
 ---------------------------------------
 function ViewWaiting:onDestroy()
-end
-
----------------------------------------
-function ViewWaiting:onUpdate(tm)
-    self.Tm = self.Tm + tm
-    if (self.Tm >= self.AutoDestroyTm) then
-        self.ViewMgr:destroyView(self)
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
     end
 end
 
 ---------------------------------------
 function ViewWaiting:onHandleEv(ev)
+end
+
+---------------------------------------
+function ViewWaiting:_timerUpdate(tm)
+    self.Tm = self.Tm + tm
+    if (self.Tm >= self.AutoDestroyTm) then
+        self.ViewMgr:destroyView(self)
+    end
 end
 
 ---------------------------------------

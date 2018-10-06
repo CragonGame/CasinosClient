@@ -87,7 +87,7 @@ function Context:Init(env)
     self.Env = env
     print('Context:Init()')
 
-    local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("ShowFPS")
+    local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")
     show_fps_obj.enabled = ClientShowFPS
     --if (FPSLimit == -1) then
     --    CS.UnityEngine.QualitySettings.vSyncCount = 0

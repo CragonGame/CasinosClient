@@ -4,7 +4,7 @@ namespace Casinos
 {
     using UnityEngine;
 
-    public class KingTexasStartup : MonoBehaviour
+    public class MbMain : MonoBehaviour
     {
         //---------------------------------------------------------------------
         CasinosContext Context { get; set; }

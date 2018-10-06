@@ -17,6 +17,8 @@ function ViewLogin:new(o)
     self.InitDepth = nil
     self.ViewKey = nil
     self.AgreeAgreement = true
+    self.TimerUpdate = nil
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     return o
 end
 
@@ -263,26 +265,23 @@ function ViewLogin:onCreate()
     local version_bundle = self.CasinosContext.Config.VersionBundle
     local version_data = self.CasinosContext.Config.VersionDataPersistent
     self:SetVersionAndServerStateInfo(version_bundle, version_data, ServerState, ServerStateInfo)
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
 ---------------------------------------
 function ViewLogin:onDestroy()
     print('ViewLogin:onDestroy()')
 
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
+
     if (NeedHideClientUi == false) then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
-end
-
----------------------------------------
-function ViewLogin:onUpdate(tm)
-    if self.UiRegister ~= nil then
-        self.UiRegister:OnUpdate(tm)
-    end
-    if self.UiResetPwd ~= nil then
-        self.UiResetPwd:OnUpdate(tm)
-    end
 end
 
 ---------------------------------------
@@ -297,6 +296,16 @@ function ViewLogin:onHandleEv(ev)
             end
             self.TextCountryCode.text = ev.KeyAndCodeFormat
         end
+    end
+end
+
+---------------------------------------
+function ViewLogin:_timerUpdate(tm)
+    if self.UiRegister ~= nil then
+        self.UiRegister:Update(tm)
+    end
+    if self.UiResetPwd ~= nil then
+        self.UiResetPwd:Update(tm)
     end
 end
 

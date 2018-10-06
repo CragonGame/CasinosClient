@@ -16,8 +16,9 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
         self.ControllerMgr = controller_mgr
         self.Guid = guid
         self.UCenterDomain = UCenterDomain
-        self.MbKingTexasHelper = nil
+        self.MbHelper = nil
         self.Instance = o
+        self.CasinosContext = CS.Casinos.CasinosContext.Instance
     end
 
     return self.Instance
@@ -26,7 +27,7 @@ end
 ---------------------------------------
 function ControllerUCenter:onCreate()
     print("ControllerUCenter:onCreate")
-    self.MbKingTexasHelper = CS.Casinos.CasinosContext.Instance.Config.GoMain:GetComponent("Casinos.KingTexasHelper")
+    self.MbHelper = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbHelper")
 end
 
 ---------------------------------------
@@ -44,7 +45,7 @@ function ControllerUCenter:RequestGetPhoneVerificationCode(request, handler)
     local http_url = self:_genUrl("getphoneverificationcode")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -57,7 +58,7 @@ function ControllerUCenter:RequestRegister(request, handler)
     local http_url = self:_genUrl("register")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -70,7 +71,7 @@ function ControllerUCenter:RequestLogin(request, handler)
     local http_url = self:_genUrl("login")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -83,7 +84,7 @@ function ControllerUCenter:RequestResetPasswordWithPhone(request, handler)
     local http_url = self:_genUrl("resetpasswordbyphone")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -96,7 +97,7 @@ function ControllerUCenter:RequestWechatAutoLogin(request, handler)
     local http_url = self:_genUrl("wechatautologin")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -109,7 +110,7 @@ function ControllerUCenter:RequestWechatLogin(request, handler)
     local http_url = self:_genUrl("wechatlogin")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -122,7 +123,7 @@ function ControllerUCenter:RequestWechatBind(request, handler)
     local http_url = self:_genUrl("wechatattach")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -135,7 +136,7 @@ function ControllerUCenter:RequestWechatUnbind(request, handler)
     local http_url = self:_genUrl("wechatdeattach")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -148,7 +149,7 @@ function ControllerUCenter:RequestGuestAccess(request, handler)
     local http_url = self:_genUrl("guestaccess")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -161,7 +162,7 @@ function ControllerUCenter:RequestGuestConvert(request, handler)
     local http_url = self:_genUrl("guestconvert")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -174,7 +175,7 @@ function ControllerUCenter:RequestResetPassword(request, handler)
     local http_url = self:_genUrl("resetpassword")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -210,7 +211,7 @@ function ControllerUCenter:RequestPayCreateCharge(payment_info, handler)
     local http_url = self:_genPayUrl("createcharge")
     local param = self.ControllerMgr.Json.encode(payment_info)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end
@@ -223,7 +224,7 @@ function ControllerUCenter:RequestCheckCardAndName(request, handler)
     local http_url = self:_genIdCardUrl("checkcardandname")
     local param = self.ControllerMgr.Json.encode(request)
     print(http_url)
-    self.MbKingTexasHelper:PostUrl(http_url, param,
+    self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
             end

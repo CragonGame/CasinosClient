@@ -37,12 +37,7 @@ function Native:new(o, view_mgr, listner)
         end
 
         CS.ShareSDKReceiver.mShareSDK:init()
-        --CS.MobLinkReceiver.instance()
-        --if CS.Casinos.CasinosContext.Instance.IsEditor == false then
-        --    CS.com.moblink.unity3d.MobLink.setRestoreSceneListener(function(scene)
-        --        self:OnRestoreScene(scene)
-        --    end)
-        --end
+
         local open_install = CS.OpenInstallReceiver.instance()
         open_install.OpenInstallResultCallBack = function(result, is_install)
             self:OpenInstallResult(result, is_install)
@@ -119,9 +114,7 @@ end
 
 ---------------------------------------
 function Native:OnMobIdHandler(mobid)
-    --local url = CS.Casinos.CasinosContext.Config.ConfigUrl
-    --print("OnMobIdHandler  " .. mobid)
-    self.ShareUrl = 'https://www.cragon.cn/gpdz.html?mobid=' .. mobid --'https://www.cragon.cn/gpdz1.html?mobid=' .. mobid  'http://cragon-king.oss-cn-shanghai.aliyuncs.com/Test.html?mobid=' .. mobid
+    self.ShareUrl = 'https://www.cragon.cn/gpdz.html?mobid=' .. mobid
     local t = CS.UnityEngine.Texture2D(256, 256)
     local colors = CS.QRCodeMaker.createQRCode(self.ShareUrl, t.width, t.height)
     t:SetPixels32(colors)
@@ -132,9 +125,7 @@ end
 
 ---------------------------------------
 function Native:CreateShareUrlAndQRCode(player_id)
-    --local url = CS.Casinos.CasinosContext.Config.ConfigUrl
-    --print("CreateShareUrlAndQRCode  " .. player_id)
-    self.ShareUrl = 'https://www.cragon.cn/gpdz.html?PlayerId=' .. player_id --'https://www.cragon.cn/gpdz1.html?mobid=' .. mobid  'http://cragon-king.oss-cn-shanghai.aliyuncs.com/Test.html?mobid=' .. mobid
+    self.ShareUrl = 'https://www.cragon.cn/gpdz.html?PlayerId=' .. player_id
     local t = CS.UnityEngine.Texture2D(256, 256)
     local colors = CS.QRCodeMaker.createQRCode(self.ShareUrl, t.width, t.height)
     t:SetPixels32(colors)

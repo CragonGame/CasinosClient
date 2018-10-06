@@ -7,7 +7,7 @@ namespace Casinos
     using UnityEngine;
     using UnityEngine.Networking;
 
-    public class KingTexasHelper : MonoBehaviour
+    public class MbHelper : MonoBehaviour
     {
         //-------------------------------------------------------------------------
         public void SendUrl(string url, Action<string> cb)

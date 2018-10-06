@@ -15,12 +15,12 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class CasinosKingTexasHelperWrap 
+    public class CasinosMbHelperWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(Casinos.KingTexasHelper);
+			System.Type type = typeof(Casinos.MbHelper);
 			Utils.BeginObjectRegister(type, L, translator, 0, 2, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SendUrl", _m_SendUrl);
@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					Casinos.KingTexasHelper gen_ret = new Casinos.KingTexasHelper();
+					Casinos.MbHelper gen_ret = new Casinos.MbHelper();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -62,7 +62,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.KingTexasHelper constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.MbHelper constructor!");
             
         }
         
@@ -81,7 +81,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                Casinos.KingTexasHelper gen_to_be_invoked = (Casinos.KingTexasHelper)translator.FastGetCSObj(L, 1);
+                Casinos.MbHelper gen_to_be_invoked = (Casinos.MbHelper)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -110,7 +110,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                Casinos.KingTexasHelper gen_to_be_invoked = (Casinos.KingTexasHelper)translator.FastGetCSObj(L, 1);
+                Casinos.MbHelper gen_to_be_invoked = (Casinos.MbHelper)translator.FastGetCSObj(L, 1);
             
             
                 
