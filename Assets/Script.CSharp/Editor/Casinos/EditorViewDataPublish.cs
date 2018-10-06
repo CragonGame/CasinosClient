@@ -34,6 +34,16 @@ public class EditorViewDataPublish : EditorWindow
         GUILayout.Label("------------------------------------------------------");
         EditorGUILayout.LabelField("AB资源所在路径:", EditorContext.Instance.PathAssets);
         EditorGUILayout.LabelField("BundleVersion:", Application.version);
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("清除VersionLaunchPersistent", GUILayout.Width(200)))
+        {
+            PlayerPrefs.DeleteKey("VersionLaunchPersistent");
+        }
+        if (GUILayout.Button("清除VersionDataPersistent", GUILayout.Width(200)))
+        {
+            PlayerPrefs.DeleteKey("VersionDataPersistent");
+        }
+        EditorGUILayout.EndHorizontal();
 
         GUILayout.Space(10);
         GUILayout.Label("------------------------------------------------------");
