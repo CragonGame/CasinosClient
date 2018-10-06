@@ -61,17 +61,17 @@ function Launch:Setup()
     CS.FairyGUI.Stage.inst.onKeyDown:Add(
             function(context)
                 local key_code = context.inputEvent.keyCode
-                print('KeyDown KeyCode=' .. tostring(key_code))
                 if (key_code == CS.UnityEngine.KeyCode.Escape) then
-                    local view_premsgbox = PreViewMgr:createView("PreMsgBox")
+                    local view_premsgbox = PreViewMgr:getView("PreMsgBox")
+                    if (view_premsgbox == nil) then
+                        view_premsgbox = PreViewMgr:createView("PreMsgBox")
+                    end
                     view_premsgbox:showMsgBox('确认退出吗',
                             function()
-                                print('ok')
                                 PreViewMgr:destroyView(view_premsgbox)
                                 CS.UnityEngine.Application.Quit()
                             end,
                             function()
-                                print('cancel')
                                 PreViewMgr:destroyView(view_premsgbox)
                             end
                     )
