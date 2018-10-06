@@ -57,6 +57,7 @@ function ViewDesktopTexas:new(o)
     self.SeatPlayerParentTitle = "ComSeatPlayerParent"-- 前缀
     self.ChairTitle = "ComSeat"-- 前缀
     self.PokerGirlDesk = "DeskGirl"
+    self.Flow = nil
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
     return o
@@ -99,6 +100,8 @@ function ViewDesktopTexas:onCreate()
     self.ViewMgr:bindEvListener("EvRequestGetTimingReward", self)
     self.ViewMgr:bindEvListener("EvOnGetOnLineReward", self)
 
+    self.Flow = UiDesktopTexasFlow:new(nil, self)
+    self.Flow:Create()
     self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     self.ControllerDesktop = self.ViewMgr.ControllerMgr:GetController("Desktop")
@@ -244,13 +247,22 @@ function ViewDesktopTexas:onDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
+
     self.ViewMgr:unbindEvListener(self)
+
+    if (self.Flow ~= nil) then
+        self.Flow:Destroy()
+        self.Flow = nil
+    end
+
     if (self.UiChipMgr ~= nil) then
         self.UiChipMgr:Destroy()
+        self.UiChipMgr = nil
     end
 
     if (self.UiDesktopChatParent ~= nil) then
         self.ViewMgr:destroyView(self.UiDesktopChatParent)
+        self.UiDesktopChatParent = nil
     end
 
     local ui_shootingtext = self.ViewMgr:getView("ShootingText")
@@ -377,6 +389,10 @@ function ViewDesktopTexas:_timerUpdate(elapsed_tm)
                         end
                     end)
         end
+    end
+
+    if (self.Flow ~= nil) then
+        self.Flow:Update(elapsed_tm)
     end
 
     if (self.DealerEx ~= nil) then

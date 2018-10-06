@@ -4,10 +4,11 @@
 UiDesktopTexasFlow = {}
 
 ---------------------------------------
-function UiDesktopTexasFlow:new(o, com_card)
+function UiDesktopTexasFlow:new(o, view_mgr)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.ViewMgr = view_mgr
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     return o
 end
