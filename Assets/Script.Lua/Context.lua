@@ -42,6 +42,7 @@ UseDefaultLan = false
 DefaultLan = 'Chinese'
 ChipIconSolustion = 0
 CurrentMoneyType = 0
+UCenterAppId = 'King'
 BuglyAppId = '0aed5e7e56'
 PinggPPAppId = 'app_TCi58CGKCSaHGCuP'
 WeChatAppId = 'wxff929d92c3997b5d'
@@ -162,9 +163,9 @@ function Context:_initLaunchStep()
     end
 
     -- 检测是否需要更新Data
-    if (self.CasinosContext.Config.VersionDataPersistent ~= DataVersion) then
-        self.LaunchStep[3] = "UpdateData"
-    end
+    --if (self.CasinosContext.Config.VersionDataPersistent ~= DataVersion) then
+    self.LaunchStep[3] = "UpdateData"
+    --end
 
     -- 进入Login界面
     self.LaunchStep[4] = "ShowLogin"

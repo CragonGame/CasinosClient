@@ -8,9 +8,7 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.ControllerName = "Login"
         self.ControllerData = controller_data
         self.ControllerMgr = controller_mgr
@@ -20,7 +18,6 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
         self.Instance = o
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
     end
-
     return self.Instance
 end
 
@@ -44,7 +41,7 @@ end
 function ControllerUCenter:RequestGetPhoneVerificationCode(request, handler)
     local http_url = self:_genUrl("getphoneverificationcode")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -57,7 +54,7 @@ end
 function ControllerUCenter:RequestRegister(request, handler)
     local http_url = self:_genUrl("register")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -70,7 +67,7 @@ end
 function ControllerUCenter:RequestLogin(request, handler)
     local http_url = self:_genUrl("login")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -83,7 +80,7 @@ end
 function ControllerUCenter:RequestResetPasswordWithPhone(request, handler)
     local http_url = self:_genUrl("resetpasswordbyphone")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -96,7 +93,7 @@ end
 function ControllerUCenter:RequestWechatAutoLogin(request, handler)
     local http_url = self:_genUrl("wechatautologin")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -109,7 +106,7 @@ end
 function ControllerUCenter:RequestWechatLogin(request, handler)
     local http_url = self:_genUrl("wechatlogin")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -122,7 +119,7 @@ end
 function ControllerUCenter:RequestWechatBind(request, handler)
     local http_url = self:_genUrl("wechatattach")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -135,7 +132,7 @@ end
 function ControllerUCenter:RequestWechatUnbind(request, handler)
     local http_url = self:_genUrl("wechatdeattach")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -148,7 +145,7 @@ end
 function ControllerUCenter:RequestGuestAccess(request, handler)
     local http_url = self:_genUrl("guestaccess")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -161,7 +158,7 @@ end
 function ControllerUCenter:RequestGuestConvert(request, handler)
     local http_url = self:_genUrl("guestconvert")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -174,7 +171,7 @@ end
 function ControllerUCenter:RequestResetPassword(request, handler)
     local http_url = self:_genUrl("resetpassword")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -185,24 +182,17 @@ end
 ---------------------------------------
 -- 请求上传头像
 function ControllerUCenter:RequestUploadProfileImage(app_id, account_id, bytes, handler)
-    if (self.WWWUploadProfileImage ~= nil)
-    then
-        return
-    end
-
-    self.UploadProfileImageHandler = handler--new Action<UCenterResponseStatus, AccountUploadProfileImageResponse, UCenterError>(handler)
-
-    local sb = {}
-    table.insert(sb, account_id)
-    table.insert(sb, "/")
-    table.insert(sb, app_id)
-    table.insert(sb, "/upload")
-    local url_format = table.concat(sb)
-    local http_url = self:_genUrl(url_format)
+    local uri = account_id .. '/' .. app_id .. '/upload'
+    local http_url = self:_genUrl(uri)
     local www_form = CS.UnityEngine.WWWForm()
-    www_form:AddField("frameCount", tostring(CS.UnityEngine.Time.frameCount))
+    www_form:AddField("frameCount", tostring(60))
     www_form:AddBinaryData("file", bytes, "profile.jpg", "image/jpg")
-    self.WWWUploadProfileImage = CS.UnityEngine.WWW(http_url, www_form)
+    --print(http_url)
+    self.MbHelper:PostUrlWithFormData(http_url, www_form,
+            function(response_data)
+                self:_onResponse(response_data, handler)
+            end
+    )
 end
 
 ---------------------------------------
@@ -210,7 +200,7 @@ end
 function ControllerUCenter:RequestPayCreateCharge(payment_info, handler)
     local http_url = self:_genPayUrl("createcharge")
     local param = self.ControllerMgr.Json.encode(payment_info)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -223,7 +213,7 @@ end
 function ControllerUCenter:RequestCheckCardAndName(request, handler)
     local http_url = self:_genIdCardUrl("checkcardandname")
     local param = self.ControllerMgr.Json.encode(request)
-    print(http_url)
+    --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
             function(response_data)
                 self:_onResponse(response_data, handler)
@@ -234,9 +224,6 @@ end
 ---------------------------------------
 -- 请求尼日利亚Webpay支付
 function ControllerUCenter:RequestNigWebpayRequestUrl(handler)
-    if (self.WWWNigWebpayRequestUrl ~= nil) then
-        return
-    end
     self.NigWebpayRequestUrlHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
     local http_url = self:_genApiUrl("nigeriawebpay")
     local form = CS.UnityEngine.WWWForm()
@@ -253,9 +240,6 @@ end
 ---------------------------------------
 -- 请求尼日利亚Webpay查询
 function ControllerUCenter:RequestNigWebpayQuery(handler)
-    if (self.WWWNigWebpayQuery ~= nil) then
-        return
-    end
     self.NigWebpayQueryHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
     local http_url = self:_genApiUrl("nigeriawebpayquery")
     self.WWWNigWebpayQuery = CS.UnityEngine.WWW(http_url)
@@ -264,9 +248,6 @@ end
 ---------------------------------------
 -- 请求尼日利亚Quickteller支付
 function ControllerUCenter:RequestQuicktellerTransfers(request, handler)
-    if (self.WWWQuicktellerTransfers ~= nil) then
-        return
-    end
     self.QuicktellerTransfersHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
     local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfers")
     local param = self.ControllerMgr.Json.encode(request)
@@ -278,9 +259,6 @@ end
 ---------------------------------------
 -- 请求尼日利亚Quickteller查询
 function ControllerUCenter:RequestQuicktellerTransfersQuery(handler)
-    if (self.WWWQuicktellerTransfersQuery ~= nil) then
-        return
-    end
     self.QuicktellerTransfersQueryHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
     local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfersquery")
     local form = CS.UnityEngine.WWWForm()
@@ -345,7 +323,6 @@ function ControllerUCenter:ParseUCenterErrorCode(error_code)
     else
         error_msg = "UCenterEUnknow"
     end
-
     return self.ControllerMgr.LanMgr:getLanValue(error_msg)
 end
 
@@ -389,13 +366,11 @@ function ControllerUCenter:_genUrl(api)
     local http_url = nil
     local index = string.find(self.UCenterDomain, "/", -1)
     local l = string.len(self.UCenterDomain)
-
     if (index == l) then
         http_url = string.format("%sapi/accounts/%s", self.UCenterDomain, api)
     else
         http_url = string.format("%s/api/accounts/%s", self.UCenterDomain, api)
     end
-
     return http_url
 end
 
@@ -404,13 +379,11 @@ function ControllerUCenter:_genPayUrl(api)
     local http_url = nil
     local index = string.find(self.UCenterDomain, "/", -1)
     local l = string.len(self.UCenterDomain)
-
     if (index == l) then
         http_url = string.format("%sapi/pay/%s", self.UCenterDomain, api)
     else
         http_url = string.format("%s/api/pay/%s", self.UCenterDomain, api)
     end
-
     return http_url
 end
 
@@ -419,13 +392,11 @@ function ControllerUCenter:_genIdCardUrl(api)
     local http_url = nil
     local index = string.find(self.UCenterDomain, "/", -1)
     local l = string.len(self.UCenterDomain)
-
     if (index == l) then
         http_url = string.format("%sapi/idcard/%s", self.UCenterDomain, api)
     else
         http_url = string.format("%s/api/idcard/%s", self.UCenterDomain, api)
     end
-
     return http_url
 end
 
@@ -434,13 +405,11 @@ function ControllerUCenter:_genApiUrl(api)
     local http_url = nil
     local index = string.find(self.UCenterDomain, "/", -1)
     local l = string.len(self.UCenterDomain)
-
     if (index == l) then
         http_url = string.format("%sapi/%s", self.UCenterDomain, api)
     else
         http_url = string.format("%s/api/%s", self.UCenterDomain, api)
     end
-
     return http_url
 end
 

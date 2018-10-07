@@ -732,10 +732,27 @@ end
 ---------------------------------------
 function ControllerPlayer:OnGetPicSuccess(pic_data)
     local c = CS.Casinos.CasinosContext.Instance
-    local account_name = self.ControllerActor.PropAccountId:get()
-    self.ControllerUCenter:uploadProfileImage(c.Config.AppId, account_name, pic_data,
+    local account_id = self.ControllerActor.PropAccountId:get()
+    self.ControllerUCenter:RequestUploadProfileImage(UCenterAppId, account_id, pic_data,
             function(status, response, error)
-                self:uploadProfileImageCallBack(status, response, error)
+                --self:uploadProfileImageCallBack(status, response, error)
+                if (status == UCenterResponseStatus.Error) then
+                    local msg_t = {}
+                    table.insert(msg_t, self.ControllerMgr.LanMgr:getLanValue("UploadPicFailed"))
+                    table.insert(msg_t, "! ErrorCode: ")
+                    table.insert(msg_t, error.code)
+                    table.insert(msg_t, " Msg: ")
+                    table.insert(msg_t, error.message)
+                    local msg = table.concat(msg_t)
+                    ViewHelper:UiShowInfoFailed(msg)
+                else
+                    local ev = self.ControllerMgr.ViewMgr:getEv("EvGetPicUpLoadSuccess")
+                    if (ev == nil) then
+                        ev = EvGetPicUpLoadSuccess:new(nil)
+                    end
+                    self.ControllerMgr.ViewMgr:sendEv(ev)
+                end
+                ViewHelper:UiEndWaiting()
             end)
 end
 
@@ -777,25 +794,25 @@ function ControllerPlayer:createViewActivityPopUpBox()
 end
 
 ---------------------------------------
-function ControllerPlayer:uploadProfileImageCallBack(status, response, error)
-    if (status == UCenterResponseStatus.Error) then
-        local msg_t = {}
-        table.insert(msg_t, self.ControllerMgr.LanMgr:getLanValue("UploadPicFailed"))
-        table.insert(msg_t, "! ErrorCode: ")
-        table.insert(msg_t, error.code)
-        table.insert(msg_t, " Msg: ")
-        table.insert(msg_t, error.message)
-        local msg = table.concat(msg_t)
-        ViewHelper:UiShowInfoFailed(msg)
-    else
-        local ev = self.ControllerMgr.ViewMgr:getEv("EvGetPicUpLoadSuccess")
-        if (ev == nil) then
-            ev = EvGetPicUpLoadSuccess:new(nil)
-        end
-        self.ControllerMgr.ViewMgr:sendEv(ev)
-    end
-    ViewHelper:UiEndWaiting()
-end
+--function ControllerPlayer:uploadProfileImageCallBack(status, response, error)
+--    if (status == UCenterResponseStatus.Error) then
+--        local msg_t = {}
+--        table.insert(msg_t, self.ControllerMgr.LanMgr:getLanValue("UploadPicFailed"))
+--        table.insert(msg_t, "! ErrorCode: ")
+--        table.insert(msg_t, error.code)
+--        table.insert(msg_t, " Msg: ")
+--        table.insert(msg_t, error.message)
+--        local msg = table.concat(msg_t)
+--        ViewHelper:UiShowInfoFailed(msg)
+--    else
+--        local ev = self.ControllerMgr.ViewMgr:getEv("EvGetPicUpLoadSuccess")
+--        if (ev == nil) then
+--            ev = EvGetPicUpLoadSuccess:new(nil)
+--        end
+--        self.ControllerMgr.ViewMgr:sendEv(ev)
+--    end
+--    ViewHelper:UiEndWaiting()
+--end
 
 ---------------------------------------
 -- 控制台命令

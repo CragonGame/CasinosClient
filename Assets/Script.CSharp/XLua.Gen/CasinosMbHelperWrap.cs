@@ -21,10 +21,11 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.MbHelper);
-			Utils.BeginObjectRegister(type, L, translator, 0, 2, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 3, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SendUrl", _m_SendUrl);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PostUrl", _m_PostUrl);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PostUrlWithFormData", _m_PostUrlWithFormData);
 			
 			
 			
@@ -120,6 +121,36 @@ namespace XLua.CSObjectWrap
                     System.Action<string> _cb = translator.GetDelegate<System.Action<string>>(L, 4);
                     
                     gen_to_be_invoked.PostUrl( _url, _post_data, _cb );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_PostUrlWithFormData(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.MbHelper gen_to_be_invoked = (Casinos.MbHelper)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _url = LuaAPI.lua_tostring(L, 2);
+                    UnityEngine.WWWForm _form_data = (UnityEngine.WWWForm)translator.GetObject(L, 3, typeof(UnityEngine.WWWForm));
+                    System.Action<string> _cb = translator.GetDelegate<System.Action<string>>(L, 4);
+                    
+                    gen_to_be_invoked.PostUrlWithFormData( _url, _form_data, _cb );
                     
                     
                     

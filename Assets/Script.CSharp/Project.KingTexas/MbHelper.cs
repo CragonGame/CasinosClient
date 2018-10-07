@@ -22,6 +22,12 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void PostUrlWithFormData(string url, WWWForm form_data, Action<string> cb)
+        {
+            StartCoroutine(_postUrlWithFormData(url, form_data, cb));
+        }
+
+        //---------------------------------------------------------------------
         IEnumerator _sendUrl(string url, Action<string> cb)
         {
             using (UnityWebRequest www_request = UnityWebRequest.Get(url))
@@ -52,7 +58,7 @@ namespace Casinos
                 www_request.uploadHandler = new UploadHandlerRaw(post_bytes);
                 www_request.downloadHandler = new DownloadHandlerBuffer();
                 www_request.SetRequestHeader("Content-Type", "application/json");
-                yield return www_request.SendWebRequest();// UnityWebRequestAsyncOperation
+                yield return www_request.SendWebRequest();
 
                 if (www_request.isNetworkError)
                 {
@@ -62,7 +68,28 @@ namespace Casinos
                 {
                     if (www_request.responseCode == 200)
                     {
-                        //Debug.Log(www_request.downloadHandler.text);
+                        cb?.Invoke(www_request.downloadHandler.text);
+                    }
+                }
+            }
+        }
+
+        //---------------------------------------------------------------------
+        IEnumerator _postUrlWithFormData(string url, WWWForm form_data, Action<string> cb)
+        {
+            using (UnityWebRequest www_request = UnityWebRequest.Post(url, form_data))
+            {
+                www_request.downloadHandler = new DownloadHandlerBuffer();
+                yield return www_request.SendWebRequest();
+
+                if (www_request.isNetworkError)
+                {
+                    BuglyAgent.PrintLog(LogSeverity.LogError, www_request.error);
+                }
+                else
+                {
+                    if (www_request.responseCode == 200)
+                    {
                         cb?.Invoke(www_request.downloadHandler.text);
                     }
                 }

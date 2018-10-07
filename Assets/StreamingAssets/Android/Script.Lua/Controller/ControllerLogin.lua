@@ -217,7 +217,7 @@ function ControllerLogin:onHandleEv(ev)
                 register_acc_data.Name = name
                 register_acc_data.PhoneVerificationCode = ev.PhoneVerificationCode
                 register_acc_data.Device = device_info
-                register_acc_data.AppId = CS.Casinos.CasinosContext.Instance.Config.AppId
+                register_acc_data.AppId = UCenterAppId
                 self:requestRegister(register_acc_data)
             end
         elseif (ev.EventName == "EvUiRequestGetPhoneCode") then
@@ -246,7 +246,7 @@ function ControllerLogin:onHandleEv(ev)
             else
                 print("AccountWeChatBindRequest")
                 local request = AccountWeChatBindRequest:new(nil)
-                request.ucenterAppId = AppId
+                request.ucenterAppId = UCenterAppId
                 print(request.ucenterAppId)
                 request.code = ev.token
                 print(request.code)
@@ -276,7 +276,7 @@ function ControllerLogin:onHandleEv(ev)
                     open_id = self.ControllerActor.WeChatOpenId:get()
                 end
                 local request = AccountWeChatUnbindRequest:new(nil)
-                request.ucenterAppId = CS.Casinos.CasinosContext.Instance.Config.AppId
+                request.ucenterAppId = UCenterAppId
                 request.openId = open_id
                 request.accountId = self.AccId
                 request.token = self.Token
@@ -337,7 +337,7 @@ function ControllerLogin:requestGuestAccess()
     CS.Casinos.CasinosContext.Instance.LoginType = 1
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
     local guest_accessinfo = GuestAccessInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.GuestAccessInfo()
-    guest_accessinfo.AppId = CS.Casinos.CasinosContext.Instance.Config.AppId
+    guest_accessinfo.AppId = UCenterAppId
     guest_accessinfo.Device = self:getDeviceInfo()
     self.ControllerUCenter:RequestGuestAccess(guest_accessinfo,
             function(status, response, error)
