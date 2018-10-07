@@ -63,8 +63,6 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(UnityEngine.Hash128), UnityEngineHash128Wrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(UnityEngine.Light), UnityEngineLightWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(UnityEngine.Material), UnityEngineMaterialWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(UnityEngine.Mathf), UnityEngineMathfWrap.__Register);

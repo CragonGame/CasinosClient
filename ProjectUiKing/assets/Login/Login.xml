@@ -44,7 +44,7 @@
     <group id="n81_qq5e" name="n81" xy="252,173" size="561,240" group="n15" advanced="true" collapsed="true">
       <relation target="n123_czif" sidePair="center-center,middle-middle"/>
     </group>
-    <group id="n15" name="Login" xy="0,0" size="1066,640" advanced="true" collapsed="true">
+    <group id="n15" name="Login" xy="0,0" size="1066,640" advanced="true">
       <gearDisplay controller="LoginState" pages="0"/>
       <relation target="" sidePair="width-width,height-height"/>
     </group>
@@ -112,23 +112,23 @@
     <text id="n128_74h9" name="SeverStateInfo" xy="1046,9" size="10,34" fontSize="30" color="#ff0000" align="right" vAlign="middle" singleLine="true" text="">
       <relation target="" sidePair="right-right,top-top"/>
     </text>
-    <component id="n237_ecz6" name="BtnGuestEx" src="n8cl13" fileName="Component/BtnGuestLogin.xml" xy="183,464" group="n167_c1pc">
+    <component id="n237_ecz6" name="BtnGuestEx" src="n8cl13" fileName="Component/BtnGuestLogin.xml" xy="237,464" group="n167_c1pc">
       <gearDisplay controller="ControllerWeChat" pages="1"/>
     </component>
-    <component id="n166_c1pc" name="BtnOtherLoginEx" src="c1pcq" fileName="Component/BtnLogin.xml" xy="638,464" group="n167_c1pc">
+    <component id="n139_mkwx" name="BtnGuest" src="n8cl13" fileName="Component/BtnGuestLogin.xml" xy="247,464" group="n167_c1pc" visible="false">
+      <gearDisplay controller="ControllerWeChat" pages="0"/>
+    </component>
+    <component id="n166_c1pc" name="BtnOtherLoginEx" src="c1pcq" fileName="Component/BtnLogin.xml" xy="692,464" group="n167_c1pc">
       <gearDisplay controller="ControllerWeChat" pages="1"/>
     </component>
-    <component id="n165_c1pc" name="BtnWeiXin" src="c1pcr" fileName="Component/BtnWeChat.xml" xy="411,464" group="n167_c1pc">
+    <component id="n165_c1pc" name="BtnWeiXin" src="c1pcr" fileName="Component/BtnWeChat.xml" xy="246,464" group="n167_c1pc">
       <gearDisplay controller="ControllerWeChat" pages="0"/>
     </component>
-    <component id="n139_mkwx" name="BtnGuest" src="n8cl13" fileName="Component/BtnGuestLogin.xml" xy="129,464" group="n167_c1pc">
+    <component id="n164_c1pc" name="BtnOtherLogin" src="c1pcq" fileName="Component/BtnLogin.xml" xy="580,464" group="n167_c1pc">
       <gearDisplay controller="ControllerWeChat" pages="0"/>
     </component>
-    <component id="n164_c1pc" name="BtnOtherLogin" src="c1pcq" fileName="Component/BtnLogin.xml" xy="693,464" group="n167_c1pc">
-      <gearDisplay controller="ControllerWeChat" pages="0"/>
-    </component>
-    <group id="n167_c1pc" name="n167" xy="129,464" size="808,78" group="n161_v4ef"/>
-    <group id="n161_v4ef" name="LoginMain" xy="129,464" size="808,78" advanced="true" collapsed="true">
+    <group id="n167_c1pc" name="n167" xy="237,464" size="699,78" group="n161_v4ef"/>
+    <group id="n161_v4ef" name="LoginMain" xy="237,464" size="699,78" advanced="true">
       <gearDisplay controller="LoginState" pages="3"/>
       <relation target="" sidePair="center-center,middle-middle"/>
     </group>

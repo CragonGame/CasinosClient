@@ -44,7 +44,6 @@ namespace Casinos
             typeof(UnityEngine.Font),
             typeof(UnityEngine.GameObject),
             typeof(UnityEngine.Hash128),
-            typeof(UnityEngine.Light),
             typeof(UnityEngine.Material),
             typeof(UnityEngine.Mathf),
             typeof(UnityEngine.Matrix4x4),

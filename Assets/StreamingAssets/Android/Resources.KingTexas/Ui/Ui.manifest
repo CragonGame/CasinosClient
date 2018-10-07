@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 21995775
+CRC: 3802895462
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: premsgbox.ab
+      Name: login.ab
       Dependencies: {}

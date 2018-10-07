@@ -8,13 +8,11 @@ function ControllerActivity:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
     o.CurrentActID = "Act180228"
     o.ViewMgr = ViewMgr:new(nil)
-
     return o
 end
 
@@ -39,8 +37,7 @@ end
 
 ---------------------------------------
 function ControllerActivity:onHandleEv(ev)
-    if (ev.EventName == "EvUiRequestGetActivity")
-    then
+    if (ev.EventName == "EvUiRequestGetActivity") then
         self.RPC:RPC0(self.MC.ActivityRequest)
     end
 end
@@ -49,8 +46,7 @@ end
 function ControllerActivity:s2cActivityNotify(list_activity)
     self.ListActivity = list_activity
     local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityNotifyPushActivity")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityNotifyPushActivity:new(nil)
     end
     self.ControllerMgr.ViewMgr:sendEv(ev)
