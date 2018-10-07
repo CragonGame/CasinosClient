@@ -29,6 +29,10 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(UnityEngine.ApplicationSandboxType), UnityEngineApplicationSandboxTypeWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(UnityEngine.CameraType), UnityEngineCameraTypeWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(UnityEngine.CameraClearFlags), UnityEngineCameraClearFlagsWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(UnityEngine.NetworkReachability), UnityEngineNetworkReachabilityWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(UnityEngine.RuntimePlatform), UnityEngineRuntimePlatformWrap.__Register);
@@ -58,6 +62,8 @@ namespace XLua.CSObjectWrap
 				translator.DelayWrapLoader(typeof(UnityEngine.GameObject), UnityEngineGameObjectWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(UnityEngine.Hash128), UnityEngineHash128Wrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(UnityEngine.Light), UnityEngineLightWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(UnityEngine.Material), UnityEngineMaterialWrap.__Register);
 				

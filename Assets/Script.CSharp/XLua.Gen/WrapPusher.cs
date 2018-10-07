@@ -36,6 +36,8 @@ namespace XLua
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Ray2D>(translator.PushUnityEngineRay2D, translator.Get, translator.UpdateUnityEngineRay2D);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.ApplicationInstallMode>(translator.PushUnityEngineApplicationInstallMode, translator.Get, translator.UpdateUnityEngineApplicationInstallMode);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.ApplicationSandboxType>(translator.PushUnityEngineApplicationSandboxType, translator.Get, translator.UpdateUnityEngineApplicationSandboxType);
+				translator.RegisterPushAndGetAndUpdate<UnityEngine.CameraType>(translator.PushUnityEngineCameraType, translator.Get, translator.UpdateUnityEngineCameraType);
+				translator.RegisterPushAndGetAndUpdate<UnityEngine.CameraClearFlags>(translator.PushUnityEngineCameraClearFlags, translator.Get, translator.UpdateUnityEngineCameraClearFlags);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.NetworkReachability>(translator.PushUnityEngineNetworkReachability, translator.Get, translator.UpdateUnityEngineNetworkReachability);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.RuntimePlatform>(translator.PushUnityEngineRuntimePlatform, translator.Get, translator.UpdateUnityEngineRuntimePlatform);
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.SystemLanguage>(translator.PushUnityEngineSystemLanguage, translator.Get, translator.UpdateUnityEngineSystemLanguage);
@@ -742,6 +744,174 @@ namespace XLua
                 if (!CopyByValue.Pack(buff, 0,  (int)val))
                 {
                     throw new Exception("pack fail for UnityEngine.ApplicationSandboxType ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int UnityEngineCameraType_TypeID = -1;
+		int UnityEngineCameraType_EnumRef = -1;
+        
+        public void PushUnityEngineCameraType(RealStatePtr L, UnityEngine.CameraType val)
+        {
+            if (UnityEngineCameraType_TypeID == -1)
+            {
+			    bool is_first;
+                UnityEngineCameraType_TypeID = getTypeId(L, typeof(UnityEngine.CameraType), out is_first);
+				
+				if (UnityEngineCameraType_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(UnityEngine.CameraType));
+				    UnityEngineCameraType_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, UnityEngineCameraType_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, UnityEngineCameraType_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for UnityEngine.CameraType ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, UnityEngineCameraType_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out UnityEngine.CameraType val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineCameraType_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.CameraType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for UnityEngine.CameraType");
+                }
+				val = (UnityEngine.CameraType)e;
+                
+            }
+            else
+            {
+                val = (UnityEngine.CameraType)objectCasters.GetCaster(typeof(UnityEngine.CameraType))(L, index, null);
+            }
+        }
+		
+        public void UpdateUnityEngineCameraType(RealStatePtr L, int index, UnityEngine.CameraType val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineCameraType_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.CameraType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for UnityEngine.CameraType ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
+        int UnityEngineCameraClearFlags_TypeID = -1;
+		int UnityEngineCameraClearFlags_EnumRef = -1;
+        
+        public void PushUnityEngineCameraClearFlags(RealStatePtr L, UnityEngine.CameraClearFlags val)
+        {
+            if (UnityEngineCameraClearFlags_TypeID == -1)
+            {
+			    bool is_first;
+                UnityEngineCameraClearFlags_TypeID = getTypeId(L, typeof(UnityEngine.CameraClearFlags), out is_first);
+				
+				if (UnityEngineCameraClearFlags_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(UnityEngine.CameraClearFlags));
+				    UnityEngineCameraClearFlags_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, UnityEngineCameraClearFlags_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, UnityEngineCameraClearFlags_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for UnityEngine.CameraClearFlags ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, UnityEngineCameraClearFlags_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out UnityEngine.CameraClearFlags val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineCameraClearFlags_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.CameraClearFlags");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for UnityEngine.CameraClearFlags");
+                }
+				val = (UnityEngine.CameraClearFlags)e;
+                
+            }
+            else
+            {
+                val = (UnityEngine.CameraClearFlags)objectCasters.GetCaster(typeof(UnityEngine.CameraClearFlags))(L, index, null);
+            }
+        }
+		
+        public void UpdateUnityEngineCameraClearFlags(RealStatePtr L, int index, UnityEngine.CameraClearFlags val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != UnityEngineCameraClearFlags_TypeID)
+				{
+				    throw new Exception("invalid userdata for UnityEngine.CameraClearFlags");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for UnityEngine.CameraClearFlags ,value="+val);
                 }
             }
 			
@@ -1746,6 +1916,18 @@ namespace XLua
 				translator.PushUnityEngineApplicationSandboxType(L, array[index]);
 				return true;
 			}
+			else if (type == typeof(UnityEngine.CameraType[]))
+			{
+			    UnityEngine.CameraType[] array = obj as UnityEngine.CameraType[];
+				translator.PushUnityEngineCameraType(L, array[index]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.CameraClearFlags[]))
+			{
+			    UnityEngine.CameraClearFlags[] array = obj as UnityEngine.CameraClearFlags[];
+				translator.PushUnityEngineCameraClearFlags(L, array[index]);
+				return true;
+			}
 			else if (type == typeof(UnityEngine.NetworkReachability[]))
 			{
 			    UnityEngine.NetworkReachability[] array = obj as UnityEngine.NetworkReachability[];
@@ -1875,6 +2057,18 @@ namespace XLua
 			else if (type == typeof(UnityEngine.ApplicationSandboxType[]))
 			{
 			    UnityEngine.ApplicationSandboxType[] array = obj as UnityEngine.ApplicationSandboxType[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.CameraType[]))
+			{
+			    UnityEngine.CameraType[] array = obj as UnityEngine.CameraType[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(UnityEngine.CameraClearFlags[]))
+			{
+			    UnityEngine.CameraClearFlags[] array = obj as UnityEngine.CameraClearFlags[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}

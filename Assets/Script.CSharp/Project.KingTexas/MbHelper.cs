@@ -9,19 +9,19 @@ namespace Casinos
 
     public class MbHelper : MonoBehaviour
     {
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void SendUrl(string url, Action<string> cb)
         {
             StartCoroutine(_sendUrl(url, cb));
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void PostUrl(string url, string post_data, Action<string> cb)
         {
             StartCoroutine(_postUrl(url, post_data, cb));
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         IEnumerator _sendUrl(string url, Action<string> cb)
         {
             using (UnityWebRequest www_request = UnityWebRequest.Get(url))
@@ -43,7 +43,7 @@ namespace Casinos
             }
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         IEnumerator _postUrl(string url, string post_data, Action<string> cb)
         {
             using (UnityWebRequest www_request = new UnityWebRequest(url, "POST"))

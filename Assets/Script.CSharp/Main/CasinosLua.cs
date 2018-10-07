@@ -27,6 +27,8 @@ namespace Casinos
             // Unity3D
             typeof(UnityEngine.ApplicationInstallMode),
             typeof(UnityEngine.ApplicationSandboxType),
+            typeof(UnityEngine.CameraType),
+            typeof(UnityEngine.CameraClearFlags),
             typeof(UnityEngine.NetworkReachability),
             typeof(UnityEngine.RuntimePlatform),
             typeof(UnityEngine.SystemLanguage),
@@ -42,6 +44,7 @@ namespace Casinos
             typeof(UnityEngine.Font),
             typeof(UnityEngine.GameObject),
             typeof(UnityEngine.Hash128),
+            typeof(UnityEngine.Light),
             typeof(UnityEngine.Material),
             typeof(UnityEngine.Mathf),
             typeof(UnityEngine.Matrix4x4),
@@ -481,7 +484,7 @@ namespace Casinos
             FuncLaunchOnApplicationPause?.Invoke(lua_launch, pause);
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void _CSharpCallOnApplicationFocus(bool focus_status)
         {
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");

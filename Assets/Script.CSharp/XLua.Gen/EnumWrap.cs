@@ -160,6 +160,150 @@ namespace XLua.CSObjectWrap
 		}
 	}
     
+    public class UnityEngineCameraTypeWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(UnityEngine.CameraType), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(UnityEngine.CameraType), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(UnityEngine.CameraType), L, null, 6, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Game", UnityEngine.CameraType.Game);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "SceneView", UnityEngine.CameraType.SceneView);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Preview", UnityEngine.CameraType.Preview);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "VR", UnityEngine.CameraType.VR);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Reflection", UnityEngine.CameraType.Reflection);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(UnityEngine.CameraType), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushUnityEngineCameraType(L, (UnityEngine.CameraType)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "Game"))
+                {
+                    translator.PushUnityEngineCameraType(L, UnityEngine.CameraType.Game);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "SceneView"))
+                {
+                    translator.PushUnityEngineCameraType(L, UnityEngine.CameraType.SceneView);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Preview"))
+                {
+                    translator.PushUnityEngineCameraType(L, UnityEngine.CameraType.Preview);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "VR"))
+                {
+                    translator.PushUnityEngineCameraType(L, UnityEngine.CameraType.VR);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Reflection"))
+                {
+                    translator.PushUnityEngineCameraType(L, UnityEngine.CameraType.Reflection);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for UnityEngine.CameraType!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for UnityEngine.CameraType! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class UnityEngineCameraClearFlagsWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(UnityEngine.CameraClearFlags), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(UnityEngine.CameraClearFlags), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(UnityEngine.CameraClearFlags), L, null, 6, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Skybox", UnityEngine.CameraClearFlags.Skybox);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Color", UnityEngine.CameraClearFlags.Color);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "SolidColor", UnityEngine.CameraClearFlags.SolidColor);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Depth", UnityEngine.CameraClearFlags.Depth);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Nothing", UnityEngine.CameraClearFlags.Nothing);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(UnityEngine.CameraClearFlags), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushUnityEngineCameraClearFlags(L, (UnityEngine.CameraClearFlags)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "Skybox"))
+                {
+                    translator.PushUnityEngineCameraClearFlags(L, UnityEngine.CameraClearFlags.Skybox);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Color"))
+                {
+                    translator.PushUnityEngineCameraClearFlags(L, UnityEngine.CameraClearFlags.Color);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "SolidColor"))
+                {
+                    translator.PushUnityEngineCameraClearFlags(L, UnityEngine.CameraClearFlags.SolidColor);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Depth"))
+                {
+                    translator.PushUnityEngineCameraClearFlags(L, UnityEngine.CameraClearFlags.Depth);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Nothing"))
+                {
+                    translator.PushUnityEngineCameraClearFlags(L, UnityEngine.CameraClearFlags.Nothing);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for UnityEngine.CameraClearFlags!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for UnityEngine.CameraClearFlags! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
     public class UnityEngineNetworkReachabilityWrap
     {
 		public static void __Register(RealStatePtr L)
