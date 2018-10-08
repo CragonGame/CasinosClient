@@ -326,14 +326,15 @@ namespace XLua.CSObjectWrap
                 
                 {
                     XLua.LuaTable _lua_table = (XLua.LuaTable)translator.GetObject(L, 2, typeof(XLua.LuaTable));
-                    Casinos.DelegateLua1 _loaded_callback = translator.GetDelegate<Casinos.DelegateLua1>(L, 3);
-                    string[] _need_load_ab_path = translator.GetParams<string>(L, 4);
+                    XLua.LuaTable _need_load_ab_path = (XLua.LuaTable)translator.GetObject(L, 3, typeof(XLua.LuaTable));
+                    Casinos.DelegateLua4 _loaded_callback = translator.GetDelegate<Casinos.DelegateLua4>(L, 4);
                     
-                    gen_to_be_invoked.LoadLocalBundleAsync( _lua_table, _loaded_callback, _need_load_ab_path );
+                        LoaderTicket gen_ret = gen_to_be_invoked.LoadLocalBundleAsync( _lua_table, _need_load_ab_path, _loaded_callback );
+                        translator.Push(L, gen_ret);
                     
                     
                     
-                    return 0;
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {

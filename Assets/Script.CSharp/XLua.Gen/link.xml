@@ -148,6 +148,8 @@
 	    <type fullname="System.BitConverter" preserve="all"/>
 		<type fullname="System.Array" preserve="all"/>
 		<type fullname="System.Collections.Hashtable" preserve="all"/>
+		<type fullname="System.Collections.Generic.List`1[System.String]" preserve="all"/>
+		<type fullname="System.Collections.Generic.List`1[UnityEngine.AssetBundle]" preserve="all"/>
 		<type fullname="System.IO.Directory" preserve="all"/>
 		<type fullname="System.IO.File" preserve="all"/>
 		<type fullname="System.IO.FileStream" preserve="all"/>

@@ -136,19 +136,6 @@ function Context:DoString(name)
 end
 
 ---------------------------------------
-function Context:AddUiPackage(package_name)
-    local ui_package = CS.FairyGUI.UIPackage
-    local p = ui_package.GetByName(package_name)
-    if p ~= nil then
-        ui_package.RemovePackage(package_name, true)
-    end
-
-    local full_name = self.CasinosContext.PathMgr:combinePersistentDataPath("resources.kingtexas/ui/" .. string.lower(package_name) .. ".ab")
-    local ab = CS.UnityEngine.AssetBundle.LoadFromFile(full_name)
-    ui_package.AddPackage(ab)
-end
-
----------------------------------------
 -- 初始化LaunchStep
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
@@ -312,14 +299,40 @@ function Context:_nextLaunchStep()
         self.ViewMgr.ControllerMgr = self.ControllerMgr
         self.ViewMgr.RPC = self.Rpc
 
-        self:_addUiPackage()
+        -- 加载AssetBundle列表
+        local table_ab = {
+            "Common", "Loading", "LotteryTicket", "Chat", "ChatFriend", "About", "Mail", "PayType",
+            "ChooseLan", "Share", "ShareType", "LanZh", "LanEn", "LanZhAndroid", "Pool",
+            "ChatChooseTarget", "ChatExPression", "CreateDeskTop", "AgreeOrDisAddFriendRequest",
+            "Bank", "ChipOperate", "QuitOrBack", "Login", "Main", "Bag", "MailDetail", "DailyReward",
+            "Desktop", "DesktopChatParent", "DesktopPlayerInfo", "DesktopPlayerOperate", "DesktopMenu",
+            "DesktopHints", "MTTGameResult", "MTTProcess", "Friend", "Feedback", "InviteFriendPlay",
+            "IdCardCheck", "ResetPwd", "Ranking", "DesktopH", "DesktopHBetReward", "DesktopHTexas",
+            "DesktopHBankPlayerList", "DesktopHCardType", "DesktopHHistory", "DesktopHRewardPot",
+            "DesktopHMenu", "DesktopHHelp", "DesktopHResult", "DesktopHSetCardType", "DesktopHTongSha",
+            "DesktopHTongPei", "Edit", "FriendOnLine", "GiftDetail", "GiftShop", "LockChat", "PlayerProfile",
+            "PlayerInfo", "Notice", "ShootingText", "Shop", "Purse", "TakePhoto", "ClassicModel", "RechargeFirst",
+            "ActivityPopUpBox", "ActivityCenter", "MatchLobby", "ApplySucceed", "Club", "ClubHelp", "CreateMatch",
+            "BlindTable", "JoinMatch", "GetChipEffect", "MatchInfo", "EnterMatchNotify", "SnowBallReward", "EditAddress"
+        }
+        for i = 1, #(table_ab) do
+            local full_name = self.CasinosContext.PathMgr:combinePersistentDataPath("resources.kingtexas/ui/" .. string.lower(table_ab[i]) .. ".ab")
+            table_ab[i] = full_name
+        end
 
-        -- 销毁Launch相关资源
-        self.Launch:Finish()
+        self.CasinosLua:LoadLocalBundleAsync(self, table_ab,
+                function(this, list_ab)
+                    local ui_package = CS.FairyGUI.UIPackage
+                    for i, v in pairs(list_ab) do
+                        ui_package.AddPackage(v)
+                    end
 
-        -- 加载登录界面
-        self.ControllerMgr:CreateController("UCenter", nil, nil)
-        self.ControllerMgr:CreateController("Login", nil, nil)
+                    -- 销毁Launch相关资源，加载登录界面
+                    self.Launch:Finish()
+                    self.ControllerMgr:CreateController("UCenter", nil, nil)
+                    self.ControllerMgr:CreateController("Login", nil, nil)
+                end
+        )
     end
 end
 
@@ -846,98 +859,6 @@ function Context:_regView()
 end
 
 ---------------------------------------
-function Context:_addUiPackage()
-    self:AddUiPackage("Common")
-    self:AddUiPackage("LotteryTicket")
-    self:AddUiPackage("Chat")
-    self:AddUiPackage("ChatFriend")
-    self:AddUiPackage("About")
-    self:AddUiPackage("Mail")
-    self:AddUiPackage("PayType")
-    self:AddUiPackage("ChooseLan")
-    self:AddUiPackage("Share")
-    self:AddUiPackage("ShareType")
-    self:AddUiPackage("Loading")
-    self:AddUiPackage("LanZh")
-    if self.CasinosContext.UnityAndroid then
-        self:AddUiPackage("LanEn")
-        self:AddUiPackage("LanZhAndroid")
-    end
-    self:AddUiPackage("Pool")
-    self:AddUiPackage("ChatChooseTarget")
-    self:AddUiPackage("ChatExPression")
-    self:AddUiPackage("CreateDeskTop")
-    self:AddUiPackage("AgreeOrDisAddFriendRequest")
-    self:AddUiPackage("Bank")
-    self:AddUiPackage("ChipOperate")
-    self:AddUiPackage("QuitOrBack")
-    self:AddUiPackage("Login")
-    self:AddUiPackage("Main")
-    self:AddUiPackage("Bag")
-    self:AddUiPackage("MailDetail")
-    self:AddUiPackage("DailyReward")
-    self:AddUiPackage("Desktop")
-    self:AddUiPackage("DesktopChatParent")
-    self:AddUiPackage("DesktopPlayerInfo")
-    self:AddUiPackage("DesktopPlayerOperate")
-    local d_m = "DeskTopMenu"
-    if self.CasinosContext.UnityAndroid then
-        d_m = "DesktopMenu"
-    end
-    self:AddUiPackage(d_m)
-    self:AddUiPackage("DesktopHints")
-    self:AddUiPackage("MTTGameResult")
-    self:AddUiPackage("MTTProcess")
-    self:AddUiPackage("Friend")
-    self:AddUiPackage("Feedback")
-    self:AddUiPackage("InviteFriendPlay")
-    self:AddUiPackage("IdCardCheck")
-    self:AddUiPackage("ResetPwd")
-    self:AddUiPackage("Ranking")
-    self:AddUiPackage("DesktopH")
-    self:AddUiPackage("DesktopHBetReward")
-    self:AddUiPackage("DesktopHTexas")
-    self:AddUiPackage("DesktopHBankPlayerList")
-    self:AddUiPackage("DesktopHCardType")
-    self:AddUiPackage("DesktopHHistory")
-    self:AddUiPackage("DesktopHRewardPot")
-    self:AddUiPackage("DesktopHMenu")
-    self:AddUiPackage("DesktopHHelp")
-    self:AddUiPackage("DesktopHResult")
-    self:AddUiPackage("DesktopHSetCardType")
-    self:AddUiPackage("DesktopHTongSha")
-    self:AddUiPackage("DesktopHTongPei")
-    self:AddUiPackage("Edit")
-    self:AddUiPackage("FriendOnLine")
-    self:AddUiPackage("GiftDetail")
-    self:AddUiPackage("GiftShop")
-    self:AddUiPackage("LockChat")
-    self:AddUiPackage("PlayerProfile")
-    self:AddUiPackage("PlayerInfo")
-    self:AddUiPackage("Notice")
-    self:AddUiPackage("ShootingText")
-    self:AddUiPackage("Shop")
-    self:AddUiPackage("Purse")
-    self:AddUiPackage("TakePhoto")
-    self:AddUiPackage("ClassicModel")
-    self:AddUiPackage("RechargeFirst")
-    self:AddUiPackage("ActivityPopUpBox")
-    self:AddUiPackage("ActivityCenter")
-    self:AddUiPackage("MatchLobby")
-    self:AddUiPackage("ApplySucceed")
-    self:AddUiPackage("Club")
-    self:AddUiPackage("CreateMatch")
-    self:AddUiPackage("BlindTable")
-    self:AddUiPackage("ClubHelp")
-    self:AddUiPackage("JoinMatch")
-    self:AddUiPackage("GetChipEffect")
-    self:AddUiPackage("MatchInfo")
-    self:AddUiPackage("EnterMatchNotify")
-    self:AddUiPackage("SnowBallReward")
-    self:AddUiPackage("EditAddress")
-end
-
----------------------------------------
 function Context:_regTbData()
     self:DoString("TbDataHintsInfoTexas")
     self.TbDataMgr:RegTbDataFac("HintsInfoTexas", TbDataFactoryHintsInfoTexas:new(nil))
@@ -1024,3 +945,16 @@ function Context:CalcBotIconUrl(is_small, icon)
         return BotIconDomain .. 'boticon/' .. icon .. '.jpg'
     end
 end
+
+---------------------------------------
+--function Context:AddUiPackage(package_name)
+--    local ui_package = CS.FairyGUI.UIPackage
+--    local p = ui_package.GetByName(package_name)
+--    if p ~= nil then
+--        ui_package.RemovePackage(package_name, true)
+--    end
+--
+--    local full_name = self.CasinosContext.PathMgr:combinePersistentDataPath("resources.kingtexas/ui/" .. string.lower(package_name) .. ".ab")
+--    local ab = CS.UnityEngine.AssetBundle.LoadFromFile(full_name)
+--    ui_package.AddPackage(ab)
+--end

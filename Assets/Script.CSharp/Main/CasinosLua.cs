@@ -18,6 +18,9 @@ namespace Casinos
     [CSharpCallLua]
     public delegate void DelegateLua3(LuaTable lua_table, bool b);
 
+    [CSharpCallLua]
+    public delegate void DelegateLua4(LuaTable lua_table, List<AssetBundle> list_ab);
+
     public static class LuaCustomSettings
     {
         //---------------------------------------------------------------------
@@ -81,6 +84,8 @@ namespace Casinos
             typeof(BitConverter),
             typeof(Array),
             typeof(Hashtable),
+            typeof(List<string>),
+            typeof(List<AssetBundle>),
             typeof(System.Text.RegularExpressions.Regex),
             typeof(System.Text.RegularExpressions.Match),
             typeof(System.Text.RegularExpressions.MatchCollection),
@@ -221,6 +226,8 @@ namespace Casinos
             typeof(Action<Dictionary<string,Dictionary<string,string>>>),
             typeof(Action<ushort,byte[]>),
             typeof(Action<OnePF.Purchase>),
+            typeof(List<string>),
+            typeof(List<AssetBundle>),
             typeof(OnSocketReceive),
             typeof(OnSocketConnected),
             typeof(OnSocketClosed),
@@ -391,19 +398,23 @@ namespace Casinos
 
         //---------------------------------------------------------------------
         // 异步加载本地的AssetBundle
-        public void LoadLocalBundleAsync(LuaTable lua_table, DelegateLua1 loaded_callback, params string[] need_load_ab_path)
+        public LoaderTicket LoadLocalBundleAsync(LuaTable lua_table, LuaTable need_load_ab_path, DelegateLua4 loaded_callback)
         {
-            List<string> list_ab = new List<string>();
-            foreach (var i in need_load_ab_path)
-            {
-                list_ab.Add(i);
-            }
+            List<string> list_ab_name = new List<string>();
 
-            Context.AsyncAssetLoadGroup.asyncLoadLocalBundle(
-                list_ab, _eAsyncAssetLoadType.LocalBundle, (List<AssetBundle> list_abex) =>
+            need_load_ab_path.ForEach<int, string>(
+                (i, v) =>
                 {
-                    loaded_callback?.Invoke(lua_table);
+                    list_ab_name.Add(v);
                 });
+
+            var ticket = Context.AsyncAssetLoadGroup.asyncLoadLocalBundle(
+                 list_ab_name, _eAsyncAssetLoadType.LocalBundle, (List<AssetBundle> list_ab1) =>
+                 {
+                     loaded_callback?.Invoke(lua_table, list_ab1);
+                 });
+
+            return ticket;
         }
 
         //---------------------------------------------------------------------

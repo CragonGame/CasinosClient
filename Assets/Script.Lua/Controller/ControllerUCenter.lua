@@ -229,7 +229,6 @@ function ControllerUCenter:RequestNigWebpayRequestUrl(handler)
     local form = CS.UnityEngine.WWWForm()
     self.WWWNigWebpayRequestUrl = CS.UnityEngine.WWW(http_url, form)
     --print(http_url)
-    --
     --self.MbKingTexasHelper:PostUrl(http_url, param,
     --        function(response_data)
     --            self:_onResponse(response_data, handler)

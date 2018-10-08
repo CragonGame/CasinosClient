@@ -39,10 +39,8 @@ namespace Casinos
                 }
                 else
                 {
-                    // 200表示接受成功
                     if (www_request.responseCode == 200)
                     {
-                        //Debug.Log(www.downloadHandler.text);
                         cb?.Invoke(www_request.downloadHandler.text);
                     }
                 }

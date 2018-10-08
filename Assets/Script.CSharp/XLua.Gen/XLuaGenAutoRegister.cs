@@ -113,6 +113,10 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(System.Collections.Hashtable), SystemCollectionsHashtableWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(System.Collections.Generic.List<string>), SystemCollectionsGenericList_1_SystemString_Wrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(System.Collections.Generic.List<UnityEngine.AssetBundle>), SystemCollectionsGenericList_1_UnityEngineAssetBundle_Wrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(System.Text.RegularExpressions.Regex), SystemTextRegularExpressionsRegexWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(System.Text.RegularExpressions.Match), SystemTextRegularExpressionsMatchWrap.__Register);
