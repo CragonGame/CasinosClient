@@ -21,11 +21,13 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.MbHelper);
-			Utils.BeginObjectRegister(type, L, translator, 0, 3, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 5, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SendUrl", _m_SendUrl);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PostUrl", _m_PostUrl);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "PostUrlWithFormData", _m_PostUrlWithFormData);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "WWWDownload", _m_WWWDownload);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "WWWDownloadList", _m_WWWDownloadList);
 			
 			
 			
@@ -151,6 +153,64 @@ namespace XLua.CSObjectWrap
                     System.Action<string> _cb = translator.GetDelegate<System.Action<string>>(L, 4);
                     
                     gen_to_be_invoked.PostUrlWithFormData( _url, _form_data, _cb );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_WWWDownload(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.MbHelper gen_to_be_invoked = (Casinos.MbHelper)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _url = LuaAPI.lua_tostring(L, 2);
+                    System.Action<UnityEngine.WWW> _cb = translator.GetDelegate<System.Action<UnityEngine.WWW>>(L, 3);
+                    
+                    gen_to_be_invoked.WWWDownload( _url, _cb );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_WWWDownloadList(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.MbHelper gen_to_be_invoked = (Casinos.MbHelper)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    System.Collections.Generic.List<string> _list_url = (System.Collections.Generic.List<string>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<string>));
+                    System.Action<UnityEngine.WWW[]> _cb = translator.GetDelegate<System.Action<UnityEngine.WWW[]>>(L, 3);
+                    
+                    gen_to_be_invoked.WWWDownloadList( _list_url, _cb );
                     
                     
                     

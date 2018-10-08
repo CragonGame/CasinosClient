@@ -17,7 +17,7 @@ namespace Casinos
         public GameObject GoMain { get; private set; }
         public string Platform { get; private set; }// Android, iOS, PC
         public string Channel { get; private set; } = "";// 渠道
-        public StreamingAssetsInfo StreamingAssetsInfo { get; private set; }// StreamingAssets配置信息
+        public StreamingAssetsInfo StreamingAssetsInfo { get; set; }// StreamingAssets配置信息
         public string VersionBundle { get; private set; }
         public string VersionDataPersistent { get; private set; }
         public string VersionLaunchPersistent { get; private set; }
@@ -42,14 +42,6 @@ namespace Casinos
 
             GoMain = GameObject.Find("Main Object");
             VersionBundle = Application.version;
-
-            // 读取VersionLaunchStreamingAssets
-            var datafilelist_path = CasinosContext.Instance.PathMgr.combineWWWStreamingAssetsPath("StreamingAssetsInfo.json");
-            WWW www = new WWW(datafilelist_path);
-            while (!www.isDone)
-            {
-            }
-            StreamingAssetsInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<StreamingAssetsInfo>(www.text);
 
             // 读取VersionLaunchPersistent
             if (PlayerPrefs.HasKey("VersionLaunchPersistent"))

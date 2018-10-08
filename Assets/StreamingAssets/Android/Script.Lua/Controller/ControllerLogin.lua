@@ -363,7 +363,7 @@ function ControllerLogin:weChatLogin(token, app_id)
     wechat_info.Code = token
     wechat_info.AppId = app_id
     wechat_info.Device = self:getDeviceInfo()
-    c_login.ControllerUCenter:wechatLogin(wechat_info,
+    c_login.ControllerUCenter:RequestWechatLogin(wechat_info,
             function(status, response, error)
                 c_login:onUCenterLogin(status, response, error)
             end)

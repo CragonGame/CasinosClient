@@ -49,7 +49,6 @@
 		<type fullname="AsyncAssetLoaderMgr" preserve="all"/>
 		<type fullname="AsyncAssetLoadGroup" preserve="all"/>
 		<type fullname="ChatParser" preserve="all"/>
-		<type fullname="Casinos.CopyStreamingAssetsToPersistentData1" preserve="all"/>
 		<type fullname="Casinos.CopyStreamingAssetsToPersistentData2" preserve="all"/>
 		<type fullname="Casinos.EbTimeEvent" preserve="all"/>
 		<type fullname="Casinos.EbTimer" preserve="all"/>

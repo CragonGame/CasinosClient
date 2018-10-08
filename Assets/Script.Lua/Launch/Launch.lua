@@ -17,6 +17,7 @@ function Launch:new(o)
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
         self.Context = nil
+        self.TimerUpdate = nil
         self.UIPackagePreLoading = nil
         self.UIPackageMsgbox = nil
         self.Instance = o
@@ -115,17 +116,23 @@ function Launch:Setup()
                         function(url, www)
                             self.CasinosLua:LoadLuaFromBytes('Context', www.text)
                             self.CasinosLua:DoString('Context')
-                            self.Context = Context
-                            self.Context:Init(self.Env)
+                            self.Context = Context:new(nil)
                         end
                 )
             end
     )
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
 ---------------------------------------
 -- Launch阶段完成
 function Launch:Finish()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
+
     if (self.PreViewMgr ~= nil) then
         self.PreViewMgr:Release()
         self.PreViewMgr = nil
@@ -199,6 +206,13 @@ function Launch:OnAndroidQuitConfirm()
     print('OnAndroidQuitConfirm')
     if (self.Context ~= nil) then
     else
+    end
+end
+
+---------------------------------------
+function Launch:_timerUpdate(tm)
+    if (self.Context ~= nil and self.Context.Valid == nil) then
+        self.Context:Init(self.Env)
     end
 end
 

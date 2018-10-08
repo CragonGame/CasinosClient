@@ -283,23 +283,61 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Launch()
         {
-            // 比较Launch版本，决定是否将Launch从StreamingAssets拷贝到Persistent
-            bool need_copy = false;
-            if (string.IsNullOrEmpty(Config.VersionLaunchPersistent)
-                || Config.VersionLaunchPersistent != Config.StreamingAssetsInfo.DataVersion)
-            {
-                need_copy = true;
-            }
+            // 读取VersionLaunchStreamingAssets
+            var mb_helper = Config.GoMain.GetComponent<MbHelper>();
+            var datafilelist_path = PathMgr.combineWWWStreamingAssetsPath("StreamingAssetsInfo.json");
+            mb_helper.WWWDownload(datafilelist_path,
+                (w) =>
+                {
+                    Config.StreamingAssetsInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<StreamingAssetsInfo>(w.text);
 
-            // 将Launch从StreamingAssets拷贝到Persistent
-            if (need_copy)
-            {
-                var copy_dir = new CopyStreamingAssetsToPersistentData1();
-                copy_dir.CopySync(Config.StreamingAssetsInfo.ListLaunchFile);
-                Config.WriteVersionLaunchPersistent(Config.StreamingAssetsInfo.DataVersion);
-            }
+                    // 比较Launch版本，决定是否将Launch从StreamingAssets拷贝到Persistent
+                    bool need_copy = false;
+                    if (string.IsNullOrEmpty(Config.VersionLaunchPersistent)
+                        || Config.VersionLaunchPersistent != Config.StreamingAssetsInfo.DataVersion)
+                    {
+                        need_copy = true;
+                    }
 
-            CasinosLua.Launch();
+                    // 将Launch从StreamingAssets拷贝到Persistent
+                    if (need_copy)
+                    {
+                        var l = Config.StreamingAssetsInfo.ListLaunchFile;
+                        Dictionary<string, string> map_copyfile = new Dictionary<string, string>(l.Count);
+                        foreach (var i in l)
+                        {
+                            var path_www_streamingassets_file = PathMgr.combineWWWStreamingAssetsPath(i);
+                            map_copyfile[path_www_streamingassets_file] = i;
+                        }
+                        mb_helper.WWWDownloadList(new List<string>(map_copyfile.Keys),
+                            (arr) =>
+                            {
+                                foreach (var www in arr)
+                                {
+                                    string path_www_streamingassets_file = map_copyfile[www.url];
+                                    var str = PathMgr.combinePersistentDataPath(path_www_streamingassets_file);
+                                    string d = Path.GetDirectoryName(str);
+                                    if (!Directory.Exists(d))
+                                    {
+                                        Directory.CreateDirectory(d);
+                                    }
+
+                                    using (FileStream fs = new FileStream(str, FileMode.Create))
+                                    {
+                                        fs.Write(www.bytes, 0, www.bytes.Length);
+                                    }
+                                }
+
+                                Config.WriteVersionLaunchPersistent(Config.StreamingAssetsInfo.DataVersion);
+
+                                CasinosLua.Launch();
+                            });
+                    }
+                    else
+                    {
+                        CasinosLua.Launch();
+                    }
+                });
         }
 
         //-------------------------------------------------------------------------

@@ -4,6 +4,7 @@ namespace Casinos
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Networking;
 
@@ -25,6 +26,18 @@ namespace Casinos
         public void PostUrlWithFormData(string url, WWWForm form_data, Action<string> cb)
         {
             StartCoroutine(_postUrlWithFormData(url, form_data, cb));
+        }
+
+        //---------------------------------------------------------------------
+        public void WWWDownload(string url, Action<WWW> cb)
+        {
+            StartCoroutine(_wwwDownload(url, cb));
+        }
+
+        //---------------------------------------------------------------------
+        public void WWWDownloadList(List<string> list_url, Action<WWW[]> cb)
+        {
+            StartCoroutine(_wwwDownloadList(list_url, cb));
         }
 
         //---------------------------------------------------------------------
@@ -92,6 +105,33 @@ namespace Casinos
                     }
                 }
             }
+        }
+
+        //---------------------------------------------------------------------
+        IEnumerator _wwwDownload(string url, Action<WWW> cb)
+        {
+            WWW www = new WWW(url);
+
+            yield return www;
+
+            cb?.Invoke(www);
+        }
+
+        //---------------------------------------------------------------------
+        IEnumerator _wwwDownloadList(List<string> list_url, Action<WWW[]> cb)
+        {
+            int n = 0;
+            WWW[] arr = new WWW[list_url.Count];
+            foreach (var i in list_url)
+            {
+                WWW www = new WWW(i);
+                arr[n] = www;
+                n++;
+            }
+
+            yield return arr;
+
+            cb?.Invoke(arr);
         }
     }
 }

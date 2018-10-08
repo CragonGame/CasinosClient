@@ -225,8 +225,6 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(ChatParser), ChatParserWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData1), CasinosCopyStreamingAssetsToPersistentData1Wrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData2), CasinosCopyStreamingAssetsToPersistentData2Wrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(DataEye), DataEyeWrap.__Register);

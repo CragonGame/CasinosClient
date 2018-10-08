@@ -84,7 +84,7 @@ end
 
 ---------------------------------------
 function Context:Init(env)
-    Context:new(nil)
+    self.Valid = true
     self.Env = env
     print('Context:Init()')
 
@@ -150,9 +150,9 @@ function Context:_initLaunchStep()
     end
 
     -- 检测是否需要更新Data
-    --if (self.CasinosContext.Config.VersionDataPersistent ~= DataVersion) then
-    self.LaunchStep[3] = "UpdateData"
-    --end
+    if (self.CasinosContext.Config.VersionDataPersistent ~= DataVersion) then
+        self.LaunchStep[3] = "UpdateData"
+    end
 
     -- 进入Login界面
     self.LaunchStep[4] = "ShowLogin"
@@ -170,10 +170,10 @@ function Context:_nextLaunchStep()
         local view_premsgbox = self.PreViewMgr.createView("PreMsgBox")
         view_premsgbox:showMsgBox(self.CasinosContext.Config.VersionBundle,
                 function()
-                    print('更新安装包')
+                    CS.UnityEngine.Application.Quit()
                 end,
                 function()
-                    print('退出游戏')
+                    print('更新安装包')
                 end
         )
 
@@ -197,12 +197,11 @@ function Context:_nextLaunchStep()
     if (self.LaunchStep[3] ~= nil) then
         --if (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork) then
         --end
-
         local desc_copy = "更新游戏数据"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
         self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
         local http_url = DataRootURL .. DataFileListFileName
-        print(http_url)
+        --print(http_url)
         local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
         async_asset_loadgroup:LoadWWWAsync(http_url,
                 function(url, www)
@@ -224,7 +223,7 @@ function Context:_nextLaunchStep()
     if (self.LaunchStep[4] ~= nil) then
         self.LaunchStep[4] = nil
 
-        local desc_copy = "准备进入登录界面"
+        local desc_copy = "准备登录中"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
         self.Launch.PreLoading:UpdateLoadingProgress(100, 100)
 
@@ -945,16 +944,3 @@ function Context:CalcBotIconUrl(is_small, icon)
         return BotIconDomain .. 'boticon/' .. icon .. '.jpg'
     end
 end
-
----------------------------------------
---function Context:AddUiPackage(package_name)
---    local ui_package = CS.FairyGUI.UIPackage
---    local p = ui_package.GetByName(package_name)
---    if p ~= nil then
---        ui_package.RemovePackage(package_name, true)
---    end
---
---    local full_name = self.CasinosContext.PathMgr:combinePersistentDataPath("resources.kingtexas/ui/" .. string.lower(package_name) .. ".ab")
---    local ab = CS.UnityEngine.AssetBundle.LoadFromFile(full_name)
---    ui_package.AddPackage(ab)
---end
