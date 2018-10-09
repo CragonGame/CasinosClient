@@ -25,7 +25,7 @@ namespace Casinos
         {
             if (mCanCheckDestroy && !mParticleSystem.isPlaying)
             {
-                DestroyCallBack?.Invoke();
+                if (DestroyCallBack != null) DestroyCallBack.Invoke();
                 Destroy(gameObject);
             }
         }

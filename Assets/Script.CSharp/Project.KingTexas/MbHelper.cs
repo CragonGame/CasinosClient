@@ -54,7 +54,7 @@ namespace Casinos
                 {
                     if (www_request.responseCode == 200)
                     {
-                        cb?.Invoke(www_request.downloadHandler.text);
+                        if (cb != null) cb.Invoke(www_request.downloadHandler.text);
                     }
                 }
             }
@@ -79,7 +79,7 @@ namespace Casinos
                 {
                     if (www_request.responseCode == 200)
                     {
-                        cb?.Invoke(www_request.downloadHandler.text);
+                        if (cb != null) cb.Invoke(www_request.downloadHandler.text);
                     }
                 }
             }
@@ -101,7 +101,7 @@ namespace Casinos
                 {
                     if (www_request.responseCode == 200)
                     {
-                        cb?.Invoke(www_request.downloadHandler.text);
+                        if (cb != null) cb.Invoke(www_request.downloadHandler.text);
                     }
                 }
             }
@@ -114,7 +114,7 @@ namespace Casinos
 
             yield return www;
 
-            cb?.Invoke(www);
+            if (cb != null) cb.Invoke(www);
         }
 
         //---------------------------------------------------------------------
@@ -131,7 +131,7 @@ namespace Casinos
 
             yield return arr;
 
-            cb?.Invoke(arr);
+            if (cb != null) cb.Invoke(arr);
         }
     }
 }

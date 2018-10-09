@@ -9,13 +9,13 @@ using UnityEngine;
 public class EditorViewDataPublish : EditorWindow
 {
     //-------------------------------------------------------------------------
-    HashSet<string> DoNotPackFileExtention { get; set; } = new HashSet<string> { ".meta", ".DS_Store" };
-    HashSet<string> DoNotCopyDir { get; set; } = new HashSet<string> { ".idea" };
-    string AssetBundleSingleFoldName { get; set; } = "BuildAssetBundleFromSingle";
-    string AssetBundlePkgFoldFoldName { get; set; } = "BuildAssetBundleFromFold";
-    string AssetBundleLaunchFoldName { get; set; } = "Resources.KingTexasLaunch";
-    MD5 MD5 { get; set; } = new MD5CryptoServiceProvider();
-    StringBuilder Sb { get; set; } = new StringBuilder();
+    HashSet<string> DoNotPackFileExtention = new HashSet<string> { ".meta", ".DS_Store" };
+    HashSet<string> DoNotCopyDir = new HashSet<string> { ".idea" };
+    string AssetBundleSingleFoldName = "BuildAssetBundleFromSingle";
+    string AssetBundlePkgFoldFoldName = "BuildAssetBundleFromFold";
+    string AssetBundleLaunchFoldName = "Resources.KingTexasLaunch";
+    MD5 MD5 = new MD5CryptoServiceProvider();
+    StringBuilder Sb = new StringBuilder();
 
     //-------------------------------------------------------------------------
     void OnGUI()
@@ -593,7 +593,7 @@ public class EditorViewDataPublish : EditorWindow
     // 计算并返回单个文件的MD5值
     string _calcOneFileMD5(string target_path, string file_name, string file_path)
     {
-        Sb.Clear();
+        Sb.Length = 0;
         Sb.Append(target_path + "/" + file_name + " ");
 
         using (FileStream sr = File.OpenRead(file_path))

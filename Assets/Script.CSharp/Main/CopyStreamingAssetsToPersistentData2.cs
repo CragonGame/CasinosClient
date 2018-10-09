@@ -14,14 +14,18 @@ namespace Casinos
         //---------------------------------------------------------------------
         public int TotalCount { get; private set; }// 需要Copy的文件总数
         public int LeftCount { get; private set; }// 剩余未Copy的文件总数
-        Queue<string> QueCopyFile { get; set; } = new Queue<string>(4096);
-        Dictionary<string, WWW> MapWWW { get; set; } = new Dictionary<string, WWW>();
-        List<string> ListFinished { get; set; } = new List<string>(5);
+        Queue<string> QueCopyFile { get; set; }
+        Dictionary<string, WWW> MapWWW { get; set; }
+        List<string> ListFinished { get; set; }
         string DataFileListContent { get; set; }
 
         //---------------------------------------------------------------------
         public void CopyAsync(string copy_dir)
         {
+            QueCopyFile = new Queue<string>(4096);
+            MapWWW = new Dictionary<string, WWW>();
+            ListFinished = new List<string>(5);
+
             // 读取DataFileList.txt
             var path_www_streamingassets_file = CasinosContext.Instance.PathMgr.combineWWWStreamingAssetsPath("DataFileList.txt");
             WWW www = new WWW(path_www_streamingassets_file);

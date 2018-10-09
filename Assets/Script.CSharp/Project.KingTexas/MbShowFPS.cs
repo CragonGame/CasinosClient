@@ -7,8 +7,8 @@ namespace Casinos
     public class MbShowFPS : MonoBehaviour
     {
         //---------------------------------------------------------------------
-        float FPS { get; set; } = 0;
-        float MS { get; set; } = 0;
+        float FPS { get; set; }
+        float MS { get; set; }
 
         private GUIStyle FontStyle1;
         private Rect Rect;

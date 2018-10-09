@@ -14,14 +14,17 @@ namespace Casinos
         //---------------------------------------------------------------------
         public int TotalCount { get; private set; }// 需要Update的文件总数
         public int LeftCount { get; private set; }// 剩余未Update的文件总数
-        Queue<string> QueUpdateFile { get; set; } = new Queue<string>(4096);
-        Dictionary<string, WWW> MapWWW { get; set; } = new Dictionary<string, WWW>();
-        List<string> ListFinished { get; set; } = new List<string>(5);
+        Queue<string> QueUpdateFile { get; set; }
+        Dictionary<string, WWW> MapWWW { get; set; }
+        List<string> ListFinished { get; set; }
         string RemoteDataRootUrl { get; set; }
 
         //---------------------------------------------------------------------
         public int UpateAsync(string datafilelist_remote, string datafilelist_persistent, string remotedata_root_url)
         {
+            QueUpdateFile = new Queue<string>(4096);
+            MapWWW = new Dictionary<string, WWW>();
+            ListFinished = new List<string>(5);
             RemoteDataRootUrl = remotedata_root_url;
 
             Dictionary<string, string> map_remote = new Dictionary<string, string>();
@@ -80,7 +83,7 @@ namespace Casinos
             {
                 if (!i.Value.isDone) continue;
                 ListFinished.Add(i.Key);
-                
+
                 var str = CasinosContext.Instance.PathMgr.combinePersistentDataPath(i.Key);
                 string d = Path.GetDirectoryName(str);
                 if (!Directory.Exists(d))

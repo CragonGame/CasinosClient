@@ -11,14 +11,18 @@ namespace Casinos
         //-------------------------------------------------------------------------
         public void nativeOperate(NativeOperateType operate_type)
         {
+#if UNITY_IOS
             nativeOperate(operate_type.ToString());
+#endif
         }
 
+#if UNITY_IOS
         //-------------------------------------------------------------------------
         #region DllImport
         [DllImport("__Internal")]
         private static extern void nativeOperate(string operate_type);
         #endregion
+#endif
     }
 
     //-------------------------------------------------------------------------
