@@ -38,7 +38,7 @@ public class EditorConfig
             {
                 CfgUserSettings = new EditorCfgUserSettings()
                 {
-                    UseTmpDirRes = true;
+                    UseTmpDirRes = true
                 };
 
                 using (StreamWriter sw = File.CreateText(full_filename))
