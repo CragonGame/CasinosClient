@@ -28,12 +28,17 @@ public class EditorConfig
     {
         // Load or Gen EditorUserSettings.json
         {
+            if (!Directory.Exists(EditorContext.Instance.PathSettingsUser))
+            {
+                Directory.CreateDirectory(EditorContext.Instance.PathSettingsUser);
+            }
+
             string full_filename = Path.Combine(EditorContext.Instance.PathSettingsUser, EditorStringDef.FileEditorUserSettings);
             if (!File.Exists(full_filename))
             {
                 CfgUserSettings = new EditorCfgUserSettings()
                 {
-                    UseTmpDirRes = false
+                    UseTmpDirRes = true;
                 };
 
                 using (StreamWriter sw = File.CreateText(full_filename))
