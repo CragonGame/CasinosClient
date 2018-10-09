@@ -29,7 +29,7 @@ namespace Casinos
         public string PathLuaRootAssets { get; private set; }// Lua文件所在根目录
         _eEditorRunSourcePlatform EditorModeRunsourcesPlatform { get; set; }
         string NeedCombinePath { get; set; }
-        StringBuilder Sb { get; set; } = new StringBuilder(256);
+        StringBuilder Sb { get; set; }
         string WWWPersistentDataPath { get; set; }
         string PersistentDataPath { get; set; }
         string StreamingAssetsPath { get; set; }
@@ -38,6 +38,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public PathMgr(_eEditorRunSourcePlatform editor_mode_runsources_platform, bool use_persistent)
         {
+            Sb = new StringBuilder(256);
             UsePersistent = use_persistent;
 #if !UNITY_EDITOR
             UsePersistent = true;
@@ -161,7 +162,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public string combineWWWPersistentDataPath(string path)
         {
-            Sb.Clear();
+            Sb.Length = 0;
             Sb.Append(WWWPersistentDataPath);
             Sb.Append("/");
             Sb.Append(path);
@@ -177,7 +178,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public string combinePersistentDataPath(string path, bool for_lua = false)
         {
-            Sb.Clear();
+            Sb.Length = 0;
             Sb.Append(PersistentDataPath);
             Sb.Append("/");
             Sb.Append(path);
@@ -193,7 +194,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public string combineStreamingAssetsPath(string path)
         {
-            Sb.Clear();
+            Sb.Length = 0;
             Sb.Append(StreamingAssetsPath);
             Sb.Append("/");
             Sb.Append(path);
@@ -209,7 +210,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public string combineWWWStreamingAssetsPath(string path)
         {
-            Sb.Clear();
+            Sb.Length = 0;
             Sb.Append(WWWStreamingAssetsPath);
             Sb.Append("/");
             Sb.Append(path);

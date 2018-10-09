@@ -60,6 +60,33 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Synchronized_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    System.Text.RegularExpressions.Match _inner = (System.Text.RegularExpressions.Match)translator.GetObject(L, 1, typeof(System.Text.RegularExpressions.Match));
+                    
+                        System.Text.RegularExpressions.Match gen_ret = System.Text.RegularExpressions.Match.Synchronized( _inner );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_NextMatch(RealStatePtr L)
         {
 		    try {
@@ -104,33 +131,6 @@ namespace XLua.CSObjectWrap
                     
                         string gen_ret = gen_to_be_invoked.Result( _replacement );
                         LuaAPI.lua_pushstring(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Synchronized_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    System.Text.RegularExpressions.Match _inner = (System.Text.RegularExpressions.Match)translator.GetObject(L, 1, typeof(System.Text.RegularExpressions.Match));
-                    
-                        System.Text.RegularExpressions.Match gen_ret = System.Text.RegularExpressions.Match.Synchronized( _inner );
-                        translator.Push(L, gen_ret);
                     
                     
                     

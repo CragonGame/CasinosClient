@@ -94,13 +94,13 @@ public class RpcSessionTcpClient : RpcSession
     {
         //this.tcpSocket = null;
 
-        OnSocketError?.Invoke(this, args);
+        if (OnSocketError != null) OnSocketError.Invoke(this, args);
     }
 
     //-------------------------------------------------------------------------
     void _onSocketConnected(object client, EventArgs args)
     {
-        OnSocketConnected?.Invoke(this, args);
+        if (OnSocketConnected != null) OnSocketConnected.Invoke(this, args);
     }
 
     //-------------------------------------------------------------------------
@@ -108,7 +108,7 @@ public class RpcSessionTcpClient : RpcSession
     {
         //this.tcpSocket = null;
 
-        OnSocketClosed?.Invoke(this, args);
+        if (OnSocketClosed != null) OnSocketClosed.Invoke(this, args);
     }
 }
 

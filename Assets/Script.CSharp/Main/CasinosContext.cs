@@ -145,6 +145,9 @@ namespace Casinos
             UnityIOS = false;
 #elif UNITY_STANDALONE_WIN
 #endif
+
+            Debug.Log("1111111111");
+
             NativeMgr = new NativeMgr();
             PathMgr = new PathMgr(editor_runsorce, use_persistent);// 初始化PathMgr
             FTMgr = new FTMgr();
@@ -154,6 +157,8 @@ namespace Casinos
             MemoryStream = new MemoryStream();
             SB = new StringBuilder();
             Config = new CasinosConfig(editor_runsorce);
+
+            Debug.Log("2222222222");
 
             // 初始化系统参数
             {
@@ -178,29 +183,51 @@ namespace Casinos
                 EbLog.ErrorCallback = Debug.LogError;
             }
 
+            Debug.Log("2aaaaaaaaaaaaa");
+
             if (NativeAPIMsgReceiverListner == null)
             {
                 NativeAPIMsgReceiverListner = new NativeAPIMsgReceiverListener();
             }
+
+            Debug.Log("2bbbbbbbbbb");
 
             if (AsyncAssetLoaderMgr == null)
             {
                 AsyncAssetLoaderMgr = new AsyncAssetLoaderMgr();
             }
 
+            Debug.Log("2cccccccccccc");
+
             AsyncAssetLoadGroup = AsyncAssetLoaderMgr.createAsyncAssetLoadGroup();
+
+            Debug.Log("2ddddddddd");
 
             NetBridge = new NetBridge();
 
+            Debug.Log("2eeeeeeeeeee");
+
             PlayerPrefs = new CasinosPlayerPrefs();
+
+            Debug.Log("2ffffffffffffff");
 
             TextureMgr = new TextureMgr();
 
             UIObjectFactory.SetLoaderExtension(typeof(GLoaderEx));
 
+            Debug.Log("2ggggggggg");
+
             CasinosLua = new CasinosLua();
+
+            Debug.Log("2hhhhhhhhh");
+
             SoundMgr = new CSoundMgr();
+
+            Debug.Log("2iiiiiiiii");
+
             HeadIconMgr = new HeadIconMgr();
+
+            Debug.Log("333333333333");
         }
 
         //---------------------------------------------------------------------
@@ -286,9 +313,11 @@ namespace Casinos
             // 读取VersionLaunchStreamingAssets
             var mb_helper = Config.GoMain.GetComponent<MbHelper>();
             var datafilelist_path = PathMgr.combineWWWStreamingAssetsPath("StreamingAssetsInfo.json");
+            Debug.Log("4444444444");
             mb_helper.WWWDownload(datafilelist_path,
                 (w) =>
                 {
+                    Debug.Log("555555555555");
                     Config.StreamingAssetsInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<StreamingAssetsInfo>(w.text);
 
                     // 比较Launch版本，决定是否将Launch从StreamingAssets拷贝到Persistent
@@ -309,9 +338,11 @@ namespace Casinos
                             var path_www_streamingassets_file = PathMgr.combineWWWStreamingAssetsPath(i);
                             map_copyfile[path_www_streamingassets_file] = i;
                         }
+                        Debug.Log("6666666666666");
                         mb_helper.WWWDownloadList(new List<string>(map_copyfile.Keys),
                             (arr) =>
                             {
+                                Debug.Log("777777777777");
                                 foreach (var www in arr)
                                 {
                                     string path_www_streamingassets_file = map_copyfile[www.url];
@@ -327,6 +358,8 @@ namespace Casinos
                                         fs.Write(www.bytes, 0, www.bytes.Length);
                                     }
                                 }
+
+                                Debug.Log("8888888888888");
 
                                 Config.WriteVersionLaunchPersistent(Config.StreamingAssetsInfo.DataVersion);
 
@@ -384,7 +417,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void ClearSB()
         {
-            SB.Clear();
+            SB.Length = 0;
         }
 
         //---------------------------------------------------------------------

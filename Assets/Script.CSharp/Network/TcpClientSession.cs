@@ -193,7 +193,7 @@ public class TcpClientSession : IDisposable
             if (mDisposed) return;
 
             mSendLength = 0;
-            
+
             if (connect_ipaddress.AddressFamily == AddressFamily.InterNetworkV6)
             {
                 mSocket = new Socket(AddressFamily.InterNetworkV6, SocketType.Stream, ProtocolType.Tcp);
@@ -219,7 +219,7 @@ public class TcpClientSession : IDisposable
         }
         catch (Exception ex)
         {
-            _raiseError(ex);            
+            _raiseError(ex);
         }
     }
 
@@ -285,7 +285,7 @@ public class TcpClientSession : IDisposable
     //---------------------------------------------------------------------
     void _raiseDataReceived(byte[] data, int len)
     {
-        DataReceived?.Invoke(data, len);
+        if (DataReceived != null) DataReceived.Invoke(data, len);
     }
 
     //---------------------------------------------------------------------
@@ -293,13 +293,13 @@ public class TcpClientSession : IDisposable
     {
         mQueIPAddress.Clear();
 
-        Connected?.Invoke(null, EventArgs.Empty);
+        if (Connected != null) Connected.Invoke(null, EventArgs.Empty);
     }
 
     //---------------------------------------------------------------------
     void _raiseClosed()
     {
-        Closed?.Invoke(null, EventArgs.Empty);
+        if (Closed != null) Closed.Invoke(null, EventArgs.Empty);
     }
 
     //---------------------------------------------------------------------
@@ -310,6 +310,6 @@ public class TcpClientSession : IDisposable
             _doConnect();
         }
 
-        Error?.Invoke(null, new SocketErrorEventArgs(e));
+        if (Error != null) Error.Invoke(null, new SocketErrorEventArgs(e));
     }
 }

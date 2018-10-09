@@ -135,17 +135,17 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
             {
                 case eSocketEventType.Connected:
                     {
-                        OnSocketConnected?.Invoke(null, socket_event.args);
+                        if (OnSocketConnected != null) OnSocketConnected.Invoke(null, socket_event.args);
                     }
                     break;
                 case eSocketEventType.Closed:
                     {
-                        OnSocketClosed?.Invoke(null, socket_event.args);
+                        if (OnSocketClosed != null) OnSocketClosed.Invoke(null, socket_event.args);
                     }
                     break;
                 case eSocketEventType.Error:
                     {
-                        OnSocketError?.Invoke(null, (SocketErrorEventArgs)socket_event.args);
+                        if (OnSocketError != null) OnSocketError.Invoke(null, (SocketErrorEventArgs)socket_event.args);
                     }
                     break;
             }
@@ -160,7 +160,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
             mSession.Dispose();
             mSession = null;
 
-            OnSocketClosed?.Invoke(null, EventArgs.Empty);
+            if (OnSocketClosed != null) OnSocketClosed.Invoke(null, EventArgs.Empty);
         }
     }
 

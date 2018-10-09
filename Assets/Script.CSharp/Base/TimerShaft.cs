@@ -70,8 +70,8 @@ namespace Casinos
         public EbTimeEvent TimeEvent { get; private set; }
         public EbDoubleLinkNode<EbTimeEvent> TimeNode { get; private set; }
         ulong TmSpan { get; set; }
-        ulong LastTimeJeffies { get; set; } = 0;
-        bool Closed { get; set; } = false;
+        ulong LastTimeJeffies { get; set; }
+        bool Closed { get; set; }
         LuaTable LuaTable { get; set; }
         DelegateLua2 FuncCb { get; set; }
         Stopwatch Stopwatch { get; set; }
@@ -124,7 +124,7 @@ namespace Casinos
             TimerShaft.AddTimer(time_ev);
 
             float tm = (float)Stopwatch.Elapsed.TotalSeconds;
-            Stopwatch.Restart();
+            Stopwatch.Reset();
             FuncCb(LuaTable, tm);
         }
     }
@@ -257,7 +257,7 @@ namespace Casinos
                 curr = next;
 
                 // 调用委托
-                node.mObject.onTime?.Invoke(node.mObject.mData);
+                node.mObject.onTime(node.mObject.mData);
             }
         }
 

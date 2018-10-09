@@ -31,15 +31,8 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 30, 0, 0);
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "GetFiles", _m_GetFiles_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetDirectories", _m_GetDirectories_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetFileSystemEntries", _m_GetFileSystemEntries_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "EnumerateDirectories", _m_EnumerateDirectories_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "EnumerateFiles", _m_EnumerateFiles_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "EnumerateFileSystemEntries", _m_EnumerateFileSystemEntries_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetDirectoryRoot", _m_GetDirectoryRoot_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "CreateDirectory", _m_CreateDirectory_xlua_st_);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 27, 0, 0);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "CreateDirectory", _m_CreateDirectory_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Delete", _m_Delete_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Exists", _m_Exists_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetLastAccessTime", _m_GetLastAccessTime_xlua_st_);
@@ -49,6 +42,10 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetCreationTime", _m_GetCreationTime_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetCreationTimeUtc", _m_GetCreationTimeUtc_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetCurrentDirectory", _m_GetCurrentDirectory_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetDirectories", _m_GetDirectories_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetDirectoryRoot", _m_GetDirectoryRoot_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetFiles", _m_GetFiles_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetFileSystemEntries", _m_GetFileSystemEntries_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetLogicalDrives", _m_GetLogicalDrives_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetParent", _m_GetParent_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Move", _m_Move_xlua_st_);
@@ -82,367 +79,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetFiles_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    
-                        string[] gen_ret = System.IO.Directory.GetFiles( _path );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    
-                        string[] gen_ret = System.IO.Directory.GetFiles( _path, _searchPattern );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.IO.SearchOption>(L, 3)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    System.IO.SearchOption _searchOption;translator.Get(L, 3, out _searchOption);
-                    
-                        string[] gen_ret = System.IO.Directory.GetFiles( _path, _searchPattern, _searchOption );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Directory.GetFiles!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetDirectories_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    
-                        string[] gen_ret = System.IO.Directory.GetDirectories( _path );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    
-                        string[] gen_ret = System.IO.Directory.GetDirectories( _path, _searchPattern );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.IO.SearchOption>(L, 3)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    System.IO.SearchOption _searchOption;translator.Get(L, 3, out _searchOption);
-                    
-                        string[] gen_ret = System.IO.Directory.GetDirectories( _path, _searchPattern, _searchOption );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Directory.GetDirectories!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetFileSystemEntries_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    
-                        string[] gen_ret = System.IO.Directory.GetFileSystemEntries( _path );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    
-                        string[] gen_ret = System.IO.Directory.GetFileSystemEntries( _path, _searchPattern );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.IO.SearchOption>(L, 3)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    System.IO.SearchOption _searchOption;translator.Get(L, 3, out _searchOption);
-                    
-                        string[] gen_ret = System.IO.Directory.GetFileSystemEntries( _path, _searchPattern, _searchOption );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Directory.GetFileSystemEntries!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_EnumerateDirectories_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    
-                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.Directory.EnumerateDirectories( _path );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    
-                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.Directory.EnumerateDirectories( _path, _searchPattern );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.IO.SearchOption>(L, 3)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    System.IO.SearchOption _searchOption;translator.Get(L, 3, out _searchOption);
-                    
-                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.Directory.EnumerateDirectories( _path, _searchPattern, _searchOption );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Directory.EnumerateDirectories!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_EnumerateFiles_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    
-                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.Directory.EnumerateFiles( _path );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    
-                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.Directory.EnumerateFiles( _path, _searchPattern );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.IO.SearchOption>(L, 3)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    System.IO.SearchOption _searchOption;translator.Get(L, 3, out _searchOption);
-                    
-                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.Directory.EnumerateFiles( _path, _searchPattern, _searchOption );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Directory.EnumerateFiles!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_EnumerateFileSystemEntries_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    
-                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.Directory.EnumerateFileSystemEntries( _path );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    
-                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.Directory.EnumerateFileSystemEntries( _path, _searchPattern );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.IO.SearchOption>(L, 3)) 
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
-                    System.IO.SearchOption _searchOption;translator.Get(L, 3, out _searchOption);
-                    
-                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.Directory.EnumerateFileSystemEntries( _path, _searchPattern, _searchOption );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Directory.EnumerateFileSystemEntries!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetDirectoryRoot_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    
-                        string gen_ret = System.IO.Directory.GetDirectoryRoot( _path );
-                        LuaAPI.lua_pushstring(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_CreateDirectory_xlua_st_(RealStatePtr L)
@@ -734,6 +370,186 @@ namespace XLua.CSObjectWrap
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetDirectories_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    
+                        string[] gen_ret = System.IO.Directory.GetDirectories( _path );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
+                    
+                        string[] gen_ret = System.IO.Directory.GetDirectories( _path, _searchPattern );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.IO.SearchOption>(L, 3)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
+                    System.IO.SearchOption _searchOption;translator.Get(L, 3, out _searchOption);
+                    
+                        string[] gen_ret = System.IO.Directory.GetDirectories( _path, _searchPattern, _searchOption );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Directory.GetDirectories!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetDirectoryRoot_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+                
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    
+                        string gen_ret = System.IO.Directory.GetDirectoryRoot( _path );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetFiles_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    
+                        string[] gen_ret = System.IO.Directory.GetFiles( _path );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
+                    
+                        string[] gen_ret = System.IO.Directory.GetFiles( _path, _searchPattern );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.IO.SearchOption>(L, 3)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
+                    System.IO.SearchOption _searchOption;translator.Get(L, 3, out _searchOption);
+                    
+                        string[] gen_ret = System.IO.Directory.GetFiles( _path, _searchPattern, _searchOption );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Directory.GetFiles!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetFileSystemEntries_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    
+                        string[] gen_ret = System.IO.Directory.GetFileSystemEntries( _path );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    string _searchPattern = LuaAPI.lua_tostring(L, 2);
+                    
+                        string[] gen_ret = System.IO.Directory.GetFileSystemEntries( _path, _searchPattern );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Directory.GetFileSystemEntries!");
             
         }
         

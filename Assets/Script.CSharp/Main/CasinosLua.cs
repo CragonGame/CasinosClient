@@ -285,7 +285,7 @@ namespace Casinos
         public void Release()
         {
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
-            FuncLaunchClose?.Invoke(lua_launch);
+            if (FuncLaunchClose != null) FuncLaunchClose.Invoke(lua_launch);
             FuncLaunchClose = null;
             FuncLaunchOnApplicationPause = null;
             FuncLaunchOnApplicationFocus = null;
@@ -309,18 +309,23 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Launch()
         {
+            Debug.Log("99999999999");
+
             // 预加载Script.Lua/Launch中的所有lua文件，显示加载界面
             var path_mgr = CasinosContext.Instance.PathMgr;
             var path_launch = path_mgr.combinePersistentDataPath("Script.Lua/Launch/");
             string[] list_path = new string[] { path_launch };
             LoadLuaFromDir2(list_path);
+            Debug.Log("aaaaaaaaaa");
             DoString("Launch");
+            Debug.Log("bbbbbbbbb");
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
             FuncLaunchClose = lua_launch.Get<DelegateLua1>("Close");
             FuncLaunchOnApplicationPause = lua_launch.Get<DelegateLua3>("OnApplicationPause");
             FuncLaunchOnApplicationFocus = lua_launch.Get<DelegateLua3>("OnApplicationFocus");
             var func_setup = lua_launch.Get<DelegateLua1>("Setup");
             func_setup(lua_launch);
+            Debug.Log("ccccccccc");
         }
 
         //---------------------------------------------------------------------
@@ -410,7 +415,7 @@ namespace Casinos
             var ticket = Context.AsyncAssetLoadGroup.asyncLoadLocalBundle(
                  list_ab_name, _eAsyncAssetLoadType.LocalBundle, (List<AssetBundle> list_ab1) =>
                  {
-                     loaded_callback?.Invoke(lua_table, list_ab1);
+                     if (loaded_callback != null) loaded_callback.Invoke(lua_table, list_ab1);
                  });
 
             return ticket;
@@ -490,14 +495,14 @@ namespace Casinos
         public void _CSharpCallOnApplicationPause(bool pause)
         {
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
-            FuncLaunchOnApplicationPause?.Invoke(lua_launch, pause);
+            if (FuncLaunchOnApplicationPause != null) FuncLaunchOnApplicationPause.Invoke(lua_launch, pause);
         }
 
         //---------------------------------------------------------------------
         public void _CSharpCallOnApplicationFocus(bool focus_status)
         {
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
-            FuncLaunchOnApplicationFocus?.Invoke(lua_launch, focus_status);
+            if (FuncLaunchOnApplicationFocus != null) FuncLaunchOnApplicationFocus.Invoke(lua_launch, focus_status);
         }
 
         //---------------------------------------------------------------------
