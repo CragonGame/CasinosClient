@@ -12,8 +12,6 @@ GatewayPort = 5882
 BundleUpdateStata = 0
 BundleUpdateVersion = '1.00.067'
 BundleUpdateURL = 'https://cragon-king-oss.cragon.cn/KingTexas.apk'
-DataVersion = '1.00.605'
-DataRootURL = 'https://cragon-king-oss.cragon.cn/ANDROID/Data_1.00.605/'
 DataFileListFileName = 'DataFileList.txt'
 TbFileList = { 'KingCommon', 'KingDesktop', 'KingDesktopH', 'KingClient' }
 ServerState = 0-- 服务器状态: 0正常,1维护
@@ -64,7 +62,7 @@ PayUrlScheme = "com.Cragon.KingTexas2"
 Context = {}
 
 ---------------------------------------
-function Context:new(o)
+function Context:new(o, env, data_version)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -72,7 +70,9 @@ function Context:new(o)
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     self.Launch = Launch
     self.LaunchStep = {}
-    self.Env = nil
+    self.Env = env
+    self.DataVersion = data_version
+    self.DataRootURL = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/', self.CasinosContext.Config.Platform, data_version)
     self.ControllerMgr = nil
     self.ViewMgr = nil
     self.TbDataMgr = nil
@@ -144,15 +144,17 @@ function Context:_initLaunchStep()
     end
 
     -- 检测是否需要首次运行解压
+    print('CasinosContext.Config.VersionDataPersistent=' .. self.CasinosContext.Config.VersionDataPersistent)
+    print('CasinosContext.Config.StreamingAssetsInfo.DataVersion=' .. self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
     local r = self.CasinosContext.Config:VersionCompare(self.CasinosContext.Config.VersionDataPersistent, self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
     if (r < 0) then
         self.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
     end
 
     -- 检测是否需要更新Data
-    if (self.CasinosContext.Config.VersionDataPersistent ~= DataVersion) then
-        self.LaunchStep[3] = "UpdateData"
-    end
+    --if (self.CasinosContext.Config.VersionDataPersistent ~= self.DataVersion) then
+    self.LaunchStep[3] = "UpdateData"
+    --end
 
     -- 进入Login界面
     self.LaunchStep[4] = "ShowLogin"
@@ -200,19 +202,20 @@ function Context:_nextLaunchStep()
         local desc_copy = "更新游戏数据"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
         self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
-        local http_url = DataRootURL .. DataFileListFileName
+        local http_url = self.DataRootURL .. DataFileListFileName
         --print(http_url)
         local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
         async_asset_loadgroup:LoadWWWAsync(http_url,
                 function(url, www)
                     -- 比较Oss上的datafilelist.txt和Persistent中的datafilelist.txt差异集，获取需要更新的Data列表
                     local datafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
+                    print(datafilelist_persistent)
                     self.RemoteDataFileListContent = www.text
                     --print(self.RemoteDataFileListContent)
                     local persistent_datafilelist_content = self.CasinosLua:ReadAllText(datafilelist_persistent)
                     --print(persistent_datafilelist_content)
                     self.UpdateRemoteToPersistentData = CS.Casinos.UpdateRemoteToPersistentData()
-                    self.UpdateRemoteToPersistentData:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, DataRootURL)
+                    self.UpdateRemoteToPersistentData:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, self.DataRootURL)
                     self.TimerUpdateRemoteToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteToPersistentData)
                 end
         )
@@ -370,7 +373,7 @@ function Context:_timerUpdateRemoteToPersistentData(tm)
         local datafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
         CS.System.IO.File.WriteAllText(datafilelist_persistent, self.RemoteDataFileListContent)
         self.RemoteDataFileListContent = nil
-        self.CasinosContext.Config:WriteVersionDataPersistent(DataVersion)
+        self.CasinosContext.Config:WriteVersionDataPersistent(self.DataVersion)
 
         -- 执行下一步LaunchStep
         self.LaunchStep[3] = nil

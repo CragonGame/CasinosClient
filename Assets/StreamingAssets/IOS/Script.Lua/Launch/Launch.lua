@@ -108,15 +108,14 @@ function Launch:Setup()
                 if (self.Env ~= nil and self.Env == 'Dev') then
                     data_select = DataSelectDev
                 end
-                --local http_url_context = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/Context.lua',
-                --        self.CasinosContext.Config.Platform, data_select)
-                local http_url_context = 'https://cragon-king.oss-cn-shanghai.aliyuncs.com/ANDROID/Data_1.00.605/Context.lua'
+                local http_url_context = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/Context.lua',
+                    self.CasinosContext.Config.Platform, data_select)
                 print(http_url_context)
                 async_asset_loadgroup:LoadWWWAsync(http_url_context,
                         function(url, www)
                             self.CasinosLua:LoadLuaFromBytes('Context', www.text)
                             self.CasinosLua:DoString('Context')
-                            self.Context = Context:new(nil)
+                            self.Context = Context:new(nil, self.Env, data_select)
                         end
                 )
             end

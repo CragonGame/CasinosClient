@@ -74,11 +74,11 @@ namespace cn.sharesdk.unity3d
 #if UNITY_ANDROID
             shareSDKUtils = new AndroidImpl(gameObject);
             shareSDKUtils.InitSDK(appKey, appSecret);
-#elif UNITY_IPHONE
-			shareSDKUtils = new iOSImpl(gameObject);
-#endif
-
             shareSDKUtils.SetPlatformConfig(platformConfigs);
+#elif UNITY_IPHONE
+            shareSDKUtils = new iOSImpl(gameObject);
+            shareSDKUtils.SetPlatformConfig(platformConfigs);
+#endif
         }
 
         /// <summary>

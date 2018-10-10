@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 3830510363
+CRC: 890047814
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: privatematchinfo.ab
+      Name: rechargefirst.ab
       Dependencies: {}
