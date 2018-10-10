@@ -1,0 +1,301 @@
+ManifestFileVersion: 0
+CRC: 3599272694
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: desk_new_card.ab
+      Dependencies: {}
+    Info_1:
+      Name: cheersm.ab
+      Dependencies: {}
+    Info_2:
+      Name: kissm.ab
+      Dependencies: {}
+    Info_3:
+      Name: (8).ab
+      Dependencies: {}
+    Info_4:
+      Name: allwin.ab
+      Dependencies: {}
+    Info_5:
+      Name: desktophcountdowntip.ab
+      Dependencies: {}
+    Info_6:
+      Name: on_turn.ab
+      Dependencies: {}
+    Info_7:
+      Name: allin_fire.ab
+      Dependencies: {}
+    Info_8:
+      Name: desktophroyalflush.ab
+      Dependencies: {}
+    Info_9:
+      Name: (16).ab
+      Dependencies: {}
+    Info_10:
+      Name: background.ab
+      Dependencies: {}
+    Info_11:
+      Name: desktophundred_betstart.ab
+      Dependencies: {}
+    Info_12:
+      Name: mainbg2.ab
+      Dependencies: {}
+    Info_13:
+      Name: desk_move_chips.ab
+      Dependencies: {}
+    Info_14:
+      Name: desktophstraightflush.ab
+      Dependencies: {}
+    Info_15:
+      Name: chipfly.ab
+      Dependencies: {}
+    Info_16:
+      Name: kissf.ab
+      Dependencies: {}
+    Info_17:
+      Name: flowerm.ab
+      Dependencies: {}
+    Info_18:
+      Name: bombf.ab
+      Dependencies: {}
+    Info_19:
+      Name: desktophfourofakind.ab
+      Dependencies: {}
+    Info_20:
+      Name: dongdong.ab
+      Dependencies: {}
+    Info_21:
+      Name: (3).ab
+      Dependencies: {}
+    Info_22:
+      Name: desk_post_bet.ab
+      Dependencies: {}
+    Info_23:
+      Name: jettonmoney.ab
+      Dependencies: {}
+    Info_24:
+      Name: (5).ab
+      Dependencies: {}
+    Info_25:
+      Name: chip.ab
+      Dependencies: {}
+    Info_26:
+      Name: desk_player_check.ab
+      Dependencies: {}
+    Info_27:
+      Name: (19).ab
+      Dependencies: {}
+    Info_28:
+      Name: desk_post_raise.ab
+      Dependencies: {}
+    Info_29:
+      Name: (6).ab
+      Dependencies: {}
+    Info_30:
+      Name: allin_girl.ab
+      Dependencies: {}
+    Info_31:
+      Name: fapai.ab
+      Dependencies: {}
+    Info_32:
+      Name: bet_1.ab
+      Dependencies: {}
+    Info_33:
+      Name: (7).ab
+      Dependencies: {}
+    Info_34:
+      Name: shoef.ab
+      Dependencies: {}
+    Info_35:
+      Name: (20).ab
+      Dependencies: {}
+    Info_36:
+      Name: (17).ab
+      Dependencies: {}
+    Info_37:
+      Name: allin.ab
+      Dependencies: {}
+    Info_38:
+      Name: bet_2.ab
+      Dependencies: {}
+    Info_39:
+      Name: (11).ab
+      Dependencies: {}
+    Info_40:
+      Name: shoem.ab
+      Dependencies: {}
+    Info_41:
+      Name: (2).ab
+      Dependencies: {}
+    Info_42:
+      Name: allin_boy.ab
+      Dependencies: {}
+    Info_43:
+      Name: ying.ab
+      Dependencies: {}
+    Info_44:
+      Name: desk_player_turn.ab
+      Dependencies: {}
+    Info_45:
+      Name: allfailedeffect.ab
+      Dependencies: {}
+    Info_46:
+      Name: uiclose.ab
+      Dependencies: {}
+    Info_47:
+      Name: uiopen.ab
+      Dependencies: {}
+    Info_48:
+      Name: (13).ab
+      Dependencies: {}
+    Info_49:
+      Name: desktophtexasbg.ab
+      Dependencies: {}
+    Info_50:
+      Name: (4).ab
+      Dependencies: {}
+    Info_51:
+      Name: deskhundred_loose.ab
+      Dependencies: {}
+    Info_52:
+      Name: countdown1.ab
+      Dependencies: {}
+    Info_53:
+      Name: fold_boy.ab
+      Dependencies: {}
+    Info_54:
+      Name: sit.ab
+      Dependencies: {}
+    Info_55:
+      Name: countdown3.ab
+      Dependencies: {}
+    Info_56:
+      Name: call_girl.ab
+      Dependencies: {}
+    Info_57:
+      Name: bet_3.ab
+      Dependencies: {}
+    Info_58:
+      Name: fold_girl.ab
+      Dependencies: {}
+    Info_59:
+      Name: (15).ab
+      Dependencies: {}
+    Info_60:
+      Name: desktophthreeofakind.ab
+      Dependencies: {}
+    Info_61:
+      Name: raise_girl.ab
+      Dependencies: {}
+    Info_62:
+      Name: fapaia.ab
+      Dependencies: {}
+    Info_63:
+      Name: check_girl.ab
+      Dependencies: {}
+    Info_64:
+      Name: addchip.ab
+      Dependencies: {}
+    Info_65:
+      Name: raise_boy.ab
+      Dependencies: {}
+    Info_66:
+      Name: allfailed.ab
+      Dependencies: {}
+    Info_67:
+      Name: desktophtwopairs.ab
+      Dependencies: {}
+    Info_68:
+      Name: desk_player_fold.ab
+      Dependencies: {}
+    Info_69:
+      Name: createdialog.ab
+      Dependencies: {}
+    Info_70:
+      Name: eggf.ab
+      Dependencies: {}
+    Info_71:
+      Name: (12).ab
+      Dependencies: {}
+    Info_72:
+      Name: check_boy.ab
+      Dependencies: {}
+    Info_73:
+      Name: desktophpair.ab
+      Dependencies: {}
+    Info_74:
+      Name: (9).ab
+      Dependencies: {}
+    Info_75:
+      Name: flowerf.ab
+      Dependencies: {}
+    Info_76:
+      Name: destroydialog.ab
+      Dependencies: {}
+    Info_77:
+      Name: cheersf.ab
+      Dependencies: {}
+    Info_78:
+      Name: desktophcountdownend.ab
+      Dependencies: {}
+    Info_79:
+      Name: countdown2.ab
+      Dependencies: {}
+    Info_80:
+      Name: countdowngo.ab
+      Dependencies: {}
+    Info_81:
+      Name: half_time.ab
+      Dependencies: {}
+    Info_82:
+      Name: close.ab
+      Dependencies: {}
+    Info_83:
+      Name: deskhundred_win.ab
+      Dependencies: {}
+    Info_84:
+      Name: desktophstraight.ab
+      Dependencies: {}
+    Info_85:
+      Name: call_boy.ab
+      Dependencies: {}
+    Info_86:
+      Name: desktophhighcard.ab
+      Dependencies: {}
+    Info_87:
+      Name: hechip.ab
+      Dependencies: {}
+    Info_88:
+      Name: mainbg1.ab
+      Dependencies: {}
+    Info_89:
+      Name: bombm.ab
+      Dependencies: {}
+    Info_90:
+      Name: desktophfullhouse.ab
+      Dependencies: {}
+    Info_91:
+      Name: (14).ab
+      Dependencies: {}
+    Info_92:
+      Name: newmessage.ab
+      Dependencies: {}
+    Info_93:
+      Name: (1).ab
+      Dependencies: {}
+    Info_94:
+      Name: (10).ab
+      Dependencies: {}
+    Info_95:
+      Name: (18).ab
+      Dependencies: {}
+    Info_96:
+      Name: allwineffect.ab
+      Dependencies: {}
+    Info_97:
+      Name: desktophflush.ab
+      Dependencies: {}
+    Info_98:
+      Name: eggm.ab
+      Dependencies: {}

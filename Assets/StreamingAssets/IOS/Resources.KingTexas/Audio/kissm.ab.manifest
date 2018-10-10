@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1403991426
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 01c7a345a8fbf256843f174407a6695e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/kissm.mp3
+Dependencies: []

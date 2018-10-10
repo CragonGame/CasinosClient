@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2125008281
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b4fc13f7ad5238aa924210662d9e2a52
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopChatParent/DesktopChatParent_fui.bytes
+Dependencies: []

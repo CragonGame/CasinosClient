@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 77050547
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 94bd1824a1c326a40e4baa23e2d16492
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f19fbf085e00d23fbc8d6cf7b345590b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/DesktopHundred/DesktopHundredCardTypeHelp.png
+Dependencies: []

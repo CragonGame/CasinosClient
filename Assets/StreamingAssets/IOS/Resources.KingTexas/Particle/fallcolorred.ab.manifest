@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 876725470
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b2a43d2c0d0bb591f421b4b9220e48ad
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0f931d4ebb7724728a37cd063f2dc20a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexasParticle/Materials/21.mat
+- Assets/Resources.KingTexasParticle/Textures/21.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Particle/FallColorRed.prefab
+Dependencies: []

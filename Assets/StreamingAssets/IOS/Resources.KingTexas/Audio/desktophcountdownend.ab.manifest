@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 825600618
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 81f52fe42345644d2fee44d2f5201c43
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/DesktopHCountDownEnd.mp3
+Dependencies: []

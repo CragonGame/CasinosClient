@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4021694316
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7282941181aea7a83fc94a384175232d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/DesktopHFullHouse.mp3
+Dependencies: []

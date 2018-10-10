@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 831819647
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c13f95ade237a93d9b62291d6643a4fb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/desk_move_chips.wav
+Dependencies: []

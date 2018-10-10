@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4268783291
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b40afa76968a40479f17472c93ff3ff7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/NewMessage.ogg
+Dependencies: []

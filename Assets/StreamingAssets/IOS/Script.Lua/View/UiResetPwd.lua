@@ -1,0 +1,259 @@
+-- Copyright(c) Cragon. All rights reserved.
+-- 登录界面，重置密码
+
+---------------------------------------
+UiResetPwd = {}
+
+---------------------------------------
+function UiResetPwd:new(view)
+    local o = {}
+    setmetatable(o, self)
+    self.__index = self
+    o.ViewLogin = view
+    local obj_resetpwd = view.ComUi:GetChild("ResetPwd")
+    if (obj_resetpwd ~= nil)
+    then
+        local group_resetpwd = obj_resetpwd.asGroup
+        local com_accregister = view.ComUi:GetChildInGroup(group_resetpwd, "ComCountryCordResetPwd").asCom
+        local com_text_code = com_accregister:GetChild("ComTextCountryCode").asCom
+        com_text_code.onClick:Add(
+                function()
+                    o:_showChoseCountryCode()
+                end)
+        o.TextCountryCode = com_text_code:GetChild("TextCountryCord").asTextField
+        o:setCurrentCountryCode(o.ViewLogin.UiChooseCountryCode.CountryKey,
+                o.ViewLogin.UiChooseCountryCode.CountryCode,
+                o.ViewLogin.UiChooseCountryCode.KeyAndCodeFormat)
+
+        local btn_return = view.ComUi:GetChildInGroup(group_resetpwd, "BtnReturn")
+        if (btn_return ~= nil) then
+            btn_return.asButton.onClick:Add(
+                    function()
+                        o:_onClickBtnReturn()
+                    end
+            )
+        end
+
+        o.BtnNext = view.ComUi:GetChildInGroup(group_resetpwd, "BtnNext").asButton
+        o.BtnNext.onClick:Add(
+                function()
+                    o:_onClickResetPwdBtnNext()
+                end
+        )
+
+        o.GTextInputReset = com_accregister:GetChild("InputAccLogin").asTextInput
+        o.GTextInputReset.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:getLanValue("EnterPhone"))
+        --o.GTextInputReset:RequestFocus()
+        o.GTextInputReset.onChanged:Set(
+                function()
+                    o:_checkResetInput()
+                end
+        )
+        o:_checkResetInput()
+    end
+
+    local obj_resetpwdcode = view.ComUi:GetChild("ResetPwdCode")
+    if (obj_resetpwdcode ~= nil) then
+        local group_resetpwdcode = obj_resetpwdcode.asGroup
+        o.BtnResetCodeNext = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnNext").asButton
+        o.BtnResetCodeNext.onClick:Add(
+                function()
+                    o:_onClickResetPwdCodeBtnNext()
+                end
+        )
+
+        local com_pwd = view.ComUi:GetChildInGroup(group_resetpwdcode, "ComPwd").asCom
+        o.TextResetPwd = com_pwd:GetChild("InputPwdRegister").asTextField
+        o.TextResetPwd.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:getLanValue("NewPwd"))
+        o.TextResetPwd.onChanged:Set(
+                function()
+                    o:_checkResetCodeInput()
+                end
+        )
+        o.TextRegisterPhone = view.ComUi:GetChildInGroup(group_resetpwdcode, "TextRegisterPhone").asTextField
+        o.TextRegisterCode = view.ComUi:GetChildInGroup(group_resetpwdcode, "TextRegisterCode").asTextInput
+        o.TextRegisterCode.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:getLanValue("PhoneCode"))
+        o.TextRegisterCode.onChanged:Set(
+                function()
+                    o:_checkResetCodeInput()
+                end
+        )
+        local btn_return = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnReturn")
+        if (btn_return ~= nil) then
+            btn_return.asButton.onClick:Add(
+                    function()
+                        o:_onClickBtnReturnRegisterCode()
+                    end
+            )
+        end
+        o:_checkResetCodeInput()
+
+        o.BtnResend = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnReSend").asButton
+        o.BtnResend.onClick:Add(
+                function()
+                    o:_onClickBtnResend()
+                end
+        )
+
+        o.TextResend = view.ComUi:GetChildInGroup(group_resetpwdcode, "Lan_Text_Resend").asTextField
+    end
+    o.PhoneCodeIsSend = false
+    o.NextPhoneCodeSendTm = 60
+
+    return o
+end
+
+---------------------------------------
+function UiResetPwd:Update(tm)
+    if self.PhoneCodeIsSend then
+        local next_tm = self.NextPhoneCodeSendTm
+        next_tm = next_tm - tm
+        self.NextPhoneCodeSendTm = next_tm
+
+        if next_tm <= 0 then
+            self.TextResend.text = self.ViewLogin.ViewMgr.LanMgr:getLanValue("Resend")
+            self.BtnResend.enabled = true
+            self.PhoneCodeIsSend = false
+            self.NextPhoneCodeSendTm = 60
+        else
+            self.TextResend.text = string.format("%s(%s)", self.ViewLogin.ViewMgr.LanMgr:getLanValue("Resend"), math.floor(next_tm))
+        end
+    end
+end
+
+---------------------------------------
+function UiResetPwd:setCurrentCountryCode(key, code, format)
+    self.TextCountryCode.text = format
+    self.CountryKey = key
+    self.CountryCode = code
+end
+
+---------------------------------------
+function UiResetPwd:_onClickBtnReturn()
+    self.ViewLogin:_switchController("LoginState", "Login")
+end
+
+---------------------------------------
+function UiResetPwd:_checkResetInput()
+    if (self.GTextInputReset == nil) then
+        return
+    end
+
+    if ((self.GTextInputReset ~= nil and string.len(self.GTextInputReset.text) > 0)) then
+        self.BtnNext.alpha = 1
+        self.BtnNext.enabled = true
+    else
+        self.BtnNext.alpha = 0.5
+        self.BtnNext.enabled = false
+    end
+end
+
+---------------------------------------
+function UiResetPwd:_checkResetCodeInput()
+    if (self.TextRegisterCode == nil or self.TextResetPwd == nil) then
+        return
+    end
+
+    if ((self.TextRegisterCode ~= nil and string.len(self.TextRegisterCode.text) > 0)
+            and (self.TextResetPwd ~= nil and string.len(self.TextResetPwd.text) > 0)) then
+        self.BtnResetCodeNext.alpha = 1
+        self.BtnResetCodeNext.enabled = true
+    else
+        self.BtnResetCodeNext.alpha = 0.5
+        self.BtnResetCodeNext.enabled = false
+    end
+end
+
+---------------------------------------
+function UiResetPwd:_onClickResetPwdBtnNext()
+    local msg_box = self.ViewLogin.ViewMgr:getView("MsgBox")
+    if msg_box == nil then
+        msg_box = self.ViewLogin.ViewMgr:createView("MsgBox")
+    end
+    msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("ConfirmPhone"), string.format("%s：\n%s%s", self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeToPhone"), self.CountryCode, self.GTextInputReset.text),
+            function()
+                self.PhoneFormat = self.CountryCode .. self.GTextInputReset.text
+                self.Phone = self.GTextInputReset.text
+                local p_f = "+" .. self.CountryCode .. " " .. self.GTextInputReset.text
+                self.TextRegisterPhone.text = p_f
+                local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
+                if (ev == nil) then
+                    ev = EvUiRequestGetPhoneCode:new(nil)
+                end
+                ev.Phone = self.PhoneFormat
+                ev.Reson = GetPhoneCodeReson.ResetPwd
+                self.ViewLogin.ViewMgr:sendEv(ev)
+                self.ViewLogin:Switch2ResetPwdCode()
+                --self.TextResetPwd:RequestFocus()
+                self.PhoneCodeIsSend = true
+                self.NextPhoneCodeSendTm = 60
+                self.BtnResend.enabled = false
+                self.ViewLogin.ViewMgr:destroyView(msg_box)
+            end,
+            function()
+                self.ViewLogin.ViewMgr:destroyView(msg_box)
+            end
+    )
+end
+
+---------------------------------------
+function UiResetPwd:_onClickBtnReturnRegisterCode()
+    local msg_box = self.ViewLogin.ViewMgr:getView("MsgBox")
+    if msg_box == nil then
+        msg_box = self.ViewLogin.ViewMgr:createView("MsgBox")
+    end
+    msg_box:useTwoBtn2(self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeTipTitle"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeTipContent"),
+            self.ViewLogin.ViewMgr.LanMgr:getLanValue("Wait"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("Return"), 0, false,
+            function()
+                self.ViewLogin.ViewMgr:destroyView(msg_box)
+            end,
+            function()
+                self.ViewLogin:Switch2ResetPwd()
+                --self.GTextInputReset:RequestFocus()
+                self.ViewLogin.ViewMgr:destroyView(msg_box)
+            end
+    )
+end
+
+---------------------------------------
+function UiResetPwd:_onClickBtnResend()
+    local msg_box = self.ViewLogin.ViewMgr:getView("MsgBox")
+    if msg_box == nil then
+        msg_box = self.ViewLogin.ViewMgr:createView("MsgBox")
+    end
+    msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("Confirm"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("ResendCode"),
+            function()
+                local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
+                if (ev == nil) then
+                    ev = EvUiRequestGetPhoneCode:new(nil)
+                end
+                ev.Phone = self.PhoneFormat
+                self.ViewLogin.ViewMgr:sendEv(ev)
+                self.PhoneCodeIsSend = true
+                self.NextPhoneCodeSendTm = 60
+                self.BtnResend.enabled = false
+                self.ViewLogin.ViewMgr:destroyView(msg_box)
+            end,
+            function()
+                self.ViewLogin.ViewMgr:destroyView(msg_box)
+            end
+    )
+end
+
+---------------------------------------
+function UiResetPwd:_onClickResetPwdCodeBtnNext()
+    local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestResetPwd")
+    if (ev == nil) then
+        ev = EvUiRequestResetPwd:new(nil)
+    end
+    ev.phone = self.Phone
+    ev.formatphone = self.PhoneFormat
+    ev.phone_code = self.TextRegisterCode.text
+    ev.new_pwd = self.TextResetPwd.text
+    self.ViewLogin.ViewMgr:sendEv(ev)
+end
+
+---------------------------------------
+function UiResetPwd:_showChoseCountryCode()
+    self.ViewLogin.UiChooseCountryCode:show()
+end

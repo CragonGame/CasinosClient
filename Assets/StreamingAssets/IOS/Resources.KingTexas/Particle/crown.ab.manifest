@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 3325323165
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d6a1e927c5cd53b70ed2fe19cac2e30a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0f931d4ebb7724728a37cd063f2dc20a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Particle/Crown.prefab
+- Assets/Resources.KingTexasParticle/Textures/FX_Royal_Crown03.png
+- Assets/Resources.KingTexasParticle/Materials/royalcrown.mat
+Dependencies: []

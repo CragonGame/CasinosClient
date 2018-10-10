@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1050089063
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c168b1c9deb3a10fb6f3d7a8e0f7fb32
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/fold_girl.wav
+Dependencies: []

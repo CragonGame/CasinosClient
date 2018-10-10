@@ -19,7 +19,7 @@ public class PushReceiver : MonoBehaviour
 	public Action<string> OnNotificationMessageClicked;
 	public Action<string> OnGeTuiSdkDidSetPushMode;
 	public Action<string> OnGeTuiSdkDidOccurError;
-    //bool tokenSent = false;
+    bool tokenSent = false;
 
     //-------------------------------------------------------------------------
     public static PushReceiver instance()

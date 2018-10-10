@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 2799485416
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 810e638ec129271a158e98f7a2cd27f0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/(12).mp3
+Dependencies: []

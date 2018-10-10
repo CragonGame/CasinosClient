@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 889600022
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3c2711caae8f76bef69814a3dd9c6a50
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Ranking/Ranking_fui.bytes
+Dependencies: []

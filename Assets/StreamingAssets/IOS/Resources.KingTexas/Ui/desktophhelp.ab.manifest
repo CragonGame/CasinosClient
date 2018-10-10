@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3299025624
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7b4172166bb2ff13c1f4ff48ed6bde05
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHHelp/DesktopHHelp_fui.bytes
+Dependencies: []

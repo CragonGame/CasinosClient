@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3100267282
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 953dc2c3453907baa6e807ff2356265a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/DesktopHTwoPairs.mp3
+Dependencies: []

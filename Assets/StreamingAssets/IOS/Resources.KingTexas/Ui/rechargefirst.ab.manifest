@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 608365054
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a010a733131f5417610c0d36682140f1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/RechargeFirst/RechargeFirst_fui.bytes
+Dependencies: []

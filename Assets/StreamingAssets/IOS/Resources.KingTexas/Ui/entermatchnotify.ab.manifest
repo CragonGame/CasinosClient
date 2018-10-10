@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 4228533656
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 253166e434e9a1a17a8fba0ad0bf04eb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/EnterMatchNotify/EnterMatchNotify_fui.bytes
+Dependencies: []

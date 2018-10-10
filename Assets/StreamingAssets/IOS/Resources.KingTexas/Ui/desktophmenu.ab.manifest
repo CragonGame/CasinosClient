@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3910854566
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 561df207c35c44d43092472ce3e521c4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopHMenu/DesktopHMenu_fui.bytes
+Dependencies: []

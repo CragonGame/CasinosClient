@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 996341493
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: classicbg.ab
+      Dependencies: {}
+    Info_1:
+      Name: mttdesk.ab
+      Dependencies: {}
+    Info_2:
+      Name: classicdesk.ab
+      Dependencies: {}
+    Info_3:
+      Name: mttbg.ab
+      Dependencies: {}

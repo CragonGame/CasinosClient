@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3640101084
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cae432f38ba20267c1367d23d9cabd04
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/fold_boy.wav
+Dependencies: []

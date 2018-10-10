@@ -10,7 +10,7 @@ public class EditorViewDataPublish : EditorWindow
 {
     //-------------------------------------------------------------------------
     HashSet<string> DoNotPackFileExtention = new HashSet<string> { ".meta", ".DS_Store" };
-    HashSet<string> DoNotCopyDir = new HashSet<string> { ".idea" };
+    //HashSet<string> DoNotCopyDir = new HashSet<string> { ".idea" };
     string AssetBundleSingleFoldName = "BuildAssetBundleFromSingle";
     string AssetBundlePkgFoldFoldName = "BuildAssetBundleFromFold";
     string AssetBundleLaunchFoldName = "Resources.KingTexasLaunch";
@@ -500,17 +500,20 @@ public class EditorViewDataPublish : EditorWindow
     //-------------------------------------------------------------------------
     void _copyDir(Casinos._eEditorRunSourcePlatform platform, string path_src, string path_dst)
     {
-        DirectoryInfo dir = new DirectoryInfo(path_src);
+        var path_dst1 = path_dst.Replace("\\", "/");
+        var path_src1 = path_src.Replace("\\", "");
+
+        DirectoryInfo dir = new DirectoryInfo(path_src1);
         FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();// 获取目录下（不包含子目录）的文件和子目录
         foreach (FileSystemInfo i in fileinfo)
         {
             if (i is DirectoryInfo)// 判断是否文件夹
             {
-                if (!Directory.Exists(path_dst + "\\" + i.Name))
+                if (!Directory.Exists(path_dst1 + i.Name))
                 {
-                    Directory.CreateDirectory(path_dst + "\\" + i.Name);
+                    Directory.CreateDirectory(path_dst1 + i.Name);
                 }
-                _copyDir(platform, i.FullName, path_dst + "\\" + i.Name);// 递归调用复制子文件夹
+                _copyDir(platform, i.FullName, path_dst1 + i.Name);// 递归调用复制子文件夹
             }
             else
             {
@@ -519,7 +522,7 @@ public class EditorViewDataPublish : EditorWindow
                     || i.Name == "Context.lua"
                     || i.Name == "Bundle.lua") continue;
 
-                File.Copy(i.FullName, path_dst + "\\" + i.Name, true);// 不是文件夹即复制文件，true表示可以覆盖同名文件
+                File.Copy(i.FullName, path_dst1 + "/" + i.Name, true);// 不是文件夹即复制文件，true表示可以覆盖同名文件
             }
         }
     }

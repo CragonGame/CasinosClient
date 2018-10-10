@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 56595733
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 0d0e9f0b29aad898545aa494bb016c6d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/Audio/DesktopHStraight.mp3
+Dependencies: []

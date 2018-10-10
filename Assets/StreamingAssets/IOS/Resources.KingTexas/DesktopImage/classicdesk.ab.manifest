@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 756364856
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a05e7ce3ce3b8efbd6176b43f1ee4c9f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromSingle/DesktopImage/ClassicDesk.png
+Dependencies: []

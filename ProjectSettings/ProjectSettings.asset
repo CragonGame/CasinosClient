@@ -155,12 +155,14 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.Cragon.KingTexas
-  buildNumber: {}
+    iOS: com.Cragon.KingTexas2
+  buildNumber:
+    iOS: 110000
   AndroidBundleVersionCode: 110000
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
-  aotOptions: 
+  aotOptions: nrgctx-trampolines=8192,nimt-trampolines=8192,ntrampolines=4096
   stripEngineCode: 1
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0

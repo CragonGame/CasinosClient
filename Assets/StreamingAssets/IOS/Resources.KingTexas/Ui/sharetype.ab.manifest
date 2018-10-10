@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 424042456
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ed101bcb0de153b3a6c1220f02e656f7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ShareType/ShareType_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ShareType/ShareType_fui.bytes
+Dependencies: []
