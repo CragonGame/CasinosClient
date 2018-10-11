@@ -12,7 +12,7 @@
     <session id="-265693007">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.opened" value="2" />
@@ -55,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Context.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="375" column="79" lean-forward="true" selection-start-line="375" selection-start-column="79" selection-end-line="375" selection-end-column="79" />
+            <state relative-caret-position="675">
+              <caret line="45" column="34" lean-forward="true" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -231,8 +231,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Context.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="375" column="79" lean-forward="true" selection-start-line="375" selection-start-column="79" selection-end-line="375" selection-end-column="79" />
+        <state relative-caret-position="675">
+          <caret line="45" column="34" lean-forward="true" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
         </state>
       </provider>
     </entry>
