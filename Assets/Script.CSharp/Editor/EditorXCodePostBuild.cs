@@ -28,7 +28,7 @@ namespace Casinos
                 string target = proj.TargetGuidByName(PBXProject.GetUnityTargetName());
 
                 // 对所有的编译配置设置选项
-                //proj.SetBuildProperty(target, "ENABLE_BITCODE", "NO");
+                proj.SetBuildProperty(target, "ENABLE_BITCODE", "NO");
 
                 // 添加依赖库
                 proj.AddFrameworkToProject(target, "PushKit.framework", false);
