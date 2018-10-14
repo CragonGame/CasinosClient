@@ -5,10 +5,11 @@ namespace Casinos
     using System.Collections.Generic;
     using UnityEngine;
 
+    [System.Serializable]
     public class StreamingAssetsInfo
     {
-        public string DataVersion { get; set; }
-        public List<string> ListLaunchFile { get; set; }
+        public string DataVersion;
+        public List<string> ListLaunchFile;
     }
 
     public class CasinosConfig
