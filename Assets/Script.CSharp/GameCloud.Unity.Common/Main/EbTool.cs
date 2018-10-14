@@ -48,13 +48,15 @@ public static class EbTool
     //-------------------------------------------------------------------------
     public static string jsonSerialize(object obj)
     {
-        return Newtonsoft.Json.JsonConvert.SerializeObject(obj);
+        return UnityEngine.JsonUtility.ToJson(obj);
+        //return Newtonsoft.Json.JsonConvert.SerializeObject(obj);
     }
 
     //-------------------------------------------------------------------------
     public static T jsonDeserialize<T>(string str_json)
     {
-        return (T)Newtonsoft.Json.JsonConvert.DeserializeObject<T>(str_json);
+        return UnityEngine.JsonUtility.FromJson<T>(str_json);
+        //return (T)Newtonsoft.Json.JsonConvert.DeserializeObject<T>(str_json);
     }
 
     //-------------------------------------------------------------------------

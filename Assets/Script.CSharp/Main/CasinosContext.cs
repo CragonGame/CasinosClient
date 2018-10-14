@@ -2,7 +2,6 @@
 
 namespace Casinos
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
@@ -318,7 +317,8 @@ namespace Casinos
                 (w) =>
                 {
                     Debug.Log("555555555555");
-                    Config.StreamingAssetsInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<StreamingAssetsInfo>(w.text);
+                    //Config.StreamingAssetsInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<StreamingAssetsInfo>(w.text);
+                    Config.StreamingAssetsInfo = JsonUtility.FromJson<StreamingAssetsInfo>(w.text);
 
                     // 比较Launch版本，决定是否将Launch从StreamingAssets拷贝到Persistent
                     bool need_copy = false;

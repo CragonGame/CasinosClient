@@ -43,7 +43,8 @@ public class EditorConfig
 
                 using (StreamWriter sw = File.CreateText(full_filename))
                 {
-                    string s = Newtonsoft.Json.JsonConvert.SerializeObject(CfgUserSettings);
+                    //string s = Newtonsoft.Json.JsonConvert.SerializeObject(CfgUserSettings);
+                    string s = UnityEngine.JsonUtility.ToJson(CfgUserSettings);
                     sw.Write(s);
                 }
             }
@@ -52,7 +53,8 @@ public class EditorConfig
                 using (StreamReader sr = File.OpenText(full_filename))
                 {
                     string s = sr.ReadToEnd();
-                    CfgUserSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<EditorCfgUserSettings>(s);
+                    //CfgUserSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<EditorCfgUserSettings>(s);
+                    CfgUserSettings = UnityEngine.JsonUtility.FromJson<EditorCfgUserSettings>(s);
                 }
             }
         }
@@ -63,7 +65,8 @@ public class EditorConfig
             using (StreamReader sr = File.OpenText(full_filename))
             {
                 string s = sr.ReadToEnd();
-                CfgProjectSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<EditorCfgProjectSettings>(s);
+                //CfgProjectSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<EditorCfgProjectSettings>(s);
+                CfgProjectSettings = UnityEngine.JsonUtility.FromJson<EditorCfgProjectSettings>(s);
             }
         }
     }
@@ -77,7 +80,8 @@ public class EditorConfig
         string full_filename = Path.Combine(EditorContext.Instance.PathSettingsUser, EditorStringDef.FileEditorUserSettings);
         using (StreamWriter sw = File.CreateText(full_filename))
         {
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(CfgUserSettings);
+            //string s = Newtonsoft.Json.JsonConvert.SerializeObject(CfgUserSettings);
+            string s = UnityEngine.JsonUtility.ToJson(CfgUserSettings);
             sw.Write(s);
         }
     }
@@ -89,7 +93,8 @@ public class EditorConfig
 
         using (StreamWriter sw = File.CreateText(full_filename))
         {
-            string s = Newtonsoft.Json.JsonConvert.SerializeObject(CfgProjectSettings);
+            //string s = Newtonsoft.Json.JsonConvert.SerializeObject(CfgProjectSettings);
+            string s = UnityEngine.JsonUtility.ToJson(CfgProjectSettings);
             sw.Write(s);
         }
     }

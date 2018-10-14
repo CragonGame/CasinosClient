@@ -71,7 +71,8 @@
                     using (StreamReader sr = File.OpenText(full_filename))
                     {
                         string s = sr.ReadToEnd();
-                        CfgUserSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<CasinosEditorCfgUserSettings>(s);
+                        //CfgUserSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<CasinosEditorCfgUserSettings>(s);
+                        CfgUserSettings = UnityEngine.JsonUtility.FromJson<CasinosEditorCfgUserSettings>(s);
                     }
                 }
             }
@@ -82,7 +83,8 @@
                 using (StreamReader sr = File.OpenText(full_filename))
                 {
                     string s = sr.ReadToEnd();
-                    CfgProjectSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<CasinosEditorCfgProjectSettings>(s);
+                    //CfgProjectSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<CasinosEditorCfgProjectSettings>(s);
+                    CfgProjectSettings = UnityEngine.JsonUtility.FromJson<CasinosEditorCfgProjectSettings>(s);
                 }
             }
         }
