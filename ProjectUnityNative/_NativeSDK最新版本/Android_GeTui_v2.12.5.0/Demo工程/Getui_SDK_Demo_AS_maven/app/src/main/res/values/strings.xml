@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">个推多平台</string>
+    <string name="no_clientid">(none)</string>
+    <string name="start">已启动</string>
+    <string name="clientid">clientid&#160;=&#160;</string>
+    <string name="stop">已停止</string>
+    <string name="clear">清除日志</string>
+    <string name="enablelog">开启debug日志</string>
+    <string name="bindcell">绑定手机号</string>
+    <string name="pmsg">透传测试</string>
+    <string name="psmsg">通知栏测试</string>
+    <string name="transmit">透传内容</string>
+    <string name="begin">开始(h)</string>
+    <string name="end">结束</string>
+    <string name="duration">持续时间(h)</string>
+    <string name="set_heartbeat">心跳间隔(s)</string>
+    <string name="send_msg">发送消息</string>
+    <string name="bind_alias">绑定别名</string>
+    <string name="bind_alias_unknown_exception">绑定别名失败，未知异常</string>
+    <string name="bind_alias_success">绑定别名成功</string>
+    <string name="bind_alias_error_frequency">绑定别名失败，请求频次超限</string>
+    <string name="bind_alias_error_param_error">绑定别名失败，参数错误</string>
+    <string name="bind_alias_error_request_filter">绑定别名失败，请求被过滤</string>
+    <string name="bind_alias_error_cid_lost">绑定别名失败，未获取到cid</string>
+    <string name="bind_alias_error_connect_lost">绑定别名失败，网络错误</string>
+    <string name="bind_alias_error_alias_invalid">绑定别名失败，别名无效</string>
+    <string name="bind_alias_error_sn_invalid">绑定别名失败，sn无效</string>
+    <string name="unbind_alias">解绑别名</string>
+    <string name="unbind_alias_unknown_exception">取消绑定别名失败，未知异常</string>
+    <string name="unbind_alias_success">取消绑定别名成功</string>
+    <string name="unbind_alias_error_frequency">取消绑定别名失败，请求频次超限</string>
+    <string name="unbind_alias_error_param_error">取消绑定别名失败，参数错误</string>
+    <string name="unbind_alias_error_request_filter">取消绑定别名失败，请求被过滤</string>
+    <string name="unbind_alias_error_cid_lost">取消绑定别名失败，未获取到cid</string>
+    <string name="unbind_alias_error_connect_lost">取消绑定别名失败，网络错误</string>
+    <string name="unbind_alias_error_alias_invalid">取消绑定别名失败，别名无效</string>
+    <string name="unbind_alias_error_sn_invalid">取消绑定别名失败，sn无效</string>
+    <string name="add_tag">添加标签</string>
+    <string name="add_tag_unknown_exception">设置标签失败，未知异常</string>
+    <string name="add_tag_success">接口调用成功</string>
+    <string name="add_tag_error_count">接口调用失败, tag数量过大, 最大不能超过200个</string>
+    <string name="add_tag_error_frequency">设置标签失败，频率过快</string>
+    <string name="add_tag_error_null">接口调用失败, tag 为空</string>
+    <string name="add_tag_error_repeat">设置标签失败, 标签重复</string>
+    <string name="add_tag_error_unbind">设置标签失败, 服务未初始化成功</string>
+    <string name="add_tag_error_not_online">还未登陆成功</string>
+    <string name="add_tag_error_black_list">该应用已经在黑名单中,请联系售后支持!</string>
+    <string name="add_tag_error_exceed">已存 tag 超过限制</string>
+    <string name="version">版本号</string>
+    <string name="silentime">静默时间</string>
+    <string name="getclientid">获取cid</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="exit">退出</string>
+    <string name="appid">appid&#160;=&#160;</string>
+    <string name="appkey">appkey&#160;=&#160;</string>
+    <string name="appsecret">appsecret&#160;=&#160;</string>
+    <string name="mastersecret">mastersecret&#160;=&#160;</string>
+    <string name="show_version">当前sdk版本&#160;=&#160;</string>
+    <string name="show_cid">当前应用的cid&#160;=&#160;</string>
+    <string name="set_silenttime">设置静默时间段</string>
+    <string name="push_notification_title">通知栏测试</string>
+    <string name="push_notification_msg_title">通知栏测试</string>
+    <string name="push_notification_msg_content">您收到一条测试消息，点击访问</string>
+    <string name="push_transmission_data">收到一条透传测试消息</string>
+    <string name="network_invalid">对不起，当前网络不可用!</string>
+</resources>

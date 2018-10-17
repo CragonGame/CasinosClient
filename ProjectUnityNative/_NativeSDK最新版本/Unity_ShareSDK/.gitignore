@@ -1,0 +1,15 @@
+*.class
+*.apk
+bin/
+gen/
+.settings/
+proguard/
+*.mdb  
+*.ldb  
+*.sln  
+*.config  
+*.DS_Store 
+*.meta 
+Debug/  
+Release/  
+obj/  

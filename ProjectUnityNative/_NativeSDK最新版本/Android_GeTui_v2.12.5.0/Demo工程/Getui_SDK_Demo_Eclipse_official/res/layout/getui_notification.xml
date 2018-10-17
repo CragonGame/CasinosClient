@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/getui_root_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/getui_notification_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/getui_notification_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:scaleType="centerInside"/>
+
+    <TextView
+        android:id="@+id/getui_notification_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:textSize="12dp"
+        />
+
+    <ImageView
+        android:id="@+id/getui_notification_icon2"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignBottom="@id/getui_notification_icon"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:scaleType="centerInside"/>
+
+    <LinearLayout
+        android:id="@+id/getui_notification_style1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="1dp"
+        android:layout_toLeftOf="@id/getui_notification_date"
+        android:layout_toRightOf="@id/getui_notification_icon"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/getui_notification_style1_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            />
+
+        <TextView
+            android:id="@+id/getui_notification_style1_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:maxLines="2"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/getui_notification_style2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="1dp"
+        android:layout_toLeftOf="@id/getui_notification_date"
+        android:layout_toRightOf="@id/getui_notification_icon"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/getui_notification__style2_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/getui_notification_style3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="1dp"
+        android:layout_toLeftOf="@id/getui_notification_date"
+        android:layout_toRightOf="@id/getui_notification_icon"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/getui_notification_style3_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/getui_notification_style4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/getui_notification_date"
+        android:layout_toRightOf="@id/getui_notification_icon"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/getui_notification_download_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            />
+
+        <ProgressBar
+            android:id="@+id/getui_notification_download_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="2dp"/>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/getui_bigview_expanded"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"/>
+
+
+    <ImageView
+        android:id="@+id/getui_bigview_banner"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"/>
+
+
+    <RelativeLayout
+        android:id="@+id/getui_notification_headsup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/getui_headsup_banner"
+            android:layout_width="fill_parent"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+
+            />
+
+        <ImageView
+            android:id="@+id/getui_big_imageView_headsup2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/getui_headsup_banner"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:id="@+id/getui_icon_headsup"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:paddingBottom="13dp"
+            android:paddingLeft="11dp"
+            android:paddingRight="11dp"
+            android:paddingTop="8dp"
+            />
+
+        <TextView
+            android:id="@+id/getui_title_headsup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_toLeftOf="@+id/getui_time_headsup"
+            android:layout_toRightOf="@+id/getui_icon_headsup"
+            android:textColor="#ffffff"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/getui_time_headsup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/getui_title_headsup"
+            android:paddingRight="2dp"
+            android:textColor="#808080"/>
+
+
+        <TextView
+            android:id="@+id/getui_message_headsup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/getui_title_headsup"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/getui_icon_headsup"
+            android:maxLines="2"
+            android:textColor="#808080"
+            android:textSize="14dp"/>
+
+
+        <ImageView
+            android:id="@+id/getui_big_imageView_headsup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/getui_icon_headsup"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/getui_big_text_headsup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/getui_big_imageView_headsup"
+            android:layout_toRightOf="@+id/getui_icon_headsup"
+            android:textColor="#808080"
+            android:visibility="gone"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/getui_big_default_Content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+
+        >
+
+        <RelativeLayout
+            android:id="@+id/getui_big_defaultView"
+            android:layout_width="match_parent"
+            android:layout_height="64dp">
+
+
+            <ImageView
+                android:id="@+id/getui_big_notification_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:id="@+id/getui_big_notification_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="12dp"
+                />
+
+            <ImageView
+                android:id="@+id/getui_big_notification_icon2"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignBottom="@id/getui_big_notification_icon"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:scaleType="centerInside"/>
+
+            <LinearLayout
+                android:id="@+id/getui_big_notification"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="1dp"
+                android:layout_toLeftOf="@id/getui_big_notification_date"
+                android:layout_toRightOf="@id/getui_big_notification_icon"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/getui_big_notification_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    />
+
+                <TextView
+                    android:id="@+id/getui_big_notification_title_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:singleLine="true"
+                    />
+
+                <TextView
+                    android:id="@+id/getui_big_notification_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:maxLines="2"
+                    />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/getui_big_bigview_defaultView"
+            android:layout_width="match_parent"
+            android:layout_height="192dp"
+            android:layout_below="@+id/getui_big_defaultView"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/getui_big_bigtext_defaultView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/getui_big_defaultView"
+            android:layout_marginLeft="63dp"
+            android:layout_marginRight="15dp"
+            android:ellipsize="end"
+            android:maxHeight="192dp"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/getui_notification_l_layout"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/getui_notification_L_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerInside"/>
+
+        <LinearLayout
+            android:id="@+id/getui_notification_download_L"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@+id/getui_notification_L_icon"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            >
+
+
+            <TextView
+                android:id="@+id/getui_notification_download_title_L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fadingEdge="horizontal"
+                android:singleLine="true"
+                android:textSize="12sp"/>
+
+            <ProgressBar
+                android:id="@+id/getui_notification_download_progressBar_L"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:indeterminate="true"/>
+
+            <RelativeLayout
+                android:id="@+id/getui_notification_L_line1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/getui_notification_download_content_L"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:ellipsize="end"
+                    android:fadingEdge="horizontal"
+                    android:singleLine="true"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/getui_notification_download_info_L"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:text="50%"
+                    android:textSize="12sp"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/getui_notification_L"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_toRightOf="@+id/getui_notification_L_icon"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/getui_notification_L_line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/getui_notification_title_L"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="title"/>
+
+                <TextView
+                    android:id="@+id/getui_notification_L_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/getui_notification_L_line3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/getui_notification_L_context"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    />
+
+                <ImageView
+                    android:id="@+id/getui_notification_L_right_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="0"
+                    android:paddingLeft="8dp"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
