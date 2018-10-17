@@ -1,10 +1,13 @@
 # CasinosClient
+
+*.userprefs
+.DS_Store
 .vs/
 Library/
 obj/
 Temp/
-Assets/.idea
-Assets/.DS_Store
+/Assets/.idea
+/Assets/.DS_Store
 /Assets/SettingsUser
 /Assets/SettingsUser.meta
 /ProjectUiKing/.objs
@@ -17,5 +20,18 @@ Assets/.DS_Store
 /CasinosClientGithub.Editor.Plugins.csproj
 /CasinosClientGithub.Plugins.csproj
 /CasinosClientGithub.sln
-*.userprefs
-.DS_Store
+
+/ProjectUnityNative/.vs/
+/ProjectUnityNative/Library/
+/ProjectUnityNative/obj/
+/ProjectUnityNative/Temp/
+/ProjectUnityNative/Assets/.idea
+/ProjectUnityNative/Assets/.DS_Store
+/ProjectUnityNative/Assembly-CSharp.csproj
+/ProjectUnityNative/Assembly-CSharp-Editor.csproj
+/ProjectUnityNative/Assembly-CSharp-Editor-firstpass.csproj
+/ProjectUnityNative/Assembly-CSharp-firstpass.csproj
+/ProjectUnityNative/ProjectUnityNative.csproj
+/ProjectUnityNative/ProjectUnityNative.Plugins.csproj
+/ProjectUnityNative/ProjectUnityNative.sln
+/ProjectUnityNative/.DS_Store
