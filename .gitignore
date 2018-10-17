@@ -4,6 +4,7 @@ Library/
 obj/
 Temp/
 Assets/.idea
+Assets/.DS_Store
 /Assets/SettingsUser
 /Assets/SettingsUser.meta
 /ProjectUiKing/.objs
@@ -17,3 +18,4 @@ Assets/.idea
 /CasinosClientGithub.Plugins.csproj
 /CasinosClientGithub.sln
 *.userprefs
+.DS_Store
