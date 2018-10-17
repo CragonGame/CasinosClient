@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "PayPal"; ObjectID = "1rt-Y2-0Ek"; */
+"1rt-Y2-0Ek.text" = "PayPal";
+
+/* Class = "UIButton"; normalTitle = "查询支付订单"; ObjectID = "24I-1V-Aps"; */
+"24I-1V-Aps.normalTitle" = "查询支付订单";
+
+/* Class = "UILabel"; text = "微信支付"; ObjectID = "3WI-89-gSk"; */
+"3WI-89-gSk.text" = "微信支付";
+
+/* Class = "UILabel"; text = "微信刷卡"; ObjectID = "9Vc-XN-obc"; */
+"9Vc-XN-obc.text" = "微信刷卡";
+
+/* Class = "UINavigationItem"; title = "首页"; ObjectID = "BRq-Rh-458"; */
+"BRq-Rh-458.title" = "首页";
+
+/* Class = "UILabel"; text = "支付宝钱包"; ObjectID = "G4k-vT-Ggu"; */
+"G4k-vT-Ggu.text" = "支付宝钱包";
+
+/* Class = "UIButton"; normalTitle = "支付"; ObjectID = "PEI-LT-H2h"; */
+"PEI-LT-H2h.normalTitle" = "支付";
+
+/* Class = "UINavigationItem"; title = "查询结果"; ObjectID = "T8U-hc-9vs"; */
+"T8U-hc-9vs.title" = "查询结果";
+
+/* Class = "UILabel"; text = "微信扫码"; ObjectID = "VDd-6o-Zw1"; */
+"VDd-6o-Zw1.text" = "微信扫码";
+
+/* Class = "UILabel"; text = "银联在线"; ObjectID = "axA-5X-3gs"; */
+"axA-5X-3gs.text" = "银联在线";
+
+/* Class = "UILabel"; text = "支付宝条码"; ObjectID = "hry-SQ-Ioh"; */
+"hry-SQ-Ioh.text" = "支付宝条码";
+
+/* Class = "UILabel"; text = "支付宝扫码"; ObjectID = "mp6-mW-M7o"; */
+"mp6-mW-M7o.text" = "支付宝扫码";
+
+/* Class = "UIButton"; normalTitle = "查询退款订单"; ObjectID = "zGX-x0-pDU"; */
+"zGX-x0-pDU.normalTitle" = "查询退款订单";

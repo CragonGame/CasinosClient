@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cn.beecloud.demo.QRCodeEntryActivity">
+
+    <include
+        layout="@layout/common_head"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+
+        <Button
+            android:id="@+id/btnReqALIQRCode"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/orange_radius"
+            android:text="支付宝内嵌二维码支付"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_width="fill_parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="以下是线下扫码示例，支付结束后需要额外调用查询订单状态的API确认支付结果"
+            android:textSize="18sp"
+            android:textColor="@color/main_orange"
+            />
+
+        <Button
+            android:id="@+id/btnReqWXQRCode"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/orange_radius"
+            android:layout_marginTop="10dp"
+            android:text="生成微信支付二维码"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_width="fill_parent" />
+
+        <Button
+            android:id="@+id/btnReqALIOfflineQRCode"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/orange_radius"
+            android:layout_marginTop="10dp"
+            android:text="生成支付宝线下支付二维码"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_width="fill_parent" />
+
+        <Button
+            android:id="@+id/btnReqWXScan"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/orange_radius"
+            android:layout_marginTop="10dp"
+            android:text="通过扫描微信付款码支付"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_width="fill_parent" />
+
+        <Button
+            android:id="@+id/btnReqALIScan"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/orange_radius"
+            android:layout_marginTop="10dp"
+            android:text="通过扫描支付宝付款码支付"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:layout_width="fill_parent" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

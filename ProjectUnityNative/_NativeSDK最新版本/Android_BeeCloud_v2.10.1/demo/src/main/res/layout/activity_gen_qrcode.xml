@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cn.beecloud.demo.GenQrcodeActivity">
+
+    <include layout="@layout/common_head" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="扫描支付一分钱"
+                android:textColor="@color/main_orange"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/qrcodeImg"
+                android:layout_margin="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"/>
+
+            <Button
+                android:id="@+id/btnQueryResult"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/orange_radius"
+                android:text="查询支付结果"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_width="fill_parent" />
+
+            <TextView
+                android:id="@+id/revertTip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="撤销订单适用于 支付宝线下二维码，通过微信和支付宝授权码支付 的情况，成功撤销之后，当前的二维码（授权码）将不能继续用于支付"
+                android:textSize="14sp"
+                android:textColor="@color/main_orange"/>
+
+            <Button
+                android:id="@+id/btnRevert"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/orange_radius"
+                android:text="撤销订单"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:layout_width="fill_parent" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

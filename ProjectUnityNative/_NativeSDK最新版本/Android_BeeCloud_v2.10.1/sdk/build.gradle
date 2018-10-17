@@ -1,0 +1,125 @@
+apply plugin: 'com.android.library'
+
+android {
+    signingConfigs {
+        config {
+        }
+    }
+    compileSdkVersion 23
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 40
+        versionName "2.10.1"
+    }
+
+    //对于import module方式，compileOptions可以直接删掉
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+    lintOptions {
+        abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:23.4.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.google.zxing:core:3.3.1'
+
+    // 注意：因为微信SDK从4.0.2版本开始已改用gradle形式，后续Android开发工具包将不再更新，请开发者尽快改用gradle方式编译、更新微信SDK
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.6'
+
+    /*  以下标识
+    //ali
+    libs/alipaySdk-xxx.jar.jar
+
+    //union pay
+    libs/UPPayAssistEx.jar
+    libs/UPPayPluginEx.jar
+
+    //baidu
+    Cashier_SDK-v4.2.0.jar
+    */
+
+    //网络请求库
+    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.10.8"
+    testCompile ('org.powermock:powermock-api-mockito:1.6.6') {
+        exclude module: 'hamcrest-core'
+        exclude module: 'objenesis'
+    }
+    testCompile ('org.powermock:powermock-module-junit4:1.6.6') {
+        exclude module: 'hamcrest-core'
+        exclude module: 'objenesis'
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+//以下用于生成sdk jar
+//gradle makeJar
+task clearJar(type: Delete) {
+    delete fileTree(dir: 'build/libs' , include: 'beecloud*.jar')
+}
+
+task makeJar(type:org.gradle.api.tasks.bundling.Jar) {
+    //指定生成的jar名
+    baseName 'beecloud-2.10.1'
+    //从哪里打包class文件
+    from('build/intermediates/classes/release/cn/beecloud')
+    //打包到jar后的目录结构
+    into('cn/beecloud')
+    //去掉不需要打包的目录和文件
+    exclude('test/', 'BuildConfig.class', 'R.class')
+    //去掉R$开头的文件
+    exclude{ it.name.startsWith('R$');}
+}
+
+makeJar.dependsOn(clearJar, build)
+
+//以下用于生成javadoc
+//gradle generateReleaseJavaDoc --info
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
+android.libraryVariants.all { variant ->
+    task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
+        //title = "$name $version API"
+        title = "BeeCloud Android SDK API"
+        description "Generates Javadoc for $variant.name."
+        source = variant.javaCompile.source
+        classpath = files(variant.javaCompile.classpath.files, project.android.getBootClasspath())
+        options {
+            encoding 'UTF-8'
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api/"
+            linksOffline "http://d.android.com/reference","${android.sdkDirectory}/docs/reference"
+        }
+        exclude '**/BuildConfig.java'
+        exclude '**/R.java'
+    }
+}

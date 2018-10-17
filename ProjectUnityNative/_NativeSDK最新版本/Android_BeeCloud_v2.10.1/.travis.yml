@@ -1,0 +1,49 @@
+language: android
+
+jdk:
+  - oraclejdk8
+
+android:
+  components:
+    # Uncomment the lines below if you want to
+    # use the latest revision of Android SDK Tools
+    #- platform-tools
+    - tools
+
+    # The BuildTools version used by your project
+    - build-tools-25.0.1
+
+    # The SDK version used to compile your project
+    - android-22
+
+    # Additional components
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-22
+
+    # Specify at least one system image,
+    # if you need to run emulator(s) during your tests
+    - sys-img-armeabi-v7a-android-22
+    - sys-img-x86-android-22
+
+before_script:
+    - wget https://services.gradle.org/distributions/gradle-4.4-bin.zip
+    - unzip gradle-4.4-bin.zip
+    - export GRADLE_HOME=$PWD/gradle-4.4
+    - export PATH=$GRADLE_HOME/bin:$PATH
+
+before_install:
+  - chmod +x gradlew
+  - echo yes | android update sdk --filter extra-android-support --no-ui --force > /dev/null
+  - echo yes | android update sdk --filter extra-android-m2repository --no-ui --force > /dev/null
+
+install:
+  - true
+  - echo y | android update sdk -u -a -t tools
+  - echo y | android update sdk -u -a -t platform-tools
+  - echo y | android update sdk -u -a -t build-tools-25.0.1
+  - echo y | android update sdk -u -a -t extra-google-m2repository
+  - echo y | android update sdk -u -a -t extra-android-m2repository
+
+script: gradle test --stacktrace

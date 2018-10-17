@@ -1,0 +1,144 @@
+BeeCloud Android SDK Changelog
+==========================
+v2.10.1 2018年8月28日
+更新微信支付最新sdk
+
+v2.10.0 2017年12月18日
+更新银联APP支付
+添加营销卡券系统支持
+添加商户消费者系统支持
+
+v2.9.4 2017年6月20日
+bc_analysis添加sdk_version
+
+v2.9.3 2017年5月22日
+上传debug keystore
+增加对callback非空判断
+
+v2.9.2 2017年5月4日
+更新微信sdk jar
+
+v2.9.1 2017年4月11日
+线下支付API添加notify URL字段
+
+v2.9.0 2017年3月7日
+修改BC_WX_APP直接使用微信官方提供的jar
+
+v2.8.0 2017年3月7日
+添加支付宝ISV渠道，通过BC_ALI_APP发起支付
+
+v2.7.1 2017年2月13日
+取消重写onReceivedSslError
+
+v2.7.0 2016年11月22日
+取消对发起支付请求渠道的限制，比如可以直接请求BC_EXPRESS渠道，是否在安卓端使用PC渠道的决定权由用户决定
+
+v2.6.0 2016年9月7日
+增加鉴权
+增加notify url
+增加BC_WX_APP
+增加BC_WX_SCAN
+增加BC_ALI_SCAN
+增加BC_ALI_QRCODE
+
+v2.5.0 2016年8月24日
+增加微信WAP支付
+
+v2.4.1 2016年8月18日
+升级支付宝sdk
+
+v2.4.0 2016年7月18日
+同步rest API升级错误处理
+添加预退款接口
+添加订阅支付
+
+v2.3.0 2016年5月19日
+添加BC_APP支付渠道
+
+v2.2.1 2016年4年22日
+微调银联，优化银联插件内部升级后返回的错误信息
+
+v2.2.0 2016年3年17日
+1.更新SDK中关于PayPal的相关API，由于PayPal官方不再提供单独的jar文件，需要使用PayPal的用户请通过gradle引入依赖；鉴于和PayPal服务器请求失败的几率相对比较高，sdk不再自动同步订单，请手动通过syncPayPalPayment进行同步；PayPal SendBox开始强制要求通过TLSv1.2协议请求服务器，生产环境也会逐步切换到该协议，继续使用老版的PayPal SDK可能会导致支付失败，具体时间PayPal尚未说明
+2.网络请求改用okhttp3
+
+v2.1.3 2016年2年25日
+针对JELLY_BEAN Platform，提高网络请求稳定性
+
+v2.1.2 2016年1年21日
+查询结果添加订单唯一标识符
+网络请求API微调，对外层支付和查询接口无影响
+
+v2.1.1 2015年12年23日
+测试模块微调
+
+v2.1.0 2015年12年17日
+加入测试模式功能，
+目前测试模式支持微信、支付宝、银联和百度支付，支付订单查询，支付订单根据ID查询，和支付订单数目查询
+
+v2.0.5 2015年11年30日
+根据RestFul V2调整部分查询接口
+添加订单总数查询和退款总数查询
+
+v2.0.4 2015年11年21日
+根据unit test调整了部分错误信息
+
+v2.0.3 2015年11年07日
+fix bug
+增加BCPay context清理API：
+通过clear()释放BCPay占据的context, callback, observer引用，
+通过detachBaiduPay()释放baidu钱包占据的callback引用，
+通过detachWechat()释放微信占据的context
+
+v2.0.2 2015年11年05日
+消除Offline Pay无效引用
+
+v2.0.1 2015年11年04日
+支付部分：
+和RestFul API统一错误码
+返回id作为查询订单的唯一标识符
+提供analysis参数用于后期统计，目前key只可以是category
+增加线下支付API
+PayPal增加“用卡支付”
+
+查询部分:
+增加根据ID查询
+增加线下支付订单结果查询
+
+网络请求部分：
+由HttpClient切换至HttpURLConnection，以兼容API23
+基于Restful API V2版本
+
+v1.6 2015年09年16日
+集成百度钱包支付
+增加订单超时时间设置，该设置需要通过BCPay新方法reqPaymentAsync(BCPay.PayParam payParam, BCCallback callback)发起支付
+更新银联插件，务必在10月1号之前完成更新，否则银联将拒绝支付
+支付宝线下支付二维码从当前sdk中移除
+********银联插件的更新方法************
+按照readme中的安装步骤，更换原始工程中的UPPayAssistEx.jar（一般在libs目录下），和UPPayPluginEx.apk（一般在assets目录下）。
+
+v1.5 2015年09年02日
+集成PayPal支付
+
+v1.4 2015年08年21日
+添加支付宝线下二维码支付功能
+添加支付订单和退款订单全渠道查询功能
+修复sdk unchecked警告
+优化demo用例
+
+v1.3 2015年08年07日
+添加二维码支付功能
+目前支持生成微信支付二维码和生成支付宝内嵌支付二维码
+修复JRE6的版本兼容问题
+支付金额由String类型转化为Integer类型
+
+v1.2 2015年08年04日
+添加退款订单查询功能
+添加订单退款状态查询功能（由于第三方支付API的原因，目前只支持微信）
+
+v1.1 2015年07年31日
+添加eclipse ADT demo用例
+
+v1.0 2015年07年30日
+支持微信、支付宝、银联支付
+支持订单查询功能

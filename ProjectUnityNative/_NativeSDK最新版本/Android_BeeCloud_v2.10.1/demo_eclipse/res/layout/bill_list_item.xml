@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/txtBillId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:textSize="16sp"
+        android:textColor="@color/fontgrey"/>
+
+    <TextView
+        android:id="@+id/txtBillNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:text="TITLE"
+        android:textSize="16sp"
+        android:textColor="@color/fontgrey"/>
+
+    <TextView
+        android:id="@+id/txtTradeNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/fontgrey"/>
+
+    <TextView
+        android:id="@+id/txtTotalFee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/fontgrey"/>
+
+    <TextView
+        android:id="@+id/txtChannel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/fontgrey"/>
+
+    <TextView
+        android:id="@+id/txtSubChannel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/fontgrey"/>
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/fontgrey"/>
+
+    <TextView
+        android:id="@+id/txtPayResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/fontgrey"/>
+
+    <TextView
+        android:id="@+id/txtCreatedTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/fontgrey"/>
+
+    <TextView
+        android:id="@+id/txtOptional"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="5dp"
+        android:textSize="12sp"
+        android:textColor="@color/fontgrey"/>
+
+</LinearLayout>
