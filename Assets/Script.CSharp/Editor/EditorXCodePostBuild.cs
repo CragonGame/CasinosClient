@@ -38,6 +38,12 @@ namespace Casinos
                 proj.AddFrameworkToProject(target, "libsqlite3.tbd", false);
                 proj.AddFrameworkToProject(target, "libz.tbd", false);
                 proj.AddFrameworkToProject(target, "libc++.tbd", false);
+                
+                proj.AddFrameworkToProject(target, "libz.dylib", false);// 用于对上报数据进行压缩
+                proj.AddFrameworkToProject(target, "libc++.dylib", false);// libc++库依赖
+                proj.AddFrameworkToProject(target, "Security.framework", false);// 用于存储keychain
+                proj.AddFrameworkToProject(target, "SystemConfiguration.framework", false);// 用于读取异常发生时的系统信息
+                proj.AddFrameworkToProject(target, "JavaScriptCore.framework", true);// 设置为Optional
 
                 // 设置签名
                 //proj.SetBuildProperty (target, "CODE_SIGN_IDENTITY", "iPhone Distribution: _______________");
