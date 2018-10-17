@@ -323,26 +323,26 @@ namespace FairyGUI
 			SetPosition(xv, yv, cachedTransform.localPosition.z);
 		}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="xv"></param>
-        /// <param name="yv"></param>
-        /// <param name="zv"></param>
-        public void SetPosition(float xv, float yv, float zv)
-        {
-            Vector3 v = cachedTransform.localPosition;
-            v.x = xv;
-            v.y = -yv;
-            v.z = zv;
-            cachedTransform.localPosition = v;
-            _outlineChanged = true;
-        }
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="xv"></param>
+		/// <param name="yv"></param>
+		/// <param name="zv"></param>
+		public void SetPosition(float xv, float yv, float zv)
+		{
+			Vector3 v = cachedTransform.localPosition;
+			v.x = xv;
+			v.y = -yv;
+			v.z = zv;
+			cachedTransform.localPosition = v;
+			_outlineChanged = true;
+		}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public float width
+		/// <summary>
+		/// 
+		/// </summary>
+		public float width
 		{
 			get
 			{

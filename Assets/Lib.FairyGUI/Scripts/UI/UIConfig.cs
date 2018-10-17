@@ -163,6 +163,12 @@ namespace FairyGUI
 		/// </summary>
 		public static bool depthSupportForPaintingMode = false;
 
+		/// <summary>
+		/// Indicates whether to draw extra 4 or 8 times to achieve stroke effect for textfield.
+		/// If it is true, that is the 8 times, otherwise it is the 4 times.
+		/// </summary>
+		public static bool enhancedTextOutlineEffect = true;
+
 		public enum ConfigKey
 		{
 			DefaultFont,
@@ -189,7 +195,8 @@ namespace FairyGUI
 			AllowSoftnessOnTopOrLeftSide,
 			InputCaretSize,
 			InputHighlightColor,
-			RightToLeftText,
+			EnhancedTextOutlineEffect,
+			DepthSupportForPaintingMode,
 
 			PleaseSelect = 100
 		}
@@ -338,6 +345,14 @@ namespace FairyGUI
 					case ConfigKey.InputHighlightColor:
 						UIConfig.inputHighlightColor = value.c;
 						break;
+
+					case ConfigKey.DepthSupportForPaintingMode:
+						UIConfig.depthSupportForPaintingMode = value.b;
+						break;
+
+					case ConfigKey.EnhancedTextOutlineEffect:
+						UIConfig.enhancedTextOutlineEffect = value.b;
+						break;
 				}
 			}
 		}
@@ -358,7 +373,7 @@ namespace FairyGUI
 
 		public void ApplyModifiedProperties()
 		{
-			//nothing yet
+			EMRenderSupport.Reload();
 		}
 
 		public delegate NAudioClip SoundLoader(string url);
