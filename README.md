@@ -21,9 +21,7 @@
 - http://www.mob.com/
 - http://zh.esotericsoftware.com/spine-unity
 - https://github.com/Tencent/xLua
-
-### 果派德州Redmine
-- http://gp.cragon.cn:81/redmine/projects/kingtexas
+- https://www.getui.com/cn/index.html
 
 ### 果派德州QQ技术交流群
 558157909
