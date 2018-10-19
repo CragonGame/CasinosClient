@@ -272,6 +272,9 @@ namespace Casinos
         DelegateLua3 FuncLaunchOnApplicationFocus { get; set; }
         CasinosContext Context { get; set; }
 
+        float TickTimeSpanLast = 0;
+        const float TickTimeSpanMax = 1f;
+
         //---------------------------------------------------------------------
         public CasinosLua()
         {
@@ -300,8 +303,10 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Update(float elapsed_tm)
         {
-            if (LuaEnv != null)
+            TickTimeSpanLast += elapsed_tm;
+            if (LuaEnv != null && TickTimeSpanLast > TickTimeSpanMax)
             {
+                TickTimeSpanLast = 0f;
                 LuaEnv.Tick();
             }
         }
@@ -415,7 +420,11 @@ namespace Casinos
             var ticket = Context.AsyncAssetLoadGroup.asyncLoadLocalBundle(
                  list_ab_name, _eAsyncAssetLoadType.LocalBundle, (List<AssetBundle> list_ab1) =>
                  {
-                     if (loaded_callback != null) loaded_callback.Invoke(lua_table, list_ab1);
+                     if (loaded_callback != null)
+                     {
+                         loaded_callback.Invoke(lua_table, list_ab1);
+                         loaded_callback = null;
+                     }
                  });
 
             return ticket;
