@@ -501,7 +501,7 @@ public class EditorViewDataPublish : EditorWindow
     void _copyDir(Casinos._eEditorRunSourcePlatform platform, string path_src, string path_dst)
     {
         var path_dst1 = path_dst.Replace("\\", "/");
-        var path_src1 = path_src.Replace("\\", "");
+        var path_src1 = path_src.Replace("\\", "/");
 
         DirectoryInfo dir = new DirectoryInfo(path_src1);
         FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();// 获取目录下（不包含子目录）的文件和子目录
@@ -509,6 +509,9 @@ public class EditorViewDataPublish : EditorWindow
         {
             if (i is DirectoryInfo)// 判断是否文件夹
             {
+                if (i.Name == ".idea"
+                    || i.Name == ".ideadictionaries") continue;
+
                 if (!Directory.Exists(path_dst1 + i.Name))
                 {
                     Directory.CreateDirectory(path_dst1 + i.Name);

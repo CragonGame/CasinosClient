@@ -61,7 +61,7 @@ PayUrlScheme = "com.Cragon.KingTexas2"
 
 ---------------------------------------
 -- 配置，开发者选项
-ConfigDevelopSettings= {}
+ConfigDevelopSettings = {}
 
 function ConfigDevelopSettings:new(o)
     o = o or {}
@@ -173,9 +173,8 @@ function Context:new(o, env, data_version)
 end
 
 ---------------------------------------
-function Context:Init(env)
+function Context:Init()
     self.Valid = true
-    self.Env = env
     print('Context:Init()')
 
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")

@@ -1,15 +1,19 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-LaunchConfig = {
-    ViewMgr = nil,
-    GoUi = nil,
-    ComUi = nil,
-    Panel = nil,
-    UILayer = nil,
-    InitDepth = nil,
-    ViewKey = nil
-}
+-- 配置，Launch
+LaunchConfig = {}
+
+function LaunchConfig:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.Env = 'Pro'
+    self.CurrentLan = 'ChineseSimplified'
+    return o
+end
 
 ---------------------------------------
 Launch = {}
@@ -20,12 +24,13 @@ function Launch:new(o)
     setmetatable(o, self)
     self.__index = self
     if (self.Instance == nil) then
+        self.LaunchCfg = LaunchConfig:new(nil)
         self.LaunchStep = {}
+        self.Env = 'Pro'
         self.CurrentLan = 'ChineseSimplified'
         self.PreViewMgr = nil
         self.PreLoading = nil
         self.PreMsgBox = nil
-        self.Env = 'Pro'
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
         self.Context = nil
@@ -128,21 +133,22 @@ function Launch:Setup()
                             self.CasinosLua:LoadLuaFromBytes('Context', www.text)
                             self.CasinosLua:DoString('Context')
                             self.Context = Context:new(nil, self.Env, data_select)
+                            self.Context:Init()
                         end
                 )
             end
     )
 
-    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
+    --self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
 ---------------------------------------
 -- Launch阶段完成
 function Launch:Finish()
-    if (self.TimerUpdate ~= nil) then
-        self.TimerUpdate:Close()
-        self.TimerUpdate = nil
-    end
+    --if (self.TimerUpdate ~= nil) then
+    --    self.TimerUpdate:Close()
+    --    self.TimerUpdate = nil
+    --end
 
     if (self.PreViewMgr ~= nil) then
         self.PreViewMgr:Release()
@@ -221,11 +227,11 @@ function Launch:OnAndroidQuitConfirm()
 end
 
 ---------------------------------------
-function Launch:_timerUpdate(tm)
-    if (self.Context ~= nil and self.Context.Valid == nil) then
-        self.Context:Init(self.Env)
-    end
-end
+--function Launch:_timerUpdate(tm)
+--    if (self.Context ~= nil and self.Context.Valid == nil) then
+--        self.Context:Init(self.Env)
+--    end
+--end
 
 ---------------------------------------
 function Launch:_checkCurrentLan()
@@ -236,10 +242,3 @@ function Launch:_checkCurrentLan()
         self.CurrentLan = self.CasinosLua:GetSystemLanguageAsString()
     end
 end
-
----------------------------------------
---self.CasinosContext:LuaAsyncLoadLocalUiBundle(
---        function()
---            Launch:_loadABPreLoadingDone()
---        end,
---        ui_path_loading, ui_path_msgbox)

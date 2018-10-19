@@ -8,8 +8,7 @@ function TbDataHelper:new(o, tb_datamgr)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
         self.MapTbDataCommon = {}
         local t_c = tb_datamgr:GetMapData("Common")

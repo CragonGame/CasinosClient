@@ -8,15 +8,13 @@ function PicCapture:new(o, view_mgr, listner)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
         self.ViewMgr = view_mgr
         self.Listner = listner
         self.CanShowTips = false
         self.CheckPicTm = 0
     end
-
     return self.Instance
 end
 

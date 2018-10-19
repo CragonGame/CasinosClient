@@ -19,7 +19,6 @@ function LanMgr:new(o)
         self.LanTitleSign = "Lan"
         self:_checkAndCreateLanBase()
     end
-
     return self.Instance
 end
 

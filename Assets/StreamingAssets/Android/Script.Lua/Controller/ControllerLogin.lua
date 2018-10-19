@@ -242,7 +242,7 @@ function ControllerLogin:onHandleEv(ev)
             GatewayIp = ev.gateway
         elseif (ev.EventName == "EvUiLoginSuccessEx") then
             if self.BindingWeChat == false then
-                self:weChatLogin(ev.token, WeChatAppId)
+                self:RequestWechatLogin(ev.token, WeChatAppId)
             else
                 print("AccountWeChatBindRequest")
                 local request = AccountWeChatBindRequest:new(nil)
@@ -355,7 +355,7 @@ function ControllerLogin:requestRegister(register_acc_data)
 end
 
 ---------------------------------------
-function ControllerLogin:weChatLogin(token, app_id)
+function ControllerLogin:RequestWechatLogin(token, app_id)
     CS.Casinos.CasinosContext.Instance.LoginType = 2
     local c_login = ControllerLogin:new(nil)
     ViewHelper:UiBeginWaiting(c_login.ControllerMgr.LanMgr:getLanValue("Logining"))

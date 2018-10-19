@@ -26,12 +26,10 @@ function ViewHelper:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
         self.ViewMgr = ViewMgr:new(nil)
     end
-
     return self.Instance
 end
 
@@ -43,8 +41,7 @@ end
 ---------------------------------------
 function ViewHelper:UiShowInfoSuccess(info)
     local ui_floatmsg = self.ViewMgr:getView("FloatMsg")
-    if (ui_floatmsg == nil)
-    then
+    if (ui_floatmsg == nil) then
         ui_floatmsg = self.ViewMgr:createView("FloatMsg")
     end
     ui_floatmsg:showInfo(info, CS.UnityEngine.Color.white)
@@ -59,8 +56,7 @@ end
 ---------------------------------------
 function ViewHelper:UiShowInfoFailed(info)
     local ui_floatmsg = self.ViewMgr:getView("FloatMsg")
-    if (ui_floatmsg == nil)
-    then
+    if (ui_floatmsg == nil) then
         ui_floatmsg = self.ViewMgr:createView("FloatMsg")
     end
 
@@ -77,8 +73,7 @@ end
 ---------------------------------------
 function ViewHelper:UiShowPermanentPosMsg(info)
     local ui_msg = self.ViewMgr:getView("PermanentPosMsg")
-    if (ui_msg == nil)
-    then
+    if (ui_msg == nil) then
         ui_msg = self.ViewMgr:createView("PermanentPosMsg")
     end
     ui_msg:showInfo(info)
@@ -109,13 +104,11 @@ end
 
 ---------------------------------------
 function ViewHelper:UiBeginWaiting(tips, auto_destroytm)
-    if (auto_destroytm == nil)
-    then
+    if (auto_destroytm == nil) then
         auto_destroytm = 5
     end
     local ui_waiting = self.ViewMgr:getView("Waiting")
-    if (ui_waiting == nil)
-    then
+    if (ui_waiting == nil) then
         ui_waiting = self.ViewMgr:createView("Waiting")
     end
     ui_waiting:setTips(tips, auto_destroytm)
@@ -137,8 +130,7 @@ end
 ---------------------------------------
 function ViewHelper:UiShowLoading(tips, progress)
     local ui_loading = self.ViewMgr:getView("Loading")
-    if (ui_loading == nil)
-    then
+    if (ui_loading == nil) then
         ui_loading = self.ViewMgr:createView("Loading")
     end
 
@@ -162,8 +154,7 @@ end
 
 ---------------------------------------
 function ViewHelper:setGObjectVisible(is_visible, obj)
-    if (obj.visible ~= is_visible)
-    then
+    if (obj.visible ~= is_visible) then
         obj.visible = is_visible
     end
 end
@@ -176,8 +167,7 @@ end
 
 ---------------------------------------
 function ViewHelper:subStrToTargetLength(str, target_length)
-    if (string.len(str) > target_length)
-    then
+    if (string.len(str) > target_length) then
         str = string.sub(str, 0, target_length)
     end
     return str
@@ -185,11 +175,10 @@ end
 
 ---------------------------------------
 -- 全屏背景的多分辨率自适应计算函数
-function ViewHelper:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode,t_anchor_point)
+function ViewHelper:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode, t_anchor_point)
     local w = logic_width / design_width
     local h = logic_height / design_height
-    if (w >= h)
-    then
+    if (w >= h) then
         obj.width = logic_width
         obj.height = logic_width * image_height / image_width
         obj.x = 0
@@ -200,7 +189,7 @@ function ViewHelper:makeUiBgFiteScreen(design_width, design_height, logic_width,
                 for i, v in pairs(t_anchor_point) do
                     local p = v.xy
                     local p_y = p.y
-                    v:SetXY(p.x,p_y - p_y/2 * w)
+                    v:SetXY(p.x, p_y - p_y / 2 * w)
                 end
             end
         elseif anchor_mode == BgAttachMode.Center then
@@ -209,7 +198,7 @@ function ViewHelper:makeUiBgFiteScreen(design_width, design_height, logic_width,
                 for i, v in pairs(t_anchor_point) do
                     local p = v.xy
                     local p_y = p.y
-                    v:SetXY(p.x,p_y + p_y / 2 * (w-h) / 2)
+                    v:SetXY(p.x, p_y + p_y / 2 * (w - h) / 2)
                 end
             end
         elseif anchor_mode == BgAttachMode.Bottom then
@@ -218,7 +207,7 @@ function ViewHelper:makeUiBgFiteScreen(design_width, design_height, logic_width,
                 for i, v in pairs(t_anchor_point) do
                     local p = v.xy
                     local p_y = p.y
-                    v:SetXY(p.x,p_y + p_y/2 * w)
+                    v:SetXY(p.x, p_y + p_y / 2 * w)
                 end
             end
         end
@@ -232,7 +221,7 @@ function ViewHelper:makeUiBgFiteScreen(design_width, design_height, logic_width,
             for i, v in pairs(t_anchor_point) do
                 local p = v.xy
                 local p_y = p.y
-                v:SetXY(p.x,p_y + p_y / 2 * (h-w) / 2)
+                v:SetXY(p.x, p_y + p_y / 2 * (h - w) / 2)
             end
         end
     end
@@ -265,8 +254,7 @@ function ViewHelper:PopUi(comui, title)
     com_shade:SetPivot(0.5, 0.5)
     com_shade:SetScale(scale.x * (1 / proportion), scale.y * (1 / proportion))
     comui:TweenScale(scale, tween_time):SetEase(CS.FairyGUI.EaseType.BackOut)
-    if (title ~= nil)
-    then
+    if (title ~= nil) then
         local text_title = comui:GetChild("TextTitle").asTextField
         self:SetUiTitle(text_title, title)
     end
