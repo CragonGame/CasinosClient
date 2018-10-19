@@ -83,7 +83,6 @@ namespace GameCloud.Unity.Common
 
             if (sqlite3_open(mFilePath, out connection) != SQLITE_OK)
             {
-                EbLog.Note("Could not open database file:" + mFilePath);
                 return false;
             }
 
@@ -95,7 +94,6 @@ namespace GameCloud.Unity.Common
         {
             if (sqlite3_open(mFilePath, out connection) != SQLITE_OK)
             {
-                EbLog.Note("Could not open database file:" + mFilePath);
                 return false;
             }
 
@@ -212,7 +210,6 @@ namespace GameCloud.Unity.Common
             if (sqlite3_prepare_v2(connection, query, -1, out stmHandle, IntPtr.Zero) != SQLITE_OK)
             {
                 IntPtr errorMsg = sqlite3_errmsg(connection);
-                EbLog.Note(Marshal.PtrToStringAnsi(errorMsg) + ":" + query);
             }
 
             return stmHandle;

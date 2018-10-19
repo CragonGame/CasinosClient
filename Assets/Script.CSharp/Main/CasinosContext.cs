@@ -175,13 +175,6 @@ namespace Casinos
 #endif
             }
 
-            // 初始化日志
-            {
-                EbLog.NoteCallback = Debug.Log;
-                EbLog.WarningCallback = Debug.LogWarning;
-                EbLog.ErrorCallback = Debug.LogError;
-            }
-
             Debug.Log("2aaaaaaaaaaaaa");
 
             if (NativeAPIMsgReceiverListner == null)
@@ -399,8 +392,9 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void ReportLogWithPlayerId(string name, string player_id, string message, string stackTrace)
         {
-            if (CanReportLog && !string.IsNullOrEmpty(CanReportLogPlayerId) &&
-                CanReportLogPlayerId.Equals(player_id))
+            if (CanReportLog 
+                && !string.IsNullOrEmpty(CanReportLogPlayerId)
+                && CanReportLogPlayerId.Equals(player_id))
             {
                 BuglyAgent.ReportException(name, message, stackTrace);
             }

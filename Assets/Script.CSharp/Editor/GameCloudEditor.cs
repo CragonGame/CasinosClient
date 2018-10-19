@@ -878,8 +878,6 @@ public class GameCloudEditor : EditorWindow
     void _buildAssetBundleCompressed(AssetBundleBuild[] arr_abb, string path, BuildTarget target)
     {
         BuildPipeline.BuildAssetBundles(path, arr_abb, BuildAssetBundleOptions.ForceRebuildAssetBundle, target);
-
-        EbLog.Note("Build AssetBundle BuildTarget=" + target);
     }
 
     //-------------------------------------------------------------------------
@@ -889,7 +887,6 @@ public class GameCloudEditor : EditorWindow
         foreach (var i in ab_file)
         {
             string extension = Path.GetExtension(i);
-            //Debug.LogError(i + "   " + extension);
             if (mDoNotPackFileExtention.Contains(extension))
             {
                 continue;

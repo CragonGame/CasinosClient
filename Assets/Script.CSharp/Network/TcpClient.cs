@@ -273,7 +273,6 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
     //---------------------------------------------------------------------
     void _newReceiveBufferRequired(object client, EventArgs args)
     {
-        //EbLog.Error("NewReceiveBufferRequired");
     }
 
     //-------------------------------------------------------------------------

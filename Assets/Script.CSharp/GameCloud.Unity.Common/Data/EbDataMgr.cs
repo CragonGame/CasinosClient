@@ -21,7 +21,6 @@ namespace GameCloud.Unity.Common
         Dictionary<string, EbTableBuffer> mMapTable = new Dictionary<string, EbTableBuffer>();
         Dictionary<string, Dictionary<int, EbData>> MapData = new Dictionary<string, Dictionary<int, EbData>>();
         ISqlite Sqlite;
-        //EbFileStream FileStream = new EbFileStreamDefault();
         Queue<string> QueLoadTbName { get; set; }
         Action<int, int> UpdateCallBack { get; set; }
         Action FinishedCallBack { get; set; }
@@ -46,7 +45,6 @@ namespace GameCloud.Unity.Common
 #endif
             if (!Sqlite.openDb(db_filename))
             {
-                EbLog.Note("EbDataMgr.setup() failed! Can not Open File! db_filename=" + db_filename);
                 return;
             }
 
@@ -60,9 +58,8 @@ namespace GameCloud.Unity.Common
                 }
                 TotalTbCount = QueLoadTbName.Count;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                EbLog.Note(e.ToString());
             }
         }
 
@@ -76,7 +73,6 @@ namespace GameCloud.Unity.Common
 #endif
             if (!Sqlite.openDb(db_filename))
             {
-                EbLog.Note("EbDataMgr.setup() failed! Can not Open File! db_filename=" + db_filename);
                 return;
             }
 
@@ -91,9 +87,8 @@ namespace GameCloud.Unity.Common
 
                 Sqlite.closeDb();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                EbLog.Note(e.ToString());
             }
         }
 
@@ -111,7 +106,6 @@ namespace GameCloud.Unity.Common
             MemoryStream ms = new MemoryStream(db_data);
             if (!Sqlite.openDb(db_name, ms))
             {
-                EbLog.Note("EbDataMgr.setup() failed! Can not Open Stream!");
                 ms.Close();
                 return map_table;
             }
@@ -165,9 +159,8 @@ namespace GameCloud.Unity.Common
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                EbLog.Note(e.ToString());
             }
         }
 
@@ -178,7 +171,6 @@ namespace GameCloud.Unity.Common
             mMapTable.TryGetValue(table_name, out table);
             if (table == null)
             {
-                EbLog.Error("EbDb.getTable() Error! not exist table,table_name=" + table_name);
             }
             return table;
         }
@@ -190,7 +182,6 @@ namespace GameCloud.Unity.Common
             mMapTable.TryGetValue(table_name, out table);
             if (table == null)
             {
-                EbLog.Error("EbDb.getTable() Error! not exist table,table_name=" + table_name);
             }
             return table.GetTableData();
         }
@@ -342,9 +333,8 @@ namespace GameCloud.Unity.Common
 
                 mMapTable[table.TableName] = table;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                EbLog.Error(str_query_select + "_______" + e.ToString());
             }
         }
     }

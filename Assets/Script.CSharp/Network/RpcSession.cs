@@ -4,7 +4,6 @@ namespace GameCloud.Unity.Common
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
 
     public delegate void OnSocketReceive(byte[] data, int len);
     public delegate void OnSocketConnected(object client, EventArgs args);
@@ -61,8 +60,6 @@ namespace GameCloud.Unity.Common
         {
             //if (buf == null)
             //{
-            //    EbLog.Error("RpcSlot.onRpcMethod() Buf==null! Method=" + action.Method.Name);
-            //    EbLog.Error("Type1=" + typeof(T1).Name);
             //    return;
             //}
 
@@ -76,9 +73,6 @@ namespace GameCloud.Unity.Common
             //    }
             //    catch (Exception ex)
             //    {
-            //        EbLog.Error("RpcSlot.onRpcMethod() Serializer Error! Method="
-            //            + action.Method.Name + " Exception:" + ex.ToString());
-            //        EbLog.Error("Type1=" + typeof(T1).Name);
             //    }
             //}
         }
@@ -100,8 +94,6 @@ namespace GameCloud.Unity.Common
         {
             //if (buf == null || buf.Length == 0)
             //{
-            //    EbLog.Error("RpcSlot.onRpcMethod() Buf==null! Method=" + action.Method.Name);
-            //    EbLog.Error("Type1=" + typeof(T1).Name + " Type2=" + typeof(T2));
             //    return;
             //}
 
@@ -116,9 +108,6 @@ namespace GameCloud.Unity.Common
             //    }
             //    catch (Exception ex)
             //    {
-            //        EbLog.Error("RpcSlot.onRpcMethod() Serializer Error! Method="
-            //            + action.Method.Name + " Exception:" + ex.ToString());
-            //        EbLog.Error("Type1=" + typeof(T1).Name + " Type2=" + typeof(T2));
             //    }
             //}
         }
@@ -140,8 +129,6 @@ namespace GameCloud.Unity.Common
         {
             //if (buf == null || buf.Length == 0)
             //{
-            //    EbLog.Error("RpcSlot.onRpcMethod() Buf==null! Method=" + action.Method.Name);
-            //    EbLog.Error("Type1=" + typeof(T1).Name + " Type2=" + typeof(T2) + " Type3=" + typeof(T3));
             //    return;
             //}
 
@@ -157,9 +144,6 @@ namespace GameCloud.Unity.Common
             //    }
             //    catch (Exception ex)
             //    {
-            //        EbLog.Error("RpcSlot.onRpcMethod() Serializer Error! Method="
-            //            + action.Method.Name + " Exception:" + ex.ToString());
-            //        EbLog.Error("Type1=" + typeof(T1).Name + " Type2=" + typeof(T2) + " Type3=" + typeof(T3));
             //    }
             //}
         }
@@ -181,8 +165,6 @@ namespace GameCloud.Unity.Common
         {
             //if (buf == null || buf.Length == 0)
             //{
-            //    EbLog.Error("RpcSlot.onRpcMethod() Buf==null! Method=" + action.Method.Name);
-            //    EbLog.Error("Type1=" + typeof(T1).Name + " Type2=" + typeof(T2) + " Type3=" + typeof(T3) + " Type4=" + typeof(T4));
             //    return;
             //}
 
@@ -199,10 +181,6 @@ namespace GameCloud.Unity.Common
             //    }
             //    catch (Exception ex)
             //    {
-            //        EbLog.Error("RpcSlot.onRpcMethod() Serializer Error! Method="
-            //            + action.Method.Name + " Exception:" + ex.ToString());
-            //        EbLog.Error("Type1=" + typeof(T1).Name + " Type2=" + typeof(T2)
-            //            + " Type3=" + typeof(T3) + " Type4=" + typeof(T4));
             //    }
             //}
         }
@@ -256,9 +234,6 @@ namespace GameCloud.Unity.Common
             //    }
             //    catch (Exception ex)
             //    {
-            //        EbLog.Note("Component.rpcBySession<T1>() Serializer Error! MethodId="
-            //            + method_id + " Exception:" + ex.ToString());
-            //        EbLog.Note("Type1=" + typeof(T1).Name);
             //        return;
             //    }
             //}
@@ -281,9 +256,6 @@ namespace GameCloud.Unity.Common
             //    }
             //    catch (Exception ex)
             //    {
-            //        EbLog.Note("Component.rpcBySession<T1,T2>() Serializer Error! MethodId="
-            //            + method_id + " Exception:" + ex.ToString());
-            //        EbLog.Note("Type1=" + typeof(T1).Name + " Type2=" + typeof(T2).Name);
             //        return;
             //    }
             //}
@@ -307,9 +279,6 @@ namespace GameCloud.Unity.Common
             //    }
             //    catch (Exception ex)
             //    {
-            //        EbLog.Error("Component.rpcBySession<T1,T2,T3>() Serializer Error! MethodId="
-            //            + method_id + " Exception:" + ex.ToString());
-            //        EbLog.Error("Type1=" + typeof(T1).Name + " Type2=" + typeof(T2).Name + " Type3=" + typeof(T3).Name);
             //        return;
             //    }
             //}
@@ -334,10 +303,6 @@ namespace GameCloud.Unity.Common
             //    }
             //    catch (Exception ex)
             //    {
-            //        EbLog.Error("Component.rpcBySession<T1,T2,T3,T4>() Serializer Error! MethodId="
-            //            + method_id + " Exception:" + ex.ToString());
-            //        EbLog.Error("Type1=" + typeof(T1).Name + " Type2=" + typeof(T2).Name
-            //            + " Type3=" + typeof(T3).Name + " Type4=" + typeof(T4).Name);
             //        return;
             //    }
             //}
@@ -384,7 +349,6 @@ namespace GameCloud.Unity.Common
             mMapRpcSlot.TryGetValue(method_id, out rpc_slot);
             if (rpc_slot == null)
             {
-                EbLog.Error("RpcCallee._onRpcMethod() not found method_id. method_id = " + method_id);
                 return;
             }
 
