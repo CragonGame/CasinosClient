@@ -12,7 +12,7 @@
     <session id="-265693007">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.25" value="1" />
@@ -22,23 +22,23 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="lua" value="11" />
+          <entry key="lua" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="lua" value="10" />
+          <entry key="lua" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="lua" value="294" />
+          <entry key="lua" value="387" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="lua" value="294" />
+          <entry key="lua" value="387" />
         </counts>
       </usages-collector>
     </session>
@@ -48,8 +48,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Context.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="431">
+              <caret line="137" column="41" lean-forward="true" selection-start-line="137" selection-start-column="41" selection-end-line="137" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Launch/Launch.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="431">
+              <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -89,8 +98,8 @@
         <option value="$USER_HOME$/Library/Application Support/Cragon/果派德州/IOS/Script.Lua/Launch/Launch.lua" />
         <option value="$PROJECT_DIR$/Other/Native.lua" />
         <option value="$PROJECT_DIR$/View/ViewMgr.lua" />
-        <option value="$PROJECT_DIR$/Context.lua" />
         <option value="$PROJECT_DIR$/Launch/Launch.lua" />
+        <option value="$PROJECT_DIR$/Context.lua" />
       </list>
     </option>
   </component>
@@ -130,6 +139,11 @@
             <path>
               <item name="Script.Lua" type="b2602c69:ProjectViewProjectNode" />
               <item name="Script.Lua" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Script.Lua" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Script.Lua" type="462c0819:PsiDirectoryNode" />
+              <item name="Launch" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -226,20 +240,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Launch/Launch.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Resources/Launch.Lua/Launch.lua">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Launch/Launch.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Context.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="431">
+          <caret line="137" column="41" lean-forward="true" selection-start-line="137" selection-start-column="41" selection-end-line="137" selection-end-column="41" />
         </state>
       </provider>
     </entry>

@@ -1,6 +1,7 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
+-- TODO，待删除
 OssRootUrl = 'http://cragon-king-oss.cragon.cn'
 AutopatcherUrl = 'http://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml'
 PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
@@ -59,11 +60,90 @@ PayUseTestMode = false
 PayUrlScheme = "com.Cragon.KingTexas2"
 
 ---------------------------------------
-Config = {
-    Env = nil,
-    DataVersion = nil,
-    DataRootURL = nil
-}
+-- 配置，开发者选项
+ConfigDevelopSettings= {}
+
+function ConfigDevelopSettings:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    return o
+end
+
+---------------------------------------
+-- 配置
+Config = {}
+
+function Config:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.DevelopSettings = ConfigDevelopSettings:new(nil)
+    self.Env = nil
+    self.DataVersion = nil
+    self.DataRootURL = nil
+    self.OssRootUrl = 'http://cragon-king-oss.cragon.cn'
+    self.AutopatcherUrl = 'http://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml'
+    self.PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
+    self.BotIconDomain = 'http://cragon-king-oss.cragon.cn/ucenter/'
+    self.SysNoticeInfoUrl = ''
+    self.UCenterDomain = 'http://ucenter.cragon.cn'
+    self.GatewayIp = 'king-gateway.cragon.cn'
+    self.GatewayPort = 5882
+    self.BundleUpdateStata = 0
+    self.BundleUpdateVersion = '1.00.067'
+    self.BundleUpdateURL = 'https://cragon-king-oss.cragon.cn/KingTexas.apk'
+    self.DataFileListFileName = 'DataFileList.txt'
+    self.TbFileList = { 'KingCommon', 'KingDesktop', 'KingDesktopH', 'KingClient' }
+    self.ServerState = 0-- 服务器状态: 0正常,1维护
+    self.ServerStateInfo = ''-- 系统公告
+    self.IsDev = false
+    self.ClientShowFPS = true-- 客户端显示FPS信息 false 不显示 true 显示
+    self.FPSLimit = 60
+    self.LotteryTicketFactoryName = 'Texas'
+    self.ClientWechatIsInstalled = true
+    self.ClientShowWechat = true-- 客户端显示微信登录按钮 false 不显示 true 显示
+    self.ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
+    self.NeedHideClientUi = false-- 客户端排行等界面显示与隐藏
+    self.DesktopHSysBankShowDBValue = true-- 百人系统庄是否显示SQlite配置值
+    self.ShootingTextShowVIPLimit = 0-- 弹幕发送后是否真正发送弹幕VIP等级限制，0为无限制
+    self.DesktopHCanChatVIPLimit = 1-- 百人是否可聊天VIP等级限制，0为无限制
+    self.DesktopCanChatVIPLimit = 0-- 普通桌是否可聊天VIP等级限制，0为无限制
+    self.CanReportLog = false-- 是否开启上传日志到Bugly后台
+    self.CanReportLogDeviceId = ""-- 可以上传的机器码
+    self.CanReportLogPlayerId = ""-- 可以上传的玩家Id
+    self.ShowGoldTree = false
+    self.UseWechatPay = true
+    self.UseAliPay = true
+    self.UseIAP = false
+    self.UseLan = true
+    self.UseDefaultLan = false
+    self.DefaultLan = 'Chinese'
+    self.ChipIconSolustion = 0
+    self.CurrentMoneyType = 0
+    self.UCenterAppId = 'King'
+    self.BuglyAppId = '0aed5e7e56'
+    self.PinggPPAppId = 'app_TCi58CGKCSaHGCuP'
+    self.WeChatAppId = 'wxff929d92c3997b5d'
+    self.WeChatAppSecret = '159e7a0f00dd15fd81fd63c4844b0dfc'
+    self.WeChatState = 'WeChat'
+    self.DataEyeId = 'E02253AEC6F95038833955AC4FED9D77'
+    self.PushAppId = 'TXYr3LD0se8JU8UOtg9cj3'
+    self.PushAppKey = 'F6i4mvPKr96KuYsNAXciw9'
+    self.PushAppSecret = 'DWlJdILTq77OG68J4jFcx3'
+    self.ShareSDKAppKey = '254dedc7a3730'
+    self.ShareSDKAppSecret = '53788920e17ffa1d9af4ef3540352172'
+    self.BeeCloudId = '9c24464e-c912-44aa-bfe8-ca3a384410d0'
+    self.BeeCloudLiveSecret = '71625ddd-5a3d-4b73-be74-1580c8912dda'
+    self.BeeCloudTestSecret = '7bbc79a8-f310-4d76-a582-2622242c23f5'
+    self.PayUseTestMode = false
+    self.PayUrlScheme = "com.Cragon.KingTexas2"
+    return o
+end
 
 ---------------------------------------
 Context = {}
@@ -76,7 +156,7 @@ function Context:new(o, env, data_version)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     self.Launch = Launch
-    self.Cfg = Config
+    self.Cfg = Config:new(nil)
     self.Cfg.Env = env
     self.Cfg.DataVersion = data_version
     self.Cfg.DataRootURL = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/', self.CasinosContext.Config.Platform, data_version)
