@@ -12,10 +12,5 @@ namespace Casinos
         //-------------------------------------------------------------------------
         public const string FileEditorProjectSettings = "EditorProjectSettings.json";
         public const string FileEditorUserSettings = "EditorUserSettings.json";
-
-        //---------------------------------------------------------------------
-        //public static string TagUntagged = "Untagged";
-        //public static string TagSpriteBullet = "SpriteBullet";
-        //public static string TagSpriteFish = "SpriteFish";
     }
 }

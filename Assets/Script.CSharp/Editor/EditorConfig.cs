@@ -1,20 +1,22 @@
 ﻿using System.IO;
 
+[System.Serializable]
 public class EditorCfgProjectSettings
 {
     //-------------------------------------------------------------------------
-    public string CompanyName { get; set; }
-    public string AppName { get; set; }
-    public string BundleIdentify { get; set; }
-    public string InitDataVersion { get; set; }
-    public string CurrentDataVersionANDROID { get; set; }
-    public string CurrentDataVersionIOS { get; set; }
+    public string CompanyName;
+    public string AppName;
+    public string BundleIdentify;
+    public string InitDataVersion;
+    public string CurrentDataVersionANDROID;
+    public string CurrentDataVersionIOS;
 }
 
+[System.Serializable]
 public class EditorCfgUserSettings
 {
     //-------------------------------------------------------------------------
-    public bool UseTmpDirRes { get; set; }// 是否使用临时目录中的资源，true=临时目录，false=本地目录
+    public bool UseTmpDirRes;// 是否使用临时目录中的资源，true=临时目录，false=本地目录
 }
 
 public class EditorConfig
@@ -43,7 +45,6 @@ public class EditorConfig
 
                 using (StreamWriter sw = File.CreateText(full_filename))
                 {
-                    //string s = Newtonsoft.Json.JsonConvert.SerializeObject(CfgUserSettings);
                     string s = UnityEngine.JsonUtility.ToJson(CfgUserSettings);
                     sw.Write(s);
                 }
@@ -53,7 +54,6 @@ public class EditorConfig
                 using (StreamReader sr = File.OpenText(full_filename))
                 {
                     string s = sr.ReadToEnd();
-                    //CfgUserSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<EditorCfgUserSettings>(s);
                     CfgUserSettings = UnityEngine.JsonUtility.FromJson<EditorCfgUserSettings>(s);
                 }
             }
@@ -65,7 +65,6 @@ public class EditorConfig
             using (StreamReader sr = File.OpenText(full_filename))
             {
                 string s = sr.ReadToEnd();
-                //CfgProjectSettings = Newtonsoft.Json.JsonConvert.DeserializeObject<EditorCfgProjectSettings>(s);
                 CfgProjectSettings = UnityEngine.JsonUtility.FromJson<EditorCfgProjectSettings>(s);
             }
         }
@@ -80,7 +79,6 @@ public class EditorConfig
         string full_filename = Path.Combine(EditorContext.Instance.PathSettingsUser, EditorStringDef.FileEditorUserSettings);
         using (StreamWriter sw = File.CreateText(full_filename))
         {
-            //string s = Newtonsoft.Json.JsonConvert.SerializeObject(CfgUserSettings);
             string s = UnityEngine.JsonUtility.ToJson(CfgUserSettings);
             sw.Write(s);
         }
@@ -93,7 +91,6 @@ public class EditorConfig
 
         using (StreamWriter sw = File.CreateText(full_filename))
         {
-            //string s = Newtonsoft.Json.JsonConvert.SerializeObject(CfgProjectSettings);
             string s = UnityEngine.JsonUtility.ToJson(CfgProjectSettings);
             sw.Write(s);
         }

@@ -1,6 +1,17 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
+LaunchConfig = {
+    ViewMgr = nil,
+    GoUi = nil,
+    ComUi = nil,
+    Panel = nil,
+    UILayer = nil,
+    InitDepth = nil,
+    ViewKey = nil
+}
+
+---------------------------------------
 Launch = {}
 
 ---------------------------------------
@@ -9,6 +20,7 @@ function Launch:new(o)
     setmetatable(o, self)
     self.__index = self
     if (self.Instance == nil) then
+        self.LaunchStep = {}
         self.CurrentLan = 'ChineseSimplified'
         self.PreViewMgr = nil
         self.PreLoading = nil
@@ -109,7 +121,7 @@ function Launch:Setup()
                     data_select = DataSelectDev
                 end
                 local http_url_context = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/Context.lua',
-                    self.CasinosContext.Config.Platform, data_select)
+                        self.CasinosContext.Config.Platform, data_select)
                 print(http_url_context)
                 async_asset_loadgroup:LoadWWWAsync(http_url_context,
                         function(url, www)

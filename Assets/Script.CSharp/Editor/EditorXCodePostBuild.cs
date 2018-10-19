@@ -56,7 +56,7 @@ namespace Casinos
                 string plist_path = path + "/Info.plist";
                 PlistDocument plist = new PlistDocument();
                 plist.ReadFromString(File.ReadAllText(plist_path));
-                PlistElementDict root_dict = plist.root;
+                //PlistElementDict root_dict = plist.root;
 
                 // 语音所需要的声明，iOS10必须
                 //root_dict.SetString("NSContactsUsageDescription", "是否允许此游戏使用麦克风？");

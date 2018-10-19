@@ -209,7 +209,7 @@ namespace GameCloud.Unity.Common
 
             if (sqlite3_prepare_v2(connection, query, -1, out stmHandle, IntPtr.Zero) != SQLITE_OK)
             {
-                IntPtr errorMsg = sqlite3_errmsg(connection);
+                //IntPtr errorMsg = sqlite3_errmsg(connection);
             }
 
             return stmHandle;

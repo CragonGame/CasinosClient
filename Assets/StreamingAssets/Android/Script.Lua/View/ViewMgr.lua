@@ -1,4 +1,4 @@
--- Copyright(c) Cragon. All rights reserved.
+-- Copyright (c) Cragon. All rights reserved.
 -- 层管理由原先C#版移植过来
 -- 每个View的创建和销毁
 -- 多语言的替换。命名规则

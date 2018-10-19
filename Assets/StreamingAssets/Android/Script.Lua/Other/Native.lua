@@ -8,89 +8,81 @@ function Native:new(o, view_mgr, listner)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
         self.ViewMgr = view_mgr
         self.Listner = listner
 
-        CS.BuglyAgent.ConfigAutoQuitApplication(true)
-        CS.BuglyAgent.InitWithAppId(BuglyAppId)
-        CS.BuglyAgent.EnableExceptionHandler()
-        if CS.Casinos.CasinosContext.Instance.IsEditor == false then
-            CS.ThirdPartyLogin.Instantce():initLogin(WeChatAppId)
-            CS.Push.Instant():initPush(PushAppId, PushAppKey, PushAppSecret)
-        end
-        CS.DataEye.initWithAppIdAndChannelId(DataEyeId, "")
-        CS.ShareSDKReceiver.instance(ShareSDKAppKey, ShareSDKAppSecret)
-        --print("ShareSDK ", ShareSDKAppKey, ShareSDKAppSecret)
-        CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()
-        CS.ShareSDKReceiver.mShareSDK.devInfo.wechat = CS.cn.sharesdk.unity3d.WeChat()
-        if CS.Casinos.CasinosContext.Instance.UnityAndroid then
-            CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppId = WeChatAppId
-            CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppSecret = WeChatAppSecret
-            CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.BypassApproval = false
-        elseif CS.Casinos.CasinosContext.Instance.UnityIOS then
-            CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = WeChatAppId
-            CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_secret = WeChatAppSecret
-            --print("ShareSDK WeiXin ", WeChatAppId, WeChatAppSecret)
-        end
-
-        CS.ShareSDKReceiver.mShareSDK:init()
-
-        local open_install = CS.OpenInstallReceiver.instance()
-        open_install.OpenInstallResultCallBack = function(result, is_install)
-            self:OpenInstallResult(result, is_install)
-        end
-        CS.OpenInstall.Instant()
+        --CS.BuglyAgent.ConfigAutoQuitApplication(true)
+        --CS.BuglyAgent.InitWithAppId(BuglyAppId)
+        --CS.BuglyAgent.EnableExceptionHandler()
+        --if CS.Casinos.CasinosContext.Instance.IsEditor == false then
+        --    CS.ThirdPartyLogin.Instantce():initLogin(WeChatAppId)
+        --    CS.Push.Instant():initPush(PushAppId, PushAppKey, PushAppSecret)
+        --end
+        --CS.DataEye.initWithAppIdAndChannelId(DataEyeId, "")
+        --CS.ShareSDKReceiver.instance(ShareSDKAppKey, ShareSDKAppSecret)
+        --CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()
+        --CS.ShareSDKReceiver.mShareSDK.devInfo.wechat = CS.cn.sharesdk.unity3d.WeChat()
+        --if CS.Casinos.CasinosContext.Instance.UnityAndroid then
+        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppId = WeChatAppId
+        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppSecret = WeChatAppSecret
+        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.BypassApproval = false
+        --elseif CS.Casinos.CasinosContext.Instance.UnityIOS then
+        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = WeChatAppId
+        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_secret = WeChatAppSecret
+        --end
+        --
+        --CS.ShareSDKReceiver.mShareSDK:init()
+        --
+        --local open_install = CS.OpenInstallReceiver.instance()
+        --open_install.OpenInstallResultCallBack = function(result, is_install)
+        --    self:OpenInstallResult(result, is_install)
+        --end
+        --CS.OpenInstall.Instant()
     end
-    self.PlayerQRCodeTexture = CS.UnityEngine.Texture2D(190, 190)
-    self.ShareUrl = nil
-
-    CS.Pay.Instant()
-    if CS.Casinos.CasinosContext.Instance.IsEditor == false then
-        local secrete = BeeCloudLiveSecret
-        if PayUseTestMode then
-            secrete = BeeCloudTestSecret
-        end
-        CS.Pay.payInit(BeeCloudId, secrete, WeChatAppId)
-        CS.Pay.useTestMode(PayUseTestMode)
-    end
-
-    CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionGetPicSuccess = function(getpic_result)
-        self:ActionGetPicSuccess(getpic_result)
-    end
-    CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionGetPicSuccessWithBytes = function(pic_data)
-        self:ActionGetPicSuccessWithBytes(pic_data)
-    end
-    CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayWithIAPFailed = function(result)
-        self:ActionPayWithIAPFailed(result)
-    end
-    CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayWithIAPSuccess = function(purchase)
-        self:ActionPayWithIAPSuccess(purchase)
-    end
-
-    CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayResult = function(pay_result)
-        self:ActionPayResult(pay_result)
-    end
-
-    CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionLoginFailed = function(fail_type)
-        self:ActionLoginFailed(fail_type)
-    end
-    CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionLoginSuccess = function(param, real_token)
-        self:ActionLoginSuccess(param, real_token)
-    end
+    --self.PlayerQRCodeTexture = CS.UnityEngine.Texture2D(190, 190)
+    --self.ShareUrl = nil
+    --
+    --CS.Pay.Instant()
+    --if CS.Casinos.CasinosContext.Instance.IsEditor == false then
+    --    local secrete = BeeCloudLiveSecret
+    --    if PayUseTestMode then
+    --        secrete = BeeCloudTestSecret
+    --    end
+    --    CS.Pay.payInit(BeeCloudId, secrete, WeChatAppId)
+    --    CS.Pay.useTestMode(PayUseTestMode)
+    --end
+    --
+    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionGetPicSuccess = function(getpic_result)
+    --    self:ActionGetPicSuccess(getpic_result)
+    --end
+    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionGetPicSuccessWithBytes = function(pic_data)
+    --    self:ActionGetPicSuccessWithBytes(pic_data)
+    --end
+    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayWithIAPFailed = function(result)
+    --    self:ActionPayWithIAPFailed(result)
+    --end
+    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayWithIAPSuccess = function(purchase)
+    --    self:ActionPayWithIAPSuccess(purchase)
+    --end
+    --
+    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayResult = function(pay_result)
+    --    self:ActionPayResult(pay_result)
+    --end
+    --
+    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionLoginFailed = function(fail_type)
+    --    self:ActionLoginFailed(fail_type)
+    --end
+    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionLoginSuccess = function(param, real_token)
+    --    self:ActionLoginSuccess(param, real_token)
+    --end
     return self.Instance
 end
 
 ---------------------------------------
 function Native:ShareContent(platform_type, text, pic_path, title, url, share_type)
     local share_content = CS.cn.sharesdk.unity3d.ShareContent()
-    --share_content:SetText("this is a test string.")
-    --share_content:SetImageUrl("https://f1.webshare.mob.com/code/demo/img/1.jpg")
-    --share_content:SetTitle("test title")
-    --share_content:SetUrl("http://www.baidu.com")
-    --share_content:SetShareType(CS.cn.sharesdk.unity3d.ContentType.Image)
     share_content:SetText(text)
     share_content:SetImagePath(pic_path)--"http://ww3.sinaimg.cn/mw690/be159dedgw1evgxdt9h3fj218g0xctod.jpg"
     share_content:SetTitle(title)
@@ -105,7 +97,6 @@ function Native:GetMobId(player_id)
     c:Add("PlayerId", player_id)
     local scene = CS.com.moblink.unity3d.MobLinkScene("", "", c)
     if CS.Casinos.CasinosContext.Instance.IsEditor == false then
-        --print("GetMobId " .. player_id)
         CS.com.moblink.unity3d.MobLink.getMobId(scene, function(mob_id)
             self:OnMobIdHandler(mob_id)
         end)
@@ -137,13 +128,11 @@ end
 ---------------------------------------
 function Native:OnRestoreScene(scene)
     local params = scene.customParams
-    --print("OnRestoreScene")
     if params == nil then
         return
     end
 
     local player_id = CS.Casinos.LuaHelper.GetHashTableValue(params, "PlayerId") --params["PlayerId"]
-    --print("player_id  " .. player_id)
     local invite_payerid = "InvitePlayerId"
     if (CS.UnityEngine.PlayerPrefs.HasKey(invite_payerid) == false) then
         local t = {}
@@ -158,11 +147,9 @@ end
 ---------------------------------------
 function Native:OpenInstallResult(result, is_install)
     if CS.System.String.IsNullOrEmpty(result) then
-        --print("OpenInstallResult i null")
         return
     end
 
-    --print("result  " .. result .. "  is_install  " .. tostring(is_install))
     if is_install then
         local t_result = self.Listner.Json.decode(result)
         local data = t_result["Data"]

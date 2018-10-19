@@ -59,6 +59,13 @@ PayUseTestMode = false
 PayUrlScheme = "com.Cragon.KingTexas2"
 
 ---------------------------------------
+Config = {
+    Env = nil,
+    DataVersion = nil,
+    DataRootURL = nil
+}
+
+---------------------------------------
 Context = {}
 
 ---------------------------------------
@@ -69,16 +76,19 @@ function Context:new(o, env, data_version)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     self.Launch = Launch
-    self.LaunchStep = {}
+    self.Cfg = Config
+    self.Cfg.Env = env
+    self.Cfg.DataVersion = data_version
+    self.Cfg.DataRootURL = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/', self.CasinosContext.Config.Platform, data_version)
     self.Env = env
     self.DataVersion = data_version
     self.DataRootURL = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/', self.CasinosContext.Config.Platform, data_version)
-    self.ControllerMgr = nil
-    self.ViewMgr = nil
     self.TbDataMgr = nil
     self.Json = nil
     self.Rpc = nil
     self.LuaHelper = nil
+    self.ControllerMgr = nil
+    self.ViewMgr = nil
     return o
 end
 
@@ -125,7 +135,6 @@ function Context:Release()
     self.CasinosContext = nil
     self.CasinosLua = nil
     self.Launch = nil
-    self.LaunchStep = nil
 
     print('Context:Release()')
 end
@@ -140,7 +149,7 @@ end
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
     if (BundleUpdateStata == 1 and BundleUpdateVersion ~= nil and BundleUpdateURL ~= nil and self.CasinosContext.Config.VersionBundle ~= BundleUpdateVersion) then
-        self.LaunchStep[1] = "UpdateBundle"
+        self.Launch.LaunchStep[1] = "UpdateBundle"
     end
 
     -- 检测是否需要首次运行解压
@@ -148,23 +157,23 @@ function Context:_initLaunchStep()
     print('CasinosContext.Config.StreamingAssetsInfo.DataVersion=' .. self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
     local r = self.CasinosContext.Config:VersionCompare(self.CasinosContext.Config.VersionDataPersistent, self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
     if (r < 0) then
-        self.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
+        self.Launch.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
     end
 
     -- 检测是否需要更新Data
-    --if (self.CasinosContext.Config.VersionDataPersistent ~= self.DataVersion) then
-    self.LaunchStep[3] = "UpdateData"
-    --end
+    if (self.CasinosContext.Config.VersionDataPersistent ~= self.DataVersion) then
+        self.Launch.LaunchStep[3] = "UpdateData"
+    end
 
     -- 进入Login界面
-    self.LaunchStep[4] = "ShowLogin"
+    self.Launch.LaunchStep[4] = "ShowLogin"
 end
 
 ---------------------------------------
 -- 执行下一步LaunchStep
 function Context:_nextLaunchStep()
     -- 更新Bundle
-    if (self.LaunchStep[1] ~= nil) then
+    if (self.Launch.LaunchStep[1] ~= nil) then
         local desc_copy = "准备更新安装包"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
         self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
@@ -183,7 +192,7 @@ function Context:_nextLaunchStep()
     end
 
     -- 首次运行解压
-    if (self.LaunchStep[2] ~= nil) then
+    if (self.Launch.LaunchStep[2] ~= nil) then
         local desc_copy = "首次运行解压资源，不消耗流量"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
         self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
@@ -196,7 +205,7 @@ function Context:_nextLaunchStep()
     end
 
     -- 更新Data
-    if (self.LaunchStep[3] ~= nil) then
+    if (self.Launch.LaunchStep[3] ~= nil) then
         --if (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork) then
         --end
         local desc_copy = "更新游戏数据"
@@ -223,8 +232,8 @@ function Context:_nextLaunchStep()
     end
 
     -- 卸载Launch，加载并显示Login
-    if (self.LaunchStep[4] ~= nil) then
-        self.LaunchStep[4] = nil
+    if (self.Launch.LaunchStep[4] ~= nil) then
+        self.Launch.LaunchStep[4] = nil
 
         local desc_copy = "准备登录中"
         self.Launch.PreLoading:UpdateDesc(desc_copy)
@@ -351,7 +360,7 @@ function Context:_timerUpdateCopyStreamingAssetsToPersistentData(tm)
         self.CasinosContext.Config:WriteVersionDataPersistent(self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
 
         -- 执行下一步LaunchStep
-        self.LaunchStep[2] = nil
+        self.Launch.LaunchStep[2] = nil
         self:_nextLaunchStep()
     else
         local value = self.CopyStreamingAssetsToPersistentData.LeftCount
@@ -376,7 +385,7 @@ function Context:_timerUpdateRemoteToPersistentData(tm)
         self.CasinosContext.Config:WriteVersionDataPersistent(self.DataVersion)
 
         -- 执行下一步LaunchStep
-        self.LaunchStep[3] = nil
+        self.Launch.LaunchStep[3] = nil
         self:_nextLaunchStep()
     else
         local value = self.UpdateRemoteToPersistentData.LeftCount
