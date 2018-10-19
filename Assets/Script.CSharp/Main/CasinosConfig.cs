@@ -44,6 +44,8 @@ namespace Casinos
             Channel = "";
             GoMain = GameObject.Find("Main Object");
             VersionBundle = Application.version;
+            VersionDataPersistent = string.Empty;
+            VersionLaunchPersistent = string.Empty;
 
             // 读取VersionLaunchPersistent
             if (PlayerPrefs.HasKey("VersionLaunchPersistent"))
