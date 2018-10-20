@@ -17,13 +17,11 @@ DataFileListFileName = 'DataFileList.txt'
 TbFileList = { 'KingCommon', 'KingDesktop', 'KingDesktopH', 'KingClient' }
 ServerState = 0-- 服务器状态: 0正常,1维护
 ServerStateInfo = ''-- 系统公告
-IsDev = false
-ClientShowFPS = true-- 客户端显示FPS信息 false 不显示 true 显示
-FPSLimit = 60
 LotteryTicketFactoryName = 'Texas'
 ClientWechatIsInstalled = true
 ClientShowWechat = true-- 客户端显示微信登录按钮 false 不显示 true 显示
 ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
+ClientShowGoldTree = false
 NeedHideClientUi = false-- 客户端排行等界面显示与隐藏
 DesktopHSysBankShowDBValue = true-- 百人系统庄是否显示SQlite配置值
 ShootingTextShowVIPLimit = 0-- 弹幕发送后是否真正发送弹幕VIP等级限制，0为无限制
@@ -32,7 +30,6 @@ DesktopCanChatVIPLimit = 0-- 普通桌是否可聊天VIP等级限制，0为无�
 CanReportLog = false-- 是否开启上传日志到Bugly后台
 CanReportLogDeviceId = ""-- 可以上传的机器码
 CanReportLogPlayerId = ""-- 可以上传的玩家Id
-ShowGoldTree = false
 UseWechatPay = true
 UseAliPay = true
 UseIAP = false
@@ -69,6 +66,9 @@ function ConfigDevelopSettings:new(o)
     self.__index = self
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.ShowDevelopSettings = false-- 是否显示开发者选项
+    self.ClientShowFPS = true-- 客户端显示FPS信息 false 不显示 true 显示
+    self.FPSLimit = 60-- 限帧
     return o
 end
 
@@ -101,13 +101,11 @@ function Config:new(o)
     self.TbFileList = { 'KingCommon', 'KingDesktop', 'KingDesktopH', 'KingClient' }
     self.ServerState = 0-- 服务器状态: 0正常,1维护
     self.ServerStateInfo = ''-- 系统公告
-    self.IsDev = false
-    self.ClientShowFPS = true-- 客户端显示FPS信息 false 不显示 true 显示
-    self.FPSLimit = 60
     self.LotteryTicketFactoryName = 'Texas'
     self.ClientWechatIsInstalled = true
     self.ClientShowWechat = true-- 客户端显示微信登录按钮 false 不显示 true 显示
     self.ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
+    self.ClientShowGoldTree = false
     self.NeedHideClientUi = false-- 客户端排行等界面显示与隐藏
     self.DesktopHSysBankShowDBValue = true-- 百人系统庄是否显示SQlite配置值
     self.ShootingTextShowVIPLimit = 0-- 弹幕发送后是否真正发送弹幕VIP等级限制，0为无限制
@@ -116,7 +114,6 @@ function Config:new(o)
     self.CanReportLog = false-- 是否开启上传日志到Bugly后台
     self.CanReportLogDeviceId = ""-- 可以上传的机器码
     self.CanReportLogPlayerId = ""-- 可以上传的玩家Id
-    self.ShowGoldTree = false
     self.UseWechatPay = true
     self.UseAliPay = true
     self.UseIAP = false
@@ -175,16 +172,15 @@ end
 
 ---------------------------------------
 function Context:Init()
-    self.Valid = true
     print('Context:Init()')
 
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")
-    show_fps_obj.enabled = ClientShowFPS
-    --if (FPSLimit == -1) then
+    show_fps_obj.enabled = self.Cfg.DevelopSettings.ClientShowFPS
+    --if (self.Cfg.DevelopSettings.FPSLimit == -1) then
     --    CS.UnityEngine.QualitySettings.vSyncCount = 0
-    --elseif (FPSLimit == 30) then
+    --elseif (self.Cfg.DevelopSettings.FPSLimit == 30) then
     --    CS.UnityEngine.QualitySettings.vSyncCount = 2
-    --elseif (FPSLimit == 60) then
+    --elseif (self.Cfg.DevelopSettings.FPSLimit == 60) then
     --    CS.UnityEngine.QualitySettings.vSyncCount = 1
     --else
     --    CS.UnityEngine.QualitySettings.vSyncCount = 0
@@ -253,8 +249,10 @@ function Context:_nextLaunchStep()
 
         -- 弹框让玩家选择，更新Bundle
         -- TODO，调用Native Api安装Bundle
+        local msg_info = string.format('有新的安装包需要更新，当前BundleVersion：%s，新的BundleVersion：%s',
+                self.CasinosContext.Config.VersionBundle, BundleUpdateVersion)
         local view_premsgbox = self.PreViewMgr.createView("PreMsgBox")
-        view_premsgbox:showMsgBox(self.CasinosContext.Config.VersionBundle,
+        view_premsgbox:showMsgBox(msg_info,
                 function()
                     CS.UnityEngine.Application.Quit()
                 end,

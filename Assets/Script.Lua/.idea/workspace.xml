@@ -45,30 +45,32 @@
     <session id="-1994822682">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="lua" value="16" />
+          <entry key="lua" value="19" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="XML" value="1" />
-          <entry key="lua" value="16" />
+          <entry key="lua" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="lua" value="314" />
+          <entry key="lua" value="506" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="lua" value="314" />
+          <entry key="lua" value="506" />
         </counts>
       </usages-collector>
     </session>
@@ -78,8 +80,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Launch/Launch.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1369">
-              <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+            <state relative-caret-position="584">
+              <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -87,8 +89,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Context.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="841" column="57" lean-forward="true" selection-start-line="841" selection-start-column="57" selection-end-line="841" selection-end-column="57" />
+            <state relative-caret-position="266">
+              <caret line="104" column="39" lean-forward="true" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/ViewMain.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="679">
+              <caret line="112" column="48" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/View/ViewActivityPopUpBox.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1254">
+              <caret line="66" column="35" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -97,7 +117,7 @@
         <entry file="file://$PROJECT_DIR$/Launch/PreViewMgr.lua">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="19">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -105,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Launch/PreViewLoading.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1406">
-              <caret line="239" column="34" lean-forward="true" selection-start-line="239" selection-start-column="34" selection-end-line="239" selection-end-column="34" />
+            <state relative-caret-position="4541">
+              <caret line="239" column="34" selection-start-line="239" selection-start-column="34" selection-end-line="239" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -115,7 +135,7 @@
         <entry file="file://$PROJECT_DIR$/Launch/PreViewMsgBox.lua">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2413">
-              <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+              <caret line="127" selection-start-line="127" selection-end-line="127" />
             </state>
           </provider>
         </entry>
@@ -123,8 +143,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/View/ViewLogin.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+            <state relative-caret-position="4446">
+              <caret line="234" column="26" selection-start-line="234" selection-start-column="26" selection-end-line="234" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -148,6 +168,14 @@
       <find>LaunchStep</find>
       <find>PreLoading</find>
       <find>UILayer</find>
+      <find>_checkCurrentLan</find>
+      <find>Env</find>
+      <find>IsDev</find>
+      <find>CurrentLan</find>
+      <find>FPSLimit</find>
+      <find>OssRootUrl</find>
+      <find>Valid</find>
+      <find>ShowGoldTree</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -162,12 +190,13 @@
         <option value="$PROJECT_DIR$/Other/UiChipShowHelper.lua" />
         <option value="$PROJECT_DIR$/Other/ViewHelper.lua" />
         <option value="$PROJECT_DIR$/Base.Lan/LanMgr.lua" />
-        <option value="$PROJECT_DIR$/View/ViewLogin.lua" />
-        <option value="$PROJECT_DIR$/Context.lua" />
         <option value="$PROJECT_DIR$/View/ViewEdit.lua" />
         <option value="$PROJECT_DIR$/Launch/PreViewLoading.lua" />
-        <option value="$PROJECT_DIR$/Launch/Launch.lua" />
         <option value="$PROJECT_DIR$/Launch/PreViewMgr.lua" />
+        <option value="$PROJECT_DIR$/Launch/Launch.lua" />
+        <option value="$PROJECT_DIR$/View/ViewLogin.lua" />
+        <option value="$PROJECT_DIR$/View/ViewMain.lua" />
+        <option value="$PROJECT_DIR$/Context.lua" />
       </list>
     </option>
   </component>
@@ -202,7 +231,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,6 +242,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,13 +347,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bundle.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/View/ViewEdit.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
@@ -346,45 +368,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/ViewLogin.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Launch/PreViewMsgBox.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2413">
-          <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Launch/PreViewLoading.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1406">
-          <caret line="239" column="34" lean-forward="true" selection-start-line="239" selection-start-column="34" selection-end-line="239" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Context.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="841" column="57" lean-forward="true" selection-start-line="841" selection-start-column="57" selection-end-line="841" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Launch/PreViewMgr.lua">
+    <entry file="file://$PROJECT_DIR$/Bundle.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/View/ViewActivityPopUpBox.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1254">
+          <caret line="66" column="35" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Launch/PreViewMgr.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Launch/PreViewLoading.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4541">
+          <caret line="239" column="34" selection-start-line="239" selection-start-column="34" selection-end-line="239" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Launch/PreViewMsgBox.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2413">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/ViewLogin.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4446">
+          <caret line="234" column="26" selection-start-line="234" selection-start-column="26" selection-end-line="234" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/ViewMain.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="112" column="48" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Context.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="104" column="39" lean-forward="true" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Launch/Launch.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1369">
-          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+        <state relative-caret-position="584">
+          <caret line="121" column="49" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
         </state>
       </provider>
     </entry>

@@ -230,36 +230,36 @@ function ViewLogin:onCreate()
     self.ComboChooseUCenter = self.ComUi:GetChild("ComboChooseUCenter").asComboBox
     self.ComboChooseGateWay = self.ComUi:GetChild("ComboChooseGateWay").asComboBox
     local show_combo = false
-    if IsDev then
-        show_combo = true
-        local items = {}
-        items[1] = "http://ucenter.cragon.cn"
-        items[2] = "http://ucenterdev.cragon.cn"
-        self.ComboChooseUCenter.items = items
-        self.ComboChooseUCenter.onChanged:Add(
-                function()
-                    self:onClickUCenter()
-                end
-        )
-        self.ComboChooseUCenter.text = items[1]
-
-        local items1 = {}
-        items1[1] = "king-gateway.cragon.cn"
-        items1[2] = "king-gateway-dev.cragon.cn"
-        items1[3] = "223.104.212.140"
-        self.ComboChooseGateWay.items = items1
-        self.ComboChooseGateWay.onChanged:Add(
-                function()
-                    self:onClickGateWay()
-                end
-        )
-        self.ComboChooseGateWay.text = items1[1]
-    end
-
-    self.Tips = self.ComUi:GetChild("Tips")
+    --if IsDev then
+    --    show_combo = true
+    --    local items = {}
+    --    items[1] = "http://ucenter.cragon.cn"
+    --    items[2] = "http://ucenterdev.cragon.cn"
+    --    self.ComboChooseUCenter.items = items
+    --    self.ComboChooseUCenter.onChanged:Add(
+    --            function()
+    --                self:onClickUCenter()
+    --            end
+    --    )
+    --    self.ComboChooseUCenter.text = items[1]
+    --
+    --    local items1 = {}
+    --    items1[1] = "king-gateway.cragon.cn"
+    --    items1[2] = "king-gateway-dev.cragon.cn"
+    --    items1[3] = "223.104.212.140"
+    --    self.ComboChooseGateWay.items = items1
+    --    self.ComboChooseGateWay.onChanged:Add(
+    --            function()
+    --                self:onClickGateWay()
+    --            end
+    --    )
+    --    self.ComboChooseGateWay.text = items1[1]
+    --end
 
     ViewHelper:setGObjectVisible(show_combo, self.ComboChooseUCenter)
     ViewHelper:setGObjectVisible(show_combo, self.ComboChooseGateWay)
+
+    self.Tips = self.ComUi:GetChild("Tips")
 
     -- 显示版本信息
     local version_bundle = self.CasinosContext.Config.VersionBundle

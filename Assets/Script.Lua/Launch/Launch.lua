@@ -12,6 +12,21 @@ function LaunchConfig:new(o)
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     self.Env = 'Pro'
     self.CurrentLan = 'ChineseSimplified'
+
+    -- 获取Env值
+    local env_key = "Env"
+    if (CS.UnityEngine.PlayerPrefs.HasKey(env_key) == true) then
+        self.Env = CS.UnityEngine.PlayerPrefs.GetString(env_key)
+    end
+
+    -- 获取CurrentLan值
+    local lan_key = "LanKey"
+    if (CS.UnityEngine.PlayerPrefs.HasKey(lan_key) == true) then
+        self.CurrentLan = CS.UnityEngine.PlayerPrefs.GetString(lan_key)
+    else
+        self.CurrentLan = self.CasinosLua:GetSystemLanguageAsString()
+    end
+
     return o
 end
 
@@ -25,8 +40,6 @@ function Launch:new(o)
     self.__index = self
     if (self.Instance == nil) then
         self.LaunchCfg = LaunchConfig:new(nil)
-        self.Env = 'Pro'
-        self.CurrentLan = 'ChineseSimplified'
         self.PreViewMgr = nil
         self.PreLoading = nil
         self.PreMsgBox = nil
@@ -46,15 +59,7 @@ end
 function Launch:Setup()
     Launch:new(nil)
 
-    -- 获取Env值
-    local env_key = "Env"
-    if (CS.UnityEngine.PlayerPrefs.HasKey(env_key) == true) then
-        self.Env = CS.UnityEngine.PlayerPrefs.GetString(env_key)
-    end
-
-    print('Launch:Setup() Env=' .. self.Env)
-
-    self:_checkCurrentLan()
+    print('Launch:Setup() Env=' .. self.LaunchCfg.Env)
 
     require 'PreViewMgr'
     require 'PreViewBase'
@@ -98,7 +103,7 @@ function Launch:Setup()
     self.PreLoading = self.PreViewMgr:createView("PreLoading")
 
     local tips = "正在努力加载配置，请耐心等待..."
-    local lan = CurrentLan
+    local lan = self.LaunchCfg.CurrentLan
     if (lan == "English") then
         tips = "Try to loading the config,please wait..."
     else
@@ -121,7 +126,7 @@ function Launch:Setup()
 
                 -- 下载并加载Context.lua
                 local data_select = DataSelectPro
-                if (self.Env ~= nil and self.Env == 'Dev') then
+                if (self.LaunchCfg.Env == 'Dev') then
                     data_select = DataSelectDev
                 end
                 local http_url_context = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/Context.lua',
@@ -131,7 +136,7 @@ function Launch:Setup()
                         function(url, www)
                             self.CasinosLua:LoadLuaFromBytes('Context', www.text)
                             self.CasinosLua:DoString('Context')
-                            self.Context = Context:new(nil, self.Env, data_select)
+                            self.Context = Context:new(nil, self.LaunchCfg.Env, data_select)
                             self.Context:Init()
                         end
                 )
@@ -239,15 +244,5 @@ function Launch:OnAndroidQuitConfirm()
     print('OnAndroidQuitConfirm')
     if (self.Context ~= nil) then
     else
-    end
-end
-
----------------------------------------
-function Launch:_checkCurrentLan()
-    local lan_key = "LanKey"
-    if (CS.UnityEngine.PlayerPrefs.HasKey(lan_key) == true) then
-        self.CurrentLan = CS.UnityEngine.PlayerPrefs.GetString(lan_key)
-    else
-        self.CurrentLan = self.CasinosLua:GetSystemLanguageAsString()
     end
 end

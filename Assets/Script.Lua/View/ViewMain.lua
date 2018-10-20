@@ -90,7 +90,7 @@ function ViewMain:onCreate()
             end
     )
     local show_goldtree = false
-    if (ShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true) then
+    if (ClientShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true) then
         show_goldtree = true
     end
     ViewHelper:setGObjectVisible(show_goldtree, btn_goldtree)
