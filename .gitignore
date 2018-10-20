@@ -6,12 +6,11 @@
 Library/
 obj/
 Temp/
-/Assets/.idea
+/Assets/.idea/
 /Assets/.DS_Store
-/Assets/SettingsUser
-/Assets/SettingsUser.meta
-/Assets/Script.Lua/.idea
-/ProjectUiKing/.objs
+/Assets/SettingsUser/
+/Assets/Script.Lua/.idea/
+/ProjectUiKing/.objs/
 /Assembly-CSharp.csproj
 /Assembly-CSharp-Editor.csproj
 /Assembly-CSharp-Editor-firstpass.csproj
@@ -26,7 +25,7 @@ Temp/
 /ProjectUnityNative/Library/
 /ProjectUnityNative/obj/
 /ProjectUnityNative/Temp/
-/ProjectUnityNative/Assets/.idea
+/ProjectUnityNative/Assets/.idea/
 /ProjectUnityNative/Assets/.DS_Store
 /ProjectUnityNative/Assembly-CSharp.csproj
 /ProjectUnityNative/Assembly-CSharp-Editor.csproj
