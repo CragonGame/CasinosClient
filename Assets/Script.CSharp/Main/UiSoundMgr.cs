@@ -35,9 +35,9 @@ namespace Casinos
         public void playSound(string sound_path, GameObject obj, bool is_loop = false)
         {
             bool is_silence = false;
-            if (PlayerPrefs.HasKey(CSoundMgr.SoundIsSilenceKey))
+            if (PlayerPrefs.HasKey(SoundMgr.SoundIsSilenceKey))
             {
-                bool.TryParse(PlayerPrefs.GetString(CSoundMgr.SoundIsSilenceKey), out is_silence);
+                bool.TryParse(PlayerPrefs.GetString(SoundMgr.SoundIsSilenceKey), out is_silence);
             }
 
             if (is_silence)
@@ -46,9 +46,9 @@ namespace Casinos
             }
 
             float volume = 1;
-            if (PlayerPrefs.HasKey(CSoundMgr.SoundKey))
+            if (PlayerPrefs.HasKey(SoundMgr.SoundKey))
             {
-                volume = PlayerPrefs.GetFloat(CSoundMgr.SoundKey);
+                volume = PlayerPrefs.GetFloat(SoundMgr.SoundKey);
             }
 
             AudioClip clip = null;

@@ -138,18 +138,11 @@ function Launch:Setup()
                 )
             end
     )
-
-    --self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
 ---------------------------------------
 -- Launch阶段完成
 function Launch:Finish()
-    --if (self.TimerUpdate ~= nil) then
-    --    self.TimerUpdate:Close()
-    --    self.TimerUpdate = nil
-    --end
-
     if (self.PreViewMgr ~= nil) then
         self.PreViewMgr:Release()
         self.PreViewMgr = nil
@@ -225,13 +218,6 @@ function Launch:OnAndroidQuitConfirm()
     else
     end
 end
-
----------------------------------------
---function Launch:_timerUpdate(tm)
---    if (self.Context ~= nil and self.Context.Valid == nil) then
---        self.Context:Init(self.Env)
---    end
---end
 
 ---------------------------------------
 function Launch:_checkCurrentLan()

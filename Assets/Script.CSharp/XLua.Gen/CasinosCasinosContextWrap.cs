@@ -90,12 +90,9 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 4, 1, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 1, 1, 0);
 			
 			
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LocalDataVersionKey", Casinos.CasinosContext.LocalDataVersionKey);
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "PreDataVersionKey", Casinos.CasinosContext.PreDataVersionKey);
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "LanKey", Casinos.CasinosContext.LanKey);
             
 			Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "Instance", _g_get_Instance);
             

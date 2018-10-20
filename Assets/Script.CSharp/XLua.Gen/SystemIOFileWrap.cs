@@ -31,7 +31,7 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 38, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 40, 0, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "AppendAllText", _m_AppendAllText_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "AppendText", _m_AppendText_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Copy", _m_Copy_xlua_st_);
@@ -69,6 +69,8 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_IDX, "WriteAllText", _m_WriteAllText_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Encrypt", _m_Encrypt_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Decrypt", _m_Decrypt_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "ReadLines", _m_ReadLines_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "AppendAllLines", _m_AppendAllLines_xlua_st_);
             
 			
             
@@ -1162,10 +1164,33 @@ namespace XLua.CSObjectWrap
                     
                     return 0;
                 }
+                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.Collections.Generic.IEnumerable<string>>(L, 2)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    System.Collections.Generic.IEnumerable<string> _contents = (System.Collections.Generic.IEnumerable<string>)translator.GetObject(L, 2, typeof(System.Collections.Generic.IEnumerable<string>));
+                    
+                    System.IO.File.WriteAllLines( _path, _contents );
+                    
+                    
+                    
+                    return 0;
+                }
                 if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& translator.Assignable<string[]>(L, 2)&& translator.Assignable<System.Text.Encoding>(L, 3)) 
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     string[] _contents = (string[])translator.GetObject(L, 2, typeof(string[]));
+                    System.Text.Encoding _encoding = (System.Text.Encoding)translator.GetObject(L, 3, typeof(System.Text.Encoding));
+                    
+                    System.IO.File.WriteAllLines( _path, _contents, _encoding );
+                    
+                    
+                    
+                    return 0;
+                }
+                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.Collections.Generic.IEnumerable<string>>(L, 2)&& translator.Assignable<System.Text.Encoding>(L, 3)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    System.Collections.Generic.IEnumerable<string> _contents = (System.Collections.Generic.IEnumerable<string>)translator.GetObject(L, 2, typeof(System.Collections.Generic.IEnumerable<string>));
                     System.Text.Encoding _encoding = (System.Text.Encoding)translator.GetObject(L, 3, typeof(System.Text.Encoding));
                     
                     System.IO.File.WriteAllLines( _path, _contents, _encoding );
@@ -1271,6 +1296,92 @@ namespace XLua.CSObjectWrap
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_ReadLines_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 1&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    
+                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.File.ReadLines( _path );
+                        translator.PushAny(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.Text.Encoding>(L, 2)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    System.Text.Encoding _encoding = (System.Text.Encoding)translator.GetObject(L, 2, typeof(System.Text.Encoding));
+                    
+                        System.Collections.Generic.IEnumerable<string> gen_ret = System.IO.File.ReadLines( _path, _encoding );
+                        translator.PushAny(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.File.ReadLines!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_AppendAllLines_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.Collections.Generic.IEnumerable<string>>(L, 2)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    System.Collections.Generic.IEnumerable<string> _contents = (System.Collections.Generic.IEnumerable<string>)translator.GetObject(L, 2, typeof(System.Collections.Generic.IEnumerable<string>));
+                    
+                    System.IO.File.AppendAllLines( _path, _contents );
+                    
+                    
+                    
+                    return 0;
+                }
+                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& translator.Assignable<System.Collections.Generic.IEnumerable<string>>(L, 2)&& translator.Assignable<System.Text.Encoding>(L, 3)) 
+                {
+                    string _path = LuaAPI.lua_tostring(L, 1);
+                    System.Collections.Generic.IEnumerable<string> _contents = (System.Collections.Generic.IEnumerable<string>)translator.GetObject(L, 2, typeof(System.Collections.Generic.IEnumerable<string>));
+                    System.Text.Encoding _encoding = (System.Text.Encoding)translator.GetObject(L, 3, typeof(System.Text.Encoding));
+                    
+                    System.IO.File.AppendAllLines( _path, _contents, _encoding );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.File.AppendAllLines!");
             
         }
         

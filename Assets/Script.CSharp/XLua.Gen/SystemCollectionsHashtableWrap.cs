@@ -23,28 +23,28 @@ namespace XLua.CSObjectWrap
 			System.Type type = typeof(System.Collections.Hashtable);
 			Utils.BeginObjectRegister(type, L, translator, 0, 13, 7, 0);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "get_Item", _m_get_Item);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "set_Item", _m_set_Item);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CopyTo", _m_CopyTo);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Add", _m_Add);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Clear", _m_Clear);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Clone", _m_Clone);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Contains", _m_Contains);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetEnumerator", _m_GetEnumerator);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Remove", _m_Remove);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ContainsKey", _m_ContainsKey);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ContainsValue", _m_ContainsValue);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Clone", _m_Clone);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CopyTo", _m_CopyTo);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "get_Item", _m_get_Item);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "set_Item", _m_set_Item);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetEnumerator", _m_GetEnumerator);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Remove", _m_Remove);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetObjectData", _m_GetObjectData);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnDeserialization", _m_OnDeserialization);
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "Count", _g_get_Count);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsSynchronized", _g_get_IsSynchronized);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "SyncRoot", _g_get_SyncRoot);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsReadOnly", _g_get_IsReadOnly);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsFixedSize", _g_get_IsFixedSize);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsReadOnly", _g_get_IsReadOnly);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsSynchronized", _g_get_IsSynchronized);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "Keys", _g_get_Keys);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "Values", _g_get_Values);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "SyncRoot", _g_get_SyncRoot);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "Count", _g_get_Count);
             
 			
 			
@@ -76,6 +76,15 @@ namespace XLua.CSObjectWrap
                     
 					return 1;
 				}
+				if(LuaAPI.lua_gettop(L) == 2 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2))
+				{
+					int _capacity = LuaAPI.xlua_tointeger(L, 2);
+					
+					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_capacity);
+					translator.Push(L, gen_ret);
+                    
+					return 1;
+				}
 				if(LuaAPI.lua_gettop(L) == 3 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2) && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3))
 				{
 					int _capacity = LuaAPI.xlua_tointeger(L, 2);
@@ -86,11 +95,41 @@ namespace XLua.CSObjectWrap
                     
 					return 1;
 				}
-				if(LuaAPI.lua_gettop(L) == 2 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2))
+				if(LuaAPI.lua_gettop(L) == 4 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2) && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3) && translator.Assignable<System.Collections.IEqualityComparer>(L, 4))
 				{
 					int _capacity = LuaAPI.xlua_tointeger(L, 2);
+					float _loadFactor = (float)LuaAPI.lua_tonumber(L, 3);
+					System.Collections.IEqualityComparer _equalityComparer = (System.Collections.IEqualityComparer)translator.GetObject(L, 4, typeof(System.Collections.IEqualityComparer));
 					
-					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_capacity);
+					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_capacity, _loadFactor, _equalityComparer);
+					translator.Push(L, gen_ret);
+                    
+					return 1;
+				}
+				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<System.Collections.IEqualityComparer>(L, 2))
+				{
+					System.Collections.IEqualityComparer _equalityComparer = (System.Collections.IEqualityComparer)translator.GetObject(L, 2, typeof(System.Collections.IEqualityComparer));
+					
+					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_equalityComparer);
+					translator.Push(L, gen_ret);
+                    
+					return 1;
+				}
+				if(LuaAPI.lua_gettop(L) == 3 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2) && translator.Assignable<System.Collections.IEqualityComparer>(L, 3))
+				{
+					int _capacity = LuaAPI.xlua_tointeger(L, 2);
+					System.Collections.IEqualityComparer _equalityComparer = (System.Collections.IEqualityComparer)translator.GetObject(L, 3, typeof(System.Collections.IEqualityComparer));
+					
+					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_capacity, _equalityComparer);
+					translator.Push(L, gen_ret);
+                    
+					return 1;
+				}
+				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<System.Collections.IDictionary>(L, 2))
+				{
+					System.Collections.IDictionary _d = (System.Collections.IDictionary)translator.GetObject(L, 2, typeof(System.Collections.IDictionary));
+					
+					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_d);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -101,15 +140,6 @@ namespace XLua.CSObjectWrap
 					float _loadFactor = (float)LuaAPI.lua_tonumber(L, 3);
 					
 					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_d, _loadFactor);
-					translator.Push(L, gen_ret);
-                    
-					return 1;
-				}
-				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<System.Collections.IDictionary>(L, 2))
-				{
-					System.Collections.IDictionary _d = (System.Collections.IDictionary)translator.GetObject(L, 2, typeof(System.Collections.IDictionary));
-					
-					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_d);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -135,36 +165,6 @@ namespace XLua.CSObjectWrap
                     
 					return 1;
 				}
-				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<System.Collections.IEqualityComparer>(L, 2))
-				{
-					System.Collections.IEqualityComparer _equalityComparer = (System.Collections.IEqualityComparer)translator.GetObject(L, 2, typeof(System.Collections.IEqualityComparer));
-					
-					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_equalityComparer);
-					translator.Push(L, gen_ret);
-                    
-					return 1;
-				}
-				if(LuaAPI.lua_gettop(L) == 3 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2) && translator.Assignable<System.Collections.IEqualityComparer>(L, 3))
-				{
-					int _capacity = LuaAPI.xlua_tointeger(L, 2);
-					System.Collections.IEqualityComparer _equalityComparer = (System.Collections.IEqualityComparer)translator.GetObject(L, 3, typeof(System.Collections.IEqualityComparer));
-					
-					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_capacity, _equalityComparer);
-					translator.Push(L, gen_ret);
-                    
-					return 1;
-				}
-				if(LuaAPI.lua_gettop(L) == 4 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2) && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3) && translator.Assignable<System.Collections.IEqualityComparer>(L, 4))
-				{
-					int _capacity = LuaAPI.xlua_tointeger(L, 2);
-					float _loadFactor = (float)LuaAPI.lua_tonumber(L, 3);
-					System.Collections.IEqualityComparer _equalityComparer = (System.Collections.IEqualityComparer)translator.GetObject(L, 4, typeof(System.Collections.IEqualityComparer));
-					
-					System.Collections.Hashtable gen_ret = new System.Collections.Hashtable(_capacity, _loadFactor, _equalityComparer);
-					translator.Push(L, gen_ret);
-                    
-					return 1;
-				}
 				
 			}
 			catch(System.Exception gen_e) {
@@ -180,91 +180,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_get_Item(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-					object key = translator.GetObject(L, 2, typeof(object));
-					translator.PushAny(L, gen_to_be_invoked[key]);
-					
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_set_Item(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-					object key = translator.GetObject(L, 2, typeof(object));
-					gen_to_be_invoked[key] = translator.GetObject(L, 3, typeof(object));
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_CopyTo(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    System.Array _array = (System.Array)translator.GetObject(L, 2, typeof(System.Array));
-                    int _arrayIndex = LuaAPI.xlua_tointeger(L, 3);
-                    
-                    gen_to_be_invoked.CopyTo( _array, _arrayIndex );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_Add(RealStatePtr L)
@@ -323,6 +238,34 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Clone(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        object gen_ret = gen_to_be_invoked.Clone(  );
+                        translator.PushAny(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_Contains(RealStatePtr L)
         {
 		    try {
@@ -343,62 +286,6 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetEnumerator(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-                        System.Collections.IDictionaryEnumerator gen_ret = gen_to_be_invoked.GetEnumerator(  );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Remove(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    object _key = translator.GetObject(L, 2, typeof(object));
-                    
-                    gen_to_be_invoked.Remove( _key );
-                    
-                    
-                    
-                    return 0;
                 }
                 
             } catch(System.Exception gen_e) {
@@ -466,7 +353,36 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Clone(RealStatePtr L)
+        static int _m_CopyTo(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    System.Array _array = (System.Array)translator.GetObject(L, 2, typeof(System.Array));
+                    int _arrayIndex = LuaAPI.xlua_tointeger(L, 3);
+                    
+                    gen_to_be_invoked.CopyTo( _array, _arrayIndex );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_get_Item(RealStatePtr L)
         {
 		    try {
             
@@ -479,8 +395,119 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        object gen_ret = gen_to_be_invoked.Clone(  );
+					object key = translator.GetObject(L, 2, typeof(object));
+					translator.PushAny(L, gen_to_be_invoked[key]);
+					
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_set_Item(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+					object key = translator.GetObject(L, 2, typeof(object));
+					gen_to_be_invoked[key] = translator.GetObject(L, 3, typeof(object));
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetEnumerator(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        System.Collections.IDictionaryEnumerator gen_ret = gen_to_be_invoked.GetEnumerator(  );
                         translator.PushAny(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Remove(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    object _key = translator.GetObject(L, 2, typeof(object));
+                    
+                    gen_to_be_invoked.Remove( _key );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Synchronized_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    System.Collections.Hashtable _table = (System.Collections.Hashtable)translator.GetObject(L, 1, typeof(System.Collections.Hashtable));
+                    
+                        System.Collections.Hashtable gen_ret = System.Collections.Hashtable.Synchronized( _table );
+                        translator.Push(L, gen_ret);
                     
                     
                     
@@ -550,72 +577,17 @@ namespace XLua.CSObjectWrap
             
         }
         
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Synchronized_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    System.Collections.Hashtable _table = (System.Collections.Hashtable)translator.GetObject(L, 1, typeof(System.Collections.Hashtable));
-                    
-                        System.Collections.Hashtable gen_ret = System.Collections.Hashtable.Synchronized( _table );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
         
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_Count(RealStatePtr L)
+        static int _g_get_IsReadOnly(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
-                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.Count);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_IsSynchronized(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.IsSynchronized);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_SyncRoot(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
-                translator.PushAny(L, gen_to_be_invoked.SyncRoot);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.IsReadOnly);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -637,13 +609,13 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_IsReadOnly(RealStatePtr L)
+        static int _g_get_IsSynchronized(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.IsReadOnly);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.IsSynchronized);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -672,6 +644,34 @@ namespace XLua.CSObjectWrap
 			
                 System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
                 translator.PushAny(L, gen_to_be_invoked.Values);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_SyncRoot(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
+                translator.PushAny(L, gen_to_be_invoked.SyncRoot);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_Count(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                System.Collections.Hashtable gen_to_be_invoked = (System.Collections.Hashtable)translator.FastGetCSObj(L, 1);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.Count);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

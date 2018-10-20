@@ -28,9 +28,9 @@ namespace XLua.CSObjectWrap
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "Count", _g_get_Count);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsReadOnly", _g_get_IsReadOnly);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsSynchronized", _g_get_IsSynchronized);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "SyncRoot", _g_get_SyncRoot);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsSynchronized", _g_get_IsSynchronized);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsReadOnly", _g_get_IsReadOnly);
             
 			
 			
@@ -99,9 +99,9 @@ namespace XLua.CSObjectWrap
                 
                 {
                     System.Array _array = (System.Array)translator.GetObject(L, 2, typeof(System.Array));
-                    int _index = LuaAPI.xlua_tointeger(L, 3);
+                    int _arrayIndex = LuaAPI.xlua_tointeger(L, 3);
                     
-                    gen_to_be_invoked.CopyTo( _array, _index );
+                    gen_to_be_invoked.CopyTo( _array, _arrayIndex );
                     
                     
                     
@@ -160,13 +160,13 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_IsReadOnly(RealStatePtr L)
+        static int _g_get_SyncRoot(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 System.Text.RegularExpressions.MatchCollection gen_to_be_invoked = (System.Text.RegularExpressions.MatchCollection)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.IsReadOnly);
+                translator.PushAny(L, gen_to_be_invoked.SyncRoot);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -188,13 +188,13 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_SyncRoot(RealStatePtr L)
+        static int _g_get_IsReadOnly(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 System.Text.RegularExpressions.MatchCollection gen_to_be_invoked = (System.Text.RegularExpressions.MatchCollection)translator.FastGetCSObj(L, 1);
-                translator.PushAny(L, gen_to_be_invoked.SyncRoot);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.IsReadOnly);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

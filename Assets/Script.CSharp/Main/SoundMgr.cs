@@ -36,11 +36,11 @@ namespace Casinos
     public class CSoundLayerBackground : ISoundLayer
     {
         //---------------------------------------------------------------------
-        CSoundMgr mSoundMgr = null;
+        SoundMgr mSoundMgr = null;
         List<AudioSource> mListAudioPlaying = new List<AudioSource>();
 
         //---------------------------------------------------------------------
-        public CSoundLayerBackground(CSoundMgr sound_mgr)
+        public CSoundLayerBackground(SoundMgr sound_mgr)
         {
             mSoundMgr = sound_mgr;
         }
@@ -55,21 +55,21 @@ namespace Casinos
         public void play(AudioSource audio_src)
         {
             bool is_silence = false;
-            if (PlayerPrefs.HasKey(CSoundMgr.MusicIsSilenceKey))
+            if (PlayerPrefs.HasKey(SoundMgr.MusicIsSilenceKey))
             {
-                bool.TryParse(PlayerPrefs.GetString(CSoundMgr.MusicIsSilenceKey), out is_silence);
+                bool.TryParse(PlayerPrefs.GetString(SoundMgr.MusicIsSilenceKey), out is_silence);
             }
 
             destroy();
 
             float music_value = 0f;
-            if (!PlayerPrefs.HasKey(CSoundMgr.BGMusicKey))
+            if (!PlayerPrefs.HasKey(SoundMgr.BGMusicKey))
             {
-                music_value = CSoundMgr.DefaultBgMusicVolume;
+                music_value = SoundMgr.DefaultBgMusicVolume;
             }
             else
             {
-                music_value = PlayerPrefs.GetFloat(CSoundMgr.BGMusicKey);
+                music_value = PlayerPrefs.GetFloat(SoundMgr.BGMusicKey);
             }
 
             if (is_silence)
@@ -118,11 +118,11 @@ namespace Casinos
     public class CSoundLayerIgnore : ISoundLayer
     {
         //---------------------------------------------------------------------
-        CSoundMgr mSoundMgr = null;
+        SoundMgr mSoundMgr = null;
         AudioSource mAudioPlaying = null;
 
         //---------------------------------------------------------------------
-        public CSoundLayerIgnore(CSoundMgr sound_mgr)
+        public CSoundLayerIgnore(SoundMgr sound_mgr)
         {
             mSoundMgr = sound_mgr;
         }
@@ -137,21 +137,21 @@ namespace Casinos
         public void play(AudioSource audio_src)
         {
             bool is_silence = false;
-            if (PlayerPrefs.HasKey(CSoundMgr.SoundIsSilenceKey))
+            if (PlayerPrefs.HasKey(SoundMgr.SoundIsSilenceKey))
             {
-                bool.TryParse(PlayerPrefs.GetString(CSoundMgr.SoundIsSilenceKey), out is_silence);
+                bool.TryParse(PlayerPrefs.GetString(SoundMgr.SoundIsSilenceKey), out is_silence);
             }
 
             if (mAudioPlaying == null)
             {
                 float music_value = 0f;
-                if (!PlayerPrefs.HasKey(CSoundMgr.SoundKey))
+                if (!PlayerPrefs.HasKey(SoundMgr.SoundKey))
                 {
-                    music_value = CSoundMgr.DefaultSoundVolume;
+                    music_value = SoundMgr.DefaultSoundVolume;
                 }
                 else
                 {
-                    music_value = PlayerPrefs.GetFloat(CSoundMgr.SoundKey);
+                    music_value = PlayerPrefs.GetFloat(SoundMgr.SoundKey);
                 }
 
                 if (is_silence)
@@ -208,12 +208,12 @@ namespace Casinos
     public class CSoundLayerReplaceFromBegin : ISoundLayer
     {
         //---------------------------------------------------------------------
-        CSoundMgr mSoundMgr = null;
+        SoundMgr mSoundMgr = null;
         Dictionary<string, AudioSource> mMapAudioPlaying = new Dictionary<string, AudioSource>();
         List<string> mListDestroy = new List<string>();
 
         //---------------------------------------------------------------------
-        public CSoundLayerReplaceFromBegin(CSoundMgr sound_mgr)
+        public CSoundLayerReplaceFromBegin(SoundMgr sound_mgr)
         {
             mSoundMgr = sound_mgr;
         }
@@ -228,9 +228,9 @@ namespace Casinos
         public void play(AudioSource audio_src)
         {
             bool is_silence = false;
-            if (PlayerPrefs.HasKey(CSoundMgr.SoundIsSilenceKey))
+            if (PlayerPrefs.HasKey(SoundMgr.SoundIsSilenceKey))
             {
-                bool.TryParse(PlayerPrefs.GetString(CSoundMgr.SoundIsSilenceKey), out is_silence);
+                bool.TryParse(PlayerPrefs.GetString(SoundMgr.SoundIsSilenceKey), out is_silence);
             }
 
             if (mMapAudioPlaying.ContainsKey(audio_src.name))
@@ -246,13 +246,13 @@ namespace Casinos
             {
                 // 不同名重叠
                 float music_value = 0f;
-                if (!PlayerPrefs.HasKey(CSoundMgr.SoundKey))
+                if (!PlayerPrefs.HasKey(SoundMgr.SoundKey))
                 {
-                    music_value = CSoundMgr.DefaultSoundVolume;
+                    music_value = SoundMgr.DefaultSoundVolume;
                 }
                 else
                 {
-                    music_value = PlayerPrefs.GetFloat(CSoundMgr.SoundKey);
+                    music_value = PlayerPrefs.GetFloat(SoundMgr.SoundKey);
                 }
 
                 if (is_silence)
@@ -315,12 +315,12 @@ namespace Casinos
     public class CSoundLayerReplace : ISoundLayer
     {
         //---------------------------------------------------------------------
-        CSoundMgr mSoundMgr = null;
+        SoundMgr mSoundMgr = null;
         Dictionary<string, AudioSource> mMapAudioPlaying = new Dictionary<string, AudioSource>();
         List<string> mListDestroy = new List<string>();
 
         //---------------------------------------------------------------------
-        public CSoundLayerReplace(CSoundMgr sound_mgr)
+        public CSoundLayerReplace(SoundMgr sound_mgr)
         {
             mSoundMgr = sound_mgr;
         }
@@ -335,9 +335,9 @@ namespace Casinos
         public void play(AudioSource audio_src)
         {
             bool is_silence = false;
-            if (PlayerPrefs.HasKey(CSoundMgr.SoundIsSilenceKey))
+            if (PlayerPrefs.HasKey(SoundMgr.SoundIsSilenceKey))
             {
-                bool.TryParse(PlayerPrefs.GetString(CSoundMgr.SoundIsSilenceKey), out is_silence);
+                bool.TryParse(PlayerPrefs.GetString(SoundMgr.SoundIsSilenceKey), out is_silence);
             }
 
             if (mMapAudioPlaying.ContainsKey(audio_src.name))
@@ -349,13 +349,13 @@ namespace Casinos
             {
                 // 不同名重叠
                 float music_value = 0f;
-                if (!PlayerPrefs.HasKey(CSoundMgr.SoundKey))
+                if (!PlayerPrefs.HasKey(SoundMgr.SoundKey))
                 {
-                    music_value = CSoundMgr.DefaultSoundVolume;
+                    music_value = SoundMgr.DefaultSoundVolume;
                 }
                 else
                 {
-                    music_value = PlayerPrefs.GetFloat(CSoundMgr.SoundKey);
+                    music_value = PlayerPrefs.GetFloat(SoundMgr.SoundKey);
                 }
 
                 if (is_silence)
@@ -418,12 +418,12 @@ namespace Casinos
     public class CSoundLayerNormal : ISoundLayer
     {
         //---------------------------------------------------------------------
-        CSoundMgr mSoundMgr = null;
+        SoundMgr mSoundMgr = null;
         List<AudioSource> mListAudioPlaying = new List<AudioSource>();
         List<AudioSource> mListAudioDestroy = new List<AudioSource>();
 
         //---------------------------------------------------------------------
-        public CSoundLayerNormal(CSoundMgr sound_mgr)
+        public CSoundLayerNormal(SoundMgr sound_mgr)
         {
             mSoundMgr = sound_mgr;
         }
@@ -438,9 +438,9 @@ namespace Casinos
         public void play(AudioSource audio_src)
         {
             bool is_silence = false;
-            if (PlayerPrefs.HasKey(CSoundMgr.SoundIsSilenceKey))
+            if (PlayerPrefs.HasKey(SoundMgr.SoundIsSilenceKey))
             {
-                bool.TryParse(PlayerPrefs.GetString(CSoundMgr.SoundIsSilenceKey), out is_silence);
+                bool.TryParse(PlayerPrefs.GetString(SoundMgr.SoundIsSilenceKey), out is_silence);
             }
 
             // 同名最多10个
@@ -455,13 +455,13 @@ namespace Casinos
             }
 
             float music_value = 0f;
-            if (!PlayerPrefs.HasKey(CSoundMgr.SoundKey))
+            if (!PlayerPrefs.HasKey(SoundMgr.SoundKey))
             {
-                music_value = CSoundMgr.DefaultSoundVolume;
+                music_value = SoundMgr.DefaultSoundVolume;
             }
             else
             {
-                music_value = PlayerPrefs.GetFloat(CSoundMgr.SoundKey);
+                music_value = PlayerPrefs.GetFloat(SoundMgr.SoundKey);
             }
 
             if (count < 10)
@@ -525,7 +525,7 @@ namespace Casinos
         }
     }
 
-    public class CSoundMgr
+    public class SoundMgr
     {
         //---------------------------------------------------------------------
         GameObject mObjAudio = null;
@@ -544,7 +544,7 @@ namespace Casinos
         public const float DefaultSoundVolume = 1f;
 
         //---------------------------------------------------------------------
-        public CSoundMgr()
+        public SoundMgr()
         {
             mObjAudio = new GameObject("Audio Object");
             AudioFold = UiHelperCasinos.getABAudioResourceTitlePath();

@@ -48,9 +48,8 @@ function ViewEdit:onCreate()
     )
     self.SoundBar = self.ComUi:GetChild("soundBar").asSlider
     local volum_bg = 0.5
-    if (CS.UnityEngine.PlayerPrefs.HasKey(CS.Casinos.CSoundMgr.BGMusicKey))
-    then
-        volum_bg = CS.UnityEngine.PlayerPrefs.GetFloat(CS.Casinos.CSoundMgr.BGMusicKey)
+    if (CS.UnityEngine.PlayerPrefs.HasKey(CS.Casinos.SoundMgr.BGMusicKey)) then
+        volum_bg = CS.UnityEngine.PlayerPrefs.GetFloat(CS.Casinos.SoundMgr.BGMusicKey)
     end
     self.SoundBar.value = volum_bg * 100
     self.SoundBar.onChanged:Add(
@@ -60,9 +59,9 @@ function ViewEdit:onCreate()
     )
     self.SoundEffectBar = self.ComUi:GetChild("soundEffectBar").asSlider
     local volum = 0.5
-    if (CS.UnityEngine.PlayerPrefs.HasKey(CS.Casinos.CSoundMgr.SoundKey))
+    if (CS.UnityEngine.PlayerPrefs.HasKey(CS.Casinos.SoundMgr.SoundKey))
     then
-        volum = CS.UnityEngine.PlayerPrefs.GetFloat(CS.Casinos.CSoundMgr.SoundKey)
+        volum = CS.UnityEngine.PlayerPrefs.GetFloat(CS.Casinos.SoundMgr.SoundKey)
     end
     self.SoundEffectBar.value = volum * 100
     self.SoundEffectBar.onChanged:Add(
@@ -114,14 +113,14 @@ end
 function ViewEdit:sliderMusicChange()
     local current_value = self.SoundBar.value
     current_value = current_value / 100
-    CS.UnityEngine.PlayerPrefs.SetFloat(CS.Casinos.CSoundMgr.BGMusicKey, current_value)
+    CS.UnityEngine.PlayerPrefs.SetFloat(CS.Casinos.SoundMgr.BGMusicKey, current_value)
     CS.Casinos.CasinosContext.Instance:bgVolumeChange(current_value)
 end
 
 function ViewEdit:sliderSoundChange()
     local current_value = self.SoundEffectBar.value
     current_value = current_value / 100
-    CS.UnityEngine.PlayerPrefs.SetFloat(CS.Casinos.CSoundMgr.SoundKey, current_value)
+    CS.UnityEngine.PlayerPrefs.SetFloat(CS.Casinos.SoundMgr.SoundKey, current_value)
 end
 
 function ViewEdit:onClickResetPwd()

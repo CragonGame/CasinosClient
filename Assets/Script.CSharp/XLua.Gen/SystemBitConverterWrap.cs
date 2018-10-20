@@ -32,10 +32,7 @@ namespace XLua.CSObjectWrap
 			    null, null, null);
 
 		    Utils.BeginClassRegister(type, L, __CreateInstance, 16, 0, 0);
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "DoubleToInt64Bits", _m_DoubleToInt64Bits_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "Int64BitsToDouble", _m_Int64BitsToDouble_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetBytes", _m_GetBytes_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "ToBoolean", _m_ToBoolean_xlua_st_);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "GetBytes", _m_GetBytes_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ToChar", _m_ToChar_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ToInt16", _m_ToInt16_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ToInt32", _m_ToInt32_xlua_st_);
@@ -46,6 +43,9 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ToSingle", _m_ToSingle_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ToDouble", _m_ToDouble_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ToString", _m_ToString_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "ToBoolean", _m_ToBoolean_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "DoubleToInt64Bits", _m_DoubleToInt64Bits_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "Int64BitsToDouble", _m_Int64BitsToDouble_xlua_st_);
             
 			
             Utils.RegisterObject(L, translator, Utils.CLS_IDX, "IsLittleEndian", System.BitConverter.IsLittleEndian);
@@ -68,56 +68,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_DoubleToInt64Bits_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    double _value = LuaAPI.lua_tonumber(L, 1);
-                    
-                        long gen_ret = System.BitConverter.DoubleToInt64Bits( _value );
-                        LuaAPI.lua_pushint64(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Int64BitsToDouble_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    long _value = LuaAPI.lua_toint64(L, 1);
-                    
-                        double gen_ret = System.BitConverter.Int64BitsToDouble( _value );
-                        LuaAPI.lua_pushnumber(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_GetBytes_xlua_st_(RealStatePtr L)
@@ -244,32 +194,6 @@ namespace XLua.CSObjectWrap
             }
             
             return LuaAPI.luaL_error(L, "invalid arguments to System.BitConverter.GetBytes!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_ToBoolean_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    byte[] _value = LuaAPI.lua_tobytes(L, 1);
-                    int _startIndex = LuaAPI.xlua_tointeger(L, 2);
-                    
-                        bool gen_ret = System.BitConverter.ToBoolean( _value, _startIndex );
-                        LuaAPI.lua_pushboolean(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
             
         }
         
@@ -558,6 +482,82 @@ namespace XLua.CSObjectWrap
             }
             
             return LuaAPI.luaL_error(L, "invalid arguments to System.BitConverter.ToString!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_ToBoolean_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+                
+                {
+                    byte[] _value = LuaAPI.lua_tobytes(L, 1);
+                    int _startIndex = LuaAPI.xlua_tointeger(L, 2);
+                    
+                        bool gen_ret = System.BitConverter.ToBoolean( _value, _startIndex );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_DoubleToInt64Bits_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+                
+                {
+                    double _value = LuaAPI.lua_tonumber(L, 1);
+                    
+                        long gen_ret = System.BitConverter.DoubleToInt64Bits( _value );
+                        LuaAPI.lua_pushint64(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Int64BitsToDouble_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+                
+                {
+                    long _value = LuaAPI.lua_toint64(L, 1);
+                    
+                        double gen_ret = System.BitConverter.Int64BitsToDouble( _value );
+                        LuaAPI.lua_pushnumber(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
             
         }
         

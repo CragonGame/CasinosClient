@@ -10,12 +10,13 @@ public class EditorViewDataPublish : EditorWindow
 {
     //-------------------------------------------------------------------------
     HashSet<string> DoNotPackFileExtention = new HashSet<string> { ".meta", ".DS_Store" };
-    //HashSet<string> DoNotCopyDir = new HashSet<string> { ".idea" };
     string AssetBundleSingleFoldName = "BuildAssetBundleFromSingle";
     string AssetBundlePkgFoldFoldName = "BuildAssetBundleFromFold";
     string AssetBundleLaunchFoldName = "Resources.KingTexasLaunch";
     MD5 MD5 = new MD5CryptoServiceProvider();
     StringBuilder Sb = new StringBuilder();
+
+    //HashSet<string> DoNotCopyDir = new HashSet<string> { ".idea" };
 
     //-------------------------------------------------------------------------
     void OnGUI()

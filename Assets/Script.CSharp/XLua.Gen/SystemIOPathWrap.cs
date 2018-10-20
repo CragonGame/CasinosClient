@@ -104,9 +104,24 @@ namespace XLua.CSObjectWrap
         {
 		    try {
             
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                
+            
+			    int gen_param_count = LuaAPI.lua_gettop(L);
+            
+                if(gen_param_count >= 0&& (LuaTypes.LUA_TNONE == LuaAPI.lua_type(L, 1) || (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING))) 
+                {
+                    string[] _paths = translator.GetParams<string>(L, 1);
+                    
+                        string gen_ret = System.IO.Path.Combine( _paths );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 2&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)) 
                 {
                     string _path1 = LuaAPI.lua_tostring(L, 1);
                     string _path2 = LuaAPI.lua_tostring(L, 2);
@@ -118,10 +133,39 @@ namespace XLua.CSObjectWrap
                     
                     return 1;
                 }
+                if(gen_param_count == 3&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 3) || LuaAPI.lua_type(L, 3) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _path1 = LuaAPI.lua_tostring(L, 1);
+                    string _path2 = LuaAPI.lua_tostring(L, 2);
+                    string _path3 = LuaAPI.lua_tostring(L, 3);
+                    
+                        string gen_ret = System.IO.Path.Combine( _path1, _path2, _path3 );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                if(gen_param_count == 4&& (LuaAPI.lua_isnil(L, 1) || LuaAPI.lua_type(L, 1) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 3) || LuaAPI.lua_type(L, 3) == LuaTypes.LUA_TSTRING)&& (LuaAPI.lua_isnil(L, 4) || LuaAPI.lua_type(L, 4) == LuaTypes.LUA_TSTRING)) 
+                {
+                    string _path1 = LuaAPI.lua_tostring(L, 1);
+                    string _path2 = LuaAPI.lua_tostring(L, 2);
+                    string _path3 = LuaAPI.lua_tostring(L, 3);
+                    string _path4 = LuaAPI.lua_tostring(L, 4);
+                    
+                        string gen_ret = System.IO.Path.Combine( _path1, _path2, _path3, _path4 );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
                 
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
+            
+            return LuaAPI.luaL_error(L, "invalid arguments to System.IO.Path.Combine!");
             
         }
         

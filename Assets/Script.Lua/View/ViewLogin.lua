@@ -214,7 +214,7 @@ function ViewLogin:onCreate()
     local denglong_parent = self.ComUi:GetChild("DengLongParent").asCom
     self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton")
     self.DengLongAnim.transform.parent = denglong_parent.displayObject.gameObject.transform
-    self.DengLongAnim.transform.localPosition =  CS.Casinos.LuaHelper.GetVector3(-10, -90, -318)
+    self.DengLongAnim.transform.localPosition = CS.Casinos.LuaHelper.GetVector3(-10, -90, -318)
     self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(90, 90, 90)
     self.DengLongAnim.transform.gameObject.layer = denglong_parent.displayObject.gameObject.layer
     self.DengLongAnim:Initialize(false)

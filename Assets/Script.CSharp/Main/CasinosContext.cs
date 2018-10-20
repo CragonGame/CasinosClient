@@ -77,14 +77,10 @@ namespace Casinos
         public bool UnityIOS { get; set; }
         public bool IsEditor { get; set; }
         public bool IsSqliteUnity { get; set; }
+        public LuaTable TbDataMgrLua { get; set; }
         FTMgr FTMgr { get; set; }
         HeadIconMgr HeadIconMgr { get; set; }
-        CSoundMgr SoundMgr { get; set; }
-        public LuaTable TbDataMgrLua { get; set; }
-
-        public const string LocalDataVersionKey = "LocalVersionInfo";
-        public const string PreDataVersionKey = "PreDataVersion";
-        public const string LanKey = "LanKey";
+        SoundMgr SoundMgr { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosContext(bool use_persistent,
@@ -213,7 +209,7 @@ namespace Casinos
 
             Debug.Log("2hhhhhhhhh");
 
-            SoundMgr = new CSoundMgr();
+            SoundMgr = new SoundMgr();
 
             Debug.Log("2iiiiiiiii");
 
@@ -392,7 +388,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void ReportLogWithPlayerId(string name, string player_id, string message, string stackTrace)
         {
-            if (CanReportLog 
+            if (CanReportLog
                 && !string.IsNullOrEmpty(CanReportLogPlayerId)
                 && CanReportLogPlayerId.Equals(player_id))
             {

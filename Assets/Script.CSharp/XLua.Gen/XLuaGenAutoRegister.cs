@@ -21,6 +21,8 @@ namespace XLua.CSObjectWrap
         {
 		    XLua.LuaEnv.AddIniter((luaenv, translator) => {
 			    
+				translator.DelayWrapLoader(typeof(Casinos.UiHelperCasinos), CasinosUiHelperCasinosWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(Casinos.CasinoHelper), CasinosCasinoHelperWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.CasinosContext), CasinosCasinosContextWrap.__Register);
@@ -292,8 +294,6 @@ namespace XLua.CSObjectWrap
 				translator.DelayWrapLoader(typeof(Casinos.PathMgr), CasinosPathMgrWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.SpineHelper), CasinosSpineHelperWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.UiHelperCasinos), CasinosUiHelperCasinosWrap.__Register);
 				
 				
 				

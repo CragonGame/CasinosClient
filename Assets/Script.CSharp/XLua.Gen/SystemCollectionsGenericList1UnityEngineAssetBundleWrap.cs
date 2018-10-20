@@ -87,20 +87,20 @@ namespace XLua.CSObjectWrap
                     
 					return 1;
 				}
-				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<System.Collections.Generic.IEnumerable<UnityEngine.AssetBundle>>(L, 2))
-				{
-					System.Collections.Generic.IEnumerable<UnityEngine.AssetBundle> _collection = (System.Collections.Generic.IEnumerable<UnityEngine.AssetBundle>)translator.GetObject(L, 2, typeof(System.Collections.Generic.IEnumerable<UnityEngine.AssetBundle>));
-					
-					System.Collections.Generic.List<UnityEngine.AssetBundle> gen_ret = new System.Collections.Generic.List<UnityEngine.AssetBundle>(_collection);
-					translator.Push(L, gen_ret);
-                    
-					return 1;
-				}
 				if(LuaAPI.lua_gettop(L) == 2 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2))
 				{
 					int _capacity = LuaAPI.xlua_tointeger(L, 2);
 					
 					System.Collections.Generic.List<UnityEngine.AssetBundle> gen_ret = new System.Collections.Generic.List<UnityEngine.AssetBundle>(_capacity);
+					translator.Push(L, gen_ret);
+                    
+					return 1;
+				}
+				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<System.Collections.Generic.IEnumerable<UnityEngine.AssetBundle>>(L, 2))
+				{
+					System.Collections.Generic.IEnumerable<UnityEngine.AssetBundle> _collection = (System.Collections.Generic.IEnumerable<UnityEngine.AssetBundle>)translator.GetObject(L, 2, typeof(System.Collections.Generic.IEnumerable<UnityEngine.AssetBundle>));
+					
+					System.Collections.Generic.List<UnityEngine.AssetBundle> gen_ret = new System.Collections.Generic.List<UnityEngine.AssetBundle>(_collection);
 					translator.Push(L, gen_ret);
                     
 					return 1;
