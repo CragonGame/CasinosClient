@@ -45,9 +45,8 @@ end
 
 ---------------------------------------
 function PreViewMgr:Init()
-    CS.FairyGUI.GRoot.inst:SetContentScaleFactor(PreViewMgr.STANDARD_WIDTH, PreViewMgr.STANDARD_HEIGHT,
-            CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
-    CS.FairyGUI.UIConfig.defaultFont = "Microsoft YaHei"
+    CS.FairyGUI.GRoot.inst:SetContentScaleFactor(PreViewMgr.STANDARD_WIDTH, PreViewMgr.STANDARD_HEIGHT, CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
+    CS.FairyGUI.UIConfig.defaultFont = "FontXi"
 
     local view_loading_fac = PreViewLoadingFactory:new(nil, "PreLoading", "PreLoading", "Loading", true, CS.FairyGUI.FitScreen.FitSize)
     self:regView("PreLoading", view_loading_fac)
