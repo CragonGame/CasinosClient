@@ -10,6 +10,7 @@ Temp/
 /Assets/.DS_Store
 /Assets/SettingsUser
 /Assets/SettingsUser.meta
+/Assets/Script.Lua/.idea
 /ProjectUiKing/.objs
 /Assembly-CSharp.csproj
 /Assembly-CSharp-Editor.csproj
