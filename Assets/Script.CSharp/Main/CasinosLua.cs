@@ -172,9 +172,9 @@ namespace Casinos
             typeof(TcpClient),
             typeof(ThirdPartyLogin),
             typeof(TimerShaft),
-            typeof(UiSoundMgr),
             typeof(UiHelper),
             typeof(UpdateRemoteToPersistentData),
+            //typeof(UiSoundMgr),
             //typeof(DevInfoSet),
             //typeof(MobLink),
             //typeof(MobLinkScene),
@@ -183,6 +183,7 @@ namespace Casinos
             //typeof(UniWebViewMessage),
 
             // SDKs
+            typeof(ZXing.BarcodeFormat),
             typeof(BuglyAgent),
             typeof(OnePF.Purchase),
             typeof(cn.sharesdk.unity3d.ShareContent),

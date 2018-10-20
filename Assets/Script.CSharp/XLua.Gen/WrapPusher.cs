@@ -48,6 +48,7 @@ namespace XLua
 				translator.RegisterPushAndGetAndUpdate<Casinos._eProjectItemDisplayNameKey>(translator.PushCasinos_eProjectItemDisplayNameKey, translator.Get, translator.UpdateCasinos_eProjectItemDisplayNameKey);
 				translator.RegisterPushAndGetAndUpdate<_eAsyncAssetLoadType>(translator.Push_eAsyncAssetLoadType, translator.Get, translator.Update_eAsyncAssetLoadType);
 				translator.RegisterPushAndGetAndUpdate<_ePayType>(translator.Push_ePayType, translator.Get, translator.Update_ePayType);
+				translator.RegisterPushAndGetAndUpdate<ZXing.BarcodeFormat>(translator.PushZXingBarcodeFormat, translator.Get, translator.UpdateZXingBarcodeFormat);
 				translator.RegisterPushAndGetAndUpdate<Casinos._eEditorRunSourcePlatform>(translator.PushCasinos_eEditorRunSourcePlatform, translator.Get, translator.UpdateCasinos_eEditorRunSourcePlatform);
 			
 			}
@@ -1761,6 +1762,90 @@ namespace XLua
             }
         }
         
+        int ZXingBarcodeFormat_TypeID = -1;
+		int ZXingBarcodeFormat_EnumRef = -1;
+        
+        public void PushZXingBarcodeFormat(RealStatePtr L, ZXing.BarcodeFormat val)
+        {
+            if (ZXingBarcodeFormat_TypeID == -1)
+            {
+			    bool is_first;
+                ZXingBarcodeFormat_TypeID = getTypeId(L, typeof(ZXing.BarcodeFormat), out is_first);
+				
+				if (ZXingBarcodeFormat_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(ZXing.BarcodeFormat));
+				    ZXingBarcodeFormat_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, ZXingBarcodeFormat_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, ZXingBarcodeFormat_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for ZXing.BarcodeFormat ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, ZXingBarcodeFormat_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out ZXing.BarcodeFormat val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != ZXingBarcodeFormat_TypeID)
+				{
+				    throw new Exception("invalid userdata for ZXing.BarcodeFormat");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for ZXing.BarcodeFormat");
+                }
+				val = (ZXing.BarcodeFormat)e;
+                
+            }
+            else
+            {
+                val = (ZXing.BarcodeFormat)objectCasters.GetCaster(typeof(ZXing.BarcodeFormat))(L, index, null);
+            }
+        }
+		
+        public void UpdateZXingBarcodeFormat(RealStatePtr L, int index, ZXing.BarcodeFormat val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != ZXingBarcodeFormat_TypeID)
+				{
+				    throw new Exception("invalid userdata for ZXing.BarcodeFormat");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for ZXing.BarcodeFormat ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
         int Casinos_eEditorRunSourcePlatform_TypeID = -1;
 		int Casinos_eEditorRunSourcePlatform_EnumRef = -1;
         
@@ -1988,6 +2073,12 @@ namespace XLua
 				translator.Push_ePayType(L, array[index]);
 				return true;
 			}
+			else if (type == typeof(ZXing.BarcodeFormat[]))
+			{
+			    ZXing.BarcodeFormat[] array = obj as ZXing.BarcodeFormat[];
+				translator.PushZXingBarcodeFormat(L, array[index]);
+				return true;
+			}
 			else if (type == typeof(Casinos._eEditorRunSourcePlatform[]))
 			{
 			    Casinos._eEditorRunSourcePlatform[] array = obj as Casinos._eEditorRunSourcePlatform[];
@@ -2129,6 +2220,12 @@ namespace XLua
 			else if (type == typeof(_ePayType[]))
 			{
 			    _ePayType[] array = obj as _ePayType[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(ZXing.BarcodeFormat[]))
+			{
+			    ZXing.BarcodeFormat[] array = obj as ZXing.BarcodeFormat[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}

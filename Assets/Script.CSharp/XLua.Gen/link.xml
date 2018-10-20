@@ -63,7 +63,6 @@
 		<type fullname="QRCodeMaker" preserve="all"/>
 		<type fullname="TcpClient" preserve="all"/>
 		<type fullname="Casinos.TimerShaft" preserve="all"/>
-		<type fullname="Casinos.UiSoundMgr" preserve="all"/>
 		<type fullname="Casinos.UiHelper" preserve="all"/>
 		<type fullname="Casinos.UpdateRemoteToPersistentData" preserve="all"/>
 		<type fullname="Casinos.CasinosLua" preserve="all"/>
@@ -186,7 +185,8 @@
 	</assembly>
 
 	<assembly fullname="zxing.unity">
-	    <type fullname="ZXing.BarcodeWriter" preserve="all"/>
+	    <type fullname="ZXing.BarcodeFormat" preserve="all"/>
+		<type fullname="ZXing.BarcodeWriter" preserve="all"/>
 		<type fullname="ZXing.QrCode.QrCodeEncodingOptions" preserve="all"/>
 		
 	</assembly>

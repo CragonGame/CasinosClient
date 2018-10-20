@@ -75,7 +75,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        // v1>v2,return 1; v1=v2, return 0; v1<v2,return -1;
+        // v1>v2, return 1; v1=v2, return 0; v1<v2, return -1;
         public int VersionCompare(string v1, string v2)
         {
             if (string.IsNullOrEmpty(v1)) return -1;

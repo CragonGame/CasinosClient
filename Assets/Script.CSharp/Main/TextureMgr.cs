@@ -10,14 +10,12 @@ namespace Casinos
     {
         //---------------------------------------------------------------------
         public Dictionary<string, Texture> MapTexture { get; private set; }
-        public static TextureMgr Instant { get { return mTextureMgr; } }
-
-        static TextureMgr mTextureMgr;
+        public static TextureMgr Instant { get; private set; }
 
         //---------------------------------------------------------------------
         public TextureMgr()
         {
-            mTextureMgr = this;
+            Instant = this;
             MapTexture = new Dictionary<string, Texture>();
         }
 
@@ -35,8 +33,9 @@ namespace Casinos
             LoaderTicket tick = null;
             if (texture == null)
             {
-                tick = CasinosContext.Instance.AsyncAssetLoadGroup.asyncLoadAsset(path, name, _eAsyncAssetLoadType.LocalBundleAsset,
-                (LoaderTicket ticket, string path_ex, UnityEngine.Object obj) =>
+                tick = CasinosContext.Instance.AsyncAssetLoadGroup.asyncLoadAsset(
+                    path, name, _eAsyncAssetLoadType.LocalBundleAsset,
+                    (LoaderTicket ticket, string path_ex, UnityEngine.Object obj) =>
                     {
                         texture = (Texture)obj;
                         MapTexture[name] = texture;

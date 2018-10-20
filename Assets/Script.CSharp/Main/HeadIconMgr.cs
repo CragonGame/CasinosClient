@@ -8,7 +8,8 @@ namespace Casinos
 
     public class HeadIconMgr
     {
-        //----------------------------------------------------------------------
+        //---------------------------------------------------------------------
+        public static HeadIconMgr Instant { get; private set; }
         Dictionary<string, Texture> MapHeadIconResources { get; set; }
         Dictionary<string, string> MapLoadingIcon { get; set; }
 
@@ -16,12 +17,10 @@ namespace Casinos
         const string mDefaultIconStr = "profile_";
         const string mSmallIcon = "thumbnail_";
         const string mLargeIcon = "image_";
+
         //public const string mDefaultIconLocalPath = "Ui/Texture/PlayerShadow";
 
-        //----------------------------------------------------------------------  
-        public static HeadIconMgr Instant { get; private set; }
-
-        //----------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public HeadIconMgr()
         {
             Instant = this;
@@ -29,7 +28,7 @@ namespace Casinos
             MapLoadingIcon = new Dictionary<string, string>();
         }
 
-        //----------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public LoaderTicket asyncLoadIcon(string id, string resource_path,
             string resource_name, GameObject head_icon,
             Action<UnityEngine.Object, LoaderTicket> load_callback = null)
@@ -40,7 +39,8 @@ namespace Casinos
             {
                 if (head_icon != null)
                 {
-                    UiHelper.setActiveState(true, head_icon);
+                    head_icon.SetActive(true);
+                    //UiHelper.setActiveState(true, head_icon);
                     //UiHelper.setTexture(head_icon, head_resource);
                 }
 
@@ -67,7 +67,8 @@ namespace Casinos
                             MapHeadIconResources[id] = (Texture)obj;
                             if (head_icon != null)
                             {
-                                UiHelper.setActiveState(true, head_icon);
+                                head_icon.SetActive(true);
+                                //UiHelper.setActiveState(true, head_icon);
                                 //UiHelper.setTexture(head_icon, (Texture)obj);
                             }
                         }
@@ -82,7 +83,7 @@ namespace Casinos
             return loader_ticket;
         }
 
-        //----------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public static string getIconName(bool is_small, string icon_name, ref string icon_resource_name)
         {
             string icon_str = mSmallIcon;
@@ -106,7 +107,7 @@ namespace Casinos
             return icon_name;
         }
 
-        //----------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void destroyCurrentResources()
         {
             foreach (var i in MapHeadIconResources)
@@ -120,7 +121,7 @@ namespace Casinos
             MapHeadIconResources.Clear();
         }
 
-        //----------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void destroy()
         {
             foreach (var i in MapHeadIconResources)

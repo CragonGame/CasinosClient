@@ -1636,6 +1636,174 @@ namespace XLua.CSObjectWrap
 		}
 	}
     
+    public class ZXingBarcodeFormatWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(ZXing.BarcodeFormat), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(ZXing.BarcodeFormat), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(ZXing.BarcodeFormat), L, null, 22, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "AZTEC", ZXing.BarcodeFormat.AZTEC);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "CODABAR", ZXing.BarcodeFormat.CODABAR);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "CODE_39", ZXing.BarcodeFormat.CODE_39);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "CODE_93", ZXing.BarcodeFormat.CODE_93);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "CODE_128", ZXing.BarcodeFormat.CODE_128);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "DATA_MATRIX", ZXing.BarcodeFormat.DATA_MATRIX);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "EAN_8", ZXing.BarcodeFormat.EAN_8);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "EAN_13", ZXing.BarcodeFormat.EAN_13);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "ITF", ZXing.BarcodeFormat.ITF);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "MAXICODE", ZXing.BarcodeFormat.MAXICODE);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "PDF_417", ZXing.BarcodeFormat.PDF_417);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "QR_CODE", ZXing.BarcodeFormat.QR_CODE);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "RSS_14", ZXing.BarcodeFormat.RSS_14);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "RSS_EXPANDED", ZXing.BarcodeFormat.RSS_EXPANDED);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "UPC_A", ZXing.BarcodeFormat.UPC_A);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "UPC_E", ZXing.BarcodeFormat.UPC_E);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "UPC_EAN_EXTENSION", ZXing.BarcodeFormat.UPC_EAN_EXTENSION);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "MSI", ZXing.BarcodeFormat.MSI);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "PLESSEY", ZXing.BarcodeFormat.PLESSEY);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "IMB", ZXing.BarcodeFormat.IMB);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "All_1D", ZXing.BarcodeFormat.All_1D);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(ZXing.BarcodeFormat), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushZXingBarcodeFormat(L, (ZXing.BarcodeFormat)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "AZTEC"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.AZTEC);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "CODABAR"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.CODABAR);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "CODE_39"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.CODE_39);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "CODE_93"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.CODE_93);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "CODE_128"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.CODE_128);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "DATA_MATRIX"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.DATA_MATRIX);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "EAN_8"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.EAN_8);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "EAN_13"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.EAN_13);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "ITF"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.ITF);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "MAXICODE"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.MAXICODE);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "PDF_417"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.PDF_417);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "QR_CODE"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.QR_CODE);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "RSS_14"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.RSS_14);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "RSS_EXPANDED"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.RSS_EXPANDED);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "UPC_A"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.UPC_A);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "UPC_E"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.UPC_E);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "UPC_EAN_EXTENSION"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.UPC_EAN_EXTENSION);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "MSI"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.MSI);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "PLESSEY"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.PLESSEY);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "IMB"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.IMB);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "All_1D"))
+                {
+                    translator.PushZXingBarcodeFormat(L, ZXing.BarcodeFormat.All_1D);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for ZXing.BarcodeFormat!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for ZXing.BarcodeFormat! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
     public class Casinos_eEditorRunSourcePlatformWrap
     {
 		public static void __Register(RealStatePtr L)

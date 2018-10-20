@@ -267,11 +267,11 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(Casinos.TimerShaft), CasinosTimerShaftWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos.UiSoundMgr), CasinosUiSoundMgrWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(Casinos.UiHelper), CasinosUiHelperWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.UpdateRemoteToPersistentData), CasinosUpdateRemoteToPersistentDataWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(ZXing.BarcodeFormat), ZXingBarcodeFormatWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(BuglyAgent), BuglyAgentWrap.__Register);
 				
