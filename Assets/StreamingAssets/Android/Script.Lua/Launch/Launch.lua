@@ -25,7 +25,6 @@ function Launch:new(o)
     self.__index = self
     if (self.Instance == nil) then
         self.LaunchCfg = LaunchConfig:new(nil)
-        self.LaunchStep = {}
         self.Env = 'Pro'
         self.CurrentLan = 'ChineseSimplified'
         self.PreViewMgr = nil
@@ -143,12 +142,17 @@ end
 ---------------------------------------
 -- Launch阶段完成
 function Launch:Finish()
-    if (self.PreViewMgr ~= nil) then
-        self.PreViewMgr:Release()
-        self.PreViewMgr = nil
+    if (self.PreLoading ~= nil) then
+        self.PreViewMgr:destroyView(self.PreLoading)
         self.PreLoading = nil
-        self.PreMsgBox = nil
     end
+
+    --if (self.PreViewMgr ~= nil) then
+    --    self.PreViewMgr:Release()
+    --    self.PreViewMgr = nil
+    --    self.PreLoading = nil
+    --    self.PreMsgBox = nil
+    --end
 
     --package.preload['PreViewMsgBox'] = nil
     --package.loaded['PreViewMsgBox'] = nil
@@ -163,14 +167,14 @@ function Launch:Finish()
     --package.preload['ParticleHelper'] = nil
     --package.loaded['ParticleHelper'] = nil
 
-    if (self.UIPackagePreLoading ~= nil) then
-        self.UIPackagePreLoading:UnloadAssets()
-        self.UIPackagePreLoading = nil
-    end
-    if (self.UIPackageMsgbox ~= nil) then
-        self.UIPackageMsgbox:UnloadAssets()
-        self.UIPackageMsgbox = nil
-    end
+    --if (self.UIPackagePreLoading ~= nil) then
+    --    self.UIPackagePreLoading:UnloadAssets()
+    --    self.UIPackagePreLoading = nil
+    --end
+    --if (self.UIPackageMsgbox ~= nil) then
+    --    self.UIPackageMsgbox:UnloadAssets()
+    --    self.UIPackageMsgbox = nil
+    --end
 
     print("Launch:Finish()")
 end
@@ -178,18 +182,37 @@ end
 ---------------------------------------
 -- 应用程序退出
 function Launch:Close()
+    self:Finish()
+
     if (self.Context ~= nil) then
         self.Context:Release()
         self.Context = nil
     end
-
-    self:Finish()
 
     self.CasinosContext = nil
     self.CasinosLua = nil
     self.Instance = nil
 
     print("Launch:Release()")
+end
+
+---------------------------------------
+-- 更新加载界面进度条进度
+function Launch:UpdateViewLoadingProgress(cur, max)
+    self.PreLoading:UpdateLoadingProgress(cur, max)
+end
+
+---------------------------------------
+-- 更新加载界面进度条描述
+function Launch:UpdateViewLoadingDesc(desc)
+    self.PreLoading:UpdateDesc(desc)
+end
+
+---------------------------------------
+-- 更新加载界面进度条描述和进度
+function Launch:UpdateViewLoadingDescAndProgress(desc, cur, max)
+    self.PreLoading:UpdateDesc(desc)
+    self.PreLoading:UpdateLoadingProgress(cur, max)
 end
 
 ---------------------------------------

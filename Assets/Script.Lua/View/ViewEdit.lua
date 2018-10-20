@@ -1,8 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 关于对话框的设置模块
 
+---------------------------------------
 ViewEdit = ViewBase:new()
 
+---------------------------------------
 function ViewEdit:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -14,10 +16,10 @@ function ViewEdit:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
-
     return o
 end
 
+---------------------------------------
 function ViewEdit:onCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Edit"))
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -93,6 +95,7 @@ function ViewEdit:onCreate()
     end
 end
 
+---------------------------------------
 function ViewEdit:onClickBtnSwitch()
     local screen = CS.UnityEngine.Screen
     if (self.GBtnSwitchScreenAutoRotation.selected == true)
@@ -110,6 +113,7 @@ function ViewEdit:onClickBtnSwitch()
 
 end
 
+---------------------------------------
 function ViewEdit:sliderMusicChange()
     local current_value = self.SoundBar.value
     current_value = current_value / 100
@@ -117,26 +121,32 @@ function ViewEdit:sliderMusicChange()
     CS.Casinos.CasinosContext.Instance:bgVolumeChange(current_value)
 end
 
+---------------------------------------
 function ViewEdit:sliderSoundChange()
     local current_value = self.SoundEffectBar.value
     current_value = current_value / 100
     CS.UnityEngine.PlayerPrefs.SetFloat(CS.Casinos.SoundMgr.SoundKey, current_value)
 end
 
+---------------------------------------
 function ViewEdit:onClickResetPwd()
     self.ViewMgr:createView("ResetPwd")
 end
 
+---------------------------------------
 function ViewEdit:onClickSelectLan()
     self.ViewMgr:createView("ChooseLan")
 end
 
+---------------------------------------
 function ViewEdit:onClickBtnReturn()
     self.ViewMgr:destroyView(self)
 end
 
+---------------------------------------
 ViewEditFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewEditFactory:new(o, ui_package_name, ui_component_name,
                              ui_layer, is_single, fit_screen)
     o = o or {}
@@ -150,6 +160,7 @@ function ViewEditFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewEditFactory:createView()
     local view = ViewEdit:new(nil)
     return view

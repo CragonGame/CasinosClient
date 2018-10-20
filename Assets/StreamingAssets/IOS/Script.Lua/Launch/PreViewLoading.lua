@@ -150,13 +150,13 @@ end
 ---------------------------------------
 function PreViewLoading:onDestroy()
     if (self.PlayerAnim ~= nil) then
-        --self.CasinosLua:DestroyGameObject(self.PlayerAnim.transform.gameObject)
+        self.CasinosLua:DestroyGameObject(self.PlayerAnim.transform.gameObject)
         self.PlayerAnim = nil
         self.MoteRender = nil
         self.HolderMote = nil
     end
     if (self.DengLongAnim ~= nil) then
-        --self.CasinosLua:DestroyGameObject(self.DengLongAnim.transform.gameObject)
+        self.CasinosLua:DestroyGameObject(self.DengLongAnim.transform.gameObject)
         self.DengLongAnim = nil
         self.DengLongRender = nil
     end
@@ -285,8 +285,7 @@ end
 PreViewLoadingFactory = PreViewFactory:new()
 
 ---------------------------------------
-function PreViewLoadingFactory:new(o, ui_package_name, ui_component_name,
-                                   ui_layer, is_single, fit_screen)
+function PreViewLoadingFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -316,83 +315,3 @@ end
 --    --CS.FairyGUI.Timers.inst:Remove(self._playProgress)
 --end
 --CS.FairyGUI.Timers.inst:Remove(self._updateTips)
-
----------------------------------------
---function PreViewLoading:setLoadingProgress(progress)
---    self.GProgressBar.visible = true
---    if (self.GProgressBar ~= nil) then
---        self.GProgressBar.value = progress
---        if (self.GProgressBar.value < self.GProgressBar.max) then
---        else
---            if (self.OnFinished ~= nil) then
---                self:OnFinished()
---            end
---        end
---    end
---end
-
----------------------------------------
---function PreViewLoading:setTips(list_tips)
---    self.ListRandomTips = {}
---    for k, v in pairs(list_tips) do
---        self.ListRandomTips[k] = v
---    end
---end
-
----------------------------------------
---function PreViewLoading:_updateTips(param)
---    local tips_key, tips_value = nil
---    local count = self.PreViewMgr:GetTableCount(self.ListRandomTips)
---    if (count > 0) then
---        tips_key, tips_value = self.PreViewMgr:GetAndRemoveTableFirstEle(self.ListRandomTips)
---    end
---    if ((tips_key ~= nil and string.len(tips_key) > 0)) then
---        if (self.GTextFieldTips ~= nil) then
---            self.GTextFieldTips.text = tips_key
---        end
---    end
---end
-
----------------------------------------
---function PreViewLoading:_playProgress(param)
---    if (self.GProgressBar ~= nil) then
---        self.GProgressBar.visible = true
---        if (self.GProgressBar.value <= self.GProgressBar.max) then
---            local value = self.GProgressBar.value
---            value = value + 2
---            self.GProgressBar.value = value
---        else
---            if (self.OnFinished ~= nil) then
---                self:OnFinished()
---            end
---        end
---    end
---end
-
----------------------------------------
---function PreViewLoading:fireAutoLoadingProgress()
---    self.GProgressBar.visible = true
---    self.IsAuto = true
---end
-
----------------------------------------
---function PreViewLoading:fireManualLoadingProgress(progress, loading_info)
---    self.IsAuto = false
---    if (progress ~= 0) then
---        self.GProgressBar.visible = true
---    end
---
---    self:setTip(loading_info)
---    local cur = self.GProgressBar.value
---    cur = cur + progress
---    if (self.GProgressBar ~= nil) then
---        self.GProgressBar.value = cur
---        if (self.GProgressBar.value < loading.GProgressBar.max) then
---        else
---            if (self.OnFinished ~= nil) then
---                -- CS.FairyGUI.Timers.inst:Remove(loading._updateTips)
---                self:OnFinished()
---            end
---        end
---    end
---end

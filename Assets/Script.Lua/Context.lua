@@ -156,6 +156,7 @@ function Context:new(o, env, data_version)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     self.Launch = Launch
+    self.LaunchStep = {}
     self.Cfg = Config:new(nil)
     self.Cfg.Env = env
     self.Cfg.DataVersion = data_version
@@ -190,13 +191,8 @@ function Context:Init()
     --    CS.UnityEngine.Application.targetFrameRate = 60
     --end
 
-    -- 销毁所有资源，因为可以从Login返回到Launch
-    -- Esc可以弹出退出确认对话框，随时退出
-
     Context:_initLaunchStep()
     Context:_nextLaunchStep()
-
-    -- 弹框让玩家选择，更新Bundle，调用Native Api安装Bundle
 end
 
 ---------------------------------------
@@ -228,7 +224,7 @@ end
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
     if (BundleUpdateStata == 1 and BundleUpdateVersion ~= nil and BundleUpdateURL ~= nil and self.CasinosContext.Config.VersionBundle ~= BundleUpdateVersion) then
-        self.Launch.LaunchStep[1] = "UpdateBundle"
+        self.LaunchStep[1] = "UpdateBundle"
     end
 
     -- 检测是否需要首次运行解压
@@ -236,27 +232,27 @@ function Context:_initLaunchStep()
     print('CasinosContext.Config.StreamingAssetsInfo.DataVersion=' .. self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
     local r = self.CasinosContext.Config:VersionCompare(self.CasinosContext.Config.VersionDataPersistent, self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
     if (r < 0) then
-        self.Launch.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
+        self.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
     end
 
     -- 检测是否需要更新Data
     if (self.CasinosContext.Config.VersionDataPersistent ~= self.DataVersion) then
-        self.Launch.LaunchStep[3] = "UpdateData"
+        self.LaunchStep[3] = "UpdateData"
     end
 
     -- 进入Login界面
-    self.Launch.LaunchStep[4] = "ShowLogin"
+    self.LaunchStep[4] = "ShowLogin"
 end
 
 ---------------------------------------
 -- 执行下一步LaunchStep
 function Context:_nextLaunchStep()
     -- 更新Bundle
-    if (self.Launch.LaunchStep[1] ~= nil) then
-        local desc_copy = "准备更新安装包"
-        self.Launch.PreLoading:UpdateDesc(desc_copy)
-        self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
+    if (self.LaunchStep[1] ~= nil) then
+        self.Launch:UpdateViewLoadingDescAndProgress("准备更新安装包", 0, 100)
 
+        -- 弹框让玩家选择，更新Bundle
+        -- TODO，调用Native Api安装Bundle
         local view_premsgbox = self.PreViewMgr.createView("PreMsgBox")
         view_premsgbox:showMsgBox(self.CasinosContext.Config.VersionBundle,
                 function()
@@ -271,10 +267,8 @@ function Context:_nextLaunchStep()
     end
 
     -- 首次运行解压
-    if (self.Launch.LaunchStep[2] ~= nil) then
-        local desc_copy = "首次运行解压资源，不消耗流量"
-        self.Launch.PreLoading:UpdateDesc(desc_copy)
-        self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
+    if (self.LaunchStep[2] ~= nil) then
+        self.Launch:UpdateViewLoadingDescAndProgress("首次运行解压资源，不消耗流量", 0, 100)
         if (self.CopyStreamingAssetsToPersistentData == nil) then
             self.CopyStreamingAssetsToPersistentData = CS.Casinos.CopyStreamingAssetsToPersistentData2()
             self.CopyStreamingAssetsToPersistentData:CopyAsync('')
@@ -284,12 +278,10 @@ function Context:_nextLaunchStep()
     end
 
     -- 更新Data
-    if (self.Launch.LaunchStep[3] ~= nil) then
+    if (self.LaunchStep[3] ~= nil) then
         --if (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork) then
         --end
-        local desc_copy = "更新游戏数据"
-        self.Launch.PreLoading:UpdateDesc(desc_copy)
-        self.Launch.PreLoading:UpdateLoadingProgress(0, 100)
+        self.Launch:UpdateViewLoadingDescAndProgress("更新游戏数据", 0, 100)
         local http_url = self.DataRootURL .. DataFileListFileName
         --print(http_url)
         local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
@@ -299,9 +291,7 @@ function Context:_nextLaunchStep()
                     local datafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
                     print(datafilelist_persistent)
                     self.RemoteDataFileListContent = www.text
-                    --print(self.RemoteDataFileListContent)
                     local persistent_datafilelist_content = self.CasinosLua:ReadAllText(datafilelist_persistent)
-                    --print(persistent_datafilelist_content)
                     self.UpdateRemoteToPersistentData = CS.Casinos.UpdateRemoteToPersistentData()
                     self.UpdateRemoteToPersistentData:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, self.DataRootURL)
                     self.TimerUpdateRemoteToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteToPersistentData)
@@ -311,12 +301,10 @@ function Context:_nextLaunchStep()
     end
 
     -- 卸载Launch，加载并显示Login
-    if (self.Launch.LaunchStep[4] ~= nil) then
-        self.Launch.LaunchStep[4] = nil
+    if (self.LaunchStep[4] ~= nil) then
+        self.LaunchStep[4] = nil
 
-        local desc_copy = "准备登录中"
-        self.Launch.PreLoading:UpdateDesc(desc_copy)
-        self.Launch.PreLoading:UpdateLoadingProgress(100, 100)
+        self.Launch:UpdateViewLoadingDescAndProgress("准备登录中", 0, 100)
 
         local path_lua_root = self.CasinosContext.PathMgr:combinePersistentDataPath("Script.Lua/");
         self.CasinosLua:LoadLuaFromDir(path_lua_root);
@@ -439,12 +427,12 @@ function Context:_timerUpdateCopyStreamingAssetsToPersistentData(tm)
         self.CasinosContext.Config:WriteVersionDataPersistent(self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
 
         -- 执行下一步LaunchStep
-        self.Launch.LaunchStep[2] = nil
+        self.LaunchStep[2] = nil
         self:_nextLaunchStep()
     else
         local value = self.CopyStreamingAssetsToPersistentData.LeftCount
         local max = self.CopyStreamingAssetsToPersistentData.TotalCount
-        self.Launch.PreLoading:UpdateLoadingProgress(max - value, max)
+        self.Launch:UpdateViewLoadingProgress(max - value, max)
     end
 end
 
@@ -464,12 +452,12 @@ function Context:_timerUpdateRemoteToPersistentData(tm)
         self.CasinosContext.Config:WriteVersionDataPersistent(self.DataVersion)
 
         -- 执行下一步LaunchStep
-        self.Launch.LaunchStep[3] = nil
+        self.LaunchStep[3] = nil
         self:_nextLaunchStep()
     else
         local value = self.UpdateRemoteToPersistentData.LeftCount
         local max = self.UpdateRemoteToPersistentData.TotalCount
-        self.Launch.PreLoading:UpdateLoadingProgress(max - value, max)
+        self.Launch:UpdateViewLoadingProgress(max - value, max)
     end
 end
 
