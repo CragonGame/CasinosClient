@@ -56,6 +56,8 @@ function ViewMgr:new(o)
         self.LanMgr = nil
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+        self.Context = Context
+        self.EventSys = EventSys:new(nil)
     end
     return self.Instance
 end
@@ -65,16 +67,11 @@ function ViewMgr:onCreate(uipath_root, resourcesrow_pathroot)
     print("ViewMgr:onCreate")
     self.UiPathRoot = uipath_root
     self.ResourcesRowPathRoot = resourcesrow_pathroot
-    CS.FairyGUI.GRoot.inst:SetContentScaleFactor(self.STANDARD_WIDTH, self.STANDARD_HEIGHT,
-            CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
-    --CS.FairyGUI.UIConfig.defaultFont = "FZCuYuan-M03S"
-    --CS.FairyGUI.UIConfig.defaultFont = "FZLanTingHei-R-GBK"
+    CS.FairyGUI.GRoot.inst:SetContentScaleFactor(self.STANDARD_WIDTH, self.STANDARD_HEIGHT, CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
     CS.FairyGUI.UIConfig.defaultFont = "FontXi"
-    if (CS.UnityEngine.PlayerPrefs.HasKey("ScreenAutoRotation"))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey("ScreenAutoRotation")) then
         local auto_rotation = CS.UnityEngine.PlayerPrefs.GetString("ScreenAutoRotation")
-        if (auto_rotation == "true")
-        then
+        if (auto_rotation == "true") then
             CS.UnityEngine.Screen.orientation = CS.UnityEngine.ScreenOrientation.AutoRotation
             CS.UnityEngine.Screen.autorotateToLandscapeRight = true
             CS.UnityEngine.Screen.autorotateToLandscapeLeft = true
@@ -82,8 +79,7 @@ function ViewMgr:onCreate(uipath_root, resourcesrow_pathroot)
             CS.UnityEngine.Screen.autorotateToPortrait = false
         end
     end
-    self.Context = Context
-    self.EventSys = EventSys:new(nil)
+
     self.Context:DoString("EventView")
     self.Context:DoString("ViewBase")
     self.Context:DoString("ViewFactory")
@@ -153,10 +149,7 @@ function ViewMgr:createView(view_key)
 
     self.LanMgr:parseComponent(ui_panel.ui)-- 多语言自动替换
 
-    if (view_factory.UILayer == "MessgeBox" or
-            view_factory.UILayer == "NomalUiMain" or
-            view_factory.UILayer == "NomalUi" or
-            view_factory.UILayer == "QuitGame") then
+    if (view_factory.UILayer == "MessgeBox" or view_factory.UILayer == "NomalUiMain" or view_factory.UILayer == "NomalUi" or view_factory.UILayer == "QuitGame") then
         self.CasinosContext:Play("CreateDialog", CS.Casinos._eSoundLayer.LayerReplace)
     end
     return view
@@ -178,12 +171,8 @@ function ViewMgr:destroyView(view)
             end
         end
         self.TableMaxDepth[view.UILayer] = view.InitDepth
-        view.ComUi:Dispose()
         CS.UnityEngine.GameObject.Destroy(view.GoUi)
-        if (view.UILayer == "MessgeBox" or
-                view.UILayer == "NomalUiMain" or
-                view.UILayer == "NomalUi" or
-                view.UILayer == "QuitGame") then
+        if (view.UILayer == "MessgeBox" or view.UILayer == "NomalUiMain" or view.UILayer == "NomalUi" or view.UILayer == "QuitGame") then
             self.CasinosContext:Play("DestroyDialog", CS.Casinos._eSoundLayer.LayerReplace)
         end
         view = nil
@@ -219,11 +208,7 @@ end
 
 ---------------------------------------
 function ViewMgr:_checkDestroyUi(t_layer)
-    if (t_layer == "None"
-            or t_layer == "MessgeBox"
-            or t_layer == "SceneActor"
-            or t_layer == "PlayerOperateUi"
-            or t_layer == "ShootingText") then
+    if (t_layer == "None" or t_layer == "MessgeBox" or t_layer == "SceneActor" or t_layer == "PlayerOperateUi" or t_layer == "ShootingText") then
         return
     end
     local layer_v = TableUiLayer[t_layer]
@@ -243,7 +228,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
             local layer = v.UILayer
             self.TableMaxDepth[layer] = v.InitDepth
             v:onDestroy()
-            v.ComUi:Dispose()
+            --v.ComUi:Dispose()
             self.CasinosLua:DestroyGameObject(v.GoUi)
         end
     end
@@ -271,7 +256,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
                 local layer = v_v.UILayer
                 self.TableMaxDepth[layer] = v_v.InitDepth
                 v_v:onDestroy()
-                v_v.ComUi:Dispose()
+                --v_v.ComUi:Dispose()
                 self.CasinosLua:DestroyGameObject(v.GoUi)
             end
         end

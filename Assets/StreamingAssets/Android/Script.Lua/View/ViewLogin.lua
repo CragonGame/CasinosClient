@@ -250,7 +250,7 @@ function ViewLogin:onCreate()
     --    self.ComboChooseGateWay.items = items1
     --    self.ComboChooseGateWay.onChanged:Add(
     --            function()
-    --                self:onClickGateWay()
+    --                self:onClickGateway()
     --            end
     --    )
     --    self.ComboChooseGateWay.text = items1[1]
@@ -320,7 +320,7 @@ function ViewLogin:onClickUCenter()
 end
 
 ---------------------------------------
-function ViewLogin:onClickGateWay()
+function ViewLogin:onClickGateway()
     local ev = self.ViewMgr:getEv("EvUiChooseGateWay")
     if (ev == nil) then
         ev = EvUiChooseGateWay:new(nil)
@@ -363,12 +363,26 @@ function ViewLogin:SetAccPwd(acc, pwd)
 end
 
 ---------------------------------------
+function ViewLogin:Switch2LoginMain()
+    if (self:_hasAgreeAgreement() == false) then
+        return
+    end
+    self:_switchController("LoginState", "LoginMain")
+end
+
+---------------------------------------
 function ViewLogin:Switch2DlgLogin(acc, pwd)
     if (self:_hasAgreeAgreement() == false) then
         return
     end
     self:_switchController("LoginState", "Login")
     self:SetAccPwd(acc, pwd)
+end
+
+---------------------------------------
+function ViewLogin:Switch2Logining()
+    self:_switchController("LoginState", "Logining")
+    self.Tips.text = self.ViewMgr.LanMgr:getLanValue("Logining")
 end
 
 ---------------------------------------
@@ -393,12 +407,6 @@ function ViewLogin:Switch2ResetPwdCode()
         return
     end
     self:_switchController("LoginState", "ResetPwdCode")
-end
-
----------------------------------------
-function ViewLogin:Switch2Logining()
-    self:_switchController("LoginState", "Logining")
-    self.Tips.text = self.ViewMgr.LanMgr:getLanValue("Logining")
 end
 
 ---------------------------------------

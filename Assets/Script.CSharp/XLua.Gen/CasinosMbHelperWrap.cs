@@ -120,12 +120,10 @@ namespace XLua.CSObjectWrap
                 {
                     string _url = LuaAPI.lua_tostring(L, 2);
                     string _post_data = LuaAPI.lua_tostring(L, 3);
-                    System.Action<string> _cb = translator.GetDelegate<System.Action<string>>(L, 4);
+                    System.Action<int, string> _cb = translator.GetDelegate<System.Action<int, string>>(L, 4);
                     
                     gen_to_be_invoked.PostUrl( _url, _post_data, _cb );
-                    
-                    
-                    
+
                     return 0;
                 }
                 
@@ -150,7 +148,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _url = LuaAPI.lua_tostring(L, 2);
                     UnityEngine.WWWForm _form_data = (UnityEngine.WWWForm)translator.GetObject(L, 3, typeof(UnityEngine.WWWForm));
-                    System.Action<string> _cb = translator.GetDelegate<System.Action<string>>(L, 4);
+                    System.Action<int, string> _cb = translator.GetDelegate<System.Action<int, string>>(L, 4);
                     
                     gen_to_be_invoked.PostUrlWithFormData( _url, _form_data, _cb );
                     

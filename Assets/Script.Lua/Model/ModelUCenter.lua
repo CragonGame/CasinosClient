@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 DeviceInfo = {}
 
 function DeviceInfo:new(o)
@@ -11,10 +12,10 @@ function DeviceInfo:new(o)
     o.Type = nil
     o.Model = nil
     o.OperationSystem = nil
-
     return o
 end
 
+---------------------------------------
 GetPhoneVerificationCodeRequest = {}
 
 function GetPhoneVerificationCodeRequest:new(o)
@@ -22,10 +23,10 @@ function GetPhoneVerificationCodeRequest:new(o)
     setmetatable(o, self)
     self.__index = self
     o.Phone = nil
-
     return o
 end
 
+---------------------------------------
 AccountRegisterInfo = {}
 
 function AccountRegisterInfo:new(o)
@@ -43,10 +44,10 @@ function AccountRegisterInfo:new(o)
     o.PhoneVerificationCode = nil
     o.Gender = 0
     o.Device = nil
-
     return o
 end
 
+---------------------------------------
 AccountLoginInfo = {}
 
 function AccountLoginInfo:new(o)
@@ -59,24 +60,23 @@ function AccountLoginInfo:new(o)
     o.Password = nil
     o.PhoneVerificationCode = nil
     o.Device = nil
-
     return o
 end
 
+---------------------------------------
 AccountWeChatOAuthInfo = {}
 
 function AccountWeChatOAuthInfo:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.AppId = nil
     o.Code = nil
     o.Device = nil
-
     return o
 end
 
+---------------------------------------
 AccountWeChatAutoLoginRequest = {}
 
 function AccountWeChatAutoLoginRequest:new(o)
@@ -86,29 +86,27 @@ function AccountWeChatAutoLoginRequest:new(o)
     o.AppId = nil
     o.OpenId = nil
     o.Device = nil
-
     return o
 end
 
+---------------------------------------
 GuestAccessInfo = {}
 
 function GuestAccessInfo:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.AppId = nil
     o.Device = nil
-
     return o
 end
 
+---------------------------------------
 GuestConvertInfo = {}
 
 function GuestConvertInfo:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.AppId = nil
     o.AccountId = nil
@@ -120,10 +118,10 @@ function GuestConvertInfo:new(o)
     o.Email = nil
     o.Identity = nil
     o.Gender = 0
-
     return o
 end
 
+---------------------------------------
 AccountResetPasswordInfo = {}
 
 function AccountResetPasswordInfo:new(o)
@@ -135,10 +133,10 @@ function AccountResetPasswordInfo:new(o)
     o.Email = nil
     o.Password = nil
     o.SuperPassword = nil
-
     return o
 end
 
+---------------------------------------
 AccountResetPasswordByPhoneRequest = {}
 
 function AccountResetPasswordByPhoneRequest:new(o)
@@ -150,10 +148,10 @@ function AccountResetPasswordByPhoneRequest:new(o)
     o.Email = nil
     o.NewPassword = nil
     o.PhoneVerificationCode = nil
-
     return o
 end
 
+---------------------------------------
 PayRequest = {}
 
 function PayRequest:new(o)
@@ -168,10 +166,10 @@ function PayRequest:new(o)
     o.Channel = nil
     o.Amount = nil
     o.Currency = nil
-
     return o
 end
 
+---------------------------------------
 UCenterErrorCode = {
     NoError = 0,
 
@@ -220,19 +218,19 @@ UCenterResponseStatus = {
     Error = 1
 }
 
+---------------------------------------
 UCenterError = {}
 
 function UCenterError:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.ErrorCode = 0
     o.Message = nil
-
     return o
 end
 
+---------------------------------------
 UCenterResponse = {}
 
 function UCenterResponse:new(o)
@@ -242,7 +240,6 @@ function UCenterResponse:new(o)
     o.Result = nil
     o.Status = 0
     o.Error = nil
-
     return o
 end
 
@@ -262,12 +259,12 @@ Gender = {
     Female = 2,
 }
 
+---------------------------------------
 AccountRequestResponse = {}
 
 function AccountRequestResponse:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.AccountId = nil
     o.AccountName = nil
@@ -280,16 +277,15 @@ function AccountRequestResponse:new(o)
     o.Identity = false
     o.Phone = nil
     o.Email = nil
-
     return o
 end
 
+---------------------------------------
 AccountLoginResponse = {}
 
 function AccountLoginResponse:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.Token = nil
     o.LastLoginDateTime = nil
@@ -304,43 +300,41 @@ function AccountLoginResponse:new(o)
     o.Identity = false
     o.Phone = nil
     o.Email = nil
-
     return o
 end
 
+---------------------------------------
 GuestAccessResponse = {}
 
 function GuestAccessResponse:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.AccountId = nil
     o.AccountName = nil
     o.AccountType = 0
     o.Token = nil
-
     return o
 end
 
+---------------------------------------
 AppConfigurationResponse = {}
 
 function AppConfigurationResponse:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.AppId = nil
     o.Configuration = nil
-
     return o
 end
 
+---------------------------------------
 PayResponse = {}
+
 function PayResponse:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.ChargeId = nil
     o.AppId = nil
@@ -351,15 +345,15 @@ function PayResponse:new(o)
     o.Channel = nil
     o.Amount = nil
     o.Currency = nil
-
     return o
 end
 
+---------------------------------------
 Charge = {}
+
 function Charge:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.amount = 0
     o.amount_refunded = 0
@@ -387,29 +381,29 @@ function Charge:new(o)
     o.time_paid = 0
     o.time_settle = 0
     o.transaction_no = nil
-
     return o
 end
 
+---------------------------------------
 CheckCardAndNameRequest = {}
+
 function CheckCardAndNameRequest:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.AccountId = nil
     o.Token = nil
     o.CardNo = nil
     o.RealName = nil
-
     return o
 end
 
+---------------------------------------
 IdCardDetails = {}
+
 function IdCardDetails:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.addrCode = nil
     o.birth = nil
@@ -417,105 +411,105 @@ function IdCardDetails:new(o)
     o.length = 0
     o.checkBit = nil
     o.addr = nil
-
     return o
 end
 
+---------------------------------------
 IdCardResult = {}
+
 function IdCardResult:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.realName = nil
     o.cardNo = nil
     o.details = nil
-
     return o
 end
 
+---------------------------------------
 IdCardResponse = {}
+
 function IdCardResponse:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.error_code = nil
     o.reason = nil
     o.result = nil
     o.ordersign = nil
-
     return o
 end
 
+---------------------------------------
 AccountWeChatBindRequest = {}
+
 function AccountWeChatBindRequest:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.ucenterAppId = nil
     o.code = nil
     o.accountId = nil
     o.token = nil
-
     return o
 end
 
+---------------------------------------
 AccountWeChatUnbindRequest = {}
+
 function AccountWeChatUnbindRequest:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.ucenterAppId = nil
     o.openId = nil
     o.accountId = nil
     o.token = nil
-
     return o
 end
 
+---------------------------------------
 NigWebPayRequest = {}
+
 function NigWebPayRequest:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.amount = 0
-
     return o
 end
 
+---------------------------------------
 NigWebPayResponse = {}
+
 function NigWebPayResponse:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.amount = 0
     o.transferId = nil
-
     return o
 end
 
+---------------------------------------
 NigWebPayQueryRequest = {}
+
 function NigWebPayQueryRequest:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.amount = nil
     o.transferId = nil
-
     return o
 end
 
+---------------------------------------
 NigWebPayQueryResponse = {}
+
 function NigWebPayQueryResponse:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.amount = nil
     o.cardNumber = nil
@@ -528,22 +522,21 @@ function NigWebPayQueryResponse:new(o)
     o.transactionDate = nil
     o.responseCode = nil
     o.responseDescription = nil
-
     return o
 end
 
+---------------------------------------
 NigQuicktellerTransRequest = {}
+
 function NigQuicktellerTransRequest:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.toAccountNumber = nil
     o.cbnCode = nil
     o.amount = nil
     o.receiverLastName = nil
     o.receiverOtherName = nil
-
     return o
 end
 
@@ -555,11 +548,12 @@ function NigQuicktellerTransRequest:setData(data)
     self.receiverOtherName = data[5]
 end
 
+---------------------------------------
 NigQuicktellerTransRespone = {}
+
 function NigQuicktellerTransRespone:new(o)
     o = o or {}
-    setmetatable(o,
-            self)
+    setmetatable(o, self)
     self.__index = self
     o.result = nil
     o.requestRef = nil
@@ -577,5 +571,4 @@ function NigQuicktellerTransRespone:setData(data)
         r_r:setData(r)
         self.request = r_r
     end
-
 end

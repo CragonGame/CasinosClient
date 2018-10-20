@@ -191,50 +191,45 @@ function ControllerLogin:onHandleEv(ev)
             --end)
             self:_clickCheckDataCallBack(false)
         elseif (ev.EventName == "EvUiLoginClickBtnRegister") then
-            if (self.ControllerUCenter.WWWRegister ~= null) then
-                local info = self.ControllerMgr.LanMgr:getLanValue("Registering")
-                ViewHelper:UiShowInfoFailed(info)
-            else
-                local acc = ev.AccountName
-                local pwd = ev.Password
-                local super_pwd = ev.SuperPassword
-                local remeber_pwd = ev.remeber_pwd
-                self.Password = pwd
-                self.RemeberPwd = remeber_pwd
-                local email = ev.Email
-                local identity = ev.Identity
-                local phone = ev.Phone
-                self.Phone = phone
-                local name = ev.Name
-                local device_info = self.getDeviceInfo()
-                local register_acc_data = AccountRegisterInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.AccountRegisterInfo()
-                register_acc_data.AccountName = acc
-                register_acc_data.Password = pwd
-                register_acc_data.SuperPassword = super_pwd
-                register_acc_data.Email = email
-                register_acc_data.Identity = identity
-                register_acc_data.Phone = ev.FormatPhone
-                register_acc_data.Name = name
-                register_acc_data.PhoneVerificationCode = ev.PhoneVerificationCode
-                register_acc_data.Device = device_info
-                register_acc_data.AppId = UCenterAppId
-                self:requestRegister(register_acc_data)
-            end
+            local acc = ev.AccountName
+            local pwd = ev.Password
+            local super_pwd = ev.SuperPassword
+            local remeber_pwd = ev.remeber_pwd
+            self.Password = pwd
+            self.RemeberPwd = remeber_pwd
+            local email = ev.Email
+            local identity = ev.Identity
+            local phone = ev.Phone
+            self.Phone = phone
+            local name = ev.Name
+            local device_info = self.getDeviceInfo()
+            local register_acc_data = AccountRegisterInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.AccountRegisterInfo()
+            register_acc_data.AccountName = acc
+            register_acc_data.Password = pwd
+            register_acc_data.SuperPassword = super_pwd
+            register_acc_data.Email = email
+            register_acc_data.Identity = identity
+            register_acc_data.Phone = ev.FormatPhone
+            register_acc_data.Name = name
+            register_acc_data.PhoneVerificationCode = ev.PhoneVerificationCode
+            register_acc_data.Device = device_info
+            register_acc_data.AppId = UCenterAppId
+            self:RequestRegister(register_acc_data)
         elseif (ev.EventName == "EvUiRequestGetPhoneCode") then
             -- 获取验证码
             local phone = ev.Phone
             local request = GetPhoneVerificationCodeRequest:new(nil)
             request.Phone = phone
             self.ControllerUCenter:RequestGetPhoneVerificationCode(request,
-                    function(status, response, error)
-                        self:onUCenterPhoneVerificationCode(status, response, error)
+                    function(http_statuscode, status, response, error)
+                        self:OnUCenterPhoneVerificationCode(http_statuscode, status, response, error)
                     end)
         elseif (ev.EventName == "EvUiRequestResetPwd") then
             local phone_code = ev.phone_code
             local new_pwd = ev.new_pwd
             self.Password = new_pwd
             self.Phone = ev.phone
-            self:resetPwd(ev.formatphone, phone_code, new_pwd)
+            self:RequestResetPasswordWithPhone(ev.formatphone, phone_code, new_pwd)
         elseif (ev.EventName == "EvUiChooseUCenter") then
             UCenterDomain = ev.ucenter
             self.ControllerUCenter.UCenterDomain = ev.ucenter
@@ -255,13 +250,13 @@ function ControllerLogin:onHandleEv(ev)
                 request.token = self.Token
                 print(request.token)
                 self.ControllerUCenter:RequestWechatBind(request,
-                        function(status, response, error)
-                            self:onUCenterBindWeChat(status, response, error)
+                        function(http_statuscode, status, response, error)
+                            self:OnUCenterWechatBind(http_statuscode, status, response, error)
                         end)
             end
             self.BindingWeChat = false
         elseif (ev.EventName == "EvCheckIdCard") then
-            self:checkIdCard(ev.id_card, ev.name)
+            self:RequestCheckCardAndName(ev.id_card, ev.name)
         elseif (ev.EventName == "EvBindWeChat") then
             ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:getLanValue("BindWeChatTips"), function()
                 ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("BindingWeChat"), 10)
@@ -281,8 +276,8 @@ function ControllerLogin:onHandleEv(ev)
                 request.accountId = self.AccId
                 request.token = self.Token
                 self.ControllerUCenter:RequestWechatUnbind(request,
-                        function(status, response, error)
-                            self:onUCenterUnbindWeChat(status, response, error)
+                        function(http_statuscode, status, response, error)
+                            self:OnUCenterWechatUnbind(http_statuscode, status, response, error)
                         end)
             end)
         end
@@ -299,21 +294,21 @@ function ControllerLogin:_timerUpdate(tm)
         end
     end
 
-    if self.AutoLogin then
-        self.AutoLoginTm = self.AutoLoginTm + tm
-        if self.AutoLoginTm >= 5 then
-            self.AutoLoginTm = 0
-            self.AutoLogin = false
-            local view_login = self.ViewMgr:getView("Login")
-            if view_login ~= nil then
-                view_login:_switch2LoginMain()
-            end
-        end
-    end
+    --if self.AutoLogin then
+    --    self.AutoLoginTm = self.AutoLoginTm + tm
+    --    if self.AutoLoginTm >= 5 then
+    --        self.AutoLoginTm = 0
+    --        self.AutoLogin = false
+    --        local view_login = self.ViewMgr:getView("Login")
+    --        if view_login ~= nil then
+    --            view_login:Switch2Logining()
+    --        end
+    --    end
+    --end
 end
 
 ---------------------------------------
-function ControllerLogin:requestLogin(acc, pwd, phone, email, phone_verification_code)
+function ControllerLogin:RequestLogin(acc, pwd, phone, email, phone_verification_code)
     CS.Casinos.CasinosContext.Instance.LoginType = 0
     self.Password = pwd
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
@@ -326,31 +321,31 @@ function ControllerLogin:requestLogin(acc, pwd, phone, email, phone_verification
     request.PhoneVerificationCode = phone_verification_code
     request.Device = self:getDeviceInfo()
     self.ControllerUCenter:RequestLogin(request,
-            function(status, response, error)
-                self:onUCenterLogin(status, response, error)
+            function(http_statuscode, status, response, error)
+                self:OnUCenterLogin(http_statuscode, status, response, error)
             end
     )
 end
 
 ---------------------------------------
-function ControllerLogin:requestGuestAccess()
+function ControllerLogin:RequestGuestAccess()
     CS.Casinos.CasinosContext.Instance.LoginType = 1
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
     local guest_accessinfo = GuestAccessInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.GuestAccessInfo()
     guest_accessinfo.AppId = UCenterAppId
     guest_accessinfo.Device = self:getDeviceInfo()
     self.ControllerUCenter:RequestGuestAccess(guest_accessinfo,
-            function(status, response, error)
-                self:onUCenterGuestAccess(status, response, error)
+            function(http_statuscode, status, response, error)
+                self:onUCenterGuestAccess(http_statuscode, status, response, error)
             end)
 end
 
 ---------------------------------------
-function ControllerLogin:requestRegister(register_acc_data)
+function ControllerLogin:RequestRegister(register_acc_data)
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Registering"))
     self.ControllerUCenter:RequestRegister(register_acc_data,
-            function(status, response, error)
-                self:onUCenterRegister(status, response, error)
+            function(http_statuscode, status, response, error)
+                self:OnUCenterRegister(http_statuscode, status, response, error)
             end)
 end
 
@@ -364,13 +359,26 @@ function ControllerLogin:RequestWechatLogin(token, app_id)
     wechat_info.AppId = app_id
     wechat_info.Device = self:getDeviceInfo()
     c_login.ControllerUCenter:RequestWechatLogin(wechat_info,
-            function(status, response, error)
-                c_login:onUCenterLogin(status, response, error)
+            function(http_statuscode, status, response, error)
+                c_login:OnUCenterLogin(http_statuscode, status, response, error)
             end)
 end
 
 ---------------------------------------
-function ControllerLogin:resetPwd(phone, phone_code, new_pwd)
+function ControllerLogin:RequestWechatAutoLogin()
+    CS.Casinos.CasinosContext.Instance.LoginType = 2
+    local r = AccountWeChatAutoLoginRequest:new(nil)
+    r.AppId = WeChatAppId
+    r.OpenId = a_info_last_login.AccName
+    r.Device = self:getDeviceInfo()
+    self.ControllerUCenter:RequestWechatAutoLogin(r,
+            function(http_statuscode, status, response, error)
+                self:OnUCenterLogin(http_statuscode, status, response, error)
+            end)
+end
+
+---------------------------------------
+function ControllerLogin:RequestResetPasswordWithPhone(phone, phone_code, new_pwd)
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("ResetPwding"))
     local resetPwd_info = AccountResetPasswordByPhoneRequest:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.AccountResetPasswordInfo()
     resetPwd_info.AccountName = ""
@@ -379,26 +387,29 @@ function ControllerLogin:resetPwd(phone, phone_code, new_pwd)
     resetPwd_info.NewPassword = new_pwd
     resetPwd_info.PhoneVerificationCode = phone_code
     self.ControllerUCenter:RequestResetPasswordWithPhone(resetPwd_info,
-            function(status, response, error)
-                self:onUCenterResetPasswordWithPhone(status, response, error)
+            function(http_statuscode, status, response, error)
+                self:onUCenterResetPasswordWithPhone(http_statuscode, status, response, error)
             end)
 end
 
 ---------------------------------------
-function ControllerLogin:checkIdCard(id_card, name)
+function ControllerLogin:RequestCheckCardAndName(id_card, name)
     local r = CheckCardAndNameRequest:new(nil)
     r.AccountId = self.AccId
     r.CardNo = id_card
     r.Token = self.Token
     r.RealName = name
     self.ControllerUCenter:RequestCheckCardAndName(r,
-            function(status, response, error)
-                self:onUCenterCheckIdCard(status, response, error)
+            function(http_statuscode, status, response, error)
+                self:onUCenterCheckIdCard(http_statuscode, status, response, error)
             end)
 end
 
 ---------------------------------------
-function ControllerLogin:onUCenterPhoneVerificationCode(status, response, error)
+function ControllerLogin:OnUCenterPhoneVerificationCode(http_statuscode, status, response, error)
+    if (http_statuscode ~= 200) then
+    end
+
     if (status == UCenterResponseStatus.Success) then
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("GetPhoneCodeSuccess"))
     else
@@ -411,7 +422,7 @@ function ControllerLogin:onUCenterPhoneVerificationCode(status, response, error)
 end
 
 ---------------------------------------
-function ControllerLogin:onUCenterRegister(status, response, error)
+function ControllerLogin:OnUCenterRegister(http_statuscode, status, response, error)
     if (status == UCenterResponseStatus.Success) then
         local info = self.ControllerMgr.LanMgr:getLanValue("RegisterSuccessful")
         ViewHelper:UiShowInfoSuccess(info)
@@ -426,7 +437,7 @@ function ControllerLogin:onUCenterRegister(status, response, error)
         end
 
         -- 自动请求登录
-        self:requestLogin(response.accountName, self.Password, response.phone, "", "")
+        self:RequestLogin(response.accountName, self.Password, response.phone, "", "")
     else
         if (error ~= nil) then
             ViewHelper:UiEndWaiting()
@@ -437,19 +448,26 @@ function ControllerLogin:onUCenterRegister(status, response, error)
 end
 
 ---------------------------------------
-function ControllerLogin:onUCenterLogin(status, response, error)
-    local c = CS.Casinos.CasinosContext.Instance
+function ControllerLogin:OnUCenterLogin(http_statuscode, status, response, error)
+    if (http_statuscode ~= 200) then
+        ViewHelper:UiEndWaiting()
+        local error_msg = self.ControllerUCenter:ParseUCenterHttpStatusCode(http_statuscode)
+        ViewHelper:UiShowInfoFailed(error_msg)
+        --local view_login = self.ViewMgr:getView("Login")
+        --view_login:Switch2LoginMain()
+        return
+    end
+
     if (status == UCenterResponseStatus.Success) then
         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("LoginSuccessful"))
         self.AccId = response.accountId
         self.Acc = response.accountName
         self.Token = response.token
         self.Identity = response.identity
-        print("onUCenterLogin")
+        print("OnUCenterLogin")
         -- 保存登录信息
         local infos = LoginAccountInfos:new(nil)
-        if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey))
-        then
+        if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey)) then
             local s = CS.UnityEngine.PlayerPrefs.GetString(self.LoginAccountInfoKey)
             local d = self.ControllerMgr.Json.decode(s)
             infos:setData(d)
@@ -490,7 +508,6 @@ function ControllerLogin:onUCenterLogin(status, response, error)
         CS.UnityEngine.PlayerPrefs.SetString(self.LoginAccountInfoKey, t_encode)
 
         -- DataEye登陆
-        -- CoApp.CoDataEye.login(Acc, AccId);
         CS.DataEye.login(self.Acc .. "_" .. self.AccId)
         c.NetBridge:connectBase(GatewayIp, GatewayPort)
     else
@@ -505,7 +522,7 @@ function ControllerLogin:onUCenterLogin(status, response, error)
 end
 
 ---------------------------------------
-function ControllerLogin:onUCenterGuestAccess(status, response, error)
+function ControllerLogin:onUCenterGuestAccess(http_statuscode, status, response, error)
     ViewHelper:UiEndWaiting()
     --local c_login = ControllerLogin:new(nil)
     local c = CS.Casinos.CasinosContext.Instance
@@ -550,7 +567,7 @@ function ControllerLogin:onUCenterGuestAccess(status, response, error)
 end
 
 ---------------------------------------
-function ControllerLogin:onUCenterResetPasswordWithPhone(status, response, error)
+function ControllerLogin:onUCenterResetPasswordWithPhone(http_statuscode, status, response, error)
     ViewHelper:UiEndWaiting()
     --local c_login = ControllerLogin:new(nil)
     if (status == UCenterResponseStatus.Success) then
@@ -563,7 +580,7 @@ function ControllerLogin:onUCenterResetPasswordWithPhone(status, response, error
         local view_login = self.ViewMgr:getView("Login")
         view_login:Switch2DlgLogin(self.Phone, self.Password)
 
-        self:requestLogin(response.accountName, self.Password, response.phone, "", "")
+        self:RequestLogin(response.accountName, self.Password, response.phone, "", "")
     else
         if (error ~= nil) then
             local error_msg = self.ControllerUCenter:ParseUCenterErrorCode(error.code)
@@ -573,7 +590,7 @@ function ControllerLogin:onUCenterResetPasswordWithPhone(status, response, error
 end
 
 ---------------------------------------
-function ControllerLogin:onUCenterCheckIdCard(status, response, error)
+function ControllerLogin:onUCenterCheckIdCard(http_statuscode, status, response, error)
     if (response.error_code == 0) then
         self.Identity = response.result.cardNo
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("CheckIdSuccess"))
@@ -587,7 +604,7 @@ function ControllerLogin:onUCenterCheckIdCard(status, response, error)
 end
 
 ---------------------------------------
-function ControllerLogin:onUCenterBindWeChat(status, response, error)
+function ControllerLogin:OnUCenterWechatBind(http_statuscode, status, response, error)
     if (status == UCenterResponseStatus.Success) then
         if (response == UCenterErrorCode.NoError) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BindWeChatSuccess"))
@@ -600,9 +617,9 @@ function ControllerLogin:onUCenterBindWeChat(status, response, error)
 end
 
 ---------------------------------------
-function ControllerLogin:onUCenterUnbindWeChat(status, response, error)
+function ControllerLogin:OnUCenterWechatUnbind(http_statuscode, status, response, error)
     if (status == UCenterResponseStatus.Success) then
-        print("onUCenterUnbindWeChat")
+        print("OnUCenterWechatUnbind")
         if (response == UCenterErrorCode.NoError) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("UnbindWeChatSuccess"))
             local ev = self.ViewMgr:getEv("EvUnBindWeChatSuccess")
@@ -619,28 +636,22 @@ function ControllerLogin:onUCenterUnbindWeChat(status, response, error)
 end
 
 ---------------------------------------
-function ControllerLogin:onUCenterGuestConvert(status, response, error)
-    --[[  var c = CasinosContext.Instance;
-
-        UiHelperCasinos.UiEndWaiting();
-
-        if (status == UCenterResponseStatus.Success)
-        {
-            string info = "游客帐号转正成功";
-            UiHelperCasinos.UiShowInfoSuccess(info);
-
-            c.CoNetMonitor.AccId = response.AccountId;
-            c.CoNetMonitor.Acc = response.AccountName;
-
-            c.PlayerPrefs.ClearLoginGuestInfo();
-
-            _requestLogin(response.AccountName, Password);
-        }
-        else if (error != null)
-        {
-            string error_msg = CasinosContext.Instance.ParseUCenterErrorCode(error.code);
-            UiHelperCasinos.UiShowInfoFailed(error_msg);
-        }--]]
+function ControllerLogin:OnUCenterGuestConvert(http_statuscode, status, response, error)
+    --UiHelperCasinos.UiEndWaiting();
+    --if (status == UCenterResponseStatus.Success)
+    --{
+    --    string info = "游客帐号转正成功";
+    --    UiHelperCasinos.UiShowInfoSuccess(info);
+    --    c.CoNetMonitor.AccId = response.AccountId;
+    --    c.CoNetMonitor.Acc = response.AccountName;
+    --    c.PlayerPrefs.ClearLoginGuestInfo();
+    --    _requestLogin(response.AccountName, Password);
+    --}
+    --else if (error != null)
+    --{
+    --    string error_msg = CasinosContext.Instance.ParseUCenterErrorCode(error.code);
+    --    UiHelperCasinos.UiShowInfoFailed(error_msg);
+    --}
 end
 
 ---------------------------------------
@@ -779,7 +790,6 @@ function ControllerLogin:getDeviceInfo()
     device_info.Name = CS.Casinos.LuaHelper.getDeviceName()
     device_info.OperationSystem = CS.Casinos.LuaHelper.getDeviceOperatingSystem()
     device_info.Type = CS.Casinos.LuaHelper.getDevicedeviceType()
-
     return device_info;
 end
 
@@ -794,8 +804,7 @@ end
 function ControllerLogin:_init(is_init)
     -- 显示登录界面
     ViewHelper:UiEndWaiting()
-    --local pre_loading = c:getPreView("PreLoading")
-    --c:destroyPreView(pre_loading)
+
     local acc = ""
     local pwd = ""
     local view_login = self.ViewMgr:createView("Login")
@@ -809,26 +818,18 @@ function ControllerLogin:_init(is_init)
 
         if is_init then
             self.AutoLogin = true
-            view_login:Switch2Logining()
+            --view_login:Switch2Logining()
             if (a_info_last_login.LoginType == 0) then
                 acc = a_info_last_login.AccName
                 pwd = a_info_last_login.Pwd
                 self.RemeberPwd = true
                 self.Phone = a_info_last_login.AccName
                 self.Password = pwd
-                self:requestLogin("", pwd, a_info_last_login.Phone, "", "")
+                self:RequestLogin("", pwd, a_info_last_login.Phone, "", "")
             elseif (a_info_last_login.LoginType == 1) then
-                self:requestGuestAccess()
+                self:RequestGuestAccess()
             elseif (a_info_last_login.LoginType == 2) then
-                CS.Casinos.CasinosContext.Instance.LoginType = 2
-                local r = AccountWeChatAutoLoginRequest:new(nil)
-                r.AppId = WeChatAppId
-                r.OpenId = a_info_last_login.AccName
-                r.Device = self:getDeviceInfo()
-                self.ControllerUCenter:RequestWechatAutoLogin(r,
-                        function(status, response, error)
-                            self:onUCenterLogin(status, response, error)
-                        end)
+                self:RequestWechatAutoLogin()
             end
         else
             local a_info_acc_login = infos.TLoginAccountInfo["0"]
@@ -865,11 +866,11 @@ function ControllerLogin:_clickCheckDataCallBack(bo)
             ViewHelper:UiShowInfoFailed(info)
         else
             if (self.LoginType == 1) then
-                self:requestGuestAccess()
+                self:RequestGuestAccess()
             end
 
             if (self.LoginType == 0) then
-                self:requestLogin("", self.Pwd, self.Acc, "", "")
+                self:RequestLogin("", self.Pwd, self.Acc, "", "")
             end
 
             if (self.LoginType == 2) then
@@ -893,11 +894,11 @@ function ControllerLogin:_autoCheckDataCallBack(bo)
             ViewHelper:UiShowInfoFailed(info)
         else
             if (self.LoginType == 1) then
-                self:requestGuestAccess()
+                self:RequestGuestAccess()
             end
 
             if (self.LoginType == 0) then
-                self:requestLogin("", self.Pwd, self.Acc, "", "")
+                self:RequestLogin("", self.Pwd, self.Acc, "", "")
             end
 
             if (self.LoginType == 2) then

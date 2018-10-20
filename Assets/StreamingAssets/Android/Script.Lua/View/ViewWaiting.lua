@@ -80,7 +80,6 @@ function ViewWaiting:setTips(tips, auto_destroytm, random_tips)
     if (random_tips == nil) then
         random_tips = true
     end
-    --local waiting = ViewWaiting:new(nil)
 
     if (tips == nil or string.len(tips) == 0) then
         if (random_tips) then
@@ -99,7 +98,6 @@ function ViewWaiting:setTips(tips, auto_destroytm, random_tips)
     if (auto_destroytm == nil) then
         self.AutoDestroyTm = 5
     end
-
 end
 
 ---------------------------------------

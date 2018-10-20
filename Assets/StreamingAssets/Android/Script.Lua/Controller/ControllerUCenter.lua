@@ -43,8 +43,8 @@ function ControllerUCenter:RequestGetPhoneVerificationCode(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -56,8 +56,8 @@ function ControllerUCenter:RequestRegister(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -69,8 +69,8 @@ function ControllerUCenter:RequestLogin(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -82,8 +82,8 @@ function ControllerUCenter:RequestResetPasswordWithPhone(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -95,8 +95,8 @@ function ControllerUCenter:RequestWechatAutoLogin(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -108,8 +108,8 @@ function ControllerUCenter:RequestWechatLogin(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -121,8 +121,8 @@ function ControllerUCenter:RequestWechatBind(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -134,8 +134,8 @@ function ControllerUCenter:RequestWechatUnbind(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -147,8 +147,8 @@ function ControllerUCenter:RequestGuestAccess(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -160,8 +160,8 @@ function ControllerUCenter:RequestGuestConvert(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -173,8 +173,8 @@ function ControllerUCenter:RequestResetPassword(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -189,8 +189,8 @@ function ControllerUCenter:RequestUploadProfileImage(app_id, account_id, bytes, 
     www_form:AddBinaryData("file", bytes, "profile.jpg", "image/jpg")
     --print(http_url)
     self.MbHelper:PostUrlWithFormData(http_url, www_form,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -202,8 +202,8 @@ function ControllerUCenter:RequestPayCreateCharge(payment_info, handler)
     local param = self.ControllerMgr.Json.encode(payment_info)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -215,8 +215,8 @@ function ControllerUCenter:RequestCheckCardAndName(request, handler)
     local param = self.ControllerMgr.Json.encode(request)
     --print(http_url)
     self.MbHelper:PostUrl(http_url, param,
-            function(response_data)
-                self:_onResponse(response_data, handler)
+            function(http_statuscode, response_data)
+                self:_onResponse(http_statuscode, response_data, handler)
             end
     )
 end
@@ -230,8 +230,8 @@ function ControllerUCenter:RequestNigWebpayRequestUrl(handler)
     self.WWWNigWebpayRequestUrl = CS.UnityEngine.WWW(http_url, form)
     --print(http_url)
     --self.MbKingTexasHelper:PostUrl(http_url, param,
-    --        function(response_data)
-    --            self:_onResponse(response_data, handler)
+    --        function(http_statuscode, response_data)
+    --            self:_onResponse(http_statuscode, response_data, handler)
     --        end
     --)
 end
@@ -262,6 +262,18 @@ function ControllerUCenter:RequestQuicktellerTransfersQuery(handler)
     local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfersquery")
     local form = CS.UnityEngine.WWWForm()
     self.WWWQuicktellerTransfersQuery = CS.UnityEngine.WWW(http_url, form)
+end
+
+---------------------------------------
+-- 解析Http错误码
+function ControllerUCenter:ParseUCenterHttpStatusCode(http_statuscode)
+    local error_msg = ""
+    if (http_statuscode == 200) then
+    else
+        error_msg = string.format('Error, HttpStatusCode: %s', http_statuscode)
+    end
+    --return self.ControllerMgr.LanMgr:getLanValue(error_msg)
+    return error_msg
 end
 
 ---------------------------------------
@@ -326,18 +338,29 @@ function ControllerUCenter:ParseUCenterErrorCode(error_code)
 end
 
 ---------------------------------------
-function ControllerUCenter:_onResponse(response_data, handler)
+function ControllerUCenter:_onResponse(http_statuscode, response_data, handler)
+    --print(http_statuscode)
     --print(response_data)
+    if (handler == nil) then
+        return
+    end
+
+    if (http_statuscode ~= 200) then
+        local error = UCenterError:new(nil)
+        error.ErrorCode = UCenterErrorCode.ServiceUnavailable
+        error.Message = ""
+        handler(http_statuscode, UCenterResponseStatus.Error, nil, error)
+        return
+    end
+
     local response = self.ControllerMgr.Json.decode(response_data)
-    if (handler ~= nil) then
-        if (response ~= nil) then
-            handler(response.status, response.result, response.error)
-        else
-            local error = UCenterError:new(nil)
-            error.ErrorCode = UCenterErrorCode.ServiceUnavailable
-            error.Message = ""
-            handler(UCenterResponseStatus.Error, nil, error)
-        end
+    if (response ~= nil) then
+        handler(http_statuscode, response.status, response.result, response.error)
+    else
+        local error = UCenterError:new(nil)
+        error.ErrorCode = UCenterErrorCode.ServiceUnavailable
+        error.Message = ""
+        handler(http_statuscode, UCenterResponseStatus.Error, nil, error)
     end
 end
 

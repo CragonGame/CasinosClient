@@ -59,9 +59,7 @@ function ViewHelper:UiShowInfoFailed(info)
     if (ui_floatmsg == nil) then
         ui_floatmsg = self.ViewMgr:createView("FloatMsg")
     end
-
     ui_floatmsg:showInfo(info, CS.UnityEngine.Color.red)
-
     return ui_floatmsg
 end
 
@@ -77,7 +75,6 @@ function ViewHelper:UiShowPermanentPosMsg(info)
         ui_msg = self.ViewMgr:createView("PermanentPosMsg")
     end
     ui_msg:showInfo(info)
-
     return ui_msg
 end
 
@@ -85,7 +82,6 @@ end
 function ViewHelper:UiShowMsgBox(info, ok, cancel)
     local ui = self.ViewMgr:createView("MsgBox")
     ui:showMsgBox3(info, ok, cancel)
-
     return ui
 end
 
@@ -93,7 +89,6 @@ end
 function ViewHelper:UiShowMsgBox(info, ok)
     local ui = self.ViewMgr:createView("MsgBox")
     ui:showMsgBox4(info, ok)
-
     return ui
 end
 
@@ -112,14 +107,13 @@ function ViewHelper:UiBeginWaiting(tips, auto_destroytm)
         ui_waiting = self.ViewMgr:createView("Waiting")
     end
     ui_waiting:setTips(tips, auto_destroytm)
-
     return ui_waiting
 end
 
 ---------------------------------------
-function ViewHelper.UiEndWaiting(table)
-    return table:UiEndWaiting()
-end
+--function ViewHelper.UiEndWaiting(table)
+--    return table:UiEndWaiting()
+--end
 
 ---------------------------------------
 function ViewHelper:UiEndWaiting()
@@ -133,10 +127,8 @@ function ViewHelper:UiShowLoading(tips, progress)
     if (ui_loading == nil) then
         ui_loading = self.ViewMgr:createView("Loading")
     end
-
     ui_loading:setTip(tips)
     ui_loading:setLoadingProgress(progress)
-
     return ui_loading
 end
 
