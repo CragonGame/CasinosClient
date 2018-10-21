@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <packageDescription id="kqdg82d8" jpegQuality="80" compressPNG="true">
   <resources>
-    <component id="lacn0" name="ActivityPopUpBox.xml" path="/" exported="true"/>
+    <component id="lacn0" name="ActivityPopup.xml" path="/" exported="true"/>
     <component id="s17d1" name="ComBgAndClose.xml" path="/Component/"/>
   </resources>
-  <publish name="ActivityPopUpBox" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ActivityPopUpBox"/>
+  <publish name="ActivityPopup" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\ActivityPopup"/>
 </packageDescription>

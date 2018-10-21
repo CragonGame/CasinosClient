@@ -371,7 +371,7 @@ function ViewLogin:Switch2LoginMain()
 end
 
 ---------------------------------------
-function ViewLogin:Switch2DlgLogin(acc, pwd)
+function ViewLogin:Switch2LoginPhone(acc, pwd)
     if (self:_hasAgreeAgreement() == false) then
         return
     end

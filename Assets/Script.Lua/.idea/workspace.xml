@@ -53,80 +53,62 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="lua" value="29" />
+          <entry key="lua" value="47" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="XML" value="1" />
-          <entry key="lua" value="29" />
+          <entry key="lua" value="47" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="lua" value="1232" />
+          <entry key="lua" value="1359" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="lua" value="1232" />
+          <entry key="lua" value="1359" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Context.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1976">
-              <caret line="104" column="39" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
+            <state relative-caret-position="289">
+              <caret line="387" column="54" lean-forward="true" selection-start-line="387" selection-start-column="54" selection-end-line="387" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Launch/Launch.lua">
+        <entry file="file://$PROJECT_DIR$/View/ViewActivityCenter.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1786">
-              <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+            <state relative-caret-position="-1388">
+              <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controller/ControllerUCenter.lua">
+        <entry file="file://$PROJECT_DIR$/Other/UiChipShowHelper.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="797">
-              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+            <state relative-caret-position="-1255">
+              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Controller/ControllerLogin.lua">
+        <entry file="file://$PROJECT_DIR$/View/ViewActivityPopup.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="818" column="23" lean-forward="true" selection-start-line="818" selection-start-column="23" selection-end-line="818" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Other/ViewHelper.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2204">
-              <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/View/ViewLogin.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="373" column="44" lean-forward="true" selection-start-line="373" selection-start-column="44" selection-end-line="373" selection-end-column="44" />
+            <state relative-caret-position="76">
+              <caret line="55" column="3" lean-forward="true" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -135,9 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_checkCurrentLan</find>
-      <find>Env</find>
-      <find>IsDev</find>
       <find>CurrentLan</find>
       <find>FPSLimit</find>
       <find>OssRootUrl</find>
@@ -163,8 +142,11 @@
       <find>onUCenterUnbindWeChat</find>
       <find>onUCenterGuestConvert</find>
       <find>onClickGateWay</find>
-      <find>LoginState</find>
       <find>RequestWechatAutoLogin</find>
+      <find>Switch2DlgLogin</find>
+      <find>LoginState</find>
+      <find>ViewActivityPopUpBox</find>
+      <find>ViewActivityPopupFactory</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -182,14 +164,19 @@
         <option value="$PROJECT_DIR$/Launch/PreViewMgr.lua" />
         <option value="$PROJECT_DIR$/Launch/Launch.lua" />
         <option value="$PROJECT_DIR$/View/ViewMain.lua" />
-        <option value="$PROJECT_DIR$/Context.lua" />
         <option value="$PROJECT_DIR$/Model/ModelUCenter.lua" />
         <option value="$PROJECT_DIR$/Controller/ControllerUCenter.lua" />
         <option value="$PROJECT_DIR$/Other/ViewHelper.lua" />
         <option value="$PROJECT_DIR$/View/ViewMgr.lua" />
         <option value="$PROJECT_DIR$/View/ViewWaiting.lua" />
-        <option value="$PROJECT_DIR$/View/ViewLogin.lua" />
         <option value="$PROJECT_DIR$/Controller/ControllerLogin.lua" />
+        <option value="$PROJECT_DIR$/View/ViewLogin.lua" />
+        <option value="$PROJECT_DIR$/Other/CasinoHelper.lua" />
+        <option value="$PROJECT_DIR$/Other/GoldController.lua" />
+        <option value="$PROJECT_DIR$/Other/LuaHelper.lua" />
+        <option value="$PROJECT_DIR$/View/UiResetPwd.lua" />
+        <option value="$PROJECT_DIR$/View/ViewActivityPopUpBox.lua" />
+        <option value="$PROJECT_DIR$/Context.lua" />
       </list>
     </option>
   </component>
@@ -229,11 +216,6 @@
             <path>
               <item name="Script.Lua" type="b2602c69:ProjectViewProjectNode" />
               <item name="Script.Lua" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Script.Lua" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Script.Lua" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Script.Lua" type="b2602c69:ProjectViewProjectNode" />
@@ -318,34 +300,6 @@
         <state relative-caret-position="-969" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Other/UiChipShowHelper.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="177" column="26" lean-forward="true" selection-start-line="177" selection-start-column="26" selection-end-line="177" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Other/TexasHelper.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="62" column="22" lean-forward="true" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Other/TbDataHelper.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Other/PicCapture.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="33" column="19" lean-forward="true" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Base.Lan/LanMgr.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -360,13 +314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Other/Native.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="39" selection-start-line="5" selection-end-line="5" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Bundle.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -378,13 +325,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2128">
           <caret line="112" column="48" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/View/ViewActivityPopUpBox.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="66" column="35" selection-start-line="66" selection-start-column="35" selection-end-line="66" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -416,13 +356,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Context.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1976">
-          <caret line="104" column="39" selection-start-line="104" selection-start-column="39" selection-end-line="104" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Launch/Launch.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1786">
@@ -434,13 +367,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controller/ControllerUCenter.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="797">
-          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
@@ -458,24 +384,139 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Other/ViewHelper.lua">
+    <entry file="file://$PROJECT_DIR$/View/ViewLogin.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2204">
-          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+        <state relative-caret-position="356">
+          <caret line="382" column="36" lean-forward="true" selection-start-line="382" selection-start-column="36" selection-end-line="382" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller/ControllerUCenter.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="797">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Controller/ControllerLogin.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="818" column="23" lean-forward="true" selection-start-line="818" selection-start-column="23" selection-end-line="818" selection-end-column="23" />
+        <state relative-caret-position="408">
+          <caret line="679" column="15" lean-forward="true" selection-start-line="679" selection-start-column="15" selection-end-line="679" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/View/ViewLogin.lua">
+    <entry file="file://$PROJECT_DIR$/Other/CasinoHelper.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="373" column="44" lean-forward="true" selection-start-line="373" selection-start-column="44" selection-end-line="373" selection-end-column="44" />
+        <state relative-caret-position="266">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Other/GoldController.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1083">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Other/LuaHelper.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1673">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Other/Native.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4010">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Other/PicCapture.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Other/TbDataHelper.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-722">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Other/TexasHelper.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1159">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Other/ViewHelper.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/UiChooseCountryCode.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-761">
+          <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/UiMainPlayerInfo.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/UiRegister.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4499" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/UiResetPwd.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-699">
+          <caret line="181" column="43" lean-forward="true" selection-start-line="181" selection-start-column="43" selection-end-line="181" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/ViewAbout.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1027" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/ViewActivityPopup.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="55" column="3" lean-forward="true" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Other/UiChipShowHelper.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1255">
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/View/ViewActivityCenter.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1388">
+          <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Context.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="387" column="54" lean-forward="true" selection-start-line="387" selection-start-column="54" selection-end-line="387" selection-end-column="54" />
         </state>
       </provider>
     </entry>

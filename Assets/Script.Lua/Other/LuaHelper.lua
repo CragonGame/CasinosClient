@@ -42,7 +42,6 @@ function LuaHelper:GetTableCount(t)
 	for k, v in pairs(t) do
 		count = count + 1
 	end
-
 	return count
 end
 
@@ -109,8 +108,7 @@ end
 
 ---------------------------------------
 function LuaHelper:CloneTableData(table_resource,table_target)
-	if(table_resource ~= nil)
-	then
+	if(table_resource ~= nil) then
 		for k, v in pairs(table_resource) do
 			table_target[k] = v
 		end

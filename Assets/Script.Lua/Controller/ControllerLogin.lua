@@ -430,10 +430,10 @@ function ControllerLogin:OnUCenterRegister(http_statuscode, status, response, er
         self.AccId = response.accountId
         self.Acc = response.accountName
 
-        -- 切换显示为登录对话框
+        -- 切换显示为手机登录界面
         local view_login = self.ViewMgr:getView("Login")
         if (view_login ~= nil) then
-            view_login:Switch2DlgLogin(self.Phone, self.Password)
+            view_login:Switch2LoginPhone(self.Phone, self.Password)
         end
 
         -- 自动请求登录
@@ -578,7 +578,7 @@ function ControllerLogin:onUCenterResetPasswordWithPhone(http_statuscode, status
         self.Acc = response.accountName
 
         local view_login = self.ViewMgr:getView("Login")
-        view_login:Switch2DlgLogin(self.Phone, self.Password)
+        view_login:Switch2LoginPhone(self.Phone, self.Password)
 
         self:RequestLogin(response.accountName, self.Password, response.phone, "", "")
     else

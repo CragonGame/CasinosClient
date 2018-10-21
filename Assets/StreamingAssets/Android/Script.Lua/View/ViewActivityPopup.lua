@@ -2,10 +2,10 @@
 -- 刚进游戏主动弹出的活动对话框。弹多个时，由ControllerActive控制依次弹出。
 
 ---------------------------------------
-ViewActivityPopUpBox = ViewBase:new()
+ViewActivityPopup = ViewBase:new()
 
 ---------------------------------------
-function ViewActivityPopUpBox:new(o)
+function ViewActivityPopup:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -20,7 +20,7 @@ function ViewActivityPopUpBox:new(o)
 end
 
 ---------------------------------------
-function ViewActivityPopUpBox:onCreate()
+function ViewActivityPopup:onCreate()
     ViewHelper:PopUi(self.ComUi)
 
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -42,7 +42,7 @@ function ViewActivityPopUpBox:onCreate()
 end
 
 ---------------------------------------
-function ViewActivityPopUpBox:onDestroy()
+function ViewActivityPopup:onDestroy()
     local ev = self.ViewMgr:getEv("EvUiCloseActivityPopUpBox")
     if (ev == nil) then
         ev = EvUiCloseActivityPopUpBox:new(nil)
@@ -51,12 +51,12 @@ function ViewActivityPopUpBox:onDestroy()
 end
 
 ---------------------------------------
-function ViewActivityPopUpBox:onClickBtnClose()
+function ViewActivityPopup:onClickBtnClose()
     self.ViewMgr:destroyView(self)
 end
 
 ---------------------------------------
-function ViewActivityPopUpBox:SetActivityInfo(item)
+function ViewActivityPopup:SetActivityInfo(item)
     if (item.ContenText ~= nil) then
         self.GTextContent.text = item.ContenText
     end
@@ -82,10 +82,10 @@ function ViewActivityPopUpBox:SetActivityInfo(item)
 end
 
 ---------------------------------------
-ViewActivityPopUpBoxFactory = ViewFactory:new()
+ViewActivityPopupFactory = ViewFactory:new()
 
 ---------------------------------------
-function ViewActivityPopUpBoxFactory:new(o, ui_package_name, ui_component_name,
+function ViewActivityPopupFactory:new(o, ui_package_name, ui_component_name,
                                          ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
@@ -99,7 +99,7 @@ function ViewActivityPopUpBoxFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewActivityPopUpBoxFactory:createView()
-    local view = ViewActivityPopUpBox:new(nil)
+function ViewActivityPopupFactory:createView()
+    local view = ViewActivityPopup:new(nil)
     return view
 end

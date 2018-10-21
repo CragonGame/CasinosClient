@@ -377,19 +377,25 @@ function Context:_nextLaunchStep()
 
         -- 加载AssetBundle列表
         local table_ab = {
-            "Common", "Loading", "LotteryTicket", "Chat", "ChatFriend", "About", "Mail", "PayType",
-            "ChooseLan", "Share", "ShareType", "LanZh", "LanEn", "LanZhAndroid", "Pool",
-            "ChatChooseTarget", "ChatExPression", "CreateDeskTop", "AgreeOrDisAddFriendRequest",
-            "Bank", "ChipOperate", "QuitOrBack", "Login", "Main", "Bag", "MailDetail", "DailyReward",
-            "Desktop", "DesktopChatParent", "DesktopPlayerInfo", "DesktopPlayerOperate", "DesktopMenu",
-            "DesktopHints", "MTTGameResult", "MTTProcess", "Friend", "Feedback", "InviteFriendPlay",
-            "IdCardCheck", "ResetPwd", "Ranking", "DesktopH", "DesktopHBetReward", "DesktopHTexas",
-            "DesktopHBankPlayerList", "DesktopHCardType", "DesktopHHistory", "DesktopHRewardPot",
-            "DesktopHMenu", "DesktopHHelp", "DesktopHResult", "DesktopHSetCardType", "DesktopHTongSha",
-            "DesktopHTongPei", "Edit", "FriendOnLine", "GiftDetail", "GiftShop", "LockChat", "PlayerProfile",
-            "PlayerInfo", "Notice", "ShootingText", "Shop", "Purse", "TakePhoto", "ClassicModel", "RechargeFirst",
-            "ActivityPopUpBox", "ActivityCenter", "MatchLobby", "ApplySucceed", "Club", "ClubHelp", "CreateMatch",
-            "BlindTable", "JoinMatch", "GetChipEffect", "MatchInfo", "EnterMatchNotify", "SnowBallReward", "EditAddress"
+            "About", "ActivityCenter", "ActivityPopup", "AgreeOrDisAddFriendRequest", "ApplySucceed",
+            "Bag", "Bank", "BlindTable",
+            "Chat", "ChatChooseTarget", "ChatExPression", "ChatFriend", "ChipOperate", "ChooseLan","ClassicModel", "Club", "ClubHelp", "Common", "CreateDeskTop", "CreateMatch",
+            "DailyReward", "Desktop", "DesktopChatParent", "DesktopHints","DesktopPlayerInfo", "DesktopPlayerOperate", "DesktopMenu",
+            "DesktopH", "DesktopHBetReward", "DesktopHTexas", "DesktopHBankPlayerList", "DesktopHCardType", "DesktopHHistory", "DesktopHRewardPot",
+            "DesktopHMenu", "DesktopHHelp", "DesktopHResult", "DesktopHSetCardType", "DesktopHTongSha", "DesktopHTongPei",
+            "Edit", "EditAddress", "EnterMatchNotify",
+            "Friend", "FriendOnLine", "Feedback",
+            "GetChipEffect", "GiftDetail", "GiftShop",
+            "IdCardCheck", "InviteFriendPlay",
+            "JoinMatch",
+            "LanZh", "LanEn", "LanZhAndroid", "Loading", "LockChat", "Login", "LotteryTicket",
+            "Mail", "MailDetail", "Main", "MatchInfo", "MatchLobby", "MTTGameResult", "MTTProcess",
+            "Notice",
+            "PayType", "PlayerInfo", "PlayerProfile", "Pool", "Purse",
+            "QuitOrBack",
+            "Ranking", "RechargeFirst","ResetPwd",
+            "Share", "ShareType", "ShootingText", "Shop", "SnowBallReward",
+            "TakePhoto",
         }
         for i = 1, #(table_ab) do
             local full_name = self.CasinosContext.PathMgr:combinePersistentDataPath("resources.kingtexas/ui/" .. string.lower(table_ab[i]) .. ".ab")
@@ -826,9 +832,9 @@ function Context:_regView()
     self:DoString("ViewHeadIconBig")
     local view_headionbig_fac = ViewHeadIconBigFactory:new(nil, "Common", "CoHeadIconBig", "MessgeBox", true, CS.FairyGUI.FitScreen.FitSize)
     self.ViewMgr:regView("HeadIconBig", view_headionbig_fac)
-    self:DoString("ViewActivityPopUpBox")
-    local view_activity_popupbox_fac = ViewActivityPopUpBoxFactory:new(nil, "ActivityPopUpBox", "ActivityPopUpBox", "MessgeBox", true, CS.FairyGUI.FitScreen.FitSize)
-    self.ViewMgr:regView("ActivityPopUpBox", view_activity_popupbox_fac)
+    self:DoString("ViewActivityPopup")
+    local view_activity_popup_fac = ViewActivityPopupFactory:new(nil, "ActivityPopup", "ActivityPopup", "MessgeBox", true, CS.FairyGUI.FitScreen.FitSize)
+    self.ViewMgr:regView("ActivityPopup", view_activity_popup_fac)
     self:DoString("ViewMatchLobby")
     local view_matchlobby_fac = ViewMatchLobbyFactory:new(nil, "MatchLobby", "MatchLobby", "Background", true, CS.FairyGUI.FitScreen.FitSize)
     self.ViewMgr:regView("MatchLobby", view_matchlobby_fac)

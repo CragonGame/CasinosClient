@@ -11,8 +11,7 @@ function UiResetPwd:new(view)
     self.__index = self
     o.ViewLogin = view
     local obj_resetpwd = view.ComUi:GetChild("ResetPwd")
-    if (obj_resetpwd ~= nil)
-    then
+    if (obj_resetpwd ~= nil) then
         local group_resetpwd = obj_resetpwd.asGroup
         local com_accregister = view.ComUi:GetChildInGroup(group_resetpwd, "ComCountryCordResetPwd").asCom
         local com_text_code = com_accregister:GetChild("ComTextCountryCode").asCom

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1918903780
+CRC: 3698696476
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 68511c1eef9dbc22162e4d78f54d8f82
+    Hash: f7d572f7b5c3c3420b6e598317c925a1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -12,5 +12,5 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ActivityPopUpBox/ActivityPopUpBox_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/ActivityPopup/ActivityPopup_fui.bytes
 Dependencies: []
