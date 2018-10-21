@@ -35,3 +35,6 @@ ProjectUnityNative/ProjectUnityNative.csproj
 ProjectUnityNative/ProjectUnityNative.Plugins.csproj
 ProjectUnityNative/ProjectUnityNative.sln
 ProjectUnityNative/.DS_Store
+/Assets/Script.Lua/.idea
+/Assets/.DS_Store
+/.DS_Store
