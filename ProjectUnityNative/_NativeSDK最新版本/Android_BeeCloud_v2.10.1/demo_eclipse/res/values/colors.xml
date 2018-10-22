@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="bluebg">#007edf</color>
-    <color name="greybg">#EEEEEE</color>
-    <color name="fontgrey">#999999</color>
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="main_orange">#FF6C2C</color>
-</resources>
