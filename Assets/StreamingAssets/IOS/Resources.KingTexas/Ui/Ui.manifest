@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 890047814
+CRC: 1733244216
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: rechargefirst.ab
+      Name: activitypopup.ab
       Dependencies: {}
