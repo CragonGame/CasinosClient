@@ -1,0 +1,196 @@
+﻿
+
+<linker>
+
+	<assembly fullname="Assembly-CSharp">
+	    <type fullname="Casinos.UiHelperCasinos" preserve="all"/>
+		<type fullname="Casinos.CasinoHelper" preserve="all"/>
+		<type fullname="Casinos.CasinosContext" preserve="all"/>
+		<type fullname="FairyGUI.EaseType" preserve="all"/>
+		<type fullname="FairyGUI.RelationType" preserve="all"/>
+		<type fullname="FairyGUI.TweenPropType" preserve="all"/>
+		<type fullname="FairyGUI.Container" preserve="all"/>
+		<type fullname="FairyGUI.Controller" preserve="all"/>
+		<type fullname="FairyGUI.DisplayObject" preserve="all"/>
+		<type fullname="FairyGUI.EventContext" preserve="all"/>
+		<type fullname="FairyGUI.EventDispatcher" preserve="all"/>
+		<type fullname="FairyGUI.EventListener" preserve="all"/>
+		<type fullname="FairyGUI.InputEvent" preserve="all"/>
+		<type fullname="FairyGUI.GObject" preserve="all"/>
+		<type fullname="FairyGUI.GGraph" preserve="all"/>
+		<type fullname="FairyGUI.GGroup" preserve="all"/>
+		<type fullname="FairyGUI.GImage" preserve="all"/>
+		<type fullname="FairyGUI.GLoader" preserve="all"/>
+		<type fullname="FairyGUI.GMovieClip" preserve="all"/>
+		<type fullname="FairyGUI.GTextField" preserve="all"/>
+		<type fullname="FairyGUI.GRichTextField" preserve="all"/>
+		<type fullname="FairyGUI.GTextInput" preserve="all"/>
+		<type fullname="FairyGUI.GComponent" preserve="all"/>
+		<type fullname="FairyGUI.GList" preserve="all"/>
+		<type fullname="FairyGUI.GRoot" preserve="all"/>
+		<type fullname="FairyGUI.GLabel" preserve="all"/>
+		<type fullname="FairyGUI.GButton" preserve="all"/>
+		<type fullname="FairyGUI.GComboBox" preserve="all"/>
+		<type fullname="FairyGUI.GObjectPool" preserve="all"/>
+		<type fullname="FairyGUI.GProgressBar" preserve="all"/>
+		<type fullname="FairyGUI.GSlider" preserve="all"/>
+		<type fullname="FairyGUI.GTween" preserve="all"/>
+		<type fullname="FairyGUI.GTweener" preserve="all"/>
+		<type fullname="FairyGUI.Stage" preserve="all"/>
+		<type fullname="FairyGUI.PopupMenu" preserve="all"/>
+		<type fullname="FairyGUI.Relations" preserve="all"/>
+		<type fullname="FairyGUI.ScrollPane" preserve="all"/>
+		<type fullname="FairyGUI.TextFormat" preserve="all"/>
+		<type fullname="FairyGUI.Transition" preserve="all"/>
+		<type fullname="FairyGUI.TweenValue" preserve="all"/>
+		<type fullname="FairyGUI.UIPackage" preserve="all"/>
+		<type fullname="FairyGUI.Window" preserve="all"/>
+		<type fullname="Casinos._eProjectItemDisplayNameKey" preserve="all"/>
+		<type fullname="_eAsyncAssetLoadType" preserve="all"/>
+		<type fullname="AsyncAssetLoaderMgr" preserve="all"/>
+		<type fullname="AsyncAssetLoadGroup" preserve="all"/>
+		<type fullname="Casinos.Card" preserve="all"/>
+		<type fullname="ChatParser" preserve="all"/>
+		<type fullname="Casinos.CopyStreamingAssetsToPersistentData2" preserve="all"/>
+		<type fullname="EbTool" preserve="all"/>
+		<type fullname="Casinos.EbTimeEvent" preserve="all"/>
+		<type fullname="Casinos.EbTimer" preserve="all"/>
+		<type fullname="GameCloud.Unity.Common.EbDoubleLinkNode`1[Casinos.EbTimeEvent]" preserve="all"/>
+		<type fullname="GameCloud.Unity.Common.EbDoubleLinkList`1[Casinos.EbTimeEvent]" preserve="all"/>
+		<type fullname="Casinos.EbTimeWheel" preserve="all"/>
+		<type fullname="LoaderTicket" preserve="all"/>
+		<type fullname="Casinos.MbHelper" preserve="all"/>
+		<type fullname="QRCodeMaker" preserve="all"/>
+		<type fullname="TcpClient" preserve="all"/>
+		<type fullname="Casinos.TimerShaft" preserve="all"/>
+		<type fullname="Casinos.UiHelper" preserve="all"/>
+		<type fullname="Casinos.UpdateRemoteToPersistentData" preserve="all"/>
+		<type fullname="Casinos.CasinosLua" preserve="all"/>
+		<type fullname="Casinos.LuaHelper" preserve="all"/>
+		<type fullname="Casinos._eEditorRunSourcePlatform" preserve="all"/>
+		<type fullname="Casinos.DirType" preserve="all"/>
+		<type fullname="Casinos.PathMgr" preserve="all"/>
+		<type fullname="Casinos.SpineHelper" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.CoreModule">
+	    <type fullname="UnityEngine.ApplicationInstallMode" preserve="all"/>
+		<type fullname="UnityEngine.ApplicationSandboxType" preserve="all"/>
+		<type fullname="UnityEngine.CameraType" preserve="all"/>
+		<type fullname="UnityEngine.CameraClearFlags" preserve="all"/>
+		<type fullname="UnityEngine.NetworkReachability" preserve="all"/>
+		<type fullname="UnityEngine.RuntimePlatform" preserve="all"/>
+		<type fullname="UnityEngine.SystemLanguage" preserve="all"/>
+		<type fullname="UnityEngine.ThreadPriority" preserve="all"/>
+		<type fullname="UnityEngine.Application" preserve="all"/>
+		<type fullname="UnityEngine.Camera" preserve="all"/>
+		<type fullname="UnityEngine.Color" preserve="all"/>
+		<type fullname="UnityEngine.Color32" preserve="all"/>
+		<type fullname="UnityEngine.Coroutine" preserve="all"/>
+		<type fullname="UnityEngine.GameObject" preserve="all"/>
+		<type fullname="UnityEngine.Hash128" preserve="all"/>
+		<type fullname="UnityEngine.Material" preserve="all"/>
+		<type fullname="UnityEngine.Mathf" preserve="all"/>
+		<type fullname="UnityEngine.Matrix4x4" preserve="all"/>
+		<type fullname="UnityEngine.Mesh" preserve="all"/>
+		<type fullname="UnityEngine.Ping" preserve="all"/>
+		<type fullname="UnityEngine.PlayerPrefs" preserve="all"/>
+		<type fullname="UnityEngine.Quaternion" preserve="all"/>
+		<type fullname="UnityEngine.Random" preserve="all"/>
+		<type fullname="UnityEngine.Rect" preserve="all"/>
+		<type fullname="UnityEngine.Renderer" preserve="all"/>
+		<type fullname="UnityEngine.Resources" preserve="all"/>
+		<type fullname="UnityEngine.Screen" preserve="all"/>
+		<type fullname="UnityEngine.SystemInfo" preserve="all"/>
+		<type fullname="UnityEngine.Texture3D" preserve="all"/>
+		<type fullname="UnityEngine.Time" preserve="all"/>
+		<type fullname="UnityEngine.Vector3" preserve="all"/>
+		<type fullname="UnityEngine.Vector2" preserve="all"/>
+		<type fullname="UnityEngine.Vector4" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.AssetBundleModule">
+	    <type fullname="UnityEngine.AssetBundle" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.AudioModule">
+	    <type fullname="UnityEngine.AudioClip" preserve="all"/>
+		<type fullname="UnityEngine.AudioSource" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.TextRenderingModule">
+	    <type fullname="UnityEngine.Font" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.ParticleSystemModule">
+	    <type fullname="UnityEngine.ParticleSystem" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.ScreenCaptureModule">
+	    <type fullname="UnityEngine.ScreenCapture" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.UnityWebRequestModule">
+	    <type fullname="UnityEngine.Networking.UnityWebRequest" preserve="all"/>
+		<type fullname="UnityEngine.WWWForm" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.UnityWebRequestWWWModule">
+	    <type fullname="UnityEngine.WWW" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="mscorlib">
+	    <type fullname="System.BitConverter" preserve="all"/>
+		<type fullname="System.Array" preserve="all"/>
+		<type fullname="System.Collections.Hashtable" preserve="all"/>
+		<type fullname="System.Collections.Generic.List`1[System.String]" preserve="all"/>
+		<type fullname="System.Collections.Generic.List`1[UnityEngine.AssetBundle]" preserve="all"/>
+		<type fullname="System.IO.Directory" preserve="all"/>
+		<type fullname="System.IO.File" preserve="all"/>
+		<type fullname="System.IO.FileStream" preserve="all"/>
+		<type fullname="System.IO.MemoryStream" preserve="all"/>
+		<type fullname="System.IO.Path" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="System">
+	    <type fullname="System.Text.RegularExpressions.Regex" preserve="all"/>
+		<type fullname="System.Text.RegularExpressions.Match" preserve="all"/>
+		<type fullname="System.Text.RegularExpressions.MatchCollection" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="Assembly-CSharp-firstpass">
+	    <type fullname="_ePayType" preserve="all"/>
+		<type fullname="DataEye" preserve="all"/>
+		<type fullname="NativeFun" preserve="all"/>
+		<type fullname="OpenInstall" preserve="all"/>
+		<type fullname="OpenInstallReceiver" preserve="all"/>
+		<type fullname="Push" preserve="all"/>
+		<type fullname="PushReceiver" preserve="all"/>
+		<type fullname="ShareSDKReceiver" preserve="all"/>
+		<type fullname="ThirdPartyLogin" preserve="all"/>
+		<type fullname="BuglyAgent" preserve="all"/>
+		<type fullname="OnePF.Purchase" preserve="all"/>
+		<type fullname="cn.sharesdk.unity3d.ShareContent" preserve="all"/>
+		<type fullname="cn.sharesdk.unity3d.ShareSDK" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="zxing.unity">
+	    <type fullname="ZXing.BarcodeFormat" preserve="all"/>
+		<type fullname="ZXing.BarcodeWriter" preserve="all"/>
+		<type fullname="ZXing.QrCode.QrCodeEncodingOptions" preserve="all"/>
+		
+	</assembly>
+
+</linker>

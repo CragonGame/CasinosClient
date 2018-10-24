@@ -1,0 +1,259 @@
+-- Copyright(c) Cragon. All rights reserved.
+
+---------------------------------------
+-- 配置，Launch
+LaunchConfig = {}
+
+function LaunchConfig:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.Env = 'Pro'
+    self.CurrentLan = 'ChineseSimplified'
+    self.LuaVersion = nil
+    self.DataVersion = nil
+
+    -- 获取Env值
+    local env_key = "Env"
+    if (CS.UnityEngine.PlayerPrefs.HasKey(env_key) == true) then
+        self.Env = CS.UnityEngine.PlayerPrefs.GetString(env_key)
+    end
+
+    -- 获取CurrentLan值
+    local lan_key = "LanKey"
+    if (CS.UnityEngine.PlayerPrefs.HasKey(lan_key) == true) then
+        self.CurrentLan = CS.UnityEngine.PlayerPrefs.GetString(lan_key)
+    else
+        self.CurrentLan = self.CasinosLua:GetSystemLanguageAsString()
+    end
+
+    return o
+end
+
+---------------------------------------
+Launch = {}
+
+---------------------------------------
+function Launch:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    if (self.Instance == nil) then
+        self.LaunchCfg = LaunchConfig:new(nil)
+        self.PreViewMgr = nil
+        self.PreLoading = nil
+        self.PreMsgBox = nil
+        self.CasinosContext = CS.Casinos.CasinosContext.Instance
+        self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+        self.Context = nil
+        self.TimerUpdate = nil
+        self.UIPackagePreLoading = nil
+        self.UIPackageMsgbox = nil
+        self.Instance = o
+    end
+    return self.Instance
+end
+
+---------------------------------------
+-- 初始化
+function Launch:Setup()
+    Launch:new(nil)
+
+    print('Launch:Setup() Env=' .. self.LaunchCfg.Env)
+
+    require 'PreViewMgr'
+    require 'PreViewBase'
+    require 'PreViewFactory'
+    require 'PreViewLoading'
+    require 'PreViewMsgBox'
+
+    self.PreViewMgr = PreViewMgr:new(nil)
+    self.PreViewMgr:Init()
+
+    self.UIPackagePreLoading = self:_addUiPackage("PreLoading")
+    self.UIPackagePreMsgbox = self:_addUiPackage("PreMsgBox")
+
+    CS.FairyGUI.Stage.inst.onKeyDown:Add(
+            function(context)
+                local key_code = context.inputEvent.keyCode
+                if (key_code == CS.UnityEngine.KeyCode.Escape) then
+                    local view_premsgbox = PreViewMgr:getView("PreMsgBox")
+                    if (view_premsgbox == nil) then
+                        view_premsgbox = PreViewMgr:createView("PreMsgBox")
+                    end
+                    view_premsgbox:showMsgBox('确认退出吗',
+                            function()
+                                PreViewMgr:destroyView(view_premsgbox)
+                                CS.UnityEngine.Application.Quit()
+                            end,
+                            function()
+                                PreViewMgr:destroyView(view_premsgbox)
+                            end
+                    )
+                end
+            end)
+
+    self.PreLoading = self.PreViewMgr:createView("PreLoading")
+
+    local tips = "正在努力加载配置，请耐心等待..."
+    local lan = self.LaunchCfg.CurrentLan
+    if (lan == "English") then
+        tips = "Try to loading the config,please wait..."
+    else
+        if (lan == "Chinese" or lan == "ChineseSimplified") then
+            tips = "正在努力加载配置，请耐心等待..."
+        end
+    end
+    self.PreLoading:UpdateDesc(tips)
+
+    -- 下载并加载bundle_xxx.lua
+    local lua_pkg_name = string.format('bundle_%s', self.CasinosContext.Config.VersionBundle)
+    local async_asset_loadgroup = self.CasinosContext.AsyncAssetLoadGroup
+    local http_url_bundlexxx = string.format('https://cragon-king-oss.cragon.cn/%s/%s.lua',
+            self.CasinosContext.Config.Platform, lua_pkg_name)
+    print(http_url_bundlexxx)
+    async_asset_loadgroup:LoadWWWAsync(http_url_bundlexxx,
+            function(url, www)
+                self.CasinosLua:LoadLuaFromBytes(lua_pkg_name, www.text)
+                self.CasinosLua:DoString(lua_pkg_name)
+
+                -- 下载并加载Context.lua
+                self.LaunchCfg.LuaVersion = LuaSelectPro
+                self.LaunchCfg.DataVersion = DataSelectPro
+                if (self.LaunchCfg.Env == 'Dev') then
+                    self.LaunchCfg.LuaVersion = LuaSelectDev
+                    self.LaunchCfg.DataVersion = DataSelectDev
+                end
+                local http_url_context = string.format('https://cragon-king-oss.cragon.cn/Lua/%s/Context.lua', self.LaunchCfg.LuaVersion)
+                print(http_url_context)
+                async_asset_loadgroup:LoadWWWAsync(http_url_context,
+                        function(url, www)
+                            self.CasinosLua:LoadLuaFromBytes('Context', www.text)
+                            self.CasinosLua:DoString('Context')
+                            self.Context = Context:new(nil)
+                            self.Context:Init()
+                        end
+                )
+            end
+    )
+end
+
+---------------------------------------
+-- Launch阶段完成
+function Launch:Finish()
+    if (self.PreLoading ~= nil) then
+        self.PreViewMgr:destroyView(self.PreLoading)
+        self.PreLoading = nil
+    end
+
+    --if (self.PreViewMgr ~= nil) then
+    --    self.PreViewMgr:Release()
+    --    self.PreViewMgr = nil
+    --    self.PreLoading = nil
+    --    self.PreMsgBox = nil
+    --end
+
+    --package.preload['PreViewMsgBox'] = nil
+    --package.loaded['PreViewMsgBox'] = nil
+    --package.preload['PreViewLoading'] = nil
+    --package.loaded['PreViewLoading'] = nil
+    --package.preload['PreViewMgr'] = nil
+    --package.loaded['PreViewMgr'] = nil
+    --package.preload['PreViewFactory'] = nil
+    --package.loaded['PreViewFactory'] = nil
+    --package.preload['PreViewBase'] = nil
+    --package.loaded['PreViewBase'] = nil
+    --package.preload['ParticleHelper'] = nil
+    --package.loaded['ParticleHelper'] = nil
+
+    --if (self.UIPackagePreLoading ~= nil) then
+    --    self.UIPackagePreLoading:UnloadAssets()
+    --    self.UIPackagePreLoading = nil
+    --end
+    --if (self.UIPackageMsgbox ~= nil) then
+    --    self.UIPackageMsgbox:UnloadAssets()
+    --    self.UIPackageMsgbox = nil
+    --end
+
+    print("Launch:Finish()")
+end
+
+---------------------------------------
+-- 应用程序退出
+function Launch:Close()
+    self:Finish()
+
+    if (self.Context ~= nil) then
+        self.Context:Release()
+        self.Context = nil
+    end
+
+    self.CasinosContext = nil
+    self.CasinosLua = nil
+    self.Instance = nil
+
+    print("Launch:Release()")
+end
+
+---------------------------------------
+-- 更新加载界面进度条进度
+function Launch:UpdateViewLoadingProgress(cur, max)
+    self.PreLoading:UpdateLoadingProgress(cur, max)
+end
+
+---------------------------------------
+-- 更新加载界面进度条描述
+function Launch:UpdateViewLoadingDesc(desc)
+    self.PreLoading:UpdateDesc(desc)
+end
+
+---------------------------------------
+-- 更新加载界面进度条描述和进度
+function Launch:UpdateViewLoadingDescAndProgress(desc, cur, max)
+    self.PreLoading:UpdateDesc(desc)
+    self.PreLoading:UpdateLoadingProgress(cur, max)
+end
+
+---------------------------------------
+-- App暂停，恢复运行
+function Launch:OnApplicationPause(pause)
+    --print('OnApplicationPause, Pause=' .. tostring(pause))
+    if (self.Context ~= nil) then
+    else
+    end
+end
+
+---------------------------------------
+-- App获取，失去焦点
+function Launch:OnApplicationFocus(focus_state)
+    --print('OnApplicationFocus, FocusState=' .. tostring(focus_state))
+    if (self.Context ~= nil) then
+    else
+    end
+end
+
+---------------------------------------
+-- Android的退出确认
+function Launch:OnAndroidQuitConfirm()
+    print('OnAndroidQuitConfirm')
+    if (self.Context ~= nil) then
+    else
+    end
+end
+
+---------------------------------------
+-- FairyGUI.AddPackage
+function Launch:_addUiPackage(name)
+    if (self.CasinosContext.PathMgr.DirLaunchAbType == CS.Casinos.DirType.Raw) then
+        local path_ab = self.CasinosContext.PathMgr.DirLaunchAb .. string.lower(name) .. ".ab"
+        local ab = CS.UnityEngine.AssetBundle.LoadFromFile(path_ab)
+        local ui_package = CS.FairyGUI.UIPackage.AddPackage(ab)
+        return ui_package
+    else
+        local path_ab = self.CasinosContext.PathMgr.DirLaunchAb .. string.lower(name) .. "/" .. string.lower(name)
+        local ui_package = CS.FairyGUI.UIPackage.AddPackage(path_ab)
+        return ui_package
+    end
+end
