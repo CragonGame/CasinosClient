@@ -294,7 +294,7 @@ function Context:_nextLaunchStep()
                 function(url, www)
                     -- 比较Oss上的luafilelist.txt和Persistent中的luafilelist.txt差异集，获取需要更新的Data列表
                     local luafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(self.Cfg.LuaFileListFileName)
-                    print(luafilelist_persistent)
+                    --print(luafilelist_persistent)
                     self.RemoteLuaFileListContent = www.text
                     local persistent_luafilelist_content = self.CasinosLua:ReadAllText(luafilelist_persistent)
                     local luarootdir_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath('Lua/')
@@ -318,7 +318,7 @@ function Context:_nextLaunchStep()
                 function(url, www)
                     -- 比较Oss上的datafilelist.txt和Persistent中的datafilelist.txt差异集，获取需要更新的Data列表
                     local datafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
-                    print(datafilelist_persistent)
+                    --print(datafilelist_persistent)
                     self.RemoteDataFileListContent = www.text
                     local persistent_datafilelist_content = self.CasinosLua:ReadAllText(datafilelist_persistent)
                     local rootdir_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath('/')
@@ -356,7 +356,7 @@ function Context:_nextLaunchStep()
 
         local t_db = {}
         for i, v in pairs(TbFileList) do
-            t_db[i] = self.CasinosContext.PathMgr:combinePersistentDataPath("resources.kingtexasraw/tbdata/" .. v .. ".db")
+            t_db[i] = self.CasinosContext.PathMgr.DirRawRoot .. "tbdata/" .. v .. ".db"
         end
         self.TbDataMgr = TbDataMgr:new(nil)
         self:_regTbData()
@@ -429,7 +429,7 @@ function Context:_nextLaunchStep()
             "TakePhoto",
         }
         for i = 1, #(table_ab) do
-            local full_name = self.CasinosContext.PathMgr:combinePersistentDataPath("resources.kingtexas/ui/" .. string.lower(table_ab[i]) .. ".ab")
+            local full_name = self.CasinosContext.PathMgr.DirAbUi .. string.lower(table_ab[i]) .. ".ab"
             table_ab[i] = full_name
         end
 

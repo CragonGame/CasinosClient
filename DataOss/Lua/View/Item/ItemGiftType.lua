@@ -32,9 +32,8 @@ function ItemGiftType:setGiftType(gift_typeid,from_etguid,to_etguid)
 		self.mControllerBg.selectedIndex = 1
 	end
 
-    self.mGLoaderGiftType.icon = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath
-        ("Resources.KingTexas/Item/" .. string.lower(tb_data.TypeIcon) .. ".ab")
-    self.mGTextName.text = tb_data.TypeName
+	self.mGLoaderGiftType.icon = CS.Casinos.CasinosContext.Instance.PathMgr.DirAbItem .. string.lower(tb_data.TypeIcon) .. ".ab"
+	self.mGTextName.text = tb_data.TypeName
 end
 
 function ItemGiftType:getTbDataItemType()
