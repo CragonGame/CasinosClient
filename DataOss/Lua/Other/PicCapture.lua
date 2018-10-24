@@ -45,5 +45,5 @@ function PicCapture:CapturePic(pic_name, pic_down_callback)
     self.CanShowTips = true
     self.PicDownCallBack = pic_down_callback
     CS.UnityEngine.ScreenCapture.CaptureScreenshot(pic_name)
-    self.CurrentPicName = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(pic_name)
+    self.CurrentPicName = CS.Casinos.CasinosContext.Instance.PathMgr:CombinePersistentDataPath(pic_name)
 end

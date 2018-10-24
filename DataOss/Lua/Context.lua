@@ -293,11 +293,11 @@ function Context:_nextLaunchStep()
         async_asset_loadgroup:LoadWWWAsync(http_url,
                 function(url, www)
                     -- 比较Oss上的luafilelist.txt和Persistent中的luafilelist.txt差异集，获取需要更新的Data列表
-                    local luafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(self.Cfg.LuaFileListFileName)
+                    local luafilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.LuaFileListFileName)
                     --print(luafilelist_persistent)
                     self.RemoteLuaFileListContent = www.text
                     local persistent_luafilelist_content = self.CasinosLua:ReadAllText(luafilelist_persistent)
-                    local luarootdir_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath('Lua/')
+                    local luarootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('Lua/')
                     self.UpdateRemoteLuaToPersistent = CS.Casinos.UpdateRemoteToPersistentData()
                     self.UpdateRemoteLuaToPersistent:UpateAsync(self.RemoteLuaFileListContent, persistent_luafilelist_content, self.Cfg.LuaRootURL, luarootdir_persistent)
                     self.TimerUpdateRemoteLuaToPersistent = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteLuaToPersistent)
@@ -317,11 +317,11 @@ function Context:_nextLaunchStep()
         async_asset_loadgroup:LoadWWWAsync(http_url,
                 function(url, www)
                     -- 比较Oss上的datafilelist.txt和Persistent中的datafilelist.txt差异集，获取需要更新的Data列表
-                    local datafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(DataFileListFileName)
+                    local datafilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.DataFileListFileName)
                     --print(datafilelist_persistent)
                     self.RemoteDataFileListContent = www.text
                     local persistent_datafilelist_content = self.CasinosLua:ReadAllText(datafilelist_persistent)
-                    local rootdir_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath('/')
+                    local rootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/')
                     self.UpdateRemoteDataToPersistent = CS.Casinos.UpdateRemoteToPersistentData()
                     self.UpdateRemoteDataToPersistent:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, self.Cfg.DataRootURL, rootdir_persistent)
                     self.TimerUpdateRemoteDataToPersistent = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteDataToPersistent)
@@ -481,7 +481,7 @@ function Context:_timerUpdateRemoteLuaToPersistent(tm)
         self.UpdateRemoteLuaToPersistent = nil
 
         -- 用Remote LuaFileList.txt覆盖Persistent中的；并更新VersionLuaPersistent
-        local luafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(self.Cfg.LuaFileListFileName)
+        local luafilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.LuaFileListFileName)
         CS.System.IO.File.WriteAllText(luafilelist_persistent, self.RemoteLuaFileListContent)
         self.RemoteLuaFileListContent = nil
         self.CasinosContext.Config:WriteVersionLuaPersistent(self.Cfg.LuaVersion)
@@ -506,7 +506,7 @@ function Context:_timerUpdateRemoteDataToPersistent(tm)
         self.UpdateRemoteDataToPersistent = nil
 
         -- 用Remote DataFileList.txt覆盖Persistent中的；并更新VersionDataPersistent
-        local datafilelist_persistent = self.CasinosContext.PathMgr:combinePersistentDataPath(self.Cfg.DataFileListFileName)
+        local datafilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.DataFileListFileName)
         CS.System.IO.File.WriteAllText(datafilelist_persistent, self.RemoteDataFileListContent)
         self.RemoteDataFileListContent = nil
         self.CasinosContext.Config:WriteVersionDataPersistent(self.Cfg.DataVersion)

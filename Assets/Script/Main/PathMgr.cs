@@ -162,13 +162,13 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public string getWWWPersistentDataPath()
+        public string GetWWWPersistentDataPath()
         {
             return WWWPersistentDataPath;
         }
 
         //---------------------------------------------------------------------
-        public string combineWWWPersistentDataPath(string path)
+        public string CombineWWWPersistentDataPath(string path)
         {
             Sb.Length = 0;
             Sb.Append(WWWPersistentDataPath);
@@ -178,13 +178,13 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public string getPersistentDataPath()
+        public string GetPersistentDataPath()
         {
             return PersistentDataPath;
         }
 
         //---------------------------------------------------------------------
-        public string combinePersistentDataPath(string path, bool for_lua = false)
+        public string CombinePersistentDataPath(string path, bool for_lua = false)
         {
             Sb.Length = 0;
             Sb.Append(PersistentDataPath);
@@ -194,13 +194,13 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public string getStreamingAssetsPath()
+        public string GetStreamingAssetsPath()
         {
             return StreamingAssetsPath;
         }
 
         //---------------------------------------------------------------------
-        public string combineStreamingAssetsPath(string path)
+        public string CombineStreamingAssetsPath(string path)
         {
             Sb.Length = 0;
             Sb.Append(StreamingAssetsPath);
@@ -210,13 +210,13 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public string getWWWStreamingAssetsPath()
+        public string GetWWWStreamingAssetsPath()
         {
             return WWWStreamingAssetsPath;
         }
 
         //---------------------------------------------------------------------
-        public string combineWWWStreamingAssetsPath(string path)
+        public string CombineWWWStreamingAssetsPath(string path)
         {
             Sb.Length = 0;
             Sb.Append(WWWStreamingAssetsPath);

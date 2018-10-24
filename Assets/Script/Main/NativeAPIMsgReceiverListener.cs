@@ -57,7 +57,7 @@ namespace Casinos
             {
 #if UNITY_ANDROID
                 string file_path = "/photos/GetPicDefaultName.jpg";
-                string p_ex = CasinosContext.Instance.PathMgr.combinePersistentDataPath(file_path);
+                string p_ex = CasinosContext.Instance.PathMgr.CombinePersistentDataPath(file_path);
                 byte[] all_bytes = null;
                 if (File.Exists(p_ex))
                 {

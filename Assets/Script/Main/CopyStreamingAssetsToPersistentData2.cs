@@ -27,7 +27,7 @@ namespace Casinos
             ListFinished = new List<string>(5);
 
             // 读取DataFileList.txt
-            var path_www_streamingassets_file = CasinosContext.Instance.PathMgr.combineWWWStreamingAssetsPath("DataFileList.txt");
+            var path_www_streamingassets_file = CasinosContext.Instance.PathMgr.CombineWWWStreamingAssetsPath("DataFileList.txt");
             WWW www = new WWW(path_www_streamingassets_file);
             while (!www.isDone) { }
 
@@ -52,7 +52,7 @@ namespace Casinos
             while (QueCopyFile.Count > 0 && MapWWW.Count < 5)
             {
                 string s1 = QueCopyFile.Dequeue();
-                var s2 = CasinosContext.Instance.PathMgr.combineWWWStreamingAssetsPath(s1);
+                var s2 = CasinosContext.Instance.PathMgr.CombineWWWStreamingAssetsPath(s1);
                 MapWWW[s1] = new WWW(s2);
             }
 
@@ -61,7 +61,7 @@ namespace Casinos
                 if (!i.Value.isDone) continue;
                 ListFinished.Add(i.Key);
 
-                var str = CasinosContext.Instance.PathMgr.combinePersistentDataPath(i.Key);
+                var str = CasinosContext.Instance.PathMgr.CombinePersistentDataPath(i.Key);
                 string d = Path.GetDirectoryName(str);
                 if (!Directory.Exists(d))
                 {
@@ -84,7 +84,7 @@ namespace Casinos
 
             if (!string.IsNullOrEmpty(DataFileListContent))
             {
-                var f = CasinosContext.Instance.PathMgr.combinePersistentDataPath("DataFileList.txt");
+                var f = CasinosContext.Instance.PathMgr.CombinePersistentDataPath("DataFileList.txt");
                 File.WriteAllText(f, DataFileListContent);
             }
 

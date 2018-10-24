@@ -127,7 +127,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.getWWWPersistentDataPath(  );
+                        string gen_ret = gen_to_be_invoked.GetWWWPersistentDataPath(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -156,7 +156,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.combineWWWPersistentDataPath( _path );
+                        string gen_ret = gen_to_be_invoked.CombineWWWPersistentDataPath( _path );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -184,7 +184,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.getPersistentDataPath(  );
+                        string gen_ret = gen_to_be_invoked.GetPersistentDataPath(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -216,7 +216,7 @@ namespace XLua.CSObjectWrap
                     string _path = LuaAPI.lua_tostring(L, 2);
                     bool _for_lua = LuaAPI.lua_toboolean(L, 3);
                     
-                        string gen_ret = gen_to_be_invoked.combinePersistentDataPath( _path, _for_lua );
+                        string gen_ret = gen_to_be_invoked.CombinePersistentDataPath( _path, _for_lua );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -227,7 +227,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.combinePersistentDataPath( _path );
+                        string gen_ret = gen_to_be_invoked.CombinePersistentDataPath( _path );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -257,7 +257,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.getStreamingAssetsPath(  );
+                        string gen_ret = gen_to_be_invoked.GetStreamingAssetsPath(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -286,7 +286,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.combineStreamingAssetsPath( _path );
+                        string gen_ret = gen_to_be_invoked.CombineStreamingAssetsPath( _path );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -314,7 +314,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.getWWWStreamingAssetsPath(  );
+                        string gen_ret = gen_to_be_invoked.GetWWWStreamingAssetsPath(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -343,7 +343,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.combineWWWStreamingAssetsPath( _path );
+                        string gen_ret = gen_to_be_invoked.CombineWWWStreamingAssetsPath( _path );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

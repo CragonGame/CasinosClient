@@ -52,7 +52,7 @@ end
 ---------------------------------------
 function ViewShare:loadIconDone(is_success)
     local pic_name = "Share.png"
-    local pic_path = CS.Casinos.CasinosContext.Instance.PathMgr:combinePersistentDataPath(pic_name)
+    local pic_path = CS.Casinos.CasinosContext.Instance.PathMgr:CombinePersistentDataPath(pic_name)
     local p_t = CS.cn.sharesdk.unity3d.PlatformType.WeChat
     if self.ShareType == ShareType.WeChat then
         p_t = CS.cn.sharesdk.unity3d.PlatformType.WeChat

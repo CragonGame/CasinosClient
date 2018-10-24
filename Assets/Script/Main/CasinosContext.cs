@@ -2,14 +2,14 @@
 
 namespace Casinos
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
     using UnityEngine;
     using XLua;
     using FairyGUI;
-    using System;
-
+    
     public enum _eProjectItemDisplayNameKey
     {
         Gold,
@@ -302,9 +302,9 @@ namespace Casinos
             }
             else
             {
-                PathMgr.DirLaunchLua = PathMgr.combinePersistentDataPath("Lua/Launch/");
+                PathMgr.DirLaunchLua = PathMgr.CombinePersistentDataPath("Lua/Launch/");
                 PathMgr.DirLaunchLuaType = DirType.Raw;
-                PathMgr.DirLaunchAb = PathMgr.combinePersistentDataPath("Resources.KingTexasLaunch/");
+                PathMgr.DirLaunchAb = PathMgr.CombinePersistentDataPath("Resources.KingTexasLaunch/");
                 PathMgr.DirLaunchAbType = DirType.Raw;
             }
 
@@ -319,9 +319,9 @@ namespace Casinos
             }
             else
             {
-                PathMgr.DirLuaRoot = PathMgr.combinePersistentDataPath("Lua/");
-                PathMgr.DirRawRoot = PathMgr.combinePersistentDataPath("Resources.KingTexasRaw/");
-                PathMgr.DirAbRoot = PathMgr.combinePersistentDataPath("Resources.KingTexas/");
+                PathMgr.DirLuaRoot = PathMgr.CombinePersistentDataPath("Lua/");
+                PathMgr.DirRawRoot = PathMgr.CombinePersistentDataPath("Resources.KingTexasRaw/");
+                PathMgr.DirAbRoot = PathMgr.CombinePersistentDataPath("Resources.KingTexas/");
             }
 
             PathMgr.DirAbUi = PathMgr.DirAbRoot + "Ui/";// "Resources.KingTexas/Ui/"，需动态计算

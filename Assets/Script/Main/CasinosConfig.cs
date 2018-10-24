@@ -73,7 +73,7 @@ namespace Casinos
             var launch_info = Resources.Load("LaunchInfo") as TextAsset;
             LaunchInfoResources = JsonUtility.FromJson<LaunchInfo>(launch_info.text);
 
-            string p = CasinosContext.Instance.PathMgr.combinePersistentDataPath("LaunchInfo.json");
+            string p = CasinosContext.Instance.PathMgr.CombinePersistentDataPath("LaunchInfo.json");
             if (File.Exists(p))
             {
                 using (StreamReader sr = File.OpenText(p))
