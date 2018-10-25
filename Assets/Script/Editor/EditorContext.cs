@@ -7,6 +7,7 @@ public class EditorContext
 {
     //-------------------------------------------------------------------------
     public static EditorContext Instance { get; internal set; }
+    public string PathDataOss { get; private set; }// DataOss目录
     public string PathAssets { get; private set; }// Unity3D的Assets目录
     public string PathDataSrc { get; private set; }// 源数据资源根目录（未打包的）
     public string PathStreamingAssets { get; private set; }// 源数据资源根目录（未打包的）
@@ -19,6 +20,13 @@ public class EditorContext
     public EditorContext()
     {
         Instance = this;
+
+        // PathDataOss
+        {
+            string p = Path.Combine(Environment.CurrentDirectory, "./DataOss/");
+            var di = new DirectoryInfo(p);
+            PathDataOss = di.FullName;
+        }
 
         // PathAssets
         {
@@ -40,13 +48,6 @@ public class EditorContext
             var di = new DirectoryInfo(p);
             PathStreamingAssets = di.FullName;
         }
-
-        //// PathDataPublishTarget
-        //{
-        //    string p = Path.Combine(Environment.CurrentDirectory, "../Cragon.Casinos.ClientPublish/");
-        //    var di = new DirectoryInfo(p);
-        //    PathDataPublishTarget = di.FullName;
-        //}
 
         // PathSettings
         {
@@ -84,8 +85,8 @@ public class EditorContext
     }
 
     //-------------------------------------------------------------------------
-    [MenuItem("CasinosPublish/DataPublish", false, 102)]
-    static void MenuItemDataPublish()
+    [MenuItem("Casinos/DataPublish", false, 1)]
+    static void MenuItemCasinos()
     {
         if (Instance == null)
         {
@@ -100,17 +101,17 @@ public class EditorContext
     }
 
     //-------------------------------------------------------------------------
-    [MenuItem("CasinosPublish/批处理", false, 103)]
-    static void MenuItemSyc()
-    {
-        if (Instance == null)
-        {
-            new EditorContext();
-        }
+    //[MenuItem("CasinosPublish/批处理", false, 103)]
+    //static void MenuItemSyc()
+    //{
+    //    if (Instance == null)
+    //    {
+    //        new EditorContext();
+    //    }
 
-        Debug.Log("执行批处理，镜像同步StreamingAssets/Android目录和PersistentData/Android");
-        ExecuteProgram("_SyncStreamingAssets2PersistentData.bat", "");
-    }
+    //    Debug.Log("执行批处理，镜像同步StreamingAssets/Android目录和PersistentData/Android");
+    //    ExecuteProgram("_SyncStreamingAssets2PersistentData.bat", "");
+    //}
 
     //-------------------------------------------------------------------------
     static bool ExecuteProgram(string exe_filename, string args)

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -15,8 +14,6 @@ public class EditorViewDataPublish : EditorWindow
     string AssetBundleLaunchFoldName = "Resources.KingTexasLaunch";
     MD5 MD5 = new MD5CryptoServiceProvider();
     StringBuilder Sb = new StringBuilder();
-
-    //HashSet<string> DoNotCopyDir = new HashSet<string> { ".idea" };
 
     //-------------------------------------------------------------------------
     void OnGUI()
@@ -83,13 +80,22 @@ public class EditorViewDataPublish : EditorWindow
         }
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("清空Persistent目录并清除所有VersionPersistent", GUILayout.Width(500)))
+        if (GUILayout.Button("清空Persistent目录并清除所有VersionPersistent", GUILayout.Width(400)))
         {
             PlayerPrefs.DeleteKey("VersionCommonPersistent");
             PlayerPrefs.DeleteKey("VersionDataPersistent");
             PlayerPrefs.DeleteKey("VersionLaunchPersistent");
             Directory.Delete(EditorContext.Instance.PathPersistent, true);
             ShowNotification(new GUIContent("清空Persistent目录并清除所有VersionPersistent成功!"));
+        }
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("生成CommonFileList.txt", GUILayout.Width(200)))
+        {
+            AssetDatabase.Refresh();
+            var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.lua", "Context.lua" };
+            _genCommonFileList(ignore_files);
+            AssetDatabase.Refresh();
         }
         EditorGUILayout.EndHorizontal();
 
@@ -119,15 +125,15 @@ public class EditorViewDataPublish : EditorWindow
             AssetDatabase.Refresh();
         }
         EditorGUILayout.EndHorizontal();
-        if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
-        {
-            AssetDatabase.Refresh();
-            _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.Android);
-            _copyRawData(Casinos._eEditorRunSourcePlatform.Android);
-            _copyLua(Casinos._eEditorRunSourcePlatform.Android);
-            ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
-            AssetDatabase.Refresh();
-        }
+        //if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
+        //{
+        //    AssetDatabase.Refresh();
+        //    _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.Android);
+        //    _copyRawData(Casinos._eEditorRunSourcePlatform.Android);
+        //    _copyLua(Casinos._eEditorRunSourcePlatform.Android);
+        //    ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
+        //    AssetDatabase.Refresh();
+        //}
         if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
         {
             AssetDatabase.Refresh();
@@ -161,15 +167,15 @@ public class EditorViewDataPublish : EditorWindow
             AssetDatabase.Refresh();
         }
         EditorGUILayout.EndHorizontal();
-        if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
-        {
-            AssetDatabase.Refresh();
-            _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.IOS);
-            _copyRawData(Casinos._eEditorRunSourcePlatform.IOS);
-            _copyLua(Casinos._eEditorRunSourcePlatform.IOS);
-            AssetDatabase.Refresh();
-            ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
-        }
+        //if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
+        //{
+        //    AssetDatabase.Refresh();
+        //    _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.IOS);
+        //    _copyRawData(Casinos._eEditorRunSourcePlatform.IOS);
+        //    _copyLua(Casinos._eEditorRunSourcePlatform.IOS);
+        //    AssetDatabase.Refresh();
+        //    ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
+        //}
         if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
         {
             AssetDatabase.Refresh();
@@ -291,7 +297,7 @@ public class EditorViewDataPublish : EditorWindow
                 string fold = path_asset;
                 fold = fold.Replace("Assets/", "");
                 fold = fold.Replace(AssetBundlePkgFoldFoldName + "/", "");
-                fold = EditorContext.Instance.PathStreamingAssets + platform.ToString() + "/" + fold;
+                fold = EditorContext.Instance.PathDataOss + platform.ToString() + "/" + fold;
                 fold = fold.Replace(file_name, "");
 
                 List<string> list_directory = null;
@@ -308,7 +314,7 @@ public class EditorViewDataPublish : EditorWindow
             {
                 string fold = path_asset;
                 fold = fold.Replace("Assets/", "");
-                fold = EditorContext.Instance.PathStreamingAssets + platform.ToString() + "/" + fold;
+                fold = EditorContext.Instance.PathDataOss + platform.ToString() + "/" + fold;
                 fold = fold.Replace(file_name, "");
 
                 List<string> list_directory = null;
@@ -367,7 +373,7 @@ public class EditorViewDataPublish : EditorWindow
             path_assetex = i.Value[0];
             path_assetex = path_assetex.Replace("Assets/", "");
             path_assetex = path_assetex.Replace(AssetBundleSingleFoldName + "/", "");
-            path_assetex = EditorContext.Instance.PathStreamingAssets + platform.ToString() + "/" + path_assetex;
+            path_assetex = EditorContext.Instance.PathDataOss + platform.ToString() + "/" + path_assetex;
             string file_name = Path.GetFileName(path_assetex);
             string file_extension = Path.GetExtension(path_assetex);
             string obj_dir = path_assetex.Replace(file_name, "");
@@ -479,71 +485,71 @@ public class EditorViewDataPublish : EditorWindow
     }
 
     //-------------------------------------------------------------------------
-    void _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform platform)
-    {
-        string path_rawdata = string.Empty;
-        string path_lua = string.Empty;
-        switch (platform)
-        {
-            case Casinos._eEditorRunSourcePlatform.Android:
-                path_rawdata = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexasRaw\\";
-                path_lua = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Script.Lua\\";
-                break;
-            case Casinos._eEditorRunSourcePlatform.IOS:
-                path_rawdata = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexasRaw\\";
-                path_lua = EditorContext.Instance.PathStreamingAssets + "IOS\\Script.Lua\\";
-                break;
-            case Casinos._eEditorRunSourcePlatform.PC:
-                path_rawdata = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexasRaw\\";
-                path_lua = EditorContext.Instance.PathStreamingAssets + "PC\\Script.Lua\\";
-                break;
-        }
+    //void _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform platform)
+    //{
+    //    string path_rawdata = string.Empty;
+    //    string path_lua = string.Empty;
+    //    switch (platform)
+    //    {
+    //        case Casinos._eEditorRunSourcePlatform.Android:
+    //            path_rawdata = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexasRaw\\";
+    //            path_lua = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Script.Lua\\";
+    //            break;
+    //        case Casinos._eEditorRunSourcePlatform.IOS:
+    //            path_rawdata = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexasRaw\\";
+    //            path_lua = EditorContext.Instance.PathStreamingAssets + "IOS\\Script.Lua\\";
+    //            break;
+    //        case Casinos._eEditorRunSourcePlatform.PC:
+    //            path_rawdata = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexasRaw\\";
+    //            path_lua = EditorContext.Instance.PathStreamingAssets + "PC\\Script.Lua\\";
+    //            break;
+    //    }
 
-        if (Directory.Exists(path_rawdata)) Directory.Delete(path_rawdata, true);
-        if (Directory.Exists(path_lua)) Directory.Delete(path_lua, true);
-    }
-
-    //-------------------------------------------------------------------------
-    void _copyRawData(Casinos._eEditorRunSourcePlatform platform)
-    {
-        string path_src = EditorContext.Instance.PathAssets + "Resources.KingTexasRaw\\";
-        string path_dst = string.Empty;
-        switch (platform)
-        {
-            case Casinos._eEditorRunSourcePlatform.Android:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexasRaw\\";
-                break;
-            case Casinos._eEditorRunSourcePlatform.IOS:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexasRaw\\";
-                break;
-            case Casinos._eEditorRunSourcePlatform.PC:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexasRaw\\";
-                break;
-        }
-
-        _copyDir(platform, path_src, path_dst);
-    }
+    //    if (Directory.Exists(path_rawdata)) Directory.Delete(path_rawdata, true);
+    //    if (Directory.Exists(path_lua)) Directory.Delete(path_lua, true);
+    //}
 
     //-------------------------------------------------------------------------
-    void _copyLua(Casinos._eEditorRunSourcePlatform platform)
-    {
-        string path_src = EditorContext.Instance.PathAssets + "Script.Lua\\";
-        string path_dst = string.Empty;
-        switch (platform)
-        {
-            case Casinos._eEditorRunSourcePlatform.Android:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Script.Lua\\";
-                break;
-            case Casinos._eEditorRunSourcePlatform.IOS:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "IOS\\Script.Lua\\";
-                break;
-            case Casinos._eEditorRunSourcePlatform.PC:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "PC\\Script.Lua\\";
-                break;
-        }
+    //void _copyRawData(Casinos._eEditorRunSourcePlatform platform)
+    //{
+    //    string path_src = EditorContext.Instance.PathAssets + "Resources.KingTexasRaw\\";
+    //    string path_dst = string.Empty;
+    //    switch (platform)
+    //    {
+    //        case Casinos._eEditorRunSourcePlatform.Android:
+    //            path_dst = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexasRaw\\";
+    //            break;
+    //        case Casinos._eEditorRunSourcePlatform.IOS:
+    //            path_dst = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexasRaw\\";
+    //            break;
+    //        case Casinos._eEditorRunSourcePlatform.PC:
+    //            path_dst = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexasRaw\\";
+    //            break;
+    //    }
 
-        _copyDir(platform, path_src, path_dst);
-    }
+    //    _copyDir(platform, path_src, path_dst);
+    //}
+
+    //-------------------------------------------------------------------------
+    //void _copyLua(Casinos._eEditorRunSourcePlatform platform)
+    //{
+    //    string path_src = EditorContext.Instance.PathAssets + "Script.Lua\\";
+    //    string path_dst = string.Empty;
+    //    switch (platform)
+    //    {
+    //        case Casinos._eEditorRunSourcePlatform.Android:
+    //            path_dst = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Script.Lua\\";
+    //            break;
+    //        case Casinos._eEditorRunSourcePlatform.IOS:
+    //            path_dst = EditorContext.Instance.PathStreamingAssets + "IOS\\Script.Lua\\";
+    //            break;
+    //        case Casinos._eEditorRunSourcePlatform.PC:
+    //            path_dst = EditorContext.Instance.PathStreamingAssets + "PC\\Script.Lua\\";
+    //            break;
+    //    }
+
+    //    _copyDir(platform, path_src, path_dst);
+    //}
 
     //-------------------------------------------------------------------------
     void _copyDir(Casinos._eEditorRunSourcePlatform platform, string path_src, string path_dst)
@@ -557,8 +563,7 @@ public class EditorViewDataPublish : EditorWindow
         {
             if (i is DirectoryInfo)// 判断是否文件夹
             {
-                if (i.Name == ".idea"
-                    || i.Name == ".ideadictionaries") continue;
+                if (i.Name == ".idea" || i.Name == ".ideadictionaries") continue;
 
                 if (!Directory.Exists(path_dst1 + i.Name))
                 {
@@ -579,19 +584,39 @@ public class EditorViewDataPublish : EditorWindow
     }
 
     //-------------------------------------------------------------------------
+    void _genCommonFileList(HashSet<string> ignore_files)
+    {
+        string path_dst = EditorContext.Instance.PathDataOss + "Common/";
+        path_dst = path_dst.Replace(@"\", "/");
+
+        string file_commonfilelist = path_dst + EditorStringDef.FileCommonFileList;
+        if (File.Exists(file_commonfilelist))
+        {
+            File.Delete(file_commonfilelist);
+        }
+
+        using (StreamWriter sw = File.CreateText(file_commonfilelist))
+        {
+            _genDataFileList2(sw, ignore_files, path_dst, path_dst);
+        }
+
+        ShowNotification(new GUIContent("GenCommonFileList Finished!"));
+    }
+
+    //-------------------------------------------------------------------------
     void _genDataFileList(Casinos._eEditorRunSourcePlatform platform)
     {
         string path_dst = string.Empty;
         switch (platform)
         {
             case Casinos._eEditorRunSourcePlatform.Android:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "ANDROID\\";
+                path_dst = EditorContext.Instance.PathDataOss + "ANDROID\\";
                 break;
             case Casinos._eEditorRunSourcePlatform.IOS:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "IOS\\";
+                path_dst = EditorContext.Instance.PathDataOss + "IOS\\";
                 break;
             case Casinos._eEditorRunSourcePlatform.PC:
-                path_dst = EditorContext.Instance.PathStreamingAssets + "PC\\";
+                path_dst = EditorContext.Instance.PathDataOss + "PC\\";
                 break;
         }
         path_dst = path_dst.Replace(@"\", "/");
@@ -604,7 +629,7 @@ public class EditorViewDataPublish : EditorWindow
 
         using (StreamWriter sw = File.CreateText(file_datafilelist))
         {
-            var ignore_files = new HashSet<string> { "DataFileList.txt", "StreamingAssetsInfo.json" };
+            var ignore_files = new HashSet<string> { "DataFileList.txt", "LaunchInfo.json" };
             _genDataFileList2(sw, ignore_files, path_dst, path_dst);
         }
 
@@ -639,6 +664,8 @@ public class EditorViewDataPublish : EditorWindow
         string[] directorys = Directory.GetDirectories(cur_path);
         foreach (var i in directorys)
         {
+            if (i.Contains(".idea")) continue;
+
             _genDataFileList2(sw, ignore_files, i, path_dst);
         }
     }
