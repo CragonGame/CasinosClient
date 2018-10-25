@@ -23,5 +23,5 @@ function ViewFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_sin
 end
 
 ---------------------------------------
-function ViewFactory:createView()
+function ViewFactory:CreateView()
 end

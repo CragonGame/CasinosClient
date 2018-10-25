@@ -22,7 +22,7 @@ function ViewFeedback:onCreate()
 	self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
 	self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
 	self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
-	self.ViewPool = self.ViewMgr:getView("Pool")
+	self.ViewPool = self.ViewMgr:GetView("Pool")
 	local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
 	local btn_close = com_bg:GetChild("BtnClose").asButton
 	btn_close.onClick:Add(
@@ -51,13 +51,13 @@ function ViewFeedback:onCreate()
 	)
 
 	self.ChatRecordInitWidth = self.GListChatContent.width - 30
-	self.ViewMgr:bindEvListener("EvEntityReceiveFeedbackChat", self)
-	self.ViewMgr:bindEvListener("EvEntityReceiveFeedbackChats", self)
+	self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChat", self)
+	self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChats", self)
 	self:showRecord()
 end
 
 function ViewFeedback:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewFeedback:onHandleEv(ev)
@@ -83,12 +83,12 @@ function ViewFeedback:showRecord()
 end
 
 function ViewFeedback:setCurrentChatMsg(chat_record)
-	local ev = self.ViewMgr:getEv("EvUiFeedbackConfirmRead")
+	local ev = self.ViewMgr:GetEv("EvUiFeedbackConfirmRead")
 	if (ev == nil)
 	then
 		ev = EvUiFeedbackConfirmRead:new(nil)
 	end
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 	self:showRecord()
 end
 
@@ -104,18 +104,18 @@ function ViewFeedback:onClickBtnSendMsg()
 	c_m.sender_guid = self.ControllerPlayer.Guid
 	c_m.sender_nickname = self.ControllerActor.PropNickName:get()
 	c_m.msg = self.GTextInputSendText.text
-	local ev = self.ViewMgr:getEv("EvUiSendFeedbackMsg")
+	local ev = self.ViewMgr:GetEv("EvUiSendFeedbackMsg")
 	if (ev == nil)
 	then
 		ev = EvUiSendFeedbackMsg:new(nil)
 	end
 	ev.chat_msg = c_m:getData4Pack()
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 	self.GTextInputSendText.text = ""
 end
 
 function ViewFeedback:onClickBtnClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 function ViewFeedback:RenderListItemChatContent(index, obj)
@@ -162,7 +162,7 @@ function ViewFeedbackFactory:new(o, ui_package_name, ui_component_name,
 	return o
 end
 
-function ViewFeedbackFactory:createView()
+function ViewFeedbackFactory:CreateView()
 	local view = ViewFeedback:new(nil)
 	return view
 end

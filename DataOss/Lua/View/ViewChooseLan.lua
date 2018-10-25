@@ -34,7 +34,7 @@ function ViewChooseLan:onCreate()
     end
     local bg = self.ComUi:GetChild("Bg")
     if (bg ~= nil) then
-        ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
+        ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
     btn_return.onClick:Add(
@@ -46,12 +46,12 @@ end
 
 ---------------------------------------
 function ViewChooseLan:onClickBtnReturn()
-    self.ViewMgr:destroyView(self)
-    local ev = self.ViewMgr:getEv("EvUiCreateMainUi")
+    self.ViewMgr:DestroyView(self)
+    local ev = self.ViewMgr:GetEv("EvUiCreateMainUi")
     if (ev == nil) then
         ev = EvUiCreateMainUi:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -72,7 +72,7 @@ function ViewChooseLanFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewChooseLanFactory:createView()
+function ViewChooseLanFactory:CreateView()
     local view = ViewChooseLan:new(nil)
     return view
 end

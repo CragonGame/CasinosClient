@@ -189,13 +189,13 @@ end
 ---------------------------------------
 function ViewPlayerGiftAndVIP:onClickGift(ev)
     ev:StopPropagation()
-    local ev = self.ViewMgr:getEv("EvCreateGiftShop")
+    local ev = self.ViewMgr:GetEv("EvCreateGiftShop")
     if (ev == nil) then
         ev = EvCreateGiftShop:new(nil)
     end
     ev.is_tmp_gift = true
     ev.to_player_etguid = self.PlayerGuid
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

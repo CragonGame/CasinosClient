@@ -54,17 +54,17 @@ function ViewGoldTree:onCreate()
     self.GTextMaxCanGetGold = self.ComUi:GetChild("MaxCanGetGold").asTextField
     self.ControllerTree.selectedIndex = 1
     self:setGoldTreeSnapShot(self.ControllerPlayer.BGrowData)
-	local ev = self.ViewMgr.getEv("EvUiRequestGetGrowSnapShot")
+	local ev = self.ViewMgr.GetEv("EvUiRequestGetGrowSnapShot")
 	if(ev == nil)
 	then
 		ev = EvUiRequestGetGrowSnapShot:new(nil)
 	end
-	self.ViewMgr.sendEv(ev)
-	self.ViewMgr:bindEvListener("EvEntityOnGrowRewardSnapshot",self)
+	self.ViewMgr.SendEv(ev)
+	self.ViewMgr:BindEvListener("EvEntityOnGrowRewardSnapshot",self)
 end
 
 function ViewGoldTree:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewGoldTree:onHandleEv(ev)
@@ -134,20 +134,20 @@ function ViewGoldTree:setGoldTreeSnapShot(grow_data)
 end
 
 function ViewGoldTree:onClickBtnCharge()
-	self.ViewMgr:createView("Shop")
+	self.ViewMgr:CreateView("Shop")
 end
 
 function ViewGoldTree:onClickGetGold()
-	local ev = self.ViewMgr:getEv("EvUiRequestGetGrowReward")
+	local ev = self.ViewMgr:GetEv("EvUiRequestGetGrowReward")
 	if(ev == nil)
 	then
 		ev = EvUiRequestGetGrowReward:new(nil)
 	end
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 end
 
 function ViewGoldTree:onClickBtnReturn()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 	
 
@@ -168,7 +168,7 @@ function ViewGoldTreeFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewGoldTreeFactory:createView()	
+function ViewGoldTreeFactory:CreateView()
 	local view = ViewGoldTree:new(nil)	
 	return view
 end

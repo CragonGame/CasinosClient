@@ -23,7 +23,7 @@ function ViewGiftShop:onCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("GiftShop"))
 	self.CasinosContext = CS.Casinos.CasinosContext.Instance
 	self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
-	self.ViewPool = self.ViewMgr:getView("Pool")
+	self.ViewPool = self.ViewMgr:GetView("Pool")
 	local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
 	local btn_close = com_bg:GetChild("BtnClose").asButton
 	btn_close.onClick:Add(
@@ -42,11 +42,11 @@ function ViewGiftShop:onCreate()
     self.GListPanelGiftType = self.ComUi:GetChild("PanelGiftType").asList
     self.GListPanelGift = self.ComUi:GetChild("PanelGift").asList
     self.mMapGiftType = {}
-	self.ViewMgr:bindEvListener("EvUiBuyItem",self)
+	self.ViewMgr:BindEvListener("EvUiBuyItem",self)
 end
 
 function ViewGiftShop:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 	self.ViewPool:itemGiftAllEnque()
 end
 
@@ -110,7 +110,7 @@ function ViewGiftShop:closeCurrentGiftType()
 end
 
 function ViewGiftShop:onClickBtnClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 ViewGiftShopFactory = ViewFactory:new()
@@ -128,7 +128,7 @@ function ViewGiftShopFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewGiftShopFactory:createView()	
+function ViewGiftShopFactory:CreateView()
 	local view = ViewGiftShop:new(nil)	
 	return view
 end

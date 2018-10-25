@@ -50,14 +50,14 @@ function ViewDesktopHMenu:onCreate()
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     btn_reward.onClick:Add(
             function()
-                local ev = self.ViewMgr:getEv("EvClickShowReward")
+                local ev = self.ViewMgr:GetEv("EvClickShowReward")
                 if(ev == nil)
                 then
                     ev = EvClickShowReward:new(nil)
                 end
-                self.ViewMgr:sendEv(ev)
+                self.ViewMgr:SendEv(ev)
             end    )
-    self.ViewDesktopH = self.ViewMgr:getView("DesktopH")
+    self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
 end
 
 function ViewDesktopHMenu:showMenu(have_reward)
@@ -78,22 +78,22 @@ end
 function ViewDesktopHMenu:_onClickMenuCo()
     self.CoMenuEx:TweenMoveY(-self.CoMenuEx.height, 0.25):OnComplete(
             function()
-                self.ViewMgr:destroyView(self)
+                self.ViewMgr:DestroyView(self)
             end
     )
 end
 
 function ViewDesktopHMenu:_onClickBtnReturn()
-    local ev = self.ViewMgr:getEv("EvUiClickLeaveDesktopHundred")
+    local ev = self.ViewMgr:GetEv("EvUiClickLeaveDesktopHundred")
     if(ev == nil)
     then
         ev = EvUiClickLeaveDesktopHundred:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 function ViewDesktopHMenu:_onClickBtnCardType()
-    local card_type = self.ViewMgr:createView("DesktopHCardType")
+    local card_type = self.ViewMgr:CreateView("DesktopHCardType")
     local p = self.ViewDesktopH:getDesktopBasePackageName()
     local co_cardtype = CS.FairyGUI.UIPackage.CreateObject(p,self.ViewDesktopH.UiDesktopHComDesktopHCardTypeTitle .. self.ViewDesktopH.FactoryName).asCom
     self.ViewMgr.LanMgr:parseComponent(co_cardtype)
@@ -101,7 +101,7 @@ function ViewDesktopHMenu:_onClickBtnCardType()
 end
 
 function ViewDesktopHMenu:_onClickBtnHelp()
-    local help = self.ViewMgr:createView("DesktopHHelp")
+    local help = self.ViewMgr:CreateView("DesktopHHelp")
     local p = self.ViewDesktopH:getDesktopBasePackageName()
     local co_betpot = CS.FairyGUI.UIPackage.CreateObject(p, self.ViewDesktopH.UiDesktopHComDesktopHHelpTitle .. self.ViewDesktopH.FactoryName).asCom
     self.ViewMgr.LanMgr:parseComponent(co_betpot)
@@ -109,7 +109,7 @@ function ViewDesktopHMenu:_onClickBtnHelp()
 end
 
 function ViewDesktopHMenu:_onClickBtnCharge()
-    self.ViewMgr:createView("Shop")
+    self.ViewMgr:CreateView("Shop")
 end
 
 
@@ -129,7 +129,7 @@ function ViewDesktopHMenuFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewDesktopHMenuFactory:createView()
+function ViewDesktopHMenuFactory:CreateView()
     local view = ViewDesktopHMenu:new(nil)
     return view
 end

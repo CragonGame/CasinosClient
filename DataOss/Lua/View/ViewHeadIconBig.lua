@@ -22,7 +22,7 @@ function ViewHeadIconBig:onCreate()
 	self.GLoaderPlayerIcon = self.ComUi:GetChild("LoaderIcon").asLoader
     self.ComUi.onClick:Add(
 		function()
-			self.ViewMgr:destroyView(self)
+			self.ViewMgr:DestroyView(self)
 		end
 	)
 end
@@ -59,7 +59,7 @@ function ViewHeadIconBigFactory:new(o,ui_package_name,ui_component_name,
 	return o
 end
 
-function ViewHeadIconBigFactory:createView()
+function ViewHeadIconBigFactory:CreateView()
 	local view = ViewHeadIconBig:new(nil)
 	return view
 end

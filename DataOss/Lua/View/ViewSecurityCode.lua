@@ -74,13 +74,13 @@ end
 
 ---------------------------------------
 function ViewSecurityCode:onClickBtnSendCode()
-    local ev = self.ViewMgr.getEv("EvUiSendSecurityCode")
+    local ev = self.ViewMgr.GetEv("EvUiSendSecurityCode")
     if (ev == nil)
     then
         ev = EvUiSendSecurityCode:new(nil)
     end
     ev.phone_num = self:getPhoneNum()
-    self.ViewMgr.sendEv(ev)
+    self.ViewMgr.SendEv(ev)
     self:setTips(tostring(self.SendCodeCountdown))
     self.CanSendCode = false
     self.GBtnSendCode.enabled = false

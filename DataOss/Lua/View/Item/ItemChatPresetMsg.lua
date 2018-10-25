@@ -11,7 +11,7 @@ function ItemChatPresetMsg:new(o,g_co,msg,view_mgr)
     o.GTextContent.text = msg
     g_co.onClick:Add(
 		function()
-			local i_uichat = view_mgr:getView("Chat")
+			local i_uichat = view_mgr:GetView("Chat")
 			i_uichat:setChatMsg(o.GTextContent.text)
 		end
 	)

@@ -44,7 +44,7 @@ function ViewDesktopChatExpression:onCreate()
 	)
     self.ComUi.onClick:Add(
 		function()
-			self.ViewMgr:destroyView(self)
+			self.ViewMgr:DestroyView(self)
 		end
 	)
 end
@@ -56,24 +56,24 @@ function ViewDesktopChatExpression:onClickExp(context)
     c_m.sender_guid = self.ControllerPlayer.Guid
     c_m.sender_nickname = self.ControllerActor.PropNickName:get()
 	c_m.msg = CS.Casinos.LuaHelper.EventDispatcherCastToGComponent(context.sender).name
-	local ev = self.ViewMgr:getEv("EvUiSendMsg")
+	local ev = self.ViewMgr:GetEv("EvUiSendMsg")
 	if(ev == nil)
 	then
 		ev = EvUiSendMsg:new(nil)
 	end
     ev.chat_msg = c_m:getData4Pack()
-	self.ViewMgr:sendEv(ev)
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:SendEv(ev)
+	self.ViewMgr:DestroyView(self)
 end
 	
 function ViewDesktopChatExpression:onClickExchangeChip()
-	local ev = self.ViewMgr:getEv("EvUiCreateExchangeChip")
+	local ev = self.ViewMgr:GetEv("EvUiCreateExchangeChip")
 	if(ev == nil)
 	then
 		ev = EvUiCreateExchangeChip:new(nil)
 	end
-	self.ViewMgr:sendEv(ev)
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:SendEv(ev)
+	self.ViewMgr:DestroyView(self)
 end
 
 
@@ -94,7 +94,7 @@ function ViewDesktopChatExpressionFactory:new(o,ui_package_name,ui_component_nam
     return o
 end
 
-function ViewDesktopChatExpressionFactory:createView()	
+function ViewDesktopChatExpressionFactory:CreateView()
 	local view = ViewDesktopChatExpression:new(nil)	
 	return view
 end

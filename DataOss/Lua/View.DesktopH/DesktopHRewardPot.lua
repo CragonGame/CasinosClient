@@ -229,12 +229,12 @@ function DesktopHRewardPot:_playBetPotSyspumpingGoldAni(map_param)
 end
 
 function DesktopHRewardPot:_onClick()
-    self.ViewMgr:createView("DesktopHRewardPot")
+    self.ViewMgr:CreateView("DesktopHRewardPot")
 			
-				local ev = self.ViewMgr:getEv("EvDesktopHClickRewardPotBtn")
+				local ev = self.ViewMgr:GetEv("EvDesktopHClickRewardPotBtn")
 				if(ev == nil)
 				then
 					ev = EvDesktopHClickRewardPotBtn:new(nil)
 				end					
-				self.ViewMgr:sendEv(ev)                    
+				self.ViewMgr:SendEv(ev)
 end

@@ -21,9 +21,9 @@ end
 
 ---------------------------------------
 function ViewClub:onCreate()
-    self.ControllerMgr.ViewMgr:bindEvListener("EvEntitySetPrivateMatchLsit", self)
-    self.ControllerMgr.ViewMgr:bindEvListener("EvEntityUpdatePrivateMatchPlayerNum", self)
-    self.ControllerMgr.ViewMgr:bindEvListener("EvEntityGetMatchInfoByInvitationCodeSucceed", self)
+    self.ControllerMgr.ViewMgr:BindEvListener("EvEntitySetPrivateMatchLsit", self)
+    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityUpdatePrivateMatchPlayerNum", self)
+    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityGetMatchInfoByInvitationCodeSucceed", self)
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
@@ -71,11 +71,11 @@ end
 function ViewClub:onUpdate(tm)
     self.UpdatePlayerNumTime = self.UpdatePlayerNumTime + tm
     if (self.UpdatePlayerNumTime >= 30) then
-        local ev = self.ViewMgr:getEv("EvUiRequestUpdatePrivateMatchPlayerNum")
+        local ev = self.ViewMgr:GetEv("EvUiRequestUpdatePrivateMatchPlayerNum")
         if (ev == nil) then
             ev = EvUiRequestUpdatePrivateMatchPlayerNum:new(nil)
         end
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
         self.UpdatePlayerNumTime = 0
     end
 end
@@ -103,24 +103,24 @@ function ViewClub:onHandleEv(ev)
                 isSelfJoin = true
             end
         end
-        local view_privateMatchInfo = self.ViewMgr:createView("PrivateMatchInfo")
+        local view_privateMatchInfo = self.ViewMgr:CreateView("PrivateMatchInfo")
         view_privateMatchInfo:Init(match_guid, isSelfJoin)
     end
 end
 
 ---------------------------------------
 function ViewClub:onClickBtnReturn()
-    self.ViewMgr:destroyView(self)
-    local ev = self.ViewMgr:getEv("EvUiCreateMainUi")
+    self.ViewMgr:DestroyView(self)
+    local ev = self.ViewMgr:GetEv("EvUiCreateMainUi")
     if (ev == nil) then
         ev = EvUiCreateMainUi:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewClub:onClickBtnCreateMatch()
-    self.ViewMgr:createView("CreateMatch")
+    self.ViewMgr:CreateView("CreateMatch")
 end
 
 ---------------------------------------
@@ -130,7 +130,7 @@ end
 
 ---------------------------------------
 function ViewClub:onClickBtnJoinMatch()
-    self.ViewMgr:createView("JoinMatch")
+    self.ViewMgr:CreateView("JoinMatch")
 end
 
 ---------------------------------------
@@ -140,7 +140,7 @@ end
 
 ---------------------------------------
 function ViewClub:onClickBtnHelp()
-    self.ViewMgr:createView("ClubHelp")
+    self.ViewMgr:CreateView("ClubHelp")
 end
 
 ---------------------------------------
@@ -173,11 +173,11 @@ end
 
 ---------------------------------------
 function ViewClub:requesetPrivateMatchList()
-    local ev = self.ViewMgr:getEv("EvUiRequestPrivateMatchList")
+    local ev = self.ViewMgr:GetEv("EvUiRequestPrivateMatchList")
     if (ev == nil) then
         ev = EvUiRequestPrivateMatchList:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -198,7 +198,7 @@ function ViewClubFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewClubFactory:createView()
+function ViewClubFactory:CreateView()
     local view = ViewClub:new(nil)
     return view
 end

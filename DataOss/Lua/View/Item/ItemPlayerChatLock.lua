@@ -76,20 +76,20 @@ function ItemPlayerChatLock:onClickBtnLock()
         self.IsLock = true
     end
     if (self.IsSystem) then
-        local ev = self.ViewMgr:getEv("EvUiRequestLockSystemChat")
+        local ev = self.ViewMgr:GetEv("EvUiRequestLockSystemChat")
         if (ev == nil) then
             ev = EvUiRequestLockSystemChat:new(nil)
         end
         ev.requestLock = self.IsLock
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     else
-        local ev = self.ViewMgr:getEv("EvUiRequestLockPlayerChat")
+        local ev = self.ViewMgr:GetEv("EvUiRequestLockPlayerChat")
         if (ev == nil) then
             ev = EvUiRequestLockPlayerChat:new(nil)
         end
         ev.player_guid = self.PlayerEtguid
         ev.requestLock = self.IsLock
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
     self:setLockIcon()
 end

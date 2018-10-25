@@ -34,9 +34,9 @@ end
 
 function ViewDesktopHBankList:onCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("BeBankList"))
-    self.ViewMgr:bindEvListener("EvEntityDesktopHChangeBeBankerPlayerList",self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHChangeBankerPlayer",self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHBankerPlayerGoldChange",self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBeBankerPlayerList",self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBankerPlayer",self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHBankerPlayerGoldChange",self)
 	 local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
      local btn_history_close = co_history_close:GetChild("BtnClose").asButton
      btn_history_close.onClick:Add(
@@ -86,7 +86,7 @@ end
 
 
 function ViewDesktopHBankList:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewDesktopHBankList:onUpdate(elapsed_tm)
@@ -235,14 +235,14 @@ function ViewDesktopHBankList:_switchContrller(index)
 end
 
 function ViewDesktopHBankList:_onClickBeBankPlayer()
-	local ev = self.ViewMgr:getEv("EvDesktopHClickBeBankPlayerBtn")
+	local ev = self.ViewMgr:GetEv("EvDesktopHClickBeBankPlayerBtn")
 	if(ev == nil)
 	then
 		ev = EvDesktopHClickBeBankPlayerBtn:new(nil)
 	end	
 	ev.bebank_mingolds = self.BeBankMinTakeGolds
 	ev.take_stack = self.CurrentTakeStack -- == 0 ? self.ViewDesktopH.ControllerActor.PropGoldAcc.get() : CurrentTakeStack
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 
     if (self.GSliderBankPlayerStack ~= nil)
     then
@@ -251,7 +251,7 @@ function ViewDesktopHBankList:_onClickBeBankPlayer()
 end
 
 function ViewDesktopHBankList:_onClickBtnBankPlayerClose()        
-   self.ViewMgr:destroyView(self)
+   self.ViewMgr:DestroyView(self)
 end
 
 
@@ -271,7 +271,7 @@ function ViewDesktopHBankListFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewDesktopHBankListFactory:createView()	
+function ViewDesktopHBankListFactory:CreateView()
 	local view = ViewDesktopHBankList:new(nil)	
 	return view
 end

@@ -22,10 +22,10 @@ function ViewNotice:new(o)
 end
 
 function ViewNotice:onCreate()
-	self.ViewMgr:bindEvListener("EvEntityReceiceMarquee",self)
+	self.ViewMgr:BindEvListener("EvEntityReceiceMarquee",self)
 	self.ControllerMarquee = self.ViewMgr.ControllerMgr:GetController("Marquee")
 	self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
-	self.ViewPool = self.ViewMgr:getView("Pool")
+	self.ViewPool = self.ViewMgr:GetView("Pool")
 	self.GCoShade = self.ComUi:GetChild("CoShade").asCom
     self.GCoShade.onClick:Add(
 		function()
@@ -82,7 +82,7 @@ function ViewNotice:onCreate()
 end
 
 function ViewNotice:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewNotice:onHandleEv(ev)
@@ -119,7 +119,7 @@ function ViewNotice:RenderListItem(index, obj)
 end
 
 function ViewNotice:onClickReturn()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 	--[[if (self.TransitionCreate ~= nil)
 	then
 		self.ComUi:TweenMoveX(-self.ComUi.width, 0.5):OnStart(
@@ -128,11 +128,11 @@ function ViewNotice:onClickReturn()
 			end
 		):OnComplete(
 			function()
-				self.ViewMgr:destroyView(self)
+				self.ViewMgr:DestroyView(self)
 			end
 		)
 	else	
-		self.ViewMgr:destroyView(self)
+		self.ViewMgr:DestroyView(self)
 	end]]
 end
 
@@ -147,7 +147,7 @@ function ViewNotice:onClickSend()
 			then
 				local tips = self.ViewMgr.LanMgr:getLanValue("NoHornPleaseBuy")
                 ViewHelper:UiShowMsgBox(tips, function()
-																 local viewShop = self.ViewMgr:createView("Shop")
+																 local viewShop = self.ViewMgr:CreateView("Shop")
                                                                  viewShop:showItem()
 															   end
 				)
@@ -160,15 +160,15 @@ function ViewNotice:onClickSend()
 		ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SendNoEmpty"))
         return
 	end
-	local ev = self.ViewMgr.getEv("EvRequestSendMarquee")
+	local ev = self.ViewMgr.GetEv("EvRequestSendMarquee")
 	if(ev == nil)
 	then
 		ev = EvRequestSendMarquee:new(nil)
 	end
 	ev.msg = self.GTextInput.text
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
     self.GTextInput.text = ""
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 
@@ -188,7 +188,7 @@ function ViewNoticeFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewNoticeFactory:createView()	
+function ViewNoticeFactory:CreateView()
 	local view = ViewNotice:new(nil)	
 	return view
 end

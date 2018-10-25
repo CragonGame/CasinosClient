@@ -67,7 +67,7 @@ function ViewDesktopChatParentFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewDesktopChatParentFactory:createView()
+function ViewDesktopChatParentFactory:CreateView()
     local view = ViewDesktopChatParent:new(nil)
     return view
 end

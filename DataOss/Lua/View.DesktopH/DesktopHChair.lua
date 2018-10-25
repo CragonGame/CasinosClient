@@ -221,7 +221,7 @@ function DesktopHChair:sendMagicExp(sender_guid, exp_tbid)
     end
 
     local to_pos = self:getChairCenterPos()
-    local ui_pool = self.ViewMgr:getView("Pool")
+    local ui_pool = self.ViewMgr:GetView("Pool")
     local item_magicsender = ui_pool:getMagicExpSender()
     self.ViewDesktopH.ComUi:AddChild(item_magicsender.GCoMagicExpSender)
     item_magicsender:sendMagicExp(from_pos, to_pos, exp_tbid)
@@ -312,16 +312,16 @@ function DesktopHChair:_onClick()
             return
         end
 
-        local ev = self.ViewMgr:getEv("EvUiDesktopHSeatDown")
+        local ev = self.ViewMgr:GetEv("EvUiDesktopHSeatDown")
         if(ev == nil)
         then
             ev = EvUiDesktopHSeatDown:new(nil)
         end
         ev.seat_index = self.ChairIndex
         ev.min_golds = self.ViewDesktopH.UiDesktopHBase:getSeatDownMinGolds()
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     else
-        local ui_profileother = self.ViewMgr:createView("PlayerProfile")
+        local ui_profileother = self.ViewMgr:CreateView("PlayerProfile")
         ui_profileother:setPlayerGuid(CS.Casinos._ePlayerProfileType.DesktopH, self.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid,
                 function(player_info, head_icon)
                     self:_playerInfo(player_info, head_icon)

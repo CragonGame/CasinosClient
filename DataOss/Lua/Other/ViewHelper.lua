@@ -40,9 +40,9 @@ end
 
 ---------------------------------------
 function ViewHelper:UiShowInfoSuccess(info)
-    local ui_floatmsg = self.ViewMgr:getView("FloatMsg")
+    local ui_floatmsg = self.ViewMgr:GetView("FloatMsg")
     if (ui_floatmsg == nil) then
-        ui_floatmsg = self.ViewMgr:createView("FloatMsg")
+        ui_floatmsg = self.ViewMgr:CreateView("FloatMsg")
     end
     ui_floatmsg:showInfo(info, CS.UnityEngine.Color.white)
     return ui_floatmsg
@@ -55,9 +55,9 @@ end
 
 ---------------------------------------
 function ViewHelper:UiShowInfoFailed(info)
-    local ui_floatmsg = self.ViewMgr:getView("FloatMsg")
+    local ui_floatmsg = self.ViewMgr:GetView("FloatMsg")
     if (ui_floatmsg == nil) then
-        ui_floatmsg = self.ViewMgr:createView("FloatMsg")
+        ui_floatmsg = self.ViewMgr:CreateView("FloatMsg")
     end
     ui_floatmsg:showInfo(info, CS.UnityEngine.Color.red)
     return ui_floatmsg
@@ -70,9 +70,9 @@ end
 
 ---------------------------------------
 function ViewHelper:UiShowPermanentPosMsg(info)
-    local ui_msg = self.ViewMgr:getView("PermanentPosMsg")
+    local ui_msg = self.ViewMgr:GetView("PermanentPosMsg")
     if (ui_msg == nil) then
-        ui_msg = self.ViewMgr:createView("PermanentPosMsg")
+        ui_msg = self.ViewMgr:CreateView("PermanentPosMsg")
     end
     ui_msg:showInfo(info)
     return ui_msg
@@ -80,14 +80,14 @@ end
 
 ---------------------------------------
 function ViewHelper:UiShowMsgBox(info, ok, cancel)
-    local ui = self.ViewMgr:createView("MsgBox")
+    local ui = self.ViewMgr:CreateView("MsgBox")
     ui:showMsgBox3(info, ok, cancel)
     return ui
 end
 
 ---------------------------------------
 function ViewHelper:UiShowMsgBox(info, ok)
-    local ui = self.ViewMgr:createView("MsgBox")
+    local ui = self.ViewMgr:CreateView("MsgBox")
     ui:showMsgBox4(info, ok)
     return ui
 end
@@ -102,9 +102,9 @@ function ViewHelper:UiBeginWaiting(tips, auto_destroytm)
     if (auto_destroytm == nil) then
         auto_destroytm = 5
     end
-    local ui_waiting = self.ViewMgr:getView("Waiting")
+    local ui_waiting = self.ViewMgr:GetView("Waiting")
     if (ui_waiting == nil) then
-        ui_waiting = self.ViewMgr:createView("Waiting")
+        ui_waiting = self.ViewMgr:CreateView("Waiting")
     end
     ui_waiting:setTips(tips, auto_destroytm)
     return ui_waiting
@@ -117,15 +117,15 @@ end
 
 ---------------------------------------
 function ViewHelper:UiEndWaiting()
-    local ui_waiting = self.ViewMgr:getView("Waiting")
-    self.ViewMgr:destroyView(ui_waiting)
+    local ui_waiting = self.ViewMgr:GetView("Waiting")
+    self.ViewMgr:DestroyView(ui_waiting)
 end
 
 ---------------------------------------
 function ViewHelper:UiShowLoading(tips, progress)
-    local ui_loading = self.ViewMgr:getView("Loading")
+    local ui_loading = self.ViewMgr:GetView("Loading")
     if (ui_loading == nil) then
-        ui_loading = self.ViewMgr:createView("Loading")
+        ui_loading = self.ViewMgr:CreateView("Loading")
     end
     ui_loading:setTip(tips)
     ui_loading:setLoadingProgress(progress)
@@ -134,8 +134,8 @@ end
 
 ---------------------------------------
 function ViewHelper:UiEndLoading()
-    local ui_loading = self.ViewMgr:getView("Loading")
-    self.ViewMgr:destroyView(ui_loading)
+    local ui_loading = self.ViewMgr:GetView("Loading")
+    self.ViewMgr:DestroyView(ui_loading)
 end
 
 ---------------------------------------
@@ -167,7 +167,7 @@ end
 
 ---------------------------------------
 -- 全屏背景的多分辨率自适应计算函数
-function ViewHelper:makeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode, t_anchor_point)
+function ViewHelper:MakeUiBgFiteScreen(design_width, design_height, logic_width, logic_height, image_width, image_height, obj, anchor_mode, t_anchor_point)
     local w = logic_width / design_width
     local h = logic_height / design_height
     if (w >= h) then

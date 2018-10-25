@@ -43,16 +43,16 @@ end
 
 ---------------------------------------
 function ViewActivityPopup:onDestroy()
-    local ev = self.ViewMgr:getEv("EvUiCloseActivityPopUpBox")
+    local ev = self.ViewMgr:GetEv("EvUiCloseActivityPopUpBox")
     if (ev == nil) then
         ev = EvUiCloseActivityPopUpBox:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewActivityPopup:onClickBtnClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -99,7 +99,7 @@ function ViewActivityPopupFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewActivityPopupFactory:createView()
+function ViewActivityPopupFactory:CreateView()
     local view = ViewActivityPopup:new(nil)
     return view
 end

@@ -165,9 +165,9 @@ end
 
 ---------------------------------------
 function UiResetPwd:_onClickResetPwdBtnNext()
-    local msg_box = self.ViewLogin.ViewMgr:getView("MsgBox")
+    local msg_box = self.ViewLogin.ViewMgr:GetView("MsgBox")
     if msg_box == nil then
-        msg_box = self.ViewLogin.ViewMgr:createView("MsgBox")
+        msg_box = self.ViewLogin.ViewMgr:CreateView("MsgBox")
     end
     msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("ConfirmPhone"), string.format("%s：\n%s%s", self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeToPhone"), self.CountryCode, self.GTextInputReset.text),
             function()
@@ -175,73 +175,73 @@ function UiResetPwd:_onClickResetPwdBtnNext()
                 self.Phone = self.GTextInputReset.text
                 local p_f = "+" .. self.CountryCode .. " " .. self.GTextInputReset.text
                 self.TextRegisterPhone.text = p_f
-                local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
+                local ev = self.ViewLogin.ViewMgr:GetEv("EvUiRequestGetPhoneCode")
                 if (ev == nil) then
                     ev = EvUiRequestGetPhoneCode:new(nil)
                 end
                 ev.Phone = self.PhoneFormat
                 ev.Reson = GetPhoneCodeReson.ResetPwd
-                self.ViewLogin.ViewMgr:sendEv(ev)
+                self.ViewLogin.ViewMgr:SendEv(ev)
                 self.ViewLogin:Switch2ResetPwdCode()
                 --self.TextResetPwd:RequestFocus()
                 self.PhoneCodeIsSend = true
                 self.NextPhoneCodeSendTm = 60
                 self.BtnResend.enabled = false
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end,
             function()
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end
     )
 end
 
 ---------------------------------------
 function UiResetPwd:_onClickBtnReturnRegisterCode()
-    local msg_box = self.ViewLogin.ViewMgr:getView("MsgBox")
+    local msg_box = self.ViewLogin.ViewMgr:GetView("MsgBox")
     if msg_box == nil then
-        msg_box = self.ViewLogin.ViewMgr:createView("MsgBox")
+        msg_box = self.ViewLogin.ViewMgr:CreateView("MsgBox")
     end
     msg_box:useTwoBtn2(self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeTipTitle"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeTipContent"),
             self.ViewLogin.ViewMgr.LanMgr:getLanValue("Wait"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("Return"), 0, false,
             function()
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end,
             function()
                 self.ViewLogin:Switch2ResetPwd()
                 --self.GTextInputReset:RequestFocus()
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end
     )
 end
 
 ---------------------------------------
 function UiResetPwd:_onClickBtnResend()
-    local msg_box = self.ViewLogin.ViewMgr:getView("MsgBox")
+    local msg_box = self.ViewLogin.ViewMgr:GetView("MsgBox")
     if msg_box == nil then
-        msg_box = self.ViewLogin.ViewMgr:createView("MsgBox")
+        msg_box = self.ViewLogin.ViewMgr:CreateView("MsgBox")
     end
     msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("Confirm"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("ResendCode"),
             function()
-                local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
+                local ev = self.ViewLogin.ViewMgr:GetEv("EvUiRequestGetPhoneCode")
                 if (ev == nil) then
                     ev = EvUiRequestGetPhoneCode:new(nil)
                 end
                 ev.Phone = self.PhoneFormat
-                self.ViewLogin.ViewMgr:sendEv(ev)
+                self.ViewLogin.ViewMgr:SendEv(ev)
                 self.PhoneCodeIsSend = true
                 self.NextPhoneCodeSendTm = 60
                 self.BtnResend.enabled = false
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end,
             function()
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end
     )
 end
 
 ---------------------------------------
 function UiResetPwd:_onClickResetPwdCodeBtnNext()
-    local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestResetPwd")
+    local ev = self.ViewLogin.ViewMgr:GetEv("EvUiRequestResetPwd")
     if (ev == nil) then
         ev = EvUiRequestResetPwd:new(nil)
     end
@@ -249,7 +249,7 @@ function UiResetPwd:_onClickResetPwdCodeBtnNext()
     ev.formatphone = self.PhoneFormat
     ev.phone_code = self.TextRegisterCode.text
     ev.new_pwd = self.TextResetPwd.text
-    self.ViewLogin.ViewMgr:sendEv(ev)
+    self.ViewLogin.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

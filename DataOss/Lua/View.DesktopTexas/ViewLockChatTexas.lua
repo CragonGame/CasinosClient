@@ -36,9 +36,9 @@ end
 ---------------------------------------
 function ViewLockChatTexas:onCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("LockChat"))
-    self.ViewMgr:bindEvListener("EvEntityDesktopPlayerSit", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopPlayerLeaveChair", self)
-    self.ViewDesktop = self.ViewMgr:getView("DesktopTexas")
+    self.ViewMgr:BindEvListener("EvEntityDesktopPlayerSit", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
+    self.ViewDesktop = self.ViewMgr:GetView("DesktopTexas")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     self.GBtnClose = com_bg:GetChild("BtnClose").asButton
     self.GBtnClose.onClick:Add(
@@ -78,7 +78,7 @@ end
 
 ---------------------------------------
 function ViewLockChatTexas:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
     self.MapPlayerChat = {}
 end
 
@@ -183,24 +183,24 @@ function ViewLockChatTexas:_onClickBtnAllSpectator()
     self.GLoadSpectatorLock1.icon = CS.FairyGUI.UIPackage.GetItemURL("LockChat", lock_name)
     self.GLoadSpectatorLock2.icon = CS.FairyGUI.UIPackage.GetItemURL("LockChat", lock_name)
 
-    local ev = self.ViewMgr:getEv("EvUiRequestLockAllSpectator")
+    local ev = self.ViewMgr:GetEv("EvUiRequestLockAllSpectator")
     if (ev == nil) then
         ev = EvUiRequestLockAllSpectator:new(nil)
     end
     ev.requestLock = self.GBtnLockAllStandPlayer.selected
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewLockChatTexas:_onClickBtnAllPlayer()
     CS.UnityEngine.PlayerPrefs.SetString(self.LockAllDesktopPlayerKey, tostring(self.GBtnLockAllSeatPlayer.selected))
 
-    local ev = self.ViewMgr:getEv("EvUiRequestLockAllDesktopPlayer")
+    local ev = self.ViewMgr:GetEv("EvUiRequestLockAllDesktopPlayer")
     if (ev == nil) then
         ev = EvUiRequestLockAllDesktopPlayer:new(nil)
     end
     ev.requestLock = self.GBtnLockAllSeatPlayer.selected
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 
     for k, v in pairs(self.MapPlayerChat) do
         local chat_lock = v
@@ -210,7 +210,7 @@ end
 
 ---------------------------------------
 function ViewLockChatTexas:_onClickClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -231,7 +231,7 @@ function ViewLockChatTexasFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewLockChatTexasFactory:createView()
+function ViewLockChatTexasFactory:CreateView()
     local view = ViewLockChatTexas:new(nil)
     return view
 end

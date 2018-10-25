@@ -19,10 +19,10 @@ end
 
 function ViewMail:onCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("Mail"))
-	self.ViewMgr:bindEvListener("EvEntityMailListInit",self)
-	self.ViewMgr:bindEvListener("EvEntityMailAdd",self)
-	self.ViewMgr:bindEvListener("EvEntityMailDelete",self)
-	self.ViewMgr:bindEvListener("EvEntityMailUpdate",self)
+	self.ViewMgr:BindEvListener("EvEntityMailListInit",self)
+	self.ViewMgr:BindEvListener("EvEntityMailAdd",self)
+	self.ViewMgr:BindEvListener("EvEntityMailDelete",self)
+	self.ViewMgr:BindEvListener("EvEntityMailUpdate",self)
 	self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
 	local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
 	local btn_close = com_bg:GetChild("BtnClose").asButton
@@ -48,7 +48,7 @@ function ViewMail:onCreate()
 end
 
 function ViewMail:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewMail:onHandleEv(ev)
@@ -82,7 +82,7 @@ function ViewMail:setMail(have_mail,have_new_mail)
 end
 
 function ViewMail:onClickBtnClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 function ViewMail:setHaveNewMail(have_new_mail)
@@ -121,7 +121,7 @@ function ViewMailFactory:new(o,ui_package_name,ui_component_name,
 	return o
 end
 
-function ViewMailFactory:createView()
+function ViewMailFactory:CreateView()
 	local view = ViewMail:new(nil)
 	return view
 end

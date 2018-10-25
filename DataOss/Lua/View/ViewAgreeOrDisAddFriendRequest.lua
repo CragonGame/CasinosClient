@@ -43,12 +43,12 @@ function ViewAgreeOrDisAddFriendRequest:onCreate()
     )
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
     self.ChipIconSolustion.selectedIndex = ChipIconSolustion
-    self.ViewMgr:bindEvListener("EvEntityGetPlayerInfoOther", self)
+    self.ViewMgr:BindEvListener("EvEntityGetPlayerInfoOther", self)
 end
 
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequest:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -84,26 +84,26 @@ end
 
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequest:onClickBtnConfirm()
-    local ev = self.ViewMgr:getEv("EvUiAgreeAddFriend")
+    local ev = self.ViewMgr:GetEv("EvUiAgreeAddFriend")
     if (ev == nil) then
         ev = EvUiAgreeAddFriend:new(nil)
     end
     ev.from_etguid = self.FriendGuid
     ev.ev = self.IMOfflineEvent
-    self.ViewMgr:sendEv(ev)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:SendEv(ev)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequest:onClickBtnClose()
-    local ev = self.ViewMgr:getEv("EvUiRefuseAddFriend")
+    local ev = self.ViewMgr:GetEv("EvUiRefuseAddFriend")
     if (ev == nil) then
         ev = EvUiRefuseAddFriend:new(nil)
     end
     ev.from_etguid = self.FriendGuid
     ev.ev = self.IMOfflineEvent
-    self.ViewMgr:sendEv(ev)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:SendEv(ev)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -123,7 +123,7 @@ function ViewAgreeOrDisAddFriendRequestFactory:new(o, ui_package_name, ui_compon
 end
 
 ---------------------------------------
-function ViewAgreeOrDisAddFriendRequestFactory:createView()
+function ViewAgreeOrDisAddFriendRequestFactory:CreateView()
     local view = ViewAgreeOrDisAddFriendRequest:new(nil)
     return view
 end

@@ -19,7 +19,7 @@ function ViewTexasClassic:new(o,view_desktop)
     local com_desktop = view_desktop.ComUi
     local loader_bg = com_desktop:GetChild("LoaderBg").asLoader
     loader_bg.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop","ClassicBg")
-    ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, o.ViewDesktop.ComUi.width, o.ViewDesktop.ComUi.height, loader_bg.width, loader_bg.height,loader_bg,BgAttachMode.Center)
+    ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, o.ViewDesktop.ComUi.width, o.ViewDesktop.ComUi.height, loader_bg.width, loader_bg.height,loader_bg,BgAttachMode.Center)
     local loader_desk = com_desktop:GetChild("LoaderDesk").asLoader
     loader_desk.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop","ClassicDesk")
     local btn_shop = com_desktop:GetChild("BtnShop").asButton
@@ -112,7 +112,7 @@ end
 
 ---------------------------------------
 function ViewTexasClassic:_onClickMenu()
-    local desk_menu = self.ViewDesktop.ViewMgr:createView("DesktopMenuTexas")
+    local desk_menu = self.ViewDesktop.ViewMgr:CreateView("DesktopMenuTexas")
     desk_menu:setPlayerState(self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.Ob,
             self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.WaitWhile,
             self.ViewDesktop.CanGetOnLineReward or self.ViewDesktop.CanGetTimingReward)
@@ -120,12 +120,12 @@ end
 
 ---------------------------------------
 function ViewTexasClassic:_onClickShop()
-    local ev = self.ViewDesktop.ViewMgr:getEv("EvUiClickShop")
+    local ev = self.ViewDesktop.ViewMgr:GetEv("EvUiClickShop")
     if (ev == nil)
     then
         ev = EvUiClickShop:new(nil)
     end
-    self.ViewDesktop.ViewMgr:sendEv(ev)
+    self.ViewDesktop.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

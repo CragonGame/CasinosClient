@@ -20,7 +20,7 @@ end
 
 function ViewEditAddress:onCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("EditAddress"))
-	self.ViewMgr:bindEvListener("EvEntityResponseGetReceiverAddress", self)
+	self.ViewMgr:BindEvListener("EvEntityResponseGetReceiverAddress", self)
 	local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
 	local btn_close = com_bg:GetChild("BtnClose").asButton
 	btn_close.onClick:Add(
@@ -46,12 +46,12 @@ function ViewEditAddress:onCreate()
 	self.GInputTextWeChatNum = self.ComUi:GetChild("TextWeChatNum").asTextField
 	self.GInputTextAddress = self.ComUi:GetChild("TextAddress").asTextField
 	self.GInputTextEmail = self.ComUi:GetChild("TextEmail").asTextField
-	local ev = self.ViewMgr:getEv("EvUiRequestGetReceiverAddress")
+	local ev = self.ViewMgr:GetEv("EvUiRequestGetReceiverAddress")
 	if(ev == nil)
 	then
 		ev = EvUiRequestGetReceiverAddress:new(nil)
 	end
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 end
 
 function ViewEditAddress:onHandleEv(ev)
@@ -72,7 +72,7 @@ function ViewEditAddress:setContent(address)
 end
 
 function ViewEditAddress:onClickBtnClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 function ViewEditAddress:onClickBtnSave()
@@ -85,14 +85,14 @@ function ViewEditAddress:onClickBtnSave()
 		address.Weixin = self.GInputTextWeChatNum.text
 		address.Address = self.GInputTextAddress.text
 		address.EMail = self.GInputTextEmail.text
-		local ev = self.ViewMgr:getEv("EvUiRequestEditReceiverAddress")
+		local ev = self.ViewMgr:GetEv("EvUiRequestEditReceiverAddress")
 		if(ev == nil)
 		then
 			ev = EvUiRequestEditReceiverAddress:new(nil)
 		end
 		ev.Address = address
-		self.ViewMgr:sendEv(ev)
-		self.ViewMgr:destroyView(self)
+		self.ViewMgr:SendEv(ev)
+		self.ViewMgr:DestroyView(self)
 	end
 end
 
@@ -151,7 +151,7 @@ function ViewEditAddress:checkInputContent()
 end
 
 function ViewEditAddress:showWrongInputTips(tips)
-	local msg_box = self.ViewMgr:createView("MsgBox")
+	local msg_box = self.ViewMgr:CreateView("MsgBox")
 	msg_box:showMsgBox1("",tips)
 end
 
@@ -170,7 +170,7 @@ function ViewEditAddressFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewEditAddressFactory:createView()	
+function ViewEditAddressFactory:CreateView()
 	local view = ViewEditAddress:new(nil)	
 	return view
 end

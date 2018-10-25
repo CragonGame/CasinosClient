@@ -24,8 +24,8 @@ function ViewMatchInfo:onCreate()
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerActor = controller_mgr:GetController("Actor")
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("MatchInfo"))
-    self.ViewMgr:bindEvListener("EvEntitySetMatchDetailedInfo", self)
-    self.ViewMgr:bindEvListener("EvEntitySetRaiseBlindTbInfo", self)
+    self.ViewMgr:BindEvListener("EvEntitySetMatchDetailedInfo", self)
+    self.ViewMgr:BindEvListener("EvEntitySetRaiseBlindTbInfo", self)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
@@ -145,13 +145,13 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:Init(match_guid, isIndesk, isSelfJoin)
-    local ev = self.ViewMgr:getEv("EvUiRequestMatchDetailedInfo")
+    local ev = self.ViewMgr:GetEv("EvUiRequestMatchDetailedInfo")
     if (ev == nil) then
         ev = EvUiRequestMatchDetailedInfo:new(nil)
     end
     ev.MatchGuid = match_guid
     ev.MatchType = MatchTexasScopeType.Public
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     if (isIndesk) then
         self.GControllerRank:SetSelectedIndex(0)
         self.GControllerOverView:SetSelectedIndex(0)
@@ -226,7 +226,7 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -445,61 +445,61 @@ function ViewMatchInfo:onClickBtnApply()
     local btnApplyState = self:getBtnApplyState()
     if (btnApplyState == 2) then
         -- 进入
-        local ev = self.ViewMgr:getEv("EvUiRequestEnterMatch")
+        local ev = self.ViewMgr:GetEv("EvUiRequestEnterMatch")
         if (ev == nil) then
             ev = EvUiRequestEnterMatch:new(nil)
         end
         ev.MatchGuid = self.MatchInfo.Guid
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     elseif (btnApplyState == 3) then
         -- 退赛
-        local msg_box = self.ViewMgr:createView("MsgBox")
+        local msg_box = self.ViewMgr:CreateView("MsgBox")
         local content = self.ViewMgr.LanMgr:getLanValue("QuitMatchTip")
         msg_box:useTwoBtn("", content,
                 function()
-                    local ev = self.ViewMgr:getEv("EvUiRequestCancelSignupMatch")
+                    local ev = self.ViewMgr:GetEv("EvUiRequestCancelSignupMatch")
                     if (ev == nil) then
                         ev = EvUiRequestCancelSignupMatch:new(nil)
                     end
                     ev.MatchGuid = self.MatchGuid
-                    self.ViewMgr:sendEv(ev)
-                    self.ViewMgr:destroyView(msg_box)
-                    self.ViewMgr:destroyView(self)
+                    self.ViewMgr:SendEv(ev)
+                    self.ViewMgr:DestroyView(msg_box)
+                    self.ViewMgr:DestroyView(self)
                 end,
                 function()
-                    self.ViewMgr:destroyView(msg_box)
-                    self.ViewMgr:destroyView(self)
+                    self.ViewMgr:DestroyView(msg_box)
+                    self.ViewMgr:DestroyView(self)
                 end
         )
     elseif (btnApplyState == 4) then
         -- 报名
-        local msg_box = self.ViewMgr:createView("MsgBox")
+        local msg_box = self.ViewMgr:CreateView("MsgBox")
         msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:getGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:getGoldShowStr3(self.MatchInfo.ServiceFee)),
                 function()
-                    local ev = self.ViewMgr:getEv("EvUiRequestSignUpMatch")
+                    local ev = self.ViewMgr:GetEv("EvUiRequestSignUpMatch")
                     if (ev == nil) then
                         ev = EvUiRequestSignUpMatch:new(nil)
                     end
                     ev.MatchGuid = self.MatchGuid
-                    self.ViewMgr:sendEv(ev)
-                    self.ViewMgr:destroyView(msg_box)
+                    self.ViewMgr:SendEv(ev)
+                    self.ViewMgr:DestroyView(msg_box)
                 end,
                 function()
-                    self.ViewMgr:destroyView(msg_box)
+                    self.ViewMgr:DestroyView(msg_box)
                 end
         )
-        self.ViewMgr:destroyView(self)
+        self.ViewMgr:DestroyView(self)
     end
 end
 
 ---------------------------------------
 function ViewMatchInfo:onClickComRewardExplain()
-    self.ViewMgr:createView("SnowBallReward")
+    self.ViewMgr:CreateView("SnowBallReward")
 end
 
 ---------------------------------------
 function ViewMatchInfo:close()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -563,7 +563,7 @@ function ViewMatchInfoFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewMatchInfoFactory:createView()
+function ViewMatchInfoFactory:CreateView()
     local view = ViewMatchInfo:new(nil)
     return view
 end

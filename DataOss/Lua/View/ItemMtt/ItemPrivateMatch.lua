@@ -35,7 +35,7 @@ function ItemPrivateMatch:new(o,com,match_info,view_mgr)
 end
 
 function ItemPrivateMatch:onClickSelf()
-	local view_privateMatchMoreInfo = self.ViewMgr:createView("PrivateMatchInfo")
+	local view_privateMatchMoreInfo = self.ViewMgr:CreateView("PrivateMatchInfo")
 	view_privateMatchMoreInfo:Init(self.MatchGuid,self.IsSelfJoin)
 end
 

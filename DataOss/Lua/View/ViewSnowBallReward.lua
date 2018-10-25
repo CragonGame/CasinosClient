@@ -82,7 +82,7 @@ end
 
 ---------------------------------------
 function ViewSnowBallReward:onClickBtnClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -103,7 +103,7 @@ function ViewSnowBallRewardFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewSnowBallRewardFactory:createView()
+function ViewSnowBallRewardFactory:CreateView()
     local view = ViewSnowBallReward:new(nil)
     return view
 end

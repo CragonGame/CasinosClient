@@ -67,7 +67,7 @@ end
 
 ---------------------------------------
 function ViewShare:onClickClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -88,7 +88,7 @@ function ViewShareFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewShareFactory:createView()
+function ViewShareFactory:CreateView()
     local view = ViewShare:new(nil)
     return view
 end

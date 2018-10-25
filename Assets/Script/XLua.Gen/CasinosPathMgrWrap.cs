@@ -23,14 +23,14 @@ namespace XLua.CSObjectWrap
 			System.Type type = typeof(Casinos.PathMgr);
 			Utils.BeginObjectRegister(type, L, translator, 0, 8, 17, 14);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "getWWWPersistentDataPath", _m_getWWWPersistentDataPath);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "combineWWWPersistentDataPath", _m_combineWWWPersistentDataPath);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "getPersistentDataPath", _m_getPersistentDataPath);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "combinePersistentDataPath", _m_combinePersistentDataPath);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "getStreamingAssetsPath", _m_getStreamingAssetsPath);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "combineStreamingAssetsPath", _m_combineStreamingAssetsPath);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "getWWWStreamingAssetsPath", _m_getWWWStreamingAssetsPath);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "combineWWWStreamingAssetsPath", _m_combineWWWStreamingAssetsPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetWWWPersistentDataPath", _m_GetWWWPersistentDataPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CombineWWWPersistentDataPath", _m_CombineWWWPersistentDataPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetPersistentDataPath", _m_GetPersistentDataPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CombinePersistentDataPath", _m_CombinePersistentDataPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetStreamingAssetsPath", _m_GetStreamingAssetsPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CombineStreamingAssetsPath", _m_CombineStreamingAssetsPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetWWWStreamingAssetsPath", _m_GetWWWStreamingAssetsPath);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CombineWWWStreamingAssetsPath", _m_CombineWWWStreamingAssetsPath);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "ForceUseDirResourcesLaunch", _g_get_ForceUseDirResourcesLaunch);
@@ -114,7 +114,7 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_getWWWPersistentDataPath(RealStatePtr L)
+        static int _m_GetWWWPersistentDataPath(RealStatePtr L)
         {
 		    try {
             
@@ -142,7 +142,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_combineWWWPersistentDataPath(RealStatePtr L)
+        static int _m_CombineWWWPersistentDataPath(RealStatePtr L)
         {
 		    try {
             
@@ -171,7 +171,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_getPersistentDataPath(RealStatePtr L)
+        static int _m_GetPersistentDataPath(RealStatePtr L)
         {
 		    try {
             
@@ -199,7 +199,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_combinePersistentDataPath(RealStatePtr L)
+        static int _m_CombinePersistentDataPath(RealStatePtr L)
         {
 		    try {
             
@@ -239,12 +239,12 @@ namespace XLua.CSObjectWrap
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
             
-            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.PathMgr.combinePersistentDataPath!");
+            return LuaAPI.luaL_error(L, "invalid arguments to Casinos.PathMgr.CombinePersistentDataPath!");
             
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_getStreamingAssetsPath(RealStatePtr L)
+        static int _m_GetStreamingAssetsPath(RealStatePtr L)
         {
 		    try {
             
@@ -272,7 +272,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_combineStreamingAssetsPath(RealStatePtr L)
+        static int _m_CombineStreamingAssetsPath(RealStatePtr L)
         {
 		    try {
             
@@ -301,7 +301,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_getWWWStreamingAssetsPath(RealStatePtr L)
+        static int _m_GetWWWStreamingAssetsPath(RealStatePtr L)
         {
 		    try {
             
@@ -329,7 +329,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_combineWWWStreamingAssetsPath(RealStatePtr L)
+        static int _m_CombineWWWStreamingAssetsPath(RealStatePtr L)
         {
 		    try {
             

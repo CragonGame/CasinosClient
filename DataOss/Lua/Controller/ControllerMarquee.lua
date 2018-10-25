@@ -20,7 +20,7 @@ end
 
 ---------------------------------------
 function ControllerMarquee:onCreate()
-    self.ViewMgr:bindEvListener("EvRequestSendMarquee", self)
+    self.ViewMgr:BindEvListener("EvRequestSendMarquee", self)
     self.RPC = self.ControllerMgr.RPC
     self.MC = CommonMethodType
     -- 跑马灯，响应玩家发送跑马灯广播请求
@@ -37,7 +37,7 @@ end
 
 ---------------------------------------
 function ControllerMarquee:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -69,10 +69,10 @@ end
 function ControllerMarquee:s2cIMMarqueeNotify(im_marquee)
     local data = BIMMarquee:new(nil)
     data:setData(im_marquee)
-    local view_shootingtext = self.ControllerMgr.ViewMgr:getView("ShootingText")
+    local view_shootingtext = self.ControllerMgr.ViewMgr:GetView("ShootingText")
     if (view_shootingtext == nil)
     then
-        view_shootingtext = self.ControllerMgr.ViewMgr:createView("ShootingText")
+        view_shootingtext = self.ControllerMgr.ViewMgr:CreateView("ShootingText")
         view_shootingtext:init(false, true, true)
     end
 
@@ -101,13 +101,13 @@ function ControllerMarquee:s2cIMMarqueeNotify(im_marquee)
     end
     table.insert(self.ListIMMarquee, data)
 
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityReceiceMarquee")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityReceiceMarquee")
     if (ev == nil)
     then
         ev = EvEntityReceiceMarquee:new(nil)
     end
     ev.im_marquee = data
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

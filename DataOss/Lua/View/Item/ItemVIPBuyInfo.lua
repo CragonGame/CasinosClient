@@ -28,13 +28,13 @@ end
 
 function ItemVIPBuyInfo:onClick()
 	local view_mgr = ViewMgr:new(nil)
-	local ev = view_mgr:getEv("EvEntityBuyVIP")
+	local ev = view_mgr:GetEv("EvEntityBuyVIP")
 	if(ev == nil)
 	then
 		ev = EvEntityBuyVIP:new(nil)
 	end
     ev.buy_id = self.VIPInfoTbId
-    view_mgr:sendEv(ev)
+    view_mgr:SendEv(ev)
 end
 
 

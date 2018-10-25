@@ -298,7 +298,7 @@ function PreViewLoadingFactory:new(o, ui_package_name, ui_component_name, ui_lay
 end
 
 ---------------------------------------
-function PreViewLoadingFactory:createView()
+function PreViewLoadingFactory:CreateView()
     local view = PreViewLoading:new(nil)
     return view
 end

@@ -21,7 +21,7 @@ end
 
 function ViewDesktopHHistory:onCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("DesktopHHistory"))
-	self.ViewMgr:bindEvListener("EvEntityDesktopHGameEndState",self)
+	self.ViewMgr:BindEvListener("EvEntityDesktopHGameEndState",self)
 	local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
 	local btn_history_close = co_history_close:GetChild("BtnClose").asButton
 	btn_history_close.onClick:Add(
@@ -36,11 +36,11 @@ function ViewDesktopHHistory:onCreate()
 		end
 	)
 	self.GListHistory = self.ComUi:GetChild("ListHistroy").asList
-	self.ViewDesktopH = self.ViewMgr:getView("DesktopH")
+	self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
 end
 
 function ViewDesktopHHistory:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewDesktopHHistory:onHandleEv(ev)
@@ -62,7 +62,7 @@ function ViewDesktopHHistory:setHistory(map_history)
 end
 
 function ViewDesktopHHistory:_onClickBtnHistoryClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 
@@ -82,7 +82,7 @@ function ViewDesktopHHistoryFactory:new(o,ui_package_name,ui_component_name,
 	return o
 end
 
-function ViewDesktopHHistoryFactory:createView()
+function ViewDesktopHHistoryFactory:CreateView()
 	local view = ViewDesktopHHistory:new(nil)
 	return view
 end

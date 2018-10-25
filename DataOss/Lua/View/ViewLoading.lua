@@ -43,7 +43,7 @@ function ViewLoading:onCreate()
 	--local bg = self.ComUi:GetChild("Bg")
 	--if(bg ~= nil)
 	--then
-	--	CS.Casinos.UiHelperCasinos.makeUiBgFiteScreen(bg, self.ComUi.width, self.ComUi.height, bg.width, bg.height)
+	--	CS.Casinos.UiHelperCasinos.MakeUiBgFiteScreen(bg, self.ComUi.width, self.ComUi.height, bg.width, bg.height)
 	--end
 
 	local com_bg = self.ComUi:GetChild("ComBg").asCom
@@ -221,7 +221,7 @@ function ViewLoadingFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewLoadingFactory:createView()	
+function ViewLoadingFactory:CreateView()
 	local view = ViewLoading:new(nil)	
 	return view
 end

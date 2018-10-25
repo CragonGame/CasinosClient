@@ -157,7 +157,7 @@ function ItemLobbyDesk:setDesktopFilter()
     self.DesktopFilter.FactoryName = "Texas"
     self.DesktopFilter.IncludeFull = false
     local d_p = desktop_filter:getData4Pack()
-    local desktop_filter_bytes = self.ViewMgr:packData(d_p)
+    local desktop_filter_bytes = self.ViewMgr:PackData(d_p)
     self.DesktopFilter.FilterData = desktop_filter_bytes
 end
 
@@ -165,14 +165,14 @@ end
 function ItemLobbyDesk:onClickBtnPlay()
     if (self.DeskTopInfo:isFull() == false and self.CanPlay) then
         local view_mgr = ViewMgr:new(nil)
-        local ev = view_mgr:getEv("EvUiClickPlayInDesk")
+        local ev = view_mgr:GetEv("EvUiClickPlayInDesk")
         if (ev == nil) then
             ev = EvUiClickPlayInDesk:new(nil)
         end
         ev.desk_etguid = self.DeskTopInfo.desktop_etguid
         ev.seat_index = 255
         ev.desktop_filter = self.DesktopFilter
-        view_mgr:sendEv(ev)
+        view_mgr:SendEv(ev)
     else
         self:clickEnterDesk()
     end
@@ -181,14 +181,14 @@ end
 ---------------------------------------
 function ItemLobbyDesk:clickEnterDesk()
     local view_mgr = ViewMgr:new(nil)
-    local ev = view_mgr:getEv("EvUiClickViewInDesk")
+    local ev = view_mgr:GetEv("EvUiClickViewInDesk")
     if (ev == nil) then
         ev = EvUiClickViewInDesk:new(nil)
     end
     ev.desk_etguid = self.DeskTopInfo.desktop_etguid
     ev.seat_index = 255
     ev.desktop_filter = self.DesktopFilter:getData4Pack()
-    view_mgr:sendEv(ev)
+    view_mgr:SendEv(ev)
 end
 
 ---------------------------------------

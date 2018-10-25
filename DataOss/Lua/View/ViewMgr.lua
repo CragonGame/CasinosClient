@@ -88,14 +88,14 @@ function ViewMgr:onDestroy()
 end
 
 ---------------------------------------
-function ViewMgr:regView(view_key, view_factory)
+function ViewMgr:RegView(view_key, view_factory)
     if (view_factory ~= nil) then
         self.TableViewFactory[view_key] = view_factory
     end
 end
 
 ---------------------------------------
-function ViewMgr:createView(view_key)
+function ViewMgr:CreateView(view_key)
     local view_factory = self.TableViewFactory[view_key]
     if (view_factory == nil) then
         return nil
@@ -114,7 +114,7 @@ function ViewMgr:createView(view_key)
     ui_panel.componentName = view_factory.ComponentName
     ui_panel.fitScreen = view_factory.FitScreen
     ui_panel:ApplyModifiedProperties(false, true)
-    view = view_factory:createView()
+    view = view_factory:CreateView()
     view.ViewMgr = self.Instance
     view.GoUi = go
     view.ComUi = ui_panel.ui
@@ -152,7 +152,7 @@ function ViewMgr:createView(view_key)
 end
 
 ---------------------------------------
-function ViewMgr:destroyView(view)
+function ViewMgr:DestroyView(view)
     if (view ~= nil) then
         local view_key = view.ViewKey
         local view_ex = self.TableViewSingle[view_key]
@@ -176,13 +176,7 @@ function ViewMgr:destroyView(view)
 end
 
 ---------------------------------------
-function ViewMgr:getView(view_key)
-    local view = self.TableViewSingle[view_key]
-    return view
-end
-
----------------------------------------
-function ViewMgr:destroyAllView()
+function ViewMgr:DestroyAllView()
     local table_need_destroyui = {}
     for k, v in pairs(self.TableViewSingle) do
         table_need_destroyui[k] = v
@@ -200,6 +194,60 @@ function ViewMgr:destroyAllView()
     end
     self.TableViewSingle = {}
     self.TableViewMultiple = {}
+end
+
+---------------------------------------
+function ViewMgr:GetView(view_key)
+    local view = self.TableViewSingle[view_key]
+    return view
+end
+
+---------------------------------------
+function ViewMgr:BindEvListener(ev_name, ev_listener)
+    if (self.EventSys ~= nil) then
+        self.EventSys:BindEvListener(ev_name, ev_listener)
+    end
+end
+
+---------------------------------------
+function ViewMgr:UnbindEvListener(ev_listener)
+    if (self.EventSys ~= nil) then
+        self.EventSys:UnbindEvListener(ev_listener)
+    end
+end
+
+---------------------------------------
+function ViewMgr:GetEv(ev_name)
+    local ev = nil
+    if (self.EventSys ~= nil) then
+        ev = self.EventSys:GetEv(ev_name)
+    end
+    return ev
+end
+
+---------------------------------------
+function ViewMgr:SendEv(ev)
+    if (self.EventSys ~= nil) then
+        self.EventSys:SendEv(ev)
+    end
+end
+
+---------------------------------------
+function ViewMgr:GetUiPackagePath(package_name)
+    local s = CS.Casinos.CasinosContext.Instance.PathMgr.DirAbUi .. string.lower(package_name) .. ".ab"
+    return s
+end
+
+---------------------------------------
+function ViewMgr:PackData(data)
+    local p_datas = self.RPC:PackData(data)
+    return p_datas
+end
+
+---------------------------------------
+function ViewMgr:UnpackData(data)
+    local p_datas = self.RPC:UnPackData(data)
+    return p_datas
 end
 
 ---------------------------------------
@@ -258,52 +306,4 @@ function ViewMgr:_checkDestroyUi(t_layer)
         end
     end
     map_need_destroyuis = {}
-end
-
----------------------------------------
-function ViewMgr:bindEvListener(ev_name, ev_listener)
-    if (self.EventSys ~= nil) then
-        self.EventSys:bindEvListener(ev_name, ev_listener)
-    end
-end
-
----------------------------------------
-function ViewMgr:unbindEvListener(ev_listener)
-    if (self.EventSys ~= nil) then
-        self.EventSys:unbindEvListener(ev_listener)
-    end
-end
-
----------------------------------------
-function ViewMgr:getEv(ev_name)
-    local ev = nil
-    if (self.EventSys ~= nil) then
-        ev = self.EventSys:getEv(ev_name)
-    end
-    return ev
-end
-
----------------------------------------
-function ViewMgr:sendEv(ev)
-    if (self.EventSys ~= nil) then
-        self.EventSys:sendEv(ev)
-    end
-end
-
----------------------------------------
-function ViewMgr:getUiPackagePath(package_name)
-    local s = CS.Casinos.CasinosContext.Instance.PathMgr.DirAbUi .. string.lower(package_name) .. ".ab"
-    return s
-end
-
----------------------------------------
-function ViewMgr:packData(data)
-    local p_datas = self.RPC:PackData(data)
-    return p_datas
-end
-
----------------------------------------
-function ViewMgr:unpackData(data)
-    local p_datas = self.RPC:UnPackData(data)
-    return p_datas
 end

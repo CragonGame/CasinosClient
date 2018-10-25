@@ -25,7 +25,7 @@ function ViewChatFriend:onCreate()
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
-    self.ViewPool = self.ViewMgr:getView("Pool")
+    self.ViewPool = self.ViewMgr:GetView("Pool")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -80,18 +80,18 @@ function ViewChatFriend:onCreate()
     )
     self.ChatRecordInitWidth = self.GListChatContent.width - 30
     self.MapChatTargets = {}
-    self.ViewMgr:bindEvListener("EvEntityFriendOnlineStateChange", self)
-    self.ViewMgr:bindEvListener("EvEntityNotifyDeleteFriend", self)
-    self.ViewMgr:bindEvListener("EvEntityDeleteFriendChatRecordSuccess", self)
-    self.ViewMgr:bindEvListener("EvEntityReceiveFriendSingleChat", self)
-    self.ViewMgr:bindEvListener("EvEntityReceiveFriendChats", self)
-    self.ViewMgr:bindEvListener("EvEntityChatRecordRequestResult", self)
-    self.ViewMgr:bindEvListener("EvEntityRefreshFriendInfo", self)
+    self.ViewMgr:BindEvListener("EvEntityFriendOnlineStateChange", self)
+    self.ViewMgr:BindEvListener("EvEntityNotifyDeleteFriend", self)
+    self.ViewMgr:BindEvListener("EvEntityDeleteFriendChatRecordSuccess", self)
+    self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
+    self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
+    self.ViewMgr:BindEvListener("EvEntityChatRecordRequestResult", self)
+    self.ViewMgr:BindEvListener("EvEntityRefreshFriendInfo", self)
 end
 
 ---------------------------------------
 function ViewChatFriend:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -180,7 +180,7 @@ function ViewChatFriend:onClickBtnCurrentFriendProfile()
     if (self.CurrentChatTarget == nil) then
         return
     end
-    local ui_playerprofile = self.ViewMgr:createView("PlayerProfile")
+    local ui_playerprofile = self.ViewMgr:CreateView("PlayerProfile")
     ui_playerprofile:setPlayerGuid(CS.Casions._ePlayerProfileType.Ranking, self.CurrentChatTarget.PlayerInfoCommon.PlayerGuid, nil)
 end
 
@@ -189,14 +189,14 @@ function ViewChatFriend:onClickBtnPlayWithFriend()
     if (self.CurrentChatTarget == nil or (self.FriendDesktopGuid == nil or self.FriendDesktopGuid == "")) then
         return
     end
-    local ev = self.ViewMgr:getEv("EvUiClickViewInDesk")
+    local ev = self.ViewMgr:GetEv("EvUiClickViewInDesk")
     if (ev == nil) then
         ev = EvUiClickViewInDesk:new(nil)
     end
     ev.desk_etguid = self.FriendDesktopGuid
-    ev.desktop_filter = self.ViewMgr:unpackData(self.CurrentChatTarget.PlayerPlayState.UserData2)-- CS.Casinos.LuaHelper.JsonDeserializeDesktopFilter(self.CurrentChatTarget.PlayerPlayState.UserData2)
+    ev.desktop_filter = self.ViewMgr:UnpackData(self.CurrentChatTarget.PlayerPlayState.UserData2)-- CS.Casinos.LuaHelper.JsonDeserializeDesktopFilter(self.CurrentChatTarget.PlayerPlayState.UserData2)
     ev.seat_index = 255
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -252,13 +252,13 @@ function ViewChatFriend:setCurrentChatMsg(chat_record)
     if (from_playeretguid == self.ControllerPlayer.Guid) then
         friend_guid = chat_record.recver_guid
     end
-    local ev = self.ViewMgr:getEv("EvUiChatConfirmRead")
+    local ev = self.ViewMgr:GetEv("EvUiChatConfirmRead")
     if (ev == nil) then
         ev = EvUiChatConfirmRead:new(nil)
     end
     ev.friend_etguid = friend_guid
     ev.msg_id = chat_record.msg_id
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     local child = nil
     if (self.MapChatTargets[friend_guid] ~= nil) then
         child = self.MapChatTargets[friend_guid]
@@ -293,13 +293,13 @@ function ViewChatFriend:setCurrentChatTarget(player_info, list_chatrecv, need_re
     end
     local last_chat_record = self.ControllerIM.IMChat:getLastChatMsgRecord(current_targetetguid)
     if (last_chat_record ~= nil) then
-        local ev = self.ViewMgr:getEv("EvUiChatConfirmRead")
+        local ev = self.ViewMgr:GetEv("EvUiChatConfirmRead")
         if (ev == nil) then
             ev = EvUiChatConfirmRead:new(nil)
         end
         ev.friend_etguid = current_targetetguid
         ev.msg_id = last_chat_record.msg_id
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
     if (list_chatrecv ~= nil) then
         self.GListChatContent.numItems = #list_chatrecv
@@ -316,11 +316,11 @@ end
 
 ---------------------------------------
 function ViewChatFriend:onClickBtnChooseChatTarget()
-    local ev = self.ViewMgr:getEv("EvUiClickChooseFriendChatTarget")
+    local ev = self.ViewMgr:GetEv("EvUiClickChooseFriendChatTarget")
     if (ev == nil) then
         ev = EvUiClickChooseFriendChatTarget:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -335,18 +335,18 @@ function ViewChatFriend:onClickBtnSendMsg()
     c_m.sender_guid = self.ControllerPlayer.Guid
     c_m.sender_nickname = self.ControllerActor.PropNickName:get()
     c_m.msg = self.GTextInputSendText.text
-    local ev = self.ViewMgr:getEv("EvUiSendMsg")
+    local ev = self.ViewMgr:GetEv("EvUiSendMsg")
     if (ev == nil) then
         ev = EvUiSendMsg:new(nil)
     end
     ev.chat_msg = c_m:getData4Pack()
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.GTextInputSendText.text = ""
 end
 
 ---------------------------------------
 function ViewChatFriend:onClickBtnClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -436,12 +436,12 @@ end
 
 ---------------------------------------
 function ViewChatFriend:currentChatTargetChange()
-    local ev = self.ViewMgr:getEv("EvUiCurrentChatTargetChange")
+    local ev = self.ViewMgr:GetEv("EvUiCurrentChatTargetChange")
     if (ev == nil) then
         ev = EvUiCurrentChatTargetChange:new(nil)
     end
     ev.current_chattarget = current_chattarget
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -462,7 +462,7 @@ function ViewChatFriendFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewChatFriendFactory:createView()
+function ViewChatFriendFactory:CreateView()
     local view = ViewChatFriend:new(nil)
     return view
 end

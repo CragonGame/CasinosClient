@@ -66,7 +66,7 @@ function ViewResetPwd:onCreate()
     --local bg = self.ComUi:GetChild("Bg")
     --if (bg ~= nil)
     --then
-    --	CS.Casinos.UiHelperCasinos.makeUiBgFiteScreen(bg, self.ComUi.width, self.ComUi.height, bg.width, bg.height)
+    --	CS.Casinos.UiHelperCasinos.MakeUiBgFiteScreen(bg, self.ComUi.width, self.ComUi.height, bg.width, bg.height)
     --end
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
     btn_return.onClick:Add(
@@ -78,7 +78,7 @@ end
 
 ---------------------------------------
 function ViewResetPwd:onClickBtnReturn()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -86,15 +86,15 @@ function ViewResetPwd:onClickBtnResetPwd()
     local text_acc = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputAcc").asTextInput
     local text_pwd = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputNewPwd").asTextInput
     local text_superpwd = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputSuperPwd").asTextInput
-    local ev = self.ViewMgr:getEv("EvUiRequestResetPwd")
+    local ev = self.ViewMgr:GetEv("EvUiRequestResetPwd")
     if (ev == nil) then
         ev = EvUiRequestResetPwd:new(nil)
     end
     ev.account_name = text_acc.text
     ev.super_pwd = text_superpwd.text
     ev.new_pwd = text_pwd.text
-    self.ViewMgr:sendEv(ev)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:SendEv(ev)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -132,7 +132,7 @@ function ViewResetPwdFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewResetPwdFactory:createView()
+function ViewResetPwdFactory:CreateView()
     local view = ViewResetPwd:new(nil)
     return view
 end

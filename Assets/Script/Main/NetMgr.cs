@@ -3,11 +3,10 @@
 namespace Casinos
 {
     using System;
-    using UnityEngine;
     using XLua;
     using GameCloud.Unity.Common;
 
-    public class NetBridge
+    public class NetMgr
     {
         //---------------------------------------------------------------------
         public RpcSession RpcSession { get; set; }
@@ -15,7 +14,7 @@ namespace Casinos
         Action LuaOnSocketClose { get; set; }
 
         //---------------------------------------------------------------------
-        public NetBridge()
+        public NetMgr()
         {
             var rpc_session_factory = new RpcSessionFactoryTcpClient();
             RpcSession = rpc_session_factory.createRpcSession();
@@ -28,7 +27,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void blindTable(LuaTable lua_table)
+        public void BlindTable(LuaTable lua_table)
         {
             LuaOnSocketClose = lua_table.Get<Action>("OnSocketClose");
 
@@ -37,7 +36,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void connectBase(string base_ip, int base_port)
+        public void Connect(string base_ip, int base_port)
         {
             RpcSession.close();
             RpcSession.OnSocketConnected = _onSocketConnected;
@@ -47,7 +46,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void disconnect()
+        public void Disconnect()
         {
             RpcSession.close();
         }

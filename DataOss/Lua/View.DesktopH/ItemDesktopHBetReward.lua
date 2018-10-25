@@ -54,12 +54,12 @@ function ItemDesktopHBetReward:_onClickBetReward()
                 UiChipShowHelper:getGoldShowStr(tb_reward.BetValue, self.ViewMgr.LanMgr.LanBase),
                 UiChipShowHelper:getGoldShowStr(reward_gold, self.ViewMgr.LanMgr.LanBase))
 
-        local ev = self.ViewMgr:getEv("EvDesktopHGetBetReward")
+        local ev = self.ViewMgr:GetEv("EvDesktopHGetBetReward")
         if(ev == nil)
         then
             ev = EvDesktopHGetBetReward:new(nil)
         end
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 
     ViewHelper:UiShowInfoSuccess(tips)

@@ -26,11 +26,11 @@ end
 
 ---------------------------------------
 function ViewMatchLobby:onCreate()
-    self.ViewMgr:bindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:bindEvListener("EvEntitySetPublicMatchLsit", self)
-    self.ViewMgr:bindEvListener("EvEntityUpdatePublicMatchPlayerNum", self)
-    self.ViewMgr:bindEvListener("EvEntitySignUpSucceed", self)
-    self.ViewMgr:bindEvListener("EvRemoveMatch", self)
+    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
+    self.ViewMgr:BindEvListener("EvEntitySetPublicMatchLsit", self)
+    self.ViewMgr:BindEvListener("EvEntityUpdatePublicMatchPlayerNum", self)
+    self.ViewMgr:BindEvListener("EvEntitySignUpSucceed", self)
+    self.ViewMgr:BindEvListener("EvRemoveMatch", self)
 
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
     btn_return.onClick:Add(
@@ -88,9 +88,8 @@ function ViewMatchLobby:onCreate()
     self.MatchListBigRewardAhead = false
     self.SelfMatchNum = 0
     local bg = self.ComUi:GetChild("Bg")
-    if (bg ~= nil)
-    then
-        ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
+    if (bg ~= nil) then
+        ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
 
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
@@ -102,7 +101,7 @@ function ViewMatchLobby:onDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -126,17 +125,17 @@ function ViewMatchLobby:onHandleEv(ev)
             end
         end
     elseif (ev.EventName == "EvEntitySignUpSucceed") then
-        --[[local ev = self.ViewMgr:getEv("EvUiRequestPublicMatchList")
+        --[[local ev = self.ViewMgr:GetEv("EvUiRequestPublicMatchList")
         if(ev == nil)
         then
             ev = EvUiRequestPublicMatchList:new(nil)
         end
-        self.ViewMgr:sendEv(ev)]]
+        self.ViewMgr:SendEv(ev)]]
         local match_guid = ev.MatchGuid
         for i = 1, #self.ListMatchItem do
             local temp = self.ListMatchItem[i]
             if (temp.MatchInfo.Guid == match_guid) then
-                local view_applySucceed = self.ViewMgr:createView("ApplySucceed")
+                local view_applySucceed = self.ViewMgr:CreateView("ApplySucceed")
                 view_applySucceed:SetMatchInfo(temp.MatchInfo)
                 break
             end
@@ -164,16 +163,16 @@ end
 function ViewMatchLobby:_timerUpdate(tm)
     self.UpdatePlayerNumTime = self.UpdatePlayerNumTime + tm
     if (self.UpdatePlayerNumTime >= 30) then
-        local ev = self.ViewMgr:getEv("EvUiRequestUpdatePublicMatchPlayerNum")
+        local ev = self.ViewMgr:GetEv("EvUiRequestUpdatePublicMatchPlayerNum")
         if (ev == nil) then
             ev = EvUiRequestUpdatePublicMatchPlayerNum:new(nil)
         end
-        self.ViewMgr:sendEv(ev)
-        local ev = self.ViewMgr:getEv("EvUiRequestPublicMatchList")
+        self.ViewMgr:SendEv(ev)
+        local ev = self.ViewMgr:GetEv("EvUiRequestPublicMatchList")
         if (ev == nil) then
             ev = EvUiRequestPublicMatchList:new(nil)
         end
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
         self.UpdatePlayerNumTime = 0
     end
     local dt_now = CS.System.DateTime.Now
@@ -190,12 +189,12 @@ end
 ---------------------------------------
 function ViewMatchLobby:onClickBtnReturn()
     self.ControllerMTT:Clear()
-    self.ViewMgr:destroyView(self)
-    local ev = self.ViewMgr:getEv("EvUiCreateMainUi")
+    self.ViewMgr:DestroyView(self)
+    local ev = self.ViewMgr:GetEv("EvUiCreateMainUi")
     if (ev == nil) then
         ev = EvUiCreateMainUi:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -219,16 +218,16 @@ function ViewMatchLobby:setCurrentMatchType(item_mathtype)
         self.CurrentItemMatchType = item_mathtype
         self.CurrentItemMatchType:BeSelectedOrNot(true)
     end
-    local ev = self.ViewMgr:getEv("EvUiRequestPublicMatchList")
+    local ev = self.ViewMgr:GetEv("EvUiRequestPublicMatchList")
     if (ev == nil) then
         ev = EvUiRequestPublicMatchList:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewMatchLobby:onClickBtnAddChip()
-    self.ViewMgr:createView("Shop")
+    self.ViewMgr:CreateView("Shop")
 end
 
 ---------------------------------------
@@ -414,7 +413,7 @@ function ViewMatchLobbyFactory:new(o, ui_package_name, ui_component_name, ui_lay
 end
 
 ---------------------------------------
-function ViewMatchLobbyFactory:createView()
+function ViewMatchLobbyFactory:CreateView()
     local view = ViewMatchLobby:new(nil)
     return view
 end

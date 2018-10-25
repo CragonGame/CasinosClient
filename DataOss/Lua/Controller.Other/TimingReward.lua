@@ -45,10 +45,10 @@ end
 
 ---------------------------------------
 function TimingReward:_sendCanGetReward()
-    local ev = self.ViewMgr:getEv("EvEntityCanGetTimingReward")
+    local ev = self.ViewMgr:GetEv("EvEntityCanGetTimingReward")
     if (ev == nil) then
         ev = EvEntityCanGetTimingReward:new(nil)
     end
     ev.can_getreward = self.CanGetReward
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end

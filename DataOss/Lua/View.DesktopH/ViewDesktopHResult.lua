@@ -34,7 +34,7 @@ end
 ---------------------------------------
 function ViewDesktopHResult:onCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BureauSettlement"))
-    self.ViewDesktopH = self.ViewMgr:getView("DesktopH")
+    self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -136,7 +136,7 @@ function ViewDesktopHResult:onClickBtnClose()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -157,7 +157,7 @@ function ViewDesktopHResultFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewDesktopHResultFactory:createView()
+function ViewDesktopHResultFactory:CreateView()
     local view = ViewDesktopHResult:new(nil)
     return view
 end

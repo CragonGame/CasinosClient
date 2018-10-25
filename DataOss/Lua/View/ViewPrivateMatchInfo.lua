@@ -102,10 +102,10 @@ function ViewMatchInfo:onHandleEv(ev)
         self:SetMatchInfo(ev.MatchDetailedInfo)
     elseif (ev.EventName == "EvEntityResponseCancelSignupMatch") then
         if (ev.IsSucceed) then
-            local msg_box = self.ViewMgr:createView("MsgBox")
+            local msg_box = self.ViewMgr:CreateView("MsgBox")
             msg_box:showMsgBox1("", "取消报名成功",
                     function()
-                        self.ViewMgr:destroyView(msg_box)
+                        self.ViewMgr:DestroyView(msg_box)
                     end
             )
         end
@@ -115,10 +115,10 @@ function ViewMatchInfo:onHandleEv(ev)
             self.BtnSignupOption = BtnSignupOption.Signup
         end
     elseif (ev.EventName == "EvEntitySignupSucceed") then
-        local msg_box = self.ViewMgr:createView("MsgBox")
+        local msg_box = self.ViewMgr:CreateView("MsgBox")
         msg_box:showMsgBox1("", "报名成功",
                 function()
-                    self.ViewMgr:destroyView(msg_box)
+                    self.ViewMgr:DestroyView(msg_box)
                 end
         )
         local match_guid = ev.MatchGuid
@@ -131,12 +131,12 @@ end
 
 ---------------------------------------
 function ViewPrivateMatchInfo:Init(match_guid, is_selfJoin)
-    local ev = self.ViewMgr:getEv("EvUiRequestMatchDetailedInfo")
+    local ev = self.ViewMgr:GetEv("EvUiRequestMatchDetailedInfo")
     if (ev == nil) then
         ev = EvUiRequestMatchDetailedInfo:new(nil)
     end
     ev.MatchGuid = match_guid
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.MatchGuid = match_guid
     self.IsSelfJoin = is_selfJoin
 end
@@ -239,7 +239,7 @@ end
 
 ---------------------------------------
 function ViewPrivateMatchInfo:onClickBtnClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -249,7 +249,7 @@ end
 
 ---------------------------------------
 function ViewPrivateMatchInfo:onClickBtnDisMiss()
-    local ev = self.ViewMgr:getEv("EvUiRequesetDisMissMatch")
+    local ev = self.ViewMgr:GetEv("EvUiRequesetDisMissMatch")
     if (ev == nil) then
         ev = EvUiRequesetDisMissMatch:new(nil)
     end
@@ -263,34 +263,34 @@ end
 ---------------------------------------
 function ViewPrivateMatchInfo:onClickBtnSignUp()
     if (self.BtnSignupOption == BtnSignupOption.Signup) then
-        local ev = self.ViewMgr:getEv("EvUiRequestSignupMatch")
+        local ev = self.ViewMgr:GetEv("EvUiRequestSignupMatch")
         if (ev == nil) then
             ev = EvUiRequestSignupMatch:new(nil)
         end
         ev.MatchGuid = self.MatchGuid
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     elseif (self.BtnSignupOption == BtnSignupOption.CancelSignup) then
-        local msg_box = self.ViewMgr:createView("MsgBox")
+        local msg_box = self.ViewMgr:CreateView("MsgBox")
         msg_box:useTwoBtn("", "确定取消当前赛事报名？",
                 function()
-                    local ev = self.ViewMgr:getEv("EvUiRequestCancelSignupMatch")
+                    local ev = self.ViewMgr:GetEv("EvUiRequestCancelSignupMatch")
                     if (ev == nil) then
                         ev = EvUiRequestCancelSignupMatch:new(nil)
                     end
                     ev.MatchGuid = self.MatchGuid
-                    self.ViewMgr:sendEv(ev)
+                    self.ViewMgr:SendEv(ev)
                 end,
                 function()
-                    self.ViewMgr:destroyView(msg_box)
+                    self.ViewMgr:DestroyView(msg_box)
                 end
         )
     elseif (self.BtnSignupOption == BtnSignupOption.Enter) then
-        local ev = self.ViewMgr:getEv("EvUiRequestEnterMatch")
+        local ev = self.ViewMgr:GetEv("EvUiRequestEnterMatch")
         if (ev == nil) then
             ev = EvUiRequestEnterMatch:new(nil)
         end
         ev.MatchGuid = self.MatchGuid
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 end
 
@@ -312,7 +312,7 @@ function ViewPrivateMatchInfoFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewPrivateMatchInfoFactory:createView()
+function ViewPrivateMatchInfoFactory:CreateView()
     local view = ViewPrivateMatchInfo:new(nil)
     return view
 end

@@ -9,7 +9,7 @@ function DesktopHCard:new(o, dealer, is_bankplayer)
     setmetatable(o, self)
     self.__index = self
     local view_mgr = ViewMgr:new(nil)
-    o.ViewDesktopH = view_mgr:getView("DesktopH")
+    o.ViewDesktopH = view_mgr:GetView("DesktopH")
     o.Dealer = dealer
     o.IsBankPlayer = is_bankplayer
     local l = o.ViewDesktopH:getDesktopBasePackageName()

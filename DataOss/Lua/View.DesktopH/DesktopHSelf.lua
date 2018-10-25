@@ -125,7 +125,7 @@ function DesktopHSelf:showGameResult()
         end
     end
 	
-    local ui_result = self.ViewMgr:createView("DesktopHResult")
+    local ui_result = self.ViewMgr:CreateView("DesktopHResult")
     local self_betgolds = self.ViewDesktopH.ControllerDesktopH:getSelfTotalBetGolds()
     ui_result:setGameResult(self.ViewDesktopH.DesktopHBankPlayer.BankPlayerDataDesktopH.PlayerInfoCommon.NickName,
         win_golds, self_betgolds, self.ViewDesktopH.DesktopHGameResult.map_betpot_info, self.ViewDesktopH.DesktopHGameResult.bankerpot_info,

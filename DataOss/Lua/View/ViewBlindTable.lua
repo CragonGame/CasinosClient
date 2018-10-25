@@ -60,7 +60,7 @@ end
 
 ---------------------------------------
 function ViewBlindTable:close()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -119,7 +119,7 @@ function ViewBlindTableFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewBlindTableFactory:createView()
+function ViewBlindTableFactory:CreateView()
     local view = ViewBlindTable:new(nil)
     return view
 end

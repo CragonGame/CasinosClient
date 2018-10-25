@@ -29,9 +29,9 @@ end
 
 ---------------------------------------
 function ViewShop:onCreate()
-    self.ViewMgr:bindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityDiamondChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityPointChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityDiamondChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityPointChanged", self)
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -163,13 +163,13 @@ function ViewShop:onCreate()
     local bg = self.ComUi:GetChild("Bg")
     if (bg ~= nil)
     then
-        ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
+        ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
 end
 
 ---------------------------------------
 function ViewShop:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -212,13 +212,13 @@ end
 
 ---------------------------------------
 function ViewShop:onClickBtnReturn()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewShop:onClickBtnDiomand()
     if ChipIconSolustion == 1 then
-        self.ViewMgr:createView("Purse")
+        self.ViewMgr:CreateView("Purse")
     else
         self.ControllerShop.selectedIndex = 1
         self.ControllerTab.selectedIndex = 0
@@ -229,7 +229,7 @@ end
 ---------------------------------------
 function ViewShop:onClickBtnTabChip()
     if ChipIconSolustion == 1 then
-        self.ViewMgr:createView("Purse")
+        self.ViewMgr:CreateView("Purse")
     else
         self.ControllerShop.selectedIndex = 0
         self.ControllerTab.selectedIndex = 1
@@ -378,7 +378,7 @@ end
 
 ---------------------------------------
 function ViewShop:onClickBtnEditAddress()
-    self.ViewMgr:createView("EditAddress")
+    self.ViewMgr:CreateView("EditAddress")
 end
 
 ---------------------------------------
@@ -415,12 +415,12 @@ function ViewShop:setListGoods(goodsType)
                             local have_i, item_ex = controller_bag:haveItem(tb_item.Id)
                             if (have_i) then
                                 --请求使用实物兑换券兑换实物
-                                local ev = self.ViewMgr:getEv("EvUiRequestOperateItem")
+                                local ev = self.ViewMgr:GetEv("EvUiRequestOperateItem")
                                 if (ev == nil) then
                                     ev = EvUiRequestOperateItem:new(nil)
                                 end
                                 ev.ItemObjId = item_ex.ItemData.item_objid
-                                self.ViewMgr:sendEv(ev)
+                                self.ViewMgr:SendEv(ev)
                             else
                                 ViewHelper:UiShowInfoFailed(self.ViewMgr.ControllerMgr.LanMgr:getLanValue("NotEnoughVoucher"))
                             end
@@ -465,13 +465,13 @@ function ViewShop:setListGoods(goodsType)
                     local item = ItemUiShopGoods:new(nil, com, table.concat(discirbe), url, btn_title,
                             function()
                                 --请求使用积分兑换筹码
-                                local ev = self.ViewMgr:getEv("EvUiBuyItem")
+                                local ev = self.ViewMgr:GetEv("EvUiBuyItem")
                                 if (ev == nil) then
                                     ev = EvUiBuyItem:new(nil)
                                 end
                                 ev.item_id = tb_item.Id
                                 ev.to_etguid = self.ControllerActor.Guid
-                                self.ViewMgr:sendEv(ev)
+                                self.ViewMgr:SendEv(ev)
                             end
                     )
                 elseif (tb_item.UnitType == "GoodsVoucher") then
@@ -489,13 +489,13 @@ function ViewShop:setListGoods(goodsType)
                     local item = ItemUiShopGoods:new(nil, com, table.concat(discirbe), url, btn_title,
                             function()
                                 --请求使用积分兑换实物兑换券
-                                local ev = self.ViewMgr:getEv("EvUiBuyItem")
+                                local ev = self.ViewMgr:GetEv("EvUiBuyItem")
                                 if (ev == nil) then
                                     ev = EvUiBuyItem:new(nil)
                                 end
                                 ev.item_id = tb_item.Id
                                 ev.to_etguid = self.ControllerActor.Guid
-                                self.ViewMgr:sendEv(ev)
+                                self.ViewMgr:SendEv(ev)
                             end
                     )
                 end
@@ -522,7 +522,7 @@ function ViewShopFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewShopFactory:createView()
+function ViewShopFactory:CreateView()
     local view = ViewShop:new(nil)
     return view
 end

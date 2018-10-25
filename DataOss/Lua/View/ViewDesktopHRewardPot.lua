@@ -21,7 +21,7 @@ end
 function ViewDesktopHRewardPot:onCreate()
 	ViewHelper:PopUi(self.ComUi)
 	self.CasinosContext = CS.Casinos.CasinosContext.Instance
-	self.ViewDesktopH = self.ViewMgr:getView("DesktopH")
+	self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local co_rewardpot_close = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_rewardpot_close = co_rewardpot_close:GetChild("BtnClose").asButton
 	btn_rewardpot_close.onClick:Add(
@@ -54,12 +54,12 @@ function ViewDesktopHRewardPot:onCreate()
     self.ControllerRewardPot.selectedIndex = 0
 	self:changeTab()
     self.ListPlayerInfo = {}
-	self.ViewMgr:bindEvListener("EvEntityDesktopHGetRewardPotInfo",self)
+	self.ViewMgr:BindEvListener("EvEntityDesktopHGetRewardPotInfo",self)
 
 end
 
 function ViewDesktopHRewardPot:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewDesktopHRewardPot:onHandleEv(ev)
@@ -127,7 +127,7 @@ function ViewDesktopHRewardPot:onClickCoRewardPot()
 end
 
 function ViewDesktopHRewardPot:onClickBtnRewardPotClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 	
 function ViewDesktopHRewardPot:changeTab()
@@ -157,7 +157,7 @@ function ViewDesktopHRewardPotFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewDesktopHRewardPotFactory:createView()	
+function ViewDesktopHRewardPotFactory:CreateView()
 	local view = ViewDesktopHRewardPot:new(nil)	
 	return view
 end

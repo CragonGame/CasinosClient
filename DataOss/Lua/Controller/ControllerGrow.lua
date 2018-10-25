@@ -28,12 +28,12 @@ function ControllerGrow:onCreate()
     self.RPC:RegRpcMethod1(self.MC.PlayerGrowRewardSnapshotNotify, function(grow_data)
         self:s2cPlayerGrowRewardSnapshotNotify(grow_data)
     end)
-    self.ViewMgr:bindEvListener("EvUiRequestGetGrowReward", self)
+    self.ViewMgr:BindEvListener("EvUiRequestGetGrowReward", self)
 end
 
 ---------------------------------------
 function ControllerGrow:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -79,12 +79,12 @@ function ControllerGrow:s2cPlayerGrowRewardSnapshotNotify(grow_data)
     local data = BGrowData:new(nil)
     data:setData(grow_data)
     self.BGrowData = data
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityOnGrowRewardSnapshot")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityOnGrowRewardSnapshot")
     if (ev == nil) then
         ev = EvEntityOnGrowRewardSnapshot:new(nil)
     end
     ev.grow_data = data
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

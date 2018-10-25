@@ -67,7 +67,7 @@ function ItemRank:setRankInfo(view_mgr,player_guid,nick_name,icon_name,account_i
 end
 
 function ItemRank:onClickItem()
-	local profile = self.ViewMgr:createView("PlayerProfile")
+	local profile = self.ViewMgr:CreateView("PlayerProfile")
     profile:setPlayerGuid(CS.Casinos._ePlayerProfileType.Ranking, self.PlayerEtguid,
 		function(a,b)
 			self:playerInfo(a,b)

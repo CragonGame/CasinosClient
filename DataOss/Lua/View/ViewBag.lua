@@ -23,7 +23,7 @@ function ViewBag:onCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Bag1"))
     self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
-    self.ViewPool = self.ViewMgr:getView("Pool")
+    self.ViewPool = self.ViewMgr:GetView("Pool")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -65,13 +65,13 @@ function ViewBag:onCreate()
         self:rendererGiftNormal(a, b)
     end
     self.ListGiftNormal.numItems = #self.ControllerBag.ListItemGiftNormal
-    self.ViewMgr:bindEvListener("EvEntityBagDeleteItem", self)
-    self.ViewMgr:bindEvListener("EvEntityBagAddItem", self)
+    self.ViewMgr:BindEvListener("EvEntityBagDeleteItem", self)
+    self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
 end
 
 ---------------------------------------
 function ViewBag:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
     self.ViewPool:itemGiftAllEnque()
 end
 
@@ -93,11 +93,11 @@ function ViewBag:rendererGiftNormal(index, item)
             local gift = self.ControllerBag.ListItemConsume[index + 1]
             if (gift.UnitLink.UnitType == "GoldPackage") then
                 -- 自动使用金币袋子
-                local ev = self.ViewMgr:getEv("EvUiRequestUseProp")
+                local ev = self.ViewMgr:GetEv("EvUiRequestUseProp")
                 if (ev == nil) then
                     ev = EvUiRequestUseProp:new(nil)
                 end
-                self.ViewMgr:sendEv(ev)
+                self.ViewMgr:SendEv(ev)
             end
             local com = CS.Casinos.LuaHelper.GObjectCastToGCom(item)
             local item_gift = self.ViewPool:getItemGift(com)
@@ -140,14 +140,14 @@ end
 
 ---------------------------------------
 function ViewBag:onClickBtnShopMore()
-    local ev = self.ViewMgr:getEv("EvCreateGiftShop")
+    local ev = self.ViewMgr:GetEv("EvCreateGiftShop")
     if (ev == nil) then
         ev = EvCreateGiftShop:new(nil)
     end
     ev.is_tmp_gift = false
     ev.not_indesktop = true
     ev.to_player_etguid = self.ControllerPlayer.Guid
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -166,7 +166,7 @@ end
 
 ---------------------------------------
 function ViewBag:onClickBtnClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -186,7 +186,7 @@ function ViewBagFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_
 end
 
 ---------------------------------------
-function ViewBagFactory:createView()
+function ViewBagFactory:CreateView()
     local view = ViewBag:new(nil)
     return view
 end

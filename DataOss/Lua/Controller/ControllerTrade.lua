@@ -25,19 +25,19 @@ function ControllerTrade:onCreate()
     self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
-    self.ViewMgr:bindEvListener("EvUiRequestBuyGold", self)
-    self.ViewMgr:bindEvListener("EvUiRequestBuyDiamond", self)
-    self.ViewMgr:bindEvListener("EvUiRequestFirstRecharge", self)
-    self.ViewMgr:bindEvListener("EvUiClickShop", self)
-    self.ViewMgr:bindEvListener("EvEntityBuyVIP", self)
-    self.ViewMgr:bindEvListener("EvUiBuyItem", self)
-    self.ViewMgr:bindEvListener("EvUiSellItem", self)
-    self.ViewMgr:bindEvListener("EvBuyRMBItemSuccess", self)
-    self.ViewMgr:bindEvListener("EvUiRequestBuyItem", self)
-    self.ViewMgr:bindEvListener("EvUiRequestGetMoney", self)
-    self.ViewMgr:bindEvListener("EvPayWithIAPSuccess", self)
-    self.ViewMgr:bindEvListener("EvUiRequestWebpay", self)
-    self.ViewMgr:bindEvListener("EvUiRequestQuicktellerTransfers", self)
+    self.ViewMgr:BindEvListener("EvUiRequestBuyGold", self)
+    self.ViewMgr:BindEvListener("EvUiRequestBuyDiamond", self)
+    self.ViewMgr:BindEvListener("EvUiRequestFirstRecharge", self)
+    self.ViewMgr:BindEvListener("EvUiClickShop", self)
+    self.ViewMgr:BindEvListener("EvEntityBuyVIP", self)
+    self.ViewMgr:BindEvListener("EvUiBuyItem", self)
+    self.ViewMgr:BindEvListener("EvUiSellItem", self)
+    self.ViewMgr:BindEvListener("EvBuyRMBItemSuccess", self)
+    self.ViewMgr:BindEvListener("EvUiRequestBuyItem", self)
+    self.ViewMgr:BindEvListener("EvUiRequestGetMoney", self)
+    self.ViewMgr:BindEvListener("EvPayWithIAPSuccess", self)
+    self.ViewMgr:BindEvListener("EvUiRequestWebpay", self)
+    self.ViewMgr:BindEvListener("EvUiRequestQuicktellerTransfers", self)
 
     local rpc = self.ControllerMgr.RPC
     local m_c = CommonMethodType
@@ -60,7 +60,7 @@ end
 
 ---------------------------------------
 function ControllerTrade:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -76,9 +76,9 @@ function ControllerTrade:onHandleEv(ev)
         self:BuyBillingItem(true, 0)
     elseif (ev.EventName == "EvUiClickShop")
     then
-        self.ControllerMgr.ViewMgr:createView("Shop")
-        local view_friend = self.ControllerMgr.ViewMgr:getView("Friend")
-        self.ControllerMgr.ViewMgr:destroyView(view_friend)
+        self.ControllerMgr.ViewMgr:CreateView("Shop")
+        local view_friend = self.ControllerMgr.ViewMgr:GetView("Friend")
+        self.ControllerMgr.ViewMgr:DestroyView(view_friend)
     elseif (ev.EventName == "EvEntityBuyVIP")
     then
         self:BuyBillingItem(false, ev.buy_id)
@@ -320,7 +320,7 @@ function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
     --if (self.CasinosContext.UnityAndroid == true)
     --then
     if ChipIconSolustion ~= 1 then
-        local view_paytype = self.ControllerMgr.ViewMgr:createView("PayType")
+        local view_paytype = self.ControllerMgr.ViewMgr:CreateView("PayType")
         view_paytype:BuyItem(is_first_recharge, tb_id)
     else
         if is_first_recharge == false then

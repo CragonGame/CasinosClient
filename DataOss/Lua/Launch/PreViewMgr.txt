@@ -49,27 +49,27 @@ function PreViewMgr:Init()
     CS.FairyGUI.UIConfig.defaultFont = "FontXi"
 
     local view_loading_fac = PreViewLoadingFactory:new(nil, "PreLoading", "PreLoading", "Loading", true, CS.FairyGUI.FitScreen.FitSize)
-    self:regView("PreLoading", view_loading_fac)
+    self:RegView("PreLoading", view_loading_fac)
     local view_msgbox_fac = PreViewMsgBoxFactory:new(nil, "PreMsgBox", "PreMsgBox", "Waiting", true, CS.FairyGUI.FitScreen.FitSize)
-    self:regView("PreMsgBox", view_msgbox_fac)
+    self:RegView("PreMsgBox", view_msgbox_fac)
 end
 
 ---------------------------------------
 function PreViewMgr:Release()
-    self:destroyAllView()
+    self:DestroyAllView()
     self.CasinosContext = nil
     self.CasinosLua = nil
 end
 
 ---------------------------------------
-function PreViewMgr:regView(view_key, view_factory)
+function PreViewMgr:RegView(view_key, view_factory)
     if (view_factory ~= nil) then
         self.TableViewFactory[view_key] = view_factory
     end
 end
 
 ---------------------------------------
-function PreViewMgr:createView(view_key)
+function PreViewMgr:CreateView(view_key)
     local view_factory = self.TableViewFactory[view_key]
     if (view_factory == nil) then
         return nil
@@ -89,7 +89,7 @@ function PreViewMgr:createView(view_key)
     ui_panel.componentName = view_factory.ComponentName
     ui_panel.fitScreen = view_factory.FitScreen
     ui_panel:ApplyModifiedProperties(false, true)
-    view = view_factory:createView()
+    view = view_factory:CreateView()
     view.PreViewMgr = self
     view.GoUi = go
     view.ComUi = ui_panel.ui
@@ -125,7 +125,7 @@ function PreViewMgr:createView(view_key)
 end
 
 ---------------------------------------
-function PreViewMgr:destroyView(view)
+function PreViewMgr:DestroyView(view)
     if (view ~= nil) then
         local view_key = view.ViewKey
         local view_ex = self.TableViewSingle[view_key]
@@ -146,13 +146,13 @@ function PreViewMgr:destroyView(view)
 end
 
 ---------------------------------------
-function PreViewMgr:getView(view_key)
+function PreViewMgr:GetView(view_key)
     local view = self.TableViewSingle[view_key]
     return view
 end
 
 ---------------------------------------
-function PreViewMgr:destroyAllView()
+function PreViewMgr:DestroyAllView()
     for k, v in pairs(self.TableViewSingle) do
         self.TableMaxDepth[v.UILayer] = v.InitDepth
         v:onDestroy()
@@ -170,32 +170,32 @@ function PreViewMgr:destroyAllView()
 end
 
 ---------------------------------------
-function PreViewMgr:bindEvListener(ev_name, ev_listener)
+function PreViewMgr:BindEvListener(ev_name, ev_listener)
     if (self.EventSys ~= nil) then
-        self.EventSys:bindEvListener(ev_name, ev_listener)
+        self.EventSys:BindEvListener(ev_name, ev_listener)
     end
 end
 
 ---------------------------------------
-function PreViewMgr:unbindEvListener(ev_listener)
+function PreViewMgr:UnbindEvListener(ev_listener)
     if (self.EventSys ~= nil) then
-        self.EventSys:unbindEvListener(ev_listener)
+        self.EventSys:UnbindEvListener(ev_listener)
     end
 end
 
 ---------------------------------------
-function PreViewMgr:getEv(ev_name)
+function PreViewMgr:GetEv(ev_name)
     local ev = nil
     if (self.EventSys ~= nil) then
-        ev = self.EventSys:getEv(ev_name)
+        ev = self.EventSys:GetEv(ev_name)
     end
     return ev
 end
 
 ---------------------------------------
-function PreViewMgr:sendEv(ev)
+function PreViewMgr:SendEv(ev)
     if (self.EventSys ~= nil) then
-        self.EventSys:sendEv(ev)
+        self.EventSys:SendEv(ev)
     end
 end
 

@@ -46,10 +46,10 @@ end
 
 ---------------------------------------
 function ItemHeadIconWithNickName:onClick()
-    local ev = self.ViewMgr:getEv("EvClickIconWithNickName")
+    local ev = self.ViewMgr:GetEv("EvClickIconWithNickName")
     if (ev == nil) then
         ev = EvClickIconWithNickName:new(nil)
     end
     ev.player = self.PlayerInfo
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end

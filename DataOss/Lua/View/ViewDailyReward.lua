@@ -79,7 +79,7 @@ end
 ---------------------------------------
 function ViewDailyReward:_timerUpdate(tm)
     if self.ParticleSystem ~= nil and self.ParticleSystem.isPlaying == false then
-        self.ViewMgr:destroyView(self)
+        self.ViewMgr:DestroyView(self)
     end
 end
 
@@ -112,8 +112,8 @@ end
 
 ---------------------------------------
 function ViewDailyReward:onClickBtnBeVip()
-    self.ViewMgr:destroyView(self)
-    local shop = self.ViewMgr:createView("Shop")
+    self.ViewMgr:DestroyView(self)
+    local shop = self.ViewMgr:CreateView("Shop")
     shop:showGold()
 end
 
@@ -138,7 +138,7 @@ function ViewDailyReward:onClickBtnGetReward()
     --local auto_destroy = CS.Casinos.LuaHelper.GetComponentAutoDestroyParticle(fall_gold)
     --auto_destroy:play(
     --	function()
-    --		self.ViewMgr:destroyView(self)
+    --		self.ViewMgr:DestroyView(self)
     --       self.AssetBundleFallGold:Unload(true)
     --	end
     --)
@@ -178,7 +178,7 @@ end
 
 ---------------------------------------
 function ViewDailyReward:close()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -198,7 +198,7 @@ function ViewDailyRewardFactory:new(o, ui_package_name, ui_component_name, ui_la
 end
 
 ---------------------------------------
-function ViewDailyRewardFactory:createView()
+function ViewDailyRewardFactory:CreateView()
     local view = ViewDailyReward:new(nil)
     return view
 end

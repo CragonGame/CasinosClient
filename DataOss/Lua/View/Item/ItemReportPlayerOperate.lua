@@ -39,14 +39,14 @@ function ItemReportPlayerOperate:setReportType(report_type,friend_etguid)
 end
 
 function ItemReportPlayerOperate:onClick()
-	local ev = self.ViewPlayerProfile.ViewMgr:getEv("EvUiReportFriend")
+	local ev = self.ViewPlayerProfile.ViewMgr:GetEv("EvUiReportFriend")
 	if(ev == nil)
 	then
 		ev = EvUiReportFriend:new(nil)
 	end
     ev.friend_etguid = self.mFriendEtGuid
     ev.report_type = self.mReportPlayerType
-    self.ViewPlayerProfile.ViewMgr:sendEv(ev)
+    self.ViewPlayerProfile.ViewMgr:SendEv(ev)
 	self.ViewPlayerProfile:HideComReportPlayer()
 end
 

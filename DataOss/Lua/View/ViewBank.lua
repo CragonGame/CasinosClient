@@ -60,13 +60,13 @@ function ViewBank:onCreate()
     self.GTextBottomTakeOut = self.ComUi:GetChild("TextBottomTakeOut").asTextField
     self.GTextTopTakeOut = self.ComUi:GetChild("TextTopTakeOut").asTextField
     self:setChipInfo()
-    self.ViewMgr:bindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityBankGoldChange", self)
+    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityBankGoldChange", self)
 end
 
 ---------------------------------------
 function ViewBank:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -123,7 +123,7 @@ end
 
 ---------------------------------------
 function ViewBank:onClickCloseBtn()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -192,12 +192,12 @@ function Bank:onClickPutIn()
             return
         end
     end
-    local ev = self.ViewBank.ViewMgr:getEv("EvUiRequestBankDeposit")
+    local ev = self.ViewBank.ViewMgr:GetEv("EvUiRequestBankDeposit")
     if (ev == nil) then
         ev = EvUiRequestBankDeposit:new(nil)
     end
     ev.deposit_chip = input_num * self.TakeOutOrPutInPerGold
-    self.ViewBank.ViewMgr:sendEv(ev)
+    self.ViewBank.ViewMgr:SendEv(ev)
     self.ItemNumOperatePutIn:setCurrentNum(0)
 end
 
@@ -213,12 +213,12 @@ function Bank:onClickTakeOut()
             return
         end
     end
-    local ev = self.ViewBank.ViewMgr:getEv("EvUiRequestBankWithdraw")
+    local ev = self.ViewBank.ViewMgr:GetEv("EvUiRequestBankWithdraw")
     if (ev == nil) then
         ev = EvUiRequestBankWithdraw:new(nil)
     end
     ev.withdraw_chip = takeout_num * self.TakeOutOrPutInPerGold
-    self.ViewBank.ViewMgr:sendEv(ev)
+    self.ViewBank.ViewMgr:SendEv(ev)
     self.ItemNumOperateTakeOut:setCurrentNum(0)
 end
 
@@ -290,13 +290,13 @@ function SendGold:onClickSend()
         ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("EnterIdTips"))
         return
     end
-    local ev = self.ViewBank.ViewMgr:getEv("EvUiClickConfirmChipTransaction")
+    local ev = self.ViewBank.ViewMgr:GetEv("EvUiClickConfirmChipTransaction")
     if (ev == nil) then
         ev = EvUiClickConfirmChipTransaction:new(nil)
     end
     ev.chip = send_gold * self.TakeOutOrPutInPerGold
     ev.send_target_etguid = self.GInputTargetId.text
-    self.ViewBank.ViewMgr:sendEv(ev)
+    self.ViewBank.ViewMgr:SendEv(ev)
     self.GBtnConfirmSend.enabled = false
     self.ConfirmSend = true
     self:sendConfirmTips(self.CanReSendTm)
@@ -344,13 +344,13 @@ function ExchangeCode:onClickExchange()
         ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("EnterPwdTips"))
         return
     end
-    local ev = self.ViewBank.ViewMgr:getEv("EvRequesetGetExchangeCodeItem")
+    local ev = self.ViewBank.ViewMgr:GetEv("EvRequesetGetExchangeCodeItem")
     if (ev == nil) then
         ev = EvRequesetGetExchangeCodeItem:new(nil)
     end
     ev.acc = self.GInputExchangeCodeAcc.text
     ev.pwd = self.GInputExchangeCodePwd.text
-    self.ViewBank.ViewMgr:sendEv(ev)
+    self.ViewBank.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -371,7 +371,7 @@ function ViewBankFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewBankFactory:createView()
+function ViewBankFactory:CreateView()
     local view = ViewBank:new(nil)
     return view
 end

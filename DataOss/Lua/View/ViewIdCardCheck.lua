@@ -53,19 +53,19 @@ function ViewIdCardCheck:onCreate()
 end
 
 function ViewIdCardCheck:onClickBtnOK()
-    self.ViewMgr:destroyView(self)
-    local ev = self.ViewMgr:getEv("EvCheckIdCard")
+    self.ViewMgr:DestroyView(self)
+    local ev = self.ViewMgr:GetEv("EvCheckIdCard")
     if (ev == nil)
     then
         ev = EvCheckIdCard:new(nil)
     end
     ev.name = self.TextName.text
     ev.id_card = self.TextId.text
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 function ViewIdCardCheck:onClickBtnCancel()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 function ViewIdCardCheck:_checkIdCardInput()
@@ -100,7 +100,7 @@ function ViewIdCardCheckFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
-function ViewIdCardCheckFactory:createView()
+function ViewIdCardCheckFactory:CreateView()
     local view = ViewIdCardCheck:new(nil)
     return view
 end

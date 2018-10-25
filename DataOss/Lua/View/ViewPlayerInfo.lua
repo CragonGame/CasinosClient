@@ -160,25 +160,25 @@ function ViewPlayerInfo:onCreate()
     self:initPlayerInfo()
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
     self.ChipIconSolustion.selectedIndex = ChipIconSolustion
-    local ev = self.ViewMgr:getEv("EvRequestGetPlayerModuleData")
+    local ev = self.ViewMgr:GetEv("EvRequestGetPlayerModuleData")
     if (ev == nil) then
         ev = EvRequestGetPlayerModuleData:new(nil)
     end
     ev.factory_name = "Texas"
-    self.ViewMgr:sendEv(ev)
-    self.ViewMgr:bindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityDiamondChanged", self)
-    self.ViewMgr:bindEvListener("EvGetPicUpLoadSuccess", self)
-    self.ViewMgr:bindEvListener("EvEntityCurrentTmpGiftChange", self)
-    self.ViewMgr:bindEvListener("EvEntityGetPlayerModuleDataSuccess", self)
-    self.ViewMgr:bindEvListener("EvEntityPlayerInfoChanged", self)
-    self.ViewMgr:bindEvListener("EvBindWeChatSuccess", self)
-    self.ViewMgr:bindEvListener("EvUnBindWeChatSuccess", self)
+    self.ViewMgr:SendEv(ev)
+    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityDiamondChanged", self)
+    self.ViewMgr:BindEvListener("EvGetPicUpLoadSuccess", self)
+    self.ViewMgr:BindEvListener("EvEntityCurrentTmpGiftChange", self)
+    self.ViewMgr:BindEvListener("EvEntityGetPlayerModuleDataSuccess", self)
+    self.ViewMgr:BindEvListener("EvEntityPlayerInfoChanged", self)
+    self.ViewMgr:BindEvListener("EvBindWeChatSuccess", self)
+    self.ViewMgr:BindEvListener("EvUnBindWeChatSuccess", self)
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -195,7 +195,7 @@ function ViewPlayerInfo:onHandleEv(ev)
         self:setGift()
     elseif (ev.EventName == "EvEntityGetPlayerModuleDataSuccess") then
         local player_moduledata = ev.player_moduledata
-        local player_moduledata_texas1 = self.ViewMgr:unpackData(player_moduledata.Data)
+        local player_moduledata_texas1 = self.ViewMgr:UnpackData(player_moduledata.Data)
         local player_moduledata_texas = PlayerModuleDataTexas:new(nil)
         player_moduledata_texas:setData(player_moduledata_texas1)
         self.GTextDoneGameNum.text = tostring(player_moduledata_texas.GameTotal)
@@ -252,7 +252,7 @@ function ViewPlayerInfo:changeNickName()
             if (changename_count <= 0) then
                 ViewHelper:UiShowMsgBox(self.ViewMgr.LanMgr:getLanValue("RenameCardInsufficient"),
                         function()
-                            local ui_shop = self.ViewMgr:createView("Shop")
+                            local ui_shop = self.ViewMgr:CreateView("Shop")
                             ui_shop:showItem()
                         end
                 )
@@ -266,24 +266,24 @@ function ViewPlayerInfo:changeNickName()
         end
         ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("ChangeInfo"))
 
-        local ev = self.ViewMgr:getEv("EvUiClickChangePlayerNickName")
+        local ev = self.ViewMgr:GetEv("EvUiClickChangePlayerNickName")
         if (ev == nil) then
             ev = EvUiClickChangePlayerNickName:new(nil)
         end
         ev.new_name = nick_name
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 end
 
 ---------------------------------------
 function ViewPlayerInfo:changeIndividualSignature()
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("ChangeInfo"))
-    local ev = self.ViewMgr:getEv("EvUiClickChangePlayerIndividualSignature")
+    local ev = self.ViewMgr:GetEv("EvUiClickChangePlayerIndividualSignature")
     if (ev == nil) then
         ev = EvUiClickChangePlayerIndividualSignature:new(nil)
     end
     ev.new_individual_signature = self.GInputIndividualSignature.text
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -314,92 +314,92 @@ end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickInviteFriend()
-    local ui_friend = self.ViewMgr:createView("Friend")
+    local ui_friend = self.ViewMgr:CreateView("Friend")
     ui_friend:setCurrentRecommandFriend(nil)
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickMoreCoin()
-    local shop = self.ViewMgr:createView("Shop")
+    local shop = self.ViewMgr:CreateView("Shop")
     shop:showDiamond()
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickMoreChips()
-    local shop = self.ViewMgr:createView("Shop")
+    local shop = self.ViewMgr:CreateView("Shop")
     shop:showGold()
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickHeadIcon()
-    local view_icon = self.ViewMgr:getView("TakePhoto")
+    local view_icon = self.ViewMgr:GetView("TakePhoto")
     if (view_icon == nil) then
-        self.ViewMgr:createView("TakePhoto")
+        self.ViewMgr:CreateView("TakePhoto")
     end
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickResetAddress()
-    local ev = self.ViewMgr:getEv("EvUiClickRefreshIPAddress")
+    local ev = self.ViewMgr:GetEv("EvUiClickRefreshIPAddress")
     if (ev == nil) then
         ev = EvUiClickRefreshIPAddress:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickGiftShop()
-    local ev = self.ViewMgr:getEv("EvCreateGiftShop")
+    local ev = self.ViewMgr:GetEv("EvCreateGiftShop")
     if (ev == nil) then
         ev = EvCreateGiftShop:new(nil)
     end
     ev.is_tmp_gift = true
     ev.not_indesktop = true
     ev.to_player_etguid = self.ControllerPlayer.Guid
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickBtnProperty()
-    local ev = self.ViewMgr:getEv("EvCreateGiftShop")
+    local ev = self.ViewMgr:GetEv("EvCreateGiftShop")
     if (ev == nil) then
         ev = EvCreateGiftShop:new(nil)
     end
     ev.is_tmp_gift = false
     ev.not_indesktop = true
     ev.to_player_etguid = self.ControllerPlayer.Guid
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickBtnLogin()
-    local ev = self.ViewMgr:getEv("EvUiClickLogin")
+    local ev = self.ViewMgr:GetEv("EvUiClickLogin")
     if (ev == nil) then
         ev = EvUiClickLogin:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickBindWeChat()
     if self.NeedBindWeChat then
-        local ev = self.ViewMgr:getEv("EvBindWeChat")
+        local ev = self.ViewMgr:GetEv("EvBindWeChat")
         if (ev == nil) then
             ev = EvBindWeChat:new(nil)
         end
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     else
-        local ev = self.ViewMgr:getEv("EvUnbindWeChat")
+        local ev = self.ViewMgr:GetEv("EvUnbindWeChat")
         if (ev == nil) then
             ev = EvUnbindWeChat:new(nil)
         end
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -429,7 +429,7 @@ function ViewPlayerInfoFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewPlayerInfoFactory:createView()
+function ViewPlayerInfoFactory:CreateView()
     local view = ViewPlayerInfo:new(nil)
     return view
 end

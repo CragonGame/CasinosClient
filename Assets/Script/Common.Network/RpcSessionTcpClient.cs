@@ -86,7 +86,7 @@ public class RpcSessionTcpClient : RpcSession
         }
         else buf = new byte[0];
 
-        Casinos.CasinosContext.Instance.NetBridge.LuaOnRpcMethod(method_id, buf);
+        Casinos.CasinosContext.Instance.NetMgr.LuaOnRpcMethod(method_id, buf);
     }
 
     //-------------------------------------------------------------------------

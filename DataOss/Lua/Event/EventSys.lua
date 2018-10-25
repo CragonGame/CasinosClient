@@ -27,7 +27,7 @@ function EventSys:onCreate()
 end
 
 ---------------------------------------
-function EventSys:bindEvListener(ev_name, ev_listener)
+function EventSys:BindEvListener(ev_name, ev_listener)
     local table_listener = self.TableEvListener[ev_name]
     if (table_listener == nil) then
         table_listener = {}
@@ -44,7 +44,7 @@ function EventSys:bindEvListener(ev_name, ev_listener)
 end
 
 ---------------------------------------
-function EventSys:unbindEvListener(ev_listener)
+function EventSys:UnbindEvListener(ev_listener)
     local table_ev = self.TableListenerEv[ev_listener]
     if (table_ev ~= nil) then
         for k, v in pairs(table_ev) do
@@ -58,7 +58,7 @@ function EventSys:unbindEvListener(ev_listener)
 end
 
 ---------------------------------------
-function EventSys:sendEv(ev)
+function EventSys:SendEv(ev)
     local ev_name = ev.EventName
     local table_listener = self.TableEvListener[ev_name]
     if (table_listener ~= nil) then
@@ -74,7 +74,7 @@ function EventSys:sendEv(ev)
 end
 
 ---------------------------------------
-function EventSys:getEv(ev_name)
+function EventSys:GetEv(ev_name)
     local ev = self.TableEvEv[ev_name]
     return ev
 end

@@ -25,8 +25,8 @@ end
 
 function ViewDesktopHBetReward:onCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("BetReward"))
-    self.ViewMgr:bindEvListener("EvEntityInitBetReward",self)
-    self.ViewDesktopH = self.ViewMgr:getView("DesktopH")
+    self.ViewMgr:BindEvListener("EvEntityInitBetReward",self)
+    self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_history_close = co_history_close:GetChild("BtnClose").asButton
     btn_history_close.onClick:Add(
@@ -51,7 +51,7 @@ function ViewDesktopHBetReward:onCreate()
 end
 
 function ViewDesktopHBetReward:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewDesktopHBetReward:onHandleEv(ev)
@@ -129,18 +129,18 @@ function ViewDesktopHBetReward:onHandleEv(ev)
 end
 
 function ViewDesktopHBetReward:_onClickGetAllBetReward()
-    local ev = self.ViewMgr:getEv("EvDesktopHGetBetReward")
+    local ev = self.ViewMgr:GetEv("EvDesktopHGetBetReward")
     if(ev == nil)
     then
         ev = EvDesktopHGetBetReward:new(nil)
     end
     ev.factory_name = self.ViewDesktopH.FactoryName
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.GBtnGetAllReward.enabled = false
 end
 
 function ViewDesktopHBetReward:_onClickBtnHelpClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 
@@ -160,7 +160,7 @@ function ViewDesktopHBetRewardFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewDesktopHBetRewardFactory:createView()
+function ViewDesktopHBetRewardFactory:CreateView()
     local view = ViewDesktopHBetReward:new(nil)
     return view
 end

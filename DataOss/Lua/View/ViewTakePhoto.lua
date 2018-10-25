@@ -29,7 +29,7 @@ function ViewTakePhoto:onCreate()
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self.ViewMgr:destroyView(self)
+                self.ViewMgr:DestroyView(self)
             end
     )
     self.GBtnTakePhoto = self.ComUi:GetChild("Lan_Btn_Photograph").asButton
@@ -51,7 +51,7 @@ function ViewTakePhoto:onClickTakePhoto()
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetImage"))
     CS.NativeTakePhoto.takeNewPhoto(self.mPhotoSize, self.mPhotoSize, self.GetPicDefaultName .. ".jpg"
     , CS.Casinos.CasinosContext.Instance.PathMgr:GetPersistentDataPath() .. self.PhotoFinalPath)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -59,7 +59,7 @@ function ViewTakePhoto:onClickTakePic()
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetImage"))
     CS.NativeTakePhoto.takeExistPhoto(self.mPhotoSize, self.mPhotoSize, self.GetPicDefaultName .. ".jpg"
     , CS.Casinos.CasinosContext.Instance.PathMgr:GetPersistentDataPath() .. self.PhotoFinalPath)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -80,7 +80,7 @@ function ViewTakePhotoFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewTakePhotoFactory:createView()
+function ViewTakePhotoFactory:CreateView()
     local view = ViewTakePhoto:new(nil)
     return view
 end

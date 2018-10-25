@@ -70,7 +70,7 @@ function DesktopPlayerTexas:SetPlayerData(player_data, desktop_state)
             self.UiSeatIndex = 255
         end
 
-        self.PlayerOperate = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr:createView("DesktopPlayerOperateTexas")
+        self.PlayerOperate = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr:CreateView("DesktopPlayerOperateTexas")
         self.PlayerOperate:setMeActorMirror(self)
     else
         self:_setUiSeatIndex()
@@ -93,13 +93,13 @@ function DesktopPlayerTexas:destroy()
     end
 
     local view_mgr = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr
-    local ui_desk = view_mgr:getView("DesktopTexas")
+    local ui_desk = view_mgr:GetView("DesktopTexas")
     if (ui_desk ~= nil) then
         ui_desk:playerLeaveDesk(self.UiSeatIndex)
     end
 
     if self.PlayerOperate ~= nil then
-        view_mgr:destroyView(self.PlayerOperate)
+        view_mgr:DestroyView(self.PlayerOperate)
         self.PlayerOperate = nil
     end
 
@@ -485,12 +485,12 @@ end
 ---------------------------------------
 function DesktopPlayerTexas:mttAutoAction(auto_action)
     local view_mgr = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr
-    local ev = view_mgr:getEv("EvEntitySelfAutoActionChange")
+    local ev = view_mgr:GetEv("EvEntitySelfAutoActionChange")
     if (ev == nil) then
         ev = EvEntitySelfAutoActionChange:new(nil)
     end
     ev.is_autoaction = auto_action
-    view_mgr:sendEv(ev)
+    view_mgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -579,12 +579,12 @@ function DesktopPlayerTexas:_checkActorState()
         end
         if self.IsMe then
             local view_mgr = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr
-            local ev = view_mgr:getEv("EvEntitySelfIsOB")
+            local ev = view_mgr:GetEv("EvEntitySelfIsOB")
             if (ev == nil)
             then
                 ev = EvEntitySelfIsOB:new(nil)
             end
-            view_mgr:sendEv(ev)
+            view_mgr:SendEv(ev)
         end
     elseif (player_state == TexasDesktopPlayerState.Wait4Next) then
         if (self.UiDesktopPlayerInfo ~= nil) then
@@ -632,7 +632,7 @@ end
 ---------------------------------------
 function DesktopPlayerTexas:_createUiPlayerInfo()
     if (CS.System.String.IsNullOrEmpty(self.DesktopTexas.DesktopGuid) == false) then
-        local ui_desk = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr:getView("DesktopTexas")
+        local ui_desk = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr:GetView("DesktopTexas")
         if (ui_desk == nil or self.DesktopTexas:isValidSeatIndex(self.PlayerDataDesktop.SeatIndex) == false) then
             return
         end

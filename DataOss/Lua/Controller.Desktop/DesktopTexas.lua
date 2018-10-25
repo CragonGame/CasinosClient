@@ -91,14 +91,14 @@ function DesktopTexas:onDestroy(need_createmainui)
     if (que_uicount > 0) then
         for i = 0, que_uicount do
             local ui_playerinfo = table.remove(self.QueUiPlayerInfo, 1)
-            view_mgr:destroyView(ui_playerinfo)
+            view_mgr:DestroyView(ui_playerinfo)
         end
     end
     self.QueUiPlayerInfo = nil
     self.QuePlayerTexas = {}
     self.QuePlayerTexas = nil
-    local ui_desktop = view_mgr:getView("DesktopTexas")
-    view_mgr:destroyView(ui_desktop)
+    local ui_desktop = view_mgr:GetView("DesktopTexas")
+    view_mgr:DestroyView(ui_desktop)
 
     self.DesktopTypeBase:onDestroy(need_createmainui)
     self.DesktopTypeBase = nil
@@ -155,7 +155,7 @@ function DesktopTexas:onHandleEv(ev)
         elseif (ev.EventName == "EvUiSetUnSendDesktopMsg") then
             self.CurrentUnSendDesktopMsg = ev.text
         elseif (ev.EventName == "EvUiDesktopClickLockChat") then
-            local ui_lockchat = self.ControllerDesktop.ControllerMgr.ViewMgr:createView("LockChatTexas")
+            local ui_lockchat = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("LockChatTexas")
             ui_lockchat:initLockChat(self.AllSeat)
         elseif (ev.EventName == "EvUiClickShowCard") then
             if self.MeP ~= nil then
@@ -200,7 +200,7 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     self.ControllerLobby:HideLobby()
 
     self.IsSnapshot = true
-    local snapshot_data1 = self.ControllerDesktop.ControllerMgr:unpackData(desktop_data.DesktopData)
+    local snapshot_data1 = self.ControllerDesktop.ControllerMgr:UnpackData(desktop_data.DesktopData)
     local snapshot_data = DesktopSnapshotDataTexas:new(nil)
     snapshot_data:setData(snapshot_data1)
     local desktoptype_facname = "TexasClassic"
@@ -249,9 +249,9 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     end
 
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-    local ui_desk = view_mgr:getView("DesktopTexas")
+    local ui_desk = view_mgr:GetView("DesktopTexas")
     if (ui_desk == nil) then
-        ui_desk = view_mgr:createView("DesktopTexas")
+        ui_desk = view_mgr:CreateView("DesktopTexas")
         self.CasinosContext:StopAllSceneSound()
     end
 
@@ -404,12 +404,12 @@ function DesktopTexas:PlayerLeave(player_guid)
     if (player_texas ~= nil) then
         self:_leaveDesktop(player_texas)
         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-        local ev = view_mgr:getEv("EvEntityDesktopPlayerLeaveChair")
+        local ev = view_mgr:GetEv("EvEntityDesktopPlayerLeaveChair")
         if (ev == nil) then
             ev = EvEntityDesktopPlayerLeaveChair:new(nil)
         end
         ev.guid = player_guid
-        view_mgr:sendEv(ev)
+        view_mgr:SendEv(ev)
     end
 end
 
@@ -430,7 +430,7 @@ function DesktopTexas:PlayerSitdown(sitdown_data1)
                     stack, TexasDesktopPlayerState.Wait4Next, PlayerActionTypeTexas.None)
 
             local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-            local ev = view_mgr:getEv("EvEntityDesktopPlayerSit")
+            local ev = view_mgr:GetEv("EvEntityDesktopPlayerSit")
             if (ev == nil) then
                 ev = EvEntityDesktopPlayerSit:new(nil)
             end
@@ -439,7 +439,7 @@ function DesktopTexas:PlayerSitdown(sitdown_data1)
             ev.nick_name = player_texas.PlayerDataDesktop.NickName
             ev.icon_name = player_texas.PlayerDataDesktop.IconName
             ev.vip_level = player_texas.PlayerDataDesktop.VIPLevel
-            view_mgr:sendEv(ev)
+            view_mgr:SendEv(ev)
         end
     end
 end
@@ -457,12 +457,12 @@ function DesktopTexas:PlayerOb(player_guid)
             if (v.player_texas ~= nil and v.player_texas.Guid == player_guid) then
                 v.player_texas = nil
                 local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-                local ev = view_mgr:getEv("EvEntityDesktopPlayerLeaveChair")
+                local ev = view_mgr:GetEv("EvEntityDesktopPlayerLeaveChair")
                 if (ev == nil) then
                     ev = EvEntityDesktopPlayerLeaveChair:new(nil)
                 end
                 ev.guid = player_guid
-                view_mgr:sendEv(ev)
+                view_mgr:SendEv(ev)
                 break
             end
         end
@@ -495,7 +495,7 @@ end
 
 ---------------------------------------
 function DesktopTexas:DesktopUser(info_user)
-    local method_i = self.ControllerDesktop.ControllerMgr:unpackData(info_user[2])
+    local method_i = self.ControllerDesktop.ControllerMgr:UnpackData(info_user[2])
     local method_info = MethodInfoTexasDesktop:new(nil)
     method_info.id = method_i[1]
     method_info.data = method_i[2]
@@ -505,7 +505,7 @@ function DesktopTexas:DesktopUser(info_user)
             return
         end
 
-        local idle1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local idle1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local idle = TexasDesktopNotifyIdle:new(nil)
         idle:setData(idle1)
         self.GameEnd = false
@@ -536,17 +536,17 @@ function DesktopTexas:DesktopUser(info_user)
         end
 
         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-        local ev = view_mgr:getEv("EvEntityDesktopIdleNotify")
+        local ev = view_mgr:GetEv("EvEntityDesktopIdleNotify")
         if (ev == nil) then
             ev = EvEntityDesktopIdleNotify:new(nil)
         end
-        view_mgr:sendEv(ev)
+        view_mgr:SendEv(ev)
     elseif (method_info.id == MethodTypeTexasDesktop.DesktopPreFlopNotify) then
         if (CS.System.String.IsNullOrEmpty(self.DesktopGuid)) then
             return
         end
 
-        local desktop_preflop1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local desktop_preflop1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local desktop_preflop = DesktopNotifyDesktopPreFlopTexas:new(nil)
         desktop_preflop:setData(desktop_preflop1)
         ViewHelper:UiEndWaiting()
@@ -614,13 +614,13 @@ function DesktopTexas:DesktopUser(info_user)
         end
 
         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-        local ev = view_mgr:getEv("EvEntityDesktopPreFlopNotify")
+        local ev = view_mgr:GetEv("EvEntityDesktopPreFlopNotify")
         if (ev == nil) then
             ev = EvEntityDesktopPreFlopNotify:new(nil)
         end
         ev.pot_total = desktop_preflop.pot_total
         ev.list_pot = desktop_preflop.list_pot
-        view_mgr:sendEv(ev)
+        view_mgr:SendEv(ev)
 
         local card_first = nil
         local card_second = nil
@@ -636,7 +636,7 @@ function DesktopTexas:DesktopUser(info_user)
             return
         end
 
-        local desktop_flop_1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local desktop_flop_1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local desktop_flop = DesktopNotifyDesktopFlopTexas:new(nil)
         desktop_flop:setData(desktop_flop_1)
         local t_playerchips_inpot = DesktopTexas:getChipEnterPotInfoByPlayer(desktop_flop.chip_enter_pot.list_seatchip_enter_pot)
@@ -669,7 +669,7 @@ function DesktopTexas:DesktopUser(info_user)
         end
 
         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-        local ev = view_mgr:getEv("EvEntityDesktopFlopNotify")
+        local ev = view_mgr:GetEv("EvEntityDesktopFlopNotify")
         if (ev == nil) then
             ev = EvEntityDesktopFlopNotify:new(nil)
         end
@@ -677,13 +677,13 @@ function DesktopTexas:DesktopUser(info_user)
         ev.second_card = second_card
         ev.third_card = third_card
         ev.bet_player_count = bet_player_count
-        view_mgr:sendEv(ev)
+        view_mgr:SendEv(ev)
     elseif (method_info.id == MethodTypeTexasDesktop.DesktopTurnNotify) then
         if (CS.System.String.IsNullOrEmpty(self.DesktopGuid)) then
             return
         end
 
-        local desktop_turn1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local desktop_turn1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local desktop_turn = DesktopNotifyDesktopTurnTexas:new(nil)
         desktop_turn:setData(desktop_turn1)
         local t_playerchips_inpot = DesktopTexas:getChipEnterPotInfoByPlayer(desktop_turn.chip_enter_pot.list_seatchip_enter_pot)
@@ -713,19 +713,19 @@ function DesktopTexas:DesktopUser(info_user)
         end
 
         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-        local ev = view_mgr:getEv("EvEntityDesktopTurnNotify")
+        local ev = view_mgr:GetEv("EvEntityDesktopTurnNotify")
         if (ev == nil) then
             ev = EvEntityDesktopTurnNotify:new(nil)
         end
         ev.turn_card = turn_card
         ev.bet_player_count = bet_player_count
-        view_mgr:sendEv(ev)
+        view_mgr:SendEv(ev)
     elseif (method_info.id == MethodTypeTexasDesktop.DesktopRiverNotify) then
         if (CS.System.String.IsNullOrEmpty(self.DesktopGuid)) then
             return
         end
 
-        local desktop_river1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local desktop_river1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local desktop_river = DesktopNotifyDesktopRiverTexas:new(nil)
         desktop_river:setData(desktop_river1)
         local t_playerchips_inpot = DesktopTexas:getChipEnterPotInfoByPlayer(desktop_river.chip_enter_pot.list_seatchip_enter_pot)
@@ -754,13 +754,13 @@ function DesktopTexas:DesktopUser(info_user)
         end
 
         local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-        local ev = view_mgr:getEv("EvEntityDesktopRiverNotify")
+        local ev = view_mgr:GetEv("EvEntityDesktopRiverNotify")
         if (ev == nil) then
             ev = EvEntityDesktopRiverNotify:new(nil)
         end
         ev.river_card = river_card
         ev.bet_player_count = bet_player_count
-        view_mgr:sendEv(ev)
+        view_mgr:SendEv(ev)
     elseif (method_info.id == MethodTypeTexasDesktop.DesktopGameEndNotify) then
         if (CS.System.String.IsNullOrEmpty(self.DesktopGuid)) then
             return
@@ -770,7 +770,7 @@ function DesktopTexas:DesktopUser(info_user)
             return
         end
 
-        local desktop_gameend1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local desktop_gameend1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local desktop_gameend = DesktopNotifyGameEndTexas:new(nil)
         desktop_gameend:setData(desktop_gameend1)
 
@@ -832,12 +832,12 @@ function DesktopTexas:DesktopUser(info_user)
             end
 
             local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-            local ev = view_mgr:getEv("EvEntityDesktopGameEndNotifyTexas")
+            local ev = view_mgr:GetEv("EvEntityDesktopGameEndNotifyTexas")
             if (ev == nil) then
                 ev = EvEntityDesktopGameEndNotifyTexas:new(nil)
             end
             ev.list_winner = desktop_gameend.list_winner
-            view_mgr:sendEv(ev)
+            view_mgr:SendEv(ev)
         else
             print("GameEnd 赢家列表为空")
         end
@@ -846,7 +846,7 @@ function DesktopTexas:DesktopUser(info_user)
             return
         end
 
-        local desktop_showdown1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local desktop_showdown1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local desktop_showdown = DesktopNotifyDesktopShowdownTexas:new(nil)
         desktop_showdown:setData(desktop_showdown1)
         local t_playerchips_inpot = DesktopTexas:getChipEnterPotInfoByPlayer(desktop_showdown.chip_enter_pot.list_seatchip_enter_pot)
@@ -884,12 +884,12 @@ function DesktopTexas:DesktopUser(info_user)
             end
 
             local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-            local ev = view_mgr:getEv("EvEntityDesktopShowdownNotify")
+            local ev = view_mgr:GetEv("EvEntityDesktopShowdownNotify")
             if (ev == nil) then
                 ev = EvEntityDesktopShowdownNotify:new(nil)
             end
             ev.desktop_showdown = desktop_showdown
-            view_mgr:sendEv(ev)
+            view_mgr:SendEv(ev)
         else
             print("Showdown 赢家列表为空")
         end
@@ -898,7 +898,7 @@ function DesktopTexas:DesktopUser(info_user)
             return
         end
 
-        local player_state_change1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local player_state_change1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local player_state_change = DesktopNotifyPlayerStateChangeTexas:new(nil)
         player_state_change:setData(player_state_change1)
         if (player_state_change.list_playerstate ~= nil) then
@@ -915,7 +915,7 @@ function DesktopTexas:DesktopUser(info_user)
             return
         end
 
-        local player_action1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local player_action1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local player_action = DesktopNotifyPlayerActionTexas:new(nil)
         player_action:setData(player_action1)
 
@@ -932,7 +932,7 @@ function DesktopTexas:DesktopUser(info_user)
             return
         end
 
-        local player_turn1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local player_turn1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local player_turn = DesktopNotifyPlayerGetTurnTexas:new(nil)
         player_turn:setData(player_turn1)
 
@@ -942,7 +942,7 @@ function DesktopTexas:DesktopUser(info_user)
             return
         end
 
-        local show_card1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local show_card1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         if self.MeP ~= nil then
             self.MeP:setShowCardState(show_card1)
         end
@@ -952,7 +952,7 @@ function DesktopTexas:DesktopUser(info_user)
             return
         end
 
-        local show_card1 = self.ControllerDesktop.ControllerMgr:unpackData(method_info.data)
+        local show_card1 = self.ControllerDesktop.ControllerMgr:UnpackData(method_info.data)
         local show_card = TexasDesktopNotifyPlayerShowCard:new(nil)
         show_card:setData(show_card1)
         for i, v in pairs(show_card.list_showcard) do
@@ -996,7 +996,7 @@ function DesktopTexas:DesktopBuyAndSendItemNotify(data)
         return
     end
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-    local ui_desk = view_mgr:getView("DesktopTexas")
+    local ui_desk = view_mgr:GetView("DesktopTexas")
     ui_desk:playerBuyAndSendItem(data)
 end
 
@@ -1034,12 +1034,12 @@ end
 ---------------------------------------
 function DesktopTexas:playerRaise()
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-    local ev = view_mgr:getEv("EvUiPotMainChanged")
+    local ev = view_mgr:GetEv("EvUiPotMainChanged")
     if (ev == nil) then
         ev = EvUiPotMainChanged:new(nil)
     end
     ev.pot_mian = self.PotMain
-    view_mgr:sendEv(ev)
+    view_mgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -1067,7 +1067,7 @@ end
 function DesktopTexas:requestPlayerPushStack(chip)
     local method_info = MethodInfoTexasDesktop:new(nil)
     method_info.id = MethodTypeTexasDesktop.PlayerPushStackRequest
-    method_info.data = self.ControllerDesktop.ControllerMgr:packData(chip)
+    method_info.data = self.ControllerDesktop.ControllerMgr:PackData(chip)
 
     self:_userRequest(method_info)
 end
@@ -1076,7 +1076,7 @@ end
 function DesktopTexas:requestPlayerAutoAction(auto_action)
     local method_info = MethodInfoTexasDesktop:new(nil)
     method_info.id = MethodTypeTexasDesktop.PlayerAutoActionRequest
-    method_info.data = self.ControllerDesktop.ControllerMgr:packData(auto_action)
+    method_info.data = self.ControllerDesktop.ControllerMgr:PackData(auto_action)
 
     self:_userRequest(method_info)
 end
@@ -1094,7 +1094,7 @@ end
 function DesktopTexas:requestPlayerActionBet(chip)
     local method_info = MethodInfoTexasDesktop:new(nil)
     method_info.id = MethodTypeTexasDesktop.PlayerActionBetRequest
-    method_info.data = self.ControllerDesktop.ControllerMgr:packData(chip)
+    method_info.data = self.ControllerDesktop.ControllerMgr:PackData(chip)
 
     self:_userRequest(method_info)
 end
@@ -1130,7 +1130,7 @@ end
 function DesktopTexas:requestPlayerActionRaise(chip)
     local method_info = MethodInfoTexasDesktop:new(nil)
     method_info.id = MethodTypeTexasDesktop.PlayerActionRaiseRequest
-    method_info.data = self.ControllerDesktop.ControllerMgr:packData(chip)
+    method_info.data = self.ControllerDesktop.ControllerMgr:PackData(chip)
 
     self:_userRequest(method_info)
 end
@@ -1139,7 +1139,7 @@ end
 function DesktopTexas:requestPlayerActionReRaise(chip)
     local method_info = MethodInfoTexasDesktop:new(nil)
     method_info.id = MethodTypeTexasDesktop.PlayerActionReRaiseRequest
-    method_info.data = self.ControllerDesktop.ControllerMgr:packData(chip)
+    method_info.data = self.ControllerDesktop.ControllerMgr:PackData(chip)
 
     self:_userRequest(method_info)
 end
@@ -1157,7 +1157,7 @@ end
 function DesktopTexas:requestShowCard(card_state)
     local method_info = MethodInfoTexasDesktop:new(nil)
     method_info.id = MethodTypeTexasDesktop.PlayerShowCardRequest
-    method_info.data = self.ControllerDesktop.ControllerMgr:packData(card_state)
+    method_info.data = self.ControllerDesktop.ControllerMgr:PackData(card_state)
 
     self:_userRequest(method_info)
 end
@@ -1201,7 +1201,7 @@ function DesktopTexas:changeOtherPlayerUiSeatIndex()
     end
 
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
-    local ui_desk = view_mgr:getView("DesktopTexas")
+    local ui_desk = view_mgr:GetView("DesktopTexas")
     if (ui_desk ~= nil) then
         local all_player = self:getAllValidPlayer()
         ui_desk:setCurrentSeatActor(all_player)
@@ -1291,7 +1291,7 @@ function DesktopTexas:getPlayerInfo()
     if (l > 0) then
         player_info = table.remove(self.QueUiPlayerInfo, 1)
     else
-        player_info = self.ControllerDesktop.ControllerMgr.ViewMgr:createView("DesktopPlayerInfoTexas")
+        player_info = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("DesktopPlayerInfoTexas")
     end
     return player_info
 end
@@ -1305,7 +1305,7 @@ end
 ---------------------------------------
 -- 换筹码对话框
 function DesktopTexas:createBetGame(action, bet_min, bet_max)
-    local ui_bet_game = self.ControllerDesktop.ControllerMgr.ViewMgr:createView("ChipOperate")
+    local ui_bet_game = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("ChipOperate")
     local bet_maxchips = bet_max
     local bet_minchips = bet_min
     ui_bet_game:setChipsInfo(self.ControllerActor.PropGoldAcc:get(),

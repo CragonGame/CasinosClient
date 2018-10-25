@@ -88,7 +88,7 @@ end
 
 ---------------------------------------
 function ViewReportPlayer:onClickClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -127,7 +127,7 @@ function ViewReportPlayerFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewReportPlayerFactory:createView()
+function ViewReportPlayerFactory:CreateView()
     local view = ViewReportPlayer:new(nil)
     return view
 end

@@ -274,17 +274,17 @@ function ViewCreateMatch:onClickBtnReturn()
         return
     end
     if (self.HasSetContent) then
-        local msg_box = self.ViewMgr:createView("MsgBox")
+        local msg_box = self.ViewMgr:CreateView("MsgBox")
         msg_box:useTwoBtn2("", "返回将不会保存设置内容。确定返回吗？",
                 function()
-                    self.ViewMgr:destroyView(self)
+                    self.ViewMgr:DestroyView(self)
                 end,
                 function()
-                    self.ViewMgr:destroyView(msg_box)
+                    self.ViewMgr:DestroyView(msg_box)
                 end
         )
     else
-        self.ViewMgr:destroyView(self)
+        self.ViewMgr:DestroyView(self)
     end
 end
 
@@ -456,17 +456,17 @@ function ViewCreateMatch:onClickBtnCreate()
     create_info.SeatNum = self.TableNumType --座位数
     create_info.CreatePlayerGuid = self.ControllerMtt.Guid --创建赛事玩家Guid，公共赛事该Guid为空
     create_info.RaiseBlindTbInfo = blind_info --升盲表静态信息
-    local ev = self.ViewMgr:getEv("EvUiRequestCreatePrivateMatch")
+    local ev = self.ViewMgr:GetEv("EvUiRequestCreatePrivateMatch")
     if ev == nil then
         ev = EvUiRequestCreatePrivateMatch:new(nil)
     end
     ev.MatchCreateInfo = create_info
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewCreateMatch:onClickBtnBlindTable()
-    self.ViewMgr:createView("BlindTable")
+    self.ViewMgr:CreateView("BlindTable")
 end
 
 ---------------------------------------
@@ -676,7 +676,7 @@ function ViewCreateMatchFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewCreateMatchFactory:createView()
+function ViewCreateMatchFactory:CreateView()
     local view = ViewCreateMatch:new(nil)
     return view
 end

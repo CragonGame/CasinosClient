@@ -27,11 +27,11 @@ function ItemUiShopDiamond:new(o,view_shop,diamond,tb_item)
 end
 
 function ItemUiShopDiamond:onClickBtnBuy()
-    local ev = self.ViewShop.ViewMgr:getEv("EvUiRequestBuyDiamond")
+    local ev = self.ViewShop.ViewMgr:GetEv("EvUiRequestBuyDiamond")
     if(ev == nil)
     then
         ev = EvUiRequestBuyDiamond:new(nil)
     end
     ev.buy_diamondid = self.TbDataItem.Id
-    self.ViewShop.ViewMgr:sendEv(ev)
+    self.ViewShop.ViewMgr:SendEv(ev)
 end

@@ -67,38 +67,38 @@ end
 function ViewDesktopTexas:onCreate()
     print('ViewDesktopTexas:onCreate()')
 
-    self.ViewMgr:bindEvListener("EvEntityReceiveFriendSingleChat", self)
-    self.ViewMgr:bindEvListener("EvEntityReceiveFriendChats", self)
-    self.ViewMgr:bindEvListener("EvEntityUnreadChatsChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityMailListInit", self)
-    self.ViewMgr:bindEvListener("EvEntityMailAdd", self)
-    self.ViewMgr:bindEvListener("EvEntityMailDelete", self)
-    self.ViewMgr:bindEvListener("EvEntityMailUpdate", self)
-    self.ViewMgr:bindEvListener("EvEntityRecvChatFromDesktop", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopSnapshotNotify", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopIdleNotify", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopPreFlopNotify", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopFlopNotify", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopTurnNotify", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopRiverNotify", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopShowdownNotify", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopGameEndNotifyTexas", self)
-    self.ViewMgr:bindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketUpdateTm", self)
-    self.ViewMgr:bindEvListener("EvUiPotMainChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityMTTPlayerRebuyOrAddonRefresh", self)
-    self.ViewMgr:bindEvListener("EvEntitySelfIsOB", self)
-    self.ViewMgr:bindEvListener("EvEntityMTTUpdateRealtimeInfo", self)
-    self.ViewMgr:bindEvListener("EvEntityMTTUpdateRaiseBlindTm", self)
-    self.ViewMgr:bindEvListener("EvMTTPauseChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityMatchGameOver", self)
-    self.ViewMgr:bindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
-    self.ViewMgr:bindEvListener("EvEntityCanGetOnlineReward", self)
-    self.ViewMgr:bindEvListener("EvEntityCanGetTimingReward", self)
-    self.ViewMgr:bindEvListener("EvClickShowReward", self)
-    self.ViewMgr:bindEvListener("EvRequestGetTimingReward", self)
-    self.ViewMgr:bindEvListener("EvOnGetOnLineReward", self)
+    self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
+    self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
+    self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityMailListInit", self)
+    self.ViewMgr:BindEvListener("EvEntityMailAdd", self)
+    self.ViewMgr:BindEvListener("EvEntityMailDelete", self)
+    self.ViewMgr:BindEvListener("EvEntityMailUpdate", self)
+    self.ViewMgr:BindEvListener("EvEntityRecvChatFromDesktop", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopSnapshotNotify", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopIdleNotify", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopPreFlopNotify", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopFlopNotify", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopTurnNotify", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopRiverNotify", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopShowdownNotify", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopGameEndNotifyTexas", self)
+    self.ViewMgr:BindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
+    self.ViewMgr:BindEvListener("EvUiPotMainChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityMTTPlayerRebuyOrAddonRefresh", self)
+    self.ViewMgr:BindEvListener("EvEntitySelfIsOB", self)
+    self.ViewMgr:BindEvListener("EvEntityMTTUpdateRealtimeInfo", self)
+    self.ViewMgr:BindEvListener("EvEntityMTTUpdateRaiseBlindTm", self)
+    self.ViewMgr:BindEvListener("EvMTTPauseChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityMatchGameOver", self)
+    self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
+    self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
+    self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
+    self.ViewMgr:BindEvListener("EvClickShowReward", self)
+    self.ViewMgr:BindEvListener("EvRequestGetTimingReward", self)
+    self.ViewMgr:BindEvListener("EvOnGetOnLineReward", self)
 
     self.Flow = UiDesktopTexasFlow:new(nil, self)
     self.Flow:Create()
@@ -107,10 +107,10 @@ function ViewDesktopTexas:onCreate()
     self.ControllerDesktop = self.ViewMgr.ControllerMgr:GetController("Desktop")
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
     self.UiChipMgr = UiChipMgrEx:new(nil, false)
-    self.UiDesktopChatParent = self.ViewMgr:createView("DesktopChatParent")
-    local ui_shootingtext = self.ViewMgr:getView("ShootingText")
+    self.UiDesktopChatParent = self.ViewMgr:CreateView("DesktopChatParent")
+    local ui_shootingtext = self.ViewMgr:GetView("ShootingText")
     if (ui_shootingtext == nil) then
-        ui_shootingtext = self.ViewMgr:createView("ShootingText")
+        ui_shootingtext = self.ViewMgr:CreateView("ShootingText")
         ui_shootingtext:init(true, false, false)
     end
 
@@ -195,11 +195,11 @@ function ViewDesktopTexas:onCreate()
     self.ListAllPlayer = {}
     self.ComUi.onClick:Add(
             function()
-                local ev = self.ViewMgr:getEv("EvUiClickDesktop")
+                local ev = self.ViewMgr:GetEv("EvUiClickDesktop")
                 if (ev == nil) then
                     ev = EvUiClickDesktop:new(nil)
                 end
-                self.ViewMgr:sendEv(ev)
+                self.ViewMgr:SendEv(ev)
             end
     )
     self.ComWaitingBegine = self.ComUi:GetChild("ComWaitingBegine").asCom
@@ -212,8 +212,8 @@ function ViewDesktopTexas:onCreate()
     parent_selfwin:SetNativeObject(CS.FairyGUI.GoWrapper(p_2))
 
     self.MapViewDesktopTypeBaseFac = {}
-    self:regViewDesktopTypeBaseFactory(ViewTexasClassicTypeFactory:new(nil))
-    self:regViewDesktopTypeBaseFactory(ViewTexasMTTTypeFactory:new(nil))
+    self:RegViewDesktopTypeBaseFactory(ViewTexasClassicTypeFactory:new(nil))
+    self:RegViewDesktopTypeBaseFactory(ViewTexasMTTTypeFactory:new(nil))
     self.UiPot = ViewPotTexasPoker:new(nil, self)
 
     self.ComShadeReward = self.ComUi:GetChild("ComShadeReward").asCom
@@ -248,7 +248,7 @@ function ViewDesktopTexas:onDestroy()
         self.TimerUpdate = nil
     end
 
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 
     if (self.Flow ~= nil) then
         self.Flow:Destroy()
@@ -261,13 +261,13 @@ function ViewDesktopTexas:onDestroy()
     end
 
     if (self.UiDesktopChatParent ~= nil) then
-        self.ViewMgr:destroyView(self.UiDesktopChatParent)
+        self.ViewMgr:DestroyView(self.UiDesktopChatParent)
         self.UiDesktopChatParent = nil
     end
 
-    local ui_shootingtext = self.ViewMgr:getView("ShootingText")
+    local ui_shootingtext = self.ViewMgr:GetView("ShootingText")
     if (ui_shootingtext ~= nil) then
-        self.ViewMgr:destroyView(ui_shootingtext)
+        self.ViewMgr:DestroyView(ui_shootingtext)
     end
 
     if (self.DealerEx ~= nil) then
@@ -529,22 +529,22 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:commonCardShowEnd()
-    local ev = self.ViewMgr:getEv("EvCommonCardShowEnd")
+    local ev = self.ViewMgr:GetEv("EvCommonCardShowEnd")
     if (ev == nil) then
         ev = EvCommonCardShowEnd:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 
     self:showCommonCardType(false)
 end
 
 ---------------------------------------
 function ViewDesktopTexas:commonCardDealEnd()
-    local ev = self.ViewMgr:getEv("EvCommonCardDealEnd")
+    local ev = self.ViewMgr:GetEv("EvCommonCardDealEnd")
     if (ev == nil) then
         ev = EvCommonCardDealEnd:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -669,40 +669,40 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickDesktopChat()
-    local ui_chat = self.ViewMgr:createView("Chat")
+    local ui_chat = self.ViewMgr:CreateView("Chat")
     ui_chat:init(_eUiChatType.Desktop)
 end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickFriend()
-    local ev = self.ViewMgr:getEv("EvUiClickFriend")
+    local ev = self.ViewMgr:GetEv("EvUiClickFriend")
     if (ev == nil) then
         ev = EvUiClickFriend:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickLockChat()
-    local ev = self.ViewMgr:getEv("EvUiDesktopClickLockChat")
+    local ev = self.ViewMgr:GetEv("EvUiDesktopClickLockChat")
     if (ev == nil) then
         ev = EvUiDesktopClickLockChat:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickFriendChat()
-    local ev = self.ViewMgr:getEv("EvUiClickChatmsg")
+    local ev = self.ViewMgr:GetEv("EvUiClickChatmsg")
     if (ev == nil) then
         ev = EvUiClickChatmsg:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickNotice()
-    self.ViewMgr:createView("Notice")
+    self.ViewMgr:CreateView("Notice")
 end
 
 ---------------------------------------
@@ -715,18 +715,18 @@ function ViewDesktopTexas:_onClickChair(context)
                 if (self.Desktop.SeatNum == 5) then
                     index = math.ceil(index / 2)
                 end
-                local ev = self.ViewMgr:getEv("EvUiClickSeat")
+                local ev = self.ViewMgr:GetEv("EvUiClickSeat")
                 if (ev == nil) then
                     ev = EvUiClickSeat:new(nil)
                 end
                 ev.seat_index = index
-                self.ViewMgr:sendEv(ev)
+                self.ViewMgr:SendEv(ev)
             else
-                local ev = self.ViewMgr:getEv("EvUiClickInviteFriendPlay")
+                local ev = self.ViewMgr:GetEv("EvUiClickInviteFriendPlay")
                 if (ev == nil) then
                     ev = EvUiClickInviteFriendPlay:new(nil)
                 end
-                self.ViewMgr:sendEv(ev)
+                self.ViewMgr:SendEv(ev)
             end
         end
     end
@@ -828,13 +828,13 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickBtnLotteryTicket()
-    local ev = self.ViewMgr:getEv("EvEntityRequestGetLotteryTicketData")
+    local ev = self.ViewMgr:GetEv("EvEntityRequestGetLotteryTicketData")
     if (ev == nil) then
         ev = EvEntityRequestGetLotteryTicketData:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 
-    self.ViewMgr:createView("LotteryTicket")
+    self.ViewMgr:CreateView("LotteryTicket")
 end
 
 ---------------------------------------
@@ -1025,7 +1025,7 @@ function ViewDesktopTexas:_getCurrentLocalTime()
 end
 
 ---------------------------------------
-function ViewDesktopTexas:regViewDesktopTypeBaseFactory(desktop_fac)
+function ViewDesktopTexas:RegViewDesktopTypeBaseFactory(desktop_fac)
     self.MapViewDesktopTypeBaseFac[desktop_fac:GetName()] = desktop_fac
 end
 
@@ -1081,7 +1081,7 @@ function ViewDesktopTexasFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewDesktopTexasFactory:createView()
+function ViewDesktopTexasFactory:CreateView()
     local view = ViewDesktopTexas:new(nil)
     return view
 end

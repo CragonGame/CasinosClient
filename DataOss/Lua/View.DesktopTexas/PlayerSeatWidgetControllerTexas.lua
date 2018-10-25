@@ -790,21 +790,21 @@ end
 function PlayerSeatWidgetControllerTexas:onClickCard1(ev)
     ev:StopPropagation()
 
-    local ev = self.PlayerInfo.ViewMgr:getEv("EvUiClickShowCard")
+    local ev = self.PlayerInfo.ViewMgr:GetEv("EvUiClickShowCard")
     if (ev == nil) then
         ev = EvUiClickShowCard:new(nil)
     end
     ev.click_card1 = true
-    self.PlayerInfo.ViewMgr:sendEv(ev)
+    self.PlayerInfo.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:onClickCard2(ev)
     ev:StopPropagation()
-    local ev = self.PlayerInfo.ViewMgr:getEv("EvUiClickShowCard")
+    local ev = self.PlayerInfo.ViewMgr:GetEv("EvUiClickShowCard")
     if (ev == nil) then
         ev = EvUiClickShowCard:new(nil)
     end
     ev.click_card1 = false
-    self.PlayerInfo.ViewMgr:sendEv(ev)
+    self.PlayerInfo.ViewMgr:SendEv(ev)
 end

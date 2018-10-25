@@ -123,7 +123,7 @@ function PreViewMsgBox._onClickBtnOK()
     if (view.ActionOk ~= nil) then
         view.ActionOk()
     end
-    view.PreViewMgr.destroyView(view)
+    view.PreViewMgr.DestroyView(view)
 end
 
 ---------------------------------------
@@ -132,7 +132,7 @@ function PreViewMsgBox._onClickBtnCancel()
     if (view.ActionCancel ~= nil) then
         view.ActionCancel()
     end
-    view.PreViewMgr.destroyView(view)
+    view.PreViewMgr.DestroyView(view)
 end
 
 ---------------------------------------
@@ -153,7 +153,7 @@ function PreViewMsgBoxFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function PreViewMsgBoxFactory:createView()
+function PreViewMsgBoxFactory:CreateView()
     local view = PreViewMsgBox:new(nil)
     return view
 end

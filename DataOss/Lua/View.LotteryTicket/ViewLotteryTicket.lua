@@ -25,16 +25,16 @@ end
 
 ---------------------------------------
 function ViewLotteryTicket:onCreate()
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketBetOperateTypeChange", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketCurrentBetOperateTypeChange", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketUpdateBetPotBetInfo", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketBet", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketBetState", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketGameEndState", self)
-    self.ViewMgr:bindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketGetRewardPotInfo", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketUpdateTm", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketBetOperateTypeChange", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketCurrentBetOperateTypeChange", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateBetPotBetInfo", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketBet", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketBetState", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketGameEndState", self)
+    self.ViewMgr:BindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketGetRewardPotInfo", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
     local fac = self.ControllerLotteryTicket:GetLotteryTicketBaseFactory(LotteryTicketFactoryName)
@@ -108,7 +108,7 @@ end
 
 ---------------------------------------
 function ViewLotteryTicket:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -431,22 +431,22 @@ end
 
 ---------------------------------------
 function ViewLotteryTicket:onClickRepeatBet()
-    local ev = self.ViewMgr:getEv("EvLotteryTicketRepeatBet")
+    local ev = self.ViewMgr:GetEv("EvLotteryTicketRepeatBet")
     if (ev == nil) then
         ev = EvLotteryTicketRepeatBet:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.GBtnRepeatBet.enabled = false
 end
 
 ---------------------------------------
 function ViewLotteryTicket:onClickBtnClose()
-    local ev = self.ViewMgr:getEv("EvUiClickLeaveLotteryTicket")
+    local ev = self.ViewMgr:GetEv("EvUiClickLeaveLotteryTicket")
     if (ev == nil) then
         ev = EvUiClickLeaveLotteryTicket:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:SendEv(ev)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -467,7 +467,7 @@ function ViewLotteryTicketFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewLotteryTicketFactory:createView()
+function ViewLotteryTicketFactory:CreateView()
     local view = ViewLotteryTicket:new(nil)
     return view
 end

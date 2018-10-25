@@ -53,7 +53,7 @@ function IMChatRecord:loadPlayerChatRecordFromPlayerPrefs(player_guid)
         if (self.PlayerPrefs.HasKey(playerprefs_chatrecord_key)) then
             local chat_record_s = self.PlayerPrefs.GetString(playerprefs_chatrecord_key)
             local chat_record_b = CS.System.Convert.FromBase64String(chat_record_s)
-            local record = self.ControllerIM.ControllerMgr:unpackData(chat_record_b)
+            local record = self.ControllerIM.ControllerMgr:UnpackData(chat_record_b)
             if (record ~= nil) then
                 table.insert(list_record, 1, record)
             end
@@ -160,7 +160,7 @@ end
 ---------------------------------------
 function IMChatRecord:saveChatRecord(player_guid, record)
     local playerprefs_chatrecord_key = self:getChatRecordKey(player_guid, record.msg_id)
-    local p_record = self.ControllerIM.ControllerMgr:packData(record)
+    local p_record = self.ControllerIM.ControllerMgr:PackData(record)
     local chat_record_s = CS.System.Convert.ToBase64String(p_record)
     self.PlayerPrefs.SetString(playerprefs_chatrecord_key, chat_record_s)
 

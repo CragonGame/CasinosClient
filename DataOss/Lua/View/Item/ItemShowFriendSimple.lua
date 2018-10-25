@@ -62,7 +62,7 @@ function ItemShowFriendSimple:loadIconDown(bo)
 	if (bo)
 	then
 		local view_mgr = ViewMgr:new(nil)
-		local ev = view_mgr:getEv("EvLoadPlayerIconSuccess")
+		local ev = view_mgr:GetEv("EvLoadPlayerIconSuccess")
 		if(ev == nil)
 		then
 			ev = EvLoadPlayerIconSuccess:new(nil)
@@ -70,7 +70,7 @@ function ItemShowFriendSimple:loadIconDown(bo)
 		ev.et_guid = self.FriendInfo.PlayerInfoCommon.PlayerGuid
 		ev.icon = self.ViewHeadIcon.GLoaderPlayerIcon.texture.nativeTexture
 		ev.fariy_t = self.ViewHeadIcon.GLoaderPlayerIcon.texture
-		view_mgr:sendEv(ev)
+		view_mgr:SendEv(ev)
 	end
 end
 

@@ -35,7 +35,7 @@ function ItemInviteFriendPlay:onClickItem()
 	if (self.AlreadyInvite == false)
 	then
 		local player_playstate = self.FriendInfo.PlayerPlayState
-		local ev = view_mgr:getEv("EvUiInviteFriendPlayTogether")
+		local ev = view_mgr:GetEv("EvUiInviteFriendPlayTogether")
 		if(ev == nil)
 		then
 			ev = EvUiInviteFriendPlayTogether:new(nil)
@@ -47,7 +47,7 @@ function ItemInviteFriendPlay:onClickItem()
 		else
 			ev.friend_desktopguid = player_playstate.DesktopGuid
 		end
-        view_mgr:sendEv(ev)
+        view_mgr:SendEv(ev)
         self.GTextTm.text = view_mgr.LanMgr:getLanValue("HaveInvited")
         self.GTextTm.color = CS.UnityEngine.Color.yellow
         self.AlreadyInvite = true

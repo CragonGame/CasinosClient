@@ -108,7 +108,7 @@ function ItemChatTargetInfo:onClick()
 end
 
 function ItemChatTargetInfo:onPress()
-	local msg_box = self.ViewChatFriend.ViewMgr:createView("MsgBox")
+	local msg_box = self.ViewChatFriend.ViewMgr:CreateView("MsgBox")
 	msg_box:showMsgBox2(self.ViewChatFriend.ViewMgr.LanMgr:getLanValue("DeleteRecode")
 	, string.format(self.ViewChatFriend.ViewMgr.LanMgr:getLanValue("DetermineDeleteRecord")
 			, self.FriendInfo.PlayerInfoCommon.NickName),self.FriendInfo.PlayerInfoCommon.PlayerGuid,
@@ -116,13 +116,13 @@ function ItemChatTargetInfo:onPress()
 				if (bo)
 				then
 					local view_mgr = ViewMgr:new(nil)
-					local ev = view_mgr:getEv("EvUiClickDeleteFriendChatRecord")
+					local ev = view_mgr:GetEv("EvUiClickDeleteFriendChatRecord")
 					if(ev == nil)
 					then
 						ev = EvUiClickDeleteFriendChatRecord:new(nil)
 					end
 					ev.friend_etguid = guid
-					view_mgr:sendEv(ev)
+					view_mgr:SendEv(ev)
 				end
 			end)
 end

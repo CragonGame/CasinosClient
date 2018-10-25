@@ -49,7 +49,7 @@ function ItemMagicExpSender:sendMagicExp(from_pos, to_pos, exp_tbid)
                         function()
                             self.GCoMagicExpSender:RemoveChild(movie_magic_exp)
                             CS.UnityEngine.GameObject.Destroy(movie_magic_exp.displayObject.gameObject)
-                            local ui_pool = self.ViewMgr:getView("Pool")
+                            local ui_pool = self.ViewMgr:GetView("Pool")
                             ui_pool:magicExpEnque(self)
                         end
                 )

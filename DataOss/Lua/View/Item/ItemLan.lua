@@ -33,13 +33,13 @@ function ItemLan:onClickItem()
 					function()
 						local tb_lan = self.CasinosContext.TbDataMgrLua:GetData("Lans",self.TbId)
 						local view_mgr = ViewMgr:new(nil)
-						local ev = view_mgr:getEv("EvUiChangeLan")
+						local ev = view_mgr:GetEv("EvUiChangeLan")
 						if(ev == nil)
 						then
 							ev = EvUiChangeLan:new(nil)
 						end
                         ev.lan = tb_lan.LanType
-                        view_mgr:sendEv(ev)
+                        view_mgr:SendEv(ev)
 					end                                     
 					)
 end

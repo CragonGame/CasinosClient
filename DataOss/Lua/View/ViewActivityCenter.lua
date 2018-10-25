@@ -114,12 +114,12 @@ end
 
 ---------------------------------------
 function ViewActivityCenter:onClickBtnClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewActivityCenter:onClickShare()
-    self.ViewMgr:createView("ShareType")
+    self.ViewMgr:CreateView("ShareType")
 end
 
 ---------------------------------------
@@ -140,7 +140,7 @@ function ViewActivityCenterFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewActivityCenterFactory:createView()
+function ViewActivityCenterFactory:CreateView()
     local view = ViewActivityCenter:new(nil)
     return view
 end

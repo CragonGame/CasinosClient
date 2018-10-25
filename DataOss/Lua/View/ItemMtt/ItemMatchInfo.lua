@@ -154,7 +154,7 @@ function ItemMatchInfo:UpdateState(nowtm)
 			self.GControllerBtnSigninState.selectedIndex = 1
 			self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:getLanValue("Enter")
 		else
-			local match_lobby = self.ViewMgr:getView("MatchLobby")
+			local match_lobby = self.ViewMgr:GetView("MatchLobby")
 			match_lobby:RemoveMatchItem(self)
 		end
 	end
@@ -163,45 +163,45 @@ end
 function ItemMatchInfo:onClickBtnSign()
 	if(self.GControllerBtnSigninState.selectedIndex == 0)
 	then
-		local msg_box = self.ViewMgr:createView("MsgBox")
+		local msg_box = self.ViewMgr:CreateView("MsgBox")
 		msg_box:useTwoBtn("",string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"),UiChipShowHelper:getGoldShowStr3(self.MatchInfo.SignupFee),UiChipShowHelper:getGoldShowStr3(self.MatchInfo.ServiceFee)),
 				function()
-					local ev = self.ViewMgr:getEv("EvUiRequestSignUpMatch")
+					local ev = self.ViewMgr:GetEv("EvUiRequestSignUpMatch")
 					if(ev == nil)
 					then
 						ev = EvUiRequestSignUpMatch:new(nil)
 					end
 					ev.MatchGuid = self.MatchInfo.Guid
-					self.ViewMgr:sendEv(ev)
-					self.ViewMgr:destroyView(msg_box)
+					self.ViewMgr:SendEv(ev)
+					self.ViewMgr:DestroyView(msg_box)
 				end,
 				function()
-					self.ViewMgr:destroyView(msg_box)
+					self.ViewMgr:DestroyView(msg_box)
 				end
 		)
 	elseif(self.GControllerBtnSigninState.selectedIndex == 1)
 	then
-		local ev = self.ViewMgr:getEv("EvUiRequestEnterMatch")
+		local ev = self.ViewMgr:GetEv("EvUiRequestEnterMatch")
 		if(ev == nil)
 		then
 			ev = EvUiRequestEnterMatch:new(nil)
 		end
 		ev.MatchGuid = self.MatchInfo.Guid
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 	elseif(self.GControllerBtnSigninState.selectedIndex == 2)
 	then
-		local ev = self.ViewMgr:getEv("EvUiRequestSignUpMatch")
+		local ev = self.ViewMgr:GetEv("EvUiRequestSignUpMatch")
 		if(ev == nil)
 		then
 			ev = EvUiRequestSignUpMatch:new(nil)
 		end
 		ev.MatchGuid = self.MatchInfo.Guid
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 	end
 end
 
 function ItemMatchInfo:onClickBtnSelf()
-	local view_matchInfo = self.ViewMgr:createView("MatchInfo")
+	local view_matchInfo = self.ViewMgr:CreateView("MatchInfo")
 	view_matchInfo:Init(self.MatchInfo.Guid,false,self.IsSelfJoin)
 end
 

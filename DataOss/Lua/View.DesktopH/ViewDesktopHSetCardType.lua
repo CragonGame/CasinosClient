@@ -26,7 +26,7 @@ function ViewDesktopHSetCardType:new(o)
 end
 
 function ViewDesktopHSetCardType:onCreate()
-	self.ViewDesktopH = self.ViewMgr:getView("DesktopH")
+	self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
 	self.GCoBankCardTypeParent = self.ComUi:GetChild("CoBankCardTypeParent").asCom
 	self.GListPotCardType = self.ComUi:GetChild("ListPotCardType").asList
 	self.GBtnConfirmSetCardType = self.ComUi:GetChild("BtnConfirm").asButton
@@ -66,19 +66,19 @@ function ViewDesktopHSetCardType:_setCardType()
 		return
 	end
 
-	local ev = self.ViewMgr:getEv("EvDesktopHundredChangeCardsType")
+	local ev = self.ViewMgr:GetEv("EvDesktopHundredChangeCardsType")
 	if(ev == nil)
 	then
 		ev  = EvDesktopHundredChangeCardsType:new(nil)
 	end
 	ev.map_card_types = self.MapCardsType
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 
 	self:onClickBtnClose()
 end
 
 function ViewDesktopHSetCardType:onClickBtnClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 
@@ -97,7 +97,7 @@ function ViewDesktopHSetCardTypeFactory:new(o,ui_package_name,ui_component_name,
 	return o
 end
 
-function ViewDesktopHSetCardTypeFactory:createView()
+function ViewDesktopHSetCardTypeFactory:CreateView()
 	local view = ViewDesktopHSetCardType:new(nil)
 	return view
 end

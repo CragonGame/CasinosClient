@@ -26,7 +26,7 @@ end
 function ViewLogin:onCreate()
     print('ViewLogin:onCreate()')
 
-    self.ViewMgr:bindEvListener("EvUiChooseCountry", self)
+    self.ViewMgr:BindEvListener("EvUiChooseCountry", self)
 
     self:_switchController("LoginState", "LoginMain")
     ViewHelper:UiEndWaiting()
@@ -225,7 +225,7 @@ function ViewLogin:onCreate()
     --self.DengLongRender.sortingOrder = 4
 
     local bg = com_bg:GetChild("bg")
-    ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center, { self.HolderMote })
+    ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center, { self.HolderMote })
 
     self.ComboChooseUCenter = self.ComUi:GetChild("ComboChooseUCenter").asComboBox
     self.ComboChooseGateWay = self.ComUi:GetChild("ComboChooseGateWay").asComboBox
@@ -311,22 +311,22 @@ end
 
 ---------------------------------------
 function ViewLogin:onClickUCenter()
-    local ev = self.ViewMgr:getEv("EvUiChooseUCenter")
+    local ev = self.ViewMgr:GetEv("EvUiChooseUCenter")
     if (ev == nil) then
         ev = EvUiChooseUCenter:new(nil)
     end
     ev.ucenter = self.ComboChooseUCenter.text
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewLogin:onClickGateway()
-    local ev = self.ViewMgr:getEv("EvUiChooseGateWay")
+    local ev = self.ViewMgr:GetEv("EvUiChooseGateWay")
     if (ev == nil) then
         ev = EvUiChooseGateWay:new(nil)
     end
     ev.gateway = self.ComboChooseGateWay.text
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -415,7 +415,7 @@ function ViewLogin:_onClickBtnLogin()
     if (self:_hasAgreeAgreement() == false) then
         return
     end
-    local ev = self.ViewMgr:getEv("EvUiLogin")
+    local ev = self.ViewMgr:GetEv("EvUiLogin")
     if (ev == nil) then
         ev = EvUiLogin:new(nil)
     end
@@ -424,7 +424,7 @@ function ViewLogin:_onClickBtnLogin()
     ev.pwd = self.GTextInputPwdLogin.text
     ev.remeber_pwd = true
     ev.phone = self.GTextInputAccLogin.text
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -438,7 +438,7 @@ function ViewLogin:_onClickBtnGuestAccess()
         return
     end
 
-    local ev = self.ViewMgr:getEv("EvUiLogin")
+    local ev = self.ViewMgr:GetEv("EvUiLogin")
     if (ev == nil) then
         ev = EvUiLogin:new(nil)
     end
@@ -448,7 +448,7 @@ function ViewLogin:_onClickBtnGuestAccess()
     ev.remeber_pwd = true
     ev.phone = ""
 
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -461,7 +461,7 @@ function ViewLogin:_onClickWeiXin()
         return
     end
 
-    local ev = self.ViewMgr:getEv("EvUiLogin")
+    local ev = self.ViewMgr:GetEv("EvUiLogin")
     if (ev == nil) then
         ev = EvUiLogin:new(nil)
     end
@@ -471,7 +471,7 @@ function ViewLogin:_onClickWeiXin()
     ev.remeber_pwd = true
     ev.phone = ""
 
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -539,7 +539,7 @@ end
 
 ---------------------------------------
 function ViewLogin:_onClickComLink()
-    self.ViewMgr:createView("About")
+    self.ViewMgr:CreateView("About")
 end
 
 ---------------------------------------
@@ -575,7 +575,7 @@ function ViewLoginFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewLoginFactory:createView()
+function ViewLoginFactory:CreateView()
     local view = ViewLogin:new(nil)
     return view
 end

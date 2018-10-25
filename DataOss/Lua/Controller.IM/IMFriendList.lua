@@ -62,15 +62,15 @@ function IMFriendList:OnIMFriendLoginNotify(player_guid)
 		then
 			table.insert(self.ListOnLineFriendGuid,player_guid)
 		end
-		local friend_onLine = self.ControllerIM.ControllerMgr.ViewMgr:createView("FriendOnLine")
+		local friend_onLine = self.ControllerIM.ControllerMgr.ViewMgr:CreateView("FriendOnLine")
 		friend_onLine:setFriendInfo(player_info)
-		local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityFriendOnlineStateChange")
+		local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityFriendOnlineStateChange")
 		if(ev == nil)
 		then
 			ev = EvEntityFriendOnlineStateChange:new(nil)
 		end
 		ev.player_info = player_info
-		self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+		self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 	end
 end
 
@@ -105,13 +105,13 @@ function IMFriendList:OnIMFriendLogoutNotify(player_guid)
 		then
 			table.insert(self.ListOffLineFriendGuid,player_guid)
 		end
-		local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityFriendOnlineStateChange")
+		local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityFriendOnlineStateChange")
 		if(ev == nil)
 		then
 			ev = EvEntityFriendOnlineStateChange:new(nil)
 		end
 		ev.player_info = player_info
-		self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+		self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 	end
 end
 
@@ -123,13 +123,13 @@ function IMFriendList:OnIMFriendInfoCommonUpdateNotify(player_info_common)
 	then
 		player_info.PlayerInfoCommon = p_i.PlayerInfoCommon
 		self.MapFriendState[player_info.PlayerInfoCommon.PlayerGuid] = CasinoHelper:TranslateFriendStateEx(player_info)
-		local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityRefreshFriendInfo")
+		local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityRefreshFriendInfo")
 		if(ev == nil)
 		then
 			ev = EvEntityRefreshFriendInfo:new(nil)
 		end
 		ev.player_info = player_info
-		self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+		self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 	end
 end
 
@@ -142,13 +142,13 @@ function IMFriendList:OnIMFriendInfoMoreUpdateNotify(player_info_more)
 		player_info.PlayerInfoCommon = p_i.PlayerInfoCommon
 		player_info.PlayerInfoMore = p_i.PlayerInfoMore
 		self.MapFriendState[player_info.PlayerInfoCommon.PlayerGuid] = CasinoHelper:TranslateFriendStateEx(player_info)
-		local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityRefreshFriendInfo")
+		local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityRefreshFriendInfo")
 		if(ev == nil)
 		then
 			ev = EvEntityRefreshFriendInfo:new(nil)
 		end
 		ev.player_info = player_info
-		self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+		self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 	end
 end
 
@@ -161,13 +161,13 @@ function IMFriendList:OnIMFriendInfoRealtimeUpdateNotify(player_info_realtime)
 		player_info.PlayerInfoCommon = p_i.PlayerInfoCommon
 		player_info.PlayerPlayState = p_i.PlayerPlayState
 		self.MapFriendState[player_info.PlayerInfoCommon.PlayerGuid] = CasinoHelper:TranslateFriendStateEx(player_info)
-		local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityRefreshFriendInfo")
+		local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityRefreshFriendInfo")
 		if(ev == nil)
 		then
 			ev = EvEntityRefreshFriendInfo:new(nil)
 		end
 		ev.player_info = player_info
-		self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+		self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 	end
 end
 
@@ -224,13 +224,13 @@ function IMFriendList:OnIMFriendListAddNotify(list_player)
 	end
 
 	self.ControllerIM.IMChat:sortChatPlayerList()
-	local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityRefreshFriendList")
+	local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityRefreshFriendList")
 	if(ev == nil)
 	then
 		ev = EvEntityRefreshFriendList:new(nil)
 	end
 	ev.map_friendinfo = self.MapFriendList
-	self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+	self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 function IMFriendList:OnIMFriendListRemoveNotify(player_guid)
@@ -271,14 +271,14 @@ function IMFriendList:OnIMFriendListRemoveNotify(player_guid)
 		self.MapFriendList[player_guid] = nil
 		ViewHelper:UiShowInfoSuccess(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("DeleteFriendSuccess"))
 		self.ControllerIM.IMChat:deletePlayerChatRecord(player_guid)
-		local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityNotifyDeleteFriend")
+		local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityNotifyDeleteFriend")
 		if(ev == nil)
 		then
 			ev = EvEntityNotifyDeleteFriend:new(nil)
 		end
 		ev.map_friend = self.MapFriendList
 		ev.friend_etguid = player_guid
-		self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+		self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 	end
 end
 
@@ -289,13 +289,13 @@ function IMFriendList:OnIMFindFriendNotify(list_player)
 		p_i:setData(v)
 		table.insert(l_p,p_i)
 	end
-	local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityFindFriend")
+	local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityFindFriend")
 	if(ev == nil)
 	then
 		ev = EvEntityFindFriend:new(nil)
 	end
 	ev.list_friend_item = l_p
-	self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+	self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 function IMFriendList:OnIMRecommandFriendNotify(list_player)
@@ -308,13 +308,13 @@ function IMFriendList:OnIMRecommandFriendNotify(list_player)
 			table.insert(self.ListRecommendPlayer,p_i)
 		end
 	end
-	local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityRecommendPlayerList")
+	local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityRecommendPlayerList")
 	if(ev == nil)
 	then
 		ev = EvEntityRecommendPlayerList:new(nil)
 	end
 	ev.list_recommend = self.ListRecommendPlayer
-	self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+	self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 function IMFriendList:OnIMEventPush2ClientNotify(ev)
@@ -322,7 +322,7 @@ function IMFriendList:OnIMEventPush2ClientNotify(ev)
 	i_e:setData(ev)
 	if(i_e.EvId == IMOfflineEventId.AddFriendRequest)
 	then
-		local view_friendRequest = self.ControllerIM.ControllerMgr.ViewMgr:createView("AgreeOrDisAddFriendRequest")
+		local view_friendRequest = self.ControllerIM.ControllerMgr.ViewMgr:CreateView("AgreeOrDisAddFriendRequest")
 		view_friendRequest:addFriend(i_e)
 	end
 end
@@ -334,14 +334,14 @@ function IMFriendList:OnIMFriendGoldUpdate(gold_update)
 	local friend_info = self.MapFriendList[friend_guid]
 	if friend_info ~= nil then
 		friend_info.PlayerInfoMore.Gold = gold_data.GoldAcc
-		local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityFriendGoldChange")
+		local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityFriendGoldChange")
 		if(ev == nil)
 		then
 			ev = EvEntityFriendGoldChange:new(nil)
 		end
 		ev.friend_guid = friend_guid
 		ev.current_gold = gold_data.GoldAcc
-		self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+		self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 	end
 end
 

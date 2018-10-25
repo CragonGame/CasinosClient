@@ -22,15 +22,15 @@ function ControllerLobby:onCreate()
     self.ControllerIM = self.ControllerMgr:GetController("IM")
     self.ControllerDesktop = self.ControllerMgr:GetController("Desktop")
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
-    self.ViewMgr:bindEvListener("EvUiClickSearchDesk", self)
-    self.ViewMgr:bindEvListener("EvUiClickSearchFriendsDesk", self)
-    self.ViewMgr:bindEvListener("EvUiClickPlayInDesk", self)
-    self.ViewMgr:bindEvListener("EvUiClickViewInDesk", self)
-    self.ViewMgr:bindEvListener("EvUiClickLeaveLobby", self)
-    self.ViewMgr:bindEvListener("EvUiRequestGetCurrentFriendPlayDesk", self)
-    self.ViewMgr:bindEvListener("EvUiClickCreateDeskTop", self)
-    self.ViewMgr:bindEvListener("EvUiClickExitDesk", self)
-    self.ViewMgr:bindEvListener("EvUiRequestEnterDesktopGFlower", self)-- 相当于PlayerNow，可以把GFlow特殊改为通用
+    self.ViewMgr:BindEvListener("EvUiClickSearchDesk", self)
+    self.ViewMgr:BindEvListener("EvUiClickSearchFriendsDesk", self)
+    self.ViewMgr:BindEvListener("EvUiClickPlayInDesk", self)
+    self.ViewMgr:BindEvListener("EvUiClickViewInDesk", self)
+    self.ViewMgr:BindEvListener("EvUiClickLeaveLobby", self)
+    self.ViewMgr:BindEvListener("EvUiRequestGetCurrentFriendPlayDesk", self)
+    self.ViewMgr:BindEvListener("EvUiClickCreateDeskTop", self)
+    self.ViewMgr:BindEvListener("EvUiClickExitDesk", self)
+    self.ViewMgr:BindEvListener("EvUiRequestEnterDesktopGFlower", self)-- 相当于PlayerNow，可以把GFlow特殊改为通用
 
     local rpc = self.ControllerMgr.RPC
     rpc:RegRpcMethod1(CommonMethodType.SearchDesktopListNotify, function(list_desktopinfo)
@@ -43,7 +43,7 @@ end
 
 ---------------------------------------
 function ControllerLobby:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -52,12 +52,12 @@ function ControllerLobby:onHandleEv(ev)
         self:RequestSearchDesktop(ev.desktop_searchfilter)
     elseif (ev.EventName == "EvUiClickSearchFriendsDesk") then
         local list_playerinfo = self.ControllerIM.IMFriendList:getInDesktopFriendList(ev.friend_state)
-        local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySearchPlayingFriend")
+        local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntitySearchPlayingFriend")
         if (ev == nil) then
             ev = EvEntitySearchPlayingFriend:new(nil)
         end
         ev.list_playerinfo = list_playerinfo
-        self.ControllerMgr.ViewMgr:sendEv(ev)
+        self.ControllerMgr.ViewMgr:SendEv(ev)
     elseif (ev.EventName == "EvUiClickPlayInDesk") then
         self:RequestEnterDesktop(ev.desk_etguid, true, ev.seat_index, ev.desktop_filter:getData4Pack())
     elseif (ev.EventName == "EvUiClickViewInDesk") then
@@ -105,12 +105,12 @@ function ControllerLobby:OnSearchDesktopListNotify(list_desktopinfo)
         d_info.DesktopData = v[3]
         table.insert(l_desktopinfo, d_info)
     end
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityGetLobbyDeskList")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGetLobbyDeskList")
     if (ev == nil) then
         ev = EvEntityGetLobbyDeskList:new()
     end
     ev.list_desktop = l_desktopinfo
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -119,12 +119,12 @@ function ControllerLobby:OnSearchDesktopByPlayerGuidNotify(desktop_info)
     d_info.FactoryName = desktop_info[1]
     d_info.DesktopGuid = desktop_info[2]
     d_info.DesktopData = desktop_info[3]
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySearchDesktopFollowFriend")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntitySearchDesktopFollowFriend")
     if (ev == nil) then
         ev = EvEntitySearchDesktopFollowFriend:new()
     end
     ev.desktop_info = d_info
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

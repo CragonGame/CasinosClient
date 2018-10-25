@@ -54,7 +54,7 @@ end
 function ViewDesktopHintsTexas:_onClickBtnClose()
     self.TransitionCreate:PlayReverse(
             function()
-                self.ViewMgr:destroyView(self)
+                self.ViewMgr:DestroyView(self)
             end
     )
 end
@@ -77,7 +77,7 @@ function ViewDesktopHintsTexasFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewDesktopHintsTexasFactory:createView()
+function ViewDesktopHintsTexasFactory:CreateView()
     local view = ViewDesktopHintsTexas:new(nil)
     return view
 end

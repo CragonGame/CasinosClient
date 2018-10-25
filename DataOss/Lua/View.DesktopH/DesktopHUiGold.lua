@@ -31,7 +31,7 @@ end
 ---------------------------------------
 function DesktopHUiGold:onCreate()
     local view_mgr = ViewMgr:new(nil)
-    self.ViewDesktopH = view_mgr:getView("DesktopH")
+    self.ViewDesktopH = view_mgr:GetView("DesktopH")
     self.GCoGold = CS.FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(), "Gold" .. self.ViewDesktopH.FactoryName)
     self.ViewDesktopH.GCoDesktopHPoolParent:AddChild(self.GCoGold)
     self.ParentSortOrder = self.ViewDesktopH.ComUi.sortingOrder

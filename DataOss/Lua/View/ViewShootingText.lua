@@ -25,14 +25,14 @@ end
 ---------------------------------------
 function ViewShootingText:onCreate()
     self.ControllerPlayerMarquee = self.ViewMgr.ControllerMgr:GetController("Marquee")
-    self.ViewPool = self.ViewMgr:getView("Pool")
+    self.ViewPool = self.ViewMgr:GetView("Pool")
     self.MapItemShootingText = {}
-    self.ViewMgr:bindEvListener("EvEntityReceiceMarquee", self)
+    self.ViewMgr:BindEvListener("EvEntityReceiceMarquee", self)
 end
 
 ---------------------------------------
 function ViewShootingText:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
     if (self.Marquee ~= nil) then
         self.Marquee:destroy()
     end
@@ -173,7 +173,7 @@ end
 
 ---------------------------------------
 function ViewShootingText:onClickMarquee()
-    self.ViewMgr:createView("Notice")
+    self.ViewMgr:CreateView("Notice")
 end
 
 ---------------------------------------
@@ -240,7 +240,7 @@ function ViewMarquee:playMarquee()
     else
         if (self.AlwaysShow == false) then
             if (#self.MapItemMarquee == 0) then
-                self.ViewShootingText.ViewMgr:destroyView(self.ViewShootingText)
+                self.ViewShootingText.ViewMgr:DestroyView(self.ViewShootingText)
             end
         end
         self.HaveMarquee = false
@@ -278,7 +278,7 @@ function ViewShootingTextFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewShootingTextFactory:createView()
+function ViewShootingTextFactory:CreateView()
     local view = ViewShootingText:new(nil)
     return view
 end

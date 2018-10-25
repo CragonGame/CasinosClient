@@ -179,12 +179,12 @@ end
 
 ---------------------------------------
 function Native:ActionGetPicSuccessWithBytes(pic_data)
-    local ev = self.ViewMgr:getEv("EvGetPicSuccess")
+    local ev = self.ViewMgr:GetEv("EvGetPicSuccess")
     if (ev == nil) then
         ev = EvGetPicSuccess:new(nil)
     end
     ev.pic_data = pic_data
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -194,12 +194,12 @@ end
 
 ---------------------------------------
 function Native:ActionPayWithIAPSuccess(purchase)
-    local ev = self.ViewMgr:getEv("EvPayWithIAPSuccess")
+    local ev = self.ViewMgr:GetEv("EvPayWithIAPSuccess")
     if (ev == nil) then
         ev = EvPayWithIAPSuccess:new(nil)
     end
     ev.purchase = purchase
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -256,11 +256,11 @@ end
 ---------------------------------------
 function Native:ActionLoginSuccess(param, real_token)
     if (param == "Login") then
-        local ev = self.ViewMgr:getEv("EvUiLoginSuccessEx")
+        local ev = self.ViewMgr:GetEv("EvUiLoginSuccessEx")
         if (ev == nil) then
             ev = EvUiLoginSuccessEx:new(nil)
         end
         ev.token = real_token
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 end

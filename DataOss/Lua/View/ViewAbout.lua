@@ -58,7 +58,7 @@ end
 
 ---------------------------------------
 function ViewAbout:onClickBtnClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -89,7 +89,7 @@ function ViewAboutFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewAboutFactory:createView()
+function ViewAboutFactory:CreateView()
     local view = ViewAbout:new(nil)
     return view
 end

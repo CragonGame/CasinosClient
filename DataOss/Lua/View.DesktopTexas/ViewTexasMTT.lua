@@ -31,7 +31,7 @@ function ViewTexasMTT:new(o, view_desktop)
     )
     local loader_bg = com_desktop:GetChild("LoaderBg").asLoader
     loader_bg.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop", "MTTBg")
-    ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, o.ViewDesktop.ComUi.width, o.ViewDesktop.ComUi.height, loader_bg.width, loader_bg.height, loader_bg, BgAttachMode.Center)
+    ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, o.ViewDesktop.ComUi.width, o.ViewDesktop.ComUi.height, loader_bg.width, loader_bg.height, loader_bg, BgAttachMode.Center)
     local loader_desk = com_desktop:GetChild("LoaderDesk").asLoader
     loader_desk.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop", "MTTDesk")
 
@@ -131,15 +131,15 @@ function ViewTexasMTT:setSnapShot(snapshot, is_init)
     local getdesktop_leftsec = match_texas.PauseCountDownLeftSec
     local view_mgr = self.ViewDesktop.ViewMgr
     if getdesktop_leftsec > 0 then
-        local waiting_countdown = view_mgr:getView("WaitingCountDown")
+        local waiting_countdown = view_mgr:GetView("WaitingCountDown")
         if waiting_countdown == nil then
-            waiting_countdown = view_mgr:createView("WaitingCountDown")
+            waiting_countdown = view_mgr:CreateView("WaitingCountDown")
         end
         waiting_countdown:setTips(view_mgr.LanMgr:getLanValue("MatchBegine"), getdesktop_leftsec)
     else
-        local waiting_countdown = view_mgr:getView("WaitingCountDown")
+        local waiting_countdown = view_mgr:GetView("WaitingCountDown")
         if waiting_countdown ~= nil then
-            view_mgr:destroyView(waiting_countdown)
+            view_mgr:DestroyView(waiting_countdown)
         end
         local can_rebuy = self.ViewDesktop.Desktop.DesktopTypeBase.MeCanRebuy
         ViewHelper:setGObjectVisible(can_rebuy, self.BtnRebuy)
@@ -271,31 +271,31 @@ end
 ---------------------------------------
 function ViewTexasMTT:_onClickMenu()
     local view_mgr = self.ViewDesktop.ViewMgr
-    local msg_box = view_mgr:getView("MsgBox")
+    local msg_box = view_mgr:GetView("MsgBox")
     if msg_box == nil then
-        msg_box = view_mgr:createView("MsgBox")
+        msg_box = view_mgr:CreateView("MsgBox")
     end
     msg_box:useTwoBtn("", view_mgr.LanMgr:getLanValue("ExitMatchTip"),
             function()
-                local ev = self.ViewDesktop.ViewMgr:getEv("EvUiClickExitDesk")
+                local ev = self.ViewDesktop.ViewMgr:GetEv("EvUiClickExitDesk")
                 if (ev == nil)
                 then
                     ev = EvUiClickExitDesk:new(nil)
                 end
-                self.ViewDesktop.ViewMgr:sendEv(ev)
-                self.ViewDesktop.ViewMgr:destroyView(msg_box)
+                self.ViewDesktop.ViewMgr:SendEv(ev)
+                self.ViewDesktop.ViewMgr:DestroyView(msg_box)
             end,
             function()
-                self.ViewDesktop.ViewMgr:destroyView(msg_box)
+                self.ViewDesktop.ViewMgr:DestroyView(msg_box)
             end
     )
 end
 
 ---------------------------------------
 function ViewTexasMTT:_onClickRealTimeInfo()
-    local view_matchinfo = self.ViewDesktop.ViewMgr:getView("MatchInfo")
+    local view_matchinfo = self.ViewDesktop.ViewMgr:GetView("MatchInfo")
     if view_matchinfo == nil then
-        view_matchinfo = self.ViewDesktop.ViewMgr:createView("MatchInfo")
+        view_matchinfo = self.ViewDesktop.ViewMgr:CreateView("MatchInfo")
     end
     view_matchinfo:Init(self.MatchGuid, true, true)
 end
@@ -303,12 +303,12 @@ end
 ---------------------------------------
 function ViewTexasMTT:_onClickBtnRebuyOrAddon()
     local view_mgr = self.ViewDesktop.ViewMgr
-    local ev = view_mgr:getEv("EvUiMTTCreateRebuyOrAddOn")
+    local ev = view_mgr:GetEv("EvUiMTTCreateRebuyOrAddOn")
     if (ev == nil)
     then
         ev = EvUiMTTCreateRebuyOrAddOn:new(nil)
     end
-    view_mgr:sendEv(ev)
+    view_mgr:SendEv(ev)
 end
 
 ---------------------------------------

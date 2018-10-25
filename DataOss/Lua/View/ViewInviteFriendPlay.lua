@@ -43,11 +43,11 @@ function ViewInviteFriendPlay:onCreate()
 			self:onClickBtnClose()
 		end
 	)
-	self.ViewMgr:bindEvListener("EvEntityFriendOnlineStateChange",self)
+	self.ViewMgr:BindEvListener("EvEntityFriendOnlineStateChange",self)
 end
 
 function ViewInviteFriendPlay:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewInviteFriendPlay:onHandleEv(ev)
@@ -66,7 +66,7 @@ function ViewInviteFriendPlay:setFriend()
 end
 
 function ViewInviteFriendPlay:onClickBtnClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 function ViewInviteFriendPlay:rendererOnLineFriend(index,item)
@@ -117,7 +117,7 @@ function ViewInviteFriendPlayFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewInviteFriendPlayFactory:createView()	
+function ViewInviteFriendPlayFactory:CreateView()
 	local view = ViewInviteFriendPlay:new(nil)	
 	return view
 end

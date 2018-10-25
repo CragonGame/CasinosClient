@@ -33,14 +33,14 @@ function ItemUiShopGold:new(o,view_shop,gold,tb_item)
 end
 
 function ItemUiShopGold:onClickBtnBuy()
-    local ev = self.ViewShop.ViewMgr:getEv("EvUiRequestBuyGold")
+    local ev = self.ViewShop.ViewMgr:GetEv("EvUiRequestBuyGold")
     if(ev == nil)
     then
         ev = EvUiRequestBuyGold:new(nil)
     end
     print("ItemUiShopGold:onClickBtnBuy      "..self.TbDataItem.Id)
     ev.buy_goldid = self.TbDataItem.Id
-    self.ViewShop.ViewMgr:sendEv(ev)
+    self.ViewShop.ViewMgr:SendEv(ev)
 end
 
 function ItemUiShopGold:onClick()

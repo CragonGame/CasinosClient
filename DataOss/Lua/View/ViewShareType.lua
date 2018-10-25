@@ -42,27 +42,27 @@ end
 
 ---------------------------------------
 function ViewShareType:onClickBtnWeChat()
-    local ev = self.ViewMgr:getEv("EvClickShare")
+    local ev = self.ViewMgr:GetEv("EvClickShare")
     if (ev == nil) then
         ev = EvClickShare:new(nil)
     end
     ev.ShareType = ShareType.WeChat
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewShareType:onClickBtnWeChatMoments()
-    local ev = self.ViewMgr:getEv("EvClickShare")
+    local ev = self.ViewMgr:GetEv("EvClickShare")
     if (ev == nil) then
         ev = EvClickShare:new(nil)
     end
     ev.ShareType = ShareType.WeChatMoments
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewShareType:onClickClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -83,7 +83,7 @@ function ViewShareTypeFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewShareTypeFactory:createView()
+function ViewShareTypeFactory:CreateView()
     local view = ViewShareType:new(nil)
     return view
 end

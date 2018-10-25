@@ -38,13 +38,13 @@ end
 
 function ItemChooseChatTargetInfo:onClickChooseTarget()
 	local view_mgr = ViewMgr:new(nil)
-	local ev = ViewMgr:getEv("EvUiClickChooseFriend")
+	local ev = ViewMgr:GetEv("EvUiClickChooseFriend")
 	if(ev == nil)
 	then
 		ev = EvUiClickChooseFriend:new(nil)
 	end
     ev.friend_info = self.FriendInfo
     ev.is_choosechat = true
-    view_mgr:sendEv(ev)
+    view_mgr:SendEv(ev)
 end
 

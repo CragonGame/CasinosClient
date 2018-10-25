@@ -46,11 +46,11 @@ function ControllerBag:onCreate()
         self:OnBagOperateItemNotify(item_data)
     end)
 
-    self.ViewMgr:bindEvListener("EvUiRemoveItem", self)
-    self.ViewMgr:bindEvListener("EvUiRequestOperateItem", self)
-    self.ViewMgr:bindEvListener("EvBindWeChat", self)
-    self.ViewMgr:bindEvListener("EvUiLoginSuccessEx", self)
-    self.ViewMgr:bindEvListener("EvOpenBag", self)
+    self.ViewMgr:BindEvListener("EvUiRemoveItem", self)
+    self.ViewMgr:BindEvListener("EvUiRequestOperateItem", self)
+    self.ViewMgr:BindEvListener("EvBindWeChat", self)
+    self.ViewMgr:BindEvListener("EvUiLoginSuccessEx", self)
+    self.ViewMgr:BindEvListener("EvOpenBag", self)
 
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.MapItem = {}
@@ -58,7 +58,7 @@ function ControllerBag:onCreate()
     self.ListItemConsume = {}
     self.CurrentGift = nil
     self:haveNewItem()
-    local view_main = self.ControllerMgr.ViewMgr:getView("Main")
+    local view_main = self.ControllerMgr.ViewMgr:GetView("Main")
     if view_main ~= nil then
         view_main:setNewItem()
     end
@@ -66,7 +66,7 @@ end
 
 ---------------------------------------
 function ControllerBag:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
     self.MapItem = {}
     self.MapItem = nil
     self.ListItemGiftNormal = {}
@@ -143,12 +143,12 @@ function ControllerBag:s2cBagGiftChangedNotify(item_data)
         self.CurrentGift = Item:new(nil, eb_data_mgr, data)
     end
 
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityCurrentTmpGiftChange")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityCurrentTmpGiftChange")
     if (ev == nil)
     then
         ev = EvEntityCurrentTmpGiftChange:new(nil)
     end
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -168,13 +168,13 @@ function ControllerBag:s2cBagDeleteItemNotify(result, item_objid)
     end
     self:removeItemFromList(self.ListItemGiftNormal, item_objid)
     self:removeItemFromList(self.ListItemConsume, item_objid)
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityBagDeleteItem")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityBagDeleteItem")
     if (ev == nil)
     then
         ev = EvEntityBagDeleteItem:new(nil)
     end
     ev.item_objid = item_objid
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -205,13 +205,13 @@ function ControllerBag:s2cOnOperateItem(result)
     then
         return
     end
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityBagOperateItem")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityBagOperateItem")
     if(ev == nil)
     then
         ev = EvEntityBagOperateItem:new(nil)
     end
     ev.item = item
-    self.ControllerMgr.ViewMgr:sendEv(ev)]]
+    self.ControllerMgr.ViewMgr:SendEv(ev)]]
 end
 
 ---------------------------------------
@@ -241,7 +241,7 @@ function ControllerBag:s2cBagAddItemNotify(item_data)
             then
                 local msg = CS.System.String.Format("%s%s：%s", gift_normal.GiveBy, self.ViewMgr.LanMgr:getLanValue("SendItems"),
                         item.TbDataItem.Name)
-                local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
+                local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
                 msg_box:showMsgBox1(self.ViewMgr.LanMgr:getLanValue("ReceiveItems"), msg, nil)
             end
         end
@@ -257,13 +257,13 @@ function ControllerBag:s2cBagAddItemNotify(item_data)
     CS.UnityEngine.PlayerPrefs.SetInt(newitem_key, newitem_num)
 
     self:haveNewItem()
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityBagAddItem")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityBagAddItem")
     if (ev == nil)
     then
         ev = EvEntityBagAddItem:new(nil)
     end
     ev.item = item
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -278,13 +278,13 @@ function ControllerBag:s2cBagUpdateItemNotify(item_data)
     local msg = self.ViewMgr.LanMgr:getLanValue("UpdateProp") .. self.ControllerMgr.LanMgr:getLanValue(item.TbDataItem.Name)
     ViewHelper:UiShowInfoSuccess(msg)
 
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityBagUpdateItem")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityBagUpdateItem")
     if (ev == nil)
     then
         ev = EvEntityBagUpdateItem:new(nil)
     end
     ev.item = item
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 
     return item
 end

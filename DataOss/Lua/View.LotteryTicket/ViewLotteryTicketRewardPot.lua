@@ -65,10 +65,10 @@ end
 function ViewLotteryTicketRewardPot:onClick()
 	self:switchControllerRewardPot(self.ControllerRewardPot.selectedIndex == 1)
 	local view_mgr = ViewMgr:new(nil)
-	local ev = view_mgr:getEv("EvLotteryTicketClickRewardPotBtn")
+	local ev = view_mgr:GetEv("EvLotteryTicketClickRewardPotBtn")
 	if(ev == nil)
 	then
 		ev = EvLotteryTicketClickRewardPotBtn:new(nil)
 	end
-	view_mgr:sendEv(ev)
+	view_mgr:SendEv(ev)
 end

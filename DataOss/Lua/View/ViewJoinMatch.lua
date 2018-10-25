@@ -67,20 +67,20 @@ function ViewJoinMatch:onClickBtnDelete()
 end
 
 function ViewJoinMatch:onClickBtnClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 function ViewJoinMatch:onClickBtnNum(num)
 	self.Password = self.Password .. num
 	if(#self.Password == 6)
 	then
-		local ev = self.ViewMgr:getEv("EvUiRequestGetMatchDetailedInfoByInvitation")
+		local ev = self.ViewMgr:GetEv("EvUiRequestGetMatchDetailedInfoByInvitation")
 		if(ev == nil)
 		then
 			ev = EvUiRequestGetMatchDetailedInfoByInvitation:new(nil)
 		end
 		ev.InvitationCode = tonumber(self.Password)
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 		self.Password = ""
 	end
 	self:onPassWordChanged()
@@ -110,7 +110,7 @@ function ViewJoinMatchFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewJoinMatchFactory:createView()
+function ViewJoinMatchFactory:CreateView()
 	local view = ViewJoinMatch:new(nil)
 	return view
 end

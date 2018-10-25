@@ -41,7 +41,7 @@ function ViewDesktopHHelp:setComHelp(co_help)
 end
 
 function ViewDesktopHHelp:_onClickBtnHelpClose()        
-   self.ViewMgr:destroyView(self)
+   self.ViewMgr:DestroyView(self)
 end
 
 
@@ -61,7 +61,7 @@ function ViewDesktopHHelpFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewDesktopHHelpFactory:createView()	
+function ViewDesktopHHelpFactory:CreateView()
 	local view = ViewDesktopHHelp:new(nil)	
 	return view
 end

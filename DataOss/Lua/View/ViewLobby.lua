@@ -101,24 +101,23 @@ function ViewLobby:onCreate()
 
 	self:initPlayerInfo()
 	local bg = self.ComUi:GetChild("Bg")
-	if (bg ~= nil)
-	then
-		ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height,bg,BgAttachMode.Center)
+	if (bg ~= nil) then
+		ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height,bg,BgAttachMode.Center)
 	end
 	self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
 	self.ChipIconSolustion.selectedIndex = ChipIconSolustion
-	self.ViewMgr:bindEvListener("EvEntityGetLobbyDeskList",self)
-	self.ViewMgr:bindEvListener("EvEntitySearchDesktopFollowFriend",self)
-	self.ViewMgr:bindEvListener("EvEntityFriendOnlineStateChange",self)
-	self.ViewMgr:bindEvListener("EvEntityNotifyDeleteFriend",self)
-	self.ViewMgr:bindEvListener("EvEntityRefreshFriendList",self)
-	self.ViewMgr:bindEvListener("EvEntityRefreshFriendInfo",self)
-	self.ViewMgr:bindEvListener("EvEntitySearchPlayingFriend",self)
-	self.ViewMgr:bindEvListener("EvClickIconWithNickName",self)
+	self.ViewMgr:BindEvListener("EvEntityGetLobbyDeskList",self)
+	self.ViewMgr:BindEvListener("EvEntitySearchDesktopFollowFriend",self)
+	self.ViewMgr:BindEvListener("EvEntityFriendOnlineStateChange",self)
+	self.ViewMgr:BindEvListener("EvEntityNotifyDeleteFriend",self)
+	self.ViewMgr:BindEvListener("EvEntityRefreshFriendList",self)
+	self.ViewMgr:BindEvListener("EvEntityRefreshFriendInfo",self)
+	self.ViewMgr:BindEvListener("EvEntitySearchPlayingFriend",self)
+	self.ViewMgr:BindEvListener("EvClickIconWithNickName",self)
 end
 
 function ViewLobby:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewLobby:onHandleEv(ev)
@@ -197,13 +196,13 @@ end
 
 function ViewLobby:chooseCurrentPlayingFriend(player_info)
 	self.CurrentPlayingFriendInfo = player_info
-	local ev = self.ViewMgr:getEv("EvUiRequestGetCurrentFriendPlayDesk")
+	local ev = self.ViewMgr:GetEv("EvUiRequestGetCurrentFriendPlayDesk")
 	if(ev == nil)
 	then
 		ev = EvUiRequestGetCurrentFriendPlayDesk:new(nil)
 	end
 	ev.player_guid = self.CurrentPlayingFriendInfo.PlayerInfoCommon.PlayerGuid
-	self.ViewMgr:sendEv(ev);
+	self.ViewMgr:SendEv(ev);
 end
 
 function ViewLobby:requestLobbyDesk()
@@ -211,15 +210,15 @@ function ViewLobby:requestLobbyDesk()
 	dektop_filter.FactoryName = "Texas"
 	dektop_filter.IncludeFull = self.DeskSearchFilter.is_seat_full
 	local p_d = self.DeskSearchFilter:getData4Pack()
-	local p_filter = self.ViewMgr:packData(p_d)
+	local p_filter = self.ViewMgr:PackData(p_d)
 	dektop_filter.FilterData = p_filter --CS.Casinos.LuaHelper.ProtobufSerializeDesktopFilterTexas(self.DeskSearchFilter)
-	local ev = self.ViewMgr:getEv("EvUiClickSearchDesk")
+	local ev = self.ViewMgr:GetEv("EvUiClickSearchDesk")
 	if(ev == nil)
 	then
 		ev = EvUiClickSearchDesk:new(nil)
 	end
 	ev.desktop_searchfilter = dektop_filter
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 end
 
 function ViewLobby:setDeskTopInfo(list_desktop)
@@ -237,7 +236,7 @@ function ViewLobby:setDeskTopInfo(list_desktop)
 	end
 	for i = 1,#list_desktop do
 		local item = self.GListDesk:AddItemFromPool()
-		local desktop_info1 = self.ViewMgr:unpackData(list_desktop[i].DesktopData)--CS.Casinos.LuaHelper.ProtobufDeserializeDesktopInfoTexas(self.CasinosContext.MemoryStream,list_desktop[i].DesktopData)
+		local desktop_info1 = self.ViewMgr:UnpackData(list_desktop[i].DesktopData)--CS.Casinos.LuaHelper.ProtobufDeserializeDesktopInfoTexas(self.CasinosContext.MemoryStream,list_desktop[i].DesktopData)
 		local desktop_info = DesktopInfoTexas:new(nil)
 		desktop_info.desktop_etguid = desktop_info1[1]
 		desktop_info.seat_num  = desktop_info1[2]
@@ -387,16 +386,16 @@ function ViewLobby:onClickBtnBetReduce()
 end
 
 function ViewLobby:onClickBtnReturn()
-	local ev = self.ViewMgr:getEv("EvUiCreateMainUi")
+	local ev = self.ViewMgr:GetEv("EvUiCreateMainUi")
 	if(ev == nil)
 	then
 		ev = EvUiCreateMainUi:new(nil)
 	end
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 end
 
 function ViewLobby:onClickCreateDesktopBtn()
-	local mb_createdesk = self.ViewMgr:createView("CreateDeskTop")
+	local mb_createdesk = self.ViewMgr:CreateView("CreateDeskTop")
 	self.MapDesktopFilter = nil
 	self.MapDesktopFilter = {}
 	self.MapDesktopFilter[0] = self.DeskSearchFilter.seat_num
@@ -410,7 +409,7 @@ function ViewLobby:initDesktopSearchFilter()
 	if (CS.UnityEngine.PlayerPrefs.HasKey(self.LobbyFilterKey))
 	then
 		--local filter = CS.UnityEngine.PlayerPrefs.GetString(self.LobbyFilterKey)
-		--self.DeskSearchFilter = self.ViewMgr:unpackData(filter)
+		--self.DeskSearchFilter = self.ViewMgr:UnpackData(filter)
 		self.DeskSearchFilter = DesktopFilterTexas:new(nil)
 		self.DeskSearchFilter.is_vip = false
 		self.DeskSearchFilter.is_seat_full = false
@@ -485,7 +484,7 @@ function ViewLobby:onListDeskScorllEnd()
 end
 
 function ViewLobby:onSearchFilterChanged()
-	local filter =  self.ViewMgr:packData(self.DeskSearchFilter)-- CS.EbTool.jsonSerialize(self.DeskSearchFilter)
+	local filter =  self.ViewMgr:PackData(self.DeskSearchFilter)-- CS.EbTool.jsonSerialize(self.DeskSearchFilter)
 	CS.UnityEngine.PlayerPrefs.SetString(self.LobbyFilterKey, filter)
 	self.GListDesk.visible = false
 	local player_num = self.DeskSearchFilter.seat_num
@@ -568,13 +567,13 @@ function ViewLobby:rendererPlayingFriend(index,item)
 end
 
 function ViewLobby:refreshPlayingFriend()
-	local ev = self.ViewMgr:getEv("EvUiClickSearchFriendsDesk")
+	local ev = self.ViewMgr:GetEv("EvUiClickSearchFriendsDesk")
 	if(ev == nil)
 	then
 		ev = EvUiClickSearchFriendsDesk:new(nil)
 	end
 	ev.friend_state = _eFriendStateClient.TexasDesktopClassic
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 end
 
 
@@ -595,7 +594,7 @@ function ViewLobbyFactory:new(o,ui_package_name,ui_component_name,
 	return o
 end
 
-function ViewLobbyFactory:createView()
+function ViewLobbyFactory:CreateView()
 	local view = ViewLobby:new(nil)
 	return view
 end

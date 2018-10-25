@@ -72,11 +72,11 @@ function ItemDesktopHBetOperate:_setIsCurrentOperate(is_currentoperate)
 end
 
 function ItemDesktopHBetOperate:_onClick()        
-			local ev = self.ViewMgr:getEv("EvDesktopHClickBetOperateType")
+			local ev = self.ViewMgr:GetEv("EvDesktopHClickBetOperateType")
 				if(ev == nil)
 				then
 					ev = EvDesktopHClickBetOperateType:new(nil)
 				end		
 				ev.tb_bet_operateid = self.mTbOperateId
-				self.ViewMgr:sendEv(ev)          
+				self.ViewMgr:SendEv(ev)
 end

@@ -24,11 +24,11 @@ end
 
 function ItemAnte:onClick()
 	local view_mgr = ViewMgr:new(nil)
-	local view_playerprofile = view_mgr:getView("PlayerProfile")
+	local view_playerprofile = view_mgr:GetView("PlayerProfile")
 	if(self.IsBuy == false and view_playerprofile ~= nil)
 	then
 		return
 	end
-	local gift_detail = view_mgr:createView("GiftDetail")
+	local gift_detail = view_mgr:CreateView("GiftDetail")
 	gift_detail:setGift(self.ItemId, self.IsBuy, self.IsMine, self.ToGuid, self.FromName, self.GiftBelong, self.Item)
 end

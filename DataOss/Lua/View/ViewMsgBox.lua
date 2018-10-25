@@ -52,7 +52,7 @@ function ViewMsgBox:onUpdate(tm)
         self.AutoTm = auto_tm
         if auto_tm <= 0 then
             if self.AutoActionCancel ~= nil then
-                self.ViewMgr:destroyView(self)
+                self.ViewMgr:DestroyView(self)
 
                 self.AutoActionCancel()
                 self.AutoActionCancel = nil
@@ -147,7 +147,7 @@ function ViewMsgBox:useTwoBtn2(title, content, confirm_title, cancel_title, auto
 end
 
 function ViewMsgBox:onClickBtnOK()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 
     if (self.ActionOk ~= nil)
     then
@@ -166,7 +166,7 @@ function ViewMsgBox:onClickBtnOK()
 end
 
 function ViewMsgBox:onClickBtnCancel()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 
     if (self.ActionCancel ~= nil)
     then
@@ -199,7 +199,7 @@ function ViewMsgBoxFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
-function ViewMsgBoxFactory:createView()
+function ViewMsgBoxFactory:CreateView()
     local view = ViewMsgBox:new(nil)
     return view
 end

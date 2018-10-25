@@ -27,7 +27,7 @@ function ItemUiShopConsume:new(o,view_shop,com,tb_item)
 end
 
 function ItemUiShopConsume:onClickBtnBuy()
-	local ev = self.ViewShop.ViewMgr:getEv("EvUiBuyItem")
+	local ev = self.ViewShop.ViewMgr:GetEv("EvUiBuyItem")
 	if(ev == nil)
 	then
 		ev = EvUiBuyItem:new(nil)
@@ -35,5 +35,5 @@ function ItemUiShopConsume:onClickBtnBuy()
 	ev.item_id = self.TbDataItem.Id
 	local controller_player = self.ViewShop.ViewMgr.ControllerMgr:GetController("Player")
 	ev.to_etguid = controller_player.Guid
-    self.ViewShop.ViewMgr:sendEv(ev)
+    self.ViewShop.ViewMgr:SendEv(ev)
 end

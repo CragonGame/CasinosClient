@@ -44,7 +44,7 @@ function ItemCountryCode:setDetail(k,v)
 end
 
 function ItemCountryCode:onClickOperate()
-	local ev = self.ViewMgr:getEv("EvUiChooseCountry")
+	local ev = self.ViewMgr:GetEv("EvUiChooseCountry")
 	if(ev == nil)
 	then
 		ev = EvUiChooseCountry:new(nil)
@@ -52,6 +52,6 @@ function ItemCountryCode:onClickOperate()
 	ev.CountryKey = self.CountryKey
 	ev.CountryCode = self.CountryValue["Code"]
 	ev.KeyAndCodeFormat = self.KeyAndCodeFormat
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
     self.UiChooseCountryCode:setCurrentCode(self.CountryKey,false)
 end

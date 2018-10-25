@@ -133,24 +133,24 @@ function ViewEnterMatchNotify:closeComTips2()
     self.ComTips2.visible = false
     self.HasCloseComTips2 = true
     if (self.GGroupTip1.visible == false) then
-        self.ViewMgr:destroyView(self)
+        self.ViewMgr:DestroyView(self)
     end
 end
 
 ---------------------------------------
 function ViewEnterMatchNotify:close()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewEnterMatchNotify:onClickBtnEnterNow()
-    local ev = self.ViewMgr:getEv("EvUiRequestEnterMatch")
+    local ev = self.ViewMgr:GetEv("EvUiRequestEnterMatch")
     if (ev == nil) then
         ev = EvUiRequestEnterMatch:new(nil)
     end
     ev.MatchGuid = self.MatchGuid
-    self.ViewMgr:sendEv(ev)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:SendEv(ev)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -171,7 +171,7 @@ function ViewEnterMatchNotifyFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewEnterMatchNotifyFactory:createView()
+function ViewEnterMatchNotifyFactory:CreateView()
     local view = ViewEnterMatchNotify:new(nil)
     return view
 end

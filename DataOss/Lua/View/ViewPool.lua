@@ -333,7 +333,7 @@ function ViewPoolFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewPoolFactory:createView()
+function ViewPoolFactory:CreateView()
     local view = ViewPool:new(nil)
     return view
 end

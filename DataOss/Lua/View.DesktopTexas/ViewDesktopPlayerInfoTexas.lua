@@ -50,19 +50,19 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:onCreate()
-    self.ViewMgr:bindEvListener("EvEntityRecvChatFromDesktop", self)
-    self.ViewMgr:bindEvListener("EvCurrentWinner", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopShowdownNotify", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopGameEndNotifyTexas", self)
-    self.ViewMgr:bindEvListener("EvEntitySelfAutoActionChange", self)
-    self.ViewMgr:bindEvListener("EvCommonCardShowEnd", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopPreFlopNotify", self)
+    self.ViewMgr:BindEvListener("EvEntityRecvChatFromDesktop", self)
+    self.ViewMgr:BindEvListener("EvCurrentWinner", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopShowdownNotify", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopGameEndNotifyTexas", self)
+    self.ViewMgr:BindEvListener("EvEntitySelfAutoActionChange", self)
+    self.ViewMgr:BindEvListener("EvCommonCardShowEnd", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopPreFlopNotify", self)
     self.ComUi.onClick:Add(
             function()
                 self:_onClickSelf()
             end
     )
-    self.ViewDesktop = self.ViewMgr:getView("DesktopTexas")
+    self.ViewDesktop = self.ViewMgr:GetView("DesktopTexas")
     self.GTextActionOrName = self.ComUi:GetChild("ActionOrNameLable").asTextField
     self.GTextDesktopAmount = self.ComUi:GetChild("DesktopAmountLable").asTextField
     local com_headicon = self.ComUi:GetChild("ComHeadIcon").asCom
@@ -112,7 +112,7 @@ function ViewDesktopPlayerInfoTexas:onDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
     if (self.ItemChatDesktop ~= nil) then
         self.ViewDesktop.UiDesktopChatParent:destroyChat(self.ItemChatDesktop)
     end
@@ -603,7 +603,7 @@ function ViewDesktopPlayerInfoTexas:sendMagicExp(exp)
         local from_pos = from_player.UiDesktopPlayerInfo.PlayerSeatWidgetControllerEx.SeatWidget.GComChipStart.xy
         from_pos = from_player.UiDesktopPlayerInfo.ComUi:TransformPoint(from_pos, self.ComUi)
         local to_pos = self.PlayerSeatWidgetControllerEx.SeatWidget.GComChipStart.xy
-        local ui_pool = self.ViewMgr:getView("Pool")
+        local ui_pool = self.ViewMgr:GetView("Pool")
         local item_magicsender = ui_pool:getMagicExpSender()
         self.ComUi:AddChild(item_magicsender.GCoMagicExpSender)
         item_magicsender:sendMagicExp(from_pos, to_pos, exp.item_tbid)
@@ -769,12 +769,12 @@ end
 function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
     --ViewHelper:setGObjectVisible(false, self.GImagePlayerShadow)
     self:showShade(false)
-    local ev = self.ViewMgr:getEv("EvCurrentWinner")
+    local ev = self.ViewMgr:GetEv("EvCurrentWinner")
     if (ev == nil) then
         ev = EvCurrentWinner:new(nil)
     end
     ev.player = self.Player
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 
     self.PlayerShowTips:showWinGold(showWinStar)
 
@@ -1015,9 +1015,9 @@ end
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:_onClickSelf()
     if (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid) then
-        self.ViewMgr:createView("ChatExPression")
+        self.ViewMgr:CreateView("ChatExPression")
     else
-        local ui_profile = self.ViewMgr:createView("PlayerProfile")
+        local ui_profile = self.ViewMgr:CreateView("PlayerProfile")
         ui_profile:setPlayerGuid(CS.Casinos._ePlayerProfileType.Desktop, self.Player.Guid,
                 function(player_info, head_icon)
                     self:_playerInfo(player_info, head_icon)
@@ -1107,7 +1107,7 @@ function ViewDesktopPlayerInfoTexasFactory:new(o, ui_package_name, ui_component_
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexasFactory:createView()
+function ViewDesktopPlayerInfoTexasFactory:CreateView()
     local view = ViewDesktopPlayerInfoTexas:new(nil)
     return view
 end

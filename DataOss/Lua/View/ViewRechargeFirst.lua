@@ -45,16 +45,16 @@ end
 
 ---------------------------------------
 function ViewRechargeFirst:onClickBtnReturn()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewRechargeFirst:onClickCharge()
-    local ev = self.ViewMgr:getEv("EvUiRequestFirstRecharge")
+    local ev = self.ViewMgr:GetEv("EvUiRequestFirstRecharge")
     if (ev == nil) then
         ev = EvUiRequestFirstRecharge:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self:onClickBtnReturn()
 end
 
@@ -76,7 +76,7 @@ function ViewRechargeFirstFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewRechargeFirstFactory:createView()
+function ViewRechargeFirstFactory:CreateView()
     local view = ViewRechargeFirst:new(nil)
     return view
 end

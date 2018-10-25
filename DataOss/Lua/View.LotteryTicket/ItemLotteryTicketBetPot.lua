@@ -74,12 +74,12 @@ end
 function ItemLotteryTicketBetPot:onClick()
 	self.TranBet:Play()
 	local view_mgr = ViewMgr:new(nil)
-	local ev = view_mgr:getEv("EvLotteryTicketBet")
+	local ev = view_mgr:GetEv("EvLotteryTicketBet")
 	if(ev == nil)
 	then
 		ev = EvLotteryTicketBet:new(nil)
 	end
 	ev.bet_betpot_index = self.BetPotIndex
-	view_mgr:sendEv(ev)
+	view_mgr:SendEv(ev)
 end
 

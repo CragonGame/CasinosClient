@@ -98,7 +98,7 @@ end
 
 function ItemGift:onClick()
 	local view_mgr = ViewMgr:new(nil)
-	local view_playerprofile = view_mgr:getView("PlayerProfile")
+	local view_playerprofile = view_mgr:GetView("PlayerProfile")
 	if(self.IsBuy == false and view_playerprofile ~= nil)
 	then
 		return
@@ -107,7 +107,7 @@ function ItemGift:onClick()
 	if tb_item.UnitType == "WechatRedEnvelopes" then
 		ViewHelper:UiShowMsgBox("微信红包兑换功能正在测试中，期间微信红包会保留在你的背包中，功能开放后即可兑换使用！")
 	else
-		local gift_detail = view_mgr:createView("GiftDetail")
+		local gift_detail = view_mgr:CreateView("GiftDetail")
 		gift_detail:setGift(self.ItemId, self.IsBuy, self.IsMine, self.ToGuid, self.FromName, self.GiftBelong, self.Item)
 	end
 end

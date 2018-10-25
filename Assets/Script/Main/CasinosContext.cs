@@ -63,7 +63,7 @@ namespace Casinos
         public CasinosConfig Config { get; private set; }
         public TextureMgr TextureMgr { get; private set; }
         public CasinosLua CasinosLua { get; private set; }
-        public NetBridge NetBridge { get; private set; }
+        public NetMgr NetMgr { get; private set; }
         public NativeMgr NativeMgr { get; set; }
         public NativeAPIMsgReceiverListener NativeAPIMsgReceiverListner { get; set; }
         public _eLoginType LoginType { get; set; }
@@ -182,7 +182,7 @@ namespace Casinos
 
             Debug.Log("2ddddddddd");
 
-            NetBridge = new NetBridge();
+            NetMgr = new NetMgr();
 
             Debug.Log("2eeeeeeeeeee");
 
@@ -222,9 +222,9 @@ namespace Casinos
                 FTMgr.Update(elapsed_tm);
             }
 
-            if (NetBridge != null)
+            if (NetMgr != null)
             {
-                NetBridge.Update(elapsed_tm);
+                NetMgr.Update(elapsed_tm);
             }
 
             if (AsyncAssetLoaderMgr != null)
@@ -392,12 +392,6 @@ namespace Casinos
             }
 
             return SB.ToString();
-        }
-
-        //---------------------------------------------------------------------
-        public void Disconnect()
-        {
-            NetBridge.disconnect();
         }
 
         //---------------------------------------------------------------------

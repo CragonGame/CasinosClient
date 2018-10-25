@@ -37,7 +37,7 @@ end
 function ViewDesktopHCardType:_onClickCoCardType()  
 	self.GCoCardType:TweenMoveX(-self.GCoCardType.width, 0.5):OnComplete(
 		function()
-			self.ViewMgr:destroyView(self)
+			self.ViewMgr:DestroyView(self)
 		end
 	)   
 end
@@ -59,7 +59,7 @@ function ViewDesktopHCardTypeFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewDesktopHCardTypeFactory:createView()	
+function ViewDesktopHCardTypeFactory:CreateView()
 	local view = ViewDesktopHCardType:new(nil)	
 	return view
 end

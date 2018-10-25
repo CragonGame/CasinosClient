@@ -22,7 +22,7 @@ end
 ---------------------------------------
 function ViewChipOperate:onCreate()
     ViewHelper:PopUi(self.ComUi)
-    self.ViewMgr:bindEvListener("EvEntityPlayerGiveChipQueryRangeRequestResult", self)
+    self.ViewMgr:BindEvListener("EvEntityPlayerGiveChipQueryRangeRequestResult", self)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -83,7 +83,7 @@ end
 
 ---------------------------------------
 function ViewChipOperate:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -173,13 +173,13 @@ function ViewChipOperate:onConfirmBet()
         end
         self.BetGold = value
         if (self.Param ~= nil and self.Param ~= "") then
-            local ev = self.ViewMgr:getEv("EvUiClickConfirmChipTransaction")
+            local ev = self.ViewMgr:GetEv("EvUiClickConfirmChipTransaction")
             if (ev == nil) then
                 ev = EvUiClickConfirmChipTransaction:new(nil)
             end
             ev.send_target_etguid = self.Param
             ev.chip = self.BetGold
-            self.ViewMgr:sendEv(ev)
+            self.ViewMgr:SendEv(ev)
         end
     end
 
@@ -187,7 +187,7 @@ function ViewChipOperate:onConfirmBet()
         self.ActionOk(true, self.BetGold)
     end
 
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -196,7 +196,7 @@ function ViewChipOperate:onClose()
         self.ActionOk(false, 0)
     end
 
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -227,7 +227,7 @@ function ViewChipOperateFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewChipOperateFactory:createView()
+function ViewChipOperateFactory:CreateView()
     local view = ViewChipOperate:new(nil)
     return view
 end

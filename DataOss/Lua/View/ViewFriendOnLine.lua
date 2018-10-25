@@ -26,12 +26,12 @@ function ViewFriendOnLine:onCreate()
 											self:onClickHeadIcon()
 										end
 									 )
-	self.ViewMgr:bindEvListener("EvEntityFriendOnlineStateChange",self)
+	self.ViewMgr:BindEvListener("EvEntityFriendOnlineStateChange",self)
 
 end
 
 function ViewFriendOnLine:onDestroy()
-	self.ViewMgr:unbindEvListener(self)
+	self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewFriendOnLine:onHandleEv(ev)
@@ -60,11 +60,11 @@ function ViewFriendOnLine:initMove()
 end
 
 function ViewFriendOnLine:onPlayEnd()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 function ViewFriendOnLine:onClickHeadIcon()
-	self.ViewMgr:createView("PlayerInfo")
+	self.ViewMgr:CreateView("PlayerInfo")
 end
 		
 
@@ -85,7 +85,7 @@ function ViewFriendOnLineFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewFriendOnLineFactory:createView()	
+function ViewFriendOnLineFactory:CreateView()
 	local view = ViewFriendOnLine:new(nil)	
 	return view
 end

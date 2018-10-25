@@ -43,12 +43,12 @@ function ViewChatChooseTarget:onCreate()
     self.GListChatTarget.itemRenderer = function(a, b)
         self:RenderListItemChatTarget(a, b)
     end
-    self.ViewMgr:bindEvListener("EvUiClickChooseFriend", self)
+    self.ViewMgr:BindEvListener("EvUiClickChooseFriend", self)
 end
 
 ---------------------------------------
 function ViewChatChooseTarget:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -89,7 +89,7 @@ end
 
 ---------------------------------------
 function ViewChatChooseTarget:onClickClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -110,7 +110,7 @@ function ViewChatChooseTargetFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewChatChooseTargetFactory:createView()
+function ViewChatChooseTargetFactory:CreateView()
     local view = ViewChatChooseTarget:new(nil)
     return view
 end

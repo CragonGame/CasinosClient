@@ -45,12 +45,12 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:onCreate()
-    self.ViewMgr:bindEvListener("EvCommonCardShowEnd", self)
-    self.ViewMgr:bindEvListener("EvCommonCardDealEnd", self)
-    self.ViewMgr:bindEvListener("EvUiClickDesktop", self)
-    self.ViewMgr:bindEvListener("EvEntitySelfAutoActionChange", self)
-    self.ViewMgr:bindEvListener("EvUiClickFastBet", self)
-    self.ViewMgr:bindEvListener("EvEntitySelfIsOB", self)
+    self.ViewMgr:BindEvListener("EvCommonCardShowEnd", self)
+    self.ViewMgr:BindEvListener("EvCommonCardDealEnd", self)
+    self.ViewMgr:BindEvListener("EvUiClickDesktop", self)
+    self.ViewMgr:BindEvListener("EvEntitySelfAutoActionChange", self)
+    self.ViewMgr:BindEvListener("EvUiClickFastBet", self)
+    self.ViewMgr:BindEvListener("EvEntitySelfIsOB", self)
     self.ListAutoOperate = {}
 
     self.GGroupLeaveWhile = self.ComUi:GetChild("GroupLeaveWhile").asGroup
@@ -165,7 +165,7 @@ function ViewDesktopPlayerOperateTexas:onCreate()
     self.ControllerSelfRaise = self.ComUi:GetController("ControllerSelfRaise")
     self.ControllerSelfRaise.selectedIndex = 1
     self.SliderMoved = false
-    self.ViewDesktop = self.ViewMgr:getView("DesktopTexas")
+    self.ViewDesktop = self.ViewMgr:GetView("DesktopTexas")
     self.ComAutoAction = self.ComUi:GetChild("ComAutoAction").asCom
     self.BtnBack = self.ComAutoAction:GetChild("BtnBack").asCom
     self.BtnBack.onClick:Add(
@@ -184,7 +184,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -378,13 +378,13 @@ end
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_raise(raise_gold)
     --self.ViewDesktop:setActionTips("")
-    local ev = self.ViewMgr:getEv("EvUiClickRaise")
+    local ev = self.ViewMgr:GetEv("EvUiClickRaise")
     if (ev == nil)
     then
         ev = EvUiClickRaise:new(nil)
     end
     ev.raise_gold = raise_gold
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.PlayerOperateAni:showAutoOperate(false)
     ViewHelper:setGObjectVisible(false, self.GSliderRise)
 end
@@ -550,11 +550,11 @@ end
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickFold()
     if (self.DesktopPlayerTexas.DesktopTexas.PlayerTurn.player_guid == self.DesktopPlayerTexas.Guid) then
-        local ev = self.ViewMgr:getEv("EvUiClickFlod")
+        local ev = self.ViewMgr:GetEv("EvUiClickFlod")
         if (ev == nil) then
             ev = EvUiClickFlod:new(nil)
         end
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
         --self.ViewDesktop:setActionTips("")
         --self.ControllerTurn.selectedIndex = 0
         self.PlayerOperateAni:showAutoOperate(false)
@@ -567,18 +567,18 @@ function ViewDesktopPlayerOperateTexas:_onClickFoldOrCheck()
         self:_resetAutoChooseOperate(self.GBtnAutoFoldOrCheck)
         --self.ControllerTurn.selectedIndex = 0
         if (self.GBtnAutoFoldOrCheck.selected == false) then
-            local ev = self.ViewMgr:getEv("EvUiClickCancelAutoAction")
+            local ev = self.ViewMgr:GetEv("EvUiClickCancelAutoAction")
             if (ev == nil) then
                 ev = EvUiClickCancelAutoAction:new(nil)
             end
-            self.ViewMgr:sendEv(ev)
+            self.ViewMgr:SendEv(ev)
         else
-            local ev = self.ViewMgr:getEv("EvUiClickAutoAction")
+            local ev = self.ViewMgr:GetEv("EvUiClickAutoAction")
             if (ev == nil) then
                 ev = EvUiClickAutoAction:new(nil)
             end
             ev.auto_action_type = PlayerAutoActionTypeTexas.CheckFold
-            self.ViewMgr:sendEv(ev)
+            self.ViewMgr:SendEv(ev)
         end
     end
 end
@@ -587,17 +587,17 @@ end
 function ViewDesktopPlayerOperateTexas:_onClickCheckOrCall()
     if (self.DesktopPlayerTexas.DesktopTexas.PlayerTurn.player_guid == self.DesktopPlayerTexas.Guid) then
         if self.IsCallOrCheck == true then
-            local ev = self.ViewMgr:getEv("EvUiClickCall")
+            local ev = self.ViewMgr:GetEv("EvUiClickCall")
             if (ev == nil) then
                 ev = EvUiClickCall:new(nil)
             end
-            self.ViewMgr:sendEv(ev)
+            self.ViewMgr:SendEv(ev)
         else
-            local ev = self.ViewMgr:getEv("EvUiClickCheck")
+            local ev = self.ViewMgr:GetEv("EvUiClickCheck")
             if (ev == nil) then
                 ev = EvUiClickCheck:new(nil)
             end
-            self.ViewMgr:sendEv(ev)
+            self.ViewMgr:SendEv(ev)
             --self.ViewDesktop:setActionTips("")
         end
         --self.ControllerTurn.selectedIndex = 0
@@ -605,26 +605,26 @@ function ViewDesktopPlayerOperateTexas:_onClickCheckOrCall()
     else
         self:_resetAutoChooseOperate(self.GBtnAutoCheckOrCall)
         if (self.GBtnAutoCheckOrCall.selected == false) then
-            local ev = self.ViewMgr:getEv("EvUiClickCancelAutoAction")
+            local ev = self.ViewMgr:GetEv("EvUiClickCancelAutoAction")
             if (ev == nil) then
                 ev = EvUiClickCancelAutoAction:new(nil)
             end
-            self.ViewMgr:sendEv(ev)
+            self.ViewMgr:SendEv(ev)
         else
             if self.IsAutoCallOrCheck == true then
-                local ev = self.ViewMgr:getEv("EvUiClickAutoAction")
+                local ev = self.ViewMgr:GetEv("EvUiClickAutoAction")
                 if (ev == nil) then
                     ev = EvUiClickAutoAction:new(nil)
                 end
                 ev.auto_action_type = PlayerAutoActionTypeTexas.CallAny
-                self.ViewMgr:sendEv(ev)
+                self.ViewMgr:SendEv(ev)
             else
-                local ev = self.ViewMgr:getEv("EvUiClickAutoAction")
+                local ev = self.ViewMgr:GetEv("EvUiClickAutoAction")
                 if (ev == nil) then
                     ev = EvUiClickAutoAction:new(nil)
                 end
                 ev.auto_action_type = PlayerAutoActionTypeTexas.Check
-                self.ViewMgr:sendEv(ev)
+                self.ViewMgr:SendEv(ev)
             end
         end
     end
@@ -634,18 +634,18 @@ end
 function ViewDesktopPlayerOperateTexas:_onClickCall()
     self:_resetAutoChooseOperate(self.GBtnAutoCall)
     if (self.GBtnAutoCall.selected == false) then
-        local ev = self.ViewMgr:getEv("EvUiClickCancelAutoAction")
+        local ev = self.ViewMgr:GetEv("EvUiClickCancelAutoAction")
         if (ev == nil) then
             ev = EvUiClickCancelAutoAction:new(nil)
         end
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     else
-        local ev = self.ViewMgr:getEv("EvUiClickAutoAction")
+        local ev = self.ViewMgr:GetEv("EvUiClickAutoAction")
         if (ev == nil) then
             ev = EvUiClickAutoAction:new(nil)
         end
         ev.auto_action_type = PlayerAutoActionTypeTexas.CallAny
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 end
 
@@ -680,20 +680,20 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickContinue()
-    local ev = self.ViewMgr:getEv("EvUiClickPlayerReturn")
+    local ev = self.ViewMgr:GetEv("EvUiClickPlayerReturn")
     if (ev == nil) then
         ev = EvUiClickPlayerReturn:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_onClickBack()
-    local ev = self.ViewMgr:getEv("EvUiClickCancelAutoAction")
+    local ev = self.ViewMgr:GetEv("EvUiClickCancelAutoAction")
     if (ev == nil) then
         ev = EvUiClickCancelAutoAction:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -714,7 +714,7 @@ function ViewDesktopPlayerOperateTexasFactory:new(o, ui_package_name, ui_compone
 end
 
 ---------------------------------------
-function ViewDesktopPlayerOperateTexasFactory:createView()
+function ViewDesktopPlayerOperateTexasFactory:CreateView()
     local view = ViewDesktopPlayerOperateTexas:new(nil)
     return view
 end

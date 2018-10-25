@@ -192,86 +192,86 @@ end
 function ViewGiftDetail:onClickBtnConfirmNotInDesktop()
 	if (self.mBuyGift)
 	then
-		local ev = self.ViewMgr:getEv("EvUiBuyItem")
+		local ev = self.ViewMgr:GetEv("EvUiBuyItem")
 		if(ev == nil)
 		then
 			ev = EvUiBuyItem:new(nil)
 		end
 		ev.item_id = self.mTbGiftId
 		ev.to_etguid = self.mToEtGuid
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 	elseif(self.mSellGift)
 	then
-		local ev = self.ViewMgr:getEv("EvUiSellItem")
+		local ev = self.ViewMgr:GetEv("EvUiSellItem")
 		if(ev == nil)
 		then
 			ev = EvUiSellItem:new(nil)
 		end
 		ev.item_objid = self.mItem.ItemData.item_objid
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 	elseif(self.mIsGoodsVoucher)
 	then
 		-- 请求兑换实物
-		local ev = self.ViewMgr:getEv("EvUiRequestOperateItem")
+		local ev = self.ViewMgr:GetEv("EvUiRequestOperateItem")
 		if(ev == nil)
 		then
 			ev = EvUiRequestOperateItem:new(nil)
 		end
 		ev.ItemObjId = self.mItem.ItemData.item_objid
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 	elseif(self.mNeedBindWeChat)
 	then
-		local ev = self.ViewMgr:getEv("EvBindWeChat")
+		local ev = self.ViewMgr:GetEv("EvBindWeChat")
 		if(ev == nil)
 		then
 			ev = EvBindWeChat:new(nil)
 		end
 		ev.ItemObjId = self.mItem.ItemData.item_objid
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 	elseif(self.mGetRedEnvelopes)
 	then
-		local ev = self.ViewMgr:getEv("EvUiRequestOperateItem")
+		local ev = self.ViewMgr:GetEv("EvUiRequestOperateItem")
 		if(ev == nil)
 		then
 			ev = EvUiRequestOperateItem:new(nil)
 		end
 		ev.ItemObjId = self.mItem.ItemData.item_objid
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 	else
-		local ev = self.ViewMgr:getEv("EvUiRemoveItem")
+		local ev = self.ViewMgr:GetEv("EvUiRemoveItem")
 		if(ev == nil)
 		then
 			ev = EvUiRemoveItem:new(nil)
 		end
 		ev.obj_id = self.mItem.ItemData.item_objid
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 	end
 	self:onClickCloseBtn()
 end
 
 -- 桌内购买并送单人按钮
 function ViewGiftDetail:onClickBtnConfirmBuyOneInDesktop()
-	local ev = self.ViewMgr:getEv("EvUiBuyItem")
+	local ev = self.ViewMgr:GetEv("EvUiBuyItem")
 	if(ev == nil)
 	then
 		ev = EvUiBuyItem:new(nil)
 	end
 	ev.item_id = self.mTbGiftId
 	ev.to_etguid = self.mToEtGuid
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 	self:onClickCloseBtn()
 end
 
 -- 桌内购买并送全桌按钮
 function ViewGiftDetail:onClickBtnConfirmBuyAllDesktop()
-	local ev = self.ViewMgr:getEv("EvUiBuyItem")
+	local ev = self.ViewMgr:GetEv("EvUiBuyItem")
 	if(ev == nil)
 	then
 		ev = EvUiBuyItem:new(nil)
 	end
 	ev.item_id = self.mTbGiftId
 	ev.to_etguid = ""
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 	self:onClickCloseBtn()
 end
 
@@ -282,7 +282,7 @@ function ViewGiftDetail:getGiftDescribe()
 end
 
 function ViewGiftDetail:onClickCloseBtn()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 
@@ -303,7 +303,7 @@ function ViewGiftDetailFactory:new(o,ui_package_name,ui_component_name,
 	return o
 end
 
-function ViewGiftDetailFactory:createView()
+function ViewGiftDetailFactory:CreateView()
 	local view = ViewGiftDetail:new(nil)
 	return view
 end

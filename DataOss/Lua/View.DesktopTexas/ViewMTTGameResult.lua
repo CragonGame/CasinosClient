@@ -24,9 +24,9 @@ end
 
 ---------------------------------------
 function ViewMTTGameResult:onCreate()
-    local view_matchInfo = self.ViewMgr:getView("MatchInfo")
+    local view_matchInfo = self.ViewMgr:GetView("MatchInfo")
     if (view_matchInfo ~= nil) then
-        self.ViewMgr:destroyView(view_matchInfo)
+        self.ViewMgr:DestroyView(view_matchInfo)
     end
     local com_ui = self.ComUi
     self.ControllerShare = com_ui:GetController("ControllerShare")
@@ -156,12 +156,12 @@ end
 
 ---------------------------------------
 function ViewMTTGameResult:_onClickBtnLeave()
-    local ev = self.ViewMgr:getEv("EvUiClickExitDesk")
+    local ev = self.ViewMgr:GetEv("EvUiClickExitDesk")
     if (ev == nil)
     then
         ev = EvUiClickExitDesk:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self:_onClickClose()
 end
 
@@ -177,18 +177,18 @@ end
 
 ---------------------------------------
 function ViewMTTGameResult:_onClickBtnOB()
-    local ev = self.ViewMgr:getEv("EvUiClickOB")
+    local ev = self.ViewMgr:GetEv("EvUiClickOB")
     if (ev == nil)
     then
         ev = EvUiClickOB:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self:_onClickClose()
 end
 
 ---------------------------------------
 function ViewMTTGameResult:_onClickClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -209,7 +209,7 @@ function ViewMTTGameResultFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewMTTGameResultFactory:createView()
+function ViewMTTGameResultFactory:CreateView()
     local view = ViewMTTGameResult:new(nil)
     return view
 end

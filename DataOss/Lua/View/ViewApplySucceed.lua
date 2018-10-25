@@ -69,12 +69,12 @@ end
 
 ---------------------------------------
 function ViewApplySucceed:close()
-    self.ViewMgr:destroyView(self)
-    local ev = self.ViewMgr:getEv("EvUiRequestPublicMatchList")
+    self.ViewMgr:DestroyView(self)
+    local ev = self.ViewMgr:GetEv("EvUiRequestPublicMatchList")
     if (ev == nil) then
         ev = EvUiRequestPublicMatchList:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -95,7 +95,7 @@ function ViewApplySucceedFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewApplySucceedFactory:createView()
+function ViewApplySucceedFactory:CreateView()
     local view = ViewApplySucceed:new(nil)
     return view
 end

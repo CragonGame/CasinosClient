@@ -47,11 +47,11 @@ function ItemLotteryTicketBetOperate:_setIsCurrentOperate()
 end
 
 function ItemLotteryTicketBetOperate:onClick()
-	local ev = self.ViewLotteryTicket.ViewMgr:getEv("EvLotteryTicketClickBetOperateType")
+	local ev = self.ViewLotteryTicket.ViewMgr:GetEv("EvLotteryTicketClickBetOperateType")
 	if(ev == nil)
 	then
 		ev = EvLotteryTicketClickBetOperateType:new(nil)
 	end
     ev.tb_bet_operateid = self.mTbOperateId
-	self.ViewLotteryTicket.ViewMgr:sendEv(ev)
+	self.ViewLotteryTicket.ViewMgr:SendEv(ev)
 end

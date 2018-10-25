@@ -124,7 +124,7 @@ function ViewFloatMsgFactory:new(o, ui_package_name, ui_component_name, ui_layer
 end
 
 ---------------------------------------
-function ViewFloatMsgFactory:createView()
+function ViewFloatMsgFactory:CreateView()
     local view = ViewFloatMsg:new(nil)
     return view
 end

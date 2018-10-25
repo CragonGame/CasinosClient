@@ -21,7 +21,7 @@ end
 function ParticleHelper:GetParticel(path)
     local particle = self.TableParticle[path]
     if (particle == nil) then
-        local particle_path = self.CasinosContext.PathMgr:combinePersistentDataPath(ViewHelper:getABParticleResourceTitlePath() .. path)
+        local particle_path = self.CasinosContext.PathMgr.DirAbParticle .. path
         particle = CS.UnityEngine.AssetBundle.LoadFromFile(particle_path)
         self.TableParticle[path] = particle
     end
@@ -32,7 +32,7 @@ end
 function ParticleHelper:GetSpine(path)
     local spine = self.TableSpine[path]
     if (spine == nil) then
-        local spine_path = self.CasinosContext.PathMgr:combinePersistentDataPath(self.CasinosContext.ABResourcePathTitle .. path)
+        local spine_path = self.CasinosContext.PathMgr.DirAbRoot .. path
         spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
         self.TableSpine[path] = spine
     end
@@ -298,7 +298,7 @@ function PreViewLoadingFactory:new(o, ui_package_name, ui_component_name, ui_lay
 end
 
 ---------------------------------------
-function PreViewLoadingFactory:createView()
+function PreViewLoadingFactory:CreateView()
     local view = PreViewLoading:new(nil)
     return view
 end

@@ -72,34 +72,34 @@ end
 
 ---------------------------------------
 function ViewDesktopH:onCreate()
-    self.ViewMgr:bindEvListener("EvEntityDesktopHBetOperateTypeChange", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHCurrentBetOperateTypeChange", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHBet", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHUpdateBetPotBetInfo", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHBetFailed", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHChangeBankerPlayer", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHBankerPlayerGoldChange", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHChangeSeatPlayer", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHSeatPlayerGoldChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityRecvChatFromDesktopH", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHReadyState", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHBetState", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHGameEndState", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHGameRestState", self)
-    self.ViewMgr:bindEvListener("EvEntityDesktopHBuyItem", self)
-    self.ViewMgr:bindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
-    self.ViewMgr:bindEvListener("EvEntityLotteryTicketUpdateTm", self)
-    self.ViewMgr:bindEvListener("EvEntityReceiveFriendSingleChat", self)
-    self.ViewMgr:bindEvListener("EvEntityReceiveFriendChats", self)
-    self.ViewMgr:bindEvListener("EvEntityUnreadChatsChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
-    self.ViewMgr:bindEvListener("EvEntityCanGetOnlineReward", self)
-    self.ViewMgr:bindEvListener("EvEntityCanGetTimingReward", self)
-    self.ViewMgr:bindEvListener("EvClickShowReward", self)
-    self.ViewMgr:bindEvListener("EvRequestGetTimingReward", self)
-    self.ViewMgr:bindEvListener("EvOnGetOnLineReward", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHBetOperateTypeChange", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHCurrentBetOperateTypeChange", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHBet", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHUpdateBetPotBetInfo", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHBetFailed", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBankerPlayer", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHBankerPlayerGoldChange", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHChangeSeatPlayer", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHSeatPlayerGoldChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityRecvChatFromDesktopH", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHReadyState", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHBetState", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHGameEndState", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHGameRestState", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopHBuyItem", self)
+    self.ViewMgr:BindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
+    self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
+    self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
+    self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
+    self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
+    self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
+    self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
+    self.ViewMgr:BindEvListener("EvClickShowReward", self)
+    self.ViewMgr:BindEvListener("EvRequestGetTimingReward", self)
+    self.ViewMgr:BindEvListener("EvOnGetOnLineReward", self)
 
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerPlayer = controller_mgr:GetController("Player")
@@ -188,14 +188,14 @@ function ViewDesktopH:onCreate()
     local btn_chat = self.ComUi:GetChild("BtnChat").asButton
     btn_chat.onClick:Add(
             function()
-                local ui_chat = self.ViewMgr:createView("Chat")
+                local ui_chat = self.ViewMgr:CreateView("Chat")
                 ui_chat:init(_eUiChatType.DesktopH)
             end)
 
-    self.UiDesktopChatParent = self.ViewMgr:createView("DesktopChatParent")
-    local ui_shootingtext = self.ViewMgr:getView("ShootingText")-- 弹幕Ui此处创建出来，它自己响应对应消息
+    self.UiDesktopChatParent = self.ViewMgr:CreateView("DesktopChatParent")
+    local ui_shootingtext = self.ViewMgr:GetView("ShootingText")-- 弹幕Ui此处创建出来，它自己响应对应消息
     if (ui_shootingtext == nil) then
-        ui_shootingtext = self.ViewMgr:createView("ShootingText")
+        ui_shootingtext = self.ViewMgr:CreateView("ShootingText")
         ui_shootingtext:init(true, false, true)
     end
     local btn_chatfriend_temp = self.ComUi:GetChild("BtnChatFriend")
@@ -266,7 +266,7 @@ function ViewDesktopH:onDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
     self:_cancelTaskAndDestroyUiResult()
     self.DesktopHBankPlayer:destroy()
     self.DesktopHSelf:destroy()
@@ -289,12 +289,12 @@ function ViewDesktopH:onDestroy()
     end
 
     if (self.UiDesktopChatParent ~= nil) then
-        self.ViewMgr:destroyView(self.UiDesktopChatParent)
+        self.ViewMgr:DestroyView(self.UiDesktopChatParent)
     end
 
-    local ui_shootingtext = self.ViewMgr:getView("ShootingText")
+    local ui_shootingtext = self.ViewMgr:GetView("ShootingText")
     if (ui_shootingtext ~= nil) then
-        self.ViewMgr:destroyView(ui_shootingtext)
+        self.ViewMgr:DestroyView(ui_shootingtext)
     end
 end
 
@@ -403,9 +403,9 @@ function ViewDesktopH:onHandleEv(ev)
             end
 
             if (use_tanmu) then
-                local ui_shootingtext = self.ViewMgr:getView("ShootingText")
+                local ui_shootingtext = self.ViewMgr:GetView("ShootingText")
                 if (ui_shootingtext == nil) then
-                    ui_shootingtext = self.ViewMgr:createView("ShootingText")
+                    ui_shootingtext = self.ViewMgr:CreateView("ShootingText")
                 end
                 ui_shootingtext:setShootingText(chat_info.sender_name, chat_info.chat_content, chat_info.sender_viplevel)
             end
@@ -484,7 +484,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         self.GCoDesktopH.width = self.ComUi.width
         local bg = self.GCoDesktopH:GetChild("bg")
         if (bg ~= nil) then
-            ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
+            ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
         end
         co_desktop_parent:AddChild(self.GCoDesktopH)
         self.GCotips = self.GCoDesktopH:GetChild("CoTips").asCom
@@ -802,12 +802,12 @@ end
 ---------------------------------------
 function ViewDesktopH:bet(bet_index)
     if (self.CanBet == true) then
-        local ev = self.ViewMgr:getEv("EvDesktopHBet")
+        local ev = self.ViewMgr:GetEv("EvDesktopHBet")
         if (ev == nil) then
             ev = EvDesktopHBet:new(nil)
         end
         ev.bet_betpot_index = bet_index
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 end
 
@@ -828,9 +828,9 @@ end
 function ViewDesktopH:_gameReady(left_tm, map_userdata)
     DesktopHGameResult = nil
     self:_cancelTaskAndDestroyUiResult()
-    local ui_result = self.ViewMgr:getView("DesktopHResult")
+    local ui_result = self.ViewMgr:GetView("DesktopHResult")
     if (ui_result ~= nil) then
-        self.ViewMgr:destroyView(ui_result)
+        self.ViewMgr:DestroyView(ui_result)
     end
     self.CanBet = false
     self.StateTm = left_tm
@@ -1087,58 +1087,58 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnMenu()
-    local menu = self.ViewMgr:createView("DesktopHMenu")
+    local menu = self.ViewMgr:CreateView("DesktopHMenu")
     menu:showMenu(self.CanGetOnLineReward or self.CanGetTimingReward)
 end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnBeBank()
-    local ui_bebanklist = self.ViewMgr:createView("DesktopHBankList")
+    local ui_bebanklist = self.ViewMgr:CreateView("DesktopHBankList")
     ui_bebanklist:initBeBankPlayer(self, self.ControllerDesktopH.ListBeBankPlayer,
             self.ControllerDesktopH.BankPlayer, self.ControllerDesktopH.IsBankPlayer)
 end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnHistory()
-    local ui_history = self.ViewMgr:createView("DesktopHHistory")
+    local ui_history = self.ViewMgr:CreateView("DesktopHHistory")
     ui_history:setHistory(self.ControllerDesktopH.MapBetPotWinlooseRecord)
 end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnRepeat()
-    local ev = self.ViewMgr:getEv("EvDesktopHRepeatBet")
+    local ev = self.ViewMgr:GetEv("EvDesktopHRepeatBet")
     if (ev == nil) then
         ev = EvDesktopHRepeatBet:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.GBtnRepeat.enabled = false
 end
 
 ---------------------------------------
 function ViewDesktopH:_onClickSetCardType()
-    self.ViewMgr:createView("DesktopHSetCardType")
+    self.ViewMgr:CreateView("DesktopHSetCardType")
 end
 
 ---------------------------------------
 function ViewDesktopH:_onClickLotteryTicket()
-    local ev = self.ViewMgr:getEv("EvEntityRequestGetLotteryTicketData")
+    local ev = self.ViewMgr:GetEv("EvEntityRequestGetLotteryTicketData")
     if (ev == nil) then
         ev = EvEntityRequestGetLotteryTicketData:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 
-    self.ViewMgr:createView("LotteryTicket")
+    self.ViewMgr:CreateView("LotteryTicket")
 end
 
 ---------------------------------------
 function ViewDesktopH:_onClickGetBetReward()
-    self.ViewMgr:createView("DesktopHBetReward")
-    local ev = self.ViewMgr:getEv("EvDesktopHInitBetReward")
+    self.ViewMgr:CreateView("DesktopHBetReward")
+    local ev = self.ViewMgr:GetEv("EvDesktopHInitBetReward")
     if (ev == nil) then
         ev = EvDesktopHInitBetReward:new(nil)
     end
     ev.factory_name = self.FactoryName
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -1157,25 +1157,25 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnChatFriend()
-    local ev = self.ViewMgr:getEv("EvUiClickChatmsg")
+    local ev = self.ViewMgr:GetEv("EvUiClickChatmsg")
     if (ev == nil) then
         ev = EvUiClickChatmsg:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnShop()
-    self.ViewMgr:createView("Shop")
+    self.ViewMgr:CreateView("Shop")
 end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnFriend()
-    local ev = self.ViewMgr:getEv("EvUiClickFriend")
+    local ev = self.ViewMgr:GetEv("EvUiClickFriend")
     if (ev == nil) then
         ev = EvUiClickFriend:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -1232,7 +1232,7 @@ function ViewDesktopHFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewDesktopHFactory:createView()
+function ViewDesktopHFactory:CreateView()
     local view = ViewDesktopH:new(nil)
     return view
 end

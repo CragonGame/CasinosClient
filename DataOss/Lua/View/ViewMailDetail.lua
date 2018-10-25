@@ -116,19 +116,19 @@ function ViewMailDetail:setMail(mail)
 end
 
 function ViewMailDetail:onClickBtnClose()
-	self.ViewMgr:destroyView(self)
+	self.ViewMgr:DestroyView(self)
 end
 
 function ViewMailDetail:onClickConfirm()
 	if (self.HaveAttachment)
 	then
-		local ev = self.ViewMgr.getEv("EvUiRequestMailRecvAttachment")
+		local ev = self.ViewMgr.GetEv("EvUiRequestMailRecvAttachment")
 		if(ev == nil)
 		then
 			ev = EvUiRequestMailRecvAttachment:new(nil)
 		end
 		ev.mail_guid = self.MailClient.MailGuid
-		self.ViewMgr:sendEv(ev)
+		self.ViewMgr:SendEv(ev)
 	end
 	self:onClickBtnClose()
 end
@@ -150,7 +150,7 @@ function ViewMailDetailFactory:new(o,ui_package_name,ui_component_name,
 	return o
 end
 
-function ViewMailDetailFactory:createView()
+function ViewMailDetailFactory:CreateView()
 	local view = ViewMailDetail:new(nil)
 	return view
 end

@@ -142,9 +142,9 @@ function UiRegister:_onClickBtnRegister()
     end
 
     -- 发送验证码
-    local msg_box = self.ViewLogin.ViewMgr:getView("MsgBox")
+    local msg_box = self.ViewLogin.ViewMgr:GetView("MsgBox")
     if msg_box == nil then
-        msg_box = self.ViewLogin.ViewMgr:createView("MsgBox")
+        msg_box = self.ViewLogin.ViewMgr:CreateView("MsgBox")
     end
     msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("ConfirmPhone"), string.format("%s：\n%s%s", self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeToPhone"), self.CountryCode, self.GTextInputAccRegister.text),
             function()
@@ -153,20 +153,20 @@ function UiRegister:_onClickBtnRegister()
                 self.Phone = self.GTextInputAccRegister.text
                 local p_f = "+" .. self.CountryCode .. " " .. self.GTextInputAccRegister.text
                 self.TextRegisterPhone.text = p_f
-                local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
+                local ev = self.ViewLogin.ViewMgr:GetEv("EvUiRequestGetPhoneCode")
                 if (ev == nil) then
                     ev = EvUiRequestGetPhoneCode:new(nil)
                 end
                 ev.Phone = self.PhoneFormat
-                self.ViewLogin.ViewMgr:sendEv(ev)
+                self.ViewLogin.ViewMgr:SendEv(ev)
                 self.PhoneCodeIsSend = true
                 self.NextPhoneCodeSendTm = 60
                 self.BtnResend.enabled = false
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
                 --self.TextRegisterCode:RequestFocus()
             end,
             function()
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end
     )
 end
@@ -209,51 +209,51 @@ end
 
 ---------------------------------------
 function UiRegister:_onClickBtnReturnRegisterCode()
-    local msg_box = self.ViewLogin.ViewMgr:getView("MsgBox")
+    local msg_box = self.ViewLogin.ViewMgr:GetView("MsgBox")
     if msg_box == nil then
-        msg_box = self.ViewLogin.ViewMgr:createView("MsgBox")
+        msg_box = self.ViewLogin.ViewMgr:CreateView("MsgBox")
     end
     msg_box:useTwoBtn2(self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeTipTitle"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeTipContent"),
             self.ViewLogin.ViewMgr.LanMgr:getLanValue("Wait"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("Return"), 0, false,
             function()
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end,
             function()
                 self.ViewLogin:_switchController("LoginState", "Register")
                 --self.GTextInputAccRegister:RequestFocus()
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end
     )
 end
 
 ---------------------------------------
 function UiRegister:_onClickBtnResend()
-    local msg_box = self.ViewLogin.ViewMgr:getView("MsgBox")
+    local msg_box = self.ViewLogin.ViewMgr:GetView("MsgBox")
     if msg_box == nil then
-        msg_box = self.ViewLogin.ViewMgr:createView("MsgBox")
+        msg_box = self.ViewLogin.ViewMgr:CreateView("MsgBox")
     end
     msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("Confirm"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("ResendCode"),
             function()
-                local ev = self.ViewLogin.ViewMgr:getEv("EvUiRequestGetPhoneCode")
+                local ev = self.ViewLogin.ViewMgr:GetEv("EvUiRequestGetPhoneCode")
                 if (ev == nil) then
                     ev = EvUiRequestGetPhoneCode:new(nil)
                 end
                 ev.Phone = self.PhoneFormat
-                self.ViewLogin.ViewMgr:sendEv(ev)
+                self.ViewLogin.ViewMgr:SendEv(ev)
                 self.PhoneCodeIsSend = true
                 self.NextPhoneCodeSendTm = 60
                 self.BtnResend.enabled = false
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end,
             function()
-                self.ViewLogin.ViewMgr:destroyView(msg_box)
+                self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end
     )
 end
 
 ---------------------------------------
 function UiRegister:_onClickBtnNext()
-    local ev = self.ViewLogin.ViewMgr:getEv("EvUiLoginClickBtnRegister")
+    local ev = self.ViewLogin.ViewMgr:GetEv("EvUiLoginClickBtnRegister")
     if (ev == nil) then
         ev = EvUiLoginClickBtnRegister:new(nil)
     end
@@ -268,7 +268,7 @@ function UiRegister:_onClickBtnNext()
     ev.Device = nil
     ev.PhoneVerificationCode = self.TextRegisterCode.text
     ev.FormatPhone = self.PhoneFormat
-    self.ViewLogin.ViewMgr:sendEv(ev)
+    self.ViewLogin.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

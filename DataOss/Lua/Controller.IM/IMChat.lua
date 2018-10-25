@@ -86,14 +86,14 @@ function IMChat:OnIMChatRecordRequestResult(list_msg)
     self:sortChatPlayerList()
 
     local list_chatshow = self:getListChatShow(player_guid)
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityChatRecordRequestResult")
+    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityChatRecordRequestResult")
     if(ev == nil)
     then
         ev = EvEntityChatRecordRequestResult:new(nil)
     end
     ev.list_allchats = list_chatshow
     ev.friend_etguid = player_guid
-    self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 function IMChat:requestChatRecord(player_guid,msg_id)
@@ -125,13 +125,13 @@ function IMChat:deletePlayerChatRecord(friend_guid)
     end
     self:resortChatList(friend_guid, false)
     self.ControllerIM.IMChatRecord:deleteChatRecord1(friend_guid)
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityDeleteFriendChatRecordSuccess")
+    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityDeleteFriendChatRecordSuccess")
     if(ev == nil)
     then
         ev = EvEntityDeleteFriendChatRecordSuccess:new(nil)
     end
     ev.friend_etguid = friend_guid
-    self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 function IMChat:loadPlayerChatMsgRecv(player_guid)
@@ -303,14 +303,14 @@ function IMChat:recvMsg(map_records,msg,player_guid,is_unreadmap)
 
     self:resortChatList(player_guid, true)
     self.ControllerIM.IMChatRecord:saveRecordToPlayerPrefs1(player_guid,msg)
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityReceiveFriendSingleChat")
+    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityReceiveFriendSingleChat")
     if(ev == nil)
     then
         ev = EvEntityReceiveFriendSingleChat:new(nil)
     end
     ev.chat_msg = msg
     ev.friend_etguid = player_guid
-    self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 function IMChat:recvMsgs(map_records,list_msg,player_guid,is_unreadmap,refresh_allrecord)
@@ -363,14 +363,14 @@ function IMChat:recvMsgs(map_records,list_msg,player_guid,is_unreadmap,refresh_a
     end
 
     local list_chatshow = self:getListChatShow(player_guid)
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:getEv("EvEntityReceiveFriendChats")
+    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityReceiveFriendChats")
     if(ev == nil)
     then
         ev = EvEntityReceiveFriendChats:new(nil)
     end
     ev.list_allchats = list_chatshow
     ev.friend_etguid = player_guid
-    self.ControllerIM.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 function IMChat:resortChatList(player_guid,is_add)

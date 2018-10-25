@@ -51,7 +51,7 @@ end
 function ViewPermanentPosMsg:_timerUpdate(tm)
     self.Tm = self.Tm + tm
     if (self.Tm >= self.AutoDestroyTm) then
-        self.ViewMgr:destroyView(self)
+        self.ViewMgr:DestroyView(self)
     end
 end
 
@@ -78,7 +78,7 @@ function ViewPermanentPosMsgFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewPermanentPosMsgFactory:createView()
+function ViewPermanentPosMsgFactory:CreateView()
     local view = ViewPermanentPosMsg:new(nil)
     return view
 end

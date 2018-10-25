@@ -22,8 +22,8 @@ end
 
 ---------------------------------------
 function ViewPurse:onCreate()
-    self.ViewMgr:bindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:bindEvListener("EvEntityDiamondChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
+    self.ViewMgr:BindEvListener("EvEntityDiamondChanged", self)
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -70,13 +70,13 @@ function ViewPurse:onCreate()
     self:setPlayerGoldAndDiamond()
     local bg = self.ComUi:GetChild("Bg")
     if (bg ~= nil) then
-        ViewHelper:makeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
+        ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
 end
 
 ---------------------------------------
 function ViewPurse:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -101,7 +101,7 @@ end
 
 ---------------------------------------
 function ViewPurse:onClickBtnReturn()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -112,12 +112,12 @@ function ViewPurse:onClickBtnGetMoney()
         return
     end
 
-    local ev = self.ViewMgr:getEv("EvUiRequestGetMoney")
+    local ev = self.ViewMgr:GetEv("EvUiRequestGetMoney")
     if (ev == nil) then
         ev = EvUiRequestGetMoney:new(nil)
     end
     ev.GetMoneyNum = n
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -171,7 +171,7 @@ function ViewPurseFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewPurseFactory:createView()
+function ViewPurseFactory:CreateView()
     local view = ViewPurse:new(nil)
     return view
 end

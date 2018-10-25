@@ -25,7 +25,7 @@ function ViewChat:onCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
-    self.ViewPool = self.ViewMgr:getView("Pool")
+    self.ViewPool = self.ViewMgr:GetView("Pool")
     self.MapChat = self.ControllerPlayer:getDesktopChat()
     local co_shade = self.ComUi:GetChild("CoShade").asCom
     co_shade.onClick:Add(
@@ -36,21 +36,21 @@ function ViewChat:onCreate()
     self.ControllerScreenHalf = self.ComUi:GetController("ControllerScreenHalf")
     self.GGroupScreen = self.ComUi:GetChild("GroupScreen").asGroup
     self.GGroupScreenHalf = self.ComUi:GetChild("GroupScreenHalf").asGroup
-    self.ViewMgr:bindEvListener("EvEntityRecvChatFromDesktopH", self)
-    self.ViewMgr:bindEvListener("EvEntityRecvChatFromDesktop", self)
+    self.ViewMgr:BindEvListener("EvEntityRecvChatFromDesktopH", self)
+    self.ViewMgr:BindEvListener("EvEntityRecvChatFromDesktop", self)
 end
 
 ---------------------------------------
 function ViewChat:onDestroy()
     if (self.GTextInputChat.text ~= nil and #self.GTextInputChat.text > 0) then
-        local ev = self.ViewMgr:getEv("EvUiSetUnSendDesktopMsg")
+        local ev = self.ViewMgr:GetEv("EvUiSetUnSendDesktopMsg")
         if (ev == nil) then
             ev = EvUiSetUnSendDesktopMsg:new(nil)
         end
         ev.text = self.GTextInputChat.text
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -199,20 +199,20 @@ function ViewChat:onClickSendChat()
         end
     end
 
-    local ev = self.ViewMgr:getEv("EvUiSendMsg")
+    local ev = self.ViewMgr:GetEv("EvUiSendMsg")
     if (ev == nil) then
         ev = EvUiSendMsg:new(nil)
     end
     local chat_msg = self:getChatMsg()
     ev.chat_msg = chat_msg:getData4Pack()
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.GTextInputChat.text = ""
     self:closeSelf()
 end
 
 ---------------------------------------
 function ViewChat:closeSelf()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -244,7 +244,7 @@ function ViewChatFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewChatFactory:createView()
+function ViewChatFactory:CreateView()
     local view = ViewChat:new(nil)
     return view
 end

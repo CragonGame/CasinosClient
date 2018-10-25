@@ -50,7 +50,7 @@ function ViewGetChipEffect:onUpdate(tm)
 	end
 	if(self.ShowTime >= self.ParticlePlayTime + self.GoldFlyTime)
 	then
-		self.ViewMgr:destroyView(self)
+		self.ViewMgr:DestroyView(self)
 	end
 end
 
@@ -91,7 +91,7 @@ function ViewGetChipEffectFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
-function ViewGetChipEffectFactory:createView()	
+function ViewGetChipEffectFactory:CreateView()
 	local view = ViewGetChipEffect:new(nil)	
 	return view
 end

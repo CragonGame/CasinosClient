@@ -51,7 +51,7 @@ function ViewWaitingCountDown:_timerUpdate(tm)
     self.Tm = self.Tm - tm
     self:setTm()
     if self.Tm <= 0 then
-        self.ViewMgr:destroyView(self)
+        self.ViewMgr:DestroyView(self)
     end
 end
 
@@ -105,7 +105,7 @@ function ViewWaitingCountDownFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewWaitingCountDownFactory:createView()
+function ViewWaitingCountDownFactory:CreateView()
     local view = ViewWaitingCountDown:new(nil)
     return view
 end

@@ -74,7 +74,7 @@ function ViewEdit:onCreate()
     local com_abount = self.ComUi:GetChild("ComAbount").asCom
     com_abount.onClick:Add(
             function()
-                self.ViewMgr:createView("About")
+                self.ViewMgr:CreateView("About")
             end
     )
     self.GBtnSwitchScreenAutoRotation = self.ComUi:GetChild("BtnSwitch").asButton
@@ -130,17 +130,17 @@ end
 
 ---------------------------------------
 function ViewEdit:onClickResetPwd()
-    self.ViewMgr:createView("ResetPwd")
+    self.ViewMgr:CreateView("ResetPwd")
 end
 
 ---------------------------------------
 function ViewEdit:onClickSelectLan()
-    self.ViewMgr:createView("ChooseLan")
+    self.ViewMgr:CreateView("ChooseLan")
 end
 
 ---------------------------------------
 function ViewEdit:onClickBtnReturn()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -161,7 +161,7 @@ function ViewEditFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewEditFactory:createView()
+function ViewEditFactory:CreateView()
     local view = ViewEdit:new(nil)
     return view
 end

@@ -80,7 +80,7 @@ end
 
 ---------------------------------------
 function ViewCreateDesktop:onClickClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -96,14 +96,14 @@ function ViewCreateDesktop:onClickBtnCreate()
     print(self.ListAnte.selectedIndex, i.Ante)
     local create_info = PrivateDesktopCreateInfo:new(nil)
     create_info.FactoryName = "Texas"
-    create_info.Data = self.ViewMgr:packData(create_infotexas:getData4Pack()) -- CS.Casinos.LuaHelper.ProtobufSerializePrivateDesktopCreateInfoTexas(create_infotexas)
-    local ev = self.ViewMgr:getEv("EvUiClickCreateDeskTop")
+    create_info.Data = self.ViewMgr:PackData(create_infotexas:getData4Pack()) -- CS.Casinos.LuaHelper.ProtobufSerializePrivateDesktopCreateInfoTexas(create_infotexas)
+    local ev = self.ViewMgr:GetEv("EvUiClickCreateDeskTop")
     if (ev == nil) then
         ev = EvUiClickCreateDeskTop:new(nil)
     end
     ev.create_info = create_info
-    self.ViewMgr:sendEv(ev)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:SendEv(ev)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -124,7 +124,7 @@ function ViewCreateDesktopFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewCreateDesktopFactory:createView()
+function ViewCreateDesktopFactory:CreateView()
     local view = ViewCreateDesktop:new(nil)
     return view
 end

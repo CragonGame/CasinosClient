@@ -30,10 +30,10 @@ function ViewOnlineReward:setLeftTm(left_tm)
 end
 
 function ViewOnlineReward:onClickOnlineReward()
-	local ev = self.ViewMgr:getEv("EvOnGetOnLineReward")
+	local ev = self.ViewMgr:GetEv("EvOnGetOnLineReward")
 	if(ev == nil)
 	then
 		ev = EvOnGetOnLineReward:new(nil)
 	end
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 end

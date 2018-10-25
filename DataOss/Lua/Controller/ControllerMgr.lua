@@ -127,43 +127,43 @@ function ControllerMgr:GetController(controller_name)
 end
 
 ---------------------------------------
-function ControllerMgr:bindEvListener(ev_name, ev_listener)
+function ControllerMgr:BindEvListener(ev_name, ev_listener)
     if (ControllerMgr.EventSys ~= nil) then
-        ControllerMgr.EventSys:bindEvListener(ev_name, ev_listener)
+        ControllerMgr.EventSys:BindEvListener(ev_name, ev_listener)
     end
 end
 
 ---------------------------------------
-function ControllerMgr:unbindEvListener(ev_listener)
+function ControllerMgr:UnbindEvListener(ev_listener)
     if (ControllerMgr.EventSys ~= nil) then
-        ControllerMgr.EventSys:unbindEvListener(ev_listener)
+        ControllerMgr.EventSys:UnbindEvListener(ev_listener)
     end
 end
 
 ---------------------------------------
-function ControllerMgr:getEv(ev_name)
+function ControllerMgr:GetEv(ev_name)
     local ev = nil
     if (ControllerMgr.EventSys ~= nil) then
-        ev = ControllerMgr.EventSys:getEv(ev_name)
+        ev = ControllerMgr.EventSys:GetEv(ev_name)
     end
     return ev
 end
 
 ---------------------------------------
-function ControllerMgr:sendEv(ev)
+function ControllerMgr:SendEv(ev)
     if (ControllerMgr.EventSys ~= nil) then
-        ControllerMgr.EventSys:sendEv(ev)
+        ControllerMgr.EventSys:SendEv(ev)
     end
 end
 
 ---------------------------------------
-function ControllerMgr:packData(data)
+function ControllerMgr:PackData(data)
     local p_datas = self.RPC:PackData(data)
     return p_datas
 end
 
 ---------------------------------------
-function ControllerMgr:unpackData(data)
+function ControllerMgr:UnpackData(data)
     local p_datas = self.RPC:UnPackData(data)
     return p_datas
 end

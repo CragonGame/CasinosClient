@@ -183,10 +183,10 @@ function DesktopHStandPlayer:_goldEnPool()
 end
 
 function DesktopHStandPlayer:_onClick()     
-	local ev = self.ViewMgr:getEv("EvDesktopHClickStandPlayerBtn")
+	local ev = self.ViewMgr:GetEv("EvDesktopHClickStandPlayerBtn")
 	if(ev == nil)
 	then
 		ev = EvDesktopHClickStandPlayerBtn:new(nil)
 	end
-	self.ViewMgr:sendEv(ev)
+	self.ViewMgr:SendEv(ev)
 end

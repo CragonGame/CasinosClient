@@ -60,26 +60,26 @@ function ViewRanking:onCreate()
     )
 
     self.GListRanking = self.ComUi:GetChild("RankingList").asList
-    local ev = self.ViewMgr:getEv("EvUiGetRankingGold")
+    local ev = self.ViewMgr:GetEv("EvUiGetRankingGold")
     if (ev == nil)
     then
         ev = EvUiGetRankingGold:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.RankingListType = RankingListType.Chip
     self.GListRanking.itemRenderer = function(a, b)
         self:RenderListItem(a, b)
     end
     self.GListRanking:SetVirtual()
-    self.ViewMgr:bindEvListener("EvEntityGetRankingDiamond", self)
-    self.ViewMgr:bindEvListener("EvEntityGetRankingGold", self)
-    self.ViewMgr:bindEvListener("EvEntityGetRankingRedEnvelopes", self)
-    --self.ViewMgr:bindEvListener("EvEntityGetRankingWinGold",self)
+    self.ViewMgr:BindEvListener("EvEntityGetRankingDiamond", self)
+    self.ViewMgr:BindEvListener("EvEntityGetRankingGold", self)
+    self.ViewMgr:BindEvListener("EvEntityGetRankingRedEnvelopes", self)
+    --self.ViewMgr:BindEvListener("EvEntityGetRankingWinGold",self)
 end
 
 ---------------------------------------
 function ViewRanking:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -148,49 +148,49 @@ end
 
 ---------------------------------------
 function ViewRanking:onClickBtnReturn()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewRanking:onClickBtnDiamond()
-    local ev = self.ViewMgr:getEv("EvUiGetRankingDiamond")
+    local ev = self.ViewMgr:GetEv("EvUiGetRankingDiamond")
     if (ev == nil) then
         ev = EvUiGetRankingDiamond:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.Controller:SetSelectedPage("Diamond")
     self.RankingListType = RankingListType.Gold
 end
 
 ---------------------------------------
 function ViewRanking:onClickBtnGold()
-    local ev = self.ViewMgr:getEv("EvUiGetRankingGold")
+    local ev = self.ViewMgr:GetEv("EvUiGetRankingGold")
     if (ev == nil) then
         ev = EvUiGetRankingGold:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.Controller:SetSelectedPage("Coin")
     self.RankingListType = RankingListType.Chip
 end
 
 ---------------------------------------
 function ViewRanking:onClickBtnWin()
-    local ev = self.ViewMgr:getEv("EvUiGetRankingWinGold")
+    local ev = self.ViewMgr:GetEv("EvUiGetRankingWinGold")
     if (ev == nil) then
         ev = EvUiGetRankingWinGold:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.Controller:SetSelectedPage("Win")
     self.RankingListType = RankingListType.WinGold
 end
 
 ---------------------------------------
 function ViewRanking:onClickBtnRed()
-    local ev = self.ViewMgr:getEv("EvUiGetRankingRedEnvelopes")
+    local ev = self.ViewMgr:GetEv("EvUiGetRankingRedEnvelopes")
     if (ev == nil) then
         ev = EvUiGetRankingRedEnvelopes:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     self.Controller:SetSelectedPage("Win")
     self.RankingListType = RankingListType.RedEnvelopes
 end
@@ -213,7 +213,7 @@ function ViewRankingFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewRankingFactory:createView()
+function ViewRankingFactory:CreateView()
     local view = ViewRanking:new(nil)
     return view
 end

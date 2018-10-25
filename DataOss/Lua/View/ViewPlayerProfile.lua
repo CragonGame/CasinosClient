@@ -28,7 +28,7 @@ function ViewPlayerProfile:onCreate()
     self.ControllerDeskTopH = self.ViewMgr.ControllerMgr:GetController("DesktopH")
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
-    self.ViewPool = self.ViewMgr:getView("Pool")
+    self.ViewPool = self.ViewMgr:GetView("Pool")
     self.ListGift = {}
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
@@ -55,7 +55,7 @@ function ViewPlayerProfile:onCreate()
                                 ViewHelper:UiEndWaiting()
                                 if (ex ~= nil)
                                 then
-                                    local ui_iconbig = self.ViewMgr:createView("HeadIconBig")
+                                    local ui_iconbig = self.ViewMgr:CreateView("HeadIconBig")
                                     local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
                                     ui_iconbig:setIcon(texture)
                                 end
@@ -69,7 +69,7 @@ function ViewPlayerProfile:onCreate()
                                 ViewHelper:UiEndWaiting()
                                 if (ex ~= nil)
                                 then
-                                    local ui_iconbig = self.ViewMgr:createView("HeadIconBig")
+                                    local ui_iconbig = self.ViewMgr:CreateView("HeadIconBig")
                                     local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
                                     ui_iconbig:setIcon(texture)
                                 end
@@ -109,14 +109,14 @@ function ViewPlayerProfile:onCreate()
     end
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
     self.ChipIconSolustion.selectedIndex = ChipIconSolustion
-    self.ViewMgr:bindEvListener("EvEntityGetPlayerInfoOther", self)
-    self.ViewMgr:bindEvListener("EvEntityBagAddItem", self)
-    self.ViewMgr:bindEvListener("EvEntityBagDeleteItem", self)
+    self.ViewMgr:BindEvListener("EvEntityGetPlayerInfoOther", self)
+    self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
+    self.ViewMgr:BindEvListener("EvEntityBagDeleteItem", self)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:onDestroy()
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
     self.ViewPool:itemGiftAllEnque()
 end
 
@@ -168,25 +168,25 @@ function ViewPlayerProfile:sendMagicExp(exp_tbid)
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SitTableSendMagic"))
         return
     end
-    local ev = self.ViewMgr:getEv("EvUiBuyItem")
+    local ev = self.ViewMgr:GetEv("EvUiBuyItem")
     if (ev == nil) then
         ev = EvUiBuyItem:new(nil)
     end
     ev.to_etguid = self.PlayerGuid
     ev.item_id = exp_tbid
-    self.ViewMgr:sendEv(ev)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:SendEv(ev)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:reportFriend(friend_etguid, report_type)
-    local ev = self.ViewMgr:getEv("EvUiReportFriend")
+    local ev = self.ViewMgr:GetEv("EvUiReportFriend")
     if (ev == nil) then
         ev = EvUiReportFriend:new(nil)
     end
     ev.friend_etguid = friend_etguid
     ev.report_type = report_type
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -234,7 +234,7 @@ function ViewPlayerProfile:setPlayerInfo(player_info)
             end
     )
     if (self.PlayerProfileType == CS.Casinos._ePlayerProfileType.Desktop) then
-        local desktop = self.ViewMgr:getView("DesktopTexas")
+        local desktop = self.ViewMgr:GetView("DesktopTexas")
         local is_lock = false
         if (desktop.Desktop.MapSeatPlayerChatIsLock[self.PlayerGuid] ~= nil) then
             is_lock = desktop.Desktop.MapSeatPlayerChatIsLock[self.PlayerGuid]
@@ -254,7 +254,7 @@ function ViewPlayerProfile:setPlayerInfo(player_info)
     )
     self.ControllerFriend = self.GCoFriend:GetController("ControllerFriend")
     self.GCoSendGold = self.ComUi:GetChild("CoSendChip").asCom
-    if (self.ViewMgr:getView("DesktopH") ~= nil) then
+    if (self.ViewMgr:GetView("DesktopH") ~= nil) then
         self.GCoSendGold.enabled = false
         self.GCoGift.enabled = false
     end
@@ -413,29 +413,29 @@ end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickGift()
-    local ev = self.ViewMgr:getEv("EvCreateGiftShop")
+    local ev = self.ViewMgr:GetEv("EvCreateGiftShop")
     if (ev == nil) then
         ev = EvCreateGiftShop:new(nil)
     end
     ev.is_tmp_gift = true
     ev.to_player_etguid = self.PlayerInfo.PlayerInfoCommon.PlayerGuid
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickGiftHome()
-    local ev = self.ViewMgr:getEv("EvCreateGiftShop")
+    local ev = self.ViewMgr:GetEv("EvCreateGiftShop")
     if (ev == nil) then
         ev = EvCreateGiftShop:new(nil)
     end
     ev.is_tmp_gift = false
     ev.to_player_etguid = self.PlayerInfo.PlayerInfoCommon.PlayerGuid
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickFriend()
-    local ev = self.ViewMgr:getEv("EvUiRequestFriendAddOrRemove")
+    local ev = self.ViewMgr:GetEv("EvUiRequestFriendAddOrRemove")
     if (ev == nil) then
         ev = EvUiRequestFriendAddOrRemove:new(nil)
     end
@@ -446,26 +446,26 @@ function ViewPlayerProfile:onClickFriend()
     end
     ev.friend_guid = self.PlayerInfo.PlayerInfoCommon.PlayerGuid
     ev.friend_nickname = self.PlayerInfo.PlayerInfoCommon.NickName
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickSendGold()
     if (self.IsSelf) then
-        local ev = self.ViewMgr:getEv("EvUiCreateExchangeChip")
+        local ev = self.ViewMgr:GetEv("EvUiCreateExchangeChip")
         if (ev == nil) then
             ev = EvUiCreateExchangeChip:new(nil)
         end
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     else
-        local ui_chiptransaction = self.ViewMgr:createView("ChipOperate")
+        local ui_chiptransaction = self.ViewMgr:CreateView("ChipOperate")
         ui_chiptransaction:setChipsInfo(self.ControllerActor.PropGoldAcc:get(), 0, 0, CS.Casinos._eChipOperateType.Transaction, self.PlayerInfo.PlayerInfoCommon.PlayerGuid, nil)
-        local ev = self.ViewMgr:getEv("EvUiClickChipTransaction")
+        local ev = self.ViewMgr:GetEv("EvUiClickChipTransaction")
         if (ev == nil) then
             ev = EvUiClickChipTransaction:new(nil)
         end
         ev.send_target_etguid = self.PlayerInfo.PlayerInfoCommon.PlayerGuid
-        self.ViewMgr:sendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 end
 
@@ -480,17 +480,17 @@ end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickBtnStandup()
-    local ev = self.ViewMgr:getEv("EvUiDesktopHStandUp")
+    local ev = self.ViewMgr:GetEv("EvUiDesktopHStandUp")
     if (ev == nil) then
         ev = EvUiDesktopHStandUp:new(nil)
     end
-    self.ViewMgr:sendEv(ev)
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:SendEv(ev)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickClose()
-    self.ViewMgr:destroyView(self)
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -500,13 +500,13 @@ function ViewPlayerProfile:onClickComLockChat()
     else
         self.IsLocked = true
     end
-    local ev = self.ViewMgr:getEv("EvUiRequestLockPlayerChat")
+    local ev = self.ViewMgr:GetEv("EvUiRequestLockPlayerChat")
     if (ev == nil) then
         ev = EvUiRequestLockPlayerChat:new(nil)
     end
     ev.player_guid = self.PlayerGuid
     ev.requestLock = self.IsLocked
-    self.ViewMgr:sendEv(ev)
+    self.ViewMgr:SendEv(ev)
     if (self.IsLocked) then
         self.ControllerLockChat:SetSelectedIndex(1)
     else
@@ -542,7 +542,7 @@ function ViewPlayerProfileFactory:new(o, ui_package_name, ui_component_name,
 end
 
 ---------------------------------------
-function ViewPlayerProfileFactory:createView()
+function ViewPlayerProfileFactory:CreateView()
     local view = ViewPlayerProfile:new(nil)
     return view
 end

@@ -23,33 +23,33 @@ end
 
 ---------------------------------------
 function ControllerPlayer:onCreate()
-    self.ViewMgr:bindEvListener("EvUiClickHelp", self)
-    self.ViewMgr:bindEvListener("EvUiClickEdit", self)
-    self.ViewMgr:bindEvListener("EvUiClickLogin", self)
-    self.ViewMgr:bindEvListener("EvEntityResetPwdSuccess", self)
-    self.ViewMgr:bindEvListener("EvUiClickChangePlayerNickName", self)
-    self.ViewMgr:bindEvListener("EvUiClickRefreshIPAddress", self)
-    self.ViewMgr:bindEvListener("EvUiClickChangePlayerIndividualSignature", self)
-    self.ViewMgr:bindEvListener("EvUiClickChangePlayerProfileSkin", self)
-    self.ViewMgr:bindEvListener("EvUiReportFriend", self)
-    self.ViewMgr:bindEvListener("EvUiClickChipTransaction", self)
-    self.ViewMgr:bindEvListener("EvUiClickConfirmChipTransaction", self)
-    self.ViewMgr:bindEvListener("EvUiCreateMainUi", self)
-    self.ViewMgr:bindEvListener("EvUiRequestGetRankPlayerInfo", self)
-    self.ViewMgr:bindEvListener("EvUiRequestBankWithdraw", self)
-    self.ViewMgr:bindEvListener("EvUiRequestBankDeposit", self)
-    self.ViewMgr:bindEvListener("EvCreateGiftShop", self)
-    self.ViewMgr:bindEvListener("EvRequestGetPlayerModuleData", self)
-    self.ViewMgr:bindEvListener("EvRequestGetOnLineReward", self)
-    self.ViewMgr:bindEvListener("EvRequestGetTimingReward", self)
-    self.ViewMgr:bindEvListener("EvOnGetOnLineReward", self)
-    self.ViewMgr:bindEvListener("EvUiChangeLan", self)
-    self.ViewMgr:bindEvListener("EvUiCloseActivityPopUpBox", self)
-    self.ViewMgr:bindEvListener("EvUiRequestGetReceiverAddress", self)
-    self.ViewMgr:bindEvListener("EvUiRequestEditReceiverAddress", self)
-    self.ViewMgr:bindEvListener("EvConsoleCmd", self)
-    self.ViewMgr:bindEvListener("EvClickShare", self)
-    self.ViewMgr:bindEvListener("EvGetPicSuccess", self)
+    self.ViewMgr:BindEvListener("EvUiClickHelp", self)
+    self.ViewMgr:BindEvListener("EvUiClickEdit", self)
+    self.ViewMgr:BindEvListener("EvUiClickLogin", self)
+    self.ViewMgr:BindEvListener("EvEntityResetPwdSuccess", self)
+    self.ViewMgr:BindEvListener("EvUiClickChangePlayerNickName", self)
+    self.ViewMgr:BindEvListener("EvUiClickRefreshIPAddress", self)
+    self.ViewMgr:BindEvListener("EvUiClickChangePlayerIndividualSignature", self)
+    self.ViewMgr:BindEvListener("EvUiClickChangePlayerProfileSkin", self)
+    self.ViewMgr:BindEvListener("EvUiReportFriend", self)
+    self.ViewMgr:BindEvListener("EvUiClickChipTransaction", self)
+    self.ViewMgr:BindEvListener("EvUiClickConfirmChipTransaction", self)
+    self.ViewMgr:BindEvListener("EvUiCreateMainUi", self)
+    self.ViewMgr:BindEvListener("EvUiRequestGetRankPlayerInfo", self)
+    self.ViewMgr:BindEvListener("EvUiRequestBankWithdraw", self)
+    self.ViewMgr:BindEvListener("EvUiRequestBankDeposit", self)
+    self.ViewMgr:BindEvListener("EvCreateGiftShop", self)
+    self.ViewMgr:BindEvListener("EvRequestGetPlayerModuleData", self)
+    self.ViewMgr:BindEvListener("EvRequestGetOnLineReward", self)
+    self.ViewMgr:BindEvListener("EvRequestGetTimingReward", self)
+    self.ViewMgr:BindEvListener("EvOnGetOnLineReward", self)
+    self.ViewMgr:BindEvListener("EvUiChangeLan", self)
+    self.ViewMgr:BindEvListener("EvUiCloseActivityPopUpBox", self)
+    self.ViewMgr:BindEvListener("EvUiRequestGetReceiverAddress", self)
+    self.ViewMgr:BindEvListener("EvUiRequestEditReceiverAddress", self)
+    self.ViewMgr:BindEvListener("EvConsoleCmd", self)
+    self.ViewMgr:BindEvListener("EvClickShare", self)
+    self.ViewMgr:BindEvListener("EvGetPicSuccess", self)
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerDesk = self.ControllerMgr:GetController("Desktop")
     self.ControllerDeskH = self.ControllerMgr:GetController("DesktopH")
@@ -81,7 +81,7 @@ function ControllerPlayer:onCreate()
     self:requestGetOnlinePlayerNum()
 
     local c_login = self.ControllerMgr:GetController("Login")
-    local player_play_state = c_login:getClientEnterWorldNotify().player_play_state
+    local player_play_state = c_login:GetClientEnterWorldNotify().player_play_state
     if (player_play_state ~= nil) then
         ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetTable"))
         if (player_play_state.DesktopType == DesktopTypeEx.Desktop) then
@@ -91,11 +91,11 @@ function ControllerPlayer:onCreate()
         end
     end
 
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityPlayerInitDone")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerInitDone")
     if (ev == nil) then
         ev = EvEntityPlayerInitDone:new(nil)
     end
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(1000, self, self._timerUpdate)
 
@@ -205,9 +205,9 @@ function ControllerPlayer:onDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-    self.ViewMgr:unbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
     self:destroyMainUi()
-    self.ControllerMgr.ViewMgr:destroyAllView()
+    self.ControllerMgr.ViewMgr:DestroyAllView()
     self.CasinosContext:StopAllSceneSound()
 end
 
@@ -218,17 +218,17 @@ function ControllerPlayer:onHandleEv(ev)
     elseif (ev.EventName == "EvUiClickLogin") then
         local title = self.ControllerMgr.LanMgr:getLanValue("ReturnLogin")
         local tips = self.ControllerMgr.LanMgr:getLanValue("ExitCanLogin")
-        local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
+        local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
         msg_box:showMsgBox1(title, tips,
                 function(bo)
                     if (bo) then
                         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logouting"))
-                        self.CasinosContext:Disconnect()
+                        self.CasinosContext.NetMgr:Disconnect()
                     end
                 end
         )
     elseif (ev.EventName == "EvEntityResetPwdSuccess") then
-        self.CasinosContext:Disconnect()
+        self.CasinosContext.NetMgr:Disconnect()
     elseif (ev.EventName == "EvUiClickChangePlayerNickName") then
         self:requestChangeNickName(ev.new_name)
     elseif (ev.EventName == "EvUiClickRefreshIPAddress") then
@@ -267,7 +267,7 @@ function ControllerPlayer:onHandleEv(ev)
             end
         end
         if (can_creategiftshop) then
-            local gift_shop = self.ControllerMgr.ViewMgr:createView("GiftShop")
+            local gift_shop = self.ControllerMgr.ViewMgr:CreateView("GiftShop")
             gift_shop:setGiftShopInfo(ev.is_tmp_gift, self.Guid, ev.to_player_etguid)
         else
             ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("SitTableSendGift"))
@@ -288,7 +288,7 @@ function ControllerPlayer:onHandleEv(ev)
         self.ControllerMgr.RPC:RPC1(self.MC.PlayerChangeLanRequest, ev.lan)
     elseif (ev.EventName == "EvUiCloseActivityPopUpBox") then
         CS.UnityEngine.PlayerPrefs.SetString(self.ControllerActivity.CurrentActID, "true")
-        self:createViewActivityPopUpBox()
+        self:CreateViewActivityPopUpBox()
     elseif (ev.EventName == "EvUiRequestGetReceiverAddress") then
         self:RequestGetAddress()
     elseif (ev.EventName == "EvUiRequestEditReceiverAddress") then
@@ -298,7 +298,7 @@ function ControllerPlayer:onHandleEv(ev)
         self:requestConsoleCmd(ev.ListParam)
     elseif (ev.EventName == "EvClickShare") then
         local share_type = ev.ShareType
-        local share = self.ControllerMgr.ViewMgr:createView("Share")
+        local share = self.ControllerMgr.ViewMgr:CreateView("Share")
         share:setPlayerInfo(self.ControllerActor.PropNickName:get(), self.ControllerActor.PropAccountId:get(), share_type)
     elseif (ev.EventName == "EvGetPicSuccess") then
         self:OnGetPicSuccess(ev.pic_data)
@@ -312,7 +312,7 @@ end
 ---------------------------------------
 function ControllerPlayer:s2cPlayerDailyFirstLoginNotify(daily_reward_tbid)
     local map_tbdata = self.ControllerMgr.TbDataMgr:GetMapData("DailyReward")
-    local view_daily_reward = self.ControllerMgr.ViewMgr:createView("DailyReward")
+    local view_daily_reward = self.ControllerMgr.ViewMgr:CreateView("DailyReward")
     view_daily_reward:setRewardInfo(map_tbdata, daily_reward_tbid,
             function(bo)
                 if (bo) then
@@ -333,12 +333,12 @@ end
 ---------------------------------------
 function ControllerPlayer:s2cPlayerGetOnlinePlayerNumNotify(num)
     self.OnlinePlayerNum = num
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntitySetOnLinePlayerNum")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntitySetOnLinePlayerNum")
     if (ev == nil) then
         ev = EvEntitySetOnLinePlayerNum:new(nil)
     end
     ev.online_num = self.OnlinePlayerNum
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -346,13 +346,13 @@ function ControllerPlayer:s2cPlayerGetPlayerInfoOtherNotify(player_info, ticket)
     ViewHelper:UiEndWaiting()
     local p_i = PlayerInfo:new(nil)
     p_i:setData(player_info)
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityGetPlayerInfoOther")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGetPlayerInfoOther")
     if (ev == nil) then
         ev = EvEntityGetPlayerInfoOther:new(nil)
     end
     ev.player_info = p_i
     ev.ticket = ticket
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -382,7 +382,7 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
     end
     local desktopinfo_format = desktop_helper:GetDesktopInfoFormat(self.ControllerMgr.RPC.MessagePack, self.ControllerMgr.TbDataMgr,
             invite.desktop_filter, self.ControllerMgr.LanMgr.LanBase)
-    local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
+    local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
     local tips = self.CasinosContext:AppendStrWithSB(self.ControllerMgr.LanMgr:getLanValue("Player"),
             invite.player_nickname, "\n", desktopinfo_format.DesktopFormat, "\n",
             self.ControllerMgr.LanMgr:getLanValue("Player"), tostring(invite.player_num), "/", desktopinfo_format.Param)
@@ -393,7 +393,7 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
                         if (self.ControllerDesk.DesktopBase == nil) then
                             self.ControllerLobby:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
                         else
-                            local msg_boxex = self.ControllerMgr.ViewMgr:createView("MsgBox")
+                            local msg_boxex = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
                             msg_boxex:showMsgBox1(self.ControllerMgr.LanMgr:getLanValue("InviteFriendPlay"),
                                     self.ControllerMgr.LanMgr:getLanValue("LeaveAndEnterNew"),
                                     function(confirm)
@@ -454,14 +454,14 @@ function ControllerPlayer:s2cPlayerGiveChipQueryRangeRequestResult(r, give_gold_
             ViewHelper:UiShowInfoFailed(msg)
         end
     end
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityPlayerGiveChipQueryRangeRequestResult")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerGiveChipQueryRangeRequestResult")
     if (ev == nil) then
         ev = EvEntityPlayerGiveChipQueryRangeRequestResult:new(nil)
     end
     ev.give_chip_max = give_gold_max
     ev.give_chip_min = give_gold_min
     ev.is_success = is_success
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -526,7 +526,7 @@ end
 ---------------------------------------
 function ControllerPlayer:s2cPlayerGetOnlineRewardRequestResult(result, reward)
     if (result == ProtocolResult.Success) then
-        --[[local view_main = self.ControllerMgr.ViewMgr:getView("Main")
+        --[[local view_main = self.ControllerMgr.ViewMgr:GetView("Main")
         if(view_main ~= nil)
         then
             view_main:ShowGetChipEffect()
@@ -571,12 +571,12 @@ function ControllerPlayer:s2cPlayerUpdateClientConfigNotify()
         end,
         true,
         function()
-            local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityUpdateClientConfig")
+            local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityUpdateClientConfig")
             if(ev == nil)
             then
                 ev = EvEntityUpdateClientConfig:new(nil)
             end
-            self.ControllerMgr.ViewMgr:sendEv(ev)
+            self.ControllerMgr.ViewMgr:SendEv(ev)
         end
     )--]]
 end
@@ -585,12 +585,12 @@ end
 function ControllerPlayer:OnPlayerGetCasinosModuleDataWithFactoryNameNotify(player_moduledata)
     local p_d = PlayerModuleData:new(nil)
     p_d:setData(player_moduledata)
-    local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityGetPlayerModuleDataSuccess")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGetPlayerModuleDataSuccess")
     if (ev == nil) then
         ev = EvEntityGetPlayerModuleDataSuccess:new(nil)
     end
     ev.player_moduledata = p_d
-    self.ControllerMgr.ViewMgr:sendEv(ev)
+    self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -683,15 +683,15 @@ function ControllerPlayer:createMainUi()
     local index = math.random(1, 2)
     local bgm = string.format("MainBg%s", index)
     self.CasinosContext:Play(bgm, CS.Casinos._eSoundLayer.Background)
-    local view_main = self.ControllerMgr.ViewMgr:createView("Main")
+    local view_main = self.ControllerMgr.ViewMgr:CreateView("Main")
     view_main:setPlayerInfo()
     view_main:setOnlineNum(self.OnlinePlayerNum)
 end
 
 ---------------------------------------
 function ControllerPlayer:destroyMainUi()
-    local view_main = self.ControllerMgr.ViewMgr:getView("Main")
-    self.ControllerMgr.ViewMgr:destroyView(view_main)
+    local view_main = self.ControllerMgr.ViewMgr:GetView("Main")
+    self.ControllerMgr.ViewMgr:DestroyView(view_main)
 end
 
 ---------------------------------------
@@ -746,11 +746,11 @@ function ControllerPlayer:OnGetPicSuccess(pic_data)
                     local msg = table.concat(msg_t)
                     ViewHelper:UiShowInfoFailed(msg)
                 else
-                    local ev = self.ControllerMgr.ViewMgr:getEv("EvGetPicUpLoadSuccess")
+                    local ev = self.ControllerMgr.ViewMgr:GetEv("EvGetPicUpLoadSuccess")
                     if (ev == nil) then
                         ev = EvGetPicUpLoadSuccess:new(nil)
                     end
-                    self.ControllerMgr.ViewMgr:sendEv(ev)
+                    self.ControllerMgr.ViewMgr:SendEv(ev)
                 end
                 ViewHelper:UiEndWaiting()
             end)
@@ -780,15 +780,15 @@ function ControllerPlayer:ShowHotActivity()
                 table.insert(self.QueneHotActivity, temp)
             end
         end
-        self:createViewActivityPopUpBox()
+        self:CreateViewActivityPopUpBox()
     end
 end
 
 ---------------------------------------
-function ControllerPlayer:createViewActivityPopUpBox()
+function ControllerPlayer:CreateViewActivityPopUpBox()
     if (#self.QueneHotActivity > 0) then
         local temp = table.remove(self.QueneHotActivity, 1)
-        local view_activitypopupbox = self.ControllerMgr.ViewMgr:createView("ActivityPopUpBox")
+        local view_activitypopupbox = self.ControllerMgr.ViewMgr:CreateView("ActivityPopUpBox")
         view_activitypopupbox:SetActivityInfo(temp)
     end
 end
@@ -805,11 +805,11 @@ end
 --        local msg = table.concat(msg_t)
 --        ViewHelper:UiShowInfoFailed(msg)
 --    else
---        local ev = self.ControllerMgr.ViewMgr:getEv("EvGetPicUpLoadSuccess")
+--        local ev = self.ControllerMgr.ViewMgr:GetEv("EvGetPicUpLoadSuccess")
 --        if (ev == nil) then
 --            ev = EvGetPicUpLoadSuccess:new(nil)
 --        end
---        self.ControllerMgr.ViewMgr:sendEv(ev)
+--        self.ControllerMgr.ViewMgr:SendEv(ev)
 --    end
 --    ViewHelper:UiEndWaiting()
 --end
@@ -838,15 +838,15 @@ function ControllerPlayer:s2cPlayerRequestGetAddressResult(result, address)
     local data_address = PlayerAddress:new(nil)
     data_address:setData(address)
     if (result == ProtocolResult.Success) then
-        local ev = self.ControllerMgr.ViewMgr:getEv("EvEntityResponseGetReceiverAddress")
+        local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityResponseGetReceiverAddress")
         if (ev == nil) then
             ev = EvEntityResponseGetReceiverAddress:new(nil)
         end
 
         ev.Address = data_address
-        self.ControllerMgr.ViewMgr:sendEv(ev)
+        self.ControllerMgr.ViewMgr:SendEv(ev)
     elseif (result == ProtocolResult.Failed) then
-        local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
+        local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
         msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("GetAddressFailed"))
     end
 end
@@ -856,10 +856,10 @@ end
 function ControllerPlayer:s2cPlayerRequestEditAddressResult(result, address)
     --[[if (result == ProtocolResult.Success)
     then
-        local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
+        local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
         msg_box:showMsgBox1("", "信息提交成功")]]
     if (result == ProtocolResult.Failed) then
-        local msg_box = self.ControllerMgr.ViewMgr:createView("MsgBox")
+        local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
         msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("UploadAddressFailed"))
     end
 end
