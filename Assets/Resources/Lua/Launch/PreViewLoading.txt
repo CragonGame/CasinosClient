@@ -8,11 +8,10 @@ function ParticleHelper:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     if (self.Instance == nil) then
         self.Instance = o
+        self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.TableParticle = {}
-        self.TableSpine = {}
     end
     return self.Instance
 end
@@ -26,30 +25,6 @@ function ParticleHelper:GetParticel(path)
         self.TableParticle[path] = particle
     end
     return particle
-end
-
----------------------------------------
-function ParticleHelper:GetSpine(path)
-    local spine = self.TableSpine[path]
-    if (spine == nil) then
-        local spine_path = self.CasinosContext.PathMgr.DirAbRoot .. path
-        spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
-        self.TableSpine[path] = spine
-    end
-    return spine
-end
-
----------------------------------------
-function ParticleHelper:GetPreSpine(path)
-    local spine = self.TableSpine[path]
-    if (spine == nil) then
-        local casinos_context = CS.Casinos.CasinosContext.Instance
-        local launch_persistentdata_path = casinos_context.PathMgr.PathLaunchRootPersistent
-        local spine_path = launch_persistentdata_path .. string.lower(path) .. ".ab"
-        spine = CS.UnityEngine.AssetBundle.LoadFromFile(spine_path)
-        self.TableSpine[path] = spine
-    end
-    return spine
 end
 
 ---------------------------------------

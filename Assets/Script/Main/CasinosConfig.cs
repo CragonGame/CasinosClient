@@ -3,14 +3,11 @@
 namespace Casinos
 {
     using System.Collections.Generic;
-    using System.IO;
     using UnityEngine;
 
     [System.Serializable]
     public class LaunchInfo
     {
-        public string LaunchVersion;
-        public List<string> ListAb;
         public List<string> ListLua;
     }
 
@@ -23,9 +20,7 @@ namespace Casinos
         public string VersionBundle { get; private set; }
         public string VersionCommonPersistent { get; private set; }
         public string VersionDataPersistent { get; private set; }
-        public string VersionLaunchPersistent { get; private set; }
         public LaunchInfo LaunchInfoResources { get; set; }// Launch配置信息
-        public LaunchInfo LaunchInfoPersistent { get; set; }// Launch配置信息
 
         //---------------------------------------------------------------------
         public CasinosConfig(_eEditorRunSourcePlatform editor_mode_runsources_platform)
@@ -63,25 +58,8 @@ namespace Casinos
                 VersionDataPersistent = PlayerPrefs.GetString("VersionDataPersistent");
             }
 
-            // 读取VersionLaunchPersistent
-            VersionLaunchPersistent = string.Empty;
-            if (PlayerPrefs.HasKey("VersionLaunchPersistent"))
-            {
-                VersionLaunchPersistent = PlayerPrefs.GetString("VersionLaunchPersistent");
-            }
-
             var launch_info = Resources.Load("LaunchInfo") as TextAsset;
             LaunchInfoResources = JsonUtility.FromJson<LaunchInfo>(launch_info.text);
-
-            string p = CasinosContext.Instance.PathMgr.CombinePersistentDataPath("LaunchInfo.json");
-            if (File.Exists(p))
-            {
-                using (StreamReader sr = File.OpenText(p))
-                {
-                    string s = sr.ReadToEnd();
-                    LaunchInfoPersistent = JsonUtility.FromJson<LaunchInfo>(s);
-                }
-            }
         }
 
         //---------------------------------------------------------------------
@@ -96,13 +74,6 @@ namespace Casinos
         {
             VersionDataPersistent = version_data_persistent_new;
             PlayerPrefs.SetString("VersionDataPersistent", VersionDataPersistent);
-        }
-
-        //---------------------------------------------------------------------
-        public void WriteVersionLaunchPersistent(string version_launch_persistent_new)
-        {
-            VersionLaunchPersistent = version_launch_persistent_new;
-            PlayerPrefs.SetString("VersionLaunchPersistent", VersionLaunchPersistent);
         }
 
         //---------------------------------------------------------------------

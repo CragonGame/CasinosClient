@@ -266,10 +266,12 @@ namespace Casinos
         public void Launch()
         {
             // 计算PathMgr中的动态目录
-            string launchversion_persistent = string.Empty;
-            if (Config.LaunchInfoPersistent != null) launchversion_persistent = Config.LaunchInfoPersistent.LaunchVersion;
-            int r = Config.VersionCompare(Config.LaunchInfoResources.LaunchVersion, launchversion_persistent);
-            if (r > 0 || PathMgr.ForceUseDirResourcesLaunch)
+            bool version_persistent = false;
+            if (!string.IsNullOrEmpty(Config.VersionCommonPersistent) && !string.IsNullOrEmpty(Config.VersionDataPersistent))
+            {
+                version_persistent = true;
+            }
+            if (!version_persistent || PathMgr.ForceUseDirResourcesLaunch)
             {
                 PathMgr.DirLaunchLua = "Lua/Launch/";
                 PathMgr.DirLaunchLuaType = DirType.Resources;

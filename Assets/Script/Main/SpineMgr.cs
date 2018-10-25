@@ -1,10 +1,14 @@
 ﻿namespace Casinos
 {
+    using System.Collections.Generic;
     using UnityEngine;
     using Spine.Unity;
 
     public class SpineMgr
     {
+        //---------------------------------------------------------------------
+        Dictionary<string, AssetBundle> MapAssetBundleCache = new Dictionary<string, AssetBundle>();
+
         //---------------------------------------------------------------------
         public SpineMgr()
         {
@@ -19,11 +23,19 @@
         public SkeletonAnimation CreateSpineObjFromAb(string ab_path_prefix, string ab_name,
             string atlas_name, string texture_name, string json_name, string shader_name)
         {
-            string spine_path = ab_path_prefix + ab_name.ToLower() + ".ab";
-            AssetBundle spine_ab = AssetBundle.LoadFromFile(spine_path);
-            var atlas = spine_ab.LoadAsset<TextAsset>(atlas_name);
-            var texture = spine_ab.LoadAsset<Texture>(texture_name);
-            var json = spine_ab.LoadAsset<TextAsset>(json_name);
+            string s = ab_name.ToLower();
+            AssetBundle ab = null;
+            MapAssetBundleCache.TryGetValue(s, out ab);
+            if (ab == null)
+            {
+                string spine_path = ab_path_prefix + s + ".ab";
+                ab = AssetBundle.LoadFromFile(spine_path);
+                MapAssetBundleCache[s] = ab;
+            }
+
+            var atlas = ab.LoadAsset<TextAsset>(atlas_name);
+            var texture = ab.LoadAsset<Texture>(texture_name);
+            var json = ab.LoadAsset<TextAsset>(json_name);
 
             return _createSpineGameObject(atlas, texture, json, shader_name);
         }
@@ -67,20 +79,3 @@
         }
     }
 }
-
-//var atlas = spine_ab.LoadAsset<TextAsset>(atlas_name);
-//self.AbLoadingMarry = p_helper:GetPreSpine("LoadingMarry")
-//local atlas = self.AbLoadingMarry:LoadAsset("Mary_Loading.atlas")
-//local texture = self.AbLoadingMarry:LoadAsset("Mary_Loading")
-//local json = self.AbLoadingMarry:LoadAsset("Mary_LoadingJson")
-//self.PlayerAnim = CS.Casinos.SpineHelper.CreateSpineGameObject(atlas, texture, json, "Spine/Skeleton")
-
-//self.PlayerAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(70, 70, 1000)
-//self.PlayerAnim:Initialize(false)
-//self.PlayerAnim.loop = true
-//self.PlayerAnim.AnimationName = "animation"
-//self.PlayerAnim.transform.gameObject.name = "LoadingMote"
-//self.MoteRender = self.PlayerAnim.transform.gameObject:GetComponent("MeshRenderer")
-//self.MoteRender.sortingOrder = 4
-//self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
-//self.HolderMote:SetNativeObject(CS.FairyGUI.GoWrapper(self.PlayerAnim.transform.gameObject))

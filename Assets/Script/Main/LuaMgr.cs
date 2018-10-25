@@ -281,7 +281,7 @@ namespace Casinos
             Context = CasinosContext.Instance;
             MapLuaFiles = new Dictionary<string, byte[]>();
             LuaEnv = new LuaEnv();
-            LuaEnv.AddLoader(LuaLoaderCustom);
+            LuaEnv.AddLoader(_luaLoaderCustom);
         }
 
         //---------------------------------------------------------------------
@@ -372,7 +372,7 @@ namespace Casinos
         public void LoadLuaFromRawDir(string path)
         {
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
-            System.IO.FileInfo[] file_list = dir.GetFiles("*.lua", System.IO.SearchOption.AllDirectories);
+            System.IO.FileInfo[] file_list = dir.GetFiles("*.*", System.IO.SearchOption.AllDirectories);
             foreach (System.IO.FileInfo i in file_list)
             {
                 using (System.IO.FileStream fs = new System.IO.FileStream(i.FullName, System.IO.FileMode.Open))
@@ -384,6 +384,7 @@ namespace Casinos
 
                         string name = i.Name.ToLower();
                         string name1 = name.Replace(".lua", "");
+                        name1 = name1.Replace(".txt", "");
                         MapLuaFiles[name1] = data;
                     }
                 }
@@ -543,7 +544,7 @@ namespace Casinos
 
         //---------------------------------------------------------------------
         // 自定义Lua文件加载函数
-        byte[] LuaLoaderCustom(ref string file_name)
+        byte[] _luaLoaderCustom(ref string file_name)
         {
             var key = file_name.ToLower();
 
