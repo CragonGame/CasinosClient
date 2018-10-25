@@ -21,7 +21,7 @@ function ViewGoldTree:new(o)
     return self.Instance
 end
 
-function ViewGoldTree:onCreate()
+function ViewGoldTree:OnCreate()
 	ViewHelper:PopUi(self.ComUi)
 	self.NextGetRewardTm = 0
 	self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -63,11 +63,11 @@ function ViewGoldTree:onCreate()
 	self.ViewMgr:BindEvListener("EvEntityOnGrowRewardSnapshot",self)
 end
 
-function ViewGoldTree:onDestroy()
+function ViewGoldTree:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewGoldTree:onHandleEv(ev)
+function ViewGoldTree:OnHandleEv(ev)
 	if(ev ~= nil)
 	then
 		if(ev.EventName == "EvEntityOnGrowRewardSnapshot")

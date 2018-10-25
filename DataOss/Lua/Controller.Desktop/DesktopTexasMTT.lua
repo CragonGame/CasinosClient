@@ -21,7 +21,7 @@ function DesktopTexasMTT:new(o, desktop_base, co_mgr)
 end
 
 ---------------------------------------
-function DesktopTexasMTT:onDestroy(need_createmainui)
+function DesktopTexasMTT:OnDestroy(need_createmainui)
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
     if (need_createmainui) then
         local match_lobby = view_mgr:GetView("MatchLobby")
@@ -56,7 +56,7 @@ function DesktopTexasMTT:Update(elapsed_tm)
 end
 
 ---------------------------------------
-function DesktopTexasMTT:onHandleEv(ev)
+function DesktopTexasMTT:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvUiClickPlayerReturn") then
             local method_info = MethodInfoTexasDesktop:new(nil)

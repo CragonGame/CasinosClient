@@ -19,7 +19,7 @@ function ViewAbout:new(o)
 end
 
 ---------------------------------------
-function ViewAbout:onCreate()
+function ViewAbout:OnCreate()
     print("ViewAbout")
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("About"))
     self.ControllerAbout = self.ComUi:GetController("ControllerAbout")

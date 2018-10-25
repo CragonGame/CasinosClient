@@ -19,7 +19,7 @@ function ViewGiftDetail:new(o)
 	return o
 end
 
-function ViewGiftDetail:onCreate()
+function ViewGiftDetail:OnCreate()
 	ViewHelper:PopUi(self.ComUi)
 	self.CasinosContext = CS.Casinos.CasinosContext.Instance
 	self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")

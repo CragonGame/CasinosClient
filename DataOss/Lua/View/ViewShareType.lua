@@ -20,7 +20,7 @@ function ViewShareType:new(o)
 end
 
 ---------------------------------------
-function ViewShareType:onCreate()
+function ViewShareType:OnCreate()
     self.ComUi.onClick:Add(
             function()
                 self:onClickClose()

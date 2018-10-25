@@ -22,7 +22,7 @@ function PreViewMsgBox:new(o)
 end
 
 ---------------------------------------
-function PreViewMsgBox:onCreate()
+function PreViewMsgBox:OnCreate()
     self.ActionOk = nil
     self.ActionCancel = nil
 
@@ -87,11 +87,11 @@ function PreViewMsgBox:onCreate()
 end
 
 ---------------------------------------
-function PreViewMsgBox:onDestroy()
+function PreViewMsgBox:OnDestroy()
 end
 
 ---------------------------------------
-function PreViewMsgBox:onHandleEv(ev)
+function PreViewMsgBox:OnHandleEv(ev)
 end
 
 ---------------------------------------

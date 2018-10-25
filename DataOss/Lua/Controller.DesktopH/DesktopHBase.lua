@@ -12,11 +12,11 @@ function DesktopHBase:new(o, controller_desktoph, factory_name)
 end
 
 ---------------------------------------
-function DesktopHBase:onDestroy()
+function DesktopHBase:OnDestroy()
 end
 
 ---------------------------------------
-function DesktopHBase:onHandleEvent(ev)
+function DesktopHBase:OnHandleEvent(ev)
 end
 
 ---------------------------------------

@@ -19,9 +19,9 @@ function ViewDesktopHintsTexas:new(o)
 end
 
 ---------------------------------------
-function ViewDesktopHintsTexas:onCreate()
-    self.TransitionCreate = self.ComUi:GetTransition("TransitionCreate")
-    self.TransitionCreate:Play()
+function ViewDesktopHintsTexas:OnCreate()
+    self.TransitiOnCreate = self.ComUi:GetTransition("TransitiOnCreate")
+    self.TransitiOnCreate:Play()
     self.GHintsList = self.ComUi:GetChild("Grid").asList
     local com_shade = self.ComUi:GetChild("ComShade").asCom
     com_shade.onClick:Add(
@@ -52,7 +52,7 @@ end
 
 ---------------------------------------
 function ViewDesktopHintsTexas:_onClickBtnClose()
-    self.TransitionCreate:PlayReverse(
+    self.TransitiOnCreate:PlayReverse(
             function()
                 self.ViewMgr:DestroyView(self)
             end

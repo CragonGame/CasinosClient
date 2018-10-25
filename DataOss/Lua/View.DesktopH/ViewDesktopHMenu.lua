@@ -19,7 +19,7 @@ function ViewDesktopHMenu:new(o)
     return o
 end
 
-function ViewDesktopHMenu:onCreate()
+function ViewDesktopHMenu:OnCreate()
     self.ComUi.onClick:Add(
             function()
                 self:_onClickMenuCo()

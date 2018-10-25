@@ -17,7 +17,7 @@ function ViewFeedback:new(o)
 	return o
 end
 
-function ViewFeedback:onCreate()
+function ViewFeedback:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("Feedback"))
 	self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
 	self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
@@ -56,11 +56,11 @@ function ViewFeedback:onCreate()
 	self:showRecord()
 end
 
-function ViewFeedback:onDestroy()
+function ViewFeedback:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewFeedback:onHandleEv(ev)
+function ViewFeedback:OnHandleEv(ev)
 	if (ev.EventName == "EvEntityReceiveFeedbackChat")
 	then
 		self:setCurrentChatMsg(ev.chat_msg)

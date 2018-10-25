@@ -21,7 +21,7 @@ function ViewApplySucceed:new(o)
 end
 
 ---------------------------------------
-function ViewApplySucceed:onCreate()
+function ViewApplySucceed:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SignUpSuccess"))
     local com_shade = self.ComUi:GetChild("ComBgAndClose").asCom
     com_shade.onClick:Add(

@@ -32,7 +32,7 @@ function ViewDesktopHBankList:new(o)
     return o
 end
 
-function ViewDesktopHBankList:onCreate()
+function ViewDesktopHBankList:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("BeBankList"))
     self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBeBankerPlayerList",self)
     self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBankerPlayer",self)
@@ -85,14 +85,14 @@ function ViewDesktopHBankList:onCreate()
 end
 
 
-function ViewDesktopHBankList:onDestroy()
+function ViewDesktopHBankList:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 function ViewDesktopHBankList:onUpdate(elapsed_tm)
 end
 
-function ViewDesktopHBankList:onHandleEv(ev)   
+function ViewDesktopHBankList:OnHandleEv(ev)
 	if(ev ~= nil)
 	then
         if(ev.EventName == "EvEntityDesktopHChangeBeBankerPlayerList")

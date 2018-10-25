@@ -20,7 +20,7 @@ function ViewReportPlayer:new(o)
 end
 
 ---------------------------------------
-function ViewReportPlayer:onCreate()
+function ViewReportPlayer:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     local com_shade = self.ComUi:GetChild("ComShade").asCom
     com_shade.onClick:Add(

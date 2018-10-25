@@ -23,7 +23,7 @@ function ViewShootingText:new(o)
 end
 
 ---------------------------------------
-function ViewShootingText:onCreate()
+function ViewShootingText:OnCreate()
     self.ControllerPlayerMarquee = self.ViewMgr.ControllerMgr:GetController("Marquee")
     self.ViewPool = self.ViewMgr:GetView("Pool")
     self.MapItemShootingText = {}
@@ -31,7 +31,7 @@ function ViewShootingText:onCreate()
 end
 
 ---------------------------------------
-function ViewShootingText:onDestroy()
+function ViewShootingText:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
     if (self.Marquee ~= nil) then
         self.Marquee:destroy()
@@ -46,7 +46,7 @@ function ViewShootingText:onDestroy()
 end
 
 ---------------------------------------
-function ViewShootingText:onHandleEv(ev)
+function ViewShootingText:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityReceiceMarquee")
         then

@@ -19,7 +19,7 @@ function ViewMTTProcess:new(o)
 end
 
 ---------------------------------------
-function ViewMTTProcess:onCreate()
+function ViewMTTProcess:OnCreate()
     self.ControllerProcess = self.ComUi:GetController("ControllerProcess")
 end
 
@@ -28,7 +28,7 @@ function ViewMTTProcess:OnDestroy()
 end
 
 ---------------------------------------
-function ViewMTTProcess:onHandleEv(ev)
+function ViewMTTProcess:OnHandleEv(ev)
 end
 
 ---------------------------------------

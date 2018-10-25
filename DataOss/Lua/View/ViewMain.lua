@@ -14,6 +14,7 @@ function ViewMain:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     self.ViewMgr = nil
     self.GoUi = nil
     self.ComUi = nil
@@ -27,7 +28,7 @@ function ViewMain:new(o)
 end
 
 ---------------------------------------
-function ViewMain:onCreate()
+function ViewMain:OnCreate()
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
     self.ListFriendInfo = {}
@@ -90,7 +91,7 @@ function ViewMain:onCreate()
             end
     )
     local show_goldtree = false
-    if (ClientShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true) then
+    if (self.Context.Cfg.ClientShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true) then
         show_goldtree = true
     end
     ViewHelper:setGObjectVisible(show_goldtree, btn_goldtree)
@@ -439,7 +440,7 @@ function ViewMain:onCreate()
 end
 
 ---------------------------------------
-function ViewMain:onDestroy()
+function ViewMain:OnDestroy()
     if (NeedHideClientUi == false) then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
@@ -451,12 +452,7 @@ function ViewMain:onDestroy()
 end
 
 ---------------------------------------
-function ViewMain:Close()
-    self.GTransitionShow:PlayReverse()
-end
-
----------------------------------------
-function ViewMain:onHandleEv(ev)
+function ViewMain:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityNotifyDeleteFriend") then
             if (ev.friend_etguid == self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid) then
@@ -567,6 +563,11 @@ function ViewMain:onHandleEv(ev)
 end
 
 ---------------------------------------
+function ViewMain:Close()
+    self.GTransitionShow:PlayReverse()
+end
+
+---------------------------------------
 function ViewMain:updateLotteryTickTm(tm)
     if (tm > 0) then
         self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:getLanValue("S")
@@ -637,8 +638,8 @@ end
 ---------------------------------------
 function ViewMain:setCurrentFriendInfo(friend_item)
     self.CurrentFriendItem = friend_item
-    local item_ico = ""
-    local icon_resource_name = ""
+    --local item_ico = ""
+    --local icon_resource_name = ""
     if (self.CurrentFriendItem == nil) then
         self.BtnInviteFriend.visible = true
         self.UiPlayerInfoCurrentFriend:hidePlayerInfo(true)
@@ -679,7 +680,6 @@ function ViewMain:setNewRecord()
         if (self.TransitionNewMail.playing == false) then
             self.TransitionNewMail:Play()
         end
-
         self.CasinosContext:Play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
     end
 

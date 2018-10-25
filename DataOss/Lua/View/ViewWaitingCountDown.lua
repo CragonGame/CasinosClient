@@ -21,7 +21,7 @@ function ViewWaitingCountDown:new(o)
 end
 
 ---------------------------------------
-function ViewWaitingCountDown:onCreate()
+function ViewWaitingCountDown:OnCreate()
     local text = self.ComUi:GetChild("Tips")
     if (text ~= nil) then
         self.GTextTips = text.asTextField
@@ -35,7 +35,7 @@ function ViewWaitingCountDown:onCreate()
 end
 
 ---------------------------------------
-function ViewWaitingCountDown:onDestroy()
+function ViewWaitingCountDown:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -43,7 +43,7 @@ function ViewWaitingCountDown:onDestroy()
 end
 
 ---------------------------------------
-function ViewWaitingCountDown:onHandleEv(ev)
+function ViewWaitingCountDown:OnHandleEv(ev)
 end
 
 ---------------------------------------

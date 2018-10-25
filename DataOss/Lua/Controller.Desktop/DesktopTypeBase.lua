@@ -12,7 +12,7 @@ function DesktopTypeBase:new(o, desktop_base, co_mgr)
 end
 
 ---------------------------------------
-function DesktopTypeBase:onDestroy()
+function DesktopTypeBase:OnDestroy()
 end
 
 ---------------------------------------
@@ -20,7 +20,7 @@ function DesktopTypeBase:Update(elapsed_tm)
 end
 
 ---------------------------------------
-function DesktopTypeBase:onHandleEv(ev)
+function DesktopTypeBase:OnHandleEv(ev)
 end
 
 ---------------------------------------

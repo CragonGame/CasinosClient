@@ -28,7 +28,7 @@ function ViewShop:new(o)
 end
 
 ---------------------------------------
-function ViewShop:onCreate()
+function ViewShop:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
     self.ViewMgr:BindEvListener("EvEntityDiamondChanged", self)
     self.ViewMgr:BindEvListener("EvEntityPointChanged", self)
@@ -168,12 +168,12 @@ function ViewShop:onCreate()
 end
 
 ---------------------------------------
-function ViewShop:onDestroy()
+function ViewShop:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewShop:onHandleEv(ev)
+function ViewShop:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
         self:setPlayerGoldAndDiamond()
     elseif (ev.EventName == "EvEntityDiamondChanged") then

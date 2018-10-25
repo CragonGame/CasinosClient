@@ -17,7 +17,7 @@ function ViewMsgBox:new(o)
     return o
 end
 
-function ViewMsgBox:onCreate()
+function ViewMsgBox:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom

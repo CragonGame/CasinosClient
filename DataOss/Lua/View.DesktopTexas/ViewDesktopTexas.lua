@@ -64,8 +64,8 @@ function ViewDesktopTexas:new(o)
 end
 
 ---------------------------------------
-function ViewDesktopTexas:onCreate()
-    print('ViewDesktopTexas:onCreate()')
+function ViewDesktopTexas:OnCreate()
+    print('ViewDesktopTexas:OnCreate()')
 
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
@@ -242,7 +242,7 @@ function ViewDesktopTexas:onCreate()
 end
 
 ---------------------------------------
-function ViewDesktopTexas:onDestroy()
+function ViewDesktopTexas:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -274,13 +274,13 @@ function ViewDesktopTexas:onDestroy()
         self.DealerEx:Destroy()
         self.DealerEx = nil
     end
-    print('ViewDesktopTexas:onDestroy()')
+    print('ViewDesktopTexas:OnDestroy()')
 end
 
 ---------------------------------------
-function ViewDesktopTexas:onHandleEv(ev)
+function ViewDesktopTexas:OnHandleEv(ev)
     if self.ViewDesktopTypeBase ~= nil then
-        self.ViewDesktopTypeBase:onHandleEv(ev)
+        self.ViewDesktopTypeBase:OnHandleEv(ev)
     end
 
     if (ev ~= nil) then

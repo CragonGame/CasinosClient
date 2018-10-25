@@ -20,7 +20,7 @@ function ViewClub:new(o)
 end
 
 ---------------------------------------
-function ViewClub:onCreate()
+function ViewClub:OnCreate()
     self.ControllerMgr.ViewMgr:BindEvListener("EvEntitySetPrivateMatchLsit", self)
     self.ControllerMgr.ViewMgr:BindEvListener("EvEntityUpdatePrivateMatchPlayerNum", self)
     self.ControllerMgr.ViewMgr:BindEvListener("EvEntityGetMatchInfoByInvitationCodeSucceed", self)
@@ -81,7 +81,7 @@ function ViewClub:onUpdate(tm)
 end
 
 ---------------------------------------
-function ViewClub:onHandleEv(ev)
+function ViewClub:OnHandleEv(ev)
     if (ev.EventName == "EvEntitySetPrivateMatchLsit") then
         self:setAlreadyCreatedMatchList(ev.ListMatch, ev.ListApplyMatchGuid)
     elseif (ev.EventName == "EvEntityUpdatePrivateMatchPlayerNum") then

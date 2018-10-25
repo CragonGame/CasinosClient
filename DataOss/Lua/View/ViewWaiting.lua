@@ -22,7 +22,7 @@ function ViewWaiting:new(o)
 end
 
 ---------------------------------------
-function ViewWaiting:onCreate()
+function ViewWaiting:OnCreate()
     local text = self.ComUi:GetChild("Tips")
     if (text ~= nil) then
         self.GTextTips = text.asTextField
@@ -56,7 +56,7 @@ function ViewWaiting:onCreate()
 end
 
 ---------------------------------------
-function ViewWaiting:onDestroy()
+function ViewWaiting:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -64,7 +64,7 @@ function ViewWaiting:onDestroy()
 end
 
 ---------------------------------------
-function ViewWaiting:onHandleEv(ev)
+function ViewWaiting:OnHandleEv(ev)
 end
 
 ---------------------------------------

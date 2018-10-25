@@ -16,7 +16,7 @@ function ViewInviteFriendPlay:new(o)
     return o
 end
 
-function ViewInviteFriendPlay:onCreate()
+function ViewInviteFriendPlay:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("InviteFriendPlayCard"))
 	self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     self.GListOnLine = self.ComUi:GetChild("ListOnLine").asList
@@ -46,11 +46,11 @@ function ViewInviteFriendPlay:onCreate()
 	self.ViewMgr:BindEvListener("EvEntityFriendOnlineStateChange",self)
 end
 
-function ViewInviteFriendPlay:onDestroy()
+function ViewInviteFriendPlay:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewInviteFriendPlay:onHandleEv(ev)
+function ViewInviteFriendPlay:OnHandleEv(ev)
 	if(ev ~= nil)
 	then
 		if(ev.EventName == "EvEntityFriendOnlineStateChange")

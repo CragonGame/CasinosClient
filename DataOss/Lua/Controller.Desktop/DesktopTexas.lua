@@ -62,14 +62,14 @@ function DesktopTexas:GetDesktopPlayerByGuid(player_guid)
 end
 
 ---------------------------------------
-function DesktopTexas:onCreate()
+function DesktopTexas:OnCreate()
     self.MapDesktopTypeBaseFac = {}
     self:regDesktopTypeBaseFactory(DesktopTexasClassicFactory:new(nil))
     self:regDesktopTypeBaseFactory(DesktopTexasMTTFactory:new(nil))
 end
 
 ---------------------------------------
-function DesktopTexas:onDestroy(need_createmainui)
+function DesktopTexas:OnDestroy(need_createmainui)
     self.MePlayer = nil
     self.MeP = nil
     for k, v in pairs(self.MapPlayerTexas) do
@@ -100,7 +100,7 @@ function DesktopTexas:onDestroy(need_createmainui)
     local ui_desktop = view_mgr:GetView("DesktopTexas")
     view_mgr:DestroyView(ui_desktop)
 
-    self.DesktopTypeBase:onDestroy(need_createmainui)
+    self.DesktopTypeBase:OnDestroy(need_createmainui)
     self.DesktopTypeBase = nil
 end
 
@@ -115,9 +115,9 @@ function DesktopTexas:Update(elapsed_tm)
 end
 
 ---------------------------------------
-function DesktopTexas:onHandleEv(ev)
+function DesktopTexas:OnHandleEv(ev)
     if (ev ~= nil) then
-        self.DesktopTypeBase:onHandleEv(ev)
+        self.DesktopTypeBase:OnHandleEv(ev)
 
         if (ev.EventName == "EvUiClickFlod") then
             self: requestPlayerActionFold()
@@ -1437,6 +1437,6 @@ end
 ---------------------------------------
 function DesktopTexasFactory:CreateDesktop(co_mgr)
     local l = DesktopTexas:new(nil, co_mgr)
-    l:onCreate()
+    l:OnCreate()
     return l
 end

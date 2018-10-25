@@ -29,7 +29,7 @@ function DesktopHUiGold:new(o)
 end
 
 ---------------------------------------
-function DesktopHUiGold:onCreate()
+function DesktopHUiGold:OnCreate()
     local view_mgr = ViewMgr:new(nil)
     self.ViewDesktopH = view_mgr:GetView("DesktopH")
     self.GCoGold = CS.FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(), "Gold" .. self.ViewDesktopH.FactoryName)

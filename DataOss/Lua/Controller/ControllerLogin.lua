@@ -97,6 +97,7 @@ function ControllerLogin:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     if (self.Instance == nil) then
+        self.Context = Context
         self.ControllerName = "Login"
         self.ControllerData = controller_data
         self.ControllerMgr = controller_mgr
@@ -125,7 +126,7 @@ function ControllerLogin:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerLogin:onCreate()
+function ControllerLogin:OnCreate()
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
     local c = CS.Casinos.CasinosContext.Instance
     self.ViewMgr:BindEvListener("EvUiLogin", self)
@@ -165,7 +166,7 @@ function ControllerLogin:onCreate()
 end
 
 ---------------------------------------
-function ControllerLogin:onDestroy()
+function ControllerLogin:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -174,7 +175,7 @@ function ControllerLogin:onDestroy()
 end
 
 ---------------------------------------
-function ControllerLogin:onHandleEv(ev)
+function ControllerLogin:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvUiLogin") then
             local login_type = ev.login_type
@@ -924,6 +925,6 @@ end
 ---------------------------------------
 function ControllerLoginFactory:createController(controller_mgr, controller_data, guid)
     local controller = ControllerLogin:new(nil, controller_mgr, controller_data, guid)
-    controller:onCreate()
+    controller:OnCreate()
     return controller
 end

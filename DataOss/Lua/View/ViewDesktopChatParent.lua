@@ -20,7 +20,7 @@ function ViewDesktopChatParent:new(o)
 end
 
 ---------------------------------------
-function ViewDesktopChatParent:onCreate()
+function ViewDesktopChatParent:OnCreate()
     self.ComUi.touchable = false
 end
 

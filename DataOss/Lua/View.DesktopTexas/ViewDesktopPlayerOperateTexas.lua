@@ -44,7 +44,7 @@ function ViewDesktopPlayerOperateTexas:new(o)
 end
 
 ---------------------------------------
-function ViewDesktopPlayerOperateTexas:onCreate()
+function ViewDesktopPlayerOperateTexas:OnCreate()
     self.ViewMgr:BindEvListener("EvCommonCardShowEnd", self)
     self.ViewMgr:BindEvListener("EvCommonCardDealEnd", self)
     self.ViewMgr:BindEvListener("EvUiClickDesktop", self)
@@ -183,12 +183,12 @@ function ViewDesktopPlayerOperateTexas:onCreate()
 end
 
 ---------------------------------------
-function ViewDesktopPlayerOperateTexas:onDestroy()
+function ViewDesktopPlayerOperateTexas:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewDesktopPlayerOperateTexas:onHandleEv(ev)
+function ViewDesktopPlayerOperateTexas:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvCommonCardShowEnd") then
             self.CanShowOperate = true

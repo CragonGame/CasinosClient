@@ -61,8 +61,8 @@ function ViewMgr:new(o)
 end
 
 ---------------------------------------
-function ViewMgr:onCreate()
-    print("ViewMgr:onCreate")
+function ViewMgr:OnCreate()
+    print("ViewMgr:OnCreate")
     CS.FairyGUI.GRoot.inst:SetContentScaleFactor(self.STANDARD_WIDTH, self.STANDARD_HEIGHT, CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
     CS.FairyGUI.UIConfig.defaultFont = "FontXi"
     if (CS.UnityEngine.PlayerPrefs.HasKey("ScreenAutoRotation")) then
@@ -82,7 +82,7 @@ function ViewMgr:onCreate()
 end
 
 ---------------------------------------
-function ViewMgr:onDestroy()
+function ViewMgr:OnDestroy()
     self.CasinosContext = nil
     self.CasinosLua = nil
 end
@@ -121,7 +121,7 @@ function ViewMgr:CreateView(view_key)
     view.Panel = ui_panel
     view.UILayer = view_factory.UILayer
     view.ViewKey = view_key
-    view:onCreate()
+    view:OnCreate()
     if (view_factory.IsSingle) then
         self.TableViewSingle[view_key] = view
     else
@@ -158,12 +158,12 @@ function ViewMgr:DestroyView(view)
         local view_ex = self.TableViewSingle[view_key]
         if (view_ex ~= nil) then
             self.TableViewSingle[view_key] = nil
-            view:onDestroy()
+            view:OnDestroy()
         else
             local table_multiple = self.TableViewMultiple[view_key]
             if (table_multiple ~= nil and #table_multiple > 0) then
                 LuaHelper:TableRemoveV(table_multiple, view)
-                view:onDestroy()
+                view:OnDestroy()
             end
         end
         self.TableMaxDepth[view.UILayer] = view.InitDepth
@@ -188,7 +188,7 @@ function ViewMgr:DestroyAllView()
     end
     for k, v in pairs(table_need_destroyui) do
         self.TableMaxDepth[v.UILayer] = v.InitDepth
-        v:onDestroy()
+        v:OnDestroy()
         self.CasinosLua:DestroyGameObject(v.GoUi)
         v = nil
     end
@@ -246,7 +246,7 @@ end
 
 ---------------------------------------
 function ViewMgr:UnpackData(data)
-    local p_datas = self.RPC:UnPackData(data)
+    local p_datas = self.RPC:UnpackData(data)
     return p_datas
 end
 
@@ -271,7 +271,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
             self.TableViewSingle[i] = nil
             local layer = v.UILayer
             self.TableMaxDepth[layer] = v.InitDepth
-            v:onDestroy()
+            v:OnDestroy()
             --v.ComUi:Dispose()
             self.CasinosLua:DestroyGameObject(v.GoUi)
         end
@@ -299,7 +299,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
                 self.TableViewMultiple[i] = nil
                 local layer = v_v.UILayer
                 self.TableMaxDepth[layer] = v_v.InitDepth
-                v_v:onDestroy()
+                v_v:OnDestroy()
                 --v_v.ComUi:Dispose()
                 self.CasinosLua:DestroyGameObject(v.GoUi)
             end

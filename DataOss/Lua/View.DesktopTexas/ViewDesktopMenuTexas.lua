@@ -20,7 +20,7 @@ function ViewDesktopMenuTexas:new(o)
 end
 
 ---------------------------------------
-function ViewDesktopMenuTexas:onCreate()
+function ViewDesktopMenuTexas:OnCreate()
     self.GBtnStandUp = self.ComUi:GetChild("Lan_Btn_StandUp").asButton
     self.GBtnStandUp.onClick:Add(
             function()
@@ -31,8 +31,8 @@ function ViewDesktopMenuTexas:onCreate()
             function()
                 self:_onClickLeaveInMiddle()
             end)
-    self.TransitionCreate = self.ComUi:GetTransition("TransitionCreate")
-    self.TransitionCreate:Play()
+    self.TransitiOnCreate = self.ComUi:GetTransition("TransitiOnCreate")
+    self.TransitiOnCreate:Play()
     local com_shade = self.ComUi:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
@@ -106,7 +106,7 @@ end
 
 ---------------------------------------
 function ViewDesktopMenuTexas:_onClickExit()
-    self.TransitionCreate:PlayReverse(
+    self.TransitiOnCreate:PlayReverse(
             function()
                 self.ViewMgr:DestroyView(self)
                 local ev = self.ViewMgr:GetEv("EvUiClickExitDesk")
@@ -160,7 +160,7 @@ end
 
 ---------------------------------------
 function ViewDesktopMenuTexas:close()
-    self.TransitionCreate:PlayReverse(
+    self.TransitiOnCreate:PlayReverse(
             function()
                 self.ViewMgr:DestroyView(self)
             end

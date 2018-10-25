@@ -23,7 +23,7 @@ function ViewMTTGameResult:new(o)
 end
 
 ---------------------------------------
-function ViewMTTGameResult:onCreate()
+function ViewMTTGameResult:OnCreate()
     local view_matchInfo = self.ViewMgr:GetView("MatchInfo")
     if (view_matchInfo ~= nil) then
         self.ViewMgr:DestroyView(view_matchInfo)
@@ -56,7 +56,7 @@ function ViewMTTGameResult:OnDestroy()
 end
 
 ---------------------------------------
-function ViewMTTGameResult:onHandleEv(ev)
+function ViewMTTGameResult:OnHandleEv(ev)
 end
 
 ---------------------------------------

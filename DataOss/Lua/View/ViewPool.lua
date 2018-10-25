@@ -20,7 +20,7 @@ function ViewPool:new(o)
 end
 
 ---------------------------------------
-function ViewPool:onCreate()
+function ViewPool:OnCreate()
     self.ItemShootingTextPool = ItemShootingTextPool:new(nil, self)
     if (CS.Casinos.CasinosContext.Instance.Config.HaveMagicExp == true) then
         self.ItemMagicExpPool = ItemMagicExpSenderPool:new(nil, self)

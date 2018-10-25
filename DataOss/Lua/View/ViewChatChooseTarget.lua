@@ -19,7 +19,7 @@ function ViewChatChooseTarget:new(o)
 end
 
 ---------------------------------------
-function ViewChatChooseTarget:onCreate()
+function ViewChatChooseTarget:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("ChooseFriendChat"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
@@ -47,12 +47,12 @@ function ViewChatChooseTarget:onCreate()
 end
 
 ---------------------------------------
-function ViewChatChooseTarget:onDestroy()
+function ViewChatChooseTarget:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewChatChooseTarget:onHandleEv(ev)
+function ViewChatChooseTarget:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvUiClickChooseFriend") then
             self:onClickClose()

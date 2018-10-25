@@ -9,17 +9,16 @@ function ControllerTrade:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
     o.ViewMgr = o.ControllerMgr.ViewMgr
-
     return o
 end
 
 ---------------------------------------
-function ControllerTrade:onCreate()
+function ControllerTrade:OnCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerDesktop = self.ControllerMgr:GetController("Desktop")
     self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
@@ -59,12 +58,12 @@ function ControllerTrade:onCreate()
 end
 
 ---------------------------------------
-function ControllerTrade:onDestroy()
+function ControllerTrade:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ControllerTrade:onHandleEv(ev)
+function ControllerTrade:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestBuyGold")
     then
         self:RequestBuyItem(ev.buy_goldid, BuyItemForTarget.Me, "")
@@ -358,18 +357,15 @@ end
 
 ---------------------------------------
 function ControllerTrade:OnPayCreateCharge(status, response, error)
-    if (status == UCenterResponseStatus.Success)
-    then
-        if (self.CasinosContext.UnityIOS == true)
-        then
+    if (status == UCenterResponseStatus.Success) then
+        if (self.CasinosContext.UnityIOS == true) then
             self.CasinosContext:setNativeOperate(CS.Casinos.NativeOperateType.__CastFrom('Pay'))
         end
 
-        if (response ~= nil)
-        then
+        if (response ~= nil) then
             local url_s = ""
             if CS.Casinos.CasinosContext.Instance.UnityIOS then
-                url_s = PayUrlScheme
+                url_s = self.Context.Cfg.PayUrlScheme
             end
             CS.Pay.pay("", response.itemName, self.PayType, tonumber(response.amount), response.chargeId, "", url_s)
         end

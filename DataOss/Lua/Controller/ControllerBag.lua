@@ -9,17 +9,16 @@ function ControllerBag:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
     o.ViewMgr = ViewMgr:new(nil)
-
     return o
 end
 
 ---------------------------------------
-function ControllerBag:onCreate()
+function ControllerBag:OnCreate()
     self.RPC = self.ControllerMgr.RPC
     self.MC = CommonMethodType
     -- 背包中所有道具推送给Client的通知
@@ -65,7 +64,7 @@ function ControllerBag:onCreate()
 end
 
 ---------------------------------------
-function ControllerBag:onDestroy()
+function ControllerBag:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
     self.MapItem = {}
     self.MapItem = nil
@@ -77,7 +76,7 @@ function ControllerBag:onDestroy()
 end
 
 ---------------------------------------
-function ControllerBag:onHandleEv(ev)
+function ControllerBag:OnHandleEv(ev)
     if (ev.EventName == "EvUiRemoveItem")
     then
         local obj_id = ev.obj_id

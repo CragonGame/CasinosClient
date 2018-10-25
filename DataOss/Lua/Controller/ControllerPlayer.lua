@@ -8,6 +8,7 @@ function ControllerPlayer:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerData = controller_data
     self.ControllerMgr = controller_mgr
@@ -22,7 +23,7 @@ function ControllerPlayer:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerPlayer:onCreate()
+function ControllerPlayer:OnCreate()
     self.ViewMgr:BindEvListener("EvUiClickHelp", self)
     self.ViewMgr:BindEvListener("EvUiClickEdit", self)
     self.ViewMgr:BindEvListener("EvUiClickLogin", self)
@@ -200,7 +201,7 @@ function ControllerPlayer:onCreate()
 end
 
 ---------------------------------------
-function ControllerPlayer:onDestroy()
+function ControllerPlayer:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -212,7 +213,7 @@ function ControllerPlayer:onDestroy()
 end
 
 ---------------------------------------
-function ControllerPlayer:onHandleEv(ev)
+function ControllerPlayer:OnHandleEv(ev)
     if (ev.EventName == "EvUiClickHelp") then
     elseif (ev.EventName == "EvUiClickEdit") then
     elseif (ev.EventName == "EvUiClickLogin") then

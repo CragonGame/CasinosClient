@@ -37,7 +37,7 @@ function ViewFloatMsg:new(o)
 end
 
 ---------------------------------------
-function ViewFloatMsg:onCreate()
+function ViewFloatMsg:OnCreate()
     self.canSend = true
     self.GTextInfos[0] = self.ComUi:GetChild("GTextInfo0").asTextField
     self.GTextInfos[1] = self.ComUi:GetChild("GTextInfo1").asTextField

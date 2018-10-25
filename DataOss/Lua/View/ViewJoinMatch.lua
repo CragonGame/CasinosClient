@@ -23,7 +23,7 @@ function ViewJoinMatch:new(o)
     return self.Instance
 end
 
-function ViewJoinMatch:onCreate()
+function ViewJoinMatch:OnCreate()
 	ViewHelper:PopUi(self.ComUi)
 	local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
 	local com_shade = com_bg:GetChild("ComShade").asCom

@@ -20,7 +20,7 @@ function ViewSnowBallReward:new(o)
 end
 
 ---------------------------------------
-function ViewSnowBallReward:onCreate()
+function ViewSnowBallReward:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SnowBallMatchInfo"))
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton

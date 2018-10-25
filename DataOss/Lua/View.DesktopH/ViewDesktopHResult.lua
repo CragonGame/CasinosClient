@@ -32,7 +32,7 @@ function ViewDesktopHResult:new(o)
 end
 
 ---------------------------------------
-function ViewDesktopHResult:onCreate()
+function ViewDesktopHResult:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BureauSettlement"))
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom

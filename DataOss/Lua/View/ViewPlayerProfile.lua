@@ -20,7 +20,7 @@ function ViewPlayerProfile:new(o)
 end
 
 ---------------------------------------
-function ViewPlayerProfile:onCreate()
+function ViewPlayerProfile:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
@@ -115,13 +115,13 @@ function ViewPlayerProfile:onCreate()
 end
 
 ---------------------------------------
-function ViewPlayerProfile:onDestroy()
+function ViewPlayerProfile:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
     self.ViewPool:itemGiftAllEnque()
 end
 
 ---------------------------------------
-function ViewPlayerProfile:onHandleEv(ev)
+function ViewPlayerProfile:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGetPlayerInfoOther") then
         if (ev.player_info.PlayerInfoCommon.PlayerGuid == self.PlayerGuid) then
             self:setPlayerInfo(ev.player_info)

@@ -34,7 +34,7 @@ function ViewDailyReward:new(o)
 end
 
 ---------------------------------------
-function ViewDailyReward:onCreate()
+function ViewDailyReward:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("DailyRewardSign"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.MapDailyReward = {}
@@ -69,7 +69,7 @@ function ViewDailyReward:onCreate()
 end
 
 ---------------------------------------
-function ViewDailyReward:onDestroy()
+function ViewDailyReward:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil

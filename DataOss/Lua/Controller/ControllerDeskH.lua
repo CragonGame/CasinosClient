@@ -8,18 +8,17 @@ function ControllerDeskH:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
     o.ViewMgr = ViewMgr:new(nil)
     self.QueBetpotWinLooseResultCount = 10
-
     return o
 end
 
 ---------------------------------------
-function ControllerDeskH:onCreate()
+function ControllerDeskH:OnCreate()
     self.ViewMgr:BindEvListener("EvUiClickDesktopHundred", self)
     self.ViewMgr:BindEvListener("EvUiClickLeaveDesktopHundred", self)
     self.ViewMgr:BindEvListener("EvDesktopHClickBetOperateType", self)
@@ -159,7 +158,7 @@ function ControllerDeskH:onCreate()
 end
 
 ---------------------------------------
-function ControllerDeskH:onDestroy()
+function ControllerDeskH:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
     if (self.FTaskerLeaveDesktopH ~= nil)
     then
@@ -169,9 +168,9 @@ function ControllerDeskH:onDestroy()
 end
 
 ---------------------------------------
-function ControllerDeskH:onHandleEv(ev)
+function ControllerDeskH:OnHandleEv(ev)
     if (self.DesktopHBase ~= nil) then
-        self.DesktopHBase:onHandleEvent(ev)
+        self.DesktopHBase:OnHandleEvent(ev)
     end
 
     if (ev.EventName == "EvUiClickDesktopHundred") then
@@ -1002,7 +1001,7 @@ function ControllerDeskH:clearDesktopHundred(need_createmainui)
 
     self.MapBetRepeatInfo = {}
     if (self.DesktopHBase ~= nil) then
-        self.DesktopHBase:onDestroy()
+        self.DesktopHBase:OnDestroy()
         self.DesktopHBase = nil
     end
     self.DesktopHGuid = ""

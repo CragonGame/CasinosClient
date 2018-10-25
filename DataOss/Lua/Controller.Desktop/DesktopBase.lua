@@ -21,7 +21,7 @@ function DesktopBase:GetDesktopPlayerByGuid(player_guid)
 end
 
 ---------------------------------------
-function DesktopBase:onDestroy(need_createmainui)
+function DesktopBase:OnDestroy(need_createmainui)
 end
 
 ---------------------------------------
@@ -29,7 +29,7 @@ function DesktopBase:Update(elapsed_tm)
 end
 
 ---------------------------------------
-function DesktopBase:onHandleEv(ev)
+function DesktopBase:OnHandleEv(ev)
 end
 
 ---------------------------------------

@@ -9,7 +9,7 @@ function ControllerActor:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -92,7 +92,7 @@ function ControllerActor:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerActor:onCreate()
+function ControllerActor:OnCreate()
     self.RPC = self.ControllerMgr.RPC
     self.MC = CommonMethodType
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -180,13 +180,13 @@ function ControllerActor:onCreate()
 end
 
 ---------------------------------------
-function ControllerActor:onDestroy()
+function ControllerActor:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
     self.ControllerLogin.ControllerActor = nil
 end
 
 ---------------------------------------
-function ControllerActor:onHandleEv(ev)
+function ControllerActor:OnHandleEv(ev)
     if (ev.EventName == "EvBindWeChatSuccess")
     then
         if ev.IsSuccess then

@@ -21,7 +21,7 @@ function ViewPurse:new(o)
 end
 
 ---------------------------------------
-function ViewPurse:onCreate()
+function ViewPurse:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
     self.ViewMgr:BindEvListener("EvEntityDiamondChanged", self)
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
@@ -75,12 +75,12 @@ function ViewPurse:onCreate()
 end
 
 ---------------------------------------
-function ViewPurse:onDestroy()
+function ViewPurse:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewPurse:onHandleEv(ev)
+function ViewPurse:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
         self:setPlayerGoldAndDiamond()
     elseif (ev.EventName == "EvEntityDiamondChanged") then

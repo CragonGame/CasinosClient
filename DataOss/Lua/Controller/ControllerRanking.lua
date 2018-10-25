@@ -8,19 +8,18 @@ function ControllerRanking:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
+    o.Context = Context
     o.ControllerName = "Ranking"
     o.ViewMgr = ViewMgr:new(nil)
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
     o.ViewMgr = ViewMgr:new(nil)
-
     return o
 end
 
 ---------------------------------------
-function ControllerRanking:onCreate()
+function ControllerRanking:OnCreate()
     self.RPC = self.ControllerMgr.RPC
     self.MC = CommonMethodType
     -- 获取金币排行榜
@@ -56,12 +55,12 @@ function ControllerRanking:onCreate()
 end
 
 ---------------------------------------
-function ControllerRanking:onDestroy()
+function ControllerRanking:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ControllerRanking:onHandleEv(ev)
+function ControllerRanking:OnHandleEv(ev)
     if (ev.EventName == "EvUiGetRankingGold")
     then
         self:requestGetRanking(RankingListType.Chip)

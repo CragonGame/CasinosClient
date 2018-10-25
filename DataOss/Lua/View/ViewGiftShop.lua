@@ -19,7 +19,7 @@ function ViewGiftShop:new(o)
     return o
 end
 
-function ViewGiftShop:onCreate()
+function ViewGiftShop:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("GiftShop"))
 	self.CasinosContext = CS.Casinos.CasinosContext.Instance
 	self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
@@ -45,12 +45,12 @@ function ViewGiftShop:onCreate()
 	self.ViewMgr:BindEvListener("EvUiBuyItem",self)
 end
 
-function ViewGiftShop:onDestroy()
+function ViewGiftShop:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 	self.ViewPool:itemGiftAllEnque()
 end
 
-function ViewGiftShop:onHandleEv(ev)
+function ViewGiftShop:OnHandleEv(ev)
 	if(ev ~= nil)
 	then
 		if(ev.EventName == "EvUiBuyItem")

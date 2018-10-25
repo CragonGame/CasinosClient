@@ -19,7 +19,7 @@ function ViewChooseLan:new(o)
 end
 
 ---------------------------------------
-function ViewChooseLan:onCreate()
+function ViewChooseLan:OnCreate()
     local com = self.ComUi:GetChild("CoShade").asCom
     com.onClick:Add(
             function()

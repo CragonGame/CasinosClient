@@ -18,7 +18,7 @@ function ViewGetChipEffect:new(o)
     return o
 end
 
-function ViewGetChipEffect:onCreate()
+function ViewGetChipEffect:OnCreate()
 	self.GGraphParcitle = self.ComUi:GetChild("HolderParticle").asGraph
 	self.ShowTime = 0
 end

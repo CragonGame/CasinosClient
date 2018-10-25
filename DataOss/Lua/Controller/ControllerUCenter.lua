@@ -9,6 +9,7 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     if (self.Instance == nil) then
+        self.Context = Context
         self.ControllerName = "Login"
         self.ControllerData = controller_data
         self.ControllerMgr = controller_mgr
@@ -22,18 +23,18 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerUCenter:onCreate()
-    print("ControllerUCenter:onCreate")
+function ControllerUCenter:OnCreate()
+    print("ControllerUCenter:OnCreate")
     self.MbHelper = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbHelper")
 end
 
 ---------------------------------------
-function ControllerUCenter:onDestroy()
-    print("ControllerUCenter:onDestroy")
+function ControllerUCenter:OnDestroy()
+    print("ControllerUCenter:OnDestroy")
 end
 
 ---------------------------------------
-function ControllerUCenter:onHandleEv(ev)
+function ControllerUCenter:OnHandleEv(ev)
 end
 
 ---------------------------------------
@@ -450,6 +451,6 @@ end
 ---------------------------------------
 function ControllerUCenterFactory:createController(controller_mgr, controller_data, guid)
     local controller = ControllerUCenter:new(nil, controller_mgr, controller_data, guid)
-    controller:onCreate()
+    controller:OnCreate()
     return controller
 end

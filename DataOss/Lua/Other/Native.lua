@@ -10,6 +10,7 @@ function Native:new(o, view_mgr, listner)
     self.__index = self
     if (self.Instance == nil) then
         self.Instance = o
+        self.Context = Context
         self.ViewMgr = view_mgr
         self.Listner = listner
 
@@ -47,11 +48,11 @@ function Native:new(o, view_mgr, listner)
     CS.Pay.Instant()
     if CS.Casinos.CasinosContext.Instance.IsEditor == false then
         local secrete = BeeCloudLiveSecret
-        if PayUseTestMode then
+        if self.Context.Cfg.PayUseTestMode then
             secrete = BeeCloudTestSecret
         end
         CS.Pay.payInit(BeeCloudId, secrete, WeChatAppId)
-        CS.Pay.useTestMode(PayUseTestMode)
+        CS.Pay.useTestMode(self.Context.Cfg.PayUseTestMode)
     end
 
     CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionGetPicSuccess = function(getpic_result)
@@ -239,7 +240,7 @@ function Native:ActionLoginFailed(fail_type)
     elseif fail_type == "ERR_UNSUPPORT" then
         tips = native.ViewMgr.LanMgr:getLanValue("ERRUNSUPPORT")
     elseif fail_type == "ERR_NOTINSTALLEDWECHAT" then
-        ClientWechatIsInstalled = false
+        self.Context.Cfg.ClientWechatIsInstalled = false
     else
         if fail_type == "-2" then
             tips = native.ViewMgr.LanMgr:getLanValue("ERRUSERCANCEL")

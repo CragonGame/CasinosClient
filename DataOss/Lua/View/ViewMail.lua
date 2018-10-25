@@ -17,7 +17,7 @@ function ViewMail:new(o)
 	return o
 end
 
-function ViewMail:onCreate()
+function ViewMail:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("Mail"))
 	self.ViewMgr:BindEvListener("EvEntityMailListInit",self)
 	self.ViewMgr:BindEvListener("EvEntityMailAdd",self)
@@ -47,11 +47,11 @@ function ViewMail:onCreate()
 	self:setMail(#list_mail > 0, have_newmail)
 end
 
-function ViewMail:onDestroy()
+function ViewMail:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewMail:onHandleEv(ev)
+function ViewMail:OnHandleEv(ev)
 	if(ev ~= nil)
 	then
 		if (ev.EventName == "EvEntityMailListInit")

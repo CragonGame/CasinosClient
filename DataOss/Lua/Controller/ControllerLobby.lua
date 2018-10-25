@@ -9,6 +9,7 @@ function ControllerLobby:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -17,7 +18,7 @@ function ControllerLobby:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerLobby:onCreate()
+function ControllerLobby:OnCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerIM = self.ControllerMgr:GetController("IM")
     self.ControllerDesktop = self.ControllerMgr:GetController("Desktop")
@@ -42,12 +43,12 @@ function ControllerLobby:onCreate()
 end
 
 ---------------------------------------
-function ControllerLobby:onDestroy()
+function ControllerLobby:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ControllerLobby:onHandleEv(ev)
+function ControllerLobby:OnHandleEv(ev)
     if (ev.EventName == "EvUiClickSearchDesk") then
         self:RequestSearchDesktop(ev.desktop_searchfilter)
     elseif (ev.EventName == "EvUiClickSearchFriendsDesk") then

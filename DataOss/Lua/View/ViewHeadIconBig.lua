@@ -18,7 +18,7 @@ function ViewHeadIconBig:new(o)
     return o
 end
 
-function ViewHeadIconBig:onCreate()
+function ViewHeadIconBig:OnCreate()
 	self.GLoaderPlayerIcon = self.ComUi:GetChild("LoaderIcon").asLoader
     self.ComUi.onClick:Add(
 		function()

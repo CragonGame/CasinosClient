@@ -18,7 +18,7 @@ function ViewDesktopChatExpression:new(o)
     return o
 end
 
-function ViewDesktopChatExpression:onCreate()
+function ViewDesktopChatExpression:OnCreate()
 	self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
 	self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
 	self.MapExpression = {}

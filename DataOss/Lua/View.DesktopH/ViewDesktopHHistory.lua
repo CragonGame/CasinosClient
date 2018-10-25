@@ -19,7 +19,7 @@ function ViewDesktopHHistory:new(o)
 	return o
 end
 
-function ViewDesktopHHistory:onCreate()
+function ViewDesktopHHistory:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("DesktopHHistory"))
 	self.ViewMgr:BindEvListener("EvEntityDesktopHGameEndState",self)
 	local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -39,11 +39,11 @@ function ViewDesktopHHistory:onCreate()
 	self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
 end
 
-function ViewDesktopHHistory:onDestroy()
+function ViewDesktopHHistory:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewDesktopHHistory:onHandleEv(ev)
+function ViewDesktopHHistory:OnHandleEv(ev)
 	if(ev ~= nil)
 	then
 		if(ev.EventName == "EvEntityDesktopHGameEndState")

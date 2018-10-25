@@ -8,6 +8,7 @@ function ControllerGrow:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -17,7 +18,7 @@ function ControllerGrow:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerGrow:onCreate()
+function ControllerGrow:OnCreate()
     self.RPC = self.ControllerMgr.RPC
     self.MC = CommonMethodType
     -- 成长奖励
@@ -32,7 +33,7 @@ function ControllerGrow:onCreate()
 end
 
 ---------------------------------------
-function ControllerGrow:onDestroy()
+function ControllerGrow:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
@@ -49,7 +50,7 @@ function ControllerGrow:onUpdate(tm)
 end
 
 ---------------------------------------
-function ControllerGrow:onHandleEv(ev)
+function ControllerGrow:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestGetGrowReward") then
         self.RPC:RPC0(self.MC.PlayerGetGrowRewardRequest)
     end

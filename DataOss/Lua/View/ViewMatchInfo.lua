@@ -20,7 +20,7 @@ function ViewMatchInfo:new(o)
 end
 
 ---------------------------------------
-function ViewMatchInfo:onCreate()
+function ViewMatchInfo:OnCreate()
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerActor = controller_mgr:GetController("Actor")
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("MatchInfo"))
@@ -167,7 +167,7 @@ function ViewMatchInfo:Init(match_guid, isIndesk, isSelfJoin)
 end
 
 ---------------------------------------
-function ViewMatchInfo:onHandleEv(ev)
+function ViewMatchInfo:OnHandleEv(ev)
     if (ev.EventName == "EvEntitySetMatchDetailedInfo") then
         self:SetMatchInfo(ev.MatchDetailedInfo)
     elseif (ev.EventName == "EvEntitySetRaiseBlindTbInfo") then
@@ -225,7 +225,7 @@ function ViewMatchInfo:onUpdate(tm)
 end
 
 ---------------------------------------
-function ViewMatchInfo:onDestroy()
+function ViewMatchInfo:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 

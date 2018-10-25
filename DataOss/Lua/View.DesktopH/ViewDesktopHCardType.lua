@@ -19,7 +19,7 @@ function ViewDesktopHCardType:new(o)
     return o
 end
 
-function ViewDesktopHCardType:onCreate()
+function ViewDesktopHCardType:OnCreate()
 	 self.ComUi.onClick:Add(
 		function()
 			self:_onClickCoCardType()

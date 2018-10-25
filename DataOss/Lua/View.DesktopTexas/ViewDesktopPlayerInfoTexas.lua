@@ -49,7 +49,7 @@ function ViewDesktopPlayerInfoTexas:new(o)
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:onCreate()
+function ViewDesktopPlayerInfoTexas:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityRecvChatFromDesktop", self)
     self.ViewMgr:BindEvListener("EvCurrentWinner", self)
     self.ViewMgr:BindEvListener("EvEntityDesktopShowdownNotify", self)
@@ -107,7 +107,7 @@ function ViewDesktopPlayerInfoTexas:onCreate()
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:onDestroy()
+function ViewDesktopPlayerInfoTexas:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -154,7 +154,7 @@ function ViewDesktopPlayerInfoTexas:release()
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:onHandleEv(ev)
+function ViewDesktopPlayerInfoTexas:OnHandleEv(ev)
     if (self.IsRelease) then
         return
     end

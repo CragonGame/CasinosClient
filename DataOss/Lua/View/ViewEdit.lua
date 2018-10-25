@@ -20,7 +20,7 @@ function ViewEdit:new(o)
 end
 
 ---------------------------------------
-function ViewEdit:onCreate()
+function ViewEdit:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Edit"))
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton

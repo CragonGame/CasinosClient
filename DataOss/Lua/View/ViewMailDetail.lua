@@ -18,7 +18,7 @@ function ViewMailDetail:new(o)
 	return o
 end
 
-function ViewMailDetail:onCreate()
+function ViewMailDetail:OnCreate()
 	local co_close = self.ComUi:GetChild("ComBgAndClose").asCom
 	local com_shade = co_close:GetChild("ComShade").asCom
 	com_shade.onClick:Add(

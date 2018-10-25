@@ -11,6 +11,7 @@ function ViewLotteryTicket:new(o)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.LotteryTicketPackName = "LotteryTicket"
     if (self.Instance == nil) then
+        self.Context = Context
         self.ViewMgr = nil
         self.GoUi = nil
         self.ComUi = nil
@@ -24,7 +25,7 @@ function ViewLotteryTicket:new(o)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:onCreate()
+function ViewLotteryTicket:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketBetOperateTypeChange", self)
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketCurrentBetOperateTypeChange", self)
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateBetPotBetInfo", self)
@@ -37,7 +38,7 @@ function ViewLotteryTicket:onCreate()
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
-    local fac = self.ControllerLotteryTicket:GetLotteryTicketBaseFactory(LotteryTicketFactoryName)
+    local fac = self.ControllerLotteryTicket:GetLotteryTicketBaseFactory(self.Context.Cfg.LotteryTicketFactoryName)
     self.ViewLotteryTicketBase = fac:CreateUiDesktopHBase(self)
     local co_bg = self.ComUi:GetChild("CommonMsgBgAndClose").asCom
     local btn_close = co_bg:GetChild("BtnClose").asButton
@@ -107,12 +108,12 @@ function ViewLotteryTicket:onCreate()
 end
 
 ---------------------------------------
-function ViewLotteryTicket:onDestroy()
+function ViewLotteryTicket:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:onHandleEv(ev)
+function ViewLotteryTicket:OnHandleEv(ev)
     if (ev.EventName == "EvEntityLotteryTicketBetOperateTypeChange") then
         for key, value in pairs(ev.map_changeoperate) do
             local item_operate = nil

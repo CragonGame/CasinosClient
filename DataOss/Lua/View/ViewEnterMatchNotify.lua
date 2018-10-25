@@ -21,7 +21,7 @@ function ViewEnterMatchNotify:new(o)
 end
 
 ---------------------------------------
-function ViewEnterMatchNotify:onCreate()
+function ViewEnterMatchNotify:OnCreate()
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     local btn_close = self.ComUi:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -67,7 +67,7 @@ function ViewEnterMatchNotify:onCreate()
 end
 
 ---------------------------------------
-function ViewEnterMatchNotify:onDestroy()
+function ViewEnterMatchNotify:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil

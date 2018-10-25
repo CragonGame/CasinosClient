@@ -21,7 +21,7 @@ function ViewNotice:new(o)
     return o	    
 end
 
-function ViewNotice:onCreate()
+function ViewNotice:OnCreate()
 	self.ViewMgr:BindEvListener("EvEntityReceiceMarquee",self)
 	self.ControllerMarquee = self.ViewMgr.ControllerMgr:GetController("Marquee")
 	self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
@@ -63,10 +63,10 @@ function ViewNotice:onCreate()
 			self.GTextItemCount.text = "1"
 		end
 	end
-    self.TransitionCreate = self.ComUi:GetTransition("TransitionCreate")
-    if (self.TransitionCreate ~= nil)
+    self.TransitiOnCreate = self.ComUi:GetTransition("TransitiOnCreate")
+    if (self.TransitiOnCreate ~= nil)
 	then
-		self.TransitionCreate:Play()
+		self.TransitiOnCreate:Play()
 	else
 		local pos = self.ComUi.position
         pos.x = -self.ComUi.width
@@ -81,11 +81,11 @@ function ViewNotice:onCreate()
     self.GListNotice.numItems = #self.ControllerMarquee.ListIMMarquee
 end
 
-function ViewNotice:onDestroy()
+function ViewNotice:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewNotice:onHandleEv(ev)
+function ViewNotice:OnHandleEv(ev)
 	if(ev ~= nil)
 	then
 		if(ev.EventName == "EvEntityReceiceMarquee")
@@ -120,7 +120,7 @@ end
 
 function ViewNotice:onClickReturn()
 	self.ViewMgr:DestroyView(self)
-	--[[if (self.TransitionCreate ~= nil)
+	--[[if (self.TransitiOnCreate ~= nil)
 	then
 		self.ComUi:TweenMoveX(-self.ComUi.width, 0.5):OnStart(
 			function()

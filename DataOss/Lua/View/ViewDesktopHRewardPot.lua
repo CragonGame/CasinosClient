@@ -18,7 +18,7 @@ function ViewDesktopHRewardPot:new(o)
     return o
 end
 
-function ViewDesktopHRewardPot:onCreate()
+function ViewDesktopHRewardPot:OnCreate()
 	ViewHelper:PopUi(self.ComUi)
 	self.CasinosContext = CS.Casinos.CasinosContext.Instance
 	self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
@@ -58,11 +58,11 @@ function ViewDesktopHRewardPot:onCreate()
 
 end
 
-function ViewDesktopHRewardPot:onDestroy()
+function ViewDesktopHRewardPot:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewDesktopHRewardPot:onHandleEv(ev)
+function ViewDesktopHRewardPot:OnHandleEv(ev)
 	if(ev ~= nil)
 	then
 		if(ev.EventName == "EvEntityDesktopHGetRewardPotInfo")

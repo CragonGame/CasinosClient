@@ -30,11 +30,11 @@ function DesktopHTexas:new(o, controller_desktoph, factory_name)
 end
 
 ---------------------------------------
-function DesktopHTexas:onDestroy()
+function DesktopHTexas:OnDestroy()
 end
 
 ---------------------------------------
-function DesktopHTexas:onHandleEvent(ev)
+function DesktopHTexas:OnHandleEvent(ev)
 end
 
 ---------------------------------------

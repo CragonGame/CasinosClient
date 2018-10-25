@@ -19,7 +19,7 @@ function ViewBag:new(o)
 end
 
 ---------------------------------------
-function ViewBag:onCreate()
+function ViewBag:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Bag1"))
     self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
@@ -70,13 +70,13 @@ function ViewBag:onCreate()
 end
 
 ---------------------------------------
-function ViewBag:onDestroy()
+function ViewBag:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
     self.ViewPool:itemGiftAllEnque()
 end
 
 ---------------------------------------
-function ViewBag:onHandleEv(ev)
+function ViewBag:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityBagDeleteItem") then
             self:updateBag()

@@ -23,7 +23,7 @@ function ViewRanking:new(o)
 end
 
 ---------------------------------------
-function ViewRanking:onCreate()
+function ViewRanking:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Ranking"))
     self.ControllerRanking = self.ViewMgr.ControllerMgr:GetController("Ranking")
     self.Controller = self.ComUi:GetController("ControllerRanking")
@@ -78,12 +78,12 @@ function ViewRanking:onCreate()
 end
 
 ---------------------------------------
-function ViewRanking:onDestroy()
+function ViewRanking:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewRanking:onHandleEv(ev)
+function ViewRanking:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityGetRankingDiamond") then
             self.GListRanking.numItems = #self.ControllerRanking.ListRankingDiamond

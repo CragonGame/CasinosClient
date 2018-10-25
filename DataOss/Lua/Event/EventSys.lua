@@ -21,8 +21,8 @@ function EventSys:new(o)
 end
 
 ---------------------------------------
-function EventSys:onCreate()
-    print("EventSys:onCreate")
+function EventSys:OnCreate()
+    print("EventSys:OnCreate")
     Context:DoString("EventBase")
 end
 
@@ -64,7 +64,7 @@ function EventSys:SendEv(ev)
     if (table_listener ~= nil) then
         for k, v in pairs(table_listener) do
             if (v ~= nil) then
-                v:onHandleEv(ev)
+                v:OnHandleEv(ev)
             end
         end
     end

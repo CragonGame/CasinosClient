@@ -20,7 +20,7 @@ function ViewActivityCenter:new(o)
 end
 
 ---------------------------------------
-function ViewActivityCenter:onCreate()
+function ViewActivityCenter:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Activity"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActivity = self.ViewMgr.ControllerMgr:GetController("Activity")

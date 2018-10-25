@@ -19,7 +19,7 @@ function ViewQuitOrBack:new(o)
 end
 
 ---------------------------------------
-function ViewQuitOrBack:onCreate()
+function ViewQuitOrBack:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom

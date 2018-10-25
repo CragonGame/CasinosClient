@@ -22,7 +22,7 @@ function ViewPermanentPosMsg:new(o)
 end
 
 ---------------------------------------
-function ViewPermanentPosMsg:onCreate()
+function ViewPermanentPosMsg:OnCreate()
     local text = self.ComUi:GetChild("MsgText")
     if (text ~= nil) then
         self.GTextMsg = text.asTextField
@@ -36,7 +36,7 @@ function ViewPermanentPosMsg:onCreate()
 end
 
 ---------------------------------------
-function ViewPermanentPosMsg:onDestroy()
+function ViewPermanentPosMsg:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -44,7 +44,7 @@ function ViewPermanentPosMsg:onDestroy()
 end
 
 ---------------------------------------
-function ViewPermanentPosMsg:onHandleEv(ev)
+function ViewPermanentPosMsg:OnHandleEv(ev)
 end
 
 ---------------------------------------

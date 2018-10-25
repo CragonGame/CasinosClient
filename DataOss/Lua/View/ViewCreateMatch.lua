@@ -22,7 +22,7 @@ function ViewCreateMatch:new(o)
 end
 
 ---------------------------------------
-function ViewCreateMatch:onCreate()
+function ViewCreateMatch:OnCreate()
     self.ControllerMtt = self.ViewMgr.ControllerMgr:GetController("Mtt")
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
     btn_return.onClick:Add(

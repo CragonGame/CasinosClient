@@ -18,7 +18,7 @@ function ViewIdCardCheck:new(o)
     return o
 end
 
-function ViewIdCardCheck:onCreate()
+function ViewIdCardCheck:OnCreate()
     local com_shade = self.ComUi:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()

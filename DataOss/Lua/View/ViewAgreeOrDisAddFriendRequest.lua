@@ -20,7 +20,7 @@ function ViewAgreeOrDisAddFriendRequest:new(o)
 end
 
 ---------------------------------------
-function ViewAgreeOrDisAddFriendRequest:onCreate()
+function ViewAgreeOrDisAddFriendRequest:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("FriendRequest"))
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -47,12 +47,12 @@ function ViewAgreeOrDisAddFriendRequest:onCreate()
 end
 
 ---------------------------------------
-function ViewAgreeOrDisAddFriendRequest:onDestroy()
+function ViewAgreeOrDisAddFriendRequest:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewAgreeOrDisAddFriendRequest:onHandleEv(ev)
+function ViewAgreeOrDisAddFriendRequest:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityGetPlayerInfoOther") then
             local player_info = ev.player_info

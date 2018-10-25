@@ -20,7 +20,7 @@ function ViewRechargeFirst:new(o)
 end
 
 ---------------------------------------
-function ViewRechargeFirst:onCreate()
+function ViewRechargeFirst:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     local btn_comfirm = self.ComUi:GetChild("Lan_Btn_BuyNow").asButton
     btn_comfirm.onClick:Add(

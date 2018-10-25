@@ -15,7 +15,7 @@ function DesktopHGoldPool:new(o)
     local InitGoldCount = 450
     for i = 0, InitGoldCount - 1 do
         local gold_h = DesktopHUiGold:new(nil)
-        gold_h:onCreate()
+        gold_h:OnCreate()
         table.insert(o.QueUiGold, gold_h)
         local l = #o.QueUiGold
         if (l > o.MaxGoldSortOrderOffset) then
@@ -57,7 +57,7 @@ function DesktopHGoldPool:getGoldH()
             ui_gold:reset()
         else
             ui_gold = DesktopHUiGold:new(nil)
-            ui_gold:onCreate()
+            ui_gold:OnCreate()
         end
         self.MaxGoldSortOrderOffset = self.MaxGoldSortOrderOffset + 1
         ui_gold:setGoldSortOrderOffset(self.MaxGoldSortOrderOffset)

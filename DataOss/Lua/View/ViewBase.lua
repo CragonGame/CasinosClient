@@ -20,11 +20,11 @@ function ViewBase:new(o)
 end
 
 ---------------------------------------
-function ViewBase:onCreate()
+function ViewBase:OnCreate()
 end
 
 ---------------------------------------
-function ViewBase:onDestroy()
+function ViewBase:OnDestroy()
 end
 
 ---------------------------------------
@@ -32,5 +32,5 @@ function ViewBase:onUpdate(tm)
 end
 
 ---------------------------------------
-function ViewBase:onHandleEv(ev)
+function ViewBase:OnHandleEv(ev)
 end

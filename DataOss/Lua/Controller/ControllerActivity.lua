@@ -8,6 +8,7 @@ function ControllerActivity:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -17,7 +18,7 @@ function ControllerActivity:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerActivity:onCreate()
+function ControllerActivity:OnCreate()
     self.RPC = self.ControllerMgr.RPC
     self.MC = CommonMethodType
     -- 活动推送通知
@@ -31,12 +32,12 @@ function ControllerActivity:onCreate()
 end
 
 ---------------------------------------
-function ControllerActivity:onDestroy()
+function ControllerActivity:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ControllerActivity:onHandleEv(ev)
+function ControllerActivity:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestGetActivity") then
         self.RPC:RPC0(self.MC.ActivityRequest)
     end

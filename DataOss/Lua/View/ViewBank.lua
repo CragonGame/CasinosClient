@@ -21,7 +21,7 @@ function ViewBank:new(o)
 end
 
 ---------------------------------------
-function ViewBank:onCreate()
+function ViewBank:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SafeBox"))
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -65,7 +65,7 @@ function ViewBank:onCreate()
 end
 
 ---------------------------------------
-function ViewBank:onDestroy()
+function ViewBank:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
@@ -79,7 +79,7 @@ function ViewBank:setBankOperateType(operate_type)
 end
 
 ---------------------------------------
-function ViewBank:onHandleEv(ev)
+function ViewBank:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
         if (self.BankPutIn ~= nil) then
             self.BankPutIn:refreshPlayerGold()

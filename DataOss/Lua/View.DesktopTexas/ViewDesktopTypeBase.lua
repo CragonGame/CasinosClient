@@ -12,7 +12,7 @@ function ViewDesktopTypeBase:new(o, view_desktop)
 end
 
 ---------------------------------------
-function ViewDesktopTypeBase:onHandleEv(ev)
+function ViewDesktopTypeBase:OnHandleEv(ev)
 end
 
 ---------------------------------------

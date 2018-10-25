@@ -19,7 +19,7 @@ function ViewFriend:new(o)
 end
 
 ---------------------------------------
-function ViewFriend:onCreate()
+function ViewFriend:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Friend"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
@@ -95,12 +95,12 @@ function ViewFriend:onCreate()
 end
 
 ---------------------------------------
-function ViewFriend:onDestroy()
+function ViewFriend:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewFriend:onHandleEv(ev)
+function ViewFriend:OnHandleEv(ev)
     if (ev.EventName == "EvEntityNotifyDeleteFriend") then
         self:deleteFriendInfo(ev.friend_etguid, ev.map_friend)
     elseif (ev.EventName == "EvEntityFriendOnlineStateChange") then

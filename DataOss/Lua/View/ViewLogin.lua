@@ -9,6 +9,7 @@ function ViewLogin:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     self.ViewMgr = nil
     self.GoUi = nil
     self.ComUi = nil
@@ -23,8 +24,8 @@ function ViewLogin:new(o)
 end
 
 ---------------------------------------
-function ViewLogin:onCreate()
-    print('ViewLogin:onCreate()')
+function ViewLogin:OnCreate()
+    print('ViewLogin:OnCreate()')
 
     self.ViewMgr:BindEvListener("EvUiChooseCountry", self)
 
@@ -33,7 +34,7 @@ function ViewLogin:onCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     local controller_wechat = self.ComUi:GetController("ControllerWeChat")
     if (controller_wechat ~= nil) then
-        if (ClientShowWechat == true) then
+        if (self.Context.Cfg.ClientShowWechat == true) then
             controller_wechat.selectedIndex = 0
         else
             controller_wechat.selectedIndex = 1
@@ -270,8 +271,8 @@ function ViewLogin:onCreate()
 end
 
 ---------------------------------------
-function ViewLogin:onDestroy()
-    print('ViewLogin:onDestroy()')
+function ViewLogin:OnDestroy()
+    print('ViewLogin:OnDestroy()')
 
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
@@ -285,7 +286,7 @@ function ViewLogin:onDestroy()
 end
 
 ---------------------------------------
-function ViewLogin:onHandleEv(ev)
+function ViewLogin:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvUiChooseCountry") then
             if self.UiRegister ~= nil then

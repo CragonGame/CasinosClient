@@ -36,7 +36,7 @@ function ViewTexasClassic:new(o,view_desktop)
 end
 
 ---------------------------------------
-function ViewTexasClassic:onHandleEv(ev)
+function ViewTexasClassic:OnHandleEv(ev)
 end
 
 ---------------------------------------

@@ -2,25 +2,14 @@
 
 ---------------------------------------
 -- TODO，待删除
-OssRootUrl = 'http://cragon-king-oss.cragon.cn'
-AutopatcherUrl = 'http://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml'
 PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
 BotIconDomain = 'http://cragon-king-oss.cragon.cn/ucenter/'
-SysNoticeInfoUrl = ''
 UCenterDomain = 'http://ucenter.cragon.cn'
 GatewayIp = 'king-gateway.cragon.cn'
 GatewayPort = 5882
-BundleUpdateStata = 0
-BundleUpdateVersion = '1.00.067'
-BundleUpdateURL = 'https://cragon-king-oss.cragon.cn/KingTexas.apk'
-TbFileList = { 'KingCommon', 'KingDesktop', 'KingDesktopH', 'KingClient' }
 ServerState = 0-- 服务器状态: 0正常,1维护
 ServerStateInfo = ''-- 系统公告
-LotteryTicketFactoryName = 'Texas'
-ClientWechatIsInstalled = true
-ClientShowWechat = true-- 客户端显示微信登录按钮 false 不显示 true 显示
 ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
-ClientShowGoldTree = false
 NeedHideClientUi = false-- 客户端排行等界面显示与隐藏
 DesktopHSysBankShowDBValue = true-- 百人系统庄是否显示SQlite配置值
 ShootingTextShowVIPLimit = 0-- 弹幕发送后是否真正发送弹幕VIP等级限制，0为无限制
@@ -52,8 +41,6 @@ ShareSDKAppSecret = '53788920e17ffa1d9af4ef3540352172'
 BeeCloudId = '9c24464e-c912-44aa-bfe8-ca3a384410d0'
 BeeCloudLiveSecret = '71625ddd-5a3d-4b73-be74-1580c8912dda'
 BeeCloudTestSecret = '7bbc79a8-f310-4d76-a582-2622242c23f5'
-PayUseTestMode = false
-PayUrlScheme = "com.Cragon.KingTexas2"
 
 ---------------------------------------
 -- 配置，开发者选项
@@ -221,7 +208,7 @@ end
 -- 初始化LaunchStep
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
-    if (BundleUpdateStata == 1 and BundleUpdateVersion ~= nil and BundleUpdateURL ~= nil and self.CasinosContext.Config.VersionBundle ~= BundleUpdateVersion) then
+    if (self.Cfg.BundleUpdateStata == 1 and self.Cfg.BundleUpdateVersion ~= nil and self.Cfg.BundleUpdateURL ~= nil and self.CasinosContext.Config.VersionBundle ~= self.Cfg.BundleUpdateVersion) then
         self.LaunchStep[1] = "UpdateBundle"
     end
 
@@ -257,7 +244,7 @@ function Context:_nextLaunchStep()
         -- 弹框让玩家选择，更新Bundle
         -- TODO，调用Native Api安装Bundle
         local msg_info = string.format('有新的安装包需要更新，当前BundleVersion：%s，新的BundleVersion：%s',
-                self.CasinosContext.Config.VersionBundle, BundleUpdateVersion)
+                self.CasinosContext.Config.VersionBundle, self.Cfg.BundleUpdateVersion)
         local view_premsgbox = self.PreViewMgr.CreateView("PreMsgBox")
         view_premsgbox:showMsgBox(msg_info,
                 function()
@@ -355,7 +342,7 @@ function Context:_nextLaunchStep()
         self:DoString("TbDataMgr")
 
         local t_db = {}
-        for i, v in pairs(TbFileList) do
+        for i, v in pairs(self.Cfg.TbFileList) do
             t_db[i] = self.CasinosContext.PathMgr.DirRawRoot .. "tbdata/" .. v .. ".db"
         end
         self.TbDataMgr = TbDataMgr:new(nil)
@@ -375,7 +362,7 @@ function Context:_nextLaunchStep()
 
         self:DoString("EventSys")
         self.EventSys = EventSys:new(nil)
-        self.EventSys:onCreate()
+        self.EventSys:OnCreate()
 
         self:DoString("UiChipShowHelper")
         self.UiChipShowHelper = UiChipShowHelper:new(nil)
@@ -384,7 +371,7 @@ function Context:_nextLaunchStep()
         self.ViewMgr = ViewMgr:new(nil)
         self.ViewMgr.LanMgr = self.LanMgr
         self.ViewMgr.TbDataMgr = self.TbDataMgr
-        self.ViewMgr:onCreate()
+        self.ViewMgr:OnCreate()
         self:_RegView()
         self:DoString("ViewHelper")
         ViewHelper:new(nil)

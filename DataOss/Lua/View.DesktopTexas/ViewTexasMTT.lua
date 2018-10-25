@@ -46,7 +46,7 @@ function ViewTexasMTT:new(o, view_desktop)
 end
 
 ---------------------------------------
-function ViewTexasMTT:onHandleEv(ev)
+function ViewTexasMTT:OnHandleEv(ev)
     if ev ~= nil then
         if ev.EventName == "EvEntityMTTUpdateRealtimeInfo" then
             self:setRealTimeInfo(ev.RealtimeInfo, ev.blind_type)

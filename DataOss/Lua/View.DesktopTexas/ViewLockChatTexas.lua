@@ -34,7 +34,7 @@ function ViewLockChatTexas:new(o)
 end
 
 ---------------------------------------
-function ViewLockChatTexas:onCreate()
+function ViewLockChatTexas:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("LockChat"))
     self.ViewMgr:BindEvListener("EvEntityDesktopPlayerSit", self)
     self.ViewMgr:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
@@ -77,13 +77,13 @@ function ViewLockChatTexas:onCreate()
 end
 
 ---------------------------------------
-function ViewLockChatTexas:onDestroy()
+function ViewLockChatTexas:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
     self.MapPlayerChat = {}
 end
 
 ---------------------------------------
-function ViewLockChatTexas:onHandleEv(ev)
+function ViewLockChatTexas:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityDesktopPlayerSit") then
             self:_playerEnter(ev.guid, ev.icon_name, ev.account_id, ev.nick_name, ev.vip_level)

@@ -23,7 +23,7 @@ function ViewTakePhoto:new(o)
 end
 
 ---------------------------------------
-function ViewTakePhoto:onCreate()
+function ViewTakePhoto:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom

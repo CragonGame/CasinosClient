@@ -16,11 +16,12 @@ function ViewActivityPopup:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Context = Context
     return o
 end
 
 ---------------------------------------
-function ViewActivityPopup:onCreate()
+function ViewActivityPopup:OnCreate()
     ViewHelper:PopUi(self.ComUi)
 
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -42,7 +43,7 @@ function ViewActivityPopup:onCreate()
 end
 
 ---------------------------------------
-function ViewActivityPopup:onDestroy()
+function ViewActivityPopup:OnDestroy()
     local ev = self.ViewMgr:GetEv("EvUiCloseActivityPopUpBox")
     if (ev == nil) then
         ev = EvUiCloseActivityPopUpBox:new(nil)
@@ -64,7 +65,7 @@ function ViewActivityPopup:SetActivityInfo(item)
     if (item.ContentImage ~= nil) then
         local content_image = item.ContentImage
         local t = {}
-        table.insert(t, OssRootUrl)
+        table.insert(t, self.Context.Cfg.OssRootUrl)
         table.insert(t, "/Activity/")
         table.insert(t, content_image)
         table.insert(t, ".png")

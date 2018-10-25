@@ -8,6 +8,7 @@ function ControllerDesk:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -17,7 +18,7 @@ function ControllerDesk:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerDesk:onCreate()
+function ControllerDesk:OnCreate()
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestLockSystemChat", self)
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestChangeDesk", self)
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickFlod", self)
@@ -112,7 +113,7 @@ function ControllerDesk:onCreate()
 end
 
 ---------------------------------------
-function ControllerDesk:onDestroy()
+function ControllerDesk:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -121,7 +122,7 @@ function ControllerDesk:onDestroy()
 end
 
 ---------------------------------------
-function ControllerDesk:onHandleEv(ev)
+function ControllerDesk:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestLockSystemChat") then
         self.LockSysChat = ev.requestLock
     elseif (ev.EventName == "EvEntityPlayerEnterDesktopH") then
@@ -138,7 +139,7 @@ function ControllerDesk:onHandleEv(ev)
     end
 
     if (self.DesktopBase ~= nil) then
-        self.DesktopBase:onHandleEv(ev)
+        self.DesktopBase:OnHandleEv(ev)
     end
 end
 
@@ -366,7 +367,7 @@ function ControllerDesk:clearDesktop(need_createmainui)
         self.TimerUpdate = nil
     end
     if (self.DesktopBase ~= nil) then
-        self.DesktopBase:onDestroy(need_createmainui)
+        self.DesktopBase:OnDestroy(need_createmainui)
         self.DesktopBase = nil
     end
     self.ListDesktopChat = {}

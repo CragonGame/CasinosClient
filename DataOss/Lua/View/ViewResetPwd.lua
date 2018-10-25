@@ -20,7 +20,7 @@ function ViewResetPwd:new(o)
 end
 
 ---------------------------------------
-function ViewResetPwd:onCreate()
+function ViewResetPwd:OnCreate()
     self.GroupGetPwd = self.ComUi:GetChild("ForgetPwd").asGroup
     local btn_resetpwd = self.ComUi:GetChildInGroup(self.GroupGetPwd, "Lan_Btn_ResetPwd").asButton
     btn_resetpwd.onClick:Add(

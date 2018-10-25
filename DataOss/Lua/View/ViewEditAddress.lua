@@ -18,7 +18,7 @@ function ViewEditAddress:new(o)
     return o
 end
 
-function ViewEditAddress:onCreate()
+function ViewEditAddress:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("EditAddress"))
 	self.ViewMgr:BindEvListener("EvEntityResponseGetReceiverAddress", self)
 	local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -54,7 +54,7 @@ function ViewEditAddress:onCreate()
 	self.ViewMgr:SendEv(ev)
 end
 
-function ViewEditAddress:onHandleEv(ev)
+function ViewEditAddress:OnHandleEv(ev)
 	if(ev.EventName == "EvEntityResponseGetReceiverAddress")
 	then
 		local address = ev.Address

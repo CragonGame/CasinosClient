@@ -25,7 +25,7 @@ function ViewMatchLobby:new(o)
 end
 
 ---------------------------------------
-function ViewMatchLobby:onCreate()
+function ViewMatchLobby:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
     self.ViewMgr:BindEvListener("EvEntitySetPublicMatchLsit", self)
     self.ViewMgr:BindEvListener("EvEntityUpdatePublicMatchPlayerNum", self)
@@ -96,7 +96,7 @@ function ViewMatchLobby:onCreate()
 end
 
 ---------------------------------------
-function ViewMatchLobby:onDestroy()
+function ViewMatchLobby:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -105,7 +105,7 @@ function ViewMatchLobby:onDestroy()
 end
 
 ---------------------------------------
-function ViewMatchLobby:onHandleEv(ev)
+function ViewMatchLobby:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
         self:setPlayerGoldAndDiamond()
     elseif (ev.EventName == "EvEntitySetPublicMatchLsit") then

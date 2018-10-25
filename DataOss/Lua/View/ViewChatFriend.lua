@@ -20,7 +20,7 @@ function ViewChatFriend:new(o)
 end
 
 ---------------------------------------
-function ViewChatFriend:onCreate()
+function ViewChatFriend:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Message"))
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
@@ -90,12 +90,12 @@ function ViewChatFriend:onCreate()
 end
 
 ---------------------------------------
-function ViewChatFriend:onDestroy()
+function ViewChatFriend:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewChatFriend:onHandleEv(ev)
+function ViewChatFriend:OnHandleEv(ev)
     if (ev.EventName == "EvEntityFriendOnlineStateChange") then
         local player_info = ev.player_info
         if (self.CurrentChatTarget ~= nil and player_info.PlayerInfoCommon.PlayerGuid == self.CurrentChatTarget.PlayerInfoCommon.PlayerGuid and player_info.PlayerInfoMore.OnlineState == PlayerOnlineState.Offline) then

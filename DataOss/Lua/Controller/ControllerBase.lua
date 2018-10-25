@@ -18,13 +18,13 @@ function ControllerBase:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerBase:onCreate()
+function ControllerBase:OnCreate()
 end
 
 ---------------------------------------
-function ControllerBase:onDestroy()
+function ControllerBase:OnDestroy()
 end
 
 ---------------------------------------
-function ControllerBase:onHandleEv(ev)
+function ControllerBase:OnHandleEv(ev)
 end

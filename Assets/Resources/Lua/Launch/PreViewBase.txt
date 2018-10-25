@@ -20,11 +20,11 @@ function  PreViewBase:new(o)
 end
 
 ---------------------------------------
-function PreViewBase:onCreate()	
+function PreViewBase:OnCreate()
 end
 
 ---------------------------------------
-function PreViewBase:onDestroy()	
+function PreViewBase:OnDestroy()
 end
 
 ---------------------------------------
@@ -32,5 +32,5 @@ function PreViewBase:onUpdate(tm)
 end
 
 ---------------------------------------
-function PreViewBase:onHandleEv(ev)	
+function PreViewBase:OnHandleEv(ev)
 end

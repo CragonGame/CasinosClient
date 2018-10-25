@@ -26,7 +26,7 @@ function ItemDesktopHSetCardType:new(o)
     return o
 end
 
-function ItemDesktopHSetCardType:onCreate(co_card_type, betpot_index,
+function ItemDesktopHSetCardType:OnCreate(co_card_type, betpot_index,
                                           ui_desktoph, ui_card_type)
     self.GComboBoxCardType = co_card_type
     self.GTextPotTitle = self.GComboBoxCardType:GetChild("PotTitle").asTextField

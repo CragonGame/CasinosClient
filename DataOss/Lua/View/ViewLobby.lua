@@ -18,7 +18,7 @@ function ViewLobby:new(o)
 	return o
 end
 
-function ViewLobby:onCreate()
+function ViewLobby:OnCreate()
 	self.CasinosContext = CS.Casinos.CasinosContext.Instance
 	self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
 	self.ControllerFriendOrBet = self.ComUi:GetController("ControllerFriendOrBet")
@@ -116,11 +116,11 @@ function ViewLobby:onCreate()
 	self.ViewMgr:BindEvListener("EvClickIconWithNickName",self)
 end
 
-function ViewLobby:onDestroy()
+function ViewLobby:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewLobby:onHandleEv(ev)
+function ViewLobby:OnHandleEv(ev)
 	if(ev ~= nil)
 	then
 		if(ev.EventName == "EvEntityGetLobbyDeskList")

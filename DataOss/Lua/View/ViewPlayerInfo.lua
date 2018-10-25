@@ -21,7 +21,7 @@ function ViewPlayerInfo:new(o)
 end
 
 ---------------------------------------
-function ViewPlayerInfo:onCreate()
+function ViewPlayerInfo:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
@@ -177,12 +177,12 @@ function ViewPlayerInfo:onCreate()
 end
 
 ---------------------------------------
-function ViewPlayerInfo:onDestroy()
+function ViewPlayerInfo:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewPlayerInfo:onHandleEv(ev)
+function ViewPlayerInfo:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
         self.GTextChip.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, false)
     elseif (ev.EventName == "EvEntityDiamondChanged") then

@@ -23,7 +23,7 @@ function ViewDesktopHBetReward:new(o)
     return o
 end
 
-function ViewDesktopHBetReward:onCreate()
+function ViewDesktopHBetReward:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("BetReward"))
     self.ViewMgr:BindEvListener("EvEntityInitBetReward",self)
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
@@ -50,11 +50,11 @@ function ViewDesktopHBetReward:onCreate()
     self.GProBet = self.ComUi:GetChild("ProBet").asProgress
 end
 
-function ViewDesktopHBetReward:onDestroy()
+function ViewDesktopHBetReward:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewDesktopHBetReward:onHandleEv(ev)
+function ViewDesktopHBetReward:OnHandleEv(ev)
     if(ev ~= nil)
     then
         if(ev.EventName == "EvEntityInitBetReward")

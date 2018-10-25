@@ -18,7 +18,7 @@ function DesktopTexasClassic:new(o, desktop_base, co_mgr)
 end
 
 ---------------------------------------
-function DesktopTexasClassic:onDestroy(need_createmainui)
+function DesktopTexasClassic:OnDestroy(need_createmainui)
     local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
     if (need_createmainui)
     then
@@ -38,7 +38,7 @@ function DesktopTexasClassic:Update(elapsed_tm)
 end
 
 ---------------------------------------
-function DesktopTexasClassic:onHandleEv(ev)
+function DesktopTexasClassic:OnHandleEv(ev)
     if (ev ~= nil)
     then
         if (ev.EventName == "EvUiClickSeat")

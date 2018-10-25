@@ -21,7 +21,7 @@ function ViewChat:new(o)
 end
 
 ---------------------------------------
-function ViewChat:onCreate()
+function ViewChat:OnCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
@@ -41,7 +41,7 @@ function ViewChat:onCreate()
 end
 
 ---------------------------------------
-function ViewChat:onDestroy()
+function ViewChat:OnDestroy()
     if (self.GTextInputChat.text ~= nil and #self.GTextInputChat.text > 0) then
         local ev = self.ViewMgr:GetEv("EvUiSetUnSendDesktopMsg")
         if (ev == nil) then
@@ -54,7 +54,7 @@ function ViewChat:onDestroy()
 end
 
 ---------------------------------------
-function ViewChat:onHandleEv(ev)
+function ViewChat:OnHandleEv(ev)
     if (ev.EventName == "EvEntityRecvChatFromDesktopH") then
         self.MapChat = self.ControllerPlayer:getDesktopChat()
         self.GListChat.numItems = LuaHelper:GetTableCount(self.MapChat)

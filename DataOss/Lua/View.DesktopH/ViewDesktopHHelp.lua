@@ -17,7 +17,7 @@ function ViewDesktopHHelp:new(o)
     return o
 end
 
-function ViewDesktopHHelp:onCreate()
+function ViewDesktopHHelp:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("Help"))
 	local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_history_close = co_history_close:GetChild("BtnClose").asButton

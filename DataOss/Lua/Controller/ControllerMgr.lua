@@ -28,7 +28,7 @@ end
 
 ---------------------------------------
 function ControllerMgr:OnCreate()
-    print("ControllerMgr:onCreate")
+    print("ControllerMgr:OnCreate")
     self.EventSys = EventSys:new(nil)
     self.ViewMgr = ViewMgr:new(nil)
     self.Context:DoString("ControllerBase")
@@ -55,20 +55,20 @@ function ControllerMgr:CreatePlayerControllers(player_data, guid)
     local c_ranking = self:CreateController("Ranking", nil, guid)
     local c_trade = self:CreateController("Trade", nil, guid)
     local c_mtt = self:CreateController("Mtt", nil, guid)
-    c_actor:onCreate()
-    c_activity:onCreate()
-    c_player:onCreate()
-    c_bag:onCreate()
-    c_desk:onCreate()
-    c_deskh:onCreate()
-    c_grow:onCreate()
-    c_im:onCreate()
-    c_lobby:onCreate()
-    c_ottery_ticket:onCreate()
-    c_marquee:onCreate()
-    c_ranking:onCreate()
-    c_trade:onCreate()
-    c_mtt:onCreate()
+    c_actor:OnCreate()
+    c_activity:OnCreate()
+    c_player:OnCreate()
+    c_bag:OnCreate()
+    c_desk:OnCreate()
+    c_deskh:OnCreate()
+    c_grow:OnCreate()
+    c_im:OnCreate()
+    c_lobby:OnCreate()
+    c_ottery_ticket:OnCreate()
+    c_marquee:OnCreate()
+    c_ranking:OnCreate()
+    c_trade:OnCreate()
+    c_mtt:OnCreate()
 end
 
 ---------------------------------------
@@ -81,7 +81,7 @@ function ControllerMgr:DestroyPlayerControllers()
     end
 
     for i, v in pairs(t) do
-        v:onDestroy()
+        v:OnDestroy()
         local l = self.TableController[i]
         if (l ~= nil) then
             l = nil
@@ -106,7 +106,7 @@ function ControllerMgr:DestroyController(is_kickout)
     for k, v in pairs(self.TableController) do
         if (v ~= nil) then
             local controller_name = v.ControllerName
-            v:onDestroy()
+            v:OnDestroy()
             self.TableController[controller_name] = nil
         end
     end
@@ -164,6 +164,6 @@ end
 
 ---------------------------------------
 function ControllerMgr:UnpackData(data)
-    local p_datas = self.RPC:UnPackData(data)
+    local p_datas = self.RPC:UnpackData(data)
     return p_datas
 end

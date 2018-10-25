@@ -20,7 +20,7 @@ function ViewPayType:new(o)
 end
 
 ---------------------------------------
-function ViewPayType:onCreate()
+function ViewPayType:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("PayType"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPay = self.ComUi:GetController("ControllerPay")

@@ -8,6 +8,7 @@ function ControllerIM:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -21,7 +22,7 @@ function ControllerIM:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerIM:onCreate()
+function ControllerIM:OnCreate()
     self.ViewMgr:BindEvListener("EvUiCreateMainUi", self)
     self.ViewMgr:BindEvListener("EvUiFindFriend", self)
     self.ViewMgr:BindEvListener("EvUiDeleteFriend", self)
@@ -125,12 +126,12 @@ function ControllerIM:onCreate()
 end
 
 ---------------------------------------
-function ControllerIM:onDestroy()
+function ControllerIM:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ControllerIM:onHandleEv(ev)
+function ControllerIM:OnHandleEv(ev)
     if (ev.EventName == "EvUiCreateMainUi") then
         self:setMainUiIMInfo()
     elseif (ev.EventName == "EvUiFindFriend") then

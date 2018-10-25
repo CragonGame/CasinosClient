@@ -8,6 +8,7 @@ function ControllerMTT:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -16,7 +17,7 @@ function ControllerMTT:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerMTT:onCreate()
+function ControllerMTT:OnCreate()
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestPublicMatchList", self)
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestPrivateMatchList", self)
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestUpdatePublicMatchPlayerNum", self)
@@ -69,12 +70,12 @@ function ControllerMTT:onCreate()
 end
 
 ---------------------------------------
-function ControllerMTT:onDestroy()
+function ControllerMTT:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ControllerMTT:onHandleEv(ev)
+function ControllerMTT:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestPublicMatchList") then
         self:requestGetMatchTexasList(MatchTexasScopeType.Public)
     elseif (ev.EventName == "EvUiRequestPrivateMatchList") then

@@ -25,7 +25,7 @@ function ViewDesktopHSetCardType:new(o)
 	return o
 end
 
-function ViewDesktopHSetCardType:onCreate()
+function ViewDesktopHSetCardType:OnCreate()
 	self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
 	self.GCoBankCardTypeParent = self.ComUi:GetChild("CoBankCardTypeParent").asCom
 	self.GListPotCardType = self.ComUi:GetChild("ListPotCardType").asList
@@ -46,12 +46,12 @@ function ViewDesktopHSetCardType:onCreate()
 	local co_bankcardtype = CS.FairyGUI.UIPackage.CreateObject("DesktopHSetCardType", "ComboBoxCardType").asComboBox
 	self.GCoBankCardTypeParent:AddChild(co_bankcardtype)
 	self.BankItemDesktopHSetCardType = ItemDesktopHSetCardType:new(nil)
-	self.BankItemDesktopHSetCardType:onCreate(co_bankcardtype, self.BankPlayerPotIndex, self.ViewDesktopH, self)
+	self.BankItemDesktopHSetCardType:OnCreate(co_bankcardtype, self.BankPlayerPotIndex, self.ViewDesktopH, self)
 
 	for  i = 0, self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getMaxBetpotIndex() do
 		local co_item = self.GListPotCardType:AddItemFromPool().asComboBox
 		local l = ItemDesktopHSetCardType:new(nil)
-		l:onCreate(co_item, i, self.ViewDesktopH, self)
+		l:OnCreate(co_item, i, self.ViewDesktopH, self)
 		self.MapPotItemDesktopHSetCardType[i] = l
 	end
 end

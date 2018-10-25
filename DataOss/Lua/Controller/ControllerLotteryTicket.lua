@@ -8,6 +8,7 @@ function ControllerLotteryTicket:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     self.ControllerData = controller_data
     self.ControllerMgr = controller_mgr
     self.Guid = guid
@@ -21,7 +22,7 @@ function ControllerLotteryTicket:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerLotteryTicket:onCreate()
+function ControllerLotteryTicket:OnCreate()
     self.ViewMgr:BindEvListener("EvUiClickLeaveLotteryTicket", self)
     self.ViewMgr:BindEvListener("EvLotteryTicketClickBetOperateType", self)
     self.ViewMgr:BindEvListener("EvEntityRequestGetLotteryTicketData", self)
@@ -79,7 +80,7 @@ function ControllerLotteryTicket:onCreate()
 end
 
 ---------------------------------------
-function ControllerLotteryTicket:onDestroy()
+function ControllerLotteryTicket:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -88,7 +89,7 @@ function ControllerLotteryTicket:onDestroy()
 end
 
 ---------------------------------------
-function ControllerLotteryTicket:onHandleEv(ev)
+function ControllerLotteryTicket:OnHandleEv(ev)
     if (ev.EventName == "EvUiClickLeaveLotteryTicket")
     then
         self:RequestChangeLotteryTicketPlayerState2Simple()

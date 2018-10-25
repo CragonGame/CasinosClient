@@ -18,7 +18,7 @@ function ViewFriendOnLine:new(o)
     return o
 end
 
-function ViewFriendOnLine:onCreate()
+function ViewFriendOnLine:OnCreate()
 	self.GTxetNickName = self.ComUi:GetChild("NickName").asTextField
     local co_headicon = self.ComUi:GetChild("CoHeadIcon").asCom
     self.HeadIcon = ViewHeadIcon:new(nil,co_headicon, 
@@ -30,11 +30,11 @@ function ViewFriendOnLine:onCreate()
 
 end
 
-function ViewFriendOnLine:onDestroy()
+function ViewFriendOnLine:OnDestroy()
 	self.ViewMgr:UnbindEvListener(self)
 end
 
-function ViewFriendOnLine:onHandleEv(ev)
+function ViewFriendOnLine:OnHandleEv(ev)
 	if(ev.EventName == "EvEntityFriendOnlineStateChange")
 	then
 		if (ev.player_info.PlayerInfoMore.OnlineState == PlayerOnlineState.Online)

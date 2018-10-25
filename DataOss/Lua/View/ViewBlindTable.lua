@@ -20,7 +20,7 @@ function ViewBlindTable:new(o)
 end
 
 ---------------------------------------
-function ViewBlindTable:onCreate()
+function ViewBlindTable:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BlindTable"))
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton

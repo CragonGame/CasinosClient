@@ -84,7 +84,7 @@ function PreViewLoading:new(o)
 end
 
 ---------------------------------------
-function PreViewLoading:onCreate()
+function PreViewLoading:OnCreate()
     local pro = self.ComUi:GetChild("Progress")
     if (pro ~= nil) then
         self.GProgressBar = pro.asProgress
@@ -148,7 +148,7 @@ function PreViewLoading:onCreate()
 end
 
 ---------------------------------------
-function PreViewLoading:onDestroy()
+function PreViewLoading:OnDestroy()
     if (self.PlayerAnim ~= nil) then
         self.CasinosLua:DestroyGameObject(self.PlayerAnim.transform.gameObject)
         self.PlayerAnim = nil
@@ -175,7 +175,7 @@ function PreViewLoading:onDestroy()
 end
 
 ---------------------------------------
-function PreViewLoading:onHandleEv(ev)
+function PreViewLoading:OnHandleEv(ev)
 end
 
 ---------------------------------------

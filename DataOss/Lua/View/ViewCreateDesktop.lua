@@ -23,7 +23,7 @@ function ViewCreateDesktop:new(o)
 end
 
 ---------------------------------------
-function ViewCreateDesktop:onCreate()
+function ViewCreateDesktop:OnCreate()
     ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("CreatPrivateDesk"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     local com = self.ComUi:GetChild("ComBgAndClose").asCom

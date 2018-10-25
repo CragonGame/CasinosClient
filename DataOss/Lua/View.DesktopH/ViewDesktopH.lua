@@ -71,7 +71,7 @@ function ViewDesktopH:new(o)
 end
 
 ---------------------------------------
-function ViewDesktopH:onCreate()
+function ViewDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityDesktopHBetOperateTypeChange", self)
     self.ViewMgr:BindEvListener("EvEntityDesktopHCurrentBetOperateTypeChange", self)
     self.ViewMgr:BindEvListener("EvEntityDesktopHBet", self)
@@ -261,7 +261,7 @@ function ViewDesktopH:onCreate()
 end
 
 ---------------------------------------
-function ViewDesktopH:onDestroy()
+function ViewDesktopH:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -299,7 +299,7 @@ function ViewDesktopH:onDestroy()
 end
 
 ---------------------------------------
-function ViewDesktopH:onHandleEv(ev)
+function ViewDesktopH:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityDesktopHBetOperateTypeChange") then
             self:_refreshBetOperate(ev.map_changeoperate)

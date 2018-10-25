@@ -18,7 +18,7 @@ function ViewLoading:new(o)
     return o
 end
 
-function ViewLoading:onCreate()	
+function ViewLoading:OnCreate()
 	local pro = self.ComUi:GetChild("Progress")
 	if(pro ~= nil)
 	then
@@ -75,7 +75,7 @@ function ViewLoading:onCreate()
 	end
 end
 
-function ViewLoading:onDestroy()	
+function ViewLoading:OnDestroy()
 	if(NeedHideClientUi == false)
 	then
 		CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
@@ -88,7 +88,7 @@ function ViewLoading:onDestroy()
     --CS.FairyGUI.Timers.inst:Remove(self._updateTips)
 end
 
-function ViewLoading:onHandleEv(ev)	
+function ViewLoading:OnHandleEv(ev)
 end
         
 function ViewLoading.fireAutoLoadingProgress()

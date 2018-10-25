@@ -9,6 +9,7 @@ function ControllerMarquee:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -19,7 +20,7 @@ function ControllerMarquee:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerMarquee:onCreate()
+function ControllerMarquee:OnCreate()
     self.ViewMgr:BindEvListener("EvRequestSendMarquee", self)
     self.RPC = self.ControllerMgr.RPC
     self.MC = CommonMethodType
@@ -36,12 +37,12 @@ function ControllerMarquee:onCreate()
 end
 
 ---------------------------------------
-function ControllerMarquee:onDestroy()
+function ControllerMarquee:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ControllerMarquee:onHandleEv(ev)
+function ControllerMarquee:OnHandleEv(ev)
     if (ev ~= nil)
     then
         if (ev.EventName == "EvRequestSendMarquee")

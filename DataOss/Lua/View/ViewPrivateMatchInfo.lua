@@ -25,7 +25,7 @@ function ViewPrivateMatchInfo:new(o)
 end
 
 ---------------------------------------
-function ViewPrivateMatchInfo:onCreate()
+function ViewPrivateMatchInfo:OnCreate()
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
     btn_return.onClick:Add(
             function()
@@ -97,7 +97,7 @@ function ViewPrivateMatchInfo:onCreate()
 end
 
 ---------------------------------------
-function ViewMatchInfo:onHandleEv(ev)
+function ViewMatchInfo:OnHandleEv(ev)
     if (ev.EventName == "EvEntitySetMatchDetailedInfo") then
         self:SetMatchInfo(ev.MatchDetailedInfo)
     elseif (ev.EventName == "EvEntityResponseCancelSignupMatch") then

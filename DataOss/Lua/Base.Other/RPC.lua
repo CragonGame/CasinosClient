@@ -19,7 +19,7 @@ function RPC:new(o)
 end
 
 ---------------------------------------
-function RPC:onCreate()
+function RPC:OnCreate()
 end
 
 ---------------------------------------
@@ -33,7 +33,7 @@ function RPC:PackData(data)
 end
 
 ---------------------------------------
-function RPC:UnPackData(data)
+function RPC:UnpackData(data)
     local p_data = self.MessagePack.unpack(data)
     return p_data
 end

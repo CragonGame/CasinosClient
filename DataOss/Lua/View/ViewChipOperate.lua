@@ -20,7 +20,7 @@ function ViewChipOperate:new(o)
 end
 
 ---------------------------------------
-function ViewChipOperate:onCreate()
+function ViewChipOperate:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     self.ViewMgr:BindEvListener("EvEntityPlayerGiveChipQueryRangeRequestResult", self)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -70,7 +70,7 @@ function ViewChipOperate:onCreate()
 end
 
 ---------------------------------------
-function ViewChipOperate:onHandleEv(ev)
+function ViewChipOperate:OnHandleEv(ev)
     if (ev.EventName == "EvEntityPlayerGiveChipQueryRangeRequestResult") then
         self:setChips(ev.give_chip_max, ev.give_chip_min)
         self.GTextFieldGetChipsTips.visible = false
@@ -82,7 +82,7 @@ function ViewChipOperate:onHandleEv(ev)
 end
 
 ---------------------------------------
-function ViewChipOperate:onDestroy()
+function ViewChipOperate:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 

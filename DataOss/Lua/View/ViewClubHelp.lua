@@ -20,7 +20,7 @@ function ViewClubHelp:new(o)
 end
 
 ---------------------------------------
-function ViewClubHelp:onCreate()
+function ViewClubHelp:OnCreate()
     ViewHelper:PopUi(self.ComUi, "牌友圈帮助")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
