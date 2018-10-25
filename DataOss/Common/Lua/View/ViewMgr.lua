@@ -113,7 +113,7 @@ function ViewMgr:CreateView(view_key)
     ui_panel.packageName = view_factory.PackageName
     ui_panel.componentName = view_factory.ComponentName
     ui_panel.fitScreen = view_factory.FitScreen
-    ui_panel:ApplyModifiedProperties(false, true)
+    ui_panel:ApplyModifiedProperties(true, true)
     view = view_factory:CreateView()
     view.ViewMgr = self.Instance
     view.GoUi = go

@@ -210,13 +210,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        //public static Tweener DoTweenTo(DOGetter<int> g, DOSetter<int> s, int endValue, float duration)
-        //{
-        //    var t = DOTween.To(g, s, endValue, duration);
-        //    return t;
-        //}
-
-        //---------------------------------------------------------------------
         public static LuaTable getIconName(bool is_small, string icon_name, string icon_resource_name1)
         {
             string icon_resource_name = icon_resource_name1;
@@ -498,30 +491,6 @@ namespace Casinos
         {
             return gameobject.GetComponent<AutoDestroyParticle>();
         }
-
-        //---------------------------------------------------------------------
-        //public static byte[] ProtobufSerializeLong(long value)
-        //{
-        //    return EbTool.protobufSerialize(CasinosContext.Instance.MemoryStream, value);
-        //}
-
-        ////---------------------------------------------------------------------
-        //public static byte[] ProtobufSerializePlayerAutoActionTypeTexas(PlayerAutoActionTypeTexas value)
-        //{
-        //    return EbTool.protobufSerialize(CasinosContext.Instance.MemoryStream, value);
-        //}
-
-        ////---------------------------------------------------------------------
-        //public static byte[] ProtobufSerializeHandRankTypeTexasH(HandRankTypeTexasH card_type)
-        //{
-        //    return EbTool.protobufSerialize(CasinosContext.Instance.MemoryStream, card_type);
-        //}
-
-        ////---------------------------------------------------------------------
-        //public static HandRankTypeTexasH ProtobufDeserializeHandRankTypeTexasH(byte[] data)
-        //{
-        //    return EbTool.protobufDeserialize<HandRankTypeTexasH>(CasinosContext.Instance.MemoryStream, data);
-        //}
 
         //---------------------------------------------------------------------
         public static int EnumCastToInt(Enum e)

@@ -268,6 +268,7 @@ namespace Casinos
         public LuaEnv LuaEnv { get; private set; }
         Dictionary<string, byte[]> MapLuaFiles { get; set; }
         DelegateLua1 FuncLaunchClose { get; set; }
+        DelegateLua1 FuncLaunchOnAndroidQuitConfirm { get; set; }
         DelegateLua3 FuncLaunchOnApplicationPause { get; set; }
         DelegateLua3 FuncLaunchOnApplicationFocus { get; set; }
         CasinosContext Context { get; set; }
@@ -334,6 +335,7 @@ namespace Casinos
 
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
             FuncLaunchClose = lua_launch.Get<DelegateLua1>("Close");
+            FuncLaunchOnAndroidQuitConfirm = lua_launch.Get<DelegateLua1>("OnAndroidQuitConfirm");
             FuncLaunchOnApplicationPause = lua_launch.Get<DelegateLua3>("OnApplicationPause");
             FuncLaunchOnApplicationFocus = lua_launch.Get<DelegateLua3>("OnApplicationFocus");
             var func_setup = lua_launch.Get<DelegateLua1>("Setup");
@@ -526,6 +528,13 @@ namespace Casinos
         public string GetSystemLanguageAsString()
         {
             return Application.systemLanguage.ToString();
+        }
+
+        //---------------------------------------------------------------------
+        public void _CSharpCallOnAndroidQuitConfirm()
+        {
+            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+            if (FuncLaunchOnAndroidQuitConfirm != null) FuncLaunchOnAndroidQuitConfirm.Invoke(lua_launch);
         }
 
         //---------------------------------------------------------------------

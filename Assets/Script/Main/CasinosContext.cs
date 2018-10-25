@@ -211,6 +211,11 @@ namespace Casinos
             {
                 TimerShaft.ProcessTimer((ulong)Stopwatch.ElapsedMilliseconds);
             }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                LuaMgr._CSharpCallOnAndroidQuitConfirm();
+            }
         }
 
         //---------------------------------------------------------------------

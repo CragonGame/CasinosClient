@@ -48,7 +48,6 @@ function Launch:new(o)
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
         self.Context = nil
-        self.TimerUpdate = nil
         self.UIPackagePreLoading = nil
         self.UIPackageMsgbox = nil
         self.Instance = o
@@ -74,26 +73,6 @@ function Launch:Setup()
 
     self.UIPackagePreLoading = self:_addUiPackage("PreLoading")
     self.UIPackagePreMsgbox = self:_addUiPackage("PreMsgBox")
-
-    CS.FairyGUI.Stage.inst.onKeyDown:Add(
-            function(context)
-                local key_code = context.inputEvent.keyCode
-                if (key_code == CS.UnityEngine.KeyCode.Escape) then
-                    local view_premsgbox = PreViewMgr:GetView("PreMsgBox")
-                    if (view_premsgbox == nil) then
-                        view_premsgbox = PreViewMgr:CreateView("PreMsgBox")
-                    end
-                    view_premsgbox:showMsgBox('确认退出吗',
-                            function()
-                                PreViewMgr:DestroyView(view_premsgbox)
-                                CS.UnityEngine.Application.Quit()
-                            end,
-                            function()
-                                PreViewMgr:DestroyView(view_premsgbox)
-                            end
-                    )
-                end
-            end)
 
     self.PreLoading = self.PreViewMgr:CreateView("PreLoading")
 
@@ -236,10 +215,19 @@ end
 ---------------------------------------
 -- Android的退出确认
 function Launch:OnAndroidQuitConfirm()
-    print('OnAndroidQuitConfirm')
-    if (self.Context ~= nil) then
-    else
+    local view_premsgbox = self.PreViewMgr:GetView("PreMsgBox")
+    if (view_premsgbox == nil) then
+        view_premsgbox = self.PreViewMgr:CreateView("PreMsgBox")
     end
+    view_premsgbox:showMsgBox('确认退出吗',
+            function()
+                self.PreViewMgr:DestroyView(view_premsgbox)
+                CS.UnityEngine.Application.Quit()
+            end,
+            function()
+                self.PreViewMgr:DestroyView(view_premsgbox)
+            end
+    )
 end
 
 ---------------------------------------
