@@ -1,0 +1,21 @@
+{
+  "LaunchVersion": "1.00.605",
+  "ListAb": [
+    "Launch.Ui/denglong.ab",
+    "Launch.Ui/denglong.ab.manifest",
+    "Launch.Ui/loadingmarry.ab",
+    "Launch.Ui/loadingmarry.ab.manifest",
+    "Launch.Ui/preloading.ab",
+    "Launch.Ui/preloading.ab.manifest",
+    "Launch.Ui/premsgbox.ab",
+    "Launch.Ui/premsgbox.ab.manifest"
+  ],
+  "ListLua": [
+    "Lua/Launch/Launch.lua",
+    "Lua/Launch/PreViewBase.lua",
+    "Lua/Launch/PreViewFactory.lua",
+    "Lua/Launch/PreViewLoading.lua",
+    "Lua/Launch/PreViewMgr.lua",
+    "Lua/Launch/PreViewMsgBox.lua"
+  ]
+}

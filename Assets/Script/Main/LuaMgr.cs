@@ -314,8 +314,6 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Launch()
         {
-            Debug.Log("99999999999");
-
             // 预加载Script.Lua/Launch中的所有lua文件，显示加载界面
             var path_mgr = CasinosContext.Instance.PathMgr;
             var cfg = CasinosContext.Instance.Config;
@@ -332,18 +330,14 @@ namespace Casinos
                 LoadLuaFromRawDir(path_mgr.DirLaunchLua);
             }
 
-            Debug.Log("aaaaaaaaaa");
-
             DoString("Launch");
 
-            Debug.Log("bbbbbbbbb");
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
             FuncLaunchClose = lua_launch.Get<DelegateLua1>("Close");
             FuncLaunchOnApplicationPause = lua_launch.Get<DelegateLua3>("OnApplicationPause");
             FuncLaunchOnApplicationFocus = lua_launch.Get<DelegateLua3>("OnApplicationFocus");
             var func_setup = lua_launch.Get<DelegateLua1>("Setup");
             func_setup(lua_launch);
-            Debug.Log("ccccccccc");
         }
 
         //---------------------------------------------------------------------

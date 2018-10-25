@@ -75,7 +75,10 @@ public class EditorViewDataPublish : EditorWindow
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("清空Persistent目录", GUILayout.Width(200)))
         {
-            Directory.Delete(EditorContext.Instance.PathPersistent, true);
+            if (Directory.Exists(EditorContext.Instance.PathPersistent))
+            {
+                Directory.Delete(EditorContext.Instance.PathPersistent, true);
+            }
             ShowNotification(new GUIContent("清空Persistent目录成功!"));
         }
         EditorGUILayout.EndHorizontal();
@@ -85,10 +88,17 @@ public class EditorViewDataPublish : EditorWindow
             PlayerPrefs.DeleteKey("VersionCommonPersistent");
             PlayerPrefs.DeleteKey("VersionDataPersistent");
             PlayerPrefs.DeleteKey("VersionLaunchPersistent");
-            Directory.Delete(EditorContext.Instance.PathPersistent, true);
+            if (Directory.Exists(EditorContext.Instance.PathPersistent))
+            {
+                Directory.Delete(EditorContext.Instance.PathPersistent, true);
+            }
             ShowNotification(new GUIContent("清空Persistent目录并清除所有VersionPersistent成功!"));
         }
         EditorGUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+        GUILayout.Label("------------------------------------------------------");
+        EditorGUILayout.LabelField("Common资源处理");
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("生成CommonFileList.txt", GUILayout.Width(200)))
         {
