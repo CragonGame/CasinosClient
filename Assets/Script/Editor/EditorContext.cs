@@ -84,22 +84,6 @@ public class EditorContext
     }
 
     //-------------------------------------------------------------------------
-    [MenuItem("CasinosPublish/ProjectConfig", false, 101)]
-    static void MenuItemProjectConfig()
-    {
-        if (Instance == null)
-        {
-            new EditorContext();
-        }
-
-        EditorViewProjectConfig editor = ScriptableObject.CreateInstance<EditorViewProjectConfig>();
-        editor.titleContent = new GUIContent("项目配置", "用于项目运行时信息");
-        editor.minSize = new Vector2(1024, 768);
-        editor.maxSize = new Vector2(1024, 768);
-        editor.Show();
-    }
-
-    //-------------------------------------------------------------------------
     [MenuItem("CasinosPublish/DataPublish", false, 102)]
     static void MenuItemDataPublish()
     {

@@ -70,8 +70,8 @@ function Config:new(o)
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     self.DevelopSettings = ConfigDevelopSettings:new(nil)
     self.Env = nil
-    self.LuaVersion = nil
-    self.LuaRootURL = nil
+    self.CommonVersion = nil
+    self.CommonRootURL = nil
     self.DataVersion = nil
     self.DataRootURL = nil
     self.OssRootUrl = 'http://cragon-king-oss.cragon.cn'
@@ -85,8 +85,8 @@ function Config:new(o)
     self.BundleUpdateStata = 0
     self.BundleUpdateVersion = '1.00.067'
     self.BundleUpdateURL = 'https://cragon-king-oss.cragon.cn/KingTexas.apk'
+    self.CommonFileListFileName = 'CommonFileList.txt'
     self.DataFileListFileName = 'DataFileList.txt'
-    self.LuaFileListFileName = 'LuaFileList.txt'
     self.TbFileList = { 'KingCommon', 'KingDesktop', 'KingDesktopH', 'KingClient' }
     self.ServerState = 0-- 服务器状态: 0正常,1维护
     self.ServerStateInfo = ''-- 系统公告
@@ -145,8 +145,8 @@ function Context:new(o, env)
     self.LaunchStep = {}
     self.Cfg = Config:new(nil)
     self.Cfg.Env = env
-    self.Cfg.LuaVersion = self.Launch.LaunchCfg.LuaVersion
-    self.Cfg.LuaRootURL = string.format('https://cragon-king-oss.cragon.cn/Lua/%s/', self.Launch.LaunchCfg.LuaVersion)
+    self.Cfg.CommonVersion = self.Launch.LaunchCfg.CommonVersion
+    self.Cfg.CommonRootURL = string.format('https://cragon-king-oss.cragon.cn/Common/%s/', self.Launch.LaunchCfg.CommonVersion)
     self.Cfg.DataVersion = self.Launch.LaunchCfg.DataVersion
     self.Cfg.DataRootURL = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/', self.CasinosContext.Config.Platform, self.Launch.LaunchCfg.DataVersion)
     self.Env = env
@@ -187,9 +187,14 @@ function Context:Release()
         self.TimerUpdateCopyStreamingAssetsToPersistentData = nil
     end
 
-    if (self.TimerUpdateRemoteToPersistentData ~= nil) then
-        self.TimerUpdateRemoteToPersistentData:Close()
-        self.TimerUpdateRemoteToPersistentData = nil
+    if (self.TimerUpdateRemoteCommonToPersistent ~= nil) then
+        self.TimerUpdateRemoteCommonToPersistent:Close()
+        self.TimerUpdateRemoteCommonToPersistent = nil
+    end
+
+    if (self.TimerUpdateRemoteDataToPersistent ~= nil) then
+        self.TimerUpdateRemoteDataToPersistent:Close()
+        self.TimerUpdateRemoteDataToPersistent = nil
     end
 
     self.CasinosContext = nil
@@ -220,9 +225,9 @@ function Context:_initLaunchStep()
     --    self.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
     --end
 
-    -- 检测是否需要更新Lua
-    if (self.CasinosContext.Config.VersionLuaPersistent ~= self.Cfg.LuaVersion) then
-        self.LaunchStep[2] = "UpdateLua"
+    -- 检测是否需要更新Common
+    if (self.CasinosContext.Config.VersionCommonPersistent ~= self.Cfg.CommonVersion) then
+        self.LaunchStep[2] = "UpdateCommon"
     end
 
     -- 检测是否需要更新Data
@@ -269,25 +274,25 @@ function Context:_nextLaunchStep()
     --    return
     --end
 
-    -- 更新Lua
+    -- 更新Common
     if (self.LaunchStep[2] ~= nil) then
         --if (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork) then
         --end
         self.Launch:UpdateViewLoadingDescAndProgress("更新游戏脚本", 0, 100)
-        local http_url = self.Cfg.LuaRootURL .. self.Cfg.LuaFileListFileName
+        local http_url = self.Cfg.CommonRootURL .. self.Cfg.CommonFileListFileName
         --print(http_url)
         local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
         async_asset_loadgroup:LoadWWWAsync(http_url,
                 function(url, www)
-                    -- 比较Oss上的luafilelist.txt和Persistent中的luafilelist.txt差异集，获取需要更新的Data列表
-                    local luafilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.LuaFileListFileName)
-                    --print(luafilelist_persistent)
-                    self.RemoteLuaFileListContent = www.text
-                    local persistent_luafilelist_content = self.CasinosLua:ReadAllText(luafilelist_persistent)
-                    local luarootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('Lua/')
-                    self.UpdateRemoteLuaToPersistent = CS.Casinos.UpdateRemoteToPersistentData()
-                    self.UpdateRemoteLuaToPersistent:UpateAsync(self.RemoteLuaFileListContent, persistent_luafilelist_content, self.Cfg.LuaRootURL, luarootdir_persistent)
-                    self.TimerUpdateRemoteLuaToPersistent = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteLuaToPersistent)
+                    -- 比较Oss上的CommonFileList.txt和Persistent中的CommonFileList.txt差异集，获取需要更新的列表
+                    local commonfilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.CommonFileListFileName)
+                    --print(commonfilelist_persistent)
+                    self.RemoteCommonFileListContent = www.text
+                    local persistent_commonfilelist_content = self.CasinosLua:ReadAllText(commonfilelist_persistent)
+                    local commonrootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/')
+                    self.UpdateRemoteCommonToPersistent = CS.Casinos.UpdateRemoteToPersistentData()
+                    self.UpdateRemoteCommonToPersistent:UpateAsync(self.RemoteCommonFileListContent, persistent_commonfilelist_content, self.Cfg.CommonRootURL, commonrootdir_persistent)
+                    self.TimerUpdateRemoteCommonToPersistent = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteCommonToPersistent)
                 end
         )
         return
@@ -308,9 +313,9 @@ function Context:_nextLaunchStep()
                     --print(datafilelist_persistent)
                     self.RemoteDataFileListContent = www.text
                     local persistent_datafilelist_content = self.CasinosLua:ReadAllText(datafilelist_persistent)
-                    local rootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/')
+                    local datarootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/')
                     self.UpdateRemoteDataToPersistent = CS.Casinos.UpdateRemoteToPersistentData()
-                    self.UpdateRemoteDataToPersistent:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, self.Cfg.DataRootURL, rootdir_persistent)
+                    self.UpdateRemoteDataToPersistent:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, self.Cfg.DataRootURL, datarootdir_persistent)
                     self.TimerUpdateRemoteDataToPersistent = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteDataToPersistent)
                 end
         )
@@ -325,9 +330,9 @@ function Context:_nextLaunchStep()
 
         self.CasinosLua:LoadLuaFromRawDir(self.CasinosContext.PathMgr.DirLuaRoot)
 
-        self.CasinosContext.CanReportLog = CanReportLog
-        self.CasinosContext.CanReportLogDeviceId = CanReportLogDeviceId
-        self.CasinosContext.CanReportLogPlayerId = CanReportLogPlayerId
+        self.CasinosContext.CanReportLog = self.Cfg.CanReportLog
+        self.CasinosContext.CanReportLogDeviceId = self.Cfg.CanReportLogDeviceId
+        self.CasinosContext.CanReportLogPlayerId = self.Cfg.CanReportLogPlayerId
         if (self.CasinosContext.UnityAndroid == true) then
         end
 
@@ -397,8 +402,8 @@ function Context:_nextLaunchStep()
         local table_ab = {
             "About", "ActivityCenter", "ActivityPopup", "AgreeOrDisAddFriendRequest", "ApplySucceed",
             "Bag", "Bank", "BlindTable",
-            "Chat", "ChatChooseTarget", "ChatExPression", "ChatFriend", "ChipOperate", "ChooseLan","ClassicModel", "Club", "ClubHelp", "Common", "CreateDeskTop", "CreateMatch",
-            "DailyReward", "Desktop", "DesktopChatParent", "DesktopHints","DesktopPlayerInfo", "DesktopPlayerOperate", "DesktopMenu",
+            "Chat", "ChatChooseTarget", "ChatExPression", "ChatFriend", "ChipOperate", "ChooseLan", "ClassicModel", "Club", "ClubHelp", "Common", "CreateDeskTop", "CreateMatch",
+            "DailyReward", "Desktop", "DesktopChatParent", "DesktopHints", "DesktopPlayerInfo", "DesktopPlayerOperate", "DesktopMenu",
             "DesktopH", "DesktopHBetReward", "DesktopHTexas", "DesktopHBankPlayerList", "DesktopHCardType", "DesktopHHistory", "DesktopHRewardPot",
             "DesktopHMenu", "DesktopHHelp", "DesktopHResult", "DesktopHSetCardType", "DesktopHTongSha", "DesktopHTongPei",
             "Edit", "EditAddress", "EnterMatchNotify",
@@ -411,7 +416,7 @@ function Context:_nextLaunchStep()
             "Notice",
             "PayType", "PlayerInfo", "PlayerProfile", "Pool", "Purse",
             "QuitOrBack",
-            "Ranking", "RechargeFirst","ResetPwd",
+            "Ranking", "RechargeFirst", "ResetPwd",
             "Share", "ShareType", "ShootingText", "Shop", "SnowBallReward",
             "TakePhoto",
         }
@@ -459,26 +464,26 @@ function Context:_timerUpdateCopyStreamingAssetsToPersistentData(tm)
 end
 
 ---------------------------------------
--- 定时器，更新Lua
-function Context:_timerUpdateRemoteLuaToPersistent(tm)
-    local is_done = self.UpdateRemoteLuaToPersistent:IsDone()
+-- 定时器，更新Common
+function Context:_timerUpdateRemoteCommonToPersistent(tm)
+    local is_done = self.UpdateRemoteCommonToPersistent:IsDone()
     if (is_done) then
-        self.TimerUpdateRemoteLuaToPersistent:Close()
-        self.TimerUpdateRemoteLuaToPersistent = nil
-        self.UpdateRemoteLuaToPersistent = nil
+        self.TimerUpdateRemoteCommonToPersistent:Close()
+        self.TimerUpdateRemoteCommonToPersistent = nil
+        self.UpdateRemoteCommonToPersistent = nil
 
-        -- 用Remote LuaFileList.txt覆盖Persistent中的；并更新VersionLuaPersistent
-        local luafilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.LuaFileListFileName)
-        CS.System.IO.File.WriteAllText(luafilelist_persistent, self.RemoteLuaFileListContent)
-        self.RemoteLuaFileListContent = nil
-        self.CasinosContext.Config:WriteVersionLuaPersistent(self.Cfg.LuaVersion)
+        -- 用Remote CommonFileList.txt覆盖Persistent中的；并更新VersionCommonPersistent
+        local commonfilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.CommonFileListFileName)
+        CS.System.IO.File.WriteAllText(commonfilelist_persistent, self.RemoteCommonFileListContent)
+        self.RemoteCommonFileListContent = nil
+        self.CasinosContext.Config:WriteVersionCommonPersistent(self.Cfg.CommonVersion)
 
         -- 执行下一步LaunchStep
         self.LaunchStep[2] = nil
         self:_nextLaunchStep()
     else
-        local value = self.UpdateRemoteLuaToPersistent.LeftCount
-        local max = self.UpdateRemoteLuaToPersistent.TotalCount
+        local value = self.UpdateRemoteCommonToPersistent.LeftCount
+        local max = self.UpdateRemoteCommonToPersistent.TotalCount
         self.Launch:UpdateViewLoadingProgress(max - value, max)
     end
 end

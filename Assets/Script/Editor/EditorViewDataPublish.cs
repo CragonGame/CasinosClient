@@ -31,27 +31,38 @@ public class EditorViewDataPublish : EditorWindow
         GUILayout.Space(10);
         GUILayout.Label("Casinos资源发布");
 
-        GUILayout.Space(20);
+        GUILayout.Space(10);
+        GUILayout.Label("---------------------------------");
+        EditorGUILayout.LabelField("运行时使用的资源目录");
+        bool force_use_resourceslaunch = EditorGUILayout.Toggle("是否强制使用Resources/Launch（不勾选表示使用PersistentData）",
+            EditorContext.Instance.Config.CfgUserSettings.ForceUseDirResourcesLaunch, GUILayout.ExpandWidth(false));
+        if (force_use_resourceslaunch != EditorContext.Instance.Config.CfgUserSettings.ForceUseDirResourcesLaunch)
+        {
+            EditorContext.Instance.Config.SaveValueForceUseDirResourcesLaunch(force_use_resourceslaunch);
+        }
+
+        bool force_use_dataoss = EditorGUILayout.Toggle("是否强制使用DataOss（不勾选表示使用PersistentData）",
+            EditorContext.Instance.Config.CfgUserSettings.ForceUseDirDataOss, GUILayout.Width(600));
+        if (force_use_dataoss != EditorContext.Instance.Config.CfgUserSettings.ForceUseDirDataOss)
+        {
+            EditorContext.Instance.Config.SaveValueForceUseDirDataOss(force_use_dataoss);
+        }
+
+        GUILayout.Space(10);
         GUILayout.Label("------------------------------------------------------");
-        EditorGUILayout.LabelField("AB资源所在路径:", EditorContext.Instance.PathAssets);
         EditorGUILayout.LabelField("BundleVersion:", Application.version);
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("清空Persistent目录", GUILayout.Width(200)))
-        {
-            Directory.Delete(EditorContext.Instance.PathPersistent, true);
-            ShowNotification(new GUIContent("清空Persistent目录成功!"));
-        }
         if (GUILayout.Button("清除所有VersionPersistent", GUILayout.Width(200)))
         {
-            PlayerPrefs.DeleteKey("VersionLuaPersistent");
+            PlayerPrefs.DeleteKey("VersionCommonPersistent");
             PlayerPrefs.DeleteKey("VersionDataPersistent");
             PlayerPrefs.DeleteKey("VersionLaunchPersistent");
             ShowNotification(new GUIContent("删除所有VersionPersistent成功!"));
         }
-        if (GUILayout.Button("清除VersionLuaPersistent", GUILayout.Width(200)))
+        if (GUILayout.Button("清除VersionCommonPersistent", GUILayout.Width(200)))
         {
-            PlayerPrefs.DeleteKey("VersionLuaPersistent");
-            ShowNotification(new GUIContent("删除VersionLuaPersistent成功!"));
+            PlayerPrefs.DeleteKey("VersionCommonPersistent");
+            ShowNotification(new GUIContent("删除VersionCommonPersistent成功!"));
         }
         if (GUILayout.Button("清除VersionDataPersistent", GUILayout.Width(200)))
         {
@@ -65,9 +76,16 @@ public class EditorViewDataPublish : EditorWindow
         }
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("清空Persistent目录", GUILayout.Width(200)))
+        {
+            Directory.Delete(EditorContext.Instance.PathPersistent, true);
+            ShowNotification(new GUIContent("清空Persistent目录成功!"));
+        }
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("清空Persistent目录并清除所有VersionPersistent", GUILayout.Width(500)))
         {
-            PlayerPrefs.DeleteKey("VersionLuaPersistent");
+            PlayerPrefs.DeleteKey("VersionCommonPersistent");
             PlayerPrefs.DeleteKey("VersionDataPersistent");
             PlayerPrefs.DeleteKey("VersionLaunchPersistent");
             Directory.Delete(EditorContext.Instance.PathPersistent, true);

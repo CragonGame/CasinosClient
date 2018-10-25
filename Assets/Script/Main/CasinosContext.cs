@@ -9,7 +9,7 @@ namespace Casinos
     using UnityEngine;
     using XLua;
     using FairyGUI;
-    
+
     public enum _eProjectItemDisplayNameKey
     {
         Gold,
@@ -313,14 +313,14 @@ namespace Casinos
                 string p = Path.Combine(Environment.CurrentDirectory, "./DataOss/");
                 var di = new DirectoryInfo(p);
                 string p1 = di.FullName.Replace('\\', '/');
-                PathMgr.DirLuaRoot = p1 + "Lua/";
-                PathMgr.DirRawRoot = p1 + Config.Platform + "/Resources.KingTexasRaw/";
+                PathMgr.DirLuaRoot = p1 + "Common/Lua/";
+                PathMgr.DirRawRoot = "Common/Raw/";
                 PathMgr.DirAbRoot = p1 + Config.Platform + "/Resources.KingTexas/";
             }
             else
             {
                 PathMgr.DirLuaRoot = PathMgr.CombinePersistentDataPath("Lua/");
-                PathMgr.DirRawRoot = PathMgr.CombinePersistentDataPath("Resources.KingTexasRaw/");
+                PathMgr.DirRawRoot = PathMgr.CombinePersistentDataPath("Raw/");
                 PathMgr.DirAbRoot = PathMgr.CombinePersistentDataPath("Resources.KingTexas/");
             }
 

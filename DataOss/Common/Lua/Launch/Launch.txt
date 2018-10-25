@@ -12,7 +12,7 @@ function LaunchConfig:new(o)
     self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
     self.Env = 'Pro'
     self.CurrentLan = 'ChineseSimplified'
-    self.LuaVersion = nil
+    self.CommonVersion = nil
     self.DataVersion = nil
 
     -- 获取Env值
@@ -111,8 +111,7 @@ function Launch:Setup()
     -- 下载并加载bundle_xxx.lua
     local lua_pkg_name = string.format('bundle_%s', self.CasinosContext.Config.VersionBundle)
     local async_asset_loadgroup = self.CasinosContext.AsyncAssetLoadGroup
-    local http_url_bundlexxx = string.format('https://cragon-king-oss.cragon.cn/%s/%s.lua',
-            self.CasinosContext.Config.Platform, lua_pkg_name)
+    local http_url_bundlexxx = string.format('https://cragon-king-oss.cragon.cn/%s/%s.lua', self.CasinosContext.Config.Platform, lua_pkg_name)
     print(http_url_bundlexxx)
     async_asset_loadgroup:LoadWWWAsync(http_url_bundlexxx,
             function(url, www)
@@ -120,13 +119,13 @@ function Launch:Setup()
                 self.CasinosLua:DoString(lua_pkg_name)
 
                 -- 下载并加载Context.lua
-                self.LaunchCfg.LuaVersion = LuaSelectPro
+                self.LaunchCfg.CommonVersion = CommonSelectPro
                 self.LaunchCfg.DataVersion = DataSelectPro
                 if (self.LaunchCfg.Env == 'Dev') then
-                    self.LaunchCfg.LuaVersion = LuaSelectDev
+                    self.LaunchCfg.CommonVersion = CommonSelectDev
                     self.LaunchCfg.DataVersion = DataSelectDev
                 end
-                local http_url_context = string.format('https://cragon-king-oss.cragon.cn/Lua/%s/Context.lua', self.LaunchCfg.LuaVersion)
+                local http_url_context = string.format('https://cragon-king-oss.cragon.cn/Common/%s/Lua/Context.lua', self.LaunchCfg.CommonVersion)
                 print(http_url_context)
                 async_asset_loadgroup:LoadWWWAsync(http_url_context,
                         function(url, www)

@@ -21,7 +21,7 @@ namespace Casinos
         public string Platform { get; private set; }// Android, iOS, PC
         public string Channel { get; private set; }// 渠道
         public string VersionBundle { get; private set; }
-        public string VersionLuaPersistent { get; private set; }
+        public string VersionCommonPersistent { get; private set; }
         public string VersionDataPersistent { get; private set; }
         public string VersionLaunchPersistent { get; private set; }
         public LaunchInfo LaunchInfoResources { get; set; }// Launch配置信息
@@ -49,11 +49,11 @@ namespace Casinos
             GoMain = GameObject.Find(StringDef.GoMainObj);
             VersionBundle = Application.version;
 
-            // 读取VersionLuaPersistent
-            VersionLuaPersistent = string.Empty;
-            if (PlayerPrefs.HasKey("VersionLuaPersistent"))
+            // 读取VersionCommonPersistent
+            VersionCommonPersistent = string.Empty;
+            if (PlayerPrefs.HasKey("VersionCommonPersistent"))
             {
-                VersionLuaPersistent = PlayerPrefs.GetString("VersionLuaPersistent");
+                VersionCommonPersistent = PlayerPrefs.GetString("VersionCommonPersistent");
             }
 
             // 读取VersionDataPersistent
@@ -85,10 +85,10 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void WriteVersionLuaPersistent(string version_lua_persistent_new)
+        public void WriteVersionCommonPersistent(string version_common_persistent_new)
         {
-            VersionLuaPersistent = version_lua_persistent_new;
-            PlayerPrefs.SetString("VersionLuaPersistent", VersionLuaPersistent);
+            VersionCommonPersistent = version_common_persistent_new;
+            PlayerPrefs.SetString("VersionCommonPersistent", VersionCommonPersistent);
         }
 
         //---------------------------------------------------------------------
