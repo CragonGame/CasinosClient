@@ -104,7 +104,7 @@ function ViewMain:OnCreate()
     gold_par_parent:SetNativeObject(CS.FairyGUI.GoWrapper(g_p))
 
     local com_more = nil
-    if (NeedHideClientUi) then
+    if (self.Context.Cfg.NeedHideClientUi) then
         com_more = self.ComUi:GetChild("ComMoreHideRank").asCom
         btn_match.visible = false
         --btn_wa.visible = false
@@ -373,22 +373,19 @@ function ViewMain:OnCreate()
     holder_matchParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleMatch))
 
     local image_bg = self.ComUi:GetChild("ImageMote").asImage
-    if (NeedHideClientUi == false) then
+    if (self.Context.Cfg.NeedHideClientUi == false) then
         image_bg.visible = false
-        local ab_mainmarry = p_helper:GetSpine("Spine/mainmarry.ab")
-        local atlas = ab_mainmarry:LoadAsset("Mary.atlas")
-        local texture = ab_mainmarry:LoadAsset("Mary")
-        local json = ab_mainmarry:LoadAsset("MaryJson")
-
-        self.PlayerAnim = CS.Casinos.SpineHelper.CreateSpineGameObject(atlas, texture, json, "Spine/Skeleton")
-        self.PlayerAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(81, 81, 1000)
-        self.PlayerAnim:Initialize(false)
-        self.PlayerAnim.loop = true
-        self.PlayerAnim.AnimationName = "animation"
-        self.MoteRender = self.PlayerAnim.transform.gameObject:GetComponent("MeshRenderer")
-        self.MoteRender.sortingOrder = 315
-        self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
-        self.HolderMote:SetNativeObject(CS.FairyGUI.GoWrapper(self.PlayerAnim.transform.gameObject))
+        local ab_path_prefix = self.CasinosContext.PathMgr.DirAbRoot .. 'Spine/'
+        local loadingmarry_anim = self.CasinosContext.SpineMgr:CreateSpineObjFromAb(ab_path_prefix, 'MainMarry', 'Mary.atlas', 'Mary', 'MaryJson', 'Spine/Skeleton')
+        loadingmarry_anim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(81, 81, 1000)
+        loadingmarry_anim:Initialize(false)
+        loadingmarry_anim.loop = true
+        loadingmarry_anim.AnimationName = "animation"
+        loadingmarry_anim.transform.gameObject.name = "LoadingMote"
+        local loadingmarry_render = loadingmarry_anim.transform.gameObject:GetComponent("MeshRenderer")
+        loadingmarry_render.sortingOrder = 315
+        local loadingmarry_holder = self.ComUi:GetChild("HolderMote").asGraph
+        loadingmarry_holder:SetNativeObject(CS.FairyGUI.GoWrapper(loadingmarry_anim.transform.gameObject))
     else
         image_bg.visible = true
         btn_match.visible = false
@@ -441,7 +438,7 @@ end
 
 ---------------------------------------
 function ViewMain:OnDestroy()
-    if (NeedHideClientUi == false) then
+    if (self.Context.Cfg.NeedHideClientUi == false) then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.ParticleDeskTop)
@@ -1042,8 +1039,8 @@ end
 
 ---------------------------------------
 function ViewMain:hideMote()
-    if (NeedHideClientUi == false) then
-        self.MoteRender.transform.gameObject:SetActive(false)
+    if (self.Context.Cfg.NeedHideClientUi == false) then
+        --self.MoteRender.transform.gameObject:SetActive(false)
     end
 end
 

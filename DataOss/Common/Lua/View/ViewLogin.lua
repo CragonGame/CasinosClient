@@ -185,7 +185,7 @@ function ViewLogin:OnCreate()
 
     local com_bg = self.ComUi:GetChild("ComBg")
     local image_bg = com_bg:GetChild("ImageMote").asImage
-    if (NeedHideClientUi == false) then
+    if (self.Context.Cfg.NeedHideClientUi == false) then
         image_bg.visible = false
 
         local loadingmarry_anim = nil
@@ -286,7 +286,7 @@ function ViewLogin:OnDestroy()
         self.TimerUpdate = nil
     end
 
-    if (NeedHideClientUi == false) then
+    if (self.Context.Cfg.NeedHideClientUi == false) then
         CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)

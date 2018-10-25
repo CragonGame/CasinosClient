@@ -10,7 +10,6 @@ GatewayPort = 5882
 ServerState = 0-- 服务器状态: 0正常,1维护
 ServerStateInfo = ''-- 系统公告
 ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
-NeedHideClientUi = false-- 客户端排行等界面显示与隐藏
 DesktopHSysBankShowDBValue = true-- 百人系统庄是否显示SQlite配置值
 ShootingTextShowVIPLimit = 0-- 弹幕发送后是否真正发送弹幕VIP等级限制，0为无限制
 DesktopHCanChatVIPLimit = 1-- 百人是否可聊天VIP等级限制，0为无限制
