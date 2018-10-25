@@ -43,7 +43,7 @@ function ViewDesktopPlayerInfoTexas:new(o)
     o.VibrateOnce = true
     o.IsRelease = false-- 是否已经被回收，切换快照时使用
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     self.TimerUpdate = nil
     return o
 end
@@ -1052,7 +1052,7 @@ function ViewDesktopPlayerInfoTexas:_setThinkingTimeSprite(fill_amount, need_vib
     local color = CS.UnityEngine.Color()
 
     if (persent <= 0.5 and persent >= 0.48 and (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid) and self.VibrateOnce and need_vibrate) then
-        self.CasinosLua:Vibrate()
+        self.LuaMgr:Vibrate()
         self.VibrateOnce = false
         self.CasinosContext:Play("half_time", CS.Casinos._eSoundLayer.LayerNormal)
     end

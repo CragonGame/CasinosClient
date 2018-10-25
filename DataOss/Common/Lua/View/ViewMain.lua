@@ -380,7 +380,7 @@ function ViewMain:OnCreate()
         local texture = ab_mainmarry:LoadAsset("Mary")
         local json = ab_mainmarry:LoadAsset("MaryJson")
 
-        self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
+        self.PlayerAnim = CS.Casinos.SpineHelper.CreateSpineGameObject(atlas, texture, json, "Spine/Skeleton")
         self.PlayerAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(81, 81, 1000)
         self.PlayerAnim:Initialize(false)
         self.PlayerAnim.loop = true

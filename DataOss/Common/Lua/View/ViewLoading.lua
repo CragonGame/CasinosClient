@@ -60,7 +60,7 @@ function ViewLoading:OnCreate()
 		local abjson = p_helper:GetSpine("Spine/LoadingMarry/mary_loadingjson.ab")
 		local json = abjson:LoadAsset("Mary_LoadingJson")
 		
-		self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas,texture,json,"Spine/Skeleton")
+		self.PlayerAnim = CS.Casinos.SpineHelper.CreateSpineGameObject(atlas,texture,json,"Spine/Skeleton")
 		local moteParent = self.ComUi:GetChild("MoteParent").asCom
 		self.PlayerAnim.transform.position = moteParent.displayObject.gameObject.transform.position
 		self.PlayerAnim.transform.localScale = CS.UnityEngine.Vector3(1.25,1.25,1)

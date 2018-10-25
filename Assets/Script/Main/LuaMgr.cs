@@ -151,7 +151,6 @@ namespace Casinos
             typeof(AsyncAssetLoadGroup),
             typeof(Card),
             typeof(ChatParser),
-            typeof(CopyStreamingAssetsToPersistentData2),
             typeof(DataEye),
             typeof(EbTool),
             typeof(EbTimeEvent),
@@ -263,7 +262,7 @@ namespace Casinos
     }
 
     [LuaCallCSharp]
-    public class CasinosLua
+    public class LuaMgr
     {
         //---------------------------------------------------------------------
         public LuaEnv LuaEnv { get; private set; }
@@ -277,7 +276,7 @@ namespace Casinos
         const float TickTimeSpanMax = 1f;
 
         //---------------------------------------------------------------------
-        public CasinosLua()
+        public LuaMgr()
         {
             Context = CasinosContext.Instance;
             MapLuaFiles = new Dictionary<string, byte[]>();
@@ -436,7 +435,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public LuaTable GetLuaTable(string name)
         {
-            return CasinosContext.Instance.CasinosLua.LuaEnv.Global.Get<LuaTable>(name);
+            return LuaEnv.Global.Get<LuaTable>(name);
         }
 
         //---------------------------------------------------------------------

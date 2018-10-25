@@ -28,7 +28,7 @@ PreViewMgr = {
     TableViewMultiple = {},
     TableMaxDepth = {},
     CasinosContext = CS.Casinos.CasinosContext.Instance,
-    CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
 }
 
 ---------------------------------------
@@ -58,7 +58,7 @@ end
 function PreViewMgr:Release()
     self:DestroyAllView()
     self.CasinosContext = nil
-    self.CasinosLua = nil
+    self.LuaMgr = nil
 end
 
 ---------------------------------------
@@ -140,7 +140,7 @@ function PreViewMgr:DestroyView(view)
             end
         end
         self.TableMaxDepth[view.UILayer] = view.InitDepth
-        self.CasinosLua:DestroyGameObject(view.GoUi)
+        self.LuaMgr:DestroyGameObject(view.GoUi)
         view = nil
     end
 end
@@ -156,7 +156,7 @@ function PreViewMgr:DestroyAllView()
     for k, v in pairs(self.TableViewSingle) do
         self.TableMaxDepth[v.UILayer] = v.InitDepth
         v:OnDestroy()
-        self.CasinosLua:DestroyGameObject(v.GoUi)
+        self.LuaMgr:DestroyGameObject(v.GoUi)
         --CS.UnityEngine.GameObject.Destroy(v.GoUi)
     end
 
@@ -164,7 +164,7 @@ function PreViewMgr:DestroyAllView()
         for k1, v1 in pairs(v) do
             self.TableMaxDepth[v.UILayer] = v.InitDepth
             v:OnDestroy()
-            self.CasinosLua:DestroyGameObject(v.GoUi)
+            self.LuaMgr:DestroyGameObject(v.GoUi)
         end
     end
 end

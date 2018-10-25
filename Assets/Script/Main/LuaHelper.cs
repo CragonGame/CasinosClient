@@ -120,7 +120,7 @@ namespace Casinos
         public static LuaTable spliteStr(string str, string splite_s)
         {
             var splite_str = str.Split(new string[] { splite_s }, StringSplitOptions.RemoveEmptyEntries);
-            var t = CasinosContext.Instance.CasinosLua.LuaEnv.NewTable();
+            var t = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
             int index = 1;
             foreach (var i in splite_str)
             {
@@ -221,7 +221,7 @@ namespace Casinos
         {
             string icon_resource_name = icon_resource_name1;
             string icon = HeadIconMgr.getIconName(is_small, icon_name, ref icon_resource_name);
-            var t = CasinosContext.Instance.CasinosLua.LuaEnv.NewTable();
+            var t = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
             t.Set(0, icon_resource_name);
             t.Set(1, icon);
             return t;
@@ -384,7 +384,7 @@ namespace Casinos
             LuaTable lua_table = null;
             if (obj != null)
             {
-                lua_table = CasinosContext.Instance.CasinosLua.LuaEnv.NewTable();
+                lua_table = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
                 foreach (var key in obj.Keys)
                 {
                     lua_table.Set(key, obj[key]);
@@ -400,7 +400,7 @@ namespace Casinos
             LuaTable lua_table = null;
             if (obj != null)
             {
-                lua_table = CasinosContext.Instance.CasinosLua.LuaEnv.NewTable();
+                lua_table = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
                 for (int i = 0; i < obj.Count; i++)
                 {
                     lua_table.Set(i + 1, obj[i]);

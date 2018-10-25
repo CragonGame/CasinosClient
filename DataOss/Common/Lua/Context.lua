@@ -51,7 +51,7 @@ function ConfigDevelopSettings:new(o)
     setmetatable(o, self)
     self.__index = self
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     self.ShowDevelopSettings = false-- 是否显示开发者选项
     self.ClientShowFPS = true-- 客户端显示FPS信息 false 不显示 true 显示
     self.FPSLimit = 60-- 限帧
@@ -67,7 +67,7 @@ function Config:new(o)
     setmetatable(o, self)
     self.__index = self
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     self.DevelopSettings = ConfigDevelopSettings:new(nil)
     self.Env = nil
     self.CommonVersion = nil
@@ -140,7 +140,7 @@ function Context:new(o, env)
     setmetatable(o, self)
     self.__index = self
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     self.Launch = Launch
     self.LaunchStep = {}
     self.Cfg = Config:new(nil)
@@ -198,7 +198,7 @@ function Context:Release()
     end
 
     self.CasinosContext = nil
-    self.CasinosLua = nil
+    self.LuaMgr = nil
     self.Launch = nil
 
     print('Context:Release()')
@@ -206,7 +206,7 @@ end
 
 ---------------------------------------
 function Context:DoString(name)
-    self.CasinosLua:DoString(name)
+    self.LuaMgr:DoString(name)
 end
 
 ---------------------------------------
@@ -288,7 +288,7 @@ function Context:_nextLaunchStep()
                     local commonfilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.CommonFileListFileName)
                     --print(commonfilelist_persistent)
                     self.RemoteCommonFileListContent = www.text
-                    local persistent_commonfilelist_content = self.CasinosLua:ReadAllText(commonfilelist_persistent)
+                    local persistent_commonfilelist_content = self.LuaMgr:ReadAllText(commonfilelist_persistent)
                     local commonrootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/')
                     self.UpdateRemoteCommonToPersistent = CS.Casinos.UpdateRemoteToPersistentData()
                     self.UpdateRemoteCommonToPersistent:UpateAsync(self.RemoteCommonFileListContent, persistent_commonfilelist_content, self.Cfg.CommonRootURL, commonrootdir_persistent)
@@ -312,7 +312,7 @@ function Context:_nextLaunchStep()
                     local datafilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.DataFileListFileName)
                     --print(datafilelist_persistent)
                     self.RemoteDataFileListContent = www.text
-                    local persistent_datafilelist_content = self.CasinosLua:ReadAllText(datafilelist_persistent)
+                    local persistent_datafilelist_content = self.LuaMgr:ReadAllText(datafilelist_persistent)
                     local datarootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/')
                     self.UpdateRemoteDataToPersistent = CS.Casinos.UpdateRemoteToPersistentData()
                     self.UpdateRemoteDataToPersistent:UpateAsync(self.RemoteDataFileListContent, persistent_datafilelist_content, self.Cfg.DataRootURL, datarootdir_persistent)
@@ -328,7 +328,7 @@ function Context:_nextLaunchStep()
 
         self.Launch:UpdateViewLoadingDescAndProgress("准备登录中", 0, 100)
 
-        self.CasinosLua:LoadLuaFromRawDir(self.CasinosContext.PathMgr.DirLuaRoot)
+        self.LuaMgr:LoadLuaFromRawDir(self.CasinosContext.PathMgr.DirLuaRoot)
 
         self.CasinosContext.CanReportLog = self.Cfg.CanReportLog
         self.CasinosContext.CanReportLogDeviceId = self.Cfg.CanReportLogDeviceId
@@ -425,7 +425,7 @@ function Context:_nextLaunchStep()
             table_ab[i] = full_name
         end
 
-        self.CasinosLua:LoadLocalBundleAsync(self, table_ab,
+        self.LuaMgr:LoadLocalBundleAsync(self, table_ab,
                 function(this, list_ab)
                     local ui_package = CS.FairyGUI.UIPackage
                     for i, v in pairs(list_ab) do

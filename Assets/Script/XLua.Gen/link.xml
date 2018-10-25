@@ -6,6 +6,7 @@
 	    <type fullname="Casinos.UiHelperCasinos" preserve="all"/>
 		<type fullname="Casinos.CasinoHelper" preserve="all"/>
 		<type fullname="Casinos.CasinosContext" preserve="all"/>
+		<type fullname="Casinos.LuaHelper" preserve="all"/>
 		<type fullname="FairyGUI.EaseType" preserve="all"/>
 		<type fullname="FairyGUI.RelationType" preserve="all"/>
 		<type fullname="FairyGUI.TweenPropType" preserve="all"/>
@@ -51,7 +52,6 @@
 		<type fullname="AsyncAssetLoadGroup" preserve="all"/>
 		<type fullname="Casinos.Card" preserve="all"/>
 		<type fullname="ChatParser" preserve="all"/>
-		<type fullname="Casinos.CopyStreamingAssetsToPersistentData2" preserve="all"/>
 		<type fullname="EbTool" preserve="all"/>
 		<type fullname="Casinos.EbTimeEvent" preserve="all"/>
 		<type fullname="Casinos.EbTimer" preserve="all"/>
@@ -65,12 +65,10 @@
 		<type fullname="Casinos.TimerShaft" preserve="all"/>
 		<type fullname="Casinos.UiHelper" preserve="all"/>
 		<type fullname="Casinos.UpdateRemoteToPersistentData" preserve="all"/>
-		<type fullname="Casinos.CasinosLua" preserve="all"/>
-		<type fullname="Casinos.LuaHelper" preserve="all"/>
+		<type fullname="Casinos.LuaMgr" preserve="all"/>
 		<type fullname="Casinos._eEditorRunSourcePlatform" preserve="all"/>
 		<type fullname="Casinos.DirType" preserve="all"/>
 		<type fullname="Casinos.PathMgr" preserve="all"/>
-		<type fullname="Casinos.SpineHelper" preserve="all"/>
 		
 	</assembly>
 

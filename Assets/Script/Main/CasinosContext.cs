@@ -62,8 +62,9 @@ namespace Casinos
         public CasinosPlayerPrefs PlayerPrefs { get; private set; }
         public CasinosConfig Config { get; private set; }
         public TextureMgr TextureMgr { get; private set; }
-        public CasinosLua CasinosLua { get; private set; }
+        public LuaMgr LuaMgr { get; private set; }
         public NetMgr NetMgr { get; private set; }
+        public SpineMgr SpineMgr { get; private set; }
         public NativeMgr NativeMgr { get; set; }
         public NativeAPIMsgReceiverListener NativeAPIMsgReceiverListner { get; set; }
         public _eLoginType LoginType { get; set; }
@@ -144,6 +145,7 @@ namespace Casinos
             PathMgr = new PathMgr(editor_runsorce, force_use_resouceslaunch, force_use_dataoss);// 初始化PathMgr
             Config = new CasinosConfig(editor_runsorce);
             NativeMgr = new NativeMgr();
+            SpineMgr = new SpineMgr();
 
             Debug.Log("2222222222");
 
@@ -196,7 +198,7 @@ namespace Casinos
 
             Debug.Log("2ggggggggg");
 
-            CasinosLua = new CasinosLua();
+            LuaMgr = new LuaMgr();
 
             Debug.Log("2hhhhhhhhh");
 
@@ -232,9 +234,9 @@ namespace Casinos
                 AsyncAssetLoaderMgr.Update(Time.deltaTime);
             }
 
-            if (CasinosLua != null)
+            if (LuaMgr != null)
             {
-                CasinosLua.Update(elapsed_tm);
+                LuaMgr.Update(elapsed_tm);
             }
 
             if (TimerShaft != null)
@@ -264,6 +266,12 @@ namespace Casinos
                 HeadIconMgr = null;
             }
 
+            if (SpineMgr != null)
+            {
+                SpineMgr.Destroy();
+                SpineMgr = null;
+            }
+
             AsyncAssetLoaderMgr = null;
             if (AsyncAssetLoadGroup != null)
             {
@@ -271,10 +279,10 @@ namespace Casinos
                 AsyncAssetLoadGroup = null;
             }
 
-            if (CasinosLua != null)
+            if (LuaMgr != null)
             {
-                CasinosLua.Release();
-                CasinosLua = null;
+                LuaMgr.Release();
+                LuaMgr = null;
             }
 
             if (MemoryStream != null)
@@ -314,7 +322,7 @@ namespace Casinos
                 var di = new DirectoryInfo(p);
                 string p1 = di.FullName.Replace('\\', '/');
                 PathMgr.DirLuaRoot = p1 + "Common/Lua/";
-                PathMgr.DirRawRoot = "Common/Raw/";
+                PathMgr.DirRawRoot = p1 + "Common/Raw/";
                 PathMgr.DirAbRoot = p1 + Config.Platform + "/Resources.KingTexas/";
             }
             else
@@ -330,19 +338,19 @@ namespace Casinos
             PathMgr.DirAbItem = PathMgr.DirAbRoot + "Item/";// "Resources.KingTexas/Item/"，需动态计算
             PathMgr.DirAbParticle = PathMgr.DirAbRoot + "Particle/";// "Resources.KingTexas/Particle/"，需动态计算
 
-            CasinosLua.Launch();
+            LuaMgr.Launch();
         }
 
         //-------------------------------------------------------------------------
         public void OnApplicationPause(bool pause)
         {
-            CasinosLua._CSharpCallOnApplicationPause(pause);
+            LuaMgr._CSharpCallOnApplicationPause(pause);
         }
 
         //-------------------------------------------------------------------------
         public void OnApplicationFocus(bool focus_status)
         {
-            CasinosLua._CSharpCallOnApplicationFocus(focus_status);
+            LuaMgr._CSharpCallOnApplicationFocus(focus_status);
         }
 
         //---------------------------------------------------------------------

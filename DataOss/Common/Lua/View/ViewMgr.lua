@@ -53,7 +53,7 @@ function ViewMgr:new(o)
         self.ControllerMgr = nil
         self.LanMgr = nil
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
-        self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+        self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
         self.Context = Context
         self.EventSys = EventSys:new(nil)
     end
@@ -84,7 +84,7 @@ end
 ---------------------------------------
 function ViewMgr:OnDestroy()
     self.CasinosContext = nil
-    self.CasinosLua = nil
+    self.LuaMgr = nil
 end
 
 ---------------------------------------
@@ -189,7 +189,7 @@ function ViewMgr:DestroyAllView()
     for k, v in pairs(table_need_destroyui) do
         self.TableMaxDepth[v.UILayer] = v.InitDepth
         v:OnDestroy()
-        self.CasinosLua:DestroyGameObject(v.GoUi)
+        self.LuaMgr:DestroyGameObject(v.GoUi)
         v = nil
     end
     self.TableViewSingle = {}
@@ -273,7 +273,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
             self.TableMaxDepth[layer] = v.InitDepth
             v:OnDestroy()
             --v.ComUi:Dispose()
-            self.CasinosLua:DestroyGameObject(v.GoUi)
+            self.LuaMgr:DestroyGameObject(v.GoUi)
         end
     end
     map_need_destroyui = {}
@@ -301,7 +301,7 @@ function ViewMgr:_checkDestroyUi(t_layer)
                 self.TableMaxDepth[layer] = v_v.InitDepth
                 v_v:OnDestroy()
                 --v_v.ComUi:Dispose()
-                self.CasinosLua:DestroyGameObject(v.GoUi)
+                self.LuaMgr:DestroyGameObject(v.GoUi)
             end
         end
     end

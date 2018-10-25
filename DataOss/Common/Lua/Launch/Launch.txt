@@ -9,7 +9,7 @@ function LaunchConfig:new(o)
     setmetatable(o, self)
     self.__index = self
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+    self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     self.Env = 'Pro'
     self.CurrentLan = 'ChineseSimplified'
     self.CommonVersion = nil
@@ -26,7 +26,7 @@ function LaunchConfig:new(o)
     if (CS.UnityEngine.PlayerPrefs.HasKey(lan_key) == true) then
         self.CurrentLan = CS.UnityEngine.PlayerPrefs.GetString(lan_key)
     else
-        self.CurrentLan = self.CasinosLua:GetSystemLanguageAsString()
+        self.CurrentLan = self.LuaMgr:GetSystemLanguageAsString()
     end
 
     return o
@@ -46,7 +46,7 @@ function Launch:new(o)
         self.PreLoading = nil
         self.PreMsgBox = nil
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
-        self.CasinosLua = CS.Casinos.CasinosContext.Instance.CasinosLua
+        self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
         self.Context = nil
         self.TimerUpdate = nil
         self.UIPackagePreLoading = nil
@@ -115,8 +115,8 @@ function Launch:Setup()
     print(http_url_bundlexxx)
     async_asset_loadgroup:LoadWWWAsync(http_url_bundlexxx,
             function(url, www)
-                self.CasinosLua:LoadLuaFromBytes(lua_pkg_name, www.text)
-                self.CasinosLua:DoString(lua_pkg_name)
+                self.LuaMgr:LoadLuaFromBytes(lua_pkg_name, www.text)
+                self.LuaMgr:DoString(lua_pkg_name)
 
                 -- 下载并加载Context.lua
                 self.LaunchCfg.CommonVersion = CommonSelectPro
@@ -129,8 +129,8 @@ function Launch:Setup()
                 print(http_url_context)
                 async_asset_loadgroup:LoadWWWAsync(http_url_context,
                         function(url, www)
-                            self.CasinosLua:LoadLuaFromBytes('Context', www.text)
-                            self.CasinosLua:DoString('Context')
+                            self.LuaMgr:LoadLuaFromBytes('Context', www.text)
+                            self.LuaMgr:DoString('Context')
                             self.Context = Context:new(nil)
                             self.Context:Init()
                         end
@@ -190,7 +190,7 @@ function Launch:Close()
     end
 
     self.CasinosContext = nil
-    self.CasinosLua = nil
+    self.LuaMgr = nil
     self.Instance = nil
 
     print("Launch:Release()")

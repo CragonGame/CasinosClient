@@ -27,6 +27,8 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(Casinos.CasinosContext), CasinosCasinosContextWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(Casinos.LuaHelper), CasinosLuaHelperWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(UnityEngine.ApplicationInstallMode), UnityEngineApplicationInstallModeWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(UnityEngine.ApplicationSandboxType), UnityEngineApplicationSandboxTypeWrap.__Register);
@@ -229,8 +231,6 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(ChatParser), ChatParserWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos.CopyStreamingAssetsToPersistentData2), CasinosCopyStreamingAssetsToPersistentData2Wrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(DataEye), DataEyeWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(EbTool), EbToolWrap.__Register);
@@ -287,17 +287,13 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(ZXing.QrCode.QrCodeEncodingOptions), ZXingQrCodeQrCodeEncodingOptionsWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos.CasinosLua), CasinosCasinosLuaWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.LuaHelper), CasinosLuaHelperWrap.__Register);
+				translator.DelayWrapLoader(typeof(Casinos.LuaMgr), CasinosLuaMgrWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos._eEditorRunSourcePlatform), Casinos_eEditorRunSourcePlatformWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.DirType), CasinosDirTypeWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.PathMgr), CasinosPathMgrWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Casinos.SpineHelper), CasinosSpineHelperWrap.__Register);
 				
 				
 				

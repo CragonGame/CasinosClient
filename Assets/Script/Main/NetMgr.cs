@@ -31,18 +31,18 @@ namespace Casinos
         {
             LuaOnSocketClose = lua_table.Get<Action>("OnSocketClose");
 
-            var lua_rpc = CasinosContext.Instance.CasinosLua.LuaEnv.Global.Get<LuaTable>("RPC");
+            var lua_rpc = CasinosContext.Instance.LuaMgr.LuaEnv.Global.Get<LuaTable>("RPC");
             LuaOnRpcMethod = lua_rpc.Get<Action<ushort, byte[]>>("OnRpcMethod");
         }
 
         //---------------------------------------------------------------------
-        public void Connect(string base_ip, int base_port)
+        public void Connect(string ip, int port)
         {
             RpcSession.close();
             RpcSession.OnSocketConnected = _onSocketConnected;
             RpcSession.OnSocketClosed = _onSocketClosed;
             RpcSession.OnSocketError = _onSocketError;
-            RpcSession.connect(base_ip, base_port);
+            RpcSession.connect(ip, port);
         }
 
         //---------------------------------------------------------------------

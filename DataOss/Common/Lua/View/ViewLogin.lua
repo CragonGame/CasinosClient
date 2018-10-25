@@ -183,47 +183,54 @@ function ViewLogin:OnCreate()
             end
     )
 
-    local p_helper = ParticleHelper:new(nil)
     local com_bg = self.ComUi:GetChild("ComBg")
     local image_bg = com_bg:GetChild("ImageMote").asImage
     if (NeedHideClientUi == false) then
         image_bg.visible = false
-        --local ab_mary_loading = p_helper:GetSpine("Spine/loadingmarry.ab")
-        --local atlas = ab_mary_loading:LoadAsset("Mary_Loading.atlas")
-        --local texture = ab_mary_loading:LoadAsset("Mary_Loading")
-        --local json = ab_mary_loading:LoadAsset("Mary_LoadingJson")
-        --
-        --self.PlayerAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas, texture, json, "Spine/Skeleton")
-        --self.PlayerAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(70, 70, 1000)
-        --self.PlayerAnim:Initialize(false)
-        --self.PlayerAnim.loop = true
-        --self.PlayerAnim.AnimationName = "animation"
-        --self.MoteRender = self.PlayerAnim.transform.gameObject:GetComponent("MeshRenderer")
-        --self.MoteRender.sortingOrder = 315
-        --self.PlayerAnim.transform.gameObject.name = "LoadingMote"
-        --self.HolderMote = self.ComUi:GetChild("HolderMote").asGraph
-        --self.HolderMote:SetNativeObject(CS.FairyGUI.GoWrapper(self.PlayerAnim.transform.gameObject))
+
+        local loadingmarry_anim = nil
+        if (self.CasinosContext.PathMgr.DirLaunchAbType == CS.Casinos.DirType.Raw) then
+            local ab_path_prefix = self.CasinosContext.PathMgr.DirAbRoot .. 'Spine/'
+            loadingmarry_anim = self.CasinosContext.SpineMgr:CreateSpineObjFromAb(ab_path_prefix, 'LoadingMarry', 'Mary_Loading.atlas', 'Mary_Loading', 'Mary_LoadingJson', 'Spine/Skeleton')
+        else
+            local res_prefix = 'Resources.KingTexasLaunch/LoadingMarry/'
+            loadingmarry_anim = self.CasinosContext.SpineMgr:CreateSpineObjFromRes(res_prefix, 'Mary_Loading.atlas', 'Mary_Loading', 'Mary_LoadingJson', 'Spine/Skeleton')
+        end
+
+        loadingmarry_anim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(70, 70, 1000)
+        loadingmarry_anim:Initialize(false)
+        loadingmarry_anim.loop = true
+        loadingmarry_anim.AnimationName = "animation"
+        loadingmarry_anim.transform.gameObject.name = "LoadingMote"
+        local loadingmarry_render = loadingmarry_anim.transform.gameObject:GetComponent("MeshRenderer")
+        loadingmarry_render.sortingOrder = 4
+
+        local loadingmarry_holder = self.ComUi:GetChild("HolderMote").asGraph
+        loadingmarry_holder:SetNativeObject(CS.FairyGUI.GoWrapper(loadingmarry_anim.transform.gameObject))
     else
         image_bg.visible = true
     end
 
-    --local ab_denglong = p_helper:GetSpine("Spine/denglong.ab")
-    --local atlas1 = ab_denglong:LoadAsset("denglong.atlas")
-    --local texture1 = ab_denglong:LoadAsset("denglong")
-    --local json1 = ab_denglong:LoadAsset("denglongJson")
-    --
-    --local denglong_parent = self.ComUi:GetChild("DengLongParent").asCom
-    --self.DengLongAnim = CS.Casinos.SpineHelper.LoadResourcesPrefab(atlas1, texture1, json1, "Spine/Skeleton")
-    --self.DengLongAnim.transform.parent = denglong_parent.displayObject.gameObject.transform
-    --self.DengLongAnim.transform.localPosition = CS.Casinos.LuaHelper.GetVector3(-10, -90, -318)
-    --self.DengLongAnim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(90, 90, 90)
-    --self.DengLongAnim.transform.gameObject.layer = denglong_parent.displayObject.gameObject.layer
-    --self.DengLongAnim:Initialize(false)
-    --self.DengLongAnim.loop = true
-    --self.DengLongAnim.AnimationName = "animation"
-    --self.DengLongAnim.transform.gameObject.name = "DengLong"
-    --self.DengLongRender = self.DengLongAnim.transform.gameObject:GetComponent("MeshRenderer")
-    --self.DengLongRender.sortingOrder = 4
+    local denglong_anim = nil
+    if (self.CasinosContext.PathMgr.DirLaunchAbType == CS.Casinos.DirType.Raw) then
+        local ab_path_prefix = self.CasinosContext.PathMgr.DirAbRoot .. 'Spine/'
+        denglong_anim = self.CasinosContext.SpineMgr:CreateSpineObjFromAb(ab_path_prefix, 'DengLong', 'denglong.atlas', 'denglong', 'denglongJson', 'Spine/Skeleton')
+    else
+        local res_prefix = 'Resources.KingTexasLaunch/DengLong/'
+        denglong_anim = self.CasinosContext.SpineMgr:CreateSpineObjFromRes(res_prefix, 'denglong.atlas', 'denglong', 'denglongJson', 'Spine/Skeleton')
+    end
+
+    local denglong_parent = self.ComUi:GetChild("DengLongParent").asCom
+    denglong_anim.transform.parent = denglong_parent.displayObject.gameObject.transform
+    denglong_anim.transform.localPosition = CS.Casinos.LuaHelper.GetVector3(-10, -90, -318)
+    denglong_anim.transform.localScale = CS.Casinos.LuaHelper.GetVector3(90, 90, 90)
+    denglong_anim.transform.gameObject.layer = denglong_parent.displayObject.gameObject.layer
+    denglong_anim:Initialize(false)
+    denglong_anim.loop = true
+    denglong_anim.transform.gameObject.name = "DengLong"
+    denglong_anim.AnimationName = "animation"
+    local denglong_render = denglong_anim.transform.gameObject:GetComponent("MeshRenderer")
+    denglong_render.sortingOrder = 4
 
     local bg = com_bg:GetChild("bg")
     ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center, { self.HolderMote })
