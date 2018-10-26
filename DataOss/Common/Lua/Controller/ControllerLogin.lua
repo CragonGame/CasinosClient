@@ -508,8 +508,6 @@ function ControllerLogin:OnUCenterLogin(http_statuscode, status, response, error
         local t_encode = self.ControllerMgr.Json.encode(infos)
         CS.UnityEngine.PlayerPrefs.SetString(self.LoginAccountInfoKey, t_encode)
 
-        -- DataEye登陆
-        CS.DataEye.login(self.Acc .. "_" .. self.AccId)
         c.NetMgr:Connect(GatewayIp, GatewayPort)
     else
         if (error ~= nil) then
@@ -555,9 +553,6 @@ function ControllerLogin:OnUCenterGuestAccess(http_statuscode, status, response,
         local t_encode = self.ControllerMgr.Json.encode(infos)
         CS.UnityEngine.PlayerPrefs.SetString(self.LoginAccountInfoKey, t_encode)
 
-        -- DataEye登陆
-        --CasinosContext.Instance.CoDataEye.login(c.CoNetMonitor.Acc, c.CoNetMonitor.AccId);
-        CS.DataEye.login(self.Acc .. "_" .. self.AccId)
         c.NetMgr:Connect(GatewayIp, GatewayPort)
     else
         if (error ~= nil) then

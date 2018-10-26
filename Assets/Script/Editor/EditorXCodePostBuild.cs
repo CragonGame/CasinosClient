@@ -33,6 +33,8 @@ namespace Casinos
                 // 添加依赖库
                 proj.AddFrameworkToProject(target, "PushKit.framework", false);
                 proj.AddFrameworkToProject(target, "UserNotifications.framework", false);
+                proj.AddFrameworkToProject(target, "StoreKit.framework", false);
+                proj.AddFrameworkToProject(target, "MobileCoreServices.framework", false);
                 proj.AddFrameworkToProject(target, "libicucore.tbd", false);
                 proj.AddFrameworkToProject(target, "libz.1.2.5.tbd", false);
                 proj.AddFrameworkToProject(target, "libsqlite3.tbd", false);

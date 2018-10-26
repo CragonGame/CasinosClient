@@ -157,7 +157,7 @@ PlayerSettings:
     Android: com.Cragon.KingTexas
     iOS: com.Cragon.KingTexas2
   buildNumber:
-    iOS: 110000
+    iOS: 130000
   AndroidBundleVersionCode: 130000
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
@@ -741,7 +741,8 @@ PlayerSettings:
   webGLLinkerTarget: 1
   scriptingDefineSymbols:
     7: 
-  platformArchitecture: {}
+  platformArchitecture:
+    iOS: 1
   scriptingBackend:
     Android: 0
   il2cppCompilerConfiguration: {}

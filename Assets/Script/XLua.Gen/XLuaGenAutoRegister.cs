@@ -231,8 +231,6 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(ChatParser), ChatParserWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(DataEye), DataEyeWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(EbTool), EbToolWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(Casinos.EbTimeEvent), CasinosEbTimeEventWrap.__Register);

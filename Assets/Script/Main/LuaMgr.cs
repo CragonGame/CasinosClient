@@ -151,7 +151,6 @@ namespace Casinos
             typeof(AsyncAssetLoadGroup),
             typeof(Card),
             typeof(ChatParser),
-            typeof(DataEye),
             typeof(EbTool),
             typeof(EbTimeEvent),
             typeof(EbTimer),
