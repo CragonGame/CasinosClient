@@ -79,12 +79,12 @@ function ItemChatEx:setChat(sender_nameex, chat_contentex, sender_viplevel, send
             self.ControllerLeft.selectedIndex = 1
         end
         if (self.GImageBg1 ~= nil) then
-            ViewHelper:setGObjectVisible(show_bg1, self.GImageBg1)
+            ViewHelper:SetGObjectVisible(show_bg1, self.GImageBg1)
             local show_bg2 = true
             if (show_bg1 == true) then
                 show_bg2 = false
             end
-            ViewHelper:setGObjectVisible(show_bg2, self.GImageBg2)
+            ViewHelper:SetGObjectVisible(show_bg2, self.GImageBg2)
         end
     end
 
@@ -173,7 +173,7 @@ end
 function ItemChatEx:reset()
     self.Com:SetXY(10000, 10000)
     self.Com.visible = false
-    --ViewHelper:setGObjectVisible(false, self.Com)
+    --ViewHelper:SetGObjectVisible(false, self.Com)
     self.GRichTextLeft.text = nil
     self.GRichTextLeft.color = CS.UnityEngine.Color.white
     if (self.ViewVIPSign ~= nil) then

@@ -41,10 +41,10 @@ function DesktopHBetPot:initBetPotInfo(bet_all_golds, self_betgolds)
             self:setBetSelfChipsToPot(self_betgolds)
 end
 
-function DesktopHBetPot:destroy()
+function DesktopHBetPot:Destroy()
             self:_goldEnPool()
             self:_cancelTask()
-            self.ItemDesktopHBetPot:destroy()
+            self.ItemDesktopHBetPot:Destroy()
 end
 
 function DesktopHBetPot:updateBetPotInfo(betpot_golds)

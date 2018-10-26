@@ -29,7 +29,7 @@ function DesktopHStandPlayer:initStandPlayer()
    self.MapWinGolds = {}
 end
 
-function DesktopHStandPlayer:destroy()        
+function DesktopHStandPlayer:Destroy()
    self:_goldEnPool()
    self:_cancelTask()
 end

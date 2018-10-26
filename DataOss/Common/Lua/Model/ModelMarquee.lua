@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 IMMarqueeSenderType = {
     System = 0,
     Player = 1
@@ -10,6 +11,7 @@ IMMarqueePriority = {
     High = 1
 }
 
+---------------------------------------
 BIMMarquee = {}
 
 function BIMMarquee:new(o)
@@ -42,7 +44,5 @@ function BIMMarquee:getData4Pack()
     table.insert(temp, self.VIPLevel)
     table.insert(temp, self.Priority)
     table.insert(temp, self.Msg)
-
     return temp
 end
-	

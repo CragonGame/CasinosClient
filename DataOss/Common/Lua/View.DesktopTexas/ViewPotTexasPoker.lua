@@ -81,8 +81,8 @@ end
 ---------------------------------------
 function ViewPotTexasPoker:showAllPotValue(pot_total)
     if pot_total > 0 then
-        ViewHelper:setGObjectVisible(true, self.PotTitle)
-        ViewHelper:setGObjectVisible(true, self.TextPotChipAllValue)
+        ViewHelper:SetGObjectVisible(true, self.PotTitle)
+        ViewHelper:SetGObjectVisible(true, self.TextPotChipAllValue)
         self.TextPotChipAllValue.text = UiChipShowHelper:getGoldShowStr(pot_total, self.ViewDesktop.ViewMgr.LanMgr.LanBase, true, 1)
     end
 end
@@ -107,8 +107,8 @@ end
 
 ---------------------------------------
 function ViewPotTexasPoker:resetPot()
-    ViewHelper:setGObjectVisible(false, self.PotTitle)
-    ViewHelper:setGObjectVisible(false, self.TextPotChipAllValue)
+    ViewHelper:SetGObjectVisible(false, self.PotTitle)
+    ViewHelper:SetGObjectVisible(false, self.TextPotChipAllValue)
     self.TextPotChipAllValue.text = ""
     self.CurrentGroup:reset()
     self.CurrentGroup = self.TPots[1]

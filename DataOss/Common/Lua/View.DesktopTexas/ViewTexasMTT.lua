@@ -21,8 +21,8 @@ function ViewTexasMTT:new(o, view_desktop)
             function()
                 o:_onClickBtnRebuyOrAddon()
             end)
-    ViewHelper:setGObjectVisible(false, o.BtnRebuy)
-    ViewHelper:setGObjectVisible(false, o.BtnAddon)
+    ViewHelper:SetGObjectVisible(false, o.BtnRebuy)
+    ViewHelper:SetGObjectVisible(false, o.BtnAddon)
     o.GBtnMenu = o.ViewDesktop.ComUi:GetChild("BtnMenu").asButton
     o.GBtnMenu.onClick:Add(
             function()
@@ -55,12 +55,12 @@ function ViewTexasMTT:OnHandleEv(ev)
         elseif ev.EventName == "EvEntityMTTPlayerRebuyOrAddonRefresh" then
             local can_rebuy = ev.can_rebuy
             local can_addon = ev.can_addon
-            ViewHelper:setGObjectVisible(can_rebuy, self.BtnRebuy)
-            ViewHelper:setGObjectVisible(can_addon, self.BtnAddon)
+            ViewHelper:SetGObjectVisible(can_rebuy, self.BtnRebuy)
+            ViewHelper:SetGObjectVisible(can_addon, self.BtnAddon)
         elseif ev.EventName == "EvEntitySelfIsOB" then
-            ViewHelper:setGObjectVisible(false, self.ComRealTimeInfo)
-            ViewHelper:setGObjectVisible(false, self.BtnRebuy)
-            ViewHelper:setGObjectVisible(false, self.BtnAddon)
+            ViewHelper:SetGObjectVisible(false, self.ComRealTimeInfo)
+            ViewHelper:SetGObjectVisible(false, self.BtnRebuy)
+            ViewHelper:SetGObjectVisible(false, self.BtnAddon)
         elseif ev.EventName == "EvMTTPauseChanged" then
             local p_i = ev.pause_info
             self.MatchTexas.Pause = p_i.Pause
@@ -72,9 +72,9 @@ function ViewTexasMTT:OnHandleEv(ev)
             end
         elseif ev.EventName == "EvEntityMatchGameOver" then
             if self.MatchGuid == ev.game_over.MatchGuid then
-                ViewHelper:setGObjectVisible(false, self.ComRealTimeInfo)
-                ViewHelper:setGObjectVisible(false, self.BtnRebuy)
-                ViewHelper:setGObjectVisible(false, self.BtnAddon)
+                ViewHelper:SetGObjectVisible(false, self.ComRealTimeInfo)
+                ViewHelper:SetGObjectVisible(false, self.BtnRebuy)
+                ViewHelper:SetGObjectVisible(false, self.BtnAddon)
             end
         end
     end
@@ -97,8 +97,8 @@ function ViewTexasMTT:setSnapShot(snapshot, is_init)
         text_blind_group = group_reward_blind
         show_group_blind = false
     end
-    ViewHelper:setGObjectVisible(show_group_reward, group_reward_blind)
-    ViewHelper:setGObjectVisible(show_group_blind, group_blind)
+    ViewHelper:SetGObjectVisible(show_group_reward, group_reward_blind)
+    ViewHelper:SetGObjectVisible(show_group_blind, group_blind)
     self.TextBlind = self.ComRealTimeInfo:GetChildInGroup(text_blind_group, "TextBlind").asTextField
     self.BlindBg = self.ComRealTimeInfo:GetChildInGroup(text_blind_group, "BlindBg").asImage
     self:setRaiseBlindTm(match_texas.RealtimeInfo.RaiseBlindLeftSecond)
@@ -142,11 +142,11 @@ function ViewTexasMTT:setSnapShot(snapshot, is_init)
             view_mgr:DestroyView(waiting_countdown)
         end
         local can_rebuy = self.ViewDesktop.Desktop.DesktopTypeBase.MeCanRebuy
-        ViewHelper:setGObjectVisible(can_rebuy, self.BtnRebuy)
+        ViewHelper:SetGObjectVisible(can_rebuy, self.BtnRebuy)
         local can_addon = self.ViewDesktop.Desktop.DesktopTypeBase.MeCanAddon
-        ViewHelper:setGObjectVisible(can_addon, self.BtnAddon)
+        ViewHelper:SetGObjectVisible(can_addon, self.BtnAddon)
     end
-    ViewHelper:setGObjectVisible(true, self.ComRealTimeInfo)
+    ViewHelper:SetGObjectVisible(true, self.ComRealTimeInfo)
 end
 
 ---------------------------------------
@@ -160,15 +160,15 @@ end
 ---------------------------------------
 function ViewTexasMTT:_showRebuyAndAddonBtnAndRealTimeInfo()
     if self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.Ob then
-        ViewHelper:setGObjectVisible(false, self.ComRealTimeInfo)
-        ViewHelper:setGObjectVisible(false, self.BtnRebuy)
-        ViewHelper:setGObjectVisible(false, self.BtnAddon)
+        ViewHelper:SetGObjectVisible(false, self.ComRealTimeInfo)
+        ViewHelper:SetGObjectVisible(false, self.BtnRebuy)
+        ViewHelper:SetGObjectVisible(false, self.BtnAddon)
     else
-        ViewHelper:setGObjectVisible(true, self.ComRealTimeInfo)
+        ViewHelper:SetGObjectVisible(true, self.ComRealTimeInfo)
         local can_rebuy = self.ViewDesktop.Desktop.DesktopTypeBase.MeCanRebuy
-        ViewHelper:setGObjectVisible(can_rebuy, self.BtnRebuy)
+        ViewHelper:SetGObjectVisible(can_rebuy, self.BtnRebuy)
         local can_addon = self.ViewDesktop.Desktop.DesktopTypeBase.MeCanAddon
-        ViewHelper:setGObjectVisible(can_addon, self.BtnAddon)
+        ViewHelper:SetGObjectVisible(can_addon, self.BtnAddon)
     end
 end
 
@@ -181,12 +181,12 @@ function ViewTexasMTT:_checkSeat()
         then
             if (v ~= nil)
             then
-                ViewHelper:setGObjectVisible(false, v.GComChair)
+                ViewHelper:SetGObjectVisible(false, v.GComChair)
             end
         end
         for k, v in pairs(self.ViewDesktop.MapValidNoPlayerSeat)
         do
-            ViewHelper:setGObjectVisible(true, v.GComChair)
+            ViewHelper:SetGObjectVisible(true, v.GComChair)
         end
     end
 end
@@ -218,7 +218,7 @@ function ViewTexasMTT:setRealTimeInfo(realtime_info, blind_type)
 
     if realtime_info.CurrentRaiseBlindTbId ~= realtime_info.RaiseBlindIdNext then
         self.TextBlind.text = view_mgr.LanMgr:getLanValue("RaiseBlindNext")
-        ViewHelper:setGObjectVisible(true, self.BlindBg)
+        ViewHelper:SetGObjectVisible(true, self.BlindBg)
     end
     local current_blindid = realtime_info.CurrentRaiseBlindTbId
     local t_blind = TbDataHelper:GetTexasRaiseBlindByTypeAndId(blind_type, current_blindid)
@@ -234,7 +234,7 @@ function ViewTexasMTT:setRaiseBlindTm(tm)
     local view_mgr = self.ViewDesktop.ViewMgr
     if tm <= 0 then
         raise_tm = view_mgr.LanMgr:getLanValue("RaiseBlindNext")
-        ViewHelper:setGObjectVisible(true, self.BlindBg)
+        ViewHelper:SetGObjectVisible(true, self.BlindBg)
     else
         local t_raise_blind = {}
         table.insert(t_raise_blind, view_mgr.LanMgr:getLanValue("RaiseBlindTm"))
@@ -243,9 +243,9 @@ function ViewTexasMTT:setRaiseBlindTm(tm)
         table.insert(t_raise_blind, tm_str)
         raise_tm = table.concat(t_raise_blind)
         if tm <= 10 then
-            ViewHelper:setGObjectVisible(true, self.BlindBg)
+            ViewHelper:SetGObjectVisible(true, self.BlindBg)
         else
-            ViewHelper:setGObjectVisible(false, self.BlindBg)
+            ViewHelper:SetGObjectVisible(false, self.BlindBg)
         end
     end
 

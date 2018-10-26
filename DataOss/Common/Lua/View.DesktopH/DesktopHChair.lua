@@ -26,7 +26,7 @@ function DesktopHChair:new(o,ui_desktoph,co_chair,chair_index,is_left)
     return o
 end
 
-function DesktopHChair:destroy()
+function DesktopHChair:Destroy()
     for k,v in pairs(self.MapWinUiGolds) do
         for g_k,g_v in pairs(v) do
             self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(g_v)

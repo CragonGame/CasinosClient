@@ -37,7 +37,7 @@ function DesktopHCards:new(o, controller_desktoph, view_desktoph, dealer, dealer
 end
 
 ---------------------------------------
-function DesktopHCards:destroy()
+function DesktopHCards:Destroy()
     if (self.ListCard ~= nil) then
         self.ListCard = {}
         self.ListCard = nil

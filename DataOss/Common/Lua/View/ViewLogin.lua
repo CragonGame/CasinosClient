@@ -264,8 +264,8 @@ function ViewLogin:OnCreate()
     --    self.ComboChooseGateWay.text = items1[1]
     --end
 
-    ViewHelper:setGObjectVisible(show_combo, self.ComboChooseUCenter)
-    ViewHelper:setGObjectVisible(show_combo, self.ComboChooseGateWay)
+    ViewHelper:SetGObjectVisible(show_combo, self.ComboChooseUCenter)
+    ViewHelper:SetGObjectVisible(show_combo, self.ComboChooseGateWay)
 
     self.Tips = self.ComUi:GetChild("Tips")
 

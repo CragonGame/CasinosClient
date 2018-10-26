@@ -41,7 +41,7 @@ function DesktopHBankPlayer:new(o, co_bankplayer, bankplayer_nickname, bankplaye
 end
 
 ---------------------------------------
-function DesktopHBankPlayer:destroy()
+function DesktopHBankPlayer:Destroy()
     self:_cancelTask()
 end
 

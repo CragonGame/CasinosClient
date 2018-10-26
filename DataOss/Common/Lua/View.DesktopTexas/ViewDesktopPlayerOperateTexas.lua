@@ -107,7 +107,7 @@ function ViewDesktopPlayerOperateTexas:OnCreate()
     self.GTextTopRaiseChip = self.GSliderRise:GetChild("TextTopRaiseChip").asTextField
     self.GTextBottomRaiseChip = self.GSliderRise:GetChild("TextBottomRaiseChip").asTextField
     self.GTextCurrentRaiseChip = com_confirm_raise:GetChild("TextCurrentRaiseChip").asTextField
-    ViewHelper:setGObjectVisible(false, self.GSliderRise)
+    ViewHelper:SetGObjectVisible(false, self.GSliderRise)
     self.GGroupAutoOperate = self.ComUi:GetChild("GroupAutoOperate").asGroup
     self.GGroupSelfNotRaise = self.ComUi:GetChild("GroupSelfNotRaise").asGroup
     self.GGroupQuick2 = self.ComUi:GetChild("GroupQuick2").asGroup
@@ -201,10 +201,10 @@ function ViewDesktopPlayerOperateTexas:OnHandleEv(ev)
                 self:_checkPlayerOperate(self.IsMeTurn, self.MeTurnData, 0)
             end
         elseif (ev.EventName == "EvUiClickDesktop") then
-            ViewHelper:setGObjectVisible(false, self.GSliderRise)
+            ViewHelper:SetGObjectVisible(false, self.GSliderRise)
             self.ControllerSelfRaise.selectedIndex = 1
         elseif (ev.EventName == "EvEntitySelfAutoActionChange") then
-            ViewHelper:setGObjectVisible(ev.is_autoaction, self.ComAutoAction)
+            ViewHelper:SetGObjectVisible(ev.is_autoaction, self.ComAutoAction)
         elseif (ev.EventName == "EvUiClickFastBet") then
             self:_raise(ev.bet_value)
         elseif (ev.EventName == "EvEntitySelfIsOB") then
@@ -228,20 +228,20 @@ end
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:showDown()
     self.CanShowOperate = false
-    ViewHelper:setGObjectVisible(false, self.GSliderRise)
-    ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
-    ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
-    ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
+    ViewHelper:SetGObjectVisible(false, self.GSliderRise)
+    ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
+    ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
+    ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
     self.PlayerOperateAni:reset()
 end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:gameEnd()
     self.CanShowOperate = false
-    ViewHelper:setGObjectVisible(false, self.GSliderRise)
-    ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
-    ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
-    ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
+    ViewHelper:SetGObjectVisible(false, self.GSliderRise)
+    ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
+    ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
+    ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
     self.PlayerOperateAni:reset()
 end
 
@@ -255,10 +255,10 @@ function ViewDesktopPlayerOperateTexas:meStateChange(player_state)
     then
         self:_checkPlayerOperate(false, nil, 0)
     else
-        ViewHelper:setGObjectVisible(false, self.GGroupLeaveWhile)
-        ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
-        ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
-        ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
+        ViewHelper:SetGObjectVisible(false, self.GGroupLeaveWhile)
+        ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
+        ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
+        ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
         self.PlayerOperateAni:reset()
     end
     self.SliderMoved = false
@@ -279,7 +279,7 @@ function ViewDesktopPlayerOperateTexas:playerTurnChanged(call_chip, is_mechange,
         end
         self.PlayerOperateAni:showAutoOperate(play_single)
     end
-    ViewHelper:setGObjectVisible(false, self.GSliderRise)
+    ViewHelper:SetGObjectVisible(false, self.GSliderRise)
     if is_me == false then
         self:_checkPlayerOperate(false, nil, call_chip)
     end
@@ -314,20 +314,20 @@ end
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:preflopBegin()
     self.CanShowOperate = false
-    ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
-    ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
-    ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
+    ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
+    ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
+    ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
     self:_resetAutoChooseOperate(nil)
-    ViewHelper:setGObjectVisible(false, self.GSliderRise)
+    ViewHelper:SetGObjectVisible(false, self.GSliderRise)
 end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:stand()
     self.CanShowOperate = false
-    ViewHelper:setGObjectVisible(false, self.GSliderRise)
-    ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
-    ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
-    ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
+    ViewHelper:SetGObjectVisible(false, self.GSliderRise)
+    ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
+    ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
+    ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
     self.PlayerOperateAni:reset()
 end
 
@@ -335,13 +335,13 @@ end
 function ViewDesktopPlayerOperateTexas:setLeaveWhileTips(leave_time)
     if (leave_time <= 0)
     then
-        ViewHelper:setGObjectVisible(false, self.GGroupLeaveWhile)
+        ViewHelper:SetGObjectVisible(false, self.GGroupLeaveWhile)
     else
-        ViewHelper:setGObjectVisible(false, self.GSliderRise)
-        ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
-        ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
-        ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
-        ViewHelper:setGObjectVisible(true, self.GGroupLeaveWhile)
+        ViewHelper:SetGObjectVisible(false, self.GSliderRise)
+        ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
+        ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
+        ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
+        ViewHelper:SetGObjectVisible(true, self.GGroupLeaveWhile)
         local tips = string.format("%s(%s)", self.ViewMgr.LanMgr:getLanValue("Continue"), tostring(leave_time))
         self.GLeaveTips.text = tips
     end
@@ -350,10 +350,10 @@ end
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:_showWait4Next()
     self:_resetAutoChooseOperate(nil)
-    ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
-    ViewHelper:setGObjectVisible(false, self.GGroupLeaveWhile)
-    ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
-    ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
+    ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
+    ViewHelper:SetGObjectVisible(false, self.GGroupLeaveWhile)
+    ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
+    ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
 end
 
 ---------------------------------------
@@ -367,11 +367,11 @@ function ViewDesktopPlayerOperateTexas:_setCurrentRaiseChip(current_gold, need_g
 
     if (self.CurrentRaiseGold == self.DesktopPlayerTexas.PlayerDataDesktop.Stack)
     then
-        ViewHelper:setGObjectVisible(false, self.GTextTopRaiseChip)
+        ViewHelper:SetGObjectVisible(false, self.GTextTopRaiseChip)
         CS.Casinos.CasinosContext.Instance:Play("allin", CS.Casinos._eSoundLayer.LayerNormal)
         self.GTextCurrentRaiseChip.text = self.ViewMgr.LanMgr:getLanValue("All-in")
     else
-        ViewHelper:setGObjectVisible(true, self.GTextTopRaiseChip)
+        ViewHelper:SetGObjectVisible(true, self.GTextTopRaiseChip)
     end
 end
 
@@ -386,7 +386,7 @@ function ViewDesktopPlayerOperateTexas:_raise(raise_gold)
     ev.raise_gold = raise_gold
     self.ViewMgr:SendEv(ev)
     self.PlayerOperateAni:showAutoOperate(false)
-    ViewHelper:setGObjectVisible(false, self.GSliderRise)
+    ViewHelper:SetGObjectVisible(false, self.GSliderRise)
 end
 
 ---------------------------------------
@@ -413,16 +413,16 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperate(is_me_turn, turn_data
 
     if (self.DesktopPlayerTexas.PlayerDataDesktop.PlayerActionType == PlayerActionTypeTexas.Fold
             or self.DesktopPlayerTexas.PlayerDataDesktop.PlayerActionType == PlayerActionTypeTexas.AllIn) then
-        ViewHelper:setGObjectVisible(false, self.GGroupLeaveWhile)
-        ViewHelper:setGObjectVisible(false, self.GGroupAutoOperate)
-        ViewHelper:setGObjectVisible(false, self.GGroupSelfNotRaise)
-        ViewHelper:setGObjectVisible(false, self.GGroupQuick2)
+        ViewHelper:SetGObjectVisible(false, self.GGroupLeaveWhile)
+        ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
+        ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
+        ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
     else
-        ViewHelper:setGObjectVisible(true, self.GGroupAutoOperate)
-        ViewHelper:setGObjectVisible(true, self.GGroupSelfNotRaise)
-        ViewHelper:setGObjectVisible(true, self.GGroupQuick2)
-        ViewHelper:setGObjectVisible(false, self.GGroupLeaveWhile)
-        ViewHelper:setGObjectVisible(false, self.GSliderRise)
+        ViewHelper:SetGObjectVisible(true, self.GGroupAutoOperate)
+        ViewHelper:SetGObjectVisible(true, self.GGroupSelfNotRaise)
+        ViewHelper:SetGObjectVisible(true, self.GGroupQuick2)
+        ViewHelper:SetGObjectVisible(false, self.GGroupLeaveWhile)
+        ViewHelper:SetGObjectVisible(false, self.GSliderRise)
         self:_checkPlayerOperateBtn(is_me_turn, turn_data, call_chip)
     end
 end
@@ -661,8 +661,8 @@ function ViewDesktopPlayerOperateTexas:_onClickRaise(context)
             --self.ControllerTurn.selectedIndex = 1
             self.ControllerSelfRaise.selectedIndex = 0
             --self.GTextSelfTurnRaise.text = self.ViewMgr.LanMgr:getLanValue("确定", "Confirm")
-            ViewHelper:setGObjectVisible(true, self.GSliderRise)
-            ViewHelper:setGObjectVisible(true, self.GTextTopRaiseChip)
+            ViewHelper:SetGObjectVisible(true, self.GSliderRise)
+            ViewHelper:SetGObjectVisible(true, self.GTextTopRaiseChip)
             self.GSliderRise.value = 0
             self.GTextBottomRaiseChip.text = UiChipShowHelper:getGoldShowStr(self.CurrentBottomRaiseGoldValue, self.ViewMgr.LanMgr.LanBase)
             self.GTextTopRaiseChip.text = UiChipShowHelper:getGoldShowStr(self.CurrentTopRaiseGoldValue, self.ViewMgr.LanMgr.LanBase)

@@ -268,24 +268,24 @@ function ViewDesktopH:OnDestroy()
     end
     self.ViewMgr:UnbindEvListener(self)
     self:_cancelTaskAndDestroyUiResult()
-    self.DesktopHBankPlayer:destroy()
-    self.DesktopHSelf:destroy()
-    self.DesktopHStandPlayer:destroy()
+    self.DesktopHBankPlayer:Destroy()
+    self.DesktopHSelf:Destroy()
+    self.DesktopHStandPlayer:Destroy()
     for k, v in pairs(self.MapDesktopHChair) do
-        v:destroy()
+        v:Destroy()
     end
     for k, v in pairs(self.MapDesktopHBetPot) do
-        v:destroy()
+        v:Destroy()
     end
-    self.DesktopHRewardPot:destroy()
+    self.DesktopHRewardPot:Destroy()
     self.DesktopHDealer:resetCard()
-    self.DesktopHDealer:destroy()
-    self.DesktopHGoldPool:destroy()
+    self.DesktopHDealer:Destroy()
+    self.DesktopHGoldPool:Destroy()
     if (self.ItemUiDesktopHTongSha ~= nil) then
-        self.ItemUiDesktopHTongSha:destroy()
+        self.ItemUiDesktopHTongSha:Destroy()
     end
     if (self.ItemUiDesktopHTongPei ~= nil) then
-        self.ItemUiDesktopHTongPei:destroy()
+        self.ItemUiDesktopHTongPei:Destroy()
     end
 
     if (self.UiDesktopChatParent ~= nil) then
@@ -1182,11 +1182,11 @@ end
 function ViewDesktopH:_haveNewChatOrMailRecord()
     if (self.GComMsgTips ~= nil) then
         if (self.NewFriendChatCount > 0) then
-            CS.Casinos.UiHelper.setGObjectVisible(true, self.GComMsgTips)
+            CS.Casinos.UiHelper.SetGObjectVisible(true, self.GComMsgTips)
             self.GTextMsgTips.text = tostring(self.NewFriendChatCount)
             self.CasinosContext:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
         else
-            CS.Casinos.UiHelper.setGObjectVisible(false, self.GComMsgTips)
+            CS.Casinos.UiHelper.SetGObjectVisible(false, self.GComMsgTips)
         end
     end
 end
@@ -1205,9 +1205,9 @@ function ViewDesktopH:setNewReward()
     end
 
     if (have_newreward == false) then
-        ViewHelper:setGObjectVisible(false, self.ComRewardTips)
+        ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
-        ViewHelper:setGObjectVisible(true, self.ComRewardTips)
+        ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
         if (self.TransitionNewReward.playing == false) then
             self.TransitionNewReward:Play()
         end

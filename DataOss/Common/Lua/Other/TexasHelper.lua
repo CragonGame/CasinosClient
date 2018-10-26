@@ -59,7 +59,6 @@ function TexasHelper:enoughChip4DesktopBetMin(data_mgr, chip, tbdata_desktopinfo
     if (tbdata_desktopinfo ~= nil) then
         chip_enough = chip >= tbdata_desktopinfo.BetMin
     end
-
     return chip_enough
 end
 
@@ -76,6 +75,5 @@ function TexasHelper:calcAutoPushStack(data_mgr, chip_acc, tbdata_desktopinfo_id
             push_stack = (tbdata_desktopinfo.BetMin + chip_acc) / 2
         end
     end
-
     return push_stack
 end

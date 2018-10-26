@@ -34,7 +34,7 @@ end
 function ViewShootingText:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
     if (self.Marquee ~= nil) then
-        self.Marquee:destroy()
+        self.Marquee:Destroy()
     end
     if (self.MapItemShootingText ~= nil) then
         for k, v in pairs(self.MapItemShootingText) do
@@ -194,7 +194,7 @@ function ViewMarquee:new(o, shooting_text, always_show, have_marquee)
 end
 
 ---------------------------------------
-function ViewMarquee:destroy()
+function ViewMarquee:Destroy()
     if (self.MapItemMarquee ~= nil) then
         for k, v in pairs(self.MapItemMarquee) do
             self.ViewShootingText.GComMarqueeRealParent:RemoveChild(k)

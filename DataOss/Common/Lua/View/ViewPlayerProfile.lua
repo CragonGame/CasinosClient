@@ -86,9 +86,9 @@ function ViewPlayerProfile:OnCreate()
     self.GTextPlayerIP = self.ComUi:GetChild("Address").asTextField
     self.GTextId = self.ComUi:GetChild("ID").asTextField
     self.GGroupStand = self.ComUi:GetChild("GroupStand").asGroup
-    ViewHelper:setGObjectVisible(false, self.GGroupStand)
+    ViewHelper:SetGObjectVisible(false, self.GGroupStand)
     self.GGroupMagicExp = self.ComUi:GetChild("GroupMagicExp").asGroup
-    ViewHelper:setGObjectVisible(false, self.GGroupMagicExp)
+    ViewHelper:SetGObjectVisible(false, self.GGroupMagicExp)
     self.GListMagicExp = self.ComUi:GetChild("ListMagicExp").asList
     for key, value in pairs(self.ViewMgr.TbDataMgr:GetMapData("UnitMagicExpression")) do
         local co_magicexp = CS.FairyGUI.UIPackage.CreateObject("PlayerProfile", "ComMagicExp").asCom
@@ -204,15 +204,15 @@ function ViewPlayerProfile:setPlayerInfo(player_info)
                     self:onClickBtnStandup()
                 end
         )
-        ViewHelper:setGObjectVisible(true, self.GGroupStand)
+        ViewHelper:SetGObjectVisible(true, self.GGroupStand)
     else
-        ViewHelper:setGObjectVisible(false, self.GGroupStand)
+        ViewHelper:SetGObjectVisible(false, self.GGroupStand)
     end
     local show_magic_exp = false
     if (self.PlayerProfileType ~= CS.Casinos._ePlayerProfileType.Ranking) then
         show_magic_exp = true
     end
-    ViewHelper:setGObjectVisible(show_magic_exp, self.GGroupMagicExp)
+    ViewHelper:SetGObjectVisible(show_magic_exp, self.GGroupMagicExp)
 
     self.GCoGift = self.ComUi:GetChild("CoGift").asCom
     self.GCoGift.onClick:Add(

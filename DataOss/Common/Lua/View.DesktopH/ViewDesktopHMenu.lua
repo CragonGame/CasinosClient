@@ -65,9 +65,9 @@ function ViewDesktopHMenu:showMenu(have_reward)
     self.CoMenuEx:TweenMoveY(0, 0.25)
     if (have_reward == false)
     then
-        ViewHelper:setGObjectVisible(false, self.ComRewardTips)
+        ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
-        ViewHelper:setGObjectVisible(true, self.ComRewardTips)
+        ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
         if (self.TransitionNewReward.playing == false)
         then
             self.TransitionNewReward:Play()

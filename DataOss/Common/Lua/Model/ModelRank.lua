@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 RankingListType = {
     Chip = 0, --筹码
     Gold = 1, --金币
@@ -9,8 +10,10 @@ RankingListType = {
     RedEnvelopes = 5, --红包
 }
 
+---------------------------------------
 -- 筹码榜数据
 RankingGold = {}
+
 function RankingGold:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -31,8 +34,10 @@ function RankingGold:setData(data)
     self.icon_name = data[5]
 end
 
+---------------------------------------
 -- 金币榜数据
 RankingDiamond = {}
+
 function RankingDiamond:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -53,8 +58,10 @@ function RankingDiamond:setData(data)
     self.icon_name = data[5]
 end
 
+---------------------------------------
 -- 等级数据
 RankingLevel = {}
+
 function RankingLevel:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -75,8 +82,10 @@ function RankingLevel:setData(data)
     self.icon_name = data[5]
 end
 
+---------------------------------------
 -- 礼物榜数据
 RankingGift = {}
+
 function RankingGift:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -97,9 +106,10 @@ function RankingGift:setData(data)
     self.icon_name = data[5]
 end
 
-
+---------------------------------------
 -- 赢家榜数据
 RankingWinGold = {}
+
 function RankingWinGold:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -120,7 +130,9 @@ function RankingWinGold:setData(data)
     self.icon_name = data[5]
 end
 
+---------------------------------------
 RankingRedEnvelopes = {}
+
 function RankingRedEnvelopes:new(o)
     o = o or {}
     setmetatable(o, self)

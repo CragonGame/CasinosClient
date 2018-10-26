@@ -36,7 +36,7 @@ function ItemUiDesktopHTongSha:showEffect(show_end)
     , t)
 end
 
-function ItemUiDesktopHTongSha:destroy()
+function ItemUiDesktopHTongSha:Destroy()
     self:_cancelTask()
 end
 

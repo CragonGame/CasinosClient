@@ -145,7 +145,7 @@ function ViewHelper:FormatePackageImagePath(package_name, image_name)
 end
 
 ---------------------------------------
-function ViewHelper:setGObjectVisible(is_visible, obj)
+function ViewHelper:SetGObjectVisible(is_visible, obj)
     if (obj.visible ~= is_visible) then
         obj.visible = is_visible
     end

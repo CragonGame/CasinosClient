@@ -1327,7 +1327,7 @@ end
 
 ---------------------------------------
 function DesktopTexas:_releasePlayerTexas(player)
-    player:destroy()
+    player:Destroy()
     table.insert(self.QuePlayerTexas, player)
 end
 

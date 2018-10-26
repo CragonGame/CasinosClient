@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 BuyItemForTarget = {
     Me = 0, -- 本人
     OtherPlayer = 1, -- 他人（单人）
@@ -17,6 +18,7 @@ PriceType = {
     Point = 4,
 }
 
+---------------------------------------
 BuyItemRequest = {}
 
 function BuyItemRequest:new(o)
@@ -39,6 +41,7 @@ function BuyItemRequest:getData4Pack()
     return t
 end
 
+---------------------------------------
 BuyItemResponse = {}
 
 function BuyItemResponse:new(o)
@@ -56,6 +59,7 @@ function BuyItemResponse:setData(data)
     self.buyitem_tbid = data[2]
 end
 
+---------------------------------------
 SellItemResponse = {}
 
 function SellItemResponse:new(o)
@@ -77,6 +81,7 @@ function SellItemResponse:setData(data)
     self.price = data[4]
 end
 
+---------------------------------------
 BuyRMBItemSuccessResponse = {}
 
 function BuyRMBItemSuccessResponse:new(o)
@@ -92,6 +97,7 @@ function BuyRMBItemSuccessResponse:setData(data)
     self.result = data[1]
 end
 
+---------------------------------------
 PurchaseCommon = {}
 
 function PurchaseCommon:new(o)
@@ -105,7 +111,6 @@ function PurchaseCommon:new(o)
     o.PurchaseState = 0
     o.Token = nil
     o.Receipt = nil
-
     return o
 end
 
@@ -118,10 +123,10 @@ function PurchaseCommon:getData4Pack()
     table.insert(t, self.PurchaseState)
     table.insert(t, self.Token)
     table.insert(t, self.Receipt)
-
     return t
 end
 
+---------------------------------------
 PlayerAddress = {}
 
 function PlayerAddress:new(o)
@@ -134,7 +139,6 @@ function PlayerAddress:new(o)
     o.Weixin = 0
     o.Address = 0
     o.EMail = nil
-
     return o
 end
 
@@ -147,7 +151,6 @@ function PlayerAddress:setData(data)
     self.Weixin = data[4]
     self.Address = data[5]
     self.EMail = data[6]
-
     return t
 end
 
@@ -159,6 +162,5 @@ function PlayerAddress:getData4Pack()
     table.insert(t, self.Weixin)
     table.insert(t, self.Address)
     table.insert(t, self.EMail)
-
     return t
 end

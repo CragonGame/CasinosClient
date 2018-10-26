@@ -23,7 +23,7 @@ function DesktopHRewardPot:new(o,reward_pot,view_desktop)
     return o
 end
 
-function DesktopHRewardPot:destroy()        
+function DesktopHRewardPot:Destroy()
            for k,v in pairs(self.MapWinGold) do		   
 				for g_k,g_v in pairs(v) do
 					self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(g_v)

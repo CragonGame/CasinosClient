@@ -28,7 +28,7 @@ function DesktopHGoldPool:new(o)
 end
 
 ---------------------------------------
-function DesktopHGoldPool:destroy()
+function DesktopHGoldPool:Destroy()
     self.QueUiGold = {}
     self.ListDelayEnqueGold = {}
 end

@@ -120,8 +120,8 @@ function ViewMTTGameResult:setResult(game_over, cannot_ob)
     end
     self.ControllerRank.selectedIndex = select_rank
 
-    ViewHelper:setGObjectVisible(show_tips, self.TextTips)
-    ViewHelper:setGObjectVisible(show_list, self.ListReward)
+    ViewHelper:SetGObjectVisible(show_tips, self.TextTips)
+    ViewHelper:SetGObjectVisible(show_list, self.ListReward)
 
     self.BtnReturn = com_ui:GetChildInGroup(btn_group, "BtnReturn").asButton
     self.BtnReturn.onClick:Add(

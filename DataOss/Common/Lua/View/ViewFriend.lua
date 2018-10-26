@@ -532,7 +532,7 @@ function ViewShowFriendDetail:setFriendInfo(friend_item)
     self.GBtnJoin.enabled = friend_indesktop
 
     local is_friend = controller_im:isFriend(self.CurrentFriendInfo.PlayerInfoCommon.PlayerGuid)
-    ViewHelper:setGObjectVisible(is_friend, self.GIMageRemoveFriend)
+    ViewHelper:SetGObjectVisible(is_friend, self.GIMageRemoveFriend)
     local btn_addfriend_title = self.ViewMgr.LanMgr:getLanValue("AddFriend")
     if (is_friend) then
         btn_addfriend_title = self.ViewMgr.LanMgr:getLanValue("DeleteFriend1")
@@ -541,7 +541,7 @@ function ViewShowFriendDetail:setFriendInfo(friend_item)
     if (self.IsFriendDetail == false) then
         if (is_friend) then
             self.GBtnAddFriend.enabled = false
-            ViewHelper:setGObjectVisible(false, self.GIMageRemoveFriend)
+            ViewHelper:SetGObjectVisible(false, self.GIMageRemoveFriend)
         else
             self.GBtnAddFriend.enabled = true
         end

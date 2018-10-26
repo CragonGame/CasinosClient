@@ -43,17 +43,17 @@ function DesktopHDealer:update(time)
 end
 
 ---------------------------------------
-function DesktopHDealer:destroy()
+function DesktopHDealer:Destroy()
     for k, v in pairs(self.ListDesktopHSinglePotCards) do
-        v:destroy()
+        v:Destroy()
     end
     self.ListDesktopHSinglePotCards = {}
     for k, v in pairs(self.QueDealCards) do
-        v:destroy()
+        v:Destroy()
     end
     self.QueDealCards = {}
     for k, v in pairs(self.QueShowCards) do
-        v:destroy()
+        v:Destroy()
     end
     self.QueShowCards = {}
     self.QueItemCard = {}

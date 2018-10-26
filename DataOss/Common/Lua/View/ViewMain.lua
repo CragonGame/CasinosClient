@@ -94,7 +94,7 @@ function ViewMain:OnCreate()
     if (self.Context.Cfg.ClientShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true) then
         show_goldtree = true
     end
-    ViewHelper:setGObjectVisible(show_goldtree, btn_goldtree)
+    ViewHelper:SetGObjectVisible(show_goldtree, btn_goldtree)
 
     local gold_par_parent = btn_goldtree:GetChild("GoldTreeParParent").asGraph
     local p_helper = ParticleHelper:new(nil)
@@ -229,7 +229,7 @@ function ViewMain:OnCreate()
     if CS.Casinos.CasinosContext.Instance.LoginType == CS.Casinos._eLoginType.Guest then
         show_register = true
     end
-    ViewHelper:setGObjectVisible(show_register, self.BtnRegister)
+    ViewHelper:SetGObjectVisible(show_register, self.BtnRegister)
 
     local is_firstrecharge = self.ControllerActor.PropIsFirstRecharge:get()
     local com_recharge_first = self.ComUi:GetChild("ComRechargeFirst").asCom
@@ -309,7 +309,7 @@ function ViewMain:OnCreate()
     )
     self.TransitionShowMore = self.ComUi:GetTransition("TansitionShowComMore")
     self.GTextPlayerNum = self.ComUi:GetChild("TextPlayerNum").asTextField
-    ViewHelper:setGObjectVisible(false, self.GTextPlayerNum)
+    ViewHelper:SetGObjectVisible(false, self.GTextPlayerNum)
     self.GListFriend = self.ComUi:GetChild("ListFriend").asList
     self.GListFriend:SetVirtual()
     self.GListFriend.itemRenderer = function(index, item)
@@ -671,9 +671,9 @@ function ViewMain:setNewRecord()
     end
 
     if (have_newMail == false) then
-        ViewHelper:setGObjectVisible(false, self.ComMailTips)
+        ViewHelper:SetGObjectVisible(false, self.ComMailTips)
     else
-        ViewHelper:setGObjectVisible(true, self.ComMailTips)
+        ViewHelper:SetGObjectVisible(true, self.ComMailTips)
         if (self.TransitionNewMail.playing == false) then
             self.TransitionNewMail:Play()
         end
@@ -686,9 +686,9 @@ function ViewMain:setNewRecord()
     end
 
     if (have_newMsg == false) then
-        ViewHelper:setGObjectVisible(false, self.ComMsgTips)
+        ViewHelper:SetGObjectVisible(false, self.ComMsgTips)
     else
-        ViewHelper:setGObjectVisible(true, self.ComMsgTips)
+        ViewHelper:SetGObjectVisible(true, self.ComMsgTips)
         self.GTextMsgNum.text = tostring(self.NewFriendChatCount)
         if (self.TransitionNewMsg.playing == false) then
             self.TransitionNewMsg:Play()
@@ -705,9 +705,9 @@ function ViewMain:setNewReward()
     end
 
     if (have_newreward == false) then
-        ViewHelper:setGObjectVisible(false, self.ComRewardTips)
+        ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
-        ViewHelper:setGObjectVisible(true, self.ComRewardTips)
+        ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
         if (self.TransitionNewReward.playing == false) then
             self.TransitionNewReward:Play()
         end
@@ -718,9 +718,9 @@ end
 function ViewMain:setHaveFeedback()
     local have = self.ControllerIM.IMFeedback.HaveNewMsg
     if (have == false) then
-        ViewHelper:setGObjectVisible(false, self.ComFeedbackTips)
+        ViewHelper:SetGObjectVisible(false, self.ComFeedbackTips)
     else
-        ViewHelper:setGObjectVisible(true, self.ComFeedbackTips)
+        ViewHelper:SetGObjectVisible(true, self.ComFeedbackTips)
         if (self.TransitionFeedbackTips.playing == false) then
             self.TransitionFeedbackTips:Play()
         end
@@ -732,9 +732,9 @@ end
 function ViewMain:setNewItem()
     local have = self.ControllerBag.HaveNewItem
     if (have == false) then
-        ViewHelper:setGObjectVisible(false, self.ComBagTips)
+        ViewHelper:SetGObjectVisible(false, self.ComBagTips)
     else
-        ViewHelper:setGObjectVisible(true, self.ComBagTips)
+        ViewHelper:SetGObjectVisible(true, self.ComBagTips)
         if (self.TransitionBagTips.playing == false) then
             self.TransitionBagTips:Play()
         end
@@ -747,12 +747,12 @@ function ViewMain:haveMoreTips()
     local have_msg = self.ControllerIM.IMFeedback.HaveNewMsg
     local have_item = self.ControllerBag.HaveNewItem
     if (have_msg or have_item) then
-        ViewHelper:setGObjectVisible(true, self.ComMoreTips)
+        ViewHelper:SetGObjectVisible(true, self.ComMoreTips)
         if (self.TransitionComMore.playing == false) then
             self.TransitionComMore:Play()
         end
     else
-        ViewHelper:setGObjectVisible(false, self.ComMoreTips)
+        ViewHelper:SetGObjectVisible(false, self.ComMoreTips)
     end
 end
 

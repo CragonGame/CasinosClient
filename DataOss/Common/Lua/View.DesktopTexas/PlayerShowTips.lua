@@ -21,7 +21,7 @@ function PlayerShowTips:new(o, player_info)
     local p_1 = CS.UnityEngine.Object.Instantiate(particle1:LoadAsset("ShowTips"))
     point_pp:SetNativeObject(CS.FairyGUI.GoWrapper(p_1))
     o.TextPoint = o.ComPoint:GetChild("TextPoint").asTextField
-    ViewHelper:setGObjectVisible(false, o.ComPoint)
+    ViewHelper:SetGObjectVisible(false, o.ComPoint)
 
     o.ComWinGold = com_ui:GetChild("ComWinGold").asCom
     local controller_wingold = o.ComWinGold:GetController("ControllerTips")
@@ -31,7 +31,7 @@ function PlayerShowTips:new(o, player_info)
     local p_2 = CS.UnityEngine.Object.Instantiate(particle2:LoadAsset("ShowTips"))
     wingold_pp:SetNativeObject(CS.FairyGUI.GoWrapper(p_2))
     o.TextWinGold = o.ComWinGold:GetChild("TextWinGold").asTextField
-    ViewHelper:setGObjectVisible(false, o.ComWinGold)
+    ViewHelper:SetGObjectVisible(false, o.ComWinGold)
 
     o.ComExp = com_ui:GetChild("ComExp").asCom
     local controller_exp = o.ComExp:GetController("ControllerTips")
@@ -41,14 +41,14 @@ function PlayerShowTips:new(o, player_info)
     local p_3 = CS.UnityEngine.Object.Instantiate(particle3:LoadAsset("ShowTips"))
     exp_pp:SetNativeObject(CS.FairyGUI.GoWrapper(p_3))
     o.TextExp = o.ComExp:GetChild("TextExp").asTextField
-    ViewHelper:setGObjectVisible(false, o.ComExp)
+    ViewHelper:SetGObjectVisible(false, o.ComExp)
 
     return o
 end
 
 ---------------------------------------
 function PlayerShowTips:showWinGold(win_gold)
-    ViewHelper:setGObjectVisible(false, self.ComWinGold)
+    ViewHelper:SetGObjectVisible(false, self.ComWinGold)
     local t = {}
     table.insert(t, "+")
     table.insert(t, win_gold)
@@ -56,19 +56,19 @@ function PlayerShowTips:showWinGold(win_gold)
     self.TextWinGold.text = tips
     self.TweenWinGold = self.ComWinGold:TweenMoveY(-20, 1.5):SetDelay(0.5):SetEase(CS.FairyGUI.EaseType.ExpoOut):OnStart(
             function()
-                ViewHelper:setGObjectVisible(true, self.ComWinGold)
+                ViewHelper:SetGObjectVisible(true, self.ComWinGold)
             end):OnComplete(
             function()
                 self.ComWinGold.y = 59
                 self.TextWinGold.text = ""
-                ViewHelper:setGObjectVisible(false, self.ComWinGold)
+                ViewHelper:SetGObjectVisible(false, self.ComWinGold)
             end)
 end
 
 ---------------------------------------
 function PlayerShowTips:showExpAndPoint(exp, point)
     if exp > 0 then
-        ViewHelper:setGObjectVisible(true, self.ComExp)
+        ViewHelper:SetGObjectVisible(true, self.ComExp)
         local t = {}
         table.insert(t, "jy")
         table.insert(t, "+")
@@ -78,23 +78,23 @@ function PlayerShowTips:showExpAndPoint(exp, point)
                 function()
                     self.ComExp.y = 59
                     self.TextExp.text = ""
-                    ViewHelper:setGObjectVisible(false, self.ComExp)
+                    ViewHelper:SetGObjectVisible(false, self.ComExp)
                 end)
     end
     if point > 0 then
-        ViewHelper:setGObjectVisible(false, self.ComPoint)
+        ViewHelper:SetGObjectVisible(false, self.ComPoint)
         t = {}
         table.insert(t, "+")
         table.insert(t, point)
         self.TextPoint.text = table.concat(t)
         self.TweenPoint = self.ComPoint:TweenMoveY(-16, 1):SetEase(CS.FairyGUI.EaseType.BackOut):SetDelay(0.2):OnStart(
                 function()
-                    ViewHelper:setGObjectVisible(true, self.ComPoint)
+                    ViewHelper:SetGObjectVisible(true, self.ComPoint)
                 end):OnComplete(
                 function()
                     self.ComPoint.y = 59
                     self.TextPoint.text = ""
-                    ViewHelper:setGObjectVisible(false, self.ComPoint)
+                    ViewHelper:SetGObjectVisible(false, self.ComPoint)
                 end)
     end
 end
@@ -112,11 +112,11 @@ function PlayerShowTips:reset()
     end
     self.ComPoint.y = 59
     self.TextPoint.text = ""
-    ViewHelper:setGObjectVisible(false, self.ComPoint)
+    ViewHelper:SetGObjectVisible(false, self.ComPoint)
     self.ComWinGold.y = 59
     self.TextWinGold.text = ""
-    ViewHelper:setGObjectVisible(false, self.ComWinGold)
+    ViewHelper:SetGObjectVisible(false, self.ComWinGold)
     self.ComExp.y = 59
     self.TextExp.text = ""
-    ViewHelper:setGObjectVisible(false, self.ComExp)
+    ViewHelper:SetGObjectVisible(false, self.ComExp)
 end

@@ -39,7 +39,7 @@ end
 
 ---------------------------------------
 function UiCardDealingEx:deal(call_back)
-    CS.Casinos.UiHelper.setGObjectVisible(true, self.GComCard)
+    CS.Casinos.UiHelper.SetGObjectVisible(true, self.GComCard)
 
     self.TweenerPos = self.GComCard:TweenMove(self.MoveTo, self.MoveTime)
                           :OnComplete(
@@ -62,7 +62,7 @@ function UiCardDealingEx:reset()
     self:killTween(self.TweenerPos, false)
     self:killTween(self.TweenerScale, false)
     self:killTween(self.TweenerRotate, false)
-    CS.Casinos.UiHelper.setGObjectVisible(false, self.GComCard)
+    CS.Casinos.UiHelper.SetGObjectVisible(false, self.GComCard)
     self.MoveFrom = CS.Casinos.LuaHelper.GetVector2(0, 0)
     self.MoveTo = CS.Casinos.LuaHelper.GetVector2(0, 0)
     self.MoveEndCallBack = nil

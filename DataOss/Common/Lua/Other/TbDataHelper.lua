@@ -10,6 +10,7 @@ function TbDataHelper:new(o, tb_datamgr)
     self.__index = self
     if (self.Instance == nil) then
         self.Instance = o
+
         self.MapTbDataCommon = {}
         local t_c = tb_datamgr:GetMapData("Common")
         for i, v in pairs(t_c) do
@@ -86,17 +87,6 @@ function TbDataHelper:new(o, tb_datamgr)
 					return a.StartRank < b.StartRank
 				end
 			)
-			-- 测试函数
-			--[[local total = 0
-			for a = 1,#temp do
-				if(temp[a].EndRank ~= 0)
-				then
-					total = total + temp[a].RewardRatio * (temp[a].EndRank - temp[a].StartRank + 1)
-				else
-					total = total + temp[a].RewardRatio
-				end
-			end
-			print(total .. "................." .. i)]]
 			self.MapTbDataTexasSnowBallRewardInfo[i] = temp
 		end
     end
@@ -135,7 +125,6 @@ function TbDataHelper:GetTexasRaiseBlindByTypeAndId(blind_type,id)
     if t_b ~= nil then
         tb_blinds = t_b[id]
     end
-
     return tb_blinds
 end
 

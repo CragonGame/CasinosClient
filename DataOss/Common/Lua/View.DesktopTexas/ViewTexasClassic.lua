@@ -23,14 +23,14 @@ function ViewTexasClassic:new(o,view_desktop)
     local loader_desk = com_desktop:GetChild("LoaderDesk").asLoader
     loader_desk.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop","ClassicDesk")
     local btn_shop = com_desktop:GetChild("BtnShop").asButton
-    ViewHelper:setGObjectVisible(true,btn_shop)
+    ViewHelper:SetGObjectVisible(true,btn_shop)
     btn_shop.onClick:Add(
             function()
                 o:_onClickShop()
             end
     )
     local com_lottryticket = com_desktop:GetChild("ComLotteryTicket")
-    ViewHelper:setGObjectVisible(true,com_lottryticket)
+    ViewHelper:SetGObjectVisible(true,com_lottryticket)
 
     return o
 end
@@ -87,7 +87,7 @@ function ViewTexasClassic:_checkSeat()
         then
             if (v ~= nil)
             then
-                CS.Casinos.UiHelper.setGObjectVisible(false, v.GComChair, v.GImagePlayerInvite, v.GImagePlayerSit)
+                CS.Casinos.UiHelper.SetGObjectVisible(false, v.GComChair, v.GImagePlayerInvite, v.GImagePlayerSit)
             end
         end
         for k, v in pairs(self.ViewDesktop.MapValidNoPlayerSeat)
@@ -97,13 +97,13 @@ function ViewTexasClassic:_checkSeat()
             then
                 if (self.ViewDesktop:_meIsSeat() == false)
                 then
-                    ViewHelper:setGObjectVisible(false, chair_info.GImagePlayerInvite)
-                    ViewHelper:setGObjectVisible(true, chair_info.GComChair)
-                    ViewHelper:setGObjectVisible(true, chair_info.GImagePlayerSit)
+                    ViewHelper:SetGObjectVisible(false, chair_info.GImagePlayerInvite)
+                    ViewHelper:SetGObjectVisible(true, chair_info.GComChair)
+                    ViewHelper:SetGObjectVisible(true, chair_info.GImagePlayerSit)
                 else
-                    ViewHelper:setGObjectVisible(true, chair_info.GComChair)
-                    ViewHelper:setGObjectVisible(true, chair_info.GImagePlayerInvite)
-                    ViewHelper:setGObjectVisible(false, chair_info.GImagePlayerSit)
+                    ViewHelper:SetGObjectVisible(true, chair_info.GComChair)
+                    ViewHelper:SetGObjectVisible(true, chair_info.GImagePlayerInvite)
+                    ViewHelper:SetGObjectVisible(false, chair_info.GImagePlayerSit)
                 end
             end
         end

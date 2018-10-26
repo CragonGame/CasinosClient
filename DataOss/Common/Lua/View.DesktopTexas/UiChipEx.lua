@@ -29,7 +29,7 @@ function UiChipEx:init(from, to, move_time, delay, move_sound, chip_type, move_e
     if (self.GComChip == nil) then
         self:_resetChip()
     end
-    ViewHelper:setGObjectVisible(false, self.GComChip)
+    ViewHelper:SetGObjectVisible(false, self.GComChip)
     self.From = from
     self.To = to
     self.MoveTime = move_time
@@ -50,7 +50,7 @@ function UiChipEx:reset()
     self.From = CS.Casinos.LuaHelper.GetVector2(0, 0)
     self.To = CS.Casinos.LuaHelper.GetVector2(0, 0)
     self:_resetChip()
-    ViewHelper:setGObjectVisible(false, self.GComChip)
+    ViewHelper:SetGObjectVisible(false, self.GComChip)
     self.MoveEndCallBack = nil
     if (self.StartMove ~= nil) then
         self.StartMove()
@@ -80,7 +80,7 @@ function UiChipEx:moveAndScale()
         self.StartMove = nil
     end
 
-    CS.Casinos.UiHelper.setGObjectVisible(true, self.GComChip)
+    CS.Casinos.UiHelper.SetGObjectVisible(true, self.GComChip)
     self.TweenerMove = self.GComChip:TweenMove(self.To, self.MoveTime)
                            :SetDelay(self.Delay)
                            :SetEase(CS.FairyGUI.EaseType.Linear)

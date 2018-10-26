@@ -448,6 +448,12 @@ _eFriendStateClient = {
 }
 
 ---------------------------------------
+ShareType = {
+    WeChat = 0,
+    WeChatMoments = 1,
+}
+
+---------------------------------------
 -- 银行操作通知
 CardData = {}
 
@@ -472,9 +478,3 @@ function CardData:getData4Pack()
 
     return p_d
 end
-
----------------------------------------
-ShareType = {
-    WeChat = 0,
-    WeChatMoments = 1,
-}

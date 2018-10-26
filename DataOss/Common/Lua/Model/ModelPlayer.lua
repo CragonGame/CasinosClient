@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 TimingRewardType = {
     None = 0, --不在可领取时间段
     Midday = 1, --上午
@@ -26,7 +27,9 @@ ReportPlayerType = {
     Cheat = 3, --使用外挂
 }
 
+---------------------------------------
 TimingRewardData = {}
+
 function TimingRewardData:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -34,7 +37,6 @@ function TimingRewardData:new(o)
     o.Type = TimingRewardType.None
     o.Get = false
     o.RewardGold = 0
-
     return o
 end
 
@@ -44,8 +46,10 @@ function TimingRewardData:setData(data)
     self.RewardGold = data[3]
 end
 
+---------------------------------------
 -- 输光赠送Gold
 LostAllSendGoldsInfo = {}
+
 function LostAllSendGoldsInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -60,15 +64,16 @@ function LostAllSendGoldsInfo:setData(data)
     self.total_golds = data[2]
 end
 
+---------------------------------------
 -- 举报玩家
 ReportPlayer = {}
+
 function ReportPlayer:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.report_type = nil
     o.player_guid = nil
-
     return o
 end
 
@@ -76,12 +81,13 @@ function ReportPlayer:getData4Pack()
     local p_d = {}
     table.insert(p_d, self.report_type)
     table.insert(p_d, self.player_guid)
-
     return p_d
 end
 
+---------------------------------------
 --银行操作通知
 BankNotify = {}
+
 function BankNotify:new(o)
     o = o or {}
     setmetatable(o, self)

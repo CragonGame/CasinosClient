@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 PlayerInfoCommon = {} -- 玩家信息，最简公共
 
 function PlayerInfoCommon:new(o)
@@ -12,7 +13,6 @@ function PlayerInfoCommon:new(o)
     o.IconName = nil -- 头像
     o.VIPLevel = 0
     o.PlayerId = 0
-
     return o
 end
 
@@ -25,7 +25,9 @@ function PlayerInfoCommon:setData(data)
     self.PlayerId = data[6]
 end
 
+---------------------------------------
 PlayerInfoMore = {} -- 玩家详细信息
+
 function PlayerInfoMore:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -41,7 +43,6 @@ function PlayerInfoMore:new(o)
     o.ListItemData = nil
     o.OnlineState = 0
     o.LogoutDt = nil
-
     return o
 end
 
@@ -68,7 +69,9 @@ function PlayerInfoMore:setData(data)
     self.LogoutDt = data[11]
 end
 
+---------------------------------------
 PlayerPlayState = {} -- 玩家动态信息
+
 function PlayerPlayState:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -78,7 +81,6 @@ function PlayerPlayState:new(o)
     o.DesktopGuid = nil
     o.UserData1 = nil
     o.UserData2 = nil
-
     return o
 end
 
@@ -103,18 +105,18 @@ function PlayerPlayState:getData4Pack()
     if self.UserData2 ~= nil then
         table.insert(p_d, self.UserData2)
     end
-
     return p_d
 end
 
+---------------------------------------
 PlayerModuleData = {} -- 玩家玩法相关数据
+
 function PlayerModuleData:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.FactoryName = nil
     o.Data = nil
-
     return o
 end
 
@@ -123,7 +125,9 @@ function PlayerModuleData:setData(data)
     self.Data = data[2]
 end
 
+---------------------------------------
 PlayerInfo = {} -- 玩家信息，通用
+
 function PlayerInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -132,7 +136,6 @@ function PlayerInfo:new(o)
     o.PlayerInfoMore = nil
     o.PlayerPlayState = nil
     o.PlayerModuleData = nil
-
     return o
 end
 
@@ -181,14 +184,15 @@ function PlayerInfo:getData4Pack()
     return p_d
 end
 
+---------------------------------------
 PlayerInDesktop = {} -- 玩家所在桌，桌子Filter与Guid
+
 function PlayerInDesktop:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.DesktopFilter = nil
     o.DesktopGuid = nil
-
     return o
 end
 

@@ -86,7 +86,7 @@ function DesktopPlayerTexas:SetPlayerData(player_data, desktop_state)
 end
 
 ---------------------------------------
-function DesktopPlayerTexas:destroy()
+function DesktopPlayerTexas:Destroy()
     if (self.UiDesktopPlayerInfo ~= nil) then
         self.DesktopTexas:releaseUiPlayerInfo(self.UiDesktopPlayerInfo)
         self.UiDesktopPlayerInfo = nil

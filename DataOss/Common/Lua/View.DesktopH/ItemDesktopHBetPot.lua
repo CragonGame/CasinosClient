@@ -121,7 +121,7 @@ function ItemDesktopHBetPot:resetBetPot()
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:destroy()
+function ItemDesktopHBetPot:Destroy()
     if (self.FTasker ~= nil)
     then
         self.FTasker:cancelTask()

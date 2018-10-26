@@ -43,7 +43,7 @@ function Native:new(o, view_mgr, listner)
         --end
         --CS.OpenInstall.Instant()
     end
-    
+
     --self.PlayerQRCodeTexture = CS.UnityEngine.Texture2D(190, 190)
     --self.ShareUrl = nil
     --

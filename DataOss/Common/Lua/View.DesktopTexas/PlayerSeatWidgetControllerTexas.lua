@@ -93,7 +93,7 @@ function PlayerSeatWidgetControllerTexas:init()
 end
 
 ---------------------------------------
-function PlayerSeatWidgetControllerTexas:destroy()
+function PlayerSeatWidgetControllerTexas:Destroy()
     self:_destroyMoveGold()
 
     if (self.SeatWidget ~= nil) then
@@ -120,13 +120,13 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:deskIdle()
-    ViewHelper:setGObjectVisible(false, self.SeatWidget.GGroupChipValue)
-    ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageDealerSign)
+    ViewHelper:SetGObjectVisible(false, self.SeatWidget.GGroupChipValue)
+    ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageDealerSign)
 end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:setIsBtn(is_btn)
-    ViewHelper:setGObjectVisible(is_btn, self.SeatWidget.GImageDealerSign)
+    ViewHelper:SetGObjectVisible(is_btn, self.SeatWidget.GImageDealerSign)
 end
 
 ---------------------------------------
@@ -142,11 +142,11 @@ function PlayerSeatWidgetControllerTexas:dealCard()
 
     self:_setCardVisible(true)
     self.SeatWidget.TransitionCardInit:Play()
-    ViewHelper:setGObjectVisible(true, self.SeatWidget.GImageCardFirst)
-    ViewHelper:setGObjectVisible(true, self.SeatWidget.GImageCardSecond)
+    ViewHelper:SetGObjectVisible(true, self.SeatWidget.GImageCardFirst)
+    ViewHelper:SetGObjectVisible(true, self.SeatWidget.GImageCardSecond)
     if (self.SeatWidget.GLoaderCardFirst ~= nil) then
-        ViewHelper:setGObjectVisible(notshow_loader_card, self.SeatWidget.GLoaderCardFirst)
-        ViewHelper:setGObjectVisible(notshow_loader_card, self.SeatWidget.GLoaderCardSecond)
+        ViewHelper:SetGObjectVisible(notshow_loader_card, self.SeatWidget.GLoaderCardFirst)
+        ViewHelper:SetGObjectVisible(notshow_loader_card, self.SeatWidget.GLoaderCardSecond)
     end
 
     if (self.PlayerInfo.Player.PlayerDataDesktop.PlayerActionType == PlayerActionTypeTexas.Fold and self.PlayerInfo.Player.IsMe == false) then
@@ -182,11 +182,11 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
 
                                 if (self.ShowCard) then
                                     if (self.SeatWidget.GLoaderCardFirst ~= nil and self.SeatWidget.GLoaderCardFirst.displayObject.gameObject ~= nil) then
-                                        ViewHelper:setGObjectVisible(true, self.SeatWidget.GLoaderCardFirst)
-                                        ViewHelper:setGObjectVisible(true, self.SeatWidget.GLoaderCardSecond)
+                                        ViewHelper:SetGObjectVisible(true, self.SeatWidget.GLoaderCardFirst)
+                                        ViewHelper:SetGObjectVisible(true, self.SeatWidget.GLoaderCardSecond)
                                     end
-                                    ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageCardFirst)
-                                    ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageCardSecond)
+                                    ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageCardFirst)
+                                    ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageCardSecond)
                                     self.PlayerInfo.ViewDesktop:showCommonCardType(self.PlayerInfo.Player.DesktopTexas.GameEnd)
                                 end
 
@@ -223,8 +223,8 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
         else
             local show = (self.PlayerInfo.Player.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.InGame) and
                     (self.PlayerInfo.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold) and self.IsGameEnd == false
-            ViewHelper:setGObjectVisible(show, self.SeatWidget.GImageCardFirst)
-            ViewHelper:setGObjectVisible(show, self.SeatWidget.GImageCardSecond)
+            ViewHelper:SetGObjectVisible(show, self.SeatWidget.GImageCardFirst)
+            ViewHelper:SetGObjectVisible(show, self.SeatWidget.GImageCardSecond)
 
             if (show == false) then
                 self:_resetCard(true)
@@ -240,16 +240,16 @@ end
 function PlayerSeatWidgetControllerTexas:showcard1()
     self.TweenerRotate1 = CS.FairyGUI.GTween.To(self.GLoaderCardFirst.rotationY, 90, 0.1):SetTarget(self.GLoaderCardFirst, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
             function()
-                ViewHelper:setGObjectVisible(true, self.GImageCardFirst)
-                ViewHelper:setGObjectVisible(false, self.GLoaderCardFirst)
+                ViewHelper:SetGObjectVisible(true, self.GImageCardFirst)
+                ViewHelper:SetGObjectVisible(false, self.GLoaderCardFirst)
                 self.GImageCardFirst.rotationY = 90
                 self.GLoaderCardFirst.rotationY = 90
                 self.TweenerRotate1 = CS.FairyGUI.GTween.To(self.GImageCardFirst.rotationY, 270, 0.1):SetTarget(self.GImageCardFirst, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                         function()
                             self.GImageCardFirst.rotationY = 0
                             self.GLoaderCardFirst.rotationY = 270
-                            ViewHelper:setGObjectVisible(false, self.GImageCardFirst)
-                            ViewHelper:setGObjectVisible(true, self.GLoaderCardFirst)
+                            ViewHelper:SetGObjectVisible(false, self.GImageCardFirst)
+                            ViewHelper:SetGObjectVisible(true, self.GLoaderCardFirst)
                             self.TweenerRotate1 = CS.FairyGUI.GTween.To(self.GLoaderCardFirst.rotationY, 0, 0.1):SetTarget(self.GLoaderCardFirst, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear)
                         end
                 )
@@ -261,16 +261,16 @@ end
 function PlayerSeatWidgetControllerTexas:showcard2()
     self.TweenerRotate2 = CS.FairyGUI.GTween.To(self.GLoaderCardSecond.rotationY, 90, 0.1):SetTarget(self.GLoaderCardSecond, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
             function()
-                ViewHelper:setGObjectVisible(true, self.GImageCardSecond)
-                ViewHelper:setGObjectVisible(false, self.GLoaderCardSecond)
+                ViewHelper:SetGObjectVisible(true, self.GImageCardSecond)
+                ViewHelper:SetGObjectVisible(false, self.GLoaderCardSecond)
                 self.GImageCardSecond.rotationY = 90
                 self.GLoaderCardSecond.rotationY = 90
                 self.TweenerRotate2 = CS.FairyGUI.GTween.To(self.GImageCardSecond.rotationY, 270, 0.1):SetTarget(self.GImageCardSecond, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear):OnComplete(
                         function()
                             self.GImageCardSecond.rotationY = 0
                             self.GLoaderCardSecond.rotationY = 270
-                            ViewHelper:setGObjectVisible(false, self.GImageCardSecond)
-                            ViewHelper:setGObjectVisible(true, self.GLoaderCardSecond)
+                            ViewHelper:SetGObjectVisible(false, self.GImageCardSecond)
+                            ViewHelper:SetGObjectVisible(true, self.GLoaderCardSecond)
                             self.TweenerRotate2 = CS.FairyGUI.GTween.To(self.GLoaderCardSecond.rotationY, 0, 0.1):SetTarget(self.GLoaderCardSecond, CS.FairyGUI.TweenPropType.RotationY):SetEase(CS.FairyGUI.EaseType.Linear)
                         end
                 )
@@ -333,7 +333,7 @@ function PlayerSeatWidgetControllerTexas:sendWinnerChips(winner_golds, map_win_p
                                 self.PlayerInfo:showWinStar(winner_golds)
                             else
                                 self.PlayerInfo:playerStackChange()
-                                --ViewHelper:setGObjectVisible(true, self.SeatWidget.GGroupChipValue)
+                                --ViewHelper:SetGObjectVisible(true, self.SeatWidget.GGroupChipValue)
                                 --self.SeatWidget.GTextChipValue.text = UiChipShowHelper:getGoldShowStr(winner_golds, self.PlayerInfo.ViewMgr.LanMgr.LanBase)
                             end
                         end
@@ -463,8 +463,8 @@ end
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:hideHighLight()
     if (self.SeatWidget.GImageCardFirstHighLight ~= nil) then
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageCardFirstHighLight)
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageCardSecondHighLight)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageCardFirstHighLight)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageCardSecondHighLight)
     end
 end
 
@@ -479,7 +479,7 @@ function PlayerSeatWidgetControllerTexas:showHandCardHighLight(best_hand, card_t
     if (show_cardtype_tips and self.SeatWidget.GLoaderCardFirst.visible) then
         if self.PlayerInfo.Player.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.InGame and CS.System.String.IsNullOrEmpty(card_type_str) == false then
             if self.SeatWidget.GroupCardType ~= nil then
-                ViewHelper:setGObjectVisible(true, self.SeatWidget.GroupCardType)
+                ViewHelper:SetGObjectVisible(true, self.SeatWidget.GroupCardType)
                 self.SeatWidget.TextCardType.text = card_type_str
             end
         end
@@ -502,17 +502,17 @@ function PlayerSeatWidgetControllerTexas:setShowCardState(showcard_state)
     end
 
     if showcard_state == TexasPlayerShowCardState.First then
-        ViewHelper:setGObjectVisible(true, self.SeatWidget.GImageShowCard1)
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageShowCard2)
+        ViewHelper:SetGObjectVisible(true, self.SeatWidget.GImageShowCard1)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageShowCard2)
     elseif showcard_state == TexasPlayerShowCardState.Second then
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageShowCard1)
-        ViewHelper:setGObjectVisible(true, self.SeatWidget.GImageShowCard2)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageShowCard1)
+        ViewHelper:SetGObjectVisible(true, self.SeatWidget.GImageShowCard2)
     elseif showcard_state == TexasPlayerShowCardState.FirstAndSecond then
-        ViewHelper:setGObjectVisible(true, self.SeatWidget.GImageShowCard1)
-        ViewHelper:setGObjectVisible(true, self.SeatWidget.GImageShowCard2)
+        ViewHelper:SetGObjectVisible(true, self.SeatWidget.GImageShowCard1)
+        ViewHelper:SetGObjectVisible(true, self.SeatWidget.GImageShowCard2)
     elseif showcard_state == TexasPlayerShowCardState.None then
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageShowCard1)
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageShowCard2)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageShowCard1)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageShowCard2)
     end
 end
 
@@ -523,7 +523,7 @@ function PlayerSeatWidgetControllerTexas:_resetCard(hide_card)
     end
 
     if self.SeatWidget.GroupCardType ~= nil then
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GroupCardType)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GroupCardType)
     end
     self.SeatWidget.TransitionCardInit:Play()
     if self.TweenerRotate1 ~= nil then
@@ -646,7 +646,7 @@ function PlayerSeatWidgetControllerTexas:_showSeatWidget()
     local transiton_cardinit = com_ui:GetTransition(self.TransitionTitle .. seatwidget_name .. "Init")
     self.SeatWidget.TransitionCardInit = transiton_cardinit
 
-    ViewHelper:setGObjectVisible(self.PlayerInfo.Player.DesktopTexas.DealerSeatIndex == self.PlayerInfo.Player.PlayerDataDesktop.SeatIndex,
+    ViewHelper:SetGObjectVisible(self.PlayerInfo.Player.DesktopTexas.DealerSeatIndex == self.PlayerInfo.Player.PlayerDataDesktop.SeatIndex,
             self.SeatWidget.GImageDealerSign)
     local player_state = self.PlayerInfo.Player.PlayerDataDesktop.DesktopPlayerState
     local action_type = self.PlayerInfo.Player.PlayerDataDesktop.PlayerActionType
@@ -660,7 +660,7 @@ end
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_showBet()
     if (self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet > 0) then
-        ViewHelper:setGObjectVisible(true, self.SeatWidget.GGroupChipValue)
+        ViewHelper:SetGObjectVisible(true, self.SeatWidget.GGroupChipValue)
         self.SeatWidget.GTextChipValue.text = UiChipShowHelper:getGoldShowStr(self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet,
                 self.PlayerInfo.ViewMgr.LanMgr.LanBase, true, 1)
     else
@@ -670,20 +670,20 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:_setCardVisible(is_visible)
-    ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardFirst)
-    ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardSecond)
+    ViewHelper:SetGObjectVisible(is_visible, self.SeatWidget.GImageCardFirst)
+    ViewHelper:SetGObjectVisible(is_visible, self.SeatWidget.GImageCardSecond)
     if (self.SeatWidget.GImageCardFirstHighLight ~= nil and is_visible == false) then
-        ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardFirstHighLight)
-        ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GImageCardSecondHighLight)
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageShowCard1)
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GImageShowCard2)
+        ViewHelper:SetGObjectVisible(is_visible, self.SeatWidget.GImageCardFirstHighLight)
+        ViewHelper:SetGObjectVisible(is_visible, self.SeatWidget.GImageCardSecondHighLight)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageShowCard1)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GImageShowCard2)
     end
     if (self.SeatWidget.GLoaderCardFirst ~= nil) then
-        ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GLoaderCardFirst)
-        ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GLoaderCardSecond)
+        ViewHelper:SetGObjectVisible(is_visible, self.SeatWidget.GLoaderCardFirst)
+        ViewHelper:SetGObjectVisible(is_visible, self.SeatWidget.GLoaderCardSecond)
         if is_visible == false then
             if self.SeatWidget.GroupCardType ~= nil then
-                ViewHelper:setGObjectVisible(is_visible, self.SeatWidget.GroupCardType)
+                ViewHelper:SetGObjectVisible(is_visible, self.SeatWidget.GroupCardType)
             end
         end
     end
@@ -733,7 +733,7 @@ end
 function PlayerSeatWidgetControllerTexas:_resetGold()
     if (self.SeatWidget ~= nil) then
         self.SeatWidget.GTextChipValue.text = ""
-        ViewHelper:setGObjectVisible(false, self.SeatWidget.GGroupChipValue)
+        ViewHelper:SetGObjectVisible(false, self.SeatWidget.GGroupChipValue)
     end
 end
 
@@ -752,7 +752,7 @@ function PlayerSeatWidgetControllerTexas:_checkSelfHand(list_card, image_highlig
     end
 
     if (image_highlight ~= nil) then
-        ViewHelper:setGObjectVisible(show_hightlight, image_highlight)
+        ViewHelper:SetGObjectVisible(show_hightlight, image_highlight)
     end
 
     if (self.IsGameEnd and show_hightlight == false) then

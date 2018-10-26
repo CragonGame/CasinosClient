@@ -42,7 +42,7 @@ function ItemUiDesktopHTongPei:showEffect(show_end)
     , t)
 end
 
-function ItemUiDesktopHTongPei:destroy()        
+function ItemUiDesktopHTongPei:Destroy()
             self:_cancelTask()
 end
 

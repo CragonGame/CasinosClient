@@ -384,7 +384,7 @@ function ViewDesktopTexas:_timerUpdate(elapsed_tm)
                     function()
                         if self.Desktop.DesktopState == TexasDesktopState.GameEnd then
                             self.UiPot:resetPot()
-                            ViewHelper:setGObjectVisible(true, self.ComWaitingBegine)
+                            ViewHelper:SetGObjectVisible(true, self.ComWaitingBegine)
                         end
                     end)
         end
@@ -408,8 +408,8 @@ function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init,
     self.DesktopBase = desktop
     local desktop_texas = desktop
     local snapshot_data = desktop_data
-    ViewHelper:setGObjectVisible(false, self.GGroupCard)
-    ViewHelper:setGObjectVisible(true, self.TextDesktopDescribe)
+    ViewHelper:SetGObjectVisible(false, self.GGroupCard)
+    ViewHelper:SetGObjectVisible(true, self.TextDesktopDescribe)
     self.UiPot:resetPot()
 
     if (is_init) then
@@ -609,7 +609,7 @@ function ViewDesktopTexas:_showCurrentScreenshot(current_state, gotoend_state)
         self.ClearDesktopTm = 0
         self:_showDesktopScreenshot(current_state, false)
     elseif (current_state == TexasDesktopState.GameEnd) then
-        ViewHelper:setGObjectVisible(true, self.ComWaitingBegine)
+        ViewHelper:SetGObjectVisible(true, self.ComWaitingBegine)
     end
 end
 
@@ -643,21 +643,21 @@ function ViewDesktopTexas:_haveNewChatOrMailRecord()
     if (com_mailTips_temp ~= nil) then
         local com_mailTips = com_mailTips_temp.asCom
         if (self.ControllerIM:haveNewMail()) then
-            ViewHelper:setGObjectVisible(true, com_mailTips)
+            ViewHelper:SetGObjectVisible(true, com_mailTips)
             local transition_newMsg = com_mailTips:GetTransition("TransitionNewMsg")
             transition_newMsg:Play()
             self.CasinosContext:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
         else
-            ViewHelper:setGObjectVisible(false, com_mailTips)
+            ViewHelper:SetGObjectVisible(false, com_mailTips)
         end
     end
     if (self.NewFriendChatCount > 0) then
-        ViewHelper:setGObjectVisible(true, self.GComMsgTips)
+        ViewHelper:SetGObjectVisible(true, self.GComMsgTips)
         self.TransitionNewMsg:Play()
         self.GTextMsgTips.text = tostring(self.NewFriendChatCount)
         self.CasinosContext:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
     else
-        ViewHelper:setGObjectVisible(false, self.GComMsgTips)
+        ViewHelper:SetGObjectVisible(false, self.GComMsgTips)
     end
 end
 
@@ -734,12 +734,12 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:_deskIdle()
-    ViewHelper:setGObjectVisible(false, self.GGroupCard)
+    ViewHelper:SetGObjectVisible(false, self.GGroupCard)
 end
 
 ---------------------------------------
 function ViewDesktopTexas:_preflopBegin(pot_total, list_pot)
-    ViewHelper:setGObjectVisible(false, self.ComWaitingBegine)
+    ViewHelper:SetGObjectVisible(false, self.ComWaitingBegine)
     self.UiPot:resetPot()
     self.UiPot:setSnapShotData(pot_total, list_pot)
     self:_dealCard()
@@ -818,10 +818,10 @@ function ViewDesktopTexas:_gameEnd(list_winner)
                 --self.UiPot:resetPot()
                 --self.DealerEx:resetCommonCardType(
                 --        function()
-                --            ViewHelper:setGObjectVisible(true, self.ComWaitingBegine)
+                --            ViewHelper:SetGObjectVisible(true, self.ComWaitingBegine)
                 --        end)
-                --ViewHelper:setGObjectVisible(false, self.GGroupActionTips)
-                --ViewHelper:setGObjectVisible(false, self.GGroupCardTypeTips)
+                --ViewHelper:SetGObjectVisible(false, self.GGroupActionTips)
+                --ViewHelper:SetGObjectVisible(false, self.GGroupCardTypeTips)
             end
     )
 end
@@ -840,7 +840,7 @@ end
 ---------------------------------------
 -- 所有玩家发牌
 function ViewDesktopTexas:_dealCard()
-    ViewHelper:setGObjectVisible(true, self.GGroupCard)
+    ViewHelper:SetGObjectVisible(true, self.GGroupCard)
     self.ClearDesktopTm = 0
     self.DealerEx:clearCurrentResetCard()
     self.ListAllPlayer = {}
@@ -922,22 +922,22 @@ end
 ---------------------------------------
 function ViewDesktopTexas:_showDesktopScreenshot(goto_endstate, is_gameend)
     if (goto_endstate == TexasDesktopState.PreFlop) then
-        ViewHelper:setGObjectVisible(true, self.GGroupCard)
+        ViewHelper:SetGObjectVisible(true, self.GGroupCard)
         self:_showPreflopScreenshot()
         self:showCommonCardType(is_gameend)
     elseif (goto_endstate == TexasDesktopState.Flop) then
-        ViewHelper:setGObjectVisible(true, self.GGroupCard)
+        ViewHelper:SetGObjectVisible(true, self.GGroupCard)
         self:_showFlopScreenshot()
         self.DealerEx:resetCard(self.GComCommunityCard4)
         self.DealerEx:resetCard(self.GComCommunityCard5)
         self:showCommonCardType(is_gameend)
     elseif (goto_endstate == TexasDesktopState.Turn) then
-        ViewHelper:setGObjectVisible(true, self.GGroupCard)
+        ViewHelper:SetGObjectVisible(true, self.GGroupCard)
         self:_showTurnScreenshot()
         self.DealerEx:resetCard(self.GComCommunityCard5)
         self:showCommonCardType(is_gameend)
     elseif (goto_endstate == TexasDesktopState.River) then
-        ViewHelper:setGObjectVisible(true, self.GGroupCard)
+        ViewHelper:SetGObjectVisible(true, self.GGroupCard)
         self:_showRiverScreenshot()
         self:showCommonCardType(is_gameend)
     end
@@ -1037,11 +1037,11 @@ end
 ---------------------------------------
 -- 播放本人“你赢了”3个字的动画
 function ViewDesktopTexas:showMeWin()
-    ViewHelper:setGObjectVisible(true, self.ComMeWin)
+    ViewHelper:SetGObjectVisible(true, self.ComMeWin)
     self.CasinosContext:Play("ying", CS.Casinos._eSoundLayer.LayerNormal)
     self.TransitionMeWin:Play(
             function()
-                ViewHelper:setGObjectVisible(false, self.ComMeWin)
+                ViewHelper:SetGObjectVisible(false, self.ComMeWin)
             end)
 end
 
@@ -1054,9 +1054,9 @@ function ViewDesktopTexas:setNewReward()
     end
 
     if (have_newreward == false) then
-        ViewHelper:setGObjectVisible(false, self.ComRewardTips)
+        ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
-        ViewHelper:setGObjectVisible(true, self.ComRewardTips)
+        ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
         if (self.TransitionNewReward.playing == false) then
             self.TransitionNewReward:Play()
         end

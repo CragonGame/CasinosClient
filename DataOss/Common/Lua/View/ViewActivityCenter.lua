@@ -70,9 +70,9 @@ function ViewActivityCenter:SetCurrentSelectItem(item)
             show_content = true
             self.GTextCurrentActContent.text = content_text
         end
-        ViewHelper:setGObjectVisible(show_content, self.GTextCurrentActContent)
-        ViewHelper:setGObjectVisible(false, self.GLoaderCurrentActContent)
-        ViewHelper:setGObjectVisible(false, self.BtnShare)
+        ViewHelper:SetGObjectVisible(show_content, self.GTextCurrentActContent)
+        ViewHelper:SetGObjectVisible(false, self.GLoaderCurrentActContent)
+        ViewHelper:SetGObjectVisible(false, self.BtnShare)
         if (content_image ~= nil) then
             local t = {}
             table.insert(t, CS.Casinos.CasinosContext.Instance.Config.ConfigUrl)
@@ -83,9 +83,9 @@ function ViewActivityCenter:SetCurrentSelectItem(item)
             CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(content_image, t_str, content_image, nil,
                     function(ex, tick)
                         if (ex ~= nil and self.GLoaderCurrentActContent ~= nil and self.GLoaderCurrentActContent.displayObject ~= nil and self.GLoaderCurrentActContent.displayObject.gameObject ~= nil) then
-                            ViewHelper:setGObjectVisible(show_share, self.BtnShare)
-                            ViewHelper:setGObjectVisible(false, self.GTextCurrentActContent)
-                            ViewHelper:setGObjectVisible(true, self.GLoaderCurrentActContent)
+                            ViewHelper:SetGObjectVisible(show_share, self.BtnShare)
+                            ViewHelper:SetGObjectVisible(false, self.GTextCurrentActContent)
+                            ViewHelper:SetGObjectVisible(true, self.GLoaderCurrentActContent)
                             local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
                             self.GLoaderCurrentActContent.texture = CS.FairyGUI.NTexture(texture)
                         end
