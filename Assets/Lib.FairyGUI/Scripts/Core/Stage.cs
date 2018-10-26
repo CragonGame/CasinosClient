@@ -625,23 +625,19 @@ namespace FairyGUI
 		{
 			if (evt.rawType == EventType.KeyDown)
 			{
-                TouchInfo touch = _touches[0];
+				TouchInfo touch = _touches[0];
 				touch.keyCode = evt.keyCode;
 				touch.modifiers = evt.modifiers;
 				touch.character = evt.character;
 				InputEvent.shiftDown = (evt.modifiers & EventModifiers.Shift) != 0;
 
-                touch.UpdateEvent();
-                DisplayObject f = this.focus;
-                if (f != null)
-                {
-                    f.onKeyDown.BubbleCall(touch.evt);
-                }
-                else
-                {
-                    this.onKeyDown.Call(touch.evt);
-                }
-            }
+				touch.UpdateEvent();
+				DisplayObject f = this.focus;
+				if (f != null)
+					f.onKeyDown.BubbleCall(touch.evt);
+				else
+					this.onKeyDown.Call(touch.evt);
+			}
 			else if (evt.rawType == EventType.KeyUp)
 			{
 				TouchInfo touch = _touches[0];
