@@ -249,17 +249,7 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(NativeFun), NativeFunWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(OpenInstall), OpenInstallWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(OpenInstallReceiver), OpenInstallReceiverWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(Push), PushWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(PushReceiver), PushReceiverWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(QRCodeMaker), QRCodeMakerWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(ShareSDKReceiver), ShareSDKReceiverWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(TcpClient), TcpClientWrap.__Register);
 				
@@ -274,8 +264,6 @@ namespace XLua.CSObjectWrap
 				translator.DelayWrapLoader(typeof(ZXing.BarcodeFormat), ZXingBarcodeFormatWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(BuglyAgent), BuglyAgentWrap.__Register);
-				
-				translator.DelayWrapLoader(typeof(OnePF.Purchase), OnePFPurchaseWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(cn.sharesdk.unity3d.ShareContent), cnsharesdkunity3dShareContentWrap.__Register);
 				

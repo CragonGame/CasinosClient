@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(FairyGUI.GObject);
-			Utils.BeginObjectRegister(type, L, translator, 0, 37, 96, 49);
+			Utils.BeginObjectRegister(type, L, translator, 0, 37, 97, 49);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetXY", _m_SetXY);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetPosition", _m_SetPosition);
@@ -131,6 +131,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "icon", _g_get_icon);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "draggable", _g_get_draggable);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "dragging", _g_get_dragging);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "isDisposed", _g_get_isDisposed);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "asImage", _g_get_asImage);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "asCom", _g_get_asCom);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "asButton", _g_get_asButton);
@@ -2434,6 +2435,20 @@ namespace XLua.CSObjectWrap
 			
                 FairyGUI.GObject gen_to_be_invoked = (FairyGUI.GObject)translator.FastGetCSObj(L, 1);
                 LuaAPI.lua_pushboolean(L, gen_to_be_invoked.dragging);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_isDisposed(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                FairyGUI.GObject gen_to_be_invoked = (FairyGUI.GObject)translator.FastGetCSObj(L, 1);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.isDisposed);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

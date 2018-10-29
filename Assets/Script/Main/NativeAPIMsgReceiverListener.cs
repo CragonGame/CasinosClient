@@ -5,7 +5,7 @@ namespace Casinos
     using System;
     using System.IO;
     using UnityEngine;
-    using OnePF;// 内购的一个库
+    //using OnePF;// 内购的一个库
 
     public class NativeAPIMsgReceiverListener
         : ITakePhotoReceiverListener
@@ -17,7 +17,7 @@ namespace Casinos
         public Action<string> ActionGetPicSuccess;
         public Action<byte[]> ActionGetPicSuccessWithBytes;
         public Action<string> ActionPayWithIAPFailed;
-        public Action<Purchase> ActionPayWithIAPSuccess;
+        //public Action<Purchase> ActionPayWithIAPSuccess;
         public Action<string[]> ActionPayResult;
         public Action<string> ActionLoginFailed;
         public Action<string, string> ActionLoginSuccess;
@@ -79,33 +79,33 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void PayResultIPA(_ePayOptionType option_type, bool is_success, object result)
         {
-            switch (option_type)
-            {
-                case _ePayOptionType.QueryInventory:
-                    break;
-                case _ePayOptionType.PurchaseProduct:
-                    //CasinosContext.Instance.UiEndWaiting(CasinosContext.Instance.ViewHelper);
-                    if (is_success)
-                    {
-                        Purchase purchase = (Purchase)result;
-                        if (ActionPayWithIAPSuccess != null)
-                        {
-                            ActionPayWithIAPSuccess(purchase);
-                        }
-                    }
-                    else
-                    {
-                        if (ActionPayWithIAPFailed != null)
-                        {
-                            ActionPayWithIAPFailed(result.ToString());
-                        }
-                    }
-                    break;
-                case _ePayOptionType.ConsumeProduct:
-                    break;
-                default:
-                    break;
-            }
+            //    switch (option_type)
+            //    {
+            //        case _ePayOptionType.QueryInventory:
+            //            break;
+            //        case _ePayOptionType.PurchaseProduct:
+            //            //CasinosContext.Instance.UiEndWaiting(CasinosContext.Instance.ViewHelper);
+            //            if (is_success)
+            //            {
+            //                Purchase purchase = (Purchase)result;
+            //                if (ActionPayWithIAPSuccess != null)
+            //                {
+            //                    ActionPayWithIAPSuccess(purchase);
+            //                }
+            //            }
+            //            else
+            //            {
+            //                if (ActionPayWithIAPFailed != null)
+            //                {
+            //                    ActionPayWithIAPFailed(result.ToString());
+            //                }
+            //            }
+            //            break;
+            //        case _ePayOptionType.ConsumeProduct:
+            //            break;
+            //        default:
+            //            break;
+            //    }
         }
 
         //---------------------------------------------------------------------
@@ -168,7 +168,7 @@ namespace Casinos
             //            ThirdPartyLogin.Instantce().initLogin(CasinosContext.Instance.Config.WeChatAppId);
             //#endif
 
-            PushReceiver.instance();
+            //PushReceiver.instance();
 
             //OpenInstallReceiver.instance();
         }

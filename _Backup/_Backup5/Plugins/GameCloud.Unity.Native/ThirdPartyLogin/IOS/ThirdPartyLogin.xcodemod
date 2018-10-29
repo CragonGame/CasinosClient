@@ -1,0 +1,2 @@
+"Libs" : ["libz.1.dylib","libc++.1.dylib","libsqlite3.dylib"]
+"Frameworks" : ["Security.framework : NotWeak","CoreTelephony.framework:NotWeak","CFNetwork.framework : NotWeak","SystemConfiguration.framework:NotWeak"]

@@ -1,230 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 此处package应填入你游戏工程的包名 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.Cragon.KingTexas"
+    package="com.Cragon.KingNative"
     android:versionCode="1"
     android:versionName="1.0" >
 
-  <uses-sdk
-      android:minSdkVersion="16"
-      android:targetSdkVersion="28" />
+	<uses-sdk
+		android:minSdkVersion="16"
+		android:targetSdkVersion="28" />
 
-  <application
-      android:allowBackup="true"
-      android:icon="@drawable/app_icon"
-      android:label="@string/app_name"
-      android:theme="@style/AppTheme" >
+	<application
+		android:allowBackup="true"
+		android:icon="@drawable/app_icon"
+		android:label="@string/app_name" >
     <activity
         android:name="com.unity3d.player.UnityPlayerActivity"
-        android:launchMode="singleTask"
+        android:launchMode="singleInstance"
         android:configChanges="orientation|keyboardHidden|screenSize|navigation"
         android:label="@string/app_name" >
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-
-      <!--<intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT"/>
-        <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="moblink" android:host="com.Cragon.Texas" />
-      </intent-filter>-->
-
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW"/>
-        <category android:name="android.intent.category.DEFAULT"/>
-        <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="znc4d4"/>
-      </intent-filter>
-      
-      <meta-data
-          android:name="unityplayer.UnityActivity"
-          android:value="true" />
-      <meta-data
-          android:name="unityplayer.ForwardNativeEventsToDalvik"
-          android:value="false" />
+		<intent-filter>
+			<action android:name="android.intent.action.MAIN" />
+			<category android:name="android.intent.category.LAUNCHER" />
+			<category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+		</intent-filter>
+		<intent-filter>
+			<action android:name="android.intent.action.VIEW"/>
+			<category android:name="android.intent.category.DEFAULT"/>
+			<category android:name="android.intent.category.BROWSABLE"/>
+			<data android:scheme="x9g39c"/>
+		</intent-filter>
+		<meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+		<meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" />
     </activity>
 
-    <activity android:name="com.OpenInstall.OpenInstall.NativeOpenInstallActivity" />
-    
-    <provider
-    android:name="android.support.v4.content.FileProvider"        
-    android:authorities="com.Cragon.KingTexas.provider"
-    android:exported="false"
-    android:grantUriPermissions="true">
-    <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/provider_paths" />
-    </provider>
-    
-    <!-- 拍照 -->
-    <activity
-        android:name="com.TakePhoto.TakePhoto.TakePhotoActivity"
-        android:configChanges="orientation|keyboardHidden|screenSize|navigation"
-        android:screenOrientation="landscape"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-        android:windowSoftInputMode="adjustResize|stateHidden" >
-    </activity>
-    <!-- 拍照 End -->
+	<activity android:name="com.secondfury.nativetoolkit.MainActivity" android:configChanges="orientation|screenSize" />
+    <activity android:name="com.secondfury.nativetoolkit.LocalNotificationResult" />
+    <receiver android:name="com.secondfury.nativetoolkit.LocalNotification" />
+	<activity android:name="io.openinstall.unity.AndroidOpenInstall.currentActivity" />
+	<!-- 微信分享回调 -->
+	<activity
+		android:name=".wxapi.WXEntryActivity"
+		android:theme="@android:style/Theme.Translucent.NoTitleBar"
+		android:configChanges="keyboardHidden|orientation|screenSize"
+		android:exported="true" />
+	
+	<meta-data android:name="com.openinstall.APP_KEY" android:value="x9g39c"/>
+	<meta-data android:name="Mob-AppKey" android:value="moba6b6c6d6"/>
+	<meta-data android:name="Mob-AppSecret" android:value="b89d2427a3bc7ad1aea1e1e8c1d36bf3"/>
+	<meta-data android:name="PUSH_APPID" android:value="IbmKW6ssr99lveCtPMG9dA" />
+	<meta-data android:name="PUSH_APPKEY" android:value="RhhDAohWe16Ejdgmw7roB1" />
+	<meta-data android:name="PUSH_APPSECRET" android:value="ytJMQpWxEQ7HhnFMHcjZV2" />	
 
-    <!-- 微信登录 -->
-    <activity
-        android:name="com.Cragon.KingTexas.wxapi.WXEntryActivity"
-        android:exported="true"
-        >
-    </activity>
-    <!-- 微信登录 End -->
+	</application>
 
-    <!-- 支付 -->
-    <activity
-        android:name="com.Pay.Pay.PayActivity"
-        android:configChanges="orientation|keyboardHidden|screenSize|navigation"
-        android:screenOrientation="landscape"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-        android:windowSoftInputMode="adjustResize|stateHidden" >
-    </activity>
-
-    <activity
-    android:name="com.Pay.Pay.BeeCloudPayActivity"
-    android:configChanges="orientation|keyboardHidden|screenSize|navigation"
-    android:screenOrientation="landscape"
-    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-    android:windowSoftInputMode="adjustResize|stateHidden" >
-    </activity>
-    
-    <activity
-    android:name="cn.beecloud.BCMockPayActivity"
-    android:screenOrientation="portrait"
-    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-    
-    <!-- 微信支付 -->
-     <activity
-    android:name="cn.beecloud.BCWechatPaymentActivity"
-    android:launchMode="singleTop"
-    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-    
-    <activity-alias
-        android:name="com.Cragon.KingTexas.wxapi.WXPayEntryActivity"
-       android:exported="true"
-    android:targetActivity="cn.beecloud.BCWechatPaymentActivity" />       
-
-    <!-- 支付宝 -->
-    <activity
-        android:name="com.alipay.sdk.auth.AuthActivity"
-        android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-        android:exported="false"
-        android:screenOrientation="behind" >
-    </activity>
-    
-    <activity
-    android:name="com.alipay.sdk.app.H5PayActivity"
-    android:configChanges="orientation|keyboardHidden|navigation"
-    android:exported="false"
-    android:screenOrientation="behind"
-    android:windowSoftInputMode="adjustResize|stateHidden" />
-    <!-- 支付End -->
-
-    <!-- 个推SDK配置开始 -->
-    <!-- 配置的第三方参数属性 -->
-    <meta-data
-          android:name="PUSH_APPID"
-          android:value="TXYr3LD0se8JU8UOtg9cj3" />
-    <!-- 替换为第三方应用的APPID -->
-    <meta-data
-          android:name="PUSH_APPKEY"
-          android:value="F6i4mvPKr96KuYsNAXciw9" />
-    <!-- 替换为第三方应用的APPKEY -->
-    <meta-data
-          android:name="PUSH_APPSECRET"
-          android:value="DWlJdILTq77OG68J4jFcx3" />
-    <!-- 替换为第三方应用的APPSECRET -->
-
-    <!-- 配置SDK核心服务 -->
-    <service
-          android:name="com.igexin.sdk.PushService"
-          android:exported="true"
-          android:label="NotificationCenter"
-          android:process=":pushservice" >
-      <intent-filter>
-        <action android:name="com.igexin.sdk.action.service.message"/>
-      </intent-filter>
-    </service>
-
-    <receiver android:name="com.igexin.sdk.PushReceiver" >
-      <intent-filter>
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
-        <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-        <action android:name="android.intent.action.USER_PRESENT" />
-        <action android:name="com.igexin.sdk.action.refreshls" />
-        <!-- 以下三项为可选的action声明，可大大提高service存活率和消息到达速度 -->
-        <action android:name="android.intent.action.MEDIA_MOUNTED" />
-        <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-        <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-      </intent-filter>
-    </receiver>
-    <activity
-           android:name="com.igexin.sdk.PushActivity"
-           android:excludeFromRecents="true"
-           android:exported="false"
-           android:process=":pushservice"
-           android:taskAffinity="com.igexin.sdk.PushActivityTask"
-           android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-    <activity
-           android:name="com.igexin.sdk.GActivity"
-           android:excludeFromRecents="true"
-           android:exported="true"
-           android:process=":pushservice"
-           android:taskAffinity="com.igexin.sdk.PushActivityTask"
-           android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-    <service
-    android:name="com.getui.getuiunity.GTPushService"
-    android:exported="true"
-    android:label="PushService"
-    android:process=":pushservice">
-    </service>
-
-    <service android:name="com.getui.getuiunity.GTPushIntentService"/>
-    
-    <!-- 统计 -->
-    <!-- 添加DataEye需要配置的Meta start -->
-    <!-- DC_APPID 是一组32位的代码，可以在g.dataeye.com创建游戏后获得. -->
-    <!-- “YOUR_APPID”的部分要按照实际情况设置，一定要记得替换哦 -->
-    <meta-data
-        android:name="DC_APPID"
-        android:value="" />
-    <!-- DC_CHANNEL对应于您的发布渠道，不同渠道需要做相应的修改 -->
-    <!-- “YOUR_CHANNEL_ID”的部分要按照实际情况设置，一定要记得替换哦 -->
-    <meta-data
-        android:name="DC_CHANNEL"
-        android:value="YOUR_CHANNEL_ID" />
-    <!-- 添加DataEye需要配置的Meta end -->
-    <!-- 统计End -->
-
-    <meta-data
-    android:name="com.openinstall.APP_KEY"
-    android:value="znc4d4"/>
-    
-  </application>
-
-  <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.GET_TASKS" />
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-  <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
-  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-  <uses-permission android:name="android.permission.BLUETOOTH" />
-  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-  <uses-permission android:name="android.permission.WAKE_LOCK" />
-  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-  <uses-permission android:name="android.permission.VIBRATE" />
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-  <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /><!-- 个推浮动通知权限 -->
+	<uses-permission android:name="getui.permission.GetuiService.com.getui.demo" /><!-- 个推自定义权限 -->
+  
+	<permission
+        android:name="getui.permission.GetuiService.com.getui.demo"
+        android:protectionLevel="normal" >
+    </permission>
+	
+	<!--
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	-->
 </manifest>

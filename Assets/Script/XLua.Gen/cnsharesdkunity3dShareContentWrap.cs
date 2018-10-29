@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(cn.sharesdk.unity3d.ShareContent);
-			Utils.BeginObjectRegister(type, L, translator, 0, 77, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 83, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetHidePlatforms", _m_SetHidePlatforms);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetTitle", _m_SetTitle);
@@ -89,6 +89,11 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetIphoneMarkParam", _m_SetIphoneMarkParam);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetIpadExecParam", _m_SetIpadExecParam);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetIpadMarkParam", _m_SetIpadMarkParam);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetTemplateArgs", _m_SetTemplateArgs);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetTemplateId", _m_SetTemplateId);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetFacebookHashtag", _m_SetFacebookHashtag);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetFacebookQuote", _m_SetFacebookQuote);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetMessengerGif", _m_SetMessengerGif);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetEnableClientShare", _m_SetEnableClientShare);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetEnableSinaWeiboAPIShare", _m_SetEnableSinaWeiboAPIShare);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetEnableAdvancedInterfaceShare", _m_SetEnableAdvancedInterfaceShare);
@@ -97,6 +102,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetMiniProgramPath", _m_SetMiniProgramPath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetMiniProgramWithShareTicket", _m_SetMiniProgramWithShareTicket);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetMiniProgramType", _m_SetMiniProgramType);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetMiniProgramHdThumbImage", _m_SetMiniProgramHdThumbImage);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetShareContentCustomize", _m_SetShareContentCustomize);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetShareParamsStr", _m_GetShareParamsStr);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetShareParams", _m_GetShareParams);
@@ -1997,6 +2003,146 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetTemplateArgs(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                cn.sharesdk.unity3d.ShareContent gen_to_be_invoked = (cn.sharesdk.unity3d.ShareContent)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    System.Collections.Hashtable _templateArgs = (System.Collections.Hashtable)translator.GetObject(L, 2, typeof(System.Collections.Hashtable));
+                    
+                    gen_to_be_invoked.SetTemplateArgs( _templateArgs );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetTemplateId(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                cn.sharesdk.unity3d.ShareContent gen_to_be_invoked = (cn.sharesdk.unity3d.ShareContent)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _templateId = LuaAPI.lua_tostring(L, 2);
+                    
+                    gen_to_be_invoked.SetTemplateId( _templateId );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetFacebookHashtag(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                cn.sharesdk.unity3d.ShareContent gen_to_be_invoked = (cn.sharesdk.unity3d.ShareContent)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _hashtag = LuaAPI.lua_tostring(L, 2);
+                    
+                    gen_to_be_invoked.SetFacebookHashtag( _hashtag );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetFacebookQuote(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                cn.sharesdk.unity3d.ShareContent gen_to_be_invoked = (cn.sharesdk.unity3d.ShareContent)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _quote = LuaAPI.lua_tostring(L, 2);
+                    
+                    gen_to_be_invoked.SetFacebookQuote( _quote );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetMessengerGif(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                cn.sharesdk.unity3d.ShareContent gen_to_be_invoked = (cn.sharesdk.unity3d.ShareContent)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _gif = LuaAPI.lua_tostring(L, 2);
+                    
+                    gen_to_be_invoked.SetMessengerGif( _gif );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_SetEnableClientShare(RealStatePtr L)
         {
 		    try {
@@ -2208,6 +2354,34 @@ namespace XLua.CSObjectWrap
                     int _type = LuaAPI.xlua_tointeger(L, 2);
                     
                     gen_to_be_invoked.SetMiniProgramType( _type );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetMiniProgramHdThumbImage(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                cn.sharesdk.unity3d.ShareContent gen_to_be_invoked = (cn.sharesdk.unity3d.ShareContent)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _hdThumbImage = LuaAPI.lua_tostring(L, 2);
+                    
+                    gen_to_be_invoked.SetMiniProgramHdThumbImage( _hdThumbImage );
                     
                     
                     

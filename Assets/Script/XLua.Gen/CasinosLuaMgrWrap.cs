@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.LuaMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 17, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 18, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
@@ -38,6 +38,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DestroyGameObject", _m_DestroyGameObject);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Vibrate", _m_Vibrate);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetSystemLanguageAsString", _m_GetSystemLanguageAsString);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnAndroidQuitConfirm", _m__CSharpCallOnAndroidQuitConfirm);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnApplicationPause", _m__CSharpCallOnApplicationPause);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnApplicationFocus", _m__CSharpCallOnApplicationFocus);
 			
@@ -506,6 +507,33 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m__CSharpCallOnAndroidQuitConfirm(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.LuaMgr gen_to_be_invoked = (Casinos.LuaMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked._CSharpCallOnAndroidQuitConfirm(  );
+                    
+                    
+                    
+                    return 0;
                 }
                 
             } catch(System.Exception gen_e) {

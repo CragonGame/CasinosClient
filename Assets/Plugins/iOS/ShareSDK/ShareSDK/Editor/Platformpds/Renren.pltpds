@@ -1,0 +1,7 @@
+{
+    "folders" : ["/SDK/ShareSDK/Support/PlatformSDK/RenRenSDK"],
+    "framework" : ["/SDK/ShareSDK/Support/PlatformConnector/RenrenConnector.framework"],
+    "buildSettings": { 
+        "ENABLE_BITCODE" : ["0"]
+    }
+}

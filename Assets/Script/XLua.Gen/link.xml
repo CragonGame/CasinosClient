@@ -169,16 +169,9 @@
 
 	<assembly fullname="Assembly-CSharp-firstpass">
 	    <type fullname="_ePayType" preserve="all"/>
-		<type fullname="DataEye" preserve="all"/>
 		<type fullname="NativeFun" preserve="all"/>
-		<type fullname="OpenInstall" preserve="all"/>
-		<type fullname="OpenInstallReceiver" preserve="all"/>
-		<type fullname="Push" preserve="all"/>
-		<type fullname="PushReceiver" preserve="all"/>
-		<type fullname="ShareSDKReceiver" preserve="all"/>
 		<type fullname="ThirdPartyLogin" preserve="all"/>
 		<type fullname="BuglyAgent" preserve="all"/>
-		<type fullname="OnePF.Purchase" preserve="all"/>
 		<type fullname="cn.sharesdk.unity3d.ShareContent" preserve="all"/>
 		<type fullname="cn.sharesdk.unity3d.ShareSDK" preserve="all"/>
 		

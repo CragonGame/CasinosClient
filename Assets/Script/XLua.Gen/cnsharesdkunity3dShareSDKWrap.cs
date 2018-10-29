@@ -21,9 +21,8 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(cn.sharesdk.unity3d.ShareSDK);
-			Utils.BeginObjectRegister(type, L, translator, 0, 21, 9, 9);
+			Utils.BeginObjectRegister(type, L, translator, 0, 20, 9, 9);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "init", _m_init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnError", _m_OnError);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnComplete", _m_OnComplete);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnCancel", _m_OnCancel);
@@ -109,33 +108,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_init(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                cn.sharesdk.unity3d.ShareSDK gen_to_be_invoked = (cn.sharesdk.unity3d.ShareSDK)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-                    gen_to_be_invoked.init(  );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_OnError(RealStatePtr L)

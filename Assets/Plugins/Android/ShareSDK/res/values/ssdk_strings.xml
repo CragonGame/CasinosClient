@@ -72,6 +72,7 @@
     <string name="ssdk_dingding">钉钉</string>
 	<string name="ssdk_meipai">美拍</string>
 	<string name="ssdk_telegram">Telegram</string>
+	<string name="ssdk_cmcc">中国移动</string>
 	<string name="ssdk_share_to_qzone">分享到QQ空间</string>
 	<string name="ssdk_share_to_qq">分享到QQ</string>
 	<string name="ssdk_share_to_facebook">分享到Facebook</string>
@@ -141,6 +142,23 @@
 	<string name="ssdk_sms_dialog_error_desc_107">该号码超过接收验证码上\n限次数，请明日再试</string>
 	<string name="ssdk_sms_dialog_error_desc_108">该设备超过请求发送验证\n码上限次数，请明日再试</string>
 	<string name="ssdk_sms_dialog_error_desc_109">发送短信太频繁</string>
+
+	<string name="ssdk_cmcc_auth">手机认证服务由中国移动提供</string>
+	<string name="ssdk_cmcc_owner_number">本机号码</string>
+	<string name="ssdk_cmcc_exchange_account">切换账号</string>
+	<string name="ssdk_cmcc_login_one_key">本机号码一键登录</string>
+	<string name="ssdk_cmcc_title_logon">登录</string>
+	<string name="ssdk_cmcc_login_argree">登录即同意</string>
+	<string name="ssdk_cmcc_terms_of_service">《中国移动号码服务条款》</string>
+	<string name="ssdk_cmcc_login_grant">并授权统一认证融合版获取本机号码</string>
+	<string name="ssdk_cmcc_login_again">登录失败，请尝试短信验证码登录</string>
+	<string name="ssdk_cmcc_send_sms_bar">自动发送短信登陆，请允许通过</string>
+	<string name="ssdk_cmcc_phone_number">手机号</string>
+	<string name="ssdk_cmcc_ver_code">验证码</string>
+	<string name="ssdk_cmcc_get_vercode">获取验证码</string>
+	<string name="ssdk_cmcc_send_again">重新发送</string>
+	<string name="ssdk_cmcc_quick_login">快捷登录</string>
+	<string name="ssdk_cmcc_loading_text">正在校验您的身份，请稍后...</string>
 
 	<item name="ssdk_sina_web_title_id" type="id" />
 	<item name="ssdk_sms_id_clCountry" type="id" />

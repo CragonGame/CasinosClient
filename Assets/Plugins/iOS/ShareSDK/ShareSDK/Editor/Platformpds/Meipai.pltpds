@@ -1,0 +1,10 @@
+{
+    "folders" : ["/SDK/ShareSDK/Support/PlatformSDK/MPShareSDK"],
+    "framework" : ["/SDK/ShareSDK/Support/PlatformConnector/MeiPaiConnector.framework"],
+    "permissions":{"NSPhotoLibraryUsageDescription":"从手机相册中选择相片视频"}
+    "LSApplicationQueriesSchemes":["mtmv","mpsharesdk10","mpsharesdk11"],
+    "URLSchemes" : {
+    				"CFBundleURLSchemes" :["mp{appkey}"],
+    				"CFBundleURLName" : "meipai"
+    				}
+}

@@ -71,6 +71,7 @@
 	<string name="ssdk_meipai">Meipai</string>
 	<string name="ssdk_youtube">Youtube</string>
 	<string name="ssdk_telegram">Telegram</string>
+	<string name="ssdk_cmcc">Cmcc</string>
 
 	<string name="ssdk_share_to_qzone">Share To QZone</string>
 	<string name="ssdk_share_to_qq">Share To QQ</string>
@@ -143,4 +144,22 @@
 	<string name="ssdk_sms_dialog_error_desc_107">Sending text message to the phone number \nalready hit its limit, Please try again tomorrow</string>
 	<string name="ssdk_sms_dialog_error_desc_108">Sending text message to the device \nalready hit its limit, Please try again tomorrow</string>
 	<string name="ssdk_sms_dialog_error_desc_109">Sending validation code too frequently</string>
+
+	<string name="ssdk_cmcc_auth">Provided by China Mobile</string>
+	<string name="ssdk_cmcc_owner_number">Number</string>
+	<string name="ssdk_cmcc_exchange_account">Switch</string>
+	<string name="ssdk_cmcc_login_one_key">PhoneNum Login</string>
+	<string name="ssdk_cmcc_title_logon">Sign in</string>
+	<string name="ssdk_cmcc_login_argree">Sign in and agree</string>
+	<string name="ssdk_cmcc_terms_of_service">《China Mobile Number Service Terms》</string>
+	<string name="ssdk_cmcc_login_grant">And authorize the unified authentication fusion version to get the local number</string>
+	<string name="ssdk_cmcc_login_again">Login failure, please use SMS verification code</string>
+	<string name="ssdk_cmcc_send_sms_bar">Automatically send SMS verification,please allow</string>
+	<string name="ssdk_cmcc_phone_number">Number</string>
+	<string name="ssdk_cmcc_ver_code">Code</string>
+	<string name="ssdk_cmcc_get_vercode">Get code</string>
+	<string name="ssdk_cmcc_send_again">Send Again</string>
+	<string name="ssdk_cmcc_quick_login">Quick login</string>
+	<string name="ssdk_cmcc_loading_text">Verifying your identity, please wait...</string>
+
 </resources>

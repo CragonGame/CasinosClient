@@ -1,0 +1,12 @@
+{
+    "folders" : ["/SDK/ShareSDK/Support/PlatformSDK/KaKaoSDK"],
+    "framework" : ["/SDK/ShareSDK/Support/PlatformConnector/KakaoConnector.framework"],
+    "LSApplicationQueriesSchemes":["kakaokompassauth","storykompassauth","kakaolink","storylink","kakao{appkey}"],
+    "URLSchemes" : {
+    				"CFBundleURLSchemes" :["kakao{appkey}"],
+    				"CFBundleURLName" : "kakao"
+    				},
+    "infoPlistSet":{
+		"KAKAO_APP_KEY":"{appkey}"
+	}
+}

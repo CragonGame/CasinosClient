@@ -932,34 +932,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp33(OnePF.Purchase p0)
-		{
-#if THREAD_SAFE || HOTFIX_ENABLE
-            lock (luaEnv.luaEnvLock)
-            {
-#endif
-                RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
-                translator.Push(L, p0);
-                
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
-                
-                
-                
-                LuaAPI.lua_settop(L, err_func - 1);
-                
-#if THREAD_SAFE || HOTFIX_ENABLE
-            }
-#endif
-		}
-        
-		public void __Gen_Delegate_Imp34(byte[] p0, int p1)
+		public void __Gen_Delegate_Imp33(byte[] p0, int p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -987,7 +960,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp35(object p0, System.EventArgs p1)
+		public void __Gen_Delegate_Imp34(object p0, System.EventArgs p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1015,7 +988,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp36(object p0, GameCloud.Unity.Common.SocketErrorEventArgs p1)
+		public void __Gen_Delegate_Imp35(object p0, GameCloud.Unity.Common.SocketErrorEventArgs p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1043,7 +1016,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp37(UnityEngine.Object p0, LoaderTicket p1)
+		public void __Gen_Delegate_Imp36(UnityEngine.Object p0, LoaderTicket p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1071,7 +1044,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp38(LoaderTicket p0, UnityEngine.Texture p1)
+		public void __Gen_Delegate_Imp37(LoaderTicket p0, UnityEngine.Texture p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1099,7 +1072,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp39(System.Collections.Generic.Dictionary<byte, object> p0)
+		public void __Gen_Delegate_Imp38(System.Collections.Generic.Dictionary<byte, object> p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1126,7 +1099,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp40(FairyGUI.EventContext p0)
+		public void __Gen_Delegate_Imp39(FairyGUI.EventContext p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1153,7 +1126,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp41(FairyGUI.GTweener p0)
+		public void __Gen_Delegate_Imp40(FairyGUI.GTweener p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1180,7 +1153,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp42(int p0, FairyGUI.GObject p1)
+		public void __Gen_Delegate_Imp41(int p0, FairyGUI.GObject p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1208,7 +1181,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp43(int p0, cn.sharesdk.unity3d.ResponseState p1, cn.sharesdk.unity3d.PlatformType p2, System.Collections.Hashtable p3)
+		public void __Gen_Delegate_Imp42(int p0, cn.sharesdk.unity3d.ResponseState p1, cn.sharesdk.unity3d.PlatformType p2, System.Collections.Hashtable p3)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1427,69 +1400,64 @@ namespace XLua
 			    return new System.Action<ushort, byte[]>(__Gen_Delegate_Imp32);
 			}
 		
-		    if (type == typeof(System.Action<OnePF.Purchase>))
-			{
-			    return new System.Action<OnePF.Purchase>(__Gen_Delegate_Imp33);
-			}
-		
 		    if (type == typeof(GameCloud.Unity.Common.OnSocketReceive))
 			{
-			    return new GameCloud.Unity.Common.OnSocketReceive(__Gen_Delegate_Imp34);
+			    return new GameCloud.Unity.Common.OnSocketReceive(__Gen_Delegate_Imp33);
 			}
 		
 		    if (type == typeof(GameCloud.Unity.Common.OnSocketConnected))
 			{
-			    return new GameCloud.Unity.Common.OnSocketConnected(__Gen_Delegate_Imp35);
+			    return new GameCloud.Unity.Common.OnSocketConnected(__Gen_Delegate_Imp34);
 			}
 		
 		    if (type == typeof(GameCloud.Unity.Common.OnSocketClosed))
 			{
-			    return new GameCloud.Unity.Common.OnSocketClosed(__Gen_Delegate_Imp35);
+			    return new GameCloud.Unity.Common.OnSocketClosed(__Gen_Delegate_Imp34);
 			}
 		
 		    if (type == typeof(System.EventHandler))
 			{
-			    return new System.EventHandler(__Gen_Delegate_Imp35);
+			    return new System.EventHandler(__Gen_Delegate_Imp34);
 			}
 		
 		    if (type == typeof(GameCloud.Unity.Common.OnSocketError))
 			{
-			    return new GameCloud.Unity.Common.OnSocketError(__Gen_Delegate_Imp36);
+			    return new GameCloud.Unity.Common.OnSocketError(__Gen_Delegate_Imp35);
 			}
 		
 		    if (type == typeof(System.Action<UnityEngine.Object, LoaderTicket>))
 			{
-			    return new System.Action<UnityEngine.Object, LoaderTicket>(__Gen_Delegate_Imp37);
+			    return new System.Action<UnityEngine.Object, LoaderTicket>(__Gen_Delegate_Imp36);
 			}
 		
 		    if (type == typeof(System.Action<LoaderTicket, UnityEngine.Texture>))
 			{
-			    return new System.Action<LoaderTicket, UnityEngine.Texture>(__Gen_Delegate_Imp38);
+			    return new System.Action<LoaderTicket, UnityEngine.Texture>(__Gen_Delegate_Imp37);
 			}
 		
 		    if (type == typeof(Casinos.AllTaskDoneCallBack))
 			{
-			    return new Casinos.AllTaskDoneCallBack(__Gen_Delegate_Imp39);
+			    return new Casinos.AllTaskDoneCallBack(__Gen_Delegate_Imp38);
 			}
 		
 		    if (type == typeof(FairyGUI.EventCallback1))
 			{
-			    return new FairyGUI.EventCallback1(__Gen_Delegate_Imp40);
+			    return new FairyGUI.EventCallback1(__Gen_Delegate_Imp39);
 			}
 		
 		    if (type == typeof(FairyGUI.GTweenCallback1))
 			{
-			    return new FairyGUI.GTweenCallback1(__Gen_Delegate_Imp41);
+			    return new FairyGUI.GTweenCallback1(__Gen_Delegate_Imp40);
 			}
 		
 		    if (type == typeof(FairyGUI.ListItemRenderer))
 			{
-			    return new FairyGUI.ListItemRenderer(__Gen_Delegate_Imp42);
+			    return new FairyGUI.ListItemRenderer(__Gen_Delegate_Imp41);
 			}
 		
 		    if (type == typeof(cn.sharesdk.unity3d.ShareSDK.EventHandler))
 			{
-			    return new cn.sharesdk.unity3d.ShareSDK.EventHandler(__Gen_Delegate_Imp43);
+			    return new cn.sharesdk.unity3d.ShareSDK.EventHandler(__Gen_Delegate_Imp42);
 			}
 		
 		    return null;

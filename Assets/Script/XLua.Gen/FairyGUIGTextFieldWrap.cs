@@ -21,10 +21,11 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(FairyGUI.GTextField);
-			Utils.BeginObjectRegister(type, L, translator, 0, 4, 14, 12);
+			Utils.BeginObjectRegister(type, L, translator, 0, 5, 14, 12);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetVar", _m_SetVar);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FlushVars", _m_FlushVars);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "HasCharacter", _m_HasCharacter);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Setup_BeforeAdd", _m_Setup_BeforeAdd);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Setup_AfterAdd", _m_Setup_AfterAdd);
 			
@@ -150,6 +151,35 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_HasCharacter(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                FairyGUI.GTextField gen_to_be_invoked = (FairyGUI.GTextField)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    char _ch = (char)LuaAPI.xlua_tointeger(L, 2);
+                    
+                        bool gen_ret = gen_to_be_invoked.HasCharacter( _ch );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {
