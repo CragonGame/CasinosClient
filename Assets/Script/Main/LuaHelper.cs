@@ -366,10 +366,10 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static UniWebView AddUniWebViewToObj(GameObject obj)
-        {
-            return obj.AddComponent<UniWebView>();
-        }
+        //public static UniWebView AddUniWebViewToObj(GameObject obj)
+        //{
+        //    return obj.AddComponent<UniWebView>();
+        //}
 
         //---------------------------------------------------------------------
         public static LuaTable DictionaryToLuatable(IDictionary obj)

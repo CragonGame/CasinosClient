@@ -31,7 +31,7 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 69, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 68, 0, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "readAllText", _m_readAllText_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "writeFile", _m_writeFile_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GObjectCastToGCom", _m_GObjectCastToGCom_xlua_st_);
@@ -79,7 +79,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_IDX, "parseIntToLong", _m_parseIntToLong_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "parseIntToULong", _m_parseIntToULong_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "readBytesWithLength", _m_readBytesWithLength_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "AddUniWebViewToObj", _m_AddUniWebViewToObj_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "DictionaryToLuatable", _m_DictionaryToLuatable_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ListToLuatable", _m_ListToLuatable_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "TimeDifferenceNow", _m_TimeDifferenceNow_xlua_st_);
@@ -1331,33 +1330,6 @@ namespace XLua.CSObjectWrap
                     
                         byte[] gen_ret = Casinos.LuaHelper.readBytesWithLength( _bytes, _offset, _length );
                         LuaAPI.lua_pushstring(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_AddUniWebViewToObj_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    UnityEngine.GameObject _obj = (UnityEngine.GameObject)translator.GetObject(L, 1, typeof(UnityEngine.GameObject));
-                    
-                        UniWebView gen_ret = Casinos.LuaHelper.AddUniWebViewToObj( _obj );
-                        translator.Push(L, gen_ret);
                     
                     
                     
