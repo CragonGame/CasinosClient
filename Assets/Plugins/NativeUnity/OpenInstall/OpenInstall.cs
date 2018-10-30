@@ -33,7 +33,7 @@ namespace io.openinstall.unity
             //{
             //    Destroy(instance);
             //}
-            //instance = this;
+            instance = this;
             //DontDestroyOnLoad(instance);
         }
 

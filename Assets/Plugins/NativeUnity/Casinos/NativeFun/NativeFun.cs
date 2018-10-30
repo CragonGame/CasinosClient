@@ -26,7 +26,7 @@ public class NativeFun
 
     //-------------------------------------------------------------------------
     public static void installAPK(string file_path)
-    {        
+    {
         mINativeFun.installAPK(file_path);
     }
 }

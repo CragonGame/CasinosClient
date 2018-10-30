@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 此处package应填入你游戏工程的包名 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.Cragon.KingNative"
+    package="com.Cragon.KingTexas"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -27,29 +27,156 @@
 			<action android:name="android.intent.action.VIEW"/>
 			<category android:name="android.intent.category.DEFAULT"/>
 			<category android:name="android.intent.category.BROWSABLE"/>
-			<data android:scheme="x9g39c"/>
+			<data android:scheme="znc4d4"/>
 		</intent-filter>
 		<meta-data android:name="unityplayer.UnityActivity" android:value="true" />
 		<meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" />
     </activity>
 
+	<!-- native toolkit -->
 	<activity android:name="com.secondfury.nativetoolkit.MainActivity" android:configChanges="orientation|screenSize" />
     <activity android:name="com.secondfury.nativetoolkit.LocalNotificationResult" />
     <receiver android:name="com.secondfury.nativetoolkit.LocalNotification" />
+	<!-- end native toolkit -->
 	<activity android:name="io.openinstall.unity.AndroidOpenInstall.currentActivity" />
-	<!-- 微信分享回调 -->
+	<activity android:name="com.OpenInstall.OpenInstall.NativeOpenInstallActivity" />
+	
+	<!--
+	<provider
+		android:name="android.support.v4.content.FileProvider"        
+		android:authorities="com.Cragon.KingTexas.provider"
+		android:exported="false"
+		android:grantUriPermissions="true">
+		<meta-data
+			android:name="android.support.FILE_PROVIDER_PATHS"
+			android:resource="@xml/provider_paths" />
+    </provider>
+	-->
+	
+	<!-- 拍照 -->
 	<activity
+        android:name="com.TakePhoto.TakePhoto.TakePhotoActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize|navigation"
+        android:screenOrientation="landscape"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+        android:windowSoftInputMode="adjustResize|stateHidden" >
+    </activity>
+    <!-- 拍照 End -->
+	
+	<!-- 微信登录 -->
+	<activity
+        android:name="com.Cragon.KingTexas.wxapi.WXEntryActivity"
+        android:exported="true" >
+    </activity>
+    <!-- 微信登录 End -->
+	
+	<!-- 微信分享回调 -->
+ 	<activity
 		android:name=".wxapi.WXEntryActivity"
 		android:theme="@android:style/Theme.Translucent.NoTitleBar"
 		android:configChanges="keyboardHidden|orientation|screenSize"
 		android:exported="true" />
+		
+	<!-- 支付 -->
+	<activity
+        android:name="com.Pay.Pay.PayActivity"
+        android:configChanges="orientation|keyboardHidden|screenSize|navigation"
+        android:screenOrientation="landscape"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+        android:windowSoftInputMode="adjustResize|stateHidden" >
+    </activity>
+
+    <activity
+		android:name="com.Pay.Pay.BeeCloudPayActivity"
+		android:configChanges="orientation|keyboardHidden|screenSize|navigation"
+		android:screenOrientation="landscape"
+		android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+		android:windowSoftInputMode="adjustResize|stateHidden" >
+    </activity>
+    
+    <activity
+		android:name="cn.beecloud.BCMockPayActivity"
+		android:screenOrientation="portrait"
+		android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    
+    <!-- 微信支付 -->
+    <activity
+		android:name="cn.beecloud.BCWechatPaymentActivity"
+		android:launchMode="singleTop"
+		android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    
+    <activity-alias
+        android:name="com.Cragon.KingTexas.wxapi.WXPayEntryActivity"
+		android:exported="true"
+		android:targetActivity="cn.beecloud.BCWechatPaymentActivity" />
+
+    <!-- 支付宝 -->
+	<activity
+        android:name="com.alipay.sdk.auth.AuthActivity"
+        android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+        android:exported="false"
+        android:screenOrientation="behind" >
+    </activity>
+    
+    <activity
+		android:name="com.alipay.sdk.app.H5PayActivity"
+		android:configChanges="orientation|keyboardHidden|navigation"
+		android:exported="false"
+		android:screenOrientation="behind"
+		android:windowSoftInputMode="adjustResize|stateHidden" />
+    <!-- 支付End -->
 	
-	<meta-data android:name="com.openinstall.APP_KEY" android:value="x9g39c"/>
-	<meta-data android:name="Mob-AppKey" android:value="moba6b6c6d6"/>
-	<meta-data android:name="Mob-AppSecret" android:value="b89d2427a3bc7ad1aea1e1e8c1d36bf3"/>
-	<meta-data android:name="PUSH_APPID" android:value="IbmKW6ssr99lveCtPMG9dA" />
-	<meta-data android:name="PUSH_APPKEY" android:value="RhhDAohWe16Ejdgmw7roB1" />
-	<meta-data android:name="PUSH_APPSECRET" android:value="ytJMQpWxEQ7HhnFMHcjZV2" />	
+	<!-- 配置个推SDK核心服务 -->
+	<service
+		android:name="com.igexin.sdk.PushService"
+        android:exported="true"
+        android:label="NotificationCenter"
+        android:process=":pushservice" >
+		<intent-filter>
+			<action android:name="com.igexin.sdk.action.service.message"/>
+		</intent-filter>
+    </service>
+
+    <receiver android:name="com.igexin.sdk.PushReceiver" >
+		<intent-filter>
+			<action android:name="android.intent.action.BOOT_COMPLETED" />
+			<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+			<action android:name="android.intent.action.USER_PRESENT" />
+			<action android:name="com.igexin.sdk.action.refreshls" />
+			<action android:name="android.intent.action.MEDIA_MOUNTED" />
+			<action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+			<action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+		</intent-filter>
+    </receiver>
+    <activity
+		android:name="com.igexin.sdk.PushActivity"
+        android:excludeFromRecents="true"
+        android:exported="false"
+        android:process=":pushservice"
+        android:taskAffinity="com.igexin.sdk.PushActivityTask"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    <activity
+        android:name="com.igexin.sdk.GActivity"
+        android:excludeFromRecents="true"
+        android:exported="true"
+        android:process=":pushservice"
+        android:taskAffinity="com.igexin.sdk.PushActivityTask"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    <service
+		android:name="com.getui.getuiunity.GTPushService"
+		android:exported="true"
+		android:label="PushService"
+		android:process=":pushservice">
+    </service>
+    <service android:name="com.getui.getuiunity.GTPushIntentService"/>
+	<!-- 配置个推SDK核心服务 End-->
+	
+	<meta-data android:name="com.openinstall.APP_KEY" android:value="znc4d4"/>
+	<meta-data android:name="Mob-AppKey" android:value="254dedc7a3730"/>
+	<meta-data android:name="Mob-AppSecret" android:value="53788920e17ffa1d9af4ef3540352172"/>
+	<meta-data android:name="PUSH_APPID" android:value="TXYr3LD0se8JU8UOtg9cj3" />
+	<meta-data android:name="PUSH_APPKEY" android:value="F6i4mvPKr96KuYsNAXciw9" />
+	<meta-data android:name="PUSH_APPSECRET" android:value="DWlJdILTq77OG68J4jFcx3" />	
 
 	</application>
 

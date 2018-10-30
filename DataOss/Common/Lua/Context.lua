@@ -224,9 +224,9 @@ function Context:_initLaunchStep()
     --end
 
     -- 检测是否需要更新Common
-    if (self.CasinosContext.Config.VersionCommonPersistent ~= self.Cfg.CommonVersion) then
+    --if (self.CasinosContext.Config.VersionCommonPersistent ~= self.Cfg.CommonVersion) then
         self.LaunchStep[2] = "UpdateCommon"
-    end
+    --end
 
     -- 检测是否需要更新Data
     if (self.CasinosContext.Config.VersionDataPersistent ~= self.Cfg.DataVersion) then
