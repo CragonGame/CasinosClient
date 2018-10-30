@@ -14,9 +14,6 @@ DesktopHSysBankShowDBValue = true-- 百人系统庄是否显示SQlite配置值
 ShootingTextShowVIPLimit = 0-- 弹幕发送后是否真正发送弹幕VIP等级限制，0为无限制
 DesktopHCanChatVIPLimit = 1-- 百人是否可聊天VIP等级限制，0为无限制
 DesktopCanChatVIPLimit = 0-- 普通桌是否可聊天VIP等级限制，0为无限制
-CanReportLog = false-- 是否开启上传日志到Bugly后台
-CanReportLogDeviceId = ""-- 可以上传的机器码
-CanReportLogPlayerId = ""-- 可以上传的玩家Id
 UseWechatPay = true
 UseAliPay = true
 UseIAP = false
@@ -160,6 +157,11 @@ end
 ---------------------------------------
 function Context:Init()
     print('Context:Init()')
+    print('DirLuaRoot=' .. self.CasinosContext.PathMgr.DirLuaRoot)
+    print('DirRawRoot=' .. self.CasinosContext.PathMgr.DirRawRoot)
+    print('DirAbRoot=' .. self.CasinosContext.PathMgr.DirAbRoot)
+    print('DirAbUi=' .. self.CasinosContext.PathMgr.DirAbUi)
+    print('PersistentDataPath=' .. self.CasinosContext.PathMgr:GetPersistentDataPath())
 
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")
     show_fps_obj.enabled = self.Cfg.DevelopSettings.ClientShowFPS

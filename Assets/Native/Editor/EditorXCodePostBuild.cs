@@ -81,7 +81,7 @@ namespace Casinos
             proj.WriteToFile(proj_path);
 
             ProjectCapabilityManager proj_capability_mgr = new ProjectCapabilityManager(proj_path, "KingNative.entitlements", PBXProject.GetUnityTargetName());
-            proj_capability_mgr.AddAssociatedDomains(new string[] { "applinks:x9g39c.openinstall.io" });// OpenInstall
+            proj_capability_mgr.AddAssociatedDomains(new string[] { "applinks:znc4d4.openinstall.io" });// OpenInstall
             proj_capability_mgr.AddPushNotifications(false);
             proj_capability_mgr.AddBackgroundModes(BackgroundModesOptions.RemoteNotifications);
             proj_capability_mgr.WriteToFile();
@@ -91,7 +91,7 @@ namespace Casinos
             PlistDocument plist = new PlistDocument();
             plist.ReadFromString(File.ReadAllText(plist_path));
             PlistElementDict root_dict = plist.root;
-            root_dict.SetString("com.openinstall.APP_KEY", "x9g39c");// OpenInstall
+            root_dict.SetString("com.openinstall.APP_KEY", "znc4d4");// OpenInstall
             // NativeToolkit
             root_dict.SetString("NSPhotoLibraryUsageDescription", "Requires access to the Photo Library");
             root_dict.SetString("NSPhotoLibraryAddUsageDescription", "Requires access to the Photo Library");

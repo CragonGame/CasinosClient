@@ -162,7 +162,7 @@ PlayerSettings:
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
-  aotOptions: nrgctx-trampolines=8192,nimt-trampolines=8192,ntrampolines=4096
+  aotOptions: 
   stripEngineCode: 1
   iPhoneStrippingLevel: 2
   iPhoneScriptCallOptimization: 0

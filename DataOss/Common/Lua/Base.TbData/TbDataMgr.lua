@@ -16,8 +16,7 @@ function TbDataMgr:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.Instance = o
     end
     CS.Casinos.CasinosContext.Instance.TbDataMgrLua = self
@@ -26,17 +25,18 @@ end
 
 ---------------------------------------
 function TbDataMgr:Setup(list_db_filename)
-    if (CS.Casinos.CasinosContext.Instance.IsSqliteUnity)
-    then
+    if (CS.Casinos.CasinosContext.Instance.IsSqliteUnity) then
+        print('self.Sqlite = CS.GameCloud.Unity.Common.SqliteUnity()')
         self.Sqlite = CS.GameCloud.Unity.Common.SqliteUnity()
     else
+        print('self.Sqlite = CS.GameCloud.Unity.Common.SqliteWin()')
         self.Sqlite = CS.GameCloud.Unity.Common.SqliteWin()
     end
 
     for i, v in pairs(list_db_filename) do
+        print('db_filename = ' .. v)
         local open_db = self.Sqlite:openDb(v)
-        if (open_db == false)
-        then
+        if (open_db == false) then
             print("TbDataMgr:Setup() failed! Can not Open File! db_filename=" .. v)
             return
         end
@@ -61,8 +61,7 @@ function TbDataMgr:ParseTableAllData(table_name, list_t)
     local map_data = {}
     self.MapData[table_name] = map_data
     local fac = self.MapTbDataFac[table_name]
-    if (fac == nil)
-    then
+    if (fac == nil) then
         return
     end
 
@@ -77,8 +76,7 @@ end
 ---------------------------------------
 function TbDataMgr:GetData(table_name, id)
     local map_data = self.MapData[table_name]
-    if (map_data == nil)
-    then
+    if (map_data == nil) then
         return nil
     end
     local tb_data = map_data[id]
@@ -102,8 +100,7 @@ end
 function TbDataMgr:_loadTable(table_name)
     local str_query_select = "SELECT * FROM " .. table_name .. ";"
     local list_data = self.Sqlite:getTableData(str_query_select)
-    if (list_data.Count <= 0)
-    then
+    if (list_data.Count <= 0) then
         return nil
     end
     return list_data
