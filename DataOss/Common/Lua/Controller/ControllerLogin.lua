@@ -113,8 +113,6 @@ function ControllerLogin:new(o, controller_mgr, controller_data, guid)
         self.Acc = nil
         self.Pwd = nil
         self.Token = nil
-        self.GatewayIp = nil
-        self.GatewayPort = 5882
         self.ClientEnterWorldNotify = nil
         self.ShowKickOutInfo = false
         self.LoginAccountInfoKey = "LoginAccountInfo2"
@@ -214,7 +212,7 @@ function ControllerLogin:OnHandleEv(ev)
             register_acc_data.Name = name
             register_acc_data.PhoneVerificationCode = ev.PhoneVerificationCode
             register_acc_data.Device = device_info
-            register_acc_data.AppId = UCenterAppId
+            register_acc_data.AppId = self.Context.Cfg.UCenterAppId
             self:RequestRegister(register_acc_data)
         elseif (ev.EventName == "EvUiRequestGetPhoneCode") then
             -- 获取验证码
@@ -235,14 +233,14 @@ function ControllerLogin:OnHandleEv(ev)
             UCenterDomain = ev.ucenter
             self.ControllerUCenter.UCenterDomain = ev.ucenter
         elseif (ev.EventName == "EvUiChooseGateWay") then
-            GatewayIp = ev.gateway
+            --self.Context.Cfg.GatewayIp = ev.gateway
         elseif (ev.EventName == "EvUiLoginSuccessEx") then
             if self.BindingWeChat == false then
-                self:RequestWechatLogin(ev.token, WeChatAppId)
+                self:RequestWechatLogin(ev.token, self.Context.Cfg.WeChatAppId)
             else
                 print("AccountWeChatBindRequest")
                 local request = AccountWeChatBindRequest:new(nil)
-                request.ucenterAppId = UCenterAppId
+                request.ucenterAppId = self.Context.Cfg.UCenterAppId
                 print(request.ucenterAppId)
                 request.code = ev.token
                 print(request.code)
@@ -272,7 +270,7 @@ function ControllerLogin:OnHandleEv(ev)
                     open_id = self.ControllerActor.WeChatOpenId:get()
                 end
                 local request = AccountWeChatUnbindRequest:new(nil)
-                request.ucenterAppId = UCenterAppId
+                request.ucenterAppId = self.Context.Cfg.UCenterAppId
                 request.openId = open_id
                 request.accountId = self.AccId
                 request.token = self.Token
@@ -291,7 +289,7 @@ function ControllerLogin:_timerUpdate(tm)
         self.RequestThirdPartyLogin = false
         if (self.CasinosContext.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat) then
             self.CasinosContext:SetNativeOperate(1)
-            CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, WeChatState, "Login")
+            CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.Context.Cfg.WeChatState, "Login")
         end
     end
 
@@ -333,7 +331,7 @@ function ControllerLogin:RequestGuestAccess()
     CS.Casinos.CasinosContext.Instance.LoginType = 1
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
     local guest_accessinfo = GuestAccessInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.GuestAccessInfo()
-    guest_accessinfo.AppId = UCenterAppId
+    guest_accessinfo.AppId = self.Context.Cfg.UCenterAppId
     guest_accessinfo.Device = self:GetDeviceInfo()
     self.ControllerUCenter:RequestGuestAccess(guest_accessinfo,
             function(http_statuscode, status, response, error)
@@ -369,7 +367,7 @@ end
 function ControllerLogin:RequestWechatAutoLogin()
     CS.Casinos.CasinosContext.Instance.LoginType = 2
     local r = AccountWeChatAutoLoginRequest:new(nil)
-    r.AppId = WeChatAppId
+    r.AppId = self.Context.Cfg.WeChatAppId
     r.OpenId = a_info_last_login.AccName
     r.Device = self:GetDeviceInfo()
     self.ControllerUCenter:RequestWechatAutoLogin(r,
@@ -508,7 +506,7 @@ function ControllerLogin:OnUCenterLogin(http_statuscode, status, response, error
         local t_encode = self.ControllerMgr.Json.encode(infos)
         CS.UnityEngine.PlayerPrefs.SetString(self.LoginAccountInfoKey, t_encode)
 
-        c.NetMgr:Connect(GatewayIp, GatewayPort)
+        c.NetMgr:Connect(self.Context.Cfg.GatewayIp, self.Context.Cfg.GatewayPort)
     else
         if (error ~= nil) then
             ViewHelper:UiEndWaiting()
@@ -553,7 +551,7 @@ function ControllerLogin:OnUCenterGuestAccess(http_statuscode, status, response,
         local t_encode = self.ControllerMgr.Json.encode(infos)
         CS.UnityEngine.PlayerPrefs.SetString(self.LoginAccountInfoKey, t_encode)
 
-        c.NetMgr:Connect(GatewayIp, GatewayPort)
+        c.NetMgr:Connect(self.Context.Cfg.GatewayIp, self.Context.Cfg.GatewayPort)
     else
         if (error ~= nil) then
             local error_msg = self.ControllerUCenter:ParseUCenterErrorCode(error.code)

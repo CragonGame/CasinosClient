@@ -136,7 +136,7 @@ function ControllerTrade:OnHandleEv(ev)
             self.PayType = CS._ePayType.__CastFrom(ev.pay_type)
             local buy_count = ev.item_count
             local payment_info = PayRequest:new(nil)
-            payment_info.AppId = UCenterAppId
+            payment_info.AppId = self.Context.Cfg.UCenterAppId
             payment_info.AccountId = self.ControllerActor.PropAccountId:get()
             payment_info.IsFirstRecharge = is_firstrecharge
             payment_info.ItemTbId = item_tbid

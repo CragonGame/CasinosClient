@@ -14,12 +14,8 @@ function Native:new(o, view_mgr, listner)
         self.ViewMgr = view_mgr
         self.Listner = listner
 
-        --CS.BuglyAgent.ConfigAutoQuitApplication(true)
-        --CS.BuglyAgent.InitWithAppId(BuglyAppId)
-        --CS.BuglyAgent.EnableExceptionHandler()
-        --
         --if CS.Casinos.CasinosContext.Instance.IsEditor == false then
-        --    CS.ThirdPartyLogin.Instantce():initLogin(WeChatAppId)
+        --    CS.ThirdPartyLogin.Instantce():initLogin(self.Context.Cfg.WeChatAppId)
         --    CS.Push.Instant():initPush(PushAppId, PushAppKey, PushAppSecret)
         --end
         --
@@ -27,12 +23,12 @@ function Native:new(o, view_mgr, listner)
         --CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()
         --CS.ShareSDKReceiver.mShareSDK.devInfo.wechat = CS.cn.sharesdk.unity3d.WeChat()
         --if CS.Casinos.CasinosContext.Instance.UnityAndroid then
-        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppId = WeChatAppId
-        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppSecret = WeChatAppSecret
+        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppId = self.Context.Cfg.WeChatAppId
+        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppSecret = self.Context.Cfg.WeChatAppSecret
         --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.BypassApproval = false
         --elseif CS.Casinos.CasinosContext.Instance.UnityIOS then
-        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = WeChatAppId
-        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_secret = WeChatAppSecret
+        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = self.Context.Cfg.WeChatAppId
+        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_secret = self.Context.Cfg.WeChatAppSecret
         --end
         --
         --CS.ShareSDKReceiver.mShareSDK:init()
@@ -53,7 +49,7 @@ function Native:new(o, view_mgr, listner)
     --    if self.Context.Cfg.PayUseTestMode then
     --        secrete = BeeCloudTestSecret
     --    end
-    --    CS.Pay.payInit(BeeCloudId, secrete, WeChatAppId)
+    --    CS.Pay.payInit(BeeCloudId, secrete, self.Context.Cfg.WeChatAppId)
     --    CS.Pay.useTestMode(self.Context.Cfg.PayUseTestMode)
     --end
     --
