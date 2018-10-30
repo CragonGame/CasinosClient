@@ -346,6 +346,7 @@ namespace Casinos
         {
             string name = file_name.ToLower();
             string name1 = name.Replace(".lua", "");
+            name1 = name.Replace(".txt", "");
 
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(text);
             MapLuaFiles[name1] = bytes;
@@ -355,7 +356,7 @@ namespace Casinos
         public void LoadLuaFromResources(string filepath)
         {
             string name = filepath;
-            if (name.EndsWith(".lua"))
+            if (name.EndsWith(".lua") || name.EndsWith(".txt"))
             {
                 name = name.Remove(name.Length - 4, 4);
             }
@@ -412,6 +413,7 @@ namespace Casinos
 
                             string name = i.Name.ToLower();
                             string name1 = name.Replace(".lua", "");
+                            name1 = name1.Replace(".txt", "");
                             MapLuaFiles[name1] = data;
                         }
                     }

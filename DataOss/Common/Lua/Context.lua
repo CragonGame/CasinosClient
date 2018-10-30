@@ -157,11 +157,6 @@ end
 ---------------------------------------
 function Context:Init()
     print('Context:Init()')
-    print('DirLuaRoot=' .. self.CasinosContext.PathMgr.DirLuaRoot)
-    print('DirRawRoot=' .. self.CasinosContext.PathMgr.DirRawRoot)
-    print('DirAbRoot=' .. self.CasinosContext.PathMgr.DirAbRoot)
-    print('DirAbUi=' .. self.CasinosContext.PathMgr.DirAbUi)
-    print('PersistentDataPath=' .. self.CasinosContext.PathMgr:GetPersistentDataPath())
 
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")
     show_fps_obj.enabled = self.Cfg.DevelopSettings.ClientShowFPS
@@ -227,7 +222,7 @@ function Context:_initLaunchStep()
 
     -- 检测是否需要更新Common
     --if (self.CasinosContext.Config.VersionCommonPersistent ~= self.Cfg.CommonVersion) then
-        self.LaunchStep[2] = "UpdateCommon"
+    self.LaunchStep[2] = "UpdateCommon"
     --end
 
     -- 检测是否需要更新Data
