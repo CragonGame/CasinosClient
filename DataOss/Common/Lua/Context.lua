@@ -122,7 +122,7 @@ end
 Context = {}
 
 ---------------------------------------
-function Context:new(o, env)
+function Context:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -131,12 +131,11 @@ function Context:new(o, env)
     self.Launch = Launch
     self.LaunchStep = {}
     self.Cfg = Config:new(nil)
-    self.Cfg.Env = env
+    self.Cfg.Env = self.Launch.LaunchCfg.Env
     self.Cfg.CommonVersion = self.Launch.LaunchCfg.CommonVersion
     self.Cfg.CommonRootURL = string.format('https://cragon-king-oss.cragon.cn/Common/%s/', self.Launch.LaunchCfg.CommonVersion)
     self.Cfg.DataVersion = self.Launch.LaunchCfg.DataVersion
     self.Cfg.DataRootURL = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/', self.CasinosContext.Config.Platform, self.Launch.LaunchCfg.DataVersion)
-    self.Env = env
     self.TbDataMgr = nil
     self.Json = nil
     self.Rpc = nil
