@@ -57,20 +57,15 @@ namespace Casinos
         //---------------------------------------------------------------------
         void Start()
         {
+#if !UNITY_EDITOR
             //CasinosContext.Instance.AddLog("OpenInstall.RegisterWakeupHandler(_onWakeupFinish)");
             Debug.Log("RegisterWakeupHandler, GetInstall");
-
             var openinstall = GetComponent<io.openinstall.unity.OpenInstall>();
             openinstall.RegisterWakeupHandler(_onWakeupFinish);
             openinstall.GetInstall(60, _onGetInstallFinish);
-
             //openinstall.ReportRegister();
             //openinstall.ReportEffectPoint("aaa", 1);
-
-            //Debug.Log("获取国家码1111");
-            //string c = NativeFun.getCountryCode();
-            //Debug.Log("获取国家码2222");
-            //Debug.Log("获取国家码3333  " + c);
+#endif
 
             bool force_use_resouceslaunch = false;
             bool force_use_dataoss = false;

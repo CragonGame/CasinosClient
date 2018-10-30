@@ -343,7 +343,7 @@ function Context:_nextLaunchStep()
 
         local t_db = {}
         for i, v in pairs(self.Cfg.TbFileList) do
-            t_db[i] = self.CasinosContext.PathMgr.DirRawRoot .. "tbdata/" .. v .. ".db"
+            t_db[i] = self.CasinosContext.PathMgr.DirRawRoot .. "TbData/" .. v .. ".db"
         end
         self.TbDataMgr = TbDataMgr:new(nil)
         self:_regTbData()

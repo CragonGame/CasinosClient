@@ -6,7 +6,6 @@ namespace GameCloud.Unity.Common
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.InteropServices;
-    using UnityEngine;
 
     public class DataInfo
     {
@@ -40,9 +39,6 @@ namespace GameCloud.Unity.Common
 
         //---------------------------------------------------------------------
         public abstract List<TbDataInfo> getTableData(string sqlite_query);
-
-        //---------------------------------------------------------------------
-        public abstract Dictionary<string, object> selectFromDb(string sqlite_query);
 
         //---------------------------------------------------------------------
         public bool fileExists(string file_path)
@@ -194,12 +190,6 @@ namespace GameCloud.Unity.Common
         }
 
         //---------------------------------------------------------------------
-        public override Dictionary<string, object> selectFromDb(string sqlite_query)
-        {
-            throw new NotImplementedException();
-        }
-
-        //---------------------------------------------------------------------
         /// <summary>
         /// This will prepare a certain query where stmHandle is pointing or handling
         /// </summary>
@@ -261,8 +251,10 @@ namespace GameCloud.Unity.Common
         //#if UNITY_IPHONE || UNITY_STANDALONE_OSX || UNITY_DASHBOARD_WIDGET || UNITY_STANDALONE_LINUX || UNITY_WEBPLAYER
         //#endif
     }
+
     public class SqliteWin : ISqlite
     {
+        //---------------------------------------------------------------------
         private string mFilePath;
         private SQLiteDB mSQLiteDB;
 
@@ -382,12 +374,6 @@ namespace GameCloud.Unity.Common
             }
 
             return list_table_data;
-        }
-
-        //---------------------------------------------------------------------
-        public override Dictionary<string, object> selectFromDb(string sqlite_query)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -26,15 +26,12 @@ end
 ---------------------------------------
 function TbDataMgr:Setup(list_db_filename)
     if (CS.Casinos.CasinosContext.Instance.IsSqliteUnity) then
-        print('self.Sqlite = CS.GameCloud.Unity.Common.SqliteUnity()')
         self.Sqlite = CS.GameCloud.Unity.Common.SqliteUnity()
     else
-        print('self.Sqlite = CS.GameCloud.Unity.Common.SqliteWin()')
         self.Sqlite = CS.GameCloud.Unity.Common.SqliteWin()
     end
 
     for i, v in pairs(list_db_filename) do
-        print('db_filename = ' .. v)
         local open_db = self.Sqlite:openDb(v)
         if (open_db == false) then
             print("TbDataMgr:Setup() failed! Can not Open File! db_filename=" .. v)
