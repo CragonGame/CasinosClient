@@ -164,10 +164,9 @@ namespace Casinos
             var thirdparty_login_receiver = ThirdPartyLoginReceiver.instance();
             thirdparty_login_receiver.ThirdPartyLoginReceiverListener = this;
 
-#if (UNITY_IPHONE || UNITY_ANDROID) && !UNITY_EDITOR
-            ThirdPartyLogin.Instantce().initLogin(CasinosContext.Instance.Config.WeChatAppId);
-#endif
-
+//#if (UNITY_IPHONE || UNITY_ANDROID) && !UNITY_EDITOR
+//            ThirdPartyLogin.Instantce().initLogin(CasinosContext.Instance.Config.WeChatAppId);
+//#endif
             //PushReceiver.instance();
             //OpenInstallReceiver.instance();
         }

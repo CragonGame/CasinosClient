@@ -18,7 +18,7 @@ function Native:new(o, view_mgr, listner)
             CS.ThirdPartyLogin.Instantce():initLogin(self.Context.Cfg.WeChatAppId)
             --CS.Push.Instant():initPush(PushAppId, PushAppKey, PushAppSecret)
         end
-        --
+
         --CS.ShareSDKReceiver.instance(ShareSDKAppKey, ShareSDKAppSecret)
         --CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()
         --CS.ShareSDKReceiver.mShareSDK.devInfo.wechat = CS.cn.sharesdk.unity3d.WeChat()
@@ -30,9 +30,9 @@ function Native:new(o, view_mgr, listner)
         --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = self.Context.Cfg.WeChatAppId
         --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_secret = self.Context.Cfg.WeChatAppSecret
         --end
-        --
+
         --CS.ShareSDKReceiver.mShareSDK:init()
-        --
+
         --local open_install = CS.OpenInstallReceiver.instance()
         --open_install.OpenInstallResultCallBack = function(result, is_install)
         --    self:OpenInstallResult(result, is_install)
@@ -42,7 +42,7 @@ function Native:new(o, view_mgr, listner)
 
     --self.PlayerQRCodeTexture = CS.UnityEngine.Texture2D(190, 190)
     --self.ShareUrl = nil
-    --
+
     --CS.Pay.Instant()
     --if CS.Casinos.CasinosContext.Instance.IsEditor == false then
     --    local secrete = BeeCloudLiveSecret
@@ -52,7 +52,7 @@ function Native:new(o, view_mgr, listner)
     --    CS.Pay.payInit(BeeCloudId, secrete, self.Context.Cfg.WeChatAppId)
     --    CS.Pay.useTestMode(self.Context.Cfg.PayUseTestMode)
     --end
-    --
+
     --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionGetPicSuccess = function(getpic_result)
     --    self:ActionGetPicSuccess(getpic_result)
     --end
@@ -65,11 +65,11 @@ function Native:new(o, view_mgr, listner)
     --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayWithIAPSuccess = function(purchase)
     --    self:ActionPayWithIAPSuccess(purchase)
     --end
-    --
+
     --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayResult = function(pay_result)
     --    self:ActionPayResult(pay_result)
     --end
-    --
+
     --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionLoginFailed = function(fail_type)
     --    self:ActionLoginFailed(fail_type)
     --end
