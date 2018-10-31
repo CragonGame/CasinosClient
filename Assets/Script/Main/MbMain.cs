@@ -18,8 +18,11 @@ namespace Casinos
         //---------------------------------------------------------------------
         CasinosContext Context { get; set; }
 
-        string BuglyAppIDAndroid = "0aed5e7e56";
-        string BuglyAppIDiOS = "e438009ecd";
+#if UNITY_IPHONE || UNITY_IOS
+        const string BuglyAppIDiOS = "e438009ecd";
+#elif UNITY_ANDROID
+        const string BuglyAppIDAndroid = "0aed5e7e56";
+#endif
 
         //---------------------------------------------------------------------
         void Awake()
@@ -141,8 +144,6 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _onGetInstallFinish(io.openinstall.unity.OpenInstallData data)
         {
-            Debug.Log("_onGetInstallFinish");
-
             string channel_code = " ";
             if (!string.IsNullOrEmpty(data.channelCode))
             {
@@ -155,7 +156,7 @@ namespace Casinos
                 bind_data = data.bindData;
             }
 
-            var log = string.Format("MbNative._onGetInstallFinish() 渠道编号={0}，自定义数据={1}",
+            var log = string.Format("MbMain._onGetInstallFinish() 渠道编号={0}，自定义数据={1}",
                 channel_code, bind_data);
             Debug.Log(log);
         }
@@ -163,8 +164,6 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _onWakeupFinish(io.openinstall.unity.OpenInstallData data)
         {
-            Debug.Log("_onWakeupFinish");
-
             string channel_code = " ";
             if (!string.IsNullOrEmpty(data.channelCode))
             {
@@ -177,7 +176,7 @@ namespace Casinos
                 bind_data = data.bindData;
             }
 
-            var log = string.Format("MbNative._onWakeupFinish() 渠道编号={0}，自定义数据={1}",
+            var log = string.Format("MbMain._onWakeupFinish() 渠道编号={0}，自定义数据={1}",
                 channel_code, bind_data);
             Debug.Log(log);
         }
