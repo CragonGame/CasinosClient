@@ -39,7 +39,7 @@ namespace Casinos
         {
             // 加载图片失败
             //CasinosContext.Instance.UiEndWaiting(CasinosContext.Instance.ViewHelper);
-            //Debug.Log("加载图片失败");
+            Debug.Log("加载图片失败");
         }
 
         //---------------------------------------------------------------------
@@ -156,7 +156,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _initNativeMsgReceiverListener()
         {
-            var native_receiver = NativeReceiver.instance();
+            var native_receiver = NativeReceiver.Instance();
             native_receiver.TakePhotoReceiverListener = this;
             native_receiver.AudioControlListener = this;
             var pay_receiver = PayReceiver.instance();
@@ -164,12 +164,11 @@ namespace Casinos
             var thirdparty_login_receiver = ThirdPartyLoginReceiver.instance();
             thirdparty_login_receiver.ThirdPartyLoginReceiverListener = this;
 
-            //#if  (UNITY_IPHONE||UNITY_ANDROID) && !UNITY_EDITOR
-            //            ThirdPartyLogin.Instantce().initLogin(CasinosContext.Instance.Config.WeChatAppId);
-            //#endif
+#if (UNITY_IPHONE || UNITY_ANDROID) && !UNITY_EDITOR
+            ThirdPartyLogin.Instantce().initLogin(CasinosContext.Instance.Config.WeChatAppId);
+#endif
 
             //PushReceiver.instance();
-
             //OpenInstallReceiver.instance();
         }
 

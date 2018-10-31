@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AndroidThirdPartyLogin : IThirdPartyLogin
 {
+    //-------------------------------------------------------------------------
     public AndroidJavaClass mAndoridJavaClassThirdPartyLogin;
     public AndroidJavaObject mAndroidThirdPartyLogin;
 

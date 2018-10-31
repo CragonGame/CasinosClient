@@ -6,6 +6,12 @@ namespace Casinos
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
 
+    public enum NativeOperateType
+    {
+        Pay,
+        Login,
+    }
+
     public class NativeMgr
     {
         //-------------------------------------------------------------------------
@@ -17,18 +23,13 @@ namespace Casinos
         }
 
 #if UNITY_IOS
-        //-------------------------------------------------------------------------
         #region DllImport
+        
+        //-------------------------------------------------------------------------
         [DllImport("__Internal")]
         private static extern void nativeOperate(string operate_type);
+
         #endregion
 #endif
-    }
-
-    //-------------------------------------------------------------------------
-    public enum NativeOperateType
-    {
-        Pay,
-        Login,
     }
 }

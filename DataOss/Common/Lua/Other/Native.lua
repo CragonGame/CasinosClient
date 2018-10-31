@@ -14,10 +14,10 @@ function Native:new(o, view_mgr, listner)
         self.ViewMgr = view_mgr
         self.Listner = listner
 
-        --if CS.Casinos.CasinosContext.Instance.IsEditor == false then
-        --    CS.ThirdPartyLogin.Instantce():initLogin(self.Context.Cfg.WeChatAppId)
-        --    CS.Push.Instant():initPush(PushAppId, PushAppKey, PushAppSecret)
-        --end
+        if CS.Casinos.CasinosContext.Instance.IsEditor == false then
+            CS.ThirdPartyLogin.Instantce():initLogin(self.Context.Cfg.WeChatAppId)
+            --CS.Push.Instant():initPush(PushAppId, PushAppKey, PushAppSecret)
+        end
         --
         --CS.ShareSDKReceiver.instance(ShareSDKAppKey, ShareSDKAppSecret)
         --CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()

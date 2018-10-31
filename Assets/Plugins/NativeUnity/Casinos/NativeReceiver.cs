@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NativeReceiver : MonoBehaviour
 {
     //-------------------------------------------------------------------------
-    static string mNativeReceiverName;
-    static NativeReceiver mNativeAPIMsgReceiver;
     public ITakePhotoReceiverListener TakePhotoReceiverListener { get; set; }
     public IAudioControlListener AudioControlListener { get; set; }
 
+    static string mNativeReceiverName;
+    static NativeReceiver mNativeAPIMsgReceiver;
+
     //-------------------------------------------------------------------------
-    public static NativeReceiver instance()
+    public static NativeReceiver Instance()
     {
         mNativeReceiverName = (typeof(NativeReceiver)).Name;
         GameObject msg_receiver = GameObject.Find(mNativeReceiverName);
@@ -19,7 +18,7 @@ public class NativeReceiver : MonoBehaviour
         {
             msg_receiver = new GameObject(mNativeReceiverName);
             mNativeAPIMsgReceiver = msg_receiver.AddComponent<NativeReceiver>();
-            GameObject.DontDestroyOnLoad(msg_receiver);
+            DontDestroyOnLoad(msg_receiver);
         }
         else
         {
