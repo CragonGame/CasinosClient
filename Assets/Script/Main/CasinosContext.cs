@@ -16,22 +16,22 @@ namespace Casinos
         Diamond
     }
 
-    public enum _eFriendStateClient
-    {
-        Offline,
-        Fishing,
-        GFlowerDesktopH,
-        GFlowerDesktopPrivate,
-        GFlowerDesktopNormal,
-        TexasDesktopClassicPrivate,
-        TexasDesktopClassic,
-        TexasDesktopMustBet,
-        TexasDesktopMustBetPrivate,
-        TexasDesktopH,
-        NiuNiuDesktopH,
-        ZhongFBDesktopH,
-        NotInDesktop,
-    }
+    //public enum _eFriendStateClient
+    //{
+    //    Offline,
+    //    Fishing,
+    //    GFlowerDesktopH,
+    //    GFlowerDesktopPrivate,
+    //    GFlowerDesktopNormal,
+    //    TexasDesktopClassicPrivate,
+    //    TexasDesktopClassic,
+    //    TexasDesktopMustBet,
+    //    TexasDesktopMustBetPrivate,
+    //    TexasDesktopH,
+    //    NiuNiuDesktopH,
+    //    ZhongFBDesktopH,
+    //    NotInDesktop,
+    //}
 
     public enum _eChatItemType
     {
@@ -85,6 +85,12 @@ namespace Casinos
         public CasinosContext(bool force_use_resouceslaunch, bool force_use_dataoss)
         {
             Instance = this;
+
+            DateTime dt = DateTime.UtcNow;
+
+            string ss = dt.ToString();
+            DateTime dt1 = DateTime.Parse(ss);
+            int aa = 0;
 
             _eEditorRunSourcePlatform editor_runsorce = _eEditorRunSourcePlatform.Android;
 #if UNITY_STANDALONE_WIN

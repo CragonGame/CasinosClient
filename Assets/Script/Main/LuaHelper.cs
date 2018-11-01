@@ -469,22 +469,22 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static LoginGuestInfo JsonDeserializeLoginGuestInfo(string str_json)
-        {
-            return EbTool.jsonDeserialize<LoginGuestInfo>(str_json);
-        }
+        //public static LoginGuestInfo JsonDeserializeLoginGuestInfo(string str_json)
+        //{
+        //    return EbTool.jsonDeserialize<LoginGuestInfo>(str_json);
+        //}
 
         //---------------------------------------------------------------------
-        public static LoginAccountInfo JsonDeserializeLoginAccountInfo(string str_json)
-        {
-            return EbTool.jsonDeserialize<LoginAccountInfo>(str_json);
-        }
+        //public static LoginAccountInfo JsonDeserializeLoginAccountInfo(string str_json)
+        //{
+        //    return EbTool.jsonDeserialize<LoginAccountInfo>(str_json);
+        //}
 
         //---------------------------------------------------------------------
-        public static DateTime JsonDeserializeDateTime(string str_json)
-        {
-            return EbTool.jsonDeserialize<DateTime>(str_json);
-        }
+        //public static DateTime JsonDeserializeDateTime(string str_json)
+        //{
+        //    return EbTool.jsonDeserialize<DateTime>(str_json);
+        //}
 
         //---------------------------------------------------------------------
         public static AutoDestroyParticle GetComponentAutoDestroyParticle(GameObject gameobject)

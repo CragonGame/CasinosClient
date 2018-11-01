@@ -13,35 +13,29 @@ function UnitConsume:new(o, item)
     o.GiveBy = ""
     o.GiveEtGuid = nil
     o.CreateTime = nil
-    if (o.Item.ItemData.map_unit_data == nil or o.Item.ItemData.map_unit_data.Count == 0)
-    then
+    if (o.Item.ItemData.map_unit_data == nil or o.Item.ItemData.map_unit_data.Count == 0) then
         o.CreateTime = CS.System.DateTime.UtcNow
         o:_saveData()
     end
-
     o:_setup()
-
     return o
 end
 
 ---------------------------------------
 function UnitConsume:_setup()
     local nick_name = self.Item.ItemData.map_unit_data[1]
-    if (CS.System.String.IsNullOrEmpty(nick_name) == false)
-    then
+    if (CS.System.String.IsNullOrEmpty(nick_name) == false) then
         self.GiveBy = nick_name
     end
 
     local et_guid = self.Item.ItemData.map_unit_data[2]
-    if (CS.System.String.IsNullOrEmpty(et_guid) == false)
-    then
+    if (CS.System.String.IsNullOrEmpty(et_guid) == false) then
         self.GiveEtGuid = et_guid
     end
 
     local create_time = self.Item.ItemData.map_unit_data[3]
-    if (CS.System.String.IsNullOrEmpty(create_time) == false)
-    then
-        self.CreateTime = CS.Casinos.LuaHelper.JsonDeserializeDateTime(create_time)
+    if (CS.System.String.IsNullOrEmpty(create_time) == false) then
+        self.CreateTime = CS.System.DateTime.Parse(create_time)
     end
 end
 
@@ -53,7 +47,7 @@ function UnitConsume:_saveData()
     end
     self.Item.ItemData.map_unit_data[1] = self.GiveBy
     self.Item.ItemData.map_unit_data[2] = self.GiveEtGuid
-    self.Item.ItemData.map_unit_data[3] = CS.Casinos.EbTool.jsonSerialize(self.CreateTime)
+    self.Item.ItemData.map_unit_data[3] = self.CreateTime:ToString()
 end
 
 ---------------------------------------

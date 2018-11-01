@@ -1444,60 +1444,6 @@ namespace XLua.CSObjectWrap
 		}
 	}
     
-    public class Casinos_eProjectItemDisplayNameKeyWrap
-    {
-		public static void __Register(RealStatePtr L)
-        {
-		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-		    Utils.BeginObjectRegister(typeof(Casinos._eProjectItemDisplayNameKey), L, translator, 0, 0, 0, 0);
-			Utils.EndObjectRegister(typeof(Casinos._eProjectItemDisplayNameKey), L, translator, null, null, null, null, null);
-			
-			Utils.BeginClassRegister(typeof(Casinos._eProjectItemDisplayNameKey), L, null, 3, 0, 0);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Gold", Casinos._eProjectItemDisplayNameKey.Gold);
-            
-            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Diamond", Casinos._eProjectItemDisplayNameKey.Diamond);
-            
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
-            
-            Utils.EndClassRegister(typeof(Casinos._eProjectItemDisplayNameKey), L, translator);
-        }
-		
-		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int __CastFrom(RealStatePtr L)
-		{
-			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
-            if (lua_type == LuaTypes.LUA_TNUMBER)
-            {
-                translator.PushCasinos_eProjectItemDisplayNameKey(L, (Casinos._eProjectItemDisplayNameKey)LuaAPI.xlua_tointeger(L, 1));
-            }
-			
-            else if(lua_type == LuaTypes.LUA_TSTRING)
-            {
-			    if (LuaAPI.xlua_is_eq_str(L, 1, "Gold"))
-                {
-                    translator.PushCasinos_eProjectItemDisplayNameKey(L, Casinos._eProjectItemDisplayNameKey.Gold);
-                }
-				else if (LuaAPI.xlua_is_eq_str(L, 1, "Diamond"))
-                {
-                    translator.PushCasinos_eProjectItemDisplayNameKey(L, Casinos._eProjectItemDisplayNameKey.Diamond);
-                }
-				else
-                {
-                    return LuaAPI.luaL_error(L, "invalid string for Casinos._eProjectItemDisplayNameKey!");
-                }
-            }
-			
-            else
-            {
-                return LuaAPI.luaL_error(L, "invalid lua type for Casinos._eProjectItemDisplayNameKey! Expect number or string, got + " + lua_type);
-            }
-
-            return 1;
-		}
-	}
-    
     public class _eAsyncAssetLoadTypeWrap
     {
 		public static void __Register(RealStatePtr L)
@@ -1576,6 +1522,126 @@ namespace XLua.CSObjectWrap
 		}
 	}
     
+    public class Casinos_eChatItemTypeWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(Casinos._eChatItemType), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(Casinos._eChatItemType), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(Casinos._eChatItemType), L, null, 4, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "NormalChat", Casinos._eChatItemType.NormalChat);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "ShootingText", Casinos._eChatItemType.ShootingText);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Marquee", Casinos._eChatItemType.Marquee);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(Casinos._eChatItemType), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushCasinos_eChatItemType(L, (Casinos._eChatItemType)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "NormalChat"))
+                {
+                    translator.PushCasinos_eChatItemType(L, Casinos._eChatItemType.NormalChat);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "ShootingText"))
+                {
+                    translator.PushCasinos_eChatItemType(L, Casinos._eChatItemType.ShootingText);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Marquee"))
+                {
+                    translator.PushCasinos_eChatItemType(L, Casinos._eChatItemType.Marquee);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for Casinos._eChatItemType!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for Casinos._eChatItemType! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class Casinos_eLoginTypeWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(Casinos._eLoginType), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(Casinos._eLoginType), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(Casinos._eLoginType), L, null, 4, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Acc", Casinos._eLoginType.Acc);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Guest", Casinos._eLoginType.Guest);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "WeiXin", Casinos._eLoginType.WeiXin);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(Casinos._eLoginType), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushCasinos_eLoginType(L, (Casinos._eLoginType)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "Acc"))
+                {
+                    translator.PushCasinos_eLoginType(L, Casinos._eLoginType.Acc);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Guest"))
+                {
+                    translator.PushCasinos_eLoginType(L, Casinos._eLoginType.Guest);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "WeiXin"))
+                {
+                    translator.PushCasinos_eLoginType(L, Casinos._eLoginType.WeiXin);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for Casinos._eLoginType!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for Casinos._eLoginType! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
     public class _ePayTypeWrap
     {
 		public static void __Register(RealStatePtr L)
@@ -1630,6 +1696,60 @@ namespace XLua.CSObjectWrap
             else
             {
                 return LuaAPI.luaL_error(L, "invalid lua type for _ePayType! Expect number or string, got + " + lua_type);
+            }
+
+            return 1;
+		}
+	}
+    
+    public class Casinos_eProjectItemDisplayNameKeyWrap
+    {
+		public static void __Register(RealStatePtr L)
+        {
+		    ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+		    Utils.BeginObjectRegister(typeof(Casinos._eProjectItemDisplayNameKey), L, translator, 0, 0, 0, 0);
+			Utils.EndObjectRegister(typeof(Casinos._eProjectItemDisplayNameKey), L, translator, null, null, null, null, null);
+			
+			Utils.BeginClassRegister(typeof(Casinos._eProjectItemDisplayNameKey), L, null, 3, 0, 0);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Gold", Casinos._eProjectItemDisplayNameKey.Gold);
+            
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "Diamond", Casinos._eProjectItemDisplayNameKey.Diamond);
+            
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "__CastFrom", __CastFrom);
+            
+            Utils.EndClassRegister(typeof(Casinos._eProjectItemDisplayNameKey), L, translator);
+        }
+		
+		[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int __CastFrom(RealStatePtr L)
+		{
+			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LuaTypes lua_type = LuaAPI.lua_type(L, 1);
+            if (lua_type == LuaTypes.LUA_TNUMBER)
+            {
+                translator.PushCasinos_eProjectItemDisplayNameKey(L, (Casinos._eProjectItemDisplayNameKey)LuaAPI.xlua_tointeger(L, 1));
+            }
+			
+            else if(lua_type == LuaTypes.LUA_TSTRING)
+            {
+			    if (LuaAPI.xlua_is_eq_str(L, 1, "Gold"))
+                {
+                    translator.PushCasinos_eProjectItemDisplayNameKey(L, Casinos._eProjectItemDisplayNameKey.Gold);
+                }
+				else if (LuaAPI.xlua_is_eq_str(L, 1, "Diamond"))
+                {
+                    translator.PushCasinos_eProjectItemDisplayNameKey(L, Casinos._eProjectItemDisplayNameKey.Diamond);
+                }
+				else
+                {
+                    return LuaAPI.luaL_error(L, "invalid string for Casinos._eProjectItemDisplayNameKey!");
+                }
+            }
+			
+            else
+            {
+                return LuaAPI.luaL_error(L, "invalid lua type for Casinos._eProjectItemDisplayNameKey! Expect number or string, got + " + lua_type);
             }
 
             return 1;

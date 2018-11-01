@@ -40,8 +40,8 @@ function Native:new(o, view_mgr, listner)
         --CS.OpenInstall.Instant()
     end
 
-    --self.PlayerQRCodeTexture = CS.UnityEngine.Texture2D(190, 190)
-    --self.ShareUrl = nil
+    self.PlayerQRCodeTexture = CS.UnityEngine.Texture2D(190, 190)
+    self.ShareUrl = nil
 
     --CS.Pay.Instant()
     --if CS.Casinos.CasinosContext.Instance.IsEditor == false then

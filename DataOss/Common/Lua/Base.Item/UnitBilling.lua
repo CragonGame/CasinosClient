@@ -10,7 +10,6 @@ function UnitBilling:new(o, item)
     self.__index = self
     o.UnitType = "Billing"
     o.Item = item
-
     return o
 end
 
@@ -22,7 +21,6 @@ function UnitFacBilling:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     return o
 end
 

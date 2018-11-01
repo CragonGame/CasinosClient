@@ -286,10 +286,10 @@ function ViewLogin:OnDestroy()
         self.TimerUpdate = nil
     end
 
-    if (self.Context.Cfg.NeedHideClientUi == false) then
-        CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
-    end
-    CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
+    --if (self.Context.Cfg.NeedHideClientUi == false) then
+    --    CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
+    --end
+    --CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
 end
 
 ---------------------------------------

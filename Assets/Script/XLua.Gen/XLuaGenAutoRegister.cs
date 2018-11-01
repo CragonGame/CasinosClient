@@ -217,11 +217,15 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(FairyGUI.Window), FairyGUIWindowWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(Casinos._eProjectItemDisplayNameKey), Casinos_eProjectItemDisplayNameKeyWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(_eAsyncAssetLoadType), _eAsyncAssetLoadTypeWrap.__Register);
 				
+				translator.DelayWrapLoader(typeof(Casinos._eChatItemType), Casinos_eChatItemTypeWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos._eLoginType), Casinos_eLoginTypeWrap.__Register);
+				
 				translator.DelayWrapLoader(typeof(_ePayType), _ePayTypeWrap.__Register);
+				
+				translator.DelayWrapLoader(typeof(Casinos._eProjectItemDisplayNameKey), Casinos_eProjectItemDisplayNameKeyWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(AsyncAssetLoaderMgr), AsyncAssetLoaderMgrWrap.__Register);
 				

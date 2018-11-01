@@ -177,7 +177,7 @@ function ControllerLogin:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvUiLogin") then
             local login_type = ev.login_type
-            CS.Casinos.CasinosContext.Instance.LoginType = login_type
+            self.CasinosContext.LoginType = login_type
             self.LoginType = login_type
             self.Acc = ev.acc
             self.Pwd = ev.pwd
@@ -308,7 +308,7 @@ end
 
 ---------------------------------------
 function ControllerLogin:RequestLogin(acc, pwd, phone, email, phone_verification_code)
-    CS.Casinos.CasinosContext.Instance.LoginType = 0
+    self.CasinosContext.LoginType = 0
     self.Password = pwd
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
 
@@ -328,7 +328,7 @@ end
 
 ---------------------------------------
 function ControllerLogin:RequestGuestAccess()
-    CS.Casinos.CasinosContext.Instance.LoginType = 1
+    self.CasinosContext.LoginType = 1
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
     local guest_accessinfo = GuestAccessInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.GuestAccessInfo()
     guest_accessinfo.AppId = self.Context.Cfg.UCenterAppId
@@ -350,7 +350,7 @@ end
 
 ---------------------------------------
 function ControllerLogin:RequestWechatLogin(token, app_id)
-    CS.Casinos.CasinosContext.Instance.LoginType = 2
+    self.CasinosContext.LoginType = 2
     local c_login = ControllerLogin:new(nil)
     ViewHelper:UiBeginWaiting(c_login.ControllerMgr.LanMgr:getLanValue("Logining"))
     local wechat_info = AccountWeChatOAuthInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.AccountWeChatOAuthInfo()
@@ -365,7 +365,7 @@ end
 
 ---------------------------------------
 function ControllerLogin:RequestWechatAutoLogin()
-    CS.Casinos.CasinosContext.Instance.LoginType = 2
+    self.CasinosContext.LoginType = 2
     local r = AccountWeChatAutoLoginRequest:new(nil)
     r.AppId = self.Context.Cfg.WeChatAppId
     r.OpenId = a_info_last_login.AccName
@@ -476,7 +476,7 @@ function ControllerLogin:OnUCenterLogin(http_statuscode, status, response, error
         local acc_name = ""
         local phone = ""
         local pwd = ""
-        if (c.LoginType == CS.Casinos._eLoginType.Acc) then
+        if (self.CasinosContext.LoginType == CS.Casinos._eLoginType.Acc) then
             pwd = self.Password
             if (self.RemeberPwd == false) then
                 pwd = ""
@@ -484,9 +484,9 @@ function ControllerLogin:OnUCenterLogin(http_statuscode, status, response, error
             login_type = 0
             acc_name = self.Phone
             phone = response.phone
-        elseif (c.LoginType == CS.Casinos._eLoginType.Guest) then
+        elseif (self.CasinosContext.LoginType == CS.Casinos._eLoginType.Guest) then
             login_type = 1
-        elseif (c.LoginType == CS.Casinos._eLoginType.WeiXin) then
+        elseif (self.CasinosContext.LoginType == CS.Casinos._eLoginType.WeiXin) then
             login_type = 2
             acc_name = response.accountName
         end
@@ -506,7 +506,7 @@ function ControllerLogin:OnUCenterLogin(http_statuscode, status, response, error
         local t_encode = self.ControllerMgr.Json.encode(infos)
         CS.UnityEngine.PlayerPrefs.SetString(self.LoginAccountInfoKey, t_encode)
 
-        c.NetMgr:Connect(self.Context.Cfg.GatewayIp, self.Context.Cfg.GatewayPort)
+        self.CasinosContext.NetMgr:Connect(self.Context.Cfg.GatewayIp, self.Context.Cfg.GatewayPort)
     else
         if (error ~= nil) then
             ViewHelper:UiEndWaiting()
@@ -521,8 +521,6 @@ end
 ---------------------------------------
 function ControllerLogin:OnUCenterGuestAccess(http_statuscode, status, response, error)
     ViewHelper:UiEndWaiting()
-    --local c_login = ControllerLogin:new(nil)
-    local c = CS.Casinos.CasinosContext.Instance
     if (status == UCenterResponseStatus.Success) then
         print("OnUCenterGuestAccess")
         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("LoginSuccessful"))
@@ -551,7 +549,7 @@ function ControllerLogin:OnUCenterGuestAccess(http_statuscode, status, response,
         local t_encode = self.ControllerMgr.Json.encode(infos)
         CS.UnityEngine.PlayerPrefs.SetString(self.LoginAccountInfoKey, t_encode)
 
-        c.NetMgr:Connect(self.Context.Cfg.GatewayIp, self.Context.Cfg.GatewayPort)
+        self.CasinosContext.NetMgr:Connect(self.Context.Cfg.GatewayIp, self.Context.Cfg.GatewayPort)
     else
         if (error ~= nil) then
             local error_msg = self.ControllerUCenter:ParseUCenterErrorCode(error.code)
@@ -563,7 +561,6 @@ end
 ---------------------------------------
 function ControllerLogin:OnUCenterResetPasswordWithPhone(http_statuscode, status, response, error)
     ViewHelper:UiEndWaiting()
-    --local c_login = ControllerLogin:new(nil)
     if (status == UCenterResponseStatus.Success) then
         local info = self.ControllerMgr.LanMgr:getLanValue("ResetPwdSuccessful")
         ViewHelper:UiShowInfoSuccess(info)
@@ -651,7 +648,6 @@ end
 ---------------------------------------
 function ControllerLogin:OnAccountGatewayConnected()
     print("OnAccountGatewayConnected")
-
     local login_request = ClientLoginAppRequest:new(nil)
     login_request.acc_id = self.AccId
     login_request.acc_name = self.Acc
@@ -661,7 +657,6 @@ function ControllerLogin:OnAccountGatewayConnected()
     if (e ~= nil) then
         nick_name = "ac" .. CS.UnityEngine.Random.Range(100000, 999999)
     end
-
     nick_name = ViewHelper:SubStrToTargetLength(nick_name, 9)
     login_request.nick_name = nick_name
     login_request.channel_id = CS.Casinos.CasinosContext.Instance.Config.Channel
@@ -705,7 +700,6 @@ function ControllerLogin:OnAccountEnterWorldResponse(enterworld_notify1)
             s = table.concat({ s, "，ErrorCode=", enterworld_notify.result })
         end
         ViewHelper:UiShowInfoFailed(s)
-
         self:_disconnect()
     else
         local invite_payerid = "InvitePlayerId"
@@ -723,10 +717,10 @@ end
 
 ---------------------------------------
 function ControllerLogin:OnAccountLogoutNotify(protocal_result)
+    print('ControllerLogin:OnAccountLogoutNotify')
     if (protocal_result == ProtocolResult.LogoutNewLogin) then
         self.ShowKickOutInfo = true
     end
-
     self:_disconnect()
 end
 
@@ -751,11 +745,6 @@ end
 function ControllerLogin:GetClientEnterWorldNotify()
     return self.ClientEnterWorldNotify
 end
-
----------------------------------------
---function ControllerLogin:entityPlayerInitDone()
---    self.ClientEnterWorldNotify = nil
---end
 
 ---------------------------------------
 function ControllerLogin:OnSocketClose()
@@ -843,7 +832,7 @@ end
 
 ---------------------------------------
 function ControllerLogin:needCheckIdCard()
-    if CS.Casinos.CasinosContext.Instance.LoginType == CS.Casinos._eLoginType.Guest then
+    if self.CasinosContext.LoginType == CS.Casinos._eLoginType.Guest then
         return false
     end
     if self.Identity == nil or #self.Identity == 0 then

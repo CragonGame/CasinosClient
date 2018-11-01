@@ -789,7 +789,7 @@ end
 function ControllerPlayer:CreateViewActivityPopUpBox()
     if (#self.QueneHotActivity > 0) then
         local temp = table.remove(self.QueneHotActivity, 1)
-        local view_activitypopupbox = self.ControllerMgr.ViewMgr:CreateView("ActivityPopUpBox")
+        local view_activitypopupbox = self.ControllerMgr.ViewMgr:CreateView("ActivityPopup")
         view_activitypopupbox:SetActivityInfo(temp)
     end
 end

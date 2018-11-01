@@ -218,7 +218,7 @@ function ViewMain:OnCreate()
             function()
                 ViewHelper:UiShowMsgBox(self.ViewMgr.LanMgr:getLanValue("GuestRegisterTips"),
                         function()
-                            CS.Casinos.CasinosContext.Instance.NetMgr:Disconnect()
+                            self.CasinosContext.NetMgr:Disconnect()
                             local login = self.ViewMgr:GetView("Login")
                             if login ~= nil then
                                 login:_onClickBtnShowRegister()
@@ -226,7 +226,7 @@ function ViewMain:OnCreate()
                         end)
             end)
     local show_register = false
-    if CS.Casinos.CasinosContext.Instance.LoginType == CS.Casinos._eLoginType.Guest then
+    if self.CasinosContext.LoginType == CS.Casinos._eLoginType.Guest then
         show_register = true
     end
     ViewHelper:SetGObjectVisible(show_register, self.BtnRegister)
@@ -439,7 +439,7 @@ end
 ---------------------------------------
 function ViewMain:OnDestroy()
     if (self.Context.Cfg.NeedHideClientUi == false) then
-        CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
+        --CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
     end
     CS.UnityEngine.GameObject.Destroy(self.ParticleDeskTop)
     CS.UnityEngine.GameObject.Destroy(self.ParticleMatch)

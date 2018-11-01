@@ -31,7 +31,7 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 68, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 65, 0, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "readAllText", _m_readAllText_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "writeFile", _m_writeFile_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GObjectCastToGCom", _m_GObjectCastToGCom_xlua_st_);
@@ -91,9 +91,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetNewCardList", _m_GetNewCardList_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ParseHandRankTypeTexasHToStr", _m_ParseHandRankTypeTexasHToStr_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ParseHandRankTypeTexasToStr", _m_ParseHandRankTypeTexasToStr_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "JsonDeserializeLoginGuestInfo", _m_JsonDeserializeLoginGuestInfo_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "JsonDeserializeLoginAccountInfo", _m_JsonDeserializeLoginAccountInfo_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "JsonDeserializeDateTime", _m_JsonDeserializeDateTime_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetComponentAutoDestroyParticle", _m_GetComponentAutoDestroyParticle_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "EnumCastToInt", _m_EnumCastToInt_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "FormatPlayerActorId", _m_FormatPlayerActorId_xlua_st_);
@@ -1666,87 +1663,6 @@ namespace XLua.CSObjectWrap
                     
                         string gen_ret = Casinos.LuaHelper.ParseHandRankTypeTexasToStr( _rank );
                         LuaAPI.lua_pushstring(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_JsonDeserializeLoginGuestInfo_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    string _str_json = LuaAPI.lua_tostring(L, 1);
-                    
-                        Casinos.LoginGuestInfo gen_ret = Casinos.LuaHelper.JsonDeserializeLoginGuestInfo( _str_json );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_JsonDeserializeLoginAccountInfo_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    string _str_json = LuaAPI.lua_tostring(L, 1);
-                    
-                        Casinos.LoginAccountInfo gen_ret = Casinos.LuaHelper.JsonDeserializeLoginAccountInfo( _str_json );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_JsonDeserializeDateTime_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    string _str_json = LuaAPI.lua_tostring(L, 1);
-                    
-                        System.DateTime gen_ret = Casinos.LuaHelper.JsonDeserializeDateTime( _str_json );
-                        translator.Push(L, gen_ret);
                     
                     
                     

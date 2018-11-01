@@ -4,7 +4,7 @@
 -- TODO，待删除
 PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
 BotIconDomain = 'http://cragon-king-oss.cragon.cn/ucenter/'
-UCenterDomain = 'http://ucenter.cragon.cn'
+UCenterDomain = 'http://ucenter-dev.cragon.cn'
 ServerState = 0-- 服务器状态: 0正常,1维护
 ServerStateInfo = ''-- 系统公告
 ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
@@ -67,8 +67,8 @@ function Config:new(o)
     self.PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
     self.BotIconDomain = 'http://cragon-king-oss.cragon.cn/ucenter/'
     self.SysNoticeInfoUrl = ''
-    self.UCenterDomain = 'http://ucenter.cragon.cn'
-    self.GatewayIp = 'king-gateway.cragon.cn'
+    self.UCenterDomain = 'http://ucenter-dev.cragon.cn'
+    self.GatewayIp = 'king-gateway-dev.cragon.cn'
     self.GatewayPort = 5882
     self.BundleUpdateStata = 0
     self.BundleUpdateVersion = '1.00.067'

@@ -144,9 +144,11 @@ namespace Casinos
             typeof(FairyGUI.Window),
 
             // Casinos
-            typeof(_eProjectItemDisplayNameKey),
             typeof(_eAsyncAssetLoadType),
+            typeof(_eChatItemType),
+            typeof(_eLoginType),
             typeof(_ePayType),
+            typeof(_eProjectItemDisplayNameKey),
             typeof(AsyncAssetLoaderMgr),
             typeof(AsyncAssetLoadGroup),
             typeof(Card),
