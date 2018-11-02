@@ -14,7 +14,7 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
         self.ControllerData = controller_data
         self.ControllerMgr = controller_mgr
         self.Guid = guid
-        self.UCenterDomain = UCenterDomain
+        self.UCenterDomain = self.Context.Cfg.UCenterDomain
         self.MbHelper = nil
         self.Instance = o
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
@@ -386,53 +386,25 @@ end
 
 ---------------------------------------
 function ControllerUCenter:_genUrl(api)
-    local http_url = nil
-    local index = string.find(self.UCenterDomain, "/", -1)
-    local l = string.len(self.UCenterDomain)
-    if (index == l) then
-        http_url = string.format("%sapi/accounts/%s", self.UCenterDomain, api)
-    else
-        http_url = string.format("%s/api/accounts/%s", self.UCenterDomain, api)
-    end
+    local http_url = string.format("%s/api/accounts/%s", self.UCenterDomain, api)
     return http_url
 end
 
 ---------------------------------------
 function ControllerUCenter:_genPayUrl(api)
-    local http_url = nil
-    local index = string.find(self.UCenterDomain, "/", -1)
-    local l = string.len(self.UCenterDomain)
-    if (index == l) then
-        http_url = string.format("%sapi/pay/%s", self.UCenterDomain, api)
-    else
-        http_url = string.format("%s/api/pay/%s", self.UCenterDomain, api)
-    end
+    local http_url = string.format("%s/api/pay/%s", self.UCenterDomain, api)
     return http_url
 end
 
 ---------------------------------------
 function ControllerUCenter:_genIdCardUrl(api)
-    local http_url = nil
-    local index = string.find(self.UCenterDomain, "/", -1)
-    local l = string.len(self.UCenterDomain)
-    if (index == l) then
-        http_url = string.format("%sapi/idcard/%s", self.UCenterDomain, api)
-    else
-        http_url = string.format("%s/api/idcard/%s", self.UCenterDomain, api)
-    end
+    local http_url = string.format("%s/api/idcard/%s", self.UCenterDomain, api)
     return http_url
 end
 
 ---------------------------------------
 function ControllerUCenter:_genApiUrl(api)
-    local http_url = nil
-    local index = string.find(self.UCenterDomain, "/", -1)
-    local l = string.len(self.UCenterDomain)
-    if (index == l) then
-        http_url = string.format("%sapi/%s", self.UCenterDomain, api)
-    else
-        http_url = string.format("%s/api/%s", self.UCenterDomain, api)
-    end
+    local http_url = string.format("%s/api/%s", self.UCenterDomain, api)
     return http_url
 end
 

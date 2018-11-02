@@ -230,7 +230,6 @@ function ControllerLogin:OnHandleEv(ev)
             self.Phone = ev.phone
             self:RequestResetPasswordWithPhone(ev.formatphone, phone_code, new_pwd)
         elseif (ev.EventName == "EvUiChooseUCenter") then
-            UCenterDomain = ev.ucenter
             self.ControllerUCenter.UCenterDomain = ev.ucenter
         elseif (ev.EventName == "EvUiChooseGateWay") then
             --self.Context.Cfg.GatewayIp = ev.gateway
