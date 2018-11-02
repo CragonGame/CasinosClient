@@ -126,22 +126,12 @@ function ViewDailyReward:onClickBtnGetReward()
     end
     self.AutoDestroyUi = true
     local particleblue_parent = self.ComUi:GetChild("FallGoldParent").asGraph
-    local p_helper = ParticleHelper:new(nil)
-    --local particle_path = self.CasinosContext.PathMgr.DirAbParticle .. "fallgoldex.ab")
-    local particle2 = p_helper:GetParticel("fallgoldex.ab")
-    --self.AssetBundleFallGold = CS.UnityEngine.AssetBundle.LoadFromFile(particle_path)
-    local fall_gold = CS.UnityEngine.Object.Instantiate(particle2:LoadAsset("FallGoldEx"))
-    --local fall_gold = CS.UnityEngine.Object.Instantiate(self.AssetBundleFallGold:LoadAsset("FallGoldEx"))
+    local particle2 = ParticleHelper:GetParticel("fallgoldex.ab")
+    local fall_gold = CS.UnityEngine.GameObject.Instantiate(particle2:LoadAsset("FallGoldEx"))
     particleblue_parent:SetNativeObject(CS.FairyGUI.GoWrapper(fall_gold))
     self.ParticleSystem = fall_gold:GetComponent("ParticleSystem")
     self.ParticleSystem:Play()
-    --local auto_destroy = CS.Casinos.LuaHelper.GetComponentAutoDestroyParticle(fall_gold)
-    --auto_destroy:play(
-    --	function()
-    --		self.ViewMgr:DestroyView(self)
-    --       self.AssetBundleFallGold:Unload(true)
-    --	end
-    --)
+
     if (self.mOperateAction ~= nil) then
         CS.Casinos.CasinosContext.Instance:Play(self.REWARD_SOUND, CS.Casinos._eSoundLayer.LayerNormal)
         self.mOperateAction(true)

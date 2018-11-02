@@ -96,12 +96,11 @@ function ViewMain:OnCreate()
     end
     ViewHelper:SetGObjectVisible(show_goldtree, btn_goldtree)
 
-    local gold_par_parent = btn_goldtree:GetChild("GoldTreeParParent").asGraph
-    local p_helper = ParticleHelper:new(nil)
-    local g_t_particle = p_helper:GetParticel("goldtreepar.ab")
-    local prefab_g_t_particle = g_t_particle:LoadAsset("GoldTreePar")
-    local g_p = CS.UnityEngine.GameObject.Instantiate(prefab_g_t_particle)
-    gold_par_parent:SetNativeObject(CS.FairyGUI.GoWrapper(g_p))
+    --local gold_par_parent = btn_goldtree:GetChild("GoldTreeParParent").asGraph
+    --local g_t_particle = ParticleHelper:GetParticel("goldtreepar.ab")
+    --local prefab_g_t_particle = g_t_particle:LoadAsset("GoldTreePar")
+    --local g_p = CS.UnityEngine.GameObject.Instantiate(prefab_g_t_particle)
+    --gold_par_parent:SetNativeObject(CS.FairyGUI.GoWrapper(g_p))
 
     local com_more = nil
     if (self.Context.Cfg.NeedHideClientUi) then
@@ -359,18 +358,18 @@ function ViewMain:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChats", self)
     self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
 
-    self.PosGetChipEffectParticle = self.ComUi:GetChild("ComPosGetChipParticle").asCom.position
-    local ab_particle_desktop = p_helper:GetParticel("btndesktopparticle.ab")
-    local prefab_particle_desktop = ab_particle_desktop:LoadAsset("BtnDeskTopParticle")
-    self.ParticleDeskTop = CS.UnityEngine.GameObject.Instantiate(prefab_particle_desktop)
-    local holder_destopParticle = btn_desktop:GetChild("HolderParticle").asGraph
-    holder_destopParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleDeskTop))
+    --self.PosGetChipEffectParticle = self.ComUi:GetChild("ComPosGetChipParticle").asCom.position
+    --local ab_particle_desktop = ParticleHelper:GetParticel("btndesktopparticle.ab")
+    --local prefab_particle_desktop = ab_particle_desktop:LoadAsset("BtnDeskTopParticle")
+    --self.ParticleDeskTop = CS.UnityEngine.GameObject.Instantiate(prefab_particle_desktop)
+    --local holder_destopParticle = btn_desktop:GetChild("HolderParticle").asGraph
+    --holder_destopParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleDeskTop))
 
-    local ab_particle_match = p_helper:GetParticel("btnmatchparticle.ab")
-    local prefab_particle_match = ab_particle_match:LoadAsset("BtnMatchParticle")
-    self.ParticleMatch = CS.UnityEngine.GameObject.Instantiate(prefab_particle_match)
-    local holder_matchParticle = btn_match:GetChild("HolderParticle").asGraph
-    holder_matchParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleMatch))
+    --local ab_particle_match = ParticleHelper:GetParticel("btnmatchparticle.ab")
+    --local prefab_particle_match = ab_particle_match:LoadAsset("BtnMatchParticle")
+    --self.ParticleMatch = CS.UnityEngine.GameObject.Instantiate(prefab_particle_match)
+    --local holder_matchParticle = btn_match:GetChild("HolderParticle").asGraph
+    --holder_matchParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleMatch))
 
     local image_bg = self.ComUi:GetChild("ImageMote").asImage
     if (self.Context.Cfg.NeedHideClientUi == false) then

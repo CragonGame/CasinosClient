@@ -11,14 +11,13 @@ function PlayerShowTips:new(o, player_info)
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.PlayerInfo = player_info
     local com_ui = o.PlayerInfo.ComUi
-    local p_helper = ParticleHelper:new(nil)
 
     o.ComPoint = com_ui:GetChild("ComPoint").asCom
     local controller_point = o.ComPoint:GetController("ControllerTips")
     controller_point.selectedIndex = 0
     local point_pp = o.ComPoint:GetChild("ParticalParent").asGraph
-    local particle1 = p_helper:GetParticel("showtips.ab")
-    local p_1 = CS.UnityEngine.Object.Instantiate(particle1:LoadAsset("ShowTips"))
+    local particle1 = ParticleHelper:GetParticel("showtips.ab")
+    local p_1 = CS.UnityEngine.GameObject.Instantiate(particle1:LoadAsset("ShowTips"))
     point_pp:SetNativeObject(CS.FairyGUI.GoWrapper(p_1))
     o.TextPoint = o.ComPoint:GetChild("TextPoint").asTextField
     ViewHelper:SetGObjectVisible(false, o.ComPoint)
@@ -27,8 +26,8 @@ function PlayerShowTips:new(o, player_info)
     local controller_wingold = o.ComWinGold:GetController("ControllerTips")
     controller_wingold.selectedIndex = 1
     local wingold_pp = o.ComWinGold:GetChild("ParticalParent").asGraph
-    local particle2 = p_helper:GetParticel("showtips.ab")
-    local p_2 = CS.UnityEngine.Object.Instantiate(particle2:LoadAsset("ShowTips"))
+    local particle2 = ParticleHelper:GetParticel("showtips.ab")
+    local p_2 = CS.UnityEngine.GameObject.Instantiate(particle2:LoadAsset("ShowTips"))
     wingold_pp:SetNativeObject(CS.FairyGUI.GoWrapper(p_2))
     o.TextWinGold = o.ComWinGold:GetChild("TextWinGold").asTextField
     ViewHelper:SetGObjectVisible(false, o.ComWinGold)
@@ -37,8 +36,8 @@ function PlayerShowTips:new(o, player_info)
     local controller_exp = o.ComExp:GetController("ControllerTips")
     controller_exp.selectedIndex = 2
     local exp_pp = o.ComExp:GetChild("ParticalParent").asGraph
-    local particle3 = p_helper:GetParticel("showtips.ab")
-    local p_3 = CS.UnityEngine.Object.Instantiate(particle3:LoadAsset("ShowTips"))
+    local particle3 = ParticleHelper:GetParticel("showtips.ab")
+    local p_3 = CS.UnityEngine.GameObject.Instantiate(particle3:LoadAsset("ShowTips"))
     exp_pp:SetNativeObject(CS.FairyGUI.GoWrapper(p_3))
     o.TextExp = o.ComExp:GetChild("TextExp").asTextField
     ViewHelper:SetGObjectVisible(false, o.ComExp)

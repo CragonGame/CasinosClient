@@ -34,20 +34,20 @@ function ViewMTTGameResult:OnCreate()
     self.TextTips = com_ui:GetChild("TextTips").asTextField
     self.TextRank = com_ui:GetChild("TextRank").asTextField
     self.ListReward = com_ui:GetChild("ListReward").asList
-    local p_helper = ParticleHelper:new(nil)
+
     local p_r = com_ui:GetChild("ParticleRed").asGraph
-    local p_r1 = p_helper:GetParticel("fallcolorred.ab")
-    local p_r2 = CS.UnityEngine.Object.Instantiate(p_r1:LoadAsset("FallColorRed"))
+    local p_r1 = ParticleHelper:GetParticel("fallcolorred.ab")
+    local p_r2 = CS.UnityEngine.GameObject.Instantiate(p_r1:LoadAsset("FallColorRed"))
     p_r:SetNativeObject(CS.FairyGUI.GoWrapper(p_r2))
 
     local p_b = com_ui:GetChild("ParticleBlue").asGraph
-    local p_b1 = p_helper:GetParticel("fallcolorblue.ab")
-    local p_b2 = CS.UnityEngine.Object.Instantiate(p_b1:LoadAsset("FallColorBlue"))
+    local p_b1 = ParticleHelper:GetParticel("fallcolorblue.ab")
+    local p_b2 = CS.UnityEngine.GameObject.Instantiate(p_b1:LoadAsset("FallColorBlue"))
     p_b:SetNativeObject(CS.FairyGUI.GoWrapper(p_b2))
 
     local p_p = com_ui:GetChild("ParticleP").asGraph
-    local p_p1 = p_helper:GetParticel("fallcolorp.ab")
-    local p_p2 = CS.UnityEngine.Object.Instantiate(p_p1:LoadAsset("FallColorP"))
+    local p_p1 = ParticleHelper:GetParticel("fallcolorp.ab")
+    local p_p2 = CS.UnityEngine.GameObject.Instantiate(p_p1:LoadAsset("FallColorP"))
     p_p:SetNativeObject(CS.FairyGUI.GoWrapper(p_p2))
 end
 

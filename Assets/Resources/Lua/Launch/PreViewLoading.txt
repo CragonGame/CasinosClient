@@ -43,6 +43,7 @@ function PreViewLoading:new(o)
     self.InitDepth = nil
     self.ViewKey = nil
     self.ShowSpine = true
+    self.Launch = Launch
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     if (self.Instance == nil) then
@@ -165,16 +166,13 @@ function PreViewLoading:_initVersionInfo()
                 data_versionex = "数据版本"
             end
         end
-        local env = "Pro"
-        if GatewayIp ~= nil and string.find(GatewayIp, "dev") then
-            env = "Dev"
-        end
+
         local version_bundle = self.CasinosContext.Config.VersionBundle
         local version_data = self.CasinosContext.Config.VersionDataPersistent
         if (version_data == nil) then
             version_data = ' '
         end
-        version_text.text = string.format("%s: %s,  %s: %s %s", app_version, version_bundle, data_versionex, version_data, env)
+        version_text.text = string.format("%s: %s,  %s: %s %s", app_version, version_bundle, data_versionex, version_data, self.Launch.LaunchCfg.Env)
     end
 end
 

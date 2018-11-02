@@ -727,7 +727,8 @@ function ControllerPlayer:initStoreItem()
     if (first_recharge_sku ~= nil and first_recharge_sku ~= "") then
         table.insert(t_sku, first_recharge_sku)
     end
-    CS.Pay.Instant():initInventory(t_sku)
+    -- TODO
+    --CS.Pay.Instant():initInventory(t_sku)
 end
 
 ---------------------------------------

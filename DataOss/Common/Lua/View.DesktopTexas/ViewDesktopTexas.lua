@@ -205,10 +205,10 @@ function ViewDesktopTexas:OnCreate()
     self.ComWaitingBegine = self.ComUi:GetChild("ComWaitingBegine").asCom
     self.ComMeWin = self.ComUi:GetChild("ComMeWin").asCom
     self.TransitionMeWin = self.ComMeWin:GetTransition("t0")
-    local p_helper = ParticleHelper:new(nil)
+
     local parent_selfwin = self.ComMeWin:GetChild("ParentSelfWin").asGraph
-    local particle2 = p_helper:GetParticel("selfwin.ab")
-    local p_2 = CS.UnityEngine.Object.Instantiate(particle2:LoadAsset("SelfWin"))
+    local particle2 = ParticleHelper:GetParticel("selfwin.ab")
+    local p_2 = CS.UnityEngine.GameObject.Instantiate(particle2:LoadAsset("SelfWin"))
     parent_selfwin:SetNativeObject(CS.FairyGUI.GoWrapper(p_2))
 
     self.MapViewDesktopTypeBaseFac = {}

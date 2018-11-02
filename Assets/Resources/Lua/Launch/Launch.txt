@@ -68,6 +68,7 @@ function Launch:Setup()
     require 'PreViewLoading'
     require 'PreViewMsgBox'
 
+    ParticleHelper:new(nil)
     self.PreViewMgr = PreViewMgr:new(nil)
     self.PreViewMgr:Init()
 
