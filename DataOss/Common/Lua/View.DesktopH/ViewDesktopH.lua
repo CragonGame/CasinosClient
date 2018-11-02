@@ -1182,11 +1182,11 @@ end
 function ViewDesktopH:_haveNewChatOrMailRecord()
     if (self.GComMsgTips ~= nil) then
         if (self.NewFriendChatCount > 0) then
-            CS.Casinos.UiHelper.SetGObjectVisible(true, self.GComMsgTips)
+            ViewHelper:SetGObjectVisible(true, self.GComMsgTips)
             self.GTextMsgTips.text = tostring(self.NewFriendChatCount)
             self.CasinosContext:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
         else
-            CS.Casinos.UiHelper.SetGObjectVisible(false, self.GComMsgTips)
+            ViewHelper:SetGObjectVisible(false, self.GComMsgTips)
         end
     end
 end

@@ -113,9 +113,9 @@ function ViewDesktopPlayerInfoTexas:OnDestroy()
         self.TimerUpdate = nil
     end
     self.ViewMgr:UnbindEvListener(self)
-    if (self.ItemChatDesktop ~= nil) then
-        self.ViewDesktop.UiDesktopChatParent:destroyChat(self.ItemChatDesktop)
-    end
+    --if (self.ItemChatDesktop ~= nil) then
+    --    self.ViewDesktop.UiDesktopChatParent:destroyChat(self.ItemChatDesktop)
+    --end
 end
 
 ---------------------------------------

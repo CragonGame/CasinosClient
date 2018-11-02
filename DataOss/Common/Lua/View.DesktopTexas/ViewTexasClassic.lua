@@ -4,9 +4,9 @@
 ViewTexasClassic = ViewDesktopTypeBase:new()
 
 ---------------------------------------
-function ViewTexasClassic:new(o,view_desktop)
+function ViewTexasClassic:new(o, view_desktop)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     o.ViewDesktop = view_desktop
     o.DesktopType = "Classic"
@@ -18,19 +18,19 @@ function ViewTexasClassic:new(o,view_desktop)
     )
     local com_desktop = view_desktop.ComUi
     local loader_bg = com_desktop:GetChild("LoaderBg").asLoader
-    loader_bg.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop","ClassicBg")
-    ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, o.ViewDesktop.ComUi.width, o.ViewDesktop.ComUi.height, loader_bg.width, loader_bg.height,loader_bg,BgAttachMode.Center)
+    loader_bg.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop", "ClassicBg")
+    ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, o.ViewDesktop.ComUi.width, o.ViewDesktop.ComUi.height, loader_bg.width, loader_bg.height, loader_bg, BgAttachMode.Center)
     local loader_desk = com_desktop:GetChild("LoaderDesk").asLoader
-    loader_desk.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop","ClassicDesk")
+    loader_desk.icon = CS.FairyGUI.UIPackage.GetItemURL("Desktop", "ClassicDesk")
     local btn_shop = com_desktop:GetChild("BtnShop").asButton
-    ViewHelper:SetGObjectVisible(true,btn_shop)
+    ViewHelper:SetGObjectVisible(true, btn_shop)
     btn_shop.onClick:Add(
             function()
                 o:_onClickShop()
             end
     )
     local com_lottryticket = com_desktop:GetChild("ComLotteryTicket")
-    ViewHelper:SetGObjectVisible(true,com_lottryticket)
+    ViewHelper:SetGObjectVisible(true, com_lottryticket)
 
     return o
 end
@@ -40,17 +40,15 @@ function ViewTexasClassic:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ViewTexasClassic:setSnapShot(snapshot,is_init)
+function ViewTexasClassic:setSnapShot(snapshot, is_init)
     self.Ante = snapshot.normal_texas.Ante
     if is_init == true then
         local hide_chair = false
         for k, v in pairs(self.ViewDesktop.MapAllUiChairInfo) do
             local chair_info = v
-            if (self.ViewDesktop.Desktop.SeatNum == TexasDesktopSeatNum.Five)
-            then
+            if (self.ViewDesktop.Desktop.SeatNum == TexasDesktopSeatNum.Five) then
                 local a = (k + 3) % 2
-                if (a == 0)
-                then
+                if (a == 0) then
                     chair_info.GComChair.visible = false
                     chair_info.GComSitOrInvite.visible = false
                     hide_chair = true
@@ -59,8 +57,7 @@ function ViewTexasClassic:setSnapShot(snapshot,is_init)
                 end
             end
 
-            if (hide_chair == false)
-            then
+            if (hide_chair == false) then
                 chair_info.GComSitOrInvite.onClick:Add(
                         function(context)
                             self.ViewDesktop:_onClickChair(context)
@@ -83,20 +80,16 @@ function ViewTexasClassic:_checkSeat()
     for k, v in pairs(self.ViewDesktop.MapAllValidPlayerSeat)
     do
         local seat = self.ViewDesktop.MapValidNoPlayerSeat[k]
-        if (seat == nil)
-        then
-            if (v ~= nil)
-            then
-                CS.Casinos.UiHelper.SetGObjectVisible(false, v.GComChair, v.GImagePlayerInvite, v.GImagePlayerSit)
+        if (seat == nil) then
+            if (v ~= nil) then
+                ViewHelper:SetGObjectVisible(false, v.GComChair, v.GImagePlayerInvite, v.GImagePlayerSit)
             end
         end
         for k, v in pairs(self.ViewDesktop.MapValidNoPlayerSeat)
         do
             local chair_info = v
-            if (chair_info ~= nil)
-            then
-                if (self.ViewDesktop:_meIsSeat() == false)
-                then
+            if (chair_info ~= nil) then
+                if (self.ViewDesktop:_meIsSeat() == false) then
                     ViewHelper:SetGObjectVisible(false, chair_info.GImagePlayerInvite)
                     ViewHelper:SetGObjectVisible(true, chair_info.GComChair)
                     ViewHelper:SetGObjectVisible(true, chair_info.GImagePlayerSit)
@@ -121,8 +114,7 @@ end
 ---------------------------------------
 function ViewTexasClassic:_onClickShop()
     local ev = self.ViewDesktop.ViewMgr:GetEv("EvUiClickShop")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickShop:new(nil)
     end
     self.ViewDesktop.ViewMgr:SendEv(ev)
@@ -134,7 +126,7 @@ ViewTexasClassicTypeFactory = {}
 ---------------------------------------
 function ViewTexasClassicTypeFactory:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     return o
 end

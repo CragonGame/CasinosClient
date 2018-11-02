@@ -80,7 +80,7 @@ function ViewPlayerGiftAndVIP:checkGiftAndVIPPos(desk_seatcount, ui_index, vip_l
 
     --local is_vip = vip_level > 0
     --self.GImageCurrentVIP.visible = is_vip
-    CS.Casinos.UiHelper.SetGObjectVisible(false, self.GImageVIPLeft, self.GImageVIPRight)
+    ViewHelper:SetGObjectVisible(false, self.GImageVIPLeft, self.GImageVIPRight)
 
     local gift_parent_pos = self.GComCurrentGiftParent.xy
     local parent_w = self.GComCurrentGiftParent.width
@@ -90,7 +90,7 @@ function ViewPlayerGiftAndVIP:checkGiftAndVIPPos(desk_seatcount, ui_index, vip_l
     self.GiftCenterPos = gift_parent_pos
 
     if (self.GComCurrentShowGift ~= nil) then
-        CS.Casinos.UiHelper.SetGObjectVisible(false, self.GImageCurrentGift)
+        ViewHelper:SetGObjectVisible(false, self.GImageCurrentGift)
         self:setGiftPos()
     end
     self.OriginX = self.GiftCenterPos.x
@@ -99,7 +99,7 @@ end
 ---------------------------------------
 function ViewPlayerGiftAndVIP:setGift(item, from_pos, is_sendgift)
     if (item == nil) then
-        CS.Casinos.UiHelper.SetGObjectVisible(true, self.GImageCurrentGift)
+        ViewHelper:SetGObjectVisible(true, self.GImageCurrentGift)
         if (self.GComCurrentShowGift ~= nil) then
             CS.UnityEngine.GameObject.Destroy(self.GComCurrentShowGift.displayObject.gameObject)
             self.GComCurrentShowGift = nil
@@ -140,7 +140,7 @@ function ViewPlayerGiftAndVIP:setGift(item, from_pos, is_sendgift)
         else
             self:loadGiftIcon(item.TbDataItem.Id, nil)
         end
-        CS.Casinos.UiHelper.SetGObjectVisible(false, self.GImageCurrentGift)
+        ViewHelper:SetGObjectVisible(false, self.GImageCurrentGift)
     end
 
     if (self.GComCurrentShowGift ~= nil) then

@@ -37,10 +37,10 @@ end
 -- 公共牌翻牌
 function UiCardCommonEx:show(with_animation, call_back)
     if (self.Card == nil) then
-        CS.Casinos.UiHelper.SetGObjectVisible(true, self.GComCard, self.GImageCardBack)
-        CS.Casinos.UiHelper.SetGObjectVisible(false, self.GLoaderCard)
+        ViewHelper:SetGObjectVisible(true, self.GComCard, self.GImageCardBack)
+        ViewHelper:SetGObjectVisible(false, self.GLoaderCard)
     else
-        CS.Casinos.UiHelper.SetGObjectVisible(true, self.GComCard, self.GImageCardBack)
+        ViewHelper:SetGObjectVisible(true, self.GComCard, self.GImageCardBack)
         local card_name = tostring(self.Card.Suit) .. "_" .. tostring(self.Card.Type)
         local l_card_name = string.lower(card_name)
         local ab_card_name = self.CasinosContext.PathMgr.DirAbCard .. l_card_name .. ".ab"
@@ -62,8 +62,8 @@ function UiCardCommonEx:show(with_animation, call_back)
                                                :SetEase(CS.FairyGUI.EaseType.Linear)
                                                :OnComplete(
                                 function()
-                                    CS.Casinos.UiHelper.SetGObjectVisible(false, self.GImageCardBack)
-                                    CS.Casinos.UiHelper.SetGObjectVisible(true, self.GLoaderCard)
+                                    ViewHelper:SetGObjectVisible(false, self.GImageCardBack)
+                                    ViewHelper:SetGObjectVisible(true, self.GLoaderCard)
                                     self.GImageCardBack.rotationY = 180
                                     self.GLoaderCard.rotationY = 90
                                     self.TweenerRotate = CS.FairyGUI.GTween.To(90, 0, UiCardCommonEx.RotateTime)
@@ -81,8 +81,8 @@ function UiCardCommonEx:show(with_animation, call_back)
                         )
                         self.CasinosContext:Play("fapaia", CS.Casinos._eSoundLayer.LayerNormal)
                     else
-                        CS.Casinos.UiHelper.SetGObjectVisible(true, self.GComCard, self.GLoaderCard)
-                        CS.Casinos.UiHelper.SetGObjectVisible(false, self.GImageCardBack)
+                        ViewHelper:SetGObjectVisible(true, self.GComCard, self.GLoaderCard)
+                        ViewHelper:SetGObjectVisible(false, self.GImageCardBack)
                         self.GComCard.rotationY = 0
                         if (call_back ~= nil) then
                             call_back()
@@ -96,7 +96,7 @@ end
 ---------------------------------------
 -- 3张公共牌发牌
 function UiCardCommonEx:deal(call_back)
-    CS.Casinos.UiHelper.SetGObjectVisible(true, self.GComCard, self.GImageCardBack)
+    ViewHelper:SetGObjectVisible(true, self.GComCard, self.GImageCardBack)
     self:killTween(self.TweenerRotate)
 
     self.TweenerRotate = CS.FairyGUI.GTween.To(self.GImageCardBack.rotationY, 180, UiCardCommonEx.RotateTime)
@@ -170,14 +170,14 @@ function UiCardCommonEx:showHighLight(need_showhighlight, list_cards_data, list_
         card_color = CS.UnityEngine.Color.white
     end
 
-    CS.Casinos.UiHelper.SetGObjectVisible(show_highlight, self.GImageCardHighLight)
+    ViewHelper:SetGObjectVisible(show_highlight, self.GImageCardHighLight)
     self.GLoaderCard.color = card_color
 end
 
 ---------------------------------------
 function UiCardCommonEx:hideHightLight()
     if (self.GImageCardHighLight.displayObject.gameObject ~= nil) then
-        CS.Casinos.UiHelper.SetGObjectVisible(false, self.GImageCardHighLight)
+        ViewHelper:SetGObjectVisible(false, self.GImageCardHighLight)
         self.GLoaderCard.color = CS.UnityEngine.Color.white
     end
 end
@@ -189,7 +189,7 @@ function UiCardCommonEx:_reset()
     if (self.GComCard.displayObject.gameObject ~= nil) then
         self.GLoaderCard.icon = nil
         self.GComCard.rotationY = 0
-        CS.Casinos.UiHelper.SetGObjectVisible(false, self.GComCard, self.GLoaderCard, self.GImageCardHighLight)
+        ViewHelper:SetGObjectVisible(false, self.GComCard, self.GLoaderCard, self.GImageCardHighLight)
         self.GLoaderCard.color = CS.UnityEngine.Color.white
     end
     if (self.ResetCallBack ~= nil) then

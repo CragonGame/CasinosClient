@@ -31,7 +31,7 @@ function ViewDesktopMenuTexas:OnCreate()
             function()
                 self:_onClickLeaveInMiddle()
             end)
-    self.TransitiOnCreate = self.ComUi:GetTransition("TransitiOnCreate")
+    self.TransitiOnCreate = self.ComUi:GetTransition("TransitionCreate")
     self.TransitiOnCreate:Play()
     local com_shade = self.ComUi:GetChild("ComShade").asCom
     com_shade.onClick:Add(

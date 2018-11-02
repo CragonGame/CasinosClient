@@ -80,7 +80,7 @@ function UiChipEx:moveAndScale()
         self.StartMove = nil
     end
 
-    CS.Casinos.UiHelper.SetGObjectVisible(true, self.GComChip)
+    ViewHelper:SetGObjectVisible(true, self.GComChip)
     self.TweenerMove = self.GComChip:TweenMove(self.To, self.MoveTime)
                            :SetDelay(self.Delay)
                            :SetEase(CS.FairyGUI.EaseType.Linear)

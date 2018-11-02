@@ -86,12 +86,6 @@ namespace Casinos
         {
             Instance = this;
 
-            DateTime dt = DateTime.UtcNow;
-
-            string ss = dt.ToString();
-            DateTime dt1 = DateTime.Parse(ss);
-            int aa = 0;
-
             _eEditorRunSourcePlatform editor_runsorce = _eEditorRunSourcePlatform.Android;
 #if UNITY_STANDALONE_WIN
             editor_runsorce = _eEditorRunSourcePlatform.PC;

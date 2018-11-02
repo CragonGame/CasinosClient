@@ -102,13 +102,13 @@ function UiMainPlayerInfo:hidePlayerInfo(show_invite)
     self.GTextChips.text = ""
     self.GTextGolds.text = ""
     if (self.GImageInvite ~= nil) then
-        CS.Casinos.UiHelper.SetGObjectVisible(show_invite, self.GImageInvite)
+        ViewHelper:SetGObjectVisible(show_invite, self.GImageInvite)
     end
 end
 
 ---------------------------------------
 function UiMainPlayerInfo:_loadHeadIconDown(is_success)
     if (self.GImageInvite ~= nil) then
-        CS.Casinos.UiHelper.SetGObjectVisible(false, self.GImageInvite)
+        ViewHelper:SetGObjectVisible(false, self.GImageInvite)
     end
 end
