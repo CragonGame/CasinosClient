@@ -233,33 +233,33 @@ public class TcpClientSession : IDisposable
 
             if (socket.Connected)
             {
-                bool SupportSocketIOControlByCodeEnum;
-                try
-                {
-                    mSocket.IOControl(IOControlCode.KeepAliveValues, null, null);
-                    SupportSocketIOControlByCodeEnum = true;
-                }
-                catch (NotSupportedException)
-                {
-                    SupportSocketIOControlByCodeEnum = false;
-                }
-                catch (NotImplementedException)
-                {
-                    SupportSocketIOControlByCodeEnum = false;
-                }
-                catch (Exception)
-                {
-                    SupportSocketIOControlByCodeEnum = true;
-                }
+                //bool SupportSocketIOControlByCodeEnum;
+                //try
+                //{
+                //    mSocket.IOControl(IOControlCode.KeepAliveValues, null, null);
+                //    SupportSocketIOControlByCodeEnum = true;
+                //}
+                //catch (NotSupportedException)
+                //{
+                //    SupportSocketIOControlByCodeEnum = false;
+                //}
+                //catch (NotImplementedException)
+                //{
+                //    SupportSocketIOControlByCodeEnum = false;
+                //}
+                //catch (Exception)
+                //{
+                //    SupportSocketIOControlByCodeEnum = true;
+                //}
 
-                if (!SupportSocketIOControlByCodeEnum)
-                {
-                    mSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, m_KeepAliveOptionValues);
-                }
-                else
-                {
-                    mSocket.IOControl(IOControlCode.KeepAliveValues, m_KeepAliveOptionValues, m_KeepAliveOptionOutValues);
-                }
+                //if (!SupportSocketIOControlByCodeEnum)
+                //{
+                //    mSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, m_KeepAliveOptionValues);
+                //}
+                //else
+                //{
+                //    mSocket.IOControl(IOControlCode.KeepAliveValues, m_KeepAliveOptionValues, m_KeepAliveOptionOutValues);
+                //}
 
 #if !__IOS__
                 mSocket.NoDelay = true;
