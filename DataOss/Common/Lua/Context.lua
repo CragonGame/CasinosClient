@@ -2,8 +2,8 @@
 
 ---------------------------------------
 -- TODO，待删除
-PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
-BotIconDomain = 'http://cragon-king-oss.cragon.cn/ucenter/'
+PlayerIconDomain = 'https://cragon-king-oss.cragon.cn/images/'
+BotIconDomain = 'https://cragon-king-oss.cragon.cn/ucenter/'
 ServerState = 0-- 服务器状态: 0正常,1维护
 ServerStateInfo = ''-- 系统公告
 ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
@@ -61,10 +61,10 @@ function Config:new(o)
     self.CommonRootURL = nil
     self.DataVersion = nil
     self.DataRootURL = nil
-    self.OssRootUrl = 'http://cragon-king-oss.cragon.cn'
-    self.AutopatcherUrl = 'http://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml'
-    self.PlayerIconDomain = 'http://cragon-king-oss.cragon.cn/images/'
-    self.BotIconDomain = 'http://cragon-king-oss.cragon.cn/ucenter/'
+    self.OssRootUrl = 'https://cragon-king-oss.cragon.cn'
+    self.AutopatcherUrl = 'https://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml'
+    self.PlayerIconDomain = 'https://cragon-king-oss.cragon.cn/images/'
+    self.BotIconDomain = 'https://cragon-king-oss.cragon.cn/ucenter/'
     self.SysNoticeInfoUrl = ''
     self.UCenterDomain = 'https://ucenter-dev.cragon.cn'
     self.GatewayIp = 'king-gateway-dev.cragon.cn'
@@ -102,7 +102,7 @@ function Config:new(o)
     self.PinggPPAppId = 'app_TCi58CGKCSaHGCuP'
     self.WeChatAppId = 'wxff929d92c3997b5d'
     self.WeChatAppSecret = '159e7a0f00dd15fd81fd63c4844b0dfc'
-    self.WeChatState = 'WeChat'
+    self.WeChatState = 'Wechat'
     self.DataEyeId = 'E02253AEC6F95038833955AC4FED9D77'
     self.PushAppId = 'TXYr3LD0se8JU8UOtg9cj3'
     self.PushAppKey = 'F6i4mvPKr96KuYsNAXciw9'
@@ -150,16 +150,6 @@ function Context:Init()
 
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")
     show_fps_obj.enabled = self.Cfg.DevelopSettings.ClientShowFPS
-    --if (self.Cfg.DevelopSettings.FPSLimit == -1) then
-    --    CS.UnityEngine.QualitySettings.vSyncCount = 0
-    --elseif (self.Cfg.DevelopSettings.FPSLimit == 30) then
-    --    CS.UnityEngine.QualitySettings.vSyncCount = 2
-    --elseif (self.Cfg.DevelopSettings.FPSLimit == 60) then
-    --    CS.UnityEngine.QualitySettings.vSyncCount = 1
-    --else
-    --    CS.UnityEngine.QualitySettings.vSyncCount = 0
-    --    CS.UnityEngine.Application.targetFrameRate = 60
-    --end
 
     Context:_initLaunchStep()
     Context:_nextLaunchStep()
