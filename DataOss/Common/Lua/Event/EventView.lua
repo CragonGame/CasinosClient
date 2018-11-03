@@ -2148,7 +2148,7 @@ function EvOnGetOnLineReward:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvOnGetOnLineReward"
+    self.EventName = "EvViewOnGetOnLineReward"
     return o
 end
 
@@ -2204,7 +2204,7 @@ function EvRequestGetTimingReward:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvRequestGetTimingReward"
+    self.EventName = "EvViewRequestGetTimingReward"
     return o
 end
 
@@ -2230,7 +2230,7 @@ function EvClickShowReward:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvClickShowReward"
+    self.EventName = "EvViewClickShowReward"
     return o
 end
 

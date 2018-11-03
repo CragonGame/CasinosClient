@@ -64,7 +64,7 @@ function ViewDesktopMenuTexas:OnCreate()
     btn_reward.onClick:Add(
             function()
                 self:close()
-                local ev = self.ViewMgr:GetEv("EvClickShowReward")
+                local ev = self.ViewMgr:GetEv("EvViewClickShowReward")
                 if (ev == nil)
                 then
                     ev = EvClickShowReward:new(nil)

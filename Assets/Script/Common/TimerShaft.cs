@@ -125,6 +125,7 @@ namespace Casinos
 
             float tm = (float)Stopwatch.Elapsed.TotalSeconds;
             Stopwatch.Reset();
+			Stopwatch.Start();
             FuncCb(LuaTable, tm);
         }
     }

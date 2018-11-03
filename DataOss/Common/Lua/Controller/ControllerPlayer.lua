@@ -42,8 +42,8 @@ function ControllerPlayer:OnCreate()
     self.ViewMgr:BindEvListener("EvCreateGiftShop", self)
     self.ViewMgr:BindEvListener("EvRequestGetPlayerModuleData", self)
     self.ViewMgr:BindEvListener("EvRequestGetOnLineReward", self)
-    self.ViewMgr:BindEvListener("EvRequestGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvOnGetOnLineReward", self)
+    self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
+    self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
     self.ViewMgr:BindEvListener("EvUiChangeLan", self)
     self.ViewMgr:BindEvListener("EvUiCloseActivityPopUpBox", self)
     self.ViewMgr:BindEvListener("EvUiRequestGetReceiverAddress", self)
@@ -277,9 +277,9 @@ function ControllerPlayer:OnHandleEv(ev)
         self.ControllerMgr.RPC:RPC1(self.MC.PlayerGetCasinosModuleDataWithFactoryNameRequest, ev.factory_name)
     elseif (ev.EventName == "EvRequestGetOnLineReward") then
         self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlineRewardRequest)
-    elseif (ev.EventName == "EvOnGetOnLineReward") then
+    elseif (ev.EventName == "EvViewOnGetOnLineReward") then
         self.OnLineReward:onGetReward()
-    elseif (ev.EventName == "EvRequestGetTimingReward") then
+    elseif (ev.EventName == "EvViewRequestGetTimingReward") then
         local can_get = self.TimingReward:onGetReward()
         if can_get then
             self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetTimingRewardRequest)

@@ -58,7 +58,7 @@ end
 ---------------------------------------
 function ViewShootingText:onUpdate(elapsed_tm)
     if (self.Marquee ~= nil) then
-        self.Marquee:update(elapsed_tm)
+        self.Marquee:Update(elapsed_tm)
     end
 end
 
@@ -205,7 +205,7 @@ function ViewMarquee:Destroy()
 end
 
 ---------------------------------------
-function ViewMarquee:update(tm)
+function ViewMarquee:Update(tm)
     if (self.CurrentMarquee == nil and self.HaveMarquee) then
         self:playMarquee()
     end

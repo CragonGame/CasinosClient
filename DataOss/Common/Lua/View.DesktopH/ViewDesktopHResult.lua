@@ -8,24 +8,23 @@ function ViewDesktopHResult:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.ViewDesktopH = nil
-    o.GListWinPlayer = nil
-    o.GListPotResult = nil
-    o.GTextCloseTips = nil
-    o.GTextBankName = nil
-    o.GTextBanWin = nil
-    o.GTextSelfWin = nil
-    o.GTextField = nil
-    o.Tm = 0
-    o.ShowTm = 0
-    o.AutoDestroyTm = 5
+    self.ViewMgr = nil
+    self.GoUi = nil
+    self.ComUi = nil
+    self.Panel = nil
+    self.UILayer = nil
+    self.InitDepth = nil
+    self.ViewKey = nil
+    self.ViewDesktopH = nil
+    self.GListWinPlayer = nil
+    self.GListPotResult = nil
+    self.GTextCloseTips = nil
+    self.GTextBankName = nil
+    self.GTextBanWin = nil
+    self.GTextSelfWin = nil
+    self.GTextField = nil
+    self.LeftTm = 0
+    self.AutoDestroyTm = 5
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
     return o
@@ -59,21 +58,27 @@ function ViewDesktopHResult:OnCreate()
         self.GTextSelfBet = self_bet.asTextField
     end
 
-    self.Tm = self.AutoDestroyTm
-    self.ShowTm = self.AutoDestroyTm
-    self:_setCloseTime()
+    self.LeftTm = self.AutoDestroyTm
+    self:_refreshLeftTime()
 
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
 ---------------------------------------
-function ViewDesktopHResult:setGameResult(bank_name, self_wingolds, self_betgolds,
-                                          map_betpot_info, bankerpot_info, list_gameend_win_player)
+function ViewDesktopHResult:OnDestroy()
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
+end
+
+---------------------------------------
+function ViewDesktopHResult:SetGameEndResult(bank_name, self_wingolds, self_betgolds,
+                                             map_betpot_info, bankerpot_info, list_gameend_win_player)
     self.GTextSelfWin.text = UiChipShowHelper:getGoldShowStr(self_wingolds,
             self.ViewMgr.LanMgr.LanBase, false)
     if (self.GTextSelfBet ~= nil) then
-        self.GTextSelfBet.text = UiChipShowHelper:getGoldShowStr(self_betgolds,
-                self.ViewMgr.LanMgr.LanBase, false)
+        self.GTextSelfBet.text = UiChipShowHelper:getGoldShowStr(self_betgolds, self.ViewMgr.LanMgr.LanBase, false)
     end
     if (list_gameend_win_player ~= nil) then
         local rank = 1
@@ -89,8 +94,7 @@ function ViewDesktopHResult:setGameResult(bank_name, self_wingolds, self_betgold
         local bank_wingolds = bankerpot_info.stack_after - bankerpot_info.stack_before
         self.GTextBanWin.text = UiChipShowHelper:getGoldShowStr(bank_wingolds, self.ViewMgr.LanMgr.LanBase, false)
         local bank_iswin = bank_wingolds >= 0
-        local co_pot_result = CS.FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(),
-                "CoPotResult")  .asCom
+        local co_pot_result = CS.FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(), "CoPotResult").asCom
         local co_bank_result = (self.GListPotResult:AddChild(co_pot_result)).asCom
         ItemDesktopHGameEndPotResult:new(nil, self.ViewDesktopH, co_bank_result, bankerpot_info.list_card, bank_iswin, 255)
     end
@@ -99,8 +103,7 @@ function ViewDesktopHResult:setGameResult(bank_name, self_wingolds, self_betgold
         local t_map_betpot_info = map_betpot_info
         for i = 0, 3 do
             local r_s = t_map_betpot_info[i]
-            local co_pot_result = CS.FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(),
-                    "CoPotResult")  .asCom
+            local co_pot_result = CS.FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(), "CoPotResult").asCom
             local co_bank_result = (self.GListPotResult:AddChild(co_pot_result)).asCom
             ItemDesktopHGameEndPotResult:new(nil, self.ViewDesktopH, co_bank_result, r_s.list_card, r_s.is_win, i)
         end
@@ -110,32 +113,26 @@ function ViewDesktopHResult:setGameResult(bank_name, self_wingolds, self_betgold
     if (self_wingolds >= 0) then
         sound = "deskhundred_win"
     end
-    CS.Casinos.CasinosContext.Instance:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
+    self.CasinosContext:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
 end
 
 ---------------------------------------
 function ViewDesktopHResult:_timerUpdate(tm)
-    self.Tm = self.Tm - tm
-    if (self.Tm <= self.ShowTm - 1) then
-        self.ShowTm = self.Tm
-        self:_setCloseTime()
-    end
-    if (self.Tm <= 0) then
+    self.LeftTm = self.LeftTm - tm
+    if (self.LeftTm >= 0) then
+        self:_refreshLeftTime()
+    else
         self:onClickBtnClose()
     end
 end
 
 ---------------------------------------
-function ViewDesktopHResult:_setCloseTime()
-    self.GTextCloseTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("CloseAuto"), tostring(math.ceil(self.ShowTm)))
+function ViewDesktopHResult:_refreshLeftTime()
+    self.GTextCloseTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("CloseAuto"), tostring(math.ceil(self.LeftTm)))
 end
 
 ---------------------------------------
 function ViewDesktopHResult:onClickBtnClose()
-    if (self.TimerUpdate ~= nil) then
-        self.TimerUpdate:Close()
-        self.TimerUpdate = nil
-    end
     self.ViewMgr:DestroyView(self)
 end
 

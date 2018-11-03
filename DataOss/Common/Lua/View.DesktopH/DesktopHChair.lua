@@ -44,9 +44,9 @@ function DesktopHChair:Destroy()
 end
 
 ---------------------------------------
-function DesktopHChair:update(tm)
+function DesktopHChair:Update(tm)
     if (self.ItemChatDesktop ~= nil) then
-        self.ItemChatDesktop:update(tm)
+        self.ItemChatDesktop:Update(tm)
     end
 end
 

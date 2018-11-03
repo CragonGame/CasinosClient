@@ -270,7 +270,7 @@ function ViewDesktopPlayerInfoTexas:_timerUpdate(elapsed_tm)
     end
 
     if (self.ItemChatDesktop ~= nil) then
-        self.ItemChatDesktop:update(elapsed_tm)
+        self.ItemChatDesktop:Update(elapsed_tm)
     end
 end
 

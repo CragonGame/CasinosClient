@@ -96,9 +96,9 @@ function ViewDesktopTexas:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
     self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
     self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvClickShowReward", self)
-    self.ViewMgr:BindEvListener("EvRequestGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvOnGetOnLineReward", self)
+    self.ViewMgr:BindEvListener("EvViewClickShowReward", self)
+    self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
+    self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
 
     self.Flow = UiDesktopTexasFlow:new(nil, self)
     self.Flow:Create()
@@ -354,11 +354,11 @@ function ViewDesktopTexas:OnHandleEv(ev)
             self.ViewTimingReward:setCanGetReward(ev.can_getreward)
             self.CanGetTimingReward = ev.can_getreward
             self:setNewReward()
-        elseif (ev.EventName == "EvClickShowReward") then
+        elseif (ev.EventName == "EvViewClickShowReward") then
             -- 弹出横条
             self.ComShadeReward.visible = true
             self.TransitionShowReward:Play()
-        elseif (ev.EventName == "EvRequestGetTimingReward" or ev.EventName == "EvOnGetOnLineReward") then
+        elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
             -- 弹回横条
             self.ComShadeReward.visible = false
             self.TransitionShowReward:PlayReverse()
@@ -399,7 +399,7 @@ function ViewDesktopTexas:_timerUpdate(elapsed_tm)
     end
 
     if (self.ItemChatDesktop ~= nil) then
-        self.ItemChatDesktop:update(elapsed_tm)
+        self.ItemChatDesktop:Update(elapsed_tm)
     end
 end
 

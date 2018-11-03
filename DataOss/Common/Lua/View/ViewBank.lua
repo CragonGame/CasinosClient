@@ -254,7 +254,7 @@ function SendGold:new(o, safe_box, group)
 end
 
 ---------------------------------------
-function SendGold:update(tm)
+function SendGold:Update(tm)
     if (self.ConfirmSend) then
         self.ConfirmSendTm = self.ConfirmSendTm - tm
         self:sendConfirmTips(self.ConfirmSendTm)

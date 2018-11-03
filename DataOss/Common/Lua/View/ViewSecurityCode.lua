@@ -37,12 +37,10 @@ function ViewSecurityCode:updateCom(btn_send_code, gtext_sendcode_tips, input_co
 end
 
 ---------------------------------------
-function ViewSecurityCode:update(tm)
-    if (self.CanSendCode == false)
-    then
+function ViewSecurityCode:Update(tm)
+    if (self.CanSendCode == false) then
         self.SendCodeCountdown = self.SendCodeCountdown - tm
-        if (self.SendCodeCountdown <= 0)
-        then
+        if (self.SendCodeCountdown <= 0) then
             self.SendCodeCountdown = self.SendCodeCD
             self.CanSendCode = true
             self:setTips("发送验证码")

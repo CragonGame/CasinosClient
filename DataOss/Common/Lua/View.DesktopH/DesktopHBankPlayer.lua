@@ -28,8 +28,8 @@ function DesktopHBankPlayer:new(o, co_bankplayer, bankplayer_nickname, bankplaye
     o.GCoChatParent = chat_parent
     o.ViewDesktopH = view_desktoph
     o.UiHeadIcon = ViewHeadIcon:new(nil, o.GComBank)
-    o.BankDesktopHCards = o.ViewDesktopH.DesktopHDealer:createSinglePotCards(o.ViewDesktopH.ControllerDesktopH, o.ViewDesktopH, o.ViewDesktopH.GCoDealer.xy,
-            o.BankPlayerCardParent, o, true)
+    o.BankDesktopHCards = o.ViewDesktopH.DesktopHDealer:createSinglePotCards(
+            o.ViewDesktopH.ControllerDesktopH, o.ViewDesktopH, o.ViewDesktopH.GCoDealer.xy, o.BankPlayerCardParent, o, true)
     o.BankDesktopHCards:updateToPos(o.BankPlayerCardParent.xy)
     o:_setCardTypeVisible(false)
     o.BankPlayerDataDesktopH = nil
@@ -45,9 +45,9 @@ function DesktopHBankPlayer:Destroy()
 end
 
 ---------------------------------------
-function DesktopHBankPlayer:update(tm)
+function DesktopHBankPlayer:Update(tm)
     if (self.ItemChat ~= nil) then
-        self.ItemChat:update(tm)
+        self.ItemChat:Update(tm)
     end
 end
 

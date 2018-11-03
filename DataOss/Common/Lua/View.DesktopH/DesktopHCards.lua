@@ -51,7 +51,7 @@ function DesktopHCards:Destroy()
 end
 
 ---------------------------------------
-function DesktopHCards:update(elapsed_tm)
+function DesktopHCards:Update(elapsed_tm)
     if (self.CanDealCard) then
         self.DealCardTm = self.DealCardTm + elapsed_tm
         if (self.DealCardTm >= DesktopHCards.DEAL_CARD_TM) then

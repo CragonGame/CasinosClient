@@ -175,8 +175,9 @@ end
 
 ---------------------------------------
 function ViewDesktopHTexas:setRewardPotPlayerInfo(total_info)
-    local co_betpot_playerinfo = CS                                                                          .FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(),
-            self.ViewDesktopH.UiDesktopHComDesktopHRewardPotPlayerInfoTitle .. self.ViewDesktopH.FactoryName).asCom
+    local package_name = self.ViewDesktopH:getDesktopBasePackageName()
+    local com_name = self.ViewDesktopH.UiDesktopHComDesktopHRewardPotPlayerInfoTitle .. self.ViewDesktopH.FactoryName
+    local co_betpot_playerinfo = CS.FairyGUI.UIPackage.CreateObject(package_name, com_name).asCom
     return co_betpot_playerinfo
 end
 

@@ -52,9 +52,8 @@ function ViewDesktopHMenu:OnCreate()
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     btn_reward.onClick:Add(
             function()
-                local ev = self.ViewMgr:GetEv("EvClickShowReward")
-                if (ev == nil)
-                then
+                local ev = self.ViewMgr:GetEv("EvViewClickShowReward")
+                if (ev == nil) then
                     ev = EvClickShowReward:new(nil)
                 end
                 self.ViewMgr:SendEv(ev)

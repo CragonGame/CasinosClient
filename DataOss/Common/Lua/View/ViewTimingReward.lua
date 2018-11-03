@@ -33,7 +33,7 @@ end
 ---------------------------------------
 function ViewTimingReward:onClickTimingReward()
     if self.CanGetReward then
-        local ev = self.ViewMgr:GetEv("EvRequestGetTimingReward")
+        local ev = self.ViewMgr:GetEv("EvViewRequestGetTimingReward")
         if (ev == nil) then
             ev = EvRequestGetTimingReward:new(nil)
         end

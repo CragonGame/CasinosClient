@@ -56,9 +56,9 @@ function DesktopHBetPot:updateBetPotInfo(betpot_golds)
 end
 
 ---------------------------------------
-function DesktopHBetPot:setGameResult(betpot_gameresult, win_rewardpot_gold)
+function DesktopHBetPot:SetGameEndResult(betpot_gameresult, win_rewardpot_gold)
     self.BDesktopHNotifyGameEndBetPot = betpot_gameresult
-    self.ItemDesktopHBetPot:setGameResult(self.BDesktopHNotifyGameEndBetPot, win_rewardpot_gold)
+    self.ItemDesktopHBetPot:SetGameEndResult(self.BDesktopHNotifyGameEndBetPot, win_rewardpot_gold)
 end
 
 ---------------------------------------

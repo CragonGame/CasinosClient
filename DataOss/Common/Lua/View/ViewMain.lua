@@ -352,8 +352,8 @@ function ViewMain:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
     self.ViewMgr:BindEvListener("EvEntityIsFirstRechargeChanged", self)
     self.ViewMgr:BindEvListener("EvEntityFriendGoldChange", self)
-    self.ViewMgr:BindEvListener("EvRequestGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvOnGetOnLineReward", self)
+    self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
+    self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChats", self)
     self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
@@ -545,7 +545,7 @@ function ViewMain:OnHandleEv(ev)
             local com_recharge_first = self.ComUi:GetChild("ComRechargeFirst").asCom
             com_recharge_first.visible = false
             self.BtnRegister.position = com_recharge_first.position
-        elseif (ev.EventName == "EvRequestGetTimingReward" or ev.EventName == "EvOnGetOnLineReward") then
+        elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
             self.ComShadeReward.visible = false
             self.TransitionShowReward:PlayReverse()
         elseif (ev.EventName == "EvEntityReceiveFeedbackChat") then

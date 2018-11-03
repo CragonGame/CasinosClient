@@ -32,12 +32,12 @@ function DesktopHDealer:new(o, fac_name)
 end
 
 ---------------------------------------
-function DesktopHDealer:update(time)
+function DesktopHDealer:Update(tm)
     if (self.DesktopHDealerBase ~= nil) then
-        self.DesktopHDealerBase:update(time)
+        self.DesktopHDealerBase:Update(tm)
     end
     for k, v in pairs(self.ListDesktopHSinglePotCards) do
-        v:update(time)
+        v:Update(tm)
     end
 end
 

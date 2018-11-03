@@ -97,9 +97,9 @@ function ViewDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
     self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
     self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvClickShowReward", self)
-    self.ViewMgr:BindEvListener("EvRequestGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvOnGetOnLineReward", self)
+    self.ViewMgr:BindEvListener("EvViewClickShowReward", self)
+    self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
+    self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
 
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerPlayer = controller_mgr:GetController("Player")
@@ -195,7 +195,7 @@ function ViewDesktopH:OnCreate()
     end
     local btn_chatfriend_temp = self.ComUi:GetChild("BtnChatFriend")
     if (btn_chatfriend_temp ~= nil) then
-        local btn_chatfriend = btn_chatfriend_temp.asButton
+        --local btn_chatfriend = btn_chatfriend_temp.asButton
         btn_chatfriend_temp.onClick:Add(
                 function()
                     self:_onClickBtnChatFriend()
@@ -455,10 +455,10 @@ function ViewDesktopH:OnHandleEv(ev)
             self.ViewTimingReward:setCanGetReward(ev.can_getreward)
             self.CanGetTimingReward = ev.can_getreward
             self:setNewReward()
-        elseif (ev.EventName == "EvClickShowReward") then
+        elseif (ev.EventName == "EvViewClickShowReward") then
             self.ComShadeReward.visible = true
             self.TransitionShowReward:Play()
-        elseif (ev.EventName == "EvRequestGetTimingReward" or ev.EventName == "EvOnGetOnLineReward") then
+        elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
             self.ComShadeReward.visible = false
             self.TransitionShowReward:PlayReverse()
         end
@@ -648,7 +648,7 @@ function ViewDesktopH:_timerUpdate(elapsed_tm)
     end
 
     if (self.DesktopHDealer ~= nil) then
-        self.DesktopHDealer:update(elapsed_tm)
+        self.DesktopHDealer:Update(elapsed_tm)
     end
 
     if (self.StateTm > 0) then
@@ -662,11 +662,11 @@ function ViewDesktopH:_timerUpdate(elapsed_tm)
     end
 
     for i, v in pairs(self.MapDesktopHChair) do
-        v:update(elapsed_tm)
+        v:Update(elapsed_tm)
     end
 
-    self.DesktopHBankPlayer:update(elapsed_tm)
-    self.DesktopHStandPlayer:update(elapsed_tm)
+    self.DesktopHBankPlayer:Update(elapsed_tm)
+    self.DesktopHStandPlayer:Update(elapsed_tm)
 end
 
 ---------------------------------------
@@ -875,7 +875,7 @@ function ViewDesktopH:_gameEnd(game_result, map_my_winlooseinfo, is_screenshot)
                 if (map_win_rewardpot_gold ~= nil and #map_win_rewardpot_gold > 0) then
                     win_rewardpot_gold = map_win_rewardpot_gold[i]
                 end
-                self.MapDesktopHBetPot[i]:setGameResult(v, win_rewardpot_gold)
+                self.MapDesktopHBetPot[i]:SetGameEndResult(v, win_rewardpot_gold)
             end
         end
     end

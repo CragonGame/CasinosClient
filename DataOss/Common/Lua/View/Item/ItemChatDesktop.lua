@@ -18,7 +18,7 @@ function ItemChatDeskTop:new(o, co_chat)
 end
 
 ---------------------------------------
-function ItemChatDeskTop:update(tm)
+function ItemChatDeskTop:Update(tm)
     if (self.ShowTm > 0) then
         self.ShowTm = self.ShowTm - tm
         if (self.ShowTm <= 0) then

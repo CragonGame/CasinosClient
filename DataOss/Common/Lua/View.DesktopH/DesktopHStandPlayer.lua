@@ -19,9 +19,9 @@ function DesktopHStandPlayer:new(o, btn_stand_player, chat_parent, view_desktop)
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:update(tm)
+function DesktopHStandPlayer:Update(tm)
     if (self.ItemChat ~= nil) then
-        self.ItemChat:update(tm)
+        self.ItemChat:Update(tm)
     end
 end
 

@@ -52,7 +52,7 @@ function ItemDesktopHBetPot:initBetPot(betpot_index, is_lastpot)
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:setGameResult(result, win_rewardpot_gold)
+function ItemDesktopHBetPot:SetGameEndResult(result, win_rewardpot_gold)
     self.IsWin = result.is_win
     self.WinRewardPotGolds = win_rewardpot_gold
     self.DesktopHundredCards:setCards(result.list_card)
