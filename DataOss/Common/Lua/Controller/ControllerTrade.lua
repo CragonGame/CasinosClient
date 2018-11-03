@@ -194,7 +194,7 @@ function ControllerTrade:OnHandleEv(ev)
         --    local r = WalletWithdrawRequest:new(nil)
         --    r.Amount = ev.GetMoneyNum
         --    r.Channel = ""
-        --    r.MoneyType = CurrentMoneyType
+        --    r.MoneyType = self.Context.Cfg.CurrentMoneyType
         --    self.ControllerMgr.RPC:RPC1(CommonMethodType.WalletWithdrawRequest, r:getData4Pack())
     end
 end
@@ -318,7 +318,7 @@ end
 function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
     --if (self.CasinosContext.UnityAndroid == true)
     --then
-    if ChipIconSolustion ~= 1 then
+    if self.Context.Cfg.ChipIconSolustion ~= 1 then
         local view_paytype = self.ControllerMgr.ViewMgr:CreateView("PayType")
         view_paytype:BuyItem(is_first_recharge, tb_id)
     else
@@ -327,7 +327,7 @@ function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
             local r = WalletRechargeRequest:new(nil)
             r.Amount = tb_item.Price
             r.Channel = ""
-            r.MoneyType = CurrentMoneyType
+            r.MoneyType = self.Context.Cfg.CurrentMoneyType
             self.ControllerMgr.RPC:RPC1(CommonMethodType.WalletRechargeRequest, r:getData4Pack())
         end
     end

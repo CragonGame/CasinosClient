@@ -9,6 +9,7 @@ function UiRegister:new(view)
     local o = {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewLogin = view
     local obj_register = view.ComUi:GetChild("Register")
     if (obj_register ~= nil) then
@@ -136,8 +137,8 @@ function UiRegister:_onClickBtnRegister()
     if (self.ViewLogin:_hasAgreeAgreement() == false) then
         return
     end
-    if (ServerState > 0) then
-        ViewHelper:UiShowInfoSuccess(ServerStateInfo)
+    if (self.Context.Cfg.ServerState > 0) then
+        ViewHelper:UiShowInfoSuccess(self.Context.Cfg.ServerStateInfo)
         return
     end
 

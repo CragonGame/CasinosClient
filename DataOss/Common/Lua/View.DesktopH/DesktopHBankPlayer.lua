@@ -52,7 +52,7 @@ function DesktopHBankPlayer:Update(tm)
 end
 
 ---------------------------------------
-function DesktopHBankPlayer:setBankPlayerInfo(bankplayer_datadesktoph)
+function DesktopHBankPlayer:SetBankerInfo(bankplayer_datadesktoph)
     local bankplayer_changed = false
     if (self.BankPlayerDataDesktopH == nil
             or self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid ~= bankplayer_datadesktoph.PlayerInfoCommon.PlayerGuid) then
@@ -70,7 +70,7 @@ function DesktopHBankPlayer:setBankPlayerInfo(bankplayer_datadesktoph)
 end
 
 ---------------------------------------
-function DesktopHBankPlayer:updateBankPlayerInfo(bankplayer_datadesktoph)
+function DesktopHBankPlayer:RefreshBankerInfo(bankplayer_datadesktoph)
     self.BankPlayerDataDesktopH = bankplayer_datadesktoph
 end
 
@@ -116,8 +116,7 @@ function DesktopHBankPlayer:showGameEndGoldAni()
         self.FTaskerGetRewardGold = CS.Casinos.FTMgr.Instance:whenAll(nil,
                 function(map_param)
                     self:_getWinGoldsFromRewardPot(map_param)
-                end,
-                t)
+                end, t)
     end
 end
 
@@ -158,8 +157,8 @@ end
 function DesktopHBankPlayer:giveGoldToPot(pot_index)
     local from = self:getBankPlayerCenterPos()
     for k, v in pairs(self.ViewDesktopH:getDesktopHChairAll()) do
-        if (v.SeatPlayerInfoHundred == nil) then
-        elseif (v.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid == self.ViewDesktopH.ControllerDesktopH.Guid) then
+        if (v.SeatPlayerInfo == nil) then
+        elseif (v.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid == self.ViewDesktopH.ControllerDesktopH.Guid) then
         else
             v:showWinGoldsAni(pot_index, from)
         end
@@ -243,8 +242,7 @@ end
 function DesktopHBankPlayer:_setBankPlayerGolds()
     local gold_str = UiChipShowHelper:getGoldShowStr(self.BankPlayerDataDesktopH.Gold,
             self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
-    if (DesktopHSysBankShowDBValue and
-            CS.System.String.IsNullOrEmpty(self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid)) then
+    if (self.Context.Cfg.DesktopHSysBankShowDBValue and CS.System.String.IsNullOrEmpty(self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid)) then
         local sys_bank_initgold = self.ViewDesktopH.UiDesktopHBase:getSysBankPlayerInitGold()
         gold_str = UiChipShowHelper:getGoldShowStr(sys_bank_initgold, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
     end

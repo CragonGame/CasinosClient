@@ -16,10 +16,10 @@ function Native:new(o, view_mgr, listner)
 
         if CS.Casinos.CasinosContext.Instance.IsEditor == false then
             CS.ThirdPartyLogin.Instantce():initLogin(self.Context.Cfg.WeChatAppId)
-            --CS.Push.Instant():initPush(PushAppId, PushAppKey, PushAppSecret)
+            --CS.Push.Instant():initPush(self.Context.Cfg.PushAppId, self.Context.Cfg.PushAppKey, self.Context.Cfg.PushAppSecret)
         end
 
-        --CS.ShareSDKReceiver.instance(ShareSDKAppKey, ShareSDKAppSecret)
+        --CS.ShareSDKReceiver.instance(self.Context.Cfg.ShareSDKAppKey, self.Context.Cfg.ShareSDKAppSecret)
         --CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()
         --CS.ShareSDKReceiver.mShareSDK.devInfo.wechat = CS.cn.sharesdk.unity3d.WeChat()
         --if CS.Casinos.CasinosContext.Instance.UnityAndroid then
@@ -45,11 +45,11 @@ function Native:new(o, view_mgr, listner)
 
     --CS.Pay.Instant()
     --if CS.Casinos.CasinosContext.Instance.IsEditor == false then
-    --    local secrete = BeeCloudLiveSecret
+    --    local secrete = self.Context.Cfg.BeeCloudLiveSecret
     --    if self.Context.Cfg.PayUseTestMode then
-    --        secrete = BeeCloudTestSecret
+    --        secrete = self.Context.Cfg.BeeCloudTestSecret
     --    end
-    --    CS.Pay.payInit(BeeCloudId, secrete, self.Context.Cfg.WeChatAppId)
+    --    CS.Pay.payInit(self.Context.Cfg.BeeCloudId, secrete, self.Context.Cfg.WeChatAppId)
     --    CS.Pay.useTestMode(self.Context.Cfg.PayUseTestMode)
     --end
 

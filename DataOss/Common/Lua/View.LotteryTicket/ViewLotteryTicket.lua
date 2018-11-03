@@ -104,7 +104,7 @@ function ViewLotteryTicket:OnCreate()
     self:switchControllerRules(false)
     self:createBetPot()
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-    self.ChipIconSolustion.selectedIndex = ChipIconSolustion
+    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
 end
 
 ---------------------------------------

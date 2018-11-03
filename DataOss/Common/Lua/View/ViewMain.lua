@@ -123,7 +123,7 @@ function ViewMain:OnCreate()
     end
 
     local c_m_s = com_more:GetController("ChipIconSolustion")
-    c_m_s.selectedIndex = ChipIconSolustion
+    c_m_s.selectedIndex = self.Context.Cfg.ChipIconSolustion
 
     self.ControllerMoreBtn = self.ComUi:GetController("ControllerMoreBtn")
     self.ControllerMoreBtn.selectedIndex = 0
@@ -150,7 +150,7 @@ function ViewMain:OnCreate()
     self.TransitionComMore = self.ComMoreTips:GetTransition("TransitionNewMsg")
     self.GTextComMoreNum = self.ComMoreTips:GetChild("TextMsgTips").asTextField
     local btn_shop = nil
-    if ChipIconSolustion == 0 then
+    if self.Context.Cfg.ChipIconSolustion == 0 then
         btn_shop = self.ComUi:GetChild("BtnShop").asButton
     else
         btn_shop = com_more:GetChild("BtnShop").asButton
@@ -238,7 +238,7 @@ function ViewMain:OnCreate()
             end
     )
     local show_first = false
-    if (ClientShowFirstRecharge == true and is_firstrecharge == true) then
+    if (self.Context.Cfg.ClientShowFirstRecharge == true and is_firstrecharge == true) then
         show_first = true
     else
         self.BtnRegister.position = com_recharge_first.position
@@ -283,7 +283,7 @@ function ViewMain:OnCreate()
     self:setLotteryTicketInfo(self.ControllerLotteryTicket.LotteryTicketState, self.ControllerLotteryTicket.BetStateTm)
     local com_playerinfo = self.ComUi:GetChild("ComPlayerInfoSelf").asCom
     local c_p = com_playerinfo:GetController("ChipIconSolustion")
-    c_p.selectedIndex = ChipIconSolustion
+    c_p.selectedIndex = self.Context.Cfg.ChipIconSolustion
     self.UiPlayerInfoSelf = UiMainPlayerInfo:new(com_playerinfo, false,
             function()
                 self:onClickComPlayerInfoSelf()
@@ -298,7 +298,7 @@ function ViewMain:OnCreate()
     )
     local com_friendInfo = self.ComUi:GetChild("ComPlayerInfoFriend").asCom
     local c_f = com_friendInfo:GetController("ChipIconSolustion")
-    c_f.selectedIndex = ChipIconSolustion
+    c_f.selectedIndex = self.Context.Cfg.ChipIconSolustion
     local controller_showdiamondIcon = com_friendInfo:GetController("ControllerShowDiamondIcon")
     controller_showdiamondIcon:SetSelectedIndex(1)
     self.UiPlayerInfoCurrentFriend = UiMainPlayerInfo:new(com_friendInfo, true,
@@ -422,7 +422,7 @@ function ViewMain:OnCreate()
             end
     )
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-    self.ChipIconSolustion.selectedIndex = ChipIconSolustion
+    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
 
     local need_checkid = self.ControllerLogin:needCheckIdCard()
     if need_checkid then

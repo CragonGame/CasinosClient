@@ -28,6 +28,7 @@ function ViewDailyReward:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
     return o
@@ -158,7 +159,7 @@ function ViewDailyReward:getTitle(day)
     elseif (day == 7) then
         icon_url = "ui://DailyReward/Chips" .. day
     end
-    if (UseLan == true) then
+    if (self.Context.Cfg.UseLan == true) then
         title = self.ViewMgr.LanMgr:getLanValue("Day" .. day)
     end
     reward_info.title = title

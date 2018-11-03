@@ -9,6 +9,7 @@ function ViewPlayerProfile:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewMgr = nil
     o.GoUi = nil
     o.ComUi = nil
@@ -64,7 +65,7 @@ function ViewPlayerProfile:OnCreate()
                 else
                     local icon_resource_name = ""
                     local player_icon, icon_resource_name = CS.Casinos.HeadIconMgr.getIconName(false, self.PlayerInfo.PlayerInfoCommon.AccountId, icon_resource_name)
-                    CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", PlayerIconDomain .. player_icon, icon_resource_name, nil,
+                    CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", self.Context.Cfg.PlayerIconDomain .. player_icon, icon_resource_name, nil,
                             function(ex, tick)
                                 ViewHelper:UiEndWaiting()
                                 if (ex ~= nil)
@@ -108,7 +109,7 @@ function ViewPlayerProfile:OnCreate()
         item:setReportType(value, et_guid)
     end
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-    self.ChipIconSolustion.selectedIndex = ChipIconSolustion
+    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
     self.ViewMgr:BindEvListener("EvEntityGetPlayerInfoOther", self)
     self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
     self.ViewMgr:BindEvListener("EvEntityBagDeleteItem", self)

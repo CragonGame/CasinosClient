@@ -116,8 +116,8 @@ function DesktopHRewardPot:showLooseGoldAni(pot_index, win_rewardpot_golds)
         self.ListLooseUiGold = {}
     else
         for k, v in pairs(self.ViewDesktopH:getDesktopHChairAll()) do
-            if (v.SeatPlayerInfoHundred ~= nil) then
-                if (v.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid ~= self.ViewDesktopH.ControllerPlayer.Guid) then
+            if (v.SeatPlayerInfo ~= nil) then
+                if (v.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid ~= self.ViewDesktopH.ControllerPlayer.Guid) then
                     v:showWinGoldsAni(pot_index, from)
                 end
             end

@@ -9,6 +9,7 @@ function ItemDesktopHHistroy:new(o, com_history, desktoph, betpot_index, list_hi
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewDesktoph = desktoph
     o.GCoHistroy = com_history
     o.GLoaderBetPotIcon = o.GCoHistroy:GetChild("LoaderBetPotIcon").asLoader
@@ -31,7 +32,7 @@ function ItemDesktopHHistroy:refreshHistory(list_history)
             win_loose = "Win"
         end
         local icon_name = CS.Casinos.UiHelperCasinos.FormatePackageImagePath("DesktopHHistory", win_loose)
-        if (UseLan == true) then
+        if (self.Context.Cfg.UseLan == true) then
             local pack_name = self.ViewDesktoph.ViewMgr.LanMgr:getLanPackageName()
             icon_name = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(pack_name, win_loose)
         end

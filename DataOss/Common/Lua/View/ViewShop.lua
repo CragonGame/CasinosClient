@@ -16,6 +16,7 @@ function ViewShop:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     self.ViewMgr = nil
     self.GoUi = nil
     self.ComUi = nil
@@ -96,14 +97,14 @@ function ViewShop:OnCreate()
     self.GTextVIPTips = self.ComUi:GetChild("VIPTips").asTextField
     self.GProVIP = self.ComUi:GetChild("ProVIP").asProgress
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-    self.ChipIconSolustion.selectedIndex = ChipIconSolustion
+    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
     local group_0 = self.ComUi:GetChild("GroupTab0").asGroup
     local group_1 = self.ComUi:GetChild("GroupTab1").asGroup
     local group = group_0
     local group_0_ex = self.ComUi:GetChild("Group0").asGroup
     local group_1_ex = self.ComUi:GetChild("Group1").asGroup
     local group_ex = group_0_ex
-    if ChipIconSolustion == 0 then
+    if self.Context.Cfg.ChipIconSolustion == 0 then
         local btn_tabdiomand = self.ComUi:GetChild("BtnTabDiamond").asButton
         btn_tabdiomand.onClick:Add(
                 function()
@@ -217,7 +218,7 @@ end
 
 ---------------------------------------
 function ViewShop:onClickBtnDiomand()
-    if ChipIconSolustion == 1 then
+    if self.Context.Cfg.ChipIconSolustion == 1 then
         self.ViewMgr:CreateView("Purse")
     else
         self.ControllerShop.selectedIndex = 1
@@ -228,7 +229,7 @@ end
 
 ---------------------------------------
 function ViewShop:onClickBtnTabChip()
-    if ChipIconSolustion == 1 then
+    if self.Context.Cfg.ChipIconSolustion == 1 then
         self.ViewMgr:CreateView("Purse")
     else
         self.ControllerShop.selectedIndex = 0
@@ -241,7 +242,7 @@ end
 function ViewShop:onClickBtnTabConsume()
     self.ControllerShop.selectedIndex = 2
     local s_index = 2
-    if ChipIconSolustion == 1 then
+    if self.Context.Cfg.ChipIconSolustion == 1 then
         s_index = 0
     end
     self.ControllerTab.selectedIndex = s_index
@@ -252,7 +253,7 @@ end
 function ViewShop:onClickBtnVip()
     self.ControllerShop.selectedIndex = 3
     local s_index = 3
-    if ChipIconSolustion == 1 then
+    if self.Context.Cfg.ChipIconSolustion == 1 then
         s_index = 1
     end
     self.ControllerTab.selectedIndex = s_index
@@ -286,7 +287,7 @@ end
 function ViewShop:onClickBtnTabGift()
     self.ControllerShop.selectedIndex = 4
     local s_index = 4
-    if ChipIconSolustion == 1 then
+    if self.Context.Cfg.ChipIconSolustion == 1 then
         s_index = 2
     end
     self.ControllerTab.selectedIndex = s_index

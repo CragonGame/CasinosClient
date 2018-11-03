@@ -6,6 +6,7 @@ function ItemMatchInfoRank:new(o,com,info,rank,lan_base)
 	o = o or {}
 	setmetatable(o,self)
 	self.__index = self
+	self.Context = Context
 	if(rank <= 3)
 	then
 		local loader_rank = com:GetChild("LoaderRank").asLoader
@@ -23,7 +24,7 @@ function ItemMatchInfoRank:new(o,com,info,rank,lan_base)
 	--local icon = temp_table[1]
 	--if(icon ~= nil and string.len(icon) > 0)
 	--then
-	--   loader_headicon.icon = PlayerIconDomain .. icon
+	--   loader_headicon.icon = self.Context.Cfg.PlayerIconDomain .. icon
 	--end
 	return o
 end

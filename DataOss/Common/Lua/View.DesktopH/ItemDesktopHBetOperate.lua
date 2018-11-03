@@ -9,6 +9,7 @@ function ItemDesktopHBetOperate:new(o, bet_operat, ui_desktoph)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewDesktopH = ui_desktoph
     o.GComBetOperate = bet_operat
     o.GComBetOperate.onClick:Add(
@@ -31,7 +32,7 @@ function ItemDesktopHBetOperate:setOperateInfo(tb_operate_id, operate_value, can
     self.mIsCurrentOperate = is_currentoperate
     self.GLoaderOperateBg = self.GComBetOperate:GetChild("GoldIcon").asLoader
     local package_name = self.ViewDesktopH.UiDesktopHPackageNameTitle
-    if (UseLan) then
+    if (self.Context.Cfg.UseLan) then
         package_name = self.ViewDesktopH.ViewMgr.LanMgr:getLanPackageName()
     end
     self.GLoaderOperateBg.icon = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(package_name, "Gold" .. operate_value)

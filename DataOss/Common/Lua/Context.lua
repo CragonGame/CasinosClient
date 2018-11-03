@@ -1,35 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
--- TODO，待删除
-PlayerIconDomain = 'https://cragon-king-oss.cragon.cn/images/'
-BotIconDomain = 'https://cragon-king-oss.cragon.cn/ucenter/'
-ServerState = 0-- 服务器状态: 0正常,1维护
-ServerStateInfo = ''-- 系统公告
-ClientShowFirstRecharge = true-- 客户端显示首充按钮 false 不显示 true 显示
-DesktopHSysBankShowDBValue = true-- 百人系统庄是否显示SQlite配置值
-ShootingTextShowVIPLimit = 0-- 弹幕发送后是否真正发送弹幕VIP等级限制，0为无限制
-DesktopHCanChatVIPLimit = 1-- 百人是否可聊天VIP等级限制，0为无限制
-DesktopCanChatVIPLimit = 0-- 普通桌是否可聊天VIP等级限制，0为无限制
-UseWechatPay = true
-UseAliPay = true
-UseIAP = false
-UseLan = true
-UseDefaultLan = false
-DefaultLan = 'Chinese'
-ChipIconSolustion = 0
-CurrentMoneyType = 0
-PinggPPAppId = 'app_TCi58CGKCSaHGCuP'
-PushAppId = 'TXYr3LD0se8JU8UOtg9cj3'
-PushAppKey = 'F6i4mvPKr96KuYsNAXciw9'
-PushAppSecret = 'DWlJdILTq77OG68J4jFcx3'
-ShareSDKAppKey = '254dedc7a3730'
-ShareSDKAppSecret = '53788920e17ffa1d9af4ef3540352172'
-BeeCloudId = '9c24464e-c912-44aa-bfe8-ca3a384410d0'
-BeeCloudLiveSecret = '71625ddd-5a3d-4b73-be74-1580c8912dda'
-BeeCloudTestSecret = '7bbc79a8-f310-4d76-a582-2622242c23f5'
-
----------------------------------------
 -- 配置，开发者选项
 ConfigDevelopSettings = {}
 
@@ -1045,8 +1016,8 @@ end
 -- 计算BotIcon Url
 function Context:CalcBotIconUrl(is_small, icon)
     if (is_small == true) then
-        return BotIconDomain .. 'boticonsmall/' .. icon .. '.jpg'
+        return self.Cfg.BotIconDomain .. 'boticonsmall/' .. icon .. '.jpg'
     else
-        return BotIconDomain .. 'boticon/' .. icon .. '.jpg'
+        return self.Cfg.BotIconDomain .. 'boticon/' .. icon .. '.jpg'
     end
 end

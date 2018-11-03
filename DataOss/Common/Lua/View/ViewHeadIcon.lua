@@ -9,6 +9,7 @@ function ViewHeadIcon:new(o, co_headicon, click_callback, load_icon_down)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.GCoHeadIcon = co_headicon
     o.EventCallback0 = click_callback
     o.GCoHeadIcon.onClick:Add(
@@ -185,7 +186,7 @@ function ViewHeadIcon:setPlayerIcon(icon, account_id)
             local temp_table = CS.Casinos.LuaHelper.getIconName(true, account_id, icon_resource_name)
             icon = temp_table[1]
             if (icon ~= nil and string.len(icon) > 0) then
-                self.GLoaderPlayerIcon.icon = PlayerIconDomain .. icon
+                self.GLoaderPlayerIcon.icon = self.Context.Cfg.PlayerIconDomain .. icon
             end
         end
     end

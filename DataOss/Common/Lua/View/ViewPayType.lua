@@ -9,6 +9,7 @@ function ViewPayType:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewMgr = nil
     o.GoUi = nil
     o.ComUi = nil
@@ -39,21 +40,21 @@ function ViewPayType:OnCreate()
                 self:onClickWeiChat()
             end
     )
-    ViewHelper:SetGObjectVisible(UseWechatPay, self.GBtnWeiChat)
+    ViewHelper:SetGObjectVisible(self.Context.Cfg.UseWechatPay, self.GBtnWeiChat)
     self.GBtnZhiFuBao = self.ComUi:GetChildInGroup(group_parent, "BtnAliPay").asButton
     self.GBtnZhiFuBao.onClick:Add(
             function()
                 self:onClickZhiFuBao()
             end
     )
-    ViewHelper:SetGObjectVisible(UseAliPay, self.GBtnZhiFuBao)
+    ViewHelper:SetGObjectVisible(self.Context.Cfg.UseAliPay, self.GBtnZhiFuBao)
     local btn = self.ComUi:GetChild("BtnNeiGou").asButton
     btn.onClick:Add(
             function()
                 self:onClickNeiGou()
             end
     )
-    ViewHelper:SetGObjectVisible(UseIAP, btn)
+    ViewHelper:SetGObjectVisible(self.Context.Cfg.UseIAP, btn)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local co_shade = com_bg:GetChild("ComShade").asCom
     co_shade.onClick:Add(

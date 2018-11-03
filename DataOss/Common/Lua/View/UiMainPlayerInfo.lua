@@ -10,6 +10,7 @@ function UiMainPlayerInfo:new(com, show_invite, action_click)
     o = {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ComPlayerInfo = com
     o.ComPlayerInfo.onClick:Add(action_click)
     local com_headicon = o.ComPlayerInfo:GetChild("CoHeadIcon").asCom
@@ -29,11 +30,11 @@ function UiMainPlayerInfo:new(com, show_invite, action_click)
         o.UiHeadIcon:hideIcon()
     end
 
-    local image_iconGold = o.ComPlayerInfo:GetChild("IconGold" .. ChipIconSolustion)
+    local image_iconGold = o.ComPlayerInfo:GetChild("IconGold" .. self.Context.Cfg.ChipIconSolustion)
     if (image_iconGold ~= nil) then
         o.GImageIconGold = image_iconGold.asImage
     end
-    local image_iconDiamond = o.ComPlayerInfo:GetChild("IconDiamond" .. ChipIconSolustion)
+    local image_iconDiamond = o.ComPlayerInfo:GetChild("IconDiamond" .. self.Context.Cfg.ChipIconSolustion)
     if (image_iconDiamond ~= nil) then
         o.GImageIconDiamond = image_iconDiamond.asImage
     end

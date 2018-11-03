@@ -98,7 +98,7 @@ function ViewDesktopHTexas:getCardTypeAndSoundPath(cardtype_name, is_win)
         cardtype_name = cardtype_name .. "Loose"
     end
     local pack_name = self.PackageName
-    if (UseLan) then
+    if (self.Context.Cfg.UseLan) then
         pack_name = self.ViewDesktopH.ViewMgr.LanMgr:getLanPackageName()
     end
     local path = CS.FairyGUI.UIPackage.GetItemURL(pack_name, cardtype_name)

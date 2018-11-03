@@ -9,6 +9,7 @@ function ItemAttachment:new(o, com, item_data, gold, diamond, view_mgr)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ViewMgr = view_mgr
     o.GTextAttachmentContent = com:GetChild("ItemContent").asTextField
@@ -30,13 +31,13 @@ function ItemAttachment:new(o, com, item_data, gold, diamond, view_mgr)
     if (gold > 0) then
         content = self.ViewMgr.LanMgr:getLanValue("Chip") .. "\n" ..
                 UiChipShowHelper:getGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
-        icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "ChipIcon" .. ChipIconSolustion)
+        icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "ChipIcon" .. self.Context.Cfg.ChipIconSolustion)
         o.GLoaderAttachment.color = CS.UnityEngine.Color(0.38, 0.89, 1)
     end
     if (diamond > 0) then
         content = self.ViewMgr.LanMgr:getLanValue("Coin") .. "\n" ..
                 UiChipShowHelper:getGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase)
-        icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "DiamondIcon" .. ChipIconSolustion)
+        icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "DiamondIcon" .. self.Context.Cfg.ChipIconSolustion)
     end
     o.GTextAttachmentContent.text = content
     o.GLoaderAttachment.icon = icon_url

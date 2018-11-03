@@ -65,6 +65,7 @@ function ViewDesktopH:new(o)
     self.TongPeiPackName = "DesktopHTongPei"
     self.ShowTongShaTongPeiTime = 1
     self.MaxUiChipNum = 60
+    self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
     return o
@@ -228,7 +229,7 @@ function ViewDesktopH:OnCreate()
     end
 
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")-- 为了兼容Nigeria的莱拉货币
-    self.ChipIconSolustion.selectedIndex = ChipIconSolustion
+    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
 
     self.ComShadeReward = self.ComUi:GetChild("ComShadeReward").asCom-- 为了处理定时奖励和在线奖励显示和隐藏的消息
     self.ComShadeReward.visible = false
@@ -351,9 +352,9 @@ function ViewDesktopH:OnHandleEv(ev)
                 end
             end
         elseif (ev.EventName == "EvEntityDesktopHChangeBankerPlayer") then
-            self.DesktopHBankPlayer:setBankPlayerInfo(ev.banker_player)
+            self.DesktopHBankPlayer:SetBankerInfo(ev.banker_player)
         elseif (ev.EventName == "EvEntityDesktopHBankerPlayerGoldChange") then
-            self.DesktopHBankPlayer:updateBankPlayerInfo(ev.banker_player)
+            self.DesktopHBankPlayer:RefreshBankerInfo(ev.banker_player)
         elseif (ev.EventName == "EvEntityDesktopHChangeSeatPlayer") then
             local change_p = {}
             for i, v in pairs(ev.map_seat_player) do
@@ -371,8 +372,8 @@ function ViewDesktopH:OnHandleEv(ev)
             end
         elseif (ev.EventName == "EvEntityDesktopHSeatPlayerGoldChanged") then
             for i, v in pairs(self.MapDesktopHChair) do
-                if (v.SeatPlayerInfoHundred ~= nil) then
-                    local golds = ev.map_seatplayer_golds[v.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid]
+                if (v.SeatPlayerInfo ~= nil) then
+                    local golds = ev.map_seatplayer_golds[v.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid]
                     if (golds ~= nil and golds > 0) then
                         v:updatePlayerGolds(golds)
                     end
@@ -384,8 +385,8 @@ function ViewDesktopH:OnHandleEv(ev)
             local chat_info = ev.chat_info
             local use_tanmu = true
             local show_chat = true
-            if (ShootingTextShowVIPLimit ~= 0) then
-                if (chat_info.sender_viplevel >= ShootingTextShowVIPLimit) then
+            if (self.Context.Cfg.ShootingTextShowVIPLimit ~= 0) then
+                if (chat_info.sender_viplevel >= self.Context.Cfg.ShootingTextShowVIPLimit) then
                     show_chat = true
                 else
                     show_chat = false
@@ -573,7 +574,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
     self.UiDesktopHTongPei:Reset()
     self.UiDesktopHTongSha:Reset()
 
-    self.DesktopHBankPlayer:setBankPlayerInfo(desktoph_data.banker_player)
+    self.DesktopHBankPlayer:SetBankerInfo(desktoph_data.banker_player)
 
     if (desktoph_data.map_seatplayer ~= nil) then
         local t_h_seat = desktoph_data.map_seatplayer
@@ -734,8 +735,8 @@ end
 function ViewDesktopH:getDesktopHChairByGuid(guid)
     local chair = nil
     for i, v in pairs(self.MapDesktopHChair) do
-        if (v.SeatPlayerInfoHundred ~= nil) then
-            if (v.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid == guid) then
+        if (v.SeatPlayerInfo ~= nil) then
+            if (v.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid == guid) then
                 chair = v
                 break
             end
@@ -1015,9 +1016,9 @@ function ViewDesktopH:_playerBuyItem(sender_guid, map_items)
         if (item.UnitLink.UnitType == "GiftTmp") then
             local seat_target = nil
             for chair_i, chair_v in pairs(self.MapDesktopHChair) do
-                if (chair_v.Value == nil or chair_v.Value.SeatPlayerInfoHundred == nil) then
+                if (chair_v.Value == nil or chair_v.Value.SeatPlayerInfo == nil) then
                 else
-                    if (chair.Value.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid == i) then
+                    if (chair.Value.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid == i) then
                         seat_target = chair_v.Value
                         break
                     end

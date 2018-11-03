@@ -8,6 +8,7 @@ function ViewFriend:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewMgr = nil
     o.GoUi = nil
     o.ComUi = nil
@@ -590,7 +591,7 @@ function ViewShowFriendDetail:onClickCommonHeadIcon()
     else
         local icon_resource_name = ""
         local player_icon, icon_resource_name = CS.Casinos.HeadIconMgr.getIconName(false, self.CurrentFriendInfo.PlayerInfoCommon.AccountId, icon_resource_name)
-        CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", PlayerIconDomain .. player_icon, icon_resource_name, nil,
+        CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", self.Context.Cfg.PlayerIconDomain .. player_icon, icon_resource_name, nil,
                 function(ex, tick)
                     ViewHelper:UiEndWaiting()
                     if (ex ~= nil) then

@@ -6,6 +6,7 @@ function ViewLobby:new(o)
 	o = o or {}
 	setmetatable(o,self)
 	self.__index = self
+	self.Context = Context
 	self.FilterKey = "DesktopFilterTP"
 	o.ViewMgr = nil
 	o.GoUi = nil
@@ -14,7 +15,6 @@ function ViewLobby:new(o)
 	o.UILayer = nil
 	o.InitDepth = nil
 	o.ViewKey = nil
-
 	return o
 end
 
@@ -105,7 +105,7 @@ function ViewLobby:OnCreate()
 		ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH,ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height,bg,BgAttachMode.Center)
 	end
 	self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-	self.ChipIconSolustion.selectedIndex = ChipIconSolustion
+	self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
 	self.ViewMgr:BindEvListener("EvEntityGetLobbyDeskList",self)
 	self.ViewMgr:BindEvListener("EvEntitySearchDesktopFollowFriend",self)
 	self.ViewMgr:BindEvListener("EvEntityFriendOnlineStateChange",self)

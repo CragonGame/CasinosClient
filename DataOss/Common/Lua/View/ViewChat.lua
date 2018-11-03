@@ -10,6 +10,7 @@ function ViewChat:new(o)
     setmetatable(o, self)
     self.__index = self
     self.PlayTanMuKey = "PlayTanMu"
+    self.Context = Context
     o.ViewMgr = nil
     o.GoUi = nil
     o.ComUi = nil
@@ -188,11 +189,11 @@ function ViewChat:onClickSendChat()
     end
     local can_chat = false
     if (self.UiChatType == _eUiChatType.Desktop) then
-        if (self.ControllerActor.PropVIPLevel:get() >= DesktopCanChatVIPLimit) then
+        if (self.ControllerActor.PropVIPLevel:get() >= self.Context.Cfg.DesktopCanChatVIPLimit) then
             can_chat = true
         end
     elseif (self.UiChatType == _eUiChatType.DesktopH) then
-        if (self.ControllerActor.PropVIPLevel:get() >= DesktopHCanChatVIPLimit) then
+        if (self.ControllerActor.PropVIPLevel:get() >= self.Context.Cfg.DesktopHCanChatVIPLimit) then
             can_chat = true
         else
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("OnlyVIPCanSend"))

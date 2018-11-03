@@ -9,6 +9,7 @@ function ViewPlayerInfo:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     self.MaxNickNameLength = 9
     o.ViewMgr = nil
     o.GoUi = nil
@@ -159,7 +160,7 @@ function ViewPlayerInfo:OnCreate()
     self.GTextPoint = self.ComUi:GetChild("TextPoint").asTextField
     self:initPlayerInfo()
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-    self.ChipIconSolustion.selectedIndex = ChipIconSolustion
+    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
     local ev = self.ViewMgr:GetEv("EvRequestGetPlayerModuleData")
     if (ev == nil) then
         ev = EvRequestGetPlayerModuleData:new(nil)

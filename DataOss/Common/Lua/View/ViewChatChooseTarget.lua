@@ -8,6 +8,7 @@ function ViewChatChooseTarget:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewMgr = nil
     o.GoUi = nil
     o.ComUi = nil
@@ -74,7 +75,7 @@ end
 function ViewChatChooseTarget:RenderListItemChatTarget(index, obj)
     local list_have_record_friend = self.ControllerIM.IMFriendList.ListFriendGuid
     local com = CS.Casinos.LuaHelper.GObjectCastToGCom(obj)
-    if (UseLan) then
+    if (self.Context.Cfg.UseLan) then
         self.ViewMgr.LanMgr:parseComponent(com)
     end
     local item = ItemChooseChatTargetInfo:new(nil, com, self.ControllerIM)

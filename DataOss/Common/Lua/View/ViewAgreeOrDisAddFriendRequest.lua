@@ -8,6 +8,7 @@ function ViewAgreeOrDisAddFriendRequest:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewMgr = nil
     o.GoUi = nil
     o.ComUi = nil
@@ -42,7 +43,7 @@ function ViewAgreeOrDisAddFriendRequest:OnCreate()
             end
     )
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-    self.ChipIconSolustion.selectedIndex = ChipIconSolustion
+    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
     self.ViewMgr:BindEvListener("EvEntityGetPlayerInfoOther", self)
 end
 

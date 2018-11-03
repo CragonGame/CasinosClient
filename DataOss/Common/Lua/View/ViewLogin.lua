@@ -272,7 +272,7 @@ function ViewLogin:OnCreate()
     -- 显示版本信息
     local version_bundle = self.CasinosContext.Config.VersionBundle
     local version_data = self.CasinosContext.Config.VersionDataPersistent
-    self:SetVersionAndServerStateInfo(version_bundle, version_data, ServerState, ServerStateInfo)
+    self:SetVersionAndServerStateInfo(version_bundle, version_data, self.Context.Cfg.ServerState, self.Context.Cfg.ServerStateInfo)
 
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
@@ -437,8 +437,8 @@ function ViewLogin:_onClickBtnGuestAccess()
     if (self:_hasAgreeAgreement() == false) then
         return
     end
-    if (ServerState > 0) then
-        ViewHelper:UiShowInfoSuccess(ServerStateInfo)
+    if (self.Context.Cfg.ServerState > 0) then
+        ViewHelper:UiShowInfoSuccess(self.Context.Cfg.ServerStateInfo)
         return
     end
 
@@ -460,8 +460,8 @@ function ViewLogin:_onClickWeiXin()
     if (self:_hasAgreeAgreement() == false) then
         return
     end
-    if (ServerState > 0) then
-        ViewHelper:UiShowInfoSuccess(ServerStateInfo)
+    if (self.Context.Cfg.ServerState > 0) then
+        ViewHelper:UiShowInfoSuccess(self.Context.Cfg.ServerStateInfo)
         return
     end
 
@@ -503,8 +503,8 @@ function ViewLogin:_switchLoginState()
     if (self:_hasAgreeAgreement() == false) then
         return
     end
-    if (ServerState > 0) then
-        ViewHelper:UiShowInfoSuccess(ServerStateInfo)
+    if (self.Context.Cfg.ServerState > 0) then
+        ViewHelper:UiShowInfoSuccess(self.Context.Cfg.ServerStateInfo)
         return
     end
 

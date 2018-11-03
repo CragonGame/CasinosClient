@@ -9,6 +9,7 @@ function ViewShare:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewMgr = nil
     o.GoUi = nil
     o.ComUi = nil
@@ -44,7 +45,7 @@ function ViewShare:setPlayerInfo(nick_name, account_id, share_type)
     local temp_table = CS.Casinos.LuaHelper.getIconName(true, account_id, icon_resource_name)
     local icon = temp_table[1]
     if (icon ~= nil and string.len(icon) > 0) then
-        self.LoaderIcon.icon = PlayerIconDomain .. icon
+        self.LoaderIcon.icon = self.Context.Cfg.PlayerIconDomain .. icon
     end
     self.LoaderQRCode.texture = CS.FairyGUI.NTexture(Native.Instance.PlayerQRCodeTexture)
 end

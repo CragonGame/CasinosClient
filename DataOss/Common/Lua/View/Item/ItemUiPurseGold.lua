@@ -7,6 +7,7 @@ function ItemUiPurseGold:new(o,view_shop,gold,tb_item)
     o = o or {}
     setmetatable(o,self)
     self.__index = self
+    self.Context = Context
     o.ViewShop = view_shop
     o.GComGold = gold
     o.GTextGold = o.GComGold:GetChild("GoldValue").asTextField
@@ -20,8 +21,7 @@ function ItemUiPurseGold:new(o,view_shop,gold,tb_item)
     )
     o.TbDataItem = tb_item
     --local chip = "筹码"
-    --if (UseLan)
-    --then
+    --if (self.Context.Cfg.UseLan) then
     --    chip = view_shop.ViewMgr.LanMgr:getLanValue("筹码","Chip")
     --end
     local tb_mgr = CS.Casinos.CasinosContext.Instance.TbDataMgrLua

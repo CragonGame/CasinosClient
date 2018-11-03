@@ -8,6 +8,7 @@ function ViewDesktopHBankList:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     o.ViewMgr = nil
     o.GoUi = nil
     o.ComUi = nil
@@ -179,8 +180,7 @@ function ViewDesktopHBankList:_updateBankPlayerInfo(bank_player)
             self.GTextBankPlayerNickName.text = bank_player.PlayerInfoCommon.NickName
 
             local gold_str = UiChipShowHelper:getGoldShowStr(bank_player.Gold, self.ViewMgr.LanMgr.LanBase)
-            if (DesktopHSysBankShowDBValue and
-                    CS.System.String.IsNullOrEmpty(bank_player.PlayerInfoCommon.PlayerGuid)) then
+            if (self.Context.Cfg.DesktopHSysBankShowDBValue and CS.System.String.IsNullOrEmpty(bank_player.PlayerInfoCommon.PlayerGuid)) then
                 local sys_bank_initgold = self.ViewDesktopH.UiDesktopHBase:getSysBankPlayerInitGold()
                 gold_str = UiChipShowHelper:getGoldShowStr(sys_bank_initgold, self.ViewMgr.LanMgr.LanBase)
             end

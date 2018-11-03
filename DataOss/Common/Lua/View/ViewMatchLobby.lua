@@ -9,6 +9,7 @@ function ViewMatchLobby:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     self.ViewMgr = nil
     self.GoUi = nil
     self.ComUi = nil
@@ -74,7 +75,7 @@ function ViewMatchLobby:OnCreate()
     self.GComSelfMatchNum = self.ComUi:GetChild("ComSelfMatchNum").asCom
     self.GTextSelfMatchNum = self.GComSelfMatchNum:GetChild("TextNum").asTextField
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-    self.ChipIconSolustion.selectedIndex = ChipIconSolustion
+    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
 
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.ControllerMTT = self.ViewMgr.ControllerMgr:GetController("Mtt")

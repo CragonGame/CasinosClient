@@ -23,7 +23,7 @@ function DesktopHChair:new(o, ui_desktoph, co_chair, chair_index, is_left)
     )
     o.ItemDesktopHSeat = ItemDesktopHSeat:new(nil, o.GCoChair, o.ViewDesktopH.ViewMgr)
     o.GCoChatParent = o.GCoChair:GetChild("CoChatParent").asCom
-    o.SeatPlayerInfoHundred = nil
+    o.SeatPlayerInfo = nil
     o.ItemChatDesktop = nil
     o.ViewMgr = ViewMgr:new(nil)
     return o
@@ -52,11 +52,11 @@ end
 
 ---------------------------------------
 function DesktopHChair:playerChat(chat_info)
-    if (self.SeatPlayerInfoHundred == nil) then
+    if (self.SeatPlayerInfo == nil) then
         return
     end
 
-    if (chat_info.sender_etguid == self.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid) then
+    if (chat_info.sender_etguid == self.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid) then
         local sorting_order = self.GCoChatParent.sortingOrder + self.ViewDesktopH.DesktopHGoldPool:getMaxGoldSortOrder()
         if (self.ItemChatDesktop == nil) then
             local co_chatname = "CoChatRight"
@@ -86,23 +86,23 @@ function DesktopHChair:playerSeatDown(player_info)
 
     local player_changed = false
     if (player_info ~= nil) then
-        if (self.SeatPlayerInfoHundred == nil) then
+        if (self.SeatPlayerInfo == nil) then
             player_changed = true
         else
-            if (self.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid ~= player_info.PlayerInfoCommon.PlayerGuid) then
+            if (self.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid ~= player_info.PlayerInfoCommon.PlayerGuid) then
                 player_changed = true
             end
         end
     end
 
-    self.SeatPlayerInfoHundred = player_info
+    self.SeatPlayerInfo = player_info
 
-    if (self.SeatPlayerInfoHundred ~= nil) then
+    if (self.SeatPlayerInfo ~= nil) then
         if (self.ItemDesktopHSeat == nil) then
             self.ItemDesktopHSeat = ItemDesktopHSeat:new(nil, self.GCoChair)
         end
 
-        self.ItemDesktopHSeat:setSeatPlayerData(self.SeatPlayerInfoHundred, self.ChairIndex, player_changed)
+        self.ItemDesktopHSeat:setSeatPlayerData(self.SeatPlayerInfo, self.ChairIndex, player_changed)
     else
         self:_destroyUiHead()
         if (self.ItemChatDesktop ~= nil) then
@@ -113,8 +113,8 @@ end
 
 ---------------------------------------
 function DesktopHChair:updatePlayerGolds(golds)
-    if (self.SeatPlayerInfoHundred ~= nil) then
-        self.SeatPlayerInfoHundred.Gold = golds
+    if (self.SeatPlayerInfo ~= nil) then
+        self.SeatPlayerInfo.Gold = golds
     end
 
     if (self.ItemDesktopHSeat ~= nil) then
@@ -297,7 +297,7 @@ end
 
 ---------------------------------------
 function DesktopHChair:_onClick()
-    if (self.SeatPlayerInfoHundred == nil) then
+    if (self.SeatPlayerInfo == nil) then
         if (self.ViewDesktopH.ControllerDesktopH.IsBankPlayer) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BankerSit"))
             return
@@ -312,7 +312,7 @@ function DesktopHChair:_onClick()
         self.ViewMgr:SendEv(ev)
     else
         local ui_profileother = self.ViewMgr:CreateView("PlayerProfile")
-        ui_profileother:setPlayerGuid(CS.Casinos._ePlayerProfileType.DesktopH, self.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid,
+        ui_profileother:setPlayerGuid(CS.Casinos._ePlayerProfileType.DesktopH, self.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid,
                 function(player_info, head_icon)
                     self:_playerInfo(player_info, head_icon)
                 end

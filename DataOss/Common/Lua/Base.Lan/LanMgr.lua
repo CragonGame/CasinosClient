@@ -31,7 +31,7 @@ end
 
 ---------------------------------------
 function LanMgr:parseLanKeyValue()
-    if (UseLan == true) then
+    if (self.Context.Cfg.UseLan == true) then
         self.LanBase:parseLanKeyValue(self.TbDataMgr)
     end
 end
@@ -39,7 +39,7 @@ end
 ---------------------------------------
 function LanMgr:getLanValue(lan_key)
     local value = ""
-    if (UseLan == true) then
+    if (self.Context.Cfg.UseLan == true) then
         local temp = self.LanBase:getValue(lan_key)
         if (temp ~= nil) then
             value = temp
@@ -52,7 +52,7 @@ end
 ---------------------------------------
 function LanMgr:getLanPackageName()
     local value = ""
-    if (UseLan == true) then
+    if (self.Context.Cfg.UseLan == true) then
         value = self.LanBase:getLanPackageName()
     end
     return value
@@ -60,7 +60,7 @@ end
 
 ---------------------------------------
 function LanMgr:setLan(lan)
-    if (UseLan == false) then
+    if (self.Context.Cfg.UseLan == false) then
         return
     end
 
@@ -79,7 +79,7 @@ end
 
 ---------------------------------------
 function LanMgr:parseComponent(component)
-    if (UseLan == false) then
+    if (self.Context.Cfg.UseLan == false) then
         return
     end
     local children = component:GetChildren()
@@ -109,14 +109,14 @@ end
 
 ---------------------------------------
 function LanMgr:_checkAndCreateLanBase()
-    if (UseLan == true) then
-        if (UseDefaultLan == false) then
+    if (self.Context.Cfg.UseLan == true) then
+        if (self.Context.Cfg.UseDefaultLan == false) then
             self.CurrentLan = self.SystemLanguage
             if (CS.UnityEngine.PlayerPrefs.HasKey(self.LanKey) == true) then
                 self.CurrentLan = CS.UnityEngine.PlayerPrefs.GetString(self.LanKey)
             end
         else
-            self.CurrentLan = DefaultLan
+            self.CurrentLan = self.Context.Cfg.DefaultLan
         end
         self:_createLanBase()
     else
