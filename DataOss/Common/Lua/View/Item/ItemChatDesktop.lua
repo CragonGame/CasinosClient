@@ -22,7 +22,7 @@ function ItemChatDeskTop:update(tm)
     if (self.ShowTm > 0) then
         self.ShowTm = self.ShowTm - tm
         if (self.ShowTm <= 0) then
-            self:reset()
+            self:Reset()
         end
     end
 end
@@ -54,7 +54,7 @@ function ItemChatDeskTop:setChatTextAndSortingOrder(chat_info, sorting_order)
 end
 
 ---------------------------------------
-function ItemChatDeskTop:reset()
+function ItemChatDeskTop:Reset()
     self.ShowTm = 0
     self.GCoChat.visible = false
     self.GRichTextMsgNormalLength.text = nil

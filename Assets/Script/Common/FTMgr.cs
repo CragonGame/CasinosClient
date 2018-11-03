@@ -11,11 +11,11 @@ namespace Casinos
     public class FTMgr
     {
         //---------------------------------------------------------------------
+        public static FTMgr Instance { get; private set; }
         List<FTasker> ListTaskerAll { get; set; }
         List<FTasker> ListTaskerCopy { get; set; }
         List<FTasker> ListTaskerDone { get; set; }
-        public static FTMgr Instance { get; private set; }
-
+        
         //---------------------------------------------------------------------
         public FTMgr()
         {

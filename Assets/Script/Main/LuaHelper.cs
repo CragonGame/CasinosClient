@@ -366,12 +366,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        //public static UniWebView AddUniWebViewToObj(GameObject obj)
-        //{
-        //    return obj.AddComponent<UniWebView>();
-        //}
-
-        //---------------------------------------------------------------------
         public static LuaTable DictionaryToLuatable(IDictionary obj)
         {
             LuaTable lua_table = null;
@@ -445,6 +439,7 @@ namespace Casinos
             return new Dictionary<byte, object>();
         }
 
+        //---------------------------------------------------------------------
         public static object GetHashTableValue(Hashtable t, object t_key)
         {
             return t[t_key];
@@ -467,24 +462,6 @@ namespace Casinos
         {
             return rank.ToString();
         }
-
-        //---------------------------------------------------------------------
-        //public static LoginGuestInfo JsonDeserializeLoginGuestInfo(string str_json)
-        //{
-        //    return EbTool.jsonDeserialize<LoginGuestInfo>(str_json);
-        //}
-
-        //---------------------------------------------------------------------
-        //public static LoginAccountInfo JsonDeserializeLoginAccountInfo(string str_json)
-        //{
-        //    return EbTool.jsonDeserialize<LoginAccountInfo>(str_json);
-        //}
-
-        //---------------------------------------------------------------------
-        //public static DateTime JsonDeserializeDateTime(string str_json)
-        //{
-        //    return EbTool.jsonDeserialize<DateTime>(str_json);
-        //}
 
         //---------------------------------------------------------------------
         public static AutoDestroyParticle GetComponentAutoDestroyParticle(GameObject gameobject)
@@ -535,3 +512,27 @@ namespace Casinos
         }
     }
 }
+
+//---------------------------------------------------------------------
+//public static UniWebView AddUniWebViewToObj(GameObject obj)
+//{
+//    return obj.AddComponent<UniWebView>();
+//}
+
+//---------------------------------------------------------------------
+//public static LoginGuestInfo JsonDeserializeLoginGuestInfo(string str_json)
+//{
+//    return EbTool.jsonDeserialize<LoginGuestInfo>(str_json);
+//}
+
+//---------------------------------------------------------------------
+//public static LoginAccountInfo JsonDeserializeLoginAccountInfo(string str_json)
+//{
+//    return EbTool.jsonDeserialize<LoginAccountInfo>(str_json);
+//}
+
+//---------------------------------------------------------------------
+//public static DateTime JsonDeserializeDateTime(string str_json)
+//{
+//    return EbTool.jsonDeserialize<DateTime>(str_json);
+//}

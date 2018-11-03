@@ -127,7 +127,7 @@ function ItemChatTargetInfo:onPress()
 			end)
 end
 
-function ItemChatTargetInfo:reset()
+function ItemChatTargetInfo:Reset()
 	self.ViewChatFriend = nil
 	self.FriendInfo = nil
 end

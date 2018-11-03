@@ -100,7 +100,7 @@ function ItemLobbyDesk:recycleSeats()
     self.GBtnCreateLableL.visible = false
     self.GBtnCreateLableR.visible = false
     for key, value in pairs(self.MapItemPlayerInfo) do
-        value:reset()
+        value:Reset()
     end
 end
 

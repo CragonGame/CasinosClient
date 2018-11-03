@@ -170,7 +170,7 @@ function ItemChatEx:moveItem(move_speed, pos, moveend_callback)
 end
 
 ---------------------------------------
-function ItemChatEx:reset()
+function ItemChatEx:Reset()
     self.Com:SetXY(10000, 10000)
     self.Com.visible = false
     --ViewHelper:SetGObjectVisible(false, self.Com)

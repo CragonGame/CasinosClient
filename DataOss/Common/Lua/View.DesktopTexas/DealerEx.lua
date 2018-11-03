@@ -391,7 +391,7 @@ end
 
 ---------------------------------------
 function DealerEx:cardObjDealingEnqueue(card)
-    card:reset()
+    card:Reset()
     table.insert(self.mQueueDisabledCardDealing, card)
 end
 

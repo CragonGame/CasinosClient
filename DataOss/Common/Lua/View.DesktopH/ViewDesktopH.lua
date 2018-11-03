@@ -32,8 +32,8 @@ function ViewDesktopH:new(o)
     o.GTextMsgTips = nil
     o.FactoryName = nil
     o.DesktopHGameResult = nil
-    o.ItemUiDesktopHTongSha = nil
-    o.ItemUiDesktopHTongPei = nil
+    o.UiDesktopHTongSha = nil
+    o.UiDesktopHTongPei = nil
     o.GBtnRepeat = nil
     o.GBtnSetCardType = nil
     o.CoShiShiCai = nil-- 时时彩
@@ -108,11 +108,6 @@ function ViewDesktopH:OnCreate()
     self.ControllerActor = controller_mgr:GetController("Actor")
     self.ControllerIM = controller_mgr:GetController("IM")
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    --local ui_friend =CS.Casinos.CasinosContext.Instance.UiMgr.getUi<IUiFriend>()
-    --if (ui_friend ~= nil)
-    --{
-    -- CS.Casinos.CasinosContext.Instance.UiMgr.destroyUi<IUiFriend>(ui_friend)
-    --end
     self.MapDesktopHBetPot = {}
     self.MapDesktopHChair = {}
     self.MapDesktopHBetOperate = {}
@@ -178,13 +173,13 @@ function ViewDesktopH:OnCreate()
     com_tongsha.height = self.ComUi.height
     self.ViewMgr.LanMgr:parseComponent(com_tongsha)
     desktoph_topparent:AddChild(com_tongsha)
-    self.ItemUiDesktopHTongSha = ItemUiDesktopHTongSha:new(nil, com_tongsha)
+    self.UiDesktopHTongSha = UiDesktopHTongSha:new(nil, com_tongsha)
     local com_tongpei = CS.FairyGUI.UIPackage.CreateObject(self.TongPeiPackName, self.TongPeiPackName).asCom
     com_tongpei.width = self.ComUi.width
     com_tongpei.height = self.ComUi.height
     self.ViewMgr.LanMgr:parseComponent(com_tongpei)
     desktoph_topparent:AddChild(com_tongpei)
-    self.ItemUiDesktopHTongPei = ItemUiDesktopHTongPei:new(nil, com_tongpei, self)
+    self.UiDesktopHTongPei = UiDesktopHTongPei:new(nil, com_tongpei, self)
     local btn_chat = self.ComUi:GetChild("BtnChat").asButton
     btn_chat.onClick:Add(
             function()
@@ -281,11 +276,11 @@ function ViewDesktopH:OnDestroy()
     self.DesktopHDealer:resetCard()
     self.DesktopHDealer:Destroy()
     self.DesktopHGoldPool:Destroy()
-    if (self.ItemUiDesktopHTongSha ~= nil) then
-        self.ItemUiDesktopHTongSha:Destroy()
+    if (self.UiDesktopHTongSha ~= nil) then
+        self.UiDesktopHTongSha:Destroy()
     end
-    if (self.ItemUiDesktopHTongPei ~= nil) then
-        self.ItemUiDesktopHTongPei:Destroy()
+    if (self.UiDesktopHTongPei ~= nil) then
+        self.UiDesktopHTongPei:Destroy()
     end
 
     if (self.UiDesktopChatParent ~= nil) then
@@ -563,20 +558,20 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
     end
 
     self.DesktopHDealer:resetCard()
-    self.DesktopHGoldPool:reset()
+    self.DesktopHGoldPool:Reset()
     for i, v in pairs(self.MapDesktopHChair) do
-        v:reset()
+        v:Reset()
     end
     for i, v in pairs(self.MapDesktopHBetPot) do
         v:resetBetPot()
     end
 
-    self.DesktopHBankPlayer:reset()
-    self.DesktopHRewardPot:reset()
-    self.DesktopHStandPlayer:reset()
-    self.DesktopHSelf:reset()
-    self.ItemUiDesktopHTongPei:reset()
-    self.ItemUiDesktopHTongSha:reset()
+    self.DesktopHBankPlayer:Reset()
+    self.DesktopHRewardPot:Reset()
+    self.DesktopHStandPlayer:Reset()
+    self.DesktopHSelf:Reset()
+    self.UiDesktopHTongPei:Reset()
+    self.UiDesktopHTongSha:Reset()
 
     self.DesktopHBankPlayer:setBankPlayerInfo(desktoph_data.banker_player)
 
@@ -686,12 +681,12 @@ end
 ---------------------------------------
 function ViewDesktopH:showCardEnd()
     if (self.IsTongSha) then
-        self.ItemUiDesktopHTongSha:showEffect(
+        self.UiDesktopHTongSha:ShowEffect(
                 function()
                     self:_showTongShaTongPeiEnd()
                 end)
     elseif (self.IsTongPei) then
-        self.ItemUiDesktopHTongPei:showEffect(
+        self.UiDesktopHTongPei:ShowEffect(
                 function()
                     self:_showTongShaTongPeiEnd()
                 end)
@@ -942,21 +937,21 @@ function ViewDesktopH:_gameRest(left_tm)
     self:_cancelTaskAndDestroyUiResult()
     self.CanBet = false
     self.DesktopHDealer:resetCard()
-    self.DesktopHGoldPool:reset()
+    self.DesktopHGoldPool:Reset()
     self.StateTm = left_tm
     for i, v in pairs(self.MapDesktopHBetPot) do
         v:resetBetPot()
     end
     for i, v in pairs(self.MapDesktopHChair) do
-        v:reset()
+        v:Reset()
     end
 
-    self.DesktopHStandPlayer:reset()
-    self.DesktopHSelf:reset()
-    self.DesktopHBankPlayer:reset()
-    self.DesktopHRewardPot:reset()
-    self.ItemUiDesktopHTongPei:reset()
-    self.ItemUiDesktopHTongSha:reset()
+    self.DesktopHStandPlayer:Reset()
+    self.DesktopHSelf:Reset()
+    self.DesktopHBankPlayer:Reset()
+    self.DesktopHRewardPot:Reset()
+    self.UiDesktopHTongPei:Reset()
+    self.UiDesktopHTongSha:Reset()
     self.UiDesktopHBase:updateGameState(_eDesktopHState.Rest, left_tm, 0, nil, false)
 end
 

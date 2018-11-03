@@ -58,7 +58,7 @@ function UiCardDealingEx:deal(call_back)
 end
 
 ---------------------------------------
-function UiCardDealingEx:reset()
+function UiCardDealingEx:Reset()
     self:killTween(self.TweenerPos, false)
     self:killTween(self.TweenerScale, false)
     self:killTween(self.TweenerRotate, false)

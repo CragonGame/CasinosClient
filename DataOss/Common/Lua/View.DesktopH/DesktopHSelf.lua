@@ -169,7 +169,7 @@ function DesktopHSelf:showWinGoldsAni(pot_index, from)
 end
 
 ---------------------------------------
-function DesktopHSelf:reset()
+function DesktopHSelf:Reset()
     self.MapWinLooseInfo = {}
     for key, value in pairs(self.MapWinUiGolds) do
         for key1, value1 in pairs(value) do

@@ -69,7 +69,7 @@ function EventSys:SendEv(ev)
         end
     end
 
-    ev:reset()
+    ev:Reset()
     self.TableEvEv[ev_name] = ev
 end
 

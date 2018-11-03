@@ -53,7 +53,7 @@ function ControllerPlayer:OnCreate()
     self.ViewMgr:BindEvListener("EvGetPicSuccess", self)
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerDesk = self.ControllerMgr:GetController("Desktop")
-    self.ControllerDeskH = self.ControllerMgr:GetController("DesktopH")
+    self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
     self.ControllerLobby = self.ControllerMgr:GetController("Lobby")
     self.ControllerActivity = self.ControllerMgr:GetController("Activity")
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
@@ -262,7 +262,7 @@ function ControllerPlayer:OnHandleEv(ev)
                     can_creategiftshop = false
                 end
             else
-                if (self.ControllerDeskH.DesktopHBase == nil) then
+                if (self.ControllerDesktopH.DesktopHBase == nil) then
                     can_creategiftshop = false
                 end
             end
@@ -390,7 +390,7 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
     msg_box:showMsgBox1(self.ControllerMgr.LanMgr:getLanValue("InviteFriendPlay"), tips,
             function(accept)
                 if (accept) then
-                    if (self.ControllerDeskH.DesktopHBase == nil) then
+                    if (self.ControllerDesktopH.DesktopHBase == nil) then
                         if (self.ControllerDesk.DesktopBase == nil) then
                             self.ControllerLobby:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
                         else
@@ -403,7 +403,7 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
                             )
                         end
                     else
-                        self.ControllerDeskH:receiveInvitePlayerEnterDesktop(invite.desktop_guid, invite.desktop_filter)
+                        self.ControllerDesktopH:receiveInvitePlayerEnterDesktop(invite.desktop_guid, invite.desktop_filter)
                     end
                 end
             end
@@ -705,9 +705,9 @@ function ControllerPlayer:getDesktopChat()
             index = index - 1
         end
     else
-        if (self.ControllerDeskH.DesktopHBase ~= nil) then
-            local index = #self.ControllerDeskH.ListDesktopChat - 1
-            for key, value in pairs(self.ControllerDeskH.ListDesktopChat) do
+        if (self.ControllerDesktopH.DesktopHBase ~= nil) then
+            local index = #self.ControllerDesktopH.ListDesktopChat - 1
+            for key, value in pairs(self.ControllerDesktopH.ListDesktopChat) do
                 map_chat[index] = value
                 index = index - 1
             end

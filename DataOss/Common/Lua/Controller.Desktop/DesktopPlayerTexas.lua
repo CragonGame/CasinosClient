@@ -535,7 +535,7 @@ end
 --    self.PlayerDataDesktop = CS.Casinos.LuaHelper.getPlayerDataDesktopTexas(player_data)
 --    if (self.UiDesktopPlayerInfo ~= nil)
 --    then
---        self.UiDesktopPlayerInfo:reset()
+--        self.UiDesktopPlayerInfo:Reset()
 --    end
 --end
 

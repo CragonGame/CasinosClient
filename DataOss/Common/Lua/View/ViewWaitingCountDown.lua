@@ -30,7 +30,6 @@ function ViewWaitingCountDown:OnCreate()
     self.TextMin = self.ComUi:GetChild("TextMin").asTextField
     self.TextSec = self.ComUi:GetChild("TextSec").asTextField
     self.UpdateTimeTm = 0
-
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 

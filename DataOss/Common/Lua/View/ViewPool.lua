@@ -164,7 +164,7 @@ function ItemShootingTextPool:shootingTextEnque(item)
             and self.UiPool.ComUi.displayObject ~= nil
             and self.UiPool.ComUi.displayObject.gameObject ~= nil) then
         self.UiPool.ComUi:AddChild(item.Com)
-        item:reset()
+        item:Reset()
         item.Com.displayObject.gameObject:SetActive(false)
         table.insert(self.QueShootingText, item)
     end
@@ -252,7 +252,7 @@ end
 
 ---------------------------------------
 function ItemChatTargetInfoPool:chatTargetInfoEnque(item)
-    item:reset()
+    item:Reset()
     table.insert(self.Que, item)
 end
 
@@ -295,7 +295,7 @@ end
 
 ---------------------------------------
 function ItemGiftPool:itemGiftEnque(item)
-    item:reset()
+    item:Reset()
     LuaHelper:TableRemoveV(self.UsedItem, item)
     table.insert(self.Que, item)
 end
@@ -303,7 +303,7 @@ end
 ---------------------------------------
 function ItemGiftPool:itemGiftAllEnque()
     for i, v in pairs(self.UsedItem) do
-        v:reset()
+        v:Reset()
         table.insert(self.Que, v)
     end
     self.UsedItem = {}

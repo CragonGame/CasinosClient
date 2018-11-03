@@ -79,7 +79,7 @@ function PlayerOperateAni:showOtherOperate(play_single)
 end
 
 ---------------------------------------
-function PlayerOperateAni:reset()
+function PlayerOperateAni:Reset()
     self.TransitionShowOther:PlayReverse()
     self.TransitionShowAutoOperate:PlayReverse()
     self.TransitionShowAutoOperate:Stop(true, true)

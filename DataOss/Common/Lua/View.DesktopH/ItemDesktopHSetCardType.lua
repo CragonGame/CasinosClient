@@ -1,11 +1,13 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 一个Item
 
+---------------------------------------
 ItemDesktopHSetCardType = {}
 
+---------------------------------------
 function ItemDesktopHSetCardType:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     o.ViewMgr = nil
     o.GoUi = nil
@@ -22,10 +24,10 @@ function ItemDesktopHSetCardType:new(o)
     o.AllCardTypeCount = nil
     o.MapCardType = nil
     o.RandomCardTypeName = "随机"
-
     return o
 end
 
+---------------------------------------
 function ItemDesktopHSetCardType:OnCreate(co_card_type, betpot_index,
                                           ui_desktoph, ui_card_type)
     self.GComboBoxCardType = co_card_type
@@ -39,7 +41,7 @@ function ItemDesktopHSetCardType:OnCreate(co_card_type, betpot_index,
     self.AllCardTypeCount = all_card_l
     local items = {}--new string[all_card.Count + 1]
     local f = all_card[0]
-    items[0] =f
+    items[0] = f
     self.MapCardType[f] = 0
     local index = 1
     for i, v in pairs(all_card) do
@@ -58,8 +60,7 @@ function ItemDesktopHSetCardType:OnCreate(co_card_type, betpot_index,
     )
     self.GComboBoxCardType.text = items[all_card_l]
     local title_name = ""
-    if (self.BetPotIndex == 255)
-    then
+    if (self.BetPotIndex == 255) then
         title_name = "庄家"
     else
         title_name = "池" .. self.BetPotIndex
@@ -67,14 +68,15 @@ function ItemDesktopHSetCardType:OnCreate(co_card_type, betpot_index,
     self.GTextPotTitle.text = title_name
 end
 
+---------------------------------------
 function ItemDesktopHSetCardType:resetCardType()
     self.GComboBoxCardType.text = self.RandomCardTypeName
 end
 
+---------------------------------------
 function ItemDesktopHSetCardType:onClick()
     local card_type = self.MapCardType[self.GComboBoxCardType.text]
-    if (card_type ~= nil)
-    then
+    if (card_type ~= nil) then
         if (card_type ~= self.AllCardTypeCount)
         then
             self.ViewDesktopHSetCardType:setCurrentType(self.BetPotIndex, card_type);

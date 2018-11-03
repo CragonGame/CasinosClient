@@ -42,7 +42,7 @@ function UiChipEx:init(from, to, move_time, delay, move_sound, chip_type, move_e
 end
 
 ---------------------------------------
-function UiChipEx:reset()
+function UiChipEx:Reset()
     if (self.GComChip == nil) then
         self:_resetChip()
         return

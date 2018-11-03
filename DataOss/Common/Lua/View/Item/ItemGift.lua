@@ -112,7 +112,7 @@ function ItemGift:onClick()
 	end
 end
 
-function ItemGift:reset()
+function ItemGift:Reset()
 	self.LanMgr = nil
 	self.CasinosContext = nil
 	self.Com = nil

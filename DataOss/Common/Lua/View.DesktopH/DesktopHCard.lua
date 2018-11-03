@@ -152,10 +152,10 @@ function DesktopHCard:showCard(action)
             to_open = true
         end
         local tweener = CS.FairyGUI.GTween.To(
-                --function()
-                --    local t = math.ceil(0)
-                --    return t
-                --end,
+        --function()
+        --    local t = math.ceil(0)
+        --    return t
+        --end,
                 0, 180, 0.8
         )
 

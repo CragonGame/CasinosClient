@@ -138,7 +138,7 @@ function DesktopHDealer:resetCard()
     end
 
     if (self.DesktopHDealerBase ~= nil) then
-        self.DesktopHDealerBase:reset()
+        self.DesktopHDealerBase:Reset()
     end
     self.QueDealCards = {}
     self.QueShowCards = {}

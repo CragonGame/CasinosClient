@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewDesktopHBetReward = ViewBase:new()
 
+---------------------------------------
 function ViewDesktopHBetReward:new(o)
     o = o or {}
     setmetatable(o,self)
@@ -19,10 +21,10 @@ function ViewDesktopHBetReward:new(o)
     o.GProBet = nil
     o.ViewDesktopH = nil
     self.BetRewardTitle = "ComReward"
-
     return o
 end
 
+---------------------------------------
 function ViewDesktopHBetReward:OnCreate()
 	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("BetReward"))
     self.ViewMgr:BindEvListener("EvEntityInitBetReward",self)
@@ -50,15 +52,15 @@ function ViewDesktopHBetReward:OnCreate()
     self.GProBet = self.ComUi:GetChild("ProBet").asProgress
 end
 
+---------------------------------------
 function ViewDesktopHBetReward:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
+---------------------------------------
 function ViewDesktopHBetReward:OnHandleEv(ev)
-    if(ev ~= nil)
-    then
-        if(ev.EventName == "EvEntityInitBetReward")
-        then
+    if(ev ~= nil) then
+        if(ev.EventName == "EvEntityInitBetReward") then
             self.BDesktopHDialyBetReward = ev.init_dailybet_reward
             local current_betgold = self.BDesktopHDialyBetReward.TotalBetGold
             self.GTextBetTotal.text = UiChipShowHelper:getGoldShowStr(current_betgold,
@@ -67,8 +69,7 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
             local can_get = false
             local t_MapGetRewardState = self.BDesktopHDialyBetReward.MapGetRewardState
             for i, v in pairs(t_MapGetRewardState) do
-                if (v == DesktopHDialyGetBetRewardState.NotGet)
-                then
+                if (v == DesktopHDialyGetBetRewardState.NotGet) then
                     can_get = true
                 end
                 local co_betreward = self.ComUi:GetChild(self.BetRewardTitle .. i).asCom
@@ -82,12 +83,10 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
             for k,v in pairs(l) do
                 local tb_betreward_value = tb_betreward_v.BetValue
                 if (current_betgold > tb_betreward_value and
-                        v.BetValue < current_betgold)
-                then
+                        v.BetValue < current_betgold) then
                     tb_betreward_v = v
                 else
-                    if (v.BetValue > current_betgold)
-                    then
+                    if (v.BetValue > current_betgold) then
                         break
                     end
                 end
@@ -95,13 +94,11 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
 
             local tb_maxbetreward = l[#l]
             local tb_next_betreward = nil
-            if (tb_betreward_v.Id < tb_maxbetreward.Id)
-            then
+            if (tb_betreward_v.Id < tb_maxbetreward.Id) then
                 tb_next_betreward = l[tb_betreward_v.Id]
             end
 
-            if (tb_next_betreward == nil)
-            then
+            if (tb_next_betreward == nil) then
                 print("tb_maxbetreward.BetProgressValue1             "..tb_maxbetreward.BetProgressValue)
                 self.GProBet.value = tb_maxbetreward.BetProgressValue
             else
@@ -128,6 +125,7 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
     end
 end
 
+---------------------------------------
 function ViewDesktopHBetReward:_onClickGetAllBetReward()
     local ev = self.ViewMgr:GetEv("EvDesktopHGetBetReward")
     if(ev == nil)
@@ -139,14 +137,15 @@ function ViewDesktopHBetReward:_onClickGetAllBetReward()
     self.GBtnGetAllReward.enabled = false
 end
 
+---------------------------------------
 function ViewDesktopHBetReward:_onClickBtnHelpClose()
     self.ViewMgr:DestroyView(self)
 end
 
-
-
+---------------------------------------
 ViewDesktopHBetRewardFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewDesktopHBetRewardFactory:new(o,ui_package_name,ui_component_name,
                                           ui_layer,is_single,fit_screen)
     o = o or {}
@@ -160,6 +159,7 @@ function ViewDesktopHBetRewardFactory:new(o,ui_package_name,ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewDesktopHBetRewardFactory:CreateView()
     local view = ViewDesktopHBetReward:new(nil)
     return view

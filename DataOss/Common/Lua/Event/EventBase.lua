@@ -14,5 +14,5 @@ function EventBase:new(o)
 end
 
 ---------------------------------------
-function EventBase:reset()
+function EventBase:Reset()
 end

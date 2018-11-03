@@ -455,7 +455,7 @@ function PlayerSeatWidgetControllerTexas:gameEnd()
 end
 
 ---------------------------------------
-function PlayerSeatWidgetControllerTexas:reset()
+function PlayerSeatWidgetControllerTexas:Reset()
     self:_resetGold()
     self:_resetCard(true)
 end

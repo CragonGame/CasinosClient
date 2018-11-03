@@ -99,7 +99,7 @@ function PlayerShowTips:showExpAndPoint(exp, point)
 end
 
 ---------------------------------------
-function PlayerShowTips:reset()
+function PlayerShowTips:Reset()
     if self.TweenWinGold ~= nil then
         self.TweenWinGold:Kill(false)
     end

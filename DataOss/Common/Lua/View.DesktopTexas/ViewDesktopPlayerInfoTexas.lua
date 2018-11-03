@@ -138,9 +138,9 @@ function ViewDesktopPlayerInfoTexas:release()
     self.UiHandCardFirst:hideCard()
     self.UiHandCardSecond:hideCard()
     self.UiPlayerGiftAndVIP:release()
-    self.PlayerShowTips:reset()
+    self.PlayerShowTips:Reset()
     if (self.ItemChatDesktop ~= nil) then
-        self.ItemChatDesktop:reset()
+        self.ItemChatDesktop:Reset()
     end
     if (self.UiSingleEmotion ~= nil) then
         self.UiSingleEmotion:resetEmotion()
@@ -242,7 +242,7 @@ function ViewDesktopPlayerInfoTexas:_timerUpdate(elapsed_tm)
             if (self.GameEndResetPlayerInfoTime <= 0) then
                 self:_resetPlayerInfo()
                 if (self.PlayerSeatWidgetControllerEx ~= nil) then
-                    self.PlayerSeatWidgetControllerEx:reset()
+                    self.PlayerSeatWidgetControllerEx:Reset()
                 end
                 self.GameEndResetPlayerInfoTime = 255
             end
@@ -343,7 +343,7 @@ end
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerWaitWhile()
     self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("StepOut"), CS.UnityEngine.Color.white)
-    self.UiPlayerGiftAndVIP:reset()
+    self.UiPlayerGiftAndVIP:Reset()
     --ViewHelper:SetGObjectVisible(true, self.GImagePlayerShadow)
     self:showShade(true)
     --ViewHelper:SetGObjectVisible(true, self.GImagePlayerActionProgress)
@@ -396,7 +396,7 @@ function ViewDesktopPlayerInfoTexas:allIn()
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:reset()
+function ViewDesktopPlayerInfoTexas:Reset()
     if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:resetSeatIndex()
     end
@@ -638,7 +638,7 @@ function ViewDesktopPlayerInfoTexas:deskIdle()
 
     self.IsShowDown = false
     self:_resetPlayerInfo()
-    self.UiPlayerGiftAndVIP:reset()
+    self.UiPlayerGiftAndVIP:Reset()
 
     if (self.PlayerSeatWidgetControllerEx ~= nil) then
         self.PlayerSeatWidgetControllerEx:deskIdle()
@@ -667,8 +667,8 @@ function ViewDesktopPlayerInfoTexas:preflopBegin()
     end
 
     self:_resetPlayerInfo()
-    self.UiPlayerGiftAndVIP:reset()
-    self.PlayerShowTips:reset()
+    self.UiPlayerGiftAndVIP:Reset()
+    self.PlayerShowTips:Reset()
 end
 
 ---------------------------------------
@@ -951,7 +951,7 @@ function ViewDesktopPlayerInfoTexas:_resetPlayerInfo()
     self.UiHandCardSecond:resetCard(false)
     ViewHelper:SetGObjectVisible(false, self.ImageWinName)
     self.TransitionWinName:Stop(true, true)
-    self.PlayerShowTips:reset()
+    self.PlayerShowTips:Reset()
     --ViewHelper:SetGObjectVisible(false, self.GImagePlayerShadow)
 
     if self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile and self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold

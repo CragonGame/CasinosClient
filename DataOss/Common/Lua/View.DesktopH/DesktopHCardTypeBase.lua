@@ -1,40 +1,46 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 DesktopHCardTypeBase = {
-	ListCard = nil
+    ListCard = nil
 }
 
-function DesktopHCardTypeBase:new(o,com)
+---------------------------------------
+function DesktopHCardTypeBase:new(o, com)
     o = o or {}
-    setmetatable(o,self)
-    self.__index = self	
-	
+    setmetatable(o, self)
+    self.__index = self
     return o
 end
 
-function DesktopHCardTypeBase:SetCard(list_card)	
+---------------------------------------
+function DesktopHCardTypeBase:SetCard(list_card)
 end
 
-function DesktopHCardTypeBase:GetCardTypeStr()	
+---------------------------------------
+function DesktopHCardTypeBase:GetCardTypeStr()
 end
 
-function DesktopHCardTypeBase:GetCardTypeByte()	
+---------------------------------------
+function DesktopHCardTypeBase:GetCardTypeByte()
 end
 
-
-DesktopHCardTypeBaseFac = {	
+---------------------------------------
+DesktopHCardTypeBaseFac = {
 }
 
-function DesktopHCardTypeBaseFac:new(o,com)
+---------------------------------------
+function DesktopHCardTypeBaseFac:new(o, com)
     o = o or {}
-    setmetatable(o,self)
-    self.__index = self	
-	
+    setmetatable(o, self)
+    self.__index = self
     return o
 end
 
-function DesktopHCardTypeBaseFac:GetName()	
+---------------------------------------
+function DesktopHCardTypeBaseFac:GetName()
 end
 
-function DesktopHCardTypeBaseFac:CreateDesktopHCardType()	
+---------------------------------------
+function DesktopHCardTypeBaseFac:CreateDesktopHCardType()
 end

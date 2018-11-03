@@ -46,8 +46,7 @@ end
 function OnLineReward:setOnlineRewardState(online_reward_state, left_reward_second, next_reward)
     self.OnlineRewardState = online_reward_state
     self.NextReward = next_reward
-    if (self.OnlineRewardState == OnlineRewardState.Wait4GetReward)
-    then
+    if (self.OnlineRewardState == OnlineRewardState.Wait4GetReward) then
         self.CanGetReward = true
     else
         self.CanGetReward = false
@@ -58,11 +57,9 @@ end
 
 ---------------------------------------
 function OnLineReward:onGetReward()
-    if (self.CanGetReward == true)
-    then
+    if (self.CanGetReward == true) then
         local ev = self.ViewMgr:GetEv("EvRequestGetOnLineReward")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvRequestGetOnLineReward:new(nil)
         end
         self.ViewMgr:SendEv(ev)
@@ -79,8 +76,7 @@ end
 ---------------------------------------
 function OnLineReward:_sendCanGetReward()
     local ev = self.ViewMgr:GetEv("EvEntityCanGetOnlineReward")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityCanGetOnlineReward:new(nil)
     end
     ev.can_getreward = self.CanGetReward

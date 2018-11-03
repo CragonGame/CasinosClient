@@ -34,7 +34,7 @@ function DesktopHGoldPool:Destroy()
 end
 
 ---------------------------------------
-function DesktopHGoldPool:reset()
+function DesktopHGoldPool:Reset()
     for k, v in pairs(self.ListDelayEnqueGold) do
         self:goldHEnPool(v)
     end
@@ -54,7 +54,7 @@ function DesktopHGoldPool:getGoldH()
         l = #self.ListDelayEnqueGold
         if (l > 0) then
             ui_gold = table.remove(self.ListDelayEnqueGold, 1)
-            ui_gold:reset()
+            ui_gold:Reset()
         else
             ui_gold = DesktopHUiGold:new(nil)
             ui_gold:OnCreate()
@@ -94,7 +94,7 @@ function DesktopHGoldPool:_goldHEnPool(uigold_h)
     else
         self.MaxGoldSortOrderOffset = self.MaxGoldSortOrderOffset + 1
     end
-    uigold_h:reset()
+    uigold_h:Reset()
     table.insert(self.QueUiGold, uigold_h)
     uigold_h:setGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
 end

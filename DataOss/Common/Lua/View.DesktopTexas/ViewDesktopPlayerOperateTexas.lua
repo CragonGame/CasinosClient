@@ -232,7 +232,7 @@ function ViewDesktopPlayerOperateTexas:showDown()
     ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
     ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
     ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
-    self.PlayerOperateAni:reset()
+    self.PlayerOperateAni:Reset()
 end
 
 ---------------------------------------
@@ -242,7 +242,7 @@ function ViewDesktopPlayerOperateTexas:gameEnd()
     ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
     ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
     ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
-    self.PlayerOperateAni:reset()
+    self.PlayerOperateAni:Reset()
 end
 
 ---------------------------------------
@@ -259,7 +259,7 @@ function ViewDesktopPlayerOperateTexas:meStateChange(player_state)
         ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
         ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
         ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
-        self.PlayerOperateAni:reset()
+        self.PlayerOperateAni:Reset()
     end
     self.SliderMoved = false
 end
@@ -328,7 +328,7 @@ function ViewDesktopPlayerOperateTexas:stand()
     ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
     ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
     ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
-    self.PlayerOperateAni:reset()
+    self.PlayerOperateAni:Reset()
 end
 
 ---------------------------------------

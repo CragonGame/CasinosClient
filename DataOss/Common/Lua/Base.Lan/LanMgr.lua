@@ -10,8 +10,9 @@ function LanMgr:new(o)
     self.__index = self
     if (self.Instance == nil) then
         self.Instance = o
+        self.Context = Context
         self.CasinosContext = CS.Casinos.CasinosContext.Instance
-        self.TbDataMgr = TbDataMgr:new(nil)
+        self.TbDataMgr = self.Context.TbDataMgr
         self.LanBase = nil
         self.CurrentLan = "ChineseSimplified"
         self.SystemLanguage = "ChineseSimplified"

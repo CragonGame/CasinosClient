@@ -12,6 +12,7 @@ function ViewPlayerGiftAndVIP:new(o, player_guid, com_gift_left, com_gift_right,
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
     o.ViewMgr = view_mgr
     o.GComPlayer = com_player
     o.PlayerGuid = player_guid
@@ -167,7 +168,7 @@ function ViewPlayerGiftAndVIP:playerIsShowDown()
 end
 
 ---------------------------------------
-function ViewPlayerGiftAndVIP:reset()
+function ViewPlayerGiftAndVIP:Reset()
     if (self.TweenerWinMove ~= nil) then
         self.TweenerWinMove:Kill(false)
         self.TweenerWinMove = nil
@@ -200,8 +201,7 @@ end
 
 ---------------------------------------
 function ViewPlayerGiftAndVIP:loadGiftIcon(tb_giftid, load_icon_down)
-    local tb_mgr = TbDataMgr:new(nil)
-    local tb_gift = tb_mgr:GetData("Item", tb_giftid)
+    local tb_gift = self.Context.TbDataMgr:GetData("Item", tb_giftid)
     self.LoaderTicket = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup:asyncLoadAsset(CS.Casinos.CasinosContext.Instance.PathMgr.DirAbRoot .. "Item/" .. tostring(tb_gift.Icon) .. ".ab",
             tb_gift.Icon, CS._eAsyncAssetLoadType.LocalBundleAsset,
             function(ticket, path, obj)

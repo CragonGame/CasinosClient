@@ -12,7 +12,7 @@ DesktopHUiGold = {
 ---------------------------------------
 function DesktopHUiGold:new(o)
     o = o or {}
-    setmetatable(o,self)
+    setmetatable(o, self)
     self.__index = self
     o.GCoGold = nil
     o.SortOrderOffset = 0
@@ -48,7 +48,7 @@ end
 
 ---------------------------------------
 function DesktopHUiGold:initMove(from, to, move_time,
-                                 move_sound, move_end, move_start ,
+                                 move_sound, move_end, move_start,
                                  auto_end_enpool, delay_tm, fix_pos)
     self.MoveEndCallback = move_end
     self.MoveStartCallback = move_start
@@ -61,8 +61,8 @@ function DesktopHUiGold:initMove(from, to, move_time,
         f_x = from.x
         f_y = from.y
     end
-    self.GCoGold:SetXY(f_x,f_y)
-    local to1 = CS.Casinos.LuaHelper.GetVector2(to.x - self.GCoGold.width / 2,to.y - self.GCoGold.height / 2)
+    self.GCoGold:SetXY(f_x, f_y)
+    local to1 = CS.Casinos.LuaHelper.GetVector2(to.x - self.GCoGold.width / 2, to.y - self.GCoGold.height / 2)
     self.Tweener = self.GCoGold:TweenMove(to1, move_time)
     self.Tweener:SetDelay(delay_tm)
         :OnStart(
@@ -82,11 +82,11 @@ end
 function DesktopHUiGold:setPostion(pos)
     local p_x = pos.x - self.GCoGold.width / 2
     local p_y = pos.y - self.GCoGold.height / 2
-    self.GCoGold:SetXY(p_x,p_y)
+    self.GCoGold:SetXY(p_x, p_y)
 end
 
 ---------------------------------------
-function DesktopHUiGold:reset()
+function DesktopHUiGold:Reset()
     self:_reset()
     self.MoveEndCallback = nil
     self.MoveStartCallback = nil
@@ -144,6 +144,6 @@ function DesktopHUiGold:_reset()
         self.Tweener = nil
     end
     if (self.GCoGold ~= nil and self.GCoGold.displayObject.gameObject ~= nil) then
-        self.GCoGold:SetXY(10000,10000)
+        self.GCoGold:SetXY(10000, 10000)
     end
 end

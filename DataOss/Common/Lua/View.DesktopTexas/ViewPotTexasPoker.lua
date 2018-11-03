@@ -52,7 +52,7 @@ function ViewPotTexasPoker:new(o, view_desktop)
     table.insert(o.TPots, view_group9)
 
     o.CurrentGroup = o.TPots[1]
-    o.CurrentGroup:reset()
+    o.CurrentGroup:Reset()
 
     return o
 end
@@ -110,7 +110,7 @@ function ViewPotTexasPoker:resetPot()
     ViewHelper:SetGObjectVisible(false, self.PotTitle)
     ViewHelper:SetGObjectVisible(false, self.TextPotChipAllValue)
     self.TextPotChipAllValue.text = ""
-    self.CurrentGroup:reset()
+    self.CurrentGroup:Reset()
     self.CurrentGroup = self.TPots[1]
 end
 
@@ -172,7 +172,7 @@ function ViewPotGroup1:showValue()
 end
 
 ---------------------------------------
-function ViewPotGroup1:reset()
+function ViewPotGroup1:Reset()
     for i, v in pairs(self.TViewPot) do
         v:resetPot()
     end
@@ -235,7 +235,7 @@ function ViewPotGroup2:showValue()
 end
 
 ---------------------------------------
-function ViewPotGroup2:reset()
+function ViewPotGroup2:Reset()
     for i, v in pairs(self.TViewPot) do
         v:resetPot()
     end
@@ -301,7 +301,7 @@ function ViewPotGroup3:showValue()
 end
 
 ---------------------------------------
-function ViewPotGroup3:reset()
+function ViewPotGroup3:Reset()
     for i, v in pairs(self.TViewPot) do
         v:resetPot()
     end
@@ -369,7 +369,7 @@ function ViewPotGroup4:showValue()
 end
 
 ---------------------------------------
-function ViewPotGroup4:reset()
+function ViewPotGroup4:Reset()
     for i, v in pairs(self.TViewPot) do
         v:resetPot()
     end
@@ -439,7 +439,7 @@ function ViewPotGroup5:showValue()
 end
 
 ---------------------------------------
-function ViewPotGroup5:reset()
+function ViewPotGroup5:Reset()
     for i, v in pairs(self.TViewPot) do
         v:resetPot()
     end
@@ -511,7 +511,7 @@ function ViewPotGroup6:showValue()
 end
 
 ---------------------------------------
-function ViewPotGroup6:reset()
+function ViewPotGroup6:Reset()
     for i, v in pairs(self.TViewPot) do
         v:resetPot()
     end
@@ -585,7 +585,7 @@ function ViewPotGroup7:showValue()
 end
 
 ---------------------------------------
-function ViewPotGroup7:reset()
+function ViewPotGroup7:Reset()
     for i, v in pairs(self.TViewPot) do
         v:resetPot()
     end
@@ -661,7 +661,7 @@ function ViewPotGroup8:showValue()
 end
 
 ---------------------------------------
-function ViewPotGroup8:reset()
+function ViewPotGroup8:Reset()
     for i, v in pairs(self.TViewPot) do
         v:resetPot()
     end
@@ -739,7 +739,7 @@ function ViewPotGroup9:showValue()
 end
 
 ---------------------------------------
-function ViewPotGroup9:reset()
+function ViewPotGroup9:Reset()
     for i, v in pairs(self.TViewPot) do
         v:resetPot()
     end

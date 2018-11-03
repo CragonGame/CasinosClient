@@ -52,9 +52,9 @@ function WinGolds:moveGolds(from, to, move_time, move_sound, chip_type, parent, 
 end
 
 ---------------------------------------
-function WinGolds:reset()
+function WinGolds:Reset()
     for i, v in pairs(self.TGolds) do
-        v:reset()
+        v:Reset()
     end
 end
 
@@ -106,7 +106,7 @@ function UiChipMgrEx:resetChips()
     end
 
     if (self.CurrentEnabledChip ~= nil) then
-        self.CurrentEnabledChip:reset()
+        self.CurrentEnabledChip:Reset()
         local have = LuaHelper:TableContainsV(self.ListChipDisabledPool, self.CurrentEnabledChip)
         if (have == false) then
             table.insert(self.ListChipDisabledPool, self.CurrentEnabledChip)
@@ -114,7 +114,7 @@ function UiChipMgrEx:resetChips()
         self.CurrentEnabledChip = nil
     end
     for k, v in pairs(self.ListChipEnabled) do
-        v:reset()
+        v:Reset()
         local have = LuaHelper:TableContainsV(self.ListChipDisabledPool, self.CurrentEnabledChip)
         if (have == false) then
             table.insert(self.ListChipDisabledPool, self.CurrentEnabledChip)
@@ -123,7 +123,7 @@ function UiChipMgrEx:resetChips()
 
     self.ListChipEnabled = {}
     for i, v in pairs(self.ListWinChips) do
-        v:reset()
+        v:Reset()
     end
 end
 
@@ -131,7 +131,7 @@ end
 function UiChipMgrEx:chipEnquee(chip)
     if chip.ChipMoveType == CS.Casinos.ChipMoveType.RunOutOfMainPot then
         chip:moveEnd()
-        chip:reset()
+        chip:Reset()
     else
         if self.MoveChipOneByOne then
             if (chip == self.CurrentEnabledChip)
@@ -139,12 +139,12 @@ function UiChipMgrEx:chipEnquee(chip)
                 self:_currentChipMoveEnd()
             else
                 LuaHelper:TableRemoveV(self.ListChipEnabled, chip)
-                chip:reset()
+                chip:Reset()
                 table.insert(self.ListChipDisabledPool, chip)
             end
         else
             chip:moveEnd()
-            chip:reset()
+            chip:Reset()
             local have = LuaHelper:TableContainsV(self.ListChipDisabledPool, chip)
             if (have == false)
             then
@@ -162,7 +162,7 @@ function UiChipMgrEx:_currentChipMoveEnd()
 
     self.Tm = 0
     self.CurrentEnabledChip:moveEnd()
-    self.CurrentEnabledChip:reset()
+    self.CurrentEnabledChip:Reset()
     local have = LuaHelper:TableContainsV(self.ListChipDisabledPool, self.CurrentEnabledChip)
     if (have == false) then
         table.insert(self.ListChipDisabledPool, self.CurrentEnabledChip)

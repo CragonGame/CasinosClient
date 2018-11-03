@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerDeskH = ControllerBase:new(nil)
+ControllerDesktopH = ControllerBase:new(nil)
 
 ---------------------------------------
-function ControllerDeskH:new(o, controller_mgr, controller_data, guid)
+function ControllerDesktopH:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -18,7 +18,7 @@ function ControllerDeskH:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerDeskH:OnCreate()
+function ControllerDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvUiClickDesktopHundred", self)
     self.ViewMgr:BindEvListener("EvUiClickLeaveDesktopHundred", self)
     self.ViewMgr:BindEvListener("EvDesktopHClickBetOperateType", self)
@@ -158,17 +158,12 @@ function ControllerDeskH:OnCreate()
 end
 
 ---------------------------------------
-function ControllerDeskH:OnDestroy()
+function ControllerDesktopH:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
-    if (self.FTaskerLeaveDesktopH ~= nil)
-    then
-        self.FTaskerLeaveDesktopH:cancelTask()
-        self.FTaskerLeaveDesktopH = nil
-    end
 end
 
 ---------------------------------------
-function ControllerDeskH:OnHandleEv(ev)
+function ControllerDesktopH:OnHandleEv(ev)
     if (self.DesktopHBase ~= nil) then
         self.DesktopHBase:OnHandleEvent(ev)
     end
@@ -176,8 +171,7 @@ function ControllerDeskH:OnHandleEv(ev)
     if (ev.EventName == "EvUiClickDesktopHundred") then
         ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
         self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestEnter, ev.factory_name)
-    elseif (ev.EventName == "EvUiClickLeaveDesktopHundred")
-    then
+    elseif (ev.EventName == "EvUiClickLeaveDesktopHundred") then
         self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestLeave)
     elseif (ev.EventName == "EvDesktopHClickBetOperateType") then
         -- 更换选择下注的预置筹码
@@ -190,7 +184,6 @@ function ControllerDeskH:OnHandleEv(ev)
         self.ControllerMgr.ViewMgr:SendEv(ev)
     elseif (ev.EventName == "EvUiDesktopHSeatDown") then
         local min_golds = ev.min_golds
-
         if (min_golds > self.ControllerActor.PropGoldAcc:get()) then
             local tips = string.format(self.ViewMgr.LanMgr:getLanValue("SitDownFailedTips1"),
                     self.ViewMgr.LanMgr:getLanValue("Chip"),
@@ -241,8 +234,7 @@ function ControllerDeskH:OnHandleEv(ev)
                 ViewHelper:UiShowMsgBox(tips,
                         function()
                             self.ControllerMgr.ViewMgr:CreateView("Shop")
-                        end
-                )
+                        end)
                 return
             end
 
@@ -257,7 +249,6 @@ function ControllerDeskH:OnHandleEv(ev)
         if (self.DesktopHGuid == nil or self.DesktopHGuid == "") then
             return
         end
-
         self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestSnapshot)
     elseif (ev.EventName == "EvDesktopHClickStandPlayerBtn") then
         -- 拉取所有无座玩家列表，暂未使用
@@ -300,8 +291,7 @@ function ControllerDeskH:OnHandleEv(ev)
         end
 
         if (self.CurrentTbBetOperateId == -1) then
-            local tips = self.ViewMgr.LanMgr:getLanValue("Chip") ..
-                    self.ViewMgr.LanMgr:getLanValue("NotEnough")
+            local tips = self.ViewMgr.LanMgr:getLanValue("Chip") .. self.ViewMgr.LanMgr:getLanValue("NotEnough")
             ViewHelper:UiShowInfoSuccess(tips)
             return
         end
@@ -350,13 +340,13 @@ function ControllerDeskH:OnHandleEv(ev)
         self:updateSuitBetOperateId()
     elseif (ev.EventName == "EvEntityPlayerEnterDesktop") then
         -- 进入普通桌
-        self:clearDesktopHundred(false)
+        self:ClearDesktopH(false)
     end
 end
 
 ---------------------------------------
 -- 快照响应
-function ControllerDeskH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_betinfo, map_my_winlooseinfo)
+function ControllerDesktopH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_betinfo, map_my_winlooseinfo)
     ViewHelper:UiEndWaiting()
     local can_enter = true
     local d_d = nil
@@ -435,7 +425,7 @@ function ControllerDeskH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_bet
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyIdle(left_tm)
+function ControllerDesktopH:s2cDesktopHNotifyIdle(left_tm)
     self.DesktopHState = _eDesktopHState.Idle
     self.MapBetPotSelfBetGolds = {}
     self.MapBetPotStandPlayerBetDeltaGolds = {}
@@ -444,7 +434,7 @@ function ControllerDeskH:s2cDesktopHNotifyIdle(left_tm)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyReady2(left_tm, play_guid, map_userdata)
+function ControllerDesktopH:s2cDesktopHNotifyReady2(left_tm, play_guid, map_userdata)
     self.DesktopHState = _eDesktopHState.Ready
     self.MapCurrentRoundSelfBetInfo = {}
     self.MapBetPotSelfBetGolds = {}
@@ -461,7 +451,7 @@ function ControllerDeskH:s2cDesktopHNotifyReady2(left_tm, play_guid, map_userdat
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyBet(left_tm, max_total_bet_gold)
+function ControllerDesktopH:s2cDesktopHNotifyBet(left_tm, max_total_bet_gold)
     self.DesktopHState = _eDesktopHState.Bet
     self.TotalBetGolds = 0
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityDesktopHBetState")
@@ -475,7 +465,7 @@ function ControllerDeskH:s2cDesktopHNotifyBet(left_tm, max_total_bet_gold)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyGameEnd(game_result, map_my_winlooseinfo)
+function ControllerDesktopH:s2cDesktopHNotifyGameEnd(game_result, map_my_winlooseinfo)
     if (self.DesktopHBase == nil) then
         return
     end
@@ -523,7 +513,7 @@ function ControllerDeskH:s2cDesktopHNotifyGameEnd(game_result, map_my_winloosein
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyRest(left_tm)
+function ControllerDesktopH:s2cDesktopHNotifyRest(left_tm)
     self.DesktopHState = _eDesktopHState.Rest
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityDesktopHGameRestState")
     if (ev == nil) then
@@ -544,17 +534,13 @@ end
 
 ---------------------------------------
 -- 本人离开
-function ControllerDeskH:s2cDesktopHNotifyPlayerLeave()
-    if (self.FTaskLeaveDesktopH ~= nil) then
-        self.FTaskLeaveDesktopH:setTaskDone()
-        self.FTaskLeaveDesktopH = nil
-    end
-    self:clearDesktopHundred(true)
+function ControllerDesktopH:s2cDesktopHNotifyPlayerLeave()
+    self:ClearDesktopH(true)
 end
 
 ---------------------------------------
 -- 刷新4个下注池信息
-function ControllerDeskH:s2cDesktopHNotifyUpdateBetPotInfo(bet_info)
+function ControllerDesktopH:s2cDesktopHNotifyUpdateBetPotInfo(bet_info)
     local b_i = BDesktopHNotifyBetDeltaInfo:new(nil)
     b_i:setData(bet_info)
     self.MapBetPotStandPlayerBetDeltaGolds = {}
@@ -590,7 +576,7 @@ function ControllerDeskH:s2cDesktopHNotifyUpdateBetPotInfo(bet_info)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyUpdateSeatPlayerGold(map_seatplayer_gold)
+function ControllerDesktopH:s2cDesktopHNotifyUpdateSeatPlayerGold(map_seatplayer_gold)
     for key, value in pairs(map_seatplayer_gold) do
         local list_player = nil
         for key, value in pairs(self.MapSeatPlayer) do
@@ -616,7 +602,7 @@ end
 
 ---------------------------------------
 -- 上庄，下庄，庄家列表
-function ControllerDeskH:s2cDesktopHNotifyUpdateBankPlayer(banker_info)
+function ControllerDesktopH:s2cDesktopHNotifyUpdateBankPlayer(banker_info)
     local b_i = PlayerDataDesktopH:new(nil)
     b_i:setData(banker_info)
     if (b_i.PlayerInfoCommon.PlayerGuid == self.Guid) then
@@ -638,7 +624,7 @@ function ControllerDeskH:s2cDesktopHNotifyUpdateBankPlayer(banker_info)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyUpdateBankPlayerStack(player_guid, new_stack)
+function ControllerDesktopH:s2cDesktopHNotifyUpdateBankPlayerStack(player_guid, new_stack)
     if (self.BankPlayer.PlayerInfoCommon.PlayerGuid == player_guid) then
         self.BankPlayer.Gold = new_stack
     end
@@ -652,7 +638,7 @@ end
 
 ---------------------------------------
 -- 有座玩家坐下，站起，换座
-function ControllerDeskH:s2cDesktopHNotifySeatPlayerChanged(map_all_seatplayer)
+function ControllerDesktopH:s2cDesktopHNotifySeatPlayerChanged(map_all_seatplayer)
     self.MapSeatPlayer = {}
     if map_all_seatplayer ~= nil then
         for i, v in pairs(map_all_seatplayer) do
@@ -681,7 +667,7 @@ function ControllerDeskH:s2cDesktopHNotifySeatPlayerChanged(map_all_seatplayer)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyBeBankerPlayerListAdd(add_player)
+function ControllerDesktopH:s2cDesktopHNotifyBeBankerPlayerListAdd(add_player)
     if (add_player ~= nil) then
         local p_d = PlayerDataDesktopH:new(nil)
         p_d:setData(add_player)
@@ -698,7 +684,7 @@ function ControllerDeskH:s2cDesktopHNotifyBeBankerPlayerListAdd(add_player)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyBeBankerPlayerListRemove(remove_playerguid)
+function ControllerDesktopH:s2cDesktopHNotifyBeBankerPlayerListRemove(remove_playerguid)
     if (remove_playerguid ~= nil) then
         local player_info = nil
         local player_info_key = nil
@@ -712,7 +698,6 @@ function ControllerDeskH:s2cDesktopHNotifyBeBankerPlayerListRemove(remove_player
         if (player_info ~= nil) then
             table.remove(self.ListBeBankPlayer, player_info_key)
         end
-
     end
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityDesktopHChangeBeBankerPlayerList")
     if (ev == nil) then
@@ -726,23 +711,23 @@ end
 
 ---------------------------------------
 -- 有座玩家连续几把没下注，提示下把离座
-function ControllerDeskH:s2cDesktopHNotifyPlayerWillStandup()
+function ControllerDesktopH:s2cDesktopHNotifyPlayerWillStandup()
     ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("KickOutSeatTips"))
 end
 
 ---------------------------------------
 -- 提示下把下庄
-function ControllerDeskH:s2cDesktopHNotifyPlayerWillBeNotBank()
+function ControllerDesktopH:s2cDesktopHNotifyPlayerWillBeNotBank()
     ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("NotBeBankTips"))
 end
 
 ---------------------------------------
 -- 百人桌头像暂时未显示礼物
-function ControllerDeskH:s2cDesktopHNotifyPlayerCurrentGiftChanged(map_itemdata)
+function ControllerDesktopH:s2cDesktopHNotifyPlayerCurrentGiftChanged(map_itemdata)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyPlayerChat(msg)
+function ControllerDesktopH:s2cDesktopHNotifyPlayerChat(msg)
     if (self.DesktopHBase ~= nil) then
         self.DesktopHBase:DesktopHChat(msg)
     end
@@ -750,7 +735,7 @@ function ControllerDeskH:s2cDesktopHNotifyPlayerChat(msg)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHNotifyBuyAndSendItem(sender_guid, map_recv_itemdata)
+function ControllerDesktopH:s2cDesktopHNotifyBuyAndSendItem(sender_guid, map_recv_itemdata)
     if (self.DesktopHBase == nil) then
         return
     end
@@ -770,14 +755,14 @@ function ControllerDeskH:s2cDesktopHNotifyBuyAndSendItem(sender_guid, map_recv_i
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponsePlayerLeave(can_leave)
+function ControllerDesktopH:s2cDesktopHResponsePlayerLeave(can_leave)
     if (can_leave == false) then
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("AutoLeaveDesktopHTips"))
     end
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseBetFailed(map_my_betinfo)
+function ControllerDesktopH:s2cDesktopHResponseBetFailed(map_my_betinfo)
     if (map_my_betinfo ~= nil) then
         self.MapBetPotSelfBetGolds = {}
         self.MapCurrentRoundSelfBetInfo = {}
@@ -796,7 +781,7 @@ function ControllerDeskH:s2cDesktopHResponseBetFailed(map_my_betinfo)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseBeBankerPlayer(result)
+function ControllerDesktopH:s2cDesktopHResponseBeBankerPlayer(result)
     if (result == ProtocolResult.Success) then
     else
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("RequestBeBankerFailed"))
@@ -804,7 +789,7 @@ function ControllerDeskH:s2cDesktopHResponseBeBankerPlayer(result)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseNotBeBankerPlayer(result)
+function ControllerDesktopH:s2cDesktopHResponseNotBeBankerPlayer(result)
     if (result == ProtocolResult.Success) then
     else
         ViewHelper.UiShowInfoFailedself(self.ViewMgr.LanMgr:getLanValue("RequestNotBeBankerFailed"))
@@ -812,7 +797,7 @@ function ControllerDeskH:s2cDesktopHResponseNotBeBankerPlayer(result)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseSitdown(result)
+function ControllerDesktopH:s2cDesktopHResponseSitdown(result)
     local min_golds = 0
     local desktop = self.ControllerMgr.ViewMgr:CreateView("DesktopH")
     if (desktop ~= nil) then
@@ -831,7 +816,7 @@ function ControllerDeskH:s2cDesktopHResponseSitdown(result)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseStandup(result)
+function ControllerDesktopH:s2cDesktopHResponseStandup(result)
     if (result == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("RequestLeaveSitSuccessTips"))
     else
@@ -840,7 +825,7 @@ function ControllerDeskH:s2cDesktopHResponseStandup(result)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseGetStandPlayerList(list_stand)
+function ControllerDesktopH:s2cDesktopHResponseGetStandPlayerList(list_stand)
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityDesktopHGetStandPlayers")
     if (ev == nil) then
         ev = EvEntityDesktopHGetStandPlayers:new(nil)
@@ -850,7 +835,7 @@ function ControllerDeskH:s2cDesktopHResponseGetStandPlayerList(list_stand)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseSetCardsType(result)
+function ControllerDesktopH:s2cDesktopHResponseSetCardsType(result)
     if (result == ProtocolResult.Success) then
         local msg = self.ViewMgr.LanMgr:getLanValue("ChangeCardTypeSuccessTips")
         ViewHelper:UiShowInfoSuccess(msg)
@@ -861,7 +846,7 @@ function ControllerDeskH:s2cDesktopHResponseSetCardsType(result)
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseGetWinRewardPotInfo(win_rewardpot_info)
+function ControllerDesktopH:s2cDesktopHResponseGetWinRewardPotInfo(win_rewardpot_info)
     ViewHelper:UiEndWaiting()
     local w_i = BDesktopHWinRewardPotInfo:new(nil)
     w_i:setData(win_rewardpot_info)
@@ -875,7 +860,7 @@ function ControllerDeskH:s2cDesktopHResponseGetWinRewardPotInfo(win_rewardpot_in
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseInitDailyBetReward(init_dailybet_reward)
+function ControllerDesktopH:s2cDesktopHResponseInitDailyBetReward(init_dailybet_reward)
     local i_r = BDesktopHDialyBetReward:new(nil)
     i_r:setData(init_dailybet_reward)
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityInitBetReward")
@@ -887,7 +872,7 @@ function ControllerDeskH:s2cDesktopHResponseInitDailyBetReward(init_dailybet_rew
 end
 
 ---------------------------------------
-function ControllerDeskH:s2cDesktopHResponseGetDailyBetReward(result, reward_gold, bet_reward)
+function ControllerDesktopH:s2cDesktopHResponseGetDailyBetReward(result, reward_gold, bet_reward)
     if (result == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:getLanValue(
                 "GetBetRewardSuccessTips"), UiChipShowHelper:getGoldShowStr(reward_gold, self.ControllerMgr.LanMgr.LanBase)))
@@ -897,11 +882,10 @@ function ControllerDeskH:s2cDesktopHResponseGetDailyBetReward(result, reward_gol
 end
 
 ---------------------------------------
-function ControllerDeskH:isSeatPlayer(player_guid)
+function ControllerDesktopH:isSeatPlayer(player_guid)
     local is_seatplayer = false
     for key, value in pairs(self.MapSeatPlayer) do
-        --if (value == nil)
-        --then
+        --if (value == nil) then
         --continue
         --end
         if (value.PlayerInfoCommon.PlayerGuid == player_guid) then
@@ -909,12 +893,11 @@ function ControllerDeskH:isSeatPlayer(player_guid)
             break
         end
     end
-
     return is_seatplayer
 end
 
 ---------------------------------------
-function ControllerDeskH:addDesktopMsg(from_etguid, from_name, sender_viplevel, chat_content)
+function ControllerDesktopH:addDesktopMsg(from_etguid, from_name, sender_viplevel, chat_content)
     if (from_etguid == nil or from_etguid == "") then
         return
     end
@@ -937,27 +920,17 @@ function ControllerDeskH:addDesktopMsg(from_etguid, from_name, sender_viplevel, 
 end
 
 ---------------------------------------
-function ControllerDeskH:receiveInvitePlayerEnterDesktop(desktop_guid, desktop_filter)
+function ControllerDesktopH:receiveInvitePlayerEnterDesktop(desktop_guid, desktop_filter)
     self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestLeave)
     local t_encode = self.ControllerMgr.Json.encode(desktop_filter)
     local map_param = {}
     map_param[0] = desktop_guid
     map_param[1] = t_encode
-    if (self.FTaskLeaveDesktopH == nil) then
-        self.FTaskLeaveDesktopH = CS.Casinos.FTMgr.Instance:startTask(0)
-    end
-    if (self.FTaskerLeaveDesktopH ~= nil) then
-        self.FTaskerLeaveDesktopH:cancelTask()
-    end
-    self.FTaskerLeaveDesktopH = CS.Casinos.FTMgr.Instance:whenAll(map_param,
-            function(map_param)
-                self:playerLeaveDesktopH(map_param)
-            end,
-            self.FTaskLeaveDesktopH)
+    self:playerLeaveDesktopH(map_param)
 end
 
 ---------------------------------------
-function ControllerDeskH:canLeaveImmediately()
+function ControllerDesktopH:canLeaveImmediately()
     local can_leave_immediately = false
     if (self.IsBankPlayer) then
         if (self.DesktopHState == _eDesktopHState.Rest) then
@@ -968,19 +941,17 @@ function ControllerDeskH:canLeaveImmediately()
             can_leave_immediately = true
         end
     end
-
     return can_leave_immediately
 end
 
 ---------------------------------------
-function ControllerDeskH:getSelfTotalBetGolds()
+function ControllerDesktopH:getSelfTotalBetGolds()
     return self.TotalBetGolds
 end
 
 ---------------------------------------
-function ControllerDeskH:clearDesktopHundred(need_createmainui)
+function ControllerDesktopH:ClearDesktopH(need_createmainui)
     self.ListDesktopChat = {}
-    self.FTaskLeaveDesktopH = nil
     self.MapBetPotSelfBetGolds = {}
     self.MapBetPotStandPlayerBetGolds = {}
     self.ListBeBankPlayer = {}
@@ -1008,7 +979,7 @@ function ControllerDeskH:clearDesktopHundred(need_createmainui)
 end
 
 ---------------------------------------
-function ControllerDeskH:betGold(bet_betpot_index, bet_golds)
+function ControllerDesktopH:betGold(bet_betpot_index, bet_golds)
     local max_percent = self.DesktopHBase:getMaxCannotBetPecent()
     local total_chips = self.ControllerActor.PropGoldAcc:get()
     local already_bet_chips = 0
@@ -1038,7 +1009,7 @@ end
 
 ---------------------------------------
 -- 更新可下注筹码，AccGold不够时，相关筹码置灰
-function ControllerDeskH:updateSuitBetOperateId()
+function ControllerDesktopH:updateSuitBetOperateId()
     if (self.DesktopHBase ~= nil) then
         local map_canoperateid = self.MapCanOperateId
         local list_operatesid = self.DesktopHBase:getBetOperateId()
@@ -1111,7 +1082,7 @@ function ControllerDeskH:updateSuitBetOperateId()
 end
 
 ---------------------------------------
-function ControllerDeskH:playerLeaveDesktopH(map_param)
+function ControllerDesktopH:playerLeaveDesktopH(map_param)
     local desktop_guid = tostring(map_param[0])
     local f = tostring(map_param[1])
     local t_decode = self.ControllerMgr.Json.decode(f)
@@ -1119,34 +1090,33 @@ function ControllerDeskH:playerLeaveDesktopH(map_param)
     desktop_filter:setData(t_decode)
     local controller_lobby = self.ControllerMgr:GetController("Lobby")
     controller_lobby:requestEnterDesktop(desktop_guid, false, 255, desktop_filter:getData4Pack())
-    self.FTaskerLeaveDesktopH = nil
 end
 
 ---------------------------------------
-function ControllerDeskH:regDesktopHBaseFactory(desktoph_fac)
+function ControllerDesktopH:regDesktopHBaseFactory(desktoph_fac)
     self.MapDesktopHBaseFac[desktoph_fac:GetName()] = desktoph_fac
 end
 
 ---------------------------------------
-function ControllerDeskH:GetDesktopHBaseFactory(fac_name)
+function ControllerDesktopH:GetDesktopHBaseFactory(fac_name)
     return self.MapDesktopHBaseFac[fac_name]
 end
 
 ---------------------------------------
-function ControllerDeskH:regDesktopHCardTypeBaseFactory(desktoph_fac)
+function ControllerDesktopH:regDesktopHCardTypeBaseFactory(desktoph_fac)
     self.MapDesktopHCardTypeBaseFac[desktoph_fac:GetName()] = desktoph_fac
 end
 
 ---------------------------------------
-function ControllerDeskH:GetDesktopHCardTypeBaseFactory(fac_name)
+function ControllerDesktopH:GetDesktopHCardTypeBaseFactory(fac_name)
     return self.MapDesktopHCardTypeBaseFac[fac_name]
 end
 
 ---------------------------------------
-ControllerDeskHFactory = ControllerFactory:new()
+ControllerDesktopHFactory = ControllerFactory:new()
 
 ---------------------------------------
-function ControllerDeskHFactory:new(o)
+function ControllerDesktopHFactory:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -1155,7 +1125,7 @@ function ControllerDeskHFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerDeskHFactory:createController(controller_mgr, controller_data, guid)
-    local controller = ControllerDeskH:new(nil, controller_mgr, controller_data, guid)
+function ControllerDesktopHFactory:createController(controller_mgr, controller_data, guid)
+    local controller = ControllerDesktopH:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

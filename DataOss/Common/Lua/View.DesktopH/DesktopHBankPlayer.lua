@@ -13,7 +13,7 @@ function DesktopHBankPlayer:new(o, co_bankplayer, bankplayer_nickname, bankplaye
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
+    o.Context = Context
     o.GComBank = co_bankplayer
     o.GComBank.onClick:Add(
             function()
@@ -177,7 +177,7 @@ function DesktopHBankPlayer:giveGoldToPot(pot_index)
 end
 
 ---------------------------------------
-function DesktopHBankPlayer:reset()
+function DesktopHBankPlayer:Reset()
     self:_setCardTypeVisible(false)
     self:_cancelTask()
     self.WinRewardPotGolds = 0
@@ -215,8 +215,7 @@ end
 
 ---------------------------------------
 function DesktopHBankPlayer:sendMagicExp(sender_guid, exp_tbid)
-    local tb_datamgr = TbDataMgr:new(nil)
-    local tb_magicexp = tb_datamgr:GetData("UnitMagicExpression", exp_tbid)
+    local tb_magicexp = self.Context.TbDataMgr:GetData("UnitMagicExpression", exp_tbid)
     if (tb_magicexp == nil) then
         return
     end

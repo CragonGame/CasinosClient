@@ -32,7 +32,7 @@ function ItemLobbyDeskPlayInfo:ShowHeadIconUseTween()
     self.GTextPlayerName.visible = true
 end
 
-function ItemLobbyDeskPlayInfo:reset()
+function ItemLobbyDeskPlayInfo:Reset()
     self.Item.visible = false
 end
 

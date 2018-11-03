@@ -61,8 +61,7 @@ end
 
 ---------------------------------------
 function ItemDesktopHBetPot:setBetPotTotalChips(total_chips)
-    if (total_chips > 0)
-    then
+    if (total_chips > 0) then
         self.GTextBetChipsTotal.text = UiChipShowHelper:getGoldShowStr2(total_chips, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
     else
         self.GTextBetChipsTotal.text = ""
@@ -72,8 +71,7 @@ end
 ---------------------------------------
 function ItemDesktopHBetPot:setBetPotSelfChips(self_betchips)
     self.SelfBetChips = self_betchips
-    if (self.SelfBetChips > 0)
-    then
+    if (self.SelfBetChips > 0) then
         self.GTextBetChipsSelf.visible = true
         self.GTextBetChipsSelf.text = UiChipShowHelper:getGoldShowStr2(self.SelfBetChips, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
     else
@@ -86,13 +84,11 @@ end
 function ItemDesktopHBetPot:showCardsEnd()
     local card_type = self.DesktopHundredCards:getCardTypeStr()
     local cardtype_info = self.ViewDesktopH.UiDesktopHBase:getCardTypeAndSoundPath(card_type, self.IsWin)
-    if (CS.System.String.IsNullOrEmpty(cardtype_info.CardTypeSoundPath) == false)
-    then
+    if (CS.System.String.IsNullOrEmpty(cardtype_info.CardTypeSoundPath) == false) then
         CS.Casinos.CasinosContext.Instance:Play(cardtype_info.CardTypeSoundPath, CS.Casinos._eSoundLayer.LayerNormal)
     end
 
-    if (self.FTasker ~= nil)
-    then
+    if (self.FTasker ~= nil) then
         self.FTasker:cancelTask()
         self.FTasker = nil
     end
@@ -106,8 +102,7 @@ end
 
 ---------------------------------------
 function ItemDesktopHBetPot:resetBetPot()
-    if (self.FTasker ~= nil)
-    then
+    if (self.FTasker ~= nil) then
         self.FTasker:cancelTask()
         self.FTasker = nil
     end
@@ -122,8 +117,7 @@ end
 
 ---------------------------------------
 function ItemDesktopHBetPot:Destroy()
-    if (self.FTasker ~= nil)
-    then
+    if (self.FTasker ~= nil) then
         self.FTasker:cancelTask()
     end
 end
@@ -149,8 +143,7 @@ function ItemDesktopHBetPot:_showCardEnd(map_param)
     if (self.ViewDesktopH.ControllerDesktopH.IsBankPlayer == false)
     then
         local self_betresult = self.ViewDesktopH.ViewMgr.LanMgr:getLanValue("NotBet")
-        if (self.IsWin)
-        then
+        if (self.IsWin) then
             --self_betresult = self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getGameReusltTips(self.DesktopHundredCards:getCardTypeByte(), self.SelfBetChips)
             color = CS.UnityEngine.Color.yellow
         else
@@ -161,13 +154,11 @@ function ItemDesktopHBetPot:_showCardEnd(map_param)
         self.GTextBetChipsSelf.color = color
     end
 
-    if (self.IsWin)
-    then
+    if (self.IsWin) then
         self.ViewDesktopH.UiDesktopHBase:betPotIsWin(self)
     end
 
-    if (self.IsLastPot)
-    then
+    if (self.IsLastPot) then
         self.ViewDesktopH:showCardEnd()
     end
 end
@@ -175,8 +166,7 @@ end
 ---------------------------------------
 function ItemDesktopHBetPot:_setCardTypeVisible(bo)
     self.GLoaderCardType.visible = bo
-    if (bo == false)
-    then
+    if (bo == false) then
         self.GLoaderCardType.icon = nil
     end
 end
