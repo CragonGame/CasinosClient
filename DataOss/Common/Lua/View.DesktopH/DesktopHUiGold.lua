@@ -19,12 +19,12 @@ function DesktopHUiGold:new(o)
     o.MoveEndCallback = nil
     o.MoveStartCallback = nil
     o.Tweener = nil
-    --o.FTaskerReset = nil
-    --o.FTaskReset = nil
     o.MoveSound = nil
     o.AutoEndEnPool = false
     o.ParentSortOrder = 0
     o.ViewDesktopH = nil
+    --o.FTaskerReset = nil
+    --o.FTaskReset = nil
     return o
 end
 
@@ -121,7 +121,6 @@ function DesktopHUiGold:_moveEnd()
     if (self.MoveEndCallback ~= nil) then
         self.MoveEndCallback()
     end
-
     if (self.AutoEndEnPool) then
         self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(self)
     end

@@ -14,8 +14,7 @@ function ItemDesktopHGameEndPotResult:new(o, ui_desktoph, com, list_card, is_win
     for i, v in pairs(list_card) do
         c_name = "Card" .. tostring(i)
         local l_card = o.GCom:GetChild(c_name)
-        if (l_card ~= nil)
-        then
+        if (l_card ~= nil) then
             local gloader_card = l_card.asLoader
             local card_name = ui_desktoph.UiDesktopHBase:getCardResName(v)
             gloader_card.icon = CS.Casinos.CasinosContext.Instance.PathMgr.DirAbCard .. string.lower(card_name) .. ".ab"

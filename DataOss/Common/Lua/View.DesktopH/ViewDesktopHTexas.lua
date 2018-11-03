@@ -26,7 +26,6 @@ end
 ---------------------------------------
 function ViewDesktopHTexas:updateGameState(game_state, total_tm, max_canbet, map_userdata, is_screenshot)
     self.DesktopHState = game_state
-
     if (game_state == _eDesktopHState.Idle) then
         self:idleState(is_screenshot)
     elseif (game_state == _eDesktopHState.Ready) then
@@ -238,7 +237,7 @@ function ViewDesktopHTexas:getTongPeiWhenAllShowEndShowGameResultTm()
 end
 
 ---------------------------------------
-function ViewDesktopHTexas:getTongPeiImageName()
+function ViewDesktopHTexas:GetTongPeiImageName()
     return "Lan_Image_TongPei"
 end
 

@@ -45,8 +45,7 @@ end
 
 ---------------------------------------
 function DesktopHChair:update(tm)
-    if (self.ItemChatDesktop ~= nil)
-    then
+    if (self.ItemChatDesktop ~= nil) then
         self.ItemChatDesktop:update(tm)
     end
 end
@@ -57,8 +56,7 @@ function DesktopHChair:playerChat(chat_info)
         return
     end
 
-    if (chat_info.sender_etguid == self.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid)
-    then
+    if (chat_info.sender_etguid == self.SeatPlayerInfoHundred.PlayerInfoCommon.PlayerGuid) then
         local sorting_order = self.GCoChatParent.sortingOrder + self.ViewDesktopH.DesktopHGoldPool:getMaxGoldSortOrder()
         if (self.ItemChatDesktop == nil) then
             local co_chatname = "CoChatRight"

@@ -21,7 +21,6 @@ function DesktopHGoldPool:new(o)
         if (l > o.MaxGoldSortOrderOffset) then
             o.MaxGoldSortOrderOffset = l
         end
-
         gold_h:setGoldSortOrderOffset(o.MaxGoldSortOrderOffset)
     end
     return o

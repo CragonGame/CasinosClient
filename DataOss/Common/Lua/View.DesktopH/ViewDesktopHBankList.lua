@@ -53,13 +53,11 @@ function ViewDesktopHBankList:OnCreate()
             end
     )
     local wait_count = self.ComUi:GetChild("BeBankPlayerCount")
-    if (wait_count ~= nil)
-    then
+    if (wait_count ~= nil) then
         self.GTextWaitPlayerCount = wait_count.asTextField
     end
     local bankplayer_nickname = self.ComUi:GetChild("BankPlayerNickName")
-    if (bankplayer_nickname ~= nil)
-    then
+    if (bankplayer_nickname ~= nil) then
         self.GTextBankPlayerNickName = bankplayer_nickname.asTextField
         self.GTextBankPlayerGolds = self.ComUi:GetChild("BankPlayerGolds").asTextField
     end
@@ -72,8 +70,7 @@ function ViewDesktopHBankList:OnCreate()
     self.ControllerBeBank = self.ComUi:GetController("ControllerBeBank")
     self.GListBeBankPlayerList = self.ComUi:GetChild("ListPlayerInfo").asList
     local slider_bankstack = self.ComUi:GetChild("SliderBankStack")
-    if (slider_bankstack ~= nil)
-    then
+    if (slider_bankstack ~= nil) then
         self.GSliderBankPlayerStack = slider_bankstack.asSlider
         self.GSliderBankPlayerStack.onChanged:Add(
                 function()

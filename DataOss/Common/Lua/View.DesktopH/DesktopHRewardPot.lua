@@ -181,14 +181,13 @@ function DesktopHRewardPot:_getRewardPotPos()
     local pos = self.RewardPot.xy
     pos.x = pos.x + self.RewardPot.width * self.RewardPot.scaleX / 2
     pos.y = pos.y + self.RewardPot.height * self.RewardPot.scaleY / 2
-
     return pos
 end
 
 ---------------------------------------
 function DesktopHRewardPot:_setPumpingGold(map_param)
     local sys_pumping = map_param[0]
-    local pot_index = map_param[1]
+    --local pot_index = map_param[1]
     if (self.CurrentTotalRewardPotGolds ~= self.CurrentNeedShowRewardPotGolds) then
         self.CurrentTotalRewardPotGolds = self.CurrentTotalRewardPotGolds + sys_pumping
         self:setRewardGolds1(self.CurrentTotalRewardPotGolds)
@@ -198,14 +197,14 @@ end
 
 ---------------------------------------
 function DesktopHRewardPot:_playBetPotSyspumpingGoldAni(map_param)
-    local sys_pumping = map_param[0]
+    --local sys_pumping = map_param[0]
     local pot_index = map_param[1]
     local list_gold = self.MapWinGold[pot_index]
     if (list_gold ~= nil) then
         local to = self:_getRewardPotPos()
         local delay_tm = 0.0
         local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_gold)
-        local bet_pot = self.ViewDesktopH:getDesktopHBetPot(pot_index)
+        --local bet_pot = self.ViewDesktopH:getDesktopHBetPot(pot_index)
         for k, v in pairs(list_gold) do
             v:initMove(v.GCoGold.xy, to,
                     DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
@@ -220,14 +219,12 @@ function DesktopHRewardPot:_playBetPotSyspumpingGoldAni(map_param)
     self.FTaskerSetPumpingGold = CS.Casinos.FTMgr.Instance:whenAll(map_param,
             function(map_param)
                 self:_setPumpingGold(map_param)
-            end,
-            t)
+            end, t)
 end
 
 ---------------------------------------
 function DesktopHRewardPot:_onClick()
     self.ViewMgr:CreateView("DesktopHRewardPot")
-
     local ev = self.ViewMgr:GetEv("EvDesktopHClickRewardPotBtn")
     if (ev == nil) then
         ev = EvDesktopHClickRewardPotBtn:new(nil)

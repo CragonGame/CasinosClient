@@ -44,11 +44,11 @@ function DesktopHStandPlayer:betGolds(bet_potindex, chip_value)
     bet_pot:betGolds(from, chip_value)
     local standplayer_x = self.GBtnStandPlayer.x
     if (CS.FairyGUI.GTween.IsTweening(self.GBtnStandPlayer) == false) then
-        self.GBtnStandPlayer:TweenMoveX(standplayer_x + self.ViewDesktopH.BetAniX, 0.1):OnComplete(
+        self.GBtnStandPlayer:TweenMoveX(standplayer_x + self.ViewDesktopH.BetAniX, 0.1)
+                :OnComplete(
                 function()
                     self.GBtnStandPlayer:TweenMoveX(standplayer_x, 0.1)
-                end
-        )
+                end)
     end
 end
 
@@ -97,8 +97,7 @@ function DesktopHStandPlayer:showWinGoldsAni(pot_index, from)
         local tasker = CS.Casinos.FTMgr.Instance:whenAll(map_param,
                 function(map_param)
                     self:_playWinGoldAni(map_param)
-                end,
-                t)
+                end, t)
         self.MapFTaskerGetWinGold[pot_index] = tasker
     end
 end
@@ -143,8 +142,7 @@ function DesktopHStandPlayer:_playWinGoldAni(map_param)
         local l = #list_gold
         local delay_t = self.ViewDesktopH:getMoveIntervalTm(l)
         for i, v in pairs(list_gold) do
-            v:initMove(v.GCoGold.xy, to,
-                    DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
+            v:initMove(v.GCoGold.xy, to, DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
             delay_tm = delay_tm + delay_t
         end
 

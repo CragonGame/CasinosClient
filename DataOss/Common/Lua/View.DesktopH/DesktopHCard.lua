@@ -100,8 +100,7 @@ function DesktopHCard:dealCardAtPos2(to_pos, move_cardwidth_percent)
 
     local p_x = 0
     local p_y = 0
-    if (self.GCoParent ~= nil)
-    then
+    if (self.GCoParent ~= nil) then
         self.GCoParent:AddChild(self.GCoCard)
         local x = self.GCoCard.width * self.MoveCardWidthPercent * self.CardIndex
         p_x = x
@@ -159,7 +158,8 @@ function DesktopHCard:showCard(action)
                 0, 180, 0.8
         )
 
-        tweener:SetTarget(self.GImageCardBack):SetEase(CS.FairyGUI.EaseType.QuadOut)
+        tweener:SetTarget(self.GImageCardBack)
+               :SetEase(CS.FairyGUI.EaseType.QuadOut)
                :OnUpdate(
                 function()
                     local x = tweener.value.x

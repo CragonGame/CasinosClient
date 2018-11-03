@@ -66,13 +66,11 @@ end
 function ViewDesktopHMenu:showMenu(have_reward)
     self.CoMenuEx:SetXY(0, -self.CoMenuEx.height)
     self.CoMenuEx:TweenMoveY(0, 0.25)
-    if (have_reward == false)
-    then
+    if (have_reward == false) then
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
-        if (self.TransitionNewReward.playing == false)
-        then
+        if (self.TransitionNewReward.playing == false) then
             self.TransitionNewReward:Play()
         end
     end
@@ -90,8 +88,7 @@ end
 ---------------------------------------
 function ViewDesktopHMenu:_onClickBtnReturn()
     local ev = self.ViewMgr:GetEv("EvUiClickLeaveDesktopHundred")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiClickLeaveDesktopHundred:new(nil)
     end
     self.ViewMgr:SendEv(ev)

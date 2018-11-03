@@ -277,10 +277,10 @@ function ViewDesktopH:OnDestroy()
     self.DesktopHDealer:Destroy()
     self.DesktopHGoldPool:Destroy()
     if (self.UiDesktopHTongSha ~= nil) then
-        self.UiDesktopHTongSha:Destroy()
+        self.UiDesktopHTongSha:Reset()
     end
     if (self.UiDesktopHTongPei ~= nil) then
-        self.UiDesktopHTongPei:Destroy()
+        self.UiDesktopHTongPei:Reset()
     end
 
     if (self.UiDesktopChatParent ~= nil) then

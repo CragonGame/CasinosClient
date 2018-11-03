@@ -36,7 +36,6 @@ function DesktopHBankPlayer:new(o, co_bankplayer, bankplayer_nickname, bankplaye
     o.MapFTaskerGetWinGold = {}
     o.ItemChat = nil
     o.WinRewardPotGold = 0
-
     return o
 end
 

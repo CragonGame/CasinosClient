@@ -36,7 +36,6 @@ function DesktopHDealer:update(time)
     if (self.DesktopHDealerBase ~= nil) then
         self.DesktopHDealerBase:update(time)
     end
-
     for k, v in pairs(self.ListDesktopHSinglePotCards) do
         v:update(time)
     end
@@ -191,8 +190,7 @@ end
 ---------------------------------------
 function DesktopHDealer:_dealCardToPosThenTranslation(map_param)
     local l = #self.QueDealCards
-    if (l > 0)
-    then
+    if (l > 0) then
         local deal_cardcount = map_param[0]
         local move_cardwidth_percent = map_param[1]
         local auto_showcard = map_param[2]

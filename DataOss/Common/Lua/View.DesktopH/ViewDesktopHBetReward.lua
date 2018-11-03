@@ -103,13 +103,11 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
                 self.GProBet.value = tb_maxbetreward.BetProgressValue
             else
                 local left_betgold = current_betgold - tb_betreward_v.BetValue
-                if (left_betgold < 0)
-                then
+                if (left_betgold < 0) then
                     left_betgold = 0
                 end
 
-                if (left_betgold == 0)
-                then
+                if (left_betgold == 0) then
                     print("tb_maxbetreward.BetProgressValue2             "..tb_maxbetreward.BetProgressValue)
                     self.GProBet.value = tb_betreward_v.BetProgressValue
                 else
@@ -128,8 +126,7 @@ end
 ---------------------------------------
 function ViewDesktopHBetReward:_onClickGetAllBetReward()
     local ev = self.ViewMgr:GetEv("EvDesktopHGetBetReward")
-    if(ev == nil)
-    then
+    if(ev == nil) then
         ev = EvDesktopHGetBetReward:new(nil)
     end
     ev.factory_name = self.ViewDesktopH.FactoryName

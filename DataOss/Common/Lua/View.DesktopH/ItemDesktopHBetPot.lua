@@ -24,8 +24,7 @@ function ItemDesktopHBetPot:new(o, ui_desktoph, parent, co_betpot)
     o.GLoaderCardType = o.GCoBetPot:GetChild("LoaderCardType").asLoader
     local cardtype_bg = o.GCoBetPot:GetChild("CardTypeBg")
     local cardtypebg_image
-    if (cardtype_bg == nil)
-    then
+    if (cardtype_bg == nil) then
         cardtypebg_image = nil
     else
         cardtypebg_image = cardtype_bg.asImage
@@ -47,7 +46,8 @@ end
 function ItemDesktopHBetPot:initBetPot(betpot_index, is_lastpot)
     self.BetPotIndex = betpot_index
     self.IsLastPot = is_lastpot
-    self.DesktopHundredCards = self.ViewDesktopH.DesktopHDealer:createSinglePotCards(self.ViewDesktopH.ControllerDesktopH, self.ViewDesktopH,
+    self.DesktopHundredCards = self.ViewDesktopH.DesktopHDealer:createSinglePotCards(
+            self.ViewDesktopH.ControllerDesktopH, self.ViewDesktopH,
             self.ViewDesktopH.GCoDealer.xy, self.GCoCardParent, self, false)
 end
 
@@ -96,8 +96,7 @@ function ItemDesktopHBetPot:showCardsEnd()
     self.FTasker = CS.Casinos.FTMgr.Instance:whenAll(nil,
             function(map_param)
                 self:_showCardEnd(map_param)
-            end
-    , t)
+            end, t)
 end
 
 ---------------------------------------
@@ -140,8 +139,7 @@ function ItemDesktopHBetPot:_showCardEnd(map_param)
     local cardtype_info = self.ViewDesktopH.UiDesktopHBase:getCardTypeAndSoundPath(card_type, self.IsWin)
     self.GLoaderCardType.icon = cardtype_info.CardTypePath
 
-    if (self.ViewDesktopH.ControllerDesktopH.IsBankPlayer == false)
-    then
+    if (self.ViewDesktopH.ControllerDesktopH.IsBankPlayer == false) then
         local self_betresult = self.ViewDesktopH.ViewMgr.LanMgr:getLanValue("NotBet")
         if (self.IsWin) then
             --self_betresult = self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getGameReusltTips(self.DesktopHundredCards:getCardTypeByte(), self.SelfBetChips)

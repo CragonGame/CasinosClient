@@ -22,7 +22,6 @@ function DesktopHSelf:new(o, co_icon, self_name, self_chips, view_desktoph)
             function(gold)
                 o:_setGold1(gold)
             end)
-
     return o
 end
 
@@ -190,8 +189,7 @@ end
 ---------------------------------------
 function DesktopHSelf:_cancelTask()
     for key, value in pairs(self.MapFTaskerGetWinGold) do
-        if (value ~= nil)
-        then
+        if (value ~= nil) then
             value:cancelTask()
         end
     end
@@ -203,8 +201,7 @@ function DesktopHSelf:_cancelTask()
     end]]
     self.MapFTaskerGetWinGold = {}
     for key, value in pairs(self.MapFTaskerSetGold) do
-        if (value ~= nil)
-        then
+        if (value ~= nil) then
             value:cancelTask()
         end
     end
@@ -226,7 +223,6 @@ function DesktopHSelf:_getSelfIconCenterPos()
     local y = pos.y
     y = y + self.UiHeadIcon.GCoHeadIcon.height * self.UiHeadIcon.GCoHeadIcon.scaleY / 2
     pos.y = y
-
     return pos
 end
 
@@ -234,12 +230,10 @@ end
 function DesktopHSelf:_playWinGoldAni(map_param)
     local pot_index = map_param[1]
     local list_gold = self.MapWinUiGolds[pot_index]
-    if (list_gold ~= nil)
-    then
+    if (list_gold ~= nil) then
         local to = nil
         local seat_index = self.ViewDesktopH.ControllerDesktopH.SeatIndex
-        if (seat_index == 255)
-        then
+        if (seat_index == 255) then
             to = self:_getSelfIconCenterPos()
         else
             local self_chair = self.ViewDesktopH:getDesktopHChairByIndex(seat_index)
@@ -260,8 +254,7 @@ function DesktopHSelf:_playWinGoldAni(map_param)
         local tasker = CS.Casinos.FTMgr.Instance:whenAll(map_param,
                 function(map_param)
                     self:_setGold(map_param)
-                end
-        , t)
+                end, t)
         self.MapFTaskerSetGold[pot_index] = tasker
     end
 end

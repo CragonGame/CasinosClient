@@ -93,16 +93,14 @@ function DesktopHBetPot:showGameEndGoldAni(betpot_show_win_ani_tm, give_winplaye
         self.FTaskerSendGoldToPlayer = CS.Casinos.FTMgr.Instance:whenAll(nil,
                 function(map_param)
                     self:_resetGoldInfo(map_param)
-                end
-        , t1)
+                end, t1)
     end
 
     local t = CS.Casinos.FTMgr.Instance:startTask(show_gameend_gold_ani_tm)
     self.FTaskerShowGameEndGoldAni = CS.Casinos.FTMgr.Instance:whenAll(nil,
             function(map_param)
                 self:_showGameEndGoldAni(map_param)
-            end
-    , t)
+            end, t)
 end
 
 ---------------------------------------

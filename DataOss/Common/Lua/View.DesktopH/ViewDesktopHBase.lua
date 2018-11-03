@@ -154,7 +154,7 @@ function ViewDesktopHBase:getTongPeiWhenAllShowEndShowGameResultTm()
 end
 
 ---------------------------------------
-function ViewDesktopHBase:getTongPeiImageName()
+function ViewDesktopHBase:GetTongPeiImageName()
 end
 
 ---------------------------------------
