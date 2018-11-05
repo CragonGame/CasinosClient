@@ -11,10 +11,10 @@ public class NativeTakePhoto
     {
 #if UNITY_ANDROID
         mINativeTakePhoto = new AndroidTakePhoto();
-        Debug.Log("AndroidTakePhoto::");
+        Debug.Log("New AndroidTakePhoto()");
 #elif UNITY_IOS
         mINativeTakePhoto = new IOSTakePhoto();
-        Debug.Log("IOSTakePhoto::");
+        Debug.Log("New iOSTakePhoto()");
 #else
         Debug.LogError("Do not supported on this platform. ");
 #endif

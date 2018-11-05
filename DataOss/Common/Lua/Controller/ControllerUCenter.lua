@@ -224,46 +224,46 @@ end
 
 ---------------------------------------
 -- 请求尼日利亚Webpay支付
-function ControllerUCenter:RequestNigWebpayRequestUrl(handler)
-    self.NigWebpayRequestUrlHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
-    local http_url = self:_genApiUrl("nigeriawebpay")
-    local form = CS.UnityEngine.WWWForm()
-    self.WWWNigWebpayRequestUrl = CS.UnityEngine.WWW(http_url, form)
-    --print(http_url)
-    --self.MbKingTexasHelper:PostUrl(http_url, param,
-    --        function(http_statuscode, response_data)
-    --            self:_onResponse(http_statuscode, response_data, handler)
-    --        end
-    --)
-end
+--function ControllerUCenter:RequestNigWebpayRequestUrl(handler)
+--    self.NigWebpayRequestUrlHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
+--    local http_url = self:_genApiUrl("nigeriawebpay")
+--    local form = CS.UnityEngine.WWWForm()
+--    self.WWWNigWebpayRequestUrl = CS.UnityEngine.WWW(http_url, form)
+--    --print(http_url)
+--    --self.MbKingTexasHelper:PostUrl(http_url, param,
+--    --        function(http_statuscode, response_data)
+--    --            self:_onResponse(http_statuscode, response_data, handler)
+--    --        end
+--    --)
+--end
 
 ---------------------------------------
 -- 请求尼日利亚Webpay查询
-function ControllerUCenter:RequestNigWebpayQuery(handler)
-    self.NigWebpayQueryHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
-    local http_url = self:_genApiUrl("nigeriawebpayquery")
-    self.WWWNigWebpayQuery = CS.UnityEngine.WWW(http_url)
-end
+--function ControllerUCenter:RequestNigWebpayQuery(handler)
+--    self.NigWebpayQueryHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
+--    local http_url = self:_genApiUrl("nigeriawebpayquery")
+--    self.WWWNigWebpayQuery = CS.UnityEngine.WWW(http_url)
+--end
 
 ---------------------------------------
 -- 请求尼日利亚Quickteller支付
-function ControllerUCenter:RequestQuicktellerTransfers(request, handler)
-    self.QuicktellerTransfersHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
-    local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfers")
-    local param = self.ControllerMgr.Json.encode(request)
-    local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
-    local headers = self:_genHeader(bytes.Length)
-    self.WWWQuicktellerTransfers = CS.UnityEngine.WWW(http_url, bytes, headers)
-end
+--function ControllerUCenter:RequestQuicktellerTransfers(request, handler)
+--    self.QuicktellerTransfersHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
+--    local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfers")
+--    local param = self.ControllerMgr.Json.encode(request)
+--    local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
+--    local headers = self:_genHeader(bytes.Length)
+--    self.WWWQuicktellerTransfers = CS.UnityEngine.WWW(http_url, bytes, headers)
+--end
 
 ---------------------------------------
 -- 请求尼日利亚Quickteller查询
-function ControllerUCenter:RequestQuicktellerTransfersQuery(handler)
-    self.QuicktellerTransfersQueryHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
-    local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfersquery")
-    local form = CS.UnityEngine.WWWForm()
-    self.WWWQuicktellerTransfersQuery = CS.UnityEngine.WWW(http_url, form)
-end
+--function ControllerUCenter:RequestQuicktellerTransfersQuery(handler)
+--    self.QuicktellerTransfersQueryHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
+--    local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfersquery")
+--    local form = CS.UnityEngine.WWWForm()
+--    self.WWWQuicktellerTransfersQuery = CS.UnityEngine.WWW(http_url, form)
+--end
 
 ---------------------------------------
 -- 解析Http错误码

@@ -11,10 +11,11 @@ function Native:new(o, view_mgr, listner)
     if (self.Instance == nil) then
         self.Instance = o
         self.Context = Context
+        self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.ViewMgr = view_mgr
         self.Listner = listner
 
-        if CS.Casinos.CasinosContext.Instance.IsEditor == false then
+        if self.CasinosContext.IsEditor == false then
             CS.ThirdPartyLogin.Instantce():initLogin(self.Context.Cfg.WeChatAppId)
             --CS.Push.Instant():initPush(self.Context.Cfg.PushAppId, self.Context.Cfg.PushAppKey, self.Context.Cfg.PushAppSecret)
         end
@@ -53,29 +54,30 @@ function Native:new(o, view_mgr, listner)
     --    CS.Pay.useTestMode(self.Context.Cfg.PayUseTestMode)
     --end
 
-    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionGetPicSuccess = function(getpic_result)
-    --    self:ActionGetPicSuccess(getpic_result)
-    --end
-    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionGetPicSuccessWithBytes = function(pic_data)
-    --    self:ActionGetPicSuccessWithBytes(pic_data)
-    --end
-    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayWithIAPFailed = function(result)
+    self.CasinosContext.NativeAPIMsgReceiverListner.ActionGetPicSuccess = function(getpic_result)
+        self:ActionGetPicSuccess(getpic_result)
+    end
+    self.CasinosContext.NativeAPIMsgReceiverListner.ActionGetPicSuccessWithBytes = function(pic_data)
+        self:ActionGetPicSuccessWithBytes(pic_data)
+    end
+
+    --self.CasinosContext.NativeAPIMsgReceiverListner.ActionPayWithIAPFailed = function(result)
     --    self:ActionPayWithIAPFailed(result)
     --end
-    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayWithIAPSuccess = function(purchase)
+    --self.CasinosContext.NativeAPIMsgReceiverListner.ActionPayWithIAPSuccess = function(purchase)
     --    self:ActionPayWithIAPSuccess(purchase)
     --end
 
-    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionPayResult = function(pay_result)
-    --    self:ActionPayResult(pay_result)
-    --end
+    self.CasinosContext.NativeAPIMsgReceiverListner.ActionPayResult = function(pay_result)
+        self:ActionPayResult(pay_result)
+    end
 
-    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionLoginFailed = function(fail_type)
-    --    self:ActionLoginFailed(fail_type)
-    --end
-    --CS.Casinos.CasinosContext.Instance.NativeAPIMsgReceiverListner.ActionLoginSuccess = function(param, real_token)
-    --    self:ActionLoginSuccess(param, real_token)
-    --end
+    self.CasinosContext.NativeAPIMsgReceiverListner.ActionLoginFailed = function(fail_type)
+        self:ActionLoginFailed(fail_type)
+    end
+    self.CasinosContext.NativeAPIMsgReceiverListner.ActionLoginSuccess = function(param, real_token)
+        self:ActionLoginSuccess(param, real_token)
+    end
 
     return self.Instance
 end

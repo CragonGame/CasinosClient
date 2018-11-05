@@ -12,7 +12,8 @@
 	<application
 		android:allowBackup="true"
 		android:icon="@drawable/app_icon"
-		android:label="@string/app_name" >
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme" >
     <activity
         android:name="com.unity3d.player.UnityPlayerActivity"
         android:launchMode="singleInstance"
@@ -41,7 +42,6 @@
 	<activity android:name="io.openinstall.unity.AndroidOpenInstall.currentActivity" />
 	<activity android:name="com.OpenInstall.OpenInstall.NativeOpenInstallActivity" />
 	
-	<!--
 	<provider
 		android:name="android.support.v4.content.FileProvider"        
 		android:authorities="com.Cragon.KingTexas.provider"
@@ -51,7 +51,6 @@
 			android:name="android.support.FILE_PROVIDER_PATHS"
 			android:resource="@xml/provider_paths" />
     </provider>
-	-->
 	
 	<!-- 拍照 -->
 	<activity
@@ -183,9 +182,13 @@
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /><!-- 个推浮动通知权限 -->
 	<uses-permission android:name="getui.permission.GetuiService.com.getui.demo" /><!-- 个推自定义权限 -->
@@ -197,18 +200,11 @@
 	
 	<!--
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 	<uses-permission android:name="android.permission.GET_TASKS" />
 	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
 	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
 	<uses-permission android:name="android.permission.BLUETOOTH" />
 	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
-	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 	-->
 </manifest>

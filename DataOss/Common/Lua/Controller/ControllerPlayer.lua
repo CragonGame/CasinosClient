@@ -733,7 +733,6 @@ end
 
 ---------------------------------------
 function ControllerPlayer:OnGetPicSuccess(pic_data)
-    local c = CS.Casinos.CasinosContext.Instance
     local account_id = self.ControllerActor.PropAccountId:get()
     self.ControllerUCenter:RequestUploadProfileImage(self.Context.Cfg.UCenterAppId, account_id, pic_data,
             function(status, response, error)
