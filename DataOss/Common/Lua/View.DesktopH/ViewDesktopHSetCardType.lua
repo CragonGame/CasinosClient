@@ -1,6 +1,89 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
+-- 单个Item
+UiDesktopHSetCardTypeItem = {}
+
+---------------------------------------
+function UiDesktopHSetCardTypeItem:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.ViewMgr = nil
+    o.GoUi = nil
+    o.ComUi = nil
+    o.Panel = nil
+    o.UILayer = nil
+    o.InitDepth = nil
+    o.ViewKey = nil
+    o.GComboBoxCardType = nil
+    o.GTextPotTitle = nil
+    o.ViewDesktopH = nil
+    o.ViewDesktopHSetCardType = nil
+    o.BetPotIndex = nil
+    o.AllCardTypeCount = nil
+    o.MapCardType = nil
+    o.RandomCardTypeName = "随机"
+    return o
+end
+
+---------------------------------------
+function UiDesktopHSetCardTypeItem:OnCreate(co_card_type, betpot_index, ui_desktoph, ui_card_type)
+    self.GComboBoxCardType = co_card_type
+    self.GTextPotTitle = self.GComboBoxCardType:GetChild("PotTitle").asTextField
+    self.BetPotIndex = betpot_index
+    self.ViewDesktopH = ui_desktoph
+    self.ViewDesktopHSetCardType = ui_card_type
+    self.MapCardType = {}
+    local all_card = self.ViewDesktopH.UiDesktopHBase:getAllCardType()
+    local all_card_l = #all_card + 2
+    self.AllCardTypeCount = all_card_l
+    local items = {}--new string[all_card.Count + 1]
+    local f = all_card[0]
+    items[0] = f
+    self.MapCardType[f] = 0
+    local index = 1
+    for i, v in pairs(all_card) do
+        items[index] = v
+        index = index + 1
+        self.MapCardType[v] = i
+    end
+
+    items[all_card_l] = self.RandomCardTypeName
+    self.MapCardType[self.RandomCardTypeName] = all_card_l
+    self.GComboBoxCardType.items = items
+    self.GComboBoxCardType.onChanged:Add(
+            function()
+                self:onClick()
+            end
+    )
+    self.GComboBoxCardType.text = items[all_card_l]
+    local title_name = ""
+    if (self.BetPotIndex == 255) then
+        title_name = "庄家"
+    else
+        title_name = "池" .. self.BetPotIndex
+    end
+    self.GTextPotTitle.text = title_name
+end
+
+---------------------------------------
+function UiDesktopHSetCardTypeItem:resetCardType()
+    self.GComboBoxCardType.text = self.RandomCardTypeName
+end
+
+---------------------------------------
+function UiDesktopHSetCardTypeItem:onClick()
+    local card_type = self.MapCardType[self.GComboBoxCardType.text]
+    if (card_type ~= nil) then
+        if (card_type ~= self.AllCardTypeCount) then
+            self.ViewDesktopHSetCardType:setCurrentType(self.BetPotIndex, card_type);
+        end
+    end
+end
+
+---------------------------------------
+-- 整个对话框
 ViewDesktopHSetCardType = ViewBase:new()
 
 ---------------------------------------
@@ -47,12 +130,12 @@ function ViewDesktopHSetCardType:OnCreate()
     self.MapCardsType = {}
     local co_bankcardtype = CS.FairyGUI.UIPackage.CreateObject("DesktopHSetCardType", "ComboBoxCardType").asComboBox
     self.GCoBankCardTypeParent:AddChild(co_bankcardtype)
-    self.BankItemDesktopHSetCardType = ItemDesktopHSetCardType:new(nil)
+    self.BankItemDesktopHSetCardType = UiDesktopHSetCardTypeItem:new(nil)
     self.BankItemDesktopHSetCardType:OnCreate(co_bankcardtype, self.BankPlayerPotIndex, self.ViewDesktopH, self)
 
     for i = 0, self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getMaxBetpotIndex() do
         local co_item = self.GListPotCardType:AddItemFromPool().asComboBox
-        local l = ItemDesktopHSetCardType:new(nil)
+        local l = UiDesktopHSetCardTypeItem:new(nil)
         l:OnCreate(co_item, i, self.ViewDesktopH, self)
         self.MapPotItemDesktopHSetCardType[i] = l
     end

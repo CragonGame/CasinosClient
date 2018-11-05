@@ -2,10 +2,10 @@
 -- 一个下注池，4个池即有4个该类的实例；被DesktopHBetPot持有
 
 ---------------------------------------
-ItemDesktopHBetPot = {}
+UiDesktopHBetPotItem = {}
 
 ---------------------------------------
-function ItemDesktopHBetPot:new(o, ui_desktoph, parent, co_betpot)
+function UiDesktopHBetPotItem:new(o, ui_desktoph, parent, co_betpot)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -43,16 +43,16 @@ function ItemDesktopHBetPot:new(o, ui_desktoph, parent, co_betpot)
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:initBetPot(betpot_index, is_lastpot)
+function UiDesktopHBetPotItem:initBetPot(betpot_index, is_lastpot)
     self.BetPotIndex = betpot_index
     self.IsLastPot = is_lastpot
-    self.DesktopHundredCards = self.ViewDesktopH.DesktopHDealer:createSinglePotCards(
+    self.DesktopHundredCards = self.ViewDesktopH.UiDesktopHDealer:createSinglePotCards(
             self.ViewDesktopH.ControllerDesktopH, self.ViewDesktopH,
             self.ViewDesktopH.GCoDealer.xy, self.GCoCardParent, self, false)
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:SetGameEndResult(result, win_rewardpot_gold)
+function UiDesktopHBetPotItem:SetGameEndResult(result, win_rewardpot_gold)
     self.IsWin = result.is_win
     self.WinRewardPotGolds = win_rewardpot_gold
     self.DesktopHundredCards:setCards(result.list_card)
@@ -60,7 +60,7 @@ function ItemDesktopHBetPot:SetGameEndResult(result, win_rewardpot_gold)
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:setBetPotTotalChips(total_chips)
+function UiDesktopHBetPotItem:setBetPotTotalChips(total_chips)
     if (total_chips > 0) then
         self.GTextBetChipsTotal.text = UiChipShowHelper:getGoldShowStr2(total_chips, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
     else
@@ -69,7 +69,7 @@ function ItemDesktopHBetPot:setBetPotTotalChips(total_chips)
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:setBetPotSelfChips(self_betchips)
+function UiDesktopHBetPotItem:setBetPotSelfChips(self_betchips)
     self.SelfBetChips = self_betchips
     if (self.SelfBetChips > 0) then
         self.GTextBetChipsSelf.visible = true
@@ -81,7 +81,7 @@ function ItemDesktopHBetPot:setBetPotSelfChips(self_betchips)
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:showCardsEnd()
+function UiDesktopHBetPotItem:showCardsEnd()
     local card_type = self.DesktopHundredCards:getCardTypeStr()
     local cardtype_info = self.ViewDesktopH.UiDesktopHBase:getCardTypeAndSoundPath(card_type, self.IsWin)
     if (CS.System.String.IsNullOrEmpty(cardtype_info.CardTypeSoundPath) == false) then
@@ -92,7 +92,7 @@ function ItemDesktopHBetPot:showCardsEnd()
         self.FTasker:cancelTask()
         self.FTasker = nil
     end
-    local t = CS.Casinos.FTMgr.Instance:startTask(DesktopHBankPlayer.ShowCardEndTime)
+    local t = CS.Casinos.FTMgr.Instance:startTask(UiDesktopHBanker.ShowCardEndTime)
     self.FTasker = CS.Casinos.FTMgr.Instance:whenAll(nil,
             function(map_param)
                 self:_showCardEnd(map_param)
@@ -100,7 +100,7 @@ function ItemDesktopHBetPot:showCardsEnd()
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:resetBetPot()
+function UiDesktopHBetPotItem:resetBetPot()
     if (self.FTasker ~= nil) then
         self.FTasker:cancelTask()
         self.FTasker = nil
@@ -115,14 +115,14 @@ function ItemDesktopHBetPot:resetBetPot()
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:Destroy()
+function UiDesktopHBetPotItem:Destroy()
     if (self.FTasker ~= nil) then
         self.FTasker:cancelTask()
     end
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:resetGoldsInfo()
+function UiDesktopHBetPotItem:resetGoldsInfo()
     self.GTextBetChipsSelf.text = ""
     self.GTextBetChipsTotal.text = ""
     self.SelfBetChips = 0
@@ -131,7 +131,7 @@ function ItemDesktopHBetPot:resetGoldsInfo()
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:_showCardEnd(map_param)
+function UiDesktopHBetPotItem:_showCardEnd(map_param)
     self:_setCardTypeVisible(true)
     self.GTextBetChipsSelf.visible = true
     local color = CS.UnityEngine.Color.white
@@ -145,7 +145,7 @@ function ItemDesktopHBetPot:_showCardEnd(map_param)
             --self_betresult = self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getGameReusltTips(self.DesktopHundredCards:getCardTypeByte(), self.SelfBetChips)
             color = CS.UnityEngine.Color.yellow
         else
-            --self_betresult = self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getGameReusltTips(self.ViewDesktopH.DesktopHBankPlayer:getHandRankByte(), self.SelfBetChips)
+            --self_betresult = self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getGameReusltTips(self.ViewDesktopH.UiDesktopHBanker:getHandRankByte(), self.SelfBetChips)
         end
 
         self.GTextBetChipsSelf.text = self_betresult
@@ -162,7 +162,7 @@ function ItemDesktopHBetPot:_showCardEnd(map_param)
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:_setCardTypeVisible(bo)
+function UiDesktopHBetPotItem:_setCardTypeVisible(bo)
     self.GLoaderCardType.visible = bo
     if (bo == false) then
         self.GLoaderCardType.icon = nil
@@ -170,13 +170,13 @@ function ItemDesktopHBetPot:_setCardTypeVisible(bo)
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:UpdateBetPotCardParentPos()
+function UiDesktopHBetPotItem:UpdateBetPotCardParentPos()
     local card_parentpos = self.GListParent.xy + self.GListParent.container.xy
             + self.GCoBetPot.xy + self.GCoCardParent.xy
     self.DesktopHundredCards:updateToPos(card_parentpos)
 end
 
 ---------------------------------------
-function ItemDesktopHBetPot:_onClick()
+function UiDesktopHBetPotItem:_onClick()
     self.ViewDesktopH:bet(self.BetPotIndex)
 end

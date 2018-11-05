@@ -492,7 +492,7 @@ function ViewDesktopTexas:playerBuyAndSendItem(map_items)
             if (tb_item.UnitType == "GiftTmp") then
                 seat_info.player_texas:setGift(item_data, true)
             elseif (tb_item.UnitType == "MagicExpression") then
-                seat_info.player_texas:sendMagicExp(item_data)
+                seat_info.player_texas:SendMagicExpression(item_data)
             end
         end
     end

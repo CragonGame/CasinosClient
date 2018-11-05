@@ -584,7 +584,7 @@ function ViewDesktopPlayerInfoTexas:setGift(current_item, target_etguid, is_send
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:sendMagicExp(exp)
+function ViewDesktopPlayerInfoTexas:SendMagicExpression(exp)
     local tb_magicexp = self.ViewMgr.TbDataMgr:GetData("UnitMagicExpression", exp.item_tbid)
     if (tb_magicexp == nil) then
         return
@@ -606,7 +606,7 @@ function ViewDesktopPlayerInfoTexas:sendMagicExp(exp)
         local ui_pool = self.ViewMgr:GetView("Pool")
         local item_magicsender = ui_pool:getMagicExpSender()
         self.ComUi:AddChild(item_magicsender.GCoMagicExpSender)
-        item_magicsender:sendMagicExp(from_pos, to_pos, exp.item_tbid)
+        item_magicsender:SendMagicExpression(from_pos, to_pos, exp.item_tbid)
     end
 end
 

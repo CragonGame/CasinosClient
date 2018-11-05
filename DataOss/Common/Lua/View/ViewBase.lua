@@ -28,9 +28,5 @@ function ViewBase:OnDestroy()
 end
 
 ---------------------------------------
-function ViewBase:onUpdate(tm)
-end
-
----------------------------------------
 function ViewBase:OnHandleEv(ev)
 end

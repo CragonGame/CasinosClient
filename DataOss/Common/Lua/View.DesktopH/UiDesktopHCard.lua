@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-DesktopHCard = {}
+UiDesktopHCard = {}
 
 ---------------------------------------
-function DesktopHCard:new(o, dealer, is_bankplayer)
+function UiDesktopHCard:new(o, dealer, is_bankplayer)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -35,14 +35,14 @@ function DesktopHCard:new(o, dealer, is_bankplayer)
 end
 
 ---------------------------------------
-function DesktopHCard:setCardData(card_data)
+function UiDesktopHCard:setCardData(card_data)
     self.CardData = card_data
     local card_name = self.ViewDesktopH.UiDesktopHBase:getCardResName(self.CardData)
     self.GLoaderCard.icon = CS.Casinos.CasinosContext.Instance.PathMgr.DirAbCard .. string.lower(card_name) .. ".ab"
 end
 
 ---------------------------------------
-function DesktopHCard:setDealCardData(dealer_pos, card_index)
+function UiDesktopHCard:setDealCardData(dealer_pos, card_index)
     local dealerpos_x = dealer_pos.x
     dealerpos_x = dealerpos_x - self.GCoCard.width / 2
     self.DealerPosX = dealerpos_x
@@ -52,12 +52,12 @@ function DesktopHCard:setDealCardData(dealer_pos, card_index)
 end
 
 ---------------------------------------
-function DesktopHCard:setParent(co_parent)
+function UiDesktopHCard:setParent(co_parent)
     self.GCoParent = co_parent
 end
 
 ---------------------------------------
-function DesktopHCard:dealCardToPosThenTranslation(to_pos, move_cardwidth_percent)
+function UiDesktopHCard:dealCardToPosThenTranslation(to_pos, move_cardwidth_percent)
     self.MoveCardWidthPercent = move_cardwidth_percent
     self.GLoaderCard.visible = false
     self.GImageCardBack.visible = true
@@ -73,7 +73,7 @@ function DesktopHCard:dealCardToPosThenTranslation(to_pos, move_cardwidth_percen
 end
 
 ---------------------------------------
-function DesktopHCard:dealCardToPosAtFirstTm(card_index, from, to_pos, delay, move_cardwidth_percent)
+function UiDesktopHCard:dealCardToPosAtFirstTm(card_index, from, to_pos, delay, move_cardwidth_percent)
     self.GLoaderCard.visible = false
     self.GImageCardBack.visible = true
     self.CardIndex = card_index
@@ -93,7 +93,7 @@ function DesktopHCard:dealCardToPosAtFirstTm(card_index, from, to_pos, delay, mo
 end
 
 ---------------------------------------
-function DesktopHCard:dealCardAtPos2(to_pos, move_cardwidth_percent)
+function UiDesktopHCard:dealCardAtPos2(to_pos, move_cardwidth_percent)
     self.MoveCardWidthPercent = move_cardwidth_percent
     self.GLoaderCard.visible = false
     self.GImageCardBack.visible = true
@@ -114,7 +114,7 @@ function DesktopHCard:dealCardAtPos2(to_pos, move_cardwidth_percent)
 end
 
 ---------------------------------------
-function DesktopHCard:showCard(action)
+function UiDesktopHCard:showCard(action)
     self.GImageCardBack.rotationY = 0
     self.GLoaderCard.rotationY = 0
     self.GLoaderCard.visible = false
@@ -199,14 +199,14 @@ function DesktopHCard:showCard(action)
 end
 
 ---------------------------------------
-function DesktopHCard:resetCard()
+function UiDesktopHCard:resetCard()
     self.IsReset = true
     self:_resetCard()
     self.Dealer:setResetCard(self, IsBankPlayer)
 end
 
 ---------------------------------------
-function DesktopHCard:_translationCard()
+function UiDesktopHCard:_translationCard()
     local to = self.GCoCard.xy
     local x = to.x + self.GCoCard.width * self.MoveCardWidthPercent * self.CardIndex
     self.Tweener = self.GCoCard:TweenMoveX(x, 0.3):OnComplete(
@@ -217,7 +217,7 @@ function DesktopHCard:_translationCard()
 end
 
 ---------------------------------------
-function DesktopHCard:_setParent()
+function UiDesktopHCard:_setParent()
     if (self.GCoParent ~= nil) then
         self.GCoParent:AddChild(self.GCoCard)
         local x = self.GCoCard.width * self.MoveCardWidthPercent * self.CardIndex
@@ -226,7 +226,7 @@ function DesktopHCard:_setParent()
 end
 
 ---------------------------------------
-function DesktopHCard:_resetCard()
+function UiDesktopHCard:_resetCard()
     self.GCoParent = nil
     self.CardData = nil
     if (self.GCoCard ~= nil and self.GCoCard.displayObject.gameObject ~= nil) then

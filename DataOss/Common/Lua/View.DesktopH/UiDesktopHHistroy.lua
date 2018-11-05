@@ -2,10 +2,10 @@
 -- 持有10个历史元素
 
 ---------------------------------------
-ItemDesktopHHistroy = {}
+UiDesktopHHistroy = {}
 
 ---------------------------------------
-function ItemDesktopHHistroy:new(o, com_history, desktoph, betpot_index, list_history)
+function UiDesktopHHistroy:new(o, com_history, desktoph, betpot_index, list_history)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -18,12 +18,12 @@ function ItemDesktopHHistroy:new(o, com_history, desktoph, betpot_index, list_hi
     for i = 1, 10 do
         o.MapHistory[i] = o.GCoHistroy:GetChild("Loader" .. i).asLoader
     end
-    o:refreshHistory(list_history)
+    o:_refreshHistory(list_history)
     return o
 end
 
 ---------------------------------------
-function ItemDesktopHHistroy:refreshHistory(list_history)
+function UiDesktopHHistroy:_refreshHistory(list_history)
     local index = 1
     for i = 1, #list_history do
         local l = list_history[i]

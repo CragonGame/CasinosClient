@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-DesktopHChair = {}
+UiDesktopHChair = {}
 
 ---------------------------------------
-function DesktopHChair:new(o, ui_desktoph, co_chair, chair_index, is_left)
+function UiDesktopHChair:new(o, ui_desktoph, co_chair, chair_index, is_left)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -21,7 +21,7 @@ function DesktopHChair:new(o, ui_desktoph, co_chair, chair_index, is_left)
                 o:_onClick()
             end
     )
-    o.ItemDesktopHSeat = ItemDesktopHSeat:new(nil, o.GCoChair, o.ViewDesktopH.ViewMgr)
+    o.UiDesktopHSeat = UiDesktopHSeat:new(nil, o.GCoChair, o.ViewDesktopH.ViewMgr)
     o.GCoChatParent = o.GCoChair:GetChild("CoChatParent").asCom
     o.SeatPlayerInfo = nil
     o.ItemChatDesktop = nil
@@ -30,10 +30,10 @@ function DesktopHChair:new(o, ui_desktoph, co_chair, chair_index, is_left)
 end
 
 ---------------------------------------
-function DesktopHChair:Destroy()
+function UiDesktopHChair:Destroy()
     for k, v in pairs(self.MapWinUiGolds) do
         for g_k, g_v in pairs(v) do
-            self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(g_v)
+            self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(g_v)
         end
     end
 
@@ -44,20 +44,20 @@ function DesktopHChair:Destroy()
 end
 
 ---------------------------------------
-function DesktopHChair:Update(tm)
+function UiDesktopHChair:Update(tm)
     if (self.ItemChatDesktop ~= nil) then
         self.ItemChatDesktop:Update(tm)
     end
 end
 
 ---------------------------------------
-function DesktopHChair:playerChat(chat_info)
+function UiDesktopHChair:playerChat(chat_info)
     if (self.SeatPlayerInfo == nil) then
         return
     end
 
     if (chat_info.sender_etguid == self.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid) then
-        local sorting_order = self.GCoChatParent.sortingOrder + self.ViewDesktopH.DesktopHGoldPool:getMaxGoldSortOrder()
+        local sorting_order = self.GCoChatParent.sortingOrder + self.ViewDesktopH.UiDesktopHGoldPool:getMaxGoldSortOrder()
         if (self.ItemChatDesktop == nil) then
             local co_chatname = "CoChatRight"
             if (self.IsLeft) then
@@ -74,10 +74,10 @@ function DesktopHChair:playerChat(chat_info)
 end
 
 ---------------------------------------
-function DesktopHChair:playerSeatDown(player_info)
+function UiDesktopHChair:playerSeatDown(player_info)
     for k, v in pairs(self.MapWinUiGolds) do
         for g_k, g_v in pairs(v) do
-            self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(g_v)
+            self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(g_v)
         end
     end
 
@@ -98,11 +98,11 @@ function DesktopHChair:playerSeatDown(player_info)
     self.SeatPlayerInfo = player_info
 
     if (self.SeatPlayerInfo ~= nil) then
-        if (self.ItemDesktopHSeat == nil) then
-            self.ItemDesktopHSeat = ItemDesktopHSeat:new(nil, self.GCoChair)
+        if (self.UiDesktopHSeat == nil) then
+            self.UiDesktopHSeat = UiDesktopHSeat:new(nil, self.GCoChair)
         end
 
-        self.ItemDesktopHSeat:setSeatPlayerData(self.SeatPlayerInfo, self.ChairIndex, player_changed)
+        self.UiDesktopHSeat:setSeatPlayerData(self.SeatPlayerInfo, self.ChairIndex, player_changed)
     else
         self:_destroyUiHead()
         if (self.ItemChatDesktop ~= nil) then
@@ -112,18 +112,18 @@ function DesktopHChair:playerSeatDown(player_info)
 end
 
 ---------------------------------------
-function DesktopHChair:updatePlayerGolds(golds)
+function UiDesktopHChair:updatePlayerGolds(golds)
     if (self.SeatPlayerInfo ~= nil) then
         self.SeatPlayerInfo.Gold = golds
     end
 
-    if (self.ItemDesktopHSeat ~= nil) then
-        self.ItemDesktopHSeat:updatePlayerGolds(golds)
+    if (self.UiDesktopHSeat ~= nil) then
+        self.UiDesktopHSeat:updatePlayerGolds(golds)
     end
 end
 
 ---------------------------------------
-function DesktopHChair:betGolds(current_bet_operate, bet_potindex, gold_value)
+function UiDesktopHChair:betGolds(current_bet_operate, bet_potindex, gold_value)
     local bet_pot = self.ViewDesktopH:getDesktopHBetPot(bet_potindex)
     local from = self:getChairCenterPos()
     if (current_bet_operate ~= -1) then
@@ -138,12 +138,12 @@ function DesktopHChair:betGolds(current_bet_operate, bet_potindex, gold_value)
 end
 
 ---------------------------------------
-function DesktopHChair:setSeatPlayerResultInfo(betpot_index, winloose_info)
+function UiDesktopHChair:setSeatPlayerResultInfo(betpot_index, winloose_info)
     self.MapWinLooseInfo[betpot_index] = winloose_info
 end
 
 ---------------------------------------
-function DesktopHChair:showWinGoldsAni(pot_index, from)
+function UiDesktopHChair:showWinGoldsAni(pot_index, from)
     local winloose_info = self.MapWinLooseInfo[pot_index]
     if (winloose_info ~= nil) then
         if (winloose_info.winloose_gold <= 0) then
@@ -163,14 +163,14 @@ function DesktopHChair:showWinGoldsAni(pot_index, from)
         local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_chips)
         for k, v in pairs(list_chips) do
             local to = bet_pot:getRandomChipPos()
-            v:initMove(from, to, DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
+            v:initMove(from, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
             delay_tm = delay_tm + delay_t
         end
 
         local map_param = {}
         map_param[0] = winloose_info.winloose_gold
         map_param[1] = pot_index
-        local t = CS.Casinos.FTMgr.Instance:startTask(DesktopHBetPot.GivePlayerAniTm - DesktopHBetPot.WinShowAniTm)
+        local t = CS.Casinos.FTMgr.Instance:startTask(UiDesktopHBetPot.GivePlayerAniTm - UiDesktopHBetPot.WinShowAniTm)
         local tasker = CS.Casinos.FTMgr.Instance:whenAll(map_param,
                 function(map_param)
                     self:_playWinGoldAni(map_param)
@@ -181,11 +181,11 @@ function DesktopHChair:showWinGoldsAni(pot_index, from)
 end
 
 ---------------------------------------
-function DesktopHChair:Reset()
+function UiDesktopHChair:Reset()
     self.MapWinLooseInfo = {}
     for k, v in pairs(self.MapWinUiGolds) do
         for g_k, g_v in pairs(v) do
-            self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(g_v)
+            self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(g_v)
         end
     end
     self:_cancelTask()
@@ -193,21 +193,21 @@ function DesktopHChair:Reset()
 end
 
 ---------------------------------------
-function DesktopHChair:sendMagicExp(sender_guid, exp_tbid)
+function UiDesktopHChair:SendMagicExpression(sender_guid, exp_tbid)
     local tb_magicexp = self.Context.TbDataMgr:GetData("UnitMagicExpression", exp_tbid)
     if (tb_magicexp == nil) then
         return
     end
 
     local from_pos = CS.Casinos.LuaHelper.GetVector2(0, 0)
-    if (self.ViewDesktopH.DesktopHBankPlayer.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid == sender_guid) then
-        from_pos = self.ViewDesktopH.DesktopHBankPlayer:getBankPlayerCenterPos()
+    if (self.ViewDesktopH.UiDesktopHBanker.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid == sender_guid) then
+        from_pos = self.ViewDesktopH.UiDesktopHBanker:getBankPlayerCenterPos()
     else
         local chair = self.ViewDesktopH:getDesktopHChairByGuid(sender_guid)
         if (chair ~= nil) then
             from_pos = chair:getChairCenterPos()
         else
-            from_pos = self.ViewDesktopH.DesktopHStandPlayer:getStandPlayerCenterPos()
+            from_pos = self.ViewDesktopH.UiDesktopHStandPlayer:getStandPlayerCenterPos()
         end
     end
 
@@ -215,11 +215,11 @@ function DesktopHChair:sendMagicExp(sender_guid, exp_tbid)
     local ui_pool = self.ViewMgr:GetView("Pool")
     local item_magicsender = ui_pool:getMagicExpSender()
     self.ViewDesktopH.ComUi:AddChild(item_magicsender.GCoMagicExpSender)
-    item_magicsender:sendMagicExp(from_pos, to_pos, exp_tbid)
+    item_magicsender:SendMagicExpression(from_pos, to_pos, exp_tbid)
 end
 
 ---------------------------------------
-function DesktopHChair:getChairCenterPos()
+function UiDesktopHChair:getChairCenterPos()
     local pos = self.GCoChair.xy
     pos.x = pos.x + self.GCoChair.width * self.GCoChair.scaleX / 2
     pos.y = pos.y + self.GCoChair.height * self.GCoChair.scaleY / 2
@@ -227,7 +227,7 @@ function DesktopHChair:getChairCenterPos()
 end
 
 ---------------------------------------
-function DesktopHChair:_playWinGoldAni(map_param)
+function UiDesktopHChair:_playWinGoldAni(map_param)
     local pot_index = map_param[1]
     local list_gold = self.MapWinUiGolds[pot_index]
     if (list_gold ~= nil) then
@@ -236,7 +236,7 @@ function DesktopHChair:_playWinGoldAni(map_param)
         local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_gold)
         for k, v in pairs(list_gold) do
             v:initMove(v.GCoGold.xy, to,
-                    DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
+                    UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
             delay_tm = delay_tm + delay_t
         end
 
@@ -246,7 +246,7 @@ function DesktopHChair:_playWinGoldAni(map_param)
 end
 
 ---------------------------------------
-function DesktopHChair:_cancelTask()
+function UiDesktopHChair:_cancelTask()
     for k, v in pairs(self.MapFTaskerGetWinGold) do
         if (v ~= nil) then
             v:cancelTask()
@@ -256,14 +256,14 @@ function DesktopHChair:_cancelTask()
 end
 
 ---------------------------------------
-function DesktopHChair:_destroyUiHead()
-    if (self.ItemDesktopHSeat ~= nil) then
-        self.ItemDesktopHSeat:setSeatPlayerData(nil, 255, true)
+function UiDesktopHChair:_destroyUiHead()
+    if (self.UiDesktopHSeat ~= nil) then
+        self.UiDesktopHSeat:setSeatPlayerData(nil, 255, true)
     end
 end
 
 ---------------------------------------
-function DesktopHChair:_playBetGoldsAni()
+function UiDesktopHChair:_playBetGoldsAni()
     if (self.ViewDesktopH.FactoryName == "ZhongFB") then
         local chair_y = self.GCoChair.y
         if (CS.FairyGUI.GTween.IsTweening(self.GCoChair) == false) then
@@ -291,12 +291,12 @@ function DesktopHChair:_playBetGoldsAni()
 end
 
 ---------------------------------------
-function DesktopHChair:_playerInfo(player_info, head_icon)
-    self.ItemDesktopHSeat:updatePlayerIcon(head_icon)
+function UiDesktopHChair:_playerInfo(player_info, head_icon)
+    self.UiDesktopHSeat:updatePlayerIcon(head_icon)
 end
 
 ---------------------------------------
-function DesktopHChair:_onClick()
+function UiDesktopHChair:_onClick()
     if (self.SeatPlayerInfo == nil) then
         if (self.ViewDesktopH.ControllerDesktopH.IsBankPlayer) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BankerSit"))

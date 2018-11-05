@@ -1,17 +1,17 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-DesktopHBetPot = {
+UiDesktopHBetPot = {
     GivePlayerAniTm = 3.2,
     WinShowAniTm = 2
 }
 
 ---------------------------------------
-function DesktopHBetPot:new(o, betpot_index, bet_pot, ui_desktoph)
+function UiDesktopHBetPot:new(o, betpot_index, bet_pot, ui_desktoph)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    o.ItemDesktopHBetPot = bet_pot
+    o.UiDesktopHBetPotItem = bet_pot
     o.TotalBetPotGold = 0
     o.BetPotIndex = betpot_index
     o.ListUiGolds = {}
@@ -26,7 +26,7 @@ function DesktopHBetPot:new(o, betpot_index, bet_pot, ui_desktoph)
 end
 
 ---------------------------------------
-function DesktopHBetPot:initBetPotInfo(bet_all_golds, self_betgolds)
+function UiDesktopHBetPot:initBetPotInfo(bet_all_golds, self_betgolds)
     self:resetBetPot()
 
     self.TotalBetPotGold = bet_all_golds
@@ -37,32 +37,32 @@ function DesktopHBetPot:initBetPotInfo(bet_all_golds, self_betgolds)
 
     ListTmpUiGolds = nil
 
-    self.ItemDesktopHBetPot:setBetPotTotalChips(bet_all_golds)
+    self.UiDesktopHBetPotItem:setBetPotTotalChips(bet_all_golds)
 
     self:setBetSelfChipsToPot(self_betgolds)
 end
 
 ---------------------------------------
-function DesktopHBetPot:Destroy()
+function UiDesktopHBetPot:Destroy()
     self:_goldEnPool()
     self:_cancelTask()
-    self.ItemDesktopHBetPot:Destroy()
+    self.UiDesktopHBetPotItem:Destroy()
 end
 
 ---------------------------------------
-function DesktopHBetPot:updateBetPotInfo(betpot_golds)
+function UiDesktopHBetPot:updateBetPotInfo(betpot_golds)
     self.TotalBetPotGold = self.TotalBetPotGold + betpot_golds
-    self.ItemDesktopHBetPot:setBetPotTotalChips(self.TotalBetPotGold)
+    self.UiDesktopHBetPotItem:setBetPotTotalChips(self.TotalBetPotGold)
 end
 
 ---------------------------------------
-function DesktopHBetPot:SetGameEndResult(betpot_gameresult, win_rewardpot_gold)
+function UiDesktopHBetPot:SetGameEndResult(betpot_gameresult, win_rewardpot_gold)
     self.BDesktopHNotifyGameEndBetPot = betpot_gameresult
-    self.ItemDesktopHBetPot:SetGameEndResult(self.BDesktopHNotifyGameEndBetPot, win_rewardpot_gold)
+    self.UiDesktopHBetPotItem:SetGameEndResult(self.BDesktopHNotifyGameEndBetPot, win_rewardpot_gold)
 end
 
 ---------------------------------------
-function DesktopHBetPot:betGolds(from, gold_value)
+function UiDesktopHBetPot:betGolds(from, gold_value)
     local ListTmpUiGolds = {}
     self.ViewDesktopH:createGolds(self.ListUiGolds, ListTmpUiGolds, gold_value, self)
     local delay_tm = 0.0
@@ -70,22 +70,22 @@ function DesktopHBetPot:betGolds(from, gold_value)
     local delay_t = self.ViewDesktopH:getMoveIntervalTm(l)
     for k, v in pairs(ListTmpUiGolds) do
         local to = self:getRandomChipPos()
-        v:initMove(from, to, DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
+        v:initMove(from, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
         delay_tm = delay_tm + delay_t
     end
     ListTmpUiGolds = nil
 end
 
 ---------------------------------------
-function DesktopHBetPot:setBetSelfChipsToPot(self_betchips)
-    self.ItemDesktopHBetPot:setBetPotSelfChips(self_betchips)
+function UiDesktopHBetPot:setBetSelfChipsToPot(self_betchips)
+    self.UiDesktopHBetPotItem:setBetPotSelfChips(self_betchips)
 end
 
 ---------------------------------------
-function DesktopHBetPot:showGameEndGoldAni(betpot_show_win_ani_tm, give_winplayer_gold_ani_tm)
+function UiDesktopHBetPot:showGameEndGoldAni(betpot_show_win_ani_tm, give_winplayer_gold_ani_tm)
     self:_cancelTask()
     local show_gameend_gold_ani_tm = 0
-    if (self.ItemDesktopHBetPot.IsWin == false) then
+    if (self.UiDesktopHBetPotItem.IsWin == false) then
         show_gameend_gold_ani_tm = self.LooseShowAniTm
     else
         show_gameend_gold_ani_tm = betpot_show_win_ani_tm
@@ -104,38 +104,38 @@ function DesktopHBetPot:showGameEndGoldAni(betpot_show_win_ani_tm, give_winplaye
 end
 
 ---------------------------------------
-function DesktopHBetPot:resetBetPot()
+function UiDesktopHBetPot:resetBetPot()
     self:_cancelTask()
     self.TotalBetPotGold = 0
     self:_goldEnPool()
-    self.ItemDesktopHBetPot:resetBetPot()
+    self.UiDesktopHBetPotItem:resetBetPot()
     self.BDesktopHNotifyGameEndBetPot = nil
 end
 
 ---------------------------------------
-function DesktopHBetPot:_showGameEndGoldAni(map_param)
-    if (self.ItemDesktopHBetPot.IsWin == false) then
+function UiDesktopHBetPot:_showGameEndGoldAni(map_param)
+    if (self.UiDesktopHBetPotItem.IsWin == false) then
         if (self.BDesktopHNotifyGameEndBetPot ~= nil) then
-            self.ViewDesktopH.DesktopHBankPlayer:showWinGoldAni(self.BDesktopHNotifyGameEndBetPot.winloose_gold, self.ListUiGolds, self.BetPotIndex)
+            self.ViewDesktopH.UiDesktopHBanker:showWinGoldAni(self.BDesktopHNotifyGameEndBetPot.winloose_gold, self.ListUiGolds, self.BetPotIndex)
         end
         self.ListUiGolds = {}
-        self.ItemDesktopHBetPot:resetGoldsInfo()
+        self.UiDesktopHBetPotItem:resetGoldsInfo()
     else
-        self.ViewDesktopH.DesktopHBankPlayer:giveGoldToPot(self.BetPotIndex)
-        self.ViewDesktopH.DesktopHRewardPot:showLooseGoldAni(self.BetPotIndex, self.ItemDesktopHBetPot.WinRewardPotGolds)
+        self.ViewDesktopH.UiDesktopHBanker:giveGoldToPot(self.BetPotIndex)
+        self.ViewDesktopH.UiDesktopHRewardPot:showLooseGoldAni(self.BetPotIndex, self.UiDesktopHBetPotItem.WinRewardPotGolds)
     end
     self.FTaskerShowGameEndGoldAni = nil
 end
 
 ---------------------------------------
-function DesktopHBetPot:_resetGoldInfo(map_param)
-    self.ItemDesktopHBetPot:resetGoldsInfo()
+function UiDesktopHBetPot:_resetGoldInfo(map_param)
+    self.UiDesktopHBetPotItem:resetGoldsInfo()
     self:_goldEnPool()
     self.FTaskerSendGoldToPlayer = nil
 end
 
 ---------------------------------------
-function DesktopHBetPot:_cancelTask()
+function UiDesktopHBetPot:_cancelTask()
     if (self.FTaskerShowGameEndGoldAni ~= nil) then
         self.FTaskerShowGameEndGoldAni:cancelTask()
         self.FTaskerShowGameEndGoldAni = nil
@@ -147,13 +147,13 @@ function DesktopHBetPot:_cancelTask()
 end
 
 ---------------------------------------
-function DesktopHBetPot:getRandomChipPos()
-    local pos = self.ItemDesktopHBetPot.GListParent.xy
-            + self.ItemDesktopHBetPot.GListParent.container.xy
-            + self.ItemDesktopHBetPot.GCoBetPot.xy
-            + self.ItemDesktopHBetPot.GGraphBetPotArea.xy
-    local betpotarea_halfwidth = self.ItemDesktopHBetPot.GGraphBetPotArea.width / 2
-    local betpotarea_halfheight = self.ItemDesktopHBetPot.GGraphBetPotArea.height / 2
+function UiDesktopHBetPot:getRandomChipPos()
+    local pos = self.UiDesktopHBetPotItem.GListParent.xy
+            + self.UiDesktopHBetPotItem.GListParent.container.xy
+            + self.UiDesktopHBetPotItem.GCoBetPot.xy
+            + self.UiDesktopHBetPotItem.GGraphBetPotArea.xy
+    local betpotarea_halfwidth = self.UiDesktopHBetPotItem.GGraphBetPotArea.width / 2
+    local betpotarea_halfheight = self.UiDesktopHBetPotItem.GGraphBetPotArea.height / 2
     pos.x = pos.x + betpotarea_halfwidth
     pos.y = pos.y + betpotarea_halfheight
     pos.x = pos.x + CS.UnityEngine.Random.Range(-betpotarea_halfwidth + self.PosOffSet, betpotarea_halfwidth - self.PosOffSet)
@@ -162,9 +162,9 @@ function DesktopHBetPot:getRandomChipPos()
 end
 
 ---------------------------------------
-function DesktopHBetPot:_goldEnPool()
+function UiDesktopHBetPot:_goldEnPool()
     for k, v in pairs(self.ListUiGolds) do
-        self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(v)
+        self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(v)
     end
     self.ListUiGolds = {}
 end

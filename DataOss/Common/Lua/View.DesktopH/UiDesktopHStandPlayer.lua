@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-DesktopHStandPlayer = {}
+UiDesktopHStandPlayer = {}
 
 ---------------------------------------
-function DesktopHStandPlayer:new(o, btn_stand_player, chat_parent, view_desktop)
+function UiDesktopHStandPlayer:new(o, btn_stand_player, chat_parent, view_desktop)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -19,26 +19,26 @@ function DesktopHStandPlayer:new(o, btn_stand_player, chat_parent, view_desktop)
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:Update(tm)
+function UiDesktopHStandPlayer:Update(tm)
     if (self.ItemChat ~= nil) then
         self.ItemChat:Update(tm)
     end
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:initStandPlayer()
+function UiDesktopHStandPlayer:initStandPlayer()
     self:_goldEnPool()
     self.MapWinGolds = {}
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:Destroy()
+function UiDesktopHStandPlayer:Destroy()
     self:_goldEnPool()
     self:_cancelTask()
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:betGolds(bet_potindex, chip_value)
+function UiDesktopHStandPlayer:betGolds(bet_potindex, chip_value)
     local from = self:getStandPlayerCenterPos()
     local bet_pot = self.ViewDesktopH:getDesktopHBetPot(bet_potindex)
     bet_pot:betGolds(from, chip_value)
@@ -53,17 +53,17 @@ function DesktopHStandPlayer:betGolds(bet_potindex, chip_value)
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:betState()
+function UiDesktopHStandPlayer:betState()
     self.MapWinGolds = {}
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:setOtherStandPlayerResultInfo(betpot_index, stand_playerwinchips)
+function UiDesktopHStandPlayer:setOtherStandPlayerResultInfo(betpot_index, stand_playerwinchips)
     self.MapWinGolds[betpot_index] = stand_playerwinchips
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:showWinGoldsAni(pot_index, from)
+function UiDesktopHStandPlayer:showWinGoldsAni(pot_index, from)
     local win_gold = 0
 
     if (self.MapWinGolds[pot_index] ~= nil) then
@@ -86,14 +86,14 @@ function DesktopHStandPlayer:showWinGoldsAni(pot_index, from)
         for key, value in pairs(list_golds) do
             local to = bet_pot:getRandomChipPos()
             value:initMove(from, to,
-                    DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
+                    UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
             delay_tm = delay_tm + delay_t
         end
 
         local map_param = {}
         map_param[0] = win_gold
         map_param[1] = pot_index
-        local t = CS.Casinos.FTMgr.Instance:startTask(DesktopHBetPot.GivePlayerAniTm - DesktopHBetPot.WinShowAniTm)
+        local t = CS.Casinos.FTMgr.Instance:startTask(UiDesktopHBetPot.GivePlayerAniTm - UiDesktopHBetPot.WinShowAniTm)
         local tasker = CS.Casinos.FTMgr.Instance:whenAll(map_param,
                 function(map_param)
                     self:_playWinGoldAni(map_param)
@@ -103,14 +103,14 @@ function DesktopHStandPlayer:showWinGoldsAni(pot_index, from)
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:Reset()
+function UiDesktopHStandPlayer:Reset()
     self:_goldEnPool()
     self:_cancelTask()
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:setChatText(chat_info)
-    local sorting_order = self.GCoChatParent.sortingOrder + self.ViewDesktopH.DesktopHGoldPool:getMaxGoldSortOrder()
+function UiDesktopHStandPlayer:setChatText(chat_info)
+    local sorting_order = self.GCoChatParent.sortingOrder + self.ViewDesktopH.UiDesktopHGoldPool:getMaxGoldSortOrder()
     if (self.ItemChat == nil) then
         local co_chatname = self.ViewDesktopH.UiDesktopHBase:getStandPlayerChatName()
         self.ItemChat = self.ViewDesktopH.UiDesktopChatParent:addChat(co_chatname, self.ViewDesktopH.ComUi, self.GCoChatParent.position)
@@ -121,7 +121,7 @@ function DesktopHStandPlayer:setChatText(chat_info)
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:getStandPlayerCenterPos()
+function UiDesktopHStandPlayer:getStandPlayerCenterPos()
     local pos = self.GBtnStandPlayer.xy
     local x = pos.x
     x = x + self.GBtnStandPlayer.width / 2
@@ -133,7 +133,7 @@ function DesktopHStandPlayer:getStandPlayerCenterPos()
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:_playWinGoldAni(map_param)
+function UiDesktopHStandPlayer:_playWinGoldAni(map_param)
     local pot_index = map_param[1]
     local list_gold = self.MapWinUiGolds[pot_index]
     if (list_gold ~= nil) then
@@ -142,7 +142,7 @@ function DesktopHStandPlayer:_playWinGoldAni(map_param)
         local l = #list_gold
         local delay_t = self.ViewDesktopH:getMoveIntervalTm(l)
         for i, v in pairs(list_gold) do
-            v:initMove(v.GCoGold.xy, to, DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
+            v:initMove(v.GCoGold.xy, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
             delay_tm = delay_tm + delay_t
         end
 
@@ -152,7 +152,7 @@ function DesktopHStandPlayer:_playWinGoldAni(map_param)
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:_cancelTask()
+function UiDesktopHStandPlayer:_cancelTask()
     for key, value in pairs(self.MapFTaskerGetWinGold) do
         if (value ~= nil) then
             value:cancelTask()
@@ -170,16 +170,16 @@ function DesktopHStandPlayer:_cancelTask()
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:_goldEnPool()
+function UiDesktopHStandPlayer:_goldEnPool()
     for key, value in pairs(self.MapWinUiGolds) do
         for i, v in pairs(value) do
-            self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(v)
+            self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(v)
         end
     end
     --[[table.foreach(self.MapWinUiGolds,
 		function(k,v)
 			for i = 0, v.Count - 1 do			
-			    self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(chips)
+			    self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(chips)
 			end
 		end
     )]]
@@ -187,7 +187,7 @@ function DesktopHStandPlayer:_goldEnPool()
 end
 
 ---------------------------------------
-function DesktopHStandPlayer:_onClick()
+function UiDesktopHStandPlayer:_onClick()
     local ev = self.ViewMgr:GetEv("EvDesktopHClickStandPlayerBtn")
     if (ev == nil) then
         ev = EvDesktopHClickStandPlayerBtn:new(nil)

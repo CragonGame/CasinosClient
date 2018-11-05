@@ -16,7 +16,7 @@ function ItemMagicExpIcon:new(o, i_profile, co_magicexp, exp_id)
     o.GLoaderIcon.icon = ViewHelper:FormatePackageImagePath("PlayerProfile", tb_magicexp.ExpIcon)
     co_magicexp.onClick:Add(
             function()
-                o.IUiPlayerProfile:sendMagicExp(o.ExpId)
+                o.IUiPlayerProfile:SendMagicExpression(o.ExpId)
             end
     )
     return o

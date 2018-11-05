@@ -2,10 +2,10 @@
 -- 一个座位
 
 ---------------------------------------
-ItemDesktopHSeat = {}
+UiDesktopHSeat = {}
 
 ---------------------------------------
-function ItemDesktopHSeat:new(o, co_chair, view_mgr)
+function UiDesktopHSeat:new(o, co_chair, view_mgr)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -22,7 +22,7 @@ function ItemDesktopHSeat:new(o, co_chair, view_mgr)
 end
 
 ---------------------------------------
-function ItemDesktopHSeat:setSeatPlayerData(player_info, seat_index, player_changed)
+function UiDesktopHSeat:setSeatPlayerData(player_info, seat_index, player_changed)
     local controller_index = 1
     if (player_info ~= nil) then
         controller_index = 0
@@ -40,11 +40,11 @@ function ItemDesktopHSeat:setSeatPlayerData(player_info, seat_index, player_chan
 end
 
 ---------------------------------------
-function ItemDesktopHSeat:updatePlayerGolds(golds)
+function UiDesktopHSeat:updatePlayerGolds(golds)
     self.GTextPlayerGolds.text = UiChipShowHelper:getGoldShowStr(golds, self.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------
-function ItemDesktopHSeat:updatePlayerIcon(head_icon)
+function UiDesktopHSeat:updatePlayerIcon(head_icon)
     self.UiHeadIcon.GLoaderPlayerIcon.texture = CS.FairyGUI.NTexture(head_icon)
 end

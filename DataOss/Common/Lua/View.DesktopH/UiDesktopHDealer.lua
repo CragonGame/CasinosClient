@@ -1,12 +1,12 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-DesktopHDealer = {
+UiDesktopHDealer = {
     DealPotCardsIntervalTm = 1
 }
 
 ---------------------------------------
-function DesktopHDealer:new(o, fac_name)
+function UiDesktopHDealer:new(o, fac_name)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -32,7 +32,7 @@ function DesktopHDealer:new(o, fac_name)
 end
 
 ---------------------------------------
-function DesktopHDealer:Update(tm)
+function UiDesktopHDealer:Update(tm)
     if (self.DesktopHDealerBase ~= nil) then
         self.DesktopHDealerBase:Update(tm)
     end
@@ -42,7 +42,7 @@ function DesktopHDealer:Update(tm)
 end
 
 ---------------------------------------
-function DesktopHDealer:Destroy()
+function UiDesktopHDealer:Destroy()
     for k, v in pairs(self.ListDesktopHSinglePotCards) do
         v:Destroy()
     end
@@ -60,25 +60,26 @@ function DesktopHDealer:Destroy()
 end
 
 ---------------------------------------
-function DesktopHDealer:createDealerBase(factory_name)
+function UiDesktopHDealer:createDealerBase(factory_name)
     --[[{
-        if (factory_name.Equals(CasinosModule.ZhongFB.ToString()))
-        {
+    if (factory_name.Equals(CasinosModule.ZhongFB.ToString()))
+    {
 #if USE_DESKTOPHZHONGFB
-            self:DesktopHDealerBase = new DesktopHDealerZhongFB(this)
+        self:DesktopHDealerBase = new DesktopHDealerZhongFB(this)
 #endif
-        }--]]
+    }
+    --]]
 end
 
 ---------------------------------------
-function DesktopHDealer:createSinglePotCards(controller_desktoph, view_desktoph, dealer_pos, card_parent, listener, is_bankplayer)
-    local cards = DesktopHCards:new(nil, controller_desktoph, view_desktoph, self, dealer_pos, card_parent, listener, is_bankplayer, self.FacName)
+function UiDesktopHDealer:createSinglePotCards(controller_desktoph, view_desktoph, dealer_pos, card_parent, listener, is_bankplayer)
+    local cards = UiDesktopHCards:new(nil, controller_desktoph, view_desktoph, self, dealer_pos, card_parent, listener, is_bankplayer, self.FacName)
     table.insert(self.ListDesktopHSinglePotCards, cards)
     return cards
 end
 
 ---------------------------------------
-function DesktopHDealer:dealCard(deal_cardcount, move_cardwidth_percent, map_userdata, auto_showcard)
+function UiDesktopHDealer:dealCard(deal_cardcount, move_cardwidth_percent, map_userdata, auto_showcard)
     if (self.DesktopHDealerBase ~= nil) then
         self.DesktopHDealerBase:dealBegin(
                 function()
@@ -90,7 +91,7 @@ function DesktopHDealer:dealCard(deal_cardcount, move_cardwidth_percent, map_use
         local c = table.remove(self.QueDealCards, 1)
         c:dealCardToPosThenTranslation(deal_cardcount, move_cardwidth_percent, auto_showcard)
 
-        local t = CS.Casinos.FTMgr.Instance:startTask(DesktopHDealer.DealPotCardsIntervalTm)
+        local t = CS.Casinos.FTMgr.Instance:startTask(UiDesktopHDealer.DealPotCardsIntervalTm)
         local map_param = {}
         map_param[0] = deal_cardcount
         map_param[1] = move_cardwidth_percent
@@ -103,21 +104,21 @@ function DesktopHDealer:dealCard(deal_cardcount, move_cardwidth_percent, map_use
 end
 
 ---------------------------------------
-function DesktopHDealer:dealCardAtPos(deal_cardcount, move_cardwidth_percent)
+function UiDesktopHDealer:dealCardAtPos(deal_cardcount, move_cardwidth_percent)
     for i, v in pairs(self.ListDesktopHSinglePotCards) do
         v:dealCardAtPos1(deal_cardcount, move_cardwidth_percent)
     end
 end
 
 ---------------------------------------
-function DesktopHDealer:showCard(is_onebyone, showcard_offset_tm)
+function UiDesktopHDealer:showCard(is_onebyone, showcard_offset_tm)
     for k, v in pairs(self.ListDesktopHSinglePotCards) do
         table.insert(self.QueShowCards, v)
     end
     local c = table.remove(self.QueShowCards, 1)
     c:showCard(is_onebyone)
 
-    local showcard_interval_tm = DesktopHDealer.DealPotCardsIntervalTm + showcard_offset_tm
+    local showcard_interval_tm = UiDesktopHDealer.DealPotCardsIntervalTm + showcard_offset_tm
     local t = CS.Casinos.FTMgr.Instance:startTask(showcard_interval_tm)
     local map_param = {}
     map_param[0] = is_onebyone
@@ -129,7 +130,7 @@ function DesktopHDealer:showCard(is_onebyone, showcard_offset_tm)
 end
 
 ---------------------------------------
-function DesktopHDealer:resetCard()
+function UiDesktopHDealer:resetCard()
     for i, v in pairs(self.ListDesktopHSinglePotCards) do
         v:resetCard()
     end
@@ -147,7 +148,7 @@ function DesktopHDealer:resetCard()
 end
 
 ---------------------------------------
-function DesktopHDealer:getCard(is_bankplayer)
+function UiDesktopHDealer:getCard(is_bankplayer)
     local card = nil
     if (is_bankplayer == true) then
         local l = #self.QueItemCardBankPlayer
@@ -167,7 +168,7 @@ function DesktopHDealer:getCard(is_bankplayer)
 end
 
 ---------------------------------------
-function DesktopHDealer:setResetCard(card, is_bankplayer)
+function UiDesktopHDealer:setResetCard(card, is_bankplayer)
     if (is_bankplayer) then
         table.insert(self.QueItemCardBankPlayer, card)
     else
@@ -176,8 +177,8 @@ function DesktopHDealer:setResetCard(card, is_bankplayer)
 end
 
 ---------------------------------------
-function DesktopHDealer:_createCard(is_bankplayer)
-    local hundred_card = DesktopHCard:new(nil, self, is_bankplayer)
+function UiDesktopHDealer:_createCard(is_bankplayer)
+    local hundred_card = UiDesktopHCard:new(nil, self, is_bankplayer)
     if (is_bankplayer) then
         table.insert(self.QueItemCardBankPlayer, hundred_card)
     else
@@ -186,7 +187,7 @@ function DesktopHDealer:_createCard(is_bankplayer)
 end
 
 ---------------------------------------
-function DesktopHDealer:_dealCardToPosThenTranslation(map_param)
+function UiDesktopHDealer:_dealCardToPosThenTranslation(map_param)
     local l = #self.QueDealCards
     if (l > 0) then
         local deal_cardcount = map_param[0]
@@ -194,7 +195,7 @@ function DesktopHDealer:_dealCardToPosThenTranslation(map_param)
         local auto_showcard = map_param[2]
         local c = table.remove(self.QueDealCards, 1)
         c:dealCardToPosThenTranslation(deal_cardcount, move_cardwidth_percent, auto_showcard)
-        local t = CS.Casinos.FTMgr.Instance:startTask(DesktopHDealer.DealPotCardsIntervalTm)
+        local t = CS.Casinos.FTMgr.Instance:startTask(UiDesktopHDealer.DealPotCardsIntervalTm)
         self.FTasker = CS.Casinos.FTMgr.Instance:whenAll(map_param,
                 function(map_param)
                     self:_dealCardToPosThenTranslation(map_param)
@@ -203,7 +204,7 @@ function DesktopHDealer:_dealCardToPosThenTranslation(map_param)
 end
 
 ---------------------------------------
-function DesktopHDealer:_showCard(map_param)
+function UiDesktopHDealer:_showCard(map_param)
     local l = #self.QueShowCards
     if (l > 0) then
         local is_onebyone = map_param[0]

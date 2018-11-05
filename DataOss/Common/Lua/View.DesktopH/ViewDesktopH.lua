@@ -15,14 +15,14 @@ function ViewDesktopH:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
-    o.DesktopHGoldPool = nil
+    o.UiDesktopHGoldPool = nil
     o.UiDesktopChatParent = nil
-    o.DesktopHDealer = nil
+    o.UiDesktopHDealer = nil
     o.ControllerPlayer = nil
-    o.DesktopHBankPlayer = nil
-    o.DesktopHStandPlayer = nil
-    o.DesktopHSelf = nil
-    o.DesktopHRewardPot = nil
+    o.UiDesktopHBanker = nil
+    o.UiDesktopHStandPlayer = nil
+    o.UiDesktopHMe = nil
+    o.UiDesktopHRewardPot = nil
     o.UiDesktopHBase = nil--ViewDesktopHBase
     o.GCoDealer = nil-- GCom，锚点。庄家头像条中下
     o.GCoDesktopH = nil-- GCom，锚点。可能是屏幕左上角或中间
@@ -264,19 +264,19 @@ function ViewDesktopH:OnDestroy()
     end
     self.ViewMgr:UnbindEvListener(self)
     self:_cancelTaskAndDestroyUiResult()
-    self.DesktopHBankPlayer:Destroy()
-    self.DesktopHSelf:Destroy()
-    self.DesktopHStandPlayer:Destroy()
+    self.UiDesktopHBanker:Destroy()
+    self.UiDesktopHMe:Destroy()
+    self.UiDesktopHStandPlayer:Destroy()
     for k, v in pairs(self.MapDesktopHChair) do
         v:Destroy()
     end
     for k, v in pairs(self.MapDesktopHBetPot) do
         v:Destroy()
     end
-    self.DesktopHRewardPot:Destroy()
-    self.DesktopHDealer:resetCard()
-    self.DesktopHDealer:Destroy()
-    self.DesktopHGoldPool:Destroy()
+    self.UiDesktopHRewardPot:Destroy()
+    self.UiDesktopHDealer:resetCard()
+    self.UiDesktopHDealer:Destroy()
+    self.UiDesktopHGoldPool:Destroy()
     if (self.UiDesktopHTongSha ~= nil) then
         self.UiDesktopHTongSha:Reset()
     end
@@ -303,7 +303,7 @@ function ViewDesktopH:OnHandleEv(ev)
             self:_refreshBetOperate()
         elseif (ev.EventName == "EvEntityDesktopHBet") then
             local betpot_index = ev.bet_potindex
-            self.DesktopHSelf:setBetSelfChipsToPot(betpot_index, ev.bet_golds)
+            self.UiDesktopHMe:setBetSelfChipsToPot(betpot_index, ev.bet_golds)
             local bet_pot = self:getDesktopHBetPot(betpot_index)
             bet_pot:setBetSelfChipsToPot(ev.already_betgolds)
         elseif (ev.EventName == "EvEntityDesktopHUpdateBetPotBetInfo") then
@@ -325,7 +325,7 @@ function ViewDesktopH:OnHandleEv(ev)
             if (map_standplayer_betdeltainfo ~= nil) then
                 for i, v in pairs(map_standplayer_betdeltainfo) do
                     if (v > 0) then
-                        self.DesktopHStandPlayer:betGolds(i, v)
+                        self.UiDesktopHStandPlayer:betGolds(i, v)
                     end
                 end
             end
@@ -352,9 +352,9 @@ function ViewDesktopH:OnHandleEv(ev)
                 end
             end
         elseif (ev.EventName == "EvEntityDesktopHChangeBankerPlayer") then
-            self.DesktopHBankPlayer:SetBankerInfo(ev.banker_player)
+            self.UiDesktopHBanker:SetBankerInfo(ev.banker_player)
         elseif (ev.EventName == "EvEntityDesktopHBankerPlayerGoldChange") then
-            self.DesktopHBankPlayer:RefreshBankerInfo(ev.banker_player)
+            self.UiDesktopHBanker:RefreshBankerInfo(ev.banker_player)
         elseif (ev.EventName == "EvEntityDesktopHChangeSeatPlayer") then
             local change_p = {}
             for i, v in pairs(ev.map_seat_player) do
@@ -380,7 +380,7 @@ function ViewDesktopH:OnHandleEv(ev)
                 end
             end
         elseif (ev.EventName == "EvEntityGoldChanged") then
-            self.DesktopHSelf:setGoldChanged(ev.change_reason, ev.delta_gold, ev.user_data)
+            self.UiDesktopHMe:setGoldChanged(ev.change_reason, ev.delta_gold, ev.user_data)
         elseif (ev.EventName == "EvEntityRecvChatFromDesktopH") then
             local chat_info = ev.chat_info
             local use_tanmu = true
@@ -412,9 +412,9 @@ function ViewDesktopH:OnHandleEv(ev)
                 end
 
                 if (self.ControllerDesktopH.BankPlayer.PlayerInfoCommon.PlayerGuid == chat_info.sender_etguid) then
-                    self.DesktopHBankPlayer:setChatText(chat_info)
+                    self.UiDesktopHBanker:setChatText(chat_info)
                 elseif (self.ControllerDesktopH:isSeatPlayer(chat_info.sender_etguid) == false) then
-                    self.DesktopHStandPlayer:setChatText(chat_info)
+                    self.UiDesktopHStandPlayer:setChatText(chat_info)
                 end
             end
         elseif (ev.EventName == "EvEntityDesktopHReadyState") then
@@ -470,8 +470,8 @@ end
 function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winlooseinfo)
     self.FactoryName = desktoph_data.factory_name
     if (self.UiDesktopHBase == nil) then
-        self.DesktopHDealer = DesktopHDealer:new(nil, self.FactoryName)
-        self.DesktopHGoldPool = DesktopHGoldPool:new(nil)
+        self.UiDesktopHDealer = UiDesktopHDealer:new(nil, self.FactoryName)
+        self.UiDesktopHGoldPool = UiDesktopHGoldPool:new(nil)
         self.GCoDealer = self.ComUi:GetChild("CoDealer").asCom
         local co_desktop_parent = self.ComUi:GetChild("ComDesktopParent").asCom
         self.GCoDesktopH = CS.FairyGUI.UIPackage.CreateObject(self:getDesktopBasePackageName(), self.UiDesktopHComDesktopHTitle .. self.FactoryName).asCom
@@ -505,40 +505,40 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         end
         local bank_cardparent = self.GCoDesktopH:GetChild("CoCardParent").asCom
         local bank_chatparent = self.GCoDesktopH:GetChild("CoChatParentBank").asCom
-        self.DesktopHBankPlayer = DesktopHBankPlayer:new(nil, bank_icon, bank_nickname, bank_gold,
+        self.UiDesktopHBanker = UiDesktopHBanker:new(nil, bank_icon, bank_nickname, bank_gold,
                 bank_cardparent, bank_cardtype, ban_cardtypebg_image, bank_chatparent, self)
         local self_icon = self.ComUi:GetChild("CoHeadIconSelf").asCom
         local self_nickname = self.ComUi:GetChild("NickNameSelf").asTextField
         local self_gold = self.ComUi:GetChild("GoldSelf").asTextField
-        self.DesktopHSelf = DesktopHSelf:new(nil, self_icon, self_nickname, self_gold, self)
+        self.UiDesktopHMe = UiDesktopHMe:new(nil, self_icon, self_nickname, self_gold, self)
         local stand_player = self.ComUi:GetChild("BtnStandPlayer").asButton
         local co_stand_chatparent = self.ComUi:GetChild("CoChatParentStandPlayer").asCom
-        self.DesktopHStandPlayer = DesktopHStandPlayer:new(nil, stand_player, co_stand_chatparent, self)
+        self.UiDesktopHStandPlayer = UiDesktopHStandPlayer:new(nil, stand_player, co_stand_chatparent, self)
         local reward_pot = self.GCoDesktopH:GetChild("CoRewardPot").asCom
-        self.DesktopHRewardPot = DesktopHRewardPot:new(nil, reward_pot, self)
+        self.UiDesktopHRewardPot = UiDesktopHRewardPot:new(nil, reward_pot, self)
 
         local glist_betpot = self.GCoDesktopH:GetChild("ListBetPot").asList
         local last_pot_index = self.ControllerDesktopH.DesktopHBase:getMaxBetpotIndex()
 
         for i = 0, last_pot_index do
             local co_betpot = CS.FairyGUI.UIPackage.CreateObject(self:getDesktopBasePackageName(), self.UiDesktopHComDesktopHBetPotTitle .. i .. self.FactoryName).asCom
-            local item_betpot = ItemDesktopHBetPot:new(nil, self, glist_betpot, co_betpot)
+            local item_betpot = UiDesktopHBetPotItem:new(nil, self, glist_betpot, co_betpot)
             glist_betpot:AddChild(item_betpot.GCoBetPot)
             glist_betpot:SetBoundsChangedFlag()
             glist_betpot:EnsureBoundsCorrect()
             item_betpot:initBetPot(i, last_pot_index == i)
-            local bet_pot = DesktopHBetPot:new(nil, i, item_betpot, self)
+            local bet_pot = UiDesktopHBetPot:new(nil, i, item_betpot, self)
             self.MapDesktopHBetPot[i] = bet_pot
         end
 
         for i, v in pairs(self.MapDesktopHBetPot) do
-            v.ItemDesktopHBetPot:UpdateBetPotCardParentPos()
+            v.UiDesktopHBetPotItem:UpdateBetPotCardParentPos()
         end
 
         local seat_count = self.UiDesktopHBase:getSeatCount()
         for i = 0, seat_count - 1 do
             local co_chair = self.GCoDesktopH:GetChild(self.GCoChairTitle .. i).asCom
-            local chair = DesktopHChair:new(nil, self, co_chair, i, i >= seat_count / 2)
+            local chair = UiDesktopHChair:new(nil, self, co_chair, i, i >= seat_count / 2)
             self.MapDesktopHChair[i] = chair
         end
 
@@ -550,16 +550,16 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
                 is_current_operate = true
             end
             local item_reward = glist_betoperate:AddItemFromPool().asCom
-            local bet_operate = ItemDesktopHBetOperate:new(nil, item_reward, self)
+            local bet_operate = UiDesktopHBetOperateItem:new(nil, item_reward, self)
             bet_operate:setOperateInfo(i, v, can_operate, is_current_operate)
             self.MapDesktopHBetOperate[i] = bet_operate
         end
 
-        self.DesktopHDealer:createDealerBase(self.FactoryName)
+        self.UiDesktopHDealer:createDealerBase(self.FactoryName)
     end
 
-    self.DesktopHDealer:resetCard()
-    self.DesktopHGoldPool:Reset()
+    self.UiDesktopHDealer:resetCard()
+    self.UiDesktopHGoldPool:Reset()
     for i, v in pairs(self.MapDesktopHChair) do
         v:Reset()
     end
@@ -567,14 +567,14 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         v:resetBetPot()
     end
 
-    self.DesktopHBankPlayer:Reset()
-    self.DesktopHRewardPot:Reset()
-    self.DesktopHStandPlayer:Reset()
-    self.DesktopHSelf:Reset()
+    self.UiDesktopHBanker:Reset()
+    self.UiDesktopHRewardPot:Reset()
+    self.UiDesktopHStandPlayer:Reset()
+    self.UiDesktopHMe:Reset()
     self.UiDesktopHTongPei:Reset()
     self.UiDesktopHTongSha:Reset()
 
-    self.DesktopHBankPlayer:SetBankerInfo(desktoph_data.banker_player)
+    self.UiDesktopHBanker:SetBankerInfo(desktoph_data.banker_player)
 
     if (desktoph_data.map_seatplayer ~= nil) then
         local t_h_seat = desktoph_data.map_seatplayer
@@ -585,10 +585,10 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
             end
         end
     end
-    self.DesktopHStandPlayer:initStandPlayer()
-    self.DesktopHSelf:initSelfInfo(true)
+    self.UiDesktopHStandPlayer:initStandPlayer()
+    self.UiDesktopHMe:initSelfInfo(true)
 
-    self.DesktopHRewardPot:setRewardGolds1(desktoph_data.reward_pot)
+    self.UiDesktopHRewardPot:setRewardGolds1(desktoph_data.reward_pot)
     self.StateTm = desktoph_data.left_tm
 
     if (self.ControllerDesktopH.DesktopHState == _eDesktopHState.Bet) then
@@ -648,8 +648,8 @@ function ViewDesktopH:_timerUpdate(elapsed_tm)
         self.CheckTimeTime = 0
     end
 
-    if (self.DesktopHDealer ~= nil) then
-        self.DesktopHDealer:Update(elapsed_tm)
+    if (self.UiDesktopHDealer ~= nil) then
+        self.UiDesktopHDealer:Update(elapsed_tm)
     end
 
     if (self.StateTm > 0) then
@@ -666,15 +666,15 @@ function ViewDesktopH:_timerUpdate(elapsed_tm)
         v:Update(elapsed_tm)
     end
 
-    self.DesktopHBankPlayer:Update(elapsed_tm)
-    self.DesktopHStandPlayer:Update(elapsed_tm)
+    self.UiDesktopHBanker:Update(elapsed_tm)
+    self.UiDesktopHStandPlayer:Update(elapsed_tm)
 end
 
 ---------------------------------------
 function ViewDesktopH:getMoveIntervalTm(count)
-    local delay_t = DesktopHUiGold.MAX_CHIP_MOVE_TM / count
-    if (delay_t > DesktopHUiGold.MAX_CHIP_MOVE_INTERVAL_TM) then
-        delay_t = DesktopHUiGold.MAX_CHIP_MOVE_INTERVAL_TM
+    local delay_t = UiDesktopHGold.MAX_CHIP_MOVE_TM / count
+    if (delay_t > UiDesktopHGold.MAX_CHIP_MOVE_INTERVAL_TM) then
+        delay_t = UiDesktopHGold.MAX_CHIP_MOVE_INTERVAL_TM
     end
     return delay_t
 end
@@ -698,12 +698,12 @@ end
 
 ---------------------------------------
 function ViewDesktopH:dealCard(deal_cardcount, move_cardwidth_percent, map_userdata, auto_showcard)
-    self.DesktopHDealer:dealCard(deal_cardcount, move_cardwidth_percent, map_userdata, auto_showcard)
+    self.UiDesktopHDealer:dealCard(deal_cardcount, move_cardwidth_percent, map_userdata, auto_showcard)
 end
 
 ---------------------------------------
 function ViewDesktopH:dealCardAtPos(deal_cardcount, move_cardwidth_percent)
-    self.DesktopHDealer:dealCardAtPos(deal_cardcount, move_cardwidth_percent)
+    self.UiDesktopHDealer:dealCardAtPos(deal_cardcount, move_cardwidth_percent)
 end
 
 ---------------------------------------
@@ -716,7 +716,7 @@ function ViewDesktopH:showCard(is_onebyone, showcard_offset_tm)
     if (showcard_offset_tm ~= nil) then
         show_card_tm = showcard_offset_tm
     end
-    self.DesktopHDealer:showCard(is_one, show_card_tm)
+    self.UiDesktopHDealer:showCard(is_one, show_card_tm)
 end
 
 ---------------------------------------
@@ -757,7 +757,7 @@ end
 
 ---------------------------------------
 function ViewDesktopH:createGold(golds, pos)
-    local ui_gold = self.DesktopHGoldPool:getGoldH()
+    local ui_gold = self.UiDesktopHGoldPool:getGoldH()
     ui_gold:setPostion(pos)
     return ui_gold
 end
@@ -843,8 +843,8 @@ function ViewDesktopH:_betState(map_betrepeatinfo, left_tm, max_total_bet_gold)
         gold_sum = gold_sum + v
     end
     self.GBtnRepeat.enabled = gold_sum > 0
-    self.DesktopHSelf:betState()
-    self.DesktopHStandPlayer:betState()
+    self.UiDesktopHMe:betState()
+    self.UiDesktopHStandPlayer:betState()
     self.UiDesktopHBase:updateGameState(_eDesktopHState.Bet, left_tm, max_total_bet_gold, nil, false)
     self.UiDesktopHBase:setPlayerCurrentBetInfo(0)
 end
@@ -855,9 +855,9 @@ function ViewDesktopH:_gameEnd(game_result, map_my_winlooseinfo, is_screenshot)
     self:_cancelTaskAndDestroyUiResult()
     self.CanBet = false
     self.StateTm = game_result.left_tm
-    self.DesktopHBankPlayer:setCardsBank(game_result.bankerpot_info.list_card)
+    self.UiDesktopHBanker:SetBankerCards(game_result.bankerpot_info.list_card)
     local t_map_pumping = game_result.rewardpot_info.map_pumping_gold
-    self.DesktopHRewardPot:setRewardGolds(t_map_pumping, game_result.rewardpot_info.gold_after)
+    self.UiDesktopHRewardPot:setRewardGolds(t_map_pumping, game_result.rewardpot_info.gold_after)
 
     local map_win_rewardpot_gold = game_result.rewardpot_info.map_win_rewardpot_gold
     self.IsTongSha = true
@@ -899,7 +899,7 @@ function ViewDesktopH:_gameEnd(game_result, map_my_winlooseinfo, is_screenshot)
         for i, v in pairs(map_my_winlooseinfo) do
             if (v == nil or v.bet_gold == 0) then
             else
-                self.DesktopHSelf:setPlayerSelfResultInfo(i, v)
+                self.UiDesktopHMe:setPlayerSelfResultInfo(i, v)
             end
         end
     end
@@ -907,7 +907,7 @@ function ViewDesktopH:_gameEnd(game_result, map_my_winlooseinfo, is_screenshot)
     if (game_result.map_standplayer_gold ~= nil) then
         local t_map_standplayer_gold = game_result.map_standplayer_gold
         for i, v in pairs(t_map_standplayer_gold) do
-            self.DesktopHStandPlayer:setOtherStandPlayerResultInfo(i, v)
+            self.UiDesktopHStandPlayer:setOtherStandPlayerResultInfo(i, v)
         end
     end
 
@@ -916,7 +916,7 @@ function ViewDesktopH:_gameEnd(game_result, map_my_winlooseinfo, is_screenshot)
     if (map_win_rewardpot_gold ~= nil and #map_win_rewardpot_gold > 0) then
         bank_win_rewardpot_gold = map_win_rewardpot_gold[255]
     end
-    self.DesktopHBankPlayer:winRewardPotGolds(bank_win_rewardpot_gold)
+    self.UiDesktopHBanker:winRewardPotGolds(bank_win_rewardpot_gold)
 
     if (self.ControllerDesktopH.IsBankPlayer) then
         local player_winlooseinfo = BDesktopHNotifyGameEndBetPotPlayerWinLooseInfo:new(nil)
@@ -926,7 +926,7 @@ function ViewDesktopH:_gameEnd(game_result, map_my_winlooseinfo, is_screenshot)
         player_winlooseinfo.player_guid = self.ControllerPlayer.Guid
         player_winlooseinfo.winloose_gold = math.abs(r)
         player_winlooseinfo.win_rewardpot_gold = bankplayer_winlooseinfo.win_rewardpot_gold
-        self.DesktopHSelf:setPlayerSelfResultInfo(255, player_winlooseinfo)
+        self.UiDesktopHMe:setPlayerSelfResultInfo(255, player_winlooseinfo)
     end
 
     self.UiDesktopHBase:updateGameState(_eDesktopHState.GameEnd, game_result.left_tm, 0, nil, is_screenshot)
@@ -937,8 +937,8 @@ function ViewDesktopH:_gameRest(left_tm)
     DesktopHGameResult = nil
     self:_cancelTaskAndDestroyUiResult()
     self.CanBet = false
-    self.DesktopHDealer:resetCard()
-    self.DesktopHGoldPool:Reset()
+    self.UiDesktopHDealer:resetCard()
+    self.UiDesktopHGoldPool:Reset()
     self.StateTm = left_tm
     for i, v in pairs(self.MapDesktopHBetPot) do
         v:resetBetPot()
@@ -947,10 +947,10 @@ function ViewDesktopH:_gameRest(left_tm)
         v:Reset()
     end
 
-    self.DesktopHStandPlayer:Reset()
-    self.DesktopHSelf:Reset()
-    self.DesktopHBankPlayer:Reset()
-    self.DesktopHRewardPot:Reset()
+    self.UiDesktopHStandPlayer:Reset()
+    self.UiDesktopHMe:Reset()
+    self.UiDesktopHBanker:Reset()
+    self.UiDesktopHRewardPot:Reset()
     self.UiDesktopHTongPei:Reset()
     self.UiDesktopHTongSha:Reset()
     self.UiDesktopHBase:updateGameState(_eDesktopHState.Rest, left_tm, 0, nil, false)
@@ -981,7 +981,7 @@ function ViewDesktopH:_showGameEndGoldAni(betpot_show_win_ani_tm, give_winplayer
         v:showGameEndGoldAni(betpot_show_win_ani_tm, give_winplayer_gold_ani_tm)
     end
 
-    self.DesktopHBankPlayer:showGameEndGoldAni()
+    self.UiDesktopHBanker:showGameEndGoldAni()
 
     local time = 4.2
     if (self.IsTongSha) then
@@ -1000,7 +1000,7 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_showGameResult(map_param)
-    self.DesktopHSelf:showGameResult()
+    self.UiDesktopHMe:showGameResult()
     self.FTaskerShowGameResult = nil
 end
 
@@ -1026,20 +1026,20 @@ function ViewDesktopH:_playerBuyItem(sender_guid, map_items)
                     if (seat_target ~= nil) then
                         seat_target:sendGift(item)
                     else
-                        if (self.DesktopHBankPlayer ~= nil and
-                                self.DesktopHBankPlayer.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid == i) then
-                            self.DesktopHBankPlayer:sendGift(item)
+                        if (self.UiDesktopHBanker ~= nil and
+                                self.UiDesktopHBanker.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid == i) then
+                            self.UiDesktopHBanker:sendGift(item)
                         end
                     end
                 end
             end
         elseif (item.UnitLink.UnitType == "MagicExpression") then
-            if (i == self.DesktopHBankPlayer.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid) then
-                self.DesktopHBankPlayer:sendMagicExp(sender_guid, item.TbDataItem.Id)
+            if (i == self.UiDesktopHBanker.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid) then
+                self.UiDesktopHBanker:SendMagicExpression(sender_guid, item.TbDataItem.Id)
             else
                 local chair = self:getDesktopHChairByGuid(i)
                 if (chair ~= nil) then
-                    chair:sendMagicExp(sender_guid, item.TbDataItem.Id)
+                    chair:SendMagicExpression(sender_guid, item.TbDataItem.Id)
                 end
             end
         end

@@ -2,10 +2,10 @@
 -- 预设下注筹码按钮的一个按钮；被ViewDesktopH持有
 
 ---------------------------------------
-ItemDesktopHBetOperate = {}
+UiDesktopHBetOperateItem = {}
 
 ---------------------------------------
-function ItemDesktopHBetOperate:new(o, bet_operat, ui_desktoph)
+function UiDesktopHBetOperateItem:new(o, bet_operat, ui_desktoph)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -26,7 +26,7 @@ function ItemDesktopHBetOperate:new(o, bet_operat, ui_desktoph)
 end
 
 ---------------------------------------
-function ItemDesktopHBetOperate:setOperateInfo(tb_operate_id, operate_value, can_operate, is_currentoperate)
+function UiDesktopHBetOperateItem:setOperateInfo(tb_operate_id, operate_value, can_operate, is_currentoperate)
     self.mTbOperateId = tb_operate_id
     self.mCanOperate = can_operate
     self.mIsCurrentOperate = is_currentoperate
@@ -47,19 +47,19 @@ function ItemDesktopHBetOperate:setOperateInfo(tb_operate_id, operate_value, can
 end
 
 ---------------------------------------
-function ItemDesktopHBetOperate:setIsCurrentOperate(is_currentoperate)
+function UiDesktopHBetOperateItem:setIsCurrentOperate(is_currentoperate)
     self.mIsCurrentOperate = is_currentoperate
     self:_setIsCurrentOperate(self.mIsCurrentOperate)
 end
 
 ---------------------------------------
-function ItemDesktopHBetOperate:setcanOperate(can_operate)
+function UiDesktopHBetOperateItem:setcanOperate(can_operate)
     self.mCanOperate = can_operate
     self:_setCanOperate(self.mCanOperate)
 end
 
 ---------------------------------------
-function ItemDesktopHBetOperate:_setCanOperate(can_operate)
+function UiDesktopHBetOperateItem:_setCanOperate(can_operate)
     if (can_operate) then
         self.GLoaderOperateBg.alpha = 1
         self.GComBetOperate.enabled = true
@@ -70,14 +70,14 @@ function ItemDesktopHBetOperate:_setCanOperate(can_operate)
 end
 
 ---------------------------------------
-function ItemDesktopHBetOperate:_setIsCurrentOperate(is_currentoperate)
+function UiDesktopHBetOperateItem:_setIsCurrentOperate(is_currentoperate)
     if (self.GImageOperateCurrent ~= nil) then
         self.GImageOperateCurrent.visible = is_currentoperate
     end
 end
 
 ---------------------------------------
-function ItemDesktopHBetOperate:_onClick()
+function UiDesktopHBetOperateItem:_onClick()
     local ev = self.ViewMgr:GetEv("EvViewDesktopHClickBetOperateType")
     if (ev == nil) then
         ev = EvDesktopHClickBetOperateType:new(nil)

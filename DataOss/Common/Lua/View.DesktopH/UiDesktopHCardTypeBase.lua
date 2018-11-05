@@ -1,12 +1,12 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-DesktopHCardTypeBase = {
+UiDesktopHCardTypeBase = {
     ListCard = nil
 }
 
 ---------------------------------------
-function DesktopHCardTypeBase:new(o, com)
+function UiDesktopHCardTypeBase:new(o, com)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -14,20 +14,19 @@ function DesktopHCardTypeBase:new(o, com)
 end
 
 ---------------------------------------
-function DesktopHCardTypeBase:SetCard(list_card)
+function UiDesktopHCardTypeBase:SetCard(list_card)
 end
 
 ---------------------------------------
-function DesktopHCardTypeBase:GetCardTypeStr()
+function UiDesktopHCardTypeBase:GetCardTypeStr()
 end
 
 ---------------------------------------
-function DesktopHCardTypeBase:GetCardTypeByte()
+function UiDesktopHCardTypeBase:GetCardTypeByte()
 end
 
 ---------------------------------------
-DesktopHCardTypeBaseFac = {
-}
+DesktopHCardTypeBaseFac = {}
 
 ---------------------------------------
 function DesktopHCardTypeBaseFac:new(o, com)

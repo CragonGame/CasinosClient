@@ -2,7 +2,7 @@
 -- 一枚筹码，有多少筹码就有多少个该类的实例
 
 ---------------------------------------
-DesktopHUiGold = {
+UiDesktopHGold = {
     MOVE_CHIP_TM = 0.5,
     MOVE_SOUND = "jettonmoney",
     MAX_CHIP_MOVE_TM = 1,
@@ -10,7 +10,7 @@ DesktopHUiGold = {
 }
 
 ---------------------------------------
-function DesktopHUiGold:new(o)
+function UiDesktopHGold:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -29,7 +29,7 @@ function DesktopHUiGold:new(o)
 end
 
 ---------------------------------------
-function DesktopHUiGold:OnCreate()
+function UiDesktopHGold:OnCreate()
     local view_mgr = ViewMgr:new(nil)
     self.ViewDesktopH = view_mgr:GetView("DesktopH")
     self.GCoGold = CS.FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(), "Gold" .. self.ViewDesktopH.FactoryName)
@@ -41,13 +41,13 @@ function DesktopHUiGold:OnCreate()
 end
 
 ---------------------------------------
-function DesktopHUiGold:setGoldSortOrderOffset(offset)
+function UiDesktopHGold:setGoldSortOrderOffset(offset)
     self.SortOrderOffset = offset
     self.GCoGold.sortingOrder = self.ParentSortOrder + offset
 end
 
 ---------------------------------------
-function DesktopHUiGold:initMove(from, to, move_time,
+function UiDesktopHGold:initMove(from, to, move_time,
                                  move_sound, move_end, move_start,
                                  auto_end_enpool, delay_tm, fix_pos)
     self.MoveEndCallback = move_end
@@ -79,23 +79,23 @@ function DesktopHUiGold:initMove(from, to, move_time,
 end
 
 ---------------------------------------
-function DesktopHUiGold:setPostion(pos)
+function UiDesktopHGold:setPostion(pos)
     local p_x = pos.x - self.GCoGold.width / 2
     local p_y = pos.y - self.GCoGold.height / 2
     self.GCoGold:SetXY(p_x, p_y)
 end
 
 ---------------------------------------
-function DesktopHUiGold:Reset()
+function UiDesktopHGold:Reset()
     self:_reset()
     self.MoveEndCallback = nil
     self.MoveStartCallback = nil
 end
 
 ---------------------------------------
-function DesktopHUiGold:needDelayEnPool(after_tm)
+function UiDesktopHGold:needDelayEnPool(after_tm)
     --self:_reset1(map_param)
-    self.ViewDesktopH.DesktopHGoldPool:goldHNeedDelayEnPool(self)
+    self.ViewDesktopH.UiDesktopHGoldPool:goldHNeedDelayEnPool(self)
     --self.FTaskReset:startAutoTask(after_tm)
     --self.FTaskerReset:whenAll(nil,
     --        function(map_param)
@@ -106,7 +106,7 @@ function DesktopHUiGold:needDelayEnPool(after_tm)
 end
 
 ---------------------------------------
-function DesktopHUiGold:_moveStart()
+function UiDesktopHGold:_moveStart()
     if (self.MoveStartCallback ~= nil) then
         self.MoveStartCallback()
     end
@@ -117,24 +117,24 @@ function DesktopHUiGold:_moveStart()
 end
 
 ---------------------------------------
-function DesktopHUiGold:_moveEnd()
+function UiDesktopHGold:_moveEnd()
     if (self.MoveEndCallback ~= nil) then
         self.MoveEndCallback()
     end
     if (self.AutoEndEnPool) then
-        self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(self)
+        self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(self)
     end
 end
 
 ---------------------------------------
-function DesktopHUiGold:_reset1(map_param)
+function UiDesktopHGold:_reset1(map_param)
     if (self.GCoGold ~= nil and self.GCoGold.displayObject.gameObject ~= nil) then
-        self.ViewDesktopH.DesktopHGoldPool:delayGoldHEnPool(self)
+        self.ViewDesktopH.UiDesktopHGoldPool:delayGoldHEnPool(self)
     end
 end
 
 ---------------------------------------
-function DesktopHUiGold:_reset()
+function UiDesktopHGold:_reset()
     --if (self.FTaskerReset ~= nil) then
     --    self.FTaskerReset:cancelTask()
     --end

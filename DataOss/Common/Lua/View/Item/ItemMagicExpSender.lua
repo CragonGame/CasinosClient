@@ -18,7 +18,7 @@ function ItemMagicExpSender:new(o, view_mgr)
 end
 
 ---------------------------------------
-function ItemMagicExpSender:sendMagicExp(from_pos, to_pos, exp_tbid)
+function ItemMagicExpSender:SendMagicExpression(from_pos, to_pos, exp_tbid)
     local tb_magicexp = CS.Casinos.CasinosContext.Instance.TbDataMgrLua:GetData("UnitMagicExpression", exp_tbid)
     if (tb_magicexp == nil) then
         return

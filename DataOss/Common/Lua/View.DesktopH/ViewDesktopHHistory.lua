@@ -60,7 +60,7 @@ function ViewDesktopHHistory:setHistory(map_history)
     self.GListHistory:RemoveChildrenToPool()
     for i = 0, #map_history do
         local co_itemhistory = self.GListHistory:AddItemFromPool().asCom
-        ItemDesktopHHistroy:new(nil, co_itemhistory, self.ViewDesktopH, i, map_history[i])
+        UiDesktopHHistroy:new(nil, co_itemhistory, self.ViewDesktopH, i, map_history[i])
     end
 end
 

@@ -2,10 +2,10 @@
 -- 管理本人信息，左下角头像；如果本人是有座玩家或庄家，同时还刷新本人座位或庄家头像相关信息
 
 ---------------------------------------
-DesktopHSelf = {}
+UiDesktopHMe = {}
 
 ---------------------------------------
-function DesktopHSelf:new(o, co_icon, self_name, self_chips, view_desktoph)
+function UiDesktopHMe:new(o, co_icon, self_name, self_chips, view_desktoph)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -26,10 +26,10 @@ function DesktopHSelf:new(o, co_icon, self_name, self_chips, view_desktoph)
 end
 
 ---------------------------------------
-function DesktopHSelf:initSelfInfo(is_init)
+function UiDesktopHMe:initSelfInfo(is_init)
     for key, value in pairs(self.MapWinUiGolds) do
         for key1, value1 in pairs(value) do
-            self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(value1)
+            self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(value1)
         end
     end
 
@@ -46,10 +46,10 @@ function DesktopHSelf:initSelfInfo(is_init)
 end
 
 ---------------------------------------
-function DesktopHSelf:Destroy()
+function UiDesktopHMe:Destroy()
     for key, value in pairs(self.MapWinUiGolds) do
         for key1, value1 in pairs(value) do
-            self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(value1)
+            self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(value1)
         end
     end
     self.MapWinUiGolds = {}
@@ -57,17 +57,17 @@ function DesktopHSelf:Destroy()
 end
 
 ---------------------------------------
-function DesktopHSelf:setGoldChanged(change_reason, delta_gold, user_data)
+function UiDesktopHMe:setGoldChanged(change_reason, delta_gold, user_data)
     self.GoldController:goldChange(change_reason, delta_gold, user_data)
 end
 
 ---------------------------------------
-function DesktopHSelf:addDeltaGold(change_reason)
+function UiDesktopHMe:addDeltaGold(change_reason)
     self.GoldController:addDeltaGold(change_reason)
 end
 
 ---------------------------------------
-function DesktopHSelf:setBetSelfChipsToPot(bet_potindex, betchips)
+function UiDesktopHMe:setBetSelfChipsToPot(bet_potindex, betchips)
     local bet_pot = self.ViewDesktopH:getDesktopHBetPot(bet_potindex)
 
     local operate_golds = -1
@@ -102,17 +102,17 @@ function DesktopHSelf:setBetSelfChipsToPot(bet_potindex, betchips)
 end
 
 ---------------------------------------
-function DesktopHSelf:setPlayerSelfResultInfo(betpot_index, self_result_info)
+function UiDesktopHMe:setPlayerSelfResultInfo(betpot_index, self_result_info)
     self.MapWinLooseInfo[betpot_index] = self_result_info
 end
 
 ---------------------------------------
-function DesktopHSelf:betState()
+function UiDesktopHMe:betState()
     self.MapWinLooseInfo = {}
 end
 
 ---------------------------------------
-function DesktopHSelf:showGameResult()
+function UiDesktopHMe:showGameResult()
     if (self.ViewDesktopH.DesktopHGameResult == nil) then
         return
     end
@@ -129,13 +129,13 @@ function DesktopHSelf:showGameResult()
 
     local ui_result = self.ViewMgr:CreateView("DesktopHResult")
     local self_betgolds = self.ViewDesktopH.ControllerDesktopH:getSelfTotalBetGolds()
-    ui_result:SetGameEndResult(self.ViewDesktopH.DesktopHBankPlayer.BankPlayerDataDesktopH.PlayerInfoCommon.NickName,
+    ui_result:SetGameEndResult(self.ViewDesktopH.UiDesktopHBanker.BankPlayerDataDesktopH.PlayerInfoCommon.NickName,
             win_golds, self_betgolds, self.ViewDesktopH.DesktopHGameResult.map_betpot_info, self.ViewDesktopH.DesktopHGameResult.bankerpot_info,
             self.ViewDesktopH.DesktopHGameResult.ListGameEndWinPlayer)
 end
 
 ---------------------------------------
-function DesktopHSelf:showWinGoldsAni(pot_index, from)
+function UiDesktopHMe:showWinGoldsAni(pot_index, from)
     local winloose_info = self.MapWinLooseInfo[pot_index]
     if (winloose_info ~= nil) then
         if (winloose_info.winloose_gold <= 0) then
@@ -151,14 +151,14 @@ function DesktopHSelf:showWinGoldsAni(pot_index, from)
         local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_golds)
         for key, value in pairs(list_golds) do
             local to = bet_pot:getRandomChipPos()
-            value:initMove(from, to, DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
+            value:initMove(from, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
             delay_tm = delay_tm + delay_t
         end
 
         local map_param = CS.Casinos.LuaHelper.GetNewByteObjMap()
         map_param:Add(0, winloose_info.winloose_gold)
         map_param:Add(1, pot_index)
-        local t = CS.Casinos.FTMgr.Instance:startTask(1.2) -- DesktopHBetPot.GivePlayerAniTm - DesktopHBetPot.WinShowAniTm
+        local t = CS.Casinos.FTMgr.Instance:startTask(1.2) -- UiDesktopHBetPot.GivePlayerAniTm - UiDesktopHBetPot.WinShowAniTm
         local tasker = CS.Casinos.FTMgr.Instance:whenAll(map_param,
                 function(map_param)
                     self:_playWinGoldAni(map_param)
@@ -168,16 +168,16 @@ function DesktopHSelf:showWinGoldsAni(pot_index, from)
 end
 
 ---------------------------------------
-function DesktopHSelf:Reset()
+function UiDesktopHMe:Reset()
     self.MapWinLooseInfo = {}
     for key, value in pairs(self.MapWinUiGolds) do
         for key1, value1 in pairs(value) do
-            self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(value1)
+            self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(value1)
         end
     end
     --[[foreach (local i in self.MapWinUiGolds)            
         foreach (local gold in i.Value)                
-            self.ViewDesktopH.DesktopHGoldPool:goldHEnPool(gold)
+            self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(gold)
         end
     end]]
 
@@ -187,7 +187,7 @@ function DesktopHSelf:Reset()
 end
 
 ---------------------------------------
-function DesktopHSelf:_cancelTask()
+function UiDesktopHMe:_cancelTask()
     for key, value in pairs(self.MapFTaskerGetWinGold) do
         if (value ~= nil) then
             value:cancelTask()
@@ -215,7 +215,7 @@ function DesktopHSelf:_cancelTask()
 end
 
 ---------------------------------------
-function DesktopHSelf:_getSelfIconCenterPos()
+function UiDesktopHMe:_getSelfIconCenterPos()
     local pos = self.UiHeadIcon.GCoHeadIcon.xy
     local x = pos.x
     x = x + self.UiHeadIcon.GCoHeadIcon.width * self.UiHeadIcon.GCoHeadIcon.scaleX / 2
@@ -227,7 +227,7 @@ function DesktopHSelf:_getSelfIconCenterPos()
 end
 
 ---------------------------------------
-function DesktopHSelf:_playWinGoldAni(map_param)
+function UiDesktopHMe:_playWinGoldAni(map_param)
     local pot_index = map_param[1]
     local list_gold = self.MapWinUiGolds[pot_index]
     if (list_gold ~= nil) then
@@ -244,13 +244,13 @@ function DesktopHSelf:_playWinGoldAni(map_param)
         local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_gold)
         for i, v in pairs(list_gold) do
             v:initMove(v.GCoGold.xy, to,
-                    DesktopHUiGold.MOVE_CHIP_TM, DesktopHUiGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
+                    UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
             delay_tm = delay_tm + delay_t
         end
 
         self.MapWinUiGolds[pot_index] = nil
 
-        local t = CS.Casinos.FTMgr.Instance:startTask(DesktopHUiGold.MAX_CHIP_MOVE_TM)
+        local t = CS.Casinos.FTMgr.Instance:startTask(UiDesktopHGold.MAX_CHIP_MOVE_TM)
         local tasker = CS.Casinos.FTMgr.Instance:whenAll(map_param,
                 function(map_param)
                     self:_setGold(map_param)
@@ -260,11 +260,11 @@ function DesktopHSelf:_playWinGoldAni(map_param)
 end
 
 ---------------------------------------
-function DesktopHSelf:_setGold(map_param)
+function UiDesktopHMe:_setGold(map_param)
     self.GoldController:addDeltaGold(GoldAccChangeReason.DesktopHWin)
 end
 
 ---------------------------------------
-function DesktopHSelf:_setGold1(gold)
+function UiDesktopHMe:_setGold1(gold)
     self.SelfGolds.text = UiChipShowHelper:getGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase, true, 2)
 end

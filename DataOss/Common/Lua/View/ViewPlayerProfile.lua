@@ -159,7 +159,7 @@ function ViewPlayerProfile:setPlayerGuid(player_profile_type, guid, getplayerinf
 end
 
 ---------------------------------------
-function ViewPlayerProfile:sendMagicExp(exp_tbid)
+function ViewPlayerProfile:SendMagicExpression(exp_tbid)
     if (self.PlayerInfo.PlayerInfoCommon.PlayerGuid == self.ControllerPlayer.Guid) then
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("NotGiveSelfMagic"))
         return

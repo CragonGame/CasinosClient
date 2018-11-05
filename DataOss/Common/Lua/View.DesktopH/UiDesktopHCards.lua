@@ -1,14 +1,14 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-DesktopHCards = {
+UiDesktopHCards = {
     DEAL_CARD_TM = 0.1,
     SHOW_CARD_TM = 5,
     ShowOneCardIntervalTm = 1
 }
 
 ---------------------------------------
-function DesktopHCards:new(o, controller_desktoph, view_desktoph, dealer, dealer_pos, card_parent, listener, is_bankplayer, fac_name)
+function UiDesktopHCards:new(o, controller_desktoph, view_desktoph, dealer, dealer_pos, card_parent, listener, is_bankplayer, fac_name)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -18,7 +18,7 @@ function DesktopHCards:new(o, controller_desktoph, view_desktoph, dealer, dealer
     o.CanDealCard = false
     o.CanShowCard = false
     o.AutoShowCard = false
-    o.DesktopHundredDealer = dealer
+    o.UiDesktopHDealer = dealer
     o.DesktopHShowCardsListener = listener
     o.ListDesktopHCard = {}
     o.QueDealDesktopHCard = {}
@@ -31,13 +31,13 @@ function DesktopHCards:new(o, controller_desktoph, view_desktoph, dealer, dealer
     o.ShowOneCardInterverTime = 0
     o.MoveCardWidthPercent = 0
     local fac = o.ViewDesktopH.ControllerDesktopH:GetDesktopHCardTypeBaseFactory(fac_name)
-    o.DesktopHCardTypeBase = fac:CreateDesktopHCardType()
+    o.UiDesktopHCardTypeBase = fac:CreateDesktopHCardType()
     o.ToPos = nil
     return o
 end
 
 ---------------------------------------
-function DesktopHCards:Destroy()
+function UiDesktopHCards:Destroy()
     if (self.ListCard ~= nil) then
         self.ListCard = {}
         self.ListCard = nil
@@ -51,10 +51,10 @@ function DesktopHCards:Destroy()
 end
 
 ---------------------------------------
-function DesktopHCards:Update(elapsed_tm)
+function UiDesktopHCards:Update(elapsed_tm)
     if (self.CanDealCard) then
         self.DealCardTm = self.DealCardTm + elapsed_tm
-        if (self.DealCardTm >= DesktopHCards.DEAL_CARD_TM) then
+        if (self.DealCardTm >= UiDesktopHCards.DEAL_CARD_TM) then
             self.DealCardTm = 0
             local l = #self.QueDealDesktopHCard
             if (l > 0) then
@@ -71,7 +71,7 @@ function DesktopHCards:Update(elapsed_tm)
 
     if (self.CanShowCard) then
         self.ShowCardTm = self.ShowCardTm + elapsed_tm
-        if (self.ShowCardTm >= DesktopHCards.SHOW_CARD_TM) then
+        if (self.ShowCardTm >= UiDesktopHCards.SHOW_CARD_TM) then
             self.CanShowCard = false
             self.ShowCardTm = 0
             self:showCard()
@@ -81,7 +81,7 @@ function DesktopHCards:Update(elapsed_tm)
     local l = #self.QueShowCard
     if (l > 0) then
         self.ShowOneCardInterverTime = self.ShowOneCardInterverTime + elapsed_tm
-        if (self.ShowOneCardInterverTime >= DesktopHCards.ShowOneCardIntervalTm) then
+        if (self.ShowOneCardInterverTime >= UiDesktopHCards.ShowOneCardIntervalTm) then
             self.ShowOneCardInterverTime = 0
             local card = table.remove(self.QueShowCard, 1)
             card:showCard(
@@ -97,12 +97,12 @@ function DesktopHCards:Update(elapsed_tm)
 end
 
 ---------------------------------------
-function DesktopHCards:updateToPos(pos)
+function UiDesktopHCards:updateToPos(pos)
     self.ToPos = pos
 end
 
 ---------------------------------------
-function DesktopHCards:setCards(list_card)
+function UiDesktopHCards:setCards(list_card)
     self.ListCard = list_card
     local list_c = {}
     for key, value in pairs(self.ListCard) do
@@ -110,12 +110,12 @@ function DesktopHCards:setCards(list_card)
         table.insert(list_c, c)
     end
 
-    self.DesktopHCardTypeBase:SetCard(list_c)
+    self.UiDesktopHCardTypeBase:SetCard(list_c)
 
     for i, v in pairs(self.ListCard) do
         local card = nil
         if (self.AutoShowCard == true) then
-            card = self.DesktopHundredDealer:getCard(self.IsBankPlayer)
+            card = self.UiDesktopHDealer:getCard(self.IsBankPlayer)
             card:setParent(self.GCoCardParent)
             table.insert(self.ListDesktopHCard, card)
             card:setCardData(v)
@@ -131,25 +131,25 @@ function DesktopHCards:setCards(list_card)
 end
 
 ---------------------------------------
-function DesktopHCards:getCardTypeStr()
-    local l = self.DesktopHCardTypeBase:GetCardTypeStr()
+function UiDesktopHCards:getCardTypeStr()
+    local l = self.UiDesktopHCardTypeBase:GetCardTypeStr()
     return l
 end
 
 ---------------------------------------
---function DesktopHCards:getCardTypeByte()
---    local l = self.DesktopHCardTypeBase:GetCardTypeByte()
+--function UiDesktopHCards:getCardTypeByte()
+--    local l = self.UiDesktopHCardTypeBase:GetCardTypeByte()
 --    return l
 --end
 
 ---------------------------------------
-function DesktopHCards:dealCardToPosThenTranslation(deal_cardcount, move_cardwidth_percent, auto_showcard)
+function UiDesktopHCards:dealCardToPosThenTranslation(deal_cardcount, move_cardwidth_percent, auto_showcard)
     self.AutoShowCard = auto_showcard
     self.MoveCardWidthPercent = move_cardwidth_percent
     for i = 1, deal_cardcount do
         local card = nil
         if (self.AutoShowCard == false) then
-            card = self.DesktopHundredDealer:getCard(self.IsBankPlayer)
+            card = self.UiDesktopHDealer:getCard(self.IsBankPlayer)
             card:setParent(self.GCoCardParent)
             self.ListDesktopHCard[i] = card
         else
@@ -169,12 +169,12 @@ function DesktopHCards:dealCardToPosThenTranslation(deal_cardcount, move_cardwid
 end
 
 ---------------------------------------
-function DesktopHCards:dealCardAtPos1(deal_cardcount, move_cardwidth_percent)
+function UiDesktopHCards:dealCardAtPos1(deal_cardcount, move_cardwidth_percent)
     self.AutoShowCard = false
     self.MoveCardWidthPercent = move_cardwidth_percent
 
     for i = 0, deal_cardcount - 1 do
-        local card = self.DesktopHundredDealer:getCard(self.IsBankPlayer)
+        local card = self.UiDesktopHDealer:getCard(self.IsBankPlayer)
         card:setParent(self.GCoCardParent)
         table.insert(self.ListDesktopHCard, card)
         card:setDealCardData(self.DealerPos, i)
@@ -186,7 +186,7 @@ function DesktopHCards:dealCardAtPos1(deal_cardcount, move_cardwidth_percent)
 end
 
 ---------------------------------------
-function DesktopHCards:showCard(is_onebyone)
+function UiDesktopHCards:showCard(is_onebyone)
     for k, v in pairs(self.ListDesktopHCard) do
         if (is_onebyone) then
             table.insert(self.QueShowCard, v)
@@ -213,7 +213,7 @@ function DesktopHCards:showCard(is_onebyone)
 end
 
 ---------------------------------------
-function DesktopHCards:resetCard()
+function UiDesktopHCards:resetCard()
     for k, v in pairs(self.ListDesktopHCard) do
         v:resetCard()
     end

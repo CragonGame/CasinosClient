@@ -508,9 +508,9 @@ function DesktopPlayerTexas:setGift(player_gift, is_sendgift)
 end
 
 ---------------------------------------
-function DesktopPlayerTexas:sendMagicExp(exp)
+function DesktopPlayerTexas:SendMagicExpression(exp)
     if (self.UiDesktopPlayerInfo ~= nil) then
-        self.UiDesktopPlayerInfo:sendMagicExp(exp)
+        self.UiDesktopPlayerInfo:SendMagicExpression(exp)
     end
 end
 

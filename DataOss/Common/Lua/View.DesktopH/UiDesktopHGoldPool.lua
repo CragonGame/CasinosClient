@@ -2,10 +2,10 @@
 -- 管理DesktopHUiGold
 
 ---------------------------------------
-DesktopHGoldPool = {}
+UiDesktopHGoldPool = {}
 
 ---------------------------------------
-function DesktopHGoldPool:new(o)
+function UiDesktopHGoldPool:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -14,7 +14,7 @@ function DesktopHGoldPool:new(o)
     o.ListDelayEnqueGold = {}
     local InitGoldCount = 450
     for i = 0, InitGoldCount - 1 do
-        local gold_h = DesktopHUiGold:new(nil)
+        local gold_h = UiDesktopHGold:new(nil)
         gold_h:OnCreate()
         table.insert(o.QueUiGold, gold_h)
         local l = #o.QueUiGold
@@ -27,13 +27,13 @@ function DesktopHGoldPool:new(o)
 end
 
 ---------------------------------------
-function DesktopHGoldPool:Destroy()
+function UiDesktopHGoldPool:Destroy()
     self.QueUiGold = {}
     self.ListDelayEnqueGold = {}
 end
 
 ---------------------------------------
-function DesktopHGoldPool:Reset()
+function UiDesktopHGoldPool:Reset()
     for k, v in pairs(self.ListDelayEnqueGold) do
         self:goldHEnPool(v)
     end
@@ -41,12 +41,12 @@ function DesktopHGoldPool:Reset()
 end
 
 ---------------------------------------
-function DesktopHGoldPool:getMaxGoldSortOrder()
+function UiDesktopHGoldPool:getMaxGoldSortOrder()
     return self.MaxGoldSortOrderOffset
 end
 
 ---------------------------------------
-function DesktopHGoldPool:getGoldH()
+function UiDesktopHGoldPool:getGoldH()
     local ui_gold = nil
     local l = #self.QueUiGold
     if (l == 0) then
@@ -55,7 +55,7 @@ function DesktopHGoldPool:getGoldH()
             ui_gold = table.remove(self.ListDelayEnqueGold, 1)
             ui_gold:Reset()
         else
-            ui_gold = DesktopHUiGold:new(nil)
+            ui_gold = UiDesktopHGold:new(nil)
             ui_gold:OnCreate()
         end
         self.MaxGoldSortOrderOffset = self.MaxGoldSortOrderOffset + 1
@@ -67,23 +67,23 @@ function DesktopHGoldPool:getGoldH()
 end
 
 ---------------------------------------
-function DesktopHGoldPool:goldHNeedDelayEnPool(uigold_h)
+function UiDesktopHGoldPool:goldHNeedDelayEnPool(uigold_h)
     table.insert(self.ListDelayEnqueGold, uigold_h)
 end
 
 ---------------------------------------
-function DesktopHGoldPool:goldHEnPool(uigold_h)
+function UiDesktopHGoldPool:goldHEnPool(uigold_h)
     self:_goldHEnPool(uigold_h)
 end
 
 ---------------------------------------
-function DesktopHGoldPool:delayGoldHEnPool(uigold_h)
+function UiDesktopHGoldPool:delayGoldHEnPool(uigold_h)
     self:_goldHEnPool(uigold_h)
     LuaHelper:TableRemoveV(self.ListDelayEnqueGold, uigold_h)
 end
 
 ---------------------------------------
-function DesktopHGoldPool:_goldHEnPool(uigold_h)
+function UiDesktopHGoldPool:_goldHEnPool(uigold_h)
     if (self.QueUiGold == nil) then
         return
     end

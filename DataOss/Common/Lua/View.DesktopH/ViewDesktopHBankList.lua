@@ -1,4 +1,36 @@
 -- Copyright(c) Cragon. All rights reserved.
+-- 申请上庄列表对话框
+
+---------------------------------------
+-- 申请上庄列表中的一个Item；被ViewDesktopHBankList持有
+UiDesktopHBeBankerInfoItem = {}
+
+---------------------------------------
+function UiDesktopHBeBankerInfoItem:new(o, com, player_info, view_mgr)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.ViewMgr = view_mgr
+    o.GCoPlayerInfo = com
+    o.GTextNickName = o.GCoPlayerInfo:GetChild("NickName").asTextField
+    o.GTextGolds = o.GCoPlayerInfo:GetChild("Golds").asTextField
+    local co_headicon = o.GCoPlayerInfo:GetChild("CoHeadIcon")
+    if (co_headicon ~= nil) then
+        o.UiHeadIcon = ViewHeadIcon:new(nil, co_headicon.asCom)
+    end
+    o:refreshPlayerInfo(player_info)
+    return o
+end
+
+---------------------------------------
+function UiDesktopHBeBankerInfoItem:refreshPlayerInfo(player_info)
+    self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.PlayerInfoCommon.NickName, 30, 9)
+    self.GTextGolds.text = self.ViewMgr.LanMgr:getLanValue(player_info.Gold, self.ViewMgr.LanMgr.LanBase)
+    if (self.UiHeadIcon ~= nil) then
+        self.UiHeadIcon:setPlayerInfo(player_info.PlayerInfoCommon.IconName,
+                player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
+    end
+end
 
 ---------------------------------------
 ViewDesktopHBankList = ViewBase:new()
@@ -90,10 +122,6 @@ function ViewDesktopHBankList:OnDestroy()
 end
 
 ---------------------------------------
-function ViewDesktopHBankList:onUpdate(elapsed_tm)
-end
-
----------------------------------------
 function ViewDesktopHBankList:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityDesktopHChangeBeBankerPlayerList") then
@@ -131,7 +159,7 @@ function ViewDesktopHBankList:_initBeBankPlayer(list_bebankplayer, bank_player, 
                 end
 
                 local co_bebankplayerinfo = self.GListBeBankPlayerList:AddItemFromPool().asCom
-                local player_info = ItemDesktopHBeBankPlayerInfo:new(nil, co_bebankplayerinfo, p, self.ViewMgr)
+                local player_info = UiDesktopHBeBankerInfoItem:new(nil, co_bebankplayerinfo, p, self.ViewMgr)
                 self.MapBeBankPlayerInfo[p.PlayerInfoCommon.PlayerGuid] = player_info
             end
         end
