@@ -28,9 +28,5 @@ function PreViewBase:OnDestroy()
 end
 
 ---------------------------------------
-function PreViewBase:onUpdate(tm)	
-end
-
----------------------------------------
 function PreViewBase:OnHandleEv(ev)
 end
