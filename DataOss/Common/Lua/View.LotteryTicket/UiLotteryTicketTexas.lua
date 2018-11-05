@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewLotteryTicketTexas = {}
+UiLotteryTicketTexas = {}
 
 ---------------------------------------
-function ViewLotteryTicketTexas:new(o, view_lotteryticket)
+function UiLotteryTicketTexas:new(o, view_lotteryticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -18,17 +18,17 @@ function ViewLotteryTicketTexas:new(o, view_lotteryticket)
 end
 
 ---------------------------------------
-function ViewLotteryTicketTexas:findLotteryTicketCard(list_card)
+function UiLotteryTicketTexas:findLotteryTicketCard(list_card)
     local com_card0 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard0").asCom
-    local card0 = ItemLotteryTicketCard:new(nil, com_card0, self.ViewLotteryTicket)
+    local card0 = UiLotteryTicketCard:new(nil, com_card0, self.ViewLotteryTicket)
     local com_card1 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard1").asCom
-    local card1 = ItemLotteryTicketCard:new(nil, com_card1, self.ViewLotteryTicket)
+    local card1 = UiLotteryTicketCard:new(nil, com_card1, self.ViewLotteryTicket)
     local com_card2 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard2").asCom
-    local card2 = ItemLotteryTicketCard:new(nil, com_card2, self.ViewLotteryTicket)
+    local card2 = UiLotteryTicketCard:new(nil, com_card2, self.ViewLotteryTicket)
     local com_card3 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard3").asCom
-    local card3 = ItemLotteryTicketCard:new(nil, com_card3, self.ViewLotteryTicket)
+    local card3 = UiLotteryTicketCard:new(nil, com_card3, self.ViewLotteryTicket)
     local com_card4 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard4").asCom
-    local card4 = ItemLotteryTicketCard:new(nil, com_card4, self.ViewLotteryTicket)
+    local card4 = UiLotteryTicketCard:new(nil, com_card4, self.ViewLotteryTicket)
     table.insert(list_card, card0)
     table.insert(list_card, card1)
     table.insert(list_card, card2)
@@ -37,7 +37,7 @@ function ViewLotteryTicketTexas:findLotteryTicketCard(list_card)
 end
 
 ---------------------------------------
-function ViewLotteryTicketTexas:initBetPot(bet_pot, gold_percent)
+function UiLotteryTicketTexas:initBetPot(bet_pot, gold_percent)
     local loader_betpotinfo = bet_pot:GetChild("LoaderCardType").asLoader
     local packageName = self.ViewLotteryTicket.LotteryTicketPackName
     if (self.Context.Cfg.UseLan) then
@@ -47,7 +47,7 @@ function ViewLotteryTicketTexas:initBetPot(bet_pot, gold_percent)
 end
 
 ---------------------------------------
-function ViewLotteryTicketTexas:getBetPotIndex(card_type)
+function UiLotteryTicketTexas:getBetPotIndex(card_type)
     if (card_type <= 2) then
         card_type = 0
     elseif (card_type >= 7) then
@@ -87,10 +87,11 @@ function ViewLotteryTicket:getCardType(list_card)
 end
 
 ---------------------------------------
-function ViewLotteryTicketTexas:getCardTypeName(card_type)
+function UiLotteryTicketTexas:getCardTypeName(card_type)
     local rank_type = CS.Casinos.HandRankTypeTexasH.__CastFrom(card_type) --card_type--CS.Casinos.HandRankTypeTexasH.__CastFrom(card_type)
     local rank_name = ""
-    if (rank_type == CS.Casinos.HandRankTypeTexasH.RoyalFlush or rank_type == CS.Casinos.HandRankTypeTexasH.StraightFlush
+    if (rank_type == CS.Casinos.HandRankTypeTexasH.RoyalFlush
+            or rank_type == CS.Casinos.HandRankTypeTexasH.StraightFlush
             or rank_type == CS.Casinos.HandRankTypeTexasH.FourOfAKind) then
         rank_name = "CaiChi"
     else
@@ -117,6 +118,6 @@ end
 
 ---------------------------------------
 function UiLotteryTicketTexasFactory:CreateUiDesktopHBase(view_lotteryticket)
-    local l = ViewLotteryTicketTexas:new(nil, view_lotteryticket)
+    local l = UiLotteryTicketTexas:new(nil, view_lotteryticket)
     return l
 end

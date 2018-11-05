@@ -199,7 +199,7 @@ function UiDesktopHCard:showCard(action)
 end
 
 ---------------------------------------
-function UiDesktopHCard:resetCard()
+function UiDesktopHCard:ResetCard()
     self.IsReset = true
     self:_resetCard()
     self.Dealer:setResetCard(self, IsBankPlayer)

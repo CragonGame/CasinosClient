@@ -1,6 +1,34 @@
 -- Copyright(c) Cragon. All rights reserved.
+-- 时时彩奖池信息
 
 ---------------------------------------
+-- 时时彩奖池玩家列表单个玩家信息
+UiLotteryTicketRewardPotPlayerInfoItem = {}
+
+---------------------------------------
+function UiLotteryTicketRewardPotPlayerInfoItem:new(o, view_lottery, com, player_info, tm)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    self.Context = Context
+    o.ViewLotteryTicket = view_lottery
+    o.GCoPlayerInfo = com
+    o.GTextNickName = o.GCoPlayerInfo:GetChild("NickName").asTextField
+    o.GTextGolds = o.GCoPlayerInfo:GetChild("Golds").asTextField
+    o.GTextTm = o.GCoPlayerInfo:GetChild("Time").asTextField
+    o:refreshPlayerInfo(player_info)
+    o.GTextTm.text = tm
+    return o
+end
+
+---------------------------------------
+function UiLotteryTicketRewardPotPlayerInfoItem:refreshPlayerInfo(player_info)
+    self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.Nickname, 27, 8)
+    self.GTextGolds.text = UiChipShowHelper:getGoldShowStr(player_info.WinGold, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
+end
+
+---------------------------------------
+-- 时时彩奖池信息
 ViewLotteryTicketRewardPot = {}
 
 ---------------------------------------
@@ -47,7 +75,7 @@ function ViewLotteryTicketRewardPot:setRewardPotInfo(total_golds, list_playerinf
         for key, value in pairs(list_playerinfo) do
             local co_playerinfo = self.GListRewardPotPlayer:AddItemFromPool().asCom
             local l_tm = CS.System.DateTime.Parse(value.Dt)
-            ItemLotteryTicketRewardPotPlayerInfo:new(nil, self.ViewLotteryTicket, co_playerinfo, value, CS.Casinos.UiHelper.getLocalTmToString(l_tm))
+            UiLotteryTicketRewardPotPlayerInfoItem:new(nil, self.ViewLotteryTicket, co_playerinfo, value, CS.Casinos.UiHelper.getLocalTmToString(l_tm))
         end
     end
 end

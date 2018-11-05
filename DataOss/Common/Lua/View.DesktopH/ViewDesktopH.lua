@@ -274,7 +274,7 @@ function ViewDesktopH:OnDestroy()
         v:Destroy()
     end
     self.UiDesktopHRewardPot:Destroy()
-    self.UiDesktopHDealer:resetCard()
+    self.UiDesktopHDealer:ResetCard()
     self.UiDesktopHDealer:Destroy()
     self.UiDesktopHGoldPool:Destroy()
     if (self.UiDesktopHTongSha ~= nil) then
@@ -434,7 +434,7 @@ function ViewDesktopH:OnHandleEv(ev)
                 self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("InTheSettlement")
             end
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
-            self:updateLotteryTickTm(ev.tm)
+            self:RefreshLotteryTickLeftTm(ev.tm)
         elseif (ev.EventName == "EvEntityReceiveFriendSingleChat") then
             if (ev.chat_msg.sender_guid ~= self.ControllerPlayer.Guid) then
                 local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
@@ -558,7 +558,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         self.UiDesktopHDealer:createDealerBase(self.FactoryName)
     end
 
-    self.UiDesktopHDealer:resetCard()
+    self.UiDesktopHDealer:ResetCard()
     self.UiDesktopHGoldPool:Reset()
     for i, v in pairs(self.MapDesktopHChair) do
         v:Reset()
@@ -808,7 +808,7 @@ function ViewDesktopH:bet(bet_index)
 end
 
 ---------------------------------------
-function ViewDesktopH:updateLotteryTickTm(tm)
+function ViewDesktopH:RefreshLotteryTickLeftTm(tm)
     if (self.GTextLotteryTicketTips == nil) then
         return
     end
@@ -937,7 +937,7 @@ function ViewDesktopH:_gameRest(left_tm)
     DesktopHGameResult = nil
     self:_cancelTaskAndDestroyUiResult()
     self.CanBet = false
-    self.UiDesktopHDealer:resetCard()
+    self.UiDesktopHDealer:ResetCard()
     self.UiDesktopHGoldPool:Reset()
     self.StateTm = left_tm
     for i, v in pairs(self.MapDesktopHBetPot) do

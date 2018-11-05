@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ItemLotteryTicketCard = {}
+UiLotteryTicketCard = {}
 
 ---------------------------------------
-function ItemLotteryTicketCard:new(o, co_card, lottery_ticket)
+function UiLotteryTicketCard:new(o, co_card, lottery_ticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -20,11 +20,11 @@ function ItemLotteryTicketCard:new(o, co_card, lottery_ticket)
 end
 
 ---------------------------------------
-function ItemLotteryTicketCard:showCard(card_data)
-    if (card_data == nil) then
+function UiLotteryTicketCard:showCard(card_data)
+    if card_data == nil then
         return
     end
-    if (CS.FairyGUI.GTween.IsTweening(self.GImageCardBack)) then
+    if CS.FairyGUI.GTween.IsTweening(self.GImageCardBack) then
         return
     end
 
@@ -53,7 +53,7 @@ function ItemLotteryTicketCard:showCard(card_data)
 end
 
 ---------------------------------------
-function ItemLotteryTicketCard:resetCard()
+function UiLotteryTicketCard:ResetCard()
     if (self.TweenerTurnCard ~= nil) then
         self.TweenerTurnCard:Kill()
         self.TweenerTurnCard = nil

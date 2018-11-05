@@ -338,7 +338,7 @@ function ViewDesktopTexas:OnHandleEv(ev)
                 self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
             end
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
-            self:updateLotteryTickTm(ev.tm)
+            self:RefreshLotteryTickLeftTm(ev.tm)
         elseif (ev.EventName == "EvUiPotMainChanged") then
             -- 从Model发出
             self.UiPot:showAllPotValue(ev.pot_mian)
@@ -972,7 +972,7 @@ function ViewDesktopTexas:_showRiverScreenshot()
 end
 
 ---------------------------------------
-function ViewDesktopTexas:updateLotteryTickTm(tm)
+function ViewDesktopTexas:RefreshLotteryTickLeftTm(tm)
     if (self.GTextLotteryTicketTips == nil) then
         return
     end

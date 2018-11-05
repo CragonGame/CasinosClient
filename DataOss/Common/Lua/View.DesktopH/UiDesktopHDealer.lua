@@ -130,9 +130,9 @@ function UiDesktopHDealer:showCard(is_onebyone, showcard_offset_tm)
 end
 
 ---------------------------------------
-function UiDesktopHDealer:resetCard()
+function UiDesktopHDealer:ResetCard()
     for i, v in pairs(self.ListDesktopHSinglePotCards) do
-        v:resetCard()
+        v:ResetCard()
     end
 
     if (self.DesktopHDealerBase ~= nil) then

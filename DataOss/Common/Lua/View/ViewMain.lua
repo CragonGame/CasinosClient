@@ -530,7 +530,7 @@ function ViewMain:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityLotteryTicketGameEndStateSimple") then
             self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
-            self:updateLotteryTickTm(ev.tm)
+            self:RefreshLotteryTickLeftTm(ev.tm)
         elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
             self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
         elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
@@ -564,7 +564,7 @@ function ViewMain:Close()
 end
 
 ---------------------------------------
-function ViewMain:updateLotteryTickTm(tm)
+function ViewMain:RefreshLotteryTickLeftTm(tm)
     if (tm > 0) then
         self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:getLanValue("S")
     else

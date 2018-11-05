@@ -213,9 +213,9 @@ function UiDesktopHCards:showCard(is_onebyone)
 end
 
 ---------------------------------------
-function UiDesktopHCards:resetCard()
+function UiDesktopHCards:ResetCard()
     for k, v in pairs(self.ListDesktopHCard) do
-        v:resetCard()
+        v:ResetCard()
     end
     self.ListDesktopHCard = {}
     self.QueDealDesktopHCard = {}

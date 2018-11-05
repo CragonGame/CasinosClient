@@ -173,7 +173,6 @@ namespace Casinos
             typeof(TimerShaft),
             typeof(UiHelper),
             typeof(UpdateRemoteToPersistentData),
-            //typeof(UiSoundMgr),
             //typeof(DevInfoSet),
             //typeof(MobLink),
             //typeof(MobLinkScene),

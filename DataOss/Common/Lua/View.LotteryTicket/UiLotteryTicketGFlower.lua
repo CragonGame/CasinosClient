@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewLotteryTicketGFlower = {}
+UiLotteryTicketGFlower = {}
 
 ---------------------------------------
-function ViewLotteryTicketGFlower:new(o, view_lotteryticket)
+function UiLotteryTicketGFlower:new(o, view_lotteryticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -14,20 +14,20 @@ function ViewLotteryTicketGFlower:new(o, view_lotteryticket)
 end
 
 ---------------------------------------
-function ViewLotteryTicketGFlower:findLotteryTicketCard(list_card)
+function UiLotteryTicketGFlower:findLotteryTicketCard(list_card)
     local com_card0 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard0").asCom
-    local card0 = ItemLotteryTicketCard:new(nil, com_card0, self.ViewLotteryTicket)
+    local card0 = UiLotteryTicketCard:new(nil, com_card0, self.ViewLotteryTicket)
     local com_card1 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard1").asCom
-    local card1 = ItemLotteryTicketCard:new(nil, com_card1, self.ViewLotteryTicket)
+    local card1 = UiLotteryTicketCard:new(nil, com_card1, self.ViewLotteryTicket)
     local com_card2 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard2").asCom
-    local card2 = ItemLotteryTicketCard:new(nil, com_card2, self.ViewLotteryTicket)
+    local card2 = UiLotteryTicketCard:new(nil, com_card2, self.ViewLotteryTicket)
     list_card:Add(card0)
     list_card:Add(card1)
     list_card:Add(card2)
 end
 
 ---------------------------------------
-function ViewLotteryTicketGFlower:initBetPot(bet_pot, gold_percent)
+function UiLotteryTicketGFlower:initBetPot(bet_pot, gold_percent)
     local win_percent = bet_pot:GetChild("WinPercent").asTextField
     local win_percent_str = ""
     if (gold_percent.WinGoldsPercent == 0) then
@@ -44,18 +44,18 @@ function ViewLotteryTicketGFlower:initBetPot(bet_pot, gold_percent)
 end
 
 ---------------------------------------
-function ViewLotteryTicketGFlower:getBetPotIndex(card_type)
+function UiLotteryTicketGFlower:getBetPotIndex(card_type)
     return card_type
 end
 
 ---------------------------------------
-function ViewLotteryTicketGFlower:getCardType(list_card)
+function UiLotteryTicketGFlower:getCardType(list_card)
     local rank_type = CS.Casinos.CardTypeHelperGFlower.GetHandRankHGFlower(list_card)
     return rank_type
 end
 
 ---------------------------------------
-function ViewLotteryTicketGFlower:getCardTypeName(card_type)
+function UiLotteryTicketGFlower:getCardTypeName(card_type)
     local rank_type = card_type--CS.Casinos.HandRankTypeGFlowerH.__CastFrom(card_type)
     if (rank_type == CS.Casinos.HandRankTypeGFlowerH.RoyalBaoZi) then
         rank_type = CS.Casinos.HandRankTypeGFlowerH.BaoZi
@@ -73,5 +73,5 @@ end
 
 ---------------------------------------
 function UiLotteryTicketGFlowerFactory:CreateUiDesktopHBase(view_lotteryticket)
-    ViewLotteryTicketGFlower(view_lotteryticket)
+    UiLotteryTicketGFlower(view_lotteryticket)
 end

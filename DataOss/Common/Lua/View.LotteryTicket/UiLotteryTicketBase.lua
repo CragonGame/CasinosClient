@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewLotteryTicketBase = {}
+UiLotteryTicketBase = {}
 
 ---------------------------------------
-function ViewLotteryTicketBase:new(o, view_lotteryticket)
+function UiLotteryTicketBase:new(o, view_lotteryticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self

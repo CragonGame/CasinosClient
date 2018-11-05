@@ -39,7 +39,7 @@ function ViewLotteryTicket:OnCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
     local fac = self.ControllerLotteryTicket:GetLotteryTicketBaseFactory(self.Context.Cfg.LotteryTicketFactoryName)
-    self.ViewLotteryTicketBase = fac:CreateUiDesktopHBase(self)
+    self.UiLotteryTicketBase = fac:CreateUiDesktopHBase(self)
     local co_bg = self.ComUi:GetChild("CommonMsgBgAndClose").asCom
     local btn_close = co_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -92,7 +92,7 @@ function ViewLotteryTicket:OnCreate()
     self.MapBetPot = {}
     self.MapOperate = {}
     self.ListLoaderCard = {}
-    self.ViewLotteryTicketBase:findLotteryTicketCard(self.ListLoaderCard)
+    self.UiLotteryTicketBase:findLotteryTicketCard(self.ListLoaderCard)
     self.GTextCurrentOperate = self.ComUi:GetChild("BetOperateValue").asTextField
     local co_rewardpot = self.ComUi:GetChild("CoRewardPot").asCom
     local btn_rewardpot = self.ComUi:GetChild("BtnRewardPotRecord").asButton
@@ -102,7 +102,7 @@ function ViewLotteryTicket:OnCreate()
     self.GImageLastWinMaxPlayerGoldSign = self.ComUi:GetChild("WinMaxPlayerGoldSign").asImage
     self.GTextLastRoundBaoZiTm = co_rewardpot:GetChild("LastRoundBaoZiTm").asTextField
     self:switchControllerRules(false)
-    self:createBetPot()
+    self:_createBetPot()
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
     self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
 end
@@ -122,9 +122,9 @@ function ViewLotteryTicket:OnHandleEv(ev)
                 item_operate:setcanOperate(value)
             end
         end
-        self:refreshBetOperate()
+        self:RefreshBetOperate()
     elseif (ev.EventName == "EvEntityLotteryTicketCurrentBetOperateTypeChange") then
-        self:refreshBetOperate()
+        self:RefreshBetOperate()
     elseif (ev.EventName == "EvEntityLotteryTicketUpdateBetPotBetInfo") then
         local map_allbetpot = ev.map_allbetpot
         local map_self_betinfo = ev.map_self_betinfo
@@ -135,7 +135,7 @@ function ViewLotteryTicket:OnHandleEv(ev)
                     self_bet = map_self_betinfo[key]
                 end
                 local bet_pot = self.MapBetPot[key]
-                bet_pot:setBetPotInfo(value, self_bet)
+                bet_pot:SetBetPotInfo(value, self_bet)
             end
         end
     elseif (ev.EventName == "EvEntityLotteryTicketBet") then
@@ -160,23 +160,23 @@ function ViewLotteryTicket:OnHandleEv(ev)
             package_name = self.ViewMgr.LanMgr:getLanPackageName()
         end
         self.GLoaderLotteryTicketTips.icon = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(package_name, icon_name)
-        self:initLotteryTicket(ev.lotteryticket_data)
+        self:InitLotteryTicketData(ev.lotteryticket_data)
     elseif (ev.EventName == "EvEntityLotteryTicketGameEndStateSimple") then
         self:setTips(true)
     elseif (ev.EventName == "EvEntityLotteryTicketGetRewardPotInfo") then
         self.ViewLotteryTicketRewardPot:setRewardPotInfo(ev.reward_totalgolds, ev.list_playerinfo)
     elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
-        self:updateLotteryTickTm(ev.tm)
+        self:RefreshLotteryTickLeftTm(ev.tm)
     end
 end
 
 ---------------------------------------
-function ViewLotteryTicket:initLotteryTicket(lotteryticket_data)
+function ViewLotteryTicket:InitLotteryTicketData(lotteryticket_data)
     self:createOpreate()
-    self:updateHistory()
+    self:RefreshHistory()
     self.ViewLotteryTicketRewardPot:setRewardGolds(lotteryticket_data.RewardPotGold)
     if (lotteryticket_data.State == LotteryTicketStateEnum.Bet) then
-        self:refreshBetOperate()
+        self:RefreshBetOperate()
     else
         self.GBtnRepeatBet.enabled = false
         self.GBtnShowBetOperate.enabled = false
@@ -187,13 +187,13 @@ function ViewLotteryTicket:initLotteryTicket(lotteryticket_data)
             end
         else
             for key, value in pairs(self.ListLoaderCard) do
-                value:resetCard()
+                value:ResetCard()
             end
         end
         for key, value in pairs(self.MapBetPot) do
             value:hideBetPot()
         end
-        local byte_index = self.ViewLotteryTicketBase:getBetPotIndex(lotteryticket_data.WinCardType)--self.ViewLotteryTicketBase:getBetPotIndex(lotteryticket_data.WinCardType)
+        local byte_index = self.UiLotteryTicketBase:getBetPotIndex(lotteryticket_data.WinCardType)--self.UiLotteryTicketBase:getBetPotIndex(lotteryticket_data.WinCardType)
         self.MapBetPot[byte_index]:isWin()
     end
     if (lotteryticket_data.MapBetPotBetInfo ~= nil) then
@@ -204,7 +204,7 @@ function ViewLotteryTicket:initLotteryTicket(lotteryticket_data)
                 self_bet = self.ControllerLotteryTicket.MapTotalBetGolds[key]
             end
             local bet_pot = self.MapBetPot[key]
-            bet_pot:setBetPotInfo(value, self_bet)
+            bet_pot:SetBetPotInfo(value, self_bet)
         end
     end
     self:setWinMaxPlayerInfo(lotteryticket_data.LastMaxWinner)
@@ -213,11 +213,11 @@ end
 
 ---------------------------------------
 function ViewLotteryTicket:getCardType(list_card)
-    return self.ViewLotteryTicketBase:getCardType(list_card)
+    return self.UiLotteryTicketBase:getCardType(list_card)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:updateLotteryTickTm(tm)
+function ViewLotteryTicket:RefreshLotteryTickLeftTm(tm)
     local icon_name = ""
     if (tm > 0) then
         self.GTextLotteryTicketTips.visible = true
@@ -240,7 +240,7 @@ function ViewLotteryTicket:betState(map_betrepeatinfo)
     self.GBtnRepeatBet.enabled = LuaHelper:GetTableCount(map_betrepeatinfo) > 0
     self.GBtnShowBetOperate.enabled = true
     for key, value in pairs(self.ListLoaderCard) do
-        value:resetCard()
+        value:ResetCard()
     end
     for key, value in pairs(self.MapBetPot) do
         value:resetBetPot()
@@ -264,8 +264,8 @@ function ViewLotteryTicket:gameEnd(gameend_detail, me_wingold)
     end
 
     --local w_t = gameend_detail.WinCardType
-    --self.ViewLotteryTicketBase:getBetPotIndex(gameend_detail.WinCardType)
-    local byte_index = self.ViewLotteryTicketBase:getBetPotIndex(gameend_detail.WinCardType)
+    --self.UiLotteryTicketBase:getBetPotIndex(gameend_detail.WinCardType)
+    local byte_index = self.UiLotteryTicketBase:getBetPotIndex(gameend_detail.WinCardType)
     self.MapBetPot[byte_index]:isWin()
     self:setWinMaxPlayerInfo(gameend_detail.LastMaxWinner)
     self:setLastBaoZiTm(gameend_detail.LastBaoZiDt)
@@ -273,16 +273,16 @@ function ViewLotteryTicket:gameEnd(gameend_detail, me_wingold)
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("Get") .. me_wingold .. self.ViewMgr.LanMgr:getLanValue("Chip"))
     end
 
-    self:updateHistory()
+    self:RefreshHistory()
 end
 
 ---------------------------------------
-function ViewLotteryTicket:createBetPot()
+function ViewLotteryTicket:_createBetPot()
     for i = 5, 0, -1 do
         local key = i
         local tb_goldpercent = self.CasinosContext.TbDataMgrLua:GetData("LotteryTicketGoldPercent", i)
         local co_betpot = CS.FairyGUI.UIPackage.CreateObject(self.LotteryTicketPackName, "CoBetPot").asCom
-        local bet_pot = ItemLotteryTicketBetPot:new(nil, co_betpot, tb_goldpercent, self)
+        local bet_pot = UiLotteryTicketBetPotItem:new(nil, co_betpot, tb_goldpercent, self)
         bet_pot:initBetPot(key)
         self.GListBetPot:AddChild(bet_pot.GCoBetPot)
         self.MapBetPot[key] = bet_pot
@@ -290,13 +290,24 @@ function ViewLotteryTicket:createBetPot()
 end
 
 ---------------------------------------
-function ViewLotteryTicket:updateHistory()
+function ViewLotteryTicket:RefreshHistory()
     local index = 1
     local list_history = self.ControllerLotteryTicket.ListLotteryTicketWinlooseResult
     self.GListHistory:RemoveChildrenToPool()
     for i = 1, #list_history do
         local co_history = self.GListHistory:AddItemFromPool().asCom
-        local history = ItemLotteryTicketHistory:new(nil, self, co_history, index == 1, list_history[i])
+        --local history = ItemLotteryTicketHistory:new(nil, self, co_history, index == 1, list_history[i])
+        local rank_type = list_history[i]
+        local gloader_history = co_history:GetChild("LoaderHistory").asLoader
+        local gimage_newsign = co_history:GetChild("NewSign").asImage
+        local type_name = self.UiLotteryTicketBase:getCardTypeName(rank_type)
+        local package_name = self.LotteryTicketPackName
+        if (self.Context.Cfg.UseLan == true) then
+            package_name = self.ViewMgr.LanMgr:getLanPackageName()
+        end
+        gloader_history.icon = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(package_name, type_name)
+        gimage_newsign.visible = index == 1
+
         index = index + 1
     end
 end
@@ -322,7 +333,7 @@ function ViewLotteryTicket:createOpreate()
             end
         end
         local item_operate = list_operate:AddItemFromPool().asButton
-        local bet_operate = ItemLotteryTicketBetOperate:new(nil, item_operate, self)
+        local bet_operate = UiLotteryTicketBetOperateItem:new(nil, item_operate, self)
         bet_operate:setOperateInfo(key, operate.OperateGolds, can_operate, is_current_operate)
         self.MapOperate[key] = bet_operate
         if (is_current_operate) then
@@ -337,7 +348,7 @@ function ViewLotteryTicket:setDesktopTips()
 end
 
 ---------------------------------------
-function ViewLotteryTicket:refreshBetOperate()
+function ViewLotteryTicket:RefreshBetOperate()
     for key, value in pairs(self.MapOperate) do
         value:setIsCurrentOperate(false)
     end
