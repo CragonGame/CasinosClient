@@ -156,7 +156,7 @@ function ViewLotteryTicket:OnHandleEv(ev)
             icon_name = "Ending"
         end
         local package_name = self.LotteryTicketPackName
-        if (UseLan) then
+        if (self.Context.Cfg.UseLan) then
             package_name = self.ViewMgr.LanMgr:getLanPackageName()
         end
         self.GLoaderLotteryTicketTips.icon = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(package_name, icon_name)
@@ -229,7 +229,7 @@ function ViewLotteryTicket:updateLotteryTickTm(tm)
     end
 
     local package_name = self.LotteryTicketPackName
-    if (UseLan) then
+    if (self.Context.Cfg.UseLan) then
         package_name = self.ViewMgr.LanMgr:getLanPackageName()
     end
     self.GLoaderLotteryTicketTips.icon = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(package_name, icon_name)

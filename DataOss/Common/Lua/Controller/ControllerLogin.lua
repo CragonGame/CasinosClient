@@ -350,15 +350,14 @@ end
 ---------------------------------------
 function ControllerLogin:RequestWechatLogin(token, app_id)
     self.CasinosContext.LoginType = 2
-    local c_login = ControllerLogin:new(nil)
-    ViewHelper:UiBeginWaiting(c_login.ControllerMgr.LanMgr:getLanValue("Logining"))
+    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
     local wechat_info = AccountWeChatOAuthInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.AccountWeChatOAuthInfo()
     wechat_info.Code = token
     wechat_info.AppId = app_id
     wechat_info.Device = self:GetDeviceInfo()
-    c_login.ControllerUCenter:RequestWechatLogin(wechat_info,
+    self.ControllerUCenter:RequestWechatLogin(wechat_info,
             function(http_statuscode, status, response, error)
-                c_login:OnUCenterLogin(http_statuscode, status, response, error)
+                self:OnUCenterLogin(http_statuscode, status, response, error)
             end)
 end
 
@@ -521,7 +520,7 @@ end
 function ControllerLogin:OnUCenterGuestAccess(http_statuscode, status, response, error)
     ViewHelper:UiEndWaiting()
     if (status == UCenterResponseStatus.Success) then
-        print("OnUCenterGuestAccess")
+        --print("OnUCenterGuestAccess")
         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("LoginSuccessful"))
         self.AccId = response.accountId
         self.Acc = response.accountName

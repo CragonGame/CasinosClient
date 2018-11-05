@@ -8,6 +8,7 @@ function ViewLotteryTicketTexas:new(o, view_lotteryticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     if (self.Instance == nil) then
         self.ViewLotteryTicket = view_lotteryticket
@@ -39,7 +40,7 @@ end
 function ViewLotteryTicketTexas:initBetPot(bet_pot, gold_percent)
     local loader_betpotinfo = bet_pot:GetChild("LoaderCardType").asLoader
     local packageName = self.ViewLotteryTicket.LotteryTicketPackName
-    if (UseLan) then
+    if (self.Context.Cfg.UseLan) then
         packageName = self.ViewLotteryTicket.ViewMgr.LanMgr:getLanPackageName()
     end
     loader_betpotinfo.url = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(packageName, "BetPotInfo" .. tostring(gold_percent.Id))

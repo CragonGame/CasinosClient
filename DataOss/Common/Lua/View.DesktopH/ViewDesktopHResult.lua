@@ -47,7 +47,7 @@ function UiDesktopHDlgGameEndResultPotItem:new(o, ui_desktoph, com, list_card, i
     local bank_sign = ""
     if (pot_index == 255) then
         local packageName = ui_desktoph:getDesktopBasePackageName()
-        if (UseLan == true) then
+        if (self.Context.Cfg.UseLan == true) then
             packageName = ui_desktoph.ViewMgr.LanMgr:getLanPackageName()
         end
         bank_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(packageName, "BankSign")
@@ -68,7 +68,7 @@ function UiDesktopHDlgGameEndResultPotItem:new(o, ui_desktoph, com, list_card, i
         win_loose = "WinSign"
     end
     local win_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(ui_desktoph:getDesktopBasePackageName(), win_loose)
-    if (UseLan == true) then
+    if (self.Context.Cfg.UseLan == true) then
         local pack_name = ui_desktoph.ViewMgr.LanMgr:getLanPackageName()
         win_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(pack_name, win_loose)
     end

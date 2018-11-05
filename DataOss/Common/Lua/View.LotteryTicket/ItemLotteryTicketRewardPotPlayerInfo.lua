@@ -8,6 +8,7 @@ function ItemLotteryTicketRewardPotPlayerInfo:new(o, view_lottery, com, player_i
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewLotteryTicket = view_lottery
     o.GCoPlayerInfo = com
     o.GTextNickName = o.GCoPlayerInfo:GetChild("NickName").asTextField

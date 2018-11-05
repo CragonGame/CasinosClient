@@ -8,13 +8,14 @@ function ItemLotteryTicketCard:new(o, co_card, lottery_ticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.GCoCard = co_card
     o.GLoaderCard = o.GCoCard:GetChild("LoaderCard").asLoader
     o.GImageCardBack = o.GCoCard:GetChild("CardBack").asImage
     o.ViewLotteryTicket = lottery_ticket
     o.GLoaderCard.visible = false
     o.GImageCardBack.visible = true
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     return o
 end
 

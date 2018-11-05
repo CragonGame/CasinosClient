@@ -8,6 +8,7 @@ function ViewLotteryTicketGFlower:new(o, view_lotteryticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     self.ViewLotteryTicket = view_lotteryticket
     return o
 end

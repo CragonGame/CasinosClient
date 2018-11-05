@@ -8,6 +8,7 @@ function ItemLotteryTicketBetPot:new(o, co_betpot, gold_percent, lottery_ticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.GCoBetPot = co_betpot
     o.ViewLotteryTicket = lottery_ticket
     o.TbDataLotteryTicketGoldPercent = gold_percent

@@ -8,12 +8,13 @@ function ItemLotteryTicketHistory:new(o, lottery_ticket, com_history, is_new, ra
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.GCoHistroy = com_history
     o.GLoaderHistory = o.GCoHistroy:GetChild("LoaderHistory").asLoader
     o.GImageNewSign = o.GCoHistroy:GetChild("NewSign").asImage
     local type_name = lottery_ticket.ViewLotteryTicketBase:getCardTypeName(rank_type)
     local packageName = lottery_ticket.LotteryTicketPackName
-    if (UseLan == true) then
+    if (self.Context.Cfg.UseLan == true) then
         packageName = lottery_ticket.ViewMgr.LanMgr:getLanPackageName()
     end
     o.GLoaderHistory.icon = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(packageName, type_name)

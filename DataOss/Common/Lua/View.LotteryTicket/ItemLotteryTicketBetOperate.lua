@@ -8,6 +8,7 @@ function ItemLotteryTicketBetOperate:new(o, bet_operat, view_lotteryticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.ViewLotteryTicket = view_lotteryticket
     o.GBtnBetOperate = bet_operat
     o.GBtnBetOperate.onClick:Add(

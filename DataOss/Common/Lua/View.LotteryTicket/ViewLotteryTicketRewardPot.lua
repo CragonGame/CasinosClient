@@ -8,6 +8,7 @@ function ViewLotteryTicketRewardPot:new(o, reward_pot, btn_rewardpot, lottery_ti
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    self.Context = Context
     o.RewardPot = reward_pot
     o.GTextRewardPot = o.RewardPot:GetChild("RewardPotTotal").asTextField
     o.GTextLastRoundBaoZiTm = o.RewardPot:GetChild("LastRoundBaoZiTm").asTextField
@@ -29,7 +30,6 @@ function ViewLotteryTicketRewardPot:new(o, reward_pot, btn_rewardpot, lottery_ti
             end
     )
     o:switchControllerRewardPot(false)
-
     return o
 end
 
