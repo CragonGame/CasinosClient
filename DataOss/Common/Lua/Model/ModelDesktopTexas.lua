@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 MethodTypeTexasDesktop = {
     [0] = "None", -- 无效
     None = 0,
@@ -246,8 +247,8 @@ HandRankTypeTexasH = {
     [9] = "RoyalFlush",
 }
 
-MethodInfoTexasDesktop = {
-}
+---------------------------------------
+MethodInfoTexasDesktop = {}
 
 function MethodInfoTexasDesktop:new(o)
     o = o or {}
@@ -266,6 +267,7 @@ function MethodInfoTexasDesktop:getData4Pack()
     return t
 end
 
+---------------------------------------
 PlayerDataDesktopTexas = {}
 
 function PlayerDataDesktopTexas:new(o)
@@ -288,7 +290,6 @@ function PlayerDataDesktopTexas:new(o)
     o.DesktopPlayerState = 0
     o.PlayerActionType = 0
     o.WaitWhileTime = 0.0
-
     return o
 end
 
@@ -305,8 +306,7 @@ function PlayerDataDesktopTexas:setData(m_p, data)
     self.Stack = math.ceil(t_p_data[2])
     local i_data = t_p_data[3]
     local item_data = nil
-    if (i_data ~= nil)
-    then
+    if (i_data ~= nil) then
         item_data = ItemData1:new(nil)
         item_data:setData(i_data)
     end
@@ -319,14 +319,15 @@ function PlayerDataDesktopTexas:setData(m_p, data)
     self.WaitWhileTime = t_p_data[9]
 end
 
+---------------------------------------
 BDesktopSnapshotNormalTexas = {}
+
 function BDesktopSnapshotNormalTexas:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.DesktopTbId = 0
     o.Ante = 0
-
     return o
 end
 
@@ -335,8 +336,9 @@ function BDesktopSnapshotNormalTexas:setData(data)
     self.Ante = data[2]
 end
 
-DesktopSnapshotDataTexas = {
-}
+---------------------------------------
+DesktopSnapshotDataTexas = {}
+
 function DesktopSnapshotDataTexas:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -363,7 +365,6 @@ function DesktopSnapshotDataTexas:new(o)
     o.desktop_waitwhile_tm = 0
     o.normal_texas = nil
     o.match_texas = nil
-
     return o
 end
 
@@ -432,8 +433,8 @@ function DesktopSnapshotDataTexas:setData(data)
     self.match_texas = m_data
 end
 
-DesktopFilterTexas = {
-}
+---------------------------------------
+DesktopFilterTexas = {}
 
 function DesktopFilterTexas:new(o)
     o = o or {}
@@ -447,7 +448,6 @@ function DesktopFilterTexas:new(o)
     --o.desktoptype_texas = 0
     o.is_private = false
     o.ante = 0
-
     return o
 end
 
@@ -472,12 +472,11 @@ function DesktopFilterTexas:getData4Pack()
     --table.insert(p_d, self.desktoptype_texas)
     table.insert(p_d, self.is_private)
     table.insert(p_d, self.ante)
-
     return p_d
 end
 
-DesktopInfoTexas = {
-}
+---------------------------------------
+DesktopInfoTexas = {}
 
 function DesktopInfoTexas:new(o)
     o = o or {}
@@ -493,7 +492,6 @@ function DesktopInfoTexas:new(o)
     o.all_player_num = 0
     o.ante = 0
     --o.desktoptype_texas = 0
-
     return o
 end
 
@@ -502,8 +500,8 @@ function DesktopInfoTexas:isFull()
     return seat_count == self.seat_player_num
 end
 
-PrivateDesktopCreateInfoTexas = {
-}
+---------------------------------------
+PrivateDesktopCreateInfoTexas = {}
 
 function PrivateDesktopCreateInfoTexas:new(o)
     o = o or {}
@@ -515,7 +513,6 @@ function PrivateDesktopCreateInfoTexas:new(o)
     o.desktop_tableid = 0
     o.ante = 0
     --o.desktoptype_texas = 0
-
     return o
 end
 
@@ -526,12 +523,11 @@ function PrivateDesktopCreateInfoTexas:getData4Pack()
     table.insert(p_d, self.is_vip)
     table.insert(p_d, self.desktop_tableid)
     table.insert(p_d, self.ante)
-
     return p_d
 end
 
-PlayerModuleDataTexas = {
-}
+---------------------------------------
+PlayerModuleDataTexas = {}
 
 function PlayerModuleDataTexas:new(o)
     o = o or {}
@@ -539,7 +535,6 @@ function PlayerModuleDataTexas:new(o)
     self.__index = self
     o.GameTotal = 0
     o.GameWin = 0
-
     return o
 end
 
@@ -548,8 +543,8 @@ function PlayerModuleDataTexas:setData(data)
     self.GameWin = data[2]
 end
 
-TexasChipEnterPot = {
-}
+---------------------------------------
+TexasChipEnterPot = {}
 
 function TexasChipEnterPot:new(o)
     o = o or {}
@@ -558,7 +553,6 @@ function TexasChipEnterPot:new(o)
     o.list_seatchip_enter_pot = nil
     o.list_pot = nil
     o.pot_total = 0
-
     return o
 end
 
@@ -568,8 +562,8 @@ function TexasChipEnterPot:setData(data)
     self.pot_total = data[3]
 end
 
-PlayerCanActionDataTexas = {
-}
+---------------------------------------
+PlayerCanActionDataTexas = {}
 
 function PlayerCanActionDataTexas:new(o)
     o = o or {}
@@ -586,8 +580,8 @@ function PlayerCanActionDataTexas:setData(data)
     self.chip = data[2]
 end
 
-PlayerHoleCardDataTexas = {
-}
+---------------------------------------
+PlayerHoleCardDataTexas = {}
 
 function PlayerHoleCardDataTexas:new(o)
     o = o or {}
@@ -597,7 +591,6 @@ function PlayerHoleCardDataTexas:new(o)
     o.first_card = nil
     o.second_card = nil
     o.hand_rank_type = 0
-
     return o
 end
 
@@ -608,8 +601,8 @@ function PlayerHoleCardDataTexas:setData(data)
     self.hand_rank_type = data[4]
 end
 
-PlayerPreFlopDataTexas = {
-}
+---------------------------------------
+PlayerPreFlopDataTexas = {}
 
 function PlayerPreFlopDataTexas:new(o)
     o = o or {}
@@ -617,7 +610,6 @@ function PlayerPreFlopDataTexas:new(o)
     self.__index = self
     o.player_guid = nil
     o.stack = 0
-
     return o
 end
 
@@ -626,8 +618,8 @@ function PlayerPreFlopDataTexas:setData(data)
     self.stack = data[2]
 end
 
-PlayerTurnDataTexas = {
-}
+---------------------------------------
+PlayerTurnDataTexas = {}
 
 function PlayerTurnDataTexas:new(o)
     o = o or {}
@@ -635,7 +627,6 @@ function PlayerTurnDataTexas:new(o)
     self.__index = self
     o.player_guid = nil
     o.player_turn_lefttm = 0
-
     return o
 end
 
@@ -644,7 +635,9 @@ function PlayerTurnDataTexas:setData(data)
     self.player_turn_lefttm = data[2]
 end
 
+---------------------------------------
 PlayerWinnerDataTexas = {}
+
 function PlayerWinnerDataTexas:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -653,7 +646,6 @@ function PlayerWinnerDataTexas:new(o)
     o.win_chip = 0
     o.map_win_pot = nil
     o.stack = 0
-
     return o
 end
 
@@ -664,7 +656,9 @@ function PlayerWinnerDataTexas:setData(data)
     self.stack = data[4]
 end
 
+---------------------------------------
 TexasPlayerGameEndAddData = {}
+
 function TexasPlayerGameEndAddData:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -672,7 +666,6 @@ function TexasPlayerGameEndAddData:new(o)
     o.player_guid = nil
     o.add_exp = 0
     o.add_point = 0
-
     return o
 end
 
@@ -682,8 +675,8 @@ function TexasPlayerGameEndAddData:setData(data)
     self.add_point = data[3]
 end
 
-TexasPlayerShowCardData = {
-}
+---------------------------------------
+TexasPlayerShowCardData = {}
 
 function TexasPlayerShowCardData:new(o)
     o = o or {}
@@ -692,7 +685,6 @@ function TexasPlayerShowCardData:new(o)
     o.player_guid = nil
     o.first_card = nil
     o.second_card = nil
-
     return o
 end
 
@@ -702,15 +694,14 @@ function TexasPlayerShowCardData:setData(data)
     self.second_card = data[3]
 end
 
-TexasDesktopNotifyPlayerShowCard = {
-}
+---------------------------------------
+TexasDesktopNotifyPlayerShowCard = {}
 
 function TexasDesktopNotifyPlayerShowCard:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.list_showcard = nil
-
     return o
 end
 
@@ -724,14 +715,14 @@ function TexasDesktopNotifyPlayerShowCard:setData(data)
     self.list_showcard = l
 end
 
-TexasDesktopNotifyIdle = {
-}
+---------------------------------------
+TexasDesktopNotifyIdle = {}
+
 function TexasDesktopNotifyIdle:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.list_player_state = nil
-
     return o
 end
 
@@ -746,8 +737,8 @@ function TexasDesktopNotifyIdle:setData(data)
     self.list_player_state = real_l
 end
 
-DesktopNotifyPlayerActionTexas = {
-}
+---------------------------------------
+DesktopNotifyPlayerActionTexas = {}
 
 function DesktopNotifyPlayerActionTexas:new(o)
     o = o or {}
@@ -761,7 +752,6 @@ function DesktopNotifyPlayerActionTexas:new(o)
     o.current_bet_chip = 0
     o.current_stack = 0
     o.pot_total = 0
-
     return o
 end
 
@@ -776,15 +766,14 @@ function DesktopNotifyPlayerActionTexas:setData(data)
     self.pot_total = data[8]
 end
 
-DesktopNotifyPlayerGetTurnTexas = {
-}
+---------------------------------------
+DesktopNotifyPlayerGetTurnTexas = {}
 
 function DesktopNotifyPlayerGetTurnTexas:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.player_turn = nil
-
     return o
 end
 
@@ -795,8 +784,8 @@ function DesktopNotifyPlayerGetTurnTexas:setData(data)
     self.player_turn = p_t
 end
 
-DesktopNotifyDesktopPreFlopTexas = {
-}
+---------------------------------------
+DesktopNotifyDesktopPreFlopTexas = {}
 
 function DesktopNotifyDesktopPreFlopTexas:new(o)
     o = o or {}
@@ -814,7 +803,6 @@ function DesktopNotifyDesktopPreFlopTexas:new(o)
     o.pot_total = 0
     o.list_pot = nil
     o.list_player_state = nil
-
     return o
 end
 
@@ -845,8 +833,8 @@ function DesktopNotifyDesktopPreFlopTexas:setData(data)
     self.list_player_state = real_l
 end
 
-DesktopNotifyDesktopFlopTexas = {
-}
+---------------------------------------
+DesktopNotifyDesktopFlopTexas = {}
 
 function DesktopNotifyDesktopFlopTexas:new(o)
     o = o or {}
@@ -856,7 +844,6 @@ function DesktopNotifyDesktopFlopTexas:new(o)
     o.second_card = nil
     o.third_card = nil
     o.chip_enter_pot = nil
-
     return o
 end
 
@@ -869,8 +856,8 @@ function DesktopNotifyDesktopFlopTexas:setData(data)
     self.chip_enter_pot = chip_enter
 end
 
-DesktopNotifyDesktopTurnTexas = {
-}
+---------------------------------------
+DesktopNotifyDesktopTurnTexas = {}
 
 function DesktopNotifyDesktopTurnTexas:new(o)
     o = o or {}
@@ -878,7 +865,6 @@ function DesktopNotifyDesktopTurnTexas:new(o)
     self.__index = self
     o.card = nil
     o.chip_enter_pot = nil
-
     return o
 end
 
@@ -889,8 +875,8 @@ function DesktopNotifyDesktopTurnTexas:setData(data)
     self.chip_enter_pot = chip_enter
 end
 
-DesktopNotifyDesktopRiverTexas = {
-}
+---------------------------------------
+DesktopNotifyDesktopRiverTexas = {}
 
 function DesktopNotifyDesktopRiverTexas:new(o)
     o = o or {}
@@ -898,7 +884,6 @@ function DesktopNotifyDesktopRiverTexas:new(o)
     self.__index = self
     o.card = nil
     o.chip_enter_pot = nil
-
     return o
 end
 
@@ -909,8 +894,8 @@ function DesktopNotifyDesktopRiverTexas:setData(data)
     self.chip_enter_pot = chip_enter
 end
 
-DesktopNotifyDesktopShowdownTexas = {
-}
+---------------------------------------
+DesktopNotifyDesktopShowdownTexas = {}
 
 function DesktopNotifyDesktopShowdownTexas:new(o)
     o = o or {}
@@ -919,7 +904,6 @@ function DesktopNotifyDesktopShowdownTexas:new(o)
     o.list_playerholecard = nil
     o.list_carddata_left = nil
     o.chip_enter_pot = nil
-
     return o
 end
 
@@ -937,8 +921,8 @@ function DesktopNotifyDesktopShowdownTexas:setData(data)
     self.chip_enter_pot = chip_enter
 end
 
-DesktopNotifyGameEndTexas = {
-}
+---------------------------------------
+DesktopNotifyGameEndTexas = {}
 
 function DesktopNotifyGameEndTexas:new(o)
     o = o or {}
@@ -949,7 +933,6 @@ function DesktopNotifyGameEndTexas:new(o)
     o.rebegin_tm = 0.0
     o.list_allplayer_adddata = nil
     o.list_player_state = nil
-
     return o
 end
 
@@ -984,8 +967,8 @@ function DesktopNotifyGameEndTexas:setData(data)
     self.list_player_state = real_l
 end
 
-DesktopNotifyPlayerPushStackTexas = {
-}
+---------------------------------------
+DesktopNotifyPlayerPushStackTexas = {}
 
 function DesktopNotifyPlayerPushStackTexas:new(o)
     o = o or {}
@@ -993,7 +976,6 @@ function DesktopNotifyPlayerPushStackTexas:new(o)
     self.__index = self
     o.player_guid = nil
     o.stack = 0
-
     return o
 end
 
@@ -1002,8 +984,8 @@ function DesktopNotifyPlayerPushStackTexas:setData(data)
     self.stack = data[2]
 end
 
-PlayerStateDataTexas = {
-}
+---------------------------------------
+PlayerStateDataTexas = {}
 
 function PlayerStateDataTexas:new(o)
     o = o or {}
@@ -1012,7 +994,6 @@ function PlayerStateDataTexas:new(o)
     o.player_guid = nil
     o.state = 0
     o.action = 0
-
     return o
 end
 
@@ -1022,15 +1003,14 @@ function PlayerStateDataTexas:setData(data)
     self.action = data[3]
 end
 
-DesktopNotifyPlayerStateChangeTexas = {
-}
+---------------------------------------
+DesktopNotifyPlayerStateChangeTexas = {}
 
 function DesktopNotifyPlayerStateChangeTexas:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.list_playerstate = nil
-
     return o
 end
 

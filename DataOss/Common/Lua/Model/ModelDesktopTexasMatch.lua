@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 MatchTexasProcessType = {
     Fifty = 0, -- 50%
     Thirty = 1, -- 30%
@@ -63,7 +64,9 @@ MatchTexasRaiseBlindType = {
 --    self.ProcessType = data[1]
 --end
 
+---------------------------------------
 BMatchTexasPlayerFinishedNotify = {} -- 比赛桌，本人比赛结束信息
+
 function BMatchTexasPlayerFinishedNotify:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -76,7 +79,6 @@ function BMatchTexasPlayerFinishedNotify:new(o)
     o.RewardGold = -1  -- 本人获得的金币奖励，小于等于0则不提示
     o.RewardDiamond = -1 -- 本人获得的钻石奖励，小于等于0则不提示
     o.ListRewardItemId = nil -- 本人获得的道具奖励，可以为null
-
     return o
 end
 
@@ -91,22 +93,22 @@ function BMatchTexasPlayerFinishedNotify:setData(data)
     self.ListRewardItemId = data[8]
 end
 
+---------------------------------------
 --获取赛事列表响应
 BMatchTexasGetListResponse = {}
+
 function BMatchTexasGetListResponse:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.ListMatchTexasInfo = nil
     o.ListMyMatch = nil
-
     return o
 end
 
 function BMatchTexasGetListResponse:setData(data)
     self.ListMatchTexasInfo = {}
-    if (data[1] ~= nil and #data[1] > 0)
-    then
+    if (data[1] ~= nil and #data[1] > 0) then
         for i = 1, #data[1] do
             local temp_matchInfo = BMatchTexasInfo:new(nil)
             temp_matchInfo:setData(data[1][i])
@@ -118,7 +120,9 @@ function BMatchTexasGetListResponse:setData(data)
     self.ListMyMatch = data[2]
 end
 
+---------------------------------------
 BMatchTexasPlayerInfo = {}
+
 function BMatchTexasPlayerInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -127,7 +131,6 @@ function BMatchTexasPlayerInfo:new(o)
     o.Score = 0 --记分牌
     o.RebuyCount = 0 --已重购次数
     o.AddonCount = 0 --已增购信息次数
-
     return o
 end
 
@@ -138,7 +141,10 @@ function BMatchTexasPlayerInfo:setData(data)
     self.AddonCount = data[4]
 end
 
-BMatchTexasPlayerRankingInfo = {} -- 赛事中排名表中的玩家信息
+---------------------------------------
+-- 赛事中排名表中的玩家信息
+BMatchTexasPlayerRankingInfo = {}
+
 function BMatchTexasPlayerRankingInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -149,7 +155,6 @@ function BMatchTexasPlayerRankingInfo:new(o)
     o.Icon = "" --用于玩家头像显示
     o.Ranking = 0 --名次
     o.Score = 0 --记分牌
-
     return o
 end
 
@@ -162,7 +167,9 @@ function BMatchTexasPlayerRankingInfo:setData(data)
     self.Score = data[6]
 end
 
+---------------------------------------
 BMatchTexasPlayerNumUpdate = {}
+
 function BMatchTexasPlayerNumUpdate:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -177,7 +184,9 @@ function BMatchTexasPlayerNumUpdate:setData(data)
     self.PlayerNum = data[2]
 end
 
+---------------------------------------
 BMatchTexasInfo = {}--赛事信息
+
 function BMatchTexasInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -205,7 +214,6 @@ function BMatchTexasInfo:new(o)
     o.TotalRewardGold = 0 --总金币奖励
     o.SeatNum = nil --座位数
     o.RaiseBlindTbInfo = nil --升盲表静态信息
-
     return o
 end
 
@@ -232,15 +240,16 @@ function BMatchTexasInfo:setData(data)
     self.IsSnowballReward = data[20]
     self.TotalRewardGold = data[21]
     self.SeatNum = data[22]
-    if (data[23] ~= nil)
-    then
+    if (data[23] ~= nil) then
         local raiseBlindInfo = BMatchTexasRaiseBlindTbInfo:new(nil)
         raiseBlindInfo:setData(data[23])
         self.RaiseBlindTbInfo = raiseBlindInfo
     end
 end
 
+---------------------------------------
 BMatchTexasMoreInfo = {}--赛事详细信息，点击赛事列表Item后，弹出的赛事详细信息对话框
+
 function BMatchTexasMoreInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -258,8 +267,7 @@ function BMatchTexasMoreInfo:new(o)
 end
 
 function BMatchTexasMoreInfo:setData(data)
-    if data[1] ~= nil
-    then
+    if data[1] ~= nil then
         local match_info = BMatchTexasInfo:new(nil)
         match_info:setData(data[1])
         self.Info = match_info
@@ -270,8 +278,7 @@ function BMatchTexasMoreInfo:setData(data)
     self.CreatePlayerGuid = data[5]
     self.CreatePlayerNickName = data[6]
     self.CreatePlayerAccId = data[7]
-    if (data[8] ~= nil)
-    then
+    if (data[8] ~= nil) then
         local realtimeMoreInfo = BMatchTexasRealtimeMoreInfo:new(nil)
         realtimeMoreInfo:setData(data[8])
         self.RealtimeMoreInfo = realtimeMoreInfo
@@ -281,6 +288,7 @@ function BMatchTexasMoreInfo:setData(data)
     self.Reward = reward
 end
 
+---------------------------------------
 -- 比赛奖励信息       
 BMatchTexasReward = {}
 
@@ -297,19 +305,18 @@ end
 function BMatchTexasReward:setData(data)
     self.SnowballTotalReward = data[1]
     self.SnowballTotalRewardCurrent = data[2]
-    if (#data[3] > 0)
-    then
+    if (#data[3] > 0) then
         for i = 1, #data[3] do
             local temp = BMatchTexasRewardItem:new(nil)
             temp:setData(data[3][i])
-            if (temp.RankingBegin ~= 0)
-            then
+            if (temp.RankingBegin ~= 0) then
                 table.insert(self.ListReward, temp)
             end
         end
     end
 end
 
+---------------------------------------
 BMatchTexasRewardItem = {}
 function BMatchTexasRewardItem:new(o)
     o = o or {}
@@ -331,7 +338,9 @@ function BMatchTexasRewardItem:setData(data)
     self.ItemId = data[5]
 end
 
+---------------------------------------
 BMatchTexasRealtimeInfo = {}--升盲表实时信息
+
 function BMatchTexasRealtimeInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -344,9 +353,7 @@ function BMatchTexasRealtimeInfo:new(o)
     o.CurrentRaiseBlindTbId = 0 -- 当前升盲表TbId
     o.RaiseBlindLeftSecond = 0 -- 升盲倒计时（秒数）
     o.RaiseBlindIdNext = 0 -- 接下来一句使用的升盲表Id，RaiseBlindId！=RaiseBlindIdNext则下局升盲
-
     --o.CurrentRaiseBlindTbId = 0 --升盲表当前TbId
-
     --o.CurrentRaiseBlindSb = 0 -- 升盲表当前Sb
     --o.CurrentRaiseBlindBb = 0 --升盲表当前BB
     --o.CurrentRaiseBlindAnte = 0 --升盲表当前Ante
@@ -354,7 +361,6 @@ function BMatchTexasRealtimeInfo:new(o)
     --o.NextRaiseBlindSb = 0 --升盲表下一个Sb
     --o.NextRaiseBlindBb = 0 -- 升盲表下一个BB
     --o.NextRaiseBlindAnte = 0 -- 升盲表下一个Ante
-
     return o
 end
 
@@ -367,7 +373,6 @@ function BMatchTexasRealtimeInfo:setData(data)
     self.CurrentRaiseBlindTbId = data[6]
     self.RaiseBlindLeftSecond = data[7]
     self.RaiseBlindIdNext = data[8]
-
     --self.CurrentRaiseBlindTbId = data[7]
     --self.CurrentRaiseBlindSb = data[8]
     --self.CurrentRaiseBlindBb = data[9]
@@ -378,7 +383,9 @@ function BMatchTexasRealtimeInfo:setData(data)
     --self.NextRaiseBlindAnte = data[14]
 end
 
+---------------------------------------
 BMatchTexasRaiseBlindTbInfo = {}--升盲表静态信息
+
 function BMatchTexasRaiseBlindTbInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -399,14 +406,12 @@ end
 
 function BMatchTexasRaiseBlindTbInfo:setData(data)
     self.BlindType = data[1]
-    if (data[2] < 1)
-    then
+    if (data[2] < 1) then
         data[2] = 1
     end
     self.BeginId = data[2]
     local raise_blindTable = TbDataHelper:GetAllTexasRaiseBlindsByType(self.BlindType)
-    if (data[3] > #raise_blindTable)
-    then
+    if (data[3] > #raise_blindTable) then
         data[3] = #raise_blindTable
     end
     self.EndId = data[3]
@@ -419,14 +424,15 @@ function BMatchTexasRaiseBlindTbInfo:setData(data)
     self.RaiseBlindTmSpan = data[10]
 end
 
+---------------------------------------
 BMatchTexasRealtimeMoreInfo = {}--赛事实时详细信息
+
 function BMatchTexasRealtimeMoreInfo:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.Info = nil -- 右上角实时简要信息
     o.ListPlayerRanking = nil -- 玩家排名表
-
     return o
 end
 
@@ -451,7 +457,9 @@ function BMatchTexasRealtimeMoreInfo:setData(data)
     self.ListPlayerRanking = list_ranking
 end
 
+---------------------------------------
 BDesktopSnapshotMatchTexasMyInfo = {}
+
 function BDesktopSnapshotMatchTexasMyInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -460,7 +468,6 @@ function BDesktopSnapshotMatchTexasMyInfo:new(o)
     o.AddonNum = 0 --已增购次数，用掉的次数，非剩余次数
     o.GameOverCountDownLeftSec = -1 -- 输光可重购时，比赛结束剩余倒计时时间,小于0则不处于该状态
     o.ServerAutoAction = false -- 是否处于服务器托管操作状态
-
     return o
 end
 
@@ -471,7 +478,9 @@ function BDesktopSnapshotMatchTexasMyInfo:setData(data)
     self.ServerAutoAction = data[4]
 end
 
+---------------------------------------
 BDesktopSnapshotMatchTexas = {}--比赛桌相对普通桌快照中的额外信息
+
 function BDesktopSnapshotMatchTexas:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -484,7 +493,6 @@ function BDesktopSnapshotMatchTexas:new(o)
     o.Pause = false -- 是否处于暂停态
     o.PauseCountDownLeftSec = -1 -- 暂停态剩余倒计时秒数，小于0则不处于该状态
     o.MyInfo = nil --本人信息
-
     --o.RebuyNum = 0 --已重购次数，用掉的次数，非剩余次数
     --o.AddonNum = 0 --已增购次数，用掉的次数，非剩余次数
     --o.CanRebuyCount = 0 --可重购次数
@@ -492,7 +500,6 @@ function BDesktopSnapshotMatchTexas:new(o)
     --o.ServerAutoAction = false -- 是否处于服务器托管操作状态
     --o.GameOverCountDownLeftSec = -1 -- 输光可重购时，比赛结束剩余倒计时时间,小于0则不处于该状态
     --o.Wait4GetDesktopCountDownLeftSec = -1 -- 等待分桌剩余倒计时秒数，小于0则不处于该状态
-
     return o
 end
 
@@ -525,6 +532,7 @@ function BDesktopSnapshotMatchTexas:setData(data)
     self.MyInfo = m_info
 end
 
+---------------------------------------
 BMatchTexasCreateInfo = {}--赛事创建信息
 
 function BMatchTexasCreateInfo:new(o)
@@ -549,7 +557,6 @@ function BMatchTexasCreateInfo:new(o)
     o.SeatNum = nil --座位数
     o.CreatePlayerGuid = nil --创建赛事玩家Guid，公共赛事该Guid为空
     o.RaiseBlindTbInfo = nil --升盲表静态信息
-
     return o
 end
 
@@ -576,6 +583,7 @@ function BMatchTexasCreateInfo:getData4Pack()
     return p_d
 end
 
+---------------------------------------
 -- 赛事开始通知
 BMatchTexasStartNotify = {}
 
@@ -586,7 +594,6 @@ function BMatchTexasStartNotify:new(o)
     o.MatchGuid = nil
     o.MatchName = nil
     o.DtMatchBegin = nil --比赛开始时间
-
     return o
 end
 
@@ -596,6 +603,7 @@ function BMatchTexasStartNotify:setData(data)
     self.DtMatchBegin = CS.System.DateTime.Parse(data[3]):ToLocalTime()
 end
 
+---------------------------------------
 -- 赛事解散通知
 BMatchTexasPlayerGameEndNotify = {}
 
@@ -623,6 +631,7 @@ function BMatchTexasPlayerGameEndNotify:setData(data)
     self.ItemId = data[7]
 end
 
+---------------------------------------
 --报名结果响应
 BMatchTexasSignUpResponse = {}
 
@@ -635,7 +644,6 @@ function BMatchTexasSignUpResponse:new(o)
     o.ItemTbId = nil
     o.SignupFee = 0
     o.ServiceFee = 0
-
     return o
 end
 
@@ -647,6 +655,7 @@ function BMatchTexasSignUpResponse:setData(data)
     self.ServiceFee = data[5]
 end
 
+---------------------------------------
 --取消报名结果响应
 BMatchTexasCancelSignUpResponse = {}
 
@@ -660,7 +669,6 @@ function BMatchTexasCancelSignUpResponse:new(o)
     o.SignupFee = 0
     o.ServiceFee = 0
     o.MatchName = nil
-
     return o
 end
 
@@ -673,15 +681,16 @@ function BMatchTexasCancelSignUpResponse:setData(data)
     self.MatchName = data[6]
 end
 
+---------------------------------------
 --进入比赛结果响应
 BMatchTexasEnterResponse = {}
+
 function BMatchTexasEnterResponse:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.Result = nil
     o.MatchGuid = nil
-
     return o
 end
 
@@ -690,8 +699,10 @@ function BMatchTexasEnterResponse:setData(data)
     self.MatchGuid = data[2]
 end
 
+---------------------------------------
 --重购结果响应
 BMatchTexasRebuyResponse = {}
+
 function BMatchTexasRebuyResponse:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -700,7 +711,6 @@ function BMatchTexasRebuyResponse:new(o)
     o.MatchGuid = nil
     --o.RebuyNum = 0 -- 已重购次数，已用掉次数，非剩余次数
     --o.CurrentScore = 0 -- 购买后当前记分牌
-
     return o
 end
 
@@ -711,8 +721,10 @@ function BMatchTexasRebuyResponse:setData(data)
     --self.CurrentScore = data[4]
 end
 
+---------------------------------------
 --增购结果响应
 BMatchTexasAddonResponse = {}
+
 function BMatchTexasAddonResponse:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -721,7 +733,6 @@ function BMatchTexasAddonResponse:new(o)
     o.MatchGuid = nil
     --o.AddonNum = 0 -- 已增购次数，已用掉次数，非剩余次数
     --o.CurrentScore = 0 -- 购买后当前记分牌
-
     return o
 end
 
@@ -732,15 +743,16 @@ function BMatchTexasAddonResponse:setData(data)
     --self.CurrentScore = data[4]
 end
 
+---------------------------------------
 -- 比赛桌，暂停或开始通知
 BMatchTexasDesktopStartOrPauseNotify = {}
+
 function BMatchTexasDesktopStartOrPauseNotify:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.Pause = true
     o.PauseCountdownLeftSec = 0 -- 暂停剩余秒数
-
     return o
 end
 

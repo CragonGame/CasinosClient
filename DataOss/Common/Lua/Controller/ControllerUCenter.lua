@@ -10,6 +10,7 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
     self.__index = self
     if (self.Instance == nil) then
         self.Context = Context
+        self.CasinosContext = CS.Casinos.CasinosContext.Instance
         self.ControllerName = "Login"
         self.ControllerData = controller_data
         self.ControllerMgr = controller_mgr
@@ -17,7 +18,6 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
         self.UCenterDomain = self.Context.Cfg.UCenterDomain
         self.MbHelper = nil
         self.Instance = o
-        self.CasinosContext = CS.Casinos.CasinosContext.Instance
     end
     return self.Instance
 end

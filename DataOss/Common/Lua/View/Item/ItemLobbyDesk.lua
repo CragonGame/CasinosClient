@@ -15,7 +15,7 @@ function ItemLobbyDesk:new(o, item, desk_info, on_click_createdesktop, view_mgr)
     o.MapItemPlayerInfo = {}
     o.Item = CS.Casinos.LuaHelper.GObjectCastToGCom(item)
     o.DeskTopInfo = desk_info
-    o.ControllerDesk = o.Item:GetController("ControllerDesk")
+    o.ControllerDesktopTexas = o.Item:GetController("ControllerDesk")
     o.GBtnCreateLableL = o.Item:GetChild("BtnCreateTableL").asButton
     o.GBtnCreateLableL.onClick:Add(on_click_createdesktop)
     o.GBtnCreateLableR = o.Item:GetChild("BtnCreateTableR").asButton
@@ -56,13 +56,13 @@ function ItemLobbyDesk:init()
 
     self.GTextBlindBetTips.text = desk_play_chips
     if (self.DeskTopInfo.seat_num == TexasDesktopSeatNum.Five) then
-        self.ControllerDesk:SetSelectedIndex(0)
+        self.ControllerDesktopTexas:SetSelectedIndex(0)
         self.GGroupSeats = self.Item:GetChild("GroupSeatFive").asGroup
         self.SeatParentName = self.FiveSeatParent
         self.SeatCount = 5
     elseif (self.DeskTopInfo.seat_num == TexasDesktopSeatNum.Unlimited) then
     elseif (self.DeskTopInfo.seat_num == TexasDesktopSeatNum.Nine) then
-        self.ControllerDesk:SetSelectedIndex(1)
+        self.ControllerDesktopTexas:SetSelectedIndex(1)
         self.GGroupSeats = self.Item:GetChild("GroupSeatNine").asGroup
         self.SeatParentName = self.NineSeatParent
         self.SeatCount = 9

@@ -1,8 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 一条预设消息
 
+---------------------------------------
 ItemChatPresetMsg = {}
 
+---------------------------------------
 function ItemChatPresetMsg:new(o,g_co,msg,view_mgr)
 	o = o or {}
     setmetatable(o, self)

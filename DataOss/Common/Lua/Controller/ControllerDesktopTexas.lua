@@ -1,10 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerDesk = ControllerBase:new(nil)
+ControllerDesktopTexas = ControllerBase:new(nil)
 
 ---------------------------------------
-function ControllerDesk:new(o, controller_mgr, controller_data, guid)
+function ControllerDesktopTexas:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -18,7 +18,7 @@ function ControllerDesk:new(o, controller_mgr, controller_data, guid)
 end
 
 ---------------------------------------
-function ControllerDesk:OnCreate()
+function ControllerDesktopTexas:OnCreate()
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestLockSystemChat", self)
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestChangeDesk", self)
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickFlod", self)
@@ -113,7 +113,7 @@ function ControllerDesk:OnCreate()
 end
 
 ---------------------------------------
-function ControllerDesk:OnDestroy()
+function ControllerDesktopTexas:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -122,7 +122,7 @@ function ControllerDesk:OnDestroy()
 end
 
 ---------------------------------------
-function ControllerDesk:OnHandleEv(ev)
+function ControllerDesktopTexas:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestLockSystemChat") then
         self.LockSysChat = ev.requestLock
     elseif (ev.EventName == "EvEntityPlayerEnterDesktopH") then
@@ -144,14 +144,14 @@ function ControllerDesk:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerDesk:_timerUpdate(elapsed_tm)
+function ControllerDesktopTexas:_timerUpdate(elapsed_tm)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:Update(elapsed_tm)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cDesktopSnapshotNotify(snapshot_notify)
+function ControllerDesktopTexas:s2cDesktopSnapshotNotify(snapshot_notify)
     ViewHelper:UiEndWaiting()
 
     if (self.TimerUpdate == nil) then
@@ -189,63 +189,63 @@ function ControllerDesk:s2cDesktopSnapshotNotify(snapshot_notify)
 end
 
 ---------------------------------------
-function ControllerDesk:s2cPlayerDesktopPlayerEnterNotify(player_data)
+function ControllerDesktopTexas:s2cPlayerDesktopPlayerEnterNotify(player_data)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerEnter(player_data)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cPlayerDesktopPlayerLeaveNotify(player_guid)
+function ControllerDesktopTexas:s2cPlayerDesktopPlayerLeaveNotify(player_guid)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerLeave(player_guid)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cPlayerDesktopPlayerSitdown(sitdown_data)
+function ControllerDesktopTexas:s2cPlayerDesktopPlayerSitdown(sitdown_data)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerSitdown(sitdown_data)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cPlayerDesktopPlayerOb(player_guid)
+function ControllerDesktopTexas:s2cPlayerDesktopPlayerOb(player_guid)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerOb(player_guid)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cPlayerDesktopPlayerWaitWhile(player_guid)
+function ControllerDesktopTexas:s2cPlayerDesktopPlayerWaitWhile(player_guid)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerWaitWhile(player_guid)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cPlayerDesktopPlayerReturn(return_data)
+function ControllerDesktopTexas:s2cPlayerDesktopPlayerReturn(return_data)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:PlayerReturn(return_data)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cDesktopPlayerGiftChangeNotify(data)
+function ControllerDesktopTexas:s2cDesktopPlayerGiftChangeNotify(data)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:DesktopPlayerGiftChangeNotify(data)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cDesktopBuyAndSendItemNotify(data)
+function ControllerDesktopTexas:s2cDesktopBuyAndSendItemNotify(data)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:DesktopBuyAndSendItemNotify(data)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cPlayerDesktopChat(msg1)
+function ControllerDesktopTexas:s2cPlayerDesktopChat(msg1)
     if (self.DesktopBase ~= nil) then
         local msg = ChatMsg:new(nil)
         msg:setData(msg1)
@@ -254,21 +254,21 @@ function ControllerDesk:s2cPlayerDesktopChat(msg1)
 end
 
 ---------------------------------------
-function ControllerDesk:OnPlayerInvitePlayerEnterDesktopRequestResult(r)
+function ControllerDesktopTexas:OnPlayerInvitePlayerEnterDesktopRequestResult(r)
     if (r == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("InviteFriendToTable"))
     end
 end
 
 ---------------------------------------
-function ControllerDesk:s2cPlayerDesktopUser(info_user)
+function ControllerDesktopTexas:s2cPlayerDesktopUser(info_user)
     if (self.DesktopBase ~= nil) then
         self.DesktopBase:DesktopUser(info_user)
     end
 end
 
 ---------------------------------------
-function ControllerDesk:OnMatchTexasRequestRebuyResult(r)
+function ControllerDesktopTexas:OnMatchTexasRequestRebuyResult(r)
     if (self.DesktopBase == nil) then
         return
     end
@@ -292,7 +292,7 @@ function ControllerDesk:OnMatchTexasRequestRebuyResult(r)
 end
 
 ---------------------------------------
-function ControllerDesk:OnMatchTexasRequestAddonResult(r)
+function ControllerDesktopTexas:OnMatchTexasRequestAddonResult(r)
     if (self.DesktopBase == nil) then
         return
     end
@@ -317,7 +317,7 @@ function ControllerDesk:OnMatchTexasRequestAddonResult(r)
 end
 
 ---------------------------------------
-function ControllerDesk:OnMatchTexasGameOverNotify(r)
+function ControllerDesktopTexas:OnMatchTexasGameOverNotify(r)
     if (self.DesktopBase == nil) then
         return
     end
@@ -341,7 +341,7 @@ function ControllerDesk:OnMatchTexasGameOverNotify(r)
 end
 
 ---------------------------------------
-function ControllerDesk:requestInvitePlayerEnterDesktop(friend_guid, desktop_guid, desktop_filter, player_num)
+function ControllerDesktopTexas:requestInvitePlayerEnterDesktop(friend_guid, desktop_guid, desktop_filter, player_num)
     local invite = InvitePlayerEnterDesktop:new(nil)
     invite.player_guid = friend_guid
     invite.player_nickname = ""
@@ -354,14 +354,14 @@ function ControllerDesk:requestInvitePlayerEnterDesktop(friend_guid, desktop_gui
 end
 
 ---------------------------------------
-function ControllerDesk:OnPlayerLeaveDesktopNotify()
+function ControllerDesktopTexas:OnPlayerLeaveDesktopNotify()
     ViewHelper:UiEndWaiting()
     self:clearDesktop(true)
     self.ControllerPlayer:requestGetOnlinePlayerNum()
 end
 
 ---------------------------------------
-function ControllerDesk:clearDesktop(need_createmainui)
+function ControllerDesktopTexas:clearDesktop(need_createmainui)
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -374,7 +374,7 @@ function ControllerDesk:clearDesktop(need_createmainui)
 end
 
 ---------------------------------------
-function ControllerDesk:addDesktopMsg(sender_etguid, sender_name, sender_viplevel, chat_content)
+function ControllerDesktopTexas:addDesktopMsg(sender_etguid, sender_name, sender_viplevel, chat_content)
     if ((sender_etguid == nil or sender_etguid == "") and self.LockSysChat) then
         return
     end
@@ -398,8 +398,8 @@ function ControllerDesk:addDesktopMsg(sender_etguid, sender_name, sender_vipleve
 end
 
 ---------------------------------------
-function ControllerDesk:createDesktop(desktop_factory_name)
-    self.ControllerPlayer:destroyMainUi()
+function ControllerDesktopTexas:createDesktop(desktop_factory_name)
+    self.ControllerPlayer:DestroyMainUi()
     if (self.DesktopBase ~= nil) then
         self:clearDesktop(false)
     end
@@ -409,25 +409,25 @@ function ControllerDesk:createDesktop(desktop_factory_name)
 end
 
 ---------------------------------------
-function ControllerDesk:RequestSendMsg(chat_msg)
+function ControllerDesktopTexas:RequestSendMsg(chat_msg)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.DesktopChatRequest, chat_msg)
 end
 
 ---------------------------------------
-function ControllerDesk:RequestPlayerWaitWhile()
+function ControllerDesktopTexas:RequestPlayerWaitWhile()
     local rpc = self.ControllerMgr.RPC
     rpc:RPC0(CommonMethodType.DesktopPlayerWaitWhileRequest)
 end
 
 ---------------------------------------
-function ControllerDesk:RequestPlayerOb()
+function ControllerDesktopTexas:RequestPlayerOb()
     local rpc = self.ControllerMgr.RPC
     rpc:RPC0(CommonMethodType.DesktopPlayerObRequest)
 end
 
 ---------------------------------------
-function ControllerDesk:RequestPlayerReturn(data)
+function ControllerDesktopTexas:RequestPlayerReturn(data)
     local rpc = self.ControllerMgr.RPC
     local m = {}
     m["Stack"] = tostring(data)
@@ -435,13 +435,13 @@ function ControllerDesk:RequestPlayerReturn(data)
 end
 
 ---------------------------------------
-function ControllerDesk:RequestPlayerSitdown(sitdown_info)
+function ControllerDesktopTexas:RequestPlayerSitdown(sitdown_info)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.DesktopPlayerSitdownRequest, sitdown_info:getData4Pack())
 end
 
 ---------------------------------------
-function ControllerDesk:UserRequest(fac_name, method_info)
+function ControllerDesktopTexas:UserRequest(fac_name, method_info)
     local rpc = self.ControllerMgr.RPC
     local user = MethodInfoDesktopUser:new(nil)
     user.FactoryName = fac_name
@@ -451,35 +451,35 @@ function ControllerDesk:UserRequest(fac_name, method_info)
 end
 
 ---------------------------------------
-function ControllerDesk:MatchTexasRequestRebuy(match_guid)
+function ControllerDesktopTexas:MatchTexasRequestRebuy(match_guid)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.MatchTexasRequestRebuy, match_guid)
 end
 
 ---------------------------------------
-function ControllerDesk:MatchTexasRequestAddon(match_guid)
+function ControllerDesktopTexas:MatchTexasRequestAddon(match_guid)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.MatchTexasRequestAddon, match_guid)
 end
 
 ---------------------------------------
-function ControllerDesk:MatchTexasRequestGiveUpRebuyOrAddon(match_guid)
+function ControllerDesktopTexas:MatchTexasRequestGiveUpRebuyOrAddon(match_guid)
     local rpc = self.ControllerMgr.RPC
     rpc:RPC1(CommonMethodType.MatchTexasRequestGiveUpRebuyOrAddon, match_guid)
 end
 
 ---------------------------------------
-function ControllerDesk:regDesktopBaseFactory(desktop_fac)
+function ControllerDesktopTexas:regDesktopBaseFactory(desktop_fac)
     self.MapDesktopBaseFac[desktop_fac:GetName()] = desktop_fac
 end
 
 ---------------------------------------
-function ControllerDesk:GetDesktopBaseFactory(fac_name)
+function ControllerDesktopTexas:GetDesktopBaseFactory(fac_name)
     return self.MapDesktopBaseFac[fac_name]
 end
 
 ---------------------------------------
-function ControllerDesk:GetDesktopHelperBase(fac_name)
+function ControllerDesktopTexas:GetDesktopHelperBase(fac_name)
     return self.MapDesktopHelper[fac_name]
 end
 
@@ -491,12 +491,12 @@ function ControllerDesktopTexasFactory:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.ControllerName = "Desktop"
+    self.ControllerName = "DesktopTexas"
     return o
 end
 
 ---------------------------------------
 function ControllerDesktopTexasFactory:createController(controller_mgr, controller_data, guid)
-    local controller = ControllerDesk:new(nil, controller_mgr, controller_data, guid)
+    local controller = ControllerDesktopTexas:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

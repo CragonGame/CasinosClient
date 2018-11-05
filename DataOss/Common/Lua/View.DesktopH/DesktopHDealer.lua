@@ -71,16 +71,14 @@ function DesktopHDealer:createDealerBase(factory_name)
 end
 
 ---------------------------------------
-function DesktopHDealer:createSinglePotCards(controller_desktoph, view_desktoph, dealer_pos, card_parent,
-                                             listener, is_bankplayer)
+function DesktopHDealer:createSinglePotCards(controller_desktoph, view_desktoph, dealer_pos, card_parent, listener, is_bankplayer)
     local cards = DesktopHCards:new(nil, controller_desktoph, view_desktoph, self, dealer_pos, card_parent, listener, is_bankplayer, self.FacName)
     table.insert(self.ListDesktopHSinglePotCards, cards)
     return cards
 end
 
 ---------------------------------------
-function DesktopHDealer:dealCard(deal_cardcount, move_cardwidth_percent,
-                                 map_userdata, auto_showcard)
+function DesktopHDealer:dealCard(deal_cardcount, move_cardwidth_percent, map_userdata, auto_showcard)
     if (self.DesktopHDealerBase ~= nil) then
         self.DesktopHDealerBase:dealBegin(
                 function()

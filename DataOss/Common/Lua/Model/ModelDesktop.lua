@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 MethodInfoDesktopUser = {}
 
 function MethodInfoDesktopUser:new(o)
@@ -24,6 +25,7 @@ function MethodInfoDesktopUser:getData4Pack()
     return t
 end
 
+---------------------------------------
 PrivateDesktopCreateInfo = {}
 
 function PrivateDesktopCreateInfo:new(o)
@@ -44,6 +46,7 @@ function PrivateDesktopCreateInfo:getData4Pack()
     return p_d
 end
 
+---------------------------------------
 DesktopEnterRequest = {}
 
 function DesktopEnterRequest:new(o)
@@ -68,6 +71,7 @@ function DesktopEnterRequest:getData4Pack()
     return p_d
 end
 
+---------------------------------------
 DesktopNotifyPlayerCurrentGiftChange = {}
 
 function DesktopNotifyPlayerCurrentGiftChange:new(o)
@@ -76,10 +80,10 @@ function DesktopNotifyPlayerCurrentGiftChange:new(o)
     self.__index = self
     o.player_guid = nil
     o.item_data = {}
-
     return o
 end
 
+---------------------------------------
 DesktopSnapshotData = {}
 
 function DesktopSnapshotData:new(o)
@@ -89,7 +93,6 @@ function DesktopSnapshotData:new(o)
     o.FactoryName = nil
     o.DesktopGuid = nil
     o.DesktopData = nil
-
     return o
 end
 
@@ -101,6 +104,7 @@ function DesktopSnapshotData:setData(data)
     end
 end
 
+---------------------------------------
 DesktopSnapshotDataNotify = {}
 
 function DesktopSnapshotDataNotify:new(o)
@@ -109,7 +113,6 @@ function DesktopSnapshotDataNotify:new(o)
     self.__index = self
     o.DesktopSnapshotData = nil
     o.IsInit = false
-
     return o
 end
 
@@ -118,6 +121,7 @@ function DesktopSnapshotDataNotify:setData(data)
     self.IsInit = data[2]
 end
 
+---------------------------------------
 DesktopFilter = {}
 
 function DesktopFilter:new(o)
@@ -127,7 +131,6 @@ function DesktopFilter:new(o)
     o.FactoryName = nil
     o.FilterData = nil
     o.IncludeFull = false
-
     return o
 end
 
@@ -142,10 +145,10 @@ function DesktopFilter:getData4Pack()
     table.insert(p_d, self.FactoryName)
     table.insert(p_d, self.FilterData)
     table.insert(p_d, self.IncludeFull)
-
     return p_d
 end
 
+---------------------------------------
 DesktopInfo = {}
 
 function DesktopInfo:new(o)
@@ -155,10 +158,10 @@ function DesktopInfo:new(o)
     o.FactoryName = nil
     o.DesktopGuid = nil
     o.DesktopData = nil
-
     return o
 end
 
+---------------------------------------
 DesktopSitdownRequest = {}
 
 function DesktopSitdownRequest:new(o)
@@ -169,7 +172,6 @@ function DesktopSitdownRequest:new(o)
     o.seat_index = 0
     o.user_data1 = nil
     o.user_data2 = nil
-
     return o
 end
 
@@ -182,6 +184,7 @@ function DesktopSitdownRequest:getData4Pack()
     return t
 end
 
+---------------------------------------
 PlayerSitdownData = {}
 
 function PlayerSitdownData:new(o)
@@ -192,7 +195,6 @@ function PlayerSitdownData:new(o)
     o.seat_index = nil
     o.user_data1 = nil
     o.user_data2 = nil
-
     return o
 end
 
@@ -203,6 +205,7 @@ function PlayerSitdownData:setData(data)
     self.user_data2 = data[4]
 end
 
+---------------------------------------
 PlayerReturnData = {}
 
 function PlayerReturnData:new(o)
@@ -212,7 +215,6 @@ function PlayerReturnData:new(o)
     o.player_guid = nil
     o.user_data1 = nil
     o.user_data2 = nil
-
     return o
 end
 
@@ -222,6 +224,7 @@ function PlayerReturnData:setData(data)
     self.user_data2 = data[3]
 end
 
+---------------------------------------
 DesktopPlayerInfo = {}
 
 function DesktopPlayerInfo:new(o)
@@ -235,10 +238,10 @@ function DesktopPlayerInfo:new(o)
     o.chip = 0
     o.icon = nil
     o.is_bot = false
-
     return o
 end
 
+---------------------------------------
 DesktopPushStackResult = {}
 
 function DesktopPushStackResult:new(o)
@@ -248,10 +251,10 @@ function DesktopPushStackResult:new(o)
     o.result = nil
     o.stack_left = 0
     o.factory_name = nil
-
     return o
 end
 
+---------------------------------------
 InvitePlayerEnterDesktop = {}
 
 function InvitePlayerEnterDesktop:new(o)
@@ -264,7 +267,6 @@ function InvitePlayerEnterDesktop:new(o)
     o.desktop_guid = nil
     o.desktop_filter = nil
     o.player_num = 0
-
     return o
 end
 
@@ -287,10 +289,10 @@ function InvitePlayerEnterDesktop:getData4Pack()
     table.insert(t, self.desktop_guid)
     table.insert(t, self.desktop_filter)
     table.insert(t, self.player_num)
-
     return t
 end
 
+---------------------------------------
 PlayerDataDesktop = {}
 
 function PlayerDataDesktop:new(o)
@@ -305,7 +307,6 @@ function PlayerDataDesktop:new(o)
     o.Gender = true
     o.PlayerId = 0
     o.PlayerData = nil
-
     return o
 end
 

@@ -1,10 +1,13 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 IMOfflineEventId = {
     AddFriendRequest = 0, -- 事件，收到对方添加好友请求
 }
 
+---------------------------------------
 IMOfflineEvent = {}
+
 function IMOfflineEvent:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -13,7 +16,6 @@ function IMOfflineEvent:new(o)
     o.EvId = nil
     o.Dt = nil
     o.MapData = 0
-
     return o
 end
 
@@ -30,6 +32,5 @@ function IMOfflineEvent:getData4Pack()
     table.insert(temp, self.EvId)
     table.insert(temp, self.Dt)
     table.insert(temp, self.MapData)
-
     return temp
 end

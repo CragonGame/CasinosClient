@@ -86,7 +86,7 @@ end
 
 ---------------------------------------
 function ViewDesktopHMenu:_onClickBtnReturn()
-    local ev = self.ViewMgr:GetEv("EvUiClickLeaveDesktopHundred")
+    local ev = self.ViewMgr:GetEv("EvViewClickLeaveDesktopH")
     if (ev == nil) then
         ev = EvUiClickLeaveDesktopHundred:new(nil)
     end

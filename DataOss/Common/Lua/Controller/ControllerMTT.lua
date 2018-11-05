@@ -9,6 +9,7 @@ function ControllerMTT:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -28,7 +29,7 @@ function ControllerMTT:OnCreate()
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestEnterMatch", self)
     self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestCancelSignupMatch", self)
     self.RPC = self.ControllerMgr.RPC
-    self.ControllerDesktop = self.ControllerMgr:GetController("Desktop")
+    self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
     self.MC = CommonMethodType
     self.RPC:RegRpcMethod1(self.MC.MatchTexasRequestGetListResult, function(matchTexasGetListResponse)
         self:s2cMatchTexasRequestGetListResult(matchTexasGetListResponse)

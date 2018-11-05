@@ -629,7 +629,7 @@ function ViewShowFriendDetail:onClickBtnJoin()
                     ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("PlayerNotInTable"))
                 end
             elseif (self.CurrentFriendInfo.PlayerPlayState.DesktopType == DesktopTypeEx.DesktopH) then
-                local ev = self.ViewMgr:GetEv("EvUiClickDesktopHundred")
+                local ev = self.ViewMgr:GetEv("EvViewClickDesktopH")
                 if (ev == nil) then
                     ev = EvUiClickDesktopHundred:new(nil)
                 end

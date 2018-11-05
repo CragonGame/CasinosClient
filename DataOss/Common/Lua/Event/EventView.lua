@@ -429,7 +429,7 @@ function EvUiDesktopHStandUp:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvUiDesktopHStandUp"
+    self.EventName = "EvViewDesktopHStandup"
     self.item_id = nil
     self.to_etguid = nil
     return o
@@ -2356,7 +2356,7 @@ function EvUiClickDesktopHundred:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvUiClickDesktopHundred"
+    self.EventName = "EvViewClickDesktopH"
     self.factory_name = ""
     return o
 end
@@ -2399,7 +2399,7 @@ function EvUiClickLeaveDesktopHundred:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvUiClickLeaveDesktopHundred"
+    self.EventName = "EvViewClickLeaveDesktopH"
     return o
 end
 
@@ -2521,7 +2521,7 @@ function EvUiDesktopHSeatDown:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvUiDesktopHSeatDown"
+    self.EventName = "EvViewDesktopHSitdown"
     self.seat_index = 0
     self.min_golds = 0
     return o
@@ -2551,7 +2551,7 @@ function EvDesktopHClickBetOperateType:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvDesktopHClickBetOperateType"
+    self.EventName = "EvViewDesktopHClickBetOperateType"
     self.tb_bet_operateid = nil
     return o
 end

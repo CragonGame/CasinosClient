@@ -78,7 +78,7 @@ end
 
 ---------------------------------------
 function ItemDesktopHBetOperate:_onClick()
-    local ev = self.ViewMgr:GetEv("EvDesktopHClickBetOperateType")
+    local ev = self.ViewMgr:GetEv("EvViewDesktopHClickBetOperateType")
     if (ev == nil) then
         ev = EvDesktopHClickBetOperateType:new(nil)
     end

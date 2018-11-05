@@ -1,6 +1,7 @@
 -- Copyright(c) Cragon. All rights reserved.
 --成长奖励，快照
 
+---------------------------------------
 BGrowData = {}
 
 function BGrowData:new(o)
@@ -22,8 +23,7 @@ function BGrowData:setData(data)
     self.NextGetRewardLeftTm = data[3]
     self.NextGetRewardGold = data[4]
     self.CurLevel = data[5]
-    if (#data[6] > 0)
-    then
+    if (#data[6] > 0) then
         for i = 1, #data[6] do
             local temp = BGetGrowRecored:new(nil)
             temp:setData(data[6][i])
@@ -32,8 +32,10 @@ function BGrowData:setData(data)
     end
 end
 
+---------------------------------------
 --成长奖励，个人领取记录
 BGetGrowRecored = {}
+
 function BGetGrowRecored:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -47,4 +49,3 @@ function BGetGrowRecored:setData(data)
     self.Gold = data[1] --领取金币
     self.Dt = data[2] --领取时间
 end
-	

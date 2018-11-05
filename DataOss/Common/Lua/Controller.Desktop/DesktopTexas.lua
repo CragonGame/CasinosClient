@@ -24,7 +24,7 @@ function DesktopTexas:new(o, co_mgr)
     o.ControllerPlayer = co_mgr:GetController("Player")
     o.ControllerActor = co_mgr:GetController("Actor")
     o.ControllerLobby = co_mgr:GetController("Lobby")
-    o.ControllerDesktop = co_mgr:GetController("Desktop")
+    o.ControllerDesktop = co_mgr:GetController("DesktopTexas")
     o.CurrentUnSendDesktopMsg = nil
     o.MapAllPlayer = {}
     o.MePlayer = nil

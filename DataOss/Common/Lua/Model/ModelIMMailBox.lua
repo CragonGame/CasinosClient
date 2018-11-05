@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 MailType = {
     Normal = 0,
     Event = 1,
@@ -24,7 +25,9 @@ MailOperateType = {
     Delete = 3, -- 删除邮件（包括领取附件）
 }
 
+---------------------------------------
 MailAttachment = {}
+
 function MailAttachment:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -32,7 +35,6 @@ function MailAttachment:new(o)
     o.ListItem = nil
     o.Gold = 0
     o.Diamond = 0
-
     return o
 end
 
@@ -47,11 +49,12 @@ function MailAttachment:getData4Pack()
     table.insert(temp, self.ListItem)
     table.insert(temp, self.Gold)
     table.insert(temp, self.Diamond)
-
     return temp
 end
 
+---------------------------------------
 MailOperateRequestResult = {}
+
 function MailOperateRequestResult:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -60,7 +63,6 @@ function MailOperateRequestResult:new(o)
     o.MailGuid = nil
     o.OperateType = 0
     o.Attachment = nil
-
     return o
 end
 
@@ -84,11 +86,12 @@ function MailOperateRequestResult:getData4Pack()
     if self.Attachment ~= nil then
         table.insert(temp, self.Attachment:getData4Pack())
     end
-
     return temp
 end
 
+---------------------------------------
 MailClient = {}
+
 function MailClient:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -105,7 +108,6 @@ function MailClient:new(o)
     o.Content = nil
     o.CreateTime = nil
     o.Attachment = nil
-
     return o
 end
 
@@ -145,6 +147,5 @@ function MailClient:getData4Pack()
     if self.Attachment ~= nil then
         table.insert(temp, self.Attachment:getData4Pack())
     end
-
     return temp
 end

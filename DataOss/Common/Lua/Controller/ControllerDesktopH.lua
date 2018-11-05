@@ -9,6 +9,7 @@ function ControllerDesktopH:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -19,11 +20,11 @@ end
 
 ---------------------------------------
 function ControllerDesktopH:OnCreate()
-    self.ViewMgr:BindEvListener("EvUiClickDesktopHundred", self)
-    self.ViewMgr:BindEvListener("EvUiClickLeaveDesktopHundred", self)
-    self.ViewMgr:BindEvListener("EvDesktopHClickBetOperateType", self)
-    self.ViewMgr:BindEvListener("EvUiDesktopHSeatDown", self)
-    self.ViewMgr:BindEvListener("EvUiDesktopHStandUp", self)
+    self.ViewMgr:BindEvListener("EvViewClickDesktopH", self)
+    self.ViewMgr:BindEvListener("EvViewClickLeaveDesktopH", self)
+    self.ViewMgr:BindEvListener("EvViewDesktopHClickBetOperateType", self)
+    self.ViewMgr:BindEvListener("EvViewDesktopHSitdown", self)
+    self.ViewMgr:BindEvListener("EvViewDesktopHStandup", self)
     self.ViewMgr:BindEvListener("EvDesktopHClickBeBankPlayerBtn", self)
     self.ViewMgr:BindEvListener("EvEntityRequestGetDesktopHData", self)
     self.ViewMgr:BindEvListener("EvDesktopHClickStandPlayerBtn", self)
@@ -168,12 +169,12 @@ function ControllerDesktopH:OnHandleEv(ev)
         self.DesktopHBase:OnHandleEvent(ev)
     end
 
-    if (ev.EventName == "EvUiClickDesktopHundred") then
+    if (ev.EventName == "EvViewClickDesktopH") then
         ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
         self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestEnter, ev.factory_name)
-    elseif (ev.EventName == "EvUiClickLeaveDesktopHundred") then
+    elseif (ev.EventName == "EvViewClickLeaveDesktopH") then
         self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestLeave)
-    elseif (ev.EventName == "EvDesktopHClickBetOperateType") then
+    elseif (ev.EventName == "EvViewDesktopHClickBetOperateType") then
         -- 更换选择下注的预置筹码
         CS.UnityEngine.PlayerPrefs.SetInt("CurrentTbBetOperateIdDesktopH", ev.tb_bet_operateid)
         self.CurrentTbBetOperateId = ev.tb_bet_operateid
@@ -182,13 +183,12 @@ function ControllerDesktopH:OnHandleEv(ev)
             ev = EvEntityDesktopHCurrentBetOperateTypeChange:new(nil)
         end
         self.ControllerMgr.ViewMgr:SendEv(ev)
-    elseif (ev.EventName == "EvUiDesktopHSeatDown") then
+    elseif (ev.EventName == "EvViewDesktopHSitdown") then
         local min_golds = ev.min_golds
         if (min_golds > self.ControllerActor.PropGoldAcc:get()) then
             local tips = string.format(self.ViewMgr.LanMgr:getLanValue("SitDownFailedTips1"),
                     self.ViewMgr.LanMgr:getLanValue("Chip"),
-                    UiChipShowHelper:getGoldShowStr(min_golds,
-                            self.ControllerMgr.LanMgr.LanBase))
+                    UiChipShowHelper:getGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase))
             ViewHelper:UiShowMsgBox(tips,
                     function()
                         self.ControllerMgr.ViewMgr:CreateView("Shop")
@@ -207,7 +207,7 @@ function ControllerDesktopH:OnHandleEv(ev)
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("RequestSitSuccess"))
         end
         self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestSitdown, ev.seat_index)
-    elseif (ev.EventName == "EvUiDesktopHStandUp") then
+    elseif (ev.EventName == "EvViewDesktopHStandup") then
         self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestStandup)
     elseif (ev.EventName == "EvDesktopHClickBeBankPlayerBtn") then
         local exists = false
@@ -406,10 +406,10 @@ function ControllerDesktopH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_
     end
 
     self.CasinosContext:StopAllSceneSound()
-    self.ControllerPlayer:destroyMainUi()
-    local ui_desktoph = self.ControllerMgr.ViewMgr:GetView("DesktopH")
-    if (ui_desktoph == nil) then
-        ui_desktoph = self.ControllerMgr.ViewMgr:CreateView("DesktopH")
+    self.ControllerPlayer:DestroyMainUi()
+    local view_desktoph = self.ControllerMgr.ViewMgr:GetView("DesktopH")
+    if (view_desktoph == nil) then
+        view_desktoph = self.ControllerMgr.ViewMgr:CreateView("DesktopH")
     end
 
     local t_map_my_winlooseinfo = nil
@@ -421,7 +421,7 @@ function ControllerDesktopH:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_
             t_map_my_winlooseinfo[i] = w_l
         end
     end
-    ui_desktoph:InitDesktopH(d_d, map_my_betinfo, t_map_my_winlooseinfo)
+    view_desktoph:InitDesktopH(d_d, map_my_betinfo, t_map_my_winlooseinfo)
 end
 
 ---------------------------------------

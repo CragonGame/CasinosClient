@@ -10,6 +10,7 @@ function ControllerLobby:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -21,7 +22,7 @@ end
 function ControllerLobby:OnCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerIM = self.ControllerMgr:GetController("IM")
-    self.ControllerDesktop = self.ControllerMgr:GetController("Desktop")
+    self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.ViewMgr:BindEvListener("EvUiClickSearchDesk", self)
     self.ViewMgr:BindEvListener("EvUiClickSearchFriendsDesk", self)

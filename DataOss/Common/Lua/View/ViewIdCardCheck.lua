@@ -1,8 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 身份证验证对话框
 
+---------------------------------------
 ViewIdCardCheck = ViewBase:new()
 
+---------------------------------------
 function ViewIdCardCheck:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -14,10 +16,10 @@ function ViewIdCardCheck:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
-
     return o
 end
 
+---------------------------------------
 function ViewIdCardCheck:OnCreate()
     local com_shade = self.ComUi:GetChild("ComShade").asCom
     com_shade.onClick:Add(
@@ -34,7 +36,7 @@ function ViewIdCardCheck:OnCreate()
 
     local com_tips = self.ComUi:GetChild("ComInputName").asCom
     self.TextName = com_tips:GetChild("InputText").asTextField
-    self.TextName.promptText = string.format("[color=#999999]%s[/color]",self.ViewMgr.LanMgr:getLanValue("EnterName"))
+    self.TextName.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:getLanValue("EnterName"))
     self.TextName.onChanged:Set(
             function()
                 self:_checkIdCardInput()
@@ -43,7 +45,7 @@ function ViewIdCardCheck:OnCreate()
 
     local com_id = self.ComUi:GetChild("ComInputId").asCom
     self.TextId = com_id:GetChild("InputText").asTextField
-    self.TextId.promptText = string.format("[color=#999999]%s[/color]",self.ViewMgr.LanMgr:getLanValue("EnterIdCard"))
+    self.TextId.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:getLanValue("EnterIdCard"))
     self.TextId.onChanged:Set(
             function()
                 self:_checkIdCardInput()
@@ -52,11 +54,11 @@ function ViewIdCardCheck:OnCreate()
     self:_checkIdCardInput()
 end
 
+---------------------------------------
 function ViewIdCardCheck:onClickBtnOK()
     self.ViewMgr:DestroyView(self)
     local ev = self.ViewMgr:GetEv("EvCheckIdCard")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvCheckIdCard:new(nil)
     end
     ev.name = self.TextName.text
@@ -64,19 +66,18 @@ function ViewIdCardCheck:onClickBtnOK()
     self.ViewMgr:SendEv(ev)
 end
 
+---------------------------------------
 function ViewIdCardCheck:onClickBtnCancel()
     self.ViewMgr:DestroyView(self)
 end
 
+---------------------------------------
 function ViewIdCardCheck:_checkIdCardInput()
-    if (self.TextName == nil or self.TextId == nil)
-    then
+    if (self.TextName == nil or self.TextId == nil) then
         return
     end
 
-    if ((self.TextName ~= nil and string.len(self.TextName.text) > 0)
-            and (self.TextId ~= nil and string.len(self.TextId.text) > 0))
-    then
+    if ((self.TextName ~= nil and string.len(self.TextName.text) > 0) and (self.TextId ~= nil and string.len(self.TextId.text) > 0)) then
         self.BtnConfirm.alpha = 1
         self.BtnConfirm.enabled = true
     else
@@ -85,10 +86,12 @@ function ViewIdCardCheck:_checkIdCardInput()
     end
 end
 
+---------------------------------------
 ViewIdCardCheckFactory = ViewFactory:new()
 
+---------------------------------------
 function ViewIdCardCheckFactory:new(o, ui_package_name, ui_component_name,
-                               ui_layer, is_single, fit_screen)
+                                    ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -100,6 +103,7 @@ function ViewIdCardCheckFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewIdCardCheckFactory:CreateView()
     local view = ViewIdCardCheck:new(nil)
     return view

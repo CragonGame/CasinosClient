@@ -875,7 +875,7 @@ function ViewMain:onClickBtnDesktopH()
     self:hideMote()
     self.GTransitionShow:PlayReverse(
             function()
-                local ev = self.ViewMgr:GetEv("EvUiClickDesktopHundred")
+                local ev = self.ViewMgr:GetEv("EvViewClickDesktopH")
                 if (ev == nil)
                 then
                     ev = EvUiClickDesktopHundred:new(nil)

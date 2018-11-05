@@ -25,7 +25,7 @@ function ViewPlayerProfile:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
-    self.ControllerDeskTop = self.ViewMgr.ControllerMgr:GetController("Desktop")
+    self.ControllerDeskTop = self.ViewMgr.ControllerMgr:GetController("DesktopTexas")
     self.ControllerDeskTopH = self.ViewMgr.ControllerMgr:GetController("DesktopH")
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
@@ -481,7 +481,7 @@ end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickBtnStandup()
-    local ev = self.ViewMgr:GetEv("EvUiDesktopHStandUp")
+    local ev = self.ViewMgr:GetEv("EvViewDesktopHStandup")
     if (ev == nil) then
         ev = EvUiDesktopHStandUp:new(nil)
     end

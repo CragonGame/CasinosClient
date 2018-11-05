@@ -1,7 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 ViewMsgBox = ViewBase:new()
 
+---------------------------------------
 function ViewMsgBox:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -13,10 +15,10 @@ function ViewMsgBox:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
-
     return o
 end
 
+---------------------------------------
 function ViewMsgBox:OnCreate()
     ViewHelper:PopUi(self.ComUi)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -33,8 +35,7 @@ function ViewMsgBox:OnCreate()
             end
     )
     local text_title = self.ComUi:GetChild("TextTitle")
-    if (text_title ~= nil)
-    then
+    if (text_title ~= nil) then
         self.TextTitle = text_title.asTextField
     end
     local com_tips = self.ComUi:GetChild("ComTips").asCom
@@ -42,6 +43,7 @@ function ViewMsgBox:OnCreate()
     self.AutoTm = 0
 end
 
+---------------------------------------
 function ViewMsgBox:onUpdate(tm)
     if self.AutoTm > 0 then
         local auto_tm = self.AutoTm
@@ -61,18 +63,18 @@ function ViewMsgBox:onUpdate(tm)
     end
 end
 
+---------------------------------------
 function ViewMsgBox:showMsgBox1(title, tips, operate_action)
-    if (self.TextTitle ~= nil)
-    then
+    if (self.TextTitle ~= nil) then
         self.TextTitle.text = title
     end
     self.TextTips.text = tips
     self.ActionConfirm = operate_action
 end
 
+---------------------------------------
 function ViewMsgBox:showMsgBox2(title, tips, map_param, operate_action)
-    if (self.TextTitle ~= nil)
-    then
+    if (self.TextTitle ~= nil) then
         self.TextTitle.text = title
     end
     self.TextTips.text = tips
@@ -80,17 +82,20 @@ function ViewMsgBox:showMsgBox2(title, tips, map_param, operate_action)
     self.ActionConfirm2 = operate_action
 end
 
+---------------------------------------
 function ViewMsgBox:showMsgBox3(info, ok, cancel)
     self.TextTips.text = info
     self.ActionOk = ok
     self.ActionCancel = cancel
 end
 
+---------------------------------------
 function ViewMsgBox:showMsgBox4(info, ok)
     self.TextTips.text = info
     self.ActionOk = ok
 end
 
+---------------------------------------
 function ViewMsgBox:useTwoBtn(title, content, action_ensure, action_cancel)
     self.TextTitle.text = title
     self.TextTips.text = content
@@ -102,6 +107,7 @@ function ViewMsgBox:useTwoBtn(title, content, action_ensure, action_cancel)
     btn_cancel.onClick:Add(action_cancel)
 end
 
+---------------------------------------
 function ViewMsgBox:useTwoBtn2(title, content, confirm_title, cancel_title, auto_tm, auto_tm_showin_cancelbtn, action_ensure, action_cancel)
     self.TextTitle.text = title
     self.TextTips.text = content
@@ -146,48 +152,45 @@ function ViewMsgBox:useTwoBtn2(title, content, confirm_title, cancel_title, auto
     self.BtnAuto.text = title_1
 end
 
+---------------------------------------
 function ViewMsgBox:onClickBtnOK()
     self.ViewMgr:DestroyView(self)
 
-    if (self.ActionOk ~= nil)
-    then
+    if (self.ActionOk ~= nil) then
         self.ActionOk()
     end
 
-    if (self.ActionConfirm ~= nil)
-    then
+    if (self.ActionConfirm ~= nil) then
         self.ActionConfirm(true)
     end
 
-    if (self.ActionConfirm2 ~= nil)
-    then
+    if (self.ActionConfirm2 ~= nil) then
         self.ActionConfirm2(true, self.MapParam)
     end
 end
 
+---------------------------------------
 function ViewMsgBox:onClickBtnCancel()
     self.ViewMgr:DestroyView(self)
 
-    if (self.ActionCancel ~= nil)
-    then
+    if (self.ActionCancel ~= nil) then
         self.ActionCancel()
     end
 
-    if (self.ActionConfirm ~= nil)
-    then
+    if (self.ActionConfirm ~= nil) then
         self.ActionConfirm(false)
     end
 
-    if (self.ActionConfirm2 ~= nil)
-    then
+    if (self.ActionConfirm2 ~= nil) then
         self.ActionConfirm2(false, self.MapParam)
     end
 end
 
+---------------------------------------
 ViewMsgBoxFactory = ViewFactory:new()
 
-function ViewMsgBoxFactory:new(o, ui_package_name, ui_component_name,
-                               ui_layer, is_single, fit_screen)
+---------------------------------------
+function ViewMsgBoxFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -199,6 +202,7 @@ function ViewMsgBoxFactory:new(o, ui_package_name, ui_component_name,
     return o
 end
 
+---------------------------------------
 function ViewMsgBoxFactory:CreateView()
     local view = ViewMsgBox:new(nil)
     return view

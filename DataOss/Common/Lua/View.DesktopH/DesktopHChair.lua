@@ -303,7 +303,7 @@ function DesktopHChair:_onClick()
             return
         end
 
-        local ev = self.ViewMgr:GetEv("EvUiDesktopHSeatDown")
+        local ev = self.ViewMgr:GetEv("EvViewDesktopHSitdown")
         if (ev == nil) then
             ev = EvUiDesktopHSeatDown:new(nil)
         end

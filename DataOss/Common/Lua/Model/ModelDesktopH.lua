@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 _eDesktopHState = {
     Idle = 0,
     Ready = 1,
@@ -19,7 +20,9 @@ DesktopHDialyGetBetRewardState = {
     Get = 2, -- 已领
 }
 
+---------------------------------------
 BDesktopHDialyBetReward = {}
+
 function BDesktopHDialyBetReward:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -28,7 +31,6 @@ function BDesktopHDialyBetReward:new(o)
     o.BetDt = nil
     o.TotalBetGold = 0
     o.MapGetRewardState = nil
-
     return o
 end
 
@@ -45,11 +47,12 @@ function BDesktopHDialyBetReward:getData4Pack()
     table.insert(t, self.BetDt)
     table.insert(t, self.TotalBetGold)
     table.insert(t, self.MapGetRewardState)
-
     return t
 end
 
+---------------------------------------
 BDesktopHPlayerBetInfo = {}
+
 function BDesktopHPlayerBetInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -57,7 +60,6 @@ function BDesktopHPlayerBetInfo:new(o)
     o.PlayerGuid = nil
     o.BetGold = 0
     o.BetPotIndex = 0
-
     return o
 end
 
@@ -72,18 +74,18 @@ function BDesktopHPlayerBetInfo:getData4Pack()
     table.insert(p_d, self.PlayerGuid)
     table.insert(p_d, self.BetGold)
     table.insert(p_d, self.BetPotIndex)
-
     return p_d
 end
 
+---------------------------------------
 BDesktopHNotifySeatPlayerBet = {}
+
 function BDesktopHNotifySeatPlayerBet:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.player_guid = nil
     o.map_betinfo = nil
-
     return o
 end
 
@@ -96,11 +98,12 @@ function BDesktopHNotifySeatPlayerBet:getData4Pack()
     local p_d = {}
     table.insert(p_d, self.player_guid)
     table.insert(p_d, self.map_betinfo)
-
     return p_d
 end
 
+---------------------------------------
 BDesktopHNotifyBetDeltaInfo = {}
+
 function BDesktopHNotifyBetDeltaInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -108,7 +111,6 @@ function BDesktopHNotifyBetDeltaInfo:new(o)
     o.map_betpot_betdeltainfo = nil
     o.map_standplayer_betdeltainfo = nil
     o.list_seatplayer_betdeltainfo = nil
-
     return o
 end
 
@@ -132,11 +134,12 @@ function BDesktopHNotifyBetDeltaInfo:getData4Pack()
     table.insert(p_d, self.map_betpot_betdeltainfo)
     table.insert(p_d, self.map_standplayer_betdeltainfo)
     table.insert(p_d, self.list_seatplayer_betdeltainfo)
-
     return p_d
 end
 
+---------------------------------------
 BDesktopHNotifyGameEndBetPot = {}
+
 function BDesktopHNotifyGameEndBetPot:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -147,7 +150,6 @@ function BDesktopHNotifyGameEndBetPot:new(o)
     o.bet_gold = 0
     o.winloose_gold = 0 -- 该下注池输赢总金币，不含开奖池所得金币
     o.gold_percent = 0
-
     return o
 end
 
@@ -169,7 +171,9 @@ function BDesktopHNotifyGameEndBetPot:setData(data)
     self.gold_percent = data[6]
 end
 
+---------------------------------------
 BDesktopHNotifyGameEndRewardPot = {}
+
 function BDesktopHNotifyGameEndRewardPot:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -178,7 +182,6 @@ function BDesktopHNotifyGameEndRewardPot:new(o)
     o.gold_after = 0 -- 包含奖池抽水+开奖之后的最终值，gold_after=gold_before+map_pumping_gold.Sum-map_win_rewardpot_gold.Sum
     o.map_pumping_gold = nil -- key=pot index（banker pot=255），value仅仅是奖池抽水，不包含系统抽水
     o.map_win_rewardpot_gold = nil -- key=pot index（banker pot=255），奖池开奖，如果开奖，则map中Count>0
-
     return o
 end
 
@@ -189,7 +192,10 @@ function BDesktopHNotifyGameEndRewardPot:setData(data)
     self.map_win_rewardpot_gold = data[4]
 end
 
-BDesktopHNotifyGameEndBankerPot = {} -- 百人桌结算阶段庄家池信息，判定庄家输赢的方法是看stack_after-stack_before是正是负
+---------------------------------------
+-- 百人桌结算阶段庄家池信息，判定庄家输赢的方法是看stack_after-stack_before是正是负
+BDesktopHNotifyGameEndBankerPot = {}
+
 function BDesktopHNotifyGameEndBankerPot:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -200,7 +206,6 @@ function BDesktopHNotifyGameEndBankerPot:new(o)
     o.stack_after = 0 -- 所有下注池和庄家池结算并经过系统，奖池抽水后的金币值，最终Stack
     o.winloose_gold = 0 -- 本局除开奖池以外输赢的值，winloose_gold=stack_after-win_rewardpot_gold-stack_before
     o.win_rewardpot_gold = 0 -- 庄家池开奖Gold
-
     return o
 end
 
@@ -222,7 +227,9 @@ function BDesktopHNotifyGameEndBankerPot:setData(data)
     self.win_rewardpot_gold = data[6]
 end
 
+---------------------------------------
 BDesktopHNotifyGameEndBetPotPlayerWinLooseInfo = {} -- DesktopH单个下注池中玩家输赢
+
 function BDesktopHNotifyGameEndBetPotPlayerWinLooseInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -236,7 +243,6 @@ function BDesktopHNotifyGameEndBetPotPlayerWinLooseInfo:new(o)
     o.sys_pumping = 0 -- 系统抽水
     o.rewardpot_pumping = 0 -- 奖池抽水
     o.win_rewardpot_gold = 0 -- 赢取奖池Gold
-
     return o
 end
 
@@ -252,7 +258,9 @@ function BDesktopHNotifyGameEndBetPotPlayerWinLooseInfo:setData(data)
     self.win_rewardpot_gold = data[9]
 end
 
+---------------------------------------
 BDesktopHGameResult = {}
+
 function BDesktopHGameResult:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -273,7 +281,6 @@ function BDesktopHGameResult:new(o)
     o.win_rewardpot_goldtotal = 0;-- 本局最大牌型如果可以开奖池，那么计算开奖池的百分比可以得到的开奖金币（Client无需使用）
     o.win_reward_max_multiply = 0;-- 本局最大牌型如果可以开奖池，那么对应的玩家可以得到的倍率上限（Client无需使用）
     o.premature_termination = false -- 是否提前结束下注
-
     return o
 end
 
@@ -344,7 +351,9 @@ function BDesktopHGameResult:setData(data)
     self.premature_termination = data[16]
 end
 
+---------------------------------------
 BDesktopHData = {}
+
 function BDesktopHData:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -362,7 +371,6 @@ function BDesktopHData:new(o)
     o.left_tm = 0
     o.reward_pot = 0 -- 奖池当前最新值
     o.map_betpot_winloose_record = nil -- 最近输赢历史记录
-
     return o
 end
 
@@ -410,7 +418,9 @@ function BDesktopHData:setData(data)
     self.map_betpot_winloose_record = data[13]
 end
 
+---------------------------------------
 BDesktopHWinRewardPotPlayer = {} -- DesktopH奖池开奖玩家信息
+
 function BDesktopHWinRewardPotPlayer:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -421,7 +431,6 @@ function BDesktopHWinRewardPotPlayer:new(o)
     o.icon = nil
     o.vip_level = 0
     o.win_gold = 0
-
     return o
 end
 
@@ -434,7 +443,9 @@ function BDesktopHWinRewardPotPlayer:setData(data)
     self.win_gold = data[6]
 end
 
+---------------------------------------
 BDesktopHWinRewardPotInfo = {} -- DesktopH奖池开奖信息
+
 function BDesktopHWinRewardPotInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -443,7 +454,6 @@ function BDesktopHWinRewardPotInfo:new(o)
     o.win_rewardpot_gold = 0 -- 本次开奖池所开出的Delta Gold，是正值
     o.date_time = nil
     o.list_playerinfo = nil
-
     return o
 end
 
@@ -472,7 +482,9 @@ function BDesktopHWinRewardPotInfo:setData(data)
     end
 end
 
+---------------------------------------
 BDesktopHGoldPercentConfig = {}
+
 function BDesktopHGoldPercentConfig:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -482,7 +494,6 @@ function BDesktopHGoldPercentConfig:new(o)
     o.GoldPercent = 0 -- 倍数
     o.WinRewardPotPercent = 0 -- 赢取奖池百分比
     o.FactoryName = nil
-
     return o
 end
 
@@ -494,7 +505,9 @@ function BDesktopHGoldPercentConfig:setData(data)
     self.FactoryName = data[5]
 end
 
+---------------------------------------
 BDesktopHGameEndWinPlayer = {}
+
 function BDesktopHGameEndWinPlayer:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -505,7 +518,6 @@ function BDesktopHGameEndWinPlayer:new(o)
     o.icon = nil
     o.vip_level = 0
     o.win_gold = 0 -- 包含开奖池后的输赢Delta Gold
-
     return o
 end
 
@@ -526,11 +538,12 @@ function BDesktopHGameEndWinPlayer:getData4Pack()
     table.insert(t, self.icon)
     table.insert(t, self.vip_level)
     table.insert(t, self.win_gold)
-
     return t
 end
 
+---------------------------------------
 PlayerDataDesktopH = {}
+
 function PlayerDataDesktopH:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -539,7 +552,6 @@ function PlayerDataDesktopH:new(o)
     o.GiftTbId = 0
     o.BotTbId = 0
     o.Gold = 0
-
     return o
 end
 

@@ -9,6 +9,7 @@ function ControllerRanking:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerName = "Ranking"
     o.ViewMgr = ViewMgr:new(nil)
     o.ControllerData = controller_data

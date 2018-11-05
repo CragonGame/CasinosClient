@@ -1,5 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
 
+---------------------------------------
 IMResult = {
     Success = 0, -- 通用，成功
     Failed = 1, -- 失败ji
@@ -22,7 +23,9 @@ AddFriendResult = {
     Reject = 3, -- 拒绝处理
 }
 
+---------------------------------------
 ChatMsg = {}
+
 function ChatMsg:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -34,7 +37,6 @@ function ChatMsg:new(o)
     o.recver_nickname = nil
     o.recver_viplevel = 0
     o.msg = nil
-
     return o
 end
 
@@ -60,7 +62,9 @@ function ChatMsg:getData4Pack()
     return t
 end
 
+---------------------------------------
 ChatTextInfo = {}
+
 function ChatTextInfo:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -69,11 +73,12 @@ function ChatTextInfo:new(o)
     o.sender_name = nil
     o.sender_viplevel = 0
     o.chat_content = nil
-
     return o
 end
 
+---------------------------------------
 ChatMsgClientRecv = {}
+
 function ChatMsgClientRecv:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -87,7 +92,6 @@ function ChatMsgClientRecv:new(o)
     o.recver_viplevel = nil
     o.msg = nil
     o.dt = nil
-
     return o
 end
 
@@ -114,18 +118,18 @@ function ChatMsgClientRecv:getData4Pack()
     table.insert(temp, self.recver_viplevel)
     table.insert(temp, self.msg)
     table.insert(temp, self.dt)
-
     return temp
 end
 
+---------------------------------------
 BFriendGoldUpdate = {}
+
 function BFriendGoldUpdate:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.FriendGuid = 0
     o.GoldAcc = nil
-
     return o
 end
 
@@ -138,6 +142,5 @@ function BFriendGoldUpdate:getData4Pack()
     local temp = {}
     table.insert(temp, self.FriendGuid)
     table.insert(temp, self.GoldAcc)
-
     return temp
 end

@@ -52,7 +52,7 @@ function ControllerPlayer:OnCreate()
     self.ViewMgr:BindEvListener("EvClickShare", self)
     self.ViewMgr:BindEvListener("EvGetPicSuccess", self)
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
-    self.ControllerDesk = self.ControllerMgr:GetController("Desktop")
+    self.ControllerDesktopTexas = self.ControllerMgr:GetController("DesktopTexas")
     self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
     self.ControllerLobby = self.ControllerMgr:GetController("Lobby")
     self.ControllerActivity = self.ControllerMgr:GetController("Activity")
@@ -207,7 +207,7 @@ function ControllerPlayer:OnDestroy()
         self.TimerUpdate = nil
     end
     self.ViewMgr:UnbindEvListener(self)
-    self:destroyMainUi()
+    self:DestroyMainUi()
     self.ControllerMgr.ViewMgr:DestroyAllView()
     self.CasinosContext:StopAllSceneSound()
 end
@@ -257,8 +257,8 @@ function ControllerPlayer:OnHandleEv(ev)
     elseif (ev.EventName == "EvCreateGiftShop") then
         local can_creategiftshop = true
         if (ev.not_indesktop == false and ev.is_tmp_gift) then
-            if (self.ControllerDesk.DesktopBase ~= nil) then
-                if (self.ControllerDesk.DesktopBase.MePlayer.IsInGame == false) then
+            if (self.ControllerDesktopTexas.DesktopBase ~= nil) then
+                if (self.ControllerDesktopTexas.DesktopBase.MePlayer.IsInGame == false) then
                     can_creategiftshop = false
                 end
             else
@@ -326,7 +326,7 @@ end
 ---------------------------------------
 function ControllerPlayer:OnPlayerLeaveDesktopNotify()
     ViewHelper:UiEndWaiting()
-    local controller_desk = self.ControllerMgr:GetController("Desktop")
+    local controller_desk = self.ControllerMgr:GetController("DesktopTexas")
     controller_desk:clearDesktop(true)
     self:requestGetOnlinePlayerNum()
 end
@@ -377,7 +377,7 @@ end
 function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
     local invite = InvitePlayerEnterDesktop:new(nil)
     invite:setData(invite1)
-    local desktop_helper = self.ControllerDesk:GetDesktopHelperBase(invite.desktop_filter.FactoryName)
+    local desktop_helper = self.ControllerDesktopTexas:GetDesktopHelperBase(invite.desktop_filter.FactoryName)
     if (desktop_helper == nil) then
         return
     end
@@ -391,7 +391,7 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
             function(accept)
                 if (accept) then
                     if (self.ControllerDesktopH.DesktopHBase == nil) then
-                        if (self.ControllerDesk.DesktopBase == nil) then
+                        if (self.ControllerDesktopTexas.DesktopBase == nil) then
                             self.ControllerLobby:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
                         else
                             local msg_boxex = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
@@ -690,7 +690,7 @@ function ControllerPlayer:createMainUi()
 end
 
 ---------------------------------------
-function ControllerPlayer:destroyMainUi()
+function ControllerPlayer:DestroyMainUi()
     local view_main = self.ControllerMgr.ViewMgr:GetView("Main")
     self.ControllerMgr.ViewMgr:DestroyView(view_main)
 end
@@ -698,9 +698,9 @@ end
 ---------------------------------------
 function ControllerPlayer:getDesktopChat()
     local map_chat = {}
-    if (self.ControllerDesk.DesktopBase ~= nil) then
-        local index = #self.ControllerDesk.ListDesktopChat - 1
-        for key, value in pairs(self.ControllerDesk.ListDesktopChat) do
+    if (self.ControllerDesktopTexas.DesktopBase ~= nil) then
+        local index = #self.ControllerDesktopTexas.ListDesktopChat - 1
+        for key, value in pairs(self.ControllerDesktopTexas.ListDesktopChat) do
             map_chat[index] = value
             index = index - 1
         end

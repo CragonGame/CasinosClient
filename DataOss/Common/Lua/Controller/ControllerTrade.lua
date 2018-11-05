@@ -10,6 +10,7 @@ function ControllerTrade:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -20,7 +21,7 @@ end
 ---------------------------------------
 function ControllerTrade:OnCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerDesktop = self.ControllerMgr:GetController("Desktop")
+    self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
     self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
