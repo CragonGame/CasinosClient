@@ -8,13 +8,10 @@ function UiLotteryTicketGFlower:new(view_lotteryticket)
     o = {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil) then
-        o.Context = Context
-        o.CasinosContext = CS.Casinos.CasinosContext.Instance
-        o.ViewLotteryTicket = view_lotteryticket
-        self.Instance = o
-    end
-    return self.Instance
+    o.Context = Context
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.ViewLotteryTicket = view_lotteryticket
+    return o
 end
 
 ---------------------------------------

@@ -8,24 +8,21 @@ function ViewLotteryTicket:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil) then
-        o.Context = Context
-        o.CasinosContext = CS.Casinos.CasinosContext.Instance
-        o.LotteryTicketPackName = "LotteryTicket"
-        o.ViewMgr = nil
-        o.GoUi = nil
-        o.ComUi = nil
-        o.Panel = nil
-        o.UILayer = nil
-        o.InitDepth = nil
-        o.ViewKey = nil
-        o.ControllerLotteryTicket = nil
-        o.UiLotteryTicketFlow = nil
-        o.UiLotteryTicketBase = nil
-        o.UiCardList = {}
-        self.Instance = o
-    end
-    return self.Instance
+    o.Context = Context
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.LotteryTicketPackName = "LotteryTicket"
+    o.ViewMgr = nil
+    o.GoUi = nil
+    o.ComUi = nil
+    o.Panel = nil
+    o.UILayer = nil
+    o.InitDepth = nil
+    o.ViewKey = nil
+    o.ControllerLotteryTicket = nil
+    o.UiLotteryTicketFlow = nil
+    o.UiLotteryTicketBase = nil
+    o.UiCardList = {}
+    return o
 end
 
 ---------------------------------------
