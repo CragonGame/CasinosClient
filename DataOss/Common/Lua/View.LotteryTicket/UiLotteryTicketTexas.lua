@@ -4,8 +4,8 @@
 UiLotteryTicketTexas = {}
 
 ---------------------------------------
-function UiLotteryTicketTexas:new(o, view_lotteryticket)
-    o = o or {}
+function UiLotteryTicketTexas:new(view_lotteryticket)
+    o = {}
     setmetatable(o, self)
     self.__index = self
     if (self.Instance == nil) then
@@ -118,6 +118,6 @@ end
 
 ---------------------------------------
 function UiLotteryTicketTexasFactory:CreateUiDesktopHBase(view_lotteryticket)
-    local l = UiLotteryTicketTexas:new(nil, view_lotteryticket)
+    local l = UiLotteryTicketTexas:new(view_lotteryticket)
     return l
 end

@@ -4,8 +4,8 @@
 UiLotteryTicketGFlower = {}
 
 ---------------------------------------
-function UiLotteryTicketGFlower:new(o, view_lotteryticket)
-    o = o or {}
+function UiLotteryTicketGFlower:new(view_lotteryticket)
+    o = {}
     setmetatable(o, self)
     self.__index = self
     if (self.Instance == nil) then

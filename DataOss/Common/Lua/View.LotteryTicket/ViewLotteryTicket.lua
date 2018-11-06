@@ -108,14 +108,14 @@ function ViewLotteryTicket:OnCreate()
     self:_createBetPot()
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
     self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
-    self.UiLotteryTicketFlow = UiLotteryTicketFlow:new(nil, self)
-    self.UiLotteryTicketFlow:Create()
+
+    self.UiLotteryTicketFlow = UiLotteryTicketFlow:new(self)
 end
 
 ---------------------------------------
 function ViewLotteryTicket:OnDestroy()
     if self.UiLotteryTicketFlow ~= nil then
-        self.UiLotteryTicketFlow:Destroy()
+        self.UiLotteryTicketFlow:Close()
         self.UiLotteryTicketFlow = nil
     end
     self.ViewMgr:UnbindEvListener(self)
@@ -184,27 +184,22 @@ function ViewLotteryTicket:InitLotteryTicketData(lotteryticket_data)
     self:_createOpreate()
     self:_refreshHistory()
     self.ViewLotteryTicketRewardPot:SetRewardGolds(lotteryticket_data.RewardPotGold)
+
+    self.UiLotteryTicketFlow:InitLotteryTicketData(lotteryticket_data)
+
     if (lotteryticket_data.State == LotteryTicketStateEnum.Bet) then
         self:_refreshBetOperate()
     else
         self.GBtnRepeatBet.enabled = false
         self.GBtnShowBetOperate.enabled = false
-        if (lotteryticket_data.ListCard ~= nil) then
-            for i, v in pairs(lotteryticket_data.ListCard) do
-                local card = self.UiCardList[i]
-                card:ShowCard(v)
-            end
-        else
-            for key, value in pairs(self.UiCardList) do
-                value:ResetCard()
-            end
+
+        for k, v in pairs(self.MapBetPot) do
+            v:HideBetPot()
         end
-        for key, value in pairs(self.MapBetPot) do
-            value:HideBetPot()
-        end
-        local byte_index = self.UiLotteryTicketBase:GetBetPotIndex(lotteryticket_data.WinCardType)--self.UiLotteryTicketBase:GetBetPotIndex(lotteryticket_data.WinCardType)
+        local byte_index = self.UiLotteryTicketBase:GetBetPotIndex(lotteryticket_data.WinCardType)
         self.MapBetPot[byte_index]:IsWin()
     end
+
     if (lotteryticket_data.MapBetPotBetInfo ~= nil) then
         local table = lotteryticket_data.MapBetPotBetInfo
         for key, value in pairs(table) do
@@ -218,8 +213,6 @@ function ViewLotteryTicket:InitLotteryTicketData(lotteryticket_data)
     end
     self:_setLastMaxWinnerInfo(lotteryticket_data.LastMaxWinner)
     self:_setLastBaoZiTm(lotteryticket_data.LastBaoZiDt)
-
-    self.UiLotteryTicketFlow:InitLotteryTicketData(lotteryticket_data)
 end
 
 ---------------------------------------
@@ -250,14 +243,12 @@ end
 function ViewLotteryTicket:_onEnterBetState(map_betrepeatinfo)
     self.GBtnRepeatBet.enabled = LuaHelper:GetTableCount(map_betrepeatinfo) > 0
     self.GBtnShowBetOperate.enabled = true
-    for i, v in pairs(self.UiCardList) do
-        v:ResetCard()
-    end
+
+    self.UiLotteryTicketFlow:OnEnterBetState(map_betrepeatinfo)
+
     for i, v in pairs(self.MapBetPot) do
         v:ResetBetPot()
     end
-
-    self.UiLotteryTicketFlow:OnEnterBetState(map_betrepeatinfo)
 end
 
 ---------------------------------------
@@ -267,17 +258,12 @@ function ViewLotteryTicket:_onEnterGameEndState(gameend_detail, me_wingold)
     self:SetTips(true)
     self.ViewLotteryTicketRewardPot:SetRewardGolds(gameend_detail.RewardPotGold)
 
-    for i, v in pairs(gameend_detail.ListCard) do
-        local card = self.UiCardList[i]
-        card:ShowCard(v)
-    end
+    self.UiLotteryTicketFlow:OnEnterGameEndState(gameend_detail, me_wingold)
 
     for key, value in pairs(self.MapBetPot) do
         value:HideBetPot()
     end
 
-    --local w_t = gameend_detail.WinCardType
-    --self.UiLotteryTicketBase:GetBetPotIndex(gameend_detail.WinCardType)
     local byte_index = self.UiLotteryTicketBase:GetBetPotIndex(gameend_detail.WinCardType)
     self.MapBetPot[byte_index]:IsWin()
     self:_setLastMaxWinnerInfo(gameend_detail.LastMaxWinner)
@@ -287,8 +273,6 @@ function ViewLotteryTicket:_onEnterGameEndState(gameend_detail, me_wingold)
     end
 
     self:_refreshHistory()
-
-    self.UiLotteryTicketFlow:OnEnterGameEndState(gameend_detail, me_wingold)
 end
 
 ---------------------------------------
