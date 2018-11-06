@@ -8,27 +8,27 @@ function UiLotteryTicketTexas:new(o, view_lotteryticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     if (self.Instance == nil) then
-        self.ViewLotteryTicket = view_lotteryticket
+        o.Context = Context
+        o.CasinosContext = CS.Casinos.CasinosContext.Instance
+        o.ViewLotteryTicket = view_lotteryticket
         self.Instance = o
     end
     return self.Instance
 end
 
 ---------------------------------------
-function UiLotteryTicketTexas:FindLotteryTicketCard(list_card)
+function UiLotteryTicketTexas:SetupLotteryTicketCardList(list_card)
     local com_card0 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard0").asCom
-    local card0 = UiLotteryTicketCard:new(nil, com_card0, self.ViewLotteryTicket)
+    local card0 = UiLotteryTicketCard:new(self.ViewLotteryTicket, com_card0)
     local com_card1 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard1").asCom
-    local card1 = UiLotteryTicketCard:new(nil, com_card1, self.ViewLotteryTicket)
+    local card1 = UiLotteryTicketCard:new(self.ViewLotteryTicket, com_card1)
     local com_card2 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard2").asCom
-    local card2 = UiLotteryTicketCard:new(nil, com_card2, self.ViewLotteryTicket)
+    local card2 = UiLotteryTicketCard:new(self.ViewLotteryTicket, com_card2)
     local com_card3 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard3").asCom
-    local card3 = UiLotteryTicketCard:new(nil, com_card3, self.ViewLotteryTicket)
+    local card3 = UiLotteryTicketCard:new(self.ViewLotteryTicket, com_card3)
     local com_card4 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard4").asCom
-    local card4 = UiLotteryTicketCard:new(nil, com_card4, self.ViewLotteryTicket)
+    local card4 = UiLotteryTicketCard:new(self.ViewLotteryTicket, com_card4)
     table.insert(list_card, card0)
     table.insert(list_card, card1)
     table.insert(list_card, card2)

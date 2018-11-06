@@ -9,9 +9,9 @@ function UiLotteryTicketFlow:new(o, lottery_ticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ViewLotteryTicket = lottery_ticket
+    o.Context = Context
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.ViewLotteryTicket = lottery_ticket
     return o
 end
 
@@ -21,4 +21,16 @@ end
 
 ---------------------------------------
 function UiLotteryTicketFlow:Destroy()
+end
+
+---------------------------------------
+function UiLotteryTicketFlow:InitLotteryTicketData(lotteryticket_data)
+end
+
+---------------------------------------
+function UiLotteryTicketFlow:OnEnterBetState(map_betrepeatinfo)
+end
+
+---------------------------------------
+function UiLotteryTicketFlow:OnEnterGameEndState(gameend_detail, me_wingold)
 end

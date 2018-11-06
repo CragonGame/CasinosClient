@@ -42,9 +42,9 @@ function ViewDesktopPlayerInfoTexas:new(o)
     o.IsGameEnd = false
     o.VibrateOnce = true
     o.IsRelease = false-- 是否已经被回收，切换快照时使用
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
-    self.TimerUpdate = nil
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
+    o.TimerUpdate = nil
     return o
 end
 

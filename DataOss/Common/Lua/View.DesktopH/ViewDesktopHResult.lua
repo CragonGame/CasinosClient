@@ -31,6 +31,8 @@ function UiDesktopHDlgGameEndResultPotItem:new(o, ui_desktoph, com, list_card, i
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.Context = Context
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.GCom = com
     local c_name = ""
     for i, v in pairs(list_card) do
@@ -39,7 +41,7 @@ function UiDesktopHDlgGameEndResultPotItem:new(o, ui_desktoph, com, list_card, i
         if (l_card ~= nil) then
             local gloader_card = l_card.asLoader
             local card_name = ui_desktoph.UiDesktopHBase:getCardResName(v)
-            gloader_card.icon = CS.Casinos.CasinosContext.Instance.PathMgr.DirAbCard .. string.lower(card_name) .. ".ab"
+            gloader_card.icon = o.CasinosContext.PathMgr.DirAbCard .. string.lower(card_name) .. ".ab"
         end
     end
 
@@ -47,7 +49,7 @@ function UiDesktopHDlgGameEndResultPotItem:new(o, ui_desktoph, com, list_card, i
     local bank_sign = ""
     if (pot_index == 255) then
         local packageName = ui_desktoph:getDesktopBasePackageName()
-        if (self.Context.Cfg.UseLan == true) then
+        if (o.Context.Cfg.UseLan == true) then
             packageName = ui_desktoph.ViewMgr.LanMgr:getLanPackageName()
         end
         bank_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(packageName, "BankSign")
@@ -68,7 +70,7 @@ function UiDesktopHDlgGameEndResultPotItem:new(o, ui_desktoph, com, list_card, i
         win_loose = "WinSign"
     end
     local win_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(ui_desktoph:getDesktopBasePackageName(), win_loose)
-    if (self.Context.Cfg.UseLan == true) then
+    if (o.Context.Cfg.UseLan == true) then
         local pack_name = ui_desktoph.ViewMgr.LanMgr:getLanPackageName()
         win_sign = CS.Casinos.UiHelperCasinos.FormatePackageImagePath(pack_name, win_loose)
     end

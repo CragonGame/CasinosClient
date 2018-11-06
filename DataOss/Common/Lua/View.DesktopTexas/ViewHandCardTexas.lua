@@ -25,7 +25,6 @@ function ViewHandCardTexas:new(o, com_card, guid, index)
     end
     o.TweenerScale = nil
     o.LoaderTicket = nil
-
     return o
 end
 

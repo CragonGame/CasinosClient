@@ -12,7 +12,7 @@ function UiLotteryTicketBase:new(o, view_lotteryticket)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:FindLotteryTicketCard(list_card)
+function ViewLotteryTicket:SetupLotteryTicketCardList(list_card)
 end
 
 ---------------------------------------

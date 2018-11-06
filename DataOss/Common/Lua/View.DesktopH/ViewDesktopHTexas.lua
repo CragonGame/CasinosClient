@@ -14,11 +14,11 @@ function ViewDesktopHTexas:new(o, ui_desktoph)
     o.ListBetOperate = {}
     o.DesktopHState = nil
     o.Sound = ""
-    self.Context = Context
-    self.PackageName = "DesktopHTexas"
-    self.BgMusic = "DesktopHTexasBg"
-    self.TurnCardSound = "desk_new_card"
-    self.SeatCount = 6
+    o.Context = Context
+    o.PackageName = "DesktopHTexas"
+    o.BgMusic = "DesktopHTexasBg"
+    o.TurnCardSound = "desk_new_card"
+    o.SeatCount = 6
     o:_setBetOperate()
     return o
 end

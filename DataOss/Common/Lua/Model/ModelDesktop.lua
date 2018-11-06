@@ -42,7 +42,6 @@ function PrivateDesktopCreateInfo:getData4Pack()
     local p_d = {}
     table.insert(p_d, self.FactoryName)
     table.insert(p_d, self.Data)
-
     return p_d
 end
 
@@ -57,7 +56,6 @@ function DesktopEnterRequest:new(o)
     o.seat_index = 255
     o.is_ob = false
     o.desktop_filter = {}
-
     return o
 end
 
@@ -67,7 +65,6 @@ function DesktopEnterRequest:getData4Pack()
     table.insert(p_d, self.seat_index)
     table.insert(p_d, self.is_ob)
     table.insert(p_d, self.desktop_filter)
-
     return p_d
 end
 

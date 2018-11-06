@@ -21,7 +21,7 @@ function UiCardDealingEx:new(o, com_card)
     o.TextureMgr = nil
     o.GLoaderCard = nil
     o.TweenerRotate = nil
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     return o
 end
 

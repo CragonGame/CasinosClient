@@ -9,7 +9,7 @@ function UiDesktopHBetOperateItem:new(o, bet_operat, ui_desktoph)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.Context = Context
+    o.Context = Context
     o.ViewDesktopH = ui_desktoph
     o.GComBetOperate = bet_operat
     o.GComBetOperate.onClick:Add(

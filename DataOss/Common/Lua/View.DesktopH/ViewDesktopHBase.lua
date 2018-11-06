@@ -8,8 +8,8 @@ function _tCardTypeInfo:new(o, cardtype_path, cardtype_soundpath)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.CardTypePath = cardtype_path
-    self.CardTypeSoundPath = cardtype_soundpath
+    o.CardTypePath = cardtype_path
+    o.CardTypeSoundPath = cardtype_soundpath
     return o
 end
 
@@ -21,8 +21,8 @@ function _tBeBankGoldsInfo:new(o, mintake_golds, min_leavegold)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.MinTakeGolds = mintake_golds
-    self.MinLeaveGolds = min_leavegold
+    o.MinTakeGolds = mintake_golds
+    o.MinLeaveGolds = min_leavegold
     return o
 end
 

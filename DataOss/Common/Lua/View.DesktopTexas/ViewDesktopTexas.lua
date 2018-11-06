@@ -53,13 +53,13 @@ function ViewDesktopTexas:new(o)
     o.NewFriendChatCount = 0-- 好友聊天未读消息数量
     o.ClearDesktopTm = 0-- 即GameEnd状态持续时长
     o.CheckTimeTime = 0-- 控制当前时间刷新频率的中间变量
-    self.SeatAndInviteTitle = "ComSeatAndInvite"-- 前缀
-    self.SeatPlayerParentTitle = "ComSeatPlayerParent"-- 前缀
-    self.ChairTitle = "ComSeat"-- 前缀
-    self.PokerGirlDesk = "DeskGirl"
-    self.Flow = nil
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.TimerUpdate = nil
+    o.SeatAndInviteTitle = "ComSeatAndInvite"-- 前缀
+    o.SeatPlayerParentTitle = "ComSeatPlayerParent"-- 前缀
+    o.ChairTitle = "ComSeat"-- 前缀
+    o.PokerGirlDesk = "DeskGirl"
+    o.Flow = nil
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.TimerUpdate = nil
     return o
 end
 

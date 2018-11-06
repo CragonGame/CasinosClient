@@ -15,7 +15,7 @@ function ViewMTTGameResult:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
-    self.Tips = {
+    o.Tips = {
         [1] = "MTTResultTip1",
         [2] = "MTTResultTip2"
     }

@@ -51,23 +51,23 @@ function ViewDesktopH:new(o)
     o.CheckTimeTime = 0-- 定时更新本地时间
     o.CanBet = false-- 是否可以下注
     o.NewFriendChatCount = 0
-    self.GCoChairTitle = "CoChair"
-    self.UiDesktopHPackageNameTitle = "DesktopH"
-    self.UiDesktopHComDesktopHTitle = "CoDesktopH"
-    self.UiDesktopHComDesktopHBetPotTitle = "CoDesktopHBetPot"
-    self.UiDesktopHComDesktopHHelpTitle = "CoDesktopHHelp"
-    self.UiDesktopHComDesktopHKaiRewardPotInfoTitle = "CoDesktopHKaiRewardPotInfo"
-    self.UiDesktopHComDesktopHRewardPotPlayerInfoTitle = "CoDesktopHRewardPotPlayerInfo"
-    self.UiDesktopHComDesktopHCardTypeTitle = "CoDesktopHCardType"
-    self.BetAniX = 10
-    self.ShowChatTm = 2
-    self.TongShaPackName = "DesktopHTongSha"
-    self.TongPeiPackName = "DesktopHTongPei"
-    self.ShowTongShaTongPeiTime = 1
-    self.MaxUiChipNum = 60
-    self.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.TimerUpdate = nil
+    o.GCoChairTitle = "CoChair"
+    o.UiDesktopHPackageNameTitle = "DesktopH"
+    o.UiDesktopHComDesktopHTitle = "CoDesktopH"
+    o.UiDesktopHComDesktopHBetPotTitle = "CoDesktopHBetPot"
+    o.UiDesktopHComDesktopHHelpTitle = "CoDesktopHHelp"
+    o.UiDesktopHComDesktopHKaiRewardPotInfoTitle = "CoDesktopHKaiRewardPotInfo"
+    o.UiDesktopHComDesktopHRewardPotPlayerInfoTitle = "CoDesktopHRewardPotPlayerInfo"
+    o.UiDesktopHComDesktopHCardTypeTitle = "CoDesktopHCardType"
+    o.BetAniX = 10
+    o.ShowChatTm = 2
+    o.TongShaPackName = "DesktopHTongSha"
+    o.TongPeiPackName = "DesktopHTongPei"
+    o.ShowTongShaTongPeiTime = 1
+    o.MaxUiChipNum = 60
+    o.Context = Context
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.TimerUpdate = nil
     return o
 end
 

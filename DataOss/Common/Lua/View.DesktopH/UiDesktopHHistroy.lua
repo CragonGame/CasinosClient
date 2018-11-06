@@ -9,7 +9,7 @@ function UiDesktopHHistroy:new(o, com_history, desktoph, betpot_index, list_hist
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.Context = Context
+    o.Context = Context
     o.ViewDesktoph = desktoph
     o.GCoHistroy = com_history
     o.GLoaderBetPotIcon = o.GCoHistroy:GetChild("LoaderBetPotIcon").asLoader

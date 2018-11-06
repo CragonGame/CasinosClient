@@ -10,7 +10,7 @@ function UiCardCommonEx:new(o, com_card)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.Card = nil
     o.ResetCallBack = nil
     o.LoaderTicket = nil

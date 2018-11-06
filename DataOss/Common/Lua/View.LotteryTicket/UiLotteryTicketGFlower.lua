@@ -8,19 +8,23 @@ function UiLotteryTicketGFlower:new(o, view_lotteryticket)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.Context = Context
-    self.ViewLotteryTicket = view_lotteryticket
-    return o
+    if (self.Instance == nil) then
+        o.Context = Context
+        o.CasinosContext = CS.Casinos.CasinosContext.Instance
+        o.ViewLotteryTicket = view_lotteryticket
+        self.Instance = o
+    end
+    return self.Instance
 end
 
 ---------------------------------------
-function UiLotteryTicketGFlower:FindLotteryTicketCard(list_card)
+function UiLotteryTicketGFlower:SetupLotteryTicketCardList(list_card)
     local com_card0 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard0").asCom
-    local card0 = UiLotteryTicketCard:new(nil, com_card0, self.ViewLotteryTicket)
+    local card0 = UiLotteryTicketCard:new(self.ViewLotteryTicket, com_card0)
     local com_card1 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard1").asCom
-    local card1 = UiLotteryTicketCard:new(nil, com_card1, self.ViewLotteryTicket)
+    local card1 = UiLotteryTicketCard:new(self.ViewLotteryTicket, com_card1)
     local com_card2 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard2").asCom
-    local card2 = UiLotteryTicketCard:new(nil, com_card2, self.ViewLotteryTicket)
+    local card2 = UiLotteryTicketCard:new(self.ViewLotteryTicket, com_card2)
     list_card:Add(card0)
     list_card:Add(card1)
     list_card:Add(card2)
