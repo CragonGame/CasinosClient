@@ -23,7 +23,7 @@ end
 ---------------------------------------
 function UiLotteryTicketFlow:InitLotteryTicketData(lotteryticket_data)
     if (lotteryticket_data.ListCard ~= nil) then
-        self:_turnCardList()
+        self:_turnCardList(lotteryticket_data.ListCard)
     else
         self:_resetCardList()
     end
@@ -36,13 +36,13 @@ end
 
 ---------------------------------------
 function UiLotteryTicketFlow:OnEnterGameEndState(gameend_detail, me_wingold)
-    self:_turnCardList(gameend_detail)
+    self:_turnCardList(gameend_detail.ListCard)
 end
 
 ---------------------------------------
 -- 翻牌，牌正面牌型图片是动态加载的
-function UiLotteryTicketFlow:_turnCardList(gameend_detail)
-    for i, v in pairs(gameend_detail.ListCard) do
+function UiLotteryTicketFlow:_turnCardList(list_card)
+    for i, v in pairs(list_card) do
         local card_data = v
         local card = self.ViewLotteryTicket.UiCardList[i]
         if card_data ~= nil and card.TweenTurnCard == nil then
