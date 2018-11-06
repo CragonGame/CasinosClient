@@ -67,7 +67,7 @@ function ViewDesktopHTexas:gameEnd(is_screenshot)
     if (is_screenshot) then
         self.ViewDesktopH:dealCardAtPos(5, 0.4)
     end
-    self.ViewDesktopH:showCard()
+    self.ViewDesktopH:ShowCard()
 end
 
 ---------------------------------------
@@ -121,7 +121,7 @@ function ViewDesktopHTexas:getSeatDownMinGolds()
 end
 
 ---------------------------------------
-function ViewDesktopHTexas:getCardType(list_card)
+function ViewDesktopHTexas:GetCardType(list_card)
     local rank_type = CS.Casinos.CardTypeHelperTexas.GetHandRankHTexas(list_card)
     local l = self:getCardTypeDes(rank_type)
     return l

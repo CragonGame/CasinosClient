@@ -39,13 +39,13 @@ function ViewAbout:OnCreate()
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
 
@@ -57,7 +57,7 @@ function ViewAbout:Test()
 end
 
 ---------------------------------------
-function ViewAbout:onClickBtnClose()
+function ViewAbout:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

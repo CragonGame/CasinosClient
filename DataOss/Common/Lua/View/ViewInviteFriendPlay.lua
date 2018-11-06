@@ -36,13 +36,13 @@ function ViewInviteFriendPlay:OnCreate()
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     self.ViewMgr:BindEvListener("EvEntityFriendOnlineStateChange", self)
@@ -69,7 +69,7 @@ function ViewInviteFriendPlay:setFriend()
 end
 
 ---------------------------------------
-function ViewInviteFriendPlay:onClickBtnClose()
+function ViewInviteFriendPlay:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

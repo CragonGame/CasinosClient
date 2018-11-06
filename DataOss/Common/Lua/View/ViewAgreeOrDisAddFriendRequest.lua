@@ -28,7 +28,7 @@ function ViewAgreeOrDisAddFriendRequest:OnCreate()
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local head_icon = self.ComUi:GetChild("CoHeadIcon").asCom
@@ -96,7 +96,7 @@ function ViewAgreeOrDisAddFriendRequest:onClickBtnConfirm()
 end
 
 ---------------------------------------
-function ViewAgreeOrDisAddFriendRequest:onClickBtnClose()
+function ViewAgreeOrDisAddFriendRequest:_onClickBtnClose()
     local ev = self.ViewMgr:GetEv("EvUiRefuseAddFriend")
     if (ev == nil) then
         ev = EvUiRefuseAddFriend:new(nil)

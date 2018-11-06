@@ -69,13 +69,13 @@ end
 function ViewDesktopHRewardPot:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityDesktopHGetRewardPotInfo") then
-            self:setRewardPotInfo(ev.reward_totalgolds, ev.total_info)
+            self:SetRewardPotInfo(ev.reward_totalgolds, ev.total_info)
         end
     end
 end
 
 ---------------------------------------
-function ViewDesktopHRewardPot:setRewardPotInfo(total_golds, total_info)
+function ViewDesktopHRewardPot:SetRewardPotInfo(total_golds, total_info)
     local glist_playerinfo = self.ComUi:GetChild("ListPlayerInfo").asList
     glist_playerinfo:SetVirtual()
     glist_playerinfo.itemRenderer = function(a, b)

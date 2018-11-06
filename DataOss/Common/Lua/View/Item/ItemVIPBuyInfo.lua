@@ -11,7 +11,7 @@ function ItemVIPBuyInfo:new(o, com_item)
     self.__index = self
     com_item.onClick:Add(
             function()
-                o:onClick()
+                o:_onClick()
             end
     )
     o.GTextdays = com_item:GetChild("Days").asTextField
@@ -30,7 +30,7 @@ function ItemVIPBuyInfo:setVipInfo(vip_info)
 end
 
 ---------------------------------------
-function ItemVIPBuyInfo:onClick()
+function ItemVIPBuyInfo:_onClick()
     local view_mgr = ViewMgr:new(nil)
     local ev = view_mgr:GetEv("EvEntityBuyVIP")
     if (ev == nil) then

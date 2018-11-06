@@ -11,7 +11,7 @@ function ItemReportPlayerOperate:new(o, com, view_playerprofile)
     o.ViewPlayerProfile = view_playerprofile
     com.onClick:Add(
             function()
-                o:onClick()
+                o:_onClick()
             end
     )
     o.GTextReportContent = com:GetChild("TextReportContent").asTextField
@@ -38,7 +38,7 @@ function ItemReportPlayerOperate:setReportType(report_type, friend_etguid)
 end
 
 ---------------------------------------
-function ItemReportPlayerOperate:onClick()
+function ItemReportPlayerOperate:_onClick()
     local ev = self.ViewPlayerProfile.ViewMgr:GetEv("EvUiReportFriend")
     if (ev == nil) then
         ev = EvUiReportFriend:new(nil)

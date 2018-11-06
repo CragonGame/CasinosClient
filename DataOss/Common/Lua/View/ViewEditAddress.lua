@@ -26,13 +26,13 @@ function ViewEditAddress:OnCreate()
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local btn_save = self.ComUi:GetChild("BtnSave").asButton
@@ -73,7 +73,7 @@ function ViewEditAddress:setContent(address)
 end
 
 ---------------------------------------
-function ViewEditAddress:onClickBtnClose()
+function ViewEditAddress:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

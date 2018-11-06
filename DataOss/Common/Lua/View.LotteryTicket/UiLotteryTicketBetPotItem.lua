@@ -15,7 +15,7 @@ function UiLotteryTicketBetPotItem:new(o, co_betpot, gold_percent, lottery_ticke
     o.TbDataLotteryTicketGoldPercent = gold_percent
     o.GCoBetPot.onClick:Add(
             function()
-                o:onClick()
+                o:_onClick()
             end
     )
     o.GTextBetChipsTotal = o.GCoBetPot:GetChild("BetChipsTotal").asTextField
@@ -24,34 +24,34 @@ function UiLotteryTicketBetPotItem:new(o, co_betpot, gold_percent, lottery_ticke
     o.GImageWinBg.visible = false
     o.TranBet = o.GCoBetPot:GetTransition("AniBet")
     o.GTextBetChipsSelf.text = o.ViewLotteryTicket.ViewMgr.LanMgr:getLanValue("NoBet")
-    o.ViewLotteryTicket.UiLotteryTicketBase:initBetPot(o.GCoBetPot, o.TbDataLotteryTicketGoldPercent)
+    o.ViewLotteryTicket.UiLotteryTicketBase:InitBetPot(o.GCoBetPot, o.TbDataLotteryTicketGoldPercent)
     return o
 end
 
 ---------------------------------------
-function UiLotteryTicketBetPotItem:initBetPot(betpot_index)
+function UiLotteryTicketBetPotItem:InitBetPot(betpot_index)
     self.BetPotIndex = betpot_index
 end
 
 ---------------------------------------
-function UiLotteryTicketBetPotItem:isWin()
+function UiLotteryTicketBetPotItem:IsWin()
     self.GCoBetPot.alpha = 1
     self.GImageWinBg.visible = true
 end
 
 ---------------------------------------
-function UiLotteryTicketBetPotItem:hideBetPot()
+function UiLotteryTicketBetPotItem:HideBetPot()
     self.GCoBetPot.alpha = 0.5
 end
 
 ---------------------------------------
 function UiLotteryTicketBetPotItem:SetBetPotInfo(betgold, self_golds)
-    self:setBetPotTotalChips(betgold)
-    self:setBetPotSelfChips(self_golds)
+    self:SetBetPotTotalChips(betgold)
+    self:SetBetPotSelfChips(self_golds)
 end
 
 ---------------------------------------
-function UiLotteryTicketBetPotItem:setBetPotTotalChips(total_chips)
+function UiLotteryTicketBetPotItem:SetBetPotTotalChips(total_chips)
     local text = ""
     if (total_chips ~= 0) then
         text = UiChipShowHelper:getGoldShowStr(total_chips, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
@@ -61,7 +61,7 @@ function UiLotteryTicketBetPotItem:setBetPotTotalChips(total_chips)
 end
 
 ---------------------------------------
-function UiLotteryTicketBetPotItem:setBetPotSelfChips(self_betchips)
+function UiLotteryTicketBetPotItem:SetBetPotSelfChips(self_betchips)
     self.SelfBetChips = self_betchips
     self.GTextBetChipsSelf.visible = true
     local text = UiChipShowHelper:getGoldShowStr(self.SelfBetChips, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
@@ -72,7 +72,7 @@ function UiLotteryTicketBetPotItem:setBetPotSelfChips(self_betchips)
 end
 
 ---------------------------------------
-function UiLotteryTicketBetPotItem:resetBetPot()
+function UiLotteryTicketBetPotItem:ResetBetPot()
     self.GTextBetChipsSelf.text = self.ViewLotteryTicket.ViewMgr.LanMgr:getLanValue("NoBet")
     self.GTextBetChipsTotal.text = ""
     self.SelfBetChips = 0
@@ -81,7 +81,7 @@ function UiLotteryTicketBetPotItem:resetBetPot()
 end
 
 ---------------------------------------
-function UiLotteryTicketBetPotItem:onClick()
+function UiLotteryTicketBetPotItem:_onClick()
     self.TranBet:Play()
     local view_mgr = ViewMgr:new(nil)
     local ev = view_mgr:GetEv("EvLotteryTicketBet")

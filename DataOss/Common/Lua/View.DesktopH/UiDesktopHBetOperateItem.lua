@@ -26,7 +26,7 @@ function UiDesktopHBetOperateItem:new(o, bet_operat, ui_desktoph)
 end
 
 ---------------------------------------
-function UiDesktopHBetOperateItem:setOperateInfo(tb_operate_id, operate_value, can_operate, is_currentoperate)
+function UiDesktopHBetOperateItem:SetOperateInfo(tb_operate_id, operate_value, can_operate, is_currentoperate)
     self.mTbOperateId = tb_operate_id
     self.mCanOperate = can_operate
     self.mIsCurrentOperate = is_currentoperate
@@ -47,13 +47,13 @@ function UiDesktopHBetOperateItem:setOperateInfo(tb_operate_id, operate_value, c
 end
 
 ---------------------------------------
-function UiDesktopHBetOperateItem:setIsCurrentOperate(is_currentoperate)
+function UiDesktopHBetOperateItem:SetIsCurrentOperate(is_currentoperate)
     self.mIsCurrentOperate = is_currentoperate
     self:_setIsCurrentOperate(self.mIsCurrentOperate)
 end
 
 ---------------------------------------
-function UiDesktopHBetOperateItem:setcanOperate(can_operate)
+function UiDesktopHBetOperateItem:SetCanOperate(can_operate)
     self.mCanOperate = can_operate
     self:_setCanOperate(self.mCanOperate)
 end

@@ -43,9 +43,9 @@ function ViewSecurityCode:Update(tm)
         if (self.SendCodeCountdown <= 0) then
             self.SendCodeCountdown = self.SendCodeCD
             self.CanSendCode = true
-            self:setTips("发送验证码")
+            self:SetTips("发送验证码")
         else
-            self:setTips(tostring(self.SendCodeCountdown))
+            self:SetTips(tostring(self.SendCodeCountdown))
         end
     end
 end
@@ -66,7 +66,7 @@ function ViewSecurityCode:getSecurityCode()
 end
 
 ---------------------------------------
-function ViewSecurityCode:setTips(tips)
+function ViewSecurityCode:SetTips(tips)
     self.GTextSendCodeTips.text = tips
 end
 
@@ -79,7 +79,7 @@ function ViewSecurityCode:onClickBtnSendCode()
     end
     ev.phone_num = self:getPhoneNum()
     self.ViewMgr.SendEv(ev)
-    self:setTips(tostring(self.SendCodeCountdown))
+    self:SetTips(tostring(self.SendCodeCountdown))
     self.CanSendCode = false
     self.GBtnSendCode.enabled = false
 end

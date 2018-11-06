@@ -20,13 +20,13 @@ function ItemAnte:setAnte(com, lan_mgr, ante)
     self.Ante = ante
     --com.onClick:Add(
     --		function()
-    --			self:onClick()
+    --			self:_onClick()
     --		end
     --)
 end
 
 ---------------------------------------
-function ItemAnte:onClick()
+function ItemAnte:_onClick()
     local view_mgr = ViewMgr:new(nil)
     local view_playerprofile = view_mgr:GetView("PlayerProfile")
     if (self.IsBuy == false and view_playerprofile ~= nil)

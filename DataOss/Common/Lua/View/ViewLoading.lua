@@ -88,7 +88,7 @@ function ViewLoading:setTip(tip)
 end
 
 ---------------------------------------
-function ViewLoading:setTips(list_tips)
+function ViewLoading:SetTips(list_tips)
     self.ViewMgr.MianC.LuaHelper:DeleteAllTableEle(loading.ListRandomTips)
     for k, v in pairs(list_tips) do
         self.ListRandomTips[k] = v

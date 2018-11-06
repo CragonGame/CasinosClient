@@ -28,13 +28,13 @@ function ViewBag:OnCreate()
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local btn_shopMore = self.ComUi:GetChild("Lan_Btn_BuyMore").asButton
@@ -165,7 +165,7 @@ function ViewBag:onClickBtnItem()
 end
 
 ---------------------------------------
-function ViewBag:onClickBtnClose()
+function ViewBag:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

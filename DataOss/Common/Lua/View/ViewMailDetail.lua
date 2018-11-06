@@ -25,7 +25,7 @@ function ViewMailDetail:OnCreate()
     local com_shade = co_close:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local co_detail = self.ComUi:GetChild("CoMailRealDetail").asCom
@@ -111,7 +111,7 @@ function ViewMailDetail:setMail(mail)
 end
 
 ---------------------------------------
-function ViewMailDetail:onClickBtnClose()
+function ViewMailDetail:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 
@@ -125,7 +125,7 @@ function ViewMailDetail:onClickConfirm()
         ev.mail_guid = self.MailClient.MailGuid
         self.ViewMgr:SendEv(ev)
     end
-    self:onClickBtnClose()
+    self:_onClickBtnClose()
 end
 
 ---------------------------------------

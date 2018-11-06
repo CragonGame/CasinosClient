@@ -16,13 +16,13 @@ function UiLotteryTicketRewardPotPlayerInfoItem:new(o, view_lottery, com, player
     o.GTextNickName = o.GCoPlayerInfo:GetChild("NickName").asTextField
     o.GTextGolds = o.GCoPlayerInfo:GetChild("Golds").asTextField
     o.GTextTm = o.GCoPlayerInfo:GetChild("Time").asTextField
-    o:refreshPlayerInfo(player_info)
+    o:RefreshPlayerInfo(player_info)
     o.GTextTm.text = tm
     return o
 end
 
 ---------------------------------------
-function UiLotteryTicketRewardPotPlayerInfoItem:refreshPlayerInfo(player_info)
+function UiLotteryTicketRewardPotPlayerInfoItem:RefreshPlayerInfo(player_info)
     self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.Nickname, 27, 8)
     self.GTextGolds.text = UiChipShowHelper:getGoldShowStr(player_info.WinGold, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
 end
@@ -46,7 +46,7 @@ function ViewLotteryTicketRewardPot:new(o, reward_pot, btn_rewardpot, lottery_ti
     o.GListRewardPotPlayer = o.ViewLotteryTicket.ComUi:GetChild("ListRewardPotPlayerInfo").asList
     o.GBtnRewardPot.onClick:Add(
             function()
-                o:onClick()
+                o:_onClick()
             end
     )
     local group = o.ViewLotteryTicket.ComUi:GetChild("GroupRewardPotPlayerInfo").asGroup
@@ -54,21 +54,21 @@ function ViewLotteryTicketRewardPot:new(o, reward_pot, btn_rewardpot, lottery_ti
     co_shade.x = 0
     co_shade.onClick:Add(
             function()
-                o:onClickShade()
+                o:_onClickShade()
             end
     )
-    o:switchControllerRewardPot(false)
+    o:SwitchControllerRewardPot(false)
     return o
 end
 
 ---------------------------------------
-function ViewLotteryTicketRewardPot:setRewardGolds(total_reward_golds)
+function ViewLotteryTicketRewardPot:SetRewardGolds(total_reward_golds)
     self.RewardPotGolds = total_reward_golds
     self.GTextRewardPot.text = UiChipShowHelper:getGoldShowStr(self.RewardPotGolds, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase, false)
 end
 
 ---------------------------------------
-function ViewLotteryTicketRewardPot:setRewardPotInfo(total_golds, list_playerinfo)
+function ViewLotteryTicketRewardPot:SetRewardPotInfo(total_golds, list_playerinfo)
     self.GTextRewardPot.text = UiChipShowHelper:getGoldShowStr(total_golds, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase, false)
     if (list_playerinfo ~= nil) then
         self.GListRewardPotPlayer:RemoveChildrenToPool()
@@ -81,7 +81,7 @@ function ViewLotteryTicketRewardPot:setRewardPotInfo(total_golds, list_playerinf
 end
 
 ---------------------------------------
-function ViewLotteryTicketRewardPot:switchControllerRewardPot(show_rules)
+function ViewLotteryTicketRewardPot:SwitchControllerRewardPot(show_rules)
     if (show_rules) then
         self.ControllerRewardPot.selectedIndex = 0
     else
@@ -90,13 +90,13 @@ function ViewLotteryTicketRewardPot:switchControllerRewardPot(show_rules)
 end
 
 ---------------------------------------
-function ViewLotteryTicketRewardPot:onClickShade()
+function ViewLotteryTicketRewardPot:_onClickShade()
     self.ControllerRewardPot.selectedIndex = 1
 end
 
 ---------------------------------------
-function ViewLotteryTicketRewardPot:onClick()
-    self:switchControllerRewardPot(self.ControllerRewardPot.selectedIndex == 1)
+function ViewLotteryTicketRewardPot:_onClick()
+    self:SwitchControllerRewardPot(self.ControllerRewardPot.selectedIndex == 1)
     local view_mgr = ViewMgr:new(nil)
     local ev = view_mgr:GetEv("EvLotteryTicketClickRewardPotBtn")
     if (ev == nil) then

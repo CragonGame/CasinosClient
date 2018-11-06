@@ -83,13 +83,13 @@ function ItemGift:setGift(gift_id, is_buygift, is_mine, to_etguid, from_name, gi
     end
     self.Com.onClick:Add(
             function()
-                self:onClick()
+                self:_onClick()
             end
     )
 end
 
 ---------------------------------------
-function ItemGift:onClick()
+function ItemGift:_onClick()
     local view_mgr = ViewMgr:new(nil)
     local view_playerprofile = view_mgr:GetView("PlayerProfile")
     if (self.IsBuy == false and view_playerprofile ~= nil) then

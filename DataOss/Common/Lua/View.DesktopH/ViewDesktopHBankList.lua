@@ -18,12 +18,12 @@ function UiDesktopHBeBankerInfoItem:new(o, com, player_info, view_mgr)
     if (co_headicon ~= nil) then
         o.UiHeadIcon = ViewHeadIcon:new(nil, co_headicon.asCom)
     end
-    o:refreshPlayerInfo(player_info)
+    o:RefreshPlayerInfo(player_info)
     return o
 end
 
 ---------------------------------------
-function UiDesktopHBeBankerInfoItem:refreshPlayerInfo(player_info)
+function UiDesktopHBeBankerInfoItem:RefreshPlayerInfo(player_info)
     self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.PlayerInfoCommon.NickName, 30, 9)
     self.GTextGolds.text = self.ViewMgr.LanMgr:getLanValue(player_info.Gold, self.ViewMgr.LanMgr.LanBase)
     if (self.UiHeadIcon ~= nil) then

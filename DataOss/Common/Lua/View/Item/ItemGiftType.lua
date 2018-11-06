@@ -12,7 +12,7 @@ function ItemGiftType:new(o, GiftType, KingGiftShop)
     o.mComSelf = GiftType
     o.mComSelf.onClick:Add(
             function()
-                o:onClick()
+                o:_onClick()
             end
     )
     o.mKingGiftShop = KingGiftShop
@@ -43,7 +43,7 @@ function ItemGiftType:getTbDataItemType()
 end
 
 ---------------------------------------
-function ItemGiftType:onClick()
+function ItemGiftType:_onClick()
     self.mKingGiftShop:closeCurrentGiftType()
     self.mControlSelect.selectedIndex = 1
     self.mKingGiftShop:setCurrentGiftType(self)

@@ -18,7 +18,7 @@ function UiLotteryTicketTexas:new(o, view_lotteryticket)
 end
 
 ---------------------------------------
-function UiLotteryTicketTexas:findLotteryTicketCard(list_card)
+function UiLotteryTicketTexas:FindLotteryTicketCard(list_card)
     local com_card0 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard0").asCom
     local card0 = UiLotteryTicketCard:new(nil, com_card0, self.ViewLotteryTicket)
     local com_card1 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard1").asCom
@@ -37,7 +37,7 @@ function UiLotteryTicketTexas:findLotteryTicketCard(list_card)
 end
 
 ---------------------------------------
-function UiLotteryTicketTexas:initBetPot(bet_pot, gold_percent)
+function UiLotteryTicketTexas:InitBetPot(bet_pot, gold_percent)
     local loader_betpotinfo = bet_pot:GetChild("LoaderCardType").asLoader
     local packageName = self.ViewLotteryTicket.LotteryTicketPackName
     if (self.Context.Cfg.UseLan) then
@@ -47,7 +47,7 @@ function UiLotteryTicketTexas:initBetPot(bet_pot, gold_percent)
 end
 
 ---------------------------------------
-function UiLotteryTicketTexas:getBetPotIndex(card_type)
+function UiLotteryTicketTexas:GetBetPotIndex(card_type)
     if (card_type <= 2) then
         card_type = 0
     elseif (card_type >= 7) then
@@ -59,7 +59,7 @@ function UiLotteryTicketTexas:getBetPotIndex(card_type)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:getCardType(list_card)
+function ViewLotteryTicket:GetCardType(list_card)
     local rank_type = CS.Casinos.CardTypeHelperTexas.GetHandRankHTexas(list_card)
     local r_t
     if rank_type == CS.Casinos.HandRankTypeTexasH.HighCard then
@@ -87,7 +87,7 @@ function ViewLotteryTicket:getCardType(list_card)
 end
 
 ---------------------------------------
-function UiLotteryTicketTexas:getCardTypeName(card_type)
+function UiLotteryTicketTexas:GetCardTypeName(card_type)
     local rank_type = CS.Casinos.HandRankTypeTexasH.__CastFrom(card_type) --card_type--CS.Casinos.HandRankTypeTexasH.__CastFrom(card_type)
     local rank_name = ""
     if (rank_type == CS.Casinos.HandRankTypeTexasH.RoyalFlush

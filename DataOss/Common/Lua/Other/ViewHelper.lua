@@ -106,7 +106,7 @@ function ViewHelper:UiBeginWaiting(tips, auto_destroytm)
     if (ui_waiting == nil) then
         ui_waiting = self.ViewMgr:CreateView("Waiting")
     end
-    ui_waiting:setTips(tips, auto_destroytm)
+    ui_waiting:SetTips(tips, auto_destroytm)
     return ui_waiting
 end
 

@@ -55,7 +55,7 @@ function ViewWaitingCountDown:_timerUpdate(tm)
 end
 
 ---------------------------------------
-function ViewWaitingCountDown:setTips(tips, tm)
+function ViewWaitingCountDown:SetTips(tips, tm)
     self.GTextTips.text = tips
     self.Tm = tm
     self:setTm()

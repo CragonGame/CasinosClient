@@ -29,13 +29,13 @@ function ViewJoinMatch:OnCreate()
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local btn_close = self.ComUi:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local btn_delete = self.ComUi:GetChild("BtnDelete").asButton
@@ -67,7 +67,7 @@ function ViewJoinMatch:onClickBtnDelete()
 end
 
 ---------------------------------------
-function ViewJoinMatch:onClickBtnClose()
+function ViewJoinMatch:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

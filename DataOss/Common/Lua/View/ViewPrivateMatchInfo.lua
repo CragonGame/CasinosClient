@@ -29,7 +29,7 @@ function ViewPrivateMatchInfo:OnCreate()
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
     btn_return.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local btn_overview = self.ComUi:GetChild("BtnOverView").asButton
@@ -238,7 +238,7 @@ function ViewPrivateMatchInfo:SetMatchInfo(match_info)
 end
 
 ---------------------------------------
-function ViewPrivateMatchInfo:onClickBtnClose()
+function ViewPrivateMatchInfo:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

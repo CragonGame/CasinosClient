@@ -14,7 +14,7 @@ function UiLotteryTicketGFlower:new(o, view_lotteryticket)
 end
 
 ---------------------------------------
-function UiLotteryTicketGFlower:findLotteryTicketCard(list_card)
+function UiLotteryTicketGFlower:FindLotteryTicketCard(list_card)
     local com_card0 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard0").asCom
     local card0 = UiLotteryTicketCard:new(nil, com_card0, self.ViewLotteryTicket)
     local com_card1 = self.ViewLotteryTicket.ComUi:GetChild("LoaderCard1").asCom
@@ -27,7 +27,7 @@ function UiLotteryTicketGFlower:findLotteryTicketCard(list_card)
 end
 
 ---------------------------------------
-function UiLotteryTicketGFlower:initBetPot(bet_pot, gold_percent)
+function UiLotteryTicketGFlower:InitBetPot(bet_pot, gold_percent)
     local win_percent = bet_pot:GetChild("WinPercent").asTextField
     local win_percent_str = ""
     if (gold_percent.WinGoldsPercent == 0) then
@@ -44,18 +44,18 @@ function UiLotteryTicketGFlower:initBetPot(bet_pot, gold_percent)
 end
 
 ---------------------------------------
-function UiLotteryTicketGFlower:getBetPotIndex(card_type)
+function UiLotteryTicketGFlower:GetBetPotIndex(card_type)
     return card_type
 end
 
 ---------------------------------------
-function UiLotteryTicketGFlower:getCardType(list_card)
+function UiLotteryTicketGFlower:GetCardType(list_card)
     local rank_type = CS.Casinos.CardTypeHelperGFlower.GetHandRankHGFlower(list_card)
     return rank_type
 end
 
 ---------------------------------------
-function UiLotteryTicketGFlower:getCardTypeName(card_type)
+function UiLotteryTicketGFlower:GetCardTypeName(card_type)
     local rank_type = card_type--CS.Casinos.HandRankTypeGFlowerH.__CastFrom(card_type)
     if (rank_type == CS.Casinos.HandRankTypeGFlowerH.RoyalBaoZi) then
         rank_type = CS.Casinos.HandRankTypeGFlowerH.BaoZi

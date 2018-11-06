@@ -43,7 +43,7 @@ function UiDesktopHBetPotItem:new(o, ui_desktoph, parent, co_betpot)
 end
 
 ---------------------------------------
-function UiDesktopHBetPotItem:initBetPot(betpot_index, is_lastpot)
+function UiDesktopHBetPotItem:InitBetPot(betpot_index, is_lastpot)
     self.BetPotIndex = betpot_index
     self.IsLastPot = is_lastpot
     self.DesktopHundredCards = self.ViewDesktopH.UiDesktopHDealer:createSinglePotCards(
@@ -56,11 +56,11 @@ function UiDesktopHBetPotItem:SetGameEndResult(result, win_rewardpot_gold)
     self.IsWin = result.is_win
     self.WinRewardPotGolds = win_rewardpot_gold
     self.DesktopHundredCards:setCards(result.list_card)
-    self:setBetPotTotalChips(result.bet_gold)
+    self:SetBetPotTotalChips(result.bet_gold)
 end
 
 ---------------------------------------
-function UiDesktopHBetPotItem:setBetPotTotalChips(total_chips)
+function UiDesktopHBetPotItem:SetBetPotTotalChips(total_chips)
     if (total_chips > 0) then
         self.GTextBetChipsTotal.text = UiChipShowHelper:getGoldShowStr2(total_chips, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
     else
@@ -69,7 +69,7 @@ function UiDesktopHBetPotItem:setBetPotTotalChips(total_chips)
 end
 
 ---------------------------------------
-function UiDesktopHBetPotItem:setBetPotSelfChips(self_betchips)
+function UiDesktopHBetPotItem:SetBetPotSelfChips(self_betchips)
     self.SelfBetChips = self_betchips
     if (self.SelfBetChips > 0) then
         self.GTextBetChipsSelf.visible = true
@@ -100,7 +100,7 @@ function UiDesktopHBetPotItem:showCardsEnd()
 end
 
 ---------------------------------------
-function UiDesktopHBetPotItem:resetBetPot()
+function UiDesktopHBetPotItem:ResetBetPot()
     if (self.FTasker ~= nil) then
         self.FTasker:cancelTask()
         self.FTasker = nil

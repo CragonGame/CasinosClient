@@ -30,13 +30,13 @@ function ViewMail:OnCreate()
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     self.ControllerIfHaveMail = self.ComUi:GetController("ControllerIfHaveMail")
@@ -81,7 +81,7 @@ function ViewMail:setMail(have_mail, have_new_mail)
 end
 
 ---------------------------------------
-function ViewMail:onClickBtnClose()
+function ViewMail:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

@@ -135,7 +135,7 @@ function ViewTexasMTT:setSnapShot(snapshot, is_init)
         if waiting_countdown == nil then
             waiting_countdown = view_mgr:CreateView("WaitingCountDown")
         end
-        waiting_countdown:setTips(view_mgr.LanMgr:getLanValue("MatchBegine"), getdesktop_leftsec)
+        waiting_countdown:SetTips(view_mgr.LanMgr:getLanValue("MatchBegine"), getdesktop_leftsec)
     else
         local waiting_countdown = view_mgr:GetView("WaitingCountDown")
         if waiting_countdown ~= nil then

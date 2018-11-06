@@ -12,19 +12,19 @@ function UiLotteryTicketBase:new(o, view_lotteryticket)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:findLotteryTicketCard(list_card)
+function ViewLotteryTicket:FindLotteryTicketCard(list_card)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:initBetPot(bet_pot, gold_percent)
+function ViewLotteryTicket:InitBetPot(bet_pot, gold_percent)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:getBetPotIndex(card_type)
+function ViewLotteryTicket:GetBetPotIndex(card_type)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:getCardTypeName(card_type)
+function ViewLotteryTicket:GetCardTypeName(card_type)
 end
 
 ---------------------------------------

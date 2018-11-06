@@ -111,12 +111,12 @@ function UiDesktopHDealer:dealCardAtPos(deal_cardcount, move_cardwidth_percent)
 end
 
 ---------------------------------------
-function UiDesktopHDealer:showCard(is_onebyone, showcard_offset_tm)
+function UiDesktopHDealer:ShowCard(is_onebyone, showcard_offset_tm)
     for k, v in pairs(self.ListDesktopHSinglePotCards) do
         table.insert(self.QueShowCards, v)
     end
     local c = table.remove(self.QueShowCards, 1)
-    c:showCard(is_onebyone)
+    c:ShowCard(is_onebyone)
 
     local showcard_interval_tm = UiDesktopHDealer.DealPotCardsIntervalTm + showcard_offset_tm
     local t = CS.Casinos.FTMgr.Instance:startTask(showcard_interval_tm)
@@ -209,7 +209,7 @@ function UiDesktopHDealer:_showCard(map_param)
     if (l > 0) then
         local is_onebyone = map_param[0]
         local c = table.remove(self.QueShowCards, 1)
-        c:showCard(is_onebyone)
+        c:ShowCard(is_onebyone)
         local showcard_offset_tm = map_param[1]
         local t = CS.Casinos.FTMgr.Instance:startTask(showcard_offset_tm)
         self.FTasker = CS.Casinos.FTMgr.Instance:whenAll(map_param,

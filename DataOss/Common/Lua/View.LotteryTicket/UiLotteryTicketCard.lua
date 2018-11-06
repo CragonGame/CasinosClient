@@ -20,7 +20,7 @@ function UiLotteryTicketCard:new(o, co_card, lottery_ticket)
 end
 
 ---------------------------------------
-function UiLotteryTicketCard:showCard(card_data)
+function UiLotteryTicketCard:ShowCard(card_data)
     if card_data == nil then
         return
     end

@@ -23,7 +23,7 @@ function ItemHeadIconWithNickName:setFriendInfo1(friend_info)
             friend_info.PlayerInfoCommon.AccountId, friend_info.PlayerInfoCommon.VIPLevel,
             friend_info.PlayerInfoMore.OnlineState == PlayerOnlineState.Online)
     self.Com.onClick:Add(function()
-        self:onClick()
+        self:_onClick()
     end)
 end
 
@@ -45,7 +45,7 @@ function ItemHeadIconWithNickName:setFriendName()
 end
 
 ---------------------------------------
-function ItemHeadIconWithNickName:onClick()
+function ItemHeadIconWithNickName:_onClick()
     local ev = self.ViewMgr:GetEv("EvClickIconWithNickName")
     if (ev == nil) then
         ev = EvClickIconWithNickName:new(nil)

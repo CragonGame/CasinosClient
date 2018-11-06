@@ -76,7 +76,7 @@ function ViewWaiting:_timerUpdate(tm)
 end
 
 ---------------------------------------
-function ViewWaiting:setTips(tips, auto_destroytm, random_tips)
+function ViewWaiting:SetTips(tips, auto_destroytm, random_tips)
     if (random_tips == nil) then
         random_tips = true
     end

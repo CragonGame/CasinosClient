@@ -12,7 +12,7 @@ function ItemUiShopGold:new(o, view_shop, gold, tb_item)
     o.GComGold = gold
     o.GComGold.onClick:Add(
             function()
-                o:onClick()
+                o:_onClick()
             end
     )
     o.GTextGold = o.GComGold:GetChild("GoldValue").asTextField
@@ -46,6 +46,6 @@ function ItemUiShopGold:onClickBtnBuy()
 end
 
 ---------------------------------------
-function ItemUiShopGold:onClick()
+function ItemUiShopGold:_onClick()
     --self.ViewShop:setCurrentGold(self.TbDataItem)
 end

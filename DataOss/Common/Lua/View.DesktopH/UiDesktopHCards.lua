@@ -74,7 +74,7 @@ function UiDesktopHCards:Update(elapsed_tm)
         if (self.ShowCardTm >= UiDesktopHCards.SHOW_CARD_TM) then
             self.CanShowCard = false
             self.ShowCardTm = 0
-            self:showCard()
+            self:ShowCard()
         end
     end
 
@@ -84,7 +84,7 @@ function UiDesktopHCards:Update(elapsed_tm)
         if (self.ShowOneCardInterverTime >= UiDesktopHCards.ShowOneCardIntervalTm) then
             self.ShowOneCardInterverTime = 0
             local card = table.remove(self.QueShowCard, 1)
-            card:showCard(
+            card:ShowCard(
                     function()
                         l = #self.QueShowCard
                         if (l == 0) then
@@ -186,12 +186,12 @@ function UiDesktopHCards:dealCardAtPos1(deal_cardcount, move_cardwidth_percent)
 end
 
 ---------------------------------------
-function UiDesktopHCards:showCard(is_onebyone)
+function UiDesktopHCards:ShowCard(is_onebyone)
     for k, v in pairs(self.ListDesktopHCard) do
         if (is_onebyone) then
             table.insert(self.QueShowCard, v)
         else
-            v:showCard(
+            v:ShowCard(
                     function()
                     end
             )
@@ -201,7 +201,7 @@ function UiDesktopHCards:showCard(is_onebyone)
     local l = #self.QueShowCard
     if (l > 0) then
         local card = table.remove(self.QueShowCard, 1)
-        card:showCard(
+        card:ShowCard(
                 function()
                 end
         )

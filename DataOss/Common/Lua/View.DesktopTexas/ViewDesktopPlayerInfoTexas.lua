@@ -224,8 +224,8 @@ function ViewDesktopPlayerInfoTexas:OnHandleEv(ev)
         elseif (ev.EventName == "EvCommonCardShowEnd") then
             if self.IsShowDown then
                 self:_hideHighLight()
-                self.UiHandCardFirst:showCard(0.2)
-                self.UiHandCardSecond:showCard(0.2)
+                self.UiHandCardFirst:ShowCard(0.2)
+                self.UiHandCardSecond:ShowCard(0.2)
                 self.UiPlayerGiftAndVIP:playerIsShowDown()
                 self.PlayerSeatWidgetControllerEx:hideBetInfoAndCards()
                 self.IsShowDown = false
@@ -721,7 +721,7 @@ function ViewDesktopPlayerInfoTexas:setShowCardData(first_card, second_card)
         end
     else
         self.UiHandCardFirst:setCardData(f_c)
-        self.UiHandCardFirst:showCard(0)
+        self.UiHandCardFirst:ShowCard(0)
     end
 
     local s_c = nil
@@ -734,7 +734,7 @@ function ViewDesktopPlayerInfoTexas:setShowCardData(first_card, second_card)
         end
     else
         self.UiHandCardSecond:setCardData(s_c)
-        self.UiHandCardSecond:showCard(0)
+        self.UiHandCardSecond:ShowCard(0)
     end
 end
 
@@ -758,8 +758,8 @@ function ViewDesktopPlayerInfoTexas:showDown(card_first, card_second, carddata_l
         self.IsShowDown = true
     else
         self:_hideHighLight()
-        self.UiHandCardFirst:showCard(0.2)
-        self.UiHandCardSecond:showCard(0.2)
+        self.UiHandCardFirst:ShowCard(0.2)
+        self.UiHandCardSecond:ShowCard(0.2)
         self.UiPlayerGiftAndVIP:playerIsShowDown()
         self.PlayerSeatWidgetControllerEx:hideBetInfoAndCards()
     end

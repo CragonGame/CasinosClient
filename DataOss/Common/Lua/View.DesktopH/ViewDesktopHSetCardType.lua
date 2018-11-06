@@ -54,7 +54,7 @@ function UiDesktopHSetCardTypeItem:OnCreate(co_card_type, betpot_index, ui_deskt
     self.GComboBoxCardType.items = items
     self.GComboBoxCardType.onChanged:Add(
             function()
-                self:onClick()
+                self:_onClick()
             end
     )
     self.GComboBoxCardType.text = items[all_card_l]
@@ -73,7 +73,7 @@ function UiDesktopHSetCardTypeItem:resetCardType()
 end
 
 ---------------------------------------
-function UiDesktopHSetCardTypeItem:onClick()
+function UiDesktopHSetCardTypeItem:_onClick()
     local card_type = self.MapCardType[self.GComboBoxCardType.text]
     if (card_type ~= nil) then
         if (card_type ~= self.AllCardTypeCount) then
@@ -123,7 +123,7 @@ function ViewDesktopHSetCardType:OnCreate()
     local co_shade = self.ComUi:GetChild("CoShade").asCom
     co_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     self.MapPotItemDesktopHSetCardType = {}
@@ -159,11 +159,11 @@ function ViewDesktopHSetCardType:_setCardType()
     ev.map_card_types = self.MapCardsType
     self.ViewMgr:SendEv(ev)
 
-    self:onClickBtnClose()
+    self:_onClickBtnClose()
 end
 
 ---------------------------------------
-function ViewDesktopHSetCardType:onClickBtnClose()
+function ViewDesktopHSetCardType:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

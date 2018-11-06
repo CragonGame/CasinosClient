@@ -86,7 +86,7 @@ function ViewDesktopHBase:getSeatDownMinGolds()
 end
 
 ---------------------------------------
-function ViewDesktopHBase:getCardType(list_card)
+function ViewDesktopHBase:GetCardType(list_card)
 end
 
 ---------------------------------------

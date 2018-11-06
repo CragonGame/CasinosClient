@@ -115,13 +115,13 @@ function ViewDesktopHResult:OnCreate()
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     self.GListWinPlayer = self.ComUi:GetChild("ListWinRank").asList
@@ -199,7 +199,7 @@ function ViewDesktopHResult:_timerUpdate(tm)
     if (self.LeftTm >= 0) then
         self:_refreshLeftTime()
     else
-        self:onClickBtnClose()
+        self:_onClickBtnClose()
     end
 end
 
@@ -209,7 +209,7 @@ function ViewDesktopHResult:_refreshLeftTime()
 end
 
 ---------------------------------------
-function ViewDesktopHResult:onClickBtnClose()
+function ViewDesktopHResult:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

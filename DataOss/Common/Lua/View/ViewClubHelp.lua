@@ -26,19 +26,19 @@ function ViewClubHelp:OnCreate()
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
 end
 
 ---------------------------------------
-function ViewClubHelp:onClickBtnClose()
+function ViewClubHelp:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

@@ -198,7 +198,7 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyGameEndDetail(gameend_deta
             local card = CS.Casinos.Card(v.suit, v.type)
             table.insert(l_c, card)
         end
-        local card_type = view_lotteryticket:getCardType(l_c)
+        local card_type = view_lotteryticket:GetCardType(l_c)
         table.insert(self.ListLotteryTicketWinlooseResult, 1, card_type)
     end
 

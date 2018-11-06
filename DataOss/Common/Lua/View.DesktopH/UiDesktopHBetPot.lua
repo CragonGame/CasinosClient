@@ -27,7 +27,7 @@ end
 
 ---------------------------------------
 function UiDesktopHBetPot:initBetPotInfo(bet_all_golds, self_betgolds)
-    self:resetBetPot()
+    self:ResetBetPot()
 
     self.TotalBetPotGold = bet_all_golds
     local ListTmpUiGolds = {}
@@ -37,7 +37,7 @@ function UiDesktopHBetPot:initBetPotInfo(bet_all_golds, self_betgolds)
 
     ListTmpUiGolds = nil
 
-    self.UiDesktopHBetPotItem:setBetPotTotalChips(bet_all_golds)
+    self.UiDesktopHBetPotItem:SetBetPotTotalChips(bet_all_golds)
 
     self:setBetSelfChipsToPot(self_betgolds)
 end
@@ -52,7 +52,7 @@ end
 ---------------------------------------
 function UiDesktopHBetPot:updateBetPotInfo(betpot_golds)
     self.TotalBetPotGold = self.TotalBetPotGold + betpot_golds
-    self.UiDesktopHBetPotItem:setBetPotTotalChips(self.TotalBetPotGold)
+    self.UiDesktopHBetPotItem:SetBetPotTotalChips(self.TotalBetPotGold)
 end
 
 ---------------------------------------
@@ -78,7 +78,7 @@ end
 
 ---------------------------------------
 function UiDesktopHBetPot:setBetSelfChipsToPot(self_betchips)
-    self.UiDesktopHBetPotItem:setBetPotSelfChips(self_betchips)
+    self.UiDesktopHBetPotItem:SetBetPotSelfChips(self_betchips)
 end
 
 ---------------------------------------
@@ -104,11 +104,11 @@ function UiDesktopHBetPot:showGameEndGoldAni(betpot_show_win_ani_tm, give_winpla
 end
 
 ---------------------------------------
-function UiDesktopHBetPot:resetBetPot()
+function UiDesktopHBetPot:ResetBetPot()
     self:_cancelTask()
     self.TotalBetPotGold = 0
     self:_goldEnPool()
-    self.UiDesktopHBetPotItem:resetBetPot()
+    self.UiDesktopHBetPotItem:ResetBetPot()
     self.BDesktopHNotifyGameEndBetPot = nil
 end
 

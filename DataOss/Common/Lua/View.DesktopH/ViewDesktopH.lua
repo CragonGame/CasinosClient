@@ -526,7 +526,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
             glist_betpot:AddChild(item_betpot.GCoBetPot)
             glist_betpot:SetBoundsChangedFlag()
             glist_betpot:EnsureBoundsCorrect()
-            item_betpot:initBetPot(i, last_pot_index == i)
+            item_betpot:InitBetPot(i, last_pot_index == i)
             local bet_pot = UiDesktopHBetPot:new(nil, i, item_betpot, self)
             self.MapDesktopHBetPot[i] = bet_pot
         end
@@ -551,7 +551,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
             end
             local item_reward = glist_betoperate:AddItemFromPool().asCom
             local bet_operate = UiDesktopHBetOperateItem:new(nil, item_reward, self)
-            bet_operate:setOperateInfo(i, v, can_operate, is_current_operate)
+            bet_operate:SetOperateInfo(i, v, can_operate, is_current_operate)
             self.MapDesktopHBetOperate[i] = bet_operate
         end
 
@@ -564,7 +564,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         v:Reset()
     end
     for i, v in pairs(self.MapDesktopHBetPot) do
-        v:resetBetPot()
+        v:ResetBetPot()
     end
 
     self.UiDesktopHBanker:Reset()
@@ -707,7 +707,7 @@ function ViewDesktopH:dealCardAtPos(deal_cardcount, move_cardwidth_percent)
 end
 
 ---------------------------------------
-function ViewDesktopH:showCard(is_onebyone, showcard_offset_tm)
+function ViewDesktopH:ShowCard(is_onebyone, showcard_offset_tm)
     local is_one = false
     if (is_onebyone ~= nil) then
         is_one = is_onebyone
@@ -716,7 +716,7 @@ function ViewDesktopH:showCard(is_onebyone, showcard_offset_tm)
     if (showcard_offset_tm ~= nil) then
         show_card_tm = showcard_offset_tm
     end
-    self.UiDesktopHDealer:showCard(is_one, show_card_tm)
+    self.UiDesktopHDealer:ShowCard(is_one, show_card_tm)
 end
 
 ---------------------------------------
@@ -857,7 +857,7 @@ function ViewDesktopH:_gameEnd(game_result, map_my_winlooseinfo, is_screenshot)
     self.StateTm = game_result.left_tm
     self.UiDesktopHBanker:SetBankerCards(game_result.bankerpot_info.list_card)
     local t_map_pumping = game_result.rewardpot_info.map_pumping_gold
-    self.UiDesktopHRewardPot:setRewardGolds(t_map_pumping, game_result.rewardpot_info.gold_after)
+    self.UiDesktopHRewardPot:SetRewardGolds(t_map_pumping, game_result.rewardpot_info.gold_after)
 
     local map_win_rewardpot_gold = game_result.rewardpot_info.map_win_rewardpot_gold
     self.IsTongSha = true
@@ -941,7 +941,7 @@ function ViewDesktopH:_gameRest(left_tm)
     self.UiDesktopHGoldPool:Reset()
     self.StateTm = left_tm
     for i, v in pairs(self.MapDesktopHBetPot) do
-        v:resetBetPot()
+        v:ResetBetPot()
     end
     for i, v in pairs(self.MapDesktopHChair) do
         v:Reset()
@@ -1049,9 +1049,9 @@ end
 ---------------------------------------
 function ViewDesktopH:_refreshBetOperate(map_changeoperate)
     for i, v in pairs(self.MapDesktopHBetOperate) do
-        v:setIsCurrentOperate(false)
+        v:SetIsCurrentOperate(false)
         if (map_changeoperate ~= nil) then
-            v:setcanOperate(false)
+            v:SetCanOperate(false)
         end
     end
 
@@ -1059,14 +1059,14 @@ function ViewDesktopH:_refreshBetOperate(map_changeoperate)
         for i, v in pairs(map_changeoperate) do
             local item_operate = self.MapDesktopHBetOperate[i]
             if (item_operate ~= nil) then
-                item_operate:setcanOperate(v)
+                item_operate:SetCanOperate(v)
             end
         end
     end
 
     local current_operate = self.MapDesktopHBetOperate[self.ControllerDesktopH.CurrentTbBetOperateId]
     if (current_operate ~= nil) then
-        current_operate:setIsCurrentOperate(true)
+        current_operate:SetIsCurrentOperate(true)
     end
 end
 

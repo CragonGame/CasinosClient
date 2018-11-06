@@ -20,7 +20,7 @@ function ItemChatTargetInfo:new(o, com)
     o.ControllerNewRecord = o.Com:GetController("ControllerNewRecord")
     o.Com.onClick:Add(
             function()
-                o:onClick()
+                o:_onClick()
             end
     )
     local press = CS.FairyGUI.LongPressGesture(o.Com)
@@ -102,7 +102,7 @@ function ItemChatTargetInfo:showLastChatRecord(last_chat_record)
 end
 
 ---------------------------------------
-function ItemChatTargetInfo:onClick()
+function ItemChatTargetInfo:_onClick()
     self.ControllerNewRecord.selectedIndex = 1
     self.GTextNewRecordCount.text = ""
     local guid = self.FriendInfo.PlayerInfoCommon.PlayerGuid

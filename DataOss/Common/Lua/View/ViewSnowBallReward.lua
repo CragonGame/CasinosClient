@@ -26,13 +26,13 @@ function ViewSnowBallReward:OnCreate()
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
 
@@ -81,7 +81,7 @@ function ViewSnowBallReward:setListRewardInfo(reward_id)
 end
 
 ---------------------------------------
-function ViewSnowBallReward:onClickBtnClose()
+function ViewSnowBallReward:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

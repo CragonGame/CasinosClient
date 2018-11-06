@@ -53,7 +53,7 @@ function ViewHandCardTexas:setShowCardData(card_data)
 end
 
 ---------------------------------------
-function ViewHandCardTexas:showCard(delay_tm)
+function ViewHandCardTexas:ShowCard(delay_tm)
     if self.CancelShowCard then
         ViewHelper:SetGObjectVisible(true, self.GComCard)
         ViewHelper:SetGObjectVisible(false, self.GImageCardBack)

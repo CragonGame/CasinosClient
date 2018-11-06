@@ -14,42 +14,32 @@ function UiLotteryTicketBetOperateItem:new(o, bet_operat, view_lotteryticket)
     o.GBtnBetOperate = bet_operat
     o.GBtnBetOperate.onClick:Add(
             function()
-                o:onClick()
+                o:_onClick()
             end
     )
     return o
 end
 
 ---------------------------------------
-function UiLotteryTicketBetOperateItem:setOperateInfo(tb_operate_id, operate_value, can_operate, is_currentoperate)
+function UiLotteryTicketBetOperateItem:SetOperateInfo(tb_operate_id, operate_value, can_operate, is_currentoperate)
     self.mTbOperateId = tb_operate_id
     self.mCanOperate = can_operate
     self.mIsCurrentOperate = is_currentoperate
     self.GBtnBetOperate.text = UiChipShowHelper:getGoldShowStr2(operate_value, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
-    self:setCanOperate(self.mCanOperate)
+    self.GBtnBetOperate.enabled = self.mCanOperate
     self:_setIsCurrentOperate(self.mIsCurrentOperate)
 end
 
 ---------------------------------------
-function UiLotteryTicketBetOperateItem:setIsCurrentOperate(is_currentoperate)
+function UiLotteryTicketBetOperateItem:SetIsCurrentOperate(is_currentoperate)
     self.mIsCurrentOperate = is_currentoperate
     self:_setIsCurrentOperate(self.mIsCurrentOperate)
 end
 
 ---------------------------------------
-function UiLotteryTicketBetOperateItem:setcanOperate(can_operate)
+function UiLotteryTicketBetOperateItem:SetCanOperate(can_operate)
     self.mCanOperate = can_operate
-    self:setCanOperate(self.mCanOperate)
-end
-
----------------------------------------
-function UiLotteryTicketBetOperateItem:isCurrentOperate()
-    return self.mIsCurrentOperate
-end
-
----------------------------------------
-function UiLotteryTicketBetOperateItem:setCanOperate(can_operate)
-    self.GBtnBetOperate.enabled = can_operate
+    self.GBtnBetOperate.enabled = self.mCanOperate
 end
 
 ---------------------------------------
@@ -57,7 +47,7 @@ function UiLotteryTicketBetOperateItem:_setIsCurrentOperate()
 end
 
 ---------------------------------------
-function UiLotteryTicketBetOperateItem:onClick()
+function UiLotteryTicketBetOperateItem:_onClick()
     local ev = self.ViewLotteryTicket.ViewMgr:GetEv("EvLotteryTicketClickBetOperateType")
     if (ev == nil) then
         ev = EvLotteryTicketClickBetOperateType:new(nil)

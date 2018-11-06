@@ -133,7 +133,7 @@ function UiDesktopHRewardPot:showLooseGoldAni(pot_index, win_rewardpot_golds)
 end
 
 ---------------------------------------
-function UiDesktopHRewardPot:setRewardGolds(map_reward_golds, total_reward_golds)
+function UiDesktopHRewardPot:SetRewardGolds(map_reward_golds, total_reward_golds)
     self.MapRewardPotGolds = map_reward_golds
     self.CurrentNeedShowRewardPotGolds = total_reward_golds
 end

@@ -31,13 +31,13 @@ function ViewGiftShop:OnCreate()
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     self.GTextChips = self.ComUi:GetChild("TextChips").asTextField
@@ -58,7 +58,7 @@ end
 function ViewGiftShop:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvUiBuyItem") then
-            self:onClickBtnClose()
+            self:_onClickBtnClose()
         end
     end
 end
@@ -84,7 +84,7 @@ function ViewGiftShop:setGiftShopInfo(desktop_gift, from_etguid, to_etguid)
         end
     end
 
-    self.mCurrentGiftType:onClick()
+    self.mCurrentGiftType:_onClick()
 end
 
 ---------------------------------------
@@ -111,7 +111,7 @@ function ViewGiftShop:closeCurrentGiftType()
 end
 
 ---------------------------------------
-function ViewGiftShop:onClickBtnClose()
+function ViewGiftShop:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

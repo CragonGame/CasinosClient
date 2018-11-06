@@ -114,7 +114,7 @@ function UiDesktopHCard:dealCardAtPos2(to_pos, move_cardwidth_percent)
 end
 
 ---------------------------------------
-function UiDesktopHCard:showCard(action)
+function UiDesktopHCard:ShowCard(action)
     self.GImageCardBack.rotationY = 0
     self.GLoaderCard.rotationY = 0
     self.GLoaderCard.visible = false

@@ -32,13 +32,13 @@ function ViewFriend:OnCreate()
     self.GBtnClose = com_bg:GetChild("BtnClose").asButton
     self.GBtnClose.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     self.GBtnTopFriend = self.ComUi:GetChild("BtnTabFriend").asButton
@@ -397,7 +397,7 @@ function ViewFriend:onClickBtnTopSearch()
 end
 
 ---------------------------------------
-function ViewFriend:onClickBtnClose()
+function ViewFriend:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 

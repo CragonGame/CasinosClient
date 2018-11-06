@@ -11,7 +11,7 @@ function UiLotteryTicketFlow:new(o, lottery_ticket)
     self.__index = self
     self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ViewLotteryTicket = lottery_ticket
+    self.ViewLotteryTicket = lottery_ticket
     return o
 end
 

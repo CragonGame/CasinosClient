@@ -30,14 +30,14 @@ function ViewActivityPopup:OnCreate()
     local btn_close = self.ComUi:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
-                self:onClickBtnClose()
+                self:_onClickBtnClose()
             end
     )
 end
@@ -52,7 +52,7 @@ function ViewActivityPopup:OnDestroy()
 end
 
 ---------------------------------------
-function ViewActivityPopup:onClickBtnClose()
+function ViewActivityPopup:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 end
 
