@@ -43,7 +43,7 @@ function ItemShowFriendSimple:setFriendInfo(view_friend, friend_item, is_friend)
     end
     local friend_state = friend_state_str
     self.GTextBtnState.text = friend_state
-    self.ViewHeadIcon:setPlayerInfo(self.FriendInfo.PlayerInfoCommon.IconName, self.FriendInfo.PlayerInfoCommon.AccountId,
+    self.ViewHeadIcon:SetPlayerInfo(self.FriendInfo.PlayerInfoCommon.IconName, self.FriendInfo.PlayerInfoCommon.AccountId,
             self.FriendInfo.PlayerInfoCommon.VIPLevel)
 end
 

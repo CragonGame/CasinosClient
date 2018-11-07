@@ -102,7 +102,7 @@ function ViewBag:rendererGiftNormal(index, item)
             local com = CS.Casinos.LuaHelper.GObjectCastToGCom(item)
             local item_gift = self.ViewPool:getItemGift(com)
             item_gift:init(com, self.ViewMgr.LanMgr)
-            item_gift:setGift(gift.TbDataItem.Id, false, self.ControllerPlayer.Guid == gift.UnitLink.GiveEtGuid,
+            item_gift:SetGift(gift.TbDataItem.Id, false, self.ControllerPlayer.Guid == gift.UnitLink.GiveEtGuid,
                     self.ControllerPlayer.Guid, gift.UnitLink.GiveBy, self.ControllerPlayer.Guid, gift)
         end
     else
@@ -111,7 +111,7 @@ function ViewBag:rendererGiftNormal(index, item)
             local com = CS.Casinos.LuaHelper.GObjectCastToGCom(item)
             local item_gift = self.ViewPool:getItemGift(com)
             item_gift:init(com, self.ViewMgr.LanMgr)
-            item_gift:setGift(gift.TbDataItem.Id, false, self.ControllerPlayer.Guid == gift.UnitLink.GivePlayerEtGuid,
+            item_gift:SetGift(gift.TbDataItem.Id, false, self.ControllerPlayer.Guid == gift.UnitLink.GivePlayerEtGuid,
                     self.ControllerPlayer.Guid, gift.UnitLink.GiveBy, self.ControllerPlayer.Guid, gift)
         end
     end

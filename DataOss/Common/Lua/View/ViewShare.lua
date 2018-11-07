@@ -38,7 +38,7 @@ function ViewShare:OnCreate()
 end
 
 ---------------------------------------
-function ViewShare:setPlayerInfo(nick_name, account_id, share_type)
+function ViewShare:SetPlayerInfo(nick_name, account_id, share_type)
     self.ShareType = share_type
     self.NickName.text = string.format("%s:%s", self.ViewMgr.LanMgr:getLanValue("NickName"), nick_name)
     local icon_resource_name = ""

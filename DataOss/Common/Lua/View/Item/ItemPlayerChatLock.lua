@@ -35,14 +35,14 @@ function ItemPlayerChatLock:setPlayerChatInfo(et_guid, icon, name, account_id, v
     if ((self.PlayerEtguid ~= nil and string.len(self.PlayerEtguid) > 0) and (self.PlayerEtguid ~= self.SelfGuid)) then
         self.GTextName.text = name
         self:setLockIcon()
-        self.ViewHeadIcon:setPlayerInfo(icon, account_id, vip_level)
+        self.ViewHeadIcon:SetPlayerInfo(icon, account_id, vip_level)
     else
         if (self.IsSystem) then
             self.GImageDealer.visible = true
             self.GTextName.text = self.ViewMgr.LanMgr:getLanValue("TheDealer")
             self:setLockIcon()
         else
-            self.ViewHeadIcon:hideIcon()
+            self.ViewHeadIcon:HideIcon()
         end
     end
 end

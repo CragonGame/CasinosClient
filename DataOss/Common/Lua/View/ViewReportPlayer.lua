@@ -60,7 +60,7 @@ function ViewReportPlayer:setReportPlayerInfo(player_info)
     local level_ex = self.ViewMgr.LanMgr:getLanValue("Level:")
     local level = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(level_ex, tostring(player_info.PlayerInfoMore.Level))
     self.GTextLevel.text = level
-    self.ViewHeadIcon:setPlayerInfo(player_icon, player_accountid, 0)
+    self.ViewHeadIcon:SetPlayerInfo(player_icon, player_accountid, 0)
     self.GTextPlayerIndividualSignature.text = player_signature
     self.GTextNickName.text = player_nickname
     self.GTextChip.text = UiChipShowHelper:getGoldShowStr(playerGold, self.ViewMgr.LanMgr.LanBase)

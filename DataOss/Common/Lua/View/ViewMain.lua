@@ -462,7 +462,7 @@ function ViewMain:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityRecommendPlayerList") then
             self:setRecommandFriendInfo(ev.list_recommend)
         elseif (ev.EventName == "EvEntityPlayerInfoChanged") then
-            self:setPlayerInfo()
+            self:SetPlayerInfo()
         elseif (ev.EventName == "EvEntitySetOnLinePlayerNum") then
             self:setOnlineNum(ev.online_num)
         elseif (ev.EventName == "EvEntityReceiveFriendSingleChat") then
@@ -573,7 +573,7 @@ function ViewMain:RefreshLotteryTickLeftTm(tm)
 end
 
 ---------------------------------------
-function ViewMain:setPlayerInfo()
+function ViewMain:SetPlayerInfo()
     local name = self.ControllerActor.PropNickName:get()
     local gold_acc = self.ControllerActor.PropGoldAcc:get()
     local diamond = self.ControllerActor.PropDiamond:get()
@@ -583,7 +583,7 @@ function ViewMain:setPlayerInfo()
     local icon = self.ControllerActor.PropIcon:get()
     local acc_id = self.ControllerActor.PropAccountId:get()
     local vip_level = self.ControllerActor.PropVIPLevel:get()
-    self.UiPlayerInfoSelf:setPlayerInfo(name, str_goldacc, str_diamond, icon, acc_id, vip_level, true)
+    self.UiPlayerInfoSelf:SetPlayerInfo(name, str_goldacc, str_diamond, icon, acc_id, vip_level, true)
 end
 
 ---------------------------------------
@@ -644,7 +644,7 @@ function ViewMain:setCurrentFriendInfo(friend_item)
 
     self.BtnInviteFriend.visible = false
     local friend_state = self.ControllerIM.IMFriendList:getFriendStateStr(self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid)
-    self.UiPlayerInfoCurrentFriend:setPlayerInfo(self.CurrentFriendItem.PlayerInfoCommon.NickName,
+    self.UiPlayerInfoCurrentFriend:SetPlayerInfo(self.CurrentFriendItem.PlayerInfoCommon.NickName,
             UiChipShowHelper:getGoldShowStr(self.CurrentFriendItem.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, true, 2),
             friend_state, self.CurrentFriendItem.PlayerInfoCommon.IconName, self.CurrentFriendItem.PlayerInfoCommon.AccountId,
             self.CurrentFriendItem.PlayerInfoCommon.VIPLevel,
@@ -1024,7 +1024,7 @@ function ViewMain:refreshCurrentFriendInfo(player_info)
     if (player_info ~= nil) then
         self.CurrentFriendItem = player_info
         local friend_state = self.ControllerIM.IMFriendList:getFriendStateStr(self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid)
-        self.UiPlayerInfoCurrentFriend:setPlayerInfo1(player_info.PlayerInfoCommon.NickName,
+        self.UiPlayerInfoCurrentFriend:SetPlayerInfo1(player_info.PlayerInfoCommon.NickName,
                 UiChipShowHelper:getGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase),
                 friend_state,
                 player_info.PlayerInfoMore.OnlineState == PlayerOnlineState.Online)

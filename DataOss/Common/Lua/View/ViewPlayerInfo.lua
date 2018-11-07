@@ -101,7 +101,7 @@ function ViewPlayerInfo:OnCreate()
     local co_headicon = self.ComUi:GetChild("PlayerIcon").asCom
     self.ViewHeadIcon = ViewHeadIcon:new(nil, co_headicon,
             function()
-                self:onClickHeadIcon()
+                self:_onClickHeadIcon()
             end
     )
     self.GImageGift = self.ComUi:GetChild("GiftBg").asImage
@@ -189,11 +189,11 @@ function ViewPlayerInfo:OnHandleEv(ev)
     elseif (ev.EventName == "EvEntityDiamondChanged") then
         self.GTextCion.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
     elseif (ev.EventName == "EvGetPicUpLoadSuccess") then
-        self.ViewHeadIcon:setIcon(self.ControllerActor.PropIcon:get(), self.ControllerActor.PropAccountId:get())
+        self.ViewHeadIcon:SetIcon(self.ControllerActor.PropIcon:get(), self.ControllerActor.PropAccountId:get())
         local tips = self.ViewMgr.LanMgr:getLanValue("IconSuccess")
         ViewHelper:UiShowInfoSuccess(tips)
     elseif (ev.EventName == "EvEntityCurrentTmpGiftChange") then
-        self:setGift()
+        self:SetGift()
     elseif (ev.EventName == "EvEntityGetPlayerModuleDataSuccess") then
         local player_moduledata = ev.player_moduledata
         local player_moduledata_texas1 = self.ViewMgr:UnpackData(player_moduledata.Data)
@@ -220,7 +220,7 @@ end
 
 ---------------------------------------
 function ViewPlayerInfo:initPlayerInfo()
-    self.ViewHeadIcon:setPlayerInfo(self.ControllerActor.PropIcon:get(), self.ControllerActor.PropAccountId:get(),
+    self.ViewHeadIcon:SetPlayerInfo(self.ControllerActor.PropIcon:get(), self.ControllerActor.PropAccountId:get(),
             self.ControllerActor.PropVIPLevel:get())
     self.GInputNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(self.ControllerActor.PropNickName:get(), 18, 5)
     self.GInputIndividualSignature.text = self.ControllerActor.PropIndividualSignature:get()
@@ -237,7 +237,7 @@ function ViewPlayerInfo:initPlayerInfo()
         address = self.ViewMgr.LanMgr:getLanValue("Unknown")
     end
     self.GTextAddress.text = self.ViewMgr.LanMgr:getLanValue("Address") .. ": " .. address
-    self:setGift()
+    self:SetGift()
 end
 
 ---------------------------------------
@@ -288,12 +288,12 @@ function ViewPlayerInfo:changeIndividualSignature()
 end
 
 ---------------------------------------
-function ViewPlayerInfo:setGift()
+function ViewPlayerInfo:SetGift()
     if (self.ControllerBag.CurrentGift ~= nil) then
-        self.ViewHeadIcon:setGift(self.ControllerBag.CurrentGift.ItemData.item_tbid)
+        self.ViewHeadIcon:SetGift(self.ControllerBag.CurrentGift.ItemData.item_tbid)
         self.GImageGift.visible = false
     else
-        self.ViewHeadIcon:setGift(0)
+        self.ViewHeadIcon:SetGift(0)
         self.GImageGift.visible = true
     end
 end
@@ -332,7 +332,7 @@ function ViewPlayerInfo:onClickMoreChips()
 end
 
 ---------------------------------------
-function ViewPlayerInfo:onClickHeadIcon()
+function ViewPlayerInfo:_onClickHeadIcon()
     local view_icon = self.ViewMgr:GetView("TakePhoto")
     if (view_icon == nil) then
         self.ViewMgr:CreateView("TakePhoto")

@@ -184,7 +184,7 @@ end
 function ViewLobby:initPlayerInfo()
     local com_headIcon = self.ComUi:GetChild("ComHeadIcon").asCom
     local viewHeadIcon = ViewHeadIcon:new(nil, com_headIcon)
-    viewHeadIcon:setMainPlayerInfo(self.ControllerActor)
+    viewHeadIcon:SetMainPlayerInfo(self.ControllerActor)
     local text_name = self.ComUi:GetChild("PlayerName").asTextField
     text_name.text = CS.Casinos.UiHelper.addEllipsisToStr(self.ControllerActor.PropNickName:get(), 18, 5)
     local text_playerGoldAmount = self.ComUi:GetChild("PlayerGoldAmount").asTextField

@@ -25,7 +25,7 @@ function ViewFriendOnLine:OnCreate()
     local co_headicon = self.ComUi:GetChild("CoHeadIcon").asCom
     self.HeadIcon = ViewHeadIcon:new(nil, co_headicon,
             function()
-                self:onClickHeadIcon()
+                self:_onClickHeadIcon()
             end
     )
     self.ViewMgr:BindEvListener("EvEntityFriendOnlineStateChange", self)
@@ -49,7 +49,7 @@ end
 ---------------------------------------
 function ViewFriendOnLine:setFriendInfo(player_info)
     self.GTxetNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.PlayerInfoCommon.NickName, 21, 6)
-    self.HeadIcon:setPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
+    self.HeadIcon:SetPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
 end
 
 ---------------------------------------
@@ -68,7 +68,7 @@ function ViewFriendOnLine:onPlayEnd()
 end
 
 ---------------------------------------
-function ViewFriendOnLine:onClickHeadIcon()
+function ViewFriendOnLine:_onClickHeadIcon()
     self.ViewMgr:CreateView("PlayerInfo")
 end
 

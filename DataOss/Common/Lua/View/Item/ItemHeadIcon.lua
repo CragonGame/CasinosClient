@@ -17,7 +17,7 @@ end
 ---------------------------------------
 function ItemHeadIcon:setFriendInfo(friend_info, on_click)
     self.PlayerInfo = friend_info
-    self.ViewHeadIcon:setPlayerInfo(friend_info.PlayerInfoCommon.IconName,
+    self.ViewHeadIcon:SetPlayerInfo(friend_info.PlayerInfoCommon.IconName,
             friend_info.PlayerInfoCommon.AccountId, friend_info.PlayerInfoCommon.VIPLevel,
             friend_info.PlayerInfoMore.OnlineState == PlayerOnlineState.Online)
     self.Com.onClick:Add(on_click)
@@ -25,7 +25,7 @@ end
 
 ---------------------------------------
 function ItemHeadIcon:setFriendInfo1(icon_name, account_id, vip_level, is_online, on_click)
-    self.ViewHeadIcon:setPlayerInfo(icon_name, account_id, vip_level, is_online)
+    self.ViewHeadIcon:SetPlayerInfo(icon_name, account_id, vip_level, is_online)
     self.Com.onClick:Add(on_click)
 end
 

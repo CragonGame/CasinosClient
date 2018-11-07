@@ -490,7 +490,7 @@ function ViewDesktopTexas:playerBuyAndSendItem(map_items)
         local seat_info = self.Desktop:getSeatByGuid(k)
         if (seat_info ~= nil) then
             if (tb_item.UnitType == "GiftTmp") then
-                seat_info.player_texas:setGift(item_data, true)
+                seat_info.player_texas:SetGift(item_data, true)
             elseif (tb_item.UnitType == "MagicExpression") then
                 seat_info.player_texas:SendMagicExpression(item_data)
             end

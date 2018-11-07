@@ -58,7 +58,7 @@ function ViewAgreeOrDisAddFriendRequest:OnHandleEv(ev)
         if (ev.EventName == "EvEntityGetPlayerInfoOther") then
             local player_info = ev.player_info
             if ((self.FriendGuid ~= nil and string.len(self.FriendGuid) > 0) and self.FriendGuid == player_info.PlayerInfoCommon.PlayerGuid and self.Ticket == ev.ticket) then
-                self:setPlayerInfo(player_info)
+                self:SetPlayerInfo(player_info)
             end
         end
     end
@@ -74,9 +74,9 @@ function ViewAgreeOrDisAddFriendRequest:addFriend(ev)
 end
 
 ---------------------------------------
-function ViewAgreeOrDisAddFriendRequest:setPlayerInfo(player_info)
+function ViewAgreeOrDisAddFriendRequest:SetPlayerInfo(player_info)
     self.FriendInfo = player_info
-    self.ViewHeadIcon:setPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
+    self.ViewHeadIcon:SetPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
     self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.PlayerInfoCommon.NickName, 33, 10)
     self.GTextChips.text = UiChipShowHelper:getGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase)
     local level = self.ViewMgr.LanMgr:getLanValue("Level")

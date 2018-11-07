@@ -51,7 +51,7 @@ function ItemChatTargetInfo:setFriendInfo(friend_item, current_chat_guid, chat_r
     end
     local icon_name = friend_item.PlayerInfoCommon.IconName
     if (self.FriendInfo == nil or self.FriendInfo.PlayerInfoCommon.AccountId ~= friend_item.PlayerInfoCommon.AccountId) then
-        self.ViewHeadIcon:setPlayerInfo(icon_name, friend_item.PlayerInfoCommon.AccountId, friend_item.PlayerInfoCommon.VIPLevel)
+        self.ViewHeadIcon:SetPlayerInfo(icon_name, friend_item.PlayerInfoCommon.AccountId, friend_item.PlayerInfoCommon.VIPLevel)
     end
     self.FriendInfo = friend_item
     self.GTextName.text = CS.Casinos.UiHelper.addEllipsisToStr(self.FriendInfo.PlayerInfoCommon.NickName, 18, 5)

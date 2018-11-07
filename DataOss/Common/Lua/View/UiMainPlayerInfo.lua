@@ -27,7 +27,7 @@ function UiMainPlayerInfo:new(com, show_invite, action_click)
         o.GImageInvite.visible = show_invite
     end
     if (show_invite == true) then
-        o.UiHeadIcon:hideIcon()
+        o.UiHeadIcon:HideIcon()
     end
 
     local image_iconGold = o.ComPlayerInfo:GetChild("IconGold" .. self.Context.Cfg.ChipIconSolustion)
@@ -43,21 +43,21 @@ function UiMainPlayerInfo:new(com, show_invite, action_click)
 end
 
 ---------------------------------------
-function UiMainPlayerInfo:setPlayerInfo(name, chips, golds, icon_name, acount_id, vip_level, is_online)
+function UiMainPlayerInfo:SetPlayerInfo(name, chips, golds, icon_name, acount_id, vip_level, is_online)
     if (self.GImageIconGold ~= nil) then
         self.GImageIconGold.visible = true
     end
     if (self.GImageIconDiamond ~= nil) then
         self.GImageIconDiamond.visible = true
     end
-    self.UiHeadIcon:setPlayerInfo(icon_name, acount_id, vip_level, is_online)
+    self.UiHeadIcon:SetPlayerInfo(icon_name, acount_id, vip_level, is_online)
     self.GTextName.text = CS.Casinos.UiHelper.addEllipsisToStr(name, 18, 5)
     self.GTextChips.text = chips
     self.GTextGolds.text = golds
 end
 
 ---------------------------------------
-function UiMainPlayerInfo:setPlayerInfo1(name, chips, golds, is_online)
+function UiMainPlayerInfo:SetPlayerInfo1(name, chips, golds, is_online)
     if (self.GImageIconGold ~= nil) then
         self.GImageIconGold.visible = true
     end
@@ -71,7 +71,7 @@ function UiMainPlayerInfo:setPlayerInfo1(name, chips, golds, is_online)
     if (is_online == false) then
         show_shade = true
     end
-    self.UiHeadIcon:showShade(show_shade)
+    self.UiHeadIcon:ShowShade(show_shade)
 end
 
 ---------------------------------------
@@ -86,7 +86,7 @@ end
 
 ---------------------------------------
 function UiMainPlayerInfo:refreshHeadIcon(icon_name, acount_id)
-    self.UiHeadIcon:setIcon(icon_name, acount_id)
+    self.UiHeadIcon:SetIcon(icon_name, acount_id)
 end
 
 ---------------------------------------
@@ -97,8 +97,8 @@ function UiMainPlayerInfo:hidePlayerInfo(show_invite)
     if (self.GImageIconDiamond ~= nil) then
         self.GImageIconDiamond.visible = false
     end
-    self.UiHeadIcon:setIcon1("")
-    self.UiHeadIcon:hideIcon()
+    self.UiHeadIcon:SetIcon1("")
+    self.UiHeadIcon:HideIcon()
     self.GTextName.text = ""
     self.GTextChips.text = ""
     self.GTextGolds.text = ""

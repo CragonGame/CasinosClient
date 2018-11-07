@@ -98,7 +98,7 @@ function ViewPlayerGiftAndVIP:checkGiftAndVIPPos(desk_seatcount, ui_index, vip_l
 end
 
 ---------------------------------------
-function ViewPlayerGiftAndVIP:setGift(item, from_pos, is_sendgift)
+function ViewPlayerGiftAndVIP:SetGift(item, from_pos, is_sendgift)
     if (item == nil) then
         ViewHelper:SetGObjectVisible(true, self.GImageCurrentGift)
         if (self.GComCurrentShowGift ~= nil) then

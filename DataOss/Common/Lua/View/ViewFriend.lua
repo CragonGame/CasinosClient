@@ -137,9 +137,9 @@ function ViewFriend:OnHandleEv(ev)
         end
     elseif (ev.EventName == "EvLoadPlayerIconSuccess") then
         if (self.CurrentFriendInfo ~= nil and self.CurrentFriendInfo.PlayerInfoCommon.PlayerGuid == ev.et_guid) then
-            self.ViewShowFriendDetailFriend.UiHeadIcon:setIcon3(ev.fariy_t)
+            self.ViewShowFriendDetailFriend.UiHeadIcon:SetIcon3(ev.fariy_t)
         elseif (self.CurrentFriendRemommendInfo ~= nil and self.CurrentFriendRemommendInfo.PlayerInfoCommon.PlayerGuid == ev.et_guid) then
-            self.ViewShowFriendDetailFriendRecommend.UiHeadIcon:setIcon3(ev.fariy_t)
+            self.ViewShowFriendDetailFriendRecommend.UiHeadIcon:SetIcon3(ev.fariy_t)
         end
     elseif (ev.EventName == "EvEntityFindFriend") then
         self:setRecommandFriend(ev.list_friend_item)
@@ -479,7 +479,7 @@ function ViewShowFriendDetail:setFriendInfo(friend_item)
     local controller_mgr = ControllerMgr:new(nil)
     local controller_im = controller_mgr:GetController("IM")
     self.CurrentFriendInfo = friend_item
-    self.UiHeadIcon:setPlayerInfo(self.CurrentFriendInfo.PlayerInfoCommon.IconName, self.CurrentFriendInfo.PlayerInfoCommon.AccountId, self.CurrentFriendInfo.PlayerInfoCommon.VIPLevel)
+    self.UiHeadIcon:SetPlayerInfo(self.CurrentFriendInfo.PlayerInfoCommon.IconName, self.CurrentFriendInfo.PlayerInfoCommon.AccountId, self.CurrentFriendInfo.PlayerInfoCommon.VIPLevel)
     self.GTextNickName.text = self.CurrentFriendInfo.PlayerInfoCommon.NickName
     self.GTextChip.text = UiChipShowHelper:getGoldShowStr(self.CurrentFriendInfo.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase)
     local friend_state_str = ""
@@ -584,7 +584,7 @@ function ViewShowFriendDetail:onClickCommonHeadIcon()
                     if (ex ~= nil) then
                         local ui_iconbig = self.ViewMgr:CreateView("HeadIconBig")
                         ex = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
-                        ui_iconbig:setIcon(ex)
+                        ui_iconbig:SetIcon(ex)
                     end
                 end
         )
@@ -597,7 +597,7 @@ function ViewShowFriendDetail:onClickCommonHeadIcon()
                     if (ex ~= nil) then
                         local ui_iconbig = self.ViewMgr:CreateView("HeadIconBig")
                         ex = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
-                        ui_iconbig:setIcon(ex)
+                        ui_iconbig:SetIcon(ex)
                     end
                 end
         )

@@ -986,7 +986,7 @@ function DesktopTexas:DesktopPlayerGiftChangeNotify(data)
     change_gift.item_data = item_data
     local player_texas = self.MapPlayerTexas[change_gift.player_guid]
     if (player_texas ~= nil) then
-        player_texas:setGift(change_gift.item_data, false)
+        player_texas:SetGift(change_gift.item_data, false)
     end
 end
 

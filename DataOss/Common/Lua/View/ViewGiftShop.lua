@@ -99,7 +99,7 @@ function ViewGiftShop:setCurrentGiftType(tb_itemtype)
         local com_item_gift = self.GListPanelGift:AddItemFromPool().asCom
         local ui_item_gift = self.ViewPool:getItemGift(com_item_gift)
         ui_item_gift:init(com_item_gift, self.ViewMgr.LanMgr)
-        ui_item_gift:setGift(key, true, false, self.mToEtGuid, "", "", nil)
+        ui_item_gift:SetGift(key, true, false, self.mToEtGuid, "", "", nil)
     end
 end
 

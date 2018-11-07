@@ -1,6 +1,12 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('UiLotteryTicketBetOperateItem')
+require('UiLotteryTicketBetPotItem')
+require('UiLotteryTicketFlow')
+require('UiLotteryTicketGFlower')
+require('UiLotteryTicketTexas')
+require('UiLotteryTicketType')
 
----------------------------------------
+------------------------------------------
 ViewLotteryTicket = ViewBase:new(nil)
 
 ---------------------------------------
@@ -365,11 +371,11 @@ function ViewLotteryTicket:_setLastMaxWinnerInfo(lastround_winmax_playerinfo)
         self.GImageLastWinMaxPlayerGoldSign.visible = true
         self.GTextLastWinMaxPlayerNickName.visible = true
         self.GTextLastWinMaxPlayerGolds.visible = true
-        self.ViewHeadIcon:setLotteryWinMaxPlayerInfo(lastround_winmax_playerinfo)
+        self.ViewHeadIcon:SetLotteryMaxWinnerInfo(lastround_winmax_playerinfo)
         self.GTextLastWinMaxPlayerNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(lastround_winmax_playerinfo.Nickname, 15, 4)
         self.GTextLastWinMaxPlayerGolds.text = UiChipShowHelper:getGoldShowStr(lastround_winmax_playerinfo.WinGold, self.ViewMgr.LanMgr.LanBase)
     else
-        self.ViewHeadIcon:hideIcon()
+        self.ViewHeadIcon:HideIcon()
         self.GImageLastWinMaxPlayerGoldSign.visible = false
         self.GTextLastWinMaxPlayerNickName.visible = false
         self.GTextLastWinMaxPlayerGolds.visible = false

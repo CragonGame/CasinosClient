@@ -14,7 +14,7 @@ function ViewHeadIcon:new(o, co_headicon, click_callback, load_icon_down)
     o.EventCallback0 = click_callback
     o.GCoHeadIcon.onClick:Add(
             function()
-                o:onClickHeadIcon()
+                o:_onClickHeadIcon()
             end
     )
     local com_loader = o.GCoHeadIcon:GetChild("ComLoaderIcon").asCom
@@ -40,9 +40,9 @@ function ViewHeadIcon:new(o, co_headicon, click_callback, load_icon_down)
 end
 
 ---------------------------------------
-function ViewHeadIcon:setPlayerInfoDesktopH(player_info, is_bank)
+function ViewHeadIcon:SetPlayerInfoDesktopH(player_info, is_bank)
     local icon = player_info.PlayerInfoCommon.IconName
-    self:setPlayerIcon(icon, player_info.PlayerInfoCommon.AccountId)
+    self:SetPlayerIcon(icon, player_info.PlayerInfoCommon.AccountId)
     if (self.ViewVIPSign ~= nil) then
         self.ViewVIPSign:setVIPLevel(player_info.PlayerInfoCommon.VIPLevel)
     end
@@ -52,8 +52,8 @@ function ViewHeadIcon:setPlayerInfoDesktopH(player_info, is_bank)
 end
 
 ---------------------------------------
-function ViewHeadIcon:setPlayerInfo(icon, account_id, vip_level, is_online)
-    self:setPlayerIcon(icon, account_id)
+function ViewHeadIcon:SetPlayerInfo(icon, account_id, vip_level, is_online)
+    self:SetPlayerIcon(icon, account_id)
     if (self.ViewVIPSign ~= nil) then
         self.ViewVIPSign:setVIPLevel(vip_level)
     end
@@ -65,15 +65,15 @@ function ViewHeadIcon:setPlayerInfo(icon, account_id, vip_level, is_online)
         online = is_online
     end
     if (online) then
-        self:showShade(false)
+        self:ShowShade(false)
     else
-        self:showShade(true)
+        self:ShowShade(true)
     end
 end
 
 ---------------------------------------
-function ViewHeadIcon:setPlayerInfo1(icon, account_id, vip_level, gift_tbid, is_online)
-    self:setPlayerIcon(icon, account_id)
+function ViewHeadIcon:SetPlayerInfo1(icon, account_id, vip_level, gift_tbid, is_online)
+    self:SetPlayerIcon(icon, account_id)
     if (self.ViewVIPSign ~= nil) then
         self.ViewVIPSign:setVIPLevel(vip_level)
     end
@@ -85,15 +85,15 @@ function ViewHeadIcon:setPlayerInfo1(icon, account_id, vip_level, gift_tbid, is_
         online = is_online
     end
     if (online) then
-        self:showShade(false)
+        self:ShowShade(false)
     else
-        self:showShade(true)
+        self:ShowShade(true)
     end
-    self:setGift(gift_tbid)
+    self:SetGift(gift_tbid)
 end
 
 ---------------------------------------
-function ViewHeadIcon:setGift(gift_tbid)
+function ViewHeadIcon:SetGift(gift_tbid)
     if (gift_tbid == 0) then
         self.GLoaderCurrentGift.icon = nil
         return
@@ -109,7 +109,7 @@ function ViewHeadIcon:setGift(gift_tbid)
 end
 
 ---------------------------------------
-function ViewHeadIcon:showShade(show_shade)
+function ViewHeadIcon:ShowShade(show_shade)
     if (ControllerShowShade ~= nil) then
         if (show_shade) then
             self.ControllerShowShade.selectedIndex = 1
@@ -120,15 +120,15 @@ function ViewHeadIcon:showShade(show_shade)
 end
 
 ---------------------------------------
-function ViewHeadIcon:setVipLevel(vip_level)
+function ViewHeadIcon:SetVipLevel(vip_level)
     if (self.ViewVIPSign ~= nil) then
         self.ViewVIPSign:setVIPLevel(vip_level)
     end
 end
 
 ---------------------------------------
-function ViewHeadIcon:setLotteryWinMaxPlayerInfo(lastround_winmax_playerinfo)
-    self:setPlayerIcon(lastround_winmax_playerinfo.Icon, lastround_winmax_playerinfo.PlayerId)
+function ViewHeadIcon:SetLotteryMaxWinnerInfo(lastround_winmax_playerinfo)
+    self:SetPlayerIcon(lastround_winmax_playerinfo.Icon, lastround_winmax_playerinfo.PlayerId)
     if (self.ViewVIPSign ~= nil) then
         self.ViewVIPSign:setVIPLevel(lastround_winmax_playerinfo.VIPLevel)
     end
@@ -138,8 +138,8 @@ function ViewHeadIcon:setLotteryWinMaxPlayerInfo(lastround_winmax_playerinfo)
 end
 
 ---------------------------------------
-function ViewHeadIcon:setMainPlayerInfo(controller_actor)
-    self:setPlayerIcon(controller_actor.PropIcon:get(), tostring(controller_actor.PropAccountId:get()))
+function ViewHeadIcon:SetMainPlayerInfo(controller_actor)
+    self:SetPlayerIcon(controller_actor.PropIcon:get(), tostring(controller_actor.PropAccountId:get()))
     if (self.ViewVIPSign ~= nil) then
         self.ViewVIPSign:setVIPLevel(controller_actor.PropVIPLevel:get())
     end
@@ -149,33 +149,33 @@ function ViewHeadIcon:setMainPlayerInfo(controller_actor)
 end
 
 ---------------------------------------
-function ViewHeadIcon:setIcon1(icon)
+function ViewHeadIcon:SetIcon(icon_name, acount_id)
+    self:SetPlayerIcon(icon_name, acount_id)
+end
+
+---------------------------------------
+function ViewHeadIcon:SetIcon1(icon)
     self.GLoaderPlayerIcon.visible = true
     self.GLoaderPlayerIcon.icon = icon
 end
 
 ---------------------------------------
-function ViewHeadIcon:setIcon(icon_name, acount_id)
-    self:setPlayerIcon(icon_name, acount_id)
-end
-
----------------------------------------
-function ViewHeadIcon:setIcon2(t)
+function ViewHeadIcon:SetIcon2(t)
     self.GLoaderPlayerIcon.texture = CS.FairyGUI.NTexture(t)
 end
 
 ---------------------------------------
-function ViewHeadIcon:setIcon3(t)
+function ViewHeadIcon:SetIcon3(t)
     self.GLoaderPlayerIcon.texture = t
 end
 
 ---------------------------------------
-function ViewHeadIcon:hideIcon()
+function ViewHeadIcon:HideIcon()
     self.GCoHeadIcon.visible = false
 end
 
 ---------------------------------------
-function ViewHeadIcon:setPlayerIcon(icon, account_id)
+function ViewHeadIcon:SetPlayerIcon(icon, account_id)
     self.GCoHeadIcon.visible = true
     self.GLoaderPlayerIcon.icon = nil
     if (icon ~= nil and string.len(icon) > 0) then
@@ -193,7 +193,7 @@ function ViewHeadIcon:setPlayerIcon(icon, account_id)
 end
 
 ---------------------------------------
-function ViewHeadIcon:onClickHeadIcon()
+function ViewHeadIcon:_onClickHeadIcon()
     if (self.EventCallback0 ~= nil) then
         self:EventCallback0()
     end

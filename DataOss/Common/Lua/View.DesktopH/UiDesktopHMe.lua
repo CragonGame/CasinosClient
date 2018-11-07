@@ -37,7 +37,7 @@ function UiDesktopHMe:initSelfInfo(is_init)
         local icon_resource_name = ""
         local item_ico, icon_resource_name = CS.Casinos.HeadIconMgr:getIconName(true, self.ViewDesktopH.ControllerActor.PropAccountId:get(), icon_resource_name)
 
-        self.UiHeadIcon:setPlayerInfo(self.ViewDesktopH.ControllerActor.PropIcon:get(),
+        self.UiHeadIcon:SetPlayerInfo(self.ViewDesktopH.ControllerActor.PropIcon:get(),
                 self.ViewDesktopH.ControllerActor.PropAccountId:get(), self.ViewDesktopH.ControllerActor.PropVIPLevel:get())
     end
 

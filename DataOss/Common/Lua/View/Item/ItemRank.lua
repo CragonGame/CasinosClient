@@ -54,7 +54,7 @@ function ItemRank:setRankInfo(view_mgr, player_guid, nick_name, icon_name, accou
     else
         self.GTextRankIndex.text = tostring(index + 1)
     end
-    self.ViewHeadIcon:setPlayerInfo(icon_name, account_id, vip_level)
+    self.ViewHeadIcon:SetPlayerInfo(icon_name, account_id, vip_level)
 
     self.GTextPlayerNickName.text = nick_name
     local g_t = UiChipShowHelper:getGoldShowStr(value, self.ViewMgr.LanMgr.LanBase, self.ShowValueShortWay)

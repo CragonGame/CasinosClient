@@ -56,7 +56,7 @@ function UiLotteryTicketTexas:GetBetPotIndex(card_type)
 end
 
 ---------------------------------------
-function ViewLotteryTicket:GetCardType(list_card)
+function UiLotteryTicketTexas:GetCardType(list_card)
     local rank_type = CS.Casinos.CardTypeHelperTexas.GetHandRankHTexas(list_card)
     local r_t
     if rank_type == CS.Casinos.HandRankTypeTexasH.HighCard then

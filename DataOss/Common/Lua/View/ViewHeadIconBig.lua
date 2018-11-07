@@ -30,7 +30,7 @@ function ViewHeadIconBig:OnCreate()
 end
 
 ---------------------------------------
-function ViewHeadIconBig:setIcon(icon)
+function ViewHeadIconBig:SetIcon(icon)
     if icon ~= nil then
         self.GLoaderPlayerIcon.visible = true
         self.GLoaderPlayerIcon.icon = icon
@@ -38,10 +38,10 @@ function ViewHeadIconBig:setIcon(icon)
 end
 
 ---------------------------------------
-function ViewHeadIconBig:setIcon(t)
-    if t ~= nil then
+function ViewHeadIconBig:SetIcon(texture)
+    if texture ~= nil then
         self.GLoaderPlayerIcon.visible = true
-        self.GLoaderPlayerIcon.texture = CS.FairyGUI.NTexture(t)
+        self.GLoaderPlayerIcon.texture = CS.FairyGUI.NTexture(texture)
     end
 end
 

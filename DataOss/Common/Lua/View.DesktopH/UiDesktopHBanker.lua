@@ -15,11 +15,6 @@ function UiDesktopHBanker:new(o, co_bankplayer, bankplayer_nickname, bankplayer_
     self.__index = self
     o.Context = Context
     o.GComBank = co_bankplayer
-    o.GComBank.onClick:Add(
-            function()
-                o:_onClick()
-            end
-    )
     o.BankPlayerNickName = bankplayer_nickname
     o.BankPlayerGold = bankplayer_gold
     o.BankPlayerCardParent = bank_playercardtypeparent
@@ -36,6 +31,11 @@ function UiDesktopHBanker:new(o, co_bankplayer, bankplayer_nickname, bankplayer_
     o.MapFTaskerGetWinGold = {}
     o.ItemChat = nil
     o.WinRewardPotGold = 0
+    o.GComBank.onClick:Add(
+            function()
+                o:_onClick()
+            end
+    )
     return o
 end
 
@@ -62,7 +62,7 @@ function UiDesktopHBanker:SetBankerInfo(bankplayer_datadesktoph)
     self.BankPlayerDataDesktopH = bankplayer_datadesktoph
 
     if (bankplayer_changed) then
-        self.UiHeadIcon:setPlayerInfoDesktopH(self.BankPlayerDataDesktopH, true)
+        self.UiHeadIcon:SetPlayerInfoDesktopH(self.BankPlayerDataDesktopH, true)
     end
 
     self.BankPlayerNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(self.BankPlayerDataDesktopH.PlayerInfoCommon.NickName, 12, 3)

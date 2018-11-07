@@ -499,11 +499,11 @@ function DesktopPlayerTexas:desktopChat(msg)
 end
 
 ---------------------------------------
-function DesktopPlayerTexas:setGift(player_gift, is_sendgift)
+function DesktopPlayerTexas:SetGift(player_gift, is_sendgift)
     self.PlayerDataDesktop.CurrentGiftItemData = player_gift
 
     if (self.UiDesktopPlayerInfo ~= nil) then
-        self.UiDesktopPlayerInfo:setGift(player_gift, self.PlayerDataDesktop.PlayerGuid, is_sendgift)
+        self.UiDesktopPlayerInfo:SetGift(player_gift, self.PlayerDataDesktop.PlayerGuid, is_sendgift)
     end
 end
 
@@ -644,7 +644,7 @@ function DesktopPlayerTexas:_createUiPlayerInfo()
             if seat_num == 6 then
                 seat_num = 9
             end
-            self.UiDesktopPlayerInfo:setPlayerInfo(self, nil, seat_info.GComSeatPlayerParent.xy, seat_num,
+            self.UiDesktopPlayerInfo:SetPlayerInfo(self, nil, seat_info.GComSeatPlayerParent.xy, seat_num,
                     self.DesktopTexas.ActionWaitingTm, self.IsGameEnd)
         end
     end

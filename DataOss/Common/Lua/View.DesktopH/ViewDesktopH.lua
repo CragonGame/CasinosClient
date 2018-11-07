@@ -1,6 +1,7 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('UiDesktopHFlow')
 
----------------------------------------
+------------------------------------------
 ViewDesktopH = ViewBase:new()
 
 ---------------------------------------
@@ -34,6 +35,7 @@ function ViewDesktopH:new(o)
     o.DesktopHGameResult = nil
     o.UiDesktopHTongSha = nil
     o.UiDesktopHTongPei = nil
+    o.UiDesktopHFlow = nil
     o.GBtnRepeat = nil
     o.GBtnSetCardType = nil
     o.CoShiShiCai = nil-- 时时彩
@@ -253,6 +255,8 @@ function ViewDesktopH:OnCreate()
     self:setNewReward()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionReward")
 
+    self.UiDesktopHFlow = UiDesktopHFlow:new(self)
+
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 end
 
@@ -261,6 +265,10 @@ function ViewDesktopH:OnDestroy()
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
+    end
+    if self.UiDesktopHFlow ~= nil then
+        self.UiDesktopHFlow:Close()
+        self.UiDesktopHFlow = nil
     end
     self.ViewMgr:UnbindEvListener(self)
     self:_cancelTaskAndDestroyUiResult()

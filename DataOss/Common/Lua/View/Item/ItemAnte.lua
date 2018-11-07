@@ -34,5 +34,5 @@ function ItemAnte:_onClick()
         return
     end
     local gift_detail = view_mgr:CreateView("GiftDetail")
-    gift_detail:setGift(self.ItemId, self.IsBuy, self.IsMine, self.ToGuid, self.FromName, self.GiftBelong, self.Item)
+    gift_detail:SetGift(self.ItemId, self.IsBuy, self.IsMine, self.ToGuid, self.FromName, self.GiftBelong, self.Item)
 end

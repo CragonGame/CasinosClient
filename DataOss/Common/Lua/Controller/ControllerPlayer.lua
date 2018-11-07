@@ -300,7 +300,7 @@ function ControllerPlayer:OnHandleEv(ev)
     elseif (ev.EventName == "EvClickShare") then
         local share_type = ev.ShareType
         local share = self.ControllerMgr.ViewMgr:CreateView("Share")
-        share:setPlayerInfo(self.ControllerActor.PropNickName:get(), self.ControllerActor.PropAccountId:get(), share_type)
+        share:SetPlayerInfo(self.ControllerActor.PropNickName:get(), self.ControllerActor.PropAccountId:get(), share_type)
     elseif (ev.EventName == "EvGetPicSuccess") then
         self:OnGetPicSuccess(ev.pic_data)
     end
@@ -685,7 +685,7 @@ function ControllerPlayer:createMainUi()
     local bgm = string.format("MainBg%s", index)
     self.CasinosContext:Play(bgm, CS.Casinos._eSoundLayer.Background)
     local view_main = self.ControllerMgr.ViewMgr:CreateView("Main")
-    view_main:setPlayerInfo()
+    view_main:SetPlayerInfo()
     view_main:setOnlineNum(self.OnlinePlayerNum)
 end
 

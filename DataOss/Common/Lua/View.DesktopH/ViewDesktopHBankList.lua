@@ -27,7 +27,7 @@ function UiDesktopHBeBankerInfoItem:RefreshPlayerInfo(player_info)
     self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.PlayerInfoCommon.NickName, 30, 9)
     self.GTextGolds.text = self.ViewMgr.LanMgr:getLanValue(player_info.Gold, self.ViewMgr.LanMgr.LanBase)
     if (self.UiHeadIcon ~= nil) then
-        self.UiHeadIcon:setPlayerInfo(player_info.PlayerInfoCommon.IconName,
+        self.UiHeadIcon:SetPlayerInfo(player_info.PlayerInfoCommon.IconName,
                 player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
     end
 end

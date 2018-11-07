@@ -26,7 +26,7 @@ end
 ---------------------------------------
 function ItemInviteFriendPlay:setFriendInfo(friend_item)
     self.FriendInfo = friend_item;
-    self.ViewHeadIcon:setPlayerInfo(friend_item.PlayerInfoCommon.IconName, friend_item.PlayerInfoCommon.AccountId,
+    self.ViewHeadIcon:SetPlayerInfo(friend_item.PlayerInfoCommon.IconName, friend_item.PlayerInfoCommon.AccountId,
             friend_item.PlayerInfoCommon.VIPLevel)
     self.GTextName.text = CS.Casinos.UiHelper.addEllipsisToStr(friend_item.PlayerInfoCommon.NickName, 30, 9)
     local friend_state = self.ViewInviteFriendPlay.ControllerIM.IMFriendList:getFriendStateStr(self.FriendInfo.PlayerInfoCommon.PlayerGuid)

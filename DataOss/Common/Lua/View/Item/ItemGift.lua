@@ -38,7 +38,7 @@ function ItemGift:init(com, lan_mgr)
 end
 
 ---------------------------------------
-function ItemGift:setGift(gift_id, is_buygift, is_mine, to_etguid, from_name, gift_belong, item)
+function ItemGift:SetGift(gift_id, is_buygift, is_mine, to_etguid, from_name, gift_belong, item)
     self.ItemId = gift_id
     self.IsBuy = is_buygift
     self.IsMine = is_mine
@@ -100,7 +100,7 @@ function ItemGift:_onClick()
         ViewHelper:UiShowMsgBox("微信红包兑换功能正在测试中，期间微信红包会保留在你的背包中，功能开放后即可兑换使用！")
     else
         local gift_detail = view_mgr:CreateView("GiftDetail")
-        gift_detail:setGift(self.ItemId, self.IsBuy, self.IsMine, self.ToGuid, self.FromName, self.GiftBelong, self.Item)
+        gift_detail:SetGift(self.ItemId, self.IsBuy, self.IsMine, self.ToGuid, self.FromName, self.GiftBelong, self.Item)
     end
 end
 

@@ -70,7 +70,7 @@ end
 -- to_etguid, 买给单人，买给全桌
 -- from_name 来源玩家的昵称
 -- gift_belong, 来源玩家PlayerGuid
-function ViewGiftDetail:setGift(gift_id, is_buygift, is_mine, to_etguid, from_name, gift_belong, item)
+function ViewGiftDetail:SetGift(gift_id, is_buygift, is_mine, to_etguid, from_name, gift_belong, item)
     self.mItem = item
     self.mBuyGift = is_buygift
     self.mTbGiftId = gift_id

@@ -134,7 +134,7 @@ function ViewDesktopPlayerInfoTexas:release()
     self.GameEndShowExpTime = 255
     self.Exp = 0
     self.Point = 0
-    self.UiHeadIcon:setPlayerInfo("", "", 0)
+    self.UiHeadIcon:SetPlayerInfo("", "", 0)
     self.UiHandCardFirst:hideCard()
     self.UiHandCardSecond:hideCard()
     self.UiPlayerGiftAndVIP:release()
@@ -210,7 +210,7 @@ function ViewDesktopPlayerInfoTexas:OnHandleEv(ev)
         elseif (ev.EventName == "EvCurrentWinner") then
             if (ev.player ~= self.Player) then
                 --ViewHelper:SetGObjectVisible(true, self.GImagePlayerShadow)
-                self:showShade(true)
+                self:ShowShade(true)
                 self:_hideHighLight()
             end
         elseif (ev.EventName == "EvEntityDesktopShowdownNotify") then
@@ -345,7 +345,7 @@ function ViewDesktopPlayerInfoTexas:playerWaitWhile()
     self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("StepOut"), CS.UnityEngine.Color.white)
     self.UiPlayerGiftAndVIP:Reset()
     --ViewHelper:SetGObjectVisible(true, self.GImagePlayerShadow)
-    self:showShade(true)
+    self:ShowShade(true)
     --ViewHelper:SetGObjectVisible(true, self.GImagePlayerActionProgress)
     ViewHelper:SetGObjectVisible(false, self.GMovieAllIn)
 end
@@ -361,7 +361,7 @@ function ViewDesktopPlayerInfoTexas:playerInGame()
     if (self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold) then
         --ViewHelper:SetGObjectVisible(false, self.GImagePlayerShadow)
 
-        self:showShade(false)
+        self:ShowShade(false)
         ViewHelper:SetGObjectVisible(false, self.GImagePlayerActionProgress)
     end
 end
@@ -377,7 +377,7 @@ function ViewDesktopPlayerInfoTexas:playerTurn(is_player_turn, turn_tm)
         self.CurrentActionTime = self.ActionWaitingTime - turn_tm
         ViewHelper:SetGObjectVisible(true, self.GImagePlayerActionProgress)
         --ViewHelper:SetGObjectVisible(false, self.GImagePlayerShadow)
-        self:showShade(false)
+        self:ShowShade(false)
         ViewHelper:SetGObjectVisible(false, self.GImagePlayerWinner)
         --ViewHelper:SetGObjectVisible(false, self.GGraphWinStarParent)
         ViewHelper:SetGObjectVisible(false, self.GMovieAllIn)
@@ -403,7 +403,7 @@ function ViewDesktopPlayerInfoTexas:Reset()
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:setPlayerInfo(player, parent, pos, desk_seatcount, action_waiting_time, is_gameend)
+function ViewDesktopPlayerInfoTexas:SetPlayerInfo(player, parent, pos, desk_seatcount, action_waiting_time, is_gameend)
     ViewHelper:SetGObjectVisible(true, self.ComUi)
     self.IsRelease = false
     local pos_e = pos
@@ -435,7 +435,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerInfo(player, parent, pos, desk_seat
         show_shadow = false
     end
     --ViewHelper:SetGObjectVisible(show_shadow, self.GImagePlayerShadow)
-    self:showShade(show_shadow)
+    self:ShowShade(show_shadow)
     if player_state ~= TexasDesktopPlayerState.InGame then
         if player_state == TexasDesktopPlayerState.WaitWhile then
             self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("StepOut"), CS.UnityEngine.Color.white)
@@ -460,14 +460,14 @@ function ViewDesktopPlayerInfoTexas:setPlayerInfo(player, parent, pos, desk_seat
     self.UiHandCardFirst:hideCard()
     self.UiHandCardSecond:hideCard()
     local vip_level = self.Player.PlayerDataDesktop.VIPLevel
-    self.UiHeadIcon:setPlayerInfo(self.Player.PlayerDataDesktop.IconName, self.Player.PlayerDataDesktop.AccountId, vip_level)
+    self.UiHeadIcon:SetPlayerInfo(self.Player.PlayerDataDesktop.IconName, self.Player.PlayerDataDesktop.AccountId, vip_level)
     self.UiPlayerGiftAndVIP:checkGiftAndVIPPos(self.DesktopSeatCount, self.Player.UiSeatIndex, vip_level)
 
     local current_itemdata = self.Player.PlayerDataDesktop.CurrentGiftItemData
     if (current_itemdata ~= nil and CS.System.String.IsNullOrEmpty(current_itemdata.item_objid) == false) then
         local tb_item = self.ViewMgr.TbDataMgr:GetData("Item", current_itemdata.item_tbid)
         if (tb_item.UnitType == "GiftTmp") then
-            self:setGift(current_itemdata, self.Player.Guid, false)
+            self:SetGift(current_itemdata, self.Player.Guid, false)
         end
     end
 end
@@ -544,7 +544,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
         end
     end
     --ViewHelper:SetGObjectVisible(show_shadow, self.GImagePlayerShadow)
-    self:showShade(show_shadow)
+    self:ShowShade(show_shadow)
 
     if (play_sound and self.Player.DesktopTexas.IsSnapshot == false) then
         self.CasinosContext:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
@@ -554,7 +554,7 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:setGift(current_item, target_etguid, is_sendgift)
+function ViewDesktopPlayerInfoTexas:SetGift(current_item, target_etguid, is_sendgift)
     local item = nil
     local from_pos = CS.Casinos.LuaHelper.GetVector2(0, 0)
     if (current_item ~= nil) then
@@ -580,7 +580,7 @@ function ViewDesktopPlayerInfoTexas:setGift(current_item, target_etguid, is_send
         end
     end
 
-    self.UiPlayerGiftAndVIP:setGift(item, from_pos, is_sendgift)
+    self.UiPlayerGiftAndVIP:SetGift(item, from_pos, is_sendgift)
 end
 
 ---------------------------------------
@@ -768,7 +768,7 @@ end
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
     --ViewHelper:SetGObjectVisible(false, self.GImagePlayerShadow)
-    self:showShade(false)
+    self:ShowShade(false)
     local ev = self.ViewMgr:GetEv("EvCurrentWinner")
     if (ev == nil) then
         ev = EvCurrentWinner:new(nil)
@@ -956,7 +956,7 @@ function ViewDesktopPlayerInfoTexas:_resetPlayerInfo()
 
     if self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile and self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold
             and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.HoldSeat then
-        self:showShade(false)
+        self:ShowShade(false)
     end
 
     ViewHelper:SetGObjectVisible(false, self.GImagePlayerWinner)
@@ -991,19 +991,19 @@ function ViewDesktopPlayerInfoTexas:setLeaveWhileTime(rest_time)
     if (rest_time <= 0) then
         self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
         --ViewHelper:SetGObjectVisible(false, self.GImagePlayerShadow)
-        self:showShade(false)
+        self:ShowShade(false)
         ViewHelper:SetGObjectVisible(false, self.GImagePlayerActionProgress)
     else
         self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("StepOut"), CS.UnityEngine.Color.white)
         --ViewHelper:SetGObjectVisible(true, self.GImagePlayerShadow)
-        self:showShade(true)
+        self:ShowShade(true)
         ViewHelper:SetGObjectVisible(true, self.GImagePlayerActionProgress)
         self:_setThinkingTimeSprite(rest_time / self.Player.DesktopTexas.WaitWhileTm, false)
     end
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:showShade(show_shade)
+function ViewDesktopPlayerInfoTexas:ShowShade(show_shade)
     ViewHelper:SetGObjectVisible(show_shade, self.GImagePlayerShadow)
     local lable_a = 1
     if show_shade then

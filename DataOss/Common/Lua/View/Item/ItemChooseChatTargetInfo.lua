@@ -32,7 +32,7 @@ end
 function ItemChooseChatTargetInfo:setFriendInfo(friend_item)
     self.FriendInfo = friend_item
     local icon_name = self.FriendInfo.PlayerInfoCommon.IconName
-    self.ViewHeadIcon:setPlayerInfo(self.FriendInfo.PlayerInfoCommon.IconName, self.FriendInfo.PlayerInfoCommon.AccountId,
+    self.ViewHeadIcon:SetPlayerInfo(self.FriendInfo.PlayerInfoCommon.IconName, self.FriendInfo.PlayerInfoCommon.AccountId,
             self.FriendInfo.PlayerInfoCommon.VIPLevel)
     self.GTextName.text = CS.Casinos.UiHelper.addEllipsisToStr(self.FriendInfo.PlayerInfoCommon.NickName, 33, 10)
     local friend_state = self.ControllerIM.IMFriendList:getFriendStateStr(self.FriendInfo.PlayerInfoCommon.PlayerGuid)

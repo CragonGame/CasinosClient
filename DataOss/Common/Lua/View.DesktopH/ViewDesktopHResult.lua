@@ -12,7 +12,7 @@ function UiDesktopHDlgGameEndResultWinPlayerItem:new(o, com, player_info, rank, 
     o.GCoPlayerInfo = com
     local co_headicon = o.GCoPlayerInfo:GetChild("CoHeadIcon").asCom
     o.UiHeadIcon = ViewHeadIcon:new(nil, co_headicon)
-    o.UiHeadIcon:setPlayerInfo(player_info.icon, player_info.account_id, player_info.vip_level)
+    o.UiHeadIcon:SetPlayerInfo(player_info.icon, player_info.account_id, player_info.vip_level)
     o.GTextNickName = o.GCoPlayerInfo:GetChild("NickName").asTextField
     o.GTextGolds = o.GCoPlayerInfo:GetChild("WinGold").asTextField
     o.GTextRank = o.GCoPlayerInfo:GetChild("Rank").asTextField

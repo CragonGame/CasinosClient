@@ -29,7 +29,7 @@ function UiDesktopHSeat:setSeatPlayerData(player_info, seat_index, player_change
         self.PlayerDataDesktopH = player_info
 
         if (player_changed) then
-            self.UiHeadIcon:setPlayerInfoDesktopH(self.PlayerDataDesktopH, false)
+            self.UiHeadIcon:SetPlayerInfoDesktopH(self.PlayerDataDesktopH, false)
         end
 
         self.GTextPlayerNickName.text = player_info.PlayerInfoCommon.NickName

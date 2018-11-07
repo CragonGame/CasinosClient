@@ -16,7 +16,7 @@ function ItemLobbyDeskPlayInfo:new(o, item, playerInfo, lan_mgr)
     o.GTextChipAmount = o.Item:GetChild("TextChipAmount").asTextField
     o.GTextPlayerName = o.Item:GetChild("TextName").asTextField
     o.ViewHeadIcon = ViewHeadIcon:new(nil, o.GComHeadIcon)
-    o.ViewHeadIcon:setPlayerInfo(playerInfo.icon, playerInfo.account_id, 0)
+    o.ViewHeadIcon:SetPlayerInfo(playerInfo.icon, playerInfo.account_id, 0)
     o.GTextPlayerName.text = playerInfo.nick_name
     o.GTextChipAmount.text = UiChipShowHelper:getGoldShowStr(playerInfo.chip, lan_mgr.LanBase)
     return o

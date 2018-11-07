@@ -58,7 +58,7 @@ function ViewPlayerProfile:OnCreate()
                                 then
                                     local ui_iconbig = self.ViewMgr:CreateView("HeadIconBig")
                                     local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
-                                    ui_iconbig:setIcon(texture)
+                                    ui_iconbig:SetIcon(texture)
                                 end
                             end
                     )
@@ -72,7 +72,7 @@ function ViewPlayerProfile:OnCreate()
                                 then
                                     local ui_iconbig = self.ViewMgr:CreateView("HeadIconBig")
                                     local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
-                                    ui_iconbig:setIcon(texture)
+                                    ui_iconbig:SetIcon(texture)
                                 end
                             end
                     )
@@ -125,7 +125,7 @@ end
 function ViewPlayerProfile:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGetPlayerInfoOther") then
         if (ev.player_info.PlayerInfoCommon.PlayerGuid == self.PlayerGuid) then
-            self:setPlayerInfo(ev.player_info)
+            self:SetPlayerInfo(ev.player_info)
         end
     elseif (ev.EventName == "EvEntityBagAddItem") then
         if (self.PlayerInfo ~= nil and self.PlayerInfo.PlayerInfoCommon.PlayerGuid == self.ControllerPlayer.Guid) then
@@ -191,7 +191,7 @@ function ViewPlayerProfile:reportFriend(friend_etguid, report_type)
 end
 
 ---------------------------------------
-function ViewPlayerProfile:setPlayerInfo(player_info)
+function ViewPlayerProfile:SetPlayerInfo(player_info)
     self.PlayerInfo = player_info
     local hide_standupbtn = true
     if ((self.PlayerInfo.PlayerInfoCommon.PlayerGuid == self.ControllerPlayer.Guid) and (self.PlayerProfileType == CS.Casinos._ePlayerProfileType.DesktopH)) then
@@ -276,7 +276,7 @@ function ViewPlayerProfile:setPlayerInfo(player_info)
     loader.LoaderDoneCallBack = function(bo)
         self:loadIconDone(bo)
     end
-    self.UiHeadIcon:setPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoMore.VipLevel)
+    self.UiHeadIcon:SetPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoMore.VipLevel)
     self.GTextPlayerNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(self.PlayerInfo.PlayerInfoCommon.NickName, 21, 6)
     self.GTextPlayerGolds.text = UiChipShowHelper:getGoldShowStr(self.PlayerInfo.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, false)
     self.GTextPlayerSign.text = self.PlayerInfo.PlayerInfoMore.IndividualSignature
@@ -387,7 +387,7 @@ function ViewPlayerProfile:RenderListItem(index, obj)
             local ui_item = self.ViewPool:getItemGift(com)
             local unit_giftnormal = item.UnitLink
             ui_item:init(com, self.ViewMgr.LanMgr)
-            ui_item:setGift(item.TbDataItem.Id, false, self.ControllerPlayer.Guid == unit_giftnormal.GivePlayerEtGuid,
+            ui_item:SetGift(item.TbDataItem.Id, false, self.ControllerPlayer.Guid == unit_giftnormal.GivePlayerEtGuid,
                     self.ControllerPlayer.Guid, unit_giftnormal.GiveBy, self.PlayerInfo.PlayerInfoCommon.PlayerGuid, item)
         end
     end
