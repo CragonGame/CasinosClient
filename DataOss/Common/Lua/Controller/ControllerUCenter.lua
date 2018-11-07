@@ -14,7 +14,7 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
-    o.UCenterDomain = self.Context.Cfg.UCenterDomain
+    o.UCenterDomain = o.Context.Cfg.UCenterDomain
     o.MbHelper = nil
     return o
 end

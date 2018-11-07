@@ -1,4 +1,5 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('ControllerBase')
 -- 登录界面，由Context调用ControllerMgr创建Login
 
 ---------------------------------------
@@ -27,8 +28,6 @@ function ControllerMgr:OnCreate()
     print("ControllerMgr:OnCreate")
     self.EventSys = EventSys:new(nil)
     self.ViewMgr = ViewMgr:new(nil)
-    self.Context:DoString("ControllerBase")
-    self.Context:DoString("ControllerFactory")
 end
 
 ---------------------------------------
