@@ -43,10 +43,8 @@ end
 
 ---------------------------------------
 function ControllerMarquee:OnHandleEv(ev)
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvRequestSendMarquee")
-        then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvRequestSendMarquee") then
             local im_marquee = BIMMarquee:new(nil)
             im_marquee.SenderType = IMMarqueeSenderType.Player
             im_marquee.SenderGuid = self.Guid
@@ -60,8 +58,7 @@ end
 
 ---------------------------------------
 function ControllerMarquee:s2cMarqueeRequestResult(result)
-    if (result == ProtocolResult.Failed)
-    then
+    if (result == ProtocolResult.Failed) then
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SendNoticeFailed"))
     end
 end
@@ -71,8 +68,7 @@ function ControllerMarquee:s2cIMMarqueeNotify(im_marquee)
     local data = BIMMarquee:new(nil)
     data:setData(im_marquee)
     local view_shootingtext = self.ControllerMgr.ViewMgr:GetView("ShootingText")
-    if (view_shootingtext == nil)
-    then
+    if (view_shootingtext == nil) then
         view_shootingtext = self.ControllerMgr.ViewMgr:CreateView("ShootingText")
         view_shootingtext:init(false, true, true)
     end
@@ -80,22 +76,19 @@ function ControllerMarquee:s2cIMMarqueeNotify(im_marquee)
     local priority = data.Priority
     local que_marquee = nil
     for key, value in pairs(self.MapQueMarquee) do
-        if (key == priority)
-        then
+        if (key == priority) then
             que_marquee = value
             break
         end
     end
-    if (que_marquee == nil)
-    then
+    if (que_marquee == nil) then
         que_marquee = {}
         self.MapQueMarquee[priority] = que_marquee
     end
     table.insert(que_marquee, data)
 
     local list_count = #self.ListIMMarquee
-    if (list_count >= self.MaxMarqueeCount)
-    then
+    if (list_count >= self.MaxMarqueeCount) then
         for i = 1, list_count - self.MaxMarqueeCount + 1 do
             self.ListIMMarquee[i] = nil
         end
@@ -103,8 +96,7 @@ function ControllerMarquee:s2cIMMarqueeNotify(im_marquee)
     table.insert(self.ListIMMarquee, data)
 
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityReceiceMarquee")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityReceiceMarquee:new(nil)
     end
     ev.im_marquee = data
@@ -123,37 +115,30 @@ function ControllerMarquee:getNeedShowMarquee()
     local que_highpriority = nil
     local contains_key = false
     for key, value in pairs(self.MapQueMarquee) do
-        if (key == IMMarqueePriority.High)
-        then
+        if (key == IMMarqueePriority.High) then
             que_highpriority = value
             contains_key = true
             break
         end
     end
-    if (contains_key == true)
-    then
-        if (#que_highpriority > 0)
-        then
+    if (contains_key == true) then
+        if (#que_highpriority > 0) then
             marquee = table.remove(que_highpriority, 1)
         end
     end
 
-    if (marquee == nil)
-    then
+    if (marquee == nil) then
         local que_normalpriority = nil
         local contains_key2 = false
         for key, value in pairs(self.MapQueMarquee) do
-            if (key == IMMarqueePriority.Normal)
-            then
+            if (key == IMMarqueePriority.Normal) then
                 que_normalpriority = value
                 contains_key2 = true
                 break
             end
         end
-        if (contains_key2 == true)
-        then
-            if (#que_normalpriority > 0)
-            then
+        if (contains_key2 == true) then
+            if (#que_normalpriority > 0) then
                 marquee = table.remove(que_normalpriority, 1)
             end
         end
@@ -165,11 +150,9 @@ end
 ---------------------------------------
 function ControllerMarquee:haveNeedShowMarquee()
     local have_marquee = false
-    if (self.MapQueMarquee ~= nil)
-    then
+    if (self.MapQueMarquee ~= nil) then
         for key, value in pairs(self.MapQueMarquee) do
-            if (#value > 0)
-            then
+            if (#value > 0) then
                 have_marquee = true
                 break
             end
@@ -192,7 +175,7 @@ function ControllerMarqueeFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerMarqueeFactory:createController(controller_mgr, controller_data, guid)
+function ControllerMarqueeFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerMarquee:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

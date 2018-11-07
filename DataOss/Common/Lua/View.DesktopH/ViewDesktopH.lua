@@ -1,5 +1,24 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('UiDesktopHBanker')
+require('UiDesktopHBetOperateItem')
+require('UiDesktopHBetPot')
+require('UiDesktopHBetPotItem')
+require('UiDesktopHCard')
+require('UiDesktopHCards')
+require('UiDesktopHCardTypeBase')
+require('UiDesktopHCardTypeTexas')
+require('UiDesktopHChair')
+require('UiDesktopHDealer')
 require('UiDesktopHFlow')
+require('UiDesktopHGold')
+require('UiDesktopHGoldPool')
+require('UiDesktopHHistroy')
+require('UiDesktopHMe')
+require('UiDesktopHRewardPot')
+require('UiDesktopHSeat')
+require('UiDesktopHStandPlayer')
+require('UiDesktopHTongPei')
+require('UiDesktopHTongSha')
 
 ------------------------------------------
 ViewDesktopH = ViewBase:new()
@@ -244,7 +263,7 @@ function ViewDesktopH:OnCreate()
     local com_reward = self.ComUi:GetChild("ComReward").asCom
     local co_onlinereward = com_reward:GetChild("ComOnlineReward").asCom
     self.ViewOnlineReward = ViewOnlineReward:new(nil, co_onlinereward, self.ViewMgr)
-    self.CanGetOnLineReward = self.ControllerPlayer.OnLineReward:IfCanGetReward()
+    self.CanGetOnLineReward = self.ControllerPlayer.OnlineReward:IfCanGetReward()
     self.ViewOnlineReward:setCanGetReward(self.CanGetOnLineReward)
     local co_timingreward = com_reward:GetChild("ComPushReward").asCom
     self.ViewTimingReward = ViewTimingReward:new(nil, co_timingreward, self.ViewMgr)
@@ -679,7 +698,7 @@ function ViewDesktopH:_timerUpdate(elapsed_tm)
 end
 
 ---------------------------------------
-function ViewDesktopH:getMoveIntervalTm(count)
+function ViewDesktopH:GetMoveIntervalTm(count)
     local delay_t = UiDesktopHGold.MAX_CHIP_MOVE_TM / count
     if (delay_t > UiDesktopHGold.MAX_CHIP_MOVE_INTERVAL_TM) then
         delay_t = UiDesktopHGold.MAX_CHIP_MOVE_INTERVAL_TM

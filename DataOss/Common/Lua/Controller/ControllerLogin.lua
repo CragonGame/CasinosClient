@@ -96,31 +96,28 @@ function ControllerLogin:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil) then
-        self.Context = Context
-        self.ControllerName = "Login"
-        self.ControllerData = controller_data
-        self.ControllerMgr = controller_mgr
-        self.Guid = guid
-        self.Password = nil
-        self.RemeberPwd = false
-        self.RequestThirdPartyLogin = false
-        self.BindingWeChat = false
-        self.AutoLogin = false
-        self.AutoLoginTm = 0
-        self.ViewMgr = ViewMgr:new(nil)
-        self.AccId = nil
-        self.Acc = nil
-        self.Pwd = nil
-        self.Token = nil
-        self.ClientEnterWorldNotify = nil
-        self.ShowKickOutInfo = false
-        self.LoginAccountInfoKey = "LoginAccountInfo3"
-        self.TimerUpdate = nil
-        self.CasinosContext = CS.Casinos.CasinosContext.Instance
-        self.Instance = o
-    end
-    return self.Instance
+    o.Context = Context
+    o.ControllerName = "Login"
+    o.ControllerData = controller_data
+    o.ControllerMgr = controller_mgr
+    o.Guid = guid
+    o.Password = nil
+    o.RemeberPwd = false
+    o.RequestThirdPartyLogin = false
+    o.BindingWeChat = false
+    o.AutoLogin = false
+    o.AutoLoginTm = 0
+    o.ViewMgr = ViewMgr:new(nil)
+    o.AccId = nil
+    o.Acc = nil
+    o.Pwd = nil
+    o.Token = nil
+    o.ClientEnterWorldNotify = nil
+    o.ShowKickOutInfo = false
+    o.LoginAccountInfoKey = "LoginAccountInfo3"
+    o.TimerUpdate = nil
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    return o
 end
 
 ---------------------------------------
@@ -903,7 +900,7 @@ function ControllerLoginFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerLoginFactory:createController(controller_mgr, controller_data, guid)
+function ControllerLoginFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerLogin:new(nil, controller_mgr, controller_data, guid)
     controller:OnCreate()
     return controller

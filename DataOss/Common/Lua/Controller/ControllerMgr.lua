@@ -3,7 +3,6 @@
 
 ---------------------------------------
 ControllerMgr = {
-    Instance = nil,
     ViewMgr = nil,
     EventSys = nil,
     TableControllerFactory = {},
@@ -19,11 +18,8 @@ function ControllerMgr:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-        self.LanMgr = nil
-    end
-    return self.Instance
+    o.LanMgr = nil
+    return o
 end
 
 ---------------------------------------
@@ -96,7 +92,7 @@ function ControllerMgr:CreateController(controller_name, controller_data, guid)
     if (controller_factory == nil) then
         return nil
     end
-    local controller = controller_factory:createController(self, controller_data, guid)
+    local controller = controller_factory:CreateController(self, controller_data, guid)
     self.TableController[controller_name] = controller
     return controller
 end

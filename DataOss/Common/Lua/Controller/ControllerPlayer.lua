@@ -8,17 +8,17 @@ function ControllerPlayer:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerData = controller_data
-    self.ControllerMgr = controller_mgr
-    self.Guid = guid
-    self.ControllerName = "Player"
-    self.ViewMgr = ViewMgr:new(nil)
-    self.TopStarBundleId = "com.QuLing.TexasPoker"
-    self.TimerUpdate = nil
-    self.GetOnlinePlayerNumTimeElapsed = 0
-    self.MC = CommonMethodType
+    o.Context = Context
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.ControllerData = controller_data
+    o.ControllerMgr = controller_mgr
+    o.Guid = guid
+    o.ControllerName = "Player"
+    o.ViewMgr = ViewMgr:new(nil)
+    o.TopStarBundleId = "com.QuLing.TexasPoker"
+    o.TimerUpdate = nil
+    o.GetOnlinePlayerNumTimeElapsed = 0
+    o.MC = CommonMethodType
     return o
 end
 
@@ -65,7 +65,7 @@ function ControllerPlayer:OnCreate()
     local login = self.ControllerMgr:GetController("Login")
     login:canDestroyViewLogin()
 
-    self.OnLineReward = OnLineReward:new(nil, self.ControllerMgr.ViewMgr)
+    self.OnlineReward = OnlineReward:new(nil, self.ControllerMgr.ViewMgr)
     self.TimingReward = TimingReward:new(nil, self.ControllerMgr.ViewMgr)
 
     self:createMainUi()
@@ -278,7 +278,7 @@ function ControllerPlayer:OnHandleEv(ev)
     elseif (ev.EventName == "EvRequestGetOnLineReward") then
         self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlineRewardRequest)
     elseif (ev.EventName == "EvViewOnGetOnLineReward") then
-        self.OnLineReward:onGetReward()
+        self.OnlineReward:onGetReward()
     elseif (ev.EventName == "EvViewRequestGetTimingReward") then
         local can_get = self.TimingReward:onGetReward()
         if can_get then
@@ -540,7 +540,7 @@ end
 
 ---------------------------------------
 function ControllerPlayer:s2cPlayerGetOnlineRewardNotify(online_reward_state, left_reward_second, next_reward)
-    self.OnLineReward:setOnlineRewardState(online_reward_state, left_reward_second, next_reward)
+    self.OnlineReward:setOnlineRewardState(online_reward_state, left_reward_second, next_reward)
 end
 
 ---------------------------------------
@@ -873,8 +873,8 @@ function ControllerPlayer:_timerUpdate(tm)
         self.GetOnlinePlayerNumTimeElapsed = 0
         self:requestGetOnlinePlayerNum()
     end
-    if (self.OnLineReward ~= nil) then
-        self.OnLineReward:Update()
+    if (self.OnlineReward ~= nil) then
+        self.OnlineReward:Update()
     end
 end
 
@@ -891,7 +891,7 @@ function ControllerPlayerFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerPlayerFactory:createController(controller_mgr, controller_data, guid)
+function ControllerPlayerFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerPlayer:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

@@ -8,23 +8,23 @@ function DesktopHTexas:new(o, controller_desktoph, factory_name)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.Context = Context
-    self.ControllerDesktopH = controller_desktoph
-    self.FactoryName = factory_name
-    self.MapTbGoldPercent = {}
-    self.MaxTbGoldPercent = {}
-    self.ListOperate = {}
-    self.ListOperateId = {}
+    o.Context = Context
+    o.ControllerDesktopH = controller_desktoph
+    o.FactoryName = factory_name
+    o.MapTbGoldPercent = {}
+    o.MaxTbGoldPercent = {}
+    o.ListOperate = {}
+    o.ListOperateId = {}
 
-    self:_setGoldPercent()
+    o:_setGoldPercent()
 
-    local map_tbdesktophoperate = self.Context.TbDataMgr:GetMapData("DesktopHBetOperateTexas")
+    local map_tbdesktophoperate = o.Context.TbDataMgr:GetMapData("DesktopHBetOperateTexas")
     for k, v in pairs(map_tbdesktophoperate) do
-        self.ListOperate[v] = v
+        o.ListOperate[v] = v
     end
 
-    for k, v in pairs(self.ListOperate) do
-        self.ListOperateId[v.Id] = v.Id
+    for k, v in pairs(o.ListOperate) do
+        o.ListOperateId[v.Id] = v.Id
     end
 
     return o

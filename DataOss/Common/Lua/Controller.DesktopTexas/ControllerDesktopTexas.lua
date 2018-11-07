@@ -12,8 +12,8 @@ function ControllerDesktopTexas:new(o, controller_mgr, controller_data, guid)
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.TimerUpdate = nil
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.TimerUpdate = nil
     return o
 end
 
@@ -496,7 +496,7 @@ function ControllerDesktopTexasFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerDesktopTexasFactory:createController(controller_mgr, controller_data, guid)
+function ControllerDesktopTexasFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerDesktopTexas:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

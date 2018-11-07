@@ -9,7 +9,7 @@ function ControllerMTT:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -78,86 +78,86 @@ end
 ---------------------------------------
 function ControllerMTT:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestPublicMatchList") then
-        self:requestGetMatchTexasList(MatchTexasScopeType.Public)
+        self:RequestGetMatchTexasList(MatchTexasScopeType.Public)
     elseif (ev.EventName == "EvUiRequestPrivateMatchList") then
-        self:requestGetMatchTexasList(MatchTexasScopeType.Private)
+        self:RequestGetMatchTexasList(MatchTexasScopeType.Private)
     elseif (ev.EventName == "EvUiRequestUpdatePublicMatchPlayerNum") then
-        self:requestUpdatePlayerNumInMatchTexasList(MatchTexasScopeType.Public)
+        self:RequestUpdatePlayerNumInMatchTexasList(MatchTexasScopeType.Public)
     elseif (ev.EventName == "EvUiRequestUpdatePrivateMatchPlayerNum") then
-        self:requestUpdatePlayerNumInMatchTexasList(MatchTexasScopeType.Private)
+        self:RequestUpdatePlayerNumInMatchTexasList(MatchTexasScopeType.Private)
     elseif (ev.EventName == "EvUiRequestSignUpMatch") then
         local match_guid = ev.MatchGuid
-        self:requestSignupMatchTexas(match_guid)
+        self:RequestSignupMatchTexas(match_guid)
     elseif (ev.EventName == "EvUiRequestMatchDetailedInfo") then
         local match_guid = ev.MatchGuid
         local match_type = ev.MatchType
-        self:requestGetMatchDetailedInfo(match_type, match_guid)
+        self:RequestGetMatchDetailedInfo(match_type, match_guid)
     elseif (ev.EventName == "EvUiRequestCancelSignupMatch") then
-        self:requestCancelSignupMatchTexas(ev.MatchGuid)
+        self:RequestCancelSignupMatchTexas(ev.MatchGuid)
     elseif (ev.EventName == "EvUiRequestCreatePrivateMatch") then
         local createMatchInfo = ev.CreateMatchInfo
-        self:requestCreateMatchTexas(createMatchInfo)
+        self:RequestCreateMatchTexas(createMatchInfo)
     elseif (ev.EventName == "EvUiRequestEnterMatch") then
         local match_guid = ev.MatchGuid
-        self:requestEnterMatch(match_guid)
+        self:RequestEnterMatch(match_guid)
     elseif (ev.EventName == "EvUiRequestGetMatchDetailedInfoByInvitation") then
-        local invitationCode = ev.InvitationCode
-        self:requestGetMatchDetailedInfoByInvitation(invitationCode)
+        local invitation_code = ev.InvitationCode
+        self:RequestGetMatchDetailedInfoByInvitation(invitation_code)
     end
 end
 
 ---------------------------------------
 -- 请求获取赛事信息列表
-function ControllerMTT:requestGetMatchTexasList(match_type)
+function ControllerMTT:RequestGetMatchTexasList(match_type)
     self.RPC:RPC1(self.MC.MatchTexasRequestGetList, match_type)
 end
 
 ---------------------------------------
 -- 请求更新赛事信息列表中的参赛人数
-function ControllerMTT:requestUpdatePlayerNumInMatchTexasList(match_type)
+function ControllerMTT:RequestUpdatePlayerNumInMatchTexasList(match_type)
     self.RPC:RPC1(self.MC.MatchTexasRequestUpdatePlayerNumInList, match_type)
 end
 
 ---------------------------------------
 -- 请求报名或者延迟报名
-function ControllerMTT:requestSignupMatchTexas(match_guid)
+function ControllerMTT:RequestSignupMatchTexas(match_guid)
     self.RPC:RPC1(self.MC.MatchTexasRequestSignup, match_guid)
 end
 
 ---------------------------------------
 -- 请求取消报名
-function ControllerMTT:requestCancelSignupMatchTexas(match_guid)
+function ControllerMTT:RequestCancelSignupMatchTexas(match_guid)
     self.RPC:RPC1(self.MC.MatchTexasRequestCancelSignup, match_guid)
 end
 
 ---------------------------------------
 -- 请求获取赛事详情
-function ControllerMTT:requestGetMatchDetailedInfo(match_type, match_guid)
+function ControllerMTT:RequestGetMatchDetailedInfo(match_type, match_guid)
     self.RPC:RPC2(self.MC.MatchTexasRequestGetMoreInfo, match_type, match_guid)
 end
 
 ---------------------------------------
 -- 请求创建比赛
-function ControllerMTT:requestCreateMatchTexas(create_info)
+function ControllerMTT:RequestCreateMatchTexas(create_info)
     self.RPC:RPC1(self.MC.MatchTexasRequestCreate, create_info:getData4Pack())
 end
 
 ---------------------------------------
 -- 请求解散比赛
-function ControllerMTT:requestDisbandMatchTexas()
+function ControllerMTT:RequestDisbandMatchTexas()
     self.RPC:RPC0(self.MC.MatchTexasRequestDisband)
 end
 
 ---------------------------------------
 -- 请求进入比赛
-function ControllerMTT:requestEnterMatch(match_guid)
+function ControllerMTT:RequestEnterMatch(match_guid)
     self.RPC:RPC1(self.MC.MatchTexasRequestEnter, match_guid)
 end
 
 ---------------------------------------
 -- 请求通过邀请码获取到赛事信息
-function ControllerMTT:requestGetMatchDetailedInfoByInvitation(invitationCode)
-    self.RPC:RPC1(self.MC.MatchTexasRequestJoinNotPublic, invitationCode)
+function ControllerMTT:RequestGetMatchDetailedInfoByInvitation(invitation_code)
+    self.RPC:RPC1(self.MC.MatchTexasRequestJoinNotPublic, invitation_code)
 end
 
 ---------------------------------------
@@ -197,7 +197,7 @@ function ControllerMTT:s2cMatchTexasRequestUpdatePlayerNumInListResult(list_matc
         end
         --if(self.AllMatchNum ~= #list_matchPlayerNum)
         --then
-        --	self:requestGetMatchTexasList(MatchTexasScopeType.Public)
+        --	self:RequestGetMatchTexasList(MatchTexasScopeType.Public)
         --	return
         --end
         local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityUpdatePublicMatchPlayerNum")
@@ -279,14 +279,14 @@ function ControllerMTT:s2cMatchTexasRequestCancelSignupResult(matchTexasCancelSi
     local data = BMatchTexasCancelSignUpResponse:new(nil)
     data:setData(matchTexasCancelSignUpResponse)
     local result = data.Result
-    local match_guid = data.MatchGuid
+    --local match_guid = data.MatchGuid
     if (result == ProtocolResult.Success) then
-        --self:requestGetMatchTexasList(MatchTexasScopeType.Public)
+        --self:RequestGetMatchTexasList(MatchTexasScopeType.Public)
         local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
         local tips = self.ControllerMgr.LanMgr:getLanValue("CancelMatchSuccess")
         msg_box:showMsgBox1("", tips,
                 function()
-                    self:requestGetMatchTexasList(MatchTexasScopeType.Public)
+                    self:RequestGetMatchTexasList(MatchTexasScopeType.Public)
                     self.ViewMgr:DestroyView(msg_box)
                 end
         )
@@ -410,7 +410,7 @@ function ControllerMTTFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerMTTFactory:createController(controller_mgr, controller_data, guid)
+function ControllerMTTFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerMTT:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

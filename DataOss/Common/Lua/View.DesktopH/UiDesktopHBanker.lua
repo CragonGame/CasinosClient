@@ -127,7 +127,7 @@ function UiDesktopHBanker:showWinGoldAni(win_gold, list_golds, pot_index)
     end
 
     local delay_tm = 0.0
-    local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_golds)
+    local delay_t = self.ViewDesktopH:GetMoveIntervalTm(#list_golds)
     local to = self:getBankPlayerCenterPos()
     for k, v in pairs(list_golds) do
         v:initMove(v.GCoGold.xy, to,
@@ -139,8 +139,7 @@ function UiDesktopHBanker:showWinGoldAni(win_gold, list_golds, pot_index)
     local tasker = CS.Casinos.FTMgr.Instance:whenAll(nil,
             function(map_param)
                 self:_getWinGoldDone(map_param)
-            end,
-            t)
+            end, t)
     self.MapFTaskerGetWinGold[pot_index] = tasker
 end
 

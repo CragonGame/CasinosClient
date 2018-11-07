@@ -101,7 +101,7 @@ function ControllerGrowFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerGrowFactory:createController(controller_mgr, controller_data, guid)
+function ControllerGrowFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerGrow:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

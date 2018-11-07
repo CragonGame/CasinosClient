@@ -80,7 +80,7 @@ end
 
 ---------------------------------------
 function UiDesktopHDealer:dealCard(deal_cardcount, move_cardwidth_percent, map_userdata, auto_showcard)
-    if (self.DesktopHDealerBase ~= nil) then
+    if self.DesktopHDealerBase ~= nil then
         self.DesktopHDealerBase:dealBegin(
                 function()
                 end, map_userdata)

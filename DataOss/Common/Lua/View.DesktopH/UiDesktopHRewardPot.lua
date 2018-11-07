@@ -55,7 +55,7 @@ function UiDesktopHRewardPot:setSysPumpingGold(pot_index)
         local auto_destroy = true
         local gold_fix_pos = false
         local delay_tm = 0.0
-        local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_golds)
+        local delay_t = self.ViewDesktopH:GetMoveIntervalTm(#list_golds)
         if (pot_index ~= UiDesktopHBanker.BankerIndex) then
             auto_destroy = false
             gold_fix_pos = true
@@ -107,7 +107,7 @@ function UiDesktopHRewardPot:showLooseGoldAni(pot_index, win_rewardpot_golds)
         self.ViewDesktopH:createGolds(self.ListLooseUiGold, nil, win_rewardpot_golds, nil, 20)
         local to = self.ViewDesktopH.UiDesktopHBanker:getBankPlayerCenterPos()
         local delay_tm = 0
-        local delay_t = self.ViewDesktopH:getMoveIntervalTm(self.ListLooseUiGold.Count)
+        local delay_t = self.ViewDesktopH:GetMoveIntervalTm(self.ListLooseUiGold.Count)
         for k, v in pairs(self.ListLooseUiGold) do
             v.initMove(from, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
             delay_tm = delay_tm + delay_t
@@ -202,7 +202,7 @@ function UiDesktopHRewardPot:_playBetPotSyspumpingGoldAni(map_param)
     if (list_gold ~= nil) then
         local to = self:_getRewardPotPos()
         local delay_tm = 0.0
-        local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_gold)
+        local delay_t = self.ViewDesktopH:GetMoveIntervalTm(#list_gold)
         --local bet_pot = self.ViewDesktopH:getDesktopHBetPot(pot_index)
         for k, v in pairs(list_gold) do
             v:initMove(v.GCoGold.xy, to,

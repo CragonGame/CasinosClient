@@ -61,17 +61,3 @@ function UiDesktopHTongPei:Reset()
         self.ActionShowEnd = nil
     end
 end
-
----------------------------------------
---function UiDesktopHTongPei:_hideSelf(map_param)
---    self.ComUi.visible = false
---    if (self.ActionShowEnd ~= nil) then
---        self.ActionShowEnd()
---        self.ActionShowEnd = nil
---    end
---end
-
----------------------------------------
---function UiDesktopHTongPei:_onClick()
---    self.ComUi.visible = false
---end

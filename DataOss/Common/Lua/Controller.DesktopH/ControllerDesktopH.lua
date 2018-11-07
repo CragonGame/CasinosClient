@@ -9,12 +9,12 @@ function ControllerDesktopH:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
     o.ViewMgr = ViewMgr:new(nil)
-    self.QueBetpotWinLooseResultCount = 10
+    o.QueBetpotWinLooseResultCount = 10
     return o
 end
 
@@ -1125,7 +1125,7 @@ function ControllerDesktopHFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerDesktopHFactory:createController(controller_mgr, controller_data, guid)
+function ControllerDesktopHFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerDesktopH:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

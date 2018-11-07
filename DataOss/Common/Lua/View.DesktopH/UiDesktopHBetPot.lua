@@ -67,7 +67,7 @@ function UiDesktopHBetPot:betGolds(from, gold_value)
     self.ViewDesktopH:createGolds(self.ListUiGolds, ListTmpUiGolds, gold_value, self)
     local delay_tm = 0.0
     local l = #ListTmpUiGolds
-    local delay_t = self.ViewDesktopH:getMoveIntervalTm(l)
+    local delay_t = self.ViewDesktopH:GetMoveIntervalTm(l)
     for k, v in pairs(ListTmpUiGolds) do
         local to = self:getRandomChipPos()
         v:initMove(from, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, false, delay_tm, true)

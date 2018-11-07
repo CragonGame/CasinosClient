@@ -10,7 +10,7 @@ function ControllerActor:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -88,7 +88,6 @@ function ControllerActor:new(o, controller_mgr, controller_data, guid)
     -- self.EffectMgr = CS.Casinos.EffectMgr()
     o.LastLevel = o.PropLevel
     Native.Instance:CreateShareUrlAndQRCode(ActorId)
-
     return o
 end
 
@@ -188,14 +187,12 @@ end
 
 ---------------------------------------
 function ControllerActor:OnHandleEv(ev)
-    if (ev.EventName == "EvBindWeChatSuccess")
-    then
+    if (ev.EventName == "EvBindWeChatSuccess") then
         if ev.IsSuccess then
             self.WeChatOpenId:set(ev.WeChatOpenId)
             self.WeChatName:set(ev.WeChatName)
         end
-    elseif (ev.EventName == "EvUnBindWeChatSuccess")
-    then
+    elseif (ev.EventName == "EvUnBindWeChatSuccess") then
         if ev.IsSuccess then
             self.WeChatOpenId:set(nil)
             self.WeChatName:set(nil)
@@ -205,16 +202,14 @@ end
 
 ---------------------------------------
 function ControllerActor:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, user_data)
-    if (change_reason == GoldAccChangeReason.AddByGoldPackage)
-    then
+    if (change_reason == GoldAccChangeReason.AddByGoldPackage) then
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("ScoreForGoldPackage"))
     end
     local gold = self.PropGoldAcc:get()
     local delta_gold = gold_acc - gold
     self.PropGoldAcc:set(gold_acc)
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGoldChanged")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityGoldChanged:new(nil)
     end
     ev.change_reason = change_reason
@@ -260,8 +255,7 @@ end
 function ControllerActor:s2cPlayerLostAllSendChipsNotify(send_goldsinfo)
     local data = LostAllSendGoldsInfo:new(nil)
     data:setData(send_goldsinfo)
-    local tips = string.format(self.ViewMgr.LanMgr:getLanValue("LostAllGold"), tostring(data.send_golds),
-            self.ViewMgr.LanMgr:getLanValue("Chip"))
+    --local tips = string.format(self.ViewMgr.LanMgr:getLanValue("LostAllGold"), tostring(data.send_golds), self.ViewMgr.LanMgr:getLanValue("Chip"))
     self.PropGoldAcc:set(data.total_golds)
 end
 
@@ -286,8 +280,7 @@ end
 
 ---------------------------------------
 function ControllerActor:onPropLevelChanged()
-    if (self.LastLevel ~= self.PropLevel:get())
-    then
+    if (self.LastLevel ~= self.PropLevel:get()) then
         self.LastLevel = self.PropLevel:get()
         local msg = string.format(self.ViewMgr.LanMgr:getLanValue("LevelUpTips"), self.PropLevel:get())
         ViewHelper:UiShowInfoSuccess(msg)
@@ -301,8 +294,7 @@ end
 ---------------------------------------
 function ControllerActor:onPropPointChanged()
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPointChanged")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityPointChanged:new(nil)
     end
     self.ControllerMgr.ViewMgr:SendEv(ev)
@@ -311,8 +303,7 @@ end
 ---------------------------------------
 function ControllerActor:onPropGoldBankChanged()
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityBankGoldChange")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityBankGoldChange:new(nil)
     end
     ev.bank_gold = self.PropGoldBank:get()
@@ -323,8 +314,7 @@ end
 ---------------------------------------
 function ControllerActor:onPropDiamondChanged()
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityDiamondChanged")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityDiamondChanged:new(nil)
     end
     self.ControllerMgr.ViewMgr:SendEv(ev)
@@ -334,8 +324,7 @@ end
 function ControllerActor:onPropNickNameChanged()
     ViewHelper:UiEndWaiting()
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
@@ -346,8 +335,7 @@ end
 function ControllerActor:onPropIndividualSignatureChanged()
     ViewHelper:UiEndWaiting()
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
@@ -357,8 +345,7 @@ end
 ---------------------------------------
 function ControllerActor:onPropIpAddressChanged()
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
@@ -368,8 +355,7 @@ end
 ---------------------------------------
 function ControllerActor:onPropVipLevelChanged()
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
@@ -379,8 +365,7 @@ end
 ---------------------------------------
 function ControllerActor:onPropIsFirstRecharge()
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityIsFirstRechargeChanged")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityIsFirstRechargeChanged:new(nil)
     end
     self.ControllerMgr.ViewMgr:SendEv(ev)
@@ -399,7 +384,7 @@ function ControllerActorFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerActorFactory:createController(controller_mgr, controller_data, guid)
+function ControllerActorFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerActor:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

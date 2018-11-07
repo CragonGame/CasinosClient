@@ -148,7 +148,7 @@ function UiDesktopHMe:showWinGoldsAni(pot_index, from)
         self.MapWinUiGolds[pot_index] = list_golds
 
         local delay_tm = 0.0
-        local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_golds)
+        local delay_t = self.ViewDesktopH:GetMoveIntervalTm(#list_golds)
         for key, value in pairs(list_golds) do
             local to = bet_pot:getRandomChipPos()
             value:initMove(from, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
@@ -241,7 +241,7 @@ function UiDesktopHMe:_playWinGoldAni(map_param)
         end
 
         local delay_tm = 0.0
-        local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_gold)
+        local delay_t = self.ViewDesktopH:GetMoveIntervalTm(#list_gold)
         for i, v in pairs(list_gold) do
             v:initMove(v.GCoGold.xy, to,
                     UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, true, delay_tm, false)

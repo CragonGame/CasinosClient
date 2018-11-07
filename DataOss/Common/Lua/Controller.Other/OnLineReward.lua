@@ -2,10 +2,10 @@
 -- 由ControllerPlayer管理
 
 ---------------------------------------
-OnLineReward = {}
+OnlineReward = {}
 
 ---------------------------------------
-function OnLineReward:new(o, view_mgr)
+function OnlineReward:new(o, view_mgr)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -19,7 +19,7 @@ function OnLineReward:new(o, view_mgr)
 end
 
 ---------------------------------------
-function OnLineReward:Update()
+function OnlineReward:Update()
     local tm = 1
     if (self.CanGetReward == false) then
         if (self.LeftTm > 0) then
@@ -43,7 +43,7 @@ function OnLineReward:Update()
 end
 
 ---------------------------------------
-function OnLineReward:setOnlineRewardState(online_reward_state, left_reward_second, next_reward)
+function OnlineReward:setOnlineRewardState(online_reward_state, left_reward_second, next_reward)
     self.OnlineRewardState = online_reward_state
     self.NextReward = next_reward
     if (self.OnlineRewardState == OnlineRewardState.Wait4GetReward) then
@@ -56,7 +56,7 @@ function OnLineReward:setOnlineRewardState(online_reward_state, left_reward_seco
 end
 
 ---------------------------------------
-function OnLineReward:onGetReward()
+function OnlineReward:onGetReward()
     if (self.CanGetReward == true) then
         local ev = self.ViewMgr:GetEv("EvRequestGetOnLineReward")
         if (ev == nil) then
@@ -69,12 +69,12 @@ function OnLineReward:onGetReward()
 end
 
 ---------------------------------------
-function OnLineReward:IfCanGetReward()
+function OnlineReward:IfCanGetReward()
     return self.CanGetReward
 end
 
 ---------------------------------------
-function OnLineReward:_sendCanGetReward()
+function OnlineReward:_sendCanGetReward()
     local ev = self.ViewMgr:GetEv("EvEntityCanGetOnlineReward")
     if (ev == nil) then
         ev = EvEntityCanGetOnlineReward:new(nil)

@@ -19,7 +19,6 @@ function UiDesktopHTongSha:new(o, com_ui)
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ComUi.onClick:Add(
             function()
-                --o:_onClick()
                 o:Reset()
             end
     )
@@ -33,11 +32,9 @@ function UiDesktopHTongSha:ShowEffect(show_end)
     self.AniTongSha:Play()
     self.CasinosContext:Play("AllWinEffect", CS.Casinos._eSoundLayer.LayerNormal)
     --self:_cancelTask()
-
     local t = CS.Casinos.FTMgr.Instance:startTask(UiDesktopHTongSha.AutoHideTm)
     self.FTaskerHideSelf = CS.Casinos.FTMgr.Instance:whenAll(nil,
             function()
-                --self:_hideSelf(map_param)
                 self:Reset()
             end, t)
 end
@@ -58,24 +55,3 @@ function UiDesktopHTongSha:Reset()
         self.ActionShowEnd = nil
     end
 end
-
----------------------------------------
---function UiDesktopHTongSha:_hideSelf(map_param)
---    self.ComUi.visible = false
---    if (self.ActionShowEnd ~= nil) then
---        self.ActionShowEnd()
---    end
---end
-
----------------------------------------
---function UiDesktopHTongSha:_cancelTask()
---    if (self.FTaskerHideSelf ~= nil) then
---        self.FTaskerHideSelf:cancelTask()
---        self.FTaskerHideSelf = nil
---    end
---end
-
----------------------------------------
---function UiDesktopHTongSha:_onClick()
---    self.ComUi.visible = false
---end

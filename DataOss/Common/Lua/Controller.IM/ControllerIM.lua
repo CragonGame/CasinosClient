@@ -1,4 +1,9 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('IMChat')
+require('IMFeedback')
+require('IMChatRecord')
+require('IMFriendList')
+require('IMMailBox')
 
 ---------------------------------------
 ControllerIM = ControllerBase:new(nil)
@@ -9,7 +14,7 @@ function ControllerIM:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -482,7 +487,7 @@ function ControllerIMFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerIMFactory:createController(controller_mgr, controller_data, guid)
+function ControllerIMFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerIM:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

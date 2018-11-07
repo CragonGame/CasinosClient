@@ -47,9 +47,7 @@ function UiDesktopHGold:setGoldSortOrderOffset(offset)
 end
 
 ---------------------------------------
-function UiDesktopHGold:initMove(from, to, move_time,
-                                 move_sound, move_end, move_start,
-                                 auto_end_enpool, delay_tm, fix_pos)
+function UiDesktopHGold:initMove(from, to, move_time, move_sound, move_end, move_start, auto_end_enpool, delay_tm, fix_pos)
     self.MoveEndCallback = move_end
     self.MoveStartCallback = move_start
     local f_x = 0

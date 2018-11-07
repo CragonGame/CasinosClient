@@ -10,7 +10,7 @@ function ControllerTrade:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -65,77 +65,61 @@ end
 
 ---------------------------------------
 function ControllerTrade:OnHandleEv(ev)
-    if (ev.EventName == "EvUiRequestBuyGold")
-    then
+    if (ev.EventName == "EvUiRequestBuyGold") then
         self:RequestBuyItem(ev.buy_goldid, BuyItemForTarget.Me, "")
-    elseif (ev.EventName == "EvUiRequestBuyDiamond")
-    then
+    elseif (ev.EventName == "EvUiRequestBuyDiamond") then
         self:BuyBillingItem(false, ev.buy_diamondid)
-    elseif (ev.EventName == "EvUiRequestFirstRecharge")
-    then
+    elseif (ev.EventName == "EvUiRequestFirstRecharge") then
         self:BuyBillingItem(true, 0)
-    elseif (ev.EventName == "EvUiClickShop")
-    then
+    elseif (ev.EventName == "EvUiClickShop") then
         self.ControllerMgr.ViewMgr:CreateView("Shop")
         local view_friend = self.ControllerMgr.ViewMgr:GetView("Friend")
         self.ControllerMgr.ViewMgr:DestroyView(view_friend)
-    elseif (ev.EventName == "EvEntityBuyVIP")
-    then
+    elseif (ev.EventName == "EvEntityBuyVIP") then
         self:BuyBillingItem(false, ev.buy_id)
-    elseif (ev.EventName == "EvUiBuyItem")
-    then
+    elseif (ev.EventName == "EvUiBuyItem") then
         local item_id = ev.item_id
         local target = BuyItemForTarget.Me
-        if (ev.to_etguid == self.Guid)
-        then
+        if (ev.to_etguid == self.Guid) then
             target = BuyItemForTarget.Me
         else
-            if (self.ControllerDesktop.DesktopBase ~= nil)
-            then
-                if (ev.to_etguid ~= nil and ev.to_etguid ~= "")
-                then
+            if (self.ControllerDesktop.DesktopBase ~= nil) then
+                if (ev.to_etguid ~= nil and ev.to_etguid ~= "") then
                     target = BuyItemForTarget.DesktopOtherPlayer
                 else
                     target = BuyItemForTarget.DesktopAllPlayer
                 end
             else
-                if (self.ControllerDesktopH.DesktopHBase ~= nil)
-                then
-                    if (ev.to_etguid ~= nil and ev.to_etguid ~= "")
-                    then
+                if (self.ControllerDesktopH.DesktopHBase ~= nil) then
+                    if (ev.to_etguid ~= nil and ev.to_etguid ~= "") then
                         target = BuyItemForTarget.DesktopHOtherPlayer
                     else
                         target = BuyItemForTarget.DesktopHAllPlayer
                     end
                 else
-                    if (ev.to_etguid ~= nil and ev.to_etguid ~= "")
-                    then
+                    if (ev.to_etguid ~= nil and ev.to_etguid ~= "") then
                         target = BuyItemForTarget.OtherPlayer
                     end
                 end
             end
         end
         self:RequestBuyItem(item_id, target, ev.to_etguid)
-    elseif (ev.EventName == "EvUiSellItem")
-    then
+    elseif (ev.EventName == "EvUiSellItem") then
         local gift_objid = ev.item_objid
         self:RequestSellItem(gift_objid)
-    elseif (ev.EventName == "EvBuyRMBItemSuccess")
-    then
+    elseif (ev.EventName == "EvBuyRMBItemSuccess") then
         local purchase_common = ev.purchase_common
         self:OnBuyRMBItemSuccess(purchase_common)
-    elseif (ev.EventName == "EvUiRequestBuyItem")
-    then
+    elseif (ev.EventName == "EvUiRequestBuyItem") then
         local is_firstrecharge = ev.is_firstrecharge
         local item_tbid = ev.item_tbid
         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Buying"))
 
-        if (ev.pay_type == "iap")
-        then
+        if (ev.pay_type == "iap") then
             self:BuyItemByIAP(is_firstrecharge, item_tbid)
         else
             self.PayType = CS._ePayType.__CastFrom(ev.pay_type)
-            local buy_count = ev.item_count
+            --local buy_count = ev.item_count
             local payment_info = PayRequest:new(nil)
             payment_info.AppId = self.Context.Cfg.UCenterAppId
             payment_info.AccountId = self.ControllerActor.PropAccountId:get()
@@ -144,8 +128,7 @@ function ControllerTrade:OnHandleEv(ev)
             local amount = 0
             local title = ""
             local body = ""
-            if (is_firstrecharge)
-            then
+            if (is_firstrecharge) then
                 amount = tonumber(TbDataHelper:GetCommonValue("FirstRechargePrice"))
                 title = self.ControllerMgr.LanMgr:getLanValue("FirstRechargeTitle")
                 body = self.ControllerMgr.LanMgr:getLanValue("FirstRechargeBody")
@@ -166,11 +149,9 @@ function ControllerTrade:OnHandleEv(ev)
                     end
             )
         end
-    elseif (ev.EventName == "EvPayWithIAPSuccess")
-    then
+    elseif (ev.EventName == "EvPayWithIAPSuccess") then
         self:OnBuyRMBItemSuccess(ev.purchase)
-    elseif (ev.EventName == "EvUiRequestWebpay")
-    then
+    elseif (ev.EventName == "EvUiRequestWebpay") then
         local a = ev.Amount
         local url = "http://kingnigeria-ucenter.cragon.cn:81/nigeriawebpay" .. "?amount=" .. a
         self.ControllerMgr.UniWebView:Load(url)
@@ -179,8 +160,7 @@ function ControllerTrade:OnHandleEv(ev)
         --self.ControllerUCenter:nigWebpayRequestUrl( function(status, response, error)
         --    self:OnNigWebpayRequestUrl(status, response, error)
         --end)
-    elseif (ev.EventName == "EvUiRequestGetMoney")
-    then
+    elseif (ev.EventName == "EvUiRequestGetMoney") then
         local r = NigQuicktellerTransRequest:new(nil)
         r.amount = ev.GetMoneyNum
         r.toAccountNumber = ev.toAccountNumber
@@ -204,20 +184,16 @@ end
 function ControllerTrade:OnTradeBuyItemResponse(response1)
     local response = BuyItemResponse:new(nil)
     response:setData(response1)
-    if (response.result == ProtocolResult.Success)
-    then
+    if (response.result == ProtocolResult.Success) then
         local tb_item = self.ControllerMgr.TbDataMgr:GetData("Item", response.buyitem_tbid)
-        if (tb_item.UnitType == "GiftNormal" or tb_item.UnitType == "Consume")
-        then
+        if (tb_item.UnitType == "GiftNormal" or tb_item.UnitType == "Consume") then
             ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:getLanValue("BuySuccess"), self.ControllerMgr.LanMgr:getLanValue(tb_item.Name)))
         end
-    elseif (response.result == ProtocolResult.ChipNotEnough)
-    then
+    elseif (response.result == ProtocolResult.ChipNotEnough) then
         local tips = string.format(self.ControllerMgr.LanMgr:getLanValue("NotEnoughBuyFail"),
                 self.ViewMgr.LanMgr:getLanValue("Chip"))
         ViewHelper:UiShowInfoFailed(tips)
-    elseif (response.result == ProtocolResult.DiamondNotEnough)
-    then
+    elseif (response.result == ProtocolResult.DiamondNotEnough) then
         local tips = string.format(self.ControllerMgr.LanMgr:getLanValue("NotEnoughBuyFail"),
                 self.ViewMgr.LanMgr:getLanValue("Coin"))
         ViewHelper:UiShowInfoFailed(tips)
@@ -230,8 +206,7 @@ end
 function ControllerTrade:OnTradeSellItemResponse(response1)
     local response = SellItemResponse:new(nil)
     response:setData(response1)
-    if (response.result == ProtocolResult.Success)
-    then
+    if (response.result == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("SellGoodsSuccess"))
     end
 end
@@ -240,13 +215,11 @@ end
 function ControllerTrade:OnTradeOrderNotify(result, is_firstrecharge, item_tbid)
     print("OnTradeOrderNotify ")
     local item_name = self.ControllerMgr.LanMgr:getLanValue("FirstRechargeTitle")
-    if (is_firstrecharge == false)
-    then
+    if (is_firstrecharge == false) then
         local tb_item = self.ControllerMgr.TbDataMgr:GetData("Item", item_tbid)
         item_name = self.ControllerMgr.LanMgr:getLanValue(tb_item.Name)
     end
-    if (result == ProtocolResult.Success)
-    then
+    if (result == ProtocolResult.Success) then
         print("OnTradeOrderNotify success")
         local format_info = self.ControllerMgr.LanMgr:getLanValue("BuyItemSuccess")
         ViewHelper:UiShowInfoSuccess(string.format(format_info, item_name))
@@ -261,8 +234,7 @@ end
 function ControllerTrade:OnWalletRechargeNotify(response1)
     local response = WalletRechargeNotify:new(nil)
     response:setData(response1)
-    if (response.Result == WalletResult.Success)
-    then
+    if (response.Result == WalletResult.Success) then
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("BuySuccess1"))
     else
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("BuyFail"))
@@ -273,8 +245,7 @@ end
 function ControllerTrade:OnWalletWithdrawNotify(response1)
     local response = WalletWithdrawNotify:new(nil)
     response:setData(response1)
-    if (response.Result == WalletResult.Success)
-    then
+    if (response.Result == WalletResult.Success) then
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("WalletWithdrawSuccess"))
     else
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("WalletWithdrawFailed"))
@@ -291,7 +262,6 @@ function ControllerTrade:OnBuyRMBItemSuccess(purchase_common)
     purchase.PurchaseState = purchase_common.PurchaseState
     purchase.Token = purchase_common.Token
     purchase.Receipt = purchase_common.Receipt
-
     --self.ControllerMgr.RPC:RPC1(CommonMethodType.TradeBuyRMBItemSuccessRequest, purchase:getData4Pack())
 end
 
@@ -342,16 +312,14 @@ end
 ---------------------------------------
 function ControllerTrade:BuyItemByIAP(is_first_recharge, tb_id)
     local sku = ""
-    if (is_first_recharge)
-    then
+    if (is_first_recharge) then
         sku = TbDataHelper:GetCommonValue("FirstRechargeStoreSKU")
     else
         local billing_item = self.ControllerMgr.TbDataMgr:GetData("UnitBilling", tb_id)
         sku = billing_item.StoreSKU
     end
 
-    if (sku ~= nil and sku ~= "")
-    then
+    if (sku ~= nil and sku ~= "") then
         --CS.Pay.pay(sku, "", CS._ePayType.iap)
     end
 end
@@ -401,7 +369,7 @@ function ControllerTradeFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerTradeFactory:createController(controller_mgr, controller_data, guid)
+function ControllerTradeFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerTrade:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

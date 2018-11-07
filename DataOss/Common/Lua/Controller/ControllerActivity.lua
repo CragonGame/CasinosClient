@@ -9,7 +9,7 @@ function ControllerActivity:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ControllerData = controller_data
     o.ControllerMgr = controller_mgr
     o.Guid = guid
@@ -79,7 +79,7 @@ function ControllerActivityFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerActivityFactory:createController(controller_mgr, controller_data, guid)
+function ControllerActivityFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerActivity:new(nil, controller_mgr, controller_data, guid)
     return controller
 end

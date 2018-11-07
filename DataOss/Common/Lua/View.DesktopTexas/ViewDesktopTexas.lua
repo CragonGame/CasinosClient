@@ -227,7 +227,7 @@ function ViewDesktopTexas:OnCreate()
     local com_reward = self.ComUi:GetChild("ComReward").asCom
     local co_onlinereward = com_reward:GetChild("ComOnlineReward").asCom
     self.ViewOnlineReward = ViewOnlineReward:new(nil, co_onlinereward, self.ViewMgr)
-    self.CanGetOnLineReward = self.ControllerPlayer.OnLineReward:IfCanGetReward()
+    self.CanGetOnLineReward = self.ControllerPlayer.OnlineReward:IfCanGetReward()
     self.ViewOnlineReward:setCanGetReward(self.CanGetOnLineReward)
     local co_timingreward = com_reward:GetChild("ComPushReward").asCom
     self.ViewTimingReward = ViewTimingReward:new(nil, co_timingreward, self.ViewMgr)

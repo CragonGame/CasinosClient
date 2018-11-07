@@ -158,8 +158,7 @@ function UiDesktopHCard:ShowCard(action)
                 0, 180, 0.8
         )
 
-        tweener:SetTarget(self.GImageCardBack)
-               :SetEase(CS.FairyGUI.EaseType.QuadOut)
+        tweener:SetTarget(self.GImageCardBack):SetEase(CS.FairyGUI.EaseType.QuadOut)
                :OnUpdate(
                 function()
                     local x = tweener.value.x
@@ -209,7 +208,8 @@ end
 function UiDesktopHCard:_translationCard()
     local to = self.GCoCard.xy
     local x = to.x + self.GCoCard.width * self.MoveCardWidthPercent * self.CardIndex
-    self.Tweener = self.GCoCard:TweenMoveX(x, 0.3):OnComplete(
+    self.Tweener = self.GCoCard:TweenMoveX(x, 0.3)
+                       :OnComplete(
             function()
                 self:_setParent()
             end

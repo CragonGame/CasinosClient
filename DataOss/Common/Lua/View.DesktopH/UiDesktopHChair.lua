@@ -160,7 +160,7 @@ function UiDesktopHChair:showWinGoldsAni(pot_index, from)
         self.MapWinUiGolds[pot_index] = list_chips
 
         local delay_tm = 0.0
-        local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_chips)
+        local delay_t = self.ViewDesktopH:GetMoveIntervalTm(#list_chips)
         for k, v in pairs(list_chips) do
             local to = bet_pot:getRandomChipPos()
             v:initMove(from, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
@@ -233,7 +233,7 @@ function UiDesktopHChair:_playWinGoldAni(map_param)
     if (list_gold ~= nil) then
         local to = self:getChairCenterPos()
         local delay_tm = 0.0
-        local delay_t = self.ViewDesktopH:getMoveIntervalTm(#list_gold)
+        local delay_t = self.ViewDesktopH:GetMoveIntervalTm(#list_gold)
         for k, v in pairs(list_gold) do
             v:initMove(v.GCoGold.xy, to,
                     UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, true, delay_tm, false)

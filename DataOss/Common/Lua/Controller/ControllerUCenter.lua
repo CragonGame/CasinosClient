@@ -8,18 +8,15 @@ function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil) then
-        self.Context = Context
-        self.CasinosContext = CS.Casinos.CasinosContext.Instance
-        self.ControllerName = "Login"
-        self.ControllerData = controller_data
-        self.ControllerMgr = controller_mgr
-        self.Guid = guid
-        self.UCenterDomain = self.Context.Cfg.UCenterDomain
-        self.MbHelper = nil
-        self.Instance = o
-    end
-    return self.Instance
+    o.Context = Context
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.ControllerName = "Login"
+    o.ControllerData = controller_data
+    o.ControllerMgr = controller_mgr
+    o.Guid = guid
+    o.UCenterDomain = self.Context.Cfg.UCenterDomain
+    o.MbHelper = nil
+    return o
 end
 
 ---------------------------------------
@@ -421,7 +418,7 @@ function ControllerUCenterFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerUCenterFactory:createController(controller_mgr, controller_data, guid)
+function ControllerUCenterFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerUCenter:new(nil, controller_mgr, controller_data, guid)
     controller:OnCreate()
     return controller

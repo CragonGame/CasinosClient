@@ -9,15 +9,15 @@ function ControllerLotteryTicket:new(o, controller_mgr, controller_data, guid)
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
-    self.ControllerData = controller_data
-    self.ControllerMgr = controller_mgr
-    self.Guid = guid
-    self.ViewMgr = ViewMgr:new(nil)
-    self.QUE_BETPOT_WINLOOSE_RESULT_COUNT = 10
-    self.BetStateTm = 0
-    self.UpdateUiTime = 1
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.TimerUpdate = nil
+    o.ControllerData = controller_data
+    o.ControllerMgr = controller_mgr
+    o.Guid = guid
+    o.ViewMgr = ViewMgr:new(nil)
+    o.QUE_BETPOT_WINLOOSE_RESULT_COUNT = 10
+    o.BetStateTm = 0
+    o.UpdateUiTime = 1
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.TimerUpdate = nil
     return o
 end
 
@@ -487,7 +487,7 @@ function ControllerLotteryTicketFactory:new(o)
 end
 
 ---------------------------------------
-function ControllerLotteryTicketFactory:createController(controller_mgr, controller_data, guid)
+function ControllerLotteryTicketFactory:CreateController(controller_mgr, controller_data, guid)
     local controller = ControllerLotteryTicket:new(nil, controller_mgr, controller_data, guid)
     return controller
 end
