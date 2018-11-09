@@ -8,8 +8,7 @@ UiDesktopHBanker = {
 }
 
 ---------------------------------------
-function UiDesktopHBanker:new(o, co_bankplayer, bankplayer_nickname, bankplayer_gold,
-                                bank_playercardtypeparent, bank_playercardtype, bank_cardtypebg, chat_parent, view_desktoph)
+function UiDesktopHBanker:new(o, co_bankplayer, bankplayer_nickname, bankplayer_gold, bank_playercardtypeparent, bank_playercardtype, bank_cardtypebg, chat_parent, view_desktoph)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -130,7 +129,7 @@ function UiDesktopHBanker:showWinGoldAni(win_gold, list_golds, pot_index)
     local delay_t = self.ViewDesktopH:GetMoveIntervalTm(#list_golds)
     local to = self:getBankPlayerCenterPos()
     for k, v in pairs(list_golds) do
-        v:initMove(v.GCoGold.xy, to,
+        v:InitMove(v.GCoGold.xy, to,
                 UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, true, delay_tm, false)
         delay_tm = delay_tm + delay_t
     end

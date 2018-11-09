@@ -14,40 +14,37 @@ function UiDesktopHGold:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.ViewMgr = nil
+    o.ViewDesktopH = nil
     o.GCoGold = nil
     o.SortOrderOffset = 0
     o.MoveEndCallback = nil
     o.MoveStartCallback = nil
-    o.Tweener = nil
+    o.TweenMove = nil
     o.MoveSound = nil
     o.AutoEndEnPool = false
     o.ParentSortOrder = 0
-    o.ViewDesktopH = nil
-    --o.FTaskerReset = nil
-    --o.FTaskReset = nil
     return o
 end
 
 ---------------------------------------
 function UiDesktopHGold:OnCreate()
-    local view_mgr = ViewMgr:new(nil)
-    self.ViewDesktopH = view_mgr:GetView("DesktopH")
+    self.ViewMgr = ViewMgr
+    self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     self.GCoGold = CS.FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(), "Gold" .. self.ViewDesktopH.FactoryName)
     self.ViewDesktopH.GCoDesktopHPoolParent:AddChild(self.GCoGold)
     self.ParentSortOrder = self.ViewDesktopH.ComUi.sortingOrder
     self:_reset()
-    --self.FTaskReset = CS.Casinos.FTask(0)
-    --self.FTaskerReset = CS.Casinos.FTasker()
 end
 
 ---------------------------------------
-function UiDesktopHGold:setGoldSortOrderOffset(offset)
+function UiDesktopHGold:SetGoldSortOrderOffset(offset)
     self.SortOrderOffset = offset
     self.GCoGold.sortingOrder = self.ParentSortOrder + offset
 end
 
 ---------------------------------------
-function UiDesktopHGold:initMove(from, to, move_time, move_sound, move_end, move_start, auto_end_enpool, delay_tm, fix_pos)
+function UiDesktopHGold:InitMove(from, to, move_time, move_sound, move_end, move_start, auto_end_enpool, delay_tm, fix_pos)
     self.MoveEndCallback = move_end
     self.MoveStartCallback = move_start
     local f_x = 0
@@ -61,15 +58,25 @@ function UiDesktopHGold:initMove(from, to, move_time, move_sound, move_end, move
     end
     self.GCoGold:SetXY(f_x, f_y)
     local to1 = CS.Casinos.LuaHelper.GetVector2(to.x - self.GCoGold.width / 2, to.y - self.GCoGold.height / 2)
-    self.Tweener = self.GCoGold:TweenMove(to1, move_time)
-    self.Tweener:SetDelay(delay_tm)
+    self.TweenMove = self.GCoGold:TweenMove(to1, move_time)
+    self.TweenMove:SetDelay(delay_tm)
         :OnStart(
             function()
-                self:_moveStart()
+                if (self.MoveStartCallback ~= nil) then
+                    self.MoveStartCallback()
+                end
+                if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false) then
+                    CS.Casinos.CasinosContext.Instance:Play(self.MoveSound, CS.Casinos._eSoundLayer.LayerReplace)
+                end
             end)
         :OnComplete(
             function()
-                self:_moveEnd()
+                if (self.MoveEndCallback ~= nil) then
+                    self.MoveEndCallback()
+                end
+                if (self.AutoEndEnPool) then
+                    self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(self)
+                end
             end)
     self.GCoGold.visible = true
     self.MoveSound = move_sound
@@ -94,35 +101,28 @@ end
 function UiDesktopHGold:needDelayEnPool(after_tm)
     --self:_reset1(map_param)
     self.ViewDesktopH.UiDesktopHGoldPool:goldHNeedDelayEnPool(self)
-    --self.FTaskReset:startAutoTask(after_tm)
-    --self.FTaskerReset:whenAll(nil,
-    --        function(map_param)
-    --            self:_reset1(map_param)
-    --        end,
-    --        self.FTaskReset)
-    --CS.Casinos.FTMgr.Instance:startTask(self.FTaskerReset)
 end
 
 ---------------------------------------
-function UiDesktopHGold:_moveStart()
-    if (self.MoveStartCallback ~= nil) then
-        self.MoveStartCallback()
-    end
-
-    if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false) then
-        CS.Casinos.CasinosContext.Instance:Play(self.MoveSound, CS.Casinos._eSoundLayer.LayerReplace)
-    end
-end
+--function UiDesktopHGold:_moveStart()
+--    if (self.MoveStartCallback ~= nil) then
+--        self.MoveStartCallback()
+--    end
+--
+--    if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false) then
+--        CS.Casinos.CasinosContext.Instance:Play(self.MoveSound, CS.Casinos._eSoundLayer.LayerReplace)
+--    end
+--end
 
 ---------------------------------------
-function UiDesktopHGold:_moveEnd()
-    if (self.MoveEndCallback ~= nil) then
-        self.MoveEndCallback()
-    end
-    if (self.AutoEndEnPool) then
-        self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(self)
-    end
-end
+--function UiDesktopHGold:_moveEnd()
+--    if (self.MoveEndCallback ~= nil) then
+--        self.MoveEndCallback()
+--    end
+--    if (self.AutoEndEnPool) then
+--        self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(self)
+--    end
+--end
 
 ---------------------------------------
 function UiDesktopHGold:_reset1(map_param)
@@ -133,12 +133,9 @@ end
 
 ---------------------------------------
 function UiDesktopHGold:_reset()
-    --if (self.FTaskerReset ~= nil) then
-    --    self.FTaskerReset:cancelTask()
-    --end
-    if self.Tweener ~= nil then
-        self.Tweener:Kill()
-        self.Tweener = nil
+    if self.TweenMove ~= nil then
+        self.TweenMove:Kill()
+        self.TweenMove = nil
     end
     if (self.GCoGold ~= nil and self.GCoGold.displayObject.gameObject ~= nil) then
         self.GCoGold:SetXY(10000, 10000)

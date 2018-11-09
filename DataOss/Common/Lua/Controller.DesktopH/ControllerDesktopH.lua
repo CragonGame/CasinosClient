@@ -268,8 +268,7 @@ function ControllerDesktopH:OnHandleEv(ev)
         end
 
         if (self.CurrentTbBetOperateId == -1) then
-            local tips = self.ViewMgr.LanMgr:getLanValue("Chip") ..
-                    self.ViewMgr.LanMgr:getLanValue("NotEnough")
+            local tips = self.ViewMgr.LanMgr:getLanValue("Chip") .. self.ViewMgr.LanMgr:getLanValue("NotEnough")
             ViewHelper:UiShowInfoSuccess(tips)
             return
         end
@@ -280,7 +279,7 @@ function ControllerDesktopH:OnHandleEv(ev)
         end
 
         local bet_chips = self.DesktopHBase:getOperateGold(self.CurrentTbBetOperateId)
-        local can_betsuccess = self:betGold(ev.bet_betpot_index, bet_chips)
+        local can_betsuccess = self:BetGold(ev.bet_betpot_index, bet_chips)
 
         if (can_betsuccess == true) then
             self.ControllerMgr.RPC:RPC2(CommonMethodType.DesktopHRequestBet, ev.bet_betpot_index, bet_chips)
@@ -316,7 +315,7 @@ function ControllerDesktopH:OnHandleEv(ev)
 
             local can_betsuccess = false
             for key, value in pairs(self.MapBetRepeatInfo) do
-                can_betsuccess = self:betGold(key, value)
+                can_betsuccess = self:BetGold(key, value)
                 if (can_betsuccess == false) then
                     break
                 end
@@ -979,7 +978,7 @@ function ControllerDesktopH:ClearDesktopH(need_createmainui)
 end
 
 ---------------------------------------
-function ControllerDesktopH:betGold(bet_betpot_index, bet_golds)
+function ControllerDesktopH:BetGold(bet_betpot_index, bet_golds)
     local max_percent = self.DesktopHBase:getMaxCannotBetPecent()
     local total_chips = self.ControllerActor.PropGoldAcc:get()
     local already_bet_chips = 0

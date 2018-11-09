@@ -178,5 +178,5 @@ end
 
 ---------------------------------------
 function UiDesktopHBetPotItem:_onClick()
-    self.ViewDesktopH:bet(self.BetPotIndex)
+    self.ViewDesktopH:Bet(self.BetPotIndex)
 end

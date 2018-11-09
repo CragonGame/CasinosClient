@@ -51,9 +51,8 @@ function UiLotteryTicketFlow:_turnCardList(list_card)
             card.GLoaderCard.icon = self.CasinosContext.PathMgr.DirAbCard .. tostring(card_name) .. ".ab"
 
             card.TweenTurnCard = CS.FairyGUI.GTween.To(0, 180, 1)
-                                   :SetTarget(card.GImageCardBack)
-                                   :SetEase(CS.FairyGUI.EaseType.SineOut)
-                                   :OnUpdate(
+            card.TweenTurnCard:SetTarget(card.GImageCardBack):SetEase(CS.FairyGUI.EaseType.SineOut)
+                :OnUpdate(
                     function()
                         local x = card.TweenTurnCard.value.x
                         card.GImageCardBack.rotationY = x
@@ -63,7 +62,7 @@ function UiLotteryTicketFlow:_turnCardList(list_card)
                             card.GImageCardBack.visible = false
                         end
                     end)
-                                   :OnComplete(
+                :OnComplete(
                     function()
                         card.TweenTurnCard = nil
                     end)

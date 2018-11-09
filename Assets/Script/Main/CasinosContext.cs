@@ -62,6 +62,7 @@ namespace Casinos
         public CasinosPlayerPrefs PlayerPrefs { get; private set; }
         public CasinosConfig Config { get; private set; }
         public TextureMgr TextureMgr { get; private set; }
+        public DelayMgr DelayMgr { get; private set; }
         public LuaMgr LuaMgr { get; private set; }
         public NetMgr NetMgr { get; private set; }
         public SpineMgr SpineMgr { get; private set; }
@@ -174,6 +175,7 @@ namespace Casinos
             PlayerPrefs = new CasinosPlayerPrefs();
             TextureMgr = new TextureMgr();
             UIObjectFactory.SetLoaderExtension(typeof(GLoaderEx));
+            DelayMgr = new DelayMgr();
             LuaMgr = new LuaMgr();
             SoundMgr = new SoundMgr();
             HeadIconMgr = new HeadIconMgr();
@@ -190,6 +192,11 @@ namespace Casinos
             if (FTMgr != null)
             {
                 FTMgr.Update(elapsed_tm);
+            }
+
+            if (DelayMgr != null)
+            {
+                DelayMgr.Update(elapsed_tm);
             }
 
             if (NetMgr != null)
@@ -262,6 +269,12 @@ namespace Casinos
             {
                 LuaMgr.Release();
                 LuaMgr = null;
+            }
+
+            if (DelayMgr != null)
+            {
+                DelayMgr.Close();
+                DelayMgr = null;
             }
 
             if (MemoryStream != null)

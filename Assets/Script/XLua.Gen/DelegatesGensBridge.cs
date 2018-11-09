@@ -1440,6 +1440,11 @@ namespace XLua
 			    return new Casinos.AllTaskDoneCallBack(__Gen_Delegate_Imp38);
 			}
 		
+		    if (type == typeof(Casinos.DelayEndCallBack))
+			{
+			    return new Casinos.DelayEndCallBack(__Gen_Delegate_Imp38);
+			}
+		
 		    if (type == typeof(FairyGUI.EventCallback1))
 			{
 			    return new FairyGUI.EventCallback1(__Gen_Delegate_Imp39);

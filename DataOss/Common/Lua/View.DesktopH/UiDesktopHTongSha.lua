@@ -14,7 +14,7 @@ function UiDesktopHTongSha:new(o, com_ui)
     o.ComUi.visible = false
     o.AniTongSha = o.ComUi:GetTransition("AniTongSha")
     o.ActionShowEnd = nil
-    o.FTaskerHideSelf = nil
+    o.DelayHideSelf = nil
     o.TweenTongShaMoveY = nil
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ComUi.onClick:Add(
@@ -31,20 +31,18 @@ function UiDesktopHTongSha:ShowEffect(show_end)
     self.ComUi.visible = true
     self.AniTongSha:Play()
     self.CasinosContext:Play("AllWinEffect", CS.Casinos._eSoundLayer.LayerNormal)
-    --self:_cancelTask()
-    local t = CS.Casinos.FTMgr.Instance:startTask(UiDesktopHTongSha.AutoHideTm)
-    self.FTaskerHideSelf = CS.Casinos.FTMgr.Instance:whenAll(nil,
+    self.DelayHideSelf = self.CasinosContext.DelayMgr:Delay(self.AutoHideTm,
             function()
                 self:Reset()
-            end, t)
+            end)
 end
 
 ---------------------------------------
 function UiDesktopHTongSha:Reset()
     self.ComUi.visible = false
-    if (self.FTaskerHideSelf ~= nil) then
-        self.FTaskerHideSelf:cancelTask()
-        self.FTaskerHideSelf = nil
+    if (self.DelayHideSelf ~= nil) then
+        self.DelayHideSelf:Kill(false)
+        self.DelayHideSelf = nil
     end
     if (self.TweenTongShaMoveY ~= nil) then
         self.TweenTongShaMoveY:Kill(false)

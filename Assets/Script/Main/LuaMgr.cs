@@ -234,6 +234,7 @@ namespace Casinos
             typeof(Action<UnityEngine.Object, LoaderTicket>),
             typeof(Action<LoaderTicket, Texture>),
             typeof(AllTaskDoneCallBack),
+            typeof(DelayEndCallBack),
             typeof(EventHandler),
 
             // FairyGUI

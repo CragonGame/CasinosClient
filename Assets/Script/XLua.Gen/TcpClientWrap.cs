@@ -24,10 +24,10 @@ namespace XLua.CSObjectWrap
 			Utils.BeginObjectRegister(type, L, translator, 0, 5, 5, 4);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Handle", _m_Handle);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "connect", _m_connect);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "update", _m_update);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "close", _m_close);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "send", _m_send);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Connect", _m_Connect);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Close", _m_Close);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Send", _m_Send);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsConnected", _g_get_IsConnected);
@@ -114,7 +114,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_connect(RealStatePtr L)
+        static int _m_Connect(RealStatePtr L)
         {
 		    try {
             
@@ -143,7 +143,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_update(RealStatePtr L)
+        static int _m_Update(RealStatePtr L)
         {
 		    try {
             
@@ -171,7 +171,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_close(RealStatePtr L)
+        static int _m_Close(RealStatePtr L)
         {
 		    try {
             
@@ -198,7 +198,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_send(RealStatePtr L)
+        static int _m_Send(RealStatePtr L)
         {
 		    try {
             
@@ -247,7 +247,7 @@ namespace XLua.CSObjectWrap
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
             
-            return LuaAPI.luaL_error(L, "invalid arguments to TcpClient.send!");
+            return LuaAPI.luaL_error(L, "invalid arguments to TcpClient.Send!");
             
         }
         

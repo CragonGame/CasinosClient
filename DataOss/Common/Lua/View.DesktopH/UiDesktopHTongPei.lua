@@ -15,7 +15,7 @@ function UiDesktopHTongPei:new(o, com_ui, ui_desktoph)
     o.UiDesktopH = ui_desktoph
     o.GoTongPei = nil
     o.ActionShowEnd = nil
-    o.FTaskerHideSelf = nil
+    o.DelayHideSelf = nil
     o.TweenTongPeiMoveY = nil
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ComUi.onClick:Add(
@@ -36,21 +36,18 @@ function UiDesktopHTongPei:ShowEffect(show_end)
     self.GoTongPei:SetXY(self.ComUi.width / 2 - self.GoTongPei.width / 2, -self.GoTongPei.height)
     self.TweenTongPeiMoveY = self.GoTongPei:TweenMoveY(self.ComUi.height / 2 - self.GoTongPei.height / 2, 0.5)
     self.CasinosContext:Play("AllFailedEffect", CS.Casinos._eSoundLayer.LayerNormal)
-
-    local t = CS.Casinos.FTMgr.Instance:startTask(UiDesktopHTongPei.AutoHideTm)
-    self.FTaskerHideSelf = CS.Casinos.FTMgr.Instance:whenAll(nil,
-            function(map_param)
-                --self:_hideSelf(map_param)
+    self.DelayHideSelf = self.CasinosContext.DelayMgr:Delay(self.AutoHideTm,
+            function()
                 self:Reset()
-            end, t)
+            end)
 end
 
 ---------------------------------------
 function UiDesktopHTongPei:Reset()
     self.ComUi.visible = false
-    if (self.FTaskerHideSelf ~= nil) then
-        self.FTaskerHideSelf:cancelTask()
-        self.FTaskerHideSelf = nil
+    if (self.DelayHideSelf ~= nil) then
+        self.DelayHideSelf:Kill(false)
+        self.DelayHideSelf = nil
     end
     if (self.TweenTongPeiMoveY ~= nil) then
         self.TweenTongPeiMoveY:Kill(false)

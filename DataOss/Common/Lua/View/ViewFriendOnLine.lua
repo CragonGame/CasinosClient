@@ -41,7 +41,7 @@ function ViewFriendOnLine:OnHandleEv(ev)
     if (ev.EventName == "EvEntityFriendOnlineStateChange") then
         if (ev.player_info.PlayerInfoMore.OnlineState == PlayerOnlineState.Online) then
             self:setFriendInfo(ev.player_info)
-            self:initMove()
+            self:InitMove()
         end
     end
 end
@@ -53,7 +53,7 @@ function ViewFriendOnLine:setFriendInfo(player_info)
 end
 
 ---------------------------------------
-function ViewFriendOnLine:initMove()
+function ViewFriendOnLine:InitMove()
     local trans = self.ComUi:GetTransition("MoveFromTopToTop")
     trans:Play(
             function()

@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.LuaMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 18, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 19, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
@@ -41,6 +41,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnAndroidQuitConfirm", _m__CSharpCallOnAndroidQuitConfirm);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnApplicationPause", _m__CSharpCallOnApplicationPause);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnApplicationFocus", _m__CSharpCallOnApplicationFocus);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnSocketClose", _m__CSharpCallOnSocketClose);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "LuaEnv", _g_get_LuaEnv);
@@ -586,6 +587,33 @@ namespace XLua.CSObjectWrap
                     bool _focus_status = LuaAPI.lua_toboolean(L, 2);
                     
                     gen_to_be_invoked._CSharpCallOnApplicationFocus( _focus_status );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m__CSharpCallOnSocketClose(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.LuaMgr gen_to_be_invoked = (Casinos.LuaMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked._CSharpCallOnSocketClose(  );
                     
                     
                     

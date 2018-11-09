@@ -291,28 +291,53 @@ function ViewDesktopH:OnDestroy()
     end
     self.ViewMgr:UnbindEvListener(self)
     self:_cancelTaskAndDestroyUiResult()
-    self.UiDesktopHBanker:Destroy()
-    self.UiDesktopHMe:Destroy()
-    self.UiDesktopHStandPlayer:Destroy()
+    if self.UiDesktopHBanker ~= nil then
+        self.UiDesktopHBanker:Destroy()
+        self.UiDesktopHBanker = nil
+    end
+    if self.UiDesktopHMe ~= nil then
+        self.UiDesktopHMe:Destroy()
+        self.UiDesktopHMe = nil
+    end
+    if self.UiDesktopHStandPlayer ~= nil then
+        self.UiDesktopHStandPlayer:Destroy()
+        self.UiDesktopHStandPlayer = nil
+    end
     for k, v in pairs(self.MapDesktopHChair) do
         v:Destroy()
     end
     for k, v in pairs(self.MapDesktopHBetPot) do
         v:Destroy()
     end
-    self.UiDesktopHRewardPot:Destroy()
-    self.UiDesktopHDealer:ResetCard()
-    self.UiDesktopHDealer:Destroy()
-    self.UiDesktopHGoldPool:Destroy()
+    if self.UiDesktopHRewardPot ~= nil then
+        self.UiDesktopHRewardPot:Destroy()
+        self.UiDesktopHRewardPot = nil
+    end
+    if self.UiDesktopHDealer ~= nil then
+        self.UiDesktopHDealer:ResetCard()
+        self.UiDesktopHDealer:Destroy()
+        self.UiDesktopHDealer = nil
+    end
+    if self.UiDesktopHGoldPool ~= nil then
+        self.UiDesktopHGoldPool:Destroy()
+        self.UiDesktopHGoldPool = nil
+    end
+    if self.UiDesktopHMe ~= nil then
+        self.UiDesktopHMe:Destroy()
+        self.UiDesktopHMe = nil
+    end
     if (self.UiDesktopHTongSha ~= nil) then
         self.UiDesktopHTongSha:Reset()
+        self.UiDesktopHTongSha = nil
     end
     if (self.UiDesktopHTongPei ~= nil) then
         self.UiDesktopHTongPei:Reset()
+        self.UiDesktopHTongPei = nil
     end
 
     if (self.UiDesktopChatParent ~= nil) then
         self.ViewMgr:DestroyView(self.UiDesktopChatParent)
+        self.UiDesktopChatParent = nil
     end
 
     local ui_shootingtext = self.ViewMgr:GetView("ShootingText")
@@ -532,8 +557,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         end
         local bank_cardparent = self.GCoDesktopH:GetChild("CoCardParent").asCom
         local bank_chatparent = self.GCoDesktopH:GetChild("CoChatParentBank").asCom
-        self.UiDesktopHBanker = UiDesktopHBanker:new(nil, bank_icon, bank_nickname, bank_gold,
-                bank_cardparent, bank_cardtype, ban_cardtypebg_image, bank_chatparent, self)
+        self.UiDesktopHBanker = UiDesktopHBanker:new(nil, bank_icon, bank_nickname, bank_gold, bank_cardparent, bank_cardtype, ban_cardtypebg_image, bank_chatparent, self)
         local self_icon = self.ComUi:GetChild("CoHeadIconSelf").asCom
         local self_nickname = self.ComUi:GetChild("NickNameSelf").asTextField
         local self_gold = self.ComUi:GetChild("GoldSelf").asTextField
@@ -823,7 +847,7 @@ function ViewDesktopH:_createGold(list_total_gold, list_new_gold, desktoph_betpo
 end
 
 ---------------------------------------
-function ViewDesktopH:bet(bet_index)
+function ViewDesktopH:Bet(bet_index)
     if (self.CanBet == true) then
         local ev = self.ViewMgr:GetEv("EvDesktopHBet")
         if (ev == nil) then
@@ -1241,8 +1265,7 @@ end
 ViewDesktopHFactory = ViewFactory:new()
 
 ---------------------------------------
-function ViewDesktopHFactory:new(o, ui_package_name, ui_component_name,
-                                 ui_layer, is_single, fit_screen)
+function ViewDesktopHFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self

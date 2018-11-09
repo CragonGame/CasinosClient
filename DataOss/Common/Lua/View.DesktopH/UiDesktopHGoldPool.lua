@@ -21,7 +21,7 @@ function UiDesktopHGoldPool:new(o)
         if (l > o.MaxGoldSortOrderOffset) then
             o.MaxGoldSortOrderOffset = l
         end
-        gold_h:setGoldSortOrderOffset(o.MaxGoldSortOrderOffset)
+        gold_h:SetGoldSortOrderOffset(o.MaxGoldSortOrderOffset)
     end
     return o
 end
@@ -59,7 +59,7 @@ function UiDesktopHGoldPool:getGoldH()
             ui_gold:OnCreate()
         end
         self.MaxGoldSortOrderOffset = self.MaxGoldSortOrderOffset + 1
-        ui_gold:setGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
+        ui_gold:SetGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
     else
         ui_gold = table.remove(self.QueUiGold, 1)
     end
@@ -95,5 +95,5 @@ function UiDesktopHGoldPool:_goldHEnPool(uigold_h)
     end
     uigold_h:Reset()
     table.insert(self.QueUiGold, uigold_h)
-    uigold_h:setGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
+    uigold_h:SetGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
 end

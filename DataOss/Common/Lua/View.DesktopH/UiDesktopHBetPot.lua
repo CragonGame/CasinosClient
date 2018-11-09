@@ -63,17 +63,17 @@ end
 
 ---------------------------------------
 function UiDesktopHBetPot:betGolds(from, gold_value)
-    local ListTmpUiGolds = {}
-    self.ViewDesktopH:createGolds(self.ListUiGolds, ListTmpUiGolds, gold_value, self)
+    local list_uigold_tmp = {}
+    self.ViewDesktopH:createGolds(self.ListUiGolds, list_uigold_tmp, gold_value, self)
     local delay_tm = 0.0
-    local l = #ListTmpUiGolds
+    local l = #list_uigold_tmp
     local delay_t = self.ViewDesktopH:GetMoveIntervalTm(l)
-    for k, v in pairs(ListTmpUiGolds) do
+    for k, v in pairs(list_uigold_tmp) do
         local to = self:getRandomChipPos()
-        v:initMove(from, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
+        v:InitMove(from, to, UiDesktopHGold.MOVE_CHIP_TM, UiDesktopHGold.MOVE_SOUND, nil, nil, false, delay_tm, true)
         delay_tm = delay_tm + delay_t
     end
-    ListTmpUiGolds = nil
+    list_uigold_tmp = nil
 end
 
 ---------------------------------------
