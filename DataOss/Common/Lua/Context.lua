@@ -156,6 +156,21 @@ function Context:DoString(name)
 end
 
 ---------------------------------------
+function Context:OnSocketClose()
+    if ControllerMgr == nil then
+        return
+    end
+    ControllerMgr:DestroyPlayerControllers()
+    local ctrl_login = ControllerMgr:GetController('Login')
+    ctrl_login:_init(false)
+    if (ctrl_login.ShowKickOutInfo) then
+        ctrl_login.ShowKickOutInfo = false
+        local info = ctrl_login.ControllerMgr.LanMgr:getLanValue("AlreadyLogin")
+        ViewHelper:UiShowInfoFailed(info)
+    end
+end
+
+---------------------------------------
 -- 初始化LaunchStep
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
@@ -377,6 +392,8 @@ function Context:_nextLaunchStep()
                     for i, v in pairs(list_ab) do
                         ui_package.AddPackage(v)
                     end
+
+                    self.CasinosContext.NetMgr:InitByLua()
 
                     -- 销毁Launch相关资源，加载登录界面
                     self.Launch:Finish()

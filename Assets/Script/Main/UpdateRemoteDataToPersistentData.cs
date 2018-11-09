@@ -6,6 +6,7 @@ namespace Casinos
     using System.Collections;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using UnityEngine;
 
     // 将Oss中的Data差异集更新到PersistentData的相同目录中，异步
@@ -18,7 +19,7 @@ namespace Casinos
         Dictionary<string, WWW> MapWWW { get; set; }
         List<string> ListFinished { get; set; }
         string RemoteDataRootUrl { get; set; }
-        string RemoteDataRootDir { get; set; }
+        string PersistentDataRootDir { get; set; }
 
         //---------------------------------------------------------------------
         public int UpateAsync(string datafilelist_remote, string datafilelist_persistent,
@@ -28,7 +29,7 @@ namespace Casinos
             MapWWW = new Dictionary<string, WWW>();
             ListFinished = new List<string>(5);
             RemoteDataRootUrl = remotedata_root_url;
-            RemoteDataRootDir = persistent_root_dir;
+            PersistentDataRootDir = persistent_root_dir;
 
             Dictionary<string, string> map_remote = new Dictionary<string, string>();
             Dictionary<string, string> map_persistent = new Dictionary<string, string>();
@@ -50,6 +51,21 @@ namespace Casinos
                 {
                     var arr = i.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     map_persistent[arr[0]] = arr[1];
+                }
+
+                // 删除MapPersistent中拥有的，而MapRemote中没有的文件
+                var list_file2delete = map_persistent.Keys.Except(map_remote.Keys);
+                if (list_file2delete != null)
+                {
+                    foreach (var k in list_file2delete)
+                    {
+                        var str = PersistentDataRootDir + k;
+                        //Debug.Log("删除Persistent中废弃文件：" + str);
+                        if (!File.Exists(str))
+                        {
+                            File.Delete(str);
+                        }
+                    }
                 }
             }
 
@@ -87,7 +103,7 @@ namespace Casinos
                 if (!i.Value.isDone) continue;
                 ListFinished.Add(i.Key);
 
-                var str = RemoteDataRootDir + i.Key;
+                var str = PersistentDataRootDir + i.Key;
                 string d = Path.GetDirectoryName(str);
                 if (!Directory.Exists(d))
                 {

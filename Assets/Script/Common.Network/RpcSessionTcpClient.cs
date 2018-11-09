@@ -17,7 +17,7 @@ public class RpcSessionTcpClient : RpcSession
     }
 
     //-------------------------------------------------------------------------
-    public override bool isConnect()
+    public override bool IsConnect()
     {
         if (tcpSocket == null) return false;
 
@@ -25,7 +25,7 @@ public class RpcSessionTcpClient : RpcSession
     }
 
     //-------------------------------------------------------------------------
-    public override void connect(string ip, int port)
+    public override void Connect(string ip, int port)
     {
         if (tcpSocket == null)
         {
@@ -36,39 +36,39 @@ public class RpcSessionTcpClient : RpcSession
             tcpSocket.OnSocketError += _onSocketError;
         }
 
-        tcpSocket.connect(ip, port);
+        tcpSocket.Connect(ip, port);
     }
 
     //-------------------------------------------------------------------------
-    public override void send(ushort method_id, byte[] data)
+    public override void Send(ushort method_id, byte[] data)
     {
         if (tcpSocket != null)
         {
-            tcpSocket.send(method_id, data);
+            tcpSocket.Send(method_id, data);
         }
     }
 
     //-------------------------------------------------------------------------
-    public override void onRecv(ushort method_id, byte[] data)
+    public override void OnRecv(ushort method_id, byte[] data)
     {
     }
 
     //-------------------------------------------------------------------------
-    public override void close()
+    public override void Close()
     {
         if (tcpSocket != null)
         {
-            tcpSocket.close();
+            tcpSocket.Close();
             tcpSocket = null;
         }
     }
 
     //-------------------------------------------------------------------------
-    public override void update(float elapsed_tm)
+    public override void Update(float elapsed_tm)
     {
         if (tcpSocket != null)
         {
-            tcpSocket.update(elapsed_tm);
+            tcpSocket.Update(elapsed_tm);
         }
     }
 
@@ -115,7 +115,7 @@ public class RpcSessionTcpClient : RpcSession
 public class RpcSessionFactoryTcpClient : RpcSessionFactory
 {
     //-------------------------------------------------------------------------
-    public override RpcSession createRpcSession()
+    public override RpcSession CreateRpcSession()
     {
         return new RpcSessionTcpClient();
     }

@@ -232,6 +232,15 @@ function Launch:OnAndroidQuitConfirm()
 end
 
 ---------------------------------------
+function Launch:OnSocketClose()
+    if (self.Context ~= nil) then
+        self.Context:OnSocketClose()
+    else
+        print('OnSocketClose()')
+    end
+end
+
+---------------------------------------
 -- FairyGUI.AddPackage
 function Launch:_addUiPackage(name)
     if (self.CasinosContext.PathMgr.DirLaunchAbType == CS.Casinos.DirType.Raw) then

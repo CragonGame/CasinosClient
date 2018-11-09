@@ -205,7 +205,7 @@ function ViewGiftDetail:onClickBtnConfirmNotInDesktop()
         ev.ItemObjId = self.mItem.ItemData.item_objid
         self.ViewMgr:SendEv(ev)
     elseif (self.mNeedBindWeChat) then
-        local ev = self.ViewMgr:GetEv("EvBindWeChat")
+        local ev = self.ViewMgr:GetEv("EvBindWechat")
         if (ev == nil) then
             ev = EvBindWeChat:new(nil)
         end

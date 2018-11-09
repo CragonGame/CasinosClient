@@ -123,7 +123,6 @@ end
 ---------------------------------------
 function ControllerLogin:OnCreate()
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
-    local c = CS.Casinos.CasinosContext.Instance
     self.ViewMgr:BindEvListener("EvUiLogin", self)
     self.ViewMgr:BindEvListener("EvUiLoginSuccessEx", self)
     self.ViewMgr:BindEvListener("EvUiLoginClickBtnRegister", self)
@@ -133,12 +132,10 @@ function ControllerLogin:OnCreate()
     self.ViewMgr:BindEvListener("EvUiChooseGateWay", self)
     self.ViewMgr:BindEvListener("EvUiRequestGetPhoneCode", self)
     self.ViewMgr:BindEvListener("EvCheckIdCard", self)
-    self.ViewMgr:BindEvListener("EvBindWeChat", self)
-    self.ViewMgr:BindEvListener("EvUnbindWeChat", self)
+    self.ViewMgr:BindEvListener("EvBindWechat", self)
+    self.ViewMgr:BindEvListener("EvUnbindWechat", self)
 
     self:_init(true)
-    c.NetMgr:BlindTable(self)
-
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
 
     local rpc = self.ControllerMgr.RPC
@@ -252,15 +249,15 @@ function ControllerLogin:OnHandleEv(ev)
             self.BindingWeChat = false
         elseif (ev.EventName == "EvCheckIdCard") then
             self:RequestCheckCardAndName(ev.id_card, ev.name)
-        elseif (ev.EventName == "EvBindWeChat") then
+        elseif (ev.EventName == "EvBindWechat") then
             ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:getLanValue("BindWeChatTips"), function()
                 ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("BindingWeChat"), 10)
                 self.RequestThirdPartyLogin = true
                 self.BindingWeChat = true
             end)
-        elseif (ev.EventName == "EvUnbindWeChat") then
+        elseif (ev.EventName == "EvUnbindWechat") then
             ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:getLanValue("UnbindWeChatTips"), function()
-                print("EvUnbindWeChat")
+                print("EvUnbindWechat")
                 local open_id = nil
                 if self.ControllerActor ~= nil then
                     open_id = self.ControllerActor.WeChatOpenId:get()
@@ -739,17 +736,6 @@ end
 ---------------------------------------
 function ControllerLogin:GetClientEnterWorldNotify()
     return self.ClientEnterWorldNotify
-end
-
----------------------------------------
-function ControllerLogin:OnSocketClose()
-    ControllerLogin.ControllerMgr:DestroyPlayerControllers()
-    ControllerLogin:_init(false)
-    if (ControllerLogin.ShowKickOutInfo) then
-        ControllerLogin.ShowKickOutInfo = false
-        local info = ControllerLogin.ControllerMgr.LanMgr:getLanValue("AlreadyLogin")
-        ViewHelper:UiShowInfoFailed(info)
-    end
 end
 
 ---------------------------------------

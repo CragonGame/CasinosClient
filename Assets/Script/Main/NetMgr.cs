@@ -11,44 +11,47 @@ namespace Casinos
         //---------------------------------------------------------------------
         public RpcSession RpcSession { get; set; }
         public Action<ushort, byte[]> LuaOnRpcMethod { get; set; }
-        Action LuaOnSocketClose { get; set; }
 
         //---------------------------------------------------------------------
         public NetMgr()
         {
             var rpc_session_factory = new RpcSessionFactoryTcpClient();
-            RpcSession = rpc_session_factory.createRpcSession();
+            RpcSession = rpc_session_factory.CreateRpcSession();
         }
 
         //---------------------------------------------------------------------
-        public void Update(float tm)
+        public void InitByLua()
         {
-            RpcSession.update(tm);
-        }
-
-        //---------------------------------------------------------------------
-        public void BlindTable(LuaTable lua_table)
-        {
-            LuaOnSocketClose = lua_table.Get<Action>("OnSocketClose");
-
             var lua_rpc = CasinosContext.Instance.LuaMgr.LuaEnv.Global.Get<LuaTable>("RPC");
             LuaOnRpcMethod = lua_rpc.Get<Action<ushort, byte[]>>("OnRpcMethod");
         }
 
         //---------------------------------------------------------------------
+        public void Close()
+        {
+            LuaOnRpcMethod = null;
+        }
+
+        //---------------------------------------------------------------------
+        public void Update(float tm)
+        {
+            RpcSession.Update(tm);
+        }
+
+        //---------------------------------------------------------------------
         public void Connect(string ip, int port)
         {
-            RpcSession.close();
+            RpcSession.Close();
             RpcSession.OnSocketConnected = _onSocketConnected;
             RpcSession.OnSocketClosed = _onSocketClosed;
             RpcSession.OnSocketError = _onSocketError;
-            RpcSession.connect(ip, port);
+            RpcSession.Connect(ip, port);
         }
 
         //---------------------------------------------------------------------
         public void Disconnect()
         {
-            RpcSession.close();
+            RpcSession.Close();
         }
 
         //---------------------------------------------------------------------
@@ -65,11 +68,11 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _onSocketError(object rec, SocketErrorEventArgs args)
         {
-            if (args != null && args.Exception != null)
-            {
-                BuglyAgent.PrintLog(LogSeverity.Log, args.Exception.Message);
-                BuglyAgent.ReportException(args.Exception, args.Exception.Message);
-            }
+            //if (args != null && args.Exception != null)
+            //{
+            //    BuglyAgent.PrintLog(LogSeverity.Log, args.Exception.Message);
+            //    BuglyAgent.ReportException(args.Exception, args.Exception.Message);
+            //}
 
             _onSocketClose();
         }
@@ -77,7 +80,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _onSocketClose()
         {
-            LuaOnSocketClose();
+            CasinosContext.Instance.LuaMgr._CSharpCallOnSocketClose();
         }
     }
 }

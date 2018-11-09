@@ -384,13 +384,13 @@ end
 ---------------------------------------
 function ViewPlayerInfo:onClickBindWeChat()
     if self.NeedBindWeChat then
-        local ev = self.ViewMgr:GetEv("EvBindWeChat")
+        local ev = self.ViewMgr:GetEv("EvBindWechat")
         if (ev == nil) then
             ev = EvBindWeChat:new(nil)
         end
         self.ViewMgr:SendEv(ev)
     else
-        local ev = self.ViewMgr:GetEv("EvUnbindWeChat")
+        local ev = self.ViewMgr:GetEv("EvUnbindWechat")
         if (ev == nil) then
             ev = EvUnbindWeChat:new(nil)
         end

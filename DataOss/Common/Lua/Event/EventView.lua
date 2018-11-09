@@ -4375,7 +4375,7 @@ function EvBindWeChat:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvBindWeChat"
+    self.EventName = "EvBindWechat"
     o.ItemObjId = nil
 
     return o
@@ -4409,7 +4409,7 @@ function EvUnbindWeChat:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvUnbindWeChat"
+    self.EventName = "EvUnbindWechat"
 
     return o
 end

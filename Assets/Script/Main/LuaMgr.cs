@@ -271,6 +271,7 @@ namespace Casinos
         DelegateLua1 FuncLaunchOnAndroidQuitConfirm { get; set; }
         DelegateLua3 FuncLaunchOnApplicationPause { get; set; }
         DelegateLua3 FuncLaunchOnApplicationFocus { get; set; }
+        DelegateLua1 FuncLaunchOnSocketClose { get; set; }
         CasinosContext Context { get; set; }
 
         float TickTimeSpanLast = 0;
@@ -293,6 +294,7 @@ namespace Casinos
             FuncLaunchClose = null;
             FuncLaunchOnApplicationPause = null;
             FuncLaunchOnApplicationFocus = null;
+            FuncLaunchOnSocketClose = null;
 
             if (LuaEnv != null)
             {
@@ -338,6 +340,7 @@ namespace Casinos
             FuncLaunchOnAndroidQuitConfirm = lua_launch.Get<DelegateLua1>("OnAndroidQuitConfirm");
             FuncLaunchOnApplicationPause = lua_launch.Get<DelegateLua3>("OnApplicationPause");
             FuncLaunchOnApplicationFocus = lua_launch.Get<DelegateLua3>("OnApplicationFocus");
+            FuncLaunchOnSocketClose = lua_launch.Get<DelegateLua1>("OnSocketClose");
             var func_setup = lua_launch.Get<DelegateLua1>("Setup");
             func_setup(lua_launch);
         }
@@ -551,6 +554,13 @@ namespace Casinos
         {
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
             if (FuncLaunchOnApplicationFocus != null) FuncLaunchOnApplicationFocus.Invoke(lua_launch, focus_status);
+        }
+
+        //---------------------------------------------------------------------
+        public void _CSharpCallOnSocketClose()
+        {
+            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+            if (FuncLaunchOnSocketClose != null) FuncLaunchOnSocketClose.Invoke(lua_launch);
         }
 
         //---------------------------------------------------------------------

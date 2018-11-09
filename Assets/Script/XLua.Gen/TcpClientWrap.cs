@@ -129,7 +129,7 @@ namespace XLua.CSObjectWrap
                     string _ip_or_host = LuaAPI.lua_tostring(L, 2);
                     int _port = LuaAPI.xlua_tointeger(L, 3);
                     
-                    gen_to_be_invoked.connect( _ip_or_host, _port );
+                    gen_to_be_invoked.Connect( _ip_or_host, _port );
                     
                     
                     
@@ -157,7 +157,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _elapsed_tm = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                    gen_to_be_invoked.update( _elapsed_tm );
+                    gen_to_be_invoked.Update( _elapsed_tm );
                     
                     
                     
@@ -184,7 +184,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                    gen_to_be_invoked.close(  );
+                    gen_to_be_invoked.Close(  );
                     
                     
                     
@@ -214,7 +214,7 @@ namespace XLua.CSObjectWrap
                 {
                     byte[] _buf = LuaAPI.lua_tobytes(L, 2);
                     
-                    gen_to_be_invoked.send( _buf );
+                    gen_to_be_invoked.Send( _buf );
                     
                     
                     
@@ -225,7 +225,7 @@ namespace XLua.CSObjectWrap
                     ushort _method_id = (ushort)LuaAPI.xlua_tointeger(L, 2);
                     byte[] _data = LuaAPI.lua_tobytes(L, 3);
                     
-                    gen_to_be_invoked.send( _method_id, _data );
+                    gen_to_be_invoked.Send( _method_id, _data );
                     
                     
                     
@@ -236,7 +236,7 @@ namespace XLua.CSObjectWrap
                     byte[] _buf = LuaAPI.lua_tobytes(L, 2);
                     ushort _length = (ushort)LuaAPI.xlua_tointeger(L, 3);
                     
-                    gen_to_be_invoked.send( _buf, _length );
+                    gen_to_be_invoked.Send( _buf, _length );
                     
                     
                     

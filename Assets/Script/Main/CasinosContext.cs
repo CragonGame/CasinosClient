@@ -252,6 +252,12 @@ namespace Casinos
                 AsyncAssetLoadGroup = null;
             }
 
+            if (NetMgr != null)
+            {
+                NetMgr.Close();
+                NetMgr = null;
+            }
+
             if (LuaMgr != null)
             {
                 LuaMgr.Release();

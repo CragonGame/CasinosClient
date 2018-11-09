@@ -85,14 +85,14 @@ end
 ---------------------------------------
 function RPC:RPC0(method_id)
     --print('RPC:RPC0() method_id=' .. method_id)
-    self.RpcSession:send(method_id, nil)
+    self.RpcSession:Send(method_id, nil)
 end
 
 ---------------------------------------
 function RPC:RPC1(method_id, data1)
     --print('RPC:RPC1() method_id=' .. method_id)
     local string1 = self.MessagePack.pack(data1)
-    self.RpcSession:send(method_id, string1)
+    self.RpcSession:Send(method_id, string1)
 end
 
 ---------------------------------------
@@ -112,7 +112,7 @@ function RPC:RPC2(method_id, data1, data2)
     table.insert(t_tmp, string2)
 
     local finale_data = table.concat(t_tmp)
-    self.RpcSession:send(method_id, finale_data)
+    self.RpcSession:Send(method_id, finale_data)
 end
 
 ---------------------------------------
@@ -138,7 +138,7 @@ function RPC:RPC3(method_id, data1, data2, data3)
     table.insert(t_tmp, string3)
 
     local finale_data = table.concat(t_tmp)
-    self.RpcSession:send(method_id, finale_data)
+    self.RpcSession:Send(method_id, finale_data)
 end
 
 ---------------------------------------
@@ -170,7 +170,7 @@ function RPC:RPC4(method_id, data1, data2, data3, data4)
     table.insert(t_tmp, string4)
 
     local finale_data = table.concat(t_tmp)
-    self.RpcSession:send(method_id, finale_data)
+    self.RpcSession:Send(method_id, finale_data)
 end
 
 ---------------------------------------

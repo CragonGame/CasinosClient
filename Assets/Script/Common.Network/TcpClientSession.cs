@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using GameCloud.Unity.Common;
@@ -9,55 +8,35 @@ public class TcpClientSession : IDisposable
 {
     //-------------------------------------------------------------------------
     readonly int MAX_RECEIVE_LEN = 8192;
-    Socket mSocket;
-    int mPort;
-    EndPoint mRemoteEndPoint;
-    string mHost;
-    byte[] m_KeepAliveOptionValues;
-    byte[] m_KeepAliveOptionOutValues;
-    volatile bool mDisposed;
-    Queue<byte[]> mQueSending = new Queue<byte[]>();
-    Queue<IPAddress> mQueIPAddress = new Queue<IPAddress>();
-    int mSendLength = 0;
-    volatile bool mConnected;
-    bool mIsHost;
+    Socket Socket;
+    int Port = 0;
+    EndPoint RemoteEndPoint;
+    string Host = string.Empty;
+    volatile bool Disposed = false;
+    Queue<byte[]> QueSending = new Queue<byte[]>();
+    Queue<IPAddress> QueIPAddress = new Queue<IPAddress>();
+    int SendLength = 0;
+    volatile bool Connected;
+    bool IsHost;
 
     //-------------------------------------------------------------------------
-    public bool IsConnected { get { return (mSocket == null || mDisposed) ? false : mConnected; } }
-    public OnSocketReceive DataReceived { get; set; }
-    public OnSocketConnected Connected { get; set; }
-    public OnSocketClosed Closed { get; set; }
-    public OnSocketError Error { get; set; }
+    public bool IsConnected { get { return (Socket == null || Disposed) ? false : Connected; } }
+    public OnSocketReceive OnDataReceived { get; set; }
+    public OnSocketConnected OnConnected { get; set; }
+    public OnSocketClosed OnClosed { get; set; }
+    public OnSocketError OnError { get; set; }
 
     //-------------------------------------------------------------------------
     public TcpClientSession(EndPoint remote_endpoint)
     {
-        mRemoteEndPoint = remote_endpoint;
-
-        m_KeepAliveOptionValues = new byte[sizeof(uint) * 3];
-        m_KeepAliveOptionOutValues = new byte[m_KeepAliveOptionValues.Length];
-        // whether enable KeepAlive
-        BitConverter.GetBytes((uint)1).CopyTo(m_KeepAliveOptionValues, 0);
-        // how long will start first keep alive
-        BitConverter.GetBytes((uint)(3 * 1000)).CopyTo(m_KeepAliveOptionValues, sizeof(uint));
-        // keep alive interval
-        BitConverter.GetBytes((uint)(1 * 1000)).CopyTo(m_KeepAliveOptionValues, sizeof(uint) * 2);
+        RemoteEndPoint = remote_endpoint;
     }
 
     //-------------------------------------------------------------------------
     public TcpClientSession(string host, int port)
     {
-        mHost = host;
-        mPort = port;
-
-        m_KeepAliveOptionValues = new byte[sizeof(uint) * 3];
-        m_KeepAliveOptionOutValues = new byte[m_KeepAliveOptionValues.Length];
-        // whether enable KeepAlive
-        BitConverter.GetBytes((uint)1).CopyTo(m_KeepAliveOptionValues, 0);
-        // how long will start first keep alive
-        BitConverter.GetBytes((uint)(3 * 1000)).CopyTo(m_KeepAliveOptionValues, sizeof(uint));
-        // keep alive interval
-        BitConverter.GetBytes((uint)(1 * 1000)).CopyTo(m_KeepAliveOptionValues, sizeof(uint) * 2);
+        Host = host;
+        Port = port;
     }
 
     //-------------------------------------------------------------------------
@@ -76,15 +55,15 @@ public class TcpClientSession : IDisposable
     //-------------------------------------------------------------------------
     protected void Dispose(bool disposing)
     {
-        if (!mDisposed)
+        if (!Disposed)
         {
             if (disposing)
             {
                 try
                 {
-                    if (mSocket != null)
+                    if (Socket != null)
                     {
-                        mSocket.Shutdown(SocketShutdown.Both);
+                        Socket.Shutdown(SocketShutdown.Both);
                     }
                 }
                 catch (Exception)
@@ -94,10 +73,10 @@ public class TcpClientSession : IDisposable
                 {
                     try
                     {
-                        if (mSocket != null)
+                        if (Socket != null)
                         {
-                            mSocket.Close();
-                            mSocket = null;
+                            Socket.Close();
+                            Socket = null;
                         }
                     }
                     catch (Exception)
@@ -108,44 +87,44 @@ public class TcpClientSession : IDisposable
                 _raiseClosed();
             }
 
-            mDisposed = true;
+            Disposed = true;
         }
     }
 
     //-------------------------------------------------------------------------
-    public void update()
+    public void Update()
     {
         try
         {
-            if (mSocket == null || mDisposed || !mConnected) return;
+            if (Socket == null || Disposed || !Connected) return;
 
-            if (mSocket.Poll(0, SelectMode.SelectError))
+            if (Socket.Poll(0, SelectMode.SelectError))
             {
                 _raiseError(new Exception("SocketError"));
                 Dispose();
                 return;
             }
 
-            if (mSocket.Poll(0, SelectMode.SelectRead))
+            if (Socket.Poll(0, SelectMode.SelectRead))
             {
                 byte[] recv_buf = new byte[MAX_RECEIVE_LEN];
-                int num = mSocket.Receive(recv_buf, MAX_RECEIVE_LEN, SocketFlags.None);
+                int num = Socket.Receive(recv_buf, MAX_RECEIVE_LEN, SocketFlags.None);
                 if (num > 0) _raiseDataReceived(recv_buf, num);
             }
 
-            if (mSocket.Poll(0, SelectMode.SelectWrite))
+            if (Socket.Poll(0, SelectMode.SelectWrite))
             {
-                if (mQueSending.Count > 0)
+                if (QueSending.Count > 0)
                 {
-                    byte[] buf = mQueSending.Peek();
-                    int send_num = mSocket.Send(buf, mSendLength, buf.Length - mSendLength, SocketFlags.None);
+                    byte[] buf = QueSending.Peek();
+                    int send_num = Socket.Send(buf, SendLength, buf.Length - SendLength, SocketFlags.None);
                     if (send_num > 0)
                     {
-                        mSendLength += send_num;
-                        if (mSendLength >= buf.Length)
+                        SendLength += send_num;
+                        if (SendLength >= buf.Length)
                         {
-                            mQueSending.Dequeue();
-                            mSendLength = 0;
+                            QueSending.Dequeue();
+                            SendLength = 0;
                         }
                     }
                 }
@@ -159,62 +138,62 @@ public class TcpClientSession : IDisposable
     }
 
     //-------------------------------------------------------------------------
-    public void connect(IPAddress[] array_ipaddress, bool is_host)
+    public void Connect(IPAddress[] array_ipaddress, bool is_host)
     {
-        mIsHost = is_host;
+        IsHost = is_host;
         foreach (var i in array_ipaddress)
         {
-            mQueIPAddress.Enqueue(i);
+            QueIPAddress.Enqueue(i);
         }
 
-        if (mQueIPAddress.Count > 0)
+        if (QueIPAddress.Count > 0)
         {
             _doConnect();
         }
     }
 
     //-------------------------------------------------------------------------
-    public void send(byte[] buf)
+    public void Send(byte[] buf)
     {
-        mQueSending.Enqueue(buf);
+        QueSending.Enqueue(buf);
     }
 
     //-------------------------------------------------------------------------
     void _doConnect()
     {
-        if (mQueIPAddress.Count <= 0 || mDisposed)
+        if (QueIPAddress.Count <= 0 || Disposed)
         {
             return;
         }
 
-        IPAddress connect_ipaddress = mQueIPAddress.Dequeue();
+        IPAddress connect_ipaddress = QueIPAddress.Dequeue();
         try
         {
-            if (mDisposed) return;
+            if (Disposed) return;
 
-            mSendLength = 0;
+            SendLength = 0;
 
             if (connect_ipaddress.AddressFamily == AddressFamily.InterNetworkV6)
             {
-                mSocket = new Socket(AddressFamily.InterNetworkV6, SocketType.Stream, ProtocolType.Tcp);
+                Socket = new Socket(AddressFamily.InterNetworkV6, SocketType.Stream, ProtocolType.Tcp);
             }
             else if (connect_ipaddress.AddressFamily == AddressFamily.InterNetwork)
             {
-                mSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             }
-            mSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
-            mSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.DontLinger, true);
+            Socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
+            Socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.DontLinger, true);
 
-            mConnected = false;
+            Connected = false;
 
-            if (mIsHost)
+            if (IsHost)
             {
-                mSocket.BeginConnect(mHost, mPort, new AsyncCallback(_onConnect), mSocket);
+                Socket.BeginConnect(Host, Port, new AsyncCallback(_onConnect), Socket);
             }
             else
             {
-                var ip_endpoint = mRemoteEndPoint as IPEndPoint;
-                mSocket.BeginConnect(ip_endpoint.Address, ip_endpoint.Port, new AsyncCallback(_onConnect), mSocket);
+                var ip_endpoint = RemoteEndPoint as IPEndPoint;
+                Socket.BeginConnect(ip_endpoint.Address, ip_endpoint.Port, new AsyncCallback(_onConnect), Socket);
             }
         }
         catch (Exception ex)
@@ -233,45 +212,17 @@ public class TcpClientSession : IDisposable
 
             if (socket.Connected)
             {
-                //bool SupportSocketIOControlByCodeEnum;
-                //try
-                //{
-                //    mSocket.IOControl(IOControlCode.KeepAliveValues, null, null);
-                //    SupportSocketIOControlByCodeEnum = true;
-                //}
-                //catch (NotSupportedException)
-                //{
-                //    SupportSocketIOControlByCodeEnum = false;
-                //}
-                //catch (NotImplementedException)
-                //{
-                //    SupportSocketIOControlByCodeEnum = false;
-                //}
-                //catch (Exception)
-                //{
-                //    SupportSocketIOControlByCodeEnum = true;
-                //}
-
-                //if (!SupportSocketIOControlByCodeEnum)
-                //{
-                //    mSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, m_KeepAliveOptionValues);
-                //}
-                //else
-                //{
-                //    mSocket.IOControl(IOControlCode.KeepAliveValues, m_KeepAliveOptionValues, m_KeepAliveOptionOutValues);
-                //}
-
 #if !__IOS__
-                mSocket.NoDelay = true;
+                Socket.NoDelay = true;
 #endif
-                mSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.DontLinger, true);
+                Socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.DontLinger, true);
 
-                mConnected = true;
+                Connected = true;
                 _raiseConnected();
             }
             else
             {
-                mConnected = false;
+                Connected = false;
                 _raiseClosed();
             }
         }
@@ -285,31 +236,77 @@ public class TcpClientSession : IDisposable
     //---------------------------------------------------------------------
     void _raiseDataReceived(byte[] data, int len)
     {
-        if (DataReceived != null) DataReceived.Invoke(data, len);
+        if (OnDataReceived != null) OnDataReceived.Invoke(data, len);
     }
 
     //---------------------------------------------------------------------
     void _raiseConnected()
     {
-        mQueIPAddress.Clear();
+        QueIPAddress.Clear();
 
-        if (Connected != null) Connected.Invoke(null, EventArgs.Empty);
+        if (OnConnected != null) OnConnected.Invoke(null, EventArgs.Empty);
     }
 
     //---------------------------------------------------------------------
     void _raiseClosed()
     {
-        if (Closed != null) Closed.Invoke(null, EventArgs.Empty);
+        if (OnClosed != null) OnClosed.Invoke(null, EventArgs.Empty);
     }
 
     //---------------------------------------------------------------------
     void _raiseError(Exception e)
     {
-        if (mQueIPAddress.Count > 0)
+        if (QueIPAddress.Count > 0)
         {
             _doConnect();
         }
 
-        if (Error != null) Error.Invoke(null, new SocketErrorEventArgs(e));
+        if (OnError != null) OnError.Invoke(null, new SocketErrorEventArgs(e));
     }
 }
+
+//byte[] KeepAliveOptionValues;
+//KeepAliveOptionValues = new byte[sizeof(uint) * 3];
+//// whether enable KeepAlive
+//BitConverter.GetBytes((uint)1).CopyTo(KeepAliveOptionValues, 0);
+//// how long will start first keep alive
+//BitConverter.GetBytes((uint)(3 * 1000)).CopyTo(KeepAliveOptionValues, sizeof(uint));
+//// keep alive interval
+//BitConverter.GetBytes((uint)(1 * 1000)).CopyTo(KeepAliveOptionValues, sizeof(uint) * 2);
+//KeepAliveOptionValues = new byte[sizeof(uint) * 3];
+////m_KeepAliveOptionOutValues = new byte[m_KeepAliveOptionValues.Length];
+//// whether enable KeepAlive
+//BitConverter.GetBytes((uint)1).CopyTo(KeepAliveOptionValues, 0);
+//// how long will start first keep alive
+//BitConverter.GetBytes((uint)(3 * 1000)).CopyTo(KeepAliveOptionValues, sizeof(uint));
+//// keep alive interval
+//BitConverter.GetBytes((uint)(1 * 1000)).CopyTo(KeepAliveOptionValues, sizeof(uint) * 2);
+//byte[] m_KeepAliveOptionOutValues;
+//m_KeepAliveOptionOutValues = new byte[m_KeepAliveOptionValues.Length];
+//bool SupportSocketIOControlByCodeEnum;
+//try
+//{
+//    mSocket.IOControl(IOControlCode.KeepAliveValues, null, null);
+//    SupportSocketIOControlByCodeEnum = true;
+//}
+//catch (NotSupportedException)
+//{
+//    SupportSocketIOControlByCodeEnum = false;
+//}
+//catch (NotImplementedException)
+//{
+//    SupportSocketIOControlByCodeEnum = false;
+//}
+//catch (Exception)
+//{
+//    SupportSocketIOControlByCodeEnum = true;
+//}
+
+//if (!SupportSocketIOControlByCodeEnum)
+//{
+//    mSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, m_KeepAliveOptionValues);
+//}
+//else
+//{
+//    mSocket.IOControl(IOControlCode.KeepAliveValues, m_KeepAliveOptionValues, m_KeepAliveOptionOutValues);
+//}

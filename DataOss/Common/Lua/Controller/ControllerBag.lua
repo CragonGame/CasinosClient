@@ -48,7 +48,7 @@ function ControllerBag:OnCreate()
 
     self.ViewMgr:BindEvListener("EvUiRemoveItem", self)
     self.ViewMgr:BindEvListener("EvUiRequestOperateItem", self)
-    self.ViewMgr:BindEvListener("EvBindWeChat", self)
+    self.ViewMgr:BindEvListener("EvBindWechat", self)
     self.ViewMgr:BindEvListener("EvUiLoginSuccessEx", self)
     self.ViewMgr:BindEvListener("EvOpenBag", self)
 
@@ -85,7 +85,7 @@ function ControllerBag:OnHandleEv(ev)
     elseif (ev.EventName == "EvUiRequestOperateItem")
     then
         self:requestOperateItem("", ev.ItemObjId)
-    elseif (ev.EventName == "EvBindWeChat")
+    elseif (ev.EventName == "EvBindWechat")
     then
         self.BindAndUseItemObjId = ev.ItemObjId
     elseif (ev.EventName == "EvUiLoginSuccessEx")

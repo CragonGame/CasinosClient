@@ -198,30 +198,30 @@ namespace GameCloud.Unity.Common
         public OnSocketError OnSocketError { get; set; }
 
         //---------------------------------------------------------------------
-        public abstract bool isConnect();
+        public abstract bool IsConnect();
 
-        public abstract void connect(string ip, int port);
-
-        //---------------------------------------------------------------------
-        public abstract void send(ushort method_id, byte[] data);
+        public abstract void Connect(string ip, int port);
 
         //---------------------------------------------------------------------
-        public abstract void onRecv(ushort method_id, byte[] data);
+        public abstract void Send(ushort method_id, byte[] data);
 
         //---------------------------------------------------------------------
-        public abstract void close();
+        public abstract void OnRecv(ushort method_id, byte[] data);
 
         //---------------------------------------------------------------------
-        public abstract void update(float elapsed_tm);
+        public abstract void Close();
 
         //---------------------------------------------------------------------
-        public void rpc(ushort method_id)
+        public abstract void Update(float elapsed_tm);
+
+        //---------------------------------------------------------------------
+        public void Rpc(ushort method_id)
         {
-            send(method_id, null);
+            Send(method_id, null);
         }
 
         //---------------------------------------------------------------------
-        public void rpc<T1>(ushort method_id, T1 obj1)
+        public void Rpc<T1>(ushort method_id, T1 obj1)
         {
             //byte[] data = null;
 
@@ -242,7 +242,7 @@ namespace GameCloud.Unity.Common
         }
 
         //---------------------------------------------------------------------
-        public void rpc<T1, T2>(ushort method_id, T1 obj1, T2 obj2)
+        public void Rpc<T1, T2>(ushort method_id, T1 obj1, T2 obj2)
         {
             //byte[] data = null;
 
@@ -264,7 +264,7 @@ namespace GameCloud.Unity.Common
         }
 
         //---------------------------------------------------------------------
-        public void rpc<T1, T2, T3>(ushort method_id, T1 obj1, T2 obj2, T3 obj3)
+        public void Rpc<T1, T2, T3>(ushort method_id, T1 obj1, T2 obj2, T3 obj3)
         {
             //byte[] data = null;
 
@@ -287,7 +287,7 @@ namespace GameCloud.Unity.Common
         }
 
         //---------------------------------------------------------------------
-        public void rpc<T1, T2, T3, T4>(ushort method_id, T1 obj1, T2 obj2, T3 obj3, T4 obj4)
+        public void Rpc<T1, T2, T3, T4>(ushort method_id, T1 obj1, T2 obj2, T3 obj3, T4 obj4)
         {
             //byte[] data = null;
 
@@ -311,39 +311,39 @@ namespace GameCloud.Unity.Common
         }
 
         //---------------------------------------------------------------------
-        public void defRpcMethod(ushort method_id, Action action)
+        public void DefRpcMethod(ushort method_id, Action action)
         {
             _defRpcMethod(method_id, action);
         }
 
         //---------------------------------------------------------------------
-        public void defRpcMethod<T1>(ushort method_id, Action<T1> action)
+        public void DefRpcMethod<T1>(ushort method_id, Action<T1> action)
         {
             _defRpcMethod<T1>(method_id, action);
         }
 
         //---------------------------------------------------------------------
-        public void defRpcMethod<T1, T2>(ushort method_id, Action<T1, T2> action)
+        public void DefRpcMethod<T1, T2>(ushort method_id, Action<T1, T2> action)
         {
             _defRpcMethod<T1, T2>(method_id, action);
         }
 
         //---------------------------------------------------------------------
-        public void defRpcMethod<T1, T2, T3>(ushort method_id, Action<T1, T2, T3> action)
+        public void DefRpcMethod<T1, T2, T3>(ushort method_id, Action<T1, T2, T3> action)
         {
             _defRpcMethod<T1, T2, T3>(method_id, action);
         }
 
         //---------------------------------------------------------------------
-        public void defRpcMethod<T1, T2, T3, T4>(ushort method_id, Action<T1, T2, T3, T4> action)
+        public void DefRpcMethod<T1, T2, T3, T4>(ushort method_id, Action<T1, T2, T3, T4> action)
         {
             _defRpcMethod<T1, T2, T3, T4>(method_id, action);
         }
 
         //---------------------------------------------------------------------
-        public void onRpcMethod(ushort method_id, byte[] data)
+        public void OnRpcMethod(ushort method_id, byte[] data)
         {
-            onRecv(method_id, data);
+            OnRecv(method_id, data);
 
             RpcSlotBase rpc_slot = null;
             mMapRpcSlot.TryGetValue(method_id, out rpc_slot);
@@ -400,6 +400,6 @@ namespace GameCloud.Unity.Common
     public abstract class RpcSessionFactory
     {
         //---------------------------------------------------------------------
-        public abstract RpcSession createRpcSession();
+        public abstract RpcSession CreateRpcSession();
     }
 }

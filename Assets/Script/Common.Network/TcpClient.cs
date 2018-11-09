@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using SuperSocket.ProtoBase;
 using GameCloud.Unity.Common;
@@ -38,7 +37,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
     DefaultPipelineProcessor<BufferedPackageInfo<ushort>> mPipelineProcessor;
     Queue<SocketRecvData> mRecQueue = new Queue<SocketRecvData>();
     Queue<SocketEvent> mSocketEvent = new Queue<SocketEvent>();
-    object mLockWorker = new object();
+    object LockWorker = new object();
 
     //---------------------------------------------------------------------
     public bool IsConnected { get { return (mSession == null) ? false : mSession.IsConnected; } }
@@ -68,7 +67,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
     }
 
     //---------------------------------------------------------------------
-    public void connect(string ip_or_host, int port)
+    public void Connect(string ip_or_host, int port)
     {
         mIpOrHost = ip_or_host;
         mPort = port;
@@ -98,20 +97,20 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
             mSession = new TcpClientSession(server_address);
         }
 
-        mSession.DataReceived += _onReceive;
-        mSession.Connected += _onConnected;
-        mSession.Closed += _onClosed;
-        mSession.Error += _onError;
+        mSession.OnDataReceived += _onReceive;
+        mSession.OnConnected += _onConnected;
+        mSession.OnClosed += _onClosed;
+        mSession.OnError += _onError;
 
-        mSession.connect(ary_IP, is_host);
+        mSession.Connect(ary_IP, is_host);
     }
 
     //---------------------------------------------------------------------
-    public void update(float elapsed_tm)
+    public void Update(float elapsed_tm)
     {
         if (mSession != null)
         {
-            mSession.update();
+            mSession.Update();
         }
 
         while (true)
@@ -121,7 +120,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
             socket_event.client = null;
             socket_event.args = null;
 
-            lock (mLockWorker)
+            lock (LockWorker)
             {
                 if (mSocketEvent.Count > 0)
                 {
@@ -153,7 +152,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
     }
 
     //---------------------------------------------------------------------
-    public void close()
+    public void Close()
     {
         if (mSession != null)
         {
@@ -165,7 +164,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
     }
 
     //---------------------------------------------------------------------
-    public void send(ushort method_id, byte[] data)
+    public void Send(ushort method_id, byte[] data)
     {
         ushort data_len = 0;
         byte[] send_buf = null;
@@ -182,28 +181,28 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
         Array.Copy(BitConverter.GetBytes(data_len), 0, send_buf, 0, sizeof(ushort));
         Array.Copy(BitConverter.GetBytes(method_id), 0, send_buf, sizeof(ushort), sizeof(ushort));
         if (data != null && data.Length > 0) Array.Copy(data, 0, send_buf, sizeof(ushort) * 2, data.Length);
-        mSession.send(send_buf);
+        mSession.Send(send_buf);
     }
 
     //---------------------------------------------------------------------
-    public void send(byte[] buf)
+    public void Send(byte[] buf)
     {
-        send(buf, (ushort)buf.Length);
+        Send(buf, (ushort)buf.Length);
     }
 
     //---------------------------------------------------------------------
-    public void send(byte[] buf, ushort length)
+    public void Send(byte[] buf, ushort length)
     {
         byte[] send_buf = new byte[HeadLength + length];
         Array.Copy(BitConverter.GetBytes((ushort)length), send_buf, HeadLength);
         Array.Copy(buf, 0, send_buf, HeadLength, length);
-        mSession.send(send_buf);
+        mSession.Send(send_buf);
     }
 
     //---------------------------------------------------------------------
     void _onReceive(byte[] data, int len)
     {
-        lock (mLockWorker)
+        lock (LockWorker)
         {
             SocketRecvData recv_data;
             recv_data.data = data;
@@ -216,7 +215,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
             SocketRecvData recv_data;
             recv_data.data = null;
             recv_data.len = 0;
-            lock (mLockWorker)
+            lock (LockWorker)
             {
                 if (mRecQueue.Count > 0) recv_data = mRecQueue.Dequeue();
             }
@@ -231,7 +230,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
     //---------------------------------------------------------------------
     void _onConnected(object client, EventArgs args)
     {
-        lock (mLockWorker)
+        lock (LockWorker)
         {
             SocketEvent socket_event;
             socket_event.type = eSocketEventType.Connected;
@@ -245,7 +244,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
     //---------------------------------------------------------------------
     void _onClosed(object client, EventArgs args)
     {
-        lock (mLockWorker)
+        lock (LockWorker)
         {
             SocketEvent socket_event;
             socket_event.type = eSocketEventType.Closed;
@@ -259,7 +258,7 @@ public class TcpClient : IPackageHandler<BufferedPackageInfo<ushort>>
     //---------------------------------------------------------------------
     void _onError(object client, SocketErrorEventArgs args)
     {
-        lock (mLockWorker)
+        lock (LockWorker)
         {
             SocketEvent socket_event;
             socket_event.type = eSocketEventType.Error;
