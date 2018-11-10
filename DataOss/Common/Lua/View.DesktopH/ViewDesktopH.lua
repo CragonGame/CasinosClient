@@ -217,7 +217,6 @@ function ViewDesktopH:OnCreate()
     end
     local btn_chatfriend_temp = self.ComUi:GetChild("BtnChatFriend")
     if (btn_chatfriend_temp ~= nil) then
-        --local btn_chatfriend = btn_chatfriend_temp.asButton
         btn_chatfriend_temp.onClick:Add(
                 function()
                     self:_onClickBtnChatFriend()

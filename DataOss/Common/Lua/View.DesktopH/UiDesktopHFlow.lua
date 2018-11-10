@@ -24,3 +24,27 @@ end
 ---------------------------------------
 function UiDesktopHFlow:InitDesktopHData()
 end
+
+---------------------------------------
+function UiDesktopHFlow:OnEnterReadyState()
+end
+
+---------------------------------------
+function UiDesktopHFlow:OnEnterBetState()
+end
+
+---------------------------------------
+function UiDesktopHFlow:OnEnterGameEndState()
+end
+
+---------------------------------------
+function UiDesktopHFlow:OnEnterRestState()
+end
+
+---------------------------------------
+function UiDesktopHFlow:OnUpdateBetPotBetInfo()
+end
+
+---------------------------------------
+function UiDesktopHFlow:BetGold()
+end
