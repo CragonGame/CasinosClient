@@ -95,10 +95,10 @@ namespace Casinos
                 force_use_dataoss = cfg_usersettings.ForceUseDirDataOss;
             }
 
-            string info = string.Format("ForceUseDirResourcesLaunch={0}, ForceUseDirDataOss={1}",
-                force_use_resouceslaunch, force_use_dataoss);
-            Debug.Log(info);
-            Debug.Log("PersistentDataPath=" + Application.persistentDataPath);
+            //string info = string.Format("ForceUseDirResourcesLaunch={0}, ForceUseDirDataOss={1}",
+            //    force_use_resouceslaunch, force_use_dataoss);
+            //Debug.Log(info);
+            //Debug.Log("PersistentDataPath=" + Application.persistentDataPath);
 #endif
 
             Context = new CasinosContext(force_use_resouceslaunch, force_use_dataoss);

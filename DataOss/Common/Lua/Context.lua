@@ -117,8 +117,7 @@ end
 
 ---------------------------------------
 function Context:Init()
-    print('Context:Init()')
-
+    --print('Context:Init()')
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")
     show_fps_obj.enabled = self.Cfg.DevelopSettings.ClientShowFPS
 
@@ -147,7 +146,7 @@ function Context:Release()
     self.LuaMgr = nil
     self.Launch = nil
 
-    print('Context:Release()')
+    --print('Context:Release()')
 end
 
 ---------------------------------------

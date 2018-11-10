@@ -25,8 +25,6 @@ end
 
 ---------------------------------------
 function ViewLogin:OnCreate()
-    print('ViewLogin:OnCreate()')
-
     self.ViewMgr:BindEvListener("EvUiChooseCountry", self)
 
     self:_switchController("LoginState", "LoginMain")
@@ -279,17 +277,10 @@ end
 
 ---------------------------------------
 function ViewLogin:OnDestroy()
-    print('ViewLogin:OnDestroy()')
-
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-
-    --if (self.Context.Cfg.NeedHideClientUi == false) then
-    --    CS.UnityEngine.GameObject.Destroy(self.PlayerAnim.transform.gameObject)
-    --end
-    --CS.UnityEngine.GameObject.Destroy(self.DengLongAnim.transform.gameObject)
 end
 
 ---------------------------------------

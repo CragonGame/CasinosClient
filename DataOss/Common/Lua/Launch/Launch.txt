@@ -59,8 +59,7 @@ end
 -- 初始化
 function Launch:Setup()
     Launch:new(nil)
-
-    print('Launch:Setup() Env=' .. self.LaunchCfg.Env)
+    --print('Launch:Setup() Env=' .. self.LaunchCfg.Env)
 
     require 'PreViewMgr'
     require 'PreViewBase'
@@ -92,7 +91,7 @@ function Launch:Setup()
     local lua_pkg_name = string.format('bundle_%s', self.CasinosContext.Config.VersionBundle)
     local async_asset_loadgroup = self.CasinosContext.AsyncAssetLoadGroup
     local http_url_bundlexxx = string.format('https://cragon-king-oss.cragon.cn/%s/%s.lua', self.CasinosContext.Config.Platform, lua_pkg_name)
-    print(http_url_bundlexxx)
+    --print(http_url_bundlexxx)
     async_asset_loadgroup:LoadWWWAsync(http_url_bundlexxx,
             function(url, www)
                 self.LuaMgr:LoadLuaFromBytes(lua_pkg_name, www.text)
@@ -106,7 +105,7 @@ function Launch:Setup()
                     self.LaunchCfg.DataVersion = DataSelectDev
                 end
                 local http_url_context = string.format('https://cragon-king-oss.cragon.cn/Common/%s/Lua/Context.lua', self.LaunchCfg.CommonVersion)
-                print(http_url_context)
+                --print(http_url_context)
                 async_asset_loadgroup:LoadWWWAsync(http_url_context,
                         function(url, www)
                             self.LuaMgr:LoadLuaFromBytes('Context', www.text)
@@ -126,13 +125,6 @@ function Launch:Finish()
         self.PreViewMgr:DestroyView(self.PreLoading)
         self.PreLoading = nil
     end
-
-    --if (self.PreViewMgr ~= nil) then
-    --    self.PreViewMgr:Release()
-    --    self.PreViewMgr = nil
-    --    self.PreLoading = nil
-    --    self.PreMsgBox = nil
-    --end
 
     --package.preload['PreViewMsgBox'] = nil
     --package.loaded['PreViewMsgBox'] = nil
@@ -155,8 +147,7 @@ function Launch:Finish()
     --    self.UIPackageMsgbox:UnloadAssets()
     --    self.UIPackageMsgbox = nil
     --end
-
-    print("Launch:Finish()")
+    --print("Launch:Finish()")
 end
 
 ---------------------------------------
@@ -173,7 +164,7 @@ function Launch:Close()
     self.LuaMgr = nil
     self.Instance = nil
 
-    print("Launch:Release()")
+    --print("Launch:Release()")
 end
 
 ---------------------------------------

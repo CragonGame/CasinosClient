@@ -25,7 +25,7 @@ end
 
 ---------------------------------------
 function ControllerMgr:OnCreate()
-    print("ControllerMgr:OnCreate")
+    --print("ControllerMgr:OnCreate")
     self.EventSys = EventSys:new(nil)
     self.ViewMgr = ViewMgr:new(nil)
 end

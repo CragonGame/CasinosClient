@@ -21,13 +21,13 @@ end
 
 ---------------------------------------
 function ControllerUCenter:OnCreate()
-    print("ControllerUCenter:OnCreate")
+    --print("ControllerUCenter:OnCreate")
     self.MbHelper = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbHelper")
 end
 
 ---------------------------------------
 function ControllerUCenter:OnDestroy()
-    print("ControllerUCenter:OnDestroy")
+    --print("ControllerUCenter:OnDestroy")
 end
 
 ---------------------------------------

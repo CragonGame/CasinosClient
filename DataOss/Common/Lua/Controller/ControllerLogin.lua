@@ -455,7 +455,7 @@ function ControllerLogin:OnUCenterLogin(http_statuscode, status, response, error
         self.Acc = response.accountName
         self.Token = response.token
         self.Identity = response.identity
-        print("OnUCenterLogin")
+        --print("OnUCenterLogin")
         -- 保存登录信息
         local infos = LoginAccountInfos:new(nil)
         if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey)) then
@@ -602,7 +602,7 @@ end
 ---------------------------------------
 function ControllerLogin:OnUCenterWechatUnbind(http_statuscode, status, response, error)
     if (status == UCenterResponseStatus.Success) then
-        print("OnUCenterWechatUnbind")
+        --print("OnUCenterWechatUnbind")
         if (response == UCenterErrorCode.NoError) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("UnbindWeChatSuccess"))
             local ev = self.ViewMgr:GetEv("EvUnBindWeChatSuccess")
@@ -639,7 +639,7 @@ end
 
 ---------------------------------------
 function ControllerLogin:OnAccountGatewayConnected()
-    print("OnAccountGatewayConnected")
+    --print("OnAccountGatewayConnected")
     local login_request = ClientLoginAppRequest:new(nil)
     login_request.acc_id = self.AccId
     login_request.acc_name = self.Acc
@@ -659,7 +659,7 @@ end
 ---------------------------------------
 function ControllerLogin:OnAccountLoginAppResponse(login_response)
     -- 请求进入游戏世界
-    print("OnAccountLoginAppResponse")
+    --print("OnAccountLoginAppResponse")
     local enterworld_request = ClientEnterWorldRequest:new(nil)
     enterworld_request.acc_id = self.AccId
     enterworld_request.acc_name = self.Acc
@@ -681,7 +681,7 @@ end
 ---------------------------------------
 function ControllerLogin:OnAccountEnterWorldResponse(enterworld_notify1)
     ViewHelper:UiEndWaiting()
-    print("OnAccountEnterWorldResponse")
+    --print("OnAccountEnterWorldResponse")
     local enterworld_notify = ClientEnterWorldNotify:new(nil)
     enterworld_notify:setData(enterworld_notify1)
 
@@ -709,7 +709,7 @@ end
 
 ---------------------------------------
 function ControllerLogin:OnAccountLogoutNotify(protocal_result)
-    print('ControllerLogin:OnAccountLogoutNotify')
+    --print('ControllerLogin:OnAccountLogoutNotify')
     if (protocal_result == ProtocolResult.LogoutNewLogin) then
         self.ShowKickOutInfo = true
     end

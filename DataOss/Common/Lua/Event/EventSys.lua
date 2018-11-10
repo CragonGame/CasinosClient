@@ -1,4 +1,5 @@
 -- Copyright (c) Cragon. All rights reserved.
+require('EventBase')
 
 ---------------------------------------
 EventSys = {
@@ -22,8 +23,6 @@ end
 
 ---------------------------------------
 function EventSys:OnCreate()
-    print("EventSys:OnCreate")
-    Context:DoString("EventBase")
 end
 
 ---------------------------------------

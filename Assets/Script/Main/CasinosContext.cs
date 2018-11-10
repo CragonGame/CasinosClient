@@ -309,17 +309,17 @@ namespace Casinos
                 PathMgr.DirAbRoot = PathMgr.CombinePersistentDataPath("Resources.KingTexas/");
             }
 
-#if UNITY_EDITOR
-            string info1 = string.Format("DirLaunchLua={0}, DirLaunchLuaType={1}",
-                PathMgr.DirLaunchLua, PathMgr.DirLaunchLuaType);
-            Debug.Log(info1);
-            string info2 = string.Format("DirLaunchAb={0}, DirLaunchAbType={1}",
-                PathMgr.DirLaunchAb, PathMgr.DirLaunchAbType);
-            Debug.Log(info2);
-            Debug.Log("DirLuaRoot=" + PathMgr.DirLuaRoot);
-            Debug.Log("DirRawRoot=" + PathMgr.DirRawRoot);
-            Debug.Log("DirAbRoot=" + PathMgr.DirAbRoot);
-#endif
+//#if UNITY_EDITOR
+//            string info1 = string.Format("DirLaunchLua={0}, DirLaunchLuaType={1}",
+//                PathMgr.DirLaunchLua, PathMgr.DirLaunchLuaType);
+//            Debug.Log(info1);
+//            string info2 = string.Format("DirLaunchAb={0}, DirLaunchAbType={1}",
+//                PathMgr.DirLaunchAb, PathMgr.DirLaunchAbType);
+//            Debug.Log(info2);
+//            Debug.Log("DirLuaRoot=" + PathMgr.DirLuaRoot);
+//            Debug.Log("DirRawRoot=" + PathMgr.DirRawRoot);
+//            Debug.Log("DirAbRoot=" + PathMgr.DirAbRoot);
+//#endif
 
             PathMgr.DirAbUi = PathMgr.DirAbRoot + "Ui/";// "Resources.KingTexas/Ui/"，需动态计算
             PathMgr.DirAbCard = PathMgr.DirAbRoot + "Cards/";// "Resources.KingTexas/Cards/"，需动态计算
