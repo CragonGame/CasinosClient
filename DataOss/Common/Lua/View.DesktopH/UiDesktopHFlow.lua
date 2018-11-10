@@ -8,18 +8,16 @@ UiDesktopHFlow = {}
 function UiDesktopHFlow:new(view_desktoph)
     local o = {}
     setmetatable(o, { __index = self })
-    --self.__index = self
-    --setmetatable(o, self)
     o.Context = Context
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ViewDesktopH = view_desktoph
-    print('UiDesktopH:new()')
+    --print('UiDesktopH:new()')
     return o
 end
 
 ---------------------------------------
 function UiDesktopHFlow:Close()
-    print('UiDesktopH:Close()')
+    --print('UiDesktopH:Close()')
 end
 
 ---------------------------------------

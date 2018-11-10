@@ -806,9 +806,9 @@ function ViewDesktopH:getDesktopBasePackageName()
 end
 
 ---------------------------------------
-function ViewDesktopH:createGold(golds, pos)
+function ViewDesktopH:CreateUiGold(golds, pos)
     local ui_gold = self.UiDesktopHGoldPool:getGoldH()
-    ui_gold:setPostion(pos)
+    ui_gold:SetPostion(pos)
     return ui_gold
 end
 
@@ -838,7 +838,7 @@ function ViewDesktopH:_createGold(list_total_gold, list_new_gold, desktoph_betpo
     if (desktoph_betpot ~= nil) then
         pos = desktoph_betpot:getRandomChipPos()
     end
-    local ui_gold = self:createGold(gold_operate_value, pos)
+    local ui_gold = self:CreateUiGold(gold_operate_value, pos)
     table.insert(list_total_gold, ui_gold)
     if (list_new_gold ~= nil) then
         table.insert(list_new_gold, ui_gold)

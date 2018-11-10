@@ -13,18 +13,16 @@ UiDesktopHGold = {
 function UiDesktopHGold:new()
     local o = {}
     setmetatable(o, { __index = self })
-    --self.__index = self
-    --setmetatable(o, self)
     o.ViewMgr = nil
     o.ViewDesktopH = nil
     o.GCoGold = nil
+    o.ParentSortOrder = 0
     o.SortOrderOffset = 0
     o.MoveEndCallback = nil
     o.MoveStartCallback = nil
     o.TweenMove = nil
     o.MoveSound = nil
     o.AutoEndEnPool = false
-    o.ParentSortOrder = 0
     return o
 end
 
@@ -85,7 +83,7 @@ function UiDesktopHGold:InitMove(from, to, move_time, move_sound, move_end, move
 end
 
 ---------------------------------------
-function UiDesktopHGold:setPostion(pos)
+function UiDesktopHGold:SetPostion(pos)
     local p_x = pos.x - self.GCoGold.width / 2
     local p_y = pos.y - self.GCoGold.height / 2
     self.GCoGold:SetXY(p_x, p_y)
@@ -103,27 +101,6 @@ function UiDesktopHGold:needDelayEnPool(after_tm)
     --self:_reset1(map_param)
     self.ViewDesktopH.UiDesktopHGoldPool:goldHNeedDelayEnPool(self)
 end
-
----------------------------------------
---function UiDesktopHGold:_moveStart()
---    if (self.MoveStartCallback ~= nil) then
---        self.MoveStartCallback()
---    end
---
---    if (CS.System.String.IsNullOrEmpty(self.MoveSound) == false) then
---        CS.Casinos.CasinosContext.Instance:Play(self.MoveSound, CS.Casinos._eSoundLayer.LayerReplace)
---    end
---end
-
----------------------------------------
---function UiDesktopHGold:_moveEnd()
---    if (self.MoveEndCallback ~= nil) then
---        self.MoveEndCallback()
---    end
---    if (self.AutoEndEnPool) then
---        self.ViewDesktopH.UiDesktopHGoldPool:goldHEnPool(self)
---    end
---end
 
 ---------------------------------------
 function UiDesktopHGold:_reset1(map_param)

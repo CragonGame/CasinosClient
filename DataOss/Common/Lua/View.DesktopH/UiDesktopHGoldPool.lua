@@ -49,53 +49,53 @@ end
 
 ---------------------------------------
 function UiDesktopHGoldPool:getGoldH()
-    local ui_gold = nil
+    local ui_desktoph_gold = nil
     local l = #self.QueUiGold
     if (l == 0) then
         l = #self.ListDelayEnqueGold
         if (l > 0) then
-            ui_gold = table.remove(self.ListDelayEnqueGold, 1)
-            ui_gold:Reset()
+            ui_desktoph_gold = table.remove(self.ListDelayEnqueGold, 1)
+            ui_desktoph_gold:Reset()
         else
-            ui_gold = UiDesktopHGold:new()
-            ui_gold:OnCreate()
+            ui_desktoph_gold = UiDesktopHGold:new()
+            ui_desktoph_gold:OnCreate()
         end
         self.MaxGoldSortOrderOffset = self.MaxGoldSortOrderOffset + 1
-        ui_gold:SetGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
+        ui_desktoph_gold:SetGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
     else
-        ui_gold = table.remove(self.QueUiGold, 1)
+        ui_desktoph_gold = table.remove(self.QueUiGold, 1)
     end
-    return ui_gold
+    return ui_desktoph_gold
 end
 
 ---------------------------------------
-function UiDesktopHGoldPool:goldHNeedDelayEnPool(uigold_h)
-    table.insert(self.ListDelayEnqueGold, uigold_h)
+function UiDesktopHGoldPool:goldHNeedDelayEnPool(ui_desktoph_gold)
+    table.insert(self.ListDelayEnqueGold, ui_desktoph_gold)
 end
 
 ---------------------------------------
-function UiDesktopHGoldPool:goldHEnPool(uigold_h)
-    self:_goldHEnPool(uigold_h)
+function UiDesktopHGoldPool:goldHEnPool(ui_desktoph_gold)
+    self:_goldHEnPool(ui_desktoph_gold)
 end
 
 ---------------------------------------
-function UiDesktopHGoldPool:delayGoldHEnPool(uigold_h)
-    self:_goldHEnPool(uigold_h)
-    LuaHelper:TableRemoveV(self.ListDelayEnqueGold, uigold_h)
+function UiDesktopHGoldPool:delayGoldHEnPool(ui_desktoph_gold)
+    self:_goldHEnPool(ui_desktoph_gold)
+    LuaHelper:TableRemoveV(self.ListDelayEnqueGold, ui_desktoph_gold)
 end
 
 ---------------------------------------
-function UiDesktopHGoldPool:_goldHEnPool(uigold_h)
+function UiDesktopHGoldPool:_goldHEnPool(ui_desktoph_gold)
     if (self.QueUiGold == nil) then
         return
     end
-    local sortorder_offset = uigold_h.SortOrderOffset
+    local sortorder_offset = ui_desktoph_gold.SortOrderOffset
     if (sortorder_offset > self.MaxGoldSortOrderOffset) then
         self.MaxGoldSortOrderOffset = sortorder_offset
     else
         self.MaxGoldSortOrderOffset = self.MaxGoldSortOrderOffset + 1
     end
     uigold_h:Reset()
-    table.insert(self.QueUiGold, uigold_h)
+    table.insert(self.QueUiGold, ui_desktoph_gold)
     uigold_h:SetGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
 end
