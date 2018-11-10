@@ -5,10 +5,11 @@
 UiDesktopHMe = {}
 
 ---------------------------------------
-function UiDesktopHMe:new(o, co_icon, self_name, self_chips, view_desktoph)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHMe:new(co_icon, self_name, self_chips, view_desktoph)
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
     o.UiHeadIcon = ViewHeadIcon:new(nil, co_icon)
     o.SelfName = self_name
     o.SelfGolds = self_chips
@@ -82,7 +83,7 @@ function UiDesktopHMe:setBetSelfChipsToPot(bet_potindex, betchips)
     if (seat_index == 255) then
         if (operate_golds ~= -1) then
             local from = self:_getSelfIconCenterPos()
-            bet_pot:betGolds(from, operate_golds)
+            bet_pot:BetGold(from, operate_golds)
             local self_y = self.UiHeadIcon.GCoHeadIcon.y
             if (CS.FairyGUI.GTween.IsTweening(self.UiHeadIcon.GCoHeadIcon) == false) then
                 self.UiHeadIcon.GCoHeadIcon:TweenMoveY(self_y - self.ViewDesktopH.BetAniX, 0.1):OnComplete(
@@ -93,11 +94,11 @@ function UiDesktopHMe:setBetSelfChipsToPot(bet_potindex, betchips)
             end
         else
             local from = self:_getSelfIconCenterPos()
-            bet_pot:betGolds(from, betchips)
+            bet_pot:BetGold(from, betchips)
         end
     else
         local self_chair = self.ViewDesktopH:getDesktopHChairByIndex(seat_index)
-        self_chair:betGolds(operate_golds, bet_potindex, betchips)
+        self_chair:BetGold(operate_golds, bet_potindex, betchips)
     end
 end
 
@@ -144,7 +145,7 @@ function UiDesktopHMe:showWinGoldsAni(pot_index, from)
 
         local bet_pot = self.ViewDesktopH:getDesktopHBetPot(pot_index)
         local list_golds = {}
-        self.ViewDesktopH:createGolds(list_golds, nil, winloose_info.winloose_gold, bet_pot, 10)
+        self.ViewDesktopH:CreateGolds(list_golds, nil, winloose_info.winloose_gold, bet_pot, 10)
         self.MapWinUiGolds[pot_index] = list_golds
 
         local delay_tm = 0.0

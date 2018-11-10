@@ -6,9 +6,10 @@ UiDesktopHFlow = {}
 
 ---------------------------------------
 function UiDesktopHFlow:new(view_desktoph)
-    o = {}
-    setmetatable(o, self)
-    self.__index = self
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
     o.Context = Context
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ViewDesktopH = view_desktoph

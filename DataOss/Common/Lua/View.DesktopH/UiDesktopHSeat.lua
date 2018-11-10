@@ -5,10 +5,9 @@
 UiDesktopHSeat = {}
 
 ---------------------------------------
-function UiDesktopHSeat:new(o, co_chair, view_mgr)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHSeat:new(co_chair, view_mgr)
+    local o = {}
+    setmetatable(o, { __index = self })
     o.ViewMgr = view_mgr
     o.GCoChair = co_chair
     local co_headicon = o.GCoChair:GetChild("CoHeadIcon").asCom

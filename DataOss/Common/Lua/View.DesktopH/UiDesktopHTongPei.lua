@@ -5,14 +5,13 @@
 UiDesktopHTongPei = {}
 
 ---------------------------------------
-function UiDesktopHTongPei:new(o, com_ui, ui_desktoph)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHTongPei:new(com_ui, ui_desktoph)
+    local o = {}
+    setmetatable(o, { __index = self })
     o.AutoHideTm = 3
+    o.UiDesktopH = ui_desktoph
     o.ComUi = com_ui
     o.ComUi.visible = false
-    o.UiDesktopH = ui_desktoph
     o.GoTongPei = nil
     o.ActionShowEnd = nil
     o.DelayHideSelf = nil

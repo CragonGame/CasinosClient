@@ -812,13 +812,13 @@ function ControllerLogin:_init(is_init)
 end
 
 ---------------------------------------
-function ControllerLogin:needCheckIdCard()
+function ControllerLogin:NeedCheckIdCard()
     if self.CasinosContext.LoginType == CS.Casinos._eLoginType.Guest then
         return false
     end
-    if self.Identity == nil or #self.Identity == 0 then
-        return true
-    end
+    --if self.Identity == nil or #self.Identity == 0 then
+    --    return true
+    --end
     return false
 end
 

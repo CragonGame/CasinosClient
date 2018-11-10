@@ -4,10 +4,9 @@
 UiDesktopHStandPlayer = {}
 
 ---------------------------------------
-function UiDesktopHStandPlayer:new(o, btn_stand_player, chat_parent, view_desktop)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHStandPlayer:new(btn_stand_player, chat_parent, view_desktop)
+    local o = {}
+    setmetatable(o, { __index = self })
     o.GBtnStandPlayer = btn_stand_player
     o.ItemChat = nil
     o.GCoChatParent = chat_parent
@@ -38,10 +37,10 @@ function UiDesktopHStandPlayer:Destroy()
 end
 
 ---------------------------------------
-function UiDesktopHStandPlayer:betGolds(bet_potindex, chip_value)
+function UiDesktopHStandPlayer:BetGold(bet_potindex, chip_value)
     local from = self:getStandPlayerCenterPos()
     local bet_pot = self.ViewDesktopH:getDesktopHBetPot(bet_potindex)
-    bet_pot:betGolds(from, chip_value)
+    bet_pot:BetGold(from, chip_value)
     local standplayer_x = self.GBtnStandPlayer.x
     if (CS.FairyGUI.GTween.IsTweening(self.GBtnStandPlayer) == false) then
         self.GBtnStandPlayer:TweenMoveX(standplayer_x + self.ViewDesktopH.BetAniX, 0.1)
@@ -78,7 +77,7 @@ function UiDesktopHStandPlayer:showWinGoldsAni(pot_index, from)
             list_golds = {}
         end
 
-        self.ViewDesktopH:createGolds(list_golds, nil, win_gold, bet_pot, 9)
+        self.ViewDesktopH:CreateGolds(list_golds, nil, win_gold, bet_pot, 9)
         self.MapWinUiGolds[pot_index] = list_golds
 
         local delay_tm = 0.0

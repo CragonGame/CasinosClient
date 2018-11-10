@@ -5,24 +5,26 @@
 UiDesktopHGoldPool = {}
 
 ---------------------------------------
-function UiDesktopHGoldPool:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHGoldPool:new()
+    local o = {}
+    setmetatable(o, { __index = self })
     o.MaxGoldSortOrderOffset = 1
     o.QueUiGold = {}
     o.ListDelayEnqueGold = {}
-    local InitGoldCount = 450
-    for i = 0, InitGoldCount - 1 do
-        local gold_h = UiDesktopHGold:new(nil)
-        gold_h:OnCreate()
-        table.insert(o.QueUiGold, gold_h)
+
+    local init_gold_count = 450
+    for i = 0, init_gold_count - 1 do
+        local ui_desktoph_gold = UiDesktopHGold:new()
+        ui_desktoph_gold:OnCreate()
+
+        table.insert(o.QueUiGold, ui_desktoph_gold)
         local l = #o.QueUiGold
         if (l > o.MaxGoldSortOrderOffset) then
             o.MaxGoldSortOrderOffset = l
         end
-        gold_h:SetGoldSortOrderOffset(o.MaxGoldSortOrderOffset)
+        ui_desktoph_gold:SetGoldSortOrderOffset(o.MaxGoldSortOrderOffset)
     end
+
     return o
 end
 
@@ -55,7 +57,7 @@ function UiDesktopHGoldPool:getGoldH()
             ui_gold = table.remove(self.ListDelayEnqueGold, 1)
             ui_gold:Reset()
         else
-            ui_gold = UiDesktopHGold:new(nil)
+            ui_gold = UiDesktopHGold:new()
             ui_gold:OnCreate()
         end
         self.MaxGoldSortOrderOffset = self.MaxGoldSortOrderOffset + 1

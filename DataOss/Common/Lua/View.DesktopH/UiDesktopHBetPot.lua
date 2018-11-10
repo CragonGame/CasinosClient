@@ -7,10 +7,11 @@ UiDesktopHBetPot = {
 }
 
 ---------------------------------------
-function UiDesktopHBetPot:new(o, betpot_index, bet_pot, ui_desktoph)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHBetPot:new(betpot_index, bet_pot, ui_desktoph)
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
     o.UiDesktopHBetPotItem = bet_pot
     o.TotalBetPotGold = 0
     o.BetPotIndex = betpot_index
@@ -26,13 +27,13 @@ function UiDesktopHBetPot:new(o, betpot_index, bet_pot, ui_desktoph)
 end
 
 ---------------------------------------
-function UiDesktopHBetPot:initBetPotInfo(bet_all_golds, self_betgolds)
+function UiDesktopHBetPot:InitBetPotInfo(bet_all_golds, self_betgolds)
     self:ResetBetPot()
 
     self.TotalBetPotGold = bet_all_golds
     local ListTmpUiGolds = {}
     if (bet_all_golds > 0) then
-        self.ViewDesktopH:createGolds(self.ListUiGolds, ListTmpUiGolds, bet_all_golds, self, 20)
+        self.ViewDesktopH:CreateGolds(self.ListUiGolds, ListTmpUiGolds, bet_all_golds, self, 20)
     end
 
     ListTmpUiGolds = nil
@@ -50,7 +51,7 @@ function UiDesktopHBetPot:Destroy()
 end
 
 ---------------------------------------
-function UiDesktopHBetPot:updateBetPotInfo(betpot_golds)
+function UiDesktopHBetPot:UpdateBetPotInfo(betpot_golds)
     self.TotalBetPotGold = self.TotalBetPotGold + betpot_golds
     self.UiDesktopHBetPotItem:SetBetPotTotalChips(self.TotalBetPotGold)
 end
@@ -62,9 +63,9 @@ function UiDesktopHBetPot:SetGameEndResult(betpot_gameresult, win_rewardpot_gold
 end
 
 ---------------------------------------
-function UiDesktopHBetPot:betGolds(from, gold_value)
+function UiDesktopHBetPot:BetGold(from, gold_value)
     local list_uigold_tmp = {}
-    self.ViewDesktopH:createGolds(self.ListUiGolds, list_uigold_tmp, gold_value, self)
+    self.ViewDesktopH:CreateGolds(self.ListUiGolds, list_uigold_tmp, gold_value, self)
     local delay_tm = 0.0
     local l = #list_uigold_tmp
     local delay_t = self.ViewDesktopH:GetMoveIntervalTm(l)

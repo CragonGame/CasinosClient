@@ -8,12 +8,15 @@ UiDesktopHCards = {
 }
 
 ---------------------------------------
-function UiDesktopHCards:new(o, controller_desktoph, view_desktoph, dealer, dealer_pos, card_parent, listener, is_bankplayer, fac_name)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.DealerPos = dealer_pos
+function UiDesktopHCards:new(controller_desktoph, view_desktoph, dealer, dealer_pos, card_parent, listener, is_bankplayer, fac_name)
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
+    o.ViewDesktopH = view_desktoph
+    o.ControllerDesktopH = controller_desktoph
     o.GCoCardParent = card_parent
+    o.DealerPos = dealer_pos
     o.DealCardTm = 0
     o.CanDealCard = false
     o.CanShowCard = false
@@ -23,9 +26,7 @@ function UiDesktopHCards:new(o, controller_desktoph, view_desktoph, dealer, deal
     o.ListDesktopHCard = {}
     o.QueDealDesktopHCard = {}
     o.QueShowCard = {}
-    o.ViewDesktopH = view_desktoph
     o.IsBankPlayer = is_bankplayer
-    o.ControllerDesktopH = controller_desktoph
     o.ListCard = {}
     o.ShowCardTm = 0
     o.ShowOneCardInterverTime = 0

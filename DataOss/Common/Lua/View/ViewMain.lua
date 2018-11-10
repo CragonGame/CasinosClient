@@ -424,12 +424,11 @@ function ViewMain:OnCreate()
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
     self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
 
-    local need_checkid = self.ControllerLogin:needCheckIdCard()
+    local need_checkid = self.ControllerLogin:NeedCheckIdCard()
     if need_checkid then
         local id_card = self.ViewMgr:GetView("IdCardCheck")
         if (id_card == nil) then
             id_card = self.ViewMgr:CreateView("IdCardCheck")
-
         end
     end
     self:setHaveFeedback()

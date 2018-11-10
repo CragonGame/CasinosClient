@@ -10,10 +10,11 @@ UiDesktopHGold = {
 }
 
 ---------------------------------------
-function UiDesktopHGold:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHGold:new()
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
     o.ViewMgr = nil
     o.ViewDesktopH = nil
     o.GCoGold = nil

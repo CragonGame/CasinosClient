@@ -5,10 +5,11 @@
 UiDesktopHHistroy = {}
 
 ---------------------------------------
-function UiDesktopHHistroy:new(o, com_history, desktoph, betpot_index, list_history)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHHistroy:new(com_history, desktoph, betpot_index, list_history)
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
     o.Context = Context
     o.ViewDesktoph = desktoph
     o.GCoHistroy = com_history

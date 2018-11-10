@@ -5,10 +5,11 @@
 UiDesktopHBetOperateItem = {}
 
 ---------------------------------------
-function UiDesktopHBetOperateItem:new(o, bet_operat, ui_desktoph)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHBetOperateItem:new(bet_operat, ui_desktoph)
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
     o.Context = Context
     o.ViewDesktopH = ui_desktoph
     o.GComBetOperate = bet_operat

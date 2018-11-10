@@ -47,7 +47,7 @@ function UiDesktopHRewardPot:setSysPumpingGold(pot_index)
         end
 
         local list_golds = {}
-        self.ViewDesktopH:createGolds(list_golds, nil, sys_pumping, bet_pot)
+        self.ViewDesktopH:CreateGolds(list_golds, nil, sys_pumping, bet_pot)
         self.MapWinGold[pot_index] = list_golds
 
         local to = self:_getRewardPotPos()
@@ -104,7 +104,7 @@ function UiDesktopHRewardPot:showLooseGoldAni(pot_index, win_rewardpot_golds)
     local from = self:_getRewardPotPos()
     if (pot_index == 255) then
         self.ListLooseUiGold = {}
-        self.ViewDesktopH:createGolds(self.ListLooseUiGold, nil, win_rewardpot_golds, nil, 20)
+        self.ViewDesktopH:CreateGolds(self.ListLooseUiGold, nil, win_rewardpot_golds, nil, 20)
         local to = self.ViewDesktopH.UiDesktopHBanker:getBankPlayerCenterPos()
         local delay_tm = 0
         local delay_t = self.ViewDesktopH:GetMoveIntervalTm(self.ListLooseUiGold.Count)

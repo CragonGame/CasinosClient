@@ -4,10 +4,11 @@
 UiDesktopHChair = {}
 
 ---------------------------------------
-function UiDesktopHChair:new(o, ui_desktoph, co_chair, chair_index, is_left)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHChair:new(ui_desktoph, co_chair, chair_index, is_left)
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
     o.Context = Context
     o.ViewDesktopH = ui_desktoph
     o.ChairIndex = chair_index
@@ -21,7 +22,7 @@ function UiDesktopHChair:new(o, ui_desktoph, co_chair, chair_index, is_left)
                 o:_onClick()
             end
     )
-    o.UiDesktopHSeat = UiDesktopHSeat:new(nil, o.GCoChair, o.ViewDesktopH.ViewMgr)
+    o.UiDesktopHSeat = UiDesktopHSeat:new(o.GCoChair, o.ViewDesktopH.ViewMgr)
     o.GCoChatParent = o.GCoChair:GetChild("CoChatParent").asCom
     o.SeatPlayerInfo = nil
     o.ItemChatDesktop = nil
@@ -99,7 +100,7 @@ function UiDesktopHChair:playerSeatDown(player_info)
 
     if (self.SeatPlayerInfo ~= nil) then
         if (self.UiDesktopHSeat == nil) then
-            self.UiDesktopHSeat = UiDesktopHSeat:new(nil, self.GCoChair)
+            self.UiDesktopHSeat = UiDesktopHSeat:new(self.GCoChair)
         end
 
         self.UiDesktopHSeat:setSeatPlayerData(self.SeatPlayerInfo, self.ChairIndex, player_changed)
@@ -123,15 +124,15 @@ function UiDesktopHChair:updatePlayerGolds(golds)
 end
 
 ---------------------------------------
-function UiDesktopHChair:betGolds(current_bet_operate, bet_potindex, gold_value)
+function UiDesktopHChair:BetGold(current_bet_operate, bet_potindex, gold_value)
     local bet_pot = self.ViewDesktopH:getDesktopHBetPot(bet_potindex)
     local from = self:getChairCenterPos()
     if (current_bet_operate ~= -1) then
         if (bet_pot ~= nil) then
-            bet_pot:betGolds(from, gold_value)
+            bet_pot:BetGold(from, gold_value)
         end
     else
-        bet_pot:betGolds(from, gold_value)
+        bet_pot:BetGold(from, gold_value)
     end
 
     self:_playBetGoldsAni()
@@ -156,7 +157,7 @@ function UiDesktopHChair:showWinGoldsAni(pot_index, from)
             list_chips = {}
         end
 
-        self.ViewDesktopH:createGolds(list_chips, nil, winloose_info.winloose_gold, bet_pot, 9)
+        self.ViewDesktopH:CreateGolds(list_chips, nil, winloose_info.winloose_gold, bet_pot, 9)
         self.MapWinUiGolds[pot_index] = list_chips
 
         local delay_tm = 0.0

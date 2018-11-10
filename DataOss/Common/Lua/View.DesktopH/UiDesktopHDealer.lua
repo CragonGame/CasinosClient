@@ -6,10 +6,11 @@ UiDesktopHDealer = {
 }
 
 ---------------------------------------
-function UiDesktopHDealer:new(o, fac_name)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHDealer:new(fac_name)
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
     o.ListDesktopHSinglePotCards = {}
     o.QueDealCards = {}
     o.QueShowCards = {}
@@ -22,12 +23,12 @@ function UiDesktopHDealer:new(o, fac_name)
     o.InitCardCount = 20
     o.InitCardBankPlayerCount = 5
     o.FacName = fac_name
-    for i = 0, o.InitCardCount - 1 do
-        o:_createCard(false)
-    end
-    for i = 0, o.InitCardBankPlayerCount - 1 do
-        o:_createCard(true)
-    end
+    --for i = 0, o.InitCardCount - 1 do
+    --    o:_createCard(false)
+    --end
+    --for i = 0, o.InitCardBankPlayerCount - 1 do
+    --    o:_createCard(true)
+    --end
     return o
 end
 
@@ -73,7 +74,7 @@ end
 
 ---------------------------------------
 function UiDesktopHDealer:createSinglePotCards(controller_desktoph, view_desktoph, dealer_pos, card_parent, listener, is_bankplayer)
-    local cards = UiDesktopHCards:new(nil, controller_desktoph, view_desktoph, self, dealer_pos, card_parent, listener, is_bankplayer, self.FacName)
+    local cards = UiDesktopHCards:new(controller_desktoph, view_desktoph, self, dealer_pos, card_parent, listener, is_bankplayer, self.FacName)
     table.insert(self.ListDesktopHSinglePotCards, cards)
     return cards
 end
@@ -178,11 +179,11 @@ end
 
 ---------------------------------------
 function UiDesktopHDealer:_createCard(is_bankplayer)
-    local hundred_card = UiDesktopHCard:new(nil, self, is_bankplayer)
+    local ui_desktoph_card = UiDesktopHCard:new(self, is_bankplayer)
     if (is_bankplayer) then
-        table.insert(self.QueItemCardBankPlayer, hundred_card)
+        table.insert(self.QueItemCardBankPlayer, ui_desktoph_card)
     else
-        table.insert(self.QueItemCard, hundred_card)
+        table.insert(self.QueItemCard, ui_desktoph_card)
     end
 end
 

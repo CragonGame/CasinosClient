@@ -4,10 +4,11 @@
 UiDesktopHCard = {}
 
 ---------------------------------------
-function UiDesktopHCard:new(o, dealer, is_bankplayer)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHCard:new(dealer, is_bankplayer)
+    local o = {}
+    setmetatable(o, { __index = self })
+    --self.__index = self
+    --setmetatable(o, self)
     local view_mgr = ViewMgr:new(nil)
     o.ViewDesktopH = view_mgr:GetView("DesktopH")
     o.Dealer = dealer

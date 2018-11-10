@@ -195,13 +195,13 @@ function ViewDesktopH:OnCreate()
     com_tongsha.height = self.ComUi.height
     self.ViewMgr.LanMgr:parseComponent(com_tongsha)
     desktoph_topparent:AddChild(com_tongsha)
-    self.UiDesktopHTongSha = UiDesktopHTongSha:new(nil, com_tongsha)
+    self.UiDesktopHTongSha = UiDesktopHTongSha:new(com_tongsha)
     local com_tongpei = CS.FairyGUI.UIPackage.CreateObject(self.TongPeiPackName, self.TongPeiPackName).asCom
     com_tongpei.width = self.ComUi.width
     com_tongpei.height = self.ComUi.height
     self.ViewMgr.LanMgr:parseComponent(com_tongpei)
     desktoph_topparent:AddChild(com_tongpei)
-    self.UiDesktopHTongPei = UiDesktopHTongPei:new(nil, com_tongpei, self)
+    self.UiDesktopHTongPei = UiDesktopHTongPei:new(com_tongpei, self)
     local btn_chat = self.ComUi:GetChild("BtnChat").asButton
     btn_chat.onClick:Add(
             function()
@@ -362,7 +362,7 @@ function ViewDesktopH:OnHandleEv(ev)
             if (map_betpot_betdeltainfo ~= nil) then
                 for i, v in pairs(map_betpot_betdeltainfo) do
                     local bet_pot = self.MapDesktopHBetPot[i]
-                    bet_pot:updateBetPotInfo(v)
+                    bet_pot:UpdateBetPotInfo(v)
                 end
             end
 
@@ -376,7 +376,7 @@ function ViewDesktopH:OnHandleEv(ev)
             if (map_standplayer_betdeltainfo ~= nil) then
                 for i, v in pairs(map_standplayer_betdeltainfo) do
                     if (v > 0) then
-                        self.UiDesktopHStandPlayer:betGolds(i, v)
+                        self.UiDesktopHStandPlayer:BetGold(i, v)
                     end
                 end
             end
@@ -389,7 +389,7 @@ function ViewDesktopH:OnHandleEv(ev)
                         if (self_chair ~= nil) then
                             local t_map_betinfo = v.map_betinfo
                             for i_m, v_m in pairs(t_map_betinfo) do
-                                self_chair:betGolds(-1, i_m, v_m)
+                                self_chair:BetGold(-1, i_m, v_m)
                             end
                         end
                     end
@@ -521,8 +521,8 @@ end
 function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winlooseinfo)
     self.FactoryName = desktoph_data.factory_name
     if (self.UiDesktopHBase == nil) then
-        self.UiDesktopHDealer = UiDesktopHDealer:new(nil, self.FactoryName)
-        self.UiDesktopHGoldPool = UiDesktopHGoldPool:new(nil)
+        self.UiDesktopHDealer = UiDesktopHDealer:new(self.FactoryName)
+        self.UiDesktopHGoldPool = UiDesktopHGoldPool:new()
         self.GCoDealer = self.ComUi:GetChild("CoDealer").asCom
         local co_desktop_parent = self.ComUi:GetChild("ComDesktopParent").asCom
         self.GCoDesktopH = CS.FairyGUI.UIPackage.CreateObject(self:getDesktopBasePackageName(), self.UiDesktopHComDesktopHTitle .. self.FactoryName).asCom
@@ -556,14 +556,14 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         end
         local bank_cardparent = self.GCoDesktopH:GetChild("CoCardParent").asCom
         local bank_chatparent = self.GCoDesktopH:GetChild("CoChatParentBank").asCom
-        self.UiDesktopHBanker = UiDesktopHBanker:new(nil, bank_icon, bank_nickname, bank_gold, bank_cardparent, bank_cardtype, ban_cardtypebg_image, bank_chatparent, self)
+        self.UiDesktopHBanker = UiDesktopHBanker:new(bank_icon, bank_nickname, bank_gold, bank_cardparent, bank_cardtype, ban_cardtypebg_image, bank_chatparent, self)
         local self_icon = self.ComUi:GetChild("CoHeadIconSelf").asCom
         local self_nickname = self.ComUi:GetChild("NickNameSelf").asTextField
         local self_gold = self.ComUi:GetChild("GoldSelf").asTextField
-        self.UiDesktopHMe = UiDesktopHMe:new(nil, self_icon, self_nickname, self_gold, self)
+        self.UiDesktopHMe = UiDesktopHMe:new(self_icon, self_nickname, self_gold, self)
         local stand_player = self.ComUi:GetChild("BtnStandPlayer").asButton
         local co_stand_chatparent = self.ComUi:GetChild("CoChatParentStandPlayer").asCom
-        self.UiDesktopHStandPlayer = UiDesktopHStandPlayer:new(nil, stand_player, co_stand_chatparent, self)
+        self.UiDesktopHStandPlayer = UiDesktopHStandPlayer:new(stand_player, co_stand_chatparent, self)
         local reward_pot = self.GCoDesktopH:GetChild("CoRewardPot").asCom
         self.UiDesktopHRewardPot = UiDesktopHRewardPot:new(nil, reward_pot, self)
 
@@ -572,12 +572,12 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
 
         for i = 0, last_pot_index do
             local co_betpot = CS.FairyGUI.UIPackage.CreateObject(self:getDesktopBasePackageName(), self.UiDesktopHComDesktopHBetPotTitle .. i .. self.FactoryName).asCom
-            local item_betpot = UiDesktopHBetPotItem:new(nil, self, glist_betpot, co_betpot)
+            local item_betpot = UiDesktopHBetPotItem:new(self, glist_betpot, co_betpot)
             glist_betpot:AddChild(item_betpot.GCoBetPot)
             glist_betpot:SetBoundsChangedFlag()
             glist_betpot:EnsureBoundsCorrect()
             item_betpot:InitBetPot(i, last_pot_index == i)
-            local bet_pot = UiDesktopHBetPot:new(nil, i, item_betpot, self)
+            local bet_pot = UiDesktopHBetPot:new(i, item_betpot, self)
             self.MapDesktopHBetPot[i] = bet_pot
         end
 
@@ -588,7 +588,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         local seat_count = self.UiDesktopHBase:getSeatCount()
         for i = 0, seat_count - 1 do
             local co_chair = self.GCoDesktopH:GetChild(self.GCoChairTitle .. i).asCom
-            local chair = UiDesktopHChair:new(nil, self, co_chair, i, i >= seat_count / 2)
+            local chair = UiDesktopHChair:new(self, co_chair, i, i >= seat_count / 2)
             self.MapDesktopHChair[i] = chair
         end
 
@@ -600,7 +600,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
                 is_current_operate = true
             end
             local item_reward = glist_betoperate:AddItemFromPool().asCom
-            local bet_operate = UiDesktopHBetOperateItem:new(nil, item_reward, self)
+            local bet_operate = UiDesktopHBetOperateItem:new(item_reward, self)
             bet_operate:SetOperateInfo(i, v, can_operate, is_current_operate)
             self.MapDesktopHBetOperate[i] = bet_operate
         end
@@ -655,7 +655,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
                     end
                 end
                 local bet_pot = self.MapDesktopHBetPot[i]
-                bet_pot:initBetPotInfo(v, self_betgolds)
+                bet_pot:InitBetPotInfo(v, self_betgolds)
                 current_betgolds = current_betgolds + v
             end
 
@@ -678,7 +678,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
                     end
                 end
                 local bet_pot = self.MapDesktopHBetPot[i]
-                bet_pot:initBetPotInfo(v.bet_gold, self_betgolds)
+                bet_pot:InitBetPotInfo(v.bet_gold, self_betgolds)
             end
 
             self:_gameEnd(desktoph_data.game_result, map_my_winlooseinfo, true)
@@ -813,7 +813,7 @@ function ViewDesktopH:createGold(golds, pos)
 end
 
 ---------------------------------------
-function ViewDesktopH:createGolds(list_total_gold, list_new_gold, gold_value, desktoph_betpot, create_count)
+function ViewDesktopH:CreateGolds(list_total_gold, list_new_gold, gold_value, desktoph_betpot, create_count)
     local create_c = 6
     if (create_count ~= nil) then
         create_c = create_count

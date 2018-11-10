@@ -5,10 +5,9 @@
 UiDesktopHTongSha = {}
 
 ---------------------------------------
-function UiDesktopHTongSha:new(o, com_ui)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function UiDesktopHTongSha:new(com_ui)
+    local o = {}
+    setmetatable(o, { __index = self })
     o.AutoHideTm = 3
     o.ComUi = com_ui
     o.ComUi.visible = false
