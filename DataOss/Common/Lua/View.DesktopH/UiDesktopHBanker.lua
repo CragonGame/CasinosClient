@@ -181,7 +181,7 @@ function UiDesktopHBanker:Reset()
 end
 
 ---------------------------------------
-function UiDesktopHBanker:setChatText(chat_info)
+function UiDesktopHBanker:SetChatMsg(chat_info)
     local sorting_order = self.GCoChatParent.sortingOrder + self.ViewDesktopH.UiDesktopHGoldPool:getMaxGoldSortOrder()
     if (self.ItemChat == nil) then
         local co_chatname = "CoChatLeft"
@@ -225,7 +225,7 @@ function UiDesktopHBanker:SendMagicExpression(sender_guid, exp_tbid)
         if (chair ~= nil) then
             from_pos = chair:getChairCenterPos()
         else
-            from_pos = self.ViewDesktopH.UiDesktopHStandPlayer:getStandPlayerCenterPos()
+            from_pos = self.ViewDesktopH.UiDesktopHStandPlayer:GetStandPlayerCenterPos()
         end
     end
 

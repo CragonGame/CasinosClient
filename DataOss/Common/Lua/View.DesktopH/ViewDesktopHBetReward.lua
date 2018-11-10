@@ -161,7 +161,6 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
             end
 
             if (tb_next_betreward == nil) then
-                print("tb_maxbetreward.BetProgressValue1             "..tb_maxbetreward.BetProgressValue)
                 self.GProBet.value = tb_maxbetreward.BetProgressValue
             else
                 local left_betgold = current_betgold - tb_betreward_v.BetValue
@@ -170,14 +169,12 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
                 end
 
                 if (left_betgold == 0) then
-                    print("tb_maxbetreward.BetProgressValue2             "..tb_maxbetreward.BetProgressValue)
                     self.GProBet.value = tb_betreward_v.BetProgressValue
                 else
                     local bet_values = tb_next_betreward.BetValue - tb_betreward_v.BetValue
                     local bet_pro = tb_next_betreward.BetProgressValue - tb_betreward_v.BetProgressValue
                     local betpro_value = tb_betreward_v.BetProgressValue
                     betpro_value = betpro_value + ((bet_pro / bet_values) * left_betgold)
-                    print("tb_maxbetreward.BetProgressValue3             "..betpro_value)
                     self.GProBet.value = betpro_value
                 end
             end
@@ -205,8 +202,7 @@ end
 ViewDesktopHBetRewardFactory = ViewFactory:new()
 
 ---------------------------------------
-function ViewDesktopHBetRewardFactory:new(o,ui_package_name,ui_component_name,
-                                          ui_layer,is_single,fit_screen)
+function ViewDesktopHBetRewardFactory:new(o,ui_package_name,ui_component_name, ui_layer,is_single,fit_screen)
     o = o or {}
     setmetatable(o,self)
     self.__index = self

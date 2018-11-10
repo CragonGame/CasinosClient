@@ -426,7 +426,7 @@ function ViewDesktopH:OnHandleEv(ev)
                 if (v.SeatPlayerInfo ~= nil) then
                     local golds = ev.map_seatplayer_golds[v.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid]
                     if (golds ~= nil and golds > 0) then
-                        v:updatePlayerGolds(golds)
+                        v:RefreshPlayerGold(golds)
                     end
                 end
             end
@@ -463,9 +463,9 @@ function ViewDesktopH:OnHandleEv(ev)
                 end
 
                 if (self.ControllerDesktopH.BankPlayer.PlayerInfoCommon.PlayerGuid == chat_info.sender_etguid) then
-                    self.UiDesktopHBanker:setChatText(chat_info)
+                    self.UiDesktopHBanker:SetChatMsg(chat_info)
                 elseif (self.ControllerDesktopH:isSeatPlayer(chat_info.sender_etguid) == false) then
-                    self.UiDesktopHStandPlayer:setChatText(chat_info)
+                    self.UiDesktopHStandPlayer:SetChatMsg(chat_info)
                 end
             end
         elseif (ev.EventName == "EvEntityDesktopHReadyState") then
@@ -893,8 +893,8 @@ function ViewDesktopH:_betState(map_betrepeatinfo, left_tm, max_total_bet_gold)
         gold_sum = gold_sum + v
     end
     self.GBtnRepeat.enabled = gold_sum > 0
-    self.UiDesktopHMe:betState()
-    self.UiDesktopHStandPlayer:betState()
+    self.UiDesktopHMe:OnEnterBetState()
+    self.UiDesktopHStandPlayer:OnEnterBetState()
     self.UiDesktopHBase:updateGameState(_eDesktopHState.Bet, left_tm, max_total_bet_gold, nil, false)
     self.UiDesktopHBase:setPlayerCurrentBetInfo(0)
 end

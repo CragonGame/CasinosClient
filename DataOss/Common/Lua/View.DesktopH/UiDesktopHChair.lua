@@ -103,7 +103,7 @@ function UiDesktopHChair:playerSeatDown(player_info)
             self.UiDesktopHSeat = UiDesktopHSeat:new(self.GCoChair)
         end
 
-        self.UiDesktopHSeat:setSeatPlayerData(self.SeatPlayerInfo, self.ChairIndex, player_changed)
+        self.UiDesktopHSeat:SetPlayerData(self.SeatPlayerInfo, self.ChairIndex, player_changed)
     else
         self:_destroyUiHead()
         if (self.ItemChatDesktop ~= nil) then
@@ -113,13 +113,13 @@ function UiDesktopHChair:playerSeatDown(player_info)
 end
 
 ---------------------------------------
-function UiDesktopHChair:updatePlayerGolds(golds)
+function UiDesktopHChair:RefreshPlayerGold(golds)
     if (self.SeatPlayerInfo ~= nil) then
         self.SeatPlayerInfo.Gold = golds
     end
 
     if (self.UiDesktopHSeat ~= nil) then
-        self.UiDesktopHSeat:updatePlayerGolds(golds)
+        self.UiDesktopHSeat:RefreshPlayerGold(golds)
     end
 end
 
@@ -208,7 +208,7 @@ function UiDesktopHChair:SendMagicExpression(sender_guid, exp_tbid)
         if (chair ~= nil) then
             from_pos = chair:getChairCenterPos()
         else
-            from_pos = self.ViewDesktopH.UiDesktopHStandPlayer:getStandPlayerCenterPos()
+            from_pos = self.ViewDesktopH.UiDesktopHStandPlayer:GetStandPlayerCenterPos()
         end
     end
 
@@ -259,7 +259,7 @@ end
 ---------------------------------------
 function UiDesktopHChair:_destroyUiHead()
     if (self.UiDesktopHSeat ~= nil) then
-        self.UiDesktopHSeat:setSeatPlayerData(nil, 255, true)
+        self.UiDesktopHSeat:SetPlayerData(nil, 255, true)
     end
 end
 

@@ -38,7 +38,7 @@ end
 
 ---------------------------------------
 function UiDesktopHStandPlayer:BetGold(bet_potindex, chip_value)
-    local from = self:getStandPlayerCenterPos()
+    local from = self:GetStandPlayerCenterPos()
     local bet_pot = self.ViewDesktopH:getDesktopHBetPot(bet_potindex)
     bet_pot:BetGold(from, chip_value)
     local standplayer_x = self.GBtnStandPlayer.x
@@ -52,7 +52,7 @@ function UiDesktopHStandPlayer:BetGold(bet_potindex, chip_value)
 end
 
 ---------------------------------------
-function UiDesktopHStandPlayer:betState()
+function UiDesktopHStandPlayer:OnEnterBetState()
     self.MapWinGolds = {}
 end
 
@@ -108,7 +108,7 @@ function UiDesktopHStandPlayer:Reset()
 end
 
 ---------------------------------------
-function UiDesktopHStandPlayer:setChatText(chat_info)
+function UiDesktopHStandPlayer:SetChatMsg(chat_info)
     local sorting_order = self.GCoChatParent.sortingOrder + self.ViewDesktopH.UiDesktopHGoldPool:getMaxGoldSortOrder()
     if (self.ItemChat == nil) then
         local co_chatname = self.ViewDesktopH.UiDesktopHBase:getStandPlayerChatName()
@@ -120,7 +120,7 @@ function UiDesktopHStandPlayer:setChatText(chat_info)
 end
 
 ---------------------------------------
-function UiDesktopHStandPlayer:getStandPlayerCenterPos()
+function UiDesktopHStandPlayer:GetStandPlayerCenterPos()
     local pos = self.GBtnStandPlayer.xy
     local x = pos.x
     x = x + self.GBtnStandPlayer.width / 2
@@ -136,7 +136,7 @@ function UiDesktopHStandPlayer:_playWinGoldAni(map_param)
     local pot_index = map_param[1]
     local list_gold = self.MapWinUiGolds[pot_index]
     if (list_gold ~= nil) then
-        local to = self:getStandPlayerCenterPos()
+        local to = self:GetStandPlayerCenterPos()
         local delay_tm = 0.0
         local l = #list_gold
         local delay_t = self.ViewDesktopH:GetMoveIntervalTm(l)

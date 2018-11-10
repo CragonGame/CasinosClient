@@ -21,7 +21,7 @@ function UiDesktopHSeat:new(co_chair, view_mgr)
 end
 
 ---------------------------------------
-function UiDesktopHSeat:setSeatPlayerData(player_info, seat_index, player_changed)
+function UiDesktopHSeat:SetPlayerData(player_info, seat_index, player_changed)
     local controller_index = 1
     if (player_info ~= nil) then
         controller_index = 0
@@ -39,11 +39,11 @@ function UiDesktopHSeat:setSeatPlayerData(player_info, seat_index, player_change
 end
 
 ---------------------------------------
-function UiDesktopHSeat:updatePlayerGolds(golds)
-    self.GTextPlayerGolds.text = UiChipShowHelper:getGoldShowStr(golds, self.ViewMgr.LanMgr.LanBase)
+function UiDesktopHSeat:RefreshPlayerGold(gold)
+    self.GTextPlayerGolds.text = UiChipShowHelper:getGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------
-function UiDesktopHSeat:updatePlayerIcon(head_icon)
+function UiDesktopHSeat:RefreshPlayerGold(head_icon)
     self.UiHeadIcon.GLoaderPlayerIcon.texture = CS.FairyGUI.NTexture(head_icon)
 end

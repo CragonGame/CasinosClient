@@ -108,7 +108,7 @@ function UiDesktopHMe:setPlayerSelfResultInfo(betpot_index, self_result_info)
 end
 
 ---------------------------------------
-function UiDesktopHMe:betState()
+function UiDesktopHMe:OnEnterBetState()
     self.MapWinLooseInfo = {}
 end
 

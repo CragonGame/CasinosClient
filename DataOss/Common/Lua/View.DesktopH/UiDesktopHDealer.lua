@@ -9,8 +9,6 @@ UiDesktopHDealer = {
 function UiDesktopHDealer:new(fac_name)
     local o = {}
     setmetatable(o, { __index = self })
-    --self.__index = self
-    --setmetatable(o, self)
     o.ListDesktopHSinglePotCards = {}
     o.QueDealCards = {}
     o.QueShowCards = {}
@@ -23,12 +21,12 @@ function UiDesktopHDealer:new(fac_name)
     o.InitCardCount = 20
     o.InitCardBankPlayerCount = 5
     o.FacName = fac_name
-    --for i = 0, o.InitCardCount - 1 do
-    --    o:_createCard(false)
-    --end
-    --for i = 0, o.InitCardBankPlayerCount - 1 do
-    --    o:_createCard(true)
-    --end
+    for i = 0, o.InitCardCount - 1 do
+        o:_createCard(false)
+    end
+    for i = 0, o.InitCardBankPlayerCount - 1 do
+        o:_createCard(true)
+    end
     return o
 end
 
