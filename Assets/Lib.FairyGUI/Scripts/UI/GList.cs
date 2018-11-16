@@ -1795,8 +1795,8 @@ namespace FairyGUI
 			_firstIndex = newFirstIndex;
 			int curIndex = newFirstIndex;
 			bool forward = oldFirstIndex > newFirstIndex;
-			int oldCount = this.numChildren;
-			int lastIndex = oldFirstIndex + oldCount - 1;
+			int childCount = this.numChildren;
+			int lastIndex = oldFirstIndex + childCount - 1;
 			int reuseIndex = forward ? lastIndex : oldFirstIndex;
 			float curX = 0, curY = pos;
 			bool needRender;
@@ -1921,7 +1921,7 @@ namespace FairyGUI
 				curIndex++;
 			}
 
-			for (int i = 0; i < oldCount; i++)
+			for (int i = 0; i < childCount; i++)
 			{
 				ItemInfo ii = _virtualItems[oldFirstIndex + i];
 				if (ii.updateFlag != itemInfoVer && ii.obj != null)
@@ -1931,6 +1931,14 @@ namespace FairyGUI
 					RemoveChildToPool(ii.obj);
 					ii.obj = null;
 				}
+			}
+
+			childCount = _children.Count;
+			for (int i = 0; i < childCount; i++)
+			{
+				GObject obj = _virtualItems[newFirstIndex + i].obj;
+				if (_children[i] != obj)
+					SetChildIndex(obj, i);
 			}
 
 			if (deltaSize != 0 || firstItemDeltaSize != 0)
@@ -1962,8 +1970,8 @@ namespace FairyGUI
 			_firstIndex = newFirstIndex;
 			int curIndex = newFirstIndex;
 			bool forward = oldFirstIndex > newFirstIndex;
-			int oldCount = this.numChildren;
-			int lastIndex = oldFirstIndex + oldCount - 1;
+			int childCount = this.numChildren;
+			int lastIndex = oldFirstIndex + childCount - 1;
 			int reuseIndex = forward ? lastIndex : oldFirstIndex;
 			float curX = pos, curY = 0;
 			bool needRender;
@@ -2087,7 +2095,7 @@ namespace FairyGUI
 				curIndex++;
 			}
 
-			for (int i = 0; i < oldCount; i++)
+			for (int i = 0; i < childCount; i++)
 			{
 				ItemInfo ii = _virtualItems[oldFirstIndex + i];
 				if (ii.updateFlag != itemInfoVer && ii.obj != null)
@@ -2097,6 +2105,14 @@ namespace FairyGUI
 					RemoveChildToPool(ii.obj);
 					ii.obj = null;
 				}
+			}
+
+			childCount = _children.Count;
+			for (int i = 0; i < childCount; i++)
+			{
+				GObject obj = _virtualItems[newFirstIndex + i].obj;
+				if (_children[i] != obj)
+					SetChildIndex(obj, i);
 			}
 
 			if (deltaSize != 0 || firstItemDeltaSize != 0)
