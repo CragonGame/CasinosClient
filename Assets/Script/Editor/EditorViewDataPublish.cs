@@ -100,6 +100,18 @@ public class EditorViewDataPublish : EditorWindow
         GUILayout.Label("------------------------------------------------------");
         EditorGUILayout.LabelField("Common资源处理");
         EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("打包Lua脚本（Android）", GUILayout.Width(200)))
+        {
+            AssetDatabase.Refresh();
+            _buildAssetBundleLua(Casinos._eEditorRunSourcePlatform.Android);
+            AssetDatabase.Refresh();
+        }
+        if (GUILayout.Button("打包Lua脚本（iOS）", GUILayout.Width(200)))
+        {
+            AssetDatabase.Refresh();
+            _buildAssetBundleLua(Casinos._eEditorRunSourcePlatform.IOS);
+            AssetDatabase.Refresh();
+        }
         if (GUILayout.Button("生成CommonFileList.txt", GUILayout.Width(200)))
         {
             AssetDatabase.Refresh();
@@ -248,6 +260,129 @@ public class EditorViewDataPublish : EditorWindow
         }
 
         EditorContext.Instance.Config.SaveProjectSettings();
+    }
+
+    //-------------------------------------------------------------------------
+    void _buildAssetBundleLua(Casinos._eEditorRunSourcePlatform platform)
+    {
+        BuildTarget build_target = BuildTarget.Android;
+        BuildTargetGroup build_target_group = BuildTargetGroup.Android;
+
+        switch (platform)
+        {
+            case Casinos._eEditorRunSourcePlatform.Android:
+                build_target = BuildTarget.Android;
+                build_target_group = BuildTargetGroup.Android;
+                break;
+            case Casinos._eEditorRunSourcePlatform.IOS:
+                build_target = BuildTarget.iOS;
+                build_target_group = BuildTargetGroup.iOS;
+                break;
+            case Casinos._eEditorRunSourcePlatform.PC:
+                build_target = BuildTarget.StandaloneWindows64;
+                build_target_group = BuildTargetGroup.Standalone;
+                break;
+        }
+        EditorUserBuildSettings.SwitchActiveBuildTarget(build_target_group, build_target);
+
+        UnityEngine.Object[] select_objs = Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.DeepAssets);
+
+        Dictionary<string, List<string>> map_single_pkg = new Dictionary<string, List<string>>();
+        Dictionary<string, List<string>> map_fold_pkg = new Dictionary<string, List<string>>();
+        Dictionary<string, List<string>> map_fold_launch = new Dictionary<string, List<string>>();
+
+        foreach (var i in select_objs)
+        {
+            string path_asset = AssetDatabase.GetAssetPath(i);
+
+            string extension = Path.GetExtension(path_asset);
+            if (DoNotPackFileExtention.Contains(extension) || string.IsNullOrEmpty(extension)) continue;
+
+            string file_name = Path.GetFileName(path_asset);
+
+            if (path_asset.Contains(AssetBundleSingleFoldName))
+            {
+                string key = Directory.GetParent(path_asset).Name;
+
+                List<string> list_directory = null;
+                map_single_pkg.TryGetValue(key, out list_directory);
+                if (list_directory == null)
+                {
+                    list_directory = new List<string>();
+                    map_single_pkg[key] = list_directory;
+                }
+
+                list_directory.Add(path_asset);
+            }
+            else if (path_asset.Contains(AssetBundlePkgFoldFoldName))
+            {
+                string fold = path_asset;
+                fold = fold.Replace("Assets/", "");
+                fold = fold.Replace(AssetBundlePkgFoldFoldName + "/", "");
+                fold = EditorContext.Instance.PathDataOss + platform.ToString() + "/" + fold;
+                fold = fold.Replace(file_name, "");
+
+                List<string> list_directory = null;
+                map_fold_pkg.TryGetValue(fold, out list_directory);
+                if (list_directory == null)
+                {
+                    list_directory = new List<string>();
+                    map_fold_pkg[fold] = list_directory;
+                }
+
+                list_directory.Add(path_asset);
+            }
+            else if (path_asset.Contains(AssetBundleLaunchFoldName))
+            {
+                string fold = path_asset;
+                fold = fold.Replace("Assets/", "");
+                fold = EditorContext.Instance.PathDataOss + platform.ToString() + "/" + fold;
+                fold = fold.Replace(file_name, "");
+
+                List<string> list_directory = null;
+                map_fold_launch.TryGetValue(fold, out list_directory);
+                if (list_directory == null)
+                {
+                    list_directory = new List<string>();
+                    map_fold_launch[fold] = list_directory;
+                }
+
+                list_directory.Add(path_asset);
+            }
+        }
+
+        bool b = _pakABSingleEx(map_single_pkg, platform, build_target);
+        if (!b)
+        {
+            Debug.LogError("BuildAssetBundle失败！");
+            return;
+        }
+
+        foreach (var i in map_fold_pkg)
+        {
+            List<string> list_samefold_file = i.Value;
+            AssetBundleManifest ab_manifest = _pakABFoldEx(i.Key, list_samefold_file, build_target);
+
+            if (ab_manifest == null)
+            {
+                Debug.LogError("BuildAssetBundle失败！");
+                return;
+            }
+        }
+
+        foreach (var i in map_fold_launch)
+        {
+            List<string> list_samefold_file = i.Value;
+            AssetBundleManifest ab_manifest = _pakABFoldEx(i.Key, list_samefold_file, build_target);
+
+            if (ab_manifest == null)
+            {
+                Debug.LogError("BuildAssetBundle失败！");
+                return;
+            }
+        }
+
+        ShowNotification(new GUIContent("BuildAssetBundle Finished!"));
     }
 
     //-------------------------------------------------------------------------
