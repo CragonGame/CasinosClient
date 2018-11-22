@@ -31,9 +31,8 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 65, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 64, 0, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "readAllText", _m_readAllText_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "writeFile", _m_writeFile_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GObjectCastToGCom", _m_GObjectCastToGCom_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetVector2", _m_GetVector2_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetVector3", _m_GetVector3_xlua_st_);
@@ -135,31 +134,6 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_writeFile_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    byte[] _bytes = LuaAPI.lua_tobytes(L, 1);
-                    string _path = LuaAPI.lua_tostring(L, 2);
-                    
-                    Casinos.LuaHelper.writeFile( _bytes, _path );
-                    
-                    
-                    
-                    return 0;
                 }
                 
             } catch(System.Exception gen_e) {

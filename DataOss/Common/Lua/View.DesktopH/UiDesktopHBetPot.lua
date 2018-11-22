@@ -10,8 +10,6 @@ UiDesktopHBetPot = {
 function UiDesktopHBetPot:new(betpot_index, bet_pot, ui_desktoph)
     local o = {}
     setmetatable(o, { __index = self })
-    --self.__index = self
-    --setmetatable(o, self)
     o.UiDesktopHBetPotItem = bet_pot
     o.TotalBetPotGold = 0
     o.BetPotIndex = betpot_index

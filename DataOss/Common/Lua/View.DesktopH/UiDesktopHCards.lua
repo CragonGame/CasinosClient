@@ -11,8 +11,6 @@ UiDesktopHCards = {
 function UiDesktopHCards:new(controller_desktoph, view_desktoph, dealer, dealer_pos, card_parent, listener, is_bankplayer, fac_name)
     local o = {}
     setmetatable(o, { __index = self })
-    --self.__index = self
-    --setmetatable(o, self)
     o.ViewDesktopH = view_desktoph
     o.ControllerDesktopH = controller_desktoph
     o.GCoCardParent = card_parent

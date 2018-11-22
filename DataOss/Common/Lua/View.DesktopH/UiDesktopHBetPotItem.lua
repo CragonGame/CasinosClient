@@ -8,8 +8,6 @@ UiDesktopHBetPotItem = {}
 function UiDesktopHBetPotItem:new(ui_desktoph, parent, co_betpot)
     local o = {}
     setmetatable(o, { __index = self })
-    --self.__index = self
-    --setmetatable(o, self)
     o.ViewDesktopH = ui_desktoph
     o.GListParent = parent
     o.GCoBetPot = co_betpot

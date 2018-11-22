@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.LuaMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 19, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 20, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
@@ -34,6 +34,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetLuaTable", _m_GetLuaTable);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadLocalBundleAsync", _m_LoadLocalBundleAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ReadAllText", _m_ReadAllText);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "WriteFileFromWWW", _m_WriteFileFromWWW);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SpliteStr", _m_SpliteStr);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DestroyGameObject", _m_DestroyGameObject);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Vibrate", _m_Vibrate);
@@ -395,6 +396,35 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_WriteFileFromWWW(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.LuaMgr gen_to_be_invoked = (Casinos.LuaMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _path = LuaAPI.lua_tostring(L, 2);
+                    UnityEngine.WWW _www = (UnityEngine.WWW)translator.GetObject(L, 3, typeof(UnityEngine.WWW));
+                    
+                    gen_to_be_invoked.WriteFileFromWWW( _path, _www );
+                    
+                    
+                    
+                    return 0;
                 }
                 
             } catch(System.Exception gen_e) {

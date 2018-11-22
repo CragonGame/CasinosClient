@@ -284,7 +284,7 @@ function ControllerMTT:s2cMatchTexasRequestCancelSignupResult(matchTexasCancelSi
         --self:RequestGetMatchTexasList(MatchTexasScopeType.Public)
         local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
         local tips = self.ControllerMgr.LanMgr:getLanValue("CancelMatchSuccess")
-        msg_box:showMsgBox1("", tips,
+        msg_box:showMsgBox1('', tips,
                 function()
                     self:RequestGetMatchTexasList(MatchTexasScopeType.Public)
                     self.ViewMgr:DestroyView(msg_box)

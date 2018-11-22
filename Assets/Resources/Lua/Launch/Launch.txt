@@ -68,7 +68,7 @@ function Launch:Setup()
     require 'PreViewMsgBox'
 
     ParticleHelper:new(nil)
-    self.PreViewMgr = PreViewMgr:new(nil)
+    self.PreViewMgr = PreViewMgr
     self.PreViewMgr:Init()
 
     self.UIPackagePreLoading = self:_addUiPackage("PreLoading")

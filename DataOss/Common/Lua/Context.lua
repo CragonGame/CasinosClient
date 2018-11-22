@@ -40,9 +40,9 @@ function Config:new(o)
     self.UCenterDomain = 'https://ucenter-dev.cragon.cn'
     self.GatewayIp = 'king-gateway-dev.cragon.cn'
     self.GatewayPort = 5882
-    self.BundleUpdateStata = 0
+    self.BundleUpdateStata = 1
     self.BundleUpdateVersion = '1.30.000'
-    self.BundleUpdateURL = 'https://cragon-king-oss.cragon.cn/KingTexas.apk'
+    self.BundleUpdateURL = 'https://cragon-king-oss.cragon.cn/ANDROID/KingTexas_1.30.000.apk'
     self.CommonFileListFileName = 'CommonFileList.txt'
     self.DataFileListFileName = 'DataFileList.txt'
     self.TbFileList = { 'KingCommon', 'KingDesktop', 'KingDesktopH', 'KingClient' }
@@ -99,6 +99,7 @@ function Context:new(o)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     self.Launch = Launch
+    self.PreViewMgr = PreViewMgr
     self.LaunchStep = {}
     self.Cfg = Config:new(nil)
     self.Cfg.Env = self.Launch.LaunchCfg.Env
@@ -127,6 +128,11 @@ end
 
 ---------------------------------------
 function Context:Release()
+    if (self.TimerUpdateBundleApk ~= nil) then
+        self.TimerUpdateBundleApk:Close()
+        self.TimerUpdateBundleApk = nil
+    end
+
     if (self.TimerUpdateCopyStreamingAssetsToPersistentData ~= nil) then
         self.TimerUpdateCopyStreamingAssetsToPersistentData:Close()
         self.TimerUpdateCopyStreamingAssetsToPersistentData = nil
@@ -173,7 +179,8 @@ end
 -- 初始化LaunchStep
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
-    if (self.Cfg.BundleUpdateStata == 1 and self.Cfg.BundleUpdateVersion ~= nil and self.Cfg.BundleUpdateURL ~= nil and self.CasinosContext.Config.VersionBundle ~= self.Cfg.BundleUpdateVersion) then
+    --and self.CasinosContext.Config.VersionBundle ~= self.Cfg.BundleUpdateVersion
+    if (self.Cfg.BundleUpdateStata == 1 and self.Cfg.BundleUpdateVersion ~= nil and self.Cfg.BundleUpdateURL ~= nil) then
         self.LaunchStep[1] = "UpdateBundle"
     end
 
@@ -205,21 +212,40 @@ function Context:_nextLaunchStep()
     -- 更新Bundle
     if (self.LaunchStep[1] ~= nil) then
         self.Launch:UpdateViewLoadingDescAndProgress("准备更新安装包", 0, 100)
-
-        -- 弹框让玩家选择，更新Bundle
-        -- TODO，调用Native Api安装Bundle
-        local msg_info = string.format('有新的安装包需要更新，当前BundleVersion：%s，新的BundleVersion：%s',
-                self.CasinosContext.Config.VersionBundle, self.Cfg.BundleUpdateVersion)
-        local view_premsgbox = self.PreViewMgr.CreateView("PreMsgBox")
-        view_premsgbox:showMsgBox(msg_info,
-                function()
-                    CS.UnityEngine.Application.Quit()
-                end,
-                function()
-                    print('更新安装包')
-                end
-        )
-
+        if (self.CasinosContext.UnityAndroid == true) then
+            -- 弹框让玩家选择，更新Bundle Apk
+            local msg_info = string.format('有新的安装包需要更新\n当前BundleVersion：%s\n新的BundleVersion：%s',
+                    self.CasinosContext.Config.VersionBundle, self.Cfg.BundleUpdateVersion)
+            local view_premsgbox = self.PreViewMgr:CreateView("PreMsgBox")
+            view_premsgbox:showMsgBox(msg_info,
+                    function()
+                        self.Launch:UpdateViewLoadingDescAndProgress("正在更新安装包", 0, 100)
+                        self.WWWUpdateBundleApk = CS.UnityEngine.WWW(self.Cfg.BundleUpdateURL)
+                        self.TimerUpdateBundleApk = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateBundleApk)
+                        self.PreViewMgr:DestroyView(view_premsgbox)
+                    end,
+                    function()
+                        self.PreViewMgr:DestroyView(view_premsgbox)
+                        CS.UnityEngine.Application.Quit()
+                    end
+            )
+        elseif self.CasinosContext.UnityIOS == true then
+            -- 弹框让玩家选择，更新Bundle Ipa
+            local msg_info = string.format('有新的安装包需要更新\n当前BundleVersion：%s\n新的BundleVersion：%s',
+                    self.CasinosContext.Config.VersionBundle, self.Cfg.BundleUpdateVersion)
+            local view_premsgbox = self.PreViewMgr:CreateView("PreMsgBox")
+            view_premsgbox:showMsgBox(msg_info,
+                    function()
+                        self.Launch:UpdateViewLoadingDescAndProgress("正在更新安装包", 0, 100)
+                        -- TODO，调用打开ios下载链接api
+                        self.PreViewMgr:DestroyView(view_premsgbox)
+                    end,
+                    function()
+                        self.PreViewMgr:DestroyView(view_premsgbox)
+                        CS.UnityEngine.Application.Quit()
+                    end
+            )
+        end
         return
     end
 
@@ -400,6 +426,35 @@ function Context:_nextLaunchStep()
                     self.ControllerMgr:CreateController("Login", nil, nil)
                 end
         )
+    end
+end
+
+---------------------------------------
+-- 定时器，更新BundleApk
+function Context:_timerUpdateBundleApk(tm)
+    local error_msg = self.WWWUpdateBundleApk.error
+    if error_msg ~= nil then
+        -- 下载失败
+    end
+    local is_done = self.WWWUpdateBundleApk.isDone
+    if (is_done) then
+        self.Launch:UpdateViewLoadingProgress(100, 100)
+        self.TimerUpdateBundleApk:Close()
+        self.TimerUpdateBundleApk = nil
+
+        local apk_filename = self.CasinosContext.PathMgr:GetPersistentDataPath() .. '/KingTexas_' .. self.Cfg.BundleUpdateVersion .. '.apk'
+        self.CasinosContext.LuaMgr:WriteFileFromWWW(apk_filename, self.WWWUpdateBundleApk)
+        self.WWWUpdateBundleApk = nil
+        if(self.CasinosContext.IsEditor == false) then
+            --require('Native')
+            CS.NativeFun.installAPK(apk_filename)
+        end
+
+        -- 执行下一步LaunchStep
+        self.LaunchStep[1] = nil
+        self:_nextLaunchStep()
+    else
+        self.Launch:UpdateViewLoadingProgress(self.WWWUpdateBundleApk.progress * 100, 100)
     end
 end
 

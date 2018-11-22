@@ -7,8 +7,6 @@ UiDesktopHCard = {}
 function UiDesktopHCard:new(dealer, is_bankplayer)
     local o = {}
     setmetatable(o, { __index = self })
-    --self.__index = self
-    --setmetatable(o, self)
     local view_mgr = ViewMgr:new(nil)
     o.ViewDesktopH = view_mgr:GetView("DesktopH")
     o.Dealer = dealer

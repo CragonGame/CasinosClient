@@ -8,6 +8,7 @@ namespace Casinos
     using UnityEngine;
     using XLua;
     using GameCloud.Unity.Common;
+    using System.IO;
 
     [CSharpCallLua]
     public delegate void DelegateLua1(LuaTable lua_table);
@@ -500,6 +501,29 @@ namespace Casinos
                 all_text = System.IO.File.ReadAllText(full_filename);
             }
             return all_text;
+        }
+
+        //---------------------------------------------------------------------
+        public void WriteFileFromWWW(string path, WWW www)
+        {
+            string dir = Path.GetDirectoryName(path);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            using (MemoryStream ms = new MemoryStream(www.bytes))
+            {
+                using (FileStream fs = new FileStream(path, FileMode.Create))
+                {
+                    ms.WriteTo(fs);
+                }
+            }
         }
 
         //---------------------------------------------------------------------

@@ -28,29 +28,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static void writeFile(byte[] bytes, string path)
-        {
-            string dir = Path.GetDirectoryName(path);
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-            }
-
-            using (MemoryStream ms = new MemoryStream(bytes))
-            {
-                using (FileStream fs = new FileStream(path, FileMode.Create))
-                {
-                    ms.WriteTo(fs);
-                }
-            }
-        }
-
-        //---------------------------------------------------------------------
         public static GComponent GObjectCastToGCom(GObject obj)
         {
             return (GComponent)obj;

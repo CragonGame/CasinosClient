@@ -7,8 +7,6 @@ UiDesktopHChair = {}
 function UiDesktopHChair:new(ui_desktoph, co_chair, chair_index, is_left)
     local o = {}
     setmetatable(o, { __index = self })
-    --self.__index = self
-    --setmetatable(o, self)
     o.Context = Context
     o.ViewDesktopH = ui_desktoph
     o.ChairIndex = chair_index

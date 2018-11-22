@@ -11,8 +11,6 @@ UiDesktopHBanker = {
 function UiDesktopHBanker:new(co_bankplayer, bankplayer_nickname, bankplayer_gold, bank_playercardtypeparent, bank_playercardtype, bank_cardtypebg, chat_parent, view_desktoph)
     local o = {}
     setmetatable(o, { __index = self })
-    --self.__index = self
-    --setmetatable(o, self)
     o.Context = Context
     o.GComBank = co_bankplayer
     o.BankPlayerNickName = bankplayer_nickname
