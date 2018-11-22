@@ -180,8 +180,7 @@ end
 -- 初始化LaunchStep
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
-    --and self.CasinosContext.Config.VersionBundle ~= self.Cfg.BundleUpdateVersion
-    if (self.Cfg.BundleUpdateStata == 1 and self.Cfg.BundleUpdateVersion ~= nil) then
+    if (self.Cfg.BundleUpdateStata == 1 and self.Cfg.BundleUpdateVersion ~= nil and self.CasinosContext.Config.VersionBundle ~= self.Cfg.BundleUpdateVersion) then
         self.LaunchStep[1] = "UpdateBundle"
     end
 
@@ -448,8 +447,8 @@ function Context:_timerUpdateBundleApk(tm)
         self.CasinosContext.LuaMgr:WriteFileFromWWW(apk_filename, self.WWWUpdateBundleApk)
         self.WWWUpdateBundleApk = nil
         if(self.CasinosContext.IsEditor == false) then
-            --require('Native')
             CS.NativeFun.installAPK(apk_filename)
+            CS.UnityEngine.Application.Quit()
         end
 
         -- 执行下一步LaunchStep
