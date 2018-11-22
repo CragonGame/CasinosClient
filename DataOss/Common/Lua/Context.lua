@@ -42,7 +42,8 @@ function Config:new(o)
     self.GatewayPort = 5882
     self.BundleUpdateStata = 1
     self.BundleUpdateVersion = '1.30.000'
-    self.BundleUpdateURL = 'https://cragon-king-oss.cragon.cn/ANDROID/KingTexas_1.30.000.apk'
+    self.BundleUpdateUrlANDROID = 'https://cragon-king-oss.cragon.cn/ANDROID/KingTexas_1.30.000.apk'
+    self.BundleUpdateUrlIOS = 'itms-services:///?action=download-manifest&url=https://cragon-king-oss.cragon.cn/KingTexas.plist'
     self.CommonFileListFileName = 'CommonFileList.txt'
     self.DataFileListFileName = 'DataFileList.txt'
     self.TbFileList = { 'KingCommon', 'KingDesktop', 'KingDesktopH', 'KingClient' }
@@ -180,7 +181,7 @@ end
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
     --and self.CasinosContext.Config.VersionBundle ~= self.Cfg.BundleUpdateVersion
-    if (self.Cfg.BundleUpdateStata == 1 and self.Cfg.BundleUpdateVersion ~= nil and self.Cfg.BundleUpdateURL ~= nil) then
+    if (self.Cfg.BundleUpdateStata == 1 and self.Cfg.BundleUpdateVersion ~= nil) then
         self.LaunchStep[1] = "UpdateBundle"
     end
 
@@ -220,7 +221,7 @@ function Context:_nextLaunchStep()
             view_premsgbox:showMsgBox(msg_info,
                     function()
                         self.Launch:UpdateViewLoadingDescAndProgress("正在更新安装包", 0, 100)
-                        self.WWWUpdateBundleApk = CS.UnityEngine.WWW(self.Cfg.BundleUpdateURL)
+                        self.WWWUpdateBundleApk = CS.UnityEngine.WWW(self.Cfg.BundleUpdateUrlANDROID)
                         self.TimerUpdateBundleApk = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateBundleApk)
                         self.PreViewMgr:DestroyView(view_premsgbox)
                     end,
@@ -238,6 +239,7 @@ function Context:_nextLaunchStep()
                     function()
                         self.Launch:UpdateViewLoadingDescAndProgress("正在更新安装包", 0, 100)
                         -- TODO，调用打开ios下载链接api
+                        CS.UnityEngine.Application.OpenURL(self.Cfg.BundleUpdateUrlIOS)
                         self.PreViewMgr:DestroyView(view_premsgbox)
                     end,
                     function()
