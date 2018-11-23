@@ -66,7 +66,7 @@ function ViewPayType:OnCreate()
 end
 
 ---------------------------------------
-function ViewPayType:OnDestory()
+function ViewPayType:OnDestroy()
     if self.Tween ~= nil then
         self.Tween:Kill(false)
         self.Tween = nil

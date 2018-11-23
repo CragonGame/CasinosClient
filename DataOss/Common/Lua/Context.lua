@@ -20,10 +20,7 @@ end
 -- 配置
 Config = {}
 
-function Config:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function Config:new()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     self.DevelopSettings = ConfigDevelopSettings:new(nil)
@@ -86,17 +83,14 @@ function Config:new(o)
     self.BeeCloudTestSecret = '7bbc79a8-f310-4d76-a582-2622242c23f5'
     self.PayUseTestMode = false
     self.PayUrlScheme = "com.Cragon.KingTexas2"
-    return o
+    return self
 end
 
 ---------------------------------------
 Context = {}
 
 ---------------------------------------
-function Context:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function Context:new()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     self.Launch = Launch
@@ -114,7 +108,7 @@ function Context:new(o)
     self.LuaHelper = nil
     self.ControllerMgr = nil
     self.ViewMgr = nil
-    return o
+    return self
 end
 
 ---------------------------------------
@@ -122,7 +116,6 @@ function Context:Init()
     --print('Context:Init()')
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")
     show_fps_obj.enabled = self.Cfg.DevelopSettings.ClientShowFPS
-
     Context:_initLaunchStep()
     Context:_nextLaunchStep()
 end
@@ -446,7 +439,7 @@ function Context:_timerUpdateBundleApk(tm)
         local apk_filename = self.CasinosContext.PathMgr:GetPersistentDataPath() .. '/KingTexas_' .. self.Cfg.BundleUpdateVersion .. '.apk'
         self.CasinosContext.LuaMgr:WriteFileFromWWW(apk_filename, self.WWWUpdateBundleApk)
         self.WWWUpdateBundleApk = nil
-        if(self.CasinosContext.IsEditor == false) then
+        if (self.CasinosContext.IsEditor == false) then
             CS.NativeFun.installAPK(apk_filename)
             CS.UnityEngine.Application.Quit()
         end

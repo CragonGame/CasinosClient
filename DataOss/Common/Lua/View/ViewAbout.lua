@@ -51,7 +51,7 @@ function ViewAbout:OnCreate()
 end
 
 ---------------------------------------
-function ViewAbout:OnDestory()
+function ViewAbout:OnDestroy()
     if self.Tween ~= nil then
         self.Tween:Kill(false)
         self.Tween = nil

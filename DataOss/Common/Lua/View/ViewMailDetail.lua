@@ -5,10 +5,9 @@
 ViewMailDetail = ViewBase:new()
 
 ---------------------------------------
-function ViewMailDetail:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewMailDetail:new()
+    local o = {}
+    setmetatable(o, { __index = self })
     o.ViewMgr = nil
     o.GoUi = nil
     o.ComUi = nil
@@ -51,7 +50,7 @@ function ViewMailDetail:OnCreate()
 end
 
 ---------------------------------------
-function ViewMailDetail:OnDestory()
+function ViewMailDetail:OnDestroy()
     if self.Tween ~= nil then
         self.Tween:Kill(false)
         self.Tween = nil
@@ -61,10 +60,6 @@ end
 ---------------------------------------
 function ViewMailDetail:setMail(mail)
     self.MailClient = mail
-    if self.Tween ~= nil then
-        self.Tween:Kill(false)
-        self.Tween = nil
-    end
     self.Tween = ViewHelper:PopUi(self.ComUi, mail.Title)
     self.GTextContent.text = mail.Content
     if mail.CreateTime ~= nil then
@@ -157,6 +152,6 @@ end
 
 ---------------------------------------
 function ViewMailDetailFactory:CreateView()
-    local view = ViewMailDetail:new(nil)
+    local view = ViewMailDetail:new()
     return view
 end

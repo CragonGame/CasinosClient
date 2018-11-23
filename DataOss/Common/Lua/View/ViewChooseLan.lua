@@ -45,6 +45,10 @@ function ViewChooseLan:OnCreate()
 end
 
 ---------------------------------------
+function ViewChooseLan:OnDestroy()
+end
+
+---------------------------------------
 function ViewChooseLan:onClickBtnReturn()
     self.ViewMgr:DestroyView(self)
     local ev = self.ViewMgr:GetEv("EvUiCreateMainUi")

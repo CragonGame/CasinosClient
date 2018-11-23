@@ -68,6 +68,10 @@ function ViewClub:OnCreate()
 end
 
 ---------------------------------------
+function ViewClub:OnDestroy()
+end
+
+---------------------------------------
 function ViewClub:onUpdate(tm)
     self.UpdatePlayerNumTime = self.UpdatePlayerNumTime + tm
     if (self.UpdatePlayerNumTime >= 30) then
