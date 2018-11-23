@@ -8,8 +8,7 @@ function ViewCreateDesktop:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    if (self.Instance == nil)
-    then
+    if (self.Instance == nil) then
         self.ViewMgr = nil
         self.GoUi = nil
         self.ComUi = nil
@@ -17,6 +16,7 @@ function ViewCreateDesktop:new(o)
         self.UILayer = nil
         self.InitDepth = nil
         self.ViewKey = nil
+        self.Tween = nil
         self.Instance = o
     end
     return self.Instance
@@ -24,7 +24,7 @@ end
 
 ---------------------------------------
 function ViewCreateDesktop:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("CreatPrivateDesk"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("CreatPrivateDesk"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     local com = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com:GetChild("ComShade").asCom
@@ -44,6 +44,14 @@ function ViewCreateDesktop:OnCreate()
     --self.mTextSpeed = self.ComUi:GetChild("TextSpeed").asTextField
     self.ListAnte = self.ComUi:GetChild("ListAnte").asList
     self.TIndexAnte = {}
+end
+
+---------------------------------------
+function ViewCreateDesktop:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

@@ -17,12 +17,13 @@ function ViewPayType:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewPayType:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("PayType"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("PayType"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPay = self.ComUi:GetController("ControllerPay")
     local group_notios = self.ComUi:GetChild("GroupNotIOS").asGroup
@@ -62,6 +63,14 @@ function ViewPayType:OnCreate()
                 self.ViewMgr:DestroyView(self)
             end
     )
+end
+
+---------------------------------------
+function ViewPayType:OnDestory()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

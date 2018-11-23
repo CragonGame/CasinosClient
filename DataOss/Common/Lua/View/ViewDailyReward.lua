@@ -28,6 +28,7 @@ function ViewDailyReward:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
@@ -36,7 +37,7 @@ end
 
 ---------------------------------------
 function ViewDailyReward:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("DailyRewardSign"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("DailyRewardSign"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.MapDailyReward = {}
     self.GBtnGetReward = self.ComUi:GetChild("Lan_Btn_GetDailyReward").asButton
@@ -71,6 +72,10 @@ end
 
 ---------------------------------------
 function ViewDailyReward:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil

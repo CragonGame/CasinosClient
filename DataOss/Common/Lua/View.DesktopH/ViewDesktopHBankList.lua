@@ -63,12 +63,13 @@ function ViewDesktopHBankList:new(o)
     o.BeBankMinTakeGolds = 0
     o.LeaveMingGolds = 0
     o.ViewDesktopH = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewDesktopHBankList:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BeBankList"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BeBankList"))
     self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBeBankerPlayerList", self)
     self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBankerPlayer", self)
     self.ViewMgr:BindEvListener("EvEntityDesktopHBankerPlayerGoldChange", self)
@@ -118,6 +119,10 @@ end
 
 ---------------------------------------
 function ViewDesktopHBankList:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

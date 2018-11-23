@@ -15,6 +15,7 @@ function ViewBank:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     self.MinChip = 1
     self.TakeOutOrPutInPerGold = 1
     return o
@@ -22,7 +23,7 @@ end
 
 ---------------------------------------
 function ViewBank:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SafeBox"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SafeBox"))
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.GControllerBank = self.ComUi:GetController("ControllerBank")
@@ -66,6 +67,10 @@ end
 
 ---------------------------------------
 function ViewBank:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

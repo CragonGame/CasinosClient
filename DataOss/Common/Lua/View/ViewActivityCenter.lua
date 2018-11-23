@@ -16,12 +16,13 @@ function ViewActivityCenter:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewActivityCenter:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Activity"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Activity"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActivity = self.ViewMgr.ControllerMgr:GetController("Activity")
     self.GListActivityTitle = self.ComUi:GetChild("ListActivityTitle").asList
@@ -46,6 +47,14 @@ function ViewActivityCenter:OnCreate()
                 self:onClickShare()
             end)
     self:setActivityTitleList()
+end
+
+---------------------------------------
+function ViewActivityCenter:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

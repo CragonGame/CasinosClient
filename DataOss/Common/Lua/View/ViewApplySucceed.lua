@@ -17,12 +17,13 @@ function ViewApplySucceed:new(o)
     o.InitDepth = nil
     o.ViewKey = nil
     o.Instance = o
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewApplySucceed:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SignUpSuccess"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SignUpSuccess"))
     local com_shade = self.ComUi:GetChild("ComBgAndClose").asCom
     com_shade.onClick:Add(
             function()
@@ -38,6 +39,14 @@ function ViewApplySucceed:OnCreate()
     self.GTextMatchName = self.ComUi:GetChild("TextMatchName").asTextField
     self.GTextEntryFee = self.ComUi:GetChild("TextEntryFee").asTextField
     self.GTextMatchBeginTime = self.ComUi:GetChild("TextMatchBeginTime").asTextField
+end
+
+---------------------------------------
+function ViewApplySucceed:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

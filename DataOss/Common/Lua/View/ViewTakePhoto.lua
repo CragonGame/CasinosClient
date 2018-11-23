@@ -16,6 +16,7 @@ function ViewTakePhoto:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     self.PhotoFinalPath = "/photos"
     self.GetPicDefaultName = "GetPicDefaultName"
     self.mPhotoSize = 640
@@ -24,7 +25,7 @@ end
 
 ---------------------------------------
 function ViewTakePhoto:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
@@ -44,6 +45,14 @@ function ViewTakePhoto:OnCreate()
                 self:onClickTakePic()
             end
     )
+end
+
+---------------------------------------
+function ViewTakePhoto:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

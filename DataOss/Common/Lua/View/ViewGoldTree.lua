@@ -16,6 +16,7 @@ function ViewGoldTree:new(o)
         self.UILayer = nil
         self.InitDepth = nil
         self.ViewKey = nil
+        self.Tween = nil
         self.Instance = o
     end
     return self.Instance
@@ -23,7 +24,7 @@ end
 
 ---------------------------------------
 function ViewGoldTree:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     self.NextGetRewardTm = 0
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
@@ -65,6 +66,10 @@ end
 
 ---------------------------------------
 function ViewGoldTree:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

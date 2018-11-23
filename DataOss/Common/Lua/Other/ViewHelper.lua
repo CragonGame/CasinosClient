@@ -221,6 +221,10 @@ end
 
 ---------------------------------------
 function ViewHelper:PopUi(comui, title)
+    if (title ~= nil) then
+        local text_title = comui:GetChild("TextTitle").asTextField
+        self:SetUiTitle(text_title, title)
+    end
     local proportion = 0.85
     local tween_time = 0.3
     comui:SetPivot(0.5, 0.5)
@@ -230,11 +234,8 @@ function ViewHelper:PopUi(comui, title)
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade:SetPivot(0.5, 0.5)
     com_shade:SetScale(scale.x * (1 / proportion), scale.y * (1 / proportion))
-    comui:TweenScale(scale, tween_time):SetEase(CS.FairyGUI.EaseType.BackOut)
-    if (title ~= nil) then
-        local text_title = comui:GetChild("TextTitle").asTextField
-        self:SetUiTitle(text_title, title)
-    end
+    local tween =  comui:TweenScale(scale, tween_time):SetEase(CS.FairyGUI.EaseType.BackOut)
+    return tween
 end
 
 ---------------------------------------

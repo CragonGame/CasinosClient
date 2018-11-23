@@ -16,12 +16,13 @@ function ViewSnowBallReward:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewSnowBallReward:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SnowBallMatchInfo"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SnowBallMatchInfo"))
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -42,6 +43,14 @@ function ViewSnowBallReward:OnCreate()
     self.ListItemSnowBallRewardPlayerNum = {}
     self:setListPlayerNum()
     self:SetCurrentItemSnowBallRewardPlayerNum(self.ListItemSnowBallRewardPlayerNum[1])
+end
+
+---------------------------------------
+function ViewSnowBallReward:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

@@ -15,12 +15,13 @@ function ViewQuitOrBack:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewQuitOrBack:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
@@ -40,6 +41,14 @@ function ViewQuitOrBack:OnCreate()
                 self:onClickBack()
             end
     )
+end
+
+---------------------------------------
+function ViewQuitOrBack:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

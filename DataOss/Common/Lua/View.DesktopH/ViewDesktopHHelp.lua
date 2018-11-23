@@ -15,12 +15,13 @@ function ViewDesktopHHelp:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewDesktopHHelp:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Help"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Help"))
     local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_history_close = co_history_close:GetChild("BtnClose").asButton
     btn_history_close.onClick:Add(
@@ -34,6 +35,14 @@ function ViewDesktopHHelp:OnCreate()
                 self:_onClickBtnHelpClose()
             end
     )
+end
+
+---------------------------------------
+function ViewDesktopHHelp:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

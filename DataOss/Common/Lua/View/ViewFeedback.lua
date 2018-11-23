@@ -15,12 +15,13 @@ function ViewFeedback:new(o)
     self.UILayer = nil
     self.InitDepth = nil
     self.ViewKey = nil
+    self.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewFeedback:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Feedback"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Feedback"))
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
@@ -60,6 +61,10 @@ end
 
 ---------------------------------------
 function ViewFeedback:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

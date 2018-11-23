@@ -17,12 +17,13 @@ function ViewDesktopHHistory:new(o)
     o.ViewKey = nil
     o.GListHistory = nil
     o.ViewDesktopH = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewDesktopHHistory:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("DesktopHHistory"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("DesktopHHistory"))
     self.ViewMgr:BindEvListener("EvEntityDesktopHGameEndState", self)
     local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_history_close = co_history_close:GetChild("BtnClose").asButton
@@ -43,6 +44,10 @@ end
 
 ---------------------------------------
 function ViewDesktopHHistory:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

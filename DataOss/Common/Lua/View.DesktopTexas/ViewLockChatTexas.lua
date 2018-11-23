@@ -30,12 +30,13 @@ function ViewLockChatTexas:new(o)
     o.BtnLockedName = "BtnLocked"
     o.BtnUnLockName = "BtnUnlock"
     o.SystemIconKey = "System"
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewLockChatTexas:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("LockChat"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("LockChat"))
     self.ViewMgr:BindEvListener("EvEntityDesktopPlayerSit", self)
     self.ViewMgr:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
     self.ViewDesktop = self.ViewMgr:GetView("DesktopTexas")
@@ -78,6 +79,10 @@ end
 
 ---------------------------------------
 function ViewLockChatTexas:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
     self.MapPlayerChat = {}
 end

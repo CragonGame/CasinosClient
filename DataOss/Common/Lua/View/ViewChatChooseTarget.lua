@@ -16,12 +16,13 @@ function ViewChatChooseTarget:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewChatChooseTarget:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("ChooseFriendChat"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("ChooseFriendChat"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -49,6 +50,10 @@ end
 
 ---------------------------------------
 function ViewChatChooseTarget:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

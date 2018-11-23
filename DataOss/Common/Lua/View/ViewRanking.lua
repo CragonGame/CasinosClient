@@ -16,6 +16,7 @@ function ViewRanking:new(o)
     self.InitDepth = nil
     self.ViewKey = nil
     self.CoPlayer = nil
+    self.Tween = nil
     self.ChampionSignName = "Rank1"
     self.SecondPlaceSignName = "Rank2"
     self.ThirdPlaceSignName = "Rank3"
@@ -24,7 +25,7 @@ end
 
 ---------------------------------------
 function ViewRanking:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Ranking"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Ranking"))
     self.ControllerRanking = self.ViewMgr.ControllerMgr:GetController("Ranking")
     self.Controller = self.ComUi:GetController("ControllerRanking")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -79,6 +80,10 @@ end
 
 ---------------------------------------
 function ViewRanking:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

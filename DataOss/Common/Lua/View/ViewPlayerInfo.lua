@@ -18,12 +18,13 @@ function ViewPlayerInfo:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewPlayerInfo:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
@@ -179,6 +180,10 @@ end
 
 ---------------------------------------
 function ViewPlayerInfo:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

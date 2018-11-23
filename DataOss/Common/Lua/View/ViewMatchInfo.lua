@@ -16,6 +16,7 @@ function ViewMatchInfo:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
@@ -23,7 +24,7 @@ end
 function ViewMatchInfo:OnCreate()
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerActor = controller_mgr:GetController("Actor")
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("MatchInfo"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("MatchInfo"))
     self.ViewMgr:BindEvListener("EvEntitySetMatchDetailedInfo", self)
     self.ViewMgr:BindEvListener("EvEntitySetRaiseBlindTbInfo", self)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -144,26 +145,12 @@ function ViewMatchInfo:OnCreate()
 end
 
 ---------------------------------------
-function ViewMatchInfo:Init(match_guid, isIndesk, isSelfJoin)
-    local ev = self.ViewMgr:GetEv("EvUiRequestMatchDetailedInfo")
-    if (ev == nil) then
-        ev = EvUiRequestMatchDetailedInfo:new(nil)
+function ViewMatchInfo:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
     end
-    ev.MatchGuid = match_guid
-    ev.MatchType = MatchTexasScopeType.Public
-    self.ViewMgr:SendEv(ev)
-    if (isIndesk) then
-        self.GControllerRank:SetSelectedIndex(0)
-        self.GControllerOverView:SetSelectedIndex(0)
-        self.GControllerMatchState:SetSelectedIndex(0)
-    else
-        self.GControllerRank:SetSelectedIndex(1)
-        self.GControllerOverView:SetSelectedIndex(1)
-        self.GControllerMatchState:SetSelectedIndex(1)
-    end
-    self.IsInDesk = isIndesk
-    self.IsSelfJoin = isSelfJoin
-    self.MatchGuid = match_guid
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -225,8 +212,26 @@ function ViewMatchInfo:onUpdate(tm)
 end
 
 ---------------------------------------
-function ViewMatchInfo:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+function ViewMatchInfo:Init(match_guid, isIndesk, isSelfJoin)
+    local ev = self.ViewMgr:GetEv("EvUiRequestMatchDetailedInfo")
+    if (ev == nil) then
+        ev = EvUiRequestMatchDetailedInfo:new(nil)
+    end
+    ev.MatchGuid = match_guid
+    ev.MatchType = MatchTexasScopeType.Public
+    self.ViewMgr:SendEv(ev)
+    if (isIndesk) then
+        self.GControllerRank:SetSelectedIndex(0)
+        self.GControllerOverView:SetSelectedIndex(0)
+        self.GControllerMatchState:SetSelectedIndex(0)
+    else
+        self.GControllerRank:SetSelectedIndex(1)
+        self.GControllerOverView:SetSelectedIndex(1)
+        self.GControllerMatchState:SetSelectedIndex(1)
+    end
+    self.IsInDesk = isIndesk
+    self.IsSelfJoin = isSelfJoin
+    self.MatchGuid = match_guid
 end
 
 ---------------------------------------

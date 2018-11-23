@@ -16,12 +16,13 @@ function ViewRechargeFirst:new(o)
     self.UILayer = nil
     self.InitDepth = nil
     self.ViewKey = nil
+    self.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewRechargeFirst:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     local btn_comfirm = self.ComUi:GetChild("Lan_Btn_BuyNow").asButton
     btn_comfirm.onClick:Add(
             function()
@@ -41,6 +42,14 @@ function ViewRechargeFirst:OnCreate()
                 self:onClickBtnReturn()
             end
     )
+end
+
+---------------------------------------
+function ViewRechargeFirst:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

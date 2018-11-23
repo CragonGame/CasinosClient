@@ -17,12 +17,13 @@ function ViewGiftDetail:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewGiftDetail:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.ControllerDesktop = self.ViewMgr.ControllerMgr:GetController("DesktopTexas")
@@ -63,6 +64,14 @@ function ViewGiftDetail:OnCreate()
             end
     )
     self.GTextConfirmOneBuy = self.GBtnConfirmOneBuy:GetChild("Title").asTextField
+end
+
+---------------------------------------
+function ViewGiftDetail:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

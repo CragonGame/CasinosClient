@@ -15,13 +15,14 @@ function ViewClubHelp:new(o)
     self.UILayer = nil
     self.InitDepth = nil
     self.ViewKey = nil
+    self.Tween = nil
     self.Instance = o
     return o
 end
 
 ---------------------------------------
 function ViewClubHelp:OnCreate()
-    ViewHelper:PopUi(self.ComUi, "牌友圈帮助")
+    self.Tween = ViewHelper:PopUi(self.ComUi, "牌友圈帮助")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -35,6 +36,14 @@ function ViewClubHelp:OnCreate()
                 self:_onClickBtnClose()
             end
     )
+end
+
+---------------------------------------
+function ViewClubHelp:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

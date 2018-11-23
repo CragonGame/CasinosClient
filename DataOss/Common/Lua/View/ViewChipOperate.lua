@@ -16,12 +16,13 @@ function ViewChipOperate:new(o)
     self.UILayer = nil
     self.InitDepth = nil
     self.ViewKey = nil
+    self.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewChipOperate:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     self.ViewMgr:BindEvListener("EvEntityPlayerGiveChipQueryRangeRequestResult", self)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
@@ -70,6 +71,15 @@ function ViewChipOperate:OnCreate()
 end
 
 ---------------------------------------
+function ViewChipOperate:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
+    self.ViewMgr:UnbindEvListener(self)
+end
+
+---------------------------------------
 function ViewChipOperate:OnHandleEv(ev)
     if (ev.EventName == "EvEntityPlayerGiveChipQueryRangeRequestResult") then
         self:setChips(ev.give_chip_max, ev.give_chip_min)
@@ -79,11 +89,6 @@ function ViewChipOperate:OnHandleEv(ev)
         self.GBtnWheelMinus.enabled = ev.is_success
         self.GSlider.enabled = ev.is_success
     end
-end
-
----------------------------------------
-function ViewChipOperate:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------

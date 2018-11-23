@@ -15,13 +15,13 @@ function ViewAbout:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewAbout:OnCreate()
-    print("ViewAbout")
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("About"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("About"))
     self.ControllerAbout = self.ComUi:GetController("ControllerAbout")
     local com_linkAbout = self.ComUi:GetChild("ComAboutLink")
     com_linkAbout.onClick:Add(
@@ -48,12 +48,14 @@ function ViewAbout:OnCreate()
                 self:_onClickBtnClose()
             end
     )
-
-    --self:Test()
 end
 
 ---------------------------------------
-function ViewAbout:Test()
+function ViewAbout:OnDestory()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

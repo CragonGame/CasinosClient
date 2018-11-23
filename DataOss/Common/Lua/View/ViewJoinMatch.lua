@@ -17,6 +17,7 @@ function ViewJoinMatch:new(o)
         self.UILayer = nil
         self.InitDepth = nil
         self.ViewKey = nil
+        self.Tween = nil
         self.Instance = o
     end
     return self.Instance
@@ -24,7 +25,7 @@ end
 
 ---------------------------------------
 function ViewJoinMatch:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
@@ -54,6 +55,14 @@ function ViewJoinMatch:OnCreate()
     end
     self.GTextPassword = self.ComUi:GetChild("TextPassword").asTextField
     self.Password = ""
+end
+
+---------------------------------------
+function ViewJoinMatch:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

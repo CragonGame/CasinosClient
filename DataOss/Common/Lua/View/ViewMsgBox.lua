@@ -15,12 +15,13 @@ function ViewMsgBox:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewMsgBox:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
@@ -41,6 +42,14 @@ function ViewMsgBox:OnCreate()
     local com_tips = self.ComUi:GetChild("ComTips").asCom
     self.TextTips = com_tips:GetChild("Tips").asTextField
     self.AutoTm = 0
+end
+
+---------------------------------------
+function ViewMsgBox:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

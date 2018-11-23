@@ -17,12 +17,13 @@ function ViewPlayerProfile:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewPlayerProfile:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
     self.ControllerDeskTop = self.ViewMgr.ControllerMgr:GetController("DesktopTexas")
@@ -117,6 +118,10 @@ end
 
 ---------------------------------------
 function ViewPlayerProfile:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
     self.ViewPool:itemGiftAllEnque()
 end

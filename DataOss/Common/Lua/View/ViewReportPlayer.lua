@@ -16,12 +16,13 @@ function ViewReportPlayer:new(o)
     self.UILayer = nil
     self.InitDepth = nil
     self.ViewKey = nil
+    self.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewReportPlayer:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     local com_shade = self.ComUi:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
@@ -44,6 +45,14 @@ function ViewReportPlayer:OnCreate()
         local com_btn = self.GListContent:AddItemFromPool().asCom
         local item = ItemReportPlayerOperate:new(nil, com_btn, self)
         self.mMapItem[i - 1] = item
+    end
+end
+
+---------------------------------------
+function ViewReportPlayer:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
     end
 end
 

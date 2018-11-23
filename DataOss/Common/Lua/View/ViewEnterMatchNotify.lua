@@ -15,6 +15,7 @@ function ViewEnterMatchNotify:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     self.TimerUpdate = nil
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     return o
@@ -68,6 +69,10 @@ end
 
 ---------------------------------------
 function ViewEnterMatchNotify:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
@@ -103,7 +108,7 @@ function ViewEnterMatchNotify:_timerUpdate(tm)
             if (self.HasCloseComTips2 == false) then
                 if (self.ComTips2.visible == false) then
                     self.ComTips2.visible = true
-                    ViewHelper:PopUi(self.ComTips2)
+                    self.Tween = ViewHelper:PopUi(self.ComTips2)
                 end
                 self.GTextTips2.text = temp--table.concat(temp,"",1,6)
             end

@@ -17,13 +17,13 @@ function ViewActivityPopup:new(o)
     o.InitDepth = nil
     o.ViewKey = nil
     o.Context = Context
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewActivityPopup:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
-
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.GLoaderContent = self.ComUi:GetChild("LoaderContent").asLoader
     self.GTextContent = self.ComUi:GetChild("TextContent").asTextField
@@ -44,6 +44,10 @@ end
 
 ---------------------------------------
 function ViewActivityPopup:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     local ev = self.ViewMgr:GetEv("EvUiCloseActivityPopUpBox")
     if (ev == nil) then
         ev = EvUiCloseActivityPopUpBox:new(nil)

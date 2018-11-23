@@ -16,6 +16,7 @@ function ViewMailDetail:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
@@ -29,7 +30,6 @@ function ViewMailDetail:OnCreate()
             end
     )
     local co_detail = self.ComUi:GetChild("CoMailRealDetail").asCom
-    --self.GTextTitle = co_detail:GetChild("TextMailTitle").asTextField
     self.GTextTm = co_detail:GetChild("MailTm").asTextField
     self.GTextContent = co_detail:GetChild("MailContent").asTextField
     self.GTextAttachmentTitle = co_detail:GetChild("Lan_Text_Accessory").asTextField
@@ -51,10 +51,21 @@ function ViewMailDetail:OnCreate()
 end
 
 ---------------------------------------
+function ViewMailDetail:OnDestory()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
+end
+
+---------------------------------------
 function ViewMailDetail:setMail(mail)
     self.MailClient = mail
-    ViewHelper:PopUi(self.ComUi, mail.Title)
-    --self.GTextTitle.text = mail.Title
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
+    self.Tween = ViewHelper:PopUi(self.ComUi, mail.Title)
     self.GTextContent.text = mail.Content
     if mail.CreateTime ~= nil then
         local d_tm = CS.System.DateTime.Parse(mail.CreateTime)

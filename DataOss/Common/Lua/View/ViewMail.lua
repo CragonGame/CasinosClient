@@ -15,12 +15,13 @@ function ViewMail:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewMail:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Mail"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Mail"))
     self.ViewMgr:BindEvListener("EvEntityMailListInit", self)
     self.ViewMgr:BindEvListener("EvEntityMailAdd", self)
     self.ViewMgr:BindEvListener("EvEntityMailDelete", self)
@@ -51,6 +52,10 @@ end
 
 ---------------------------------------
 function ViewMail:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

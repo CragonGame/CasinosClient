@@ -16,12 +16,13 @@ function ViewDesktopHRewardPot:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewDesktopHRewardPot:OnCreate()
-    ViewHelper:PopUi(self.ComUi)
+    self.Tween = ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local co_rewardpot_close = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -57,11 +58,14 @@ function ViewDesktopHRewardPot:OnCreate()
     self:changeTab()
     self.ListPlayerInfo = {}
     self.ViewMgr:BindEvListener("EvEntityDesktopHGetRewardPotInfo", self)
-
 end
 
 ---------------------------------------
 function ViewDesktopHRewardPot:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

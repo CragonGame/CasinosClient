@@ -82,13 +82,14 @@ function ViewDesktopHBetReward:new(o)
     o.GTextBetTotal = nil
     o.GProBet = nil
     o.ViewDesktopH = nil
+    o.Tween = nil
     self.BetRewardTitle = "ComReward"
     return o
 end
 
 ---------------------------------------
 function ViewDesktopHBetReward:OnCreate()
-	ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("BetReward"))
+	self.Tween = ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("BetReward"))
     self.ViewMgr:BindEvListener("EvEntityInitBetReward",self)
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -116,6 +117,10 @@ end
 
 ---------------------------------------
 function ViewDesktopHBetReward:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

@@ -15,12 +15,13 @@ function ViewBag:new(o)
     self.UILayer = nil
     self.InitDepth = nil
     self.ViewKey = nil
+    self.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewBag:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Bag1"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Bag1"))
     self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
     self.ViewPool = self.ViewMgr:GetView("Pool")
@@ -71,6 +72,10 @@ end
 
 ---------------------------------------
 function ViewBag:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
     self.ViewPool:itemGiftAllEnque()
 end

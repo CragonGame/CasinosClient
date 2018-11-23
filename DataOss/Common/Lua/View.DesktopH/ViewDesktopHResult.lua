@@ -106,12 +106,13 @@ function ViewDesktopHResult:new(o)
     self.AutoDestroyTm = 5
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
+    self.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewDesktopHResult:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BureauSettlement"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BureauSettlement"))
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
@@ -145,6 +146,10 @@ end
 
 ---------------------------------------
 function ViewDesktopHResult:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     if (self.TimerUpdate ~= nil) then
         self.TimerUpdate:Close()
         self.TimerUpdate = nil

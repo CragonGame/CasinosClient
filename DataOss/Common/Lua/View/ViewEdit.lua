@@ -16,12 +16,13 @@ function ViewEdit:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewEdit:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Edit"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Edit"))
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -92,6 +93,14 @@ function ViewEdit:OnCreate()
         else
             self.GBtnSwitchScreenAutoRotation.selected = false
         end
+    end
+end
+
+---------------------------------------
+function ViewEdit:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
     end
 end
 

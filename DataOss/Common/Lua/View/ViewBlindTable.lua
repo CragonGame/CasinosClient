@@ -16,12 +16,13 @@ function ViewBlindTable:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewBlindTable:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BlindTable"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BlindTable"))
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
@@ -56,6 +57,14 @@ function ViewBlindTable:OnCreate()
     self.GControllerState = self.ComUi:GetController("ControllerState")
     self.GListBlind = self.ComUi:GetChild("ListBlind").asList
     self:onClickBtnFast()
+end
+
+---------------------------------------
+function ViewBlindTable:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------

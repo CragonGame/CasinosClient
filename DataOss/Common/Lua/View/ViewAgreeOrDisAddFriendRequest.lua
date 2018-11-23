@@ -16,13 +16,14 @@ function ViewAgreeOrDisAddFriendRequest:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     self.FriendGuid = nil
     return o
 end
 
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequest:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("FriendRequest"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("FriendRequest"))
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
@@ -49,6 +50,10 @@ end
 
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequest:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

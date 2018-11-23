@@ -18,12 +18,13 @@ function ViewGiftShop:new(o)
     self.UILayer = nil
     self.InitDepth = nil
     self.ViewKey = nil
+    self.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewGiftShop:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("GiftShop"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("GiftShop"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.ViewPool = self.ViewMgr:GetView("Pool")
@@ -50,6 +51,10 @@ end
 
 ---------------------------------------
 function ViewGiftShop:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
     self.ViewPool:itemGiftAllEnque()
 end

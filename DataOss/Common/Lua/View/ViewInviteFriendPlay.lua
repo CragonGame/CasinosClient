@@ -14,12 +14,13 @@ function ViewInviteFriendPlay:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewInviteFriendPlay:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("InviteFriendPlayCard"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("InviteFriendPlayCard"))
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     self.GListOnLine = self.ComUi:GetChild("ListOnLine").asList
     self.GListOnLine:SetVirtual()
@@ -50,6 +51,10 @@ end
 
 ---------------------------------------
 function ViewInviteFriendPlay:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

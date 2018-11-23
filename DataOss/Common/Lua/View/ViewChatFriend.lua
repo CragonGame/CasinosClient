@@ -16,12 +16,13 @@ function ViewChatFriend:new(o)
     self.UILayer = nil
     self.InitDepth = nil
     self.ViewKey = nil
+    self.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewChatFriend:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Message"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Message"))
     self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
     self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
     self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
@@ -91,6 +92,10 @@ end
 
 ---------------------------------------
 function ViewChatFriend:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
     self.ViewMgr:UnbindEvListener(self)
 end
 

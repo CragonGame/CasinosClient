@@ -15,12 +15,13 @@ function ViewEditAddress:new(o)
     o.UILayer = nil
     o.InitDepth = nil
     o.ViewKey = nil
+    o.Tween = nil
     return o
 end
 
 ---------------------------------------
 function ViewEditAddress:OnCreate()
-    ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("EditAddress"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("EditAddress"))
     self.ViewMgr:BindEvListener("EvEntityResponseGetReceiverAddress", self)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
@@ -52,6 +53,14 @@ function ViewEditAddress:OnCreate()
         ev = EvUiRequestGetReceiverAddress:new(nil)
     end
     self.ViewMgr:SendEv(ev)
+end
+
+---------------------------------------
+function ViewEditAddress:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
 end
 
 ---------------------------------------
