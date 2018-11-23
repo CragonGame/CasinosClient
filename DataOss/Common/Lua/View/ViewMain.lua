@@ -358,18 +358,18 @@ function ViewMain:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChats", self)
     self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
 
-    --self.PosGetChipEffectParticle = self.ComUi:GetChild("ComPosGetChipParticle").asCom.position
-    --local ab_particle_desktop = ParticleHelper:GetParticel("btndesktopparticle.ab")
-    --local prefab_particle_desktop = ab_particle_desktop:LoadAsset("BtnDeskTopParticle")
-    --self.ParticleDeskTop = CS.UnityEngine.GameObject.Instantiate(prefab_particle_desktop)
-    --local holder_destopParticle = btn_desktop:GetChild("HolderParticle").asGraph
-    --holder_destopParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleDeskTop))
+    self.PosGetChipEffectParticle = self.ComUi:GetChild("ComPosGetChipParticle").asCom.position
+    local ab_particle_desktop = ParticleHelper:GetParticel("btndesktopparticle.ab")
+    local prefab_particle_desktop = ab_particle_desktop:LoadAsset("BtnDeskTopParticle")
+    self.ParticleDeskTop = CS.UnityEngine.GameObject.Instantiate(prefab_particle_desktop)
+    local holder_destopParticle = btn_desktop:GetChild("HolderParticle").asGraph
+    holder_destopParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleDeskTop))
 
-    --local ab_particle_match = ParticleHelper:GetParticel("btnmatchparticle.ab")
-    --local prefab_particle_match = ab_particle_match:LoadAsset("BtnMatchParticle")
-    --self.ParticleMatch = CS.UnityEngine.GameObject.Instantiate(prefab_particle_match)
-    --local holder_matchParticle = btn_match:GetChild("HolderParticle").asGraph
-    --holder_matchParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleMatch))
+    local ab_particle_match = ParticleHelper:GetParticel("btnmatchparticle.ab")
+    local prefab_particle_match = ab_particle_match:LoadAsset("BtnMatchParticle")
+    self.ParticleMatch = CS.UnityEngine.GameObject.Instantiate(prefab_particle_match)
+    local holder_matchParticle = btn_match:GetChild("HolderParticle").asGraph
+    holder_matchParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleMatch))
 
     local image_bg = self.ComUi:GetChild("ImageMote").asImage
     if (self.Context.Cfg.NeedHideClientUi == false) then
