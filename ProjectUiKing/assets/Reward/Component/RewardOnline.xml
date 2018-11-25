@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="742,96">
+  <controller name="BtnState" pages="0,,1," selected="0"/>
   <displayList>
     <image id="n0_dpbd" name="n0" src="wb2ek6" fileName="Image/New/ItemBg.png" pkg="nhvxw9ov" xy="0,0"/>
+    <component id="n1_dpbd" name="n1" src="dpbd3" fileName="Component/Btn1.xml" xy="569,8">
+      <Button title="领取" titleColor="#ffffff" titleFontSize="30"/>
+    </component>
   </displayList>
 </component>

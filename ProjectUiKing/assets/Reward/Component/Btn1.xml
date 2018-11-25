@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="136,84" extention="Button">
+  <Button/>
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver"/>
+  <displayList>
+    <image id="n0_dpbd" pkg="nhvxw9ov" src="mkwxec" name="n0" xy="0,0">
+      <gearDisplay controller="button" pages="0"/>
+      <relation target="" sidePair="width,height"/>
+    </image>
+    <image id="n1_dpbd" pkg="nhvxw9ov" src="mkwxec" name="n1" xy="0,0">
+      <gearDisplay controller="button" pages="1"/>
+      <relation target="" sidePair="width,height"/>
+    </image>
+    <image id="n2_dpbd" pkg="nhvxw9ov" src="mkwxec" name="n2" xy="0,0">
+      <gearDisplay controller="button" pages="2"/>
+      <relation target="" sidePair="width,height"/>
+    </image>
+    <image id="n3_dpbd" pkg="nhvxw9ov" src="mkwxec" name="n3" xy="0,0">
+      <gearDisplay controller="button" pages="3"/>
+      <relation target="" sidePair="width,height"/>
+    </image>
+    <text id="n4_dpbd" name="title" xy="0,0" size="136,84" fontSize="12" autoSize="none" align="center" vAlign="middle" singleLine="true">
+      <relation target="" sidePair="width,height"/>
+    </text>
+  </displayList>
+</component>
