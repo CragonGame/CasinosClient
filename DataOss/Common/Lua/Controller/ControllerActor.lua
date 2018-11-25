@@ -2,6 +2,29 @@
 -- 无View
 
 ---------------------------------------
+Prop = {}
+
+function Prop:new(v)
+    o = {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Value = v
+    o.OnChanged = nil
+    return o
+end
+
+function Prop:get()
+    return self.Value
+end
+
+function Prop:set(value)
+    self.Value = value
+    if (self.OnChanged ~= nil) then
+        self.OnChanged()
+    end
+end
+
+---------------------------------------
 ControllerActor = ControllerBase:new(nil)
 
 ---------------------------------------
@@ -73,12 +96,11 @@ function ControllerActor:new(o, controller_mgr, controller_data, guid)
     local ReliefDateTime = o.ControllerData["ReliefDateTime"]
     o.PropReliefDateTime = Prop:new(ReliefDateTime)
     --local EnableGrow = self.ControllerData["EnableGrow"]
-    local enable_grow = false
-    --if(string.lower(EnableGrow) == "true")
-    --then
+    --local enable_grow = false
+    --if(string.lower(EnableGrow) == "true") then
     --	enable_grow = true
     --end
-    o.PropEnableGrow = Prop:new(enable_grow)
+    o.PropEnableGrow = Prop:new(false)
     local Point = o.ControllerData["Point"]
     o.PropPoint = Prop:new(tonumber(Point))
     local MasterPoint = o.ControllerData["MasterPoint"]
@@ -97,7 +119,6 @@ function ControllerActor:OnCreate()
     self.MC = CommonMethodType
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerLogin = self.ViewMgr.ControllerMgr:GetController("Login")
-    self.ControllerLogin.ControllerActor = self
     local attach_wechat = self.ControllerLogin.ClientEnterWorldNotify.attach_wechat
     local wechat_openid = nil
     local wechat_name = nil
@@ -182,7 +203,6 @@ end
 ---------------------------------------
 function ControllerActor:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
-    self.ControllerLogin.ControllerActor = nil
 end
 
 ---------------------------------------

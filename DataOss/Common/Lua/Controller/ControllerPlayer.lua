@@ -1,4 +1,5 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('ControllerReward')
 
 ---------------------------------------
 ControllerPlayer = ControllerBase:new(nil)

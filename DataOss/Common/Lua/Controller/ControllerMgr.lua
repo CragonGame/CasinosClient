@@ -50,6 +50,7 @@ function ControllerMgr:CreatePlayerControllers(player_data, guid)
     local c_ranking = self:CreateController("Ranking", nil, guid)
     local c_trade = self:CreateController("Trade", nil, guid)
     local c_mtt = self:CreateController("Mtt", nil, guid)
+    local c_reward = self:CreateController("Reward", nil, guid)
     c_actor:OnCreate()
     c_activity:OnCreate()
     c_player:OnCreate()
@@ -64,6 +65,7 @@ function ControllerMgr:CreatePlayerControllers(player_data, guid)
     c_ranking:OnCreate()
     c_trade:OnCreate()
     c_mtt:OnCreate()
+    c_reward:OnCreate()
 end
 
 ---------------------------------------

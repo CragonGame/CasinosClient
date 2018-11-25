@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 1537508557
+CRC: 3848604007
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: activitypopup.ab
+      Name: reward.ab
       Dependencies: {}

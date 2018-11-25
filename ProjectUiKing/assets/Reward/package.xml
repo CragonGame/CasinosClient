@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="g3299awq" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="dpbd0" name="Reward.xml" path="/" exported="true"/>
+    <component id="dpbd1" name="RewardOnline.xml" path="/Component/"/>
+    <component id="dpbd2" name="RewardTiming.xml" path="/Component/"/>
+  </resources>
+  <publish name="Reward" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Reward"/>
+</packageDescription>

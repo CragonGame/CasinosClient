@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="g7gsod07" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="dpbd0" name="DesktopListTexas.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="DesktopListTexas" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopListTexas"/>
+</packageDescription>

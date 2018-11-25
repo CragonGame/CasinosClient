@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <component id="n0_dpbd" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0"/>
+    <text id="n1_dpbd" name="TextTitle" xy="500,93" size="65,39" fontSize="30" color="#ffffff" text="福利"/>
+    <component id="n2_dpbd" name="RewardOnline" src="dpbd1" fileName="Component/RewardOnline.xml" xy="166,161"/>
+    <component id="n3_dpbd" name="RewardTiming" src="dpbd2" fileName="Component/RewardTiming.xml" xy="166,266"/>
+  </displayList>
+</component>

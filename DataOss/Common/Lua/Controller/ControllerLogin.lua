@@ -234,13 +234,9 @@ function ControllerLogin:OnHandleEv(ev)
                 print("AccountWechatBindRequest")
                 local request = AccountWeChatBindRequest:new(nil)
                 request.ucenterAppId = self.Context.Cfg.UCenterAppId
-                print(request.ucenterAppId)
                 request.code = ev.token
-                print(request.code)
                 request.accountId = self.AccId
-                print(request.accountId)
                 request.token = self.Token
-                print(request.token)
                 self.ControllerUCenter:RequestWechatBind(request,
                         function(http_statuscode, status, response, error)
                             self:OnUCenterWechatBind(http_statuscode, status, response, error)
@@ -259,9 +255,9 @@ function ControllerLogin:OnHandleEv(ev)
             ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:getLanValue("UnbindWeChatTips"), function()
                 print("EvUnbindWechat")
                 local open_id = nil
-                if self.ControllerActor ~= nil then
-                    open_id = self.ControllerActor.WeChatOpenId:get()
-                end
+                --if self.ControllerActor ~= nil then
+                --    open_id = self.ControllerActor.WeChatOpenId:get()
+                --end
                 local request = AccountWeChatUnbindRequest:new(nil)
                 request.ucenterAppId = self.Context.Cfg.UCenterAppId
                 request.openId = open_id

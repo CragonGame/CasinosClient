@@ -4,16 +4,13 @@
 -- 配置，开发者选项
 ConfigDevelopSettings = {}
 
-function ConfigDevelopSettings:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ConfigDevelopSettings:new()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
     self.ShowDevelopSettings = false-- 是否显示开发者选项
     self.ClientShowFPS = true-- 客户端显示FPS信息 false 不显示 true 显示
     self.FPSLimit = 60-- 限帧
-    return o
+    return self
 end
 
 ---------------------------------------
@@ -23,7 +20,7 @@ Config = {}
 function Config:new()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
-    self.DevelopSettings = ConfigDevelopSettings:new(nil)
+    self.DevelopSettings = ConfigDevelopSettings:new()
     self.Env = nil
     self.CommonVersion = nil
     self.CommonRootURL = nil
@@ -113,7 +110,6 @@ end
 
 ---------------------------------------
 function Context:Init()
-    --print('Context:Init()')
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")
     show_fps_obj.enabled = self.Cfg.DevelopSettings.ClientShowFPS
     Context:_initLaunchStep()
@@ -145,8 +141,6 @@ function Context:Release()
     self.CasinosContext = nil
     self.LuaMgr = nil
     self.Launch = nil
-
-    --print('Context:Release()')
 end
 
 ---------------------------------------
@@ -178,8 +172,6 @@ function Context:_initLaunchStep()
     end
 
     -- 检测是否需要首次运行解压
-    --print('CasinosContext.Config.VersionDataPersistent=' .. self.CasinosContext.Config.VersionDataPersistent)
-    --print('CasinosContext.Config.StreamingAssetsInfo.DataVersion=' .. self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
     --local r = self.CasinosContext.Config:VersionCompare(self.CasinosContext.Config.VersionDataPersistent, self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
     --if (r < 0) then
     --    self.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
@@ -396,7 +388,7 @@ function Context:_nextLaunchStep()
             "Notice",
             "PayType", "PlayerInfo", "PlayerProfile", "Pool", "Purse",
             "QuitOrBack",
-            "Ranking", "RechargeFirst", "ResetPwd",
+            "Ranking", "RechargeFirst", "ResetPwd", "Reward",
             "Share", "ShareType", "ShootingText", "Shop", "SnowBallReward",
             "TakePhoto",
         }
@@ -595,13 +587,15 @@ function Context:_regController()
     self:DoString("ControllerRanking")
     local con_ranking_fac = ControllerRankingFactory:new(nil)
     self.ControllerMgr:RegController("Ranking", con_ranking_fac)
+    self:DoString("ControllerReward")
+    local con_reward_fac = ControllerRewardFactory:new(nil)
+    self.ControllerMgr:RegController("Reward", con_reward_fac)
     self:DoString("ControllerTrade")
     local con_trade_fac = ControllerTradeFactory:new(nil)
     self.ControllerMgr:RegController("Trade", con_trade_fac)
     self:DoString("ControllerMTT")
     local con_mtt = ControllerMTTFactory:new(nil)
     self.ControllerMgr:RegController("Mtt", con_mtt)
-    self:DoString("Prop")
     self:DoString("Item")
     self:DoString("ItemData1")
     self:DoString("Unit")
@@ -827,6 +821,9 @@ function Context:_regView()
     self:DoString("ViewMain")
     self:DoString("ViewOnlineReward")
     self:DoString("ViewTimingReward")
+    self:DoString("ViewReward")
+    local view_reward_fac = ViewRewardFactory:new(nil, "Reward", "Reward", "MessgeBox", true, CS.FairyGUI.FitScreen.FitSize)
+    self.ViewMgr:RegView("Reward", view_reward_fac)
     self:DoString("UiMainPlayerInfo")
     local view_viewmain_fac = ViewMainFactory:new(nil, "Main", "Main", "Background", true, CS.FairyGUI.FitScreen.FitSize)
     self.ViewMgr:RegView("Main", view_viewmain_fac)

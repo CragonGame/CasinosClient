@@ -95,7 +95,7 @@ function UiDesktopHGoldPool:_goldHEnPool(ui_desktoph_gold)
     else
         self.MaxGoldSortOrderOffset = self.MaxGoldSortOrderOffset + 1
     end
-    uigold_h:Reset()
+    ui_desktoph_gold:Reset()
     table.insert(self.QueUiGold, ui_desktoph_gold)
-    uigold_h:SetGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
+    ui_desktoph_gold:SetGoldSortOrderOffset(self.MaxGoldSortOrderOffset)
 end

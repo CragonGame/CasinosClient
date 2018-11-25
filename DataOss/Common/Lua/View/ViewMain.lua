@@ -46,7 +46,7 @@ function ViewMain:OnCreate()
     local btn_desktop = self.ComUi:GetChild("BtnDeskTop").asButton
     btn_desktop.onClick:Add(
             function()
-                self:onClickBtnDeskTop()
+                self:onClickBtnDesktop()
             end
     )
     local btn_desktoph = self.ComUi:GetChild("BtnDeskTopH").asButton
@@ -859,7 +859,7 @@ function ViewMain:onClickBtnMail()
 end
 
 ---------------------------------------
-function ViewMain:onClickBtnDeskTop()
+function ViewMain:onClickBtnDesktop()
     self:hideMote()
     self.GTransitionShow:PlayReverse(
             function()
