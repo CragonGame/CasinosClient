@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="136,84" extention="Button">
-  <Button/>
-  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver"/>
+<component size="136,84" pivot="0.5,0.5" extention="Button">
+  <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
   <displayList>
-    <image id="n0_dpbd" pkg="nhvxw9ov" src="mkwxec" name="n0" xy="0,0">
+    <image id="n0_dpbd" name="n0" src="mkwxec" fileName="Image/BtnYellow.png" pkg="nhvxw9ov" xy="0,0">
       <gearDisplay controller="button" pages="0"/>
-      <relation target="" sidePair="width,height"/>
+      <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <image id="n1_dpbd" pkg="nhvxw9ov" src="mkwxec" name="n1" xy="0,0">
+    <image id="n1_dpbd" name="n1" src="mkwxec" fileName="Image/BtnYellow.png" pkg="nhvxw9ov" xy="0,0">
       <gearDisplay controller="button" pages="1"/>
-      <relation target="" sidePair="width,height"/>
+      <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <image id="n2_dpbd" pkg="nhvxw9ov" src="mkwxec" name="n2" xy="0,0">
+    <image id="n2_dpbd" name="n2" src="mkwxec" fileName="Image/BtnYellow.png" pkg="nhvxw9ov" xy="0,0">
       <gearDisplay controller="button" pages="2"/>
-      <relation target="" sidePair="width,height"/>
+      <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <image id="n3_dpbd" pkg="nhvxw9ov" src="mkwxec" name="n3" xy="0,0">
+    <image id="n3_dpbd" name="n3" src="mkwxec" fileName="Image/BtnYellow.png" pkg="nhvxw9ov" xy="0,0">
       <gearDisplay controller="button" pages="3"/>
-      <relation target="" sidePair="width,height"/>
+      <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <text id="n4_dpbd" name="title" xy="0,0" size="136,84" fontSize="12" autoSize="none" align="center" vAlign="middle" singleLine="true">
-      <relation target="" sidePair="width,height"/>
+    <text id="n4_dpbd" name="title" xy="0,0" size="136,84" fontSize="12" align="center" vAlign="middle" autoSize="none" singleLine="true" text="">
+      <relation target="" sidePair="width-width,height-height"/>
     </text>
   </displayList>
+  <Button downEffect="scale" downEffectValue="0.90"/>
 </component>

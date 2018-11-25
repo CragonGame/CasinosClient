@@ -269,8 +269,9 @@ function ViewMain:OnCreate()
     self.ComWelfareIcon = self.ComUi:GetChild("ComWelfareIcon").asCom
     self.ComWelfareIcon.onClick:Add(
             function()
-                self.ComShadeReward.visible = true
-                self.TransitionShowReward:Play()
+                --self.ComShadeReward.visible = true
+                --self.TransitionShowReward:Play()
+                self.ViewMgr:CreateView('Reward')
             end)
 
     local com_lottryticket = self.ComUi:GetChild("ComLotteryTicket").asCom

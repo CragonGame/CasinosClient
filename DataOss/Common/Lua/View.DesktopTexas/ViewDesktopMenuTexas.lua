@@ -59,20 +59,19 @@ function ViewDesktopMenuTexas:OnCreate()
             end
     )
     local btn_reward = self.ComUi:GetChild("BtnReward").asButton
-    self.ComRewardTips = btn_reward:GetChild("ComRewardTips").asCom
-    self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
+    --self.ComRewardTips = btn_reward:GetChild("ComRewardTips").asCom
+    --self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     btn_reward.onClick:Add(
             function()
                 self:close()
-                local ev = self.ViewMgr:GetEv("EvViewClickShowReward")
-                if (ev == nil)
-                then
-                    ev = EvClickShowReward:new(nil)
-                end
-                self.ViewMgr:SendEv(ev)
+                self.ViewMgr:CreateView('Reward')
             end)
     self.mIsOb = false
     self.mIsWaitwhile = false
+end
+
+---------------------------------------
+function ViewDesktopMenuTexas:OnDestroy()
 end
 
 ---------------------------------------
@@ -89,14 +88,14 @@ function ViewDesktopMenuTexas:setPlayerState(is_ob, is_waitwhile, have_reward)
         self.GBtnLeaveInMiddle.enabled = true
     end
 
-    if (have_reward == false) then
-        ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
-    else
-        ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
-        if (self.TransitionNewReward.playing == false) then
-            self.TransitionNewReward:Play()
-        end
-    end
+    --if (have_reward == false) then
+    --    ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
+    --else
+    --    ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
+    --    if (self.TransitionNewReward.playing == false) then
+    --        self.TransitionNewReward:Play()
+    --    end
+    --end
 end
 
 ---------------------------------------
@@ -119,7 +118,7 @@ function ViewDesktopMenuTexas:_onClickExit()
 end
 
 ---------------------------------------
-function ViewDesktopMenuTexas: _onClickInviteFriend()
+function ViewDesktopMenuTexas:_onClickInviteFriend()
     local ev = self.ViewMgr:GetEv("EvUiClickInviteFriendPlay")
     if (ev == nil) then
         ev = EvUiClickInviteFriendPlay:new(nil)
@@ -129,7 +128,7 @@ function ViewDesktopMenuTexas: _onClickInviteFriend()
 end
 
 ---------------------------------------
-function ViewDesktopMenuTexas: _onClickLeaveInMiddle()
+function ViewDesktopMenuTexas:_onClickLeaveInMiddle()
     if (self.mIsOb == false and self.mIsWaitwhile == false) then
         local ev = self.ViewMgr:GetEv("EvUiClickWaitWhile")
         if (ev == nil) then

@@ -21,7 +21,21 @@ end
 
 ---------------------------------------
 function ViewReward:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Reward"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, '福利')--self.ViewMgr.LanMgr:getLanValue("Reward"))
+
+    local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
+    local btn_close = com_bg:GetChild("BtnClose").asButton
+    btn_close.onClick:Add(
+            function()
+                self:_onClickBtnClose()
+            end
+    )
+    local com_shade = com_bg:GetChild("ComShade").asCom
+    com_shade.onClick:Add(
+            function()
+                self:_onClickBtnClose()
+            end
+    )
 end
 
 ---------------------------------------
@@ -30,6 +44,11 @@ function ViewReward:OnDestroy()
         self.Tween:Kill(false)
         self.Tween = nil
     end
+end
+
+---------------------------------------
+function ViewReward:_onClickBtnClose()
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
@@ -50,6 +69,6 @@ end
 
 ---------------------------------------
 function ViewRewardFactory:CreateView()
-    local view = ViewAbout:new(nil)
+    local view = ViewReward:new(nil)
     return view
 end

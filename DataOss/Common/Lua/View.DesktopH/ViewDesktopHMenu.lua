@@ -17,6 +17,7 @@ function ViewDesktopHMenu:new(o)
     o.ViewKey = nil
     o.CoMenuEx = nil
     o.ViewDesktopH = nil
+    o.Tween = nil
     return o
 end
 
@@ -48,31 +49,26 @@ function ViewDesktopHMenu:OnCreate()
                 self:_onClickBtnCharge()
             end)
     local btn_reward = self.CoMenuEx:GetChild("BtnReward").asButton
-    self.ComRewardTips = btn_reward:GetChild("ComRewardTips").asCom
-    self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     btn_reward.onClick:Add(
             function()
-                local ev = self.ViewMgr:GetEv("EvViewClickShowReward")
-                if (ev == nil) then
-                    ev = EvClickShowReward:new(nil)
-                end
-                self.ViewMgr:SendEv(ev)
+                --local ev = self.ViewMgr:GetEv("EvViewClickShowReward")
+                self.ViewMgr:CreateView('Reward')
             end)
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
 end
 
 ---------------------------------------
+function ViewDesktopHMenu:OnDestroy()
+    if self.Tween ~= nil then
+        self.Tween:Kill(false)
+        self.Tween = nil
+    end
+end
+
+------------------------------------------
 function ViewDesktopHMenu:showMenu(have_reward)
     self.CoMenuEx:SetXY(0, -self.CoMenuEx.height)
-    self.CoMenuEx:TweenMoveY(0, 0.25)
-    if (have_reward == false) then
-        ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
-    else
-        ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
-        if (self.TransitionNewReward.playing == false) then
-            self.TransitionNewReward:Play()
-        end
-    end
+    self.Tween = self.CoMenuEx:TweenMoveY(0, 0.25)
 end
 
 ---------------------------------------
