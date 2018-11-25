@@ -43,7 +43,7 @@ function RewardOnline:Update()
 end
 
 ---------------------------------------
-function RewardOnline:setOnlineRewardState(online_reward_state, left_reward_second, next_reward)
+function RewardOnline:SetOnlineRewardState(online_reward_state, left_reward_second, next_reward)
     self.OnlineRewardState = online_reward_state
     self.NextReward = next_reward
     if (self.OnlineRewardState == OnlineRewardState.Wait4GetReward) then
@@ -56,7 +56,7 @@ function RewardOnline:setOnlineRewardState(online_reward_state, left_reward_seco
 end
 
 ---------------------------------------
-function RewardOnline:onGetReward()
+function RewardOnline:OnGetReward()
     if (self.CanGetReward == true) then
         local ev = self.ViewMgr:GetEv("EvRequestGetOnLineReward")
         if (ev == nil) then

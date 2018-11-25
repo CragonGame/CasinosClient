@@ -255,22 +255,20 @@ function ViewMain:OnCreate()
     )
     local com_reward = self.ComUi:GetChild("ComReward").asCom
     local co_onlinereward = com_reward:GetChild("ComOnlineReward").asCom
-    self.ViewOnlineReward = ViewOnlineReward:new(nil, co_onlinereward, self.ViewMgr)
-    self.CanGetOnLineReward = self.ControllerPlayer.OnlineReward:IfCanGetReward()
-    self.ViewOnlineReward:setCanGetReward(self.CanGetOnLineReward)
-    local co_timingreward = com_reward:GetChild("ComPushReward").asCom
-    self.ViewTimingReward = ViewTimingReward:new(nil, co_timingreward, self.ViewMgr)
-    self.CanGetTimingReward = self.ControllerPlayer.TimingReward:IfCanGetReward()
-    self.ViewTimingReward:setCanGetReward(self.CanGetTimingReward)
+    --self.ViewOnlineReward = ViewOnlineReward:new(nil, co_onlinereward, self.ViewMgr)
+    --self.CanGetOnLineReward = self.ControllerPlayer.OnlineReward:IfCanGetReward()
+    --self.ViewOnlineReward:setCanGetReward(self.CanGetOnLineReward)
+    --local co_timingreward = com_reward:GetChild("ComPushReward").asCom
+    --self.ViewTimingReward = ViewTimingReward:new(nil, co_timingreward, self.ViewMgr)
+    --self.CanGetTimingReward = self.ControllerPlayer.TimingReward:IfCanGetReward()
+    --self.ViewTimingReward:setCanGetReward(self.CanGetTimingReward)
     self.ComRewardTips = self.ComUi:GetChild("ComRewardTips").asCom
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
-    self:setNewReward()
+    self:SetNewReward()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionShowReward")
     self.ComWelfareIcon = self.ComUi:GetChild("ComWelfareIcon").asCom
     self.ComWelfareIcon.onClick:Add(
             function()
-                --self.ComShadeReward.visible = true
-                --self.TransitionShowReward:Play()
                 self.ViewMgr:CreateView('Reward')
             end)
 
@@ -532,15 +530,15 @@ function ViewMain:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
             self:RefreshLotteryTickLeftTm(ev.tm)
         elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
-            self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
+            --self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
         elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
-            self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
-            self.CanGetOnLineReward = ev.can_getreward
-            self:setNewReward()
+            --self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
+            --self.CanGetOnLineReward = ev.can_getreward
+            self:SetNewReward()
         elseif (ev.EventName == "EvEntityCanGetTimingReward") then
-            self.ViewTimingReward:setCanGetReward(ev.can_getreward)
-            self.CanGetTimingReward = ev.can_getreward
-            self:setNewReward()
+            --self.ViewTimingReward:setCanGetReward(ev.can_getreward)
+            --self.CanGetTimingReward = ev.can_getreward
+            self:SetNewReward()
         elseif (ev.EventName == "EvEntityIsFirstRechargeChanged") then
             local com_recharge_first = self.ComUi:GetChild("ComRechargeFirst").asCom
             com_recharge_first.visible = false
@@ -697,19 +695,19 @@ function ViewMain:setNewRecord()
 end
 
 ---------------------------------------
-function ViewMain:setNewReward()
+function ViewMain:SetNewReward()
     local have_newreward = false
-    if (self.CanGetOnLineReward or self.CanGetTimingReward) then
-        have_newreward = true
-    end
+    --if (self.CanGetOnLineReward or self.CanGetTimingReward) then
+    --    have_newreward = true
+    --end
 
     if (have_newreward == false) then
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
-        if (self.TransitionNewReward.playing == false) then
-            self.TransitionNewReward:Play()
-        end
+        --if (self.TransitionNewReward.playing == false) then
+        --    self.TransitionNewReward:Play()
+        --end
     end
 end
 

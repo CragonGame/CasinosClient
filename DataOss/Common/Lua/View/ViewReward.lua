@@ -16,12 +16,13 @@ function ViewReward:new(o)
     o.InitDepth = nil
     o.ViewKey = nil
     o.Tween = nil
+    o.CanGetTimingReward = false
     return o
 end
 
 ---------------------------------------
 function ViewReward:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, '福利')--self.ViewMgr.LanMgr:getLanValue("Reward"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Reward"))
 
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
@@ -36,6 +37,16 @@ function ViewReward:OnCreate()
                 self:_onClickBtnClose()
             end
     )
+
+    local com_rewardonline = self.ComUi:GetChild("RewardOnline").asCom
+
+    self.GTextOnlineCountDownTm = com_rewardonline:GetChild("TextCountdown").asTextField
+    self.GBtnOnlineReward = com_rewardonline:GetChild("BtnGetOnlineReward").asButton
+    self.GBtnOnlineReward.onClick:Add(
+            function()
+                self:_onClickOnlineReward()
+            end
+    )
 end
 
 ---------------------------------------
@@ -47,8 +58,38 @@ function ViewReward:OnDestroy()
 end
 
 ---------------------------------------
+function ViewReward:SetOnlineRewardLeftTm(left_tm)
+    self.GTextOnlineCountDownTm.text = left_tm
+end
+
+---------------------------------------
+function ViewReward:SetCanGetTimingReward(can_get_reward)
+    self.CanGetTimingReward = can_get_reward
+end
+
+---------------------------------------
 function ViewReward:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
+end
+
+---------------------------------------
+function ViewReward:_onClickOnlineReward()
+    local ev = self.ViewMgr:GetEv("EvViewOnGetOnLineReward")
+    if (ev == nil) then
+        ev = EvOnGetOnLineReward:new(nil)
+    end
+    self.ViewMgr:SendEv(ev)
+end
+
+---------------------------------------
+function ViewReward:_onClickTimingReward()
+    if self.CanGetTimingReward then
+        local ev = self.ViewMgr:GetEv("EvViewRequestGetTimingReward")
+        if (ev == nil) then
+            ev = EvRequestGetTimingReward:new(nil)
+        end
+        self.ViewMgr:SendEv(ev)
+    end
 end
 
 ---------------------------------------

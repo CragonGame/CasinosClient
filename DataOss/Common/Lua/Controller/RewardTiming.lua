@@ -18,7 +18,7 @@ function RewardTiming:new(o, view_mgr)
 end
 
 ---------------------------------------
-function RewardTiming:setTimingRewardData(reward)
+function RewardTiming:SetTimingRewardData(reward)
     self.Type = reward.Type
     self.Get = reward.Get
     self.RewardGold = reward.RewardGold
@@ -31,7 +31,7 @@ function RewardTiming:setTimingRewardData(reward)
 end
 
 ---------------------------------------
-function RewardTiming:onGetReward()
+function RewardTiming:OnGetReward()
     if (self.CanGetReward == false) then
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("CanNotGetYet"))
     end

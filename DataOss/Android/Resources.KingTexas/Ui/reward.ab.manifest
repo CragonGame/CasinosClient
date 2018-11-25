@@ -1,16 +1,19 @@
 ManifestFileVersion: 0
-CRC: 1148614254
+CRC: 2073700358
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 546741f2446219e74ada52dd5ed406e3
+    Hash: ee851ea3822dd5ff34fd29361cffd4f7
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
 HashAppended: 0
 ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
 - Class: 49
   Script: {instanceID: 0}
 Assets:
 - Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Reward/Reward_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Reward/Reward_atlas0.png
 Dependencies: []

@@ -49,17 +49,17 @@ function EvUiReportFriend:Reset()
 end
 
 ---------------------------------------
-EvUiCloseActivityPopUpBox = EventBase:new(nil)
+EvUiCloseActivityPopupBox = EventBase:new(nil)
 
-function EvUiCloseActivityPopUpBox:new(o)
+function EvUiCloseActivityPopupBox:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvUiCloseActivityPopUpBox"
+    self.EventName = "EvUiCloseActivityPopupBox"
     return o
 end
 
-function EvUiCloseActivityPopUpBox:Reset()
+function EvUiCloseActivityPopupBox:Reset()
 end
 
 ---------------------------------------
@@ -2126,8 +2126,6 @@ end
 function EvGetPicUpLoadSuccess:Reset()
 end
 
-
---��Ϣ
 EvRequestGetPlayerModuleData = EventBase:new(nil)
 
 function EvRequestGetPlayerModuleData:new(o)
@@ -2155,7 +2153,6 @@ end
 function EvOnGetOnLineReward:Reset()
 end
 
---��Ϣ
 EvEntityRefreshLeftOnlineRewardTm = EventBase:new(nil)
 
 function EvEntityRefreshLeftOnlineRewardTm:new(o)
@@ -2171,7 +2168,6 @@ function EvEntityRefreshLeftOnlineRewardTm:Reset()
     self.left_reward_second = 0
 end
 
---��Ϣ
 EvRequestGetOnLineReward = EventBase:new(nil)
 function EvRequestGetOnLineReward:new(o)
     o = o or {}
@@ -2184,7 +2180,6 @@ end
 function EvRequestGetOnLineReward:Reset()
 end
 
---��Ϣ
 EvEntityCanGetOnlineReward = EventBase:new(nil)
 function EvEntityCanGetOnlineReward:new(o)
     o = o or {}
@@ -2223,18 +2218,6 @@ end
 
 function EvEntityCanGetTimingReward:Reset()
     self.can_getreward = false
-end
-
-EvClickShowReward = EventBase:new(nil)
-function EvClickShowReward:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.EventName = "EvViewClickShowReward"
-    return o
-end
-
-function EvClickShowReward:Reset()
 end
 
 EvEntityPlayerInitDone = EventBase:new(nil)

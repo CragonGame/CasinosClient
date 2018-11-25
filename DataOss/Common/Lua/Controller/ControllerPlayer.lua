@@ -42,11 +42,11 @@ function ControllerPlayer:OnCreate()
     self.ViewMgr:BindEvListener("EvUiRequestBankDeposit", self)
     self.ViewMgr:BindEvListener("EvCreateGiftShop", self)
     self.ViewMgr:BindEvListener("EvRequestGetPlayerModuleData", self)
-    self.ViewMgr:BindEvListener("EvRequestGetOnLineReward", self)
-    self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
+    --self.ViewMgr:BindEvListener("EvRequestGetOnLineReward", self)
+    --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
+    --self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
     self.ViewMgr:BindEvListener("EvUiChangeLan", self)
-    self.ViewMgr:BindEvListener("EvUiCloseActivityPopUpBox", self)
+    self.ViewMgr:BindEvListener("EvUiCloseActivityPopupBox", self)
     self.ViewMgr:BindEvListener("EvUiRequestGetReceiverAddress", self)
     self.ViewMgr:BindEvListener("EvUiRequestEditReceiverAddress", self)
     self.ViewMgr:BindEvListener("EvConsoleCmd", self)
@@ -65,9 +65,6 @@ function ControllerPlayer:OnCreate()
 
     local login = self.ControllerMgr:GetController("Login")
     login:canDestroyViewLogin()
-
-    self.OnlineReward = OnlineReward:new(nil, self.ControllerMgr.ViewMgr)
-    self.TimingReward = TimingReward:new(nil, self.ControllerMgr.ViewMgr)
 
     self:createMainUi()
 
@@ -165,14 +162,6 @@ function ControllerPlayer:OnCreate()
     self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerGetDailyRewardNotify, function(r)
         self:s2cPlayerGetDailyRewardNotify(r)
     end)
-    -- 获取在线奖励
-    self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerGetOnlineRewardRequestResult, function(result, reward)
-        self:s2cPlayerGetOnlineRewardRequestResult(result, reward)
-    end)
-    -- 在线奖励推送
-    self.ControllerMgr.RPC:RegRpcMethod3(self.MC.PlayerGetOnlineRewardNotify, function(online_reward_state, left_reward_second, next_reward)
-        self:s2cPlayerGetOnlineRewardNotify(online_reward_state, left_reward_second, next_reward)
-    end)
     -- 响应获取其他玩家信息
     self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerGetPlayerInfoOtherNotify, function(player_info, ticket)
         self:s2cPlayerGetPlayerInfoOtherNotify(player_info, ticket)
@@ -186,12 +175,6 @@ function ControllerPlayer:OnCreate()
     end)
     self.ControllerMgr.RPC:RegRpcMethod1(CommonMethodType.PlayerGetCasinosModuleDataWithFactoryNameNotify, function(r)
         self:OnPlayerGetCasinosModuleDataWithFactoryNameNotify(r)
-    end)
-    self.ControllerMgr.RPC:RegRpcMethod1(CommonMethodType.PlayerGetTimingRewardNotify, function(r)
-        self:OnPlayerGetTimingRewardNotify(r)
-    end)
-    self.ControllerMgr.RPC:RegRpcMethod2(CommonMethodType.PlayerGetTimingRewardRequestResult, function(r1, r2)
-        self:OnPlayerGetTimingRewardRequestResult(r1, r2)
     end)
     self.ControllerMgr.RPC:RegRpcMethod1(CommonMethodType.PlayerOpenUrlNotify, function(r)
         self:OnPlayerOpenUrlNotify(r)
@@ -276,19 +259,10 @@ function ControllerPlayer:OnHandleEv(ev)
         end
     elseif (ev.EventName == "EvRequestGetPlayerModuleData") then
         self.ControllerMgr.RPC:RPC1(self.MC.PlayerGetCasinosModuleDataWithFactoryNameRequest, ev.factory_name)
-    elseif (ev.EventName == "EvRequestGetOnLineReward") then
-        self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlineRewardRequest)
-    elseif (ev.EventName == "EvViewOnGetOnLineReward") then
-        self.OnlineReward:onGetReward()
-    elseif (ev.EventName == "EvViewRequestGetTimingReward") then
-        local can_get = self.TimingReward:onGetReward()
-        if can_get then
-            self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetTimingRewardRequest)
-        end
     elseif (ev.EventName == "EvUiChangeLan") then
         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("ChangeLaning"), 10)
         self.ControllerMgr.RPC:RPC1(self.MC.PlayerChangeLanRequest, ev.lan)
-    elseif (ev.EventName == "EvUiCloseActivityPopUpBox") then
+    elseif (ev.EventName == "EvUiCloseActivityPopupBox") then
         CS.UnityEngine.PlayerPrefs.SetString(self.ControllerActivity.CurrentActID, "true")
         self:CreateViewActivityPopUpBox()
     elseif (ev.EventName == "EvUiRequestGetReceiverAddress") then
@@ -412,20 +386,6 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
 end
 
 ---------------------------------------
-function ControllerPlayer:OnPlayerGetTimingRewardNotify(invite1)
-    local reward = TimingRewardData:new(nil)
-    reward:setData(invite1)
-    self.TimingReward:setTimingRewardData(reward)
-end
-
----------------------------------------
-function ControllerPlayer:OnPlayerGetTimingRewardRequestResult(result, reward_gold)
-    if result == ProtocolResult.Success then
-        ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:getLanValue("GetRewardSuccess"), tostring(reward_gold)))
-    end
-end
-
----------------------------------------
 function ControllerPlayer:OnPlayerOpenUrlNotify(url)
     self.ControllerMgr.UniWebView:Load(url)
     self.ControllerMgr.UniWebView:Show()
@@ -523,25 +483,6 @@ function ControllerPlayer:s2cPlayerGetDailyRewardNotify(r)
     else
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("GetDailyRewardFail"))
     end
-end
-
----------------------------------------
-function ControllerPlayer:s2cPlayerGetOnlineRewardRequestResult(result, reward)
-    if (result == ProtocolResult.Success) then
-        --[[local view_main = self.ControllerMgr.ViewMgr:GetView("Main")
-        if(view_main ~= nil)
-        then
-            view_main:ShowGetChipEffect()
-        end]]
-        ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:getLanValue("GetOnlinReward"), tostring(reward)))
-    else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("GetOnlinRewardFail"))
-    end
-end
-
----------------------------------------
-function ControllerPlayer:s2cPlayerGetOnlineRewardNotify(online_reward_state, left_reward_second, next_reward)
-    self.OnlineReward:setOnlineRewardState(online_reward_state, left_reward_second, next_reward)
 end
 
 ---------------------------------------
@@ -856,10 +797,6 @@ end
 ---------------------------------------
 -- 响应编辑收货地址
 function ControllerPlayer:s2cPlayerRequestEditAddressResult(result, address)
-    --[[if (result == ProtocolResult.Success)
-    then
-        local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
-        msg_box:showMsgBox1("", "信息提交成功")]]
     if (result == ProtocolResult.Failed) then
         local msg_box = self.ControllerMgr.ViewMgr:CreateView("MsgBox")
         msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("UploadAddressFailed"))
@@ -873,9 +810,6 @@ function ControllerPlayer:_timerUpdate(tm)
     if (self.GetOnlinePlayerNumTimeElapsed >= 5) then
         self.GetOnlinePlayerNumTimeElapsed = 0
         self:requestGetOnlinePlayerNum()
-    end
-    if (self.OnlineReward ~= nil) then
-        self.OnlineReward:Update()
     end
 end
 

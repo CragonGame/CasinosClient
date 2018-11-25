@@ -119,7 +119,6 @@ function ViewDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
     self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
     self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvViewClickShowReward", self)
     self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
     self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
 
@@ -507,9 +506,6 @@ function ViewDesktopH:OnHandleEv(ev)
             self.ViewTimingReward:setCanGetReward(ev.can_getreward)
             self.CanGetTimingReward = ev.can_getreward
             self:setNewReward()
-        elseif (ev.EventName == "EvViewClickShowReward") then
-            self.ComShadeReward.visible = true
-            self.TransitionShowReward:Play()
         elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
             self.ComShadeReward.visible = false
             self.TransitionShowReward:PlayReverse()

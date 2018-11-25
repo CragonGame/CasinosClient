@@ -33,18 +33,21 @@ function ViewDesktopMenuTexas:OnCreate()
             end)
     self.TransitiOnCreate = self.ComUi:GetTransition("TransitionCreate")
     self.TransitiOnCreate:Play()
+
     local com_shade = self.ComUi:GetChild("ComShade").asCom
     com_shade.onClick:Add(
             function()
                 self:_onClickContinue()
             end
     )
+
     local btn_exitgame = self.ComUi:GetChild("Lan_Btn_ExitGame").asButton
     btn_exitgame.onClick:Add(
             function()
                 self:_onClickExit()
             end
     )
+
     local btn_inviteFriend = self.ComUi:GetChild("Lan_Btn_InviteFriend").asButton
     btn_inviteFriend.onClick:Add(
             function()
@@ -58,14 +61,14 @@ function ViewDesktopMenuTexas:OnCreate()
                 self:_onClickHelp()
             end
     )
+
     local btn_reward = self.ComUi:GetChild("BtnReward").asButton
-    --self.ComRewardTips = btn_reward:GetChild("ComRewardTips").asCom
-    --self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     btn_reward.onClick:Add(
             function()
                 self:close()
                 self.ViewMgr:CreateView('Reward')
             end)
+
     self.mIsOb = false
     self.mIsWaitwhile = false
 end
@@ -87,15 +90,6 @@ function ViewDesktopMenuTexas:setPlayerState(is_ob, is_waitwhile, have_reward)
         self.GBtnStandUp.enabled = true
         self.GBtnLeaveInMiddle.enabled = true
     end
-
-    --if (have_reward == false) then
-    --    ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
-    --else
-    --    ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
-    --    if (self.TransitionNewReward.playing == false) then
-    --        self.TransitionNewReward:Play()
-    --    end
-    --end
 end
 
 ---------------------------------------
@@ -159,6 +153,7 @@ end
 
 ---------------------------------------
 function ViewDesktopMenuTexas:close()
+    close()
     self.TransitiOnCreate:PlayReverse(
             function()
                 self.ViewMgr:DestroyView(self)

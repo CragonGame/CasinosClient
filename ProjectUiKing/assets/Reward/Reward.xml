@@ -4,12 +4,15 @@
     <component id="n0_dpbd" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
       <relation target="" sidePair="width-width,height-height"/>
     </component>
-    <text id="n1_dpbd" name="TextTitle" xy="500,83" size="90,49" fontSize="30" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" text="福利"/>
+    <text id="n1_dpbd" name="TextTitle" xy="500,83" size="90,49" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" ubb="true" autoSize="none" text="福利"/>
     <component id="n2_dpbd" name="RewardOnline" src="dpbd1" fileName="Component/RewardOnline.xml" xy="166,161">
       <relation target="" sidePair="center-center,top-top"/>
     </component>
     <component id="n3_dpbd" name="RewardTiming" src="dpbd2" fileName="Component/RewardTiming.xml" xy="166,266">
       <relation target="" sidePair="center-center,top-top"/>
     </component>
+    <image id="n4_dpbd" name="n4" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="459,75"/>
+    <image id="n5_dpbd" name="n5" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="630,75" skew="0,180"/>
+    <image id="n6_dpbd" name="n6" src="dpbd4" fileName="Image/UI2_Icon_邮件.png" xy="153,78"/>
   </displayList>
 </component>
