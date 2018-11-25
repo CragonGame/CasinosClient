@@ -21,7 +21,7 @@ end
 
 ---------------------------------------
 function ViewReward:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("About"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Reward"))
 end
 
 ---------------------------------------
@@ -36,8 +36,7 @@ end
 ViewRewardFactory = ViewFactory:new()
 
 ---------------------------------------
-function ViewRewardFactory:new(o, ui_package_name, ui_component_name,
-                               ui_layer, is_single, fit_screen)
+function ViewRewardFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self

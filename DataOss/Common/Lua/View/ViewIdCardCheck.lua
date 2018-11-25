@@ -90,8 +90,7 @@ end
 ViewIdCardCheckFactory = ViewFactory:new()
 
 ---------------------------------------
-function ViewIdCardCheckFactory:new(o, ui_package_name, ui_component_name,
-                                    ui_layer, is_single, fit_screen)
+function ViewIdCardCheckFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self

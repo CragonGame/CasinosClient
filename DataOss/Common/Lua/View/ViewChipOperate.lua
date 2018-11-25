@@ -2,6 +2,57 @@
 -- 换钱对话框
 
 ---------------------------------------
+ViewSlideEx = {}
+
+function ViewSlideEx:new(o, slider, top_num, bottom_num, slider_defaultvalue, slider_changeaction)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.UISlider = slider
+    o.UISlider.max = 1
+    o.TopNum = top_num
+    o.BottomNum = bottom_num
+    o.UISlider.value = slider_defaultvalue
+    o.CurrentValueNum = (o.TopNum + o.BottomNum) * o.UISlider.value
+    o.UISlider.onChanged:Add(
+            function()
+                o:sliderChange()
+            end
+    )
+    o.SliderChangeAction = slider_changeaction
+    return o
+end
+
+function ViewSlideEx:changeValue(is_plus, change_value)
+    local value = self.UISlider.value
+    if (is_plus) then
+        value = value + change_value
+    else
+        value = value - change_value
+    end
+
+    if (value > 1) then
+        value = 1
+    end
+
+    if (value < 0) then
+        value = 0
+    end
+
+    self.UISlider.value = value
+    self:sliderChange()
+end
+
+function ViewSlideEx:sliderChange()
+    local value = (self.TopNum - self.BottomNum) * self.UISlider.value
+    value = value + self.BottomNum
+    self.CurrentValueNum = value
+    if (self.SliderChangeAction ~= nil) then
+        self.SliderChangeAction(self.CurrentValueNum)
+    end
+end
+
+---------------------------------------
 ViewChipOperate = ViewBase:new()
 
 ---------------------------------------
@@ -218,8 +269,7 @@ end
 ViewChipOperateFactory = ViewFactory:new()
 
 ---------------------------------------
-function ViewChipOperateFactory:new(o, ui_package_name, ui_component_name,
-                                    ui_layer, is_single, fit_screen)
+function ViewChipOperateFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -235,58 +285,4 @@ end
 function ViewChipOperateFactory:CreateView()
     local view = ViewChipOperate:new(nil)
     return view
-end
-
----------------------------------------
-ViewSlideEx = {}
-
----------------------------------------
-function ViewSlideEx:new(o, slider, top_num, bottom_num, slider_defaultvalue, slider_changeaction)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.UISlider = slider
-    o.UISlider.max = 1
-    o.TopNum = top_num
-    o.BottomNum = bottom_num
-    o.UISlider.value = slider_defaultvalue
-    o.CurrentValueNum = (o.TopNum + o.BottomNum) * o.UISlider.value
-    o.UISlider.onChanged:Add(
-            function()
-                o:sliderChange()
-            end
-    )
-    o.SliderChangeAction = slider_changeaction
-    return o
-end
-
----------------------------------------
-function ViewSlideEx:changeValue(is_plus, change_value)
-    local value = self.UISlider.value
-    if (is_plus) then
-        value = value + change_value
-    else
-        value = value - change_value
-    end
-
-    if (value > 1) then
-        value = 1
-    end
-
-    if (value < 0) then
-        value = 0
-    end
-
-    self.UISlider.value = value
-    self:sliderChange()
-end
-
----------------------------------------
-function ViewSlideEx:sliderChange()
-    local value = (self.TopNum - self.BottomNum) * self.UISlider.value
-    value = value + self.BottomNum
-    self.CurrentValueNum = value
-    if (self.SliderChangeAction ~= nil) then
-        self.SliderChangeAction(self.CurrentValueNum)
-    end
 end

@@ -75,8 +75,7 @@ end
 ViewTakePhotoFactory = ViewFactory:new()
 
 ---------------------------------------
-function ViewTakePhotoFactory:new(o, ui_package_name, ui_component_name,
-                                  ui_layer, is_single, fit_screen)
+function ViewTakePhotoFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self

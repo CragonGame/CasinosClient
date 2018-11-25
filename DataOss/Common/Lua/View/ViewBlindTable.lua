@@ -114,8 +114,7 @@ end
 ViewBlindTableFactory = ViewFactory:new()
 
 ---------------------------------------
-function ViewBlindTableFactory:new(o, ui_package_name, ui_component_name,
-                                   ui_layer, is_single, fit_screen)
+function ViewBlindTableFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self

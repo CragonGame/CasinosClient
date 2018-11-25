@@ -1,5 +1,5 @@
 -- Copyright(c) Cragon. All rights reserved.
--- 只剩msgpack版的ItemData1
+-- 只剩MsgPack版的ItemData1
 
 ---------------------------------------
 ControllerBag = ControllerBase:new(nil)

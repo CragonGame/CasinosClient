@@ -23,12 +23,12 @@ end
 
 ---------------------------------------
 function ControllerReward:OnCreate()
-    print('ControllerReward:OnCreate()')
+    --print('ControllerReward:OnCreate()')
 end
 
 ---------------------------------------
 function ControllerReward:OnDestroy()
-    print('ControllerReward:OnDestroy()')
+    --print('ControllerReward:OnDestroy()')
     self.ViewMgr:UnbindEvListener(self)
 end
 

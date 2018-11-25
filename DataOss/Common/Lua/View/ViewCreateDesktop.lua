@@ -104,7 +104,7 @@ function ViewCreateDesktop:onClickBtnCreate()
     print(self.ListAnte.selectedIndex, i.Ante)
     local create_info = PrivateDesktopCreateInfo:new(nil)
     create_info.FactoryName = "Texas"
-    create_info.Data = self.ViewMgr:PackData(create_infotexas:getData4Pack()) -- CS.Casinos.LuaHelper.ProtobufSerializePrivateDesktopCreateInfoTexas(create_infotexas)
+    create_info.Data = self.ViewMgr:PackData(create_infotexas:getData4Pack())
     local ev = self.ViewMgr:GetEv("EvUiClickCreateDeskTop")
     if (ev == nil) then
         ev = EvUiClickCreateDeskTop:new(nil)
@@ -118,8 +118,7 @@ end
 ViewCreateDesktopFactory = ViewFactory:new()
 
 ---------------------------------------
-function ViewCreateDesktopFactory:new(o, ui_package_name, ui_component_name,
-                                      ui_layer, is_single, fit_screen)
+function ViewCreateDesktopFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
