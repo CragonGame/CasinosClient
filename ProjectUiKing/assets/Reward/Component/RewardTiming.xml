@@ -3,7 +3,7 @@
   <controller name="BtnState" pages="0,,1," selected="0"/>
   <displayList>
     <image id="n0_dpbd" name="n0" src="wb2ek6" fileName="Image/New/ItemBg.png" pkg="nhvxw9ov" xy="0,0"/>
-    <component id="n1_dpbd" name="n1" src="dpbd3" fileName="Component/Btn1.xml" xy="567,7">
+    <component id="n1_dpbd" name="n1" src="dpbd3" fileName="Component/Btn1.xml" xy="572,12">
       <Button title="领取" titleColor="#ffffff" titleFontSize="30"/>
     </component>
     <text id="n2_dpbd" name="n2" xy="51,10" size="131,34" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text="定时奖励"/>
