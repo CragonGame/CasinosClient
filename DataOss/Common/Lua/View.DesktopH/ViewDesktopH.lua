@@ -258,15 +258,15 @@ function ViewDesktopH:OnCreate()
                 self.TransitionShowReward:PlayReverse()
             end
     )
-    local com_reward = self.ComUi:GetChild("ComReward").asCom
-    local co_onlinereward = com_reward:GetChild("ComOnlineReward").asCom
-    self.ViewOnlineReward = ViewOnlineReward:new(nil, co_onlinereward, self.ViewMgr)
-    self.CanGetOnLineReward = self.ControllerPlayer.OnlineReward:IfCanGetReward()
-    self.ViewOnlineReward:setCanGetReward(self.CanGetOnLineReward)
-    local co_timingreward = com_reward:GetChild("ComPushReward").asCom
-    self.ViewTimingReward = ViewTimingReward:new(nil, co_timingreward, self.ViewMgr)
-    self.CanGetTimingReward = self.ControllerPlayer.TimingReward:IfCanGetReward()
-    self.ViewTimingReward:setCanGetReward(self.CanGetTimingReward)
+    --local com_reward = self.ComUi:GetChild("ComReward").asCom
+    --local co_onlinereward = com_reward:GetChild("ComOnlineReward").asCom
+    --self.ViewOnlineReward = ViewOnlineReward:new(nil, co_onlinereward, self.ViewMgr)
+    --self.CanGetOnLineReward = self.ControllerPlayer.OnlineReward:IfCanGetReward()
+    --self.ViewOnlineReward:setCanGetReward(self.CanGetOnLineReward)
+    --local co_timingreward = com_reward:GetChild("ComPushReward").asCom
+    --self.ViewTimingReward = ViewTimingReward:new(nil, co_timingreward, self.ViewMgr)
+    --self.CanGetTimingReward = self.ControllerPlayer.TimingReward:IfCanGetReward()
+    --self.ViewTimingReward:setCanGetReward(self.CanGetTimingReward)
     self.ComRewardTips = self.ComUi:GetChild("ComRewardTips").asCom
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     self:setNewReward()
@@ -496,19 +496,19 @@ function ViewDesktopH:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityUnreadChatsChanged") then
             local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
             self:_setNewChatCount(all_unreadchat_count)
-        elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
-            self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
-        elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
-            self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
-            self.CanGetOnLineReward = ev.can_getreward
-            self:setNewReward()
-        elseif (ev.EventName == "EvEntityCanGetTimingReward") then
-            self.ViewTimingReward:setCanGetReward(ev.can_getreward)
-            self.CanGetTimingReward = ev.can_getreward
-            self:setNewReward()
-        elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
-            self.ComShadeReward.visible = false
-            self.TransitionShowReward:PlayReverse()
+        --elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
+        --    self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
+        --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
+        --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
+        --    self.CanGetOnLineReward = ev.can_getreward
+        --    self:setNewReward()
+        --elseif (ev.EventName == "EvEntityCanGetTimingReward") then
+        --    self.ViewTimingReward:setCanGetReward(ev.can_getreward)
+        --    self.CanGetTimingReward = ev.can_getreward
+        --    self:setNewReward()
+        --elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
+        --    self.ComShadeReward.visible = false
+        --    self.TransitionShowReward:PlayReverse()
         end
     end
 end
@@ -1242,17 +1242,17 @@ end
 ---------------------------------------
 function ViewDesktopH:setNewReward()
     local have_newreward = false
-    if (self.CanGetOnLineReward or self.CanGetTimingReward) then
-        have_newreward = true
-    end
+    --if (self.CanGetOnLineReward or self.CanGetTimingReward) then
+    --    have_newreward = true
+    --end
 
     if (have_newreward == false) then
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
-        if (self.TransitionNewReward.playing == false) then
-            self.TransitionNewReward:Play()
-        end
+        --if (self.TransitionNewReward.playing == false) then
+        --    self.TransitionNewReward:Play()
+        --end
     end
 end
 

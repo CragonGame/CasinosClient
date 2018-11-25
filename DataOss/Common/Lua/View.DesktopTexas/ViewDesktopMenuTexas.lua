@@ -153,7 +153,7 @@ end
 
 ---------------------------------------
 function ViewDesktopMenuTexas:close()
-    close()
+    --close()
     self.TransitiOnCreate:PlayReverse(
             function()
                 self.ViewMgr:DestroyView(self)
