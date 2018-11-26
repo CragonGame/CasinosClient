@@ -2,19 +2,16 @@
 
 ---------------------------------------
 -- 配置，Launch
-LaunchConfig = {}
+LaunchConfig = {
+    CasinosContext = CS.Casinos.CasinosContext.Instance;
+    LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr;
+    Env = 'Pro';
+    CurrentLan = 'ChineseSimplified';
+    CommonVersion = nil;
+    DataVersion = nil
+}
 
-function LaunchConfig:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
-    self.Env = 'Pro'
-    self.CurrentLan = 'ChineseSimplified'
-    self.CommonVersion = nil
-    self.DataVersion = nil
-
+function LaunchConfig:Setup()
     -- 获取Env值
     local env_key = "Env"
     if (CS.UnityEngine.PlayerPrefs.HasKey(env_key) == true) then
@@ -28,37 +25,25 @@ function LaunchConfig:new(o)
     else
         self.CurrentLan = self.LuaMgr:GetSystemLanguageAsString()
     end
-
-    return o
 end
 
 ---------------------------------------
-Launch = {}
-
----------------------------------------
-function Launch:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.LaunchCfg = LaunchConfig:new(nil)
-        self.PreViewMgr = nil
-        self.PreLoading = nil
-        self.PreMsgBox = nil
-        self.CasinosContext = CS.Casinos.CasinosContext.Instance
-        self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
-        self.Context = nil
-        self.UIPackagePreLoading = nil
-        self.UIPackageMsgbox = nil
-        self.Instance = o
-    end
-    return self.Instance
-end
+Launch = {
+    LaunchCfg = LaunchConfig;
+    PreViewMgr = nil;
+    PreLoading = nil;
+    PreMsgBox = nil;
+    CasinosContext = CS.Casinos.CasinosContext.Instance;
+    LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr;
+    Context = nil;
+    UIPackagePreLoading = nil;
+    UIPackageMsgbox = nil
+}
 
 ---------------------------------------
 -- 初始化
 function Launch:Setup()
-    Launch:new(nil)
+    self.LaunchCfg:Setup()
     --print('Launch:Setup() Env=' .. self.LaunchCfg.Env)
 
     require 'PreViewMgr'
@@ -109,9 +94,9 @@ function Launch:Setup()
                 async_asset_loadgroup:LoadWWWAsync(http_url_context,
                         function(url, www)
                             self.LuaMgr:LoadLuaFromBytes('Context', www.text)
-                            self.LuaMgr:DoString('Context')
-                            self.Context = Context:new(nil)
-                            self.Context:Init()
+                            require('Context')
+                            self.Context = Context
+                            Context:Init()
                         end
                 )
             end
