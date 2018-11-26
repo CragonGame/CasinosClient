@@ -47,6 +47,15 @@ function ViewReward:OnCreate()
                 self:_onClickOnlineReward()
             end
     )
+
+    local com_rewardtiming = self.ComUi:GetChild("RewardTiming").asCom
+
+    self.GBtnTimingReward = com_rewardtiming:GetChild("BtnGetTimingReward").asButton
+    self.GBtnTimingReward.onClick:Add(
+            function()
+                self:_onClickTimingReward()
+            end
+    )
 end
 
 ---------------------------------------

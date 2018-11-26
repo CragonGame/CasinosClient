@@ -425,7 +425,7 @@ function ViewDesktopPlayerInfoTexas:SetPlayerInfo(player, parent, pos, desk_seat
     self.UiHandCardSecond:hideHighLight()
     ViewHelper:SetGObjectVisible(false, self.GImageFriendMark)
     if (self.ViewDesktop ~= nil) then
-        self.ViewDesktop:playerSitInDesk(self.Player.UiSeatIndex)
+        self.ViewDesktop:PlayerSitdown(self.Player.UiSeatIndex)
     end
     self.PlayerSeatWidgetControllerEx:init()
 

@@ -346,13 +346,13 @@ function ViewMain:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
-    self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
-    self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
-    self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
     self.ViewMgr:BindEvListener("EvEntityIsFirstRechargeChanged", self)
     self.ViewMgr:BindEvListener("EvEntityFriendGoldChange", self)
-    self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
+    --self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
+    --self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
+    --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
+    --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
+    --self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChats", self)
     self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
@@ -529,23 +529,23 @@ function ViewMain:OnHandleEv(ev)
             self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
             self:RefreshLotteryTickLeftTm(ev.tm)
-        elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
-            --self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
-        elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
-            --self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
-            --self.CanGetOnLineReward = ev.can_getreward
-            self:SetNewReward()
-        elseif (ev.EventName == "EvEntityCanGetTimingReward") then
-            --self.ViewTimingReward:setCanGetReward(ev.can_getreward)
-            --self.CanGetTimingReward = ev.can_getreward
-            self:SetNewReward()
+        --elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
+        --    self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
+        --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
+        --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
+        --    self.CanGetOnLineReward = ev.can_getreward
+        --    self:SetNewReward()
+        --elseif (ev.EventName == "EvEntityCanGetTimingReward") then
+        --    self.ViewTimingReward:setCanGetReward(ev.can_getreward)
+        --    self.CanGetTimingReward = ev.can_getreward
+        --    self:SetNewReward()
         elseif (ev.EventName == "EvEntityIsFirstRechargeChanged") then
             local com_recharge_first = self.ComUi:GetChild("ComRechargeFirst").asCom
             com_recharge_first.visible = false
             self.BtnRegister.position = com_recharge_first.position
-        elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
-            self.ComShadeReward.visible = false
-            self.TransitionShowReward:PlayReverse()
+        --elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
+        --    self.ComShadeReward.visible = false
+        --    self.TransitionShowReward:PlayReverse()
         elseif (ev.EventName == "EvEntityReceiveFeedbackChat") then
             self:setHaveFeedback()
         elseif (ev.EventName == "EvEntityReceiveFeedbackChats") then

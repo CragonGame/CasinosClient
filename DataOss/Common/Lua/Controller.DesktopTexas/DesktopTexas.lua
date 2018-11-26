@@ -272,7 +272,7 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     self.TFastBetInfoPreFlop = TbDataHelper:GetDesktopFastBet(pre_flop_key)
     self.TFastBetInfoNotPreFlop = TbDataHelper:GetDesktopFastBet(not_preflop)
 
-    ui_desk:setDesktopSnapshotData(self, snapshot_data, is_init, desktoptype_facname)
+    ui_desk:SetDesktopSnapshotData(self, snapshot_data, is_init, desktoptype_facname)
     self.MeAllCard = {}
     if (snapshot_data.my_hand_card ~= nil) then
         for i, v in pairs(snapshot_data.my_hand_card) do

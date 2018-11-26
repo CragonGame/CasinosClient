@@ -93,11 +93,11 @@ function ViewDesktopTexas:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityMTTUpdateRaiseBlindTm", self)
     self.ViewMgr:BindEvListener("EvMTTPauseChanged", self)
     self.ViewMgr:BindEvListener("EvEntityMatchGameOver", self)
-    self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
-    self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
-    self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
+    --self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
+    --self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
+    --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
+    --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
+    --self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
 
     self.Flow = UiDesktopTexasFlow:new(nil, self)
     self.Flow:Create()
@@ -399,7 +399,7 @@ function ViewDesktopTexas:_timerUpdate(elapsed_tm)
 end
 
 ---------------------------------------
-function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init, desktoptype_facname)
+function ViewDesktopTexas:SetDesktopSnapshotData(desktop, desktop_data, is_init, desktoptype_facname)
     self.DesktopBase = desktop
     local desktop_texas = desktop
     local snapshot_data = desktop_data
@@ -454,7 +454,7 @@ function ViewDesktopTexas:setDesktopSnapshotData(desktop, desktop_data, is_init,
 end
 
 ---------------------------------------
-function ViewDesktopTexas:playerSitInDesk(seat_index)
+function ViewDesktopTexas:PlayerSitdown(seat_index)
     local chair_info = self:_getSeatInfoFromNoPlayerSeat(seat_index)
     if (chair_info ~= nil) then
         self.MapValidNoPlayerSeat[seat_index] = nil
@@ -463,7 +463,7 @@ function ViewDesktopTexas:playerSitInDesk(seat_index)
 end
 
 ---------------------------------------
-function ViewDesktopTexas:playerLeaveDesk(seat_index)
+function ViewDesktopTexas:PlayerLeave(seat_index)
     self:_playerLeaveSeat(seat_index)
 end
 

@@ -21,8 +21,8 @@ end
 
 ---------------------------------------
 function ViewDesktopMenuTexas:OnCreate()
-    self.GBtnStandUp = self.ComUi:GetChild("Lan_Btn_StandUp").asButton
-    self.GBtnStandUp.onClick:Add(
+    self.GBtnStandup = self.ComUi:GetChild("Lan_Btn_StandUp").asButton
+    self.GBtnStandup.onClick:Add(
             function()
                 self:_onClickStandUp()
             end)
@@ -82,12 +82,12 @@ function ViewDesktopMenuTexas:setPlayerState(is_ob, is_waitwhile, have_reward)
     self.mIsOb = is_ob
     self.mIsWaitwhile = is_waitwhile
     if (is_ob) then
-        self.GBtnStandUp.enabled = false
+        self.GBtnStandup.enabled = false
         self.GBtnLeaveInMiddle.enabled = false
     elseif (is_waitwhile) then
         self.GBtnLeaveInMiddle.enabled = false
     else
-        self.GBtnStandUp.enabled = true
+        self.GBtnStandup.enabled = true
         self.GBtnLeaveInMiddle.enabled = true
     end
 end

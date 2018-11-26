@@ -95,7 +95,7 @@ function DesktopPlayerTexas:Destroy()
     local view_mgr = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr
     local ui_desk = view_mgr:GetView("DesktopTexas")
     if (ui_desk ~= nil) then
-        ui_desk:playerLeaveDesk(self.UiSeatIndex)
+        ui_desk:PlayerLeave(self.UiSeatIndex)
     end
 
     if self.PlayerOperate ~= nil then
