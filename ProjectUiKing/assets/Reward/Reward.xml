@@ -19,7 +19,7 @@
     <image id="n5_dpbd" name="n5" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="630,75" skew="0,180">
       <relation target="" sidePair="left-center,top-top"/>
     </image>
-    <image id="n6_dpbd" name="n6" src="dpbd4" fileName="Image/UI2_Icon_邮件.png" xy="153,78">
+    <image id="n6_dpbd" name="n6" src="dpbd4" fileName="Image/UI2_Icon_邮件.png" xy="153,79">
       <relation target="" sidePair="right-center,top-top"/>
     </image>
   </displayList>

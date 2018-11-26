@@ -5,32 +5,50 @@
 UiRewardOnline = {
     CasinosContext = CS.Casinos.CasinosContext.Instance;
     LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr;
+    ControllerReward = nil;
     ViewMgr = nil;
     ComUi = nil;
-    GTextOnlineCountDownTm = 0;
+    GTextInfo = '';
+    CanGetOnlineReward = false;
     GBtnOnlineReward = nil
 }
 
 function UiRewardOnline:Create(view_mgr, com_ui)
     self.ViewMgr = view_mgr
     self.ComUi = com_ui
+    self.ControllerReward = ControllerReward
     local com_rewardonline = self.ComUi:GetChild("RewardOnline").asCom
 
-    self.GTextOnlineCountDownTm = com_rewardonline:GetChild("TextCountdown").asTextField
+    self.GTextInfo = com_rewardonline:GetChild("TextInfo").asTextField
     self.GBtnOnlineReward = com_rewardonline:GetChild("BtnGetOnlineReward").asButton
     self.GBtnOnlineReward.onClick:Add(
             function()
                 self:_onClickBtnOnlineReward()
             end
     )
+
+    if self.ControllerReward.RewardOnline.CanGetReward == true then
+        self.CanGetOnlineReward = true
+        self.GBtnOnlineReward.enabled = true
+        self.GTextInfo.text = string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
+    else
+        self.CanGetOnlineReward = false
+        self.GBtnOnlineReward.enabled = false
+        self.GTextInfo.text = string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
+    end
 end
 
 function UiRewardOnline:Destroy()
     self.GBtnOnlineReward.onClick:Clear()
 end
 
-function UiRewardOnline:SetOnlineRewardLeftTm(left_tm)
-    self.GTextOnlineCountDownTm.text = left_tm
+function UiRewardOnline:RefreshLeftTmInfo()
+    self.GTextInfo.text = string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
+end
+
+function UiRewardOnline:SetCanGetOnlineReward(can_get_reward)
+    self.CanGetOnlineReward = can_get_reward
+    self.GBtnOnlineReward.enabled = can_get_reward
 end
 
 function UiRewardOnline:_onClickBtnOnlineReward()
@@ -46,8 +64,10 @@ end
 UiRewardTiming = {
     CasinosContext = CS.Casinos.CasinosContext.Instance;
     LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr;
+    ControllerReward = nil;
     ViewMgr = nil;
     ComUi = nil;
+    GTextInfo = '';
     GBtnTimingReward = nil;
     CanGetTimingReward = false
 }
@@ -55,14 +75,24 @@ UiRewardTiming = {
 function UiRewardTiming:Create(view_mgr, com_ui)
     self.ViewMgr = view_mgr
     self.ComUi = com_ui
+    self.ControllerReward = ControllerReward
     local com_rewardtiming = self.ComUi:GetChild("RewardTiming").asCom
 
+    self.GTextInfo = com_rewardtiming:GetChild("TextInfo").asTextField
     self.GBtnTimingReward = com_rewardtiming:GetChild("BtnGetTimingReward").asButton
     self.GBtnTimingReward.onClick:Add(
             function()
                 self:_onClickBtnTimingReward()
             end
     )
+
+    if self.ControllerReward.RewardTiming.CanGetReward == true then
+        self.CanGetTimingReward = true
+        self.GBtnTimingReward.enabled = true
+    else
+        self.CanGetTimingReward = false
+        self.GBtnTimingReward.enabled = false
+    end
 end
 
 function UiRewardTiming:Destroy()
@@ -71,6 +101,7 @@ end
 
 function UiRewardTiming:SetCanGetTimingReward(can_get_reward)
     self.CanGetTimingReward = can_get_reward
+    self.GBtnTimingReward.enabled = can_get_reward
 end
 
 function UiRewardTiming:_onClickBtnTimingReward()
@@ -99,7 +130,7 @@ function ViewReward:new(o)
     o.InitDepth = nil
     o.ViewKey = nil
     o.Tween = nil
-    o.CanGetTimingReward = false
+    o.ControllerReward = ControllerReward
     o.UiRewardOnline = UiRewardOnline
     o.UiRewardTiming = UiRewardTiming
     return o
@@ -108,6 +139,8 @@ end
 ---------------------------------------
 function ViewReward:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Reward"))
+
+    self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
 
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
@@ -139,13 +172,18 @@ function ViewReward:OnDestroy()
 end
 
 ---------------------------------------
-function ViewReward:SetOnlineRewardLeftTm(left_tm)
-    self.UiRewardOnline:SetOnlineRewardLeftTm(left_tm)
-end
-
----------------------------------------
-function ViewReward:SetCanGetTimingReward(can_get_reward)
-    self.UiRewardTiming:SetCanGetTimingReward(can_get_reward)
+function ViewReward:OnHandleEv(ev)
+    if (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
+        self.UiRewardOnline:RefreshLeftTmInfo()
+    elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
+        -- Model告知可领，Ui刷新小红点
+        self.UiRewardOnline:SetCanGetOnlineReward(ev.can_getreward)
+        --self:setNewReward()
+    elseif (ev.EventName == "EvEntityCanGetTimingReward") then
+        -- Model告知可领，Ui刷新小红点
+        self.UiRewardTiming:SetCanGetTimingReward(ev.can_getreward)
+        --self:setNewReward()
+    end
 end
 
 ---------------------------------------

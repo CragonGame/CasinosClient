@@ -116,7 +116,6 @@ function ViewDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
     self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
-    --self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
     --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
@@ -496,8 +495,6 @@ function ViewDesktopH:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityUnreadChatsChanged") then
             local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
             self:_setNewChatCount(all_unreadchat_count)
-        --elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
-        --    self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
         --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
         --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
         --    self.CanGetOnLineReward = ev.can_getreward

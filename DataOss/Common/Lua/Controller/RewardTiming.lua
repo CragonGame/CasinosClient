@@ -10,6 +10,7 @@ function RewardTiming:new(o, view_mgr)
     setmetatable(o, self)
     self.__index = self
     self.ViewMgr = view_mgr
+    self.ControllerReward = ControllerReward
     o.Type = TimingRewardType.None
     o.Get = false
     o.RewardGold = 0
@@ -28,6 +29,7 @@ function RewardTiming:SetTimingRewardData(reward)
         self.CanGetReward = false
     end
     self:_sendCanGetReward()
+    self.ControllerReward:RefreshRedPoint()-- 刷新小红点状态
 end
 
 ---------------------------------------

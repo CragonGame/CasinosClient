@@ -93,7 +93,6 @@ function ViewDesktopTexas:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityMTTUpdateRaiseBlindTm", self)
     self.ViewMgr:BindEvListener("EvMTTPauseChanged", self)
     self.ViewMgr:BindEvListener("EvEntityMatchGameOver", self)
-    --self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
     --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
@@ -341,8 +340,6 @@ function ViewDesktopTexas:OnHandleEv(ev)
         elseif (ev.EventName == "EvUiPotMainChanged") then
             -- 从Model发出
             self.UiPot:showAllPotValue(ev.pot_mian)
-        --elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
-        --    self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
         --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
         --    -- Model告知可领，Ui刷新小红点
         --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)

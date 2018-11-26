@@ -7,7 +7,6 @@
       <Button title="领取" titleColor="#ffffff" titleFontSize="30"/>
     </component>
     <text id="n3_dpbd" name="n3" xy="55,11" size="131,34" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text="在线奖励"/>
-    <text id="n4_dpbd" name="n4" xy="59,56" size="425,31" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text="在线到一定时长后可以领取一些筹码"/>
-    <text id="n5_dpbd" name="TextCountdown" xy="381,11" size="147,31" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text=""/>
+    <text id="n4_dpbd" name="TextInfo" xy="59,56" size="425,31" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text="在线到一定时长后可以领取一些筹码"/>
   </displayList>
 </component>

@@ -10,6 +10,7 @@ function RewardOnline:new(o, view_mgr)
     setmetatable(o, self)
     self.__index = self
     self.ViewMgr = view_mgr
+    self.ControllerReward = ControllerReward
     o.OnlineRewardState = OnlineRewardState.CountDown
     o.LeftTm = 0
     o.CanGetReward = false
@@ -19,8 +20,7 @@ function RewardOnline:new(o, view_mgr)
 end
 
 ---------------------------------------
-function RewardOnline:Update()
-    local tm = 1
+function RewardOnline:Update(tm)
     if (self.CanGetReward == false) then
         if (self.LeftTm > 0) then
             self.LeftTm = self.LeftTm - tm
@@ -81,4 +81,6 @@ function RewardOnline:_sendCanGetReward()
     end
     ev.can_getreward = self.CanGetReward
     self.ViewMgr:SendEv(ev)
+
+    self.ControllerReward:RefreshRedPoint()-- 刷新小红点状态
 end

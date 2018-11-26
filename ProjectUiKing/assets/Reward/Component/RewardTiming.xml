@@ -7,6 +7,6 @@
       <Button title="领取" titleColor="#ffffff" titleFontSize="30"/>
     </component>
     <text id="n2_dpbd" name="n2" xy="51,10" size="131,34" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text="定时奖励"/>
-    <text id="n3_dpbd" name="n3" xy="49,53" size="511,31" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text="每天12点,18点起的1小时内可以领取一些筹码"/>
+    <text id="n3_dpbd" name="TextInfo" xy="49,53" size="511,31" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text="每天12点,18点起的1小时内可以领取一些筹码"/>
   </displayList>
 </component>

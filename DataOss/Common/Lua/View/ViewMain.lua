@@ -253,8 +253,8 @@ function ViewMain:OnCreate()
                 self.TransitionShowReward:PlayReverse()
             end
     )
-    local com_reward = self.ComUi:GetChild("ComReward").asCom
-    local co_onlinereward = com_reward:GetChild("ComOnlineReward").asCom
+    --local com_reward = self.ComUi:GetChild("ComReward").asCom
+    --local co_onlinereward = com_reward:GetChild("ComOnlineReward").asCom
     --self.ViewOnlineReward = ViewOnlineReward:new(nil, co_onlinereward, self.ViewMgr)
     --self.CanGetOnLineReward = self.ControllerPlayer.OnlineReward:IfCanGetReward()
     --self.ViewOnlineReward:setCanGetReward(self.CanGetOnLineReward)
@@ -264,7 +264,7 @@ function ViewMain:OnCreate()
     --self.ViewTimingReward:setCanGetReward(self.CanGetTimingReward)
     self.ComRewardTips = self.ComUi:GetChild("ComRewardTips").asCom
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
-    self:SetNewReward()
+    self:RefreshRedPointRewardState()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionShowReward")
     self.ComWelfareIcon = self.ComUi:GetChild("ComWelfareIcon").asCom
     self.ComWelfareIcon.onClick:Add(
@@ -348,7 +348,6 @@ function ViewMain:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
     self.ViewMgr:BindEvListener("EvEntityIsFirstRechargeChanged", self)
     self.ViewMgr:BindEvListener("EvEntityFriendGoldChange", self)
-    --self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
     --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
@@ -356,6 +355,7 @@ function ViewMain:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChats", self)
     self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
+    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
 
     self.PosGetChipEffectParticle = self.ComUi:GetChild("ComPosGetChipParticle").asCom.position
     local ab_particle_desktop = ParticleHelper:GetParticel("btndesktopparticle.ab")
@@ -529,8 +529,6 @@ function ViewMain:OnHandleEv(ev)
             self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
             self:RefreshLotteryTickLeftTm(ev.tm)
-        --elseif (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
-        --    self.ViewOnlineReward:setLeftTm(ev.left_reward_second)
         --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
         --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
         --    self.CanGetOnLineReward = ev.can_getreward
@@ -552,6 +550,10 @@ function ViewMain:OnHandleEv(ev)
             self:setHaveFeedback()
         elseif (ev.EventName == "EvEntityBagAddItem") then
             self:setNewItem()
+        elseif (ev.EventName == "EvCtrlRedPointStateChange") then
+            if ev.RedPointType == 'Reward' then
+                self:RefreshRedPointRewardState()
+            end
         end
     end
 end
@@ -695,13 +697,9 @@ function ViewMain:setNewRecord()
 end
 
 ---------------------------------------
-function ViewMain:SetNewReward()
-    local have_newreward = false
-    --if (self.CanGetOnLineReward or self.CanGetTimingReward) then
-    --    have_newreward = true
-    --end
-
-    if (have_newreward == false) then
+function ViewMain:RefreshRedPointRewardState()
+    local ctrl_reward = self.ViewMgr.ControllerMgr:GetController("Reward")
+    if ctrl_reward.RedPointRewardShow == false then
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComRewardTips)

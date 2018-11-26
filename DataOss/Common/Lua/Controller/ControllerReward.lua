@@ -10,17 +10,17 @@ function ControllerReward:new(o, controller_mgr, controller_data, guid)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.MC = CommonMethodType
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    o.TimerUpdate = nil
-    o.RewardOnline = RewardOnline:new(nil, o.ViewMgr)
-    o.RewardTiming = RewardTiming:new(nil, o.ViewMgr)
-    o.RedPointReward = false-- 小红点显示状态
+    self.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.ControllerData = controller_data
+    self.ControllerMgr = controller_mgr
+    self.MC = CommonMethodType
+    self.Guid = guid
+    self.ViewMgr = ViewMgr:new(nil)
+    self.TimerUpdate = nil
+    self.RewardOnline = RewardOnline:new(nil, o.ViewMgr)
+    self.RewardTiming = RewardTiming:new(nil, o.ViewMgr)
+    self.RedPointRewardShow = false-- 小红点显示状态
     return o
 end
 
@@ -74,6 +74,21 @@ function ControllerReward:OnHandleEv(ev)
 end
 
 ---------------------------------------
+function ControllerReward:RefreshRedPoint()
+    self.RedPointRewardShow = false
+    if self.RewardOnline.CanGetReward or self.RewardTiming.CanGetReward then
+        self.RedPointRewardShow = true
+    end
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvCtrlRedPointStateChange")
+    if (ev == nil) then
+        ev = EvCtrlRedPointStateChange:new(nil)
+        ev.RedPointType = 'Reward';
+        ev.Show = self.RedPointRewardShow;
+    end
+    self.ControllerMgr.ViewMgr:SendEv(ev)
+end
+
+---------------------------------------
 function ControllerReward:s2cPlayerGetOnlineRewardRequestResult(result, reward)
     if (result == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:getLanValue("GetOnlinReward"), tostring(reward)))
@@ -103,7 +118,7 @@ end
 
 ---------------------------------------
 function ControllerReward:_timerUpdate(tm)
-    self.RewardOnline:Update()
+    self.RewardOnline:Update(tm)
 end
 
 ---------------------------------------

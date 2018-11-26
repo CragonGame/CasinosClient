@@ -1,5 +1,6 @@
 -- Copyright (c) Cragon. All rights reserved.
 require('EventBase')
+require('EventController')
 
 ---------------------------------------
 EventSys = {
