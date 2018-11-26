@@ -51,7 +51,6 @@ function ViewDesktopHMenu:OnCreate()
     local btn_reward = self.CoMenuEx:GetChild("BtnReward").asButton
     btn_reward.onClick:Add(
             function()
-                --local ev = self.ViewMgr:GetEv("EvViewClickShowReward")
                 self.ViewMgr:CreateView('Reward')
             end)
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")

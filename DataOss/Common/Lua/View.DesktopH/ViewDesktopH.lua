@@ -116,10 +116,10 @@ function ViewDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
     self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
+    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
     --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
-    --self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
 
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerPlayer = controller_mgr:GetController("Player")
@@ -268,7 +268,7 @@ function ViewDesktopH:OnCreate()
     --self.ViewTimingReward:setCanGetReward(self.CanGetTimingReward)
     self.ComRewardTips = self.ComUi:GetChild("ComRewardTips").asCom
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
-    self:setNewReward()
+    self:RefreshRedPointRewardState()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionReward")
 
     self.UiDesktopHFlow = UiDesktopHFlow:new(self)
@@ -495,17 +495,18 @@ function ViewDesktopH:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityUnreadChatsChanged") then
             local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
             self:_setNewChatCount(all_unreadchat_count)
-        --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
-        --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
-        --    self.CanGetOnLineReward = ev.can_getreward
-        --    self:setNewReward()
-        --elseif (ev.EventName == "EvEntityCanGetTimingReward") then
-        --    self.ViewTimingReward:setCanGetReward(ev.can_getreward)
-        --    self.CanGetTimingReward = ev.can_getreward
-        --    self:setNewReward()
-        --elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
-        --    self.ComShadeReward.visible = false
-        --    self.TransitionShowReward:PlayReverse()
+        elseif (ev.EventName == "EvCtrlRedPointStateChange") then
+            if ev.RedPointType == 'Reward' then
+                self:RefreshRedPointRewardState()
+            end
+            --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
+            --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
+            --    self.CanGetOnLineReward = ev.can_getreward
+            --    self:RefreshRedPointRewardState()
+            --elseif (ev.EventName == "EvEntityCanGetTimingReward") then
+            --    self.ViewTimingReward:setCanGetReward(ev.can_getreward)
+            --    self.CanGetTimingReward = ev.can_getreward
+            --    self:RefreshRedPointRewardState()
         end
     end
 end
@@ -1126,8 +1127,9 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnMenu()
+    local ctrl_reward = self.ViewMgr.ControllerMgr:GetController("Reward")
     local menu = self.ViewMgr:CreateView("DesktopHMenu")
-    menu:showMenu(self.CanGetOnLineReward or self.CanGetTimingReward)
+    menu:showMenu(ctrl_reward.RedPointRewardShow)
 end
 
 ---------------------------------------
@@ -1237,13 +1239,9 @@ function ViewDesktopH:_setNewChatCount(chat_count)
 end
 
 ---------------------------------------
-function ViewDesktopH:setNewReward()
-    local have_newreward = false
-    --if (self.CanGetOnLineReward or self.CanGetTimingReward) then
-    --    have_newreward = true
-    --end
-
-    if (have_newreward == false) then
+function ViewDesktopH:RefreshRedPointRewardState()
+    local ctrl_reward = self.ViewMgr.ControllerMgr:GetController("Reward")
+    if ctrl_reward.RedPointRewardShow == false then
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComRewardTips)

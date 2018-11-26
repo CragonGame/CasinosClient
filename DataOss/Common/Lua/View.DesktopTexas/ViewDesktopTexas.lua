@@ -93,6 +93,7 @@ function ViewDesktopTexas:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityMTTUpdateRaiseBlindTm", self)
     self.ViewMgr:BindEvListener("EvMTTPauseChanged", self)
     self.ViewMgr:BindEvListener("EvEntityMatchGameOver", self)
+    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
     --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
@@ -233,7 +234,7 @@ function ViewDesktopTexas:OnCreate()
     --self.ViewTimingReward:setCanGetReward(self.CanGetTimingReward)
     self.ComRewardTips = self.ComUi:GetChild("ComRewardTips").asCom
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
-    self:setNewReward()
+    self:RefreshRedPointRewardState()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionReward")
 
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(33, self, self._timerUpdate)
@@ -340,16 +341,20 @@ function ViewDesktopTexas:OnHandleEv(ev)
         elseif (ev.EventName == "EvUiPotMainChanged") then
             -- 从Model发出
             self.UiPot:showAllPotValue(ev.pot_mian)
+        elseif (ev.EventName == "EvCtrlRedPointStateChange") then
+            if ev.RedPointType == 'Reward' then
+                self:RefreshRedPointRewardState()
+            end
         --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
         --    -- Model告知可领，Ui刷新小红点
         --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
         --    self.CanGetOnLineReward = ev.can_getreward
-        --    self:setNewReward()
+        --    self:RefreshRedPointRewardState()
         --elseif (ev.EventName == "EvEntityCanGetTimingReward") then
         --    -- Model告知可领，Ui刷新小红点
         --    self.ViewTimingReward:setCanGetReward(ev.can_getreward)
         --    self.CanGetTimingReward = ev.can_getreward
-        --    self:setNewReward()
+        --    self:RefreshRedPointRewardState()
         --elseif (ev.EventName == "EvViewRequestGetTimingReward" or ev.EventName == "EvViewOnGetOnLineReward") then
         --    -- 弹回横条
         --    self.ComShadeReward.visible = false
@@ -1039,19 +1044,15 @@ end
 
 ---------------------------------------
 -- 左上角菜单按钮小红点呼吸动画
-function ViewDesktopTexas:setNewReward()
-    local have_newreward = false
-    if (self.CanGetOnLineReward or self.CanGetTimingReward) then
-        have_newreward = true
-    end
-
-    if (have_newreward == false) then
+function ViewDesktopTexas:RefreshRedPointRewardState()
+    local ctrl_reward = self.ViewMgr.ControllerMgr:GetController("Reward")
+    if ctrl_reward.RedPointRewardShow == false then
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
-        if (self.TransitionNewReward.playing == false) then
-            self.TransitionNewReward:Play()
-        end
+        --if (self.TransitionNewReward.playing == false) then
+        --    self.TransitionNewReward:Play()
+        --end
     end
 end
 
