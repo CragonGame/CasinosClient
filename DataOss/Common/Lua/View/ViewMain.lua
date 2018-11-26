@@ -348,7 +348,6 @@ function ViewMain:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
     self.ViewMgr:BindEvListener("EvEntityIsFirstRechargeChanged", self)
     self.ViewMgr:BindEvListener("EvEntityFriendGoldChange", self)
-    --self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
     --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
     --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChat", self)
@@ -528,10 +527,6 @@ function ViewMain:OnHandleEv(ev)
             self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
             self:RefreshLotteryTickLeftTm(ev.tm)
-        --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
-        --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
-        --    self.CanGetOnLineReward = ev.can_getreward
-        --    self:SetNewReward()
         --elseif (ev.EventName == "EvEntityCanGetTimingReward") then
         --    self.ViewTimingReward:setCanGetReward(ev.can_getreward)
         --    self.CanGetTimingReward = ev.can_getreward

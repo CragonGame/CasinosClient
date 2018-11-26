@@ -176,13 +176,9 @@ function ViewReward:OnHandleEv(ev)
     if (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
         self.UiRewardOnline:RefreshLeftTmInfo()
     elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
-        -- Model告知可领，Ui刷新小红点
         self.UiRewardOnline:SetCanGetOnlineReward(ev.can_getreward)
-        --self:setNewReward()
     elseif (ev.EventName == "EvEntityCanGetTimingReward") then
-        -- Model告知可领，Ui刷新小红点
         self.UiRewardTiming:SetCanGetTimingReward(ev.can_getreward)
-        --self:setNewReward()
     end
 end
 

@@ -117,9 +117,6 @@ function ViewDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
     self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
     self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
-    --self.ViewMgr:BindEvListener("EvEntityCanGetOnlineReward", self)
-    --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
-    --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
 
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerPlayer = controller_mgr:GetController("Player")
@@ -257,19 +254,11 @@ function ViewDesktopH:OnCreate()
                 self.TransitionShowReward:PlayReverse()
             end
     )
-    --local com_reward = self.ComUi:GetChild("ComReward").asCom
-    --local co_onlinereward = com_reward:GetChild("ComOnlineReward").asCom
-    --self.ViewOnlineReward = ViewOnlineReward:new(nil, co_onlinereward, self.ViewMgr)
-    --self.CanGetOnLineReward = self.ControllerPlayer.OnlineReward:IfCanGetReward()
-    --self.ViewOnlineReward:setCanGetReward(self.CanGetOnLineReward)
-    --local co_timingreward = com_reward:GetChild("ComPushReward").asCom
-    --self.ViewTimingReward = ViewTimingReward:new(nil, co_timingreward, self.ViewMgr)
-    --self.CanGetTimingReward = self.ControllerPlayer.TimingReward:IfCanGetReward()
-    --self.ViewTimingReward:setCanGetReward(self.CanGetTimingReward)
+
     self.ComRewardTips = self.ComUi:GetChild("ComRewardTips").asCom
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
-    self:RefreshRedPointRewardState()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionReward")
+    self:RefreshRedPointRewardState()
 
     self.UiDesktopHFlow = UiDesktopHFlow:new(self)
 
@@ -499,14 +488,6 @@ function ViewDesktopH:OnHandleEv(ev)
             if ev.RedPointType == 'Reward' then
                 self:RefreshRedPointRewardState()
             end
-            --elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
-            --    self.ViewOnlineReward:setCanGetReward(ev.can_getreward)
-            --    self.CanGetOnLineReward = ev.can_getreward
-            --    self:RefreshRedPointRewardState()
-            --elseif (ev.EventName == "EvEntityCanGetTimingReward") then
-            --    self.ViewTimingReward:setCanGetReward(ev.can_getreward)
-            --    self.CanGetTimingReward = ev.can_getreward
-            --    self:RefreshRedPointRewardState()
         end
     end
 end
