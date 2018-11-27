@@ -6,8 +6,8 @@ require('RewardTiming')
 ControllerReward = ControllerBase:new(nil)
 
 ---------------------------------------
-function ControllerReward:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
+function ControllerReward:new(controller_mgr, controller_data, guid)
+    local o = {}
     setmetatable(o, self)
     self.__index = self
     self.Context = Context
@@ -79,12 +79,13 @@ function ControllerReward:RefreshRedPoint()
     if self.RewardOnline.CanGetReward or self.RewardTiming.CanGetReward then
         self.RedPointRewardShow = true
     end
+
     local ev = self.ControllerMgr.ViewMgr:GetEv("EvCtrlRedPointStateChange")
     if (ev == nil) then
         ev = EvCtrlRedPointStateChange:new(nil)
-        ev.RedPointType = 'Reward';
-        ev.Show = self.RedPointRewardShow;
     end
+    ev.RedPointType = 'Reward';
+    ev.Show = self.RedPointRewardShow;
     self.ControllerMgr.ViewMgr:SendEv(ev)
 end
 
@@ -135,6 +136,6 @@ end
 
 ---------------------------------------
 function ControllerRewardFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerReward:new(nil, controller_mgr, controller_data, guid)
+    local controller = ControllerReward:new(controller_mgr, controller_data, guid)
     return controller
 end

@@ -2180,20 +2180,6 @@ end
 function EvRequestGetOnLineReward:Reset()
 end
 
-EvEntityCanGetOnlineReward = EventBase:new(nil)
-function EvEntityCanGetOnlineReward:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.EventName = "EvEntityCanGetOnlineReward"
-    self.can_getreward = false
-    return o
-end
-
-function EvEntityCanGetOnlineReward:Reset()
-    self.can_getreward = false
-end
-
 EvRequestGetTimingReward = EventBase:new(nil)
 function EvRequestGetTimingReward:new(o)
     o = o or {}

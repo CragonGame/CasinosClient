@@ -46,7 +46,7 @@ function UiRewardOnline:RefreshLeftTmInfo()
     self.GTextInfo.text = string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
 end
 
-function UiRewardOnline:SetCanGetOnlineReward(can_get_reward)
+function UiRewardOnline:RefreshCanGetOnlineRewardState(can_get_reward)
     self.CanGetOnlineReward = can_get_reward
     self.GBtnOnlineReward.enabled = can_get_reward
 end
@@ -122,17 +122,17 @@ function ViewReward:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    o.ControllerReward = ControllerReward
-    o.UiRewardOnline = UiRewardOnline
-    o.UiRewardTiming = UiRewardTiming
+    self.ViewMgr = nil
+    self.GoUi = nil
+    self.ComUi = nil
+    self.Panel = nil
+    self.UILayer = nil
+    self.InitDepth = nil
+    self.ViewKey = nil
+    self.Tween = nil
+    self.ControllerReward = ControllerReward
+    self.UiRewardOnline = UiRewardOnline
+    self.UiRewardTiming = UiRewardTiming
     return o
 end
 
@@ -175,11 +175,14 @@ end
 function ViewReward:OnHandleEv(ev)
     if (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
         self.UiRewardOnline:RefreshLeftTmInfo()
-    elseif (ev.EventName == "EvEntityCanGetOnlineReward") then
-        self.UiRewardOnline:SetCanGetOnlineReward(ev.can_getreward)
     elseif (ev.EventName == "EvEntityCanGetTimingReward") then
         self.UiRewardTiming:SetCanGetTimingReward(ev.can_getreward)
     end
+end
+
+---------------------------------------
+function ViewReward:RefreshCanGetOnlineRewardState(can_getreward)
+    self.UiRewardOnline:RefreshCanGetOnlineRewardState(can_getreward)
 end
 
 ---------------------------------------

@@ -25,6 +25,7 @@ function RewardOnline:Update(tm)
         if (self.LeftTm > 0) then
             self.LeftTm = self.LeftTm - tm
             self.FormatLeftTm = CS.Casinos.LuaHelper.FormatTmFromSecondToMinute(self.LeftTm, false)
+
             local ev = self.ViewMgr:GetEv("EvEntityRefreshLeftOnlineRewardTm")
             if (ev == nil) then
                 ev = EvEntityRefreshLeftOnlineRewardTm:new(nil)
@@ -36,7 +37,7 @@ function RewardOnline:Update(tm)
 
             if (self.LeftTm <= 0) then
                 self.CanGetReward = true
-                self:_sendCanGetReward()
+                self:RefreshCanGetOnlineRewardState()
             end
         end
     end
@@ -48,11 +49,12 @@ function RewardOnline:SetOnlineRewardState(online_reward_state, left_reward_seco
     self.NextReward = next_reward
     if (self.OnlineRewardState == OnlineRewardState.Wait4GetReward) then
         self.CanGetReward = true
+        self.LeftTm = 0
     else
         self.CanGetReward = false
         self.LeftTm = left_reward_second
     end
-    self:_sendCanGetReward()
+    self:RefreshCanGetOnlineRewardState()
 end
 
 ---------------------------------------
@@ -74,13 +76,10 @@ function RewardOnline:IfCanGetReward()
 end
 
 ---------------------------------------
-function RewardOnline:_sendCanGetReward()
-    local ev = self.ViewMgr:GetEv("EvEntityCanGetOnlineReward")
-    if (ev == nil) then
-        ev = EvEntityCanGetOnlineReward:new(nil)
+function RewardOnline:RefreshCanGetOnlineRewardState()
+    local view_reward = self.ViewMgr:GetView('Reward')
+    if view_reward ~= nil then
+        view_reward:RefreshCanGetOnlineRewardState(self.CanGetReward)
     end
-    ev.can_getreward = self.CanGetReward
-    self.ViewMgr:SendEv(ev)
-
     self.ControllerReward:RefreshRedPoint()-- 刷新小红点状态
 end

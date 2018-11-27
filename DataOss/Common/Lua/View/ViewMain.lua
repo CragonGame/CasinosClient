@@ -253,19 +253,11 @@ function ViewMain:OnCreate()
                 self.TransitionShowReward:PlayReverse()
             end
     )
-    --local com_reward = self.ComUi:GetChild("ComReward").asCom
-    --local co_onlinereward = com_reward:GetChild("ComOnlineReward").asCom
-    --self.ViewOnlineReward = ViewOnlineReward:new(nil, co_onlinereward, self.ViewMgr)
-    --self.CanGetOnLineReward = self.ControllerPlayer.OnlineReward:IfCanGetReward()
-    --self.ViewOnlineReward:setCanGetReward(self.CanGetOnLineReward)
-    --local co_timingreward = com_reward:GetChild("ComPushReward").asCom
-    --self.ViewTimingReward = ViewTimingReward:new(nil, co_timingreward, self.ViewMgr)
-    --self.CanGetTimingReward = self.ControllerPlayer.TimingReward:IfCanGetReward()
-    --self.ViewTimingReward:setCanGetReward(self.CanGetTimingReward)
+
     self.ComRewardTips = self.ComUi:GetChild("ComRewardTips").asCom
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
-    self:RefreshRedPointRewardState()
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionShowReward")
+    self:RefreshRedPointRewardState()
     self.ComWelfareIcon = self.ComUi:GetChild("ComWelfareIcon").asCom
     self.ComWelfareIcon.onClick:Add(
             function()
@@ -695,7 +687,7 @@ function ViewMain:RefreshRedPointRewardState()
     else
         ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
         --if (self.TransitionNewReward.playing == false) then
-        --    self.TransitionNewReward:Play()
+        self.TransitionNewReward:Play(-1, 0, nil)
         --end
     end
 end
