@@ -16,7 +16,8 @@
     <component id="n37_tfq4" name="Lan_Btn_InviteFriend" src="w6r6b" fileName="Component/BtnInvitFriend.xml" xy="6,-225" group="n38_tfq4"/>
     <component id="n41_kl3o" name="Lan_Btn_CardType" src="kl3os" fileName="Component/BtnHint.xml" xy="6,-153" group="n38_tfq4"/>
     <component id="n42_d6x8" name="BtnReward" src="d6x8t" fileName="Component/BtnReward.xml" xy="6,-82" group="n38_tfq4"/>
-    <group id="n38_tfq4" name="Group" xy="6,-445" size="224,439" advanced="true"/>
+    <component id="n44_dpbd" name="BtnRedPoint" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="187,-75" group="n38_tfq4"/>
+    <group id="n38_tfq4" name="Group" xy="6,-445" size="224,438" advanced="true"/>
   </displayList>
   <transition name="TransitionCreate">
     <item time="0" type="XY" target="n38_tfq4" tween="true" startValue="-,-445" endValue="3,0" duration="4"/>

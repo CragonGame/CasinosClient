@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="223,364">
   <displayList>
-    <image id="n8_phet" name="n8" src="sd6wl1" pkg="nhvxw9ov" xy="0,0" size="223,364" alpha="0.8" color="#222340"/>
-    <component id="n2_fb5j" name="BtnReturn" src="fb5jm" xy="0,10"/>
-    <component id="n3_fb5j" name="BtnRecharge" src="fb5jk" xy="0,80"/>
-    <component id="n5_fb5j" name="BtnHelp" src="fb5jl" xy="0,147"/>
-    <component id="n7_fb5j" name="BtnCardType" src="fb5jj" xy="0,219"/>
-    <component id="n12_d6x8" name="BtnReward" src="d6x8t" pkg="52xlzsdk" xy="0,286"/>
-    <image id="n9_phet" name="n9" src="phssjs" pkg="nhvxw9ov" xy="11,79" size="200,3"/>
-    <image id="n10_phet" name="n10" src="phssjs" pkg="nhvxw9ov" xy="11,146" size="200,3"/>
-    <image id="n11_phet" name="n11" src="phssjs" pkg="nhvxw9ov" xy="11,213" size="200,3"/>
-    <image id="n13_d6x8" name="n13" src="phssjs" pkg="nhvxw9ov" xy="11,280" size="200,3"/>
+    <image id="n8_phet" name="n8" src="sd6wl1" fileName="Image/New/面板mask2.png" pkg="nhvxw9ov" xy="0,0" size="223,364" alpha="0.8" color="#222340"/>
+    <component id="n2_fb5j" name="BtnReturn" src="fb5jm" fileName="Component/Lan_ImageBtnReturn.xml" xy="0,10"/>
+    <component id="n3_fb5j" name="BtnRecharge" src="fb5jk" fileName="Component/Lan_ImageBtnCharge.xml" xy="0,80"/>
+    <component id="n5_fb5j" name="BtnHelp" src="fb5jl" fileName="Component/Lan_ImageBtnHelp.xml" xy="0,147"/>
+    <component id="n7_fb5j" name="BtnCardType" src="fb5jj" fileName="Component/Lan_ImageBtnCardType.xml" xy="0,219"/>
+    <component id="n12_d6x8" name="BtnReward" src="d6x8t" fileName="Component/BtnReward.xml" pkg="52xlzsdk" xy="0,286"/>
+    <component id="n14_dpbd" name="BtnRedPoint" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="180,291"/>
+    <image id="n9_phet" name="n9" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="11,79" size="200,3"/>
+    <image id="n10_phet" name="n10" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="11,146" size="200,3"/>
+    <image id="n11_phet" name="n11" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="11,213" size="200,3"/>
+    <image id="n13_d6x8" name="n13" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="11,280" size="200,3"/>
   </displayList>
 </component>

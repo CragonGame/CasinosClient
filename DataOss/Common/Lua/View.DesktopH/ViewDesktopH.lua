@@ -1226,9 +1226,7 @@ function ViewDesktopH:RefreshRedPointRewardState()
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
-        --if (self.TransitionNewReward.playing == false) then
-        --    self.TransitionNewReward:Play()
-        --end
+        self.TransitionNewReward:Play(-1, 0, nil)
     end
 end
 

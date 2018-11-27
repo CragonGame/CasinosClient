@@ -69,6 +69,7 @@ function ViewDesktopMenuTexas:OnCreate()
                 self.ViewMgr:CreateView('Reward')
             end)
 
+    self.GBtnRedPoint = self.ComUi:GetChild("BtnRedPoint").asCom
     self.mIsOb = false
     self.mIsWaitwhile = false
 end
@@ -78,7 +79,7 @@ function ViewDesktopMenuTexas:OnDestroy()
 end
 
 ---------------------------------------
-function ViewDesktopMenuTexas:setPlayerState(is_ob, is_waitwhile, have_reward)
+function ViewDesktopMenuTexas:SetPlayerState(is_ob, is_waitwhile, have_reward)
     self.mIsOb = is_ob
     self.mIsWaitwhile = is_waitwhile
     if (is_ob) then
@@ -90,6 +91,7 @@ function ViewDesktopMenuTexas:setPlayerState(is_ob, is_waitwhile, have_reward)
         self.GBtnStandup.enabled = true
         self.GBtnLeaveInMiddle.enabled = true
     end
+    self.GBtnRedPoint.visible = have_reward
 end
 
 ---------------------------------------

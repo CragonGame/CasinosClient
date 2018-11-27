@@ -105,10 +105,10 @@ end
 
 ---------------------------------------
 function ViewTexasClassic:_onClickMenu()
-    local desk_menu = self.ViewDesktop.ViewMgr:CreateView("DesktopMenuTexas")
-    desk_menu:setPlayerState(self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.Ob,
-            self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.WaitWhile,
-            self.ViewDesktop.CanGetOnLineReward or self.ViewDesktop.CanGetTimingReward)
+    local ctrl_reward = self.ViewDesktop.ViewMgr.ControllerMgr:GetController("Reward")
+    local desktop_menu = self.ViewDesktop.ViewMgr:CreateView("DesktopMenuTexas")
+    desktop_menu:SetPlayerState(self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.Ob,
+            self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.WaitWhile, ctrl_reward.RedPointRewardShow)
 end
 
 ---------------------------------------

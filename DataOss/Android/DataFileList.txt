@@ -772,8 +772,8 @@ Resources.KingTexas/Ui/desktophhistory.ab 00F83C3A8CB22EF39BEB0F647E656058
 Resources.KingTexas/Ui/desktophhistory.ab.manifest FBD2B43F22377A83BB566DDBEBA41768
 Resources.KingTexas/Ui/desktophints.ab 8C1B36472753202943F2A3D604FBDD3F
 Resources.KingTexas/Ui/desktophints.ab.manifest BE403E1FE0E734DC7DDF552F349561F3
-Resources.KingTexas/Ui/desktophmenu.ab 36DE06020C79CA076D7457C08B6ED174
-Resources.KingTexas/Ui/desktophmenu.ab.manifest AADEBC0AB5B692CA0DC4BE25BA0F1C36
+Resources.KingTexas/Ui/desktophmenu.ab 90CFB82692961F8FEEF8A12D5D692F94
+Resources.KingTexas/Ui/desktophmenu.ab.manifest EA41762684300CA61CF4DEE01542E9F4
 Resources.KingTexas/Ui/desktophresult.ab 137813461DB0C48343455CC665F24E6E
 Resources.KingTexas/Ui/desktophresult.ab.manifest 53B6EE6A728E66DFB52EBD1251C0B10A
 Resources.KingTexas/Ui/desktophrewardpot.ab 7BC5A764ADCA1AC07D4786264E6865AB
@@ -786,8 +786,8 @@ Resources.KingTexas/Ui/desktophtongpei.ab D2887ED0CB4ABBC18F018CDB8241A52D
 Resources.KingTexas/Ui/desktophtongpei.ab.manifest 5203200E23AA9F872FC5165950D285ED
 Resources.KingTexas/Ui/desktophtongsha.ab D6BC07013A1788113FD601DA50A5582B
 Resources.KingTexas/Ui/desktophtongsha.ab.manifest 7903E135FE5844FA5AC1DEF5E7EF9769
-Resources.KingTexas/Ui/desktopmenu.ab 9B777A1AEBFE146E4F856A1CAA620226
-Resources.KingTexas/Ui/desktopmenu.ab.manifest C35BCC9F0FFEFEF3BAB7F26DDF83409F
+Resources.KingTexas/Ui/desktopmenu.ab 2063EAAE61D40BC1CF58CF8BC24B5FEC
+Resources.KingTexas/Ui/desktopmenu.ab.manifest 82D9656BEFD67920E8E0214CCD4FFAA2
 Resources.KingTexas/Ui/desktopplayerinfo.ab F3E5FC23885072445AEFCA390F4B6002
 Resources.KingTexas/Ui/desktopplayerinfo.ab.manifest D9CB17FACFFB9DB581C552EEA058C07B
 Resources.KingTexas/Ui/desktopplayeroperate.ab C1CC0BB86FF7F4C3D306272AD273224C
@@ -886,8 +886,8 @@ Resources.KingTexas/Ui/snowballreward.ab D4B1EB71B504CA6B21A3A5278578B9FD
 Resources.KingTexas/Ui/snowballreward.ab.manifest 0760E5F1C8F5B140CED1B97F19C8C160
 Resources.KingTexas/Ui/takephoto.ab 58C9BD45F6287E017C29AD8A8CDADC2F
 Resources.KingTexas/Ui/takephoto.ab.manifest 19AF96155D4C4243B99B88B8B1C8CD30
-Resources.KingTexas/Ui/Ui F64E1FA6F80D5B0A1BA5E8FE8319BED5
-Resources.KingTexas/Ui/Ui.manifest 7629215AB03727EB811B311ED9096579
+Resources.KingTexas/Ui/Ui 1A2A4A5A781191993EFEF891430B1955
+Resources.KingTexas/Ui/Ui.manifest 1A3F6E8A8238FAF6143665BC7E787BA4
 Resources.KingTexasLaunch/denglong.ab 44E6B94A6CB97509F86425BB8D62BCDB
 Resources.KingTexasLaunch/denglong.ab.manifest A3DF25319AE7BC4AF1D9A18B423F624E
 Resources.KingTexasLaunch/loadingmarry.ab 4D5099E7DEEFCDE1DACD4FDE24466911

@@ -53,6 +53,7 @@ function ViewDesktopHMenu:OnCreate()
             function()
                 self.ViewMgr:CreateView('Reward')
             end)
+    self.GBtnRedPoint = self.CoMenuEx:GetChild("BtnRedPoint").asCom
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
 end
 
@@ -68,6 +69,7 @@ end
 function ViewDesktopHMenu:showMenu(have_reward)
     self.CoMenuEx:SetXY(0, -self.CoMenuEx.height)
     self.Tween = self.CoMenuEx:TweenMoveY(0, 0.25)
+    self.GBtnRedPoint.visible = have_reward
 end
 
 ---------------------------------------

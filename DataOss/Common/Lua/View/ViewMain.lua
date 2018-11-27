@@ -519,10 +519,6 @@ function ViewMain:OnHandleEv(ev)
             self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
             self:RefreshLotteryTickLeftTm(ev.tm)
-        --elseif (ev.EventName == "EvEntityCanGetTimingReward") then
-        --    self.ViewTimingReward:setCanGetReward(ev.can_getreward)
-        --    self.CanGetTimingReward = ev.can_getreward
-        --    self:SetNewReward()
         elseif (ev.EventName == "EvEntityIsFirstRechargeChanged") then
             local com_recharge_first = self.ComUi:GetChild("ComRechargeFirst").asCom
             com_recharge_first.visible = false
@@ -686,9 +682,7 @@ function ViewMain:RefreshRedPointRewardState()
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComRewardTips)
-        --if (self.TransitionNewReward.playing == false) then
         self.TransitionNewReward:Play(-1, 0, nil)
-        --end
     end
 end
 

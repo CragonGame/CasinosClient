@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 1405410292
+CRC: 1794591114
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: reward.ab
+      Name: desktophmenu.ab
       Dependencies: {}
