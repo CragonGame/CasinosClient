@@ -340,12 +340,10 @@ function ViewMain:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
     self.ViewMgr:BindEvListener("EvEntityIsFirstRechargeChanged", self)
     self.ViewMgr:BindEvListener("EvEntityFriendGoldChange", self)
-    --self.ViewMgr:BindEvListener("EvEntityCanGetTimingReward", self)
-    --self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChats", self)
     self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
-    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
+    self.ViewMgr:BindEvListener("EvCtrlRewardRedPointStateChange", self)
 
     self.PosGetChipEffectParticle = self.ComUi:GetChild("ComPosGetChipParticle").asCom.position
     local ab_particle_desktop = ParticleHelper:GetParticel("btndesktopparticle.ab")
@@ -529,7 +527,7 @@ function ViewMain:OnHandleEv(ev)
             self:setHaveFeedback()
         elseif (ev.EventName == "EvEntityBagAddItem") then
             self:setNewItem()
-        elseif (ev.EventName == "EvCtrlRedPointStateChange") then
+        elseif (ev.EventName == "EvCtrlRewardRedPointStateChange") then
             if ev.RedPointType == 'Reward' then
                 self:RefreshRedPointRewardState()
             end
@@ -613,8 +611,6 @@ end
 ---------------------------------------
 function ViewMain:setCurrentFriendInfo(friend_item)
     self.CurrentFriendItem = friend_item
-    --local item_ico = ""
-    --local icon_resource_name = ""
     if (self.CurrentFriendItem == nil) then
         self.BtnInviteFriend.visible = true
         self.UiPlayerInfoCurrentFriend:hidePlayerInfo(true)
@@ -801,7 +797,7 @@ end
 
 ---------------------------------------
 function ViewMain:onClickComPlayerInfoSelf()
-    local player_info = self.ViewMgr:CreateView("PlayerInfo")
+    self.ViewMgr:CreateView("PlayerInfo")
 end
 
 ---------------------------------------
@@ -849,8 +845,7 @@ function ViewMain:onClickBtnDesktopH()
     self.GTransitionShow:PlayReverse(
             function()
                 local ev = self.ViewMgr:GetEv("EvViewClickDesktopH")
-                if (ev == nil)
-                then
+                if (ev == nil) then
                     ev = EvUiClickDesktopHundred:new(nil)
                 end
                 ev.factory_name = "Texas"

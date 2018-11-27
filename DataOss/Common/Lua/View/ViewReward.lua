@@ -30,7 +30,7 @@ function UiRewardOnline:Create(view_mgr, com_ui)
     if self.ControllerReward.RewardOnline.CanGetReward == true then
         self.CanGetOnlineReward = true
         self.GBtnOnlineReward.enabled = true
-        self.GTextInfo.text = string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
+        self.GTextInfo.text = string.format('点击领取%s筹码在线奖励', tostring(self.ControllerReward.RewardOnline.NextReward))
     else
         self.CanGetOnlineReward = false
         self.GBtnOnlineReward.enabled = false
@@ -49,12 +49,17 @@ end
 function UiRewardOnline:RefreshCanGetOnlineRewardState(can_get_reward)
     self.CanGetOnlineReward = can_get_reward
     self.GBtnOnlineReward.enabled = can_get_reward
+    if self.ControllerReward.RewardOnline.CanGetReward == true then
+        self.GTextInfo.text = string.format('点击领取%s筹码在线奖励', tostring(self.ControllerReward.RewardOnline.NextReward))
+    else
+        self.GTextInfo.text = string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
+    end
 end
 
 function UiRewardOnline:_onClickBtnOnlineReward()
-    local ev = self.ViewMgr:GetEv("EvViewOnGetOnLineReward")
+    local ev = self.ViewMgr:GetEv("EvViewRewardClickBtnOnlineReward")
     if (ev == nil) then
-        ev = EvOnGetOnLineReward:new(nil)
+        ev = EvViewRewardClickBtnOnlineReward:new(nil)
     end
     self.ViewMgr:SendEv(ev)
 end
@@ -106,9 +111,9 @@ end
 
 function UiRewardTiming:_onClickBtnTimingReward()
     if self.CanGetTimingReward then
-        local ev = self.ViewMgr:GetEv("EvViewRequestGetTimingReward")
+        local ev = self.ViewMgr:GetEv("EvViewRewardClickBtnTimingReward")
         if (ev == nil) then
-            ev = EvRequestGetTimingReward:new(nil)
+            ev = EvViewRewardClickBtnTimingReward:new(nil)
         end
         self.ViewMgr:SendEv(ev)
     end
@@ -140,7 +145,7 @@ end
 function ViewReward:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Reward"))
 
-    self.ViewMgr:BindEvListener("EvEntityRefreshLeftOnlineRewardTm", self)
+    self.ViewMgr:BindEvListener("EvCtrlRewardRefreshGetOnlineRewardLeftTm", self)
 
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
@@ -173,9 +178,9 @@ end
 
 ---------------------------------------
 function ViewReward:OnHandleEv(ev)
-    if (ev.EventName == "EvEntityRefreshLeftOnlineRewardTm") then
+    if (ev.EventName == "EvCtrlRewardRefreshGetOnlineRewardLeftTm") then
         self.UiRewardOnline:RefreshLeftTmInfo()
-    elseif (ev.EventName == "EvEntityCanGetTimingReward") then
+    elseif (ev.EventName == "EvCtrlRewardRefreshGetTimingRewardState") then
         self.UiRewardTiming:SetCanGetTimingReward(ev.can_getreward)
     end
 end

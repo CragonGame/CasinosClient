@@ -18,17 +18,16 @@ function ControllerReward:new(controller_mgr, controller_data, guid)
     self.Guid = guid
     self.ViewMgr = ViewMgr:new(nil)
     self.TimerUpdate = nil
-    self.RewardOnline = RewardOnline:new(nil, o.ViewMgr)
-    self.RewardTiming = RewardTiming:new(nil, o.ViewMgr)
+    self.RewardOnline = RewardOnline:new(self.ControllerMgr, self.ViewMgr)
+    self.RewardTiming = RewardTiming:new(self.ControllerMgr, self.ViewMgr)
     self.RedPointRewardShow = false-- 小红点显示状态
     return o
 end
 
 ---------------------------------------
 function ControllerReward:OnCreate()
-    self.ViewMgr:BindEvListener("EvRequestGetOnLineReward", self)
-    self.ViewMgr:BindEvListener("EvViewRequestGetTimingReward", self)
-    self.ViewMgr:BindEvListener("EvViewOnGetOnLineReward", self)
+    self.ViewMgr:BindEvListener("EvViewRewardClickBtnTimingReward", self)
+    self.ViewMgr:BindEvListener("EvViewRewardClickBtnOnlineReward", self)
 
     -- 获取在线奖励
     self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerGetOnlineRewardRequestResult, function(result, reward)
@@ -61,15 +60,10 @@ end
 
 ---------------------------------------
 function ControllerReward:OnHandleEv(ev)
-    if (ev.EventName == "EvRequestGetOnLineReward") then
-        self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlineRewardRequest)
-    elseif (ev.EventName == "EvViewOnGetOnLineReward") then
-        self.RewardOnline:OnGetReward()
-    elseif (ev.EventName == "EvViewRequestGetTimingReward") then
-        local can_get = self.TimingReward:OnGetReward()
-        if can_get then
-            self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetTimingRewardRequest)
-        end
+    if (ev.EventName == "EvViewRewardClickBtnOnlineReward") then
+        self.RewardOnline:OnClickBtnOnlineReward()
+    elseif (ev.EventName == "EvViewRewardClickBtnTimingReward") then
+        self.TimingReward:OnClickBtnTimingReward()
     end
 end
 
@@ -80,9 +74,9 @@ function ControllerReward:RefreshRedPoint()
         self.RedPointRewardShow = true
     end
 
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvCtrlRedPointStateChange")
+    local ev = self.ControllerMgr.ViewMgr:GetEv("EvCtrlRewardRedPointStateChange")
     if (ev == nil) then
-        ev = EvCtrlRedPointStateChange:new(nil)
+        ev = EvCtrlRewardRedPointStateChange:new(nil)
     end
     ev.RedPointType = 'Reward';
     ev.Show = self.RedPointRewardShow;

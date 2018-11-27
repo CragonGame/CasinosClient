@@ -116,7 +116,7 @@ function ViewDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
     self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
-    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
+    self.ViewMgr:BindEvListener("EvCtrlRewardRedPointStateChange", self)
 
     local controller_mgr = ControllerMgr:new(nil)
     self.ControllerPlayer = controller_mgr:GetController("Player")
@@ -258,7 +258,6 @@ function ViewDesktopH:OnCreate()
     self.ComRewardTips = self.ComUi:GetChild("ComRewardTips").asCom
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionReward")
-    self:RefreshRedPointRewardState()
 
     self.UiDesktopHFlow = UiDesktopHFlow:new(self)
 
@@ -484,7 +483,7 @@ function ViewDesktopH:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityUnreadChatsChanged") then
             local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
             self:_setNewChatCount(all_unreadchat_count)
-        elseif (ev.EventName == "EvCtrlRedPointStateChange") then
+        elseif (ev.EventName == "EvCtrlRewardRedPointStateChange") then
             if ev.RedPointType == 'Reward' then
                 self:RefreshRedPointRewardState()
             end
@@ -663,6 +662,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         end
     end
     self:_setNewChatCount(self.ControllerIM.IMChat:getAllNewChatCount())
+    self:RefreshRedPointRewardState()
 end
 
 ---------------------------------------

@@ -5,17 +5,19 @@
 RewardOnline = {}
 
 ---------------------------------------
-function RewardOnline:new(o, view_mgr)
-    o = o or {}
+function RewardOnline:new(controller_mgr, view_mgr)
+    local o = {}
     setmetatable(o, self)
     self.__index = self
     self.ViewMgr = view_mgr
     self.ControllerReward = ControllerReward
-    o.OnlineRewardState = OnlineRewardState.CountDown
-    o.LeftTm = 0
-    o.CanGetReward = false
-    o.NextReward = 0
-    o.FormatLeftTm = ""
+    self.ControllerMgr = controller_mgr
+    self.MC = CommonMethodType
+    self.OnlineRewardState = OnlineRewardState.CountDown
+    self.LeftTm = 0
+    self.CanGetReward = false
+    self.NextReward = 0
+    self.FormatLeftTm = ""
     return o
 end
 
@@ -26,9 +28,9 @@ function RewardOnline:Update(tm)
             self.LeftTm = self.LeftTm - tm
             self.FormatLeftTm = CS.Casinos.LuaHelper.FormatTmFromSecondToMinute(self.LeftTm, false)
 
-            local ev = self.ViewMgr:GetEv("EvEntityRefreshLeftOnlineRewardTm")
+            local ev = self.ViewMgr:GetEv("EvCtrlRewardRefreshGetOnlineRewardLeftTm")
             if (ev == nil) then
-                ev = EvEntityRefreshLeftOnlineRewardTm:new(nil)
+                ev = EvCtrlRewardRefreshGetOnlineRewardLeftTm:new(nil)
             end
             ev.left_reward_second = self.FormatLeftTm
             ev.give_chip_min = give_gold_min
@@ -58,21 +60,12 @@ function RewardOnline:SetOnlineRewardState(online_reward_state, left_reward_seco
 end
 
 ---------------------------------------
-function RewardOnline:OnGetReward()
+function RewardOnline:OnClickBtnOnlineReward()
     if (self.CanGetReward == true) then
-        local ev = self.ViewMgr:GetEv("EvRequestGetOnLineReward")
-        if (ev == nil) then
-            ev = EvRequestGetOnLineReward:new(nil)
-        end
-        self.ViewMgr:SendEv(ev)
+        self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlineRewardRequest)
     else
         ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.FormatLeftTm), tostring(self.NextReward)))
     end
-end
-
----------------------------------------
-function RewardOnline:IfCanGetReward()
-    return self.CanGetReward
 end
 
 ---------------------------------------

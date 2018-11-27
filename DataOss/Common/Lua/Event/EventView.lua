@@ -98,6 +98,7 @@ function EvUiRequestMailRead:Reset()
     self.mail_guid = nil
 end
 
+---------------------------------------
 EvUiSellItem = EventBase:new(nil)
 
 function EvUiSellItem:new(o)
@@ -113,6 +114,7 @@ function EvUiSellItem:Reset()
     self.item_objid = nil
 end
 
+---------------------------------------
 EvUiRemoveItem = EventBase:new(nil)
 
 function EvUiRemoveItem:new(o)
@@ -128,6 +130,7 @@ function EvUiRemoveItem:Reset()
     self.obj_id = nil
 end
 
+---------------------------------------
 EvUiRequestResetPwd = EventBase:new(nil)
 
 function EvUiRequestResetPwd:new(o)
@@ -149,7 +152,9 @@ function EvUiRequestResetPwd:Reset()
     self.new_pwd = nil
 end
 
+---------------------------------------
 EvUiLogin = EventBase:new(nil)
+
 function EvUiLogin:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -172,7 +177,9 @@ function EvUiLogin:Reset()
     self.phone = nil
 end
 
+---------------------------------------
 EvUiLoginSuccessEx = EventBase:new(nil)
+
 function EvUiLoginSuccessEx:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -187,6 +194,7 @@ function EvUiLoginSuccessEx:Reset()
     self.token = nil
 end
 
+---------------------------------------
 EvUiLoginClickBtnRegister = EventBase:new(nil)
 
 function EvUiLoginClickBtnRegister:new(o)
@@ -226,6 +234,7 @@ function EvUiLoginClickBtnRegister:Reset()
     self.FormatPhone = nil
 end
 
+---------------------------------------
 EvUiRequestGetPhoneCode = EventBase:new(nil)
 
 function EvUiRequestGetPhoneCode:new(o)
@@ -244,6 +253,7 @@ function EvUiRequestGetPhoneCode:Reset()
     self.Reson = 0
 end
 
+---------------------------------------
 EvUiChooseCountry = EventBase:new(nil)
 
 function EvUiChooseCountry:new(o)
@@ -254,7 +264,6 @@ function EvUiChooseCountry:new(o)
     self.CountryKey = nil
     self.CountryCode = nil
     self.KeyAndCodeFormat = nil
-
     return o
 end
 
@@ -264,6 +273,7 @@ function EvUiChooseCountry:Reset()
     self.KeyAndCodeFormat = nil
 end
 
+---------------------------------------
 EvUiLoginClickBtnVisiter = EventBase:new(nil)
 
 function EvUiLoginClickBtnVisiter:new(o)
@@ -277,6 +287,7 @@ end
 function EvUiLoginClickBtnVisiter:Reset()
 end
 
+---------------------------------------
 EvUiLoginClickBtnFacebook = EventBase:new(nil)
 
 function EvUiLoginClickBtnFacebook:new(o)
@@ -290,6 +301,7 @@ end
 function EvUiLoginClickBtnFacebook:Reset()
 end
 
+---------------------------------------
 EvUiSendSecurityCode = EventBase:new(nil)
 
 function EvUiSendSecurityCode:new(o)
@@ -305,6 +317,7 @@ function EvUiSendSecurityCode:Reset()
     self.PhoneNum = nil
 end
 
+---------------------------------------
 EvRegisterDestroy = EventBase:new(nil)
 
 function EvRegisterDestroy:new(o)
@@ -318,6 +331,7 @@ end
 function EvRegisterDestroy:Reset()
 end
 
+---------------------------------------
 EvUiRequestLockSystemChat = EventBase:new(nil)
 
 function EvUiRequestLockSystemChat:new(o)
@@ -333,7 +347,7 @@ function EvUiRequestLockSystemChat:Reset()
     self.requestLock = false
 end
 
-
+---------------------------------------
 -- Ui��Ϣ��������ס�����Ϣ
 EvUiRequestLockPlayerChat = EventBase:new(nil)
 
@@ -352,6 +366,7 @@ function EvUiRequestLockPlayerChat:Reset()
     self.requestLock = false
 end
 
+---------------------------------------
 --Ui��Ϣ,�����ʼ�����
 EvUiRequestMailRecvAttachment = EventBase:new(nil)
 
@@ -368,7 +383,7 @@ function EvUiRequestMailRecvAttachment:Reset()
     self.mail_guid = nil
 end
 
-
+---------------------------------------
 --Ui��Ϣ,��������Ʒ
 EvUiRequestBuyItem = EventBase:new(nil)
 
@@ -391,6 +406,7 @@ function EvUiRequestBuyItem:Reset()
     self.pay_type = nil
 end
 
+---------------------------------------
 EvUiRequestBuyDiamond = EventBase:new(nil)
 
 function EvUiRequestBuyDiamond:new(o)
@@ -406,6 +422,7 @@ function EvUiRequestBuyDiamond:Reset()
     self.buy_diamondid = nil
 end
 
+---------------------------------------
 EvUiBuyItem = EventBase:new(nil)
 
 function EvUiBuyItem:new(o)
@@ -423,6 +440,7 @@ function EvUiBuyItem:Reset()
     self.to_etguid = nil
 end
 
+---------------------------------------
 EvUiDesktopHStandUp = EventBase:new(nil)
 
 function EvUiDesktopHStandUp:new(o)
@@ -440,6 +458,7 @@ function EvUiDesktopHStandUp:Reset()
     self.to_etguid = nil
 end
 
+---------------------------------------
 EvUiRequestBuyGold = EventBase:new(nil)
 
 function EvUiRequestBuyGold:new(o)
@@ -455,6 +474,7 @@ function EvUiRequestBuyGold:Reset()
     self.buy_goldid = nil
 end
 
+---------------------------------------
 EvUiRequestWebpay = EventBase:new(nil)
 
 function EvUiRequestWebpay:new(o)
@@ -470,6 +490,7 @@ function EvUiRequestWebpay:Reset()
     self.Amount = 0
 end
 
+---------------------------------------
 EvUiRequestQuicktellerTransfers = EventBase:new(nil)
 
 function EvUiRequestQuicktellerTransfers:new(o)
@@ -483,6 +504,7 @@ end
 function EvUiRequestQuicktellerTransfers:Reset()
 end
 
+---------------------------------------
 EvUiRequestGetMoney = EventBase:new(nil)
 
 function EvUiRequestGetMoney:new(o)
@@ -507,7 +529,7 @@ function EvUiRequestGetMoney:Reset()
     self.receiverOtherName = nil
 end
 
-
+---------------------------------------
 --Ui��Ϣ,������֤��
 EvUiSendSecurityCode = EventBase:new(nil)
 
@@ -524,8 +546,7 @@ function EvUiSendSecurityCode:Reset()
     self.phone_num = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ,ͬ����Ӻ���
 EvUiAgreeAddFriend = EventBase:new(nil)
 
@@ -544,8 +565,7 @@ function EvUiAgreeAddFriend:Reset()
     self.ev = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ,�ܾ���Ӻ���
 EvUiRefuseAddFriend = EventBase:new(nil)
 
@@ -564,8 +584,7 @@ function EvUiRefuseAddFriend:Reset()
     self.ev = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ�������Ǯ
 EvUiRequestBankDeposit = EventBase:new(nil)
 
@@ -582,8 +601,7 @@ function EvUiRequestBankDeposit:Reset()
     self.deposit_chip = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ������ȡǮ
 EvUiRequestBankWithdraw = EventBase:new(nil)
 
@@ -600,8 +618,7 @@ function EvUiRequestBankWithdraw:Reset()
     self.withdraw_chip = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ��ȷ�Ϸ��ͳ���
 EvUiClickConfirmChipTransaction = EventBase:new(nil)
 
@@ -620,7 +637,7 @@ function EvUiClickConfirmChipTransaction:Reset()
     self.chip = nil
 end
 
-
+---------------------------------------
 --Ui��Ϣ��������Ϣ
 EvUiSetUnSendDesktopMsg = EventBase:new(nil)
 
@@ -637,7 +654,7 @@ function EvUiSetUnSendDesktopMsg:Reset()
     self.text = nil
 end
 
-
+---------------------------------------
 --Ui��Ϣ��������Ϣ
 EvUiSendMsg = EventBase:new(nil)
 
@@ -654,8 +671,7 @@ function EvUiSendMsg:Reset()
     self.chat_msg = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ��ȷ�϶�ȡ���������¼
 EvUiChatConfirmRead = EventBase:new(nil)
 
@@ -674,7 +690,9 @@ function EvUiChatConfirmRead:Reset()
     self.msg_id = nil
 end
 
+---------------------------------------
 EvUiSendFeedbackMsg = EventBase:new(nil)
+
 function EvUiSendFeedbackMsg:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -688,7 +706,9 @@ function EvUiSendFeedbackMsg:Reset()
     self.chat_msg = nil
 end
 
+---------------------------------------
 EvUiFeedbackConfirmRead = EventBase:new(nil)
+
 function EvUiFeedbackConfirmRead:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -700,7 +720,7 @@ end
 function EvUiFeedbackConfirmRead:Reset()
 end
 
-
+---------------------------------------
 --Ui��Ϣ���������������View��
 EvUiClickViewInDesk = EventBase:new(nil)
 
@@ -719,8 +739,7 @@ function EvUiClickViewInDesk:Reset()
     self.seat_index = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ�����ѡ������������
 EvUiClickChooseFriendChatTarget = EventBase:new(nil)
 
@@ -735,6 +754,7 @@ end
 function EvUiClickChooseFriendChatTarget:Reset()
 end
 
+---------------------------------------
 EvUiClickChooseFriend = EventBase:new(nil)
 
 function EvUiClickChooseFriend:new(o)
@@ -754,8 +774,7 @@ function EvUiClickChooseFriend:Reset()
     self.is_recommand = false
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ��
 EvUiCurrentChatTargetChange = EventBase:new(nil)
 
@@ -772,8 +791,7 @@ function EvUiCurrentChatTargetChange:Reset()
     self.current_chattarget = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ��ȷ�Ϸ��ͳ���
 EvUiClickConfirmChipTransaction = EventBase:new(nil)
 
@@ -792,8 +810,7 @@ function EvUiClickConfirmChipTransaction:Reset()
     self.chip = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ������������
 EvUiCreateMainUi = EventBase:new(nil)
 
@@ -805,6 +822,7 @@ function EvUiCreateMainUi:new(o)
     return o
 end
 
+---------------------------------------
 EvUiRequestUpdatePublicMatchPlayerNum = EventBase:new(nil)
 
 function EvUiRequestUpdatePublicMatchPlayerNum:new(o)
@@ -815,6 +833,7 @@ function EvUiRequestUpdatePublicMatchPlayerNum:new(o)
     return o
 end
 
+---------------------------------------
 EvUiRequestUpdatePrivateMatchPlayerNum = EventBase:new(nil)
 
 function EvUiRequestUpdatePrivateMatchPlayerNum:new(o)
@@ -825,7 +844,9 @@ function EvUiRequestUpdatePrivateMatchPlayerNum:new(o)
     return o
 end
 
+---------------------------------------
 EvUiRequestCreatePrivateMatch = EventBase:new(nil)
+
 function EvUiRequestCreatePrivateMatch:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -838,6 +859,8 @@ end
 function EvUiRequestCreatePrivateMatch:Reset()
     self.CreateMatchInfo = nil
 end
+
+---------------------------------------
 --Ui��Ϣ�������������
 EvUiClickCreateDeskTop = EventBase:new(nil)
 
@@ -854,8 +877,7 @@ function EvUiClickCreateDeskTop:Reset()
     self.create_info = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ�������һ��������
 EvUiCreateExchangeChip = EventBase:new(nil)
 
@@ -871,9 +893,7 @@ function EvUiCreateExchangeChip:Reset()
     self.create_info = nil
 end
 
-
-
-
+---------------------------------------
 --Ui��Ϣ�����Һ���
 EvUiFindFriend = EventBase:new(nil)
 
@@ -890,6 +910,7 @@ function EvUiFindFriend:Reset()
     self.search_filter = nil
 end
 
+---------------------------------------
 EvUiAddFriend = EventBase:new(nil)
 
 function EvUiAddFriend:new(o)
@@ -905,6 +926,7 @@ function EvUiAddFriend:Reset()
     self.friend_etguid = nil
 end
 
+---------------------------------------
 EvUiDeleteFriend = EventBase:new(nil)
 
 function EvUiDeleteFriend:new(o)
@@ -920,8 +942,7 @@ function EvUiDeleteFriend:Reset()
     self.friend_etguid = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ�����Һ���
 EvUiClickSearchDesk = EventBase:new(nil)
 
@@ -938,8 +959,7 @@ function EvUiClickSearchDesk:Reset()
     self.desktop_searchfilter = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ�������ѯ�ú�����������
 EvUiRequestGetCurrentFriendPlayDesk = EventBase:new(nil)
 
@@ -956,8 +976,7 @@ function EvUiRequestGetCurrentFriendPlayDesk:Reset()
     self.player_guid = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ���������������
 EvUiClickSearchFriendsDesk = EventBase:new(nil)
 
@@ -974,8 +993,7 @@ function EvUiClickSearchFriendsDesk:Reset()
     self.friend_state = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ�������������ǳ�
 EvUiClickChangePlayerNickName = EventBase:new(nil)
 
@@ -992,6 +1010,7 @@ function EvUiClickChangePlayerNickName:Reset()
     self.new_name = nil
 end
 
+---------------------------------------
 EvUiClickChipTransaction = EventBase:new(nil)
 
 function EvUiClickChipTransaction:new(o)
@@ -1007,9 +1026,7 @@ function EvUiClickChipTransaction:Reset()
     self.send_target_etguid = nil
 end
 
-
-
-
+---------------------------------------
 --Ui��Ϣ������������ǩ��
 EvUiClickChangePlayerIndividualSignature = EventBase:new(nil)
 
@@ -1026,8 +1043,7 @@ function EvUiClickChangePlayerIndividualSignature:Reset()
     self.new_individual_signature = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ������������ǩ��
 EvUiClickChangePlayerIndividualSignature = EventBase:new(nil)
 
@@ -1044,8 +1060,7 @@ function EvUiClickChangePlayerIndividualSignature:Reset()
     self.new_individual_signature = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ������������¼
 EvUiClickLogin = EventBase:new(nil)
 
@@ -1062,8 +1077,7 @@ function EvUiClickLogin:Reset()
     self.new_individual_signature = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ������������
 EvUiClickInviteFriend = EventBase:new(nil)
 
@@ -1078,7 +1092,7 @@ end
 function EvUiClickInviteFriend:Reset()
 end
 
-
+---------------------------------------
 --Ui��Ϣ������������̵�
 EvUiClickShop = EventBase:new(nil)
 
@@ -1093,7 +1107,7 @@ end
 function EvUiClickShop:Reset()
 end
 
-
+---------------------------------------
 --Ui��Ϣ�����Vip
 EvUiClickVip = EventBase:new(nil)
 
@@ -1108,8 +1122,7 @@ end
 function EvUiClickVip:Reset()
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ��������������
 EvUiClickHelp = EventBase:new(nil)
 
@@ -1124,8 +1137,7 @@ end
 function EvUiClickHelp:Reset()
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ����ȡ��������
 EvUiGetRankingGold = EventBase:new(nil)
 
@@ -1140,8 +1152,7 @@ end
 function EvUiGetRankingGold:Reset()
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ����ȡ�������
 EvUiGetRankingDiamond = EventBase:new(nil)
 
@@ -1156,7 +1167,7 @@ end
 function EvUiGetRankingDiamond:Reset()
 end
 
-
+---------------------------------------
 --Ui��Ϣ����ȡ��ʤ����
 EvUiGetRankingWinGold = EventBase:new(nil)
 
@@ -1171,6 +1182,7 @@ end
 function EvUiGetRankingWinGold:Reset()
 end
 
+---------------------------------------
 EvUiGetRankingRedEnvelopes = EventBase:new(nil)
 
 function EvUiGetRankingRedEnvelopes:new(o)
@@ -1184,7 +1196,7 @@ end
 function EvUiGetRankingRedEnvelopes:Reset()
 end
 
-
+---------------------------------------
 --Ui��Ϣ�����ˢ��IPAddress
 EvUiClickRefreshIPAddress = EventBase:new(nil)
 
@@ -1199,7 +1211,7 @@ end
 function EvUiClickRefreshIPAddress:Reset()
 end
 
-
+---------------------------------------
 --Ui��Ϣ�������׳�
 EvUiRequestFirstRecharge = EventBase:new(nil)
 
@@ -1214,8 +1226,7 @@ end
 function EvUiRequestFirstRecharge:Reset()
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ��ɾ�����������¼
 EvUiClickDeleteFriendChatRecord = EventBase:new(nil)
 
@@ -1232,8 +1243,7 @@ function EvUiClickDeleteFriendChatRecord:Reset()
     self.friend_etguid = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ
 EvUiClickChooseFriend = EventBase:new(nil)
 
@@ -1254,8 +1264,7 @@ function EvUiClickChooseFriend:Reset()
     self.is_recommand = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ,�������һ����
 EvUiInviteFriendPlayTogether = EventBase:new(nil)
 
@@ -1274,8 +1283,7 @@ function EvUiInviteFriendPlayTogether:Reset()
     self.friend_desktopguid = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ���ı�����
 EvUiChangeLan = EventBase:new(nil)
 
@@ -1292,8 +1300,7 @@ function EvUiChangeLan:Reset()
     self.lan = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ���������������Play��
 EvUiClickPlayInDesk = EventBase:new(nil)
 
@@ -1314,8 +1321,7 @@ function EvUiClickPlayInDesk:Reset()
     self.seat_index = nil
 end
 
-
-
+---------------------------------------
 --Ui��Ϣ���������������View��
 EvUiClickViewInDesk = EventBase:new(nil)
 
@@ -1336,6 +1342,7 @@ function EvUiClickViewInDesk:Reset()
     self.seat_index = nil
 end
 
+---------------------------------------
 EvUiRequestPublicMatchList = EventBase:new(nil)
 
 function EvUiRequestPublicMatchList:new(o)
@@ -1349,6 +1356,7 @@ end
 function EvUiRequestPublicMatchList:Reset()
 end
 
+---------------------------------------
 EvUiRequestPrivateMatchList = EventBase:new(nil)
 
 function EvUiRequestPrivateMatchList:new(o)
@@ -1362,8 +1370,7 @@ end
 function EvUiRequestPrivateMatchList:Reset()
 end
 
-
-
+---------------------------------------
 -- 请求报名比赛
 EvUiRequestSignUpMatch = EventBase:new()
 
@@ -1380,8 +1387,7 @@ function EvUiRequestSignUpMatch:Reset()
     self.MatchGuid = nil
 end
 
-
-
+---------------------------------------
 -- 请求进入比赛
 EvUiRequestEnterMatch = EventBase:new()
 
@@ -1399,8 +1405,7 @@ function EvUiRequestEnterMatch:Reset()
     self.MatchGuid = nil
 end
 
-
-
+---------------------------------------
 -- 请求获取比赛详细信息
 EvUiRequestMatchDetailedInfo = EventBase:new(nil)
 
@@ -1418,6 +1423,7 @@ function EvUiRequestMatchDetailedInfo:Reset()
     self.MatchGuid = nil
 end
 
+---------------------------------------
 EvUiRequestGetMatchDetailedInfoByInvitation = EventBase:new(nil)
 
 function EvUiRequestGetMatchDetailedInfoByInvitation:new(o)
@@ -1433,6 +1439,7 @@ function EvUiRequestGetMatchDetailedInfoByInvitation:Reset()
     self.InvitationCode = nil
 end
 
+---------------------------------------
 EvUiRequestCancelSignupMatch = EventBase:new(nil)
 
 function EvUiRequestCancelSignupMatch:new(o)
@@ -1448,6 +1455,7 @@ function EvUiRequestCancelSignupMatch:Reset()
     self.MatchGuid = nil
 end
 
+---------------------------------------
 --�����ȡ�һ�����Ʒ
 EvRequesetGetExchangeCodeItem = EventBase:new(nil)
 
@@ -1466,7 +1474,7 @@ function EvRequesetGetExchangeCodeItem:Reset()
     self.pwd = nil
 end
 
---
+---------------------------------------
 EvCreateGiftShop = EventBase:new(nil)
 
 function EvCreateGiftShop:new(o)
@@ -1486,9 +1494,10 @@ function EvCreateGiftShop:Reset()
     self.to_player_etguid = nil
 end
 
-
+---------------------------------------
 --��Ϣ�����غ���ͷ��ɹ�
 EvLoadPlayerIconSuccess = EventBase:new(nil)
+
 function EvLoadPlayerIconSuccess:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -1506,6 +1515,7 @@ function EvLoadPlayerIconSuccess:Reset()
     self.fariy_t = nil
 end
 
+---------------------------------------
 -- Entity��Ϣ����ȡ��������
 EvEntityGetRankingGold = EventBase:new(nil)
 
@@ -1522,6 +1532,7 @@ function EvEntityGetRankingGold:Reset()
     self.ListRanking = {}
 end
 
+---------------------------------------
 -- Entity��Ϣ����ȡ�������
 EvEntityGetRankingDimond = EventBase:new(nil)
 
@@ -1538,7 +1549,7 @@ function EvEntityGetRankingDimond:Reset()
     self.ListRanking = {}
 end
 
-
+---------------------------------------
 -- Entity��Ϣ���յ��������Ϣ
 EvEntityReceiceMarquee = EventBase:new(nil)
 
@@ -1555,8 +1566,7 @@ function EvEntityReceiceMarquee:Reset()
     self.im_marquee = nil
 end
 
-
-
+---------------------------------------
 -- Entity��Ϣ����ȡ�����Ϣ
 EvEntityGetPlayerInfoOther = EventBase:new(nil)
 
@@ -1575,7 +1585,7 @@ function EvEntityGetPlayerInfoOther:Reset()
     self.ticket = nil
 end
 
-
+---------------------------------------
 --Entity��Ϣ��ɾ��������Ʒ
 EvEntityBagDeleteItem = EventBase:new(nil)
 
@@ -1592,7 +1602,7 @@ function EvEntityBagDeleteItem:Reset()
     self.item_objid = nil
 end
 
-
+---------------------------------------
 --Entity��Ϣ����ӱ�����Ʒ
 EvEntityBagAddItem = EventBase:new(nil)
 
@@ -1609,6 +1619,7 @@ function EvEntityBagAddItem:Reset()
     self.item = nil
 end
 
+---------------------------------------
 --Entity��Ϣ���������
 EvEntityGoldChanged = EventBase:new(nil)
 
@@ -1631,8 +1642,7 @@ function EvEntityGoldChanged:Reset()
     self.user_data = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ, ��Ҹ���
 EvEntityDiamondChanged = EventBase:new(nil)
 
@@ -1647,6 +1657,7 @@ end
 function EvEntityDiamondChanged:Reset()
 end
 
+---------------------------------------
 EvEntityPointChanged = EventBase:new(nil)
 
 function EvEntityPointChanged:new(o)
@@ -1660,6 +1671,7 @@ end
 function EvEntityPointChanged:Reset()
 end
 
+---------------------------------------
 --Entity��Ϣ�����г������
 EvEntityBankGoldChange = EventBase:new(nil)
 
@@ -1678,11 +1690,7 @@ function EvEntityBankGoldChange:Reset()
     self.gold_acc = nil
 end
 
-
-
-
-
-
+---------------------------------------
 --Entity��Ϣ��֪ͨ��������״̬���
 EvEntityFriendOnlineStateChange = EventBase:new(nil)
 
@@ -1699,8 +1707,7 @@ function EvEntityFriendOnlineStateChange:Reset()
     self.player_info = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ��֪ͨɾ������
 EvEntityNotifyDeleteFriend = EventBase:new(nil)
 
@@ -1719,8 +1726,7 @@ function EvEntityNotifyDeleteFriend:Reset()
     self.map_friend = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ��ɾ������������Ϣ�ɹ�
 EvEntityDeleteFriendChatRecordSuccess = EventBase:new(nil)
 
@@ -1737,8 +1743,7 @@ function EvEntityDeleteFriendChatRecordSuccess:Reset()
     self.friend_etguid = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ���յ����������¼
 EvEntityReceiveFriendSingleChat = EventBase:new(nil)
 
@@ -1757,9 +1762,7 @@ function EvEntityReceiveFriendSingleChat:Reset()
     self.friend_etguid = nil
 end
 
-
-
-
+---------------------------------------
 --Entity��Ϣ���յ����������¼
 EvEntityReceiveFriendChats = EventBase:new(nil)
 
@@ -1778,7 +1781,9 @@ function EvEntityReceiveFriendChats:Reset()
     self.friend_etguid = nil
 end
 
+---------------------------------------
 EvEntityReceiveFeedbackChat = EventBase:new(nil)
+
 function EvEntityReceiveFeedbackChat:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -1792,7 +1797,9 @@ function EvEntityReceiveFeedbackChat:Reset()
     self.chat_msg = nil
 end
 
+---------------------------------------
 EvEntityReceiveFeedbackChats = EventBase:new(nil)
+
 function EvEntityReceiveFeedbackChats:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -1806,7 +1813,7 @@ function EvEntityReceiveFeedbackChats:Reset()
     self.list_allchats = nil
 end
 
-
+---------------------------------------
 --Entity��Ϣ����ȡ�����¼
 EvEntityChatRecordRequestResult = EventBase:new(nil)
 
@@ -1825,8 +1832,7 @@ function EvEntityChatRecordRequestResult:Reset()
     self.friend_etguid = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ����ȡ�����¼
 EvEntityPlayerGiveChipQueryRangeRequestResult = EventBase:new(nil)
 
@@ -1847,8 +1853,7 @@ function EvEntityPlayerGiveChipQueryRangeRequestResult:Reset()
     self.is_success = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ��֪ͨ������Ϣˢ��
 EvEntityRefreshFriendList = EventBase:new(nil)
 
@@ -1865,8 +1870,7 @@ function EvEntityRefreshFriendList:Reset()
     self.map_friendinfo = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ��֪ͨ������Ϣˢ��
 EvEntityRefreshFriendInfo = EventBase:new(nil)
 
@@ -1883,6 +1887,7 @@ function EvEntityRefreshFriendInfo:Reset()
     self.player_info = nil
 end
 
+---------------------------------------
 EvEntityFriendGoldChange = EventBase:new(nil)
 
 function EvEntityFriendGoldChange:new(o)
@@ -1892,7 +1897,6 @@ function EvEntityFriendGoldChange:new(o)
     self.EventName = "EvEntityFriendGoldChange"
     self.friend_guid = nil
     self.current_gold = 0
-
     return o
 end
 
@@ -1901,8 +1905,7 @@ function EvEntityFriendGoldChange:Reset()
     self.current_gold = 0
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ��֪ͨ���Һ���
 EvEntityFindFriend = EventBase:new(nil)
 
@@ -1919,8 +1922,7 @@ function EvEntityFindFriend:Reset()
     self.list_friend_item = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ����ȡ���������б�
 EvEntityGetLobbyDeskList = EventBase:new(nil)
 
@@ -1937,8 +1939,7 @@ function EvEntityGetLobbyDeskList:Reset()
     self.list_desktop = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ����ȡ�������������б�
 EvEntitySearchDesktopFollowFriend = EventBase:new(nil)
 
@@ -1955,8 +1956,7 @@ function EvEntitySearchDesktopFollowFriend:Reset()
     self.desktop_info = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ�����������
 EvEntitySearchPlayingFriend = EventBase:new(nil)
 
@@ -1973,8 +1973,7 @@ function EvEntitySearchPlayingFriend:Reset()
     self.list_playerinfo = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ�����������
 EvEntityGetPlayerModuleDataSuccess = EventBase:new(nil)
 
@@ -1991,8 +1990,7 @@ function EvEntityGetPlayerModuleDataSuccess:Reset()
     self.player_moduledata = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ���Ƽ�����
 EvEntityPlayerInfoChanged = EventBase:new(nil)
 
@@ -2009,8 +2007,7 @@ function EvEntityPlayerInfoChanged:Reset()
     self.controller_actor = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ����ǰ��ʱ����ı�
 EvEntityCurrentTmpGiftChange = EventBase:new(nil)
 
@@ -2025,7 +2022,7 @@ end
 function EvEntityCurrentTmpGiftChange:Reset()
 end
 
-
+---------------------------------------
 --Entity��Ϣ����ȡ�������
 EvEntityGetRankingDiamond = EventBase:new(nil)
 
@@ -2042,8 +2039,7 @@ function EvEntityGetRankingDiamond:Reset()
     self.list_ranking = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ����ȡ��������
 EvEntityGetRankingGold = EventBase:new(nil)
 
@@ -2060,8 +2056,7 @@ function EvEntityGetRankingGold:Reset()
     self.list_rank = nil
 end
 
-
-
+---------------------------------------
 --Entity��Ϣ����ȡ��ʤ����
 EvEntityGetRankingWinGold = EventBase:new(nil)
 
@@ -2078,6 +2073,7 @@ function EvEntityGetRankingWinGold:Reset()
     self.list_ranking = nil
 end
 
+---------------------------------------
 EvEntityGetRankingRedEnvelopes = EventBase:new(nil)
 
 function EvEntityGetRankingRedEnvelopes:new(o)
@@ -2093,7 +2089,7 @@ function EvEntityGetRankingRedEnvelopes:Reset()
     self.list_ranking = nil
 end
 
-
+---------------------------------------
 --Entity��Ϣ������VIP
 EvEntityBuyVIP = EventBase:new(nil)
 
@@ -2110,8 +2106,7 @@ function EvEntityBuyVIP:Reset()
     self.buy_id = nil
 end
 
-
-
+---------------------------------------
 --��Ϣ��ͼƬ�ϴ��ɹ�
 EvGetPicUpLoadSuccess = EventBase:new(nil)
 
@@ -2126,6 +2121,7 @@ end
 function EvGetPicUpLoadSuccess:Reset()
 end
 
+---------------------------------------
 EvRequestGetPlayerModuleData = EventBase:new(nil)
 
 function EvRequestGetPlayerModuleData:new(o)
@@ -2141,73 +2137,38 @@ function EvRequestGetPlayerModuleData:Reset()
     self.factory_name = nil
 end
 
-EvOnGetOnLineReward = EventBase:new(nil)
-function EvOnGetOnLineReward:new(o)
+---------------------------------------
+-- 福利视图，点击领取在线奖励按钮
+EvViewRewardClickBtnOnlineReward = EventBase:new(nil)
+
+function EvViewRewardClickBtnOnlineReward:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvViewOnGetOnLineReward"
+    self.EventName = "EvViewRewardClickBtnOnlineReward"
     return o
 end
 
-function EvOnGetOnLineReward:Reset()
+function EvViewRewardClickBtnOnlineReward:Reset()
 end
 
-EvEntityRefreshLeftOnlineRewardTm = EventBase:new(nil)
+---------------------------------------
+-- 福利视图，点击领取定时奖励按钮
+EvViewRewardClickBtnTimingReward = EventBase:new(nil)
 
-function EvEntityRefreshLeftOnlineRewardTm:new(o)
+function EvViewRewardClickBtnTimingReward:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvEntityRefreshLeftOnlineRewardTm"
-    self.left_reward_second = 0
+    self.EventName = "EvViewRewardClickBtnTimingReward"
     return o
 end
 
-function EvEntityRefreshLeftOnlineRewardTm:Reset()
-    self.left_reward_second = 0
+function EvViewRewardClickBtnTimingReward:Reset()
 end
 
-EvRequestGetOnLineReward = EventBase:new(nil)
-function EvRequestGetOnLineReward:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.EventName = "EvRequestGetOnLineReward"
-    return o
-end
-
-function EvRequestGetOnLineReward:Reset()
-end
-
-EvRequestGetTimingReward = EventBase:new(nil)
-function EvRequestGetTimingReward:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.EventName = "EvViewRequestGetTimingReward"
-    return o
-end
-
-function EvRequestGetTimingReward:Reset()
-end
-
-EvEntityCanGetTimingReward = EventBase:new(nil)
-function EvEntityCanGetTimingReward:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.EventName = "EvEntityCanGetTimingReward"
-    self.can_getreward = false
-    return o
-end
-
-function EvEntityCanGetTimingReward:Reset()
-    self.can_getreward = false
-end
-
+---------------------------------------
 EvEntityPlayerInitDone = EventBase:new(nil)
-
 function EvEntityPlayerInitDone:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -2219,6 +2180,7 @@ end
 function EvEntityPlayerInitDone:Reset()
 end
 
+---------------------------------------
 EvEntityRecommendPlayerList = EventBase:new(nil)
 
 function EvEntityRecommendPlayerList:new(o)
@@ -2234,6 +2196,7 @@ function EvEntityRecommendPlayerList:Reset()
     self.list_recommend = nil
 end
 
+---------------------------------------
 EvEntitySetOnLinePlayerNum = EventBase:new(nil)
 
 function EvEntitySetOnLinePlayerNum:new(o)
@@ -2249,6 +2212,7 @@ function EvEntitySetOnLinePlayerNum:Reset()
     self.online_num = 0
 end
 
+---------------------------------------
 EvEntityOnGrowRewardSnapshot = EventBase:new(nil)
 
 function EvEntityOnGrowRewardSnapshot:new(o)
@@ -2264,6 +2228,7 @@ function EvEntityOnGrowRewardSnapshot:Reset()
     self.grow_data = nil
 end
 
+---------------------------------------
 EvUiClickChatmsg = EventBase:new(nil)
 
 function EvUiClickChatmsg:new(o)
@@ -2277,6 +2242,7 @@ end
 function EvUiClickChatmsg:Reset()
 end
 
+---------------------------------------
 EvUiClickFriend = EventBase:new(nil)
 
 function EvUiClickFriend:new(o)
@@ -2290,6 +2256,7 @@ end
 function EvUiClickFriend:Reset()
 end
 
+---------------------------------------
 EvEntityGoldChanged = EventBase:new(nil)
 
 function EvEntityGoldChanged:new(o)
@@ -2309,16 +2276,8 @@ function EvEntityGoldChanged:Reset()
     self.user_data = nil
 end
 
-
-
-
-
-
-
+---------------------------------------
 -- DesktopH
-
-
-
 EvUiClickDesktopHundred = EventBase:new(nil)
 
 function EvUiClickDesktopHundred:new(o)
@@ -2334,6 +2293,7 @@ function EvUiClickDesktopHundred:Reset()
     self.factory_name = ""
 end
 
+---------------------------------------
 EvEntityPlayerEnterDesktopH = EventBase:new(nil)
 
 function EvEntityPlayerEnterDesktopH:new(o)
@@ -2347,6 +2307,7 @@ end
 function EvEntityPlayerEnterDesktopH:Reset()
 end
 
+---------------------------------------
 EvDesktopHundredChangeCardsType = EventBase:new(nil)
 
 function EvDesktopHundredChangeCardsType:new(o)
@@ -2362,6 +2323,7 @@ function EvDesktopHundredChangeCardsType:Reset()
     self.map_card_types = nil
 end
 
+---------------------------------------
 EvUiClickLeaveDesktopHundred = EventBase:new(nil)
 
 function EvUiClickLeaveDesktopHundred:new(o)
@@ -2375,6 +2337,7 @@ end
 function EvUiClickLeaveDesktopHundred:Reset()
 end
 
+---------------------------------------
 EvUiRequestGetGrowSnapShot = EventBase:new(nil)
 
 function EvUiRequestGetGrowSnapShot:new(o)
@@ -2388,6 +2351,7 @@ end
 function EvUiRequestGetGrowSnapShot:Reset()
 end
 
+---------------------------------------
 EvEntityDesktopHGameEndState = EventBase:new(nil)
 
 function EvEntityDesktopHGameEndState:new(o)
@@ -2401,6 +2365,7 @@ end
 function EvEntityDesktopHGameEndState:Reset()
 end
 
+---------------------------------------
 EvDesktopHGetBetReward = EventBase:new(nil)
 
 function EvDesktopHGetBetReward:new(o)
@@ -2416,6 +2381,7 @@ function EvDesktopHGetBetReward:Reset()
     self.factory_name = nil
 end
 
+---------------------------------------
 EvEntityInitBetReward = EventBase:new(nil)
 
 function EvEntityInitBetReward:new(o)
@@ -2431,6 +2397,7 @@ function EvEntityInitBetReward:Reset()
     self.init_dailybet_reward = nil
 end
 
+---------------------------------------
 EvEntityDesktopHChangeBeBankerPlayerList = EventBase:new(nil)
 
 function EvEntityDesktopHChangeBeBankerPlayerList:new(o)
@@ -2450,6 +2417,7 @@ function EvEntityDesktopHChangeBeBankerPlayerList:Reset()
     self.is_bankplayer = false
 end
 
+---------------------------------------
 EvEntityDesktopHChangeBankerPlayer = EventBase:new(nil)
 
 function EvEntityDesktopHChangeBankerPlayer:new(o)
@@ -2469,6 +2437,7 @@ function EvEntityDesktopHChangeBankerPlayer:Reset()
     self.is_bankplayer = false
 end
 
+---------------------------------------
 EvEntityDesktopHBankerPlayerGoldChange = EventBase:new(nil)
 
 function EvEntityDesktopHBankerPlayerGoldChange:new(o)
@@ -2484,6 +2453,7 @@ function EvEntityDesktopHBankerPlayerGoldChange:Reset()
     self.banker_player = nil
 end
 
+---------------------------------------
 EvUiDesktopHSeatDown = EventBase:new(nil)
 
 function EvUiDesktopHSeatDown:new(o)
@@ -2501,6 +2471,7 @@ function EvUiDesktopHSeatDown:Reset()
     self.min_golds = 0
 end
 
+---------------------------------------
 EvDesktopHClickRewardPotBtn = EventBase:new(nil)
 
 function EvDesktopHClickRewardPotBtn:new(o)
@@ -2514,6 +2485,7 @@ end
 function EvDesktopHClickRewardPotBtn:Reset()
 end
 
+---------------------------------------
 EvDesktopHClickBetOperateType = EventBase:new(nil)
 
 function EvDesktopHClickBetOperateType:new(o)
@@ -2529,6 +2501,7 @@ function EvDesktopHClickBetOperateType:Reset()
     self.tb_bet_operateid = nil
 end
 
+---------------------------------------
 EvDesktopHGetBetReward = EventBase:new(nil)
 
 function EvDesktopHGetBetReward:new(o)
@@ -2542,6 +2515,7 @@ end
 function EvDesktopHGetBetReward:Reset()
 end
 
+---------------------------------------
 EvDesktopHBet = EventBase:new(nil)
 
 function EvDesktopHBet:new(o)
@@ -2557,6 +2531,7 @@ function EvDesktopHBet:Reset()
     self.bet_betpot_index = 0
 end
 
+---------------------------------------
 EvDesktopHRepeatBet = EventBase:new(nil)
 
 function EvDesktopHRepeatBet:new(o)
@@ -2570,6 +2545,7 @@ end
 function EvDesktopHRepeatBet:Reset()
 end
 
+---------------------------------------
 EvDesktopHInitBetReward = EventBase:new(nil)
 
 function EvDesktopHInitBetReward:new(o)
@@ -2585,6 +2561,7 @@ function EvDesktopHInitBetReward:Reset()
     self.factory_name = nil
 end
 
+---------------------------------------
 EvEntityDesktopHChangeSeatPlayer = EventBase:new(nil)
 
 function EvEntityDesktopHChangeSeatPlayer:new(o)
@@ -2600,6 +2577,7 @@ function EvEntityDesktopHChangeSeatPlayer:Reset()
     self.map_seat_player = {}
 end
 
+---------------------------------------
 EvEntityDesktopHBetOperateTypeChange = EventBase:new(nil)
 
 function EvEntityDesktopHBetOperateTypeChange:new(o)
@@ -2615,6 +2593,7 @@ function EvEntityDesktopHBetOperateTypeChange:Reset()
     self.map_changeoperate = nil
 end
 
+---------------------------------------
 EvEntityDesktopHCurrentBetOperateTypeChange = EventBase:new(nil)
 
 function EvEntityDesktopHCurrentBetOperateTypeChange:new(o)
@@ -2628,6 +2607,7 @@ end
 function EvEntityDesktopHCurrentBetOperateTypeChange:Reset()
 end
 
+---------------------------------------
 EvEntityDesktopHBet = EventBase:new(nil)
 
 function EvEntityDesktopHBet:new(o)
@@ -2647,6 +2627,7 @@ function EvEntityDesktopHBet:Reset()
     self.already_betgolds = 0
 end
 
+---------------------------------------
 EvEntityDesktopHUpdateBetPotBetInfo = EventBase:new(nil)
 
 function EvEntityDesktopHUpdateBetPotBetInfo:new(o)
@@ -2666,6 +2647,7 @@ function EvEntityDesktopHUpdateBetPotBetInfo:Reset()
     self.list_seatplayer_betinfo = nil
 end
 
+---------------------------------------
 EvEntityDesktopHBetFailed = EventBase:new(nil)
 
 function EvEntityDesktopHBetFailed:new(o)
@@ -2681,6 +2663,7 @@ function EvEntityDesktopHBetFailed:Reset()
     self.map_self_betgolds = nil
 end
 
+---------------------------------------
 EvEntityDesktopHChangeBankerPlayer = EventBase:new(nil)
 
 function EvEntityDesktopHChangeBankerPlayer:new(o)
@@ -2696,6 +2679,7 @@ function EvEntityDesktopHChangeBankerPlayer:Reset()
     self.banker_player = nil
 end
 
+---------------------------------------
 EvEntityDesktopHBankerPlayerGoldChange = EventBase:new(nil)
 
 function EvEntityDesktopHBankerPlayerGoldChange:new(o)
@@ -2711,6 +2695,7 @@ function EvEntityDesktopHBankerPlayerGoldChange:Reset()
     self.map_seat_player = nil
 end
 
+---------------------------------------
 EvEntityDesktopHSeatPlayerGoldChanged = EventBase:new(nil)
 
 function EvEntityDesktopHSeatPlayerGoldChanged:new(o)
@@ -2726,6 +2711,7 @@ function EvEntityDesktopHSeatPlayerGoldChanged:Reset()
     self.map_seatplayer_golds = nil
 end
 
+---------------------------------------
 EvEntityRecvChatFromDesktopH = EventBase:new(nil)
 
 function EvEntityRecvChatFromDesktopH:new(o)
@@ -2741,6 +2727,7 @@ function EvEntityRecvChatFromDesktopH:Reset()
     self.chat_info = nil
 end
 
+---------------------------------------
 EvEntityDesktopHReadyState = EventBase:new(nil)
 
 function EvEntityDesktopHReadyState:new(o)
@@ -2758,6 +2745,7 @@ function EvEntityDesktopHReadyState:Reset()
     self.map_userdata = nil
 end
 
+---------------------------------------
 EvEntityDesktopHBetState = EventBase:new(nil)
 
 function EvEntityDesktopHBetState:new(o)
@@ -2777,6 +2765,7 @@ function EvEntityDesktopHBetState:Reset()
     self.map_betrepeatinfo = nil
 end
 
+---------------------------------------
 EvEntityDesktopHGameRestState = EventBase:new(nil)
 
 function EvEntityDesktopHGameRestState:new(o)
@@ -2792,6 +2781,7 @@ function EvEntityDesktopHGameRestState:Reset()
     self.left_tm = 0
 end
 
+---------------------------------------
 EvEntityDesktopHBuyItem = EventBase:new(nil)
 
 function EvEntityDesktopHBuyItem:new(o)
@@ -2809,6 +2799,7 @@ function EvEntityDesktopHBuyItem:Reset()
     self.map_items = nil
 end
 
+---------------------------------------
 EvEntityDesktopHGetRewardPotInfo = EventBase:new(nil)
 
 function EvEntityDesktopHGetRewardPotInfo:new(o)
@@ -2826,6 +2817,7 @@ function EvEntityDesktopHGetRewardPotInfo:Reset()
     self.reward_totalgolds = 0
 end
 
+---------------------------------------
 EvDesktopHClickBeBankPlayerBtn = EventBase:new(nil)
 
 function EvDesktopHClickBeBankPlayerBtn:new(o)
@@ -2843,10 +2835,7 @@ function EvDesktopHClickBeBankPlayerBtn:Reset()
     self.take_stack = 0
 end
 
-
-
-
-
+---------------------------------------
 -- Desktop
 EvUiClickExitDesk = EventBase:new(nil)
 
@@ -2861,6 +2850,7 @@ end
 function EvUiClickExitDesk:Reset()
 end
 
+---------------------------------------
 EvUiClickInviteFriendPlay = EventBase:new(nil)
 
 function EvUiClickInviteFriendPlay:new(o)
@@ -2874,6 +2864,7 @@ end
 function EvUiClickInviteFriendPlay:Reset()
 end
 
+---------------------------------------
 EvUiClickWaitWhile = EventBase:new(nil)
 
 function EvUiClickWaitWhile:new(o)
@@ -2887,6 +2878,7 @@ end
 function EvUiClickWaitWhile:Reset()
 end
 
+---------------------------------------
 EvUiClickOB = EventBase:new(nil)
 
 function EvUiClickOB:new(o)
@@ -2900,6 +2892,7 @@ end
 function EvUiClickOB:Reset()
 end
 
+---------------------------------------
 EvUiRequestLockAllSpectator = EventBase:new(nil)
 
 function EvUiRequestLockAllSpectator:new(o)
@@ -2915,6 +2908,7 @@ function EvUiRequestLockAllSpectator:Reset()
     self.requestLock = false
 end
 
+---------------------------------------
 EvUiRequestLockAllDesktopPlayer = EventBase:new(nil)
 
 function EvUiRequestLockAllDesktopPlayer:new(o)
@@ -2930,6 +2924,7 @@ function EvUiRequestLockAllDesktopPlayer:Reset()
     self.requestLock = false
 end
 
+---------------------------------------
 EvUiClickPlayerReturn = EventBase:new(nil)
 
 function EvUiClickPlayerReturn:new(o)
@@ -2943,6 +2938,7 @@ end
 function EvUiClickPlayerReturn:Reset()
 end
 
+---------------------------------------
 EvUiClickRaise = EventBase:new(nil)
 
 function EvUiClickRaise:new(o)
@@ -2958,7 +2954,8 @@ function EvUiClickRaise:Reset()
     self.raise_gold = 0
 end
 
---请求改变收货地址
+---------------------------------------
+-- 请求改变收货地址
 EvUiRequestEditReceiverAddress = EventBase:new(nil)
 
 function EvUiRequestEditReceiverAddress:new(o)
@@ -2967,7 +2964,6 @@ function EvUiRequestEditReceiverAddress:new(o)
     self.__index = self
     self.EventName = "EvUiRequestEditReceiverAddress"
     o.Address = nil
-
     return o
 end
 
@@ -2975,10 +2971,7 @@ function EvUiRequestEditReceiverAddress:Reset()
     self.Address = nil
 end
 
-function EvUiRequestEditReceiverAddress:Reset()
-    self.Address = nil
-end
-
+---------------------------------------
 EvUiClickCancelAutoAction = EventBase:new(nil)
 
 function EvUiClickCancelAutoAction:new(o)
@@ -2992,6 +2985,7 @@ end
 function EvUiClickCancelAutoAction:Reset()
 end
 
+---------------------------------------
 EvUiClickCall = EventBase:new(nil)
 
 function EvUiClickCall:new(o)
@@ -3005,6 +2999,7 @@ end
 function EvUiClickCall:Reset()
 end
 
+---------------------------------------
 EvUiClickAutoAction = EventBase:new(nil)
 
 function EvUiClickAutoAction:new(o)
@@ -3020,6 +3015,7 @@ function EvUiClickAutoAction:Reset()
     self.auto_action_type = nil
 end
 
+---------------------------------------
 EvUiClickCheck = EventBase:new(nil)
 
 function EvUiClickCheck:new(o)
@@ -3033,6 +3029,7 @@ end
 function EvUiClickCheck:Reset()
 end
 
+---------------------------------------
 EvUiClickFlod = EventBase:new(nil)
 
 function EvUiClickFlod:new(o)
@@ -3046,6 +3043,7 @@ end
 function EvUiClickFlod:Reset()
 end
 
+---------------------------------------
 EvEntityRecvChatFromDesktop = EventBase:new(nil)
 
 function EvEntityRecvChatFromDesktop:new(o)
@@ -3061,6 +3059,7 @@ function EvEntityRecvChatFromDesktop:Reset()
     self.chat_info = nil
 end
 
+---------------------------------------
 EvCurrentWinner = EventBase:new(nil)
 
 function EvCurrentWinner:new(o)
@@ -3076,6 +3075,7 @@ function EvCurrentWinner:Reset()
     self.player = nil
 end
 
+---------------------------------------
 EvUiClickDesktop = EventBase:new(nil)
 
 function EvUiClickDesktop:new(o)
@@ -3089,6 +3089,7 @@ end
 function EvUiClickDesktop:Reset()
 end
 
+---------------------------------------
 EvCommonCardShowEnd = EventBase:new(nil)
 
 function EvCommonCardShowEnd:new(o)
@@ -3102,6 +3103,7 @@ end
 function EvCommonCardShowEnd:Reset()
 end
 
+---------------------------------------
 EvCommonCardDealEnd = EventBase:new(nil)
 
 function EvCommonCardDealEnd:new(o)
@@ -3115,6 +3117,7 @@ end
 function EvCommonCardDealEnd:Reset()
 end
 
+---------------------------------------
 EvUiClickShop = EventBase:new(nil)
 
 function EvUiClickShop:new(o)
@@ -3128,6 +3131,7 @@ end
 function EvUiClickShop:Reset()
 end
 
+---------------------------------------
 EvUiClickFriend = EventBase:new(nil)
 
 function EvUiClickFriend:new(o)
@@ -3141,6 +3145,7 @@ end
 function EvUiClickFriend:Reset()
 end
 
+---------------------------------------
 EvUiDesktopClickLockChat = EventBase:new(nil)
 
 function EvUiDesktopClickLockChat:new(o)
@@ -3154,6 +3159,7 @@ end
 function EvUiDesktopClickLockChat:Reset()
 end
 
+---------------------------------------
 EvUiClickChatmsg = EventBase:new(nil)
 
 function EvUiClickChatmsg:new(o)
@@ -3167,6 +3173,7 @@ end
 function EvUiClickChatmsg:Reset()
 end
 
+---------------------------------------
 EvUiClickSeat = EventBase:new(nil)
 
 function EvUiClickSeat:new(o)
@@ -3182,6 +3189,7 @@ function EvUiClickSeat:Reset()
     self.seat_index = 0
 end
 
+---------------------------------------
 EvUiClickInviteFriendPlay = EventBase:new(nil)
 
 function EvUiClickInviteFriendPlay:new(o)
@@ -3195,6 +3203,7 @@ end
 function EvUiClickInviteFriendPlay:Reset()
 end
 
+---------------------------------------
 EvEntityReceiveFriendChats = EventBase:new(nil)
 
 function EvEntityReceiveFriendChats:new(o)
@@ -3208,6 +3217,7 @@ end
 function EvEntityReceiveFriendChats:Reset()
 end
 
+---------------------------------------
 EvEntityUnreadChatsChanged = EventBase:new(nil)
 
 function EvEntityUnreadChatsChanged:new(o)
@@ -3221,6 +3231,7 @@ end
 function EvEntityUnreadChatsChanged:Reset()
 end
 
+---------------------------------------
 EvEntityMailListInit = EventBase:new(nil)
 
 function EvEntityMailListInit:new(o)
@@ -3234,6 +3245,7 @@ end
 function EvEntityMailListInit:Reset()
 end
 
+---------------------------------------
 EvEntityMailAdd = EventBase:new(nil)
 
 function EvEntityMailAdd:new(o)
@@ -3247,6 +3259,7 @@ end
 function EvEntityMailAdd:Reset()
 end
 
+---------------------------------------
 EvEntityMailDelete = EventBase:new(nil)
 
 function EvEntityMailDelete:new(o)
@@ -3260,6 +3273,7 @@ end
 function EvEntityMailDelete:Reset()
 end
 
+---------------------------------------
 EvEntityMailUpdate = EventBase:new(nil)
 
 function EvEntityMailUpdate:new(o)
@@ -3273,11 +3287,8 @@ end
 function EvEntityMailUpdate:Reset()
 end
 
-
-
-
+---------------------------------------
 --Desktop
-
 EvEntityPlayerEnterDesktop = EventBase:new(nil)
 
 function EvEntityPlayerEnterDesktop:new(o)
@@ -3291,6 +3302,7 @@ end
 function EvEntityPlayerEnterDesktop:Reset()
 end
 
+---------------------------------------
 EvEntityPlayerEnterDesktopFailed = EventBase:new(nil)
 
 function EvEntityPlayerEnterDesktopFailed:new(o)
@@ -3304,6 +3316,7 @@ end
 function EvEntityPlayerEnterDesktopFailed:Reset()
 end
 
+---------------------------------------
 EvEntityRecvChatFromDesktop = EventBase:new(nil)
 
 function EvEntityRecvChatFromDesktop:new(o)
@@ -3319,6 +3332,7 @@ function EvEntityRecvChatFromDesktop:Reset()
     self.chat_info = nil
 end
 
+---------------------------------------
 EvEntityDesktopSnapshotNotify = EventBase:new(nil)
 
 function EvEntityDesktopSnapshotNotify:new(o)
@@ -3338,6 +3352,7 @@ function EvEntityDesktopSnapshotNotify:Reset()
     self.is_init = false
 end
 
+---------------------------------------
 EvEntityDesktopIdleNotify = EventBase:new(nil)
 
 function EvEntityDesktopIdleNotify:new(o)
@@ -3351,6 +3366,7 @@ end
 function EvEntityDesktopIdleNotify:Reset()
 end
 
+---------------------------------------
 EvEntityDesktopPreFlopNotify = EventBase:new(nil)
 
 function EvEntityDesktopPreFlopNotify:new(o)
@@ -3364,6 +3380,7 @@ end
 function EvEntityDesktopPreFlopNotify:Reset()
 end
 
+---------------------------------------
 EvEntityDesktopFlopNotify = EventBase:new(nil)
 
 function EvEntityDesktopFlopNotify:new(o)
@@ -3385,6 +3402,7 @@ function EvEntityDesktopFlopNotify:Reset()
     self.bet_player_count = 0
 end
 
+---------------------------------------
 EvEntityDesktopTurnNotify = EventBase:new(nil)
 
 function EvEntityDesktopTurnNotify:new(o)
@@ -3402,6 +3420,7 @@ function EvEntityDesktopTurnNotify:Reset()
     self.bet_player_count = 0
 end
 
+---------------------------------------
 EvEntityDesktopRiverNotify = EventBase:new(nil)
 
 function EvEntityDesktopRiverNotify:new(o)
@@ -3419,6 +3438,7 @@ function EvEntityDesktopRiverNotify:Reset()
     self.bet_player_count = 0
 end
 
+---------------------------------------
 EvEntityDesktopShowdownNotify = EventBase:new(nil)
 
 function EvEntityDesktopShowdownNotify:new(o)
@@ -3427,7 +3447,6 @@ function EvEntityDesktopShowdownNotify:new(o)
     self.__index = self
     self.EventName = "EvEntityDesktopShowdownNotify"
     self.desktop_showdown = nil
-
     return o
 end
 
@@ -3435,6 +3454,7 @@ function EvEntityDesktopShowdownNotify:Reset()
     self.desktop_showdown = nil
 end
 
+---------------------------------------
 EvEntityDesktopGameEndNotifyTexas = EventBase:new(nil)
 
 function EvEntityDesktopGameEndNotifyTexas:new(o)
@@ -3450,6 +3470,7 @@ function EvEntityDesktopGameEndNotifyTexas:Reset()
     self.list_winner = nil
 end
 
+---------------------------------------
 EvEntityDesktopPlayerSit = EventBase:new(nil)
 
 function EvEntityDesktopPlayerSit:new(o)
@@ -3473,6 +3494,7 @@ function EvEntityDesktopPlayerSit:Reset()
     self.vip_level = 0
 end
 
+---------------------------------------
 EvEntityDesktopPlayerLeaveChair = EventBase:new(nil)
 
 function EvEntityDesktopPlayerLeaveChair:new(o)
@@ -3488,6 +3510,7 @@ function EvEntityDesktopPlayerLeaveChair:Reset()
     self.guid = ""
 end
 
+---------------------------------------
 EvEntityBagUpdateItem = EventBase:new(nil)
 
 function EvEntityBagUpdateItem:new(o)
@@ -3503,6 +3526,7 @@ function EvEntityBagUpdateItem:Reset()
     self.item = nil
 end
 
+---------------------------------------
 EvOpenBag = EventBase:new(nil)
 
 function EvOpenBag:new(o)
@@ -3516,6 +3540,7 @@ end
 function EvOpenBag:Reset()
 end
 
+---------------------------------------
 EvEntityRequestGetLotteryTicketData = EventBase:new(nil)
 
 function EvEntityRequestGetLotteryTicketData:new(o)
@@ -3529,6 +3554,7 @@ end
 function EvEntityRequestGetLotteryTicketData:Reset()
 end
 
+---------------------------------------
 EvEntityLotteryTicketBetOperateTypeChange = EventBase:new(nil)
 
 function EvEntityLotteryTicketBetOperateTypeChange:new(o)
@@ -3544,6 +3570,7 @@ function EvEntityLotteryTicketBetOperateTypeChange:Reset()
     self.map_changeoperate = nil
 end
 
+---------------------------------------
 EvEntityLotteryTicketUpdateBetPotBetInfo = EventBase:new(nil)
 
 function EvEntityLotteryTicketUpdateBetPotBetInfo:new(o)
@@ -3561,6 +3588,7 @@ function EvEntityLotteryTicketUpdateBetPotBetInfo:Reset()
     self.map_self_betinfo = {}
 end
 
+---------------------------------------
 EvEntityGetLotteryTicketDataSuccess = EventBase:new(nil)
 
 function EvEntityGetLotteryTicketDataSuccess:new(o)
@@ -3576,6 +3604,7 @@ function EvEntityGetLotteryTicketDataSuccess:Reset()
     self.lotteryticket_data = nil
 end
 
+---------------------------------------
 EvEntityLotteryTicketGameEndState = EventBase:new(nil)
 
 function EvEntityLotteryTicketGameEndState:new(o)
@@ -3593,6 +3622,7 @@ function EvEntityLotteryTicketGameEndState:Reset()
     self.me_wingold = 0
 end
 
+---------------------------------------
 EvEntityLotteryTicketGameEndStateSimple = EventBase:new(nil)
 
 function EvEntityLotteryTicketGameEndStateSimple:new(o)
@@ -3606,6 +3636,7 @@ end
 function EvEntityLotteryTicketGameEndStateSimple:Reset()
 end
 
+---------------------------------------
 EvEntityLotteryTicketBetState = EventBase:new(nil)
 
 function EvEntityLotteryTicketBetState:new(o)
@@ -3621,6 +3652,7 @@ function EvEntityLotteryTicketBetState:Reset()
     self.map_betrepeatinfo = {}
 end
 
+---------------------------------------
 EvLotteryTicketClickRewardPotBtn = EventBase:new(nil)
 
 function EvLotteryTicketClickRewardPotBtn:new(o)
@@ -3634,6 +3666,7 @@ end
 function EvLotteryTicketClickRewardPotBtn:Reset()
 end
 
+---------------------------------------
 EvLotteryTicketBet = EventBase:new(nil)
 
 function EvLotteryTicketBet:new(o)
@@ -3649,6 +3682,7 @@ function EvLotteryTicketBet:Reset()
     self.bet_betpot_index = 0
 end
 
+---------------------------------------
 EvEntityLotteryTicketGetRewardPotInfo = EventBase:new(nil)
 
 function EvEntityLotteryTicketGetRewardPotInfo:new(o)
@@ -3658,7 +3692,6 @@ function EvEntityLotteryTicketGetRewardPotInfo:new(o)
     self.EventName = "EvEntityLotteryTicketGetRewardPotInfo"
     self.list_playerinfo = nil
     self.reward_totalgolds = 0
-
     return o
 end
 
@@ -3667,6 +3700,7 @@ function EvEntityLotteryTicketGetRewardPotInfo:Reset()
     self.reward_totalgolds = 0
 end
 
+---------------------------------------
 EvUiClickLeaveLotteryTicket = EventBase:new(nil)
 
 function EvUiClickLeaveLotteryTicket:new(o)
@@ -3680,6 +3714,7 @@ end
 function EvUiClickLeaveLotteryTicket:Reset()
 end
 
+---------------------------------------
 EvEntityLotteryTicketUpdateTm = EventBase:new(nil)
 
 function EvEntityLotteryTicketUpdateTm:new(o)
@@ -3688,7 +3723,6 @@ function EvEntityLotteryTicketUpdateTm:new(o)
     self.__index = self
     self.EventName = "EvEntityLotteryTicketUpdateTm"
     self.tm = 0
-
     return o
 end
 
@@ -3696,6 +3730,7 @@ function EvEntityLotteryTicketUpdateTm:Reset()
     self.tm = 0
 end
 
+---------------------------------------
 EvLotteryTicketClickBetOperateType = EventBase:new(nil)
 
 function EvLotteryTicketClickBetOperateType:new(o)
@@ -3704,7 +3739,6 @@ function EvLotteryTicketClickBetOperateType:new(o)
     self.__index = self
     self.EventName = "EvLotteryTicketClickBetOperateType"
     self.tb_bet_operateid = 0
-
     return o
 end
 
@@ -3712,6 +3746,7 @@ function EvLotteryTicketClickBetOperateType:Reset()
     self.tb_bet_operateid = 0
 end
 
+---------------------------------------
 EvEntityLotteryTicketCurrentBetOperateTypeChange = EventBase:new(nil)
 
 function EvEntityLotteryTicketCurrentBetOperateTypeChange:new(o)
@@ -3719,14 +3754,15 @@ function EvEntityLotteryTicketCurrentBetOperateTypeChange:new(o)
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvEntityLotteryTicketCurrentBetOperateTypeChange"
-
     return o
 end
 
 function EvEntityLotteryTicketCurrentBetOperateTypeChange:Reset()
 end
 
+---------------------------------------
 EvEntityLotteryTicketBet = EventBase:new(nil)
+
 function EvEntityLotteryTicketBet:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -3734,7 +3770,6 @@ function EvEntityLotteryTicketBet:new(o)
     self.EventName = "EvEntityLotteryTicketBet"
     self.already_bet_chips = 0
     self.bet_potindex = 0
-
     return o
 end
 
@@ -3743,19 +3778,21 @@ function EvEntityLotteryTicketBet:Reset()
     self.bet_potindex = 0
 end
 
+---------------------------------------
 EvLotteryTicketRepeatBet = EventBase:new(nil)
+
 function EvLotteryTicketRepeatBet:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvLotteryTicketRepeatBet"
-
     return o
 end
 
 function EvLotteryTicketRepeatBet:Reset()
 end
 
+---------------------------------------
 EvRequestSendMarquee = EventBase:new(nil)
 
 function EvRequestSendMarquee:new(o)
@@ -3771,6 +3808,7 @@ function EvRequestSendMarquee:Reset()
     self.msg = nil
 end
 
+---------------------------------------
 EvEntityGetDesktopData = EventBase:new(nil)
 
 function EvEntityGetDesktopData:new(o)
@@ -3784,6 +3822,7 @@ end
 function EvEntityGetDesktopData:Reset()
 end
 
+---------------------------------------
 EvEntityRequestGetDesktopHData = EventBase:new(nil)
 
 function EvEntityRequestGetDesktopHData:new(o)
@@ -3797,6 +3836,7 @@ end
 function EvEntityRequestGetDesktopHData:Reset()
 end
 
+---------------------------------------
 EvEntitySetPublicMatchLsit = EventBase:new(nil)
 
 function EvEntitySetPublicMatchLsit:new(o)
@@ -3816,7 +3856,9 @@ function EvEntitySetPublicMatchLsit:Reset()
     self.SelfMatchNum = 0
 end
 
+---------------------------------------
 EvEntitySetPrivateMatchLsit = EventBase:new(nil)
+
 function EvEntitySetPrivateMatchLsit:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -3832,6 +3874,7 @@ function EvEntitySetPrivateMatchLsit:Reset()
     self.ListApplyMatchGuid = nil
 end
 
+---------------------------------------
 EvEntityUpdatePublicMatchPlayerNum = EventBase:new(nil)
 
 function EvEntityUpdatePublicMatchPlayerNum:new(o)
@@ -3840,7 +3883,6 @@ function EvEntityUpdatePublicMatchPlayerNum:new(o)
     self.__index = self
     self.EventName = "EvEntityUpdatePublicMatchPlayerNum"
     o.ListMatchNum = nil
-
     return o
 end
 
@@ -3848,6 +3890,7 @@ function EvEntityUpdatePublicMatchPlayerNum:Reset()
     self.ListMatchNum = nil
 end
 
+---------------------------------------
 EvEntityUpdatePrivateMatchPlayerNum = EventBase:new(nil)
 
 function EvEntityUpdatePrivateMatchPlayerNum:new(o)
@@ -3856,7 +3899,6 @@ function EvEntityUpdatePrivateMatchPlayerNum:new(o)
     self.__index = self
     self.EventName = "EvEntityUpdatePrivateMatchPlayerNum"
     o.ListMatchNum = nil
-
     return o
 end
 
@@ -3864,6 +3906,7 @@ function EvEntityUpdatePrivateMatchPlayerNum:Reset()
     self.ListMatchNum = nil
 end
 
+---------------------------------------
 EvEntityMTTUpdateRealtimeInfo = EventBase:new(nil)
 
 function EvEntityMTTUpdateRealtimeInfo:new(o)
@@ -3873,7 +3916,6 @@ function EvEntityMTTUpdateRealtimeInfo:new(o)
     self.EventName = "EvEntityMTTUpdateRealtimeInfo"
     o.RealtimeInfo = nil
     o.blind_type = 0
-
     return o
 end
 
@@ -3882,6 +3924,7 @@ function EvEntityMTTUpdateRealtimeInfo:Reset()
     self.blind_type = 0
 end
 
+---------------------------------------
 EvEntityMTTUpdateRaiseBlindTm = EventBase:new(nil)
 
 function EvEntityMTTUpdateRaiseBlindTm:new(o)
@@ -3890,7 +3933,6 @@ function EvEntityMTTUpdateRaiseBlindTm:new(o)
     self.__index = self
     self.EventName = "EvEntityMTTUpdateRaiseBlindTm"
     o.RaiseBlindTm = 0
-
     return o
 end
 
@@ -3898,6 +3940,7 @@ function EvEntityMTTUpdateRaiseBlindTm:Reset()
     self.RaiseBlindTm = 0
 end
 
+---------------------------------------
 EvEntityMTTPlayerRebuyOrAddonRefresh = EventBase:new(nil)
 
 function EvEntityMTTPlayerRebuyOrAddonRefresh:new(o)
@@ -3907,7 +3950,6 @@ function EvEntityMTTPlayerRebuyOrAddonRefresh:new(o)
     self.EventName = "EvEntityMTTPlayerRebuyOrAddonRefresh"
     o.can_rebuy = false
     o.can_addon = false
-
     return o
 end
 
@@ -3916,6 +3958,7 @@ function EvEntityMTTPlayerRebuyOrAddonRefresh:Reset()
     self.can_addon = false
 end
 
+---------------------------------------
 EvUiMTTCreateRebuyOrAddOn = EventBase:new(nil)
 
 function EvUiMTTCreateRebuyOrAddOn:new(o)
@@ -3923,13 +3966,13 @@ function EvUiMTTCreateRebuyOrAddOn:new(o)
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvUiMTTCreateRebuyOrAddOn"
-
     return o
 end
 
 function EvUiMTTCreateRebuyOrAddOn:Reset()
 end
 
+---------------------------------------
 EvMTTPauseChanged = EventBase:new(nil)
 
 function EvMTTPauseChanged:new(o)
@@ -3938,7 +3981,6 @@ function EvMTTPauseChanged:new(o)
     self.__index = self
     self.EventName = "EvMTTPauseChanged"
     self.pause_info = nil
-
     return o
 end
 
@@ -3946,6 +3988,7 @@ function EvMTTPauseChanged:Reset()
     self.pause_info = nil
 end
 
+---------------------------------------
 EvEntitySignUpSucceed = EventBase:new(nil)
 
 function EvEntitySignUpSucceed:new(o)
@@ -3954,7 +3997,6 @@ function EvEntitySignUpSucceed:new(o)
     self.__index = self
     self.EventName = "EvEntitySignUpSucceed"
     o.MatchGuid = nil
-
     return o
 end
 
@@ -3962,6 +4004,7 @@ function EvEntitySignUpSucceed:Reset()
     self.MatchGuid = nil
 end
 
+---------------------------------------
 -- 响应取消报名比赛
 EvEntityResponseCancelSignUpMatch = {}
 function EvEntityResponseCancelSignUpMatch:new(o)
@@ -3970,7 +4013,6 @@ function EvEntityResponseCancelSignUpMatch:new(o)
     self.__index = self
     self.EventName = "EvEntityResponseCancelSignUpMatch"
     o.MatchGuid = nil
-
     return o
 end
 
@@ -3978,6 +4020,7 @@ function EvEntityResponseCancelSignUpMatch:Reset()
     self.MatchGuid = nil
 end
 
+---------------------------------------
 EvEntitySetMatchDetailedInfo = EventBase:new(nil)
 
 function EvEntitySetMatchDetailedInfo:new(o)
@@ -3986,7 +4029,6 @@ function EvEntitySetMatchDetailedInfo:new(o)
     self.__index = self
     self.EventName = "EvEntitySetMatchDetailedInfo"
     o.MatchDetailedInfo = nil
-
     return o
 end
 
@@ -3994,6 +4036,7 @@ function EvEntitySetMatchDetailedInfo:Reset()
     self.MatchDetailedInfo = nil
 end
 
+---------------------------------------
 EvEntitySetRaiseBlindTbInfo = EventBase:new(nil)
 
 function EvEntitySetRaiseBlindTbInfo:new(o)
@@ -4003,7 +4046,6 @@ function EvEntitySetRaiseBlindTbInfo:new(o)
     self.EventName = "EvEntitySetRaiseBlindTbInfo"
     o.raise_blind_info = nil
     o.current_raiseblind_tbid = 0
-
     return o
 end
 
@@ -4012,6 +4054,7 @@ function EvEntitySetRaiseBlindTbInfo:Reset()
     self.current_raiseblind_tbid = 0
 end
 
+---------------------------------------
 EvEntityMatchGameOver = EventBase:new(nil)
 
 function EvEntityMatchGameOver:new(o)
@@ -4020,7 +4063,6 @@ function EvEntityMatchGameOver:new(o)
     self.__index = self
     self.EventName = "EvEntityMatchGameOver"
     o.game_over = nil
-
     return o
 end
 
@@ -4028,6 +4070,7 @@ function EvEntityMatchGameOver:Reset()
     self.game_over = nil
 end
 
+---------------------------------------
 EvEntitySelfIsOB = EventBase:new(nil)
 
 function EvEntitySelfIsOB:new(o)
@@ -4035,13 +4078,13 @@ function EvEntitySelfIsOB:new(o)
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvEntitySelfIsOB"
-
     return o
 end
 
 function EvEntitySelfIsOB:Reset()
 end
 
+---------------------------------------
 EvEntitySelfAutoActionChange = EventBase:new(nil)
 
 function EvEntitySelfAutoActionChange:new(o)
@@ -4050,7 +4093,6 @@ function EvEntitySelfAutoActionChange:new(o)
     self.__index = self
     self.EventName = "EvEntitySelfAutoActionChange"
     o.is_autoaction = false
-
     return o
 end
 
@@ -4058,6 +4100,7 @@ function EvEntitySelfAutoActionChange:Reset()
     o.is_autoaction = false
 end
 
+---------------------------------------
 EvUiClickFastBet = EventBase:new(nil)
 
 function EvUiClickFastBet:new(o)
@@ -4073,6 +4116,7 @@ function EvUiClickFastBet:Reset()
     self.bet_value = 0
 end
 
+---------------------------------------
 EvUiClickShowCard = EventBase:new(nil)
 
 function EvUiClickShowCard:new(o)
@@ -4081,7 +4125,6 @@ function EvUiClickShowCard:new(o)
     self.__index = self
     self.EventName = "EvUiClickShowCard"
     self.click_card1 = false
-
     return o
 end
 
@@ -4089,6 +4132,7 @@ function EvUiClickShowCard:Reset()
     self.click_card1 = false
 end
 
+---------------------------------------
 EvUiChooseUCenter = EventBase:new(nil)
 
 function EvUiChooseUCenter:new(o)
@@ -4097,7 +4141,6 @@ function EvUiChooseUCenter:new(o)
     self.__index = self
     self.EventName = "EvUiChooseUCenter"
     self.ucenter = ""
-
     return o
 end
 
@@ -4105,6 +4148,7 @@ function EvUiChooseUCenter:Reset()
     self.ucenter = ""
 end
 
+---------------------------------------
 EvUiChooseGateWay = EventBase:new(nil)
 
 function EvUiChooseGateWay:new(o)
@@ -4113,7 +4157,6 @@ function EvUiChooseGateWay:new(o)
     self.__index = self
     self.EventName = "EvUiChooseGateWay"
     self.gateway = ""
-
     return o
 end
 
@@ -4121,6 +4164,7 @@ function EvUiChooseGateWay:Reset()
     self.gateway = ""
 end
 
+---------------------------------------
 EvUiPotMainChanged = EventBase:new(nil)
 
 function EvUiPotMainChanged:new(o)
@@ -4129,7 +4173,6 @@ function EvUiPotMainChanged:new(o)
     self.__index = self
     self.EventName = "EvUiPotMainChanged"
     self.pot_mian = 0
-
     return o
 end
 
@@ -4137,7 +4180,7 @@ function EvUiPotMainChanged:Reset()
     self.pot_mian = 0
 end
 
-
+---------------------------------------
 -- 响应获取收货地址
 EvEntityResponseGetReceiverAddress = EventBase:new(nil)
 
@@ -4154,7 +4197,7 @@ function EvEntityResponseGetReceiverAddress:Reset()
     self.Address = nil
 end
 
-
+---------------------------------------
 -- 请求获取收货地址
 EvUiRequestGetReceiverAddress = EventBase:new(nil)
 
@@ -4163,13 +4206,13 @@ function EvUiRequestGetReceiverAddress:new(o)
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvUiRequestGetReceiverAddress"
-
     return o
 end
 
 function EvUiRequestGetReceiverAddress:Reset()
 end
 
+---------------------------------------
 -- 请求使用道具
 EvUiRequestOperateItem = EventBase:new(nil)
 
@@ -4186,8 +4229,10 @@ function EvUiRequestOperateItem:Reset()
     o.ItemObjId = nil
 end
 
+---------------------------------------
 -- 控制台命令
 EvConsoleCmd = EventBase:new(nil)
+
 function EvConsoleCmd:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -4201,15 +4246,16 @@ function EvConsoleCmd:Reset()
     self.ListParam = nil
 end
 
+---------------------------------------
 -- 更新玩家信息
 EvEntityUpdatePlayerPoint = EventBase:new(nil)
+
 function EvEntityUpdatePlayerPoint:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvEntityUpdatePlayerPoint"
     o.Point = 0
-
     return o
 end
 
@@ -4217,14 +4263,15 @@ function EvEntityUpdatePlayerPoint:Reset()
     self.Point = 0
 end
 
+---------------------------------------
 EvClickShare = EventBase:new(nil)
+
 function EvClickShare:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvClickShare"
     self.ShareType = 0
-
     return o
 end
 
@@ -4232,14 +4279,15 @@ function EvClickShare:Reset()
     self.ShareType = 0
 end
 
+---------------------------------------
 EvPayWithIAPSuccess = EventBase:new(nil)
+
 function EvPayWithIAPSuccess:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvPayWithIAPSuccess"
     o.purchase = nil
-
     return o
 end
 
@@ -4247,14 +4295,15 @@ function EvPayWithIAPSuccess:Reset()
     self.purchase = nil
 end
 
+---------------------------------------
 EvGetPicSuccess = EventBase:new(nil)
+
 function EvGetPicSuccess:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvGetPicSuccess"
     o.pic_data = nil
-
     return o
 end
 
@@ -4262,7 +4311,9 @@ function EvGetPicSuccess:Reset()
     self.pic_data = nil
 end
 
+---------------------------------------
 EvCheckIdCard = EventBase:new(nil)
+
 function EvCheckIdCard:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -4270,7 +4321,6 @@ function EvCheckIdCard:new(o)
     self.EventName = "EvCheckIdCard"
     o.name = nil
     o.id_card = nil
-
     return o
 end
 
@@ -4279,27 +4329,29 @@ function EvCheckIdCard:Reset()
     self.id_card = nil
 end
 
+---------------------------------------
 EvEntityIsFirstRechargeChanged = EventBase:new(nil)
+
 function EvEntityIsFirstRechargeChanged:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvEntityIsFirstRechargeChanged"
-
     return o
 end
 
 function EvEntityIsFirstRechargeChanged:Reset()
 end
 
+---------------------------------------
 EvClickIconWithNickName = EventBase:new(nil)
+
 function EvClickIconWithNickName:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvClickIconWithNickName"
     o.player = nil
-
     return o
 end
 
@@ -4307,14 +4359,15 @@ function EvClickIconWithNickName:Reset()
     self.player = nil
 end
 
+---------------------------------------
 EvRemoveMatch = EventBase:new(nil)
+
 function EvRemoveMatch:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvRemoveMatch"
     o.MatchGuid = nil
-
     return o
 end
 
@@ -4322,7 +4375,9 @@ function EvRemoveMatch:Reset()
     self.MatchGuid = nil
 end
 
+---------------------------------------
 EvUpdatePlayerScore = EventBase:new(nil)
+
 function EvUpdatePlayerScore:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -4330,7 +4385,6 @@ function EvUpdatePlayerScore:new(o)
     self.EventName = "EvUpdatePlayerScore"
     o.PlayerGuid = nil
     o.Score = 0
-
     return o
 end
 
@@ -4339,14 +4393,15 @@ function EvUpdatePlayerScore:Reset()
     self.Score = 0
 end
 
+---------------------------------------
 EvBindWeChat = EventBase:new(nil)
+
 function EvBindWeChat:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvBindWechat"
     o.ItemObjId = nil
-
     return o
 end
 
@@ -4354,7 +4409,9 @@ function EvBindWeChat:Reset()
     self.ItemObjId = nil
 end
 
+---------------------------------------
 EvBindWeChatSuccess = EventBase:new(nil)
+
 function EvBindWeChatSuccess:new(o)
     o = o or {}
     setmetatable(o, self)
@@ -4363,7 +4420,6 @@ function EvBindWeChatSuccess:new(o)
     o.IsSuccess = false
     o.WeChatOpenId = nil
     o.WeChatName = nil
-
     return o
 end
 
@@ -4373,27 +4429,29 @@ function EvBindWeChatSuccess:Reset()
     self.WeChatName = nil
 end
 
+---------------------------------------
 EvUnbindWeChat = EventBase:new(nil)
+
 function EvUnbindWeChat:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvUnbindWechat"
-
     return o
 end
 
 function EvUnbindWeChat:Reset()
 end
 
+---------------------------------------
 EvUnBindWeChatSuccess = EventBase:new(nil)
+
 function EvUnBindWeChatSuccess:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     self.EventName = "EvUnBindWeChatSuccess"
     o.IsSuccess = false
-
     return o
 end
 

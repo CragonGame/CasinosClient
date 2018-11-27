@@ -93,7 +93,7 @@ function ViewDesktopTexas:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityMTTUpdateRaiseBlindTm", self)
     self.ViewMgr:BindEvListener("EvMTTPauseChanged", self)
     self.ViewMgr:BindEvListener("EvEntityMatchGameOver", self)
-    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
+    self.ViewMgr:BindEvListener("EvCtrlRewardRedPointStateChange", self)
 
     self.Flow = UiDesktopTexasFlow:new(nil, self)
     self.Flow:Create()
@@ -223,7 +223,6 @@ function ViewDesktopTexas:OnCreate()
     self.ComRewardTips = self.ComUi:GetChild("ComRewardTips").asCom
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionReward")
-    self:RefreshRedPointRewardState()
 
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(33, self, self._timerUpdate)
 end
@@ -329,7 +328,7 @@ function ViewDesktopTexas:OnHandleEv(ev)
         elseif (ev.EventName == "EvUiPotMainChanged") then
             -- 从Model发出
             self.UiPot:showAllPotValue(ev.pot_mian)
-        elseif (ev.EventName == "EvCtrlRedPointStateChange") then
+        elseif (ev.EventName == "EvCtrlRewardRedPointStateChange") then
             if ev.RedPointType == 'Reward' then
                 self:RefreshRedPointRewardState()
             end
@@ -382,6 +381,7 @@ function ViewDesktopTexas:SetDesktopSnapshotData(desktop, desktop_data, is_init,
     ViewHelper:SetGObjectVisible(false, self.GGroupCard)
     ViewHelper:SetGObjectVisible(true, self.TextDesktopDescribe)
     self.UiPot:resetPot()
+    self:RefreshRedPointRewardState()
 
     if (is_init) then
         local viewdesktoptype_factory = self:GetViewDesktopTypeBaseFactory(desktoptype_facname)
