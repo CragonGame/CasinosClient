@@ -3,10 +3,10 @@
   <controller name="BtnState" pages="0,,1," selected="0"/>
   <displayList>
     <image id="n0_dpbd" name="n0" src="wb2ek6" fileName="Image/New/ItemBg.png" pkg="nhvxw9ov" xy="0,0"/>
-    <component id="n1_dpbd" name="BtnGetOnlineReward" src="dpbd3" fileName="Component/Btn1.xml" xy="572,20" size="135,65">
+    <component id="n1_dpbd" name="BtnGetOnlineReward" src="dpbd3" fileName="Component/Btn1.xml" xy="575,20" size="135,65">
       <Button title="领取" titleColor="#ffffff" titleFontSize="30"/>
     </component>
-    <text id="n3_dpbd" name="n3" xy="55,11" size="131,34" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text="在线奖励"/>
-    <text id="n4_dpbd" name="TextInfo" xy="59,56" size="425,31" fontSize="24" color="#ffffff" vAlign="middle" autoSize="none" text="在线到一定时长后可以领取一些筹码"/>
+    <text id="n3_dpbd" name="n3" xy="40,11" size="131,34" font="FontCu" fontSize="25" color="#ffffff" vAlign="middle" ubb="true" autoSize="none" text="在线奖励"/>
+    <text id="n4_dpbd" name="TextInfo" xy="40,56" size="425,31" font="FontXi" fontSize="23" color="#ffffff" vAlign="middle" ubb="true" autoSize="none" text="在线到一定时长后可以领取一些筹码"/>
   </displayList>
 </component>

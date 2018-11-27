@@ -30,11 +30,13 @@ function UiRewardOnline:Create(view_mgr, com_ui)
     if self.ControllerReward.RewardOnline.CanGetReward == true then
         self.CanGetOnlineReward = true
         self.GBtnOnlineReward.enabled = true
-        self.GTextInfo.text = string.format('点击领取%s筹码在线奖励', tostring(self.ControllerReward.RewardOnline.NextReward))
+        self.GTextInfo.text = string.format('点击领取[color=#D9D919]%s[/color]筹码在线奖励', tostring(self.ControllerReward.RewardOnline.NextReward))
     else
         self.CanGetOnlineReward = false
         self.GBtnOnlineReward.enabled = false
-        self.GTextInfo.text = string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
+        -- self.ViewMgr.LanMgr:getLanValue("OnlineReward")
+        self.GTextInfo.text = string.format('再过[color=#CC3299]%s[/color]后，可领取[color=#D9D919]%s[/color]筹码在线奖励',
+                tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
     end
 end
 
@@ -43,16 +45,20 @@ function UiRewardOnline:Destroy()
 end
 
 function UiRewardOnline:RefreshLeftTmInfo()
-    self.GTextInfo.text = string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
+    -- self.ViewMgr.LanMgr:getLanValue("OnlineReward")
+    self.GTextInfo.text = string.format('再过[color=#CC3299]%s[/color]后，可领取[color=#D9D919]%s[/color]筹码在线奖励',
+            tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
 end
 
 function UiRewardOnline:RefreshCanGetOnlineRewardState(can_get_reward)
     self.CanGetOnlineReward = can_get_reward
     self.GBtnOnlineReward.enabled = can_get_reward
     if self.ControllerReward.RewardOnline.CanGetReward == true then
-        self.GTextInfo.text = string.format('点击领取%s筹码在线奖励', tostring(self.ControllerReward.RewardOnline.NextReward))
+        self.GTextInfo.text = string.format('点击领取[color=#D9D919]%s[/color]筹码在线奖励', tostring(self.ControllerReward.RewardOnline.NextReward))
     else
-        self.GTextInfo.text = string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
+        -- self.ViewMgr.LanMgr:getLanValue("OnlineReward")
+        self.GTextInfo.text = string.format('再过[color=#CC3299]%s[/color]后，可领取[color=#D9D919]%s[/color]筹码在线奖励',
+                tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
     end
 end
 
@@ -84,6 +90,8 @@ function UiRewardTiming:Create(view_mgr, com_ui)
     local com_rewardtiming = self.ComUi:GetChild("RewardTiming").asCom
 
     self.GTextInfo = com_rewardtiming:GetChild("TextInfo").asTextField
+    self.GTextInfo.text = string.format('每天[color=#CC3299]12~13[/color]点,[color=#CC3299]18~19[/color]点各领取[color=#D9D919]%s[/color]筹码定时奖励',
+            tostring(self.ControllerReward.RewardTiming.RewardGold))
     self.GBtnTimingReward = com_rewardtiming:GetChild("BtnGetTimingReward").asButton
     self.GBtnTimingReward.onClick:Add(
             function()
