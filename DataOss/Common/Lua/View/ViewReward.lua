@@ -90,7 +90,7 @@ function UiRewardTiming:Create(view_mgr, com_ui)
     local com_rewardtiming = self.ComUi:GetChild("RewardTiming").asCom
 
     self.GTextInfo = com_rewardtiming:GetChild("TextInfo").asTextField
-    self.GTextInfo.text = string.format('每天[color=#CC3299]12~13[/color]点,[color=#CC3299]18~19[/color]点各领取[color=#D9D919]%s[/color]筹码定时奖励',
+    self.GTextInfo.text = string.format('每天[color=#CC3299]12~13[/color]点，[color=#CC3299]18~19[/color]点各领取[color=#D9D919]%s[/color]筹码定时奖励',
             tostring(self.ControllerReward.RewardTiming.RewardGold))
     self.GBtnTimingReward = com_rewardtiming:GetChild("BtnGetTimingReward").asButton
     self.GBtnTimingReward.onClick:Add(
@@ -151,7 +151,7 @@ end
 
 ---------------------------------------
 function ViewReward:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Reward"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, '福利')--self.ViewMgr.LanMgr:getLanValue("Reward"))
 
     self.ViewMgr:BindEvListener("EvCtrlRewardRefreshGetOnlineRewardLeftTm", self)
 
