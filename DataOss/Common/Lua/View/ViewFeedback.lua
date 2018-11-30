@@ -1,22 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewFeedback = ViewBase:new()
+ViewFeedback = class(ViewBase)
 
 ---------------------------------------
-function ViewFeedback:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewFeedback:ctor()
     self.Tween = nil
-    return o
 end
 
 ---------------------------------------
@@ -156,6 +145,6 @@ ViewFeedbackFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewFeedbackFactory:CreateView()
-    local view = ViewFeedback:new(nil)
+    local view = ViewFeedback:new()
     return view
 end

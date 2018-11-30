@@ -1,22 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewDesktopMenuTexas = ViewBase:new()
+ViewDesktopMenuTexas = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopMenuTexas:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.GCoCardType = nil
-    return o
+function ViewDesktopMenuTexas:ctor()
+    self.GCoCardType = nil
 end
 
 ---------------------------------------
@@ -168,6 +157,6 @@ ViewDesktopMenuTexasFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopMenuTexasFactory:CreateView()
-    local view = ViewDesktopMenuTexas:new(nil)
+    local view = ViewDesktopMenuTexas:new()
     return view
 end

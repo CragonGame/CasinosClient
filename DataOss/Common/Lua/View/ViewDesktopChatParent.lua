@@ -2,21 +2,10 @@
 -- 普通桌聊天文字气泡父节点。表情气泡在ViewDesktopPlayerInfo内部管理
 
 ---------------------------------------
-ViewDesktopChatParent = ViewBase:new()
+ViewDesktopChatParent = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopChatParent:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewDesktopChatParent:ctor()
 end
 
 ---------------------------------------
@@ -54,6 +43,6 @@ ViewDesktopChatParentFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopChatParentFactory:CreateView()
-    local view = ViewDesktopChatParent:new(nil)
+    local view = ViewDesktopChatParent:new()
     return view
 end

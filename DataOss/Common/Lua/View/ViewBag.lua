@@ -1,22 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewBag = ViewBase:new()
+ViewBag = class(ViewBase)
 
 ---------------------------------------
-function ViewBag:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewBag:ctor()
     self.Tween = nil
-    return o
 end
 
 ---------------------------------------
@@ -179,6 +168,6 @@ ViewBagFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewBagFactory:CreateView()
-    local view = ViewBag:new(nil)
+    local view = ViewBag:new()
     return view
 end

@@ -1,22 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewMail = ViewBase:new()
+ViewMail = class(ViewBase)
 
 ---------------------------------------
-function ViewMail:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewMail:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -116,6 +105,6 @@ ViewMailFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewMailFactory:CreateView()
-    local view = ViewMail:new(nil)
+    local view = ViewMail:new()
     return view
 end

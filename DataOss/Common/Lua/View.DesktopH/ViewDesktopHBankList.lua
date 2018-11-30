@@ -33,38 +33,27 @@ function UiDesktopHBeBankerInfoItem:RefreshPlayerInfo(player_info)
 end
 
 ---------------------------------------
-ViewDesktopHBankList = ViewBase:new()
+ViewDesktopHBankList = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopHBankList:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.GListBeBankPlayerList = nil
-    o.GTextWaitPlayerCount = nil
-    o.GTextBankPlayerNickName = nil
-    o.GTextBankPlayerGolds = nil
-    o.GTextBeBankTips = nil
-    o.GBtnBeBank = nil
-    o.ControllerBeBank = nil
-    o.GSliderBankPlayerStack = nil
-    o.GTextBeBankPlayerGoldLimit = nil
-    o.GTextBeBankSelfGold = nil
-    o.CurrentTakeStack = 0
-    o.MapBeBankPlayerInfo = nil
-    o.BeBankMinTakeGolds = 0
-    o.LeaveMingGolds = 0
-    o.ViewDesktopH = nil
-    o.Tween = nil
-    return o
+function ViewDesktopHBankList:ctor()
+    self.Context = Context
+    self.GListBeBankPlayerList = nil
+    self.GTextWaitPlayerCount = nil
+    self.GTextBankPlayerNickName = nil
+    self.GTextBankPlayerGolds = nil
+    self.GTextBeBankTips = nil
+    self.GBtnBeBank = nil
+    self.ControllerBeBank = nil
+    self.GSliderBankPlayerStack = nil
+    self.GTextBeBankPlayerGoldLimit = nil
+    self.GTextBeBankSelfGold = nil
+    self.CurrentTakeStack = 0
+    self.MapBeBankPlayerInfo = nil
+    self.BeBankMinTakeGolds = 0
+    self.LeaveMingGolds = 0
+    self.ViewDesktopH = nil
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -280,6 +269,6 @@ ViewDesktopHBankListFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHBankListFactory:CreateView()
-    local view = ViewDesktopHBankList:new(nil)
+    local view = ViewDesktopHBankList:new()
     return view
 end

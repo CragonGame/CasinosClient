@@ -1,24 +1,13 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewCreateMatch = ViewBase:new()
+ViewCreateMatch = class(ViewBase)
 
 ---------------------------------------
-function ViewCreateMatch:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
+function ViewCreateMatch:ctor()
     self.MinSignupNum = 6
     self.MaxSignupNum = 2000
     self.DefaltMatchExplain = "赛事说明(可不填)"
-    return o
 end
 
 ---------------------------------------
@@ -663,6 +652,6 @@ ViewCreateMatchFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewCreateMatchFactory:CreateView()
-    local view = ViewCreateMatch:new(nil)
+    local view = ViewCreateMatch:new()
     return view
 end

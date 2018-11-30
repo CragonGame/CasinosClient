@@ -2,21 +2,10 @@
 -- 未使用
 
 ---------------------------------------
-ViewGetChipEffect = ViewBase:new()
+ViewGetChipEffect = class(ViewBase)
 
 ---------------------------------------
-function ViewGetChipEffect:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewGetChipEffect:ctor()
 end
 
 ---------------------------------------
@@ -83,6 +72,6 @@ ViewGetChipEffectFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewGetChipEffectFactory:CreateView()
-    local view = ViewGetChipEffect:new(nil)
+    local view = ViewGetChipEffect:new()
     return view
 end

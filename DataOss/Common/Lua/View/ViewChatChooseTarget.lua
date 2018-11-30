@@ -1,23 +1,12 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewChatChooseTarget = ViewBase:new()
+ViewChatChooseTarget = class(ViewBase)
 
 ---------------------------------------
-function ViewChatChooseTarget:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewChatChooseTarget:ctor()
     self.Context = Context
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -103,6 +92,6 @@ ViewChatChooseTargetFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewChatChooseTargetFactory:CreateView()
-    local view = ViewChatChooseTarget:new(nil)
+    local view = ViewChatChooseTarget:new()
     return view
 end

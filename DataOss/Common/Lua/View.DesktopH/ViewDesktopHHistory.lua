@@ -1,24 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewDesktopHHistory = ViewBase:new()
+ViewDesktopHHistory = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopHHistory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.GListHistory = nil
-    o.ViewDesktopH = nil
-    o.Tween = nil
-    return o
+function ViewDesktopHHistory:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -79,6 +66,6 @@ ViewDesktopHHistoryFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHHistoryFactory:CreateView()
-    local view = ViewDesktopHHistory:new(nil)
+    local view = ViewDesktopHHistory:new()
     return view
 end

@@ -1,23 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewFriend = ViewBase:new()
+ViewFriend = class(ViewBase)
 
 ---------------------------------------
-function ViewFriend:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.Context = Context
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewFriend:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -712,6 +700,6 @@ ViewFriendFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewFriendFactory:CreateView()
-    local view = ViewFriend:new(nil)
+    local view = ViewFriend:new()
     return view
 end

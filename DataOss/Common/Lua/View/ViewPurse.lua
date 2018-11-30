@@ -2,22 +2,11 @@
 -- Nigeria钱包界面
 
 ---------------------------------------
-ViewPurse = ViewBase:new()
+ViewPurse = class(ViewBase)
 
 ---------------------------------------
-function ViewPurse:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewPurse:ctor()
     self.TemporaryHideItemId = 14001
-    return o
 end
 
 ---------------------------------------
@@ -158,6 +147,6 @@ ViewPurseFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewPurseFactory:CreateView()
-    local view = ViewPurse:new(nil)
+    local view = ViewPurse:new()
     return view
 end

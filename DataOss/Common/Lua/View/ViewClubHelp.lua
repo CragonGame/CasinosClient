@@ -1,23 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewClubHelp = ViewBase:new()
+ViewClubHelp = class(ViewBase)
 
 ---------------------------------------
-function ViewClubHelp:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewClubHelp:ctor()
     self.Tween = nil
-    self.Instance = o
-    return o
 end
 
 ---------------------------------------
@@ -56,6 +44,6 @@ ViewClubHelpFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewClubHelpFactory:CreateView()
-    local view = ViewClubHelp:new(nil)
+    local view = ViewClubHelp:new()
     return view
 end

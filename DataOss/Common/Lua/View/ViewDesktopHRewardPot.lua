@@ -2,22 +2,11 @@
 -- 百人桌唯一的项目特有View，点开奖池对话框弹出的信息，主要就是排版以及某些元素不一致
 
 ---------------------------------------
-ViewDesktopHRewardPot = ViewBase:new()
+ViewDesktopHRewardPot = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopHRewardPot:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewDesktopHRewardPot:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -154,6 +143,6 @@ ViewDesktopHRewardPotFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHRewardPotFactory:CreateView()
-    local view = ViewDesktopHRewardPot:new(nil)
+    local view = ViewDesktopHRewardPot:new()
     return view
 end

@@ -2,21 +2,10 @@
 -- 选择分享类型的对话框
 
 ---------------------------------------
-ViewShareType = ViewBase:new()
+ViewShareType = class(ViewBase)
 
 ---------------------------------------
-function ViewShareType:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewShareType:ctor()
 end
 
 ---------------------------------------
@@ -70,6 +59,6 @@ ViewShareTypeFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewShareTypeFactory:CreateView()
-    local view = ViewShareType:new(nil)
+    local view = ViewShareType:new()
     return view
 end

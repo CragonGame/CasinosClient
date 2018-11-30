@@ -2,21 +2,10 @@
 -- 管理礼物图标，魔法表情，弹幕Item，私聊群聊消息Item，私聊聊天对象
 
 ---------------------------------------
-ViewPool = ViewBase:new()
+ViewPool = class(ViewBase)
 
 ---------------------------------------
-function ViewPool:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewPool:ctor()
 end
 
 ---------------------------------------
@@ -320,6 +309,6 @@ ViewPoolFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewPoolFactory:CreateView()
-    local view = ViewPool:new(nil)
+    local view = ViewPool:new()
     return view
 end

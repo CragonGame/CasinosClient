@@ -1,21 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewInviteFriendPlay = ViewBase:new()
+ViewInviteFriendPlay = class(ViewBase)
 
 ---------------------------------------
-function ViewInviteFriendPlay:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewInviteFriendPlay:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -111,6 +101,6 @@ ViewInviteFriendPlayFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewInviteFriendPlayFactory:CreateView()
-    local view = ViewInviteFriendPlay:new(nil)
+    local view = ViewInviteFriendPlay:new()
     return view
 end

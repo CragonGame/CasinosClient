@@ -1,51 +1,47 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewDesktopPlayerInfoTexas = ViewBase:new()
+ViewDesktopPlayerInfoTexas = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Player = nil
-    o.ViewDesktop = nil
-    o.DesktopSeatCount = nil
-    o.PlayerSeatWidgetControllerEx = nil
-    o.UiHeadIcon = nil
-    o.UiHandCardFirst = nil
-    o.UiHandCardSecond = nil
-    o.UiPlayerGiftAndVIP = nil
-    --o.GGraphWinStarParent = nil
-    o.GComPlayerCenter = nil
-    o.GComChatParent = nil
-    o.GTextActionOrName = nil
-    o.GTextDesktopAmount = nil-- Stack
-    o.GImagePlayerShadow = nil
-    o.GImagePlayerActionProgress = nil
-    o.GImagePlayerWinner = nil-- 头像四周金边
-    o.GImageFriendMark = nil--好友同桌，会互相看到头像右上角有五角星
-    o.ListPlayerCard = nil-- 公共牌+手牌
-    o.FirstCard = nil
-    o.SecondCard = nil
-    o.ThinkingActionColorBegin = nil
-    o.ThinkingActionColorMiddle = nil
-    o.ThinkingActionColorEnd = nil
-    o.ActionWaitingTime = 0
-    o.CurrentActionTime = 0
-    o.ItemChatDesktop = nil-- 聊天文字气泡
-    o.UiSingleEmotion = nil-- 聊天表情气泡
-    o.GameEndResetPlayerInfoTime = 255
-    o.GameEndShowExpTime = 255
-    o.Exp = 0
-    o.Point = 0
-    o.IsGameEnd = false
-    o.VibrateOnce = true
-    o.IsRelease = false-- 是否已经被回收，切换快照时使用
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
-    o.TimerUpdate = nil
-    return o
+function ViewDesktopPlayerInfoTexas:ctor()
+    self.Player = nil
+    self.ViewDesktop = nil
+    self.DesktopSeatCount = nil
+    self.PlayerSeatWidgetControllerEx = nil
+    self.UiHeadIcon = nil
+    self.UiHandCardFirst = nil
+    self.UiHandCardSecond = nil
+    self.UiPlayerGiftAndVIP = nil
+    --self.GGraphWinStarParent = nil
+    self.GComPlayerCenter = nil
+    self.GComChatParent = nil
+    self.GTextActionOrName = nil
+    self.GTextDesktopAmount = nil-- Stack
+    self.GImagePlayerShadow = nil
+    self.GImagePlayerActionProgress = nil
+    self.GImagePlayerWinner = nil-- 头像四周金边
+    self.GImageFriendMark = nil--好友同桌，会互相看到头像右上角有五角星
+    self.ListPlayerCard = nil-- 公共牌+手牌
+    self.FirstCard = nil
+    self.SecondCard = nil
+    self.ThinkingActionColorBegin = nil
+    self.ThinkingActionColorMiddle = nil
+    self.ThinkingActionColorEnd = nil
+    self.ActionWaitingTime = 0
+    self.CurrentActionTime = 0
+    self.ItemChatDesktop = nil-- 聊天文字气泡
+    self.UiSingleEmotion = nil-- 聊天表情气泡
+    self.GameEndResetPlayerInfoTime = 255
+    self.GameEndShowExpTime = 255
+    self.Exp = 0
+    self.Point = 0
+    self.IsGameEnd = false
+    self.VibrateOnce = true
+    self.IsRelease = false-- 是否已经被回收，切换快照时使用
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
@@ -1094,6 +1090,6 @@ ViewDesktopPlayerInfoTexasFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexasFactory:CreateView()
-    local view = ViewDesktopPlayerInfoTexas:new(nil)
+    local view = ViewDesktopPlayerInfoTexas:new()
     return view
 end

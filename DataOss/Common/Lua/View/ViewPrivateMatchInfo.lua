@@ -8,20 +8,10 @@ BtnSignupOption = {
 }
 
 ---------------------------------------
-ViewPrivateMatchInfo = ViewBase:new()
+ViewPrivateMatchInfo = class(ViewBase)
 
 ---------------------------------------
-function ViewPrivateMatchInfo:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewPrivateMatchInfo:ctor()
 end
 
 ---------------------------------------
@@ -299,6 +289,6 @@ ViewPrivateMatchInfoFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewPrivateMatchInfoFactory:CreateView()
-    local view = ViewPrivateMatchInfo:new(nil)
+    local view = ViewPrivateMatchInfo:new()
     return view
 end

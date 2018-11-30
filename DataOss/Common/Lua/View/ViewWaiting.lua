@@ -2,23 +2,12 @@
 -- 全屏等待界面
 
 ---------------------------------------
-ViewWaiting = ViewBase:new()
+ViewWaiting = class(ViewBase)
 
 ---------------------------------------
-function ViewWaiting:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    self.TimerUpdate = nil
+function ViewWaiting:ctor()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    return o
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
@@ -105,6 +94,6 @@ ViewWaitingFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewWaitingFactory:CreateView()
-    local view = ViewWaiting:new(nil)
+    local view = ViewWaiting:new()
     return view
 end

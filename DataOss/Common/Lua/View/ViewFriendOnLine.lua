@@ -2,21 +2,10 @@
 -- 好友上线左上角提示
 
 ---------------------------------------
-ViewFriendOnLine = ViewBase:new()
+ViewFriendOnLine = class(ViewBase)
 
 ---------------------------------------
-function ViewFriendOnLine:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewFriendOnLine:ctor()
 end
 
 ---------------------------------------
@@ -77,6 +66,6 @@ ViewFriendOnLineFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewFriendOnLineFactory:CreateView()
-    local view = ViewFriendOnLine:new(nil)
+    local view = ViewFriendOnLine:new()
     return view
 end

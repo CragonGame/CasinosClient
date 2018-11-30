@@ -2,23 +2,12 @@
 -- 屏幕中间悬停一段时间的提示框
 
 ---------------------------------------
-ViewPermanentPosMsg = ViewBase:new()
+ViewPermanentPosMsg = class(ViewBase)
 
 ---------------------------------------
-function ViewPermanentPosMsg:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    self.TimerUpdate = nil
+function ViewPermanentPosMsg:ctor()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    return o
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
@@ -65,6 +54,6 @@ ViewPermanentPosMsgFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewPermanentPosMsgFactory:CreateView()
-    local view = ViewPermanentPosMsg:new(nil)
+    local view = ViewPermanentPosMsg:new()
     return view
 end

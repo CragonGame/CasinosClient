@@ -7,24 +7,13 @@
 -- 父层小红点处理，首次查询+后续消息响应(响应小红点相关的业务消息)
 
 ---------------------------------------
-ViewMain = ViewBase:new()
+ViewMain = class(ViewBase)
 
 ---------------------------------------
-function ViewMain:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewMain:ctor()
     self.Context = Context
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.PokerGirlMain = "PokerGirMain"
-    return o
 end
 
 ---------------------------------------
@@ -1023,6 +1012,6 @@ ViewMainFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewMainFactory:CreateView()
-    local view = ViewMain:new(nil)
+    local view = ViewMain:new()
     return view
 end

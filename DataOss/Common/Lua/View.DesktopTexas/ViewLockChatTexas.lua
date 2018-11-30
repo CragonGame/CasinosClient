@@ -1,37 +1,26 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewLockChatTexas = ViewBase:new()
+ViewLockChatTexas = class(ViewBase)
 
 ---------------------------------------
-function ViewLockChatTexas:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.GListPlayer = nil
-    o.GBtnClose = nil
-    o.GBtnLockAllSeatPlayer = nil
-    o.GBtnLockAllStandPlayer = nil
-    o.GComLockStandPlayer = nil
-    o.GLoadSpectatorLock1 = nil
-    o.GLoadSpectatorLock2 = nil
-    o.MapPlayerChat = nil
-    o.TextureLockedName = "TextureLocked"
-    o.TextureUnLockName = "TextureUnLock"
-    o.LockAllDesktopPlayerKey = "LockAllDesktopPlayerKey"
-    o.LockAllSpectator = "LockAllSpectator"
-    o.BtnLockedName = "BtnLocked"
-    o.BtnUnLockName = "BtnUnlock"
-    o.SystemIconKey = "System"
-    o.Tween = nil
-    return o
+function ViewLockChatTexas:ctor()
+    self.GListPlayer = nil
+    self.GBtnClose = nil
+    self.GBtnLockAllSeatPlayer = nil
+    self.GBtnLockAllStandPlayer = nil
+    self.GComLockStandPlayer = nil
+    self.GLoadSpectatorLock1 = nil
+    self.GLoadSpectatorLock2 = nil
+    self.MapPlayerChat = nil
+    self.TextureLockedName = "TextureLocked"
+    self.TextureUnLockName = "TextureUnLock"
+    self.LockAllDesktopPlayerKey = "LockAllDesktopPlayerKey"
+    self.LockAllSpectator = "LockAllSpectator"
+    self.BtnLockedName = "BtnLocked"
+    self.BtnUnLockName = "BtnUnlock"
+    self.SystemIconKey = "System"
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -223,6 +212,6 @@ ViewLockChatTexasFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewLockChatTexasFactory:CreateView()
-    local view = ViewLockChatTexas:new(nil)
+    local view = ViewLockChatTexas:new()
     return view
 end

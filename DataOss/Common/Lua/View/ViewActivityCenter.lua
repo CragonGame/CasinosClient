@@ -2,22 +2,11 @@
 -- 如果活动Item中有按钮之类功能，消息在ViewActiveCenter中响应。如分享按钮
 
 ---------------------------------------
-ViewActivityCenter = ViewBase:new()
+ViewActivityCenter = class(ViewBase)
 
 ---------------------------------------
-function ViewActivityCenter:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewActivityCenter:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -136,6 +125,6 @@ ViewActivityCenterFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewActivityCenterFactory:CreateView()
-    local view = ViewActivityCenter:new(nil)
+    local view = ViewActivityCenter:new()
     return view
 end

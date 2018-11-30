@@ -1,21 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewChooseLan = ViewBase:new()
+ViewChooseLan = class(ViewBase)
 
 ---------------------------------------
-function ViewChooseLan:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
-    return o
+function ViewChooseLan:ctor()
 end
 
 ---------------------------------------
@@ -63,6 +52,6 @@ ViewChooseLanFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewChooseLanFactory:CreateView()
-    local view = ViewChooseLan:new(nil)
+    local view = ViewChooseLan:new()
     return view
 end

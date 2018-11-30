@@ -2,22 +2,11 @@
 -- 关于对话框的设置模块
 
 ---------------------------------------
-ViewEdit = ViewBase:new()
+ViewEdit = class(ViewBase)
 
 ---------------------------------------
-function ViewEdit:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewEdit:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -157,6 +146,6 @@ ViewEditFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewEditFactory:CreateView()
-    local view = ViewEdit:new(nil)
+    local view = ViewEdit:new()
     return view
 end

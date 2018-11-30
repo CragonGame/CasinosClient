@@ -2,25 +2,14 @@
 -- 相册&拍照对话框
 
 ---------------------------------------
-ViewTakePhoto = ViewBase:new()
+ViewTakePhoto = class(ViewBase)
 
 ---------------------------------------
-function ViewTakePhoto:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
+function ViewTakePhoto:ctor()
+    self.Tween = nil
     self.PhotoFinalPath = "/photos"
     self.GetPicDefaultName = "GetPicDefaultName"
     self.mPhotoSize = 640
-    return o
 end
 
 ---------------------------------------
@@ -76,6 +65,6 @@ ViewTakePhotoFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewTakePhotoFactory:CreateView()
-    local view = ViewTakePhoto:new(nil)
+    local view = ViewTakePhoto:new()
     return view
 end

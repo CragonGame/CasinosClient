@@ -2,23 +2,12 @@
 -- 普通桌，百人桌的桌内群聊
 
 ---------------------------------------
-ViewChat = ViewBase:new()
+ViewChat = class(ViewBase)
 
 ---------------------------------------
-function ViewChat:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewChat:ctor()
     self.PlayTanMuKey = "PlayTanMu"
     self.Context = Context
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
 end
 
 ---------------------------------------
@@ -232,6 +221,6 @@ ViewChatFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewChatFactory:CreateView()
-    local view = ViewChat:new(nil)
+    local view = ViewChat:new()
     return view
 end

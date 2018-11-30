@@ -2,24 +2,13 @@
 -- 系统公告对话框
 
 ---------------------------------------
-ViewNotice = ViewBase:new()
+ViewNotice = class(ViewBase)
 
 ---------------------------------------
-function ViewNotice:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.PackName = "Notice"
+function ViewNotice:ctor()
+    self.PackName = "Notice"
     self.SendNoticeTbKey = "IMMarqueeCostItemId"
     self.HornTbId = 14000
-    return o
 end
 
 ---------------------------------------
@@ -168,6 +157,6 @@ ViewNoticeFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewNoticeFactory:CreateView()
-    local view = ViewNotice:new(nil)
+    local view = ViewNotice:new()
     return view
 end

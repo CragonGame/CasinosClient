@@ -2,27 +2,16 @@
 -- 赛事列表
 
 ---------------------------------------
-ViewMatchLobby = ViewBase:new()
+ViewMatchLobby = class(ViewBase)
 
 ---------------------------------------
-function ViewMatchLobby:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewMatchLobby:ctor()
     self.Context = Context
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
-    self.TimerUpdate = nil
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.TimerUpdate = nil
     self.UpdatePlayerNumTime = 0
     self.ListMatchItem = {}
     self.GTextTime = nil
-    return o
 end
 
 ---------------------------------------
@@ -402,6 +391,6 @@ ViewMatchLobbyFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewMatchLobbyFactory:CreateView()
-    local view = ViewMatchLobby:new(nil)
+    local view = ViewMatchLobby:new()
     return view
 end

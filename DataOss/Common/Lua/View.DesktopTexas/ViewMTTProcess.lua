@@ -1,21 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewMTTProcess = ViewBase:new()
+ViewMTTProcess = class(ViewBase)
 
 ---------------------------------------
-function ViewMTTProcess:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewMTTProcess:ctor()
 end
 
 ---------------------------------------
@@ -57,6 +46,6 @@ ViewMTTProcessFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewMTTProcessFactory:CreateView()
-    local view = ViewMTTProcess:new(nil)
+    local view = ViewMTTProcess:new()
     return view
 end

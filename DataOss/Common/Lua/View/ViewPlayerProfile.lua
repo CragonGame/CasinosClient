@@ -2,23 +2,12 @@
 -- 他人详细信息
 
 ---------------------------------------
-ViewPlayerProfile = ViewBase:new()
+ViewPlayerProfile = class(ViewBase)
 
 ---------------------------------------
-function ViewPlayerProfile:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewPlayerProfile:ctor()
     self.Context = Context
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -535,6 +524,6 @@ ViewPlayerProfileFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewPlayerProfileFactory:CreateView()
-    local view = ViewPlayerProfile:new(nil)
+    local view = ViewPlayerProfile:new()
     return view
 end

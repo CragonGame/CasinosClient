@@ -2,24 +2,13 @@
 -- 本人详细信息对话框
 
 ---------------------------------------
-ViewPlayerInfo = ViewBase:new()
+ViewPlayerInfo = class(ViewBase)
 
 ---------------------------------------
-function ViewPlayerInfo:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewPlayerInfo:ctor()
     self.Context = Context
     self.MaxNickNameLength = 9
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -422,6 +411,6 @@ ViewPlayerInfoFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewPlayerInfoFactory:CreateView()
-    local view = ViewPlayerInfo:new(nil)
+    local view = ViewPlayerInfo:new()
     return view
 end

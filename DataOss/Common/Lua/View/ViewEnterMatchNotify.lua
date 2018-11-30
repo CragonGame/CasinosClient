@@ -1,24 +1,13 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewEnterMatchNotify = ViewBase:new()
+ViewEnterMatchNotify = class(ViewBase)
 
 ---------------------------------------
-function ViewEnterMatchNotify:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
+function ViewEnterMatchNotify:ctor()
+    self.Tween = nil
     self.TimerUpdate = nil
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    return o
 end
 
 ---------------------------------------
@@ -163,6 +152,6 @@ ViewEnterMatchNotifyFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewEnterMatchNotifyFactory:CreateView()
-    local view = ViewEnterMatchNotify:new(nil)
+    local view = ViewEnterMatchNotify:new()
     return view
 end

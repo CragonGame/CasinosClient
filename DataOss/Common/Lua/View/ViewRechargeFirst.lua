@@ -2,22 +2,11 @@
 -- 首充对话框
 
 ---------------------------------------
-ViewRechargeFirst = ViewBase:new()
+ViewRechargeFirst = class(ViewBase)
 
 ---------------------------------------
-function ViewRechargeFirst:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewRechargeFirst:ctor()
     self.Tween = nil
-    return o
 end
 
 ---------------------------------------
@@ -72,6 +61,6 @@ ViewRechargeFirstFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewRechargeFirstFactory:CreateView()
-    local view = ViewRechargeFirst:new(nil)
+    local view = ViewRechargeFirst:new()
     return view
 end

@@ -1,66 +1,55 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewDesktopTexas = ViewBase:new()
+ViewDesktopTexas = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopTexas:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.UiChipMgr = nil
-    o.DesktopBase = nil-- ViewDesktopTypeBase
-    o.UiDesktopChatParent = nil-- 头像上聊天气泡父节点
-    o.ItemChatDesktop = nil-- 头像上聊天气泡，表情和文字
-    o.Desktop = nil
-    o.UiPot = nil-- ViewPotTexasPoker，管9个主池+分池
-    o.ActionWaitingTime = nil
-    o.GTextLotteryTicketTips = nil-- 桌内时时彩图标下方的文字
-    o.DealerEx = nil
-    o.GBtnShop = nil
-    o.GBtnMsg = nil
-    o.GBtnNotice = nil
-    o.GBtnFriend = nil
-    o.GBtnLockChat = nil
-    o.GBtnChat = nil
-    o.GBtnMenu = nil
-    o.GLoaderNetwork = nil-- 网络信号
-    o.GTextTm = nil-- 当前时间
-    o.GLoaderDealerGirl = nil
-    o.GComDealer = nil-- Dealer发牌起始点
-    o.GGroupCard = nil-- 5张公共牌的组
-    o.GComCommunityCard1 = nil
-    o.GComCommunityCard2 = nil
-    o.GComCommunityCard3 = nil
-    o.GComCommunityCard4 = nil
-    o.GComCommunityCard5 = nil
-    o.GComMsgTips = nil-- 聊天按钮的小红点
-    o.GTextMsgTips = nil-- 聊天按钮的提示文字，暂未使用
-    o.TransitionNewMsg = nil-- 聊天按钮小红点呼吸动画
-    o.MapAllUiChairInfo = nil-- 所有座位
-    o.MapAllValidPlayerSeat = nil-- 有座玩家座位
-    o.MapValidNoPlayerSeat = nil-- 无座玩家座位
-    o.ListSelfAndCommonCard = nil-- 5张公共牌+本人2张手牌，是Model中的数据
-    o.ListWinnerPlayerInfo = nil
-    o.ListAllPlayer = nil-- 所有有座玩家，从Model中获取
-    o.NewFriendChatCount = 0-- 好友聊天未读消息数量
-    o.ClearDesktopTm = 0-- 即GameEnd状态持续时长
-    o.CheckTimeTime = 0-- 控制当前时间刷新频率的中间变量
-    o.SeatAndInviteTitle = "ComSeatAndInvite"-- 前缀
-    o.SeatPlayerParentTitle = "ComSeatPlayerParent"-- 前缀
-    o.ChairTitle = "ComSeat"-- 前缀
-    o.PokerGirlDesk = "DeskGirl"
-    o.Flow = nil
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.TimerUpdate = nil
-    return o
+function ViewDesktopTexas:ctor()
+    self.UiChipMgr = nil
+    self.DesktopBase = nil-- ViewDesktopTypeBase
+    self.UiDesktopChatParent = nil-- 头像上聊天气泡父节点
+    self.ItemChatDesktop = nil-- 头像上聊天气泡，表情和文字
+    self.Desktop = nil
+    self.UiPot = nil-- ViewPotTexasPoker，管9个主池+分池
+    self.ActionWaitingTime = nil
+    self.GTextLotteryTicketTips = nil-- 桌内时时彩图标下方的文字
+    self.DealerEx = nil
+    self.GBtnShop = nil
+    self.GBtnMsg = nil
+    self.GBtnNotice = nil
+    self.GBtnFriend = nil
+    self.GBtnLockChat = nil
+    self.GBtnChat = nil
+    self.GBtnMenu = nil
+    self.GLoaderNetwork = nil-- 网络信号
+    self.GTextTm = nil-- 当前时间
+    self.GLoaderDealerGirl = nil
+    self.GComDealer = nil-- Dealer发牌起始点
+    self.GGroupCard = nil-- 5张公共牌的组
+    self.GComCommunityCard1 = nil
+    self.GComCommunityCard2 = nil
+    self.GComCommunityCard3 = nil
+    self.GComCommunityCard4 = nil
+    self.GComCommunityCard5 = nil
+    self.GComMsgTips = nil-- 聊天按钮的小红点
+    self.GTextMsgTips = nil-- 聊天按钮的提示文字，暂未使用
+    self.TransitionNewMsg = nil-- 聊天按钮小红点呼吸动画
+    self.MapAllUiChairInfo = nil-- 所有座位
+    self.MapAllValidPlayerSeat = nil-- 有座玩家座位
+    self.MapValidNoPlayerSeat = nil-- 无座玩家座位
+    self.ListSelfAndCommonCard = nil-- 5张公共牌+本人2张手牌，是Model中的数据
+    self.ListWinnerPlayerInfo = nil
+    self.ListAllPlayer = nil-- 所有有座玩家，从Model中获取
+    self.NewFriendChatCount = 0-- 好友聊天未读消息数量
+    self.ClearDesktopTm = 0-- 即GameEnd状态持续时长
+    self.CheckTimeTime = 0-- 控制当前时间刷新频率的中间变量
+    self.SeatAndInviteTitle = "ComSeatAndInvite"-- 前缀
+    self.SeatPlayerParentTitle = "ComSeatPlayerParent"-- 前缀
+    self.ChairTitle = "ComSeat"-- 前缀
+    self.PokerGirlDesk = "DeskGirl"
+    self.Flow = nil
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
@@ -1033,6 +1022,6 @@ ViewDesktopTexasFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopTexasFactory:CreateView()
-    local view = ViewDesktopTexas:new(nil)
+    local view = ViewDesktopTexas:new()
     return view
 end

@@ -2,25 +2,14 @@
 -- 登录界面
 
 ---------------------------------------
-ViewLogin = ViewBase:new()
+ViewLogin = class(ViewBase)
 
 ---------------------------------------
-function ViewLogin:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewLogin:ctor()
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.Context = Context
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
     self.AgreeAgreement = true
     self.TimerUpdate = nil
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    return o
 end
 
 ---------------------------------------
@@ -557,6 +546,6 @@ ViewLoginFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewLoginFactory:CreateView()
-    local view = ViewLogin:new(nil)
+    local view = ViewLogin:new()
     return view
 end

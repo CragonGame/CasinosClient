@@ -1,26 +1,17 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewDesktopHintsTexas = ViewBase:new(nil)
+ViewDesktopHintsTexas = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopHintsTexas:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewDesktopHintsTexas:ctor()
+    self.TransitiOnCreate = nil
+    self.GHintsList = nil
 end
 
 ---------------------------------------
 function ViewDesktopHintsTexas:OnCreate()
-    self.TransitiOnCreate = self.ComUi:GetTransition("TransitiOnCreate")
+    self.TransitiOnCreate = self.ComUi:GetTransition("TransitionCreate")
     self.TransitiOnCreate:Play()
     self.GHintsList = self.ComUi:GetChild("Grid").asList
     local com_shade = self.ComUi:GetChild("ComShade").asCom
@@ -64,6 +55,6 @@ ViewDesktopHintsTexasFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHintsTexasFactory:CreateView()
-    local view = ViewDesktopHintsTexas:new(nil)
+    local view = ViewDesktopHintsTexas:new()
     return view
 end

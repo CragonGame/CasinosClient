@@ -1,26 +1,14 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewRanking = ViewBase:new()
+ViewRanking = class(ViewBase)
 
 ---------------------------------------
-function ViewRanking:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
-    self.CoPlayer = nil
+function ViewRanking:ctor()
     self.Tween = nil
     self.ChampionSignName = "Rank1"
     self.SecondPlaceSignName = "Rank2"
     self.ThirdPlaceSignName = "Rank3"
-    return o
 end
 
 ---------------------------------------
@@ -205,6 +193,6 @@ ViewRankingFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewRankingFactory:CreateView()
-    local view = ViewRanking:new(nil)
+    local view = ViewRanking:new()
     return view
 end

@@ -2,22 +2,11 @@
 -- 加载界面
 
 ---------------------------------------
-ViewLoading = ViewBase:new()
+ViewLoading = class(ViewBase)
 
 ---------------------------------------
-function ViewLoading:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewLoading:ctor()
+    self.Context = Context
 end
 
 ---------------------------------------
@@ -115,6 +104,6 @@ ViewLoadingFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewLoadingFactory:CreateView()
-    local view = ViewLoading:new(nil)
+    local view = ViewLoading:new()
     return view
 end

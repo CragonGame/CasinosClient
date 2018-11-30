@@ -1,22 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewMsgBox = ViewBase:new()
+ViewMsgBox = class(ViewBase)
 
 ---------------------------------------
-function ViewMsgBox:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewMsgBox:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -200,6 +189,6 @@ ViewMsgBoxFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewMsgBoxFactory:CreateView()
-    local view = ViewMsgBox:new(nil)
+    local view = ViewMsgBox:new()
     return view
 end

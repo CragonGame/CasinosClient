@@ -2,21 +2,10 @@
 -- 全屏头像
 
 ---------------------------------------
-ViewHeadIconBig = ViewBase:new()
+ViewHeadIconBig = class(ViewBase)
 
 ---------------------------------------
-function ViewHeadIconBig:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewHeadIconBig:ctor()
 end
 
 ---------------------------------------
@@ -50,6 +39,6 @@ ViewHeadIconBigFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewHeadIconBigFactory:CreateView()
-    local view = ViewHeadIconBig:new(nil)
+    local view = ViewHeadIconBig:new()
     return view
 end

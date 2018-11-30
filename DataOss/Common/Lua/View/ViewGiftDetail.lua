@@ -3,22 +3,11 @@
 --普通桌给所有人购买并赠送礼物对话框也是该View管理
 
 ---------------------------------------
-ViewGiftDetail = ViewBase:new()
+ViewGiftDetail = class(ViewBase)
 
 ---------------------------------------
-function ViewGiftDetail:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewGiftDetail:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -281,6 +270,6 @@ ViewGiftDetailFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewGiftDetailFactory:CreateView()
-    local view = ViewGiftDetail:new(nil)
+    local view = ViewGiftDetail:new()
     return view
 end

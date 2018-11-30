@@ -2,24 +2,13 @@
 -- 跑马灯与百人桌弹幕都使用了该View
 
 ---------------------------------------
-ViewShootingText = ViewBase:new(nil)
+ViewShootingText = class(ViewBase)
 
 ---------------------------------------
-function ViewShootingText:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
+function ViewShootingText:ctor()
     self.ShootingTextArea = 0.5
     self.ShootingTextMoveSpeed = 200
     self.PackName = "ShootingText"
-    return o
 end
 
 ---------------------------------------
@@ -265,6 +254,6 @@ ViewShootingTextFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewShootingTextFactory:CreateView()
-    local view = ViewShootingText:new(nil)
+    local view = ViewShootingText:new()
     return view
 end

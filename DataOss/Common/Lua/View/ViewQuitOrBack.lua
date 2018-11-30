@@ -1,22 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewQuitOrBack = ViewBase:new()
+ViewQuitOrBack = class(ViewBase)
 
 ---------------------------------------
-function ViewQuitOrBack:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewQuitOrBack:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -94,6 +83,6 @@ ViewQuitOrBackFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewQuitOrBackFactory:CreateView()
-    local view = ViewQuitOrBack:new(nil)
+    local view = ViewQuitOrBack:new()
     return view
 end

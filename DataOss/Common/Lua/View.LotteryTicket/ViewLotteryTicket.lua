@@ -7,28 +7,17 @@ require('UiLotteryTicketTexas')
 require('UiLotteryTicketType')
 
 ------------------------------------------
-ViewLotteryTicket = ViewBase:new(nil)
+ViewLotteryTicket = class(ViewBase)
 
 ---------------------------------------
-function ViewLotteryTicket:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.LotteryTicketPackName = "LotteryTicket"
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.ControllerLotteryTicket = nil
-    o.UiLotteryTicketFlow = nil
-    o.UiLotteryTicketBase = nil
-    o.UiCardList = {}
-    return o
+function ViewLotteryTicket:ctor()
+    self.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.LotteryTicketPackName = "LotteryTicket"
+    self.ControllerLotteryTicket = nil
+    self.UiLotteryTicketFlow = nil
+    self.UiLotteryTicketBase = nil
+    self.UiCardList = {}
 end
 
 ---------------------------------------
@@ -464,6 +453,6 @@ ViewLotteryTicketFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewLotteryTicketFactory:CreateView()
-    local view = ViewLotteryTicket:new(nil)
+    local view = ViewLotteryTicket:new()
     return view
 end

@@ -63,34 +63,23 @@ end
 
 ---------------------------------------
 -- 下注奖励对话框
-ViewDesktopHBetReward = ViewBase:new()
+ViewDesktopHBetReward = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopHBetReward:new(o)
-    o = o or {}
-    setmetatable(o,self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.BDesktopHDialyBetReward = nil
-    o.GBtnGetAllReward = nil
-    o.GTextBetTotal = nil
-    o.GProBet = nil
-    o.ViewDesktopH = nil
-    o.Tween = nil
+function ViewDesktopHBetReward:ctor()
+    self.BDesktopHDialyBetReward = nil
+    self.GBtnGetAllReward = nil
+    self.GTextBetTotal = nil
+    self.GProBet = nil
+    self.ViewDesktopH = nil
+    self.Tween = nil
     self.BetRewardTitle = "ComReward"
-    return o
 end
 
 ---------------------------------------
 function ViewDesktopHBetReward:OnCreate()
-	self.Tween = ViewHelper:PopUi(self.ComUi,self.ViewMgr.LanMgr:getLanValue("BetReward"))
-    self.ViewMgr:BindEvListener("EvEntityInitBetReward",self)
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BetReward"))
+    self.ViewMgr:BindEvListener("EvEntityInitBetReward", self)
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_history_close = co_history_close:GetChild("BtnClose").asButton
@@ -99,12 +88,12 @@ function ViewDesktopHBetReward:OnCreate()
                 self:_onClickBtnHelpClose()
             end
     )
-	local com_shade = co_history_close:GetChild("ComShade").asCom
-	com_shade.onClick:Add(
-		function()
-			self:_onClickBtnHelpClose()
-		end
-	)
+    local com_shade = co_history_close:GetChild("ComShade").asCom
+    com_shade.onClick:Add(
+            function()
+                self:_onClickBtnHelpClose()
+            end
+    )
     self.GBtnGetAllReward = self.ComUi:GetChild("Lan_Btn_OneKeyCollection").asButton
     self.GBtnGetAllReward.onClick:Add(
             function()
@@ -126,8 +115,8 @@ end
 
 ---------------------------------------
 function ViewDesktopHBetReward:OnHandleEv(ev)
-    if(ev ~= nil) then
-        if(ev.EventName == "EvEntityInitBetReward") then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvEntityInitBetReward") then
             self.BDesktopHDialyBetReward = ev.init_dailybet_reward
             local current_betgold = self.BDesktopHDialyBetReward.TotalBetGold
             self.GTextBetTotal.text = UiChipShowHelper:getGoldShowStr(current_betgold,
@@ -140,14 +129,14 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
                     can_get = true
                 end
                 local co_betreward = self.ComUi:GetChild(self.BetRewardTitle .. i).asCom
-                UiDesktopHBetRewardItem:new(nil,self, co_betreward, i, v,self.ViewMgr)
+                UiDesktopHBetRewardItem:new(nil, self, co_betreward, i, v, self.ViewMgr)
             end
 
             self.GBtnGetAllReward.enabled = can_get
             local l = self.ViewMgr.TbDataMgr:GetMapData("DesktopHBetReward")
-            local tb_betreward_k,tb_betreward_v = LuaHelper:GetTableFirstEle(l)
+            local tb_betreward_k, tb_betreward_v = LuaHelper:GetTableFirstEle(l)
 
-            for k,v in pairs(l) do
+            for k, v in pairs(l) do
                 local tb_betreward_value = tb_betreward_v.BetValue
                 if (current_betgold > tb_betreward_value and
                         v.BetValue < current_betgold) then
@@ -190,7 +179,7 @@ end
 ---------------------------------------
 function ViewDesktopHBetReward:_onClickGetAllBetReward()
     local ev = self.ViewMgr:GetEv("EvDesktopHGetBetReward")
-    if(ev == nil) then
+    if (ev == nil) then
         ev = EvDesktopHGetBetReward:new(nil)
     end
     ev.factory_name = self.ViewDesktopH.FactoryName
@@ -208,6 +197,6 @@ ViewDesktopHBetRewardFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHBetRewardFactory:CreateView()
-    local view = ViewDesktopHBetReward:new(nil)
+    local view = ViewDesktopHBetReward:new()
     return view
 end

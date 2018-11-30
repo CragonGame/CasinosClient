@@ -1,46 +1,35 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewDesktopPlayerOperateTexas = ViewBase:new()
+ViewDesktopPlayerOperateTexas = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopPlayerOperateTexas:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.GGroupLeaveWhile = nil-- 暂离操作条
-    o.GComContinue = nil-- 返回操作条
-    --o.GTextLeaveWhileTips = nil
-    o.GGroupAutoOperate = nil-- 打牌托管操作条
-    o.GSliderRise = nil-- 加注条
-    o.GTextTopRaiseChip = nil-- 加注条顶部筹码数值
-    o.GTextBottomRaiseChip = nil-- 加注条底部筹码数值
-    o.GTextCurrentRaiseChip = nil-- 加注条按钮上的当前数值
-    o.CurrentTopRaiseGoldValue = 0
-    o.CurrentBottomRaiseGoldValue = 0
-    o.CurrentRaiseGold = 0
-    o.GComFold = nil-- Fold按钮
-    o.GToggleFold = nil-- Fold复选框
-    o.GComFoldOrCheck = nil
-    o.GToggleFoldOrCheck = nil
-    o.GComCheckOrCall = nil
-    o.GToggleCheckOrCall = nil
-    o.ComRaiseNClickRaise = nil-- 加注按钮，命名待调整，无复选框
-    o.ListAutoOperate = {}
-    o.ViewDesktop = nil
-    o.DesktopPlayerTexas = {}
-    o.IsMeTurn = false
-    o.MeTurnData = nil-- 是服务器传过来的本人TurnData的副本，会被延时使用，使用时根据服务端传过来的可操作列表显示对应的操作条
-    o.CanShowOperate = false-- 判定上面变量的延时是否完成
-    o.SliderMoved = false-- 滑条bug保护，丢弃首次自动Click按钮事件
-    return o
+function ViewDesktopPlayerOperateTexas:ctor()
+    self.GGroupLeaveWhile = nil-- 暂离操作条
+    self.GComContinue = nil-- 返回操作条
+    --self.GTextLeaveWhileTips = nil
+    self.GGroupAutoOperate = nil-- 打牌托管操作条
+    self.GSliderRise = nil-- 加注条
+    self.GTextTopRaiseChip = nil-- 加注条顶部筹码数值
+    self.GTextBottomRaiseChip = nil-- 加注条底部筹码数值
+    self.GTextCurrentRaiseChip = nil-- 加注条按钮上的当前数值
+    self.CurrentTopRaiseGoldValue = 0
+    self.CurrentBottomRaiseGoldValue = 0
+    self.CurrentRaiseGold = 0
+    self.GComFold = nil-- Fold按钮
+    self.GToggleFold = nil-- Fold复选框
+    self.GComFoldOrCheck = nil
+    self.GToggleFoldOrCheck = nil
+    self.GComCheckOrCall = nil
+    self.GToggleCheckOrCall = nil
+    self.ComRaiseNClickRaise = nil-- 加注按钮，命名待调整，无复选框
+    self.ListAutoOperate = {}
+    self.ViewDesktop = nil
+    self.DesktopPlayerTexas = {}
+    self.IsMeTurn = false
+    self.MeTurnData = nil-- 是服务器传过来的本人TurnData的副本，会被延时使用，使用时根据服务端传过来的可操作列表显示对应的操作条
+    self.CanShowOperate = false-- 判定上面变量的延时是否完成
+    self.SliderMoved = false-- 滑条bug保护，丢弃首次自动Click按钮事件
 end
 
 ---------------------------------------
@@ -701,6 +690,6 @@ ViewDesktopPlayerOperateTexasFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexasFactory:CreateView()
-    local view = ViewDesktopPlayerOperateTexas:new(nil)
+    local view = ViewDesktopPlayerOperateTexas:new()
     return view
 end

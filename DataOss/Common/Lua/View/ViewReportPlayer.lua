@@ -2,22 +2,11 @@
 -- 举报玩家对话框
 
 ---------------------------------------
-ViewReportPlayer = ViewBase:new()
+ViewReportPlayer = class(ViewBase)
 
 ---------------------------------------
-function ViewReportPlayer:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewReportPlayer:ctor()
     self.Tween = nil
-    return o
 end
 
 ---------------------------------------
@@ -123,6 +112,6 @@ ViewReportPlayerFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewReportPlayerFactory:CreateView()
-    local view = ViewReportPlayer:new(nil)
+    local view = ViewReportPlayer:new()
     return view
 end

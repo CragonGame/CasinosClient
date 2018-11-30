@@ -15,25 +15,14 @@ function MsgInfo:new(o, info, color)
 end
 
 ---------------------------------------
-ViewFloatMsg = ViewBase:new()
+ViewFloatMsg = class(ViewBase)
 
 ---------------------------------------
-function ViewFloatMsg:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.GTextInfos = {}
-    o.TransitionMoves = {}
-    o.mQueMsgInfo = {}
-    o.canSend = false
-    return o
+function ViewFloatMsg:ctor()
+    self.GTextInfos = {}
+    self.TransitionMoves = {}
+    self.mQueMsgInfo = {}
+    self.canSend = false
 end
 
 ---------------------------------------
@@ -112,6 +101,6 @@ ViewFloatMsgFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewFloatMsgFactory:CreateView()
-    local view = ViewFloatMsg:new(nil)
+    local view = ViewFloatMsg:new()
     return view
 end

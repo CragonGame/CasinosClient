@@ -2,22 +2,11 @@
 -- 点了分享按钮后弹出的全屏界面
 
 ---------------------------------------
-ViewShare = ViewBase:new()
+ViewShare = class(ViewBase)
 
 ---------------------------------------
-function ViewShare:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewShare:ctor()
     self.Context = Context
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
 end
 
 ---------------------------------------
@@ -76,6 +65,6 @@ ViewShareFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewShareFactory:CreateView()
-    local view = ViewShare:new(nil)
+    local view = ViewShare:new()
     return view
 end

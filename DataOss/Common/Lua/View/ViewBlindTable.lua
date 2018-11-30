@@ -2,22 +2,11 @@
 -- 盲注表，玩家创建赛事处使用
 
 ---------------------------------------
-ViewBlindTable = ViewBase:new()
+ViewBlindTable = class(ViewBase)
 
 ---------------------------------------
-function ViewBlindTable:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewBlindTable:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -115,6 +104,6 @@ ViewBlindTableFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewBlindTableFactory:CreateView()
-    local view = ViewBlindTable:new(nil)
+    local view = ViewBlindTable:new()
     return view
 end

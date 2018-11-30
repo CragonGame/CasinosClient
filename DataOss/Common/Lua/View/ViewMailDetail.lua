@@ -2,21 +2,11 @@
 -- 邮件详情
 
 ---------------------------------------
-ViewMailDetail = ViewBase:new()
+ViewMailDetail = class(ViewBase)
 
 ---------------------------------------
-function ViewMailDetail:new()
-    local o = {}
-    setmetatable(o, { __index = self })
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewMailDetail:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------

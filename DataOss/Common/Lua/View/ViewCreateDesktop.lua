@@ -1,25 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewCreateDesktop = ViewBase:new()
+ViewCreateDesktop = class(ViewBase)
 
 ---------------------------------------
-function ViewCreateDesktop:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.ViewMgr = nil
-        self.GoUi = nil
-        self.ComUi = nil
-        self.Panel = nil
-        self.UILayer = nil
-        self.InitDepth = nil
-        self.ViewKey = nil
-        self.Tween = nil
-        self.Instance = o
-    end
-    return self.Instance
+function ViewCreateDesktop:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -119,6 +105,6 @@ ViewCreateDesktopFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewCreateDesktopFactory:CreateView()
-    local view = ViewCreateDesktop:new(nil)
+    local view = ViewCreateDesktop:new()
     return view
 end

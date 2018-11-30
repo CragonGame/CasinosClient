@@ -2,25 +2,10 @@
 -- 加入玩家创建的赛事
 
 ---------------------------------------
-ViewJoinMatch = ViewBase:new()
+ViewJoinMatch = class(ViewBase)
 
 ---------------------------------------
-function ViewJoinMatch:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.ViewMgr = nil
-        self.GoUi = nil
-        self.ComUi = nil
-        self.Panel = nil
-        self.UILayer = nil
-        self.InitDepth = nil
-        self.ViewKey = nil
-        self.Tween = nil
-        self.Instance = o
-    end
-    return self.Instance
+function ViewJoinMatch:ctor()
 end
 
 ---------------------------------------
@@ -110,6 +95,6 @@ ViewJoinMatchFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewJoinMatchFactory:CreateView()
-    local view = ViewJoinMatch:new(nil)
+    local view = ViewJoinMatch:new()
     return view
 end

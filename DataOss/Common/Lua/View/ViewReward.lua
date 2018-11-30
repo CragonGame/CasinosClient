@@ -128,25 +128,14 @@ function UiRewardTiming:_onClickBtnTimingReward()
 end
 
 ---------------------------------------
-ViewReward = ViewBase:new()
+ViewReward = class(ViewBase)
 
 ---------------------------------------
-function ViewReward:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewReward:ctor()
     self.Tween = nil
     self.ControllerReward = ControllerReward
     self.UiRewardOnline = UiRewardOnline
     self.UiRewardTiming = UiRewardTiming
-    return o
 end
 
 ---------------------------------------
@@ -208,6 +197,6 @@ ViewRewardFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewRewardFactory:CreateView()
-    local view = ViewReward:new(nil)
+    local view = ViewReward:new()
     return view
 end

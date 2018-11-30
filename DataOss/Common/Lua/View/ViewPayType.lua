@@ -2,23 +2,12 @@
 -- 选择支付宝微信支付对话框
 
 ---------------------------------------
-ViewPayType = ViewBase:new()
+ViewPayType = class(ViewBase)
 
 ---------------------------------------
-function ViewPayType:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewPayType:ctor()
     self.Context = Context
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -113,6 +102,6 @@ ViewPayTypeFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewPayTypeFactory:CreateView()
-    local view = ViewPayType:new(nil)
+    local view = ViewPayType:new()
     return view
 end

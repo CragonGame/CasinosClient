@@ -21,75 +21,64 @@ require('UiDesktopHTongPei')
 require('UiDesktopHTongSha')
 
 ------------------------------------------
-ViewDesktopH = ViewBase:new()
+ViewDesktopH = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopH:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.UiDesktopHGoldPool = nil
-    o.UiDesktopChatParent = nil
-    o.UiDesktopHDealer = nil
-    o.ControllerPlayer = nil
-    o.UiDesktopHBanker = nil
-    o.UiDesktopHStandPlayer = nil
-    o.UiDesktopHMe = nil
-    o.UiDesktopHRewardPot = nil
-    o.UiDesktopHBase = nil--ViewDesktopHBase
-    o.GCoDealer = nil-- GCom，锚点。庄家头像条中下
-    o.GCoDesktopH = nil-- GCom，锚点。可能是屏幕左上角或中间
-    o.GCoDesktopHPoolParent = nil-- GCom，锚点。屏幕左上角
-    o.GCotips = nil-- 屏幕中间提示的Ui组件
-    o.GComMsgTips = nil-- 私聊按钮右上角的小红点
-    o.GTextMsgTips = nil
-    o.FactoryName = nil
-    o.DesktopHGameResult = nil
-    o.UiDesktopHTongSha = nil
-    o.UiDesktopHTongPei = nil
-    o.UiDesktopHFlow = nil
-    o.GBtnRepeat = nil
-    o.GBtnSetCardType = nil
-    o.CoShiShiCai = nil-- 时时彩
-    o.GTextLotteryTicketTips = nil-- 时时彩
-    o.GTextTm = nil-- 本地时间
-    o.MapDesktopHBetPot = nil
-    o.MapDesktopHChair = nil
-    o.MapDesktopHBetOperate = nil
-    o.MapDesktopHBaseFactory = nil-- 只有一个实例
-    o.FTaskerShowGameResult = nil-- 做结算动画流程
-    o.StateTm = 0
-    o.Sound = nil-- 背景音乐
-    o.IsTongSha = false-- 为了延后处理通杀通赔
-    o.IsTongPei = false
-    o.CheckTimeTime = 0-- 定时更新本地时间
-    o.CanBet = false-- 是否可以下注
-    o.NewFriendChatCount = 0
-    o.GCoChairTitle = "CoChair"
-    o.UiDesktopHPackageNameTitle = "DesktopH"
-    o.UiDesktopHComDesktopHTitle = "CoDesktopH"
-    o.UiDesktopHComDesktopHBetPotTitle = "CoDesktopHBetPot"
-    o.UiDesktopHComDesktopHHelpTitle = "CoDesktopHHelp"
-    o.UiDesktopHComDesktopHKaiRewardPotInfoTitle = "CoDesktopHKaiRewardPotInfo"
-    o.UiDesktopHComDesktopHRewardPotPlayerInfoTitle = "CoDesktopHRewardPotPlayerInfo"
-    o.UiDesktopHComDesktopHCardTypeTitle = "CoDesktopHCardType"
-    o.BetAniX = 10
-    o.ShowChatTm = 2
-    o.TongShaPackName = "DesktopHTongSha"
-    o.TongPeiPackName = "DesktopHTongPei"
-    o.ShowTongShaTongPeiTime = 1
-    o.MaxUiChipNum = 60
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.TimerUpdate = nil
-    return o
+function ViewDesktopH:ctor()
+    self.UiDesktopHGoldPool = nil
+    self.UiDesktopChatParent = nil
+    self.UiDesktopHDealer = nil
+    self.ControllerPlayer = nil
+    self.UiDesktopHBanker = nil
+    self.UiDesktopHStandPlayer = nil
+    self.UiDesktopHMe = nil
+    self.UiDesktopHRewardPot = nil
+    self.UiDesktopHBase = nil--ViewDesktopHBase
+    self.GCoDealer = nil-- GCom，锚点。庄家头像条中下
+    self.GCoDesktopH = nil-- GCom，锚点。可能是屏幕左上角或中间
+    self.GCoDesktopHPoolParent = nil-- GCom，锚点。屏幕左上角
+    self.GCotips = nil-- 屏幕中间提示的Ui组件
+    self.GComMsgTips = nil-- 私聊按钮右上角的小红点
+    self.GTextMsgTips = nil
+    self.FactoryName = nil
+    self.DesktopHGameResult = nil
+    self.UiDesktopHTongSha = nil
+    self.UiDesktopHTongPei = nil
+    self.UiDesktopHFlow = nil
+    self.GBtnRepeat = nil
+    self.GBtnSetCardType = nil
+    self.CoShiShiCai = nil-- 时时彩
+    self.GTextLotteryTicketTips = nil-- 时时彩
+    self.GTextTm = nil-- 本地时间
+    self.MapDesktopHBetPot = nil
+    self.MapDesktopHChair = nil
+    self.MapDesktopHBetOperate = nil
+    self.MapDesktopHBaseFactory = nil-- 只有一个实例
+    self.FTaskerShowGameResult = nil-- 做结算动画流程
+    self.StateTm = 0
+    self.Sound = nil-- 背景音乐
+    self.IsTongSha = false-- 为了延后处理通杀通赔
+    self.IsTongPei = false
+    self.CheckTimeTime = 0-- 定时更新本地时间
+    self.CanBet = false-- 是否可以下注
+    self.NewFriendChatCount = 0
+    self.GCoChairTitle = "CoChair"
+    self.UiDesktopHPackageNameTitle = "DesktopH"
+    self.UiDesktopHComDesktopHTitle = "CoDesktopH"
+    self.UiDesktopHComDesktopHBetPotTitle = "CoDesktopHBetPot"
+    self.UiDesktopHComDesktopHHelpTitle = "CoDesktopHHelp"
+    self.UiDesktopHComDesktopHKaiRewardPotInfoTitle = "CoDesktopHKaiRewardPotInfo"
+    self.UiDesktopHComDesktopHRewardPotPlayerInfoTitle = "CoDesktopHRewardPotPlayerInfo"
+    self.UiDesktopHComDesktopHCardTypeTitle = "CoDesktopHCardType"
+    self.BetAniX = 10
+    self.ShowChatTm = 2
+    self.TongShaPackName = "DesktopHTongSha"
+    self.TongPeiPackName = "DesktopHTongPei"
+    self.ShowTongShaTongPeiTime = 1
+    self.MaxUiChipNum = 60
+    self.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
@@ -1235,6 +1224,6 @@ ViewDesktopHFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHFactory:CreateView()
-    local view = ViewDesktopH:new(nil)
+    local view = ViewDesktopH:new()
     return view
 end

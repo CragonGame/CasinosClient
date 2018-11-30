@@ -2,22 +2,11 @@
 -- 点击奖励问号弹出的滚雪球信息对话框
 
 ---------------------------------------
-ViewSnowBallReward = ViewBase:new()
+ViewSnowBallReward = class(ViewBase)
 
 ---------------------------------------
-function ViewSnowBallReward:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewSnowBallReward:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -99,6 +88,6 @@ ViewSnowBallRewardFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewSnowBallRewardFactory:CreateView()
-    local view = ViewSnowBallReward:new(nil)
+    local view = ViewSnowBallReward:new()
     return view
 end

@@ -53,22 +53,11 @@ function ViewSlideEx:sliderChange()
 end
 
 ---------------------------------------
-ViewChipOperate = ViewBase:new()
+ViewChipOperate = class(ViewBase)
 
 ---------------------------------------
-function ViewChipOperate:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewChipOperate:ctor()
     self.Tween = nil
-    return o
 end
 
 ---------------------------------------
@@ -270,6 +259,6 @@ ViewChipOperateFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewChipOperateFactory:CreateView()
-    local view = ViewChipOperate:new(nil)
+    local view = ViewChipOperate:new()
     return view
 end

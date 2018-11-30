@@ -1,24 +1,12 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewAgreeOrDisAddFriendRequest = ViewBase:new()
+ViewAgreeOrDisAddFriendRequest = class(ViewBase)
 
 ---------------------------------------
-function ViewAgreeOrDisAddFriendRequest:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.Context = Context
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
+function ViewAgreeOrDisAddFriendRequest:ctor()
+    self.Tween = nil
     self.FriendGuid = nil
-    return o
 end
 
 ---------------------------------------
@@ -117,6 +105,6 @@ ViewAgreeOrDisAddFriendRequestFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequestFactory:CreateView()
-    local view = ViewAgreeOrDisAddFriendRequest:new(nil)
+    local view = ViewAgreeOrDisAddFriendRequest:new()
     return view
 end

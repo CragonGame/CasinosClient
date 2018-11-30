@@ -1,22 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewEditAddress = ViewBase:new()
+ViewEditAddress = class(ViewBase)
 
 ---------------------------------------
-function ViewEditAddress:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewEditAddress:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -168,6 +157,6 @@ ViewEditAddressFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewEditAddressFactory:CreateView()
-    local view = ViewEditAddress:new(nil)
+    local view = ViewEditAddress:new()
     return view
 end

@@ -13,26 +13,15 @@ function tRewardInfo:new(o)
 end
 
 ---------------------------------------
-ViewDailyReward = ViewBase:new()
+ViewDailyReward = class(ViewBase)
 
 ---------------------------------------
-function ViewDailyReward:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.REWARD_SOUND = nil
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
+function ViewDailyReward:ctor()
+    self.REWARD_SOUND = nil
+    self.Tween = nil
     self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
-    return o
 end
 
 ---------------------------------------
@@ -182,6 +171,6 @@ ViewDailyRewardFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDailyRewardFactory:CreateView()
-    local view = ViewDailyReward:new(nil)
+    local view = ViewDailyReward:new()
     return view
 end

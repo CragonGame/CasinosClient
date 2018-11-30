@@ -2,22 +2,11 @@
 -- 好友私聊
 
 ---------------------------------------
-ViewChatFriend = ViewBase:new()
+ViewChatFriend = class(ViewBase)
 
 ---------------------------------------
-function ViewChatFriend:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewChatFriend:ctor()
     self.Tween = nil
-    return o
 end
 
 ---------------------------------------
@@ -454,6 +443,6 @@ ViewChatFriendFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewChatFriendFactory:CreateView()
-    local view = ViewChatFriend:new(nil)
+    local view = ViewChatFriend:new()
     return view
 end

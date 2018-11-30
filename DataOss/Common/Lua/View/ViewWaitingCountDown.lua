@@ -1,23 +1,12 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewWaitingCountDown = ViewBase:new()
+ViewWaitingCountDown = class(ViewBase)
 
 ---------------------------------------
-function ViewWaitingCountDown:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
+function ViewWaitingCountDown:ctor()
     self.TimerUpdate = nil
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    return o
 end
 
 ---------------------------------------
@@ -91,6 +80,6 @@ ViewWaitingCountDownFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewWaitingCountDownFactory:CreateView()
-    local view = ViewWaitingCountDown:new(nil)
+    local view = ViewWaitingCountDown:new()
     return view
 end

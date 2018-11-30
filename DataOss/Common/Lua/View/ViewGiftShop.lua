@@ -2,24 +2,13 @@
 -- 礼物商城
 
 ---------------------------------------
-ViewGiftShop = ViewBase:new()
+ViewGiftShop = class(ViewBase)
 
 ---------------------------------------
-function ViewGiftShop:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewGiftShop:ctor()
     self.mDesktopGiftTypeld = 200
     self.mNotDesktopGiftTypeld = 100
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
     self.Tween = nil
-    return o
 end
 
 ---------------------------------------
@@ -125,6 +114,6 @@ ViewGiftShopFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewGiftShopFactory:CreateView()
-    local view = ViewGiftShop:new(nil)
+    local view = ViewGiftShop:new()
     return view
 end

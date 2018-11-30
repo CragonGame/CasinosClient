@@ -80,20 +80,10 @@ function UiDesktopHDlgGameEndResultPotItem:new(o, ui_desktoph, com, list_card, i
 end
 
 ---------------------------------------
-ViewDesktopHResult = ViewBase:new()
+ViewDesktopHResult = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopHResult:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
+function ViewDesktopHResult:ctor()
     self.ViewDesktopH = nil
     self.GListWinPlayer = nil
     self.GListPotResult = nil
@@ -107,7 +97,6 @@ function ViewDesktopHResult:new(o)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
     self.Tween = nil
-    return o
 end
 
 ---------------------------------------
@@ -225,6 +214,6 @@ ViewDesktopHResultFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHResultFactory:CreateView()
-    local view = ViewDesktopHResult:new(nil)
+    local view = ViewDesktopHResult:new()
     return view
 end

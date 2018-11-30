@@ -2,23 +2,11 @@
 -- MTT报名成功对话框提示
 
 ---------------------------------------
-ViewApplySucceed = ViewBase:new()
+ViewApplySucceed = class(ViewBase)
 
 ---------------------------------------
-function ViewApplySucceed:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Instance = o
-    o.Tween = nil
-    return o
+function ViewApplySucceed:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -91,6 +79,6 @@ ViewApplySucceedFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewApplySucceedFactory:CreateView()
-    local view = ViewApplySucceed:new(nil)
+    local view = ViewApplySucceed:new()
     return view
 end

@@ -2,21 +2,10 @@
 -- 身份证验证对话框
 
 ---------------------------------------
-ViewIdCardCheck = ViewBase:new()
+ViewIdCardCheck = class(ViewBase)
 
 ---------------------------------------
-function ViewIdCardCheck:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
+function ViewIdCardCheck:ctor()
 end
 
 ---------------------------------------
@@ -91,6 +80,6 @@ ViewIdCardCheckFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewIdCardCheckFactory:CreateView()
-    local view = ViewIdCardCheck:new(nil)
+    local view = ViewIdCardCheck:new()
     return view
 end

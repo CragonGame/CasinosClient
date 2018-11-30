@@ -2,21 +2,10 @@
 -- 普通桌本人头像点击弹出的半圆对话框
 
 ---------------------------------------
-ViewDesktopChatExpression = ViewBase:new()
+ViewDesktopChatExpression = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopChatExpression:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
-    return o
+function ViewDesktopChatExpression:ctor()
 end
 
 ---------------------------------------
@@ -83,6 +72,6 @@ ViewDesktopChatExpressionFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopChatExpressionFactory:CreateView()
-    local view = ViewDesktopChatExpression:new(nil)
+    local view = ViewDesktopChatExpression:new()
     return view
 end

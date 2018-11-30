@@ -2,22 +2,11 @@
 -- 牌型界面，后续与普通桌中牌型界面命名调成一致
 
 ---------------------------------------
-ViewDesktopHCardType = ViewBase:new()
+ViewDesktopHCardType = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopHCardType:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.GCoCardType = nil
-    return o
+function ViewDesktopHCardType:ctor()
+    self.GCoCardType = nil
 end
 
 ---------------------------------------
@@ -51,6 +40,6 @@ ViewDesktopHCardTypeFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHCardTypeFactory:CreateView()
-    local view = ViewDesktopHCardType:new(nil)
+    local view = ViewDesktopHCardType:new()
     return view
 end

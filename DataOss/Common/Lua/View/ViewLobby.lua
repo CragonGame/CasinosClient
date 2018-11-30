@@ -1,23 +1,12 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewLobby = ViewBase:new()
+ViewLobby = class(ViewBase)
 
 ---------------------------------------
-function ViewLobby:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewLobby:ctor()
     self.Context = Context
     self.FilterKey = "DesktopFilterTP"
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    return o
 end
 
 ---------------------------------------
@@ -564,6 +553,6 @@ ViewLobbyFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewLobbyFactory:CreateView()
-    local view = ViewLobby:new(nil)
+    local view = ViewLobby:new()
     return view
 end

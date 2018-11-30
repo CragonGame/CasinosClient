@@ -2,22 +2,11 @@
 -- 赛况详情
 
 ---------------------------------------
-ViewMatchInfo = ViewBase:new()
+ViewMatchInfo = class(ViewBase)
 
 ---------------------------------------
-function ViewMatchInfo:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewMatchInfo:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -555,6 +544,6 @@ ViewMatchInfoFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewMatchInfoFactory:CreateView()
-    local view = ViewMatchInfo:new(nil)
+    local view = ViewMatchInfo:new()
     return view
 end

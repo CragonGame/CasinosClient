@@ -1,25 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewGoldTree = ViewBase:new()
+ViewGoldTree = class(ViewBase)
 
 ---------------------------------------
-function ViewGoldTree:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.ViewMgr = nil
-        self.GoUi = nil
-        self.ComUi = nil
-        self.Panel = nil
-        self.UILayer = nil
-        self.InitDepth = nil
-        self.ViewKey = nil
-        self.Tween = nil
-        self.Instance = o
-    end
-    return self.Instance
+function ViewGoldTree:ctor()
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -157,6 +143,6 @@ ViewGoldTreeFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewGoldTreeFactory:CreateView()
-    local view = ViewGoldTree:new(nil)
+    local view = ViewGoldTree:new()
     return view
 end

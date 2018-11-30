@@ -1,24 +1,13 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewBank = ViewBase:new()
+ViewBank = class(ViewBase)
 
 ---------------------------------------
-function ViewBank:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
+function ViewBank:ctor()
+    self.Tween = nil
     self.MinChip = 1
     self.TakeOutOrPutInPerGold = 1
-    return o
 end
 
 ---------------------------------------
@@ -363,6 +352,6 @@ ViewBankFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewBankFactory:CreateView()
-    local view = ViewBank:new(nil)
+    local view = ViewBank:new()
     return view
 end

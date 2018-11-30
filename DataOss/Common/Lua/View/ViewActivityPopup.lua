@@ -2,23 +2,12 @@
 -- 刚进游戏主动弹出的活动对话框。弹多个时，由ControllerActive控制依次弹出。
 
 ---------------------------------------
-ViewActivityPopup = ViewBase:new()
+ViewActivityPopup = class(ViewBase)
 
 ---------------------------------------
-function ViewActivityPopup:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Context = Context
-    o.Tween = nil
-    return o
+function ViewActivityPopup:ctor()
+    self.Context = Context
+    self.Tween = nil
 end
 
 ---------------------------------------
@@ -91,6 +80,6 @@ ViewActivityPopupFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewActivityPopupFactory:CreateView()
-    local view = ViewActivityPopup:new(nil)
+    local view = ViewActivityPopup:new()
     return view
 end

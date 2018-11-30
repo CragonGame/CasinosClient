@@ -1,22 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewResetPwd = ViewBase:new()
+ViewResetPwd = class(ViewBase)
 
 ---------------------------------------
-function ViewResetPwd:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
-
-    return o
+function ViewResetPwd:ctor()
 end
 
 ---------------------------------------
@@ -119,6 +107,6 @@ ViewResetPwdFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewResetPwdFactory:CreateView()
-    local view = ViewResetPwd:new(nil)
+    local view = ViewResetPwd:new()
     return view
 end

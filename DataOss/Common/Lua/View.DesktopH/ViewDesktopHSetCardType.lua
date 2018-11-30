@@ -84,29 +84,18 @@ end
 
 ---------------------------------------
 -- 整个对话框
-ViewDesktopHSetCardType = ViewBase:new()
+ViewDesktopHSetCardType = class(ViewBase)
 
 ---------------------------------------
-function ViewDesktopHSetCardType:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.ViewDesktopH = nil
-    o.GCoBankCardTypeParent = nil
-    o.GListPotCardType = nil
-    o.GBtnConfirmSetCardType = nil
-    o.BankItemDesktopHSetCardType = nil
-    o.MapPotItemDesktopHSetCardType = nil
-    o.MapCardsType = nil
-    o.BankPlayerPotIndex = 255
-    return o
+function ViewDesktopHSetCardType:ctor()
+    self.ViewDesktopH = nil
+    self.GCoBankCardTypeParent = nil
+    self.GListPotCardType = nil
+    self.GBtnConfirmSetCardType = nil
+    self.BankItemDesktopHSetCardType = nil
+    self.MapPotItemDesktopHSetCardType = nil
+    self.MapCardsType = nil
+    self.BankPlayerPotIndex = 255
 end
 
 ---------------------------------------
@@ -172,6 +161,6 @@ ViewDesktopHSetCardTypeFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHSetCardTypeFactory:CreateView()
-    local view = ViewDesktopHSetCardType:new(nil)
+    local view = ViewDesktopHSetCardType:new()
     return view
 end

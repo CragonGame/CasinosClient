@@ -5,18 +5,7 @@ ViewAbout = class(ViewBase)
 
 ---------------------------------------
 function ViewAbout:ctor()
-    --o = o or {}
-    --setmetatable(o, self)
-    --self.__index = self
-    --o.ViewMgr = nil
-    --o.GoUi = nil
-    --o.ComUi = nil
-    --o.Panel = nil
-    --o.UILayer = nil
-    --o.InitDepth = nil
-    --o.ViewKey = nil
     self.Tween = nil
-    --return o
 end
 
 ---------------------------------------

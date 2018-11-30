@@ -1,22 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewClub = ViewBase:new()
+ViewClub = class(ViewBase)
 
 ---------------------------------------
-function ViewClub:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.UpdatePlayerNumTime = 0
-    return o
+function ViewClub:ctor()
+    self.UpdatePlayerNumTime = 0
 end
 
 ---------------------------------------
@@ -189,6 +178,6 @@ ViewClubFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewClubFactory:CreateView()
-    local view = ViewClub:new(nil)
+    local view = ViewClub:new()
     return view
 end
