@@ -9,23 +9,11 @@ GoodsType = {
 }
 
 ---------------------------------------
-ViewShop = ViewBase:new()
+ViewShop = class(ViewBase)
 
----------------------------------------
-function ViewShop:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewShop:ctor()
     self.Context = Context
-    self.ViewMgr = nil
-    self.GoUi = nil
-    self.ComUi = nil
-    self.Panel = nil
-    self.UILayer = nil
-    self.InitDepth = nil
-    self.ViewKey = nil
     self.TemporaryHideItemId = 14001
-    return o
 end
 
 ---------------------------------------
@@ -506,23 +494,10 @@ function ViewShop:setListGoods(goodsType)
 end
 
 ---------------------------------------
-ViewShopFactory = ViewFactory:new()
-
----------------------------------------
-function ViewShopFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.PackageName = ui_package_name
-    self.ComponentName = ui_component_name
-    self.UILayer = ui_layer
-    self.IsSingle = is_single
-    self.FitScreen = fit_screen
-    return o
-end
+ViewShopFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewShopFactory:CreateView()
-    local view = ViewShop:new(nil)
+    local view = ViewShop:new()
     return view
 end

@@ -1,33 +1,26 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewDesktopHMenu = ViewBase:new()
+ViewDesktopHMenu = class(ViewBase)
 
----------------------------------------
-function ViewDesktopHMenu:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.CoMenuEx = nil
-    o.ViewDesktopH = nil
-    o.Tween = nil
-    return o
+function ViewDesktopHMenu:ctor()
+    self.CoMenuEx = nil
+    self.ViewDesktopH = nil
+    self.TweenShow = nil
+    self.TweenHide = nil
 end
 
 ---------------------------------------
 function ViewDesktopHMenu:OnCreate()
+    self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
+    self.CoMenuEx = self.ComUi:GetChild("CoMenuEx").asCom
+    self.GBtnRedPoint = self.CoMenuEx:GetChild("BtnRedPoint").asCom
+
     self.ComUi.onClick:Add(
             function()
-                self:_onClickMenuCo()
+                self:_onClickMenuHide()
             end)
-    self.CoMenuEx = self.ComUi:GetChild("CoMenuEx").asCom
+
     local btn_return = self.CoMenuEx:GetChild("BtnReturn").asButton
     btn_return.onClick:Add(
             function()
@@ -43,38 +36,42 @@ function ViewDesktopHMenu:OnCreate()
             function()
                 self:_onClickBtnHelp()
             end)
-    local btn_charge = self.CoMenuEx:GetChild("BtnRecharge").asButton
-    btn_charge.onClick:Add(
+    local btn_shop = self.CoMenuEx:GetChild("BtnRecharge").asButton
+    btn_shop.onClick:Add(
             function()
-                self:_onClickBtnCharge()
+                self:_onClickBtnShop()
             end)
     local btn_reward = self.CoMenuEx:GetChild("BtnReward").asButton
     btn_reward.onClick:Add(
             function()
-                self.ViewMgr:CreateView('Reward')
+                self:_onClickBtnReward()
             end)
-    self.GBtnRedPoint = self.CoMenuEx:GetChild("BtnRedPoint").asCom
-    self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
 end
 
 ---------------------------------------
 function ViewDesktopHMenu:OnDestroy()
-    if self.Tween ~= nil then
-        self.Tween:Kill(false)
-        self.Tween = nil
+    self.ComUi.onClick:Clear()
+
+    if self.TweenShow ~= nil then
+        self.TweenShow:Kill(false)
+        self.TweenShow = nil
+    end
+    if self.TweenHide ~= nil then
+        self.TweenHide:Kill(false)
+        self.TweenHide = nil
     end
 end
 
 ------------------------------------------
-function ViewDesktopHMenu:showMenu(have_reward)
-    self.CoMenuEx:SetXY(0, -self.CoMenuEx.height)
-    self.Tween = self.CoMenuEx:TweenMoveY(0, 0.25)
+function ViewDesktopHMenu:ShowMenu(have_reward)
     self.GBtnRedPoint.visible = have_reward
+    self.CoMenuEx:SetXY(0, -self.CoMenuEx.height)
+    self.TweenShow = self.CoMenuEx:TweenMoveY(0, 0.25)
 end
 
 ---------------------------------------
-function ViewDesktopHMenu:_onClickMenuCo()
-    self.CoMenuEx:TweenMoveY(-self.CoMenuEx.height, 0.25):OnComplete(
+function ViewDesktopHMenu:_onClickMenuHide()
+    self.TweenHide = self.CoMenuEx:TweenMoveY(-self.CoMenuEx.height, 0.25):OnComplete(
             function()
                 self.ViewMgr:DestroyView(self)
             end
@@ -82,6 +79,7 @@ function ViewDesktopHMenu:_onClickMenuCo()
 end
 
 ---------------------------------------
+-- 返回
 function ViewDesktopHMenu:_onClickBtnReturn()
     local ev = self.ViewMgr:GetEv("EvViewClickLeaveDesktopH")
     if (ev == nil) then
@@ -91,46 +89,44 @@ function ViewDesktopHMenu:_onClickBtnReturn()
 end
 
 ---------------------------------------
+-- 牌型
 function ViewDesktopHMenu:_onClickBtnCardType()
-    local card_type = self.ViewMgr:CreateView("DesktopHCardType")
     local p = self.ViewDesktopH:getDesktopBasePackageName()
     local co_cardtype = CS.FairyGUI.UIPackage.CreateObject(p, self.ViewDesktopH.UiDesktopHComDesktopHCardTypeTitle .. self.ViewDesktopH.FactoryName).asCom
     self.ViewMgr.LanMgr:parseComponent(co_cardtype)
-    card_type:showCardType(co_cardtype)
+
+    local view_desktophcardtype = self.ViewMgr:CreateView("DesktopHCardType")
+    view_desktophcardtype:showCardType(co_cardtype)
 end
 
 ---------------------------------------
+-- 帮助
 function ViewDesktopHMenu:_onClickBtnHelp()
-    local help = self.ViewMgr:CreateView("DesktopHHelp")
     local p = self.ViewDesktopH:getDesktopBasePackageName()
     local co_betpot = CS.FairyGUI.UIPackage.CreateObject(p, self.ViewDesktopH.UiDesktopHComDesktopHHelpTitle .. self.ViewDesktopH.FactoryName).asCom
     self.ViewMgr.LanMgr:parseComponent(co_betpot)
-    help:setComHelp(co_betpot)
+
+    local view_desktophhelp = self.ViewMgr:CreateView("DesktopHHelp")
+    view_desktophhelp:setComHelp(co_betpot)
 end
 
 ---------------------------------------
-function ViewDesktopHMenu:_onClickBtnCharge()
+-- 商城
+function ViewDesktopHMenu:_onClickBtnShop()
     self.ViewMgr:CreateView("Shop")
 end
 
 ---------------------------------------
-ViewDesktopHMenuFactory = ViewFactory:new()
-
----------------------------------------
-function ViewDesktopHMenuFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.PackageName = ui_package_name
-    self.ComponentName = ui_component_name
-    self.UILayer = ui_layer
-    self.IsSingle = is_single
-    self.FitScreen = fit_screen
-    return o
+-- 福利
+function ViewDesktopHMenu:_onClickBtnReward()
+    self.ViewMgr:CreateView("Reward")
 end
 
 ---------------------------------------
+ViewDesktopHMenuFactory = class(ViewFactory)
+
+---------------------------------------
 function ViewDesktopHMenuFactory:CreateView()
-    local view = ViewDesktopHMenu:new(nil)
+    local view = ViewDesktopHMenu:new()
     return view
 end

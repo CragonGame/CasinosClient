@@ -1109,8 +1109,8 @@ end
 ---------------------------------------
 function ViewDesktopH:_onClickBtnMenu()
     local ctrl_reward = self.ViewMgr.ControllerMgr:GetController("Reward")
-    local menu = self.ViewMgr:CreateView("DesktopHMenu")
-    menu:showMenu(ctrl_reward.RedPointRewardShow)
+    local desktoph_menu = self.ViewMgr:CreateView("DesktopHMenu")
+    desktoph_menu:ShowMenu(ctrl_reward.RedPointRewardShow)
 end
 
 ---------------------------------------
@@ -1231,20 +1231,7 @@ function ViewDesktopH:RefreshRedPointRewardState()
 end
 
 ---------------------------------------
-ViewDesktopHFactory = ViewFactory:new()
-
----------------------------------------
-function ViewDesktopHFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.PackageName = ui_package_name
-    self.ComponentName = ui_component_name
-    self.UILayer = ui_layer
-    self.IsSingle = is_single
-    self.FitScreen = fit_screen
-    return o
-end
+ViewDesktopHFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewDesktopHFactory:CreateView()

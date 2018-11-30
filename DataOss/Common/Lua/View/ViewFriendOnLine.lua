@@ -73,20 +73,7 @@ function ViewFriendOnLine:_onClickHeadIcon()
 end
 
 ---------------------------------------
-ViewFriendOnLineFactory = ViewFactory:new()
-
----------------------------------------
-function ViewFriendOnLineFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.PackageName = ui_package_name
-    self.ComponentName = ui_component_name
-    self.UILayer = ui_layer
-    self.IsSingle = is_single
-    self.FitScreen = fit_screen
-    return o
-end
+ViewFriendOnLineFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewFriendOnLineFactory:CreateView()

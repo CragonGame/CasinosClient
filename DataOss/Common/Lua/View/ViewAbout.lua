@@ -1,22 +1,22 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewAbout = ViewBase:new()
+ViewAbout = class(ViewBase)
 
 ---------------------------------------
-function ViewAbout:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = nil
-    o.GoUi = nil
-    o.ComUi = nil
-    o.Panel = nil
-    o.UILayer = nil
-    o.InitDepth = nil
-    o.ViewKey = nil
-    o.Tween = nil
-    return o
+function ViewAbout:ctor()
+    --o = o or {}
+    --setmetatable(o, self)
+    --self.__index = self
+    --o.ViewMgr = nil
+    --o.GoUi = nil
+    --o.ComUi = nil
+    --o.Panel = nil
+    --o.UILayer = nil
+    --o.InitDepth = nil
+    --o.ViewKey = nil
+    self.Tween = nil
+    --return o
 end
 
 ---------------------------------------
@@ -74,23 +74,10 @@ function ViewAbout:onClickPrivacy()
 end
 
 ---------------------------------------
-ViewAboutFactory = ViewFactory:new()
-
----------------------------------------
-function ViewAboutFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.PackageName = ui_package_name
-    self.ComponentName = ui_component_name
-    self.UILayer = ui_layer
-    self.IsSingle = is_single
-    self.FitScreen = fit_screen
-    return o
-end
+ViewAboutFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewAboutFactory:CreateView()
-    local view = ViewAbout:new(nil)
+    local view = ViewAbout:new()
     return view
 end

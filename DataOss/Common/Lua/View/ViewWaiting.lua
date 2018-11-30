@@ -101,20 +101,7 @@ function ViewWaiting:SetTips(tips, auto_destroytm, random_tips)
 end
 
 ---------------------------------------
-ViewWaitingFactory = ViewFactory:new()
-
----------------------------------------
-function ViewWaitingFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.PackageName = ui_package_name
-    self.ComponentName = ui_component_name
-    self.UILayer = ui_layer
-    self.IsSingle = is_single
-    self.FitScreen = fit_screen
-    return o
-end
+ViewWaitingFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewWaitingFactory:CreateView()

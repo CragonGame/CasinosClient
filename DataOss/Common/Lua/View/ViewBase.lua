@@ -1,21 +1,16 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewBase = {
-    ViewMgr = nil,
-    GoUi = nil,
-    ComUi = nil,
-    Panel = nil,
-    UILayer = nil,
-    InitDepth = nil,
-    ViewKey = nil
-}
+ViewBase = class()
 
-function ViewBase:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
+function ViewBase:ctor()
+    self.ViewMgr = nil
+    self.ViewKey = nil
+    self.GoUi = nil
+    self.ComUi = nil
+    self.Panel = nil
+    self.UILayer = nil
+    self.InitDepth = nil
 end
 
 function ViewBase:OnCreate()
@@ -28,24 +23,14 @@ function ViewBase:OnHandleEv(ev)
 end
 
 ---------------------------------------
-ViewFactory = {
-    PackageName = nil,
-    ComponentName = nil,
-    UILayer = nil,
-    IsSingle = nil,
-    FitScreen = nil
-}
+ViewFactory = class()
 
-function ViewFactory:new(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
+function ViewFactory:ctor(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     self.PackageName = ui_package_name
     self.ComponentName = ui_component_name
     self.UILayer = ui_layer
     self.IsSingle = is_single
     self.FitScreen = fit_screen
-    return o
 end
 
 function ViewFactory:CreateView()

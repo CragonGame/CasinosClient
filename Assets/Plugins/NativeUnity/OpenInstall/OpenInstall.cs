@@ -15,7 +15,7 @@ namespace io.openinstall.unity
         private static event OpenInstallDelegate installDelegate;
         private static event OpenInstallDelegate wakeupDelegate;
 
-        void Awake()
+        private void Awake()
         {
             if (!isInit)
             {
@@ -28,18 +28,21 @@ namespace io.openinstall.unity
 #endif
                 isInit = true;
             }
-
-            //if (instance != null)
-            //{
-            //    Destroy(instance);
-            //}
+            if(instance != null)
+            {
+                Destroy(instance);
+            }
             instance = this;
-            //DontDestroyOnLoad(instance);
+            DontDestroyOnLoad(instance);
+
         }
+
 
         // 获取安装数据
         public void GetInstall(int s, OpenInstallDelegate openinstallDelegate)
         {
+            Debug.Log("OpenInstallUnity getInstall");
+           
             installDelegate = openinstallDelegate;
 
             openInstall.getInstall(s);
@@ -65,7 +68,7 @@ namespace io.openinstall.unity
         // 注册拉起回调
         public void RegisterWakeupHandler(OpenInstallDelegate openinstallDelegate)
         {
-            //Debug.Log("OpenInstallUnity registerWakeupHandler");
+            Debug.Log("OpenInstallUnity registerWakeupHandler");
 
             wakeupDelegate = openinstallDelegate;
 
