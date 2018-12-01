@@ -22,7 +22,7 @@ end
 ---------------------------------------
 function ItemVIPBuyInfo:setVipInfo(vip_info)
     self.VIPInfoTbId = vip_info.Id
-    local tb_mgr = TbDataMgr:new(nil)
+    local tb_mgr = TbDataMgr
     local unit_item = tb_mgr:GetData("UnitBilling", vip_info.Id)
     local view_mgr = ViewMgr
     self.GTextdays.text = unit_item.Amount .. unit_item.Bonus .. view_mgr.LanMgr:getLanValue("Day")

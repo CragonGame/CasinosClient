@@ -258,7 +258,7 @@ end
 
 ---------------------------------------
 function IMChat:sortChatPlayerList()
-    local lua_helper = LuaHelper:new(nil)
+    local lua_helper = LuaHelper
     if (lua_helper:GetTableCount(self.MapChatIndex) > 0)
     then
         --[[table.sort(self.MapChatIndex,)

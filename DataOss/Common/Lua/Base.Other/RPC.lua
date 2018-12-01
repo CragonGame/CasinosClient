@@ -4,26 +4,11 @@
 RPC = {}
 
 ---------------------------------------
-function RPC:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-        self.MapMethodInfo = {}
-        self.MessagePack = require("MessagePack")
-        self.MessagePack.set_string("binary")
-        self.RpcSession = CS.Casinos.CasinosContext.Instance.NetMgr.RpcSession
-    end
-    return self.Instance
-end
-
----------------------------------------
-function RPC:OnCreate()
-end
-
----------------------------------------
-function RPC:onRelease()
+function RPC:Setup()
+    self.MapMethodInfo = {}
+    self.MessagePack = require("MessagePack")
+    self.MessagePack.set_string("binary")
+    self.RpcSession = CS.Casinos.CasinosContext.Instance.NetMgr.RpcSession
 end
 
 ---------------------------------------

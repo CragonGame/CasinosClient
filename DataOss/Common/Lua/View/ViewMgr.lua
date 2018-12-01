@@ -42,7 +42,11 @@ ViewMgr = {
 
 ---------------------------------------
 function ViewMgr:Create()
-    --print("ViewMgr:Create")
+    self.ControllerMgr = self.Context.ControllerMgr
+    self.RPC = self.Context.Rpc
+    self.LanMgr = self.Context.LanMgr
+    self.TbDataMgr = self.Context.TbDataMgr
+
     CS.FairyGUI.GRoot.inst:SetContentScaleFactor(self.STANDARD_WIDTH, self.STANDARD_HEIGHT, CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
     CS.FairyGUI.UIConfig.defaultFont = "FontXi"
     if (CS.UnityEngine.PlayerPrefs.HasKey("ScreenAutoRotation")) then

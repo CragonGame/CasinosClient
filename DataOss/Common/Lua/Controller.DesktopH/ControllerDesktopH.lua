@@ -289,7 +289,7 @@ function ControllerDesktopH:OnHandleEv(ev)
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BankerBetTips"))
             return
         end
-        local lua_helper = LuaHelper:new(nil)
+        local lua_helper = LuaHelper
         if (lua_helper:GetTableCount(self.MapBetRepeatInfo) > 0) then
             local all_golds = 0
             for key, value in pairs(self.MapBetRepeatInfo) do

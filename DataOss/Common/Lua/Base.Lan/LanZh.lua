@@ -1,24 +1,15 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-LanZh = LanBase:new(nil)
+LanZh = class(LanBase)
 
 ---------------------------------------
-function LanZh:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil)
-    then
-        self.Instance = o
-        self.MapLan = {}
-        self.StrFormatTemp = {}
-        self.mGoldThousand = 1000
-        self.mGoldMillion = 10000
-        self.mGoldFormatLength = 3
-    end
-
-    return self.Instance
+function LanZh:ctor()
+    self.MapLan = {}
+    self.StrFormatTemp = {}
+    self.mGoldThousand = 1000
+    self.mGoldMillion = 10000
+    self.mGoldFormatLength = 3
 end
 
 ---------------------------------------

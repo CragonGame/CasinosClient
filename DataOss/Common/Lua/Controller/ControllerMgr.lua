@@ -3,14 +3,32 @@
 -- Controller全部是单实例的
 -- Controller始终存在，无需使用者调用Create
 require('ControllerBase')
+require('ControllerActivity')
+require('ControllerActor')
+require('ControllerBag')
+require('ControllerDesktopTexas')
+require('ControllerDesktopH')
+require('ControllerGrow')
+require('ControllerIM')
+require('ControllerLobby')
+require('ControllerLogin')
+require('ControllerLotteryTicket')
+require('ControllerMarquee')
+require('ControllerMTT')
+require('ControllerPlayer')
+require('ControllerRanking')
+require('ControllerReward')
+require('ControllerTrade')
+require('ControllerUCenter')
+require('ControllerWallet')
 
 ---------------------------------------
 ControllerMgr = {
-    ViewMgr = nil,
     EventSys = nil,
+    ViewMgr = nil,
     Context = Context,
     Json = Context.Json,
-    Rpc = Context.Rpc,
+    RPC = Context.Rpc,
     LanMgr = Context.LanMgr,
     TableControllerFactory = {},
     TableController = {},
@@ -20,7 +38,30 @@ ControllerMgr = {
 ---------------------------------------
 function ControllerMgr:Create()
     self.EventSys = EventSys
-    self.ViewMgr = ViewMgr
+    self.TbDataMgr = self.Context.TbDataMgr
+    self.RPC = self.Context.Rpc
+    self.LanMgr = self.Context.LanMgr
+    --self.ViewMgr = ViewMgr
+
+    -- 注册所有ControllerFactory类到ControllerMgr中
+    self:RegController(ControllerActivityFactory:new(nil))
+    self:RegController(ControllerActorFactory:new(nil))
+    self:RegController(ControllerBagFactory:new(nil))
+    self:RegController(ControllerDesktopTexasFactory:new(nil))
+    self:RegController(ControllerDesktopHFactory:new(nil))
+    self:RegController(ControllerGrowFactory:new(nil))
+    self:RegController(ControllerIMFactory:new(nil))
+    self:RegController(ControllerLobbyFactory:new(nil))
+    self:RegController(ControllerLoginFactory:new(nil))
+    self:RegController(ControllerLotteryTicketFactory:new(nil))
+    self:RegController(ControllerMarqueeFactory:new(nil))
+    self:RegController(ControllerMTTFactory:new(nil))
+    self:RegController(ControllerPlayerFactory:new(nil))
+    self:RegController(ControllerRankingFactory:new(nil))
+    self:RegController(ControllerRewardFactory:new(nil))
+    self:RegController(ControllerTradeFactory:new(nil))
+    self:RegController(ControllerUCenterFactory:new(nil))
+    self:RegController(ControllerWalletFactory:new(nil))
 end
 
 ---------------------------------------
@@ -104,10 +145,8 @@ function ControllerMgr:DestroyController(is_kickout)
 end
 
 ---------------------------------------
-function ControllerMgr:RegController(controller_name, controller_factory)
-    if (controller_factory ~= nil) then
-        self.TableControllerFactory[controller_name] = controller_factory
-    end
+function ControllerMgr:RegController(controller_factory)
+    self.TableControllerFactory[controller_factory:GetName()] = controller_factory
 end
 
 ---------------------------------------

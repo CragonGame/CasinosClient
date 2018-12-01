@@ -1,14 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-LanBase = {}
+LanBase = class()
 
 ---------------------------------------
-function LanBase:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
+function LanBase:ctor()
 end
 
 ---------------------------------------

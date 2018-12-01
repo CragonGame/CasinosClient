@@ -12,19 +12,8 @@ TbDataMgr = {
 }
 
 ---------------------------------------
-function TbDataMgr:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-    end
-    CS.Casinos.CasinosContext.Instance.TbDataMgrLua = self
-    return self.Instance
-end
-
----------------------------------------
 function TbDataMgr:Setup(list_db_filename)
+    CS.Casinos.CasinosContext.Instance.TbDataMgrLua = self
     if (CS.Casinos.CasinosContext.Instance.IsSqliteUnity) then
         self.Sqlite = CS.GameCloud.Unity.Common.SqliteUnity()
     else

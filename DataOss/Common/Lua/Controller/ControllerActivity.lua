@@ -5,8 +5,6 @@ ControllerActivity = class(ControllerBase)
 
 ---------------------------------------
 function ControllerActivity:ctor(controller_data, controller_name)
-    self.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.CurrentActID = "Act180228"
 end
 
@@ -67,6 +65,6 @@ end
 
 function ControllerActivityFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerActivity:new(controller_mgr, controller_data, ctrl_name)
+    local ctrl = ControllerActivity:new(controller_data, ctrl_name)
     return ctrl
 end

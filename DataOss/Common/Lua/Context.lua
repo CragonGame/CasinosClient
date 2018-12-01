@@ -309,9 +309,10 @@ function Context:_nextLaunchStep()
         self:DoString("MessagePack")
         self.Json = require("json")
         self:DoString("RPC")
-        self.Rpc = RPC:new(nil)
+        self.Rpc = RPC
+        self.Rpc:Setup()
         self:DoString("LuaHelper")
-        self.LuaHelper = LuaHelper:new(nil)
+        self.LuaHelper = LuaHelper
         self:DoString("TexasHelper")
         self:DoString("TbDataBase")
         self:DoString("TbDataMgr")
@@ -320,16 +321,25 @@ function Context:_nextLaunchStep()
         for i, v in pairs(self.Cfg.TbFileList) do
             t_db[i] = self.CasinosContext.PathMgr.DirRawRoot .. "TbData/" .. v .. ".db"
         end
-        self.TbDataMgr = TbDataMgr:new(nil)
+        self.TbDataMgr = TbDataMgr
         self:_regTbData()
         self.TbDataMgr:Setup(t_db)
         self:DoString("TbDataHelper")
         TbDataHelper:Setup(self.TbDataMgr)
 
-        self:DoString("LanBase")
-        self:DoString("LanEn")
+        self:DoString("Item")
+        self:DoString("ItemData1")
+        self:DoString("Unit")
+        self:DoString("UnitBilling")
+        self:DoString("UnitConsume")
+        self:DoString("UnitGiftNormal")
+        self:DoString("UnitGiftTmp")
+        self:DoString("UnitGoldPackage")
+        self:DoString("UnitGoodsVoucher")
+        self:DoString("UnitMagicExpression")
+        self:DoString("UnitRedEnvelopes")
+
         self:DoString("LanMgr")
-        self:DoString("LanZh")
         self.LanMgr = LanMgr
         self.LanMgr:Setup()
 
@@ -345,9 +355,8 @@ function Context:_nextLaunchStep()
 
         self:DoString("ViewMgr")
         self.ViewMgr = ViewMgr
-        self.ViewMgr.LanMgr = self.LanMgr
-        self.ViewMgr.TbDataMgr = self.TbDataMgr
         self.ViewMgr:Create()
+
         self:_regView()
         self:DoString("ViewHelper")
         ViewHelper:Setup()
@@ -362,12 +371,6 @@ function Context:_nextLaunchStep()
         self:DoString("ControllerMgr")
         self.ControllerMgr = ControllerMgr
         self.ControllerMgr:Create()
-        self.ControllerMgr.TbDataMgr = self.TbDataMgr
-        self.ControllerMgr.RPC = self.Rpc
-        self.ControllerMgr.LanMgr = self.LanMgr
-        self:_regController()
-        self.ViewMgr.ControllerMgr = self.ControllerMgr
-        self.ViewMgr.RPC = self.Rpc
 
         -- 加载AssetBundle列表
         local table_ab = {
@@ -541,72 +544,6 @@ function Context:_regModel()
     self:DoString("ModelLotteryTicket")
     self:DoString("ModelPlayer")
     self:DoString("ModelPlayerInfo")
-end
-
----------------------------------------
-function Context:_regController()
-    self:DoString("ControllerLogin")
-    local con_login_fac = ControllerLoginFactory:new(nil)
-    self.ControllerMgr:RegController("Login", con_login_fac)
-    self:DoString("ControllerUCenter")
-    local con_ucenter_fac = ControllerUCenterFactory:new(nil)
-    self.ControllerMgr:RegController("UCenter", con_ucenter_fac)
-    self:DoString("ControllerActivity")
-    local con_activity_fac = ControllerActivityFactory:new(nil)
-    self.ControllerMgr:RegController("Activity", con_activity_fac)
-    self:DoString("ControllerActor")
-    local con_actor_fac = ControllerActorFactory:new(nil)
-    self.ControllerMgr:RegController("Actor", con_actor_fac)
-    self:DoString("ControllerBag")
-    local con_bag_fac = ControllerBagFactory:new(nil)
-    self.ControllerMgr:RegController("Bag", con_bag_fac)
-    self:DoString("ControllerDesktopTexas")
-    local con_desk_fac = ControllerDesktopTexasFactory:new(nil)
-    self.ControllerMgr:RegController("DesktopTexas", con_desk_fac)
-    self:DoString("ControllerDesktopH")
-    local con_deskh_fac = ControllerDesktopHFactory:new(nil)
-    self.ControllerMgr:RegController("DesktopH", con_deskh_fac)
-    self:DoString("ControllerGrow")
-    local con_grow_fac = ControllerGrowFactory:new(nil)
-    self.ControllerMgr:RegController("Grow", con_grow_fac)
-    self:DoString("ControllerIM")
-    local con_im_fac = ControllerIMFactory:new(nil)
-    self.ControllerMgr:RegController("IM", con_im_fac)
-    self:DoString("ControllerLobby")
-    local con_lobby_fac = ControllerLobbyFactory:new(nil)
-    self.ControllerMgr:RegController("Lobby", con_lobby_fac)
-    self:DoString("ControllerLotteryTicket")
-    local con_lottery_fac = ControllerLotteryTicketFactory:new(nil)
-    self.ControllerMgr:RegController("LotteryTicket", con_lottery_fac)
-    self:DoString("ControllerMarquee")
-    local con_marquee_fac = ControllerMarqueeFactory:new(nil)
-    self.ControllerMgr:RegController("Marquee", con_marquee_fac)
-    self:DoString("ControllerPlayer")
-    local con_player_fac = ControllerPlayerFactory:new(nil)
-    self.ControllerMgr:RegController("Player", con_player_fac)
-    self:DoString("ControllerRanking")
-    local con_ranking_fac = ControllerRankingFactory:new(nil)
-    self.ControllerMgr:RegController("Ranking", con_ranking_fac)
-    self:DoString("ControllerReward")
-    local con_reward_fac = ControllerRewardFactory:new(nil)
-    self.ControllerMgr:RegController("Reward", con_reward_fac)
-    self:DoString("ControllerTrade")
-    local con_trade_fac = ControllerTradeFactory:new(nil)
-    self.ControllerMgr:RegController("Trade", con_trade_fac)
-    self:DoString("ControllerMTT")
-    local con_mtt = ControllerMTTFactory:new(nil)
-    self.ControllerMgr:RegController("MTT", con_mtt)
-    self:DoString("Item")
-    self:DoString("ItemData1")
-    self:DoString("Unit")
-    self:DoString("UnitBilling")
-    self:DoString("UnitConsume")
-    self:DoString("UnitGiftNormal")
-    self:DoString("UnitGiftTmp")
-    self:DoString("UnitGoldPackage")
-    self:DoString("UnitGoodsVoucher")
-    self:DoString("UnitMagicExpression")
-    self:DoString("UnitRedEnvelopes")
 end
 
 ---------------------------------------

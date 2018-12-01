@@ -563,7 +563,7 @@ end
 function ViewMain:setFriendInfo(map_friend)
     self.ListFriendInfo = {}
     self.MapFriend = {}
-    local lua_helper = LuaHelper:new(nil)
+    local lua_helper = LuaHelper
     if (map_friend == nil or lua_helper:GetTableCount(map_friend) == 0) then
         self.UiPlayerInfoCurrentFriend:hidePlayerInfo(true)
         self.BtnInviteFriend.visible = true

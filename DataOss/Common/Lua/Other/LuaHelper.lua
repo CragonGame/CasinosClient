@@ -4,18 +4,6 @@
 LuaHelper = {}
 
 ---------------------------------------
-function LuaHelper:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-        math.randomseed(os.time())
-    end
-    return self.Instance
-end
-
----------------------------------------
 function LuaHelper:SplitStr(full_str, separator)
     local start_index = 1
     local split_index = 1

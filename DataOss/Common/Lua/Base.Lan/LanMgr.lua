@@ -1,15 +1,18 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('LanBase')
+require('LanEn')
+require('LanZh')
 
 ---------------------------------------
 LanMgr = {
     Context = Context,
     CasinosContext = CS.Casinos.CasinosContext.Instance,
-    TbDataMgr = self.Context.TbDataMgr,
+    TbDataMgr = Context.TbDataMgr,
     LanBase = nil,
     CurrentLan = "ChineseSimplified",
     SystemLanguage = "ChineseSimplified",
     LanKey = "LanKey",
-    LanTitleSign = "Lan",
+    LanTitleSign = "Lan"
 }
 
 ---------------------------------------
@@ -155,10 +158,10 @@ end
 ---------------------------------------
 function LanMgr:_createLanBase()
     if (self.CurrentLan == "English") then
-        self.LanBase = LanEn:new(nil)
+        self.LanBase = LanEn:new()
     elseif (self.CurrentLan == "ChineseSimplified" or self.CurrentLan == "Chinese") then
-        self.LanBase = LanZh:new(nil)
+        self.LanBase = LanZh:new()
     else
-        self.LanBase = LanEn:new(nil)
+        self.LanBase = LanEn:new()
     end
 end
