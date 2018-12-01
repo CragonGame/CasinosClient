@@ -4,9 +4,16 @@
 -- 配置，开发者选项
 ConfigDevelopSettings = {
     ShowDevelopSettings = false; -- 是否显示开发者选项
-    ClientShowFPS = true; -- 客户端显示FPS信息 false 不显示 true 显示
+    ClientShowFPS = false; -- 客户端显示FPS信息 false 不显示 true 显示
     FPSLimit = 60-- 限帧
 }
+
+function ConfigDevelopSettings:Load()
+    local player_prefs = CS.UnityEngine.PlayerPrefs
+    if (player_prefs.HasKey('ClientShowFPS') == true) then
+        self.ClientShowFPS = player_prefs.GetString('ClientShowFPS')
+    end
+end
 
 ---------------------------------------
 -- 配置，模块配置
@@ -14,6 +21,9 @@ ConfigModule = {
     --WalletEnable = false;-- 钱包模块
     GrowEnable = false; -- 摇钱树模块
 }
+
+function ConfigModule:Load()
+end
 
 ---------------------------------------
 -- 配置
@@ -83,6 +93,11 @@ Config = {
     PayUrlScheme = "com.Cragon.KingTexas2";
 }
 
+function Config:Load()
+    self.DevelopSettings:Load()
+    self.Module:Load()
+end
+
 ---------------------------------------
 Context = {
     CasinosContext = CS.Casinos.CasinosContext.Instance;
@@ -106,6 +121,7 @@ function Context:Init()
     self.Cfg.CommonRootURL = string.format('https://cragon-king-oss.cragon.cn/Common/%s/', self.Launch.LaunchCfg.CommonVersion);
     self.Cfg.DataVersion = self.Launch.LaunchCfg.DataVersion;
     self.Cfg.DataRootURL = string.format('https://cragon-king-oss.cragon.cn/%s/Data_%s/', self.CasinosContext.Config.Platform, self.Launch.LaunchCfg.DataVersion);
+    self.Cfg:Load()
 
     local show_fps_obj = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbShowFPS")
     show_fps_obj.enabled = self.Cfg.DevelopSettings.ClientShowFPS
