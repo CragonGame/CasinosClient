@@ -1,16 +1,16 @@
 -- Copyright(c) Cragon. All rights reserved.
--- Nigeria钱包界面
+-- 钱包界面
 
 ---------------------------------------
-ViewPurse = class(ViewBase)
+ViewWallet = class(ViewBase)
 
 ---------------------------------------
-function ViewPurse:ctor()
+function ViewWallet:ctor()
     self.TemporaryHideItemId = 14001
 end
 
 ---------------------------------------
-function ViewPurse:OnCreate()
+function ViewWallet:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
     self.ViewMgr:BindEvListener("EvEntityDiamondChanged", self)
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
@@ -64,12 +64,12 @@ function ViewPurse:OnCreate()
 end
 
 ---------------------------------------
-function ViewPurse:OnDestroy()
+function ViewWallet:OnDestroy()
     self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewPurse:OnHandleEv(ev)
+function ViewWallet:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
         self:setPlayerGoldAndDiamond()
     elseif (ev.EventName == "EvEntityDiamondChanged") then
@@ -78,23 +78,23 @@ function ViewPurse:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ViewPurse:showGold()
+function ViewWallet:showGold()
     self:onClickBtnTabChip()
 end
 
 ---------------------------------------
-function ViewPurse:setPlayerGoldAndDiamond()
+function ViewWallet:setPlayerGoldAndDiamond()
     self.GTextSelfGold.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
     self.GTextSelfDiamond.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
 end
 
 ---------------------------------------
-function ViewPurse:onClickBtnReturn()
+function ViewWallet:onClickBtnReturn()
     self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
-function ViewPurse:onClickBtnGetMoney()
+function ViewWallet:onClickBtnGetMoney()
     local n = tonumber(self.GComPutIn.text)
     if (n == nil) then
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("EnterNumTips"))
@@ -110,21 +110,21 @@ function ViewPurse:onClickBtnGetMoney()
 end
 
 ---------------------------------------
-function ViewPurse:onClickBtnDiomand()
+function ViewWallet:onClickBtnDiomand()
     self.ControllerShop.selectedIndex = 1
     self.ControllerTab.selectedIndex = 1
     --self:createDiamond()
 end
 
 ---------------------------------------
-function ViewPurse:onClickBtnTabChip()
+function ViewWallet:onClickBtnTabChip()
     self.ControllerShop.selectedIndex = 0
     self.ControllerTab.selectedIndex = 0
     self:createChip()
 end
 
 ---------------------------------------
-function ViewPurse:createChip()
+function ViewWallet:createChip()
     if (LuaHelper:GetTableCount(self.MapShopGold) > 0) then
         return
     end
@@ -143,10 +143,10 @@ function ViewPurse:createChip()
 end
 
 ---------------------------------------
-ViewPurseFactory = class(ViewFactory)
+ViewWalletFactory = class(ViewFactory)
 
 ---------------------------------------
-function ViewPurseFactory:CreateView()
-    local view = ViewPurse:new()
+function ViewWalletFactory:CreateView()
+    local view = ViewWallet:new()
     return view
 end

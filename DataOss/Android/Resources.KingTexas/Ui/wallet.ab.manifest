@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 1082862554
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 02410525522e562d92be53c1937e03ff
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Wallet/Wallet_fui.bytes
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Wallet/Wallet_atlas2.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Wallet/Wallet_atlas0.png
+Dependencies: []

@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 820727753
+CRC: 4018361565
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: reward.ab
+      Name: wallet.ab
       Dependencies: {}

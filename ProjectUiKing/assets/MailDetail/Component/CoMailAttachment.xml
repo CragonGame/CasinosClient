@@ -4,6 +4,6 @@
     <image id="n2_h1h1" name="n2" src="8xode8" fileName="Image/BgGift.png" pkg="nhvxw9ov" xy="0,0" size="80,80"/>
     <image id="n3_h1h1" name="n3" src="8xode9" fileName="Image/CommonBlueLightBg.png" pkg="nhvxw9ov" xy="0,0" size="80,80"/>
     <loader id="n0_ro89" name="GLoaderItem" xy="0,0" size="80,80" align="center" vAlign="middle" fill="scale"/>
-    <text id="n1_ro89" name="ItemContent" xy="0,80" size="80,25" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n1_ro89" name="ItemContent" xy="0,80" size="80,25" font="FontXi" fontSize="18" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="none" singleLine="true" text=""/>
   </displayList>
 </component>

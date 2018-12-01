@@ -207,7 +207,7 @@ end
 ---------------------------------------
 function ViewShop:onClickBtnDiomand()
     if self.Context.Cfg.ChipIconSolustion == 1 then
-        self.ViewMgr:CreateView("Purse")
+        self.ViewMgr:CreateView("Wallet")
     else
         self.ControllerShop.selectedIndex = 1
         self.ControllerTab.selectedIndex = 0
@@ -218,7 +218,7 @@ end
 ---------------------------------------
 function ViewShop:onClickBtnTabChip()
     if self.Context.Cfg.ChipIconSolustion == 1 then
-        self.ViewMgr:CreateView("Purse")
+        self.ViewMgr:CreateView("Wallet")
     else
         self.ControllerShop.selectedIndex = 0
         self.ControllerTab.selectedIndex = 1

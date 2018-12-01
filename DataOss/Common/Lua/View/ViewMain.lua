@@ -800,7 +800,7 @@ end
 
 ---------------------------------------
 function ViewMain:onClickBtnPurse()
-    self.ViewMgr:CreateView("Purse")
+    self.ViewMgr:CreateView("Wallet")
 end
 
 ---------------------------------------

@@ -1,6 +1,6 @@
 -- Copyright(c) Cragon. All rights reserved.
-require('ControllerBase')
 -- 登录界面，由Context调用ControllerMgr创建Login
+require('ControllerBase')
 
 ---------------------------------------
 ControllerMgr = {

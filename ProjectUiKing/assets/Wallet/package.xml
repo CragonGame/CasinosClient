@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <packageDescription id="npdzqphe" jpegQuality="80" compressPNG="true">
   <resources>
-    <component id="j1yr0" name="Purse.xml" path="/" exported="true"/>
+    <component id="j1yr0" name="Wallet.xml" path="/" exported="true"/>
     <component id="j1yr1" name="ComChip.xml" path="/Component/" exported="true"/>
     <component id="j1yr2" name="ComItemBg.xml" path="/Component/New/"/>
     <image id="j1yr3" name="图层21.png" path="/Image/" scale="9grid" scale9grid="13,15,55,58"/>
@@ -37,5 +37,5 @@
     <image id="j1yr1c" name="Logo.png" path="/Image/"/>
     <component id="tjym1d" name="ComOperate.xml" path="/Component/"/>
   </resources>
-  <publish name="Purse" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Purse"/>
+  <publish name="Wallet" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Wallet"/>
 </packageDescription>

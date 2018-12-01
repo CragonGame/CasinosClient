@@ -491,4 +491,3 @@ function ControllerIMFactory:CreateController(controller_mgr, controller_data, g
     local controller = ControllerIM:new(nil, controller_mgr, controller_data, guid)
     return controller
 end
-	

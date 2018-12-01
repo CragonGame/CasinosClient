@@ -311,8 +311,7 @@ function ControllerLogin:RequestLogin(acc, pwd, phone, email, phone_verification
     self.ControllerUCenter:RequestLogin(request,
             function(http_statuscode, status, response, error)
                 self:OnUCenterLogin(http_statuscode, status, response, error)
-            end
-    )
+            end)
 end
 
 ---------------------------------------

@@ -3,11 +3,15 @@
 ---------------------------------------
 -- 配置，开发者选项
 ConfigDevelopSettings = {
-    CasinosContext = CS.Casinos.CasinosContext.Instance;
-    LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr;
     ShowDevelopSettings = false; -- 是否显示开发者选项
     ClientShowFPS = true; -- 客户端显示FPS信息 false 不显示 true 显示
     FPSLimit = 60-- 限帧
+}
+
+---------------------------------------
+-- 配置，模块配置
+ConfigModule = {
+    WalletAzex = false; -- Azex钱包
 }
 
 ---------------------------------------
@@ -16,6 +20,7 @@ Config = {
     CasinosContext = CS.Casinos.CasinosContext.Instance;
     LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr;
     DevelopSettings = ConfigDevelopSettings;
+    Module = ConfigModule;
     Env = nil;
     CommonVersion = nil;
     CommonRootURL = nil;
@@ -378,11 +383,12 @@ function Context:_nextLaunchStep()
             "LanZh", "LanEn", "LanZhAndroid", "Loading", "LockChat", "Login", "LotteryTicket",
             "Mail", "MailDetail", "Main", "MatchInfo", "MatchLobby", "MTTGameResult", "MTTProcess",
             "Notice",
-            "PayType", "PlayerInfo", "PlayerProfile", "Pool", "Purse",
+            "PayType", "PlayerInfo", "PlayerProfile", "Pool",
             "QuitOrBack",
             "Ranking", "RechargeFirst", "ResetPwd", "Reward",
             "Share", "ShareType", "ShootingText", "Shop", "SnowBallReward",
             "TakePhoto",
+            "Wallet",
         }
         for i = 1, #(table_ab) do
             local full_name = self.CasinosContext.PathMgr.DirAbUi .. string.lower(table_ab[i]) .. ".ab"
@@ -842,9 +848,9 @@ function Context:_regView()
     self:DoString("ViewShop")
     local view_shop_fac = ViewShopFactory:new("Shop", "Shop", "NomalUiMain", true, CS.FairyGUI.FitScreen.FitSize)
     self.ViewMgr:RegView("Shop", view_shop_fac)
-    self:DoString("ViewPurse")
-    local view_purse_fac = ViewPurseFactory:new("Purse", "Purse", "NomalUiMain", true, CS.FairyGUI.FitScreen.FitSize)
-    self.ViewMgr:RegView("Purse", view_purse_fac)
+    self:DoString("ViewWallet")
+    local view_wallet_fac = ViewWalletFactory:new("Wallet", "Wallet", "NomalUiMain", true, CS.FairyGUI.FitScreen.FitSize)
+    self.ViewMgr:RegView("Wallet", view_wallet_fac)
     self:DoString("ViewHeadIcon")
     self:DoString("ViewVIPSign")
     self:DoString("ViewHeadIconBig")

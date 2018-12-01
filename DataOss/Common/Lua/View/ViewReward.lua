@@ -96,8 +96,7 @@ function UiRewardTiming:Create(view_mgr, com_ui)
     self.GBtnTimingReward.onClick:Add(
             function()
                 self:_onClickBtnTimingReward()
-            end
-    )
+            end)
 
     if self.ControllerReward.RewardTiming.CanGetReward == true then
         self.CanGetTimingReward = true

@@ -63,7 +63,7 @@ function ControllerReward:OnHandleEv(ev)
     if (ev.EventName == "EvViewRewardClickBtnOnlineReward") then
         self.RewardOnline:OnClickBtnOnlineReward()
     elseif (ev.EventName == "EvViewRewardClickBtnTimingReward") then
-        self.TimingReward:OnClickBtnTimingReward()
+        self.RewardTiming:OnClickBtnTimingReward()
     end
 end
 
