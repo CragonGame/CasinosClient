@@ -2,20 +2,10 @@
 -- 普通桌列表
 
 ---------------------------------------
-ControllerLobby = ControllerBase:new(nil)
+ControllerLobby = class(ControllerBase)
 
 ---------------------------------------
-function ControllerLobby:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    return o
+function ControllerLobby:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
@@ -172,7 +162,7 @@ end
 ---------------------------------------
 function ControllerLobby:LeavePlayModel()
     self:HideLobby()
-    self.ControllerPlayer:requestGetOnlinePlayerNum()
+    self.ControllerPlayer:RequestGetOnlinePlayerNum()
 end
 
 ---------------------------------------
@@ -181,19 +171,14 @@ function ControllerLobby:HideLobby()
 end
 
 ---------------------------------------
-ControllerLobbyFactory = ControllerFactory:new()
+ControllerLobbyFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerLobbyFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Lobby"
-    return o
+function ControllerLobbyFactory:GetName()
+    return 'Lobby'
 end
 
----------------------------------------
-function ControllerLobbyFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerLobby:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerLobbyFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerLobby:new(controller_data, ctrl_name)
+    return ctrl
 end

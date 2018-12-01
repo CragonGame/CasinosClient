@@ -164,7 +164,7 @@ end
 ---------------------------------------
 function ItemLobbyDesk:onClickBtnPlay()
     if (self.DeskTopInfo:isFull() == false and self.CanPlay) then
-        local view_mgr = ViewMgr:new(nil)
+        local view_mgr = ViewMgr
         local ev = view_mgr:GetEv("EvUiClickPlayInDesk")
         if (ev == nil) then
             ev = EvUiClickPlayInDesk:new(nil)
@@ -180,7 +180,7 @@ end
 
 ---------------------------------------
 function ItemLobbyDesk:clickEnterDesk()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ev = view_mgr:GetEv("EvUiClickViewInDesk")
     if (ev == nil) then
         ev = EvUiClickViewInDesk:new(nil)

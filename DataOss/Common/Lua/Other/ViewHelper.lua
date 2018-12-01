@@ -28,7 +28,7 @@ function ViewHelper:new(o)
     self.__index = self
     if (self.Instance == nil) then
         self.Instance = o
-        self.ViewMgr = ViewMgr:new(nil)
+        self.ViewMgr = ViewMgr
     end
     return self.Instance
 end

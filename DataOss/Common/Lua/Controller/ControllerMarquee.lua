@@ -2,21 +2,11 @@
 -- 跑马灯，消息排队播放
 
 ---------------------------------------
-ControllerMarquee = ControllerBase:new(nil)
+ControllerMarquee = class(ControllerBase)
 
 ---------------------------------------
-function ControllerMarquee:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    o.MaxMarqueeCount = 20
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    return o
+function ControllerMarquee:ctor(controller_data, controller_name)
+    self.MaxMarqueeCount = 20
 end
 
 ---------------------------------------
@@ -163,19 +153,14 @@ function ControllerMarquee:haveNeedShowMarquee()
 end
 
 ---------------------------------------
-ControllerMarqueeFactory = ControllerFactory:new()
+ControllerMarqueeFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerMarqueeFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Marquee"
-    return o
+function ControllerMarqueeFactory:GetName()
+    return 'Marquee'
 end
 
----------------------------------------
-function ControllerMarqueeFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerMarquee:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerMarqueeFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerMarquee:new(controller_data, ctrl_name)
+    return ctrl
 end

@@ -64,7 +64,7 @@ end
 ---------------------------------------
 function ItemShowFriendSimple:loadIconDown(bo)
     if (bo) then
-        local view_mgr = ViewMgr:new(nil)
+        local view_mgr = ViewMgr
         local ev = view_mgr:GetEv("EvLoadPlayerIconSuccess")
         if (ev == nil) then
             ev = EvLoadPlayerIconSuccess:new(nil)

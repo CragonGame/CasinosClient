@@ -1,21 +1,13 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerActivity = ControllerBase:new(nil)
+ControllerActivity = class(ControllerBase)
 
 ---------------------------------------
-function ControllerActivity:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.CurrentActID = "Act180228"
-    o.ViewMgr = ViewMgr:new(nil)
-    return o
+function ControllerActivity:ctor(controller_data, controller_name)
+    self.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.CurrentActID = "Act180228"
 end
 
 ---------------------------------------
@@ -67,19 +59,14 @@ function ControllerActivity:ConfigActivityInfo()
 end
 
 ---------------------------------------
-ControllerActivityFactory = ControllerFactory:new()
+ControllerActivityFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerActivityFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Activity"
-    return o
+function ControllerActivityFactory:GetName()
+    return 'Activity'
 end
 
----------------------------------------
-function ControllerActivityFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerActivity:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerActivityFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerActivity:new(controller_mgr, controller_data, ctrl_name)
+    return ctrl
 end

@@ -228,7 +228,7 @@ function UiDesktopHBanker:SendMagicExpression(sender_guid, exp_tbid)
     end
 
     local to_pos = self:getBankPlayerCenterPos()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ui_pool = view_mgr:GetView("Pool")
     local item_magicsender = ui_pool:getMagicExpSender()
     self.ViewDesktopH.ComUi:AddChild(item_magicsender.GCoMagicExpSender)
@@ -300,7 +300,7 @@ end
 ---------------------------------------
 function UiDesktopHBanker:_onClick()
     if (CS.System.String.IsNullOrEmpty(self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid) == false) then
-        local view_mgr = ViewMgr:new(nil)
+        local view_mgr = ViewMgr
         local ui_profileother = view_mgr:CreateView("PlayerProfile")
         ui_profileother:setPlayerGuid(CS.Casinos._ePlayerProfileType.DesktopH, self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid,
                 function(player_info, head_icon)

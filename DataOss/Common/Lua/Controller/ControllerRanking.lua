@@ -1,22 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerRanking = ControllerBase:new(nil)
+ControllerRanking = class(ControllerBase)
 
 ---------------------------------------
-function ControllerRanking:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerName = "Ranking"
-    o.ViewMgr = ViewMgr:new(nil)
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    return o
+function ControllerRanking:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
@@ -316,19 +304,14 @@ function ControllerRanking:notifyLevelRanking()
 end
 
 ---------------------------------------
-ControllerRankingFactory = ControllerFactory:new()
+ControllerRankingFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerRankingFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Ranking"
-    return o
+function ControllerRankingFactory:GetName()
+    return 'Ranking'
 end
 
----------------------------------------
-function ControllerRankingFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerRanking:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerRankingFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerRanking:new(controller_data, ctrl_name)
+    return ctrl
 end

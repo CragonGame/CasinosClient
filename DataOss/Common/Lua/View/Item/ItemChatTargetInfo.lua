@@ -117,7 +117,7 @@ function ItemChatTargetInfo:onPress()
                     self.FriendInfo.PlayerInfoCommon.NickName), self.FriendInfo.PlayerInfoCommon.PlayerGuid,
             function(bo, guid)
                 if (bo) then
-                    local view_mgr = ViewMgr:new(nil)
+                    local view_mgr = ViewMgr
                     local ev = view_mgr:GetEv("EvUiClickDeleteFriendChatRecord")
                     if (ev == nil) then
                         ev = EvUiClickDeleteFriendChatRecord:new(nil)

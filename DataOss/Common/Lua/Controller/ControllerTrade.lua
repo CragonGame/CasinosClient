@@ -2,20 +2,10 @@
 -- 商城界面相关，含充值（调用UCenter充值接口），含钱包Wallet
 
 ---------------------------------------
-ControllerTrade = ControllerBase:new(nil)
+ControllerTrade = class(ControllerBase)
 
 ---------------------------------------
-function ControllerTrade:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = o.ControllerMgr.ViewMgr
-    return o
+function ControllerTrade:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
@@ -357,19 +347,14 @@ function ControllerTrade:OnQuicktellerTransfers(status, response, error)
 end
 
 ---------------------------------------
-ControllerTradeFactory = ControllerFactory:new()
+ControllerTradeFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerTradeFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Trade"
-    return o
+function ControllerTradeFactory:GetName()
+    return 'Trade'
 end
 
----------------------------------------
-function ControllerTradeFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerTrade:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerTradeFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerTrade:new(controller_data, ctrl_name)
+    return ctrl
 end

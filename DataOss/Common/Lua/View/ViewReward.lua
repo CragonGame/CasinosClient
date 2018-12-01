@@ -71,6 +71,28 @@ function UiRewardOnline:_onClickBtnOnlineReward()
 end
 
 ---------------------------------------
+-- 救济金
+UiRewardRelief = {
+    CasinosContext = CS.Casinos.CasinosContext.Instance;
+    LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr;
+    ControllerReward = nil;
+    ViewMgr = nil;
+    ComUi = nil;
+    GTextInfo = '';
+    CanGetOnlineReward = false;
+    GBtnOnlineReward = nil
+}
+
+function UiRewardRelief:Create(view_mgr, com_ui)
+    self.ViewMgr = view_mgr
+    self.ComUi = com_ui
+    self.ControllerReward = ControllerReward
+end
+
+function UiRewardRelief:Destroy()
+end
+
+---------------------------------------
 -- 定时奖励
 UiRewardTiming = {
     CasinosContext = CS.Casinos.CasinosContext.Instance;
@@ -134,6 +156,7 @@ function ViewReward:ctor()
     self.Tween = nil
     self.ControllerReward = ControllerReward
     self.UiRewardOnline = UiRewardOnline
+    self.UiRewardRelief = UiRewardRelief
     self.UiRewardTiming = UiRewardTiming
 end
 
@@ -158,6 +181,7 @@ function ViewReward:OnCreate()
     )
 
     self.UiRewardOnline:Create(self.ViewMgr, self.ComUi)
+    self.UiRewardRelief:Create(self.ViewMgr, self.ComUi)
     self.UiRewardTiming:Create(self.ViewMgr, self.ComUi)
 end
 
@@ -169,6 +193,7 @@ function ViewReward:OnDestroy()
     end
 
     self.UiRewardOnline:Destroy()
+    self.UiRewardRelief:Destroy()
     self.UiRewardTiming:Destroy()
 end
 

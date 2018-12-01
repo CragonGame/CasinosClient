@@ -104,14 +104,14 @@ end
 
 ---------------------------------------
 function ItemMainOperate:onClickMustBet()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local view_lobby = view_mgr.CreateView("Lobby")
     view_lobby:setLobbyModel()
 end
 
 ---------------------------------------
 function ItemMainOperate:onClickLogin()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ev = view_mgr:GetEv("EvUiClickLogin")
     if (ev == nil)
     then
@@ -122,7 +122,7 @@ end
 
 ---------------------------------------
 function ItemMainOperate:onClickRanking()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ev = view_mgr:GetEv("EvUiClickHelp")
     if (ev == nil)
     then
@@ -134,7 +134,7 @@ end
 
 ---------------------------------------
 function ItemMainOperate:onClickInvite()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ev = view_mgr:GetEv("EvUiClickInviteFriend")
     if (ev == nil)
     then
@@ -145,7 +145,7 @@ end
 
 ---------------------------------------
 function ItemMainOperate:onClickShop()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ev = view_mgr:GetEv("EvUiClickShop")
     if (ev == nil)
     then
@@ -156,7 +156,7 @@ end
 
 ---------------------------------------
 function ItemMainOperate:onClickVip()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ev = view_mgr:GetEv("EvUiClickVip")
     if (ev == nil)
     then

@@ -1,20 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerGrow = ControllerBase:new(nil)
+ControllerGrow = class(ControllerBase)
 
 ---------------------------------------
-function ControllerGrow:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    return o
+function ControllerGrow:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
@@ -89,19 +79,14 @@ function ControllerGrow:s2cPlayerGrowRewardSnapshotNotify(grow_data)
 end
 
 ---------------------------------------
-ControllerGrowFactory = ControllerFactory:new()
+ControllerGrowFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerGrowFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Grow"
-    return o
+function ControllerGrowFactory:GetName()
+    return 'Grow'
 end
 
----------------------------------------
-function ControllerGrowFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerGrow:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerGrowFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerGrow:new(controller_data, ctrl_name)
+    return ctrl
 end

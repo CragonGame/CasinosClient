@@ -1,33 +1,21 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerUCenter = ControllerBase:new(nil)
+ControllerUCenter = class(ControllerBase)
 
 ---------------------------------------
-function ControllerUCenter:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerName = "Login"
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.UCenterDomain = o.Context.Cfg.UCenterDomain
-    o.MbHelper = nil
-    return o
+function ControllerUCenter:ctor(controller_data, controller_name)
+    self.UCenterDomain = self.Context.Cfg.UCenterDomain
+    self.MbHelper = nil
 end
 
 ---------------------------------------
 function ControllerUCenter:OnCreate()
-    --print("ControllerUCenter:OnCreate")
     self.MbHelper = self.CasinosContext.Config.GoMain:GetComponent("Casinos.MbHelper")
 end
 
 ---------------------------------------
 function ControllerUCenter:OnDestroy()
-    --print("ControllerUCenter:OnDestroy")
 end
 
 ---------------------------------------
@@ -363,22 +351,16 @@ function ControllerUCenter:_genApiUrl(api)
 end
 
 ---------------------------------------
-ControllerUCenterFactory = ControllerFactory:new()
+ControllerUCenterFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerUCenterFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "UCenter"
-    return o
+function ControllerUCenterFactory:GetName()
+    return 'UCenter'
 end
 
----------------------------------------
-function ControllerUCenterFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerUCenter:new(nil, controller_mgr, controller_data, guid)
-    controller:OnCreate()
-    return controller
+function ControllerUCenterFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerUCenter:new(controller_data, ctrl_name)
+    return ctrl
 end
 
 ---------------------------------------

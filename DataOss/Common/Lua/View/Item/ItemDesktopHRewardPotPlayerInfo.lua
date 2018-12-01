@@ -16,7 +16,7 @@ function ItemDesktopHRewardPotPlayerInfo:new(o, com)
     o.GTextNickName = o.Com:GetChild("NickName").asTextField
     o.GTextGold = o.Com:GetChild("Golds").asTextField
     if (o.ViewMgr == nil) then
-        o.ViewMgr = ViewMgr:new(nil)
+        o.ViewMgr = ViewMgr
     end
     return o
 end

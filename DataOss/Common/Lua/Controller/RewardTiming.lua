@@ -1,5 +1,5 @@
 -- Copyright(c) Cragon. All rights reserved.
--- 由ControllerReward管理
+-- 定时奖励，由ControllerReward管理
 
 ---------------------------------------
 RewardTiming = {}

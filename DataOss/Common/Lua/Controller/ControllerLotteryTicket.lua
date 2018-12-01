@@ -1,24 +1,14 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerLotteryTicket = ControllerBase:new(nil)
+ControllerLotteryTicket = class(ControllerBase)
 
 ---------------------------------------
-function ControllerLotteryTicket:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    o.QUE_BETPOT_WINLOOSE_RESULT_COUNT = 10
-    o.BetStateTm = 0
-    o.UpdateUiTime = 1
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.TimerUpdate = nil
-    return o
+function ControllerLotteryTicket:ctor(controller_data, controller_name)
+    self.QUE_BETPOT_WINLOOSE_RESULT_COUNT = 10
+    self.BetStateTm = 0
+    self.UpdateUiTime = 1
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
@@ -475,19 +465,14 @@ function ControllerLotteryTicket:GetLotteryTicketBaseFactory(fac_name)
 end
 
 ---------------------------------------
-ControllerLotteryTicketFactory = ControllerFactory:new()
+ControllerLotteryTicketFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerLotteryTicketFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "LotteryTicket"
-    return o
+function ControllerLotteryTicketFactory:GetName()
+    return 'LotteryTicket'
 end
 
----------------------------------------
-function ControllerLotteryTicketFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerLotteryTicket:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerLotteryTicketFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerLotteryTicket:new(controller_data, ctrl_name)
+    return ctrl
 end

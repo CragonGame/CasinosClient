@@ -11,7 +11,8 @@ ConfigDevelopSettings = {
 ---------------------------------------
 -- 配置，模块配置
 ConfigModule = {
-    WalletAzex = false; -- Azex钱包
+    --Wallet = false;-- 钱包模块
+    GrowEnable = false; -- 摇钱树模块
 }
 
 ---------------------------------------
@@ -342,7 +343,7 @@ function Context:_nextLaunchStep()
         self.UiChipShowHelper = UiChipShowHelper:new(nil)
 
         self:DoString("ViewMgr")
-        self.ViewMgr = ViewMgr:new(nil)
+        self.ViewMgr = ViewMgr
         self.ViewMgr.LanMgr = self.LanMgr
         self.ViewMgr.TbDataMgr = self.TbDataMgr
         self.ViewMgr:OnCreate()
@@ -358,8 +359,8 @@ function Context:_nextLaunchStep()
         self.PicCapture = PicCapture:new(nil, self.ViewMgr, self)
 
         self:DoString("ControllerMgr")
-        self.ControllerMgr = ControllerMgr:new(nil)
-        self.ControllerMgr:OnCreate()
+        self.ControllerMgr = ControllerMgr
+        self.ControllerMgr:Create()
         self.ControllerMgr.TbDataMgr = self.TbDataMgr
         self.ControllerMgr.RPC = self.Rpc
         self.ControllerMgr.LanMgr = self.LanMgr
@@ -593,7 +594,7 @@ function Context:_regController()
     self.ControllerMgr:RegController("Trade", con_trade_fac)
     self:DoString("ControllerMTT")
     local con_mtt = ControllerMTTFactory:new(nil)
-    self.ControllerMgr:RegController("Mtt", con_mtt)
+    self.ControllerMgr:RegController("MTT", con_mtt)
     self:DoString("Item")
     self:DoString("ItemData1")
     self:DoString("Unit")

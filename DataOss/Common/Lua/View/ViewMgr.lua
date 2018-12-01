@@ -28,39 +28,17 @@ ViewMgr = {
     STANDARD_HEIGHT = 640,
     LayerDistance = 1,
     Instance = nil,
-    Context = nil,
-    EventSys = nil,
+    Context = Context,
+    EventSys = EventSys:new(nil),
+    ControllerMgr = nil,
+    CasinosContext = CS.Casinos.CasinosContext.Instance,
+    LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr,
     TableViewFactory = {},
     TableViewSingle = {},
     TableViewMultiple = {},
     TableMaxDepth = {},
     TableUpdateView = {},
 }
-
----------------------------------------
-function ViewMgr:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-        self.LayerDistance = 1
-        self.Context = nil
-        self.EventSys = nil
-        self.TableViewFactory = {}
-        self.TableViewSingle = {}
-        self.TableViewMultiple = {}
-        self.TableMaxDepth = {}
-        self.TableUpdateView = {}
-        self.ControllerMgr = nil
-        self.LanMgr = nil
-        self.CasinosContext = CS.Casinos.CasinosContext.Instance
-        self.LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr
-        self.Context = Context
-        self.EventSys = EventSys:new(nil)
-    end
-    return self.Instance
-end
 
 ---------------------------------------
 function ViewMgr:OnCreate()

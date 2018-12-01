@@ -6,25 +6,15 @@ require('IMFriendList')
 require('IMMailBox')
 
 ---------------------------------------
-ControllerIM = ControllerBase:new(nil)
+ControllerIM = class(ControllerBase)
 
 ---------------------------------------
-function ControllerIM:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    o.IMChat = IMChat:new(nil, o)
-    o.IMFeedback = IMFeedback:new(nil, o)
-    o.IMFriendList = IMFriendList:new(nil, o)
-    o.IMMailBox = IMMailBox:new(nil, o)
-    o.IMChatRecord = IMChatRecord:new(nil, o)
-    return o
+function ControllerIM:ctor(controller_data, controller_name)
+    self.IMChat = IMChat:new(nil, self)
+    self.IMFeedback = IMFeedback:new(nil, self)
+    self.IMFriendList = IMFriendList:new(nil, self)
+    self.IMMailBox = IMMailBox:new(nil, self)
+    self.IMChatRecord = IMChatRecord:new(nil, self)
 end
 
 ---------------------------------------
@@ -475,19 +465,14 @@ function ControllerIM:isFriend(friend_guid)
 end
 
 ---------------------------------------
-ControllerIMFactory = ControllerFactory:new()
+ControllerIMFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerIMFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "IM"
-    return o
+function ControllerIMFactory:GetName()
+    return 'IM'
 end
 
----------------------------------------
-function ControllerIMFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerIM:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerIMFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerIM:new(controller_data, ctrl_name)
+    return ctrl
 end

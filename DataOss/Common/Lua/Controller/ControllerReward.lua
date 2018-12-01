@@ -1,27 +1,18 @@
 -- Copyright(c) Cragon. All rights reserved.
 require('RewardOnline')
+require('RewardRelief')
 require('RewardTiming')
 
 ---------------------------------------
-ControllerReward = ControllerBase:new(nil)
+ControllerReward = class(ControllerBase)
 
 ---------------------------------------
-function ControllerReward:new(controller_mgr, controller_data, guid)
-    local o = {}
-    setmetatable(o, self)
-    self.__index = self
-    self.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerData = controller_data
-    self.ControllerMgr = controller_mgr
+function ControllerReward:ctor(controller_data, controller_name)
     self.MC = CommonMethodType
-    self.Guid = guid
-    self.ViewMgr = ViewMgr:new(nil)
     self.TimerUpdate = nil
     self.RewardOnline = RewardOnline:new(self.ControllerMgr, self.ViewMgr)
     self.RewardTiming = RewardTiming:new(self.ControllerMgr, self.ViewMgr)
     self.RedPointRewardShow = false-- 小红点显示状态
-    return o
 end
 
 ---------------------------------------
@@ -117,19 +108,14 @@ function ControllerReward:_timerUpdate(tm)
 end
 
 ---------------------------------------
-ControllerRewardFactory = ControllerFactory:new()
+ControllerRewardFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerRewardFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Reward"
-    return o
+function ControllerRewardFactory:GetName()
+    return 'Reward'
 end
 
----------------------------------------
-function ControllerRewardFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerReward:new(controller_mgr, controller_data, guid)
-    return controller
+function ControllerRewardFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerReward:new(controller_data, ctrl_name)
+    return ctrl
 end

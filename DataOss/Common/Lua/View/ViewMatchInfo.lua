@@ -11,7 +11,7 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:OnCreate()
-    local controller_mgr = ControllerMgr:new(nil)
+    local controller_mgr = ControllerMgr
     self.ControllerActor = controller_mgr:GetController("Actor")
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("MatchInfo"))
     self.ViewMgr:BindEvListener("EvEntitySetMatchDetailedInfo", self)

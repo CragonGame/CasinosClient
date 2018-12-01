@@ -1,20 +1,10 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerMTT = ControllerBase:new(nil)
+ControllerMTT = class(ControllerBase)
 
 ---------------------------------------
-function ControllerMTT:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    return o
+function ControllerMTT:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
@@ -398,19 +388,14 @@ function ControllerMTT:Clear()
 end
 
 ---------------------------------------
-ControllerMTTFactory = ControllerFactory:new()
+ControllerMTTFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerMTTFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Activity"
-    return o
+function ControllerMTTFactory:GetName()
+    return 'MTT'
 end
 
----------------------------------------
-function ControllerMTTFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerMTT:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerMTTFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerMTT:new(controller_data, ctrl_name)
+    return ctrl
 end

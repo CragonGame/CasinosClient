@@ -2,25 +2,14 @@
 require('ControllerReward')
 
 ---------------------------------------
-ControllerPlayer = ControllerBase:new(nil)
+ControllerPlayer = class(ControllerBase)
 
 ---------------------------------------
-function ControllerPlayer:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ControllerName = "Player"
-    o.ViewMgr = ViewMgr:new(nil)
-    o.TopStarBundleId = "com.QuLing.TexasPoker"
-    o.TimerUpdate = nil
-    o.GetOnlinePlayerNumTimeElapsed = 0
-    o.MC = CommonMethodType
-    return o
+function ControllerPlayer:ctor(controller_data, controller_name)
+    self.TopStarBundleId = "com.QuLing.TexasPoker"
+    self.TimerUpdate = nil
+    self.GetOnlinePlayerNumTimeElapsed = 0
+    self.MC = CommonMethodType
 end
 
 ---------------------------------------
@@ -63,7 +52,7 @@ function ControllerPlayer:OnCreate()
     local login = self.ControllerMgr:GetController("Login")
     login:canDestroyViewLogin()
 
-    self:createMainUi()
+    self:CreateMainUi()
 
     self.QueneHotActivity = {}
     self:CheckNeedShowHotActivity()
@@ -74,7 +63,7 @@ function ControllerPlayer:OnCreate()
 
     self.ControllerMgr.RPC = self.ControllerMgr.RPC
     self.ControllerMgr.RPC:RPC0(self.MC.PlayerClientInitDoneRequest)
-    self:requestGetOnlinePlayerNum()
+    self:RequestGetOnlinePlayerNum()
 
     local c_login = self.ControllerMgr:GetController("Login")
     local player_play_state = c_login:GetClientEnterWorldNotify().player_play_state
@@ -228,7 +217,7 @@ function ControllerPlayer:OnHandleEv(ev)
     elseif (ev.EventName == "EvUiClickConfirmChipTransaction") then
         self:requestGivePlayerGold(ev.send_target_etguid, ev.chip)
     elseif (ev.EventName == "EvUiCreateMainUi") then
-        self:createMainUi()
+        self:CreateMainUi()
     elseif (ev.EventName == "EvUiRequestGetRankPlayerInfo") then
         self:requestGetPlayerInfoOther(ev.player_guid)
     elseif (ev.EventName == "EvUiRequestBankWithdraw") then
@@ -300,7 +289,7 @@ function ControllerPlayer:OnPlayerLeaveDesktopNotify()
     ViewHelper:UiEndWaiting()
     local controller_desk = self.ControllerMgr:GetController("DesktopTexas")
     controller_desk:clearDesktop(true)
-    self:requestGetOnlinePlayerNum()
+    self:RequestGetOnlinePlayerNum()
 end
 
 ---------------------------------------
@@ -544,7 +533,7 @@ function ControllerPlayer:s2cPlayerChangeLanNotify(lan)
     local tips = self.ControllerMgr.LanMgr:getLanValue(CS.Casinos.IItemLan.ChangeSuccessTipsKey)
     ViewHelper:UiShowInfoSuccess(tips)
     self.ControllerMgr.LanMgr:setLan(lan)
-    self:createMainUi()
+    self:CreateMainUi()
     local controller_im = self.ControllerMgr:GetController("IM")
     controller_im:setMainUiIMInfo()
 end
@@ -558,7 +547,7 @@ function ControllerPlayer:OnCommonMethordNotify(map_param)
 end
 
 ---------------------------------------
-function ControllerPlayer:requestGetOnlinePlayerNum()
+function ControllerPlayer:RequestGetOnlinePlayerNum()
     self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlinePlayerNumRequest)
 end
 
@@ -619,7 +608,7 @@ function ControllerPlayer:requestBankWithdraw(bank_withdraw)
 end
 
 ---------------------------------------
-function ControllerPlayer:createMainUi()
+function ControllerPlayer:CreateMainUi()
     local index = math.random(1, 2)
     local bgm = string.format("MainBg%s", index)
     self.CasinosContext:Play(bgm, CS.Casinos._eSoundLayer.Background)
@@ -806,24 +795,19 @@ function ControllerPlayer:_timerUpdate(tm)
     self.GetOnlinePlayerNumTimeElapsed = self.GetOnlinePlayerNumTimeElapsed + tm
     if (self.GetOnlinePlayerNumTimeElapsed >= 5) then
         self.GetOnlinePlayerNumTimeElapsed = 0
-        self:requestGetOnlinePlayerNum()
+        self:RequestGetOnlinePlayerNum()
     end
 end
 
 ---------------------------------------
-ControllerPlayerFactory = ControllerFactory:new()
+ControllerPlayerFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerPlayerFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Player"
-    return o
+function ControllerPlayerFactory:GetName()
+    return 'Player'
 end
 
----------------------------------------
-function ControllerPlayerFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerPlayer:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerPlayerFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerPlayer:new(controller_data, ctrl_name)
+    return ctrl
 end

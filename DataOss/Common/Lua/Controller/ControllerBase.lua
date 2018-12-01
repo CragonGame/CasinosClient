@@ -1,18 +1,15 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerBase = {
-    ControllerMgr = nil,
-    ControllerName = nil,
-    ControllerData = nil,
-    Model = nil
-}
+ControllerBase = class()
 
-function ControllerBase:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
+function ControllerBase:ctor(controller_data, controller_name)
+    self.ControllerData = controller_data
+    self.ControllerName = controller_name
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.Context = Context
+    self.ControllerMgr = ControllerMgr
+    self.ViewMgr = ViewMgr
 end
 
 function ControllerBase:OnCreate()
@@ -25,16 +22,10 @@ function ControllerBase:OnHandleEv(ev)
 end
 
 ---------------------------------------
-ControllerFactory = {
-    ControllerName = nil
-}
+ControllerFactory = class()
 
-function ControllerFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
+function ControllerFactory:GetName()
 end
 
-function ControllerFactory:CreateController(controller_mgr, controller_data, guid)
+function ControllerFactory:CreateController(controller_data)
 end

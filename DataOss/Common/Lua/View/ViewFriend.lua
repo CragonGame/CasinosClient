@@ -455,7 +455,7 @@ function ViewShowFriendDetail:new(o, com_friend, is_friend_detail)
     )
     o.GIMageRemoveFriend = com_friend:GetChild("RemoveFriend").asImage
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ViewMgr = ViewMgr:new(nil)
+    o.ViewMgr = ViewMgr
     o.ControllerActor = o.ViewMgr.ControllerMgr:GetController("Actor")
     o.GComReportPlayer = com_friend:GetChild("ComReportPlayer").asCom
     local list_report = o.GComReportPlayer:GetChild("ContentList").asList
@@ -469,7 +469,7 @@ end
 
 ---------------------------------------
 function ViewShowFriendDetail:setFriendInfo(friend_item)
-    local controller_mgr = ControllerMgr:new(nil)
+    local controller_mgr = ControllerMgr
     local controller_im = controller_mgr:GetController("IM")
     self.CurrentFriendInfo = friend_item
     self.UiHeadIcon:SetPlayerInfo(self.CurrentFriendInfo.PlayerInfoCommon.IconName, self.CurrentFriendInfo.PlayerInfoCommon.AccountId, self.CurrentFriendInfo.PlayerInfoCommon.VIPLevel)

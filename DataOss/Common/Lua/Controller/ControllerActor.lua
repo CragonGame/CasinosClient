@@ -25,92 +25,81 @@ function Prop:set(value)
 end
 
 ---------------------------------------
-ControllerActor = ControllerBase:new(nil)
+ControllerActor = class(ControllerBase)
 
 ---------------------------------------
-function ControllerActor:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    local BotTbId = o.ControllerData["BotTbId"]
-    o.PropBotTbId = Prop:new(tonumber(BotTbId))
-    local AccountId = o.ControllerData["AccountId"]
-    o.PropAccountId = Prop:new(AccountId)
-    local ActorId = o.ControllerData["ActorId"]
-    o.PropActorId = Prop:new(tonumber(ActorId))
-    local Gender = o.ControllerData["Gender"]
+function ControllerActor:ctor(controller_data, controller_name)
+    local BotTbId = self.ControllerData["BotTbId"]
+    self.PropBotTbId = Prop:new(tonumber(BotTbId))
+    local AccountId = self.ControllerData["AccountId"]
+    self.PropAccountId = Prop:new(AccountId)
+    local ActorId = self.ControllerData["ActorId"]
+    self.PropActorId = Prop:new(tonumber(ActorId))
+    local Gender = self.ControllerData["Gender"]
     local gender = false
     if (string.lower(Gender) == "true") then
         gender = true
     end
-    o.PropGender = Prop:new(gender)
-    local NickName = o.ControllerData["NickName"]
-    o.PropNickName = Prop:new(NickName)
-    local Icon = o.ControllerData["Icon"]
-    o.PropIcon = Prop:new(Icon)
-    local GoldAcc = o.ControllerData["GoldAcc"]
-    o.PropGoldAcc = Prop:new(tonumber(GoldAcc))
-    local GoldBank = o.ControllerData["GoldBank"]
-    o.PropGoldBank = Prop:new(tonumber(GoldBank))
-    local Diamond = o.ControllerData["Diamond"]
-    o.PropDiamond = Prop:new(tonumber(Diamond))
-    local Level = o.ControllerData["Level"]
-    o.PropLevel = Prop:new(tonumber(Level))
-    local Experience = o.ControllerData["Experience"]
-    o.PropExperience = Prop:new(tonumber(Experience))
-    local LotteryDrawPoint = o.ControllerData["LotteryDrawPoint"]
-    o.PropLotteryDrawPoint = Prop:new(tonumber(LotteryDrawPoint))
-    local RechargePoint = o.ControllerData["RechargePoint"]
-    o.PropRechargePoint = Prop:new(tonumber(RechargePoint))
-    local IsFirstRecharge = o.ControllerData["IsFirstRecharge"]
+    self.PropGender = Prop:new(gender)
+    local NickName = self.ControllerData["NickName"]
+    self.PropNickName = Prop:new(NickName)
+    local Icon = self.ControllerData["Icon"]
+    self.PropIcon = Prop:new(Icon)
+    local GoldAcc = self.ControllerData["GoldAcc"]
+    self.PropGoldAcc = Prop:new(tonumber(GoldAcc))
+    local GoldBank = self.ControllerData["GoldBank"]
+    self.PropGoldBank = Prop:new(tonumber(GoldBank))
+    local Diamond = self.ControllerData["Diamond"]
+    self.PropDiamond = Prop:new(tonumber(Diamond))
+    local Level = self.ControllerData["Level"]
+    self.PropLevel = Prop:new(tonumber(Level))
+    local Experience = self.ControllerData["Experience"]
+    self.PropExperience = Prop:new(tonumber(Experience))
+    local LotteryDrawPoint = self.ControllerData["LotteryDrawPoint"]
+    self.PropLotteryDrawPoint = Prop:new(tonumber(LotteryDrawPoint))
+    local RechargePoint = self.ControllerData["RechargePoint"]
+    self.PropRechargePoint = Prop:new(tonumber(RechargePoint))
+    local IsFirstRecharge = self.ControllerData["IsFirstRecharge"]
     local is_first = false
     if (string.lower(IsFirstRecharge) == "true") then
         is_first = true
     end
-    o.PropIsFirstRecharge = Prop:new(is_first)
-    local IpAddress = o.ControllerData["IpAddress"]
-    o.PropIpAddress = Prop:new(IpAddress)
-    local IndividualSignature = o.ControllerData["IndividualSignature"]
-    o.PropIndividualSignature = Prop:new(IndividualSignature)
-    local ProfileSkinTbId = o.ControllerData["ProfileSkinTbId"]
-    o.PropProfileSkinTbId = Prop:new(tonumber(ProfileSkinTbId))
-    local JoinDataTime = o.ControllerData["JoinDataTime"]
+    self.PropIsFirstRecharge = Prop:new(is_first)
+    local IpAddress = self.ControllerData["IpAddress"]
+    self.PropIpAddress = Prop:new(IpAddress)
+    local IndividualSignature = self.ControllerData["IndividualSignature"]
+    self.PropIndividualSignature = Prop:new(IndividualSignature)
+    local ProfileSkinTbId = self.ControllerData["ProfileSkinTbId"]
+    self.PropProfileSkinTbId = Prop:new(tonumber(ProfileSkinTbId))
+    local JoinDataTime = self.ControllerData["JoinDataTime"]
     local datetime = CS.System.DateTime.Parse(JoinDataTime)
-    o.PropJoinDateTime = Prop:new(datetime)
-    local LoginDateTime = o.ControllerData["LoginDateTime"]
-    o.PropLoginDateTime = Prop:new(LoginDateTime)
-    local LogoutDateTime = o.ControllerData["LogoutDateTime"]
-    o.PropLogoutDateTime = Prop:new(LogoutDateTime)
-    local VIPLevel = o.ControllerData["VIPLevel"]
-    o.PropVIPLevel = Prop:new(tonumber(VIPLevel))
-    local VIPDataTime = o.ControllerData["VIPDataTime"]
-    o.PropVIPDataTime = Prop:new(VIPDataTime)
-    local ReliefCount = o.ControllerData["ReliefCount"]
-    o.PropReliefCount = Prop:new(tonumber(ReliefCount))
-    local ReliefDateTime = o.ControllerData["ReliefDateTime"]
-    o.PropReliefDateTime = Prop:new(ReliefDateTime)
+    self.PropJoinDateTime = Prop:new(datetime)
+    local LoginDateTime = self.ControllerData["LoginDateTime"]
+    self.PropLoginDateTime = Prop:new(LoginDateTime)
+    local LogoutDateTime = self.ControllerData["LogoutDateTime"]
+    self.PropLogoutDateTime = Prop:new(LogoutDateTime)
+    local VIPLevel = self.ControllerData["VIPLevel"]
+    self.PropVIPLevel = Prop:new(tonumber(VIPLevel))
+    local VIPDataTime = self.ControllerData["VIPDataTime"]
+    self.PropVIPDataTime = Prop:new(VIPDataTime)
+    local ReliefCount = self.ControllerData["ReliefCount"]
+    self.PropReliefCount = Prop:new(tonumber(ReliefCount))
+    local ReliefDateTime = self.ControllerData["ReliefDateTime"]
+    self.PropReliefDateTime = Prop:new(ReliefDateTime)
     --local EnableGrow = self.ControllerData["EnableGrow"]
     --local enable_grow = false
     --if(string.lower(EnableGrow) == "true") then
     --	enable_grow = true
     --end
-    o.PropEnableGrow = Prop:new(false)
-    local Point = o.ControllerData["Point"]
-    o.PropPoint = Prop:new(tonumber(Point))
-    local MasterPoint = o.ControllerData["MasterPoint"]
-    o.MasterPoint = Prop:new(tonumber(MasterPoint))
-    o.ControllerMgr = controller_mgr
-    o.ControllerPlayer = o.ControllerMgr:GetController("ControllerPlayer")
-    -- self.EffectMgr = CS.Casinos.EffectMgr()
-    o.LastLevel = o.PropLevel
+    self.PropEnableGrow = Prop:new(false)
+    local Point = self.ControllerData["Point"]
+    self.PropPoint = Prop:new(tonumber(Point))
+    local MasterPoint = self.ControllerData["MasterPoint"]
+    self.MasterPoint = Prop:new(tonumber(MasterPoint))
+    self.LastLevel = self.PropLevel
+
+    self.ControllerPlayer = o.ControllerMgr:GetController("ControllerPlayer")
     Native.Instance:CreateShareUrlAndQRCode(ActorId)
-    return o
 end
 
 ---------------------------------------
@@ -392,19 +381,15 @@ function ControllerActor:onPropIsFirstRecharge()
 end
 
 ---------------------------------------
-ControllerActorFactory = ControllerFactory:new()
+ControllerActorFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerActorFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Actor"
-    return o
+function ControllerActorFactory:GetName()
+    return 'Actor'
 end
 
 ---------------------------------------
-function ControllerActorFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerActor:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerActorFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerActor:new(controller_data, ctrl_name)
+    return ctrl
 end

@@ -13,7 +13,7 @@ function ItemBetChipRange:new(o, item, eb_data, index)
     o.EbData = eb_data
     o.GTextBetChipRange = o.Item:GetChild("BetChipRange").asTextField
     o.CurrentIndex = index
-    o.ViewMgr = ViewMgr:new(nil)
+    o.ViewMgr = ViewMgr
     local tb_datadektop = o.EbData
     local tips = UiChipShowHelper:getGoldShowStr(tb_datadektop.SmallBlind, o.ViewMgr.LanMgr.LanBase) .. "/" ..
             UiChipShowHelper:getGoldShowStr(tb_datadektop.BigBlind, o.ViewMgr.LanMgr.LanBase)

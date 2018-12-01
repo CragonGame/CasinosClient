@@ -25,7 +25,7 @@ end
 ---------------------------------------
 ViewFactory = class()
 
-function ViewFactory:ctor(o, ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
+function ViewFactory:ctor(ui_package_name, ui_component_name, ui_layer, is_single, fit_screen)
     self.PackageName = ui_package_name
     self.ComponentName = ui_component_name
     self.UILayer = ui_layer

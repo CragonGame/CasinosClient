@@ -8,7 +8,7 @@ function GoldController:new(o,setgold)
     o = o or {}
     setmetatable(o,self)
     self.__index = self
-    local controller_mgr = ControllerMgr:new(nil)
+    local controller_mgr = ControllerMgr
     o.ControllerActor = controller_mgr:GetController("Actor")
     o.ControllerDesktopH = controller_mgr:GetController("DesktopH")
     o.Gold = o.ControllerActor.PropGoldAcc:get()

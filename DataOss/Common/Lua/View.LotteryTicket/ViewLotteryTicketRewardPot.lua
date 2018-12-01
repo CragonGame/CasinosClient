@@ -97,7 +97,7 @@ end
 ---------------------------------------
 function ViewLotteryTicketRewardPot:_onClick()
     self:SwitchControllerRewardPot(self.ControllerRewardPot.selectedIndex == 1)
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ev = view_mgr:GetEv("EvLotteryTicketClickRewardPotBtn")
     if (ev == nil) then
         ev = EvLotteryTicketClickRewardPotBtn:new(nil)

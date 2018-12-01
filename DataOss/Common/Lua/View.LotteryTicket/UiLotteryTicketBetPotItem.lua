@@ -83,7 +83,7 @@ end
 ---------------------------------------
 function UiLotteryTicketBetPotItem:_onClick()
     self.TranBet:Play()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ev = view_mgr:GetEv("EvLotteryTicketBet")
     if (ev == nil) then
         ev = EvLotteryTicketBet:new(nil)

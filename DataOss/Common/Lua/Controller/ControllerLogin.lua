@@ -89,35 +89,25 @@ PhoneCountryCode = {
 }
 
 ---------------------------------------
-ControllerLogin = ControllerBase:new(nil)
+ControllerLogin = class(ControllerBase)
 
 ---------------------------------------
-function ControllerLogin:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.ControllerName = "Login"
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.Password = nil
-    o.RemeberPwd = false
-    o.RequestThirdPartyLogin = false
-    o.BindingWeChat = false
-    o.AutoLogin = false
-    o.AutoLoginTm = 0
-    o.ViewMgr = ViewMgr:new(nil)
-    o.AccId = nil
-    o.Acc = nil
-    o.Pwd = nil
-    o.Token = nil
-    o.ClientEnterWorldNotify = nil
-    o.ShowKickOutInfo = false
-    o.LoginAccountInfoKey = "LoginAccountInfo3"
-    o.TimerUpdate = nil
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    return o
+function ControllerLogin:ctor(controller_data, controller_name)
+    self.Password = nil
+    self.RemeberPwd = false
+    self.RequestThirdPartyLogin = false
+    self.BindingWeChat = false
+    self.AutoLogin = false
+    self.AutoLoginTm = 0
+    self.ViewMgr = ViewMgr
+    self.AccId = nil
+    self.Acc = nil
+    self.Pwd = nil
+    self.Token = nil
+    self.ClientEnterWorldNotify = nil
+    self.ShowKickOutInfo = false
+    self.LoginAccountInfoKey = "LoginAccountInfo3"
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
@@ -869,20 +859,14 @@ function ControllerLogin:_autoCheckDataCallBack(bo)
 end
 
 ---------------------------------------
-ControllerLoginFactory = ControllerFactory:new()
+ControllerLoginFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerLoginFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Login"
-    return o
+function ControllerLoginFactory:GetName()
+    return 'Login'
 end
 
----------------------------------------
-function ControllerLoginFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerLogin:new(nil, controller_mgr, controller_data, guid)
-    controller:OnCreate()
-    return controller
+function ControllerLoginFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerLogin:new(controller_data, ctrl_name)
+    return ctrl
 end

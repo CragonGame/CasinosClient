@@ -35,7 +35,7 @@ function ItemLan:onClickItem()
     local msg_box = ViewHelper:UiShowMsgBox(info,
             function()
                 local tb_lan = self.CasinosContext.TbDataMgrLua:GetData("Lans", self.TbId)
-                local view_mgr = ViewMgr:new(nil)
+                local view_mgr = ViewMgr
                 local ev = view_mgr:GetEv("EvUiChangeLan")
                 if (ev == nil)
                 then

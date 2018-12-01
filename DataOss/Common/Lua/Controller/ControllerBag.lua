@@ -2,20 +2,10 @@
 -- 只剩MsgPack版的ItemData1
 
 ---------------------------------------
-ControllerBag = ControllerBase:new(nil)
+ControllerBag = class(ControllerBase)
 
 ---------------------------------------
-function ControllerBag:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    return o
+function ControllerBag:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
@@ -410,19 +400,14 @@ function ControllerBag:haveNewItem()
 end
 
 ---------------------------------------
-ControllerBagFactory = ControllerFactory:new()
+ControllerBagFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerBagFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "Bag"
-    return o
+function ControllerBagFactory:GetName()
+    return 'Bag'
 end
 
----------------------------------------
-function ControllerBagFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerBag:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerBagFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerBag:new(controller_data, ctrl_name)
+    return ctrl
 end

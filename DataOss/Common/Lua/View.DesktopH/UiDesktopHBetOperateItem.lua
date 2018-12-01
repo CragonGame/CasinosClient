@@ -20,7 +20,7 @@ function UiDesktopHBetOperateItem:new(bet_operat, ui_desktoph)
     o.mTbOperateId = nil
     o.mIsCurrentOperate = nil
     o.mCanOperate = nil
-    o.ViewMgr = ViewMgr:new(nil)
+    o.ViewMgr = ViewMgr
     return o
 end
 

@@ -107,7 +107,7 @@ function ViewDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
     self.ViewMgr:BindEvListener("EvCtrlRewardRedPointStateChange", self)
 
-    local controller_mgr = ControllerMgr:new(nil)
+    local controller_mgr = ControllerMgr
     self.ControllerPlayer = controller_mgr:GetController("Player")
     self.ControllerLotteryTicket = controller_mgr:GetController("LotteryTicket")
     self.ControllerDesktopH = controller_mgr:GetController("DesktopH")

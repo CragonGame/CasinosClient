@@ -1,37 +1,30 @@
 -- Copyright(c) Cragon. All rights reserved.
 -- 登录界面，由Context调用ControllerMgr创建Login
+-- Controller全部是单实例的
+-- Controller始终存在，无需使用者调用Create
 require('ControllerBase')
 
 ---------------------------------------
 ControllerMgr = {
     ViewMgr = nil,
     EventSys = nil,
+    Context = Context,
+    Json = Context.Json,
+    Rpc = Context.Rpc,
+    LanMgr = Context.LanMgr,
     TableControllerFactory = {},
     TableController = {},
     TableControllerUpdate = {},
-    Context = Context,
-    Json = Context.Json,
-    Rpc = Context.Rpc
 }
 
 ---------------------------------------
-function ControllerMgr:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.LanMgr = nil
-    return o
-end
-
----------------------------------------
-function ControllerMgr:OnCreate()
-    --print("ControllerMgr:OnCreate")
+function ControllerMgr:Create()
     self.EventSys = EventSys:new(nil)
-    self.ViewMgr = ViewMgr:new(nil)
+    self.ViewMgr = ViewMgr
 end
 
 ---------------------------------------
-function ControllerMgr:OnDestroy()
+function ControllerMgr:Destroy()
 end
 
 ---------------------------------------
@@ -49,7 +42,7 @@ function ControllerMgr:CreatePlayerControllers(player_data, guid)
     local c_marquee = self:CreateController("Marquee", nil, guid)
     local c_ranking = self:CreateController("Ranking", nil, guid)
     local c_trade = self:CreateController("Trade", nil, guid)
-    local c_mtt = self:CreateController("Mtt", nil, guid)
+    local c_mtt = self:CreateController("MTT", nil, guid)
     local c_reward = self:CreateController("Reward", nil, guid)
     c_actor:OnCreate()
     c_activity:OnCreate()

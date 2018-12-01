@@ -41,7 +41,7 @@ end
 
 ---------------------------------------
 function ItemChooseChatTargetInfo:onClickChooseTarget()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local ev = ViewMgr:GetEv("EvUiClickChooseFriend")
     if (ev == nil) then
         ev = EvUiClickChooseFriend:new(nil)

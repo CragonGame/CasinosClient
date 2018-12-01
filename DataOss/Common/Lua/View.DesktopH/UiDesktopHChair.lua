@@ -24,7 +24,7 @@ function UiDesktopHChair:new(ui_desktoph, co_chair, chair_index, is_left)
     o.GCoChatParent = o.GCoChair:GetChild("CoChatParent").asCom
     o.SeatPlayerInfo = nil
     o.ItemChatDesktop = nil
-    o.ViewMgr = ViewMgr:new(nil)
+    o.ViewMgr = ViewMgr
     return o
 end
 

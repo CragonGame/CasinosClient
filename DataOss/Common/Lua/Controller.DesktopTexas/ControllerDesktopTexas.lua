@@ -1,20 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerDesktopTexas = ControllerBase:new(nil)
+ControllerDesktopTexas = class(ControllerBase)
 
 ---------------------------------------
-function ControllerDesktopTexas:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.TimerUpdate = nil
-    return o
+function ControllerDesktopTexas:ctor(controller_data, controller_name)
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
@@ -357,7 +348,7 @@ end
 function ControllerDesktopTexas:OnPlayerLeaveDesktopNotify()
     ViewHelper:UiEndWaiting()
     self:clearDesktop(true)
-    self.ControllerPlayer:requestGetOnlinePlayerNum()
+    self.ControllerPlayer:RequestGetOnlinePlayerNum()
 end
 
 ---------------------------------------
@@ -484,19 +475,14 @@ function ControllerDesktopTexas:GetDesktopHelperBase(fac_name)
 end
 
 ---------------------------------------
-ControllerDesktopTexasFactory = ControllerFactory:new()
+ControllerDesktopTexasFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerDesktopTexasFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "DesktopTexas"
-    return o
+function ControllerDesktopTexasFactory:GetName()
+    return 'DesktopTexas'
 end
 
----------------------------------------
-function ControllerDesktopTexasFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerDesktopTexas:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerDesktopTexasFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerDesktopTexas:new(controller_data, ctrl_name)
+    return ctrl
 end

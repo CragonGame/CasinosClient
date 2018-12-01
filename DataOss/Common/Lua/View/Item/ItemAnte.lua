@@ -27,7 +27,7 @@ end
 
 ---------------------------------------
 function ItemAnte:_onClick()
-    local view_mgr = ViewMgr:new(nil)
+    local view_mgr = ViewMgr
     local view_playerprofile = view_mgr:GetView("PlayerProfile")
     if (self.IsBuy == false and view_playerprofile ~= nil)
     then

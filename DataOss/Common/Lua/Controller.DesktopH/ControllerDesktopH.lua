@@ -1,21 +1,11 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ControllerDesktopH = ControllerBase:new(nil)
+ControllerDesktopH = class(ControllerBase)
 
 ---------------------------------------
-function ControllerDesktopH:new(o, controller_mgr, controller_data, guid)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.ControllerData = controller_data
-    o.ControllerMgr = controller_mgr
-    o.Guid = guid
-    o.ViewMgr = ViewMgr:new(nil)
-    o.QueBetpotWinLooseResultCount = 10
-    return o
+function ControllerDesktopH:ctor(controller_data, controller_name)
+    self.QueBetpotWinLooseResultCount = 10
 end
 
 ---------------------------------------
@@ -965,7 +955,7 @@ function ControllerDesktopH:ClearDesktopH(need_createmainui)
     local ui_desktoph = self.ControllerMgr.ViewMgr:GetView("DesktopH")
     self.ControllerMgr.ViewMgr:DestroyView(ui_desktoph)
     if (need_createmainui) then
-        self.ControllerPlayer:createMainUi()
+        self.ControllerPlayer:CreateMainUi()
         self.ControllerIM:setMainUiIMInfo()
     end
 
@@ -1112,19 +1102,14 @@ function ControllerDesktopH:GetDesktopHCardTypeBaseFactory(fac_name)
 end
 
 ---------------------------------------
-ControllerDesktopHFactory = ControllerFactory:new()
+ControllerDesktopHFactory = class(ControllerFactory)
 
----------------------------------------
-function ControllerDesktopHFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ControllerName = "DesktopH"
-    return o
+function ControllerDesktopHFactory:GetName()
+    return 'DesktopH'
 end
 
----------------------------------------
-function ControllerDesktopHFactory:CreateController(controller_mgr, controller_data, guid)
-    local controller = ControllerDesktopH:new(nil, controller_mgr, controller_data, guid)
-    return controller
+function ControllerDesktopHFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerDesktopH:new(controller_data, ctrl_name)
+    return ctrl
 end
