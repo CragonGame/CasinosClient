@@ -147,6 +147,9 @@ public class AsyncAssetLoadGroup
     public void destroy()
     {
         releaseAssetBundle();
+        MapLoadAssetBundleCallBack.Clear();
+        MapLoaderTicket.Clear();
+        ListLoaderAssetBundlesDone.Clear();
         IsCancel = true;
     }
 

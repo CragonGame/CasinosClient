@@ -20,6 +20,14 @@ public class LocalAssetAsyncLoader
     }
 
     //-------------------------------------------------------------------------
+    public void Close()
+    {
+        MapBundle.Clear();
+        MapBundleAsset.Clear();
+        MapLoaderTicketAndCallBack.Clear();
+    }
+
+    //-------------------------------------------------------------------------
     public LoaderTicket getAsset(string asset_path, string asset_name, _eAsyncAssetLoadType loader_type,
         Action<LoaderTicket, string, UnityEngine.Object> bundle_asset_callback)
     {

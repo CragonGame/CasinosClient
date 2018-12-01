@@ -8,7 +8,6 @@ ControllerReward = class(ControllerBase)
 
 ---------------------------------------
 function ControllerReward:ctor(controller_data, controller_name)
-    self.MC = CommonMethodType
     self.TimerUpdate = nil
     self.RewardOnline = RewardOnline:new(self.ControllerMgr, self.ViewMgr)
     self.RewardTiming = RewardTiming:new(self.ControllerMgr, self.ViewMgr)

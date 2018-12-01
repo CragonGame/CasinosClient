@@ -294,6 +294,7 @@ namespace Casinos
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
             if (FuncLaunchClose != null) FuncLaunchClose.Invoke(lua_launch);
             FuncLaunchClose = null;
+            FuncLaunchOnAndroidQuitConfirm = null;
             FuncLaunchOnApplicationPause = null;
             FuncLaunchOnApplicationFocus = null;
             FuncLaunchOnSocketClose = null;

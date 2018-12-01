@@ -20,6 +20,14 @@ public class WWWAssetAsyncLoader
     }
 
     //-------------------------------------------------------------------------
+    public void Close()
+    {
+        MapBundle.Clear();
+        MapBundleAsset.Clear();
+        MapLoaderTicketAndCallBack.Clear();
+    }
+
+    //-------------------------------------------------------------------------
     public LoaderTicket LoadAsync(string url, Action<string, WWW> loaded_action)
     {
         var loader_ticket = AsyncAssetLoaderMgr.WWWAsyncLoader.getIsDoneWWW(url, loaded_action);

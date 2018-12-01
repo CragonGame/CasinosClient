@@ -52,4 +52,14 @@ public class AsyncAssetLoaderMgr
         WWWAsyncLoader.update(time);
         LocalBundleAsyncLoader.update(time);
     }
+
+    //-------------------------------------------------------------------------
+    public void Close()
+    {
+        WWWAsyncLoader.Close();
+        WWWBundleAsyncLoader.Close();
+        WWWAssetAsyncLoader.Close();
+        LocalBundleAsyncLoader.Close();
+        LocalAssetAsyncLoader.Close();
+    }
 }

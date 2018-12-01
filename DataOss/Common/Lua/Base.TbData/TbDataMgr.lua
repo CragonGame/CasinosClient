@@ -1,4 +1,41 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('TbDataActorLevel')
+require('TbDataCfigTexasDesktopH')
+require('TbDataCfigTexasDesktopHGoldPercent')
+require('TbDataCfigTexasDesktopHSysBank')
+require('TbDataCommon')
+require('TbDataConfigTexasDesktop')
+require('TbDataDailyReward')
+require('TbDataDesktopFastBet')
+require('TbDataDesktopHBetOperateTexas')
+require('TbDataDesktopHBetPotTexas')
+require('TbDataDesktopHBetReward')
+require('TbDataDesktopHInfoTexas')
+require('TbDataDesktopInfoTexas')
+require('TbDataExpression')
+require('TbDataHintsInfoTexas')
+require('TbDataItem')
+require('TbDataItemType')
+require('TbDataLanEn')
+require('TbDataLans')
+require('TbDataLanZh')
+require('TbDataLotteryTicket')
+require('TbDataLotteryTicketBetOperate')
+require('TbDataLotteryTicketGoldPercent')
+require('TbDataOnlineReward')
+require('TbDataPresetMsg')
+require('TbDataTexasRaiseBlinds')
+require('TbDataTexasSnowBallRewardInfo')
+require('TbDataTexasSnowBallRewardPlayerNum')
+require('TbDataUnitBilling')
+require('TbDataUnitConsume')
+require('TbDataUnitGiftNormal')
+require('TbDataUnitGiftTmp')
+require('TbDataUnitGoldPackage')
+require('TbDataUnitGoodsVoucher')
+require('TbDataUnitMagicExpression')
+require('TbDataUnitRedEnvelopes')
+require('TbDataVIPLevel')
 
 ---------------------------------------
 TbDataMgr = {
@@ -9,15 +46,23 @@ TbDataMgr = {
     FileStream = nil,
     QueLoadTbName = {},
     FinishedCallBack = nil,
+    CasinosContext = CS.Casinos.CasinosContext.Instance,
+    Context = Context,
 }
 
 ---------------------------------------
-function TbDataMgr:Setup(list_db_filename)
-    CS.Casinos.CasinosContext.Instance.TbDataMgrLua = self
-    if (CS.Casinos.CasinosContext.Instance.IsSqliteUnity) then
+function TbDataMgr:Setup()
+    self.CasinosContext.TbDataMgrLua = self
+
+    if (self.CasinosContext.IsSqliteUnity) then
         self.Sqlite = CS.GameCloud.Unity.Common.SqliteUnity()
     else
         self.Sqlite = CS.GameCloud.Unity.Common.SqliteWin()
+    end
+
+    local list_db_filename = {}
+    for i, v in pairs(self.Context.Cfg.TbFileList) do
+        list_db_filename[i] = self.CasinosContext.PathMgr.DirRawRoot .. "TbData/" .. v .. ".db"
     end
 
     for i, v in pairs(list_db_filename) do
@@ -35,6 +80,44 @@ function TbDataMgr:Setup(list_db_filename)
         end
         self.Sqlite:closeDb()
     end
+
+    self:RegTbDataFac("ActorLevel", TbDataFactoryActorLevel:new(nil))
+    self:RegTbDataFac("CfigTexasDesktopH", TbDataFactoryCfigTexasDesktopH:new(nil))
+    self:RegTbDataFac("CfigTexasDesktopHGoldPercent", TbDataFactoryCfigTexasDesktopHGoldPercent:new(nil))
+    self:RegTbDataFac("CfigTexasDesktopHSysBank", TbDataFactoryCfigTexasDesktopHSysBank:new(nil))
+    self:RegTbDataFac("Common", TbDataFactoryCommon:new(nil))
+    self:RegTbDataFac("ConfigTexasDesktop", TbDataFactoryConfigTexasDesktop:new(nil))
+    self:RegTbDataFac("DailyReward", TbDataFactoryDailyReward:new(nil))
+    self:RegTbDataFac("DesktopFastBet", TbDataFactoryDesktopFastBet:new(nil))
+    self:RegTbDataFac("DesktopHBetOperateTexas", TbDataFactoryDesktopHBetOperateTexas:new(nil))
+    self:RegTbDataFac("DesktopHBetPotTexas", TbDataFactoryDesktopHBetPotTexas:new(nil))
+    self:RegTbDataFac("DesktopHBetReward", TbDataFactoryDesktopHBetReward:new(nil))
+    self:RegTbDataFac("DesktopHInfoTexas", TbDataFactoryDesktopHInfoTexas:new(nil))
+    self:RegTbDataFac("DesktopInfoTexas", TbDataFactoryDesktopInfoTexas:new(nil))
+    self:RegTbDataFac("Expression", TbDataFactoryExpression:new(nil))
+    self:RegTbDataFac("HintsInfoTexas", TbDataFactoryHintsInfoTexas:new(nil))
+    self:RegTbDataFac("Item", TbDataFactoryItem:new(nil))
+    self:RegTbDataFac("ItemType", TbDataFactoryItemType:new(nil))
+    self:RegTbDataFac("LanEn", TbDataFactoryLanEn:new(nil))
+    self:RegTbDataFac("Lans", TbDataFactoryLans:new(nil))
+    self:RegTbDataFac("LanZh", TbDataFactoryLanZh:new(nil))
+    self:RegTbDataFac("LotteryTicket", TbDataFactoryLotteryTicket:new(nil))
+    self:RegTbDataFac("LotteryTicketBetOperate", TbDataFactoryLotteryTicketBetOperate:new(nil))
+    self:RegTbDataFac("LotteryTicketGoldPercent", TbDataFactoryLotteryTicketGoldPercent:new(nil))
+    self:RegTbDataFac("OnlineReward", TbDataFactoryOnlineReward:new(nil))
+    self:RegTbDataFac("PresetMsg", TbDataFactoryPresetMsg:new(nil))
+    self:RegTbDataFac("TexasRaiseBlinds", TbDataFactoryTexasRaiseBlinds:new(nil))
+    self:RegTbDataFac("TexasSnowBallRewardInfo", TbDataFactoryTexasSnowBallRewardInfo:new(nil))
+    self:RegTbDataFac("TexasSnowBallRewardPlayerNum", TbDataFactoryTexasSnowBallRewardPlayerNum:new(nil))
+    self:RegTbDataFac("UnitBilling", TbDataFactoryUnitBilling:new(nil))
+    self:RegTbDataFac("UnitConsume", TbDataFactoryUnitConsume:new(nil))
+    self:RegTbDataFac("UnitGiftNormal", TbDataFactoryUnitGiftNormal:new(nil))
+    self:RegTbDataFac("UnitGiftTmp", TbDataFactoryUnitGiftTmp:new(nil))
+    self:RegTbDataFac("UnitGoldPackage", TbDataFactoryUnitGoldPackage:new(nil))
+    self:RegTbDataFac("UnitGoodsVoucher", TbDataFactoryUnitGoodsVoucher:new(nil))
+    self:RegTbDataFac("UnitMagicExpression", TbDataFactoryUnitMagicExpression:new(nil))
+    self:RegTbDataFac("UnitRedEnvelopes", TbDataFactoryUnitRedEnvelopes:new(nil))
+    self:RegTbDataFac("VIPLevel", TbDataFactoryVIPLevel:new(nil))
 end
 
 ---------------------------------------

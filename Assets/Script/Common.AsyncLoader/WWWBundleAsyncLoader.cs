@@ -22,6 +22,12 @@ public class WWWBundleAsyncLoader
     }
 
     //-------------------------------------------------------------------------
+    public void Close()
+    {
+        MapLoaderTicketAndCallBack.Clear();
+    }
+
+    //-------------------------------------------------------------------------
     public LoaderTicket getAssetBundle(string asset_path, Action<string, AssetBundle> asset_bundle_callback)
     {
         LoaderTicket loader_ticket = AsyncAssetLoaderMgr.WWWAsyncLoader.getIsDoneWWW(asset_path, _loadAssetBundleWWWCallBack);

@@ -29,6 +29,17 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void Close()
+        {
+            ActionGetPicSuccess = null;
+            ActionGetPicSuccessWithBytes = null;
+            ActionPayWithIAPFailed = null;
+            ActionPayResult = null;
+            ActionLoginFailed = null;
+            ActionLoginSuccess = null;
+        }
+
+        //---------------------------------------------------------------------
         public void audioChanged(string chang)
         {
             Debug.Log("audioChanged");

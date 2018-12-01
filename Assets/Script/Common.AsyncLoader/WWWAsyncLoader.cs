@@ -27,6 +27,14 @@ public class WWWAsyncLoader
     }
 
     //-------------------------------------------------------------------------
+    public void Close()
+    {
+        MapWWW.Clear();
+        MapWWWIsDone.Clear();
+        MapLoaderTicketAndCallBack.Clear();
+    }
+
+    //-------------------------------------------------------------------------
     public void update(float tm)
     {
         foreach (var i in MapWWW)

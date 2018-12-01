@@ -10,6 +10,8 @@ function ControllerBase:ctor(controller_data, controller_name)
     self.Context = Context
     self.ControllerMgr = ControllerMgr
     self.ViewMgr = ViewMgr
+    self.RPC = self.ControllerMgr.RPC
+    self.MC = CommonMethodType
 end
 
 function ControllerBase:OnCreate()

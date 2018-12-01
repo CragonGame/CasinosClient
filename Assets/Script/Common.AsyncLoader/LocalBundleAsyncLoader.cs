@@ -20,6 +20,14 @@ public class LocalBundleAsyncLoader
     }
 
     //-------------------------------------------------------------------------
+    public void Close()
+    {
+        MapAssetBundle.Clear();
+        MapAssetBundleCreateRequest.Clear();
+        MapLoaderTicketAndCallBack.Clear();
+    }
+
+    //-------------------------------------------------------------------------
     public void update(float tm)
     {
         foreach (var i in MapAssetBundleCreateRequest)

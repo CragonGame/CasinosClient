@@ -21,10 +21,11 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(AsyncAssetLoaderMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 2, 5, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 3, 5, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "createAsyncAssetLoadGroup", _m_createAsyncAssetLoadGroup);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Close", _m_Close);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "WWWAsyncLoader", _g_get_WWWAsyncLoader);
@@ -122,6 +123,33 @@ namespace XLua.CSObjectWrap
                     float _time = (float)LuaAPI.lua_tonumber(L, 2);
                     
                     gen_to_be_invoked.Update( _time );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_Close(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                AsyncAssetLoaderMgr gen_to_be_invoked = (AsyncAssetLoaderMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.Close(  );
                     
                     
                     

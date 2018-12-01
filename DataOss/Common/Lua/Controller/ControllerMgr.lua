@@ -25,7 +25,6 @@ require('ControllerWallet')
 ---------------------------------------
 ControllerMgr = {
     EventSys = nil,
-    ViewMgr = nil,
     Context = Context,
     Json = Context.Json,
     RPC = Context.Rpc,
@@ -41,9 +40,8 @@ function ControllerMgr:Create()
     self.TbDataMgr = self.Context.TbDataMgr
     self.RPC = self.Context.Rpc
     self.LanMgr = self.Context.LanMgr
-    --self.ViewMgr = ViewMgr
 
-    -- 注册所有ControllerFactory类到ControllerMgr中
+    -- 注册所有ControllerFactory类到ControllerMgr中，按音序排序
     self:RegController(ControllerActivityFactory:new(nil))
     self:RegController(ControllerActorFactory:new(nil))
     self:RegController(ControllerBagFactory:new(nil))

@@ -9,8 +9,6 @@ end
 
 ---------------------------------------
 function ControllerWallet:OnCreate()
-    self.RPC = self.ControllerMgr.RPC
-    self.MC = CommonMethodType
 end
 
 ---------------------------------------
