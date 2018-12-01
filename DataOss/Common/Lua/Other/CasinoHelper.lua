@@ -4,16 +4,9 @@
 CasinoHelper = {}
 
 ---------------------------------------
-function CasinoHelper:new(o,m_p,lan_mgr)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-        self.MP =m_p
-        self.LanMgr = lan_mgr
-    end
-    return self.Instance
+function CasinoHelper:Setup(m_p, lan_mgr)
+    self.MP = m_p
+    self.LanMgr = lan_mgr
 end
 
 ---------------------------------------
@@ -52,7 +45,7 @@ function CasinoHelper:TranslateFriendStateEx(friend_info)
                     end
                 elseif (player_playstate.DesktopType == DesktopTypeEx.DesktopH) then
                     friend_state = _eFriendStateClient.TexasDesktopH
-                elseif(player_playstate.DesktopType == DesktopTypeEx.DesktopMatch) then
+                elseif (player_playstate.DesktopType == DesktopTypeEx.DesktopMatch) then
                     friend_state = _eFriendStateClient.DesktopMatch
                 end
             elseif (module == CasinosModule.ZhongFB) then

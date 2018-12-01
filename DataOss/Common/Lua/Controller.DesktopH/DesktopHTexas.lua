@@ -84,7 +84,7 @@ end
 
 ---------------------------------------
 function DesktopHTexas:getMaxCannotBetPecent()
-    local bet_percent = TbDataHelper.Instance:GetCommonValue("DesktopHMaxBetPercentTexas")
+    local bet_percent = TbDataHelper:GetCommonValue("DesktopHMaxBetPercentTexas")
     return bet_percent
 end
 

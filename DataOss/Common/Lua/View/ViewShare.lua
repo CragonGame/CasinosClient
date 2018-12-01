@@ -49,9 +49,9 @@ function ViewShare:loadIconDone(is_success)
     elseif (self.ShareType == ShareType.WeChatMoments) then
         p_t = CS.cn.sharesdk.unity3d.PlatformType.WeChatMoments
     end
-    PicCapture.Instance:CapturePic(pic_name, function()
-        Native.Instance:ShareContent(p_t, self.ViewMgr.LanMgr:getLanValue("PlayGameNow"), pic_path, self.ViewMgr.LanMgr:getLanValue("CragonPoker"),
-                Native.Instance.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Image)--Webpage
+    PicCapture:CapturePic(pic_name, function()
+        Native:ShareContent(p_t, self.ViewMgr.LanMgr:getLanValue("PlayGameNow"), pic_path, self.ViewMgr.LanMgr:getLanValue("CragonPoker"),
+                Native.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Image)--Webpage
     end)
 end
 

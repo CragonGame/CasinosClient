@@ -178,7 +178,7 @@ function ControllerDesktopH:OnHandleEv(ev)
         if (min_golds > self.ControllerActor.PropGoldAcc:get()) then
             local tips = string.format(self.ViewMgr.LanMgr:getLanValue("SitDownFailedTips1"),
                     self.ViewMgr.LanMgr:getLanValue("Chip"),
-                    UiChipShowHelper:getGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase))
+                    UiChipShowHelper:GetGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase))
             ViewHelper:UiShowMsgBox(tips,
                     function()
                         self.ControllerMgr.ViewMgr:CreateView("Shop")
@@ -220,7 +220,7 @@ function ControllerDesktopH:OnHandleEv(ev)
             if (min_golds > self.ControllerActor.PropGoldAcc:get()) then
                 local tips = string.format(self.ViewMgr.LanMgr:getLanValue("RequestBeBankerFailed1"),
                         self.ViewMgr.LanMgr:getLanValue("Chip"),
-                        UiChipShowHelper:getGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase))
+                        UiChipShowHelper:GetGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase))
                 ViewHelper:UiShowMsgBox(tips,
                         function()
                             self.ControllerMgr.ViewMgr:CreateView("Shop")
@@ -798,7 +798,7 @@ function ControllerDesktopH:s2cDesktopHResponseSitdown(result)
     elseif (result == ProtocolResult.ChipNotEnough) then
         local tips = self.ViewMgr.LanMgr:getLanValue("Chip") ..
                 self.ViewMgr.LanMgr:getLanValue("NotEnough") ..
-                UiChipShowHelper:getGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase) ..
+                UiChipShowHelper:GetGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase) ..
                 self.ViewMgr.LanMgr:getLanValue("SitDownFailedTips")
         ViewHelper:UiShowInfoSuccess(tips)
     end
@@ -864,7 +864,7 @@ end
 function ControllerDesktopH:s2cDesktopHResponseGetDailyBetReward(result, reward_gold, bet_reward)
     if (result == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:getLanValue(
-                "GetBetRewardSuccessTips"), UiChipShowHelper:getGoldShowStr(reward_gold, self.ControllerMgr.LanMgr.LanBase)))
+                "GetBetRewardSuccessTips"), UiChipShowHelper:GetGoldShowStr(reward_gold, self.ControllerMgr.LanMgr.LanBase)))
     else
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("GetBetRewardFaiedTips"))
     end

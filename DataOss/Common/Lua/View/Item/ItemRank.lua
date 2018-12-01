@@ -57,7 +57,7 @@ function ItemRank:setRankInfo(view_mgr, player_guid, nick_name, icon_name, accou
     self.ViewHeadIcon:SetPlayerInfo(icon_name, account_id, vip_level)
 
     self.GTextPlayerNickName.text = nick_name
-    local g_t = UiChipShowHelper:getGoldShowStr(value, self.ViewMgr.LanMgr.LanBase, self.ShowValueShortWay)
+    local g_t = UiChipShowHelper:GetGoldShowStr(value, self.ViewMgr.LanMgr.LanBase, self.ShowValueShortWay)
     if value_format ~= nil then
         g_t = string.format("%s%s", g_t, value_format)
     end
@@ -77,6 +77,6 @@ end
 ---------------------------------------
 function ItemRank:playerInfo(player_info, head_icon)
     self.GTextPlayerNickName.text = player_info.PlayerInfoCommon.NickName
-    self.GTextPlayerGold.text = UiChipShowHelper:getGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, self.ShowValueShortWay)
+    self.GTextPlayerGold.text = UiChipShowHelper:GetGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, self.ShowValueShortWay)
     self.ViewHeadIcon.GLoaderPlayerIcon.texture.nativeTexture = head_icon
 end

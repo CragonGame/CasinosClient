@@ -1,28 +1,24 @@
 -- Copyright(c) Cragon. All rights reserved.
--- TODO，目前被当做View使用，待整理
 
 ---------------------------------------
-UiDesktopHRewardPot = ViewBase:new()
+UiDesktopHRewardPot = {
+}
 
 ---------------------------------------
-function UiDesktopHRewardPot:new(o, reward_pot, view_desktop)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.RewardPot = reward_pot
-    o.GTextRewardPot = o.RewardPot:GetChild("RewardPot").asTextField
-    o.ViewDesktopH = view_desktop
-    o.MapRewardPotGolds = {}
-    o.MapWinGold = {}
-    o.MapFTaskerPlayPumpingBetPotGoldAni = {}
-    o.ListLooseUiGold = {}
-    o.RewardPot.onClick:Add(
+function UiDesktopHRewardPot:Create(reward_pot, view_desktop)
+    self.RewardPot = reward_pot
+    self.GTextRewardPot = o.RewardPot:GetChild("RewardPot").asTextField
+    self.ViewDesktopH = view_desktop
+    self.MapRewardPotGolds = {}
+    self.MapWinGold = {}
+    self.MapFTaskerPlayPumpingBetPotGoldAni = {}
+    self.ListLooseUiGold = {}
+    self.RewardPot.onClick:Add(
             function()
-                o:_onClick()
+                self:_onClick()
             end
     )
-    o.ViewMgr = o.ViewDesktopH.ViewMgr
-    return o
+    self.ViewMgr = self.ViewDesktopH.ViewMgr
 end
 
 ---------------------------------------
@@ -144,7 +140,7 @@ function UiDesktopHRewardPot:setRewardGolds1(reward_golds)
     if (self.CurrentTotalRewardPotGolds < 0) then
         self.CurrentTotalRewardPotGolds = 0
     end
-    self.GTextRewardPot.text = UiChipShowHelper:getGoldShowStr(self.CurrentTotalRewardPotGolds,
+    self.GTextRewardPot.text = UiChipShowHelper:GetGoldShowStr(self.CurrentTotalRewardPotGolds,
             self.ViewMgr.LanMgr.LanBase, false)
 end
 

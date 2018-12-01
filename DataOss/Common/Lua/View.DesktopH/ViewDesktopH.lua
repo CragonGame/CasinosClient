@@ -528,7 +528,8 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         local co_stand_chatparent = self.ComUi:GetChild("CoChatParentStandPlayer").asCom
         self.UiDesktopHStandPlayer = UiDesktopHStandPlayer:new(stand_player, co_stand_chatparent, self)
         local reward_pot = self.GCoDesktopH:GetChild("CoRewardPot").asCom
-        self.UiDesktopHRewardPot = UiDesktopHRewardPot:new(nil, reward_pot, self)
+        self.UiDesktopHRewardPot = UiDesktopHRewardPot
+        self.UiDesktopHRewardPot:Setup(reward_pot, self)
 
         local glist_betpot = self.GCoDesktopH:GetChild("ListBetPot").asList
         local last_pot_index = self.ControllerDesktopH.DesktopHBase:getMaxBetpotIndex()

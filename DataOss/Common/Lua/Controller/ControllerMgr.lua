@@ -19,7 +19,7 @@ ControllerMgr = {
 
 ---------------------------------------
 function ControllerMgr:Create()
-    self.EventSys = EventSys:new(nil)
+    self.EventSys = EventSys
     self.ViewMgr = ViewMgr
 end
 

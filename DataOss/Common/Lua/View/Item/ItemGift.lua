@@ -63,7 +63,7 @@ function ItemGift:SetGift(gift_id, is_buygift, is_mine, to_etguid, from_name, gi
         self.GTextGiftName.text = self.LanMgr:getLanValue(tb_gift.Name)
     end
     if (self.GTextGiftValue ~= nil) then
-        local price = UiChipShowHelper:getGoldShowStr(tb_gift.Price, self.LanMgr.LanBase, false)
+        local price = UiChipShowHelper:GetGoldShowStr(tb_gift.Price, self.LanMgr.LanBase, false)
         if (tb_gift.PriceType == PriceType.Chip) then
         elseif (tb_gift.PriceType == PriceType.Gold) then
             price = price .. self.LanMgr:getLanValue("Diamonds")

@@ -272,7 +272,7 @@ function ViewPlayerProfile:SetPlayerInfo(player_info)
     end
     self.UiHeadIcon:SetPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoMore.VipLevel)
     self.GTextPlayerNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(self.PlayerInfo.PlayerInfoCommon.NickName, 21, 6)
-    self.GTextPlayerGolds.text = UiChipShowHelper:getGoldShowStr(self.PlayerInfo.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, false)
+    self.GTextPlayerGolds.text = UiChipShowHelper:GetGoldShowStr(self.PlayerInfo.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, false)
     self.GTextPlayerSign.text = self.PlayerInfo.PlayerInfoMore.IndividualSignature
     self.GTextId.text = "ID: " .. CS.Casinos.LuaHelper.FormatPlayerActorId(self.PlayerInfo.PlayerInfoMore.PlayerId)
 

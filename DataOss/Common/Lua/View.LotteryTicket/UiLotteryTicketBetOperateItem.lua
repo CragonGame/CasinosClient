@@ -25,7 +25,7 @@ function UiLotteryTicketBetOperateItem:SetOperateInfo(tb_operate_id, operate_val
     self.mTbOperateId = tb_operate_id
     self.mCanOperate = can_operate
     self.mIsCurrentOperate = is_currentoperate
-    self.GBtnBetOperate.text = UiChipShowHelper:getGoldShowStr2(operate_value, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
+    self.GBtnBetOperate.text = UiChipShowHelper:GetGoldShowStr2(operate_value, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
     self.GBtnBetOperate.enabled = self.mCanOperate
     self:_setIsCurrentOperate(self.mIsCurrentOperate)
 end

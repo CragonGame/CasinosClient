@@ -21,7 +21,7 @@ function ItemMatchInfo:new(o, com, match_info, self_join, view_mgr)
     local com_snowball = com:GetChild("ComSnowBall").asCom
     com_snowball.visible = match_info.IsSnowballReward
     local text_reward = com:GetChild("TextMatchReward").asTextField
-    text_reward.text = UiChipShowHelper:getGoldShowStr2(match_info.TotalRewardGold, view_mgr.LanMgr.LanBase, nil, 0)
+    text_reward.text = UiChipShowHelper:GetGoldShowStr2(match_info.TotalRewardGold, view_mgr.LanMgr.LanBase, nil, 0)
     local text_siginupfee = com:GetChild("TextApplicationFee").asTextField
     if (match_info.SignupFee == 0) then
         text_siginupfee.text = string.format("[size=20]%s[size]", view_mgr.LanMgr:getLanValue("Free"))
@@ -153,7 +153,7 @@ end
 function ItemMatchInfo:onClickBtnSign()
     if (self.GControllerBtnSigninState.selectedIndex == 0) then
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:getGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:getGoldShowStr3(self.MatchInfo.ServiceFee)),
+        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.ServiceFee)),
                 function()
                     local ev = self.ViewMgr:GetEv("EvUiRequestSignUpMatch")
                     if (ev == nil) then

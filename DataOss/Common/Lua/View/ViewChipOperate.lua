@@ -175,13 +175,13 @@ function ViewChipOperate:setChips(desk_top_chip, desk_bottom_chip)
         top_chip = self.LeftGold
     end
 
-    self.GTextPlusTips.text = UiChipShowHelper:getGoldShowStr(top_chip, self.ViewMgr.LanMgr.LanBase)
-    self.GTextMinusTips.text = UiChipShowHelper:getGoldShowStr(bottom_chip, self.ViewMgr.LanMgr.LanBase)
+    self.GTextPlusTips.text = UiChipShowHelper:GetGoldShowStr(top_chip, self.ViewMgr.LanMgr.LanBase)
+    self.GTextMinusTips.text = UiChipShowHelper:GetGoldShowStr(bottom_chip, self.ViewMgr.LanMgr.LanBase)
     if (self.ChipOperateType == CS.Casinos._eChipOperateType.Transaction) then
-        self.GTextSelfLeft.text = UiChipShowHelper:getGoldShowStr(self.LeftGold, self.ViewMgr.LanMgr.LanBase, false)
+        self.GTextSelfLeft.text = UiChipShowHelper:GetGoldShowStr(self.LeftGold, self.ViewMgr.LanMgr.LanBase, false)
         self.BetGold = 0
     else
-        self.GTextSelfLeft.text = self.ViewMgr.LanMgr:getLanValue("YourBalance") .. ":" .. UiChipShowHelper:getGoldShowStr(self.LeftGold, self.ViewMgr.LanMgr.LanBase)
+        self.GTextSelfLeft.text = self.ViewMgr.LanMgr:getLanValue("YourBalance") .. ":" .. UiChipShowHelper:GetGoldShowStr(self.LeftGold, self.ViewMgr.LanMgr.LanBase)
         self.ViewSlideEx = ViewSlideEx:new(nil, self.GSlider, top_chip, bottom_chip, 0.5,
                 function(value)
                     if (value > self.LeftGold) then
@@ -189,8 +189,8 @@ function ViewChipOperate:setChips(desk_top_chip, desk_bottom_chip)
                     else
                         self.BetGold = value
                     end
-                    self.BetGold = UiChipShowHelper:getValideGold(self.BetGold)
-                    self.GTextCurrentValue.text = UiChipShowHelper:getGoldShowStr(self.BetGold, self.ViewMgr.LanMgr.LanBase)
+                    self.BetGold = UiChipShowHelper:GetValideGold(self.BetGold)
+                    self.GTextCurrentValue.text = UiChipShowHelper:GetGoldShowStr(self.BetGold, self.ViewMgr.LanMgr.LanBase)
                 end
         )
         if (self.ViewSlideEx.CurrentValueNum > self.LeftGold) then
@@ -200,8 +200,8 @@ function ViewChipOperate:setChips(desk_top_chip, desk_bottom_chip)
         end
     end
 
-    self.BetGold = UiChipShowHelper:getValideGold(self.BetGold)
-    self.GTextCurrentValue.text = UiChipShowHelper:getGoldShowStr(self.BetGold, self.ViewMgr.LanMgr.LanBase)
+    self.BetGold = UiChipShowHelper:GetValideGold(self.BetGold)
+    self.GTextCurrentValue.text = UiChipShowHelper:GetGoldShowStr(self.BetGold, self.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------

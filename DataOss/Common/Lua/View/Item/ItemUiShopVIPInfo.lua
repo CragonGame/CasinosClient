@@ -16,7 +16,7 @@ function ItemUiShopVIPInfo:new(o, view_shop, com, tb_viplevel)
     o.ViewVIPSign = ViewVIPSign:new(nil, o.GComVIP:GetChild("CoVIP").asCom)
     o.ViewVIPSign:setVIPLevel(tb_viplevel.Level)
     o.GTextLooseSendGoldPercent.text = tb_viplevel.LooseSendGoldPercent .. view_shop.ViewMgr.LanMgr:getLanValue("Times")
-    o.GTextSafeBox.text = UiChipShowHelper:getGoldShowStr(tb_viplevel.VIPPoint, view_shop.ViewMgr.LanMgr.LanBase, false)
+    o.GTextSafeBox.text = UiChipShowHelper:GetGoldShowStr(tb_viplevel.VIPPoint, view_shop.ViewMgr.LanMgr.LanBase, false)
     o.GTextChargeSend.text = tb_viplevel.ChargeSendPercent * 100 .. "%"
     return o
 end

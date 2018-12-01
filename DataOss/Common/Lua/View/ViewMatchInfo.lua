@@ -241,13 +241,13 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
     if (match_info.SignupFee == 0) then
         text_signUpfee = self.ViewMgr.LanMgr:getLanValue("FreeMatch")
     else
-        text_signUpfee = UiChipShowHelper:getGoldShowStr3(match_info.SignupFee) .. "+" .. UiChipShowHelper:getGoldShowStr3(match_info.ServiceFee) .. self.ViewMgr.LanMgr:getLanValue("MatchFee")
+        text_signUpfee = UiChipShowHelper:GetGoldShowStr3(match_info.SignupFee) .. "+" .. UiChipShowHelper:GetGoldShowStr3(match_info.ServiceFee) .. self.ViewMgr.LanMgr:getLanValue("MatchFee")
     end
     self.GTextApplyFee.text = text_signUpfee
     self.GTextMatchTime.text = self:formatTime(match_info.DtMatchBegin)
     self.GTextStopApplyTime.text = self:formatTime(match_info.DtSignupClose)
     self.GTextEntryNumber.text = string.format("%s%s - %s%s", detailedMatchInfo.PlayerNumMin, self.ViewMgr.LanMgr:getLanValue("People"), detailedMatchInfo.PlayerNumMax, self.ViewMgr.LanMgr:getLanValue("People"))
-    self.GTextInitialChip.text = UiChipShowHelper:getGoldShowStr3(match_info.InitScore)
+    self.GTextInitialChip.text = UiChipShowHelper:GetGoldShowStr3(match_info.InitScore)
     if (match_info.CanRebuyCount > 0) then
         local blind_list = raiseBlindInfo.ListRaiseBlindTbIdCanRebuy
         local format_info = ""
@@ -261,7 +261,7 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
         end
         self.GComReBuy.visible = true
         self.GTextReBuyTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("RebuyTip"), tostring(match_info.CanRebuyCount), format_info,
-                UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.RebuyGold), UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.RebuyScore))
+                UiChipShowHelper:GetGoldShowStr3(raiseBlindInfo.RebuyGold), UiChipShowHelper:GetGoldShowStr3(raiseBlindInfo.RebuyScore))
     else
         self.GComReBuy.visible = false
     end
@@ -278,7 +278,7 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
         end
         self.GGroupAddon.visible = true
         self.GTextAddonTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("AddOnTip"), tostring(match_info.CanAddonCount), format_info,
-                UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.AddonGold), UiChipShowHelper:getGoldShowStr3(raiseBlindInfo.AddonScore))
+                UiChipShowHelper:GetGoldShowStr3(raiseBlindInfo.AddonGold), UiChipShowHelper:GetGoldShowStr3(raiseBlindInfo.AddonScore))
     else
         self.GGroupAddon.visible = false
     end
@@ -468,7 +468,7 @@ function ViewMatchInfo:onClickBtnApply()
     elseif (btnApplyState == 4) then
         -- 报名
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:getGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:getGoldShowStr3(self.MatchInfo.ServiceFee)),
+        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.ServiceFee)),
                 function()
                     local ev = self.ViewMgr:GetEv("EvUiRequestSignUpMatch")
                     if (ev == nil) then

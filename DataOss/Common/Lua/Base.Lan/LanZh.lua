@@ -44,7 +44,7 @@ function LanZh:getLanPackageName()
 end
 
 ---------------------------------------
-function LanZh:getGoldShowStr(gold, show_short_way, precision_length)
+function LanZh:GetGoldShowStr(gold, show_short_way, precision_length)
     local show_str = ""
     if (show_short_way == false)
     then
@@ -114,7 +114,7 @@ function LanZh:getGoldShowStr(gold, show_short_way, precision_length)
 end
 
 ---------------------------------------
-function LanZh:getGoldShowStr2(gold, show_short_way, precision_length)
+function LanZh:GetGoldShowStr2(gold, show_short_way, precision_length)
     local show_str = ""
 
     if (show_short_way == false)

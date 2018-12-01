@@ -474,7 +474,7 @@ function ViewShowFriendDetail:setFriendInfo(friend_item)
     self.CurrentFriendInfo = friend_item
     self.UiHeadIcon:SetPlayerInfo(self.CurrentFriendInfo.PlayerInfoCommon.IconName, self.CurrentFriendInfo.PlayerInfoCommon.AccountId, self.CurrentFriendInfo.PlayerInfoCommon.VIPLevel)
     self.GTextNickName.text = self.CurrentFriendInfo.PlayerInfoCommon.NickName
-    self.GTextChip.text = UiChipShowHelper:getGoldShowStr(self.CurrentFriendInfo.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextChip.text = UiChipShowHelper:GetGoldShowStr(self.CurrentFriendInfo.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase)
     local friend_state_str = ""
     if (self.IsFriendDetail) then
         friend_state_str = controller_im.IMFriendList:getFriendStateStr(self.CurrentFriendInfo.PlayerInfoCommon.PlayerGuid)
@@ -545,7 +545,7 @@ end
 ---------------------------------------
 function ViewShowFriendDetail:updatePlayerGold(gold)
     self.CurrentFriendInfo.PlayerInfoMore.Gold = gold
-    self.GTextChip.text = UiChipShowHelper:getGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextChip.text = UiChipShowHelper:GetGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------

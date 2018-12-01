@@ -262,7 +262,7 @@ function DesktopTexasMTT:chipIsEnough(need_chip)
     if (enough == false) then
         local msg_box = view_mgr:CreateView("MsgBox")
         local tips = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-        tips = string.format(tips, UiChipShowHelper:getGoldShowStr(need_chip, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
+        tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(need_chip, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
         local title = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
         msg_box:showMsgBox1(title, tips,
                 function(bo)

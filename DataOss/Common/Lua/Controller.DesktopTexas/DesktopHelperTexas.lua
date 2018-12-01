@@ -40,8 +40,8 @@ function DesktopHelperTexas:GetDesktopInfoFormat(m_p, data_mgr, desktop_filter, 
     local desktop_f = DesktopFilterTexas:new(nil)
     desktop_f:setData(desktop_f1)
     local tb_desktopinfo = data_mgr:GetData("DesktopInfoTexas", desktop_f.desktop_tableid)
-    desktopinfo_format = desktopinfo_format .. lan_base:getValue("Bet") .. ":" .. UiChipShowHelper:getGoldShowStr(tb_desktopinfo.SmallBlind, lan_base) .. "/" ..
-            UiChipShowHelper:getGoldShowStr(tb_desktopinfo.BigBlind, lan_base)
+    desktopinfo_format = desktopinfo_format .. lan_base:getValue("Bet") .. ":" .. UiChipShowHelper:GetGoldShowStr(tb_desktopinfo.SmallBlind, lan_base) .. "/" ..
+            UiChipShowHelper:GetGoldShowStr(tb_desktopinfo.BigBlind, lan_base)
     local seat_num = 0
     if (desktop_f.seat_num == TexasDesktopSeatNum.Five) then
         seat_num = 5

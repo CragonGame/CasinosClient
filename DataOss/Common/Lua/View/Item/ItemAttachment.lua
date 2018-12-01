@@ -30,13 +30,13 @@ function ItemAttachment:new(o, com, item_data, gold, diamond, view_mgr)
     end
     if (gold > 0) then
         content = self.ViewMgr.LanMgr:getLanValue("Chip") .. "\n" ..
-                UiChipShowHelper:getGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
+                UiChipShowHelper:GetGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
         icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "ChipIcon" .. self.Context.Cfg.ChipIconSolustion)
         o.GLoaderAttachment.color = CS.UnityEngine.Color(0.38, 0.89, 1)
     end
     if (diamond > 0) then
         content = self.ViewMgr.LanMgr:getLanValue("Coin") .. "\n" ..
-                UiChipShowHelper:getGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase)
+                UiChipShowHelper:GetGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase)
         icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "DiamondIcon" .. self.Context.Cfg.ChipIconSolustion)
     end
     o.GTextAttachmentContent.text = content

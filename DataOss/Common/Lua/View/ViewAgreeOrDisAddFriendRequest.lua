@@ -71,7 +71,7 @@ function ViewAgreeOrDisAddFriendRequest:SetPlayerInfo(player_info)
     self.FriendInfo = player_info
     self.ViewHeadIcon:SetPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
     self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.PlayerInfoCommon.NickName, 33, 10)
-    self.GTextChips.text = UiChipShowHelper:getGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextChips.text = UiChipShowHelper:GetGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase)
     local level = self.ViewMgr.LanMgr:getLanValue("Level")
     self.GTextLevel.text = level .. player_info.PlayerInfoMore.Level
 end

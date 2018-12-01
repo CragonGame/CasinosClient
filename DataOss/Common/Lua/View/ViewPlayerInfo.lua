@@ -179,9 +179,9 @@ end
 ---------------------------------------
 function ViewPlayerInfo:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
-        self.GTextChip.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, false)
+        self.GTextChip.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, false)
     elseif (ev.EventName == "EvEntityDiamondChanged") then
-        self.GTextCion.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
+        self.GTextCion.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
     elseif (ev.EventName == "EvGetPicUpLoadSuccess") then
         self.ViewHeadIcon:SetIcon(self.ControllerActor.PropIcon:get(), self.ControllerActor.PropAccountId:get())
         local tips = self.ViewMgr.LanMgr:getLanValue("IconSuccess")
@@ -220,8 +220,8 @@ function ViewPlayerInfo:initPlayerInfo()
     self.GInputIndividualSignature.text = self.ControllerActor.PropIndividualSignature:get()
     self.GTextLevel.text = tostring(self.ControllerActor.PropLevel:get())
     self.GProBarExp.value = self:getCurrentExppro(self.ControllerActor.PropLevel:get(), self.ControllerActor.PropExperience:get())
-    self.GTextChip.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, false)
-    self.GTextCion.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
+    self.GTextChip.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, false)
+    self.GTextCion.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
     self.GTextId.text = "ID: " .. CS.Casinos.UiHelperCasinos.FormatPlayerActorId(self.ControllerActor.PropActorId:get())
     self.GTextJoinInGameTime.text = CS.Casinos.LuaHelper.DataTimeToString(self.ControllerActor.PropJoinDateTime:get(), "yyyy.MM.dd")
     self.GTextPoint.text = self.ControllerActor.PropPoint:get()

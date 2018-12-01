@@ -334,7 +334,7 @@ function PlayerSeatWidgetControllerTexas:sendWinnerChips(winner_golds, map_win_p
                             else
                                 self.PlayerInfo:playerStackChange()
                                 --ViewHelper:SetGObjectVisible(true, self.SeatWidget.GGroupChipValue)
-                                --self.SeatWidget.GTextChipValue.text = UiChipShowHelper:getGoldShowStr(winner_golds, self.PlayerInfo.ViewMgr.LanMgr.LanBase)
+                                --self.SeatWidget.GTextChipValue.text = UiChipShowHelper:GetGoldShowStr(winner_golds, self.PlayerInfo.ViewMgr.LanMgr.LanBase)
                             end
                         end
                     end
@@ -661,7 +661,7 @@ end
 function PlayerSeatWidgetControllerTexas:_showBet()
     if (self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet > 0) then
         ViewHelper:SetGObjectVisible(true, self.SeatWidget.GGroupChipValue)
-        self.SeatWidget.GTextChipValue.text = UiChipShowHelper:getGoldShowStr(self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet,
+        self.SeatWidget.GTextChipValue.text = UiChipShowHelper:GetGoldShowStr(self.PlayerInfo.Player.PlayerDataDesktop.CurrentRoundBet,
                 self.PlayerInfo.ViewMgr.LanMgr.LanBase, true, 1)
     else
         self:_resetGold()

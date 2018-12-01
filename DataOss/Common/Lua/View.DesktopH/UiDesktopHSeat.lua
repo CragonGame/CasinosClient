@@ -32,7 +32,7 @@ function UiDesktopHSeat:SetPlayerData(player_info, seat_index, player_changed)
         end
 
         self.GTextPlayerNickName.text = player_info.PlayerInfoCommon.NickName
-        self.GTextPlayerGolds.text = UiChipShowHelper:getGoldShowStr(player_info.Gold, self.ViewMgr.LanMgr.LanBase)
+        self.GTextPlayerGolds.text = UiChipShowHelper:GetGoldShowStr(player_info.Gold, self.ViewMgr.LanMgr.LanBase)
     end
 
     self.ControllerSeat.selectedIndex = controller_index
@@ -40,7 +40,7 @@ end
 
 ---------------------------------------
 function UiDesktopHSeat:RefreshPlayerGold(gold)
-    self.GTextPlayerGolds.text = UiChipShowHelper:getGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextPlayerGolds.text = UiChipShowHelper:GetGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------

@@ -92,7 +92,7 @@ function ViewGoldTree:setGoldTreeSnapShot(grow_data)
     local tips = ""
     if (self.BGrowData.NextGetRewardGold > 0) then
         self.GTextTakeGoldTips.text = self.ViewMgr.LanMgr:getLanValue("LaterAdd")
-                .. UiChipShowHelper:getGoldShowStr(grow_data.NextGetRewardGold, self.ViewMgr.LanMgr.LanBase) .. self.ViewMgr.LanMgr:getLanValue("Chip")
+                .. UiChipShowHelper:GetGoldShowStr(grow_data.NextGetRewardGold, self.ViewMgr.LanMgr.LanBase) .. self.ViewMgr.LanMgr:getLanValue("Chip")
     else
         tips = self.ViewMgr.LanMgr:getLanValue("MoneyTreeFullOfChips")
     end
@@ -106,7 +106,7 @@ function ViewGoldTree:setGoldTreeSnapShot(grow_data)
     local max_cangetgold = current_maxgetgold - grow_data.GetRewardGold
     self.GTextGoldLimit.text = grow_data.CanGetRewardGold .. self.ViewMgr.LanMgr:getLanValue("CurrentAvailable") ..
             max_cangetgold .. self.ViewMgr.LanMgr:getLanValue("SurplusAvailable")
-    self.GTextMaxCanGetGold.text = UiChipShowHelper:getGoldShowStr(current_maxgetgold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextMaxCanGetGold.text = UiChipShowHelper:GetGoldShowStr(current_maxgetgold, self.ViewMgr.LanMgr.LanBase)
     self.GBtnTakeGold.enabled = grow_data.CanGetRewardGold > 0
     local pro_value = 0
     if (max_cangetgold > 0) then

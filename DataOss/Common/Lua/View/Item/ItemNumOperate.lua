@@ -37,7 +37,7 @@ function ItemNumOperate:new(o, co, init_num, per_operate_num, use_shortway_shown
     then
         o.CurrentNum = 0
     end
-    o.GTextNum.text = UiChipShowHelper:getGoldShowStr(init_num, self.LanMgr.LanBase, o.UseShortWayShowNum)
+    o.GTextNum.text = UiChipShowHelper:GetGoldShowStr(init_num, self.LanMgr.LanBase, o.UseShortWayShowNum)
     return o
 end
 
@@ -49,7 +49,7 @@ end
 ---------------------------------------
 function ItemNumOperate:setCurrentNum(num)
     self.CurrentNum = num
-    self.GTextNum.text = UiChipShowHelper:getGoldShowStr(self.CurrentNum, self.LanMgr.LanBase, self.UseShortWayShowNum)
+    self.GTextNum.text = UiChipShowHelper:GetGoldShowStr(self.CurrentNum, self.LanMgr.LanBase, self.UseShortWayShowNum)
 end
 
 ---------------------------------------
@@ -59,7 +59,7 @@ function ItemNumOperate:_onClickBtnMinue()
     then
         self.CurrentNum = 0
     end
-    self.GTextNum.text = UiChipShowHelper:getGoldShowStr(self.CurrentNum, self.LanMgr.LanBase, self.UseShortWayShowNum)
+    self.GTextNum.text = UiChipShowHelper:GetGoldShowStr(self.CurrentNum, self.LanMgr.LanBase, self.UseShortWayShowNum)
 end
 
 ---------------------------------------
@@ -69,5 +69,5 @@ function ItemNumOperate:_onClickBtnPlus()
     then
         self.CurrentNum = 0
     end
-    self.GTextNum.text = UiChipShowHelper:getGoldShowStr(self.CurrentNum, self.LanMgr.LanBase, self.UseShortWayShowNum)
+    self.GTextNum.text = UiChipShowHelper:GetGoldShowStr(self.CurrentNum, self.LanMgr.LanBase, self.UseShortWayShowNum)
 end

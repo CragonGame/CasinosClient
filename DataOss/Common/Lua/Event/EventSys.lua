@@ -4,7 +4,6 @@ require('EventController')
 
 ---------------------------------------
 EventSys = {
-    Instance = nil,
     TableEvListener = {}, -- key evname value table listener
     TableListenerEv = {}, -- key listener value table evname
     TableEvListenerTransfer = {}, -- value listener
@@ -12,18 +11,7 @@ EventSys = {
 }
 
 ---------------------------------------
-function EventSys:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-    end
-    return self.Instance
-end
-
----------------------------------------
-function EventSys:OnCreate()
+function EventSys:Setup()
 end
 
 ---------------------------------------

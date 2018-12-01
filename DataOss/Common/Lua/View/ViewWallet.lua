@@ -84,8 +84,8 @@ end
 
 ---------------------------------------
 function ViewWallet:setPlayerGoldAndDiamond()
-    self.GTextSelfGold.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
-    self.GTextSelfDiamond.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
+    self.GTextSelfGold.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
+    self.GTextSelfDiamond.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
 end
 
 ---------------------------------------

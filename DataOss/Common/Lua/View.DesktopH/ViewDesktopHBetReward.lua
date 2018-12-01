@@ -17,8 +17,8 @@ function UiDesktopHBetRewardItem:new(o, bet_reward, co_betreward, betreward_tbid
     o.GTextBetRewardValue = o.GCoBetReward:GetChild("RewardValue").asTextField
     o.GTextBetValue = o.GCoBetReward:GetChild("BetValue").asTextField
     local tb_reward = o.ViewMgr.TbDataMgr:GetData("DesktopHBetReward", betreward_tbid)
-    o.GTextBetRewardValue.text = UiChipShowHelper:getGoldShowStr(tb_reward.BetRewardValue, o.ViewMgr.LanMgr.LanBase)
-    o.GTextBetValue.text = UiChipShowHelper:getGoldShowStr(tb_reward.BetValue, o.ViewMgr.LanMgr.LanBase)
+    o.GTextBetRewardValue.text = UiChipShowHelper:GetGoldShowStr(tb_reward.BetRewardValue, o.ViewMgr.LanMgr.LanBase)
+    o.GTextBetValue.text = UiChipShowHelper:GetGoldShowStr(tb_reward.BetValue, o.ViewMgr.LanMgr.LanBase)
     o.GCoBetReward.onClick:Add(
             function()
                 o:_onClickBetReward()
@@ -48,8 +48,8 @@ function UiDesktopHBetRewardItem:_onClickBetReward()
 
         local tb_reward = tb_datamgr:GetData("DesktopHBetReward", self.BetRewardTbId)
         tips = string.format(self.ViewMgr.LanMgr:getLanValue("BetRechCanCollectBox"),
-                UiChipShowHelper:getGoldShowStr(tb_reward.BetValue, self.ViewMgr.LanMgr.LanBase),
-                UiChipShowHelper:getGoldShowStr(reward_gold, self.ViewMgr.LanMgr.LanBase))
+                UiChipShowHelper:GetGoldShowStr(tb_reward.BetValue, self.ViewMgr.LanMgr.LanBase),
+                UiChipShowHelper:GetGoldShowStr(reward_gold, self.ViewMgr.LanMgr.LanBase))
 
         local ev = self.ViewMgr:GetEv("EvDesktopHGetBetReward")
         if (ev == nil) then
@@ -119,7 +119,7 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
         if (ev.EventName == "EvEntityInitBetReward") then
             self.BDesktopHDialyBetReward = ev.init_dailybet_reward
             local current_betgold = self.BDesktopHDialyBetReward.TotalBetGold
-            self.GTextBetTotal.text = UiChipShowHelper:getGoldShowStr(current_betgold,
+            self.GTextBetTotal.text = UiChipShowHelper:GetGoldShowStr(current_betgold,
                     self.ViewMgr.LanMgr.LanBase)
 
             local can_get = false

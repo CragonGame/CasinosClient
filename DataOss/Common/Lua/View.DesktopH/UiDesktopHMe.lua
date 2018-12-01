@@ -267,5 +267,5 @@ end
 
 ---------------------------------------
 function UiDesktopHMe:_setGold1(gold)
-    self.SelfGolds.text = UiChipShowHelper:getGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase, true, 2)
+    self.SelfGolds.text = UiChipShowHelper:GetGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase, true, 2)
 end

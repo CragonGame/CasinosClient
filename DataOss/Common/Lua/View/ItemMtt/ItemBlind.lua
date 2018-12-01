@@ -11,8 +11,8 @@ function ItemBlind:new(o, com, data, lanbase)
     local text_level = com:GetChild("TextLevel").asTextField
     text_level.text = tostring(data.Id)
     local text_blind = com:GetChild("TextBlind").asTextField
-    text_blind.text = UiChipShowHelper:getGoldShowStr3(data.BlindsSmall) .. "/" .. UiChipShowHelper:getGoldShowStr3(data.BlindsBig)
+    text_blind.text = UiChipShowHelper:GetGoldShowStr3(data.BlindsSmall) .. "/" .. UiChipShowHelper:GetGoldShowStr3(data.BlindsBig)
     local text_ante = com:GetChild("TextAnte").asTextField
-    text_ante.text = UiChipShowHelper:getGoldShowStr3(data.Ante)
+    text_ante.text = UiChipShowHelper:GetGoldShowStr3(data.Ante)
     return o
 end

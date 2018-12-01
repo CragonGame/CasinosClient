@@ -61,7 +61,7 @@ end
 ---------------------------------------
 function UiDesktopHBetPotItem:SetBetPotTotalChips(total_chips)
     if (total_chips > 0) then
-        self.GTextBetChipsTotal.text = UiChipShowHelper:getGoldShowStr2(total_chips, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
+        self.GTextBetChipsTotal.text = UiChipShowHelper:GetGoldShowStr2(total_chips, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
     else
         self.GTextBetChipsTotal.text = ""
     end
@@ -72,7 +72,7 @@ function UiDesktopHBetPotItem:SetBetPotSelfChips(self_betchips)
     self.SelfBetChips = self_betchips
     if (self.SelfBetChips > 0) then
         self.GTextBetChipsSelf.visible = true
-        self.GTextBetChipsSelf.text = UiChipShowHelper:getGoldShowStr2(self.SelfBetChips, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
+        self.GTextBetChipsSelf.text = UiChipShowHelper:GetGoldShowStr2(self.SelfBetChips, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
     else
         self.GTextBetChipsSelf.text = ""
         self.GTextBetChipsSelf.visible = false

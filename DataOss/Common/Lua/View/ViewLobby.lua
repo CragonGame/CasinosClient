@@ -179,7 +179,7 @@ function ViewLobby:initPlayerInfo()
     local text_playerGoldAmount = self.ComUi:GetChild("PlayerGoldAmount").asTextField
     text_playerGoldAmount.text = tostring(self.ControllerActor.PropDiamond:get())
     local text_playerChipAmount = self.ComUi:GetChild("PlayerChipAmount").asTextField
-    text_playerChipAmount.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
+    text_playerChipAmount.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------
@@ -333,7 +333,7 @@ function ViewLobby:onClickBtnPersonInfo()
     end
     local chip_acc = self.ControllerActor.PropGoldAcc:get()
     local scroll_index = -1
-    local tbdata_desktopinfo = TexasHelper:getTbDataDesktopInfoSuitable(self.ViewMgr.TbDataMgr, chip_acc)
+    local tbdata_desktopinfo = TexasHelper:GetTbDataDesktopInfoSuitable(self.ViewMgr.TbDataMgr, chip_acc)
     local betChipOperateItem = self.MapBetChipOperateItem[tbdata_desktopinfo.Id]
     scroll_index = betChipOperateItem.CurrentIndex
     if (scroll_index ~= -1) then
@@ -434,12 +434,12 @@ function ViewLobby:onBetChipOperateListScrollEnd()
     local tips = ""
     if (tb_desktop ~= nil) then
         local tb_d = tb_desktop
-        tips = self.ViewMgr.LanMgr:getLanValue("BuyIn") .. ":" .. UiChipShowHelper:getGoldShowStr(tb_d.BetMin, self.ViewMgr.LanMgr.LanBase) .. "/"
-                .. UiChipShowHelper:getGoldShowStr(tb_d.BetMax, self.ViewMgr.LanMgr.LanBase)
+        tips = self.ViewMgr.LanMgr:getLanValue("BuyIn") .. ":" .. UiChipShowHelper:GetGoldShowStr(tb_d.BetMin, self.ViewMgr.LanMgr.LanBase) .. "/"
+                .. UiChipShowHelper:GetGoldShowStr(tb_d.BetMax, self.ViewMgr.LanMgr.LanBase)
     end
     self.DeskSearchFilter.desktop_tableid = tb_desktop.Id
     local gold_acc = self.ControllerActor.PropGoldAcc:get()
-    local can_play = TexasHelper:enoughChip4DesktopBetMin(self.CasinosContext.TbDataMgrLua, gold_acc,
+    local can_play = TexasHelper:EnoughChip4DesktopBetMin(self.CasinosContext.TbDataMgrLua, gold_acc,
             self.DeskSearchFilter.desktop_tableid)
     if (can_play == false) then
         tips = self.ViewMgr.LanMgr:getLanValue("NoEnoughChipCanotPlay")

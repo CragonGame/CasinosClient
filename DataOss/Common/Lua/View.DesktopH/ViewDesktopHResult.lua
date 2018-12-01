@@ -17,7 +17,7 @@ function UiDesktopHDlgGameEndResultWinPlayerItem:new(o, com, player_info, rank, 
     o.GTextGolds = o.GCoPlayerInfo:GetChild("WinGold").asTextField
     o.GTextRank = o.GCoPlayerInfo:GetChild("Rank").asTextField
     o.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.nick_name, 15, 4)
-    o.GTextGolds.text = UiChipShowHelper:getGoldShowStr(player_info.win_gold, view_mgr.LanMgr.LanBase, false)
+    o.GTextGolds.text = UiChipShowHelper:GetGoldShowStr(player_info.win_gold, view_mgr.LanMgr.LanBase, false)
     o.GTextRank.text = tostring(rank)
     return o
 end
@@ -148,10 +148,10 @@ end
 ---------------------------------------
 function ViewDesktopHResult:SetGameEndResult(bank_name, self_wingolds, self_betgolds,
                                              map_betpot_info, bankerpot_info, list_gameend_win_player)
-    self.GTextSelfWin.text = UiChipShowHelper:getGoldShowStr(self_wingolds,
+    self.GTextSelfWin.text = UiChipShowHelper:GetGoldShowStr(self_wingolds,
             self.ViewMgr.LanMgr.LanBase, false)
     if (self.GTextSelfBet ~= nil) then
-        self.GTextSelfBet.text = UiChipShowHelper:getGoldShowStr(self_betgolds, self.ViewMgr.LanMgr.LanBase, false)
+        self.GTextSelfBet.text = UiChipShowHelper:GetGoldShowStr(self_betgolds, self.ViewMgr.LanMgr.LanBase, false)
     end
     if (list_gameend_win_player ~= nil) then
         local rank = 1
@@ -165,7 +165,7 @@ function ViewDesktopHResult:SetGameEndResult(bank_name, self_wingolds, self_betg
     self.GTextBankName.text = bank_name
     if (bankerpot_info ~= nil) then
         local bank_wingolds = bankerpot_info.stack_after - bankerpot_info.stack_before
-        self.GTextBanWin.text = UiChipShowHelper:getGoldShowStr(bank_wingolds, self.ViewMgr.LanMgr.LanBase, false)
+        self.GTextBanWin.text = UiChipShowHelper:GetGoldShowStr(bank_wingolds, self.ViewMgr.LanMgr.LanBase, false)
         local bank_iswin = bank_wingolds >= 0
         local co_pot_result = CS.FairyGUI.UIPackage.CreateObject(self.ViewDesktopH:getDesktopBasePackageName(), "CoPotResult").asCom
         local co_bank_result = (self.GListPotResult:AddChild(co_pot_result)).asCom

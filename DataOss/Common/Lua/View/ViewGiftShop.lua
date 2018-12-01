@@ -61,8 +61,8 @@ end
 function ViewGiftShop:setGiftShopInfo(desktop_gift, from_etguid, to_etguid)
     self.mFromEtCuid = from_etguid
     self.mToEtGuid = to_etguid
-    self.GTextChips.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
-    self.GTextCoin.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase)
+    self.GTextChips.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
+    self.GTextCoin.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase)
     for key, value in pairs(self.CasinosContext.TbDataMgrLua:GetMapData("ItemType")) do
         local tb_item = value
         if (tb_item.ParentTbId ~= self.mNotDesktopGiftTypeld and tb_item.ParentTbId ~= self.mDesktopGiftTypeld) then

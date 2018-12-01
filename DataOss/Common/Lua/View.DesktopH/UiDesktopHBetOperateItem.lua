@@ -39,7 +39,7 @@ function UiDesktopHBetOperateItem:SetOperateInfo(tb_operate_id, operate_value, c
     local text_operate_value = self.GComBetOperate:GetChild("TextOperateValue")
     if (text_operate_value ~= nil)
     then
-        text_operate_value.text = CS.Casinos.CasinosContext.Instance.UiChipShowHelper.getGoldShowStr(operate_value, self.ViewDesktopH.ViewMgr.LanBase, true, 0)
+        text_operate_value.text = CS.Casinos.CasinosContext.Instance.UiChipShowHelper.GetGoldShowStr(operate_value, self.ViewDesktopH.ViewMgr.LanBase, true, 0)
     end
     self:_setCanOperate(self.mCanOperate)
     self:_setIsCurrentOperate(self.mIsCurrentOperate)

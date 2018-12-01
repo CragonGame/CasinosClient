@@ -293,8 +293,8 @@ function ViewCreateMatch:onSliderStartScoreChanged()
     local value = self.GSliderStartScoreExtand:onSliderChange()
     if (value ~= nil) then
         self.StartScore = value
-        self.GTextStartScore.text = UiChipShowHelper:getGoldShowStr3(value) .. " " .. math.floor(value / self.StartBlind) .. "BB"
-        self.GTextStartScore1.text = UiChipShowHelper:getGoldShowStr3(value)
+        self.GTextStartScore.text = UiChipShowHelper:GetGoldShowStr3(value) .. " " .. math.floor(value / self.StartBlind) .. "BB"
+        self.GTextStartScore1.text = UiChipShowHelper:GetGoldShowStr3(value)
         local tb_mgr = CS.Casinos.CasinosContext.Instance.TbDataMgrLua
         local list_data = tb_mgr:GetMapData(self.BlindTableName)
         local temp = self.StartScore / 10
@@ -339,7 +339,7 @@ function ViewCreateMatch:onSliderStartBlindChanged()
                 self.StartBlindId = i
             end
         end
-        self.GTextStartScore.text = UiChipShowHelper:getGoldShowStr3(self.StartScore) .. " " .. math.floor(self.StartScore / self.StartBlind)
+        self.GTextStartScore.text = UiChipShowHelper:GetGoldShowStr3(self.StartScore) .. " " .. math.floor(self.StartScore / self.StartBlind)
                 .. "BB"
     end
 end

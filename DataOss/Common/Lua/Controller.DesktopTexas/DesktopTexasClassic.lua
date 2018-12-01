@@ -43,13 +43,13 @@ function DesktopTexasClassic:OnHandleEv(ev)
     then
         if (ev.EventName == "EvUiClickSeat")
         then
-            local enough = TexasHelper:enoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr, self.ControllerActor.PropGoldAcc:get(),
+            local enough = TexasHelper:EnoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr, self.ControllerActor.PropGoldAcc:get(),
                     self.NormalTexas.DesktopTbId)
             if (enough == false)
             then
                 local msg_box = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("MsgBox")
                 local tips = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-                tips = string.format(tips, UiChipShowHelper:getGoldShowStr(self.BetMin, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
+                tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
                 local title = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
                 msg_box:showMsgBox1(title, tips,
                         function(bo)
@@ -100,14 +100,14 @@ function DesktopTexasClassic:OnHandleEv(ev)
         then
             if (self.DesktopBase.MeP.PlayerDataDesktop.Stack < self.BetMin)
             then
-                local enough = TexasHelper:enoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr,
+                local enough = TexasHelper:EnoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr,
                         self.ControllerActor.PropGoldAcc:get(), self.NormalTexas.DesktopTbId)
 
                 if (enough == false)
                 then
                     local msg_box = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("MsgBox")
                     local tips = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-                    tips = string.format(tips, UiChipShowHelper:getGoldShowStr(self.BetMin, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
+                    tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
                     local title = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
                     msg_box:showMsgBox1(title, tips,
                             function(bo)
@@ -141,7 +141,7 @@ function DesktopTexasClassic:OnHandleEv(ev)
             end
         elseif (ev.EventName == "EvUiCreateExchangeChip")
         then
-            local enough = TexasHelper:enoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr, self.ControllerActor.PropGoldAcc:get(),
+            local enough = TexasHelper:EnoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr, self.ControllerActor.PropGoldAcc:get(),
                     self.NormalTexas.DesktopTbId)
 
             local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
@@ -149,7 +149,7 @@ function DesktopTexasClassic:OnHandleEv(ev)
             then
                 local msg_box = view_mgr:CreateView("MsgBox")
                 local tips = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-                tips = string.format(tips, UiChipShowHelper:getGoldShowStr(self.BetMin, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
+                tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
                 local title = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
                 msg_box:showMsgBox1(title, tips,
                         function(bo)
@@ -272,7 +272,7 @@ function DesktopTexasClassic:checkMeStack(stack)
             -- 筹码（账户）不够
             local msg_box = self.DesktopBase.ControllerPlayer.ControllerMgr.ViewMgr:CreateView("MsgBox")
             local tips = self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-            tips = string.format(tips, UiChipShowHelper:getGoldShowStr(self.BetMin, self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr.LanBase))
+            tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr.LanBase))
             local title = self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("ChipNotEnough")
             msg_box:showMsgBox1(title, tips,
                     function(bo)

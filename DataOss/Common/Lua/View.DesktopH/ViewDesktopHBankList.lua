@@ -134,7 +134,7 @@ function ViewDesktopHBankList:initBeBankPlayer(desktoph, list_bebankplayer, bank
     local golds_info = self.ViewDesktopH.UiDesktopHBase:getBeBankPlayerMinGolds()
     self.BeBankMinTakeGolds = golds_info.MinTakeGolds
     self.LeaveMingGolds = golds_info.MinLeaveGolds
-    self.CurrentTakeStack = UiChipShowHelper:getValideGold(self.BeBankMinTakeGolds)
+    self.CurrentTakeStack = UiChipShowHelper:GetValideGold(self.BeBankMinTakeGolds)
     self:_initBeBankPlayer(list_bebankplayer, bank_player, is_bankplayer)
 end
 
@@ -171,8 +171,8 @@ function ViewDesktopHBankList:_initBeBankPlayer(list_bebankplayer, bank_player, 
 
     self:_updateBankPlayerInfo(bank_player)
 
-    local min_takegolds = UiChipShowHelper:getGoldShowStr(self.BeBankMinTakeGolds, self.ViewMgr.LanMgr.LanBase)
-    local min_leavegolds = UiChipShowHelper:getGoldShowStr(self.LeaveMingGolds, self.ViewMgr.LanMgr.LanBase)
+    local min_takegolds = UiChipShowHelper:GetGoldShowStr(self.BeBankMinTakeGolds, self.ViewMgr.LanMgr.LanBase)
+    local min_leavegolds = UiChipShowHelper:GetGoldShowStr(self.LeaveMingGolds, self.ViewMgr.LanMgr.LanBase)
     self.GTextBeBankTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("ConditionOfBeBanker"), min_takegolds, min_leavegolds)
     if (self.GTextBeBankSelfGold ~= nil) then
         if (self_data ~= nil) then
@@ -183,7 +183,7 @@ function ViewDesktopHBankList:_initBeBankPlayer(list_bebankplayer, bank_player, 
 
         self:_setMinBeBankPlayerGold(true)
 
-        self.GTextBeBankSelfGold.text = UiChipShowHelper:getGoldShowStr(self.ViewDesktopH.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
+        self.GTextBeBankSelfGold.text = UiChipShowHelper:GetGoldShowStr(self.ViewDesktopH.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
         local can_bebank = self.ViewDesktopH.ControllerActor.PropGoldAcc:get() >= self.BeBankMinTakeGolds
         if (can_bebank == false) then
             self.GTextBeBankSelfGold.color = CS.UnityEngine.Color.red
@@ -201,10 +201,10 @@ function ViewDesktopHBankList:_updateBankPlayerInfo(bank_player)
         if (self.GTextBankPlayerNickName ~= nil) then
             self.GTextBankPlayerNickName.text = bank_player.PlayerInfoCommon.NickName
 
-            local gold_str = UiChipShowHelper:getGoldShowStr(bank_player.Gold, self.ViewMgr.LanMgr.LanBase)
+            local gold_str = UiChipShowHelper:GetGoldShowStr(bank_player.Gold, self.ViewMgr.LanMgr.LanBase)
             if (self.Context.Cfg.DesktopHSysBankShowDBValue and CS.System.String.IsNullOrEmpty(bank_player.PlayerInfoCommon.PlayerGuid)) then
                 local sys_bank_initgold = self.ViewDesktopH.UiDesktopHBase:getSysBankPlayerInitGold()
-                gold_str = UiChipShowHelper:getGoldShowStr(sys_bank_initgold, self.ViewMgr.LanMgr.LanBase)
+                gold_str = UiChipShowHelper:GetGoldShowStr(sys_bank_initgold, self.ViewMgr.LanMgr.LanBase)
             end
             self.GTextBankPlayerGolds.text = gold_str
         end
@@ -230,12 +230,12 @@ function ViewDesktopHBankList:_setMinBeBankPlayerGold(is_init)
             if (slider_value == 1) then
                 self.CurrentTakeStack = current_value
             else
-                self.CurrentTakeStack = UiChipShowHelper:getValideGold(current_value)
+                self.CurrentTakeStack = UiChipShowHelper:GetValideGold(current_value)
             end
-            self.GTextBeBankPlayerGoldLimit.text = UiChipShowHelper:getGoldShowStr(self.CurrentTakeStack, self.ViewMgr.LanMgr.LanBase)
+            self.GTextBeBankPlayerGoldLimit.text = UiChipShowHelper:GetGoldShowStr(self.CurrentTakeStack, self.ViewMgr.LanMgr.LanBase)
         end
     else
-        self.GTextBeBankPlayerGoldLimit.text = UiChipShowHelper:getGoldShowStr(self.CurrentTakeStack, self.ViewMgr.LanMgr.LanBase)
+        self.GTextBeBankPlayerGoldLimit.text = UiChipShowHelper:GetGoldShowStr(self.CurrentTakeStack, self.ViewMgr.LanMgr.LanBase)
     end
 end
 

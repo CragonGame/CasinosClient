@@ -46,12 +46,12 @@ function ItemLobbyDesk:init()
     local tb_desktop = CasinosContext.TbDataMgrLua:GetData("DesktopInfoTexas", self.DeskTopInfo.desktop_tableid)
     local desk_play_chips
     if self.DeskTopInfo.ante > 0 then
-        desk_play_chips = UiChipShowHelper:getGoldShowStr(tb_desktop.SmallBlind, self.ViewMgr.LanMgr.LanBase)
-                .. "/" .. UiChipShowHelper:getGoldShowStr(tb_desktop.BigBlind, self.ViewMgr.LanMgr.LanBase) .. ","
-                .. UiChipShowHelper:getGoldShowStr(self.DeskTopInfo.ante, self.ViewMgr.LanMgr.LanBase)
+        desk_play_chips = UiChipShowHelper:GetGoldShowStr(tb_desktop.SmallBlind, self.ViewMgr.LanMgr.LanBase)
+                .. "/" .. UiChipShowHelper:GetGoldShowStr(tb_desktop.BigBlind, self.ViewMgr.LanMgr.LanBase) .. ","
+                .. UiChipShowHelper:GetGoldShowStr(self.DeskTopInfo.ante, self.ViewMgr.LanMgr.LanBase)
     else
-        desk_play_chips = UiChipShowHelper:getGoldShowStr(tb_desktop.SmallBlind, self.ViewMgr.LanMgr.LanBase)
-                .. "/" .. UiChipShowHelper:getGoldShowStr(tb_desktop.BigBlind, self.ViewMgr.LanMgr.LanBase)
+        desk_play_chips = UiChipShowHelper:GetGoldShowStr(tb_desktop.SmallBlind, self.ViewMgr.LanMgr.LanBase)
+                .. "/" .. UiChipShowHelper:GetGoldShowStr(tb_desktop.BigBlind, self.ViewMgr.LanMgr.LanBase)
     end
 
     self.GTextBlindBetTips.text = desk_play_chips
@@ -67,7 +67,7 @@ function ItemLobbyDesk:init()
         self.SeatParentName = self.NineSeatParent
         self.SeatCount = 9
     end
-    self.CanPlay = TexasHelper:enoughChip4DesktopBetMin(CasinosContext.TbDataMgrLua, gold_acc,
+    self.CanPlay = TexasHelper:EnoughChip4DesktopBetMin(CasinosContext.TbDataMgrLua, gold_acc,
             self.DeskTopInfo.desktop_tableid)
     local play_or_view = nil
     if (self.DeskTopInfo:isFull() or self.CanPlay == false) then

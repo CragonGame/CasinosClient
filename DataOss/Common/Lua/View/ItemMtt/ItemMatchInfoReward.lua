@@ -28,7 +28,7 @@ function ItemMatchInfoReward:new(o,com,reward,view_mgr)
 	local temp = {}
 	if(reward.Gold ~= 0)
 	then
-		table.insert(temp,UiChipShowHelper:getGoldShowStr(reward.Gold,view_mgr.LanMgr.LanBase))
+		table.insert(temp,UiChipShowHelper:GetGoldShowStr(reward.Gold,view_mgr.LanMgr.LanBase))
 		table.insert(temp,view_mgr.LanMgr:getLanValue("Chip"))
 	end
 	if(reward.RedEnvelopes ~= 0)
@@ -37,7 +37,7 @@ function ItemMatchInfoReward:new(o,com,reward,view_mgr)
 		if l_t >0 then
 			table.insert(temp," + ")
 		end
-		table.insert(temp,UiChipShowHelper:getGoldShowStr(reward.RedEnvelopes,view_mgr.LanMgr.LanBase,0))
+		table.insert(temp,UiChipShowHelper:GetGoldShowStr(reward.RedEnvelopes,view_mgr.LanMgr.LanBase,0))
 		table.insert(temp,view_mgr.LanMgr:getLanValue("WechatRedEnvelopes"))
 	end
 	if(reward.ItemId ~= 0)

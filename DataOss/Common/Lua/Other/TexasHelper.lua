@@ -1,10 +1,11 @@
 -- Copyright (c) Cragon. All rights reserved.
 
 ---------------------------------------
-TexasHelper = {}
+TexasHelper = {
+}
 
 ---------------------------------------
-function TexasHelper:getTbDataDesktopInfoSuitable(data_mgr, chip_acc)
+function TexasHelper:GetTbDataDesktopInfoSuitable(data_mgr, chip_acc)
     local map_tbdatadesktopinfo = data_mgr:GetMapData("DesktopInfoTexas")
     local tbdata_desktopinfo = nil
     for key, value in pairs(map_tbdatadesktopinfo) do
@@ -26,7 +27,7 @@ function TexasHelper:getTbDataDesktopInfoSuitable(data_mgr, chip_acc)
 end
 
 ---------------------------------------
-function TexasHelper:getTbDataMustBetDesktopInfoSuitable(data_mgr, chip_acc)
+function TexasHelper:GetTbDataMustBetDesktopInfoSuitable(data_mgr, chip_acc)
     local map_tbdatadesktopinfo = data_mgr:GetMapData("MustBetDesktopInfoTexas");
 
     local tbdata_desktopinfo = nil
@@ -53,7 +54,7 @@ function TexasHelper:getTbDataMustBetDesktopInfoSuitable(data_mgr, chip_acc)
 end
 
 ---------------------------------------
-function TexasHelper:enoughChip4DesktopBetMin(data_mgr, chip, tbdata_desktopinfo_id)
+function TexasHelper:EnoughChip4DesktopBetMin(data_mgr, chip, tbdata_desktopinfo_id)
     local chip_enough = false
     local tbdata_desktopinfo = data_mgr:GetData("DesktopInfoTexas", tbdata_desktopinfo_id)
     if (tbdata_desktopinfo ~= nil) then
@@ -63,7 +64,7 @@ function TexasHelper:enoughChip4DesktopBetMin(data_mgr, chip, tbdata_desktopinfo
 end
 
 ---------------------------------------
-function TexasHelper:calcAutoPushStack(data_mgr, chip_acc, tbdata_desktopinfo_id)
+function TexasHelper:CalcAutoPushStack(data_mgr, chip_acc, tbdata_desktopinfo_id)
     local push_stack = 0
     local tbdata_desktopinfo = data_mgr:GetData("DesktopInfoTexas", tbdata_desktopinfo_id)
     if (tbdata_desktopinfo ~= nil) then

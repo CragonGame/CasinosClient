@@ -431,9 +431,9 @@ function ViewMain:OnHandleEv(ev)
             end
             self:setFriendInfo(ev.map_friend)
         elseif (ev.EventName == "EvEntityGoldChanged") then
-            self.UiPlayerInfoSelf:updatePlayerGold(UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, true, 2))
+            self.UiPlayerInfoSelf:updatePlayerGold(UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, true, 2))
         elseif (ev.EventName == "EvEntityDiamondChanged") then
-            self.UiPlayerInfoSelf:updatePlayerDiamond(UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, true, 2))
+            self.UiPlayerInfoSelf:updatePlayerDiamond(UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, true, 2))
         elseif (ev.EventName == "EvEntityRecommendPlayerList") then
             self:setRecommandFriendInfo(ev.list_recommend)
         elseif (ev.EventName == "EvEntityPlayerInfoChanged") then
@@ -468,7 +468,7 @@ function ViewMain:OnHandleEv(ev)
             local friend_guid = ev.friend_guid
             local friend_gold = ev.current_gold
             if (self.CurrentFriendItem ~= nil and self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid == friend_guid) then
-                local str_gold = UiChipShowHelper:getGoldShowStr(friend_gold, self.ViewMgr.LanMgr.LanBase, true, 2)
+                local str_gold = UiChipShowHelper:GetGoldShowStr(friend_gold, self.ViewMgr.LanMgr.LanBase, true, 2)
                 self.UiPlayerInfoCurrentFriend:updatePlayerGold(str_gold)
             end
         elseif (ev.EventName == "EvEntityFriendOnlineStateChange") then
@@ -544,8 +544,8 @@ function ViewMain:SetPlayerInfo()
     local gold_acc = self.ControllerActor.PropGoldAcc:get()
     local diamond = self.ControllerActor.PropDiamond:get()
 
-    local str_goldacc = UiChipShowHelper:getGoldShowStr(gold_acc, self.ViewMgr.LanMgr.LanBase, true, 2)
-    local str_diamond = UiChipShowHelper:getGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase, true, 2)
+    local str_goldacc = UiChipShowHelper:GetGoldShowStr(gold_acc, self.ViewMgr.LanMgr.LanBase, true, 2)
+    local str_diamond = UiChipShowHelper:GetGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase, true, 2)
     local icon = self.ControllerActor.PropIcon:get()
     local acc_id = self.ControllerActor.PropAccountId:get()
     local vip_level = self.ControllerActor.PropVIPLevel:get()
@@ -609,7 +609,7 @@ function ViewMain:setCurrentFriendInfo(friend_item)
     self.BtnInviteFriend.visible = false
     local friend_state = self.ControllerIM.IMFriendList:getFriendStateStr(self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid)
     self.UiPlayerInfoCurrentFriend:SetPlayerInfo(self.CurrentFriendItem.PlayerInfoCommon.NickName,
-            UiChipShowHelper:getGoldShowStr(self.CurrentFriendItem.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, true, 2),
+            UiChipShowHelper:GetGoldShowStr(self.CurrentFriendItem.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, true, 2),
             friend_state, self.CurrentFriendItem.PlayerInfoCommon.IconName, self.CurrentFriendItem.PlayerInfoCommon.AccountId,
             self.CurrentFriendItem.PlayerInfoCommon.VIPLevel,
             self.CurrentFriendItem.PlayerInfoMore.OnlineState == PlayerOnlineState.Online)
@@ -982,7 +982,7 @@ function ViewMain:refreshCurrentFriendInfo(player_info)
         self.CurrentFriendItem = player_info
         local friend_state = self.ControllerIM.IMFriendList:getFriendStateStr(self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid)
         self.UiPlayerInfoCurrentFriend:SetPlayerInfo1(player_info.PlayerInfoCommon.NickName,
-                UiChipShowHelper:getGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase),
+                UiChipShowHelper:GetGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase),
                 friend_state,
                 player_info.PlayerInfoMore.OnlineState == PlayerOnlineState.Online)
     end

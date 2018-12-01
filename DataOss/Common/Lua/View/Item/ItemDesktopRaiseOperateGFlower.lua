@@ -14,7 +14,7 @@ function ItemDesktopRaiseOperateGFlower:New(o, ui_operate, com, tb_operateid)
     o.TbOperateId = tb_operateid
     o.GTextRaiseValue = com:GetChild("TextRaiseValue").asTextField
     local tb_operate = CasinosContext.Instance.TbDataMgrLua:GetData("TbDataDesktopGFlowerBetOperate", tb_operateid)
-    o.GTextRaiseValue.text = CS.Casinos.CasinosContext.Instance.UiChipShowHelper:getGoldShowStr(tb_operate.BetOperate,
+    o.GTextRaiseValue.text = CS.Casinos.CasinosContext.Instance.UiChipShowHelper:GetGoldShowStr(tb_operate.BetOperate,
             CS.Casinos.CasinosContext.Instance.LanMgr.LanBase, false)
     com.enabled = false
     o.ControllerEnable.selectedIndex = 1
@@ -48,7 +48,7 @@ function ItemDesktopRaiseOperateGFlower:setPlayerReadCard(is_read, self_gold, ma
         operate_gold = operate_gold * 2
     end
     self.OperateGold = operate_gold
-    self.GTextRaiseValue.text = CS.Casinos.CasinosContext.Instance.UiChipShowHelper:getGoldShowStr(operate_gold,
+    self.GTextRaiseValue.text = CS.Casinos.CasinosContext.Instance.UiChipShowHelper:GetGoldShowStr(operate_gold,
             CS.Casinos.CasinosContext.Instance.LanMgr.LanBase, false)
     self:updateBetOperateEnabled(self_gold, max_single_bet)
 end

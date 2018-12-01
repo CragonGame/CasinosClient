@@ -16,7 +16,7 @@ end
 ---------------------------------------
 function ItemAnte:setAnte(com, lan_mgr, ante)
     local btn_ante = com.asButton
-    btn_ante.title = UiChipShowHelper:getGoldShowStr(ante, lan_mgr.LanBase)
+    btn_ante.title = UiChipShowHelper:GetGoldShowStr(ante, lan_mgr.LanBase)
     self.Ante = ante
     --com.onClick:Add(
     --		function()

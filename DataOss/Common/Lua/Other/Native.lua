@@ -4,42 +4,36 @@
 Native = {}
 
 ---------------------------------------
-function Native:new(o, view_mgr, listner)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-        self.Context = Context
-        self.CasinosContext = CS.Casinos.CasinosContext.Instance
-        self.ViewMgr = view_mgr
-        self.Listner = listner
+function Native:Setup(view_mgr, listner)
+    self.Context = Context
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.ViewMgr = view_mgr
+    self.Listner = listner
 
-        if self.CasinosContext.IsEditor == false then
-            CS.ThirdPartyLogin.Instantce():initLogin(self.Context.Cfg.WeChatAppId)
-            --CS.Push.Instant():initPush(self.Context.Cfg.PushAppId, self.Context.Cfg.PushAppKey, self.Context.Cfg.PushAppSecret)
-        end
-
-        --CS.ShareSDKReceiver.instance(self.Context.Cfg.ShareSDKAppKey, self.Context.Cfg.ShareSDKAppSecret)
-        --CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()
-        --CS.ShareSDKReceiver.mShareSDK.devInfo.wechat = CS.cn.sharesdk.unity3d.WeChat()
-        --if CS.Casinos.CasinosContext.Instance.UnityAndroid then
-        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppId = self.Context.Cfg.WeChatAppId
-        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppSecret = self.Context.Cfg.WeChatAppSecret
-        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.BypassApproval = false
-        --elseif CS.Casinos.CasinosContext.Instance.UnityIOS then
-        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = self.Context.Cfg.WeChatAppId
-        --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_secret = self.Context.Cfg.WeChatAppSecret
-        --end
-
-        --CS.ShareSDKReceiver.mShareSDK:init()
-
-        --local open_install = CS.OpenInstallReceiver.instance()
-        --open_install.OpenInstallResultCallBack = function(result, is_install)
-        --    self:OpenInstallResult(result, is_install)
-        --end
-        --CS.OpenInstall.Instant()
+    if self.CasinosContext.IsEditor == false then
+        CS.ThirdPartyLogin.Instantce():initLogin(self.Context.Cfg.WeChatAppId)
+        --CS.Push.Instant():initPush(self.Context.Cfg.PushAppId, self.Context.Cfg.PushAppKey, self.Context.Cfg.PushAppSecret)
     end
+
+    --CS.ShareSDKReceiver.instance(self.Context.Cfg.ShareSDKAppKey, self.Context.Cfg.ShareSDKAppSecret)
+    --CS.ShareSDKReceiver.mShareSDK.devInfo = CS.cn.sharesdk.unity3d.DevInfoSet()
+    --CS.ShareSDKReceiver.mShareSDK.devInfo.wechat = CS.cn.sharesdk.unity3d.WeChat()
+    --if CS.Casinos.CasinosContext.Instance.UnityAndroid then
+    --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppId = self.Context.Cfg.WeChatAppId
+    --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.AppSecret = self.Context.Cfg.WeChatAppSecret
+    --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.BypassApproval = false
+    --elseif CS.Casinos.CasinosContext.Instance.UnityIOS then
+    --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_id = self.Context.Cfg.WeChatAppId
+    --    CS.ShareSDKReceiver.mShareSDK.devInfo.wechat.app_secret = self.Context.Cfg.WeChatAppSecret
+    --end
+
+    --CS.ShareSDKReceiver.mShareSDK:init()
+
+    --local open_install = CS.OpenInstallReceiver.instance()
+    --open_install.OpenInstallResultCallBack = function(result, is_install)
+    --    self:OpenInstallResult(result, is_install)
+    --end
+    --CS.OpenInstall.Instant()
 
     self.PlayerQRCodeTexture = CS.UnityEngine.Texture2D(190, 190)
     self.ShareUrl = nil
@@ -78,8 +72,6 @@ function Native:new(o, view_mgr, listner)
     self.CasinosContext.NativeAPIMsgReceiverListner.ActionLoginSuccess = function(param, real_token)
         self:ActionLoginSuccess(param, real_token)
     end
-
-    return self.Instance
 end
 
 ---------------------------------------

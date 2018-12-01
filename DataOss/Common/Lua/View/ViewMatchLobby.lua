@@ -222,7 +222,7 @@ end
 
 ---------------------------------------
 function ViewMatchLobby:setPlayerGoldAndDiamond()
-    self.GTextSelfChip.text = UiChipShowHelper:getGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
+    self.GTextSelfChip.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------

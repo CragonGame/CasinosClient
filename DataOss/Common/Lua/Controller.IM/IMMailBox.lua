@@ -141,7 +141,7 @@ function IMMailBox:OnIMMailOperateRequestResult(result)
             if (current_mail.Attachment.Gold > 0) then
                 sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("Chip"))
                 tips = sb:ToString()
-                local golds = UiChipShowHelper:getGoldShowStr(current_mail.Attachment.Gold, self.ControllerIM.ControllerMgr.LanMgr.LanBase)
+                local golds = UiChipShowHelper:GetGoldShowStr(current_mail.Attachment.Gold, self.ControllerIM.ControllerMgr.LanMgr.LanBase)
                 sb.Length = 0
                 sb:Append(tips)
                 sb:Append(golds)
@@ -149,7 +149,7 @@ function IMMailBox:OnIMMailOperateRequestResult(result)
             if (current_mail.Attachment.Diamond > 0) then
                 sb:Append(self.ViewMgr.LanMgr:getLanValue("Coin"))
                 tips = sb.ToString()
-                local diamond = UiChipShowHelper:getGoldShowStr(current_mail.Attachment.Diamond, self.ControllerIM.ControllerMgr.LanMgr.LanBase)
+                local diamond = UiChipShowHelper:GetGoldShowStr(current_mail.Attachment.Diamond, self.ControllerIM.ControllerMgr.LanMgr.LanBase)
                 sb.Length = 0
                 sb:Append(tips)
                 sb:Append(diamond)

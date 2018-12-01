@@ -18,7 +18,7 @@ function ItemUiShopConsume:new(o, view_shop, com, tb_item)
     o.GLoaderConsume.icon = CS.FairyGUI.UIPackage.GetItemURL(view_shop.ViewMgr.LanMgr:getLanPackageName(), tb_item.Icon)
     o.GBtnBuy = o.GComItem:GetChild("BtnBuy").asButton
     o.GTextConsumeCount = o.GBtnBuy:GetChild("Price").asTextField
-    o.GTextConsumeCount.text = UiChipShowHelper:getGoldShowStr(tb_item.Price, view_shop.ViewMgr.LanMgr.LanBase)
+    o.GTextConsumeCount.text = UiChipShowHelper:GetGoldShowStr(tb_item.Price, view_shop.ViewMgr.LanMgr.LanBase)
     o.GBtnBuy.onClick:Add(
             function()
                 o:onClickBtnBuy()

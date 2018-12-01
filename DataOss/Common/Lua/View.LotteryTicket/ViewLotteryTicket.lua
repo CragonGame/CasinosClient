@@ -328,7 +328,7 @@ function ViewLotteryTicket:_createOpreate()
         bet_operate:SetOperateInfo(key, operate.OperateGolds, can_operate, is_current_operate)
         self.MapOperate[key] = bet_operate
         if (is_current_operate) then
-            self.GTextCurrentOperate.text = UiChipShowHelper:getGoldShowStr2(operate.OperateGolds, self.ViewMgr.LanMgr.LanBase)
+            self.GTextCurrentOperate.text = UiChipShowHelper:GetGoldShowStr2(operate.OperateGolds, self.ViewMgr.LanMgr.LanBase)
         end
     end
     self:SwitchControllerBetOperate(false)
@@ -362,7 +362,7 @@ function ViewLotteryTicket:_setLastMaxWinnerInfo(lastround_winmax_playerinfo)
         self.GTextLastWinMaxPlayerGolds.visible = true
         self.ViewHeadIcon:SetLotteryMaxWinnerInfo(lastround_winmax_playerinfo)
         self.GTextLastWinMaxPlayerNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(lastround_winmax_playerinfo.Nickname, 15, 4)
-        self.GTextLastWinMaxPlayerGolds.text = UiChipShowHelper:getGoldShowStr(lastround_winmax_playerinfo.WinGold, self.ViewMgr.LanMgr.LanBase)
+        self.GTextLastWinMaxPlayerGolds.text = UiChipShowHelper:GetGoldShowStr(lastround_winmax_playerinfo.WinGold, self.ViewMgr.LanMgr.LanBase)
     else
         self.ViewHeadIcon:HideIcon()
         self.GImageLastWinMaxPlayerGoldSign.visible = false

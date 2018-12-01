@@ -11,7 +11,7 @@ ConfigDevelopSettings = {
 ---------------------------------------
 -- 配置，模块配置
 ConfigModule = {
-    --Wallet = false;-- 钱包模块
+    --WalletEnable = false;-- 钱包模块
     GrowEnable = false; -- 摇钱树模块
 }
 
@@ -147,15 +147,15 @@ end
 
 ---------------------------------------
 function Context:OnSocketClose()
-    if ControllerMgr == nil then
+    if self.ControllerMgr == nil then
         return
     end
-    ControllerMgr:DestroyPlayerControllers()
-    local ctrl_login = ControllerMgr:GetController('Login')
+    self.ControllerMgr:DestroyPlayerControllers()
+    local ctrl_login = self.ControllerMgr:GetController('Login')
     ctrl_login:_init(false)
     if (ctrl_login.ShowKickOutInfo) then
         ctrl_login.ShowKickOutInfo = false
-        local info = ctrl_login.ControllerMgr.LanMgr:getLanValue("AlreadyLogin")
+        local info = self.LanMgr:getLanValue("AlreadyLogin")
         ViewHelper:UiShowInfoFailed(info)
     end
 end
@@ -324,39 +324,40 @@ function Context:_nextLaunchStep()
         self:_regTbData()
         self.TbDataMgr:Setup(t_db)
         self:DoString("TbDataHelper")
-        TbDataHelper:new(nil, self.TbDataMgr)
+        TbDataHelper:Setup(self.TbDataMgr)
 
         self:DoString("LanBase")
         self:DoString("LanEn")
         self:DoString("LanMgr")
         self:DoString("LanZh")
-        self.LanMgr = LanMgr:new(nil)
-        self.LanMgr:parseLanKeyValue()
+        self.LanMgr = LanMgr
+        self.LanMgr:Setup()
 
         self:_regModel()
 
         self:DoString("EventSys")
-        self.EventSys = EventSys:new(nil)
-        self.EventSys:OnCreate()
+        self.EventSys = EventSys
+        self.EventSys:Setup()
 
         self:DoString("UiChipShowHelper")
-        self.UiChipShowHelper = UiChipShowHelper:new(nil)
+        self.UiChipShowHelper = UiChipShowHelper
+        self.UiChipShowHelper:Setup()
 
         self:DoString("ViewMgr")
         self.ViewMgr = ViewMgr
         self.ViewMgr.LanMgr = self.LanMgr
         self.ViewMgr.TbDataMgr = self.TbDataMgr
-        self.ViewMgr:OnCreate()
+        self.ViewMgr:Create()
         self:_regView()
         self:DoString("ViewHelper")
-        ViewHelper:new(nil)
+        ViewHelper:Setup()
 
         self:DoString("CasinoHelper")
-        CasinoHelper:new(nil, self.Rpc.MessagePack, self.LanMgr)
+        CasinoHelper:Setup(self.Rpc.MessagePack, self.LanMgr)
         self:DoString("Native")
-        Native:new(nil, self.ViewMgr, self)
+        Native:Setup(self.ViewMgr, self)
         self:DoString("PicCapture")
-        self.PicCapture = PicCapture:new(nil, self.ViewMgr, self)
+        self.PicCapture = PicCapture:Setup(self.ViewMgr, self)
 
         self:DoString("ControllerMgr")
         self.ControllerMgr = ControllerMgr

@@ -95,14 +95,14 @@ function ViewGiftDetail:SetGift(gift_id, is_buygift, is_mine, to_etguid, from_na
     local title = self.ViewMgr.LanMgr:getLanValue("DeleteGoods")
     local confirm_text = self.ViewMgr.LanMgr:getLanValue("Delete")
     local buy_price_long = math.floor(tb_gift.Price * (tb_gift.Discount / 100))
-    local buy_price = UiChipShowHelper:getGoldShowStr(buy_price_long, self.ViewMgr.LanMgr.LanBase)
+    local buy_price = UiChipShowHelper:GetGoldShowStr(buy_price_long, self.ViewMgr.LanMgr.LanBase)
     local all_buyprice = ""
     local all_buyprice_long = 0
     if (show_windowdesktop) then
         all_buyprice_long = (#self.ControllerDesktop.DesktopBase:getAllValidPlayer()) * buy_price_long
-        all_buyprice = UiChipShowHelper:getGoldShowStr(all_buyprice_long, self.ViewMgr.LanMgr.LanBase)
+        all_buyprice = UiChipShowHelper:GetGoldShowStr(all_buyprice_long, self.ViewMgr.LanMgr.LanBase)
     end
-    local sell_price = UiChipShowHelper:getGoldShowStr(math.floor(tb_gift.Price / 10 * (tb_gift.Discount / 100)), self.ViewMgr.LanMgr.LanBase)
+    local sell_price = UiChipShowHelper:GetGoldShowStr(math.floor(tb_gift.Price / 10 * (tb_gift.Discount / 100)), self.ViewMgr.LanMgr.LanBase)
     if (tb_gift.PriceType == PriceType.Gold) then
         buy_price = buy_price .. self.ViewMgr.LanMgr:getLanValue("Diamonds")
         sell_price = sell_price .. self.ViewMgr.LanMgr:getLanValue("Diamonds")

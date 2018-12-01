@@ -24,7 +24,7 @@ end
 ---------------------------------------
 function UiLotteryTicketRewardPotPlayerInfoItem:RefreshPlayerInfo(player_info)
     self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.Nickname, 27, 8)
-    self.GTextGolds.text = UiChipShowHelper:getGoldShowStr(player_info.WinGold, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
+    self.GTextGolds.text = UiChipShowHelper:GetGoldShowStr(player_info.WinGold, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------
@@ -64,12 +64,12 @@ end
 ---------------------------------------
 function ViewLotteryTicketRewardPot:SetRewardGolds(total_reward_golds)
     self.RewardPotGolds = total_reward_golds
-    self.GTextRewardPot.text = UiChipShowHelper:getGoldShowStr(self.RewardPotGolds, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase, false)
+    self.GTextRewardPot.text = UiChipShowHelper:GetGoldShowStr(self.RewardPotGolds, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase, false)
 end
 
 ---------------------------------------
 function ViewLotteryTicketRewardPot:SetRewardPotInfo(total_golds, list_playerinfo)
-    self.GTextRewardPot.text = UiChipShowHelper:getGoldShowStr(total_golds, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase, false)
+    self.GTextRewardPot.text = UiChipShowHelper:GetGoldShowStr(total_golds, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase, false)
     if (list_playerinfo ~= nil) then
         self.GListRewardPotPlayer:RemoveChildrenToPool()
         for key, value in pairs(list_playerinfo) do

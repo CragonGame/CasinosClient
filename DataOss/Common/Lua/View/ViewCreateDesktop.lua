@@ -47,8 +47,8 @@ function ViewCreateDesktop:setCreateInfo(desk_topinfo_id, map_params)
     self.mIsNormalSpeed = map_params[1]
     local tb_deskinfo = self.CasinosContext.TbDataMgrLua:GetData("DesktopInfoTexas", desk_topinfo_id)
     local tips = self.ViewMgr.LanMgr:getLanValue("Bet")
-    local bet_str = self.CasinosContext:AppendStrWithSB(tips, ": ", UiChipShowHelper:getGoldShowStr(tb_deskinfo.SmallBlind, self.ViewMgr.LanMgr.LanBase)
-    , "/", UiChipShowHelper:getGoldShowStr(tb_deskinfo.BigBlind, self.ViewMgr.LanMgr.LanBase))
+    local bet_str = self.CasinosContext:AppendStrWithSB(tips, ": ", UiChipShowHelper:GetGoldShowStr(tb_deskinfo.SmallBlind, self.ViewMgr.LanMgr.LanBase)
+    , "/", UiChipShowHelper:GetGoldShowStr(tb_deskinfo.BigBlind, self.ViewMgr.LanMgr.LanBase))
     self.mTextBet.text = bet_str
     local seat_numstr = ""
     if (self.mSeatNum == TexasDesktopSeatNum.Unlimited) then

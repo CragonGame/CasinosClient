@@ -237,10 +237,10 @@ end
 
 ---------------------------------------
 function UiDesktopHBanker:_setBankPlayerGolds()
-    local gold_str = UiChipShowHelper:getGoldShowStr(self.BankPlayerDataDesktopH.Gold, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
+    local gold_str = UiChipShowHelper:GetGoldShowStr(self.BankPlayerDataDesktopH.Gold, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
     if (self.Context.Cfg.DesktopHSysBankShowDBValue and CS.System.String.IsNullOrEmpty(self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid)) then
         local sys_bank_initgold = self.ViewDesktopH.UiDesktopHBase:getSysBankPlayerInitGold()
-        gold_str = UiChipShowHelper:getGoldShowStr(sys_bank_initgold, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
+        gold_str = UiChipShowHelper:GetGoldShowStr(sys_bank_initgold, self.ViewDesktopH.ViewMgr.LanMgr.LanBase)
     end
     self.BankPlayerGold.text = gold_str
 end

@@ -1,32 +1,26 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-LanMgr = {}
+LanMgr = {
+    Context = Context,
+    CasinosContext = CS.Casinos.CasinosContext.Instance,
+    TbDataMgr = self.Context.TbDataMgr,
+    LanBase = nil,
+    CurrentLan = "ChineseSimplified",
+    SystemLanguage = "ChineseSimplified",
+    LanKey = "LanKey",
+    LanTitleSign = "Lan",
+}
 
 ---------------------------------------
-function LanMgr:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-        self.Context = Context
-        self.CasinosContext = CS.Casinos.CasinosContext.Instance
-        self.TbDataMgr = self.Context.TbDataMgr
-        self.LanBase = nil
-        self.CurrentLan = "ChineseSimplified"
-        self.SystemLanguage = "ChineseSimplified"
-        self.LanKey = "LanKey"
-        self.LanTitleSign = "Lan"
-        self:_checkAndCreateLanBase()
-    end
-    return self.Instance
+function LanMgr:Setup()
+    self:_checkAndCreateLanBase()
+    self:parseLanKeyValue()
 end
 
 ---------------------------------------
 function LanMgr.refreshLan()
-    local lan_mgr = LanMgr:new(nil)
-    lan_mgr:_checkAndCreateLanBase()
+    self:_checkAndCreateLanBase()
 end
 
 ---------------------------------------

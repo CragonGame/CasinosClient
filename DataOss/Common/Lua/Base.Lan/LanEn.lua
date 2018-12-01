@@ -44,7 +44,7 @@ function LanEn:getLanPackageName()
 end
 
 ---------------------------------------
-function LanEn:getGoldShowStr(gold, show_short_way, precision_length)
+function LanEn:GetGoldShowStr(gold, show_short_way, precision_length)
     local show_str = ""
 
     if (show_short_way == false)
@@ -115,7 +115,7 @@ function LanEn:getGoldShowStr(gold, show_short_way, precision_length)
 end
 
 ---------------------------------------
-function LanEn:getGoldShowStr2(gold, show_short_way, precision_length)
+function LanEn:GetGoldShowStr2(gold, show_short_way, precision_length)
     local show_str = ""
 
     if (show_short_way == false)

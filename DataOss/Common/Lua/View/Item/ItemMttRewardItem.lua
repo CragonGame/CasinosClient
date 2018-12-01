@@ -23,13 +23,13 @@ function ItemMttRewardItem:new(o, com, item_id, gold, diamond, view_mgr)
     end
     if (gold > 0) then
         content = self.ViewMgr.LanMgr:getLanValue("Chip") .. "X" ..
-                UiChipShowHelper:getGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
+                UiChipShowHelper:GetGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
         icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "ChipIcon")
         o.GLoaderAttachment.color = CS.UnityEngine.Color(0.38, 0.89, 1)
     end
     if (diamond > 0) then
         content = self.ViewMgr.LanMgr:getLanValue("Coin") .. "X" ..
-                UiChipShowHelper:getGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase)
+                UiChipShowHelper:GetGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase)
         icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "Diamond")
     end
     o.GTextAttachmentContent.text = content

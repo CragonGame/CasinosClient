@@ -12,7 +12,7 @@ function ItemPrivateMatch:new(o, com, match_info, view_mgr)
     o.ViewMgr = view_mgr
     local com_info = o.com:GetChild("ComInfo").asCom
     local text_startScore = com_info:GetChild("TextStartChip").asTextField
-    text_startScore.text = UiChipShowHelper:getGoldShowStr3(match_info.RaiseBlindTbInfo.StartScore)
+    text_startScore.text = UiChipShowHelper:GetGoldShowStr3(match_info.RaiseBlindTbInfo.StartScore)
     local text_raiseBlidTime = com_info:GetChild("TextRiseBlindTime").asTextField
     text_raiseBlidTime.text = math.floor(match_info.RaiseBlindTbInfo.StartScore.RaiseBlindTmSpan / 60) .. "min"
     local text_matchName = com:GetChild("TextMatchTitle").asTextField

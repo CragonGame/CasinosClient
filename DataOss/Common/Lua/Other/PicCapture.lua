@@ -4,21 +4,15 @@
 PicCapture = {}
 
 ---------------------------------------
-function PicCapture:new(o, view_mgr, listner)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-        self.ViewMgr = view_mgr
-        self.Listner = listner
-        self.CanShowTips = false
-        self.CheckPicTm = 0
-    end
-    return self.Instance
+function PicCapture:Setup(view_mgr, listner)
+    self.ViewMgr = view_mgr
+    self.Listner = listner
+    self.CanShowTips = false
+    self.CheckPicTm = 0
 end
 
 ---------------------------------------
+-- TODO
 function PicCapture:OnUpdate(tm)
     if self.CanShowTips then
         local c_t = self.CheckPicTm

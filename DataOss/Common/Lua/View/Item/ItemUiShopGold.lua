@@ -28,7 +28,7 @@ function ItemUiShopGold:new(o, view_shop, gold, tb_item)
     local chip = view_shop.ViewMgr.LanMgr:getLanValue("Chip")
     local tb_mgr = CS.Casinos.CasinosContext.Instance.TbDataMgrLua
     local tb_unit = tb_mgr:GetData("UnitGoldPackage", tb_item.Id)
-    o.GTextGold.text = UiChipShowHelper:getGoldShowStr(tb_unit.GoldValue * 10000, view_shop.ViewMgr.LanMgr.LanBase, nil, 1) .. chip
+    o.GTextGold.text = UiChipShowHelper:GetGoldShowStr(tb_unit.GoldValue * 10000, view_shop.ViewMgr.LanMgr.LanBase, nil, 1) .. chip
     o.GTextPrice.text = tb_item.Price
     o.GLoaderIcon.icon = CS.Casinos.CasinosContext.Instance.PathMgr.DirAbItem .. tostring(tb_item.Icon) .. ".ab"
     return o

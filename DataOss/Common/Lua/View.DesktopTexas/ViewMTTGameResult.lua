@@ -158,9 +158,9 @@ end
 function ViewMTTGameResult:_onClickBtnShare()
     local pic_name = "Share.png"
     local pic_path = CS.Casinos.CasinosContext.Instance.PathMgr:CombinePersistentDataPath(pic_name)
-    PicCapture.Instance:CapturePic(pic_name, function()
-        Native.Instance:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, self.ViewMgr.LanMgr:getLanValue("PlayGameNow"), pic_path, self.ViewMgr.LanMgr:getLanValue("CragonPoker"),
-                Native.Instance.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Image)--Webpage
+    PicCapture:CapturePic(pic_name, function()
+        Native:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, self.ViewMgr.LanMgr:getLanValue("PlayGameNow"), pic_path, self.ViewMgr.LanMgr:getLanValue("CragonPoker"),
+                Native.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Image)--Webpage
     end)
 end
 

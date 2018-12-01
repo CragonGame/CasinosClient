@@ -74,7 +74,7 @@ function ViewDesktopHRewardPot:SetRewardPotInfo(total_golds, total_info)
     glist_playerinfo.itemRenderer = function(a, b)
         self:RenderListItem(a, b)
     end
-    self.GTextRewardPot.text = UiChipShowHelper:getGoldShowStr(total_golds, self.ViewMgr.LanMgr.LanBase, false)
+    self.GTextRewardPot.text = UiChipShowHelper:GetGoldShowStr(total_golds, self.ViewMgr.LanMgr.LanBase, false)
     if (total_info.list_card ~= nil) then
         for i, v in pairs(total_info.list_card) do
             local loader = self.ComUi:GetChild("Card" .. (i - 1)).asLoader
@@ -92,7 +92,7 @@ function ViewDesktopHRewardPot:SetRewardPotInfo(total_golds, total_info)
         glist_playerinfo.numItems = #self.ListPlayerInfo
     end
     local win_totalgold = self.ComUi:GetChild("WinTotalGold").asTextField
-    win_totalgold.text = UiChipShowHelper:getGoldShowStr(total_info.win_rewardpot_gold, self.ViewMgr.LanMgr.LanBase, false)
+    win_totalgold.text = UiChipShowHelper:GetGoldShowStr(total_info.win_rewardpot_gold, self.ViewMgr.LanMgr.LanBase, false)
     if total_info.date_time ~= nil then
         local tm = self.ComUi:GetChild("WinTime").asTextField
         local l_tm = CS.System.DateTime.Parse(total_info.date_time)

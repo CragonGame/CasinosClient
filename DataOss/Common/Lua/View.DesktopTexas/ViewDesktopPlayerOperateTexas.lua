@@ -350,9 +350,9 @@ function ViewDesktopPlayerOperateTexas:_setCurrentRaiseChip(current_gold, need_g
     self.CurrentRaiseGold = math.ceil(current_gold)
     if (need_getvalidegold)
     then
-        self.CurrentRaiseGold = UiChipShowHelper:getValideGold(self.CurrentRaiseGold)
+        self.CurrentRaiseGold = UiChipShowHelper:GetValideGold(self.CurrentRaiseGold)
     end
-    self.GTextCurrentRaiseChip.text = UiChipShowHelper:getGoldShowStr(self.CurrentRaiseGold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextCurrentRaiseChip.text = UiChipShowHelper:GetGoldShowStr(self.CurrentRaiseGold, self.ViewMgr.LanMgr.LanBase)
 
     if (self.CurrentRaiseGold == self.DesktopPlayerTexas.PlayerDataDesktop.Stack)
     then
@@ -477,7 +477,7 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
             elseif (action == PlayerCanActionTypeTexas.Call) then
                 self.IsCallOrCheck = true
                 local call_tips = self.ViewMgr.LanMgr:getLanValue("Call")
-                local tips = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(call_tips, UiChipShowHelper:getGoldShowStr(c_a.chip, self.ViewMgr.LanMgr.LanBase))
+                local tips = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(call_tips, UiChipShowHelper:GetGoldShowStr(c_a.chip, self.ViewMgr.LanMgr.LanBase))
                 if c_a.chip >= self.DesktopPlayerTexas.PlayerDataDesktop.Stack then
                     call_allin = true
                     tips = self.ViewMgr.LanMgr:getLanValue("All-in")
@@ -494,7 +494,7 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
                     self.CurrentBottomRaiseGoldValue = c_a.chip
                     self.CurrentTopRaiseGoldValue = self.DesktopPlayerTexas.PlayerDataDesktop.Stack
                     local tips_add = self.ViewMgr.LanMgr:getLanValue("AddBet")--CS.Casinos.CasinosContext.Instance:AppendStrWithSB(self.ViewMgr.LanMgr:getLanValue("加注", "AddBet"),
-                    --UiChipShowHelper:getGoldShowStr(self.CurrentBottomRaiseGoldValue, self.ViewMgr.LanMgr.LanBase))
+                    --UiChipShowHelper:GetGoldShowStr(self.CurrentBottomRaiseGoldValue, self.ViewMgr.LanMgr.LanBase))
                     local raise_btn_name = tips_add
                     if (me_stack <= self.CurrentBottomRaiseGoldValue)
                     then
@@ -522,7 +522,7 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
                 is_call_allin = true
             else
                 btn_name = self.ViewMgr.LanMgr:getLanValue("Call")
-                btn_name = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(btn_name, UiChipShowHelper:getGoldShowStr(call_chip, self.ViewMgr.LanMgr.LanBase))
+                btn_name = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(btn_name, UiChipShowHelper:GetGoldShowStr(call_chip, self.ViewMgr.LanMgr.LanBase))
             end
             self:_resetAutoChooseOperate(nil)
         else
@@ -653,8 +653,8 @@ function ViewDesktopPlayerOperateTexas:_onClickRaise(context)
             ViewHelper:SetGObjectVisible(true, self.GSliderRise)
             ViewHelper:SetGObjectVisible(true, self.GTextTopRaiseChip)
             self.GSliderRise.value = 0
-            self.GTextBottomRaiseChip.text = UiChipShowHelper:getGoldShowStr(self.CurrentBottomRaiseGoldValue, self.ViewMgr.LanMgr.LanBase)
-            self.GTextTopRaiseChip.text = UiChipShowHelper:getGoldShowStr(self.CurrentTopRaiseGoldValue, self.ViewMgr.LanMgr.LanBase)
+            self.GTextBottomRaiseChip.text = UiChipShowHelper:GetGoldShowStr(self.CurrentBottomRaiseGoldValue, self.ViewMgr.LanMgr.LanBase)
+            self.GTextTopRaiseChip.text = UiChipShowHelper:GetGoldShowStr(self.CurrentTopRaiseGoldValue, self.ViewMgr.LanMgr.LanBase)
             self:_setCurrentRaiseChip(self.CurrentBottomRaiseGoldValue, true)
         end
     else

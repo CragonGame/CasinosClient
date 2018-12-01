@@ -54,7 +54,7 @@ end
 function UiLotteryTicketBetPotItem:SetBetPotTotalChips(total_chips)
     local text = ""
     if (total_chips ~= 0) then
-        text = UiChipShowHelper:getGoldShowStr(total_chips, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
+        text = UiChipShowHelper:GetGoldShowStr(total_chips, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
     end
 
     self.GTextBetChipsTotal.text = text
@@ -64,7 +64,7 @@ end
 function UiLotteryTicketBetPotItem:SetBetPotSelfChips(self_betchips)
     self.SelfBetChips = self_betchips
     self.GTextBetChipsSelf.visible = true
-    local text = UiChipShowHelper:getGoldShowStr(self.SelfBetChips, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
+    local text = UiChipShowHelper:GetGoldShowStr(self.SelfBetChips, self.ViewLotteryTicket.ViewMgr.LanMgr.LanBase)
     if (self.SelfBetChips == 0) then
         text = self.ViewLotteryTicket.ViewMgr.LanMgr:getLanValue("NoBet")
     end

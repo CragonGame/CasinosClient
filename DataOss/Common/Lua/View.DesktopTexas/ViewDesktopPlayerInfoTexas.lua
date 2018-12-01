@@ -1037,7 +1037,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:_setAmontChip(chips)
-    local chips_show = UiChipShowHelper:getGoldShowStr(chips, self.ViewMgr.LanMgr.LanBase, true, 1)
+    local chips_show = UiChipShowHelper:GetGoldShowStr(chips, self.ViewMgr.LanMgr.LanBase, true, 1)
     self.GTextDesktopAmount.text = chips_show
 end
 

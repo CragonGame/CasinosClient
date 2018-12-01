@@ -99,10 +99,10 @@ function ViewBank:setChipInfo()
     if (min_chip > self.mSelfGold) then
         min_chip = self.mSelfGold
     end
-    self.GTextTopPutIn.text = UiChipShowHelper:getGoldShowStr(self.mSelfGold, self.ViewMgr.LanMgr.LanBase)
-    self.GTextBottomPutIn.text = UiChipShowHelper:getGoldShowStr(min_chip, self.ViewMgr.LanMgr.LanBase)
-    self.GTextTopTakeOut.text = UiChipShowHelper:getGoldShowStr(self.mBankGold, self.ViewMgr.LanMgr.LanBase)
-    self.GTextBottomTakeOut.text = UiChipShowHelper:getGoldShowStr(min_chip, self.ViewMgr.LanMgr.LanBase)
+    self.GTextTopPutIn.text = UiChipShowHelper:GetGoldShowStr(self.mSelfGold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextBottomPutIn.text = UiChipShowHelper:GetGoldShowStr(min_chip, self.ViewMgr.LanMgr.LanBase)
+    self.GTextTopTakeOut.text = UiChipShowHelper:GetGoldShowStr(self.mBankGold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextBottomTakeOut.text = UiChipShowHelper:GetGoldShowStr(min_chip, self.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------
@@ -151,8 +151,8 @@ function Bank:new(o, safe_box, group, takeout_putin_pergold)
                 end
         )
     end
-    o.GTextBankTakeGold.text = UiChipShowHelper:getGoldShowStr(o.ViewBank.ControllerActor.PropGoldBank:get(), o.ViewBank.ViewMgr.LanMgr.LanBase)
-    o.GTextPlayerTakeGold.text = UiChipShowHelper:getGoldShowStr(o.ViewBank.ControllerActor.PropGoldAcc:get(), o.ViewBank.ViewMgr.LanMgr.LanBase)
+    o.GTextBankTakeGold.text = UiChipShowHelper:GetGoldShowStr(o.ViewBank.ControllerActor.PropGoldBank:get(), o.ViewBank.ViewMgr.LanMgr.LanBase)
+    o.GTextPlayerTakeGold.text = UiChipShowHelper:GetGoldShowStr(o.ViewBank.ControllerActor.PropGoldAcc:get(), o.ViewBank.ViewMgr.LanMgr.LanBase)
     local co_putin = com:GetChildInGroup(group, "CoNumOperatePutIn")
     if (co_putin ~= nil) then
         local co_numoperateputin = co_putin.asCom
@@ -169,9 +169,9 @@ end
 ---------------------------------------
 function Bank:refreshPlayerGold()
     local gold_acc = self.ViewBank.ControllerActor.PropGoldAcc:get()
-    self.GTextPlayerTakeGold.text = UiChipShowHelper:getGoldShowStr(gold_acc, self.ViewBank.ViewMgr.LanMgr.LanBase)
+    self.GTextPlayerTakeGold.text = UiChipShowHelper:GetGoldShowStr(gold_acc, self.ViewBank.ViewMgr.LanMgr.LanBase)
     local gold_bank = self.ViewBank.ControllerActor.PropGoldBank:get()
-    self.GTextBankTakeGold.text = UiChipShowHelper:getGoldShowStr(gold_bank, self.ViewBank.ViewMgr.LanMgr.LanBase)
+    self.GTextBankTakeGold.text = UiChipShowHelper:GetGoldShowStr(gold_bank, self.ViewBank.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------
@@ -241,7 +241,7 @@ function SendGold:new(o, safe_box, group)
     if (confirm_tips ~= nil) then
         self.GTextConfirmTips = confirm_tips.asTextField
     end
-    self.GTextPlayerTakeGold.text = UiChipShowHelper:getGoldShowStr(self.ViewBank.ControllerActor.PropGoldAcc:get(), self.ViewBank.ViewMgr.LanMgr.LanBase)
+    self.GTextPlayerTakeGold.text = UiChipShowHelper:GetGoldShowStr(self.ViewBank.ControllerActor.PropGoldAcc:get(), self.ViewBank.ViewMgr.LanMgr.LanBase)
     self.ConfirmSend = false
     self.ConfirmSendTm = self.CanReSendTm
     return o
@@ -263,7 +263,7 @@ end
 
 ---------------------------------------
 function SendGold:refreshPlayerTakeGold()
-    self.GTextPlayerTakeGold.text = UiChipShowHelper:getGoldShowStr(self.ViewBank.ControllerActor.PropGoldAcc:get(), self.ViewBank.CasinosContext.LanMgr.LanBase)
+    self.GTextPlayerTakeGold.text = UiChipShowHelper:GetGoldShowStr(self.ViewBank.ControllerActor.PropGoldAcc:get(), self.ViewBank.CasinosContext.LanMgr.LanBase)
 end
 
 ---------------------------------------

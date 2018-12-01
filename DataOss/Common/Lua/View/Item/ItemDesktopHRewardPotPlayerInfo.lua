@@ -24,6 +24,6 @@ end
 ---------------------------------------
 function ItemDesktopHRewardPotPlayerInfo:setDesktopHRewardPotPlayerInfo(player_info)
     self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.nick_name, 33, 10)
-    self.GTextGold.text = UiChipShowHelper:getGoldShowStr(player_info.win_gold, self.ViewMgr.LanMgr.LanBase, false)
+    self.GTextGold.text = UiChipShowHelper:GetGoldShowStr(player_info.win_gold, self.ViewMgr.LanMgr.LanBase, false)
     self.ViewHeadIcon:SetPlayerInfo(player_info.icon, player_info.account_id, 0)
 end

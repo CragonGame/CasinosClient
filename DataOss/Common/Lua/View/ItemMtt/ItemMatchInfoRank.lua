@@ -19,7 +19,7 @@ function ItemMatchInfoRank:new(o, com, info, rank, lan_base)
     local text_name = com:GetChild("TextPlayerName").asTextField
     text_name.text = CS.Casinos.UiHelper.addEllipsisToStr(info.NickName, 30, 9)
     local text_chip = com:GetChild("TextChipAmount").asTextField
-    text_chip.text = UiChipShowHelper:getGoldShowStr(info.Score, lan_base)
+    text_chip.text = UiChipShowHelper:GetGoldShowStr(info.Score, lan_base)
     --local loader_headicon = com:GetChild("LoaderHeadIcon").asLoader
     --local temp_table = CS.Casinos.LuaHelper.getIconName(true,info.AccId,info.Icon)
     --local icon = temp_table[1]

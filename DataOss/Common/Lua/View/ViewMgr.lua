@@ -29,7 +29,7 @@ ViewMgr = {
     LayerDistance = 1,
     Instance = nil,
     Context = Context,
-    EventSys = EventSys:new(nil),
+    EventSys = EventSys,
     ControllerMgr = nil,
     CasinosContext = CS.Casinos.CasinosContext.Instance,
     LuaMgr = CS.Casinos.CasinosContext.Instance.LuaMgr,
@@ -41,8 +41,8 @@ ViewMgr = {
 }
 
 ---------------------------------------
-function ViewMgr:OnCreate()
-    --print("ViewMgr:OnCreate")
+function ViewMgr:Create()
+    --print("ViewMgr:Create")
     CS.FairyGUI.GRoot.inst:SetContentScaleFactor(self.STANDARD_WIDTH, self.STANDARD_HEIGHT, CS.FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight)
     CS.FairyGUI.UIConfig.defaultFont = "FontXi"
     if (CS.UnityEngine.PlayerPrefs.HasKey("ScreenAutoRotation")) then
@@ -58,7 +58,7 @@ function ViewMgr:OnCreate()
 end
 
 ---------------------------------------
-function ViewMgr:OnDestroy()
+function ViewMgr:Destroy()
     self.CasinosContext = nil
     self.LuaMgr = nil
 end

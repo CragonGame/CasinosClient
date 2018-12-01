@@ -15,8 +15,8 @@ function ItemBetChipRange:new(o, item, eb_data, index)
     o.CurrentIndex = index
     o.ViewMgr = ViewMgr
     local tb_datadektop = o.EbData
-    local tips = UiChipShowHelper:getGoldShowStr(tb_datadektop.SmallBlind, o.ViewMgr.LanMgr.LanBase) .. "/" ..
-            UiChipShowHelper:getGoldShowStr(tb_datadektop.BigBlind, o.ViewMgr.LanMgr.LanBase)
+    local tips = UiChipShowHelper:GetGoldShowStr(tb_datadektop.SmallBlind, o.ViewMgr.LanMgr.LanBase) .. "/" ..
+            UiChipShowHelper:GetGoldShowStr(tb_datadektop.BigBlind, o.ViewMgr.LanMgr.LanBase)
     o.GTextBetChipRange.text = tips
     return o
 end

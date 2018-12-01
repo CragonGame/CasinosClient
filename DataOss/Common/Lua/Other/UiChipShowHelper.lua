@@ -4,22 +4,15 @@
 UiChipShowHelper = {}
 
 ---------------------------------------
-function UiChipShowHelper:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    if (self.Instance == nil) then
-        self.Instance = o
-        self.StrFormatTemp = {}
-        self.mGoldThousand = 1000
-        self.mGoldMillion = 10000
-        self.mGoldFormatLength = 3
-    end
-    return self.Instance
+function UiChipShowHelper:Setup()
+    self.StrFormatTemp = {}
+    self.mGoldThousand = 1000
+    self.mGoldMillion = 10000
+    self.mGoldFormatLength = 3
 end
 
 ---------------------------------------
-function UiChipShowHelper:getGoldShowStr(gold, lan_base, show_short_way1, precision_length1)
+function UiChipShowHelper:GetGoldShowStr(gold, lan_base, show_short_way1, precision_length1)
     local show_str = ""
     local show_short_way = true
     if (show_short_way1 ~= nil) then
@@ -90,14 +83,14 @@ function UiChipShowHelper:getGoldShowStr(gold, lan_base, show_short_way1, precis
             self.StrFormatTemp = {}
         end
     else
-        show_str = lan_base:getGoldShowStr(gold, show_short_way, precision_length)
+        show_str = lan_base:GetGoldShowStr(gold, show_short_way, precision_length)
     end
 
     return show_str
 end
 
 ---------------------------------------
-function UiChipShowHelper:getGoldShowStr2(gold, lan_base, show_short_way1, precision_length1)
+function UiChipShowHelper:GetGoldShowStr2(gold, lan_base, show_short_way1, precision_length1)
     local show_str = ""
 
     local show_short_way = true
@@ -158,14 +151,14 @@ function UiChipShowHelper:getGoldShowStr2(gold, lan_base, show_short_way1, preci
             self.StrFormatTemp = {}
         end
     else
-        show_str = lan_base:getGoldShowStr2(gold, show_short_way, precision_length)
+        show_str = lan_base:GetGoldShowStr2(gold, show_short_way, precision_length)
     end
 
     return show_str
 end
 
 ---------------------------------------
-function UiChipShowHelper:getGoldShowStr3(gold)
+function UiChipShowHelper:GetGoldShowStr3(gold)
     if (gold < 10000) then
         return tostring(gold)
     else
@@ -180,7 +173,7 @@ function UiChipShowHelper:getGoldShowStr3(gold)
 end
 
 ---------------------------------------
-function UiChipShowHelper:getValideGold(gold)
+function UiChipShowHelper:GetValideGold(gold)
     local valide_gold = math.ceil(gold)
     self.StrFormatTemp = {}
     local str_gold = tostring(valide_gold)

@@ -61,7 +61,7 @@ function ViewReportPlayer:setReportPlayerInfo(player_info)
     self.ViewHeadIcon:SetPlayerInfo(player_icon, player_accountid, 0)
     self.GTextPlayerIndividualSignature.text = player_signature
     self.GTextNickName.text = player_nickname
-    self.GTextChip.text = UiChipShowHelper:getGoldShowStr(playerGold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextChip.text = UiChipShowHelper:GetGoldShowStr(playerGold, self.ViewMgr.LanMgr.LanBase)
     self.GProBarLevelValue.value = self:setCurrentExppro(player_info.PlayerInfoMore.Level, player_info.PlayerInfoMore.Exp) * 100
     local state = CasinoHelper:TranslateFriendStateEx(player_info)
     local friend_state_str = CasinoHelper:TranslateFriendState(state)
