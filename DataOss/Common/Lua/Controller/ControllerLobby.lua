@@ -5,7 +5,7 @@
 ControllerLobby = class(ControllerBase)
 
 ---------------------------------------
-function ControllerLobby:ctor(controller_data, controller_name)
+function ControllerLobby:ctor(this, controller_data, controller_name)
 end
 
 ---------------------------------------

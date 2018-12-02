@@ -4,7 +4,7 @@
 ControllerUCenter = class(ControllerBase)
 
 ---------------------------------------
-function ControllerUCenter:ctor(controller_data, controller_name)
+function ControllerUCenter:ctor(this, controller_data, controller_name)
     self.UCenterDomain = self.Context.Cfg.UCenterDomain
     self.MbHelper = nil
 end

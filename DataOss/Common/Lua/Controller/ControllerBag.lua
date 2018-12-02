@@ -5,7 +5,7 @@
 ControllerBag = class(ControllerBase)
 
 ---------------------------------------
-function ControllerBag:ctor(controller_data, controller_name)
+function ControllerBag:ctor(this, controller_data, controller_name)
 end
 
 ---------------------------------------

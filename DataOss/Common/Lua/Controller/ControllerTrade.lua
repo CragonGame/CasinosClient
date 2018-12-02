@@ -5,7 +5,7 @@
 ControllerTrade = class(ControllerBase)
 
 ---------------------------------------
-function ControllerTrade:ctor(controller_data, controller_name)
+function ControllerTrade:ctor(this, controller_data, controller_name)
 end
 
 ---------------------------------------

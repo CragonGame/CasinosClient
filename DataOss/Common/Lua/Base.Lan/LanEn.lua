@@ -20,8 +20,7 @@ end
 ---------------------------------------
 function LanEn:parseLanKeyValue(tb_datamgr)
     local map_data = tb_datamgr:GetMapData("LanEn")
-    if (map_data == nil)
-    then
+    if (map_data == nil) then
         return
     end
     for i, v in pairs(map_data) do

@@ -4,7 +4,7 @@
 ControllerLotteryTicket = class(ControllerBase)
 
 ---------------------------------------
-function ControllerLotteryTicket:ctor(controller_data, controller_name)
+function ControllerLotteryTicket:ctor(this, controller_data, controller_name)
     self.QUE_BETPOT_WINLOOSE_RESULT_COUNT = 10
     self.BetStateTm = 0
     self.UpdateUiTime = 1

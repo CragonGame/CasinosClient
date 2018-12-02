@@ -4,7 +4,7 @@
 ControllerActivity = class(ControllerBase)
 
 ---------------------------------------
-function ControllerActivity:ctor(controller_data, controller_name)
+function ControllerActivity:ctor(this, controller_data, controller_name)
     self.CurrentActID = "Act180228"
 end
 

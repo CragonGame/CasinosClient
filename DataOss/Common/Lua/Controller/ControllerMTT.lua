@@ -4,7 +4,7 @@
 ControllerMTT = class(ControllerBase)
 
 ---------------------------------------
-function ControllerMTT:ctor(controller_data, controller_name)
+function ControllerMTT:ctor(this, controller_data, controller_name)
 end
 
 ---------------------------------------

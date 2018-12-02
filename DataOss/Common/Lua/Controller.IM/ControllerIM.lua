@@ -9,7 +9,7 @@ require('IMMailBox')
 ControllerIM = class(ControllerBase)
 
 ---------------------------------------
-function ControllerIM:ctor(controller_data, controller_name)
+function ControllerIM:ctor(this, controller_data, controller_name)
     self.IMChat = IMChat:new(nil, self)
     self.IMFeedback = IMFeedback:new(nil, self)
     self.IMFriendList = IMFriendList:new(nil, self)

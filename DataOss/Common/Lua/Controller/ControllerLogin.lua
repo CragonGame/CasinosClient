@@ -92,7 +92,7 @@ PhoneCountryCode = {
 ControllerLogin = class(ControllerBase)
 
 ---------------------------------------
-function ControllerLogin:ctor(controller_data, controller_name)
+function ControllerLogin:ctor(this, controller_data, controller_name)
     self.Password = nil
     self.RemeberPwd = false
     self.RequestThirdPartyLogin = false
@@ -688,7 +688,7 @@ function ControllerLogin:OnAccountEnterWorldResponse(enterworld_notify1)
             CS.UnityEngine.PlayerPrefs.SetString(invite_payerid, t_encode)
         end
         self.ClientEnterWorldNotify = enterworld_notify
-        self.ControllerMgr:CreatePlayerControllers(self.ClientEnterWorldNotify.player_data, self.ClientEnterWorldNotify.player_guid)
+        self.ControllerMgr:CreatePlayerControllers(self.ClientEnterWorldNotify.player_data)--, self.ClientEnterWorldNotify.player_guid)
     end
 end
 

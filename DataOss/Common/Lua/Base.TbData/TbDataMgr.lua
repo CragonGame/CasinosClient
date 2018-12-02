@@ -53,32 +53,10 @@ TbDataMgr = {
 ---------------------------------------
 function TbDataMgr:Setup()
     self.CasinosContext.TbDataMgrLua = self
-
     if (self.CasinosContext.IsSqliteUnity) then
         self.Sqlite = CS.GameCloud.Unity.Common.SqliteUnity()
     else
         self.Sqlite = CS.GameCloud.Unity.Common.SqliteWin()
-    end
-
-    local list_db_filename = {}
-    for i, v in pairs(self.Context.Cfg.TbFileList) do
-        list_db_filename[i] = self.CasinosContext.PathMgr.DirRawRoot .. "TbData/" .. v .. ".db"
-    end
-
-    for i, v in pairs(list_db_filename) do
-        local open_db = self.Sqlite:openDb(v)
-        if (open_db == false) then
-            print("TbDataMgr:Setup() failed! Can not Open File! db_filename=" .. v)
-            return
-        end
-
-        local list_tablename = self:_loadAllTableName()
-        for i = 0, list_tablename.Count - 1 do
-            local tb_name = list_tablename[i]
-            local list_tb_data = self:_loadTable(tb_name)
-            self:ParseTableAllData(tb_name, list_tb_data)
-        end
-        self.Sqlite:closeDb()
     end
 
     self:RegTbDataFac("ActorLevel", TbDataFactoryActorLevel:new(nil))
@@ -118,6 +96,27 @@ function TbDataMgr:Setup()
     self:RegTbDataFac("UnitMagicExpression", TbDataFactoryUnitMagicExpression:new(nil))
     self:RegTbDataFac("UnitRedEnvelopes", TbDataFactoryUnitRedEnvelopes:new(nil))
     self:RegTbDataFac("VIPLevel", TbDataFactoryVIPLevel:new(nil))
+
+    local list_db_filename = {}
+    for i, v in pairs(self.Context.Cfg.TbFileList) do
+        list_db_filename[i] = self.CasinosContext.PathMgr.DirRawRoot .. "TbData/" .. v .. ".db"
+    end
+
+    for i, v in pairs(list_db_filename) do
+        local open_db = self.Sqlite:openDb(v)
+        if (open_db == false) then
+            print("TbDataMgr:Setup() failed! Can not Open File! db_filename=" .. v)
+            return
+        end
+
+        local list_tablename = self:_loadAllTableName()
+        for i = 0, list_tablename.Count - 1 do
+            local tb_name = list_tablename[i]
+            local list_tb_data = self:_loadTable(tb_name)
+            self:ParseTableAllData(tb_name, list_tb_data)
+        end
+        self.Sqlite:closeDb()
+    end
 end
 
 ---------------------------------------

@@ -4,7 +4,7 @@
 ControllerWallet = class(ControllerBase)
 
 ---------------------------------------
-function ControllerWallet:ctor(controller_data, controller_name)
+function ControllerWallet:ctor(this, controller_data, controller_name)
 end
 
 ---------------------------------------

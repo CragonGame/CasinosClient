@@ -20,8 +20,7 @@ end
 ---------------------------------------
 function LanZh:parseLanKeyValue(tb_datamgr)
     local map_data = tb_datamgr:GetMapData("LanZh")
-    if (map_data == nil)
-    then
+    if (map_data == nil) then
         return
     end
     for i, v in pairs(map_data) do

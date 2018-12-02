@@ -4,7 +4,7 @@
 ControllerDesktopH = class(ControllerBase)
 
 ---------------------------------------
-function ControllerDesktopH:ctor(controller_data, controller_name)
+function ControllerDesktopH:ctor(this, controller_data, controller_name)
     self.QueBetpotWinLooseResultCount = 10
 end
 

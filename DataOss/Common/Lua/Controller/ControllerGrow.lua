@@ -4,7 +4,7 @@
 ControllerGrow = class(ControllerBase)
 
 ---------------------------------------
-function ControllerGrow:ctor(controller_data, controller_name)
+function ControllerGrow:ctor(this, controller_data, controller_name)
 end
 
 ---------------------------------------

@@ -28,7 +28,7 @@ end
 ControllerActor = class(ControllerBase)
 
 ---------------------------------------
-function ControllerActor:ctor(controller_data, controller_name)
+function ControllerActor:ctor(this, controller_data, controller_name)
     local BotTbId = self.ControllerData["BotTbId"]
     self.PropBotTbId = Prop:new(tonumber(BotTbId))
     local AccountId = self.ControllerData["AccountId"]

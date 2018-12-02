@@ -422,8 +422,8 @@ function Context:_nextLaunchStep()
 
                     -- 销毁Launch相关资源，加载登录界面
                     self.Launch:Finish()
-                    self.ControllerMgr:CreateController("UCenter", nil, nil)
-                    self.ControllerMgr:CreateController("Login", nil, nil)
+                    self.ControllerMgr:CreateController("UCenter", nil)
+                    self.ControllerMgr:CreateController("Login", nil)
                 end
         )
     end

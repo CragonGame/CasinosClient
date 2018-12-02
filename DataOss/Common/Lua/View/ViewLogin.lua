@@ -6,8 +6,6 @@ ViewLogin = class(ViewBase)
 
 ---------------------------------------
 function ViewLogin:ctor()
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.Context = Context
     self.AgreeAgreement = true
     self.TimerUpdate = nil
 end
@@ -18,7 +16,7 @@ function ViewLogin:OnCreate()
 
     self:_switchController("LoginState", "LoginMain")
     ViewHelper:UiEndWaiting()
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+
     local controller_wechat = self.ComUi:GetController("ControllerWeChat")
     if (controller_wechat ~= nil) then
         if (self.Context.Cfg.ClientShowWechat == true) then

@@ -4,7 +4,7 @@
 ControllerDesktopTexas = class(ControllerBase)
 
 ---------------------------------------
-function ControllerDesktopTexas:ctor(controller_data, controller_name)
+function ControllerDesktopTexas:ctor(this, controller_data, controller_name)
     self.TimerUpdate = nil
 end
 

@@ -7,7 +7,7 @@ require('LanZh')
 LanMgr = {
     Context = Context,
     CasinosContext = CS.Casinos.CasinosContext.Instance,
-    TbDataMgr = Context.TbDataMgr,
+    TbDataMgr = nil,
     LanBase = nil,
     CurrentLan = "ChineseSimplified",
     SystemLanguage = "ChineseSimplified",
@@ -17,6 +17,8 @@ LanMgr = {
 
 ---------------------------------------
 function LanMgr:Setup()
+    self.TbDataMgr = self.Context.TbDataMgr
+
     self:_checkAndCreateLanBase()
     self:parseLanKeyValue()
 end

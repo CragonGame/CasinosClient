@@ -5,7 +5,7 @@ require('ControllerReward')
 ControllerPlayer = class(ControllerBase)
 
 ---------------------------------------
-function ControllerPlayer:ctor(controller_data, controller_name)
+function ControllerPlayer:ctor(this, controller_data, controller_name)
     self.TopStarBundleId = "com.QuLing.TexasPoker"
     self.TimerUpdate = nil
     self.GetOnlinePlayerNumTimeElapsed = 0

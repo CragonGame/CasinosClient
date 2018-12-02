@@ -67,22 +67,22 @@ function ControllerMgr:Destroy()
 end
 
 ---------------------------------------
-function ControllerMgr:CreatePlayerControllers(player_data, guid)
-    local c_actor = self:CreateController("Actor", player_data, guid)
-    local c_player = self:CreateController("Player", nil, guid)
-    local c_activity = self:CreateController("Activity", nil, guid)
-    local c_bag = self:CreateController("Bag", nil, guid)
-    local c_desktoptexas = self:CreateController("DesktopTexas", nil, guid)
-    local c_desktoph = self:CreateController("DesktopH", nil, guid)
-    local c_grow = self:CreateController("Grow", nil, guid)
-    local c_im = self:CreateController("IM", nil, guid)
-    local c_lobby = self:CreateController("Lobby", nil, guid)
-    local c_lotteryticket = self:CreateController("LotteryTicket", nil, guid)
-    local c_marquee = self:CreateController("Marquee", nil, guid)
-    local c_ranking = self:CreateController("Ranking", nil, guid)
-    local c_trade = self:CreateController("Trade", nil, guid)
-    local c_mtt = self:CreateController("MTT", nil, guid)
-    local c_reward = self:CreateController("Reward", nil, guid)
+function ControllerMgr:CreatePlayerControllers(player_data)
+    local c_actor = self:CreateController("Actor", player_data)
+    local c_player = self:CreateController("Player", nil)
+    local c_activity = self:CreateController("Activity", nil)
+    local c_bag = self:CreateController("Bag", nil)
+    local c_desktoptexas = self:CreateController("DesktopTexas", nil)
+    local c_desktoph = self:CreateController("DesktopH", nil)
+    local c_grow = self:CreateController("Grow", nil)
+    local c_im = self:CreateController("IM", nil)
+    local c_lobby = self:CreateController("Lobby", nil)
+    local c_lotteryticket = self:CreateController("LotteryTicket", nil)
+    local c_marquee = self:CreateController("Marquee", nil)
+    local c_ranking = self:CreateController("Ranking", nil)
+    local c_trade = self:CreateController("Trade", nil)
+    local c_mtt = self:CreateController("MTT", nil)
+    local c_reward = self:CreateController("Reward", nil)
     c_actor:OnCreate()
     c_activity:OnCreate()
     c_player:OnCreate()
@@ -120,13 +120,14 @@ function ControllerMgr:DestroyPlayerControllers()
 end
 
 ---------------------------------------
-function ControllerMgr:CreateController(controller_name, controller_data, guid)
+function ControllerMgr:CreateController(controller_name, controller_data)
     local controller_factory = self.TableControllerFactory[controller_name]
     if (controller_factory == nil) then
         return nil
     end
-    local controller = controller_factory:CreateController(self, controller_data, guid)
+    local controller = controller_factory:CreateController(controller_data)
     self.TableController[controller_name] = controller
+    controller:OnCreate()
     return controller
 end
 

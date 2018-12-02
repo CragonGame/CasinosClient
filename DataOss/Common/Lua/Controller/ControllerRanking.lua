@@ -4,7 +4,7 @@
 ControllerRanking = class(ControllerBase)
 
 ---------------------------------------
-function ControllerRanking:ctor(controller_data, controller_name)
+function ControllerRanking:ctor(this, controller_data, controller_name)
 end
 
 ---------------------------------------
