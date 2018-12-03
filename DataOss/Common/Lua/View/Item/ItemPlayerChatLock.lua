@@ -23,7 +23,6 @@ function ItemPlayerChatLock:new(o, com, view_mgr, self_guid)
     o.GImageDealer.visible = false
     o.ViewMgr = view_mgr
     o.SelfGuid = self_guid
-
     return o
 end
 
@@ -76,20 +75,20 @@ function ItemPlayerChatLock:onClickBtnLock()
         self.IsLock = true
     end
     if (self.IsSystem) then
-        local ev = self:GetEv("EvUiRequestLockSystemChat")
+        local ev = self.ViewMgr:GetEv("EvUiRequestLockSystemChat")
         if (ev == nil) then
             ev = EvUiRequestLockSystemChat:new(nil)
         end
         ev.requestLock = self.IsLock
-        self:SendEv(ev)
+        self.ViewMgr:SendEv(ev)
     else
-        local ev = self:GetEv("EvUiRequestLockPlayerChat")
+        local ev = self.ViewMgr:GetEv("EvUiRequestLockPlayerChat")
         if (ev == nil) then
             ev = EvUiRequestLockPlayerChat:new(nil)
         end
         ev.player_guid = self.PlayerEtguid
         ev.requestLock = self.IsLock
-        self:SendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
     self:setLockIcon()
 end

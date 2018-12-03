@@ -135,7 +135,7 @@ function ViewLockChatTexas:_createPlayerChatLock(et_guid, icon, name, account_id
     end
 
     local lock_player = self.GListPlayer:AddItemFromPool().asCom
-    local player_chat = ItemPlayerChatLock:new(nil, lock_player, self.ViewMgr, self.ViewDesktop.ControllerDesktop.Guid)
+    local player_chat = ItemPlayerChatLock:new(nil, lock_player, self.ViewMgr, self.ViewDesktop.ControllerDesktop.PlayerGuid)
     self.MapPlayerChat[player_chat] = player_chat
 
     player_chat:setPlayerChatInfo(et_guid, icon, name, account_id, vip_level, is_lock, is_system)

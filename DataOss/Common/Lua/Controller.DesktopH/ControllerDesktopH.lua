@@ -6,6 +6,7 @@ ControllerDesktopH = class(ControllerBase)
 ---------------------------------------
 function ControllerDesktopH:ctor(this, controller_data, controller_name)
     self.QueBetpotWinLooseResultCount = 10
+    self.Guid = controller_data-- 本人PlayerGuid
 end
 
 ---------------------------------------

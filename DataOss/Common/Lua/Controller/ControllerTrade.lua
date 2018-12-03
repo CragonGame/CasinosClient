@@ -6,6 +6,7 @@ ControllerTrade = class(ControllerBase)
 
 ---------------------------------------
 function ControllerTrade:ctor(this, controller_data, controller_name)
+    self.Guid = controller_data-- 本人PlayerGuid
 end
 
 ---------------------------------------

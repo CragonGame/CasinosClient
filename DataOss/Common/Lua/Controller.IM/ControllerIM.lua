@@ -10,6 +10,7 @@ ControllerIM = class(ControllerBase)
 
 ---------------------------------------
 function ControllerIM:ctor(this, controller_data, controller_name)
+    self.Guid = controller_data-- 本人PlayerGuid
     self.IMChat = IMChat:new(nil, self)
     self.IMFeedback = IMFeedback:new(nil, self)
     self.IMFriendList = IMFriendList:new(nil, self)

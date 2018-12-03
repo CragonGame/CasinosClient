@@ -195,7 +195,7 @@ function ViewDesktopPlayerInfoTexas:OnHandleEv(ev)
                         co_chatname = "CoChatRight"
                     end
 
-                    if (chat_info.sender_etguid == self.ViewDesktop.ControllerDesktop.Guid) then
+                    if (chat_info.sender_etguid == self.ViewDesktop.ControllerDesktop.PlayerGuid) then
                         co_chatname = "CoChatLeft"
                     end
 
@@ -969,7 +969,9 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:setNickName()
-    if self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold and self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.AllIn and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile then
+    if self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.Fold
+            and self.Player.PlayerDataDesktop.PlayerActionType ~= PlayerActionTypeTexas.AllIn
+            and self.Player.PlayerDataDesktop.DesktopPlayerState ~= TexasDesktopPlayerState.WaitWhile then
         self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
     end
 end
@@ -1010,7 +1012,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:_onClickSelf()
-    if (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid) then
+    if (self.Player.Guid == self.ViewDesktop.ControllerDesktop.PlayerGuid) then
         self.ViewMgr:CreateView("ChatExPression")
     else
         local ui_profile = self.ViewMgr:CreateView("PlayerProfile")
@@ -1047,7 +1049,7 @@ function ViewDesktopPlayerInfoTexas:_setThinkingTimeSprite(fill_amount, need_vib
     local persent = fill_amount
     local color = CS.UnityEngine.Color()
 
-    if (persent <= 0.5 and persent >= 0.48 and (self.Player.Guid == self.ViewDesktop.ControllerDesktop.Guid) and self.VibrateOnce and need_vibrate) then
+    if (persent <= 0.5 and persent >= 0.48 and (self.Player.Guid == self.ViewDesktop.ControllerDesktop.PlayerGuid) and self.VibrateOnce and need_vibrate) then
         self.LuaMgr:Vibrate()
         self.VibrateOnce = false
         self.CasinosContext:Play("half_time", CS.Casinos._eSoundLayer.LayerNormal)

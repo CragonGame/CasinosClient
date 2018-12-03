@@ -223,7 +223,7 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
         local player_info = BMatchTexasPlayerInfo:new(nil)
         player_info:setData(notify)
 
-        if player_info.PlayerGuid == self.ControllerDesktop.Guid then
+        if player_info.PlayerGuid == self.ControllerDesktop.PlayerGuid then
             self.NeedRebuyOrAddOn = false
             self.BDesktopSnapshotMatchTexas.MyInfo.RebuyNum = player_info.RebuyCount
             self.BDesktopSnapshotMatchTexas.MyInfo.AddonNum = player_info.AddonCount

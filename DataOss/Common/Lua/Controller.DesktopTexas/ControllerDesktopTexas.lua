@@ -5,99 +5,99 @@ ControllerDesktopTexas = class(ControllerBase)
 
 ---------------------------------------
 function ControllerDesktopTexas:ctor(this, controller_data, controller_name)
+    self.PlayerGuid = controller_data-- 本人PlayerGuid
     self.TimerUpdate = nil
+    self.ListDesktopChat = {}
+    self.LockSysChat = false
+    self.MapDesktopBaseFac = {}
+    self.MapDesktopHelper = {}
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:OnCreate()
-    self.ViewMgr:BindEvListener("EvUiRequestLockSystemChat", self)
-    self.ViewMgr:BindEvListener("EvUiRequestChangeDesk", self)
-    self.ViewMgr:BindEvListener("EvUiClickFlod", self)
-    self.ViewMgr:BindEvListener("EvUiClickCheck", self)
-    self.ViewMgr:BindEvListener("EvUiClickCall", self)
-    self.ViewMgr:BindEvListener("EvUiClickRaise", self)
-    self.ViewMgr:BindEvListener("EvUiClickSeat", self)
-    self.ViewMgr:BindEvListener("EvUiClickOB", self)
-    self.ViewMgr:BindEvListener("EvUiClickWaitWhile", self)
-    self.ViewMgr:BindEvListener("EvUiClickPlayerReturn", self)
-    self.ViewMgr:BindEvListener("EvUiClickAutoAction", self)
-    self.ViewMgr:BindEvListener("EvUiClickCancelAutoAction", self)
-    self.ViewMgr:BindEvListener("EvUiCreateExchangeChip", self)
-    self.ViewMgr:BindEvListener("EvUiRequestLockPlayerChat", self)
-    self.ViewMgr:BindEvListener("EvUiRequestLockAllDesktopPlayer", self)
-    self.ViewMgr:BindEvListener("EvUiRequestLockAllSpectator", self)
-    self.ViewMgr:BindEvListener("EvUiInviteFriendPlayTogether", self)
-    self.ViewMgr:BindEvListener("EvUiSendMsg", self)
-    self.ViewMgr:BindEvListener("EvUiSetUnSendDesktopMsg", self)
-    self.ViewMgr:BindEvListener("EvUiDesktopClickLockChat", self)
-    self.ViewMgr:BindEvListener("EvUiClickShowCard", self)
-    self.ViewMgr:BindEvListener("EvUiMTTCreateRebuyOrAddOn", self)
-    self.ViewMgr:BindEvListener("EvEntityPlayerEnterDesktopH", self)
-    self.ViewMgr:BindEvListener("EvEntityGetDesktopData", self)
-    self.ViewMgr:BindEvListener("EvEntityMTTPlayerRebuy", self)
-    self.ViewMgr:BindEvListener("EvEntityMTTPlayerAddon", self)
-    self.ViewMgr:BindEvListener("EvEntityMatchGameOver", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
-    self.ViewMgr:BindEvListener("EvEntitySetMatchDetailedInfo", self)
-    self.ViewMgr:BindEvListener("EvUpdatePlayerScore", self)
+    self:BindEvListener("EvUiRequestLockSystemChat", self)
+    self:BindEvListener("EvUiRequestChangeDesk", self)
+    self:BindEvListener("EvUiClickFlod", self)
+    self:BindEvListener("EvUiClickCheck", self)
+    self:BindEvListener("EvUiClickCall", self)
+    self:BindEvListener("EvUiClickRaise", self)
+    self:BindEvListener("EvUiClickSeat", self)
+    self:BindEvListener("EvUiClickOB", self)
+    self:BindEvListener("EvUiClickWaitWhile", self)
+    self:BindEvListener("EvUiClickPlayerReturn", self)
+    self:BindEvListener("EvUiClickAutoAction", self)
+    self:BindEvListener("EvUiClickCancelAutoAction", self)
+    self:BindEvListener("EvUiCreateExchangeChip", self)
+    self:BindEvListener("EvUiRequestLockPlayerChat", self)
+    self:BindEvListener("EvUiRequestLockAllDesktopPlayer", self)
+    self:BindEvListener("EvUiRequestLockAllSpectator", self)
+    self:BindEvListener("EvUiInviteFriendPlayTogether", self)
+    self:BindEvListener("EvUiSendMsg", self)
+    self:BindEvListener("EvUiSetUnSendDesktopMsg", self)
+    self:BindEvListener("EvUiDesktopClickLockChat", self)
+    self:BindEvListener("EvUiClickShowCard", self)
+    self:BindEvListener("EvUiMTTCreateRebuyOrAddOn", self)
+    self:BindEvListener("EvEntityPlayerEnterDesktopH", self)
+    self:BindEvListener("EvEntityGetDesktopData", self)
+    self:BindEvListener("EvEntityMTTPlayerRebuy", self)
+    self:BindEvListener("EvEntityMTTPlayerAddon", self)
+    self:BindEvListener("EvEntityMatchGameOver", self)
+    self:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
+    self:BindEvListener("EvEntitySetMatchDetailedInfo", self)
+    self:BindEvListener("EvUpdatePlayerScore", self)
 
-    local rpc = self.ControllerMgr.Rpc
     local m_c = CommonMethodType
-    rpc:RegRpcMethod1(m_c.DesktopUserNotify, function(info_user)
+    self.Rpc:RegRpcMethod1(m_c.DesktopUserNotify, function(info_user)
         self:s2cPlayerDesktopUser(info_user)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopSnapshotNotify, function(snapshot_notify)
+    self.Rpc:RegRpcMethod1(m_c.DesktopSnapshotNotify, function(snapshot_notify)
         self:s2cDesktopSnapshotNotify(snapshot_notify)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopPlayerEnterNotify, function(player_data)
+    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerEnterNotify, function(player_data)
         self:s2cPlayerDesktopPlayerEnterNotify(player_data)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopPlayerLeaveNotify, function(player_guid)
+    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerLeaveNotify, function(player_guid)
         self:s2cPlayerDesktopPlayerLeaveNotify(player_guid)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopPlayerSitdownNotify, function(sitdown_data)
+    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerSitdownNotify, function(sitdown_data)
         self:s2cPlayerDesktopPlayerSitdown(sitdown_data)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopPlayerObNotify, function(player_guid)
+    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerObNotify, function(player_guid)
         self:s2cPlayerDesktopPlayerOb(player_guid)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopPlayerWaitWhileNotify, function(player_guid)
+    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerWaitWhileNotify, function(player_guid)
         self:s2cPlayerDesktopPlayerWaitWhile(player_guid)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopPlayerReturnNotify, function(return_data)
+    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerReturnNotify, function(return_data)
         self:s2cPlayerDesktopPlayerReturn(return_data)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopPlayerGiftChangeNotify, function(data)
+    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerGiftChangeNotify, function(data)
         self:s2cDesktopPlayerGiftChangeNotify(data)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopBuyAndSendItemNotify, function(data)
+    self.Rpc:RegRpcMethod1(m_c.DesktopBuyAndSendItemNotify, function(data)
         self:s2cDesktopBuyAndSendItemNotify(data)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopChatNotify, function(msg)
+    self.Rpc:RegRpcMethod1(m_c.DesktopChatNotify, function(msg)
         self:s2cPlayerDesktopChat(msg)
     end)
-    rpc:RegRpcMethod0(m_c.PlayerLeaveDesktopNotify, function()
+    self.Rpc:RegRpcMethod0(m_c.PlayerLeaveDesktopNotify, function()
         self:OnPlayerLeaveDesktopNotify()
     end)
-    rpc:RegRpcMethod1(m_c.PlayerInvitePlayerEnterDesktopRequestResult, function(r)
+    self.Rpc:RegRpcMethod1(m_c.PlayerInvitePlayerEnterDesktopRequestResult, function(r)
         self:OnPlayerInvitePlayerEnterDesktopRequestResult(r)
     end)
 
-    rpc:RegRpcMethod1(m_c.MatchTexasRequestRebuyResult, function(r)
+    self.Rpc:RegRpcMethod1(m_c.MatchTexasRequestRebuyResult, function(r)
         self:OnMatchTexasRequestRebuyResult(r)
     end)
-    rpc:RegRpcMethod1(m_c.MatchTexasRequestAddonResult, function(r)
+    self.Rpc:RegRpcMethod1(m_c.MatchTexasRequestAddonResult, function(r)
         self:OnMatchTexasRequestAddonResult(r)
     end)
-    rpc:RegRpcMethod1(m_c.MatchTexasPlayerFinishedNotify, function(r)
+    self.Rpc:RegRpcMethod1(m_c.MatchTexasPlayerFinishedNotify, function(r)
         self:OnMatchTexasGameOverNotify(r)
     end)
 
-    self.ListDesktopChat = {}
-    self.LockSysChat = false
-    self.MapDesktopBaseFac = {}
     self:regDesktopBaseFactory(DesktopTexasFactory:new(nil))
-    self.MapDesktopHelper = {}
     local t_fac = DesktopHelperTexasFactory:new(nil)
     self.MapDesktopHelper[t_fac:GetName()] = t_fac:CreateDesktopHelper()
 end
@@ -118,14 +118,12 @@ function ControllerDesktopTexas:OnHandleEv(ev)
     elseif (ev.EventName == "EvEntityPlayerEnterDesktopH") then
         self:clearDesktop(false)
     elseif (ev.EventName == "EvUiRequestChangeDesk") then
-        local rpc = self.ControllerMgr.Rpc
-        rpc:RPC0(CommonMethodType.DesktopPlayerChangeDeskRequest)
+        self.Rpc:RPC0(CommonMethodType.DesktopPlayerChangeDeskRequest)
     elseif (ev.EventName == "EvEntityGetDesktopData") then
         if (self.DesktopBase == nil) then
             return
         end
-        local rpc = self.ControllerMgr.Rpc
-        rpc:RPC0(CommonMethodType.DesktopSnapshotRequest)
+        self.Rpc:RPC0(CommonMethodType.DesktopSnapshotRequest)
     end
 
     if (self.DesktopBase ~= nil) then
@@ -340,7 +338,7 @@ function ControllerDesktopTexas:requestInvitePlayerEnterDesktop(friend_guid, des
     invite.desktop_filter = desktop_filter
     invite.player_num = player_num
 
-    self.ControllerMgr.Rpc:RPC1(CommonMethodType.PlayerInvitePlayerEnterDesktopRequest, invite:getData4Pack())
+    self.Rpc:RPC1(CommonMethodType.PlayerInvitePlayerEnterDesktopRequest, invite:getData4Pack())
 end
 
 ---------------------------------------
@@ -404,62 +402,53 @@ end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestSendMsg(chat_msg)
-    local rpc = self.ControllerMgr.Rpc
-    rpc:RPC1(CommonMethodType.DesktopChatRequest, chat_msg)
+    self.Rpc:RPC1(CommonMethodType.DesktopChatRequest, chat_msg)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestPlayerWaitWhile()
-    local rpc = self.ControllerMgr.Rpc
-    rpc:RPC0(CommonMethodType.DesktopPlayerWaitWhileRequest)
+    self.Rpc:RPC0(CommonMethodType.DesktopPlayerWaitWhileRequest)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestPlayerOb()
-    local rpc = self.ControllerMgr.Rpc
-    rpc:RPC0(CommonMethodType.DesktopPlayerObRequest)
+    self.Rpc:RPC0(CommonMethodType.DesktopPlayerObRequest)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestPlayerReturn(data)
-    local rpc = self.ControllerMgr.Rpc
     local m = {}
     m["Stack"] = tostring(data)
-    rpc:RPC1(CommonMethodType.DesktopPlayerReturnRequest, m)
+    self.Rpc:RPC1(CommonMethodType.DesktopPlayerReturnRequest, m)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestPlayerSitdown(sitdown_info)
-    local rpc = self.ControllerMgr.Rpc
-    rpc:RPC1(CommonMethodType.DesktopPlayerSitdownRequest, sitdown_info:getData4Pack())
+    self.Rpc:RPC1(CommonMethodType.DesktopPlayerSitdownRequest, sitdown_info:getData4Pack())
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:UserRequest(fac_name, method_info)
-    local rpc = self.ControllerMgr.Rpc
     local user = MethodInfoDesktopUser:new(nil)
     user.FactoryName = fac_name
     user.data = self.ControllerMgr:PackData(method_info)
     local d = user:getData4Pack()
-    rpc:RPC1(CommonMethodType.DesktopUserRequest, d)
+    self.Rpc:RPC1(CommonMethodType.DesktopUserRequest, d)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:MatchTexasRequestRebuy(match_guid)
-    local rpc = self.ControllerMgr.Rpc
-    rpc:RPC1(CommonMethodType.MatchTexasRequestRebuy, match_guid)
+    self.Rpc:RPC1(CommonMethodType.MatchTexasRequestRebuy, match_guid)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:MatchTexasRequestAddon(match_guid)
-    local rpc = self.ControllerMgr.Rpc
-    rpc:RPC1(CommonMethodType.MatchTexasRequestAddon, match_guid)
+    self.Rpc:RPC1(CommonMethodType.MatchTexasRequestAddon, match_guid)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:MatchTexasRequestGiveUpRebuyOrAddon(match_guid)
-    local rpc = self.ControllerMgr.Rpc
-    rpc:RPC1(CommonMethodType.MatchTexasRequestGiveUpRebuyOrAddon, match_guid)
+    self.Rpc:RPC1(CommonMethodType.MatchTexasRequestGiveUpRebuyOrAddon, match_guid)
 end
 
 ---------------------------------------
