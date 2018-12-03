@@ -99,7 +99,7 @@ function ViewRanking:RenderListItem(index, obj)
         if (self.ControllerRanking.ListRankingGold ~= nil) then
             if (#self.ControllerRanking.ListRankingGold > index) then
                 local rank_info = self.ControllerRanking.ListRankingGold[index + 1]
-                item:setRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
+                item:SetRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
                         rank_info.account_id, rank_info.gold, 0, index, true, nil)
             end
         end
@@ -107,7 +107,7 @@ function ViewRanking:RenderListItem(index, obj)
         if (self.ControllerRanking.ListRankingDiamond ~= nil) then
             if (#self.ControllerRanking.ListRankingDiamond > index) then
                 local rank_info = self.ControllerRanking.ListRankingDiamond[index + 1]
-                item:setRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
+                item:SetRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
                         rank_info.account_id, rank_info.diamond, 0, index, false, nil)
             end
         end
@@ -115,7 +115,7 @@ function ViewRanking:RenderListItem(index, obj)
         if (self.ControllerRanking.ListRankingLevel ~= nil) then
             if (#self.ControllerRanking.ListRankingLevel > index) then
                 local rank_info = self.ControllerRanking.ListRankingLevel[index + 1]
-                item:setRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
+                item:SetRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
                         rank_info.account_id, rank_info.player_level, 0, index, true, nil)
             end
         end
@@ -124,7 +124,7 @@ function ViewRanking:RenderListItem(index, obj)
         if (self.ControllerRanking.ListRankingWinGold ~= nil) then
             if (#self.ControllerRanking.ListRankingWinGold > index) then
                 local rank_info = self.ControllerRanking.ListRankingWinGold[index + 1]
-                item:setRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
+                item:SetRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
                         rank_info.account_id, rank_info.win_gold, 0, index, true, nil)
             end
         end
@@ -132,7 +132,7 @@ function ViewRanking:RenderListItem(index, obj)
         if (self.ControllerRanking.ListRankingRedEnvelopes ~= nil) then
             if (#self.ControllerRanking.ListRankingRedEnvelopes > index) then
                 local rank_info = self.ControllerRanking.ListRankingRedEnvelopes[index + 1]
-                item:setRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
+                item:SetRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
                         rank_info.account_id, rank_info.win_redenvelope / 100, 0, index, true, self.ViewMgr.LanMgr:getLanValue("Yuan"))
             end
         end

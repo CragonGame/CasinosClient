@@ -302,7 +302,7 @@ function UiDesktopHBanker:_onClick()
     if (CS.System.String.IsNullOrEmpty(self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid) == false) then
         local view_mgr = ViewMgr
         local ui_profileother = view_mgr:CreateView("PlayerProfile")
-        ui_profileother:setPlayerGuid(CS.Casinos._ePlayerProfileType.DesktopH, self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid,
+        ui_profileother:RequestRefreshByPlayerGuid(CS.Casinos._ePlayerProfileType.DesktopH, self.BankPlayerDataDesktopH.PlayerInfoCommon.PlayerGuid,
                 function(player_info, head_icon)
                     self:_playerInfo(player_info, head_icon)
                 end

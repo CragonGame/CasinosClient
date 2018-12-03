@@ -311,7 +311,7 @@ function UiDesktopHChair:_onClick()
         self.ViewDesktopH:SendEv(ev)
     else
         local ui_profileother = self.ViewMgr:CreateView("PlayerProfile")
-        ui_profileother:setPlayerGuid(CS.Casinos._ePlayerProfileType.DesktopH, self.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid,
+        ui_profileother:RequestRefreshByPlayerGuid(CS.Casinos._ePlayerProfileType.DesktopH, self.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid,
                 function(player_info, head_icon)
                     self:_playerInfo(player_info, head_icon)
                 end

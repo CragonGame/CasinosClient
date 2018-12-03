@@ -37,6 +37,7 @@
 		<type fullname="FairyGUI.GSlider" preserve="all"/>
 		<type fullname="FairyGUI.GTween" preserve="all"/>
 		<type fullname="FairyGUI.GTweener" preserve="all"/>
+		<type fullname="FairyGUI.NTexture" preserve="all"/>
 		<type fullname="FairyGUI.Stage" preserve="all"/>
 		<type fullname="FairyGUI.PopupMenu" preserve="all"/>
 		<type fullname="FairyGUI.Relations" preserve="all"/>
@@ -103,6 +104,7 @@
 		<type fullname="UnityEngine.Resources" preserve="all"/>
 		<type fullname="UnityEngine.Screen" preserve="all"/>
 		<type fullname="UnityEngine.SystemInfo" preserve="all"/>
+		<type fullname="UnityEngine.Texture" preserve="all"/>
 		<type fullname="UnityEngine.Texture3D" preserve="all"/>
 		<type fullname="UnityEngine.Time" preserve="all"/>
 		<type fullname="UnityEngine.Vector3" preserve="all"/>

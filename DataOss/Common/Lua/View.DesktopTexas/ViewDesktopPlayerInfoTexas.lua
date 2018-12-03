@@ -1014,7 +1014,7 @@ function ViewDesktopPlayerInfoTexas:_onClickSelf()
         self.ViewMgr:CreateView("ChatExPression")
     else
         local ui_profile = self.ViewMgr:CreateView("PlayerProfile")
-        ui_profile:setPlayerGuid(CS.Casinos._ePlayerProfileType.Desktop, self.Player.Guid,
+        ui_profile:RequestRefreshByPlayerGuid(CS.Casinos._ePlayerProfileType.Desktop, self.Player.Guid,
                 function(player_info, head_icon)
                     self:_playerInfo(player_info, head_icon)
                 end

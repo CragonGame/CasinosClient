@@ -26,10 +26,10 @@ function ItemRank:new(o, com, view_ranking)
 end
 
 ---------------------------------------
-function ItemRank:setRankInfo(view_mgr, player_guid, nick_name, icon_name, account_id, value, vip_level, index, show_value_shortway, value_format)
+function ItemRank:SetRankInfo(view_mgr, player_guid, nick_name, icon_name, account_id, value, vip_level, index, show_value_shortway, value_format)
     self.ViewMgr = view_mgr
     self.ShowValueShortWay = show_value_shortway
-    self.PlayerEtguid = player_guid
+    self.PlayerGuid = player_guid
     local show_ranksign = false
     local rank_signname = ""
     if (index == 0) then
@@ -68,16 +68,16 @@ end
 ---------------------------------------
 function ItemRank:onClickItem()
     local profile = self.ViewMgr:CreateView("PlayerProfile")
-    profile:setPlayerGuid(CS.Casinos._ePlayerProfileType.Ranking, self.PlayerEtguid,
-            function(a, b)
-                self:playerInfo(a, b)
+    profile:RequestRefreshByPlayerGuid(CS.Casinos._ePlayerProfileType.Ranking, self.PlayerGuid,
+            function(player_info, headicon_texture)
+                self:RefreshPlayerInfo(player_info, headicon_texture)
             end
     )
 end
 
 ---------------------------------------
-function ItemRank:playerInfo(player_info, head_icon)
+function ItemRank:RefreshPlayerInfo(player_info, headicon_texture)
     self.GTextPlayerNickName.text = player_info.PlayerInfoCommon.NickName
     self.GTextPlayerGold.text = UiChipShowHelper:GetGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase, self.ShowValueShortWay)
-    self.ViewHeadIcon.GLoaderPlayerIcon.texture.nativeTexture = head_icon
+    self.ViewHeadIcon.GLoaderPlayerIcon.texture:Reload(headicon_texture)
 end

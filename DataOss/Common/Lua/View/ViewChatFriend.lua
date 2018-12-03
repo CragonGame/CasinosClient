@@ -175,7 +175,7 @@ function ViewChatFriend:onClickBtnCurrentFriendProfile()
         return
     end
     local ui_playerprofile = self.ViewMgr:CreateView("PlayerProfile")
-    ui_playerprofile:setPlayerGuid(CS.Casions._ePlayerProfileType.Ranking, self.CurrentChatTarget.PlayerInfoCommon.PlayerGuid, nil)
+    ui_playerprofile:RequestRefreshByPlayerGuid(CS.Casions._ePlayerProfileType.Ranking, self.CurrentChatTarget.PlayerInfoCommon.PlayerGuid, nil)
 end
 
 ---------------------------------------

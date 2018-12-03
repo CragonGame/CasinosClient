@@ -15,8 +15,8 @@ function ViewPlayerProfile:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
-    self.ControllerDeskTop = self.ControllerMgr:GetController("DesktopTexas")
-    self.ControllerDeskTopH = self.ControllerMgr:GetController("DesktopH")
+    self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
+    self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
     self.ControllerIM = self.ControllerMgr:GetController("IM")
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ViewPool = self.ViewMgr:GetView("Pool")
@@ -145,9 +145,9 @@ function ViewPlayerProfile:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ViewPlayerProfile:setPlayerGuid(player_profile_type, guid, getplayerinfo_callback)
+function ViewPlayerProfile:RequestRefreshByPlayerGuid(player_profile_type, player_guid, getplayerinfo_callback)
     self.PlayerProfileType = player_profile_type
-    self.PlayerGuid = guid
+    self.PlayerGuid = player_guid
     self.GetPlayerInfoCallBack = getplayerinfo_callback
     self.ControllerPlayer:requestGetPlayerInfoOther(self.PlayerGuid)
 end
@@ -159,7 +159,7 @@ function ViewPlayerProfile:SendMagicExpression(exp_tbid)
         return
     end
 
-    if (self.PlayerProfileType == CS.Casinos._ePlayerProfileType.Desktop and self.ControllerDeskTop.DesktopBase.MePlayer.IsInGame == false) then
+    if (self.PlayerProfileType == CS.Casinos._ePlayerProfileType.Desktop and self.ControllerDesktop.DesktopBase.MePlayer.IsInGame == false) then
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SitTableSendMagic"))
         return
     end
@@ -189,7 +189,7 @@ function ViewPlayerProfile:SetPlayerInfo(player_info)
     self.PlayerInfo = player_info
     local hide_standupbtn = true
     if ((self.PlayerInfo.PlayerInfoCommon.PlayerGuid == self.ControllerPlayer.Guid) and (self.PlayerProfileType == CS.Casinos._ePlayerProfileType.DesktopH)) then
-        if (self.ControllerDeskTopH.SeatIndex ~= 255) then
+        if (self.ControllerDesktopH.SeatIndex ~= 255) then
             hide_standupbtn = false
         end
     end

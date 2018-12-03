@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(FairyGUI.UIPackage);
-			Utils.BeginObjectRegister(type, L, translator, 0, 9, 5, 1);
+			Utils.BeginObjectRegister(type, L, translator, 0, 9, 6, 1);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadAllAssets", _m_LoadAllAssets);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "UnloadAssets", _m_UnloadAssets);
@@ -39,6 +39,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "assetPath", _g_get_assetPath);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "customId", _g_get_customId);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "resBundle", _g_get_resBundle);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "dependencies", _g_get_dependencies);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "customId", _s_set_customId);
             
@@ -973,6 +974,20 @@ namespace XLua.CSObjectWrap
 			
                 FairyGUI.UIPackage gen_to_be_invoked = (FairyGUI.UIPackage)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.resBundle);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_dependencies(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                FairyGUI.UIPackage gen_to_be_invoked = (FairyGUI.UIPackage)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.dependencies);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
