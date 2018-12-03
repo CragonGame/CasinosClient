@@ -58,6 +58,8 @@ ViewChipOperate = class(ViewBase)
 ---------------------------------------
 function ViewChipOperate:ctor()
     self.Tween = nil
+    -- TODO，此处不合理，竟然依赖CreateMatch UiPackage中的资源
+    self.Context:AddUiPackage('CreateMatch')
 end
 
 ---------------------------------------
