@@ -191,14 +191,14 @@ function Context:_initLaunchStep()
     --end
 
     -- 检测是否需要更新Common
-    if (self.CasinosContext.Config.VersionCommonPersistent ~= self.Cfg.CommonVersion) then
-        self.LaunchStep[2] = "UpdateCommon"
-    end
+    --if (self.CasinosContext.Config.VersionCommonPersistent ~= self.Cfg.CommonVersion) then
+    self.LaunchStep[2] = "UpdateCommon"
+    --end
 
     -- 检测是否需要更新Data
-    if (self.CasinosContext.Config.VersionDataPersistent ~= self.Cfg.DataVersion) then
-        self.LaunchStep[3] = "UpdateData"
-    end
+    --if (self.CasinosContext.Config.VersionDataPersistent ~= self.Cfg.DataVersion) then
+    self.LaunchStep[3] = "UpdateData"
+    --end
 
     -- 进入Login界面
     self.LaunchStep[4] = "ShowLogin"

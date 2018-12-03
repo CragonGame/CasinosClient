@@ -105,7 +105,7 @@ end
 
 ---------------------------------------
 function ViewTexasClassic:_onClickMenu()
-    local ctrl_reward = self.ViewDesktop.ViewMgr.ControllerMgr:GetController("Reward")
+    local ctrl_reward = self.ViewDesktop.ControllerMgr:GetController("Reward")
     local desktop_menu = self.ViewDesktop.ViewMgr:CreateView("DesktopMenuTexas")
     desktop_menu:SetPlayerState(self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.Ob,
             self.ViewDesktop.Desktop.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.WaitWhile, ctrl_reward.RedPointRewardShow)

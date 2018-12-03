@@ -22,7 +22,7 @@ end
 
 ---------------------------------------
 function DesktopTexasMTT:OnDestroy(need_createmainui)
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     if (need_createmainui) then
         local match_lobby = view_mgr:GetView("MatchLobby")
         if (match_lobby == nil) then
@@ -44,7 +44,7 @@ function DesktopTexasMTT:Update(elapsed_tm)
         self.UpdateRaiseBlindTm = self.UpdateRaiseBlindTm + elapsed_tm
         if self.UpdateRaiseBlindTm >= self.ConstUpdateRaiseBlindTm then
             self.UpdateRaiseBlindTm = 0
-            local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+            local view_mgr = self.ControllerDesktop.ViewMgr
             local ev = view_mgr:GetEv("EvEntityMTTUpdateRaiseBlindTm")
             if (ev == nil) then
                 ev = EvEntityMTTUpdateRaiseBlindTm:new(nil)
@@ -73,7 +73,7 @@ function DesktopTexasMTT:OnHandleEv(ev)
         elseif ev.EventName == "EvEntityMatchGameOver" then
             if self.MatchGuid == ev.game_over.MatchGuid then
                 local all_valid_player = self.DesktopBase:getAllValidPlayer()
-                local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+                local view_mgr = self.ControllerDesktop.ViewMgr
                 local view_mtt_gameresult = view_mgr:CreateView("MTTGameResult")
                 view_mtt_gameresult:setResult(ev.game_over, #all_valid_player < 2)
                 local msg_box = view_mgr:CreateView("MsgBox")
@@ -82,7 +82,7 @@ function DesktopTexasMTT:OnHandleEv(ev)
                 end
             end
         elseif ev.EventName == "EvEntitySetMatchDetailedInfo" then
-            local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+            local view_mgr = self.ControllerDesktop.ViewMgr
             local ev = view_mgr:GetEv("EvEntitySetRaiseBlindTbInfo")
             if (ev == nil) then
                 ev = EvEntitySetRaiseBlindTbInfo:new(nil)
@@ -95,7 +95,7 @@ function DesktopTexasMTT:OnHandleEv(ev)
                 local all_valid_player = self.DesktopBase:getAllValidPlayer()
                 if #all_valid_player == 0 then
                     local msg_box = ViewHelper:UiShowMsgBox(self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("NoPlayer"), function()
-                        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+                        local view_mgr = self.ControllerDesktop.ViewMgr
                         local ev = view_mgr:GetEv("EvUiClickExitDesk")
                         if (ev == nil) then
                             ev = EvUiClickExitDesk:new(nil)
@@ -170,7 +170,7 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
             self.CanUpdateT = false
         end
 
-        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+        local view_mgr = self.ControllerDesktop.ViewMgr
         local ev = view_mgr:GetEv("EvEntityMTTUpdateRealtimeInfo")
         if (ev == nil) then
             ev = EvEntityMTTUpdateRealtimeInfo:new(nil)
@@ -187,7 +187,7 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
         --local process = DesktopNotifyMTTUpdateProcess:new(nil)
         --process:setData(data1)
 
-        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+        local view_mgr = self.ControllerDesktop.ViewMgr
         local view_process = view_mgr:GetView("MTTProcess")
         if view_process == nil then
             view_process = view_mgr:CreateView("MTTProcess")
@@ -207,7 +207,7 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
         self.BDesktopSnapshotMatchTexas.Pause = notifyex.Pause
         self.BDesktopSnapshotMatchTexas.PauseCountDownLeftSec = notifyex.PauseCountdownLeftSec
 
-        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+        local view_mgr = self.ControllerDesktop.ViewMgr
         local ev = view_mgr:GetEv("EvMTTPauseChanged")
         if (ev == nil) then
             ev = EvMTTPauseChanged:new(nil)
@@ -229,9 +229,9 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
             self.BDesktopSnapshotMatchTexas.MyInfo.AddonNum = player_info.AddonCount
             --self.DesktopBase.MeP:rebuyOrAddOn(player_info.Score)
             self:refreshBtnRebuyAddOnStat()
-            ViewHelper:UiShowMsgBox(string.format(self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("RebuySuccess"), self.BDesktopSnapshotMatchTexas.RaiseBlindTbInfo.AddonScore)) -- "RebuyTip1"  "AddonSuccess"
+            ViewHelper:UiShowMsgBox(string.format(self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("RebuySuccess"), self.BDesktopSnapshotMatchTexas.RaiseBlindTbInfo.AddonScore)) -- "RebuyTip1"  "AddonSuccess"
         else
-            --local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+            --local view_mgr = self.ControllerDesktop.ViewMgr
             --local ev = view_mgr:GetEv("EvUpdatePlayerScore")
             --if (ev == nil)
             --then
@@ -258,16 +258,16 @@ end
 function DesktopTexasMTT:chipIsEnough(need_chip)
     local enough = self.ControllerActor.PropGoldAcc:get() >= need_chip
 
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     if (enough == false) then
         local msg_box = view_mgr:CreateView("MsgBox")
-        local tips = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-        tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(need_chip, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
-        local title = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
+        local tips = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
+        tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(need_chip, self.ControllerDesktop.ViewMgr.LanMgr.LanBase))
+        local title = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
         msg_box:showMsgBox1(title, tips,
                 function(bo)
                     if (bo) then
-                        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+                        local view_mgr = self.ControllerDesktop.ViewMgr
                         local ev = view_mgr:GetEv("EvUiClickShop")
                         if (ev == nil) then
                             ev = EvUiClickShop:new(nil)
@@ -292,7 +292,7 @@ end
 ---------------------------------------
 function DesktopTexasMTT:createRebuyOrAddon(tm)
     local match_texas = self.BDesktopSnapshotMatchTexas
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     local cose_chip = 0
     local buy_score = 0
     local alow_name = ""
@@ -350,7 +350,7 @@ function DesktopTexasMTT:refreshBtnRebuyAddOnStat()
         can_addon1 = true
     end
     self.MeCanAddon = can_addon1 and self.BDesktopSnapshotMatchTexas.Pause == false
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     local ev = view_mgr:GetEv("EvEntityMTTPlayerRebuyOrAddonRefresh")
     if (ev == nil) then
         ev = EvEntityMTTPlayerRebuyOrAddonRefresh:new(nil)

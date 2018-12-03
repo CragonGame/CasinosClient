@@ -70,7 +70,7 @@ function DesktopPlayerTexas:SetPlayerData(player_data, desktop_state)
             self.UiSeatIndex = 255
         end
 
-        self.PlayerOperate = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr:CreateView("DesktopPlayerOperateTexas")
+        self.PlayerOperate = self.DesktopTexas.ControllerPlayer.ViewMgr:CreateView("DesktopPlayerOperateTexas")
         self.PlayerOperate:setMeActorMirror(self)
     else
         self:_setUiSeatIndex()
@@ -92,7 +92,7 @@ function DesktopPlayerTexas:Destroy()
         self.UiDesktopPlayerInfo = nil
     end
 
-    local view_mgr = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr
+    local view_mgr = self.DesktopTexas.ControllerPlayer.ViewMgr
     local ui_desk = view_mgr:GetView("DesktopTexas")
     if (ui_desk ~= nil) then
         ui_desk:PlayerLeave(self.UiSeatIndex)
@@ -484,7 +484,7 @@ end
 
 ---------------------------------------
 function DesktopPlayerTexas:mttAutoAction(auto_action)
-    local view_mgr = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr
+    local view_mgr = self.DesktopTexas.ControllerPlayer.ViewMgr
     local ev = view_mgr:GetEv("EvEntitySelfAutoActionChange")
     if (ev == nil) then
         ev = EvEntitySelfAutoActionChange:new(nil)
@@ -578,7 +578,7 @@ function DesktopPlayerTexas:_checkActorState()
             self.UiDesktopPlayerInfo = nil
         end
         if self.IsMe then
-            local view_mgr = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr
+            local view_mgr = self.DesktopTexas.ControllerPlayer.ViewMgr
             local ev = view_mgr:GetEv("EvEntitySelfIsOB")
             if (ev == nil)
             then
@@ -632,7 +632,7 @@ end
 ---------------------------------------
 function DesktopPlayerTexas:_createUiPlayerInfo()
     if (CS.System.String.IsNullOrEmpty(self.DesktopTexas.DesktopGuid) == false) then
-        local ui_desk = self.DesktopTexas.ControllerPlayer.ControllerMgr.ViewMgr:GetView("DesktopTexas")
+        local ui_desk = self.DesktopTexas.ControllerPlayer.ViewMgr:GetView("DesktopTexas")
         if (ui_desk == nil or self.DesktopTexas:isValidSeatIndex(self.PlayerDataDesktop.SeatIndex) == false) then
             return
         end

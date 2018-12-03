@@ -19,7 +19,7 @@ end
 
 ---------------------------------------
 function DesktopTexasClassic:OnDestroy(need_createmainui)
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     if (need_createmainui)
     then
         local ui_classicmodel = view_mgr:GetView("ClassicModel")
@@ -47,15 +47,15 @@ function DesktopTexasClassic:OnHandleEv(ev)
                     self.NormalTexas.DesktopTbId)
             if (enough == false)
             then
-                local msg_box = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("MsgBox")
-                local tips = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-                tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
-                local title = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
+                local msg_box = self.ControllerDesktop.ViewMgr:CreateView("MsgBox")
+                local tips = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
+                tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ViewMgr.LanMgr.LanBase))
+                local title = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
                 msg_box:showMsgBox1(title, tips,
                         function(bo)
                             if (bo)
                             then
-                                local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+                                local view_mgr = self.ControllerDesktop.ViewMgr
                                 local ev1 = view_mgr:GetEv("EvUiClickShop")
                                 if (ev1 == nil)
                                 then
@@ -105,15 +105,15 @@ function DesktopTexasClassic:OnHandleEv(ev)
 
                 if (enough == false)
                 then
-                    local msg_box = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("MsgBox")
-                    local tips = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-                    tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
-                    local title = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
+                    local msg_box = self.ControllerDesktop.ViewMgr:CreateView("MsgBox")
+                    local tips = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
+                    tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ViewMgr.LanMgr.LanBase))
+                    local title = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
                     msg_box:showMsgBox1(title, tips,
                             function(bo)
                                 if (bo)
                                 then
-                                    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+                                    local view_mgr = self.ControllerDesktop.ViewMgr
                                     local ev = view_mgr:GetEv("EvUiClickShop")
                                     if (ev == nil)
                                     then
@@ -144,18 +144,18 @@ function DesktopTexasClassic:OnHandleEv(ev)
             local enough = TexasHelper:EnoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr, self.ControllerActor.PropGoldAcc:get(),
                     self.NormalTexas.DesktopTbId)
 
-            local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+            local view_mgr = self.ControllerDesktop.ViewMgr
             if (enough == false)
             then
                 local msg_box = view_mgr:CreateView("MsgBox")
-                local tips = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
-                tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr.LanBase))
-                local title = self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
+                local tips = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
+                tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ViewMgr.LanMgr.LanBase))
+                local title = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
                 msg_box:showMsgBox1(title, tips,
                         function(bo)
                             if (bo)
                             then
-                                local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+                                local view_mgr = self.ControllerDesktop.ViewMgr
                                 local ev = view_mgr:GetEv("EvUiClickShop")
                                 if (ev == nil)
                                 then
@@ -187,7 +187,7 @@ function DesktopTexasClassic:OnHandleEv(ev)
             then
                 if (self_desktop_etguid == ev.friend_desktopguid)
                 then
-                    ViewHelper:UiShowInfoSuccess(self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("SameTableTips"))
+                    ViewHelper:UiShowInfoSuccess(self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("SameTableTips"))
                 else
                     local desktop_filter_texas = DesktopFilterTexas:new(nil)
                     desktop_filter_texas.desktop_tableid = self.NormalTexas.DesktopTbId
@@ -243,9 +243,9 @@ function DesktopTexasClassic:DesktopUser(method_id, method_data)
     elseif (method_id == MethodTypeTexasDesktop.PlayerPushStackResultNotify) then
         local result = self.ControllerDesktop.ControllerMgr:UnpackData(method_data)
         if (result == ProtocolResult.Success) then
-            ViewHelper:UiShowInfoSuccess(self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ExchangeMoneySuccess"))
+            ViewHelper:UiShowInfoSuccess(self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ExchangeMoneySuccess"))
         elseif (result == ProtocolResult.GiveChipNotEnoughChip) then
-            ViewHelper:UiShowInfoFailed(self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("ExchangeMoneyFailed"))
+            ViewHelper:UiShowInfoFailed(self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ExchangeMoneyFailed"))
         end
     end
 end
@@ -270,14 +270,14 @@ function DesktopTexasClassic:checkMeStack(stack)
         local player_left_golds = self.DesktopBase.ControllerActor.PropGoldAcc:get()
         if (player_left_golds < self.BetMin) then
             -- 筹码（账户）不够
-            local msg_box = self.DesktopBase.ControllerPlayer.ControllerMgr.ViewMgr:CreateView("MsgBox")
+            local msg_box = self.DesktopBase.ControllerPlayer.ViewMgr:CreateView("MsgBox")
             local tips = self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("ChipNotEnoughTips")
             tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr.LanBase))
             local title = self.DesktopBase.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("ChipNotEnough")
             msg_box:showMsgBox1(title, tips,
                     function(bo)
                         if (bo) then
-                            local view_mgr = self.DesktopBase.ControllerPlayer.ControllerMgr.ViewMgr
+                            local view_mgr = self.DesktopBase.ControllerPlayer.ViewMgr
                             local ev = view_mgr:GetEv("EvUiClickShop")
                             if (ev == nil) then
                                 ev = EvUiClickShop:new(nil)

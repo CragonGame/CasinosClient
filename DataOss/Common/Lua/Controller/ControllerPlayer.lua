@@ -10,6 +10,7 @@ function ControllerPlayer:ctor(this, controller_data, controller_name)
     self.TimerUpdate = nil
     self.GetOnlinePlayerNumTimeElapsed = 0
     self.MC = CommonMethodType
+    self.Guid = controller_data-- 本人PlayerGuid
 end
 
 ---------------------------------------

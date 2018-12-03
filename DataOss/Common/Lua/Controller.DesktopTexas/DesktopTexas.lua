@@ -86,7 +86,7 @@ function DesktopTexas:OnDestroy(need_createmainui)
     self.MapSeatPlayerChatIsLock = {}
     self.CurrentUnSendDesktopMsg = ""
 
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     local que_uicount = #self.QueUiPlayerInfo
     if (que_uicount > 0) then
         for i = 0, que_uicount do
@@ -155,7 +155,7 @@ function DesktopTexas:OnHandleEv(ev)
         elseif (ev.EventName == "EvUiSetUnSendDesktopMsg") then
             self.CurrentUnSendDesktopMsg = ev.text
         elseif (ev.EventName == "EvUiDesktopClickLockChat") then
-            local ui_lockchat = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("LockChatTexas")
+            local ui_lockchat = self.ControllerDesktop.ViewMgr:CreateView("LockChatTexas")
             ui_lockchat:initLockChat(self.AllSeat)
         elseif (ev.EventName == "EvUiClickShowCard") then
             if self.MeP ~= nil then
@@ -403,7 +403,7 @@ function DesktopTexas:PlayerLeave(player_guid)
     local player_texas = self.MapPlayerTexas[player_guid]
     if (player_texas ~= nil) then
         self:_leaveDesktop(player_texas)
-        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+        local view_mgr = self.ControllerDesktop.ViewMgr
         local ev = view_mgr:GetEv("EvEntityDesktopPlayerLeaveChair")
         if (ev == nil) then
             ev = EvEntityDesktopPlayerLeaveChair:new(nil)
@@ -429,7 +429,7 @@ function DesktopTexas:PlayerSitdown(sitdown_data1)
             player_texas:playerSitdown(sitdown_data.seat_index,
                     stack, TexasDesktopPlayerState.Wait4Next, PlayerActionTypeTexas.None)
 
-            local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+            local view_mgr = self.ControllerDesktop.ViewMgr
             local ev = view_mgr:GetEv("EvEntityDesktopPlayerSit")
             if (ev == nil) then
                 ev = EvEntityDesktopPlayerSit:new(nil)
@@ -456,7 +456,7 @@ function DesktopTexas:PlayerOb(player_guid)
         for k, v in pairs(self.AllSeat) do
             if (v.player_texas ~= nil and v.player_texas.Guid == player_guid) then
                 v.player_texas = nil
-                local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+                local view_mgr = self.ControllerDesktop.ViewMgr
                 local ev = view_mgr:GetEv("EvEntityDesktopPlayerLeaveChair")
                 if (ev == nil) then
                     ev = EvEntityDesktopPlayerLeaveChair:new(nil)
@@ -535,7 +535,7 @@ function DesktopTexas:DesktopUser(info_user)
             end
         end
 
-        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+        local view_mgr = self.ControllerDesktop.ViewMgr
         local ev = view_mgr:GetEv("EvEntityDesktopIdleNotify")
         if (ev == nil) then
             ev = EvEntityDesktopIdleNotify:new(nil)
@@ -613,7 +613,7 @@ function DesktopTexas:DesktopUser(info_user)
             print("大盲注玩家为空")
         end
 
-        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+        local view_mgr = self.ControllerDesktop.ViewMgr
         local ev = view_mgr:GetEv("EvEntityDesktopPreFlopNotify")
         if (ev == nil) then
             ev = EvEntityDesktopPreFlopNotify:new(nil)
@@ -668,7 +668,7 @@ function DesktopTexas:DesktopUser(info_user)
             end
         end
 
-        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+        local view_mgr = self.ControllerDesktop.ViewMgr
         local ev = view_mgr:GetEv("EvEntityDesktopFlopNotify")
         if (ev == nil) then
             ev = EvEntityDesktopFlopNotify:new(nil)
@@ -712,7 +712,7 @@ function DesktopTexas:DesktopUser(info_user)
             end
         end
 
-        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+        local view_mgr = self.ControllerDesktop.ViewMgr
         local ev = view_mgr:GetEv("EvEntityDesktopTurnNotify")
         if (ev == nil) then
             ev = EvEntityDesktopTurnNotify:new(nil)
@@ -753,7 +753,7 @@ function DesktopTexas:DesktopUser(info_user)
             end
         end
 
-        local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+        local view_mgr = self.ControllerDesktop.ViewMgr
         local ev = view_mgr:GetEv("EvEntityDesktopRiverNotify")
         if (ev == nil) then
             ev = EvEntityDesktopRiverNotify:new(nil)
@@ -831,7 +831,7 @@ function DesktopTexas:DesktopUser(info_user)
                 end
             end
 
-            local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+            local view_mgr = self.ControllerDesktop.ViewMgr
             local ev = view_mgr:GetEv("EvEntityDesktopGameEndNotifyTexas")
             if (ev == nil) then
                 ev = EvEntityDesktopGameEndNotifyTexas:new(nil)
@@ -883,7 +883,7 @@ function DesktopTexas:DesktopUser(info_user)
                 end
             end
 
-            local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+            local view_mgr = self.ControllerDesktop.ViewMgr
             local ev = view_mgr:GetEv("EvEntityDesktopShowdownNotify")
             if (ev == nil) then
                 ev = EvEntityDesktopShowdownNotify:new(nil)
@@ -995,7 +995,7 @@ function DesktopTexas:DesktopBuyAndSendItemNotify(data)
     if (CS.System.String.IsNullOrEmpty(self.DesktopGuid)) then
         return
     end
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     local ui_desk = view_mgr:GetView("DesktopTexas")
     ui_desk:playerBuyAndSendItem(data)
 end
@@ -1033,7 +1033,7 @@ end
 
 ---------------------------------------
 function DesktopTexas:playerRaise()
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     local ev = view_mgr:GetEv("EvUiPotMainChanged")
     if (ev == nil) then
         ev = EvUiPotMainChanged:new(nil)
@@ -1059,7 +1059,7 @@ end
 
 ---------------------------------------
 function DesktopTexas:requestPlayerSitdown(sitdown_info)
-    ViewHelper:UiBeginWaiting(self.ControllerDesktop.ControllerMgr.ViewMgr.LanMgr:getLanValue("Seating"))
+    ViewHelper:UiBeginWaiting(self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("Seating"))
     self.ControllerDesktop:RequestPlayerSitdown(sitdown_info)
 end
 
@@ -1200,7 +1200,7 @@ function DesktopTexas:changeOtherPlayerUiSeatIndex()
         end
     end
 
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     local ui_desk = view_mgr:GetView("DesktopTexas")
     if (ui_desk ~= nil) then
         local all_player = self:getAllValidPlayer()
@@ -1291,7 +1291,7 @@ function DesktopTexas:getPlayerInfo()
     if (l > 0) then
         player_info = table.remove(self.QueUiPlayerInfo, 1)
     else
-        player_info = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("DesktopPlayerInfoTexas")
+        player_info = self.ControllerDesktop.ViewMgr:CreateView("DesktopPlayerInfoTexas")
     end
     return player_info
 end
@@ -1305,7 +1305,7 @@ end
 ---------------------------------------
 -- 换筹码对话框
 function DesktopTexas:createBetGame(action, bet_min, bet_max)
-    local ui_bet_game = self.ControllerDesktop.ControllerMgr.ViewMgr:CreateView("ChipOperate")
+    local ui_bet_game = self.ControllerDesktop.ViewMgr:CreateView("ChipOperate")
     local bet_maxchips = bet_max
     local bet_minchips = bet_min
     ui_bet_game:setChipsInfo(self.ControllerActor.PropGoldAcc:get(),
