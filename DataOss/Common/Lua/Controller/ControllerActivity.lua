@@ -6,25 +6,24 @@ ControllerActivity = class(ControllerBase)
 ---------------------------------------
 function ControllerActivity:ctor(this, controller_data, controller_name)
     self.CurrentActID = "Act180228"
+    self.ListActivity = {}
 end
 
 ---------------------------------------
 function ControllerActivity:OnCreate()
-    self.Rpc = self.ControllerMgr.Rpc
-    self.MC = CommonMethodType
+    self:BindEvListener("EvUiRequestGetActivity", self)
+
     -- 活动推送通知
     self.Rpc:RegRpcMethod1(self.MC.ActivityNotify, function(list_activity)
         self:s2cActivityNotify(list_activity)
     end)
-    self.ViewMgr:BindEvListener("EvUiRequestGetActivity", self)
-    self.ControllerPlayer = self.ControllerMgr:GetController("ControllerPlayer")
-    self.ListActivity = {}
+
     self:ConfigActivityInfo()
 end
 
 ---------------------------------------
 function ControllerActivity:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -37,11 +36,12 @@ end
 ---------------------------------------
 function ControllerActivity:s2cActivityNotify(list_activity)
     self.ListActivity = list_activity
-    local ev = self.ViewMgr:GetEv("EvEntityNotifyPushActivity")
+
+    local ev = self:GetEv("EvEntityNotifyPushActivity")
     if (ev == nil) then
         ev = EvEntityNotifyPushActivity:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -52,8 +52,8 @@ function ControllerActivity:ConfigActivityInfo()
     table.insert(self.ListActivity, temp)
     temp = ItemActivity:new(nil, "", self.ViewMgr.LanMgr:getLanValue("OfficialTipsTitle"), self.ViewMgr.LanMgr:getLanValue("OfficialTipsContent"), "", false)
     table.insert(self.ListActivity, temp)
-    temp = ItemActivity:new(nil, "", self.ViewMgr.LanMgr:getLanValue("Share"), nil, "Share", true)
-    table.insert(self.ListActivity, temp)
+    --temp = ItemActivity:new(nil, "", self.ViewMgr.LanMgr:getLanValue("Share"), nil, "Share", true)
+    --table.insert(self.ListActivity, temp)
 end
 
 ---------------------------------------

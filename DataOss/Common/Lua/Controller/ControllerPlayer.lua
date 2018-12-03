@@ -9,7 +9,6 @@ function ControllerPlayer:ctor(this, controller_data, controller_name)
     self.TopStarBundleId = "com.QuLing.TexasPoker"
     self.TimerUpdate = nil
     self.GetOnlinePlayerNumTimeElapsed = 0
-    self.MC = CommonMethodType
     self.Guid = controller_data-- 本人PlayerGuid
 end
 
@@ -59,10 +58,9 @@ function ControllerPlayer:OnCreate()
     self:CheckNeedShowHotActivity()
 
     if (self.CasinosContext.UnityIOS == true) then
-        self:initStoreItem()
+        self:InitStoreItem()
     end
 
-    self.ControllerMgr.Rpc = self.ControllerMgr.Rpc
     self.ControllerMgr.Rpc:RPC0(self.MC.PlayerClientInitDoneRequest)
     self:RequestGetOnlinePlayerNum()
 
@@ -646,7 +644,7 @@ function ControllerPlayer:getDesktopChat()
 end
 
 ---------------------------------------
-function ControllerPlayer:initStoreItem()
+function ControllerPlayer:InitStoreItem()
     local t_sku = {}
     local map_tbdata = self.ControllerMgr.TbDataMgr:GetMapData("UnitBilling")
     for key, value in pairs(map_tbdata) do

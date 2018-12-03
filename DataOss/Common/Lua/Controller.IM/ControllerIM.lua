@@ -39,8 +39,6 @@ function ControllerIM:OnCreate()
     self.ViewMgr:BindEvListener("EvUiRequestFriendAddOrRemove", self)
     self.ViewMgr:BindEvListener("EvUiSendFeedbackMsg", self)
     self.ViewMgr:BindEvListener("EvUiFeedbackConfirmRead", self)
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerPlayer = self.ControllerMgr:GetController("ControllerPlayer")
     self:setMainUiIMInfo()
     self.CurrentChatTargetGuid = ""
     local rpc = self.ControllerMgr.Rpc

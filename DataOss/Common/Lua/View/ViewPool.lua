@@ -224,9 +224,9 @@ function ItemChatTargetInfoPool:new(o, ui_pool)
     self.__index = self
     self.UiPool = ui_pool
     self.Que = {}
-    for i = 1, 20 do
-        self:createChatTargetInfo()
-    end
+    --for i = 1, 20 do
+    --    self:createChatTargetInfo()
+    --end
     return o
 end
 

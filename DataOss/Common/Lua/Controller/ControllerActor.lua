@@ -98,15 +98,48 @@ function ControllerActor:ctor(this, controller_data, controller_name)
     self.MasterPoint = Prop:new(tonumber(MasterPoint))
     self.LastLevel = self.PropLevel
 
-    self.ControllerPlayer = self.ControllerMgr:GetController("ControllerPlayer")
+    -- TODO，需要移到其他地方统一调用
     Native:CreateShareUrlAndQRCode(ActorId)
 end
 
 ---------------------------------------
 function ControllerActor:OnCreate()
-    self.Rpc = self.ControllerMgr.Rpc
-    self.MC = CommonMethodType
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self:BindEvListener("EvBindWeChatSuccess", self)
+    self:BindEvListener("EvUnBindWeChatSuccess", self)
+
+    -- 玩家积分更新通知
+    self.Rpc:RegRpcMethod3(self.MC.PlayerPointUpdateNotify, function(change_reason, point, user_date)
+        self:s2cPlayerPointUpdateNotify(change_reason, point, user_date)
+    end)
+    -- 玩家筹码变更通知
+    self.Rpc:RegRpcMethod3(self.MC.PlayerGoldAccUpdateNotify, function(change_reason, gold_acc, user_data)
+        self:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, user_data)
+    end)
+    -- 玩家钻石改变通知
+    self.Rpc:RegRpcMethod3(self.MC.PlayerDiamondUpdateNotify, function(change_reason, diamond, user_data)
+        self:s2cPlayerDiamondUpdateNotify(change_reason, diamond, user_data)
+    end)
+    -- 玩家VIP改变通知
+    self.Rpc:RegRpcMethod1(self.MC.PlayerVipChangedNotify, function(vip_level)
+        self:s2cPlayerVipChangedNotify(vip_level)
+    end)
+    -- 充值点数变更通知
+    self.Rpc:RegRpcMethod1(self.MC.PlayerRechargePointChangedNotify, function(rechargepoint_change)
+        self:s2cPlayerRechargePointChangedNotify(rechargepoint_change)
+    end)
+    -- 首充变更通知
+    self.Rpc:RegRpcMethod0(self.MC.PlayerIsFirstRechargeChangedNotify, function()
+        self:s2cPlayerIsFirstRechargeChangedNotify()
+    end)
+    -- 输光后送的筹码通知
+    self.Rpc:RegRpcMethod1(self.MC.PlayerLostAllSendChipsNotify, function(send_goldsinfo)
+        self:s2cPlayerLostAllSendChipsNotify(send_goldsinfo)
+    end)
+    -- 玩家大师分更新通知
+    --[[self.Rpc:RegRpcMethod1(self.MC.PlayerMasterPointUpdateNotify,function(level_new)
+        self:s2cPlayerLevelupNotify(level_new)
+    end)]]
+
     self.ControllerLogin = self.ControllerMgr:GetController("Login")
     local attach_wechat = self.ControllerLogin.ClientEnterWorldNotify.attach_wechat
     local wechat_openid = nil
@@ -153,45 +186,11 @@ function ControllerActor:OnCreate()
     self.PropIsFirstRecharge.OnChanged = function()
         self:onPropIsFirstRecharge()
     end
-    -- 玩家积分更新通知
-    self.Rpc:RegRpcMethod3(self.MC.PlayerPointUpdateNotify, function(change_reason, point, user_date)
-        self:s2cPlayerPointUpdateNotify(change_reason, point, user_date)
-    end)
-    -- 玩家筹码变更通知
-    self.Rpc:RegRpcMethod3(self.MC.PlayerGoldAccUpdateNotify, function(change_reason, gold_acc, user_data)
-        self:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, user_data)
-    end)
-    -- 玩家钻石改变通知
-    self.Rpc:RegRpcMethod3(self.MC.PlayerDiamondUpdateNotify, function(change_reason, diamond, user_data)
-        self:s2cPlayerDiamondUpdateNotify(change_reason, diamond, user_data)
-    end)
-    -- 玩家VIP改变通知
-    self.Rpc:RegRpcMethod1(self.MC.PlayerVipChangedNotify, function(vip_level)
-        self:s2cPlayerVipChangedNotify(vip_level)
-    end)
-    -- 充值点数变更通知
-    self.Rpc:RegRpcMethod1(self.MC.PlayerRechargePointChangedNotify, function(rechargepoint_change)
-        self:s2cPlayerRechargePointChangedNotify(rechargepoint_change)
-    end)
-    -- 首充变更通知
-    self.Rpc:RegRpcMethod0(self.MC.PlayerIsFirstRechargeChangedNotify, function()
-        self:s2cPlayerIsFirstRechargeChangedNotify()
-    end)
-    -- 输光后送的筹码通知
-    self.Rpc:RegRpcMethod1(self.MC.PlayerLostAllSendChipsNotify, function(send_goldsinfo)
-        self:s2cPlayerLostAllSendChipsNotify(send_goldsinfo)
-    end)
-    -- 玩家大师分更新通知
-    --[[self.Rpc:RegRpcMethod1(self.MC.PlayerMasterPointUpdateNotify,function(level_new)
-        self:s2cPlayerLevelupNotify(level_new)
-    end)]]
-    self.ViewMgr:BindEvListener("EvBindWeChatSuccess", self)
-    self.ViewMgr:BindEvListener("EvUnBindWeChatSuccess", self)
 end
 
 ---------------------------------------
 function ControllerActor:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -217,7 +216,7 @@ function ControllerActor:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, u
     local gold = self.PropGoldAcc:get()
     local delta_gold = gold_acc - gold
     self.PropGoldAcc:set(gold_acc)
-    local ev = self.ViewMgr:GetEv("EvEntityGoldChanged")
+    local ev = self:GetEv("EvEntityGoldChanged")
     if (ev == nil) then
         ev = EvEntityGoldChanged:new(nil)
     end
@@ -225,7 +224,7 @@ function ControllerActor:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, u
     ev.gold_acc = self.PropGoldAcc:get()
     ev.delta_gold = delta_gold
     ev.user_data = user_data
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -302,82 +301,82 @@ end
 
 ---------------------------------------
 function ControllerActor:onPropPointChanged()
-    local ev = self.ViewMgr:GetEv("EvEntityPointChanged")
+    local ev = self:GetEv("EvEntityPointChanged")
     if (ev == nil) then
         ev = EvEntityPointChanged:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropGoldBankChanged()
-    local ev = self.ViewMgr:GetEv("EvEntityBankGoldChange")
+    local ev = self:GetEv("EvEntityBankGoldChange")
     if (ev == nil) then
         ev = EvEntityBankGoldChange:new(nil)
     end
     ev.bank_gold = self.PropGoldBank:get()
     ev.gold_acc = self.PropGoldAcc:get()
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropDiamondChanged()
-    local ev = self.ViewMgr:GetEv("EvEntityDiamondChanged")
+    local ev = self:GetEv("EvEntityDiamondChanged")
     if (ev == nil) then
         ev = EvEntityDiamondChanged:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropNickNameChanged()
     ViewHelper:UiEndWaiting()
-    local ev = self.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
+    local ev = self:GetEv("EvEntityPlayerInfoChanged")
     if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropIndividualSignatureChanged()
     ViewHelper:UiEndWaiting()
-    local ev = self.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
+    local ev = self:GetEv("EvEntityPlayerInfoChanged")
     if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropIpAddressChanged()
-    local ev = self.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
+    local ev = self:GetEv("EvEntityPlayerInfoChanged")
     if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropVipLevelChanged()
-    local ev = self.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
+    local ev = self:GetEv("EvEntityPlayerInfoChanged")
     if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropIsFirstRecharge()
-    local ev = self.ViewMgr:GetEv("EvEntityIsFirstRechargeChanged")
+    local ev = self:GetEv("EvEntityIsFirstRechargeChanged")
     if (ev == nil) then
         ev = EvEntityIsFirstRechargeChanged:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

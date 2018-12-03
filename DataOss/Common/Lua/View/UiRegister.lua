@@ -16,7 +16,7 @@ function UiRegister:new(view)
         local group_register = obj_register.asGroup
         local obj_btn_register = view.ComUi:GetChildInGroup(group_register, "BtnRegister")
         if (obj_btn_register ~= nil) then
-            o.BtnRegister = obj_btn_register.asButton
+            o.BtnRegister = obj_btn_register--.asButton
             o.BtnRegister.onClick:Add(
                     function()
                         o:_onClickBtnRegister()
@@ -26,7 +26,7 @@ function UiRegister:new(view)
 
         local btn_return = view.ComUi:GetChildInGroup(group_register, "BtnReturn")
         if (btn_return ~= nil) then
-            btn_return.asButton.onClick:Add(
+            btn_return.onClick:Add(
                     function()
                         o:_onClickBtnReturn()
                     end
@@ -79,21 +79,21 @@ function UiRegister:new(view)
 
         local btn_return = view.ComUi:GetChildInGroup(group_registercode, "BtnReturn")
         if (btn_return ~= nil) then
-            btn_return.asButton.onClick:Add(
+            btn_return.onClick:Add(
                     function()
                         o:_onClickBtnReturnRegisterCode()
                     end
             )
         end
 
-        o.BtnResend = view.ComUi:GetChildInGroup(group_registercode, "BtnReSend").asButton
+        o.BtnResend = view.ComUi:GetChildInGroup(group_registercode, "BtnReSend")
         o.BtnResend.onClick:Add(
                 function()
                     o:_onClickBtnResend()
                 end
         )
 
-        o.BtnNext = view.ComUi:GetChildInGroup(group_registercode, "BtnNext").asButton
+        o.BtnNext = view.ComUi:GetChildInGroup(group_registercode, "BtnNext")
         o.BtnNext.onClick:Add(
                 function()
                     o:_onClickBtnNext()

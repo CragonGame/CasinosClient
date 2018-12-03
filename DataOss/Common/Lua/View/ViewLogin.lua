@@ -166,7 +166,7 @@ function ViewLogin:OnCreate()
         self.GTextServerState = server_state.asTextField
     end
 
-    local btn_agree = self.ComUi:GetChild("BtnAgree").asButton
+    local btn_agree = self.ComUi:GetChild("BtnAgree")
     btn_agree.onClick:Add(
             function()
                 self:_onClickBtnAgree()

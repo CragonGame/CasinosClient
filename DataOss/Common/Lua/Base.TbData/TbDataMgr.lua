@@ -1,4 +1,5 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('TbDataBase')
 require('TbDataActorLevel')
 require('TbDataCfigTexasDesktopH')
 require('TbDataCfigTexasDesktopHGoldPercent')

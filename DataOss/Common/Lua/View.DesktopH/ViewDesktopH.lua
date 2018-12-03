@@ -79,6 +79,12 @@ function ViewDesktopH:ctor()
     self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
+
+    local list_ab = { "DesktopH", "DesktopHBetReward", "DesktopHTexas", "DesktopHBankPlayerList", "DesktopHCardType", "DesktopHHistory", "DesktopHRewardPot",
+                      "DesktopHMenu", "DesktopHHelp", "DesktopHResult", "DesktopHSetCardType", "DesktopHTongSha", "DesktopHTongPei" }
+    for i, v in pairs(list_ab) do
+        self.Context:AddUiPackage(v)
+    end
 end
 
 ---------------------------------------
@@ -122,19 +128,19 @@ function ViewDesktopH:OnCreate()
     --self.MapDesktopHBaseFactory[CasinosModule.ZhongFB.ToString()] = new UiDesktopHZhongFBFactory()
     --self.MapDesktopHBaseFactory[CasinosModule.NiuNiu.ToString()] = new UiDesktopHNiuNiuFactory()
     self.MapDesktopHBaseFactory["Texas"] = ViewDesktopHTexasFactory:new(nil)
-    local btn_menu = self.ComUi:GetChild("BtnMenu").asButton
+    local btn_menu = self.ComUi:GetChild("BtnMenu")
     btn_menu.onClick:Add(
             function()
                 self:_onClickBtnMenu()
             end
     )
-    local btn_history = self.ComUi:GetChild("BtnHistory").asButton
+    local btn_history = self.ComUi:GetChild("BtnHistory")
     btn_history.onClick:Add(
             function()
                 self:_onClickBtnHistory()
             end
     )
-    self.GBtnRepeat = self.ComUi:GetChild("BtnRepeat").asButton
+    self.GBtnRepeat = self.ComUi:GetChild("BtnRepeat")
     self.GBtnRepeat.onClick:Add(
             function()
                 self:_onClickBtnRepeat()
@@ -144,7 +150,7 @@ function ViewDesktopH:OnCreate()
     self.GBtnRepeat.visible = false
     local group_setcardtype = self.ComUi:GetChild("GroupSetCardType").asGroup
     group_setcardtype.visible = self.ControllerPlayer.IsGm
-    self.GBtnSetCardType = self.ComUi:GetChild("BtnSetCardType").asButton
+    self.GBtnSetCardType = self.ComUi:GetChild("BtnSetCardType")
     self.GBtnSetCardType.onClick:Add(
             function()
                 self:_onClickSetCardType()
@@ -186,7 +192,7 @@ function ViewDesktopH:OnCreate()
     self.ViewMgr.LanMgr:parseComponent(com_tongpei)
     desktoph_topparent:AddChild(com_tongpei)
     self.UiDesktopHTongPei = UiDesktopHTongPei:new(com_tongpei, self)
-    local btn_chat = self.ComUi:GetChild("BtnChat").asButton
+    local btn_chat = self.ComUi:GetChild("BtnChat")
     btn_chat.onClick:Add(
             function()
                 local ui_chat = self.ViewMgr:CreateView("Chat")
@@ -209,7 +215,7 @@ function ViewDesktopH:OnCreate()
     end
     local btn_friend_temp = self.ComUi:GetChild("BtnFriend")
     if (btn_friend_temp ~= nil) then
-        local btn_friend = btn_friend_temp.asButton
+        local btn_friend = btn_friend_temp
         btn_friend.onClick:Add(
                 function()
                     self:_onClickBtnFriend()
@@ -218,7 +224,7 @@ function ViewDesktopH:OnCreate()
     end
     local btn_shop_temp = self.ComUi:GetChild("BtnShop")
     if (btn_shop_temp ~= nil) then
-        local btn_shop = btn_shop_temp.asButton
+        local btn_shop = btn_shop_temp
         btn_shop.onClick:Add(
                 function()
                     self:_onClickBtnShop()

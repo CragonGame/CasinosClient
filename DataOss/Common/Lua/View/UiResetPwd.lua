@@ -26,14 +26,14 @@ function UiResetPwd:new(view)
 
         local btn_return = view.ComUi:GetChildInGroup(group_resetpwd, "BtnReturn")
         if (btn_return ~= nil) then
-            btn_return.asButton.onClick:Add(
+            btn_return.onClick:Add(
                     function()
                         o:_onClickBtnReturn()
                     end
             )
         end
 
-        o.BtnNext = view.ComUi:GetChildInGroup(group_resetpwd, "BtnNext").asButton
+        o.BtnNext = view.ComUi:GetChildInGroup(group_resetpwd, "BtnNext")
         o.BtnNext.onClick:Add(
                 function()
                     o:_onClickResetPwdBtnNext()
@@ -54,7 +54,7 @@ function UiResetPwd:new(view)
     local obj_resetpwdcode = view.ComUi:GetChild("ResetPwdCode")
     if (obj_resetpwdcode ~= nil) then
         local group_resetpwdcode = obj_resetpwdcode.asGroup
-        o.BtnResetCodeNext = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnNext").asButton
+        o.BtnResetCodeNext = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnNext")
         o.BtnResetCodeNext.onClick:Add(
                 function()
                     o:_onClickResetPwdCodeBtnNext()
@@ -79,7 +79,7 @@ function UiResetPwd:new(view)
         )
         local btn_return = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnReturn")
         if (btn_return ~= nil) then
-            btn_return.asButton.onClick:Add(
+            btn_return.onClick:Add(
                     function()
                         o:_onClickBtnReturnRegisterCode()
                     end
@@ -87,7 +87,7 @@ function UiResetPwd:new(view)
         end
         o:_checkResetCodeInput()
 
-        o.BtnResend = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnReSend").asButton
+        o.BtnResend = view.ComUi:GetChildInGroup(group_resetpwdcode, "BtnReSend")
         o.BtnResend.onClick:Add(
                 function()
                     o:_onClickBtnResend()
