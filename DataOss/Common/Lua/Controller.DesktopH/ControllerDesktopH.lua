@@ -52,7 +52,7 @@ function ControllerDesktopH:OnCreate()
     self:regDesktopHBaseFactory(DesktopHTexasFactory:new(nil))
     self.MapDesktopHCardTypeBaseFac = {}
     self:regDesktopHCardTypeBaseFactory(DesktopHCardTypeTexasFac:new(nil))
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     local m_c = CommonMethodType
     rpc:RegRpcMethod3(m_c.DesktopHNotifySnapshot, function(desktoph_snapshot, map_my_betinfo, map_my_winlooseinfo)
         self:s2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_betinfo, map_my_winlooseinfo)
@@ -159,9 +159,9 @@ function ControllerDesktopH:OnHandleEv(ev)
 
     if (ev.EventName == "EvViewClickDesktopH") then
         ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
-        self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestEnter, ev.factory_name)
+        self.ControllerMgr.Rpc:RPC1(CommonMethodType.DesktopHRequestEnter, ev.factory_name)
     elseif (ev.EventName == "EvViewClickLeaveDesktopH") then
-        self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestLeave)
+        self.ControllerMgr.Rpc:RPC0(CommonMethodType.DesktopHRequestLeave)
     elseif (ev.EventName == "EvViewDesktopHClickBetOperateType") then
         -- 更换选择下注的预置筹码
         CS.UnityEngine.PlayerPrefs.SetInt("CurrentTbBetOperateIdDesktopH", ev.tb_bet_operateid)
@@ -194,9 +194,9 @@ function ControllerDesktopH:OnHandleEv(ev)
         if (exists) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("RequestSitSuccess"))
         end
-        self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestSitdown, ev.seat_index)
+        self.ControllerMgr.Rpc:RPC1(CommonMethodType.DesktopHRequestSitdown, ev.seat_index)
     elseif (ev.EventName == "EvViewDesktopHStandup") then
-        self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestStandup)
+        self.ControllerMgr.Rpc:RPC0(CommonMethodType.DesktopHRequestStandup)
     elseif (ev.EventName == "EvDesktopHClickBeBankPlayerBtn") then
         local exists = false
         for key, value in pairs(self.ListBeBankPlayer) do
@@ -207,7 +207,7 @@ function ControllerDesktopH:OnHandleEv(ev)
         end
         if (self.IsBankPlayer or exists) then
             if (exists or self.IsBankPlayer) then
-                self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestNotBeBankerPlayer)
+                self.ControllerMgr.Rpc:RPC0(CommonMethodType.DesktopHRequestNotBeBankerPlayer)
             end
         else
             local min_golds = 0
@@ -231,25 +231,25 @@ function ControllerDesktopH:OnHandleEv(ev)
                 ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("RequestBeBankerSuccess"))
             end
 
-            self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestBeBankerPlayer, stack)
+            self.ControllerMgr.Rpc:RPC1(CommonMethodType.DesktopHRequestBeBankerPlayer, stack)
         end
     elseif (ev.EventName == "EvEntityRequestGetDesktopHData") then
         if (self.DesktopHGuid == nil or self.DesktopHGuid == "") then
             return
         end
-        self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestSnapshot)
+        self.ControllerMgr.Rpc:RPC0(CommonMethodType.DesktopHRequestSnapshot)
     elseif (ev.EventName == "EvDesktopHClickStandPlayerBtn") then
         -- 拉取所有无座玩家列表，暂未使用
-        self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestGetStandPlayerList)
+        self.ControllerMgr.Rpc:RPC0(CommonMethodType.DesktopHRequestGetStandPlayerList)
     elseif (ev.EventName == "EvDesktopHundredChangeCardsType") then
-        self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestSetCardsType, ev.map_card_types)
+        self.ControllerMgr.Rpc:RPC1(CommonMethodType.DesktopHRequestSetCardsType, ev.map_card_types)
     elseif (ev.EventName == "EvDesktopHClickRewardPotBtn") then
         ViewHelper:UiBeginWaiting()
-        self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestGetWinRewardPotInfo)
+        self.ControllerMgr.Rpc:RPC0(CommonMethodType.DesktopHRequestGetWinRewardPotInfo)
     elseif (ev.EventName == "EvDesktopHGetBetReward") then
-        self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestGetDailyBetReward, ev.factory_name)
+        self.ControllerMgr.Rpc:RPC1(CommonMethodType.DesktopHRequestGetDailyBetReward, ev.factory_name)
     elseif (ev.EventName == "EvDesktopHInitBetReward") then
-        self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestInitDailyBetReward, ev.factory_name)
+        self.ControllerMgr.Rpc:RPC1(CommonMethodType.DesktopHRequestInitDailyBetReward, ev.factory_name)
     elseif (ev.EventName == "EvDesktopHBet") then
         if (self.DesktopHState ~= _eDesktopHState.Bet) then
             return
@@ -270,7 +270,7 @@ function ControllerDesktopH:OnHandleEv(ev)
         local can_betsuccess = self:BetGold(ev.bet_betpot_index, bet_chips)
 
         if (can_betsuccess == true) then
-            self.ControllerMgr.RPC:RPC2(CommonMethodType.DesktopHRequestBet, ev.bet_betpot_index, bet_chips)
+            self.ControllerMgr.Rpc:RPC2(CommonMethodType.DesktopHRequestBet, ev.bet_betpot_index, bet_chips)
         end
     elseif (ev.EventName == "EvDesktopHRepeatBet") then
         if (self.DesktopHState ~= _eDesktopHState.Bet) then
@@ -309,7 +309,7 @@ function ControllerDesktopH:OnHandleEv(ev)
                 end
             end
             if (can_betsuccess) then
-                self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestBetRepeat, self.MapBetRepeatInfo)
+                self.ControllerMgr.Rpc:RPC1(CommonMethodType.DesktopHRequestBetRepeat, self.MapBetRepeatInfo)
             end
         end
     elseif (ev.EventName == "EvUiSendMsg") then
@@ -317,7 +317,7 @@ function ControllerDesktopH:OnHandleEv(ev)
         local chat_msg = ev.chat_msg
         local recver_guid = chat_msg[4]
         if (recver_guid == nil or recver_guid == "") then
-            self.ControllerMgr.RPC:RPC1(CommonMethodType.DesktopHRequestChat, chat_msg)
+            self.ControllerMgr.Rpc:RPC1(CommonMethodType.DesktopHRequestChat, chat_msg)
             self.CurrentUnSendDesktopMsg = ""
         end
     elseif (ev.EventName == "EvUiSetUnSendDesktopMsg") then
@@ -909,7 +909,7 @@ end
 
 ---------------------------------------
 function ControllerDesktopH:receiveInvitePlayerEnterDesktop(desktop_guid, desktop_filter)
-    self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopHRequestLeave)
+    self.ControllerMgr.Rpc:RPC0(CommonMethodType.DesktopHRequestLeave)
     local t_encode = self.ControllerMgr.Json.encode(desktop_filter)
     local map_param = {}
     map_param[0] = desktop_guid

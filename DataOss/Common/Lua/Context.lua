@@ -325,8 +325,8 @@ function Context:_nextLaunchStep()
         self.MessagePack = require('MessagePack')
         self.MessagePack.set_string("binary")
         self.Json = require("json")
-        self:DoString("RPC")
-        self.Rpc = RPC
+        self:DoString("Rpc")
+        self.Rpc = Rpc
         self.Rpc:Setup()
         self:DoString("LuaHelper")
         self.LuaHelper = LuaHelper

@@ -109,11 +109,17 @@ namespace FairyGUI
 		/// <param name="duration"></param>
 		public GTweener TweenValue(double value, float duration)
 		{
-			double oldValule = _value;
-			_value = value;
-
+			double oldValule;
 			if (_tweening)
-				GTween.Kill(this, TweenPropType.Progress, false);
+			{
+				GTweener twener = GTween.GetTween(this, TweenPropType.Progress);
+				oldValule = twener.value.d;
+				twener.Kill(false);
+			}
+			else
+				oldValule = _value;
+
+			_value = value;
 			_tweening = true;
 			return GTween.ToDouble(oldValule, _value, duration)
 				.SetEase(EaseType.Linear)
@@ -133,11 +139,29 @@ namespace FairyGUI
 				switch (_titleType)
 				{
 					case ProgressTitleType.Percent:
-						_titleObject.text = Mathf.RoundToInt(percent * 100) + "%";
+#if RTL_TEXT_SUPPORT
+						if (RTLSupport.BaseDirection == RTLSupport.DirectionType.RTL)
+						{
+							_titleObject.text = "%" + Mathf.FloorToInt(percent * 100);
+						}
+						else
+							_titleObject.text = Mathf.FloorToInt(percent * 100) + "%";
+#else
+						_titleObject.text = Mathf.FloorToInt(percent * 100) + "%";
+#endif
 						break;
 
 					case ProgressTitleType.ValueAndMax:
+#if RTL_TEXT_SUPPORT
+						if (RTLSupport.BaseDirection == RTLSupport.DirectionType.RTL)
+						{
+							_titleObject.text = Math.Round(max) + "/" + Math.Round(newValue);
+						}
+						else
+							_titleObject.text = Math.Round(newValue) + "/" + Math.Round(max);
+#else
 						_titleObject.text = Math.Round(newValue) + "/" + Math.Round(max);
+#endif
 						break;
 
 					case ProgressTitleType.Value:

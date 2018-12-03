@@ -27,7 +27,7 @@ ControllerMgr = {
     EventSys = nil,
     Context = Context,
     Json = Context.Json,
-    RPC = Context.Rpc,
+    Rpc = Context.Rpc,
     LanMgr = Context.LanMgr,
     TableControllerFactory = {},
     TableController = {},
@@ -38,7 +38,7 @@ ControllerMgr = {
 function ControllerMgr:Create()
     self.EventSys = EventSys
     self.TbDataMgr = self.Context.TbDataMgr
-    self.RPC = self.Context.Rpc
+    self.Rpc = self.Context.Rpc
     self.LanMgr = self.Context.LanMgr
 
     -- 注册所有ControllerFactory类到ControllerMgr中，按音序排序
@@ -171,12 +171,12 @@ end
 
 ---------------------------------------
 function ControllerMgr:PackData(data)
-    local p_datas = self.RPC:PackData(data)
+    local p_datas = self.Rpc:PackData(data)
     return p_datas
 end
 
 ---------------------------------------
 function ControllerMgr:UnpackData(data)
-    local p_datas = self.RPC:UnpackData(data)
+    local p_datas = self.Rpc:UnpackData(data)
     return p_datas
 end

@@ -1,100 +1,96 @@
 -- Copyright (c) Cragon. All rights reserved.
 
 ---------------------------------------
-RPC = {
+Rpc = {
     MapMethodInfo = {},
     MessagePack = nil,
     RpcSession = CS.Casinos.CasinosContext.Instance.NetMgr.RpcSession
 }
 
 ---------------------------------------
-function RPC:Setup()
+function Rpc:Setup()
     self.MapMethodInfo = {}
     self.MessagePack = Context.MessagePack
     self.RpcSession = CS.Casinos.CasinosContext.Instance.NetMgr.RpcSession
 end
 
 ---------------------------------------
-function RPC:PackData(data)
+function Rpc:PackData(data)
     local p_data = self.MessagePack.pack(data)
     return p_data
 end
 
 ---------------------------------------
-function RPC:UnpackData(data)
+function Rpc:UnpackData(data)
     local p_data = self.MessagePack.unpack(data)
     return p_data
 end
 
 ---------------------------------------
-function RPC:RegRpcMethod0(method_id, method)
+function Rpc:RegRpcMethod0(method_id, method)
     local reciver = RPCReciver0:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
 ---------------------------------------
-function RPC:RegRpcMethod1(method_id, method)
+function Rpc:RegRpcMethod1(method_id, method)
     local reciver = RPCReciver1:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
 ---------------------------------------
-function RPC:RegRpcMethod2(method_id, method)
+function Rpc:RegRpcMethod2(method_id, method)
     local reciver = RPCReciver2:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
 ---------------------------------------
-function RPC:RegRpcMethod3(method_id, method)
+function Rpc:RegRpcMethod3(method_id, method)
     local reciver = RPCReciver3:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
 ---------------------------------------
-function RPC:RegRpcMethod4(method_id, method)
+function Rpc:RegRpcMethod4(method_id, method)
     local reciver = RPCReciver4:new(nil)
     reciver:SetMethod(method)
     self.MapMethodInfo[method_id] = reciver
 end
 
 ---------------------------------------
-function RPC.OnRpcMethod(method_id, data)
-    --local rpc = RPC:new(nil)
-    local reciver = RPC.MapMethodInfo[method_id]
+function Rpc.OnRpcMethod(method_id, data)
+    local reciver = Rpc.MapMethodInfo[method_id]
     if (reciver ~= nil) then
-        reciver:ReciverData(RPC.MessagePack, data)
+        reciver:ReciverData(Rpc.MessagePack, data)
     end
 end
 
 ---------------------------------------
-function RPC:RPC0(method_id)
-    --print('RPC:RPC0() method_id=' .. method_id)
+function Rpc:RPC0(method_id)
     self.RpcSession:Send(method_id, nil)
 end
 
 ---------------------------------------
-function RPC:RPC1(method_id, data1)
-    --print('RPC:RPC1() method_id=' .. method_id)
+function Rpc:RPC1(method_id, data1)
     local string1 = self.MessagePack.pack(data1)
     self.RpcSession:Send(method_id, string1)
 end
 
 ---------------------------------------
-function RPC:RPC2(method_id, data1, data2)
-    --print('RPC:RPC2() method_id=' .. method_id)
+function Rpc:RPC2(method_id, data1, data2)
     local string1 = self.MessagePack.pack(data1)
-    local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1) --string.len(string1)
+    local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1)
     local byte_1 = CS.System.BitConverter.GetBytes(string1_l)
     local t_tmp = {}
     table.insert(t_tmp, byte_1)
     table.insert(t_tmp, string1)
 
     local string2 = self.MessagePack.pack(data2)
-    local string2_l = CS.Casinos.LuaHelper.getBytesLenShort(string2)--string.len(string2)
+    local string2_l = CS.Casinos.LuaHelper.getBytesLenShort(string2)
     local byte_2 = CS.System.BitConverter.GetBytes(string2_l)
     table.insert(t_tmp, byte_2)
     table.insert(t_tmp, string2)
@@ -104,8 +100,7 @@ function RPC:RPC2(method_id, data1, data2)
 end
 
 ---------------------------------------
-function RPC:RPC3(method_id, data1, data2, data3)
-    --print('RPC:RPC3() method_id=' .. method_id)
+function Rpc:RPC3(method_id, data1, data2, data3)
     local string1 = self.MessagePack.pack(data1)
     local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1)
     local byte_1 = CS.System.BitConverter.GetBytes(string1_l)
@@ -130,8 +125,7 @@ function RPC:RPC3(method_id, data1, data2, data3)
 end
 
 ---------------------------------------
-function RPC:RPC4(method_id, data1, data2, data3, data4)
-    --print('RPC:RPC4() method_id=' .. method_id)
+function Rpc:RPC4(method_id, data1, data2, data3, data4)
     local string1 = self.MessagePack.pack(data1)
     local string1_l = CS.Casinos.LuaHelper.getBytesLenShort(string1)
     local byte_1 = CS.System.BitConverter.GetBytes(string1_l)
@@ -194,8 +188,7 @@ end
 
 ---------------------------------------
 function RPCReciver0:ReciverData(m_p, data)
-    if (self.Method ~= nil)
-    then
+    if (self.Method ~= nil) then
         self.Method()
     end
 end

@@ -43,7 +43,7 @@ ViewMgr = {
 ---------------------------------------
 function ViewMgr:Create()
     self.ControllerMgr = self.Context.ControllerMgr
-    self.RPC = self.Context.Rpc
+    self.Rpc = self.Context.Rpc
     self.LanMgr = self.Context.LanMgr
     self.TbDataMgr = self.Context.TbDataMgr
 
@@ -219,13 +219,13 @@ end
 
 ---------------------------------------
 function ViewMgr:PackData(data)
-    local p_datas = self.RPC:PackData(data)
+    local p_datas = self.Rpc:PackData(data)
     return p_datas
 end
 
 ---------------------------------------
 function ViewMgr:UnpackData(data)
-    local p_datas = self.RPC:UnpackData(data)
+    local p_datas = self.Rpc:UnpackData(data)
     return p_datas
 end
 

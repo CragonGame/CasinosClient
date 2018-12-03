@@ -29,7 +29,7 @@ function ControllerTrade:OnCreate()
     self.ViewMgr:BindEvListener("EvUiRequestWebpay", self)
     self.ViewMgr:BindEvListener("EvUiRequestQuicktellerTransfers", self)
 
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     local m_c = CommonMethodType
     rpc:RegRpcMethod1(m_c.TradeBuyItemResponse, function(response)
         self:OnTradeBuyItemResponse(response)
@@ -166,7 +166,7 @@ function ControllerTrade:OnHandleEv(ev)
         --    r.Amount = ev.GetMoneyNum
         --    r.Channel = ""
         --    r.MoneyType = self.Context.Cfg.CurrentMoneyType
-        --    self.ControllerMgr.RPC:RPC1(CommonMethodType.WalletWithdrawRequest, r:getData4Pack())
+        --    self.ControllerMgr.Rpc:RPC1(CommonMethodType.WalletWithdrawRequest, r:getData4Pack())
     end
 end
 
@@ -252,7 +252,7 @@ function ControllerTrade:OnBuyRMBItemSuccess(purchase_common)
     purchase.PurchaseState = purchase_common.PurchaseState
     purchase.Token = purchase_common.Token
     purchase.Receipt = purchase_common.Receipt
-    --self.ControllerMgr.RPC:RPC1(CommonMethodType.TradeBuyRMBItemSuccessRequest, purchase:getData4Pack())
+    --self.ControllerMgr.Rpc:RPC1(CommonMethodType.TradeBuyRMBItemSuccessRequest, purchase:getData4Pack())
 end
 
 ---------------------------------------
@@ -262,12 +262,12 @@ function ControllerTrade:RequestBuyItem(buyitem_tbid, target_type, target_etguid
     request.target_type = target_type
     request.target_etguid = target_etguid
     print("CommonMethodType.TradeBuyItemRequest")
-    self.ControllerMgr.RPC:RPC1(CommonMethodType.TradeBuyItemRequest, request:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(CommonMethodType.TradeBuyItemRequest, request:getData4Pack())
 end
 
 ---------------------------------------
 function ControllerTrade:RequestSellItem(item_objid)
-    self.ControllerMgr.RPC:RPC1(CommonMethodType.TradeSellItemRequest, item_objid)
+    self.ControllerMgr.Rpc:RPC1(CommonMethodType.TradeSellItemRequest, item_objid)
 end
 
 ---------------------------------------
@@ -289,7 +289,7 @@ function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
             r.Amount = tb_item.Price
             r.Channel = ""
             r.MoneyType = self.Context.Cfg.CurrentMoneyType
-            self.ControllerMgr.RPC:RPC1(CommonMethodType.WalletRechargeRequest, r:getData4Pack())
+            self.ControllerMgr.Rpc:RPC1(CommonMethodType.WalletRechargeRequest, r:getData4Pack())
         end
     end
     --elseif (self.CasinosContext.UnityIOS == true)

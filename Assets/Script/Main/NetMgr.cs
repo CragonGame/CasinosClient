@@ -22,7 +22,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void InitByLua()
         {
-            var lua_rpc = CasinosContext.Instance.LuaMgr.LuaEnv.Global.Get<LuaTable>("RPC");
+            var lua_rpc = CasinosContext.Instance.LuaMgr.LuaEnv.Global.Get<LuaTable>("Rpc");
             LuaOnRpcMethod = lua_rpc.Get<Action<ushort, byte[]>>("OnRpcMethod");
         }
 

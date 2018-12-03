@@ -35,7 +35,7 @@ function DesktopPlayerTexas:SetPlayerData(player_data, desktop_state)
     self.UiDesktopPlayerInfo = nil
     self.IsGameEnd = desktop_state == TexasDesktopState.GameEnd
     local p_d = PlayerDataDesktopTexas:new(nil)
-    p_d:setData(self.DesktopTexas.ControllerDesktop.ControllerMgr.RPC.MessagePack, player_data)
+    p_d:setData(self.DesktopTexas.ControllerDesktop.ControllerMgr.Rpc.MessagePack, player_data)
     self.PlayerDataDesktop = p_d
     if self.DesktopTexas.CurrentRountMaxBet < p_d.CurrentRoundBet then
         self.DesktopTexas.CurrentRountMaxBet = p_d.CurrentRoundBet

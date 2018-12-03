@@ -47,6 +47,7 @@ namespace FairyGUI
 		List<PackageItem> _items;
 		Dictionary<string, PackageItem> _itemsById;
 		Dictionary<string, PackageItem> _itemsByName;
+		Dictionary<string, string>[] _dependencies;
 		AssetBundle _resBundle;
 		string _customId;
 		bool _fromBundle;
@@ -560,6 +561,14 @@ namespace FairyGUI
 			get { return _resBundle; }
 		}
 
+		/// <summary>
+		/// 获得本包依赖的包的id列表
+		/// </summary>
+		public Dictionary<string, string>[] dependencies
+		{
+			get { return _dependencies; }
+		}
+
 		bool LoadPackage(ByteBuffer buffer, string packageSource, string assetNamePrefix)
 		{
 			if (buffer.ReadUint() != 0x46475549)
@@ -593,6 +602,17 @@ namespace FairyGUI
 			for (int i = 0; i < cnt; i++)
 				stringTable[i] = buffer.ReadString();
 			buffer.stringTable = stringTable;
+
+			if (buffer.Seek(indexTablePos, 5))
+			{
+				cnt = buffer.ReadInt();
+				for (int i = 0; i < cnt; i++)
+				{
+					int index = buffer.ReadUshort();
+					int len = buffer.ReadInt();
+					stringTable[index] = buffer.ReadString(len);
+				}
+			}
 
 			buffer.Seek(indexTablePos, 1);
 
@@ -733,6 +753,17 @@ namespace FairyGUI
 
 			if (!Application.isPlaying)
 				_items.Sort(ComparePackageItem);
+
+			buffer.Seek(indexTablePos, 0);
+			cnt = buffer.ReadShort();
+			_dependencies = new Dictionary<string, string>[cnt];
+			for (int i = 0; i < cnt; i++)
+			{
+				Dictionary<string, string> kv = new Dictionary<string, string>();
+				kv.Add("id", buffer.ReadS());
+				kv.Add("name", buffer.ReadS());
+				_dependencies[i] = kv;
+			}
 
 			return true;
 		}

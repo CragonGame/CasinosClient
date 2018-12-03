@@ -168,6 +168,7 @@ function ViewReward:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, '福利')--self.ViewMgr.LanMgr:getLanValue("Reward"))
 
     self.ViewMgr:BindEvListener("EvCtrlRewardRefreshGetOnlineRewardLeftTm", self)
+    self.ViewMgr:BindEvListener("EvCtrlRewardRefreshGetTimingRewardState", self)
 
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton

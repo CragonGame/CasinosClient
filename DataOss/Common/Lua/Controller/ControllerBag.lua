@@ -10,29 +10,29 @@ end
 
 ---------------------------------------
 function ControllerBag:OnCreate()
-    self.RPC = self.ControllerMgr.RPC
+    self.Rpc = self.ControllerMgr.Rpc
     self.MC = CommonMethodType
     -- 背包中所有道具推送给Client的通知
-    self.RPC:RegRpcMethod1(self.MC.BagItemPush2ClientNotify, function(list_item)
+    self.Rpc:RegRpcMethod1(self.MC.BagItemPush2ClientNotify, function(list_item)
         self:s2cBagItemPush2ClientNotify(list_item)
     end)
     -- 临时礼物变更通知
-    self.RPC:RegRpcMethod1(self.MC.BagGiftChangedNotify, function(item_data)
+    self.Rpc:RegRpcMethod1(self.MC.BagGiftChangedNotify, function(item_data)
         self:s2cBagGiftChangedNotify(item_data)
     end)
     -- 通知删除道具
-    self.RPC:RegRpcMethod2(self.MC.BagDeleteItemNotify, function(result, item_objid)
+    self.Rpc:RegRpcMethod2(self.MC.BagDeleteItemNotify, function(result, item_objid)
         self:s2cBagDeleteItemNotify(result, item_objid)
     end)
     -- 通知添加道具
-    self.RPC:RegRpcMethod1(self.MC.BagAddItemNotify, function(item_data)
+    self.Rpc:RegRpcMethod1(self.MC.BagAddItemNotify, function(item_data)
         self:s2cBagAddItemNotify(item_data)
     end)
     -- 通知更新道具
-    self.RPC:RegRpcMethod1(self.MC.BagUpdateItemNotify, function(item_data)
+    self.Rpc:RegRpcMethod1(self.MC.BagUpdateItemNotify, function(item_data)
         self:s2cBagUpdateItemNotify(item_data)
     end)
-    self.RPC:RegRpcMethod1(self.MC.BagOperateItemNotify, function(item_data)
+    self.Rpc:RegRpcMethod1(self.MC.BagOperateItemNotify, function(item_data)
         self:OnBagOperateItemNotify(item_data)
     end)
 
@@ -285,7 +285,7 @@ function ControllerBag:requestOperateItem(operate_id, item_objid)
     local item_operate = ItemOperate:new(nil)
     item_operate.operate_id = operate_id
     item_operate.item_objid = item_objid
-    self.RPC:RPC1(self.MC.BagOperateItemRequest, item_operate:getData4Pack())
+    self.Rpc:RPC1(self.MC.BagOperateItemRequest, item_operate:getData4Pack())
 end
 
 ---------------------------------------
@@ -303,7 +303,7 @@ end
 
 ---------------------------------------
 function ControllerBag:RequestRemoveGift(item_objid)
-    self.RPC:RPC1(self.MC.BagDeleteItemRequest, item_objid)
+    self.Rpc:RPC1(self.MC.BagDeleteItemRequest, item_objid)
 end
 
 ---------------------------------------

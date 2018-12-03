@@ -9,29 +9,29 @@ end
 
 ---------------------------------------
 function ControllerRanking:OnCreate()
-    self.RPC = self.ControllerMgr.RPC
+    self.Rpc = self.ControllerMgr.Rpc
     self.MC = CommonMethodType
     -- 获取金币排行榜
-    self.RPC:RegRpcMethod1(self.MC.RankingChipNotify, function(list_gold)
+    self.Rpc:RegRpcMethod1(self.MC.RankingChipNotify, function(list_gold)
         self:s2cRankingChipNotify(list_gold)
     end)
     -- 获取钻石排行榜
-    self.RPC:RegRpcMethod1(self.MC.RankingGoldNotify, function(list_diamond)
+    self.Rpc:RegRpcMethod1(self.MC.RankingGoldNotify, function(list_diamond)
         self:s2cRankingGoldNotify(list_diamond)
     end)
     -- 获取等级排行榜
-    self.RPC:RegRpcMethod1(self.MC.RankingLevelNotify, function(list_level)
+    self.Rpc:RegRpcMethod1(self.MC.RankingLevelNotify, function(list_level)
         self:s2cRankingLevelNotify(list_level)
     end)
     -- 获取礼物排行榜
-    self.RPC:RegRpcMethod1(self.MC.RankingGiftNotify, function(list_gift)
+    self.Rpc:RegRpcMethod1(self.MC.RankingGiftNotify, function(list_gift)
         self:s2cRankingGiftNotify(list_gift)
     end)
     -- 获取豪胜排行榜
-    self.RPC:RegRpcMethod1(self.MC.RankingWinGoldNotify, function(list_gift)
+    self.Rpc:RegRpcMethod1(self.MC.RankingWinGoldNotify, function(list_gift)
         self:s2cRankingWinGoldNotify(list_gift)
     end)
-    self.RPC:RegRpcMethod1(self.MC.RankingWechatRedEnvelopesNotify, function(list_gift)
+    self.Rpc:RegRpcMethod1(self.MC.RankingWechatRedEnvelopesNotify, function(list_gift)
         self:s2cRankingRedEnvelopesNotify(list_gift)
     end)
     self.ViewMgr:BindEvListener("EvUiGetRankingGold", self)
@@ -262,7 +262,7 @@ end
 
 ---------------------------------------
 function ControllerRanking:requestGetRanking(ranking_type)
-    self.RPC:RPC1(self.MC.RankingRequest, ranking_type)
+    self.Rpc:RPC1(self.MC.RankingRequest, ranking_type)
 end
 
 ---------------------------------------

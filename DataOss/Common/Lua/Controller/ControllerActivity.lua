@@ -10,10 +10,10 @@ end
 
 ---------------------------------------
 function ControllerActivity:OnCreate()
-    self.RPC = self.ControllerMgr.RPC
+    self.Rpc = self.ControllerMgr.Rpc
     self.MC = CommonMethodType
     -- 活动推送通知
-    self.RPC:RegRpcMethod1(self.MC.ActivityNotify, function(list_activity)
+    self.Rpc:RegRpcMethod1(self.MC.ActivityNotify, function(list_activity)
         self:s2cActivityNotify(list_activity)
     end)
     self.ViewMgr:BindEvListener("EvUiRequestGetActivity", self)
@@ -30,7 +30,7 @@ end
 ---------------------------------------
 function ControllerActivity:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestGetActivity") then
-        self.RPC:RPC0(self.MC.ActivityRequest)
+        self.Rpc:RPC0(self.MC.ActivityRequest)
     end
 end
 

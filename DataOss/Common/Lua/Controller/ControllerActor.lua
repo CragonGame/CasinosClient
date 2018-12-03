@@ -104,7 +104,7 @@ end
 
 ---------------------------------------
 function ControllerActor:OnCreate()
-    self.RPC = self.ControllerMgr.RPC
+    self.Rpc = self.ControllerMgr.Rpc
     self.MC = CommonMethodType
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerLogin = self.ControllerMgr:GetController("Login")
@@ -154,35 +154,35 @@ function ControllerActor:OnCreate()
         self:onPropIsFirstRecharge()
     end
     -- 玩家积分更新通知
-    self.RPC:RegRpcMethod3(self.MC.PlayerPointUpdateNotify, function(change_reason, point, user_date)
+    self.Rpc:RegRpcMethod3(self.MC.PlayerPointUpdateNotify, function(change_reason, point, user_date)
         self:s2cPlayerPointUpdateNotify(change_reason, point, user_date)
     end)
     -- 玩家筹码变更通知
-    self.RPC:RegRpcMethod3(self.MC.PlayerGoldAccUpdateNotify, function(change_reason, gold_acc, user_data)
+    self.Rpc:RegRpcMethod3(self.MC.PlayerGoldAccUpdateNotify, function(change_reason, gold_acc, user_data)
         self:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, user_data)
     end)
     -- 玩家钻石改变通知
-    self.RPC:RegRpcMethod3(self.MC.PlayerDiamondUpdateNotify, function(change_reason, diamond, user_data)
+    self.Rpc:RegRpcMethod3(self.MC.PlayerDiamondUpdateNotify, function(change_reason, diamond, user_data)
         self:s2cPlayerDiamondUpdateNotify(change_reason, diamond, user_data)
     end)
     -- 玩家VIP改变通知
-    self.RPC:RegRpcMethod1(self.MC.PlayerVipChangedNotify, function(vip_level)
+    self.Rpc:RegRpcMethod1(self.MC.PlayerVipChangedNotify, function(vip_level)
         self:s2cPlayerVipChangedNotify(vip_level)
     end)
     -- 充值点数变更通知
-    self.RPC:RegRpcMethod1(self.MC.PlayerRechargePointChangedNotify, function(rechargepoint_change)
+    self.Rpc:RegRpcMethod1(self.MC.PlayerRechargePointChangedNotify, function(rechargepoint_change)
         self:s2cPlayerRechargePointChangedNotify(rechargepoint_change)
     end)
     -- 首充变更通知
-    self.RPC:RegRpcMethod0(self.MC.PlayerIsFirstRechargeChangedNotify, function()
+    self.Rpc:RegRpcMethod0(self.MC.PlayerIsFirstRechargeChangedNotify, function()
         self:s2cPlayerIsFirstRechargeChangedNotify()
     end)
     -- 输光后送的筹码通知
-    self.RPC:RegRpcMethod1(self.MC.PlayerLostAllSendChipsNotify, function(send_goldsinfo)
+    self.Rpc:RegRpcMethod1(self.MC.PlayerLostAllSendChipsNotify, function(send_goldsinfo)
         self:s2cPlayerLostAllSendChipsNotify(send_goldsinfo)
     end)
     -- 玩家大师分更新通知
-    --[[self.RPC:RegRpcMethod1(self.MC.PlayerMasterPointUpdateNotify,function(level_new)
+    --[[self.Rpc:RegRpcMethod1(self.MC.PlayerMasterPointUpdateNotify,function(level_new)
         self:s2cPlayerLevelupNotify(level_new)
     end)]]
     self.ViewMgr:BindEvListener("EvBindWeChatSuccess", self)

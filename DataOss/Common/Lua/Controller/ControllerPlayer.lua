@@ -62,8 +62,8 @@ function ControllerPlayer:OnCreate()
         self:initStoreItem()
     end
 
-    self.ControllerMgr.RPC = self.ControllerMgr.RPC
-    self.ControllerMgr.RPC:RPC0(self.MC.PlayerClientInitDoneRequest)
+    self.ControllerMgr.Rpc = self.ControllerMgr.Rpc
+    self.ControllerMgr.Rpc:RPC0(self.MC.PlayerClientInitDoneRequest)
     self:RequestGetOnlinePlayerNum()
 
     local c_login = self.ControllerMgr:GetController("Login")
@@ -71,9 +71,9 @@ function ControllerPlayer:OnCreate()
     if (player_play_state ~= nil) then
         ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetTable"))
         if (player_play_state.DesktopType == DesktopTypeEx.Desktop) then
-            self.ControllerMgr.RPC:RPC0(self.MC.DesktopSnapshotRequest)
+            self.ControllerMgr.Rpc:RPC0(self.MC.DesktopSnapshotRequest)
         else
-            self.ControllerMgr.RPC:RPC0(self.MC.DesktopHRequestSnapshot)
+            self.ControllerMgr.Rpc:RPC0(self.MC.DesktopHRequestSnapshot)
         end
     end
 
@@ -86,87 +86,87 @@ function ControllerPlayer:OnCreate()
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(1000, self, self._timerUpdate)
 
     -- 请求获取收货地址响应
-    self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerRequestGetAddressResult, function(result, address)
+    self.ControllerMgr.Rpc:RegRpcMethod2(self.MC.PlayerRequestGetAddressResult, function(result, address)
         self:s2cPlayerRequestGetAddressResult(result, address)
     end)
     -- 请求编辑收货地址响应
-    self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerRequestEditAddressResult, function(result, address)
+    self.ControllerMgr.Rpc:RegRpcMethod2(self.MC.PlayerRequestEditAddressResult, function(result, address)
         self:s2cPlayerRequestEditAddressResult(result, address)
     end)
     -- GM初始化通知
-    self.ControllerMgr.RPC:RegRpcMethod0(self.MC.PlayerGMInitNotify, function()
+    self.ControllerMgr.Rpc:RegRpcMethod0(self.MC.PlayerGMInitNotify, function()
         self:s2cPlayerGMInitNotify()
     end)
     -- Client配置改变通知
-    self.ControllerMgr.RPC:RegRpcMethod0(self.MC.PlayerUpdateClientConfigNotify, function()
+    self.ControllerMgr.Rpc:RegRpcMethod0(self.MC.PlayerUpdateClientConfigNotify, function()
         self:s2cPlayerUpdateClientConfigNotify()
     end)
     -- 玩家升级通知
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerLevelupNotify, function(level_new)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerLevelupNotify, function(level_new)
         self:s2cPlayerLevelupNotify(level_new)
     end)
     -- 响应改昵称
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerChangeNickNameNotify, function(r)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerChangeNickNameNotify, function(r)
         self:s2cPlayerChangeNickNameNotify(r)
     end)
     -- 响应刷新IP所在地
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerRefreshIpAddressNotify, function(ip_address)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerRefreshIpAddressNotify, function(ip_address)
         self:s2cPlayerRefreshIpAddressNotify(ip_address)
     end)
     -- 响应改签名
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerChangeIndividualSignatureNotify, function(r)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerChangeIndividualSignatureNotify, function(r)
         self:s2cPlayerChangeIndividualSignatureNotify(r)
     end)
     -- 响应修改语言，参数：string lan
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerChangeLanNotify, function(lan)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerChangeLanNotify, function(lan)
         self:s2cPlayerChangeLanNotify(lan)
     end)
     -- 举报玩家
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerReportPlayerNotify, function(report)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerReportPlayerNotify, function(report)
         self:s2cPlayerReportPlayerNotify(report)
     end)
     -- 响应赠送玩家筹码，查询可赠送范围
-    self.ControllerMgr.RPC:RegRpcMethod3(self.MC.PlayerGiveChipQueryRangeRequestResult, function(r, give_gold_min, give_gold_max)
+    self.ControllerMgr.Rpc:RegRpcMethod3(self.MC.PlayerGiveChipQueryRangeRequestResult, function(r, give_gold_min, give_gold_max)
         self:s2cPlayerGiveChipQueryRangeRequestResult(r, give_gold_min, give_gold_max)
     end)
     -- 响应赠送玩家筹码
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerGiveChipRequestResult, function(r)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerGiveChipRequestResult, function(r)
         self:s2cPlayerGiveChipRequestResult(r)
     end)
     -- 响应赠送玩家筹码
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerBankDepositNotify, function(bank_notify)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerBankDepositNotify, function(bank_notify)
         self:s2cPlayerBankDepositNotify(bank_notify)
     end)
     -- 从银行取筹码
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerBankWithdrawNotify, function(bank_notify)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerBankWithdrawNotify, function(bank_notify)
         self:s2cPlayerBankWithdrawNotify(bank_notify)
     end)
     -- 玩家每日首次登陆通知
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerDailyFirstLoginNotify, function(daily_reward_tbid)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerDailyFirstLoginNotify, function(daily_reward_tbid)
         self:s2cPlayerDailyFirstLoginNotify(daily_reward_tbid)
     end)
     -- 获取每日奖励
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerGetDailyRewardNotify, function(r)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerGetDailyRewardNotify, function(r)
         self:s2cPlayerGetDailyRewardNotify(r)
     end)
     -- 响应获取其他玩家信息
-    self.ControllerMgr.RPC:RegRpcMethod2(self.MC.PlayerGetPlayerInfoOtherNotify, function(player_info, ticket)
+    self.ControllerMgr.Rpc:RegRpcMethod2(self.MC.PlayerGetPlayerInfoOtherNotify, function(player_info, ticket)
         self:s2cPlayerGetPlayerInfoOtherNotify(player_info, ticket)
     end)
     -- 获取在线玩家数
-    self.ControllerMgr.RPC:RegRpcMethod1(self.MC.PlayerGetOnlinePlayerNumNotify, function(num)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.PlayerGetOnlinePlayerNumNotify, function(num)
         self:s2cPlayerGetOnlinePlayerNumNotify(num)
     end)
-    self.ControllerMgr.RPC:RegRpcMethod1(CommonMethodType.PlayerRecvInvitePlayerEnterDesktopNotify, function(r)
+    self.ControllerMgr.Rpc:RegRpcMethod1(CommonMethodType.PlayerRecvInvitePlayerEnterDesktopNotify, function(r)
         self:OnPlayerRecvInvitePlayerEnterDesktopNotify(r)
     end)
-    self.ControllerMgr.RPC:RegRpcMethod1(CommonMethodType.PlayerGetCasinosModuleDataWithFactoryNameNotify, function(r)
+    self.ControllerMgr.Rpc:RegRpcMethod1(CommonMethodType.PlayerGetCasinosModuleDataWithFactoryNameNotify, function(r)
         self:OnPlayerGetCasinosModuleDataWithFactoryNameNotify(r)
     end)
-    self.ControllerMgr.RPC:RegRpcMethod1(CommonMethodType.PlayerOpenUrlNotify, function(r)
+    self.ControllerMgr.Rpc:RegRpcMethod1(CommonMethodType.PlayerOpenUrlNotify, function(r)
         self:OnPlayerOpenUrlNotify(r)
     end)
-    self.ControllerMgr.RPC:RegRpcMethod1(CommonMethodType.PlayerDevConsoleCmdNotify, function(r)
+    self.ControllerMgr.Rpc:RegRpcMethod1(CommonMethodType.PlayerDevConsoleCmdNotify, function(r)
         self:OnPlayerDevConsoleCmdNotify(r)
     end)
 end
@@ -245,10 +245,10 @@ function ControllerPlayer:OnHandleEv(ev)
             ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("SitTableSendGift"))
         end
     elseif (ev.EventName == "EvRequestGetPlayerModuleData") then
-        self.ControllerMgr.RPC:RPC1(self.MC.PlayerGetCasinosModuleDataWithFactoryNameRequest, ev.factory_name)
+        self.ControllerMgr.Rpc:RPC1(self.MC.PlayerGetCasinosModuleDataWithFactoryNameRequest, ev.factory_name)
     elseif (ev.EventName == "EvUiChangeLan") then
         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("ChangeLaning"), 10)
-        self.ControllerMgr.RPC:RPC1(self.MC.PlayerChangeLanRequest, ev.lan)
+        self.ControllerMgr.Rpc:RPC1(self.MC.PlayerChangeLanRequest, ev.lan)
     elseif (ev.EventName == "EvUiCloseActivityPopupBox") then
         CS.UnityEngine.PlayerPrefs.SetString(self.ControllerActivity.CurrentActID, "true")
         self:CreateViewActivityPopUpBox()
@@ -279,7 +279,7 @@ function ControllerPlayer:s2cPlayerDailyFirstLoginNotify(daily_reward_tbid)
     view_daily_reward:setRewardInfo(map_tbdata, daily_reward_tbid,
             function(bo)
                 if (bo) then
-                    self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetDailyRewardRequest)
+                    self.ControllerMgr.Rpc:RPC0(self.MC.PlayerGetDailyRewardRequest)
                 end
             end
     )
@@ -343,7 +343,7 @@ function ControllerPlayer:OnPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
     if (desktop_helper == nil) then
         return
     end
-    local desktopinfo_format = desktop_helper:GetDesktopInfoFormat(self.ControllerMgr.RPC.MessagePack, self.ControllerMgr.TbDataMgr,
+    local desktopinfo_format = desktop_helper:GetDesktopInfoFormat(self.ControllerMgr.Rpc.MessagePack, self.ControllerMgr.TbDataMgr,
             invite.desktop_filter, self.ControllerMgr.LanMgr.LanBase)
     local msg_box = self.ViewMgr:CreateView("MsgBox")
     local tips = self.CasinosContext:AppendStrWithSB(self.ControllerMgr.LanMgr:getLanValue("Player"),
@@ -549,14 +549,14 @@ end
 
 ---------------------------------------
 function ControllerPlayer:RequestGetOnlinePlayerNum()
-    self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlinePlayerNumRequest)
+    self.ControllerMgr.Rpc:RPC0(self.MC.PlayerGetOnlinePlayerNumRequest)
 end
 
 ---------------------------------------
 function ControllerPlayer:requestGetPlayerInfoOther(player_guid)
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("GetPlayerInfo"))
     self.GetOtherPlayerInfoTicket = self.GetOtherPlayerInfoTicket + 1
-    self.ControllerMgr.RPC:RPC2(self.MC.PlayerGetPlayerInfoOtherRequest, player_guid, self.GetOtherPlayerInfoTicket)
+    self.ControllerMgr.Rpc:RPC2(self.MC.PlayerGetPlayerInfoOtherRequest, player_guid, self.GetOtherPlayerInfoTicket)
     return self.GetOtherPlayerInfoTicket
 end
 
@@ -567,17 +567,17 @@ end
 
 ---------------------------------------
 function ControllerPlayer:requestChangeNickName(nick_name)
-    self.ControllerMgr.RPC:RPC1(self.MC.PlayerChangeNickNameRequest, nick_name)
+    self.ControllerMgr.Rpc:RPC1(self.MC.PlayerChangeNickNameRequest, nick_name)
 end
 
 ---------------------------------------
 function ControllerPlayer:requestRefreshIpAddress()
-    self.ControllerMgr.RPC:RPC0(self.MC.PlayerRefreshIpAddressRequest)
+    self.ControllerMgr.Rpc:RPC0(self.MC.PlayerRefreshIpAddressRequest)
 end
 
 ---------------------------------------
 function ControllerPlayer:requestChangeIndividualSignature(sign)
-    self.ControllerMgr.RPC:RPC1(self.MC.PlayerChangeIndividualSignatureRequest, sign)
+    self.ControllerMgr.Rpc:RPC1(self.MC.PlayerChangeIndividualSignatureRequest, sign)
 end
 
 ---------------------------------------
@@ -585,27 +585,27 @@ function ControllerPlayer:requestReportPlayer(player_guid, report_type)
     local report = ReportPlayer:new(nil)
     report.player_guid = player_guid
     report.report_type = report_type
-    self.ControllerMgr.RPC:RPC1(self.MC.PlayerReportPlayerRequest, report:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(self.MC.PlayerReportPlayerRequest, report:getData4Pack())
 end
 
 ---------------------------------------
 function ControllerPlayer:requestGiveGoldQueryRange()
-    self.ControllerMgr.RPC:RPC0(self.MC.PlayerGiveChipQueryRangeRequest)
+    self.ControllerMgr.Rpc:RPC0(self.MC.PlayerGiveChipQueryRangeRequest)
 end
 
 ---------------------------------------
 function ControllerPlayer:requestGivePlayerGold(to_player_guid, give_gold)
-    self.ControllerMgr.RPC:RPC2(self.MC.PlayerGiveChipRequest, to_player_guid, give_gold)
+    self.ControllerMgr.Rpc:RPC2(self.MC.PlayerGiveChipRequest, to_player_guid, give_gold)
 end
 
 ---------------------------------------
 function ControllerPlayer:requestBankDeposit(bank_deposit)
-    self.ControllerMgr.RPC:RPC1(self.MC.PlayerBankDepositRequest, bank_deposit)
+    self.ControllerMgr.Rpc:RPC1(self.MC.PlayerBankDepositRequest, bank_deposit)
 end
 
 ---------------------------------------
 function ControllerPlayer:requestBankWithdraw(bank_withdraw)
-    self.ControllerMgr.RPC:RPC1(self.MC.PlayerBankWithdrawRequest, bank_withdraw)
+    self.ControllerMgr.Rpc:RPC1(self.MC.PlayerBankWithdrawRequest, bank_withdraw)
 end
 
 ---------------------------------------
@@ -747,19 +747,19 @@ end
 ---------------------------------------
 -- 控制台命令
 function ControllerPlayer:requestConsoleCmd(list_param)
-    self.ControllerMgr.RPC:RPC1(self.MC.PlayerDevConsoleCmdRequest2, list_param)
+    self.ControllerMgr.Rpc:RPC1(self.MC.PlayerDevConsoleCmdRequest2, list_param)
 end
 
 ---------------------------------------
 -- 请求获取收货地址
 function ControllerPlayer:RequestGetAddress()
-    self.ControllerMgr.RPC:RPC0(self.MC.PlayerRequestGetAddress)
+    self.ControllerMgr.Rpc:RPC0(self.MC.PlayerRequestGetAddress)
 end
 
 ---------------------------------------
 -- 请求编辑收货地址
 function ControllerPlayer:RequestEditAddress(address)
-    self.ControllerMgr.RPC:RPC1(self.MC.PlayerRequestEditAddress, address:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(self.MC.PlayerRequestEditAddress, address:getData4Pack())
 end
 
 ---------------------------------------

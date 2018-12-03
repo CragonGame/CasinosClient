@@ -58,7 +58,7 @@ end
 ---------------------------------------
 function RewardOnline:OnClickBtnOnlineReward()
     if (self.CanGetReward == true) then
-        self.ControllerMgr.RPC:RPC0(self.MC.PlayerGetOnlineRewardRequest)
+        self.ControllerMgr.Rpc:RPC0(self.MC.PlayerGetOnlineRewardRequest)
     else
         ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.FormatLeftTm), tostring(self.NextReward)))
     end

@@ -10,7 +10,7 @@ function ControllerBase:ctor(this, controller_data, controller_name)
     self.Context = Context
     self.ControllerMgr = ControllerMgr
     self.ViewMgr = ViewMgr
-    self.RPC = self.ControllerMgr.RPC
+    self.Rpc = self.ControllerMgr.Rpc
     self.MC = CommonMethodType
 end
 

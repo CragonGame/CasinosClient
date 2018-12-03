@@ -38,7 +38,7 @@ function ControllerLotteryTicket:OnCreate()
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 
     self:regLotteryTicketBaseFactory(UiLotteryTicketTexasFactory:new(nil))
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     local m_c = CommonMethodType
     rpc:RegRpcMethod2(m_c.LotteryTicketNotifyInit, function(state, tm)
         self:OnLotteryTicketNotifyInit(state, tm)
@@ -95,16 +95,16 @@ function ControllerLotteryTicket:OnHandleEv(ev)
         self.ViewMgr:SendEv(ev)
     elseif (ev.EventName == "EvEntityRequestGetLotteryTicketData")
     then
-        self.ControllerMgr.RPC:RPC0(CommonMethodType.LotteryTicketSnapshot)
+        self.ControllerMgr.Rpc:RPC0(CommonMethodType.LotteryTicketSnapshot)
     elseif (ev.EventName == "EvLotteryTicketClickRewardPotBtn")
     then
-        self.ControllerMgr.RPC:RPC0(CommonMethodType.LotteryTicketGetRewardPotPlayerInfo)
+        self.ControllerMgr.Rpc:RPC0(CommonMethodType.LotteryTicketGetRewardPotPlayerInfo)
     elseif (ev.EventName == "EvLotteryTicketBet")
     then
         self:RequestBet(ev.bet_betpot_index)
     elseif (ev.EventName == "EvLotteryTicketRepeatBet")
     then
-        self.ControllerMgr.RPC:RPC1(CommonMethodType.LotteryTicketRequestBetRepeat, self.MapBetRepeatInfo)
+        self.ControllerMgr.Rpc:RPC1(CommonMethodType.LotteryTicketRequestBetRepeat, self.MapBetRepeatInfo)
     elseif (ev.EventName == "EvEntityGoldChanged")
     then
         self:updateSuitBetOperateId()
@@ -301,7 +301,7 @@ end
 
 ---------------------------------------
 function ControllerLotteryTicket:RequestChangeLotteryTicketPlayerState2Simple()
-    self.ControllerMgr.RPC:RPC0(CommonMethodType.LotteryTicketChangePlayerState2Simple)
+    self.ControllerMgr.Rpc:RPC0(CommonMethodType.LotteryTicketChangePlayerState2Simple)
     self:ClearLotteryTicketundred()
 end
 
@@ -446,12 +446,12 @@ function ControllerLotteryTicket:RequestBet(bet_betpot_index)
     ev.already_bet_chips = already_bet_golds
     ev.bet_potindex = bet_betpot_index
     self.ViewMgr:SendEv(ev)
-    self.ControllerMgr.RPC:RPC2(CommonMethodType.LotteryTicketRequestBet, bet_betpot_index, bet_golds)
+    self.ControllerMgr.Rpc:RPC2(CommonMethodType.LotteryTicketRequestBet, bet_betpot_index, bet_golds)
 end
 
 ---------------------------------------
 function ControllerLotteryTicket:RequestSetCardType(card_type)
-    self.ControllerMgr.RPC:RPC1(CommonMethodType.LotteryTicketSetCardsType, card_type)
+    self.ControllerMgr.Rpc:RPC1(CommonMethodType.LotteryTicketSetCardsType, card_type)
 end
 
 ---------------------------------------

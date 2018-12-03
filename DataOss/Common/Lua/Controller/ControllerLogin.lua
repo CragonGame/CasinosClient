@@ -128,7 +128,7 @@ function ControllerLogin:OnCreate()
     self:_init(true)
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
 
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     local m_c = CommonMethodType
     rpc:RegRpcMethod0(m_c.AccountGatewayConnected, function()
         self:OnAccountGatewayConnected()
@@ -576,7 +576,7 @@ function ControllerLogin:OnUCenterWechatBind(http_statuscode, status, response, 
     if (status == UCenterResponseStatus.Success) then
         if (response == UCenterErrorCode.NoError) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BindWeChatSuccess"))
-            self.ControllerMgr.RPC:RPC0(CommonMethodType.AccountUpdateDataFromUCenterRequest)
+            self.ControllerMgr.Rpc:RPC0(CommonMethodType.AccountUpdateDataFromUCenterRequest)
         end
     else
         ViewHelper:UiEndWaiting()
@@ -638,7 +638,7 @@ function ControllerLogin:OnAccountGatewayConnected()
     login_request.nick_name = nick_name
     login_request.channel_id = CS.Casinos.CasinosContext.Instance.Config.Channel
     login_request.platform = CS.Casinos.CasinosContext.Instance.Config.Platform
-    self.ControllerMgr.RPC:RPC1(CommonMethodType.AccountLoginAppRequest, login_request:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(CommonMethodType.AccountLoginAppRequest, login_request:getData4Pack())
 end
 
 ---------------------------------------
@@ -660,7 +660,7 @@ function ControllerLogin:OnAccountLoginAppResponse(login_response)
             enterworld_request.invite_id = t_decode["PlayerId"]
         end
     end
-    self.ControllerMgr.RPC:RPC1(CommonMethodType.AccountEnterWorldRequest, enterworld_request:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(CommonMethodType.AccountEnterWorldRequest, enterworld_request:getData4Pack())
 end
 
 ---------------------------------------

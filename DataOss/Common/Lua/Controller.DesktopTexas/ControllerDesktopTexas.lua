@@ -41,7 +41,7 @@ function ControllerDesktopTexas:OnCreate()
     self.ViewMgr:BindEvListener("EvEntitySetMatchDetailedInfo", self)
     self.ViewMgr:BindEvListener("EvUpdatePlayerScore", self)
 
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     local m_c = CommonMethodType
     rpc:RegRpcMethod1(m_c.DesktopUserNotify, function(info_user)
         self:s2cPlayerDesktopUser(info_user)
@@ -118,13 +118,13 @@ function ControllerDesktopTexas:OnHandleEv(ev)
     elseif (ev.EventName == "EvEntityPlayerEnterDesktopH") then
         self:clearDesktop(false)
     elseif (ev.EventName == "EvUiRequestChangeDesk") then
-        local rpc = self.ControllerMgr.RPC
+        local rpc = self.ControllerMgr.Rpc
         rpc:RPC0(CommonMethodType.DesktopPlayerChangeDeskRequest)
     elseif (ev.EventName == "EvEntityGetDesktopData") then
         if (self.DesktopBase == nil) then
             return
         end
-        local rpc = self.ControllerMgr.RPC
+        local rpc = self.ControllerMgr.Rpc
         rpc:RPC0(CommonMethodType.DesktopSnapshotRequest)
     end
 
@@ -340,7 +340,7 @@ function ControllerDesktopTexas:requestInvitePlayerEnterDesktop(friend_guid, des
     invite.desktop_filter = desktop_filter
     invite.player_num = player_num
 
-    self.ControllerMgr.RPC:RPC1(CommonMethodType.PlayerInvitePlayerEnterDesktopRequest, invite:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(CommonMethodType.PlayerInvitePlayerEnterDesktopRequest, invite:getData4Pack())
 end
 
 ---------------------------------------
@@ -404,25 +404,25 @@ end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestSendMsg(chat_msg)
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     rpc:RPC1(CommonMethodType.DesktopChatRequest, chat_msg)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestPlayerWaitWhile()
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     rpc:RPC0(CommonMethodType.DesktopPlayerWaitWhileRequest)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestPlayerOb()
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     rpc:RPC0(CommonMethodType.DesktopPlayerObRequest)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestPlayerReturn(data)
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     local m = {}
     m["Stack"] = tostring(data)
     rpc:RPC1(CommonMethodType.DesktopPlayerReturnRequest, m)
@@ -430,13 +430,13 @@ end
 
 ---------------------------------------
 function ControllerDesktopTexas:RequestPlayerSitdown(sitdown_info)
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     rpc:RPC1(CommonMethodType.DesktopPlayerSitdownRequest, sitdown_info:getData4Pack())
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:UserRequest(fac_name, method_info)
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     local user = MethodInfoDesktopUser:new(nil)
     user.FactoryName = fac_name
     user.data = self.ControllerMgr:PackData(method_info)
@@ -446,19 +446,19 @@ end
 
 ---------------------------------------
 function ControllerDesktopTexas:MatchTexasRequestRebuy(match_guid)
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     rpc:RPC1(CommonMethodType.MatchTexasRequestRebuy, match_guid)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:MatchTexasRequestAddon(match_guid)
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     rpc:RPC1(CommonMethodType.MatchTexasRequestAddon, match_guid)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:MatchTexasRequestGiveUpRebuyOrAddon(match_guid)
-    local rpc = self.ControllerMgr.RPC
+    local rpc = self.ControllerMgr.Rpc
     rpc:RPC1(CommonMethodType.MatchTexasRequestGiveUpRebuyOrAddon, match_guid)
 end
 

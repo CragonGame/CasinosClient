@@ -45,12 +45,12 @@ end
 ---------------------------------------
 function IMFeedback:requestChatReadConfirm()
     self.HaveNewMsg = false
-    self.ControllerIM.ControllerMgr.RPC:RPC0(CommonMethodType.PlayerFeedbackReadConfirmRequest)
+    self.ControllerIM.ControllerMgr.Rpc:RPC0(CommonMethodType.PlayerFeedbackReadConfirmRequest)
 end
 
 ---------------------------------------
 function IMFeedback:requestIMFeedbackSendMsg(chat_msg)
-    self.ControllerIM.ControllerMgr.RPC:RPC1(CommonMethodType.PlayerFeedbackSendMsgRequest, chat_msg)
+    self.ControllerIM.ControllerMgr.Rpc:RPC1(CommonMethodType.PlayerFeedbackSendMsgRequest, chat_msg)
 end
 
 ---------------------------------------

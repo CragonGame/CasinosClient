@@ -129,17 +129,17 @@ end
 
 ---------------------------------------
 function IMChat:requestChatRecord(player_guid, msg_id)
-    self.ControllerIM.ControllerMgr.RPC:RPC2(CommonMethodType.IMChatRecordRequest, player_guid, msg_id)
+    self.ControllerIM.ControllerMgr.Rpc:RPC2(CommonMethodType.IMChatRecordRequest, player_guid, msg_id)
 end
 
 ---------------------------------------
 function IMChat:requestChatReadConfirm(player_guid, msg_id)
-    self.ControllerIM.ControllerMgr.RPC:RPC2(CommonMethodType.IMChatReadConfirmRequest, player_guid, msg_id)
+    self.ControllerIM.ControllerMgr.Rpc:RPC2(CommonMethodType.IMChatReadConfirmRequest, player_guid, msg_id)
 end
 
 ---------------------------------------
 function IMChat:requestIMChatSendMsg(chat_msg)
-    self.ControllerIM.ControllerMgr.RPC:RPC1(CommonMethodType.IMChatSendMsgRequest, chat_msg)
+    self.ControllerIM.ControllerMgr.Rpc:RPC1(CommonMethodType.IMChatSendMsgRequest, chat_msg)
 end
 
 ---------------------------------------

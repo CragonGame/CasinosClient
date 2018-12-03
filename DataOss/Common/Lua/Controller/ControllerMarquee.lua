@@ -12,14 +12,14 @@ end
 ---------------------------------------
 function ControllerMarquee:OnCreate()
     self.ViewMgr:BindEvListener("EvRequestSendMarquee", self)
-    self.RPC = self.ControllerMgr.RPC
+    self.Rpc = self.ControllerMgr.Rpc
     self.MC = CommonMethodType
     -- 跑马灯，响应玩家发送跑马灯广播请求
-    self.RPC:RegRpcMethod1(self.MC.MarqueeRequestResult, function(result)
+    self.Rpc:RegRpcMethod1(self.MC.MarqueeRequestResult, function(result)
         self:s2cMarqueeRequestResult(result)
     end)
     -- 跑马灯广播推送
-    self.RPC:RegRpcMethod1(self.MC.IMMarqueeNotify, function(im_marquee)
+    self.Rpc:RegRpcMethod1(self.MC.IMMarqueeNotify, function(im_marquee)
         self:s2cIMMarqueeNotify(im_marquee)
     end)
     self.ListIMMarquee = {}
@@ -96,7 +96,7 @@ end
 ---------------------------------------
 function ControllerMarquee:requestSendMarquee(im_marque)
     print("ControllerMarquee:requestSendMarquee")
-    self.RPC:RPC1(self.MC.MarqueeRequest, im_marque)
+    self.Rpc:RPC1(self.MC.MarqueeRequest, im_marque)
 end
 
 ---------------------------------------
