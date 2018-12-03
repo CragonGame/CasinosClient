@@ -13,6 +13,11 @@ end
 
 ---------------------------------------
 function ViewRanking:OnCreate()
+    self:BindEvListener("EvEntityGetRankingDiamond", self)
+    self:BindEvListener("EvEntityGetRankingGold", self)
+    self:BindEvListener("EvEntityGetRankingRedEnvelopes", self)
+    --self:BindEvListener("EvEntityGetRankingWinGold",self)
+
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Ranking"))
     self.ControllerRanking = self.ControllerMgr:GetController("Ranking")
     self.Controller = self.ComUi:GetController("ControllerRanking")
@@ -50,20 +55,16 @@ function ViewRanking:OnCreate()
 
     self.GListRanking = self.ComUi:GetChild("RankingList").asList
     local ev = self:GetEv("EvUiGetRankingGold")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvUiGetRankingGold:new(nil)
     end
     self:SendEv(ev)
+
     self.RankingListType = RankingListType.Chip
     self.GListRanking.itemRenderer = function(a, b)
         self:RenderListItem(a, b)
     end
     self.GListRanking:SetVirtual()
-    self.ViewMgr:BindEvListener("EvEntityGetRankingDiamond", self)
-    self.ViewMgr:BindEvListener("EvEntityGetRankingGold", self)
-    self.ViewMgr:BindEvListener("EvEntityGetRankingRedEnvelopes", self)
-    --self.ViewMgr:BindEvListener("EvEntityGetRankingWinGold",self)
 end
 
 ---------------------------------------
@@ -84,8 +85,7 @@ function ViewRanking:OnHandleEv(ev)
             self.GListRanking.numItems = #self.ControllerRanking.ListRankingGold
         elseif (ev.EventName == "EvEntityGetRankingRedEnvelopes") then
             self.GListRanking.numItems = #self.ControllerRanking.ListRankingRedEnvelopes
-            --elseif(ev.EventName == "EvEntityGetRankingWinGold")
-            --then
+            --elseif(ev.EventName == "EvEntityGetRankingWinGold") then
             --   self.GListRanking.numItems = #self.ControllerRanking.ListRankingWinGold
         end
     end
@@ -94,7 +94,7 @@ end
 ---------------------------------------
 function ViewRanking:RenderListItem(index, obj)
     local com = CS.Casinos.LuaHelper.GObjectCastToGCom(obj)
-    local item = ItemRank:new(nil, com)
+    local item = ItemRank:new(nil, com, self)
     if (self.RankingListType == RankingListType.Chip) then
         if (self.ControllerRanking.ListRankingGold ~= nil) then
             if (#self.ControllerRanking.ListRankingGold > index) then

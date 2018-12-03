@@ -4,11 +4,12 @@
 ItemRank = {}
 
 ---------------------------------------
-function ItemRank:new(o, com)
+function ItemRank:new(o, com, view_ranking)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.Com = com
+    o.ViewRanking = view_ranking
     o.Com.onClick:Add(
             function()
                 o:onClickItem()
@@ -33,13 +34,13 @@ function ItemRank:setRankInfo(view_mgr, player_guid, nick_name, icon_name, accou
     local rank_signname = ""
     if (index == 0) then
         show_ranksign = true
-        rank_signname = ViewRanking.ChampionSignName
+        rank_signname = self.ViewRanking.ChampionSignName
     elseif (index == 1) then
         show_ranksign = true
-        rank_signname = ViewRanking.SecondPlaceSignName
+        rank_signname = self.ViewRanking.SecondPlaceSignName
     elseif (index == 2) then
         show_ranksign = true
-        rank_signname = ViewRanking.ThirdPlaceSignName
+        rank_signname = self.ViewRanking.ThirdPlaceSignName
     end
     self.GLoaderRankSign.visible = show_ranksign
     if (show_ranksign) then

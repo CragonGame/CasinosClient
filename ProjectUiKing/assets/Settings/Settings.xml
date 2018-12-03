@@ -5,9 +5,6 @@
       <relation target="" sidePair="width-width,height-height"/>
     </component>
     <image id="n51_lh6b" name="n51" src="lh6bm" fileName="Image/UI2_设置_ICON.png" xy="140,74" group="n61_lvp2"/>
-    <component id="n60_lvp2" name="BtnSwitch" src="lvp2lf" fileName="Component/Btn/BtnSwitch.xml" pkg="nhvxw9ov" xy="480,393" group="n61_lvp2">
-      <relation target="n59_lvp2" sidePair="left-right"/>
-    </component>
     <component id="n28_rdp3" name="BtnResetPwd" src="n8cln" fileName="Component/BtnResetPwd.xml" xy="448,466" group="n61_lvp2" hideByEditor="true" visible="false"/>
     <component id="n30_rdp3" name="Lan_Btn_SelectLanguage" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="448,466" group="n61_lvp2" hideByEditor="true" visible="false"/>
     <component id="n35_jt75" name="ComAbount" src="jt75j" fileName="Component/ComAbount.xml" xy="783,481" group="n61_lvp2"/>
@@ -32,6 +29,7 @@
     </image>
     <text id="n57_m4t7" name="TextTitle" xy="528,80" pivot="0.5,0.5" size="10,50" group="n61_lvp2" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
     <text id="n59_lvp2" name="Lan_Text_AutoRotation" xy="321,391" pivot="0,0.5" size="145,44" group="n61_lvp2" fontSize="35" color="#ffffff" vAlign="middle" leading="0" text="横屏旋转"/>
+    <component id="n62_dyr9" name="BtnSwitch" src="lvp2lf" fileName="Component/Btn/BtnSwitch.xml" pkg="nhvxw9ov" xy="490,391" group="n61_lvp2"/>
     <group id="n61_lvp2" name="n61" xy="140,73" size="727,457" advanced="true">
       <relation target="" sidePair="center-center,middle-middle"/>
     </group>

@@ -390,6 +390,7 @@ function Context:_nextLaunchStep()
         self.CasinosContext.NetMgr:InitByLua()
 
         -- 销毁Launch相关资源，加载登录界面
+        self:AddUiPackage('Common')
         self:AddUiPackage('LanZh')
         self:AddUiPackage('LanEn')
         self:AddUiPackage('LanZhAndroid')

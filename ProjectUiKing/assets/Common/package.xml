@@ -247,6 +247,9 @@
     <image id="kd14mf" name="ChatBgLeft2.png" path="/Image/" scale="9grid" scale9grid="30,26,5,3"/>
     <image id="kd14mg" name="ChatBgRight1.png" path="/Image/" scale="9grid" scale9grid="20,26,5,3"/>
     <component id="h1fymh" name="BtnShare1.xml" path="/Component/Btn/" exported="true"/>
+    <image id="dyr9mi" name="36.png" path="/Image/" exported="true"/>
+    <image id="dyr9mj" name="SwitchOff1.png" path="/Image/" exported="true" scale="9grid" scale9grid="31,25,62,1"/>
+    <image id="dyr9mk" name="SwitchOn1.png" path="/Image/" exported="true" scale9grid="31,25,62,1"/>
   </resources>
   <publish name="Common" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Common"/>
 </packageDescription>

@@ -1,4 +1,5 @@
 -- Copyright(c) Cragon. All rights reserved.
+-- 用class()生成出来的lua对象，不可以用全局形式访问成员，如a = class(), a.b则为nil
 
 ---------------------------------------
 local _class = {}
