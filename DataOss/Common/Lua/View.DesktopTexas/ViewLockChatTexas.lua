@@ -21,13 +21,17 @@ function ViewLockChatTexas:ctor()
     self.BtnUnLockName = "BtnUnlock"
     self.SystemIconKey = "System"
     self.Tween = nil
+
+    -- TODO，组件在包中放置不合理，依赖了Club，CreateMatch包中的资源
+    self.Context:AddUiPackage('Club')
+    self.Context:AddUiPackage('CreateMatch')
 end
 
 ---------------------------------------
 function ViewLockChatTexas:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("LockChat"))
-    self.ViewMgr:BindEvListener("EvEntityDesktopPlayerSit", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
+    self:BindEvListener("EvEntityDesktopPlayerSit", self)
+    self:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
     self.ViewDesktop = self.ViewMgr:GetView("DesktopTexas")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     self.GBtnClose = com_bg:GetChild("BtnClose").asButton

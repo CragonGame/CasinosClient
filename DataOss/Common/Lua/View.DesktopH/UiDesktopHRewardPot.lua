@@ -219,7 +219,7 @@ end
 
 ---------------------------------------
 function UiDesktopHRewardPot:_onClick()
-    self.ViewMgr:CreateView("UiDesktopHRewardPot")
+    self.ViewMgr:CreateView("DesktopHRewardPot")
     local ev = self.ViewMgr:GetEv("EvDesktopHClickRewardPotBtn")
     if (ev == nil) then
         ev = EvDesktopHClickRewardPotBtn:new(nil)
