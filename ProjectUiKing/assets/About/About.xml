@@ -2,23 +2,23 @@
 <component size="1066,640">
   <controller name="ControllerAbout" pages="1,Agreement,0,Privacy" selected="0"/>
   <displayList>
-    <component id="n32_vi47" name="ComBgAndClose" src="vi47jm" pkg="nhvxw9ov" xy="0,0">
+    <component id="n32_vi47" name="ComBgAndClose" src="vi47jm" fileName="Component/ComBgAndClose.xml" pkg="nhvxw9ov" xy="0,0">
       <relation target="" sidePair="width-width,height-height"/>
     </component>
-    <image id="n34_lh6b" name="n34" src="lh6bjy" pkg="nhvxw9ov" xy="143,78" group="n36_nhsw"/>
-    <image id="n19_m0v3" name="n19" src="y7iqbv" pkg="nhvxw9ov" xy="540,154" pivot="0.5,0.5" group="n36_nhsw" skew="0,180"/>
-    <image id="n20_m0v3" name="n20" src="y7iqbv" pkg="nhvxw9ov" xy="411,154" pivot="0.5,0.5" group="n36_nhsw"/>
-    <image id="n25_m0v3" name="n25" src="y7iqbu" pkg="nhvxw9ov" xy="409,154" pivot="0.5,0.5" size="119,37" group="n36_nhsw">
+    <image id="n34_lh6b" name="n34" src="lh6bjy" fileName="Image/New/UI2_通用_Title花纹02.png" pkg="nhvxw9ov" xy="143,78" group="n36_nhsw"/>
+    <image id="n19_m0v3" name="n19" src="y7iqbv" fileName="Image/TabDark.png" pkg="nhvxw9ov" xy="540,154" pivot="0.5,0.5" group="n36_nhsw" skew="0,180"/>
+    <image id="n20_m0v3" name="n20" src="y7iqbv" fileName="Image/TabDark.png" pkg="nhvxw9ov" xy="411,154" pivot="0.5,0.5" group="n36_nhsw"/>
+    <image id="n25_m0v3" name="n25" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="409,154" pivot="0.5,0.5" size="119,37" group="n36_nhsw">
       <gearDisplay controller="ControllerAbout" pages="1"/>
     </image>
-    <component id="n14_92xk" name="n14" src="92xk2" xy="157,196" group="n36_nhsw">
+    <component id="n14_92xk" name="n14" src="92xk2" fileName="Component/AgreementContent.xml" xy="157,196" group="n36_nhsw">
       <gearDisplay controller="ControllerAbout" pages="1"/>
     </component>
-    <text id="n15_92xk" name="n15" xy="688,515" pivot="1,0.5" size="234,25" group="n36_nhsw" font="FontXi" fontSize="18" color="#6a77a9" vAlign="middle" autoSize="shrink" bold="true" singleLine="true" text="Copyright ©2017-2020&#xA;"/>
-    <component id="n16_qaww" name="n16" src="qaww4" xy="157,196" group="n36_nhsw">
+    <text id="n15_92xk" name="n15" xy="688,515" size="234,25" group="n36_nhsw" font="FontXi" fontSize="18" color="#6a77a9" vAlign="middle" leading="0" autoSize="none" bold="true" singleLine="true" text="Copyright ©2017-2020&#xA;"/>
+    <component id="n16_qaww" name="n16" src="qaww4" fileName="Component/PrivacyContent.xml" xy="157,196" group="n36_nhsw">
       <gearDisplay controller="ControllerAbout" pages="0"/>
     </component>
-    <image id="n26_m0v3" name="n26" src="y7iqbu" pkg="nhvxw9ov" xy="540,154" pivot="0.5,0.5" size="119,37" group="n36_nhsw" skew="0,180">
+    <image id="n26_m0v3" name="n26" src="y7iqbu" fileName="Image/TabLight.png" pkg="nhvxw9ov" xy="540,154" pivot="0.5,0.5" size="119,37" group="n36_nhsw" skew="0,180">
       <gearDisplay controller="ControllerAbout" pages="0"/>
     </image>
     <text id="n21_m0v3" name="Lan_Text_ServiceAgreement" xy="420,158" pivot="0.5,0.5" size="109,28" group="n36_nhsw" font="FontCu" fontSize="20" color="#4c518b" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="服务协议">
@@ -33,13 +33,13 @@
     <text id="n24_m0v3" name="Lan_Text_PrivacyStatement" xy="541,158" pivot="0.5,0.5" size="109,28" group="n36_nhsw" font="FontCu" fontSize="20" color="#ffffff" align="center" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="隐私声明">
       <gearDisplay controller="ControllerAbout" pages="0"/>
     </text>
-    <component id="n27_m0v3" name="ComAboutLink" src="m0v37" xy="406,151" group="n36_nhsw"/>
-    <component id="n28_m0v3" name="ComPrivacyLink" src="m0v37" xy="542,151" group="n36_nhsw"/>
+    <component id="n27_m0v3" name="ComAboutLink" src="m0v37" fileName="Component/ComEmpty.xml" xy="406,151" group="n36_nhsw"/>
+    <component id="n28_m0v3" name="ComPrivacyLink" src="m0v37" fileName="Component/ComEmpty.xml" xy="542,151" group="n36_nhsw"/>
     <text id="n29_j0ra" name="Lan_Text_ShangHaiCragon" xy="688,542" size="233,25" group="n36_nhsw" font="FontXi" fontSize="18" color="#6a77a9" vAlign="middle" leading="0" autoSize="shrink" bold="true" singleLine="true" text="Shanghai Cragon Network Technology Co. Ltd"/>
-    <image id="n5_ewc0" name="n5" src="vi47jp" pkg="nhvxw9ov" xy="538,76" pivot="0.5,0.5" group="n36_nhsw" skew="0,180">
+    <image id="n5_ewc0" name="n5" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="538,76" pivot="0.5,0.5" group="n36_nhsw" skew="0,180">
       <relation target="n35_nhsw" sidePair="left-right"/>
     </image>
-    <image id="n6_ewc0" name="n6" src="vi47jp" pkg="nhvxw9ov" xy="491,76" pivot="0.5,0.5" group="n36_nhsw">
+    <image id="n6_ewc0" name="n6" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="491,76" pivot="0.5,0.5" group="n36_nhsw">
       <relation target="n35_nhsw" sidePair="right-left"/>
     </image>
     <text id="n35_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n36_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>

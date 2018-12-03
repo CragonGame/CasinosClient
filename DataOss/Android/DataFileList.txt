@@ -710,10 +710,10 @@ Resources.KingTexas/Spine/mainmarry.ab E86752C4B74F948FF23E4FC0C31814F3
 Resources.KingTexas/Spine/mainmarry.ab.manifest 92873E1AD74749E1BB20EF59C538670B
 Resources.KingTexas/Spine/Spine D502D7025269C6873A9120FDCDC15A68
 Resources.KingTexas/Spine/Spine.manifest D94F93C7B3511A5ADBF3138A5E6C9A3C
-Resources.KingTexas/Ui/about.ab 89B694E9E655B5F13E2FB5710B48A437
-Resources.KingTexas/Ui/about.ab.manifest D44CDB90ABB4A7B3A3CE7D65A7FD0FDE
-Resources.KingTexas/Ui/activitycenter.ab 787EFF139A37F35DE9FD7CC7A632B630
-Resources.KingTexas/Ui/activitycenter.ab.manifest E9DED97B59D41EAE3A700D488A7AF5ED
+Resources.KingTexas/Ui/about.ab 3F7130D433B134E3F159FFF9535032F7
+Resources.KingTexas/Ui/about.ab.manifest 3AD5B52245200FF688E2C85D9DC54BFC
+Resources.KingTexas/Ui/activitycenter.ab 96491E62B2F1EB99465BCDE4B79C9106
+Resources.KingTexas/Ui/activitycenter.ab.manifest E8F8F63713F54B40EF98D8AF8EC4C512
 Resources.KingTexas/Ui/activitypopup.ab 2E663408DF8711FE3DA5C4901B3049E8
 Resources.KingTexas/Ui/activitypopup.ab.manifest 969B5A185D57DD2C97A93D81AD276009
 Resources.KingTexas/Ui/agreeordisaddfriendrequest.ab 6A6330CFC3823E753DA7C8D310C6ECFD
@@ -746,8 +746,8 @@ Resources.KingTexas/Ui/club.ab E53C0C60B793078E2862837EA321BC1B
 Resources.KingTexas/Ui/club.ab.manifest 1172429C1418342BB232E2D5C3E9EC9E
 Resources.KingTexas/Ui/clubhelp.ab 8E866C6AC80D0F7F9DE91FB7824DBDD6
 Resources.KingTexas/Ui/clubhelp.ab.manifest 46F9291803C4313C5B22EBFB1DC1221F
-Resources.KingTexas/Ui/common.ab 643A1257C92E41943A629C9A15A40F45
-Resources.KingTexas/Ui/common.ab.manifest 2F063659D4394FFC63980A1155991B38
+Resources.KingTexas/Ui/common.ab E7E32C1A779B5F1719CF84791B49F34F
+Resources.KingTexas/Ui/common.ab.manifest 543877F65A0F7AECCB4955CFFCD813D2
 Resources.KingTexas/Ui/createdesktop.ab 29394216C8DA6EAADB63D4D0F4B8C827
 Resources.KingTexas/Ui/createdesktop.ab.manifest 83317AFD2AD1561FB60E1AF671AAB3E0
 Resources.KingTexas/Ui/creatematch.ab CBED58E055B7EFECE3F4D3D598B24974
@@ -884,8 +884,8 @@ Resources.KingTexas/Ui/snowballreward.ab D4B1EB71B504CA6B21A3A5278578B9FD
 Resources.KingTexas/Ui/snowballreward.ab.manifest 0760E5F1C8F5B140CED1B97F19C8C160
 Resources.KingTexas/Ui/takephoto.ab 58C9BD45F6287E017C29AD8A8CDADC2F
 Resources.KingTexas/Ui/takephoto.ab.manifest 19AF96155D4C4243B99B88B8B1C8CD30
-Resources.KingTexas/Ui/Ui D19DF4E0ABBB4E18DDFCD2675AEA63A8
-Resources.KingTexas/Ui/Ui.manifest BD5B66A5BEC066283A420086B379AF42
+Resources.KingTexas/Ui/Ui A1DBD3CC58566FE53C6370A6581879A6
+Resources.KingTexas/Ui/Ui.manifest EA9F7B42993547A6A9C129BEF04DA353
 Resources.KingTexas/Ui/wallet.ab C2C3EDF8950B7E667617D5A2CB29EB5D
 Resources.KingTexas/Ui/wallet.ab.manifest 7AEF601AD62CBB477AFB3099EADE0B4D
 Resources.KingTexasLaunch/denglong.ab 44E6B94A6CB97509F86425BB8D62BCDB

@@ -8,9 +8,9 @@
       <relation target="n65_nhsw" sidePair="right-left"/>
     </image>
     <image id="n52_phss" name="n52" src="oypw6e" fileName="Image/Shade.png" pkg="nhvxw9ov" xy="310,146" size="614,432" group="n66_nhsw" alpha="0.4"/>
-    <image id="n53_phss" name="n53" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="139,146" size="172,430" group="n66_nhsw" color="#343971"/>
+    <image id="n53_phss" name="n53" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="139,146" size="172,428" group="n66_nhsw" color="#343971"/>
     <list id="n0_lnv7" name="ListActivityTitle" xy="140,167" size="170,404" group="n66_nhsw" overflow="scroll" defaultItem="ui://fy38w9lblnv71"/>
-    <loader id="n2_lnv7" name="LoaderActContent" xy="322,158" size="594,414" group="n66_nhsw" align="center" vAlign="middle" fill="scaleNoBorder"/>
+    <loader id="n2_lnv7" name="LoaderActContent" xy="321,153" size="594,414" group="n66_nhsw" align="center" vAlign="middle" fill="scaleNoBorder"/>
     <image id="n46_phss" name="n46" src="s17db" fileName="Image/图层8.png" xy="139,66" size="194,97" group="n66_nhsw"/>
     <image id="n57_phss" name="n57" src="u51oj6" fileName="Image/New/UI2_通用_渐变底2.png" pkg="nhvxw9ov" xy="139,145" pivot="0.5,0.5" size="172,45" group="n66_nhsw" alpha="0.6" rotation="180" color="#000000"/>
     <image id="n59_s17d" name="n59" src="vi47jp" fileName="Image/UI2_通用_叶子1.png" pkg="nhvxw9ov" xy="538,75" pivot="0.5,0.5" group="n66_nhsw" skew="0,180">
@@ -23,7 +23,7 @@
       <relation target="" sidePair="bottom-bottom"/>
     </image>
     <image id="n62_s17d" name="n62" src="s17da" fileName="Image/图层17.png" xy="139,429" group="n66_nhsw"/>
-    <text id="n3_lnv7" name="TextActContent" xy="322,158" size="594,33" group="n66_nhsw" font="FontCu" fontSize="25" color="#33ccff" vAlign="middle" autoSize="height" text=""/>
+    <text id="n3_lnv7" name="TextActContent" xy="321,153" size="594,33" group="n66_nhsw" font="FontCu" fontSize="25" color="#33ccff" vAlign="middle" autoSize="height" text=""/>
     <text id="n65_nhsw" name="TextTitle" xy="528,81" pivot="0.5,0.5" size="10,50" group="n66_nhsw" font="BigTitle" fontSize="40" color="#ffffff" align="center" vAlign="middle" leading="0" ubb="true" text=""/>
     <component id="n67_gvmm" name="BtnShare" src="gvmmli" fileName="Component/Btn/BtnShare.xml" pkg="nhvxw9ov" xy="353,462" size="230,76" group="n66_nhsw"/>
     <group id="n66_nhsw" name="n66" xy="139,66" size="785,512" advanced="true">

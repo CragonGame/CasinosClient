@@ -155,12 +155,12 @@ function ItemMatchInfo:onClickBtnSign()
         local msg_box = self.ViewMgr:CreateView("MsgBox")
         msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.ServiceFee)),
                 function()
-                    local ev = self:GetEv("EvUiRequestSignUpMatch")
+                    local ev = self.ViewMgr:GetEv("EvUiRequestSignUpMatch")
                     if (ev == nil) then
                         ev = EvUiRequestSignUpMatch:new(nil)
                     end
                     ev.MatchGuid = self.MatchInfo.Guid
-                    self:SendEv(ev)
+                    self.ViewMgr:SendEv(ev)
                     self.ViewMgr:DestroyView(msg_box)
                 end,
                 function()
@@ -168,19 +168,19 @@ function ItemMatchInfo:onClickBtnSign()
                 end
         )
     elseif (self.GControllerBtnSigninState.selectedIndex == 1) then
-        local ev = self:GetEv("EvUiRequestEnterMatch")
+        local ev = self.ViewMgr:GetEv("EvUiRequestEnterMatch")
         if (ev == nil) then
             ev = EvUiRequestEnterMatch:new(nil)
         end
         ev.MatchGuid = self.MatchInfo.Guid
-        self:SendEv(ev)
+        self.ViewMgr:SendEv(ev)
     elseif (self.GControllerBtnSigninState.selectedIndex == 2) then
-        local ev = self:GetEv("EvUiRequestSignUpMatch")
+        local ev = self.ViewMgr:GetEv("EvUiRequestSignUpMatch")
         if (ev == nil) then
             ev = EvUiRequestSignUpMatch:new(nil)
         end
         ev.MatchGuid = self.MatchInfo.Guid
-        self:SendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 end
 

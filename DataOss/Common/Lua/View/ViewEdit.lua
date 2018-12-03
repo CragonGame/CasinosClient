@@ -51,8 +51,7 @@ function ViewEdit:OnCreate()
     )
     self.SoundEffectBar = self.ComUi:GetChild("soundEffectBar").asSlider
     local volum = 0.5
-    if (CS.UnityEngine.PlayerPrefs.HasKey(CS.Casinos.SoundMgr.SoundKey))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey(CS.Casinos.SoundMgr.SoundKey)) then
         volum = CS.UnityEngine.PlayerPrefs.GetFloat(CS.Casinos.SoundMgr.SoundKey)
     end
     self.SoundEffectBar.value = volum * 100
@@ -73,12 +72,10 @@ function ViewEdit:OnCreate()
                 self:onClickBtnSwitch()
             end
     )
-    if (CS.UnityEngine.PlayerPrefs.HasKey("ScreenAutoRotation"))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey("ScreenAutoRotation")) then
         local autoRotation = CS.UnityEngine.PlayerPrefs.GetString("ScreenAutoRotation")
-        if (autoRotation == "true")
-        then
-            self.GBtnSwitchScreenAutoRotation.selected = true
+        if (autoRotation == "true") then
+            self.GBtnSwitchScreenAutoRotation.selected = false
         else
             self.GBtnSwitchScreenAutoRotation.selected = false
         end
@@ -96,8 +93,7 @@ end
 ---------------------------------------
 function ViewEdit:onClickBtnSwitch()
     local screen = CS.UnityEngine.Screen
-    if (self.GBtnSwitchScreenAutoRotation.selected == true)
-    then
+    if (self.GBtnSwitchScreenAutoRotation.selected == true) then
         CS.UnityEngine.PlayerPrefs.SetString("ScreenAutoRotation", "true")
         screen.orientation = CS.UnityEngine.ScreenOrientation.AutoRotation
         screen.autorotateToLandscapeRight = true
@@ -108,7 +104,6 @@ function ViewEdit:onClickBtnSwitch()
         CS.UnityEngine.PlayerPrefs.SetString("ScreenAutoRotation", "false")
         screen.orientation = CS.UnityEngine.ScreenOrientation.LandscapeLeft
     end
-
 end
 
 ---------------------------------------

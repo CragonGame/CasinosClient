@@ -53,12 +53,12 @@ end
 
 ---------------------------------------
 function ItemMail:onClickOperate()
-    local ev = self:GetEv("EvUiRequestMailRead")
+    local ev = self.ViewMgr:GetEv("EvUiRequestMailRead")
     if (ev == nil) then
         ev = EvUiRequestMailRead:new(nil)
     end
     ev.mail_guid = self.MailClient.MailGuid
-    self:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
     local detail = self.ViewMgr:CreateView("MailDetail")
     detail:setMail(self.MailClient)
 end
