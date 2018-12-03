@@ -118,38 +118,38 @@ function ViewLobby:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityGetLobbyDeskList") then
             if (self.ControllerFriendOrBet.selectedIndex == 1) then
-                self:setDeskTopInfo(ev.list_desktop)
+                self:SetDesktopInfo(ev.list_desktop)
             end
         elseif (ev.EventName == "EvEntitySearchDesktopFollowFriend") then
             -- 一次只能看一个好友的所在桌，下方好友列表有选中态
             if (self.ControllerFriendOrBet.selectedIndex == 0) then
                 local temp = {}
                 table.insert(temp, ev.desktop_info)
-                self:setDeskTopInfo(temp)
+                self:SetDesktopInfo(temp)
             end
         elseif (ev.EventName == "EvEntityFriendOnlineStateChange") then
             -- 下方单个好友在线状态刷新，变在线不管，变离线删除
             if (self.ControllerFriendOrBet.selectedIndex == 0) then
                 local player_info = ev.player_info
                 if (player_info.PlayerInfoMore.OnlineState == PlayerOnlineState.Offline) then
-                    self:removePlayingFriend(player_info.PlayerInfoCommon.PlayerGuid)
+                    self:RemovePlayingFriend(player_info.PlayerInfoCommon.PlayerGuid)
                 end
             end
         elseif (ev.EventName == "EvEntityNotifyDeleteFriend") then
             -- 下方好友列表响应删好友消息
             if (self.ControllerFriendOrBet.selectedIndex == 0) then
                 local friend_etguid = ev.friend_etguid
-                self:removePlayingFriend(friend_etguid)
+                self:RemovePlayingFriend(friend_etguid)
             end
         elseif (ev.EventName == "EvEntityRefreshFriendList") then
             -- 下方好友列表响应好友列表刷新消息
             if (self.ControllerFriendOrBet.selectedIndex == 0) then
-                self:refreshPlayingFriend()
+                self:RefreshPlayingFriend()
             end
         elseif (ev.EventName == "EvEntityRefreshFriendInfo") then
             -- 刷新单个好友信息，比如头像昵称
             if (self.ControllerFriendOrBet.selectedIndex == 0) then
-                self:refreshPlayingFriend(ev.player_info)
+                self:RefreshPlayingFriend(ev.player_info)
             end
         elseif (ev.EventName == "EvEntitySearchPlayingFriend") then
             -- 初始创建正在桌内玩的好友列表
@@ -210,7 +210,7 @@ function ViewLobby:requestLobbyDesk()
 end
 
 ---------------------------------------
-function ViewLobby:setDeskTopInfo(list_desktop)
+function ViewLobby:SetDesktopInfo(list_desktop)
     ViewHelper:UiEndWaiting()
     self.GListDesk.visible = true
     self.GListDesk.scrollPane.posX = 0
@@ -224,7 +224,7 @@ function ViewLobby:setDeskTopInfo(list_desktop)
     end
     for i = 1, #list_desktop do
         local item = self.GListDesk:AddItemFromPool()
-        local desktop_info1 = self.ViewMgr:UnpackData(list_desktop[i].DesktopData)--CS.Casinos.LuaHelper.ProtobufDeserializeDesktopInfoTexas(self.CasinosContext.MemoryStream,list_desktop[i].DesktopData)
+        local desktop_info1 = self.ViewMgr:UnpackData(list_desktop[i].DesktopData)
         local desktop_info = DesktopInfoTexas:new(nil)
         desktop_info.desktop_etguid = desktop_info1[1]
         desktop_info.seat_num = desktop_info1[2]
@@ -264,7 +264,7 @@ function ViewLobby:setCurrentPlayingFriend(list_playerinfo)
 end
 
 ---------------------------------------
-function ViewLobby:removePlayingFriend(player_guid)
+function ViewLobby:RemovePlayingFriend(player_guid)
     local playing_friend = nil
     local playing_friend_key = nil
     for key, value in pairs(self.ListPlayingFriend) do
@@ -288,7 +288,7 @@ function ViewLobby:removePlayingFriend(player_guid)
 end
 
 ---------------------------------------
-function ViewLobby:refreshPlayingFriend(friend_info)
+function ViewLobby:RefreshPlayingFriend(friend_info)
     local player_playstate = friend_info.PlayerPlayState
     local friend_desktopguid = nil
     if (player_playstate == nil) then
@@ -297,9 +297,9 @@ function ViewLobby:refreshPlayingFriend(friend_info)
         friend_desktopguid = player_playstate.DesktopGuid
     end
     if (friend_desktopguid == nil or friend_desktopguid == "") then
-        self:removePlayingFriend(friend_info.PlayerInfoCommon.PlayerGuid)
+        self:RemovePlayingFriend(friend_info.PlayerInfoCommon.PlayerGuid)
     else
-        self:refreshPlayingFriend()
+        self:RefreshPlayingFriend()
     end
 end
 
@@ -349,7 +349,7 @@ end
 ---------------------------------------
 function ViewLobby:onClickBtnFriend()
     self.ControllerFriendOrBet:SetSelectedIndex(0)
-    self:refreshPlayingFriend()
+    self:RefreshPlayingFriend()
 end
 
 ---------------------------------------
@@ -392,8 +392,6 @@ function ViewLobby:initDesktopSearchFilter()
     local map_deskinfo = self.ViewMgr.TbDataMgr:GetMapData("DesktopInfoTexas")
     local select_item = nil
     if (CS.UnityEngine.PlayerPrefs.HasKey(self.LobbyFilterKey)) then
-        --local filter = CS.UnityEngine.PlayerPrefs.GetString(self.LobbyFilterKey)
-        --self.DeskSearchFilter = self.ViewMgr:UnpackData(filter)
         self.DeskSearchFilter = DesktopFilterTexas:new(nil)
         self.DeskSearchFilter.is_vip = false
         self.DeskSearchFilter.is_seat_full = false
@@ -539,7 +537,7 @@ function ViewLobby:rendererPlayingFriend(index, item)
 end
 
 ---------------------------------------
-function ViewLobby:refreshPlayingFriend()
+function ViewLobby:RefreshPlayingFriend()
     local ev = self.ViewMgr:GetEv("EvUiClickSearchFriendsDesk")
     if (ev == nil) then
         ev = EvUiClickSearchFriendsDesk:new(nil)

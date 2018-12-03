@@ -50,7 +50,7 @@ function ControllerBag:OnCreate()
     self:haveNewItem()
     local view_main = self.ViewMgr:GetView("Main")
     if view_main ~= nil then
-        view_main:setNewItem()
+        view_main:RefreshNewItem()
     end
 end
 

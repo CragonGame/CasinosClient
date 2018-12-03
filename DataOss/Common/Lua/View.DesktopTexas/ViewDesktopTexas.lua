@@ -599,16 +599,16 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:_haveNewChatOrMailRecord()
-    local com_mailTips_temp = self.ComUi:GetChild("ComMailTips")
-    if (com_mailTips_temp ~= nil) then
-        local com_mailTips = com_mailTips_temp.asCom
+    local com_mailtips_temp = self.ComUi:GetChild("ComMailTips")
+    if (com_mailtips_temp ~= nil) then
+        local com_mailtips = com_mailtips_temp.asCom
         if (self.ControllerIM:haveNewMail()) then
-            ViewHelper:SetGObjectVisible(true, com_mailTips)
-            local transition_newMsg = com_mailTips:GetTransition("TransitionNewMsg")
+            ViewHelper:SetGObjectVisible(true, com_mailtips)
+            local transition_newMsg = com_mailtips:GetTransition("TransitionNewMsg")
             transition_newMsg:Play()
             self.CasinosContext:Play("NewMessage", CS.Casinos._eSoundLayer.LayerReplace)
         else
-            ViewHelper:SetGObjectVisible(false, com_mailTips)
+            ViewHelper:SetGObjectVisible(false, com_mailtips)
         end
     end
     if (self.NewFriendChatCount > 0) then

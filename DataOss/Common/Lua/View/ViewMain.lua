@@ -96,10 +96,8 @@ function ViewMain:OnCreate()
     if (self.Context.Cfg.NeedHideClientUi) then
         com_more = self.ComUi:GetChild("ComMoreHideRank").asCom
         btn_match.visible = false
-        --btn_wa.visible = false
     else
         btn_match.visible = true
-        --btn_wa.visible = true
         com_more = self.ComUi:GetChild("ComMore").asCom
         local btn_ranking = com_more:GetChild("BtnRank").asButton
         btn_ranking.onClick:Add(
@@ -408,7 +406,9 @@ function ViewMain:OnCreate()
             id_card = self.ViewMgr:CreateView("IdCardCheck")
         end
     end
-    self:setHaveFeedback()
+    self:RefreshNewFeedback()
+    self:RefreshNewRecord()
+    self:RefreshNewItem()
 end
 
 ---------------------------------------
@@ -491,13 +491,13 @@ function ViewMain:OnHandleEv(ev)
                 end
             end
         elseif (ev.EventName == "EvEntityMailListInit") then
-            self:setNewRecord()
+            self:RefreshNewRecord()
         elseif (ev.EventName == "EvEntityMailAdd") then
-            self:setNewRecord()
+            self:RefreshNewRecord()
         elseif (ev.EventName == "EvEntityMailDelete") then
-            self:setNewRecord()
+            self:RefreshNewRecord()
         elseif (ev.EventName == "EvEntityMailUpdate") then
-            self:setNewRecord()
+            self:RefreshNewRecord()
         elseif (ev.EventName == "EvUiClickVip") then
             local player_info = self.ViewMgr:CreateView("PlayerInfo")
             player_info:setVIPInfo()
@@ -512,11 +512,11 @@ function ViewMain:OnHandleEv(ev)
             com_recharge_first.visible = false
             self.BtnRegister.position = com_recharge_first.position
         elseif (ev.EventName == "EvEntityReceiveFeedbackChat") then
-            self:setHaveFeedback()
+            self:RefreshNewFeedback()
         elseif (ev.EventName == "EvEntityReceiveFeedbackChats") then
-            self:setHaveFeedback()
+            self:RefreshNewFeedback()
         elseif (ev.EventName == "EvEntityBagAddItem") then
-            self:setNewItem()
+            self:RefreshNewItem()
         elseif (ev.EventName == "EvCtrlRewardRedPointStateChange") then
             if ev.RedPointType == 'Reward' then
                 self:RefreshRedPointRewardState()
@@ -585,7 +585,7 @@ end
 ---------------------------------------
 function ViewMain:setNewChatCount(chat_count)
     self.NewFriendChatCount = chat_count
-    self:setNewRecord()
+    self:RefreshNewRecord()
 end
 
 ---------------------------------------
@@ -628,13 +628,13 @@ function ViewMain:setLotteryTicketInfo(state, left_tm)
 end
 
 ---------------------------------------
-function ViewMain:setNewRecord()
-    local have_newMail = false
+function ViewMain:RefreshNewRecord()
+    local have_newmail = false
     if (self.ControllerIM:haveNewMail()) then
-        have_newMail = true
+        have_newmail = true
     end
 
-    if (have_newMail == false) then
+    if (have_newmail == false) then
         ViewHelper:SetGObjectVisible(false, self.ComMailTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComMailTips)
@@ -644,12 +644,12 @@ function ViewMain:setNewRecord()
         self.CasinosContext:Play(self.NewMsgSound, CS.Casinos._eSoundLayer.LayerReplace)
     end
 
-    local have_newMsg = false
+    local have_newmsg = false
     if (self.NewFriendChatCount > 0) then
-        have_newMsg = true
+        have_newmsg = true
     end
 
-    if (have_newMsg == false) then
+    if (have_newmsg == false) then
         ViewHelper:SetGObjectVisible(false, self.ComMsgTips)
     else
         ViewHelper:SetGObjectVisible(true, self.ComMsgTips)
@@ -673,7 +673,7 @@ function ViewMain:RefreshRedPointRewardState()
 end
 
 ---------------------------------------
-function ViewMain:setHaveFeedback()
+function ViewMain:RefreshNewFeedback()
     local have = self.ControllerIM.IMFeedback.HaveNewMsg
     if (have == false) then
         ViewHelper:SetGObjectVisible(false, self.ComFeedbackTips)
@@ -687,7 +687,7 @@ function ViewMain:setHaveFeedback()
 end
 
 ---------------------------------------
-function ViewMain:setNewItem()
+function ViewMain:RefreshNewItem()
     local have = self.ControllerBag.HaveNewItem
     if (have == false) then
         ViewHelper:SetGObjectVisible(false, self.ComBagTips)
@@ -916,7 +916,7 @@ function ViewMain:onClickBtnChat()
         ev = EvOpenBag:new(nil)
     end
     self.ViewMgr:SendEv(ev)
-    self:setNewItem()
+    self:RefreshNewItem()
 end
 
 ---------------------------------------
