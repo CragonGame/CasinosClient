@@ -15,7 +15,7 @@ function ItemReportPlayerOperate:new(o, com, view_playerprofile)
             end
     )
     o.GTextReportContent = com:GetChild("TextReportContent").asTextField
-    o.mReportPlayer = report
+    --o.mReportPlayer = report
     return o
 end
 

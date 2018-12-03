@@ -6,6 +6,7 @@ ViewFriend = class(ViewBase)
 ---------------------------------------
 function ViewFriend:ctor()
     self.Tween = nil
+    self.Context:AddUiPackage('PlayerProfile')
 end
 
 ---------------------------------------
@@ -459,12 +460,14 @@ function ViewShowFriendDetail:new(o, com_friend, is_friend_detail)
     o.ViewMgr = ViewMgr
     o.ControllerActor = o.ControllerMgr:GetController("Actor")
     o.GComReportPlayer = com_friend:GetChild("ComReportPlayer").asCom
+
     local list_report = o.GComReportPlayer:GetChild("ContentList").asList
-    for key, value in pairs(ReportPlayerType) do
+    for i, v in pairs(ReportPlayerType) do
         local com_report = list_report:AddItemFromPool().asCom
         local item = ItemReportPlayerOperate:new(nil, com_report, o)
-        item:setReportType(value, et_guid)
+        item:setReportType(v, nil)
     end
+
     return o
 end
 
