@@ -1,0 +1,43 @@
+-- 加载AssetBundle列表
+        --local table_ab = {
+        --    "About", "ActivityCenter", "ActivityPopup", "AgreeOrDisAddFriendRequest", "ApplySucceed",
+        --    "Bag", "Bank", "BlindTable",
+        --    "Chat", "ChatChooseTarget", "ChatExPression", "ChatFriend", "ChipOperate", "ChooseLan", "ClassicModel", "Club", "ClubHelp", "Common", "CreateDeskTop", "CreateMatch",
+        --    "DailyReward", "Desktop", "DesktopChatParent", "DesktopHints", "DesktopPlayerInfo", "DesktopPlayerOperate", "DesktopMenu",
+        --    "DesktopH", "DesktopHBetReward", "DesktopHTexas", "DesktopHBankPlayerList", "DesktopHCardType", "DesktopHHistory", "DesktopHRewardPot",
+        --    "DesktopHMenu", "DesktopHHelp", "DesktopHResult", "DesktopHSetCardType", "DesktopHTongSha", "DesktopHTongPei",
+        --    "Edit", "EditAddress", "EnterMatchNotify",
+        --    "Friend", "FriendOnLine", "Feedback",
+        --    "GetChipEffect", "GiftDetail", "GiftShop", "GoldTree",
+        --    "IdCardCheck", "InviteFriendPlay",
+        --    "JoinMatch",
+        --    "LanZh", "LanEn", "LanZhAndroid", "Loading", "LockChat", "Login", "LotteryTicket",
+        --    "Mail", "MailDetail", "Main", "MatchInfo", "MatchLobby", "MTTGameResult", "MTTProcess",
+        --    "Notice",
+        --    "PayType", "PlayerInfo", "PlayerProfile", "Pool",
+        --    "QuitOrBack",
+        --    "Ranking", "RechargeFirst", "ResetPwd", "Reward",
+        --    "Share", "ShareType", "ShootingText", "Shop", "SnowBallReward",
+        --    "TakePhoto",
+        --    "Wallet",
+        --}
+        --for i = 1, #(table_ab) do
+        --    local full_name = self.CasinosContext.PathMgr.DirAbUi .. string.lower(table_ab[i]) .. ".ab"
+        --    table_ab[i] = full_name
+        --end
+        --
+        --self.LuaMgr:LoadLocalBundleAsync(self, table_ab,
+        --        function(this, list_ab)
+        --            local ui_package = CS.FairyGUI.UIPackage
+        --            for i, v in pairs(list_ab) do
+        --                ui_package.AddPackage(v)
+        --            end
+        --
+        --            self.CasinosContext.NetMgr:InitByLua()
+        --
+        --            -- 销毁Launch相关资源，加载登录界面
+        --            self.Launch:Finish()
+        --            self.ControllerMgr:CreateController("UCenter", nil)
+        --            self.ControllerMgr:CreateController("Login", nil)
+        --        end
+        --)

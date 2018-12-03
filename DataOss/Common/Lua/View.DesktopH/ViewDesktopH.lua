@@ -80,7 +80,8 @@ function ViewDesktopH:ctor()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.TimerUpdate = nil
 
-    local list_ab = { "DesktopH", "DesktopHBetReward", "DesktopHTexas", "DesktopHBankPlayerList", "DesktopHCardType", "DesktopHHistory", "DesktopHRewardPot",
+    -- TODO，组件在包中放置不合理，DesktopH中的内容放到了Desktop中
+    local list_ab = { "Desktop", "DesktopMenu", "DesktopH", "DesktopHBetReward", "DesktopHTexas", "DesktopHBankPlayerList", "DesktopHCardType", "DesktopHHistory", "DesktopHRewardPot",
                       "DesktopHMenu", "DesktopHHelp", "DesktopHResult", "DesktopHSetCardType", "DesktopHTongSha", "DesktopHTongPei" }
     for i, v in pairs(list_ab) do
         self.Context:AddUiPackage(v)
