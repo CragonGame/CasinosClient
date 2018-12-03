@@ -404,12 +404,12 @@ function ViewShop:setListGoods(goodsType)
                             local have_i, item_ex = controller_bag:haveItem(tb_item.Id)
                             if (have_i) then
                                 --请求使用实物兑换券兑换实物
-                                local ev = self.ViewMgr:GetEv("EvUiRequestOperateItem")
+                                local ev = self:GetEv("EvUiRequestOperateItem")
                                 if (ev == nil) then
                                     ev = EvUiRequestOperateItem:new(nil)
                                 end
                                 ev.ItemObjId = item_ex.ItemData.item_objid
-                                self.ViewMgr:SendEv(ev)
+                                self:SendEv(ev)
                             else
                                 ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("NotEnoughVoucher"))
                             end
@@ -454,13 +454,13 @@ function ViewShop:setListGoods(goodsType)
                     local item = ItemUiShopGoods:new(nil, com, table.concat(discirbe), url, btn_title,
                             function()
                                 --请求使用积分兑换筹码
-                                local ev = self.ViewMgr:GetEv("EvUiBuyItem")
+                                local ev = self:GetEv("EvUiBuyItem")
                                 if (ev == nil) then
                                     ev = EvUiBuyItem:new(nil)
                                 end
                                 ev.item_id = tb_item.Id
                                 ev.to_etguid = self.ControllerActor.Guid
-                                self.ViewMgr:SendEv(ev)
+                                self:SendEv(ev)
                             end
                     )
                 elseif (tb_item.UnitType == "GoodsVoucher") then
@@ -478,13 +478,13 @@ function ViewShop:setListGoods(goodsType)
                     local item = ItemUiShopGoods:new(nil, com, table.concat(discirbe), url, btn_title,
                             function()
                                 --请求使用积分兑换实物兑换券
-                                local ev = self.ViewMgr:GetEv("EvUiBuyItem")
+                                local ev = self:GetEv("EvUiBuyItem")
                                 if (ev == nil) then
                                     ev = EvUiBuyItem:new(nil)
                                 end
                                 ev.item_id = tb_item.Id
                                 ev.to_etguid = self.ControllerActor.Guid
-                                self.ViewMgr:SendEv(ev)
+                                self:SendEv(ev)
                             end
                     )
                 end

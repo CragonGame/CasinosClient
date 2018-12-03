@@ -246,13 +246,13 @@ end
 
 ---------------------------------------
 function ViewDesktopHBankList:_onClickBeBankPlayer()
-    local ev = self.ViewMgr:GetEv("EvDesktopHClickBeBankPlayerBtn")
+    local ev = self:GetEv("EvDesktopHClickBeBankPlayerBtn")
     if (ev == nil) then
         ev = EvDesktopHClickBeBankPlayerBtn:new(nil)
     end
     ev.bebank_mingolds = self.BeBankMinTakeGolds
     ev.take_stack = self.CurrentTakeStack -- == 0 ? self.ViewDesktopH.ControllerActor.PropGoldAcc.get() : CurrentTakeStack
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 
     if (self.GSliderBankPlayerStack ~= nil) then
         self.GSliderBankPlayerStack.enabled = false

@@ -49,12 +49,12 @@ function ViewRanking:OnCreate()
     )
 
     self.GListRanking = self.ComUi:GetChild("RankingList").asList
-    local ev = self.ViewMgr:GetEv("EvUiGetRankingGold")
+    local ev = self:GetEv("EvUiGetRankingGold")
     if (ev == nil)
     then
         ev = EvUiGetRankingGold:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.RankingListType = RankingListType.Chip
     self.GListRanking.itemRenderer = function(a, b)
         self:RenderListItem(a, b)
@@ -146,44 +146,44 @@ end
 
 ---------------------------------------
 function ViewRanking:onClickBtnDiamond()
-    local ev = self.ViewMgr:GetEv("EvUiGetRankingDiamond")
+    local ev = self:GetEv("EvUiGetRankingDiamond")
     if (ev == nil) then
         ev = EvUiGetRankingDiamond:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.Controller:SetSelectedPage("Diamond")
     self.RankingListType = RankingListType.Gold
 end
 
 ---------------------------------------
 function ViewRanking:onClickBtnGold()
-    local ev = self.ViewMgr:GetEv("EvUiGetRankingGold")
+    local ev = self:GetEv("EvUiGetRankingGold")
     if (ev == nil) then
         ev = EvUiGetRankingGold:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.Controller:SetSelectedPage("Coin")
     self.RankingListType = RankingListType.Chip
 end
 
 ---------------------------------------
 function ViewRanking:onClickBtnWin()
-    local ev = self.ViewMgr:GetEv("EvUiGetRankingWinGold")
+    local ev = self:GetEv("EvUiGetRankingWinGold")
     if (ev == nil) then
         ev = EvUiGetRankingWinGold:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.Controller:SetSelectedPage("Win")
     self.RankingListType = RankingListType.WinGold
 end
 
 ---------------------------------------
 function ViewRanking:onClickBtnRed()
-    local ev = self.ViewMgr:GetEv("EvUiGetRankingRedEnvelopes")
+    local ev = self:GetEv("EvUiGetRankingRedEnvelopes")
     if (ev == nil) then
         ev = EvUiGetRankingRedEnvelopes:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.Controller:SetSelectedPage("Win")
     self.RankingListType = RankingListType.RedEnvelopes
 end

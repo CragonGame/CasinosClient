@@ -74,14 +74,14 @@ function ViewResetPwd:onClickBtnResetPwd()
     local text_acc = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputAcc").asTextInput
     local text_pwd = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputNewPwd").asTextInput
     local text_superpwd = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputSuperPwd").asTextInput
-    local ev = self.ViewMgr:GetEv("EvUiRequestResetPwd")
+    local ev = self:GetEv("EvUiRequestResetPwd")
     if (ev == nil) then
         ev = EvUiRequestResetPwd:new(nil)
     end
     ev.account_name = text_acc.text
     ev.super_pwd = text_superpwd.text
     ev.new_pwd = text_pwd.text
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 

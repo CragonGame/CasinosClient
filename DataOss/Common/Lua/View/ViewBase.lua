@@ -7,8 +7,15 @@ function ViewBase:ctor()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.Context = Context
     self.ModelMgr = ModelMgr
-    self.ViewMgr = ViewMgr
     self.ControllerMgr = ControllerMgr
+    self.ViewMgr = ViewMgr
+    self.EventSys = EventSys
+    self.MC = CommonMethodType
+    self.Json = self.Context.Json
+    self.LanMgr = self.Context.LanMgr
+    self.TbDataMgr = self.Context.TbDataMgr
+    self.Rpc = self.Context.Rpc
+
     self.ViewKey = nil
     self.GoUi = nil
     self.ComUi = nil
@@ -24,6 +31,32 @@ function ViewBase:OnDestroy()
 end
 
 function ViewBase:OnHandleEv(ev)
+end
+
+function ViewBase:BindEvListener(ev_name, ev_listener)
+    if (self.EventSys ~= nil) then
+        self.EventSys:BindEvListener(ev_name, ev_listener)
+    end
+end
+
+function ViewBase:UnbindEvListener(ev_listener)
+    if (self.EventSys ~= nil) then
+        self.EventSys:UnbindEvListener(ev_listener)
+    end
+end
+
+function ViewBase:GetEv(ev_name)
+    local ev = nil
+    if (self.EventSys ~= nil) then
+        ev = self.EventSys:GetEv(ev_name)
+    end
+    return ev
+end
+
+function ViewBase:SendEv(ev)
+    if (self.EventSys ~= nil) then
+        self.EventSys:SendEv(ev)
+    end
 end
 
 ---------------------------------------

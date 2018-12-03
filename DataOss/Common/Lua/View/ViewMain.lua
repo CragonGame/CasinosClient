@@ -387,13 +387,13 @@ function ViewMain:OnCreate()
     local btn_send = com_console:GetChild("BtnSend").asButton
     btn_send.onClick:Add(
             function()
-                local ev = self.ViewMgr:GetEv("EvConsoleCmd")
+                local ev = self:GetEv("EvConsoleCmd")
                 if (ev == nil) then
                     ev = EvConsoleCmd:new(nil)
                 end
                 local splitStr = LuaHelper:SplitStr(text_console.text, " ")
                 ev.ListParam = splitStr
-                self.ViewMgr:SendEv(ev)
+                self:SendEv(ev)
             end
     )
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
@@ -716,7 +716,7 @@ end
 
 ---------------------------------------
 function ViewMain:onClickComForestParty()
-    local ev = self.ViewMgr:GetEv("EvUiForestPartyEnterDesktop")
+    local ev = self:GetEv("EvUiForestPartyEnterDesktop")
     if (ev == nil) then
         ev = EvUiForestPartyEnterDesktop:new(nil)
     end
@@ -731,23 +731,23 @@ function ViewMain:onClickRecommendFriend(ev)
             item_friend_recommend = value
         end
     end
-    local ev = self.ViewMgr:GetEv("EvUiClickChooseFriend")
+    local ev = self:GetEv("EvUiClickChooseFriend")
     if (ev == nil) then
         ev = EvUiClickChooseFriend:new(nil)
     end
     ev.friend_info = item_friend_recommend:getFriendInfo()
     ev.is_choosechat = false
     ev.is_recommand = true
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewMain:onClickBtnLotteryTicket()
-    local ev = self.ViewMgr:GetEv("EvEntityRequestGetLotteryTicketData")
+    local ev = self:GetEv("EvEntityRequestGetLotteryTicketData")
     if (ev == nil) then
         ev = EvEntityRequestGetLotteryTicketData:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:CreateView("LotteryTicket")
 end
 
@@ -775,14 +775,14 @@ function ViewMain:onClickComPlayerInfoCurrentFriend()
         is_recommand = true
     end
 
-    local ev = self.ViewMgr:GetEv("EvUiClickChooseFriend")
+    local ev = self:GetEv("EvUiClickChooseFriend")
     if (ev == nil) then
         ev = EvUiClickChooseFriend:new(nil)
     end
     ev.friend_info = self.CurrentFriendItem
     ev.is_choosechat = false
     ev.is_recommand = is_recommand
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -792,11 +792,11 @@ end
 
 ---------------------------------------
 function ViewMain:onClickBtnShop()
-    local ev = self.ViewMgr:GetEv("EvUiClickShop")
+    local ev = self:GetEv("EvUiClickShop")
     if (ev == nil) then
         ev = EvUiClickShop:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -806,11 +806,11 @@ end
 
 ---------------------------------------
 function ViewMain:onClickBtnFriend()
-    local ev = self.ViewMgr:GetEv("EvUiClickFriend")
+    local ev = self:GetEv("EvUiClickFriend")
     if (ev == nil) then
         ev = EvUiClickFriend:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -834,12 +834,12 @@ function ViewMain:onClickBtnDesktopH()
     self:hideMote()
     self.GTransitionShow:PlayReverse(
             function()
-                local ev = self.ViewMgr:GetEv("EvViewClickDesktopH")
+                local ev = self:GetEv("EvViewClickDesktopH")
                 if (ev == nil) then
                     ev = EvUiClickDesktopHundred:new(nil)
                 end
                 ev.factory_name = "Texas"
-                self.ViewMgr:SendEv(ev)
+                self:SendEv(ev)
             end
     )
 end
@@ -911,21 +911,21 @@ end
 ---------------------------------------
 function ViewMain:onClickBtnChat()
     self.ViewMgr:CreateView("Bag")
-    local ev = self.ViewMgr:GetEv("EvOpenBag")
+    local ev = self:GetEv("EvOpenBag")
     if (ev == nil) then
         ev = EvOpenBag:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self:RefreshNewItem()
 end
 
 ---------------------------------------
 function ViewMain:onClickBtnChatFriend()
-    local ev = self.ViewMgr:GetEv("EvUiClickChatmsg")
+    local ev = self:GetEv("EvUiClickChatmsg")
     if (ev == nil) then
         ev = EvUiClickChatmsg:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

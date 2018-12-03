@@ -150,12 +150,12 @@ function ControllerIM:OnHandleEv(ev)
         local friend_etguid = ev.friend_etguid
         self.IMChat.MapUnReadChats[friend_etguid] = nil
         self.IMChat:requestChatReadConfirm(friend_etguid, ev.msg_id)
-        local ev = self.ViewMgr:GetEv("EvEntityUnreadChatsChanged")
+        local ev = self:GetEv("EvEntityUnreadChatsChanged")
         if (ev == nil) then
             ev = EvEntityUnreadChatsChanged:new(nil)
         end
         ev.friend_etguid = friend_etguid
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     elseif (ev.EventName == "EvUiSendFeedbackMsg") then
         self.IMFeedback:requestIMFeedbackSendMsg(ev.chat_msg)
     elseif (ev.EventName == "EvUiFeedbackConfirmRead") then
@@ -240,19 +240,19 @@ function ControllerIM:OnHandleEv(ev)
                         local is_addex = map_param[0]
                         local friend_guid = map_param[1]
                         if (is_addex) then
-                            local ev = self.ViewMgr:GetEv("EvUiAddFriend")
+                            local ev = self:GetEv("EvUiAddFriend")
                             if (ev == nil) then
                                 ev = EvUiAddFriend:new(nil)
                             end
                             ev.friend_etguid = friend_guid
-                            self.ViewMgr:SendEv(ev)
+                            self:SendEv(ev)
                         else
-                            local ev = self.ViewMgr:GetEv("EvUiDeleteFriend")
+                            local ev = self:GetEv("EvUiDeleteFriend")
                             if (ev == nil) then
                                 ev = EvUiDeleteFriend:new(nil)
                             end
                             ev.friend_etguid = friend_guid
-                            self.ViewMgr:SendEv(ev)
+                            self:SendEv(ev)
                         end
                     end
                 end

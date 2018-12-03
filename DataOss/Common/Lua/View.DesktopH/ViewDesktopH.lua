@@ -819,12 +819,12 @@ end
 ---------------------------------------
 function ViewDesktopH:Bet(bet_index)
     if (self.CanBet == true) then
-        local ev = self.ViewMgr:GetEv("EvDesktopHBet")
+        local ev = self:GetEv("EvDesktopHBet")
         if (ev == nil) then
             ev = EvDesktopHBet:new(nil)
         end
         ev.bet_betpot_index = bet_index
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
 end
 
@@ -1124,11 +1124,11 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnRepeat()
-    local ev = self.ViewMgr:GetEv("EvDesktopHRepeatBet")
+    local ev = self:GetEv("EvDesktopHRepeatBet")
     if (ev == nil) then
         ev = EvDesktopHRepeatBet:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.GBtnRepeat.enabled = false
 end
 
@@ -1139,11 +1139,11 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_onClickLotteryTicket()
-    local ev = self.ViewMgr:GetEv("EvEntityRequestGetLotteryTicketData")
+    local ev = self:GetEv("EvEntityRequestGetLotteryTicketData")
     if (ev == nil) then
         ev = EvEntityRequestGetLotteryTicketData:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 
     self.ViewMgr:CreateView("LotteryTicket")
 end
@@ -1151,12 +1151,12 @@ end
 ---------------------------------------
 function ViewDesktopH:_onClickGetBetReward()
     self.ViewMgr:CreateView("DesktopHBetReward")
-    local ev = self.ViewMgr:GetEv("EvDesktopHInitBetReward")
+    local ev = self:GetEv("EvDesktopHInitBetReward")
     if (ev == nil) then
         ev = EvDesktopHInitBetReward:new(nil)
     end
     ev.factory_name = self.FactoryName
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -1175,11 +1175,11 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnChatFriend()
-    local ev = self.ViewMgr:GetEv("EvUiClickChatmsg")
+    local ev = self:GetEv("EvUiClickChatmsg")
     if (ev == nil) then
         ev = EvUiClickChatmsg:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -1189,11 +1189,11 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnFriend()
-    local ev = self.ViewMgr:GetEv("EvUiClickFriend")
+    local ev = self:GetEv("EvUiClickFriend")
     if (ev == nil) then
         ev = EvUiClickFriend:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

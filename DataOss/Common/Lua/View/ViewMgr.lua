@@ -42,6 +42,7 @@ ViewMgr = {
 
 ---------------------------------------
 function ViewMgr:Create()
+    self.Context = Context
     self.ModelMgr = ModelMgr
     self.ControllerMgr = self.Context.ControllerMgr
     self.Rpc = self.Context.Rpc
@@ -82,13 +83,7 @@ function ViewMgr:CreateView(view_key)
         return nil
     end
 
-    local ab = self.ModelMgr:QueryAssetBundle(view_factory.PackageName)
-    if ab == nil then
-        local path_ab = self.CasinosContext.PathMgr.DirAbUi .. string.lower(view_factory.PackageName) .. ".ab"
-        ab = CS.UnityEngine.AssetBundle.LoadFromFile(path_ab)
-        CS.FairyGUI.UIPackage.AddPackage(ab)
-        self.ModelMgr:AddAssetBundle(view_factory.PackageName, ab)
-    end
+    self.Context:AddUiPackage(view_factory.PackageName)
 
     local view = self.TableViewSingle[view_key]
     if (view_factory.IsSingle and view ~= nil) then

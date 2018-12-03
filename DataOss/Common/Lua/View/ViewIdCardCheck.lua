@@ -46,13 +46,13 @@ end
 ---------------------------------------
 function ViewIdCardCheck:onClickBtnOK()
     self.ViewMgr:DestroyView(self)
-    local ev = self.ViewMgr:GetEv("EvCheckIdCard")
+    local ev = self:GetEv("EvCheckIdCard")
     if (ev == nil) then
         ev = EvCheckIdCard:new(nil)
     end
     ev.name = self.TextName.text
     ev.id_card = self.TextId.text
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

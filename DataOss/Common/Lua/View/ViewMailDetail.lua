@@ -119,7 +119,7 @@ function ViewMailDetail:onClickConfirm()
             ev = EvUiRequestMailRecvAttachment:new(nil)
         end
         ev.mail_guid = self.MailClient.MailGuid
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
     self:_onClickBtnClose()
 end

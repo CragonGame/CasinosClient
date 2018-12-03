@@ -66,11 +66,11 @@ end
 
 ---------------------------------------
 function ViewQuitOrBack:onClickBtnLogin()
-    local ev = self.ViewMgr:GetEv("EvUiClickLogin")
+    local ev = self:GetEv("EvUiClickLogin")
     if (ev == nil) then
         ev = EvUiClickLogin:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

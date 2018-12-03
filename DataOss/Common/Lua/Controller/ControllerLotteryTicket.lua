@@ -87,12 +87,12 @@ function ControllerLotteryTicket:OnHandleEv(ev)
     then
         CS.UnityEngine.PlayerPrefs.SetInt("CurrentTbBetOperateIdLottery", ev.tb_bet_operateid)
         self.CurrentTbBetOperateId = ev.tb_bet_operateid
-        local ev = self.ViewMgr:GetEv("EvEntityLotteryTicketCurrentBetOperateTypeChange")
+        local ev = self:GetEv("EvEntityLotteryTicketCurrentBetOperateTypeChange")
         if (ev == nil)
         then
             ev = EvEntityLotteryTicketCurrentBetOperateTypeChange:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     elseif (ev.EventName == "EvEntityRequestGetLotteryTicketData")
     then
         self.ControllerMgr.Rpc:RPC0(CommonMethodType.LotteryTicketSnapshot)
@@ -124,12 +124,12 @@ function ControllerLotteryTicket:_timerUpdate(tm)
     if (self.UpdateUiTm >= self.UpdateUiTime) then
         self.UpdateUiTm = 0
         local tm1 = math.ceil(self.BetStateTm)
-        local ev = self.ViewMgr:GetEv("EvEntityLotteryTicketUpdateTm")
+        local ev = self:GetEv("EvEntityLotteryTicketUpdateTm")
         if (ev == nil) then
             ev = EvEntityLotteryTicketUpdateTm:new(nil)
         end
         ev.tm = tm1
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
 end
 
@@ -163,13 +163,13 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyBet(tm)
         self.MapBetRepeatInfo[tostring(key)] = value
     end
     self.MapCurrentRoundBetInfo = {}
-    local ev = self.ViewMgr:GetEv("EvEntityLotteryTicketBetState")
+    local ev = self:GetEv("EvEntityLotteryTicketBetState")
     if (ev == nil)
     then
         ev = EvEntityLotteryTicketBetState:new(nil)
     end
     ev.map_betrepeatinfo = self.MapBetRepeatInfo
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -197,13 +197,13 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyGameEndDetail(gameend_deta
         table.remove(self.ListLotteryTicketWinlooseResult, l)
     end
 
-    local ev = self.ViewMgr:GetEv("EvEntityLotteryTicketGameEndState")
+    local ev = self:GetEv("EvEntityLotteryTicketGameEndState")
     if (ev == nil) then
         ev = EvEntityLotteryTicketGameEndState:new(nil)
     end
     ev.gameend_detail = g_d
     ev.me_wingold = me_win_gold
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.RewardPotGolds = g_d.RewardPotGold
 end
 
@@ -215,12 +215,12 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyGameEndSimple()
     if (self.LotteryTicketState == LotteryTicketStateEnum.Bet)
     then
         self.LotteryTicketState = LotteryTicketStateEnum.GameEnd
-        local ev = self.ViewMgr:GetEv("EvEntityLotteryTicketGameEndStateSimple")
+        local ev = self:GetEv("EvEntityLotteryTicketGameEndStateSimple")
         if (ev == nil)
         then
             ev = EvEntityLotteryTicketGameEndStateSimple:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
 end
 
@@ -231,14 +231,14 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyUpdateBetInfo(map_allbetpo
         self.MapCurrentRoundBetInfo[key] = value
         self.TotalBetGolds = self.TotalBetGolds + value
     end
-    local ev = self.ViewMgr:GetEv("EvEntityLotteryTicketUpdateBetPotBetInfo")
+    local ev = self:GetEv("EvEntityLotteryTicketUpdateBetPotBetInfo")
     if (ev == nil)
     then
         ev = EvEntityLotteryTicketUpdateBetPotBetInfo:new(nil)
     end
     ev.map_allbetpot = map_allbetpot
     ev.map_self_betinfo = map_self_betinfo
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -264,19 +264,19 @@ function ControllerLotteryTicket:OnLotteryTicketResponseSnapshot(lotteryticket_d
     else
         self.BetStateTm = 0
     end
-    local ev = self.ViewMgr:GetEv("EvEntityGetLotteryTicketDataSuccess")
+    local ev = self:GetEv("EvEntityGetLotteryTicketDataSuccess")
     if (ev == nil)
     then
         ev = EvEntityGetLotteryTicketDataSuccess:new(nil)
     end
     ev.lotteryticket_data = l_d
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerLotteryTicket:OnLotteryTicketResponseGetRewardPotPlayerInfo(list_playerinfo)
     ViewHelper:UiEndWaiting()
-    local ev = self.ViewMgr:GetEv("EvEntityLotteryTicketGetRewardPotInfo")
+    local ev = self:GetEv("EvEntityLotteryTicketGetRewardPotInfo")
     if (ev == nil)
     then
         ev = EvEntityLotteryTicketGetRewardPotInfo:new(nil)
@@ -292,7 +292,7 @@ function ControllerLotteryTicket:OnLotteryTicketResponseGetRewardPotPlayerInfo(l
     end
     ev.list_playerinfo = t_p
     ev.reward_totalgolds = self.RewardPotGolds
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -381,13 +381,13 @@ function ControllerLotteryTicket:updateSuitBetOperateId()
 
     if (LuaHelper:GetTableCount(map_changed_operate) > 0 or current_operate_change)
     then
-        local ev = self.ViewMgr:GetEv("EvEntityLotteryTicketBetOperateTypeChange")
+        local ev = self:GetEv("EvEntityLotteryTicketBetOperateTypeChange")
         if (ev == nil)
         then
             ev = EvEntityLotteryTicketBetOperateTypeChange:new(nil)
         end
         ev.map_changeoperate = map_changed_operate
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
 end
 
@@ -438,14 +438,14 @@ function ControllerLotteryTicket:RequestBet(bet_betpot_index)
     self.MapTotalBetGolds[bet_betpot_index] = already_bet_golds
     self.MapCurrentRoundBetInfo[bet_betpot_index] = already_bet_golds
 
-    local ev = self.ViewMgr:GetEv("EvEntityLotteryTicketBet")
+    local ev = self:GetEv("EvEntityLotteryTicketBet")
     if (ev == nil)
     then
         ev = EvEntityLotteryTicketBet:new(nil)
     end
     ev.already_bet_chips = already_bet_golds
     ev.bet_potindex = bet_betpot_index
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ControllerMgr.Rpc:RPC2(CommonMethodType.LotteryTicketRequestBet, bet_betpot_index, bet_golds)
 end
 

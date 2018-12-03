@@ -141,12 +141,12 @@ function ViewDesktopHSetCardType:_setCardType()
         return
     end
 
-    local ev = self.ViewMgr:GetEv("EvDesktopHundredChangeCardsType")
+    local ev = self:GetEv("EvDesktopHundredChangeCardsType")
     if (ev == nil) then
         ev = EvDesktopHundredChangeCardsType:new(nil)
     end
     ev.map_card_types = self.MapCardsType
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 
     self:_onClickBtnClose()
 end

@@ -185,12 +185,12 @@ end
 ---------------------------------------
 function ViewLobby:chooseCurrentPlayingFriend(player_info)
     self.CurrentPlayingFriendInfo = player_info
-    local ev = self.ViewMgr:GetEv("EvUiRequestGetCurrentFriendPlayDesk")
+    local ev = self:GetEv("EvUiRequestGetCurrentFriendPlayDesk")
     if (ev == nil) then
         ev = EvUiRequestGetCurrentFriendPlayDesk:new(nil)
     end
     ev.player_guid = self.CurrentPlayingFriendInfo.PlayerInfoCommon.PlayerGuid
-    self.ViewMgr:SendEv(ev);
+    self:SendEv(ev);
 end
 
 ---------------------------------------
@@ -201,12 +201,12 @@ function ViewLobby:requestLobbyDesk()
     local p_d = self.DeskSearchFilter:getData4Pack()
     local p_filter = self.ViewMgr:PackData(p_d)
     dektop_filter.FilterData = p_filter --CS.Casinos.LuaHelper.ProtobufSerializeDesktopFilterTexas(self.DeskSearchFilter)
-    local ev = self.ViewMgr:GetEv("EvUiClickSearchDesk")
+    local ev = self:GetEv("EvUiClickSearchDesk")
     if (ev == nil) then
         ev = EvUiClickSearchDesk:new(nil)
     end
     ev.desktop_searchfilter = dektop_filter
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -370,11 +370,11 @@ end
 
 ---------------------------------------
 function ViewLobby:onClickBtnReturn()
-    local ev = self.ViewMgr:GetEv("EvUiCreateMainUi")
+    local ev = self:GetEv("EvUiCreateMainUi")
     if (ev == nil) then
         ev = EvUiCreateMainUi:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -538,12 +538,12 @@ end
 
 ---------------------------------------
 function ViewLobby:RefreshPlayingFriend()
-    local ev = self.ViewMgr:GetEv("EvUiClickSearchFriendsDesk")
+    local ev = self:GetEv("EvUiClickSearchFriendsDesk")
     if (ev == nil) then
         ev = EvUiClickSearchFriendsDesk:new(nil)
     end
     ev.friend_state = _eFriendStateClient.TexasDesktopClassic
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

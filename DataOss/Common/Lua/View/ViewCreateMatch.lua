@@ -445,12 +445,12 @@ function ViewCreateMatch:onClickBtnCreate()
     create_info.SeatNum = self.TableNumType --座位数
     create_info.CreatePlayerGuid = self.ControllerMtt.Guid --创建赛事玩家Guid，公共赛事该Guid为空
     create_info.RaiseBlindTbInfo = blind_info --升盲表静态信息
-    local ev = self.ViewMgr:GetEv("EvUiRequestCreatePrivateMatch")
+    local ev = self:GetEv("EvUiRequestCreatePrivateMatch")
     if ev == nil then
         ev = EvUiRequestCreatePrivateMatch:new(nil)
     end
     ev.MatchCreateInfo = create_info
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

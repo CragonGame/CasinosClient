@@ -177,24 +177,24 @@ function ViewLockChatTexas:_onClickBtnAllSpectator()
     self.GLoadSpectatorLock1.icon = CS.FairyGUI.UIPackage.GetItemURL("LockChat", lock_name)
     self.GLoadSpectatorLock2.icon = CS.FairyGUI.UIPackage.GetItemURL("LockChat", lock_name)
 
-    local ev = self.ViewMgr:GetEv("EvUiRequestLockAllSpectator")
+    local ev = self:GetEv("EvUiRequestLockAllSpectator")
     if (ev == nil) then
         ev = EvUiRequestLockAllSpectator:new(nil)
     end
     ev.requestLock = self.GBtnLockAllStandPlayer.selected
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewLockChatTexas:_onClickBtnAllPlayer()
     CS.UnityEngine.PlayerPrefs.SetString(self.LockAllDesktopPlayerKey, tostring(self.GBtnLockAllSeatPlayer.selected))
 
-    local ev = self.ViewMgr:GetEv("EvUiRequestLockAllDesktopPlayer")
+    local ev = self:GetEv("EvUiRequestLockAllDesktopPlayer")
     if (ev == nil) then
         ev = EvUiRequestLockAllDesktopPlayer:new(nil)
     end
     ev.requestLock = self.GBtnLockAllSeatPlayer.selected
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 
     for k, v in pairs(self.MapPlayerChat) do
         local chat_lock = v

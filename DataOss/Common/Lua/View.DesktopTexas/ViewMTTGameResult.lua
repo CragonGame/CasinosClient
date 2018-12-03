@@ -145,12 +145,12 @@ end
 
 ---------------------------------------
 function ViewMTTGameResult:_onClickBtnLeave()
-    local ev = self.ViewMgr:GetEv("EvUiClickExitDesk")
+    local ev = self:GetEv("EvUiClickExitDesk")
     if (ev == nil)
     then
         ev = EvUiClickExitDesk:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self:_onClickClose()
 end
 
@@ -166,12 +166,12 @@ end
 
 ---------------------------------------
 function ViewMTTGameResult:_onClickBtnOB()
-    local ev = self.ViewMgr:GetEv("EvUiClickOB")
+    local ev = self:GetEv("EvUiClickOB")
     if (ev == nil)
     then
         ev = EvUiClickOB:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self:_onClickClose()
 end
 

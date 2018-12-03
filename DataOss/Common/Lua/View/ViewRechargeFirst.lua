@@ -48,11 +48,11 @@ end
 
 ---------------------------------------
 function ViewRechargeFirst:onClickCharge()
-    local ev = self.ViewMgr:GetEv("EvUiRequestFirstRecharge")
+    local ev = self:GetEv("EvUiRequestFirstRecharge")
     if (ev == nil) then
         ev = EvUiRequestFirstRecharge:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self:onClickBtnReturn()
 end
 

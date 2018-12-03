@@ -31,22 +31,22 @@ end
 
 ---------------------------------------
 function ViewShareType:onClickBtnWeChat()
-    local ev = self.ViewMgr:GetEv("EvClickShare")
+    local ev = self:GetEv("EvClickShare")
     if (ev == nil) then
         ev = EvClickShare:new(nil)
     end
     ev.ShareType = ShareType.WeChat
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewShareType:onClickBtnWeChatMoments()
-    local ev = self.ViewMgr:GetEv("EvClickShare")
+    local ev = self:GetEv("EvClickShare")
     if (ev == nil) then
         ev = EvClickShare:new(nil)
     end
     ev.ShareType = ShareType.WeChatMoments
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

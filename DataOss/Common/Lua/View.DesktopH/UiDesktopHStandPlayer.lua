@@ -187,9 +187,9 @@ end
 
 ---------------------------------------
 function UiDesktopHStandPlayer:_onClick()
-    local ev = self.ViewMgr:GetEv("EvDesktopHClickStandPlayerBtn")
+    local ev = self:GetEv("EvDesktopHClickStandPlayerBtn")
     if (ev == nil) then
         ev = EvDesktopHClickStandPlayerBtn:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end

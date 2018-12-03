@@ -93,33 +93,33 @@ function ViewDesktopMenuTexas:_onClickExit()
     self.TransitiOnCreate:PlayReverse(
             function()
                 self.ViewMgr:DestroyView(self)
-                local ev = self.ViewMgr:GetEv("EvUiClickExitDesk")
+                local ev = self:GetEv("EvUiClickExitDesk")
                 if (ev == nil) then
                     ev = EvUiClickExitDesk:new(nil)
                 end
-                self.ViewMgr:SendEv(ev)
+                self:SendEv(ev)
             end
     )
 end
 
 ---------------------------------------
 function ViewDesktopMenuTexas:_onClickInviteFriend()
-    local ev = self.ViewMgr:GetEv("EvUiClickInviteFriendPlay")
+    local ev = self:GetEv("EvUiClickInviteFriendPlay")
     if (ev == nil) then
         ev = EvUiClickInviteFriendPlay:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self:close()
 end
 
 ---------------------------------------
 function ViewDesktopMenuTexas:_onClickLeaveInMiddle()
     if (self.mIsOb == false and self.mIsWaitwhile == false) then
-        local ev = self.ViewMgr:GetEv("EvUiClickWaitWhile")
+        local ev = self:GetEv("EvUiClickWaitWhile")
         if (ev == nil) then
             ev = EvUiClickWaitWhile:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
     self:close()
 end
@@ -127,11 +127,11 @@ end
 ---------------------------------------
 function ViewDesktopMenuTexas:_onClickStandUp()
     if (self.mIsOb == false) then
-        local ev = self.ViewMgr:GetEv("EvUiClickOB")
+        local ev = self:GetEv("EvUiClickOB")
         if (ev == nil) then
             ev = EvUiClickOB:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
     self:close()
 end

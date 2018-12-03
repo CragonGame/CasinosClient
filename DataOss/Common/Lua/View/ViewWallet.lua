@@ -101,12 +101,12 @@ function ViewWallet:onClickBtnGetMoney()
         return
     end
 
-    local ev = self.ViewMgr:GetEv("EvUiRequestGetMoney")
+    local ev = self:GetEv("EvUiRequestGetMoney")
     if (ev == nil) then
         ev = EvUiRequestGetMoney:new(nil)
     end
     ev.GetMoneyNum = n
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

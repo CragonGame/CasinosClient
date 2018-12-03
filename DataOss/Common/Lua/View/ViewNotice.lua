@@ -147,7 +147,7 @@ function ViewNotice:onClickSend()
         ev = EvRequestSendMarquee:new(nil)
     end
     ev.msg = self.GTextInput.text
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.GTextInput.text = ""
     self.ViewMgr:DestroyView(self)
 end

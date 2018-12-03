@@ -183,14 +183,14 @@ function ViewChatFriend:onClickBtnPlayWithFriend()
     if (self.CurrentChatTarget == nil or (self.FriendDesktopGuid == nil or self.FriendDesktopGuid == "")) then
         return
     end
-    local ev = self.ViewMgr:GetEv("EvUiClickViewInDesk")
+    local ev = self:GetEv("EvUiClickViewInDesk")
     if (ev == nil) then
         ev = EvUiClickViewInDesk:new(nil)
     end
     ev.desk_etguid = self.FriendDesktopGuid
     ev.desktop_filter = self.ViewMgr:UnpackData(self.CurrentChatTarget.PlayerPlayState.UserData2)-- CS.Casinos.LuaHelper.JsonDeserializeDesktopFilter(self.CurrentChatTarget.PlayerPlayState.UserData2)
     ev.seat_index = 255
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -246,13 +246,13 @@ function ViewChatFriend:setCurrentChatMsg(chat_record)
     if (from_playeretguid == self.ControllerPlayer.Guid) then
         friend_guid = chat_record.recver_guid
     end
-    local ev = self.ViewMgr:GetEv("EvUiChatConfirmRead")
+    local ev = self:GetEv("EvUiChatConfirmRead")
     if (ev == nil) then
         ev = EvUiChatConfirmRead:new(nil)
     end
     ev.friend_etguid = friend_guid
     ev.msg_id = chat_record.msg_id
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     local child = nil
     if (self.MapChatTargets[friend_guid] ~= nil) then
         child = self.MapChatTargets[friend_guid]
@@ -287,13 +287,13 @@ function ViewChatFriend:setCurrentChatTarget(player_info, list_chatrecv, need_re
     end
     local last_chat_record = self.ControllerIM.IMChat:getLastChatMsgRecord(current_targetetguid)
     if (last_chat_record ~= nil) then
-        local ev = self.ViewMgr:GetEv("EvUiChatConfirmRead")
+        local ev = self:GetEv("EvUiChatConfirmRead")
         if (ev == nil) then
             ev = EvUiChatConfirmRead:new(nil)
         end
         ev.friend_etguid = current_targetetguid
         ev.msg_id = last_chat_record.msg_id
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
     if (list_chatrecv ~= nil) then
         self.GListChatContent.numItems = #list_chatrecv
@@ -310,11 +310,11 @@ end
 
 ---------------------------------------
 function ViewChatFriend:onClickBtnChooseChatTarget()
-    local ev = self.ViewMgr:GetEv("EvUiClickChooseFriendChatTarget")
+    local ev = self:GetEv("EvUiClickChooseFriendChatTarget")
     if (ev == nil) then
         ev = EvUiClickChooseFriendChatTarget:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -329,12 +329,12 @@ function ViewChatFriend:onClickBtnSendMsg()
     c_m.sender_guid = self.ControllerPlayer.Guid
     c_m.sender_nickname = self.ControllerActor.PropNickName:get()
     c_m.msg = self.GTextInputSendText.text
-    local ev = self.ViewMgr:GetEv("EvUiSendMsg")
+    local ev = self:GetEv("EvUiSendMsg")
     if (ev == nil) then
         ev = EvUiSendMsg:new(nil)
     end
     ev.chat_msg = c_m:getData4Pack()
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.GTextInputSendText.text = ""
 end
 
@@ -430,12 +430,12 @@ end
 
 ---------------------------------------
 function ViewChatFriend:currentChatTargetChange()
-    local ev = self.ViewMgr:GetEv("EvUiCurrentChatTargetChange")
+    local ev = self:GetEv("EvUiCurrentChatTargetChange")
     if (ev == nil) then
         ev = EvUiCurrentChatTargetChange:new(nil)
     end
     ev.current_chattarget = current_chattarget
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

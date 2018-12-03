@@ -99,7 +99,6 @@ function ControllerLogin:ctor(this, controller_data, controller_name)
     self.BindingWeChat = false
     self.AutoLogin = false
     self.AutoLoginTm = 0
-    self.ViewMgr = ViewMgr
     self.AccId = nil
     self.Acc = nil
     self.Pwd = nil
@@ -112,37 +111,37 @@ end
 
 ---------------------------------------
 function ControllerLogin:OnCreate()
+    self:BindEvListener("EvUiLogin", self)
+    self:BindEvListener("EvUiLoginSuccessEx", self)
+    self:BindEvListener("EvUiLoginClickBtnRegister", self)
+    self:BindEvListener("EvEntityPlayerInitDone", self)
+    self:BindEvListener("EvUiRequestResetPwd", self)
+    self:BindEvListener("EvUiChooseUCenter", self)
+    self:BindEvListener("EvUiChooseGateWay", self)
+    self:BindEvListener("EvUiRequestGetPhoneCode", self)
+    self:BindEvListener("EvCheckIdCard", self)
+    self:BindEvListener("EvBindWechat", self)
+    self:BindEvListener("EvUnbindWechat", self)
+
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
-    self.ViewMgr:BindEvListener("EvUiLogin", self)
-    self.ViewMgr:BindEvListener("EvUiLoginSuccessEx", self)
-    self.ViewMgr:BindEvListener("EvUiLoginClickBtnRegister", self)
-    self.ViewMgr:BindEvListener("EvEntityPlayerInitDone", self)
-    self.ViewMgr:BindEvListener("EvUiRequestResetPwd", self)
-    self.ViewMgr:BindEvListener("EvUiChooseUCenter", self)
-    self.ViewMgr:BindEvListener("EvUiChooseGateWay", self)
-    self.ViewMgr:BindEvListener("EvUiRequestGetPhoneCode", self)
-    self.ViewMgr:BindEvListener("EvCheckIdCard", self)
-    self.ViewMgr:BindEvListener("EvBindWechat", self)
-    self.ViewMgr:BindEvListener("EvUnbindWechat", self)
 
     self:_init(true)
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
 
-    local rpc = self.ControllerMgr.Rpc
     local m_c = CommonMethodType
-    rpc:RegRpcMethod0(m_c.AccountGatewayConnected, function()
+    self.Rpc:RegRpcMethod0(m_c.AccountGatewayConnected, function()
         self:OnAccountGatewayConnected()
     end)
-    rpc:RegRpcMethod1(m_c.AccountLoginAppResponse, function(login_response)
+    self.Rpc:RegRpcMethod1(m_c.AccountLoginAppResponse, function(login_response)
         self:OnAccountLoginAppResponse(login_response)
     end)
-    rpc:RegRpcMethod1(m_c.AccountEnterWorldResponse, function(enterworld_notify)
+    self.Rpc:RegRpcMethod1(m_c.AccountEnterWorldResponse, function(enterworld_notify)
         self:OnAccountEnterWorldResponse(enterworld_notify)
     end)
-    rpc:RegRpcMethod1(m_c.AccountLogoutNotify, function(protocal_result)
+    self.Rpc:RegRpcMethod1(m_c.AccountLogoutNotify, function(protocal_result)
         self:OnAccountLogoutNotify(protocal_result)
     end)
-    rpc:RegRpcMethod1(m_c.AccountUpdateDataFromUCenterNotify, function(result)
+    self.Rpc:RegRpcMethod1(m_c.AccountUpdateDataFromUCenterNotify, function(result)
         self:OnAccountUpdateDataFromUCenterNotify(result)
     end)
 end
@@ -153,7 +152,7 @@ function ControllerLogin:OnDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -400,7 +399,7 @@ end
 ---------------------------------------
 function ControllerLogin:OnUCenterRegister(http_statuscode, status, response, error)
     if (status == UCenterResponseStatus.Success) then
-        local info = self.ControllerMgr.LanMgr:getLanValue("RegisterSuccessful")
+        local info = self.LanMgr:getLanValue("RegisterSuccessful")
         ViewHelper:UiShowInfoSuccess(info)
 
         self.AccId = response.accountId
@@ -576,7 +575,7 @@ function ControllerLogin:OnUCenterWechatBind(http_statuscode, status, response, 
     if (status == UCenterResponseStatus.Success) then
         if (response == UCenterErrorCode.NoError) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BindWeChatSuccess"))
-            self.ControllerMgr.Rpc:RPC0(CommonMethodType.AccountUpdateDataFromUCenterRequest)
+            self.Rpc:RPC0(CommonMethodType.AccountUpdateDataFromUCenterRequest)
         end
     else
         ViewHelper:UiEndWaiting()
@@ -590,12 +589,12 @@ function ControllerLogin:OnUCenterWechatUnbind(http_statuscode, status, response
         --print("OnUCenterWechatUnbind")
         if (response == UCenterErrorCode.NoError) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("UnbindWeChatSuccess"))
-            local ev = self.ViewMgr:GetEv("EvUnBindWeChatSuccess")
+            local ev = self:GetEv("EvUnBindWeChatSuccess")
             if (ev == nil) then
                 ev = EvUnBindWeChatSuccess:new(nil)
             end
             ev.IsSuccess = true
-            self.ViewMgr:SendEv(ev)
+            self:SendEv(ev)
         end
     else
         ViewHelper:UiEndWaiting()
@@ -638,7 +637,7 @@ function ControllerLogin:OnAccountGatewayConnected()
     login_request.nick_name = nick_name
     login_request.channel_id = CS.Casinos.CasinosContext.Instance.Config.Channel
     login_request.platform = CS.Casinos.CasinosContext.Instance.Config.Platform
-    self.ControllerMgr.Rpc:RPC1(CommonMethodType.AccountLoginAppRequest, login_request:getData4Pack())
+    self.Rpc:RPC1(CommonMethodType.AccountLoginAppRequest, login_request:getData4Pack())
 end
 
 ---------------------------------------
@@ -660,7 +659,7 @@ function ControllerLogin:OnAccountLoginAppResponse(login_response)
             enterworld_request.invite_id = t_decode["PlayerId"]
         end
     end
-    self.ControllerMgr.Rpc:RPC1(CommonMethodType.AccountEnterWorldRequest, enterworld_request:getData4Pack())
+    self.Rpc:RPC1(CommonMethodType.AccountEnterWorldRequest, enterworld_request:getData4Pack())
 end
 
 ---------------------------------------
@@ -707,14 +706,14 @@ function ControllerLogin:OnAccountUpdateDataFromUCenterNotify(result)
         local we_chat1 = AttachWechatMp:new(nil)
         we_chat1:setData(result)
 
-        local ev = self.ViewMgr:GetEv("EvBindWeChatSuccess")
+        local ev = self:GetEv("EvBindWeChatSuccess")
         if (ev == nil) then
             ev = EvBindWeChatSuccess:new(nil)
         end
         ev.IsSuccess = true
         ev.WeChatOpenId = we_chat1.open_id
         ev.WeChatName = we_chat1.nick_name
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
 end
 

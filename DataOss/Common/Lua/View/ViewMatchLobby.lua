@@ -115,12 +115,12 @@ function ViewMatchLobby:OnHandleEv(ev)
             end
         end
     elseif (ev.EventName == "EvEntitySignUpSucceed") then
-        --[[local ev = self.ViewMgr:GetEv("EvUiRequestPublicMatchList")
+        --[[local ev = self:GetEv("EvUiRequestPublicMatchList")
         if(ev == nil)
         then
             ev = EvUiRequestPublicMatchList:new(nil)
         end
-        self.ViewMgr:SendEv(ev)]]
+        self:SendEv(ev)]]
         local match_guid = ev.MatchGuid
         for i = 1, #self.ListMatchItem do
             local temp = self.ListMatchItem[i]
@@ -153,16 +153,16 @@ end
 function ViewMatchLobby:_timerUpdate(tm)
     self.UpdatePlayerNumTime = self.UpdatePlayerNumTime + tm
     if (self.UpdatePlayerNumTime >= 30) then
-        local ev = self.ViewMgr:GetEv("EvUiRequestUpdatePublicMatchPlayerNum")
+        local ev = self:GetEv("EvUiRequestUpdatePublicMatchPlayerNum")
         if (ev == nil) then
             ev = EvUiRequestUpdatePublicMatchPlayerNum:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
-        local ev = self.ViewMgr:GetEv("EvUiRequestPublicMatchList")
+        self:SendEv(ev)
+        local ev = self:GetEv("EvUiRequestPublicMatchList")
         if (ev == nil) then
             ev = EvUiRequestPublicMatchList:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
         self.UpdatePlayerNumTime = 0
     end
     local dt_now = CS.System.DateTime.Now
@@ -180,11 +180,11 @@ end
 function ViewMatchLobby:onClickBtnReturn()
     self.ControllerMTT:Clear()
     self.ViewMgr:DestroyView(self)
-    local ev = self.ViewMgr:GetEv("EvUiCreateMainUi")
+    local ev = self:GetEv("EvUiCreateMainUi")
     if (ev == nil) then
         ev = EvUiCreateMainUi:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -208,11 +208,11 @@ function ViewMatchLobby:setCurrentMatchType(item_mathtype)
         self.CurrentItemMatchType = item_mathtype
         self.CurrentItemMatchType:BeSelectedOrNot(true)
     end
-    local ev = self.ViewMgr:GetEv("EvUiRequestPublicMatchList")
+    local ev = self:GetEv("EvUiRequestPublicMatchList")
     if (ev == nil) then
         ev = EvUiRequestPublicMatchList:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

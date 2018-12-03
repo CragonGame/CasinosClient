@@ -152,18 +152,18 @@ function ControllerDesktopTexas:s2cDesktopSnapshotNotify(snapshot_notify)
     local desktop_data = DesktopSnapshotData:new(nil)
     desktop_data:setData(desktop_data1)
     if (desktop_data1 == nil or desktop_data.DesktopData == nil) then
-        local ev = self.ViewMgr:GetEv("EvEntityPlayerEnterDesktopFailed")
+        local ev = self:GetEv("EvEntityPlayerEnterDesktopFailed")
         if (ev == nil) then
             ev = EvEntityPlayerEnterDesktopFailed:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("EnterTableFailed"))
     else
-        local ev = self.ViewMgr:GetEv("EvEntityPlayerEnterDesktop")
+        local ev = self:GetEv("EvEntityPlayerEnterDesktop")
         if (ev == nil) then
             ev = EvEntityPlayerEnterDesktop:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
         local is_init = snapshot_notify[2]
         if (is_init) then
             self:createDesktop(desktop_data.FactoryName)
@@ -381,12 +381,12 @@ function ControllerDesktopTexas:addDesktopMsg(sender_etguid, sender_name, sender
         table.remove(self.ListDesktopChat, 1)
     end
 
-    local ev = self.ViewMgr:GetEv("EvEntityRecvChatFromDesktop")
+    local ev = self:GetEv("EvEntityRecvChatFromDesktop")
     if (ev == nil) then
         ev = EvEntityRecvChatFromDesktop:new(nil)
     end
     ev.chat_info = chat_info
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

@@ -64,11 +64,11 @@ end
 function ViewClub:onUpdate(tm)
     self.UpdatePlayerNumTime = self.UpdatePlayerNumTime + tm
     if (self.UpdatePlayerNumTime >= 30) then
-        local ev = self.ViewMgr:GetEv("EvUiRequestUpdatePrivateMatchPlayerNum")
+        local ev = self:GetEv("EvUiRequestUpdatePrivateMatchPlayerNum")
         if (ev == nil) then
             ev = EvUiRequestUpdatePrivateMatchPlayerNum:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
         self.UpdatePlayerNumTime = 0
     end
 end
@@ -104,11 +104,11 @@ end
 ---------------------------------------
 function ViewClub:onClickBtnReturn()
     self.ViewMgr:DestroyView(self)
-    local ev = self.ViewMgr:GetEv("EvUiCreateMainUi")
+    local ev = self:GetEv("EvUiCreateMainUi")
     if (ev == nil) then
         ev = EvUiCreateMainUi:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -166,11 +166,11 @@ end
 
 ---------------------------------------
 function ViewClub:requesetPrivateMatchList()
-    local ev = self.ViewMgr:GetEv("EvUiRequestPrivateMatchList")
+    local ev = self:GetEv("EvUiRequestPrivateMatchList")
     if (ev == nil) then
         ev = EvUiRequestPrivateMatchList:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

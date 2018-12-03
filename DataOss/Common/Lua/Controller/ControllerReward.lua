@@ -68,13 +68,13 @@ function ControllerReward:RefreshRedPoint()
         self.RedPointRewardShow = true
     end
 
-    local ev = self.ViewMgr:GetEv("EvCtrlRewardRedPointStateChange")
+    local ev = self:GetEv("EvCtrlRewardRedPointStateChange")
     if (ev == nil) then
         ev = EvCtrlRewardRedPointStateChange:new(nil)
     end
     ev.RedPointType = 'Reward';
     ev.Show = self.RedPointRewardShow;
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

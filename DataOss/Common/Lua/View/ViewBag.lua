@@ -87,11 +87,11 @@ function ViewBag:rendererGiftNormal(index, item)
             local gift = self.ControllerBag.ListItemConsume[index + 1]
             if (gift.UnitLink.UnitType == "GoldPackage") then
                 -- 自动使用金币袋子
-                local ev = self.ViewMgr:GetEv("EvUiRequestUseProp")
+                local ev = self:GetEv("EvUiRequestUseProp")
                 if (ev == nil) then
                     ev = EvUiRequestUseProp:new(nil)
                 end
-                self.ViewMgr:SendEv(ev)
+                self:SendEv(ev)
             end
             local com = CS.Casinos.LuaHelper.GObjectCastToGCom(item)
             local item_gift = self.ViewPool:getItemGift(com)
@@ -134,14 +134,14 @@ end
 
 ---------------------------------------
 function ViewBag:onClickBtnShopMore()
-    local ev = self.ViewMgr:GetEv("EvCreateGiftShop")
+    local ev = self:GetEv("EvCreateGiftShop")
     if (ev == nil) then
         ev = EvCreateGiftShop:new(nil)
     end
     ev.is_tmp_gift = false
     ev.not_indesktop = true
     ev.to_player_etguid = self.ControllerPlayer.Guid
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

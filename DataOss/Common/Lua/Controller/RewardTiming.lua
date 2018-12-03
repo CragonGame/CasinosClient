@@ -27,12 +27,12 @@ function RewardTiming:SetTimingRewardData(reward_data)
         self.CanGetReward = false
     end
 
-    local ev = self.ViewMgr:GetEv("EvCtrlRewardRefreshGetTimingRewardState")
+    local ev = self.ControllerReward:GetEv("EvCtrlRewardRefreshGetTimingRewardState")
     if (ev == nil) then
         ev = EvCtrlRewardRefreshGetTimingRewardState:new(nil)
     end
     ev.can_getreward = self.CanGetReward
-    self.ViewMgr:SendEv(ev)
+    self.ControllerReward:SendEv(ev)
 
     self.ControllerReward:RefreshRedPoint()-- 刷新小红点状态
 end

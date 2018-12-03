@@ -64,11 +64,11 @@ function UiRewardOnline:RefreshCanGetOnlineRewardState(can_get_reward)
 end
 
 function UiRewardOnline:_onClickBtnOnlineReward()
-    local ev = self.ViewMgr:GetEv("EvViewRewardClickBtnOnlineReward")
+    local ev = self.ViewReward:GetEv("EvViewRewardClickBtnOnlineReward")
     if (ev == nil) then
         ev = EvViewRewardClickBtnOnlineReward:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self.ViewReward:SendEv(ev)
 end
 
 ---------------------------------------
@@ -143,11 +143,11 @@ end
 
 function UiRewardTiming:_onClickBtnTimingReward()
     if self.CanGetTimingReward then
-        local ev = self.ViewMgr:GetEv("EvViewRewardClickBtnTimingReward")
+        local ev = self.ViewReward:GetEv("EvViewRewardClickBtnTimingReward")
         if (ev == nil) then
             ev = EvViewRewardClickBtnTimingReward:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self.ViewReward:SendEv(ev)
     end
 end
 

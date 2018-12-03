@@ -138,12 +138,12 @@ end
 
 ---------------------------------------
 function ViewEnterMatchNotify:onClickBtnEnterNow()
-    local ev = self.ViewMgr:GetEv("EvUiRequestEnterMatch")
+    local ev = self:GetEv("EvUiRequestEnterMatch")
     if (ev == nil) then
         ev = EvUiRequestEnterMatch:new(nil)
     end
     ev.MatchGuid = self.MatchGuid
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 

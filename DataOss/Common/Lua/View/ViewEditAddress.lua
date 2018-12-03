@@ -37,11 +37,11 @@ function ViewEditAddress:OnCreate()
     self.GInputTextWeChatNum = self.ComUi:GetChild("TextWeChatNum").asTextField
     self.GInputTextAddress = self.ComUi:GetChild("TextAddress").asTextField
     self.GInputTextEmail = self.ComUi:GetChild("TextEmail").asTextField
-    local ev = self.ViewMgr:GetEv("EvUiRequestGetReceiverAddress")
+    local ev = self:GetEv("EvUiRequestGetReceiverAddress")
     if (ev == nil) then
         ev = EvUiRequestGetReceiverAddress:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -85,12 +85,12 @@ function ViewEditAddress:onClickBtnSave()
         address.Weixin = self.GInputTextWeChatNum.text
         address.Address = self.GInputTextAddress.text
         address.EMail = self.GInputTextEmail.text
-        local ev = self.ViewMgr:GetEv("EvUiRequestEditReceiverAddress")
+        local ev = self:GetEv("EvUiRequestEditReceiverAddress")
         if (ev == nil) then
             ev = EvUiRequestEditReceiverAddress:new(nil)
         end
         ev.Address = address
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
         self.ViewMgr:DestroyView(self)
     end
 end

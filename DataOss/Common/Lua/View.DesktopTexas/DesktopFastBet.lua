@@ -61,10 +61,10 @@ end
 
 ---------------------------------------
 function DesktopFastBet:_onClickFastBet()
-    local ev = self.ViewMgr:GetEv("EvUiClickFastBet")
+    local ev = self:GetEv("EvUiClickFastBet")
     if (ev == nil) then
         ev = EvUiClickFastBet:new(nil)
     end
     ev.bet_value = self.FastInfo.NeedBetValue
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end

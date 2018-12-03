@@ -37,11 +37,11 @@ function ViewActivityPopup:OnDestroy()
         self.Tween:Kill(false)
         self.Tween = nil
     end
-    local ev = self.ViewMgr:GetEv("EvUiCloseActivityPopupBox")
+    local ev = self:GetEv("EvUiCloseActivityPopupBox")
     if (ev == nil) then
         ev = EvUiCloseActivityPopupBox:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

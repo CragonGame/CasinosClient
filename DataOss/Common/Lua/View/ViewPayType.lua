@@ -85,7 +85,7 @@ end
 
 ---------------------------------------
 function ViewPayType:buyItem(pay_type)
-    local ev = self.ViewMgr:GetEv("EvUiRequestBuyItem")
+    local ev = self:GetEv("EvUiRequestBuyItem")
     if (ev == nil) then
         ev = EvUiRequestBuyItem:new(nil)
     end
@@ -93,7 +93,7 @@ function ViewPayType:buyItem(pay_type)
     ev.item_tbid = self.BuyItemTbId
     ev.is_firstrecharge = self.IsFirstRecharge
     ev.pay_type = pay_type
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 

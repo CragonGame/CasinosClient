@@ -430,21 +430,21 @@ end
 
 ---------------------------------------
 function ViewLotteryTicket:_onClickRepeatBet()
-    local ev = self.ViewMgr:GetEv("EvLotteryTicketRepeatBet")
+    local ev = self:GetEv("EvLotteryTicketRepeatBet")
     if (ev == nil) then
         ev = EvLotteryTicketRepeatBet:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.GBtnRepeatBet.enabled = false
 end
 
 ---------------------------------------
 function ViewLotteryTicket:_onClickBtnClose()
-    local ev = self.ViewMgr:GetEv("EvUiClickLeaveLotteryTicket")
+    local ev = self:GetEv("EvUiClickLeaveLotteryTicket")
     if (ev == nil) then
         ev = EvUiClickLeaveLotteryTicket:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 

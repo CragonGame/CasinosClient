@@ -31,8 +31,7 @@ function ControllerUCenter:RequestGetPhoneVerificationCode(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -44,8 +43,7 @@ function ControllerUCenter:RequestRegister(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -57,8 +55,7 @@ function ControllerUCenter:RequestLogin(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -70,8 +67,7 @@ function ControllerUCenter:RequestResetPasswordWithPhone(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -83,8 +79,7 @@ function ControllerUCenter:RequestWechatAutoLogin(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -96,8 +91,7 @@ function ControllerUCenter:RequestWechatLogin(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -109,8 +103,7 @@ function ControllerUCenter:RequestWechatBind(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -122,8 +115,7 @@ function ControllerUCenter:RequestWechatUnbind(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -135,8 +127,7 @@ function ControllerUCenter:RequestGuestAccess(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -148,8 +139,7 @@ function ControllerUCenter:RequestGuestConvert(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -161,8 +151,7 @@ function ControllerUCenter:RequestResetPassword(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -177,8 +166,7 @@ function ControllerUCenter:RequestUploadProfileImage(app_id, account_id, bytes, 
     self.MbHelper:PostUrlWithFormData(http_url, www_form,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -190,8 +178,7 @@ function ControllerUCenter:RequestPayCreateCharge(payment_info, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------
@@ -203,8 +190,7 @@ function ControllerUCenter:RequestCheckCardAndName(request, handler)
     self.MbHelper:PostUrl(http_url, param,
             function(http_statuscode, response_data)
                 self:_onResponse(http_statuscode, response_data, handler)
-            end
-    )
+            end)
 end
 
 ---------------------------------------

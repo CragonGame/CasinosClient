@@ -390,6 +390,9 @@ function Context:_nextLaunchStep()
         self.CasinosContext.NetMgr:InitByLua()
 
         -- 销毁Launch相关资源，加载登录界面
+        self:AddUiPackage('LanZh')
+        self:AddUiPackage('LanEn')
+        self:AddUiPackage('LanZhAndroid')
         self.Launch:Finish()
         self.ControllerMgr:CreateController("UCenter", nil)
         self.ControllerMgr:CreateController("Login", nil)
@@ -922,14 +925,11 @@ end
 ---------------------------------------
 -- FairyGUI.AddPackage
 function Context:AddUiPackage(ab_name)
-    if (self.CasinosContext.PathMgr.DirLaunchAbType == CS.Casinos.DirType.Raw) then
-        local path_ab = self.CasinosContext.PathMgr.DirLaunchAb .. string.lower(name) .. ".ab"
-        local ab = CS.UnityEngine.AssetBundle.LoadFromFile(path_ab)
-        local ui_package = CS.FairyGUI.UIPackage.AddPackage(ab)
-        return ui_package
-    else
-        local path_ab = self.CasinosContext.PathMgr.DirLaunchAb .. string.lower(name) .. "/" .. string.lower(name)
-        local ui_package = CS.FairyGUI.UIPackage.AddPackage(path_ab)
-        return ui_package
+    local ab = self.ModelMgr:QueryAssetBundle(ab_name)
+    if ab == nil then
+        local path_ab = self.CasinosContext.PathMgr.DirAbUi .. string.lower(ab_name) .. ".ab"
+        ab = CS.UnityEngine.AssetBundle.LoadFromFile(path_ab)
+        CS.FairyGUI.UIPackage.AddPackage(ab)
+        self.ModelMgr:AddAssetBundle(ab_name, ab)
     end
 end

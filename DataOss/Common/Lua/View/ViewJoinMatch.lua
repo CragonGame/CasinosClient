@@ -69,12 +69,12 @@ end
 function ViewJoinMatch:onClickBtnNum(num)
     self.Password = self.Password .. num
     if (#self.Password == 6) then
-        local ev = self.ViewMgr:GetEv("EvUiRequestGetMatchDetailedInfoByInvitation")
+        local ev = self:GetEv("EvUiRequestGetMatchDetailedInfoByInvitation")
         if (ev == nil) then
             ev = EvUiRequestGetMatchDetailedInfoByInvitation:new(nil)
         end
         ev.InvitationCode = tonumber(self.Password)
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
         self.Password = ""
     end
     self:onPassWordChanged()

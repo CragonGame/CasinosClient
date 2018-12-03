@@ -308,22 +308,22 @@ end
 
 ---------------------------------------
 function ViewLogin:onClickUCenter()
-    local ev = self.ViewMgr:GetEv("EvUiChooseUCenter")
+    local ev = self:GetEv("EvUiChooseUCenter")
     if (ev == nil) then
         ev = EvUiChooseUCenter:new(nil)
     end
     ev.ucenter = self.ComboChooseUCenter.text
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewLogin:onClickGateway()
-    local ev = self.ViewMgr:GetEv("EvUiChooseGateWay")
+    local ev = self:GetEv("EvUiChooseGateWay")
     if (ev == nil) then
         ev = EvUiChooseGateWay:new(nil)
     end
     ev.gateway = self.ComboChooseGateWay.text
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -408,7 +408,7 @@ function ViewLogin:_onClickBtnLogin()
     if (self:_hasAgreeAgreement() == false) then
         return
     end
-    local ev = self.ViewMgr:GetEv("EvUiLogin")
+    local ev = self:GetEv("EvUiLogin")
     if (ev == nil) then
         ev = EvUiLogin:new(nil)
     end
@@ -417,7 +417,7 @@ function ViewLogin:_onClickBtnLogin()
     ev.pwd = self.GTextInputPwdLogin.text
     ev.remeber_pwd = true
     ev.phone = self.GTextInputAccLogin.text
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -431,7 +431,7 @@ function ViewLogin:_onClickBtnGuestAccess()
         return
     end
 
-    local ev = self.ViewMgr:GetEv("EvUiLogin")
+    local ev = self:GetEv("EvUiLogin")
     if (ev == nil) then
         ev = EvUiLogin:new(nil)
     end
@@ -441,7 +441,7 @@ function ViewLogin:_onClickBtnGuestAccess()
     ev.remeber_pwd = true
     ev.phone = ""
 
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -454,7 +454,7 @@ function ViewLogin:_onClickWeiXin()
         return
     end
 
-    local ev = self.ViewMgr:GetEv("EvUiLogin")
+    local ev = self:GetEv("EvUiLogin")
     if (ev == nil) then
         ev = EvUiLogin:new(nil)
     end
@@ -464,7 +464,7 @@ function ViewLogin:_onClickWeiXin()
     ev.remeber_pwd = true
     ev.phone = ""
 
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

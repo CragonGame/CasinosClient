@@ -51,11 +51,11 @@ function UiDesktopHBetRewardItem:_onClickBetReward()
                 UiChipShowHelper:GetGoldShowStr(tb_reward.BetValue, self.ViewMgr.LanMgr.LanBase),
                 UiChipShowHelper:GetGoldShowStr(reward_gold, self.ViewMgr.LanMgr.LanBase))
 
-        local ev = self.ViewMgr:GetEv("EvDesktopHGetBetReward")
+        local ev = self:GetEv("EvDesktopHGetBetReward")
         if (ev == nil) then
             ev = EvDesktopHGetBetReward:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
 
     ViewHelper:UiShowInfoSuccess(tips)
@@ -178,12 +178,12 @@ end
 
 ---------------------------------------
 function ViewDesktopHBetReward:_onClickGetAllBetReward()
-    local ev = self.ViewMgr:GetEv("EvDesktopHGetBetReward")
+    local ev = self:GetEv("EvDesktopHGetBetReward")
     if (ev == nil) then
         ev = EvDesktopHGetBetReward:new(nil)
     end
     ev.factory_name = self.ViewDesktopH.FactoryName
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.GBtnGetAllReward.enabled = false
 end
 

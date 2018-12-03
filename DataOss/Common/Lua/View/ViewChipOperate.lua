@@ -218,13 +218,13 @@ function ViewChipOperate:onConfirmBet()
         end
         self.BetGold = value
         if (self.Param ~= nil and self.Param ~= "") then
-            local ev = self.ViewMgr:GetEv("EvUiClickConfirmChipTransaction")
+            local ev = self:GetEv("EvUiClickConfirmChipTransaction")
             if (ev == nil) then
                 ev = EvUiClickConfirmChipTransaction:new(nil)
             end
             ev.send_target_etguid = self.Param
             ev.chip = self.BetGold
-            self.ViewMgr:SendEv(ev)
+            self:SendEv(ev)
         end
     end
 

@@ -121,12 +121,12 @@ end
 
 ---------------------------------------
 function ViewPrivateMatchInfo:Init(match_guid, is_selfJoin)
-    local ev = self.ViewMgr:GetEv("EvUiRequestMatchDetailedInfo")
+    local ev = self:GetEv("EvUiRequestMatchDetailedInfo")
     if (ev == nil) then
         ev = EvUiRequestMatchDetailedInfo:new(nil)
     end
     ev.MatchGuid = match_guid
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.MatchGuid = match_guid
     self.IsSelfJoin = is_selfJoin
 end
@@ -239,7 +239,7 @@ end
 
 ---------------------------------------
 function ViewPrivateMatchInfo:onClickBtnDisMiss()
-    local ev = self.ViewMgr:GetEv("EvUiRequesetDisMissMatch")
+    local ev = self:GetEv("EvUiRequesetDisMissMatch")
     if (ev == nil) then
         ev = EvUiRequesetDisMissMatch:new(nil)
     end
@@ -253,34 +253,34 @@ end
 ---------------------------------------
 function ViewPrivateMatchInfo:onClickBtnSignUp()
     if (self.BtnSignupOption == BtnSignupOption.Signup) then
-        local ev = self.ViewMgr:GetEv("EvUiRequestSignupMatch")
+        local ev = self:GetEv("EvUiRequestSignupMatch")
         if (ev == nil) then
             ev = EvUiRequestSignupMatch:new(nil)
         end
         ev.MatchGuid = self.MatchGuid
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     elseif (self.BtnSignupOption == BtnSignupOption.CancelSignup) then
         local msg_box = self.ViewMgr:CreateView("MsgBox")
         msg_box:useTwoBtn("", "确定取消当前赛事报名？",
                 function()
-                    local ev = self.ViewMgr:GetEv("EvUiRequestCancelSignupMatch")
+                    local ev = self:GetEv("EvUiRequestCancelSignupMatch")
                     if (ev == nil) then
                         ev = EvUiRequestCancelSignupMatch:new(nil)
                     end
                     ev.MatchGuid = self.MatchGuid
-                    self.ViewMgr:SendEv(ev)
+                    self:SendEv(ev)
                 end,
                 function()
                     self.ViewMgr:DestroyView(msg_box)
                 end
         )
     elseif (self.BtnSignupOption == BtnSignupOption.Enter) then
-        local ev = self.ViewMgr:GetEv("EvUiRequestEnterMatch")
+        local ev = self:GetEv("EvUiRequestEnterMatch")
         if (ev == nil) then
             ev = EvUiRequestEnterMatch:new(nil)
         end
         ev.MatchGuid = self.MatchGuid
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
 end
 

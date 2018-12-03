@@ -80,11 +80,11 @@ end
 
 ---------------------------------------
 function ViewFeedback:setCurrentChatMsg(chat_record)
-    local ev = self.ViewMgr:GetEv("EvUiFeedbackConfirmRead")
+    local ev = self:GetEv("EvUiFeedbackConfirmRead")
     if (ev == nil) then
         ev = EvUiFeedbackConfirmRead:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self:showRecord()
 end
 
@@ -100,12 +100,12 @@ function ViewFeedback:onClickBtnSendMsg()
     c_m.sender_guid = self.ControllerPlayer.Guid
     c_m.sender_nickname = self.ControllerActor.PropNickName:get()
     c_m.msg = self.GTextInputSendText.text
-    local ev = self.ViewMgr:GetEv("EvUiSendFeedbackMsg")
+    local ev = self:GetEv("EvUiSendFeedbackMsg")
     if (ev == nil) then
         ev = EvUiSendFeedbackMsg:new(nil)
     end
     ev.chat_msg = c_m:getData4Pack()
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.GTextInputSendText.text = ""
 end
 

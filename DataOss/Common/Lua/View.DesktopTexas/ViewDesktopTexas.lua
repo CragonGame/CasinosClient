@@ -179,11 +179,11 @@ function ViewDesktopTexas:OnCreate()
     self.ListAllPlayer = {}
     self.ComUi.onClick:Add(
             function()
-                local ev = self.ViewMgr:GetEv("EvUiClickDesktop")
+                local ev = self:GetEv("EvUiClickDesktop")
                 if (ev == nil) then
                     ev = EvUiClickDesktop:new(nil)
                 end
-                self.ViewMgr:SendEv(ev)
+                self:SendEv(ev)
             end
     )
     self.ComWaitingBegine = self.ComUi:GetChild("ComWaitingBegine").asCom
@@ -489,22 +489,22 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:commonCardShowEnd()
-    local ev = self.ViewMgr:GetEv("EvCommonCardShowEnd")
+    local ev = self:GetEv("EvCommonCardShowEnd")
     if (ev == nil) then
         ev = EvCommonCardShowEnd:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 
     self:showCommonCardType(false)
 end
 
 ---------------------------------------
 function ViewDesktopTexas:commonCardDealEnd()
-    local ev = self.ViewMgr:GetEv("EvCommonCardDealEnd")
+    local ev = self:GetEv("EvCommonCardDealEnd")
     if (ev == nil) then
         ev = EvCommonCardDealEnd:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -635,29 +635,29 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickFriend()
-    local ev = self.ViewMgr:GetEv("EvUiClickFriend")
+    local ev = self:GetEv("EvUiClickFriend")
     if (ev == nil) then
         ev = EvUiClickFriend:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickLockChat()
-    local ev = self.ViewMgr:GetEv("EvUiDesktopClickLockChat")
+    local ev = self:GetEv("EvUiDesktopClickLockChat")
     if (ev == nil) then
         ev = EvUiDesktopClickLockChat:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickFriendChat()
-    local ev = self.ViewMgr:GetEv("EvUiClickChatmsg")
+    local ev = self:GetEv("EvUiClickChatmsg")
     if (ev == nil) then
         ev = EvUiClickChatmsg:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -675,18 +675,18 @@ function ViewDesktopTexas:_onClickChair(context)
                 if (self.Desktop.SeatNum == 5) then
                     index = math.ceil(index / 2)
                 end
-                local ev = self.ViewMgr:GetEv("EvUiClickSeat")
+                local ev = self:GetEv("EvUiClickSeat")
                 if (ev == nil) then
                     ev = EvUiClickSeat:new(nil)
                 end
                 ev.seat_index = index
-                self.ViewMgr:SendEv(ev)
+                self:SendEv(ev)
             else
-                local ev = self.ViewMgr:GetEv("EvUiClickInviteFriendPlay")
+                local ev = self:GetEv("EvUiClickInviteFriendPlay")
                 if (ev == nil) then
                     ev = EvUiClickInviteFriendPlay:new(nil)
                 end
-                self.ViewMgr:SendEv(ev)
+                self:SendEv(ev)
             end
         end
     end
@@ -788,11 +788,11 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:_onClickBtnLotteryTicket()
-    local ev = self.ViewMgr:GetEv("EvEntityRequestGetLotteryTicketData")
+    local ev = self:GetEv("EvEntityRequestGetLotteryTicketData")
     if (ev == nil) then
         ev = EvEntityRequestGetLotteryTicketData:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 
     self.ViewMgr:CreateView("LotteryTicket")
 end

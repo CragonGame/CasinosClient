@@ -85,12 +85,12 @@ function ControllerMarquee:s2cIMMarqueeNotify(im_marquee)
     end
     table.insert(self.ListIMMarquee, data)
 
-    local ev = self.ViewMgr:GetEv("EvEntityReceiceMarquee")
+    local ev = self:GetEv("EvEntityReceiceMarquee")
     if (ev == nil) then
         ev = EvEntityReceiceMarquee:new(nil)
     end
     ev.im_marquee = data
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

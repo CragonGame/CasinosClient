@@ -163,25 +163,25 @@ function ViewPlayerProfile:SendMagicExpression(exp_tbid)
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SitTableSendMagic"))
         return
     end
-    local ev = self.ViewMgr:GetEv("EvUiBuyItem")
+    local ev = self:GetEv("EvUiBuyItem")
     if (ev == nil) then
         ev = EvUiBuyItem:new(nil)
     end
     ev.to_etguid = self.PlayerGuid
     ev.item_id = exp_tbid
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:reportFriend(friend_etguid, report_type)
-    local ev = self.ViewMgr:GetEv("EvUiReportFriend")
+    local ev = self:GetEv("EvUiReportFriend")
     if (ev == nil) then
         ev = EvUiReportFriend:new(nil)
     end
     ev.friend_etguid = friend_etguid
     ev.report_type = report_type
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -408,29 +408,29 @@ end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickGift()
-    local ev = self.ViewMgr:GetEv("EvCreateGiftShop")
+    local ev = self:GetEv("EvCreateGiftShop")
     if (ev == nil) then
         ev = EvCreateGiftShop:new(nil)
     end
     ev.is_tmp_gift = true
     ev.to_player_etguid = self.PlayerInfo.PlayerInfoCommon.PlayerGuid
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickGiftHome()
-    local ev = self.ViewMgr:GetEv("EvCreateGiftShop")
+    local ev = self:GetEv("EvCreateGiftShop")
     if (ev == nil) then
         ev = EvCreateGiftShop:new(nil)
     end
     ev.is_tmp_gift = false
     ev.to_player_etguid = self.PlayerInfo.PlayerInfoCommon.PlayerGuid
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickFriend()
-    local ev = self.ViewMgr:GetEv("EvUiRequestFriendAddOrRemove")
+    local ev = self:GetEv("EvUiRequestFriendAddOrRemove")
     if (ev == nil) then
         ev = EvUiRequestFriendAddOrRemove:new(nil)
     end
@@ -441,26 +441,26 @@ function ViewPlayerProfile:onClickFriend()
     end
     ev.friend_guid = self.PlayerInfo.PlayerInfoCommon.PlayerGuid
     ev.friend_nickname = self.PlayerInfo.PlayerInfoCommon.NickName
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickSendGold()
     if (self.IsSelf) then
-        local ev = self.ViewMgr:GetEv("EvUiCreateExchangeChip")
+        local ev = self:GetEv("EvUiCreateExchangeChip")
         if (ev == nil) then
             ev = EvUiCreateExchangeChip:new(nil)
         end
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     else
         local ui_chiptransaction = self.ViewMgr:CreateView("ChipOperate")
         ui_chiptransaction:setChipsInfo(self.ControllerActor.PropGoldAcc:get(), 0, 0, CS.Casinos._eChipOperateType.Transaction, self.PlayerInfo.PlayerInfoCommon.PlayerGuid, nil)
-        local ev = self.ViewMgr:GetEv("EvUiClickChipTransaction")
+        local ev = self:GetEv("EvUiClickChipTransaction")
         if (ev == nil) then
             ev = EvUiClickChipTransaction:new(nil)
         end
         ev.send_target_etguid = self.PlayerInfo.PlayerInfoCommon.PlayerGuid
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
 end
 
@@ -475,11 +475,11 @@ end
 
 ---------------------------------------
 function ViewPlayerProfile:onClickBtnStandup()
-    local ev = self.ViewMgr:GetEv("EvViewDesktopHStandup")
+    local ev = self:GetEv("EvViewDesktopHStandup")
     if (ev == nil) then
         ev = EvUiDesktopHStandUp:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 
@@ -495,13 +495,13 @@ function ViewPlayerProfile:onClickComLockChat()
     else
         self.IsLocked = true
     end
-    local ev = self.ViewMgr:GetEv("EvUiRequestLockPlayerChat")
+    local ev = self:GetEv("EvUiRequestLockPlayerChat")
     if (ev == nil) then
         ev = EvUiRequestLockPlayerChat:new(nil)
     end
     ev.player_guid = self.PlayerGuid
     ev.requestLock = self.IsLocked
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     if (self.IsLocked) then
         self.ControllerLockChat:SetSelectedIndex(1)
     else

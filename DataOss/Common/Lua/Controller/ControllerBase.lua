@@ -12,10 +12,11 @@ function ControllerBase:ctor(this, controller_data, controller_name)
     self.ControllerMgr = ControllerMgr
     self.ViewMgr = ViewMgr
     self.EventSys = EventSys
-    self.Rpc = self.ControllerMgr.Rpc
     self.MC = CommonMethodType
-    self.TbDataMgr = self.Context.TbDataMgr
+    self.Json = self.Context.Json
     self.LanMgr = self.Context.LanMgr
+    self.TbDataMgr = self.Context.TbDataMgr
+    self.Rpc = self.Context.Rpc
 end
 
 function ControllerBase:OnCreate()
@@ -27,21 +28,18 @@ end
 function ControllerBase:OnHandleEv(ev)
 end
 
----------------------------------------
 function ControllerBase:BindEvListener(ev_name, ev_listener)
     if (self.EventSys ~= nil) then
         self.EventSys:BindEvListener(ev_name, ev_listener)
     end
 end
 
----------------------------------------
 function ControllerBase:UnbindEvListener(ev_listener)
     if (self.EventSys ~= nil) then
         self.EventSys:UnbindEvListener(ev_listener)
     end
 end
 
----------------------------------------
 function ControllerBase:GetEv(ev_name)
     local ev = nil
     if (self.EventSys ~= nil) then
@@ -50,7 +48,6 @@ function ControllerBase:GetEv(ev_name)
     return ev
 end
 
----------------------------------------
 function ControllerBase:SendEv(ev)
     if (self.EventSys ~= nil) then
         self.EventSys:SendEv(ev)

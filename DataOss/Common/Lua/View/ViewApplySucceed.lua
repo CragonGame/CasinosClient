@@ -67,11 +67,11 @@ end
 ---------------------------------------
 function ViewApplySucceed:close()
     self.ViewMgr:DestroyView(self)
-    local ev = self.ViewMgr:GetEv("EvUiRequestPublicMatchList")
+    local ev = self:GetEv("EvUiRequestPublicMatchList")
     if (ev == nil) then
         ev = EvUiRequestPublicMatchList:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

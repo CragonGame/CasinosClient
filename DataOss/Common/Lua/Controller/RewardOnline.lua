@@ -24,14 +24,14 @@ function RewardOnline:Update(tm)
             self.LeftTm = self.LeftTm - tm
             self.FormatLeftTm = CS.Casinos.LuaHelper.FormatTmFromSecondToMinute(self.LeftTm, false)
 
-            local ev = self.ViewMgr:GetEv("EvCtrlRewardRefreshGetOnlineRewardLeftTm")
+            local ev = self.ControllerReward:GetEv("EvCtrlRewardRefreshGetOnlineRewardLeftTm")
             if (ev == nil) then
                 ev = EvCtrlRewardRefreshGetOnlineRewardLeftTm:new(nil)
             end
             ev.left_reward_second = self.FormatLeftTm
             ev.give_chip_min = give_gold_min
             ev.is_success = is_success
-            self.ViewMgr:SendEv(ev)
+            self.ControllerReward:SendEv(ev)
 
             if (self.LeftTm <= 0) then
                 self.CanGetReward = true

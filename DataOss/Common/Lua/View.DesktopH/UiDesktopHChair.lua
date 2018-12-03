@@ -302,13 +302,13 @@ function UiDesktopHChair:_onClick()
             return
         end
 
-        local ev = self.ViewMgr:GetEv("EvViewDesktopHSitdown")
+        local ev = self.ViewDesktopH:GetEv("EvViewDesktopHSitdown")
         if (ev == nil) then
             ev = EvUiDesktopHSeatDown:new(nil)
         end
         ev.seat_index = self.ChairIndex
         ev.min_golds = self.ViewDesktopH.UiDesktopHBase:getSeatDownMinGolds()
-        self.ViewMgr:SendEv(ev)
+        self.ViewDesktopH:SendEv(ev)
     else
         local ui_profileother = self.ViewMgr:CreateView("PlayerProfile")
         ui_profileother:setPlayerGuid(CS.Casinos._ePlayerProfileType.DesktopH, self.SeatPlayerInfo.PlayerInfoCommon.PlayerGuid,

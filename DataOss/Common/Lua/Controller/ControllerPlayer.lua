@@ -75,11 +75,11 @@ function ControllerPlayer:OnCreate()
         end
     end
 
-    local ev = self.ViewMgr:GetEv("EvEntityPlayerInitDone")
+    local ev = self:GetEv("EvEntityPlayerInitDone")
     if (ev == nil) then
         ev = EvEntityPlayerInitDone:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(1000, self, self._timerUpdate)
 
@@ -294,12 +294,12 @@ end
 ---------------------------------------
 function ControllerPlayer:s2cPlayerGetOnlinePlayerNumNotify(num)
     self.OnlinePlayerNum = num
-    local ev = self.ViewMgr:GetEv("EvEntitySetOnLinePlayerNum")
+    local ev = self:GetEv("EvEntitySetOnLinePlayerNum")
     if (ev == nil) then
         ev = EvEntitySetOnLinePlayerNum:new(nil)
     end
     ev.online_num = self.OnlinePlayerNum
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -307,13 +307,13 @@ function ControllerPlayer:s2cPlayerGetPlayerInfoOtherNotify(player_info, ticket)
     ViewHelper:UiEndWaiting()
     local p_i = PlayerInfo:new(nil)
     p_i:setData(player_info)
-    local ev = self.ViewMgr:GetEv("EvEntityGetPlayerInfoOther")
+    local ev = self:GetEv("EvEntityGetPlayerInfoOther")
     if (ev == nil) then
         ev = EvEntityGetPlayerInfoOther:new(nil)
     end
     ev.player_info = p_i
     ev.ticket = ticket
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -401,14 +401,14 @@ function ControllerPlayer:s2cPlayerGiveChipQueryRangeRequestResult(r, give_gold_
             ViewHelper:UiShowInfoFailed(msg)
         end
     end
-    local ev = self.ViewMgr:GetEv("EvEntityPlayerGiveChipQueryRangeRequestResult")
+    local ev = self:GetEv("EvEntityPlayerGiveChipQueryRangeRequestResult")
     if (ev == nil) then
         ev = EvEntityPlayerGiveChipQueryRangeRequestResult:new(nil)
     end
     ev.give_chip_max = give_gold_max
     ev.give_chip_min = give_gold_min
     ev.is_success = is_success
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -499,12 +499,12 @@ function ControllerPlayer:s2cPlayerUpdateClientConfigNotify()
         end,
         true,
         function()
-            local ev = self.ViewMgr:GetEv("EvEntityUpdateClientConfig")
+            local ev = self:GetEv("EvEntityUpdateClientConfig")
             if(ev == nil)
             then
                 ev = EvEntityUpdateClientConfig:new(nil)
             end
-            self.ViewMgr:SendEv(ev)
+            self:SendEv(ev)
         end
     )--]]
 end
@@ -513,12 +513,12 @@ end
 function ControllerPlayer:OnPlayerGetCasinosModuleDataWithFactoryNameNotify(player_moduledata)
     local p_d = PlayerModuleData:new(nil)
     p_d:setData(player_moduledata)
-    local ev = self.ViewMgr:GetEv("EvEntityGetPlayerModuleDataSuccess")
+    local ev = self:GetEv("EvEntityGetPlayerModuleDataSuccess")
     if (ev == nil) then
         ev = EvEntityGetPlayerModuleDataSuccess:new(nil)
     end
     ev.player_moduledata = p_d
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -674,11 +674,11 @@ function ControllerPlayer:OnGetPicSuccess(pic_data)
                     local msg = table.concat(msg_t)
                     ViewHelper:UiShowInfoFailed(msg)
                 else
-                    local ev = self.ViewMgr:GetEv("EvGetPicUpLoadSuccess")
+                    local ev = self:GetEv("EvGetPicUpLoadSuccess")
                     if (ev == nil) then
                         ev = EvGetPicUpLoadSuccess:new(nil)
                     end
-                    self.ViewMgr:SendEv(ev)
+                    self:SendEv(ev)
                 end
                 ViewHelper:UiEndWaiting()
             end)
@@ -733,11 +733,11 @@ end
 --        local msg = table.concat(msg_t)
 --        ViewHelper:UiShowInfoFailed(msg)
 --    else
---        local ev = self.ViewMgr:GetEv("EvGetPicUpLoadSuccess")
+--        local ev = self:GetEv("EvGetPicUpLoadSuccess")
 --        if (ev == nil) then
 --            ev = EvGetPicUpLoadSuccess:new(nil)
 --        end
---        self.ViewMgr:SendEv(ev)
+--        self:SendEv(ev)
 --    end
 --    ViewHelper:UiEndWaiting()
 --end
@@ -766,13 +766,13 @@ function ControllerPlayer:s2cPlayerRequestGetAddressResult(result, address)
     local data_address = PlayerAddress:new(nil)
     data_address:setData(address)
     if (result == ProtocolResult.Success) then
-        local ev = self.ViewMgr:GetEv("EvEntityResponseGetReceiverAddress")
+        local ev = self:GetEv("EvEntityResponseGetReceiverAddress")
         if (ev == nil) then
             ev = EvEntityResponseGetReceiverAddress:new(nil)
         end
 
         ev.Address = data_address
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     elseif (result == ProtocolResult.Failed) then
         local msg_box = self.ViewMgr:CreateView("MsgBox")
         msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("GetAddressFailed"))

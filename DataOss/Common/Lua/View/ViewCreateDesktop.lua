@@ -91,12 +91,12 @@ function ViewCreateDesktop:onClickBtnCreate()
     local create_info = PrivateDesktopCreateInfo:new(nil)
     create_info.FactoryName = "Texas"
     create_info.Data = self.ViewMgr:PackData(create_infotexas:getData4Pack())
-    local ev = self.ViewMgr:GetEv("EvUiClickCreateDeskTop")
+    local ev = self:GetEv("EvUiClickCreateDeskTop")
     if (ev == nil) then
         ev = EvUiClickCreateDeskTop:new(nil)
     end
     ev.create_info = create_info
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 

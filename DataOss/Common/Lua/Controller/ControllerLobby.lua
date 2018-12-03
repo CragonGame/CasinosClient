@@ -44,12 +44,12 @@ function ControllerLobby:OnHandleEv(ev)
         self:RequestSearchDesktop(ev.desktop_searchfilter)
     elseif (ev.EventName == "EvUiClickSearchFriendsDesk") then
         local list_playerinfo = self.ControllerIM.IMFriendList:getInDesktopFriendList(ev.friend_state)
-        local ev = self.ViewMgr:GetEv("EvEntitySearchPlayingFriend")
+        local ev = self:GetEv("EvEntitySearchPlayingFriend")
         if (ev == nil) then
             ev = EvEntitySearchPlayingFriend:new(nil)
         end
         ev.list_playerinfo = list_playerinfo
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     elseif (ev.EventName == "EvUiClickPlayInDesk") then
         self:RequestEnterDesktop(ev.desk_etguid, true, ev.seat_index, ev.desktop_filter:getData4Pack())
     elseif (ev.EventName == "EvUiClickViewInDesk") then
@@ -97,12 +97,12 @@ function ControllerLobby:OnSearchDesktopListNotify(list_desktopinfo)
         d_info.DesktopData = v[3]
         table.insert(l_desktopinfo, d_info)
     end
-    local ev = self.ViewMgr:GetEv("EvEntityGetLobbyDeskList")
+    local ev = self:GetEv("EvEntityGetLobbyDeskList")
     if (ev == nil) then
         ev = EvEntityGetLobbyDeskList:new()
     end
     ev.list_desktop = l_desktopinfo
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -111,12 +111,12 @@ function ControllerLobby:OnSearchDesktopByPlayerGuidNotify(desktop_info)
     d_info.FactoryName = desktop_info[1]
     d_info.DesktopGuid = desktop_info[2]
     d_info.DesktopData = desktop_info[3]
-    local ev = self.ViewMgr:GetEv("EvEntitySearchDesktopFollowFriend")
+    local ev = self:GetEv("EvEntitySearchDesktopFollowFriend")
     if (ev == nil) then
         ev = EvEntitySearchDesktopFollowFriend:new()
     end
     ev.desktop_info = d_info
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

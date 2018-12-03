@@ -327,12 +327,12 @@ function ViewFriend:onClickSearch()
     if (self.GTextInputSerch.text == nil or self.GTextInputSerch.text == "") then
         return
     end
-    local ev = self.ViewMgr:GetEv("EvUiFindFriend")
+    local ev = self:GetEv("EvUiFindFriend")
     if (ev == nil) then
         ev = EvUiFindFriend:new(nil)
     end
     ev.search_filter = self.GTextInputSerch.text
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -611,24 +611,24 @@ function ViewShowFriendDetail:onClickBtnJoin()
         else
             if (self.CurrentFriendInfo.PlayerPlayState.DesktopType == DesktopTypeEx.Desktop) then
                 if (self.CurrentFriendInfo.PlayerPlayState.UserData2 ~= nil and self.CurrentFriendInfo.PlayerPlayState.UserData2 ~= "") then
-                    local ev = self.ViewMgr:GetEv("EvUiClickViewInDesk")
+                    local ev = self:GetEv("EvUiClickViewInDesk")
                     if (ev == nil) then
                         ev = EvUiClickViewInDesk:new(nil)
                     end
                     ev.desk_etguid = self.CurrentFriendInfo.PlayerPlayState.DesktopGuid
                     ev.desktop_filter = self.ViewMgr:UnpackData(self.CurrentFriendInfo.PlayerPlayState.UserData2)-- CS.LuaHelper.JsonDeserializeDesktopFilter(self.CurrentFriendInfo.PlayerPlayState.UserData2)
                     ev.seat_index = 255
-                    self.ViewMgr:SendEv(ev)
+                    self:SendEv(ev)
                 else
                     ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("PlayerNotInTable"))
                 end
             elseif (self.CurrentFriendInfo.PlayerPlayState.DesktopType == DesktopTypeEx.DesktopH) then
-                local ev = self.ViewMgr:GetEv("EvViewClickDesktopH")
+                local ev = self:GetEv("EvViewClickDesktopH")
                 if (ev == nil) then
                     ev = EvUiClickDesktopHundred:new(nil)
                 end
                 ev.factory_name = self.CurrentFriendInfo.PlayerPlayState.CasinosModule:ToString()
-                self.ViewMgr:SendEv(ev)
+                self:SendEv(ev)
             end
         end
     end
@@ -639,13 +639,13 @@ function ViewShowFriendDetail:onClickBtnEmail()
     if (self.IsFriendDetail == false) then
         return
     end
-    local ev = self.ViewMgr:GetEv("EvUiClickChooseFriend")
+    local ev = self:GetEv("EvUiClickChooseFriend")
     if (ev == nil) then
         ev = EvUiClickChooseFriend:new(nil)
     end
     ev.friend_info = self.CurrentFriendInfo
     ev.is_choosechat = true
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -653,17 +653,17 @@ function ViewShowFriendDetail:onClickBtnPresented()
     local ui_chiptransaction = self.ViewMgr:CreateView("ChipOperate")
     ui_chiptransaction:setChipsInfo(self.ControllerActor.PropGoldAcc:get(), 0, 0, CS.Casinos._eChipOperateType.Transaction,
             self.CurrentFriendInfo.PlayerInfoCommon.PlayerGuid, nil)
-    local ev = self.ViewMgr:GetEv("EvUiClickChipTransaction")
+    local ev = self:GetEv("EvUiClickChipTransaction")
     if (ev == nil) then
         ev = EvUiClickChipTransaction:new(nil)
     end
     ev.send_target_etguid = self.CurrentFriendInfo.PlayerInfoCommon.PlayerGuid
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
 function ViewShowFriendDetail:onClickAddFriend()
-    local ev = self.ViewMgr:GetEv("EvUiRequestFriendAddOrRemove")
+    local ev = self:GetEv("EvUiRequestFriendAddOrRemove")
     if (ev == nil) then
         ev = EvUiRequestFriendAddOrRemove:new(nil)
     end
@@ -674,7 +674,7 @@ function ViewShowFriendDetail:onClickAddFriend()
     end
     ev.friend_guid = self.CurrentFriendInfo.PlayerInfoCommon.PlayerGuid
     ev.friend_nickname = self.CurrentFriendInfo.PlayerInfoCommon.NickName
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

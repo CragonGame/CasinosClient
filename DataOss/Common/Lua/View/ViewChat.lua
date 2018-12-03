@@ -33,12 +33,12 @@ end
 ---------------------------------------
 function ViewChat:OnDestroy()
     if (self.GTextInputChat.text ~= nil and #self.GTextInputChat.text > 0) then
-        local ev = self.ViewMgr:GetEv("EvUiSetUnSendDesktopMsg")
+        local ev = self:GetEv("EvUiSetUnSendDesktopMsg")
         if (ev == nil) then
             ev = EvUiSetUnSendDesktopMsg:new(nil)
         end
         ev.text = self.GTextInputChat.text
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     end
     self.ViewMgr:UnbindEvListener(self)
 end
@@ -189,13 +189,13 @@ function ViewChat:onClickSendChat()
         end
     end
 
-    local ev = self.ViewMgr:GetEv("EvUiSendMsg")
+    local ev = self:GetEv("EvUiSendMsg")
     if (ev == nil) then
         ev = EvUiSendMsg:new(nil)
     end
     local chat_msg = self:getChatMsg()
     ev.chat_msg = chat_msg:getData4Pack()
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.GTextInputChat.text = ""
     self:closeSelf()
 end

@@ -202,13 +202,13 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:Init(match_guid, isIndesk, isSelfJoin)
-    local ev = self.ViewMgr:GetEv("EvUiRequestMatchDetailedInfo")
+    local ev = self:GetEv("EvUiRequestMatchDetailedInfo")
     if (ev == nil) then
         ev = EvUiRequestMatchDetailedInfo:new(nil)
     end
     ev.MatchGuid = match_guid
     ev.MatchType = MatchTexasScopeType.Public
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     if (isIndesk) then
         self.GControllerRank:SetSelectedIndex(0)
         self.GControllerOverView:SetSelectedIndex(0)
@@ -439,24 +439,24 @@ function ViewMatchInfo:onClickBtnApply()
     local btnApplyState = self:getBtnApplyState()
     if (btnApplyState == 2) then
         -- 进入
-        local ev = self.ViewMgr:GetEv("EvUiRequestEnterMatch")
+        local ev = self:GetEv("EvUiRequestEnterMatch")
         if (ev == nil) then
             ev = EvUiRequestEnterMatch:new(nil)
         end
         ev.MatchGuid = self.MatchInfo.Guid
-        self.ViewMgr:SendEv(ev)
+        self:SendEv(ev)
     elseif (btnApplyState == 3) then
         -- 退赛
         local msg_box = self.ViewMgr:CreateView("MsgBox")
         local content = self.ViewMgr.LanMgr:getLanValue("QuitMatchTip")
         msg_box:useTwoBtn("", content,
                 function()
-                    local ev = self.ViewMgr:GetEv("EvUiRequestCancelSignupMatch")
+                    local ev = self:GetEv("EvUiRequestCancelSignupMatch")
                     if (ev == nil) then
                         ev = EvUiRequestCancelSignupMatch:new(nil)
                     end
                     ev.MatchGuid = self.MatchGuid
-                    self.ViewMgr:SendEv(ev)
+                    self:SendEv(ev)
                     self.ViewMgr:DestroyView(msg_box)
                     self.ViewMgr:DestroyView(self)
                 end,
@@ -470,12 +470,12 @@ function ViewMatchInfo:onClickBtnApply()
         local msg_box = self.ViewMgr:CreateView("MsgBox")
         msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.ServiceFee)),
                 function()
-                    local ev = self.ViewMgr:GetEv("EvUiRequestSignUpMatch")
+                    local ev = self:GetEv("EvUiRequestSignUpMatch")
                     if (ev == nil) then
                         ev = EvUiRequestSignUpMatch:new(nil)
                     end
                     ev.MatchGuid = self.MatchGuid
-                    self.ViewMgr:SendEv(ev)
+                    self:SendEv(ev)
                     self.ViewMgr:DestroyView(msg_box)
                 end,
                 function()

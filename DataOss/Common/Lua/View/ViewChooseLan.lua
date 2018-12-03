@@ -40,11 +40,11 @@ end
 ---------------------------------------
 function ViewChooseLan:onClickBtnReturn()
     self.ViewMgr:DestroyView(self)
-    local ev = self.ViewMgr:GetEv("EvUiCreateMainUi")
+    local ev = self:GetEv("EvUiCreateMainUi")
     if (ev == nil) then
         ev = EvUiCreateMainUi:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

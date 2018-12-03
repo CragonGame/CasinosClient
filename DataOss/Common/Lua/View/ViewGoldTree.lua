@@ -132,11 +132,11 @@ end
 
 ---------------------------------------
 function ViewGoldTree:onClickGetGold()
-    local ev = self.ViewMgr:GetEv("EvUiRequestGetGrowReward")
+    local ev = self:GetEv("EvUiRequestGetGrowReward")
     if (ev == nil) then
         ev = EvUiRequestGetGrowReward:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 end
 
 ---------------------------------------

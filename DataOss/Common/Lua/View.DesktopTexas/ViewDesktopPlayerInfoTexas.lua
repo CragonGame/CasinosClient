@@ -765,12 +765,12 @@ end
 function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
     --ViewHelper:SetGObjectVisible(false, self.GImagePlayerShadow)
     self:ShowShade(false)
-    local ev = self.ViewMgr:GetEv("EvCurrentWinner")
+    local ev = self:GetEv("EvCurrentWinner")
     if (ev == nil) then
         ev = EvCurrentWinner:new(nil)
     end
     ev.player = self.Player
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
 
     self.PlayerShowTips:showWinGold(showWinStar)
 

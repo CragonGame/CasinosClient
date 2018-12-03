@@ -48,22 +48,22 @@ function ViewDesktopChatExpression:onClickExp(context)
     c_m.sender_guid = self.ControllerPlayer.Guid
     c_m.sender_nickname = self.ControllerActor.PropNickName:get()
     c_m.msg = CS.Casinos.LuaHelper.EventDispatcherCastToGComponent(context.sender).name
-    local ev = self.ViewMgr:GetEv("EvUiSendMsg")
+    local ev = self:GetEv("EvUiSendMsg")
     if (ev == nil) then
         ev = EvUiSendMsg:new(nil)
     end
     ev.chat_msg = c_m:getData4Pack()
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewDesktopChatExpression:onClickExchangeChip()
-    local ev = self.ViewMgr:GetEv("EvUiCreateExchangeChip")
+    local ev = self:GetEv("EvUiCreateExchangeChip")
     if (ev == nil) then
         ev = EvUiCreateExchangeChip:new(nil)
     end
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 

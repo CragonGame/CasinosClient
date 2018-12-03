@@ -78,25 +78,25 @@ end
 
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequest:onClickBtnConfirm()
-    local ev = self.ViewMgr:GetEv("EvUiAgreeAddFriend")
+    local ev = self:GetEv("EvUiAgreeAddFriend")
     if (ev == nil) then
         ev = EvUiAgreeAddFriend:new(nil)
     end
     ev.from_etguid = self.FriendGuid
     ev.ev = self.IMOfflineEvent
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequest:_onClickBtnClose()
-    local ev = self.ViewMgr:GetEv("EvUiRefuseAddFriend")
+    local ev = self:GetEv("EvUiRefuseAddFriend")
     if (ev == nil) then
         ev = EvUiRefuseAddFriend:new(nil)
     end
     ev.from_etguid = self.FriendGuid
     ev.ev = self.IMOfflineEvent
-    self.ViewMgr:SendEv(ev)
+    self:SendEv(ev)
     self.ViewMgr:DestroyView(self)
 end
 
