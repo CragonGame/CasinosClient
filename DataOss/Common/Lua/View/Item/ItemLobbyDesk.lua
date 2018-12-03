@@ -10,6 +10,7 @@ function ItemLobbyDesk:new(o, item, desk_info, on_click_createdesktop, view_mgr)
     setmetatable(o, self)
     self.__index = self
     o.ViewMgr = view_mgr
+    o.ControllerMgr = ControllerMgr
     o.NineSeatParent = "NineSeatSeat"
     o.FiveSeatParent = "FiveSeatSeat"
     o.MapItemPlayerInfo = {}
@@ -40,7 +41,7 @@ end
 ---------------------------------------
 function ItemLobbyDesk:init()
     self:setDesktopFilter()
-    local controller_actor = self.ViewMgr.ControllerMgr:GetController("Actor")
+    local controller_actor = self.ControllerMgr:GetController("Actor")
     local CasinosContext = CS.Casinos.CasinosContext.Instance
     local gold_acc = controller_actor.PropGoldAcc:get()
     local tb_desktop = CasinosContext.TbDataMgrLua:GetData("DesktopInfoTexas", self.DeskTopInfo.desktop_tableid)

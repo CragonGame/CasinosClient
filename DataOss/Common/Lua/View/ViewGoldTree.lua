@@ -13,7 +13,7 @@ function ViewGoldTree:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi)
     self.NextGetRewardTm = 0
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(

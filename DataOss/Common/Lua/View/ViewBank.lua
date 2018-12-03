@@ -13,7 +13,7 @@ end
 ---------------------------------------
 function ViewBank:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SafeBox"))
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.GControllerBank = self.ComUi:GetController("ControllerBank")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom

@@ -6,7 +6,8 @@ ViewBase = class()
 function ViewBase:ctor()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.Context = Context
-    self.ViewMgr = nil
+    self.ViewMgr = ViewMgr
+    self.ControllerMgr = ControllerMgr
     self.ViewKey = nil
     self.GoUi = nil
     self.ComUi = nil

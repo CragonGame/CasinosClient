@@ -11,8 +11,8 @@ end
 ---------------------------------------
 function ViewBag:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Bag1"))
-    self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
+    self.ControllerBag = self.ControllerMgr:GetController("Bag")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.ViewPool = self.ViewMgr:GetView("Pool")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton

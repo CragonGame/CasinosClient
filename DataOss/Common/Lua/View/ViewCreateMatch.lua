@@ -12,7 +12,7 @@ end
 
 ---------------------------------------
 function ViewCreateMatch:OnCreate()
-    self.ControllerMtt = self.ViewMgr.ControllerMgr:GetController("MTT")
+    self.ControllerMtt = self.ControllerMgr:GetController("MTT")
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
     btn_return.onClick:Add(
             function()

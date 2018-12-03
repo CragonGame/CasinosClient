@@ -34,13 +34,13 @@ function IMMailBox:OnIMMailListInitNotify(list_mail)
         table.insert(self.ListMail, m_c)
     end
     self:updateNewMailSign()
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityMailListInit")
+    local ev = self.ControllerIM.ViewMgr:GetEv("EvEntityMailListInit")
     if (ev == nil) then
         ev = EvEntityMailListInit:new(nil)
     end
     ev.list_mail = self.ListMail
     ev.have_newmail = self.HaveNewMail
-    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ControllerIM.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -49,13 +49,13 @@ function IMMailBox:OnIMMailAddNotify(mail)
     m_c:setData(mail)
     table.insert(self.ListMail, 1, m_c)
     self.HaveNewMail = true
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityMailAdd")
+    local ev = self.ControllerIM.ViewMgr:GetEv("EvEntityMailAdd")
     if (ev == nil) then
         ev = EvEntityMailAdd:new(nil)
     end
     ev.list_mail = self.ListMail
     ev.have_newmail = self.HaveNewMail
-    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ControllerIM.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -76,13 +76,13 @@ function IMMailBox:OnIMMailDeleteNotify(mail_guid)
         table.remove(self.ListMail, current_mail_key)
     end
     self:updateNewMailSign()
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityMailDelete")
+    local ev = self.ControllerIM.ViewMgr:GetEv("EvEntityMailDelete")
     if (ev == nil) then
         ev = EvEntityMailDelete:new(nil)
     end
     ev.list_mail = self.ListMail
     ev.have_newmail = self.HaveNewMail
-    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ControllerIM.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -100,13 +100,13 @@ function IMMailBox:OnIMMailUpdateNotify(mail)
         current_mail.MailState = m_c.MailState
     end
     self:updateNewMailSign()
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityMailUpdate")
+    local ev = self.ControllerIM.ViewMgr:GetEv("EvEntityMailUpdate")
     if (ev == nil) then
         ev = EvEntityMailUpdate:new(nil)
     end
     ev.list_mail = self.ListMail
     ev.have_newmail = self.HaveNewMail
-    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ControllerIM.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

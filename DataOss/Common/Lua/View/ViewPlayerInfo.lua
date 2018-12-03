@@ -15,9 +15,9 @@ end
 function ViewPlayerInfo:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
-    self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+    self.ControllerBag = self.ControllerMgr:GetController("Bag")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     local wechat_id = self.ControllerActor.WeChatOpenId:get()
     self.NeedBindWeChat = CS.System.String.IsNullOrEmpty(wechat_id)
     local group = self.ComUi:GetChild("WeChatBlinded").asGroup

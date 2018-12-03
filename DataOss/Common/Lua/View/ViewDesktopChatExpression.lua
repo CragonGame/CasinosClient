@@ -10,8 +10,8 @@ end
 
 ---------------------------------------
 function ViewDesktopChatExpression:OnCreate()
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.MapExpression = {}
     for i = 0, 19 do
         local item_name = CS.Casinos.CasinosContext.Instance:AppendStrWithSB("(", tostring(i + 1), ")")

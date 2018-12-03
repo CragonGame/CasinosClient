@@ -13,7 +13,7 @@ end
 
 ---------------------------------------
 function ViewShootingText:OnCreate()
-    self.ControllerPlayerMarquee = self.ViewMgr.ControllerMgr:GetController("Marquee")
+    self.ControllerPlayerMarquee = self.ControllerMgr:GetController("Marquee")
     self.ViewPool = self.ViewMgr:GetView("Pool")
     self.MapItemShootingText = {}
     self.ViewMgr:BindEvListener("EvEntityReceiceMarquee", self)
@@ -178,7 +178,7 @@ function ViewMarquee:new(o, shooting_text, always_show, have_marquee)
     self.ViewShootingText = shooting_text
     self.MapItemMarquee = {}
     self.HaveMarquee = have_marquee
-    self.ControllerPlayerMarquee = self.ViewShootingText.ViewMgr.ControllerMgr:GetController("Marquee")
+    self.ControllerPlayerMarquee = self.ViewShootingText.ControllerMgr:GetController("Marquee")
     return o
 end
 

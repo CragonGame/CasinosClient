@@ -10,36 +10,36 @@ end
 
 ---------------------------------------
 function ControllerDesktopTexas:OnCreate()
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestLockSystemChat", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestChangeDesk", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickFlod", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickCheck", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickCall", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickRaise", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickSeat", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickOB", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickWaitWhile", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickPlayerReturn", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickAutoAction", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickCancelAutoAction", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiCreateExchangeChip", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestLockPlayerChat", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestLockAllDesktopPlayer", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiRequestLockAllSpectator", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiInviteFriendPlayTogether", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiSendMsg", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiSetUnSendDesktopMsg", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiDesktopClickLockChat", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiClickShowCard", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUiMTTCreateRebuyOrAddOn", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityPlayerEnterDesktopH", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityGetDesktopData", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityMTTPlayerRebuy", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityMTTPlayerAddon", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityMatchGameOver", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntitySetMatchDetailedInfo", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvUpdatePlayerScore", self)
+    self.ViewMgr:BindEvListener("EvUiRequestLockSystemChat", self)
+    self.ViewMgr:BindEvListener("EvUiRequestChangeDesk", self)
+    self.ViewMgr:BindEvListener("EvUiClickFlod", self)
+    self.ViewMgr:BindEvListener("EvUiClickCheck", self)
+    self.ViewMgr:BindEvListener("EvUiClickCall", self)
+    self.ViewMgr:BindEvListener("EvUiClickRaise", self)
+    self.ViewMgr:BindEvListener("EvUiClickSeat", self)
+    self.ViewMgr:BindEvListener("EvUiClickOB", self)
+    self.ViewMgr:BindEvListener("EvUiClickWaitWhile", self)
+    self.ViewMgr:BindEvListener("EvUiClickPlayerReturn", self)
+    self.ViewMgr:BindEvListener("EvUiClickAutoAction", self)
+    self.ViewMgr:BindEvListener("EvUiClickCancelAutoAction", self)
+    self.ViewMgr:BindEvListener("EvUiCreateExchangeChip", self)
+    self.ViewMgr:BindEvListener("EvUiRequestLockPlayerChat", self)
+    self.ViewMgr:BindEvListener("EvUiRequestLockAllDesktopPlayer", self)
+    self.ViewMgr:BindEvListener("EvUiRequestLockAllSpectator", self)
+    self.ViewMgr:BindEvListener("EvUiInviteFriendPlayTogether", self)
+    self.ViewMgr:BindEvListener("EvUiSendMsg", self)
+    self.ViewMgr:BindEvListener("EvUiSetUnSendDesktopMsg", self)
+    self.ViewMgr:BindEvListener("EvUiDesktopClickLockChat", self)
+    self.ViewMgr:BindEvListener("EvUiClickShowCard", self)
+    self.ViewMgr:BindEvListener("EvUiMTTCreateRebuyOrAddOn", self)
+    self.ViewMgr:BindEvListener("EvEntityPlayerEnterDesktopH", self)
+    self.ViewMgr:BindEvListener("EvEntityGetDesktopData", self)
+    self.ViewMgr:BindEvListener("EvEntityMTTPlayerRebuy", self)
+    self.ViewMgr:BindEvListener("EvEntityMTTPlayerAddon", self)
+    self.ViewMgr:BindEvListener("EvEntityMatchGameOver", self)
+    self.ViewMgr:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
+    self.ViewMgr:BindEvListener("EvEntitySetMatchDetailedInfo", self)
+    self.ViewMgr:BindEvListener("EvUpdatePlayerScore", self)
 
     local rpc = self.ControllerMgr.RPC
     local m_c = CommonMethodType
@@ -93,7 +93,6 @@ function ControllerDesktopTexas:OnCreate()
         self:OnMatchTexasGameOverNotify(r)
     end)
 
-    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.ListDesktopChat = {}
     self.LockSysChat = false
     self.MapDesktopBaseFac = {}
@@ -109,7 +108,7 @@ function ControllerDesktopTexas:OnDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-    self.ControllerMgr.ViewMgr:UnbindEvListener(self)
+    self.ViewMgr:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -153,18 +152,18 @@ function ControllerDesktopTexas:s2cDesktopSnapshotNotify(snapshot_notify)
     local desktop_data = DesktopSnapshotData:new(nil)
     desktop_data:setData(desktop_data1)
     if (desktop_data1 == nil or desktop_data.DesktopData == nil) then
-        local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerEnterDesktopFailed")
+        local ev = self.ViewMgr:GetEv("EvEntityPlayerEnterDesktopFailed")
         if (ev == nil) then
             ev = EvEntityPlayerEnterDesktopFailed:new(nil)
         end
-        self.ControllerMgr.ViewMgr:SendEv(ev)
+        self.ViewMgr:SendEv(ev)
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("EnterTableFailed"))
     else
-        local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerEnterDesktop")
+        local ev = self.ViewMgr:GetEv("EvEntityPlayerEnterDesktop")
         if (ev == nil) then
             ev = EvEntityPlayerEnterDesktop:new(nil)
         end
-        self.ControllerMgr.ViewMgr:SendEv(ev)
+        self.ViewMgr:SendEv(ev)
         local is_init = snapshot_notify[2]
         if (is_init) then
             self:createDesktop(desktop_data.FactoryName)
@@ -271,7 +270,7 @@ function ControllerDesktopTexas:OnMatchTexasRequestRebuyResult(r)
     local rebuy = BMatchTexasRebuyResponse:new(nil)
     rebuy:setData(r)
     --if rebuy.Result == ProtocolResult.Success then
-    --    local view_mgr = self.ControllerMgr.ViewMgr
+    --    local view_mgr = self.ViewMgr
     --    local ev = view_mgr:GetEv("EvEntityMTTPlayerRebuy")
     --    if (ev == nil)
     --    then
@@ -296,7 +295,7 @@ function ControllerDesktopTexas:OnMatchTexasRequestAddonResult(r)
     addon:setData(r)
 
     --if addon.Result == ProtocolResult.Success then
-    --    local view_mgr = self.ControllerMgr.ViewMgr
+    --    local view_mgr = self.ViewMgr
     --    local ev = view_mgr:GetEv("EvEntityMTTPlayerAddon")
     --    if (ev == nil)
     --    then
@@ -320,7 +319,7 @@ function ControllerDesktopTexas:OnMatchTexasGameOverNotify(r)
     local game_over = BMatchTexasPlayerFinishedNotify:new(nil)
     game_over:setData(r)
     if game_over.Result == ProtocolResult.Success then
-        local view_mgr = self.ControllerMgr.ViewMgr
+        local view_mgr = self.ViewMgr
         local ev = view_mgr:GetEv("EvEntityMatchGameOver")
         if (ev == nil)
         then
@@ -348,7 +347,9 @@ end
 function ControllerDesktopTexas:OnPlayerLeaveDesktopNotify()
     ViewHelper:UiEndWaiting()
     self:clearDesktop(true)
-    self.ControllerPlayer:RequestGetOnlinePlayerNum()
+
+    local ctrl_player = self.ControllerMgr:GetController("Player")
+    ctrl_player:RequestGetOnlinePlayerNum()
 end
 
 ---------------------------------------
@@ -380,17 +381,19 @@ function ControllerDesktopTexas:addDesktopMsg(sender_etguid, sender_name, sender
         table.remove(self.ListDesktopChat, 1)
     end
 
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityRecvChatFromDesktop")
+    local ev = self.ViewMgr:GetEv("EvEntityRecvChatFromDesktop")
     if (ev == nil) then
         ev = EvEntityRecvChatFromDesktop:new(nil)
     end
     ev.chat_info = chat_info
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerDesktopTexas:createDesktop(desktop_factory_name)
-    self.ControllerPlayer:DestroyMainUi()
+    local ctrl_player = self.ControllerMgr:GetController("Player")
+    ctrl_player:DestroyMainUi()
+
     if (self.DesktopBase ~= nil) then
         self:clearDesktop(false)
     end

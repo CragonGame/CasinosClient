@@ -12,8 +12,8 @@ end
 function ViewFriend:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Friend"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
-    self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+    self.ControllerIM = self.ControllerMgr:GetController("IM")
     self.ControllerFriendOrSearchControl = self.ComUi:GetController("FriendOrSearchControl")
     self.ControllerSearch = self.ComUi:GetController("SearchController")
     self.ControllerFriend = self.ComUi:GetController("FriendController")
@@ -455,8 +455,9 @@ function ViewShowFriendDetail:new(o, com_friend, is_friend_detail)
     )
     o.GIMageRemoveFriend = com_friend:GetChild("RemoveFriend").asImage
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.ControllerMgr = ControllerMgr
     o.ViewMgr = ViewMgr
-    o.ControllerActor = o.ViewMgr.ControllerMgr:GetController("Actor")
+    o.ControllerActor = o.ControllerMgr:GetController("Actor")
     o.GComReportPlayer = com_friend:GetChild("ComReportPlayer").asCom
     local list_report = o.GComReportPlayer:GetChild("ContentList").asList
     for key, value in pairs(ReportPlayerType) do

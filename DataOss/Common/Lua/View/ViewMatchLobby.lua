@@ -66,8 +66,8 @@ function ViewMatchLobby:OnCreate()
     self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
     self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
 
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
-    self.ControllerMTT = self.ViewMgr.ControllerMgr:GetController("MTT")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+    self.ControllerMTT = self.ControllerMgr:GetController("MTT")
     self:setPlayerGoldAndDiamond()
     self.CurrentItemMatchType = nil
     self.ListMatchType = {}

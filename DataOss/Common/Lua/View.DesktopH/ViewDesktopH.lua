@@ -529,7 +529,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         self.UiDesktopHStandPlayer = UiDesktopHStandPlayer:new(stand_player, co_stand_chatparent, self)
         local reward_pot = self.GCoDesktopH:GetChild("CoRewardPot").asCom
         self.UiDesktopHRewardPot = UiDesktopHRewardPot
-        self.UiDesktopHRewardPot:Setup(reward_pot, self)
+        self.UiDesktopHRewardPot:Create(reward_pot, self)
 
         local glist_betpot = self.GCoDesktopH:GetChild("ListBetPot").asList
         local last_pot_index = self.ControllerDesktopH.DesktopHBase:getMaxBetpotIndex()
@@ -1098,7 +1098,7 @@ end
 
 ---------------------------------------
 function ViewDesktopH:_onClickBtnMenu()
-    local ctrl_reward = self.ViewMgr.ControllerMgr:GetController("Reward")
+    local ctrl_reward = self.ControllerMgr:GetController("Reward")
     local desktoph_menu = self.ViewMgr:CreateView("DesktopHMenu")
     desktoph_menu:ShowMenu(ctrl_reward.RedPointRewardShow)
 end
@@ -1211,7 +1211,7 @@ end
 
 ---------------------------------------
 function ViewDesktopH:RefreshRedPointRewardState()
-    local ctrl_reward = self.ViewMgr.ControllerMgr:GetController("Reward")
+    local ctrl_reward = self.ControllerMgr:GetController("Reward")
     if ctrl_reward.RedPointRewardShow == false then
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else

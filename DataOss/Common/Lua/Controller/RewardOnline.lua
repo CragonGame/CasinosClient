@@ -5,20 +5,16 @@
 RewardOnline = {}
 
 ---------------------------------------
-function RewardOnline:new(controller_mgr, view_mgr)
-    local o = {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = view_mgr
-    self.ControllerReward = ControllerReward
+function RewardOnline:Setup(controller_mgr, view_mgr, controller_reward)
     self.ControllerMgr = controller_mgr
+    self.ViewMgr = view_mgr
+    self.ControllerReward = controller_reward
     self.MC = CommonMethodType
     self.OnlineRewardState = OnlineRewardState.CountDown
     self.LeftTm = 0
     self.CanGetReward = false
     self.NextReward = 0
     self.FormatLeftTm = ""
-    return o
 end
 
 ---------------------------------------

@@ -37,11 +37,11 @@ end
 ---------------------------------------
 function ControllerActivity:s2cActivityNotify(list_activity)
     self.ListActivity = list_activity
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityNotifyPushActivity")
+    local ev = self.ViewMgr:GetEv("EvEntityNotifyPushActivity")
     if (ev == nil) then
         ev = EvEntityNotifyPushActivity:new(nil)
     end
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

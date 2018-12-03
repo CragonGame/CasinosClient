@@ -98,8 +98,8 @@ function ControllerActor:ctor(this, controller_data, controller_name)
     self.MasterPoint = Prop:new(tonumber(MasterPoint))
     self.LastLevel = self.PropLevel
 
-    self.ControllerPlayer = o.ControllerMgr:GetController("ControllerPlayer")
-    Native.Instance:CreateShareUrlAndQRCode(ActorId)
+    self.ControllerPlayer = self.ControllerMgr:GetController("ControllerPlayer")
+    Native:CreateShareUrlAndQRCode(ActorId)
 end
 
 ---------------------------------------
@@ -107,7 +107,7 @@ function ControllerActor:OnCreate()
     self.RPC = self.ControllerMgr.RPC
     self.MC = CommonMethodType
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerLogin = self.ViewMgr.ControllerMgr:GetController("Login")
+    self.ControllerLogin = self.ControllerMgr:GetController("Login")
     local attach_wechat = self.ControllerLogin.ClientEnterWorldNotify.attach_wechat
     local wechat_openid = nil
     local wechat_name = nil
@@ -217,7 +217,7 @@ function ControllerActor:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, u
     local gold = self.PropGoldAcc:get()
     local delta_gold = gold_acc - gold
     self.PropGoldAcc:set(gold_acc)
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGoldChanged")
+    local ev = self.ViewMgr:GetEv("EvEntityGoldChanged")
     if (ev == nil) then
         ev = EvEntityGoldChanged:new(nil)
     end
@@ -225,7 +225,7 @@ function ControllerActor:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, u
     ev.gold_acc = self.PropGoldAcc:get()
     ev.delta_gold = delta_gold
     ev.user_data = user_data
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -302,82 +302,82 @@ end
 
 ---------------------------------------
 function ControllerActor:onPropPointChanged()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPointChanged")
+    local ev = self.ViewMgr:GetEv("EvEntityPointChanged")
     if (ev == nil) then
         ev = EvEntityPointChanged:new(nil)
     end
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropGoldBankChanged()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityBankGoldChange")
+    local ev = self.ViewMgr:GetEv("EvEntityBankGoldChange")
     if (ev == nil) then
         ev = EvEntityBankGoldChange:new(nil)
     end
     ev.bank_gold = self.PropGoldBank:get()
     ev.gold_acc = self.PropGoldAcc:get()
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropDiamondChanged()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityDiamondChanged")
+    local ev = self.ViewMgr:GetEv("EvEntityDiamondChanged")
     if (ev == nil) then
         ev = EvEntityDiamondChanged:new(nil)
     end
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropNickNameChanged()
     ViewHelper:UiEndWaiting()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
+    local ev = self.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
     if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropIndividualSignatureChanged()
     ViewHelper:UiEndWaiting()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
+    local ev = self.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
     if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropIpAddressChanged()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
+    local ev = self.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
     if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropVipLevelChanged()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
+    local ev = self.ViewMgr:GetEv("EvEntityPlayerInfoChanged")
     if (ev == nil) then
         ev = EvEntityPlayerInfoChanged:new(nil)
     end
     ev.controller_actor = self
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerActor:onPropIsFirstRecharge()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityIsFirstRechargeChanged")
+    local ev = self.ViewMgr:GetEv("EvEntityIsFirstRechargeChanged")
     if (ev == nil) then
         ev = EvEntityIsFirstRechargeChanged:new(nil)
     end
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

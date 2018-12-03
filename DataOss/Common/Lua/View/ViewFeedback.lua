@@ -11,9 +11,9 @@ end
 ---------------------------------------
 function ViewFeedback:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Feedback"))
-    self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
+    self.ControllerIM = self.ControllerMgr:GetController("IM")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.ViewPool = self.ViewMgr:GetView("Pool")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton

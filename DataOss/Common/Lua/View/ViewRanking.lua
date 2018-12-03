@@ -14,7 +14,7 @@ end
 ---------------------------------------
 function ViewRanking:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Ranking"))
-    self.ControllerRanking = self.ViewMgr.ControllerMgr:GetController("Ranking")
+    self.ControllerRanking = self.ControllerMgr:GetController("Ranking")
     self.Controller = self.ComUi:GetController("ControllerRanking")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_return = com_bg:GetChild("BtnClose").asButton

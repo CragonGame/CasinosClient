@@ -430,8 +430,8 @@ function ViewMatchInfo:onClickShare()
             self:formatTime(self.MatchInfo.DtMatchBegin), self.MatchInfo.Name)
     local pic_name = "Resources.KingTexasRaw/Icon/ShareIcon.png"
     local pic_path = CS.Casinos.CasinosContext.Instance.PathMgr:CombinePersistentDataPath(pic_name)
-    Native.Instance:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, content, pic_path, self.MatchInfo.Name .. self.ViewMgr.LanMgr:getLanValue("MatchInvite"),
-            Native.Instance.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Webpage)
+    Native:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, content, pic_path, self.MatchInfo.Name .. self.ViewMgr.LanMgr:getLanValue("MatchInvite"),
+            Native.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Webpage)
 end
 
 ---------------------------------------

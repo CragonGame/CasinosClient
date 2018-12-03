@@ -207,13 +207,13 @@ function ControllerRanking:s2cRankingGiftNotify(list_gift)
             list_gift[i] = temp
         end
     end
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGetRankingGift")
+    local ev = self.ViewMgr:GetEv("EvEntityGetRankingGift")
     if (ev == nil)
     then
         ev = EvEntityGetRankingGift:new(nil)
     end
     ev.list_rankinggift = list_gift
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -229,13 +229,13 @@ function ControllerRanking:s2cRankingWinGoldNotify(list_rank)
         end
     end
     self.ListRankingWinGold = list_ranWingold
-    local ev = self.ControllerMgr.ViewMgr.GetEv("EvEntityGetRankingWinGold")
+    local ev = self.ViewMgr.GetEv("EvEntityGetRankingWinGold")
     if (ev == nil)
     then
         ev = EvEntityGetRankingWinGold:new(nil)
     end
     ev.list_rank = list_rank
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -251,13 +251,13 @@ function ControllerRanking:s2cRankingRedEnvelopesNotify(list_rank)
         end
     end
     self.ListRankingRedEnvelopes = list_ranredenvelope
-    local ev = self.ControllerMgr.ViewMgr.GetEv("EvEntityGetRankingRedEnvelopes")
+    local ev = self.ViewMgr.GetEv("EvEntityGetRankingRedEnvelopes")
     if (ev == nil)
     then
         ev = EvEntityGetRankingRedEnvelopes:new(nil)
     end
     ev.list_rank = list_rank
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -267,40 +267,40 @@ end
 
 ---------------------------------------
 function ControllerRanking:createRankingUi()
-    self.ControllerMgr.ViewMgr:CreateView("Ranking")
+    self.ViewMgr:CreateView("Ranking")
 end
 
 ---------------------------------------
 function ControllerRanking:notifyGoldRanking()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGetRankingGold")
+    local ev = self.ViewMgr:GetEv("EvEntityGetRankingGold")
     if (ev == nil)
     then
         ev = EvEntityGetRankingGold:new(nil)
     end
     ev.list_ranking = self.ListRankingGold
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerRanking:notifyDiamondRanking()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGetRankingDiamond")
+    local ev = self.ViewMgr:GetEv("EvEntityGetRankingDiamond")
     if (ev == nil)
     then
         ev = EvEntityGetRankingDiamond:new(nil)
     end
     ev.list_ranking = self.ListRankingDiamond
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerRanking:notifyLevelRanking()
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGetRankingLevel")
+    local ev = self.ViewMgr:GetEv("EvEntityGetRankingLevel")
     if (ev == nil)
     then
         ev = EvEntityGetRankingLevel:new(nil)
     end
     ev.list_ranking = self.ListRankingLevel
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

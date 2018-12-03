@@ -7,7 +7,7 @@ UiDesktopHRewardPot = {
 ---------------------------------------
 function UiDesktopHRewardPot:Create(reward_pot, view_desktop)
     self.RewardPot = reward_pot
-    self.GTextRewardPot = o.RewardPot:GetChild("RewardPot").asTextField
+    self.GTextRewardPot = self.RewardPot:GetChild("RewardPot").asTextField
     self.ViewDesktopH = view_desktop
     self.MapRewardPotGolds = {}
     self.MapWinGold = {}

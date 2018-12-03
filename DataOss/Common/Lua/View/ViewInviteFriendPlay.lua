@@ -11,7 +11,7 @@ end
 ---------------------------------------
 function ViewInviteFriendPlay:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("InviteFriendPlayCard"))
-    self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
+    self.ControllerIM = self.ControllerMgr:GetController("IM")
     self.GListOnLine = self.ComUi:GetChild("ListOnLine").asList
     self.GListOnLine:SetVirtual()
     self.GListOnLine.itemRenderer = function(index, item)

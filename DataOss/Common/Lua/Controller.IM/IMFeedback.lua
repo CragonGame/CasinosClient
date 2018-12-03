@@ -68,12 +68,12 @@ function IMFeedback:recvMsg(map_records, msg)
     table.insert(map_records, msg)
     self:createChatShowTm(msg)
 
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityReceiveFeedbackChat")
+    local ev = self.ControllerIM.ViewMgr:GetEv("EvEntityReceiveFeedbackChat")
     if (ev == nil) then
         ev = EvEntityReceiveFeedbackChat:new(nil)
     end
     ev.chat_msg = msg
-    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ControllerIM.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -87,12 +87,12 @@ function IMFeedback:recvMsgs(map_records, list_msg)
     end
 
     local list_chatshow = self:getListChatShow()
-    local ev = self.ControllerIM.ControllerMgr.ViewMgr:GetEv("EvEntityReceiveFeedbackChats")
+    local ev = self.ControllerIM.ViewMgr:GetEv("EvEntityReceiveFeedbackChats")
     if (ev == nil) then
         ev = EvEntityReceiveFeedbackChats:new(nil)
     end
     ev.list_allchats = list_chatshow
-    self.ControllerIM.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ControllerIM.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

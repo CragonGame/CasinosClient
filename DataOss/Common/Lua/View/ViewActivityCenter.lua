@@ -13,7 +13,7 @@ end
 function ViewActivityCenter:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Activity"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerActivity = self.ViewMgr.ControllerMgr:GetController("Activity")
+    self.ControllerActivity = self.ControllerMgr:GetController("Activity")
     self.GListActivityTitle = self.ComUi:GetChild("ListActivityTitle").asList
     self.GLoaderCurrentActContent = self.ComUi:GetChild("LoaderActContent").asLoader
     self.GTextCurrentActContent = self.ComUi:GetChild("TextActContent").asTextField

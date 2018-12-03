@@ -16,7 +16,7 @@ function ViewWallet:OnCreate()
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.MapShopGold = {}
     self.ControllerShop = self.ComUi:GetController("ControllerShop")
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton

@@ -10,9 +10,9 @@ end
 
 ---------------------------------------
 function ViewClub:OnCreate()
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntitySetPrivateMatchLsit", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityUpdatePrivateMatchPlayerNum", self)
-    self.ControllerMgr.ViewMgr:BindEvListener("EvEntityGetMatchInfoByInvitationCodeSucceed", self)
+    self.ViewMgr:BindEvListener("EvEntitySetPrivateMatchLsit", self)
+    self.ViewMgr:BindEvListener("EvEntityUpdatePrivateMatchPlayerNum", self)
+    self.ViewMgr:BindEvListener("EvEntityGetMatchInfoByInvitationCodeSucceed", self)
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton

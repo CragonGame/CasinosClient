@@ -13,7 +13,7 @@ end
 function ViewChatChooseTarget:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("ChooseFriendChat"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
+    self.ControllerIM = self.ControllerMgr:GetController("IM")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(

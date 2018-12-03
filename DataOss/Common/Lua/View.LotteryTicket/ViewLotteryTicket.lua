@@ -33,7 +33,7 @@ function ViewLotteryTicket:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketGetRewardPotInfo", self)
     self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
 
-    self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
+    self.ControllerLotteryTicket = self.ControllerMgr:GetController("LotteryTicket")
     local fac = self.ControllerLotteryTicket:GetLotteryTicketBaseFactory(self.Context.Cfg.LotteryTicketFactoryName)
     self.UiLotteryTicketBase = fac:CreateUiDesktopHBase(self)
     local co_bg = self.ComUi:GetChild("CommonMsgBgAndClose").asCom

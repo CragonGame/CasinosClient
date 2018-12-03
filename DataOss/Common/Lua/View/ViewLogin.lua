@@ -8,6 +8,17 @@ ViewLogin = class(ViewBase)
 function ViewLogin:ctor()
     self.AgreeAgreement = true
     self.TimerUpdate = nil
+    -- TODO，事件解绑
+    --self.btn_otherlogin = nil
+    --self.btn_otherloginex = nil
+    --self.btn_weixin = nil
+    --self.com_shadelogin = nil
+    --self.BtnLogin = nil
+    --self.btn_show_register = nil
+    --self.btn_guestaccess = nil
+    --self.btn_guestaccessex = nil
+    --self.btn_fogetpwd = nil
+    --self.com_text_code = nil
 end
 
 ---------------------------------------

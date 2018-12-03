@@ -70,12 +70,12 @@ function ControllerGrow:s2cPlayerGrowRewardSnapshotNotify(grow_data)
     local data = BGrowData:new(nil)
     data:setData(grow_data)
     self.BGrowData = data
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityOnGrowRewardSnapshot")
+    local ev = self.ViewMgr:GetEv("EvEntityOnGrowRewardSnapshot")
     if (ev == nil) then
         ev = EvEntityOnGrowRewardSnapshot:new(nil)
     end
     ev.grow_data = data
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

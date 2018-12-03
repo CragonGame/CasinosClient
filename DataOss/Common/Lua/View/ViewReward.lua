@@ -13,10 +13,11 @@ UiRewardOnline = {
     GBtnOnlineReward = nil
 }
 
-function UiRewardOnline:Create(view_mgr, com_ui)
+function UiRewardOnline:Create(view_mgr, view_reward, com_ui)
     self.ViewMgr = view_mgr
+    self.ViewReward = view_reward
     self.ComUi = com_ui
-    self.ControllerReward = ControllerReward
+    self.ControllerReward = self.ViewReward.ControllerReward
     local com_rewardonline = self.ComUi:GetChild("RewardOnline").asCom
 
     self.GTextInfo = com_rewardonline:GetChild("TextInfo").asTextField
@@ -83,10 +84,11 @@ UiRewardRelief = {
     GBtnOnlineReward = nil
 }
 
-function UiRewardRelief:Create(view_mgr, com_ui)
+function UiRewardRelief:Create(view_mgr, view_reward, com_ui)
     self.ViewMgr = view_mgr
+    self.ViewReward = view_reward
     self.ComUi = com_ui
-    self.ControllerReward = ControllerReward
+    self.ControllerReward = self.ViewReward.ControllerReward
 end
 
 function UiRewardRelief:Destroy()
@@ -105,10 +107,11 @@ UiRewardTiming = {
     CanGetTimingReward = false
 }
 
-function UiRewardTiming:Create(view_mgr, com_ui)
+function UiRewardTiming:Create(view_mgr, view_reward, com_ui)
     self.ViewMgr = view_mgr
+    self.ViewReward = view_reward
     self.ComUi = com_ui
-    self.ControllerReward = ControllerReward
+    self.ControllerReward = self.ViewReward.ControllerReward
     local com_rewardtiming = self.ComUi:GetChild("RewardTiming").asCom
 
     self.GTextInfo = com_rewardtiming:GetChild("TextInfo").asTextField
@@ -154,7 +157,7 @@ ViewReward = class(ViewBase)
 ---------------------------------------
 function ViewReward:ctor()
     self.Tween = nil
-    self.ControllerReward = ControllerReward
+    self.ControllerReward = self.ControllerMgr:GetController("Reward")
     self.UiRewardOnline = UiRewardOnline
     self.UiRewardRelief = UiRewardRelief
     self.UiRewardTiming = UiRewardTiming
@@ -180,9 +183,9 @@ function ViewReward:OnCreate()
             end
     )
 
-    self.UiRewardOnline:Create(self.ViewMgr, self.ComUi)
-    self.UiRewardRelief:Create(self.ViewMgr, self.ComUi)
-    self.UiRewardTiming:Create(self.ViewMgr, self.ComUi)
+    self.UiRewardOnline:Create(self.ViewMgr, self, self.ComUi)
+    self.UiRewardRelief:Create(self.ViewMgr, self, self.ComUi)
+    self.UiRewardTiming:Create(self.ViewMgr, self, self.ComUi)
 end
 
 ---------------------------------------

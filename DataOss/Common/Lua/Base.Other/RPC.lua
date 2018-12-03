@@ -1,13 +1,16 @@
 -- Copyright (c) Cragon. All rights reserved.
 
 ---------------------------------------
-RPC = {}
+RPC = {
+    MapMethodInfo = {},
+    MessagePack = nil,
+    RpcSession = CS.Casinos.CasinosContext.Instance.NetMgr.RpcSession
+}
 
 ---------------------------------------
 function RPC:Setup()
     self.MapMethodInfo = {}
-    self.MessagePack = require("MessagePack")
-    self.MessagePack.set_string("binary")
+    self.MessagePack = Context.MessagePack
     self.RpcSession = CS.Casinos.CasinosContext.Instance.NetMgr.RpcSession
 end
 
@@ -60,10 +63,10 @@ end
 
 ---------------------------------------
 function RPC.OnRpcMethod(method_id, data)
-    local rpc = RPC:new(nil)
-    local reciver = rpc.MapMethodInfo[method_id]
+    --local rpc = RPC:new(nil)
+    local reciver = RPC.MapMethodInfo[method_id]
     if (reciver ~= nil) then
-        reciver:ReciverData(rpc.MessagePack, data)
+        reciver:ReciverData(RPC.MessagePack, data)
     end
 end
 

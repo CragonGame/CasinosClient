@@ -15,7 +15,7 @@ end
 function ViewGiftShop:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("GiftShop"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ViewPool = self.ViewMgr:GetView("Pool")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton

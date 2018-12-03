@@ -57,9 +57,9 @@ end
 function ControllerMarquee:s2cIMMarqueeNotify(im_marquee)
     local data = BIMMarquee:new(nil)
     data:setData(im_marquee)
-    local view_shootingtext = self.ControllerMgr.ViewMgr:GetView("ShootingText")
+    local view_shootingtext = self.ViewMgr:GetView("ShootingText")
     if (view_shootingtext == nil) then
-        view_shootingtext = self.ControllerMgr.ViewMgr:CreateView("ShootingText")
+        view_shootingtext = self.ViewMgr:CreateView("ShootingText")
         view_shootingtext:init(false, true, true)
     end
 
@@ -85,12 +85,12 @@ function ControllerMarquee:s2cIMMarqueeNotify(im_marquee)
     end
     table.insert(self.ListIMMarquee, data)
 
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityReceiceMarquee")
+    local ev = self.ViewMgr:GetEv("EvEntityReceiceMarquee")
     if (ev == nil) then
         ev = EvEntityReceiceMarquee:new(nil)
     end
     ev.im_marquee = data
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

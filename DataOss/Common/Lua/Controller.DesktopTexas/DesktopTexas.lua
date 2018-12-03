@@ -248,7 +248,7 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
         end
     end
 
-    local view_mgr = self.ControllerDesktop.ControllerMgr.ViewMgr
+    local view_mgr = self.ControllerDesktop.ViewMgr
     local ui_desk = view_mgr:GetView("DesktopTexas")
     if (ui_desk == nil) then
         ui_desk = view_mgr:CreateView("DesktopTexas")

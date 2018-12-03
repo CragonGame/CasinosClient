@@ -13,8 +13,8 @@ end
 ---------------------------------------
 function ViewChat:OnCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ViewPool = self.ViewMgr:GetView("Pool")
     self.MapChat = self.ControllerPlayer:getDesktopChat()
     local co_shade = self.ComUi:GetChild("CoShade").asCom

@@ -44,12 +44,12 @@ function ControllerLobby:OnHandleEv(ev)
         self:RequestSearchDesktop(ev.desktop_searchfilter)
     elseif (ev.EventName == "EvUiClickSearchFriendsDesk") then
         local list_playerinfo = self.ControllerIM.IMFriendList:getInDesktopFriendList(ev.friend_state)
-        local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntitySearchPlayingFriend")
+        local ev = self.ViewMgr:GetEv("EvEntitySearchPlayingFriend")
         if (ev == nil) then
             ev = EvEntitySearchPlayingFriend:new(nil)
         end
         ev.list_playerinfo = list_playerinfo
-        self.ControllerMgr.ViewMgr:SendEv(ev)
+        self.ViewMgr:SendEv(ev)
     elseif (ev.EventName == "EvUiClickPlayInDesk") then
         self:RequestEnterDesktop(ev.desk_etguid, true, ev.seat_index, ev.desktop_filter:getData4Pack())
     elseif (ev.EventName == "EvUiClickViewInDesk") then
@@ -60,7 +60,7 @@ function ControllerLobby:OnHandleEv(ev)
         if ((ev.desk_etguid ~= self_desktop_etguid) and (ev.desk_etguid ~= nil and ev.desk_etguid ~= "")) then
             self:RequestEnterDesktop(ev.desk_etguid, false, ev.seat_index, ev.desktop_filter)
         else
-            ViewHelper:UiShowInfoSuccess(self.ControllerMgr.ViewMgr.LanMgr:getLanValue("SameTableTips"))
+            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("SameTableTips"))
         end
     elseif (ev.EventName == "EvUiClickLeaveLobby") then
         self:LeavePlayModel()
@@ -83,7 +83,7 @@ end
 
 ---------------------------------------
 function ControllerLobby:RequestLeaveDesktop()
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.ViewMgr.LanMgr:getLanValue("LeavingTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("LeavingTable"))
     self.ControllerMgr.RPC:RPC0(CommonMethodType.DesktopPlayerLeaveRequest)
 end
 
@@ -97,12 +97,12 @@ function ControllerLobby:OnSearchDesktopListNotify(list_desktopinfo)
         d_info.DesktopData = v[3]
         table.insert(l_desktopinfo, d_info)
     end
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntityGetLobbyDeskList")
+    local ev = self.ViewMgr:GetEv("EvEntityGetLobbyDeskList")
     if (ev == nil) then
         ev = EvEntityGetLobbyDeskList:new()
     end
     ev.list_desktop = l_desktopinfo
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
@@ -111,34 +111,34 @@ function ControllerLobby:OnSearchDesktopByPlayerGuidNotify(desktop_info)
     d_info.FactoryName = desktop_info[1]
     d_info.DesktopGuid = desktop_info[2]
     d_info.DesktopData = desktop_info[3]
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvEntitySearchDesktopFollowFriend")
+    local ev = self.ViewMgr:GetEv("EvEntitySearchDesktopFollowFriend")
     if (ev == nil) then
         ev = EvEntitySearchDesktopFollowFriend:new()
     end
     ev.desktop_info = d_info
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------
 function ControllerLobby:RequestSearchDesktop(search_filter)
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.ViewMgr.LanMgr:getLanValue("SearchTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
     local p_d = search_filter:getData4Pack()
     self.ControllerMgr.RPC:RPC1(CommonMethodType.SearchDesktopListRequest, p_d)
 end
 
 ---------------------------------------
 function ControllerLobby:RequestSearchDesktopFollowFriend(desktop_etguid)
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.ViewMgr.LanMgr:getLanValue("SearchTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
 end
 
 ---------------------------------------
 function ControllerLobby:RequestSearchPlayingFriend(desktop_type)
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.ViewMgr.LanMgr:getLanValue("SearchTable"));
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"));
 end
 
 ---------------------------------------
 function ControllerLobby:RequestEnterDesktop(desktop_etguid, player_or_view, seat_index, desktop_filter)
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.ViewMgr.LanMgr:getLanValue("EnterTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
     local enter_request = DesktopEnterRequest:new(nil)
     enter_request.desktop_guid = desktop_etguid
     enter_request.seat_index = seat_index
@@ -154,7 +154,7 @@ end
 
 ---------------------------------------
 function ControllerLobby:RequestPlayNow(desktop_filter)
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.ViewMgr.LanMgr:getLanValue("EnterTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
     local data = desktop_filter:getData4Pack()
     self.ControllerMgr.RPC:RPC1(CommonMethodType.PlayerPlayNowRequest, data)
 end

@@ -12,7 +12,7 @@ end
 ---------------------------------------
 function ViewLobby:OnCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerFriendOrBet = self.ComUi:GetController("ControllerFriendOrBet")
     self.ControllerFriendOrBet:SetSelectedIndex(1)
     self.GTextBetHints = self.ComUi:GetChild("BetHint").asTextField

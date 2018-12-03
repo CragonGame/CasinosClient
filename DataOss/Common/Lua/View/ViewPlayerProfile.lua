@@ -14,11 +14,11 @@ end
 function ViewPlayerProfile:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
-    self.ControllerDeskTop = self.ViewMgr.ControllerMgr:GetController("DesktopTexas")
-    self.ControllerDeskTopH = self.ViewMgr.ControllerMgr:GetController("DesktopH")
-    self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
+    self.ControllerDeskTop = self.ControllerMgr:GetController("DesktopTexas")
+    self.ControllerDeskTopH = self.ControllerMgr:GetController("DesktopH")
+    self.ControllerIM = self.ControllerMgr:GetController("IM")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ViewPool = self.ViewMgr:GetView("Pool")
     self.ListGift = {}
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom

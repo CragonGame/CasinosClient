@@ -14,8 +14,8 @@ end
 ---------------------------------------
 function ViewNotice:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiceMarquee", self)
-    self.ControllerMarquee = self.ViewMgr.ControllerMgr:GetController("Marquee")
-    self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
+    self.ControllerMarquee = self.ControllerMgr:GetController("Marquee")
+    self.ControllerBag = self.ControllerMgr:GetController("Bag")
     self.ViewPool = self.ViewMgr:GetView("Pool")
     self.GCoShade = self.ComUi:GetChild("CoShade").asCom
     self.GCoShade.onClick:Add(

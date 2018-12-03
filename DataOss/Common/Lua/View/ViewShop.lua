@@ -24,7 +24,7 @@ function ViewShop:OnCreate()
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.MapShopDiamond = {}
     self.MapShopGold = {}
     self.MapShopItemCosume = {}
@@ -400,7 +400,7 @@ function ViewShop:setListGoods(goodsType)
                 local btn_title = self.ViewMgr.LanMgr:getLanValue("Exchange")
                 local item = ItemUiShopGoods:new(nil, com, table.concat(discirbe), url, btn_title,
                         function()
-                            local controller_bag = self.ViewMgr.ControllerMgr:GetController("Bag")
+                            local controller_bag = self.ControllerMgr:GetController("Bag")
                             local have_i, item_ex = controller_bag:haveItem(tb_item.Id)
                             if (have_i) then
                                 --请求使用实物兑换券兑换实物
@@ -411,7 +411,7 @@ function ViewShop:setListGoods(goodsType)
                                 ev.ItemObjId = item_ex.ItemData.item_objid
                                 self.ViewMgr:SendEv(ev)
                             else
-                                ViewHelper:UiShowInfoFailed(self.ViewMgr.ControllerMgr.LanMgr:getLanValue("NotEnoughVoucher"))
+                                ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("NotEnoughVoucher"))
                             end
                         end
                 )

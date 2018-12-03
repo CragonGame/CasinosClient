@@ -12,7 +12,7 @@ end
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequest:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("FriendRequest"))
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(

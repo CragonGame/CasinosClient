@@ -219,26 +219,26 @@ end
 
 ---------------------------------------
 function Native:ActionLoginFailed(fail_type)
-    local native = Native.Instance
+    --local native = Native.Instance
     ViewHelper:UiEndWaiting()
     local tips = ""
     if fail_type == "ERR_COMM" then
-        tips = native.ViewMgr.LanMgr:getLanValue("ERRCOMM")
+        tips = Native.ViewMgr.LanMgr:getLanValue("ERRCOMM")
     elseif fail_type == "ERR_USER_CANCEL" then
-        tips = native.ViewMgr.LanMgr:getLanValue("ERRUSERCANCEL")
+        tips = Native.ViewMgr.LanMgr:getLanValue("ERRUSERCANCEL")
     elseif fail_type == "ERR_SENT_FAILED" then
-        tips = native.ViewMgr.LanMgr:getLanValue("ERRSENTFAILED")
+        tips = Native.ViewMgr.LanMgr:getLanValue("ERRSENTFAILED")
     elseif fail_type == "ERR_AUTH_DENIED" then
-        tips = native.ViewMgr.LanMgr:getLanValue("ERRAUTHDENIED")
+        tips = Native.ViewMgr.LanMgr:getLanValue("ERRAUTHDENIED")
     elseif fail_type == "ERR_UNSUPPORT" then
-        tips = native.ViewMgr.LanMgr:getLanValue("ERRUNSUPPORT")
+        tips = Native.ViewMgr.LanMgr:getLanValue("ERRUNSUPPORT")
     elseif fail_type == "ERR_NOTINSTALLEDWECHAT" then
         self.Context.Cfg.ClientWechatIsInstalled = false
     else
         if fail_type == "-2" then
-            tips = native.ViewMgr.LanMgr:getLanValue("ERRUSERCANCEL")
+            tips = Native.ViewMgr.LanMgr:getLanValue("ERRUSERCANCEL")
         else
-            local t = native.ViewMgr.LanMgr:getLanValue("ERRUNKNOWN")
+            local t = Native.ViewMgr.LanMgr:getLanValue("ERRUNKNOWN")
             tips = string.format(t, fail_type)
         end
     end

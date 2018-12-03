@@ -86,10 +86,10 @@ function ViewDesktopTexas:OnCreate()
 
     self.Flow = UiDesktopTexasFlow:new(nil, self)
     self.Flow:Create()
-    self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
-    self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
-    self.ControllerDesktop = self.ViewMgr.ControllerMgr:GetController("DesktopTexas")
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
+    self.ControllerLotteryTicket = self.ControllerMgr:GetController("LotteryTicket")
+    self.ControllerIM = self.ControllerMgr:GetController("IM")
+    self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.UiChipMgr = UiChipMgrEx:new(nil, false)
     self.UiDesktopChatParent = self.ViewMgr:CreateView("DesktopChatParent")
     local ui_shootingtext = self.ViewMgr:GetView("ShootingText")
@@ -1008,7 +1008,7 @@ end
 ---------------------------------------
 -- 左上角菜单按钮小红点呼吸动画
 function ViewDesktopTexas:RefreshRedPointRewardState()
-    local ctrl_reward = self.ViewMgr.ControllerMgr:GetController("Reward")
+    local ctrl_reward = self.ControllerMgr:GetController("Reward")
     if ctrl_reward.RedPointRewardShow == false then
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else

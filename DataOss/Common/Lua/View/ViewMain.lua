@@ -14,6 +14,7 @@ function ViewMain:ctor()
     self.Context = Context
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.PokerGirlMain = "PokerGirMain"
+    self.NewFriendChatCount = 0
 end
 
 ---------------------------------------
@@ -25,13 +26,13 @@ function ViewMain:OnCreate()
     self.MapFriend = {}
     self.ListHeadIconFriend = {}
     self.ListHeadIconRecommond = {}
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
-    self.ControllerIM = self.ViewMgr.ControllerMgr:GetController("IM")
-    self.ControllerBag = self.ViewMgr.ControllerMgr:GetController("Bag")
-    self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
-    self.ControllerLotteryTicket = self.ViewMgr.ControllerMgr:GetController("LotteryTicket")
-    self.ControllerLogin = self.ViewMgr.ControllerMgr:GetController("Login")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
+    self.ControllerIM = self.ControllerMgr:GetController("IM")
+    self.ControllerBag = self.ControllerMgr:GetController("Bag")
+    self.ControllerLotteryTicket = self.ControllerMgr:GetController("LotteryTicket")
+    self.ControllerLotteryTicket = self.ControllerMgr:GetController("LotteryTicket")
+    self.ControllerLogin = self.ControllerMgr:GetController("Login")
     local btn_desktop = self.ComUi:GetChild("BtnDeskTop").asButton
     btn_desktop.onClick:Add(
             function()
@@ -662,7 +663,7 @@ end
 
 ---------------------------------------
 function ViewMain:RefreshRedPointRewardState()
-    local ctrl_reward = self.ViewMgr.ControllerMgr:GetController("Reward")
+    local ctrl_reward = self.ControllerMgr:GetController("Reward")
     if ctrl_reward.RedPointRewardShow == false then
         ViewHelper:SetGObjectVisible(false, self.ComRewardTips)
     else

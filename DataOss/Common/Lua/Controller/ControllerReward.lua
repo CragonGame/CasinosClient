@@ -9,9 +9,13 @@ ControllerReward = class(ControllerBase)
 ---------------------------------------
 function ControllerReward:ctor(this, controller_data, controller_name)
     self.TimerUpdate = nil
-    self.RewardOnline = RewardOnline:new(self.ControllerMgr, self.ViewMgr)
-    self.RewardTiming = RewardTiming:new(self.ControllerMgr, self.ViewMgr)
+    self.RewardOnline = RewardOnline
+    self.RewardRelief = RewardRelief
+    self.RewardTiming = RewardTiming
     self.RedPointRewardShow = false-- 小红点显示状态
+    self.RewardOnline:Setup(self.ControllerMgr, self.ViewMgr, self)
+    self.RewardRelief:Setup(self.ControllerMgr, self.ViewMgr, self)
+    self.RewardTiming:Setup(self.ControllerMgr, self.ViewMgr, self)
 end
 
 ---------------------------------------
@@ -64,13 +68,13 @@ function ControllerReward:RefreshRedPoint()
         self.RedPointRewardShow = true
     end
 
-    local ev = self.ControllerMgr.ViewMgr:GetEv("EvCtrlRewardRedPointStateChange")
+    local ev = self.ViewMgr:GetEv("EvCtrlRewardRedPointStateChange")
     if (ev == nil) then
         ev = EvCtrlRewardRedPointStateChange:new(nil)
     end
     ev.RedPointType = 'Reward';
     ev.Show = self.RedPointRewardShow;
-    self.ControllerMgr.ViewMgr:SendEv(ev)
+    self.ViewMgr:SendEv(ev)
 end
 
 ---------------------------------------

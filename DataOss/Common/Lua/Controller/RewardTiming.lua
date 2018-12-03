@@ -5,19 +5,15 @@
 RewardTiming = {}
 
 ---------------------------------------
-function RewardTiming:new(controller_mgr, view_mgr)
-    local o = {}
-    setmetatable(o, self)
-    self.__index = self
-    self.ViewMgr = view_mgr
-    self.ControllerReward = ControllerReward
+function RewardTiming:Setup(controller_mgr, view_mgr, controller_reward)
     self.ControllerMgr = controller_mgr
+    self.ViewMgr = view_mgr
+    self.ControllerReward = controller_reward
     self.MC = CommonMethodType
     self.Type = TimingRewardType.None
     self.Get = false
     self.RewardGold = 0
     self.CanGetReward = false
-    return o
 end
 
 ---------------------------------------

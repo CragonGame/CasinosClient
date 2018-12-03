@@ -62,9 +62,9 @@ function ControllerTrade:OnHandleEv(ev)
     elseif (ev.EventName == "EvUiRequestFirstRecharge") then
         self:BuyBillingItem(true, 0)
     elseif (ev.EventName == "EvUiClickShop") then
-        self.ControllerMgr.ViewMgr:CreateView("Shop")
-        local view_friend = self.ControllerMgr.ViewMgr:GetView("Friend")
-        self.ControllerMgr.ViewMgr:DestroyView(view_friend)
+        self.ViewMgr:CreateView("Shop")
+        local view_friend = self.ViewMgr:GetView("Friend")
+        self.ViewMgr:DestroyView(view_friend)
     elseif (ev.EventName == "EvEntityBuyVIP") then
         self:BuyBillingItem(false, ev.buy_id)
     elseif (ev.EventName == "EvUiBuyItem") then
@@ -280,7 +280,7 @@ function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
     --if (self.CasinosContext.UnityAndroid == true)
     --then
     if self.Context.Cfg.ChipIconSolustion ~= 1 then
-        local view_paytype = self.ControllerMgr.ViewMgr:CreateView("PayType")
+        local view_paytype = self.ViewMgr:CreateView("PayType")
         view_paytype:BuyItem(is_first_recharge, tb_id)
     else
         if is_first_recharge == false then

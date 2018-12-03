@@ -14,9 +14,9 @@ end
 function ViewGiftDetail:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi)
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerActor = self.ViewMgr.ControllerMgr:GetController("Actor")
-    self.ControllerDesktop = self.ViewMgr.ControllerMgr:GetController("DesktopTexas")
-    self.ControllerPlayer = self.ViewMgr.ControllerMgr:GetController("Player")
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+    self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
+    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.mInDesktop = (self.ControllerDesktop.DesktopBase ~= nil)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom

@@ -95,7 +95,6 @@ function ViewMgr:CreateView(view_key)
     ui_panel.fitScreen = view_factory.FitScreen
     ui_panel:ApplyModifiedProperties(true, true)
     view = view_factory:CreateView()
-    view.ViewMgr = self
     view.GoUi = go
     view.ComUi = ui_panel.ui
     view.Panel = ui_panel

@@ -36,7 +36,7 @@ function ViewShare:SetPlayerInfo(nick_name, account_id, share_type)
     if (icon ~= nil and string.len(icon) > 0) then
         self.LoaderIcon.icon = self.Context.Cfg.PlayerIconDomain .. icon
     end
-    self.LoaderQRCode.texture = CS.FairyGUI.NTexture(Native.Instance.PlayerQRCodeTexture)
+    self.LoaderQRCode.texture = CS.FairyGUI.NTexture(Native.PlayerQRCodeTexture)
 end
 
 ---------------------------------------
