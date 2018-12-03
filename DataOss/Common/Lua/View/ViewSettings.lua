@@ -2,15 +2,15 @@
 -- 关于对话框的设置模块
 
 ---------------------------------------
-ViewEdit = class(ViewBase)
+ViewSettings = class(ViewBase)
 
 ---------------------------------------
-function ViewEdit:ctor()
+function ViewSettings:ctor()
     self.Tween = nil
 end
 
 ---------------------------------------
-function ViewEdit:OnCreate()
+function ViewSettings:OnCreate()
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Edit"))
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
@@ -83,7 +83,7 @@ function ViewEdit:OnCreate()
 end
 
 ---------------------------------------
-function ViewEdit:OnDestroy()
+function ViewSettings:OnDestroy()
     if self.Tween ~= nil then
         self.Tween:Kill(false)
         self.Tween = nil
@@ -91,7 +91,7 @@ function ViewEdit:OnDestroy()
 end
 
 ---------------------------------------
-function ViewEdit:onClickBtnSwitch()
+function ViewSettings:onClickBtnSwitch()
     local screen = CS.UnityEngine.Screen
     if (self.GBtnSwitchScreenAutoRotation.selected == true) then
         CS.UnityEngine.PlayerPrefs.SetString("ScreenAutoRotation", "true")
@@ -107,40 +107,40 @@ function ViewEdit:onClickBtnSwitch()
 end
 
 ---------------------------------------
-function ViewEdit:sliderMusicChange()
+function ViewSettings:sliderMusicChange()
     local current_value = self.SoundBar.value
     current_value = current_value / 100
     CS.UnityEngine.PlayerPrefs.SetFloat(CS.Casinos.SoundMgr.BGMusicKey, current_value)
-    CS.Casinos.CasinosContext.Instance:bgVolumeChange(current_value)
+    self.CasinosContext:BgVolumeChange(current_value)
 end
 
 ---------------------------------------
-function ViewEdit:sliderSoundChange()
+function ViewSettings:sliderSoundChange()
     local current_value = self.SoundEffectBar.value
     current_value = current_value / 100
     CS.UnityEngine.PlayerPrefs.SetFloat(CS.Casinos.SoundMgr.SoundKey, current_value)
 end
 
 ---------------------------------------
-function ViewEdit:onClickResetPwd()
+function ViewSettings:onClickResetPwd()
     self.ViewMgr:CreateView("ResetPwd")
 end
 
 ---------------------------------------
-function ViewEdit:onClickSelectLan()
+function ViewSettings:onClickSelectLan()
     self.ViewMgr:CreateView("ChooseLan")
 end
 
 ---------------------------------------
-function ViewEdit:onClickBtnReturn()
+function ViewSettings:onClickBtnReturn()
     self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
-ViewEditFactory = class(ViewFactory)
+ViewSettingsFactory = class(ViewFactory)
 
 ---------------------------------------
-function ViewEditFactory:CreateView()
-    local view = ViewEdit:new()
+function ViewSettingsFactory:CreateView()
+    local view = ViewSettings:new()
     return view
 end

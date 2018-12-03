@@ -162,7 +162,7 @@ function ViewMain:OnCreate()
     local btn_set = com_more:GetChild("BtnSet").asButton
     btn_set.onClick:Add(
             function()
-                self:onClickBtnSet()
+                self:onClickBtnSettings()
             end
     )
     local btn_bag = com_more:GetChild("BtnBag").asButton
@@ -889,12 +889,12 @@ function ViewMain:onClickBtnMore()
 end
 
 ---------------------------------------
-function ViewMain:onClickBtnSet()
-    local view_edit = self.ViewMgr:GetView("Edit")
-    if (view_edit == nil) then
-        self.ViewMgr:CreateView("Edit")
+function ViewMain:onClickBtnSettings()
+    local view_settings = self.ViewMgr:GetView("Settings")
+    if (view_settings == nil) then
+        self.ViewMgr:CreateView("Settings")
     else
-        self.ViewMgr:DestroyView(view_edit)
+        self.ViewMgr:DestroyView(view_settings)
     end
 end
 
