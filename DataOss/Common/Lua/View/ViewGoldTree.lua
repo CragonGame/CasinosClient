@@ -15,6 +15,12 @@ function ViewGoldTree:OnCreate()
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
+    local com_shade = com_bg:GetChild("ComShade").asCom
+    com_shade.onClick:Add(
+            function()
+                self:onClickBtnReturn()
+            end
+    )
     local btn_close = com_bg:GetChild("BtnClose").asButton
     btn_close.onClick:Add(
             function()

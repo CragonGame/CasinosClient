@@ -810,8 +810,8 @@ Resources.KingTexas/Ui/giftdetail.ab 6EB0EB8D760B4D100F42187114D88426
 Resources.KingTexas/Ui/giftdetail.ab.manifest EA23138B4F24F67F55F312839FC3EA8F
 Resources.KingTexas/Ui/giftshop.ab ADF6EF983CD8163EBAEC3C2395D5F493
 Resources.KingTexas/Ui/giftshop.ab.manifest 2FFB080FA8F5996F8B2918AC10EFEDC3
-Resources.KingTexas/Ui/goldtree.ab 1BFF186760F1C350F81CE4F08CE93417
-Resources.KingTexas/Ui/goldtree.ab.manifest 9D5493DC298A0F46EA5059A2AD463E7C
+Resources.KingTexas/Ui/goldtree.ab 75A8308C6E997DFAE808DFEF60BCE429
+Resources.KingTexas/Ui/goldtree.ab.manifest 1E323DC1A87A87F489AEADA800BC330E
 Resources.KingTexas/Ui/idcardcheck.ab ADD820C75C3705EB8AB8584B71829F41
 Resources.KingTexas/Ui/idcardcheck.ab.manifest B6F40792DDBBC4F2C3874B4CB62D41E2
 Resources.KingTexas/Ui/invitefriendplay.ab F2FF640BC1C4E5450391CEFD32E77453
@@ -884,8 +884,8 @@ Resources.KingTexas/Ui/snowballreward.ab D4B1EB71B504CA6B21A3A5278578B9FD
 Resources.KingTexas/Ui/snowballreward.ab.manifest 0760E5F1C8F5B140CED1B97F19C8C160
 Resources.KingTexas/Ui/takephoto.ab 58C9BD45F6287E017C29AD8A8CDADC2F
 Resources.KingTexas/Ui/takephoto.ab.manifest 19AF96155D4C4243B99B88B8B1C8CD30
-Resources.KingTexas/Ui/Ui 36BC12515BB13D8A2888AD968E5377F2
-Resources.KingTexas/Ui/Ui.manifest DBCC750843563C5A40D7E8B977784B05
+Resources.KingTexas/Ui/Ui D19DF4E0ABBB4E18DDFCD2675AEA63A8
+Resources.KingTexas/Ui/Ui.manifest BD5B66A5BEC066283A420086B379AF42
 Resources.KingTexas/Ui/wallet.ab C2C3EDF8950B7E667617D5A2CB29EB5D
 Resources.KingTexas/Ui/wallet.ab.manifest 7AEF601AD62CBB477AFB3099EADE0B4D
 Resources.KingTexasLaunch/denglong.ab 44E6B94A6CB97509F86425BB8D62BCDB

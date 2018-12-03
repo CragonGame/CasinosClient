@@ -394,7 +394,7 @@ function Context:_nextLaunchStep()
             "DesktopHMenu", "DesktopHHelp", "DesktopHResult", "DesktopHSetCardType", "DesktopHTongSha", "DesktopHTongPei",
             "Edit", "EditAddress", "EnterMatchNotify",
             "Friend", "FriendOnLine", "Feedback",
-            "GetChipEffect", "GiftDetail", "GiftShop",
+            "GetChipEffect", "GiftDetail", "GiftShop", "GoldTree",
             "IdCardCheck", "InviteFriendPlay",
             "JoinMatch",
             "LanZh", "LanEn", "LanZhAndroid", "Loading", "LockChat", "Login", "LotteryTicket",

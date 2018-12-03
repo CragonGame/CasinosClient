@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 4018361565
+CRC: 2184584945
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: wallet.ab
+      Name: goldtree.ab
       Dependencies: {}
