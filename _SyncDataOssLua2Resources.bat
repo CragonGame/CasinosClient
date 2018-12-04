@@ -1,2 +1,2 @@
-robocopy .\DataOss\Common\Lua\Launch\ .\Assets\Resources\Lua\Launch\ /mir
+robocopy .\Assets\Script.Lua\Launch\ .\Assets\Resources\Lua\Launch\ /mir
 pause

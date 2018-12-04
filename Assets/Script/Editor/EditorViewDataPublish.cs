@@ -115,7 +115,7 @@ public class EditorViewDataPublish : EditorWindow
         if (GUILayout.Button("生成CommonFileList.txt", GUILayout.Width(200)))
         {
             AssetDatabase.Refresh();
-            var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.lua", "Context.lua" };
+            var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.txt", "Context.txt" };
             _genCommonFileList(ignore_files);
             AssetDatabase.Refresh();
         }
@@ -285,101 +285,26 @@ public class EditorViewDataPublish : EditorWindow
         }
         EditorUserBuildSettings.SwitchActiveBuildTarget(build_target_group, build_target);
 
-        UnityEngine.Object[] select_objs = Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.DeepAssets);
+        List<string> list_file = new List<string>();
+        var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.txt", "Context.txt" };
+        _getDataFileList2(list_file, ignore_files, "D:/CasinosClientGithub/Assets/Script.Lua/");
 
-        Dictionary<string, List<string>> map_single_pkg = new Dictionary<string, List<string>>();
-        Dictionary<string, List<string>> map_fold_pkg = new Dictionary<string, List<string>>();
-        Dictionary<string, List<string>> map_fold_launch = new Dictionary<string, List<string>>();
-
-        foreach (var i in select_objs)
-        {
-            string path_asset = AssetDatabase.GetAssetPath(i);
-
-            string extension = Path.GetExtension(path_asset);
-            if (DoNotPackFileExtention.Contains(extension) || string.IsNullOrEmpty(extension)) continue;
-
-            string file_name = Path.GetFileName(path_asset);
-
-            if (path_asset.Contains(AssetBundleSingleFoldName))
-            {
-                string key = Directory.GetParent(path_asset).Name;
-
-                List<string> list_directory = null;
-                map_single_pkg.TryGetValue(key, out list_directory);
-                if (list_directory == null)
-                {
-                    list_directory = new List<string>();
-                    map_single_pkg[key] = list_directory;
-                }
-
-                list_directory.Add(path_asset);
-            }
-            else if (path_asset.Contains(AssetBundlePkgFoldFoldName))
-            {
-                string fold = path_asset;
-                fold = fold.Replace("Assets/", "");
-                fold = fold.Replace(AssetBundlePkgFoldFoldName + "/", "");
-                fold = EditorContext.Instance.PathDataOss + platform.ToString() + "/" + fold;
-                fold = fold.Replace(file_name, "");
-
-                List<string> list_directory = null;
-                map_fold_pkg.TryGetValue(fold, out list_directory);
-                if (list_directory == null)
-                {
-                    list_directory = new List<string>();
-                    map_fold_pkg[fold] = list_directory;
-                }
-
-                list_directory.Add(path_asset);
-            }
-            else if (path_asset.Contains(AssetBundleLaunchFoldName))
-            {
-                string fold = path_asset;
-                fold = fold.Replace("Assets/", "");
-                fold = EditorContext.Instance.PathDataOss + platform.ToString() + "/" + fold;
-                fold = fold.Replace(file_name, "");
-
-                List<string> list_directory = null;
-                map_fold_launch.TryGetValue(fold, out list_directory);
-                if (list_directory == null)
-                {
-                    list_directory = new List<string>();
-                    map_fold_launch[fold] = list_directory;
-                }
-
-                list_directory.Add(path_asset);
-            }
-        }
-
-        bool b = _pakABSingleEx(map_single_pkg, platform, build_target);
+        string ab_name1 = "lua_android.ab";
+        bool b = _pakAbLuaEx(list_file, ab_name1, platform, build_target);
         if (!b)
         {
             Debug.LogError("BuildAssetBundle失败！");
             return;
         }
 
-        foreach (var i in map_fold_pkg)
+        list_file.Clear();
+        _getDataFileList2(list_file, ignore_files, "D:/CasinosClientGithub/Assets/Script.Lua/Launch/");
+        ab_name1 = "lua_launch_android.ab";
+        b = _pakAbLuaEx(list_file, ab_name1, platform, build_target);
+        if (!b)
         {
-            List<string> list_samefold_file = i.Value;
-            AssetBundleManifest ab_manifest = _pakABFoldEx(i.Key, list_samefold_file, build_target);
-
-            if (ab_manifest == null)
-            {
-                Debug.LogError("BuildAssetBundle失败！");
-                return;
-            }
-        }
-
-        foreach (var i in map_fold_launch)
-        {
-            List<string> list_samefold_file = i.Value;
-            AssetBundleManifest ab_manifest = _pakABFoldEx(i.Key, list_samefold_file, build_target);
-
-            if (ab_manifest == null)
-            {
-                Debug.LogError("BuildAssetBundle失败！");
-                return;
-            }
+            Debug.LogError("BuildAssetBundle失败！");
+            return;
         }
 
         ShowNotification(new GUIContent("BuildAssetBundle Finished!"));
@@ -509,6 +434,37 @@ public class EditorViewDataPublish : EditorWindow
     }
 
     //-------------------------------------------------------------------------
+    bool _pakAbLuaEx(List<string> list_file, string ab_name, Casinos._eEditorRunSourcePlatform platform, BuildTarget build_target)
+    {
+        AssetBundleBuild abb = new AssetBundleBuild();
+        abb.assetBundleName = ab_name;
+        abb.assetBundleVariant = "";
+        abb.addressableNames = null;
+
+        int asset_index = 0;
+        abb.assetNames = new string[list_file.Count];
+        foreach (var j in list_file)
+        {
+            string j1 = j.Replace('\\', '/');
+            string sss = j1.Replace("D:/CasinosClientGithub/", "");
+            abb.assetNames[asset_index++] = sss;
+        }
+
+        AssetBundleBuild[] arr_abb = new AssetBundleBuild[1];
+        arr_abb[0] = abb;
+
+        AssetBundleManifest ab_manifest = BuildPipeline.BuildAssetBundles("D:/CasinosClientGithub/DataOss/Common/Lua",
+            arr_abb,
+            BuildAssetBundleOptions.ForceRebuildAssetBundle, build_target);
+        if (ab_manifest == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    //-------------------------------------------------------------------------
     bool _pakABSingleEx(Dictionary<string, List<string>> map_single_pkg,
         Casinos._eEditorRunSourcePlatform platform, BuildTarget build_target)
     {
@@ -630,73 +586,6 @@ public class EditorViewDataPublish : EditorWindow
     }
 
     //-------------------------------------------------------------------------
-    //void _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform platform)
-    //{
-    //    string path_rawdata = string.Empty;
-    //    string path_lua = string.Empty;
-    //    switch (platform)
-    //    {
-    //        case Casinos._eEditorRunSourcePlatform.Android:
-    //            path_rawdata = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexasRaw\\";
-    //            path_lua = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Script.Lua\\";
-    //            break;
-    //        case Casinos._eEditorRunSourcePlatform.IOS:
-    //            path_rawdata = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexasRaw\\";
-    //            path_lua = EditorContext.Instance.PathStreamingAssets + "IOS\\Script.Lua\\";
-    //            break;
-    //        case Casinos._eEditorRunSourcePlatform.PC:
-    //            path_rawdata = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexasRaw\\";
-    //            path_lua = EditorContext.Instance.PathStreamingAssets + "PC\\Script.Lua\\";
-    //            break;
-    //    }
-
-    //    if (Directory.Exists(path_rawdata)) Directory.Delete(path_rawdata, true);
-    //    if (Directory.Exists(path_lua)) Directory.Delete(path_lua, true);
-    //}
-
-    //-------------------------------------------------------------------------
-    //void _copyRawData(Casinos._eEditorRunSourcePlatform platform)
-    //{
-    //    string path_src = EditorContext.Instance.PathAssets + "Resources.KingTexasRaw\\";
-    //    string path_dst = string.Empty;
-    //    switch (platform)
-    //    {
-    //        case Casinos._eEditorRunSourcePlatform.Android:
-    //            path_dst = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Resources.KingTexasRaw\\";
-    //            break;
-    //        case Casinos._eEditorRunSourcePlatform.IOS:
-    //            path_dst = EditorContext.Instance.PathStreamingAssets + "IOS\\Resources.KingTexasRaw\\";
-    //            break;
-    //        case Casinos._eEditorRunSourcePlatform.PC:
-    //            path_dst = EditorContext.Instance.PathStreamingAssets + "PC\\Resources.KingTexasRaw\\";
-    //            break;
-    //    }
-
-    //    _copyDir(platform, path_src, path_dst);
-    //}
-
-    //-------------------------------------------------------------------------
-    //void _copyLua(Casinos._eEditorRunSourcePlatform platform)
-    //{
-    //    string path_src = EditorContext.Instance.PathAssets + "Script.Lua\\";
-    //    string path_dst = string.Empty;
-    //    switch (platform)
-    //    {
-    //        case Casinos._eEditorRunSourcePlatform.Android:
-    //            path_dst = EditorContext.Instance.PathStreamingAssets + "ANDROID\\Script.Lua\\";
-    //            break;
-    //        case Casinos._eEditorRunSourcePlatform.IOS:
-    //            path_dst = EditorContext.Instance.PathStreamingAssets + "IOS\\Script.Lua\\";
-    //            break;
-    //        case Casinos._eEditorRunSourcePlatform.PC:
-    //            path_dst = EditorContext.Instance.PathStreamingAssets + "PC\\Script.Lua\\";
-    //            break;
-    //    }
-
-    //    _copyDir(platform, path_src, path_dst);
-    //}
-
-    //-------------------------------------------------------------------------
     void _copyDir(Casinos._eEditorRunSourcePlatform platform, string path_src, string path_dst)
     {
         var path_dst1 = path_dst.Replace("\\", "/");
@@ -720,8 +609,8 @@ public class EditorViewDataPublish : EditorWindow
             {
                 string file_extension = Path.GetExtension(i.FullName);
                 if (DoNotPackFileExtention.Contains(file_extension)
-                    || i.Name == "Context.lua"
-                    || i.Name == "Bundle.lua") continue;
+                    || i.Name == "Context.txt"
+                    || i.Name == "Bundle.txt") continue;
 
                 File.Copy(i.FullName, path_dst1 + "/" + i.Name, true);// 不是文件夹即复制文件，true表示可以覆盖同名文件
             }
@@ -779,6 +668,39 @@ public class EditorViewDataPublish : EditorWindow
         }
 
         ShowNotification(new GUIContent("GenDataFileList Finished!"));
+    }
+
+    //-------------------------------------------------------------------------
+    void _getDataFileList2(List<string> list_file, HashSet<string> ignore_files, string cur_path)
+    {
+        string[] files = Directory.GetFiles(cur_path);
+        foreach (var i in files)
+        {
+            //string directory_name = Path.GetDirectoryName(i);
+            //directory_name = directory_name.Replace(@"\", "/");
+            //directory_name = directory_name.Substring(directory_name.LastIndexOf("/") + 1);
+
+            string file_name = Path.GetFileName(i);
+            if (ignore_files.Contains(file_name)) continue;
+
+            string file_extension = Path.GetExtension(i);
+            if (DoNotPackFileExtention.Contains(file_extension)) continue;
+
+            //string file_directory = Path.GetDirectoryName(i);
+            //file_directory = file_directory.Replace(@"\", "/");
+            //string target_path = file_directory.Replace(path_dst, "");
+            //string file_path = i;
+
+            list_file.Add(i);
+        }
+
+        string[] directorys = Directory.GetDirectories(cur_path);
+        foreach (var i in directorys)
+        {
+            if (i.Contains(".idea")) continue;
+
+            _getDataFileList2(list_file, ignore_files, i);
+        }
     }
 
     //-------------------------------------------------------------------------

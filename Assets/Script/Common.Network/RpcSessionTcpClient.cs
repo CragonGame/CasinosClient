@@ -4,47 +4,47 @@ using GameCloud.Unity.Common;
 public class RpcSessionTcpClient : RpcSession
 {
     //-------------------------------------------------------------------------
-    TcpClient tcpSocket;
+    TcpClient TcpClient;
 
     //-------------------------------------------------------------------------
     public RpcSessionTcpClient()
     {
-        tcpSocket = new TcpClient();
-        tcpSocket.OnSocketReceive += _onSocketReceive;
-        tcpSocket.OnSocketConnected += _onSocketConnected;
-        tcpSocket.OnSocketClosed += _onSocketClosed;
-        tcpSocket.OnSocketError += _onSocketError;
+        TcpClient = new TcpClient();
+        TcpClient.OnSocketReceive += _onSocketReceive;
+        TcpClient.OnSocketConnected += _onSocketConnected;
+        TcpClient.OnSocketClosed += _onSocketClosed;
+        TcpClient.OnSocketError += _onSocketError;
     }
 
     //-------------------------------------------------------------------------
     public override bool IsConnect()
     {
-        if (tcpSocket == null) return false;
+        if (TcpClient == null) return false;
 
-        return tcpSocket.IsConnected;
+        return TcpClient.IsConnected;
     }
 
     //-------------------------------------------------------------------------
     public override void Connect(string ip, int port)
     {
-        if (tcpSocket == null)
+        if (TcpClient == null)
         {
-            tcpSocket = new TcpClient();
-            tcpSocket.OnSocketReceive += _onSocketReceive;
-            tcpSocket.OnSocketConnected += _onSocketConnected;
-            tcpSocket.OnSocketClosed += _onSocketClosed;
-            tcpSocket.OnSocketError += _onSocketError;
+            TcpClient = new TcpClient();
+            TcpClient.OnSocketReceive += _onSocketReceive;
+            TcpClient.OnSocketConnected += _onSocketConnected;
+            TcpClient.OnSocketClosed += _onSocketClosed;
+            TcpClient.OnSocketError += _onSocketError;
         }
 
-        tcpSocket.Connect(ip, port);
+        TcpClient.Connect(ip, port);
     }
 
     //-------------------------------------------------------------------------
     public override void Send(ushort method_id, byte[] data)
     {
-        if (tcpSocket != null)
+        if (TcpClient != null)
         {
-            tcpSocket.Send(method_id, data);
+            TcpClient.Send(method_id, data);
         }
     }
 
@@ -56,19 +56,19 @@ public class RpcSessionTcpClient : RpcSession
     //-------------------------------------------------------------------------
     public override void Close()
     {
-        if (tcpSocket != null)
+        if (TcpClient != null)
         {
-            tcpSocket.Close();
-            tcpSocket = null;
+            TcpClient.Close();
+            TcpClient = null;
         }
     }
 
     //-------------------------------------------------------------------------
     public override void Update(float elapsed_tm)
     {
-        if (tcpSocket != null)
+        if (TcpClient != null)
         {
-            tcpSocket.Update(elapsed_tm);
+            TcpClient.Update(elapsed_tm);
         }
     }
 
@@ -92,7 +92,7 @@ public class RpcSessionTcpClient : RpcSession
     //-------------------------------------------------------------------------
     void _onSocketError(object rec, SocketErrorEventArgs args)
     {
-        //this.tcpSocket = null;
+        //TcpClient = null;
 
         if (OnSocketError != null) OnSocketError.Invoke(this, args);
     }
@@ -106,7 +106,7 @@ public class RpcSessionTcpClient : RpcSession
     //-------------------------------------------------------------------------
     void _onSocketClosed(object client, EventArgs args)
     {
-        //this.tcpSocket = null;
+        //TcpClient = null;
 
         if (OnSocketClosed != null) OnSocketClosed.Invoke(this, args);
     }

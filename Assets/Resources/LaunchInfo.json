@@ -1,10 +1,10 @@
 {
   "ListLua": [
-    "Lua/Launch/Launch.lua",
-    "Lua/Launch/PreViewBase.lua",
-    "Lua/Launch/PreViewFactory.lua",
-    "Lua/Launch/PreViewLoading.lua",
-    "Lua/Launch/PreViewMgr.lua",
-    "Lua/Launch/PreViewMsgBox.lua"
+    "Lua/Launch/Launch.txt",
+    "Lua/Launch/PreViewBase.txt",
+    "Lua/Launch/PreViewFactory.txt",
+    "Lua/Launch/PreViewLoading.txt",
+    "Lua/Launch/PreViewMgr.txt",
+    "Lua/Launch/PreViewMsgBox.txt"
   ]
 }

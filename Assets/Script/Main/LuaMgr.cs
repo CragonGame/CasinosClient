@@ -63,7 +63,6 @@ namespace Casinos
             typeof(UnityEngine.Screen),
             typeof(UnityEngine.ScreenCapture),
             typeof(UnityEngine.SystemInfo),
-            typeof(UnityEngine.Texture),
             typeof(UnityEngine.Texture3D),
             typeof(UnityEngine.Time),
             typeof(UnityEngine.Networking.UnityWebRequest),
@@ -322,7 +321,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Launch()
         {
-            // 预加载Script.Lua/Launch中的所有lua文件，显示加载界面
+            // 预加载Script.Lua/Launch中的所有txt文件，显示加载界面
             var path_mgr = CasinosContext.Instance.PathMgr;
             var cfg = CasinosContext.Instance.Config;
 
@@ -335,7 +334,9 @@ namespace Casinos
             }
             else
             {
-                LoadLuaFromRawDir(path_mgr.DirLaunchLua);
+                //LoadLuaFromRawDir(path_mgr.DirLaunchLua);
+                AssetBundle ab = AssetBundle.LoadFromFile(path_mgr.DirLuaRoot + "lua_launch_android.ab");
+                LoadLuaFromAssetBundle(ab);
             }
 
             DoString("Launch");
@@ -351,12 +352,23 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void LoadLuaFromAssetBundle(AssetBundle ab)
+        {
+            string[] list_assets = ab.GetAllAssetNames();
+            foreach (var i in list_assets)
+            {
+                string file_name = Path.GetFileNameWithoutExtension(i);
+                TextAsset ta = ab.LoadAsset<TextAsset>(i);
+                MapLuaFiles[file_name] = ta.bytes;
+            }
+        }
+
+        //---------------------------------------------------------------------
         public void LoadLuaFromBytes(string file_name, string text)
         {
             string name = file_name.ToLower();
-            string name1 = name.Replace(".lua", "");
-            name1 = name.Replace(".txt", "");
-
+            string name1 = name.Replace(".txt", "");
+            
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(text);
             MapLuaFiles[name1] = bytes;
         }
@@ -365,7 +377,7 @@ namespace Casinos
         public void LoadLuaFromResources(string filepath)
         {
             string name = filepath;
-            if (name.EndsWith(".lua") || name.EndsWith(".txt"))
+            if (name.EndsWith(".txt"))
             {
                 name = name.Remove(name.Length - 4, 4);
             }
@@ -394,8 +406,7 @@ namespace Casinos
                         byte[] data = System.Text.Encoding.UTF8.GetBytes(s);
 
                         string name = i.Name.ToLower();
-                        string name1 = name.Replace(".lua", "");
-                        name1 = name1.Replace(".txt", "");
+                        string name1 = name.Replace(".txt", "");
                         MapLuaFiles[name1] = data;
                     }
                 }
@@ -410,7 +421,7 @@ namespace Casinos
             foreach (var k in list_path)
             {
                 System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(k);
-                System.IO.FileInfo[] file_list = dir.GetFiles("*.lua", System.IO.SearchOption.AllDirectories);
+                System.IO.FileInfo[] file_list = dir.GetFiles("*.txt", System.IO.SearchOption.AllDirectories);
                 foreach (System.IO.FileInfo i in file_list)
                 {
                     using (System.IO.FileStream fs = new System.IO.FileStream(i.FullName, System.IO.FileMode.Open))
@@ -421,8 +432,7 @@ namespace Casinos
                             byte[] data = System.Text.Encoding.UTF8.GetBytes(s);
 
                             string name = i.Name.ToLower();
-                            string name1 = name.Replace(".lua", "");
-                            name1 = name1.Replace(".txt", "");
+                            string name1 = name.Replace(".txt", "");
                             MapLuaFiles[name1] = data;
                         }
                     }

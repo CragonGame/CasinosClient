@@ -104,7 +104,6 @@
 		<type fullname="UnityEngine.Resources" preserve="all"/>
 		<type fullname="UnityEngine.Screen" preserve="all"/>
 		<type fullname="UnityEngine.SystemInfo" preserve="all"/>
-		<type fullname="UnityEngine.Texture" preserve="all"/>
 		<type fullname="UnityEngine.Texture3D" preserve="all"/>
 		<type fullname="UnityEngine.Time" preserve="all"/>
 		<type fullname="UnityEngine.Vector3" preserve="all"/>

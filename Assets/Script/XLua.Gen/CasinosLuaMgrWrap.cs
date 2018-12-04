@@ -21,11 +21,12 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.LuaMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 20, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 21, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Launch", _m_Launch);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadLuaFromAssetBundle", _m_LoadLuaFromAssetBundle);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadLuaFromBytes", _m_LoadLuaFromBytes);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadLuaFromResources", _m_LoadLuaFromResources);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadLuaFromRawDir", _m_LoadLuaFromRawDir);
@@ -162,6 +163,34 @@ namespace XLua.CSObjectWrap
                 {
                     
                     gen_to_be_invoked.Launch(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_LoadLuaFromAssetBundle(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.LuaMgr gen_to_be_invoked = (Casinos.LuaMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    UnityEngine.AssetBundle _ab = (UnityEngine.AssetBundle)translator.GetObject(L, 2, typeof(UnityEngine.AssetBundle));
+                    
+                    gen_to_be_invoked.LoadLuaFromAssetBundle( _ab );
                     
                     
                     
