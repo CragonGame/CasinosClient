@@ -14,8 +14,7 @@ public class EditorCfgProjectSettings
 public class EditorCfgUserSettings
 {
     //-------------------------------------------------------------------------
-    public bool ForceUseDirResourcesLaunch;// 是否强制使用目录ResourcesLaunch
-    public bool ForceUseDirDataOss;// 是否强制使用目录DataOss
+    public bool IsEditorDebug;// 是否是编辑器调试模式
 }
 
 public class EditorConfig
@@ -48,8 +47,7 @@ public class EditorConfig
             {
                 CfgUserSettings = new EditorCfgUserSettings()
                 {
-                    ForceUseDirResourcesLaunch = true,
-                    ForceUseDirDataOss = true
+                    IsEditorDebug = true
                 };
 
                 using (StreamWriter sw = File.CreateText(full_filename))
@@ -72,23 +70,9 @@ public class EditorConfig
     }
 
     //-------------------------------------------------------------------------
-    public void SaveValueForceUseDirResourcesLaunch(bool v)
+    public void SaveValueIsEditorDebug(bool v)
     {
-        CfgUserSettings.ForceUseDirResourcesLaunch = v;
-
-        // EditorUserSettings.json
-        string full_filename = Path.Combine(EditorContext.Instance.PathSettingsUser, EditorStringDef.FileEditorUserSettings);
-        using (StreamWriter sw = File.CreateText(full_filename))
-        {
-            string s = UnityEngine.JsonUtility.ToJson(CfgUserSettings);
-            sw.Write(s);
-        }
-    }
-
-    //-------------------------------------------------------------------------
-    public void SaveValueForceUseDirDataOss(bool v)
-    {
-        CfgUserSettings.ForceUseDirDataOss = v;
+        CfgUserSettings.IsEditorDebug = v;
 
         // EditorUserSettings.json
         string full_filename = Path.Combine(EditorContext.Instance.PathSettingsUser, EditorStringDef.FileEditorUserSettings);

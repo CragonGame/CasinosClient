@@ -27,13 +27,9 @@ namespace Casinos
     public class PathMgr
     {
         //---------------------------------------------------------------------
-        public bool ForceUseDirResourcesLaunch { get; set; }// 是否强制使用目录ResourcesLaunch
-        public bool ForceUseDirDataOss { get; set; }// 是否强制使用目录DataOss
         public string PathAssets { get; private set; }// Unity3D的Assets目录
         public string PathSettings { get; private set; }// Unity3D的Settings目录
         public string PathSettingsUser { get; private set; }// Unity3D的SettingsUser目录
-        public string DirLaunchLua { get; set; }// Lua/Launch目录，需动态计算
-        public DirType DirLaunchLuaType { get; set; }// Lua/Launch目录类型，需动态计算
         public string DirLaunchAb { get; set; }// Resources.KingTexasLaunch目录，需动态计算
         public DirType DirLaunchAbType { get; set; }// Resources.KingTexasLaunch目录类型，需动态计算
         public string DirLuaRoot { get; set; }// Lua/目录，需动态计算
@@ -53,12 +49,9 @@ namespace Casinos
         string WWWStreamingAssetsPath { get; set; }
 
         //---------------------------------------------------------------------
-        public PathMgr(_eEditorRunSourcePlatform editor_mode_runsources_platform,
-            bool force_use_resouceslaunch, bool force_use_dataoss)
+        public PathMgr(_eEditorRunSourcePlatform editor_mode_runsources_platform)
         {
             Sb = new StringBuilder(256);
-            ForceUseDirResourcesLaunch = force_use_resouceslaunch;
-            ForceUseDirDataOss = force_use_dataoss;
 
             EditorModeRunsourcesPlatform = editor_mode_runsources_platform;
             switch (EditorModeRunsourcesPlatform)

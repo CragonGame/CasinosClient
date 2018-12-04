@@ -9,8 +9,7 @@ namespace Casinos
     public class EditorCfgUserSettingsCopy
     {
         //-------------------------------------------------------------------------
-        public bool ForceUseDirResourcesLaunch;// 是否强制使用目录ResourcesLaunch
-        public bool ForceUseDirDataOss;// 是否强制使用目录DataOss
+        public bool IsEditorDebug;// 是否是编辑器调试模式
     }
 
     public class MbMain : MonoBehaviour
@@ -70,8 +69,7 @@ namespace Casinos
             //openinstall.ReportEffectPoint("aaa", 1);
 #endif
 
-            bool force_use_resouceslaunch = false;
-            bool force_use_dataoss = false;
+            bool is_editor_debug = false;
 
 #if UNITY_EDITOR
             EditorCfgUserSettingsCopy cfg_usersettings = null;
@@ -91,8 +89,7 @@ namespace Casinos
 
             if (cfg_usersettings != null)
             {
-                force_use_resouceslaunch = cfg_usersettings.ForceUseDirResourcesLaunch;
-                force_use_dataoss = cfg_usersettings.ForceUseDirDataOss;
+                is_editor_debug = cfg_usersettings.IsEditorDebug;
             }
 
             //string info = string.Format("ForceUseDirResourcesLaunch={0}, ForceUseDirDataOss={1}",
@@ -101,7 +98,7 @@ namespace Casinos
             //Debug.Log("PersistentDataPath=" + Application.persistentDataPath);
 #endif
 
-            Context = new CasinosContext(force_use_resouceslaunch, force_use_dataoss);
+            Context = new CasinosContext(is_editor_debug);
             Context.Launch();
         }
 

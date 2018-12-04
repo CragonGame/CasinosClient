@@ -314,13 +314,7 @@ function Context:_nextLaunchStep()
 
         self.Launch:UpdateViewLoadingDescAndProgress("准备登录中", 0, 100)
 
-        if self.CasinosContext.IsEditorDebug == true then
-            self.LuaMgr:LoadLuaFromRawDir(self.CasinosContext.PathMgr.DirLuaRoot)
-        else
-            local path_ab = self.CasinosContext.PathMgr.DirLuaRoot .. string.lower('lua_android') .. ".ab"
-            local ab = CS.UnityEngine.AssetBundle.LoadFromFile(path_ab)
-            self.CasinosContext.LuaMgr:LoadLuaFromAssetBundle(ab)
-        end
+        self.LuaMgr:LoadLuaFromRawDir(self.CasinosContext.PathMgr.DirLuaRoot)
 
         self.CasinosContext.CanReportLog = self.Cfg.CanReportLog
         self.CasinosContext.CanReportLogDeviceId = self.Cfg.CanReportLogDeviceId

@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosContext);
-			Utils.BeginObjectRegister(type, L, translator, 0, 16, 26, 12);
+			Utils.BeginObjectRegister(type, L, translator, 0, 16, 27, 13);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Close", _m_Close);
@@ -65,6 +65,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "UnityAndroid", _g_get_UnityAndroid);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "UnityIOS", _g_get_UnityIOS);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsEditor", _g_get_IsEditor);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsEditorDebug", _g_get_IsEditorDebug);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "IsSqliteUnity", _g_get_IsSqliteUnity);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "TbDataMgrLua", _g_get_TbDataMgrLua);
             
@@ -78,6 +79,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "UnityAndroid", _s_set_UnityAndroid);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "UnityIOS", _s_set_UnityIOS);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "IsEditor", _s_set_IsEditor);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "IsEditorDebug", _s_set_IsEditorDebug);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "IsSqliteUnity", _s_set_IsSqliteUnity);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "TbDataMgrLua", _s_set_TbDataMgrLua);
             
@@ -102,12 +104,11 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 3 && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 2) && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 3))
+				if(LuaAPI.lua_gettop(L) == 2 && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 2))
 				{
-					bool _force_use_resouceslaunch = LuaAPI.lua_toboolean(L, 2);
-					bool _force_use_dataoss = LuaAPI.lua_toboolean(L, 3);
+					bool _is_editor_debug = LuaAPI.lua_toboolean(L, 2);
 					
-					Casinos.CasinosContext gen_ret = new Casinos.CasinosContext(_force_use_resouceslaunch, _force_use_dataoss);
+					Casinos.CasinosContext gen_ret = new Casinos.CasinosContext(_is_editor_debug);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -930,6 +931,20 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_IsEditorDebug(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.IsEditorDebug);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_IsSqliteUnity(RealStatePtr L)
         {
 		    try {
@@ -1103,6 +1118,21 @@ namespace XLua.CSObjectWrap
 			
                 Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.IsEditor = LuaAPI.lua_toboolean(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_IsEditorDebug(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.IsEditorDebug = LuaAPI.lua_toboolean(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

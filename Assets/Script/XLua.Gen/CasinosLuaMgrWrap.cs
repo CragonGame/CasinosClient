@@ -161,8 +161,9 @@ namespace XLua.CSObjectWrap
             
                 
                 {
+                    bool _is_load_launchlua_from_resources = LuaAPI.lua_toboolean(L, 2);
                     
-                    gen_to_be_invoked.Launch(  );
+                    gen_to_be_invoked.Launch( _is_load_launchlua_from_resources );
                     
                     
                     

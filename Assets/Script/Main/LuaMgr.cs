@@ -319,22 +319,26 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void Launch()
+        public void Launch(bool is_load_launchlua_from_resources)
         {
             // 预加载Script.Lua/Launch中的所有txt文件，显示加载界面
             var path_mgr = CasinosContext.Instance.PathMgr;
             var cfg = CasinosContext.Instance.Config;
 
-            if (path_mgr.DirLaunchLuaType == DirType.Resources)
+            if (is_load_launchlua_from_resources)
             {
                 foreach (var i in cfg.LaunchInfoResources.ListLua)
                 {
                     LoadLuaFromResources(i);
                 }
             }
+            else if (CasinosContext.Instance.IsEditorDebug)
+            {
+                string dir_launchlua = Environment.CurrentDirectory + "/Assets/Script.Lua/Launch/";
+                LoadLuaFromRawDir(dir_launchlua.Replace('\\', '/'));
+            }
             else
             {
-                //LoadLuaFromRawDir(path_mgr.DirLaunchLua);
                 AssetBundle ab = AssetBundle.LoadFromFile(path_mgr.DirLuaRoot + "lua_launch_android.ab");
                 LoadLuaFromAssetBundle(ab);
             }

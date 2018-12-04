@@ -44,7 +44,6 @@ Launch = {
 -- 初始化
 function Launch:Setup()
     self.LaunchCfg:Setup()
-    --print('Launch:Setup() Env=' .. self.LaunchCfg.Env)
 
     require 'PreViewMgr'
     require 'PreViewBase'
@@ -110,29 +109,6 @@ function Launch:Finish()
         self.PreViewMgr:DestroyView(self.PreLoading)
         self.PreLoading = nil
     end
-
-    --package.preload['PreViewMsgBox'] = nil
-    --package.loaded['PreViewMsgBox'] = nil
-    --package.preload['PreViewLoading'] = nil
-    --package.loaded['PreViewLoading'] = nil
-    --package.preload['PreViewMgr'] = nil
-    --package.loaded['PreViewMgr'] = nil
-    --package.preload['PreViewFactory'] = nil
-    --package.loaded['PreViewFactory'] = nil
-    --package.preload['PreViewBase'] = nil
-    --package.loaded['PreViewBase'] = nil
-    --package.preload['ParticleHelper'] = nil
-    --package.loaded['ParticleHelper'] = nil
-
-    --if (self.UIPackagePreLoading ~= nil) then
-    --    self.UIPackagePreLoading:UnloadAssets()
-    --    self.UIPackagePreLoading = nil
-    --end
-    --if (self.UIPackageMsgbox ~= nil) then
-    --    self.UIPackageMsgbox:UnloadAssets()
-    --    self.UIPackageMsgbox = nil
-    --end
-    --print("Launch:Finish()")
 end
 
 ---------------------------------------
@@ -148,8 +124,6 @@ function Launch:Close()
     self.CasinosContext = nil
     self.LuaMgr = nil
     self.Instance = nil
-
-    --print("Launch:Release()")
 end
 
 ---------------------------------------

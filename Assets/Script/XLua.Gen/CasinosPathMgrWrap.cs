@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.PathMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 8, 17, 14);
+			Utils.BeginObjectRegister(type, L, translator, 0, 8, 13, 10);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetWWWPersistentDataPath", _m_GetWWWPersistentDataPath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CombineWWWPersistentDataPath", _m_CombineWWWPersistentDataPath);
@@ -33,13 +33,9 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CombineWWWStreamingAssetsPath", _m_CombineWWWStreamingAssetsPath);
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "ForceUseDirResourcesLaunch", _g_get_ForceUseDirResourcesLaunch);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "ForceUseDirDataOss", _g_get_ForceUseDirDataOss);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathAssets", _g_get_PathAssets);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathAssets", _g_get_PathAssets);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathSettings", _g_get_PathSettings);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "PathSettingsUser", _g_get_PathSettingsUser);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "DirLaunchLua", _g_get_DirLaunchLua);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "DirLaunchLuaType", _g_get_DirLaunchLuaType);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "DirLaunchAb", _g_get_DirLaunchAb);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "DirLaunchAbType", _g_get_DirLaunchAbType);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "DirLuaRoot", _g_get_DirLuaRoot);
@@ -51,11 +47,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "DirAbItem", _g_get_DirAbItem);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "DirAbParticle", _g_get_DirAbParticle);
             
-			Utils.RegisterFunc(L, Utils.SETTER_IDX, "ForceUseDirResourcesLaunch", _s_set_ForceUseDirResourcesLaunch);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "ForceUseDirDataOss", _s_set_ForceUseDirDataOss);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "DirLaunchLua", _s_set_DirLaunchLua);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "DirLaunchLuaType", _s_set_DirLaunchLuaType);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "DirLaunchAb", _s_set_DirLaunchAb);
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "DirLaunchAb", _s_set_DirLaunchAb);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "DirLaunchAbType", _s_set_DirLaunchAbType);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "DirLuaRoot", _s_set_DirLuaRoot);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "DirRawRoot", _s_set_DirRawRoot);
@@ -86,13 +78,11 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 4 && translator.Assignable<Casinos._eEditorRunSourcePlatform>(L, 2) && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 3) && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 4))
+				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<Casinos._eEditorRunSourcePlatform>(L, 2))
 				{
 					Casinos._eEditorRunSourcePlatform _editor_mode_runsources_platform;translator.Get(L, 2, out _editor_mode_runsources_platform);
-					bool _force_use_resouceslaunch = LuaAPI.lua_toboolean(L, 3);
-					bool _force_use_dataoss = LuaAPI.lua_toboolean(L, 4);
 					
-					Casinos.PathMgr gen_ret = new Casinos.PathMgr(_editor_mode_runsources_platform, _force_use_resouceslaunch, _force_use_dataoss);
+					Casinos.PathMgr gen_ret = new Casinos.PathMgr(_editor_mode_runsources_platform);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -361,34 +351,6 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_ForceUseDirResourcesLaunch(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.ForceUseDirResourcesLaunch);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_ForceUseDirDataOss(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.ForceUseDirDataOss);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_PathAssets(RealStatePtr L)
         {
 		    try {
@@ -424,34 +386,6 @@ namespace XLua.CSObjectWrap
 			
                 Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
                 LuaAPI.lua_pushstring(L, gen_to_be_invoked.PathSettingsUser);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_DirLaunchLua(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushstring(L, gen_to_be_invoked.DirLaunchLua);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_DirLaunchLuaType(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
-                translator.PushCasinosDirType(L, gen_to_be_invoked.DirLaunchLuaType);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -599,67 +533,6 @@ namespace XLua.CSObjectWrap
         }
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_ForceUseDirResourcesLaunch(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.ForceUseDirResourcesLaunch = LuaAPI.lua_toboolean(L, 2);
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_ForceUseDirDataOss(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.ForceUseDirDataOss = LuaAPI.lua_toboolean(L, 2);
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_DirLaunchLua(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.DirLaunchLua = LuaAPI.lua_tostring(L, 2);
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_DirLaunchLuaType(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.PathMgr gen_to_be_invoked = (Casinos.PathMgr)translator.FastGetCSObj(L, 1);
-                Casinos.DirType gen_value;translator.Get(L, 2, out gen_value);
-				gen_to_be_invoked.DirLaunchLuaType = gen_value;
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _s_set_DirLaunchAb(RealStatePtr L)

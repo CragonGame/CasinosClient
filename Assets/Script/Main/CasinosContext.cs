@@ -59,6 +59,7 @@ namespace Casinos
         public bool UnityAndroid { get; set; }
         public bool UnityIOS { get; set; }
         public bool IsEditor { get; set; }
+        public bool IsEditorDebug { get; set; }// 是否处于编辑器调试模式，可以调试lua，使用本地ab，raw
         public bool IsSqliteUnity { get; set; }
         public LuaTable TbDataMgrLua { get; set; }
         FTMgr FTMgr { get; set; }
@@ -66,9 +67,10 @@ namespace Casinos
         SoundMgr SoundMgr { get; set; }
 
         //---------------------------------------------------------------------
-        public CasinosContext(bool force_use_resouceslaunch, bool force_use_dataoss)
+        public CasinosContext(bool is_editor_debug)
         {
             Instance = this;
+            IsEditorDebug = is_editor_debug;
 
             _eEditorRunSourcePlatform editor_runsorce = _eEditorRunSourcePlatform.Android;
 #if UNITY_STANDALONE_WIN
@@ -124,7 +126,7 @@ namespace Casinos
             MemoryStream = new MemoryStream();
             SB = new StringBuilder();
             FTMgr = new FTMgr();
-            PathMgr = new PathMgr(editor_runsorce, force_use_resouceslaunch, force_use_dataoss);// 初始化PathMgr
+            PathMgr = new PathMgr(editor_runsorce);// 初始化PathMgr
             Config = new CasinosConfig(editor_runsorce);
             NativeMgr = new NativeMgr();
             SpineMgr = new SpineMgr();
@@ -289,27 +291,25 @@ namespace Casinos
             {
                 version_persistent = true;
             }
-            if (!version_persistent || PathMgr.ForceUseDirResourcesLaunch)
+            if (!version_persistent)
             {
-                PathMgr.DirLaunchLua = "Lua/Launch/";
-                PathMgr.DirLaunchLuaType = DirType.Resources;
                 PathMgr.DirLaunchAb = "Resources.KingTexasLaunch/";
                 PathMgr.DirLaunchAbType = DirType.Resources;
             }
             else
             {
-                PathMgr.DirLaunchLua = PathMgr.CombinePersistentDataPath("Lua/Launch/");
-                PathMgr.DirLaunchLuaType = DirType.Raw;
                 PathMgr.DirLaunchAb = PathMgr.CombinePersistentDataPath("Resources.KingTexasLaunch/");
                 PathMgr.DirLaunchAbType = DirType.Raw;
             }
 
-            if (PathMgr.ForceUseDirDataOss)
+            if (IsEditorDebug)
             {
                 string p = Path.Combine(Environment.CurrentDirectory, "./DataOss/");
                 var di = new DirectoryInfo(p);
                 string p1 = di.FullName.Replace('\\', '/');
-                PathMgr.DirLuaRoot = p1 + "Common/Lua/";
+
+                string lua_root = Environment.CurrentDirectory + "/Assets/Script.Lua/";
+                PathMgr.DirLuaRoot = lua_root.Replace('\\', '/');
                 PathMgr.DirRawRoot = p1 + "Common/Raw/";
                 PathMgr.DirAbRoot = p1 + Config.Platform + "/Resources.KingTexas/";
             }
@@ -320,25 +320,13 @@ namespace Casinos
                 PathMgr.DirAbRoot = PathMgr.CombinePersistentDataPath("Resources.KingTexas/");
             }
 
-            //#if UNITY_EDITOR
-            //            string info1 = string.Format("DirLaunchLua={0}, DirLaunchLuaType={1}",
-            //                PathMgr.DirLaunchLua, PathMgr.DirLaunchLuaType);
-            //            Debug.Log(info1);
-            //            string info2 = string.Format("DirLaunchAb={0}, DirLaunchAbType={1}",
-            //                PathMgr.DirLaunchAb, PathMgr.DirLaunchAbType);
-            //            Debug.Log(info2);
-            //            Debug.Log("DirLuaRoot=" + PathMgr.DirLuaRoot);
-            //            Debug.Log("DirRawRoot=" + PathMgr.DirRawRoot);
-            //            Debug.Log("DirAbRoot=" + PathMgr.DirAbRoot);
-            //#endif
-
             PathMgr.DirAbUi = PathMgr.DirAbRoot + "Ui/";// "Resources.KingTexas/Ui/"，需动态计算
             PathMgr.DirAbCard = PathMgr.DirAbRoot + "Cards/";// "Resources.KingTexas/Cards/"，需动态计算
             PathMgr.DirAbAudio = PathMgr.DirAbRoot + "Audio/";// "Resources.KingTexas/Audio/"，需动态计算
             PathMgr.DirAbItem = PathMgr.DirAbRoot + "Item/";// "Resources.KingTexas/Item/"，需动态计算
             PathMgr.DirAbParticle = PathMgr.DirAbRoot + "Particle/";// "Resources.KingTexas/Particle/"，需动态计算
 
-            LuaMgr.Launch();
+            LuaMgr.Launch(!version_persistent);
         }
 
         //-------------------------------------------------------------------------

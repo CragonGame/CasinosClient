@@ -31,18 +31,12 @@ public class EditorViewDataPublish : EditorWindow
         GUILayout.Space(10);
         GUILayout.Label("---------------------------------");
         EditorGUILayout.LabelField("运行时使用的资源目录");
-        bool force_use_resourceslaunch = EditorGUILayout.Toggle("是否强制使用Resources/Launch（不勾选表示使用PersistentData）",
-            EditorContext.Instance.Config.CfgUserSettings.ForceUseDirResourcesLaunch, GUILayout.ExpandWidth(false));
-        if (force_use_resourceslaunch != EditorContext.Instance.Config.CfgUserSettings.ForceUseDirResourcesLaunch)
-        {
-            EditorContext.Instance.Config.SaveValueForceUseDirResourcesLaunch(force_use_resourceslaunch);
-        }
 
-        bool force_use_dataoss = EditorGUILayout.Toggle("是否强制使用DataOss（不勾选表示使用PersistentData）",
-            EditorContext.Instance.Config.CfgUserSettings.ForceUseDirDataOss, GUILayout.Width(600));
-        if (force_use_dataoss != EditorContext.Instance.Config.CfgUserSettings.ForceUseDirDataOss)
+        bool is_editor_debug = EditorGUILayout.Toggle("是否处于编辑器调试模式",
+            EditorContext.Instance.Config.CfgUserSettings.IsEditorDebug, GUILayout.Width(600));
+        if (is_editor_debug != EditorContext.Instance.Config.CfgUserSettings.IsEditorDebug)
         {
-            EditorContext.Instance.Config.SaveValueForceUseDirDataOss(force_use_dataoss);
+            EditorContext.Instance.Config.SaveValueIsEditorDebug(is_editor_debug);
         }
 
         GUILayout.Space(10);
