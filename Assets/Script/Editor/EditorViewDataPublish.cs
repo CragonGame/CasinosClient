@@ -98,17 +98,14 @@ public class EditorViewDataPublish : EditorWindow
         {
             AssetDatabase.Refresh();
             _buildAssetBundleLua(Casinos._eEditorRunSourcePlatform.Android);
+            var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.txt", "Context.txt" };
+            _genCommonFileList(ignore_files);
             AssetDatabase.Refresh();
         }
         if (GUILayout.Button("打包Lua脚本（iOS）", GUILayout.Width(200)))
         {
             AssetDatabase.Refresh();
             _buildAssetBundleLua(Casinos._eEditorRunSourcePlatform.IOS);
-            AssetDatabase.Refresh();
-        }
-        if (GUILayout.Button("生成CommonFileList.txt", GUILayout.Width(200)))
-        {
-            AssetDatabase.Refresh();
             var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.txt", "Context.txt" };
             _genCommonFileList(ignore_files);
             AssetDatabase.Refresh();
@@ -133,29 +130,16 @@ public class EditorViewDataPublish : EditorWindow
         if (GUILayout.Button("生成AssetBundle（选中）", GUILayout.Width(200)))
         {
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.Android, true);
+            _genDataFileList(Casinos._eEditorRunSourcePlatform.Android);
             AssetDatabase.Refresh();
         }
         if (GUILayout.Button("生成AssetBundle（全部）", GUILayout.Width(200)))
         {
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.Android, false);
-            AssetDatabase.Refresh();
-        }
-        EditorGUILayout.EndHorizontal();
-        //if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
-        //{
-        //    AssetDatabase.Refresh();
-        //    _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.Android);
-        //    _copyRawData(Casinos._eEditorRunSourcePlatform.Android);
-        //    _copyLua(Casinos._eEditorRunSourcePlatform.Android);
-        //    ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
-        //    AssetDatabase.Refresh();
-        //}
-        if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
-        {
-            AssetDatabase.Refresh();
             _genDataFileList(Casinos._eEditorRunSourcePlatform.Android);
             AssetDatabase.Refresh();
         }
+        EditorGUILayout.EndHorizontal();
 
         GUILayout.Space(10);
         GUILayout.Label("------------------------------------------------------");
@@ -175,29 +159,16 @@ public class EditorViewDataPublish : EditorWindow
         if (GUILayout.Button("生成AssetBundle（选中）", GUILayout.Width(200)))
         {
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.IOS, true);
+            _genDataFileList(Casinos._eEditorRunSourcePlatform.IOS);
             AssetDatabase.Refresh();
         }
         if (GUILayout.Button("生成AssetBundle（全部）", GUILayout.Width(200)))
         {
             _buildAssetBundle(Casinos._eEditorRunSourcePlatform.IOS, false);
-            AssetDatabase.Refresh();
-        }
-        EditorGUILayout.EndHorizontal();
-        //if (GUILayout.Button("同步Resources.KingTexasRaw&Script.Lua", GUILayout.Width(403)))
-        //{
-        //    AssetDatabase.Refresh();
-        //    _clearRawDataAndLua(Casinos._eEditorRunSourcePlatform.IOS);
-        //    _copyRawData(Casinos._eEditorRunSourcePlatform.IOS);
-        //    _copyLua(Casinos._eEditorRunSourcePlatform.IOS);
-        //    AssetDatabase.Refresh();
-        //    ShowNotification(new GUIContent("同步Resources.KingTexasRaw&Script.Lua Finished!"));
-        //}
-        if (GUILayout.Button("生成DataFileList.txt", GUILayout.Width(200)))
-        {
-            AssetDatabase.Refresh();
             _genDataFileList(Casinos._eEditorRunSourcePlatform.IOS);
             AssetDatabase.Refresh();
         }
+        EditorGUILayout.EndHorizontal();
 
         GUILayout.Space(20);
         EditorGUILayout.BeginHorizontal();
@@ -279,9 +250,11 @@ public class EditorViewDataPublish : EditorWindow
         }
         EditorUserBuildSettings.SwitchActiveBuildTarget(build_target_group, build_target);
 
+        string dir_assets = EditorContext.Instance.PathAssets;
+
         List<string> list_file = new List<string>();
         var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.txt", "Context.txt" };
-        _getDataFileList2(list_file, ignore_files, "D:/CasinosClientGithub/Assets/Script.Lua/");
+        _getDataFileList2(list_file, ignore_files, dir_assets + "Script.Lua\\");
 
         string ab_name1 = "lua_android.ab";
         bool b = _pakAbLuaEx(list_file, ab_name1, platform, build_target);
@@ -292,7 +265,7 @@ public class EditorViewDataPublish : EditorWindow
         }
 
         list_file.Clear();
-        _getDataFileList2(list_file, ignore_files, "D:/CasinosClientGithub/Assets/Script.Lua/Launch/");
+        _getDataFileList2(list_file, ignore_files, dir_assets + "Script.Lua\\Launch\\");
         ab_name1 = "lua_launch_android.ab";
         b = _pakAbLuaEx(list_file, ab_name1, platform, build_target);
         if (!b)
@@ -440,14 +413,16 @@ public class EditorViewDataPublish : EditorWindow
         foreach (var j in list_file)
         {
             string j1 = j.Replace('\\', '/');
-            string sss = j1.Replace("D:/CasinosClientGithub/", "");
-            abb.assetNames[asset_index++] = sss;
+            int n = j1.IndexOf("Assets");
+            string j2 = j1.Substring(n);// AssetBundle中的资源路径必须起始于Assets
+            abb.assetNames[asset_index++] = j2;
         }
 
         AssetBundleBuild[] arr_abb = new AssetBundleBuild[1];
         arr_abb[0] = abb;
 
-        AssetBundleManifest ab_manifest = BuildPipeline.BuildAssetBundles("D:/CasinosClientGithub/DataOss/Common/Lua",
+        string dir_dataoss = EditorContext.Instance.PathDataOss;
+        AssetBundleManifest ab_manifest = BuildPipeline.BuildAssetBundles(dir_dataoss + "Common\\Lua",
             arr_abb,
             BuildAssetBundleOptions.ForceRebuildAssetBundle, build_target);
         if (ab_manifest == null)
