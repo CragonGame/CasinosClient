@@ -534,7 +534,7 @@ function ControllerPlayer:s2cPlayerChangeLanNotify(lan)
     self.ControllerMgr.LanMgr:setLan(lan)
     self:CreateMainUi()
     local controller_im = self.ControllerMgr:GetController("IM")
-    controller_im:setMainUiIMInfo()
+    controller_im:SetMainUiIMInfo()
 end
 
 ---------------------------------------
@@ -614,6 +614,12 @@ function ControllerPlayer:CreateMainUi()
     local view_main = self.ViewMgr:CreateView("Main")
     view_main:SetPlayerInfo()
     view_main:setOnlineNum(self.OnlinePlayerNum)
+
+    local ev = self:GetEv("EvCtrlOnViewMainCreated")
+    if (ev == nil) then
+        ev = EvCtrlOnViewMainCreated:new(nil)
+    end
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -722,27 +728,6 @@ function ControllerPlayer:CreateViewActivityPopUpBox()
 end
 
 ---------------------------------------
---function ControllerPlayer:uploadProfileImageCallBack(status, response, error)
---    if (status == UCenterResponseStatus.Error) then
---        local msg_t = {}
---        table.insert(msg_t, self.ControllerMgr.LanMgr:getLanValue("UploadPicFailed"))
---        table.insert(msg_t, "! ErrorCode: ")
---        table.insert(msg_t, error.code)
---        table.insert(msg_t, " Msg: ")
---        table.insert(msg_t, error.message)
---        local msg = table.concat(msg_t)
---        ViewHelper:UiShowInfoFailed(msg)
---    else
---        local ev = self:GetEv("EvGetPicUpLoadSuccess")
---        if (ev == nil) then
---            ev = EvGetPicUpLoadSuccess:new(nil)
---        end
---        self:SendEv(ev)
---    end
---    ViewHelper:UiEndWaiting()
---end
-
----------------------------------------
 -- 控制台命令
 function ControllerPlayer:requestConsoleCmd(list_param)
     self.ControllerMgr.Rpc:RPC1(self.MC.PlayerDevConsoleCmdRequest2, list_param)
@@ -770,7 +755,6 @@ function ControllerPlayer:s2cPlayerRequestGetAddressResult(result, address)
         if (ev == nil) then
             ev = EvEntityResponseGetReceiverAddress:new(nil)
         end
-
         ev.Address = data_address
         self:SendEv(ev)
     elseif (result == ProtocolResult.Failed) then

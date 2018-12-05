@@ -112,7 +112,7 @@ function ViewDesktopH:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
     self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
-    self.ViewMgr:BindEvListener("EvCtrlRewardRedPointStateChange", self)
+    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
 
     local controller_mgr = ControllerMgr
     self.ControllerPlayer = controller_mgr:GetController("Player")
@@ -479,7 +479,7 @@ function ViewDesktopH:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityUnreadChatsChanged") then
             local all_unreadchat_count = self.ControllerIM.IMChat:getAllNewChatCount()
             self:_setNewChatCount(all_unreadchat_count)
-        elseif (ev.EventName == "EvCtrlRewardRedPointStateChange") then
+        elseif (ev.EventName == "EvCtrlRedPointStateChange") then
             if ev.RedPointType == 'Reward' then
                 self:RefreshRedPointRewardState()
             end

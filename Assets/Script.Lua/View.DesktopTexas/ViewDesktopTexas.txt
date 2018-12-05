@@ -82,7 +82,7 @@ function ViewDesktopTexas:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityMTTUpdateRaiseBlindTm", self)
     self.ViewMgr:BindEvListener("EvMTTPauseChanged", self)
     self.ViewMgr:BindEvListener("EvEntityMatchGameOver", self)
-    self.ViewMgr:BindEvListener("EvCtrlRewardRedPointStateChange", self)
+    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
 
     self.Flow = UiDesktopTexasFlow:new(nil, self)
     self.Flow:Create()
@@ -317,7 +317,7 @@ function ViewDesktopTexas:OnHandleEv(ev)
         elseif (ev.EventName == "EvUiPotMainChanged") then
             -- 从Model发出
             self.UiPot:showAllPotValue(ev.pot_mian)
-        elseif (ev.EventName == "EvCtrlRewardRedPointStateChange") then
+        elseif (ev.EventName == "EvCtrlRedPointStateChange") then
             if ev.RedPointType == 'Reward' then
                 self:RefreshRedPointRewardState()
             end

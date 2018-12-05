@@ -331,7 +331,7 @@ function ViewMain:OnCreate()
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFeedbackChats", self)
     self.ViewMgr:BindEvListener("EvEntityBagAddItem", self)
-    self.ViewMgr:BindEvListener("EvCtrlRewardRedPointStateChange", self)
+    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
 
     self.PosGetChipEffectParticle = self.ComUi:GetChild("ComPosGetChipParticle").asCom.position
     local ab_particle_desktop = ParticleHelper:GetParticel("btndesktopparticle.ab")
@@ -517,7 +517,7 @@ function ViewMain:OnHandleEv(ev)
             self:RefreshNewFeedback()
         elseif (ev.EventName == "EvEntityBagAddItem") then
             self:RefreshNewItem()
-        elseif (ev.EventName == "EvCtrlRewardRedPointStateChange") then
+        elseif (ev.EventName == "EvCtrlRedPointStateChange") then
             if ev.RedPointType == 'Reward' then
                 self:RefreshRedPointRewardState()
             end

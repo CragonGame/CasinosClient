@@ -1,22 +1,37 @@
 -- Copyright (c) Cragon. All rights reserved.
 
 ---------------------------------------
--- 福利控制器，小红点状态刷新
-EvCtrlRewardRedPointStateChange = EventBase:new(nil)
+-- 小红点状态刷新
+EvCtrlRedPointStateChange = EventBase:new(nil)
 
-function EvCtrlRewardRedPointStateChange:new(o)
+function EvCtrlRedPointStateChange:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvCtrlRewardRedPointStateChange"
+    self.EventName = "EvCtrlRedPointStateChange"
     self.RedPointType = ''
     self.Show = false
     return o
 end
 
-function EvCtrlRewardRedPointStateChange:Reset()
+function EvCtrlRedPointStateChange:Reset()
     self.RedPointType = ''
     self.Show = false
+end
+
+---------------------------------------
+-- 主界面创建完毕
+EvCtrlOnViewMainCreated = EventBase:new(nil)
+
+function EvCtrlOnViewMainCreated:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    self.EventName = "EvCtrlOnViewMainCreated"
+    return o
+end
+
+function EvCtrlOnViewMainCreated:Reset()
 end
 
 ---------------------------------------

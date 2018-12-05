@@ -20,6 +20,7 @@ end
 
 ---------------------------------------
 function ControllerIM:OnCreate()
+    self.ViewMgr:BindEvListener("EvCtrlOnViewMainCreated", self)
     self.ViewMgr:BindEvListener("EvUiCreateMainUi", self)
     self.ViewMgr:BindEvListener("EvUiFindFriend", self)
     self.ViewMgr:BindEvListener("EvUiDeleteFriend", self)
@@ -40,7 +41,8 @@ function ControllerIM:OnCreate()
     self.ViewMgr:BindEvListener("EvUiRequestFriendAddOrRemove", self)
     self.ViewMgr:BindEvListener("EvUiSendFeedbackMsg", self)
     self.ViewMgr:BindEvListener("EvUiFeedbackConfirmRead", self)
-    self:setMainUiIMInfo()
+
+    self:SetMainUiIMInfo()
     self.CurrentChatTargetGuid = ""
     local rpc = self.ControllerMgr.Rpc
     local m_c = CommonMethodType
@@ -127,8 +129,10 @@ end
 
 ---------------------------------------
 function ControllerIM:OnHandleEv(ev)
-    if (ev.EventName == "EvUiCreateMainUi") then
-        self:setMainUiIMInfo()
+    if (ev.EventName == "EvCtrlOnViewMainCreated") then
+        self:SetMainUiIMInfo()
+    elseif (ev.EventName == "EvUiCreateMainUi") then
+        self:SetMainUiIMInfo()
     elseif (ev.EventName == "EvUiFindFriend") then
         self.IMFriendList:RequestIMFindFriend(ev.search_filter)
     elseif (ev.EventName == "EvUiDeleteFriend") then
@@ -399,7 +403,7 @@ function ControllerIM:OnIMMailOperateRequestResult(result)
 end
 
 ---------------------------------------
-function ControllerIM:setMainUiIMInfo()
+function ControllerIM:SetMainUiIMInfo()
     local view_main = self.ViewMgr:GetView("Main")
     if (view_main ~= nil) then
         view_main:setFriendInfo(self.IMFriendList.MapFriendList)
