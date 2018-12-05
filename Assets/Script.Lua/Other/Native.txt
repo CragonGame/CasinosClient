@@ -101,7 +101,7 @@ end
 function Native:OnMobIdHandler(mobid)
     self.ShareUrl = 'https://www.cragon.cn/gpdz.html?mobid=' .. mobid
     local t = CS.UnityEngine.Texture2D(256, 256)
-    local colors = CS.QRCodeMaker.createQRCode(self.ShareUrl, t.width, t.height)
+    local colors = self.CasinosContext.LuaMgr:CreateQRCode(self.ShareUrl, t.width, t.height)
     t:SetPixels32(colors)
     t:Apply()
     self.PlayerQRCodeTexture:SetPixels(t:GetPixels(32, 32, 190, 190))
@@ -112,7 +112,7 @@ end
 function Native:CreateShareUrlAndQRCode(player_id)
     self.ShareUrl = 'https://www.cragon.cn/gpdz.html?PlayerId=' .. player_id
     local t = CS.UnityEngine.Texture2D(256, 256)
-    local colors = CS.QRCodeMaker.createQRCode(self.ShareUrl, t.width, t.height)
+    local colors = self.CasinosContext.LuaMgr:CreateQRCode(self.ShareUrl, t.width, t.height)
     t:SetPixels32(colors)
     t:Apply()
     self.PlayerQRCodeTexture:SetPixels(t:GetPixels(32, 32, 190, 190))

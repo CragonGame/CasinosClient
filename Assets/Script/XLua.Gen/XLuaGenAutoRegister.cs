@@ -255,8 +255,6 @@ namespace XLua.CSObjectWrap
 				
 				translator.DelayWrapLoader(typeof(NativeFun), NativeFunWrap.__Register);
 				
-				translator.DelayWrapLoader(typeof(QRCodeMaker), QRCodeMakerWrap.__Register);
-				
 				translator.DelayWrapLoader(typeof(TcpClient), TcpClientWrap.__Register);
 				
 				translator.DelayWrapLoader(typeof(ThirdPartyLogin), ThirdPartyLoginWrap.__Register);

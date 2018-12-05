@@ -168,7 +168,6 @@ namespace Casinos
             //typeof(OpenInstallReceiver),
             //typeof(Push),
             //typeof(PushReceiver),
-            typeof(QRCodeMaker),
             //typeof(ShareSDKReceiver),
             typeof(TcpClient),
             typeof(ThirdPartyLogin),
@@ -513,9 +512,9 @@ namespace Casinos
         public string ReadAllText(string full_filename)
         {
             string all_text = string.Empty;
-            if (System.IO.File.Exists(full_filename))
+            if (File.Exists(full_filename))
             {
-                all_text = System.IO.File.ReadAllText(full_filename);
+                all_text = File.ReadAllText(full_filename);
             }
             return all_text;
         }
@@ -575,6 +574,32 @@ namespace Casinos
         public string GetSystemLanguageAsString()
         {
             return Application.systemLanguage.ToString();
+        }
+
+        //---------------------------------------------------------------------
+        public Color32[] CreateQRCode(string encoding_text, int width, int height)
+        {
+            var writer = new ZXing.BarcodeWriter
+            {
+                Format = ZXing.BarcodeFormat.QR_CODE,
+                Options = new ZXing.QrCode.QrCodeEncodingOptions
+                {
+                    Height = height,
+                    Width = width
+                }
+            };
+            return writer.Write(encoding_text);
+        }
+
+        //---------------------------------------------------------------------
+        public void SaveTextureToFile(Texture2D texture, string file_name)
+        {
+            var bytes = texture.EncodeToPNG();
+            using (var fs = File.Create(file_name))
+            {
+                var binary = new BinaryWriter(fs);
+                binary.Write(bytes);
+            }
         }
 
         //---------------------------------------------------------------------

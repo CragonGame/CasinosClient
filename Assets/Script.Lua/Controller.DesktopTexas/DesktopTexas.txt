@@ -156,7 +156,7 @@ function DesktopTexas:OnHandleEv(ev)
             self.CurrentUnSendDesktopMsg = ev.text
         elseif (ev.EventName == "EvUiDesktopClickLockChat") then
             local ui_lockchat = self.ControllerDesktop.ViewMgr:CreateView("LockChatTexas")
-            ui_lockchat:initLockChat(self.AllSeat)
+            ui_lockchat:InitLockChat(self.AllSeat)
         elseif (ev.EventName == "EvUiClickShowCard") then
             if self.MeP ~= nil then
                 local state = self.MeP.ShowCardState
