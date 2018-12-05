@@ -957,8 +957,6 @@ function ControllerDesktopH:ClearDesktopH(need_createmainui)
     if (need_createmainui) then
         local ctrl_player = self.ControllerMgr:GetController("Player")
         ctrl_player:CreateMainUi()
-        --local ctrl_im = self.ControllerMgr:GetController("IM")
-        --ctrl_im:SetMainUiIMInfo()
     end
 
     self.MapBetRepeatInfo = {}

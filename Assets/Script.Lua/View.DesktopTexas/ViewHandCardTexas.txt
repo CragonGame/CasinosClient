@@ -1,31 +1,27 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewHandCardTexas = ViewBase:new()
+ViewHandCardTexas = class()
 
 ---------------------------------------
-function ViewHandCardTexas:new(o, com_card, guid, index)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Guid = guid
-    o.Index = index
-    o.GComCard = com_card
-    o.CardData = nil
-    o.CancelShowCard = false
-    o.ShowBack = false
-    local loader_card = o.GComCard:GetChild("LoaderCard")
+function ViewHandCardTexas:ctor(com_card, guid, index)
+    self.Guid = guid
+    self.Index = index
+    self.GComCard = com_card
+    self.CardData = nil
+    self.CancelShowCard = false
+    self.ShowBack = false
+    local loader_card = self.GComCard:GetChild("LoaderCard")
     if (loader_card ~= nil) then
-        o.GLoaderCard = CS.Casinos.LuaHelper.GLoaderCastToGLoaderEx(loader_card.asLoader)
-        o.GImageCardBack = o.GComCard:GetChild("CardBack").asImage
+        self.GLoaderCard = CS.Casinos.LuaHelper.GLoaderCastToGLoaderEx(loader_card.asLoader)
+        self.GImageCardBack = self.GComCard:GetChild("CardBack").asImage
     end
-    local card_highlight = o.GComCard:GetChild("ImageCardHighLight")
+    local card_highlight = self.GComCard:GetChild("ImageCardHighLight")
     if (card_highlight ~= nil) then
-        o.GImageCardHighLight = card_highlight.asImage
+        self.GImageCardHighLight = card_highlight.asImage
     end
-    o.TweenerScale = nil
-    o.LoaderTicket = nil
-    return o
+    self.TweenScale = nil
+    self.LoaderTicket = nil
 end
 
 ---------------------------------------

@@ -68,9 +68,9 @@ function ViewDesktopPlayerInfoTexas:OnCreate()
     self.GImagePlayerWinner = self.ComUi:GetChild("PlayerWinner").asImage
     self.GImageFriendMark = self.ComUi:GetChild("FriendMark").asImage
     local com_cardfirst = self.ComUi:GetChild("ComCardOne").asCom
-    self.UiHandCardFirst = ViewHandCardTexas:new(nil, com_cardfirst, "", 1)
+    self.UiHandCardFirst = ViewHandCardTexas.new(com_cardfirst, "", 1)
     local com_cardsecond = self.ComUi:GetChild("ComCardTwo").asCom
-    self.UiHandCardSecond = ViewHandCardTexas:new(nil, com_cardsecond, "", 2)
+    self.UiHandCardSecond = ViewHandCardTexas.new(com_cardsecond, "", 2)
     self.GComChatParent = self.ComUi:GetChild("ComChatParent").asCom
     self.ImageWinName = self.ComUi:GetChild("ImageWinName").asImage
     self.TransitionWinName = self.ComUi:GetTransition("TransitionWinName")

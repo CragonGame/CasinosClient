@@ -1,30 +1,27 @@
 -- Copyright(c) Cragon. All rights reserved.
+-- 百人桌，下注奖励对话框视图
 
 ---------------------------------------
 -- 代表一个宝箱
-UiDesktopHBetRewardItem = ViewBase:new()
+UiDesktopHBetRewardItem = class()
 
 ---------------------------------------
-function UiDesktopHBetRewardItem:new(o, bet_reward, co_betreward, betreward_tbid, state, view_mgr)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ViewMgr = view_mgr
-    o.BetReward = bet_reward
-    o.GCoBetReward = co_betreward
-    o.BetRewardTbId = betreward_tbid
-    o.DesktopHDialyGetBetRewardState = state
-    o.GTextBetRewardValue = o.GCoBetReward:GetChild("RewardValue").asTextField
-    o.GTextBetValue = o.GCoBetReward:GetChild("BetValue").asTextField
-    local tb_reward = o.ViewMgr.TbDataMgr:GetData("DesktopHBetReward", betreward_tbid)
-    o.GTextBetRewardValue.text = UiChipShowHelper:GetGoldShowStr(tb_reward.BetRewardValue, o.ViewMgr.LanMgr.LanBase)
-    o.GTextBetValue.text = UiChipShowHelper:GetGoldShowStr(tb_reward.BetValue, o.ViewMgr.LanMgr.LanBase)
-    o.GCoBetReward.onClick:Add(
+function UiDesktopHBetRewardItem:ctor(bet_reward, co_betreward, betreward_tbid, state, view_mgr)
+    self.ViewMgr = view_mgr
+    self.BetReward = bet_reward
+    self.GCoBetReward = co_betreward
+    self.BetRewardTbId = betreward_tbid
+    self.DesktopHDialyGetBetRewardState = state
+    self.GTextBetRewardValue = self.GCoBetReward:GetChild("RewardValue").asTextField
+    self.GTextBetValue = self.GCoBetReward:GetChild("BetValue").asTextField
+    local tb_reward = self.ViewMgr.TbDataMgr:GetData("DesktopHBetReward", betreward_tbid)
+    self.GTextBetRewardValue.text = UiChipShowHelper:GetGoldShowStr(tb_reward.BetRewardValue, self.ViewMgr.LanMgr.LanBase)
+    self.GTextBetValue.text = UiChipShowHelper:GetGoldShowStr(tb_reward.BetValue, self.ViewMgr.LanMgr.LanBase)
+    self.GCoBetReward.onClick:Add(
             function()
-                o:_onClickBetReward()
+                self:_onClickBetReward()
             end
     )
-    return o
 end
 
 ---------------------------------------
@@ -51,11 +48,11 @@ function UiDesktopHBetRewardItem:_onClickBetReward()
                 UiChipShowHelper:GetGoldShowStr(tb_reward.BetValue, self.ViewMgr.LanMgr.LanBase),
                 UiChipShowHelper:GetGoldShowStr(reward_gold, self.ViewMgr.LanMgr.LanBase))
 
-        local ev = self:GetEv("EvDesktopHGetBetReward")
+        local ev = self.ViewMgr:GetEv("EvDesktopHGetBetReward")
         if (ev == nil) then
             ev = EvDesktopHGetBetReward:new(nil)
         end
-        self:SendEv(ev)
+        self.ViewMgr:SendEv(ev)
     end
 
     ViewHelper:UiShowInfoSuccess(tips)
@@ -129,7 +126,7 @@ function ViewDesktopHBetReward:OnHandleEv(ev)
                     can_get = true
                 end
                 local co_betreward = self.ComUi:GetChild(self.BetRewardTitle .. i).asCom
-                UiDesktopHBetRewardItem:new(nil, self, co_betreward, i, v, self.ViewMgr)
+                UiDesktopHBetRewardItem.new(self, co_betreward, i, v, self.ViewMgr)
             end
 
             self.GBtnGetAllReward.enabled = can_get

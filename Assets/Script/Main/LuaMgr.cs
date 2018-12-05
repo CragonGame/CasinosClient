@@ -372,7 +372,7 @@ namespace Casinos
         {
             string name = file_name.ToLower();
             string name1 = name.Replace(".txt", "");
-            
+
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(text);
             MapLuaFiles[name1] = bytes;
         }
@@ -398,13 +398,13 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void LoadLuaFromRawDir(string path)
         {
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
-            System.IO.FileInfo[] file_list = dir.GetFiles("*.*", System.IO.SearchOption.AllDirectories);
-            foreach (System.IO.FileInfo i in file_list)
+            DirectoryInfo dir = new DirectoryInfo(path);
+            FileInfo[] file_list = dir.GetFiles("*.txt", SearchOption.AllDirectories);
+            foreach (FileInfo i in file_list)
             {
-                using (System.IO.FileStream fs = new System.IO.FileStream(i.FullName, System.IO.FileMode.Open))
+                using (FileStream fs = new FileStream(i.FullName, FileMode.Open))
                 {
-                    using (System.IO.StreamReader sr = new System.IO.StreamReader(fs))
+                    using (StreamReader sr = new StreamReader(fs))
                     {
                         string s = sr.ReadToEnd();
                         byte[] data = System.Text.Encoding.UTF8.GetBytes(s);
@@ -424,13 +424,13 @@ namespace Casinos
         {
             foreach (var k in list_path)
             {
-                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(k);
-                System.IO.FileInfo[] file_list = dir.GetFiles("*.txt", System.IO.SearchOption.AllDirectories);
-                foreach (System.IO.FileInfo i in file_list)
+                DirectoryInfo dir = new DirectoryInfo(k);
+                FileInfo[] file_list = dir.GetFiles("*.txt", SearchOption.AllDirectories);
+                foreach (FileInfo i in file_list)
                 {
-                    using (System.IO.FileStream fs = new System.IO.FileStream(i.FullName, System.IO.FileMode.Open))
+                    using (FileStream fs = new FileStream(i.FullName, FileMode.Open))
                     {
-                        using (System.IO.StreamReader sr = new System.IO.StreamReader(fs))
+                        using (StreamReader sr = new StreamReader(fs))
                         {
                             string s = sr.ReadToEnd();
                             byte[] data = System.Text.Encoding.UTF8.GetBytes(s);

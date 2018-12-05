@@ -1,0 +1,35 @@
+-- Copyright(c) Cragon. All rights reserved.
+-- 音乐播放器
+
+---------------------------------------
+ControllerMusicPlayer = class(ControllerBase)
+
+---------------------------------------
+function ControllerMusicPlayer:ctor(this, controller_data, controller_name)
+end
+
+---------------------------------------
+function ControllerMusicPlayer:OnCreate()
+end
+
+---------------------------------------
+function ControllerMusicPlayer:OnDestroy()
+    self:UnbindEvListener(self)
+end
+
+---------------------------------------
+function ControllerMusicPlayer:OnHandleEv(ev)
+end
+
+---------------------------------------
+ControllerMusicPlayerFactory = class(ControllerFactory)
+
+function ControllerMusicPlayerFactory:GetName()
+    return 'MusicPlayer'
+end
+
+function ControllerMusicPlayerFactory:CreateController(controller_data)
+    local ctrl_name = self:GetName()
+    local ctrl = ControllerMusicPlayer:new(controller_data, ctrl_name)
+    return ctrl
+end
