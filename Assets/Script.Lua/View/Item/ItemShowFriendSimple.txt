@@ -29,7 +29,7 @@ function ItemShowFriendSimple:new(o, com, view_friend)
 end
 
 ---------------------------------------
-function ItemShowFriendSimple:setFriendInfo(view_friend, friend_item, is_friend)
+function ItemShowFriendSimple:SetFriendInfo(view_friend, friend_item, is_friend)
     self.ViewFriend = view_friend
     self.FriendInfo = friend_item
     self.IsFriend = is_friend

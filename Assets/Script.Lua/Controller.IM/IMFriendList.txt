@@ -63,7 +63,7 @@ function IMFriendList:OnIMFriendLoginNotify(player_guid)
             table.insert(self.ListOnLineFriendGuid, player_guid)
         end
         local friend_onLine = self.ControllerIM.ViewMgr:CreateView("FriendOnLine")
-        friend_onLine:setFriendInfo(player_info)
+        friend_onLine:SetFriendInfo(player_info)
         local ev = self.ControllerIM.ViewMgr:GetEv("EvEntityFriendOnlineStateChange")
         if (ev == nil) then
             ev = EvEntityFriendOnlineStateChange:new(nil)

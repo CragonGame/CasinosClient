@@ -175,7 +175,7 @@ function ControllerIM:OnHandleEv(ev)
         end
     elseif (ev.EventName == "EvUiClickChooseFriendChatTarget") then
         local ui_choose_target = self.ViewMgr:CreateView("ChatChooseTarget")
-        ui_choose_target:setFriendInfo(self.IMFriendList.MapFriendList)
+        ui_choose_target:SetFriendInfo(self.IMFriendList.MapFriendList)
     elseif (ev.EventName == "EvUiClickFriend") then
         local ui_friend = self.ViewMgr:GetView("Friend")
         if (ui_friend == nil) then
@@ -406,7 +406,7 @@ end
 function ControllerIM:SetMainUiIMInfo()
     local view_main = self.ViewMgr:GetView("Main")
     if (view_main ~= nil) then
-        view_main:setFriendInfo(self.IMFriendList.MapFriendList)
+        view_main:SetFriendInfo(self.IMFriendList.MapFriendList)
         view_main:setRecommandFriendInfo(self.IMFriendList.ListRecommendPlayer)
         view_main:setNewChatCount(self.IMChat:getAllNewChatCount())
     end

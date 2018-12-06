@@ -7,15 +7,18 @@ ViewMatchInfo = class(ViewBase)
 ---------------------------------------
 function ViewMatchInfo:ctor()
     self.Tween = nil
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
 function ViewMatchInfo:OnCreate()
-    local controller_mgr = ControllerMgr
-    self.ControllerActor = controller_mgr:GetController("Actor")
+    self:BindEvListener("EvEntitySetMatchDetailedInfo", self)
+    self:BindEvListener("EvEntitySetRaiseBlindTbInfo", self)
+
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("MatchInfo"))
-    self.ViewMgr:BindEvListener("EvEntitySetMatchDetailedInfo", self)
-    self.ViewMgr:BindEvListener("EvEntitySetRaiseBlindTbInfo", self)
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
+
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
@@ -139,7 +142,11 @@ function ViewMatchInfo:OnDestroy()
         self.Tween:Kill(false)
         self.Tween = nil
     end
-    self.ViewMgr:UnbindEvListener(self)
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -163,7 +170,7 @@ function ViewMatchInfo:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ViewMatchInfo:onUpdate(tm)
+function ViewMatchInfo:_timerUpdate(tm)
     if (self.GControllerMatchInfo.selectedIndex == 1 and self.GControllerMatchState.selectedIndex == 0) then
         local matchUseTime = CS.System.DateTime.Now - self.MatchInfo.DtMatchBegin
         self.GTextMatchUsedTime.text = string.format("%02s", matchUseTime.Minutes) .. ":" .. string.format("%02s", matchUseTime.Seconds)
@@ -429,8 +436,9 @@ function ViewMatchInfo:onClickShare()
     local content = string.format(self.ViewMgr.LanMgr:getLanValue("MatchInviteTip"), self.ControllerActor.PropNickName:get(),
             self:formatTime(self.MatchInfo.DtMatchBegin), self.MatchInfo.Name)
     local pic_name = "Resources.KingTexasRaw/Icon/ShareIcon.png"
-    local pic_path = CS.Casinos.CasinosContext.Instance.PathMgr:CombinePersistentDataPath(pic_name)
-    Native:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, content, pic_path, self.MatchInfo.Name .. self.ViewMgr.LanMgr:getLanValue("MatchInvite"),
+    local pic_path = self.CasinosContext.PathMgr:CombinePersistentDataPath(pic_name)
+    Native:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, content, pic_path,
+            self.MatchInfo.Name .. self.ViewMgr.LanMgr:getLanValue("MatchInvite"),
             Native.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Webpage)
 end
 

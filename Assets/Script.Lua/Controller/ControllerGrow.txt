@@ -9,8 +9,8 @@ end
 
 ---------------------------------------
 function ControllerGrow:OnCreate()
-    self.Rpc = self.ControllerMgr.Rpc
-    self.MC = CommonMethodType
+    self:BindEvListener("EvUiRequestGetGrowReward", self)
+
     -- 成长奖励
     self.Rpc:RegRpcMethod2(self.MC.PlayerGetGrowRewardNotify, function(result, get_golds)
         self:s2cPlayerGetGrowRewardNotify(result, get_golds)
@@ -19,12 +19,18 @@ function ControllerGrow:OnCreate()
     self.Rpc:RegRpcMethod1(self.MC.PlayerGrowRewardSnapshotNotify, function(grow_data)
         self:s2cPlayerGrowRewardSnapshotNotify(grow_data)
     end)
-    self.ViewMgr:BindEvListener("EvUiRequestGetGrowReward", self)
 end
 
 ---------------------------------------
 function ControllerGrow:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
+end
+
+---------------------------------------
+function ControllerGrow:OnHandleEv(ev)
+    if (ev.EventName == "EvUiRequestGetGrowReward") then
+        self.Rpc:RPC0(self.MC.PlayerGetGrowRewardRequest)
+    end
 end
 
 ---------------------------------------
@@ -36,13 +42,6 @@ function ControllerGrow:onUpdate(tm)
                 self.BGrowData.NextGetRewardLeftTm = 0
             end
         end
-    end
-end
-
----------------------------------------
-function ControllerGrow:OnHandleEv(ev)
-    if (ev.EventName == "EvUiRequestGetGrowReward") then
-        self.Rpc:RPC0(self.MC.PlayerGetGrowRewardRequest)
     end
 end
 

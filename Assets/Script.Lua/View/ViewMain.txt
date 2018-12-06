@@ -430,9 +430,9 @@ function ViewMain:OnHandleEv(ev)
             if (ev.friend_etguid == self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid) then
                 self.CurrentFriendItem = nil
             end
-            self:setFriendInfo(ev.map_friend)
+            self:SetFriendInfo(ev.map_friend)
         elseif (ev.EventName == "EvEntityGoldChanged") then
-            self.UiPlayerInfoSelf:updatePlayerGold(UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, true, 2))
+            self.UiPlayerInfoSelf:RefreshPlayerGold(UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase, true, 2))
         elseif (ev.EventName == "EvEntityDiamondChanged") then
             self.UiPlayerInfoSelf:updatePlayerDiamond(UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, true, 2))
         elseif (ev.EventName == "EvEntityRecommendPlayerList") then
@@ -460,7 +460,7 @@ function ViewMain:OnHandleEv(ev)
                 local player_info = self.ControllerIM.IMFriendList:getFriendInfo(self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid)
                 self:refreshCurrentFriendInfo(player_info)
             end
-            self:setFriendInfo(ev.map_friendinfo)
+            self:SetFriendInfo(ev.map_friendinfo)
         elseif (ev.EventName == "EvEntityRefreshFriendInfo") then
             if (self.CurrentFriendItem ~= nil and self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid == ev.player_info.PlayerInfoCommon.PlayerGuid) then
                 self:refreshCurrentFriendInfo(ev.player_info)
@@ -470,7 +470,7 @@ function ViewMain:OnHandleEv(ev)
             local friend_gold = ev.current_gold
             if (self.CurrentFriendItem ~= nil and self.CurrentFriendItem.PlayerInfoCommon.PlayerGuid == friend_guid) then
                 local str_gold = UiChipShowHelper:GetGoldShowStr(friend_gold, self.ViewMgr.LanMgr.LanBase, true, 2)
-                self.UiPlayerInfoCurrentFriend:updatePlayerGold(str_gold)
+                self.UiPlayerInfoCurrentFriend:RefreshPlayerGold(str_gold)
             end
         elseif (ev.EventName == "EvEntityFriendOnlineStateChange") then
             local player_guid = ev.player_info.PlayerInfoCommon.PlayerGuid
@@ -483,7 +483,7 @@ function ViewMain:OnHandleEv(ev)
                 head_icon = self.MapFriend[player_guid]
                 local player_info = head_icon:getFriendInfo()
                 if (player_info.PlayerInfoCommon.PlayerGuid == player_guid) then
-                    head_icon:setFriendInfo(ev.player_info,
+                    head_icon:SetFriendInfo(ev.player_info,
                             function(ev)
                                 self:onClickFriendIcon(ev)
                             end
@@ -561,7 +561,7 @@ function ViewMain:setOnlineNum(num)
 end
 
 ---------------------------------------
-function ViewMain:setFriendInfo(map_friend)
+function ViewMain:SetFriendInfo(map_friend)
     self.ListFriendInfo = {}
     self.MapFriend = {}
     local lua_helper = LuaHelper
@@ -949,7 +949,7 @@ function ViewMain:rendererFriend(index, item)
     if (l > index) then
         local friend_info = self.ListFriendInfo[index + 1]
         local head_icon = ItemHeadIcon:new(nil, item)
-        head_icon:setFriendInfo(friend_info,
+        head_icon:SetFriendInfo(friend_info,
                 function(ev)
                     self:onClickFriendIcon(ev)
                 end
@@ -968,7 +968,7 @@ function ViewMain:rendererFriendRecommend(index, item)
     if (#self.ListFriendInfoRecommend > index) then
         local friend_info = self.ListFriendInfoRecommend[index + 1]
         local head_icon = ItemHeadIcon:new(nil, item)
-        head_icon:setFriendInfo(friend_info,
+        head_icon:SetFriendInfo(friend_info,
                 function(ev)
                     self:onClickRecommendFriend(ev)
                 end

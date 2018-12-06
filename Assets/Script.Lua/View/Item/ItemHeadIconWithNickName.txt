@@ -28,7 +28,7 @@ function ItemHeadIconWithNickName:setFriendInfo1(friend_info)
 end
 
 ---------------------------------------
-function ItemHeadIconWithNickName:setFriendInfo(icon_name, account_id, vip_level, is_online, on_click)
+function ItemHeadIconWithNickName:SetFriendInfo(icon_name, account_id, vip_level, is_online, on_click)
     self.ViewHeadIcon:SetPlayerInfo(icon_name, account_id, vip_level, is_online)
     self.Com.onClick:Add(on_click)
 end

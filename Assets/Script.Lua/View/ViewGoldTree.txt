@@ -6,14 +6,19 @@ ViewGoldTree = class(ViewBase)
 ---------------------------------------
 function ViewGoldTree:ctor()
     self.Tween = nil
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
 function ViewGoldTree:OnCreate()
+    self:BindEvListener("EvEntityOnGrowRewardSnapshot", self)
+
     self.Tween = ViewHelper:PopUi(self.ComUi)
     self.NextGetRewardTm = 0
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
+
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
     com_shade.onClick:Add(
@@ -47,13 +52,13 @@ function ViewGoldTree:OnCreate()
     self.GTextGoldTreeLevel = self.ComUi:GetChild("GoldTreeLevel").asTextField
     self.GTextMaxCanGetGold = self.ComUi:GetChild("MaxCanGetGold").asTextField
     self.ControllerTree.selectedIndex = 1
-    self:setGoldTreeSnapShot(self.ControllerPlayer.BGrowData)
-    local ev = self.ViewMgr.GetEv("EvUiRequestGetGrowSnapShot")
+    self:SetGoldTreeSnapshot(self.ControllerPlayer.BGrowData)
+
+    local ev = self:GetEv("EvUiRequestGetGrowSnapshot")
     if (ev == nil) then
-        ev = EvUiRequestGetGrowSnapShot:new(nil)
+        ev = EvUiRequestGetGrowSnapshot:new(nil)
     end
-    self.ViewMgr.SendEv(ev)
-    self.ViewMgr:BindEvListener("EvEntityOnGrowRewardSnapshot", self)
+    self:SendEv(ev)
 end
 
 ---------------------------------------
@@ -62,21 +67,23 @@ function ViewGoldTree:OnDestroy()
         self.Tween:Kill(false)
         self.Tween = nil
     end
-    self.ViewMgr:UnbindEvListener(self)
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
 function ViewGoldTree:OnHandleEv(ev)
-    if (ev ~= nil) then
-        if (ev.EventName == "EvEntityOnGrowRewardSnapshot") then
-            local grow_data = ev.grow_data
-            self:setGoldTreeSnapShot(grow_data)
-        end
+    if (ev.EventName == "EvEntityOnGrowRewardSnapshot") then
+        local grow_data = ev.grow_data
+        self:SetGoldTreeSnapshot(grow_data)
     end
 end
 
 ---------------------------------------
-function ViewGoldTree:onUpdate(tm)
+function ViewGoldTree:_timerUpdate(tm)
     if (self.NextGetRewardTm > 0) then
         self.NextGetRewardTm = self.NextGetRewardTm - tm
         if (self.NextGetRewardTm > 0) then
@@ -89,7 +96,7 @@ function ViewGoldTree:onUpdate(tm)
 end
 
 ---------------------------------------
-function ViewGoldTree:setGoldTreeSnapShot(grow_data)
+function ViewGoldTree:SetGoldTreeSnapshot(grow_data)
     if (grow_data == nil) then
         return
     end

@@ -75,7 +75,7 @@ function UiMainPlayerInfo:SetPlayerInfo1(name, chips, golds, is_online)
 end
 
 ---------------------------------------
-function UiMainPlayerInfo:updatePlayerGold(gold)
+function UiMainPlayerInfo:RefreshPlayerGold(gold)
     self.GTextChips.text = gold
 end
 

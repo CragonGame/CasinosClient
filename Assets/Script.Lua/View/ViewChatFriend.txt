@@ -360,12 +360,12 @@ function ViewChatFriend:renderChatTarget()
         if (player_info ~= nil) then
             local last_chat_record = self.ControllerIM.IMChat:getLastChatMsgRecord(friend_guid)
             local unread_count = self.ControllerIM.IMChat:getFriendNewChatCount(friend_guid)
-            --item:setFriendInfo(player_info, "", last_chat_record, unread_count)
+            --item:SetFriendInfo(player_info, "", last_chat_record, unread_count)
             local guid = ""
             if (self.CurrentChatTarget ~= nil) then
                 guid = self.CurrentChatTarget.PlayerInfoCommon.PlayerGuid
             end
-            item:setFriendInfo(player_info, guid, last_chat_record, unread_count)
+            item:SetFriendInfo(player_info, guid, last_chat_record, unread_count)
             self.MapChatTargets[friend_guid] = item
         end
     end
@@ -383,12 +383,12 @@ function ViewChatFriend:RenderListItemChatTarget(index, obj)
         if (player_info ~= nil) then
             local last_chat_record = self.ControllerIM.IMChat:getLastChatMsgRecord(friend_guid)
             local unread_count = self.ControllerIM.IMChat:getFriendNewChatCount(friend_guid)
-            --item:setFriendInfo(player_info, "", last_chat_record, unread_count)
+            --item:SetFriendInfo(player_info, "", last_chat_record, unread_count)
             local guid = ""
             if (self.CurrentChatTarget ~= nil) then
                 guid = self.CurrentChatTarget.PlayerInfoCommon.PlayerGuid
             end
-            item:setFriendInfo(player_info, guid, last_chat_record, unread_count)
+            item:SetFriendInfo(player_info, guid, last_chat_record, unread_count)
             self.MapChatTargets[friend_guid] = item
         end
     end

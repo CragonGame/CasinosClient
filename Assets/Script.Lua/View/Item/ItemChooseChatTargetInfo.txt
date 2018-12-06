@@ -29,7 +29,7 @@ function ItemChooseChatTargetInfo:new(o, com, controller_im)
 end
 
 ---------------------------------------
-function ItemChooseChatTargetInfo:setFriendInfo(friend_item)
+function ItemChooseChatTargetInfo:SetFriendInfo(friend_item)
     self.FriendInfo = friend_item
     local icon_name = self.FriendInfo.PlayerInfoCommon.IconName
     self.ViewHeadIcon:SetPlayerInfo(self.FriendInfo.PlayerInfoCommon.IconName, self.FriendInfo.PlayerInfoCommon.AccountId,

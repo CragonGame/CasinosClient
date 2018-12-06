@@ -29,14 +29,14 @@ end
 function ViewFriendOnLine:OnHandleEv(ev)
     if (ev.EventName == "EvEntityFriendOnlineStateChange") then
         if (ev.player_info.PlayerInfoMore.OnlineState == PlayerOnlineState.Online) then
-            self:setFriendInfo(ev.player_info)
+            self:SetFriendInfo(ev.player_info)
             self:InitMove()
         end
     end
 end
 
 ---------------------------------------
-function ViewFriendOnLine:setFriendInfo(player_info)
+function ViewFriendOnLine:SetFriendInfo(player_info)
     self.GTxetNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.PlayerInfoCommon.NickName, 21, 6)
     self.HeadIcon:SetPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
 end

@@ -40,7 +40,7 @@ function ItemChatTargetInfo:init(view_chatfriend)
 end
 
 ---------------------------------------
-function ItemChatTargetInfo:setFriendInfo(friend_item, current_chat_guid, chat_record, unread_chatcount)
+function ItemChatTargetInfo:SetFriendInfo(friend_item, current_chat_guid, chat_record, unread_chatcount)
     self.GTextLastRecord.text = ""
     self.GTextSendTm.text = ""
     self.GTextNewRecordCount.text = ""

@@ -24,7 +24,7 @@ function ItemInviteFriendPlay:new(o, com, view)
 end
 
 ---------------------------------------
-function ItemInviteFriendPlay:setFriendInfo(friend_item)
+function ItemInviteFriendPlay:SetFriendInfo(friend_item)
     self.FriendInfo = friend_item;
     self.ViewHeadIcon:SetPlayerInfo(friend_item.PlayerInfoCommon.IconName, friend_item.PlayerInfoCommon.AccountId,
             friend_item.PlayerInfoCommon.VIPLevel)

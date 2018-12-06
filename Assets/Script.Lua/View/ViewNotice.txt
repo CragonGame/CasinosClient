@@ -13,7 +13,8 @@ end
 
 ---------------------------------------
 function ViewNotice:OnCreate()
-    self.ViewMgr:BindEvListener("EvEntityReceiceMarquee", self)
+    self.BindEvListener("EvEntityReceiceMarquee", self)
+
     self.ControllerMarquee = self.ControllerMgr:GetController("Marquee")
     self.ControllerBag = self.ControllerMgr:GetController("Bag")
     self.ViewPool = self.ViewMgr:GetView("Pool")
@@ -70,7 +71,7 @@ end
 
 ---------------------------------------
 function ViewNotice:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self.UnbindEvListener(self)
 end
 
 ---------------------------------------

@@ -77,7 +77,7 @@ function ViewInviteFriendPlay:rendererOnLineFriend(index, item)
         if (friend_info ~= nil) then
             local com = CS.Casinos.LuaHelper.GObjectCastToGCom(item)
             local ui_item = ItemInviteFriendPlay:new(nil, com, self)
-            ui_item:setFriendInfo(friend_info)
+            ui_item:SetFriendInfo(friend_info)
         end
     end
 end
@@ -91,7 +91,7 @@ function ViewInviteFriendPlay:rendererOffLineFriend(index, item)
         if (friend_info ~= nil) then
             local com = CS.Casinos.LuaHelper.GObjectCastToGCom(item)
             local ui_item = ItemInviteFriendPlay:new(nil, com, self)
-            ui_item:setFriendInfo(friend_info)
+            ui_item:SetFriendInfo(friend_info)
         end
     end
 end

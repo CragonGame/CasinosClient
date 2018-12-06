@@ -6,13 +6,17 @@ ViewClub = class(ViewBase)
 ---------------------------------------
 function ViewClub:ctor()
     self.UpdatePlayerNumTime = 0
+    self.TimerUpdate = nil
 end
 
 ---------------------------------------
 function ViewClub:OnCreate()
-    self.ViewMgr:BindEvListener("EvEntitySetPrivateMatchLsit", self)
-    self.ViewMgr:BindEvListener("EvEntityUpdatePrivateMatchPlayerNum", self)
-    self.ViewMgr:BindEvListener("EvEntityGetMatchInfoByInvitationCodeSucceed", self)
+    self:BindEvListener("EvEntitySetPrivateMatchLsit", self)
+    self:BindEvListener("EvEntityUpdatePrivateMatchPlayerNum", self)
+    self:BindEvListener("EvEntityGetMatchInfoByInvitationCodeSucceed", self)
+
+    self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
+
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
@@ -58,19 +62,11 @@ end
 
 ---------------------------------------
 function ViewClub:OnDestroy()
-end
-
----------------------------------------
-function ViewClub:onUpdate(tm)
-    self.UpdatePlayerNumTime = self.UpdatePlayerNumTime + tm
-    if (self.UpdatePlayerNumTime >= 30) then
-        local ev = self:GetEv("EvUiRequestUpdatePrivateMatchPlayerNum")
-        if (ev == nil) then
-            ev = EvUiRequestUpdatePrivateMatchPlayerNum:new(nil)
-        end
-        self:SendEv(ev)
-        self.UpdatePlayerNumTime = 0
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
     end
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -98,6 +94,19 @@ function ViewClub:OnHandleEv(ev)
         end
         local view_privateMatchInfo = self.ViewMgr:CreateView("PrivateMatchInfo")
         view_privateMatchInfo:Init(match_guid, isSelfJoin)
+    end
+end
+
+---------------------------------------
+function ViewClub:_timerUpdate(tm)
+    self.UpdatePlayerNumTime = self.UpdatePlayerNumTime + tm
+    if (self.UpdatePlayerNumTime >= 30) then
+        local ev = self:GetEv("EvUiRequestUpdatePrivateMatchPlayerNum")
+        if (ev == nil) then
+            ev = EvUiRequestUpdatePrivateMatchPlayerNum:new(nil)
+        end
+        self:SendEv(ev)
+        self.UpdatePlayerNumTime = 0
     end
 end
 

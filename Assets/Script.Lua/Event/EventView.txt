@@ -2264,17 +2264,17 @@ function EvUiClickLeaveDesktopHundred:Reset()
 end
 
 ---------------------------------------
-EvUiRequestGetGrowSnapShot = EventBase:new(nil)
+EvUiRequestGetGrowSnapshot = EventBase:new(nil)
 
-function EvUiRequestGetGrowSnapShot:new(o)
+function EvUiRequestGetGrowSnapshot:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvUiRequestGetGrowSnapShot"
+    self.EventName = "EvUiRequestGetGrowSnapshot"
     return o
 end
 
-function EvUiRequestGetGrowSnapShot:Reset()
+function EvUiRequestGetGrowSnapshot:Reset()
 end
 
 ---------------------------------------

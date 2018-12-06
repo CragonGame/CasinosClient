@@ -15,7 +15,7 @@ function ItemHeadIcon:new(o, com)
 end
 
 ---------------------------------------
-function ItemHeadIcon:setFriendInfo(friend_info, on_click)
+function ItemHeadIcon:SetFriendInfo(friend_info, on_click)
     self.PlayerInfo = friend_info
     self.ViewHeadIcon:SetPlayerInfo(friend_info.PlayerInfoCommon.IconName,
             friend_info.PlayerInfoCommon.AccountId, friend_info.PlayerInfoCommon.VIPLevel,
