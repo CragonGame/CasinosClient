@@ -584,8 +584,10 @@ namespace Casinos
                 Format = ZXing.BarcodeFormat.QR_CODE,
                 Options = new ZXing.QrCode.QrCodeEncodingOptions
                 {
+                    CharacterSet = "UTF-8",
                     Height = height,
-                    Width = width
+                    Width = width,
+                    Margin = 1// 设置二维码的边距,单位不是固定像素
                 }
             };
             return writer.Write(encoding_text);

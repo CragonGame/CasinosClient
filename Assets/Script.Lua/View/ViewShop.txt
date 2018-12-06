@@ -10,26 +10,25 @@ GoodsType = {
 
 ---------------------------------------
 ViewShop = class(ViewBase)
-
 function ViewShop:ctor()
-    self.Context = Context
     self.TemporaryHideItemId = 14001
 end
 
 ---------------------------------------
 function ViewShop:OnCreate()
-    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:BindEvListener("EvEntityDiamondChanged", self)
-    self.ViewMgr:BindEvListener("EvEntityPointChanged", self)
+    self:BindEvListener("EvEntityGoldChanged", self)
+    self:BindEvListener("EvEntityDiamondChanged", self)
+    self:BindEvListener("EvEntityPointChanged", self)
+
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.MapShopDiamond = {}
     self.MapShopGold = {}
     self.MapShopItemCosume = {}
     self.MapShopItemVip = {}
     self.ControllerShop = self.ComUi:GetController("ControllerShop")
+
     local btn_return = self.ComUi:GetChild("BtnReturn").asButton
     btn_return.onClick:Add(
             function()
@@ -37,41 +36,36 @@ function ViewShop:OnCreate()
             end
     )
 
-    local com_tabGift = self.ComUi:GetChild("ComTabPoint").asCom
-    self.GControllerTabGift = com_tabGift:GetController("ControllerTab")
-    local btn_gift1 = com_tabGift:GetChild("BtnGift1").asButton
+    local com_tab_gift = self.ComUi:GetChild("ComTabPoint").asCom
+    self.GControllerTabGift = com_tab_gift:GetController("ControllerTab")
+    local btn_gift1 = com_tab_gift:GetChild("BtnGift1").asButton
     btn_gift1.onClick:Add(
             function(a)
                 self:setListGoods(GoodsType.Gift1)
-            end
-    )
-    local btn_gift2 = com_tabGift:GetChild("BtnGift2").asButton
+            end)
+    local btn_gift2 = com_tab_gift:GetChild("BtnGift2").asButton
     btn_gift2.onClick:Add(
             function(a)
                 self:setListGoods(GoodsType.Gift2)
-            end
-    )
-    local btn_starPoint = com_tabGift:GetChild("BtnStarPoint").asButton
+            end)
+    local btn_starPoint = com_tab_gift:GetChild("BtnStarPoint").asButton
     btn_starPoint.onClick:Add(
             function(a)
                 self:setListGoods(GoodsType.Gift3)
-            end
-    )
-    local com_point = com_tabGift:GetChild("ComPointAndStar").asCom
+            end)
+    local com_point = com_tab_gift:GetChild("ComPointAndStar").asCom
     self.GTextPoint = com_point:GetChild("TextPoint").asTextField
     local btn_levelupVip = self.ComUi:GetChild("Lan_Btn_Upgrade").asButton
     btn_levelupVip.onClick:Add(
             function()
                 self:onClickUpdateVIP()
-            end
-    )
+            end)
 
     local btn_editAddress = self.ComUi:GetChild("Lan_Btn_ReceivingAddress").asButton
     btn_editAddress.onClick:Add(
             function()
                 self:onClickBtnEditAddress()
-            end
-    )
+            end)
 
     self.GListChip = self.ComUi:GetChild("ListChip").asList
     self.GListDiamond = self.ComUi:GetChild("ListDiamond").asList
@@ -97,14 +91,12 @@ function ViewShop:OnCreate()
         btn_tabdiomand.onClick:Add(
                 function()
                     self:onClickBtnDiomand()
-                end
-        )
+                end)
         local btn_tabchip = self.ComUi:GetChild("BtnTabChip").asButton
         btn_tabchip.onClick:Add(
                 function()
                     self:onClickBtnTabChip()
-                end
-        )
+                end)
         self.ControllerShop.selectedIndex = 1
         self:createDiamond()
     else
@@ -119,81 +111,76 @@ function ViewShop:OnCreate()
     btn_tabconsume.onClick:Add(
             function()
                 self:onClickBtnTabConsume()
-            end
-    )
+            end)
     local btn_tabvip = self.ComUi:GetChildInGroup(group, "BtnTabVip").asButton
     btn_tabvip.onClick:Add(
             function()
                 self:onClickBtnVip()
-            end
-    )
+            end)
     local btn_tabGift = self.ComUi:GetChildInGroup(group, "BtnTabGift").asButton
     btn_tabGift.onClick:Add(
             function()
                 self:onClickBtnTabGift()
-            end
-    )
+            end)
 
     local btn_addChip = self.ComUi:GetChildInGroup(group_ex, "BtnAddChip").asButton
     btn_addChip.onClick:Add(
             function()
                 self:onClickBtnTabChip()
-            end
-    )
+            end)
     local btn_addDiamond = self.ComUi:GetChildInGroup(group_ex, "BtnAddDiamond").asButton
     btn_addDiamond.onClick:Add(
             function()
                 self:onClickBtnDiomand()
-            end
-    )
+            end)
     self.GTextSelfGold = btn_addChip:GetChild("TextChipAmount").asTextField
     self.GTextSelfDiamond = btn_addDiamond:GetChild("TextDiamondAmount").asTextField
-    self:setPlayerGoldAndDiamond()
+    self:SetPlayerGoldAndDiamond()
+
     local bg = self.ComUi:GetChild("Bg")
-    if (bg ~= nil)
-    then
+    if (bg ~= nil) then
         ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
 end
 
 ---------------------------------------
 function ViewShop:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
 function ViewShop:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
-        self:setPlayerGoldAndDiamond()
+        self:SetPlayerGoldAndDiamond()
     elseif (ev.EventName == "EvEntityDiamondChanged") then
-        self:setPlayerGoldAndDiamond()
+        self:SetPlayerGoldAndDiamond()
     elseif (ev.EventName == "EvEntityPointChanged") then
-        self:setPlayerGoldAndDiamond()
+        self:SetPlayerGoldAndDiamond()
     end
 end
 
 ---------------------------------------
-function ViewShop:showItem()
+function ViewShop:ShowTabConsume()
     self:onClickBtnTabConsume()
 end
 
 ---------------------------------------
-function ViewShop:showGold()
+function ViewShop:ShowTabGold()
     self:onClickBtnTabChip()
 end
 
 ---------------------------------------
-function ViewShop:showDiamond()
+function ViewShop:ShowTabDiamond()
     self:onClickBtnDiomand()
 end
 
 ---------------------------------------
-function ViewShop:showVIP()
+function ViewShop:ShowTabVIP()
     self:onClickBtnVip()
 end
 
 ---------------------------------------
-function ViewShop:setPlayerGoldAndDiamond()
+function ViewShop:SetPlayerGoldAndDiamond()
     self.GTextSelfGold.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
     self.GTextSelfDiamond.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
     self.GTextPoint.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropPoint:get(), self.ViewMgr.LanMgr.LanBase, false)

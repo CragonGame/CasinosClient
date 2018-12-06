@@ -17,8 +17,8 @@ function UiChooseCountryCode:new(view, default_code)
     o.TextSearchCountry.onChanged:Set(
             function()
                 o:_checkInput()
-            end
-    )
+            end)
+
     o.ListCountryCode = com_choose:GetChild("ListCountryCode").asList
 
     o.BtnCancel = com_choose:GetChild("Lan_Btn_Cancel").asButton
@@ -48,6 +48,11 @@ function UiChooseCountryCode:new(view, default_code)
     o:setCurrentCode(c_k, true)
 
     return o
+end
+
+---------------------------------------
+function UiChooseCountryCode:Destroy()
+    self.BtnCancel.onClick:Clear()
 end
 
 ---------------------------------------

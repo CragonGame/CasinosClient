@@ -248,7 +248,7 @@ function ViewPlayerInfo:changeNickName()
                 ViewHelper:UiShowMsgBox(self.ViewMgr.LanMgr:getLanValue("RenameCardInsufficient"),
                         function()
                             local ui_shop = self.ViewMgr:CreateView("Shop")
-                            ui_shop:showItem()
+                            ui_shop:ShowTabConsume()
                         end
                 )
                 return
@@ -316,13 +316,13 @@ end
 ---------------------------------------
 function ViewPlayerInfo:onClickMoreCoin()
     local shop = self.ViewMgr:CreateView("Shop")
-    shop:showDiamond()
+    shop:ShowTabDiamond()
 end
 
 ---------------------------------------
 function ViewPlayerInfo:onClickMoreChips()
     local shop = self.ViewMgr:CreateView("Shop")
-    shop:showGold()
+    shop:ShowTabGold()
 end
 
 ---------------------------------------

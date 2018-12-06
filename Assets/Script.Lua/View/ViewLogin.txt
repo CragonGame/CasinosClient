@@ -279,6 +279,8 @@ function ViewLogin:OnDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
+
+    self.UiChooseCountryCode:Destroy()
 end
 
 ---------------------------------------

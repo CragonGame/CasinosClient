@@ -132,7 +132,7 @@ function ViewNotice:onClickSend()
                 local tips = self.ViewMgr.LanMgr:getLanValue("NoHornPleaseBuy")
                 ViewHelper:UiShowMsgBox(tips, function()
                     local viewShop = self.ViewMgr:CreateView("Shop")
-                    viewShop:showItem()
+                    viewShop:ShowTabConsume()
                 end
                 )
                 return

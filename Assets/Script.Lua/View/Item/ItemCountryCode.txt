@@ -10,6 +10,7 @@ function ItemCountryCode:new(o, com, view_mgr, ui_choose_code, is_last)
     self.__index = self
     o.ViewMgr = view_mgr
     o.UiChooseCountryCode = ui_choose_code
+    o.ViewLogin = ui_choose_code.ViewLogin
     o.Com = com
     o.Com.onClick:Clear()
     o.Com.onClick:Add(
@@ -26,6 +27,11 @@ function ItemCountryCode:new(o, com, view_mgr, ui_choose_code, is_last)
     o.ControllerShowLine.selectedIndex = show_index
 
     return o
+end
+
+---------------------------------------
+function ItemCountryCode:Destroy()
+    self.Com.onClick:Clear()
 end
 
 ---------------------------------------
@@ -48,13 +54,14 @@ end
 
 ---------------------------------------
 function ItemCountryCode:onClickOperate()
-    local ev = self:GetEv("EvUiChooseCountry")
+    local ev = self.ViewLogin:GetEv("EvUiChooseCountry")
     if (ev == nil) then
         ev = EvUiChooseCountry:new(nil)
     end
     ev.CountryKey = self.CountryKey
     ev.CountryCode = self.CountryValue["Code"]
     ev.KeyAndCodeFormat = self.KeyAndCodeFormat
-    self:SendEv(ev)
+    self.ViewLogin:SendEv(ev)
+
     self.UiChooseCountryCode:setCurrentCode(self.CountryKey, false)
 end

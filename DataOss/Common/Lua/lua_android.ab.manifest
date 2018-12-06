@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1300127934
+CRC: 2385709481
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 85951584e09aea9b666b8537209b3f2f
+    Hash: 3f596ae471f2a25de769a26a2403bd3b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -211,6 +211,7 @@ Assets:
 - Assets/Script.Lua/View.DesktopTexas/ViewHandCardTexas.txt
 - Assets/Script.Lua/View/ViewGiftShop.txt
 - Assets/Script.Lua/View/ViewLoading.txt
+- Assets/Script.Lua/Controller/ControllerMusicPlayer.txt
 - Assets/Script.Lua/View.DesktopH/UiDesktopHStandPlayer.txt
 - Assets/Script.Lua/Controller/ControllerRanking.txt
 - Assets/Script.Lua/View.DesktopH/ViewDesktopHCardType.txt
@@ -265,6 +266,7 @@ Assets:
 - Assets/Script.Lua/Controller/ControllerLobby.txt
 - Assets/Script.Lua/Base.TbData/TbDataLotteryTicket.txt
 - Assets/Script.Lua/View/ViewPool.txt
+- Assets/Script.Lua/Base.Other/Util.txt
 - Assets/Script.Lua/Controller/RewardOnline.txt
 - Assets/Script.Lua/View/ViewWaitingCountDown.txt
 - Assets/Script.Lua/View/ItemMtt/ItemMatchInfo.txt

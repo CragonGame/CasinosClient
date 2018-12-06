@@ -91,7 +91,7 @@
     <image id="j1yr8t" name="Shop.png" path="/Image/"/>
     <image id="j1yr8x" name="Purse.png" path="/Image/"/>
     <component id="j1yr8z" name="BtnShop1.xml" path="/Component/" exported="true"/>
-    <component id="j1yr90" name="BtnPurse.xml" path="/Component/"/>
+    <component id="j1yr90" name="BtnWallet.xml" path="/Component/"/>
     <component id="ecz692" name="BtnRegister.xml" path="/Component/"/>
     <image id="hwqj93" name="img_lipinhe1.png" path="/Image/FirstRecharge/"/>
     <image id="hwqj94" name="img_lipinhe2.png" path="/Image/FirstRecharge/"/>

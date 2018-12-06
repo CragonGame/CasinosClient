@@ -7,120 +7,153 @@ ViewWallet = class(ViewBase)
 ---------------------------------------
 function ViewWallet:ctor()
     self.TemporaryHideItemId = 14001
+    self.MapShopGold = {}
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+
+    self.GTransShow = nil
+    self.GCtrlTab = nil
+    self.GBtnReturn = nil
+    self.GBtnTabRecharge = nil
+    self.GBtnTabWithdraw = nil
+    self.GComTabRecharge = nil
 end
 
 ---------------------------------------
 function ViewWallet:OnCreate()
-    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:BindEvListener("EvEntityDiamondChanged", self)
-    self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
-    self.GTransitionShow:Play()
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerActor = self.ControllerMgr:GetController("Actor")
-    self.MapShopGold = {}
-    self.ControllerShop = self.ComUi:GetController("ControllerShop")
-    local btn_return = self.ComUi:GetChild("BtnReturn").asButton
-    btn_return.onClick:Add(
+    self:BindEvListener("EvEntityGoldChanged", self)
+    self:BindEvListener("EvEntityDiamondChanged", self)
+
+    --self.GListChip = self.ComUi:GetChild("ListChip").asList
+    --local btn_getmoney = self.ComUi:GetChild("Lan_Btn_GetCash").asButton
+    --btn_getmoney.onClick:Add(
+    --        function()
+    --            self:onClickBtnGetMoney()
+    --        end
+    --)
+
+    --local com_input = self.ComUi:GetChild("ComPutIn").asCom
+    --self.GComPutIn = com_input:GetChild("Num").asTextInput
+
+    local com_tabtitle = self.ComUi:GetChild("ComTabTitle").asCom
+
+    self.GTransShow = self.ComUi:GetTransition("TransitionShow")
+    self.GTransShow:Play()
+
+    self.GCtrlTab = self.ComUi:GetController("CtrlTab")
+
+    self.GBtnReturn = self.ComUi:GetChild("BtnReturn").asButton
+    self.GBtnReturn.onClick:Add(
             function()
-                self:onClickBtnReturn()
+                self:_onClickBtnReturn()
             end
     )
 
-    local btn_getmoney = self.ComUi:GetChild("Lan_Btn_GetCash").asButton
-    btn_getmoney.onClick:Add(
+    self.GBtnTabRecharge = com_tabtitle:GetChild("BtnTabRecharge").asCom
+    self.GBtnTabRecharge.onClick:Add(
             function()
-                self:onClickBtnGetMoney()
-            end
-    )
+                self:_onClickBtnTabRecharge()
+            end)
 
-    local com_input = self.ComUi:GetChild("ComPutIn").asCom
-    self.GComPutIn = com_input:GetChild("Num").asTextInput
+    self.GBtnTabWithdraw = com_tabtitle:GetChild("BtnTabWithdraw").asCom
+    self.GBtnTabWithdraw.onClick:Add(
+            function()
+                self:_onClickBtnTabWithdraw()
+            end)
 
-    self.GListChip = self.ComUi:GetChild("ListChip").asList
-    local btn_tabdiomand = self.ComUi:GetChild("BtnTabGetMoney").asButton
-    btn_tabdiomand.onClick:Add(
-            function()
-                self:onClickBtnDiomand()
-            end
-    )
-    local btn_tabchip = self.ComUi:GetChild("BtnTabChip").asButton
-    btn_tabchip.onClick:Add(
-            function()
-                self:onClickBtnTabChip()
-            end
-    )
+    self.GComTabRecharge = self.ComUi:GetChild("ComTabRecharge").asCom
+    local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
+    --Native:CreateShareUrlAndQRCode(ActorId)
+    local url = 'https://www.cragon.cn/gpdz.html?PlayerId=' .. 10000
+    local t = CS.UnityEngine.Texture2D(256, 256)
+    local colors = self.CasinosContext.LuaMgr:CreateQRCode(url, t.width, t.height)
+    t:SetPixels32(colors)
+    t:Apply()
+    --local texture = CS.UnityEngine.Texture2D(190, 190)
+    --texture:SetPixels(t:GetPixels(32, 32, 190, 190))
+    --texture:Apply()
+    --local rect = CS.UnityEngine.Rect(0, 0, 300, 300)
+    gloader_qrcode.texture = CS.FairyGUI.NTexture(t)
+
     self:createChip()
-    local com_taball = self.ComUi:GetChild("ComTabAll").asCom
-    self.ControllerTab = com_taball:GetController("ControllerTab")
-    local btn_addChip = self.ComUi:GetChild("BtnAddChip").asButton
-    self.GTextSelfGold = btn_addChip:GetChild("TextChipAmount").asTextField
-    local btn_addDiamond = self.ComUi:GetChild("BtnAddDiamond").asButton
-    self.GTextSelfDiamond = btn_addDiamond:GetChild("TextDiamondAmount").asTextField
-    self:setPlayerGoldAndDiamond()
+
+    local btn_addchip = self.ComUi:GetChild("BtnAddChip").asButton
+    self.GTextSelfGold = btn_addchip:GetChild("TextChipAmount").asTextField
+    local btn_adddiamond = self.ComUi:GetChild("BtnAddDiamond").asButton
+    self.GTextSelfDiamond = btn_adddiamond:GetChild("TextDiamondAmount").asTextField
+    self:SetPlayerGoldAndDiamond()
+
     local bg = self.ComUi:GetChild("Bg")
     if (bg ~= nil) then
         ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
+
+    self:_onClickBtnTabRecharge()
 end
 
 ---------------------------------------
 function ViewWallet:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self.GBtnReturn.onClick:Clear()
+    self.GBtnTabRecharge.onClick:Clear()
+    self.GBtnTabWithdraw.onClick:Clear()
+
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
 function ViewWallet:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
-        self:setPlayerGoldAndDiamond()
+        self:SetPlayerGoldAndDiamond()
     elseif (ev.EventName == "EvEntityDiamondChanged") then
-        self:setPlayerGoldAndDiamond()
+        self:SetPlayerGoldAndDiamond()
     end
 end
 
 ---------------------------------------
-function ViewWallet:showGold()
+function ViewWallet:ShowTabGold()
     self:onClickBtnTabChip()
 end
 
 ---------------------------------------
-function ViewWallet:setPlayerGoldAndDiamond()
+function ViewWallet:SetPlayerGoldAndDiamond()
     self.GTextSelfGold.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
     self.GTextSelfDiamond.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
 end
 
 ---------------------------------------
-function ViewWallet:onClickBtnReturn()
+function ViewWallet:_onClickBtnReturn()
     self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------
 function ViewWallet:onClickBtnGetMoney()
-    local n = tonumber(self.GComPutIn.text)
-    if (n == nil) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("EnterNumTips"))
-        return
-    end
-
-    local ev = self:GetEv("EvUiRequestGetMoney")
-    if (ev == nil) then
-        ev = EvUiRequestGetMoney:new(nil)
-    end
-    ev.GetMoneyNum = n
-    self:SendEv(ev)
+    --local n = tonumber(self.GComPutIn.text)
+    --if (n == nil) then
+    --    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("EnterNumTips"))
+    --    return
+    --end
+    --
+    --local ev = self:GetEv("EvUiRequestGetMoney")
+    --if (ev == nil) then
+    --    ev = EvUiRequestGetMoney:new(nil)
+    --end
+    --ev.GetMoneyNum = n
+    --self:SendEv(ev)
 end
 
 ---------------------------------------
-function ViewWallet:onClickBtnDiomand()
-    self.ControllerShop.selectedIndex = 1
-    self.ControllerTab.selectedIndex = 1
-    --self:createDiamond()
+function ViewWallet:_onClickBtnTabRecharge()
+    local gctrl_tabrecharge_state = self.GBtnTabRecharge:GetController("CtrlState")
+    gctrl_tabrecharge_state.selectedIndex = 1
+    local gctrl_tabwithdraw_state = self.GBtnTabWithdraw:GetController("CtrlState")
+    gctrl_tabwithdraw_state.selectedIndex = 0
 end
 
 ---------------------------------------
-function ViewWallet:onClickBtnTabChip()
-    self.ControllerShop.selectedIndex = 0
-    self.ControllerTab.selectedIndex = 0
-    self:createChip()
+function ViewWallet:_onClickBtnTabWithdraw()
+    local gctrl_tabrecharge_state = self.GBtnTabRecharge:GetController("CtrlState")
+    gctrl_tabrecharge_state.selectedIndex = 0
+    local gctrl_tabwithdraw_state = self.GBtnTabWithdraw:GetController("CtrlState")
+    gctrl_tabwithdraw_state.selectedIndex = 1
 end
 
 ---------------------------------------
@@ -147,6 +180,6 @@ ViewWalletFactory = class(ViewFactory)
 
 ---------------------------------------
 function ViewWalletFactory:CreateView()
-    local view = ViewWallet:new()
+    local view = ViewWallet.new()
     return view
 end

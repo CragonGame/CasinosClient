@@ -109,7 +109,7 @@ end
 function ViewDailyReward:onClickBtnBeVip()
     self.ViewMgr:DestroyView(self)
     local shop = self.ViewMgr:CreateView("Shop")
-    shop:showGold()
+    shop:ShowTabGold()
 end
 
 ---------------------------------------

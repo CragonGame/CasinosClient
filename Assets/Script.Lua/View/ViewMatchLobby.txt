@@ -68,7 +68,7 @@ function ViewMatchLobby:OnCreate()
 
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerMTT = self.ControllerMgr:GetController("MTT")
-    self:setPlayerGoldAndDiamond()
+    self:SetPlayerGoldAndDiamond()
     self.CurrentItemMatchType = nil
     self.ListMatchType = {}
     self.ListMatchItem = {}
@@ -97,7 +97,7 @@ end
 ---------------------------------------
 function ViewMatchLobby:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
-        self:setPlayerGoldAndDiamond()
+        self:SetPlayerGoldAndDiamond()
     elseif (ev.EventName == "EvEntitySetPublicMatchLsit") then
         self:setMatchList()
         self.SelfMatchNum = ev.SelfMatchNum
@@ -221,7 +221,7 @@ function ViewMatchLobby:onClickBtnAddChip()
 end
 
 ---------------------------------------
-function ViewMatchLobby:setPlayerGoldAndDiamond()
+function ViewMatchLobby:SetPlayerGoldAndDiamond()
     self.GTextSelfChip.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
 end
 

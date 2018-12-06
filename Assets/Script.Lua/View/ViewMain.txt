@@ -11,8 +11,6 @@ ViewMain = class(ViewBase)
 
 ---------------------------------------
 function ViewMain:ctor()
-    self.Context = Context
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.PokerGirlMain = "PokerGirMain"
     self.NewFriendChatCount = 0
 end
@@ -67,13 +65,6 @@ function ViewMain:OnCreate()
             end
     )
 
-    --[[local btn_wa = self.ComUi:GetChild("BtnWa").asButton
-    btn_wa.onClick:Add(
-        function()
-            self:onClickBtnWa()
-        end
-    )]]
-
     local btn_activity = self.ComUi:GetChild("BtnActivityCenter").asButton
     btn_activity.onClick:Add(
             function()
@@ -110,9 +101,6 @@ function ViewMain:OnCreate()
         com_more.visible = true
     end
 
-    local c_m_s = com_more:GetController("ChipIconSolustion")
-    c_m_s.selectedIndex = self.Context.Cfg.ChipIconSolustion
-
     self.ControllerMoreBtn = self.ComUi:GetController("ControllerMoreBtn")
     self.ControllerMoreBtn.selectedIndex = 0
     local btn_mail = self.ComUi:GetChild("BtnMail").asButton
@@ -137,28 +125,25 @@ function ViewMain:OnCreate()
     self.ComMoreTips = self.ComUi:GetChild("ComMoreTips").asCom
     self.TransitionComMore = self.ComMoreTips:GetTransition("TransitionNewMsg")
     self.GTextComMoreNum = self.ComMoreTips:GetChild("TextMsgTips").asTextField
-    local btn_shop = nil
-    if self.Context.Cfg.ChipIconSolustion == 0 then
-        btn_shop = self.ComUi:GetChild("BtnShop").asButton
-    else
-        btn_shop = com_more:GetChild("BtnShop").asButton
-        local btn_purse = self.ComUi:GetChild("BtnPurse").asButton
-        btn_purse.onClick:Add(
-                function()
-                    self:onClickBtnPurse()
-                end)
-    end
+
+    local btn_wallet = self.ComUi:GetChild("BtnWallet").asButton
+    btn_wallet.onClick:Add(
+            function()
+                self:onClickBtnWallet()
+            end)
+
+    local btn_shop = self.ComUi:GetChild("BtnShop").asButton
     btn_shop.onClick:Add(
             function()
                 self:onClickBtnShop()
-            end
-    )
+            end)
+
     local btn_friend = com_more:GetChild("BtnFriend").asButton
     btn_friend.onClick:Add(
             function()
                 self:onClickBtnFriend()
-            end
-    )
+            end)
+
     local btn_set = com_more:GetChild("BtnSet").asButton
     btn_set.onClick:Add(
             function()
@@ -259,25 +244,23 @@ function ViewMain:OnCreate()
             end
     )
     self.GTextLotteryTicketTips = com_lottryticket:GetChild("LotteryTicketTips").asTextField
-    self:setLotteryTicketInfo(self.ControllerLotteryTicket.LotteryTicketState, self.ControllerLotteryTicket.BetStateTm)
+    self:SetLotteryTicketInfo(self.ControllerLotteryTicket.LotteryTicketState, self.ControllerLotteryTicket.BetStateTm)
+
     local com_playerinfo = self.ComUi:GetChild("ComPlayerInfoSelf").asCom
-    local c_p = com_playerinfo:GetController("ChipIconSolustion")
-    c_p.selectedIndex = self.Context.Cfg.ChipIconSolustion
     self.UiPlayerInfoSelf = UiMainPlayerInfo:new(com_playerinfo, false,
             function()
                 self:onClickComPlayerInfoSelf()
-            end
-    )
+            end)
+
     self.BtnInviteFriend = self.ComUi:GetChild("BtnInviteFriend").asButton
     self.BtnInviteFriend.visible = true
     self.BtnInviteFriend.onClick:Add(
             function()
                 self:onClickComPlayerInfoCurrentFriend()
-            end
-    )
+            end)
+
     local com_friendInfo = self.ComUi:GetChild("ComPlayerInfoFriend").asCom
-    local c_f = com_friendInfo:GetController("ChipIconSolustion")
-    c_f.selectedIndex = self.Context.Cfg.ChipIconSolustion
+
     local controller_showdiamondIcon = com_friendInfo:GetController("ControllerShowDiamondIcon")
     controller_showdiamondIcon:SetSelectedIndex(1)
     self.UiPlayerInfoCurrentFriend = UiMainPlayerInfo:new(com_friendInfo, true,
@@ -396,8 +379,6 @@ function ViewMain:OnCreate()
                 self:SendEv(ev)
             end
     )
-    self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
 
     local need_checkid = self.ControllerLogin:NeedCheckIdCard()
     if need_checkid then
@@ -502,7 +483,7 @@ function ViewMain:OnHandleEv(ev)
             local player_info = self.ViewMgr:CreateView("PlayerInfo")
             player_info:setVIPInfo()
         elseif (ev.EventName == "EvEntityGetLotteryTicketDataSuccess") then
-            self:setLotteryTicketInfo(ev.lotteryticket_data.State, ev.lotteryticket_data.StateLeftTm)
+            self:SetLotteryTicketInfo(ev.lotteryticket_data.State, ev.lotteryticket_data.StateLeftTm)
         elseif (ev.EventName == "EvEntityLotteryTicketGameEndStateSimple") then
             self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
@@ -617,7 +598,7 @@ function ViewMain:setCurrentFriendInfo(friend_item)
 end
 
 ---------------------------------------
-function ViewMain:setLotteryTicketInfo(state, left_tm)
+function ViewMain:SetLotteryTicketInfo(state, left_tm)
     local tips = ""
     if (state == LotteryTicketStateEnum.Bet) then
         tips = math.ceil(left_tm) .. self.ViewMgr.LanMgr:getLanValue("S")
@@ -800,7 +781,7 @@ function ViewMain:onClickBtnShop()
 end
 
 ---------------------------------------
-function ViewMain:onClickBtnPurse()
+function ViewMain:onClickBtnWallet()
     self.ViewMgr:CreateView("Wallet")
 end
 
