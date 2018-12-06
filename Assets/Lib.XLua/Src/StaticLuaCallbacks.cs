@@ -640,6 +640,14 @@ namespace XLua
         }
 
         [MonoPInvokeCallback(typeof(LuaCSFunction))]
+        internal static int LoadCS(RealStatePtr L)
+        {
+            LuaAPI.xlua_pushasciistring(L, LuaEnv.CSHARP_NAMESPACE);
+            LuaAPI.lua_rawget(L, LuaIndexes.LUA_REGISTRYINDEX);
+            return 1;
+        }
+
+        [MonoPInvokeCallback(typeof(LuaCSFunction))]
         internal static int LoadBuiltinLib(RealStatePtr L)
         {
             try
@@ -855,6 +863,46 @@ namespace XLua
                 {
                     LuaAPI.lua_pushnil(L);
                 }
+                return 1;
+            }
+            catch (System.Exception e)
+            {
+                return LuaAPI.luaL_error(L, "c# exception in xlua.import_type:" + e);
+            }
+        }
+
+        [MonoPInvokeCallback(typeof(LuaCSFunction))]
+        public static int ImportGenericType(RealStatePtr L)
+        {
+            try
+            {
+                int top = LuaAPI.lua_gettop(L);
+                if (top < 2) return LuaAPI.luaL_error(L, "import generic type need at lease 2 arguments");
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+                string className = LuaAPI.lua_tostring(L, 1);
+                if (className.EndsWith("<>")) className = className.Substring(0, className.Length - 2);
+                Type genericDef = translator.FindType(className + "`" + (top - 1));
+                if (genericDef == null || !genericDef.IsGenericTypeDefinition)
+                {
+                    LuaAPI.lua_pushnil(L);
+                }
+                else
+                {
+                    Type[] typeArguments = new Type[top - 1];
+                    for(int i = 2; i <= top; i++)
+                    {
+
+                        typeArguments[i - 2] = getType(L, translator, i);
+                        if (typeArguments[i - 2] == null)
+                        {
+                            return LuaAPI.luaL_error(L, "param need a type");
+                        }
+                    }
+                    Type genericInc = genericDef.MakeGenericType(typeArguments);
+                    translator.GetTypeId(L, genericInc);
+                    translator.PushAny(L, genericInc);
+                }
+
                 return 1;
             }
             catch (System.Exception e)
@@ -1087,6 +1135,86 @@ namespace XLua
             {
                 return LuaAPI.luaL_error(L, "c# exception in ToFunction: " + e);
             }
+        }
+
+        [MonoPInvokeCallback(typeof(LuaCSFunction))]
+        public static int GenericMethodWraper(RealStatePtr L)
+        {
+            try
+            {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+                MethodInfo genericMethod;
+                translator.Get(L, LuaAPI.xlua_upvalueindex(1), out genericMethod);
+                int n = LuaAPI.lua_gettop(L);
+                Type[] typeArguments = new Type[n];
+                for(int i = 0; i < n; i++)
+                {
+                    Type type = getType(L, translator, i + 1);
+                    if (type == null)
+                    {
+                        return LuaAPI.luaL_error(L, "param #" + (i + 1) + " is not a type");
+                    }
+                    typeArguments[i] = type;
+                }
+                var method = genericMethod.MakeGenericMethod(typeArguments);
+                translator.PushFixCSFunction(L,
+                        new LuaCSFunction(translator.methodWrapsCache._GenMethodWrap(method.DeclaringType, method.Name, new MethodBase[] { method }).Call));
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return LuaAPI.luaL_error(L, "c# exception in GenericMethodWraper: " + e);
+            }
+        }
+
+        [MonoPInvokeCallback(typeof(LuaCSFunction))]
+        public static int GetGenericMethod(RealStatePtr L)
+        {
+            try
+            {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+                Type type = getType(L, translator, 1);
+                if (type == null)
+                {
+                    return LuaAPI.luaL_error(L, "xlua.get_generic_method, can not find c# type");
+                }
+                string methodName = LuaAPI.lua_tostring(L, 2);
+                if (string.IsNullOrEmpty(methodName))
+                {
+                    return LuaAPI.luaL_error(L, "xlua.get_generic_method, #2 param need a string");
+                }
+                System.Collections.Generic.List<MethodInfo> matchMethods = new System.Collections.Generic.List<MethodInfo>();
+                var allMethods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance);
+                for(int i = 0; i < allMethods.Length; i++)
+                {
+                    var method = allMethods[i];
+                    if (method.Name == methodName && method.IsGenericMethodDefinition)
+                    {
+                        matchMethods.Add(method);
+                    }
+                }
+
+                int methodIdx = 0;
+
+                if (matchMethods.Count == 0)
+                {
+                    LuaAPI.lua_pushnil(L);
+                }
+                else
+                {
+                    if (LuaAPI.lua_isinteger(L, 3))
+                    {
+                        methodIdx = LuaAPI.xlua_tointeger(L, 3);
+                    }
+                    translator.PushAny(L, matchMethods[methodIdx]);
+                    LuaAPI.lua_pushstdcallcfunction(L, GenericMethodWraper, 1);
+                }
+            }
+            catch (Exception e)
+            {
+                return LuaAPI.luaL_error(L, "c# exception in xlua.get_generic_method: " + e);
+            }
+            return 1;
         }
 
         [MonoPInvokeCallback(typeof(LuaCSFunction))]

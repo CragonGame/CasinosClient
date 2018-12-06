@@ -1,12 +1,16 @@
 ## 使用方式
 
-1、添加HOTFIX_ENABLE宏打开该特性（在Unity3D的File->Build Setting->Scripting Define Symbols下添加）。编辑器、各手机平台这个宏要分别设置！如果是自动化打包，要注意在代码里头用API设置的宏是不生效的，需要在编辑器设置。
+1、打开该特性
+
+添加HOTFIX_ENABLE宏，（在Unity3D的File->Build Setting->Scripting Define Symbols下添加）。编辑器、各手机平台这个宏要分别设置！如果是自动化打包，要注意在代码里头用API设置的宏是不生效的，需要在编辑器设置。
 
 （建议平时开发业务代码不打开HOTFIX_ENABLE，只在build手机版本或者要在编译器下开发补丁时打开HOTFIX_ENABLE）
 
 2、执行XLua/Generate Code菜单。
 
-3、注入，构建手机包这个步骤会在构建时自动进行，编辑器下开发补丁需要手动执行"XLua/Hotfix Inject In Editor"菜单。注入成功会打印“hotfix inject finish!”或者“had injected!”。
+3、注入，构建手机包这个步骤会在构建时自动进行，编辑器下开发补丁需要手动执行"XLua/Hotfix Inject In Editor"菜单。打印“hotfix inject finish!”或者“had injected!”才算成功，否则会打印错误信息。
+
+如果已经打印了“hotfix inject finish!”或者“had injected!”，执行xlua.hotfix仍然报类似“xlua.access, no field __Hitfix0_Update”的错误，要么是该类没配置到Hotfix列表，要么是注入成功后，又触发了编译，覆盖了注入结果。
 
 ## 约束
 
@@ -47,11 +51,12 @@ util.hotfix_ex(class, method_name, fix)
 
 和其它配置一样，有两种方式
 
-方式一：直接在类里头打Hotfix标签；
+方式一：直接在类里头打Hotfix标签（不建议，示例只是为了方便演示采取这种方式）；
 
 方式二：在一个static类的static字段或者属性里头配置一个列表。属性可以用于实现的比较复杂的配置，比如根据Namespace做白名单。
 
 ~~~csharp
+//如果涉及到Assembly-CSharp.dll之外的其它dll，如下代码需要放到Editor目录
 public static class HotfixCfg
 {
     [Hotfix]
@@ -250,13 +255,12 @@ public class GenericClass<T>
 
 你只能对GenericClass\<double\>，GenericClass\<int\>这些类，而不是对GenericClass打补丁。
 
-另外值得一提的是，要注意泛化类型的命名方式，比如GenericClass\<double\>的命名是GenericClass`1[System.Double]，具体可以看[MSDN](https://msdn.microsoft.com/en-us/library/w3f99sx1.aspx)。
 
 对GenericClass<double>打补丁的实例如下：
 
 ```csharp
 luaenv.DoString(@"
-    xlua.hotfix(CS['GenericClass`1[System.Double]'], {
+    xlua.hotfix(CS.GenericClass(CS.System.Double), {
         ['.ctor'] = function(obj, a)
             print('GenericClass<double>', obj, a)
         end;

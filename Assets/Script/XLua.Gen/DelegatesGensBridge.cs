@@ -23,20 +23,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -50,21 +45,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 LuaAPI.lua_pushnumber(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -78,21 +68,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 LuaAPI.lua_pushboolean(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -106,21 +91,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 translator.Push(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -134,19 +114,14 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 
-                LuaAPI.lua_getref(L, luaReference);
-                
-                
-                int __gen_error = LuaAPI.lua_pcall(L, 0, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 0, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -160,20 +135,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -187,20 +157,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -214,20 +179,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -241,21 +201,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 LuaAPI.lua_pushstring(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -269,22 +224,17 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 LuaAPI.lua_pushstring(L, p1);
                 LuaAPI.lua_pushnumber(L, p2);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 3, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 3, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -298,20 +248,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushnumber(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -325,21 +270,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.xlua_pushinteger(L, p0);
                 LuaAPI.lua_pushstring(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -353,21 +293,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 LuaAPI.lua_pushstring(L, p0);
                 translator.Push(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -381,22 +316,17 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 LuaAPI.lua_pushstring(L, p0);
                 translator.Push(L, p1);
                 translator.Push(L, p2);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 3, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 3, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -410,21 +340,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 LuaAPI.lua_pushstring(L, p0);
                 translator.Push(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -438,21 +363,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
                 LuaAPI.lua_pushstring(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -466,21 +386,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
                 LuaAPI.xlua_pushinteger(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -494,21 +409,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
                 LuaAPI.lua_pushnumber(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -522,21 +432,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
                 LuaAPI.lua_pushboolean(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -550,22 +455,17 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
                 LuaAPI.lua_pushstring(L, p1);
                 LuaAPI.lua_pushstring(L, p2);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 3, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 3, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -579,21 +479,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.xlua_pushinteger(L, p0);
                 LuaAPI.xlua_pushinteger(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -607,20 +502,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.xlua_pushinteger(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -634,20 +524,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushint64(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -661,20 +546,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushboolean(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -688,22 +568,17 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 LuaAPI.lua_pushnumber(L, p0);
                 LuaAPI.lua_pushstring(L, p1);
                 translator.Push(L, p2);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 3, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 3, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -717,21 +592,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushnumber(L, p0);
                 LuaAPI.lua_pushint64(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -745,20 +615,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -772,21 +637,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
                 LuaAPI.lua_pushint64(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -800,20 +660,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -827,21 +682,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 translator.Push(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -855,22 +705,17 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 LuaAPI.lua_pushstring(L, p1);
                 translator.Push(L, p2);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 3, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 3, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -884,20 +729,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -911,21 +751,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.xlua_pushinteger(L, p0);
                 LuaAPI.lua_pushstring(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -939,21 +774,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
-                
-                
-                LuaAPI.lua_getref(L, luaReference);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 
                 LuaAPI.lua_pushstring(L, p0);
                 LuaAPI.xlua_pushinteger(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -967,21 +797,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.PushAny(L, p0);
                 translator.Push(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -995,21 +820,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.PushAny(L, p0);
                 translator.Push(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -1023,21 +843,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 translator.Push(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -1051,21 +866,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 translator.Push(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -1079,20 +889,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -1106,20 +911,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -1133,20 +933,15 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 translator.Push(L, p0);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 1, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 1, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -1160,21 +955,16 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 LuaAPI.xlua_pushinteger(L, p0);
                 translator.Push(L, p1);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 2, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 2, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }
@@ -1188,23 +978,18 @@ namespace XLua
             {
 #endif
                 RealStatePtr L = luaEnv.rawL;
-                int err_func =LuaAPI.load_error_func(L, errorFuncRef);
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
                 ObjectTranslator translator = luaEnv.translator;
-                
-                LuaAPI.lua_getref(L, luaReference);
-                
                 LuaAPI.xlua_pushinteger(L, p0);
                 translator.Push(L, p1);
                 translator.Push(L, p2);
                 translator.Push(L, p3);
                 
-                int __gen_error = LuaAPI.lua_pcall(L, 4, 0, err_func);
-                if (__gen_error != 0)
-                    luaEnv.ThrowExceptionFromError(err_func - 1);
+                PCall(L, 4, 0, errFunc);
                 
                 
                 
-                LuaAPI.lua_settop(L, err_func - 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
                 
 #if THREAD_SAFE || HOTFIX_ENABLE
             }

@@ -33,14 +33,18 @@ namespace XLua
         //返回-1表示没有标签
         static int getHotfixType(MemberInfo memberInfo)
         {
-            foreach (var ca in memberInfo.GetCustomAttributes(false))
+            try
             {
-                var ca_type = ca.GetType();
-                if (ca_type.ToString() == "XLua.HotfixAttribute")
+                foreach (var ca in memberInfo.GetCustomAttributes(false))
                 {
-                    return (int)(ca_type.GetProperty("Flag").GetValue(ca, null));
+                    var ca_type = ca.GetType();
+                    if (ca_type.ToString() == "XLua.HotfixAttribute")
+                    {
+                        return (int)(ca_type.GetProperty("Flag").GetValue(ca, null));
+                    }
                 }
             }
+            catch { }
             return -1;
         }
 
@@ -149,7 +153,10 @@ namespace XLua
         IgnoreProperty = 4,
         IgnoreNotPublic = 8,
         Inline = 16,
-        IntKey = 32
+        IntKey = 32,
+        AdaptByDelegate = 64,
+        IgnoreCompilerGenerated = 128,
+        NoBaseProxy = 256,
     }
 
     static class ExtentionMethods
@@ -479,6 +486,10 @@ namespace XLua
         {
             bool ignoreValueType = hotfixType.HasFlag(HotfixFlagInTool.ValueTypeBoxing);
 
+            bool isIntKey = hotfixType.HasFlag(HotfixFlagInTool.IntKey) && !method.DeclaringType.HasGenericParameters && isTheSameAssembly;
+
+            bool isAdaptByDelegate = !isIntKey && hotfixType.HasFlag(HotfixFlagInTool.AdaptByDelegate);
+
             for (int i = 0; i < hotfixBridgesDef.Count; i++)
             {
                 MethodDefinition hotfixBridgeDef = hotfixBridgesDef[i];
@@ -529,7 +540,7 @@ namespace XLua
                     {
                         continue;
                     }
-                    invoke = isTheSameAssembly ? hotfixBridgeDef : getDelegateInvokeFor(method, hotfixBridgeDef, ignoreValueType);
+                    invoke = (isTheSameAssembly && !isAdaptByDelegate) ? hotfixBridgeDef : getDelegateInvokeFor(method, hotfixBridgeDef, ignoreValueType);
                     return true;
                 }
             }
@@ -684,9 +695,15 @@ namespace XLua
             }
 
             bool ignoreProperty = hotfixType.HasFlag(HotfixFlagInTool.IgnoreProperty);
+            bool ignoreCompilerGenerated = hotfixType.HasFlag(HotfixFlagInTool.IgnoreCompilerGenerated);
             bool ignoreNotPublic = hotfixType.HasFlag(HotfixFlagInTool.IgnoreNotPublic);
             bool isInline = hotfixType.HasFlag(HotfixFlagInTool.Inline);
             bool isIntKey = hotfixType.HasFlag(HotfixFlagInTool.IntKey);
+            bool noBaseProxy = hotfixType.HasFlag(HotfixFlagInTool.NoBaseProxy);
+            if (ignoreCompilerGenerated && type.CustomAttributes.Any(ca => ca.AttributeType.FullName == "System.Runtime.CompilerServices.CompilerGeneratedAttribute"))
+            {
+                return true;
+            }
             if (isIntKey && type.HasGenericParameters)
             {
                 throw new InvalidOperationException(type.FullName + " is generic definition, can not be mark as IntKey!");
@@ -703,6 +720,10 @@ namespace XLua
                 {
                     continue;
                 }
+                if (ignoreCompilerGenerated && method.CustomAttributes.Any(ca => ca.AttributeType.FullName == "System.Runtime.CompilerServices.CompilerGeneratedAttribute"))
+                {
+                    continue;
+                }
                 if (method.Name != ".cctor" && !method.IsAbstract && !method.IsPInvokeImpl && method.Body != null && !method.Name.Contains("<"))
                 {
                     //Debug.Log(method);
@@ -715,27 +736,34 @@ namespace XLua
                 }
             }
 
-            List<MethodDefinition> toAdd = new List<MethodDefinition>();
-            foreach (var method in type.Methods)
+            if (!noBaseProxy)
             {
-                if (ignoreNotPublic && !method.IsPublic)
+                List<MethodDefinition> toAdd = new List<MethodDefinition>();
+                foreach (var method in type.Methods)
                 {
-                    continue;
+                    if (ignoreNotPublic && !method.IsPublic)
+                    {
+                        continue;
+                    }
+                    if (ignoreProperty && method.IsSpecialName && (method.Name.StartsWith("get_") || method.Name.StartsWith("set_")))
+                    {
+                        continue;
+                    }
+                    if (ignoreCompilerGenerated && method.CustomAttributes.Any(ca => ca.AttributeType.FullName == "System.Runtime.CompilerServices.CompilerGeneratedAttribute"))
+                    {
+                        continue;
+                    }
+                    if (method.Name != ".cctor" && !method.IsAbstract && !method.IsPInvokeImpl && method.Body != null && !method.Name.Contains("<"))
+                    {
+                        var proxyMethod = tryAddBaseProxy(type, method);
+                        if (proxyMethod != null) toAdd.Add(proxyMethod);
+                    }
                 }
-                if (ignoreProperty && method.IsSpecialName && (method.Name.StartsWith("get_") || method.Name.StartsWith("set_")))
-                {
-                    continue;
-                }
-                if (method.Name != ".cctor" && !method.IsAbstract && !method.IsPInvokeImpl && method.Body != null && !method.Name.Contains("<"))
-                {
-                    var proxyMethod = tryAddBaseProxy(type, method);
-                    if (proxyMethod != null) toAdd.Add(proxyMethod);
-                }
-            }
 
-            foreach(var md in toAdd)
-            {
-                type.Methods.Add(md);
+                foreach (var md in toAdd)
+                {
+                    type.Methods.Add(md);
+                }
             }
 
             return true;
@@ -1541,6 +1569,18 @@ namespace XLua
 {
     public static class Hotfix
     {
+        static bool ContainNotAsciiChar(string s)
+        {
+            for (int i = 0; i < s.Length; ++i)
+            {
+                if (s[i] > 127)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         [PostProcessScene]
         [MenuItem("XLua/Hotfix Inject In Editor", false, 3)]
         public static void HotfixInject()
@@ -1622,6 +1662,11 @@ namespace XLua
             foreach (var injectAssemblyPath in injectAssemblyPaths)
             {
                 args[1] = injectAssemblyPath.Replace('\\', '/');
+                if (ContainNotAsciiChar(args[1]))
+                {
+                    throw new Exception("project path must contain only ascii characters");
+                }
+
                 if (injectAssemblyPaths.Count > 1)
                 {
                     var injectAssemblyFileName = Path.GetFileName(injectAssemblyPath);
