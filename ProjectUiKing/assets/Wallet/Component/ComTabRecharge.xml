@@ -11,6 +11,6 @@
       <Button title="复制备注码" titleFontSize="20" selectedTitle="复制备注码"/>
     </component>
     <text id="n5_l4zq" name="n5" xy="23,10" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" bold="true" text="BitCNY充值"/>
-    <richtext id="n6_l4zq" name="n6" xy="23,78" size="317,326" font="FontXi" fontSize="20" color="#ffffff" autoSize="none" text="充值说明&#xA;&#xA;1.本地址禁止充值BitCNY以外币种，将不可找回&#xA;2.使用BitCNY充值需要24个网络确认到账&#xA;3.充值完成后，可在充值记录查看状态&#xA;4.当前币种充值必须填写备注码，否则无法到账"/>
+    <richtext id="n6_l4zq" name="n6" xy="23,78" size="317,326" font="FontXi" fontSize="20" color="#ffffff" autoSize="none" text="充值说明&#xA;&#xA;1.本地址禁止充值BitCNY以外币种，将不可找回&#xA;2.使用BitCNY充值需要24个网络确认到账&#xA;3.充值完成后，可在充值记录查看状态&#xA;4.BitCNY可与筹码自动双向兑换&#xA;5.当前币种充值必须填写备注码，否则无法到账"/>
   </displayList>
 </component>

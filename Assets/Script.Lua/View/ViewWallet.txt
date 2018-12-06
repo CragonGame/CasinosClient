@@ -15,7 +15,10 @@ function ViewWallet:ctor()
     self.GBtnReturn = nil
     self.GBtnTabRecharge = nil
     self.GBtnTabWithdraw = nil
+    self.GBtnTabRecord = nil
     self.GComTabRecharge = nil
+    self.GComTabWithdraw = nil
+    self.GComTabRecord = nil
 end
 
 ---------------------------------------
@@ -60,7 +63,16 @@ function ViewWallet:OnCreate()
                 self:_onClickBtnTabWithdraw()
             end)
 
+    self.GBtnTabRecord = com_tabtitle:GetChild("BtnTabRecord").asCom
+    self.GBtnTabRecord.onClick:Add(
+            function()
+                self:_onClickBtnTabRecord()
+            end)
+
     self.GComTabRecharge = self.ComUi:GetChild("ComTabRecharge").asCom
+    self.GComTabWidthdraw = self.ComUi:GetChild("ComTabWithdraw").asCom
+    self.GComTabRecord = self.ComUi:GetChild("ComTabRecord").asCom
+
     local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
     --Native:CreateShareUrlAndQRCode(ActorId)
     local url = 'https://www.cragon.cn/gpdz.html?PlayerId=' .. 10000
@@ -146,6 +158,8 @@ function ViewWallet:_onClickBtnTabRecharge()
     gctrl_tabrecharge_state.selectedIndex = 1
     local gctrl_tabwithdraw_state = self.GBtnTabWithdraw:GetController("CtrlState")
     gctrl_tabwithdraw_state.selectedIndex = 0
+    local gctrl_tabrecord_state = self.GBtnTabRecord:GetController("CtrlState")
+    gctrl_tabrecord_state.selectedIndex = 0
 
     self.GCtrlTab.selectedIndex = 0
 end
@@ -156,8 +170,22 @@ function ViewWallet:_onClickBtnTabWithdraw()
     gctrl_tabrecharge_state.selectedIndex = 0
     local gctrl_tabwithdraw_state = self.GBtnTabWithdraw:GetController("CtrlState")
     gctrl_tabwithdraw_state.selectedIndex = 1
+    local gctrl_tabrecord_state = self.GBtnTabRecord:GetController("CtrlState")
+    gctrl_tabrecord_state.selectedIndex = 0
 
     self.GCtrlTab.selectedIndex = 1
+end
+
+---------------------------------------
+function ViewWallet:_onClickBtnTabRecord()
+    local gctrl_tabrecharge_state = self.GBtnTabRecharge:GetController("CtrlState")
+    gctrl_tabrecharge_state.selectedIndex = 0
+    local gctrl_tabwithdraw_state = self.GBtnTabWithdraw:GetController("CtrlState")
+    gctrl_tabwithdraw_state.selectedIndex = 0
+    local gctrl_tabrecord_state = self.GBtnTabRecord:GetController("CtrlState")
+    gctrl_tabrecord_state.selectedIndex = 1
+
+    self.GCtrlTab.selectedIndex = 2
 end
 
 ---------------------------------------

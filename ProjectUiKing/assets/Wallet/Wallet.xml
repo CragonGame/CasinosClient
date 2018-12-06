@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1066,640" initName="BtnClose" adaptationTest="FitSize">
-  <controller name="CtrlTab" pages="0,Recharge,1,Withdraw" selected="0"/>
+  <controller name="CtrlTab" pages="0,Recharge,1,Withdraw,2,Record" selected="2"/>
   <displayList>
     <image id="n200_hrhq" name="Bg" src="teyh8q" fileName="Image/bg.png" pkg="gbdohaiv" xy="0,0" size="1066,640" group="n260_xh1i"/>
     <image id="n208_hrhq" name="n208" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n260_xh1i" alpha="0.4" color="#000033">
@@ -15,11 +15,16 @@
     </component>
     <component id="n261_xh1i" name="ComTabRecharge" src="xh1i1g" fileName="Component/ComTabRecharge.xml" xy="205,108">
       <gearDisplay controller="CtrlTab" pages="0"/>
+      <relation target="" sidePair="left-center,top-top"/>
     </component>
-    <list id="n190_mtk2" name="ListChip" xy="205,108" size="797,484" layout="flow_hz" overflow="scroll" lineGap="5" colGap="16" defaultItem="ui://npdzqphej1yr1">
+    <component id="n262_l4zq" name="ComTabWithdraw" src="l4zq1h" fileName="Component/ComTabWithdraw.xml" xy="205,108">
       <gearDisplay controller="CtrlTab" pages="1"/>
-      <relation target="" sidePair="bottom-bottom,left-left%"/>
-    </list>
+      <relation target="" sidePair="left-center,top-top"/>
+    </component>
+    <component id="n263_l4zq" name="ComTabRecord" src="l4zq1k" fileName="Component/ComTabRecord.xml" xy="205,108">
+      <gearDisplay controller="CtrlTab" pages="2"/>
+      <relation target="" sidePair="left-center,top-top"/>
+    </component>
     <component id="n230_tjym" name="BtnAddChip" src="j1yr1b" fileName="Component/New/BtnAddChip1.xml" xy="777,29">
       <relation target="" sidePair="right-right,top-top"/>
     </component>
@@ -29,28 +34,8 @@
     <component id="n119_excb" name="BtnReturn" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="992,21">
       <relation target="" sidePair="right-right,top-top"/>
     </component>
-    <component id="n241_tjym" name="Lan_Btn_GetCash" src="s4taku" fileName="Component/Btn/BtnCancel.xml" pkg="nhvxw9ov" xy="544,541" group="n242_tjym">
-      <Button title="提现"/>
-    </component>
-    <text id="n232_tjym" name="GetCashTips" xy="278,141" pivot="1,0.5" size="156,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="AccountNumber:"/>
-    <component id="n235_tjym" name="ComPutAccNum" src="tjym1d" fileName="Component/ComOperate.xml" xy="446,116" pivot="0.5,0.5" group="n242_tjym"/>
-    <text id="n243_tbmo" name="GetCashTips" xy="340,227" pivot="1,0.5" size="94,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="CbnCode:"/>
-    <component id="n244_tbmo" name="ComPutCbnCode" src="tjym1d" fileName="Component/ComOperate.xml" xy="445,204" pivot="0.5,0.5" group="n242_tjym"/>
-    <text id="n245_tbmo" name="GetCashTips" xy="353,308" pivot="1,0.5" size="81,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="Amount:"/>
-    <component id="n246_tbmo" name="ComPutAmount" src="tjym1d" fileName="Component/ComOperate.xml" xy="444,285" pivot="0.5,0.5" group="n242_tjym"/>
-    <text id="n247_tbmo" name="GetCashTips" xy="244,473" pivot="1,0.5" size="190,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="ReceiverOtherName:"/>
-    <component id="n248_tbmo" name="ComPutOtherName" src="tjym1d" fileName="Component/ComOperate.xml" xy="445,450" pivot="0.5,0.5" group="n242_tjym"/>
-    <text id="n249_tbmo" name="GetCashTips" xy="256,391" pivot="1,0.5" size="178,29" group="n242_tjym" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" leading="0" shadowColor="#000000" shadowOffset="1,1" singleLine="true" text="ReceiverLastName:"/>
-    <component id="n250_tbmo" name="ComPutLastName" src="tjym1d" fileName="Component/ComOperate.xml" xy="445,366" pivot="0.5,0.5" group="n242_tjym"/>
-    <text id="n256_tbmo" name="n256" xy="959,142" pivot="0.5,0.5" size="17,39" group="n242_tjym" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="*"/>
-    <text id="n257_tbmo" name="n257" xy="959,228" pivot="0.5,0.5" size="17,39" group="n242_tjym" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="*"/>
-    <text id="n258_tbmo" name="n258" xy="960,311" pivot="0.5,0.5" size="17,39" group="n242_tjym" fontSize="30" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="*"/>
-    <group id="n242_tjym" name="n242" xy="244,116" size="733,491" advanced="true">
-      <gearDisplay controller="CtrlTab" pages="1"/>
-    </group>
   </displayList>
   <transition name="TransitionShow">
-    <item time="0" type="XY" target="n190_mtk2" tween="true" startValue="1066,-" endValue="205,108" duration="6"/>
     <item time="0" type="XY" target="n201_hrhq" tween="true" startValue="-,-137" endValue="1,-32" duration="6" ease="Linear"/>
   </transition>
 </component>

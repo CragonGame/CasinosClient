@@ -37,8 +37,12 @@
     <image id="j1yr1c" name="Logo.png" path="/Image/"/>
     <component id="tjym1d" name="ComOperate.xml" path="/Component/"/>
     <component id="xh1i1e" name="ComTabTitle.xml" path="/Component/"/>
-    <component id="xh1i1f" name="ComTabTitleItem.xml" path="/Component/"/>
+    <component id="xh1i1f" name="ComTabTitleRecharge.xml" path="/Component/"/>
     <component id="xh1i1g" name="ComTabRecharge.xml" path="/Component/"/>
+    <component id="l4zq1h" name="ComTabWithdraw.xml" path="/Component/"/>
+    <component id="l4zq1i" name="ComTabTitleWithdraw.xml" path="/Component/"/>
+    <component id="l4zq1j" name="ComTabTitleRecord.xml" path="/Component/"/>
+    <component id="l4zq1k" name="ComTabRecord.xml" path="/Component/"/>
   </resources>
   <publish name="Wallet" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Wallet"/>
 </packageDescription>

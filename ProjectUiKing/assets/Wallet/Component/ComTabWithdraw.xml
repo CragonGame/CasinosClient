@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="797,484">
+  <displayList>
+    <text id="n0_l4zq" name="n0" xy="23,10" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" bold="true" text="BitCNY提现"/>
+    <text id="n1_l4zq" name="n1" xy="24,109" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="提币地址"/>
+    <text id="n2_l4zq" name="n2" xy="24,175" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="数量"/>
+    <text id="n3_l4zq" name="n3" xy="24,241" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="备注码"/>
+    <text id="n4_l4zq" name="n4" xy="24,317" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="到账数量"/>
+    <text id="n5_l4zq" name="n5" xy="414,319" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="手续费"/>
+    <component id="n6_l4zq" name="n6" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="307,388" size="170,50">
+      <Button title="提 现" titleFontSize="22" selectedTitle="提 现"/>
+    </component>
+    <text id="n7_l4zq" name="n7" xy="213,320" size="157,35" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
+    <text id="n8_l4zq" name="n8" xy="586,322" size="157,35" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
+    <text id="n9_l4zq" name="n9" xy="213,250" size="157,35" input="true" keyboardType="2" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
+    <text id="n10_l4zq" name="n10" xy="213,181" size="157,35" input="true" keyboardType="2" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
+    <text id="n11_l4zq" name="n11" xy="212,109" size="157,35" input="true" keyboardType="2" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
+  </displayList>
+</component>
