@@ -862,8 +862,6 @@ Resources.KingTexas/Ui/premsgbox.ab BF2F755AAF0A980BD3DDED45216D548B
 Resources.KingTexas/Ui/premsgbox.ab.manifest 9B9AD83825E5B40E612E042C8197F670
 Resources.KingTexas/Ui/privatematchinfo.ab F07FB8E1AE1DB6831179820640DCA463
 Resources.KingTexas/Ui/privatematchinfo.ab.manifest 0DAD299FFAC72756C3F360D4366490BE
-Resources.KingTexas/Ui/purse.ab D3053551130A44880960130694C22D8A
-Resources.KingTexas/Ui/purse.ab.manifest EB636F3FE558A0F88F5A6339E8F3DD2A
 Resources.KingTexas/Ui/quitorback.ab 4FAE8564136666856CC3AE2913EEB349
 Resources.KingTexas/Ui/quitorback.ab.manifest 9299C3F92E24BA64AA9378B8F4BE7FD0
 Resources.KingTexas/Ui/ranking.ab 226565DC47CE0C3AC38EA8592FDB1F4E

@@ -146,6 +146,8 @@ function ViewWallet:_onClickBtnTabRecharge()
     gctrl_tabrecharge_state.selectedIndex = 1
     local gctrl_tabwithdraw_state = self.GBtnTabWithdraw:GetController("CtrlState")
     gctrl_tabwithdraw_state.selectedIndex = 0
+
+    self.GCtrlTab.selectedIndex = 0
 end
 
 ---------------------------------------
@@ -154,6 +156,8 @@ function ViewWallet:_onClickBtnTabWithdraw()
     gctrl_tabrecharge_state.selectedIndex = 0
     local gctrl_tabwithdraw_state = self.GBtnTabWithdraw:GetController("CtrlState")
     gctrl_tabwithdraw_state.selectedIndex = 1
+
+    self.GCtrlTab.selectedIndex = 1
 end
 
 ---------------------------------------

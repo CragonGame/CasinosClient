@@ -6,9 +6,13 @@
     <image id="n208_hrhq" name="n208" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n260_xh1i" alpha="0.4" color="#000033">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <component id="n201_hrhq" name="n201" src="j1yrr" fileName="Component/ComLogo.xml" xy="1,-26" group="n260_xh1i"/>
-    <group id="n260_xh1i" name="n260" xy="0,-26" size="1066,666"/>
-    <component id="n259_xh1i" name="ComTabTitle" src="xh1i1e" fileName="Component/ComTabTitle.xml" xy="0,104"/>
+    <component id="n201_hrhq" name="n201" src="j1yrr" fileName="Component/ComLogo.xml" xy="1,-23" group="n260_xh1i">
+      <relation target="" sidePair="left-left,top-top"/>
+    </component>
+    <group id="n260_xh1i" name="n260" xy="0,-23" size="1066,663"/>
+    <component id="n259_xh1i" name="ComTabTitle" src="xh1i1e" fileName="Component/ComTabTitle.xml" xy="0,104">
+      <relation target="" sidePair="left-left,top-top"/>
+    </component>
     <component id="n261_xh1i" name="ComTabRecharge" src="xh1i1g" fileName="Component/ComTabRecharge.xml" xy="205,108">
       <gearDisplay controller="CtrlTab" pages="0"/>
     </component>
@@ -16,9 +20,15 @@
       <gearDisplay controller="CtrlTab" pages="1"/>
       <relation target="" sidePair="bottom-bottom,left-left%"/>
     </list>
-    <component id="n230_tjym" name="BtnAddChip" src="j1yr1b" fileName="Component/New/BtnAddChip1.xml" xy="777,29"/>
-    <component id="n231_tjym" name="BtnAddDiamond" src="j1yr1a" fileName="Component/New/BtnAddDiamond1.xml" xy="572,29"/>
-    <component id="n119_excb" name="BtnReturn" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="992,21"/>
+    <component id="n230_tjym" name="BtnAddChip" src="j1yr1b" fileName="Component/New/BtnAddChip1.xml" xy="777,29">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n231_tjym" name="BtnAddDiamond" src="j1yr1a" fileName="Component/New/BtnAddDiamond1.xml" xy="572,29">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n119_excb" name="BtnReturn" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="992,21">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
     <component id="n241_tjym" name="Lan_Btn_GetCash" src="s4taku" fileName="Component/Btn/BtnCancel.xml" pkg="nhvxw9ov" xy="544,541" group="n242_tjym">
       <Button title="提现"/>
     </component>
