@@ -155,6 +155,8 @@ function Context:Release()
     self.CasinosContext = nil
     self.LuaMgr = nil
     self.Launch = nil
+
+    self.Util.print_func_ref_by_csharp()
 end
 
 ---------------------------------------
@@ -329,6 +331,7 @@ function Context:_nextLaunchStep()
         end
 
         self:DoString("Class")
+        self.Util = require('Util')
         self.MessagePack = require('MessagePack')
         self.MessagePack.set_string("binary")
         self.Json = require("json")
