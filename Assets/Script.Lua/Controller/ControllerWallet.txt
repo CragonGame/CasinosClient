@@ -25,6 +25,10 @@ function ControllerWallet:OnCreate()
     self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletGetTransListNotify, function(data)
         self:S2cWalletGetTransListNotify(data)
     end)
+    -- 验证提现地址有效性通知
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletWithdrawAddressValidNotify, function(data)
+        self:S2cWalletWithdrawAddressValidNotify(data)
+    end)
 end
 
 ---------------------------------------
@@ -38,42 +42,97 @@ end
 
 ---------------------------------------
 -- 充值请求
-function ControllerWallet:RequestWalletRecharge(data)
+function ControllerWallet:RequestWalletRecharge()
+    local data = WalletRechargeRequest:new(nil)
+    data.MoneyType = MoneyType.BitCNY
+    data.Amount = 100
+    data.Channel = 'Azex'
+    self.ControllerMgr.Rpc:RPC1(self.MC.WalletRechargeRequest, data:getData4Pack())
 end
 
 ---------------------------------------
 -- 提现请求
-function ControllerWallet:RequestWalletWithdraw(data)
+function ControllerWallet:RequestWalletWithdraw()
+    local data = WalletWithdrawRequest:new(nil)
+    data.MoneyType = MoneyType.BitCNY
+    data.Amount = 100
+    data.Channel = 'Azex'
+    self.ControllerMgr.Rpc:RPC1(self.MC.WalletWithdrawRequest, data:getData4Pack())
 end
 
 ---------------------------------------
 -- 生成虚拟币地址请求
-function ControllerWallet:RequestWalletGenAddress(data)
+function ControllerWallet:RequestWalletGenAddress()
+    local data = WalletGenAddressRequest:new(nil)
+    data.MoneyType = MoneyType.BitCNY
+    data.Amount = 100
+    data.Channel = 'Azex'
+    self.ControllerMgr.Rpc:RPC1(self.MC.WalletGenAddressRequest, data:getData4Pack())
 end
 
 ---------------------------------------
 -- 获取交易记录请求
-function ControllerWallet:RequestWalletGetTransList(data)
+function ControllerWallet:RequestWalletGetTransList()
+    local data = WalletGetTransListRequest:new(nil)
+    data.MoneyType = MoneyType.BitCNY
+    data.Amount = 100
+    data.Channel = 'Azex'
+    self.ControllerMgr.Rpc:RPC1(self.MC.WalletGetTransListRequest, data:getData4Pack())
+end
+
+---------------------------------------
+-- 验证提现地址有效性请求
+function ControllerWallet:WalletWithdrawAddressValidRequest()
+    local data = WalletWithdrawAddressValidRequest:new(nil)
+    data.MoneyType = MoneyType.BitCNY
+    data.Amount = 100
+    data.Channel = 'Azex'
+    self.ControllerMgr.Rpc:RPC1(self.MC.WalletWithdrawAddressValidRequest, data:getData4Pack())
 end
 
 ---------------------------------------
 -- 充值通知
 function ControllerWallet:S2cWalletRechargeNotify(data)
+    local view = self.ViewMgr:GetView('Wallet')
+    if view ~= nil then
+        view:OnWalletRechargeNotify(data)
+    end
 end
 
 ---------------------------------------
 -- 提现通知
 function ControllerWallet:S2cWalletWithdrawNotify(data)
+    local view = self.ViewMgr:GetView('Wallet')
+    if view ~= nil then
+        view:OnWalletWithdrawNotify(data)
+    end
 end
 
 ---------------------------------------
 -- 生成虚拟币地址通知
 function ControllerWallet:S2cWalletGenAddressNotify(data)
+    local view = self.ViewMgr:GetView('Wallet')
+    if view ~= nil then
+        view:OnWalletGenAddressNotify(data)
+    end
 end
 
 ---------------------------------------
 -- 获取交易记录通知
 function ControllerWallet:S2cWalletGetTransListNotify(data)
+    local view = self.ViewMgr:GetView('Wallet')
+    if view ~= nil then
+        view:OnWalletGetTransListNotify(data)
+    end
+end
+
+---------------------------------------
+-- 验证提现地址有效性通知
+function ControllerWallet:S2cWalletWithdrawAddressValidNotify(data)
+    local view = self.ViewMgr:GetView('Wallet')
+    if view ~= nil then
+        view:OnWalletWithdrawAddressValidNotify(data)
+    end
 end
 
 ---------------------------------------

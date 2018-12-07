@@ -121,6 +121,31 @@ function ViewWallet:OnHandleEv(ev)
 end
 
 ---------------------------------------
+-- 充值通知
+function ViewWallet:OnWalletRechargeNotify(data)
+end
+
+---------------------------------------
+-- 提现通知
+function ViewWallet:OnWalletWithdrawNotify(data)
+end
+
+---------------------------------------
+-- 生成虚拟币地址通知
+function ViewWallet:OnWalletGenAddressNotify(data)
+end
+
+---------------------------------------
+-- 获取交易记录通知
+function ViewWallet:OnWalletGetTransListNotify(data)
+end
+
+---------------------------------------
+-- 验证提现地址有效性通知
+function ViewWallet:OnWalletWithdrawAddressValidNotify(data)
+end
+
+---------------------------------------
 function ViewWallet:ShowTabGold()
     self:onClickBtnTabChip()
 end

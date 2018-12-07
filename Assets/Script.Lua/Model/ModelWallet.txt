@@ -213,3 +213,52 @@ function WalletGetTransListNotify:setData(data)
     w_r:setData(r)
     self.Request = w_r
 end
+
+---------------------------------------
+-- 请求验证提现地址有效性
+WalletWithdrawAddressValidRequest = {}
+
+function WalletWithdrawAddressValidRequest:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.MoneyType = MoneyType.CNY
+    o.Amount = 0
+    o.Channel = nil
+    return o
+end
+
+function WalletWithdrawAddressValidRequest:getData4Pack()
+    local t = {}
+    table.insert(t, self.MoneyType)
+    table.insert(t, self.Amount)
+    table.insert(t, self.Channel)
+    return t
+end
+
+function WalletWithdrawAddressValidRequest:setData(data)
+    self.MoneyType = data[1]
+    self.Amount = data[2]
+    self.Channel = data[3]
+end
+
+---------------------------------------
+-- 验证提现地址有效性通知
+WalletWithdrawAddressValidNotify = {}
+
+function WalletWithdrawAddressValidNotify:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Result = WalletResult.Success
+    o.Request = nil
+    return o
+end
+
+function WalletWithdrawAddressValidNotify:setData(data)
+    self.Result = data[1]
+    local r = data[2]
+    local w_r = WalletWithdrawAddressValidRequest:new(nil)
+    w_r:setData(r)
+    self.Request = w_r
+end
