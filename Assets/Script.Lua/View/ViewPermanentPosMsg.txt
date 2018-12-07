@@ -45,7 +45,7 @@ function ViewPermanentPosMsg:_timerUpdate(tm)
 end
 
 ---------------------------------------
-function ViewPermanentPosMsg:showInfo(info)
+function ViewPermanentPosMsg:ShowInfo(info)
     self.GTextMsg.text = info
 end
 

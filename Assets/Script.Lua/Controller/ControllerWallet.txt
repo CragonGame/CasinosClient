@@ -17,9 +17,9 @@ function ControllerWallet:OnCreate()
     self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletWithdrawNotify, function(data)
         self:S2cWalletWithdrawNotify(data)
     end)
-    -- 生成虚拟币地址通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletGenAddressNotify, function(data)
-        self:S2cWalletGenAddressNotify(data)
+    -- 获取虚拟币地址通知
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletGetAddressNotify, function(data)
+        self:S2cWalletGetAddressNotify(data)
     end)
     -- 获取交易记录通知
     self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletGetTransListNotify, function(data)
@@ -61,9 +61,9 @@ function ControllerWallet:RequestWalletWithdraw()
 end
 
 ---------------------------------------
--- 生成虚拟币地址请求
-function ControllerWallet:RequestWalletGenAddress()
-    local data = WalletGenAddressRequest:new(nil)
+-- 获取虚拟币地址请求
+function ControllerWallet:RequestWalletGetAddress()
+    local data = WalletGetAddressRequest:new(nil)
     data.MoneyType = MoneyType.BitCNY
     data.Amount = 100
     data.Channel = 'Azex'
@@ -109,11 +109,11 @@ function ControllerWallet:S2cWalletWithdrawNotify(data)
 end
 
 ---------------------------------------
--- 生成虚拟币地址通知
-function ControllerWallet:S2cWalletGenAddressNotify(data)
+-- 获取虚拟币地址通知
+function ControllerWallet:S2cWalletGetAddressNotify(data)
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnWalletGenAddressNotify(data)
+        view:OnWalletGetAddressNotify(data)
     end
 end
 

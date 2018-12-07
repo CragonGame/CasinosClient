@@ -2,16 +2,12 @@
 -- 浮动提示
 
 ---------------------------------------
-MsgInfo = {}
+MsgInfo = class()
 
 ---------------------------------------
-function MsgInfo:new(o, info, color)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.info = info
-    o.color = color
-    return o
+function MsgInfo:ctor(info, color)
+    self.info = info
+    self.color = color
 end
 
 ---------------------------------------
@@ -38,56 +34,60 @@ function ViewFloatMsg:OnCreate()
 end
 
 ---------------------------------------
-function ViewFloatMsg:showInfo(info, color)
-    local msgInfo = MsgInfo:new(nil, info, color)
-    local index = self:usableGTextIndex()
+function ViewFloatMsg:OnDestroy()
+end
+
+---------------------------------------
+function ViewFloatMsg:ShowInfo(info, color)
+    local msg_info = MsgInfo.new(info, color)
+    local index = self:_usableGTextIndex()
     if (self.canSend == true and index ~= -1) then
-        self:showMsg(msgInfo, index)
+        self:ShowMsg(msg_info, index)
     else
-        table.insert(self.mQueMsgInfo, msgInfo)
+        table.insert(self.mQueMsgInfo, msg_info)
     end
 end
 
 ---------------------------------------
-function ViewFloatMsg:showMsg(info, gTextIndex)
+function ViewFloatMsg:ShowMsg(info, gTextIndex)
     self.GTextInfos[gTextIndex].text = info.info
     self.GTextInfos[gTextIndex].color = info.color
     self.TransitionMoves[gTextIndex]:Play(
             function()
-                self:onTransitionComplete(gTextIndex)
+                self:_onTransitionComplete(gTextIndex)
             end)
     self.TransitionMoves[gTextIndex]:SetHook("aa",
             function()
-                self:onTransitionToaa()
+                self:_onTransitionToaa()
             end
     )
     self.canSend = false
 end
 
 ---------------------------------------
-function ViewFloatMsg:onTransitionToaa()
+function ViewFloatMsg:_onTransitionToaa()
     self.canSend = true
     local l = #self.mQueMsgInfo
     if (l > 0) then
-        local index = self:usableGTextIndex()
+        local index = self:_usableGTextIndex()
         if (index ~= -1) then
             local info = table.remove(self.mQueMsgInfo, 1)
-            self:showMsg(info, index)
+            self:ShowMsg(info, index)
         end
     end
 end
 
 ---------------------------------------
-function ViewFloatMsg:onTransitionComplete(index)
+function ViewFloatMsg:_onTransitionComplete(index)
     self.GTextInfos[index].text = ""
     if (#self.mQueMsgInfo > 0) then
         local info = table.remove(self.mQueMsgInfo, 1)
-        self:showMsg(info, index)
+        self:ShowMsg(info, index)
     end
 end
 
 ---------------------------------------
-function ViewFloatMsg:usableGTextIndex()
+function ViewFloatMsg:_usableGTextIndex()
     for i = 0, 2 do
         if (self.TransitionMoves[i].playing == false) then
             return i

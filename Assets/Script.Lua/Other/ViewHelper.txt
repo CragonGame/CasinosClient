@@ -37,7 +37,7 @@ function ViewHelper:UiShowInfoSuccess(info)
     if (ui_floatmsg == nil) then
         ui_floatmsg = self.ViewMgr:CreateView("FloatMsg")
     end
-    ui_floatmsg:showInfo(info, CS.UnityEngine.Color.white)
+    ui_floatmsg:ShowInfo(info, CS.UnityEngine.Color.white)
     return ui_floatmsg
 end
 
@@ -52,7 +52,7 @@ function ViewHelper:UiShowInfoFailed(info)
     if (ui_floatmsg == nil) then
         ui_floatmsg = self.ViewMgr:CreateView("FloatMsg")
     end
-    ui_floatmsg:showInfo(info, CS.UnityEngine.Color.red)
+    ui_floatmsg:ShowInfo(info, CS.UnityEngine.Color.red)
     return ui_floatmsg
 end
 
@@ -67,7 +67,7 @@ function ViewHelper:UiShowPermanentPosMsg(info)
     if (ui_msg == nil) then
         ui_msg = self.ViewMgr:CreateView("PermanentPosMsg")
     end
-    ui_msg:showInfo(info)
+    ui_msg:ShowInfo(info)
     return ui_msg
 end
 

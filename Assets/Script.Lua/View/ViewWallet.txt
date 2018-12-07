@@ -8,7 +8,8 @@ ViewWallet = class(ViewBase)
 function ViewWallet:ctor()
     self.TemporaryHideItemId = 14001
     self.MapShopGold = {}
-    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+    self.CtrlActor = self.ControllerMgr:GetController("Actor")
+    self.CtrlWallet = self.ControllerMgr:GetController("Wallet")
 
     self.GTransShow = nil
     self.GCtrlTab = nil
@@ -100,6 +101,8 @@ function ViewWallet:OnCreate()
     end
 
     self:_onClickBtnTabRecharge()
+
+    self.CtrlWallet:RequestWalletGetAddress()
 end
 
 ---------------------------------------
@@ -131,8 +134,8 @@ function ViewWallet:OnWalletWithdrawNotify(data)
 end
 
 ---------------------------------------
--- 生成虚拟币地址通知
-function ViewWallet:OnWalletGenAddressNotify(data)
+-- 获取虚拟币地址通知
+function ViewWallet:OnWalletGetAddressNotify(data)
 end
 
 ---------------------------------------
@@ -152,8 +155,8 @@ end
 
 ---------------------------------------
 function ViewWallet:SetPlayerGoldAndDiamond()
-    self.GTextSelfGold.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
-    self.GTextSelfDiamond.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
+    self.GTextSelfGold.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
+    self.GTextSelfDiamond.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
 end
 
 ---------------------------------------

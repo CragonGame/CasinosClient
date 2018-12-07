@@ -117,52 +117,53 @@ function WalletWithdrawNotify:setData(data)
 end
 
 ---------------------------------------
--- 生成虚拟币地址请求
-WalletGenAddressRequest = {}
+-- 获取虚拟币地址请求
+WalletGetAddressRequest = {}
 
-function WalletGenAddressRequest:new(o)
+function WalletGetAddressRequest:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.MoneyType = MoneyType.CNY
-    o.Amount = 0
     o.Channel = nil
     return o
 end
 
-function WalletGenAddressRequest:getData4Pack()
+function WalletGetAddressRequest:getData4Pack()
     local t = {}
     table.insert(t, self.MoneyType)
-    table.insert(t, self.Amount)
     table.insert(t, self.Channel)
     return t
 end
 
-function WalletGenAddressRequest:setData(data)
+function WalletGetAddressRequest:setData(data)
     self.MoneyType = data[1]
-    self.Amount = data[2]
-    self.Channel = data[3]
+    self.Channel = data[2]
 end
 
 ---------------------------------------
--- 生成虚拟币地址通知
-WalletGenAddressNotify = {}
+-- 获取虚拟币地址通知
+WalletGetAddressNotify = {}
 
-function WalletGenAddressNotify:new(o)
+function WalletGetAddressNotify:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.Result = WalletResult.Success
     o.Request = nil
+    o.Address = nil
+    o.Memo = nil
     return o
 end
 
-function WalletGenAddressNotify:setData(data)
+function WalletGetAddressNotify:setData(data)
     self.Result = data[1]
     local r = data[2]
-    local w_r = WalletGenAddressRequest:new(nil)
+    local w_r = WalletGetAddressRequest:new(nil)
     w_r:setData(r)
     self.Request = w_r
+    self.Address = data[3]
+    self.Memo = data[4]
 end
 
 ---------------------------------------
