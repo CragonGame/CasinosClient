@@ -43,6 +43,7 @@
     <component id="l4zq1i" name="ComTabTitleWithdraw.xml" path="/Component/"/>
     <component id="l4zq1j" name="ComTabTitleRecord.xml" path="/Component/"/>
     <component id="l4zq1k" name="ComTabRecord.xml" path="/Component/"/>
+    <component id="l4zq1l" name="ComTabRecordListItem.xml" path="/Component/"/>
   </resources>
   <publish name="Wallet" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Wallet"/>
 </packageDescription>

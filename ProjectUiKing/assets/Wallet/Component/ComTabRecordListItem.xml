@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="748,70">
+  <displayList>
+    <graph id="n5_l4zq" name="n5" xy="0,0" size="748,70" type="rect" lineColor="#0d0000cc" fillColor="#08ffffff"/>
+    <text id="n1_l4zq" name="n1" xy="33,17" size="80,33" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="类型"/>
+    <text id="n2_l4zq" name="n2" xy="183,17" size="211,33" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="2018.12.08 12:25"/>
+    <text id="n3_l4zq" name="n3" xy="464,17" size="80,33" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="数量"/>
+    <text id="n4_l4zq" name="n4" xy="614,17" size="80,33" font="FontXi" fontSize="22" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="已完成"/>
+  </displayList>
+</component>
