@@ -3,7 +3,7 @@
 ---------------------------------------
 ControllerBase = class()
 
-function ControllerBase:ctor(this, controller_data, controller_name)
+function ControllerBase:ctor(controller_data, controller_name)
     self.ControllerData = controller_data
     self.ControllerName = controller_name
     self.CasinosContext = CS.Casinos.CasinosContext.Instance

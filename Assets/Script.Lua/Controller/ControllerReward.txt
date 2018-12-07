@@ -7,7 +7,7 @@ require('RewardTiming')
 ControllerReward = class(ControllerBase)
 
 ---------------------------------------
-function ControllerReward:ctor(this, controller_data, controller_name)
+function ControllerReward:ctor(controller_data, controller_name)
     self.TimerUpdate = nil
     self.RewardOnline = RewardOnline
     self.RewardRelief = RewardRelief
@@ -119,6 +119,6 @@ end
 
 function ControllerRewardFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerReward:new(controller_data, ctrl_name)
+    local ctrl = ControllerReward.new(controller_data, ctrl_name)
     return ctrl
 end

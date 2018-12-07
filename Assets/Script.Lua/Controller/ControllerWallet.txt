@@ -4,11 +4,27 @@
 ControllerWallet = class(ControllerBase)
 
 ---------------------------------------
-function ControllerWallet:ctor(this, controller_data, controller_name)
+function ControllerWallet:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
 function ControllerWallet:OnCreate()
+    -- 充值通知
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletRechargeNotify, function(data)
+        self:S2cWalletRechargeNotify(data)
+    end)
+    -- 提现通知
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletWithdrawNotify, function(data)
+        self:S2cWalletWithdrawNotify(data)
+    end)
+    -- 生成虚拟币地址通知
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletGenAddressNotify, function(data)
+        self:S2cWalletGenAddressNotify(data)
+    end)
+    -- 获取交易记录通知
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletGetTransListNotify, function(data)
+        self:S2cWalletGetTransListNotify(data)
+    end)
 end
 
 ---------------------------------------
@@ -21,6 +37,46 @@ function ControllerWallet:OnHandleEv(ev)
 end
 
 ---------------------------------------
+-- 充值请求
+function ControllerWallet:RequestWalletRecharge(data)
+end
+
+---------------------------------------
+-- 提现请求
+function ControllerWallet:RequestWalletWithdraw(data)
+end
+
+---------------------------------------
+-- 生成虚拟币地址请求
+function ControllerWallet:RequestWalletGenAddress(data)
+end
+
+---------------------------------------
+-- 获取交易记录请求
+function ControllerWallet:RequestWalletGetTransList(data)
+end
+
+---------------------------------------
+-- 充值通知
+function ControllerWallet:S2cWalletRechargeNotify(data)
+end
+
+---------------------------------------
+-- 提现通知
+function ControllerWallet:S2cWalletWithdrawNotify(data)
+end
+
+---------------------------------------
+-- 生成虚拟币地址通知
+function ControllerWallet:S2cWalletGenAddressNotify(data)
+end
+
+---------------------------------------
+-- 获取交易记录通知
+function ControllerWallet:S2cWalletGetTransListNotify(data)
+end
+
+---------------------------------------
 ControllerWalletFactory = class(ControllerFactory)
 
 function ControllerWalletFactory:GetName()
@@ -29,6 +85,6 @@ end
 
 function ControllerWalletFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerWallet:new(controller_data, ctrl_name)
+    local ctrl = ControllerWallet.new(controller_data, ctrl_name)
     return ctrl
 end

@@ -4,7 +4,7 @@
 ControllerDesktopH = class(ControllerBase)
 
 ---------------------------------------
-function ControllerDesktopH:ctor(this, controller_data, controller_name)
+function ControllerDesktopH:ctor(controller_data, controller_name)
     self.QueBetpotWinLooseResultCount = 10
     self.Guid = controller_data-- 本人PlayerGuid
 end
@@ -1110,6 +1110,6 @@ end
 
 function ControllerDesktopHFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerDesktopH:new(controller_data, ctrl_name)
+    local ctrl = ControllerDesktopH.new(controller_data, ctrl_name)
     return ctrl
 end

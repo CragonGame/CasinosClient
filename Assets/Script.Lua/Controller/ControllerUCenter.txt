@@ -4,7 +4,7 @@
 ControllerUCenter = class(ControllerBase)
 
 ---------------------------------------
-function ControllerUCenter:ctor(this, controller_data, controller_name)
+function ControllerUCenter:ctor(controller_data, controller_name)
     self.UCenterDomain = self.Context.Cfg.UCenterDomain
     self.MbHelper = nil
 end
@@ -345,7 +345,7 @@ end
 
 function ControllerUCenterFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerUCenter:new(controller_data, ctrl_name)
+    local ctrl = ControllerUCenter.new(controller_data, ctrl_name)
     return ctrl
 end
 

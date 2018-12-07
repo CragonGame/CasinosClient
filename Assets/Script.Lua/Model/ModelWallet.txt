@@ -7,6 +7,8 @@ MoneyType = {
     EUR = 2, -- 欧元
     NGN = 3, -- 尼日利亚，奈拉
     GHC = 4, -- 加纳，塞地
+
+    BitCNY = 100, -- 虚拟币，BitCNY
 }
 
 WalletResult = {
@@ -16,6 +18,7 @@ WalletResult = {
 }
 
 ---------------------------------------
+-- 充值请求
 WalletRechargeRequest = {}
 
 function WalletRechargeRequest:new(o)
@@ -25,7 +28,6 @@ function WalletRechargeRequest:new(o)
     o.MoneyType = MoneyType.CNY
     o.Amount = 0
     o.Channel = nil
-
     return o
 end
 
@@ -45,6 +47,7 @@ function WalletRechargeRequest:setData(data)
 end
 
 ---------------------------------------
+-- 充值通知
 WalletRechargeNotify = {}
 
 function WalletRechargeNotify:new(o)
@@ -65,6 +68,7 @@ function WalletRechargeNotify:setData(data)
 end
 
 ---------------------------------------
+-- 提现请求
 WalletWithdrawRequest = {}
 
 function WalletWithdrawRequest:new(o)
@@ -92,6 +96,7 @@ function WalletWithdrawRequest:setData(data)
 end
 
 ---------------------------------------
+-- 提现通知
 WalletWithdrawNotify = {}
 
 function WalletWithdrawNotify:new(o)
@@ -107,6 +112,104 @@ function WalletWithdrawNotify:setData(data)
     self.Result = data[1]
     local r = data[2]
     local w_r = WalletWithdrawRequest:new(nil)
+    w_r:setData(r)
+    self.Request = w_r
+end
+
+---------------------------------------
+-- 生成虚拟币地址请求
+WalletGenAddressRequest = {}
+
+function WalletGenAddressRequest:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.MoneyType = MoneyType.CNY
+    o.Amount = 0
+    o.Channel = nil
+    return o
+end
+
+function WalletGenAddressRequest:getData4Pack()
+    local t = {}
+    table.insert(t, self.MoneyType)
+    table.insert(t, self.Amount)
+    table.insert(t, self.Channel)
+    return t
+end
+
+function WalletGenAddressRequest:setData(data)
+    self.MoneyType = data[1]
+    self.Amount = data[2]
+    self.Channel = data[3]
+end
+
+---------------------------------------
+-- 生成虚拟币地址通知
+WalletGenAddressNotify = {}
+
+function WalletGenAddressNotify:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Result = WalletResult.Success
+    o.Request = nil
+    return o
+end
+
+function WalletGenAddressNotify:setData(data)
+    self.Result = data[1]
+    local r = data[2]
+    local w_r = WalletGenAddressRequest:new(nil)
+    w_r:setData(r)
+    self.Request = w_r
+end
+
+---------------------------------------
+-- 获取交易记录请求
+WalletGetTransListRequest = {}
+
+function WalletGetTransListRequest:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.MoneyType = MoneyType.CNY
+    o.Amount = 0
+    o.Channel = nil
+    return o
+end
+
+function WalletGetTransListRequest:getData4Pack()
+    local t = {}
+    table.insert(t, self.MoneyType)
+    table.insert(t, self.Amount)
+    table.insert(t, self.Channel)
+    return t
+end
+
+function WalletGetTransListRequest:setData(data)
+    self.MoneyType = data[1]
+    self.Amount = data[2]
+    self.Channel = data[3]
+end
+
+---------------------------------------
+-- 获取交易记录通知
+WalletGetTransListNotify = {}
+
+function WalletGetTransListNotify:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Result = WalletResult.Success
+    o.Request = nil
+    return o
+end
+
+function WalletGetTransListNotify:setData(data)
+    self.Result = data[1]
+    local r = data[2]
+    local w_r = WalletGetTransListRequest:new(nil)
     w_r:setData(r)
     self.Request = w_r
 end

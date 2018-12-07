@@ -4,7 +4,7 @@
 ControllerGrow = class(ControllerBase)
 
 ---------------------------------------
-function ControllerGrow:ctor(this, controller_data, controller_name)
+function ControllerGrow:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
@@ -86,6 +86,6 @@ end
 
 function ControllerGrowFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerGrow:new(controller_data, ctrl_name)
+    local ctrl = ControllerGrow.new(controller_data, ctrl_name)
     return ctrl
 end

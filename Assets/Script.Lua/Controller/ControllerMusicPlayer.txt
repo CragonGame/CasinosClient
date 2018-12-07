@@ -5,7 +5,7 @@
 ControllerMusicPlayer = class(ControllerBase)
 
 ---------------------------------------
-function ControllerMusicPlayer:ctor(this, controller_data, controller_name)
+function ControllerMusicPlayer:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
@@ -30,6 +30,6 @@ end
 
 function ControllerMusicPlayerFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerMusicPlayer:new(controller_data, ctrl_name)
+    local ctrl = ControllerMusicPlayer.new(controller_data, ctrl_name)
     return ctrl
 end

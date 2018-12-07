@@ -117,6 +117,10 @@ CommonMethodType = {
     WalletRechargeNotify = 611, -- 充值通知
     WalletWithdrawRequest = 612, -- 请求提现
     WalletWithdrawNotify = 613, -- 提现通知
+    WalletGenAddressRequest = 614,-- 请求生成虚拟币地址
+    WalletGenAddressNotify = 615,-- 生成虚拟币地址通知
+    WalletGetTransListRequest = 616,-- 请求获取交易记录
+    WalletGetTransListNotify = 617,-- 获取交易记录通知
 
     -- Task
     TaskRequest = 620, -- c->s, 任务请求

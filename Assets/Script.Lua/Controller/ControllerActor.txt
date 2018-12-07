@@ -28,7 +28,7 @@ end
 ControllerActor = class(ControllerBase)
 
 ---------------------------------------
-function ControllerActor:ctor(this, controller_data, controller_name)
+function ControllerActor:ctor(controller_data, controller_name)
     local BotTbId = self.ControllerData["BotTbId"]
     self.PropBotTbId = Prop:new(tonumber(BotTbId))
     local AccountId = self.ControllerData["AccountId"]
@@ -99,7 +99,7 @@ function ControllerActor:ctor(this, controller_data, controller_name)
     self.LastLevel = self.PropLevel
 
     -- TODO，需要移到其他地方统一调用
-    Native:CreateShareUrlAndQRCode(ActorId)
+    --Native:CreateShareUrlAndQRCode(ActorId)
 end
 
 ---------------------------------------
@@ -389,6 +389,6 @@ end
 ---------------------------------------
 function ControllerActorFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerActor:new(controller_data, ctrl_name)
+    local ctrl = ControllerActor.new(controller_data, ctrl_name)
     return ctrl
 end

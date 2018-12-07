@@ -92,7 +92,7 @@ PhoneCountryCode = {
 ControllerLogin = class(ControllerBase)
 
 ---------------------------------------
-function ControllerLogin:ctor(this, controller_data, controller_name)
+function ControllerLogin:ctor(controller_data, controller_name)
     self.Password = nil
     self.RemeberPwd = false
     self.RequestThirdPartyLogin = false
@@ -866,6 +866,6 @@ end
 
 function ControllerLoginFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerLogin:new(controller_data, ctrl_name)
+    local ctrl = ControllerLogin.new(controller_data, ctrl_name)
     return ctrl
 end

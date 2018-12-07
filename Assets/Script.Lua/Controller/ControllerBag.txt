@@ -5,7 +5,7 @@
 ControllerBag = class(ControllerBase)
 
 ---------------------------------------
-function ControllerBag:ctor(this, controller_data, controller_name)
+function ControllerBag:ctor(controller_data, controller_name)
     self.Guid = controller_data-- 本人PlayerGuid
 end
 
@@ -409,6 +409,6 @@ end
 
 function ControllerBagFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerBag:new(controller_data, ctrl_name)
+    local ctrl = ControllerBag.new(controller_data, ctrl_name)
     return ctrl
 end

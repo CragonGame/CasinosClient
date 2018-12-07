@@ -9,7 +9,7 @@ require('IMMailBox')
 ControllerIM = class(ControllerBase)
 
 ---------------------------------------
-function ControllerIM:ctor(this, controller_data, controller_name)
+function ControllerIM:ctor(controller_data, controller_name)
     self.Guid = controller_data-- 本人PlayerGuid
     self.IMChat = IMChat:new(nil, self)
     self.IMFeedback = IMFeedback:new(nil, self)
@@ -476,6 +476,6 @@ end
 
 function ControllerIMFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerIM:new(controller_data, ctrl_name)
+    local ctrl = ControllerIM.new(controller_data, ctrl_name)
     return ctrl
 end
