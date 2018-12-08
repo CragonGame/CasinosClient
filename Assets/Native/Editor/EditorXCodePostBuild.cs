@@ -1,6 +1,6 @@
 ﻿// Copyright(c) Cragon. All rights reserved.
 
-#if UNITY_IOS || UNITY_EDITOR
+#if UNITY_IOS && UNITY_EDITOR
 
 namespace Casinos
 {
@@ -103,7 +103,8 @@ namespace Casinos
 
             // 保存plist
             plist.WriteToFile(plist_path);
-#endif
         }
     }
 }
+
+#endif
