@@ -12,12 +12,12 @@ function ControllerGrow:OnCreate()
     self:BindEvListener("EvUiRequestGetGrowReward", self)
 
     -- 成长奖励
-    self.Rpc:RegRpcMethod2(self.MC.PlayerGetGrowRewardNotify, function(result, get_golds)
-        self:s2cPlayerGetGrowRewardNotify(result, get_golds)
+    self.Rpc:RegRpcMethod2(self.MethodType.PlayerGetGrowRewardNotify, function(result, get_golds)
+        self:S2cPlayerGetGrowRewardNotify(result, get_golds)
     end)
     -- 成长奖励快照通知
-    self.Rpc:RegRpcMethod1(self.MC.PlayerGrowRewardSnapshotNotify, function(grow_data)
-        self:s2cPlayerGrowRewardSnapshotNotify(grow_data)
+    self.Rpc:RegRpcMethod1(self.MethodType.PlayerGrowRewardSnapshotNotify, function(grow_data)
+        self:S2cPlayerGrowRewardSnapshotNotify(grow_data)
     end)
 end
 
@@ -29,7 +29,7 @@ end
 ---------------------------------------
 function ControllerGrow:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestGetGrowReward") then
-        self.Rpc:RPC0(self.MC.PlayerGetGrowRewardRequest)
+        self.Rpc:RPC0(self.MethodType.PlayerGetGrowRewardRequest)
     end
 end
 
@@ -51,7 +51,7 @@ function ControllerGrow:GetCurrentLevelMaxGetGold(current_level)
 end
 
 ---------------------------------------
-function ControllerGrow:s2cPlayerGetGrowRewardNotify(result, get_golds)
+function ControllerGrow:S2cPlayerGetGrowRewardNotify(result, get_golds)
     if (result == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(
                 self.ViewMgr.LanMgr:getLanValue("SuccessGet") .. UiChipShowHelper:GetGoldShowStr(get_golds, self.ViewMgr.LanMgr.LanBase) ..
@@ -65,7 +65,7 @@ function ControllerGrow:s2cPlayerGetGrowRewardNotify(result, get_golds)
 end
 
 ---------------------------------------
-function ControllerGrow:s2cPlayerGrowRewardSnapshotNotify(grow_data)
+function ControllerGrow:S2cPlayerGrowRewardSnapshotNotify(grow_data)
     local data = BGrowData:new(nil)
     data:setData(grow_data)
     self.BGrowData = data

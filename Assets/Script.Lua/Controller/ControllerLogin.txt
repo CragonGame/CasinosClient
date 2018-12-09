@@ -128,7 +128,7 @@ function ControllerLogin:OnCreate()
     self:_init(true)
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
 
-    local m_c = CommonMethodType
+    local m_c = MethodType
     self.Rpc:RegRpcMethod0(m_c.AccountGatewayConnected, function()
         self:OnAccountGatewayConnected()
     end)
@@ -575,7 +575,7 @@ function ControllerLogin:OnUCenterWechatBind(http_statuscode, status, response, 
     if (status == UCenterResponseStatus.Success) then
         if (response == UCenterErrorCode.NoError) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BindWeChatSuccess"))
-            self.Rpc:RPC0(CommonMethodType.AccountUpdateDataFromUCenterRequest)
+            self.Rpc:RPC0(self.MethodType.AccountUpdateDataFromUCenterRequest)
         end
     else
         ViewHelper:UiEndWaiting()
@@ -637,7 +637,7 @@ function ControllerLogin:OnAccountGatewayConnected()
     login_request.nick_name = nick_name
     login_request.channel_id = CS.Casinos.CasinosContext.Instance.Config.Channel
     login_request.platform = CS.Casinos.CasinosContext.Instance.Config.Platform
-    self.Rpc:RPC1(CommonMethodType.AccountLoginAppRequest, login_request:getData4Pack())
+    self.Rpc:RPC1(self.MethodType.AccountLoginAppRequest, login_request:getData4Pack())
 end
 
 ---------------------------------------
@@ -659,7 +659,7 @@ function ControllerLogin:OnAccountLoginAppResponse(login_response)
             enterworld_request.invite_id = t_decode["PlayerId"]
         end
     end
-    self.Rpc:RPC1(CommonMethodType.AccountEnterWorldRequest, enterworld_request:getData4Pack())
+    self.Rpc:RPC1(self.MethodType.AccountEnterWorldRequest, enterworld_request:getData4Pack())
 end
 
 ---------------------------------------
@@ -723,7 +723,7 @@ function ControllerLogin:GetClientEnterWorldNotify()
 end
 
 ---------------------------------------
-function ControllerLogin:canDestroyViewLogin()
+function ControllerLogin:DestroyViewLogin()
     self.AutoLoginTm = 0
     self.AutoLogin = false
     local view_login = self.ViewMgr:GetView("Login")

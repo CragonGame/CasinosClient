@@ -12,28 +12,28 @@ end
 ---------------------------------------
 function ControllerBag:OnCreate()
     self.Rpc = self.ControllerMgr.Rpc
-    self.MC = CommonMethodType
+    self.MethodType = MethodType
     -- 背包中所有道具推送给Client的通知
-    self.Rpc:RegRpcMethod1(self.MC.BagItemPush2ClientNotify, function(list_item)
-        self:s2cBagItemPush2ClientNotify(list_item)
+    self.Rpc:RegRpcMethod1(self.MethodType.BagItemPush2ClientNotify, function(list_item)
+        self:S2cBagItemPush2ClientNotify(list_item)
     end)
     -- 临时礼物变更通知
-    self.Rpc:RegRpcMethod1(self.MC.BagGiftChangedNotify, function(item_data)
-        self:s2cBagGiftChangedNotify(item_data)
+    self.Rpc:RegRpcMethod1(self.MethodType.BagGiftChangedNotify, function(item_data)
+        self:S2cBagGiftChangedNotify(item_data)
     end)
     -- 通知删除道具
-    self.Rpc:RegRpcMethod2(self.MC.BagDeleteItemNotify, function(result, item_objid)
-        self:s2cBagDeleteItemNotify(result, item_objid)
+    self.Rpc:RegRpcMethod2(self.MethodType.BagDeleteItemNotify, function(result, item_objid)
+        self:S2cBagDeleteItemNotify(result, item_objid)
     end)
     -- 通知添加道具
-    self.Rpc:RegRpcMethod1(self.MC.BagAddItemNotify, function(item_data)
-        self:s2cBagAddItemNotify(item_data)
+    self.Rpc:RegRpcMethod1(self.MethodType.BagAddItemNotify, function(item_data)
+        self:S2cBagAddItemNotify(item_data)
     end)
     -- 通知更新道具
-    self.Rpc:RegRpcMethod1(self.MC.BagUpdateItemNotify, function(item_data)
-        self:s2cBagUpdateItemNotify(item_data)
+    self.Rpc:RegRpcMethod1(self.MethodType.BagUpdateItemNotify, function(item_data)
+        self:S2cBagUpdateItemNotify(item_data)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.BagOperateItemNotify, function(item_data)
+    self.Rpc:RegRpcMethod1(self.MethodType.BagOperateItemNotify, function(item_data)
         self:OnBagOperateItemNotify(item_data)
     end)
 
@@ -97,7 +97,7 @@ function ControllerBag:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerBag:s2cBagItemPush2ClientNotify(list_item)
+function ControllerBag:S2cBagItemPush2ClientNotify(list_item)
     if (list_item ~= nil and #list_item > 0)
     then
         local eb_data_mgr = self.ControllerMgr.TbDataMgr
@@ -119,7 +119,7 @@ function ControllerBag:s2cBagItemPush2ClientNotify(list_item)
 end
 
 ---------------------------------------
-function ControllerBag:s2cBagGiftChangedNotify(item_data)
+function ControllerBag:S2cBagGiftChangedNotify(item_data)
     local data = nil
     if (item_data ~= nil)
     then
@@ -143,7 +143,7 @@ function ControllerBag:s2cBagGiftChangedNotify(item_data)
 end
 
 ---------------------------------------
-function ControllerBag:s2cBagDeleteItemNotify(result, item_objid)
+function ControllerBag:S2cBagDeleteItemNotify(result, item_objid)
     if (result ~= ProtocolResult.Success)
     then
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("RemoveItemFailed"))
@@ -170,11 +170,11 @@ end
 
 ---------------------------------------
 function ControllerBag:OnBagOperateItemNotify(result)
-    self:s2cOnOperateItem(result)
+    self:S2cOnOperateItem(result)
 end
 
 ---------------------------------------
-function ControllerBag:s2cOnOperateItem(result)
+function ControllerBag:S2cOnOperateItem(result)
     local n_d = ItemOperateNotifyData:new(nil)
     n_d:setData(result)
     if (n_d.result ~= ProtocolResult.Success)
@@ -206,7 +206,7 @@ function ControllerBag:s2cOnOperateItem(result)
 end
 
 ---------------------------------------
-function ControllerBag:s2cBagAddItemNotify(item_data)
+function ControllerBag:S2cBagAddItemNotify(item_data)
     local data = ItemData1:new(nil)
     data:setData(item_data)
     local eb_data_mgr = self.ControllerMgr.TbDataMgr
@@ -258,7 +258,7 @@ function ControllerBag:s2cBagAddItemNotify(item_data)
 end
 
 ---------------------------------------
-function ControllerBag:s2cBagUpdateItemNotify(item_data)
+function ControllerBag:S2cBagUpdateItemNotify(item_data)
     local data = ItemData1:new(nil)
     data:setData(item_data)
     local eb_data_mgr = self.ControllerMgr.TbDataMgr
@@ -286,7 +286,7 @@ function ControllerBag:requestOperateItem(operate_id, item_objid)
     local item_operate = ItemOperate:new(nil)
     item_operate.operate_id = operate_id
     item_operate.item_objid = item_objid
-    self.Rpc:RPC1(self.MC.BagOperateItemRequest, item_operate:getData4Pack())
+    self.Rpc:RPC1(self.MethodType.BagOperateItemRequest, item_operate:getData4Pack())
 end
 
 ---------------------------------------
@@ -304,7 +304,7 @@ end
 
 ---------------------------------------
 function ControllerBag:RequestRemoveGift(item_objid)
-    self.Rpc:RPC1(self.MC.BagDeleteItemRequest, item_objid)
+    self.Rpc:RPC1(self.MethodType.BagDeleteItemRequest, item_objid)
 end
 
 ---------------------------------------

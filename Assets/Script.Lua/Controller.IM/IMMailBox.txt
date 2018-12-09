@@ -180,7 +180,7 @@ end
 
 ---------------------------------------
 function IMMailBox:RequestOperateMail(mail_guid, operate)
-    self.ControllerIM.ControllerMgr.Rpc:RPC2(CommonMethodType.IMMailOperateRequest, mail_guid, operate)
+    self.ControllerIM.ControllerMgr.Rpc:RPC2(MethodType.IMMailOperateRequest, mail_guid, operate)
 end
 
 ---------------------------------------

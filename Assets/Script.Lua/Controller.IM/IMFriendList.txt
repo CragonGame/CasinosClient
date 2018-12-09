@@ -325,22 +325,22 @@ end
 
 ---------------------------------------
 function IMFriendList:RequestIMAddFriendReq(player_guid)
-    self.ControllerIM.ControllerMgr.Rpc:RPC1(CommonMethodType.IMAddFriendReqRequest, player_guid)
+    self.ControllerIM.ControllerMgr.Rpc:RPC1(MethodType.IMAddFriendReqRequest, player_guid)
 end
 
 ---------------------------------------
 function IMFriendList:RequestIMAddFriendRes(player_guid, result)
-    self.ControllerIM.ControllerMgr.Rpc:RPC2(CommonMethodType.IMAddFriendResRequest, player_guid, result)
+    self.ControllerIM.ControllerMgr.Rpc:RPC2(MethodType.IMAddFriendResRequest, player_guid, result)
 end
 
 ---------------------------------------
 function IMFriendList:RequestIMDeleteFriend(player_guid)
-    self.ControllerIM.ControllerMgr.Rpc:RPC1(CommonMethodType.IMDeleteFriendRequest, player_guid)
+    self.ControllerIM.ControllerMgr.Rpc:RPC1(MethodType.IMDeleteFriendRequest, player_guid)
 end
 
 ---------------------------------------
 function IMFriendList:RequestIMFindFriend(search_filter)
-    self.ControllerIM.ControllerMgr.Rpc:RPC1(CommonMethodType.IMFindFriendRequest, search_filter)
+    self.ControllerIM.ControllerMgr.Rpc:RPC1(MethodType.IMFindFriendRequest, search_filter)
 end
 
 ---------------------------------------

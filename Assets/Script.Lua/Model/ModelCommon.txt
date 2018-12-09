@@ -1,7 +1,7 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-CommonMethodType = {
+MethodType = {
     None = 0, -- 无效
     MsgPack = 50,
     MsgPackAccountBegin = 51,
@@ -117,12 +117,12 @@ CommonMethodType = {
     WalletRechargeNotify = 611, -- 充值通知
     WalletWithdrawRequest = 612, -- 请求提现
     WalletWithdrawNotify = 613, -- 提现通知
-    WalletGetAddressRequest = 614,-- 请求获取虚拟币地址
-    WalletGetAddressNotify = 615,-- 获取虚拟币地址通知
-    WalletGetTransListRequest = 616,-- 请求获取交易记录
-    WalletGetTransListNotify = 617,-- 获取交易记录通知
-    WalletWithdrawAddressValidRequest = 618,-- 请求验证提现地址有效性
-    WalletWithdrawAddressValidNotify = 619,-- 验证提现地址有效性通知
+    WalletGetAddressRequest = 614, -- 请求获取虚拟币地址
+    WalletGetAddressNotify = 615, -- 获取虚拟币地址通知
+    WalletGetTransListRequest = 616, -- 请求获取交易记录
+    WalletGetTransListNotify = 617, -- 获取交易记录通知
+    WalletWithdrawAddressValidRequest = 618, -- 请求验证提现地址有效性
+    WalletWithdrawAddressValidNotify = 619, -- 验证提现地址有效性通知
 
     -- Task
     TaskRequest = 620, -- c->s, 任务请求

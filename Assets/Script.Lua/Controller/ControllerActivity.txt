@@ -14,8 +14,8 @@ function ControllerActivity:OnCreate()
     self:BindEvListener("EvUiRequestGetActivity", self)
 
     -- 活动推送通知
-    self.Rpc:RegRpcMethod1(self.MC.ActivityNotify, function(list_activity)
-        self:s2cActivityNotify(list_activity)
+    self.Rpc:RegRpcMethod1(self.MethodType.ActivityNotify, function(list_activity)
+        self:S2cActivityNotify(list_activity)
     end)
 
     self:ConfigActivityInfo()
@@ -29,12 +29,12 @@ end
 ---------------------------------------
 function ControllerActivity:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestGetActivity") then
-        self.Rpc:RPC0(self.MC.ActivityRequest)
+        self.Rpc:RPC0(self.MethodType.ActivityRequest)
     end
 end
 
 ---------------------------------------
-function ControllerActivity:s2cActivityNotify(list_activity)
+function ControllerActivity:S2cActivityNotify(list_activity)
     self.ListActivity = list_activity
 
     local ev = self:GetEv("EvEntityNotifyPushActivity")

@@ -20,39 +20,39 @@ function ControllerMTT:OnCreate()
     self.ViewMgr:BindEvListener("EvUiRequestCancelSignupMatch", self)
     self.Rpc = self.ControllerMgr.Rpc
     self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
-    self.MC = CommonMethodType
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasRequestGetListResult, function(matchTexasGetListResponse)
-        self:s2cMatchTexasRequestGetListResult(matchTexasGetListResponse)
+    self.MethodType = MethodType
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestGetListResult, function(matchTexasGetListResponse)
+        self:S2cMatchTexasRequestGetListResult(matchTexasGetListResponse)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasRequestUpdatePlayerNumInListResult, function(matchtype, list_matchplayernum)
-        self:s2cMatchTexasRequestUpdatePlayerNumInListResult(matchtype, list_matchplayernum)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestUpdatePlayerNumInListResult, function(matchtype, list_matchplayernum)
+        self:S2cMatchTexasRequestUpdatePlayerNumInListResult(matchtype, list_matchplayernum)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasRequestGetMoreInfoResult, function(detailedMatchInfo)
-        self:s2cMatchTexasRequestGetMoreInfoResult(detailedMatchInfo)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestGetMoreInfoResult, function(detailedMatchInfo)
+        self:S2cMatchTexasRequestGetMoreInfoResult(detailedMatchInfo)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasRequestSignupResult, function(matchTexasSignUpResponse)
-        self:s2cMatchTexasRequestSignupResult(matchTexasSignUpResponse)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestSignupResult, function(matchTexasSignUpResponse)
+        self:S2cMatchTexasRequestSignupResult(matchTexasSignUpResponse)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasRequestCancelSignupResult, function(matchTexasCancelSignUpResponse)
-        self:s2cMatchTexasRequestCancelSignupResult(matchTexasCancelSignUpResponse)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestCancelSignupResult, function(matchTexasCancelSignUpResponse)
+        self:S2cMatchTexasRequestCancelSignupResult(matchTexasCancelSignUpResponse)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasRequestEnterResult, function(matchTexasEnterResponse)
-        self:s2cMatchTexasRequestEnterResult(matchTexasEnterResponse)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestEnterResult, function(matchTexasEnterResponse)
+        self:S2cMatchTexasRequestEnterResult(matchTexasEnterResponse)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasStartNotify, function(matchTexasStartNotify)
-        self:s2cMatchTexasStartNotify(matchTexasStartNotify)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasStartNotify, function(matchTexasStartNotify)
+        self:S2cMatchTexasStartNotify(matchTexasStartNotify)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasRequestCreateResult, function(result)
-        self:s2cMatchTexasRequestCreateResult(result)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestCreateResult, function(result)
+        self:S2cMatchTexasRequestCreateResult(result)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasRequestDisbandResult, function(result)
-        self:s2cMatchTexasRequestDisbandResult(result)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestDisbandResult, function(result)
+        self:S2cMatchTexasRequestDisbandResult(result)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.MatchTexasPlayerGameEndNotify, function(matchTexasDisbandNotify)
-        self:s2cMatchTexasDisbandNotify(matchTexasDisbandNotify)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasPlayerGameEndNotify, function(matchTexasDisbandNotify)
+        self:S2cMatchTexasDisbandNotify(matchTexasDisbandNotify)
     end)
-    self.Rpc:RegRpcMethod2(self.MC.MatchTexasRequestJoinNotPublicResult, function(result, match_info)
-        self:s2cMatchTexasRequestJoinNotPublicResult(result, match_info)
+    self.Rpc:RegRpcMethod2(self.MethodType.MatchTexasRequestJoinNotPublicResult, function(result, match_info)
+        self:S2cMatchTexasRequestJoinNotPublicResult(result, match_info)
     end)
     self.ListAllMatch = {}
     self.ListSelfMatch = {}
@@ -99,60 +99,60 @@ end
 ---------------------------------------
 -- 请求获取赛事信息列表
 function ControllerMTT:RequestGetMatchTexasList(match_type)
-    self.Rpc:RPC1(self.MC.MatchTexasRequestGetList, match_type)
+    self.Rpc:RPC1(self.MethodType.MatchTexasRequestGetList, match_type)
 end
 
 ---------------------------------------
 -- 请求更新赛事信息列表中的参赛人数
 function ControllerMTT:RequestUpdatePlayerNumInMatchTexasList(match_type)
-    self.Rpc:RPC1(self.MC.MatchTexasRequestUpdatePlayerNumInList, match_type)
+    self.Rpc:RPC1(self.MethodType.MatchTexasRequestUpdatePlayerNumInList, match_type)
 end
 
 ---------------------------------------
 -- 请求报名或者延迟报名
 function ControllerMTT:RequestSignupMatchTexas(match_guid)
-    self.Rpc:RPC1(self.MC.MatchTexasRequestSignup, match_guid)
+    self.Rpc:RPC1(self.MethodType.MatchTexasRequestSignup, match_guid)
 end
 
 ---------------------------------------
 -- 请求取消报名
 function ControllerMTT:RequestCancelSignupMatchTexas(match_guid)
-    self.Rpc:RPC1(self.MC.MatchTexasRequestCancelSignup, match_guid)
+    self.Rpc:RPC1(self.MethodType.MatchTexasRequestCancelSignup, match_guid)
 end
 
 ---------------------------------------
 -- 请求获取赛事详情
 function ControllerMTT:RequestGetMatchDetailedInfo(match_type, match_guid)
-    self.Rpc:RPC2(self.MC.MatchTexasRequestGetMoreInfo, match_type, match_guid)
+    self.Rpc:RPC2(self.MethodType.MatchTexasRequestGetMoreInfo, match_type, match_guid)
 end
 
 ---------------------------------------
 -- 请求创建比赛
 function ControllerMTT:RequestCreateMatchTexas(create_info)
-    self.Rpc:RPC1(self.MC.MatchTexasRequestCreate, create_info:getData4Pack())
+    self.Rpc:RPC1(self.MethodType.MatchTexasRequestCreate, create_info:getData4Pack())
 end
 
 ---------------------------------------
 -- 请求解散比赛
 function ControllerMTT:RequestDisbandMatchTexas()
-    self.Rpc:RPC0(self.MC.MatchTexasRequestDisband)
+    self.Rpc:RPC0(self.MethodType.MatchTexasRequestDisband)
 end
 
 ---------------------------------------
 -- 请求进入比赛
 function ControllerMTT:RequestEnterMatch(match_guid)
-    self.Rpc:RPC1(self.MC.MatchTexasRequestEnter, match_guid)
+    self.Rpc:RPC1(self.MethodType.MatchTexasRequestEnter, match_guid)
 end
 
 ---------------------------------------
 -- 请求通过邀请码获取到赛事信息
 function ControllerMTT:RequestGetMatchDetailedInfoByInvitation(invitation_code)
-    self.Rpc:RPC1(self.MC.MatchTexasRequestJoinNotPublic, invitation_code)
+    self.Rpc:RPC1(self.MethodType.MatchTexasRequestJoinNotPublic, invitation_code)
 end
 
 ---------------------------------------
 -- 响应获取赛事信息列表
-function ControllerMTT:s2cMatchTexasRequestGetListResult(matchTexasGetListResponse)
+function ControllerMTT:S2cMatchTexasRequestGetListResult(matchTexasGetListResponse)
     local data = BMatchTexasGetListResponse:new(nil)
     data:setData(matchTexasGetListResponse)
     self.ListAllMatch = data.ListMatchTexasInfo
@@ -178,7 +178,7 @@ end
 
 ---------------------------------------
 -- 响应更新赛事信息列表中的参赛人数
-function ControllerMTT:s2cMatchTexasRequestUpdatePlayerNumInListResult(list_matchPlayerNum)
+function ControllerMTT:S2cMatchTexasRequestUpdatePlayerNumInListResult(list_matchPlayerNum)
     if (list_matchPlayerNum ~= nil and #list_matchPlayerNum > 0) then
         for i = 1, #list_matchPlayerNum do
             local temp = BMatchTexasPlayerNumUpdate:new(nil)
@@ -201,7 +201,7 @@ end
 
 ---------------------------------------
 -- 响应报名或者延迟报名
-function ControllerMTT:s2cMatchTexasRequestSignupResult(matchTexasSignUpResponse)
+function ControllerMTT:S2cMatchTexasRequestSignupResult(matchTexasSignUpResponse)
     local data = BMatchTexasCancelSignUpResponse:new(nil)
     data:setData(matchTexasSignUpResponse)
     local result = data.Result
@@ -252,7 +252,7 @@ end
 
 ---------------------------------------
 -- 响应获取赛事详细信息
-function ControllerMTT:s2cMatchTexasRequestGetMoreInfoResult(detailedMatchInfo)
+function ControllerMTT:S2cMatchTexasRequestGetMoreInfoResult(detailedMatchInfo)
     local data = BMatchTexasMoreInfo:new(nil)
     data:setData(detailedMatchInfo)
     local ev = self:GetEv("EvEntitySetMatchDetailedInfo")
@@ -265,7 +265,7 @@ end
 
 ---------------------------------------
 -- 响应取消报名
-function ControllerMTT:s2cMatchTexasRequestCancelSignupResult(matchTexasCancelSignUpResponse)
+function ControllerMTT:S2cMatchTexasRequestCancelSignupResult(matchTexasCancelSignUpResponse)
     local data = BMatchTexasCancelSignUpResponse:new(nil)
     data:setData(matchTexasCancelSignUpResponse)
     local result = data.Result
@@ -300,19 +300,19 @@ end
 
 ---------------------------------------
 -- 响应进入比赛
-function ControllerMTT:s2cMatchTexasRequestEnterResult(matchTexasEnterResponse)
+function ControllerMTT:S2cMatchTexasRequestEnterResult(matchTexasEnterResponse)
     local data = BMatchTexasEnterResponse:new(nil)
     data:setData(matchTexasEnterResponse)
 end
 
 ---------------------------------------
 -- 响应创建比赛
-function ControllerMTT:s2cMatchTexasRequestCreateResult(result)
+function ControllerMTT:S2cMatchTexasRequestCreateResult(result)
 end
 
 ---------------------------------------
 -- 响应解散比赛
-function ControllerMTT:s2cMatchTexasRequestDisbandResult(result)
+function ControllerMTT:S2cMatchTexasRequestDisbandResult(result)
     if result == ProtocolResult.MatchTexasNotEnoughPlayer then
         ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchDisband"))
     end
@@ -320,7 +320,7 @@ end
 
 ---------------------------------------
 -- 响应通过邀请码获取到赛事信息
-function ControllerMTT:s2cMatchTexasRequestJoinNotPublicResult(result, match_info)
+function ControllerMTT:S2cMatchTexasRequestJoinNotPublicResult(result, match_info)
     if (result == ProtocolResult.Success) then
         local ev = self:GetEv("EvEntityGetMatchInfoByInvitationCodeSucceed")
         if (ev == nil) then
@@ -334,7 +334,7 @@ end
 
 ---------------------------------------
 -- 比赛解散通知
-function ControllerMTT:s2cMatchTexasDisbandNotify(matchTexasDisbandNotify)
+function ControllerMTT:S2cMatchTexasDisbandNotify(matchTexasDisbandNotify)
     local data = BMatchTexasPlayerGameEndNotify:new(nil)
     data:setData(matchTexasDisbandNotify)
     if (#self.ListAllMatch > 0) then
@@ -371,7 +371,7 @@ end
 
 ---------------------------------------
 -- 比赛报名后开始通知
-function ControllerMTT:s2cMatchTexasStartNotify(matchTexasStartNotify)
+function ControllerMTT:S2cMatchTexasStartNotify(matchTexasStartNotify)
     local data = BMatchTexasStartNotify:new(nil)
     data:setData(matchTexasStartNotify)
 

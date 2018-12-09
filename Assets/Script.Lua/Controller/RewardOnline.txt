@@ -9,7 +9,7 @@ function RewardOnline:Setup(controller_mgr, view_mgr, controller_reward)
     self.ControllerMgr = controller_mgr
     self.ViewMgr = view_mgr
     self.ControllerReward = controller_reward
-    self.MC = CommonMethodType
+    self.MethodType = MethodType
     self.OnlineRewardState = OnlineRewardState.CountDown
     self.LeftTm = 0
     self.CanGetReward = false
@@ -58,7 +58,7 @@ end
 ---------------------------------------
 function RewardOnline:OnClickBtnOnlineReward()
     if (self.CanGetReward == true) then
-        self.ControllerMgr.Rpc:RPC0(self.MC.PlayerGetOnlineRewardRequest)
+        self.ControllerMgr.Rpc:RPC0(self.MethodType.PlayerGetOnlineRewardRequest)
     else
         ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:getLanValue("OnlineReward"), tostring(self.FormatLeftTm), tostring(self.NextReward)))
     end

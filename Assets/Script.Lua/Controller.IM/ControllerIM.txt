@@ -45,7 +45,7 @@ function ControllerIM:OnCreate()
     self:SetMainUiIMInfo()
     self.CurrentChatTargetGuid = ""
     local rpc = self.ControllerMgr.Rpc
-    local m_c = CommonMethodType
+    local m_c = MethodType
     rpc:RegRpcMethod1(m_c.IMAddFriendReqRequestResult, function(result)
         self:OnIMAddFriendReqRequestResult(result)
     end)
@@ -141,11 +141,11 @@ function ControllerIM:OnHandleEv(ev)
         self.IMFriendList:RequestIMAddFriendReq(ev.friend_etguid)
     elseif (ev.EventName == "EvUiAgreeAddFriend") then
         local offline_ev = ev.ev
-        self.ControllerMgr.Rpc:RPC2(CommonMethodType.IMEventClientConfirm, offline_ev._id, "")
+        self.ControllerMgr.Rpc:RPC2(MethodType.IMEventClientConfirm, offline_ev._id, "")
         self.IMFriendList:RequestIMAddFriendRes(ev.from_etguid, AddFriendResult.Agree)
     elseif (ev.EventName == "EvUiRefuseAddFriend") then
         local offline_ev = ev.ev
-        self.ControllerMgr.Rpc:RPC2(CommonMethodType.IMEventClientConfirm, offline_ev._id, "")
+        self.ControllerMgr.Rpc:RPC2(MethodType.IMEventClientConfirm, offline_ev._id, "")
         self.IMFriendList:RequestIMAddFriendRes(ev.from_etguid, AddFriendResult.Reject)
     end
     if (ev.EventName == "EvUiSendMsg") then

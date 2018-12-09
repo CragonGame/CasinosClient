@@ -108,36 +108,36 @@ function ControllerActor:OnCreate()
     self:BindEvListener("EvUnBindWeChatSuccess", self)
 
     -- 玩家积分更新通知
-    self.Rpc:RegRpcMethod3(self.MC.PlayerPointUpdateNotify, function(change_reason, point, user_date)
-        self:s2cPlayerPointUpdateNotify(change_reason, point, user_date)
+    self.Rpc:RegRpcMethod3(self.MethodType.PlayerPointUpdateNotify, function(change_reason, point, user_date)
+        self:S2cPlayerPointUpdateNotify(change_reason, point, user_date)
     end)
     -- 玩家筹码变更通知
-    self.Rpc:RegRpcMethod3(self.MC.PlayerGoldAccUpdateNotify, function(change_reason, gold_acc, user_data)
-        self:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, user_data)
+    self.Rpc:RegRpcMethod3(self.MethodType.PlayerGoldAccUpdateNotify, function(change_reason, gold_acc, user_data)
+        self:S2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, user_data)
     end)
     -- 玩家钻石改变通知
-    self.Rpc:RegRpcMethod3(self.MC.PlayerDiamondUpdateNotify, function(change_reason, diamond, user_data)
-        self:s2cPlayerDiamondUpdateNotify(change_reason, diamond, user_data)
+    self.Rpc:RegRpcMethod3(self.MethodType.PlayerDiamondUpdateNotify, function(change_reason, diamond, user_data)
+        self:S2cPlayerDiamondUpdateNotify(change_reason, diamond, user_data)
     end)
     -- 玩家VIP改变通知
-    self.Rpc:RegRpcMethod1(self.MC.PlayerVipChangedNotify, function(vip_level)
-        self:s2cPlayerVipChangedNotify(vip_level)
+    self.Rpc:RegRpcMethod1(self.MethodType.PlayerVipChangedNotify, function(vip_level)
+        self:S2cPlayerVipChangedNotify(vip_level)
     end)
     -- 充值点数变更通知
-    self.Rpc:RegRpcMethod1(self.MC.PlayerRechargePointChangedNotify, function(rechargepoint_change)
-        self:s2cPlayerRechargePointChangedNotify(rechargepoint_change)
+    self.Rpc:RegRpcMethod1(self.MethodType.PlayerRechargePointChangedNotify, function(rechargepoint_change)
+        self:S2cPlayerRechargePointChangedNotify(rechargepoint_change)
     end)
     -- 首充变更通知
-    self.Rpc:RegRpcMethod0(self.MC.PlayerIsFirstRechargeChangedNotify, function()
-        self:s2cPlayerIsFirstRechargeChangedNotify()
+    self.Rpc:RegRpcMethod0(self.MethodType.PlayerIsFirstRechargeChangedNotify, function()
+        self:S2cPlayerIsFirstRechargeChangedNotify()
     end)
     -- 输光后送的筹码通知
-    self.Rpc:RegRpcMethod1(self.MC.PlayerLostAllSendChipsNotify, function(send_goldsinfo)
-        self:s2cPlayerLostAllSendChipsNotify(send_goldsinfo)
+    self.Rpc:RegRpcMethod1(self.MethodType.PlayerLostAllSendChipsNotify, function(send_goldsinfo)
+        self:S2cPlayerLostAllSendChipsNotify(send_goldsinfo)
     end)
     -- 玩家大师分更新通知
-    --[[self.Rpc:RegRpcMethod1(self.MC.PlayerMasterPointUpdateNotify,function(level_new)
-        self:s2cPlayerLevelupNotify(level_new)
+    --[[self.Rpc:RegRpcMethod1(self.MethodType.PlayerMasterPointUpdateNotify,function(level_new)
+        self:S2cPlayerLevelupNotify(level_new)
     end)]]
 
     self.ControllerLogin = self.ControllerMgr:GetController("Login")
@@ -209,7 +209,7 @@ function ControllerActor:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerActor:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, user_data)
+function ControllerActor:S2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, user_data)
     if (change_reason == GoldAccChangeReason.AddByGoldPackage) then
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("ScoreForGoldPackage"))
     end
@@ -228,13 +228,13 @@ function ControllerActor:s2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, u
 end
 
 ---------------------------------------
-function ControllerActor:s2cPlayerDiamondUpdateNotify(change_reason, diamond, user_data)
-    print("s2cPlayerDiamondUpdateNotify" .. tostring(diamond))
+function ControllerActor:S2cPlayerDiamondUpdateNotify(change_reason, diamond, user_data)
+    print("S2cPlayerDiamondUpdateNotify" .. tostring(diamond))
     self.PropDiamond:set(diamond)
 end
 
 ---------------------------------------
-function ControllerActor:s2cPlayerVipChangedNotify(vip_level)
+function ControllerActor:S2cPlayerVipChangedNotify(vip_level)
     self.PropVIPLevel:set(vip_level)
 end
 
@@ -260,7 +260,7 @@ function ControllerActor:getNextVIPInfo(next_viplevel, next_needtotalexp, next_a
 end
 
 ---------------------------------------
-function ControllerActor:s2cPlayerLostAllSendChipsNotify(send_goldsinfo)
+function ControllerActor:S2cPlayerLostAllSendChipsNotify(send_goldsinfo)
     local data = LostAllSendGoldsInfo:new(nil)
     data:setData(send_goldsinfo)
     --local tips = string.format(self.ViewMgr.LanMgr:getLanValue("LostAllGold"), tostring(data.send_golds), self.ViewMgr.LanMgr:getLanValue("Chip"))
@@ -268,12 +268,12 @@ function ControllerActor:s2cPlayerLostAllSendChipsNotify(send_goldsinfo)
 end
 
 ---------------------------------------
-function ControllerActor:s2cPlayerRechargePointChangedNotify(rechargepoint_change)
+function ControllerActor:S2cPlayerRechargePointChangedNotify(rechargepoint_change)
     self.PropRechargePoint:set(rechargepoint_change)
 end
 
 ---------------------------------------
-function ControllerActor:s2cPlayerIsFirstRechargeChangedNotify()
+function ControllerActor:S2cPlayerIsFirstRechargeChangedNotify()
     self.PropIsFirstRecharge:set(false)
 end
 
@@ -282,7 +282,7 @@ function ControllerActor:onPropExperienceChanged()
 end
 
 ---------------------------------------
-function ControllerActor:s2cPlayerPointUpdateNotify(change_reson, point, user_date)
+function ControllerActor:S2cPlayerPointUpdateNotify(change_reson, point, user_date)
     self.PropPoint:set(point)
 end
 

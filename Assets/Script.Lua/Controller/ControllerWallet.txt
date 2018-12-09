@@ -10,23 +10,23 @@ end
 ---------------------------------------
 function ControllerWallet:OnCreate()
     -- 充值通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletRechargeNotify, function(data)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletRechargeNotify, function(data)
         self:S2cWalletRechargeNotify(data)
     end)
     -- 提现通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletWithdrawNotify, function(data)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawNotify, function(data)
         self:S2cWalletWithdrawNotify(data)
     end)
     -- 获取虚拟币地址通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletGetAddressNotify, function(data)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletGetAddressNotify, function(data)
         self:S2cWalletGetAddressNotify(data)
     end)
     -- 获取交易记录通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletGetTransListNotify, function(data)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletGetTransListNotify, function(data)
         self:S2cWalletGetTransListNotify(data)
     end)
     -- 验证提现地址有效性通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MC.WalletWithdrawAddressValidNotify, function(data)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawAddressValidNotify, function(data)
         self:S2cWalletWithdrawAddressValidNotify(data)
     end)
 end
@@ -47,7 +47,7 @@ function ControllerWallet:RequestWalletRecharge()
     data.MoneyType = MoneyType.BitCNY
     data.Amount = 100
     data.Channel = 'Azex'
-    self.ControllerMgr.Rpc:RPC1(self.MC.WalletRechargeRequest, data:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(self.MethodType.WalletRechargeRequest, data:getData4Pack())
 end
 
 ---------------------------------------
@@ -57,7 +57,7 @@ function ControllerWallet:RequestWalletWithdraw()
     data.MoneyType = MoneyType.BitCNY
     data.Amount = 100
     data.Channel = 'Azex'
-    self.ControllerMgr.Rpc:RPC1(self.MC.WalletWithdrawRequest, data:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(self.MethodType.WalletWithdrawRequest, data:getData4Pack())
 end
 
 ---------------------------------------
@@ -67,7 +67,7 @@ function ControllerWallet:RequestWalletGetAddress()
     data.MoneyType = MoneyType.BitCNY
     data.Amount = 100
     data.Channel = 'Azex'
-    self.ControllerMgr.Rpc:RPC1(self.MC.WalletGenAddressRequest, data:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(self.MethodType.WalletGenAddressRequest, data:getData4Pack())
 end
 
 ---------------------------------------
@@ -77,7 +77,7 @@ function ControllerWallet:RequestWalletGetTransList()
     data.MoneyType = MoneyType.BitCNY
     data.Amount = 100
     data.Channel = 'Azex'
-    self.ControllerMgr.Rpc:RPC1(self.MC.WalletGetTransListRequest, data:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(self.MethodType.WalletGetTransListRequest, data:getData4Pack())
 end
 
 ---------------------------------------
@@ -87,7 +87,7 @@ function ControllerWallet:WalletWithdrawAddressValidRequest()
     data.MoneyType = MoneyType.BitCNY
     data.Amount = 100
     data.Channel = 'Azex'
-    self.ControllerMgr.Rpc:RPC1(self.MC.WalletWithdrawAddressValidRequest, data:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(self.MethodType.WalletWithdrawAddressValidRequest, data:getData4Pack())
 end
 
 ---------------------------------------

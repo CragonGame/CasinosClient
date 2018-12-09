@@ -10,29 +10,29 @@ end
 ---------------------------------------
 function ControllerRanking:OnCreate()
     self.Rpc = self.ControllerMgr.Rpc
-    self.MC = CommonMethodType
+    self.MethodType = MethodType
     -- 获取金币排行榜
-    self.Rpc:RegRpcMethod1(self.MC.RankingChipNotify, function(list_gold)
-        self:s2cRankingChipNotify(list_gold)
+    self.Rpc:RegRpcMethod1(self.MethodType.RankingChipNotify, function(list_gold)
+        self:S2cRankingChipNotify(list_gold)
     end)
     -- 获取钻石排行榜
-    self.Rpc:RegRpcMethod1(self.MC.RankingGoldNotify, function(list_diamond)
-        self:s2cRankingGoldNotify(list_diamond)
+    self.Rpc:RegRpcMethod1(self.MethodType.RankingGoldNotify, function(list_diamond)
+        self:S2cRankingGoldNotify(list_diamond)
     end)
     -- 获取等级排行榜
-    self.Rpc:RegRpcMethod1(self.MC.RankingLevelNotify, function(list_level)
-        self:s2cRankingLevelNotify(list_level)
+    self.Rpc:RegRpcMethod1(self.MethodType.RankingLevelNotify, function(list_level)
+        self:S2cRankingLevelNotify(list_level)
     end)
     -- 获取礼物排行榜
-    self.Rpc:RegRpcMethod1(self.MC.RankingGiftNotify, function(list_gift)
-        self:s2cRankingGiftNotify(list_gift)
+    self.Rpc:RegRpcMethod1(self.MethodType.RankingGiftNotify, function(list_gift)
+        self:S2cRankingGiftNotify(list_gift)
     end)
     -- 获取豪胜排行榜
-    self.Rpc:RegRpcMethod1(self.MC.RankingWinGoldNotify, function(list_gift)
-        self:s2cRankingWinGoldNotify(list_gift)
+    self.Rpc:RegRpcMethod1(self.MethodType.RankingWinGoldNotify, function(list_gift)
+        self:S2cRankingWinGoldNotify(list_gift)
     end)
-    self.Rpc:RegRpcMethod1(self.MC.RankingWechatRedEnvelopesNotify, function(list_gift)
-        self:s2cRankingRedEnvelopesNotify(list_gift)
+    self.Rpc:RegRpcMethod1(self.MethodType.RankingWechatRedEnvelopesNotify, function(list_gift)
+        self:S2cRankingRedEnvelopesNotify(list_gift)
     end)
     self.ViewMgr:BindEvListener("EvUiGetRankingGold", self)
     self.ViewMgr:BindEvListener("EvUiGetRankingDiamond", self)
@@ -151,7 +151,7 @@ function ControllerRanking:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerRanking:s2cRankingChipNotify(list_gold)
+function ControllerRanking:S2cRankingChipNotify(list_gold)
     if (list_gold ~= nil and #list_gold > 0)
     then
         for i = 1, #list_gold do
@@ -167,7 +167,7 @@ function ControllerRanking:s2cRankingChipNotify(list_gold)
 end
 
 ---------------------------------------
-function ControllerRanking:s2cRankingGoldNotify(list_diamond)
+function ControllerRanking:S2cRankingGoldNotify(list_diamond)
     ViewHelper:UiEndWaiting()
     if (list_diamond ~= nil and #list_diamond > 0)
     then
@@ -182,7 +182,7 @@ function ControllerRanking:s2cRankingGoldNotify(list_diamond)
 end
 
 ---------------------------------------
-function ControllerRanking:s2cRankingLevelNotify(list_level)
+function ControllerRanking:S2cRankingLevelNotify(list_level)
     ViewHelper:UiEndWaiting()
     if (list_level ~= nil and #list_level > 0)
     then
@@ -197,7 +197,7 @@ function ControllerRanking:s2cRankingLevelNotify(list_level)
 end
 
 ---------------------------------------
-function ControllerRanking:s2cRankingGiftNotify(list_gift)
+function ControllerRanking:S2cRankingGiftNotify(list_gift)
     ViewHelper:UiEndWaiting()
     if (list_gift ~= nil and #list_gift > 0)
     then
@@ -217,7 +217,7 @@ function ControllerRanking:s2cRankingGiftNotify(list_gift)
 end
 
 ---------------------------------------
-function ControllerRanking:s2cRankingWinGoldNotify(list_rank)
+function ControllerRanking:S2cRankingWinGoldNotify(list_rank)
     ViewHelper:UiEndWaiting()
     local list_ranWingold = {}
     if (list_rank ~= nil and #list_rank > 0)
@@ -239,7 +239,7 @@ function ControllerRanking:s2cRankingWinGoldNotify(list_rank)
 end
 
 ---------------------------------------
-function ControllerRanking:s2cRankingRedEnvelopesNotify(list_rank)
+function ControllerRanking:S2cRankingRedEnvelopesNotify(list_rank)
     ViewHelper:UiEndWaiting()
     local list_ranredenvelope = {}
     if (list_rank ~= nil and #list_rank > 0)
@@ -262,7 +262,7 @@ end
 
 ---------------------------------------
 function ControllerRanking:requestGetRanking(ranking_type)
-    self.Rpc:RPC1(self.MC.RankingRequest, ranking_type)
+    self.Rpc:RPC1(self.MethodType.RankingRequest, ranking_type)
 end
 
 ---------------------------------------

@@ -10,7 +10,7 @@ function ViewBase:ctor()
     self.ControllerMgr = ControllerMgr
     self.ViewMgr = ViewMgr
     self.EventSys = EventSys
-    self.MC = CommonMethodType
+    self.MethodType = MethodType
     self.Json = self.Context.Json
     self.LanMgr = self.Context.LanMgr
     self.TbDataMgr = self.Context.TbDataMgr

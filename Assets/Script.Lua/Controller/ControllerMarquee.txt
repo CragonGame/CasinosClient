@@ -14,14 +14,14 @@ end
 function ControllerMarquee:OnCreate()
     self.ViewMgr:BindEvListener("EvRequestSendMarquee", self)
     self.Rpc = self.ControllerMgr.Rpc
-    self.MC = CommonMethodType
+    self.MethodType = MethodType
     -- 跑马灯，响应玩家发送跑马灯广播请求
-    self.Rpc:RegRpcMethod1(self.MC.MarqueeRequestResult, function(result)
-        self:s2cMarqueeRequestResult(result)
+    self.Rpc:RegRpcMethod1(self.MethodType.MarqueeRequestResult, function(result)
+        self:S2cMarqueeRequestResult(result)
     end)
     -- 跑马灯广播推送
-    self.Rpc:RegRpcMethod1(self.MC.IMMarqueeNotify, function(im_marquee)
-        self:s2cIMMarqueeNotify(im_marquee)
+    self.Rpc:RegRpcMethod1(self.MethodType.IMMarqueeNotify, function(im_marquee)
+        self:S2cIMMarqueeNotify(im_marquee)
     end)
     self.ListIMMarquee = {}
     self.MapQueMarquee = {}
@@ -48,14 +48,14 @@ function ControllerMarquee:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerMarquee:s2cMarqueeRequestResult(result)
+function ControllerMarquee:S2cMarqueeRequestResult(result)
     if (result == ProtocolResult.Failed) then
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SendNoticeFailed"))
     end
 end
 
 ---------------------------------------
-function ControllerMarquee:s2cIMMarqueeNotify(im_marquee)
+function ControllerMarquee:S2cIMMarqueeNotify(im_marquee)
     local data = BIMMarquee:new(nil)
     data:setData(im_marquee)
     local view_shootingtext = self.ViewMgr:GetView("ShootingText")
@@ -97,7 +97,7 @@ end
 ---------------------------------------
 function ControllerMarquee:requestSendMarquee(im_marque)
     print("ControllerMarquee:requestSendMarquee")
-    self.Rpc:RPC1(self.MC.MarqueeRequest, im_marque)
+    self.Rpc:RPC1(self.MethodType.MarqueeRequest, im_marque)
 end
 
 ---------------------------------------

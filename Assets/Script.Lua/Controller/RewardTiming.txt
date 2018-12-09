@@ -9,7 +9,7 @@ function RewardTiming:Setup(controller_mgr, view_mgr, controller_reward)
     self.ControllerMgr = controller_mgr
     self.ViewMgr = view_mgr
     self.ControllerReward = controller_reward
-    self.MC = CommonMethodType
+    self.MethodType = MethodType
     self.Type = TimingRewardType.None
     self.Get = false
     self.RewardGold = 0
@@ -40,7 +40,7 @@ end
 ---------------------------------------
 function RewardTiming:OnClickBtnTimingReward()
     if (self.CanGetReward == true) then
-        self.ControllerMgr.Rpc:RPC0(self.MC.PlayerGetTimingRewardRequest)
+        self.ControllerMgr.Rpc:RPC0(self.MethodType.PlayerGetTimingRewardRequest)
     else
         ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("CanNotGetYet"))
     end

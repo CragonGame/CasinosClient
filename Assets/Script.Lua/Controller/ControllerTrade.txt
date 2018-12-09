@@ -11,47 +11,45 @@ end
 
 ---------------------------------------
 function ControllerTrade:OnCreate()
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self:BindEvListener("EvUiRequestBuyGold", self)
+    self:BindEvListener("EvUiRequestBuyDiamond", self)
+    self:BindEvListener("EvUiRequestFirstRecharge", self)
+    self:BindEvListener("EvUiClickShop", self)
+    self:BindEvListener("EvEntityBuyVIP", self)
+    self:BindEvListener("EvUiBuyItem", self)
+    self:BindEvListener("EvUiSellItem", self)
+    self:BindEvListener("EvBuyRMBItemSuccess", self)
+    self:BindEvListener("EvUiRequestBuyItem", self)
+    self:BindEvListener("EvUiRequestGetMoney", self)
+    self:BindEvListener("EvPayWithIAPSuccess", self)
+    self:BindEvListener("EvUiRequestWebpay", self)
+    self:BindEvListener("EvUiRequestQuicktellerTransfers", self)
+
+    self.Rpc:RegRpcMethod1(self.MethodType.TradeBuyItemResponse, function(response)
+        self:OnTradeBuyItemResponse(response)
+    end)
+    self.Rpc:RegRpcMethod1(self.MethodType.TradeSellItemResponse, function(response)
+        self:OnTradeSellItemResponse(response)
+    end)
+    self.Rpc:RegRpcMethod3(self.MethodType.TradeOrderNotify, function(result, is_firstrecharge, item_tbid)
+        self:OnTradeOrderNotify(result, is_firstrecharge, item_tbid)
+    end)
+    self.Rpc:RegRpcMethod1(self.MethodType.WalletRechargeNotify, function(response)
+        self:OnWalletRechargeNotify(response)
+    end)
+    self.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawNotify, function(response)
+        self:OnWalletWithdrawNotify(response)
+    end)
+
     self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
     self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
-    self.ViewMgr:BindEvListener("EvUiRequestBuyGold", self)
-    self.ViewMgr:BindEvListener("EvUiRequestBuyDiamond", self)
-    self.ViewMgr:BindEvListener("EvUiRequestFirstRecharge", self)
-    self.ViewMgr:BindEvListener("EvUiClickShop", self)
-    self.ViewMgr:BindEvListener("EvEntityBuyVIP", self)
-    self.ViewMgr:BindEvListener("EvUiBuyItem", self)
-    self.ViewMgr:BindEvListener("EvUiSellItem", self)
-    self.ViewMgr:BindEvListener("EvBuyRMBItemSuccess", self)
-    self.ViewMgr:BindEvListener("EvUiRequestBuyItem", self)
-    self.ViewMgr:BindEvListener("EvUiRequestGetMoney", self)
-    self.ViewMgr:BindEvListener("EvPayWithIAPSuccess", self)
-    self.ViewMgr:BindEvListener("EvUiRequestWebpay", self)
-    self.ViewMgr:BindEvListener("EvUiRequestQuicktellerTransfers", self)
-
-    local rpc = self.ControllerMgr.Rpc
-    local m_c = CommonMethodType
-    rpc:RegRpcMethod1(m_c.TradeBuyItemResponse, function(response)
-        self:OnTradeBuyItemResponse(response)
-    end)
-    rpc:RegRpcMethod1(m_c.TradeSellItemResponse, function(response)
-        self:OnTradeSellItemResponse(response)
-    end)
-    rpc:RegRpcMethod3(m_c.TradeOrderNotify, function(result, is_firstrecharge, item_tbid)
-        self:OnTradeOrderNotify(result, is_firstrecharge, item_tbid)
-    end)
-    rpc:RegRpcMethod1(m_c.WalletRechargeNotify, function(response)
-        self:OnWalletRechargeNotify(response)
-    end)
-    rpc:RegRpcMethod1(m_c.WalletWithdrawNotify, function(response)
-        self:OnWalletWithdrawNotify(response)
-    end)
 end
 
 ---------------------------------------
 function ControllerTrade:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -161,13 +159,6 @@ function ControllerTrade:OnHandleEv(ev)
         self.ControllerUCenter:quicktellerTransfers(r, function(status, response, error)
             self:OnQuicktellerTransfers(status, response, error)
         end)
-        --elseif (ev.EventName == "EvUiRequestGetMoney")
-        --then
-        --    local r = WalletWithdrawRequest:new(nil)
-        --    r.Amount = ev.GetMoneyNum
-        --    r.Channel = ""
-        --    r.MoneyType = self.Context.Cfg.CurrentMoneyType
-        --    self.ControllerMgr.Rpc:RPC1(CommonMethodType.WalletWithdrawRequest, r:getData4Pack())
     end
 end
 
@@ -253,7 +244,7 @@ function ControllerTrade:OnBuyRMBItemSuccess(purchase_common)
     purchase.PurchaseState = purchase_common.PurchaseState
     purchase.Token = purchase_common.Token
     purchase.Receipt = purchase_common.Receipt
-    --self.ControllerMgr.Rpc:RPC1(CommonMethodType.TradeBuyRMBItemSuccessRequest, purchase:getData4Pack())
+    --self.ControllerMgr.Rpc:RPC1(MethodType.TradeBuyRMBItemSuccessRequest, purchase:getData4Pack())
 end
 
 ---------------------------------------
@@ -262,13 +253,13 @@ function ControllerTrade:RequestBuyItem(buyitem_tbid, target_type, target_etguid
     request.buyitem_tbid = buyitem_tbid
     request.target_type = target_type
     request.target_etguid = target_etguid
-    print("CommonMethodType.TradeBuyItemRequest")
-    self.ControllerMgr.Rpc:RPC1(CommonMethodType.TradeBuyItemRequest, request:getData4Pack())
+    print("MethodType.TradeBuyItemRequest")
+    self.ControllerMgr.Rpc:RPC1(MethodType.TradeBuyItemRequest, request:getData4Pack())
 end
 
 ---------------------------------------
 function ControllerTrade:RequestSellItem(item_objid)
-    self.ControllerMgr.Rpc:RPC1(CommonMethodType.TradeSellItemRequest, item_objid)
+    self.ControllerMgr.Rpc:RPC1(MethodType.TradeSellItemRequest, item_objid)
 end
 
 ---------------------------------------
@@ -290,7 +281,7 @@ function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
             r.Amount = tb_item.Price
             r.Channel = ""
             r.MoneyType = self.Context.Cfg.CurrentMoneyType
-            self.ControllerMgr.Rpc:RPC1(CommonMethodType.WalletRechargeRequest, r:getData4Pack())
+            self.ControllerMgr.Rpc:RPC1(MethodType.WalletRechargeRequest, r:getData4Pack())
         end
     end
     --elseif (self.CasinosContext.UnityIOS == true)
