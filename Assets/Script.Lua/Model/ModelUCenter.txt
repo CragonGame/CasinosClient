@@ -1,6 +1,135 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
+UCenterMethodType = {
+    LoginRequest = 100, -- 登录
+    LoginResponse = 101, -- 登录
+    GetPhoneVerificationCodeRequest = 110, -- 获取手机验证码
+    GetPhoneVerificationCodeResponse = 111, -- 获取手机验证码
+    RegisterRequest = 120, -- 注册，游客转正
+    RegisterResponse = 121, -- 注册，游客转正
+    WeChatAutoLoginRequest = 130, -- 微信自动登录
+    WeChatAutoLoginResponse = 131, -- 微信自动登录
+    WeChatLoginRequest = 140, -- 微信登录
+    WeChatLoginResponse = 141, -- 微信登录
+    GuestAccessRequest = 150, -- 游客自动注册和登录
+    GuestAccessResponse = 151, -- 游客自动注册和登录
+    ResetPasswordByPhoneRequest = 160, -- 通过手机重置密码
+    ResetPasswordByPhoneResponse = 161, -- 通过手机重置密码
+    ChangeGenderRequest = 170, -- 修改性别
+    ChangeGenderResponse = 171, -- 修改性别
+    UploadProfileImageRequest = 180, -- 上传头像
+    UploadProfileImageResponse = 181, -- 上传头像
+    IdCardCheckCardAndNameRequest = 190, -- 身份证实名认证
+    IdCardCheckCardAndNameResponse = 191, -- 身份证实名认证
+    GetIPAddressRequest = 200, -- 获取IP所在地
+    GetIPAddressResponse = 201, -- 获取IP所在地
+    BeeCloudCreateChargeRequest = 210, -- BeeCloud请求支付
+    BeeCloudCreateChargeResponse = 211, -- BeeCloud请求支付
+    BeeCloudWebhookRequest = 220, -- BeeCloud Webhook
+    BeeCloudWebhookResponse = 221, -- BeeCloud Webhook
+}
+
+---------------------------------------
+UCenterErrorCode = {
+    Error = 0,
+    NoError = 1,
+
+    -- Error sends http request on client side
+    ClientError = 2,
+
+    -- BadRequest - 400
+    InvalidAccountName = 400001,
+    InvalidAccountPassword = 400002,
+    InvalidAccountEmail = 400003,
+    InvalidAccountPhone = 400004,
+    DeviceInfoNull = 400010,
+    DeviceIdNull = 400011,
+
+    -- Unauthorized - 401
+    AccountPasswordUnauthorized = 401001,
+    AccountTokenUnauthorized = 401002,
+    AppTokenUnauthorized = 401003,
+    AccountDisabled = 401004,
+    AccountOAuthTokenUnauthorized = 401005,
+    PhoneVerificationCodeError = 401006, -- 手机验证码错误
+    PayUnauthorized = 401007, -- 支付签名验证错误
+
+    -- NotFound - 404
+    AccountNotExist = 404001,
+    AppNotExists = 404002,
+    OrderNotExists = 404003,
+
+    -- Conflict - 409
+    AccountNameAlreadyExist = 409001,
+    AppNameAlreadyExist = 409002,
+    WechatAccountCanntAttachWechat = 409003, -- 微信登陆的账号无需再次绑定微信
+    AttachWechatExists = 409004, -- 该账号已经绑定微信，无法重复绑定
+    AttachWechatAttachCountMax = 409005, -- 该微信绑定账号次数已经达到上限，无法绑定新账号
+
+    -- InternalServerError - 500
+    InternalDatabaseError = 500001,
+    InternalHttpServerError = 500002,
+
+    -- ServiceUnavailable - 503
+    ServiceUnavailable = 503001,
+}
+
+---------------------------------------
+UCenterRequest = {}
+
+function UCenterRequest:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.id = nil
+    o.data = nil
+    return o
+end
+
+function UCenterRequest:setData(data)
+    self.id = data[1]
+    self.data = data[2]
+end
+
+function UCenterRequest:getData4Pack()
+    local p_d = {}
+    table.insert(p_d, self.id)
+    table.insert(p_d, self.data)
+    return p_d
+end
+
+---------------------------------------
+UCenterResponse = {}
+
+function UCenterResponse:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.id = nil
+    o.result = nil
+    o.error = nil
+    o.data = nil
+    return o
+end
+
+function UCenterResponse:setData(data)
+    self.id = data[1]
+    self.result = data[2]
+    self.error = data[3]
+    self.data = data[4]
+end
+
+function UCenterRequest:getData4Pack()
+    local p_d = {}
+    table.insert(p_d, self.id)
+    table.insert(p_d, self.result)
+    table.insert(p_d, self.error)
+    table.insert(p_d, self.data)
+    return p_d
+end
+
+---------------------------------------
 DeviceInfo = {}
 
 function DeviceInfo:new(o)
@@ -13,6 +142,24 @@ function DeviceInfo:new(o)
     o.Model = nil
     o.OperationSystem = nil
     return o
+end
+
+function DeviceInfo:setData(data)
+    self.Id = data[1]
+    self.Name = data[2]
+    self.Type = data[3]
+    self.Model = data[4]
+    self.OperationSystem = data[5]
+end
+
+function DeviceInfo:getData4Pack()
+    local p_d = {}
+    table.insert(p_d, self.Id)
+    table.insert(p_d, self.Name)
+    table.insert(p_d, self.Type)
+    table.insert(p_d, self.Model)
+    table.insert(p_d, self.OperationSystem)
+    return p_d
 end
 
 ---------------------------------------
@@ -61,6 +208,26 @@ function AccountLoginInfo:new(o)
     o.PhoneVerificationCode = nil
     o.Device = nil
     return o
+end
+
+function AccountLoginInfo:setData(data)
+    self.AccountName = data[1]
+    self.Phone = data[2]
+    self.Email = data[3]
+    self.Password = data[4]
+    self.PhoneVerificationCode = data[5]
+    self.Device = data[6]
+end
+
+function AccountLoginInfo:getData4Pack()
+    local p_d = {}
+    table.insert(p_d, self.AccountName)
+    table.insert(p_d, self.Phone)
+    table.insert(p_d, self.Email)
+    table.insert(p_d, self.Password)
+    table.insert(p_d, self.PhoneVerificationCode)
+    table.insert(p_d, self.Device)
+    return p_d
 end
 
 ---------------------------------------
@@ -169,80 +336,6 @@ function PayRequest:new(o)
     return o
 end
 
----------------------------------------
-UCenterErrorCode = {
-    NoError = 0,
-
-    -- Error sends http request on client side
-    ClientError = 1,
-
-    -- BadRequest - 400
-    InvalidAccountName = 400001,
-    InvalidAccountPassword = 400002,
-    InvalidAccountEmail = 400003,
-    InvalidAccountPhone = 400004,
-    DeviceInfoNull = 400010,
-    DeviceIdNull = 400011,
-
-    -- Unauthorized - 401
-    AccountPasswordUnauthorized = 401001,
-    AccountTokenUnauthorized = 401002,
-    AppTokenUnauthorized = 401003,
-    AccountDisabled = 401004,
-    AccountOAuthTokenUnauthorized = 401005,
-    PhoneVerificationCodeError = 401006, -- 手机验证码错误
-    PayUnauthorized = 401007, -- 支付签名验证错误
-
-    -- NotFound - 404
-    AccountNotExist = 404001,
-    AppNotExists = 404002,
-    OrderNotExists = 404003,
-
-    -- Conflict - 409
-    AccountNameAlreadyExist = 409001,
-    AppNameAlreadyExist = 409002,
-    WechatAccountCanntAttachWechat = 409003, -- 微信登陆的账号无需再次绑定微信
-    AttachWechatExists = 409004, -- 该账号已经绑定微信，无法重复绑定
-    AttachWechatAttachCountMax = 409005, -- 该微信绑定账号次数已经达到上限，无法绑定新账号
-
-    -- InternalServerError - 500
-    InternalDatabaseError = 500001,
-    InternalHttpServerError = 500002,
-
-    -- ServiceUnavailable - 503
-    ServiceUnavailable = 503001,
-}
-
-UCenterResponseStatus = {
-    Success = 0,
-    Error = 1
-}
-
----------------------------------------
-UCenterError = {}
-
-function UCenterError:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.ErrorCode = 0
-    o.Message = nil
-    return o
-end
-
----------------------------------------
-UCenterResponse = {}
-
-function UCenterResponse:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Result = nil
-    o.Status = 0
-    o.Error = nil
-    return o
-end
-
 AccountType = {
     NormalAccount = 0,
     Guest = 1,
@@ -280,6 +373,20 @@ function AccountRequestResponse:new(o)
     return o
 end
 
+function AccountRequestResponse:setData(data)
+    self.AccountId = data[1]
+    self.AccountName = data[2]
+    self.AccountType = data[3]
+    self.AccountStatus = data[4]
+    self.Name = data[5]
+    self.ProfileImage = data[6]
+    self.ProfileThumbnail = data[7]
+    self.Gender = data[8]
+    self.Identity = data[9]
+    self.Phone = data[10]
+    self.Email = data[11]
+end
+
 ---------------------------------------
 AccountLoginResponse = {}
 
@@ -287,8 +394,6 @@ function AccountLoginResponse:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    o.Token = nil
-    o.LastLoginDateTime = nil
     o.AccountId = nil
     o.AccountName = nil
     o.AccountType = 0
@@ -300,7 +405,25 @@ function AccountLoginResponse:new(o)
     o.Identity = false
     o.Phone = nil
     o.Email = nil
+    o.Token = nil
+    o.LastLoginDateTime = nil
     return o
+end
+
+function AccountLoginResponse:setData(data)
+    self.AccountId = data[1]
+    self.AccountName = data[2]
+    self.AccountType = data[3]
+    self.AccountStatus = data[4]
+    self.Name = data[5]
+    self.ProfileImage = data[6]
+    self.ProfileThumbnail = data[7]
+    self.Gender = data[8]
+    self.Identity = data[9]
+    self.Phone = data[10]
+    self.Email = data[11]
+    self.Token = data[12]
+    self.LastLoginDateTime = data[13]
 end
 
 ---------------------------------------

@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.LuaMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 23, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 25, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
@@ -42,6 +42,8 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetSystemLanguageAsString", _m_GetSystemLanguageAsString);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CreateQRCode", _m_CreateQRCode);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SaveTextureToFile", _m_SaveTextureToFile);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ToBase64String", _m_ToBase64String);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FromBase64String", _m_FromBase64String);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnAndroidQuitConfirm", _m__CSharpCallOnAndroidQuitConfirm);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnApplicationPause", _m__CSharpCallOnApplicationPause);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "_CSharpCallOnApplicationFocus", _m__CSharpCallOnApplicationFocus);
@@ -630,6 +632,64 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_ToBase64String(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.LuaMgr gen_to_be_invoked = (Casinos.LuaMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    byte[] _data = LuaAPI.lua_tobytes(L, 2);
+                    
+                        string gen_ret = gen_to_be_invoked.ToBase64String( _data );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_FromBase64String(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.LuaMgr gen_to_be_invoked = (Casinos.LuaMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _data = LuaAPI.lua_tostring(L, 2);
+                    
+                        byte[] gen_ret = gen_to_be_invoked.FromBase64String( _data );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {

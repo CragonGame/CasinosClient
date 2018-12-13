@@ -605,6 +605,18 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public string ToBase64String(byte[] data)
+        {
+            return Convert.ToBase64String(data);
+        }
+
+        //---------------------------------------------------------------------
+        public byte[] FromBase64String(string data)
+        {
+            return Convert.FromBase64String(data);
+        }
+
+        //---------------------------------------------------------------------
         public void _CSharpCallOnAndroidQuitConfirm()
         {
             var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");

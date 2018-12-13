@@ -90,7 +90,6 @@ function ClientLoginAppRequest:new(o)
     o.channel_id = nil
     o.platform = nil
     o.lan = nil
-
     return o
 end
 
