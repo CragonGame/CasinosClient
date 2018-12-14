@@ -389,12 +389,12 @@ end
 ---------------------------------------
 -- 请求实名认证
 function ControllerLogin:RequestCheckCardAndName(id_card, name)
-    local r = CheckCardAndNameRequest:new(nil)
-    r.AccountId = self.AccId
-    r.CardNo = id_card
-    r.Token = self.Token
-    r.RealName = name
-    self.ControllerUCenter:RequestCheckCardAndName(r,
+    local request = CheckCardAndNameRequest:new(nil)
+    request.AccountId = self.AccId
+    request.CardNo = id_card
+    request.Token = self.Token
+    request.RealName = name
+    self.ControllerUCenter:RequestCheckCardAndName(request,
             function(http_statuscode, result, error, response)
                 self:OnUCenterCheckIdCard(http_statuscode, result, error, response)
             end)

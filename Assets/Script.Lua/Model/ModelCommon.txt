@@ -481,6 +481,5 @@ function CardData:getData4Pack()
     local p_d = {}
     table.insert(p_d, self.suit)
     table.insert(p_d, self.type)
-
     return p_d
 end

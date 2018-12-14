@@ -103,17 +103,6 @@ end
 ---------------------------------------
 -- 请求上传头像
 function ControllerUCenter:RequestUploadProfileImage(app_id, account_id, bytes, handler)
-    --local uri = account_id .. '/' .. app_id .. '/upload'
-    --local http_url = self:_genUrl(uri)
-    --local www_form = CS.UnityEngine.WWWForm()
-    --www_form:AddField("frameCount", tostring(60))
-    --www_form:AddBinaryData("file", bytes, "profile.jpg", "image/jpg")
-    ----print(http_url)
-    --self.MbHelper:PostUrlWithFormData(http_url, www_form,
-    --        function(http_statuscode, response_data)
-    --            self:_onResponse(http_statuscode, response_data, handler)
-    --        end)
-
     local request = AccountUploadProfileImageRequest:new(nil)
     request.AccountId = account_id
     request.AppId = app_id
@@ -123,29 +112,13 @@ end
 
 ---------------------------------------
 -- 请求支付
-function ControllerUCenter:RequestPayCreateCharge(payment_info, handler)
-    --local http_url = self:_genPayUrl("createcharge")
-    --local param = self.ControllerMgr.Json.encode(payment_info)
-    ----print(http_url)
-    --self.MbHelper:PostUrl(http_url, param,
-    --        function(http_statuscode, response_data)
-    --            self:_onResponse(http_statuscode, response_data, handler)
-    --        end)
-
+function ControllerUCenter:RequestPayCreateCharge(request, handler)
     self:_httpRequest(UCenterMethodType.BeeCloudCreateChargeRequest, request, handler)
 end
 
 ---------------------------------------
 -- 请求身份证实名认证（国内）
 function ControllerUCenter:RequestCheckCardAndName(request, handler)
-    --local http_url = self:_genIdCardUrl("checkcardandname")
-    --local param = self.ControllerMgr.Json.encode(request)
-    ----print(http_url)
-    --self.MbHelper:PostUrl(http_url, param,
-    --        function(http_statuscode, response_data)
-    --            self:_onResponse(http_statuscode, response_data, handler)
-    --        end)
-
     self:_httpRequest(UCenterMethodType.IdCardCheckCardAndNameRequest, request, handler)
 end
 
@@ -260,49 +233,6 @@ function ControllerUCenter:_httpResponse(http_statuscode, data, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:_genHeader(content_len)
-    local headers = {}
-    headers["Accept"] = "application/x-www-form-urlencoded"
-    headers["Content-Type"] = "application/json charset=utf-8"
-    headers["host"] = self:_getHostName()
-    headers["User-Agent"] = ""
-    --headers["Content-Length"] = tostring(content_len)
-    return headers
-end
-
----------------------------------------
-function ControllerUCenter:_getHostName()
-    local host = self.UCenterDomain
-    host = string.gsub(host, "https://", "")--host:Replace("https://", "")
-    host = string.gsub(host, "http://", "")--host:Replace("http://", "")
-    return host
-end
-
----------------------------------------
-function ControllerUCenter:_genUrl(api)
-    local http_url = string.format("%s/api/accounts/%s", self.UCenterDomain, api)
-    return http_url
-end
-
----------------------------------------
-function ControllerUCenter:_genPayUrl(api)
-    local http_url = string.format("%s/api/pay/%s", self.UCenterDomain, api)
-    return http_url
-end
-
----------------------------------------
-function ControllerUCenter:_genIdCardUrl(api)
-    local http_url = string.format("%s/api/idcard/%s", self.UCenterDomain, api)
-    return http_url
-end
-
----------------------------------------
-function ControllerUCenter:_genApiUrl(api)
-    local http_url = string.format("%s/api/%s", self.UCenterDomain, api)
-    return http_url
-end
-
----------------------------------------
 ControllerUCenterFactory = class(ControllerFactory)
 
 function ControllerUCenterFactory:GetName()
@@ -382,3 +312,58 @@ end
 --        handler(http_statuscode, UCenterResponseStatus.Error, nil, error)
 --    end
 --end
+
+-----------------------------------------
+--function ControllerUCenter:_genHeader(content_len)
+--    local headers = {}
+--    headers["Accept"] = "application/x-www-form-urlencoded"
+--    headers["Content-Type"] = "application/json charset=utf-8"
+--    headers["host"] = self:_getHostName()
+--    headers["User-Agent"] = ""
+--    --headers["Content-Length"] = tostring(content_len)
+--    return headers
+--end
+--
+-----------------------------------------
+--function ControllerUCenter:_getHostName()
+--    local host = self.UCenterDomain
+--    host = string.gsub(host, "https://", "")--host:Replace("https://", "")
+--    host = string.gsub(host, "http://", "")--host:Replace("http://", "")
+--    return host
+--end
+--
+-----------------------------------------
+--function ControllerUCenter:_genUrl(api)
+--    local http_url = string.format("%s/api/accounts/%s", self.UCenterDomain, api)
+--    return http_url
+--end
+--
+-----------------------------------------
+--function ControllerUCenter:_genPayUrl(api)
+--    local http_url = string.format("%s/api/pay/%s", self.UCenterDomain, api)
+--    return http_url
+--end
+--
+-----------------------------------------
+--function ControllerUCenter:_genIdCardUrl(api)
+--    local http_url = string.format("%s/api/idcard/%s", self.UCenterDomain, api)
+--    return http_url
+--end
+--
+-----------------------------------------
+--function ControllerUCenter:_genApiUrl(api)
+--    local http_url = string.format("%s/api/%s", self.UCenterDomain, api)
+--    return http_url
+--end
+
+-- 上传头像旧代码
+--local uri = account_id .. '/' .. app_id .. '/upload'
+--local http_url = self:_genUrl(uri)
+--local www_form = CS.UnityEngine.WWWForm()
+--www_form:AddField("frameCount", tostring(60))
+--www_form:AddBinaryData("file", bytes, "profile.jpg", "image/jpg")
+----print(http_url)
+--self.MbHelper:PostUrlWithFormData(http_url, www_form,
+--        function(http_statuscode, response_data)
+--            self:_onResponse(http_statuscode, response_data, handler)
+--        end)

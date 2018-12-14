@@ -482,41 +482,6 @@ function PayRequest:getData4Pack()
 end
 
 ---------------------------------------
---AccountRequestResponse = {}
---
---function AccountRequestResponse:new(o)
---    o = o or {}
---    setmetatable(o, self)
---    self.__index = self
---    o.AccountId = nil
---    o.AccountName = nil
---    o.AccountType = 0
---    o.AccountStatus = 0
---    o.Name = nil
---    o.ProfileImage = nil
---    o.ProfileThumbnail = nil
---    o.Gender = 0
---    o.Identity = false
---    o.Phone = nil
---    o.Email = nil
---    return o
---end
---
---function AccountRequestResponse:setData(data)
---    self.AccountId = data[1]
---    self.AccountName = data[2]
---    self.AccountType = data[3]
---    self.AccountStatus = data[4]
---    self.Name = data[5]
---    self.ProfileImage = data[6]
---    self.ProfileThumbnail = data[7]
---    self.Gender = data[8]
---    self.Identity = data[9]
---    self.Phone = data[10]
---    self.Email = data[11]
---end
-
----------------------------------------
 AccountLoginResponse = {}
 
 function AccountLoginResponse:new(o)
