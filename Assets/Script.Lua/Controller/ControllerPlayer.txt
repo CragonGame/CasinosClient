@@ -667,25 +667,30 @@ function ControllerPlayer:InitStoreItem()
 end
 
 ---------------------------------------
+-- 通过拍照或相册获取本地头像成功，请求上传头像
 function ControllerPlayer:OnGetPicSuccess(pic_data)
     local account_id = self.ControllerActor.PropAccountId:get()
     self.ControllerUCenter:RequestUploadProfileImage(self.Context.Cfg.UCenterAppId, account_id, pic_data,
             function(http_statuscode, result, error, response)
-                if (result == UCenterErrorCode.NoError) then
-                    local msg_t = {}
-                    table.insert(msg_t, self.ControllerMgr.LanMgr:getLanValue("UploadPicFailed"))
-                    table.insert(msg_t, "! ErrorCode: ")
-                    table.insert(msg_t, error.code)
-                    table.insert(msg_t, " Msg: ")
-                    table.insert(msg_t, error.message)
-                    local msg = table.concat(msg_t)
-                    ViewHelper:UiShowInfoFailed(msg)
-                else
+                if (http_statuscode ~= 200) then
+                    ViewHelper:UiEndWaiting()
+                    local error_msg = self.ControllerUCenter:ParseUCenterHttpStatusCode(http_statuscode)
+                    ViewHelper:UiShowInfoFailed(error_msg)
+                    return
+                end
+                if result == UCenterErrorCode.NoError then
                     local ev = self:GetEv("EvGetPicUpLoadSuccess")
                     if (ev == nil) then
                         ev = EvGetPicUpLoadSuccess:new(nil)
                     end
                     self:SendEv(ev)
+                else
+                    local msg_t = {}
+                    table.insert(msg_t, self.ControllerMgr.LanMgr:getLanValue("UploadPicFailed"))
+                    table.insert(msg_t, "! ErrorCode: ")
+                    table.insert(msg_t, error.code)
+                    local msg = table.concat(msg_t)
+                    ViewHelper:UiShowInfoFailed(msg)
                 end
                 ViewHelper:UiEndWaiting()
             end)
