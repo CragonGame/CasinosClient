@@ -25,26 +25,12 @@ end
 ---------------------------------------
 -- 请求获取手机验证码
 function ControllerUCenter:RequestGetPhoneVerificationCode(request, handler)
-    --local http_url = self:_genUrl("getphoneverificationcode")
-    --    --local param = self.ControllerMgr.Json.encode(request)
-    --    ----print(http_url)
-    --    --self.MbHelper:PostUrl(http_url, param,
-    --    --        function(http_statuscode, response_data)
-    --    --            self:_onResponse(http_statuscode, response_data, handler)
-    --    --        end)
     self:_httpRequest(UCenterMethodType.GetPhoneVerificationCodeRequest, request, handler)
 end
 
 ---------------------------------------
 -- 请求注册
 function ControllerUCenter:RequestRegister(request, handler)
-    --local http_url = self:_genUrl("register")
-    --    --local param = self.ControllerMgr.Json.encode(request)
-    --    ----print(http_url)
-    --    --self.MbHelper:PostUrl(http_url, param,
-    --    --        function(http_statuscode, response_data)
-    --    --            self:_onResponse(http_statuscode, response_data, handler)
-    --    --        end)
     self:_httpRequest(UCenterMethodType.RegisterRequest, request, handler)
 end
 
@@ -57,39 +43,18 @@ end
 ---------------------------------------
 -- 请求通过手机验证码重置密码
 function ControllerUCenter:RequestResetPasswordWithPhone(request, handler)
-    --local http_url = self:_genUrl("resetpasswordbyphone")
-    --local param = self.ControllerMgr.Json.encode(request)
-    ----print(http_url)
-    --self.MbHelper:PostUrl(http_url, param,
-    --        function(http_statuscode, response_data)
-    --            self:_onResponse(http_statuscode, response_data, handler)
-    --        end)
     self:_httpRequest(UCenterMethodType.ResetPasswordByPhoneRequest, request, handler)
 end
 
 ---------------------------------------
 -- 请求微信自动登录
 function ControllerUCenter:RequestWechatAutoLogin(request, handler)
-    --local http_url = self:_genUrl("wechatautologin")
-    --local param = self.ControllerMgr.Json.encode(request)
-    ----print(http_url)
-    --self.MbHelper:PostUrl(http_url, param,
-    --        function(http_statuscode, response_data)
-    --            self:_onResponse(http_statuscode, response_data, handler)
-    --        end)
     self:_httpRequest(UCenterMethodType.WeChatAutoLoginRequest, request, handler)
 end
 
 ---------------------------------------
 -- 请求微信登录
 function ControllerUCenter:RequestWechatLogin(request, handler)
-    --local http_url = self:_genUrl("wechatlogin")
-    --local param = self.ControllerMgr.Json.encode(request)
-    ----print(http_url)
-    --self.MbHelper:PostUrl(http_url, param,
-    --        function(http_statuscode, response_data)
-    --            self:_onResponse(http_statuscode, response_data, handler)
-    --        end)
     self:_httpRequest(UCenterMethodType.WeChatLoginRequest, request, handler)
 end
 
@@ -120,13 +85,6 @@ end
 ---------------------------------------
 -- 请求游客访问
 function ControllerUCenter:RequestGuestAccess(request, handler)
-    --local http_url = self:_genUrl("guestaccess")
-    --local param = self.ControllerMgr.Json.encode(request)
-    ----print(http_url)
-    --self.MbHelper:PostUrl(http_url, param,
-    --        function(http_statuscode, response_data)
-    --            self:_onResponse(http_statuscode, response_data, handler)
-    --        end)
     self:_httpRequest(UCenterMethodType.GuestAccessRequest, request, handler)
 end
 
@@ -143,32 +101,24 @@ function ControllerUCenter:RequestGuestConvert(request, handler)
 end
 
 ---------------------------------------
--- 请求重置密码
-function ControllerUCenter:RequestResetPassword(request, handler)
-    --local http_url = self:_genUrl("resetpassword")
-    --local param = self.ControllerMgr.Json.encode(request)
+-- 请求上传头像
+function ControllerUCenter:RequestUploadProfileImage(app_id, account_id, bytes, handler)
+    --local uri = account_id .. '/' .. app_id .. '/upload'
+    --local http_url = self:_genUrl(uri)
+    --local www_form = CS.UnityEngine.WWWForm()
+    --www_form:AddField("frameCount", tostring(60))
+    --www_form:AddBinaryData("file", bytes, "profile.jpg", "image/jpg")
     ----print(http_url)
-    --self.MbHelper:PostUrl(http_url, param,
+    --self.MbHelper:PostUrlWithFormData(http_url, www_form,
     --        function(http_statuscode, response_data)
     --            self:_onResponse(http_statuscode, response_data, handler)
     --        end)
-end
 
----------------------------------------
--- 请求上传头像
-function ControllerUCenter:RequestUploadProfileImage(app_id, account_id, bytes, handler)
-    local uri = account_id .. '/' .. app_id .. '/upload'
-    local http_url = self:_genUrl(uri)
-    local www_form = CS.UnityEngine.WWWForm()
-    www_form:AddField("frameCount", tostring(60))
-    www_form:AddBinaryData("file", bytes, "profile.jpg", "image/jpg")
-    --print(http_url)
-    self.MbHelper:PostUrlWithFormData(http_url, www_form,
-            function(http_statuscode, response_data)
-                self:_onResponse(http_statuscode, response_data, handler)
-            end)
-
-    self:_httpRequest(UCenterMethodType.GuestAccessRequest, request, handler)
+    local request = AccountUploadProfileImageRequest:new(nil)
+    request.AccountId = account_id
+    request.AppId = app_id
+    request.file_data = bytes
+    self:_httpRequest(UCenterMethodType.UploadProfileImageRequest, request, handler)
 end
 
 ---------------------------------------
@@ -310,33 +260,6 @@ function ControllerUCenter:_httpResponse(http_statuscode, data, handler)
 end
 
 ---------------------------------------
-function ControllerUCenter:_onResponse(http_statuscode, response_data, handler)
-    --print(http_statuscode)
-    --print(response_data)
-    if (handler == nil) then
-        return
-    end
-
-    if (http_statuscode ~= 200) then
-        local error = UCenterError:new(nil)
-        error.ErrorCode = UCenterErrorCode.ServiceUnavailable
-        error.Message = ""
-        handler(http_statuscode, UCenterResponseStatus.Error, nil, error)
-        return
-    end
-
-    local response = self.ControllerMgr.Json.decode(response_data)
-    if (response ~= nil) then
-        handler(http_statuscode, response.status, response.result, response.error)
-    else
-        local error = UCenterError:new(nil)
-        error.ErrorCode = UCenterErrorCode.ServiceUnavailable
-        error.Message = ""
-        handler(http_statuscode, UCenterResponseStatus.Error, nil, error)
-    end
-end
-
----------------------------------------
 function ControllerUCenter:_genHeader(content_len)
     local headers = {}
     headers["Accept"] = "application/x-www-form-urlencoded"
@@ -433,4 +356,29 @@ end
 --    local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfersquery")
 --    local form = CS.UnityEngine.WWWForm()
 --    self.WWWQuicktellerTransfersQuery = CS.UnityEngine.WWW(http_url, form)
+--end
+
+---------------------------------------
+--function ControllerUCenter:_onResponse(http_statuscode, response_data, handler)
+--    if (handler == nil) then
+--        return
+--    end
+--
+--    if (http_statuscode ~= 200) then
+--        local error = UCenterError:new(nil)
+--        error.ErrorCode = UCenterErrorCode.ServiceUnavailable
+--        error.Message = ""
+--        handler(http_statuscode, UCenterResponseStatus.Error, nil, error)
+--        return
+--    end
+--
+--    local response = self.ControllerMgr.Json.decode(response_data)
+--    if (response ~= nil) then
+--        handler(http_statuscode, response.status, response.result, response.error)
+--    else
+--        local error = UCenterError:new(nil)
+--        error.ErrorCode = UCenterErrorCode.ServiceUnavailable
+--        error.Message = ""
+--        handler(http_statuscode, UCenterResponseStatus.Error, nil, error)
+--    end
 --end

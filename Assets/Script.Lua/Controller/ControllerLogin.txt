@@ -173,19 +173,20 @@ function ControllerLogin:OnHandleEv(ev)
             --end)
             self:_clickCheckDataCallBack(false)
         elseif (ev.EventName == "EvUiLoginClickBtnRegister") then
+            -- 请求注册
             local acc = ev.AccountName
             local pwd = ev.Password
             local super_pwd = ev.SuperPassword
             local remeber_pwd = ev.remeber_pwd
-            self.Password = pwd
-            self.RemeberPwd = remeber_pwd
             local email = ev.Email
             local identity = ev.Identity
             local phone = ev.Phone
-            self.Phone = phone
             local name = ev.Name
             local device_info = self:GetDeviceInfo()
-            local register_acc_data = AccountRegisterInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.AccountRegisterInfo()
+            self.Password = pwd
+            self.RemeberPwd = remeber_pwd
+            self.Phone = phone
+            local register_acc_data = AccountRegisterInfo:new(nil)
             register_acc_data.AccountName = acc
             register_acc_data.Password = pwd
             register_acc_data.SuperPassword = super_pwd
@@ -194,19 +195,15 @@ function ControllerLogin:OnHandleEv(ev)
             register_acc_data.Phone = ev.FormatPhone
             register_acc_data.Name = name
             register_acc_data.PhoneVerificationCode = ev.PhoneVerificationCode
-            register_acc_data.Device = device_info
+            register_acc_data.Device = device_info:getData4Pack()
             register_acc_data.AppId = self.Context.Cfg.UCenterAppId
             self:RequestRegister(register_acc_data)
         elseif (ev.EventName == "EvUiRequestGetPhoneCode") then
-            -- 获取手机验证码
+            -- 请求获取手机验证码
             local phone = ev.Phone
-            local request = GetPhoneVerificationCodeRequest:new(nil)
-            request.Phone = phone
-            self.ControllerUCenter:RequestGetPhoneVerificationCode(request,
-                    function(http_statuscode, status, response, error)
-                        self:OnUCenterPhoneVerificationCode(http_statuscode, status, response, error)
-                    end)
+            self:RequestGetPhoneVerificationCode(phone)
         elseif (ev.EventName == "EvUiRequestResetPwd") then
+            -- 请求重置密码
             local phone_code = ev.phone_code
             local new_pwd = ev.new_pwd
             self.Password = new_pwd
@@ -285,47 +282,67 @@ function ControllerLogin:_timerUpdate(tm)
 end
 
 ---------------------------------------
+-- 请求获取手机验证码
+function ControllerLogin:RequestGetPhoneVerificationCode(phone)
+    local request = GetPhoneVerificationCodeRequest:new(nil)
+    request.Phone = phone
+    self.ControllerUCenter:RequestGetPhoneVerificationCode(request,
+            function(http_statuscode, result, error, response)
+                self:OnUCenterPhoneVerificationCode(http_statuscode, result, error, response)
+            end)
+end
+
+---------------------------------------
+-- 请求登录
 function ControllerLogin:RequestLogin(acc, pwd, phone, email, phone_verification_code)
     self.CasinosContext.LoginType = 0
     self.Password = pwd
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
 
+    local device_info = self:GetDeviceInfo()
     local request = AccountLoginInfo:new(nil)
     request.AccountName = acc
     request.Phone = phone
     request.Email = email
     request.Password = pwd
     request.PhoneVerificationCode = phone_verification_code
-    request.Device = nil--self:GetDeviceInfo()
+    request.Device = device_info:getData4Pack()
     self.ControllerUCenter:RequestLogin(request,
-            function(http_statuscode, status, response, error)
-                self:OnUCenterLogin(http_statuscode, status, response, error)
+            function(http_statuscode, result, error, response)
+                self:OnUCenterLogin(http_statuscode, result, error, response)
             end)
 end
 
 ---------------------------------------
+-- 请求游客访问
 function ControllerLogin:RequestGuestAccess()
     self.CasinosContext.LoginType = 1
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
-    local guest_accessinfo = GuestAccessInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.GuestAccessInfo()
+
+    local device_info = self:GetDeviceInfo()
+
+    local guest_accessinfo = GuestAccessInfo:new(nil)
     guest_accessinfo.AppId = self.Context.Cfg.UCenterAppId
-    guest_accessinfo.Device = self:GetDeviceInfo()
+    guest_accessinfo.Device = device_info:getData4Pack()
     self.ControllerUCenter:RequestGuestAccess(guest_accessinfo,
-            function(http_statuscode, status, response, error)
-                self:OnUCenterGuestAccess(http_statuscode, status, response, error)
+            function(http_statuscode, result, error, response)
+                self:OnUCenterGuestAccess(http_statuscode, result, error, response)
             end)
 end
 
 ---------------------------------------
+-- 请求注册
 function ControllerLogin:RequestRegister(register_acc_data)
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Registering"))
+
     self.ControllerUCenter:RequestRegister(register_acc_data,
-            function(http_statuscode, status, response, error)
-                self:OnUCenterRegister(http_statuscode, status, response, error)
+            function(http_statuscode, result, error, response)
+                self:OnUCenterRegister(http_statuscode, result, error, response)
             end)
 end
 
 ---------------------------------------
+-- 请求微信登录
 function ControllerLogin:RequestWechatLogin(token, app_id)
     self.CasinosContext.LoginType = 2
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
@@ -334,12 +351,13 @@ function ControllerLogin:RequestWechatLogin(token, app_id)
     wechat_info.AppId = app_id
     wechat_info.Device = self:GetDeviceInfo()
     self.ControllerUCenter:RequestWechatLogin(wechat_info,
-            function(http_statuscode, status, response, error)
-                self:OnUCenterLogin(http_statuscode, status, response, error)
+            function(http_statuscode, result, error, response)
+                self:OnUCenterLogin(http_statuscode, result, error, response)
             end)
 end
 
 ---------------------------------------
+-- 请求微信自动登录
 function ControllerLogin:RequestWechatAutoLogin()
     self.CasinosContext.LoginType = 2
     local r = AccountWeChatAutoLoginRequest:new(nil)
@@ -347,27 +365,29 @@ function ControllerLogin:RequestWechatAutoLogin()
     r.OpenId = a_info_last_login.AccName
     r.Device = self:GetDeviceInfo()
     self.ControllerUCenter:RequestWechatAutoLogin(r,
-            function(http_statuscode, status, response, error)
-                self:OnUCenterLogin(http_statuscode, status, response, error)
+            function(http_statuscode, result, error, response)
+                self:OnUCenterLogin(http_statuscode, result, error, response)
             end)
 end
 
 ---------------------------------------
+-- 请求通过手机重置密码
 function ControllerLogin:RequestResetPasswordWithPhone(phone, phone_code, new_pwd)
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("ResetPwding"))
-    local resetPwd_info = AccountResetPasswordByPhoneRequest:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.AccountResetPasswordInfo()
+    local resetPwd_info = AccountResetPasswordByPhoneRequest:new(nil)
     resetPwd_info.AccountName = ""
     resetPwd_info.Phone = phone
     resetPwd_info.Email = ""
     resetPwd_info.NewPassword = new_pwd
     resetPwd_info.PhoneVerificationCode = phone_code
     self.ControllerUCenter:RequestResetPasswordWithPhone(resetPwd_info,
-            function(http_statuscode, status, response, error)
-                self:OnUCenterResetPasswordWithPhone(http_statuscode, status, response, error)
+            function(http_statuscode, result, error, response)
+                self:OnUCenterResetPasswordWithPhone(http_statuscode, result, error, response)
             end)
 end
 
 ---------------------------------------
+-- 请求实名认证
 function ControllerLogin:RequestCheckCardAndName(id_card, name)
     local r = CheckCardAndNameRequest:new(nil)
     r.AccountId = self.AccId
@@ -375,8 +395,8 @@ function ControllerLogin:RequestCheckCardAndName(id_card, name)
     r.Token = self.Token
     r.RealName = name
     self.ControllerUCenter:RequestCheckCardAndName(r,
-            function(http_statuscode, status, response, error)
-                self:OnUCenterCheckIdCard(http_statuscode, status, response, error)
+            function(http_statuscode, result, error, response)
+                self:OnUCenterCheckIdCard(http_statuscode, result, error, response)
             end)
 end
 
@@ -385,41 +405,41 @@ function ControllerLogin:OnUCenterPhoneVerificationCode(http_statuscode, result,
     if (http_statuscode ~= 200) then
     end
 
-    --if (status == UCenterResponseStatus.Success) then
-    ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("GetPhoneCodeSuccess"))
-    --else
-    --    if (error ~= nil) then
-    --        ViewHelper:UiEndWaiting()
-    --        local error_msg = self.ControllerUCenter:ParseUCenterErrorCode(error.code)
-    --        ViewHelper:UiShowInfoFailed(error_msg)
-    --    end
-    --end
+    if (result == UCenterErrorCode.NoError) then
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("GetPhoneCodeSuccess"))
+    else
+        if (error ~= nil) then
+            ViewHelper:UiEndWaiting()
+            local error_msg = self.ControllerUCenter:ParseUCenterErrorCode(result)
+            ViewHelper:UiShowInfoFailed(error_msg)
+        end
+    end
 end
 
 ---------------------------------------
 function ControllerLogin:OnUCenterRegister(http_statuscode, result, error, response)
-    --if (status == UCenterResponseStatus.Success) then
-    local info = self.LanMgr:getLanValue("RegisterSuccessful")
-    ViewHelper:UiShowInfoSuccess(info)
+    if (result == UCenterErrorCode.NoError) then
+        local info = self.LanMgr:getLanValue("RegisterSuccessful")
+        ViewHelper:UiShowInfoSuccess(info)
 
-    self.AccId = response.accountId
-    self.Acc = response.accountName
+        self.AccId = response.accountId
+        self.Acc = response.accountName
 
-    -- 切换显示为手机登录界面
-    local view_login = self.ViewMgr:GetView("Login")
-    if (view_login ~= nil) then
-        view_login:Switch2LoginPhone(self.Phone, self.Password)
+        -- 切换显示为手机登录界面
+        local view_login = self.ViewMgr:GetView("Login")
+        if (view_login ~= nil) then
+            view_login:Switch2LoginPhone(self.Phone, self.Password)
+        end
+
+        -- 自动请求登录
+        self:RequestLogin(response.accountName, self.Password, response.phone, "", "")
+    else
+        if (error ~= nil) then
+            ViewHelper:UiEndWaiting()
+            local error_msg = self.ControllerUCenter:ParseUCenterErrorCode(result)
+            ViewHelper:UiShowInfoFailed(error_msg)
+        end
     end
-
-    -- 自动请求登录
-    self:RequestLogin(response.accountName, self.Password, response.phone, "", "")
-    --else
-    --    if (error ~= nil) then
-    --        ViewHelper:UiEndWaiting()
-    --        local error_msg = self.ControllerUCenter:ParseUCenterErrorCode(error.code)
-    --        ViewHelper:UiShowInfoFailed(error_msg)
-    --    end
-    --end
 end
 
 ---------------------------------------
