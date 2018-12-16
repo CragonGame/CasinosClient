@@ -339,7 +339,7 @@ function ViewLogin:SetVersionAndServerStateInfo(bundle_version, data_version, se
     if (self.GTextVersion ~= nil) then
         local version_tips = self.ViewMgr.LanMgr:getLanValue("AppVersion") .. "：%s " .. self.ViewMgr.LanMgr:getLanValue("DataVersion") .. "：%s"
         local version_info = string.format(version_tips, bundle_version, data_version) .. self.Context.Cfg.Env
-        print(version_info)
+        --print(version_info)
         self.GTextVersion.text = version_info
     end
 

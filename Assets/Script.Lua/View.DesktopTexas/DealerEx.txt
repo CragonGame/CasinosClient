@@ -196,7 +196,7 @@ function DealerEx:dealCommonCard(card, com_card)
     local card_common = self.mMapCardCommon[com_card.name]
     card_common:setCardData(card)
 
-    print('3张公共牌发牌 开始')--被调用了3次
+    --print('3张公共牌发牌 开始')--被调用了3次
     local c = LuaHelper:TableContainsV(self.mQueueDealingEnabledCardCommon, card_common)
     if (c == false) then
         table.insert(self.mQueueDealingEnabledCardCommon, card_common)
@@ -211,7 +211,7 @@ function DealerEx:dealCommonCard(card, com_card)
         self.mCurrentDealingCardCommon = table.remove(self.mQueueDealingEnabledCardCommon, 1)
         self.mCurrentDealingCardCommon:deal(
                 function()
-                    print('3张公共牌发牌 完毕')-- 被调用了1次
+                    --print('3张公共牌发牌 完毕')-- 被调用了1次
                     self:_dealCommonCardCallBack()
                 end
         )
