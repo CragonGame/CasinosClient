@@ -102,7 +102,7 @@ function ViewWallet:OnCreate()
 
     self:_onClickBtnTabRecharge()
 
-    self.CtrlWallet:RequestWalletGetAddress()
+    self.CtrlWallet:RequestWalletGetOrGenerateAddress()
 end
 
 ---------------------------------------
@@ -126,26 +126,31 @@ end
 ---------------------------------------
 -- 充值通知
 function ViewWallet:OnWalletRechargeNotify(data)
+    print('ViewWallet:OnWalletRechargeNotify()')
 end
 
 ---------------------------------------
 -- 提现通知
 function ViewWallet:OnWalletWithdrawNotify(data)
+    print('ViewWallet:OnWalletWithdrawNotify()')
 end
 
 ---------------------------------------
 -- 获取虚拟币地址通知
-function ViewWallet:OnWalletGetAddressNotify(data)
+function ViewWallet:OnWalletGetOrGenerateAddressNotify(data)
+    print('ViewWallet:OnWalletGetOrGenerateAddressNotify()')
 end
 
 ---------------------------------------
 -- 获取交易记录通知
 function ViewWallet:OnWalletGetTransListNotify(data)
+    print('ViewWallet:OnWalletGetTransListNotify()')
 end
 
 ---------------------------------------
 -- 验证提现地址有效性通知
 function ViewWallet:OnWalletWithdrawAddressValidNotify(data)
+    print('ViewWallet:OnWalletWithdrawAddressValidNotify()')
 end
 
 ---------------------------------------

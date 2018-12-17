@@ -18,8 +18,8 @@ function ControllerWallet:OnCreate()
         self:S2cWalletWithdrawNotify(data)
     end)
     -- 获取虚拟币地址通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletGetAddressNotify, function(data)
-        self:S2cWalletGetAddressNotify(data)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletGetOrGenerateAddressNotify, function(data)
+        self:S2cWalletGetOrGenerateAddressNotify(data)
     end)
     -- 获取交易记录通知
     self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletGetTransListNotify, function(data)
@@ -62,12 +62,12 @@ end
 
 ---------------------------------------
 -- 获取虚拟币地址请求
-function ControllerWallet:RequestWalletGetAddress()
-    local data = WalletGetAddressRequest:new(nil)
+function ControllerWallet:RequestWalletGetOrGenerateAddress()
+    local data = WalletGetOrGenerateAddressRequest:new(nil)
     data.MoneyType = MoneyType.BitCNY
     data.Amount = 100
     data.Channel = 'Azex'
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.WalletGenAddressRequest, data:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(self.MethodType.WalletGetOrGenerateAddressRequest, data:getData4Pack())
 end
 
 ---------------------------------------
@@ -110,10 +110,10 @@ end
 
 ---------------------------------------
 -- 获取虚拟币地址通知
-function ControllerWallet:S2cWalletGetAddressNotify(data)
+function ControllerWallet:S2cWalletGetOrGenerateAddressNotify(data)
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnWalletGetAddressNotify(data)
+        view:OnWalletGetOrGenerateAddressNotify(data)
     end
 end
 

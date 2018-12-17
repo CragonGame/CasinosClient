@@ -118,9 +118,9 @@ end
 
 ---------------------------------------
 -- 获取虚拟币地址请求
-WalletGetAddressRequest = {}
+WalletGetOrGenerateAddressRequest = {}
 
-function WalletGetAddressRequest:new(o)
+function WalletGetOrGenerateAddressRequest:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -129,23 +129,23 @@ function WalletGetAddressRequest:new(o)
     return o
 end
 
-function WalletGetAddressRequest:getData4Pack()
+function WalletGetOrGenerateAddressRequest:getData4Pack()
     local t = {}
     table.insert(t, self.MoneyType)
     table.insert(t, self.Channel)
     return t
 end
 
-function WalletGetAddressRequest:setData(data)
+function WalletGetOrGenerateAddressRequest:setData(data)
     self.MoneyType = data[1]
     self.Channel = data[2]
 end
 
 ---------------------------------------
 -- 获取虚拟币地址通知
-WalletGetAddressNotify = {}
+WalletGetOrGenerateAddressNotify = {}
 
-function WalletGetAddressNotify:new(o)
+function WalletGetOrGenerateAddressNotify:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -156,10 +156,10 @@ function WalletGetAddressNotify:new(o)
     return o
 end
 
-function WalletGetAddressNotify:setData(data)
+function WalletGetOrGenerateAddressNotify:setData(data)
     self.Result = data[1]
     local r = data[2]
-    local w_r = WalletGetAddressRequest:new(nil)
+    local w_r = WalletGetOrGenerateAddressRequest:new(nil)
     w_r:setData(r)
     self.Request = w_r
     self.Address = data[3]
