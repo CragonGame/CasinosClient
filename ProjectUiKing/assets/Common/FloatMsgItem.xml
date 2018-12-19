@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1066,640">
+  <displayList>
+    <image id="n0_cn74" name="n0" src="lh6bjv" fileName="Image/New/BgInput.png" xy="523,297" size="31,56" visible="false">
+      <relation target="n1_cn74" sidePair="leftext-left,rightext-right"/>
+      <relation target="n1_cn74" sidePair="topext-top,bottomext-bottom"/>
+    </image>
+    <text id="n1_cn74" name="TextInfo" xy="534,308" size="10,32" fontSize="25" align="center" vAlign="middle" singleLine="true" text="">
+      <relation target="" sidePair="center-center,middle-middle"/>
+    </text>
+  </displayList>
+</component>

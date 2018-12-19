@@ -250,6 +250,7 @@
     <image id="dyr9mi" name="36.png" path="/Image/" exported="true"/>
     <image id="dyr9mj" name="SwitchOff1.png" path="/Image/" exported="true" scale="9grid" scale9grid="31,25,62,1"/>
     <image id="dyr9mk" name="SwitchOn1.png" path="/Image/" exported="true" scale9grid="31,25,62,1"/>
+    <component id="cn74ml" name="FloatMsgItem.xml" path="/" exported="true"/>
   </resources>
   <publish name="Common" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Common"/>
 </packageDescription>

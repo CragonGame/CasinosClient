@@ -17,19 +17,21 @@ ViewFloatMsg = class(ViewBase)
 function ViewFloatMsg:ctor()
     self.GTextInfos = {}
     self.TransitionMoves = {}
-    self.mQueMsgInfo = {}
-    self.canSend = false
+    self.QueMsgInfo = {}
 end
 
 ---------------------------------------
 function ViewFloatMsg:OnCreate()
-    self.canSend = true
-    self.GTextInfos[0] = self.ComUi:GetChild("GTextInfo0").asTextField
-    self.GTextInfos[1] = self.ComUi:GetChild("GTextInfo1").asTextField
-    self.GTextInfos[2] = self.ComUi:GetChild("GTextInfo2").asTextField
-    self.TransitionMoves[0] = self.ComUi:GetTransition("TransitionMove0")
-    self.TransitionMoves[1] = self.ComUi:GetTransition("TransitionMove1")
-    self.TransitionMoves[2] = self.ComUi:GetTransition("TransitionMove2")
+    self.CanSend = true
+    self.GTextInfos[1] = self.ComUi:GetChild("GTextInfo0").asTextField
+    self.GTextInfos[2] = self.ComUi:GetChild("GTextInfo1").asTextField
+    self.GTextInfos[3] = self.ComUi:GetChild("GTextInfo2").asTextField
+    self.GTextInfos[1].visible = false
+    self.GTextInfos[2].visible = false
+    self.GTextInfos[3].visible = false
+    self.TransitionMoves[1] = self.ComUi:GetTransition("TransitionMove0")
+    self.TransitionMoves[2] = self.ComUi:GetTransition("TransitionMove1")
+    self.TransitionMoves[3] = self.ComUi:GetTransition("TransitionMove2")
     self.ComUi.touchable = false
 end
 
@@ -40,39 +42,40 @@ end
 ---------------------------------------
 function ViewFloatMsg:ShowInfo(info, color)
     local msg_info = MsgInfo.new(info, color)
-    local index = self:_usableGTextIndex()
-    if (self.canSend == true and index ~= -1) then
-        self:ShowMsg(msg_info, index)
+    local index = self:_getIndex()
+    if index ~= -1 then
+        self:_showMsg(msg_info, index)
     else
-        table.insert(self.mQueMsgInfo, msg_info)
+        table.insert(self.QueMsgInfo, msg_info)
     end
 end
 
 ---------------------------------------
-function ViewFloatMsg:ShowMsg(info, gTextIndex)
-    self.GTextInfos[gTextIndex].text = info.info
-    self.GTextInfos[gTextIndex].color = info.color
-    self.TransitionMoves[gTextIndex]:Play(
+function ViewFloatMsg:_showMsg(info, index)
+    self.GTextInfos[index].text = info.info
+    self.GTextInfos[index].color = info.color
+    self.GTextInfos[index].visible = true
+    self.TransitionMoves[index]:Stop()
+    self.TransitionMoves[index]:ClearHooks()
+    self.TransitionMoves[index]:SetHook("aa",
             function()
-                self:_onTransitionComplete(gTextIndex)
-            end)
-    self.TransitionMoves[gTextIndex]:SetHook("aa",
-            function()
-                self:_onTransitionToaa()
+                self:_onTransitionToAA()
             end
     )
-    self.canSend = false
+    self.TransitionMoves[index]:Play(
+            function()
+                self:_onTransitionComplete(index)
+            end)
 end
 
 ---------------------------------------
-function ViewFloatMsg:_onTransitionToaa()
-    self.canSend = true
-    local l = #self.mQueMsgInfo
+function ViewFloatMsg:_onTransitionToAA()
+    local l = #self.QueMsgInfo
     if (l > 0) then
-        local index = self:_usableGTextIndex()
+        local index = self:_getIndex()
         if (index ~= -1) then
-            local info = table.remove(self.mQueMsgInfo, 1)
-            self:ShowMsg(info, index)
+            local info = table.remove(self.QueMsgInfo, 1)
+            self:_showMsg(info, index)
         end
     end
 end
@@ -80,15 +83,16 @@ end
 ---------------------------------------
 function ViewFloatMsg:_onTransitionComplete(index)
     self.GTextInfos[index].text = ""
-    if (#self.mQueMsgInfo > 0) then
-        local info = table.remove(self.mQueMsgInfo, 1)
-        self:ShowMsg(info, index)
+    self.GTextInfos[index].visible = false
+    if (#self.QueMsgInfo > 0) then
+        local info = table.remove(self.QueMsgInfo, 1)
+        self:_showMsg(info, index)
     end
 end
 
 ---------------------------------------
-function ViewFloatMsg:_usableGTextIndex()
-    for i = 0, 2 do
+function ViewFloatMsg:_getIndex()
+    for i = 1, 3 do
         if (self.TransitionMoves[i].playing == false) then
             return i
         end
