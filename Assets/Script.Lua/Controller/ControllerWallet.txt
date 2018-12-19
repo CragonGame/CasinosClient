@@ -85,14 +85,25 @@ end
 function ControllerWallet:WalletWithdrawAddressValidRequest()
     local data = WalletWithdrawAddressValidRequest:new(nil)
     data.MoneyType = MoneyType.BitCNY
-    data.Amount = 100
     data.Channel = 'Azex'
+    data.Address = 'aaaaa'
+    data.Memo = ''
     self.ControllerMgr.Rpc:RPC1(self.MethodType.WalletWithdrawAddressValidRequest, data:getData4Pack())
 end
 
 ---------------------------------------
 -- 充值通知
 function ControllerWallet:S2cWalletRechargeNotify(data)
+    local wallet_recharge_notify = WalletRechargeNotify:new(nil)
+    wallet_recharge_notify:setData(data)
+    print('Result=' .. wallet_recharge_notify.Result)
+    print('Id=' .. wallet_recharge_notify.Id)
+    print('MoneyType=' .. wallet_recharge_notify.MoneyType)
+    print('Address=' .. wallet_recharge_notify.Address)
+    print('Memo=' .. wallet_recharge_notify.Memo)
+    print('Volume=' .. wallet_recharge_notify.Volume)
+    print('Fee=' .. wallet_recharge_notify.Fee)
+
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
         view:OnWalletRechargeNotify(data)
@@ -111,9 +122,14 @@ end
 ---------------------------------------
 -- 获取虚拟币地址通知
 function ControllerWallet:S2cWalletGetOrGenerateAddressNotify(data)
+    local wallet_getorgenerate_address_notify = WalletGetOrGenerateAddressNotify:new(nil)
+    wallet_getorgenerate_address_notify:setData(data)
+    print('Address=' .. wallet_getorgenerate_address_notify.Address)
+    print('Memo=' .. wallet_getorgenerate_address_notify.Memo)
+
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnWalletGetOrGenerateAddressNotify(data)
+        view:OnWalletGetOrGenerateAddressNotify(wallet_getorgenerate_address_notify)
     end
 end
 
@@ -129,6 +145,12 @@ end
 ---------------------------------------
 -- 验证提现地址有效性通知
 function ControllerWallet:S2cWalletWithdrawAddressValidNotify(data)
+    local wallet_withdrawaddressvalid_notify = WalletWithdrawAddressValidNotify:new(nil)
+    wallet_withdrawaddressvalid_notify:setData(data)
+    print('Address=' .. wallet_withdrawaddressvalid_notify.Address)
+    print('Memo=' .. wallet_withdrawaddressvalid_notify.Memo)
+    print('IsValid=' .. tostring(wallet_withdrawaddressvalid_notify.IsValid))
+
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
         view:OnWalletWithdrawAddressValidNotify(data)

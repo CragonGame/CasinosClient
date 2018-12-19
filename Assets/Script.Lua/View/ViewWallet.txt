@@ -102,7 +102,7 @@ function ViewWallet:OnCreate()
 
     self:_onClickBtnTabRecharge()
 
-    self.CtrlWallet:RequestWalletGetOrGenerateAddress()
+    self.CtrlWallet:WalletWithdrawAddressValidRequest()
 end
 
 ---------------------------------------
@@ -137,7 +137,7 @@ end
 
 ---------------------------------------
 -- 获取虚拟币地址通知
-function ViewWallet:OnWalletGetOrGenerateAddressNotify(data)
+function ViewWallet:OnWalletGetOrGenerateAddressNotify(wallet_getorgenerate_address_notify)
     print('ViewWallet:OnWalletGetOrGenerateAddressNotify()')
 end
 

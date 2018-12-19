@@ -6,14 +6,13 @@ ViewPool = class(ViewBase)
 
 ---------------------------------------
 function ViewPool:ctor()
+    self.Context:AddUiPackage('PlayerProfile')
 end
 
 ---------------------------------------
 function ViewPool:OnCreate()
     self.ItemShootingTextPool = ItemShootingTextPool:new(nil, self)
-    if (CS.Casinos.CasinosContext.Instance.Config.HaveMagicExp == true) then
-        self.ItemMagicExpPool = ItemMagicExpSenderPool:new(nil, self)
-    end
+    self.ItemMagicExpPool = ItemMagicExpSenderPool:new(nil, self)
     self.ItemChatExPool = ItemChatExPool:new(nil, self)
     self.ItemChatTargetInfoPool = ItemChatTargetInfoPool:new(nil, self)
     self.ItemGiftPool = ItemGiftPool:new(nil, self)

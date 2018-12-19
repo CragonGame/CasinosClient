@@ -41,8 +41,6 @@ function ControllerTrade:OnCreate()
         self:OnWalletWithdrawNotify(response)
     end)
 
-    self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
-    self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
 end
@@ -72,14 +70,16 @@ function ControllerTrade:OnHandleEv(ev)
         if (ev.to_etguid == self.Guid) then
             target = BuyItemForTarget.Me
         else
-            if (self.ControllerDesktop.DesktopBase ~= nil) then
+            local ctrl_desktop = self.ControllerMgr:GetController("DesktopTexas")
+            if (ctrl_desktop.DesktopBase ~= nil) then
                 if (ev.to_etguid ~= nil and ev.to_etguid ~= "") then
                     target = BuyItemForTarget.DesktopOtherPlayer
                 else
                     target = BuyItemForTarget.DesktopAllPlayer
                 end
             else
-                if (self.ControllerDesktopH.DesktopHBase ~= nil) then
+                local ctrl_desktoph = self.ControllerMgr:GetController("DesktopH")
+                if (ctrl_desktoph.DesktopHBase ~= nil) then
                     if (ev.to_etguid ~= nil and ev.to_etguid ~= "") then
                         target = BuyItemForTarget.DesktopHOtherPlayer
                     else
@@ -195,18 +195,18 @@ end
 
 ---------------------------------------
 function ControllerTrade:OnTradeOrderNotify(result, is_firstrecharge, item_tbid)
-    print("OnTradeOrderNotify ")
+    --print("OnTradeOrderNotify ")
     local item_name = self.ControllerMgr.LanMgr:getLanValue("FirstRechargeTitle")
     if (is_firstrecharge == false) then
         local tb_item = self.ControllerMgr.TbDataMgr:GetData("Item", item_tbid)
         item_name = self.ControllerMgr.LanMgr:getLanValue(tb_item.Name)
     end
     if (result == ProtocolResult.Success) then
-        print("OnTradeOrderNotify success")
+        --print("OnTradeOrderNotify success")
         local format_info = self.ControllerMgr.LanMgr:getLanValue("BuyItemSuccess")
         ViewHelper:UiShowInfoSuccess(string.format(format_info, item_name))
     else
-        print("OnTradeOrderNotify failed")
+        --print("OnTradeOrderNotify failed")
         local format_info = self.ControllerMgr.LanMgr:getLanValue("BuyItemFailed")
         ViewHelper:UiShowInfoFailed(string.format(format_info, item_name))
     end
@@ -253,7 +253,7 @@ function ControllerTrade:RequestBuyItem(buyitem_tbid, target_type, target_etguid
     request.buyitem_tbid = buyitem_tbid
     request.target_type = target_type
     request.target_etguid = target_etguid
-    print("MethodType.TradeBuyItemRequest")
+    --print("MethodType.TradeBuyItemRequest")
     self.ControllerMgr.Rpc:RPC1(MethodType.TradeBuyItemRequest, request:getData4Pack())
 end
 

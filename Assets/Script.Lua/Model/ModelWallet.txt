@@ -55,16 +55,23 @@ function WalletRechargeNotify:new(o)
     setmetatable(o, self)
     self.__index = self
     o.Result = WalletResult.Success
-    o.Request = nil
+    o.Id = nil
+    o.MoneyType = nil
+    o.Address = nil
+    o.Memo = nil
+    o.Volume = nil
+    o.Fee = nil
     return o
 end
 
 function WalletRechargeNotify:setData(data)
     self.Result = data[1]
-    local r = data[2]
-    local w_r = WalletRechargeRequest:new(nil)
-    w_r:setData(r)
-    self.Request = w_r
+    self.Id = data[2]
+    self.MoneyType = data[3]
+    self.Address = data[4]
+    self.Memo = data[5]
+    self.Volume = data[6]
+    self.Fee = data[7]
 end
 
 ---------------------------------------
@@ -150,7 +157,7 @@ function WalletGetOrGenerateAddressNotify:new(o)
     setmetatable(o, self)
     self.__index = self
     o.Result = WalletResult.Success
-    o.Request = nil
+    o.MoneyType = nil
     o.Address = nil
     o.Memo = nil
     return o
@@ -158,10 +165,7 @@ end
 
 function WalletGetOrGenerateAddressNotify:setData(data)
     self.Result = data[1]
-    local r = data[2]
-    local w_r = WalletGetOrGenerateAddressRequest:new(nil)
-    w_r:setData(r)
-    self.Request = w_r
+    self.MoneyType = data[2]
     self.Address = data[3]
     self.Memo = data[4]
 end
@@ -224,23 +228,26 @@ function WalletWithdrawAddressValidRequest:new(o)
     setmetatable(o, self)
     self.__index = self
     o.MoneyType = MoneyType.CNY
-    o.Amount = 0
     o.Channel = nil
+    o.Address = nil
+    o.Memo = nil
     return o
 end
 
 function WalletWithdrawAddressValidRequest:getData4Pack()
     local t = {}
     table.insert(t, self.MoneyType)
-    table.insert(t, self.Amount)
     table.insert(t, self.Channel)
+    table.insert(t, self.Address)
+    table.insert(t, self.Memo)
     return t
 end
 
 function WalletWithdrawAddressValidRequest:setData(data)
     self.MoneyType = data[1]
-    self.Amount = data[2]
-    self.Channel = data[3]
+    self.Channel = data[2]
+    self.Address = data[3]
+    self.Memo = data[4]
 end
 
 ---------------------------------------
@@ -252,14 +259,19 @@ function WalletWithdrawAddressValidNotify:new(o)
     setmetatable(o, self)
     self.__index = self
     o.Result = WalletResult.Success
-    o.Request = nil
+    o.MoneyType = MoneyType.CNY
+    o.Channel = nil
+    o.Address = nil
+    o.Memo = nil
+    o.IsValid = nil
     return o
 end
 
 function WalletWithdrawAddressValidNotify:setData(data)
     self.Result = data[1]
-    local r = data[2]
-    local w_r = WalletWithdrawAddressValidRequest:new(nil)
-    w_r:setData(r)
-    self.Request = w_r
+    self.MoneyType = data[2]
+    self.Channel = data[3]
+    self.Address = data[4]
+    self.Memo = data[5]
+    self.IsValid = data[6]
 end
