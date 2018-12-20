@@ -5,6 +5,8 @@ ControllerWallet = class(ControllerBase)
 
 ---------------------------------------
 function ControllerWallet:ctor(controller_data, controller_name)
+    self.Address = nil
+    self.Memo = nil
 end
 
 ---------------------------------------
@@ -126,6 +128,9 @@ function ControllerWallet:S2cWalletGetOrGenerateAddressNotify(data)
     wallet_getorgenerate_address_notify:setData(data)
     print('Address=' .. wallet_getorgenerate_address_notify.Address)
     print('Memo=' .. wallet_getorgenerate_address_notify.Memo)
+
+    self.Address = wallet_getorgenerate_address_notify.Address
+    self.Memo = wallet_getorgenerate_address_notify.Memo
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then

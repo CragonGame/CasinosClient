@@ -17,6 +17,10 @@ function ViewWallet:ctor()
     self.GBtnTabRecharge = nil
     self.GBtnTabWithdraw = nil
     self.GBtnTabRecord = nil
+    self.GBtnCopyAddress = nil-- 按钮，复制Address到剪切板
+    self.GBtnCopyMemo = nil-- 按钮，复制Memo到剪切板
+    self.GTxtAddress = nil
+    self.GTxtMemo = nil
     self.GComTabRecharge = nil
     self.GComTabWithdraw = nil
     self.GComTabRecord = nil
@@ -87,6 +91,21 @@ function ViewWallet:OnCreate()
     --local rect = CS.UnityEngine.Rect(0, 0, 300, 300)
     gloader_qrcode.texture = CS.FairyGUI.NTexture(t)
 
+    self.GTxtAddress = self.GComTabRecharge:GetChild("TextAddress").asTextField
+    self.GTxtMemo = self.GComTabRecharge:GetChild("TextMemo").asTextField
+
+    self.GBtnCopyAddress = self.GComTabRecharge:GetChild("BtnCopyAddress").asCom
+    self.GBtnCopyAddress.onClick:Add(
+            function()
+                self:_onClickBtnCopyAddress()
+            end)
+
+    self.GBtnCopyMemo = self.GComTabRecharge:GetChild("BtnCopyMemo").asCom
+    self.GBtnCopyMemo.onClick:Add(
+            function()
+                self:_onClickBtnCopyMemo()
+            end)
+
     self:createChip()
 
     local btn_addchip = self.ComUi:GetChild("BtnAddChip").asButton
@@ -102,7 +121,8 @@ function ViewWallet:OnCreate()
 
     self:_onClickBtnTabRecharge()
 
-    self.CtrlWallet:WalletWithdrawAddressValidRequest()
+    self.CtrlWallet:RequestWalletGetOrGenerateAddress()
+    --self.CtrlWallet:WalletWithdrawAddressValidRequest()
 end
 
 ---------------------------------------
@@ -139,6 +159,19 @@ end
 -- 获取虚拟币地址通知
 function ViewWallet:OnWalletGetOrGenerateAddressNotify(wallet_getorgenerate_address_notify)
     print('ViewWallet:OnWalletGetOrGenerateAddressNotify()')
+
+    -- 设置二维码
+    local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
+    local url = self.CtrlWallet.Address
+    local t = CS.UnityEngine.Texture2D(256, 256)
+    local colors = self.CasinosContext.LuaMgr:CreateQRCode(url, t.width, t.height)
+    t:SetPixels32(colors)
+    t:Apply()
+    gloader_qrcode.texture = CS.FairyGUI.NTexture(t)
+
+    -- 设置Text Address&Memo
+    self.GTxtAddress.text = self.CtrlWallet.Address
+    self.GTxtMemo.text = self.CtrlWallet.Memo
 end
 
 ---------------------------------------
@@ -219,6 +252,30 @@ function ViewWallet:_onClickBtnTabRecord()
     gctrl_tabrecord_state.selectedIndex = 1
 
     self.GCtrlTab.selectedIndex = 2
+end
+
+---------------------------------------
+-- 点击按钮，复制Address到剪切板
+function ViewWallet:_onClickBtnCopyAddress()
+    if self.CtrlWallet.Address ~= nil and string.len(self.CtrlWallet.Address) > 0 then
+        self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.Address)
+        local address = self.CasinosContext.LuaMgr:GetClipBoard()
+        ViewHelper:UiShowInfoSuccess('已将' .. tostring(address) .. '复制到剪切板')
+    else
+        ViewHelper:UiShowInfoSuccess('Address为空，无需复制')
+    end
+end
+
+---------------------------------------
+-- 点击按钮，复制Memo到剪切板
+function ViewWallet:_onClickBtnCopyMemo()
+    if self.CtrlWallet.Memo ~= nil and string.len(self.CtrlWallet.Memo) > 0 then
+        self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.Memo)
+        local memo = self.CasinosContext.LuaMgr:GetClipBoard()
+        ViewHelper:UiShowInfoSuccess('已将' .. tostring(memo) .. '复制到剪切板')
+    else
+        ViewHelper:UiShowInfoSuccess('Memo为空，无需复制')
+    end
 end
 
 ---------------------------------------

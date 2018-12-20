@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.LuaMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 25, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 27, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
@@ -40,6 +40,8 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DestroyGameObject", _m_DestroyGameObject);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Vibrate", _m_Vibrate);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetSystemLanguageAsString", _m_GetSystemLanguageAsString);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetClipBoard", _m_SetClipBoard);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetClipBoard", _m_GetClipBoard);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CreateQRCode", _m_CreateQRCode);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SaveTextureToFile", _m_SaveTextureToFile);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "ToBase64String", _m_ToBase64String);
@@ -567,6 +569,62 @@ namespace XLua.CSObjectWrap
                 {
                     
                         string gen_ret = gen_to_be_invoked.GetSystemLanguageAsString(  );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetClipBoard(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.LuaMgr gen_to_be_invoked = (Casinos.LuaMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _text = LuaAPI.lua_tostring(L, 2);
+                    
+                    gen_to_be_invoked.SetClipBoard( _text );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetClipBoard(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.LuaMgr gen_to_be_invoked = (Casinos.LuaMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                        string gen_ret = gen_to_be_invoked.GetClipBoard(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
