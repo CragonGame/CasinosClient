@@ -28,11 +28,11 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Setup_BeforeAdd", _m_Setup_BeforeAdd);
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "onFocusIn", _g_get_onFocusIn);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "inputTextField", _g_get_inputTextField);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "onFocusIn", _g_get_onFocusIn);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onFocusOut", _g_get_onFocusOut);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onChanged", _g_get_onChanged);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onSubmit", _g_get_onSubmit);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "inputTextField", _g_get_inputTextField);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "editable", _g_get_editable);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "hideInput", _g_get_hideInput);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "maxLength", _g_get_maxLength);
@@ -189,6 +189,20 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_inputTextField(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                FairyGUI.GTextInput gen_to_be_invoked = (FairyGUI.GTextInput)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.inputTextField);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_onFocusIn(RealStatePtr L)
         {
 		    try {
@@ -238,20 +252,6 @@ namespace XLua.CSObjectWrap
 			
                 FairyGUI.GTextInput gen_to_be_invoked = (FairyGUI.GTextInput)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.onSubmit);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_inputTextField(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                FairyGUI.GTextInput gen_to_be_invoked = (FairyGUI.GTextInput)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.inputTextField);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

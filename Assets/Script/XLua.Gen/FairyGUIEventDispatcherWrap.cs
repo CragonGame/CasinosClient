@@ -21,11 +21,13 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(FairyGUI.EventDispatcher);
-			Utils.BeginObjectRegister(type, L, translator, 0, 6, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 8, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddEventListener", _m_AddEventListener);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RemoveEventListener", _m_RemoveEventListener);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RemoveEventListeners", _m_RemoveEventListeners);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "hasEventListeners", _m_hasEventListeners);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "isDispatching", _m_isDispatching);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DispatchEvent", _m_DispatchEvent);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "BubbleEvent", _m_BubbleEvent);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "BroadcastEvent", _m_BroadcastEvent);
@@ -203,6 +205,64 @@ namespace XLua.CSObjectWrap
             }
             
             return LuaAPI.luaL_error(L, "invalid arguments to FairyGUI.EventDispatcher.RemoveEventListeners!");
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_hasEventListeners(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                FairyGUI.EventDispatcher gen_to_be_invoked = (FairyGUI.EventDispatcher)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _strType = LuaAPI.lua_tostring(L, 2);
+                    
+                        bool gen_ret = gen_to_be_invoked.hasEventListeners( _strType );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_isDispatching(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                FairyGUI.EventDispatcher gen_to_be_invoked = (FairyGUI.EventDispatcher)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _strType = LuaAPI.lua_tostring(L, 2);
+                    
+                        bool gen_ret = gen_to_be_invoked.isDispatching( _strType );
+                        LuaAPI.lua_pushboolean(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
             
         }
         

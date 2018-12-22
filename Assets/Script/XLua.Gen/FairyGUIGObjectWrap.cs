@@ -82,7 +82,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onDragStart", _g_get_onDragStart);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onDragMove", _g_get_onDragMove);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "onDragEnd", _g_get_onDragEnd);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "OnGearStop", _g_get_OnGearStop);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "onGearStop", _g_get_onGearStop);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "x", _g_get_x);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "y", _g_get_y);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "z", _g_get_z);
@@ -1520,6 +1520,18 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_draggingObject(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    translator.Push(L, FairyGUI.GObject.draggingObject);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_onClick(RealStatePtr L)
         {
 		    try {
@@ -1744,25 +1756,13 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_OnGearStop(RealStatePtr L)
+        static int _g_get_onGearStop(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 FairyGUI.GObject gen_to_be_invoked = (FairyGUI.GObject)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.OnGearStop);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_draggingObject(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    translator.Push(L, FairyGUI.GObject.draggingObject);
+                translator.Push(L, gen_to_be_invoked.onGearStop);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

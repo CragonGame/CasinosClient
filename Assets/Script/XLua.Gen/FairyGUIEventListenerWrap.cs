@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(FairyGUI.EventListener);
-			Utils.BeginObjectRegister(type, L, translator, 0, 9, 4, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 9, 3, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddCapture", _m_AddCapture);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "RemoveCapture", _m_RemoveCapture);
@@ -34,8 +34,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "BroadcastCall", _m_BroadcastCall);
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "owner", _g_get_owner);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "type", _g_get_type);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "type", _g_get_type);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "isEmpty", _g_get_isEmpty);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "isDispatching", _g_get_isDispatching);
             
@@ -426,20 +425,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_owner(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                FairyGUI.EventListener gen_to_be_invoked = (FairyGUI.EventListener)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.owner);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_type(RealStatePtr L)

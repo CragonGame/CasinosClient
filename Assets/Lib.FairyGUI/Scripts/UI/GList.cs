@@ -51,16 +51,6 @@ namespace FairyGUI
 		public ListItemProvider itemProvider;
 
 		/// <summary>
-		/// Dispatched when a list item being clicked.
-		/// </summary>
-		public EventListener onClickItem { get; private set; }
-
-		/// <summary>
-		/// Dispatched when a list item being clicked with right button.
-		/// </summary>
-		public EventListener onRightClickItem { get; private set; }
-
-		/// <summary>
 		/// 
 		/// </summary>
 		public bool scrollItemToViewOnClick;
@@ -76,8 +66,10 @@ namespace FairyGUI
 		Controller _selectionController;
 
 		GObjectPool _pool;
-		bool _selectionHandled;
 		int _lastSelectedIndex;
+
+		EventListener _onClickItem;
+		EventListener _onRightClickItem;
 
 		//Virtual List support
 		bool _virtual;
@@ -102,7 +94,6 @@ namespace FairyGUI
 		List<ItemInfo> _virtualItems;
 
 		EventCallback1 _itemClickDelegate;
-		EventCallback1 _itemTouchBeginDelegate;
 
 		public GList()
 			: base()
@@ -118,9 +109,6 @@ namespace FairyGUI
 			_pool = new GObjectPool(container.cachedTransform);
 
 			_itemClickDelegate = __clickItem;
-			_itemTouchBeginDelegate = __itemTouchBegin;
-			onClickItem = new EventListener(this, "onClickItem");
-			onRightClickItem = new EventListener(this, "onRightClickItem");
 		}
 
 		public override void Dispose()
@@ -135,6 +123,22 @@ namespace FairyGUI
 			itemProvider = null;
 
 			base.Dispose();
+		}
+
+		/// <summary>
+		/// Dispatched when a list item being clicked.
+		/// </summary>
+		public EventListener onClickItem
+		{
+			get { return _onClickItem ?? (_onClickItem = new EventListener(this, "onClickItem")); }
+		}
+
+		/// <summary>
+		/// Dispatched when a list item being clicked with right button.
+		/// </summary>
+		public EventListener onRightClickItem
+		{
+			get { return _onRightClickItem ?? (_onRightClickItem = new EventListener(this, "onRightClickItem")); }
 		}
 
 		/// <summary>
@@ -354,7 +358,6 @@ namespace FairyGUI
 				button.changeStateOnClick = false;
 			}
 
-			child.onTouchBegin.Add(_itemTouchBeginDelegate);
 			child.onClick.Add(_itemClickDelegate);
 			child.onRightClick.Add(_itemClickDelegate);
 
@@ -370,7 +373,6 @@ namespace FairyGUI
 		override public GObject RemoveChildAt(int index, bool dispose)
 		{
 			GObject child = base.RemoveChildAt(index, dispose);
-			child.onTouchBegin.Remove(_itemTouchBeginDelegate);
 			child.onClick.Remove(_itemClickDelegate);
 			child.onRightClick.Remove(_itemClickDelegate);
 
@@ -892,52 +894,23 @@ namespace FairyGUI
 			}
 		}
 
-		void __itemTouchBegin(EventContext context)
-		{
-			GButton item = context.sender as GButton;
-			if (item == null || selectionMode == ListSelectionMode.None)
-				return;
-
-			_selectionHandled = false;
-
-			if (UIConfig.defaultScrollTouchEffect
-				&& (this.scrollPane != null || this.parent != null && this.parent.scrollPane != null))
-				return;
-
-			if (selectionMode == ListSelectionMode.Single)
-			{
-				SetSelectionOnEvent(item, context.inputEvent);
-			}
-			else
-			{
-				if (!item.selected)
-					SetSelectionOnEvent(item, context.inputEvent);
-				//如果item.selected，这里不处理selection，因为可能用户在拖动
-			}
-		}
-
 		void __clickItem(EventContext context)
 		{
 			GObject item = context.sender as GObject;
-			if (!_selectionHandled)
+			if ((item is GButton) && selectionMode != ListSelectionMode.None)
 				SetSelectionOnEvent(item, context.inputEvent);
-			_selectionHandled = false;
 
 			if (scrollPane != null && scrollItemToViewOnClick)
 				scrollPane.ScrollToView(item, true);
 
 			if (context.type == item.onRightClick.type)
-				onRightClickItem.Call(item);
+				DispatchEvent("onRightClickItem", item);
 			else
-				onClickItem.Call(item);
+				DispatchEvent("onClickItem", item);
 		}
 
 		void SetSelectionOnEvent(GObject item, InputEvent evt)
 		{
-			if (!(item is GButton) || selectionMode == ListSelectionMode.None)
-				return;
-
-			_selectionHandled = true;
 			bool dontChangeLastIndex = false;
 			GButton button = (GButton)item;
 			int index = ChildIndexToItemIndex(GetChildIndex(item));

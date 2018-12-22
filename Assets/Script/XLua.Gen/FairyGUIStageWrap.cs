@@ -718,20 +718,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_onStageResized(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                FairyGUI.Stage gen_to_be_invoked = (FairyGUI.Stage)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.onStageResized);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_inst(RealStatePtr L)
         {
 		    try {
@@ -773,6 +759,20 @@ namespace XLua.CSObjectWrap
 		    try {
             
 			    LuaAPI.lua_pushboolean(L, FairyGUI.Stage.isTouchOnUI);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_onStageResized(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                FairyGUI.Stage gen_to_be_invoked = (FairyGUI.Stage)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.onStageResized);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }

@@ -805,6 +805,18 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_draggingPane(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    translator.Push(L, FairyGUI.ScrollPane.draggingPane);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_onScroll(RealStatePtr L)
         {
 		    try {
@@ -854,18 +866,6 @@ namespace XLua.CSObjectWrap
 			
                 FairyGUI.ScrollPane gen_to_be_invoked = (FairyGUI.ScrollPane)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.onPullUpRelease);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_draggingPane(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    translator.Push(L, FairyGUI.ScrollPane.draggingPane);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
