@@ -456,6 +456,7 @@ function ViewLogin:_onClickWeiXin()
         return
     end
 
+    print('点击微信登录按钮，广播消息')
     local ev = self:GetEv("EvUiLogin")
     if (ev == nil) then
         ev = EvUiLogin:new(nil)

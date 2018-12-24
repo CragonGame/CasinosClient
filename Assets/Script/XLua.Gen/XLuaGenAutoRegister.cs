@@ -329,15 +329,12 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(Casinos._eChatItemType), Casinos_eChatItemTypeWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(Casinos._eLoginType), Casinos_eLoginTypeWrap.__Register);
+            translator.DelayWrapLoader(typeof(_ePayType), _ePayTypeWrap.__Register);
         
         }
         
         static void wrapInit2(LuaEnv luaenv, ObjectTranslator translator)
         {
-        
-            translator.DelayWrapLoader(typeof(_ePayType), _ePayTypeWrap.__Register);
-        
         
             translator.DelayWrapLoader(typeof(Casinos._eProjectItemDisplayNameKey), Casinos_eProjectItemDisplayNameKeyWrap.__Register);
         

@@ -95,7 +95,7 @@ ControllerLogin = class(ControllerBase)
 function ControllerLogin:ctor(controller_data, controller_name)
     self.Password = nil
     self.RemeberPwd = false
-    self.RequestThirdPartyLogin = false
+    --self.RequestThirdPartyLogin = false
     self.BindingWeChat = false
     self.AutoLogin = false
     self.AutoLoginTm = 0
@@ -159,14 +159,16 @@ end
 function ControllerLogin:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvUiLogin") then
+            print('处理微信登录消息')
             local login_type = ev.login_type
-            self.CasinosContext.LoginType = login_type
             self.LoginType = login_type
+            print('self.LoginType=' .. tostring(self.LoginType))
             self.Acc = ev.acc
             self.Pwd = ev.pwd
             local remeber_pwd = ev.remeber_pwd
             self.RemeberPwd = remeber_pwd
             self.Phone = ev.phone
+            print('login_type=' .. login_type)
             -- todo，还原点击登录时，检测更新的功能
             --MainC:LoadConfig(true, function(bo)
             --    self:_clickCheckDataCallBack(bo)
@@ -214,27 +216,28 @@ function ControllerLogin:OnHandleEv(ev)
         elseif (ev.EventName == "EvUiChooseGateWay") then
             --self.Context.Cfg.GatewayIp = ev.gateway
         elseif (ev.EventName == "EvUiLoginSuccessEx") then
-            if self.BindingWeChat == false then
-                self:RequestWechatLogin(ev.token, self.Context.Cfg.WeChatAppId)
-            else
-                print("AccountWechatBindRequest")
-                local request = AccountWeChatBindRequest:new(nil)
-                request.ucenterAppId = self.Context.Cfg.UCenterAppId
-                request.code = ev.token
-                request.accountId = self.AccId
-                request.token = self.Token
-                self.ControllerUCenter:RequestWechatBind(request,
-                        function(http_statuscode, status, response, error)
-                            self:OnUCenterWechatBind(http_statuscode, status, response, error)
-                        end)
-            end
-            self.BindingWeChat = false
+            print('EvUiLoginSuccessEx')
+            --if self.BindingWeChat == false then
+            self:RequestWechatLogin(ev.token, self.Context.Cfg.WeChatAppId)
+            --else
+            --    print("AccountWechatBindRequest")
+            --    local request = AccountWeChatBindRequest:new(nil)
+            --    request.ucenterAppId = self.Context.Cfg.UCenterAppId
+            --    request.code = ev.token
+            --    request.accountId = self.AccId
+            --    request.token = self.Token
+            --    self.ControllerUCenter:RequestWechatBind(request,
+            --            function(http_statuscode, status, response, error)
+            --                self:OnUCenterWechatBind(http_statuscode, status, response, error)
+            --            end)
+            --end
+            --self.BindingWeChat = false
         elseif (ev.EventName == "EvCheckIdCard") then
             self:RequestCheckCardAndName(ev.id_card, ev.name)
         elseif (ev.EventName == "EvBindWechat") then
             ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:getLanValue("BindWeChatTips"), function()
                 ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("BindingWeChat"), 10)
-                self.RequestThirdPartyLogin = true
+                --self.RequestThirdPartyLogin = true
                 self.BindingWeChat = true
             end)
         elseif (ev.EventName == "EvUnbindWechat") then
@@ -260,13 +263,13 @@ end
 
 ---------------------------------------
 function ControllerLogin:_timerUpdate(tm)
-    if (self.RequestThirdPartyLogin) then
-        self.RequestThirdPartyLogin = false
-        --if (self.CasinosContext.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat) then
-        self.CasinosContext:SetNativeOperate(1)
-        CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.Context.Cfg.WeChatState, "Login")
-        --end
-    end
+    --if (self.RequestThirdPartyLogin) then
+    --    self.RequestThirdPartyLogin = false
+    --    --if (self.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat) then
+    --    self.CasinosContext:SetNativeOperate(1)
+    --    CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.Context.Cfg.WeChatState, "Login")
+    --    --end
+    --end
 
     --if self.AutoLogin then
     --    self.AutoLoginTm = self.AutoLoginTm + tm
@@ -295,7 +298,7 @@ end
 ---------------------------------------
 -- 请求登录
 function ControllerLogin:RequestLogin(acc, pwd, phone, email, phone_verification_code)
-    self.CasinosContext.LoginType = 0
+    self.LoginType = 0
     self.Password = pwd
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
 
@@ -316,7 +319,7 @@ end
 ---------------------------------------
 -- 请求游客访问
 function ControllerLogin:RequestGuestAccess()
-    self.CasinosContext.LoginType = 1
+    self.LoginType = 1
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
 
     local device_info = self:GetDeviceInfo()
@@ -344,9 +347,9 @@ end
 ---------------------------------------
 -- 请求微信登录
 function ControllerLogin:RequestWechatLogin(token, app_id)
-    self.CasinosContext.LoginType = 2
+    self.LoginType = 2
     ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
-    local wechat_info = AccountWeChatOAuthInfo:new(nil)--CS.GameCloud.UCenter.Common.Portable.Models.AppClient.AccountWeChatOAuthInfo()
+    local wechat_info = AccountWeChatOAuthInfo:new(nil)
     wechat_info.Code = token
     wechat_info.AppId = app_id
     wechat_info.Device = self:GetDeviceInfo()
@@ -359,7 +362,7 @@ end
 ---------------------------------------
 -- 请求微信自动登录
 function ControllerLogin:RequestWechatAutoLogin()
-    self.CasinosContext.LoginType = 2
+    self.LoginType = 2
     local r = AccountWeChatAutoLoginRequest:new(nil)
     r.AppId = self.Context.Cfg.WeChatAppId
     r.OpenId = a_info_last_login.AccName
@@ -475,7 +478,7 @@ function ControllerLogin:OnUCenterLogin(http_statuscode, result, error, response
         local acc_name = ""
         local phone = ""
         local pwd = ""
-        if (self.CasinosContext.LoginType == CS.Casinos._eLoginType.Acc) then
+        if (self.LoginType == LoginType.Phone) then
             pwd = self.Password
             if (self.RemeberPwd == false) then
                 pwd = ""
@@ -483,9 +486,9 @@ function ControllerLogin:OnUCenterLogin(http_statuscode, result, error, response
             login_type = 0
             acc_name = self.Phone
             phone = account_login_response.Phone
-        elseif (self.CasinosContext.LoginType == CS.Casinos._eLoginType.Guest) then
+        elseif (self.LoginType == LoginType.Guest) then
             login_type = 1
-        elseif (self.CasinosContext.LoginType == CS.Casinos._eLoginType.WeiXin) then
+        elseif (self.LoginType == LoginType.Wechat) then
             login_type = 2
             acc_name = account_login_response.AccountName
         end
@@ -772,7 +775,7 @@ function ControllerLogin:_init(is_init)
     local acc = ""
     local pwd = ""
     local view_login = self.ViewMgr:CreateView("Login")
-    self.RequestThirdPartyLogin = false
+    --self.RequestThirdPartyLogin = false
     if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey)) then
         local s = CS.UnityEngine.PlayerPrefs.GetString(self.LoginAccountInfoKey)
         local t_decode = self.ControllerMgr.Json.decode(s)
@@ -813,7 +816,7 @@ end
 
 ---------------------------------------
 function ControllerLogin:NeedCheckIdCard()
-    if self.CasinosContext.LoginType == CS.Casinos._eLoginType.Guest then
+    if self.LoginType == LoginType.Guest then
         return false
     end
     --if self.Identity == nil or #self.Identity == 0 then
@@ -824,24 +827,22 @@ end
 
 ---------------------------------------
 function ControllerLogin:_clickCheckDataCallBack(bo)
+    print('self.LoginType=' .. self.LoginType)
     if bo == false then
-        --if (self.ControllerUCenter.WWWLogin ~= nil) then
-        --    local info = self.ControllerMgr.LanMgr:getLanValue("Logining")
-        --    ViewHelper:UiShowInfoFailed(info)
-        --else
         if (self.LoginType == 0) then
             self:RequestLogin("", self.Pwd, self.Acc, "", "")
-        end
-
-        if (self.LoginType == 1) then
+        elseif (self.LoginType == 1) then
             self:RequestGuestAccess()
-        end
-
-        if (self.LoginType == 2) then
+        elseif (self.LoginType == 2) then
+            print('111111111111')
             ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("WeChatLogining"), 10)
-            self.RequestThirdPartyLogin = true
+            print('222222222')
+            --self.RequestThirdPartyLogin = true
+            self.CasinosContext:SetNativeOperate(1)
+            print('33333333333333')
+            CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.Context.Cfg.WeChatState, "Login")
+            print('444444444444')
         end
-        --end
     else
         local view_login = self.ViewMgr:GetView("Login")
         self.ViewMgr:DestroyView(view_login)
@@ -853,10 +854,6 @@ end
 ---------------------------------------
 function ControllerLogin:_autoCheckDataCallBack(bo)
     if bo == false then
-        --if (self.ControllerUCenter.WWWLogin ~= nil) then
-        --    local info = self.ControllerMgr.LanMgr:getLanValue("Logining")
-        --    ViewHelper:UiShowInfoFailed(info)
-        --else
         if (self.LoginType == 1) then
             self:RequestGuestAccess()
         end
@@ -867,9 +864,8 @@ function ControllerLogin:_autoCheckDataCallBack(bo)
 
         if (self.LoginType == 2) then
             ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("WeChatLogining"), 10)
-            self.RequestThirdPartyLogin = true
+            --self.RequestThirdPartyLogin = true
         end
-        --end
     end
 end
 

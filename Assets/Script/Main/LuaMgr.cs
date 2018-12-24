@@ -148,7 +148,6 @@ namespace Casinos
             // Casinos
             typeof(_eAsyncAssetLoadType),
             typeof(_eChatItemType),
-            typeof(_eLoginType),
             typeof(_ePayType),
             typeof(_eProjectItemDisplayNameKey),
             typeof(AsyncAssetLoaderMgr),

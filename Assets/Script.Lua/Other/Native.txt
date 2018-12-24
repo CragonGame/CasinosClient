@@ -54,18 +54,15 @@ function Native:Setup(view_mgr, listner)
     self.CasinosContext.NativeAPIMsgReceiverListner.ActionGetPicSuccessWithBytes = function(pic_data)
         self:ActionGetPicSuccessWithBytes(pic_data)
     end
-
     --self.CasinosContext.NativeAPIMsgReceiverListner.ActionPayWithIAPFailed = function(result)
     --    self:ActionPayWithIAPFailed(result)
     --end
     --self.CasinosContext.NativeAPIMsgReceiverListner.ActionPayWithIAPSuccess = function(purchase)
     --    self:ActionPayWithIAPSuccess(purchase)
     --end
-
     self.CasinosContext.NativeAPIMsgReceiverListner.ActionPayResult = function(pay_result)
         self:ActionPayResult(pay_result)
     end
-
     self.CasinosContext.NativeAPIMsgReceiverListner.ActionLoginFailed = function(fail_type)
         self:ActionLoginFailed(fail_type)
     end

@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.CasinosContext);
-			Utils.BeginObjectRegister(type, L, translator, 0, 16, 27, 13);
+			Utils.BeginObjectRegister(type, L, translator, 0, 16, 26, 12);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Close", _m_Close);
@@ -57,7 +57,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "SpineMgr", _g_get_SpineMgr);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "NativeMgr", _g_get_NativeMgr);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "NativeAPIMsgReceiverListner", _g_get_NativeAPIMsgReceiverListner);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "LoginType", _g_get_LoginType);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "UseHttps", _g_get_UseHttps);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "CanReportLog", _g_get_CanReportLog);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "CanReportLogDeviceId", _g_get_CanReportLogDeviceId);
@@ -71,7 +70,6 @@ namespace XLua.CSObjectWrap
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "NativeMgr", _s_set_NativeMgr);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "NativeAPIMsgReceiverListner", _s_set_NativeAPIMsgReceiverListner);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "LoginType", _s_set_LoginType);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "UseHttps", _s_set_UseHttps);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "CanReportLog", _s_set_CanReportLog);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "CanReportLogDeviceId", _s_set_CanReportLogDeviceId);
@@ -819,20 +817,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_LoginType(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                translator.PushCasinos_eLoginType(L, gen_to_be_invoked.LoginType);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_UseHttps(RealStatePtr L)
         {
 		    try {
@@ -997,22 +981,6 @@ namespace XLua.CSObjectWrap
 			
                 Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.NativeAPIMsgReceiverListner = (Casinos.NativeAPIMsgReceiverListener)translator.GetObject(L, 2, typeof(Casinos.NativeAPIMsgReceiverListener));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_LoginType(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                Casinos.CasinosContext gen_to_be_invoked = (Casinos.CasinosContext)translator.FastGetCSObj(L, 1);
-                Casinos._eLoginType gen_value;translator.Get(L, 2, out gen_value);
-				gen_to_be_invoked.LoginType = gen_value;
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

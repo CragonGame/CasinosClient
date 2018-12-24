@@ -198,7 +198,7 @@ function ViewMain:OnCreate()
                         end)
             end)
     local show_register = false
-    if self.CasinosContext.LoginType == CS.Casinos._eLoginType.Guest then
+    if self.ControllerLogin.LoginType == LoginType.Guest then
         show_register = true
     end
     ViewHelper:SetGObjectVisible(show_register, self.BtnRegister)

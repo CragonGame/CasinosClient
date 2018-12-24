@@ -91,6 +91,12 @@ Gender = {
     Female = 2,
 }
 
+LoginType = {
+    Phone = 0,
+    Guest = 1,
+    Wechat = 2
+}
+
 ---------------------------------------
 UCenterRequest = {}
 

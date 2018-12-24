@@ -49,7 +49,6 @@
 		<type fullname="FairyGUI.Window" preserve="all"/>
 		<type fullname="_eAsyncAssetLoadType" preserve="all"/>
 		<type fullname="Casinos._eChatItemType" preserve="all"/>
-		<type fullname="Casinos._eLoginType" preserve="all"/>
 		<type fullname="Casinos._eProjectItemDisplayNameKey" preserve="all"/>
 		<type fullname="AsyncAssetLoaderMgr" preserve="all"/>
 		<type fullname="AsyncAssetLoadGroup" preserve="all"/>

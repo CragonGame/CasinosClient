@@ -47,7 +47,6 @@ namespace XLua
 				translator.RegisterPushAndGetAndUpdate<FairyGUI.TweenPropType>(translator.PushFairyGUITweenPropType, translator.Get, translator.UpdateFairyGUITweenPropType);
 				translator.RegisterPushAndGetAndUpdate<_eAsyncAssetLoadType>(translator.Push_eAsyncAssetLoadType, translator.Get, translator.Update_eAsyncAssetLoadType);
 				translator.RegisterPushAndGetAndUpdate<Casinos._eChatItemType>(translator.PushCasinos_eChatItemType, translator.Get, translator.UpdateCasinos_eChatItemType);
-				translator.RegisterPushAndGetAndUpdate<Casinos._eLoginType>(translator.PushCasinos_eLoginType, translator.Get, translator.UpdateCasinos_eLoginType);
 				translator.RegisterPushAndGetAndUpdate<_ePayType>(translator.Push_ePayType, translator.Get, translator.Update_ePayType);
 				translator.RegisterPushAndGetAndUpdate<Casinos._eProjectItemDisplayNameKey>(translator.PushCasinos_eProjectItemDisplayNameKey, translator.Get, translator.UpdateCasinos_eProjectItemDisplayNameKey);
 				translator.RegisterPushAndGetAndUpdate<ZXing.BarcodeFormat>(translator.PushZXingBarcodeFormat, translator.Get, translator.UpdateZXingBarcodeFormat);
@@ -1681,90 +1680,6 @@ namespace XLua
             }
         }
         
-        int Casinos_eLoginType_TypeID = -1;
-		int Casinos_eLoginType_EnumRef = -1;
-        
-        public void PushCasinos_eLoginType(RealStatePtr L, Casinos._eLoginType val)
-        {
-            if (Casinos_eLoginType_TypeID == -1)
-            {
-			    bool is_first;
-                Casinos_eLoginType_TypeID = getTypeId(L, typeof(Casinos._eLoginType), out is_first);
-				
-				if (Casinos_eLoginType_EnumRef == -1)
-				{
-				    Utils.LoadCSTable(L, typeof(Casinos._eLoginType));
-				    Casinos_eLoginType_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
-				}
-				
-            }
-			
-			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, Casinos_eLoginType_EnumRef) == 1)
-            {
-			    return;
-			}
-			
-            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, Casinos_eLoginType_TypeID);
-            if (!CopyByValue.Pack(buff, 0, (int)val))
-            {
-                throw new Exception("pack fail fail for Casinos._eLoginType ,value="+val);
-            }
-			
-			LuaAPI.lua_getref(L, Casinos_eLoginType_EnumRef);
-			LuaAPI.lua_pushvalue(L, -2);
-			LuaAPI.xlua_rawseti(L, -2, (int)val);
-			LuaAPI.lua_pop(L, 1);
-			
-        }
-		
-        public void Get(RealStatePtr L, int index, out Casinos._eLoginType val)
-        {
-		    LuaTypes type = LuaAPI.lua_type(L, index);
-            if (type == LuaTypes.LUA_TUSERDATA )
-            {
-			    if (LuaAPI.xlua_gettypeid(L, index) != Casinos_eLoginType_TypeID)
-				{
-				    throw new Exception("invalid userdata for Casinos._eLoginType");
-				}
-				
-                IntPtr buff = LuaAPI.lua_touserdata(L, index);
-				int e;
-                if (!CopyByValue.UnPack(buff, 0, out e))
-                {
-                    throw new Exception("unpack fail for Casinos._eLoginType");
-                }
-				val = (Casinos._eLoginType)e;
-                
-            }
-            else
-            {
-                val = (Casinos._eLoginType)objectCasters.GetCaster(typeof(Casinos._eLoginType))(L, index, null);
-            }
-        }
-		
-        public void UpdateCasinos_eLoginType(RealStatePtr L, int index, Casinos._eLoginType val)
-        {
-		    
-            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
-            {
-			    if (LuaAPI.xlua_gettypeid(L, index) != Casinos_eLoginType_TypeID)
-				{
-				    throw new Exception("invalid userdata for Casinos._eLoginType");
-				}
-				
-                IntPtr buff = LuaAPI.lua_touserdata(L, index);
-                if (!CopyByValue.Pack(buff, 0,  (int)val))
-                {
-                    throw new Exception("pack fail for Casinos._eLoginType ,value="+val);
-                }
-            }
-			
-            else
-            {
-                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
-            }
-        }
-        
         int _ePayType_TypeID = -1;
 		int _ePayType_EnumRef = -1;
         
@@ -2322,12 +2237,6 @@ namespace XLua
 				translator.PushCasinos_eChatItemType(L, array[index]);
 				return true;
 			}
-			else if (type == typeof(Casinos._eLoginType[]))
-			{
-			    Casinos._eLoginType[] array = obj as Casinos._eLoginType[];
-				translator.PushCasinos_eLoginType(L, array[index]);
-				return true;
-			}
 			else if (type == typeof(_ePayType[]))
 			{
 			    _ePayType[] array = obj as _ePayType[];
@@ -2487,12 +2396,6 @@ namespace XLua
 			else if (type == typeof(Casinos._eChatItemType[]))
 			{
 			    Casinos._eChatItemType[] array = obj as Casinos._eChatItemType[];
-				translator.Get(L, obj_idx, out array[array_idx]);
-				return true;
-			}
-			else if (type == typeof(Casinos._eLoginType[]))
-			{
-			    Casinos._eLoginType[] array = obj as Casinos._eLoginType[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}

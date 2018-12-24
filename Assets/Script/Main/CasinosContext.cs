@@ -23,13 +23,6 @@ namespace Casinos
         Marquee,
     }
 
-    public enum _eLoginType
-    {
-        Acc,
-        Guest,
-        WeiXin,
-    }
-
     [LuaCallCSharp]
     public class CasinosContext
     {
@@ -51,7 +44,6 @@ namespace Casinos
         public SpineMgr SpineMgr { get; private set; }
         public NativeMgr NativeMgr { get; set; }
         public NativeAPIMsgReceiverListener NativeAPIMsgReceiverListner { get; set; }
-        public _eLoginType LoginType { get; set; }
         public bool UseHttps { get; set; }
         public bool CanReportLog { get; set; }
         public string CanReportLogDeviceId { get; set; }
