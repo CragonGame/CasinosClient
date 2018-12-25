@@ -145,25 +145,25 @@ end
 
 ---------------------------------------
 -- 充值通知
-function ViewWallet:OnWalletRechargeNotify(data)
+function ViewWallet:OnWalletRechargeNotify(result, trans_record)
     print('ViewWallet:OnWalletRechargeNotify()')
 end
 
 ---------------------------------------
 -- 响应提现
-function ViewWallet:OnWalletWithdrawRequestResult(data)
+function ViewWallet:OnWalletWithdrawRequestResult(result, trans_record)
     print('ViewWallet:OnWalletWithdrawRequestResult()')
 end
 
 ---------------------------------------
 -- 提现状态变更通知
-function ViewWallet:OnWalletWithdrawStatusChangeNotify(data)
+function ViewWallet:OnWalletWithdrawStatusChangeNotify(result, trans_record)
     print('ViewWallet:OnWalletWithdrawStatusChangeNotify()')
 end
 
 ---------------------------------------
 -- 提现通知
-function ViewWallet:OnWalletWithdrawNotify(data)
+function ViewWallet:OnWalletWithdrawNotify(result, trans_record)
     print('ViewWallet:OnWalletWithdrawNotify()')
 end
 
@@ -188,7 +188,7 @@ end
 
 ---------------------------------------
 -- 获取交易记录通知
-function ViewWallet:OnWalletGetTransListNotify(data)
+function ViewWallet:OnWalletGetTransListNotify(list_trans_record)
     print('ViewWallet:OnWalletGetTransListNotify()')
 end
 
@@ -199,7 +199,7 @@ function ViewWallet:OnWalletWithdrawAddressValidNotify(data)
 end
 
 ---------------------------------------
--- 提现通知
+-- 响应获取本人VCoin信息
 function ViewWallet:OnVCoinGetMyVCoinInfoResponse(data)
     print('ViewWallet:OnVCoinGetMyVCoinInfoResponse()')
 end

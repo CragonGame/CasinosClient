@@ -12,36 +12,36 @@ end
 ---------------------------------------
 function ControllerWallet:OnCreate()
     -- 充值通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletRechargeNotify, function(data)
-        self:S2cWalletRechargeNotify(data)
+    self.ControllerMgr.Rpc:RegRpcMethod2(self.MethodType.WalletRechargeNotify, function(result, trans_record)
+        self:S2cWalletRechargeNotify(result, trans_record)
     end)
     -- 响应提现
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawRequestResult, function(data)
-        self:S2cWalletWithdrawRequestResult(data)
+    self.ControllerMgr.Rpc:RegRpcMethod2(self.MethodType.WalletWithdrawRequestResult, function(result, trans_record)
+        self:S2cWalletWithdrawRequestResult(result, trans_record)
     end)
     -- 提现状态变更通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawStatusChangeNotify, function(data)
-        self:S2cWalletWithdrawStatusChangeNotify(data)
+    self.ControllerMgr.Rpc:RegRpcMethod2(self.MethodType.WalletWithdrawStatusChangeNotify, function(result, trans_record)
+        self:S2cWalletWithdrawStatusChangeNotify(result, trans_record)
     end)
     -- 提现通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawNotify, function(data)
-        self:S2cWalletWithdrawNotify(data)
+    self.ControllerMgr.Rpc:RegRpcMethod2(self.MethodType.WalletWithdrawNotify, function(result, trans_record)
+        self:S2cWalletWithdrawNotify(result, trans_record)
     end)
     -- 获取虚拟币地址通知
     self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletGetOrGenerateAddressNotify, function(data)
         self:S2cWalletGetOrGenerateAddressNotify(data)
     end)
     -- 获取交易记录通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletGetTransListNotify, function(data)
-        self:S2cWalletGetTransListNotify(data)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletGetTransListNotify, function(list_trans_record)
+        self:S2cWalletGetTransListNotify(list_trans_record)
     end)
     -- 验证提现地址有效性通知
     self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawAddressValidNotify, function(data)
         self:S2cWalletWithdrawAddressValidNotify(data)
     end)
     -- 响应获取本人VCoin信息
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.VCoinGetMyVCoinInfoResponse, function(data)
-        self:S2cVCoinGetMyVCoinInfoResponse(data)
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.VCoinGetMyVCoinInfoResponse, function(list_myvcoininfo)
+        self:S2cVCoinGetMyVCoinInfoResponse(list_myvcoininfo)
     end)
 end
 
@@ -113,20 +113,20 @@ end
 
 ---------------------------------------
 -- 充值通知
-function ControllerWallet:S2cWalletRechargeNotify(data)
-    local wallet_recharge_notify = WalletRechargeNotify:new(nil)
-    wallet_recharge_notify:setData(data)
-    print('Result=' .. wallet_recharge_notify.Result)
-    print('Id=' .. wallet_recharge_notify.Id)
-    print('MoneyType=' .. wallet_recharge_notify.MoneyType)
-    print('Address=' .. wallet_recharge_notify.Address)
-    print('Memo=' .. wallet_recharge_notify.Memo)
-    print('Volume=' .. wallet_recharge_notify.Volume)
-    print('Fee=' .. wallet_recharge_notify.Fee)
+function ControllerWallet:S2cWalletRechargeNotify(result, trans_record)
+    --local wallet_recharge_notify = WalletRechargeNotify:new(nil)
+    --wallet_recharge_notify:setData(data)
+    --print('Result=' .. wallet_recharge_notify.Result)
+    --print('Id=' .. wallet_recharge_notify.Id)
+    --print('MoneyType=' .. wallet_recharge_notify.MoneyType)
+    --print('Address=' .. wallet_recharge_notify.Address)
+    --print('Memo=' .. wallet_recharge_notify.Memo)
+    --print('Volume=' .. wallet_recharge_notify.Volume)
+    --print('Fee=' .. wallet_recharge_notify.Fee)
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnWalletRechargeNotify(wallet_recharge_notify)
+        view:OnWalletRechargeNotify(result, trans_record)
     end
 end
 
