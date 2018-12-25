@@ -17,7 +17,6 @@ function AttachWechatMp:new(o)
     o.open_id = nil
     o.nick_name = nil
     o.headimgurl = nil
-
     return o
 end
 
@@ -37,7 +36,6 @@ function LoginAccountInfos:new(o)
     self.__index = self
     o.LastLoginType = 0
     o.TLoginAccountInfo = {}
-
     return o
 end
 
@@ -65,7 +63,6 @@ function LoginAccountInfo:new(o)
     o.AccName = nil
     o.Phone = nil
     o.Pwd = nil
-
     return o
 end
 
@@ -113,7 +110,6 @@ function ClientLoginAppNotify:new(o)
     setmetatable(o, self)
     self.__index = self
     o.result = 0
-
     return o
 end
 
@@ -132,7 +128,6 @@ function ClientEnterWorldRequest:new(o)
     o.acc_name = nil
     o.token = nil
     o.invite_id = nil
-
     return o
 end
 
@@ -142,7 +137,6 @@ function ClientEnterWorldRequest:getData4Pack()
     table.insert(t, self.acc_name)
     table.insert(t, self.token)
     table.insert(t, self.invite_id)
-
     return t
 end
 
@@ -158,7 +152,6 @@ function ClientEnterWorldNotify:new(o)
     o.player_data = nil
     o.player_play_state = nil
     o.attach_wechat = nil
-
     return o
 end
 
@@ -167,15 +160,13 @@ function ClientEnterWorldNotify:setData(data)
     self.player_guid = data[2]
     self.player_data = data[3]
     local player_state = data[4]
-    if (player_state ~= nil)
-    then
+    if (player_state ~= nil) then
         local state = PlayerPlayState1:new(nil)
         state:setData(player_state)
         self.player_play_state = state
     end
     local we_chat = data[5]
-    if (we_chat ~= nil)
-    then
+    if (we_chat ~= nil) then
         local we_chat1 = AttachWechatMp:new(nil)
         we_chat1:setData(we_chat)
         self.attach_wechat = we_chat1
@@ -194,7 +185,6 @@ function PlayerPlayState1:new(o)
     o.DesktopGuid = nil
     o.UserData1 = nil
     o.UserData2 = nil
-
     return o
 end
 

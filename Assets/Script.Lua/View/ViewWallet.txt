@@ -150,6 +150,18 @@ function ViewWallet:OnWalletRechargeNotify(data)
 end
 
 ---------------------------------------
+-- 响应提现
+function ViewWallet:OnWalletWithdrawRequestResult(data)
+    print('ViewWallet:OnWalletWithdrawRequestResult()')
+end
+
+---------------------------------------
+-- 提现状态变更通知
+function ViewWallet:OnWalletWithdrawStatusChangeNotify(data)
+    print('ViewWallet:OnWalletWithdrawStatusChangeNotify()')
+end
+
+---------------------------------------
 -- 提现通知
 function ViewWallet:OnWalletWithdrawNotify(data)
     print('ViewWallet:OnWalletWithdrawNotify()')
@@ -184,6 +196,12 @@ end
 -- 验证提现地址有效性通知
 function ViewWallet:OnWalletWithdrawAddressValidNotify(data)
     print('ViewWallet:OnWalletWithdrawAddressValidNotify()')
+end
+
+---------------------------------------
+-- 提现通知
+function ViewWallet:OnVCoinGetMyVCoinInfoResponse(data)
+    print('ViewWallet:OnVCoinGetMyVCoinInfoResponse()')
 end
 
 ---------------------------------------

@@ -51,6 +51,11 @@ GoldAccChangeReason = {
     ForestPartyBankerLose = 603,
     MatchTexasSignUp = 700, -- 扣除报名费+服务费
     MatchTexasSignUpBack = 701, -- 返还报名费+服务费
+    MatchTexasRebuy = 702, -- 重购
+    MatchTexasAddon = 703, -- 增购
+    VCoinCharge = 800, -- 虚拟币充值，增加GoldAcc
+    VCoinWithdrawRequest = 801, --虚拟币提现发起，扣除GoldAcc
+    VCoinWithdrawRequestFaild = 802, -- 虚拟币提现失败，返还GoldAcc
 }
 
 ---------------------------------------

@@ -18,6 +18,28 @@ WalletResult = {
 }
 
 ---------------------------------------
+-- 本人VCoin信息
+MyVCoinInfo = {}
+
+function MyVCoinInfo:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Channel = nil
+    return o
+end
+
+function MyVCoinInfo:getData4Pack()
+    local t = {}
+    table.insert(t, self.Channel)
+    return t
+end
+
+function MyVCoinInfo:setData(data)
+    self.Channel = data[1]
+end
+
+---------------------------------------
 -- 充值请求
 WalletRechargeRequest = {}
 
@@ -36,7 +58,6 @@ function WalletRechargeRequest:getData4Pack()
     table.insert(t, self.MoneyType)
     table.insert(t, self.Amount)
     table.insert(t, self.Channel)
-
     return t
 end
 
@@ -100,6 +121,38 @@ function WalletWithdrawRequest:setData(data)
     self.MoneyType = data[1]
     self.Amount = data[2]
     self.Channel = data[3]
+end
+
+---------------------------------------
+-- 响应提现
+WalletWithdrawNotify = {}
+
+function WalletWithdrawNotify:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Result = WalletResult.Success
+    return o
+end
+
+function WalletWithdrawNotify:setData(data)
+    self.Result = data[1]
+end
+
+---------------------------------------
+-- 提现状态变更通知
+WalletWithdrawNotify = {}
+
+function WalletWithdrawNotify:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Result = WalletResult.Success
+    return o
+end
+
+function WalletWithdrawNotify:setData(data)
+    self.Result = data[1]
 end
 
 ---------------------------------------

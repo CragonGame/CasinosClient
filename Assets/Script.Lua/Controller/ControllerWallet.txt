@@ -15,6 +15,14 @@ function ControllerWallet:OnCreate()
     self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletRechargeNotify, function(data)
         self:S2cWalletRechargeNotify(data)
     end)
+    -- 响应提现
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawRequestResult, function(data)
+        self:S2cWalletWithdrawRequestResult(data)
+    end)
+    -- 提现状态变更通知
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawStatusChangeNotify, function(data)
+        self:S2cWalletWithdrawStatusChangeNotify(data)
+    end)
     -- 提现通知
     self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawNotify, function(data)
         self:S2cWalletWithdrawNotify(data)
@@ -30,6 +38,10 @@ function ControllerWallet:OnCreate()
     -- 验证提现地址有效性通知
     self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.WalletWithdrawAddressValidNotify, function(data)
         self:S2cWalletWithdrawAddressValidNotify(data)
+    end)
+    -- 响应获取本人VCoin信息
+    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.VCoinGetMyVCoinInfoResponse, function(data)
+        self:S2cVCoinGetMyVCoinInfoResponse(data)
     end)
 end
 
@@ -94,6 +106,12 @@ function ControllerWallet:WalletWithdrawAddressValidRequest()
 end
 
 ---------------------------------------
+-- 请求获取本人VCoin信息
+function ControllerWallet:RequestWalletGetMyVCoinInfo()
+    self.ControllerMgr.Rpc:RPC0(self.MethodType.VCoinGetMyVCoinInfoRequest)
+end
+
+---------------------------------------
 -- 充值通知
 function ControllerWallet:S2cWalletRechargeNotify(data)
     local wallet_recharge_notify = WalletRechargeNotify:new(nil)
@@ -108,7 +126,25 @@ function ControllerWallet:S2cWalletRechargeNotify(data)
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnWalletRechargeNotify(data)
+        view:OnWalletRechargeNotify(wallet_recharge_notify)
+    end
+end
+
+---------------------------------------
+-- 响应提现
+function ControllerWallet:S2cWalletWithdrawRequestResult(data)
+    local view = self.ViewMgr:GetView('Wallet')
+    if view ~= nil then
+        view:OnWalletWithdrawRequestResult(data)
+    end
+end
+
+---------------------------------------
+-- 提现状态变更通知
+function ControllerWallet:S2cWalletWithdrawStatusChangeNotify(data)
+    local view = self.ViewMgr:GetView('Wallet')
+    if view ~= nil then
+        view:OnWalletWithdrawStatusChangeNotify(data)
     end
 end
 
@@ -158,7 +194,20 @@ function ControllerWallet:S2cWalletWithdrawAddressValidNotify(data)
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnWalletWithdrawAddressValidNotify(data)
+        view:OnWalletWithdrawAddressValidNotify(wallet_withdrawaddressvalid_notify)
+    end
+end
+
+---------------------------------------
+-- 响应获取本人VCoin信息
+function ControllerWallet:S2cVCoinGetMyVCoinInfoResponse(data)
+    local my_vcoin_info = MyVCoinInfo:new(nil)
+    my_vcoin_info:setData(data)
+    print('Channel=' .. my_vcoin_info.Channel)
+
+    local view = self.ViewMgr:GetView('Wallet')
+    if view ~= nil then
+        view:OnVCoinGetMyVCoinInfoResponse(my_vcoin_info)
     end
 end
 
