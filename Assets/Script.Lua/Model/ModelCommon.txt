@@ -332,21 +332,18 @@ MethodType = {
 
     MsgPackIMEnd = 20999,
 
-    --Wallet
+    -- VCoin
     MsgPackVCoinBegin = 21000,
 
-    WalletRechargeRequest = 21001, --请求充值
-    WalletRechargeNotify = 21002, -- 充值通知
-    WalletWithdrawRequest = 21005, -- 请求提现
-    WalletWithdrawRequestResult = 21006, -- 响应提现
-    WalletWithdrawStatusChangeNotify = 21007, -- 提现状态变更通知
-    WalletWithdrawNotify = 21008, -- 提现通知
-    WalletGetOrGenerateAddressRequest = 21009, -- 请求获取虚拟币地址
-    WalletGetOrGenerateAddressNotify = 21010, -- 获取虚拟币地址通知
-    WalletGetTransListRequest = 21013, -- 请求获取交易记录
-    WalletGetTransListNotify = 21014, -- 获取交易记录通知
-    WalletWithdrawAddressValidRequest = 21017, -- 请求验证提现地址有效性
-    WalletWithdrawAddressValidNotify = 21018, -- 验证提现地址有效性通知
+    VCoinChargeRequest = 21001, --请求充值
+    VCoinWithdrawRequest = 21003, -- 请求提现
+    VCoinTransNotify = 21005, -- 交易通知
+    VCoinGetOrGenerateAddressRequest = 21009, -- 请求获取虚拟币地址
+    VCoinGetOrGenerateAddressNotify = 21010, -- 获取虚拟币地址通知
+    VCoinGetTransListRequest = 21013, -- 请求获取交易记录
+    VCoinGetTransListNotify = 21014, -- 获取交易记录通知
+    VCoinWithdrawAddressValidRequest = 21017, -- 请求验证提现地址有效性
+    VCoinWithdrawAddressValidNotify = 21018, -- 验证提现地址有效性通知
     VCoinGetMyVCoinInfoRequest = 21023, -- 请求获取本人VCoin信息
     VCoinGetMyVCoinInfoResponse = 21024, -- 响应获取本人VCoin信息
 

@@ -95,7 +95,6 @@ ControllerLogin = class(ControllerBase)
 function ControllerLogin:ctor(controller_data, controller_name)
     self.Password = nil
     self.RemeberPwd = false
-    --self.RequestThirdPartyLogin = false
     self.BindingWeChat = false
     self.AutoLogin = false
     self.AutoLoginTm = 0
@@ -159,16 +158,13 @@ end
 function ControllerLogin:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvUiLogin") then
-            print('处理微信登录消息')
             local login_type = ev.login_type
             self.LoginType = login_type
-            print('self.LoginType=' .. tostring(self.LoginType))
             self.Acc = ev.acc
             self.Pwd = ev.pwd
             local remeber_pwd = ev.remeber_pwd
             self.RemeberPwd = remeber_pwd
             self.Phone = ev.phone
-            print('login_type=' .. login_type)
             -- todo，还原点击登录时，检测更新的功能
             --MainC:LoadConfig(true, function(bo)
             --    self:_clickCheckDataCallBack(bo)
@@ -237,7 +233,6 @@ function ControllerLogin:OnHandleEv(ev)
         elseif (ev.EventName == "EvBindWechat") then
             ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:getLanValue("BindWeChatTips"), function()
                 ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("BindingWeChat"), 10)
-                --self.RequestThirdPartyLogin = true
                 self.BindingWeChat = true
             end)
         elseif (ev.EventName == "EvUnbindWechat") then
@@ -263,14 +258,6 @@ end
 
 ---------------------------------------
 function ControllerLogin:_timerUpdate(tm)
-    --if (self.RequestThirdPartyLogin) then
-    --    self.RequestThirdPartyLogin = false
-    --    --if (self.LoginType == CS.Casinos._eLoginType.WeiXin or self.BindingWeChat) then
-    --    self.CasinosContext:SetNativeOperate(1)
-    --    CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.Context.Cfg.WeChatState, "Login")
-    --    --end
-    --end
-
     --if self.AutoLogin then
     --    self.AutoLoginTm = self.AutoLoginTm + tm
     --    if self.AutoLoginTm >= 5 then
@@ -775,7 +762,7 @@ function ControllerLogin:_init(is_init)
     local acc = ""
     local pwd = ""
     local view_login = self.ViewMgr:CreateView("Login")
-    --self.RequestThirdPartyLogin = false
+
     if (CS.UnityEngine.PlayerPrefs.HasKey(self.LoginAccountInfoKey)) then
         local s = CS.UnityEngine.PlayerPrefs.GetString(self.LoginAccountInfoKey)
         local t_decode = self.ControllerMgr.Json.decode(s)
@@ -827,7 +814,6 @@ end
 
 ---------------------------------------
 function ControllerLogin:_clickCheckDataCallBack(bo)
-    print('self.LoginType=' .. self.LoginType)
     if bo == false then
         if (self.LoginType == 0) then
             self:RequestLogin("", self.Pwd, self.Acc, "", "")
@@ -836,8 +822,6 @@ function ControllerLogin:_clickCheckDataCallBack(bo)
         elseif (self.LoginType == 2) then
             print('111111111111')
             ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("WeChatLogining"), 10)
-            print('222222222')
-            --self.RequestThirdPartyLogin = true
             self.CasinosContext:SetNativeOperate(1)
             print('33333333333333')
             CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.Context.Cfg.WeChatState, "Login")
@@ -848,24 +832,6 @@ function ControllerLogin:_clickCheckDataCallBack(bo)
         self.ViewMgr:DestroyView(view_login)
         local view_pool = self.ViewMgr:GetView("Pool")
         self.ViewMgr:DestroyView(view_pool)
-    end
-end
-
----------------------------------------
-function ControllerLogin:_autoCheckDataCallBack(bo)
-    if bo == false then
-        if (self.LoginType == 1) then
-            self:RequestGuestAccess()
-        end
-
-        if (self.LoginType == 0) then
-            self:RequestLogin("", self.Pwd, self.Acc, "", "")
-        end
-
-        if (self.LoginType == 2) then
-            ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("WeChatLogining"), 10)
-            --self.RequestThirdPartyLogin = true
-        end
     end
 end
 

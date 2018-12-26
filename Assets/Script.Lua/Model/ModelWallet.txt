@@ -7,10 +7,6 @@ MoneyType = {
     EUR = 2, -- 欧元
     NGN = 3, -- 尼日利亚，奈拉
     GHC = 4, -- 加纳，塞地
-
-    -- 虚拟币
-    BitCNY = 1000,
-    BTC = 1001,
 }
 
 WalletResult = {
@@ -34,9 +30,9 @@ VCoinWithdrawStatus = {
 
 ---------------------------------------
 -- 本人VCoin信息
-MyVCoinInfo = {}
+VCoinMyInfo = {}
 
-function MyVCoinInfo:new(o)
+function VCoinMyInfo:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -46,7 +42,7 @@ function MyVCoinInfo:new(o)
     return o
 end
 
-function MyVCoinInfo:getData4Pack()
+function VCoinMyInfo:getData4Pack()
     local t = {}
     table.insert(t, self.Currency)
     table.insert(t, self.Address)
@@ -54,14 +50,14 @@ function MyVCoinInfo:getData4Pack()
     return t
 end
 
-function MyVCoinInfo:setData(data)
+function VCoinMyInfo:setData(data)
     self.Currency = data[1]
     self.Address = data[1]
     self.Memo = data[1]
 end
 
 ---------------------------------------
--- 交易记录
+-- 一条交易记录
 VCoinTransRecord = {}
 
 function VCoinTransRecord:new(o)
@@ -70,6 +66,7 @@ function VCoinTransRecord:new(o)
     self.__index = self
     o.Id = nil
     o.ChargeOrWithdraw = false--false=Charge,true=Withdraw
+    o.Currency = nil
     o.Volume = 0
     o.Dt = nil
     o.WithdrawStatus = VCoinWithdrawStatus.None
@@ -79,102 +76,108 @@ end
 function VCoinTransRecord:setData(data)
     self.Id = data[1]
     self.ChargeOrWithdraw = data[2]
-    self.Volume = data[3]
-    self.Dt = data[4]
-    self.WithdrawStatus = data[5]
+    self.Currency = data[3]
+    self.Volume = data[4]
+    self.Dt = data[5]
+    self.WithdrawStatus = data[6]
 end
 
 ---------------------------------------
 -- 提现请求
-WalletWithdrawRequest = {}
+VCoinWithdrawRequest = {}
 
-function WalletWithdrawRequest:new(o)
+function VCoinWithdrawRequest:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    o.MoneyType = MoneyType.CNY
-    o.Amount = 0
     o.Channel = nil
-    return o
-end
-
-function WalletWithdrawRequest:getData4Pack()
-    local t = {}
-    table.insert(t, self.MoneyType)
-    table.insert(t, self.Amount)
-    table.insert(t, self.Channel)
-    return t
-end
-
-function WalletWithdrawRequest:setData(data)
-    self.MoneyType = data[1]
-    self.Amount = data[2]
-    self.Channel = data[3]
-end
-
----------------------------------------
--- 获取虚拟币地址通知
-WalletGetOrGenerateAddressNotify = {}
-
-function WalletGetOrGenerateAddressNotify:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Result = WalletResult.Success
-    o.MoneyType = nil
+    o.Currency = nil
+    o.Volume = 0
     o.Address = nil
     o.Memo = nil
     return o
 end
 
-function WalletGetOrGenerateAddressNotify:setData(data)
+function VCoinWithdrawRequest:getData4Pack()
+    local t = {}
+    table.insert(t, self.Channel)
+    table.insert(t, self.Currency)
+    table.insert(t, self.Volume)
+    table.insert(t, self.Address)
+    table.insert(t, self.Memo)
+    return t
+end
+
+function VCoinWithdrawRequest:setData(data)
+    self.Channel = data[1]
+    self.Currency = data[2]
+    self.Volume = data[2]
+    self.Address = data[2]
+    self.Memo = data[2]
+end
+
+---------------------------------------
+-- 获取虚拟币地址通知
+VCoinGetOrGenerateAddressNotify = {}
+
+function VCoinGetOrGenerateAddressNotify:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Result = WalletResult.Success
+    o.Currency = nil
+    o.Address = nil
+    o.Memo = nil
+    return o
+end
+
+function VCoinGetOrGenerateAddressNotify:setData(data)
     self.Result = data[1]
-    self.MoneyType = data[2]
+    self.Currency = data[2]
     self.Address = data[3]
     self.Memo = data[4]
 end
 
 ---------------------------------------
 -- 请求验证提现地址有效性
-WalletWithdrawAddressValidRequest = {}
+VCoinWithdrawAddressValidRequest = {}
 
-function WalletWithdrawAddressValidRequest:new(o)
+function VCoinWithdrawAddressValidRequest:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    o.MoneyType = MoneyType.CNY
     o.Channel = nil
+    o.Currency = nil
     o.Address = nil
     o.Memo = nil
     return o
 end
 
-function WalletWithdrawAddressValidRequest:getData4Pack()
+function VCoinWithdrawAddressValidRequest:getData4Pack()
     local t = {}
-    table.insert(t, self.MoneyType)
     table.insert(t, self.Channel)
+    table.insert(t, self.Currency)
     table.insert(t, self.Address)
     table.insert(t, self.Memo)
     return t
 end
 
-function WalletWithdrawAddressValidRequest:setData(data)
-    self.MoneyType = data[1]
-    self.Channel = data[2]
+function VCoinWithdrawAddressValidRequest:setData(data)
+    self.Channel = data[1]
+    self.Currency = data[2]
     self.Address = data[3]
     self.Memo = data[4]
 end
 
 ---------------------------------------
 -- 验证提现地址有效性通知
-WalletWithdrawAddressValidNotify = {}
+VCoinWithdrawAddressValidNotify = {}
 
-function WalletWithdrawAddressValidNotify:new(o)
+function VCoinWithdrawAddressValidNotify:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     o.Result = WalletResult.Success
-    o.MoneyType = MoneyType.CNY
     o.Channel = nil
     o.Address = nil
     o.Memo = nil
@@ -182,11 +185,10 @@ function WalletWithdrawAddressValidNotify:new(o)
     return o
 end
 
-function WalletWithdrawAddressValidNotify:setData(data)
+function VCoinWithdrawAddressValidNotify:setData(data)
     self.Result = data[1]
-    self.MoneyType = data[2]
-    self.Channel = data[3]
-    self.Address = data[4]
-    self.Memo = data[5]
-    self.IsValid = data[6]
+    self.Channel = data[2]
+    self.Address = data[3]
+    self.Memo = data[4]
+    self.IsValid = data[5]
 end
