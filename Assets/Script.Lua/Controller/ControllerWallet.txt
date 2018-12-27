@@ -5,8 +5,9 @@ ControllerWallet = class(ControllerBase)
 
 ---------------------------------------
 function ControllerWallet:ctor(controller_data, controller_name)
-    self.Address = nil
-    self.Memo = nil
+    self.VCoinMyInfo = nil
+    self.VCoinCurrentInfo = nil
+    self.ListRecord = nil
 end
 
 ---------------------------------------
@@ -118,7 +119,7 @@ end
 ---------------------------------------
 -- 获取交易记录通知
 function ControllerWallet:S2cVCoinGetTransListNotify(data)
-    local list_record = nil
+    self.ListRecord = nil
 
     if data ~= nil then
         local t_l = {}
@@ -127,12 +128,12 @@ function ControllerWallet:S2cVCoinGetTransListNotify(data)
             s_b:setData(v)
             table.insert(t_l, s_b)
         end
-        list_record = t_l
+        self.ListRecord = t_l
     end
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnVCoinGetTransListNotify(list_record)
+        view:OnVCoinGetTransListNotify()
     end
 end
 
@@ -154,12 +155,18 @@ end
 ---------------------------------------
 -- 响应获取本人VCoin信息
 function ControllerWallet:S2cVCoinGetMyVCoinInfoResponse(data)
-    local my_vcoin_info = VCoinMyInfo:new(nil)
-    my_vcoin_info:setData(data)
+    if data ~= nil then
+        self.VCoinMyInfo = VCoinMyInfo:new(nil)
+        self.VCoinMyInfo:setData(data)
+        self.CurrentVCoinInfo = nil
+        if self.VCoinMyInfo.ListItem ~= nil and #self.VCoinMyInfo.ListItem > 0 then
+            self.CurrentVCoinInfo = self.VCoinMyInfo.ListItem[1]
+        end
+    end
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnVCoinGetMyVCoinInfoResponse(my_vcoin_info)
+        view:OnVCoinGetMyVCoinInfoResponse()
     end
 end
 

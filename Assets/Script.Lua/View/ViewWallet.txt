@@ -189,11 +189,11 @@ end
 
 ---------------------------------------
 -- 获取交易记录通知
-function ViewWallet:OnVCoinGetTransListNotify(list_record)
+function ViewWallet:OnVCoinGetTransListNotify()
     print('ViewWallet:OnVCoinGetTransListNotify()')
 
-    if list_record ~= nil then
-        for i, v in pairs(list_record) do
+    if self.CtrlWallet.ListRecord ~= nil then
+        for i, v in pairs(self.CtrlWallet.ListRecord) do
             local l_tm = CS.System.DateTime.Parse(v.Dt)
             local dt = CS.Casinos.UiHelper.getLocalTmToString(l_tm)
             print(string.format('Record Id=%s ChargeOrWithdraw=%s Currency=%s Volume=%s Dt=%s WithdrawStatus=%s',
@@ -204,10 +204,11 @@ end
 
 ---------------------------------------
 -- 响应获取本人VCoin信息
-function ViewWallet:OnVCoinGetMyVCoinInfoResponse(my_vcoin_info)
+function ViewWallet:OnVCoinGetMyVCoinInfoResponse()
     print('ViewWallet:OnVCoinGetMyVCoinInfoResponse()')
-    if my_vcoin_info.ListItem ~= nil then
-        for i, v in pairs(my_vcoin_info.ListItem) do
+
+    if self.CtrlWallet.VCoinMyInfo ~= nil and self.CtrlWallet.VCoinMyInfo.ListItem ~= nil and #self.CtrlWallet.VCoinMyInfo.ListItem > 0 then
+        for i, v in pairs(self.CtrlWallet.VCoinMyInfo.ListItem) do
             print(string.format('Currency=%s Address=%s Memo=%s', v.Currency, v.Address, v.Memo))
         end
     end
