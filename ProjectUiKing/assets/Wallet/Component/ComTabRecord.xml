@@ -2,7 +2,7 @@
 <component size="797,484">
   <displayList>
     <text id="n0_l4zq" name="n0" xy="23,10" size="171,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" bold="true" text="BitCNY交易记录"/>
-    <list id="n1_l4zq" name="n1" xy="23,77" size="748,407" overflow="scroll" defaultItem="ui://npdzqphel4zq1l">
+    <list id="n1_l4zq" name="ListRecord" xy="23,77" size="748,407" overflow="scroll" defaultItem="ui://npdzqphel4zq1l">
       <item/>
       <item/>
       <item/>

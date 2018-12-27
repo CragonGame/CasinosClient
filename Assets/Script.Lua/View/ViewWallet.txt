@@ -24,6 +24,7 @@ function ViewWallet:ctor()
     self.GComTabRecharge = nil
     self.GComTabWithdraw = nil
     self.GComTabRecord = nil
+    self.GListRecord = nil
 end
 
 ---------------------------------------
@@ -105,6 +106,13 @@ function ViewWallet:OnCreate()
             function()
                 self:_onClickBtnCopyMemo()
             end)
+
+    self.GListRecord = self.GComTabRecord:GetChild("ListRecord").asList
+    self.GListRecord.itemRenderer = function(a, b)
+        self:RenderListRecord(a, b)
+    end
+    self.GListRecord:SetVirtual()
+    self.GListRecord.numItems = 0
 
     self:createChip()
 
@@ -199,6 +207,8 @@ function ViewWallet:OnVCoinGetTransListNotify()
             print(string.format('Record Id=%s ChargeOrWithdraw=%s Currency=%s Volume=%s Dt=%s WithdrawStatus=%s',
                     v.Id, v.ChargeOrWithdraw, v.Currency, v.Volume, dt, v.WithdrawStatus))
         end
+
+        self.GListRecord.numItems = #self.CtrlWallet.ListRecord
     end
 end
 
@@ -244,6 +254,31 @@ function ViewWallet:onClickBtnGetMoney()
     --end
     --ev.GetMoneyNum = n
     --self:SendEv(ev)
+end
+
+---------------------------------------
+function ViewWallet:RenderListRecord(index, obj)
+    local com = CS.Casinos.LuaHelper.GObjectCastToGCom(obj)
+    local text1 = com:GetChild("n1").asTextField
+    local text2 = com:GetChild("n2").asTextField
+    local text3 = com:GetChild("n3").asTextField
+    local text4 = com:GetChild("n4").asTextField
+
+    if self.CtrlWallet.ListRecord ~= nil then
+        if #self.CtrlWallet.ListRecord > index then
+            local item = self.CtrlWallet.ListRecord[index + 1]
+            local l_tm = CS.System.DateTime.Parse(item.Dt)
+            local dt = CS.Casinos.UiHelper.getLocalTmToString(l_tm)
+            if item.ChargeOrWithdraw == true then
+                text1.text = '充值'
+            else
+                text1.text = '提现'
+            end
+            text2.text = dt
+            text3.text = item.Volume
+            text4.text = item.Currency
+        end
+    end
 end
 
 ---------------------------------------
