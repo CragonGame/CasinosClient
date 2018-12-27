@@ -108,9 +108,13 @@ function ViewWallet:OnCreate()
             end)
 
     self.GListRecord = self.GComTabRecord:GetChild("ListRecord").asList
-    self.GListRecord.itemRenderer = function(a, b)
-        self:RenderListRecord(a, b)
+    self.GListRecord.itemRenderer = function(index, obj)
+        self:_renderListRecord(index, obj)
     end
+    self.GListRecord.onClickItem:Add(
+            function(ev_context)
+                self:_onClickListRecordItem(ev_context)
+            end)
     self.GListRecord:SetVirtual()
     self.GListRecord.numItems = 0
 
@@ -133,14 +137,15 @@ function ViewWallet:OnCreate()
     self.CtrlWallet:RequestVCoinGetVCoinMyInfo()
     self.CtrlWallet:RequestVCoinWithdraw()
     self.CtrlWallet:RequestVCoinWithdrawAddressValid()
-    self.CtrlWallet:RequestVCoinGetTransList()
 end
 
 ---------------------------------------
 function ViewWallet:OnDestroy()
     self.GBtnReturn.onClick:Clear()
+    self.GListRecord.onClickItem:Clear()
     self.GBtnTabRecharge.onClick:Clear()
     self.GBtnTabWithdraw.onClick:Clear()
+    self.GBtnTabRecord.onClick:Clear()
 
     self:UnbindEvListener(self)
 end
@@ -169,9 +174,9 @@ end
 ---------------------------------------
 -- 获取虚拟币地址通知
 function ViewWallet:OnVCoinGetOrGenerateAddressNotify(vcoin_getorgenerate_address_notify)
-    print('ViewWallet:OnVCoinGetOrGenerateAddressNotify()')
-    print(string.format('Currency=%s Address=%s Memo=%s',
-            vcoin_getorgenerate_address_notify.Currency, vcoin_getorgenerate_address_notify.Address, vcoin_getorgenerate_address_notify.Memo))
+    --print('ViewWallet:OnVCoinGetOrGenerateAddressNotify()')
+    --print(string.format('Currency=%s Address=%s Memo=%s',
+    --        vcoin_getorgenerate_address_notify.Currency, vcoin_getorgenerate_address_notify.Address, vcoin_getorgenerate_address_notify.Memo))
 
     -- 设置二维码
     local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
@@ -198,15 +203,15 @@ end
 ---------------------------------------
 -- 获取交易记录通知
 function ViewWallet:OnVCoinGetTransListNotify()
-    print('ViewWallet:OnVCoinGetTransListNotify()')
+    --print('ViewWallet:OnVCoinGetTransListNotify()')
 
     if self.CtrlWallet.ListRecord ~= nil then
-        for i, v in pairs(self.CtrlWallet.ListRecord) do
-            local l_tm = CS.System.DateTime.Parse(v.Dt)
-            local dt = CS.Casinos.UiHelper.getLocalTmToString(l_tm)
-            print(string.format('Record Id=%s ChargeOrWithdraw=%s Currency=%s Volume=%s Dt=%s WithdrawStatus=%s',
-                    v.Id, v.ChargeOrWithdraw, v.Currency, v.Volume, dt, v.WithdrawStatus))
-        end
+        --for i, v in pairs(self.CtrlWallet.ListRecord) do
+        --    local l_tm = CS.System.DateTime.Parse(v.Dt)
+        --    local dt = CS.Casinos.UiHelper.getLocalTmToString(l_tm)
+        --    print(string.format('Record Id=%s ChargeOrWithdraw=%s Currency=%s Volume=%s Dt=%s WithdrawStatus=%s',
+        --            v.Id, v.ChargeOrWithdraw, v.Currency, v.Volume, dt, v.WithdrawStatus))
+        --end
 
         self.GListRecord.numItems = #self.CtrlWallet.ListRecord
     end
@@ -215,12 +220,18 @@ end
 ---------------------------------------
 -- 响应获取本人VCoin信息
 function ViewWallet:OnVCoinGetMyVCoinInfoResponse()
-    print('ViewWallet:OnVCoinGetMyVCoinInfoResponse()')
+    --print('ViewWallet:OnVCoinGetMyVCoinInfoResponse()')
 
-    if self.CtrlWallet.VCoinMyInfo ~= nil and self.CtrlWallet.VCoinMyInfo.ListItem ~= nil and #self.CtrlWallet.VCoinMyInfo.ListItem > 0 then
-        for i, v in pairs(self.CtrlWallet.VCoinMyInfo.ListItem) do
-            print(string.format('Currency=%s Address=%s Memo=%s', v.Currency, v.Address, v.Memo))
-        end
+    --if self.CtrlWallet.VCoinMyInfo ~= nil and self.CtrlWallet.VCoinMyInfo.ListItem ~= nil and #self.CtrlWallet.VCoinMyInfo.ListItem > 0 then
+    --    for i, v in pairs(self.CtrlWallet.VCoinMyInfo.ListItem) do
+    --        print(string.format('Currency=%s Address=%s Memo=%s', v.Currency, v.Address, v.Memo))
+    --    end
+    --end
+
+    -- 设置Text Address&Memo
+    if self.CtrlWallet.VCoinCurrentInfo ~= nil then
+        self.GTxtAddress.text = self.CtrlWallet.VCoinCurrentInfo.Address
+        self.GTxtMemo.text = self.CtrlWallet.VCoinCurrentInfo.Memo
     end
 end
 
@@ -257,7 +268,7 @@ function ViewWallet:onClickBtnGetMoney()
 end
 
 ---------------------------------------
-function ViewWallet:RenderListRecord(index, obj)
+function ViewWallet:_renderListRecord(index, obj)
     local com = CS.Casinos.LuaHelper.GObjectCastToGCom(obj)
     local text1 = com:GetChild("n1").asTextField
     local text2 = com:GetChild("n2").asTextField
@@ -279,6 +290,13 @@ function ViewWallet:RenderListRecord(index, obj)
             text4.text = item.Currency
         end
     end
+end
+
+---------------------------------------
+function ViewWallet:_onClickListRecordItem(ev_context)
+    local com = ev_context.data.asCom
+    local text2 = com:GetChild("n2").asTextField
+    print('_onClickListRecordItem Dt=' .. text2.text)
 end
 
 ---------------------------------------
@@ -315,13 +333,15 @@ function ViewWallet:_onClickBtnTabRecord()
     gctrl_tabrecord_state.selectedIndex = 1
 
     self.GCtrlTab.selectedIndex = 2
+
+    self.CtrlWallet:RequestVCoinGetTransList()
 end
 
 ---------------------------------------
 -- 点击按钮，复制Address到剪切板
 function ViewWallet:_onClickBtnCopyAddress()
-    if self.CtrlWallet.Address ~= nil and string.len(self.CtrlWallet.Address) > 0 then
-        self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.Address)
+    if self.CtrlWallet.VCoinCurrentInfo ~= nil then
+        self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.VCoinCurrentInfo.Address)
         local address = self.CasinosContext.LuaMgr:GetClipBoard()
         ViewHelper:UiShowInfoSuccess('已将' .. tostring(address) .. '复制到剪切板')
     else
@@ -332,8 +352,8 @@ end
 ---------------------------------------
 -- 点击按钮，复制Memo到剪切板
 function ViewWallet:_onClickBtnCopyMemo()
-    if self.CtrlWallet.Memo ~= nil and string.len(self.CtrlWallet.Memo) > 0 then
-        self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.Memo)
+    if self.CtrlWallet.VCoinCurrentInfo ~= nil then
+        self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.VCoinCurrentInfo.Memo)
         local memo = self.CasinosContext.LuaMgr:GetClipBoard()
         ViewHelper:UiShowInfoSuccess('已将' .. tostring(memo) .. '复制到剪切板')
     else

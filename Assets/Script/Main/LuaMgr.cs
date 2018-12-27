@@ -297,6 +297,7 @@ namespace Casinos
             FuncLaunchOnApplicationPause = null;
             FuncLaunchOnApplicationFocus = null;
             FuncLaunchOnSocketClose = null;
+            LuaEnv.Tick();
 
             if (LuaEnv != null)
             {

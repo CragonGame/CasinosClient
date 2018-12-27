@@ -158,9 +158,9 @@ function ControllerWallet:S2cVCoinGetMyVCoinInfoResponse(data)
     if data ~= nil then
         self.VCoinMyInfo = VCoinMyInfo:new(nil)
         self.VCoinMyInfo:setData(data)
-        self.CurrentVCoinInfo = nil
+        self.VCoinCurrentInfo = nil
         if self.VCoinMyInfo.ListItem ~= nil and #self.VCoinMyInfo.ListItem > 0 then
-            self.CurrentVCoinInfo = self.VCoinMyInfo.ListItem[1]
+            self.VCoinCurrentInfo = self.VCoinMyInfo.ListItem[1]
         end
     end
 
