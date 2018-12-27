@@ -148,14 +148,22 @@ end
 
 ---------------------------------------
 -- 交易通知
-function ViewWallet:OnVCoinTransNotify(result, trans_record)
-    print('ViewWallet:OnVCoinTransNotify()')
+function ViewWallet:OnVCoinTransNotify(result, record)
+    print('ViewWallet:OnVCoinTransNotify() Result=' .. result)
+    if record ~= nil then
+        local l_tm = CS.System.DateTime.Parse(record.Dt)
+        local dt = CS.Casinos.UiHelper.getLocalTmToString(l_tm)
+        print(string.format('Record Id=%s ChargeOrWithdraw=%s Currency=%s Volume=%s Dt=%s WithdrawStatus=%s',
+                record.Id, record.ChargeOrWithdraw, record.Currency, record.Volume, dt, record.WithdrawStatus))
+    end
 end
 
 ---------------------------------------
 -- 获取虚拟币地址通知
 function ViewWallet:OnVCoinGetOrGenerateAddressNotify(vcoin_getorgenerate_address_notify)
     print('ViewWallet:OnVCoinGetOrGenerateAddressNotify()')
+    print(string.format('Currency=%s Address=%s Memo=%s',
+            vcoin_getorgenerate_address_notify.Currency, vcoin_getorgenerate_address_notify.Address, vcoin_getorgenerate_address_notify.Memo))
 
     -- 设置二维码
     local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
@@ -173,20 +181,36 @@ end
 
 ---------------------------------------
 -- 验证提现地址有效性通知
-function ViewWallet:OnVCoinWithdrawAddressValidNotify(data)
+function ViewWallet:OnVCoinWithdrawAddressValidNotify(wallet_withdrawaddressvalid_notify)
     print('ViewWallet:OnVCoinWithdrawAddressValidNotify()')
+    print(string.format('Address=%s Memo=%s IsValid=%s',
+            wallet_withdrawaddressvalid_notify.Address, wallet_withdrawaddressvalid_notify.Memo, wallet_withdrawaddressvalid_notify.IsValid))
 end
 
 ---------------------------------------
 -- 获取交易记录通知
-function ViewWallet:OnVCoinGetTransListNotify(list_trans_record)
+function ViewWallet:OnVCoinGetTransListNotify(list_record)
     print('ViewWallet:OnVCoinGetTransListNotify()')
+
+    if list_record ~= nil then
+        for i, v in pairs(list_record) do
+            local l_tm = CS.System.DateTime.Parse(v.Dt)
+            local dt = CS.Casinos.UiHelper.getLocalTmToString(l_tm)
+            print(string.format('Record Id=%s ChargeOrWithdraw=%s Currency=%s Volume=%s Dt=%s WithdrawStatus=%s',
+                    v.Id, v.ChargeOrWithdraw, v.Currency, v.Volume, dt, v.WithdrawStatus))
+        end
+    end
 end
 
 ---------------------------------------
 -- 响应获取本人VCoin信息
-function ViewWallet:OnVCoinGetMyVCoinInfoResponse(data)
+function ViewWallet:OnVCoinGetMyVCoinInfoResponse(my_vcoin_info)
     print('ViewWallet:OnVCoinGetMyVCoinInfoResponse()')
+    if my_vcoin_info.ListItem ~= nil then
+        for i, v in pairs(my_vcoin_info.ListItem) do
+            print(string.format('Currency=%s Address=%s Memo=%s', v.Currency, v.Address, v.Memo))
+        end
+    end
 end
 
 ---------------------------------------

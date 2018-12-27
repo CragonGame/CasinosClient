@@ -87,11 +87,16 @@ end
 
 ---------------------------------------
 -- 交易通知
-function ControllerWallet:S2cVCoinTransNotify(result, trans_record)
-    print('result=' .. result)
+function ControllerWallet:S2cVCoinTransNotify(result, data)
+    local record = nil
+    if data ~= nil then
+        record = VCoinTransRecord:new(nil)
+        VCoinTransRecord:setData(data)
+    end
+
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnVCoinTransNotify(result, trans_record)
+        view:OnVCoinTransNotify(result, record)
     end
 end
 
@@ -100,8 +105,6 @@ end
 function ControllerWallet:S2cVCoinGetOrGenerateAddressNotify(data)
     local vcoin_getorgenerate_address_notify = VCoinGetOrGenerateAddressNotify:new(nil)
     vcoin_getorgenerate_address_notify:setData(data)
-    print('Address=' .. vcoin_getorgenerate_address_notify.Address)
-    print('Memo=' .. vcoin_getorgenerate_address_notify.Memo)
 
     self.Address = vcoin_getorgenerate_address_notify.Address
     self.Memo = vcoin_getorgenerate_address_notify.Memo
@@ -115,9 +118,21 @@ end
 ---------------------------------------
 -- 获取交易记录通知
 function ControllerWallet:S2cVCoinGetTransListNotify(data)
+    local list_record = nil
+
+    if data ~= nil then
+        local t_l = {}
+        for i, v in pairs(data) do
+            local s_b = VCoinTransRecord:new(nil)
+            s_b:setData(v)
+            table.insert(t_l, s_b)
+        end
+        list_record = t_l
+    end
+
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnVCoinGetTransListNotify(data)
+        view:OnVCoinGetTransListNotify(list_record)
     end
 end
 
@@ -139,13 +154,12 @@ end
 ---------------------------------------
 -- 响应获取本人VCoin信息
 function ControllerWallet:S2cVCoinGetMyVCoinInfoResponse(data)
-    --local my_vcoin_info = MyVCoinInfo:new(nil)
-    --my_vcoin_info:setData(data)
-    --print('Channel=' .. my_vcoin_info.Channel)
+    local my_vcoin_info = VCoinMyInfo:new(nil)
+    my_vcoin_info:setData(data)
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnVCoinGetMyVCoinInfoResponse(data)
+        view:OnVCoinGetMyVCoinInfoResponse(my_vcoin_info)
     end
 end
 

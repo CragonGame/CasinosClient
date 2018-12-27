@@ -30,9 +30,10 @@ VCoinWithdrawStatus = {
 
 ---------------------------------------
 -- 本人VCoin信息
-VCoinMyInfo = {}
 
-function VCoinMyInfo:new(o)
+VCoinMyInfoItem = {}
+
+function VCoinMyInfoItem:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
@@ -42,7 +43,7 @@ function VCoinMyInfo:new(o)
     return o
 end
 
-function VCoinMyInfo:getData4Pack()
+function VCoinMyInfoItem:getData4Pack()
     local t = {}
     table.insert(t, self.Currency)
     table.insert(t, self.Address)
@@ -50,10 +51,39 @@ function VCoinMyInfo:getData4Pack()
     return t
 end
 
-function VCoinMyInfo:setData(data)
+function VCoinMyInfoItem:setData(data)
     self.Currency = data[1]
-    self.Address = data[1]
-    self.Memo = data[1]
+    self.Address = data[2]
+    self.Memo = data[3]
+end
+
+VCoinMyInfo = {}
+
+function VCoinMyInfo:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.ListItem = nil
+    return o
+end
+
+function VCoinMyInfo:getData4Pack()
+    local t = {}
+    table.insert(t, self.ListItem)
+    return t
+end
+
+function VCoinMyInfo:setData(data)
+    local l = data[1]
+    if l ~= nil then
+        local t_l = {}
+        for i, v in pairs(l) do
+            local s_b = VCoinMyInfoItem:new(nil)
+            s_b:setData(v)
+            table.insert(t_l, s_b)
+        end
+        self.ListItem = t_l
+    end
 end
 
 ---------------------------------------
