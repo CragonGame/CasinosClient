@@ -45,42 +45,38 @@ end
 ---------------------------------------
 -- 提现请求
 function ControllerWallet:RequestVCoinWithdraw()
-    local data = WalletWithdrawRequest:new(nil)
-    data.MoneyType = MoneyType.BitCNY
-    data.Amount = 100
+    local data = VCoinWithdrawRequest:new(nil)
     data.Channel = 'Azex'
+    data.Currency = 'btc'
+    data.Volume = 1
+    data.Address = ''
+    data.Memo = ''
     self.ControllerMgr.Rpc:RPC1(self.MethodType.VCoinWithdrawRequest, data:getData4Pack())
 end
 
 ---------------------------------------
 -- 获取虚拟币地址请求
 function ControllerWallet:RequestVCoinGetOrGenerateAddress()
-    local data = WalletGetOrGenerateAddressRequest:new(nil)
-    data.MoneyType = MoneyType.BitCNY
-    data.Amount = 100
-    data.Channel = 'Azex'
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.VCoinGetOrGenerateAddressRequest, data:getData4Pack())
+    local currency = 'btc'
+    local channel = 'Azex'
+    self.ControllerMgr.Rpc:RPC2(self.MethodType.VCoinGetOrGenerateAddressRequest, currency, channel)
 end
 
 ---------------------------------------
 -- 获取交易记录请求
 function ControllerWallet:RequestVCoinGetTransList()
-    local data = WalletGetTransListRequest:new(nil)
-    data.MoneyType = MoneyType.BitCNY
-    data.Amount = 100
-    data.Channel = 'Azex'
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.VCoinGetTransListRequest, data:getData4Pack())
+    self.ControllerMgr.Rpc:RPC0(self.MethodType.VCoinGetTransListRequest)
 end
 
 ---------------------------------------
 -- 验证提现地址有效性请求
-function ControllerWallet:VCoinWithdrawAddressValidRequest()
-    local data = WalletWithdrawAddressValidRequest:new(nil)
-    data.MoneyType = MoneyType.BitCNY
+function ControllerWallet:RequestVCoinWithdrawAddressValid()
+    local data = VCoinWithdrawAddressValidRequest:new(nil)
     data.Channel = 'Azex'
+    data.Currency = 'btc'
     data.Address = 'aaaaa'
     data.Memo = ''
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.VcoinWithdrawAddressValidRequest, data:getData4Pack())
+    self.ControllerMgr.Rpc:RPC1(self.MethodType.VCoinWithdrawAddressValidRequest, data:getData4Pack())
 end
 
 ---------------------------------------
@@ -90,74 +86,38 @@ function ControllerWallet:RequestVCoinGetVCoinMyInfo()
 end
 
 ---------------------------------------
--- 充值通知
-function ControllerWallet:S2cWalletRechargeNotify(result, trans_record)
-    --local wallet_recharge_notify = WalletRechargeNotify:new(nil)
-    --wallet_recharge_notify:setData(data)
-    --print('Result=' .. wallet_recharge_notify.Result)
-    --print('Id=' .. wallet_recharge_notify.Id)
-    --print('MoneyType=' .. wallet_recharge_notify.MoneyType)
-    --print('Address=' .. wallet_recharge_notify.Address)
-    --print('Memo=' .. wallet_recharge_notify.Memo)
-    --print('Volume=' .. wallet_recharge_notify.Volume)
-    --print('Fee=' .. wallet_recharge_notify.Fee)
-
+-- 交易通知
+function ControllerWallet:S2cVCoinTransNotify(result, trans_record)
+    print('result=' .. result)
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnWalletRechargeNotify(result, trans_record)
-    end
-end
-
----------------------------------------
--- 响应提现
-function ControllerWallet:S2cWalletWithdrawRequestResult(data)
-    local view = self.ViewMgr:GetView('Wallet')
-    if view ~= nil then
-        view:OnWalletWithdrawRequestResult(data)
-    end
-end
-
----------------------------------------
--- 提现状态变更通知
-function ControllerWallet:S2cWalletWithdrawStatusChangeNotify(data)
-    local view = self.ViewMgr:GetView('Wallet')
-    if view ~= nil then
-        view:OnWalletWithdrawStatusChangeNotify(data)
-    end
-end
-
----------------------------------------
--- 提现通知
-function ControllerWallet:S2cWalletWithdrawNotify(data)
-    local view = self.ViewMgr:GetView('Wallet')
-    if view ~= nil then
-        view:OnWalletWithdrawNotify(data)
+        view:OnVCoinTransNotify(result, trans_record)
     end
 end
 
 ---------------------------------------
 -- 获取虚拟币地址通知
-function ControllerWallet:S2cWalletGetOrGenerateAddressNotify(data)
-    local wallet_getorgenerate_address_notify = WalletGetOrGenerateAddressNotify:new(nil)
-    wallet_getorgenerate_address_notify:setData(data)
-    print('Address=' .. wallet_getorgenerate_address_notify.Address)
-    print('Memo=' .. wallet_getorgenerate_address_notify.Memo)
+function ControllerWallet:S2cVCoinGetOrGenerateAddressNotify(data)
+    local vcoin_getorgenerate_address_notify = VCoinGetOrGenerateAddressNotify:new(nil)
+    vcoin_getorgenerate_address_notify:setData(data)
+    print('Address=' .. vcoin_getorgenerate_address_notify.Address)
+    print('Memo=' .. vcoin_getorgenerate_address_notify.Memo)
 
-    self.Address = wallet_getorgenerate_address_notify.Address
-    self.Memo = wallet_getorgenerate_address_notify.Memo
+    self.Address = vcoin_getorgenerate_address_notify.Address
+    self.Memo = vcoin_getorgenerate_address_notify.Memo
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnWalletGetOrGenerateAddressNotify(wallet_getorgenerate_address_notify)
+        view:OnVCoinGetOrGenerateAddressNotify(vcoin_getorgenerate_address_notify)
     end
 end
 
 ---------------------------------------
 -- 获取交易记录通知
-function ControllerWallet:S2cWalletGetTransListNotify(data)
+function ControllerWallet:S2cVCoinGetTransListNotify(data)
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnWalletGetTransListNotify(data)
+        view:OnVCoinGetTransListNotify(data)
     end
 end
 
@@ -179,13 +139,13 @@ end
 ---------------------------------------
 -- 响应获取本人VCoin信息
 function ControllerWallet:S2cVCoinGetMyVCoinInfoResponse(data)
-    local my_vcoin_info = MyVCoinInfo:new(nil)
-    my_vcoin_info:setData(data)
-    print('Channel=' .. my_vcoin_info.Channel)
+    --local my_vcoin_info = MyVCoinInfo:new(nil)
+    --my_vcoin_info:setData(data)
+    --print('Channel=' .. my_vcoin_info.Channel)
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
-        view:OnVCoinGetMyVCoinInfoResponse(my_vcoin_info)
+        view:OnVCoinGetMyVCoinInfoResponse(data)
     end
 end
 

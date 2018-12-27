@@ -121,8 +121,11 @@ function ViewWallet:OnCreate()
 
     self:_onClickBtnTabRecharge()
 
-    self.CtrlWallet:RequestWalletGetOrGenerateAddress()
-    --self.CtrlWallet:WalletWithdrawAddressValidRequest()
+    self.CtrlWallet:RequestVCoinGetOrGenerateAddress()
+    self.CtrlWallet:RequestVCoinGetVCoinMyInfo()
+    self.CtrlWallet:RequestVCoinWithdraw()
+    self.CtrlWallet:RequestVCoinWithdrawAddressValid()
+    self.CtrlWallet:RequestVCoinGetTransList()
 end
 
 ---------------------------------------
@@ -144,33 +147,15 @@ function ViewWallet:OnHandleEv(ev)
 end
 
 ---------------------------------------
--- 充值通知
-function ViewWallet:OnWalletRechargeNotify(result, trans_record)
-    print('ViewWallet:OnWalletRechargeNotify()')
-end
-
----------------------------------------
--- 响应提现
-function ViewWallet:OnWalletWithdrawRequestResult(result, trans_record)
-    print('ViewWallet:OnWalletWithdrawRequestResult()')
-end
-
----------------------------------------
--- 提现状态变更通知
-function ViewWallet:OnWalletWithdrawStatusChangeNotify(result, trans_record)
-    print('ViewWallet:OnWalletWithdrawStatusChangeNotify()')
-end
-
----------------------------------------
--- 提现通知
-function ViewWallet:OnWalletWithdrawNotify(result, trans_record)
-    print('ViewWallet:OnWalletWithdrawNotify()')
+-- 交易通知
+function ViewWallet:OnVCoinTransNotify(result, trans_record)
+    print('ViewWallet:OnVCoinTransNotify()')
 end
 
 ---------------------------------------
 -- 获取虚拟币地址通知
-function ViewWallet:OnWalletGetOrGenerateAddressNotify(wallet_getorgenerate_address_notify)
-    print('ViewWallet:OnWalletGetOrGenerateAddressNotify()')
+function ViewWallet:OnVCoinGetOrGenerateAddressNotify(vcoin_getorgenerate_address_notify)
+    print('ViewWallet:OnVCoinGetOrGenerateAddressNotify()')
 
     -- 设置二维码
     local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
@@ -187,15 +172,15 @@ function ViewWallet:OnWalletGetOrGenerateAddressNotify(wallet_getorgenerate_addr
 end
 
 ---------------------------------------
--- 获取交易记录通知
-function ViewWallet:OnWalletGetTransListNotify(list_trans_record)
-    print('ViewWallet:OnWalletGetTransListNotify()')
+-- 验证提现地址有效性通知
+function ViewWallet:OnVCoinWithdrawAddressValidNotify(data)
+    print('ViewWallet:OnVCoinWithdrawAddressValidNotify()')
 end
 
 ---------------------------------------
--- 验证提现地址有效性通知
-function ViewWallet:OnWalletWithdrawAddressValidNotify(data)
-    print('ViewWallet:OnWalletWithdrawAddressValidNotify()')
+-- 获取交易记录通知
+function ViewWallet:OnVCoinGetTransListNotify(list_trans_record)
+    print('ViewWallet:OnVCoinGetTransListNotify()')
 end
 
 ---------------------------------------

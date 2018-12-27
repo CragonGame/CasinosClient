@@ -10,10 +10,6 @@ end
 
 ---------------------------------------
 function ControllerLobby:OnCreate()
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
-    self.ControllerIM = self.ControllerMgr:GetController("IM")
-    self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
-    self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.ViewMgr:BindEvListener("EvUiClickSearchDesk", self)
     self.ViewMgr:BindEvListener("EvUiClickSearchFriendsDesk", self)
     self.ViewMgr:BindEvListener("EvUiClickPlayInDesk", self)
@@ -43,7 +39,8 @@ function ControllerLobby:OnHandleEv(ev)
     if (ev.EventName == "EvUiClickSearchDesk") then
         self:RequestSearchDesktop(ev.desktop_searchfilter)
     elseif (ev.EventName == "EvUiClickSearchFriendsDesk") then
-        local list_playerinfo = self.ControllerIM.IMFriendList:getInDesktopFriendList(ev.friend_state)
+        local ctrl_im = self.ControllerMgr:GetController("IM")
+        local list_playerinfo = ctrl_im.IMFriendList:getInDesktopFriendList(ev.friend_state)
         local ev = self:GetEv("EvEntitySearchPlayingFriend")
         if (ev == nil) then
             ev = EvEntitySearchPlayingFriend:new(nil)
@@ -54,8 +51,9 @@ function ControllerLobby:OnHandleEv(ev)
         self:RequestEnterDesktop(ev.desk_etguid, true, ev.seat_index, ev.desktop_filter:getData4Pack())
     elseif (ev.EventName == "EvUiClickViewInDesk") then
         local self_desktop_etguid = ""
-        if (self.ControllerDesktop.DesktopBase ~= nil) then
-            self_desktop_etguid = self.ControllerDesktop.DesktopBase.Guid
+        local ctrl_desktoptexas = self.ControllerMgr:GetController("DesktopTexas")
+        if (ctrl_desktoptexas.DesktopBase ~= nil) then
+            self_desktop_etguid = ctrl_desktoptexas.DesktopBase.Guid
         end
         if ((ev.desk_etguid ~= self_desktop_etguid) and (ev.desk_etguid ~= nil and ev.desk_etguid ~= "")) then
             self:RequestEnterDesktop(ev.desk_etguid, false, ev.seat_index, ev.desktop_filter)
@@ -162,7 +160,8 @@ end
 ---------------------------------------
 function ControllerLobby:LeavePlayModel()
     self:HideLobby()
-    self.ControllerPlayer:RequestGetOnlinePlayerNum()
+    local ctrl_player = self.ControllerMgr:GetController("Player")
+    ctrl_player:RequestGetOnlinePlayerNum()
 end
 
 ---------------------------------------

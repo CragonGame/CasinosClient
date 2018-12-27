@@ -111,9 +111,9 @@ end
 function VCoinWithdrawRequest:setData(data)
     self.Channel = data[1]
     self.Currency = data[2]
-    self.Volume = data[2]
-    self.Address = data[2]
-    self.Memo = data[2]
+    self.Volume = data[3]
+    self.Address = data[4]
+    self.Memo = data[5]
 end
 
 ---------------------------------------
