@@ -9,18 +9,16 @@ end
 
 ---------------------------------------
 function ControllerMTT:OnCreate()
-    self.ViewMgr:BindEvListener("EvUiRequestPublicMatchList", self)
-    self.ViewMgr:BindEvListener("EvUiRequestPrivateMatchList", self)
-    self.ViewMgr:BindEvListener("EvUiRequestUpdatePublicMatchPlayerNum", self)
-    self.ViewMgr:BindEvListener("EvUiRequestUpdatePrivateMatchPlayerNum", self)
-    self.ViewMgr:BindEvListener("EvUiRequestSignUpMatch", self)
-    self.ViewMgr:BindEvListener("EvUiRequestCreatePrivateMatch", self)
-    self.ViewMgr:BindEvListener("EvUiRequestMatchDetailedInfo", self)
-    self.ViewMgr:BindEvListener("EvUiRequestEnterMatch", self)
-    self.ViewMgr:BindEvListener("EvUiRequestCancelSignupMatch", self)
-    self.Rpc = self.ControllerMgr.Rpc
-    self.ControllerDesktop = self.ControllerMgr:GetController("DesktopTexas")
-    self.MethodType = MethodType
+    self:BindEvListener("EvUiRequestPublicMatchList", self)
+    self:BindEvListener("EvUiRequestPrivateMatchList", self)
+    self:BindEvListener("EvUiRequestUpdatePublicMatchPlayerNum", self)
+    self:BindEvListener("EvUiRequestUpdatePrivateMatchPlayerNum", self)
+    self:BindEvListener("EvUiRequestSignUpMatch", self)
+    self:BindEvListener("EvUiRequestCreatePrivateMatch", self)
+    self:BindEvListener("EvUiRequestMatchDetailedInfo", self)
+    self:BindEvListener("EvUiRequestEnterMatch", self)
+    self:BindEvListener("EvUiRequestCancelSignupMatch", self)
+
     self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestGetListResult, function(matchTexasGetListResponse)
         self:S2cMatchTexasRequestGetListResult(matchTexasGetListResponse)
     end)
@@ -62,7 +60,7 @@ end
 
 ---------------------------------------
 function ControllerMTT:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -375,7 +373,8 @@ function ControllerMTT:S2cMatchTexasStartNotify(matchTexasStartNotify)
     local data = BMatchTexasStartNotify:new(nil)
     data:setData(matchTexasStartNotify)
 
-    if (self.ControllerDesktop.DesktopBase == nil) then
+    local ctrl_desktoptexas = self.ControllerMgr:GetController("DesktopTexas")
+    if (ctrl_desktoptexas.DesktopBase == nil) then
         local view_enterMatchNotify = self.ViewMgr:CreateView("EnterMatchNotify")
         view_enterMatchNotify:Init(data.DtMatchBegin, data.MatchGuid, data.MatchName)
     end

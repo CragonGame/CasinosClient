@@ -53,103 +53,102 @@ function ControllerDesktopH:OnCreate()
     self:regDesktopHBaseFactory(DesktopHTexasFactory:new(nil))
     self.MapDesktopHCardTypeBaseFac = {}
     self:regDesktopHCardTypeBaseFactory(DesktopHCardTypeTexasFac:new(nil))
-    local rpc = self.ControllerMgr.Rpc
     local m_c = MethodType
-    rpc:RegRpcMethod3(m_c.DesktopHNotifySnapshot, function(desktoph_snapshot, map_my_betinfo, map_my_winlooseinfo)
+    self.Rpc:RegRpcMethod3(m_c.DesktopHNotifySnapshot, function(desktoph_snapshot, map_my_betinfo, map_my_winlooseinfo)
         self:S2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_betinfo, map_my_winlooseinfo)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifyIdle, function(left_tm)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifyIdle, function(left_tm)
         self:S2cDesktopHNotifyIdle(left_tm)
     end)
-    rpc:RegRpcMethod3(m_c.DesktopHNotifyReady2, function(left_tm, play_guid, map_userdata)
+    self.Rpc:RegRpcMethod3(m_c.DesktopHNotifyReady2, function(left_tm, play_guid, map_userdata)
         self:S2cDesktopHNotifyReady2(left_tm, play_guid, map_userdata)
     end)
-    rpc:RegRpcMethod2(m_c.DesktopHNotifyBet, function(left_tm, max_total_bet_gold)
+    self.Rpc:RegRpcMethod2(m_c.DesktopHNotifyBet, function(left_tm, max_total_bet_gold)
         self:S2cDesktopHNotifyBet(left_tm, max_total_bet_gold)
     end)
-    rpc:RegRpcMethod2(m_c.DesktopHNotifyGameEnd, function(game_result, map_my_winlooseinfo)
+    self.Rpc:RegRpcMethod2(m_c.DesktopHNotifyGameEnd, function(game_result, map_my_winlooseinfo)
         self:S2cDesktopHNotifyGameEnd(game_result, map_my_winlooseinfo)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifyRest, function(left_tm)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifyRest, function(left_tm)
         self:S2cDesktopHNotifyRest(left_tm)
     end)
-    rpc:RegRpcMethod0(m_c.DesktopHNotifyPlayerLeave, function()
+    self.Rpc:RegRpcMethod0(m_c.DesktopHNotifyPlayerLeave, function()
         self:S2cDesktopHNotifyPlayerLeave()
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifyUpdateBetPotInfo, function(bet_info)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifyUpdateBetPotInfo, function(bet_info)
         self:S2cDesktopHNotifyUpdateBetPotInfo(bet_info)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifyUpdateSeatPlayerGold, function(map_seatplayer_gold)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifyUpdateSeatPlayerGold, function(map_seatplayer_gold)
         self:S2cDesktopHNotifyUpdateSeatPlayerGold(map_seatplayer_gold)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifyUpdateBankPlayer, function(banker_info)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifyUpdateBankPlayer, function(banker_info)
         self:S2cDesktopHNotifyUpdateBankPlayer(banker_info)
     end)
-    rpc:RegRpcMethod2(m_c.DesktopHNotifyUpdateBankPlayerStack, function(player_guid, new_stack)
+    self.Rpc:RegRpcMethod2(m_c.DesktopHNotifyUpdateBankPlayerStack, function(player_guid, new_stack)
         self:S2cDesktopHNotifyUpdateBankPlayerStack(player_guid, new_stack)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifySeatPlayerChanged, function(map_all_seatplayer)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifySeatPlayerChanged, function(map_all_seatplayer)
         self:S2cDesktopHNotifySeatPlayerChanged(map_all_seatplayer)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifyBeBankerPlayerListAdd, function(add_player)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifyBeBankerPlayerListAdd, function(add_player)
         self:S2cDesktopHNotifyBeBankerPlayerListAdd(add_player)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifyBeBankerPlayerListRemove, function(remove_playerguid)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifyBeBankerPlayerListRemove, function(remove_playerguid)
         self:S2cDesktopHNotifyBeBankerPlayerListRemove(remove_playerguid)
     end)
-    rpc:RegRpcMethod0(m_c.DesktopHNotifyPlayerWillStandup, function()
+    self.Rpc:RegRpcMethod0(m_c.DesktopHNotifyPlayerWillStandup, function()
         self:S2cDesktopHNotifyPlayerWillStandup()
     end)
-    rpc:RegRpcMethod0(m_c.DesktopHNotifyPlayerWillBeNotBank, function()
+    self.Rpc:RegRpcMethod0(m_c.DesktopHNotifyPlayerWillBeNotBank, function()
         self:S2cDesktopHNotifyPlayerWillBeNotBank()
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifyPlayerCurrentGiftChanged, function(map_itemdata)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifyPlayerCurrentGiftChanged, function(map_itemdata)
         self:S2cDesktopHNotifyPlayerCurrentGiftChanged(map_itemdata)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHNotifyPlayerChat, function(msg)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHNotifyPlayerChat, function(msg)
         self:S2cDesktopHNotifyPlayerChat(msg)
     end)
-    rpc:RegRpcMethod2(m_c.DesktopHNotifyBuyAndSendItem, function(sender_guid, map_recv_itemdata)
+    self.Rpc:RegRpcMethod2(m_c.DesktopHNotifyBuyAndSendItem, function(sender_guid, map_recv_itemdata)
         self:S2cDesktopHNotifyBuyAndSendItem(sender_guid, map_recv_itemdata)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponsePlayerLeave, function(can_leave)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponsePlayerLeave, function(can_leave)
         self:S2cDesktopHResponsePlayerLeave(can_leave)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponseBetFailed, function(map_my_betinfo)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponseBetFailed, function(map_my_betinfo)
         self:S2cDesktopHResponseBetFailed(map_my_betinfo)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponseBeBankerPlayer, function(result)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponseBeBankerPlayer, function(result)
         self:S2cDesktopHResponseBeBankerPlayer(result)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponseNotBeBankerPlayer, function(result)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponseNotBeBankerPlayer, function(result)
         self:S2cDesktopHResponseNotBeBankerPlayer(result)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponseSitdown, function(result)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponseSitdown, function(result)
         self:S2cDesktopHResponseSitdown(result)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponseStandup, function(result)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponseStandup, function(result)
         self:S2cDesktopHResponseStandup(result)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponseGetStandPlayerList, function(list_stand)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponseGetStandPlayerList, function(list_stand)
         self:S2cDesktopHResponseGetStandPlayerList(list_stand)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponseSetCardsType, function(result)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponseSetCardsType, function(result)
         self:S2cDesktopHResponseSetCardsType(result)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponseGetWinRewardPotInfo, function(win_rewardpot_info)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponseGetWinRewardPotInfo, function(win_rewardpot_info)
         self:S2cDesktopHResponseGetWinRewardPotInfo(win_rewardpot_info)
     end)
-    rpc:RegRpcMethod1(m_c.DesktopHResponseInitDailyBetReward, function(init_dailybet_reward)
+    self.Rpc:RegRpcMethod1(m_c.DesktopHResponseInitDailyBetReward, function(init_dailybet_reward)
         self:S2cDesktopHResponseInitDailyBetReward(init_dailybet_reward)
     end)
-    rpc:RegRpcMethod3(m_c.DesktopHResponseGetDailyBetReward, function(result, reward_gold, bet_reward)
+    self.Rpc:RegRpcMethod3(m_c.DesktopHResponseGetDailyBetReward, function(result, reward_gold, bet_reward)
         self:S2cDesktopHResponseGetDailyBetReward(result, reward_gold, bet_reward)
     end)
 end
 
 ---------------------------------------
 function ControllerDesktopH:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -160,9 +159,9 @@ function ControllerDesktopH:OnHandleEv(ev)
 
     if (ev.EventName == "EvViewClickDesktopH") then
         ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
-        self.ControllerMgr.Rpc:RPC1(MethodType.DesktopHRequestEnter, ev.factory_name)
+        self.Rpc:RPC1(MethodType.DesktopHRequestEnter, ev.factory_name)
     elseif (ev.EventName == "EvViewClickLeaveDesktopH") then
-        self.ControllerMgr.Rpc:RPC0(MethodType.DesktopHRequestLeave)
+        self.Rpc:RPC0(MethodType.DesktopHRequestLeave)
     elseif (ev.EventName == "EvViewDesktopHClickBetOperateType") then
         -- 更换选择下注的预置筹码
         CS.UnityEngine.PlayerPrefs.SetInt("CurrentTbBetOperateIdDesktopH", ev.tb_bet_operateid)
@@ -195,9 +194,9 @@ function ControllerDesktopH:OnHandleEv(ev)
         if (exists) then
             ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("RequestSitSuccess"))
         end
-        self.ControllerMgr.Rpc:RPC1(MethodType.DesktopHRequestSitdown, ev.seat_index)
+        self.Rpc:RPC1(MethodType.DesktopHRequestSitdown, ev.seat_index)
     elseif (ev.EventName == "EvViewDesktopHStandup") then
-        self.ControllerMgr.Rpc:RPC0(MethodType.DesktopHRequestStandup)
+        self.Rpc:RPC0(MethodType.DesktopHRequestStandup)
     elseif (ev.EventName == "EvDesktopHClickBeBankPlayerBtn") then
         local exists = false
         for key, value in pairs(self.ListBeBankPlayer) do
@@ -208,7 +207,7 @@ function ControllerDesktopH:OnHandleEv(ev)
         end
         if (self.IsBankPlayer or exists) then
             if (exists or self.IsBankPlayer) then
-                self.ControllerMgr.Rpc:RPC0(MethodType.DesktopHRequestNotBeBankerPlayer)
+                self.Rpc:RPC0(MethodType.DesktopHRequestNotBeBankerPlayer)
             end
         else
             local min_golds = 0
@@ -232,25 +231,25 @@ function ControllerDesktopH:OnHandleEv(ev)
                 ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("RequestBeBankerSuccess"))
             end
 
-            self.ControllerMgr.Rpc:RPC1(MethodType.DesktopHRequestBeBankerPlayer, stack)
+            self.Rpc:RPC1(MethodType.DesktopHRequestBeBankerPlayer, stack)
         end
     elseif (ev.EventName == "EvEntityRequestGetDesktopHData") then
         if (self.DesktopHGuid == nil or self.DesktopHGuid == "") then
             return
         end
-        self.ControllerMgr.Rpc:RPC0(MethodType.DesktopHRequestSnapshot)
+        self.Rpc:RPC0(MethodType.DesktopHRequestSnapshot)
     elseif (ev.EventName == "EvDesktopHClickStandPlayerBtn") then
         -- 拉取所有无座玩家列表，暂未使用
-        self.ControllerMgr.Rpc:RPC0(MethodType.DesktopHRequestGetStandPlayerList)
+        self.Rpc:RPC0(MethodType.DesktopHRequestGetStandPlayerList)
     elseif (ev.EventName == "EvDesktopHundredChangeCardsType") then
-        self.ControllerMgr.Rpc:RPC1(MethodType.DesktopHRequestSetCardsType, ev.map_card_types)
+        self.Rpc:RPC1(MethodType.DesktopHRequestSetCardsType, ev.map_card_types)
     elseif (ev.EventName == "EvDesktopHClickRewardPotBtn") then
         ViewHelper:UiBeginWaiting()
-        self.ControllerMgr.Rpc:RPC0(MethodType.DesktopHRequestGetWinRewardPotInfo)
+        self.Rpc:RPC0(MethodType.DesktopHRequestGetWinRewardPotInfo)
     elseif (ev.EventName == "EvDesktopHGetBetReward") then
-        self.ControllerMgr.Rpc:RPC1(MethodType.DesktopHRequestGetDailyBetReward, ev.factory_name)
+        self.Rpc:RPC1(MethodType.DesktopHRequestGetDailyBetReward, ev.factory_name)
     elseif (ev.EventName == "EvDesktopHInitBetReward") then
-        self.ControllerMgr.Rpc:RPC1(MethodType.DesktopHRequestInitDailyBetReward, ev.factory_name)
+        self.Rpc:RPC1(MethodType.DesktopHRequestInitDailyBetReward, ev.factory_name)
     elseif (ev.EventName == "EvDesktopHBet") then
         if (self.DesktopHState ~= _eDesktopHState.Bet) then
             return
@@ -271,7 +270,7 @@ function ControllerDesktopH:OnHandleEv(ev)
         local can_betsuccess = self:BetGold(ev.bet_betpot_index, bet_chips)
 
         if (can_betsuccess == true) then
-            self.ControllerMgr.Rpc:RPC2(MethodType.DesktopHRequestBet, ev.bet_betpot_index, bet_chips)
+            self.Rpc:RPC2(MethodType.DesktopHRequestBet, ev.bet_betpot_index, bet_chips)
         end
     elseif (ev.EventName == "EvDesktopHRepeatBet") then
         if (self.DesktopHState ~= _eDesktopHState.Bet) then
@@ -310,7 +309,7 @@ function ControllerDesktopH:OnHandleEv(ev)
                 end
             end
             if (can_betsuccess) then
-                self.ControllerMgr.Rpc:RPC1(MethodType.DesktopHRequestBetRepeat, self.MapBetRepeatInfo)
+                self.Rpc:RPC1(MethodType.DesktopHRequestBetRepeat, self.MapBetRepeatInfo)
             end
         end
     elseif (ev.EventName == "EvUiSendMsg") then
@@ -318,7 +317,7 @@ function ControllerDesktopH:OnHandleEv(ev)
         local chat_msg = ev.chat_msg
         local recver_guid = chat_msg[4]
         if (recver_guid == nil or recver_guid == "") then
-            self.ControllerMgr.Rpc:RPC1(MethodType.DesktopHRequestChat, chat_msg)
+            self.Rpc:RPC1(MethodType.DesktopHRequestChat, chat_msg)
             self.CurrentUnSendDesktopMsg = ""
         end
     elseif (ev.EventName == "EvUiSetUnSendDesktopMsg") then
@@ -910,7 +909,7 @@ end
 
 ---------------------------------------
 function ControllerDesktopH:receiveInvitePlayerEnterDesktop(desktop_guid, desktop_filter)
-    self.ControllerMgr.Rpc:RPC0(MethodType.DesktopHRequestLeave)
+    self.Rpc:RPC0(MethodType.DesktopHRequestLeave)
     local t_encode = self.ControllerMgr.Json.encode(desktop_filter)
     local map_param = {}
     map_param[0] = desktop_guid

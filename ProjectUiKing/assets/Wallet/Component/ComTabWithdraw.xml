@@ -2,18 +2,26 @@
 <component size="797,484">
   <displayList>
     <text id="n0_l4zq" name="n0" xy="23,10" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" bold="true" text="BitCNY提现"/>
-    <text id="n1_l4zq" name="n1" xy="24,109" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="提币地址"/>
-    <text id="n2_l4zq" name="n2" xy="24,175" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="数量"/>
-    <text id="n3_l4zq" name="n3" xy="24,241" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="备注码"/>
-    <text id="n4_l4zq" name="n4" xy="24,317" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="到账数量"/>
-    <text id="n5_l4zq" name="n5" xy="414,319" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="手续费"/>
-    <component id="n6_l4zq" name="n6" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="307,388" size="170,50">
+    <text id="n1_l4zq" name="n1" xy="40,109" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="提币地址"/>
+    <text id="n2_l4zq" name="n2" xy="40,253" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="筹码数量"/>
+    <text id="n3_l4zq" name="n3" xy="40,181" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="备注码"/>
+    <text id="n4_l4zq" name="n4" xy="40,325" size="133,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="提币数量"/>
+    <text id="n5_l4zq" name="n5" xy="446,324" size="92,42" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" text="手续费"/>
+    <component id="n6_l4zq" name="BtnWithdraw" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="313,395" size="170,50">
       <Button title="提 现" titleFontSize="22" selectedTitle="提 现"/>
     </component>
-    <text id="n7_l4zq" name="n7" xy="213,320" size="157,35" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
-    <text id="n8_l4zq" name="n8" xy="586,322" size="157,35" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
-    <text id="n9_l4zq" name="n9" xy="213,250" size="157,35" input="true" keyboardType="2" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
-    <text id="n10_l4zq" name="n10" xy="213,181" size="157,35" input="true" keyboardType="2" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
-    <text id="n11_l4zq" name="n11" xy="212,109" size="157,35" input="true" keyboardType="2" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="10000"/>
+    <text id="n7_l4zq" name="TxtVCoinVolume" xy="228,328" size="187,35" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text=""/>
+    <text id="n8_l4zq" name="TxtFee" xy="567,327" size="157,35" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text=""/>
+    <image id="n14_pebs" name="n14" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="220,174" size="173,52"/>
+    <text id="n9_l4zq" name="TxtMemo" xy="228,182" size="157,35" input="true" prompt="请输入备注码" maxLength="24" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text=""/>
+    <image id="n16_pebs" name="n16" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="221,247" size="207,53"/>
+    <text id="n10_l4zq" name="TxtGoldVolume" xy="228,255" size="190,37" input="true" prompt="请输入提币数量" maxLength="12" keyboardType="4" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text=""/>
+    <image id="n13_pebs" name="n13" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="221,99" size="467,54"/>
+    <text id="n11_l4zq" name="TxtAddress" xy="228,109" size="451,35" input="true" prompt="请输入提币地址" maxLength="64" font="FontXi" fontSize="22" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text=""/>
+    <component id="n12_pebs" name="BtnWithdrawAddressValid" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="432,172" size="170,50">
+      <Button title="地址是否有效" titleFontSize="18" selectedTitle="地址是否有效"/>
+    </component>
+    <image id="n17_pebs" name="n17" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="221,321" size="202,51"/>
+    <image id="n18_pebs" name="n18" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="561,320" size="173,50"/>
   </displayList>
 </component>

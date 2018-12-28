@@ -1,0 +1,209 @@
+-- Copyright(c) Cragon. All rights reserved.
+
+---------------------------------------
+-- 提现状态
+VCoinWithdrawStatus = {
+    None = 0,
+    Started = 1, -- 开始处理
+    Pending = 2, -- 等待人工处理
+    Processing = 3, -- 币种监控器正在处理
+    Completed = 4, -- 完成
+    CreateFailed = 5, -- 创建失败
+    ProcessingFailed = 6, -- 处理失败
+    Canceled = 7, -- 提现取消
+    Unknown = 8-- 未知状态
+}
+
+---------------------------------------
+-- 本人VCoin信息
+VCoinMyInfoItem = {}
+
+function VCoinMyInfoItem:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Currency = nil
+    o.Address = nil
+    o.Memo = nil
+    return o
+end
+
+function VCoinMyInfoItem:getData4Pack()
+    local t = {}
+    table.insert(t, self.Currency)
+    table.insert(t, self.Address)
+    table.insert(t, self.Memo)
+    return t
+end
+
+function VCoinMyInfoItem:setData(data)
+    self.Currency = data[1]
+    self.Address = data[2]
+    self.Memo = data[3]
+end
+
+VCoinMyInfo = {}
+
+function VCoinMyInfo:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.ListItem = nil
+    return o
+end
+
+function VCoinMyInfo:getData4Pack()
+    local t = {}
+    table.insert(t, self.ListItem)
+    return t
+end
+
+function VCoinMyInfo:setData(data)
+    local l = data[1]
+    if l ~= nil then
+        local t_l = {}
+        for i, v in pairs(l) do
+            local s_b = VCoinMyInfoItem:new(nil)
+            s_b:setData(v)
+            table.insert(t_l, s_b)
+        end
+        self.ListItem = t_l
+    end
+end
+
+---------------------------------------
+-- 一条交易记录
+VCoinTransRecord = {}
+
+function VCoinTransRecord:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Id = nil
+    o.ChargeOrWithdraw = false--false=Charge,true=Withdraw
+    o.Currency = nil
+    o.Volume = 0
+    o.Dt = nil
+    o.WithdrawStatus = VCoinWithdrawStatus.None
+    return o
+end
+
+function VCoinTransRecord:setData(data)
+    self.Id = data[1]
+    self.ChargeOrWithdraw = data[2]
+    self.Currency = data[3]
+    self.Volume = data[4]
+    self.Dt = data[5]
+    self.WithdrawStatus = data[6]
+end
+
+---------------------------------------
+-- 提现请求
+VCoinWithdrawRequest = {}
+
+function VCoinWithdrawRequest:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Channel = nil
+    o.Currency = nil
+    o.Volume = 0
+    o.Address = nil
+    o.Memo = nil
+    return o
+end
+
+function VCoinWithdrawRequest:getData4Pack()
+    local t = {}
+    table.insert(t, self.Channel)
+    table.insert(t, self.Currency)
+    table.insert(t, self.Volume)
+    table.insert(t, self.Address)
+    table.insert(t, self.Memo)
+    return t
+end
+
+function VCoinWithdrawRequest:setData(data)
+    self.Channel = data[1]
+    self.Currency = data[2]
+    self.Volume = data[3]
+    self.Address = data[4]
+    self.Memo = data[5]
+end
+
+---------------------------------------
+-- 获取虚拟币地址通知
+VCoinGetOrGenerateAddressNotify = {}
+
+function VCoinGetOrGenerateAddressNotify:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Result = WalletResult.Success
+    o.Currency = nil
+    o.Address = nil
+    o.Memo = nil
+    return o
+end
+
+function VCoinGetOrGenerateAddressNotify:setData(data)
+    self.Result = data[1]
+    self.Currency = data[2]
+    self.Address = data[3]
+    self.Memo = data[4]
+end
+
+---------------------------------------
+-- 请求验证提现地址有效性
+VCoinWithdrawAddressValidRequest = {}
+
+function VCoinWithdrawAddressValidRequest:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Channel = nil
+    o.Currency = nil
+    o.Address = nil
+    o.Memo = nil
+    return o
+end
+
+function VCoinWithdrawAddressValidRequest:getData4Pack()
+    local t = {}
+    table.insert(t, self.Channel)
+    table.insert(t, self.Currency)
+    table.insert(t, self.Address)
+    table.insert(t, self.Memo)
+    return t
+end
+
+function VCoinWithdrawAddressValidRequest:setData(data)
+    self.Channel = data[1]
+    self.Currency = data[2]
+    self.Address = data[3]
+    self.Memo = data[4]
+end
+
+---------------------------------------
+-- 验证提现地址有效性通知
+VCoinWithdrawAddressValidNotify = {}
+
+function VCoinWithdrawAddressValidNotify:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Result = WalletResult.Success
+    o.Channel = nil
+    o.Address = nil
+    o.Memo = nil
+    o.IsValid = nil
+    return o
+end
+
+function VCoinWithdrawAddressValidNotify:setData(data)
+    self.Result = data[1]
+    self.Channel = data[2]
+    self.Address = data[3]
+    self.Memo = data[4]
+    self.IsValid = data[5]
+end

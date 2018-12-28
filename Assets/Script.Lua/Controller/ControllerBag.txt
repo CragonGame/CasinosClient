@@ -11,7 +11,6 @@ end
 
 ---------------------------------------
 function ControllerBag:OnCreate()
-    self.Rpc = self.ControllerMgr.Rpc
     self.MethodType = MethodType
     -- 背包中所有道具推送给Client的通知
     self.Rpc:RegRpcMethod1(self.MethodType.BagItemPush2ClientNotify, function(list_item)
@@ -37,11 +36,11 @@ function ControllerBag:OnCreate()
         self:OnBagOperateItemNotify(item_data)
     end)
 
-    self.ViewMgr:BindEvListener("EvUiRemoveItem", self)
-    self.ViewMgr:BindEvListener("EvUiRequestOperateItem", self)
-    self.ViewMgr:BindEvListener("EvBindWechat", self)
-    self.ViewMgr:BindEvListener("EvUiLoginSuccessEx", self)
-    self.ViewMgr:BindEvListener("EvOpenBag", self)
+    self:BindEvListener("EvUiRemoveItem", self)
+    self:BindEvListener("EvUiRequestOperateItem", self)
+    self:BindEvListener("EvBindWechat", self)
+    self:BindEvListener("EvUiLoginSuccessEx", self)
+    self:BindEvListener("EvOpenBag", self)
 
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.MapItem = {}
@@ -69,27 +68,21 @@ end
 
 ---------------------------------------
 function ControllerBag:OnHandleEv(ev)
-    if (ev.EventName == "EvUiRemoveItem")
-    then
+    if (ev.EventName == "EvUiRemoveItem") then
         local obj_id = ev.obj_id
         self:RequestRemoveGift(obj_id)
-    elseif (ev.EventName == "EvUiRequestOperateItem")
-    then
+    elseif (ev.EventName == "EvUiRequestOperateItem") then
         self:requestOperateItem("", ev.ItemObjId)
-    elseif (ev.EventName == "EvBindWechat")
-    then
+    elseif (ev.EventName == "EvBindWechat") then
         self.BindAndUseItemObjId = ev.ItemObjId
-    elseif (ev.EventName == "EvUiLoginSuccessEx")
-    then
+    elseif (ev.EventName == "EvUiLoginSuccessEx") then
         if self.BindAndUseItemObjId ~= nil then
             self:requestOperateItem("", self.BindAndUseItemObjId)
             self.BindAndUseItemObjId = nil
         end
-    elseif (ev.EventName == "EvOpenBag")
-    then
+    elseif (ev.EventName == "EvOpenBag") then
         local newitem_key = "NewItem"
-        if (CS.UnityEngine.PlayerPrefs.HasKey(newitem_key))
-        then
+        if (CS.UnityEngine.PlayerPrefs.HasKey(newitem_key)) then
             CS.UnityEngine.PlayerPrefs.DeleteKey(newitem_key)
         end
         self:haveNewItem()
@@ -98,19 +91,16 @@ end
 
 ---------------------------------------
 function ControllerBag:S2cBagItemPush2ClientNotify(list_item)
-    if (list_item ~= nil and #list_item > 0)
-    then
+    if (list_item ~= nil and #list_item > 0) then
         local eb_data_mgr = self.ControllerMgr.TbDataMgr
         for i = 1, #list_item do
             local data = ItemData1:new(nil)
             data:setData(list_item[i])
             local item = Item:new(nil, eb_data_mgr, data)
             self.MapItem[item.ItemData.item_objid] = item
-            if (item.UnitLink.UnitType == "GiftNormal")
-            then
+            if (item.UnitLink.UnitType == "GiftNormal") then
                 table.insert(self.ListItemGiftNormal, item)
-            elseif (item.UnitLink.UnitType == "Consume" or item.UnitLink.UnitType == "GoodsVoucher" or item.UnitLink.UnitType == "GoldPackage" or item.UnitLink.UnitType == "WechatRedEnvelopes")
-            then
+            elseif (item.UnitLink.UnitType == "Consume" or item.UnitLink.UnitType == "GoodsVoucher" or item.UnitLink.UnitType == "GoldPackage" or item.UnitLink.UnitType == "WechatRedEnvelopes") then
                 table.insert(self.ListItemConsume, item)
             end
         end
@@ -121,13 +111,11 @@ end
 ---------------------------------------
 function ControllerBag:S2cBagGiftChangedNotify(item_data)
     local data = nil
-    if (item_data ~= nil)
-    then
+    if (item_data ~= nil) then
         data = ItemData1:new(nil)
         data:setData(item_data)
     end
-    if (data == nil or CS.System.String.IsNullOrEmpty(data.item_objid) or data.map_unit_data == nil)
-    then
+    if (data == nil or CS.System.String.IsNullOrEmpty(data.item_objid) or data.map_unit_data == nil) then
         self.CurrentGift = nil
     else
         local eb_data_mgr = self.ControllerMgr.TbDataMgr
@@ -135,8 +123,7 @@ function ControllerBag:S2cBagGiftChangedNotify(item_data)
     end
 
     local ev = self:GetEv("EvEntityCurrentTmpGiftChange")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityCurrentTmpGiftChange:new(nil)
     end
     self:SendEv(ev)
@@ -144,14 +131,12 @@ end
 
 ---------------------------------------
 function ControllerBag:S2cBagDeleteItemNotify(result, item_objid)
-    if (result ~= ProtocolResult.Success)
-    then
+    if (result ~= ProtocolResult.Success) then
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("RemoveItemFailed"))
         return
     end
     for key, value in pairs(self.MapItem) do
-        if (key == item_objid)
-        then
+        if (key == item_objid) then
             value = nil
             key = nil
             break
@@ -160,8 +145,7 @@ function ControllerBag:S2cBagDeleteItemNotify(result, item_objid)
     self:removeItemFromList(self.ListItemGiftNormal, item_objid)
     self:removeItemFromList(self.ListItemConsume, item_objid)
     local ev = self:GetEv("EvEntityBagDeleteItem")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityBagDeleteItem:new(nil)
     end
     ev.item_objid = item_objid
@@ -177,8 +161,7 @@ end
 function ControllerBag:S2cOnOperateItem(result)
     local n_d = ItemOperateNotifyData:new(nil)
     n_d:setData(result)
-    if (n_d.result ~= ProtocolResult.Success)
-    then
+    if (n_d.result ~= ProtocolResult.Success) then
         ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("UseItemFailed"))
         return
     end
@@ -213,23 +196,18 @@ function ControllerBag:S2cBagAddItemNotify(item_data)
     local item = Item:new(nil, eb_data_mgr, data)
     self.MapItem[item.ItemData.item_objid] = item
     ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:getLanValue("ReceiveItems"), self.ViewMgr.LanMgr:getLanValue(item.TbDataItem.Name)))
-    if (item.UnitLink.UnitType == "GiftNormal")
-    then
+    if (item.UnitLink.UnitType == "GiftNormal") then
         table.insert(self.ListItemGiftNormal, item)
         self:sortListBagItem()
-    elseif (item.UnitLink.UnitType == "Consume" or item.UnitLink.UnitType == "GoodsVoucher" or item.UnitLink.UnitType == "GoldPackage" or item.UnitLink.UnitType == "WechatRedEnvelopes")
-    then
+    elseif (item.UnitLink.UnitType == "Consume" or item.UnitLink.UnitType == "GoodsVoucher" or item.UnitLink.UnitType == "GoldPackage" or item.UnitLink.UnitType == "WechatRedEnvelopes") then
         table.insert(self.ListItemConsume, item)
     end
 
-    if (item.UnitLink.UnitType == "GiftNormal")
-    then
+    if (item.UnitLink.UnitType == "GiftNormal") then
         local gift_normal = item.UnitLink
 
-        if (self.Guid ~= gift_normal.GivePlayerEtGuid)
-        then
-            if (gift_normal.GiveBy ~= self.Guid)
-            then
+        if (self.Guid ~= gift_normal.GivePlayerEtGuid) then
+            if (gift_normal.GiveBy ~= self.Guid) then
                 local msg = CS.System.String.Format("%s%s：%s", gift_normal.GiveBy, self.ViewMgr.LanMgr:getLanValue("SendItems"),
                         item.TbDataItem.Name)
                 local msg_box = self.ViewMgr:CreateView("MsgBox")
@@ -240,8 +218,7 @@ function ControllerBag:S2cBagAddItemNotify(item_data)
 
     local newitem_key = "NewItem"
     local newitem_num = 0
-    if (CS.UnityEngine.PlayerPrefs.HasKey(newitem_key))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey(newitem_key)) then
         newitem_num = CS.UnityEngine.PlayerPrefs.GetInt(newitem_key)
     end
     newitem_num = newitem_num + 1
@@ -249,8 +226,7 @@ function ControllerBag:S2cBagAddItemNotify(item_data)
 
     self:haveNewItem()
     local ev = self:GetEv("EvEntityBagAddItem")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityBagAddItem:new(nil)
     end
     ev.item = item
@@ -270,8 +246,7 @@ function ControllerBag:S2cBagUpdateItemNotify(item_data)
     ViewHelper:UiShowInfoSuccess(msg)
 
     local ev = self:GetEv("EvEntityBagUpdateItem")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityBagUpdateItem:new(nil)
     end
     ev.item = item
@@ -293,8 +268,7 @@ end
 function ControllerBag:getAlreadyHaveItemCount(item_tbid)
     local item_count = 0
     for key, value in pairs(self.MapItem) do
-        if (value.TbDataItem.Id == item_tbid)
-        then
+        if (value.TbDataItem.Id == item_tbid) then
             item_count = item_count + value.ItemData.count
         end
     end
@@ -314,14 +288,12 @@ function ControllerBag:sortListBagItem()
             function(x, y)
                 local price_typex = x.TbDataItem.PriceType
                 local price_typey = y.TbDataItem.PriceType
-                if (price_typex ~= price_typey)
-                then
+                if (price_typex ~= price_typey) then
                     return price_typex > price_typey
                 else
                     local price_x = x.TbDataItem.Price
                     local price_y = y.TbDataItem.Price
-                    if (price_x ~= price_y)
-                    then
+                    if (price_x ~= price_y) then
                         return price_x > price_y
                     else
                         local gift_normalx = x.UnitLink
@@ -338,15 +310,13 @@ function ControllerBag:removeItemFromList(list_item, item_objid)
     local item = nil
     local item_key = nil
     for key, value in pairs(list_item) do
-        if (value.ItemData.item_objid == item_objid)
-        then
+        if (value.ItemData.item_objid == item_objid) then
             item = value
             item_key = key
             break
         end
     end
-    if (item ~= nil)
-    then
+    if (item ~= nil) then
         table.remove(list_item, item_key)
     end
 end
@@ -355,14 +325,12 @@ end
 function ControllerBag:updateItem(list_item, item)
     local item_index = nil
     for key, value in pairs(list_item) do
-        if (value.ItemData.item_objid == item.ItemData.item_objid)
-        then
+        if (value.ItemData.item_objid == item.ItemData.item_objid) then
             item_index = key
             break
         end
     end
-    if (item_index ~= nil)
-    then
+    if (item_index ~= nil) then
         table.remove(list_item, item_index)
         table.insert(list_item, item_index, item)
         self:sortListBagItem()
@@ -389,8 +357,7 @@ end
 function ControllerBag:haveNewItem()
     local newitem_key = "NewItem"
     local newitem_num = 0
-    if (CS.UnityEngine.PlayerPrefs.HasKey(newitem_key))
-    then
+    if (CS.UnityEngine.PlayerPrefs.HasKey(newitem_key)) then
         newitem_num = CS.UnityEngine.PlayerPrefs.GetInt(newitem_key)
     end
     if newitem_num > 0 then

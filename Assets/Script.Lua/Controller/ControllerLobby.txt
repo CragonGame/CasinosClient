@@ -10,28 +10,27 @@ end
 
 ---------------------------------------
 function ControllerLobby:OnCreate()
-    self.ViewMgr:BindEvListener("EvUiClickSearchDesk", self)
-    self.ViewMgr:BindEvListener("EvUiClickSearchFriendsDesk", self)
-    self.ViewMgr:BindEvListener("EvUiClickPlayInDesk", self)
-    self.ViewMgr:BindEvListener("EvUiClickViewInDesk", self)
-    self.ViewMgr:BindEvListener("EvUiClickLeaveLobby", self)
-    self.ViewMgr:BindEvListener("EvUiRequestGetCurrentFriendPlayDesk", self)
-    self.ViewMgr:BindEvListener("EvUiClickCreateDeskTop", self)
-    self.ViewMgr:BindEvListener("EvUiClickExitDesk", self)
-    self.ViewMgr:BindEvListener("EvUiRequestEnterDesktopGFlower", self)-- 相当于PlayerNow，可以把GFlow特殊改为通用
+    self:BindEvListener("EvUiClickSearchDesk", self)
+    self:BindEvListener("EvUiClickSearchFriendsDesk", self)
+    self:BindEvListener("EvUiClickPlayInDesk", self)
+    self:BindEvListener("EvUiClickViewInDesk", self)
+    self:BindEvListener("EvUiClickLeaveLobby", self)
+    self:BindEvListener("EvUiRequestGetCurrentFriendPlayDesk", self)
+    self:BindEvListener("EvUiClickCreateDeskTop", self)
+    self:BindEvListener("EvUiClickExitDesk", self)
+    self:BindEvListener("EvUiRequestEnterDesktopGFlower", self)-- 相当于PlayerNow，可以把GFlow特殊改为通用
 
-    local rpc = self.ControllerMgr.Rpc
-    rpc:RegRpcMethod1(self.MethodType.SearchDesktopListNotify, function(list_desktopinfo)
+    self.Rpc:RegRpcMethod1(self.MethodType.SearchDesktopListNotify, function(list_desktopinfo)
         self:OnSearchDesktopListNotify(list_desktopinfo)
     end)
-    rpc:RegRpcMethod1(self.MethodType.SearchDesktopByPlayerGuidNotify, function(desktop_info)
+    self.Rpc:RegRpcMethod1(self.MethodType.SearchDesktopByPlayerGuidNotify, function(desktop_info)
         self:OnSearchDesktopByPlayerGuidNotify(desktop_info)
     end)
 end
 
 ---------------------------------------
 function ControllerLobby:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
@@ -63,7 +62,7 @@ function ControllerLobby:OnHandleEv(ev)
     elseif (ev.EventName == "EvUiClickLeaveLobby") then
         self:LeavePlayModel()
     elseif (ev.EventName == "EvUiRequestGetCurrentFriendPlayDesk") then
-        self.ControllerMgr.Rpc:RPC1(self.MethodType.SearchDesktopByPlayerGuidRequest, ev.player_guid)
+        self.Rpc:RPC1(self.MethodType.SearchDesktopByPlayerGuidRequest, ev.player_guid)
     elseif (ev.EventName == "EvUiClickCreateDeskTop") then
         self:RequestCreatePrivateDesktop(ev.create_info)
     elseif (ev.EventName == "EvUiClickExitDesk") then
@@ -76,13 +75,13 @@ end
 ---------------------------------------
 function ControllerLobby:RequestCreatePrivateDesktop(create_info)
     local data = create_info:getData4Pack()
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.PlayerCreatePrivateDesktopRequest, data)
+    self.Rpc:RPC1(self.MethodType.PlayerCreatePrivateDesktopRequest, data)
 end
 
 ---------------------------------------
 function ControllerLobby:RequestLeaveDesktop()
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("LeavingTable"))
-    self.ControllerMgr.Rpc:RPC0(self.MethodType.DesktopPlayerLeaveRequest)
+    self.Rpc:RPC0(self.MethodType.DesktopPlayerLeaveRequest)
 end
 
 ---------------------------------------
@@ -121,7 +120,7 @@ end
 function ControllerLobby:RequestSearchDesktop(search_filter)
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
     local p_d = search_filter:getData4Pack()
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.SearchDesktopListRequest, p_d)
+    self.Rpc:RPC1(self.MethodType.SearchDesktopListRequest, p_d)
 end
 
 ---------------------------------------
@@ -147,14 +146,14 @@ function ControllerLobby:RequestEnterDesktop(desktop_etguid, player_or_view, sea
     end
     enter_request.desktop_filter = desktop_filter
     local data_4pack = enter_request:getData4Pack()
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.DesktopPlayerEnterRequest, data_4pack)
+    self.Rpc:RPC1(self.MethodType.DesktopPlayerEnterRequest, data_4pack)
 end
 
 ---------------------------------------
 function ControllerLobby:RequestPlayNow(desktop_filter)
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
     local data = desktop_filter:getData4Pack()
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.PlayerPlayNowRequest, data)
+    self.Rpc:RPC1(self.MethodType.PlayerPlayNowRequest, data)
 end
 
 ---------------------------------------

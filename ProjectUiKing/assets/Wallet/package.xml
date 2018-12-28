@@ -2,7 +2,7 @@
 <packageDescription id="npdzqphe" jpegQuality="80" compressPNG="true">
   <resources>
     <component id="j1yr0" name="Wallet.xml" path="/" exported="true"/>
-    <component id="j1yr1" name="ComChip.xml" path="/Component/" exported="true"/>
+    <component id="j1yr1" name="ComChip.xml" path="/Component/New/" exported="true"/>
     <component id="j1yr2" name="ComItemBg.xml" path="/Component/New/"/>
     <image id="j1yr3" name="图层21.png" path="/Image/" scale="9grid" scale9grid="13,15,55,58"/>
     <image id="j1yr4" name="图层20.png" path="/Image/" atlas="2" duplicatePadding="true"/>
@@ -29,11 +29,10 @@
     <component id="j1yrz" name="TabLight.xml" path="/Component/New/"/>
     <image id="j1yr10" name="23.png" path="/Image/"/>
     <component id="j1yr11" name="BtnTab.xml" path="/Component/"/>
-    <component id="j1yr12" name="Component2.xml" path="/Component/New/"/>
     <image id="j1yr15" name="图层28.png" path="/Image/"/>
     <image id="j1yr18" name="图层15.png" path="/Image/" scale="9grid" scale9grid="23,23,2,1"/>
-    <component id="j1yr1a" name="BtnAddDiamond1.xml" path="/Component/New/"/>
-    <component id="j1yr1b" name="BtnAddChip1.xml" path="/Component/New/"/>
+    <component id="j1yr1a" name="BtnAddDiamond1.xml" path="/Component/"/>
+    <component id="j1yr1b" name="BtnAddChip1.xml" path="/Component/"/>
     <image id="j1yr1c" name="Logo.png" path="/Image/"/>
     <component id="tjym1d" name="ComOperate.xml" path="/Component/"/>
     <component id="xh1i1e" name="ComTabTitle.xml" path="/Component/"/>

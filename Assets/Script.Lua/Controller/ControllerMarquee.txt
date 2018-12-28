@@ -12,9 +12,8 @@ end
 
 ---------------------------------------
 function ControllerMarquee:OnCreate()
-    self.ViewMgr:BindEvListener("EvRequestSendMarquee", self)
-    self.Rpc = self.ControllerMgr.Rpc
-    self.MethodType = MethodType
+    self:BindEvListener("EvRequestSendMarquee", self)
+
     -- 跑马灯，响应玩家发送跑马灯广播请求
     self.Rpc:RegRpcMethod1(self.MethodType.MarqueeRequestResult, function(result)
         self:S2cMarqueeRequestResult(result)
@@ -23,13 +22,14 @@ function ControllerMarquee:OnCreate()
     self.Rpc:RegRpcMethod1(self.MethodType.IMMarqueeNotify, function(im_marquee)
         self:S2cIMMarqueeNotify(im_marquee)
     end)
+
     self.ListIMMarquee = {}
     self.MapQueMarquee = {}
 end
 
 ---------------------------------------
 function ControllerMarquee:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------

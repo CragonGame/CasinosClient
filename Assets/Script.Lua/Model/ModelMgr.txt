@@ -1,4 +1,28 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('ModelCommon')
+require('ModelAccount')
+require('ModelActor')
+require('ModelWallet')
+require('ModelUCenter')
+require('ModelTrade')
+require('ModelDesktop')
+require('ModelDesktopTexas')
+require('ModelDesktopTexasMatch')
+require('ModelActivity')
+require('ModelGrow')
+require('ModelPlayer')
+require('ModelRank')
+require('ModelMarquee')
+require('ModelBag')
+require('ModelDesktopH')
+require('ModelIM')
+require('ModelIMClientEvent')
+require('ModelIMMailBox')
+require('ModelLotteryTicket')
+require('ModelPlayer')
+require('ModelPlayerInfo')
+require('ModelVCoin')
+require('ModelWallet')
 
 ---------------------------------------
 ModelMgr = {

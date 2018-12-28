@@ -13,23 +13,23 @@ end
 ---------------------------------------
 function ControllerWallet:OnCreate()
     -- 交易通知
-    self.ControllerMgr.Rpc:RegRpcMethod2(self.MethodType.VCoinTransNotify, function(result, trans_record)
+    self.Rpc:RegRpcMethod2(self.MethodType.VCoinTransNotify, function(result, trans_record)
         self:S2cVCoinTransNotify(result, trans_record)
     end)
     -- 获取虚拟币地址通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.VCoinGetOrGenerateAddressNotify, function(data)
+    self.Rpc:RegRpcMethod1(self.MethodType.VCoinGetOrGenerateAddressNotify, function(data)
         self:S2cVCoinGetOrGenerateAddressNotify(data)
     end)
     -- 获取交易记录通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.VCoinGetTransListNotify, function(list_trans_record)
+    self.Rpc:RegRpcMethod1(self.MethodType.VCoinGetTransListNotify, function(list_trans_record)
         self:S2cVCoinGetTransListNotify(list_trans_record)
     end)
     -- 验证提现地址有效性通知
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.VCoinWithdrawAddressValidNotify, function(data)
+    self.Rpc:RegRpcMethod1(self.MethodType.VCoinWithdrawAddressValidNotify, function(data)
         self:S2cVCoinWithdrawAddressValidNotify(data)
     end)
     -- 响应获取本人VCoin信息
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.VCoinGetMyVCoinInfoResponse, function(list_myvcoininfo)
+    self.Rpc:RegRpcMethod1(self.MethodType.VCoinGetMyVCoinInfoResponse, function(list_myvcoininfo)
         self:S2cVCoinGetMyVCoinInfoResponse(list_myvcoininfo)
     end)
 end
@@ -52,7 +52,7 @@ function ControllerWallet:RequestVCoinWithdraw()
     data.Volume = 1
     data.Address = ''
     data.Memo = ''
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.VCoinWithdrawRequest, data:getData4Pack())
+    self.Rpc:RPC1(self.MethodType.VCoinWithdrawRequest, data:getData4Pack())
 end
 
 ---------------------------------------
@@ -60,13 +60,13 @@ end
 function ControllerWallet:RequestVCoinGetOrGenerateAddress()
     local currency = 'btc'
     local channel = 'Azex'
-    self.ControllerMgr.Rpc:RPC2(self.MethodType.VCoinGetOrGenerateAddressRequest, currency, channel)
+    self.Rpc:RPC2(self.MethodType.VCoinGetOrGenerateAddressRequest, currency, channel)
 end
 
 ---------------------------------------
 -- 获取交易记录请求
 function ControllerWallet:RequestVCoinGetTransList()
-    self.ControllerMgr.Rpc:RPC0(self.MethodType.VCoinGetTransListRequest)
+    self.Rpc:RPC0(self.MethodType.VCoinGetTransListRequest)
 end
 
 ---------------------------------------
@@ -77,13 +77,13 @@ function ControllerWallet:RequestVCoinWithdrawAddressValid()
     data.Currency = 'btc'
     data.Address = 'aaaaa'
     data.Memo = ''
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.VCoinWithdrawAddressValidRequest, data:getData4Pack())
+    self.Rpc:RPC1(self.MethodType.VCoinWithdrawAddressValidRequest, data:getData4Pack())
 end
 
 ---------------------------------------
 -- 请求获取本人VCoin信息
 function ControllerWallet:RequestVCoinGetVCoinMyInfo()
-    self.ControllerMgr.Rpc:RPC0(self.MethodType.VCoinGetMyVCoinInfoRequest)
+    self.Rpc:RPC0(self.MethodType.VCoinGetMyVCoinInfoRequest)
 end
 
 ---------------------------------------

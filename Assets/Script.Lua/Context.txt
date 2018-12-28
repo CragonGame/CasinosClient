@@ -45,9 +45,9 @@ Config = {
     UCenterDomain = 'https://ucenter-dev.cragon.cn';
     GatewayIp = 'king-gateway-dev.cragon.cn';
     GatewayPort = 5882;
-    BundleUpdateStata = 1;
-    BundleUpdateVersion = '1.30.000';
-    BundleUpdateUrlANDROID = 'https://cragon-king-oss.cragon.cn/ANDROID/KingTexas_1.30.000.apk';
+    BundleUpdateState = 1;
+    BundleUpdateVersion = '1.30.001';
+    BundleUpdateUrlANDROID = 'https://cragon-king-oss.cragon.cn/ANDROID/KingTexas_1.30.001.apk';
     BundleUpdateUrlIOS = 'itms-services:///?action=download-manifest&url=https://cragon-king-oss.cragon.cn/KingTexas.plist';
     CommonFileListFileName = 'CommonFileList.txt';
     DataFileListFileName = 'DataFileList.txt';
@@ -183,7 +183,7 @@ end
 -- 初始化LaunchStep
 function Context:_initLaunchStep()
     -- 检测Bundle是否需要更新
-    if (self.Cfg.BundleUpdateStata == 1 and self.Cfg.BundleUpdateVersion ~= nil and self.CasinosContext.Config.VersionBundle ~= self.Cfg.BundleUpdateVersion) then
+    if (self.Cfg.BundleUpdateState == 1 and self.Cfg.BundleUpdateVersion ~= nil and self.CasinosContext.Config.VersionBundle ~= self.Cfg.BundleUpdateVersion) then
         self.LaunchStep[1] = "UpdateBundle"
     end
 
@@ -367,7 +367,6 @@ function Context:_nextLaunchStep()
         self:DoString("ModelMgr")
         self.ModelMgr = ModelMgr
         self.ModelMgr:Setup()
-        self:_regModel()
 
         self:DoString("EventSys")
         self.EventSys = EventSys
@@ -508,33 +507,6 @@ function Context:_timerUpdateRemoteDataToPersistent(tm)
         local max = self.UpdateRemoteDataToPersistent.TotalCount
         self.Launch:UpdateViewLoadingProgress(max - value, max)
     end
-end
-
----------------------------------------
-function Context:_regModel()
-    self:DoString("ModelCommon")
-    self:DoString("ModelAccount")
-    self:DoString("ModelActor")
-    self:DoString("ModelWallet")
-    self:DoString("ModelUCenter")
-    self:DoString("ModelTrade")
-    self:DoString("ModelDesktop")
-    self:DoString("ModelDesktopTexas")
-    self:DoString("ModelDesktopTexasMatch")
-    self:DoString("ModelActivity")
-    self:DoString("ModelGrow")
-    self:DoString("ModelPlayer")
-    self:DoString("ModelRank")
-    self:DoString("ModelMarquee")
-    self:DoString("ModelWallet")
-    self:DoString("ModelBag")
-    self:DoString("ModelDesktopH")
-    self:DoString("ModelIM")
-    self:DoString("ModelIMClientEvent")
-    self:DoString("ModelIMMailBox")
-    self:DoString("ModelLotteryTicket")
-    self:DoString("ModelPlayer")
-    self:DoString("ModelPlayerInfo")
 end
 
 ---------------------------------------

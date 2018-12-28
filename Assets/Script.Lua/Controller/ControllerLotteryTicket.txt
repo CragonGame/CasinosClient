@@ -13,13 +13,14 @@ end
 
 ---------------------------------------
 function ControllerLotteryTicket:OnCreate()
-    self.ViewMgr:BindEvListener("EvUiClickLeaveLotteryTicket", self)
-    self.ViewMgr:BindEvListener("EvLotteryTicketClickBetOperateType", self)
-    self.ViewMgr:BindEvListener("EvEntityRequestGetLotteryTicketData", self)
-    self.ViewMgr:BindEvListener("EvLotteryTicketClickRewardPotBtn", self)
-    self.ViewMgr:BindEvListener("EvLotteryTicketBet", self)
-    self.ViewMgr:BindEvListener("EvLotteryTicketRepeatBet", self)
-    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
+    self:BindEvListener("EvUiClickLeaveLotteryTicket", self)
+    self:BindEvListener("EvLotteryTicketClickBetOperateType", self)
+    self:BindEvListener("EvEntityRequestGetLotteryTicketData", self)
+    self:BindEvListener("EvLotteryTicketClickRewardPotBtn", self)
+    self:BindEvListener("EvLotteryTicketBet", self)
+    self:BindEvListener("EvLotteryTicketRepeatBet", self)
+    self:BindEvListener("EvEntityGoldChanged", self)
+
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ListLotteryTicketWinlooseResult = {}
     self.MapCanOperateId = {}
@@ -34,37 +35,36 @@ function ControllerLotteryTicket:OnCreate()
     self.BetStateTm = 0
     self.UpdateUiTm = 0
     self.MapLotteryTicketBaseFac = {}
-
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(100, self, self._timerUpdate)
 
     self:regLotteryTicketBaseFactory(UiLotteryTicketTexasFactory:new(nil))
-    local rpc = self.ControllerMgr.Rpc
+
     local m_c = MethodType
-    rpc:RegRpcMethod2(m_c.LotteryTicketNotifyInit, function(state, tm)
+    self.Rpc:RegRpcMethod2(m_c.LotteryTicketNotifyInit, function(state, tm)
         self:OnLotteryTicketNotifyInit(state, tm)
     end)
-    rpc:RegRpcMethod0(m_c.LotteryTicketNotifyClose, function()
+    self.Rpc:RegRpcMethod0(m_c.LotteryTicketNotifyClose, function()
         self:OnLotteryTicketNotifyClose()
     end)
-    rpc:RegRpcMethod1(m_c.LotteryTicketNotifyBet, function(tm)
+    self.Rpc:RegRpcMethod1(m_c.LotteryTicketNotifyBet, function(tm)
         self:OnLotteryTicketNotifyBet(tm)
     end)
-    rpc:RegRpcMethod2(m_c.LotteryTicketNotifyGameEndDetail, function(gameend_detail, me_win_gold)
+    self.Rpc:RegRpcMethod2(m_c.LotteryTicketNotifyGameEndDetail, function(gameend_detail, me_win_gold)
         self:OnLotteryTicketNotifyGameEndDetail(gameend_detail, me_win_gold)
     end)
-    rpc:RegRpcMethod0(m_c.LotteryTicketNotifyGameEndSimple, function()
+    self.Rpc:RegRpcMethod0(m_c.LotteryTicketNotifyGameEndSimple, function()
         self:OnLotteryTicketNotifyGameEndSimple()
     end)
-    rpc:RegRpcMethod2(m_c.LotteryTicketNotifyUpdateBetInfo, function(map_allbetpot, map_self_betinfo)
+    self.Rpc:RegRpcMethod2(m_c.LotteryTicketNotifyUpdateBetInfo, function(map_allbetpot, map_self_betinfo)
         self:OnLotteryTicketNotifyUpdateBetInfo(map_allbetpot, map_self_betinfo)
     end)
-    rpc:RegRpcMethod2(m_c.LotteryTicketResponseSnapshot, function(lotteryticket_data, my_betinfo)
+    self.Rpc:RegRpcMethod2(m_c.LotteryTicketResponseSnapshot, function(lotteryticket_data, my_betinfo)
         self:OnLotteryTicketResponseSnapshot(lotteryticket_data, my_betinfo)
     end)
-    rpc:RegRpcMethod1(m_c.LotteryTicketResponseGetRewardPotPlayerInfo, function(list_playerinfo)
+    self.Rpc:RegRpcMethod1(m_c.LotteryTicketResponseGetRewardPotPlayerInfo, function(list_playerinfo)
         self:OnLotteryTicketResponseGetRewardPotPlayerInfo(list_playerinfo)
     end)
-    rpc:RegRpcMethod1(m_c.LotteryTicketResponseSetCardsType, function(result)
+    self.Rpc:RegRpcMethod1(m_c.LotteryTicketResponseSetCardsType, function(result)
         self:OnLotteryTicketResponseSetCardsType(result)
     end)
 end
@@ -75,38 +75,30 @@ function ControllerLotteryTicket:OnDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------
 function ControllerLotteryTicket:OnHandleEv(ev)
-    if (ev.EventName == "EvUiClickLeaveLotteryTicket")
-    then
+    if (ev.EventName == "EvUiClickLeaveLotteryTicket") then
         self:RequestChangeLotteryTicketPlayerState2Simple()
-    elseif (ev.EventName == "EvLotteryTicketClickBetOperateType")
-    then
+    elseif (ev.EventName == "EvLotteryTicketClickBetOperateType") then
         CS.UnityEngine.PlayerPrefs.SetInt("CurrentTbBetOperateIdLottery", ev.tb_bet_operateid)
         self.CurrentTbBetOperateId = ev.tb_bet_operateid
         local ev = self:GetEv("EvEntityLotteryTicketCurrentBetOperateTypeChange")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityLotteryTicketCurrentBetOperateTypeChange:new(nil)
         end
         self:SendEv(ev)
-    elseif (ev.EventName == "EvEntityRequestGetLotteryTicketData")
-    then
-        self.ControllerMgr.Rpc:RPC0(self.MethodType.LotteryTicketSnapshot)
-    elseif (ev.EventName == "EvLotteryTicketClickRewardPotBtn")
-    then
-        self.ControllerMgr.Rpc:RPC0(self.MethodType.LotteryTicketGetRewardPotPlayerInfo)
-    elseif (ev.EventName == "EvLotteryTicketBet")
-    then
+    elseif (ev.EventName == "EvEntityRequestGetLotteryTicketData") then
+        self.Rpc:RPC0(self.MethodType.LotteryTicketSnapshot)
+    elseif (ev.EventName == "EvLotteryTicketClickRewardPotBtn") then
+        self.Rpc:RPC0(self.MethodType.LotteryTicketGetRewardPotPlayerInfo)
+    elseif (ev.EventName == "EvLotteryTicketBet") then
         self:RequestBet(ev.bet_betpot_index)
-    elseif (ev.EventName == "EvLotteryTicketRepeatBet")
-    then
-        self.ControllerMgr.Rpc:RPC1(self.MethodType.LotteryTicketRequestBetRepeat, self.MapBetRepeatInfo)
-    elseif (ev.EventName == "EvEntityGoldChanged")
-    then
+    elseif (ev.EventName == "EvLotteryTicketRepeatBet") then
+        self.Rpc:RPC1(self.MethodType.LotteryTicketRequestBetRepeat, self.MapBetRepeatInfo)
+    elseif (ev.EventName == "EvEntityGoldChanged") then
         self:updateSuitBetOperateId()
     end
 end
@@ -164,8 +156,7 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyBet(tm)
     end
     self.MapCurrentRoundBetInfo = {}
     local ev = self:GetEv("EvEntityLotteryTicketBetState")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityLotteryTicketBetState:new(nil)
     end
     ev.map_betrepeatinfo = self.MapBetRepeatInfo
@@ -212,12 +203,10 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyGameEndSimple()
     self.BetStateTm = 0
     self.MapTotalBetGolds = {}
     self.TotalBetGolds = 0
-    if (self.LotteryTicketState == LotteryTicketStateEnum.Bet)
-    then
+    if (self.LotteryTicketState == LotteryTicketStateEnum.Bet) then
         self.LotteryTicketState = LotteryTicketStateEnum.GameEnd
         local ev = self:GetEv("EvEntityLotteryTicketGameEndStateSimple")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityLotteryTicketGameEndStateSimple:new(nil)
         end
         self:SendEv(ev)
@@ -232,8 +221,7 @@ function ControllerLotteryTicket:OnLotteryTicketNotifyUpdateBetInfo(map_allbetpo
         self.TotalBetGolds = self.TotalBetGolds + value
     end
     local ev = self:GetEv("EvEntityLotteryTicketUpdateBetPotBetInfo")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityLotteryTicketUpdateBetPotBetInfo:new(nil)
     end
     ev.map_allbetpot = map_allbetpot
@@ -247,8 +235,7 @@ function ControllerLotteryTicket:OnLotteryTicketResponseSnapshot(lotteryticket_d
     l_d:setData(lotteryticket_data)
     self:updateSuitBetOperateId()
     self.LotteryTicketState = l_d.State
-    if (l_d.ListHistory ~= nil)
-    then
+    if (l_d.ListHistory ~= nil) then
         self.ListLotteryTicketWinlooseResult = l_d.ListHistory
     end
 
@@ -258,15 +245,13 @@ function ControllerLotteryTicket:OnLotteryTicketResponseSnapshot(lotteryticket_d
         self.TotalBetGolds = self.TotalBetGolds + value
     end
     self.RewardPotGolds = l_d.RewardPotGold
-    if (self.LotteryTicketState == LotteryTicketStateEnum.Bet)
-    then
+    if (self.LotteryTicketState == LotteryTicketStateEnum.Bet) then
         self.BetStateTm = l_d.StateLeftTm
     else
         self.BetStateTm = 0
     end
     local ev = self:GetEv("EvEntityGetLotteryTicketDataSuccess")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityGetLotteryTicketDataSuccess:new(nil)
     end
     ev.lotteryticket_data = l_d
@@ -277,8 +262,7 @@ end
 function ControllerLotteryTicket:OnLotteryTicketResponseGetRewardPotPlayerInfo(list_playerinfo)
     ViewHelper:UiEndWaiting()
     local ev = self:GetEv("EvEntityLotteryTicketGetRewardPotInfo")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityLotteryTicketGetRewardPotInfo:new(nil)
     end
     local t_p = nil
@@ -301,15 +285,14 @@ end
 
 ---------------------------------------
 function ControllerLotteryTicket:RequestChangeLotteryTicketPlayerState2Simple()
-    self.ControllerMgr.Rpc:RPC0(self.MethodType.LotteryTicketChangePlayerState2Simple)
+    self.Rpc:RPC0(self.MethodType.LotteryTicketChangePlayerState2Simple)
     self:ClearLotteryTicketundred()
 end
 
 ---------------------------------------
 function ControllerLotteryTicket:updateSuitBetOperateId()
     local map_tblotteryticket_operate = self.ControllerMgr.TbDataMgr:GetMapData("LotteryTicketBetOperate")
-    if (map_tblotteryticket_operate == nil)
-    then
+    if (map_tblotteryticket_operate == nil) then
         return
     end
     local list_operates = map_tblotteryticket_operate
@@ -326,22 +309,18 @@ function ControllerLotteryTicket:updateSuitBetOperateId()
         local operatefloor = list_operates[i]
         local operateceiling = list_operates[i + 1]
         local can_operate = self.MapCanOperateId[operatefloor.Id]
-        if (max_betchips >= operatefloor.OperateGolds)
-        then
-            if (max_betchips < operateceiling.OperateGolds)
-            then
+        if (max_betchips >= operatefloor.OperateGolds) then
+            if (max_betchips < operateceiling.OperateGolds) then
                 operate_id = operatefloor.Id
             end
 
             self.MapCanOperateId[operatefloor.Id] = true
-            if (can_operate == false)
-            then
+            if (can_operate == false) then
                 map_changed_operate[operatefloor.Id] = true
             end
         else
             self.MapCanOperateId[operatefloor.Id] = false
-            if (can_operate)
-            then
+            if (can_operate) then
                 map_changed_operate[operatefloor.Id] = false
             end
         end
@@ -349,28 +328,23 @@ function ControllerLotteryTicket:updateSuitBetOperateId()
 
     local max_operate = list_operates[#list_operates]
     local max_can_operate = self.MapCanOperateId[max_operate.Id]
-    if (max_betchips >= max_operate.OperateGolds)
-    then
+    if (max_betchips >= max_operate.OperateGolds) then
         self.MapCanOperateId[max_operate.Id] = true
-        if (max_can_operate == false)
-        then
+        if (max_can_operate == false) then
             map_changed_operate[max_operate.Id] = true
         end
         operate_id = max_operate.Id
     else
         self.MapCanOperateId[max_operate.Id] = false
-        if (max_can_operate)
-        then
+        if (max_can_operate) then
             map_changed_operate[max_operate.Id] = false
         end
     end
 
     local current_operate_change = false
-    if (self.CurrentTbBetOperateId ~= -1)
-    then
+    if (self.CurrentTbBetOperateId ~= -1) then
         local if_current_canoperate = self.MapCanOperateId[self.CurrentTbBetOperateId]
-        if (if_current_canoperate == false)
-        then
+        if (if_current_canoperate == false) then
             self.CurrentTbBetOperateId = operate_id
             current_operate_change = true
         end
@@ -379,11 +353,9 @@ function ControllerLotteryTicket:updateSuitBetOperateId()
         self.CurrentTbBetOperateId = operate_id
     end
 
-    if (LuaHelper:GetTableCount(map_changed_operate) > 0 or current_operate_change)
-    then
+    if (LuaHelper:GetTableCount(map_changed_operate) > 0 or current_operate_change) then
         local ev = self:GetEv("EvEntityLotteryTicketBetOperateTypeChange")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityLotteryTicketBetOperateTypeChange:new(nil)
         end
         ev.map_changeoperate = map_changed_operate
@@ -403,15 +375,12 @@ end
 
 ---------------------------------------
 function ControllerLotteryTicket:RequestBet(bet_betpot_index)
-    if (self.LotteryTicketState ~= LotteryTicketStateEnum.Bet)
-    then
+    if (self.LotteryTicketState ~= LotteryTicketStateEnum.Bet) then
         return
     end
 
-    if (self.CurrentTbBetOperateId == -1)
-    then
-        local tips = self.ViewMgr.LanMgr:getLanValue("Chip") ..
-                self.ControllerMgr.LanMgr:getLanValue("NotEnough")
+    if (self.CurrentTbBetOperateId == -1) then
+        local tips = self.LanMgr:getLanValue("Chip") .. self.LanMgr:getLanValue("NotEnough")
         ViewHelper:UiShowInfoFailed(tips)
         return
     end
@@ -421,15 +390,13 @@ function ControllerLotteryTicket:RequestBet(bet_betpot_index)
     local total_golds = self.ControllerActor.PropGoldAcc:get()
     local already_bet_golds = 0
     for key, value in pairs(self.MapTotalBetGolds) do
-        if (key == bet_betpot_index)
-        then
+        if (key == bet_betpot_index) then
             already_bet_golds = value
             break
         end
     end
     local after_bet_golds = already_bet_golds + bet_golds
-    if (after_bet_golds > total_golds + self.TotalBetGolds)
-    then
+    if (after_bet_golds > total_golds + self.TotalBetGolds) then
         return
     end
 
@@ -439,19 +406,18 @@ function ControllerLotteryTicket:RequestBet(bet_betpot_index)
     self.MapCurrentRoundBetInfo[bet_betpot_index] = already_bet_golds
 
     local ev = self:GetEv("EvEntityLotteryTicketBet")
-    if (ev == nil)
-    then
+    if (ev == nil) then
         ev = EvEntityLotteryTicketBet:new(nil)
     end
     ev.already_bet_chips = already_bet_golds
     ev.bet_potindex = bet_betpot_index
     self:SendEv(ev)
-    self.ControllerMgr.Rpc:RPC2(self.MethodType.LotteryTicketRequestBet, bet_betpot_index, bet_golds)
+    self.Rpc:RPC2(self.MethodType.LotteryTicketRequestBet, bet_betpot_index, bet_golds)
 end
 
 ---------------------------------------
 function ControllerLotteryTicket:RequestSetCardType(card_type)
-    self.ControllerMgr.Rpc:RPC1(self.MethodType.LotteryTicketSetCardsType, card_type)
+    self.Rpc:RPC1(self.MethodType.LotteryTicketSetCardsType, card_type)
 end
 
 ---------------------------------------

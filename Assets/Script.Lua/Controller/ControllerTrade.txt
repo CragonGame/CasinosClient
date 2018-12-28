@@ -245,7 +245,7 @@ function ControllerTrade:OnBuyRMBItemSuccess(purchase_common)
     purchase.PurchaseState = purchase_common.PurchaseState
     purchase.Token = purchase_common.Token
     purchase.Receipt = purchase_common.Receipt
-    --self.ControllerMgr.Rpc:RPC1(MethodType.TradeBuyRMBItemSuccessRequest, purchase:getData4Pack())
+    --self.Rpc:RPC1(MethodType.TradeBuyRMBItemSuccessRequest, purchase:getData4Pack())
 end
 
 ---------------------------------------
@@ -255,12 +255,12 @@ function ControllerTrade:RequestBuyItem(buyitem_tbid, target_type, target_etguid
     request.target_type = target_type
     request.target_etguid = target_etguid
     --print("MethodType.TradeBuyItemRequest")
-    self.ControllerMgr.Rpc:RPC1(MethodType.TradeBuyItemRequest, request:getData4Pack())
+    self.Rpc:RPC1(MethodType.TradeBuyItemRequest, request:getData4Pack())
 end
 
 ---------------------------------------
 function ControllerTrade:RequestSellItem(item_objid)
-    self.ControllerMgr.Rpc:RPC1(MethodType.TradeSellItemRequest, item_objid)
+    self.Rpc:RPC1(MethodType.TradeSellItemRequest, item_objid)
 end
 
 ---------------------------------------
@@ -282,7 +282,7 @@ function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
             r.Amount = tb_item.Price
             r.Channel = ""
             r.MoneyType = self.Context.Cfg.CurrentMoneyType
-            self.ControllerMgr.Rpc:RPC1(MethodType.WalletRechargeRequest, r:getData4Pack())
+            self.Rpc:RPC1(MethodType.WalletRechargeRequest, r:getData4Pack())
         end
     end
     --elseif (self.CasinosContext.UnityIOS == true)

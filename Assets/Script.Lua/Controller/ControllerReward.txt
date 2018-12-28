@@ -24,19 +24,19 @@ function ControllerReward:OnCreate()
     self.ViewMgr:BindEvListener("EvViewRewardClickBtnOnlineReward", self)
 
     -- 获取在线奖励
-    self.ControllerMgr.Rpc:RegRpcMethod2(self.MethodType.PlayerGetOnlineRewardRequestResult, function(result, reward)
+    self.Rpc:RegRpcMethod2(self.MethodType.PlayerGetOnlineRewardRequestResult, function(result, reward)
         self:S2cPlayerGetOnlineRewardRequestResult(result, reward)
     end)
     -- 在线奖励推送
-    self.ControllerMgr.Rpc:RegRpcMethod3(self.MethodType.PlayerGetOnlineRewardNotify, function(online_reward_state, left_reward_second, next_reward)
+    self.Rpc:RegRpcMethod3(self.MethodType.PlayerGetOnlineRewardNotify, function(online_reward_state, left_reward_second, next_reward)
         self:S2cPlayerGetOnlineRewardNotify(online_reward_state, left_reward_second, next_reward)
     end)
     -- 定时奖励推送
-    self.ControllerMgr.Rpc:RegRpcMethod1(self.MethodType.PlayerGetTimingRewardNotify, function(r)
+    self.Rpc:RegRpcMethod1(self.MethodType.PlayerGetTimingRewardNotify, function(r)
         self:OnPlayerGetTimingRewardNotify(r)
     end)
     -- 获取定时奖励
-    self.ControllerMgr.Rpc:RegRpcMethod2(self.MethodType.PlayerGetTimingRewardRequestResult, function(r1, r2)
+    self.Rpc:RegRpcMethod2(self.MethodType.PlayerGetTimingRewardRequestResult, function(r1, r2)
         self:OnPlayerGetTimingRewardRequestResult(r1, r2)
     end)
 
