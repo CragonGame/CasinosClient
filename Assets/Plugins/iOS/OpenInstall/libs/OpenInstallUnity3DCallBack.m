@@ -23,16 +23,7 @@ static OpenInstallUnity3DCallBack * _obj = nil;
 
 -(void)getWakeUpParams:(OpeninstallData *)appData{
     
-    NSString *channelID = @"";
-    NSString *datas = @"";
-    if (appData.data) {
-        datas = [OpenIsntallUnity3DBridge jsonStringWithObject:appData.data];
-    }
-    if (appData.channelCode) {
-        channelID = appData.channelCode;
-    }
-    NSDictionary *wakeUpDicResult = @{@"channelCode":channelID,@"bindData":datas};
-    
+    NSDictionary *wakeUpDicResult = @{@"channelCode":appData.channelCode?:@"",@"bindData":appData.data?:@""};
     NSString *wakeUpJsonStr = [OpenIsntallUnity3DBridge jsonStringWithObject:wakeUpDicResult];
     
     if (self.isRegister) {

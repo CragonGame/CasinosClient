@@ -19,15 +19,7 @@ extern "C" {
     {
         [[OpenInstallSDK defaultManager] getInstallParmsWithTimeoutInterval:s completed:^(OpeninstallData * _Nullable appData) {
             
-            NSString *channelID = @"";
-            NSString *datas = @"";
-            if (appData.data) {
-                datas = [OpenIsntallUnity3DBridge jsonStringWithObject:appData.data];
-            }
-            if (appData.channelCode) {
-                channelID = appData.channelCode;
-            }
-            NSDictionary *installDicResult = @{@"channelCode":channelID,@"bindData":datas};
+            NSDictionary *installDicResult = @{@"channelCode":appData.channelCode?:@"",@"bindData":appData.data?:@""};
             NSString *installJsonStr = [OpenIsntallUnity3DBridge jsonStringWithObject:installDicResult];
             UnitySendMessage([@"OpenInstall" UTF8String], "_installCallback", [installJsonStr UTF8String]);
         }];
@@ -61,21 +53,30 @@ extern "C" {
 
 + (NSString *)jsonStringWithObject:(id)jsonObject{
     
+    id arguments = (jsonObject == nil ? [NSNull null] : jsonObject);
+    
+    NSArray* argumentsWrappedInArr = [NSArray arrayWithObject:arguments];
+    
+    NSString* argumentsJSON = [self cp_JSONString:argumentsWrappedInArr];
+    
+    argumentsJSON = [argumentsJSON substringWithRange:NSMakeRange(1, [argumentsJSON length] - 2)];
+    
+    return argumentsJSON;
+}
++ (NSString *)cp_JSONString:(NSArray *)array{
     NSError *error = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonObject
-                                                       options:NSJSONWritingPrettyPrinted
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:array
+                                                       options:0
                                                          error:&error];
     
     NSString *jsonString = [[NSString alloc] initWithData:jsonData
                                                  encoding:NSUTF8StringEncoding];
     
     if ([jsonString length] > 0 && error == nil){
-        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         return jsonString;
     }else{
         return @"";
     }
-    
 }
 
 @end
