@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1066,640" initName="BtnClose" adaptationTest="FitSize">
-  <controller name="CtrlTab" pages="0,Recharge,1,Withdraw,2,Record" selected="2"/>
+  <controller name="CtrlTab" pages="0,Recharge,1,Withdraw,2,Record" selected="0"/>
   <displayList>
     <image id="n200_hrhq" name="Bg" src="teyh8q" fileName="Image/bg.png" pkg="gbdohaiv" xy="0,0" size="1066,640" group="n260_xh1i"/>
     <image id="n208_hrhq" name="n208" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n260_xh1i" alpha="0.4" color="#000033">
@@ -9,7 +9,7 @@
     <component id="n201_hrhq" name="n201" src="j1yrr" fileName="Component/ComLogo.xml" xy="1,-23" group="n260_xh1i">
       <relation target="" sidePair="left-left,top-top"/>
     </component>
-    <group id="n260_xh1i" name="n260" xy="0,-23" size="1066,663"/>
+    <group id="n260_xh1i" name="n260" xy="0,-23" size="1066,663" collapsed="true"/>
     <component id="n259_xh1i" name="ComTabTitle" src="xh1i1e" fileName="Component/ComTabTitle.xml" xy="0,104">
       <relation target="" sidePair="left-left,top-top"/>
     </component>
@@ -25,10 +25,10 @@
       <gearDisplay controller="CtrlTab" pages="2"/>
       <relation target="" sidePair="left-center,top-top"/>
     </component>
-    <component id="n230_tjym" name="BtnAddChip" src="j1yr1b" fileName="Component/New/BtnAddChip1.xml" xy="777,29">
+    <component id="n230_tjym" name="BtnAddChip" src="j1yr1b" fileName="Component/BtnAddChip1.xml" xy="777,29">
       <relation target="" sidePair="right-right,top-top"/>
     </component>
-    <component id="n231_tjym" name="BtnAddDiamond" src="j1yr1a" fileName="Component/New/BtnAddDiamond1.xml" xy="572,29">
+    <component id="n231_tjym" name="BtnAddDiamond" src="j1yr1a" fileName="Component/BtnAddDiamond1.xml" xy="572,29">
       <relation target="" sidePair="right-right,top-top"/>
     </component>
     <component id="n119_excb" name="BtnReturn" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="992,21">

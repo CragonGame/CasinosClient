@@ -10,7 +10,6 @@ function ViewWallet:ctor()
     self.MapShopGold = {}
     self.CtrlActor = self.ControllerMgr:GetController("Actor")
     self.CtrlWallet = self.ControllerMgr:GetController("Wallet")
-
     self.GTransShow = nil
     self.GCtrlTab = nil
     self.GBtnReturn = nil
@@ -40,17 +39,6 @@ end
 function ViewWallet:OnCreate()
     self:BindEvListener("EvEntityGoldChanged", self)
     self:BindEvListener("EvEntityDiamondChanged", self)
-
-    --self.GListChip = self.ComUi:GetChild("ListChip").asList
-    --local btn_getmoney = self.ComUi:GetChild("Lan_Btn_GetCash").asButton
-    --btn_getmoney.onClick:Add(
-    --        function()
-    --            self:onClickBtnGetMoney()
-    --        end
-    --)
-
-    --local com_input = self.ComUi:GetChild("ComPutIn").asCom
-    --self.GComPutIn = com_input:GetChild("Num").asTextInput
 
     local com_tabtitle = self.ComUi:GetChild("ComTabTitle").asCom
 
@@ -98,8 +86,8 @@ function ViewWallet:OnCreate()
                 self:_onClickBtnWithdrawAddressValid()
             end)
 
-    self.GTxtWithdrawAddress = self.GComTabWidthdraw:GetChild("TxtAddress").asTextField
-    self.GTxtWithdrawMemo = self.GComTabWidthdraw:GetChild("TxtMemo").asTextField
+    self.GTxtWithdrawAddress = self.GComTabWidthdraw:GetChild("TxtAddress").asTextInput
+    self.GTxtWithdrawMemo = self.GComTabWidthdraw:GetChild("TxtMemo").asTextInput
     self.GTxtWithdrawGoldVolume = self.GComTabWidthdraw:GetChild("TxtGoldVolume").asTextField
     self.GTxtWithdrawVCoinVolume = self.GComTabWidthdraw:GetChild("TxtVCoinVolume").asTextField
     self.GTxtWithdrawFee = self.GComTabWidthdraw:GetChild("TxtFee").asTextField
@@ -107,16 +95,11 @@ function ViewWallet:OnCreate()
     self.GComTabRecord = self.ComUi:GetChild("ComTabRecord").asCom
 
     local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
-    --Native:CreateShareUrlAndQRCode(ActorId)
     local url = 'https://www.cragon.cn/gpdz.html?PlayerId=' .. 10000
     local t = CS.UnityEngine.Texture2D(256, 256)
     local colors = self.CasinosContext.LuaMgr:CreateQRCode(url, t.width, t.height)
     t:SetPixels32(colors)
     t:Apply()
-    --local texture = CS.UnityEngine.Texture2D(190, 190)
-    --texture:SetPixels(t:GetPixels(32, 32, 190, 190))
-    --texture:Apply()
-    --local rect = CS.UnityEngine.Rect(0, 0, 300, 300)
     gloader_qrcode.texture = CS.FairyGUI.NTexture(t)
 
     self.GTxtChargeAddress = self.GComTabRecharge:GetChild("TextAddress").asTextField
@@ -144,8 +127,6 @@ function ViewWallet:OnCreate()
             end)
     self.GListRecord:SetVirtual()
     self.GListRecord.numItems = 0
-
-    --self:createChip()
 
     local btn_addchip = self.ComUi:GetChild("BtnAddChip").asButton
     self.GTxtGold = btn_addchip:GetChild("TextChipAmount").asTextField
@@ -295,10 +276,11 @@ end
 ---------------------------------------
 function ViewWallet:_renderListRecord(index, obj)
     local com = CS.Casinos.LuaHelper.GObjectCastToGCom(obj)
-    local text1 = com:GetChild("n1").asTextField
-    local text2 = com:GetChild("n2").asTextField
-    local text3 = com:GetChild("n3").asTextField
-    local text4 = com:GetChild("n4").asTextField
+    local text1 = com:GetChild("Txt1").asTextField
+    local text2 = com:GetChild("Txt2").asTextField
+    local text3 = com:GetChild("Txt3").asTextField
+    local text4 = com:GetChild("Txt4").asTextField
+    local text5 = com:GetChild("Txt5").asTextField
 
     if self.CtrlWallet.ListRecord ~= nil then
         if #self.CtrlWallet.ListRecord > index then
@@ -310,9 +292,12 @@ function ViewWallet:_renderListRecord(index, obj)
             else
                 text1.text = '提现'
             end
-            text2.text = dt
+            text2.text = item.Currency
             text3.text = item.Volume
-            text4.text = item.Currency
+            text4.text = dt
+            text4.color = CS.UnityEngine.Color(0.85, 0.85, 0.85)
+            text5.text = '已完成'
+            text5.color = CS.UnityEngine.Color(0.38, 0.89, 1)
         end
     end
 end
@@ -390,34 +375,24 @@ end
 -- 点击按钮，请求验证提现地址有效性
 function ViewWallet:_onClickBtnWithdrawAddressValid()
     print('请求验证提现地址有效性')
-    self.CtrlWallet:RequestVCoinWithdrawAddressValid()
+    if #self.GTxtWithdrawAddress.text == 0 then
+        ViewHelper:UiShowInfoFailed('请填写提现地址')
+    end
+    self.CtrlWallet:RequestVCoinWithdrawAddressValid(self.GTxtWithdrawAddress.text, self.GTxtWithdrawMemo.text)
 end
 
 ---------------------------------------
 -- 点击按钮，请求提现
 function ViewWallet:_onClickBtnWithdraw()
     print('请求提现')
-    self.CtrlWallet:RequestVCoinWithdraw()
+    if #self.GTxtWithdrawAddress.text == 0 then
+        ViewHelper:UiShowInfoFailed('请填写提现地址')
+    end
+    if #self.GTxtWithdrawGoldVolume.text == 0 then
+        ViewHelper:UiShowInfoFailed('请填写提现数额')
+    end
+    self.CtrlWallet:RequestVCoinWithdraw(self.GTxtWithdrawAddress.text, self.GTxtWithdrawMemo.text, self.GTxtWithdrawGoldVolume.text)
 end
-
----------------------------------------
---function ViewWallet:createChip()
---    if (LuaHelper:GetTableCount(self.MapShopGold) > 0) then
---        return
---    end
---    local map_tbitem = self.CasinosContext.TbDataMgrLua:GetMapData("Item")
---    for key, value in pairs(map_tbitem) do
---        local tb_item = value
---        if (tb_item.UnitType == "Billing") then
---            local tb_itemtype = self.CasinosContext.TbDataMgrLua:GetData("ItemType", tb_item.ItemTypeTbId)
---            if (tb_itemtype.TypeName == "Gold") then
---                local co_gold = self.GListChip:AddItemFromPool().asCom
---                local ui_diamond = ItemUiPurseGold:new(nil, self, co_gold, tb_item)
---                self.MapShopGold[key] = ui_diamond
---            end
---        end
---    end
---end
 
 ---------------------------------------
 ViewWalletFactory = class(ViewFactory)

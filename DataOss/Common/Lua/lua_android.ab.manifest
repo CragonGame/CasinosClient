@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1852597837
+CRC: 823800841
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c85d49aaa39b245ea9ca7f70cc364b6c
+    Hash: 8ca748e89dce81206c7636a021737b28
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -332,6 +332,7 @@ Assets:
 - Assets/Script.Lua/Base.Lan/LanBase.txt
 - Assets/Script.Lua/View/ViewDesktopChatExpression.txt
 - Assets/Script.Lua/View.DesktopTexas/UiCardCommonEx.txt
+- Assets/Script.Lua/Model/ModelVCoin.txt
 - Assets/Script.Lua/Base.Lan/LanZh.txt
 - Assets/Script.Lua/View.DesktopTexas/ViewDesktopTypeBase.txt
 - Assets/Script.Lua/Model/ModelDesktop.txt

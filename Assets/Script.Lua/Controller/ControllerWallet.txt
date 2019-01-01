@@ -17,8 +17,8 @@ function ControllerWallet:OnCreate()
         self:S2cVCoinTransNotify(result, trans_record)
     end)
     -- 获取虚拟币地址通知
-    self.Rpc:RegRpcMethod1(self.MethodType.VCoinGetOrGenerateAddressNotify, function(data)
-        self:S2cVCoinGetOrGenerateAddressNotify(data)
+    self.Rpc:RegRpcMethod2(self.MethodType.VCoinGetOrGenerateAddressNotify, function(data1, data2)
+        self:S2cVCoinGetOrGenerateAddressNotify(data1, data2)
     end)
     -- 获取交易记录通知
     self.Rpc:RegRpcMethod1(self.MethodType.VCoinGetTransListNotify, function(list_trans_record)
@@ -44,22 +44,10 @@ function ControllerWallet:OnHandleEv(ev)
 end
 
 ---------------------------------------
--- 提现请求
-function ControllerWallet:RequestVCoinWithdraw()
-    local data = VCoinWithdrawRequest:new(nil)
-    data.Channel = 'Azex'
-    data.Currency = 'btc'
-    data.Volume = 1
-    data.Address = ''
-    data.Memo = ''
-    self.Rpc:RPC1(self.MethodType.VCoinWithdrawRequest, data:getData4Pack())
-end
-
----------------------------------------
 -- 获取虚拟币地址请求
 function ControllerWallet:RequestVCoinGetOrGenerateAddress()
-    local currency = 'btc'
     local channel = 'Azex'
+    local currency = 'bitcny'
     self.Rpc:RPC2(self.MethodType.VCoinGetOrGenerateAddressRequest, currency, channel)
 end
 
@@ -71,13 +59,25 @@ end
 
 ---------------------------------------
 -- 验证提现地址有效性请求
-function ControllerWallet:RequestVCoinWithdrawAddressValid()
+function ControllerWallet:RequestVCoinWithdrawAddressValid(address, memo)
     local data = VCoinWithdrawAddressValidRequest:new(nil)
     data.Channel = 'Azex'
-    data.Currency = 'btc'
-    data.Address = 'aaaaa'
-    data.Memo = ''
+    data.Currency = 'bitcny'
+    data.Address = address
+    data.Memo = memo
     self.Rpc:RPC1(self.MethodType.VCoinWithdrawAddressValidRequest, data:getData4Pack())
+end
+
+---------------------------------------
+-- 提现请求
+function ControllerWallet:RequestVCoinWithdraw(address, memo, volume)
+    local data = VCoinWithdrawRequest:new(nil)
+    data.Channel = 'Azex'
+    data.Currency = 'bitcny'
+    data.Volume = volume
+    data.Address = address
+    data.Memo = memo
+    self.Rpc:RPC1(self.MethodType.VCoinWithdrawRequest, data:getData4Pack())
 end
 
 ---------------------------------------
@@ -103,12 +103,18 @@ end
 
 ---------------------------------------
 -- 获取虚拟币地址通知
-function ControllerWallet:S2cVCoinGetOrGenerateAddressNotify(data)
+function ControllerWallet:S2cVCoinGetOrGenerateAddressNotify(data1, data2)
     local vcoin_getorgenerate_address_notify = VCoinGetOrGenerateAddressNotify:new(nil)
-    vcoin_getorgenerate_address_notify:setData(data)
+    vcoin_getorgenerate_address_notify:setData(data1)
 
-    self.Address = vcoin_getorgenerate_address_notify.Address
-    self.Memo = vcoin_getorgenerate_address_notify.Memo
+    if data ~= nil then
+        self.VCoinMyInfo = VCoinMyInfo:new(nil)
+        self.VCoinMyInfo:setData(data2)
+        self.VCoinCurrentInfo = nil
+        if self.VCoinMyInfo.ListItem ~= nil and #self.VCoinMyInfo.ListItem > 0 then
+            self.VCoinCurrentInfo = self.VCoinMyInfo.ListItem[1]
+        end
+    end
 
     local view = self.ViewMgr:GetView('Wallet')
     if view ~= nil then
