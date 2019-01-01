@@ -411,6 +411,12 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(ZXing.QrCode.QrCodeEncodingOptions), ZXingQrCodeQrCodeEncodingOptionsWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(UniWebView), UniWebViewWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(UniWebViewMessage), UniWebViewMessageWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(Casinos.LuaMgr), CasinosLuaMgrWrap.__Register);
         
         

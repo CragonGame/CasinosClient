@@ -996,6 +996,143 @@ namespace XLua
 #endif
 		}
         
+		public void __Gen_Delegate_Imp43(UniWebView p0, string p1)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
+                ObjectTranslator translator = luaEnv.translator;
+                translator.Push(L, p0);
+                LuaAPI.lua_pushstring(L, p1);
+                
+                PCall(L, 2, 0, errFunc);
+                
+                
+                
+                LuaAPI.lua_settop(L, errFunc - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public void __Gen_Delegate_Imp44(UniWebView p0, int p1, string p2)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
+                ObjectTranslator translator = luaEnv.translator;
+                translator.Push(L, p0);
+                LuaAPI.xlua_pushinteger(L, p1);
+                LuaAPI.lua_pushstring(L, p2);
+                
+                PCall(L, 3, 0, errFunc);
+                
+                
+                
+                LuaAPI.lua_settop(L, errFunc - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public void __Gen_Delegate_Imp45(UniWebView p0, UniWebViewMessage p1)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
+                ObjectTranslator translator = luaEnv.translator;
+                translator.Push(L, p0);
+                translator.Push(L, p1);
+                
+                PCall(L, 2, 0, errFunc);
+                
+                
+                
+                LuaAPI.lua_settop(L, errFunc - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public bool __Gen_Delegate_Imp46(UniWebView p0)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
+                ObjectTranslator translator = luaEnv.translator;
+                translator.Push(L, p0);
+                
+                PCall(L, 1, 1, errFunc);
+                
+                
+                bool __gen_ret = LuaAPI.lua_toboolean(L, errFunc + 1);
+                LuaAPI.lua_settop(L, errFunc - 1);
+                return  __gen_ret;
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public void __Gen_Delegate_Imp47(UniWebView p0, int p1)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
+                ObjectTranslator translator = luaEnv.translator;
+                translator.Push(L, p0);
+                LuaAPI.xlua_pushinteger(L, p1);
+                
+                PCall(L, 2, 0, errFunc);
+                
+                
+                
+                LuaAPI.lua_settop(L, errFunc - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
+		public void __Gen_Delegate_Imp48(UniWebView p0)
+		{
+#if THREAD_SAFE || HOTFIX_ENABLE
+            lock (luaEnv.luaEnvLock)
+            {
+#endif
+                RealStatePtr L = luaEnv.rawL;
+                int errFunc = LuaAPI.pcall_prepare(L, errorFuncRef, luaReference);
+                ObjectTranslator translator = luaEnv.translator;
+                translator.Push(L, p0);
+                
+                PCall(L, 1, 0, errFunc);
+                
+                
+                
+                LuaAPI.lua_settop(L, errFunc - 1);
+                
+#if THREAD_SAFE || HOTFIX_ENABLE
+            }
+#endif
+		}
+        
         
 		static DelegateBridge()
 		{
@@ -1248,6 +1385,41 @@ namespace XLua
 		    if (type == typeof(cn.sharesdk.unity3d.ShareSDK.EventHandler))
 			{
 			    return new cn.sharesdk.unity3d.ShareSDK.EventHandler(__Gen_Delegate_Imp42);
+			}
+		
+		    if (type == typeof(UniWebView.PageStartedDelegate))
+			{
+			    return new UniWebView.PageStartedDelegate(__Gen_Delegate_Imp43);
+			}
+		
+		    if (type == typeof(UniWebView.PageFinishedDelegate))
+			{
+			    return new UniWebView.PageFinishedDelegate(__Gen_Delegate_Imp44);
+			}
+		
+		    if (type == typeof(UniWebView.PageErrorReceivedDelegate))
+			{
+			    return new UniWebView.PageErrorReceivedDelegate(__Gen_Delegate_Imp44);
+			}
+		
+		    if (type == typeof(UniWebView.MessageReceivedDelegate))
+			{
+			    return new UniWebView.MessageReceivedDelegate(__Gen_Delegate_Imp45);
+			}
+		
+		    if (type == typeof(UniWebView.ShouldCloseDelegate))
+			{
+			    return new UniWebView.ShouldCloseDelegate(__Gen_Delegate_Imp46);
+			}
+		
+		    if (type == typeof(UniWebView.KeyCodeReceivedDelegate))
+			{
+			    return new UniWebView.KeyCodeReceivedDelegate(__Gen_Delegate_Imp47);
+			}
+		
+		    if (type == typeof(UniWebView.OnWebContentProcessTerminatedDelegate))
+			{
+			    return new UniWebView.OnWebContentProcessTerminatedDelegate(__Gen_Delegate_Imp48);
 			}
 		
 		    return null;

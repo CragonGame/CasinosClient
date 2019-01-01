@@ -175,6 +175,8 @@
 		<type fullname="BuglyAgent" preserve="all"/>
 		<type fullname="cn.sharesdk.unity3d.ShareContent" preserve="all"/>
 		<type fullname="cn.sharesdk.unity3d.ShareSDK" preserve="all"/>
+		<type fullname="UniWebView" preserve="all"/>
+		<type fullname="UniWebViewMessage" preserve="all"/>
 		
 	</assembly>
 

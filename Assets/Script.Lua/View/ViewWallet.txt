@@ -353,6 +353,12 @@ function ViewWallet:_onClickBtnCopyMemo()
     else
         ViewHelper:UiShowInfoSuccess('Memo为空，无需复制')
     end
+
+    local web_view = self.CasinosContext.LuaMgr:CreateWebView()
+    web_view:Load("https://www.azex.io/home")
+    --web_view:SetShowSpinnerWhileLoading(true)
+    --web_view:SetShowToolbar(true, false, false, false)
+    web_view:Show()
 end
 
 ---------------------------------------

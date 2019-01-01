@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2108241549
+CRC: 3865468369
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: db98b07672041904ad17efadba27ed94
+    Hash: cc2da4d97985a9b1d7576b7898c2601c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -27,6 +27,7 @@ Assets:
 - Assets/Script.Lua/View/ItemMtt/ItemMatchInfoRank.txt
 - Assets/Script.Lua/View/Item/ItemAnte.txt
 - Assets/Script.Lua/Controller/RewardTiming.txt
+- Assets/Script.Lua/View/ViewDesktopListTexas.txt
 - Assets/Script.Lua/Controller/ControllerMTT.txt
 - Assets/Script.Lua/Base.Item/UnitGoodsVoucher.txt
 - Assets/Script.Lua/Model/ModelDesktopTexasMatch.txt
@@ -345,7 +346,6 @@ Assets:
 - Assets/Script.Lua/Base.TbData/TbDataLanZh.txt
 - Assets/Script.Lua/View.DesktopH/UiDesktopHCardTypeBase.txt
 - Assets/Script.Lua/Base.TbData/TbDataMgr.txt
-- Assets/Script.Lua/View/Item/ItemMainOperate.txt
 - Assets/Script.Lua/View/UiChooseCountryCode.txt
 - Assets/Script.Lua/Model/ModelIM.txt
 - Assets/Script.Lua/Other/GoldController.txt

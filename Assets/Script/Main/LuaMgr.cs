@@ -174,12 +174,7 @@ namespace Casinos
             typeof(UiHelper),
             typeof(UpdateRemoteToPersistentData),
             //typeof(DevInfoSet),
-            //typeof(MobLink),
-            //typeof(MobLinkScene),
-            //typeof(MobLinkReceiver),
-            //typeof(UniWebView),
-            //typeof(UniWebViewMessage),
-
+            
             // SDKs
             typeof(ZXing.BarcodeFormat),
             typeof(BuglyAgent),
@@ -188,6 +183,8 @@ namespace Casinos
             typeof(cn.sharesdk.unity3d.ShareSDK),
             typeof(ZXing.BarcodeWriter),
             typeof(ZXing.QrCode.QrCodeEncodingOptions),
+                        typeof(UniWebView),
+            typeof(UniWebViewMessage),
         };
 
         //---------------------------------------------------------------------
@@ -248,17 +245,14 @@ namespace Casinos
 
             // SDKs
             typeof(cn.sharesdk.unity3d.ShareSDK.EventHandler),
-
-            //typeof(MobLink.GetMobIdHandler),
-            //typeof(MobLink.RestoreSceneHandler),
-            //typeof(UniWebView.PageStartedDelegate),
-            //typeof(UniWebView.PageFinishedDelegate),
-            //typeof(UniWebView.PageErrorReceivedDelegate),
-            //typeof(UniWebView.MessageReceivedDelegate),
-            //typeof(UniWebView.ShouldCloseDelegate),
-            //typeof(UniWebView.KeyCodeReceivedDelegate),
+            typeof(UniWebView.PageStartedDelegate),
+            typeof(UniWebView.PageFinishedDelegate),
+            typeof(UniWebView.PageErrorReceivedDelegate),
+            typeof(UniWebView.MessageReceivedDelegate),
+            typeof(UniWebView.ShouldCloseDelegate),
+            typeof(UniWebView.KeyCodeReceivedDelegate),
             //typeof(UniWebView.OreintationChangedDelegate),
-            //typeof(UniWebView.OnWebContentProcessTerminatedDelegate),
+            typeof(UniWebView.OnWebContentProcessTerminatedDelegate),
         };
     }
 
@@ -591,6 +585,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        // 创建二维码
         public Color32[] CreateQRCode(string encoding_text, int width, int height)
         {
             var writer = new ZXing.BarcodeWriter
@@ -618,6 +613,30 @@ namespace Casinos
             }
         }
 
+        //---------------------------------------------------------------------
+        // 创建内嵌浏览器
+        public UniWebView CreateWebView(string go_name)
+        {
+            var go = new GameObject(go_name);
+            UniWebView web_view = go.AddComponent<UniWebView>();
+			web_view.Frame = new Rect(0, 0, Screen.width, Screen.height);
+			//web_view.Load("http://docs.uniwebview.com/game.html");
+			//web_view.Show();
+			return web_view;
+        }
+
+        //---------------------------------------------------------------------
+        // 创建内嵌浏览器
+        public UniWebView CreateWebView2(string go_name)
+        {
+            var go = new GameObject(go_name);
+            UniWebView web_view = go.AddComponent<UniWebView>();
+			//web_view.Frame = new Rect(0, 0, Screen.width, Screen.height);
+			//web_view.Load("http://docs.uniwebview.com/game.html");
+			//web_view.Show();
+			return web_view;
+        }
+		
         //---------------------------------------------------------------------
         public string ToBase64String(byte[] data)
         {
