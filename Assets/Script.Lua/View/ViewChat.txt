@@ -40,7 +40,7 @@ function ViewChat:OnDestroy()
         ev.text = self.GTextInputChat.text
         self:SendEv(ev)
     end
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------

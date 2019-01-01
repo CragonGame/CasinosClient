@@ -60,6 +60,11 @@ function ViewMgr:Create()
             CS.UnityEngine.Screen.autorotateToPortrait = false
         end
     end
+
+    -- 注册所有View工厂
+    self.Context:DoString("ViewDesktopListTexas")
+    local view_factory_desktoplisttexas = ViewDesktopListTexasFactory:new("DesktopListTexas", "DesktopListTexas", "Background", true, CS.FairyGUI.FitScreen.FitSize)
+    self:RegView("DesktopListTexas", view_factory_desktoplisttexas)
 end
 
 ---------------------------------------

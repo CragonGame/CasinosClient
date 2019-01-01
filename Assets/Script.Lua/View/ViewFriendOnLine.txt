@@ -22,7 +22,7 @@ end
 
 ---------------------------------------
 function ViewFriendOnLine:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------

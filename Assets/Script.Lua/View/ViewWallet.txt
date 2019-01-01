@@ -253,27 +253,6 @@ function ViewWallet:SetPlayerGoldAndDiamond()
 end
 
 ---------------------------------------
-function ViewWallet:_onClickBtnReturn()
-    self.ViewMgr:DestroyView(self)
-end
-
----------------------------------------
-function ViewWallet:onClickBtnGetMoney()
-    --local n = tonumber(self.GComPutIn.text)
-    --if (n == nil) then
-    --    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("EnterNumTips"))
-    --    return
-    --end
-    --
-    --local ev = self:GetEv("EvUiRequestGetMoney")
-    --if (ev == nil) then
-    --    ev = EvUiRequestGetMoney:new(nil)
-    --end
-    --ev.GetMoneyNum = n
-    --self:SendEv(ev)
-end
-
----------------------------------------
 function ViewWallet:_renderListRecord(index, obj)
     local com = CS.Casinos.LuaHelper.GObjectCastToGCom(obj)
     local text1 = com:GetChild("Txt1").asTextField
@@ -300,6 +279,11 @@ function ViewWallet:_renderListRecord(index, obj)
             text5.color = CS.UnityEngine.Color(0.38, 0.89, 1)
         end
     end
+end
+
+---------------------------------------
+function ViewWallet:_onClickBtnReturn()
+    self.ViewMgr:DestroyView(self)
 end
 
 ---------------------------------------

@@ -270,7 +270,7 @@ function ViewDesktopH:OnDestroy()
         self.UiDesktopHFlow:Close()
         self.UiDesktopHFlow = nil
     end
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
     self:_cancelTaskAndDestroyUiResult()
     if self.UiDesktopHBanker ~= nil then
         self.UiDesktopHBanker:Destroy()

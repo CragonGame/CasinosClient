@@ -786,6 +786,8 @@ Resources.KingTexas/Ui/desktophtongpei.ab D2887ED0CB4ABBC18F018CDB8241A52D
 Resources.KingTexas/Ui/desktophtongpei.ab.manifest 5203200E23AA9F872FC5165950D285ED
 Resources.KingTexas/Ui/desktophtongsha.ab D6BC07013A1788113FD601DA50A5582B
 Resources.KingTexas/Ui/desktophtongsha.ab.manifest 7903E135FE5844FA5AC1DEF5E7EF9769
+Resources.KingTexas/Ui/desktoplisttexas.ab E05E2FCF0475FAD1186624C80B1469C6
+Resources.KingTexas/Ui/desktoplisttexas.ab.manifest 68383E38DC8D37FB6F196A0A827E9CFC
 Resources.KingTexas/Ui/desktopmenu.ab 2063EAAE61D40BC1CF58CF8BC24B5FEC
 Resources.KingTexas/Ui/desktopmenu.ab.manifest 82D9656BEFD67920E8E0214CCD4FFAA2
 Resources.KingTexas/Ui/desktopplayerinfo.ab F3E5FC23885072445AEFCA390F4B6002
@@ -884,10 +886,10 @@ Resources.KingTexas/Ui/snowballreward.ab D4B1EB71B504CA6B21A3A5278578B9FD
 Resources.KingTexas/Ui/snowballreward.ab.manifest 0760E5F1C8F5B140CED1B97F19C8C160
 Resources.KingTexas/Ui/takephoto.ab 58C9BD45F6287E017C29AD8A8CDADC2F
 Resources.KingTexas/Ui/takephoto.ab.manifest 19AF96155D4C4243B99B88B8B1C8CD30
-Resources.KingTexas/Ui/Ui 532E36D7E5D4FD511778271AB42F4F33
-Resources.KingTexas/Ui/Ui.manifest 098FC6C4BA47B11919379BE248EA3CD7
-Resources.KingTexas/Ui/wallet.ab C7BF74CAAB75CD133E03D92C83CE4CB4
-Resources.KingTexas/Ui/wallet.ab.manifest 1CE5C8B735E9B35E45337BD937566305
+Resources.KingTexas/Ui/Ui 4109AA63776632224D7D9D131130CA7E
+Resources.KingTexas/Ui/Ui.manifest 7E818025EBE0EBDA088CF669462C1621
+Resources.KingTexas/Ui/wallet.ab A010955FF775BA51E8097190897632CC
+Resources.KingTexas/Ui/wallet.ab.manifest 0AD4359C122C53C13618797F51D3980B
 Resources.KingTexasLaunch/denglong.ab 44E6B94A6CB97509F86425BB8D62BCDB
 Resources.KingTexasLaunch/denglong.ab.manifest A3DF25319AE7BC4AF1D9A18B423F624E
 Resources.KingTexasLaunch/loadingmarry.ab 4D5099E7DEEFCDE1DACD4FDE24466911

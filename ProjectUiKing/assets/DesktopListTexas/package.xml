@@ -2,6 +2,11 @@
 <packageDescription id="g7gsod07" jpegQuality="80" compressPNG="true">
   <resources>
     <component id="dpbd0" name="DesktopListTexas.xml" path="/" exported="true"/>
+    <component id="tp6r1" name="ComTabTitle.xml" path="/Component/"/>
+    <component id="tp6r2" name="ComTabTitleNormal.xml" path="/Component/"/>
+    <image id="tp6r3" name="23.png" path="/Image/"/>
+    <component id="tp6r4" name="ComTabTitleFriend.xml" path="/Component/"/>
+    <component id="tp6r5" name="ComTabTitleAnt.xml" path="/Component/"/>
   </resources>
   <publish name="DesktopListTexas" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopListTexas"/>
 </packageDescription>

@@ -108,7 +108,7 @@ function UiMainPlayerInfo:hidePlayerInfo(show_invite)
 end
 
 ---------------------------------------
-function UiMainPlayerInfo:_loadHeadIconDown(is_success)
+function UiMainPlayerInfo:_loadHeadIconDown()
     if (self.GImageInvite ~= nil) then
         ViewHelper:SetGObjectVisible(false, self.GImageInvite)
     end

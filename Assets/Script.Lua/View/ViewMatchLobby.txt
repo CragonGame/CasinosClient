@@ -91,7 +91,7 @@ function ViewMatchLobby:OnDestroy()
         self.TimerUpdate:Close()
         self.TimerUpdate = nil
     end
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------

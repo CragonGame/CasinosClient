@@ -2,14 +2,14 @@
 <component size="1066,640" initName="BtnClose" adaptationTest="FitSize">
   <controller name="CtrlTab" pages="0,Recharge,1,Withdraw,2,Record" selected="0"/>
   <displayList>
-    <image id="n200_hrhq" name="Bg" src="teyh8q" fileName="Image/bg.png" pkg="gbdohaiv" xy="0,0" size="1066,640" group="n260_xh1i"/>
+    <image id="n200_hrhq" name="Bg" src="teyh8q" fileName="Image/bg.png" pkg="gbdohaiv" xy="-352,-242" size="1770,1125" group="n260_xh1i"/>
     <image id="n208_hrhq" name="n208" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n260_xh1i" alpha="0.4" color="#000033">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
     <component id="n201_hrhq" name="n201" src="j1yrr" fileName="Component/ComLogo.xml" xy="1,-23" group="n260_xh1i">
       <relation target="" sidePair="left-left,top-top"/>
     </component>
-    <group id="n260_xh1i" name="n260" xy="0,-23" size="1066,663" collapsed="true"/>
+    <group id="n260_xh1i" name="n260" xy="-352,-242" size="1770,1125"/>
     <component id="n259_xh1i" name="ComTabTitle" src="xh1i1e" fileName="Component/ComTabTitle.xml" xy="0,104">
       <relation target="" sidePair="left-left,top-top"/>
     </component>

@@ -77,7 +77,7 @@ function ViewLockChatTexas:OnDestroy()
         self.Tween:Kill(false)
         self.Tween = nil
     end
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
     self.MapPlayerChat = {}
 end
 

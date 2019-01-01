@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="182,91">
+  <controller name="CtrlState" pages="1,Normal,0,Light" selected="1"/>
+  <displayList>
+    <image id="n1_xh1i" name="n1" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="182,91" color="#294893">
+      <gearDisplay controller="CtrlState" pages="0"/>
+    </image>
+    <image id="n0_xh1i" name="n0" src="tp6r3" fileName="Image/23.png" xy="0,0" size="128,91">
+      <gearDisplay controller="CtrlState" pages="0"/>
+    </image>
+    <text id="n2_xh1i" name="TextLight" xy="25,23" size="133,45" font="FontCu" fontSize="25" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="好友所在桌">
+      <gearDisplay controller="CtrlState" pages="0"/>
+    </text>
+    <text id="n3_l4zq" name="TextNormal" xy="25,23" size="133,45" font="FontCu" fontSize="25" color="#748bba" align="center" vAlign="middle" autoSize="none" text="好友所在桌">
+      <gearDisplay controller="CtrlState" pages="1"/>
+    </text>
+  </displayList>
+</component>

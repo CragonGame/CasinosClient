@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="182,536">
+  <displayList>
+    <image id="n0_xh1i" name="n0" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="182,536" color="#192245"/>
+    <component id="n2_xh1i" name="BtnTabNormal" src="tp6r2" fileName="Component/ComTabTitleNormal.xml" xy="0,0"/>
+    <image id="n1_xh1i" name="n1" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="0,92" size="182,4"/>
+    <component id="n6_l4zq" name="BtnTabAnt" src="tp6r5" fileName="Component/ComTabTitleAnt.xml" xy="0,97"/>
+    <image id="n4_xh1i" name="n4" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="0,188" size="182,4"/>
+    <component id="n3_xh1i" name="BtnTabFriend" src="tp6r4" fileName="Component/ComTabTitleFriend.xml" xy="0,193"/>
+    <image id="n5_l4zq" name="n5" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="0,284" size="182,4"/>
+  </displayList>
+</component>

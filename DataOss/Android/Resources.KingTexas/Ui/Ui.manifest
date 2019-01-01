@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 479883532
+CRC: 2879058975
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: wallet.ab
+      Name: desktoplisttexas.ab
       Dependencies: {}

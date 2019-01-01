@@ -110,7 +110,7 @@ function ViewLotteryTicket:OnDestroy()
         self.UiLotteryTicketFlow:Close()
         self.UiLotteryTicketFlow = nil
     end
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------

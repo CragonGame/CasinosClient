@@ -43,7 +43,7 @@ function ViewChatChooseTarget:OnDestroy()
         self.Tween:Kill(false)
         self.Tween = nil
     end
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------

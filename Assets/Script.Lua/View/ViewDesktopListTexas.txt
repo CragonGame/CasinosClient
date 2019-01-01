@@ -1,120 +1,76 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-ViewLobby = class(ViewBase)
+ViewDesktopListTexas = class(ViewBase)
 
 ---------------------------------------
-function ViewLobby:ctor()
-    self.Context = Context
+function ViewDesktopListTexas:ctor()
     self.FilterKey = "DesktopFilterTP"
-end
-
----------------------------------------
-function ViewLobby:OnCreate()
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
-    self.ControllerFriendOrBet = self.ComUi:GetController("ControllerFriendOrBet")
-    self.ControllerFriendOrBet:SetSelectedIndex(1)
-    self.GTextBetHints = self.ComUi:GetChild("BetHint").asTextField
-    self.GTextNoFriendTips = self.ComUi:GetChild("NoFriendTips").asTextField
-    self.GListDesk = self.ComUi:GetChild("ListDesk").asList
-    self.GListDesk.scrollPane.onScrollEnd:Add(
-            function()
-                self:onListDeskScorllEnd()
-            end
-    )
-    local com_operateList = self.ComUi:GetChild("ComBetRangeOperateList").asCom
-    self.GListBetRangeOperate = com_operateList:GetChild("ListBetRangeOperate").asList
-    self.GListBetRangeOperate.scrollPane.onScrollEnd:Add(
-            function()
-                self:onBetChipOperateListScrollEnd()-- 滚动停止
-            end
-    )
-    self.GListBetRangeOperate.scrollPane.scrollStep = 200
-    self.GListFriendHeadIcon = self.ComUi:GetChild("ListFriend").asList
-    self.GListFriendHeadIcon:SetVirtual()
-    self.GListFriendHeadIcon.itemRenderer = function(index, item)
-        self:rendererPlayingFriend(index, item)
-    end
-    local btn_seat = self.ComUi:GetChild("BtnSeat").asCom
-    btn_seat.onClick:Add(
-            function()
-                self:onClickBtnSeat()
-            end
-    )
-    self.GTextSeatType = btn_seat:GetChild("TextSeatType").asTextField
-    local btn_fullDesk = self.ComUi:GetChild("BtnFullDesk").asCom
-    btn_fullDesk.onClick:Add(
-            function()
-                self:onClickBtnFullDesk()
-            end
-    )
-    self.GTextHideOrShow = btn_fullDesk:GetChild("TextHideOrShow").asTextField
-    local btn_return = self.ComUi:GetChild("BtnReturn").asCom
-    btn_return.onClick:Add(
-            function()
-                self:onClickBtnReturn()
-            end
-    )
-    local btn_personInfo = self.ComUi:GetChild("BtnPersonInfo").asCom
-    btn_personInfo.onClick:Add(
-            function()
-                self:onClickBtnPersonInfo()
-            end
-    )
-    local btn_friend = self.ComUi:GetChild("BtnFriend").asButton
-    btn_friend.onClick:Add(
-            function()
-                self:onClickBtnFriend()
-            end
-    )
-    local btn_bet = self.ComUi:GetChild("BtnBet").asButton
-    btn_bet.onClick:Add(
-            function()
-                self:onClickBtnBet()
-            end
-    )
-    local btn_betAdd = self.ComUi:GetChild("BtnBetAdd").asButton
-    btn_betAdd.onClick:Add(
-            function()
-                self:onClickBtnBetAdd()
-            end
-    )
-    local btn_betReduce = self.ComUi:GetChild("BtnBetReduce").asButton
-    btn_betReduce.onClick:Add(
-            function()
-                self:onClickBtnBetReduce()
-            end
-    )
+    self.GCtrlTab = nil
+    self.GBtnClose = nil
+    self.GBtnTabNormal = nil
+    self.GBtnTabAnt = nil
+    self.GBtnTabFriend = nil
     self.ListPlayingFriend = {}
     self.MapDesktopFilter = {}
     self.MapDeskItem = {}
     self.MapBetChipOperateItem = {}
+end
 
-    self:initPlayerInfo()
+---------------------------------------
+function ViewDesktopListTexas:OnCreate()
+    self:BindEvListener("EvEntityGetLobbyDeskList", self)
+    self:BindEvListener("EvEntitySearchDesktopFollowFriend", self)
+    self:BindEvListener("EvEntityFriendOnlineStateChange", self)
+    self:BindEvListener("EvEntityNotifyDeleteFriend", self)
+    self:BindEvListener("EvEntityRefreshFriendList", self)
+    self:BindEvListener("EvEntityRefreshFriendInfo", self)
+    self:BindEvListener("EvEntitySearchPlayingFriend", self)
+    self:BindEvListener("EvClickIconWithNickName", self)
+
+    local com_tabtitle = self.ComUi:GetChild("ComTabTitle").asCom
+
+    self.GBtnClose = self.ComUi:GetChild("BtnClose").asButton
+    self.GBtnClose.onClick:Add(
+            function()
+                self:_onClickBtnClose()
+            end
+    )
+
+    self.GBtnTabNormal = com_tabtitle:GetChild("BtnTabNormal").asCom
+    self.GBtnTabNormal.onClick:Add(
+            function()
+                self:_onClickBtnTabNormal()
+            end)
+
+    self.GBtnTabAnt = com_tabtitle:GetChild("BtnTabAnt").asCom
+    self.GBtnTabAnt.onClick:Add(
+            function()
+                self:_onClickBtnTabAnt()
+            end)
+
+    self.GBtnTabFriend = com_tabtitle:GetChild("BtnTabFriend").asCom
+    self.GBtnTabFriend.onClick:Add(
+            function()
+                self:_onClickBtnTabFriend()
+            end)
+
     local bg = self.ComUi:GetChild("Bg")
     if (bg ~= nil) then
         ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
     end
-    self.ChipIconSolustion = self.ComUi:GetController("ChipIconSolustion")
-    self.ChipIconSolustion.selectedIndex = self.Context.Cfg.ChipIconSolustion
-    self.ViewMgr:BindEvListener("EvEntityGetLobbyDeskList", self)
-    self.ViewMgr:BindEvListener("EvEntitySearchDesktopFollowFriend", self)
-    self.ViewMgr:BindEvListener("EvEntityFriendOnlineStateChange", self)
-    self.ViewMgr:BindEvListener("EvEntityNotifyDeleteFriend", self)
-    self.ViewMgr:BindEvListener("EvEntityRefreshFriendList", self)
-    self.ViewMgr:BindEvListener("EvEntityRefreshFriendInfo", self)
-    self.ViewMgr:BindEvListener("EvEntitySearchPlayingFriend", self)
-    self.ViewMgr:BindEvListener("EvClickIconWithNickName", self)
+
+    self:_onClickBtnTabNormal()
 end
 
 ---------------------------------------
-function ViewLobby:OnDestroy()
+function ViewDesktopListTexas:OnDestroy()
     self:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ViewLobby:OnHandleEv(ev)
+function ViewDesktopListTexas:OnHandleEv(ev)
     if (ev ~= nil) then
         if (ev.EventName == "EvEntityGetLobbyDeskList") then
             if (self.ControllerFriendOrBet.selectedIndex == 1) then
@@ -162,15 +118,64 @@ function ViewLobby:OnHandleEv(ev)
 end
 
 ---------------------------------------
+function ViewDesktopListTexas:_onClickBtnClose()
+    self.ViewMgr:DestroyView(self)
+
+    local ev = self:GetEv("EvUiCreateMainUi")
+    if (ev == nil) then
+        ev = EvUiCreateMainUi:new(nil)
+    end
+    self:SendEv(ev)
+end
+
+---------------------------------------
+function ViewDesktopListTexas:_onClickBtnTabNormal()
+    local gctrl1 = self.GBtnTabNormal:GetController("CtrlState")
+    gctrl1.selectedIndex = 1
+    local gctrl2 = self.GBtnTabAnt:GetController("CtrlState")
+    gctrl2.selectedIndex = 0
+    local gctrl3 = self.GBtnTabFriend:GetController("CtrlState")
+    gctrl3.selectedIndex = 0
+
+    --self.GCtrlTab.selectedIndex = 0
+end
+
+---------------------------------------
+function ViewDesktopListTexas:_onClickBtnTabAnt()
+    local gctrl1 = self.GBtnTabNormal:GetController("CtrlState")
+    gctrl1.selectedIndex = 0
+    local gctrl2 = self.GBtnTabAnt:GetController("CtrlState")
+    gctrl2.selectedIndex = 1
+    local gctrl3 = self.GBtnTabFriend:GetController("CtrlState")
+    gctrl3.selectedIndex = 0
+
+    --self.GCtrlTab.selectedIndex = 1
+end
+
+---------------------------------------
+function ViewDesktopListTexas:_onClickBtnTabFriend()
+    local gctrl1 = self.GBtnTabNormal:GetController("CtrlState")
+    gctrl1.selectedIndex = 0
+    local gctrl2 = self.GBtnTabAnt:GetController("CtrlState")
+    gctrl2.selectedIndex = 0
+    local gctrl3 = self.GBtnTabFriend:GetController("CtrlState")
+    gctrl3.selectedIndex = 1
+
+    --self.GCtrlTab.selectedIndex = 2
+
+    --self.CtrlWallet:RequestVCoinGetTransList()
+end
+
+---------------------------------------
 -- 初始化DesktopFilter并显示
-function ViewLobby:setLobbyModel()
+function ViewDesktopListTexas:setLobbyModel()
     --lobby_model
     self.LobbyFilterKey = self.FilterKey --.. self.DesktopTypeTexas
     self:initDesktopSearchFilter()-- 需读PlayerPrefs
 end
 
 ---------------------------------------
-function ViewLobby:initPlayerInfo()
+function ViewDesktopListTexas:_initPlayerInfo()
     local com_headIcon = self.ComUi:GetChild("ComHeadIcon").asCom
     local viewHeadIcon = ViewHeadIcon:new(nil, com_headIcon)
     viewHeadIcon:SetMainPlayerInfo(self.ControllerActor)
@@ -183,7 +188,7 @@ function ViewLobby:initPlayerInfo()
 end
 
 ---------------------------------------
-function ViewLobby:chooseCurrentPlayingFriend(player_info)
+function ViewDesktopListTexas:chooseCurrentPlayingFriend(player_info)
     self.CurrentPlayingFriendInfo = player_info
     local ev = self:GetEv("EvUiRequestGetCurrentFriendPlayDesk")
     if (ev == nil) then
@@ -194,7 +199,7 @@ function ViewLobby:chooseCurrentPlayingFriend(player_info)
 end
 
 ---------------------------------------
-function ViewLobby:requestLobbyDesk()
+function ViewDesktopListTexas:requestLobbyDesk()
     local dektop_filter = DesktopFilter:new(nil)
     dektop_filter.FactoryName = "Texas"
     dektop_filter.IncludeFull = self.DeskSearchFilter.is_seat_full
@@ -210,7 +215,7 @@ function ViewLobby:requestLobbyDesk()
 end
 
 ---------------------------------------
-function ViewLobby:SetDesktopInfo(list_desktop)
+function ViewDesktopListTexas:SetDesktopInfo(list_desktop)
     ViewHelper:UiEndWaiting()
     self.GListDesk.visible = true
     self.GListDesk.scrollPane.posX = 0
@@ -249,7 +254,7 @@ function ViewLobby:SetDesktopInfo(list_desktop)
 end
 
 ---------------------------------------
-function ViewLobby:setCurrentPlayingFriend(list_playerinfo)
+function ViewDesktopListTexas:setCurrentPlayingFriend(list_playerinfo)
     self.ListPlayingFriend = {}
     for key, value in pairs(list_playerinfo) do
         table.insert(self.ListPlayingFriend, value)
@@ -264,7 +269,7 @@ function ViewLobby:setCurrentPlayingFriend(list_playerinfo)
 end
 
 ---------------------------------------
-function ViewLobby:RemovePlayingFriend(player_guid)
+function ViewDesktopListTexas:RemovePlayingFriend(player_guid)
     local playing_friend = nil
     local playing_friend_key = nil
     for key, value in pairs(self.ListPlayingFriend) do
@@ -288,7 +293,7 @@ function ViewLobby:RemovePlayingFriend(player_guid)
 end
 
 ---------------------------------------
-function ViewLobby:RefreshPlayingFriend(friend_info)
+function ViewDesktopListTexas:RefreshPlayingFriend(friend_info)
     local player_playstate = friend_info.PlayerPlayState
     local friend_desktopguid = nil
     if (player_playstate == nil) then
@@ -304,7 +309,7 @@ function ViewLobby:RefreshPlayingFriend(friend_info)
 end
 
 ---------------------------------------
-function ViewLobby:onClickBtnSeat()
+function ViewDesktopListTexas:onClickBtnSeat()
     local seat_num = self.DeskSearchFilter.seat_num
     if (seat_num == TexasDesktopSeatNum.Five) then
         seat_num = TexasDesktopSeatNum.Nine
@@ -316,7 +321,7 @@ function ViewLobby:onClickBtnSeat()
 end
 
 ---------------------------------------
-function ViewLobby:onClickBtnFullDesk()
+function ViewDesktopListTexas:onClickBtnFullDesk()
     local isFull = self.DeskSearchFilter.is_seat_full
     if (isFull) then
         self.DeskSearchFilter.is_seat_full = false
@@ -327,7 +332,7 @@ function ViewLobby:onClickBtnFullDesk()
 end
 
 ---------------------------------------
-function ViewLobby:onClickBtnPersonInfo()
+function ViewDesktopListTexas:onClickBtnPersonInfo()
     if (self.ControllerFriendOrBet.selectedIndex == 0) then
         return
     end
@@ -347,29 +352,29 @@ function ViewLobby:onClickBtnPersonInfo()
 end
 
 ---------------------------------------
-function ViewLobby:onClickBtnFriend()
+function ViewDesktopListTexas:onClickBtnFriend()
     self.ControllerFriendOrBet:SetSelectedIndex(0)
     self:RefreshPlayingFriend()
 end
 
 ---------------------------------------
-function ViewLobby:onClickBtnBet()
+function ViewDesktopListTexas:onClickBtnBet()
     self.ControllerFriendOrBet:SetSelectedIndex(1)
     self:requestLobbyDesk()
 end
 
 ---------------------------------------
-function ViewLobby:onClickBtnBetAdd()
+function ViewDesktopListTexas:onClickBtnBetAdd()
     self.GListBetRangeOperate.scrollPane:ScrollRight(1, true)
 end
 
 ---------------------------------------
-function ViewLobby:onClickBtnBetReduce()
+function ViewDesktopListTexas:onClickBtnBetReduce()
     self.GListBetRangeOperate.scrollPane:ScrollLeft(1, true)
 end
 
 ---------------------------------------
-function ViewLobby:onClickBtnReturn()
+function ViewDesktopListTexas:onClickBtnReturn()
     local ev = self:GetEv("EvUiCreateMainUi")
     if (ev == nil) then
         ev = EvUiCreateMainUi:new(nil)
@@ -378,7 +383,7 @@ function ViewLobby:onClickBtnReturn()
 end
 
 ---------------------------------------
-function ViewLobby:onClickCreateDesktopBtn()
+function ViewDesktopListTexas:onClickCreateDesktopBtn()
     local mb_createdesk = self.ViewMgr:CreateView("CreateDeskTop")
     self.MapDesktopFilter = nil
     self.MapDesktopFilter = {}
@@ -388,7 +393,7 @@ function ViewLobby:onClickCreateDesktopBtn()
 end
 
 ---------------------------------------
-function ViewLobby:initDesktopSearchFilter()
+function ViewDesktopListTexas:initDesktopSearchFilter()
     local map_deskinfo = self.ViewMgr.TbDataMgr:GetMapData("DesktopInfoTexas")
     local select_item = nil
     if (CS.UnityEngine.PlayerPrefs.HasKey(self.LobbyFilterKey)) then
@@ -424,7 +429,7 @@ function ViewLobby:initDesktopSearchFilter()
 end
 
 ---------------------------------------
-function ViewLobby:onBetChipOperateListScrollEnd()
+function ViewDesktopListTexas:onBetChipOperateListScrollEnd()
     local currentItemIndex = self:GetCurrentItemIndex(self.GListBetRangeOperate)
     local current_item = self:getCurrentChipItem(currentItemIndex)
     local betChipOperateItem = self.MapBetChipOperateItem[current_item.EbData.Id]
@@ -447,7 +452,7 @@ function ViewLobby:onBetChipOperateListScrollEnd()
 end
 
 ---------------------------------------
-function ViewLobby:onListDeskScorllEnd()
+function ViewDesktopListTexas:onListDeskScorllEnd()
     if (LuaHelper:GetTableCount(self.MapDeskItem) > 0) then
         local currentItemDeskIndex = self:GetCurrentItemIndex(self.GListDesk)
         self.CurrentDesk = self.MapDeskItem[currentItemDeskIndex + 1]
@@ -462,7 +467,7 @@ function ViewLobby:onListDeskScorllEnd()
 end
 
 ---------------------------------------
-function ViewLobby:onSearchFilterChanged()
+function ViewDesktopListTexas:onSearchFilterChanged()
     local filter = self.ViewMgr:PackData(self.DeskSearchFilter)-- CS.EbTool.jsonSerialize(self.DeskSearchFilter)
     CS.UnityEngine.PlayerPrefs.SetString(self.LobbyFilterKey, filter)
     self.GListDesk.visible = false
@@ -487,7 +492,7 @@ function ViewLobby:onSearchFilterChanged()
 end
 
 ---------------------------------------
-function ViewLobby:keepCreateTableBtnFollowTable()
+function ViewDesktopListTexas:keepCreateTableBtnFollowTable()
     if (#self.MapDeskItem > 0) then
         self.MapDeskItem[1]:ShowCreateBtnL()
         self.MapDeskItem[#self.MapDeskItem]:ShowCreateBtnR()
@@ -495,7 +500,7 @@ function ViewLobby:keepCreateTableBtnFollowTable()
 end
 
 ---------------------------------------
-function ViewLobby:GetCurrentItemIndex(list)
+function ViewDesktopListTexas:GetCurrentItemIndex(list)
     if (list.scrollPane.posX == 0) then
         return 0
     end
@@ -506,7 +511,7 @@ function ViewLobby:GetCurrentItemIndex(list)
 end
 
 ---------------------------------------
-function ViewLobby:getCurrentChipItem(index)
+function ViewDesktopListTexas:getCurrentChipItem(index)
     local item = nil
     for key, value in pairs(self.MapBetChipOperateItem) do
         if (value.CurrentIndex == index) then
@@ -518,7 +523,7 @@ function ViewLobby:getCurrentChipItem(index)
 end
 
 ---------------------------------------
-function ViewLobby:rendererPlayingFriend(index, item)
+function ViewDesktopListTexas:rendererPlayingFriend(index, item)
     if (#self.ListPlayingFriend > index) then
         local playing_friend_info = self.ListPlayingFriend[index + 1]
         if (self.CurrentPlayingFriendInfo == nil) then
@@ -537,7 +542,7 @@ function ViewLobby:rendererPlayingFriend(index, item)
 end
 
 ---------------------------------------
-function ViewLobby:RefreshPlayingFriend()
+function ViewDesktopListTexas:RefreshPlayingFriend()
     local ev = self:GetEv("EvUiClickSearchFriendsDesk")
     if (ev == nil) then
         ev = EvUiClickSearchFriendsDesk:new(nil)
@@ -547,10 +552,10 @@ function ViewLobby:RefreshPlayingFriend()
 end
 
 ---------------------------------------
-ViewLobbyFactory = class(ViewFactory)
+ViewDesktopListTexasFactory = class(ViewFactory)
 
 ---------------------------------------
-function ViewLobbyFactory:CreateView()
-    local view = ViewLobby:new()
+function ViewDesktopListTexasFactory:CreateView()
+    local view = ViewDesktopListTexas:new()
     return view
 end

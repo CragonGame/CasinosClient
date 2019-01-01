@@ -223,7 +223,7 @@ function ViewDesktopTexas:OnDestroy()
         self.TimerUpdate = nil
     end
 
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 
     if (self.Flow ~= nil) then
         self.Flow:Destroy()

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1066,640">
-  <displayList/>
+  <displayList>
+    <image id="n10_tp6r" name="Bg" src="teyh8q" fileName="Image/bg.png" pkg="gbdohaiv" xy="-352,-242" size="1770,1125" group="n11_tp6r" hideByEditor="true"/>
+    <group id="n11_tp6r" name="n11" xy="-352,-242" size="1770,1125"/>
+    <component id="n8_tp6r" name="ComTabTitle" src="tp6r1" fileName="Component/ComTabTitle.xml" xy="0,103"/>
+    <component id="n9_tp6r" name="BtnClose" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="972,25"/>
+  </displayList>
 </component>

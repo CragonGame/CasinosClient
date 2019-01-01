@@ -399,7 +399,7 @@ function ViewMain:OnDestroy()
     end
     CS.UnityEngine.GameObject.Destroy(self.ParticleDeskTop)
     CS.UnityEngine.GameObject.Destroy(self.ParticleMatch)
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
     local view_shootingtext = self.ViewMgr:GetView("ShootingText")
     self.ViewMgr:DestroyView(view_shootingtext)
 end
@@ -804,8 +804,9 @@ function ViewMain:onClickBtnDesktop()
     self:hideMote()
     self.GTransitionShow:PlayReverse(
             function()
-                local view_lobby = self.ViewMgr:CreateView("ClassicModel")
-                view_lobby:setLobbyModel()
+                --local view_lobby = self.ViewMgr:CreateView("ClassicModel")
+                --view_lobby:setLobbyModel()
+                self.ViewMgr:CreateView("DesktopListTexas")
             end
     )
 end

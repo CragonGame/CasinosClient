@@ -173,7 +173,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerOperateTexas:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
 end
 
 ---------------------------------------

@@ -56,7 +56,7 @@ end
 
 ---------------------------------------
 function ControllerBag:OnDestroy()
-    self.ViewMgr:UnbindEvListener(self)
+    self:UnbindEvListener(self)
     self.MapItem = {}
     self.MapItem = nil
     self.ListItemGiftNormal = {}
