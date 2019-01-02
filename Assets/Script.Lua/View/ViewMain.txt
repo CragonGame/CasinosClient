@@ -13,17 +13,17 @@ ViewMain = class(ViewBase)
 function ViewMain:ctor()
     self.PokerGirlMain = "PokerGirMain"
     self.NewFriendChatCount = 0
+    self.ListFriendInfo = {}
+    self.ListFriendInfoRecommend = {}
+    self.MapFriend = {}
+    self.ListHeadIconFriend = {}
+    self.ListHeadIconRecommond = {}
 end
 
 ---------------------------------------
 function ViewMain:OnCreate()
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
-    self.ListFriendInfo = {}
-    self.ListFriendInfoRecommend = {}
-    self.MapFriend = {}
-    self.ListHeadIconFriend = {}
-    self.ListHeadIconRecommond = {}
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.ControllerIM = self.ControllerMgr:GetController("IM")
@@ -158,8 +158,8 @@ function ViewMain:OnCreate()
     )
     self.ComBagTips = com_more:GetChild("ComBagTips").asCom
     self.TransitionBagTips = self.ComBagTips:GetTransition("TransitionNewMsg")
-    local btn_Chatfriend = self.ComUi:GetChild("BtnChatFriend").asButton
-    btn_Chatfriend.onClick:Add(
+    local btn_chatfriend = self.ComUi:GetChild("BtnChatFriend").asButton
+    btn_chatfriend.onClick:Add(
             function()
                 self:onClickBtnChatFriend()
             end
@@ -917,7 +917,14 @@ end
 
 ---------------------------------------
 function ViewMain:onClickBtnFeedback()
-    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("Testing"))
+    --ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("Testing"))
+    --web_view:Show()
+
+    local web_view = self.CasinosContext.LuaMgr:CreateWebView()
+    web_view:Load("https://github.com/CragonGame/CasinosClient")
+    web_view:SetShowSpinnerWhileLoading(true)
+    web_view:SetShowToolbar(true, false, false, false)
+    web_view:Show(true, CS.UniWebViewTransitionEdge.Bottom, 0.35)
 end
 
 ---------------------------------------

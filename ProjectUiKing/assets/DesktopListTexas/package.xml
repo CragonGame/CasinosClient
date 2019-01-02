@@ -7,6 +7,18 @@
     <image id="tp6r3" name="23.png" path="/Image/"/>
     <component id="tp6r4" name="ComTabTitleFriend.xml" path="/Component/"/>
     <component id="tp6r5" name="ComTabTitleAnt.xml" path="/Component/"/>
+    <component id="jy7t6" name="ComTabListNormal.xml" path="/Component/"/>
+    <component id="jy7t7" name="ComTabListAnt.xml" path="/Component/"/>
+    <component id="jy7t8" name="ComTabListFriend.xml" path="/Component/"/>
+    <image id="jy7t9" name="UI2_赛事_bg.png" path="/Image/" atlas="alone"/>
+    <component id="jy7ta" name="BtnAddChip1.xml" path="/Component/"/>
+    <image id="jy7tb" name="图层15.png" path="/Image/" scale="9grid" scale9grid="23,23,2,1"/>
+    <component id="jy7tc" name="BtnAddDiamond1.xml" path="/Component/"/>
+    <image id="jy7td" name="图层15(1).png" path="/Image/" scale="9grid" scale9grid="23,23,2,1"/>
+    <component id="jy7te" name="ComTabListAntItem.xml" path="/Component/"/>
+    <component id="jy7tf" name="ComTabListFriendItem.xml" path="/Component/"/>
+    <component id="jy7tg" name="ComTabListNormalItem.xml" path="/Component/"/>
+    <component id="jy7th" name="ComIconMini.xml" path="/Component/"/>
   </resources>
   <publish name="DesktopListTexas" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopListTexas"/>
 </packageDescription>

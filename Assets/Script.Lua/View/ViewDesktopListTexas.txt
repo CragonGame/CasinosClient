@@ -6,12 +6,14 @@ ViewDesktopListTexas = class(ViewBase)
 ---------------------------------------
 function ViewDesktopListTexas:ctor()
     self.FilterKey = "DesktopFilterTP"
-    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+    self.CtrlActor = self.ControllerMgr:GetController("Actor")
     self.GCtrlTab = nil
     self.GBtnClose = nil
     self.GBtnTabNormal = nil
     self.GBtnTabAnt = nil
     self.GBtnTabFriend = nil
+    self.GTxtGold = nil
+    self.GTxtDiamond = nil
     self.ListPlayingFriend = {}
     self.MapDesktopFilter = {}
     self.MapDeskItem = {}
@@ -20,6 +22,8 @@ end
 
 ---------------------------------------
 function ViewDesktopListTexas:OnCreate()
+    self:BindEvListener("EvEntityGoldChanged", self)
+    self:BindEvListener("EvEntityDiamondChanged", self)
     self:BindEvListener("EvEntityGetLobbyDeskList", self)
     self:BindEvListener("EvEntitySearchDesktopFollowFriend", self)
     self:BindEvListener("EvEntityFriendOnlineStateChange", self)
@@ -30,6 +34,8 @@ function ViewDesktopListTexas:OnCreate()
     self:BindEvListener("EvClickIconWithNickName", self)
 
     local com_tabtitle = self.ComUi:GetChild("ComTabTitle").asCom
+
+    self.GCtrlTab = self.ComUi:GetController("CtrlTab")
 
     self.GBtnClose = self.ComUi:GetChild("BtnClose").asButton
     self.GBtnClose.onClick:Add(
@@ -56,6 +62,12 @@ function ViewDesktopListTexas:OnCreate()
                 self:_onClickBtnTabFriend()
             end)
 
+    local btn_addchip = self.ComUi:GetChild("BtnAddChip").asButton
+    self.GTxtGold = btn_addchip:GetChild("TextChipAmount").asTextField
+    local btn_adddiamond = self.ComUi:GetChild("BtnAddDiamond").asButton
+    self.GTxtDiamond = btn_adddiamond:GetChild("TextDiamondAmount").asTextField
+    self:SetPlayerGoldAndDiamond()
+
     local bg = self.ComUi:GetChild("Bg")
     if (bg ~= nil) then
         ViewHelper:MakeUiBgFiteScreen(ViewMgr.STANDARD_WIDTH, ViewMgr.STANDARD_HEIGHT, self.ComUi.width, self.ComUi.height, bg.width, bg.height, bg, BgAttachMode.Center)
@@ -72,7 +84,11 @@ end
 ---------------------------------------
 function ViewDesktopListTexas:OnHandleEv(ev)
     if (ev ~= nil) then
-        if (ev.EventName == "EvEntityGetLobbyDeskList") then
+        if (ev.EventName == "EvEntityGoldChanged") then
+            self:SetPlayerGoldAndDiamond()
+        elseif (ev.EventName == "EvEntityDiamondChanged") then
+            self:SetPlayerGoldAndDiamond()
+        elseif (ev.EventName == "EvEntityGetLobbyDeskList") then
             if (self.ControllerFriendOrBet.selectedIndex == 1) then
                 self:SetDesktopInfo(ev.list_desktop)
             end
@@ -118,6 +134,12 @@ function ViewDesktopListTexas:OnHandleEv(ev)
 end
 
 ---------------------------------------
+function ViewDesktopListTexas:SetPlayerGoldAndDiamond()
+    self.GTxtGold.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
+    self.GTxtDiamond.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
+end
+
+---------------------------------------
 function ViewDesktopListTexas:_onClickBtnClose()
     self.ViewMgr:DestroyView(self)
 
@@ -137,7 +159,7 @@ function ViewDesktopListTexas:_onClickBtnTabNormal()
     local gctrl3 = self.GBtnTabFriend:GetController("CtrlState")
     gctrl3.selectedIndex = 0
 
-    --self.GCtrlTab.selectedIndex = 0
+    self.GCtrlTab.selectedIndex = 0
 end
 
 ---------------------------------------
@@ -149,7 +171,7 @@ function ViewDesktopListTexas:_onClickBtnTabAnt()
     local gctrl3 = self.GBtnTabFriend:GetController("CtrlState")
     gctrl3.selectedIndex = 0
 
-    --self.GCtrlTab.selectedIndex = 1
+    self.GCtrlTab.selectedIndex = 1
 end
 
 ---------------------------------------
@@ -161,7 +183,7 @@ function ViewDesktopListTexas:_onClickBtnTabFriend()
     local gctrl3 = self.GBtnTabFriend:GetController("CtrlState")
     gctrl3.selectedIndex = 1
 
-    --self.GCtrlTab.selectedIndex = 2
+    self.GCtrlTab.selectedIndex = 2
 
     --self.CtrlWallet:RequestVCoinGetTransList()
 end
@@ -178,13 +200,13 @@ end
 function ViewDesktopListTexas:_initPlayerInfo()
     local com_headIcon = self.ComUi:GetChild("ComHeadIcon").asCom
     local viewHeadIcon = ViewHeadIcon:new(nil, com_headIcon)
-    viewHeadIcon:SetMainPlayerInfo(self.ControllerActor)
+    viewHeadIcon:SetMainPlayerInfo(self.CtrlActor)
     local text_name = self.ComUi:GetChild("PlayerName").asTextField
-    text_name.text = CS.Casinos.UiHelper.addEllipsisToStr(self.ControllerActor.PropNickName:get(), 18, 5)
+    text_name.text = CS.Casinos.UiHelper.addEllipsisToStr(self.CtrlActor.PropNickName:get(), 18, 5)
     local text_playerGoldAmount = self.ComUi:GetChild("PlayerGoldAmount").asTextField
-    text_playerGoldAmount.text = tostring(self.ControllerActor.PropDiamond:get())
+    text_playerGoldAmount.text = tostring(self.CtrlActor.PropDiamond:get())
     local text_playerChipAmount = self.ComUi:GetChild("PlayerChipAmount").asTextField
-    text_playerChipAmount.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
+    text_playerChipAmount.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
 end
 
 ---------------------------------------
@@ -336,7 +358,7 @@ function ViewDesktopListTexas:onClickBtnPersonInfo()
     if (self.ControllerFriendOrBet.selectedIndex == 0) then
         return
     end
-    local chip_acc = self.ControllerActor.PropGoldAcc:get()
+    local chip_acc = self.CtrlActor.PropGoldAcc:get()
     local scroll_index = -1
     local tbdata_desktopinfo = TexasHelper:GetTbDataDesktopInfoSuitable(self.ViewMgr.TbDataMgr, chip_acc)
     local betChipOperateItem = self.MapBetChipOperateItem[tbdata_desktopinfo.Id]
@@ -441,7 +463,7 @@ function ViewDesktopListTexas:onBetChipOperateListScrollEnd()
                 .. UiChipShowHelper:GetGoldShowStr(tb_d.BetMax, self.ViewMgr.LanMgr.LanBase)
     end
     self.DeskSearchFilter.desktop_tableid = tb_desktop.Id
-    local gold_acc = self.ControllerActor.PropGoldAcc:get()
+    local gold_acc = self.CtrlActor.PropGoldAcc:get()
     local can_play = TexasHelper:EnoughChip4DesktopBetMin(self.CasinosContext.TbDataMgrLua, gold_acc,
             self.DeskSearchFilter.desktop_tableid)
     if (can_play == false) then

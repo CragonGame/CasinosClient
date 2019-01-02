@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3991884754
+CRC: 2061853212
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a438346f1ba2cd43dc2e8d879d4715b6
+    Hash: 168f133fa56e4f8c953a7eef4a0a345d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,6 +14,7 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopListTexas/DesktopListTexas_atlas_jy7t9.png
 - Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopListTexas/DesktopListTexas_atlas0.png
 - Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/DesktopListTexas/DesktopListTexas_fui.bytes
 Dependencies: []

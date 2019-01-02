@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="864,70">
+  <displayList>
+    <component id="n0_jy7t" name="ComIcon1" src="jy7th" fileName="Component/ComIconMini.xml" xy="344,15"/>
+    <component id="n1_jy7t" name="ComIcon2" src="jy7th" fileName="Component/ComIconMini.xml" xy="397,15"/>
+    <component id="n2_jy7t" name="ComIcon3" src="jy7th" fileName="Component/ComIconMini.xml" xy="450,15"/>
+    <component id="n3_jy7t" name="ComIcon4" src="jy7th" fileName="Component/ComIconMini.xml" xy="503,15"/>
+    <component id="n4_jy7t" name="ComIcon5" src="jy7th" fileName="Component/ComIconMini.xml" xy="556,15"/>
+    <component id="n5_jy7t" name="ComIcon6" src="jy7th" fileName="Component/ComIconMini.xml" xy="609,15"/>
+    <component id="n6_jy7t" name="ComIcon7" src="jy7th" fileName="Component/ComIconMini.xml" xy="662,15"/>
+    <component id="n7_jy7t" name="ComIcon8" src="jy7th" fileName="Component/ComIconMini.xml" xy="715,15"/>
+    <component id="n8_jy7t" name="ComIcon9" src="jy7th" fileName="Component/ComIconMini.xml" xy="768,15"/>
+    <text id="n9_jy7t" name="TxtBlind" xy="48,22" size="119,34" fontSize="12" autoSize="none" text=""/>
+    <text id="n10_jy7t" name="TxtBet" xy="202,22" size="117,34" fontSize="12" autoSize="none" text=""/>
+  </displayList>
+</component>

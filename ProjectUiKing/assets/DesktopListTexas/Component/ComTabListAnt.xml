@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="864,536">
+  <displayList>
+    <list id="n0_jy7t" name="List" xy="-1,72" size="864,454" overflow="scroll" defaultItem="ui://g7gsod07jy7te">
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <text id="n1_jy7t" name="TxtBlind" xy="30,23" pivot="0.5,0.5" size="77,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="小/大盲"/>
+    <text id="n2_jy7t" name="TxtBuyin" xy="153,23" pivot="0.5,0.5" size="143,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="最小/最大携带"/>
+    <text id="n3_jy7t" name="TxtPlayer" xy="344,23" pivot="0.5,0.5" size="49,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="玩家"/>
+  </displayList>
+</component>
