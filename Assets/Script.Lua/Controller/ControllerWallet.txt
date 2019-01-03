@@ -104,6 +104,7 @@ end
 ---------------------------------------
 -- 获取虚拟币地址通知
 function ControllerWallet:S2cVCoinGetOrGenerateAddressNotify(data1, data2)
+    print('获取虚拟币地址通知')
     local vcoin_getorgenerate_address_notify = VCoinGetOrGenerateAddressNotify:new(nil)
     vcoin_getorgenerate_address_notify:setData(data1)
 
@@ -161,6 +162,7 @@ end
 ---------------------------------------
 -- 响应获取本人VCoin信息
 function ControllerWallet:S2cVCoinGetMyVCoinInfoResponse(data)
+    print('响应获取本人VCoin信息')
     if data ~= nil then
         self.VCoinMyInfo = VCoinMyInfo:new(nil)
         self.VCoinMyInfo:setData(data)

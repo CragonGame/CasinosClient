@@ -180,22 +180,24 @@ end
 ---------------------------------------
 -- 获取虚拟币地址通知
 function ViewWallet:OnVCoinGetOrGenerateAddressNotify(vcoin_getorgenerate_address_notify)
-    --print('ViewWallet:OnVCoinGetOrGenerateAddressNotify()')
+    print('ViewWallet:OnVCoinGetOrGenerateAddressNotify()')
     --print(string.format('Currency=%s Address=%s Memo=%s',
     --        vcoin_getorgenerate_address_notify.Currency, vcoin_getorgenerate_address_notify.Address, vcoin_getorgenerate_address_notify.Memo))
 
-    -- 设置二维码
-    local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
-    local url = self.CtrlWallet.Address
-    local t = CS.UnityEngine.Texture2D(256, 256)
-    local colors = self.CasinosContext.LuaMgr:CreateQRCode(url, t.width, t.height)
-    t:SetPixels32(colors)
-    t:Apply()
-    gloader_qrcode.texture = CS.FairyGUI.NTexture(t)
-
     -- 设置Text Charge Address&Memo
-    --self.GTxtChargeAddress.text = self.CtrlWallet.Address
-    --self.GTxtChargeMemo.text = self.CtrlWallet.Memo
+    if self.CtrlWallet.VCoinCurrentInfo ~= nil then
+        self.GTxtChargeAddress.text = self.CtrlWallet.VCoinCurrentInfo.Address
+        self.GTxtChargeMemo.text = self.CtrlWallet.VCoinCurrentInfo.Memo
+
+        -- 设置二维码
+        local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
+        local url = self.CtrlWallet.VCoinCurrentInfo.Address
+        local t = CS.UnityEngine.Texture2D(256, 256)
+        local colors = self.CasinosContext.LuaMgr:CreateQRCode(url, t.width, t.height)
+        t:SetPixels32(colors)
+        t:Apply()
+        gloader_qrcode.texture = CS.FairyGUI.NTexture(t)
+    end
 end
 
 ---------------------------------------
