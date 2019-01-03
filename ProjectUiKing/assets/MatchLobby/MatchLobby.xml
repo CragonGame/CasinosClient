@@ -3,8 +3,10 @@
   <controller name="ChipIconSolustion" pages="0,0,1,1" selected="0"/>
   <displayList>
     <image id="n12_wb2e" name="Bg" src="wb2ec" fileName="Image/UI2_赛事_bg.png" xy="0,0" size="1066,640"/>
-    <component id="n1_wb2e" name="BtnReturn" src="wb2ek4" fileName="Component/Btn/BtnReturn1.xml" pkg="nhvxw9ov" xy="38,14"/>
-    <component id="n4_wb2e" name="BtnAddChip" src="wb2e3" fileName="Component/ComAddChip.xml" xy="837,24">
+    <component id="n1_wb2e" name="BtnReturn" src="wb2ek4" fileName="Component/Btn/BtnReturn1.xml" pkg="nhvxw9ov" xy="982,24">
+      <relation target="" sidePair="right-right,top-top"/>
+    </component>
+    <component id="n4_wb2e" name="BtnAddChip" src="wb2e3" fileName="Component/ComAddChip.xml" xy="725,26" size="215,44">
       <gearDisplay controller="ChipIconSolustion" pages="0"/>
       <relation target="" sidePair="right-right"/>
     </component>
@@ -12,10 +14,10 @@
       <gearDisplay controller="ChipIconSolustion" pages="1"/>
       <relation target="" sidePair="right-right"/>
     </component>
-    <component id="n9_wb2e" name="bg" src="wb2e5" fileName="Component/Component1.xml" xy="0,86" touchable="false">
+    <component id="n9_wb2e" name="bg" src="wb2e5" fileName="Component/Component1.xml" xy="0,96" touchable="false">
       <relation target="" sidePair="top-top"/>
     </component>
-    <list id="n10_wb2e" name="ListMatchType" xy="0,86" size="142,554" overflow="hidden" lineGap="1" defaultItem="ui://2bmbew6zwb2e7">
+    <list id="n10_wb2e" name="ListMatchType" xy="0,97" size="142,554" overflow="hidden" lineGap="1" defaultItem="ui://2bmbew6zwb2e7">
       <relation target="" sidePair="top-top"/>
     </list>
     <image id="n11_wb2e" name="n11" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="150,97" size="907,540" alpha="0.66" color="#1d2052">
@@ -37,6 +39,8 @@
     <component id="n13_wb2e" name="ComSelfNoMatch" src="wb2ed" fileName="Component/ComSelfNoMatch.xml" xy="334,335" hideByEditor="true" visible="false">
       <relation target="" sidePair="center-center,middle-middle"/>
     </component>
-    <text id="n23_s4ta" name="TextTime" xy="110,26" size="83,35" fontSize="20" color="#96999d" vAlign="middle" leading="0" autoSize="none" text=""/>
+    <text id="n23_s4ta" name="TextTime" xy="13,30" size="83,35" fontSize="20" color="#96999d" vAlign="middle" leading="0" autoSize="none" text="">
+      <relation target="" sidePair="left-left,top-top"/>
+    </text>
   </displayList>
 </component>

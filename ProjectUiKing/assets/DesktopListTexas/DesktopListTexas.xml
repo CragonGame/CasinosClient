@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1066,640">
-  <controller name="CtrlTab" pages="0,Normal,1,Ant,2,Friend" selected="0"/>
+  <controller name="CtrlTab" pages="0,Normal,1,Ant,2,Friend" selected="2"/>
   <displayList>
     <image id="n12_jy7t" name="Bg" src="jy7t9" fileName="Image/UI2_赛事_bg.png" xy="0,0" size="1066,640" group="n11_tp6r"/>
-    <image id="n13_jy7t" name="n13" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="192,103" size="864,536" group="n11_tp6r" alpha="0.6" color="#1d2052"/>
+    <image id="n13_jy7t" name="n13" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="192,103" size="864,536" group="n11_tp6r" alpha="0.6" color="#1d2052">
+      <relation target="" sidePair="height-height,rightext-right"/>
+    </image>
     <group id="n11_tp6r" name="n11" xy="0,0" size="1066,640"/>
-    <component id="n9_tp6r" name="BtnClose" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="984,25">
+    <component id="n20_jy7t" name="BtnReturn" src="wb2ek4" fileName="Component/Btn/BtnReturn1.xml" pkg="nhvxw9ov" xy="983,24">
       <relation target="" sidePair="right-right,top-top"/>
     </component>
     <component id="n18_jy7t" name="BtnAddChip" src="jy7ta" fileName="Component/BtnAddChip1.xml" xy="739,33">
@@ -19,12 +21,15 @@
     </component>
     <component id="n14_jy7t" name="ComTabListNormal" src="jy7t6" fileName="Component/ComTabListNormal.xml" xy="192,103">
       <gearDisplay controller="CtrlTab" pages="0"/>
+      <relation target="n13_jy7t" sidePair="width-width,height-height"/>
     </component>
     <component id="n16_jy7t" name="ComTabListAnt" src="jy7t7" fileName="Component/ComTabListAnt.xml" xy="192,103">
       <gearDisplay controller="CtrlTab" pages="1"/>
+      <relation target="n13_jy7t" sidePair="width-width,height-height"/>
     </component>
     <component id="n17_jy7t" name="ComTabListFriend" src="jy7t8" fileName="Component/ComTabListFriend.xml" xy="192,103">
       <gearDisplay controller="CtrlTab" pages="2"/>
+      <relation target="n13_jy7t" sidePair="width-width,height-height"/>
     </component>
   </displayList>
 </component>

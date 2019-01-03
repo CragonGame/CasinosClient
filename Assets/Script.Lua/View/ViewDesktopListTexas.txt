@@ -8,7 +8,7 @@ function ViewDesktopListTexas:ctor()
     self.FilterKey = "DesktopFilterTP"
     self.CtrlActor = self.ControllerMgr:GetController("Actor")
     self.GCtrlTab = nil
-    self.GBtnClose = nil
+    self.GBtnReturn = nil
     self.GBtnTabNormal = nil
     self.GBtnTabAnt = nil
     self.GBtnTabFriend = nil
@@ -37,10 +37,10 @@ function ViewDesktopListTexas:OnCreate()
 
     self.GCtrlTab = self.ComUi:GetController("CtrlTab")
 
-    self.GBtnClose = self.ComUi:GetChild("BtnClose").asButton
-    self.GBtnClose.onClick:Add(
+    self.GBtnReturn = self.ComUi:GetChild("BtnReturn").asButton
+    self.GBtnReturn.onClick:Add(
             function()
-                self:_onClickBtnClose()
+                self:_onClickBtnReturn()
             end
     )
 
@@ -140,7 +140,7 @@ function ViewDesktopListTexas:SetPlayerGoldAndDiamond()
 end
 
 ---------------------------------------
-function ViewDesktopListTexas:_onClickBtnClose()
+function ViewDesktopListTexas:_onClickBtnReturn()
     self.ViewMgr:DestroyView(self)
 
     local ev = self:GetEv("EvUiCreateMainUi")

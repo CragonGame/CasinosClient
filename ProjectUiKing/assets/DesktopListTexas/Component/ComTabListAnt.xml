@@ -2,6 +2,7 @@
 <component size="864,536">
   <displayList>
     <list id="n0_jy7t" name="List" xy="-1,72" size="864,454" overflow="scroll" defaultItem="ui://g7gsod07jy7te">
+      <relation target="" sidePair="width-width,height-height"/>
       <item/>
       <item/>
       <item/>
