@@ -20,13 +20,12 @@ end
 ---------------------------------------
 function DesktopTexasClassic:OnDestroy(need_createmainui)
     local view_mgr = self.ControllerDesktop.ViewMgr
-    if (need_createmainui)
-    then
-        local ui_classicmodel = view_mgr:GetView("ClassicModel")
-        if (ui_classicmodel == nil)
-        then
-            ui_classicmodel = view_mgr:CreateView("ClassicModel")
-            ui_classicmodel:setLobbyModel()
+    if (need_createmainui) then
+        local ui_classicmodel = view_mgr:GetView("DesktopListTexas")
+        if (ui_classicmodel == nil) then
+            --ui_classicmodel = view_mgr:CreateView("DesktopListTexas")
+            --ui_classicmodel:setLobbyModel()
+            view_mgr:CreateView("DesktopListTexas")
         end
 
         CS.Casinos.CasinosContext.Instance:Play("MainBg1", CS.Casinos._eSoundLayer.Background)
@@ -39,26 +38,21 @@ end
 
 ---------------------------------------
 function DesktopTexasClassic:OnHandleEv(ev)
-    if (ev ~= nil)
-    then
-        if (ev.EventName == "EvUiClickSeat")
-        then
+    if (ev ~= nil) then
+        if (ev.EventName == "EvUiClickSeat") then
             local enough = TexasHelper:EnoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr, self.ControllerActor.PropGoldAcc:get(),
                     self.NormalTexas.DesktopTbId)
-            if (enough == false)
-            then
+            if (enough == false) then
                 local msg_box = self.ControllerDesktop.ViewMgr:CreateView("MsgBox")
                 local tips = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
                 tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ViewMgr.LanMgr.LanBase))
                 local title = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
                 msg_box:showMsgBox1(title, tips,
                         function(bo)
-                            if (bo)
-                            then
+                            if (bo) then
                                 local view_mgr = self.ControllerDesktop.ViewMgr
                                 local ev1 = view_mgr:GetEv("EvUiClickShop")
-                                if (ev1 == nil)
-                                then
+                                if (ev1 == nil) then
                                     ev1 = EvUiClickShop:new(nil)
                                 end
                                 view_mgr:SendEv(ev1)
@@ -69,19 +63,15 @@ function DesktopTexasClassic:OnHandleEv(ev)
                 local index_ = ev.seat_index
                 self.DesktopBase:createBetGame(
                         function(ok, chip)
-                            if (ok == false)
-                            then
+                            if (ok == false) then
                                 return
                             end
 
                             local real_index = index_
-                            if (self.DesktopBase.MeP ~= nil)
-                            then
-                                if (self.DesktopBase.MeP.UiMiddleSeatIndexRealIndex ~= 255)
-                                then
+                            if (self.DesktopBase.MeP ~= nil) then
+                                if (self.DesktopBase.MeP.UiMiddleSeatIndexRealIndex ~= 255) then
                                     real_index = (real_index - math.floor(self.DesktopBase.SeatNum / 2) + self.DesktopBase.MeP.UiMiddleSeatIndexRealIndex)
-                                    if (real_index < 0)
-                                    then
+                                    if (real_index < 0) then
                                         real_index = real_index + self.DesktopBase.SeatNum
                                     end
                                 end
@@ -96,27 +86,22 @@ function DesktopTexasClassic:OnHandleEv(ev)
                         end, self.BetMin, self.BetMax
                 )
             end
-        elseif (ev.EventName == "EvUiClickPlayerReturn")
-        then
-            if (self.DesktopBase.MeP.PlayerDataDesktop.Stack < self.BetMin)
-            then
+        elseif (ev.EventName == "EvUiClickPlayerReturn") then
+            if (self.DesktopBase.MeP.PlayerDataDesktop.Stack < self.BetMin) then
                 local enough = TexasHelper:EnoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr,
                         self.ControllerActor.PropGoldAcc:get(), self.NormalTexas.DesktopTbId)
 
-                if (enough == false)
-                then
+                if (enough == false) then
                     local msg_box = self.ControllerDesktop.ViewMgr:CreateView("MsgBox")
                     local tips = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
                     tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ViewMgr.LanMgr.LanBase))
                     local title = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
                     msg_box:showMsgBox1(title, tips,
                             function(bo)
-                                if (bo)
-                                then
+                                if (bo) then
                                     local view_mgr = self.ControllerDesktop.ViewMgr
                                     local ev = view_mgr:GetEv("EvUiClickShop")
-                                    if (ev == nil)
-                                    then
+                                    if (ev == nil) then
                                         ev = EvUiClickShop:new(nil)
                                     end
                                     view_mgr:SendEv(ev)
@@ -126,8 +111,7 @@ function DesktopTexasClassic:OnHandleEv(ev)
                 else
                     self.DesktopBase:createBetGame(
                             function(ok, chip)
-                                if (ok == false)
-                                then
+                                if (ok == false) then
                                     self.DesktopBase:requestPlayerOb()
                                     return
                                 else
@@ -139,26 +123,22 @@ function DesktopTexasClassic:OnHandleEv(ev)
             else
                 self.DesktopBase:requestPlayerReturn(self.DesktopBase.MeP.PlayerDataDesktop.Stack)
             end
-        elseif (ev.EventName == "EvUiCreateExchangeChip")
-        then
+        elseif (ev.EventName == "EvUiCreateExchangeChip") then
             local enough = TexasHelper:EnoughChip4DesktopBetMin(self.ControllerDesktop.ControllerMgr.TbDataMgr, self.ControllerActor.PropGoldAcc:get(),
                     self.NormalTexas.DesktopTbId)
 
             local view_mgr = self.ControllerDesktop.ViewMgr
-            if (enough == false)
-            then
+            if (enough == false) then
                 local msg_box = view_mgr:CreateView("MsgBox")
                 local tips = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
                 tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(self.BetMin, self.ControllerDesktop.ViewMgr.LanMgr.LanBase))
                 local title = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
                 msg_box:showMsgBox1(title, tips,
                         function(bo)
-                            if (bo)
-                            then
+                            if (bo) then
                                 local view_mgr = self.ControllerDesktop.ViewMgr
                                 local ev = view_mgr:GetEv("EvUiClickShop")
-                                if (ev == nil)
-                                then
+                                if (ev == nil) then
                                     ev = EvUiClickShop:new(nil)
                                 end
                                 view_mgr:SendEv(ev)
@@ -171,22 +151,18 @@ function DesktopTexasClassic:OnHandleEv(ev)
                 chip_transaction:setChipsInfo(self.ControllerActor.PropGoldAcc:get(), chips
                 , self.BetMin, CS.Casinos._eChipOperateType.Exchange, nil,
                         function(ok, chip)
-                            if (ok == false)
-                            then
+                            if (ok == false) then
                                 return
                             end
                             self.DesktopBase:requestPlayerPushStack(chip)
                         end
                 )
             end
-        elseif (ev.EventName == "EvUiInviteFriendPlayTogether")
-        then
+        elseif (ev.EventName == "EvUiInviteFriendPlayTogether") then
             local self_desktop_etguid = self.DesktopBase.DesktopGuid
 
-            if (CS.System.String.IsNullOrEmpty(self_desktop_etguid) == false)
-            then
-                if (self_desktop_etguid == ev.friend_desktopguid)
-                then
+            if (CS.System.String.IsNullOrEmpty(self_desktop_etguid) == false) then
+                if (self_desktop_etguid == ev.friend_desktopguid) then
                     ViewHelper:UiShowInfoSuccess(self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("SameTableTips"))
                 else
                     local desktop_filter_texas = DesktopFilterTexas:new(nil)
@@ -195,8 +171,7 @@ function DesktopTexasClassic:OnHandleEv(ev)
                     desktop_filter_texas.is_seat_full = false
                     desktop_filter_texas.is_vip = self.DesktopBase.IsVIP
                     local seat_n = TexasDesktopSeatNum.Nine
-                    if (self.DesktopBase.SeatNum == 5)
-                    then
+                    if (self.DesktopBase.SeatNum == 5) then
                         seat_n = TexasDesktopSeatNum.Five
                     end
                     desktop_filter_texas.seat_num = seat_n

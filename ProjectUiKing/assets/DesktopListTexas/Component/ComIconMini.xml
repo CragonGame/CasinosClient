@@ -2,10 +2,10 @@
 <component size="48,48">
   <controller name="State" pages="1,None,0,Icon" selected="0"/>
   <displayList>
-    <loader id="n0_jy7t" name="LoaderIcon" xy="0,0" size="48,48">
+    <loader id="n0_jy7t" name="LoaderIcon" xy="0,0" size="48,48" align="center" vAlign="middle" fill="scaleFree">
       <gearDisplay controller="State" pages="0"/>
     </loader>
-    <graph id="n1_jy7t" name="ImgIcon" xy="0,0" size="48,48" type="rect" fillColor="#8000ff00">
+    <graph id="n1_jy7t" name="ImgIcon" xy="0,0" size="48,48" type="rect" lineColor="#b31d2052" fillColor="#801d2052">
       <gearDisplay controller="State" pages="1"/>
     </graph>
   </displayList>

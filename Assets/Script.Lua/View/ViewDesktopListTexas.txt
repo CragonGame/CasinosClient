@@ -7,6 +7,7 @@ ViewDesktopListTexas = class(ViewBase)
 function ViewDesktopListTexas:ctor()
     self.FilterKey = "DesktopFilterTP"
     self.CtrlActor = self.ControllerMgr:GetController("Actor")
+    self.CtrlLobby = self.ControllerMgr:GetController("Lobby")
     self.GCtrlTab = nil
     self.GBtnReturn = nil
     self.GBtnTabNormal = nil
@@ -14,6 +15,9 @@ function ViewDesktopListTexas:ctor()
     self.GBtnTabFriend = nil
     self.GTxtGold = nil
     self.GTxtDiamond = nil
+    self.GListDesktopNormal = nil
+    self.GListDesktopAnt = nil
+    self.GListDesktopFriend = nil
     self.ListPlayingFriend = {}
     self.MapDesktopFilter = {}
     self.MapDeskItem = {}
@@ -62,6 +66,17 @@ function ViewDesktopListTexas:OnCreate()
                 self:_onClickBtnTabFriend()
             end)
 
+    local com_tablist_normal = self.ComUi:GetChild("ComTabListNormal").asCom
+    self.GListDesktopNormal = com_tablist_normal:GetChild("List").asList
+    self.GListDesktopNormal.onClickItem:Add(
+            function(ev_context)
+                self:_onClickListDesktopNormalItem(ev_context)
+            end)
+    local com_tablist_ant = self.ComUi:GetChild("ComTabListAnt").asCom
+    self.GListDesktopAnt = com_tablist_ant:GetChild("List").asList
+    local com_tablist_friend = self.ComUi:GetChild("ComTabListFriend").asCom
+    self.GListDesktopFriend = com_tablist_friend:GetChild("List").asList
+
     local btn_addchip = self.ComUi:GetChild("BtnAddChip").asButton
     self.GTxtGold = btn_addchip:GetChild("TextChipAmount").asTextField
     local btn_adddiamond = self.ComUi:GetChild("BtnAddDiamond").asButton
@@ -74,6 +89,29 @@ function ViewDesktopListTexas:OnCreate()
     end
 
     self:_onClickBtnTabNormal()
+
+    local map_deskinfo = self.ViewMgr.TbDataMgr:GetMapData("DesktopInfoTexas")
+    if (CS.UnityEngine.PlayerPrefs.HasKey(self.LobbyFilterKey)) then
+        self.DeskSearchFilter = DesktopFilterTexas:new(nil)
+        self.DeskSearchFilter.is_vip = false
+        self.DeskSearchFilter.is_seat_full = false
+        self.DeskSearchFilter.seat_num = TexasDesktopSeatNum.Nine
+        self.DeskSearchFilter.desktop_tableid = map_deskinfo[1].Id
+    else
+        self.DeskSearchFilter = DesktopFilterTexas:new(nil)
+        self.DeskSearchFilter.is_vip = false
+        self.DeskSearchFilter.is_seat_full = false
+        self.DeskSearchFilter.seat_num = TexasDesktopSeatNum.Nine
+        self.DeskSearchFilter.desktop_tableid = map_deskinfo[1].Id
+    end
+
+    local dektop_filter = DesktopFilter:new(nil)
+    dektop_filter.FactoryName = "Texas"
+    dektop_filter.IncludeFull = self.DeskSearchFilter.is_seat_full
+    local p_d = self.DeskSearchFilter:getData4Pack()
+    local p_filter = self.ViewMgr:PackData(p_d)
+    dektop_filter.FilterData = p_filter
+    self.CtrlLobby:RequestSearchDesktop(dektop_filter)
 end
 
 ---------------------------------------
@@ -89,9 +127,9 @@ function ViewDesktopListTexas:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityDiamondChanged") then
             self:SetPlayerGoldAndDiamond()
         elseif (ev.EventName == "EvEntityGetLobbyDeskList") then
-            if (self.ControllerFriendOrBet.selectedIndex == 1) then
-                self:SetDesktopInfo(ev.list_desktop)
-            end
+            --if (self.ControllerFriendOrBet.selectedIndex == 1) then
+                self:OnSearchDesktopListNotify(ev.list_desktop)
+            --end
         elseif (ev.EventName == "EvEntitySearchDesktopFollowFriend") then
             -- 一次只能看一个好友的所在桌，下方好友列表有选中态
             if (self.ControllerFriendOrBet.selectedIndex == 0) then
@@ -137,6 +175,87 @@ end
 function ViewDesktopListTexas:SetPlayerGoldAndDiamond()
     self.GTxtGold.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
     self.GTxtDiamond.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
+end
+
+---------------------------------------
+function ViewDesktopListTexas:OnSearchDesktopListNotify(list_desktop)
+    ViewHelper:UiEndWaiting()
+    self.GListDesktopNormal.visible = true
+    self.GListDesktopNormal.scrollPane.posX = 0
+    self.GListDesktopNormal:RemoveChildrenToPool()
+    if (#list_desktop == 0) then
+        return
+    end
+    for i = 1, #list_desktop do
+        local desktop_info1 = self.ViewMgr:UnpackData(list_desktop[i].DesktopData)
+        local desktop_info = DesktopInfoTexas:new(nil)
+        desktop_info.desktop_etguid = desktop_info1[1]
+        desktop_info.seat_num = desktop_info1[2]
+        desktop_info.game_speed = desktop_info1[3]
+        desktop_info.is_vip = desktop_info1[4]
+        desktop_info.desktop_tableid = desktop_info1[5]
+        desktop_info.list_seat_player = desktop_info1[6]
+        desktop_info.seat_player_num = desktop_info1[7]
+        desktop_info.all_player_num = desktop_info1[8]
+        desktop_info.ante = desktop_info1[9]
+
+        local item = self.GListDesktopNormal:AddItemFromPool()
+        item.data = desktop_info.desktop_etguid
+
+        if (desktop_info.list_seat_player ~= nil) then
+            for i, v in pairs(desktop_info.list_seat_player) do
+                local temp = DesktopPlayerInfo:new(nil)
+                temp.seat_index = v[1]
+                temp.player_guid = v[2]
+                temp.nick_name = v[3]
+                temp.account_id = v[4]
+                temp.chip = v[5]
+                temp.icon = v[6]
+                temp.is_bot = v[7]
+
+                local item_com_icon = item:GetChild('ComIcon' .. tostring(i)).asCom
+                local item_com_icon_ctl = item_com_icon:GetController('State')
+                item_com_icon_ctl.selectedIndex = 1
+                local item_com_icon_loader = item_com_icon:GetChild('LoaderIcon').asLoader
+
+                if temp.is_bot == true then
+                    item_com_icon_loader.icon = Context:CalcBotIconUrl(true, temp.icon)
+                else
+                    if (temp.account_id ~= nil and string.len(temp.account_id) > 0) then
+                        local icon_resource_name = ""
+                        local temp_table = CS.Casinos.LuaHelper.getIconName(true, temp.account_id, icon_resource_name)
+                       local icon = temp_table[1]
+                        if (icon ~= nil and string.len(icon) > 0) then
+                            item_com_icon_loader.icon = self.Context.Cfg.PlayerIconDomain .. icon
+                        end
+                    end
+                end
+            end
+        end
+
+        --local deskItem = ItemLobbyDesk:new(nil, item, desktop_info,
+        --        function()
+        --            self:onClickCreateDesktopBtn()
+        --        end, self.ViewMgr)
+        --deskItem:init()
+        --deskItem:NotBeCenter(false)
+        --self.MapDeskItem[i] = deskItem
+    end
+end
+
+---------------------------------------
+function ViewDesktopListTexas:_onClickListDesktopNormalItem(ev_context)
+    local com = ev_context.data.asCom
+    local desktop_guid = com.data
+
+    local dektop_filter = DesktopFilter:new(nil)
+    dektop_filter.FactoryName = "Texas"
+    dektop_filter.IncludeFull = self.DeskSearchFilter.is_seat_full
+    local p_d = self.DeskSearchFilter:getData4Pack()
+    local p_filter = self.ViewMgr:PackData(p_d)
+    dektop_filter.FilterData = p_filter
+
+    self.CtrlLobby:RequestEnterDesktop(desktop_guid, true, 0, dektop_filter:getData4Pack())
 end
 
 ---------------------------------------
@@ -234,45 +353,6 @@ function ViewDesktopListTexas:requestLobbyDesk()
     end
     ev.desktop_searchfilter = dektop_filter
     self:SendEv(ev)
-end
-
----------------------------------------
-function ViewDesktopListTexas:SetDesktopInfo(list_desktop)
-    ViewHelper:UiEndWaiting()
-    self.GListDesk.visible = true
-    self.GListDesk.scrollPane.posX = 0
-    self.GListDesk:RemoveChildrenToPool()
-    for key, value in pairs(self.MapDeskItem) do
-        value:recycleSeats()
-    end
-    self.MapDeskItem = {}
-    if (#list_desktop == 0) then
-        return
-    end
-    for i = 1, #list_desktop do
-        local item = self.GListDesk:AddItemFromPool()
-        local desktop_info1 = self.ViewMgr:UnpackData(list_desktop[i].DesktopData)
-        local desktop_info = DesktopInfoTexas:new(nil)
-        desktop_info.desktop_etguid = desktop_info1[1]
-        desktop_info.seat_num = desktop_info1[2]
-        desktop_info.game_speed = desktop_info1[3]
-        desktop_info.is_vip = desktop_info1[4]
-        desktop_info.desktop_tableid = desktop_info1[5]
-        desktop_info.list_seat_player = desktop_info1[6]
-        desktop_info.seat_player_num = desktop_info1[7]
-        desktop_info.all_player_num = desktop_info1[8]
-        desktop_info.ante = desktop_info1[9]
-        local deskItem = ItemLobbyDesk:new(nil, item, desktop_info,
-                function()
-                    self:onClickCreateDesktopBtn()
-                end, self.ViewMgr)
-        deskItem:init()
-        deskItem:NotBeCenter(false)
-        self.MapDeskItem[i] = deskItem
-    end
-    self.CurrentDesk = self.MapDeskItem[1]
-    self.CurrentDesk:SwitchBig(true)
-    self:keepCreateTableBtnFollowTable()
 end
 
 ---------------------------------------

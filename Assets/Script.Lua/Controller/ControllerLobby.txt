@@ -73,6 +73,46 @@ function ControllerLobby:OnHandleEv(ev)
 end
 
 ---------------------------------------
+function ControllerLobby:RequestSearchDesktop(search_filter)
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
+    local p_d = search_filter:getData4Pack()
+    self.Rpc:RPC1(self.MethodType.SearchDesktopListRequest, p_d)
+end
+
+---------------------------------------
+function ControllerLobby:RequestSearchDesktopFollowFriend(desktop_etguid)
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
+end
+
+---------------------------------------
+function ControllerLobby:RequestSearchPlayingFriend(desktop_type)
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"));
+end
+
+---------------------------------------
+function ControllerLobby:RequestEnterDesktop(desktop_etguid, player_or_view, seat_index, desktop_filter)
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
+    local enter_request = DesktopEnterRequest:new(nil)
+    enter_request.desktop_guid = desktop_etguid
+    enter_request.seat_index = seat_index
+    if (player_or_view == false) then
+        enter_request.is_ob = true
+    else
+        enter_request.is_ob = false
+    end
+    enter_request.desktop_filter = desktop_filter
+    local data_4pack = enter_request:getData4Pack()
+    self.Rpc:RPC1(self.MethodType.DesktopPlayerEnterRequest, data_4pack)
+end
+
+---------------------------------------
+function ControllerLobby:RequestPlayNow(desktop_filter)
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
+    local data = desktop_filter:getData4Pack()
+    self.Rpc:RPC1(self.MethodType.PlayerPlayNowRequest, data)
+end
+
+---------------------------------------
 function ControllerLobby:RequestCreatePrivateDesktop(create_info)
     local data = create_info:getData4Pack()
     self.Rpc:RPC1(self.MethodType.PlayerCreatePrivateDesktopRequest, data)
@@ -114,46 +154,6 @@ function ControllerLobby:OnSearchDesktopByPlayerGuidNotify(desktop_info)
     end
     ev.desktop_info = d_info
     self:SendEv(ev)
-end
-
----------------------------------------
-function ControllerLobby:RequestSearchDesktop(search_filter)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
-    local p_d = search_filter:getData4Pack()
-    self.Rpc:RPC1(self.MethodType.SearchDesktopListRequest, p_d)
-end
-
----------------------------------------
-function ControllerLobby:RequestSearchDesktopFollowFriend(desktop_etguid)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
-end
-
----------------------------------------
-function ControllerLobby:RequestSearchPlayingFriend(desktop_type)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"));
-end
-
----------------------------------------
-function ControllerLobby:RequestEnterDesktop(desktop_etguid, player_or_view, seat_index, desktop_filter)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
-    local enter_request = DesktopEnterRequest:new(nil)
-    enter_request.desktop_guid = desktop_etguid
-    enter_request.seat_index = seat_index
-    if (player_or_view == false) then
-        enter_request.is_ob = true
-    else
-        enter_request.is_ob = false
-    end
-    enter_request.desktop_filter = desktop_filter
-    local data_4pack = enter_request:getData4Pack()
-    self.Rpc:RPC1(self.MethodType.DesktopPlayerEnterRequest, data_4pack)
-end
-
----------------------------------------
-function ControllerLobby:RequestPlayNow(desktop_filter)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
-    local data = desktop_filter:getData4Pack()
-    self.Rpc:RPC1(self.MethodType.PlayerPlayNowRequest, data)
 end
 
 ---------------------------------------
