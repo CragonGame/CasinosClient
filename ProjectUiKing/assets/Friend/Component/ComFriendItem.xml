@@ -2,19 +2,19 @@
 <component size="178,67">
   <controller name="PlayerSimpleControl" pages="0,Select,1,UnSelect" selected="0"/>
   <displayList>
-    <image id="n11_ko7v" name="BgNoSelect" src="u51ojc" pkg="nhvxw9ov" xy="0,0" size="178,67" color="#192245">
+    <image id="n11_ko7v" name="BgNoSelect" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="178,67" color="#192245">
       <gearDisplay controller="PlayerSimpleControl" pages="1"/>
     </image>
-    <image id="n12_ko7v" name="BgSelect" src="u51ojc" pkg="nhvxw9ov" xy="0,0" size="178,67" alpha="0.8" color="#294893">
+    <image id="n12_ko7v" name="BgSelect" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="178,67" alpha="0.8" color="#294893">
       <gearDisplay controller="PlayerSimpleControl" pages="0"/>
     </image>
-    <text id="n2" name="title" xy="65,3" size="112,30" fontSize="23" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+    <text id="n2" name="title" xy="65,3" size="112,30" font="FontXi" fontSize="23" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
       <relation target="" sidePair="width-width,height-height"/>
     </text>
-    <text id="n5_eh36" name="TextState" xy="65,35" size="98,30" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+    <text id="n5_eh36" name="TextState" xy="65,35" size="98,30" font="FontXi" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
       <relation target="" sidePair="width-width,height-height"/>
     </text>
-    <component id="n8_me18" name="HeadIcon" src="d45975" pkg="nhvxw9ov" xy="4,3" size="60,60"/>
-    <image id="n14_vtnc" name="n14" src="phssjs" pkg="nhvxw9ov" xy="0,64" size="178,4"/>
+    <component id="n8_me18" name="HeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="4,3" size="60,60"/>
+    <image id="n14_vtnc" name="n14" src="phssjs" fileName="Image/New/UI2_通用_分割线1.png" pkg="nhvxw9ov" xy="0,64" size="178,4"/>
   </displayList>
 </component>

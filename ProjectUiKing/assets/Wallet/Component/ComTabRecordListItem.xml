@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="748,70">
   <displayList>
-    <graph id="n5_l4zq" name="n5" xy="0,0" size="748,70" type="rect" lineColor="#0d0000cc" fillColor="#08ffffff"/>
+    <graph id="n5_l4zq" name="n5" xy="0,0" size="748,70" type="rect" lineColor="#1a0000cc" fillColor="#00ffffff"/>
     <text id="n1_l4zq" name="Txt1" xy="24,18" size="72,33" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" autoSize="none" text="类型"/>
     <text id="n6_gqjv" name="Txt2" xy="139,17" size="72,33" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" autoSize="none" text="币种"/>
     <text id="n3_l4zq" name="Txt3" xy="254,17" size="118,33" font="FontXi" fontSize="22" color="#ffffff" align="right" vAlign="middle" autoSize="none" text="数量"/>

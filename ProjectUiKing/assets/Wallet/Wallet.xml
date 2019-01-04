@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1066,640" initName="BtnClose" adaptationTest="FitSize">
-  <controller name="CtrlTab" pages="0,Recharge,1,Withdraw,2,Record" selected="0"/>
+  <controller name="CtrlTab" pages="0,Recharge,1,Withdraw,2,Record" selected="2"/>
   <displayList>
     <image id="n200_hrhq" name="Bg" src="teyh8q" fileName="Image/bg.png" pkg="gbdohaiv" xy="-352,-242" size="1770,1125" group="n260_xh1i"/>
     <image id="n208_hrhq" name="n208" src="u51ojc" fileName="Image/New/UI2_通用_纯色底板.png" pkg="nhvxw9ov" xy="0,0" size="1066,640" group="n260_xh1i" alpha="0.4" color="#000033">
       <relation target="" sidePair="width-width,height-height"/>
+    </image>
+    <image id="n264_szq2" name="n264" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="192,103" size="864,536" group="n260_xh1i" alpha="0.6" color="#1d2052">
+      <relation target="" sidePair="height-height,rightext-right"/>
     </image>
     <component id="n201_hrhq" name="n201" src="j1yrr" fileName="Component/ComLogo.xml" xy="1,-23" group="n260_xh1i">
       <relation target="" sidePair="left-left,top-top"/>
@@ -15,15 +18,15 @@
     </component>
     <component id="n261_xh1i" name="ComTabRecharge" src="xh1i1g" fileName="Component/ComTabRecharge.xml" xy="205,108">
       <gearDisplay controller="CtrlTab" pages="0"/>
-      <relation target="" sidePair="left-center,top-top"/>
+      <relation target="n264_szq2" sidePair="width-width,height-height"/>
     </component>
     <component id="n262_l4zq" name="ComTabWithdraw" src="l4zq1h" fileName="Component/ComTabWithdraw.xml" xy="205,108">
       <gearDisplay controller="CtrlTab" pages="1"/>
-      <relation target="" sidePair="left-center,top-top"/>
+      <relation target="n264_szq2" sidePair="width-width,height-height"/>
     </component>
     <component id="n263_l4zq" name="ComTabRecord" src="l4zq1k" fileName="Component/ComTabRecord.xml" xy="205,108">
       <gearDisplay controller="CtrlTab" pages="2"/>
-      <relation target="" sidePair="left-center,top-top"/>
+      <relation target="n264_szq2" sidePair="width-width,height-height"/>
     </component>
     <component id="n230_tjym" name="BtnAddChip" src="j1yr1b" fileName="Component/BtnAddChip1.xml" xy="777,29">
       <relation target="" sidePair="right-right,top-top"/>

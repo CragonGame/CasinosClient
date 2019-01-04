@@ -9,11 +9,11 @@
     <group id="n2_qsg8" name="top" xy="184,4" size="351,45"/>
     <component id="n31_h7og" name="HeadIcon" src="d45975" fileName="Component/ComHeadIcon.xml" pkg="nhvxw9ov" xy="21,1" size="150,150" group="n5_qsg8"/>
     <group id="n5_qsg8" name="Icon" xy="21,1" size="150,150"/>
-    <text id="n26_h7og" name="NickName" xy="188,47" size="183,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
-    <text id="n27_h7og" name="Chip" xy="207,77" size="164,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
-    <text id="n28_h7og" name="State" xy="188,107" size="183,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
-    <text id="n29_h7og" name="ID" xy="21,154" size="183,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
-    <text id="n30_h7og" name="Address" xy="21,183" size="183,25" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n26_h7og" name="NickName" xy="188,48" size="183,25" font="FontXi" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n27_h7og" name="Chip" xy="212,82" size="164,25" font="FontXi" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n28_h7og" name="State" xy="188,116" size="183,25" font="FontXi" fontSize="20" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n29_h7og" name="ID" xy="21,154" size="183,25" font="FontXi" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
+    <text id="n30_h7og" name="Address" xy="21,183" size="183,25" font="FontXi" fontSize="18" color="#ffffff" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text=""/>
     <text id="n7_qsg8" name="TextLevel" xy="456,82" size="73,25" group="n10_qsg8" fontSize="18" color="#e5bb4f" leading="0" autoSize="none" text="8"/>
     <component id="n40_fqbz" name="ProgressLevel" src="ot8lff" fileName="Component/Progress.xml" pkg="nhvxw9ov" xy="395,112" size="142,18" group="n10_qsg8">
       <ProgressBar value="50" max="100"/>
@@ -41,7 +41,7 @@
       <Button title="举报用户"/>
     </component>
     <image id="n36_heqs" name="n36" src="qeucit" fileName="Image/BtnIcon/report1.png" pkg="nhvxw9ov" xy="446,214" size="88,88"/>
-    <image id="n39_ddgu" name="n39" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="184,80" size="18,18" color="#61e2ff">
+    <image id="n39_ddgu" name="n39" src="hrhqkc" fileName="Image/New/ChipIcon.png" pkg="nhvxw9ov" xy="189,85" size="18,18" color="#61e2ff">
       <gearDisplay controller="ChipIconSolustion" pages="0"/>
     </image>
     <image id="n43_j1yr" name="n43" src="j1yrlq" fileName="Image/New/ChipIcon1.png" pkg="nhvxw9ov" xy="184,80" size="18,18" color="#61e2ff">

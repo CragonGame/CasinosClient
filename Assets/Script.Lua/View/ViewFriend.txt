@@ -8,6 +8,11 @@ function UiFriendDetail:new(o, com_friend, is_friend_detail)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.Context = Context
+    o.ControllerMgr = ControllerMgr
+    o.ViewMgr = ViewMgr
+    o.ControllerActor = o.ControllerMgr:GetController("Actor")
     o.IsFriendDetail = is_friend_detail
     o.GTextUnderWrite = com_friend:GetChild("TextUnderwrite").asTextField
     local head_icon = com_friend:GetChild("HeadIcon").asCom
@@ -60,11 +65,6 @@ function UiFriendDetail:new(o, com_friend, is_friend_detail)
             end
     )
     o.GIMageRemoveFriend = com_friend:GetChild("RemoveFriend").asImage
-    o.CasinosContext = CS.Casinos.CasinosContext.Instance
-    o.Context = Context
-    o.ControllerMgr = ControllerMgr
-    o.ViewMgr = ViewMgr
-    o.ControllerActor = o.ControllerMgr:GetController("Actor")
     o.GComReportPlayer = com_friend:GetChild("ComReportPlayer").asCom
 
     local list_report = o.GComReportPlayer:GetChild("ContentList").asList
@@ -98,7 +98,7 @@ function UiFriendDetail:SetFriendInfo(friend_item)
     if (address == nil or address == "") then
         address = self.ViewMgr.LanMgr:getLanValue("Unknown")
     end
-    address = self.ViewMgr.LanMgr:getLanValue("Address") .. address
+    address = self.ViewMgr.LanMgr:getLanValue("Address") .. ': ' .. address
     self.GTextAddress.text = address
     if (self.GImageVip ~= nil) then
         if (self.CurrentFriendInfo.PlayerInfoMore.VipLevel > 0) then

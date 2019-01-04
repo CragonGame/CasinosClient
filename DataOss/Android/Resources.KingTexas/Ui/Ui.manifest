@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 1974120357
+CRC: 637503438
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: matchlobby.ab
+      Name: friend.ab
       Dependencies: {}

@@ -2,8 +2,8 @@
 <component size="797,484">
   <displayList>
     <loader id="n0_xh1i" name="LoaderQRCode" xy="492,11" size="256,256" url="ui://npdzqphej1yr3" align="center" vAlign="middle" fill="scaleFree"/>
-    <text id="n1_l4zq" name="TextAddress" xy="485,273" size="270,42" font="FontXi" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="1234567890123456789"/>
-    <text id="n2_l4zq" name="TextMemo" xy="485,379" size="270,42" font="FontXi" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="none" text="123456789"/>
+    <text id="n1_l4zq" name="TextAddress" xy="485,273" size="270,42" font="FontXi" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="none" text=""/>
+    <text id="n2_l4zq" name="TextMemo" xy="485,379" size="270,42" font="FontXi" fontSize="20" color="#ffffff" align="center" vAlign="middle" autoSize="none" text=""/>
     <component id="n3_l4zq" name="BtnCopyAddress" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="540,321" size="170,50">
       <Button title="复制地址" titleFontSize="20" selectedTitle="复制地址"/>
     </component>

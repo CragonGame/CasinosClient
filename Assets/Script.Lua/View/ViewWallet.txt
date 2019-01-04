@@ -94,14 +94,6 @@ function ViewWallet:OnCreate()
 
     self.GComTabRecord = self.ComUi:GetChild("ComTabRecord").asCom
 
-    local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
-    local url = 'https://www.cragon.cn/gpdz.html?PlayerId=' .. 10000
-    local t = CS.UnityEngine.Texture2D(256, 256)
-    local colors = self.CasinosContext.LuaMgr:CreateQRCode(url, t.width, t.height)
-    t:SetPixels32(colors)
-    t:Apply()
-    gloader_qrcode.texture = CS.FairyGUI.NTexture(t)
-
     self.GTxtChargeAddress = self.GComTabRecharge:GetChild("TextAddress").asTextField
     self.GTxtChargeMemo = self.GComTabRecharge:GetChild("TextMemo").asTextField
 
@@ -132,7 +124,7 @@ function ViewWallet:OnCreate()
     self.GTxtGold = btn_addchip:GetChild("TextChipAmount").asTextField
     local btn_adddiamond = self.ComUi:GetChild("BtnAddDiamond").asButton
     self.GTxtDiamond = btn_adddiamond:GetChild("TextDiamondAmount").asTextField
-    self:SetPlayerGoldAndDiamond()
+    self:_refreshPlayerGoldAndDiamond()
 
     local bg = self.ComUi:GetChild("Bg")
     if (bg ~= nil) then
@@ -159,9 +151,9 @@ end
 ---------------------------------------
 function ViewWallet:OnHandleEv(ev)
     if (ev.EventName == "EvEntityGoldChanged") then
-        self:SetPlayerGoldAndDiamond()
+        self:_refreshPlayerGoldAndDiamond()
     elseif (ev.EventName == "EvEntityDiamondChanged") then
-        self:SetPlayerGoldAndDiamond()
+        self:_refreshPlayerGoldAndDiamond()
     end
 end
 
@@ -211,16 +203,9 @@ end
 ---------------------------------------
 -- 获取交易记录通知
 function ViewWallet:OnVCoinGetTransListNotify()
-    --print('ViewWallet:OnVCoinGetTransListNotify()')
+    print('ViewWallet:OnVCoinGetTransListNotify()')
 
     if self.CtrlWallet.ListRecord ~= nil then
-        --for i, v in pairs(self.CtrlWallet.ListRecord) do
-        --    local l_tm = CS.System.DateTime.Parse(v.Dt)
-        --    local dt = CS.Casinos.UiHelper.getLocalTmToString(l_tm)
-        --    print(string.format('Record Id=%s ChargeOrWithdraw=%s Currency=%s Volume=%s Dt=%s WithdrawStatus=%s',
-        --            v.Id, v.ChargeOrWithdraw, v.Currency, v.Volume, dt, v.WithdrawStatus))
-        --end
-
         self.GListRecord.numItems = #self.CtrlWallet.ListRecord
     end
 end
@@ -228,30 +213,8 @@ end
 ---------------------------------------
 -- 响应获取本人VCoin信息
 function ViewWallet:OnVCoinGetMyVCoinInfoResponse()
-    --print('ViewWallet:OnVCoinGetMyVCoinInfoResponse()')
-
-    --if self.CtrlWallet.VCoinMyInfo ~= nil and self.CtrlWallet.VCoinMyInfo.ListItem ~= nil and #self.CtrlWallet.VCoinMyInfo.ListItem > 0 then
-    --    for i, v in pairs(self.CtrlWallet.VCoinMyInfo.ListItem) do
-    --        print(string.format('Currency=%s Address=%s Memo=%s', v.Currency, v.Address, v.Memo))
-    --    end
-    --end
-
-    -- 设置Text Address&Memo
-    if self.CtrlWallet.VCoinCurrentInfo ~= nil then
-        self.GTxtChargeAddress.text = self.CtrlWallet.VCoinCurrentInfo.Address
-        self.GTxtChargeMemo.text = self.CtrlWallet.VCoinCurrentInfo.Memo
-    end
-end
-
----------------------------------------
-function ViewWallet:ShowTabGold()
-    self:onClickBtnTabChip()
-end
-
----------------------------------------
-function ViewWallet:SetPlayerGoldAndDiamond()
-    self.GTxtGold.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
-    self.GTxtDiamond.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
+    print('ViewWallet:OnVCoinGetMyVCoinInfoResponse()')
+    self:_refreshQRCode()
 end
 
 ---------------------------------------
@@ -305,6 +268,8 @@ function ViewWallet:_onClickBtnTabRecharge()
     gctrl_tabrecord_state.selectedIndex = 0
 
     self.GCtrlTab.selectedIndex = 0
+
+    self:_refreshQRCode()
 end
 
 ---------------------------------------
@@ -378,6 +343,36 @@ function ViewWallet:_onClickBtnWithdraw()
         ViewHelper:UiShowInfoFailed('请填写提现数额')
     end
     self.CtrlWallet:RequestVCoinWithdraw(self.GTxtWithdrawAddress.text, self.GTxtWithdrawMemo.text, self.GTxtWithdrawGoldVolume.text)
+end
+
+---------------------------------------
+-- 刷新二维码
+function ViewWallet:_refreshQRCode()
+    if self.CtrlWallet.VCoinCurrentInfo ~= nil and self.CtrlWallet.VCoinCurrentInfo.Address ~= nil and #self.CtrlWallet.VCoinCurrentInfo.Address > 0 then
+        if self.GTxtChargeAddress.text == self.CtrlWallet.VCoinCurrentInfo.Address then
+            return
+        end
+
+        -- 生成二维码
+        local gloader_qrcode = self.GComTabRecharge:GetChild('LoaderQRCode').asLoader
+        local url = self.CtrlWallet.VCoinCurrentInfo.Address
+        local t = CS.UnityEngine.Texture2D(256, 256)
+        local colors = self.CasinosContext.LuaMgr:CreateQRCode(url, t.width, t.height)
+        t:SetPixels32(colors)
+        t:Apply()
+        gloader_qrcode.texture = CS.FairyGUI.NTexture(t)
+
+        -- 设置Text Address&Memo
+        self.GTxtChargeAddress.text = self.CtrlWallet.VCoinCurrentInfo.Address
+        self.GTxtChargeMemo.text = self.CtrlWallet.VCoinCurrentInfo.Memo
+    end
+end
+
+---------------------------------------
+-- 刷新金币钻石数值显示
+function ViewWallet:_refreshPlayerGoldAndDiamond()
+    self.GTxtGold.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropGoldAcc:get(), self.ViewMgr.LanMgr.LanBase)
+    self.GTxtDiamond.text = UiChipShowHelper:GetGoldShowStr(self.CtrlActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
 end
 
 ---------------------------------------
