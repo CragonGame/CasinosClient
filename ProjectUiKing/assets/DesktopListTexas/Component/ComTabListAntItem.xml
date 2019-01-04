@@ -10,7 +10,7 @@
     <component id="n6_jy7t" name="ComIcon7" src="jy7th" fileName="Component/ComIconMini.xml" xy="662,15"/>
     <component id="n7_jy7t" name="ComIcon8" src="jy7th" fileName="Component/ComIconMini.xml" xy="715,15"/>
     <component id="n8_jy7t" name="ComIcon9" src="jy7th" fileName="Component/ComIconMini.xml" xy="768,15"/>
-    <text id="n9_jy7t" name="TxtBlind" xy="48,22" size="119,34" fontSize="12" autoSize="none" text=""/>
-    <text id="n10_jy7t" name="TxtBet" xy="202,22" size="117,34" fontSize="12" autoSize="none" text=""/>
+    <text id="n9_jy7t" name="TxtBlind" xy="48,22" size="119,34" fontSize="23" color="#ffffff" align="right" vAlign="middle" autoSize="none" text="10/20"/>
+    <text id="n10_jy7t" name="TxtBet" xy="202,22" size="117,34" fontSize="24" color="#ffffff" align="right" vAlign="middle" autoSize="none" text="1000/2000"/>
   </displayList>
 </component>

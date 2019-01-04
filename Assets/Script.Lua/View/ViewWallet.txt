@@ -303,6 +303,7 @@ end
 function ViewWallet:_onClickBtnCopyAddress()
     if self.CtrlWallet.VCoinCurrentInfo ~= nil then
         self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.VCoinCurrentInfo.Address)
+        self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.VCoinCurrentInfo.Address)
         local address = self.CasinosContext.LuaMgr:GetClipBoard()
         ViewHelper:UiShowInfoSuccess('已将' .. tostring(address) .. '复制到剪切板')
     else
@@ -314,6 +315,7 @@ end
 -- 点击按钮，复制Memo到剪切板
 function ViewWallet:_onClickBtnCopyMemo()
     if self.CtrlWallet.VCoinCurrentInfo ~= nil then
+        self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.VCoinCurrentInfo.Memo)
         self.CasinosContext.LuaMgr:SetClipBoard(self.CtrlWallet.VCoinCurrentInfo.Memo)
         local memo = self.CasinosContext.LuaMgr:GetClipBoard()
         ViewHelper:UiShowInfoSuccess('已将' .. tostring(memo) .. '复制到剪切板')

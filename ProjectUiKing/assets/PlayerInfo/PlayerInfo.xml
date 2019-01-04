@@ -75,23 +75,23 @@
       <gearDisplay controller="ControllerBtn" pages="1"/>
     </group>
     <group id="n73_je85" name="Bottom" xy="144,428" size="777,119" group="n206_nmmo"/>
-    <text id="n61_je85" name="Lan_Text_StatisticalInformation" xy="597,196" pivot="0.5,0.5" size="278,32" group="n168_niy2" fontSize="25" color="#717bb3" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="统计信息"/>
-    <text id="n63_je85" name="Lan_Text_FinishGames" xy="597,229" size="108,31" group="n69_je85" fontSize="24" color="#717bb3" vAlign="middle" leading="0" singleLine="true" text="已完游戏:"/>
-    <text id="n64_je85" name="GameDone" xy="708,228" pivot="0.5,0.5" size="188,32" group="n69_je85" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+    <text id="n61_je85" name="Lan_Text_StatisticalInformation" xy="597,204" pivot="0.5,0.5" size="278,32" group="n168_niy2" fontSize="25" color="#717bb3" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="统计信息"/>
+    <text id="n63_je85" name="Lan_Text_FinishGames" xy="597,237" size="108,31" group="n69_je85" fontSize="24" color="#717bb3" vAlign="middle" leading="0" singleLine="true" text="已完游戏:"/>
+    <text id="n64_je85" name="GameDone" xy="708,236" pivot="0.5,0.5" size="188,32" group="n69_je85" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
       <relation target="n63_je85" sidePair="left-right"/>
     </text>
-    <group id="n69_je85" name="gameDone" xy="597,228" size="299,32" group="n168_niy2" collapsed="true"/>
-    <text id="n65_je85" name="Lan_Text_WinGames" xy="597,261" size="108,31" group="n70_je85" fontSize="24" color="#717bb3" vAlign="middle" leading="0" singleLine="true" text="已赢游戏:"/>
-    <text id="n66_je85" name="WinGame" xy="708,260" size="188,32" group="n70_je85" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+    <group id="n69_je85" name="gameDone" xy="597,236" size="299,32" group="n168_niy2" collapsed="true"/>
+    <text id="n65_je85" name="Lan_Text_WinGames" xy="597,269" size="108,31" group="n70_je85" fontSize="24" color="#717bb3" vAlign="middle" leading="0" singleLine="true" text="已赢游戏:"/>
+    <text id="n66_je85" name="WinGame" xy="708,268" size="188,32" group="n70_je85" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
       <relation target="n65_je85" sidePair="left-right"/>
     </text>
-    <group id="n70_je85" name="winGame" xy="597,260" size="299,32" group="n168_niy2" collapsed="true"/>
-    <text id="n67_je85" name="Lan_Text_StartJoinTime" xy="597,292" size="108,31" group="n71_je85" fontSize="24" color="#717bb3" vAlign="middle" leading="0" singleLine="true" text="开始时间:"/>
-    <text id="n68_je85" name="JoinInGame" xy="708,291" size="209,32" group="n71_je85" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
+    <group id="n70_je85" name="winGame" xy="597,268" size="299,32" group="n168_niy2" collapsed="true"/>
+    <text id="n67_je85" name="Lan_Text_StartJoinTime" xy="597,300" size="108,31" group="n71_je85" fontSize="24" color="#717bb3" vAlign="middle" leading="0" singleLine="true" text="开始时间:"/>
+    <text id="n68_je85" name="JoinInGame" xy="708,299" size="209,32" group="n71_je85" fontSize="25" color="#cccccc" vAlign="middle" leading="0" autoSize="shrink" singleLine="true" text="">
       <relation target="n67_je85" sidePair="left-right"/>
     </text>
-    <group id="n71_je85" name="joinInGame" xy="597,291" size="320,32" group="n168_niy2" collapsed="true"/>
-    <group id="n168_niy2" name="n168" xy="597,196" size="320,127" group="n206_nmmo"/>
+    <group id="n71_je85" name="joinInGame" xy="597,299" size="320,32" group="n168_niy2" collapsed="true"/>
+    <group id="n168_niy2" name="n168" xy="597,204" size="320,127" group="n206_nmmo"/>
     <component id="n199_jyil" name="BtnEidtSign" src="lil3k" fileName="Component/BtnPen.xml" pkg="rqfkr96l" xy="874,91" group="n206_nmmo"/>
     <group id="n206_nmmo" name="n206" xy="120,48" size="826,543" advanced="true">
       <relation target="" sidePair="center-center,middle-middle"/>

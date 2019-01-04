@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="864,536">
   <displayList>
-    <list id="n0_jy7t" name="List" xy="0,74" size="864,454" overflow="scroll" defaultItem="ui://g7gsod07jy7tf">
+    <list id="n0_jy7t" name="List" xy="0,73" size="864,454" overflow="scroll" defaultItem="ui://g7gsod07jy7tf">
       <relation target="" sidePair="width-width,height-height"/>
       <item/>
       <item/>
@@ -21,8 +21,8 @@
       <item/>
       <item/>
     </list>
-    <text id="n1_jy7t" name="TxtBlind" xy="43,26" pivot="0.5,0.5" size="77,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="小/大盲"/>
-    <text id="n2_jy7t" name="TxtBuyin" xy="166,26" pivot="0.5,0.5" size="143,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="最小/最大携带"/>
-    <text id="n3_jy7t" name="TxtPlayer" xy="357,26" pivot="0.5,0.5" size="49,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="玩家"/>
+    <text id="n1_jy7t" name="TxtBlind" xy="30,22" pivot="0.5,0.5" size="77,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="小/大盲"/>
+    <text id="n2_jy7t" name="TxtBuyin" xy="153,22" pivot="0.5,0.5" size="143,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="最小/最大携带"/>
+    <text id="n3_jy7t" name="TxtPlayer" xy="344,22" pivot="0.5,0.5" size="49,29" fontSize="22" color="#617cba" align="center" vAlign="middle" leading="0" text="玩家"/>
   </displayList>
 </component>
