@@ -142,7 +142,7 @@ function UiDesktopHBetPotItem:_showCardEnd(map_param)
         if (self.IsWin) then
             color = CS.UnityEngine.Color.yellow
         end
-        self.GTextBetChipsSelf.text = self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getGameReusltTips(self.IsWin, self.DesktopHundredCards:getCardTypeByte(), self.ViewDesktopH.UiDesktopHBanker:getHandRankByte(), self.SelfBetChips)
+        self.GTextBetChipsSelf.text = self.ViewDesktopH.ControllerDesktopH.DesktopHModule:getGameReusltTips(self.IsWin, self.DesktopHundredCards:getCardTypeByte(), self.ViewDesktopH.UiDesktopHBanker:getHandRankByte(), self.SelfBetChips)
         self.GTextBetChipsSelf.color = color
     end
 

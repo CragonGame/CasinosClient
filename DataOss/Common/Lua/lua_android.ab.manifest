@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2975783104
+CRC: 395103477
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f2195a0db4c18899adaf449530a51eab
+    Hash: fcfa6a65def6da2a7ce5c9f8e2954742
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -242,7 +242,6 @@ Assets:
 - Assets/Script.Lua/View.DesktopH/UiDesktopHDealer.txt
 - Assets/Script.Lua/View.LotteryTicket/UiLotteryTicketTexas.txt
 - Assets/Script.Lua/View/ViewRechargeFirst.txt
-- Assets/Script.Lua/Controller.DesktopH/DesktopHBase.txt
 - Assets/Script.Lua/Controller.DesktopTexas/DesktopBase.txt
 - Assets/Script.Lua/Base.TbData/TbDataCfigGFlowerDesktopHGoldPercent.txt
 - Assets/Script.Lua/View.DesktopH/ViewDesktopHRewardPot.txt
@@ -258,6 +257,7 @@ Assets:
 - Assets/Script.Lua/Controller.IM/IMMailBox.txt
 - Assets/Script.Lua/Base.TbData/TbDataVIPLevel.txt
 - Assets/Script.Lua/Model/ModelIMMailBox.txt
+- Assets/Script.Lua/Controller.DesktopH/DesktopHModuleTexas.txt
 - Assets/Script.Lua/View/ViewEditAddress.txt
 - Assets/Script.Lua/Base.TbData/TbDataConfigTexasDesktop.txt
 - Assets/Script.Lua/View.DesktopTexas/UiDesktopTexasFlow.txt
@@ -265,7 +265,6 @@ Assets:
 - Assets/Script.Lua/View/ViewActivityCenter.txt
 - Assets/Script.Lua/View/ItemMtt/ItemSnowBallRewardInfo.txt
 - Assets/Script.Lua/Model/ModelRank.txt
-- Assets/Script.Lua/Controller.DesktopH/DesktopHTexas.txt
 - Assets/Script.Lua/Base.TbData/TbDataLotteryTicket.txt
 - Assets/Script.Lua/View/ViewPool.txt
 - Assets/Script.Lua/Base.Other/Util.txt
@@ -332,6 +331,7 @@ Assets:
 - Assets/Script.Lua/View/ViewMain.txt
 - Assets/Script.Lua/View/Item/ItemMagicExpIcon.txt
 - Assets/Script.Lua/Base.Lan/LanBase.txt
+- Assets/Script.Lua/Controller.DesktopH/DesktopHModuleBase.txt
 - Assets/Script.Lua/View/ViewDesktopChatExpression.txt
 - Assets/Script.Lua/View.DesktopTexas/UiCardCommonEx.txt
 - Assets/Script.Lua/Model/ModelVCoin.txt
@@ -345,7 +345,6 @@ Assets:
 - Assets/Script.Lua/Controller/ControllerBag.txt
 - Assets/Script.Lua/View.DesktopTexas/DealerEx.txt
 - Assets/Script.Lua/Base.TbData/TbDataLanZh.txt
-- Assets/Script.Lua/View.DesktopH/UiDesktopHCardTypeBase.txt
 - Assets/Script.Lua/Base.TbData/TbDataMgr.txt
 - Assets/Script.Lua/View/UiChooseCountryCode.txt
 - Assets/Script.Lua/Model/ModelIM.txt

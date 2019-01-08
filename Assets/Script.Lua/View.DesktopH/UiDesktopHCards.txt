@@ -29,8 +29,6 @@ function UiDesktopHCards:new(controller_desktoph, view_desktoph, dealer, dealer_
     o.ShowCardTm = 0
     o.ShowOneCardInterverTime = 0
     o.MoveCardWidthPercent = 0
-    local fac = o.ViewDesktopH.ControllerDesktopH:GetDesktopHCardTypeBaseFactory(fac_name)
-    o.UiDesktopHCardTypeBase = fac:CreateDesktopHCardType()
     o.ToPos = nil
     return o
 end
@@ -109,8 +107,6 @@ function UiDesktopHCards:setCards(list_card)
         table.insert(list_c, c)
     end
 
-    self.UiDesktopHCardTypeBase:SetCard(list_c)
-
     for i, v in pairs(self.ListCard) do
         local card = nil
         if (self.AutoShowCard == true) then
@@ -131,13 +127,13 @@ end
 
 ---------------------------------------
 function UiDesktopHCards:getCardTypeStr()
-    local l = self.UiDesktopHCardTypeBase:GetCardTypeStr()
+    local l = self.ControllerDesktopH.DesktopHModule:GetCardTypeStr(self.ListCard)
     return l
 end
 
 ---------------------------------------
 function UiDesktopHCards:getCardTypeByte()
-    local l = self.UiDesktopHCardTypeBase:GetCardTypeByte()
+    local l = self.ControllerDesktopH.DesktopHModule:GetCardTypeByte(self.ListCard)
     return l
 end
 

@@ -1,8 +1,8 @@
 -- Copyright(c) Cragon. All rights reserved.
-require('DesktopHBase')
 require('DesktopHChipPool')
+require('DesktopHModuleBase')
+require('DesktopHModuleTexas')
 require('DesktopHSound')
-require('DesktopHTexas')
 
 ---------------------------------------
 ControllerDesktopH = class(ControllerBase)
@@ -150,10 +150,8 @@ function ControllerDesktopH:OnCreate()
     end
     self.CurrentTbBetOperateId = operate_id
 
-    self.MapDesktopHBaseFac = {}
-    self:regDesktopHBaseFactory(DesktopHTexasFactory:new(nil))
-    self.MapDesktopHCardTypeBaseFac = {}
-    self:regDesktopHCardTypeBaseFactory(DesktopHCardTypeTexasFac:new(nil))
+    self.MapDesktopHModuleFactory = {}
+    self:RegDesktopHModuleFactory(DesktopHModuleFactoryTexas.new())
 end
 
 ---------------------------------------
@@ -166,8 +164,8 @@ end
 
 ---------------------------------------
 function ControllerDesktopH:OnHandleEv(ev)
-    if (self.DesktopHBase ~= nil) then
-        self.DesktopHBase:OnHandleEvent(ev)
+    if (self.DesktopHModule ~= nil) then
+        self.DesktopHModule:OnHandleEvent(ev)
     end
 
     if (ev.EventName == "EvViewClickDesktopH") then
@@ -279,7 +277,7 @@ function ControllerDesktopH:OnHandleEv(ev)
             return
         end
 
-        local bet_chips = self.DesktopHBase:getOperateGold(self.CurrentTbBetOperateId)
+        local bet_chips = self.DesktopHModule:getOperateGold(self.CurrentTbBetOperateId)
         local can_betsuccess = self:BetGold(ev.bet_betpot_index, bet_chips)
 
         if (can_betsuccess == true) then
@@ -306,7 +304,7 @@ function ControllerDesktopH:OnHandleEv(ev)
             for key, value in pairs(self.MapBetRepeatInfo) do
                 all_golds = all_golds + value
             end
-            local max_percent = self.DesktopHBase:getMaxCannotBetPecent()
+            local max_percent = self.DesktopHModule:getMaxCannotBetPecent()
             local total_golds = self.ControllerActor.PropGoldAcc:get()
             local after_bet_golds = self.TotalBetGolds + all_golds
             if (after_bet_golds * max_percent > total_golds + self.TotalBetGolds) then
@@ -378,8 +376,8 @@ function ControllerDesktopH:S2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_
     if (d_d.list_bebanker ~= nil) then
         self.ListBeBankPlayer = d_d.list_bebanker
     end
-    local fac = self:GetDesktopHBaseFactory(d_d.factory_name)
-    self.DesktopHBase = fac:CreateDesktop(self, d_d.factory_name)
+    local factory_module = self:GetDesktopHModuleFactory(d_d.factory_name)
+    self.DesktopHModule = factory_module:CreateModule(self, d_d.factory_name)
     self:updateSuitBetOperateId()
     self.DesktopHState = d_d.state
     self.TotalBetGolds = 0
@@ -467,7 +465,7 @@ end
 
 ---------------------------------------
 function ControllerDesktopH:S2cDesktopHNotifyGameEnd(game_result, map_my_winlooseinfo)
-    if (self.DesktopHBase == nil) then
+    if (self.DesktopHModule == nil) then
         return
     end
 
@@ -729,15 +727,15 @@ end
 
 ---------------------------------------
 function ControllerDesktopH:S2cDesktopHNotifyPlayerChat(msg)
-    if (self.DesktopHBase ~= nil) then
-        self.DesktopHBase:DesktopHChat(msg)
+    if (self.DesktopHModule ~= nil) then
+        self.DesktopHModule:DesktopHChat(msg)
     end
     self.CurrentUnSendDesktopMsg = ""
 end
 
 ---------------------------------------
 function ControllerDesktopH:S2cDesktopHNotifyBuyAndSendItem(sender_guid, map_recv_itemdata)
-    if (self.DesktopHBase == nil) then
+    if (self.DesktopHModule == nil) then
         return
     end
     local t_map_recv_itemdata = {}
@@ -972,16 +970,16 @@ function ControllerDesktopH:ClearDesktopH(need_createmainui)
     end
 
     self.MapBetRepeatInfo = {}
-    if (self.DesktopHBase ~= nil) then
-        self.DesktopHBase:OnDestroy()
-        self.DesktopHBase = nil
+    if (self.DesktopHModule ~= nil) then
+        self.DesktopHModule:OnDestroy()
+        self.DesktopHModule = nil
     end
     self.DesktopHGuid = ""
 end
 
 ---------------------------------------
 function ControllerDesktopH:BetGold(bet_betpot_index, bet_golds)
-    local max_percent = self.DesktopHBase:getMaxCannotBetPecent()
+    local max_percent = self.DesktopHModule:getMaxCannotBetPecent()
     local total_chips = self.ControllerActor.PropGoldAcc:get()
     local already_bet_chips = 0
     if (self.MapBetPotSelfBetGolds[bet_betpot_index] ~= nil) then
@@ -1011,15 +1009,15 @@ end
 ---------------------------------------
 -- 更新可下注筹码，AccGold不够时，相关筹码置灰
 function ControllerDesktopH:updateSuitBetOperateId()
-    if (self.DesktopHBase ~= nil) then
+    if (self.DesktopHModule ~= nil) then
         local map_canoperateid = self.MapCanOperateId
-        local list_operatesid = self.DesktopHBase:getBetOperateId()
+        local list_operatesid = self.DesktopHModule:getBetOperateId()
         for key, value in pairs(list_operatesid) do
             map_canoperateid[value] = false
         end
 
         local total_chips = self.ControllerActor.PropGoldAcc:get()
-        local max_percent_gold = self.DesktopHBase:getMaxCannotBetPecent()
+        local max_percent_gold = self.DesktopHModule:getMaxCannotBetPecent()
         local max_betchips = total_chips / max_percent_gold
 
         local operate_id = -1
@@ -1028,8 +1026,8 @@ function ControllerDesktopH:updateSuitBetOperateId()
             local operatefloor = list_operatesid[i]
             local operateceiling = list_operatesid[i + 1]
             local can_operate = map_canoperateid[operatefloor]
-            local operatefloor_gold = self.DesktopHBase:getOperateGold(operatefloor)
-            local operateceiling_gold = self.DesktopHBase:getOperateGold(operateceiling)
+            local operatefloor_gold = self.DesktopHModule:getOperateGold(operatefloor)
+            local operateceiling_gold = self.DesktopHModule:getOperateGold(operateceiling)
             if (max_betchips >= operatefloor_gold) then
                 if (max_betchips < operateceiling_gold) then
                     operate_id = operatefloor
@@ -1048,7 +1046,7 @@ function ControllerDesktopH:updateSuitBetOperateId()
         end
         local max_operateid = list_operatesid[#list_operatesid]
         local max_can_operate = map_canoperateid[max_operateid]
-        local max_operategold = self.DesktopHBase:getOperateGold(max_operateid)
+        local max_operategold = self.DesktopHModule:getOperateGold(max_operateid)
         if (max_betchips >= max_operategold) then
             map_canoperateid[max_operateid] = true
             if (max_can_operate == false) then
@@ -1094,23 +1092,13 @@ function ControllerDesktopH:playerLeaveDesktopH(map_param)
 end
 
 ---------------------------------------
-function ControllerDesktopH:regDesktopHBaseFactory(desktoph_fac)
-    self.MapDesktopHBaseFac[desktoph_fac:GetName()] = desktoph_fac
+function ControllerDesktopH:RegDesktopHModuleFactory(desktoph_fac)
+    self.MapDesktopHModuleFactory[desktoph_fac:GetName()] = desktoph_fac
 end
 
 ---------------------------------------
-function ControllerDesktopH:GetDesktopHBaseFactory(fac_name)
-    return self.MapDesktopHBaseFac[fac_name]
-end
-
----------------------------------------
-function ControllerDesktopH:regDesktopHCardTypeBaseFactory(desktoph_fac)
-    self.MapDesktopHCardTypeBaseFac[desktoph_fac:GetName()] = desktoph_fac
-end
-
----------------------------------------
-function ControllerDesktopH:GetDesktopHCardTypeBaseFactory(fac_name)
-    return self.MapDesktopHCardTypeBaseFac[fac_name]
+function ControllerDesktopH:GetDesktopHModuleFactory(fac_name)
+    return self.MapDesktopHModuleFactory[fac_name]
 end
 
 ---------------------------------------

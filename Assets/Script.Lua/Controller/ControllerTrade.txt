@@ -80,7 +80,7 @@ function ControllerTrade:OnHandleEv(ev)
                 end
             else
                 local ctrl_desktoph = self.ControllerMgr:GetController("DesktopH")
-                if (ctrl_desktoph.DesktopHBase ~= nil) then
+                if (ctrl_desktoph.DesktopHModule ~= nil) then
                     if (ev.to_etguid ~= nil and ev.to_etguid ~= "") then
                         target = BuyItemForTarget.DesktopHOtherPlayer
                     else

@@ -233,7 +233,7 @@ function ControllerPlayer:OnHandleEv(ev)
                     can_creategiftshop = false
                 end
             else
-                if (self.ControllerDesktopH.DesktopHBase == nil) then
+                if (self.ControllerDesktopH.DesktopHModule == nil) then
                     can_creategiftshop = false
                 end
             end
@@ -352,7 +352,7 @@ function ControllerPlayer:S2cPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
     msg_box:showMsgBox1(self.ControllerMgr.LanMgr:getLanValue("InviteFriendPlay"), tips,
             function(accept)
                 if (accept) then
-                    if (self.ControllerDesktopH.DesktopHBase == nil) then
+                    if (self.ControllerDesktopH.DesktopHModule == nil) then
                         if (self.ControllerDesktopTexas.DesktopBase == nil) then
                             self.ControllerDesktopListTexas:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
                         else
@@ -640,7 +640,7 @@ function ControllerPlayer:getDesktopChat()
             index = index - 1
         end
     else
-        if (self.ControllerDesktopH.DesktopHBase ~= nil) then
+        if (self.ControllerDesktopH.DesktopHModule ~= nil) then
             local index = #self.ControllerDesktopH.ListDesktopChat - 1
             for key, value in pairs(self.ControllerDesktopH.ListDesktopChat) do
                 map_chat[index] = value

@@ -5,8 +5,6 @@ require('UiDesktopHBetPot')
 require('UiDesktopHBetPotItem')
 require('UiDesktopHCard')
 require('UiDesktopHCards')
-require('UiDesktopHCardTypeBase')
-require('UiDesktopHCardTypeTexas')
 require('UiDesktopHChair')
 require('UiDesktopHDealer')
 require('UiDesktopHFlow')
@@ -539,7 +537,7 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
         self.UiDesktopHRewardPot:Create(reward_pot, self)
 
         local glist_betpot = self.GCoDesktopH:GetChild("ListBetPot").asList
-        local last_pot_index = self.ControllerDesktopH.DesktopHBase:getMaxBetpotIndex()
+        local last_pot_index = self.ControllerDesktopH.DesktopHModule:getMaxBetpotIndex()
 
         for i = 0, last_pot_index do
             local co_betpot = CS.FairyGUI.UIPackage.CreateObject(self:getDesktopBasePackageName(), self.UiDesktopHComDesktopHBetPotTitle .. i .. self.FactoryName).asCom

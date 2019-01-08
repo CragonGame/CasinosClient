@@ -1,61 +1,59 @@
 -- Copyright(c) Cragon. All rights reserved.
 
 ---------------------------------------
-DesktopHTexas = DesktopHBase:new(nil)
+DesktopHModuleTexas = class(DesktopHModuleBase)
 
----------------------------------------
-function DesktopHTexas:new(o, controller_desktoph, factory_name)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    o.Context = Context
-    o.ControllerDesktopH = controller_desktoph
-    o.FactoryName = factory_name
-    o.MapTbGoldPercent = {}
-    o.MaxTbGoldPercent = {}
-    o.ListOperate = {}
-    o.ListOperateId = {}
+function DesktopHModuleTexas:ctor(controller_desktoph, factory_name)
+    self.MapTbGoldPercent = {}
+    self.MaxTbGoldPercent = {}
+    self.ListOperate = {}
+    self.ListOperateId = {}
 
-    o:_setGoldPercent()
+    self.MapTbGoldPercent = self.Context.TbDataMgr:GetMapData("CfigTexasDesktopHGoldPercent")
+    local max_percent = 0
+    for k, v in pairs(self.MapTbGoldPercent) do
+        if (v.GoldPercent > max_percent) then
+            max_percent = v.GoldPercent
+            self.MaxTbGoldPercent = v
+        end
+    end
 
-    local map_tbdesktophoperate = o.Context.TbDataMgr:GetMapData("DesktopHBetOperateTexas")
+    local map_tbdesktophoperate = self.Context.TbDataMgr:GetMapData("DesktopHBetOperateTexas")
     for k, v in pairs(map_tbdesktophoperate) do
-        o.ListOperate[v] = v
+        self.ListOperate[v] = v
     end
 
-    for k, v in pairs(o.ListOperate) do
-        o.ListOperateId[v.Id] = v.Id
+    for k, v in pairs(self.ListOperate) do
+        self.ListOperateId[v.Id] = v.Id
     end
-
-    return o
 end
 
 ---------------------------------------
-function DesktopHTexas:OnDestroy()
+function DesktopHModuleTexas:OnDestroy()
 end
 
 ---------------------------------------
-function DesktopHTexas:OnHandleEvent(ev)
+function DesktopHModuleTexas:OnHandleEvent(ev)
 end
 
 ---------------------------------------
-function DesktopHTexas:InitDesktopH(desktoph_data)
+function DesktopHModuleTexas:InitDesktopH(desktoph_data)
 end
 
 ---------------------------------------
-function DesktopHTexas:refreshDesktopH(desktoph_data)
+function DesktopHModuleTexas:refreshDesktopH(desktoph_data)
 end
 
 ---------------------------------------
-function DesktopHTexas:SeatPlayerChanged(sitdown_data)
+function DesktopHModuleTexas:SeatPlayerChanged(sitdown_data)
 end
 
 ---------------------------------------
-function DesktopHTexas:BankPlayerChanged()
+function DesktopHModuleTexas:BankPlayerChanged()
 end
 
 ---------------------------------------
-function DesktopHTexas:DesktopHChat(msg)
+function DesktopHModuleTexas:DesktopHChat(msg)
     local m = ChatMsg:new(nil)
     m:setData(msg)
     if (CS.System.String.IsNullOrEmpty(m.sender_guid)) then
@@ -65,7 +63,7 @@ function DesktopHTexas:DesktopHChat(msg)
 end
 
 ---------------------------------------
-function DesktopHTexas:getMaxBetpotIndex()
+function DesktopHModuleTexas:getMaxBetpotIndex()
     local map_betpotindex = self.Context.TbDataMgr:GetMapData("DesktopHBetPotTexas")
     local l = LuaHelper:GetTableCount(map_betpotindex)
     --local sort_result = map_betpotindex.OrderByDescending(x => x.Key).ToList()
@@ -73,29 +71,29 @@ function DesktopHTexas:getMaxBetpotIndex()
 end
 
 ---------------------------------------
-function DesktopHTexas:getBetOperateId()
+function DesktopHModuleTexas:getBetOperateId()
     return self.ListOperateId
 end
 
 ---------------------------------------
-function DesktopHTexas:getMaxGoldPecent()
+function DesktopHModuleTexas:getMaxGoldPecent()
     return self.MaxTbGoldPercent.GoldPercent
 end
 
 ---------------------------------------
-function DesktopHTexas:getMaxCannotBetPecent()
+function DesktopHModuleTexas:getMaxCannotBetPecent()
     local bet_percent = TbDataHelper:GetCommonValue("DesktopHMaxBetPercentTexas")
     return bet_percent
 end
 
 ---------------------------------------
-function DesktopHTexas:getOperateGold(operate_id)
+function DesktopHModuleTexas:getOperateGold(operate_id)
     local bet_operate = self.Context.TbDataMgr:GetData("DesktopHBetOperateTexas", operate_id)
     return bet_operate.OperateGolds
 end
 
 ---------------------------------------
-function DesktopHTexas:getWinOrLoosePercent(card_type)
+function DesktopHModuleTexas:getWinOrLoosePercent(card_type)
     local percent = 0
     local type = CS.Casinos.LuaHelper.ProtobufDeserializeHandRankTypeTexasH(card_type)
     for k, v in pairs(self.MapTbGoldPercent) do
@@ -108,7 +106,7 @@ function DesktopHTexas:getWinOrLoosePercent(card_type)
 end
 
 ---------------------------------------
-function DesktopHTexas:getGameReusltTips(is_win, card_type_me, card_type_banker, self_betgolds)
+function DesktopHModuleTexas:getGameReusltTips(is_win, card_type_me, card_type_banker, self_betgolds)
     --local s = string.format('本人牌型=%s, 庄家牌型=%s', card_type_me, card_type_banker)
     --print(s)
 
@@ -127,35 +125,25 @@ function DesktopHTexas:getGameReusltTips(is_win, card_type_me, card_type_banker,
 end
 
 ---------------------------------------
-function DesktopHTexas:_setGoldPercent()
-    self.MapTbGoldPercent = self.Context.TbDataMgr:GetMapData("CfigTexasDesktopHGoldPercent")
-    local max_percent = 0
-    for k, v in pairs(self.MapTbGoldPercent) do
-        if (v.GoldPercent > max_percent) then
-            max_percent = v.GoldPercent
-            self.MaxTbGoldPercent = v
-        end
-    end
+function DesktopHModuleTexas:GetCardTypeStr(list_card)
+    local cardtype_texas = CS.Casinos.CardTypeHelperTexas.GetHandRankHTexas(list_card)
+    return CS.Casinos.LuaHelper.ParseHandRankTypeTexasHToStr(cardtype_texas)
 end
 
 ---------------------------------------
-DesktopHTexasFactory = {}
-
----------------------------------------
-function DesktopHTexasFactory:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
+function DesktopHModuleTexas:GetCardTypeByte(list_card)
+    local cardtype_texas = CS.Casinos.CardTypeHelperTexas.GetHandRankHTexas(list_card)
+    return CS.Casinos.LuaHelper.ParseHandRankTypeTexasHToNum(cardtype_texas)
 end
 
 ---------------------------------------
-function DesktopHTexasFactory:GetName()
+DesktopHModuleFactoryTexas = class(DesktopHModuleFactory)
+
+function DesktopHModuleFactoryTexas:GetName()
     return "Texas"
 end
 
----------------------------------------
-function DesktopHTexasFactory:CreateDesktop(controller_desktoph, factory_name)
-    local t = DesktopHTexas:new(nil, controller_desktoph, factory_name)
+function DesktopHModuleFactoryTexas:CreateModule(controller_desktoph, factory_name)
+    local t = DesktopHModuleTexas.new(controller_desktoph, factory_name)
     return t
 end        

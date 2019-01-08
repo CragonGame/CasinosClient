@@ -1,0 +1,86 @@
+-- Copyright(c) Cragon. All rights reserved.
+
+---------------------------------------
+DesktopHModuleBase = class()
+
+function DesktopHModuleBase:ctor(controller_desktoph, factory_name)
+    self.Context = Context
+    self.ControllerDesktopH = controller_desktoph
+    self.FactoryName = factory_name
+end
+
+---------------------------------------
+function DesktopHModuleBase:OnDestroy()
+end
+
+---------------------------------------
+function DesktopHModuleBase:OnHandleEvent(ev)
+end
+
+---------------------------------------
+function DesktopHModuleBase:InitDesktopH(desktoph_data)
+end
+
+---------------------------------------
+function DesktopHModuleBase:refreshDesktopH(desktoph_data)
+end
+
+---------------------------------------
+function DesktopHModuleBase:SeatPlayerChanged(sitdown_data)
+end
+
+---------------------------------------
+function DesktopHModuleBase:BankPlayerChanged()
+end
+
+---------------------------------------
+function DesktopHModuleBase:DesktopHChat(msg)
+end
+
+---------------------------------------
+function DesktopHModuleBase:getMaxBetpotIndex()
+end
+
+---------------------------------------
+function DesktopHModuleBase:getBetOperateId()
+end
+
+---------------------------------------
+function DesktopHModuleBase:getMaxGoldPecent()
+end
+
+---------------------------------------
+function DesktopHModuleBase:getMaxCannotBetPecent()
+end
+
+---------------------------------------
+function DesktopHModuleBase:getOperateGold(operate_id)
+end
+
+---------------------------------------
+function DesktopHModuleBase:getWinOrLoosePercent(card_type)
+end
+
+---------------------------------------
+function DesktopHModuleBase:getGameReusltTips(is_win, card_type_me, card_type_banker, self_betgolds)
+end
+
+---------------------------------------
+function DesktopHModuleBase:GetCardTypeStr(list_card)
+end
+
+---------------------------------------
+function DesktopHModuleBase:GetCardTypeByte(list_card)
+end
+
+---------------------------------------
+DesktopHModuleFactory = class()
+
+function DesktopHModuleFactory:ctor()
+end
+
+function DesktopHModuleFactory:GetName()
+end
+
+function DesktopHModuleFactory:CreateModule(controller_desktoph, factory_name)
+end        
