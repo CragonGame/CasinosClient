@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(FairyGUI.Container);
-			Utils.BeginObjectRegister(type, L, translator, 0, 22, 14, 13);
+			Utils.BeginObjectRegister(type, L, translator, 0, 21, 13, 12);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddChild", _m_AddChild);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddChildAt", _m_AddChildAt);
@@ -39,7 +39,6 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetBounds", _m_GetBounds);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetRenderCamera", _m_GetRenderCamera);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "HitTest", _m_HitTest);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetHitTestLocalPoint", _m_GetHitTestLocalPoint);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "IsAncestorOf", _m_IsAncestorOf);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "InvalidateBatchingState", _m_InvalidateBatchingState);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetChildrenLayer", _m_SetChildrenLayer);
@@ -51,7 +50,6 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "clipRect", _g_get_clipRect);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "mask", _g_get_mask);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "touchable", _g_get_touchable);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "contentRect", _g_get_contentRect);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "fairyBatching", _g_get_fairyBatching);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "renderMode", _g_get_renderMode);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "renderCamera", _g_get_renderCamera);
@@ -65,7 +63,6 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "clipRect", _s_set_clipRect);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "mask", _s_set_mask);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "touchable", _s_set_touchable);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "contentRect", _s_set_contentRect);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "fairyBatching", _s_set_fairyBatching);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "renderMode", _s_set_renderMode);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "renderCamera", _s_set_renderCamera);
@@ -650,34 +647,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetHitTestLocalPoint(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                FairyGUI.Container gen_to_be_invoked = (FairyGUI.Container)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetHitTestLocalPoint(  );
-                        translator.PushUnityEngineVector2(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_IsAncestorOf(RealStatePtr L)
         {
 		    try {
@@ -877,20 +846,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_contentRect(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                FairyGUI.Container gen_to_be_invoked = (FairyGUI.Container)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.contentRect);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_fairyBatching(RealStatePtr L)
         {
 		    try {
@@ -1057,22 +1012,6 @@ namespace XLua.CSObjectWrap
 			
                 FairyGUI.Container gen_to_be_invoked = (FairyGUI.Container)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.touchable = LuaAPI.lua_toboolean(L, 2);
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_contentRect(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                FairyGUI.Container gen_to_be_invoked = (FairyGUI.Container)translator.FastGetCSObj(L, 1);
-                UnityEngine.Rect gen_value;translator.Get(L, 2, out gen_value);
-				gen_to_be_invoked.contentRect = gen_value;
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

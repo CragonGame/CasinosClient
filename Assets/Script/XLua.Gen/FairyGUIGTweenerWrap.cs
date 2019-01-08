@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(FairyGUI.GTweener);
-			Utils.BeginObjectRegister(type, L, translator, 0, 19, 12, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 20, 12, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetDelay", _m_SetDelay);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetDuration", _m_SetDuration);
@@ -33,6 +33,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetTimeScale", _m_SetTimeScale);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetIgnoreEngineTimeScale", _m_SetIgnoreEngineTimeScale);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetSnapping", _m_SetSnapping);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetPath", _m_SetPath);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetTarget", _m_SetTarget);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetUserData", _m_SetUserData);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnUpdate", _m_OnUpdate);
@@ -395,6 +396,35 @@ namespace XLua.CSObjectWrap
                     bool _value = LuaAPI.lua_toboolean(L, 2);
                     
                         FairyGUI.GTweener gen_ret = gen_to_be_invoked.SetSnapping( _value );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetPath(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                FairyGUI.GTweener gen_to_be_invoked = (FairyGUI.GTweener)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    FairyGUI.GPath _value = (FairyGUI.GPath)translator.GetObject(L, 2, typeof(FairyGUI.GPath));
+                    
+                        FairyGUI.GTweener gen_ret = gen_to_be_invoked.SetPath( _value );
                         translator.Push(L, gen_ret);
                     
                     

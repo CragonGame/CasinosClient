@@ -21,8 +21,10 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(FairyGUI.NTexture);
-			Utils.BeginObjectRegister(type, L, translator, 0, 5, 11, 5);
+			Utils.BeginObjectRegister(type, L, translator, 0, 7, 13, 5);
 			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetDrawRect", _m_GetDrawRect);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetUV", _m_GetUV);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetMaterialManager", _m_GetMaterialManager);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "DestroyMaterialManager", _m_DestroyMaterialManager);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Unload", _m_Unload);
@@ -32,6 +34,8 @@ namespace XLua.CSObjectWrap
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "width", _g_get_width);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "height", _g_get_height);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "offset", _g_get_offset);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "originalSize", _g_get_originalSize);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "root", _g_get_root);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "disposed", _g_get_disposed);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "nativeTexture", _g_get_nativeTexture);
@@ -112,6 +116,19 @@ namespace XLua.CSObjectWrap
                     
 					return 1;
 				}
+				if(LuaAPI.lua_gettop(L) == 6 && translator.Assignable<FairyGUI.NTexture>(L, 2) && translator.Assignable<UnityEngine.Rect>(L, 3) && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 4) && translator.Assignable<UnityEngine.Vector2>(L, 5) && translator.Assignable<UnityEngine.Vector2>(L, 6))
+				{
+					FairyGUI.NTexture _root = (FairyGUI.NTexture)translator.GetObject(L, 2, typeof(FairyGUI.NTexture));
+					UnityEngine.Rect _region;translator.Get(L, 3, out _region);
+					bool _rotated = LuaAPI.lua_toboolean(L, 4);
+					UnityEngine.Vector2 _originalSize;translator.Get(L, 5, out _originalSize);
+					UnityEngine.Vector2 _offset;translator.Get(L, 6, out _offset);
+					
+					FairyGUI.NTexture gen_ret = new FairyGUI.NTexture(_root, _region, _rotated, _originalSize, _offset);
+					translator.Push(L, gen_ret);
+                    
+					return 1;
+				}
 				
 			}
 			catch(System.Exception gen_e) {
@@ -139,6 +156,63 @@ namespace XLua.CSObjectWrap
                 {
                     
                     FairyGUI.NTexture.DisposeEmpty(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetDrawRect(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                FairyGUI.NTexture gen_to_be_invoked = (FairyGUI.NTexture)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    UnityEngine.Rect _drawRect;translator.Get(L, 2, out _drawRect);
+                    
+                        UnityEngine.Rect gen_ret = gen_to_be_invoked.GetDrawRect( _drawRect );
+                        translator.Push(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetUV(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                FairyGUI.NTexture gen_to_be_invoked = (FairyGUI.NTexture)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    UnityEngine.Vector2[] _uv = (UnityEngine.Vector2[])translator.GetObject(L, 2, typeof(UnityEngine.Vector2[]));
+                    
+                    gen_to_be_invoked.GetUV( _uv );
                     
                     
                     
@@ -343,6 +417,34 @@ namespace XLua.CSObjectWrap
 			
                 FairyGUI.NTexture gen_to_be_invoked = (FairyGUI.NTexture)translator.FastGetCSObj(L, 1);
                 LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.height);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_offset(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                FairyGUI.NTexture gen_to_be_invoked = (FairyGUI.NTexture)translator.FastGetCSObj(L, 1);
+                translator.PushUnityEngineVector2(L, gen_to_be_invoked.offset);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_originalSize(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                FairyGUI.NTexture gen_to_be_invoked = (FairyGUI.NTexture)translator.FastGetCSObj(L, 1);
+                translator.PushUnityEngineVector2(L, gen_to_be_invoked.originalSize);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
