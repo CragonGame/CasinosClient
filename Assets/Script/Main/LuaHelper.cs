@@ -17,17 +17,6 @@ namespace Casinos
         static Texture2D T2D;
 
         //---------------------------------------------------------------------
-        public static string readAllText(string path)
-        {
-            string all_text = string.Empty;
-            if (File.Exists(path))
-            {
-                all_text = File.ReadAllText(path);
-            }
-            return all_text;
-        }
-
-        //---------------------------------------------------------------------
         public static GComponent GObjectCastToGCom(GObject obj)
         {
             return (GComponent)obj;
@@ -53,18 +42,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static DisplayObject getDisObj(GObject obj)
-        {
-            return obj.displayObject;
-        }
-
-        //---------------------------------------------------------------------
-        public static GameObject getGameObj(GObject obj)
-        {
-            return obj.displayObject.gameObject;
-        }
-
-        //---------------------------------------------------------------------
         public static Texture UnityObjectCastToTexture(UnityEngine.Object obj, bool need_movemipmap = false)
         {
             T2D = null;
@@ -82,15 +59,6 @@ namespace Casinos
             }
 
             return T2D;
-        }
-
-        //---------------------------------------------------------------------
-        public static void deleteFile(string path)
-        {
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-            }
         }
 
         //---------------------------------------------------------------------

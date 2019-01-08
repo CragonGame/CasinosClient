@@ -31,15 +31,11 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 66, 0, 0);
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "readAllText", _m_readAllText_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GObjectCastToGCom", _m_GObjectCastToGCom_xlua_st_);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 62, 0, 0);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "GObjectCastToGCom", _m_GObjectCastToGCom_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetVector2", _m_GetVector2_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetVector3", _m_GetVector3_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "getDisObj", _m_getDisObj_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "getGameObj", _m_getGameObj_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "UnityObjectCastToTexture", _m_UnityObjectCastToTexture_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "deleteFile", _m_deleteFile_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "spliteStr", _m_spliteStr_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "insertToStr", _m_insertToStr_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "formatNumToStr", _m_formatNumToStr_xlua_st_);
@@ -118,31 +114,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_readAllText_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    
-                        string gen_ret = Casinos.LuaHelper.readAllText( _path );
-                        LuaAPI.lua_pushstring(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_GObjectCastToGCom_xlua_st_(RealStatePtr L)
@@ -229,60 +200,6 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_getDisObj_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    FairyGUI.GObject _obj = (FairyGUI.GObject)translator.GetObject(L, 1, typeof(FairyGUI.GObject));
-                    
-                        FairyGUI.DisplayObject gen_ret = Casinos.LuaHelper.getDisObj( _obj );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_getGameObj_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    FairyGUI.GObject _obj = (FairyGUI.GObject)translator.GetObject(L, 1, typeof(FairyGUI.GObject));
-                    
-                        UnityEngine.GameObject gen_ret = Casinos.LuaHelper.getGameObj( _obj );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_UnityObjectCastToTexture_xlua_st_(RealStatePtr L)
         {
 		    try {
@@ -322,30 +239,6 @@ namespace XLua.CSObjectWrap
             }
             
             return LuaAPI.luaL_error(L, "invalid arguments to Casinos.LuaHelper.UnityObjectCastToTexture!");
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_deleteFile_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    string _path = LuaAPI.lua_tostring(L, 1);
-                    
-                    Casinos.LuaHelper.deleteFile( _path );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
             
         }
         
