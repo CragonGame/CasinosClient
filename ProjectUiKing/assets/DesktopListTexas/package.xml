@@ -19,6 +19,8 @@
     <component id="jy7tf" name="ComTabListFriendItem.xml" path="/Component/"/>
     <component id="jy7tg" name="ComTabListNormalItem.xml" path="/Component/"/>
     <component id="jy7th" name="ComIconMini.xml" path="/Component/"/>
+    <image id="hlcoi" name="DeskSitPoint.png" path="/Image/"/>
+    <image id="hlcoj" name="ItemBg.png" path="/Image/"/>
   </resources>
   <publish name="DesktopListTexas" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DesktopListTexas"/>
 </packageDescription>

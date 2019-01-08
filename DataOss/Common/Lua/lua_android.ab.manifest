@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1542465310
+CRC: 222992581
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4d87e371f10aa72a41ce3946af8d9b6f
+    Hash: f14e86df9c0545f34780c5e1eb14ef68
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -350,7 +350,6 @@ Assets:
 - Assets/Script.Lua/Model/ModelIM.txt
 - Assets/Script.Lua/Other/GoldController.txt
 - Assets/Script.Lua/View/Item/ItemChatEx.txt
-- Assets/Script.Lua/View/ViewGetChipEffect.txt
 - Assets/Script.Lua/View/Item/ItemRank.txt
 - Assets/Script.Lua/View/Item/ItemGift.txt
 - Assets/Script.Lua/View/ViewFriend.txt

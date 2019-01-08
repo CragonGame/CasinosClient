@@ -561,7 +561,7 @@ function DesktopTexas:DesktopUser(info_user)
         self.MeAllCard = {}
         self.CommunityCards = {}
         self.CurrentRountMaxBet = 0
-        self.DesktopTypeBase:preflopBegin()
+        self.DesktopTypeBase:PreflopBegin()
 
         for k, v in pairs(self.AllSeat) do
             if (v.player_texas ~= nil) then
@@ -576,7 +576,7 @@ function DesktopTexas:DesktopUser(info_user)
                     local p_d = v
                     local player = self.MapPlayerTexas[p_d.player_guid]
                     if (player ~= nil) then
-                        player:preflopBegin()
+                        player:PreflopBegin()
                         player.PlayerDataDesktop.Stack = p_d.stack
                         player:onPropStackChanged()
                     end
@@ -1048,7 +1048,7 @@ function DesktopTexas:requestPlayerWaitWhile()
 end
 
 ---------------------------------------
-function DesktopTexas:requestPlayerReturn(chip)
+function DesktopTexas:RequestPlayerReturn(chip)
     self.ControllerDesktop:RequestPlayerReturn(chip)
 end
 

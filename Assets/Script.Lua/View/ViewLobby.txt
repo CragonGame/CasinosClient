@@ -65,7 +65,7 @@ function ViewLobby:OnCreate()
     local btn_friend = self.ComUi:GetChild("BtnFriend").asButton
     btn_friend.onClick:Add(
             function()
-                self:onClickBtnFriend()
+                self:_onClickBtnFriend()
             end
     )
     local btn_bet = self.ComUi:GetChild("BtnBet").asButton
@@ -347,7 +347,7 @@ function ViewLobby:onClickBtnPersonInfo()
 end
 
 ---------------------------------------
-function ViewLobby:onClickBtnFriend()
+function ViewLobby:_onClickBtnFriend()
     self.ControllerFriendOrBet:SetSelectedIndex(0)
     self:RefreshPlayingFriend()
 end

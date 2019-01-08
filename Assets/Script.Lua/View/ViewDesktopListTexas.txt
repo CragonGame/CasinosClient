@@ -454,7 +454,7 @@ function ViewDesktopListTexas:onClickBtnPersonInfo()
 end
 
 ---------------------------------------
-function ViewDesktopListTexas:onClickBtnFriend()
+function ViewDesktopListTexas:_onClickBtnFriend()
     self.ControllerFriendOrBet:SetSelectedIndex(0)
     self:RefreshPlayingFriend()
 end

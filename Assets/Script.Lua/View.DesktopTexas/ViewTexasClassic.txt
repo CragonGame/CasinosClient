@@ -72,7 +72,7 @@ function ViewTexasClassic:setSnapShot(snapshot, is_init)
 end
 
 ---------------------------------------
-function ViewTexasClassic:preflopBegin()
+function ViewTexasClassic:PreflopBegin()
 end
 
 ---------------------------------------

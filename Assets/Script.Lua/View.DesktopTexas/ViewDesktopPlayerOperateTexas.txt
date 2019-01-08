@@ -301,7 +301,7 @@ function ViewDesktopPlayerOperateTexas:isMeTurn(turn_data, auto_show_operate, t_
 end
 
 ---------------------------------------
-function ViewDesktopPlayerOperateTexas:preflopBegin()
+function ViewDesktopPlayerOperateTexas:PreflopBegin()
     self.CanShowOperate = false
     ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)
     ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)

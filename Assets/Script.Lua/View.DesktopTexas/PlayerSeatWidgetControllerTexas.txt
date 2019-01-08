@@ -421,7 +421,7 @@ function PlayerSeatWidgetControllerTexas:resetSeatIndex()
 end
 
 ---------------------------------------
-function PlayerSeatWidgetControllerTexas:preflopBegin()
+function PlayerSeatWidgetControllerTexas:PreflopBegin()
     self.IsGameEnd = false
     self.AlreadyGetWinGold = false
     self.AlreadyGoldInPot = false

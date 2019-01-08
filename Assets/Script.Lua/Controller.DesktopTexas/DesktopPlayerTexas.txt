@@ -160,7 +160,7 @@ function DesktopPlayerTexas:deskIdle()
 end
 
 ---------------------------------------
-function DesktopPlayerTexas:preflopBegin()
+function DesktopPlayerTexas:PreflopBegin()
     self.PlayerDataDesktop.PlayerActionType = PlayerActionTypeTexas.None
     self.ShowCardState = TexasPlayerShowCardState.None
     self.PlayerDataDesktop.CurrentTotalBet = 0
@@ -170,11 +170,11 @@ function DesktopPlayerTexas:preflopBegin()
     self.SecondCard = nil
 
     if (self.PlayerOperate ~= nil) then
-        self.PlayerOperate:preflopBegin()
+        self.PlayerOperate:PreflopBegin()
     end
 
     if (self.UiDesktopPlayerInfo ~= nil) then
-        self.UiDesktopPlayerInfo:preflopBegin()
+        self.UiDesktopPlayerInfo:PreflopBegin()
     end
 end
 

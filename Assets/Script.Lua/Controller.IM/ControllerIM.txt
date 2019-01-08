@@ -406,8 +406,8 @@ function ControllerIM:SetMainUiIMInfo()
     local view_main = self.ViewMgr:GetView("Main")
     if (view_main ~= nil) then
         view_main:SetFriendInfo(self.IMFriendList.MapFriendList)
-        view_main:setRecommandFriendInfo(self.IMFriendList.ListRecommendPlayer)
-        view_main:setNewChatCount(self.IMChat:getAllNewChatCount())
+        view_main:SetRecommandFriendInfo(self.IMFriendList.ListRecommendPlayer)
+        view_main:SetNewChatCount(self.IMChat:getAllNewChatCount())
     end
 end
 

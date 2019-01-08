@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 3420493602
+CRC: 637503438
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: desktoplisttexas.ab
+      Name: friend.ab
       Dependencies: {}

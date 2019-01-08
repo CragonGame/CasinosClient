@@ -245,7 +245,7 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
 end
 
 ---------------------------------------
-function DesktopTexasMTT:preflopBegin()
+function DesktopTexasMTT:PreflopBegin()
     self.CanUpdateT = true
 end
 

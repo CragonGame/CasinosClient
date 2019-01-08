@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="864,536">
   <displayList>
-    <list id="n0_jy7t" name="List" xy="0,73" size="864,454" overflow="scroll" defaultItem="ui://g7gsod07jy7tf">
+    <list id="n0_jy7t" name="List" xy="0,73" size="864,456" overflow="scroll" defaultItem="ui://g7gsod07jy7tf">
       <relation target="" sidePair="width-width,height-height"/>
       <item/>
       <item/>

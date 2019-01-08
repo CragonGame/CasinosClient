@@ -703,7 +703,7 @@ function ViewDesktopTexas:_preflopBegin(pot_total, list_pot)
     self.UiPot:resetPot()
     self.UiPot:setSnapShotData(pot_total, list_pot)
     self:_dealCard()
-    self.ViewDesktopTypeBase:preflopBegin()
+    self.ViewDesktopTypeBase:PreflopBegin()
 end
 
 ---------------------------------------

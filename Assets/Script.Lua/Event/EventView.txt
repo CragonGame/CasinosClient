@@ -49,17 +49,17 @@ function EvUiReportFriend:Reset()
 end
 
 ---------------------------------------
-EvUiCloseActivityPopupBox = EventBase:new(nil)
+EvUiCloseActivityPopup = EventBase:new(nil)
 
-function EvUiCloseActivityPopupBox:new(o)
+function EvUiCloseActivityPopup:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    self.EventName = "EvUiCloseActivityPopupBox"
+    self.EventName = "EvUiCloseActivityPopup"
     return o
 end
 
-function EvUiCloseActivityPopupBox:Reset()
+function EvUiCloseActivityPopup:Reset()
 end
 
 ---------------------------------------

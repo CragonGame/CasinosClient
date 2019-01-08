@@ -32,7 +32,7 @@ function ControllerPlayer:OnCreate()
     self.ViewMgr:BindEvListener("EvCreateGiftShop", self)
     self.ViewMgr:BindEvListener("EvRequestGetPlayerModuleData", self)
     self.ViewMgr:BindEvListener("EvUiChangeLan", self)
-    self.ViewMgr:BindEvListener("EvUiCloseActivityPopupBox", self)
+    self.ViewMgr:BindEvListener("EvUiCloseActivityPopup", self)
     self.ViewMgr:BindEvListener("EvUiRequestGetReceiverAddress", self)
     self.ViewMgr:BindEvListener("EvUiRequestEditReceiverAddress", self)
     self.ViewMgr:BindEvListener("EvConsoleCmd", self)
@@ -249,9 +249,9 @@ function ControllerPlayer:OnHandleEv(ev)
     elseif (ev.EventName == "EvUiChangeLan") then
         ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("ChangeLaning"), 10)
         self.Rpc:RPC1(self.MethodType.PlayerChangeLanRequest, ev.lan)
-    elseif (ev.EventName == "EvUiCloseActivityPopupBox") then
+    elseif (ev.EventName == "EvUiCloseActivityPopup") then
         CS.UnityEngine.PlayerPrefs.SetString(self.ControllerActivity.CurrentActID, "true")
-        self:CreateViewActivityPopupBox()
+        self:CreateViewActivityPopup()
     elseif (ev.EventName == "EvUiRequestGetReceiverAddress") then
         self:RequestGetAddress()
     elseif (ev.EventName == "EvUiRequestEditReceiverAddress") then
@@ -615,7 +615,7 @@ function ControllerPlayer:CreateMainUi()
     self.CasinosContext:Play(bgm, CS.Casinos._eSoundLayer.Background)
     local view_main = self.ViewMgr:CreateView("Main")
     view_main:SetPlayerInfo()
-    view_main:setOnlineNum(self.OnlinePlayerNum)
+    view_main:SetOnlineNum(self.OnlinePlayerNum)
 
     local ev = self:GetEv("EvCtrlOnViewMainCreated")
     if (ev == nil) then
@@ -720,16 +720,16 @@ function ControllerPlayer:ShowHotActivity()
                 table.insert(self.QueneHotActivity, temp)
             end
         end
-        self:CreateViewActivityPopupBox()
+        self:CreateViewActivityPopup()
     end
 end
 
 ---------------------------------------
-function ControllerPlayer:CreateViewActivityPopupBox()
+function ControllerPlayer:CreateViewActivityPopup()
     if (#self.QueneHotActivity > 0) then
         local temp = table.remove(self.QueneHotActivity, 1)
-        local view_activitypopupbox = self.ViewMgr:CreateView("ActivityPopup")
-        view_activitypopupbox:SetActivityInfo(temp)
+        local view_activitypopup = self.ViewMgr:CreateView("ActivityPopup")
+        view_activitypopup:SetActivityInfo(temp)
     end
 end
 

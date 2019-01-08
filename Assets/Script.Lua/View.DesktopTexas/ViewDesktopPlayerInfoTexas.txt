@@ -649,7 +649,7 @@ function ViewDesktopPlayerInfoTexas:dealCardDone()
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:preflopBegin()
+function ViewDesktopPlayerInfoTexas:PreflopBegin()
     self.IsGameEnd = false
     self.IsShowDown = false
     self.FirstCard = nil
@@ -659,7 +659,7 @@ function ViewDesktopPlayerInfoTexas:preflopBegin()
     self.ListPlayerCard:Clear()
 
     if (self.PlayerSeatWidgetControllerEx ~= nil) then
-        self.PlayerSeatWidgetControllerEx:preflopBegin()
+        self.PlayerSeatWidgetControllerEx:PreflopBegin()
     end
 
     self:_resetPlayerInfo()

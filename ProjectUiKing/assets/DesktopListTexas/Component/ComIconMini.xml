@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="48,48">
+<component size="36,36">
   <controller name="State" pages="1,None,0,Icon" selected="0"/>
   <displayList>
-    <loader id="n0_jy7t" name="LoaderIcon" xy="0,0" size="48,48" align="center" vAlign="middle" fill="scaleFree">
+    <loader id="n0_jy7t" name="LoaderIcon" xy="0,0" size="36,36" url="ui://g7gsod07hlcoi" align="center" vAlign="middle" fill="scaleFree">
       <gearDisplay controller="State" pages="0"/>
+      <relation target="" sidePair="width-width,height-height"/>
     </loader>
-    <graph id="n1_jy7t" name="ImgIcon" xy="0,0" size="48,48" type="rect" lineColor="#b31d2052" fillColor="#801d2052">
+    <graph id="n2_hlco" name="ImgIcon" xy="0,0" size="36,36" type="eclipse" lineColor="#ff1d2052" fillColor="#d91d2052">
       <gearDisplay controller="State" pages="1"/>
+      <relation target="" sidePair="width-width,height-height"/>
     </graph>
   </displayList>
 </component>

@@ -150,7 +150,7 @@ function ViewTexasMTT:setSnapShot(snapshot, is_init)
 end
 
 ---------------------------------------
-function ViewTexasMTT:preflopBegin()
+function ViewTexasMTT:PreflopBegin()
     self:_showRebuyAndAddonBtnAndRealTimeInfo()
     local current_blindid = self.MatchTexas.RealtimeInfo.CurrentRaiseBlindTbId
     local t_blind = TbDataHelper:GetTexasRaiseBlindByTypeAndId(self.MatchTexas.RaiseBlindTbInfo.BlindType, current_blindid)
