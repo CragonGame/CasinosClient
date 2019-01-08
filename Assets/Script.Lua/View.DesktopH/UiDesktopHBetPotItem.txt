@@ -139,15 +139,10 @@ function UiDesktopHBetPotItem:_showCardEnd(map_param)
     self.GLoaderCardType.icon = cardtype_info.CardTypePath
 
     if (self.ViewDesktopH.ControllerDesktopH.IsBankPlayer == false) then
-        local self_betresult = self.ViewDesktopH.ViewMgr.LanMgr:getLanValue("NotBet")
         if (self.IsWin) then
-            --self_betresult = self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getGameReusltTips(self.DesktopHundredCards:getCardTypeByte(), self.SelfBetChips)
             color = CS.UnityEngine.Color.yellow
-        else
-            --self_betresult = self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getGameReusltTips(self.ViewDesktopH.UiDesktopHBanker:getHandRankByte(), self.SelfBetChips)
         end
-
-        self.GTextBetChipsSelf.text = self_betresult
+        self.GTextBetChipsSelf.text = self.ViewDesktopH.ControllerDesktopH.DesktopHBase:getGameReusltTips(self.IsWin, self.DesktopHundredCards:getCardTypeByte(), self.ViewDesktopH.UiDesktopHBanker:getHandRankByte(), self.SelfBetChips)
         self.GTextBetChipsSelf.color = color
     end
 

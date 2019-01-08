@@ -54,10 +54,10 @@ Resources.KingTexas/Audio/allin_girl.ab 394A441FA64D47AC12BE75EB52FA23C1
 Resources.KingTexas/Audio/allin_girl.ab.manifest 8126D77CCBCF51401A2A887DC88A46E0
 Resources.KingTexas/Audio/allwin.ab 79E607DEF2994852048CE27C75E916DB
 Resources.KingTexas/Audio/allwin.ab.manifest 76E8C86C45872F162BF4621D8A24ACC9
-Resources.KingTexas/Audio/allwineffect.ab 163722F3FA2A4B189648A7C6AFEE7E41
-Resources.KingTexas/Audio/allwineffect.ab.manifest E7FAB6AFB29C5982BB4446B6345AD2FE
-Resources.KingTexas/Audio/Audio 44F5861FE6A7356AE61939F059771084
-Resources.KingTexas/Audio/Audio.manifest CF244A569CFB117F95E4AFF6A2571998
+Resources.KingTexas/Audio/allwineffect.ab C7380564BECDC22B0A1A142428D3D786
+Resources.KingTexas/Audio/allwineffect.ab.manifest D51683CBFF8FF581E6DEAD7A239E4F6E
+Resources.KingTexas/Audio/Audio 1204ED0339C7F05283DB22775C3A846F
+Resources.KingTexas/Audio/Audio.manifest FB81642F80FD275157ECD2CF76924E5B
 Resources.KingTexas/Audio/background.ab D97D7227DF8FB5CDBD65633297318C73
 Resources.KingTexas/Audio/background.ab.manifest D925B31B4D261A65DCEE18ADF0C88F37
 Resources.KingTexas/Audio/bet_1.ab B6A11117DDE73ED8769AFAC57884BCC2

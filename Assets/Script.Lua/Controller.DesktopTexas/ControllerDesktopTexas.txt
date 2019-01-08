@@ -319,8 +319,7 @@ function ControllerDesktopTexas:OnMatchTexasGameOverNotify(r)
     if game_over.Result == ProtocolResult.Success then
         local view_mgr = self.ViewMgr
         local ev = view_mgr:GetEv("EvEntityMatchGameOver")
-        if (ev == nil)
-        then
+        if (ev == nil) then
             ev = EvEntityMatchGameOver:new(nil)
         end
         ev.game_over = game_over

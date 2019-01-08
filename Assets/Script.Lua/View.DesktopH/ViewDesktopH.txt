@@ -90,29 +90,29 @@ end
 
 ---------------------------------------
 function ViewDesktopH:OnCreate()
-    self.ViewMgr:BindEvListener("EvEntityDesktopHBetOperateTypeChange", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHCurrentBetOperateTypeChange", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHBet", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHUpdateBetPotBetInfo", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHBetFailed", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBankerPlayer", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHBankerPlayerGoldChange", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHChangeSeatPlayer", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHSeatPlayerGoldChanged", self)
-    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:BindEvListener("EvEntityRecvChatFromDesktopH", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHReadyState", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHBetState", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHGameEndState", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHGameRestState", self)
-    self.ViewMgr:BindEvListener("EvEntityDesktopHBuyItem", self)
-    self.ViewMgr:BindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
-    self.ViewMgr:BindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
-    self.ViewMgr:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
-    self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
-    self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
-    self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
-    self.ViewMgr:BindEvListener("EvCtrlRedPointStateChange", self)
+    self:BindEvListener("EvEntityDesktopHBetOperateTypeChange", self)
+    self:BindEvListener("EvEntityDesktopHCurrentBetOperateTypeChange", self)
+    self:BindEvListener("EvEntityDesktopHBet", self)
+    self:BindEvListener("EvEntityDesktopHUpdateBetPotBetInfo", self)
+    self:BindEvListener("EvEntityDesktopHBetFailed", self)
+    self:BindEvListener("EvEntityDesktopHChangeBankerPlayer", self)
+    self:BindEvListener("EvEntityDesktopHBankerPlayerGoldChange", self)
+    self:BindEvListener("EvEntityDesktopHChangeSeatPlayer", self)
+    self:BindEvListener("EvEntityDesktopHSeatPlayerGoldChanged", self)
+    self:BindEvListener("EvEntityGoldChanged", self)
+    self:BindEvListener("EvEntityRecvChatFromDesktopH", self)
+    self:BindEvListener("EvEntityDesktopHReadyState", self)
+    self:BindEvListener("EvEntityDesktopHBetState", self)
+    self:BindEvListener("EvEntityDesktopHGameEndState", self)
+    self:BindEvListener("EvEntityDesktopHGameRestState", self)
+    self:BindEvListener("EvEntityDesktopHBuyItem", self)
+    self:BindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
+    self:BindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
+    self:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
+    self:BindEvListener("EvEntityReceiveFriendSingleChat", self)
+    self:BindEvListener("EvEntityReceiveFriendChats", self)
+    self:BindEvListener("EvEntityUnreadChatsChanged", self)
+    self:BindEvListener("EvCtrlRedPointStateChange", self)
 
     local controller_mgr = ControllerMgr
     self.ControllerPlayer = controller_mgr:GetController("Player")
@@ -186,7 +186,7 @@ function ViewDesktopH:OnCreate()
     com_tongsha.height = self.ComUi.height
     self.ViewMgr.LanMgr:parseComponent(com_tongsha)
     desktoph_topparent:AddChild(com_tongsha)
-    self.UiDesktopHTongSha = UiDesktopHTongSha:new(com_tongsha)
+    self.UiDesktopHTongSha = UiDesktopHTongSha:new(com_tongsha, self)
     local com_tongpei = CS.FairyGUI.UIPackage.CreateObject(self.TongPeiPackName, self.TongPeiPackName).asCom
     com_tongpei.width = self.ComUi.width
     com_tongpei.height = self.ComUi.height
@@ -660,6 +660,11 @@ function ViewDesktopH:InitDesktopH(desktoph_data, map_my_betinfo, map_my_winloos
     end
     self:_setNewChatCount(self.ControllerIM.IMChat:getAllNewChatCount())
     self:RefreshRedPointRewardState()
+end
+
+---------------------------------------
+function ViewDesktopH:PlaySound(sound_name)
+    self.ControllerDesktopH.DesktopHSound:Play(sound_name)
 end
 
 ---------------------------------------

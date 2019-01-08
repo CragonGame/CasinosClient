@@ -1,4 +1,8 @@
 -- Copyright(c) Cragon. All rights reserved.
+require('DesktopHBase')
+require('DesktopHChipPool')
+require('DesktopHSound')
+require('DesktopHTexas')
 
 ---------------------------------------
 ControllerDesktopH = class(ControllerBase)
@@ -7,30 +11,9 @@ ControllerDesktopH = class(ControllerBase)
 function ControllerDesktopH:ctor(controller_data, controller_name)
     self.QueBetpotWinLooseResultCount = 10
     self.Guid = controller_data-- 本人PlayerGuid
-end
-
----------------------------------------
-function ControllerDesktopH:OnCreate()
-    self.ViewMgr:BindEvListener("EvViewClickDesktopH", self)
-    self.ViewMgr:BindEvListener("EvViewClickLeaveDesktopH", self)
-    self.ViewMgr:BindEvListener("EvViewDesktopHClickBetOperateType", self)
-    self.ViewMgr:BindEvListener("EvViewDesktopHSitdown", self)
-    self.ViewMgr:BindEvListener("EvViewDesktopHStandup", self)
-    self.ViewMgr:BindEvListener("EvDesktopHClickBeBankPlayerBtn", self)
-    self.ViewMgr:BindEvListener("EvEntityRequestGetDesktopHData", self)
-    self.ViewMgr:BindEvListener("EvDesktopHClickStandPlayerBtn", self)
-    self.ViewMgr:BindEvListener("EvDesktopHundredChangeCardsType", self)
-    self.ViewMgr:BindEvListener("EvDesktopHClickRewardPotBtn", self)
-    self.ViewMgr:BindEvListener("EvDesktopHGetBetReward", self)
-    self.ViewMgr:BindEvListener("EvDesktopHInitBetReward", self)
-    self.ViewMgr:BindEvListener("EvDesktopHBet", self)
-    self.ViewMgr:BindEvListener("EvDesktopHRepeatBet", self)
-    self.ViewMgr:BindEvListener("EvUiSendMsg", self)
-    self.ViewMgr:BindEvListener("EvUiSetUnSendDesktopMsg", self)
-    self.ViewMgr:BindEvListener("EvEntityGoldChanged", self)
-    self.ViewMgr:BindEvListener("EvEntityPlayerEnterDesktop", self)
-    self.ControllerActor = self.ControllerMgr:GetController("Actor")
-    self.CasinosContext = CS.Casinos.CasinosContext.Instance
+    self.DesktopHSound = nil
+    self.DesktopHChipPool = nil
+    self.DesktopHGuid = ""
     self.MapBetPotSelfBetGolds = {}
     self.MapBetPotStandPlayerBetGolds = {}
     self.MapBetPotStandPlayerBetDeltaGolds = {}
@@ -38,21 +21,34 @@ function ControllerDesktopH:OnCreate()
     self.MapCurrentRoundSelfBetInfo = {}
     self.IsBankPlayer = false
     self.SeatIndex = 255
-    local operate_id = -1
-    if (CS.UnityEngine.PlayerPrefs.HasKey("CurrentTbBetOperateIdDesktopH")) then
-        operate_id = CS.UnityEngine.PlayerPrefs.GetInt("CurrentTbBetOperateIdDesktopH")
-    end
-    self.CurrentTbBetOperateId = operate_id
     self.MapBetPotWinlooseRecord = {}
     self.MapCanOperateId = {}
     self.ListBeBankPlayer = {}
     self.MapSeatPlayer = {}
     self.ListDesktopChat = {}
-    self.DesktopHGuid = ""
-    self.MapDesktopHBaseFac = {}
-    self:regDesktopHBaseFactory(DesktopHTexasFactory:new(nil))
-    self.MapDesktopHCardTypeBaseFac = {}
-    self:regDesktopHCardTypeBaseFactory(DesktopHCardTypeTexasFac:new(nil))
+end
+
+---------------------------------------
+function ControllerDesktopH:OnCreate()
+    self:BindEvListener("EvViewClickDesktopH", self)
+    self:BindEvListener("EvViewClickLeaveDesktopH", self)
+    self:BindEvListener("EvViewDesktopHClickBetOperateType", self)
+    self:BindEvListener("EvViewDesktopHSitdown", self)
+    self:BindEvListener("EvViewDesktopHStandup", self)
+    self:BindEvListener("EvDesktopHClickBeBankPlayerBtn", self)
+    self:BindEvListener("EvEntityRequestGetDesktopHData", self)
+    self:BindEvListener("EvDesktopHClickStandPlayerBtn", self)
+    self:BindEvListener("EvDesktopHundredChangeCardsType", self)
+    self:BindEvListener("EvDesktopHClickRewardPotBtn", self)
+    self:BindEvListener("EvDesktopHGetBetReward", self)
+    self:BindEvListener("EvDesktopHInitBetReward", self)
+    self:BindEvListener("EvDesktopHBet", self)
+    self:BindEvListener("EvDesktopHRepeatBet", self)
+    self:BindEvListener("EvUiSendMsg", self)
+    self:BindEvListener("EvUiSetUnSendDesktopMsg", self)
+    self:BindEvListener("EvEntityGoldChanged", self)
+    self:BindEvListener("EvEntityPlayerEnterDesktop", self)
+
     local m_c = MethodType
     self.Rpc:RegRpcMethod3(m_c.DesktopHNotifySnapshot, function(desktoph_snapshot, map_my_betinfo, map_my_winlooseinfo)
         self:S2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_betinfo, map_my_winlooseinfo)
@@ -144,10 +140,27 @@ function ControllerDesktopH:OnCreate()
     self.Rpc:RegRpcMethod3(m_c.DesktopHResponseGetDailyBetReward, function(result, reward_gold, bet_reward)
         self:S2cDesktopHResponseGetDailyBetReward(result, reward_gold, bet_reward)
     end)
+
+    self.ControllerActor = self.ControllerMgr:GetController("Actor")
+    self.DesktopHSound = DesktopHSound:new(nil, self)
+    self.DesktopHChipPool = DesktopHChipPool:new(nil, self)
+    local operate_id = -1
+    if (CS.UnityEngine.PlayerPrefs.HasKey("CurrentTbBetOperateIdDesktopH")) then
+        operate_id = CS.UnityEngine.PlayerPrefs.GetInt("CurrentTbBetOperateIdDesktopH")
+    end
+    self.CurrentTbBetOperateId = operate_id
+
+    self.MapDesktopHBaseFac = {}
+    self:regDesktopHBaseFactory(DesktopHTexasFactory:new(nil))
+    self.MapDesktopHCardTypeBaseFac = {}
+    self:regDesktopHCardTypeBaseFactory(DesktopHCardTypeTexasFac:new(nil))
 end
 
 ---------------------------------------
 function ControllerDesktopH:OnDestroy()
+    self.DesktopHSound:Close()
+    self.DesktopHChipPool:Close()
+
     self:UnbindEvListener(self)
 end
 
@@ -1076,7 +1089,7 @@ function ControllerDesktopH:playerLeaveDesktopH(map_param)
     local t_decode = self.ControllerMgr.Json.decode(f)
     local desktop_filter = DesktopFilter:new(nil)
     desktop_filter:setData(t_decode)
-    local controller_lobby = self.ControllerMgr:GetController("Lobby")
+    local controller_lobby = self.ControllerMgr:GetController("DesktopListTexas")
     controller_lobby:requestEnterDesktop(desktop_guid, false, 255, desktop_filter:getData4Pack())
 end
 

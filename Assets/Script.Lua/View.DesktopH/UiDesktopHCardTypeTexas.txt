@@ -21,16 +21,13 @@ end
 ---------------------------------------
 -- 返回值是牌型在Lan表中的Key
 function UiDesktopHCardTypeTexas:GetCardTypeStr()
-    local l = CS.Casinos.LuaHelper.ParseHandRankTypeTexasHToStr(self.CardTypeTexas)
-    return l
+    return CS.Casinos.LuaHelper.ParseHandRankTypeTexasHToStr(self.CardTypeTexas)
 end
 
 ---------------------------------------
--- 未使用
---function UiDesktopHCardTypeTexas:GetCardTypeByte()
---    local l = CS.Casinos.LuaHelper.ProtobufSerializeHandRankTypeTexasH(self.CardTypeTexas)
---    return l
---end
+function UiDesktopHCardTypeTexas:GetCardTypeByte()
+    return CS.Casinos.LuaHelper.ParseHandRankTypeTexasHToNum(self.CardTypeTexas)
+end
 
 ---------------------------------------
 DesktopHCardTypeTexasFac = DesktopHCardTypeBaseFac:new(nil)

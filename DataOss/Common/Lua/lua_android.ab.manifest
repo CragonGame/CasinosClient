@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 222992581
+CRC: 2975783104
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f14e86df9c0545f34780c5e1eb14ef68
+    Hash: f2195a0db4c18899adaf449530a51eab
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -152,6 +152,7 @@ Assets:
 - Assets/Script.Lua/View/ViewFriendOnLine.txt
 - Assets/Script.Lua/View/Item/ItemActivity.txt
 - Assets/Script.Lua/View.DesktopH/UiDesktopHBetPotItem.txt
+- Assets/Script.Lua/Controller.DesktopH/DesktopHChipPool.txt
 - Assets/Script.Lua/Controller.IM/IMChat.txt
 - Assets/Script.Lua/View/UiRegister.txt
 - Assets/Script.Lua/Controller.IM/IMFeedback.txt
@@ -249,6 +250,7 @@ Assets:
 - Assets/Script.Lua/View/ViewAbout.txt
 - Assets/Script.Lua/View/Item/ItemDesktopHRewardPotPlayerInfo.txt
 - Assets/Script.Lua/Base.TbData/TbDataForestPartyAnimalList.txt
+- Assets/Script.Lua/Controller.DesktopH/DesktopHSound.txt
 - Assets/Script.Lua/Base.TbData/TbDataPresetMsg.txt
 - Assets/Script.Lua/Model/ModelMarquee.txt
 - Assets/Script.Lua/Base.TbData/TbDataLanEn.txt
@@ -264,7 +266,6 @@ Assets:
 - Assets/Script.Lua/View/ItemMtt/ItemSnowBallRewardInfo.txt
 - Assets/Script.Lua/Model/ModelRank.txt
 - Assets/Script.Lua/Controller.DesktopH/DesktopHTexas.txt
-- Assets/Script.Lua/Controller/ControllerLobby.txt
 - Assets/Script.Lua/Base.TbData/TbDataLotteryTicket.txt
 - Assets/Script.Lua/View/ViewPool.txt
 - Assets/Script.Lua/Base.Other/Util.txt
@@ -352,6 +353,7 @@ Assets:
 - Assets/Script.Lua/View/Item/ItemChatEx.txt
 - Assets/Script.Lua/View/Item/ItemRank.txt
 - Assets/Script.Lua/View/Item/ItemGift.txt
+- Assets/Script.Lua/Controller/ControllerDesktopListTexas.txt
 - Assets/Script.Lua/View/ViewFriend.txt
 - Assets/Script.Lua/Base.Other/Class.txt
 - Assets/Script.Lua/View/Item/ItemHeadIcon.txt

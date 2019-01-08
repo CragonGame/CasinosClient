@@ -5,12 +5,12 @@
 UiDesktopHTongPei = {}
 
 ---------------------------------------
-function UiDesktopHTongPei:new(com_ui, ui_desktoph)
+function UiDesktopHTongPei:new(com_ui, view_desktoph)
     local o = {}
     setmetatable(o, { __index = self })
-    o.AutoHideTm = 3
-    o.UiDesktopH = ui_desktoph
+    o.ViewDesktopH = view_desktoph
     o.ComUi = com_ui
+    o.AutoHideTm = 3
     o.ComUi.visible = false
     o.GoTongPei = nil
     o.ActionShowEnd = nil
@@ -26,7 +26,7 @@ end
 
 ---------------------------------------
 function UiDesktopHTongPei:ShowEffect(show_end)
-    local image_name = self.UiDesktopH.UiDesktopHBase:GetTongPeiImageName()
+    local image_name = self.ViewDesktopH.UiDesktopHBase:GetTongPeiImageName()
     if (self.GoTongPei == nil) then
         self.GoTongPei = self.ComUi:GetChild(image_name)
     end
@@ -34,7 +34,7 @@ function UiDesktopHTongPei:ShowEffect(show_end)
     self.ComUi.visible = true
     self.GoTongPei:SetXY(self.ComUi.width / 2 - self.GoTongPei.width / 2, -self.GoTongPei.height)
     self.TweenTongPeiMoveY = self.GoTongPei:TweenMoveY(self.ComUi.height / 2 - self.GoTongPei.height / 2, 0.5)
-    self.CasinosContext:Play("AllFailedEffect", CS.Casinos._eSoundLayer.LayerNormal)
+    self.ViewDesktopH:PlaySound('AllLoose')
     self.DelayHideSelf = self.CasinosContext.DelayMgr:Delay(self.AutoHideTm,
             function()
                 self:Reset()

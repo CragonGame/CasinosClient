@@ -2,14 +2,14 @@
 -- 普通桌列表
 
 ---------------------------------------
-ControllerLobby = class(ControllerBase)
+ControllerDesktopListTexas = class(ControllerBase)
 
 ---------------------------------------
-function ControllerLobby:ctor(controller_data, controller_name)
+function ControllerDesktopListTexas:ctor(controller_data, controller_name)
 end
 
 ---------------------------------------
-function ControllerLobby:OnCreate()
+function ControllerDesktopListTexas:OnCreate()
     self:BindEvListener("EvUiClickSearchDesk", self)
     self:BindEvListener("EvUiClickSearchFriendsDesk", self)
     self:BindEvListener("EvUiClickPlayInDesk", self)
@@ -29,12 +29,12 @@ function ControllerLobby:OnCreate()
 end
 
 ---------------------------------------
-function ControllerLobby:OnDestroy()
+function ControllerDesktopListTexas:OnDestroy()
     self:UnbindEvListener(self)
 end
 
 ---------------------------------------
-function ControllerLobby:OnHandleEv(ev)
+function ControllerDesktopListTexas:OnHandleEv(ev)
     if (ev.EventName == "EvUiClickSearchDesk") then
         self:RequestSearchDesktop(ev.desktop_searchfilter)
     elseif (ev.EventName == "EvUiClickSearchFriendsDesk") then
@@ -73,24 +73,24 @@ function ControllerLobby:OnHandleEv(ev)
 end
 
 ---------------------------------------
-function ControllerLobby:RequestSearchDesktop(search_filter)
+function ControllerDesktopListTexas:RequestSearchDesktop(search_filter)
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
     local p_d = search_filter:getData4Pack()
     self.Rpc:RPC1(self.MethodType.SearchDesktopListRequest, p_d)
 end
 
 ---------------------------------------
-function ControllerLobby:RequestSearchDesktopFollowFriend(desktop_etguid)
+function ControllerDesktopListTexas:RequestSearchDesktopFollowFriend(desktop_etguid)
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
 end
 
 ---------------------------------------
-function ControllerLobby:RequestSearchPlayingFriend(desktop_type)
+function ControllerDesktopListTexas:RequestSearchPlayingFriend(desktop_type)
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"));
 end
 
 ---------------------------------------
-function ControllerLobby:RequestEnterDesktop(desktop_etguid, player_or_view, seat_index, desktop_filter)
+function ControllerDesktopListTexas:RequestEnterDesktop(desktop_etguid, player_or_view, seat_index, desktop_filter)
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
     local enter_request = DesktopEnterRequest:new(nil)
     enter_request.desktop_guid = desktop_etguid
@@ -106,26 +106,26 @@ function ControllerLobby:RequestEnterDesktop(desktop_etguid, player_or_view, sea
 end
 
 ---------------------------------------
-function ControllerLobby:RequestPlayNow(desktop_filter)
+function ControllerDesktopListTexas:RequestPlayNow(desktop_filter)
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
     local data = desktop_filter:getData4Pack()
     self.Rpc:RPC1(self.MethodType.PlayerPlayNowRequest, data)
 end
 
 ---------------------------------------
-function ControllerLobby:RequestCreatePrivateDesktop(create_info)
+function ControllerDesktopListTexas:RequestCreatePrivateDesktop(create_info)
     local data = create_info:getData4Pack()
     self.Rpc:RPC1(self.MethodType.PlayerCreatePrivateDesktopRequest, data)
 end
 
 ---------------------------------------
-function ControllerLobby:RequestLeaveDesktop()
+function ControllerDesktopListTexas:RequestLeaveDesktop()
     ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("LeavingTable"))
     self.Rpc:RPC0(self.MethodType.DesktopPlayerLeaveRequest)
 end
 
 ---------------------------------------
-function ControllerLobby:OnSearchDesktopListNotify(list_desktopinfo)
+function ControllerDesktopListTexas:OnSearchDesktopListNotify(list_desktopinfo)
     local l_desktopinfo = {}
     for i, v in pairs(list_desktopinfo) do
         local d_info = DesktopInfo:new(nil)
@@ -143,7 +143,7 @@ function ControllerLobby:OnSearchDesktopListNotify(list_desktopinfo)
 end
 
 ---------------------------------------
-function ControllerLobby:OnSearchDesktopByPlayerGuidNotify(desktop_info)
+function ControllerDesktopListTexas:OnSearchDesktopByPlayerGuidNotify(desktop_info)
     local d_info = DesktopInfo:new(nil)
     d_info.FactoryName = desktop_info[1]
     d_info.DesktopGuid = desktop_info[2]
@@ -157,26 +157,26 @@ function ControllerLobby:OnSearchDesktopByPlayerGuidNotify(desktop_info)
 end
 
 ---------------------------------------
-function ControllerLobby:LeavePlayModel()
+function ControllerDesktopListTexas:LeavePlayModel()
     self:HideLobby()
     local ctrl_player = self.ControllerMgr:GetController("Player")
     ctrl_player:RequestGetOnlinePlayerNum()
 end
 
 ---------------------------------------
-function ControllerLobby:HideLobby()
+function ControllerDesktopListTexas:HideLobby()
     ViewHelper:UiEndWaiting()
 end
 
 ---------------------------------------
-ControllerLobbyFactory = class(ControllerFactory)
+ControllerDesktopListTexasFactory = class(ControllerFactory)
 
-function ControllerLobbyFactory:GetName()
-    return 'Lobby'
+function ControllerDesktopListTexasFactory:GetName()
+    return 'DesktopListTexas'
 end
 
-function ControllerLobbyFactory:CreateController(controller_data)
+function ControllerDesktopListTexasFactory:CreateController(controller_data)
     local ctrl_name = self:GetName()
-    local ctrl = ControllerLobby.new(controller_data, ctrl_name)
+    local ctrl = ControllerDesktopListTexas.new(controller_data, ctrl_name)
     return ctrl
 end

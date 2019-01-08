@@ -136,10 +136,10 @@ function UiDesktopHCards:getCardTypeStr()
 end
 
 ---------------------------------------
---function UiDesktopHCards:getCardTypeByte()
---    local l = self.UiDesktopHCardTypeBase:GetCardTypeByte()
---    return l
---end
+function UiDesktopHCards:getCardTypeByte()
+    local l = self.UiDesktopHCardTypeBase:GetCardTypeByte()
+    return l
+end
 
 ---------------------------------------
 function UiDesktopHCards:dealCardToPosThenTranslation(deal_cardcount, move_cardwidth_percent, auto_showcard)

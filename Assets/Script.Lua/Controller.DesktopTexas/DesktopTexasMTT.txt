@@ -10,7 +10,7 @@ function DesktopTexasMTT:new(o, desktop_base, co_mgr)
     self.__index = self
     o.ControllerPlayer = co_mgr:GetController("Player")
     o.ControllerActor = co_mgr:GetController("Actor")
-    o.ControllerLobby = co_mgr:GetController("Lobby")
+    o.ControllerDesktopListTexas = co_mgr:GetController("DesktopListTexas")
     o.ControllerDesktop = co_mgr:GetController("DesktopTexas")
     o.UpdateRaiseBlindTm = 0
     o.DesktopBase = desktop_base

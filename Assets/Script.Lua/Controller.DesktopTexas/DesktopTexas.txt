@@ -23,7 +23,7 @@ function DesktopTexas:new(o, co_mgr)
     self.__index = self
     o.ControllerPlayer = co_mgr:GetController("Player")
     o.ControllerActor = co_mgr:GetController("Actor")
-    o.ControllerLobby = co_mgr:GetController("Lobby")
+    o.ControllerDesktopListTexas = co_mgr:GetController("DesktopListTexas")
     o.ControllerDesktop = co_mgr:GetController("DesktopTexas")
     o.CurrentUnSendDesktopMsg = nil
     o.MapAllPlayer = {}
@@ -197,7 +197,7 @@ end
 ---------------------------------------
 function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
     ViewHelper:UiEndWaiting()
-    self.ControllerLobby:HideLobby()
+    self.ControllerDesktopListTexas:HideLobby()
 
     self.IsSnapshot = true
     local snapshot_data1 = self.ControllerDesktop.ControllerMgr:UnpackData(desktop_data.DesktopData)

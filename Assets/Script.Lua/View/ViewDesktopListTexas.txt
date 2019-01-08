@@ -7,7 +7,7 @@ ViewDesktopListTexas = class(ViewBase)
 function ViewDesktopListTexas:ctor()
     self.FilterKey = "DesktopFilterTP"
     self.CtrlActor = self.ControllerMgr:GetController("Actor")
-    self.CtrlLobby = self.ControllerMgr:GetController("Lobby")
+    self.CtrlLobby = self.ControllerMgr:GetController("DesktopListTexas")
     self.GCtrlTab = nil
     self.GBtnReturn = nil
     self.GBtnTabNormal = nil

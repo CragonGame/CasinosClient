@@ -41,7 +41,7 @@ function ControllerPlayer:OnCreate()
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerDesktopTexas = self.ControllerMgr:GetController("DesktopTexas")
     self.ControllerDesktopH = self.ControllerMgr:GetController("DesktopH")
-    self.ControllerLobby = self.ControllerMgr:GetController("Lobby")
+    self.ControllerDesktopListTexas = self.ControllerMgr:GetController("DesktopListTexas")
     self.ControllerActivity = self.ControllerMgr:GetController("Activity")
     self.ControllerUCenter = self.ControllerMgr:GetController("UCenter")
     self.ControllerTrade = self.ControllerMgr:GetController("Trade")
@@ -354,13 +354,13 @@ function ControllerPlayer:S2cPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
                 if (accept) then
                     if (self.ControllerDesktopH.DesktopHBase == nil) then
                         if (self.ControllerDesktopTexas.DesktopBase == nil) then
-                            self.ControllerLobby:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
+                            self.ControllerDesktopListTexas:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
                         else
                             local msg_boxex = self.ViewMgr:CreateView("MsgBox")
                             msg_boxex:showMsgBox1(self.ControllerMgr.LanMgr:getLanValue("InviteFriendPlay"),
                                     self.ControllerMgr.LanMgr:getLanValue("LeaveAndEnterNew"),
                                     function(confirm)
-                                        self.ControllerLobby:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
+                                        self.ControllerDesktopListTexas:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
                                     end
                             )
                         end

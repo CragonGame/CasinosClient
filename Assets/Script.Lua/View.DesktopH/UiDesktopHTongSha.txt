@@ -5,11 +5,12 @@
 UiDesktopHTongSha = {}
 
 ---------------------------------------
-function UiDesktopHTongSha:new(com_ui)
+function UiDesktopHTongSha:new(com_ui, view_desktoph)
     local o = {}
     setmetatable(o, { __index = self })
-    o.AutoHideTm = 3
+    o.ViewDesktopH = view_desktoph
     o.ComUi = com_ui
+    o.AutoHideTm = 3
     o.ComUi.visible = false
     o.AniTongSha = o.ComUi:GetTransition("AniTongSha")
     o.ActionShowEnd = nil
@@ -29,7 +30,7 @@ function UiDesktopHTongSha:ShowEffect(show_end)
     self.ActionShowEnd = show_end
     self.ComUi.visible = true
     self.AniTongSha:Play()
-    self.CasinosContext:Play("AllWinEffect", CS.Casinos._eSoundLayer.LayerNormal)
+    self.ViewDesktopH:PlaySound('AllWin')
     self.DelayHideSelf = self.CasinosContext.DelayMgr:Delay(self.AutoHideTm,
             function()
                 self:Reset()

@@ -146,10 +146,8 @@ function ViewDesktopHResult:OnDestroy()
 end
 
 ---------------------------------------
-function ViewDesktopHResult:SetGameEndResult(bank_name, self_wingolds, self_betgolds,
-                                             map_betpot_info, bankerpot_info, list_gameend_win_player)
-    self.GTextSelfWin.text = UiChipShowHelper:GetGoldShowStr(self_wingolds,
-            self.ViewMgr.LanMgr.LanBase, false)
+function ViewDesktopHResult:SetGameEndResult(bank_name, self_wingolds, self_betgolds, map_betpot_info, bankerpot_info, list_gameend_win_player)
+    self.GTextSelfWin.text = UiChipShowHelper:GetGoldShowStr(self_wingolds, self.ViewMgr.LanMgr.LanBase, false)
     if (self.GTextSelfBet ~= nil) then
         self.GTextSelfBet.text = UiChipShowHelper:GetGoldShowStr(self_betgolds, self.ViewMgr.LanMgr.LanBase, false)
     end

@@ -441,6 +441,18 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public static int ParseHandRankTypeTexasHToNum(HandRankTypeTexasH rank)
+        {
+            return (int)rank;
+        }
+
+        //---------------------------------------------------------------------
+        public static int ParseHandRankTypeTexasToNum(HandRankTypeTexas rank)
+        {
+            return (int)rank;
+        }
+
+        //---------------------------------------------------------------------
         public static AutoDestroyParticle GetComponentAutoDestroyParticle(GameObject gameobject)
         {
             return gameobject.GetComponent<AutoDestroyParticle>();
@@ -489,27 +501,3 @@ namespace Casinos
         }
     }
 }
-
-//---------------------------------------------------------------------
-//public static UniWebView AddUniWebViewToObj(GameObject obj)
-//{
-//    return obj.AddComponent<UniWebView>();
-//}
-
-//---------------------------------------------------------------------
-//public static LoginGuestInfo JsonDeserializeLoginGuestInfo(string str_json)
-//{
-//    return EbTool.jsonDeserialize<LoginGuestInfo>(str_json);
-//}
-
-//---------------------------------------------------------------------
-//public static LoginAccountInfo JsonDeserializeLoginAccountInfo(string str_json)
-//{
-//    return EbTool.jsonDeserialize<LoginAccountInfo>(str_json);
-//}
-
-//---------------------------------------------------------------------
-//public static DateTime JsonDeserializeDateTime(string str_json)
-//{
-//    return EbTool.jsonDeserialize<DateTime>(str_json);
-//}

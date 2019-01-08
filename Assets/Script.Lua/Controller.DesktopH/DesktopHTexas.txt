@@ -108,8 +108,23 @@ function DesktopHTexas:getWinOrLoosePercent(card_type)
 end
 
 ---------------------------------------
---function DesktopHTexas:getGameReusltTips(card_type, self_betgolds)
---end
+function DesktopHTexas:getGameReusltTips(is_win, card_type_me, card_type_banker, self_betgolds)
+    --local s = string.format('本人牌型=%s, 庄家牌型=%s', card_type_me, card_type_banker)
+    --print(s)
+
+    if self_betgolds == 0 then
+        local self_betresult = self.ControllerDesktopH.LanMgr:getLanValue("NotBet")
+        return self_betresult
+    else
+        if is_win == true then
+            -- 本人赢
+            return '+' .. tostring(self_betgolds)
+        else
+            -- 本人输
+            return '-' .. tostring(self_betgolds)
+        end
+    end
+end
 
 ---------------------------------------
 function DesktopHTexas:_setGoldPercent()

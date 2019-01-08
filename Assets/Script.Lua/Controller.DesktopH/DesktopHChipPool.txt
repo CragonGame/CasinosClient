@@ -1,0 +1,19 @@
+-- Copyright(c) Cragon. All rights reserved.
+
+---------------------------------------
+DesktopHChipPool = {}
+
+---------------------------------------
+function DesktopHChipPool:new(o, controller_desktoph)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.Context = Context
+    o.ControllerDesktopH = controller_desktoph
+
+    return o
+end
+
+---------------------------------------
+function DesktopHChipPool:Close()
+end

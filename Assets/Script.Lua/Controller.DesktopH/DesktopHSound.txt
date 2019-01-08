@@ -1,0 +1,32 @@
+-- Copyright(c) Cragon. All rights reserved.
+
+------------------------------------------
+DesktopHSound = {}
+
+---------------------------------------
+function DesktopHSound:new(o, controller_desktoph)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
+    o.Context = Context
+    o.ControllerDesktopH = controller_desktoph
+    o.MapSound = {}
+
+    o.MapSound['AllLoose'] = "AllFailedEffect"
+    o.MapSound['AllWin'] = "AllWinEffect"
+
+    return o
+end
+
+---------------------------------------
+function DesktopHSound:Close()
+end
+
+---------------------------------------
+function DesktopHSound:Play(sound_name)
+    local sound_value = self.MapSound[sound_name]
+    if sound_value ~= nil then
+        self.CasinosContext:Play(sound_value, CS.Casinos._eSoundLayer.LayerNormal)
+    end
+end

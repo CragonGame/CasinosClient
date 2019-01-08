@@ -191,10 +191,10 @@ function UiDesktopHBanker:SetChatMsg(chat_info)
 end
 
 ---------------------------------------
---function UiDesktopHBanker:getHandRankByte()
---    local l = self.BankDesktopHCards:getCardTypeByte()
---    return l
---end
+function UiDesktopHBanker:getHandRankByte()
+    local l = self.BankDesktopHCards:getCardTypeByte()
+    return l
+end
 
 ---------------------------------------
 function UiDesktopHBanker:getBankPlayerCenterPos()

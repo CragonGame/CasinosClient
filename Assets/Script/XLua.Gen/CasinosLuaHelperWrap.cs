@@ -31,7 +31,7 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 64, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 66, 0, 0);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "readAllText", _m_readAllText_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GObjectCastToGCom", _m_GObjectCastToGCom_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetVector2", _m_GetVector2_xlua_st_);
@@ -90,6 +90,8 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetNewCardList", _m_GetNewCardList_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ParseHandRankTypeTexasHToStr", _m_ParseHandRankTypeTexasHToStr_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "ParseHandRankTypeTexasToStr", _m_ParseHandRankTypeTexasToStr_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "ParseHandRankTypeTexasHToNum", _m_ParseHandRankTypeTexasHToNum_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "ParseHandRankTypeTexasToNum", _m_ParseHandRankTypeTexasToNum_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetComponentAutoDestroyParticle", _m_GetComponentAutoDestroyParticle_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "EnumCastToInt", _m_EnumCastToInt_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "FormatPlayerActorId", _m_FormatPlayerActorId_xlua_st_);
@@ -1637,6 +1639,60 @@ namespace XLua.CSObjectWrap
                     
                         string gen_ret = Casinos.LuaHelper.ParseHandRankTypeTexasToStr( _rank );
                         LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_ParseHandRankTypeTexasHToNum_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    Casinos.HandRankTypeTexasH _rank;translator.Get(L, 1, out _rank);
+                    
+                        int gen_ret = Casinos.LuaHelper.ParseHandRankTypeTexasHToNum( _rank );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_ParseHandRankTypeTexasToNum_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    Casinos.HandRankTypeTexas _rank;translator.Get(L, 1, out _rank);
+                    
+                        int gen_ret = Casinos.LuaHelper.ParseHandRankTypeTexasToNum( _rank );
+                        LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
                     
