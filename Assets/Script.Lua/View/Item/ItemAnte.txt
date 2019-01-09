@@ -9,7 +9,6 @@ function ItemAnte:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-
     return o
 end
 
@@ -29,8 +28,7 @@ end
 function ItemAnte:_onClick()
     local view_mgr = ViewMgr
     local view_playerprofile = view_mgr:GetView("PlayerProfile")
-    if (self.IsBuy == false and view_playerprofile ~= nil)
-    then
+    if (self.IsBuy == false and view_playerprofile ~= nil) then
         return
     end
     local gift_detail = view_mgr:CreateView("GiftDetail")

@@ -52,6 +52,7 @@ end
 
 ---------------------------------------
 function UiChooseCountryCode:Destroy()
+    --self.ListCountryCode:RemoveChildrenToPool()
     self.BtnCancel.onClick:Clear()
 end
 

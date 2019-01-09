@@ -180,7 +180,7 @@ function ControllerPlayer:OnDestroy()
     self:DestroyMainUi()
 
     self.ViewMgr:DestroyAllView()
-    self.CasinosContext:StopAllSceneSound()
+    --self.CasinosContext:StopAllSceneSound()
 end
 
 ---------------------------------------

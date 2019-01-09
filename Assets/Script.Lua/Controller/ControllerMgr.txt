@@ -66,6 +66,14 @@ end
 
 ---------------------------------------
 function ControllerMgr:Destroy()
+    for k, v in pairs(self.TableController) do
+        if (v ~= nil) then
+            local controller_name = v.ControllerName
+            v:OnDestroy()
+            self.TableController[controller_name] = nil
+        end
+    end
+    self.TableController = {}
 end
 
 ---------------------------------------
@@ -121,16 +129,16 @@ function ControllerMgr:CreateController(controller_name, controller_data)
 end
 
 ---------------------------------------
-function ControllerMgr:DestroyController(is_kickout)
-    for k, v in pairs(self.TableController) do
-        if (v ~= nil) then
-            local controller_name = v.ControllerName
-            v:OnDestroy()
-            self.TableController[controller_name] = nil
-        end
-    end
-    --ControllerMgr.TableController = {}
-end
+--function ControllerMgr:DestroyAllController()
+--    for k, v in pairs(self.TableController) do
+--        if (v ~= nil) then
+--            local controller_name = v.ControllerName
+--            v:OnDestroy()
+--            self.TableController[controller_name] = nil
+--        end
+--    end
+--    self.TableController = {}
+--end
 
 ---------------------------------------
 function ControllerMgr:RegController(controller_factory)

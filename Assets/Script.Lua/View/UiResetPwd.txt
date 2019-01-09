@@ -121,6 +121,15 @@ function UiResetPwd:Update(tm)
 end
 
 ---------------------------------------
+function UiResetPwd:Close()
+    print('UiResetPwd:Close()~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+    self.BtnNext.onClick:Clear()
+    --o.GTextInputReset.onChanged:Set(
+    self.BtnResetCodeNext.onClick:Clear()
+    self.BtnResend.onClick:Clear()
+end
+
+------------------------------------------
 function UiResetPwd:setCurrentCountryCode(key, code, format)
     self.TextCountryCode.text = format
     self.CountryKey = key

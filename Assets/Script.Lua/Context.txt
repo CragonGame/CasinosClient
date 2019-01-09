@@ -152,6 +152,8 @@ function Context:Release()
         self.TimerUpdateRemoteDataToPersistent = nil
     end
 
+    self.ViewMgr:DestroyAllView()
+    self.ControllerMgr:Destroy()
     self.CasinosContext = nil
     self.LuaMgr = nil
     self.Launch = nil
