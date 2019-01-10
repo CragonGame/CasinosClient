@@ -37,8 +37,7 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Dispose", _m_Dispose);
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "bringToFontOnClick", _g_get_bringToFontOnClick);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "contentPane", _g_get_contentPane);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "contentPane", _g_get_contentPane);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "frame", _g_get_frame);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "closeButton", _g_get_closeButton);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "dragArea", _g_get_dragArea);
@@ -48,13 +47,14 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "isTop", _g_get_isTop);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "modal", _g_get_modal);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "modalWaiting", _g_get_modalWaiting);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "bringToFontOnClick", _g_get_bringToFontOnClick);
             
-			Utils.RegisterFunc(L, Utils.SETTER_IDX, "bringToFontOnClick", _s_set_bringToFontOnClick);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "contentPane", _s_set_contentPane);
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "contentPane", _s_set_contentPane);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "closeButton", _s_set_closeButton);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "dragArea", _s_set_dragArea);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "contentArea", _s_set_contentArea);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "modal", _s_set_modal);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "bringToFontOnClick", _s_set_bringToFontOnClick);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -462,20 +462,6 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_bringToFontOnClick(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                FairyGUI.Window gen_to_be_invoked = (FairyGUI.Window)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.bringToFontOnClick);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_contentPane(RealStatePtr L)
         {
 		    try {
@@ -615,22 +601,21 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
-        
-        
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_bringToFontOnClick(RealStatePtr L)
+        static int _g_get_bringToFontOnClick(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 FairyGUI.Window gen_to_be_invoked = (FairyGUI.Window)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.bringToFontOnClick = LuaAPI.lua_toboolean(L, 2);
-            
+                LuaAPI.lua_pushboolean(L, gen_to_be_invoked.bringToFontOnClick);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            return 0;
+            return 1;
         }
+        
+        
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _s_set_contentPane(RealStatePtr L)
@@ -700,6 +685,21 @@ namespace XLua.CSObjectWrap
 			
                 FairyGUI.Window gen_to_be_invoked = (FairyGUI.Window)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.modal = LuaAPI.lua_toboolean(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_bringToFontOnClick(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                FairyGUI.Window gen_to_be_invoked = (FairyGUI.Window)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.bringToFontOnClick = LuaAPI.lua_toboolean(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
