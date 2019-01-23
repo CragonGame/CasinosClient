@@ -1,11 +1,11 @@
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "FairyGUI/Text"
+Shader "FairyGUI/BMFont"
 {
 	Properties
 	{
-		_MainTex ("Alpha (A)", 2D) = "white" {}
+		_MainTex ("Base (RGB), Alpha (A)", 2D) = "black" {}
 
 		_StencilComp ("Stencil Comparison", Float) = 8
 		_Stencil ("Stencil ID", Float) = 0
@@ -53,6 +53,7 @@ Shader "FairyGUI/Text"
 				#pragma multi_compile NOT_CLIPPED CLIPPED SOFT_CLIPPED
 				#pragma vertex vert
 				#pragma fragment frag
+				#pragma exclude_renderers d3d9 opengl flash
 
 				#include "UnityCG.cginc"
 
@@ -60,14 +61,14 @@ Shader "FairyGUI/Text"
 				{
 					float4 vertex : POSITION;
 					fixed4 color : COLOR;
-					float2 texcoord : TEXCOORD0;
+					float4 texcoord : TEXCOORD0;
 				};
 
 				struct v2f
 				{
 					float4 vertex : SV_POSITION;
 					fixed4 color : COLOR;
-					float2 texcoord : TEXCOORD0;
+					float4 texcoord : TEXCOORD0;
 
 					#ifdef CLIPPED
 					float2 clipPos : TEXCOORD1;
@@ -75,10 +76,6 @@ Shader "FairyGUI/Text"
 
 					#ifdef SOFT_CLIPPED
 					float2 clipPos : TEXCOORD1;
-					#endif
-
-					#ifdef GRAYED
-					fixed flag : TEXCOORD2;
 					#endif
 				};
 
@@ -97,25 +94,12 @@ Shader "FairyGUI/Text"
 				{
 					v2f o;
 					o.vertex = UnityObjectToClipPos(v.vertex);
+					o.texcoord = v.texcoord;
 					#if !defined(UNITY_COLORSPACE_GAMMA) && (UNITY_VERSION >= 550)
 					o.color.rgb = GammaToLinearSpace(v.color.rgb);
 					o.color.a = v.color.a;
 					#else
 					o.color = v.color;
-					#endif
-					
-					#ifdef GRAYED
-					float2 texcoord = v.texcoord;
-					if(texcoord.y >1)
-					{
-						texcoord.y = texcoord.y - 10;
-						o.flag = 1;
-					}
-					else
-						o.flag = 0;
-					o.texcoord = texcoord;
-					#else
-					o.texcoord = v.texcoord;
 					#endif
 
 					#ifdef CLIPPED
@@ -132,10 +116,11 @@ Shader "FairyGUI/Text"
 				fixed4 frag (v2f i) : SV_Target
 				{
 					fixed4 col = i.color;
-					col.a *= tex2D(_MainTex, i.texcoord).a;
+					fixed4 tcol = tex2D(_MainTex, i.texcoord);
+					col.a *= tcol[i.texcoord.z];//z stores channel
 
 					#ifdef GRAYED
-					fixed grey = dot(col.rgb, fixed3(0.299, 0.587, 0.114));  
+					fixed grey = dot(col.rgb, fixed3(0.299, 0.587, 0.114));
 					col.rgb = fixed3(grey, grey, grey);
 					#endif
 
@@ -162,4 +147,6 @@ Shader "FairyGUI/Text"
 			ENDCG
 		}
 	}
+
+	Fallback "FairyGUI/Text"
 }

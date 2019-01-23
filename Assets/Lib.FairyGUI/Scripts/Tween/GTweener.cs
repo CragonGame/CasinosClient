@@ -178,12 +178,12 @@ namespace FairyGUI
 		/// <summary>
 		/// 
 		/// </summary>
-		/// <param name="repeat"></param>
+		/// <param name="times"></param>
 		/// <param name="yoyo"></param>
 		/// <returns></returns>
-		public GTweener SetRepeat(int repeat, bool yoyo = false)
+		public GTweener SetRepeat(int times, bool yoyo = false)
 		{
-			_repeat = repeat;
+			_repeat = times;
 			_yoyo = yoyo;
 			return this;
 		}
@@ -594,6 +594,12 @@ namespace FairyGUI
 
 		internal void _Update()
 		{
+			if ((_target is GObject) && ((GObject)_target)._disposed)
+			{
+				_killed = true;
+				return;
+			}
+
 			if (_ended != 0) //Maybe completed by seek
 			{
 				CallCompleteCallback();
@@ -716,7 +722,6 @@ namespace FairyGUI
 			else if (_path != null)
 			{
 				Vector3 vec3 = _path.GetPointAt(_normalizedTime);
-				vec3 += _startValue.vec3;
 				if (_snapping)
 				{
 					vec3.x = Mathf.Round(vec3.x);

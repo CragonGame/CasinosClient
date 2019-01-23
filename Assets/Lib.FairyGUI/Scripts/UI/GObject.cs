@@ -710,7 +710,7 @@ namespace FairyGUI
 			get { return _pivotX; }
 			set
 			{
-				SetPivot(value, _pivotY);
+				SetPivot(value, _pivotY, _pivotAsAnchor);
 			}
 		}
 
@@ -722,7 +722,7 @@ namespace FairyGUI
 			get { return _pivotY; }
 			set
 			{
-				SetPivot(_pivotX, value);
+				SetPivot(_pivotX, value, _pivotAsAnchor);
 			}
 		}
 
@@ -732,7 +732,7 @@ namespace FairyGUI
 		public Vector2 pivot
 		{
 			get { return new Vector2(_pivotX, _pivotY); }
-			set { SetPivot(value.x, value.y); }
+			set { SetPivot(value.x, value.y, _pivotAsAnchor); }
 		}
 
 		public bool pivotAsAnchor
@@ -1606,6 +1606,12 @@ namespace FairyGUI
 			RemoveEventListeners();
 			relations.Dispose();
 			relations = null;
+			for (int i = 0; i < 8; i++)
+			{
+				GearBase gear = _gears[i];
+				if (gear != null)
+					gear.Dispose();
+			}
 			if (displayObject != null)
 			{
 				displayObject.gOwner = null;
