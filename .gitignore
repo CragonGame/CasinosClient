@@ -4,6 +4,7 @@
 .DS_Store
 .vs/
 Library/
+Logs/
 obj/
 Temp/
 Assets/.idea/
