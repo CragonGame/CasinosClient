@@ -278,6 +278,11 @@ public class UniWebViewInterface {
         plugin.CallStatic("showWebViewDialog", name, show);
     }
 
+    public static void SetAllowHTTPAuthPopUpWindow(string name, bool flag) {
+        CheckPlatform();
+        plugin.CallStatic("setAllowHTTPAuthPopUpWindow", name, flag);
+    }
+
     public static void Print(string name) {
         CheckPlatform();
         plugin.CallStatic("print", name);

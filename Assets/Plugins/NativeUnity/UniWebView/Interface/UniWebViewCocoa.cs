@@ -432,6 +432,13 @@ public class UniWebViewInterface {
     }
 
     [DllImport(DllLib)]
+    private static extern void uv_setAllowHTTPAuthPopUpWindow(string name, bool flag);
+    public static void SetAllowHTTPAuthPopUpWindow(string name, bool flag) {
+        CheckPlatform();
+        uv_setAllowHTTPAuthPopUpWindow(name, flag);
+    }
+
+    [DllImport(DllLib)]
     private static extern void uv_print(string name);
     public static void Print(string name) {
         CheckPlatform();

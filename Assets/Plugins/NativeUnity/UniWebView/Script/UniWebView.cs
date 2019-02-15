@@ -984,6 +984,23 @@ public class UniWebView: MonoBehaviour {
     }
 
     /// <summary>
+    /// Sets whether a prompt alert should be displayed for collection username and password when the web view receives an
+    /// HTTP authentication challenge (HTTP Basic or HTTP Digest) from server.
+    /// 
+    /// By setting with `false`, no prompt will be shown and the user cannot login with input credentials. In this case,
+    /// you can only access this page by providing username and password through the URL like: "http://username:password@example.com".
+    /// If the username and password does not match, normally an error with 401 as status code would be returned (this behavior depends
+    /// on the server implementation). If set with `true`, a prompt will be shown when there is no credentials provided or it is not
+    /// correct in the URL.
+    /// 
+    /// Default is `true`.
+    /// </summary>
+    /// <param name="flag">Whether a prompt alert should be shown for HTTP authentication challenge or not.</param>
+    //public void SetAllowHTTPAuthPopUpWindow(bool flag) {
+    //  UniWebViewInterface.SetAllowHTTPAuthPopUpWindow(listener.name, flag);
+    //}
+
+    /// <summary>
     /// Prints current page.
     /// 
     /// By calling this method, a native print preview panel will be brought up on iOS and Android. 
