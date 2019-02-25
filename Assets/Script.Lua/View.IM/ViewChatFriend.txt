@@ -11,7 +11,7 @@ end
 
 ---------------------------------------
 function ViewChatFriend:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Message"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("Message"))
     self.ControllerIM = self.ControllerMgr:GetController("IM")
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
@@ -320,7 +320,7 @@ end
 ---------------------------------------
 function ViewChatFriend:onClickBtnSendMsg()
     if (self.GTextInputSendText.text == nil or self.GTextInputSendText.text == "") then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SendNoEmpty"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("SendNoEmpty"))
         return
     end
     local c_m = ChatMsg:new(nil)

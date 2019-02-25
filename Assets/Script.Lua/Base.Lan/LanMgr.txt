@@ -18,7 +18,6 @@ LanMgr = {
 ---------------------------------------
 function LanMgr:Setup()
     self.TbDataMgr = self.Context.TbDataMgr
-
     self:_checkAndCreateLanBase()
     self:parseLanKeyValue()
 end
@@ -36,7 +35,7 @@ function LanMgr:parseLanKeyValue()
 end
 
 ---------------------------------------
-function LanMgr:getLanValue(lan_key)
+function LanMgr:GetLanValue(lan_key)
     local value = ""
     if (self.Context.Cfg.UseLan == true) then
         local temp = self.LanBase:getValue(lan_key)

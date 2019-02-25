@@ -50,7 +50,7 @@ end
 ---------------------------------------
 function ControllerMarquee:S2cMarqueeRequestResult(result)
     if (result == ProtocolResult.Failed) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SendNoticeFailed"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("SendNoticeFailed"))
     end
 end
 

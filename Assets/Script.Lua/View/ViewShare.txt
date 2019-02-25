@@ -29,7 +29,7 @@ end
 ---------------------------------------
 function ViewShare:SetPlayerInfo(nick_name, account_id, share_type)
     self.ShareType = share_type
-    self.NickName.text = string.format("%s:%s", self.ViewMgr.LanMgr:getLanValue("NickName"), nick_name)
+    self.NickName.text = string.format("%s:%s", self.ViewMgr.LanMgr:GetLanValue("NickName"), nick_name)
     local icon_resource_name = ""
     local temp_table = CS.Casinos.LuaHelper.getIconName(true, account_id, icon_resource_name)
     local icon = temp_table[1]
@@ -50,7 +50,7 @@ function ViewShare:loadIconDone(is_success)
         p_t = CS.cn.sharesdk.unity3d.PlatformType.WeChatMoments
     end
     PicCapture:CapturePic(pic_name, function()
-        Native:ShareContent(p_t, self.ViewMgr.LanMgr:getLanValue("PlayGameNow"), pic_path, self.ViewMgr.LanMgr:getLanValue("CragonPoker"),
+        Native:ShareContent(p_t, self.ViewMgr.LanMgr:GetLanValue("PlayGameNow"), pic_path, self.ViewMgr.LanMgr:GetLanValue("CragonPoker"),
                 Native.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Image)--Webpage
     end)
 end

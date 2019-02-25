@@ -20,7 +20,7 @@ function ItemUiShopDiamond:new(o, view_shop, diamond, tb_item)
             end
     )
     o.TbDataItem = tb_item
-    local coin = view_shop.ViewMgr.LanMgr:getLanValue("Diamonds")
+    local coin = view_shop.ViewMgr.LanMgr:GetLanValue("Diamonds")
     local tb_unit = CS.Casinos.CasinosContext.Instance.TbDataMgrLua:GetData("UnitBilling", tb_item.Id)
     o.GTextDiamond.text = tostring(tb_unit.Amount + tb_unit.Bonus) .. coin
     o.GTextPrice.text = tb_item.Price

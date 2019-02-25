@@ -227,11 +227,11 @@ function ControllerIM:OnHandleEv(ev)
         local content = ""
         local is_add = ev.is_add
         if (is_add == false) then
-            title = self.ControllerMgr.LanMgr:getLanValue("RemoveFrined")
-            content = self.ControllerMgr.LanMgr:getLanValue("DeleteFriend") .. ev.friend_nickname
+            title = self.ControllerMgr.LanMgr:GetLanValue("RemoveFrined")
+            content = self.ControllerMgr.LanMgr:GetLanValue("DeleteFriend") .. ev.friend_nickname
         else
-            title = self.ControllerMgr.LanMgr:getLanValue("AddFriend")
-            content = string.format(self.ControllerMgr.LanMgr:getLanValue("SendFriendRequest"), ev.friend_nickname)
+            title = self.ControllerMgr.LanMgr:GetLanValue("AddFriend")
+            content = string.format(self.ControllerMgr.LanMgr:GetLanValue("SendFriendRequest"), ev.friend_nickname)
         end
 
         local map_param = {}
@@ -415,29 +415,29 @@ end
 function ControllerIM:showIMResult(result_title, result)
     local msg = ""
     if (result == IMResult.Success) then
-        msg = result_title .. self.ControllerMgr.LanMgr:getLanValue("Success");
+        msg = result_title .. self.ControllerMgr.LanMgr:GetLanValue("Success");
         ViewHelper:UiShowInfoSuccess(msg)
         return
     elseif (result == IMResult.Failed) then
-        msg = result_title .. self.ControllerMgr.LanMgr:getLanValue("Failed")
+        msg = result_title .. self.ControllerMgr.LanMgr:GetLanValue("Failed")
     elseif (result == IMResult.Exist) then
-        msg = result_title .. self.ControllerMgr.LanMgr:getLanValue("Exists")
+        msg = result_title .. self.ControllerMgr.LanMgr:GetLanValue("Exists")
     elseif (result == IMResult.Timeout) then
-        msg = result_title .. self.ControllerMgr.LanMgr:getLanValue("TimeOut")
+        msg = result_title .. self.ControllerMgr.LanMgr:GetLanValue("TimeOut")
     elseif (result == IMResult.DbError) then
-        msg = self.ControllerMgr.LanMgr:getLanValue("ServerError")
+        msg = self.ControllerMgr.LanMgr:GetLanValue("ServerError")
     elseif (result == IMResult.FriendExist) then
-        msg = self.ControllerMgr.LanMgr:getLanValue("FriendExists")
+        msg = self.ControllerMgr.LanMgr:GetLanValue("FriendExists")
     elseif (result == IMResult.FriendNotExist) then
-        msg = self.ControllerMgr.LanMgr:getLanValue("FriendNotExists")
+        msg = self.ControllerMgr.LanMgr:GetLanValue("FriendNotExists")
     elseif (result == IMResult.AddFriendCanntAddSelf) then
-        msg = self.ControllerMgr.LanMgr:getLanValue("AddSelfFriendTips")
+        msg = self.ControllerMgr.LanMgr:GetLanValue("AddSelfFriendTips")
     elseif (result == IMResult.AddFriendInBlackList) then
-        msg = self.ControllerMgr.LanMgr:getLanValue("FrinedInBlackListTips")
+        msg = self.ControllerMgr.LanMgr:GetLanValue("FrinedInBlackListTips")
     elseif (result == IMResult.AddFriendEventExist) then
-        msg = self.ControllerMgr.LanMgr:getLanValue("AddFriendRequestExists")
+        msg = self.ControllerMgr.LanMgr:GetLanValue("AddFriendRequestExists")
     elseif (result == IMResult.AddFriendEventNotExist) then
-        msg = self.ControllerMgr.LanMgr:getLanValue("HandleAddFriendRequestFailed")
+        msg = self.ControllerMgr.LanMgr:GetLanValue("HandleAddFriendRequestFailed")
     end
 
     ViewHelper:UiShowInfoFailed(msg)

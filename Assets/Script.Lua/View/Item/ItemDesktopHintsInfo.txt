@@ -23,7 +23,7 @@ end
 
 ---------------------------------------
 function ItemDesktopHintsInfo:setDesktopHintInfo(hint_info)
-    self.mTitle.text = self.ViewMgr.LanMgr:getLanValue(hint_info.HintName)
+    self.mTitle.text = self.ViewMgr.LanMgr:GetLanValue(hint_info.HintName)
     self.mArrayLoaders[0].icon = self.CasinosContext.PathMgr.DirAbCard .. string.lower(hint_info.CardFirstName) .. ".ab"
     self.mArrayLoaders[1].icon = self.CasinosContext.PathMgr.DirAbCard .. string.lower(hint_info.CardSecondName) .. ".ab"
     self.mArrayLoaders[2].icon = self.CasinosContext.PathMgr.DirAbCard .. string.lower(hint_info.CardThirdName) .. ".ab"

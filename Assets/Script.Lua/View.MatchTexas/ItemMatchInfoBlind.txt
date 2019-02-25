@@ -17,7 +17,7 @@ function ItemMatchInfoBlind:new(o, com, info, level, can_rebuy, can_addon, raise
     o.GTextLevel.text = level
     o.GTextBlind.text = UiChipShowHelper:GetGoldShowStr3(info.BlindsSmall) .. "/" .. UiChipShowHelper:GetGoldShowStr3(info.BlindsBig)
     o.GTextAnte.text = UiChipShowHelper:GetGoldShowStr3(info.Ante)
-    o.GTextRaiseBlindTime.text = raiseBlindTime .. view_mgr.LanMgr:getLanValue("Second")
+    o.GTextRaiseBlindTime.text = raiseBlindTime .. view_mgr.LanMgr:GetLanValue("Second")
     o.ComRebuy.visible = can_rebuy
     o.GComAddon.visible = can_addon
     return o

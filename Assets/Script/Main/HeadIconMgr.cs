@@ -40,8 +40,6 @@ namespace Casinos
                 if (head_icon != null)
                 {
                     head_icon.SetActive(true);
-                    //UiHelper.setActiveState(true, head_icon);
-                    //UiHelper.setTexture(head_icon, head_resource);
                 }
 
                 if (load_callback != null)
@@ -68,8 +66,6 @@ namespace Casinos
                             if (head_icon != null)
                             {
                                 head_icon.SetActive(true);
-                                //UiHelper.setActiveState(true, head_icon);
-                                //UiHelper.setTexture(head_icon, (Texture)obj);
                             }
                         }
 

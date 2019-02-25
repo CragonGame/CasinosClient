@@ -13,7 +13,7 @@ function ItemUiShopConsume:new(o, view_shop, com, tb_item)
     o.GComItem = com
     o.TbDataItem = tb_item
     o.GTextConsumeName = o.GComItem:GetChild("ConsumeName").asTextField
-    o.GTextConsumeName.text = view_shop.ViewMgr.LanMgr:getLanValue(tb_item.Name)
+    o.GTextConsumeName.text = view_shop.ViewMgr.LanMgr:GetLanValue(tb_item.Name)
     o.GLoaderConsume = o.GComItem:GetChild("LoaderConsume").asLoader
     o.GLoaderConsume.icon = CS.FairyGUI.UIPackage.GetItemURL(view_shop.ViewMgr.LanMgr:getLanPackageName(), tb_item.Icon)
     o.GBtnBuy = o.GComItem:GetChild("BtnBuy").asButton

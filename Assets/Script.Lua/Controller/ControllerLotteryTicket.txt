@@ -380,7 +380,7 @@ function ControllerLotteryTicket:RequestBet(bet_betpot_index)
     end
 
     if (self.CurrentTbBetOperateId == -1) then
-        local tips = self.LanMgr:getLanValue("Chip") .. self.LanMgr:getLanValue("NotEnough")
+        local tips = self.LanMgr:GetLanValue("Chip") .. self.LanMgr:GetLanValue("NotEnough")
         ViewHelper:UiShowInfoFailed(tips)
         return
     end

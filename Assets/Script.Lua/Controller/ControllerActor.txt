@@ -211,7 +211,7 @@ end
 ---------------------------------------
 function ControllerActor:S2cPlayerGoldAccUpdateNotify(change_reason, gold_acc, user_data)
     if (change_reason == GoldAccChangeReason.AddByGoldPackage) then
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("ScoreForGoldPackage"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("ScoreForGoldPackage"))
     end
     local gold = self.PropGoldAcc:get()
     local delta_gold = gold_acc - gold
@@ -263,7 +263,7 @@ end
 function ControllerActor:S2cPlayerLostAllSendChipsNotify(send_goldsinfo)
     local data = LostAllSendGoldsInfo:new(nil)
     data:setData(send_goldsinfo)
-    --local tips = string.format(self.ViewMgr.LanMgr:getLanValue("LostAllGold"), tostring(data.send_golds), self.ViewMgr.LanMgr:getLanValue("Chip"))
+    --local tips = string.format(self.ViewMgr.LanMgr:GetLanValue("LostAllGold"), tostring(data.send_golds), self.ViewMgr.LanMgr:GetLanValue("Chip"))
     self.PropGoldAcc:set(data.total_golds)
 end
 
@@ -290,7 +290,7 @@ end
 function ControllerActor:onPropLevelChanged()
     if (self.LastLevel ~= self.PropLevel:get()) then
         self.LastLevel = self.PropLevel:get()
-        local msg = string.format(self.ViewMgr.LanMgr:getLanValue("LevelUpTips"), self.PropLevel:get())
+        local msg = string.format(self.ViewMgr.LanMgr:GetLanValue("LevelUpTips"), self.PropLevel:get())
         ViewHelper:UiShowInfoSuccess(msg)
     end
 end

@@ -251,7 +251,7 @@ function ViewShop:onClickBtnVip()
             next_alltotalexp = next_alltotalexp - tb_actorlevel_cur.VIPPoint
         end
         provip_value = (exp_cur * 100) / next_alltotalexp
-        tips = string.format(self.ViewMgr.LanMgr:getLanValue("ShopVipTips"), next_needtotalexp, "VIP" .. next_level)
+        tips = string.format(self.ViewMgr.LanMgr:GetLanValue("ShopVipTips"), next_needtotalexp, "VIP" .. next_level)
     end
 
     self.GProVIP.value = provip_value
@@ -381,10 +381,10 @@ function ViewShop:setListGoods(goodsType)
                 local discirbe = {}
                 discirbe[1] = "[size=25]\n[/size]" -- 空25像素
                 discirbe[2] = "[size=25]"
-                discirbe[3] = self.ViewMgr.LanMgr:getLanValue(tb_item.Name)
+                discirbe[3] = self.ViewMgr.LanMgr:GetLanValue(tb_item.Name)
                 discirbe[4] = "[/size]\n[size=18][color=#A4BCEE]兑换券 x1[/color][/size]"
                 local url = CS.Casinos.CasinosContext.Instance.PathMgr.DirAbItem .. tostring(tb_item.Icon) .. ".ab"
-                local btn_title = self.ViewMgr.LanMgr:getLanValue("Exchange")
+                local btn_title = self.ViewMgr.LanMgr:GetLanValue("Exchange")
                 local item = ItemUiShopGoods:new(nil, com, table.concat(discirbe), url, btn_title,
                         function()
                             local controller_bag = self.ControllerMgr:GetController("Bag")
@@ -398,7 +398,7 @@ function ViewShop:setListGoods(goodsType)
                                 ev.ItemObjId = item_ex.ItemData.item_objid
                                 self:SendEv(ev)
                             else
-                                ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("NotEnoughVoucher"))
+                                ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("NotEnoughVoucher"))
                             end
                         end
                 )
@@ -437,7 +437,7 @@ function ViewShop:setListGoods(goodsType)
                     discirbe[5] = tostring(tb_item.Price)
                     discirbe[6] = "万[/color][/size]"
                     local url = self.CasinosContext.PathMgr.DirAbItem .. tostring(tb_item.Icon) .. ".ab"
-                    local btn_title = self.ViewMgr.LanMgr:getLanValue("Exchange")
+                    local btn_title = self.ViewMgr.LanMgr:GetLanValue("Exchange")
                     local item = ItemUiShopGoods:new(nil, com, table.concat(discirbe), url, btn_title,
                             function()
                                 --请求使用积分兑换筹码
@@ -454,14 +454,14 @@ function ViewShop:setListGoods(goodsType)
                     local discirbe = {}
                     discirbe[1] = "[size=25]\n[/size]" -- 空25像素
                     discirbe[2] = "[size=25]"
-                    discirbe[3] = self.ViewMgr.LanMgr:getLanValue(tb_item.Name)
+                    discirbe[3] = self.ViewMgr.LanMgr:GetLanValue(tb_item.Name)
                     discirbe[4] = "[/size]\n"
                     --discirbe[5] = "[size=5]\n \n[size]" -- 空5像素
                     discirbe[5] = "[size=18][color=#A4BCEE]需要积分 x"
                     discirbe[6] = tostring(tb_item.Price)
                     discirbe[7] = "万[/color][/size]"
                     local url = CS.Casinos.CasinosContext.Instance.PathMgr.DirAbItem .. tostring(tb_item.Icon) .. ".ab"
-                    local btn_title = self.ViewMgr.LanMgr:getLanValue("Exchange")
+                    local btn_title = self.ViewMgr.LanMgr:GetLanValue("Exchange")
                     local item = ItemUiShopGoods:new(nil, com, table.concat(discirbe), url, btn_title,
                             function()
                                 --请求使用积分兑换实物兑换券

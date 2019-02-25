@@ -10,7 +10,7 @@ end
 
 ---------------------------------------
 function ViewEditAddress:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("EditAddress"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("EditAddress"))
     self.ViewMgr:BindEvListener("EvEntityResponseGetReceiverAddress", self)
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton

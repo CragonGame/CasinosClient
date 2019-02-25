@@ -12,7 +12,7 @@ end
 
 ---------------------------------------
 function ViewPayType:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("PayType"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("PayType"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerPay = self.ComUi:GetController("ControllerPay")
     local group_notios = self.ComUi:GetChild("GroupNotIOS").asGroup

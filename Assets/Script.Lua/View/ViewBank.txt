@@ -12,7 +12,7 @@ end
 
 ---------------------------------------
 function ViewBank:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SafeBox"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("SafeBox"))
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.GControllerBank = self.ComUi:GetController("ControllerBank")
@@ -178,11 +178,11 @@ end
 function Bank:onClickPutIn()
     local input_num = self.ItemNumOperatePutIn:getCurrentNum()
     if (input_num <= 0) then
-        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("DepositTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:GetLanValue("DepositTips"))
         return
     else
         if (input_num * self.TakeOutOrPutInPerGold > self.ViewBank.ControllerActor.PropGoldAcc:get()) then
-            ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("DepositTips1"))
+            ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:GetLanValue("DepositTips1"))
             return
         end
     end
@@ -199,11 +199,11 @@ end
 function Bank:onClickTakeOut()
     local takeout_num = self.ItemNumOperateTakeOut:getCurrentNum()
     if (takeout_num <= 0) then
-        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("GetoutAmountTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:GetLanValue("GetoutAmountTips"))
         return
     else
         if (takeout_num * self.TakeOutOrPutInPerGold > self.ViewBank.ControllerActor.PropGoldBank:get()) then
-            ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("GetoutAmountTips1"))
+            ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:GetLanValue("GetoutAmountTips1"))
             return
         end
     end
@@ -271,17 +271,17 @@ function SendGold:onClickSend()
     local send_gold = 0
     local n = tonumber(self.GInputSendGold.text)
     if (n == nil) then
-        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("EnterNumTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:GetLanValue("EnterNumTips"))
         return
     else
         send_gold = n
         if (send_gold <= 0) then
-            ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("SendGoldTips"))
+            ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:GetLanValue("SendGoldTips"))
             return
         end
     end
     if ((self.GInputTargetId.text == nil or #self.GInputTargetId.text <= 0) or self.GInputTargetId.text == "0") then
-        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("EnterIdTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:GetLanValue("EnterIdTips"))
         return
     end
     local ev = self.ViewBank.ViewMgr:GetEv("EvUiClickConfirmChipTransaction")
@@ -331,11 +331,11 @@ end
 ---------------------------------------
 function ExchangeCode:onClickExchange()
     if (self.GInputExchangeCodeAcc.text == nil or #self.GInputExchangeCodeAcc.text <= 0) then
-        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("EnterCardNumTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:GetLanValue("EnterCardNumTips"))
         return
     end
     if (self.GInputExchangeCodePwd.text == nil or #self.GInputExchangeCodePwd.text <= 0) then
-        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:getLanValue("EnterPwdTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewBank.ViewMgr.LanMgr:GetLanValue("EnterPwdTips"))
         return
     end
     local ev = self.ViewBank.ViewMgr:GetEv("EvRequesetGetExchangeCodeItem")

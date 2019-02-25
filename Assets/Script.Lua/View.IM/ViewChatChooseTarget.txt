@@ -11,7 +11,7 @@ end
 
 ---------------------------------------
 function ViewChatChooseTarget:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("ChooseFriendChat"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("ChooseFriendChat"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerIM = self.ControllerMgr:GetController("IM")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom

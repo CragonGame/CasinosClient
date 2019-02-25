@@ -23,28 +23,28 @@ function ViewResetPwd:OnCreate()
             end
     )
     local text_acc = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputAcc").asTextInput
-    text_acc.promptText = self.ViewMgr.LanMgr:getLanValue("InputUserName")
+    text_acc.promptText = self.ViewMgr.LanMgr:GetLanValue("InputUserName")
     text_acc.onChanged:Set(
             function()
                 self:checkGetPwdInput()
             end
     )
     local text_superpwd = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputSuperPwd").asTextInput
-    text_superpwd.promptText = self.ViewMgr.LanMgr:getLanValue("InputSuperPwd")
+    text_superpwd.promptText = self.ViewMgr.LanMgr:GetLanValue("InputSuperPwd")
     text_superpwd.onChanged:Set(
             function()
                 self:checkGetPwdInput()
             end
     )
     local text_newpwd = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputNewPwd").asTextInput
-    text_newpwd.promptText = self.ViewMgr.LanMgr:getLanValue("InputNewPwd")
+    text_newpwd.promptText = self.ViewMgr.LanMgr:GetLanValue("InputNewPwd")
     text_newpwd.onChanged:Set(
             function()
                 self:checkGetPwdInput()
             end
     )
     local text_confirmnewpwd = self.ComUi:GetChildInGroup(self.GroupGetPwd, "InputConfirmNewPwd").asTextInput
-    text_confirmnewpwd.promptText = self.ViewMgr.LanMgr:getLanValue("ConfirmNewPwd")
+    text_confirmnewpwd.promptText = self.ViewMgr.LanMgr:GetLanValue("ConfirmNewPwd")
     text_confirmnewpwd.onChanged:Set(
             function()
                 self:checkGetPwdInput()

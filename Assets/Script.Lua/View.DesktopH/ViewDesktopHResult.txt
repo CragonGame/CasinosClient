@@ -101,7 +101,7 @@ end
 
 ---------------------------------------
 function ViewDesktopHResult:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BureauSettlement"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("BureauSettlement"))
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_close = com_bg:GetChild("BtnClose").asButton
@@ -199,7 +199,7 @@ end
 
 ---------------------------------------
 function ViewDesktopHResult:_refreshLeftTime()
-    self.GTextCloseTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("CloseAuto"), tostring(math.ceil(self.LeftTm)))
+    self.GTextCloseTips.text = string.format(self.ViewMgr.LanMgr:GetLanValue("CloseAuto"), tostring(math.ceil(self.LeftTm)))
 end
 
 ---------------------------------------

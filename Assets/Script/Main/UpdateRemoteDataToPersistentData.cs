@@ -8,6 +8,7 @@ namespace Casinos
     using System.IO;
     using System.Linq;
     using UnityEngine;
+    using UnityEngine.Networking;
 
     // 将Oss中的Data差异集更新到PersistentData的相同目录中，异步
     public class UpdateRemoteToPersistentData
@@ -16,7 +17,7 @@ namespace Casinos
         public int TotalCount { get; private set; }// 需要Update的文件总数
         public int LeftCount { get; private set; }// 剩余未Update的文件总数
         Queue<string> QueUpdateFile { get; set; }
-        Dictionary<string, WWW> MapWWW { get; set; }
+        Dictionary<string, UnityWebRequest> MapWWW { get; set; }
         List<string> ListFinished { get; set; }
         string RemoteDataRootUrl { get; set; }
         string PersistentDataRootDir { get; set; }
@@ -26,7 +27,7 @@ namespace Casinos
             string remotedata_root_url, string persistent_root_dir)
         {
             QueUpdateFile = new Queue<string>(4096);
-            MapWWW = new Dictionary<string, WWW>();
+            MapWWW = new Dictionary<string, UnityWebRequest>();
             ListFinished = new List<string>(5);
             RemoteDataRootUrl = remotedata_root_url;
             PersistentDataRootDir = persistent_root_dir;
@@ -95,12 +96,13 @@ namespace Casinos
             {
                 string s1 = QueUpdateFile.Dequeue();
                 var s2 = Path.Combine(RemoteDataRootUrl, s1);
-                MapWWW[s1] = new WWW(s2);
+                MapWWW[s1] = UnityWebRequest.Get(s2);
             }
 
             foreach (var i in MapWWW)
             {
                 if (!i.Value.isDone) continue;
+
                 ListFinished.Add(i.Key);
 
                 var str = PersistentDataRootDir + i.Key;
@@ -112,7 +114,8 @@ namespace Casinos
 
                 using (FileStream fs = new FileStream(str, FileMode.Create))
                 {
-                    fs.Write(i.Value.bytes, 0, i.Value.bytes.Length);
+                    DownloadHandler dh = i.Value.downloadHandler;
+                    fs.Write(dh.data, 0, dh.data.Length);
                 }
 
                 i.Value.Dispose();

@@ -26,7 +26,7 @@ end
 
 ---------------------------------------
 function ViewDailyReward:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("DailyRewardSign"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("DailyRewardSign"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.MapDailyReward = {}
     self.GBtnGetReward = self.ComUi:GetChild("Lan_Btn_GetDailyReward").asButton
@@ -136,7 +136,7 @@ end
 ---------------------------------------
 function ViewDailyReward:getTitle(day)
     local reward_info = tRewardInfo:new(nil)
-    local title = self.ViewMgr.LanMgr:getLanValue(string.format("Day%s", day))
+    local title = self.ViewMgr.LanMgr:GetLanValue(string.format("Day%s", day))
     local icon_url = ""
     if (day == 1) then
         icon_url = "ui://DailyReward/Chips" .. day
@@ -154,7 +154,7 @@ function ViewDailyReward:getTitle(day)
         icon_url = "ui://DailyReward/Chips" .. day
     end
     if (self.Context.Cfg.UseLan == true) then
-        title = self.ViewMgr.LanMgr:getLanValue("Day" .. day)
+        title = self.ViewMgr.LanMgr:GetLanValue("Day" .. day)
     end
     reward_info.title = title
     reward_info.icon_url = icon_url

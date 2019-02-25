@@ -22,20 +22,20 @@ function ItemAttachment:new(o, com, item_data, gold, diamond, view_mgr)
         local item = Item:new(nil, self.ViewMgr.TbDataMgr, i_d)
         local tb_item = self.ViewMgr.TbDataMgr:GetData("Item", i_d.item_tbid)
         if item.UnitLink == "WechatRedEnvelopes" then
-            content = item.UnitLink .. self.ViewMgr.LanMgr:getLanValue("Yuan") .. tb_item.Name
+            content = item.UnitLink .. self.ViewMgr.LanMgr:GetLanValue("Yuan") .. tb_item.Name
         else
             content = tb_item.Name .. "*" .. i_d.count
         end
         icon_url = self.CasinosContext.PathMgr.DirAbItem .. string.lower(tb_item.Icon) .. ".ab"
     end
     if (gold > 0) then
-        content = self.ViewMgr.LanMgr:getLanValue("Chip") .. "\n" ..
+        content = self.ViewMgr.LanMgr:GetLanValue("Chip") .. "\n" ..
                 UiChipShowHelper:GetGoldShowStr(gold, self.ViewMgr.LanMgr.LanBase)
         icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "ChipIcon" .. self.Context.Cfg.ChipIconSolustion)
         o.GLoaderAttachment.color = CS.UnityEngine.Color(0.38, 0.89, 1)
     end
     if (diamond > 0) then
-        content = self.ViewMgr.LanMgr:getLanValue("Coin") .. "\n" ..
+        content = self.ViewMgr.LanMgr:GetLanValue("Coin") .. "\n" ..
                 UiChipShowHelper:GetGoldShowStr(diamond, self.ViewMgr.LanMgr.LanBase)
         icon_url = CS.FairyGUI.UIPackage.GetItemURL("Common", "DiamondIcon" .. self.Context.Cfg.ChipIconSolustion)
     end

@@ -29,18 +29,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void WWWDownload(string url, Action<WWW> cb)
-        {
-            StartCoroutine(_wwwDownload(url, cb));
-        }
-
-        //---------------------------------------------------------------------
-        public void WWWDownloadList(List<string> list_url, Action<WWW[]> cb)
-        {
-            StartCoroutine(_wwwDownloadList(list_url, cb));
-        }
-
-        //---------------------------------------------------------------------
         IEnumerator _sendUrl(string url, Action<string> cb)
         {
             using (UnityWebRequest www_request = UnityWebRequest.Get(url))
@@ -99,32 +87,44 @@ namespace Casinos
                 if (cb != null) cb.Invoke(http_statuscode, www_request.downloadHandler.text);
             }
         }
-
-        //---------------------------------------------------------------------
-        IEnumerator _wwwDownload(string url, Action<WWW> cb)
-        {
-            WWW www = new WWW(url);
-
-            yield return www;
-
-            if (cb != null) cb.Invoke(www);
-        }
-
-        //---------------------------------------------------------------------
-        IEnumerator _wwwDownloadList(List<string> list_url, Action<WWW[]> cb)
-        {
-            int n = 0;
-            WWW[] arr = new WWW[list_url.Count];
-            foreach (var i in list_url)
-            {
-                WWW www = new WWW(i);
-                arr[n] = www;
-                n++;
-            }
-
-            yield return arr;
-
-            if (cb != null) cb.Invoke(arr);
-        }
     }
 }
+
+//---------------------------------------------------------------------
+//public void WWWDownload(string url, Action<WWW> cb)
+//{
+//    StartCoroutine(_wwwDownload(url, cb));
+//}
+
+////---------------------------------------------------------------------
+//public void WWWDownloadList(List<string> list_url, Action<WWW[]> cb)
+//{
+//    StartCoroutine(_wwwDownloadList(list_url, cb));
+//}
+
+//---------------------------------------------------------------------
+//IEnumerator _wwwDownload(string url, Action<WWW> cb)
+//{
+//    WWW www = new WWW(url);
+
+//    yield return www;
+
+//    if (cb != null) cb.Invoke(www);
+//}
+
+////---------------------------------------------------------------------
+//IEnumerator _wwwDownloadList(List<string> list_url, Action<WWW[]> cb)
+//{
+//    int n = 0;
+//    WWW[] arr = new WWW[list_url.Count];
+//    foreach (var i in list_url)
+//    {
+//        WWW www = new WWW(i);
+//        arr[n] = www;
+//        n++;
+//    }
+
+//    yield return arr;
+
+//    if (cb != null) cb.Invoke(arr);
+//}

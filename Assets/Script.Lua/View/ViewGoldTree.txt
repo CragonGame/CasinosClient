@@ -104,10 +104,10 @@ function ViewGoldTree:SetGoldTreeSnapshot(grow_data)
     self.NextGetRewardTm = self.BGrowData.NextGetRewardLeftTm
     local tips = ""
     if (self.BGrowData.NextGetRewardGold > 0) then
-        self.GTextTakeGoldTips.text = self.ViewMgr.LanMgr:getLanValue("LaterAdd")
-                .. UiChipShowHelper:GetGoldShowStr(grow_data.NextGetRewardGold, self.ViewMgr.LanMgr.LanBase) .. self.ViewMgr.LanMgr:getLanValue("Chip")
+        self.GTextTakeGoldTips.text = self.ViewMgr.LanMgr:GetLanValue("LaterAdd")
+                .. UiChipShowHelper:GetGoldShowStr(grow_data.NextGetRewardGold, self.ViewMgr.LanMgr.LanBase) .. self.ViewMgr.LanMgr:GetLanValue("Chip")
     else
-        tips = self.ViewMgr.LanMgr:getLanValue("MoneyTreeFullOfChips")
+        tips = self.ViewMgr.LanMgr:GetLanValue("MoneyTreeFullOfChips")
     end
     if (grow_data.CurLevel > 0) then
         self.ControllerTree.selectedIndex = 0
@@ -117,8 +117,8 @@ function ViewGoldTree:SetGoldTreeSnapshot(grow_data)
     self.GTextGoldTreeLevel.text = "LV." .. tostring(grow_data.CurLevel)
     local current_maxgetgold = self.ControllerPlayer:getCurrentLevelMaxGetGold(grow_data.CurLevel)
     local max_cangetgold = current_maxgetgold - grow_data.GetRewardGold
-    self.GTextGoldLimit.text = grow_data.CanGetRewardGold .. self.ViewMgr.LanMgr:getLanValue("CurrentAvailable") ..
-            max_cangetgold .. self.ViewMgr.LanMgr:getLanValue("SurplusAvailable")
+    self.GTextGoldLimit.text = grow_data.CanGetRewardGold .. self.ViewMgr.LanMgr:GetLanValue("CurrentAvailable") ..
+            max_cangetgold .. self.ViewMgr.LanMgr:GetLanValue("SurplusAvailable")
     self.GTextMaxCanGetGold.text = UiChipShowHelper:GetGoldShowStr(current_maxgetgold, self.ViewMgr.LanMgr.LanBase)
     self.GBtnTakeGold.enabled = grow_data.CanGetRewardGold > 0
     local pro_value = 0
@@ -127,7 +127,7 @@ function ViewGoldTree:SetGoldTreeSnapshot(grow_data)
     end
     self.GProGoldTree.value = pro_value
     if (max_cangetgold == 0) then
-        tips = self.ViewMgr.LanMgr:getLanValue("ChipsFinishedTomorrowCom")
+        tips = self.ViewMgr.LanMgr:GetLanValue("ChipsFinishedTomorrowCom")
     end
     self.GTextTakeGoldCountDownTime.text = tips
 end

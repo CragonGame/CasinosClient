@@ -188,7 +188,7 @@ function ViewMain:OnCreate()
     self.BtnRegister = self.ComUi:GetChild("BtnRegister").asButton
     self.BtnRegister.onClick:Add(
             function()
-                ViewHelper:UiShowMsgBox(self.ViewMgr.LanMgr:getLanValue("GuestRegisterTips"),
+                ViewHelper:UiShowMsgBox(self.ViewMgr.LanMgr:GetLanValue("GuestRegisterTips"),
                         function()
                             self.CasinosContext.NetMgr:Disconnect()
                             local login = self.ViewMgr:GetView("Login")
@@ -487,7 +487,7 @@ function ViewMain:OnHandleEv(ev)
         elseif ev.EventName == "EvEntityGetLotteryTicketDataSuccess" then
             self:SetLotteryTicketInfo(ev.lotteryticket_data.State, ev.lotteryticket_data.StateLeftTm)
         elseif ev.EventName == "EvEntityLotteryTicketGameEndStateSimple" then
-            self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
+            self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:GetLanValue("Settlement")
         elseif ev.EventName == "EvEntityLotteryTicketUpdateTm" then
             self:RefreshLotteryTickLeftTm(ev.tm)
         elseif ev.EventName == "EvEntityIsFirstRechargeChanged" then
@@ -516,9 +516,9 @@ end
 ---------------------------------------
 function ViewMain:RefreshLotteryTickLeftTm(tm)
     if (tm > 0) then
-        self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:getLanValue("S")
+        self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:GetLanValue("S")
     else
-        self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
+        self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:GetLanValue("Settlement")
     end
 end
 
@@ -538,7 +538,7 @@ end
 
 ---------------------------------------
 function ViewMain:SetOnlineNum(num)
-    local online_player = self.ViewMgr.LanMgr:getLanValue("OnlinePlayer")
+    local online_player = self.ViewMgr.LanMgr:GetLanValue("OnlinePlayer")
     local tip = self.CasinosContext:AppendStrWithSB(tostring(num), " ", online_player)
     self.GTextPlayerNum.text = tip
 end
@@ -603,9 +603,9 @@ end
 function ViewMain:SetLotteryTicketInfo(state, left_tm)
     local tips = ""
     if (state == LotteryTicketStateEnum.Bet) then
-        tips = math.ceil(left_tm) .. self.ViewMgr.LanMgr:getLanValue("S")
+        tips = math.ceil(left_tm) .. self.ViewMgr.LanMgr:GetLanValue("S")
     else
-        tips = self.ViewMgr.LanMgr:getLanValue("Settlement")
+        tips = self.ViewMgr.LanMgr:GetLanValue("Settlement")
     end
     self.GTextLotteryTicketTips.text = tips
 end
@@ -914,14 +914,13 @@ end
 
 ---------------------------------------
 function ViewMain:_onClickBtnFeedback()
-    --ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("Testing"))
-    --web_view:Show()
+    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("Testing"))
 
-    local web_view = self.CasinosContext.LuaMgr:CreateWebView()
-    web_view:Load("https://github.com/CragonGame/CasinosClient")
-    web_view:SetShowSpinnerWhileLoading(true)
-    web_view:SetShowToolbar(true, false, false, false)
-    web_view:Show(true, CS.UniWebViewTransitionEdge.Bottom, 0.35)
+    --local web_view = self.CasinosContext.LuaMgr:CreateWebView()
+    --web_view:Load("https://github.com/CragonGame/CasinosClient")
+    --web_view:SetShowSpinnerWhileLoading(true)
+    --web_view:SetShowToolbar(true, false, false, false)
+    --web_view:Show(true, CS.UniWebViewTransitionEdge.Bottom, 0.35)
 end
 
 ---------------------------------------

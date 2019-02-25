@@ -145,22 +145,22 @@ function ViewChipOperate:setChipsInfo(left_chip, desk_top_chip, desk_bottom_chip
     local select = 0
     if (self.ChipOperateType == CS.Casinos._eChipOperateType.BetGame) then
         self.GTextSelfLeft = self.ComUi:GetChild("TextChipValue").asTextField
-        title = self.ViewMgr.LanMgr:getLanValue("BettingGame")
-        tips_left = self.ViewMgr.LanMgr:getLanValue("LowerDesk")
-        tips_right = self.ViewMgr.LanMgr:getLanValue("UpperDesk")
+        title = self.ViewMgr.LanMgr:GetLanValue("BettingGame")
+        tips_left = self.ViewMgr.LanMgr:GetLanValue("LowerDesk")
+        tips_right = self.ViewMgr.LanMgr:GetLanValue("UpperDesk")
         self:setChips(desk_top_chip, desk_bottom_chip)
     elseif (self.ChipOperateType == CS.Casinos._eChipOperateType.Exchange) then
         self.GTextSelfLeft = self.ComUi:GetChild("TextChipValue").asTextField
-        title = self.ViewMgr.LanMgr:getLanValue("ExchangeMoney")
-        tips_left = self.ViewMgr.LanMgr:getLanValue("LowerExchange")
-        tips_right = self.ViewMgr.LanMgr:getLanValue("UpperExchange")
+        title = self.ViewMgr.LanMgr:GetLanValue("ExchangeMoney")
+        tips_left = self.ViewMgr.LanMgr:GetLanValue("LowerExchange")
+        tips_right = self.ViewMgr.LanMgr:GetLanValue("UpperExchange")
         self:setChips(desk_top_chip, desk_bottom_chip)
     elseif (self.ChipOperateType == CS.Casinos._eChipOperateType.Transaction) then
         self.GTextSelfLeft = self.ComUi:GetChild("TextChipValueInput").asTextField
         self.GTextFieldGetChipsTips.visible = true
-        title = self.ViewMgr.LanMgr:getLanValue("BargainingChip")
-        tips_left = self.ViewMgr.LanMgr:getLanValue("LowerDeal")
-        tips_right = self.ViewMgr.LanMgr:getLanValue("UpperDeal")
+        title = self.ViewMgr.LanMgr:GetLanValue("BargainingChip")
+        tips_left = self.ViewMgr.LanMgr:GetLanValue("LowerDeal")
+        tips_right = self.ViewMgr.LanMgr:GetLanValue("UpperDeal")
         select = 1
     end
     self.ControllerOperate.selectedIndex = select
@@ -183,7 +183,7 @@ function ViewChipOperate:setChips(desk_top_chip, desk_bottom_chip)
         self.GTextSelfLeft.text = UiChipShowHelper:GetGoldShowStr(self.LeftGold, self.ViewMgr.LanMgr.LanBase, false)
         self.BetGold = 0
     else
-        self.GTextSelfLeft.text = self.ViewMgr.LanMgr:getLanValue("YourBalance") .. ":" .. UiChipShowHelper:GetGoldShowStr(self.LeftGold, self.ViewMgr.LanMgr.LanBase)
+        self.GTextSelfLeft.text = self.ViewMgr.LanMgr:GetLanValue("YourBalance") .. ":" .. UiChipShowHelper:GetGoldShowStr(self.LeftGold, self.ViewMgr.LanMgr.LanBase)
         self.ViewSlideEx = ViewSlideEx:new(nil, self.GSlider, top_chip, bottom_chip, 0.5,
                 function(value)
                     if (value > self.LeftGold) then

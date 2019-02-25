@@ -80,9 +80,9 @@ end
 ---------------------------------------
 function ControllerReward:S2cPlayerGetOnlineRewardRequestResult(result, reward)
     if (result == ProtocolResult.Success) then
-        ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:getLanValue("GetOnlinReward"), tostring(reward)))
+        ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:GetLanValue("GetOnlinReward"), tostring(reward)))
     else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("GetOnlinRewardFail"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("GetOnlinRewardFail"))
     end
 end
 
@@ -101,7 +101,7 @@ end
 ---------------------------------------
 function ControllerReward:OnPlayerGetTimingRewardRequestResult(result, reward_gold)
     if result == ProtocolResult.Success then
-        ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:getLanValue("GetRewardSuccess"), tostring(reward_gold)))
+        ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:GetLanValue("GetRewardSuccess"), tostring(reward_gold)))
     end
 end
 

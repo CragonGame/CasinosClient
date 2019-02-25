@@ -29,7 +29,7 @@ function UiDesktopHBetRewardItem:_onClickBetReward()
     local tips = ""
     local tb_datamgr = self.ViewMgr.TbDataMgr
     if (self.DesktopHDialyGetBetRewardState == DesktopHDialyGetBetRewardState.Get) then
-        tips = self.ViewMgr.LanMgr:getLanValue("HasBeenReceivedTreasure")
+        tips = self.ViewMgr.LanMgr:GetLanValue("HasBeenReceivedTreasure")
     else
         local reward_gold = 0
         local t_desktophbetreward = tb_datamgr:GetMapData("DesktopHBetReward")
@@ -44,7 +44,7 @@ function UiDesktopHBetRewardItem:_onClickBetReward()
         end
 
         local tb_reward = tb_datamgr:GetData("DesktopHBetReward", self.BetRewardTbId)
-        tips = string.format(self.ViewMgr.LanMgr:getLanValue("BetRechCanCollectBox"),
+        tips = string.format(self.ViewMgr.LanMgr:GetLanValue("BetRechCanCollectBox"),
                 UiChipShowHelper:GetGoldShowStr(tb_reward.BetValue, self.ViewMgr.LanMgr.LanBase),
                 UiChipShowHelper:GetGoldShowStr(reward_gold, self.ViewMgr.LanMgr.LanBase))
 
@@ -77,7 +77,7 @@ end
 function ViewDesktopHBetReward:OnCreate()
     self:BindEvListener("EvEntityInitBetReward", self)
 
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BetReward"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("BetReward"))
 
     self.ViewDesktopH = self.ViewMgr:GetView("DesktopH")
     local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom

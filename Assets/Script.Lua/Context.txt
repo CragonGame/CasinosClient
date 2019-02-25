@@ -176,7 +176,7 @@ function Context:OnSocketClose()
     ctrl_login:_init(false)
     if (ctrl_login.ShowKickOutInfo) then
         ctrl_login.ShowKickOutInfo = false
-        local info = self.LanMgr:getLanValue("AlreadyLogin")
+        local info = self.LanMgr:GetLanValue("AlreadyLogin")
         ViewHelper:UiShowInfoFailed(info)
     end
 end
@@ -424,7 +424,8 @@ function Context:_timerUpdateBundleApk(tm)
         self.TimerUpdateBundleApk = nil
 
         local apk_filename = self.CasinosContext.PathMgr:GetPersistentDataPath() .. '/KingTexas_' .. self.Cfg.BundleUpdateVersion .. '.apk'
-        self.CasinosContext.LuaMgr:WriteFileFromWWW(apk_filename, self.WWWUpdateBundleApk)
+        -- todo，bytes类型不正确
+        self.CasinosContext.LuaMgr:WriteFileFromBytes(apk_filename, self.WWWUpdateBundleApk)
         self.WWWUpdateBundleApk = nil
         if (self.CasinosContext.IsEditor == false) then
             CS.NativeFun.installAPK(apk_filename)

@@ -66,7 +66,7 @@ function ViewTexasMTT:OnHandleEv(ev)
             self.MatchTexas.Pause = p_i.Pause
             self.MatchTexas.PauseCountDownLeftSec = p_i.PauseCountdownLeftSec
             if self.MatchTexas.Pause then
-                self.TextBlind.text = self.ViewDesktop.ViewMgr.LanMgr:getLanValue("WaitMatchBegine")
+                self.TextBlind.text = self.ViewDesktop.ViewMgr.LanMgr:GetLanValue("WaitMatchBegine")
             else
                 self:setRaiseBlindTm(self.MatchTexas.RealtimeInfo.RaiseBlindLeftSecond)
             end
@@ -135,7 +135,7 @@ function ViewTexasMTT:setSnapShot(snapshot, is_init)
         if waiting_countdown == nil then
             waiting_countdown = view_mgr:CreateView("WaitingCountDown")
         end
-        waiting_countdown:SetTips(view_mgr.LanMgr:getLanValue("MatchBegine"), getdesktop_leftsec)
+        waiting_countdown:SetTips(view_mgr.LanMgr:GetLanValue("MatchBegine"), getdesktop_leftsec)
     else
         local waiting_countdown = view_mgr:GetView("WaitingCountDown")
         if waiting_countdown ~= nil then
@@ -199,32 +199,32 @@ function ViewTexasMTT:setRealTimeInfo(realtime_info, blind_type)
     table.insert(t_ranking_score, "/")
     table.insert(t_ranking_score, realtime_info.PlayerLeftNum)
     table.insert(t_ranking_score, "  ")
-    table.insert(t_ranking_score, view_mgr.LanMgr:getLanValue("AverageScore"))
+    table.insert(t_ranking_score, view_mgr.LanMgr:GetLanValue("AverageScore"))
     table.insert(t_ranking_score, ":")
     table.insert(t_ranking_score, realtime_info.AverageScore)
     self.TextRankingAScore.text = table.concat(t_ranking_score)
     if (self.MatchTexas.IsSnowballReward == true)
     then
         local t_reward = {}
-        table.insert(t_reward, view_mgr.LanMgr:getLanValue("TotalRewardGold"))
+        table.insert(t_reward, view_mgr.LanMgr:GetLanValue("TotalRewardGold"))
         table.insert(t_reward, ":")
         table.insert(t_reward, realtime_info.TotalRewardGold)
         table.insert(t_reward, "  ")
-        table.insert(t_reward, view_mgr.LanMgr:getLanValue("PlayerNumReward"))
+        table.insert(t_reward, view_mgr.LanMgr:GetLanValue("PlayerNumReward"))
         table.insert(t_reward, ":")
         table.insert(t_reward, realtime_info.PlayerNumReward)
         self.TextReward.text = table.concat(t_reward)
     end
 
     if realtime_info.CurrentRaiseBlindTbId ~= realtime_info.RaiseBlindIdNext then
-        self.TextBlind.text = view_mgr.LanMgr:getLanValue("RaiseBlindNext")
+        self.TextBlind.text = view_mgr.LanMgr:GetLanValue("RaiseBlindNext")
         ViewHelper:SetGObjectVisible(true, self.BlindBg)
     end
     local current_blindid = realtime_info.CurrentRaiseBlindTbId
     local t_blind = TbDataHelper:GetTexasRaiseBlindByTypeAndId(blind_type, current_blindid)
     self:setMatchDescribe(t_blind.BlindsSmall, t_blind.BlindsBig, t_blind.Ante)
     if self.MatchTexas.Pause then
-        self.TextBlind.text = view_mgr.LanMgr:getLanValue("WaitMatchBegine")
+        self.TextBlind.text = view_mgr.LanMgr:GetLanValue("WaitMatchBegine")
     end
 end
 
@@ -233,11 +233,11 @@ function ViewTexasMTT:setRaiseBlindTm(tm)
     local raise_tm = ""
     local view_mgr = self.ViewDesktop.ViewMgr
     if tm <= 0 then
-        raise_tm = view_mgr.LanMgr:getLanValue("RaiseBlindNext")
+        raise_tm = view_mgr.LanMgr:GetLanValue("RaiseBlindNext")
         ViewHelper:SetGObjectVisible(true, self.BlindBg)
     else
         local t_raise_blind = {}
-        table.insert(t_raise_blind, view_mgr.LanMgr:getLanValue("RaiseBlindTm"))
+        table.insert(t_raise_blind, view_mgr.LanMgr:GetLanValue("RaiseBlindTm"))
         table.insert(t_raise_blind, ":")
         local tm_str, is_out = CS.Casinos.UiHelper.checkTime(tm)
         table.insert(t_raise_blind, tm_str)
@@ -256,13 +256,13 @@ end
 function ViewTexasMTT:setMatchDescribe(s_b, b_b, ante)
     local view_mgr = self.ViewDesktop.ViewMgr
     local t_describe = {}
-    table.insert(t_describe, view_mgr.LanMgr:getLanValue("Blind"))
+    table.insert(t_describe, view_mgr.LanMgr:GetLanValue("Blind"))
     table.insert(t_describe, ":")
     table.insert(t_describe, s_b)
     table.insert(t_describe, "/")
     table.insert(t_describe, b_b)
     table.insert(t_describe, " ")
-    table.insert(t_describe, view_mgr.LanMgr:getLanValue("Ante"))
+    table.insert(t_describe, view_mgr.LanMgr:GetLanValue("Ante"))
     table.insert(t_describe, ":")
     table.insert(t_describe, ante)
     self.ViewDesktop.TextDesktopDescribe.text = table.concat(t_describe)
@@ -275,7 +275,7 @@ function ViewTexasMTT:_onClickMenu()
     if msg_box == nil then
         msg_box = view_mgr:CreateView("MsgBox")
     end
-    msg_box:useTwoBtn("", view_mgr.LanMgr:getLanValue("ExitMatchTip"),
+    msg_box:useTwoBtn("", view_mgr.LanMgr:GetLanValue("ExitMatchTip"),
             function()
                 local ev = self.ViewDesktop.ViewMgr:GetEv("EvUiClickExitDesk")
                 if (ev == nil)

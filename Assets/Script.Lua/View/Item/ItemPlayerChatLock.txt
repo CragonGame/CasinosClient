@@ -38,7 +38,7 @@ function ItemPlayerChatLock:setPlayerChatInfo(et_guid, icon, name, account_id, v
     else
         if (self.IsSystem) then
             self.GImageDealer.visible = true
-            self.GTextName.text = self.ViewMgr.LanMgr:getLanValue("TheDealer")
+            self.GTextName.text = self.ViewMgr.LanMgr:GetLanValue("TheDealer")
             self:setLockIcon()
         else
             self.ViewHeadIcon:HideIcon()

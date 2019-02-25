@@ -103,7 +103,7 @@ function ControllerTrade:OnHandleEv(ev)
     elseif (ev.EventName == "EvUiRequestBuyItem") then
         local is_firstrecharge = ev.is_firstrecharge
         local item_tbid = ev.item_tbid
-        ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Buying"))
+        ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("Buying"))
 
         if (ev.pay_type == "iap") then
             self:BuyItemByIAP(is_firstrecharge, item_tbid)
@@ -120,13 +120,13 @@ function ControllerTrade:OnHandleEv(ev)
             local body = ""
             if (is_firstrecharge) then
                 amount = tonumber(TbDataHelper:GetCommonValue("FirstRechargePrice"))
-                title = self.ControllerMgr.LanMgr:getLanValue("FirstRechargeTitle")
-                body = self.ControllerMgr.LanMgr:getLanValue("FirstRechargeBody")
+                title = self.ControllerMgr.LanMgr:GetLanValue("FirstRechargeTitle")
+                body = self.ControllerMgr.LanMgr:GetLanValue("FirstRechargeBody")
             else
                 local tb_item = self.ControllerMgr.TbDataMgr:GetData("Item", item_tbid)
                 amount = tb_item.Price
-                title = self.ControllerMgr.LanMgr:getLanValue(tb_item.Name)
-                body = self.ControllerMgr.LanMgr:getLanValue(tb_item.Desc)
+                title = self.ControllerMgr.LanMgr:GetLanValue(tb_item.Name)
+                body = self.ControllerMgr.LanMgr:GetLanValue(tb_item.Desc)
             end
             payment_info.ItemName = title
             payment_info.Channel = ev.pay_type
@@ -170,18 +170,18 @@ function ControllerTrade:OnTradeBuyItemResponse(response1)
     if (response.result == ProtocolResult.Success) then
         local tb_item = self.ControllerMgr.TbDataMgr:GetData("Item", response.buyitem_tbid)
         if (tb_item.UnitType == "GiftNormal" or tb_item.UnitType == "Consume") then
-            ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:getLanValue("BuySuccess"), self.ControllerMgr.LanMgr:getLanValue(tb_item.Name)))
+            ViewHelper:UiShowInfoSuccess(string.format(self.ControllerMgr.LanMgr:GetLanValue("BuySuccess"), self.ControllerMgr.LanMgr:GetLanValue(tb_item.Name)))
         end
     elseif (response.result == ProtocolResult.ChipNotEnough) then
-        local tips = string.format(self.ControllerMgr.LanMgr:getLanValue("NotEnoughBuyFail"),
-                self.ViewMgr.LanMgr:getLanValue("Chip"))
+        local tips = string.format(self.ControllerMgr.LanMgr:GetLanValue("NotEnoughBuyFail"),
+                self.ViewMgr.LanMgr:GetLanValue("Chip"))
         ViewHelper:UiShowInfoFailed(tips)
     elseif (response.result == ProtocolResult.DiamondNotEnough) then
-        local tips = string.format(self.ControllerMgr.LanMgr:getLanValue("NotEnoughBuyFail"),
-                self.ViewMgr.LanMgr:getLanValue("Coin"))
+        local tips = string.format(self.ControllerMgr.LanMgr:GetLanValue("NotEnoughBuyFail"),
+                self.ViewMgr.LanMgr:GetLanValue("Coin"))
         ViewHelper:UiShowInfoFailed(tips)
     else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("BuyGoodsFail"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("BuyGoodsFail"))
     end
 end
 
@@ -190,25 +190,25 @@ function ControllerTrade:OnTradeSellItemResponse(response1)
     local response = SellItemResponse:new(nil)
     response:setData(response1)
     if (response.result == ProtocolResult.Success) then
-        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("SellGoodsSuccess"))
+        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("SellGoodsSuccess"))
     end
 end
 
 ---------------------------------------
 function ControllerTrade:OnTradeOrderNotify(result, is_firstrecharge, item_tbid)
     --print("OnTradeOrderNotify ")
-    local item_name = self.ControllerMgr.LanMgr:getLanValue("FirstRechargeTitle")
+    local item_name = self.ControllerMgr.LanMgr:GetLanValue("FirstRechargeTitle")
     if (is_firstrecharge == false) then
         local tb_item = self.ControllerMgr.TbDataMgr:GetData("Item", item_tbid)
-        item_name = self.ControllerMgr.LanMgr:getLanValue(tb_item.Name)
+        item_name = self.ControllerMgr.LanMgr:GetLanValue(tb_item.Name)
     end
     if (result == ProtocolResult.Success) then
         --print("OnTradeOrderNotify success")
-        local format_info = self.ControllerMgr.LanMgr:getLanValue("BuyItemSuccess")
+        local format_info = self.ControllerMgr.LanMgr:GetLanValue("BuyItemSuccess")
         ViewHelper:UiShowInfoSuccess(string.format(format_info, item_name))
     else
         --print("OnTradeOrderNotify failed")
-        local format_info = self.ControllerMgr.LanMgr:getLanValue("BuyItemFailed")
+        local format_info = self.ControllerMgr.LanMgr:GetLanValue("BuyItemFailed")
         ViewHelper:UiShowInfoFailed(string.format(format_info, item_name))
     end
 end
@@ -218,9 +218,9 @@ function ControllerTrade:OnWalletRechargeNotify(response1)
     local response = WalletRechargeNotify:new(nil)
     response:setData(response1)
     if (response.Result == WalletResult.Success) then
-        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("BuySuccess1"))
+        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("BuySuccess1"))
     else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("BuyFail"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("BuyFail"))
     end
 end
 
@@ -229,9 +229,9 @@ function ControllerTrade:OnWalletWithdrawNotify(response1)
     local response = WalletWithdrawNotify:new(nil)
     response:setData(response1)
     if (response.Result == WalletResult.Success) then
-        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("WalletWithdrawSuccess"))
+        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("WalletWithdrawSuccess"))
     else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("WalletWithdrawFailed"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("WalletWithdrawFailed"))
     end
 end
 
@@ -287,7 +287,7 @@ function ControllerTrade:BuyBillingItem(is_first_recharge, tb_id)
     end
     --elseif (self.CasinosContext.UnityIOS == true)
     --then
-    --    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Buying"))
+    --    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("Buying"))
     --    self:BuyItemByIAP(is_first_recharge, tb_id)
     --end
 end
@@ -322,7 +322,7 @@ function ControllerTrade:OnPayCreateCharge(status, response, error)
             CS.Pay.pay("", response.itemName, self.PayType, tonumber(response.amount), response.chargeId, "", url_s)
         end
     else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CreateChargeError"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("CreateChargeError"))
     end
 end
 

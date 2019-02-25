@@ -37,7 +37,7 @@ function ViewPlayerProfile:OnCreate()
     local co_headicon = self.ComUi:GetChild("CoHeadIcon").asCom
     self.UiHeadIcon = ViewHeadIcon:new(nil, co_headicon,
             function()
-                ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetBigPic"))
+                ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("GetBigPic"))
                 local icon_name = self.PlayerInfo.PlayerInfoCommon.IconName
                 if (icon_name ~= nil and icon_name ~= "")
                 then
@@ -155,12 +155,12 @@ end
 ---------------------------------------
 function ViewPlayerProfile:SendMagicExpression(exp_tbid)
     if (self.PlayerInfo.PlayerInfoCommon.PlayerGuid == self.ControllerPlayer.Guid) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("NotGiveSelfMagic"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("NotGiveSelfMagic"))
         return
     end
 
     if (self.PlayerProfileType == CS.Casinos._ePlayerProfileType.Desktop and self.ControllerDesktop.DesktopBase.MePlayer.IsInGame == false) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SitTableSendMagic"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("SitTableSendMagic"))
         return
     end
     local ev = self:GetEv("EvUiBuyItem")
@@ -276,10 +276,10 @@ function ViewPlayerProfile:SetPlayerInfo(player_info)
     self.GTextPlayerSign.text = self.PlayerInfo.PlayerInfoMore.IndividualSignature
     self.GTextId.text = "ID: " .. CS.Casinos.LuaHelper.FormatPlayerActorId(self.PlayerInfo.PlayerInfoMore.PlayerId)
 
-    local address = self.ViewMgr.LanMgr:getLanValue("Address")
+    local address = self.ViewMgr.LanMgr:GetLanValue("Address")
     local real_address = self.PlayerInfo.PlayerInfoMore.IPAddress
     if (real_address == nil or real_address == "") then
-        real_address = self.ViewMgr.LanMgr:getLanValue("Unknown")
+        real_address = self.ViewMgr.LanMgr:GetLanValue("Unknown")
     end
     address = self.CasinosContext:AppendStrWithSB(address, ": ", real_address)
     self.GTextPlayerIP.text = address
@@ -322,9 +322,9 @@ function ViewPlayerProfile:SetPlayerInfo(player_info)
     end
 
     local is_friend = self.ControllerIM:isFriend(self.PlayerInfo.PlayerInfoCommon.PlayerGuid)
-    local btn_addfriend_title = self.ViewMgr.LanMgr:getLanValue("AddFriend")
+    local btn_addfriend_title = self.ViewMgr.LanMgr:GetLanValue("AddFriend")
     if (is_friend) then
-        btn_addfriend_title = self.ViewMgr.LanMgr:getLanValue("DeleteFriend1")
+        btn_addfriend_title = self.ViewMgr.LanMgr:GetLanValue("DeleteFriend1")
     end
     local text_friend = self.GCoFriend:GetChild("TextFriend").asTextField
     text_friend.text = btn_addfriend_title

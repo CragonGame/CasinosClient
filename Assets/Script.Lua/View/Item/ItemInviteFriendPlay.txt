@@ -49,10 +49,10 @@ function ItemInviteFriendPlay:onClickItem()
             ev.friend_desktopguid = player_playstate.DesktopGuid
         end
         view_mgr:SendEv(ev)
-        self.GTextTm.text = view_mgr.LanMgr:getLanValue("HaveInvited")
+        self.GTextTm.text = view_mgr.LanMgr:GetLanValue("HaveInvited")
         self.GTextTm.color = CS.UnityEngine.Color.yellow
         self.AlreadyInvite = true
     else
-        ViewHelper:UiShowInfoFailed(view_mgr.LanMgr:getLanValue("DontRepeatInvitation"))
+        ViewHelper:UiShowInfoFailed(view_mgr.LanMgr:GetLanValue("DontRepeatInvitation"))
     end
 end

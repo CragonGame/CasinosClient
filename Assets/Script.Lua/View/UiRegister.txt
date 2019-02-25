@@ -44,7 +44,7 @@ function UiRegister:new(view)
                 o.ViewLogin.UiChooseCountryCode.CountryCode,
                 o.ViewLogin.UiChooseCountryCode.KeyAndCodeFormat)
         o.GTextInputAccRegister = com_accregister:GetChild("InputAccLogin").asTextInput
-        o.GTextInputAccRegister.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:getLanValue("EnterPhone"))
+        o.GTextInputAccRegister.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:GetLanValue("EnterPhone"))
         o.GTextInputAccRegister.onChanged:Set(
                 function()
                     o:_checkRegisterInput()
@@ -54,7 +54,7 @@ function UiRegister:new(view)
 
         local com_pwdregister = view.ComUi:GetChildInGroup(group_register, "ComPwdReg").asCom
         o.GTextInputPwdRegister = com_pwdregister:GetChild("InputPwdRegister").asTextInput
-        o.GTextInputPwdRegister.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:getLanValue("EnterPwdTips1"))
+        o.GTextInputPwdRegister.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:GetLanValue("EnterPwdTips1"))
         o.GTextInputPwdRegister.onChanged:Set(
                 function()
                     o:_checkRegisterInput()
@@ -69,7 +69,7 @@ function UiRegister:new(view)
         local group_registercode = obj_registercode.asGroup
         o.TextRegisterPhone = view.ComUi:GetChildInGroup(group_registercode, "TextRegisterPhone").asTextField
         o.TextRegisterCode = view.ComUi:GetChildInGroup(group_registercode, "TextRegisterCode").asTextInput
-        o.TextRegisterCode.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:getLanValue("PhoneCode"))
+        o.TextRegisterCode.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:GetLanValue("PhoneCode"))
         o.TextRegisterCode.onChanged:Set(
                 function()
                     o:_checkRegisterCodeInput()
@@ -115,12 +115,12 @@ function UiRegister:Update(tm)
         self.NextPhoneCodeSendTm = next_tm
 
         if next_tm <= 0 then
-            self.TextResend.text = self.ViewLogin.ViewMgr.LanMgr:getLanValue("Resend")
+            self.TextResend.text = self.ViewLogin.ViewMgr.LanMgr:GetLanValue("Resend")
             self.BtnResend.enabled = true
             self.PhoneCodeIsSend = false
             self.NextPhoneCodeSendTm = 60
         else
-            self.TextResend.text = string.format("%s(%s)", self.ViewLogin.ViewMgr.LanMgr:getLanValue("Resend"), math.floor(next_tm))
+            self.TextResend.text = string.format("%s(%s)", self.ViewLogin.ViewMgr.LanMgr:GetLanValue("Resend"), math.floor(next_tm))
         end
     end
 end
@@ -147,7 +147,7 @@ function UiRegister:_onClickBtnRegister()
     if msg_box == nil then
         msg_box = self.ViewLogin.ViewMgr:CreateView("MsgBox")
     end
-    msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("ConfirmPhone"), string.format("%s：\n%s%s", self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeToPhone"), self.CountryCode, self.GTextInputAccRegister.text),
+    msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:GetLanValue("ConfirmPhone"), string.format("%s：\n%s%s", self.ViewLogin.ViewMgr.LanMgr:GetLanValue("SendCodeToPhone"), self.CountryCode, self.GTextInputAccRegister.text),
             function()
                 self.ViewLogin:Switch2RegisterCode();
                 self.PhoneFormat = self.CountryCode .. self.GTextInputAccRegister.text
@@ -214,8 +214,8 @@ function UiRegister:_onClickBtnReturnRegisterCode()
     if msg_box == nil then
         msg_box = self.ViewLogin.ViewMgr:CreateView("MsgBox")
     end
-    msg_box:useTwoBtn2(self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeTipTitle"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("SendCodeTipContent"),
-            self.ViewLogin.ViewMgr.LanMgr:getLanValue("Wait"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("Return"), 0, false,
+    msg_box:useTwoBtn2(self.ViewLogin.ViewMgr.LanMgr:GetLanValue("SendCodeTipTitle"), self.ViewLogin.ViewMgr.LanMgr:GetLanValue("SendCodeTipContent"),
+            self.ViewLogin.ViewMgr.LanMgr:GetLanValue("Wait"), self.ViewLogin.ViewMgr.LanMgr:GetLanValue("Return"), 0, false,
             function()
                 self.ViewLogin.ViewMgr:DestroyView(msg_box)
             end,
@@ -233,7 +233,7 @@ function UiRegister:_onClickBtnResend()
     if msg_box == nil then
         msg_box = self.ViewLogin.ViewMgr:CreateView("MsgBox")
     end
-    msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:getLanValue("Confirm"), self.ViewLogin.ViewMgr.LanMgr:getLanValue("ResendCode"),
+    msg_box:useTwoBtn(self.ViewLogin.ViewMgr.LanMgr:GetLanValue("Confirm"), self.ViewLogin.ViewMgr.LanMgr:GetLanValue("ResendCode"),
             function()
                 local ev = self.ViewLogin.ViewMgr:GetEv("EvUiRequestGetPhoneCode")
                 if (ev == nil) then

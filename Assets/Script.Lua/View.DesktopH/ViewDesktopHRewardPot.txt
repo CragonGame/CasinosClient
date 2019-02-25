@@ -130,11 +130,11 @@ end
 ---------------------------------------
 function ViewDesktopHRewardPot:changeTab()
     if (self.ControllerRewardPot.selectedIndex == 0) then
-        ViewHelper:SetUiTitle(self.GTextTitleLeft, self.ViewMgr.LanMgr:getLanValue("RewardPot"))
-        self.GTextTitleRight.text = self.ViewMgr.LanMgr:getLanValue("RewardRecord")
+        ViewHelper:SetUiTitle(self.GTextTitleLeft, self.ViewMgr.LanMgr:GetLanValue("RewardPot"))
+        self.GTextTitleRight.text = self.ViewMgr.LanMgr:GetLanValue("RewardRecord")
     else
-        ViewHelper:SetUiTitle(self.GTextTitleRight, self.ViewMgr.LanMgr:getLanValue("RewardRecord"))
-        self.GTextTitleLeft.text = self.ViewMgr.LanMgr:getLanValue("RewardPot")
+        ViewHelper:SetUiTitle(self.GTextTitleRight, self.ViewMgr.LanMgr:GetLanValue("RewardRecord"))
+        self.GTextTitleLeft.text = self.ViewMgr.LanMgr:GetLanValue("RewardPot")
     end
 end
 

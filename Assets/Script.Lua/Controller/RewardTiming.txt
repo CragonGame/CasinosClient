@@ -43,6 +43,6 @@ function RewardTiming:OnClickBtnTimingReward()
     if (self.CanGetReward == true) then
         self.Rpc:RPC0(self.MethodType.PlayerGetTimingRewardRequest)
     else
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("CanNotGetYet"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("CanNotGetYet"))
     end
 end

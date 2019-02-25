@@ -338,7 +338,7 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:playerWaitWhile()
-    self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("StepOut"), CS.UnityEngine.Color.white)
+    self:_setNameOrAction(self.ViewMgr.LanMgr:GetLanValue("StepOut"), CS.UnityEngine.Color.white)
     self.UiPlayerGiftAndVIP:Reset()
     --ViewHelper:SetGObjectVisible(true, self.GImagePlayerShadow)
     self:ShowShade(true)
@@ -434,7 +434,7 @@ function ViewDesktopPlayerInfoTexas:SetPlayerInfo(player, parent, pos, desk_seat
     self:ShowShade(show_shadow)
     if player_state ~= TexasDesktopPlayerState.InGame then
         if player_state == TexasDesktopPlayerState.WaitWhile then
-            self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("StepOut"), CS.UnityEngine.Color.white)
+            self:_setNameOrAction(self.ViewMgr.LanMgr:GetLanValue("StepOut"), CS.UnityEngine.Color.white)
         else
             self:_setNameOrAction(CS.Casinos.UiHelper.addEllipsisToStr(self.Player.PlayerDataDesktop.NickName, 15, 4), CS.UnityEngine.Color.white)
         end
@@ -502,30 +502,30 @@ function ViewDesktopPlayerInfoTexas:setPlayerStateAndAction(player_state, action
         if (action == PlayerActionTypeTexas.None) then
             play_sound = false
         elseif (action == PlayerActionTypeTexas.Bet) then
-            action_name = self.ViewMgr.LanMgr:getLanValue("BetOn")
+            action_name = self.ViewMgr.LanMgr:GetLanValue("BetOn")
             play_sound = false
         elseif (action == PlayerActionTypeTexas.Fold) then
             show_shadow = true
             sound = "desk_player_fold"
-            action_name = self.ViewMgr.LanMgr:getLanValue("Fold")
+            action_name = self.ViewMgr.LanMgr:GetLanValue("Fold")
         elseif (action == PlayerActionTypeTexas.Check) then
             play_sound = false
             sound = "dongdong"
             if self.Player.DesktopTexas.IsSnapshot == false then
                 self.CasinosContext:Play(sound, CS.Casinos._eSoundLayer.LayerNormal)
             end
-            action_name = self.ViewMgr.LanMgr:getLanValue("Check")
+            action_name = self.ViewMgr.LanMgr:GetLanValue("Check")
         elseif (action == PlayerActionTypeTexas.Call) then
             sound = "desk_post_bet"
-            action_name = self.ViewMgr.LanMgr:getLanValue("Call")
+            action_name = self.ViewMgr.LanMgr:GetLanValue("Call")
         elseif (action == PlayerActionTypeTexas.Raise) then
-            action_name = self.ViewMgr.LanMgr:getLanValue("AddBet")
+            action_name = self.ViewMgr.LanMgr:GetLanValue("AddBet")
             play_sound = false
         elseif (action == PlayerActionTypeTexas.ReRaise) then
-            action_name = self.ViewMgr.LanMgr:getLanValue("AgainAddBet")
+            action_name = self.ViewMgr.LanMgr:GetLanValue("AgainAddBet")
             play_sound = false
         elseif (action == PlayerActionTypeTexas.AllIn) then
-            action_name = self.ViewMgr.LanMgr:getLanValue("All-in")
+            action_name = self.ViewMgr.LanMgr:GetLanValue("All-in")
             ViewHelper:SetGObjectVisible(true, self.GMovieAllIn)
             play_sound = false
         end
@@ -618,12 +618,12 @@ end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:setSmallBlind()
-    --self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("小盲注", "SmallBlind"), CS.UnityEngine.Color.yellow)
+    --self:_setNameOrAction(self.ViewMgr.LanMgr:GetLanValue("小盲注", "SmallBlind"), CS.UnityEngine.Color.yellow)
 end
 
 ---------------------------------------
 function ViewDesktopPlayerInfoTexas:setBigBlind()
-    --self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("大盲注", "BigBlind"), CS.UnityEngine.Color.yellow)
+    --self:_setNameOrAction(self.ViewMgr.LanMgr:GetLanValue("大盲注", "BigBlind"), CS.UnityEngine.Color.yellow)
 end
 
 ---------------------------------------
@@ -786,11 +786,11 @@ function ViewDesktopPlayerInfoTexas:showWinStar(showWinStar)
     local type_name = ""
     local show_winner_tips = true
     if (best_hand == nil) then
-        type_name = self.ViewMgr.LanMgr:getLanValue("Winner")
+        type_name = self.ViewMgr.LanMgr:GetLanValue("Winner")
         show_winner_tips = false
     else
         if (best_hand.RankType == CS.Casinos.HandRankTypeTexas.None) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("Winner")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("Winner")
             show_winner_tips = false
         end
     end
@@ -858,38 +858,38 @@ function ViewDesktopPlayerInfoTexas:showWinnerHandType(win_golds)
     local show_winner_tips = true
     local add_win = true
     if (best_hand == nil) then
-        type_name = self.ViewMgr.LanMgr:getLanValue("Winner")
+        type_name = self.ViewMgr.LanMgr:GetLanValue("Winner")
         show_winner_tips = false
         add_win = false
     else
         if (best_hand.RankType == CS.Casinos.HandRankTypeTexas.None) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("Winner")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("Winner")
             show_winner_tips = false
             add_win = false
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.HighCard)
         then
-            type_name = self.ViewMgr.LanMgr:getLanValue("HighCard")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("HighCard")
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Pair) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("Pair")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("Pair")
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.TwoPairs) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("TwoPairs")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("TwoPairs")
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.ThreeOfAKind) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("ThreeOfAKind")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("ThreeOfAKind")
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Straight) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("Straight")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("Straight")
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.Flush) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("Flush")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("Flush")
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.FullHouse) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("FullHouse")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("FullHouse")
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.FourOfAKind) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("FourOfAKind")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("FourOfAKind")
         elseif (best_hand.RankType == CS.Casinos.HandRankTypeTexas.StraightFlush) then
-            type_name = self.ViewMgr.LanMgr:getLanValue("StraightFlush")
+            type_name = self.ViewMgr.LanMgr:GetLanValue("StraightFlush")
         end
     end
 
     if add_win then
-        type_name = type_name .. self.ViewMgr.LanMgr:getLanValue("WinGame")
+        type_name = type_name .. self.ViewMgr.LanMgr:GetLanValue("WinGame")
     end
 
     if self.Player.DesktopTexas.IsSnapshot == false then
@@ -992,7 +992,7 @@ function ViewDesktopPlayerInfoTexas:setLeaveWhileTime(rest_time)
         self:ShowShade(false)
         ViewHelper:SetGObjectVisible(false, self.GImagePlayerActionProgress)
     else
-        self:_setNameOrAction(self.ViewMgr.LanMgr:getLanValue("StepOut"), CS.UnityEngine.Color.white)
+        self:_setNameOrAction(self.ViewMgr.LanMgr:GetLanValue("StepOut"), CS.UnityEngine.Color.white)
         --ViewHelper:SetGObjectVisible(true, self.GImagePlayerShadow)
         self:ShowShade(true)
         ViewHelper:SetGObjectVisible(true, self.GImagePlayerActionProgress)

@@ -13,7 +13,7 @@ end
 
 ---------------------------------------
 function ViewGiftShop:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("GiftShop"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("GiftShop"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ViewPool = self.ViewMgr:GetView("Pool")

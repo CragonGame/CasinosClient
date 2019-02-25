@@ -42,20 +42,20 @@ function ViewPlayerInfo:OnCreate()
                 self:onClickBtnProperty()
             end
     )
-    local btn_moreCoin = self.ComUi:GetChildInGroup(group, "MoreCoins").asButton
-    btn_moreCoin.onClick:Add(
+    local btn_morecoin = self.ComUi:GetChildInGroup(group, "MoreCoins").asButton
+    btn_morecoin.onClick:Add(
             function()
                 self:onClickMoreCoin()
             end
     )
-    local btn_inviteFriend = self.ComUi:GetChildInGroup(group, "InviteFriend").asButton
-    btn_inviteFriend.onClick:Add(
+    local btn_invitefriend = self.ComUi:GetChildInGroup(group, "InviteFriend").asButton
+    btn_invitefriend.onClick:Add(
             function()
                 self:onClickInviteFriend()
             end
     )
-    local btn_moreChips = self.ComUi:GetChild("MoreChips").asButton
-    btn_moreChips.onClick:Add(
+    local btn_morechips = self.ComUi:GetChild("MoreChips").asButton
+    btn_morechips.onClick:Add(
             function()
                 self:onClickMoreChips()
             end
@@ -94,7 +94,7 @@ function ViewPlayerInfo:OnCreate()
                 self:_onClickHeadIcon()
             end
     )
-    self.GImageGift = self.ComUi:GetChild("GiftBg").asImage
+    self.GImgGift = self.ComUi:GetChild("GiftBg").asImage
     self.GInputIndividualSignature = self.ComUi:GetChild("IndividualSignature").asTextInput
     self.GInputIndividualSignature.onChanged:Add(
             function()
@@ -108,7 +108,7 @@ function ViewPlayerInfo:OnCreate()
             end
 
     )
-    local nickname_tips = self.ViewMgr.LanMgr:getLanValue("ClickNickname")
+    local nickname_tips = self.ViewMgr.LanMgr:GetLanValue("ClickNickname")
     local btn_editsign = self.ComUi:GetChild("BtnEidtSign").asButton
     btn_editsign.onClick:Add(
             function()
@@ -132,7 +132,7 @@ function ViewPlayerInfo:OnCreate()
         end
         if (changename_itemtbid ~= 0)
         then
-            local f = self.ViewMgr.LanMgr:getLanValue("NeedRenameCard")
+            local f = self.ViewMgr.LanMgr:GetLanValue("NeedRenameCard")
             nickname_tips = nickname_tips .. f
         end
     end
@@ -184,7 +184,7 @@ function ViewPlayerInfo:OnHandleEv(ev)
         self.GTextCion.text = UiChipShowHelper:GetGoldShowStr(self.ControllerActor.PropDiamond:get(), self.ViewMgr.LanMgr.LanBase, false)
     elseif (ev.EventName == "EvGetPicUpLoadSuccess") then
         self.ViewHeadIcon:SetIcon(self.ControllerActor.PropIcon:get(), self.ControllerActor.PropAccountId:get())
-        local tips = self.ViewMgr.LanMgr:getLanValue("IconSuccess")
+        local tips = self.ViewMgr.LanMgr:GetLanValue("IconSuccess")
         ViewHelper:UiShowInfoSuccess(tips)
     elseif (ev.EventName == "EvEntityCurrentTmpGiftChange") then
         self:SetGift()
@@ -228,9 +228,9 @@ function ViewPlayerInfo:initPlayerInfo()
 
     local address = self.ControllerActor.PropIpAddress:get()
     if (address == nil or address == "") then
-        address = self.ViewMgr.LanMgr:getLanValue("Unknown")
+        address = self.ViewMgr.LanMgr:GetLanValue("Unknown")
     end
-    self.GTextAddress.text = self.ViewMgr.LanMgr:getLanValue("Address") .. ": " .. address
+    self.GTextAddress.text = self.ViewMgr.LanMgr:GetLanValue("Address") .. ": " .. address
     self:SetGift()
 end
 
@@ -245,7 +245,7 @@ function ViewPlayerInfo:changeNickName()
         if (changename_itemtbid ~= 0) then
             local changename_count = self.ControllerBag:getAlreadyHaveItemCount(changename_itemtbid)
             if (changename_count <= 0) then
-                ViewHelper:UiShowMsgBox(self.ViewMgr.LanMgr:getLanValue("RenameCardInsufficient"),
+                ViewHelper:UiShowMsgBox(self.ViewMgr.LanMgr:GetLanValue("RenameCardInsufficient"),
                         function()
                             local ui_shop = self.ViewMgr:CreateView("Shop")
                             ui_shop:ShowTabConsume()
@@ -256,10 +256,10 @@ function ViewPlayerInfo:changeNickName()
         end
         local nick_name = self.GInputNickName.text
         if (nick_name == nil or nick_name == "") then
-            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("NicknameNotNull"))
+            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("NicknameNotNull"))
             return
         end
-        ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("ChangeInfo"))
+        ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("ChangeInfo"))
 
         local ev = self:GetEv("EvUiClickChangePlayerNickName")
         if (ev == nil) then
@@ -272,7 +272,7 @@ end
 
 ---------------------------------------
 function ViewPlayerInfo:changeIndividualSignature()
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("ChangeInfo"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("ChangeInfo"))
     local ev = self:GetEv("EvUiClickChangePlayerIndividualSignature")
     if (ev == nil) then
         ev = EvUiClickChangePlayerIndividualSignature:new(nil)
@@ -285,10 +285,10 @@ end
 function ViewPlayerInfo:SetGift()
     if (self.ControllerBag.CurrentGift ~= nil) then
         self.ViewHeadIcon:SetGift(self.ControllerBag.CurrentGift.ItemData.item_tbid)
-        self.GImageGift.visible = false
+        self.GImgGift.visible = false
     else
         self.ViewHeadIcon:SetGift(0)
-        self.GImageGift.visible = true
+        self.GImgGift.visible = true
     end
 end
 
@@ -399,9 +399,9 @@ end
 
 ---------------------------------------
 function ViewPlayerInfo:setWeChatTitle()
-    local title = self.ViewMgr.LanMgr:getLanValue("UnBindWeChatTitle")
+    local title = self.ViewMgr.LanMgr:GetLanValue("UnBindWeChatTitle")
     if self.NeedBindWeChat then
-        title = self.ViewMgr.LanMgr:getLanValue("BindWeChatTitle")
+        title = self.ViewMgr.LanMgr:GetLanValue("BindWeChatTitle")
     end
     self.TextBindWeChatTilte.text = title
 end

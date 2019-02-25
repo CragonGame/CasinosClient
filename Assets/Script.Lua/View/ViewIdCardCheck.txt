@@ -25,7 +25,7 @@ function ViewIdCardCheck:OnCreate()
 
     local com_tips = self.ComUi:GetChild("ComInputName").asCom
     self.TextName = com_tips:GetChild("InputText").asTextField
-    self.TextName.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:getLanValue("EnterName"))
+    self.TextName.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:GetLanValue("EnterName"))
     self.TextName.onChanged:Set(
             function()
                 self:_checkIdCardInput()
@@ -34,7 +34,7 @@ function ViewIdCardCheck:OnCreate()
 
     local com_id = self.ComUi:GetChild("ComInputId").asCom
     self.TextId = com_id:GetChild("InputText").asTextField
-    self.TextId.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:getLanValue("EnterIdCard"))
+    self.TextId.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:GetLanValue("EnterIdCard"))
     self.TextId.onChanged:Set(
             function()
                 self:_checkIdCardInput()

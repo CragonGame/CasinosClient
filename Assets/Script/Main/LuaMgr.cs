@@ -69,8 +69,8 @@ namespace Casinos
             typeof(UnityEngine.Vector3),
             typeof(UnityEngine.Vector2),
             typeof(UnityEngine.Vector4),
-            typeof(UnityEngine.WWW),
-            typeof(UnityEngine.WWWForm),
+            //typeof(UnityEngine.WWW),
+            //typeof(UnityEngine.WWWForm),
             //typeof(UnityEngine.Texture),
             //typeof(UnityEngine.Texture2D),
             //typeof(UnityEngine.MovieTexture),
@@ -80,7 +80,7 @@ namespace Casinos
             // System            
             typeof(Action),
             typeof(Action<int, string>),
-            typeof(Action<string, WWW>),
+            typeof(Action<string, UnityEngine.Networking.UnityWebRequest>),
             typeof(BitConverter),
             typeof(Array),
             typeof(Hashtable),
@@ -146,12 +146,12 @@ namespace Casinos
             typeof(FairyGUI.Window),
 
             // Casinos
-            typeof(_eAsyncAssetLoadType),
+            //typeof(_eAsyncAssetLoadType),
             typeof(_eChatItemType),
             typeof(_ePayType),
             typeof(_eProjectItemDisplayNameKey),
-            typeof(AsyncAssetLoaderMgr),
-            typeof(AsyncAssetLoadGroup),
+            //typeof(AsyncAssetLoaderMgr),
+            //typeof(AsyncAssetLoadGroup),
             typeof(Card),
             typeof(ChatParser),
             typeof(EbTool),
@@ -160,7 +160,7 @@ namespace Casinos
             typeof(EbDoubleLinkNode<EbTimeEvent>),
             typeof(EbDoubleLinkList<EbTimeEvent>),
             typeof(EbTimeWheel),
-            typeof(LoaderTicket),
+            //typeof(LoaderTicket),
             typeof(MbHelper),
             typeof(NativeFun),
             //typeof(OpenInstall),
@@ -183,8 +183,8 @@ namespace Casinos
             typeof(cn.sharesdk.unity3d.ShareSDK),
             typeof(ZXing.BarcodeWriter),
             typeof(ZXing.QrCode.QrCodeEncodingOptions),
-                        typeof(UniWebView),
-            typeof(UniWebViewMessage),
+            //typeof(UniWebView),
+            //typeof(UniWebViewMessage),
         };
 
         //---------------------------------------------------------------------
@@ -202,7 +202,7 @@ namespace Casinos
             typeof(Action<int, string>),
             typeof(Action<string, Action>),
             typeof(Action<string, Action, Action>),
-            typeof(Action<string, WWW>),
+            typeof(Action<string, UnityEngine.Networking.UnityWebRequest>),
             typeof(Action<string, string>),
             typeof(Action<string, int>),
             typeof(Action<string, float>),
@@ -218,7 +218,7 @@ namespace Casinos
             typeof(Action<string, long>),
             typeof(Action<Dictionary<byte, long>>),
             typeof(Action<Dictionary<byte, long>, Dictionary<byte, long>>),
-            typeof(Action<LoaderTicket, string, UnityEngine.Object>),
+            //typeof(Action<LoaderTicket, string, UnityEngine.Object>),
             typeof(Action<Dictionary<string,Dictionary<string, string>>>),
             typeof(Action<ushort, byte[]>),
             //typeof(Action<OnePF.Purchase>),
@@ -228,8 +228,8 @@ namespace Casinos
             typeof(OnSocketConnected),
             typeof(OnSocketClosed),
             typeof(OnSocketError),
-            typeof(Action<UnityEngine.Object, LoaderTicket>),
-            typeof(Action<LoaderTicket, Texture>),
+            //typeof(Action<UnityEngine.Object, LoaderTicket>),
+            //typeof(Action<LoaderTicket, Texture>),
             typeof(AllTaskDoneCallBack),
             typeof(DelayEndCallBack),
             typeof(EventHandler),
@@ -245,14 +245,13 @@ namespace Casinos
 
             // SDKs
             typeof(cn.sharesdk.unity3d.ShareSDK.EventHandler),
-            typeof(UniWebView.PageStartedDelegate),
-            typeof(UniWebView.PageFinishedDelegate),
-            typeof(UniWebView.PageErrorReceivedDelegate),
-            typeof(UniWebView.MessageReceivedDelegate),
-            typeof(UniWebView.ShouldCloseDelegate),
-            typeof(UniWebView.KeyCodeReceivedDelegate),
-            //typeof(UniWebView.OreintationChangedDelegate),
-            typeof(UniWebView.OnWebContentProcessTerminatedDelegate),
+            //typeof(UniWebView.PageStartedDelegate),
+            //typeof(UniWebView.PageFinishedDelegate),
+            //typeof(UniWebView.PageErrorReceivedDelegate),
+            //typeof(UniWebView.MessageReceivedDelegate),
+            //typeof(UniWebView.ShouldCloseDelegate),
+            //typeof(UniWebView.KeyCodeReceivedDelegate),
+            //typeof(UniWebView.OnWebContentProcessTerminatedDelegate),
         };
     }
 
@@ -268,6 +267,7 @@ namespace Casinos
         DelegateLua3 FuncLaunchOnApplicationFocus { get; set; }
         DelegateLua1 FuncLaunchOnSocketClose { get; set; }
         CasinosContext Context { get; set; }
+        MbAsyncLoadAssets MbAsyncLoadAssets { get; set; }
 
         float TickTimeSpanLast = 0;
         const float TickTimeSpanMax = 1f;
@@ -279,6 +279,9 @@ namespace Casinos
             MapLuaFiles = new Dictionary<string, byte[]>();
             LuaEnv = new LuaEnv();
             LuaEnv.AddLoader(_luaLoaderCustom);
+
+            var go_main = GameObject.Find(StringDef.GoMainObj);
+            MbAsyncLoadAssets = go_main.GetComponent<MbAsyncLoadAssets>();
         }
 
         //---------------------------------------------------------------------
@@ -514,7 +517,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void WriteFileFromWWW(string path, WWW www)
+        public void WriteFileFromBytes(string path, byte[] bytes)
         {
             string dir = Path.GetDirectoryName(path);
             if (!Directory.Exists(dir))
@@ -527,7 +530,7 @@ namespace Casinos
                 File.Delete(path);
             }
 
-            using (MemoryStream ms = new MemoryStream(www.bytes))
+            using (MemoryStream ms = new MemoryStream(bytes))
             {
                 using (FileStream fs = new FileStream(path, FileMode.Create))
                 {
@@ -615,28 +618,28 @@ namespace Casinos
 
         //---------------------------------------------------------------------
         // 创建内嵌浏览器
-        public UniWebView CreateWebView(string go_name)
-        {
-            var go = new GameObject(go_name);
-            UniWebView web_view = go.AddComponent<UniWebView>();
-			web_view.Frame = new Rect(0, 0, Screen.width, Screen.height);
-			//web_view.Load("http://docs.uniwebview.com/game.html");
-			//web_view.Show();
-			return web_view;
-        }
+        //     public UniWebView CreateWebView(string go_name)
+        //     {
+        //         var go = new GameObject(go_name);
+        //         UniWebView web_view = go.AddComponent<UniWebView>();
+        //web_view.Frame = new Rect(0, 0, Screen.width, Screen.height);
+        ////web_view.Load("http://docs.uniwebview.com/game.html");
+        ////web_view.Show();
+        //return web_view;
+        //     }
 
-        //---------------------------------------------------------------------
-        // 创建内嵌浏览器
-        public UniWebView CreateWebView2(string go_name)
-        {
-            var go = new GameObject(go_name);
-            UniWebView web_view = go.AddComponent<UniWebView>();
-			//web_view.Frame = new Rect(0, 0, Screen.width, Screen.height);
-			//web_view.Load("http://docs.uniwebview.com/game.html");
-			//web_view.Show();
-			return web_view;
-        }
-		
+        //     //---------------------------------------------------------------------
+        //     // 创建内嵌浏览器
+        //     public UniWebView CreateWebView2(string go_name)
+        //     {
+        //         var go = new GameObject(go_name);
+        //         UniWebView web_view = go.AddComponent<UniWebView>();
+        ////web_view.Frame = new Rect(0, 0, Screen.width, Screen.height);
+        ////web_view.Load("http://docs.uniwebview.com/game.html");
+        ////web_view.Show();
+        //return web_view;
+        //     }
+
         //---------------------------------------------------------------------
         public string ToBase64String(byte[] data)
         {

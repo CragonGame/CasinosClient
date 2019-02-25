@@ -11,7 +11,7 @@ end
 
 ---------------------------------------
 function ViewAgreeOrDisAddFriendRequest:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("FriendRequest"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("FriendRequest"))
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com_bg:GetChild("ComShade").asCom
@@ -72,7 +72,7 @@ function ViewAgreeOrDisAddFriendRequest:SetPlayerInfo(player_info)
     self.ViewHeadIcon:SetPlayerInfo(player_info.PlayerInfoCommon.IconName, player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
     self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.PlayerInfoCommon.NickName, 33, 10)
     self.GTextChips.text = UiChipShowHelper:GetGoldShowStr(player_info.PlayerInfoMore.Gold, self.ViewMgr.LanMgr.LanBase)
-    local level = self.ViewMgr.LanMgr:getLanValue("Level")
+    local level = self.ViewMgr.LanMgr:GetLanValue("Level")
     self.GTextLevel.text = level .. player_info.PlayerInfoMore.Level
 end
 

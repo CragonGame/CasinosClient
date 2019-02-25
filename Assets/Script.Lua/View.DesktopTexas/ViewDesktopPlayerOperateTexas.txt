@@ -331,7 +331,7 @@ function ViewDesktopPlayerOperateTexas:setLeaveWhileTips(leave_time)
         ViewHelper:SetGObjectVisible(false, self.GGroupSelfNotRaise)
         ViewHelper:SetGObjectVisible(false, self.GGroupQuick2)
         ViewHelper:SetGObjectVisible(true, self.GGroupLeaveWhile)
-        local tips = string.format("%s(%s)", self.ViewMgr.LanMgr:getLanValue("Continue"), tostring(leave_time))
+        local tips = string.format("%s(%s)", self.ViewMgr.LanMgr:GetLanValue("Continue"), tostring(leave_time))
         self.GLeaveTips.text = tips
     end
 end
@@ -358,7 +358,7 @@ function ViewDesktopPlayerOperateTexas:_setCurrentRaiseChip(current_gold, need_g
     then
         ViewHelper:SetGObjectVisible(false, self.GTextTopRaiseChip)
         CS.Casinos.CasinosContext.Instance:Play("allin", CS.Casinos._eSoundLayer.LayerNormal)
-        self.GTextCurrentRaiseChip.text = self.ViewMgr.LanMgr:getLanValue("All-in")
+        self.GTextCurrentRaiseChip.text = self.ViewMgr.LanMgr:GetLanValue("All-in")
     else
         ViewHelper:SetGObjectVisible(true, self.GTextTopRaiseChip)
     end
@@ -473,14 +473,14 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
             if (action == PlayerCanActionTypeTexas.Fold) then
             elseif (action == PlayerCanActionTypeTexas.Check) then
                 self.IsCallOrCheck = false
-                self.GComCheckOrCall.title = self.ViewMgr.LanMgr:getLanValue("Check")
+                self.GComCheckOrCall.title = self.ViewMgr.LanMgr:GetLanValue("Check")
             elseif (action == PlayerCanActionTypeTexas.Call) then
                 self.IsCallOrCheck = true
-                local call_tips = self.ViewMgr.LanMgr:getLanValue("Call")
+                local call_tips = self.ViewMgr.LanMgr:GetLanValue("Call")
                 local tips = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(call_tips, UiChipShowHelper:GetGoldShowStr(c_a.chip, self.ViewMgr.LanMgr.LanBase))
                 if c_a.chip >= self.DesktopPlayerTexas.PlayerDataDesktop.Stack then
                     call_allin = true
-                    tips = self.ViewMgr.LanMgr:getLanValue("All-in")
+                    tips = self.ViewMgr.LanMgr:GetLanValue("All-in")
                 end
 
                 self.GComCheckOrCall.title = tips
@@ -493,12 +493,12 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
                     local me_stack = self.DesktopPlayerTexas.PlayerDataDesktop.Stack
                     self.CurrentBottomRaiseGoldValue = c_a.chip
                     self.CurrentTopRaiseGoldValue = self.DesktopPlayerTexas.PlayerDataDesktop.Stack
-                    local tips_add = self.ViewMgr.LanMgr:getLanValue("AddBet")--CS.Casinos.CasinosContext.Instance:AppendStrWithSB(self.ViewMgr.LanMgr:getLanValue("加注", "AddBet"),
+                    local tips_add = self.ViewMgr.LanMgr:GetLanValue("AddBet")--CS.Casinos.CasinosContext.Instance:AppendStrWithSB(self.ViewMgr.LanMgr:GetLanValue("加注", "AddBet"),
                     --UiChipShowHelper:GetGoldShowStr(self.CurrentBottomRaiseGoldValue, self.ViewMgr.LanMgr.LanBase))
                     local raise_btn_name = tips_add
                     if (me_stack <= self.CurrentBottomRaiseGoldValue)
                     then
-                        raise_btn_name = self.ViewMgr.LanMgr:getLanValue("All-in")
+                        raise_btn_name = self.ViewMgr.LanMgr:GetLanValue("All-in")
                     end
 
                     self.ComRaiseNClickRaise.title = raise_btn_name
@@ -518,15 +518,15 @@ function ViewDesktopPlayerOperateTexas:_checkPlayerOperateBtn(self_acting, turn_
         if call_chip > 0 then
             self.IsAutoCallOrCheck = true
             if call_chip >= self.DesktopPlayerTexas.PlayerDataDesktop.Stack then
-                btn_name = self.ViewMgr.LanMgr:getLanValue("All-in")
+                btn_name = self.ViewMgr.LanMgr:GetLanValue("All-in")
                 is_call_allin = true
             else
-                btn_name = self.ViewMgr.LanMgr:getLanValue("Call")
+                btn_name = self.ViewMgr.LanMgr:GetLanValue("Call")
                 btn_name = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(btn_name, UiChipShowHelper:GetGoldShowStr(call_chip, self.ViewMgr.LanMgr.LanBase))
             end
             self:_resetAutoChooseOperate(nil)
         else
-            btn_name = self.ViewMgr.LanMgr:getLanValue("AutoCheck")
+            btn_name = self.ViewMgr.LanMgr:GetLanValue("AutoCheck")
             self.IsAutoCallOrCheck = false
         end
         --print("_checkPlayerOperateBtn")
@@ -649,7 +649,7 @@ function ViewDesktopPlayerOperateTexas:_onClickRaise(context)
         else
             --self.ControllerTurn.selectedIndex = 1
             self.ControllerSelfRaise.selectedIndex = 0
-            --self.GTextSelfTurnRaise.text = self.ViewMgr.LanMgr:getLanValue("确定", "Confirm")
+            --self.GTextSelfTurnRaise.text = self.ViewMgr.LanMgr:GetLanValue("确定", "Confirm")
             ViewHelper:SetGObjectVisible(true, self.GSliderRise)
             ViewHelper:SetGObjectVisible(true, self.GTextTopRaiseChip)
             self.GSliderRise.value = 0

@@ -169,7 +169,7 @@ function ControllerDesktopH:OnHandleEv(ev)
     end
 
     if (ev.EventName == "EvViewClickDesktopH") then
-        ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
+        ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("EnterTable"))
         self.Rpc:RPC1(MethodType.DesktopHRequestEnter, ev.factory_name)
     elseif (ev.EventName == "EvViewClickLeaveDesktopH") then
         self.Rpc:RPC0(MethodType.DesktopHRequestLeave)
@@ -185,8 +185,8 @@ function ControllerDesktopH:OnHandleEv(ev)
     elseif (ev.EventName == "EvViewDesktopHSitdown") then
         local min_golds = ev.min_golds
         if (min_golds > self.ControllerActor.PropGoldAcc:get()) then
-            local tips = string.format(self.ViewMgr.LanMgr:getLanValue("SitDownFailedTips1"),
-                    self.ViewMgr.LanMgr:getLanValue("Chip"),
+            local tips = string.format(self.ViewMgr.LanMgr:GetLanValue("SitDownFailedTips1"),
+                    self.ViewMgr.LanMgr:GetLanValue("Chip"),
                     UiChipShowHelper:GetGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase))
             ViewHelper:UiShowMsgBox(tips,
                     function()
@@ -203,7 +203,7 @@ function ControllerDesktopH:OnHandleEv(ev)
             end
         end
         if (exists) then
-            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("RequestSitSuccess"))
+            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("RequestSitSuccess"))
         end
         self.Rpc:RPC1(MethodType.DesktopHRequestSitdown, ev.seat_index)
     elseif (ev.EventName == "EvViewDesktopHStandup") then
@@ -227,8 +227,8 @@ function ControllerDesktopH:OnHandleEv(ev)
             stack = ev.take_stack
 
             if (min_golds > self.ControllerActor.PropGoldAcc:get()) then
-                local tips = string.format(self.ViewMgr.LanMgr:getLanValue("RequestBeBankerFailed1"),
-                        self.ViewMgr.LanMgr:getLanValue("Chip"),
+                local tips = string.format(self.ViewMgr.LanMgr:GetLanValue("RequestBeBankerFailed1"),
+                        self.ViewMgr.LanMgr:GetLanValue("Chip"),
                         UiChipShowHelper:GetGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase))
                 ViewHelper:UiShowMsgBox(tips,
                         function()
@@ -239,7 +239,7 @@ function ControllerDesktopH:OnHandleEv(ev)
 
             local is_seatplayer = self:isSeatPlayer(self.Guid)
             if (is_seatplayer) then
-                ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("RequestBeBankerSuccess"))
+                ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("RequestBeBankerSuccess"))
             end
 
             self.Rpc:RPC1(MethodType.DesktopHRequestBeBankerPlayer, stack)
@@ -267,13 +267,13 @@ function ControllerDesktopH:OnHandleEv(ev)
         end
 
         if (self.CurrentTbBetOperateId == -1) then
-            local tips = self.ViewMgr.LanMgr:getLanValue("Chip") .. self.ViewMgr.LanMgr:getLanValue("NotEnough")
+            local tips = self.ViewMgr.LanMgr:GetLanValue("Chip") .. self.ViewMgr.LanMgr:GetLanValue("NotEnough")
             ViewHelper:UiShowInfoSuccess(tips)
             return
         end
 
         if (self.IsBankPlayer == true) then
-            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BankerBetTips"))
+            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("BankerBetTips"))
             return
         end
 
@@ -289,13 +289,13 @@ function ControllerDesktopH:OnHandleEv(ev)
         end
 
         if (self.CurrentTbBetOperateId == -1) then
-            local tips = self.ViewMgr.LanMgr:getLanValue("Chip") .. self.ViewMgr.LanMgr:getLanValue("NotEnough")
+            local tips = self.ViewMgr.LanMgr:GetLanValue("Chip") .. self.ViewMgr.LanMgr:GetLanValue("NotEnough")
             ViewHelper:UiShowInfoSuccess(tips)
             return
         end
 
         if (self.IsBankPlayer) then
-            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BankerBetTips"))
+            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("BankerBetTips"))
             return
         end
         local lua_helper = LuaHelper
@@ -308,7 +308,7 @@ function ControllerDesktopH:OnHandleEv(ev)
             local total_golds = self.ControllerActor.PropGoldAcc:get()
             local after_bet_golds = self.TotalBetGolds + all_golds
             if (after_bet_golds * max_percent > total_golds + self.TotalBetGolds) then
-                ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BetLimitTips"))
+                ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("BetLimitTips"))
                 return
             end
 
@@ -363,7 +363,7 @@ function ControllerDesktopH:S2cDesktopHNotifySnapshot(desktoph_snapshot, map_my_
             ev = EvEntityPlayerEnterDesktopHFailed:new(nil)
         end
         self:SendEv(ev)
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("EnterTableFailed"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("EnterTableFailed"))
         return
     end
 
@@ -477,7 +477,7 @@ function ControllerDesktopH:S2cDesktopHNotifyGameEnd(game_result, map_my_winloos
 
     self.DesktopHState = _eDesktopHState.GameEnd
     if (g_r.premature_termination == true) then
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("DirectLotteryTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("DirectLotteryTips"))
     end
 
     for key, value in pairs(g_r.map_betpot_info) do
@@ -711,13 +711,13 @@ end
 ---------------------------------------
 -- 有座玩家连续几把没下注，提示下把离座
 function ControllerDesktopH:S2cDesktopHNotifyPlayerWillStandup()
-    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("KickOutSeatTips"))
+    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("KickOutSeatTips"))
 end
 
 ---------------------------------------
 -- 提示下把下庄
 function ControllerDesktopH:S2cDesktopHNotifyPlayerWillBeNotBank()
-    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("NotBeBankTips"))
+    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("NotBeBankTips"))
 end
 
 ---------------------------------------
@@ -756,7 +756,7 @@ end
 ---------------------------------------
 function ControllerDesktopH:S2cDesktopHResponsePlayerLeave(can_leave)
     if (can_leave == false) then
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("AutoLeaveDesktopHTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("AutoLeaveDesktopHTips"))
     end
 end
 
@@ -783,7 +783,7 @@ end
 function ControllerDesktopH:S2cDesktopHResponseBeBankerPlayer(result)
     if (result == ProtocolResult.Success) then
     else
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("RequestBeBankerFailed"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("RequestBeBankerFailed"))
     end
 end
 
@@ -791,7 +791,7 @@ end
 function ControllerDesktopH:S2cDesktopHResponseNotBeBankerPlayer(result)
     if (result == ProtocolResult.Success) then
     else
-        ViewHelper.UiShowInfoFailedself(self.ViewMgr.LanMgr:getLanValue("RequestNotBeBankerFailed"))
+        ViewHelper.UiShowInfoFailedself(self.ViewMgr.LanMgr:GetLanValue("RequestNotBeBankerFailed"))
     end
 end
 
@@ -804,12 +804,12 @@ function ControllerDesktopH:S2cDesktopHResponseSitdown(result)
     end
 
     if (result == ProtocolResult.Failed) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SitDownFailedTips"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("SitDownFailedTips"))
     elseif (result == ProtocolResult.ChipNotEnough) then
-        local tips = self.ViewMgr.LanMgr:getLanValue("Chip") ..
-                self.ViewMgr.LanMgr:getLanValue("NotEnough") ..
+        local tips = self.ViewMgr.LanMgr:GetLanValue("Chip") ..
+                self.ViewMgr.LanMgr:GetLanValue("NotEnough") ..
                 UiChipShowHelper:GetGoldShowStr(min_golds, self.ControllerMgr.LanMgr.LanBase) ..
-                self.ViewMgr.LanMgr:getLanValue("SitDownFailedTips")
+                self.ViewMgr.LanMgr:GetLanValue("SitDownFailedTips")
         ViewHelper:UiShowInfoSuccess(tips)
     end
 end
@@ -817,9 +817,9 @@ end
 ---------------------------------------
 function ControllerDesktopH:S2cDesktopHResponseStandup(result)
     if (result == ProtocolResult.Success) then
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("RequestLeaveSitSuccessTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("RequestLeaveSitSuccessTips"))
     else
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("RequestLeaveSitFaiedTips"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("RequestLeaveSitFaiedTips"))
     end
 end
 
@@ -836,10 +836,10 @@ end
 ---------------------------------------
 function ControllerDesktopH:S2cDesktopHResponseSetCardsType(result)
     if (result == ProtocolResult.Success) then
-        local msg = self.ViewMgr.LanMgr:getLanValue("ChangeCardTypeSuccessTips")
+        local msg = self.ViewMgr.LanMgr:GetLanValue("ChangeCardTypeSuccessTips")
         ViewHelper:UiShowInfoSuccess(msg)
     else
-        local msg = self.ViewMgr.LanMgr:getLanValue("ChangeCardTypeFaiedTips")
+        local msg = self.ViewMgr.LanMgr:GetLanValue("ChangeCardTypeFaiedTips")
         ViewHelper:UiShowInfoSuccess(msg)
     end
 end
@@ -873,10 +873,10 @@ end
 ---------------------------------------
 function ControllerDesktopH:S2cDesktopHResponseGetDailyBetReward(result, reward_gold, bet_reward)
     if (result == ProtocolResult.Success) then
-        ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:getLanValue(
+        ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:GetLanValue(
                 "GetBetRewardSuccessTips"), UiChipShowHelper:GetGoldShowStr(reward_gold, self.ControllerMgr.LanMgr.LanBase)))
     else
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("GetBetRewardFaiedTips"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("GetBetRewardFaiedTips"))
     end
 end
 
@@ -987,7 +987,7 @@ function ControllerDesktopH:BetGold(bet_betpot_index, bet_golds)
     end
     local after_bet_chips = self.TotalBetGolds + bet_golds
     if (after_bet_chips * max_percent > total_chips + self.TotalBetGolds) then
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BetLimitTips"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("BetLimitTips"))
         return false
     end
     self.TotalBetGolds = self.TotalBetGolds + bet_golds

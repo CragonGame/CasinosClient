@@ -231,12 +231,12 @@ function ControllerLogin:OnHandleEv(ev)
         elseif (ev.EventName == "EvCheckIdCard") then
             self:RequestCheckCardAndName(ev.id_card, ev.name)
         elseif (ev.EventName == "EvBindWechat") then
-            ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:getLanValue("BindWeChatTips"), function()
-                ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("BindingWeChat"), 10)
+            ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:GetLanValue("BindWeChatTips"), function()
+                ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("BindingWeChat"), 10)
                 self.BindingWeChat = true
             end)
         elseif (ev.EventName == "EvUnbindWechat") then
-            ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:getLanValue("UnbindWeChatTips"), function()
+            ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:GetLanValue("UnbindWeChatTips"), function()
                 print("EvUnbindWechat")
                 local open_id = nil
                 --if self.ControllerActor ~= nil then
@@ -287,7 +287,7 @@ end
 function ControllerLogin:RequestLogin(acc, pwd, phone, email, phone_verification_code)
     self.LoginType = 0
     self.Password = pwd
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
+    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("Logining"))
 
     local device_info = self:GetDeviceInfo()
     local request = AccountLoginInfo:new(nil)
@@ -307,7 +307,7 @@ end
 -- 请求游客访问
 function ControllerLogin:RequestGuestAccess()
     self.LoginType = 1
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
+    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("Logining"))
 
     local device_info = self:GetDeviceInfo()
 
@@ -323,7 +323,7 @@ end
 ---------------------------------------
 -- 请求注册
 function ControllerLogin:RequestRegister(register_acc_data)
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Registering"))
+    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("Registering"))
 
     self.ControllerUCenter:RequestRegister(register_acc_data,
             function(http_statuscode, result, error, response)
@@ -335,7 +335,7 @@ end
 -- 请求微信登录
 function ControllerLogin:RequestWechatLogin(token, app_id)
     self.LoginType = 2
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logining"))
+    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("Logining"))
     local wechat_info = AccountWeChatOAuthInfo:new(nil)
     wechat_info.Code = token
     wechat_info.AppId = app_id
@@ -363,7 +363,7 @@ end
 ---------------------------------------
 -- 请求通过手机重置密码
 function ControllerLogin:RequestResetPasswordWithPhone(phone, phone_code, new_pwd)
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("ResetPwding"))
+    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("ResetPwding"))
     local resetPwd_info = AccountResetPasswordByPhoneRequest:new(nil)
     resetPwd_info.AccountName = ""
     resetPwd_info.Phone = phone
@@ -396,7 +396,7 @@ function ControllerLogin:OnUCenterPhoneVerificationCode(http_statuscode, result,
     end
 
     if (result == UCenterErrorCode.NoError) then
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("GetPhoneCodeSuccess"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("GetPhoneCodeSuccess"))
     else
         if (error ~= nil) then
             ViewHelper:UiEndWaiting()
@@ -409,7 +409,7 @@ end
 ---------------------------------------
 function ControllerLogin:OnUCenterRegister(http_statuscode, result, error, response)
     if (result == UCenterErrorCode.NoError) then
-        local info = self.LanMgr:getLanValue("RegisterSuccessful")
+        local info = self.LanMgr:GetLanValue("RegisterSuccessful")
         ViewHelper:UiShowInfoSuccess(info)
 
         self.AccId = response.accountId
@@ -447,7 +447,7 @@ function ControllerLogin:OnUCenterLogin(http_statuscode, result, error, response
         local account_login_response = AccountLoginResponse:new(nil)
         account_login_response:setData(response)
 
-        ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("LoginSuccessful"))
+        ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("LoginSuccessful"))
         self.AccId = account_login_response.AccountId
         self.Acc = account_login_response.AccountName
         self.Token = account_login_response.Token
@@ -510,7 +510,7 @@ function ControllerLogin:OnUCenterGuestAccess(http_statuscode, result, error, re
     ViewHelper:UiEndWaiting()
     --if (status == UCenterResponseStatus.Success) then
     --print("OnUCenterGuestAccess")
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("LoginSuccessful"))
+    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("LoginSuccessful"))
     self.AccId = response.accountId
     self.Acc = response.accountName
     self.Token = response.token
@@ -549,7 +549,7 @@ end
 function ControllerLogin:OnUCenterResetPasswordWithPhone(http_statuscode, result, error, response)
     ViewHelper:UiEndWaiting()
     --if (status == UCenterResponseStatus.Success) then
-    local info = self.ControllerMgr.LanMgr:getLanValue("ResetPwdSuccessful")
+    local info = self.ControllerMgr.LanMgr:GetLanValue("ResetPwdSuccessful")
     ViewHelper:UiShowInfoSuccess(info)
 
     self.AccId = response.accountId
@@ -571,7 +571,7 @@ end
 function ControllerLogin:OnUCenterCheckIdCard(http_statuscode, result, error, response)
     if (response.error_code == 0) then
         self.Identity = response.result.cardNo
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("CheckIdSuccess"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("CheckIdSuccess"))
     else
         if (response ~= nil) then
             ViewHelper:UiEndWaiting()
@@ -585,7 +585,7 @@ end
 function ControllerLogin:OnUCenterWechatBind(http_statuscode, result, error, response)
     --if (status == UCenterResponseStatus.Success) then
     --    if (response == UCenterErrorCode.NoError) then
-    --        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BindWeChatSuccess"))
+    --        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("BindWeChatSuccess"))
     --        self.Rpc:RPC0(self.MethodType.AccountUpdateDataFromUCenterRequest)
     --    end
     --else
@@ -599,7 +599,7 @@ function ControllerLogin:OnUCenterWechatUnbind(http_statuscode, result, error, r
     --if (status == UCenterResponseStatus.Success) then
     --    --print("OnUCenterWechatUnbind")
     --    if (response == UCenterErrorCode.NoError) then
-    --        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("UnbindWeChatSuccess"))
+    --        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("UnbindWeChatSuccess"))
     --        local ev = self:GetEv("EvUnBindWeChatSuccess")
     --        if (ev == nil) then
     --            ev = EvUnBindWeChatSuccess:new(nil)
@@ -678,7 +678,7 @@ function ControllerLogin:OnAccountEnterWorldResponse(enterworld_notify1)
 
     if (enterworld_notify.result ~= ProtocolResult.Success or enterworld_notify.player_data == nil) then
         -- 进入游戏世界失败，则断开连接
-        local s = self.ControllerMgr.LanMgr:getLanValue("EnterGameFailed")
+        local s = self.ControllerMgr.LanMgr:GetLanValue("EnterGameFailed")
         if (enterworld_notify ~= nil) then
             s = table.concat({ s, "，ErrorCode=", enterworld_notify.result })
         end
@@ -821,7 +821,7 @@ function ControllerLogin:_clickCheckDataCallBack(bo)
             self:RequestGuestAccess()
         elseif (self.LoginType == 2) then
             print('111111111111')
-            ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("WeChatLogining"), 10)
+            ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("WeChatLogining"), 10)
             self.CasinosContext:SetNativeOperate(1)
             print('33333333333333')
             CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.Context.Cfg.WeChatState, "Login")

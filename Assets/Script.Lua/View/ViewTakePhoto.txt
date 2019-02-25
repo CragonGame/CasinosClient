@@ -46,7 +46,7 @@ end
 
 ---------------------------------------
 function ViewTakePhoto:onClickTakePhoto()
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetImage"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("GetImage"))
     CS.NativeTakePhoto.takeNewPhoto(self.mPhotoSize, self.mPhotoSize, self.GetPicDefaultName .. ".jpg"
     , CS.Casinos.CasinosContext.Instance.PathMgr:GetPersistentDataPath() .. self.PhotoFinalPath)
     self.ViewMgr:DestroyView(self)
@@ -54,7 +54,7 @@ end
 
 ---------------------------------------
 function ViewTakePhoto:onClickTakePic()
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetImage"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("GetImage"))
     CS.NativeTakePhoto.takeExistPhoto(self.mPhotoSize, self.mPhotoSize, self.GetPicDefaultName .. ".jpg"
     , CS.Casinos.CasinosContext.Instance.PathMgr:GetPersistentDataPath() .. self.PhotoFinalPath)
     self.ViewMgr:DestroyView(self)

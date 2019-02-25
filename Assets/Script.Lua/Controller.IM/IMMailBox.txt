@@ -71,7 +71,7 @@ function IMMailBox:OnIMMailDeleteNotify(mail_guid)
     end
     if (current_mail ~= nil) then
         if #self.ListMail > self.FullMailCount then
-            ViewHelper:UiShowInfoSuccess(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("MailBoxFullDeleteMailTips"))
+            ViewHelper:UiShowInfoSuccess(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("MailBoxFullDeleteMailTips"))
         end
         table.remove(self.ListMail, current_mail_key)
     end
@@ -122,7 +122,7 @@ function IMMailBox:OnIMMailOperateRequestResult(result)
     local sb = self.CasinosContext.SB
     if (m_r.Result == ProtocolResult.Success) then
         sb:Append(operate_title)
-        sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("Success"))
+        sb:Append(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("Success"))
         sb:Append("!")
         local current_mail = nil
         for key, value in pairs(self.ListMail) do
@@ -131,15 +131,15 @@ function IMMailBox:OnIMMailOperateRequestResult(result)
             end
         end
         if (current_mail ~= nil and current_mail.Attachment ~= nil and current_mail.MailState ~= MailState.ReadAndRecvAttachments) then
-            sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("Get"))
+            sb:Append(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("Get"))
             if (current_mail.SenderType == MailSenderType.Player) then
                 sb:Append(current_mail.SenderNickname)
             else
-                sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("Sys"))
+                sb:Append(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("Sys"))
             end
-            sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("Send"))
+            sb:Append(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("Send"))
             if (current_mail.Attachment.Gold > 0) then
-                sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("Chip"))
+                sb:Append(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("Chip"))
                 tips = sb:ToString()
                 local golds = UiChipShowHelper:GetGoldShowStr(current_mail.Attachment.Gold, self.ControllerIM.ControllerMgr.LanMgr.LanBase)
                 sb.Length = 0
@@ -147,7 +147,7 @@ function IMMailBox:OnIMMailOperateRequestResult(result)
                 sb:Append(golds)
             end
             if (current_mail.Attachment.Diamond > 0) then
-                sb:Append(self.ViewMgr.LanMgr:getLanValue("Coin"))
+                sb:Append(self.ViewMgr.LanMgr:GetLanValue("Coin"))
                 tips = sb.ToString()
                 local diamond = UiChipShowHelper:GetGoldShowStr(current_mail.Attachment.Diamond, self.ControllerIM.ControllerMgr.LanMgr.LanBase)
                 sb.Length = 0
@@ -158,20 +158,20 @@ function IMMailBox:OnIMMailOperateRequestResult(result)
                 for i, v in pairs(current_mail.Attachment.ListItem) do
                     local temp = v
                     local tb_item = self.ControllerIM.ControllerMgr.TbDataMgr:GetData("Item", temp[2])
-                    sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue(tb_item.Name))
+                    sb:Append(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue(tb_item.Name))
                     sb:Append("*")
                     sb:Append(temp[3])
                 end
             end
-            sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("Success"))
+            sb:Append(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("Success"))
             sb:Append("!")
         end
     else
         if (m_r.Result == ProtocolResult.BagFull) then
-            sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("BagFullTips"))
+            sb:Append(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("BagFullTips"))
         end
         sb:Append(operate_title)
-        sb:Append(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("Failed"))
+        sb:Append(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("Failed"))
         sb:Append("!")
     end
 
@@ -188,11 +188,11 @@ function IMMailBox:getOperateTitle(operate_type)
     local title = ""
     if (operate_type == MailOperateType.None) then
     elseif (operate_type == MailOperateType.Read) then
-        title = self.ControllerIM.ControllerMgr.LanMgr:getLanValue("ReadMail")
+        title = self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("ReadMail")
     elseif (operate_type == MailOperateType.RecvAttachment) then
-        title = self.ControllerIM.ControllerMgr.LanMgr:getLanValue("TakeAttachment")
+        title = self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("TakeAttachment")
     elseif (operate_type == MailOperateType.Delete) then
-        title = self.ControllerIM.ControllerMgr.LanMgr:getLanValue("DelMail")
+        title = self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("DelMail")
     end
     return title
 end

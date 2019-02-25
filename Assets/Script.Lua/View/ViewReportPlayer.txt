@@ -55,7 +55,7 @@ function ViewReportPlayer:setReportPlayerInfo(player_info)
     local et_guid = player_info.PlayerInfoCommon.PlayerGuid
     local id = tostring(player_info.PlayerInfoCommon.PlayerId)
     local playerGold = player_info.PlayerInfoMore.Gold
-    local level_ex = self.ViewMgr.LanMgr:getLanValue("Level:")
+    local level_ex = self.ViewMgr.LanMgr:GetLanValue("Level:")
     local level = CS.Casinos.CasinosContext.Instance:AppendStrWithSB(level_ex, tostring(player_info.PlayerInfoMore.Level))
     self.GTextLevel.text = level
     self.ViewHeadIcon:SetPlayerInfo(player_icon, player_accountid, 0)
@@ -69,9 +69,9 @@ function ViewReportPlayer:setReportPlayerInfo(player_info)
     self.GTextID.text = "ID: " .. id
     local address = ip_address
     if (address == nil or address == "") then
-        address = self.ViewMgr.LanMgr:getLanValue("Unknown")
+        address = self.ViewMgr.LanMgr:GetLanValue("Unknown")
     end
-    address = self.ViewMgr.LanMgr:getLanValue("Address") .. address
+    address = self.ViewMgr.LanMgr:GetLanValue("Address") .. address
     self.GTextAddress.text = address
 
     local index = 0

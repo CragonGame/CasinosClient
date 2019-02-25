@@ -111,7 +111,7 @@ function DesktopHModuleTexas:getGameReusltTips(is_win, card_type_me, card_type_b
     --print(s)
 
     if self_betgolds == 0 then
-        local self_betresult = self.ControllerDesktopH.LanMgr:getLanValue("NotBet")
+        local self_betresult = self.ControllerDesktopH.LanMgr:GetLanValue("NotBet")
         return self_betresult
     else
         if is_win == true then

@@ -462,7 +462,7 @@ function ViewDesktopH:OnHandleEv(ev)
             self:_setLotteryTicketInfo(ev.lotteryticket_data.State, ev.lotteryticket_data.StateLeftTm)
         elseif (ev.EventName == "EvEntityLotteryTicketGameEndStateSimple") then
             if (self.GTextLotteryTicketTips ~= nil) then
-                self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("InTheSettlement")
+                self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:GetLanValue("InTheSettlement")
             end
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
             self:RefreshLotteryTickLeftTm(ev.tm)
@@ -839,9 +839,9 @@ function ViewDesktopH:RefreshLotteryTickLeftTm(tm)
     end
 
     if (tm > 0) then
-        self.GTextLotteryTicketTips.text = (math.ceil(tm) .. self.ViewMgr.LanMgr:getLanValue("S"))
+        self.GTextLotteryTicketTips.text = (math.ceil(tm) .. self.ViewMgr.LanMgr:GetLanValue("S"))
     else
-        self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("InTheSettlement")
+        self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:GetLanValue("InTheSettlement")
     end
 end
 
@@ -1099,9 +1099,9 @@ end
 function ViewDesktopH:_setLotteryTicketInfo(state, left_tm)
     local tips = ""
     if (state == LotteryTicketStateEnum.Bet) then
-        tips = (math.ceil(left_tm) .. self.ViewMgr.LanMgr:getLanValue("S"))
+        tips = (math.ceil(left_tm) .. self.ViewMgr.LanMgr:GetLanValue("S"))
     else
-        tips = self.ViewMgr.LanMgr:getLanValue("InTheSettlement")
+        tips = self.ViewMgr.LanMgr:GetLanValue("InTheSettlement")
     end
     self.GTextLotteryTicketTips.text = tips
 end

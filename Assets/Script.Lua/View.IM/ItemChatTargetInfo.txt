@@ -112,8 +112,8 @@ end
 ---------------------------------------
 function ItemChatTargetInfo:onPress()
     local msg_box = self.ViewChatFriend.ViewMgr:CreateView("MsgBox")
-    msg_box:showMsgBox2(self.ViewChatFriend.ViewMgr.LanMgr:getLanValue("DeleteRecode"),
-            string.format(self.ViewChatFriend.ViewMgr.LanMgr:getLanValue("DetermineDeleteRecord"),
+    msg_box:showMsgBox2(self.ViewChatFriend.ViewMgr.LanMgr:GetLanValue("DeleteRecode"),
+            string.format(self.ViewChatFriend.ViewMgr.LanMgr:GetLanValue("DetermineDeleteRecord"),
                     self.FriendInfo.PlayerInfoCommon.NickName), self.FriendInfo.PlayerInfoCommon.PlayerGuid,
             function(bo, guid)
                 if (bo) then

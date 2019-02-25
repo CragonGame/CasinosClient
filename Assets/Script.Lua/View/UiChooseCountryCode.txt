@@ -13,7 +13,7 @@ function UiChooseCountryCode:new(view, default_code)
     local com_choose = view.ComUi:GetChild("ComCountryCodeChoose").asCom
     o.ControllerChooseCountryCode = view.ComUi:GetController("ControllerChooseCountryCode")
     o.TextSearchCountry = com_choose:GetChild("TextSearchCountry").asTextInput
-    o.TextSearchCountry.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:getLanValue("SearchCountry"))
+    o.TextSearchCountry.promptText = string.format("[color=#999999]%s[/color]", view.ViewMgr.LanMgr:GetLanValue("SearchCountry"))
     o.TextSearchCountry.onChanged:Set(
             function()
                 o:_checkInput()

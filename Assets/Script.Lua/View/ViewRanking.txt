@@ -18,7 +18,7 @@ function ViewRanking:OnCreate()
     self:BindEvListener("EvEntityGetRankingRedEnvelopes", self)
     --self:BindEvListener("EvEntityGetRankingWinGold",self)
 
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Ranking"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("Ranking"))
     self.ControllerRanking = self.ControllerMgr:GetController("Ranking")
     self.Controller = self.ComUi:GetController("ControllerRanking")
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -133,7 +133,7 @@ function ViewRanking:RenderListItem(index, obj)
             if (#self.ControllerRanking.ListRankingRedEnvelopes > index) then
                 local rank_info = self.ControllerRanking.ListRankingRedEnvelopes[index + 1]
                 item:SetRankInfo(self.ViewMgr, rank_info.player_guid, rank_info.nick_name, rank_info.icon_name,
-                        rank_info.account_id, rank_info.win_redenvelope / 100, 0, index, true, self.ViewMgr.LanMgr:getLanValue("Yuan"))
+                        rank_info.account_id, rank_info.win_redenvelope / 100, 0, index, true, self.ViewMgr.LanMgr:GetLanValue("Yuan"))
             end
         end
     end

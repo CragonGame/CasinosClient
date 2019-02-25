@@ -130,7 +130,7 @@ function ControllerUCenter:ParseUCenterHttpStatusCode(http_statuscode)
     else
         error_msg = string.format('Error, HttpStatusCode: %s', http_statuscode)
     end
-    --return self.ControllerMgr.LanMgr:getLanValue(error_msg)
+    --return self.ControllerMgr.LanMgr:GetLanValue(error_msg)
     return error_msg
 end
 
@@ -193,7 +193,7 @@ function ControllerUCenter:ParseUCenterErrorCode(error_code)
     else
         error_msg = "UCenterEUnknow"
     end
-    return self.ControllerMgr.LanMgr:getLanValue(error_msg)
+    return self.ControllerMgr.LanMgr:GetLanValue(error_msg)
 end
 
 ---------------------------------------

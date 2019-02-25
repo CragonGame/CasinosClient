@@ -75,7 +75,7 @@ function Launch:Setup()
     local lua_pkg_name = string.format('bundle_%s', self.CasinosContext.Config.VersionBundle)
     local async_asset_loadgroup = self.CasinosContext.AsyncAssetLoadGroup
     local http_url_bundlexxx = string.format('https://cragon-king-oss.cragon.cn/%s/%s.txt', self.CasinosContext.Config.Platform, lua_pkg_name)
-    --print(http_url_bundlexxx)
+    print(http_url_bundlexxx)
     async_asset_loadgroup:LoadWWWAsync(http_url_bundlexxx,
             function(url, www)
                 self.LuaMgr:LoadLuaFromBytes(lua_pkg_name, www.text)
@@ -89,7 +89,7 @@ function Launch:Setup()
                     self.LaunchCfg.DataVersion = DataSelectDev
                 end
                 local http_url_context = string.format('https://cragon-king-oss.cragon.cn/Common/%s/Lua/Context.txt', self.LaunchCfg.CommonVersion)
-                --print(http_url_context)
+                print(http_url_context)
                 async_asset_loadgroup:LoadWWWAsync(http_url_context,
                         function(url, www)
                             self.LuaMgr:LoadLuaFromBytes('Context', www.text)

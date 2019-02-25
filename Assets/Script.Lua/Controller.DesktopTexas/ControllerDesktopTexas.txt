@@ -155,7 +155,7 @@ function ControllerDesktopTexas:S2cDesktopSnapshotNotify(snapshot_notify)
             ev = EvEntityPlayerEnterDesktopFailed:new(nil)
         end
         self:SendEv(ev)
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("EnterTableFailed"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("EnterTableFailed"))
     else
         local ev = self:GetEv("EvEntityPlayerEnterDesktop")
         if (ev == nil) then
@@ -244,7 +244,7 @@ end
 ---------------------------------------
 function ControllerDesktopTexas:OnPlayerInvitePlayerEnterDesktopRequestResult(r)
     if (r == ProtocolResult.Success) then
-        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("InviteFriendToTable"))
+        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("InviteFriendToTable"))
     end
 end
 

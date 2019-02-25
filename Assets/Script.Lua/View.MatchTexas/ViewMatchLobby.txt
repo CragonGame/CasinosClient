@@ -190,10 +190,10 @@ end
 ---------------------------------------
 function ViewMatchLobby:setMatchTypeList()
     local com = self.GListMatchType:AddItemFromPool().asCom
-    local item = ItemMatchType:new(nil, com, "All", self.ViewMgr.LanMgr:getLanValue("AllMatch"), self)
+    local item = ItemMatchType:new(nil, com, "All", self.ViewMgr.LanMgr:GetLanValue("AllMatch"), self)
     table.insert(self.ListMatchType, item)
     local com1 = self.GListMatchType:AddItemFromPool().asCom
-    local item1 = ItemMatchType:new(nil, com1, "MyApply", self.ViewMgr.LanMgr:getLanValue("MyMatch"), self)
+    local item1 = ItemMatchType:new(nil, com1, "MyApply", self.ViewMgr.LanMgr:GetLanValue("MyMatch"), self)
     table.insert(self.ListMatchType, item1)
 end
 

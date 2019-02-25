@@ -164,7 +164,7 @@ end
 function Native:ActionGetPicSuccess(getpic_result)
     ViewHelper:UiEndWaiting()
     if (CS.System.String.IsNullOrEmpty(getpic_result) == false) then
-        ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("UploadPic"), 5)
+        ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("UploadPic"), 5)
     end
 end
 
@@ -180,7 +180,7 @@ end
 
 ---------------------------------------
 function Native:ActionPayWithIAPFailed(result)
-    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("BuyFail") .. result)
+    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("BuyFail") .. result)
 end
 
 ---------------------------------------
@@ -196,20 +196,20 @@ end
 ---------------------------------------
 function Native:ActionPayResult(pay_result)
     if (pay_result.Length <= 0) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("BuyItemFailed"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("BuyItemFailed"))
         return
     else
         local real_result = pay_result[0]
         if real_result == "success" then
-            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("PaySuccess"))
+            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("PaySuccess"))
         elseif real_result == "fail" then
-            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("PayFailed"))
+            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("PayFailed"))
         elseif real_result == "cancel" then
-            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("PayCanceled"))
+            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("PayCanceled"))
         elseif real_result == "invalid" then
-            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("PayAppNotInstall"))
+            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("PayAppNotInstall"))
         elseif real_result == "unknown" then
-            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("PayUnknownError"))
+            ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("PayUnknownError"))
         end
     end
 end
@@ -219,22 +219,22 @@ function Native:ActionLoginFailed(fail_type)
     ViewHelper:UiEndWaiting()
     local tips = ""
     if fail_type == "ERR_COMM" then
-        tips = Native.ViewMgr.LanMgr:getLanValue("ERRCOMM")
+        tips = Native.ViewMgr.LanMgr:GetLanValue("ERRCOMM")
     elseif fail_type == "ERR_USER_CANCEL" then
-        tips = Native.ViewMgr.LanMgr:getLanValue("ERRUSERCANCEL")
+        tips = Native.ViewMgr.LanMgr:GetLanValue("ERRUSERCANCEL")
     elseif fail_type == "ERR_SENT_FAILED" then
-        tips = Native.ViewMgr.LanMgr:getLanValue("ERRSENTFAILED")
+        tips = Native.ViewMgr.LanMgr:GetLanValue("ERRSENTFAILED")
     elseif fail_type == "ERR_AUTH_DENIED" then
-        tips = Native.ViewMgr.LanMgr:getLanValue("ERRAUTHDENIED")
+        tips = Native.ViewMgr.LanMgr:GetLanValue("ERRAUTHDENIED")
     elseif fail_type == "ERR_UNSUPPORT" then
-        tips = Native.ViewMgr.LanMgr:getLanValue("ERRUNSUPPORT")
+        tips = Native.ViewMgr.LanMgr:GetLanValue("ERRUNSUPPORT")
     elseif fail_type == "ERR_NOTINSTALLEDWECHAT" then
         self.Context.Cfg.ClientWechatIsInstalled = false
     else
         if fail_type == "-2" then
-            tips = Native.ViewMgr.LanMgr:getLanValue("ERRUSERCANCEL")
+            tips = Native.ViewMgr.LanMgr:GetLanValue("ERRUSERCANCEL")
         else
-            local t = Native.ViewMgr.LanMgr:getLanValue("ERRUNKNOWN")
+            local t = Native.ViewMgr.LanMgr:GetLanValue("ERRUNKNOWN")
             tips = string.format(t, fail_type)
         end
     end

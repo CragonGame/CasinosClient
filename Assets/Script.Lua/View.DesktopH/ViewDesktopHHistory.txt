@@ -10,7 +10,7 @@ end
 
 ---------------------------------------
 function ViewDesktopHHistory:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("DesktopHHistory"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("DesktopHHistory"))
     self.ViewMgr:BindEvListener("EvEntityDesktopHGameEndState", self)
     local co_history_close = self.ComUi:GetChild("ComBgAndClose").asCom
     local btn_history_close = co_history_close:GetChild("BtnClose").asButton

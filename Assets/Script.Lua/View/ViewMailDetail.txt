@@ -68,7 +68,7 @@ function ViewMailDetail:setMail(mail)
             local loader_btn_title = self.ComUi:GetChild("Lan_Image_GetAccessory").asLoader
             loader_btn_title.visible = true
         else
-            self.GTextBtnTitle.text = self.ViewMgr.LanMgr:getLanValue("GetAttachments")
+            self.GTextBtnTitle.text = self.ViewMgr.LanMgr:GetLanValue("GetAttachments")
         end
 
         if (mail.Attachment.Gold > 0) then
@@ -99,7 +99,7 @@ function ViewMailDetail:setMail(mail)
             local loader_btn_title = self.ComUi:GetChild("Lan_Image_Ensure").asLoader
             loader_btn_title.visible = true
         else
-            self.GTextBtnTitle.text = self.ViewMgr.LanMgr:getLanValue("Confirm")
+            self.GTextBtnTitle.text = self.ViewMgr.LanMgr:GetLanValue("Confirm")
         end
     end
     self.GTextAttachmentTitle.visible = self.HaveAttachment

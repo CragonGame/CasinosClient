@@ -26,13 +26,13 @@ function ItemReportPlayerOperate:setReportType(report_type, friend_etguid)
 
     local operate_name = ""
     if (report_type == ReportPlayerType.AbuseBehavior) then
-        operate_name = self.ViewPlayerProfile.ViewMgr.LanMgr:getLanValue("AbuseOthers")
+        operate_name = self.ViewPlayerProfile.ViewMgr.LanMgr:GetLanValue("AbuseOthers")
     elseif (report_type == ReportPlayerType.GoldTransaction) then
-        operate_name = self.ViewPlayerProfile.ViewMgr.LanMgr:getLanValue("IllegalDeal")
+        operate_name = self.ViewPlayerProfile.ViewMgr.LanMgr:GetLanValue("IllegalDeal")
     elseif (report_type == ReportPlayerType.PornIcon) then
-        operate_name = self.ViewPlayerProfile.ViewMgr.LanMgr:getLanValue("PornPic")
+        operate_name = self.ViewPlayerProfile.ViewMgr.LanMgr:GetLanValue("PornPic")
     elseif (report_type == ReportPlayerType.Cheat) then
-        operate_name = self.ViewPlayerProfile.ViewMgr.LanMgr:getLanValue("UsePlug-in")
+        operate_name = self.ViewPlayerProfile.ViewMgr.LanMgr:GetLanValue("UsePlug-in")
     end
     self.GTextReportContent.text = operate_name
 end

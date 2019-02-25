@@ -310,7 +310,7 @@ function ViewDesktopTexas:OnHandleEv(ev)
             self:_setLotteryTicketInfo(ev.lotteryticket_data.State, ev.lotteryticket_data.StateLeftTm)
         elseif (ev.EventName == "EvEntityLotteryTicketGameEndStateSimple") then
             if (self.GTextLotteryTicketTips ~= nil) then
-                self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
+                self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:GetLanValue("Settlement")
             end
         elseif (ev.EventName == "EvEntityLotteryTicketUpdateTm") then
             self:RefreshLotteryTickLeftTm(ev.tm)
@@ -398,7 +398,7 @@ function ViewDesktopTexas:SetDesktopSnapshotData(desktop, desktop_data, is_init,
     local tips = self.DesktopBase.DesktopTypeBase.DesktopTips
     if desktop_texas.IsPrivate then
         local t = {}
-        table.insert(t, self.ViewMgr.LanMgr:getLanValue("Private"))
+        table.insert(t, self.ViewMgr.LanMgr:GetLanValue("Private"))
         table.insert(t, " ")
         table.insert(t, tips)
         if self.ViewDesktopTypeBase.Ante > 0 then
@@ -526,7 +526,7 @@ function ViewDesktopTexas:showCommonCardType(is_gameend)
     if (hand_type == CS.Casinos.HandRankTypeTexas.None or hand_type == CS.Casinos.HandRankTypeTexas.HighCard) then
         show_cardtype_tips = false
     else
-        card_type_str = self.ViewMgr.LanMgr:getLanValue(CS.Casinos.LuaHelper.ParseHandRankTypeTexasToStr(hand_type))
+        card_type_str = self.ViewMgr.LanMgr:GetLanValue(CS.Casinos.LuaHelper.ParseHandRankTypeTexasToStr(hand_type))
     end
 
     self:showCardTips(best_hand.RankType, best_hand.RankTypeCards, best_hand.Cards, card_type_str, show_cardtype_tips, is_gameend)
@@ -938,9 +938,9 @@ function ViewDesktopTexas:RefreshLotteryTickLeftTm(tm)
     end
 
     if (tm > 0) then
-        self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:getLanValue("S")
+        self.GTextLotteryTicketTips.text = tm .. self.ViewMgr.LanMgr:GetLanValue("S")
     else
-        self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:getLanValue("Settlement")
+        self.GTextLotteryTicketTips.text = self.ViewMgr.LanMgr:GetLanValue("Settlement")
     end
 end
 
@@ -949,9 +949,9 @@ function ViewDesktopTexas:_setLotteryTicketInfo(state, left_tm)
     local tips = ""
     if (state == LotteryTicketStateEnum.Bet) then
         local tm = math.ceil(left_tm)
-        tips = tm .. self.ViewMgr.LanMgr:getLanValue("S")
+        tips = tm .. self.ViewMgr.LanMgr:GetLanValue("S")
     else
-        tips = self.ViewMgr.LanMgr:getLanValue("Settlement")
+        tips = self.ViewMgr.LanMgr:GetLanValue("Settlement")
     end
     if (self.GTextLotteryTicketTips ~= nil) then
         self.GTextLotteryTicketTips.text = tips

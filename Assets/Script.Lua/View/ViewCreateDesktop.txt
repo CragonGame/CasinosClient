@@ -10,7 +10,7 @@ end
 
 ---------------------------------------
 function ViewCreateDesktop:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("CreatPrivateDesk"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("CreatPrivateDesk"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     local com = self.ComUi:GetChild("ComBgAndClose").asCom
     local com_shade = com:GetChild("ComShade").asCom
@@ -46,19 +46,19 @@ function ViewCreateDesktop:setCreateInfo(desk_topinfo_id, map_params)
     self.mSeatNum = map_params[0]
     self.mIsNormalSpeed = map_params[1]
     local tb_deskinfo = self.CasinosContext.TbDataMgrLua:GetData("DesktopInfoTexas", desk_topinfo_id)
-    local tips = self.ViewMgr.LanMgr:getLanValue("Bet")
+    local tips = self.ViewMgr.LanMgr:GetLanValue("Bet")
     local bet_str = self.CasinosContext:AppendStrWithSB(tips, ": ", UiChipShowHelper:GetGoldShowStr(tb_deskinfo.SmallBlind, self.ViewMgr.LanMgr.LanBase)
     , "/", UiChipShowHelper:GetGoldShowStr(tb_deskinfo.BigBlind, self.ViewMgr.LanMgr.LanBase))
     self.mTextBet.text = bet_str
     local seat_numstr = ""
     if (self.mSeatNum == TexasDesktopSeatNum.Unlimited) then
-        seat_numstr = self.ViewMgr.LanMgr:getLanValue("Unlimited")
+        seat_numstr = self.ViewMgr.LanMgr:GetLanValue("Unlimited")
     elseif (self.mSeatNum == TexasDesktopSeatNum.Nine) then
         seat_numstr = "9"
     elseif (self.mSeatNum == TexasDesktopSeatNum.Five) then
         seat_numstr = "5"
     end
-    self.mTextStake.text = self.CasinosContext:AppendStrWithSB(self.ViewMgr.LanMgr:getLanValue("Seat"), ": ", seat_numstr)
+    self.mTextStake.text = self.CasinosContext:AppendStrWithSB(self.ViewMgr.LanMgr:GetLanValue("Seat"), ": ", seat_numstr)
     for i, v in pairs(tb_deskinfo.Ante) do
         local item = self.TIndexAnte[i]
         if item == nil then

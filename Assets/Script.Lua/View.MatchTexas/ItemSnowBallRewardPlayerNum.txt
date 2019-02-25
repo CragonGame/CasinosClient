@@ -22,13 +22,13 @@ function ItemSnowBallRewardPlayerNum:new(o, com, data, view_snowBallReward)
     temp[1] = tostring(data.MinPlayerNum)
     temp[2] = "-"
     temp[3] = tostring(data.MaxPlayerNum)
-    temp[4] = view_snowBallReward.ViewMgr.LanMgr:getLanValue("People")
+    temp[4] = view_snowBallReward.ViewMgr.LanMgr:GetLanValue("People")
     o.GTextSignUpNum.text = table.concat(temp)
     o.GTextRewardNum = com:GetChild("TextRewardNum").asTextField
     local temp1 = {}
-    temp1[1] = view_snowBallReward.ViewMgr.LanMgr:getLanValue("Reward")
+    temp1[1] = view_snowBallReward.ViewMgr.LanMgr:GetLanValue("Reward")
     temp1[2] = tostring(data.RewardNum)
-    temp1[3] = view_snowBallReward.ViewMgr.LanMgr:getLanValue("People")
+    temp1[3] = view_snowBallReward.ViewMgr.LanMgr:GetLanValue("People")
     o.GTextRewardNum.text = table.concat(temp1)
     o:BeSelectOrNot(false)
     return o

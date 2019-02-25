@@ -16,7 +16,7 @@ function ViewMatchInfo:OnCreate()
     self:BindEvListener("EvEntitySetRaiseBlindTbInfo", self)
 
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("MatchInfo"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("MatchInfo"))
     self.TimerUpdate = self.CasinosContext.TimerShaft:RegisterTimer(200, self, self._timerUpdate)
 
     local com_bg = self.ComUi:GetChild("ComBgAndClose").asCom
@@ -246,14 +246,14 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
     self.GMatchTitle.text = match_info.Name
     local text_signUpfee = nil
     if (match_info.SignupFee == 0) then
-        text_signUpfee = self.ViewMgr.LanMgr:getLanValue("FreeMatch")
+        text_signUpfee = self.ViewMgr.LanMgr:GetLanValue("FreeMatch")
     else
-        text_signUpfee = UiChipShowHelper:GetGoldShowStr3(match_info.SignupFee) .. "+" .. UiChipShowHelper:GetGoldShowStr3(match_info.ServiceFee) .. self.ViewMgr.LanMgr:getLanValue("MatchFee")
+        text_signUpfee = UiChipShowHelper:GetGoldShowStr3(match_info.SignupFee) .. "+" .. UiChipShowHelper:GetGoldShowStr3(match_info.ServiceFee) .. self.ViewMgr.LanMgr:GetLanValue("MatchFee")
     end
     self.GTextApplyFee.text = text_signUpfee
     self.GTextMatchTime.text = self:formatTime(match_info.DtMatchBegin)
     self.GTextStopApplyTime.text = self:formatTime(match_info.DtSignupClose)
-    self.GTextEntryNumber.text = string.format("%s%s - %s%s", detailedMatchInfo.PlayerNumMin, self.ViewMgr.LanMgr:getLanValue("People"), detailedMatchInfo.PlayerNumMax, self.ViewMgr.LanMgr:getLanValue("People"))
+    self.GTextEntryNumber.text = string.format("%s%s - %s%s", detailedMatchInfo.PlayerNumMin, self.ViewMgr.LanMgr:GetLanValue("People"), detailedMatchInfo.PlayerNumMax, self.ViewMgr.LanMgr:GetLanValue("People"))
     self.GTextInitialChip.text = UiChipShowHelper:GetGoldShowStr3(match_info.InitScore)
     if (match_info.CanRebuyCount > 0) then
         local blind_list = raiseBlindInfo.ListRaiseBlindTbIdCanRebuy
@@ -267,7 +267,7 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
             format_info = tostring(start_level) .. "-" .. tostring(end_level)
         end
         self.GComReBuy.visible = true
-        self.GTextReBuyTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("RebuyTip"), tostring(match_info.CanRebuyCount), format_info,
+        self.GTextReBuyTips.text = string.format(self.ViewMgr.LanMgr:GetLanValue("RebuyTip"), tostring(match_info.CanRebuyCount), format_info,
                 UiChipShowHelper:GetGoldShowStr3(raiseBlindInfo.RebuyGold), UiChipShowHelper:GetGoldShowStr3(raiseBlindInfo.RebuyScore))
     else
         self.GComReBuy.visible = false
@@ -284,7 +284,7 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
             format_info = tostring(start_level) .. "-" .. tostring(end_level)
         end
         self.GGroupAddon.visible = true
-        self.GTextAddonTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("AddOnTip"), tostring(match_info.CanAddonCount), format_info,
+        self.GTextAddonTips.text = string.format(self.ViewMgr.LanMgr:GetLanValue("AddOnTip"), tostring(match_info.CanAddonCount), format_info,
                 UiChipShowHelper:GetGoldShowStr3(raiseBlindInfo.AddonGold), UiChipShowHelper:GetGoldShowStr3(raiseBlindInfo.AddonScore))
     else
         self.GGroupAddon.visible = false
@@ -311,9 +311,9 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
     -- 盲注
     local tabletips = nil
     if (match_info.SeatNum == 6) then
-        tabletips = self.ViewMgr.LanMgr:getLanValue("SixSeat")
+        tabletips = self.ViewMgr.LanMgr:GetLanValue("SixSeat")
     elseif (match_info.SeatNum == 9) then
-        tabletips = self.ViewMgr.LanMgr:getLanValue("NineSeat")
+        tabletips = self.ViewMgr.LanMgr:GetLanValue("NineSeat")
     end
     self.GTextBindTips.text = match_info.Name .. tabletips
 
@@ -345,7 +345,7 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
     local l_reward = reward_info.ListReward
     if (isSnowBallReward) then
         self.GComRewardExplain.visible = true
-        tips = string.format(self.ViewMgr.LanMgr:getLanValue("SnowBallMatchReward"), reward_info.SnowballTotalReward)
+        tips = string.format(self.ViewMgr.LanMgr:GetLanValue("SnowBallMatchReward"), reward_info.SnowballTotalReward)
         local table_playerNum = self.ViewMgr.TbDataMgr:GetMapData("TexasSnowBallRewardPlayerNum")
         local current_rewardid
         for i, v in pairs(table_playerNum) do
@@ -395,7 +395,7 @@ function ViewMatchInfo:SetMatchInfo(detailedMatchInfo)
                 aTextField.align = CS.FairyGUI.AlignType.Center
                 aTextField.verticalAlign = CS.FairyGUI.VertAlignType.Middle
                 aTextField.UBBEnabled = true
-                aTextField.text = self.ViewMgr.LanMgr:getLanValue("SnowBallMatchTip")
+                aTextField.text = self.ViewMgr.LanMgr:GetLanValue("SnowBallMatchTip")
             end
         end
     end
@@ -433,12 +433,12 @@ end
 
 ---------------------------------------
 function ViewMatchInfo:onClickShare()
-    local content = string.format(self.ViewMgr.LanMgr:getLanValue("MatchInviteTip"), self.ControllerActor.PropNickName:get(),
+    local content = string.format(self.ViewMgr.LanMgr:GetLanValue("MatchInviteTip"), self.ControllerActor.PropNickName:get(),
             self:formatTime(self.MatchInfo.DtMatchBegin), self.MatchInfo.Name)
     local pic_name = "Resources.KingTexasRaw/Icon/ShareIcon.png"
     local pic_path = self.CasinosContext.PathMgr:CombinePersistentDataPath(pic_name)
     Native:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, content, pic_path,
-            self.MatchInfo.Name .. self.ViewMgr.LanMgr:getLanValue("MatchInvite"),
+            self.MatchInfo.Name .. self.ViewMgr.LanMgr:GetLanValue("MatchInvite"),
             Native.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Webpage)
 end
 
@@ -456,7 +456,7 @@ function ViewMatchInfo:onClickBtnApply()
     elseif (btnApplyState == 3) then
         -- 退赛
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        local content = self.ViewMgr.LanMgr:getLanValue("QuitMatchTip")
+        local content = self.ViewMgr.LanMgr:GetLanValue("QuitMatchTip")
         msg_box:useTwoBtn("", content,
                 function()
                     local ev = self:GetEv("EvUiRequestCancelSignupMatch")
@@ -476,7 +476,7 @@ function ViewMatchInfo:onClickBtnApply()
     elseif (btnApplyState == 4) then
         -- 报名
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.ServiceFee)),
+        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:GetLanValue("SignUpTip"), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.ServiceFee)),
                 function()
                     local ev = self:GetEv("EvUiRequestSignUpMatch")
                     if (ev == nil) then
@@ -510,17 +510,17 @@ function ViewMatchInfo:getBtnApplyState()
         local leftMatchBeginTime = self.MatchInfo.DtMatchBegin - CS.System.DateTime.Now
         if (leftMatchBeginTime.Minutes <= 4 and leftMatchBeginTime.Minutes > 0) then
             --self.GBtnApply.enabled = false
-            self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:getLanValue("QuitMatch")
+            self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:GetLanValue("QuitMatch")
             return 3 -- 已经报名，但不可退赛
         elseif (leftMatchBeginTime.Minutes <= 0) then
-            self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:getLanValue("Enter")
+            self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:GetLanValue("Enter")
             return 2 -- 已经报名，可以进入
         else
-            self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:getLanValue("QuitMatch")
+            self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:GetLanValue("QuitMatch")
             return 3 -- 已经报名，可以退赛
         end
     else
-        self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:getLanValue("SignUp")
+        self.GTextBtnApplyTitle.text = self.ViewMgr.LanMgr:GetLanValue("SignUp")
         return 4 -- 尚未报名
     end
 end
@@ -531,11 +531,11 @@ function ViewMatchInfo:formatTime(dtTime)
     local day = dtTime.Day - nowtm.Day
     local text_day = nil
     if (day == 0) then
-        text_day = self.ViewMgr.LanMgr:getLanValue("Today")
+        text_day = self.ViewMgr.LanMgr:GetLanValue("Today")
     elseif (day == 1) then
-        text_day = self.ViewMgr.LanMgr:getLanValue("Tomorrow")
+        text_day = self.ViewMgr.LanMgr:GetLanValue("Tomorrow")
     elseif (day == 2) then
-        text_day = self.ViewMgr.LanMgr:getLanValue("AfterTomorrow")
+        text_day = self.ViewMgr.LanMgr:GetLanValue("AfterTomorrow")
     else
         text_day = string.format("%02s%s%s", dtTime.Month, ".", tostring(dtTime.Day))
     end

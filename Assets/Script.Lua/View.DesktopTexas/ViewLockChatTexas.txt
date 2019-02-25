@@ -30,7 +30,7 @@ end
 
 ---------------------------------------
 function ViewLockChatTexas:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("LockChat"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("LockChat"))
     self:BindEvListener("EvEntityDesktopPlayerSit", self)
     self:BindEvListener("EvEntityDesktopPlayerLeaveChair", self)
     self.ViewDesktop = self.ViewMgr:GetView("DesktopTexas")

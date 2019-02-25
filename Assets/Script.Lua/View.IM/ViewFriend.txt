@@ -96,9 +96,9 @@ function UiFriendDetail:SetFriendInfo(friend_item)
     self.GTxetDetailID.text = "ID: " .. CS.Casinos.UiHelperCasinos.FormatPlayerActorId(self.CurrentFriendInfo.PlayerInfoMore.PlayerId)
     local address = self.CurrentFriendInfo.PlayerInfoMore.IPAddress
     if (address == nil or address == "") then
-        address = self.ViewMgr.LanMgr:getLanValue("Unknown")
+        address = self.ViewMgr.LanMgr:GetLanValue("Unknown")
     end
-    address = self.ViewMgr.LanMgr:getLanValue("Address") .. ': ' .. address
+    address = self.ViewMgr.LanMgr:GetLanValue("Address") .. ': ' .. address
     self.GTextAddress.text = address
     if (self.GImageVip ~= nil) then
         if (self.CurrentFriendInfo.PlayerInfoMore.VipLevel > 0) then
@@ -137,9 +137,9 @@ function UiFriendDetail:SetFriendInfo(friend_item)
 
     local is_friend = controller_im:isFriend(self.CurrentFriendInfo.PlayerInfoCommon.PlayerGuid)
     ViewHelper:SetGObjectVisible(is_friend, self.GIMageRemoveFriend)
-    local btn_addfriend_title = self.ViewMgr.LanMgr:getLanValue("AddFriend")
+    local btn_addfriend_title = self.ViewMgr.LanMgr:GetLanValue("AddFriend")
     if (is_friend) then
-        btn_addfriend_title = self.ViewMgr.LanMgr:getLanValue("DeleteFriend1")
+        btn_addfriend_title = self.ViewMgr.LanMgr:GetLanValue("DeleteFriend1")
     end
     self.GBtnAddFriend.title = btn_addfriend_title
     if (self.IsFriendDetail == false) then
@@ -177,7 +177,7 @@ end
 
 ---------------------------------------
 function UiFriendDetail:onClickCommonHeadIcon()
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetBigPic"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("GetBigPic"))
     local icon_name = self.CurrentFriendInfo.PlayerInfoCommon.IconName
     if (icon_name ~= nil and icon_name ~= "") then
         CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_name .. "_Big", Context:CalcBotIconUrl(false, icon_name), icon_name, nil,
@@ -228,7 +228,7 @@ function UiFriendDetail:onClickBtnJoin()
                     ev.seat_index = 255
                     self.ViewMgr:SendEv(ev)
                 else
-                    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("PlayerNotInTable"))
+                    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("PlayerNotInTable"))
                 end
             elseif (self.CurrentFriendInfo.PlayerPlayState.DesktopType == DesktopTypeEx.DesktopH) then
                 local ev = self.ViewMgr:GetEv("EvViewClickDesktopH")
@@ -325,7 +325,7 @@ function ViewFriend:OnCreate()
     self:BindEvListener("EvEntityFindFriend", self)
     self:BindEvListener("EvEntityFriendGoldChange", self)
 
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Friend"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("Friend"))
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
     self.ControllerIM = self.ControllerMgr:GetController("IM")
     self.ControllerFriendOrSearchControl = self.ComUi:GetController("FriendOrSearchControl")
@@ -361,7 +361,7 @@ function ViewFriend:OnCreate()
     local com_friendrecommend_detail_friendinfo = self.ComUi:GetChild("FriendRecommendDetail").asCom
     self.ViewShowFriendDetailFriendRecommend = UiFriendDetail:new(nil, com_friendrecommend_detail_friendinfo, false)
     self.GTextInputSerch = self.ComUi:GetChild("TextSearch").asTextInput
-    self.GTextInputSerch.promptText = self.ViewMgr.LanMgr:getLanValue("SearchPlayerTips")
+    self.GTextInputSerch.promptText = self.ViewMgr.LanMgr:GetLanValue("SearchPlayerTips")
     self.GTextID = self.ComUi:GetChild("TextID").asTextField
     self.GBtnSearch = self.ComUi:GetChild("Lan_Btn_Search").asButton
     self.GBtnSearch.onClick:Add(
@@ -388,7 +388,7 @@ function ViewFriend:OnCreate()
     local str_id_1 = string.sub(str_id, 1, 2)
     local str_id_2 = string.sub(str_id, 3, 5)
     local str_id_3 = string.sub(str_id, 6, 7)
-    self.GTextID.text = self.ViewMgr.LanMgr:getLanValue("My") .. "ID: " .. str_id_1 .. "-" .. str_id_2 .. "-" .. str_id_3
+    self.GTextID.text = self.ViewMgr.LanMgr:GetLanValue("My") .. "ID: " .. str_id_1 .. "-" .. str_id_2 .. "-" .. str_id_3
 end
 
 ---------------------------------------
@@ -554,7 +554,7 @@ function ViewFriend:setRecommandFriend(list_friend)
     self.CurrentFriendRemommendInfo = nil
     self.ControllerFriendOrSearchControl.selectedPage = "Search"
     if (#list_friend == 0) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("NotSearchFriend"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("NotSearchFriend"))
         self.ControllerSearch.selectedPage = "NoSearch"
         return
     end

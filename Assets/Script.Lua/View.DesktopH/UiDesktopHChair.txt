@@ -298,7 +298,7 @@ end
 function UiDesktopHChair:_onClick()
     if (self.SeatPlayerInfo == nil) then
         if (self.ViewDesktopH.ControllerDesktopH.IsBankPlayer) then
-            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("BankerSit"))
+            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("BankerSit"))
             return
         end
 

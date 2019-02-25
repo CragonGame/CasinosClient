@@ -216,11 +216,11 @@ function ControllerMTT:S2cMatchTexasRequestSignupResult(matchTexasSignUpResponse
     elseif (result == ProtocolResult.MatchTexasNotExist) then
         -- 报名失败,比赛已经解散
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        msg_box:showMsgBox1("", string.format(self.ControllerMgr.LanMgr:getLanValue("MatchNotExist"), data.MatchName))
+        msg_box:showMsgBox1("", string.format(self.ControllerMgr.LanMgr:GetLanValue("MatchNotExist"), data.MatchName))
     elseif (result == ProtocolResult.MatchTexasNotEnoughGold or result == ProtocolResult.ChipNotEnough) then
         -- 报名失败,筹码不足
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        msg_box:showMsgBox2("", self.ControllerMgr.LanMgr:getLanValue("BuyChipInShop"),
+        msg_box:showMsgBox2("", self.ControllerMgr.LanMgr:GetLanValue("BuyChipInShop"),
                 function()
                     self.ViewMgr:CreateView("Shop")
                 end,
@@ -229,13 +229,13 @@ function ControllerMTT:S2cMatchTexasRequestSignupResult(matchTexasSignUpResponse
                 end
         )
     elseif (result == ProtocolResult.MatchTexasTimeOver) then
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchTexasTimeOver"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("MatchTexasTimeOver"))
     elseif (result == ProtocolResult.MatchTexasExist) then
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchTexasExist"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("MatchTexasExist"))
     elseif (result == ProtocolResult.MatchTexasPlayerNumMax) then
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchTexasPlayerNumMax"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("MatchTexasPlayerNumMax"))
     elseif (result == ProtocolResult.MatchTexasMatchEnd) then
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchTexasMatchEnd"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("MatchTexasMatchEnd"))
         local ev = self:GetEv("EvRemoveMatch")
         if (ev == nil) then
             ev = EvRemoveMatch:new(nil)
@@ -271,7 +271,7 @@ function ControllerMTT:S2cMatchTexasRequestCancelSignupResult(matchTexasCancelSi
     if (result == ProtocolResult.Success) then
         --self:RequestGetMatchTexasList(MatchTexasScopeType.Public)
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        local tips = self.ControllerMgr.LanMgr:getLanValue("CancelMatchSuccess")
+        local tips = self.ControllerMgr.LanMgr:GetLanValue("CancelMatchSuccess")
         msg_box:showMsgBox1('', tips,
                 function()
                     self:RequestGetMatchTexasList(MatchTexasScopeType.Public)
@@ -286,13 +286,13 @@ function ControllerMTT:S2cMatchTexasRequestCancelSignupResult(matchTexasCancelSi
         ev.MatchGuid = match_guid
         self:SendEv(ev)]]
     elseif (result == ProtocolResult.MatchTexasNotExist) then
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CancelMatchFailed1"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("CancelMatchFailed1"))
     elseif (result == ProtocolResult.MatchTexasNotSignUp) then
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CancelMatchFailed2"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("CancelMatchFailed2"))
     elseif (result == ProtocolResult.MatchTexasTimeOver) then
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CancelMatchFailed3"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("CancelMatchFailed3"))
     else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("CancelMatchFailed"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("CancelMatchFailed"))
     end
 end
 
@@ -312,7 +312,7 @@ end
 -- 响应解散比赛
 function ControllerMTT:S2cMatchTexasRequestDisbandResult(result)
     if result == ProtocolResult.MatchTexasNotEnoughPlayer then
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("MatchDisband"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("MatchDisband"))
     end
 end
 
@@ -359,7 +359,7 @@ function ControllerMTT:S2cMatchTexasDisbandNotify(matchTexasDisbandNotify)
     self:SendEv(ev)
     if (data.Result == ProtocolResult.Failed) then
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("YourMatchDisband"),
+        msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:GetLanValue("YourMatchDisband"),
                 function()
                     self.ViewMgr:DestroyView(msg_box)
                 end

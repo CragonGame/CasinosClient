@@ -65,7 +65,7 @@ function ViewMTTGameResult:setResult(game_over, cannot_ob)
             btn_group = group_single_not_share
             show_tips = true
             show_list = false
-            self.TextTips.text = self.ViewMgr.LanMgr:getLanValue(self.Tips[2])
+            self.TextTips.text = self.ViewMgr.LanMgr:GetLanValue(self.Tips[2])
         else
             select_index = 3
             btn_group = group_single_share
@@ -82,7 +82,7 @@ function ViewMTTGameResult:setResult(game_over, cannot_ob)
             btn_group = group_multi_not_share
             show_tips = true
             show_list = false
-            self.TextTips.text = self.ViewMgr.LanMgr:getLanValue(self.Tips[2])
+            self.TextTips.text = self.ViewMgr.LanMgr:GetLanValue(self.Tips[2])
         else
             select_index = 1
             self:createItem(game_over.RewardGold, game_over.RewardDiamond, game_over.ListRewardItemId)
@@ -105,7 +105,7 @@ function ViewMTTGameResult:setResult(game_over, cannot_ob)
     if game_over.Ranking > 0 then
         select_rank = 0
         self.TextRank.text = game_over.Ranking
-        self.TextTips.text = self.ViewMgr.LanMgr:getLanValue(self.Tips[1])
+        self.TextTips.text = self.ViewMgr.LanMgr:GetLanValue(self.Tips[1])
     end
     self.ControllerRank.selectedIndex = select_rank
 
@@ -159,7 +159,7 @@ function ViewMTTGameResult:_onClickBtnShare()
     local pic_name = "Share.png"
     local pic_path = CS.Casinos.CasinosContext.Instance.PathMgr:CombinePersistentDataPath(pic_name)
     PicCapture:CapturePic(pic_name, function()
-        Native:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, self.ViewMgr.LanMgr:getLanValue("PlayGameNow"), pic_path, self.ViewMgr.LanMgr:getLanValue("CragonPoker"),
+        Native:ShareContent(CS.cn.sharesdk.unity3d.PlatformType.WeChat, self.ViewMgr.LanMgr:GetLanValue("PlayGameNow"), pic_path, self.ViewMgr.LanMgr:GetLanValue("CragonPoker"),
                 Native.ShareUrl, CS.cn.sharesdk.unity3d.ContentType.Image)--Webpage
     end)
 end

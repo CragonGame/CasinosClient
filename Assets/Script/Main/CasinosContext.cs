@@ -32,8 +32,8 @@ namespace Casinos
         public System.Diagnostics.Stopwatch Stopwatch { get; private set; }
         public MemoryStream MemoryStream { get; private set; }
         public StringBuilder SB { get; private set; }
-        public AsyncAssetLoaderMgr AsyncAssetLoaderMgr { get; private set; }
-        public AsyncAssetLoadGroup AsyncAssetLoadGroup { get; private set; }
+        //public AsyncAssetLoaderMgr AsyncAssetLoaderMgr { get; private set; }
+        //public AsyncAssetLoadGroup AsyncAssetLoadGroup { get; private set; }
         public PathMgr PathMgr { get; private set; }
         public CasinosPlayerPrefs PlayerPrefs { get; private set; }
         public CasinosConfig Config { get; private set; }
@@ -143,11 +143,12 @@ namespace Casinos
                 NativeAPIMsgReceiverListner = new NativeAPIMsgReceiverListener();
             }
 
-            if (AsyncAssetLoaderMgr == null)
-            {
-                AsyncAssetLoaderMgr = new AsyncAssetLoaderMgr();
-            }
-            AsyncAssetLoadGroup = AsyncAssetLoaderMgr.createAsyncAssetLoadGroup();
+            //if (AsyncAssetLoaderMgr == null)
+            //{
+            //    AsyncAssetLoaderMgr = new AsyncAssetLoaderMgr();
+            //}
+            //AsyncAssetLoadGroup = AsyncAssetLoaderMgr.CreateAsyncAssetLoadGroup();
+
             NetMgr = new NetMgr();
             PlayerPrefs = new CasinosPlayerPrefs();
             TextureMgr = new TextureMgr();
@@ -181,10 +182,10 @@ namespace Casinos
                 NetMgr.Update(elapsed_tm);
             }
 
-            if (AsyncAssetLoaderMgr != null)
-            {
-                AsyncAssetLoaderMgr.Update(Time.deltaTime);
-            }
+            //if (AsyncAssetLoaderMgr != null)
+            //{
+            //    AsyncAssetLoaderMgr.Update(Time.deltaTime);
+            //}
 
             if (LuaMgr != null)
             {
@@ -229,17 +230,17 @@ namespace Casinos
                 SpineMgr = null;
             }
 
-            if (AsyncAssetLoadGroup != null)
-            {
-                AsyncAssetLoadGroup.destroy();
-                AsyncAssetLoadGroup = null;
-            }
+            //if (AsyncAssetLoadGroup != null)
+            //{
+            //    AsyncAssetLoadGroup.destroy();
+            //    AsyncAssetLoadGroup = null;
+            //}
 
-            if (AsyncAssetLoaderMgr != null)
-            {
-                AsyncAssetLoaderMgr.Close();
-                AsyncAssetLoaderMgr = null;
-            }
+            //if (AsyncAssetLoaderMgr != null)
+            //{
+            //    AsyncAssetLoaderMgr.Close();
+            //    AsyncAssetLoaderMgr = null;
+            //}
 
             if (NetMgr != null)
             {

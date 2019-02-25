@@ -362,7 +362,7 @@ function ViewDesktopListTexas:setCurrentPlayingFriend(list_playerinfo)
         table.insert(self.ListPlayingFriend, value)
     end
     if (#self.ListPlayingFriend == 0) then
-        self.GTextNoFriendTips.text = self.ViewMgr.LanMgr:getLanValue("NoFriendPlayCard")
+        self.GTextNoFriendTips.text = self.ViewMgr.LanMgr:GetLanValue("NoFriendPlayCard")
         self.GListDesk:RemoveChildren()
     else
         self.GTextNoFriendTips.text = ""
@@ -390,7 +390,7 @@ function ViewDesktopListTexas:RemovePlayingFriend(player_guid)
     end
     if (#self.ListPlayingFriend <= 0) then
         self.GListDesk:RemoveChildren()
-        self.GTextNoFriendTips.text = self.ViewMgr.LanMgr:getLanValue("NoFriendPlayCard")
+        self.GTextNoFriendTips.text = self.ViewMgr.LanMgr:GetLanValue("NoFriendPlayCard")
     end
 end
 
@@ -446,7 +446,7 @@ function ViewDesktopListTexas:onClickBtnPersonInfo()
     if (scroll_index ~= -1) then
         local a = self:GetCurrentItemIndex(self.GListBetRangeOperate)
         if (a == scroll_index) then
-            local tips = self.ViewMgr.LanMgr:getLanValue("HasSelectedRightTable")
+            local tips = self.ViewMgr.LanMgr:GetLanValue("HasSelectedRightTable")
             ViewHelper:UiShowInfoSuccess(tips)
         end
         self.GListBetRangeOperate:ScrollToView(scroll_index, true)
@@ -539,7 +539,7 @@ function ViewDesktopListTexas:onBetChipOperateListScrollEnd()
     local tips = ""
     if (tb_desktop ~= nil) then
         local tb_d = tb_desktop
-        tips = self.ViewMgr.LanMgr:getLanValue("BuyIn") .. ":" .. UiChipShowHelper:GetGoldShowStr(tb_d.BetMin, self.ViewMgr.LanMgr.LanBase) .. "/"
+        tips = self.ViewMgr.LanMgr:GetLanValue("BuyIn") .. ":" .. UiChipShowHelper:GetGoldShowStr(tb_d.BetMin, self.ViewMgr.LanMgr.LanBase) .. "/"
                 .. UiChipShowHelper:GetGoldShowStr(tb_d.BetMax, self.ViewMgr.LanMgr.LanBase)
     end
     self.DeskSearchFilter.desktop_tableid = tb_desktop.Id
@@ -547,7 +547,7 @@ function ViewDesktopListTexas:onBetChipOperateListScrollEnd()
     local can_play = TexasHelper:EnoughChip4DesktopBetMin(self.CasinosContext.TbDataMgrLua, gold_acc,
             self.DeskSearchFilter.desktop_tableid)
     if (can_play == false) then
-        tips = self.ViewMgr.LanMgr:getLanValue("NoEnoughChipCanotPlay")
+        tips = self.ViewMgr.LanMgr:GetLanValue("NoEnoughChipCanotPlay")
     end
     self.GTextBetHints.text = tips
     self:onSearchFilterChanged()
@@ -576,18 +576,18 @@ function ViewDesktopListTexas:onSearchFilterChanged()
     local player_num = self.DeskSearchFilter.seat_num
     local filter_tips = ""
     if (player_num == TexasDesktopSeatNum.Unlimited) then
-        filter_tips = self.ViewMgr.LanMgr:getLanValue("AnySeat")
+        filter_tips = self.ViewMgr.LanMgr:GetLanValue("AnySeat")
     elseif (player_num == TexasDesktopSeatNum.Five) then
-        filter_tips = self.ViewMgr.LanMgr:getLanValue("Five")
+        filter_tips = self.ViewMgr.LanMgr:GetLanValue("Five")
     elseif (player_num == TexasDesktopSeatNum.Nine) then
-        filter_tips = self.ViewMgr.LanMgr:getLanValue("Nine")
+        filter_tips = self.ViewMgr.LanMgr:GetLanValue("Nine")
     end
     self.GTextSeatType.text = filter_tips
     local show_fullDesk = self.DeskSearchFilter.is_seat_full
     if (show_fullDesk) then
-        filter_tips = self.ViewMgr.LanMgr:getLanValue("Show")
+        filter_tips = self.ViewMgr.LanMgr:GetLanValue("Show")
     else
-        filter_tips = self.ViewMgr.LanMgr:getLanValue("Hide")
+        filter_tips = self.ViewMgr.LanMgr:GetLanValue("Hide")
     end
     self.GTextHideOrShow.text = filter_tips
     self:requestLobbyDesk()

@@ -83,7 +83,7 @@ function ViewEnterMatchNotify:_timerUpdate(tm)
     if (temp_seconds <= 0) then
         self:close()
     else
-        local temp = string.format(self.ViewMgr.LanMgr:getLanValue("MatchBegineTips"), self.MatchName, self:formatTime(temp_seconds))
+        local temp = string.format(self.ViewMgr.LanMgr:GetLanValue("MatchBegineTips"), self.MatchName, self:formatTime(temp_seconds))
         if (temp_seconds > 20) then
             self.GTextTips1.text = temp
             if (self.GGroupTip1.visible == false) then
@@ -111,10 +111,10 @@ function ViewEnterMatchNotify:formatTime(time_seconds)
     temp[1] = ""
     temp[2] = ""
     temp[3] = ""
-    temp[4] = self.ViewMgr.LanMgr:getLanValue("Second")
+    temp[4] = self.ViewMgr.LanMgr:GetLanValue("Second")
     if (time_seconds >= 60) then
         temp[1] = tostring(math.floor(time_seconds / 60))
-        temp[2] = self.ViewMgr.LanMgr:getLanValue("MinuteEx")
+        temp[2] = self.ViewMgr.LanMgr:GetLanValue("MinuteEx")
         temp[3] = tostring(time_seconds % 60)
     else
         temp[3] = tostring(time_seconds)

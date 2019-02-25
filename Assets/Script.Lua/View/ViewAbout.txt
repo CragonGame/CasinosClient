@@ -10,7 +10,7 @@ end
 
 ---------------------------------------
 function ViewAbout:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("About"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("About"))
     self.ControllerAbout = self.ComUi:GetController("ControllerAbout")
     local com_linkAbout = self.ComUi:GetChild("ComAboutLink")
     com_linkAbout.onClick:Add(

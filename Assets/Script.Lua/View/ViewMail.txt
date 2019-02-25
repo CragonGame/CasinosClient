@@ -10,7 +10,7 @@ end
 
 ---------------------------------------
 function ViewMail:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Mail"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("Mail"))
     self.ViewMgr:BindEvListener("EvEntityMailListInit", self)
     self.ViewMgr:BindEvListener("EvEntityMailAdd", self)
     self.ViewMgr:BindEvListener("EvEntityMailDelete", self)

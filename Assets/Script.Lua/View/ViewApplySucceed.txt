@@ -11,7 +11,7 @@ end
 
 ---------------------------------------
 function ViewApplySucceed:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("SignUpSuccess"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("SignUpSuccess"))
     local com_shade = self.ComUi:GetChild("ComBgAndClose").asCom
     com_shade.onClick:Add(
             function()
@@ -42,7 +42,7 @@ function ViewApplySucceed:SetMatchInfo(matchInfo)
     self.GTextMatchName.text = matchInfo.Name
     local text_SignUpfee = nil
     if (matchInfo.SignupFee == 0) then
-        text_SignUpfee = self.ViewMgr.LanMgr:getLanValue("Free")
+        text_SignUpfee = self.ViewMgr.LanMgr:GetLanValue("Free")
     else
         text_SignUpfee = tostring(matchInfo.SignupFee) .. "+" .. tostring(matchInfo.ServiceFee)
     end
@@ -52,11 +52,11 @@ function ViewApplySucceed:SetMatchInfo(matchInfo)
     local text_day = nil
     local day = match_beginTm.Day - nowtm.Day
     if (day == 0) then
-        text_day = self.ViewMgr.LanMgr:getLanValue("Today")
+        text_day = self.ViewMgr.LanMgr:GetLanValue("Today")
     elseif (day == 1) then
-        text_day = self.ViewMgr.LanMgr:getLanValue("Tomorrow")
+        text_day = self.ViewMgr.LanMgr:GetLanValue("Tomorrow")
     elseif (day == 2) then
-        text_day = self.ViewMgr.LanMgr:getLanValue("AfterTomorrow")
+        text_day = self.ViewMgr.LanMgr:GetLanValue("AfterTomorrow")
     elseif (day > 2) then
         text_day = string.format("%02s%s%s", match_beginTm.Month, ".", tostring(match_beginTm.Day))
     end

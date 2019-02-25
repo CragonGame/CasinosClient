@@ -14,7 +14,7 @@ namespace Casinos
         internal static string ABPostfix = ".ab";
 
         public Action<bool> LoaderDoneCallBack { get; set; }
-        LoaderTicket LoaderTicket { get; set; }
+        //LoaderTicket LoaderTicket { get; set; }
 
         //---------------------------------------------------------------------
         public GLoaderEx()

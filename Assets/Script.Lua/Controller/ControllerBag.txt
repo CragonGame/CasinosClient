@@ -132,7 +132,7 @@ end
 ---------------------------------------
 function ControllerBag:S2cBagDeleteItemNotify(result, item_objid)
     if (result ~= ProtocolResult.Success) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("RemoveItemFailed"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("RemoveItemFailed"))
         return
     end
     for key, value in pairs(self.MapItem) do
@@ -162,10 +162,10 @@ function ControllerBag:S2cOnOperateItem(result)
     local n_d = ItemOperateNotifyData:new(nil)
     n_d:setData(result)
     if (n_d.result ~= ProtocolResult.Success) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("UseItemFailed"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("UseItemFailed"))
         return
     end
-    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("UseItemSuccess"))
+    ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("UseItemSuccess"))
 
     --[[local item = nil
     for key,value in pairs(self.MapItem) do
@@ -195,7 +195,7 @@ function ControllerBag:S2cBagAddItemNotify(item_data)
     local eb_data_mgr = self.ControllerMgr.TbDataMgr
     local item = Item:new(nil, eb_data_mgr, data)
     self.MapItem[item.ItemData.item_objid] = item
-    ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:getLanValue("ReceiveItems"), self.ViewMgr.LanMgr:getLanValue(item.TbDataItem.Name)))
+    ViewHelper:UiShowInfoSuccess(string.format(self.ViewMgr.LanMgr:GetLanValue("ReceiveItems"), self.ViewMgr.LanMgr:GetLanValue(item.TbDataItem.Name)))
     if (item.UnitLink.UnitType == "GiftNormal") then
         table.insert(self.ListItemGiftNormal, item)
         self:sortListBagItem()
@@ -208,10 +208,10 @@ function ControllerBag:S2cBagAddItemNotify(item_data)
 
         if (self.Guid ~= gift_normal.GivePlayerEtGuid) then
             if (gift_normal.GiveBy ~= self.Guid) then
-                local msg = CS.System.String.Format("%s%s：%s", gift_normal.GiveBy, self.ViewMgr.LanMgr:getLanValue("SendItems"),
+                local msg = CS.System.String.Format("%s%s：%s", gift_normal.GiveBy, self.ViewMgr.LanMgr:GetLanValue("SendItems"),
                         item.TbDataItem.Name)
                 local msg_box = self.ViewMgr:CreateView("MsgBox")
-                msg_box:showMsgBox1(self.ViewMgr.LanMgr:getLanValue("ReceiveItems"), msg, nil)
+                msg_box:showMsgBox1(self.ViewMgr.LanMgr:GetLanValue("ReceiveItems"), msg, nil)
             end
         end
     end
@@ -242,7 +242,7 @@ function ControllerBag:S2cBagUpdateItemNotify(item_data)
     self.MapItem[item.ItemData.item_objid] = item
     self:updateItem(self.ListItemGiftNormal, item)
     self:updateItem(self.ListItemConsume, item)
-    local msg = self.ViewMgr.LanMgr:getLanValue("UpdateProp") .. self.ControllerMgr.LanMgr:getLanValue(item.TbDataItem.Name)
+    local msg = self.ViewMgr.LanMgr:GetLanValue("UpdateProp") .. self.ControllerMgr.LanMgr:GetLanValue(item.TbDataItem.Name)
     ViewHelper:UiShowInfoSuccess(msg)
 
     local ev = self:GetEv("EvEntityBagUpdateItem")

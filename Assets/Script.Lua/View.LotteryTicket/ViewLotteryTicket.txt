@@ -148,7 +148,7 @@ function ViewLotteryTicket:OnHandleEv(ev)
     elseif (ev.EventName == "EvEntityGetLotteryTicketDataSuccess") then
         local icon_name = ""
         if (ev.lotteryticket_data.State == LotteryTicketStateEnum.Bet) then
-            local tips = string.format("%u", math.ceil(ev.lotteryticket_data.StateLeftTm)) .. self.ViewMgr.LanMgr:getLanValue("S")
+            local tips = string.format("%u", math.ceil(ev.lotteryticket_data.StateLeftTm)) .. self.ViewMgr.LanMgr:GetLanValue("S")
             self.GTextLotteryTicketTips.visible = true
             self.GTextLotteryTicketTips.text = tips
             icon_name = "Beting"
@@ -217,7 +217,7 @@ function ViewLotteryTicket:RefreshLotteryTickLeftTm(tm)
     local icon_name = ""
     if (tm > 0) then
         self.GTextLotteryTicketTips.visible = true
-        self.GTextLotteryTicketTips.text = tostring(tm) .. self.ViewMgr.LanMgr:getLanValue("S")
+        self.GTextLotteryTicketTips.text = tostring(tm) .. self.ViewMgr.LanMgr:GetLanValue("S")
         icon_name = "Beting"
     else
         self.GTextLotteryTicketTips.visible = false
@@ -261,7 +261,7 @@ function ViewLotteryTicket:_onEnterGameEndState(gameend_detail, me_wingold)
     self:_setLastMaxWinnerInfo(gameend_detail.LastMaxWinner)
     self:_setLastBaoZiTm(gameend_detail.LastBaoZiDt)
     if (me_wingold > 0) then
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("Get") .. me_wingold .. self.ViewMgr.LanMgr:getLanValue("Chip"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("Get") .. me_wingold .. self.ViewMgr.LanMgr:GetLanValue("Chip"))
     end
 
     self:_refreshHistory()
@@ -380,9 +380,9 @@ function ViewLotteryTicket:_setLastBaoZiTm(tm)
     local d_tm = CS.System.DateTime.Parse(tm)
     if (CS.System.DateTime.MinValue ~= d_tm) then
         local last_baozi_date = CS.Casinos.LuaHelper.TimeDifferenceNow(d_tm)
-        local day = self.ViewMgr.LanMgr:getLanValue("Day")
-        local hours = self.ViewMgr.LanMgr:getLanValue("Hour")
-        local minute = self.ViewMgr.LanMgr:getLanValue("Minute")
+        local day = self.ViewMgr.LanMgr:GetLanValue("Day")
+        local hours = self.ViewMgr.LanMgr:GetLanValue("Hour")
+        local minute = self.ViewMgr.LanMgr:GetLanValue("Minute")
         self.GTextLastRoundBaoZiTm.text = last_baozi_date.Days .. day .. last_baozi_date.Hours .. hours .. last_baozi_date.Minutes .. minute
     end
 end

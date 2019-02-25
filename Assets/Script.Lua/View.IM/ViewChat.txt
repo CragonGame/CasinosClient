@@ -139,7 +139,7 @@ function ViewChat:setPresetMsg()
         elseif (self.UiChatType == _eUiChatType.DesktopH and msg.PresetMsgType == PresetMsgType.Desktop) then
         else
             local co_presetmsg = self.GListShortCutChat:AddItemFromPool().asCom
-            local msg_content = self.ViewMgr.LanMgr:getLanValue(msg.PresetMsg)
+            local msg_content = self.ViewMgr.LanMgr:GetLanValue(msg.PresetMsg)
             local preset_msg = ItemChatPresetMsg:new(nil, co_presetmsg, msg_content, self.ViewMgr)
         end
     end
@@ -173,7 +173,7 @@ end
 ---------------------------------------
 function ViewChat:onClickSendChat()
     if (self.GTextInputChat.text == nil or self.GTextInputChat.text == "") then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SendNoEmpty"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("SendNoEmpty"))
         return
     end
     local can_chat = false
@@ -185,7 +185,7 @@ function ViewChat:onClickSendChat()
         if (self.ControllerActor.PropVIPLevel:get() >= self.Context.Cfg.DesktopHCanChatVIPLimit) then
             can_chat = true
         else
-            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("OnlyVIPCanSend"))
+            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("OnlyVIPCanSend"))
         end
     end
 

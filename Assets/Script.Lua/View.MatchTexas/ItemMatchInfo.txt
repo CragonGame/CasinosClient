@@ -24,7 +24,7 @@ function ItemMatchInfo:new(o, com, match_info, self_join, view_mgr)
     text_reward.text = UiChipShowHelper:GetGoldShowStr2(match_info.TotalRewardGold, view_mgr.LanMgr.LanBase, nil, 0)
     local text_siginupfee = com:GetChild("TextApplicationFee").asTextField
     if (match_info.SignupFee == 0) then
-        text_siginupfee.text = string.format("[size=20]%s[size]", view_mgr.LanMgr:getLanValue("Free"))
+        text_siginupfee.text = string.format("[size=20]%s[size]", view_mgr.LanMgr:GetLanValue("Free"))
     else
         text_siginupfee.text = tostring(match_info.SignupFee) .. "+" .. tostring(match_info.ServiceFee)
     end
@@ -80,26 +80,26 @@ function ItemMatchInfo:UpdateState(nowtm)
         self.GControllerMatchState.selectedIndex = 0
         local day = self.DtSignup.Day - nowtm.Day
         if (day == 1) then
-            self.GTextDay.text = self.ViewMgr.LanMgr:getLanValue("Tomorrow")
+            self.GTextDay.text = self.ViewMgr.LanMgr:GetLanValue("Tomorrow")
         elseif (day == 2) then
-            self.GTextDay.text = self.ViewMgr.LanMgr:getLanValue("AfterTomorrow")
+            self.GTextDay.text = self.ViewMgr.LanMgr:GetLanValue("AfterTomorrow")
         elseif (day > 2) then
             self.GTextDay.text = string.format("%02s%s%s", self.DtSignup.Month, ".", tostring(self.DtSignup.Day))
         end
         self.GTextTime.text = string.format("%02s", self.DtMatchBegin.Hour) .. ":" .. string.format("%02s", self.DtMatchBegin.Minute)
-        self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:getLanValue("NotOpenYet")
+        self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:GetLanValue("NotOpenYet")
     elseif (nowtm >= self.DtSignup and nowtm < self.DtMatchBegin) then
         --已经开放 尚未开始
-        self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:getLanValue("SignUp")
+        self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:GetLanValue("SignUp")
         local time = self.DtMatchBegin - nowtm
         local day = self.DtMatchBegin.Day - nowtm.Day
         if (self.IsSelfJoin) then
             if (time.TotalMinutes < 1) then
                 self.GControllerBtnSigninState.selectedIndex = 1
-                self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:getLanValue("Enter")
+                self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:GetLanValue("Enter")
             else
                 self.GControllerBtnSigninState.selectedIndex = 3
-                self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:getLanValue("WaitStart")
+                self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:GetLanValue("WaitStart")
             end
         else
             self.GControllerBtnSigninState.selectedIndex = 0
@@ -107,18 +107,18 @@ function ItemMatchInfo:UpdateState(nowtm)
         if (time.TotalMinutes > 9) then
             self.GControllerMatchState.selectedIndex = 0
             if (day == 0) then
-                self.GTextDay.text = self.ViewMgr.LanMgr:getLanValue("Today")
+                self.GTextDay.text = self.ViewMgr.LanMgr:GetLanValue("Today")
             elseif (day == 1) then
-                self.GTextDay.text = self.ViewMgr.LanMgr:getLanValue("Tomorrow")
+                self.GTextDay.text = self.ViewMgr.LanMgr:GetLanValue("Tomorrow")
             elseif (day == 2) then
-                self.GTextDay.text = self.ViewMgr.LanMgr:getLanValue("AfterTomorrow")
+                self.GTextDay.text = self.ViewMgr.LanMgr:GetLanValue("AfterTomorrow")
             elseif (day > 2) then
                 self.GTextDay.text = string.format("%02s%s%s", self.DtMatchBegin.Month, ".", tostring(self.DtMatchBegin.Day))
             end
             self.GTextTime.text = string.format("%02s", self.DtMatchBegin.Hour) .. ":" .. string.format("%02s", self.DtMatchBegin.Minute)
         else
             self.GControllerMatchState.selectedIndex = 1
-            self.GTextMatchTips.text = self.ViewMgr.LanMgr:getLanValue("BeginNow")
+            self.GTextMatchTips.text = self.ViewMgr.LanMgr:GetLanValue("BeginNow")
             self.GTextTimeM.text = string.format("%02s", time.Minutes)
             self.GTextTimeS.text = string.format("%02s", time.Seconds)
         end
@@ -127,12 +127,12 @@ function ItemMatchInfo:UpdateState(nowtm)
         if (self.IsSelfJoin) then
             self.GControllerMatchState.selectedIndex = 2 --正在进行
             self.GControllerBtnSigninState.selectedIndex = 1
-            self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:getLanValue("Enter")
+            self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:GetLanValue("Enter")
         else
             self.GControllerMatchState.selectedIndex = 1
-            self.GTextMatchTips = self.ViewMgr.LanMgr:getLanValue("SignUpDeadLine")
+            self.GTextMatchTips = self.ViewMgr.LanMgr:GetLanValue("SignUpDeadLine")
             self.GControllerBtnSigninState.selectedIndex = 2
-            self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:getLanValue("SignUpDelay")
+            self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:GetLanValue("SignUpDelay")
             local left_time = self.DtSignupClose - nowtm
             self.GTextTimeM.text = string.format("%02s", left_time.Minutes)
             self.GTextTimeS.text = string.format("%02s", left_time.Seconds)
@@ -141,7 +141,7 @@ function ItemMatchInfo:UpdateState(nowtm)
         if (self.IsSelfJoin) then
             self.GControllerMatchState.selectedIndex = 2--正在进行
             self.GControllerBtnSigninState.selectedIndex = 1
-            self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:getLanValue("Enter")
+            self.GTextBtnSignTitle.text = self.ViewMgr.LanMgr:GetLanValue("Enter")
         else
             local match_lobby = self.ViewMgr:GetView("MatchLobby")
             match_lobby:RemoveMatchItem(self)
@@ -153,7 +153,7 @@ end
 function ItemMatchInfo:onClickBtnSign()
     if (self.GControllerBtnSigninState.selectedIndex == 0) then
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:getLanValue("SignUpTip"), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.ServiceFee)),
+        msg_box:useTwoBtn("", string.format(self.ViewMgr.LanMgr:GetLanValue("SignUpTip"), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.SignupFee), UiChipShowHelper:GetGoldShowStr3(self.MatchInfo.ServiceFee)),
                 function()
                     local ev = self.ViewMgr:GetEv("EvUiRequestSignUpMatch")
                     if (ev == nil) then

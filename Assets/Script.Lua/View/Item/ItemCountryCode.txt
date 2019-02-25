@@ -42,7 +42,7 @@ function ItemCountryCode:setDetail(k, v)
     table.insert(t, "+")
     table.insert(t, v["Code"])
     table.insert(t, " ")
-    table.insert(t, self.ViewMgr.LanMgr:getLanValue(k))
+    table.insert(t, self.ViewMgr.LanMgr:GetLanValue(k))
     self.GTextCountryCode.text = table.concat(t)
     t = {}
     table.insert(t, k)

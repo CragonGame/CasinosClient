@@ -10,7 +10,7 @@ end
 
 ---------------------------------------
 function ViewBag:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Bag1"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("Bag1"))
     self.ControllerBag = self.ControllerMgr:GetController("Bag")
     self.ControllerPlayer = self.ControllerMgr:GetController("Player")
     self.ViewPool = self.ViewMgr:GetView("Pool")

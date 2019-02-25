@@ -389,8 +389,8 @@ function DesktopTexas:PlayerEnter(player_data)
 
     self:_initActorMirror(player_d)
 
-    local content = string.format("%s%s", player_d.NickName, self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("EnterDesk"))
-    self.ControllerDesktop:addDesktopMsg("", self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("TheDealer"), 0, content)
+    local content = string.format("%s%s", player_d.NickName, self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("EnterDesk"))
+    self.ControllerDesktop:addDesktopMsg("", self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("TheDealer"), 0, content)
     self.CurrentUnSendDesktopMsg = ""
 end
 
@@ -553,7 +553,7 @@ function DesktopTexas:DesktopUser(info_user)
         self.GameEnd = false
         self.ReBeginTm = -1
         self.AlreadyShowDown = false
-        self.ControllerDesktop:addDesktopMsg("", self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("TheDealer"), 0, self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("GameBegine"))
+        self.ControllerDesktop:addDesktopMsg("", self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("TheDealer"), 0, self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("GameBegine"))
         self.DesktopState = TexasDesktopState.PreFlop
         self.PotMain = desktop_preflop.pot_total
         self.ListPot = desktop_preflop.list_pot
@@ -1059,7 +1059,7 @@ end
 
 ---------------------------------------
 function DesktopTexas:requestPlayerSitdown(sitdown_info)
-    ViewHelper:UiBeginWaiting(self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("Seating"))
+    ViewHelper:UiBeginWaiting(self.ControllerDesktop.ViewMgr.LanMgr:GetLanValue("Seating"))
     self.ControllerDesktop:RequestPlayerSitdown(sitdown_info)
 end
 
@@ -1390,8 +1390,8 @@ end
 function DesktopTexas:_leaveDesktop(player_texas)
     self.MapPlayerTexas[player_texas.Guid] = nil
     self.MapAllPlayer[player_texas.Guid] = nil
-    local content = string.format("%s%s", player_texas.PlayerDataDesktop.NickName, self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("LeaveDesk"))--CS.Casinos.CasinosContext.Instance:AppendStrWithSB(player_texas.PlayerDataDesktop.PlayerInfoCommon.NickName, "离开桌子")
-    self.ControllerDesktop:addDesktopMsg("", self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("TheDealer"), 0, content)
+    local content = string.format("%s%s", player_texas.PlayerDataDesktop.NickName, self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("LeaveDesk"))--CS.Casinos.CasinosContext.Instance:AppendStrWithSB(player_texas.PlayerDataDesktop.PlayerInfoCommon.NickName, "离开桌子")
+    self.ControllerDesktop:addDesktopMsg("", self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("TheDealer"), 0, content)
 
     for k, v in pairs(self.AllSeat) do
         if (v.player_texas ~= nil and v.player_texas.Guid == player_texas.Guid) then

@@ -67,7 +67,7 @@ function ControllerPlayer:OnCreate()
     local c_login = self.ControllerMgr:GetController("Login")
     local player_play_state = c_login:GetClientEnterWorldNotify().player_play_state
     if (player_play_state ~= nil) then
-        ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("GetTable"))
+        ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("GetTable"))
         if (player_play_state.DesktopType == DesktopTypeEx.Desktop) then
             self.Rpc:RPC0(self.MethodType.DesktopSnapshotRequest)
         else
@@ -188,13 +188,13 @@ function ControllerPlayer:OnHandleEv(ev)
     if (ev.EventName == "EvUiClickHelp") then
     elseif (ev.EventName == "EvUiClickEdit") then
     elseif (ev.EventName == "EvUiClickLogin") then
-        local title = self.ControllerMgr.LanMgr:getLanValue("ReturnLogin")
-        local tips = self.ControllerMgr.LanMgr:getLanValue("ExitCanLogin")
+        local title = self.ControllerMgr.LanMgr:GetLanValue("ReturnLogin")
+        local tips = self.ControllerMgr.LanMgr:GetLanValue("ExitCanLogin")
         local msg_box = self.ViewMgr:CreateView("MsgBox")
         msg_box:showMsgBox1(title, tips,
                 function(bo)
                     if (bo) then
-                        ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("Logouting"))
+                        ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("Logouting"))
                         self.CasinosContext.NetMgr:Disconnect()
                     end
                 end
@@ -242,12 +242,12 @@ function ControllerPlayer:OnHandleEv(ev)
             local gift_shop = self.ViewMgr:CreateView("GiftShop")
             gift_shop:setGiftShopInfo(ev.is_tmp_gift, self.Guid, ev.to_player_etguid)
         else
-            ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("SitTableSendGift"))
+            ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("SitTableSendGift"))
         end
     elseif (ev.EventName == "EvRequestGetPlayerModuleData") then
         self.Rpc:RPC1(self.MethodType.PlayerGetCasinosModuleDataWithFactoryNameRequest, ev.factory_name)
     elseif (ev.EventName == "EvUiChangeLan") then
-        ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("ChangeLaning"), 10)
+        ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("ChangeLaning"), 10)
         self.Rpc:RPC1(self.MethodType.PlayerChangeLanRequest, ev.lan)
     elseif (ev.EventName == "EvUiCloseActivityPopup") then
         CS.UnityEngine.PlayerPrefs.SetString(self.ControllerActivity.CurrentActID, "true")
@@ -320,18 +320,18 @@ end
 
 ---------------------------------------
 function ControllerPlayer:OnPlayerChangeProfileSkinNotify(profileskin_tableid)
-    ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("SkinSuccess"))
+    ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("SkinSuccess"))
 end
 
 ---------------------------------------
 function ControllerPlayer:S2cPlayerReportPlayerNotify(report)
-    ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("ReportSuccess"))
+    ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("ReportSuccess"))
 end
 
 ---------------------------------------
 function ControllerPlayer:PlayerInvitePlayerEnterDesktopRequestResult(r)
     if (r == ProtocolResult.Success) then
-        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("InviteFriendToTable"))
+        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("InviteFriendToTable"))
     end
 end
 
@@ -346,10 +346,10 @@ function ControllerPlayer:S2cPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
     local desktopinfo_format = desktop_helper:GetDesktopInfoFormat(self.Rpc.MessagePack, self.TbDataMgr,
             invite.desktop_filter, self.ControllerMgr.LanMgr.LanBase)
     local msg_box = self.ViewMgr:CreateView("MsgBox")
-    local tips = self.CasinosContext:AppendStrWithSB(self.ControllerMgr.LanMgr:getLanValue("Player"),
+    local tips = self.CasinosContext:AppendStrWithSB(self.ControllerMgr.LanMgr:GetLanValue("Player"),
             invite.player_nickname, "\n", desktopinfo_format.DesktopFormat, "\n",
-            self.ControllerMgr.LanMgr:getLanValue("Player"), tostring(invite.player_num), "/", desktopinfo_format.Param)
-    msg_box:showMsgBox1(self.ControllerMgr.LanMgr:getLanValue("InviteFriendPlay"), tips,
+            self.ControllerMgr.LanMgr:GetLanValue("Player"), tostring(invite.player_num), "/", desktopinfo_format.Param)
+    msg_box:showMsgBox1(self.ControllerMgr.LanMgr:GetLanValue("InviteFriendPlay"), tips,
             function(accept)
                 if (accept) then
                     if (self.ControllerDesktopH.DesktopHModule == nil) then
@@ -357,8 +357,8 @@ function ControllerPlayer:S2cPlayerRecvInvitePlayerEnterDesktopNotify(invite1)
                             self.ControllerDesktopListTexas:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
                         else
                             local msg_boxex = self.ViewMgr:CreateView("MsgBox")
-                            msg_boxex:showMsgBox1(self.ControllerMgr.LanMgr:getLanValue("InviteFriendPlay"),
-                                    self.ControllerMgr.LanMgr:getLanValue("LeaveAndEnterNew"),
+                            msg_boxex:showMsgBox1(self.ControllerMgr.LanMgr:GetLanValue("InviteFriendPlay"),
+                                    self.ControllerMgr.LanMgr:GetLanValue("LeaveAndEnterNew"),
                                     function(confirm)
                                         self.ControllerDesktopListTexas:RequestEnterDesktop(invite.desktop_guid, false, 255, invite.desktop_filter:getData4Pack())
                                     end
@@ -394,12 +394,12 @@ function ControllerPlayer:S2cPlayerGiveChipQueryRangeRequestResult(r, give_gold_
     else
         local msg = ""
         if (r == ProtocolResult.GiveChipBeyondTheLimit) then
-            local tips = self.ControllerMgr.LanMgr:getLanValue("MoreThanEachDayNoSend")
-            msg = string.format(tips, self.ViewMgr.LanMgr:getLanValue("Chip"))
+            local tips = self.ControllerMgr.LanMgr:GetLanValue("MoreThanEachDayNoSend")
+            msg = string.format(tips, self.ViewMgr.LanMgr:GetLanValue("Chip"))
             ViewHelper:UiShowInfoFailed(msg)
         elseif (r == ProtocolResult.GiveChipNotEnoughChip) then
-            local tips = self.ControllerMgr.LanMgr:getLanValue("CarrySmallNoSend")
-            msg = string.format(tips, self.ViewMgr.LanMgr:getLanValue("Chip"))
+            local tips = self.ControllerMgr.LanMgr:GetLanValue("CarrySmallNoSend")
+            msg = string.format(tips, self.ViewMgr.LanMgr:GetLanValue("Chip"))
             ViewHelper:UiShowInfoFailed(msg)
         end
     end
@@ -417,22 +417,22 @@ end
 function ControllerPlayer:S2cPlayerGiveChipRequestResult(r)
     local msg = ""
     if (r == ProtocolResult.Success) then
-        msg = string.format(self.ControllerMgr.LanMgr:getLanValue("GiveSuccess"), self.ViewMgr.LanMgr:getLanValue("Chip"))
+        msg = string.format(self.ControllerMgr.LanMgr:GetLanValue("GiveSuccess"), self.ViewMgr.LanMgr:GetLanValue("Chip"))
         ViewHelper:UiShowInfoSuccess(msg)
     else
         if (r == ProtocolResult.GiveChipNotEnoughChip) then
-            msg = self.ControllerMgr.LanMgr:getLanValue("HaveTooLittleFail")
+            msg = self.ControllerMgr.LanMgr:GetLanValue("HaveTooLittleFail")
         elseif (r == ProtocolResult.GiveChipMoreThanMine) then
-            msg = self.ControllerMgr.LanMgr:getLanValue("GiveMoreIOwnFail")
+            msg = self.ControllerMgr.LanMgr:GetLanValue("GiveMoreIOwnFail")
         elseif (r == ProtocolResult.GiveChipTooSmall) then
-            msg = self.ControllerMgr.LanMgr:getLanValue("GiveSmallFail")
+            msg = self.ControllerMgr.LanMgr:GetLanValue("GiveSmallFail")
         elseif (r == ProtocolResult.GiveChipBeyondTheLimit) then
-            msg = self.ControllerMgr.LanMgr:getLanValue("GiveMoreFail")
+            msg = self.ControllerMgr.LanMgr:GetLanValue("GiveMoreFail")
         else
-            msg = self.ControllerMgr.LanMgr:getLanValue("GivePlayerFail")
+            msg = self.ControllerMgr.LanMgr:GetLanValue("GivePlayerFail")
         end
 
-        msg = string.format(msg, self.ViewMgr.LanMgr:getLanValue("Chip"))
+        msg = string.format(msg, self.ViewMgr.LanMgr:GetLanValue("Chip"))
         ViewHelper:UiShowInfoFailed(msg)
     end
 end
@@ -444,9 +444,9 @@ function ControllerPlayer:S2cPlayerBankDepositNotify(bank_notify)
     if (data.result == ProtocolResult.Success) then
         self.ControllerActor.PropGoldAcc:set(data.acc_golds)
         self.ControllerActor.PropGoldBank:set(data.bank_golds)
-        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("SaveSuccess"))
+        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("SaveSuccess"))
     else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("SaveFail"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("SaveFail"))
     end
 end
 
@@ -457,18 +457,18 @@ function ControllerPlayer:S2cPlayerBankWithdrawNotify(bank_notify)
     if (data.result == ProtocolResult.Success) then
         self.ControllerActor.PropGoldAcc:set(data.acc_golds)
         self.ControllerActor.PropGoldBank:set(data.bank_golds)
-        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("WithdrawalSuccess"))
+        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("WithdrawalSuccess"))
     else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("WithdrawalFail"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("WithdrawalFail"))
     end
 end
 
 ---------------------------------------
 function ControllerPlayer:S2cPlayerGetDailyRewardNotify(r)
     if (r == ProtocolResult.Success) then
-        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("GetDailyReward"))
+        ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("GetDailyReward"))
     else
-        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:getLanValue("GetDailyRewardFail"))
+        ViewHelper:UiShowInfoFailed(self.ControllerMgr.LanMgr:GetLanValue("GetDailyRewardFail"))
     end
 end
 
@@ -482,7 +482,7 @@ function ControllerPlayer:S2cPlayerRefreshIpAddressNotify(ip_address)
     if (ip_address ~= nil and ip_address ~= "") then
         self.ControllerActor.PropIpAddress:set(ip_address)
     end
-    ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:getLanValue("IPRefresh"))
+    ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("IPRefresh"))
 end
 
 ---------------------------------------
@@ -531,7 +531,7 @@ end
 ---------------------------------------
 function ControllerPlayer:S2cPlayerChangeLanNotify(lan)
     ViewHelper:UiEndWaiting()
-    local tips = self.ControllerMgr.LanMgr:getLanValue(CS.Casinos.IItemLan.ChangeSuccessTipsKey)
+    local tips = self.ControllerMgr.LanMgr:GetLanValue(CS.Casinos.IItemLan.ChangeSuccessTipsKey)
     ViewHelper:UiShowInfoSuccess(tips)
     self.LanMgr:setLan(lan)
     self:CreateMainUi()
@@ -554,7 +554,7 @@ end
 
 ---------------------------------------
 function ControllerPlayer:requestGetPlayerInfoOther(player_guid)
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:getLanValue("GetPlayerInfo"))
+    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("GetPlayerInfo"))
     self.GetOtherPlayerInfoTicket = self.GetOtherPlayerInfoTicket + 1
     self.Rpc:RPC2(self.MethodType.PlayerGetPlayerInfoOtherRequest, player_guid, self.GetOtherPlayerInfoTicket)
     return self.GetOtherPlayerInfoTicket
@@ -686,7 +686,7 @@ function ControllerPlayer:OnGetPicSuccess(pic_data)
                     self:SendEv(ev)
                 else
                     local msg_t = {}
-                    table.insert(msg_t, self.ControllerMgr.LanMgr:getLanValue("UploadPicFailed"))
+                    table.insert(msg_t, self.ControllerMgr.LanMgr:GetLanValue("UploadPicFailed"))
                     table.insert(msg_t, "! ErrorCode: ")
                     table.insert(msg_t, error.code)
                     local msg = table.concat(msg_t)
@@ -765,7 +765,7 @@ function ControllerPlayer:S2cPlayerRequestGetAddressResult(result, address)
         self:SendEv(ev)
     elseif (result == ProtocolResult.Failed) then
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("GetAddressFailed"))
+        msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:GetLanValue("GetAddressFailed"))
     end
 end
 
@@ -774,7 +774,7 @@ end
 function ControllerPlayer:S2cPlayerRequestEditAddressResult(result, address)
     if (result == ProtocolResult.Failed) then
         local msg_box = self.ViewMgr:CreateView("MsgBox")
-        msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:getLanValue("UploadAddressFailed"))
+        msg_box:showMsgBox1("", self.ControllerMgr.LanMgr:GetLanValue("UploadAddressFailed"))
     end
 end
 

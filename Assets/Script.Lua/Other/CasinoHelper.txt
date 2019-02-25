@@ -66,33 +66,33 @@ function CasinoHelper:TranslateFriendState(friend_state)
     local state = ""
     local lan_mgr = self.LanMgr
     if (friend_state == _eFriendStateClient.Offline) then
-        state = lan_mgr:getLanValue("OffLine")
+        state = lan_mgr:GetLanValue("OffLine")
     elseif (friend_state == _eFriendStateClient.Fishing) then
-        state = lan_mgr:getLanValue("Fishing")
+        state = lan_mgr:GetLanValue("Fishing")
     elseif (friend_state == _eFriendStateClient.GFlowerDesktopH) then
-        state = lan_mgr:getLanValue("ZhaJinHuaDesktopH")
+        state = lan_mgr:GetLanValue("ZhaJinHuaDesktopH")
     elseif (friend_state == _eFriendStateClient.GFlowerDesktopPrivate) then
-        state = lan_mgr:getLanValue("ZhaJinHuaUnknow")
+        state = lan_mgr:GetLanValue("ZhaJinHuaUnknow")
     elseif (friend_state == _eFriendStateClient.GFlowerDesktopNormal) then
-        state = lan_mgr:getLanValue("ZhaJinHuaClassic")
+        state = lan_mgr:GetLanValue("ZhaJinHuaClassic")
     elseif (friend_state == _eFriendStateClient.TexasDesktopClassicPrivate) then
-        state = lan_mgr:getLanValue("TexasPokerUnknow")
+        state = lan_mgr:GetLanValue("TexasPokerUnknow")
     elseif (friend_state == _eFriendStateClient.TexasDesktopClassic) then
-        state = lan_mgr:getLanValue("TexasPokerClassic")
+        state = lan_mgr:GetLanValue("TexasPokerClassic")
     elseif (friend_state == _eFriendStateClient.TexasDesktopMustBet) then
-        state = lan_mgr:getLanValue("TexasPokerMustBet")
+        state = lan_mgr:GetLanValue("TexasPokerMustBet")
     elseif (friend_state == _eFriendStateClient.TexasDesktopMustBetPrivate) then
-        state = lan_mgr:getLanValue("TexasPokerUnknow")
+        state = lan_mgr:GetLanValue("TexasPokerUnknow")
     elseif (friend_state == _eFriendStateClient.TexasDesktopH) then
-        state = lan_mgr:getLanValue("TexasPokerDesktopH")
+        state = lan_mgr:GetLanValue("TexasPokerDesktopH")
     elseif (friend_state == _eFriendStateClient.NiuNiuDesktopH) then
-        state = lan_mgr:getLanValue("NiuNiuDesktopH")
+        state = lan_mgr:GetLanValue("NiuNiuDesktopH")
     elseif (friend_state == _eFriendStateClient.ZhongFBDesktopH) then
-        state = lan_mgr:getLanValue("ZhongFaBaiDesktopH")
+        state = lan_mgr:GetLanValue("ZhongFaBaiDesktopH")
     elseif (friend_state == _eFriendStateClient.NotInDesktop) then
-        state = lan_mgr:getLanValue("InLobby")
+        state = lan_mgr:GetLanValue("InLobby")
     elseif (friend_state == _eFriendStateClient.DesktopMatch) then
-        state = lan_mgr:getLanValue("DesktopMatch")
+        state = lan_mgr:GetLanValue("DesktopMatch")
     end
     return state
 end

@@ -57,7 +57,7 @@ function ControllerDesktopListTexas:OnHandleEv(ev)
         if ((ev.desk_etguid ~= self_desktop_etguid) and (ev.desk_etguid ~= nil and ev.desk_etguid ~= "")) then
             self:RequestEnterDesktop(ev.desk_etguid, false, ev.seat_index, ev.desktop_filter)
         else
-            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("SameTableTips"))
+            ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("SameTableTips"))
         end
     elseif (ev.EventName == "EvUiClickLeaveLobby") then
         self:LeavePlayModel()
@@ -74,24 +74,24 @@ end
 
 ---------------------------------------
 function ControllerDesktopListTexas:RequestSearchDesktop(search_filter)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("SearchTable"))
     local p_d = search_filter:getData4Pack()
     self.Rpc:RPC1(self.MethodType.SearchDesktopListRequest, p_d)
 end
 
 ---------------------------------------
 function ControllerDesktopListTexas:RequestSearchDesktopFollowFriend(desktop_etguid)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("SearchTable"))
 end
 
 ---------------------------------------
 function ControllerDesktopListTexas:RequestSearchPlayingFriend(desktop_type)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("SearchTable"));
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("SearchTable"));
 end
 
 ---------------------------------------
 function ControllerDesktopListTexas:RequestEnterDesktop(desktop_etguid, player_or_view, seat_index, desktop_filter)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("EnterTable"))
     local enter_request = DesktopEnterRequest:new(nil)
     enter_request.desktop_guid = desktop_etguid
     enter_request.seat_index = seat_index
@@ -107,7 +107,7 @@ end
 
 ---------------------------------------
 function ControllerDesktopListTexas:RequestPlayNow(desktop_filter)
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("EnterTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("EnterTable"))
     local data = desktop_filter:getData4Pack()
     self.Rpc:RPC1(self.MethodType.PlayerPlayNowRequest, data)
 end
@@ -120,7 +120,7 @@ end
 
 ---------------------------------------
 function ControllerDesktopListTexas:RequestLeaveDesktop()
-    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:getLanValue("LeavingTable"))
+    ViewHelper:UiBeginWaiting(self.ViewMgr.LanMgr:GetLanValue("LeavingTable"))
     self.Rpc:RPC0(self.MethodType.DesktopPlayerLeaveRequest)
 end
 

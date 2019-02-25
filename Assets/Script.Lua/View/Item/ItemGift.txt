@@ -60,16 +60,16 @@ function ItemGift:SetGift(gift_id, is_buygift, is_mine, to_etguid, from_name, gi
     end
 
     if (self.GTextGiftName ~= nil) then
-        self.GTextGiftName.text = self.LanMgr:getLanValue(tb_gift.Name)
+        self.GTextGiftName.text = self.LanMgr:GetLanValue(tb_gift.Name)
     end
     if (self.GTextGiftValue ~= nil) then
         local price = UiChipShowHelper:GetGoldShowStr(tb_gift.Price, self.LanMgr.LanBase, false)
         if (tb_gift.PriceType == PriceType.Chip) then
         elseif (tb_gift.PriceType == PriceType.Gold) then
-            price = price .. self.LanMgr:getLanValue("Diamonds")
+            price = price .. self.LanMgr:GetLanValue("Diamonds")
         elseif (tb_gift.PriceType == PriceType.Point) then
             -- 积分
-            price = price .. self.LanMgr:getLanValue("Point")
+            price = price .. self.LanMgr:GetLanValue("Point")
         end
         self.GTextGiftValue.text = price
     end
@@ -78,7 +78,7 @@ function ItemGift:SetGift(gift_id, is_buygift, is_mine, to_etguid, from_name, gi
             self.GTextItemCount.text = "*" .. tostring(item.ItemData.count)
         end
         if item.UnitLink.UnitType == "WechatRedEnvelopes" then
-            self.GTextGiftValue.text = tostring(item.UnitLink.Value) .. self.LanMgr:getLanValue("Yuan")
+            self.GTextGiftValue.text = tostring(item.UnitLink.Value) .. self.LanMgr:GetLanValue("Yuan")
         end
     end
     self.Com.onClick:Add(

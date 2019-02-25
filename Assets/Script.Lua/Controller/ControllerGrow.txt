@@ -54,12 +54,12 @@ end
 function ControllerGrow:S2cPlayerGetGrowRewardNotify(result, get_golds)
     if (result == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(
-                self.ViewMgr.LanMgr:getLanValue("SuccessGet") .. UiChipShowHelper:GetGoldShowStr(get_golds, self.ViewMgr.LanMgr.LanBase) ..
-                        self.ViewMgr.LanMgr:getLanValue("Chip"))
+                self.ViewMgr.LanMgr:GetLanValue("SuccessGet") .. UiChipShowHelper:GetGoldShowStr(get_golds, self.ViewMgr.LanMgr.LanBase) ..
+                        self.ViewMgr.LanMgr:GetLanValue("Chip"))
     else
-        local msg = self.ViewMgr.LanMgr:getLanValue("Get") ..
-                self.ViewMgr.LanMgr:getLanValue("Chip") ..
-                self.ViewMgr.LanMgr:getLanValue("Failed")
+        local msg = self.ViewMgr.LanMgr:GetLanValue("Get") ..
+                self.ViewMgr.LanMgr:GetLanValue("Chip") ..
+                self.ViewMgr.LanMgr:GetLanValue("Failed")
         ViewHelper:UiShowInfoFailed(msg)
     end
 end

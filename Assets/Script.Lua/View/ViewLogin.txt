@@ -128,7 +128,7 @@ function ViewLogin:OnCreate()
             end)
     self.TextCountryCode = com_text_code:GetChild("TextCountryCord").asTextField
     self.GTextInputAccLogin = com_input_acclogin:GetChild("InputAccLogin").asTextInput
-    self.GTextInputAccLogin.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:getLanValue("EnterPhone"))
+    self.GTextInputAccLogin.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:GetLanValue("EnterPhone"))
     self.GTextInputAccLogin.onChanged:Set(
             function()
                 self:_checkloginInput()
@@ -137,7 +137,7 @@ function ViewLogin:OnCreate()
 
     local com_input_pwdlogin = self.ComUi:GetChild("InputPwdLogin").asCom
     self.GTextInputPwdLogin = com_input_pwdlogin:GetChild("InputPwdRegister").asTextInput
-    self.GTextInputPwdLogin.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:getLanValue("EnterPwdTips1"))
+    self.GTextInputPwdLogin.promptText = string.format("[color=#999999]%s[/color]", self.ViewMgr.LanMgr:GetLanValue("EnterPwdTips1"))
     self.GTextInputPwdLogin.onChanged:Set(
             function()
                 self:_checkloginInput()
@@ -338,7 +338,7 @@ end
 ---------------------------------------
 function ViewLogin:SetVersionAndServerStateInfo(bundle_version, data_version, server_is_invalid, serverstate_info)
     if (self.GTextVersion ~= nil) then
-        local version_tips = self.ViewMgr.LanMgr:getLanValue("AppVersion") .. "：%s " .. self.ViewMgr.LanMgr:getLanValue("DataVersion") .. "：%s"
+        local version_tips = self.ViewMgr.LanMgr:GetLanValue("AppVersion") .. "：%s " .. self.ViewMgr.LanMgr:GetLanValue("DataVersion") .. "：%s"
         local version_info = string.format(version_tips, bundle_version, data_version) .. self.Context.Cfg.Env
         --print(version_info)
         self.GTextVersion.text = version_info
@@ -378,7 +378,7 @@ end
 ---------------------------------------
 function ViewLogin:Switch2Logining()
     self:_switchController("LoginState", "Logining")
-    self.Tips.text = self.ViewMgr.LanMgr:getLanValue("Logining")
+    self.Tips.text = self.ViewMgr.LanMgr:GetLanValue("Logining")
 end
 
 ---------------------------------------
@@ -549,7 +549,7 @@ function ViewLogin:_hasAgreeAgreement()
     if (self.AgreeAgreement == true) then
         return true
     else
-        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:getLanValue("AgreePrivacyStatement"))
+        ViewHelper:UiShowInfoSuccess(self.ViewMgr.LanMgr:GetLanValue("AgreePrivacyStatement"))
         return false
     end
 end

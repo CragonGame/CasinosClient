@@ -94,7 +94,7 @@ function DesktopTexasMTT:OnHandleEv(ev)
             if self.DesktopBase.MeP.PlayerDataDesktop.DesktopPlayerState == TexasDesktopPlayerState.Ob then
                 local all_valid_player = self.DesktopBase:getAllValidPlayer()
                 if #all_valid_player == 0 then
-                    local msg_box = ViewHelper:UiShowMsgBox(self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("NoPlayer"), function()
+                    local msg_box = ViewHelper:UiShowMsgBox(self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("NoPlayer"), function()
                         local view_mgr = self.ControllerDesktop.ViewMgr
                         local ev = view_mgr:GetEv("EvUiClickExitDesk")
                         if (ev == nil) then
@@ -229,7 +229,7 @@ function DesktopTexasMTT:DesktopUser(method_id, method_data)
             self.BDesktopSnapshotMatchTexas.MyInfo.AddonNum = player_info.AddonCount
             --self.DesktopBase.MeP:rebuyOrAddOn(player_info.Score)
             self:refreshBtnRebuyAddOnStat()
-            ViewHelper:UiShowMsgBox(string.format(self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("RebuySuccess"), self.BDesktopSnapshotMatchTexas.RaiseBlindTbInfo.AddonScore)) -- "RebuyTip1"  "AddonSuccess"
+            ViewHelper:UiShowMsgBox(string.format(self.ControllerDesktop.ViewMgr.LanMgr:GetLanValue("RebuySuccess"), self.BDesktopSnapshotMatchTexas.RaiseBlindTbInfo.AddonScore)) -- "RebuyTip1"  "AddonSuccess"
         else
             --local view_mgr = self.ControllerDesktop.ViewMgr
             --local ev = view_mgr:GetEv("EvUpdatePlayerScore")
@@ -261,9 +261,9 @@ function DesktopTexasMTT:chipIsEnough(need_chip)
     local view_mgr = self.ControllerDesktop.ViewMgr
     if (enough == false) then
         local msg_box = view_mgr:CreateView("MsgBox")
-        local tips = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnoughTips")
+        local tips = self.ControllerDesktop.ViewMgr.LanMgr:GetLanValue("ChipNotEnoughTips")
         tips = string.format(tips, UiChipShowHelper:GetGoldShowStr(need_chip, self.ControllerDesktop.ViewMgr.LanMgr.LanBase))
-        local title = self.ControllerDesktop.ViewMgr.LanMgr:getLanValue("ChipNotEnough")
+        local title = self.ControllerDesktop.ViewMgr.LanMgr:GetLanValue("ChipNotEnough")
         msg_box:showMsgBox1(title, tips,
                 function(bo)
                     if (bo) then
@@ -300,19 +300,19 @@ function DesktopTexasMTT:createRebuyOrAddon(tm)
     if self.MeCanRebuy == true then
         cose_chip = match_texas.RaiseBlindTbInfo.RebuyGold
         buy_score = match_texas.RaiseBlindTbInfo.RebuyScore
-        alow_name = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("Rebuy")
+        alow_name = self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("Rebuy")
         alow_time = #match_texas.RaiseBlindTbInfo.ListRaiseBlindTbIdCanRebuy - match_texas.MyInfo.RebuyNum
     elseif self.MeCanAddon == true then
         cose_chip = match_texas.RaiseBlindTbInfo.AddonGold
         buy_score = match_texas.RaiseBlindTbInfo.AddonScore
-        alow_name = self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("Addon")
+        alow_name = self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("Addon")
         alow_time = #match_texas.RaiseBlindTbInfo.ListRaiseBlindTbIdCanAddon - match_texas.MyInfo.AddonNum
     else
         return
     end
     local view_msg = view_mgr:CreateView("MsgBox")
-    view_msg:useTwoBtn2("", string.format(self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("BebuyAddonTip"), cose_chip, buy_score, alow_name, alow_time),
-            self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("Buy"), self.ControllerDesktop.ControllerMgr.LanMgr:getLanValue("NotBuy"), tm, true, function()
+    view_msg:useTwoBtn2("", string.format(self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("BebuyAddonTip"), cose_chip, buy_score, alow_name, alow_time),
+            self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("Buy"), self.ControllerDesktop.ControllerMgr.LanMgr:GetLanValue("NotBuy"), tm, true, function()
                 self:_confirmRebuyOrAddon()
             end, function()
                 self:_cancelRebuyOrAddon()

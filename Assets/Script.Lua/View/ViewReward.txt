@@ -35,7 +35,7 @@ function UiRewardOnline:Create(view_mgr, view_reward, com_ui)
     else
         self.CanGetOnlineReward = false
         self.GBtnOnlineReward.enabled = false
-        -- self.ViewMgr.LanMgr:getLanValue("OnlineReward")
+        -- self.ViewMgr.LanMgr:GetLanValue("OnlineReward")
         self.GTextInfo.text = string.format('再过[color=#CC3299]%s[/color]后，可领取[color=#D9D919]%s[/color]筹码在线奖励',
                 tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
     end
@@ -46,7 +46,7 @@ function UiRewardOnline:Destroy()
 end
 
 function UiRewardOnline:RefreshLeftTmInfo()
-    -- self.ViewMgr.LanMgr:getLanValue("OnlineReward")
+    -- self.ViewMgr.LanMgr:GetLanValue("OnlineReward")
     self.GTextInfo.text = string.format('再过[color=#CC3299]%s[/color]后，可领取[color=#D9D919]%s[/color]筹码在线奖励',
             tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
 end
@@ -57,7 +57,7 @@ function UiRewardOnline:RefreshCanGetOnlineRewardState(can_get_reward)
     if self.ControllerReward.RewardOnline.CanGetReward == true then
         self.GTextInfo.text = string.format('点击领取[color=#D9D919]%s[/color]筹码在线奖励', tostring(self.ControllerReward.RewardOnline.NextReward))
     else
-        -- self.ViewMgr.LanMgr:getLanValue("OnlineReward")
+        -- self.ViewMgr.LanMgr:GetLanValue("OnlineReward")
         self.GTextInfo.text = string.format('再过[color=#CC3299]%s[/color]后，可领取[color=#D9D919]%s[/color]筹码在线奖励',
                 tostring(self.ControllerReward.RewardOnline.FormatLeftTm), tostring(self.ControllerReward.RewardOnline.NextReward))
     end
@@ -165,7 +165,7 @@ end
 
 ---------------------------------------
 function ViewReward:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, '福利')--self.ViewMgr.LanMgr:getLanValue("Reward"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, '福利')--self.ViewMgr.LanMgr:GetLanValue("Reward"))
 
     self.ViewMgr:BindEvListener("EvCtrlRewardRefreshGetOnlineRewardLeftTm", self)
     self.ViewMgr:BindEvListener("EvCtrlRewardRefreshGetTimingRewardState", self)

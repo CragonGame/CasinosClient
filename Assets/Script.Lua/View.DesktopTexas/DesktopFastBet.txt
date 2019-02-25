@@ -41,11 +41,11 @@ function DesktopFastBet:setValue(fast_betinfo)
     if fast_betinfo.DesktopFastBetType == DesktopFastBetType.BigBlindMuilty then
         table.insert(title, bet_value)
         table.insert(title, " [size=16]X[/size] ")
-        table.insert(title, self.ViewMgr.LanMgr:getLanValue("BigBlindEx"))
+        table.insert(title, self.ViewMgr.LanMgr:GetLanValue("BigBlindEx"))
     elseif fast_betinfo.DesktopFastBetType == DesktopFastBetType.BetPotMuilty then
         table.insert(title, bet_value)
         table.insert(title, " [size=16]X[/size] ")
-        table.insert(title, self.ViewMgr.LanMgr:getLanValue("Pot"))
+        table.insert(title, self.ViewMgr.LanMgr:GetLanValue("Pot"))
     elseif fast_betinfo.DesktopFastBetType == DesktopFastBetType.ConstValue then
         table.insert(title, fast_betinfo.DesktopFastBetValue)
     end

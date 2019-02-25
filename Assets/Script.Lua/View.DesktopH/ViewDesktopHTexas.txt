@@ -129,7 +129,7 @@ end
 
 ---------------------------------------
 function ViewDesktopHTexas:getCardTypeDes(card_type)
-    local rank_t = self.ViewDesktopH.ViewMgr.LanMgr:getLanValue(card_type)
+    local rank_t = self.ViewDesktopH.ViewMgr.LanMgr:GetLanValue(card_type)
     return rank_t
 end
 
@@ -193,7 +193,7 @@ end
 function ViewDesktopHTexas:setCountDown(current_tm)
     if (self.DesktopHState == _eDesktopHState.Ready) then
         self.ViewDesktopH.GCotips.visible = true
-        self.GTextGameTips.text = string.format("%s  %s", self.ViewDesktopH.ViewMgr.LanMgr:getLanValue("ReadyTime"), current_tm)
+        self.GTextGameTips.text = string.format("%s  %s", self.ViewDesktopH.ViewMgr.LanMgr:GetLanValue("ReadyTime"), current_tm)
 
         local sound = ""
         if (current_tm == 3 or current_tm == 2 or current_tm == 1) then
@@ -207,13 +207,13 @@ function ViewDesktopHTexas:setCountDown(current_tm)
         end
     elseif (self.DesktopHState == _eDesktopHState.Bet) then
         self.ViewDesktopH.GCotips.visible = true
-        self.GTextGameTips.text = string.format("%s  %s", self.ViewDesktopH.ViewMgr.LanMgr:getLanValue("BetRestTime"), current_tm)
+        self.GTextGameTips.text = string.format("%s  %s", self.ViewDesktopH.ViewMgr.LanMgr:GetLanValue("BetRestTime"), current_tm)
     elseif (self.DesktopHState == _eDesktopHState.Rest) then
         self.ViewDesktopH.GCotips.visible = true
-        self.GTextGameTips.text = string.format("%s  %s", self.ViewDesktopH.ViewMgr.LanMgr:getLanValue("BreathSpace"), current_tm)
+        self.GTextGameTips.text = string.format("%s  %s", self.ViewDesktopH.ViewMgr.LanMgr:GetLanValue("BreathSpace"), current_tm)
     elseif (self.DesktopHState == _eDesktopHState.GameEnd) then
         self.ViewDesktopH.GCotips.visible = true
-        self.GTextGameTips.text = string.format("%s  %s", self.ViewDesktopH.ViewMgr.LanMgr:getLanValue("SettlementTime"), current_tm)
+        self.GTextGameTips.text = string.format("%s  %s", self.ViewDesktopH.ViewMgr.LanMgr:GetLanValue("SettlementTime"), current_tm)
     end
 end
 

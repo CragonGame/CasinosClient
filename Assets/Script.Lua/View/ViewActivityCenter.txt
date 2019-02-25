@@ -11,7 +11,7 @@ end
 
 ---------------------------------------
 function ViewActivityCenter:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("Activity"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("Activity"))
     self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.ControllerActivity = self.ControllerMgr:GetController("Activity")
     self.GListActivityTitle = self.ComUi:GetChild("ListActivityTitle").asList

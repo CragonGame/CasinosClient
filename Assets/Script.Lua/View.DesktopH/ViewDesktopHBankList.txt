@@ -25,7 +25,7 @@ end
 ---------------------------------------
 function UiDesktopHBeBankerInfoItem:RefreshPlayerInfo(player_info)
     self.GTextNickName.text = CS.Casinos.UiHelper.addEllipsisToStr(player_info.PlayerInfoCommon.NickName, 30, 9)
-    self.GTextGolds.text = self.ViewMgr.LanMgr:getLanValue(player_info.Gold, self.ViewMgr.LanMgr.LanBase)
+    self.GTextGolds.text = self.ViewMgr.LanMgr:GetLanValue(player_info.Gold, self.ViewMgr.LanMgr.LanBase)
     if (self.UiHeadIcon ~= nil) then
         self.UiHeadIcon:SetPlayerInfo(player_info.PlayerInfoCommon.IconName,
                 player_info.PlayerInfoCommon.AccountId, player_info.PlayerInfoCommon.VIPLevel)
@@ -58,7 +58,7 @@ end
 
 ---------------------------------------
 function ViewDesktopHBankList:OnCreate()
-    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:getLanValue("BeBankList"))
+    self.Tween = ViewHelper:PopUi(self.ComUi, self.ViewMgr.LanMgr:GetLanValue("BeBankList"))
     self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBeBankerPlayerList", self)
     self.ViewMgr:BindEvListener("EvEntityDesktopHChangeBankerPlayer", self)
     self.ViewMgr:BindEvListener("EvEntityDesktopHBankerPlayerGoldChange", self)
@@ -173,7 +173,7 @@ function ViewDesktopHBankList:_initBeBankPlayer(list_bebankplayer, bank_player, 
 
     local min_takegolds = UiChipShowHelper:GetGoldShowStr(self.BeBankMinTakeGolds, self.ViewMgr.LanMgr.LanBase)
     local min_leavegolds = UiChipShowHelper:GetGoldShowStr(self.LeaveMingGolds, self.ViewMgr.LanMgr.LanBase)
-    self.GTextBeBankTips.text = string.format(self.ViewMgr.LanMgr:getLanValue("ConditionOfBeBanker"), min_takegolds, min_leavegolds)
+    self.GTextBeBankTips.text = string.format(self.ViewMgr.LanMgr:GetLanValue("ConditionOfBeBanker"), min_takegolds, min_leavegolds)
     if (self.GTextBeBankSelfGold ~= nil) then
         if (self_data ~= nil) then
             local value = (self_data.Gold - self.BeBankMinTakeGolds) * 100 / (self.ViewDesktopH.ControllerActor.PropGoldAcc:get() - self.BeBankMinTakeGolds)

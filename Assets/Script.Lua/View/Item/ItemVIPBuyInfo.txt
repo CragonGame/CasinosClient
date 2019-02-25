@@ -25,7 +25,7 @@ function ItemVIPBuyInfo:setVipInfo(vip_info)
     local tb_mgr = TbDataMgr
     local unit_item = tb_mgr:GetData("UnitBilling", vip_info.Id)
     local view_mgr = ViewMgr
-    self.GTextdays.text = unit_item.Amount .. unit_item.Bonus .. view_mgr.LanMgr:getLanValue("Day")
+    self.GTextdays.text = unit_item.Amount .. unit_item.Bonus .. view_mgr.LanMgr:GetLanValue("Day")
     self.GTextcost.text = "￥" .. vip_info.Price
 end
 

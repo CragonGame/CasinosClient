@@ -48,11 +48,11 @@ end
 -- 配置了content_image后的活动Item，会从Oss.Active目录去加载图片
 function ControllerActivity:ConfigActivityInfo()
     CS.UnityEngine.PlayerPrefs.DeleteKey("Act180228")
-    local temp = ItemActivity:new(nil, "Hot", self.ViewMgr.LanMgr:getLanValue("KeFuWeChatQRCode"), nil, "KeFuWeChatQRCode", false)
+    local temp = ItemActivity:new(nil, "Hot", self.ViewMgr.LanMgr:GetLanValue("KeFuWeChatQRCode"), nil, "KeFuWeChatQRCode", false)
     table.insert(self.ListActivity, temp)
-    --temp = ItemActivity:new(nil, "", self.ViewMgr.LanMgr:getLanValue("OfficialTipsTitle"), self.ViewMgr.LanMgr:getLanValue("OfficialTipsContent"), "", false)
+    --temp = ItemActivity:new(nil, "", self.ViewMgr.LanMgr:GetLanValue("OfficialTipsTitle"), self.ViewMgr.LanMgr:GetLanValue("OfficialTipsContent"), "", false)
     --table.insert(self.ListActivity, temp)
-    --temp = ItemActivity:new(nil, "", self.ViewMgr.LanMgr:getLanValue("Share"), nil, "Share", true)
+    --temp = ItemActivity:new(nil, "", self.ViewMgr.LanMgr:GetLanValue("Share"), nil, "Share", true)
     --table.insert(self.ListActivity, temp)
 end
 

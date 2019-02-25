@@ -23,17 +23,17 @@ end
 
 ---------------------------------------
 function IMFriendList:OnIMAddFriendReqRequestResult(result)
-    self.ControllerIM:showIMResult(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("RequestAddFriend"), result)
+    self.ControllerIM:showIMResult(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("RequestAddFriend"), result)
 end
 
 ---------------------------------------
 function IMFriendList:OnIMAddFriendResRequestResult(result)
-    self.ControllerIM:showIMResult(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("ProAddFriendRequest"), result)
+    self.ControllerIM:showIMResult(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("ProAddFriendRequest"), result)
 end
 
 ---------------------------------------
 function IMFriendList:OnIMDeleteFriendRequestResult(result)
-    self.ControllerIM:showIMResult(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("RequestDeleteFriend"), result)
+    self.ControllerIM:showIMResult(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("RequestDeleteFriend"), result)
 end
 
 ---------------------------------------
@@ -249,7 +249,7 @@ function IMFriendList:OnIMFriendListRemoveNotify(player_guid)
     end
     if (self.MapFriendList[player_guid] ~= nil) then
         self.MapFriendList[player_guid] = nil
-        ViewHelper:UiShowInfoSuccess(self.ControllerIM.ControllerMgr.LanMgr:getLanValue("DeleteFriendSuccess"))
+        ViewHelper:UiShowInfoSuccess(self.ControllerIM.ControllerMgr.LanMgr:GetLanValue("DeleteFriendSuccess"))
         self.ControllerIM.IMChat:deletePlayerChatRecord(player_guid)
         local ev = self.ControllerIM.ViewMgr:GetEv("EvEntityNotifyDeleteFriend")
         if (ev == nil) then

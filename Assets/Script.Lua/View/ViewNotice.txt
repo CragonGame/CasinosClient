@@ -36,7 +36,7 @@ function ViewNotice:OnCreate()
     end
     local co_input = self.ComUi:GetChild("CoInput").asCom
     self.GTextInput = co_input:GetChild("InputText").asTextInput
-    self.GTextInput.promptText = self.ViewMgr.LanMgr:getLanValue("EnterContentTips")
+    self.GTextInput.promptText = self.ViewMgr.LanMgr:GetLanValue("EnterContentTips")
     self.GTextInput.maxLength = 64
     self.GBtnSend = self.ComUi:GetChild("BtnSend").asButton
     self.GBtnSend.onClick:Add(
@@ -129,7 +129,7 @@ function ViewNotice:onClickSend()
         if (changename_itemtbid ~= 0) then
             local horn_count = self.ControllerBag:getAlreadyHaveItemCount(changename_itemtbid)
             if (horn_count <= 0) then
-                local tips = self.ViewMgr.LanMgr:getLanValue("NoHornPleaseBuy")
+                local tips = self.ViewMgr.LanMgr:GetLanValue("NoHornPleaseBuy")
                 ViewHelper:UiShowMsgBox(tips, function()
                     local viewShop = self.ViewMgr:CreateView("Shop")
                     viewShop:ShowTabConsume()
@@ -140,7 +140,7 @@ function ViewNotice:onClickSend()
         end
     end
     if (self.GTextInput.text == nil or string.len(self.GTextInput.text) <= 0) then
-        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:getLanValue("SendNoEmpty"))
+        ViewHelper:UiShowInfoFailed(self.ViewMgr.LanMgr:GetLanValue("SendNoEmpty"))
         return
     end
     local ev = self.ViewMgr.GetEv("EvRequestSendMarquee")
