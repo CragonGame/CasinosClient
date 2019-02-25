@@ -25,29 +25,32 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public LoaderTicket getTexture(string name, string path, Action<LoaderTicket, Texture> call_back)
+        public void getTexture(string name, string path, Action<Texture> call_back)
         {
             Texture texture = null;
             MapTexture.TryGetValue(name, out texture);
 
-            LoaderTicket tick = null;
+            //LoaderTicket tick = null;
             if (texture == null)
             {
-                tick = CasinosContext.Instance.AsyncAssetLoadGroup.asyncLoadAsset(
-                    path, name, _eAsyncAssetLoadType.LocalBundleAsset,
-                    (LoaderTicket ticket, string path_ex, UnityEngine.Object obj) =>
-                    {
-                        texture = (Texture)obj;
-                        MapTexture[name] = texture;
-                        call_back(ticket, texture);
-                    });
+                //tick = CasinosContext.Instance.AsyncAssetLoadGroup.asyncLoadAsset(
+                //    path, name, _eAsyncAssetLoadType.LocalBundleAsset,
+                //    (LoaderTicket ticket, string path_ex, UnityEngine.Object obj) =>
+                //    {
+                //        texture = (Texture)obj;
+                //        MapTexture[name] = texture;
+                //        call_back(ticket, texture);
+                //    });
+
+                //AssetBundle
+                //CasinosContext.Instance.LuaMgr.
             }
             else
             {
-                call_back(tick, texture);
+                call_back(texture);
             }
 
-            return tick;
+            //return tick;
         }
 
         //---------------------------------------------------------------------
