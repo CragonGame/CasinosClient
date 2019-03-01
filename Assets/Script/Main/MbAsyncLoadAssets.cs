@@ -11,9 +11,18 @@ namespace Casinos
     public class MbAsyncLoadAssets : MonoBehaviour
     {
         //---------------------------------------------------------------------
+        Dictionary<string, AssetBundle> MapAssetBundle { get; set; } = new Dictionary<string, AssetBundle>();
+
+        //---------------------------------------------------------------------
         public void LocalLoadAssetBundleAsync(string url, Action<AssetBundle> cb)
         {
             StartCoroutine(_localLoadAssetBundleAsync(url, cb));
+        }
+
+        //---------------------------------------------------------------------
+        public void LocalLoadTextureFromAbAsync(string url, string name, Action<Texture> cb)
+        {
+            StartCoroutine(_localLoadTextureFromAbAsync(url, name, cb));
         }
 
         //---------------------------------------------------------------------
@@ -57,6 +66,26 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        IEnumerator _localLoadTextureFromAbAsync(string url, string name, Action<Texture> cb)
+        {
+            MapAssetBundle.TryGetValue(url, out AssetBundle ab);
+
+            // 判定是否加载Ab
+            if (ab == null)
+            {
+                AssetBundleCreateRequest abcr = AssetBundle.LoadFromFileAsync(url);
+                yield return abcr;
+                ab = abcr.assetBundle;
+                MapAssetBundle[url] = ab;
+            }
+
+            AssetBundleRequest abr = ab.LoadAssetAsync<Texture2D>(name);
+            yield return abr;
+
+            if (cb != null) cb.Invoke((Texture2D)abr.asset);
+        }
+
+        //---------------------------------------------------------------------
         IEnumerator _wwwLoadTextAsync(string url, Action<string> cb)
         {
             using (UnityWebRequest www_request = UnityWebRequest.Get(url))
@@ -82,6 +111,7 @@ namespace Casinos
         {
             using (UnityWebRequest www_request = UnityWebRequest.Get(url))
             {
+                www_request.downloadHandler = new DownloadHandlerTexture();
                 yield return www_request.SendWebRequest();
 
                 if (www_request.isHttpError || www_request.isNetworkError)
@@ -92,8 +122,7 @@ namespace Casinos
                 {
                     if (www_request.responseCode == 200)
                     {
-                        Texture t = DownloadHandlerTexture.GetContent(www_request);
-                        if (cb != null) cb.Invoke(t);
+                        if (cb != null) cb.Invoke(((DownloadHandlerTexture)www_request.downloadHandler).texture);
                     }
                 }
             }

@@ -88,12 +88,8 @@ namespace Casinos
             Texture2D t = (Texture2D)obj;
             if (t != null)
             {
-                var p = t.GetPixels();
-                var p1 = new Texture2D(t.width, t.height, TextureFormat.ARGB32, false);
-                p1.SetPixels(p);
-                p1.Apply();
                 load_success = true;
-                onExternalLoadSuccess(new NTexture(p1));
+                onExternalLoadSuccess(new NTexture(t));
             }
             else
             {

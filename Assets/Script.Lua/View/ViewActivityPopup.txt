@@ -66,7 +66,7 @@ function ViewActivityPopup:SetActivityInfo(item)
         local t_str = table.concat(t)
 
         CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(content_image, t_str, content_image, nil,
-                function(ex, tick)
+                function(ex)
                     if (ex ~= nil and self.GLoaderContent ~= nil and self.GLoaderContent.displayObject ~= nil and self.GLoaderContent.displayObject.gameObject ~= nil) then
                         local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
                         self.GLoaderContent.texture = CS.FairyGUI.NTexture(texture)

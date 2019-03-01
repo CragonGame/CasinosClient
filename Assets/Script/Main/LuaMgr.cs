@@ -70,13 +70,6 @@ namespace Casinos
             typeof(UnityEngine.Vector3),
             typeof(UnityEngine.Vector2),
             typeof(UnityEngine.Vector4),
-            //typeof(UnityEngine.WWW),
-            //typeof(UnityEngine.WWWForm),
-            //typeof(UnityEngine.Texture),
-            //typeof(UnityEngine.Texture2D),
-            //typeof(UnityEngine.MovieTexture),
-            //typeof(UnityEngine.AudioSettings),
-            //typeof(UnityEngine.Input),
             
             // System            
             typeof(Action),
@@ -147,12 +140,9 @@ namespace Casinos
             typeof(FairyGUI.Window),
 
             // Casinos
-            //typeof(_eAsyncAssetLoadType),
             typeof(_eChatItemType),
             typeof(_ePayType),
             typeof(_eProjectItemDisplayNameKey),
-            //typeof(AsyncAssetLoaderMgr),
-            //typeof(AsyncAssetLoadGroup),
             typeof(Card),
             typeof(ChatParser),
             typeof(EbTool),
@@ -161,7 +151,6 @@ namespace Casinos
             typeof(EbDoubleLinkNode<EbTimeEvent>),
             typeof(EbDoubleLinkList<EbTimeEvent>),
             typeof(EbTimeWheel),
-            //typeof(LoaderTicket),
             typeof(MbHelper),
             typeof(NativeFun),
             //typeof(OpenInstall),
@@ -350,6 +339,12 @@ namespace Casinos
             FuncLaunchOnSocketClose = lua_launch.Get<DelegateLua1>("OnSocketClose");
             var func_setup = lua_launch.Get<DelegateLua1>("Setup");
             func_setup(lua_launch);
+        }
+
+        //---------------------------------------------------------------------
+        public void LocalLoadTextureFromAbAsync(string url, string name, Action<Texture> cb)
+        {
+            MbAsyncLoadAssets.LocalLoadTextureFromAbAsync(url, name, cb);
         }
 
         //---------------------------------------------------------------------

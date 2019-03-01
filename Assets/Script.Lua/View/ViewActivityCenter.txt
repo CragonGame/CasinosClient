@@ -73,13 +73,13 @@ function ViewActivityCenter:SetCurrentSelectItem(item)
         ViewHelper:SetGObjectVisible(false, self.BtnShare)
         if (content_image ~= nil) then
             local t = {}
-            table.insert(t, CS.Casinos.CasinosContext.Instance.Config.ConfigUrl)
+            table.insert(t, self.Context.Cfg.OssRootUrl)
             table.insert(t, "/Activity/")
             table.insert(t, content_image)
             table.insert(t, ".png")
             local t_str = table.concat(t)
             CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(content_image, t_str, content_image, nil,
-                    function(ex, tick)
+                    function(ex)
                         if (ex ~= nil and self.GLoaderCurrentActContent ~= nil and self.GLoaderCurrentActContent.displayObject ~= nil and self.GLoaderCurrentActContent.displayObject.gameObject ~= nil) then
                             ViewHelper:SetGObjectVisible(show_share, self.BtnShare)
                             ViewHelper:SetGObjectVisible(false, self.GTextCurrentActContent)
