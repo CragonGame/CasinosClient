@@ -22,6 +22,34 @@ end
 
 ---------------------------------------
 function ViewMain:OnCreate()
+    self:BindEvListener("EvEntityNotifyDeleteFriend", self)
+    self:BindEvListener("EvEntityGoldChanged", self)
+    self:BindEvListener("EvEntityDiamondChanged", self)
+    self:BindEvListener("EvEntityRecommendPlayerList", self)
+    self:BindEvListener("EvEntityPlayerInfoChanged", self)
+    self:BindEvListener("EvEntitySetOnLinePlayerNum", self)
+    self:BindEvListener("EvEntityReceiveFriendSingleChat", self)
+    self:BindEvListener("EvEntityReceiveFriendChats", self)
+    self:BindEvListener("EvEntityUnreadChatsChanged", self)
+    self:BindEvListener("EvGetPicUpLoadSuccess", self)
+    self:BindEvListener("EvEntityRefreshFriendList", self)
+    self:BindEvListener("EvEntityRefreshFriendInfo", self)
+    self:BindEvListener("EvEntityFriendOnlineStateChange", self)
+    self:BindEvListener("EvEntityMailListInit", self)
+    self:BindEvListener("EvEntityMailAdd", self)
+    self:BindEvListener("EvEntityMailDelete", self)
+    self:BindEvListener("EvEntityMailUpdate", self)
+    self:BindEvListener("EvUiClickVip", self)
+    self:BindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
+    self:BindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
+    self:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
+    self:BindEvListener("EvEntityIsFirstRechargeChanged", self)
+    self:BindEvListener("EvEntityFriendGoldChange", self)
+    self:BindEvListener("EvEntityReceiveFeedbackChat", self)
+    self:BindEvListener("EvEntityReceiveFeedbackChats", self)
+    self:BindEvListener("EvEntityBagAddItem", self)
+    self:BindEvListener("EvCtrlRedPointStateChange", self)
+
     self.GTransitionShow = self.ComUi:GetTransition("TransitionShow")
     self.GTransitionShow:Play()
     self.ControllerActor = self.ControllerMgr:GetController("Actor")
@@ -31,12 +59,14 @@ function ViewMain:OnCreate()
     self.ControllerLotteryTicket = self.ControllerMgr:GetController("LotteryTicket")
     self.ControllerLotteryTicket = self.ControllerMgr:GetController("LotteryTicket")
     self.ControllerLogin = self.ControllerMgr:GetController("Login")
+
     local btn_desktop = self.ComUi:GetChild("BtnDeskTop").asButton
     btn_desktop.onClick:Add(
             function()
                 self:_onClickBtnDesktop()
             end
     )
+
     local btn_desktoph = self.ComUi:GetChild("BtnDeskTopH").asButton
     btn_desktoph.onClick:Add(
             function()
@@ -71,6 +101,7 @@ function ViewMain:OnCreate()
                 self:_onClickBtnActivity()
             end
     )
+
     local show_goldtree = false
     if (self.Context.Cfg.ClientShowGoldTree == true and self.ControllerActor.PropEnableGrow:get() == true) then
         show_goldtree = true
@@ -287,34 +318,6 @@ function ViewMain:OnCreate()
         view_shootingtext = self.ViewMgr:CreateView("ShootingText")
         view_shootingtext:init(true, false, true)
     end
-
-    self:BindEvListener("EvEntityNotifyDeleteFriend", self)
-    self:BindEvListener("EvEntityGoldChanged", self)
-    self:BindEvListener("EvEntityDiamondChanged", self)
-    self:BindEvListener("EvEntityRecommendPlayerList", self)
-    self:BindEvListener("EvEntityPlayerInfoChanged", self)
-    self:BindEvListener("EvEntitySetOnLinePlayerNum", self)
-    self:BindEvListener("EvEntityReceiveFriendSingleChat", self)
-    self:BindEvListener("EvEntityReceiveFriendChats", self)
-    self:BindEvListener("EvEntityUnreadChatsChanged", self)
-    self:BindEvListener("EvGetPicUpLoadSuccess", self)
-    self:BindEvListener("EvEntityRefreshFriendList", self)
-    self:BindEvListener("EvEntityRefreshFriendInfo", self)
-    self:BindEvListener("EvEntityFriendOnlineStateChange", self)
-    self:BindEvListener("EvEntityMailListInit", self)
-    self:BindEvListener("EvEntityMailAdd", self)
-    self:BindEvListener("EvEntityMailDelete", self)
-    self:BindEvListener("EvEntityMailUpdate", self)
-    self:BindEvListener("EvUiClickVip", self)
-    self:BindEvListener("EvEntityGetLotteryTicketDataSuccess", self)
-    self:BindEvListener("EvEntityLotteryTicketGameEndStateSimple", self)
-    self:BindEvListener("EvEntityLotteryTicketUpdateTm", self)
-    self:BindEvListener("EvEntityIsFirstRechargeChanged", self)
-    self:BindEvListener("EvEntityFriendGoldChange", self)
-    self:BindEvListener("EvEntityReceiveFeedbackChat", self)
-    self:BindEvListener("EvEntityReceiveFeedbackChats", self)
-    self:BindEvListener("EvEntityBagAddItem", self)
-    self:BindEvListener("EvCtrlRedPointStateChange", self)
 
     self.PosGetChipEffectParticle = self.ComUi:GetChild("ComPosGetChipParticle").asCom.position
     local ab_particle_desktop = ParticleHelper:GetParticel("btndesktopparticle.ab")

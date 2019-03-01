@@ -23,6 +23,12 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void WWWLoadTextureAsync(string url, Action<Texture> cb)
+        {
+            StartCoroutine(_wwwLoadTextureAsync(url, cb));
+        }
+
+        //---------------------------------------------------------------------
         public void WWWLoadAssetBundleAsync(string url, Action<AssetBundle> cb)
         {
             StartCoroutine(_wwwLoadAssetBundleAsync(url, cb));
@@ -66,6 +72,28 @@ namespace Casinos
                     if (www_request.responseCode == 200)
                     {
                         if (cb != null) cb.Invoke(www_request.downloadHandler.text);
+                    }
+                }
+            }
+        }
+
+        //---------------------------------------------------------------------
+        IEnumerator _wwwLoadTextureAsync(string url, Action<Texture> cb)
+        {
+            using (UnityWebRequest www_request = UnityWebRequest.Get(url))
+            {
+                yield return www_request.SendWebRequest();
+
+                if (www_request.isHttpError || www_request.isNetworkError)
+                {
+                    BuglyAgent.PrintLog(LogSeverity.LogError, www_request.error);
+                }
+                else
+                {
+                    if (www_request.responseCode == 200)
+                    {
+                        Texture t = DownloadHandlerTexture.GetContent(www_request);
+                        if (cb != null) cb.Invoke(t);
                     }
                 }
             }

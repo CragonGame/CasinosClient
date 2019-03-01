@@ -11,7 +11,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public static HeadIconMgr Instant { get; private set; }
         Dictionary<string, Texture> MapHeadIconResources { get; set; }
-        Dictionary<string, string> MapLoadingIcon { get; set; }
+        //Dictionary<string, string> MapLoadingIcon { get; set; }
 
         const string mDefaultIcon = "playershadow";
         const string mDefaultIconStr = "profile_";
@@ -25,15 +25,14 @@ namespace Casinos
         {
             Instant = this;
             MapHeadIconResources = new Dictionary<string, Texture>();
-            MapLoadingIcon = new Dictionary<string, string>();
+            //MapLoadingIcon = new Dictionary<string, string>();
         }
 
         //---------------------------------------------------------------------
-        public LoaderTicket asyncLoadIcon(string id, string resource_path,
-            string resource_name, GameObject head_icon,
-            Action<UnityEngine.Object, LoaderTicket> load_callback = null)
+        public void asyncLoadIcon(string id, string resource_path,
+            string resource_name, GameObject head_icon, Action<Texture> load_callback = null)
         {
-            LoaderTicket loader_ticket = null;
+            //LoaderTicket loader_ticket = null;
             Texture head_resource = null;
             if (MapHeadIconResources.TryGetValue(id, out head_resource))
             {
@@ -44,39 +43,41 @@ namespace Casinos
 
                 if (load_callback != null)
                 {
-                    load_callback(head_resource, loader_ticket);
+                    load_callback(head_resource);
                 }
             }
             else
             {
-                if (MapLoadingIcon.ContainsKey(id))
-                {
-                    return loader_ticket;
-                }
+                CasinosContext.Instance.LuaMgr.WWWLoadTextureAsync(resource_path + resource_name, load_callback);
 
-                MapLoadingIcon[id] = id;
-                loader_ticket = CasinosContext.Instance.AsyncAssetLoadGroup.asyncLoadAsset(
-                    resource_path, resource_name, _eAsyncAssetLoadType.WWWRawAsset,
-                    (LoaderTicket ticket, string path, UnityEngine.Object obj) =>
-                    {
-                        MapLoadingIcon.Remove(id);
-                        if (obj != null)
-                        {
-                            MapHeadIconResources[id] = (Texture)obj;
-                            if (head_icon != null)
-                            {
-                                head_icon.SetActive(true);
-                            }
-                        }
+                //if (MapLoadingIcon.ContainsKey(id))
+                //{
+                //    return loader_ticket;
+                //}
 
-                        if (load_callback != null)
-                        {
-                            load_callback(obj, loader_ticket);
-                        }
-                    });
+                //MapLoadingIcon[id] = id;
+                //loader_ticket = CasinosContext.Instance.AsyncAssetLoadGroup.asyncLoadAsset(
+                //    resource_path, resource_name, _eAsyncAssetLoadType.WWWRawAsset,
+                //    (LoaderTicket ticket, string path, UnityEngine.Object obj) =>
+                //    {
+                //        MapLoadingIcon.Remove(id);
+                //        if (obj != null)
+                //        {
+                //            MapHeadIconResources[id] = (Texture)obj;
+                //            if (head_icon != null)
+                //            {
+                //                head_icon.SetActive(true);
+                //            }
+                //        }
+
+                //        if (load_callback != null)
+                //        {
+                //            load_callback(obj, loader_ticket);
+                //        }
+                //    });
             }
 
-            return loader_ticket;
+            //return loader_ticket;
         }
 
         //---------------------------------------------------------------------

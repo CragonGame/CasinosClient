@@ -271,13 +271,12 @@ function Context:_nextLaunchStep()
         self.Launch:UpdateViewLoadingDescAndProgress("更新游戏脚本", 0, 100)
         local http_url = self.Cfg.CommonRootURL .. self.Cfg.CommonFileListFileName
         --print(http_url)
-        local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
-        async_asset_loadgroup:LoadWWWAsync(http_url,
-                function(url, www)
+        self.LuaMgr:WWWLoadTextAsync(http_url,
+                function(text)
                     -- 比较Oss上的CommonFileList.txt和Persistent中的CommonFileList.txt差异集，获取需要更新的列表
                     local commonfilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.CommonFileListFileName)
                     --print(commonfilelist_persistent)
-                    self.RemoteCommonFileListContent = www.text
+                    self.RemoteCommonFileListContent = text
                     local persistent_commonfilelist_content = self.LuaMgr:ReadAllText(commonfilelist_persistent)
                     local commonrootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/')
                     self.UpdateRemoteCommonToPersistent = CS.Casinos.UpdateRemoteToPersistentData()
@@ -295,13 +294,12 @@ function Context:_nextLaunchStep()
         self.Launch:UpdateViewLoadingDescAndProgress("更新游戏数据", 0, 100)
         local http_url = self.Cfg.DataRootURL .. self.Cfg.DataFileListFileName
         --print(http_url)
-        local async_asset_loadgroup = CS.Casinos.CasinosContext.Instance.AsyncAssetLoadGroup
-        async_asset_loadgroup:LoadWWWAsync(http_url,
-                function(url, www)
+        self.LuaMgr:WWWLoadTextAsync(http_url,
+                function(text)
                     -- 比较Oss上的datafilelist.txt和Persistent中的datafilelist.txt差异集，获取需要更新的Data列表
                     local datafilelist_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath(self.Cfg.DataFileListFileName)
                     --print(datafilelist_persistent)
-                    self.RemoteDataFileListContent = www.text
+                    self.RemoteDataFileListContent = text
                     local persistent_datafilelist_content = self.LuaMgr:ReadAllText(datafilelist_persistent)
                     local datarootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/')
                     self.UpdateRemoteDataToPersistent = CS.Casinos.UpdateRemoteToPersistentData()

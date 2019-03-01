@@ -14,7 +14,6 @@ namespace Casinos
         internal static string ABPostfix = ".ab";
 
         public Action<bool> LoaderDoneCallBack { get; set; }
-        //LoaderTicket LoaderTicket { get; set; }
 
         //---------------------------------------------------------------------
         public GLoaderEx()
@@ -30,22 +29,13 @@ namespace Casinos
             string resource_name = url.Substring(index + 1);
             if (this.url.StartsWith(HttpPrefix) || this.url.StartsWith(HttpsPrefix))
             {
-                var loader_ticket = HeadIconMgr.Instant.asyncLoadIcon(resource_name, this.url,
-                    resource_name, null, _wwwCallBack);
-                if (loader_ticket != null)
-                {
-                    LoaderTicket = loader_ticket;
-                }
+                HeadIconMgr.Instant.asyncLoadIcon(resource_name, this.url, resource_name, null, _wwwCallBack);
             }
             else
             {
                 if (this.url.EndsWith(ABPostfix))
                 {
-                    var loader_ticket = TextureMgr.Instant.getTexture(resource_name.Replace(ABPostfix, ""), this.url, _loadTextureCallBackEx);
-                    if (loader_ticket != null)
-                    {
-                        LoaderTicket = loader_ticket;
-                    }
+                    TextureMgr.Instant.getTexture(resource_name.Replace(ABPostfix, ""), this.url, _loadTextureCallBackEx);
                 }
                 else
                 {
@@ -56,14 +46,8 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        void _loadTextureCallBackEx(LoaderTicket tick, Texture t)
+        void _loadTextureCallBackEx(Texture t)
         {
-            if (LoaderTicket != tick)
-            {
-                return;
-            }
-
-            LoaderTicket = null;
             _loadTextureCallBack(t);
         }
 
@@ -93,19 +77,13 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        void _wwwCallBack(UnityEngine.Object obj, LoaderTicket tick)
+        void _wwwCallBack(Texture obj)
         {
             if (this.displayObject.gameObject == null)
             {
                 return;
             }
 
-            if (LoaderTicket != tick)
-            {
-                return;
-            }
-
-            LoaderTicket = null;
             bool load_success = false;
             Texture2D t = (Texture2D)obj;
             if (t != null)

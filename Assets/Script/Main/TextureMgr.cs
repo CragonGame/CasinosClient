@@ -33,6 +33,10 @@ namespace Casinos
             //LoaderTicket tick = null;
             if (texture == null)
             {
+                string s = string.Format("TextureMgr.getTexture() path={0} name={1}", path, name);
+                Debug.Log(s);
+                CasinosContext.Instance.LuaMgr.WWWLoadTextureAsync(path + name, call_back);
+
                 //tick = CasinosContext.Instance.AsyncAssetLoadGroup.asyncLoadAsset(
                 //    path, name, _eAsyncAssetLoadType.LocalBundleAsset,
                 //    (LoaderTicket ticket, string path_ex, UnityEngine.Object obj) =>

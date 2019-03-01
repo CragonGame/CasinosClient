@@ -95,7 +95,7 @@ ControllerLogin = class(ControllerBase)
 function ControllerLogin:ctor(controller_data, controller_name)
     self.Password = nil
     self.RemeberPwd = false
-    self.BindingWeChat = false
+    self.BindingWechat = false
     self.AutoLogin = false
     self.AutoLoginTm = 0
     self.AccId = nil
@@ -213,7 +213,7 @@ function ControllerLogin:OnHandleEv(ev)
             --self.Context.Cfg.GatewayIp = ev.gateway
         elseif (ev.EventName == "EvUiLoginSuccessEx") then
             print('EvUiLoginSuccessEx')
-            --if self.BindingWeChat == false then
+            --if self.BindingWechat == false then
             self:RequestWechatLogin(ev.token, self.Context.Cfg.WeChatAppId)
             --else
             --    print("AccountWechatBindRequest")
@@ -227,13 +227,13 @@ function ControllerLogin:OnHandleEv(ev)
             --                self:OnUCenterWechatBind(http_statuscode, status, response, error)
             --            end)
             --end
-            --self.BindingWeChat = false
+            --self.BindingWechat = false
         elseif (ev.EventName == "EvCheckIdCard") then
             self:RequestCheckCardAndName(ev.id_card, ev.name)
         elseif (ev.EventName == "EvBindWechat") then
             ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:GetLanValue("BindWeChatTips"), function()
-                ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("BindingWeChat"), 10)
-                self.BindingWeChat = true
+                ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("BindingWechat"), 10)
+                self.BindingWechat = true
             end)
         elseif (ev.EventName == "EvUnbindWechat") then
             ViewHelper:UiShowMsgBox(self.ControllerMgr.LanMgr:GetLanValue("UnbindWeChatTips"), function()
@@ -321,17 +321,6 @@ function ControllerLogin:RequestGuestAccess()
 end
 
 ---------------------------------------
--- 请求注册
-function ControllerLogin:RequestRegister(register_acc_data)
-    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("Registering"))
-
-    self.ControllerUCenter:RequestRegister(register_acc_data,
-            function(http_statuscode, result, error, response)
-                self:OnUCenterRegister(http_statuscode, result, error, response)
-            end)
-end
-
----------------------------------------
 -- 请求微信登录
 function ControllerLogin:RequestWechatLogin(token, app_id)
     self.LoginType = 2
@@ -357,6 +346,17 @@ function ControllerLogin:RequestWechatAutoLogin()
     self.ControllerUCenter:RequestWechatAutoLogin(r,
             function(http_statuscode, result, error, response)
                 self:OnUCenterLogin(http_statuscode, result, error, response)
+            end)
+end
+
+---------------------------------------
+-- 请求注册
+function ControllerLogin:RequestRegister(register_acc_data)
+    ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("Registering"))
+
+    self.ControllerUCenter:RequestRegister(register_acc_data,
+            function(http_statuscode, result, error, response)
+                self:OnUCenterRegister(http_statuscode, result, error, response)
             end)
 end
 
@@ -408,12 +408,20 @@ end
 
 ---------------------------------------
 function ControllerLogin:OnUCenterRegister(http_statuscode, result, error, response)
+    if (http_statuscode ~= 200) then
+        ViewHelper:UiEndWaiting()
+        local error_msg = self.ControllerUCenter:ParseUCenterHttpStatusCode(http_statuscode)
+        ViewHelper:UiShowInfoFailed(error_msg)
+        return
+    end
+
     if (result == UCenterErrorCode.NoError) then
         local info = self.LanMgr:GetLanValue("RegisterSuccessful")
         ViewHelper:UiShowInfoSuccess(info)
 
         self.AccId = response.accountId
         self.Acc = response.accountName
+        --self.Password = ''
 
         -- 切换显示为手机登录界面
         local view_login = self.ViewMgr:GetView("Login")
@@ -656,6 +664,7 @@ function ControllerLogin:OnAccountLoginAppResponse(login_response)
     enterworld_request.acc_id = self.AccId
     enterworld_request.acc_name = self.Acc
     enterworld_request.token = self.Token
+
     local invite_payerid = "InvitePlayerId"
     if (CS.UnityEngine.PlayerPrefs.HasKey(invite_payerid)) then
         local s = CS.UnityEngine.PlayerPrefs.GetString(invite_payerid)
@@ -667,6 +676,7 @@ function ControllerLogin:OnAccountLoginAppResponse(login_response)
             enterworld_request.invite_id = t_decode["PlayerId"]
         end
     end
+
     self.Rpc:RPC1(self.MethodType.AccountEnterWorldRequest, enterworld_request:getData4Pack())
 end
 
@@ -820,12 +830,9 @@ function ControllerLogin:_clickCheckDataCallBack(bo)
         elseif (self.LoginType == 1) then
             self:RequestGuestAccess()
         elseif (self.LoginType == 2) then
-            print('111111111111')
             ViewHelper:UiBeginWaiting(self.ControllerMgr.LanMgr:GetLanValue("WeChatLogining"), 10)
             self.CasinosContext:SetNativeOperate(1)
-            print('33333333333333')
             CS.ThirdPartyLogin.Instantce():login(CS._eThirdPartyLoginType.WeChat, self.Context.Cfg.WeChatState, "Login")
-            print('444444444444')
         end
     else
         local view_login = self.ViewMgr:GetView("Login")

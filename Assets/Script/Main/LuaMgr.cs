@@ -63,6 +63,7 @@ namespace Casinos
             typeof(UnityEngine.Screen),
             typeof(UnityEngine.ScreenCapture),
             typeof(UnityEngine.SystemInfo),
+            typeof(UnityEngine.Texture),
             typeof(UnityEngine.Texture3D),
             typeof(UnityEngine.Time),
             typeof(UnityEngine.Networking.UnityWebRequest),
@@ -352,6 +353,24 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void WWWLoadTextAsync(string url, Action<string> cb)
+        {
+            MbAsyncLoadAssets.WWWLoadTextAsync(url, cb);
+        }
+
+        //---------------------------------------------------------------------
+        public void WWWLoadTextureAsync(string url, Action<Texture> cb)
+        {
+            MbAsyncLoadAssets.WWWLoadTextureAsync(url, cb);
+        }
+
+        //---------------------------------------------------------------------
+        public void WWWLoadAssetBundleAsync(string url, Action<AssetBundle> cb)
+        {
+            MbAsyncLoadAssets.WWWLoadAssetBundleAsync(url, cb);
+        }
+
+        //---------------------------------------------------------------------
         public void LoadLuaFromAssetBundle(AssetBundle ab)
         {
             string[] list_assets = ab.GetAllAssetNames();
@@ -457,28 +476,28 @@ namespace Casinos
 
         //---------------------------------------------------------------------
         // 异步加载本地的AssetBundle
-        public LoaderTicket LoadLocalBundleAsync(LuaTable lua_table, LuaTable need_load_ab_path, DelegateLua4 loaded_callback)
-        {
-            List<string> list_ab_name = new List<string>();
+        //public LoaderTicket LoadLocalBundleAsync(LuaTable lua_table, LuaTable need_load_ab_path, DelegateLua4 loaded_callback)
+        //{
+        //    List<string> list_ab_name = new List<string>();
 
-            need_load_ab_path.ForEach<int, string>(
-                (i, v) =>
-                {
-                    list_ab_name.Add(v);
-                });
+        //    need_load_ab_path.ForEach<int, string>(
+        //        (i, v) =>
+        //        {
+        //            list_ab_name.Add(v);
+        //        });
 
-            var ticket = Context.AsyncAssetLoadGroup.asyncLoadLocalBundle(
-                 list_ab_name, _eAsyncAssetLoadType.LocalBundle, (List<AssetBundle> list_ab1) =>
-                 {
-                     if (loaded_callback != null)
-                     {
-                         loaded_callback.Invoke(lua_table, list_ab1);
-                         loaded_callback = null;
-                     }
-                 });
+        //    var ticket = Context.AsyncAssetLoadGroup.asyncLoadLocalBundle(
+        //         list_ab_name, _eAsyncAssetLoadType.LocalBundle, (List<AssetBundle> list_ab1) =>
+        //         {
+        //             if (loaded_callback != null)
+        //             {
+        //                 loaded_callback.Invoke(lua_table, list_ab1);
+        //                 loaded_callback = null;
+        //             }
+        //         });
 
-            return ticket;
-        }
+        //    return ticket;
+        //}
 
         //---------------------------------------------------------------------
         public LuaTable TransListToLuaTable<T>(List<T> list_t)

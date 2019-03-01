@@ -29,8 +29,7 @@ function ViewPlayerProfile:OnCreate()
             end
     )
     local btn_stand = self.ComUi:GetChild("BtnStandup")
-    if (btn_stand ~= nil)
-    then
+    if (btn_stand ~= nil) then
         self.GBtnStandup = btn_stand.asButton
     end
 
@@ -44,8 +43,7 @@ function ViewPlayerProfile:OnCreate()
                     CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_name .. "_Big", Context:CalcBotIconUrl(false, icon_name), icon_name, nil,
                             function(ex, tick)
                                 ViewHelper:UiEndWaiting()
-                                if (ex ~= nil)
-                                then
+                                if (ex ~= nil) then
                                     local ui_iconbig = self.ViewMgr:CreateView("HeadIconBig")
                                     local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
                                     ui_iconbig:SetIcon(texture)
@@ -58,8 +56,7 @@ function ViewPlayerProfile:OnCreate()
                     CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", self.Context.Cfg.PlayerIconDomain .. player_icon, icon_resource_name, nil,
                             function(ex, tick)
                                 ViewHelper:UiEndWaiting()
-                                if (ex ~= nil)
-                                then
+                                if (ex ~= nil) then
                                     local ui_iconbig = self.ViewMgr:CreateView("HeadIconBig")
                                     local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)
                                     ui_iconbig:SetIcon(texture)
