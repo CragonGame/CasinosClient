@@ -21,7 +21,6 @@ function ViewHandCardTexas:ctor(com_card, guid, index)
         self.GImageCardHighLight = card_highlight.asImage
     end
     self.TweenScale = nil
-    self.LoaderTicket = nil
 end
 
 ---------------------------------------
@@ -85,16 +84,11 @@ function ViewHandCardTexas:ShowCard(delay_tm)
 
             local l_card_resouce_name = string.lower(card_resouce_name)
             if (CS.System.String.IsNullOrEmpty(card_resouce_name) == false) then
-                self.LoaderTicket = CS.Casinos.CasinosContext.Instance.TextureMgr:getTexture(l_card_resouce_name, CS.Casinos.CasinosContext.Instance.PathMgr.DirAbCard .. l_card_resouce_name .. ".ab",
-                        function(ticket, t)
+                CS.Casinos.CasinosContext.Instance.TextureMgr:getTexture(l_card_resouce_name, CS.Casinos.CasinosContext.Instance.PathMgr.DirAbCard .. l_card_resouce_name .. ".ab",
+                        function(t)
                             if (self.GComCard == nil or self.GComCard.displayObject.gameObject == nil) then
                                 return
                             end
-
-                            if (self.LoaderTicket ~= ticket) then
-                                return
-                            end
-                            self.LoaderTicket = nil
 
                             self.GLoaderCard.texture = CS.FairyGUI.NTexture(t)
                             ViewHelper:SetGObjectVisible(true, self.GComCard)

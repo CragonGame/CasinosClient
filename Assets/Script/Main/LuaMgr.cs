@@ -470,31 +470,6 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        // 异步加载本地的AssetBundle
-        //public LoaderTicket LoadLocalBundleAsync(LuaTable lua_table, LuaTable need_load_ab_path, DelegateLua4 loaded_callback)
-        //{
-        //    List<string> list_ab_name = new List<string>();
-
-        //    need_load_ab_path.ForEach<int, string>(
-        //        (i, v) =>
-        //        {
-        //            list_ab_name.Add(v);
-        //        });
-
-        //    var ticket = Context.AsyncAssetLoadGroup.asyncLoadLocalBundle(
-        //         list_ab_name, _eAsyncAssetLoadType.LocalBundle, (List<AssetBundle> list_ab1) =>
-        //         {
-        //             if (loaded_callback != null)
-        //             {
-        //                 loaded_callback.Invoke(lua_table, list_ab1);
-        //                 loaded_callback = null;
-        //             }
-        //         });
-
-        //    return ticket;
-        //}
-
-        //---------------------------------------------------------------------
         public LuaTable TransListToLuaTable<T>(List<T> list_t)
         {
             LuaTable l_t = LuaEnv.NewTable();

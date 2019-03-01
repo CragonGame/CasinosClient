@@ -13,7 +13,6 @@ function UiCardCommonEx:new(o, com_card)
     o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.Card = nil
     o.ResetCallBack = nil
-    o.LoaderTicket = nil
     o.TextureMgr = CS.Casinos.CasinosContext.Instance.TextureMgr
     o.GComCard = com_card
     o.GLoaderCard = CS.Casinos.LuaHelper.GLoaderCastToGLoaderEx(o.GComCard:GetChild("LoaderCard").asLoader)
@@ -44,15 +43,12 @@ function UiCardCommonEx:show(with_animation, call_back)
         local card_name = tostring(self.Card.Suit) .. "_" .. tostring(self.Card.Type)
         local l_card_name = string.lower(card_name)
         local ab_card_name = self.CasinosContext.PathMgr.DirAbCard .. l_card_name .. ".ab"
-        self.LoaderTicket = self.CasinosContext.TextureMgr:getTexture(l_card_name, ab_card_name,
-                function(tick, t)
+        self.CasinosContext.TextureMgr:getTexture(l_card_name, ab_card_name,
+                function(t)
                     if (self.GComCard == nil or self.GComCard.displayObject.gameObject == nil) then
                         return
                     end
-                    if (self.LoaderTicket ~= tick) then
-                        return
-                    end
-                    self.LoaderTicket = nil
+
                     self.GLoaderCard.color = CS.UnityEngine.Color.white
                     self.GLoaderCard.texture = CS.FairyGUI.NTexture(t)
 
@@ -185,7 +181,7 @@ end
 ---------------------------------------
 function UiCardCommonEx:_reset()
     self:killTween(self.TweenerRotate)
-    self.LoaderTicket = nil
+
     if (self.GComCard.displayObject.gameObject ~= nil) then
         self.GLoaderCard.icon = nil
         self.GComCard.rotationY = 0

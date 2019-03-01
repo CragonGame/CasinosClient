@@ -21,11 +21,12 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(Casinos.LuaMgr);
-			Utils.BeginObjectRegister(type, L, translator, 0, 29, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 30, 1, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Release", _m_Release);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Update", _m_Update);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Launch", _m_Launch);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LocalLoadTextureFromAbAsync", _m_LocalLoadTextureFromAbAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "WWWLoadTextAsync", _m_WWWLoadTextAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "WWWLoadTextureAsync", _m_WWWLoadTextureAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "WWWLoadAssetBundleAsync", _m_WWWLoadAssetBundleAsync);
@@ -172,6 +173,36 @@ namespace XLua.CSObjectWrap
                     bool _is_load_launchlua_from_resources = LuaAPI.lua_toboolean(L, 2);
                     
                     gen_to_be_invoked.Launch( _is_load_launchlua_from_resources );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_LocalLoadTextureFromAbAsync(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                Casinos.LuaMgr gen_to_be_invoked = (Casinos.LuaMgr)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _url = LuaAPI.lua_tostring(L, 2);
+                    string _name = LuaAPI.lua_tostring(L, 3);
+                    System.Action<UnityEngine.Texture> _cb = translator.GetDelegate<System.Action<UnityEngine.Texture>>(L, 4);
+                    
+                    gen_to_be_invoked.LocalLoadTextureFromAbAsync( _url, _name, _cb );
                     
                     
                     

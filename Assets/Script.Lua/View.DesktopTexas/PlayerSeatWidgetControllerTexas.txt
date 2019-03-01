@@ -54,8 +54,6 @@ function PlayerSeatWidgetControllerTexas:new(o, player_info, com_playercenter)
     o.CardFirst = nil
     o.CardSecond = nil
     o.ShowCard = false
-    o.LoaderTicket1 = nil
-    o.LoaderTicket2 = nil
     o.ChipRaise = nil
     --o.ChipGetWin = nil
     o.TChipGetWin = {}
@@ -103,8 +101,6 @@ end
 
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:release()
-    self.LoaderTicket1 = nil
-    self.LoaderTicket2 = nil
     self:hideHighLight()
     self:_resetGold()
     self:_resetCard(true)
@@ -172,14 +168,9 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
         self.SeatWidget.GLoaderCardFirst.color = CS.UnityEngine.Color.white
         if (self.SeatWidget.GLoaderCardFirst.texture == nil or is_same == false) then
             if (CS.System.String.IsNullOrEmpty(me_first_card_name) == false) then
-                self.LoaderTicket1 = self.CasinosContext.TextureMgr:getTexture(l_me_first_card_name, self.CasinosContext.PathMgr.DirAbCard .. l_me_first_card_name .. ".ab",
-                        function(ticket, t)
+                self.CasinosContext.TextureMgr:getTexture(l_me_first_card_name, self.CasinosContext.PathMgr.DirAbCard .. l_me_first_card_name .. ".ab",
+                        function(t)
                             if (self.SeatWidget ~= nil) then
-                                if ((self.LoaderTicket1 ~= ticket)) then
-                                    return
-                                end
-                                self.LoaderTicket1 = nil
-
                                 if (self.ShowCard) then
                                     if (self.SeatWidget.GLoaderCardFirst ~= nil and self.SeatWidget.GLoaderCardFirst.displayObject.gameObject ~= nil) then
                                         ViewHelper:SetGObjectVisible(true, self.SeatWidget.GLoaderCardFirst)
@@ -202,17 +193,11 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
         local me_second_card_name = self.CardSecond.Suit .. "_" .. self.CardSecond.Type
         local l_me_second_card_name = string.lower(me_second_card_name)
         --print("l_me_second_card_name        "..l_me_second_card_name)
-        if (self.SeatWidget.GLoaderCardSecond.texture == nil or is_same == false)
-        then
+        if (self.SeatWidget.GLoaderCardSecond.texture == nil or is_same == false) then
             if (CS.System.String.IsNullOrEmpty(me_second_card_name) == false) then
-                self.LoaderTicket2 = self.CasinosContext.TextureMgr:getTexture(l_me_second_card_name, self.CasinosContext.PathMgr.DirAbCard .. l_me_second_card_name .. ".ab",
-                        function(ticket, t)
+                self.CasinosContext.TextureMgr:getTexture(l_me_second_card_name, self.CasinosContext.PathMgr.DirAbCard .. l_me_second_card_name .. ".ab",
+                        function(t)
                             if (self.SeatWidget ~= nil) then
-                                if ((self.LoaderTicket2 ~= ticket)) then
-                                    return
-                                end
-                                self.LoaderTicket2 = nil
-
                                 if (t ~= nil and self.SeatWidget.GLoaderCardSecond.displayObject.gameObject ~= nil) then
                                     self.SeatWidget.GLoaderCardSecond.texture = CS.FairyGUI.NTexture(t)
                                 end
