@@ -507,6 +507,7 @@ function Context:_timerUpdateRemoteDataToPersistent(tm)
     else
         local value = self.UpdateRemoteDataToPersistent.LeftCount
         local max = self.UpdateRemoteDataToPersistent.TotalCount
+        --print(string.format('TotalCount=%s LeftCount=%s', max, value))
         self.Launch:UpdateViewLoadingProgress(max - value, max)
     end
 end
