@@ -5,12 +5,14 @@ ViewHandCardTexas = class()
 
 ---------------------------------------
 function ViewHandCardTexas:ctor(com_card, guid, index)
+    self.CasinosContext = CS.Casinos.CasinosContext.Instance
     self.Guid = guid
     self.Index = index
     self.GComCard = com_card
     self.CardData = nil
     self.CancelShowCard = false
     self.ShowBack = false
+
     local loader_card = self.GComCard:GetChild("LoaderCard")
     if (loader_card ~= nil) then
         self.GLoaderCard = CS.Casinos.LuaHelper.GLoaderCastToGLoaderEx(loader_card.asLoader)
@@ -84,7 +86,7 @@ function ViewHandCardTexas:ShowCard(delay_tm)
 
             local l_card_resouce_name = string.lower(card_resouce_name)
             if (CS.System.String.IsNullOrEmpty(card_resouce_name) == false) then
-                CS.Casinos.CasinosContext.Instance.TextureMgr:LoadTextureAsync(l_card_resouce_name, CS.Casinos.CasinosContext.Instance.PathMgr.DirAbCard .. l_card_resouce_name .. ".ab",
+                self.CasinosContext.TextureMgr:LoadTextureAsync(l_card_resouce_name, self.CasinosContext.PathMgr.DirAbCard .. l_card_resouce_name .. ".ab",
                         function(t)
                             if (self.GComCard == nil or self.GComCard.displayObject.gameObject == nil) then
                                 return

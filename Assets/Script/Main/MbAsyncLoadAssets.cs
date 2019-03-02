@@ -11,13 +11,13 @@ namespace Casinos
     public class MbAsyncLoadAssets : MonoBehaviour
     {
         //---------------------------------------------------------------------
-        Dictionary<string, AssetBundle> MapAssetBundle { get; set; } = new Dictionary<string, AssetBundle>();
+        Dictionary<string, AssetBundle> MapAssetBundle { get; set; } = new Dictionary<string, AssetBundle>();// 已加载的Ab
+        HashSet<string> SetAssetBundleLoading { get; set; } = new HashSet<string>();// 正在加载中的Ab
+        Dictionary<string, Texture2D> MapTexture2D { get; set; } = new Dictionary<string, Texture2D>();
 
         //---------------------------------------------------------------------
         public void LocalLoadAssetBundleAsync(string url, Action<AssetBundle> cb)
         {
-            //AssetBundle.LoadFromFile
-
             StartCoroutine(_localLoadAssetBundleAsync(url, cb));
         }
 
@@ -72,19 +72,48 @@ namespace Casinos
         {
             MapAssetBundle.TryGetValue(url, out AssetBundle ab);
 
-            // 判定是否加载Ab
+            // 判定是否已加载Ab
             if (ab == null)
             {
-                AssetBundleCreateRequest abcr = AssetBundle.LoadFromFileAsync(url);
-                yield return abcr;
-                ab = abcr.assetBundle;
-                MapAssetBundle[url] = ab;
+                // 判定是否正在加载Ab
+                bool b = SetAssetBundleLoading.Contains(url);
+
+                if (b)
+                {
+                    while (true)
+                    {
+                        yield return 1;// 等1帧
+
+                        if (!SetAssetBundleLoading.Contains(url))
+                        {
+                            ab = MapAssetBundle[url];
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    SetAssetBundleLoading.Add(url);
+
+                    AssetBundleCreateRequest abcr = AssetBundle.LoadFromFileAsync(url);
+                    yield return abcr;
+
+                    ab = abcr.assetBundle;
+                    MapAssetBundle[url] = ab;
+
+                    SetAssetBundleLoading.Remove(url);
+                }
             }
 
-            AssetBundleRequest abr = ab.LoadAssetAsync<Texture2D>(name);
-            yield return abr;
+            string s = url + name;
+            MapTexture2D.TryGetValue(s, out Texture2D t);
+            if (t == null)
+            {
+                t = ab.LoadAsset<Texture2D>(name);
+                MapTexture2D[s] = t;
+            }
 
-            if (cb != null) cb.Invoke((Texture2D)abr.asset);
+            if (cb != null) cb.Invoke(t);
         }
 
         //---------------------------------------------------------------------

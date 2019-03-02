@@ -13,6 +13,7 @@ function ViewPlayerGiftAndVIP:new(o, player_guid, com_gift_left, com_gift_right,
     setmetatable(o, self)
     self.__index = self
     o.Context = Context
+    o.CasinosContext = CS.Casinos.CasinosContext.Instance
     o.ViewMgr = view_mgr
     o.GComPlayer = com_player
     o.PlayerGuid = player_guid
@@ -202,7 +203,9 @@ end
 ---------------------------------------
 function ViewPlayerGiftAndVIP:loadGiftIcon(tb_giftid, load_icon_down)
     local tb_gift = self.Context.TbDataMgr:GetData("Item", tb_giftid)
-    self.CasinosContext.TextureMgr:LoadTextureAsync(tb_gift.Icon, CS.Casinos.CasinosContext.Instance.PathMgr.DirAbRoot .. "Item/" .. tostring(tb_gift.Icon) .. ".ab",
+    local ab_gift_path = self.CasinosContext.PathMgr.DirAbRoot .. "Item/" .. tostring(tb_gift.Icon) .. ".ab"
+
+    self.CasinosContext.TextureMgr:LoadTextureAsync(tb_gift.Icon, ab_gift_path,
             function(t)
                 if (self.GComCurrentShowGift == nil) then
                     return
