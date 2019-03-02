@@ -42,8 +42,8 @@ namespace Casinos
             }
             else
             {
-                string s = string.Format("HeadIconMgr.LoadIconAsync() path={0} name={1}", resource_path, resource_name);
-                Debug.Log(s);
+                //string s = string.Format("HeadIconMgr.LoadIconAsync() path={0} name={1}", resource_path, resource_name);
+                //Debug.Log(s);
 
                 CasinosContext.Instance.LuaMgr.WWWLoadTextureAsync(resource_path, load_callback);
             }

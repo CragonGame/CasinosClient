@@ -76,7 +76,7 @@ function ViewDesktopPlayerInfoTexas:OnCreate()
     self.TransitionWinName = self.ComUi:GetTransition("TransitionWinName")
     --self.GGraphWinStarParent = self.ComUi:GetChild("GraphWinStarParent").asGraph
     --local particle1 = p_helper:GetParticel("winnerstar.ab")
-    --local p_1 = CS.UnityEngine.GameObject.Instantiate(particle1:LoadAsset("WinnerStar"))
+    --local p_1 = CS.UnityEngine.Object.Instantiate(particle1:LoadAsset("WinnerStar"))
     --self.GGraphWinStarParent:SetNativeObject(CS.FairyGUI.GoWrapper(p_1))
     --self.GGraphWinStarParent.visible = false
     self.GMovieAllIn = self.ComUi:GetChild("MovieAllIn").asMovieClip

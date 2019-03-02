@@ -89,6 +89,7 @@
 		<type fullname="UnityEngine.Mathf" preserve="all"/>
 		<type fullname="UnityEngine.Matrix4x4" preserve="all"/>
 		<type fullname="UnityEngine.Mesh" preserve="all"/>
+		<type fullname="UnityEngine.Object" preserve="all"/>
 		<type fullname="UnityEngine.Ping" preserve="all"/>
 		<type fullname="UnityEngine.PlayerPrefs" preserve="all"/>
 		<type fullname="UnityEngine.Quaternion" preserve="all"/>

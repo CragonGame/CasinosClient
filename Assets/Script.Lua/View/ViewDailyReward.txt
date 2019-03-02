@@ -122,7 +122,8 @@ function ViewDailyReward:onClickBtnGetReward()
     self.AutoDestroyUi = true
     local particleblue_parent = self.ComUi:GetChild("FallGoldParent").asGraph
     local particle2 = ParticleHelper:GetParticel("fallgoldex.ab")
-    local fall_gold = CS.UnityEngine.GameObject.Instantiate(particle2:LoadAsset("FallGoldEx"))
+    local fallgoldex = particle2:LoadAsset("FallGoldEx")
+    local fall_gold = CS.UnityEngine.Object.Instantiate(fallgoldex)
     particleblue_parent:SetNativeObject(CS.FairyGUI.GoWrapper(fall_gold))
     self.ParticleSystem = fall_gold:GetComponent("ParticleSystem")
     self.ParticleSystem:Play()

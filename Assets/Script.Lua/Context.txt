@@ -224,6 +224,7 @@ function Context:_nextLaunchStep()
                     function()
                         self.Launch:UpdateViewLoadingDescAndProgress("正在更新安装包", 0, 100)
                         self.WWWUpdateBundleApk = CS.UnityEngine.UnityWebRequest(self.Cfg.BundleUpdateUrlANDROID)
+                        self.WWWUpdateBundleApk:SendWebRequest()
                         self.TimerUpdateBundleApk = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateBundleApk)
                         self.PreViewMgr:DestroyView(view_premsgbox)
                     end,

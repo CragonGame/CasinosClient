@@ -61,7 +61,7 @@ namespace Casinos
                     foreach (var k in list_file2delete)
                     {
                         var str = PersistentDataRootDir + k;
-                        //Debug.Log("删除Persistent中废弃文件：" + str);
+                        // Debug.Log("删除Persistent中废弃文件：" + str);
                         if (!File.Exists(str))
                         {
                             File.Delete(str);
@@ -96,7 +96,9 @@ namespace Casinos
             {
                 string s1 = QueUpdateFile.Dequeue();
                 var s2 = Path.Combine(RemoteDataRootUrl, s1);
-                MapWWW[s1] = UnityWebRequest.Get(s2);
+                UnityWebRequest web_request = UnityWebRequest.Get(s2);
+                MapWWW[s1] = web_request;
+                web_request.SendWebRequest();
             }
 
             foreach (var i in MapWWW)

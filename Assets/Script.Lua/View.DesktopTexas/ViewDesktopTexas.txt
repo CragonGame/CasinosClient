@@ -192,7 +192,7 @@ function ViewDesktopTexas:OnCreate()
 
     local parent_selfwin = self.ComMeWin:GetChild("ParentSelfWin").asGraph
     local particle2 = ParticleHelper:GetParticel("selfwin.ab")
-    local p_2 = CS.UnityEngine.GameObject.Instantiate(particle2:LoadAsset("SelfWin"))
+    local p_2 = CS.UnityEngine.Object.Instantiate(particle2:LoadAsset("SelfWin"))
     parent_selfwin:SetNativeObject(CS.FairyGUI.GoWrapper(p_2))
 
     self.MapViewDesktopTypeBaseFac = {}

@@ -111,7 +111,7 @@ function ViewMain:OnCreate()
     --local gold_par_parent = btn_goldtree:GetChild("GoldTreeParParent").asGraph
     --local g_t_particle = ParticleHelper:GetParticel("goldtreepar.ab")
     --local prefab_g_t_particle = g_t_particle:LoadAsset("GoldTreePar")
-    --local g_p = CS.UnityEngine.GameObject.Instantiate(prefab_g_t_particle)
+    --local g_p = CS.UnityEngine.Object.Instantiate(prefab_g_t_particle)
     --gold_par_parent:SetNativeObject(CS.FairyGUI.GoWrapper(g_p))
 
     local com_more = nil
@@ -262,6 +262,7 @@ function ViewMain:OnCreate()
     self.TransitionNewReward = self.ComRewardTips:GetTransition("TransitionNewMsg")
     self.TransitionShowReward = self.ComUi:GetTransition("TransitionShowReward")
     self:RefreshRedPointRewardState()
+
     self.ComWelfareIcon = self.ComUi:GetChild("ComWelfareIcon").asCom
     self.ComWelfareIcon.onClick:Add(
             function()
@@ -299,6 +300,7 @@ function ViewMain:OnCreate()
                 self:_onClickComPlayerInfoCurrentFriend()
             end
     )
+
     self.TransitionShowMore = self.ComUi:GetTransition("TansitionShowComMore")
     self.GTextPlayerNum = self.ComUi:GetChild("TextPlayerNum").asTextField
     ViewHelper:SetGObjectVisible(false, self.GTextPlayerNum)
@@ -307,11 +309,13 @@ function ViewMain:OnCreate()
     self.GListFriend.itemRenderer = function(index, item)
         self:rendererFriend(index, item)
     end
+
     self.GListRecommend = self.ComUi:GetChild("ListRecommend").asList
     self.GListRecommend:SetVirtual()
     self.GListRecommend.itemRenderer = function(index, item)
         self:rendererFriendRecommend(index, item)
     end
+
     self.GLoaderWaiting = self.ComUi:GetChild("Wating").asLoader
     local view_shootingtext = self.ViewMgr:GetView("ShootingText")
     if (view_shootingtext == nil) then
@@ -322,13 +326,13 @@ function ViewMain:OnCreate()
     self.PosGetChipEffectParticle = self.ComUi:GetChild("ComPosGetChipParticle").asCom.position
     local ab_particle_desktop = ParticleHelper:GetParticel("btndesktopparticle.ab")
     local prefab_particle_desktop = ab_particle_desktop:LoadAsset("BtnDeskTopParticle")
-    self.ParticleDeskTop = CS.UnityEngine.GameObject.Instantiate(prefab_particle_desktop)
+    self.ParticleDeskTop = CS.UnityEngine.Object.Instantiate(prefab_particle_desktop)
     local holder_destopParticle = btn_desktop:GetChild("HolderParticle").asGraph
     holder_destopParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleDeskTop))
 
     local ab_particle_match = ParticleHelper:GetParticel("btnmatchparticle.ab")
     local prefab_particle_match = ab_particle_match:LoadAsset("BtnMatchParticle")
-    self.ParticleMatch = CS.UnityEngine.GameObject.Instantiate(prefab_particle_match)
+    self.ParticleMatch = CS.UnityEngine.Object.Instantiate(prefab_particle_match)
     local holder_matchParticle = btn_match:GetChild("HolderParticle").asGraph
     holder_matchParticle:SetNativeObject(CS.FairyGUI.GoWrapper(self.ParticleMatch))
 
@@ -390,6 +394,7 @@ function ViewMain:OnCreate()
             id_card = self.ViewMgr:CreateView("IdCardCheck")
         end
     end
+
     self:RefreshNewFeedback()
     self:RefreshNewRecord()
     self:RefreshNewItem()

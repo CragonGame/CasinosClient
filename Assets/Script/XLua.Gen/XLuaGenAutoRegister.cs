@@ -103,6 +103,9 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(UnityEngine.Mesh), UnityEngineMeshWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(UnityEngine.Object), UnityEngineObjectWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(UnityEngine.ParticleSystem), UnityEngineParticleSystemWrap.__Register);
         
         
@@ -171,13 +174,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(System.Collections.Generic.List<UnityEngine.AssetBundle>), SystemCollectionsGenericList_1_UnityEngineAssetBundle_Wrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(System.Text.RegularExpressions.Regex), SystemTextRegularExpressionsRegexWrap.__Register);
-        
         }
         
         static void wrapInit1(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(System.Text.RegularExpressions.Regex), SystemTextRegularExpressionsRegexWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(System.Text.RegularExpressions.Match), SystemTextRegularExpressionsMatchWrap.__Register);
         
@@ -328,13 +331,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(Casinos._eProjectItemDisplayNameKey), Casinos_eProjectItemDisplayNameKeyWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(Casinos.Card), CasinosCardWrap.__Register);
-        
         }
         
         static void wrapInit2(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(Casinos.Card), CasinosCardWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(ChatParser), ChatParserWrap.__Register);
         
