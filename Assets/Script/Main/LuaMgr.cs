@@ -63,7 +63,7 @@ namespace Casinos
             typeof(UnityEngine.Screen),
             typeof(UnityEngine.ScreenCapture),
             typeof(UnityEngine.SystemInfo),
-            typeof(UnityEngine.Texture),
+            typeof(UnityEngine.Texture2D),
             typeof(UnityEngine.Texture3D),
             typeof(UnityEngine.Time),
             typeof(UnityEngine.Networking.UnityWebRequest),

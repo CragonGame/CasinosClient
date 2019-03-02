@@ -151,18 +151,3 @@ namespace Casinos
         }
     }
 }
-
-//---------------------------------------------------------------------
-//IEnumerator _wwwDownloadList(List<string> list_url, Action<WWW[]> cb)
-//{
-//    int n = 0;
-//    WWW[] arr = new WWW[list_url.Count];
-//    foreach (var i in list_url)
-//    {
-//        WWW www = new WWW(i);
-//        arr[n] = www;
-//        n++;
-//    }
-//    yield return arr;
-//    if (cb != null) cb.Invoke(arr);
-//}

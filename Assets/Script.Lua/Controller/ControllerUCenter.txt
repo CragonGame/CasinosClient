@@ -251,7 +251,7 @@ end
 --    self.NigWebpayRequestUrlHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
 --    local http_url = self:_genApiUrl("nigeriawebpay")
 --    local form = CS.UnityEngine.WWWForm()
---    self.WWWNigWebpayRequestUrl = CS.UnityEngine.WWW(http_url, form)
+--    self.WWWNigWebpayRequestUrl = CS.UnityEngine.UnityWebRequest(http_url, form)
 --    --print(http_url)
 --    --self.MbKingTexasHelper:PostUrl(http_url, param,
 --    --        function(http_statuscode, response_data)
@@ -265,7 +265,7 @@ end
 --function ControllerUCenter:RequestNigWebpayQuery(handler)
 --    self.NigWebpayQueryHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
 --    local http_url = self:_genApiUrl("nigeriawebpayquery")
---    self.WWWNigWebpayQuery = CS.UnityEngine.WWW(http_url)
+--    self.WWWNigWebpayQuery = CS.UnityEngine.UnityWebRequest(http_url)
 --end
 
 ---------------------------------------
@@ -276,7 +276,7 @@ end
 --    local param = self.ControllerMgr.Json.encode(request)
 --    local bytes = CS.Casinos.LuaHelper.string2BytesByUTF8(param)-- Encoding.UTF8.GetBytes(param)
 --    local headers = self:_genHeader(bytes.Length)
---    self.WWWQuicktellerTransfers = CS.UnityEngine.WWW(http_url, bytes, headers)
+--    self.WWWQuicktellerTransfers = CS.UnityEngine.UnityWebRequest(http_url, bytes, headers)
 --end
 
 ---------------------------------------
@@ -285,7 +285,7 @@ end
 --    self.QuicktellerTransfersQueryHandler = handler--new Action<UCenterResponseStatus, AccountLoginResponse, UCenterError>(handler)
 --    local http_url = self:_genApiUrl("paynigeria/quickteller/payments/transfersquery")
 --    local form = CS.UnityEngine.WWWForm()
---    self.WWWQuicktellerTransfersQuery = CS.UnityEngine.WWW(http_url, form)
+--    self.WWWQuicktellerTransfersQuery = CS.UnityEngine.UnityWebRequest(http_url, form)
 --end
 
 ---------------------------------------

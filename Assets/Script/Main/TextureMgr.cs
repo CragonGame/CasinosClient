@@ -31,7 +31,7 @@ namespace Casinos
 
             if (texture == null)
             {
-                string s = string.Format("TextureMgr.getTexture() path={0} name={1}", path, name);
+                string s = string.Format("TextureMgr.LoadTextureAsync() path={0} name={1}", path, name);
                 Debug.Log(s);
 
                 CasinosContext.Instance.LuaMgr.LocalLoadTextureFromAbAsync(path, name, call_back);
