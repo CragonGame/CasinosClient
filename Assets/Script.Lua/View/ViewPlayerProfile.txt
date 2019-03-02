@@ -40,7 +40,7 @@ function ViewPlayerProfile:OnCreate()
                 local icon_name = self.PlayerInfo.PlayerInfoCommon.IconName
                 if (icon_name ~= nil and icon_name ~= "")
                 then
-                    CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_name .. "_Big", Context:CalcBotIconUrl(false, icon_name), icon_name, nil,
+                    CS.Casinos.HeadIconMgr.Instant:LoadIconAsync(icon_name .. "_Big", Context:CalcBotIconUrl(false, icon_name), icon_name, nil,
                             function(ex, tick)
                                 ViewHelper:UiEndWaiting()
                                 if (ex ~= nil) then
@@ -53,7 +53,7 @@ function ViewPlayerProfile:OnCreate()
                 else
                     local icon_resource_name = ""
                     local player_icon, icon_resource_name = CS.Casinos.HeadIconMgr.getIconName(false, self.PlayerInfo.PlayerInfoCommon.AccountId, icon_resource_name)
-                    CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(icon_resource_name .. "_Big", self.Context.Cfg.PlayerIconDomain .. player_icon, icon_resource_name, nil,
+                    CS.Casinos.HeadIconMgr.Instant:LoadIconAsync(icon_resource_name .. "_Big", self.Context.Cfg.PlayerIconDomain .. player_icon, icon_resource_name, nil,
                             function(ex, tick)
                                 ViewHelper:UiEndWaiting()
                                 if (ex ~= nil) then

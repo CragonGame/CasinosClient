@@ -207,7 +207,7 @@ namespace Casinos
 
             if (HeadIconMgr != null)
             {
-                HeadIconMgr.destroy();
+                HeadIconMgr.Destroy();
                 HeadIconMgr = null;
             }
 

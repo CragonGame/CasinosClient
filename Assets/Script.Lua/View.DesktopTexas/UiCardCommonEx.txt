@@ -43,7 +43,7 @@ function UiCardCommonEx:show(with_animation, call_back)
         local card_name = tostring(self.Card.Suit) .. "_" .. tostring(self.Card.Type)
         local l_card_name = string.lower(card_name)
         local ab_card_name = self.CasinosContext.PathMgr.DirAbCard .. l_card_name .. ".ab"
-        self.CasinosContext.TextureMgr:getTexture(l_card_name, ab_card_name,
+        self.CasinosContext.TextureMgr:LoadTextureAsync(l_card_name, ab_card_name,
                 function(t)
                     if (self.GComCard == nil or self.GComCard.displayObject.gameObject == nil) then
                         return

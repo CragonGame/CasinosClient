@@ -20,12 +20,12 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void destroy()
+        public void Destroy()
         {
         }
 
         //---------------------------------------------------------------------
-        public void getTexture(string name, string path, Action<Texture> call_back)
+        public void LoadTextureAsync(string name, string path, Action<Texture> call_back)
         {
             MapTexture.TryGetValue(name, out Texture texture);
 
@@ -43,13 +43,13 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public bool haveTexture(string name)
+        public bool ExistTexture(string name)
         {
             return MapTexture.ContainsKey(name);
         }
 
         //---------------------------------------------------------------------
-        public void destroyTexture(string name, bool destory_asset)
+        public void DestroyTexture(string name, bool destory_asset)
         {
             MapTexture.TryGetValue(name, out Texture texture);
             if (texture != null)

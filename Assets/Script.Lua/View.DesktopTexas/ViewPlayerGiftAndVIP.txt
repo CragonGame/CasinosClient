@@ -202,7 +202,7 @@ end
 ---------------------------------------
 function ViewPlayerGiftAndVIP:loadGiftIcon(tb_giftid, load_icon_down)
     local tb_gift = self.Context.TbDataMgr:GetData("Item", tb_giftid)
-    self.CasinosContext.TextureMgr:getTexture(tb_gift.Icon, CS.Casinos.CasinosContext.Instance.PathMgr.DirAbRoot .. "Item/" .. tostring(tb_gift.Icon) .. ".ab",
+    self.CasinosContext.TextureMgr:LoadTextureAsync(tb_gift.Icon, CS.Casinos.CasinosContext.Instance.PathMgr.DirAbRoot .. "Item/" .. tostring(tb_gift.Icon) .. ".ab",
             function(t)
                 if (self.GComCurrentShowGift == nil) then
                     return

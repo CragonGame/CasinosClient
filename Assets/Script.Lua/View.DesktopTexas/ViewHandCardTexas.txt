@@ -84,7 +84,7 @@ function ViewHandCardTexas:ShowCard(delay_tm)
 
             local l_card_resouce_name = string.lower(card_resouce_name)
             if (CS.System.String.IsNullOrEmpty(card_resouce_name) == false) then
-                CS.Casinos.CasinosContext.Instance.TextureMgr:getTexture(l_card_resouce_name, CS.Casinos.CasinosContext.Instance.PathMgr.DirAbCard .. l_card_resouce_name .. ".ab",
+                CS.Casinos.CasinosContext.Instance.TextureMgr:LoadTextureAsync(l_card_resouce_name, CS.Casinos.CasinosContext.Instance.PathMgr.DirAbCard .. l_card_resouce_name .. ".ab",
                         function(t)
                             if (self.GComCard == nil or self.GComCard.displayObject.gameObject == nil) then
                                 return

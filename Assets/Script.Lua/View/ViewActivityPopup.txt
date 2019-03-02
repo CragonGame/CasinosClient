@@ -65,7 +65,7 @@ function ViewActivityPopup:SetActivityInfo(item)
         table.insert(t, ".png")
         local t_str = table.concat(t)
 
-        CS.Casinos.HeadIconMgr.Instant:asyncLoadIcon(content_image, t_str, content_image, nil,
+        CS.Casinos.HeadIconMgr.Instant:LoadIconAsync(content_image, t_str, content_image, nil,
                 function(ex)
                     if (ex ~= nil and self.GLoaderContent ~= nil and self.GLoaderContent.displayObject ~= nil and self.GLoaderContent.displayObject.gameObject ~= nil) then
                         local texture = CS.Casinos.LuaHelper.UnityObjectCastToTexture(ex, true)

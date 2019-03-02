@@ -168,7 +168,7 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
         self.SeatWidget.GLoaderCardFirst.color = CS.UnityEngine.Color.white
         if (self.SeatWidget.GLoaderCardFirst.texture == nil or is_same == false) then
             if (CS.System.String.IsNullOrEmpty(me_first_card_name) == false) then
-                self.CasinosContext.TextureMgr:getTexture(l_me_first_card_name, self.CasinosContext.PathMgr.DirAbCard .. l_me_first_card_name .. ".ab",
+                self.CasinosContext.TextureMgr:LoadTextureAsync(l_me_first_card_name, self.CasinosContext.PathMgr.DirAbCard .. l_me_first_card_name .. ".ab",
                         function(t)
                             if (self.SeatWidget ~= nil) then
                                 if (self.ShowCard) then
@@ -195,7 +195,7 @@ function PlayerSeatWidgetControllerTexas:showCardAndBetInfo(card_first, card_sec
         --print("l_me_second_card_name        "..l_me_second_card_name)
         if (self.SeatWidget.GLoaderCardSecond.texture == nil or is_same == false) then
             if (CS.System.String.IsNullOrEmpty(me_second_card_name) == false) then
-                self.CasinosContext.TextureMgr:getTexture(l_me_second_card_name, self.CasinosContext.PathMgr.DirAbCard .. l_me_second_card_name .. ".ab",
+                self.CasinosContext.TextureMgr:LoadTextureAsync(l_me_second_card_name, self.CasinosContext.PathMgr.DirAbCard .. l_me_second_card_name .. ".ab",
                         function(t)
                             if (self.SeatWidget ~= nil) then
                                 if (t ~= nil and self.SeatWidget.GLoaderCardSecond.displayObject.gameObject ~= nil) then

@@ -26,10 +26,9 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void asyncLoadIcon(string id, string resource_path, string resource_name, GameObject head_icon, Action<Texture> load_callback = null)
+        public void LoadIconAsync(string id, string resource_path, string resource_name, GameObject head_icon, Action<Texture> load_callback = null)
         {
-            Texture head_resource = null;
-            if (MapHeadIconResources.TryGetValue(id, out head_resource))
+            if (MapHeadIconResources.TryGetValue(id, out Texture head_resource))
             {
                 if (head_icon != null)
                 {
@@ -89,7 +88,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void destroy()
+        public void Destroy()
         {
             foreach (var i in MapHeadIconResources)
             {

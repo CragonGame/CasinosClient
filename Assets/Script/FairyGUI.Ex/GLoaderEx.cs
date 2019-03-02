@@ -9,16 +9,11 @@ namespace Casinos
     public class GLoaderEx : GLoader
     {
         //---------------------------------------------------------------------
+        public Action<bool> LoaderDoneCallBack { get; set; }
+
         internal static string HttpPrefix = "http://";
         internal static string HttpsPrefix = "https://";
         internal static string ABPostfix = ".ab";
-
-        public Action<bool> LoaderDoneCallBack { get; set; }
-
-        //---------------------------------------------------------------------
-        public GLoaderEx()
-        {
-        }
 
         //---------------------------------------------------------------------
         protected override void LoadExternal()
@@ -29,13 +24,13 @@ namespace Casinos
             string resource_name = url.Substring(index + 1);
             if (this.url.StartsWith(HttpPrefix) || this.url.StartsWith(HttpsPrefix))
             {
-                HeadIconMgr.Instant.asyncLoadIcon(resource_name, this.url, resource_name, null, _wwwCallBack);
+                HeadIconMgr.Instant.LoadIconAsync(resource_name, this.url, resource_name, null, _wwwCallBack);
             }
             else
             {
                 if (this.url.EndsWith(ABPostfix))
                 {
-                    TextureMgr.Instant.getTexture(resource_name.Replace(ABPostfix, ""), this.url, _loadTextureCallBackEx);
+                    TextureMgr.Instant.LoadTextureAsync(resource_name.Replace(ABPostfix, ""), this.url, _loadTextureCallBackEx);
                 }
                 else
                 {
