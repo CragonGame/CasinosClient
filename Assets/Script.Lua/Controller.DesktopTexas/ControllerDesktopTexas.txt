@@ -46,58 +46,56 @@ function ControllerDesktopTexas:OnCreate()
     self:BindEvListener("EvEntitySetMatchDetailedInfo", self)
     self:BindEvListener("EvUpdatePlayerScore", self)
 
-    local m_c = MethodType
-    self.Rpc:RegRpcMethod1(m_c.DesktopUserNotify, function(info_user)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopUserNotify, function(info_user)
         self:S2cPlayerDesktopUser(info_user)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopSnapshotNotify, function(snapshot_notify)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopSnapshotNotify, function(snapshot_notify)
         self:S2cDesktopSnapshotNotify(snapshot_notify)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerEnterNotify, function(player_data)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopPlayerEnterNotify, function(player_data)
         self:S2cPlayerDesktopPlayerEnterNotify(player_data)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerLeaveNotify, function(player_guid)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopPlayerLeaveNotify, function(player_guid)
         self:S2cPlayerDesktopPlayerLeaveNotify(player_guid)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerSitdownNotify, function(sitdown_data)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopPlayerSitdownNotify, function(sitdown_data)
         self:S2cPlayerDesktopPlayerSitdown(sitdown_data)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerObNotify, function(player_guid)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopPlayerObNotify, function(player_guid)
         self:S2cPlayerDesktopPlayerOb(player_guid)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerWaitWhileNotify, function(player_guid)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopPlayerWaitWhileNotify, function(player_guid)
         self:S2cPlayerDesktopPlayerWaitWhile(player_guid)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerReturnNotify, function(return_data)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopPlayerReturnNotify, function(return_data)
         self:S2cPlayerDesktopPlayerReturn(return_data)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopPlayerGiftChangeNotify, function(data)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopPlayerGiftChangeNotify, function(data)
         self:S2cDesktopPlayerGiftChangeNotify(data)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopBuyAndSendItemNotify, function(data)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopBuyAndSendItemNotify, function(data)
         self:S2cDesktopBuyAndSendItemNotify(data)
     end)
-    self.Rpc:RegRpcMethod1(m_c.DesktopChatNotify, function(msg)
+    self.Rpc:RegRpcMethod1(self.MethodType.DesktopChatNotify, function(msg)
         self:S2cPlayerDesktopChat(msg)
     end)
-    self.Rpc:RegRpcMethod0(m_c.PlayerLeaveDesktopNotify, function()
-        self:OnPlayerLeaveDesktopNotify()
+    self.Rpc:RegRpcMethod0(self.MethodType.PlayerLeaveDesktopNotify, function()
+        self:S2cPlayerLeaveDesktopNotify()
     end)
-    self.Rpc:RegRpcMethod1(m_c.PlayerInvitePlayerEnterDesktopRequestResult, function(r)
-        self:OnPlayerInvitePlayerEnterDesktopRequestResult(r)
+    self.Rpc:RegRpcMethod1(self.MethodType.PlayerInvitePlayerEnterDesktopRequestResult, function(r)
+        self:S2cPlayerInvitePlayerEnterDesktopRequestResult(r)
+    end)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestRebuyResult, function(r)
+        self:S2cMatchTexasRequestRebuyResult(r)
+    end)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasRequestAddonResult, function(r)
+        self:S2cMatchTexasRequestAddonResult(r)
+    end)
+    self.Rpc:RegRpcMethod1(self.MethodType.MatchTexasPlayerFinishedNotify, function(r)
+        self:S2cMatchTexasGameOverNotify(r)
     end)
 
-    self.Rpc:RegRpcMethod1(m_c.MatchTexasRequestRebuyResult, function(r)
-        self:OnMatchTexasRequestRebuyResult(r)
-    end)
-    self.Rpc:RegRpcMethod1(m_c.MatchTexasRequestAddonResult, function(r)
-        self:OnMatchTexasRequestAddonResult(r)
-    end)
-    self.Rpc:RegRpcMethod1(m_c.MatchTexasPlayerFinishedNotify, function(r)
-        self:OnMatchTexasGameOverNotify(r)
-    end)
-
-    self:regDesktopBaseFactory(DesktopTexasFactory:new(nil))
+    self:RegDesktopBaseFactory(DesktopTexasFactory:new(nil))
     local t_fac = DesktopHelperTexasFactory:new(nil)
     self.MapDesktopHelper[t_fac:GetName()] = t_fac:CreateDesktopHelper()
 end
@@ -116,7 +114,7 @@ function ControllerDesktopTexas:OnHandleEv(ev)
     if (ev.EventName == "EvUiRequestLockSystemChat") then
         self.LockSysChat = ev.requestLock
     elseif (ev.EventName == "EvEntityPlayerEnterDesktopH") then
-        self:clearDesktop(false)
+        self:_clearDesktop(false)
     elseif (ev.EventName == "EvUiRequestChangeDesk") then
         self.Rpc:RPC0(MethodType.DesktopPlayerChangeDeskRequest)
     elseif (ev.EventName == "EvEntityGetDesktopData") then
@@ -164,11 +162,11 @@ function ControllerDesktopTexas:S2cDesktopSnapshotNotify(snapshot_notify)
         self:SendEv(ev)
         local is_init = snapshot_notify[2]
         if (is_init) then
-            self:createDesktop(desktop_data.FactoryName)
+            self:_createDesktop(desktop_data.FactoryName)
         else
             if (self.DesktopBase == nil) then
                 is_init = true
-                self:createDesktop(desktop_data.FactoryName)
+                self:_createDesktop(desktop_data.FactoryName)
             end
         end
 
@@ -242,7 +240,7 @@ function ControllerDesktopTexas:S2cPlayerDesktopChat(msg1)
 end
 
 ---------------------------------------
-function ControllerDesktopTexas:OnPlayerInvitePlayerEnterDesktopRequestResult(r)
+function ControllerDesktopTexas:S2cPlayerInvitePlayerEnterDesktopRequestResult(r)
     if (r == ProtocolResult.Success) then
         ViewHelper:UiShowInfoSuccess(self.ControllerMgr.LanMgr:GetLanValue("InviteFriendToTable"))
     end
@@ -256,7 +254,7 @@ function ControllerDesktopTexas:S2cPlayerDesktopUser(info_user)
 end
 
 ---------------------------------------
-function ControllerDesktopTexas:OnMatchTexasRequestRebuyResult(r)
+function ControllerDesktopTexas:S2cMatchTexasRequestRebuyResult(r)
     if (self.DesktopBase == nil) then
         return
     end
@@ -267,6 +265,7 @@ function ControllerDesktopTexas:OnMatchTexasRequestRebuyResult(r)
 
     local rebuy = BMatchTexasRebuyResponse:new(nil)
     rebuy:setData(r)
+
     --if rebuy.Result == ProtocolResult.Success then
     --    local view_mgr = self.ViewMgr
     --    local ev = view_mgr:GetEv("EvEntityMTTPlayerRebuy")
@@ -280,7 +279,7 @@ function ControllerDesktopTexas:OnMatchTexasRequestRebuyResult(r)
 end
 
 ---------------------------------------
-function ControllerDesktopTexas:OnMatchTexasRequestAddonResult(r)
+function ControllerDesktopTexas:S2cMatchTexasRequestAddonResult(r)
     if (self.DesktopBase == nil) then
         return
     end
@@ -305,7 +304,7 @@ function ControllerDesktopTexas:OnMatchTexasRequestAddonResult(r)
 end
 
 ---------------------------------------
-function ControllerDesktopTexas:OnMatchTexasGameOverNotify(r)
+function ControllerDesktopTexas:S2cMatchTexasGameOverNotify(r)
     if (self.DesktopBase == nil) then
         return
     end
@@ -328,7 +327,16 @@ function ControllerDesktopTexas:OnMatchTexasGameOverNotify(r)
 end
 
 ---------------------------------------
-function ControllerDesktopTexas:requestInvitePlayerEnterDesktop(friend_guid, desktop_guid, desktop_filter, player_num)
+function ControllerDesktopTexas:S2cPlayerLeaveDesktopNotify()
+    ViewHelper:UiEndWaiting()
+    self:_clearDesktop(true)
+
+    local ctrl_player = self.ControllerMgr:GetController("Player")
+    ctrl_player:RequestGetOnlinePlayerNum()
+end
+
+---------------------------------------
+function ControllerDesktopTexas:RequestInvitePlayerEnterDesktop(friend_guid, desktop_guid, desktop_filter, player_num)
     local invite = InvitePlayerEnterDesktop:new(nil)
     invite.player_guid = friend_guid
     invite.player_nickname = ""
@@ -336,67 +344,7 @@ function ControllerDesktopTexas:requestInvitePlayerEnterDesktop(friend_guid, des
     invite.desktop_guid = desktop_guid
     invite.desktop_filter = desktop_filter
     invite.player_num = player_num
-
     self.Rpc:RPC1(MethodType.PlayerInvitePlayerEnterDesktopRequest, invite:getData4Pack())
-end
-
----------------------------------------
-function ControllerDesktopTexas:OnPlayerLeaveDesktopNotify()
-    ViewHelper:UiEndWaiting()
-    self:clearDesktop(true)
-
-    local ctrl_player = self.ControllerMgr:GetController("Player")
-    ctrl_player:RequestGetOnlinePlayerNum()
-end
-
----------------------------------------
-function ControllerDesktopTexas:clearDesktop(need_createmainui)
-    if (self.TimerUpdate ~= nil) then
-        self.TimerUpdate:Close()
-        self.TimerUpdate = nil
-    end
-    if (self.DesktopBase ~= nil) then
-        self.DesktopBase:OnDestroy(need_createmainui)
-        self.DesktopBase = nil
-    end
-    self.ListDesktopChat = {}
-end
-
----------------------------------------
-function ControllerDesktopTexas:addDesktopMsg(sender_etguid, sender_name, sender_viplevel, chat_content)
-    if ((sender_etguid == nil or sender_etguid == "") and self.LockSysChat) then
-        return
-    end
-    local chat_info = ChatTextInfo:new(nil)
-    chat_info.chat_content = chat_content
-    chat_info.sender_etguid = sender_etguid
-    chat_info.sender_name = sender_name
-    chat_info.sender_viplevel = sender_viplevel
-    table.insert(self.ListDesktopChat, chat_info)
-
-    if (#self.ListDesktopChat > 50) then
-        table.remove(self.ListDesktopChat, 1)
-    end
-
-    local ev = self:GetEv("EvEntityRecvChatFromDesktop")
-    if (ev == nil) then
-        ev = EvEntityRecvChatFromDesktop:new(nil)
-    end
-    ev.chat_info = chat_info
-    self:SendEv(ev)
-end
-
----------------------------------------
-function ControllerDesktopTexas:createDesktop(desktop_factory_name)
-    local ctrl_player = self.ControllerMgr:GetController("Player")
-    ctrl_player:DestroyMainUi()
-
-    if (self.DesktopBase ~= nil) then
-        self:clearDesktop(false)
-    end
-
-    local desktop_factory = self:GetDesktopBaseFactory(desktop_factory_name)
-    self.DesktopBase = desktop_factory:CreateDesktop(self.ControllerMgr)
 end
 
 ---------------------------------------
@@ -427,9 +375,9 @@ function ControllerDesktopTexas:RequestPlayerSitdown(sitdown_info)
 end
 
 ---------------------------------------
-function ControllerDesktopTexas:UserRequest(fac_name, method_info)
+function ControllerDesktopTexas:UserRequest(factory_name, method_info)
     local user = MethodInfoDesktopUser:new(nil)
-    user.FactoryName = fac_name
+    user.FactoryName = factory_name
     user.data = self.ControllerMgr:PackData(method_info)
     local d = user:getData4Pack()
     self.Rpc:RPC1(MethodType.DesktopUserRequest, d)
@@ -451,18 +399,68 @@ function ControllerDesktopTexas:MatchTexasRequestGiveUpRebuyOrAddon(match_guid)
 end
 
 ---------------------------------------
-function ControllerDesktopTexas:regDesktopBaseFactory(desktop_fac)
-    self.MapDesktopBaseFac[desktop_fac:GetName()] = desktop_fac
+function ControllerDesktopTexas:RegDesktopBaseFactory(desktop_factory)
+    self.MapDesktopBaseFac[desktop_factory:GetName()] = desktop_factory
 end
 
 ---------------------------------------
-function ControllerDesktopTexas:GetDesktopBaseFactory(fac_name)
-    return self.MapDesktopBaseFac[fac_name]
+function ControllerDesktopTexas:GetDesktopBaseFactory(factory_name)
+    return self.MapDesktopBaseFac[factory_name]
 end
 
 ---------------------------------------
-function ControllerDesktopTexas:GetDesktopHelperBase(fac_name)
-    return self.MapDesktopHelper[fac_name]
+function ControllerDesktopTexas:GetDesktopHelperBase(factory_name)
+    return self.MapDesktopHelper[factory_name]
+end
+
+---------------------------------------
+function ControllerDesktopTexas:addDesktopMsg(sender_guid, sender_name, sender_viplevel, chat_content)
+    if ((sender_guid == nil or sender_guid == "") and self.LockSysChat) then
+        return
+    end
+    local chat_info = ChatTextInfo:new(nil)
+    chat_info.chat_content = chat_content
+    chat_info.sender_etguid = sender_guid
+    chat_info.sender_name = sender_name
+    chat_info.sender_viplevel = sender_viplevel
+    table.insert(self.ListDesktopChat, chat_info)
+
+    if (#self.ListDesktopChat > 50) then
+        table.remove(self.ListDesktopChat, 1)
+    end
+
+    local ev = self:GetEv("EvEntityRecvChatFromDesktop")
+    if (ev == nil) then
+        ev = EvEntityRecvChatFromDesktop:new(nil)
+    end
+    ev.chat_info = chat_info
+    self:SendEv(ev)
+end
+
+---------------------------------------
+function ControllerDesktopTexas:_createDesktop(desktop_factory_name)
+    local ctrl_player = self.ControllerMgr:GetController("Player")
+    ctrl_player:DestroyMainUi()
+
+    if (self.DesktopBase ~= nil) then
+        self:_clearDesktop(false)
+    end
+
+    local desktop_factory = self:GetDesktopBaseFactory(desktop_factory_name)
+    self.DesktopBase = desktop_factory:CreateDesktop(self.ControllerMgr)
+end
+
+---------------------------------------
+function ControllerDesktopTexas:_clearDesktop(need_createmainui)
+    if (self.TimerUpdate ~= nil) then
+        self.TimerUpdate:Close()
+        self.TimerUpdate = nil
+    end
+    if (self.DesktopBase ~= nil) then
+        self.DesktopBase:OnDestroy(need_createmainui)
+        self.DesktopBase = nil
+    end
+    self.ListDesktopChat = {}
 end
 
 ---------------------------------------

@@ -215,7 +215,7 @@ function ViewDesktopPlayerOperateTexas:setMeActorMirror(player)
 end
 
 ---------------------------------------
-function ViewDesktopPlayerOperateTexas:showDown()
+function ViewDesktopPlayerOperateTexas:Showdown()
     self.CanShowOperate = false
     ViewHelper:SetGObjectVisible(false, self.GSliderRise)
     ViewHelper:SetGObjectVisible(false, self.GGroupAutoOperate)

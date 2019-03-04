@@ -181,7 +181,7 @@ function DesktopTexasClassic:OnHandleEv(ev)
                     desktop_filter.IncludeFull = false
                     desktop_filter.FilterData = self.ControllerDesktop.ControllerMgr:PackData(desktop_filter_texas:getData4Pack())
 
-                    self.ControllerDesktop:requestInvitePlayerEnterDesktop(
+                    self.ControllerDesktop:RequestInvitePlayerEnterDesktop(
                             ev.friend_guid, self.DesktopBase.DesktopGuid, desktop_filter:getData4Pack(), self.DesktopBase:getPlayerCount())
                 end
             end

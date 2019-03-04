@@ -735,7 +735,7 @@ function ViewDesktopPlayerInfoTexas:setShowCardData(first_card, second_card)
 end
 
 ---------------------------------------
-function ViewDesktopPlayerInfoTexas:showDown(card_first, card_second, carddata_left)
+function ViewDesktopPlayerInfoTexas:Showdown(card_first, card_second, carddata_left)
     if (card_first == nil) then
         return
     end

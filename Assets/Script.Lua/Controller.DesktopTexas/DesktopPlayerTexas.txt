@@ -73,7 +73,7 @@ function DesktopPlayerTexas:SetPlayerData(player_data, desktop_state)
         self.PlayerOperate = self.DesktopTexas.ControllerPlayer.ViewMgr:CreateView("DesktopPlayerOperateTexas")
         self.PlayerOperate:setMeActorMirror(self)
     else
-        self:_setUiSeatIndex()
+        self:_calcSeatIndex4View()
     end
 
     self:_createUiPlayerInfo()
@@ -285,13 +285,13 @@ function DesktopPlayerTexas:setHoleCards(first_card, second_card, show_card, is_
 end
 
 ---------------------------------------
-function DesktopPlayerTexas:showDown(carddata_left)
+function DesktopPlayerTexas:Showdown(carddata_left)
     if (self.UiDesktopPlayerInfo ~= nil) then
-        self.UiDesktopPlayerInfo:showDown(self.FirstCard, self.SecondCard, carddata_left)
+        self.UiDesktopPlayerInfo:Showdown(self.FirstCard, self.SecondCard, carddata_left)
     end
 
     if (self.PlayerOperate ~= nil) then
-        self.PlayerOperate:showDown()
+        self.PlayerOperate:Showdown()
     end
 end
 
@@ -440,7 +440,7 @@ function DesktopPlayerTexas:playerSitdown(seat_index, stack, state, action)
         self.DesktopTexas:changeOtherPlayerUiSeatIndex()
         ViewHelper:UiEndWaiting()
     else
-        self:_setUiSeatIndex()
+        self:_calcSeatIndex4View()
     end
 
     self:_createUiPlayerInfo()
@@ -516,7 +516,7 @@ end
 
 ---------------------------------------
 function DesktopPlayerTexas:changeUiSeatIndex()
-    self:_setUiSeatIndex()
+    self:_calcSeatIndex4View()
     if (self.UiDesktopPlayerInfo ~= nil) then
         self.UiDesktopPlayerInfo:playerChangeSeat()
     end
@@ -652,7 +652,7 @@ end
 
 ---------------------------------------
 -- UiSeatIndex与SeatIndex的映射关系计算，在快照和玩家坐下时调用
-function DesktopPlayerTexas:_setUiSeatIndex()
+function DesktopPlayerTexas:_calcSeatIndex4View()
     local ui_index = self.PlayerDataDesktop.SeatIndex
     local valid = self.DesktopTexas:isValidSeatIndex(ui_index)
     local seat_num = self.DesktopTexas.SeatNum

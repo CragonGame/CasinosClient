@@ -54,8 +54,6 @@ end
 
 ---------------------------------------
 function ViewDesktopTexas:OnCreate()
-    print('ViewDesktopTexas:OnCreate()')
-
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendSingleChat", self)
     self.ViewMgr:BindEvListener("EvEntityReceiveFriendChats", self)
     self.ViewMgr:BindEvListener("EvEntityUnreadChatsChanged", self)
@@ -249,7 +247,6 @@ function ViewDesktopTexas:OnDestroy()
         self.DealerEx:Destroy()
         self.DealerEx = nil
     end
-    print('ViewDesktopTexas:OnDestroy()')
 end
 
 ---------------------------------------
@@ -293,7 +290,7 @@ function ViewDesktopTexas:OnHandleEv(ev)
                 end
             end
         elseif (ev.EventName == "EvEntityDesktopIdleNotify") then
-            self:_deskIdle()
+            self:_idle()
         elseif (ev.EventName == "EvEntityDesktopPreFlopNotify") then
             self:_preflopBegin(ev.pot_total, ev.list_pot)
         elseif (ev.EventName == "EvEntityDesktopFlopNotify") then
@@ -303,7 +300,7 @@ function ViewDesktopTexas:OnHandleEv(ev)
         elseif (ev.EventName == "EvEntityDesktopRiverNotify") then
             self:_river(ev.river_card, ev.bet_player_count)
         elseif (ev.EventName == "EvEntityDesktopShowdownNotify") then
-            self:_showDown(ev.desktop_showdown)
+            self:_showdown(ev.desktop_showdown)
         elseif (ev.EventName == "EvEntityDesktopGameEndNotifyTexas") then
             self:_gameEnd(ev.list_winner)
         elseif (ev.EventName == "EvEntityGetLotteryTicketDataSuccess") then
@@ -693,7 +690,7 @@ function ViewDesktopTexas:_onClickChair(context)
 end
 
 ---------------------------------------
-function ViewDesktopTexas:_deskIdle()
+function ViewDesktopTexas:_idle()
     ViewHelper:SetGObjectVisible(false, self.GGroupCard)
 end
 
@@ -727,7 +724,7 @@ function ViewDesktopTexas:_river(river_card, bet_player_count)
 end
 
 ---------------------------------------
-function ViewDesktopTexas:_showDown(desktop_showdown)
+function ViewDesktopTexas:_showdown(desktop_showdown)
     local carddata_left = desktop_showdown.list_carddata_left
     local left_cards = #carddata_left
     if left_cards == 5 then

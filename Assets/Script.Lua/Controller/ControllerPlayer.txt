@@ -287,14 +287,6 @@ function ControllerPlayer:S2cPlayerDailyFirstLoginNotify(daily_reward_tbid)
 end
 
 ---------------------------------------
-function ControllerPlayer:OnPlayerLeaveDesktopNotify()
-    ViewHelper:UiEndWaiting()
-    local controller_desk = self.ControllerMgr:GetController("DesktopTexas")
-    controller_desk:clearDesktop(true)
-    self:RequestGetOnlinePlayerNum()
-end
-
----------------------------------------
 function ControllerPlayer:S2cPlayerGetOnlinePlayerNumNotify(num)
     self.OnlinePlayerNum = num
     local ev = self:GetEv("EvEntitySetOnLinePlayerNum")

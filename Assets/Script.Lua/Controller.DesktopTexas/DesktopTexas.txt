@@ -329,7 +329,7 @@ function DesktopTexas:SetDesktopSnapshotData(desktop_data, is_init)
                 if (player ~= nil) then
                     player:setHoleCards(CS.Casinos.Card(value.first_card[1], value.first_card[2]),
                             CS.Casinos.Card(value.second_card[1], value.second_card[2]), false, true)
-                    player:showDown()
+                    player:Showdown()
                 end
             end
         end
@@ -878,7 +878,7 @@ function DesktopTexas:DesktopUser(info_user)
                                     CS.Casinos.Card(d.second_card[1], d.second_card[2]), false, false)
                         end
 
-                        player_texas:showDown(desktop_showdown.list_carddata_left)
+                        player_texas:Showdown(desktop_showdown.list_carddata_left)
                     end
                 end
             end

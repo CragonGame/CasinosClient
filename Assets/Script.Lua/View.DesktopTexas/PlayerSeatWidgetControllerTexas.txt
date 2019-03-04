@@ -786,6 +786,7 @@ end
 ---------------------------------------
 function PlayerSeatWidgetControllerTexas:onClickCard2(ev)
     ev:StopPropagation()
+
     local ev = self.PlayerInfo.ViewMgr:GetEv("EvUiClickShowCard")
     if (ev == nil) then
         ev = EvUiClickShowCard:new(nil)
