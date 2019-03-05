@@ -17,6 +17,7 @@ Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj
 Assembly-CSharp-Editor-firstpass.csproj
 Assembly-CSharp-firstpass.csproj
+Script.CSharp.csproj
 CasinosClientGithub.csproj
 CasinosClientGithub.Editor.csproj
 CasinosClientGithub.Editor.Plugins.csproj
