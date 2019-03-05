@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using ILRuntime.Runtime.Enviorment;
+using ILRuntime.Runtime.Generated;
 using UnityEngine;
 
 public class MbILRuntime : MonoBehaviour
@@ -40,13 +41,11 @@ public class MbILRuntime : MonoBehaviour
             {
                 AppDomain.LoadAssembly(fs, p, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
 
-                AppDomain.Invoke("CsMain", "Launch", null, null);
+                InitializeILRuntime();
+
+                OnHotFixLoaded();
             }
         }
-
-        //InitializeILRuntime();
-
-        //OnHotFixLoaded();
     }
 
     //-------------------------------------------------------------------------
@@ -54,6 +53,7 @@ public class MbILRuntime : MonoBehaviour
     {
         // 这里做一些ILRuntime的注册
         LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
+        CLRBindings.Initialize(AppDomain);
     }
 
     //-------------------------------------------------------------------------
