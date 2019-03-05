@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -101,17 +102,68 @@ public class EditorContext
     }
 
     //-------------------------------------------------------------------------
-    //[MenuItem("CasinosPublish/批处理", false, 103)]
-    //static void MenuItemSyc()
-    //{
-    //    if (Instance == null)
-    //    {
-    //        new EditorContext();
-    //    }
+    [MenuItem("Casinos/ILRuntime/Generate CLR Binding Code", false, 103)]
+    static void MenuItemGenerateCLRBinding()
+    {
+        if (Instance == null)
+        {
+            new EditorContext();
+        }
 
-    //    Debug.Log("执行批处理，镜像同步StreamingAssets/Android目录和PersistentData/Android");
-    //    ExecuteProgram("_SyncStreamingAssets2PersistentData.bat", "");
-    //}
+        List<Type> types = new List<Type>();
+        types.Add(typeof(short));
+        types.Add(typeof(ushort));
+        types.Add(typeof(int));
+        types.Add(typeof(uint));
+        types.Add(typeof(float));
+        types.Add(typeof(double));
+        types.Add(typeof(long));
+        types.Add(typeof(ulong));
+        types.Add(typeof(object));
+        types.Add(typeof(string));
+        types.Add(typeof(Array));
+        types.Add(typeof(UnityEngine.Vector2));
+        types.Add(typeof(UnityEngine.Vector3));
+        types.Add(typeof(UnityEngine.Quaternion));
+        types.Add(typeof(UnityEngine.GameObject));
+        types.Add(typeof(UnityEngine.Object));
+        types.Add(typeof(UnityEngine.Transform));
+        types.Add(typeof(UnityEngine.RectTransform));
+        //types.Add(typeof(CLRBindingTestClass));
+        types.Add(typeof(UnityEngine.Time));
+        types.Add(typeof(UnityEngine.Debug));
+        // 所有DLL内的类型的真实C#类型都是ILTypeInstance
+        types.Add(typeof(List<ILRuntime.Runtime.Intepreter.ILTypeInstance>));
+
+        ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode(types, "Assets/Script.ILRuntimeGenerated");
+
+        AssetDatabase.Refresh();
+    }
+
+    //-------------------------------------------------------------------------
+    [MenuItem("Casinos/ILRuntime/Generate CLR Binding Code by Analysis", false, 104)]
+    static void GenerateCLRBindingByAnalysis()
+    {
+        // 用新的分析热更dll调用引用来生成绑定代码
+        //ILRuntime.Runtime.Enviorment.AppDomain domain = new ILRuntime.Runtime.Enviorment.AppDomain();
+        //using (System.IO.FileStream fs = new System.IO.FileStream("Assets/StreamingAssets/HotFix_Project.dll", System.IO.FileMode.Open, System.IO.FileAccess.Read))
+        //{
+        //    domain.LoadAssembly(fs);
+        //}
+
+        ////Crossbind Adapter is needed to generate the correct binding code
+        //InitILRuntime(domain);
+        //ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode(domain, "Assets/ILRuntime/Generated");
+    }
+
+    //-------------------------------------------------------------------------
+    static void InitILRuntime(ILRuntime.Runtime.Enviorment.AppDomain domain)
+    {
+        //这里需要注册所有热更DLL中用到的跨域继承Adapter，否则无法正确抓取引用
+        //domain.RegisterCrossBindingAdaptor(new MonoBehaviourAdapter());
+        //domain.RegisterCrossBindingAdaptor(new CoroutineAdapter());
+        //domain.RegisterCrossBindingAdaptor(new InheritanceAdapter());
+    }
 
     //-------------------------------------------------------------------------
     static bool ExecuteProgram(string exe_filename, string args)
