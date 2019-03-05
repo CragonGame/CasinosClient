@@ -26,7 +26,7 @@ public class MbILRuntime : MonoBehaviour
         string s = Application.streamingAssetsPath;
         s = s.Replace('\\', '/');
         s = s.Replace("Assets/StreamingAssets", "");
-        s += "Temp/bin/Debug/";
+        s += "Script.CSharp/bin/Release/";
         Debug.Log(s);
 
         byte[] dll = File.ReadAllBytes(s + "Script.CSharp.dll");

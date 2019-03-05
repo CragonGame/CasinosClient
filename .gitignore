@@ -17,10 +17,11 @@ Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj
 Assembly-CSharp-Editor-firstpass.csproj
 Assembly-CSharp-firstpass.csproj
-Script.CSharp.csproj
 CasinosClientGithub.csproj
 CasinosClientGithub.Editor.csproj
 CasinosClientGithub.Editor.Plugins.csproj
 CasinosClientGithub.Plugins.csproj
 CasinosClientGithub.sln
-/Script.CSharp.csproj
+/Script.CSharp/bin/
+/Script.CSharp/obj/
+/Script.CSharp/Script.CSharp.csproj.user
