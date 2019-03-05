@@ -34,6 +34,7 @@ namespace Casinos
         public DirType DirLaunchAbType { get; set; }// Resources.KingTexasLaunch目录类型，需动态计算
         public string DirLuaRoot { get; set; }// Lua/目录，需动态计算
         public string DirRawRoot { get; set; }// Raw/，需动态计算
+        public string DirCsRoot { get; set; }// Cs/，需动态计算
         public string DirAbRoot { get; set; }// "Resources.KingTexas/"，需动态计算
         public string DirAbUi { get; set; }// "Resources.KingTexas/Ui/"，需动态计算
         public string DirAbCard { get; set; }// "Resources.KingTexas/Cards/"，需动态计算

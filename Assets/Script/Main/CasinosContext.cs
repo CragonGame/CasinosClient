@@ -2,13 +2,15 @@
 
 namespace Casinos
 {
-    using System;
+    //using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
     using UnityEngine;
     using XLua;
     using FairyGUI;
+    using ILRuntime.Runtime.Enviorment;
+    using ILRuntime.Runtime.Generated;
 
     public enum _eProjectItemDisplayNameKey
     {
@@ -55,6 +57,7 @@ namespace Casinos
         FTMgr FTMgr { get; set; }
         HeadIconMgr HeadIconMgr { get; set; }
         SoundMgr SoundMgr { get; set; }
+        CasinosILRuntime CsRuntime { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosContext(bool is_editor_debug)
@@ -179,6 +182,11 @@ namespace Casinos
                 LuaMgr.Update(elapsed_tm);
             }
 
+            if (CsRuntime != null)
+            {
+                CsRuntime.Update();
+            }
+
             if (TimerShaft != null)
             {
                 TimerShaft.ProcessTimer((ulong)Stopwatch.ElapsedMilliseconds);
@@ -229,6 +237,12 @@ namespace Casinos
                 NativeAPIMsgReceiverListner = null;
             }
 
+            if (CsRuntime != null)
+            {
+                CsRuntime.Destroy();
+                CsRuntime = null;
+            }
+
             if (LuaMgr != null)
             {
                 LuaMgr.Release();
@@ -272,11 +286,11 @@ namespace Casinos
 
             if (IsEditorDebug)
             {
-                string p = Path.Combine(Environment.CurrentDirectory, "./DataOss/");
+                string p = Path.Combine(System.Environment.CurrentDirectory, "./DataOss/");
                 var di = new DirectoryInfo(p);
                 string p1 = di.FullName.Replace('\\', '/');
 
-                string lua_root = Environment.CurrentDirectory + "/Assets/Script.Lua/";
+                string lua_root = System.Environment.CurrentDirectory + "/Assets/Script.Lua/";
                 PathMgr.DirLuaRoot = lua_root.Replace('\\', '/');
                 PathMgr.DirRawRoot = p1 + "Common/Raw/";
                 PathMgr.DirAbRoot = p1 + Config.Platform + "/Resources.KingTexas/";
@@ -288,6 +302,8 @@ namespace Casinos
                 PathMgr.DirAbRoot = PathMgr.CombinePersistentDataPath("Resources.KingTexas/");
             }
 
+            PathMgr.DirCsRoot = PathMgr.CombinePersistentDataPath("Cs/");
+
             PathMgr.DirAbUi = PathMgr.DirAbRoot + "Ui/";// "Resources.KingTexas/Ui/"，需动态计算
             PathMgr.DirAbCard = PathMgr.DirAbRoot + "Cards/";// "Resources.KingTexas/Cards/"，需动态计算
             PathMgr.DirAbAudio = PathMgr.DirAbRoot + "Audio/";// "Resources.KingTexas/Audio/"，需动态计算
@@ -295,6 +311,9 @@ namespace Casinos
             PathMgr.DirAbParticle = PathMgr.DirAbRoot + "Particle/";// "Resources.KingTexas/Particle/"，需动态计算
 
             LuaMgr.Launch(!version_persistent);
+
+            CsRuntime = new CasinosILRuntime();
+            CsRuntime.Create();
         }
 
         //-------------------------------------------------------------------------

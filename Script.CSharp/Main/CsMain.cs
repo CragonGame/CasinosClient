@@ -8,12 +8,21 @@ public class CsMain
     static CsContext CsContext { get; set; }
 
     //-------------------------------------------------------------------------
-    public static void Launch()
+    public static void Create()
     {
-        Debug.Log("CsMain.Launch()");
-
         CsContext = new CsContext();
         CsContext.Create();
+    }
+
+    //-------------------------------------------------------------------------
+    public static void Destroy()
+    {
         CsContext.Destroy();
+    }
+
+    //-------------------------------------------------------------------------
+    public static void Update()
+    {
+        CsContext.Update();
     }
 }

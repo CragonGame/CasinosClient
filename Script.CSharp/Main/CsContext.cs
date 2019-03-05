@@ -5,6 +5,7 @@ using UnityEngine;
 public class CsContext
 {
     System.Action<string> TestActionDelegate;
+    int Count { get; set; }
 
     //-------------------------------------------------------------------------
     public static CsContext Instance { get; private set; }
@@ -13,7 +14,6 @@ public class CsContext
     public CsContext()
     {
         Instance = this;
-        Debug.Log("CsContext.CsContext()");
     }
 
     //-------------------------------------------------------------------------
@@ -21,7 +21,7 @@ public class CsContext
     {
         Debug.Log("CsContext.Create()");
 
-        TestActionDelegate = AA;
+        TestActionDelegate = Test;
         TestActionDelegate("aaa");
     }
 
@@ -32,8 +32,20 @@ public class CsContext
     }
 
     //-------------------------------------------------------------------------
-    public void AA(string s)
+    public void Update()
     {
-        Debug.Log("CsContext.AA() " + s);
+        Count++;
+        if (Count > 500)
+        {
+            Count = 0;
+
+            //Debug.Log("CsContext.Update() Count=" + Count);
+        }
+    }
+
+    //-------------------------------------------------------------------------
+    public void Test(string s)
+    {
+        Debug.Log("CsContext.Test() " + s);
     }
 }
