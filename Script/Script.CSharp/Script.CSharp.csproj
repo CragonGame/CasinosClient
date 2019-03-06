@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6EE2BF97-8ED1-42D3-B1CC-C27FD12FB785}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Script.CSharp</RootNamespace>
+    <AssemblyName>Script.CSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <!--<SpecificVersion>False</SpecificVersion>-->
+      <HintPath>.\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller.DesktopH\ControllerDesktopH.cs" />
+    <Compile Include="Controller.DesktopTexas\ControllerDesktopTexas.cs" />
+    <Compile Include="Controller.IM\ControllerIM.cs" />
+    <Compile Include="Controller\ControllerWallet.cs" />
+    <Compile Include="Controller\ControllerUCenter.cs" />
+    <Compile Include="Controller\ControllerTrade.cs" />
+    <Compile Include="Controller\ControllerReward.cs" />
+    <Compile Include="Controller\ControllerRanking.cs" />
+    <Compile Include="Controller\ControllerPlayer.cs" />
+    <Compile Include="Controller\ControllerMusicPlayer.cs" />
+    <Compile Include="Controller\ControllerMatchTexasList.cs" />
+    <Compile Include="Controller\ControllerMarquee.cs" />
+    <Compile Include="Controller\ControllerLotteryTicket.cs" />
+    <Compile Include="Controller\ControllerLogin.cs" />
+    <Compile Include="Controller\ControllerGrow.cs" />
+    <Compile Include="Controller\ControllerDesktopListTexas.cs" />
+    <Compile Include="Controller\ControllerBag.cs" />
+    <Compile Include="Controller\ControllerActor.cs" />
+    <Compile Include="Controller\ControllerActivity.cs" />
+    <Compile Include="Event\EventController.cs" />
+    <Compile Include="Event\EventView.cs" />
+    <Compile Include="Main\CsContext.cs" />
+    <Compile Include="Main\CsController.cs" />
+    <Compile Include="Main\CsControllerMgr.cs" />
+    <Compile Include="Main\CsEvent.cs" />
+    <Compile Include="Main\CsEventMgr.cs" />
+    <Compile Include="Main\CsMain.cs" />
+    <Compile Include="Main\CsPathMgr.cs" />
+    <Compile Include="Main\CsSoundMgr.cs" />
+    <Compile Include="Main\CsSpineMgr.cs" />
+    <Compile Include="Main\CsView.cs" />
+    <Compile Include="Main\CsViewMgr.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View.DesktopH\ViewDesktopH.cs" />
+    <Compile Include="View.DesktopTexas\ViewAbout.cs" />
+    <Compile Include="View.IM\ViewIMFriend.cs" />
+    <Compile Include="View.LotteryTicket\ViewLotteryTicket.cs" />
+    <Compile Include="View.MatchTexasList\ViewMatchTexasList.cs" />
+    <Compile Include="View\ViewActivityCenter.cs" />
+    <Compile Include="View\ViewActivityPopup.cs" />
+    <Compile Include="View.IM\ViewIMAgreeOrDisAddFriendRequest.cs" />
+    <Compile Include="View\ViewMatchTexasSignupSucceed.cs" />
+    <Compile Include="View\ViewBag.cs" />
+    <Compile Include="View\ViewBank.cs" />
+    <Compile Include="View\ViewRewardDaily.cs" />
+    <Compile Include="View\ViewDesktopListTexas.cs" />
+    <Compile Include="View\ViewFeedback.cs" />
+    <Compile Include="View\ViewFloatMsg.cs" />
+    <Compile Include="View\ViewGoldTree.cs" />
+    <Compile Include="View\ViewIdCardCheck.cs" />
+    <Compile Include="View\ViewLoading.cs" />
+    <Compile Include="View\ViewLogin.cs" />
+    <Compile Include="View\ViewMail.cs" />
+    <Compile Include="View\ViewMailDetail.cs" />
+    <Compile Include="View\ViewMain.cs" />
+    <Compile Include="View\ViewMsgBox.cs" />
+    <Compile Include="View\ViewQuitOrBack.cs" />
+    <Compile Include="View\ViewRanking.cs" />
+    <Compile Include="View\ViewRechargeFirst.cs" />
+    <Compile Include="View\ViewReportPlayer.cs" />
+    <Compile Include="View\ViewResetPwd.cs" />
+    <Compile Include="View\ViewReward.cs" />
+    <Compile Include="View\ViewSettings.cs" />
+    <Compile Include="View\ViewShop.cs" />
+    <Compile Include="View\ViewWaiting.cs" />
+    <Compile Include="View\ViewWaitingCountDown.cs" />
+    <Compile Include="View\ViewWallet.cs" />
+    <Compile Include="View\ViewAbout.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UnityEngine.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Script.Common\Script.Common.csproj">
+      <Project>{dedc86eb-a173-44e4-91b5-27f736a4df35}</Project>
+      <Name>Script.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

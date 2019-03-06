@@ -22,6 +22,9 @@ CasinosClientGithub.Editor.csproj
 CasinosClientGithub.Editor.Plugins.csproj
 CasinosClientGithub.Plugins.csproj
 CasinosClientGithub.sln
-/Script.CSharp/bin/
-/Script.CSharp/obj/
-/Script.CSharp/Script.CSharp.csproj.user
+/Script/Script.CSharp/bin/
+/Script/Script.CSharp/obj/
+/Script/Script.CSharp/Script.CSharp.csproj.user
+/Script/Script.Common/bin/
+/Script/Script.Common/obj/
+/Script/Script.Common/Script.Common.csproj.user

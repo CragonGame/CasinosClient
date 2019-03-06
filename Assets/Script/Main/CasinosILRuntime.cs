@@ -15,33 +15,41 @@ public class CasinosILRuntime
     //-------------------------------------------------------------------------
     public void Create()
     {
-        return;
+        string s = UnityEngine.Application.streamingAssetsPath;
+        s = s.Replace('\\', '/');
+        s = s.Replace("Assets/StreamingAssets", "");
+        s += "Script/Script.CSharp/bin/";
 
-        //string s = Application.streamingAssetsPath;
-        //s = s.Replace('\\', '/');
-        //s = s.Replace("Assets/StreamingAssets", "");
-        //s += "Script.CSharp/bin/Release/";
-
-        string s = Casinos.CasinosContext.Instance.PathMgr.DirCsRoot;
+        //string s = Casinos.CasinosContext.Instance.PathMgr.DirCsRoot;
 
 #if UNITY_EDITOR
         // 检测Script.CSharp.dll是否存在，如不存在则给出提示
 #endif
+        byte[] dll1 = File.ReadAllBytes(s + "Script.Common.dll");
+        byte[] pdb1 = File.ReadAllBytes(s + "Script.Common.pdb");
 
-        byte[] dll = File.ReadAllBytes(s + "Script.CSharp.dll");
-        byte[] pdb = File.ReadAllBytes(s + "Script.CSharp.pdb");
-
-        using (MemoryStream fs = new MemoryStream(dll))
+        using (MemoryStream fs1 = new MemoryStream(dll1))
         {
-            using (MemoryStream p = new MemoryStream(pdb))
+            using (MemoryStream p1 = new MemoryStream(pdb1))
             {
-                AppDomain.LoadAssembly(fs, p, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+                AppDomain.LoadAssembly(fs1, p1, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
 
-                // 这里做一些ILRuntime的注册
-                LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
-                CLRBindings.Initialize(AppDomain);
+                byte[] dll = File.ReadAllBytes(s + "Script.CSharp.dll");
+                byte[] pdb = File.ReadAllBytes(s + "Script.CSharp.pdb");
 
-                AppDomain.Invoke("CsMain", "Create", null, null);
+                using (MemoryStream fs = new MemoryStream(dll))
+                {
+                    using (MemoryStream p = new MemoryStream(pdb))
+                    {
+                        AppDomain.LoadAssembly(fs, p, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+
+                        // 这里做一些ILRuntime的注册
+                        LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
+                        CLRBindings.Initialize(AppDomain);
+
+                        AppDomain.Invoke("CsMain", "Create", null, null);
+                    }
+                }
             }
         }
     }
@@ -49,8 +57,6 @@ public class CasinosILRuntime
     //-------------------------------------------------------------------------
     public void Destroy()
     {
-        return;
-
         AppDomain.Invoke("CsMain", "Destroy", null, null);
         CLRBindings.Shutdown(AppDomain);
     }
@@ -58,8 +64,6 @@ public class CasinosILRuntime
     //-------------------------------------------------------------------------
     public void Update()
     {
-        return;
-
         AppDomain.Invoke("CsMain", "Update", null, null);
     }
 }

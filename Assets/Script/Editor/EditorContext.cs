@@ -122,6 +122,7 @@ public class EditorContext
         types.Add(typeof(object));
         types.Add(typeof(string));
         types.Add(typeof(Array));
+
         types.Add(typeof(UnityEngine.Vector2));
         types.Add(typeof(UnityEngine.Vector3));
         types.Add(typeof(UnityEngine.Quaternion));
@@ -129,9 +130,57 @@ public class EditorContext
         types.Add(typeof(UnityEngine.Object));
         types.Add(typeof(UnityEngine.Transform));
         types.Add(typeof(UnityEngine.RectTransform));
-        //types.Add(typeof(CLRBindingTestClass));
         types.Add(typeof(UnityEngine.Time));
         types.Add(typeof(UnityEngine.Debug));
+
+        types.Add(typeof(MessagePack.Resolvers.StandardResolver));
+        types.Add(typeof(MessagePack.Resolvers.AttributeFormatterResolver));
+        types.Add(typeof(MessagePack.Resolvers.BuiltinResolver));
+        types.Add(typeof(MessagePack.Resolvers.PrimitiveObjectResolver));
+        types.Add(typeof(MessagePack.Formatters.BitArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.BooleanArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.BooleanFormatter));
+        types.Add(typeof(MessagePack.Formatters.ByteArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.ByteArraySegmentFormatter));
+        types.Add(typeof(MessagePack.Formatters.ByteFormatter));
+        types.Add(typeof(MessagePack.Formatters.CharArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.CharFormatter));
+        types.Add(typeof(MessagePack.Formatters.DateTimeArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.DateTimeFormatter));
+        types.Add(typeof(MessagePack.Formatters.DecimalFormatter));
+        types.Add(typeof(MessagePack.Formatters.DoubleArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.DoubleFormatter));
+        types.Add(typeof(MessagePack.Formatters.Int16ArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.Int16Formatter));
+        types.Add(typeof(MessagePack.Formatters.Int32ArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.Int32Formatter));
+        types.Add(typeof(MessagePack.Formatters.Int64ArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.Int64Formatter));
+        types.Add(typeof(MessagePack.Formatters.NilFormatter));
+        types.Add(typeof(MessagePack.Formatters.NullableBooleanFormatter));
+        types.Add(typeof(MessagePack.Formatters.PrimitiveObjectFormatter));
+        types.Add(typeof(MessagePack.Formatters.SByteArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.SByteFormatter));
+        types.Add(typeof(MessagePack.Formatters.SingleArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.SingleFormatter));
+        types.Add(typeof(MessagePack.Formatters.StringBuilderFormatter));
+        types.Add(typeof(MessagePack.Formatters.TimeSpanFormatter));
+        types.Add(typeof(MessagePack.Formatters.UInt16ArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.UInt16Formatter));
+        types.Add(typeof(MessagePack.Formatters.UInt32ArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.UInt32Formatter));
+        types.Add(typeof(MessagePack.Formatters.UInt64ArrayFormatter));
+        types.Add(typeof(MessagePack.Formatters.UInt64Formatter));
+        types.Add(typeof(MessagePack.Formatters.UriFormatter));
+        types.Add(typeof(MessagePack.Formatters.VersionFormatter));
+        types.Add(typeof(MessagePack.IFormatterResolver));
+        types.Add(typeof(MessagePack.IgnoreMemberAttribute));
+        types.Add(typeof(MessagePack.KeyAttribute));
+        types.Add(typeof(MessagePack.MessagePackObjectAttribute));
+        types.Add(typeof(MessagePack.MessagePackSerializer));
+
+        types.Add(typeof(MsgPack));
+
         // 所有DLL内的类型的真实C#类型都是ILTypeInstance
         types.Add(typeof(List<ILRuntime.Runtime.Intepreter.ILTypeInstance>));
 
