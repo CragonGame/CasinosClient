@@ -2,16 +2,13 @@
 
 namespace Casinos
 {
-    //using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
     using UnityEngine;
     using XLua;
     using FairyGUI;
-    using ILRuntime.Runtime.Enviorment;
-    using ILRuntime.Runtime.Generated;
-
+    
     public enum _eProjectItemDisplayNameKey
     {
         Gold,

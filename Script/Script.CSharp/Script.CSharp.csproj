@@ -94,6 +94,7 @@
     <Compile Include="View\ViewActivityCenter.cs" />
     <Compile Include="View\ViewActivityPopup.cs" />
     <Compile Include="View.IM\ViewIMAgreeOrDisAddFriendRequest.cs" />
+    <Compile Include="View\ViewLaunch.cs" />
     <Compile Include="View\ViewMatchTexasSignupSucceed.cs" />
     <Compile Include="View\ViewBag.cs" />
     <Compile Include="View\ViewBank.cs" />
@@ -133,7 +134,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy   "$(TargetDir)Script.Common.dll"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
+xcopy   "$(TargetDir)Script.CSharp.dll"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
+xcopy   "$(TargetDir)Script.Common.pdb"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
+xcopy   "$(TargetDir)Script.CSharp.pdb"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
+xcopy   "$(TargetDir)Script.Common.dll"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y
+xcopy   "$(TargetDir)Script.CSharp.dll"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y
+xcopy   "$(TargetDir)Script.Common.pdb"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y
+xcopy   "$(TargetDir)Script.CSharp.pdb"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -25,3 +25,18 @@ public abstract class CsViewFactory
     //-------------------------------------------------------------------------
     public abstract CsView CreateView();
 }
+
+public class CsViewFactory<T> : CsViewFactory where T : CsView, new()
+{
+    //-------------------------------------------------------------------------
+    public override string GetName()
+    {
+        return nameof(T);
+    }
+
+    //-------------------------------------------------------------------------
+    public override CsView CreateView()
+    {
+        return new T();
+    }
+}

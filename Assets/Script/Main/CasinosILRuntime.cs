@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using ILRuntime.Runtime.Enviorment;
-using ILRuntime.Runtime.Generated;
 
 public class CasinosILRuntime
 {
@@ -46,7 +45,7 @@ public class CasinosILRuntime
 
                         // 这里做一些ILRuntime的注册
                         LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
-                        CLRBindings.Initialize(AppDomain);
+                        ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
 
                         AppDomain.Invoke("CsMain", "Create", null, null);
                     }
@@ -59,7 +58,7 @@ public class CasinosILRuntime
     public void Destroy()
     {
         AppDomain.Invoke("CsMain", "Destroy", null, null);
-        CLRBindings.Shutdown(AppDomain);
+        //CLRBindings.Shutdown(AppDomain);
     }
 
     //-------------------------------------------------------------------------

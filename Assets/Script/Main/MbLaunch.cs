@@ -9,7 +9,6 @@ namespace Casinos
     using UnityEngine;
     using UnityEngine.Networking;
     using ILRuntime.Runtime.Enviorment;
-    using ILRuntime.Runtime.Generated;
 
     public class CommonInfo
     {
@@ -137,7 +136,7 @@ namespace Casinos
 
                             // 这里做一些ILRuntime的注册
                             LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
-                            CLRBindings.Initialize(AppDomain);
+                            ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
 
                             AppDomain.Invoke("CsMain", "Create", null, null);
                         }

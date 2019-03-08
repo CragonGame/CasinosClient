@@ -21,9 +21,13 @@ public class CsContext
         Debug.Log("CsContext.Create()");
 
         ControllerMgr = new CsControllerMgr();
+
         ViewMgr = new CsViewMgr();
+        ViewMgr.RegViewFactory(new CsViewFactory<Cs.ViewLaunch>());
+        ViewMgr.Create();
 
         // 先显示Loading界面
+        ViewMgr.CreateView<Cs.ViewLaunch>();
 
         //TestJson.Run();
         //TestMsgPack.Run();
