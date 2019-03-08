@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cs
 {
-    public class ControllerWallet : CsController
+    public class ControllerWallet : Controller
     {
     }
 }

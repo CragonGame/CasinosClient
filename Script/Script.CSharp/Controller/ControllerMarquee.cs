@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cs
 {
-    public class ControllerMarquee : CsController
+    public class ControllerMarquee : Controller
     {
     }
 }

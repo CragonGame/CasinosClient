@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cs
 {
-    public class ViewIdCardCheck : CsView
+    public class ViewIdCardCheck : View
     {
         //---------------------------------------------------------------------
         public override void Create()
@@ -18,7 +18,7 @@ namespace Cs
         }
 
         //---------------------------------------------------------------------
-        public override void HandleEvent(CsEvent ev)
+        public override void HandleEvent(Event ev)
         {
         }
     }

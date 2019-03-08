@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cs
 {
-    public class ControllerDesktopListTexas : CsController
+    public class ControllerDesktopListTexas : Controller
     {
     }
 }

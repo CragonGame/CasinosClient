@@ -36,7 +36,7 @@ namespace Casinos
             if (PlayerPrefs.HasKey(KeyLoginGuestInfo))
             {
                 string s = PlayerPrefs.GetString(KeyLoginGuestInfo);
-                LoginGuestInfo = EbTool.jsonDeserialize<LoginGuestInfo>(s);
+                //LoginGuestInfo = EbTool.jsonDeserialize<LoginGuestInfo>(s);
             }
             else
             {
@@ -52,8 +52,8 @@ namespace Casinos
         {
             LoginGuestInfo = login_guestinfo;
 
-            string s = EbTool.jsonSerialize(LoginGuestInfo);
-            PlayerPrefs.SetString(KeyLoginGuestInfo, s);
+            //string s = EbTool.jsonSerialize(LoginGuestInfo);
+            //PlayerPrefs.SetString(KeyLoginGuestInfo, s);
         }
 
         //---------------------------------------------------------------------
@@ -70,7 +70,7 @@ namespace Casinos
             if (PlayerPrefs.HasKey(KeyLoginAccountInfo))
             {
                 string s = PlayerPrefs.GetString(KeyLoginAccountInfo);
-                LoginAccountInfo = EbTool.jsonDeserialize<LoginAccountInfo>(s);
+                //LoginAccountInfo = EbTool.jsonDeserialize<LoginAccountInfo>(s);
             }
             else
             {
@@ -90,8 +90,8 @@ namespace Casinos
 
             LoginAccountInfo = login_accinfo;
 
-            string s = EbTool.jsonSerialize(LoginAccountInfo);
-            PlayerPrefs.SetString(KeyLoginAccountInfo, s);
+            //string s = EbTool.jsonSerialize(LoginAccountInfo);
+            //PlayerPrefs.SetString(KeyLoginAccountInfo, s);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cs
 {
-    public class ControllerUCenter : CsController
+    public class ControllerUCenter : Controller
     {
     }
 }

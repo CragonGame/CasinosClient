@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cs
 {
-    public class EventController : CsEvent
+    public class EventController : Event
     {
     }
 }

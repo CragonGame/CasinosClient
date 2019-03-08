@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cs
 {
-    public class EventView : CsEvent
+    public class EventView : Event
     {
     }
 }

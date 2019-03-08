@@ -124,7 +124,9 @@ public class EditorContext
         types.Add(typeof(Array));
 
         types.Add(typeof(UnityEngine.Object));
-        //types.Add(typeof(UnityEngine.Component));
+        types.Add(typeof(UnityEngine.Component));
+        types.Add(typeof(UnityEngine.Behaviour));
+        types.Add(typeof(UnityEngine.MonoBehaviour));
         types.Add(typeof(UnityEngine.Application));
         types.Add(typeof(UnityEngine.AssetBundle));
         types.Add(typeof(UnityEngine.AudioClip));
@@ -137,6 +139,7 @@ public class EditorContext
         types.Add(typeof(UnityEngine.Font));
         types.Add(typeof(UnityEngine.GameObject));
         types.Add(typeof(UnityEngine.Hash128));
+        types.Add(typeof(UnityEngine.LayerMask));
         types.Add(typeof(UnityEngine.Material));
         types.Add(typeof(UnityEngine.Mathf));
         types.Add(typeof(UnityEngine.Matrix4x4));

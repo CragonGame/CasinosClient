@@ -27,7 +27,7 @@ namespace Casinos
     {
         //---------------------------------------------------------------------
         public static CasinosContext Instance { get; private set; }
-        public TimerShaft TimerShaft { get; private set; }
+        //public TimerShaft TimerShaft { get; private set; }
         public System.Diagnostics.Stopwatch Stopwatch { get; private set; }
         public MemoryStream MemoryStream { get; private set; }
         public StringBuilder SB { get; private set; }
@@ -51,7 +51,7 @@ namespace Casinos
         public bool IsEditorDebug { get; set; }// 是否处于编辑器调试模式，可以调试lua，使用本地ab，raw
         public bool IsSqliteUnity { get; set; }
         public LuaTable TbDataMgrLua { get; set; }
-        FTMgr FTMgr { get; set; }
+        //FTMgr FTMgr { get; set; }
         HeadIconMgr HeadIconMgr { get; set; }
         SoundMgr SoundMgr { get; set; }
         CasinosILRuntime CsRuntime { get; set; }
@@ -112,10 +112,10 @@ namespace Casinos
 
             Stopwatch = new System.Diagnostics.Stopwatch();
             Stopwatch.Start();
-            TimerShaft = new TimerShaft();
+            //TimerShaft = new TimerShaft();
             MemoryStream = new MemoryStream();
             SB = new StringBuilder();
-            FTMgr = new FTMgr();
+            //FTMgr = new FTMgr();
             PathMgr = new PathMgr(editor_runsorce);// 初始化PathMgr
             Config = new CasinosConfig(editor_runsorce);
             NativeMgr = new NativeMgr();
@@ -159,10 +159,10 @@ namespace Casinos
                 SoundMgr.Update();
             }
 
-            if (FTMgr != null)
-            {
-                FTMgr.Update(elapsed_tm);
-            }
+            //if (FTMgr != null)
+            //{
+            //    FTMgr.Update(elapsed_tm);
+            //}
 
             if (DelayMgr != null)
             {
@@ -184,10 +184,10 @@ namespace Casinos
                 CsRuntime.Update();
             }
 
-            if (TimerShaft != null)
-            {
-                TimerShaft.ProcessTimer((ulong)Stopwatch.ElapsedMilliseconds);
-            }
+            //if (TimerShaft != null)
+            //{
+            //    TimerShaft.ProcessTimer((ulong)Stopwatch.ElapsedMilliseconds);
+            //}
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -198,11 +198,11 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Close()
         {
-            if (TimerShaft != null)
-            {
-                TimerShaft.Destroy();
-                TimerShaft = null;
-            }
+            //if (TimerShaft != null)
+            //{
+            //    TimerShaft.Destroy();
+            //    TimerShaft = null;
+            //}
 
             if (SoundMgr != null)
             {

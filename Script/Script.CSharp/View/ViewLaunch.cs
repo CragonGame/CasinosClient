@@ -6,7 +6,7 @@ namespace Cs
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class ViewLaunch : CsView
+    public class ViewLaunch : View
     {
         //---------------------------------------------------------------------
         public override void Create()
@@ -21,7 +21,7 @@ namespace Cs
         }
 
         //---------------------------------------------------------------------
-        public override void HandleEvent(CsEvent ev)
+        public override void HandleEvent(Event ev)
         {
             Debug.Log("ViewLaunch.HandleEvent()");
         }

@@ -23,6 +23,9 @@ namespace ILRuntime.Runtime.Generated
             System_String_Binding.Register(app);
             System_Array_Binding.Register(app);
             UnityEngine_Object_Binding.Register(app);
+            UnityEngine_Component_Binding.Register(app);
+            UnityEngine_Behaviour_Binding.Register(app);
+            UnityEngine_MonoBehaviour_Binding.Register(app);
             UnityEngine_Application_Binding.Register(app);
             UnityEngine_AssetBundle_Binding.Register(app);
             UnityEngine_AudioClip_Binding.Register(app);
@@ -35,6 +38,7 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_Font_Binding.Register(app);
             UnityEngine_GameObject_Binding.Register(app);
             UnityEngine_Hash128_Binding.Register(app);
+            UnityEngine_LayerMask_Binding.Register(app);
             UnityEngine_Material_Binding.Register(app);
             UnityEngine_Mathf_Binding.Register(app);
             UnityEngine_Matrix4x4_Binding.Register(app);

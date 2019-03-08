@@ -35,14 +35,10 @@ namespace Casinos
 
             if (string.IsNullOrEmpty(common_ver))
             {
-                Debug.Log("需要拷贝");
-
                 StartCoroutine(_copyStreamingAssets2PersistentAsync(_launch));
             }
             else
             {
-                Debug.Log("已存在，直接加载");
-
                 _launch();
             }
         }
@@ -108,8 +104,7 @@ namespace Casinos
             //s = s.Replace('\\', '/');
             //s = s.Replace("Assets/StreamingAssets", "");
             //s += "Script/Script.CSharp/bin/";
-            Debug.Log(s);
-
+            //Debug.Log(s);
             //string s = Casinos.CasinosContext.Instance.PathMgr.DirCsRoot;
 
 #if UNITY_EDITOR
@@ -138,7 +133,7 @@ namespace Casinos
                             LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
                             ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
 
-                            AppDomain.Invoke("CsMain", "Create", null, null);
+                            AppDomain.Invoke("Cs.Main", "Create", null, null);
                         }
                     }
                 }

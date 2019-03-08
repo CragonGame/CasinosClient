@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cs
 {
-    public class ViewMatchTexasSignupSucceed : CsView
+    public class ViewMatchTexasSignupSucceed : View
     {
         //---------------------------------------------------------------------
         public override void Create()
@@ -18,7 +18,7 @@ namespace Cs
         }
 
         //---------------------------------------------------------------------
-        public override void HandleEvent(CsEvent ev)
+        public override void HandleEvent(Event ev)
         {
         }
     }

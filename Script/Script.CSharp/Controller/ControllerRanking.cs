@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cs
 {
-    public class ControllerRanking : CsController
+    public class ControllerRanking : Controller
     {
     }
 }
