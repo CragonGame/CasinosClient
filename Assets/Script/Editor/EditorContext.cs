@@ -124,7 +124,12 @@ public class EditorContext
         types.Add(typeof(Array));
 
         types.Add(typeof(System.Environment));
+        types.Add(typeof(System.IO.Directory));
         types.Add(typeof(System.IO.DirectoryInfo));
+        types.Add(typeof(System.IO.File));
+        types.Add(typeof(System.IO.Stream));
+        types.Add(typeof(System.IO.MemoryStream));
+        types.Add(typeof(System.IO.FileStream));
         types.Add(typeof(System.IO.Path));
         types.Add(typeof(System.Text.StringBuilder));
 
@@ -149,6 +154,7 @@ public class EditorContext
         types.Add(typeof(UnityEngine.Mathf));
         types.Add(typeof(UnityEngine.Matrix4x4));
         //types.Add(typeof(UnityEngine.Mesh));
+        types.Add(typeof(UnityEngine.MeshRenderer));
         //types.Add(typeof(UnityEngine.ParticleSystem));
         types.Add(typeof(UnityEngine.Ping));
         types.Add(typeof(UnityEngine.PlayerPrefs));
@@ -164,6 +170,7 @@ public class EditorContext
         //types.Add(typeof(UnityEngine.Texture));
         //types.Add(typeof(UnityEngine.Texture2D));
         //types.Add(typeof(UnityEngine.Texture3D));
+        types.Add(typeof(UnityEngine.TextAsset));
         types.Add(typeof(UnityEngine.Time));
         types.Add(typeof(UnityEngine.Transform));
         types.Add(typeof(UnityEngine.Networking.UnityWebRequest));
@@ -184,6 +191,7 @@ public class EditorContext
         types.Add(typeof(FairyGUI.EventDispatcher));
         types.Add(typeof(FairyGUI.EventListener));
         types.Add(typeof(FairyGUI.InputEvent));
+        types.Add(typeof(FairyGUI.GoWrapper));
         types.Add(typeof(FairyGUI.GObject));
         types.Add(typeof(FairyGUI.GGraph));
         types.Add(typeof(FairyGUI.GGroup));
@@ -222,6 +230,7 @@ public class EditorContext
         types.Add(typeof(FairyGUI.Window));
 
         // Spine
+        types.Add(typeof(Spine.Unity.SkeletonAnimation));
 
         // 所有DLL内的类型的真实C#类型都是ILTypeInstance
         types.Add(typeof(List<ILRuntime.Runtime.Intepreter.ILTypeInstance>));

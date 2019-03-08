@@ -98,6 +98,7 @@ namespace Cs
             ui_panel.ApplyModifiedProperties(true, true);
 
             var view = factory.CreateView();
+            view.GCom = ui_panel.ui;
             view.Create();
 
             return (T)view;

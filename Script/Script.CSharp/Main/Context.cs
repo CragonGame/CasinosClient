@@ -14,6 +14,7 @@ namespace Cs
         public StringBuilder Sb { get; set; } = new StringBuilder(512);
         public PathMgr PathMgr { get; private set; }
         public ResourceMgr ResourceMgr { get; private set; }
+        public SpineMgr SpineMgr { get; private set; }
         public ControllerMgr ControllerMgr { get; private set; }
         public ViewMgr ViewMgr { get; private set; }
         public string Platform { get; private set; }
@@ -33,6 +34,7 @@ namespace Cs
             Platform = platform;
             PathMgr = new PathMgr(platform, is_editor_debug);
             ResourceMgr = new ResourceMgr();
+            SpineMgr = new SpineMgr();
             ControllerMgr = new ControllerMgr();
 
             ViewMgr = new ViewMgr();

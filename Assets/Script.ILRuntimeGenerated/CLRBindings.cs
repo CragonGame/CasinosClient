@@ -23,7 +23,11 @@ namespace ILRuntime.Runtime.Generated
             System_String_Binding.Register(app);
             System_Array_Binding.Register(app);
             System_Environment_Binding.Register(app);
+            System_IO_Directory_Binding.Register(app);
             System_IO_DirectoryInfo_Binding.Register(app);
+            System_IO_File_Binding.Register(app);
+            System_IO_MemoryStream_Binding.Register(app);
+            System_IO_FileStream_Binding.Register(app);
             System_IO_Path_Binding.Register(app);
             System_Text_StringBuilder_Binding.Register(app);
             UnityEngine_Object_Binding.Register(app);
@@ -46,6 +50,7 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_Material_Binding.Register(app);
             UnityEngine_Mathf_Binding.Register(app);
             UnityEngine_Matrix4x4_Binding.Register(app);
+            UnityEngine_MeshRenderer_Binding.Register(app);
             UnityEngine_Ping_Binding.Register(app);
             UnityEngine_PlayerPrefs_Binding.Register(app);
             UnityEngine_Quaternion_Binding.Register(app);
@@ -57,6 +62,7 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_Screen_Binding.Register(app);
             UnityEngine_ScreenCapture_Binding.Register(app);
             UnityEngine_SystemInfo_Binding.Register(app);
+            UnityEngine_TextAsset_Binding.Register(app);
             UnityEngine_Time_Binding.Register(app);
             UnityEngine_Transform_Binding.Register(app);
             UnityEngine_Networking_UnityWebRequest_Binding.Register(app);
@@ -70,6 +76,7 @@ namespace ILRuntime.Runtime.Generated
             FairyGUI_EventDispatcher_Binding.Register(app);
             FairyGUI_EventListener_Binding.Register(app);
             FairyGUI_InputEvent_Binding.Register(app);
+            FairyGUI_GoWrapper_Binding.Register(app);
             FairyGUI_GObject_Binding.Register(app);
             FairyGUI_GGraph_Binding.Register(app);
             FairyGUI_GGroup_Binding.Register(app);
@@ -100,6 +107,7 @@ namespace ILRuntime.Runtime.Generated
             FairyGUI_TweenValue_Binding.Register(app);
             FairyGUI_UIPackage_Binding.Register(app);
             FairyGUI_Window_Binding.Register(app);
+            Spine_Unity_SkeletonAnimation_Binding.Register(app);
             System_Collections_Generic_List_1_ILTypeInstance_Binding.Register(app);
         }
 
