@@ -1,0 +1,25 @@
+{
+  "CommonVersion": "1.00.000",
+  "CommonFileList": [
+    "Common/Cs/Script.Common.dll",
+	"Common/Cs/Script.CSharp.dll",
+	"Common/Cs/Script.Common.pdb",
+	"Common/Cs/Script.CSharp.pdb",
+	"Android/Resources.KingTexasLaunch/denglong.ab",
+    "Android/Resources.KingTexasLaunch/denglong.ab.manifest",
+    "Android/Resources.KingTexasLaunch/loadingmarry.ab",
+    "Android/Resources.KingTexasLaunch/loadingmarry.ab.manifest",
+    "Android/Resources.KingTexasLaunch/preloading.ab",
+    "Android/Resources.KingTexasLaunch/preloading.ab.manifest",
+    "Android/Resources.KingTexasLaunch/premsgbox.ab",
+    "Android/Resources.KingTexasLaunch/premsgbox.ab.manifest",
+	"IOS/Resources.KingTexasLaunch/denglong.ab",
+    "IOS/Resources.KingTexasLaunch/denglong.ab.manifest",
+    "IOS/Resources.KingTexasLaunch/loadingmarry.ab",
+    "IOS/Resources.KingTexasLaunch/loadingmarry.ab.manifest",
+    "IOS/Resources.KingTexasLaunch/preloading.ab",
+    "IOS/Resources.KingTexasLaunch/preloading.ab.manifest",
+    "IOS/Resources.KingTexasLaunch/premsgbox.ab",
+    "IOS/Resources.KingTexasLaunch/premsgbox.ab.manifest"
+  ]
+}

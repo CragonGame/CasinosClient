@@ -144,7 +144,7 @@ namespace Casinos
             typeof(_eChatItemType),
             typeof(_ePayType),
             typeof(_eProjectItemDisplayNameKey),
-            typeof(Card),
+            //typeof(Card),
             typeof(ChatParser),
             typeof(EbTool),
             typeof(EbTimeEvent),

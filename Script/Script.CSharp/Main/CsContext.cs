@@ -6,6 +6,8 @@ public class CsContext
 {
     //-------------------------------------------------------------------------
     public static CsContext Instance { get; private set; }
+    public CsControllerMgr ControllerMgr { get; private set; }
+    public CsViewMgr ViewMgr { get; private set; }
 
     //-------------------------------------------------------------------------
     public CsContext()
@@ -17,13 +19,32 @@ public class CsContext
     public void Create()
     {
         Debug.Log("CsContext.Create()");
-        TestJson.Run();
-        TestMsgPack.Run();
+
+        ControllerMgr = new CsControllerMgr();
+        ViewMgr = new CsViewMgr();
+
+        // 先显示Loading界面
+
+        //TestJson.Run();
+        //TestMsgPack.Run();
+        //TestProtobuf.Run();
     }
 
     //-------------------------------------------------------------------------
     public void Destroy()
     {
+        if (ViewMgr != null)
+        {
+            ViewMgr.Destroy();
+            ViewMgr = null;
+        }
+
+        if (ControllerMgr != null)
+        {
+            ControllerMgr.Destroy();
+            ControllerMgr = null;
+        }
+
         Debug.Log("CsContext.Destroy()");
     }
 

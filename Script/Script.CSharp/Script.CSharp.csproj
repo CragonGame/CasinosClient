@@ -43,6 +43,14 @@
       <!--<SpecificVersion>False</SpecificVersion>-->
       <HintPath>.\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\Library\ScriptAssemblies\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.DesktopH\ControllerDesktopH.cs" />
@@ -79,7 +87,7 @@
     <Compile Include="Main\CsViewMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View.DesktopH\ViewDesktopH.cs" />
-    <Compile Include="View.DesktopTexas\ViewAbout.cs" />
+    <Compile Include="View.DesktopTexas\ViewDesktopTexas.cs" />
     <Compile Include="View.IM\ViewIMFriend.cs" />
     <Compile Include="View.LotteryTicket\ViewLotteryTicket.cs" />
     <Compile Include="View.MatchTexasList\ViewMatchTexasList.cs" />
@@ -118,7 +126,7 @@
     <Content Include="UnityEngine.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Script.Common\Script.Common.csproj">
+    <ProjectReference Include="..\..\..\Casinos.Common\Script.Common.csproj">
       <Project>{dedc86eb-a173-44e4-91b5-27f736a4df35}</Project>
       <Name>Script.Common</Name>
     </ProjectReference>

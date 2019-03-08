@@ -5,19 +5,6 @@ namespace Casinos
     using System;
     using System.IO;
     using UnityEngine;
-    using MessagePack;
-    using System.Reflection;
-
-    [MessagePackObject]
-    public class B
-    {
-        [Key(0)]
-        public int A { get; set; }
-        [Key(1)]
-        public string  A1 { get; set; }
-        [Key(2)]
-        public double A2 { get; set; }
-    }
 
     public class EditorCfgUserSettingsCopy
     {
@@ -39,34 +26,6 @@ namespace Casinos
         //---------------------------------------------------------------------
         void Awake()
         {
-            B b = new B();
-            b.A = 100;
-            b.A1 = "bbbbb";
-            b.A2 = 0.35;
-
-            byte[] bytes = MessagePackSerializer.Serialize(b);
-
-            B b1 = MessagePackSerializer.Deserialize<B>(bytes);
-
-
-            Type t1 = typeof(B);
-            Type p = typeof(MessagePackSerializer);
-
-            MethodInfo m1 = null;
-            var m = p.GetMethods();
-            foreach (var i in m)
-            {
-                if (i.Name == "Deserialize")
-                {
-                    m1 = i;
-                    break;
-                }
-            }
-            //MethodInfo m1 = p.GetMethod("Deserialize");
-            MethodInfo m2 = m1.MakeGenericMethod(new Type[] { t1 });
-            B b2 = (B)m2.Invoke(null, new object[] { bytes });
-            Debug.Log("b2.A2=" + b2.A2);
-
 #if DEBUG
             BuglyAgent.ConfigDebugMode(true);
 #else

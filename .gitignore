@@ -27,4 +27,5 @@ CasinosClientGithub.sln
 /Script/Script.CSharp/Script.CSharp.csproj.user
 /Script/Script.Common/bin/
 /Script/Script.Common/obj/
+/Script/Script.Common/packages/
 /Script/Script.Common/Script.Common.csproj.user

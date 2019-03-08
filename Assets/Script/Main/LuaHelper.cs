@@ -391,34 +391,34 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static List<Card> GetNewCardList()
-        {
-            return new List<Card>();
-        }
+        //public static List<Card> GetNewCardList()
+        //{
+        //    return new List<Card>();
+        //}
 
-        //---------------------------------------------------------------------
-        public static string ParseHandRankTypeTexasHToStr(HandRankTypeTexasH rank)
-        {
-            return rank.ToString();
-        }
+        ////---------------------------------------------------------------------
+        //public static string ParseHandRankTypeTexasHToStr(HandRankTypeTexasH rank)
+        //{
+        //    return rank.ToString();
+        //}
 
-        //---------------------------------------------------------------------
-        public static string ParseHandRankTypeTexasToStr(HandRankTypeTexas rank)
-        {
-            return rank.ToString();
-        }
+        ////---------------------------------------------------------------------
+        //public static string ParseHandRankTypeTexasToStr(HandRankTypeTexas rank)
+        //{
+        //    return rank.ToString();
+        //}
 
-        //---------------------------------------------------------------------
-        public static int ParseHandRankTypeTexasHToNum(HandRankTypeTexasH rank)
-        {
-            return (int)rank;
-        }
+        ////---------------------------------------------------------------------
+        //public static int ParseHandRankTypeTexasHToNum(HandRankTypeTexasH rank)
+        //{
+        //    return (int)rank;
+        //}
 
-        //---------------------------------------------------------------------
-        public static int ParseHandRankTypeTexasToNum(HandRankTypeTexas rank)
-        {
-            return (int)rank;
-        }
+        ////---------------------------------------------------------------------
+        //public static int ParseHandRankTypeTexasToNum(HandRankTypeTexas rank)
+        //{
+        //    return (int)rank;
+        //}
 
         //---------------------------------------------------------------------
         public static AutoDestroyParticle GetComponentAutoDestroyParticle(GameObject gameobject)

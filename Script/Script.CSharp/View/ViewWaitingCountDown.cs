@@ -7,5 +7,19 @@ namespace Cs
 {
     public class ViewWaitingCountDown : CsView
     {
+        //---------------------------------------------------------------------
+        public override void Create()
+        {
+        }
+
+        //---------------------------------------------------------------------
+        public override void Destory()
+        {
+        }
+
+        //---------------------------------------------------------------------
+        public override void HandleEvent(CsEvent ev)
+        {
+        }
     }
 }

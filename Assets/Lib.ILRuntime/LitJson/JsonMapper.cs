@@ -731,10 +731,13 @@ namespace LitJson
                                         int depth)
         {
             if (depth > max_nesting_depth)
-                throw new JsonException (
-                    String.Format ("Max allowed object depth reached while " +
-                                   "trying to export from type {0}",
-                                   obj.GetType ()));
+            {
+                throw new JsonException(
+                    String.Format("Max allowed object depth reached while " +
+                   "trying to export from type {0}",
+                   obj.GetType()));
+            }
+
 
             if (obj == null) {
                 writer.Write (null);

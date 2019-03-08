@@ -25,17 +25,18 @@ public class CasinosILRuntime
 #if UNITY_EDITOR
         // 检测Script.CSharp.dll是否存在，如不存在则给出提示
 #endif
+
         byte[] dll1 = File.ReadAllBytes(s + "Script.Common.dll");
         byte[] pdb1 = File.ReadAllBytes(s + "Script.Common.pdb");
+
+        byte[] dll = File.ReadAllBytes(s + "Script.CSharp.dll");
+        byte[] pdb = File.ReadAllBytes(s + "Script.CSharp.pdb");
 
         using (MemoryStream fs1 = new MemoryStream(dll1))
         {
             using (MemoryStream p1 = new MemoryStream(pdb1))
             {
                 AppDomain.LoadAssembly(fs1, p1, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
-
-                byte[] dll = File.ReadAllBytes(s + "Script.CSharp.dll");
-                byte[] pdb = File.ReadAllBytes(s + "Script.CSharp.pdb");
 
                 using (MemoryStream fs = new MemoryStream(dll))
                 {
