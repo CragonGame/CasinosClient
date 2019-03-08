@@ -13,9 +13,10 @@ namespace Cs
         Dictionary<string, ViewFactory> MapViewFactory { get; set; } = new Dictionary<string, ViewFactory>();
         Dictionary<string, View> MapView { get; set; } = new Dictionary<string, View>();
         GameObject GoGRoot { get; set; }
+        StringBuilder Sb { get; set; } = new StringBuilder(256);
 
-        const int STANDARD_WIDTH = 1066;
-        const int STANDARD_HEIGHT = 640;
+        const int STANDARD_WIDTH = 1066;// UI设计宽度
+        const int STANDARD_HEIGHT = 640;// UI设计高度
 
         //-------------------------------------------------------------------------
         public void RegViewFactory(ViewFactory factory)
@@ -52,16 +53,6 @@ namespace Cs
         {
         }
 
-        //function AddUiPackage(ab_name)
-        //    local ab = self.ModelMgr:QueryAssetBundle(ab_name)
-        //    if ab == nil then
-        //        local path_ab = CasinosContext.PathMgr.DirAbUi.. string.lower(ab_name) .. ".ab"
-        //        ab = AssetBundle.LoadFromFile(path_ab)
-        //        FairyGUI.UIPackage.AddPackage(ab)
-        //        self.ModelMgr:AddAssetBundle(ab_name, ab)
-        //    end
-        //end
-
         //-------------------------------------------------------------------------
         public T CreateView<T>() where T : View
         {
@@ -69,11 +60,21 @@ namespace Cs
             MapViewFactory.TryGetValue(name, out ViewFactory factory);
             if (factory == null)
             {
-                Debug.LogError("CsViewMgr.CreateView() 指定ViewName=" + name + "没有注册！");
+                string s = string.Format("ViewMgr.CreateView()失败！ 指定ViewName={0}没有注册！", name);
+                Debug.LogError(s);
                 return null;
             }
 
             Debug.Log("ViewName=" + name);
+
+            string ab_name = "";
+            bool r = AddUiPackage(ab_name);
+            if (!r)
+            {
+                string s = string.Format("ViewMgr.CreateView()失败！ViewName={0}, AssetBundleName={1}", name, ab_name);
+                Debug.LogError(s);
+                return null;
+            }
 
             var go = new GameObject();
             go.name = name;
@@ -96,14 +97,7 @@ namespace Cs
         //-------------------------------------------------------------------------
         public void Destroy<T>() where T : View
         {
-            var name = nameof(T);
-            MapViewFactory.TryGetValue(name, out ViewFactory factory);
-            if (factory == null)
-            {
-                Debug.LogError("CsViewMgr.Destroy() 指定ViewName=" + name + "没有注册！");
-                return;
-            }
-
+            var name = typeof(T).Name;
             MapView.TryGetValue(name, out View view);
 
             if (view == null)
@@ -113,6 +107,24 @@ namespace Cs
 
             view.Destory();
             MapView.Remove(name);
+        }
+
+        //-------------------------------------------------------------------------
+        // 添加UIPackage。ab_name不带路径，不带后缀名。
+        public bool AddUiPackage(string ab_name)
+        {
+            var res_mgr = Context.Instance.ResourceMgr;
+            var path_mgr = Context.Instance.PathMgr;
+
+            AssetBundle ab = res_mgr.QueryAssetBundle(ab_name);
+            if (ab == null) return false;
+
+            string path_ab = path_mgr.DirAbUi + ab_name.ToLower() + ".ab";
+            ab = AssetBundle.LoadFromFile(path_ab);
+            FairyGUI.UIPackage.AddPackage(ab);
+            res_mgr.AddAssetBundle(ab_name, ab);
+
+            return true;
         }
     }
 }

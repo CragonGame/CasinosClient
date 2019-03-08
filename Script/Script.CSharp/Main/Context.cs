@@ -10,6 +10,8 @@ namespace Cs
     {
         //-------------------------------------------------------------------------
         public static Context Instance { get; private set; }
+        public PathMgr PathMgr { get; private set; }
+        public ResourceMgr ResourceMgr { get; private set; }
         public ControllerMgr ControllerMgr { get; private set; }
         public ViewMgr ViewMgr { get; private set; }
 
@@ -24,6 +26,8 @@ namespace Cs
         {
             Debug.Log("CsContext.Create()");
 
+            PathMgr = new PathMgr();
+            ResourceMgr = new ResourceMgr();
             ControllerMgr = new ControllerMgr();
 
             ViewMgr = new ViewMgr();

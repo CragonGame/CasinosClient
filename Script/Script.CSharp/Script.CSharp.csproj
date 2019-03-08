@@ -45,6 +45,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+	<Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
