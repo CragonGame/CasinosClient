@@ -131,9 +131,11 @@ namespace Casinos
 
                             // 这里做一些ILRuntime的注册
                             LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
-                            ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
+                            //ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
 
-                            AppDomain.Invoke("Cs.Main", "Create", null, null);
+                            string platform = "Android";
+                            bool is_editor_debug = false;
+                            AppDomain.Invoke("Cs.Main", "Create", null, new object[] { platform, is_editor_debug });
                         }
                     }
                 }

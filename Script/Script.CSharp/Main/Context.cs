@@ -4,16 +4,19 @@ namespace Cs
 {
     using System.Collections;
     using System.Collections.Generic;
+    using System.Text;
     using UnityEngine;
 
     public class Context
     {
         //-------------------------------------------------------------------------
         public static Context Instance { get; private set; }
+        public StringBuilder Sb { get; set; } = new StringBuilder(512);
         public PathMgr PathMgr { get; private set; }
         public ResourceMgr ResourceMgr { get; private set; }
         public ControllerMgr ControllerMgr { get; private set; }
         public ViewMgr ViewMgr { get; private set; }
+        public string Platform { get; private set; }
 
         //-------------------------------------------------------------------------
         public Context()
@@ -22,16 +25,18 @@ namespace Cs
         }
 
         //-------------------------------------------------------------------------
-        public void Create()
+        public void Create(string platform, bool is_editor_debug)
         {
-            Debug.Log("CsContext.Create()");
+            string s = string.Format("CsContext.Create() PlatForm={0}, IsEditorDebug={1}", platform, is_editor_debug);
+            Debug.Log(s);
 
-            PathMgr = new PathMgr();
+            Platform = platform;
+            PathMgr = new PathMgr(platform, is_editor_debug);
             ResourceMgr = new ResourceMgr();
             ControllerMgr = new ControllerMgr();
 
             ViewMgr = new ViewMgr();
-            ViewMgr.RegViewFactory(new ViewFactory<ViewLaunch>());
+            ViewMgr.RegViewFactory(new ViewFactoryLaunch());
             ViewMgr.Create();
 
             // 先显示Loading界面

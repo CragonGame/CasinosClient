@@ -123,6 +123,11 @@ public class EditorContext
         types.Add(typeof(string));
         types.Add(typeof(Array));
 
+        types.Add(typeof(System.Environment));
+        types.Add(typeof(System.IO.DirectoryInfo));
+        types.Add(typeof(System.IO.Path));
+        types.Add(typeof(System.Text.StringBuilder));
+
         types.Add(typeof(UnityEngine.Object));
         types.Add(typeof(UnityEngine.Component));
         types.Add(typeof(UnityEngine.Behaviour));
@@ -166,10 +171,10 @@ public class EditorContext
         types.Add(typeof(UnityEngine.Vector3));
         types.Add(typeof(UnityEngine.Vector4));
 
+        // FairyGUI
         //types.Add(typeof(FairyGUI.EaseType));
         //types.Add(typeof(FairyGUI.RelationType));
         //types.Add(typeof(FairyGUI.TweenPropType));
-
         types.Add(typeof(FairyGUI.Container));
         types.Add(typeof(FairyGUI.Controller));
         types.Add(typeof(FairyGUI.DisplayObject));
@@ -215,6 +220,8 @@ public class EditorContext
         types.Add(typeof(FairyGUI.TweenValue));
         types.Add(typeof(FairyGUI.UIPackage));
         types.Add(typeof(FairyGUI.Window));
+
+        // Spine
 
         // 所有DLL内的类型的真实C#类型都是ILTypeInstance
         types.Add(typeof(List<ILRuntime.Runtime.Intepreter.ILTypeInstance>));

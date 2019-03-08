@@ -13,10 +13,16 @@ namespace Cs
         Dictionary<string, ViewFactory> MapViewFactory { get; set; } = new Dictionary<string, ViewFactory>();
         Dictionary<string, View> MapView { get; set; } = new Dictionary<string, View>();
         GameObject GoGRoot { get; set; }
-        StringBuilder Sb { get; set; } = new StringBuilder(256);
+        StringBuilder Sb { get; set; }
 
         const int STANDARD_WIDTH = 1066;// UI设计宽度
         const int STANDARD_HEIGHT = 640;// UI设计高度
+
+        //-------------------------------------------------------------------------
+        public ViewMgr()
+        {
+            Sb = Context.Instance.Sb;
+        }
 
         //-------------------------------------------------------------------------
         public void RegViewFactory(ViewFactory factory)
@@ -65,26 +71,29 @@ namespace Cs
                 return null;
             }
 
-            Debug.Log("ViewName=" + name);
+            //Debug.Log("ViewName=" + name);
 
-            string ab_name = "";
-            bool r = AddUiPackage(ab_name);
-            if (!r)
+            string ab_dir = factory.GetAbUiDir();
+
+            List<string> list_ab_dependencies = factory.GetAbUiDependencies();
+            if (list_ab_dependencies != null)
             {
-                string s = string.Format("ViewMgr.CreateView()失败！ViewName={0}, AssetBundleName={1}", name, ab_name);
-                Debug.LogError(s);
-                return null;
+                foreach (var i in list_ab_dependencies)
+                {
+                    AddUiPackage(ab_dir, i);
+                }
             }
+
+            AddUiPackage(ab_dir, factory.GetAbUiAndPackageName());
 
             var go = new GameObject();
             go.name = name;
             var layer = LayerMask.NameToLayer(FairyGUI.StageCamera.LayerName);
             go.layer = layer;
-            go.transform.parent = GoGRoot.transform;
 
             FairyGUI.UIPanel ui_panel = (FairyGUI.UIPanel)go.AddComponent(typeof(FairyGUI.UIPanel));
-            ui_panel.packageName = "";// view_factory.PackageName
-            ui_panel.componentName = "";// view_factory.ComponentName
+            ui_panel.packageName = factory.GetAbUiAndPackageName();
+            ui_panel.componentName = factory.GetComponentName();
             ui_panel.fitScreen = FairyGUI.FitScreen.None;// view_factory.FitScreen
             ui_panel.ApplyModifiedProperties(true, true);
 
@@ -110,21 +119,24 @@ namespace Cs
         }
 
         //-------------------------------------------------------------------------
-        // 添加UIPackage。ab_name不带路径，不带后缀名。
-        public bool AddUiPackage(string ab_name)
+        // 添加UIPackage。ab_filename不带路径，不带后缀名。
+        public void AddUiPackage(string ab_dir, string ab_filename)
         {
             var res_mgr = Context.Instance.ResourceMgr;
-            var path_mgr = Context.Instance.PathMgr;
 
-            AssetBundle ab = res_mgr.QueryAssetBundle(ab_name);
-            if (ab == null) return false;
+            Sb.Clear();
+            Sb.Append(ab_dir);
+            Sb.Append(ab_filename.ToLower());
+            Sb.Append(".ab");
+            string path_ab = Sb.ToString();
 
-            string path_ab = path_mgr.DirAbUi + ab_name.ToLower() + ".ab";
-            ab = AssetBundle.LoadFromFile(path_ab);
-            FairyGUI.UIPackage.AddPackage(ab);
-            res_mgr.AddAssetBundle(ab_name, ab);
-
-            return true;
+            AssetBundle ab = res_mgr.QueryAssetBundle(path_ab);
+            if (ab == null)
+            {
+                ab = AssetBundle.LoadFromFile(path_ab);
+                FairyGUI.UIPackage.AddPackage(ab);
+                res_mgr.AddAssetBundle(path_ab, ab);
+            }
         }
     }
 }

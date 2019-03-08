@@ -26,4 +26,45 @@ namespace Cs
             Debug.Log("ViewLaunch.HandleEvent()");
         }
     }
+
+    public class ViewFactoryLaunch : ViewFactory
+    {
+        //-------------------------------------------------------------------------
+        public override string GetName()
+        {
+            return "ViewLaunch";
+        }
+
+        //-------------------------------------------------------------------------
+        public override string GetAbUiDir()
+        {
+            return Context.Instance.PathMgr.DirAbLaunch;
+        }
+
+        //-------------------------------------------------------------------------
+        public override List<string> GetAbUiDependencies()
+        {
+            // "DenLong", "LoadingMarry", 
+            //return new List<string>() { "PreMsgbox" };
+            return null;
+        }
+
+        //-------------------------------------------------------------------------
+        public override string GetAbUiAndPackageName()
+        {
+            return "PreLoading";
+        }
+
+        //-------------------------------------------------------------------------
+        public override string GetComponentName()
+        {
+            return "PreLoading";
+        }
+
+        //-------------------------------------------------------------------------
+        public override View CreateView()
+        {
+            return new ViewLaunch();
+        }
+    }
 }

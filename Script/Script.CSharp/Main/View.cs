@@ -1,4 +1,5 @@
 ﻿// Copyright (c) Cragon. All rights reserved.
+// 一个UI Package对应一个AssetBundle
 
 namespace Cs
 {
@@ -27,21 +28,24 @@ namespace Cs
         public abstract string GetName();
 
         //-------------------------------------------------------------------------
+        public virtual string GetAbUiDir()
+        {
+            return Context.Instance.PathMgr.DirAbUi;
+        }
+
+        //-------------------------------------------------------------------------
+        public virtual List<string> GetAbUiDependencies()
+        {
+            return null;
+        }
+
+        //-------------------------------------------------------------------------
+        public abstract string GetAbUiAndPackageName();
+
+        //-------------------------------------------------------------------------
+        public abstract string GetComponentName();
+
+        //-------------------------------------------------------------------------
         public abstract View CreateView();
-    }
-
-    public class ViewFactory<T> : ViewFactory where T : View, new()
-    {
-        //-------------------------------------------------------------------------
-        public override string GetName()
-        {
-            return typeof(T).Name;
-        }
-
-        //-------------------------------------------------------------------------
-        public override View CreateView()
-        {
-            return new T();
-        }
     }
 }

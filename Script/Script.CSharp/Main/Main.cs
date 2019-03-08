@@ -12,10 +12,10 @@ namespace Cs
         static Context Context { get; set; }
 
         //-------------------------------------------------------------------------
-        public static void Create()
+        public static void Create(string platform, bool is_editor_debug)
         {
             Context = new Context();
-            Context.Create();
+            Context.Create(platform, is_editor_debug);
         }
 
         //-------------------------------------------------------------------------

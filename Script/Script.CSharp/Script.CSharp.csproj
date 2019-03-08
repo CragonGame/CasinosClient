@@ -45,7 +45,7 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-	<Reference Include="UnityEngine.AssetBundleModule">
+    <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
@@ -93,6 +93,7 @@
     <Compile Include="Main\ViewMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View.DesktopH\ViewDesktopH.cs" />
+    <Compile Include="View.DesktopTexas\DesktopTexasFlow.cs" />
     <Compile Include="View.DesktopTexas\ViewDesktopTexas.cs" />
     <Compile Include="View.IM\ViewIMFriend.cs" />
     <Compile Include="View.LotteryTicket\ViewLotteryTicket.cs" />

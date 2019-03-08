@@ -22,6 +22,10 @@ namespace ILRuntime.Runtime.Generated
             System_Object_Binding.Register(app);
             System_String_Binding.Register(app);
             System_Array_Binding.Register(app);
+            System_Environment_Binding.Register(app);
+            System_IO_DirectoryInfo_Binding.Register(app);
+            System_IO_Path_Binding.Register(app);
+            System_Text_StringBuilder_Binding.Register(app);
             UnityEngine_Object_Binding.Register(app);
             UnityEngine_Component_Binding.Register(app);
             UnityEngine_Behaviour_Binding.Register(app);
