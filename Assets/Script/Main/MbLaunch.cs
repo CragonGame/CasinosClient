@@ -19,9 +19,12 @@ namespace Casinos
     public class MbLaunch : MonoBehaviour
     {
         //---------------------------------------------------------------------
-        //string VersionCommonPersistent { get; set; }
         CommonInfo CommonInfo { get; set; }
         ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get; set; } = new ILRuntime.Runtime.Enviorment.AppDomain();
+        MemoryStream MsCommonDll { get; set; }
+        MemoryStream MsCommonPdb { get; set; }
+        MemoryStream MsScriptDll { get; set; }
+        MemoryStream MsScriptPdb { get; set; }
 
         //---------------------------------------------------------------------
         void Start()
@@ -40,6 +43,36 @@ namespace Casinos
             else
             {
                 _launch();
+            }
+        }
+
+        //---------------------------------------------------------------------
+        private void OnDestroy()
+        {
+            AppDomain = null;
+
+            if (MsCommonDll != null)
+            {
+                MsCommonDll.Close();
+                MsCommonDll = null;
+            }
+
+            if (MsCommonPdb != null)
+            {
+                MsCommonPdb.Close();
+                MsCommonPdb = null;
+            }
+
+            if (MsScriptDll != null)
+            {
+                MsScriptDll.Close();
+                MsScriptDll = null;
+            }
+
+            if (MsScriptPdb != null)
+            {
+                MsScriptPdb.Close();
+                MsScriptPdb = null;
             }
         }
 
@@ -117,33 +150,28 @@ namespace Casinos
             byte[] dll = File.ReadAllBytes(s + "Script.CSharp.dll");
             byte[] pdb = File.ReadAllBytes(s + "Script.CSharp.pdb");
 
-            using (MemoryStream fs1 = new MemoryStream(dll1))
-            {
-                using (MemoryStream p1 = new MemoryStream(pdb1))
-                {
-                    AppDomain.LoadAssembly(fs1, p1, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+            MsCommonDll = new MemoryStream(dll1);
+            MsCommonPdb = new MemoryStream(pdb1);
+            MsScriptDll = new MemoryStream(dll);
+            MsScriptPdb = new MemoryStream(pdb);
 
-                    using (MemoryStream fs = new MemoryStream(dll))
-                    {
-                        using (MemoryStream p = new MemoryStream(pdb))
-                        {
-                            AppDomain.LoadAssembly(fs, p, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+            AppDomain.LoadAssembly(MsCommonDll, MsCommonPdb, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+            AppDomain.LoadAssembly(MsScriptDll, MsScriptPdb, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
 
-                            // 这里做一些ILRuntime的注册
-                            AppDomain.DelegateManager.RegisterMethodDelegate<string>();
-                            AppDomain.DelegateManager.RegisterMethodDelegate<AssetBundle>();
-                            AppDomain.DelegateManager.RegisterMethodDelegate<Texture>();
-                            //AppDomain.DelegateManager.RegisterFunctionDelegate<int, float, bool>();
+            // 这里做一些ILRuntime的注册
+            AppDomain.DelegateManager.RegisterMethodDelegate<string>();
+            AppDomain.DelegateManager.RegisterMethodDelegate<AssetBundle>();
+            AppDomain.DelegateManager.RegisterMethodDelegate<Texture>();
 
-                            ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
-                            LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
+            LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
+            ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
 
-                            string platform = "Android";
-                            bool is_editor = false;
+            string platform = "Android";
+            bool is_editor = false;
 #if UNITY_STANDALONE_WIN
                             platform = "PC";
 #elif UNITY_ANDROID && UNITY_EDITOR
-                            platform = "Android";
+            platform = "Android";
 #elif UNITY_ANDROID
                             platform = "Android";
 #elif UNITY_IPHONE
@@ -151,17 +179,14 @@ namespace Casinos
 #endif
 
 #if UNITY_EDITOR
-                            is_editor = true;
+            is_editor = true;
+            AppDomain.DebugService.StartDebugService(56000);
 #else
                             is_editor = false;
 #endif
 
-                            bool is_editor_debug = false;
-                            AppDomain.Invoke("Cs.Main", "Create", null, new object[] { platform, is_editor, is_editor_debug });
-                        }
-                    }
-                }
-            }
+            bool is_editor_debug = false;
+            AppDomain.Invoke("Cs.Main", "Create", null, new object[] { platform, is_editor, is_editor_debug });
         }
     }
 }

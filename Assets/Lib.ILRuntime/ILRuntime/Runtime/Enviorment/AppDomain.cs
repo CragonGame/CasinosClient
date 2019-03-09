@@ -262,7 +262,7 @@ namespace ILRuntime.Runtime.Enviorment
                         }
                         else
                         {
-                            LoadAssemblyMDB(fs, pdbfs);
+                            //LoadAssemblyMDB(fs, pdbfs);
                         }
                     }
                 }

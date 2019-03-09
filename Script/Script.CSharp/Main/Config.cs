@@ -44,6 +44,7 @@ namespace Cs
         public string Platform { get; set; }
         public bool IsEditor { get; set; }
         public bool IsEditorDebug { get; set; }
+        public string Channel { get; set; }// 渠道
         public ConfigDevelopSettings CfgSettings { get; private set; } = new ConfigDevelopSettings();
         public ConfigModule CfgModule { get; private set; } = new ConfigModule();
         public string Env { get; set; } = "Pro";

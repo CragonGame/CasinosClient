@@ -69,14 +69,11 @@ namespace Cs
             Casinos.MbAsyncLoadAssets async_loader = Context.Instance.MbAsyncLoadAssets;
             Config cfg = Context.Instance.Config;
 
-            var ev = GenEvent<EventControllerLaunch>();
-            ev.Info = "asdasdfasfd";
-            ev.Broadcast();
-
             // 下载并加载bundle_xxx.txt
+            string str_rd = UnityEngine.Random.Range(100000, 999999).ToString();
             string bundle_cfg_remote = string.Format("Bundle_{0}", cfg.BundleVersion);
-            string bundle_cfg_remote_url = string.Format("https://cragon-king-oss.cragon.cn/{0}/{1}.txt?v=1003",
-                Context.Instance.Config.Platform.ToUpper(), bundle_cfg_remote);
+            string bundle_cfg_remote_url = string.Format("https://cragon-king-oss.cragon.cn/{0}/{1}.txt?{2}",
+                Context.Instance.Config.Platform.ToUpper(), bundle_cfg_remote, str_rd);
             Debug.Log(bundle_cfg_remote_url);
             async_loader.WWWLoadTextAsync(bundle_cfg_remote_url, _onDownloadBundleCfg);
         }
@@ -84,35 +81,17 @@ namespace Cs
         //---------------------------------------------------------------------
         void _onDownloadBundleCfg(string text)
         {
-            Debug.Log(text);
+            var ev = GenEvent<EventControllerLaunch>();
+            ev.Info = "asdasdfasfd";
+            ev.Broadcast();
 
-            byte[] bytes = Encoding.UTF8.GetBytes(text);
-            string s = Encoding.UTF8.GetString(bytes);
-
-            using (MemoryStream ms = new MemoryStream(bytes))
-            {
-                //var config = SharpConfig.Configuration.LoadFromString(text);
-                //var section = config["King"];
-            }
-
-            //VersionInfoRemote = new VersionInfoRemote();
-            //VersionInfoRemote.BundleSelectDev = section["BundleSelectDev"].StringValue;
-            //VersionInfoRemote.BundleSelectPro = section["BundleSelectPro"].StringValue;
-            //VersionInfoRemote.LaunchSelectDev = section["LaunchSelectDev"].StringValue;
-            //VersionInfoRemote.LaunchSelectPro = section["LaunchSelectPro"].StringValue;
-            //VersionInfoRemote.CommonSelectDev = section["CommonSelectDev"].StringValue;
-            //VersionInfoRemote.CommonSelectPro = section["CommonSelectPro"].StringValue;
-            //VersionInfoRemote.DataSelectDev = section["DataSelectDev"].StringValue;
-            //VersionInfoRemote.DataSelectPro = section["DataSelectPro"].StringValue;
-
-            //VersionInfoRemote = LitJson.JsonMapper.ToObject<VersionInfoRemote>(text);
-
-            //Debug.Log("VersionInfoRemote.LaunchSelectDev=" + VersionInfoRemote.LaunchSelectDev);
-            //Debug.Log("VersionInfoRemote.LaunchSelectPro=" + VersionInfoRemote.LaunchSelectPro);
-            //Debug.Log("VersionInfoRemote.CommonSelectDev=" + VersionInfoRemote.CommonSelectDev);
-            //Debug.Log("VersionInfoRemote.CommonSelectPro=" + VersionInfoRemote.CommonSelectPro);
-            //Debug.Log("VersionInfoRemote.DataSelectDev=" + VersionInfoRemote.DataSelectDev);
-            //Debug.Log("VersionInfoRemote.DataSelectPro=" + VersionInfoRemote.DataSelectPro);
+            VersionInfoRemote = LitJson.JsonMapper.ToObject<VersionInfoRemote>(text);
+            Debug.Log("VersionInfoRemote.LaunchSelectDev=" + VersionInfoRemote.LaunchSelectDev);
+            Debug.Log("VersionInfoRemote.LaunchSelectPro=" + VersionInfoRemote.LaunchSelectPro);
+            Debug.Log("VersionInfoRemote.CommonSelectDev=" + VersionInfoRemote.CommonSelectDev);
+            Debug.Log("VersionInfoRemote.CommonSelectPro=" + VersionInfoRemote.CommonSelectPro);
+            Debug.Log("VersionInfoRemote.DataSelectDev=" + VersionInfoRemote.DataSelectDev);
+            Debug.Log("VersionInfoRemote.DataSelectPro=" + VersionInfoRemote.DataSelectPro);
         }
     }
 }
