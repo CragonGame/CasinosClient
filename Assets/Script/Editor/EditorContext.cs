@@ -130,6 +130,13 @@ public class EditorContext
         types.Add(typeof(System.IO.MemoryStream));
         types.Add(typeof(System.IO.FileStream));
         types.Add(typeof(System.IO.Path));
+        types.Add(typeof(System.IO.TextReader));
+        types.Add(typeof(System.IO.TextWriter));
+        types.Add(typeof(System.IO.StreamReader));
+        types.Add(typeof(System.IO.StreamWriter));
+        types.Add(typeof(System.IO.StringReader));
+        types.Add(typeof(System.IO.StringWriter));
+        types.Add(typeof(System.Text.Encoding));
         types.Add(typeof(System.Text.StringBuilder));
 
         types.Add(typeof(UnityEngine.Object));
@@ -232,11 +239,11 @@ public class EditorContext
         // Spine
         types.Add(typeof(Spine.Unity.SkeletonAnimation));
 
-        // Casinos
-        types.Add(typeof(Casinos.MbAsyncLoadAssets));
-
         // 所有DLL内的类型的真实C#类型都是ILTypeInstance
         types.Add(typeof(List<ILRuntime.Runtime.Intepreter.ILTypeInstance>));
+
+        // Casinos
+        types.Add(typeof(Casinos.MbAsyncLoadAssets));
 
         ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode(types, "Assets/Script.ILRuntimeGenerated");
 

@@ -206,7 +206,7 @@ namespace Casinos
 
             if (SoundMgr != null)
             {
-                SoundMgr.destroy();
+                SoundMgr.Destroy();
                 SoundMgr = null;
             }
 
@@ -377,37 +377,37 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Play(string file_name, _eSoundLayer sound_layer)
         {
-            SoundMgr.play(file_name, sound_layer);
+            SoundMgr.Play(file_name, sound_layer);
         }
 
         //---------------------------------------------------------------------
         public void BgVolumeChange(float volume)
         {
-            SoundMgr.bgVolumeChange(volume);
+            SoundMgr.BgVolumeChange(volume);
         }
 
         //---------------------------------------------------------------------
         public List<AudioSource> GetAudioSource()
         {
-            return SoundMgr.getAudioSource();
+            return SoundMgr.GetAudioSource();
         }
 
         //---------------------------------------------------------------------
         public void DestroyAllSceneSound()
         {
-            SoundMgr.destroyAllSceneSound();
+            SoundMgr.DestroyAllSceneSound();
         }
 
         //---------------------------------------------------------------------
         public void StopAllSceneSound()
         {
-            SoundMgr.stopAllSceneSound();
+            SoundMgr.StopAllSceneSound();
         }
 
         //---------------------------------------------------------------------
         public void FreeAudioSource(AudioSource audio_src)
         {
-            SoundMgr.freeAudioSource(audio_src);
+            SoundMgr.FreeAudioSource(audio_src);
         }
     }
 }

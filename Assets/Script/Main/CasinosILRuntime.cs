@@ -45,7 +45,7 @@ public class CasinosILRuntime
 
                         // 这里做一些ILRuntime的注册
                         LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
-                        ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
+                        //ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
 
                         AppDomain.Invoke("CsMain", "Create", null, null);
                     }

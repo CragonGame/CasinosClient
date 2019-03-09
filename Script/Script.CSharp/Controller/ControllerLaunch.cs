@@ -4,6 +4,7 @@ namespace Cs
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Text;
     using UnityEngine;
 
@@ -84,10 +85,15 @@ namespace Cs
         void _onDownloadBundleCfg(string text)
         {
             Debug.Log(text);
-            string s = text;
 
-            var config = SharpConfig.Configuration.LoadFromString(s);
-            var section = config["King"];
+            byte[] bytes = Encoding.UTF8.GetBytes(text);
+            string s = Encoding.UTF8.GetString(bytes);
+
+            using (MemoryStream ms = new MemoryStream(bytes))
+            {
+                //var config = SharpConfig.Configuration.LoadFromString(text);
+                //var section = config["King"];
+            }
 
             //VersionInfoRemote = new VersionInfoRemote();
             //VersionInfoRemote.BundleSelectDev = section["BundleSelectDev"].StringValue;

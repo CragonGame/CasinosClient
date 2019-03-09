@@ -108,7 +108,7 @@ namespace Casinos
                 }
 
                 i.Stop();
-                mSoundMgr.freeAudioSource(i);
+                mSoundMgr.FreeAudioSource(i);
             }
             mListAudioPlaying.Clear();
         }
@@ -166,7 +166,7 @@ namespace Casinos
             }
             else
             {
-                mSoundMgr.freeAudioSource(audio_src);
+                mSoundMgr.FreeAudioSource(audio_src);
             }
         }
 
@@ -187,7 +187,7 @@ namespace Casinos
             if (!mAudioPlaying.isPlaying)
             {
                 mAudioPlaying.Stop();
-                mSoundMgr.freeAudioSource(mAudioPlaying);
+                mSoundMgr.FreeAudioSource(mAudioPlaying);
                 mAudioPlaying = null;
             }
         }
@@ -198,7 +198,7 @@ namespace Casinos
             if (mAudioPlaying != null)
             {
                 mAudioPlaying.Stop();
-                mSoundMgr.freeAudioSource(mAudioPlaying);
+                mSoundMgr.FreeAudioSource(mAudioPlaying);
                 mAudioPlaying = null;
             }
         }
@@ -240,7 +240,7 @@ namespace Casinos
                 mMapAudioPlaying[audio_src.name].Play();
 
                 audio_src.Stop();
-                mSoundMgr.freeAudioSource(audio_src);
+                mSoundMgr.FreeAudioSource(audio_src);
             }
             else
             {
@@ -284,7 +284,7 @@ namespace Casinos
                 if (!i.Value.isPlaying)
                 {
                     i.Value.Stop();
-                    mSoundMgr.freeAudioSource(i.Value);
+                    mSoundMgr.FreeAudioSource(i.Value);
                     mListDestroy.Add(i.Key);
                 }
             }
@@ -304,7 +304,7 @@ namespace Casinos
                 if (i.Value != null)
                 {
                     i.Value.Stop();
-                    mSoundMgr.freeAudioSource(i.Value);
+                    mSoundMgr.FreeAudioSource(i.Value);
                 }
             }
             mMapAudioPlaying.Clear();
@@ -343,7 +343,7 @@ namespace Casinos
             if (mMapAudioPlaying.ContainsKey(audio_src.name))
             {
                 audio_src.Stop();
-                mSoundMgr.freeAudioSource(audio_src);
+                mSoundMgr.FreeAudioSource(audio_src);
             }
             else
             {
@@ -387,7 +387,7 @@ namespace Casinos
                 if (!i.Value.isPlaying)
                 {
                     i.Value.Stop();
-                    mSoundMgr.freeAudioSource(i.Value);
+                    mSoundMgr.FreeAudioSource(i.Value);
                     mListDestroy.Add(i.Key);
                 }
             }
@@ -407,7 +407,7 @@ namespace Casinos
                 if (i.Value != null)
                 {
                     i.Value.Stop();
-                    mSoundMgr.freeAudioSource(i.Value);
+                    mSoundMgr.FreeAudioSource(i.Value);
                 }
             }
             mMapAudioPlaying.Clear();
@@ -479,7 +479,7 @@ namespace Casinos
             else
             {
                 audio_src.Stop();
-                mSoundMgr.freeAudioSource(audio_src);
+                mSoundMgr.FreeAudioSource(audio_src);
             }
         }
 
@@ -506,7 +506,7 @@ namespace Casinos
             foreach (var i in mListAudioDestroy)
             {
                 i.Stop();
-                mSoundMgr.freeAudioSource(i);
+                mSoundMgr.FreeAudioSource(i);
                 mListAudioPlaying.Remove(i);
             }
             mListAudioDestroy.Clear();
@@ -518,7 +518,7 @@ namespace Casinos
             foreach (var i in mListAudioPlaying)
             {
                 i.Stop();
-                mSoundMgr.freeAudioSource(i);
+                mSoundMgr.FreeAudioSource(i);
             }
             mListAudioPlaying.Clear();
             mListAudioDestroy.Clear();
@@ -591,7 +591,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void play(string file_name, _eSoundLayer sound_layer)
+        public void Play(string file_name, _eSoundLayer sound_layer)
         {
             if (string.IsNullOrEmpty(file_name)) return;
             var audio_clip = _loadAudioClip(file_name);
@@ -604,7 +604,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void bgVolumeChange(float volume)
+        public void BgVolumeChange(float volume)
         {
             mMapSoundLayer[_eSoundLayer.Background].volumeChange(volume);
             //foreach (var i in mMapSoundLayer)
@@ -614,7 +614,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public List<AudioSource> getAudioSource()
+        public List<AudioSource> GetAudioSource()
         {
             return mListAudioFree;
         }
@@ -629,7 +629,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void destroy()
+        public void Destroy()
         {
             mMapAudioClip.Clear();
 
@@ -651,7 +651,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void destroyAllSceneSound()
+        public void DestroyAllSceneSound()
         {
             mMapAudioClip.Clear();
 
@@ -663,7 +663,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void stopAllSceneSound()
+        public void StopAllSceneSound()
         {
             foreach (var i in mMapSoundLayer)
             {
@@ -672,7 +672,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void freeAudioSource(AudioSource audio_src)
+        public void FreeAudioSource(AudioSource audio_src)
         {
             mQueAudioFree.Enqueue(audio_src);
         }

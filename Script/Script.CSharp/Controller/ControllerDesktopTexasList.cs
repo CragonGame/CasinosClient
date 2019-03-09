@@ -7,7 +7,7 @@ namespace Cs
     using System.Text;
     using UnityEngine;
 
-    public class ControllerDesktopListTexas : Controller
+    public class ControllerDesktopTexasList : Controller
     {
         //---------------------------------------------------------------------
         public override void Create()

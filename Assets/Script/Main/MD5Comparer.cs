@@ -20,7 +20,7 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public bool isSameFile(string local_filepath, string remote_filemd5)
+        public bool IsSameFile(string local_filepath, string remote_filemd5)
         {
             StringBuilder sb = new StringBuilder();
             using (FileStream sr = File.OpenRead(local_filepath))

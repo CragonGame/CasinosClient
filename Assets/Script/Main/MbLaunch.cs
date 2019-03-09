@@ -135,8 +135,8 @@ namespace Casinos
                             AppDomain.DelegateManager.RegisterMethodDelegate<Texture>();
                             //AppDomain.DelegateManager.RegisterFunctionDelegate<int, float, bool>();
 
-                            LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
                             ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
+                            LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
 
                             string platform = "Android";
                             bool is_editor = false;

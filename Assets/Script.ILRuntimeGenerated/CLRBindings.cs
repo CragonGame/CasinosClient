@@ -29,6 +29,13 @@ namespace ILRuntime.Runtime.Generated
             System_IO_MemoryStream_Binding.Register(app);
             System_IO_FileStream_Binding.Register(app);
             System_IO_Path_Binding.Register(app);
+            System_IO_TextReader_Binding.Register(app);
+            System_IO_TextWriter_Binding.Register(app);
+            System_IO_StreamReader_Binding.Register(app);
+            System_IO_StreamWriter_Binding.Register(app);
+            System_IO_StringReader_Binding.Register(app);
+            System_IO_StringWriter_Binding.Register(app);
+            System_Text_Encoding_Binding.Register(app);
             System_Text_StringBuilder_Binding.Register(app);
             UnityEngine_Object_Binding.Register(app);
             UnityEngine_Component_Binding.Register(app);
@@ -109,8 +116,8 @@ namespace ILRuntime.Runtime.Generated
             FairyGUI_UIPackage_Binding.Register(app);
             FairyGUI_Window_Binding.Register(app);
             Spine_Unity_SkeletonAnimation_Binding.Register(app);
-            Casinos_MbAsyncLoadAssets_Binding.Register(app);
             System_Collections_Generic_List_1_ILTypeInstance_Binding.Register(app);
+            Casinos_MbAsyncLoadAssets_Binding.Register(app);
         }
 
         /// <summary>

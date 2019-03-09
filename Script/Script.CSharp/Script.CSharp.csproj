@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Script.CSharp</RootNamespace>
     <AssemblyName>Script.CSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -48,6 +48,9 @@
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
+	<Reference Include="UnityEngine.AudioModule">
+      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -61,6 +64,7 @@
     <Compile Include="Controller.DesktopH\ControllerDesktopH.cs" />
     <Compile Include="Controller.DesktopTexas\ControllerDesktopTexas.cs" />
     <Compile Include="Controller.IM\ControllerIM.cs" />
+    <Compile Include="Controller\LoginPlayerPrefs.cs" />
     <Compile Include="Controller\ControllerLaunch.cs" />
     <Compile Include="Controller\ControllerWallet.cs" />
     <Compile Include="Controller\ControllerUCenter.cs" />
@@ -74,7 +78,7 @@
     <Compile Include="Controller\ControllerLotteryTicket.cs" />
     <Compile Include="Controller\ControllerLogin.cs" />
     <Compile Include="Controller\ControllerGrow.cs" />
-    <Compile Include="Controller\ControllerDesktopListTexas.cs" />
+    <Compile Include="Controller\ControllerDesktopTexasList.cs" />
     <Compile Include="Controller\ControllerBag.cs" />
     <Compile Include="Controller\ControllerActor.cs" />
     <Compile Include="Controller\ControllerActivity.cs" />

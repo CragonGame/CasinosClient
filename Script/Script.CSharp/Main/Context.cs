@@ -54,7 +54,7 @@ namespace Cs
             ControllerMgr.RegControllerFactory(new ControllerFactory<ControllerActivity>());
             ControllerMgr.RegControllerFactory(new ControllerFactory<ControllerActor>());
             ControllerMgr.RegControllerFactory(new ControllerFactory<ControllerBag>());
-            ControllerMgr.RegControllerFactory(new ControllerFactory<ControllerDesktopListTexas>());
+            ControllerMgr.RegControllerFactory(new ControllerFactory<ControllerDesktopTexasList>());
             ControllerMgr.RegControllerFactory(new ControllerFactory<ControllerGrow>());
             ControllerMgr.RegControllerFactory(new ControllerFactory<ControllerLaunch>());
             ControllerMgr.RegControllerFactory(new ControllerFactory<ControllerLogin>());
@@ -104,10 +104,6 @@ namespace Cs
             // 先创建ControllerLaunch
             ControllerLaunch controller_launch = ControllerMgr.CreateController<ControllerLaunch>();
             controller_launch.Launch();
-
-            //TestJson.Run();
-            //TestMsgPack.Run();
-            //TestProtobuf.Run();
         }
 
         //-------------------------------------------------------------------------
