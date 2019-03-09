@@ -10,6 +10,7 @@ namespace Cs
     public class ViewMgr
     {
         //-------------------------------------------------------------------------
+        public ControllerMgr ControllerMgr { get; private set; }
         Dictionary<string, ViewFactory> MapViewFactory { get; set; } = new Dictionary<string, ViewFactory>();
         Dictionary<string, View> MapView { get; set; } = new Dictionary<string, View>();
         GameObject GoGRoot { get; set; }
@@ -33,6 +34,8 @@ namespace Cs
         //-------------------------------------------------------------------------
         public void Create()
         {
+            ControllerMgr = Context.Instance.ControllerMgr;
+
             FairyGUI.GRoot.inst.SetContentScaleFactor(STANDARD_WIDTH, STANDARD_HEIGHT, FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight);
             FairyGUI.UIConfig.defaultFont = "FontXi";
 
@@ -98,6 +101,7 @@ namespace Cs
             ui_panel.ApplyModifiedProperties(true, true);
 
             var view = factory.CreateView();
+            view.ControllerMgr = ControllerMgr;
             view.GCom = ui_panel.ui;
             view.Create();
 

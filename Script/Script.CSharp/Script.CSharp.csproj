@@ -61,6 +61,7 @@
     <Compile Include="Controller.DesktopH\ControllerDesktopH.cs" />
     <Compile Include="Controller.DesktopTexas\ControllerDesktopTexas.cs" />
     <Compile Include="Controller.IM\ControllerIM.cs" />
+    <Compile Include="Controller\ControllerLaunch.cs" />
     <Compile Include="Controller\ControllerWallet.cs" />
     <Compile Include="Controller\ControllerUCenter.cs" />
     <Compile Include="Controller\ControllerTrade.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Main\Event.cs" />
     <Compile Include="Main\EventMgr.cs" />
     <Compile Include="Main\Main.cs" />
+    <Compile Include="Main\ParticleMgr.cs" />
     <Compile Include="Main\PathMgr.cs" />
     <Compile Include="Main\ResourceMgr.cs" />
     <Compile Include="Main\SoundMgr.cs" />
