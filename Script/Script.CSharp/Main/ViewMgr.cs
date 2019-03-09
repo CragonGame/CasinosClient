@@ -10,6 +10,7 @@ namespace Cs
     public class ViewMgr
     {
         //-------------------------------------------------------------------------
+        public EventMgr EventMgr { get; private set; }
         public ControllerMgr ControllerMgr { get; private set; }
         Dictionary<string, ViewFactory> MapViewFactory { get; set; } = new Dictionary<string, ViewFactory>();
         Dictionary<string, View> MapView { get; set; } = new Dictionary<string, View>();
@@ -34,6 +35,7 @@ namespace Cs
         //-------------------------------------------------------------------------
         public void Create()
         {
+            EventMgr = Context.Instance.EventMgr;
             ControllerMgr = Context.Instance.ControllerMgr;
 
             FairyGUI.GRoot.inst.SetContentScaleFactor(STANDARD_WIDTH, STANDARD_HEIGHT, FairyGUI.UIContentScaler.ScreenMatchMode.MatchWidthOrHeight);
@@ -101,6 +103,7 @@ namespace Cs
             ui_panel.ApplyModifiedProperties(true, true);
 
             var view = factory.CreateView();
+            view.EventMgr = EventMgr;
             view.ControllerMgr = ControllerMgr;
             view.GCom = ui_panel.ui;
             view.Create();
@@ -142,6 +145,24 @@ namespace Cs
                 FairyGUI.UIPackage.AddPackage(ab);
                 res_mgr.AddAssetBundle(path_ab, ab);
             }
+        }
+
+        //---------------------------------------------------------------------
+        public void ListenEvent<T>(EventListener listener) where T : Event
+        {
+            EventMgr.ListenEvent<T>(listener);
+        }
+
+        //---------------------------------------------------------------------
+        public void UnListenAllEvent(EventListener listener)
+        {
+            EventMgr.UnListenAllEvent(listener);
+        }
+
+        //---------------------------------------------------------------------
+        public T GenEvent<T>() where T : Event, new()
+        {
+            return EventMgr.GenEvent<T>();
         }
     }
 }

@@ -5,6 +5,7 @@ namespace Casinos
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Text;
     using UnityEngine;
     using UnityEngine.Networking;
 
@@ -48,6 +49,8 @@ namespace Casinos
         //---------------------------------------------------------------------
         IEnumerator _localLoadAssetBundleAsync(string url, Action<AssetBundle> cb)
         {
+            AssetBundle ab = null;
+
             using (UnityWebRequest www_request = UnityWebRequest.Get(url))
             {
                 yield return www_request.SendWebRequest();
@@ -60,11 +63,12 @@ namespace Casinos
                 {
                     if (www_request.responseCode == 200)
                     {
-                        AssetBundle ab = DownloadHandlerAssetBundle.GetContent(www_request);
-                        if (cb != null) cb.Invoke(ab);
+                        ab = DownloadHandlerAssetBundle.GetContent(www_request);
                     }
                 }
             }
+
+            if (cb != null) cb.Invoke(ab);
         }
 
         //---------------------------------------------------------------------
@@ -119,6 +123,8 @@ namespace Casinos
         //---------------------------------------------------------------------
         IEnumerator _wwwLoadTextAsync(string url, Action<string> cb)
         {
+            string s = string.Empty;
+
             using (UnityWebRequest www_request = UnityWebRequest.Get(url))
             {
                 yield return www_request.SendWebRequest();
@@ -131,15 +137,19 @@ namespace Casinos
                 {
                     if (www_request.responseCode == 200)
                     {
-                        if (cb != null) cb.Invoke(www_request.downloadHandler.text);
+                        s = www_request.downloadHandler.text;
                     }
                 }
             }
+
+            if (cb != null) cb.Invoke(s);
         }
 
         //---------------------------------------------------------------------
         IEnumerator _wwwLoadTextureAsync(string url, Action<Texture> cb)
         {
+            Texture texture = null;
+
             using (UnityWebRequest www_request = UnityWebRequest.Get(url))
             {
                 www_request.downloadHandler = new DownloadHandlerTexture();
@@ -153,15 +163,19 @@ namespace Casinos
                 {
                     if (www_request.responseCode == 200)
                     {
-                        if (cb != null) cb.Invoke(((DownloadHandlerTexture)www_request.downloadHandler).texture);
+                        texture = ((DownloadHandlerTexture)www_request.downloadHandler).texture;
                     }
                 }
             }
+
+            if (cb != null) cb.Invoke(texture);
         }
 
         //---------------------------------------------------------------------
         IEnumerator _wwwLoadAssetBundleAsync(string url, Action<AssetBundle> cb)
         {
+            AssetBundle ab = null;
+
             using (UnityWebRequest www_request = UnityWebRequest.Get(url))
             {
                 yield return www_request.SendWebRequest();
@@ -174,11 +188,12 @@ namespace Casinos
                 {
                     if (www_request.responseCode == 200)
                     {
-                        AssetBundle ab = DownloadHandlerAssetBundle.GetContent(www_request);
-                        if (cb != null) cb.Invoke(ab);
+                        ab = DownloadHandlerAssetBundle.GetContent(www_request);
                     }
                 }
             }
+
+            if (cb != null) cb.Invoke(ab);
         }
     }
 }

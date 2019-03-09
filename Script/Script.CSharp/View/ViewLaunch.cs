@@ -10,9 +10,19 @@ namespace Cs
     public class ViewLaunch : View
     {
         //---------------------------------------------------------------------
+        GTextField GTextTips { get; set; }
+        GProgressBar GProgress { get; set; }
+
+        //---------------------------------------------------------------------
         public override void Create()
         {
             Debug.Log("ViewLaunch.Create()");
+
+            GProgress = GCom.GetChild("Progress").asProgress;
+            GProgress.max = 100;
+            GProgress.value = 0;
+
+            GTextTips = GCom.GetChild("Tips").asTextField;
 
             var com_bg = GCom.GetChild("ComBg").asCom;
             var image_mote = com_bg.GetChild("ImageMote").asImage;
@@ -74,8 +84,11 @@ namespace Cs
         {
             var version_text = GCom.GetChild("Version").asTextField;
 
-            string app_version = "应用版本";
-            string data_versionex = "数据版本";
+            var cfg = Context.Instance.Config;
+            string app_version_label = "应用版本";
+            string launch_version_label = "更新器版本";
+            string data_version_label = "数据版本";
+
             //local lan = CurrentLan
             //if (lan == "English") then
             //app_version = "AppVersion"
@@ -84,11 +97,25 @@ namespace Cs
             //if (lan == "Chinese" or lan == "ChineseSimplified") then
             //app_version = "应用版本"
             //data_versionex = "数据版本"
-            string version_bundle = string.Empty;// self.CasinosContext.Config.VersionBundle
-            string version_data = string.Empty;// self.CasinosContext.Config.VersionDataPersistent
-            if (string.IsNullOrEmpty(version_data)) version_data = " ";
-            //self.Launch.LaunchCfg.Env
-            version_text.text = string.Format("{0}: {1},  {2}: {3} {4}", app_version, version_bundle, data_versionex, version_data, "Dev");
+
+            version_text.text = string.Format("{0}: {1},  {2}: {3},  {4}: {5} {6}",
+                app_version_label, cfg.BundleVersion, launch_version_label, cfg.LaunchVersion, data_version_label, cfg.DataVersion, cfg.Env);
+        }
+
+        //---------------------------------------------------------------------
+        // 更新进度条上方提示文字
+        public void UpdateDesc(string desc)
+        {
+            GTextTips.text = desc;
+        }
+
+        //---------------------------------------------------------------------
+        // 更新进度条
+        public void UpdateLoadingProgress(int value, int max)
+        {
+            GProgress.visible = true;
+            GProgress.value = value;
+            GProgress.max = max;
         }
     }
 

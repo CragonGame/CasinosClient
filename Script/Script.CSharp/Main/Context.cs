@@ -11,15 +11,19 @@ namespace Cs
     {
         //-------------------------------------------------------------------------
         public static Context Instance { get; private set; }
+        public GameObject GoLaunch { get; private set; }
+        public Casinos.MbAsyncLoadAssets MbAsyncLoadAssets { get; private set; }
+        public Casinos.MbShowFPS MbShowFPS { get; private set; }
         public StringBuilder Sb { get; set; } = new StringBuilder(512);
+        public Config Config { get; private set; }
         public PathMgr PathMgr { get; private set; }
+        public EventMgr EventMgr { get; private set; }
         public ResourceMgr ResourceMgr { get; private set; }
         public SoundMgr SoundMgr { get; private set; }
         public ParticleMgr ParticleMgr { get; private set; }
         public SpineMgr SpineMgr { get; private set; }
         public ControllerMgr ControllerMgr { get; private set; }
         public ViewMgr ViewMgr { get; private set; }
-        public string Platform { get; private set; }
 
         //-------------------------------------------------------------------------
         public Context()
@@ -28,13 +32,19 @@ namespace Cs
         }
 
         //-------------------------------------------------------------------------
-        public void Create(string platform, bool is_editor_debug)
+        public void Create(string platform, bool is_editor, bool is_editor_debug)
         {
-            string s = string.Format("Context.Create() PlatForm={0}, IsEditorDebug={1}", platform, is_editor_debug);
+            string s = string.Format("Context.Create()");
             Debug.Log(s);
 
-            Platform = platform;
-            PathMgr = new PathMgr(platform, is_editor_debug);
+            GoLaunch = GameObject.Find("Launch");
+            MbAsyncLoadAssets = (Casinos.MbAsyncLoadAssets)GoLaunch.GetComponent("Casinos.MbAsyncLoadAssets");
+            MbShowFPS = (Casinos.MbShowFPS)GoLaunch.GetComponent("Casinos.MbShowFPS");
+
+            Config = new Config(platform, is_editor, is_editor_debug);
+            Config.Load();
+            PathMgr = new PathMgr();
+            EventMgr = new EventMgr();
             ResourceMgr = new ResourceMgr();
             SoundMgr = new SoundMgr();
             ParticleMgr = new ParticleMgr();
@@ -64,6 +74,32 @@ namespace Cs
 
             ControllerMgr.Create();
             ViewMgr.Create();
+
+            // 初始化系统参数
+            if (Config.IsEditor)
+            {
+                Application.runInBackground = false;
+                Screen.sleepTimeout = SleepTimeout.SystemSetting;
+                QualitySettings.vSyncCount = 0;
+                Application.targetFrameRate = -1;
+            }
+            else
+            {
+                Application.runInBackground = true;
+                Screen.sleepTimeout = SleepTimeout.NeverSleep;
+                QualitySettings.vSyncCount = 1;
+                Application.targetFrameRate = 60;
+            }
+
+            // 是否显示FPS
+            if (Config.CfgSettings.ClientShowFPS)
+            {
+                MbShowFPS.enabled = true;
+            }
+            else
+            {
+                MbShowFPS.enabled = false;
+            }
 
             // 先创建ControllerLaunch
             ControllerLaunch controller_launch = ControllerMgr.CreateController<ControllerLaunch>();

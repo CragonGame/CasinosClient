@@ -9,6 +9,7 @@ namespace Cs
     public class ControllerMgr
     {
         //-------------------------------------------------------------------------
+        public EventMgr EventMgr { get; private set; }
         public ViewMgr ViewMgr { get; private set; }
         Dictionary<string, ControllerFactory> MapControllerFactory { get; set; } = new Dictionary<string, ControllerFactory>();
         Dictionary<string, Controller> MapController { get; set; } = new Dictionary<string, Controller>();
@@ -22,6 +23,7 @@ namespace Cs
         //-------------------------------------------------------------------------
         public void Create()
         {
+            EventMgr = Context.Instance.EventMgr;
             ViewMgr = Context.Instance.ViewMgr;
         }
 
@@ -46,6 +48,7 @@ namespace Cs
             }
 
             controller = factory.CreateController();
+            controller.EventMgr = EventMgr;
             controller.ViewMgr = ViewMgr;
             MapController[name] = controller;
             controller.Create();
@@ -60,6 +63,24 @@ namespace Cs
             MapController.TryGetValue(name, out Controller controller);
             if (controller == null) return null;
             return (T)controller;
+        }
+
+        //---------------------------------------------------------------------
+        public void ListenEvent<T>(EventListener listener) where T : Event
+        {
+            EventMgr.ListenEvent<T>(listener);
+        }
+
+        //---------------------------------------------------------------------
+        public void UnListenAllEvent(EventListener listener)
+        {
+            EventMgr.UnListenAllEvent(listener);
+        }
+
+        //---------------------------------------------------------------------
+        public T GenEvent<T>() where T : Event, new()
+        {
+            return EventMgr.GenEvent<T>();
         }
     }
 }

@@ -5,9 +5,10 @@ namespace Cs
     using System;
     using System.Collections.Generic;
 
-    public abstract class Controller
+    public abstract class Controller : EventListener
     {
         //---------------------------------------------------------------------
+        public EventMgr EventMgr { get; set; }
         public ViewMgr ViewMgr { get; set; }
 
         //---------------------------------------------------------------------
@@ -17,7 +18,22 @@ namespace Cs
         public abstract void Destory();
 
         //---------------------------------------------------------------------
-        public abstract void HandleEvent(Event ev);
+        public void ListenEvent<T>() where T : Event
+        {
+            EventMgr.ListenEvent<T>(this);
+        }
+
+        //---------------------------------------------------------------------
+        public void UnListenAllEvent()
+        {
+            EventMgr.UnListenAllEvent(this);
+        }
+
+        //---------------------------------------------------------------------
+        public T GenEvent<T>() where T : Event, new()
+        {
+            return EventMgr.GenEvent<T>();
+        }
     }
 
     public abstract class ControllerFactory

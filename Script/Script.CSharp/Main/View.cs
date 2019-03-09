@@ -7,9 +7,10 @@ namespace Cs
     using System.Collections.Generic;
     using FairyGUI;
 
-    public abstract class View
+    public abstract class View : EventListener
     {
         //-------------------------------------------------------------------------
+        public EventMgr EventMgr { get; set; }
         public ControllerMgr ControllerMgr { get; set; }
 
         //-------------------------------------------------------------------------
@@ -21,8 +22,23 @@ namespace Cs
         //-------------------------------------------------------------------------
         public abstract void Destory();
 
-        //-------------------------------------------------------------------------
-        public abstract void HandleEvent(Event ev);
+        //---------------------------------------------------------------------
+        public void ListenEvent<T>() where T : Event
+        {
+            EventMgr.ListenEvent<T>(this);
+        }
+
+        //---------------------------------------------------------------------
+        public void UnListenAllEvent()
+        {
+            EventMgr.UnListenAllEvent(this);
+        }
+
+        //---------------------------------------------------------------------
+        public T GenEvent<T>() where T : Event, new()
+        {
+            return EventMgr.GenEvent<T>();
+        }
     }
 
     public abstract class ViewFactory

@@ -130,12 +130,34 @@ namespace Casinos
                             AppDomain.LoadAssembly(fs, p, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
 
                             // 这里做一些ILRuntime的注册
+                            AppDomain.DelegateManager.RegisterMethodDelegate<string>();
+                            AppDomain.DelegateManager.RegisterMethodDelegate<AssetBundle>();
+                            AppDomain.DelegateManager.RegisterMethodDelegate<Texture>();
+                            //AppDomain.DelegateManager.RegisterFunctionDelegate<int, float, bool>();
+
                             LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
-                            //ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
+                            ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
 
                             string platform = "Android";
+                            bool is_editor = false;
+#if UNITY_STANDALONE_WIN
+                            platform = "PC";
+#elif UNITY_ANDROID && UNITY_EDITOR
+                            platform = "Android";
+#elif UNITY_ANDROID
+                            platform = "Android";
+#elif UNITY_IPHONE
+                            platform = "iOS";
+#endif
+
+#if UNITY_EDITOR
+                            is_editor = true;
+#else
+                            is_editor = false;
+#endif
+
                             bool is_editor_debug = false;
-                            AppDomain.Invoke("Cs.Main", "Create", null, new object[] { platform, is_editor_debug });
+                            AppDomain.Invoke("Cs.Main", "Create", null, new object[] { platform, is_editor, is_editor_debug });
                         }
                     }
                 }

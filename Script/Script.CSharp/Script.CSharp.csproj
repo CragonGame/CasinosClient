@@ -78,8 +78,10 @@
     <Compile Include="Controller\ControllerBag.cs" />
     <Compile Include="Controller\ControllerActor.cs" />
     <Compile Include="Controller\ControllerActivity.cs" />
+    <Compile Include="Event\EventControllerLaunch.cs" />
     <Compile Include="Event\EventController.cs" />
     <Compile Include="Event\EventView.cs" />
+    <Compile Include="Main\Config.cs" />
     <Compile Include="Main\Context.cs" />
     <Compile Include="Main\Controller.cs" />
     <Compile Include="Main\ControllerMgr.cs" />
@@ -140,13 +142,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy   "$(TargetDir)Script.Common.dll"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
-xcopy   "$(TargetDir)Script.CSharp.dll"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
-xcopy   "$(TargetDir)Script.Common.pdb"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
-xcopy   "$(TargetDir)Script.CSharp.pdb"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
-xcopy   "$(TargetDir)Script.Common.dll"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y
-xcopy   "$(TargetDir)Script.CSharp.dll"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y
-xcopy   "$(TargetDir)Script.Common.pdb"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y
-xcopy   "$(TargetDir)Script.CSharp.pdb"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y</PostBuildEvent>
+    <PostBuildEvent>xcopy   "$(TargetDir)Script.*"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
+xcopy   "$(TargetDir)Script.*"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

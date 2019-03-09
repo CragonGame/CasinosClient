@@ -54,6 +54,7 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_Ping_Binding.Register(app);
             UnityEngine_PlayerPrefs_Binding.Register(app);
             UnityEngine_Quaternion_Binding.Register(app);
+            UnityEngine_QualitySettings_Binding.Register(app);
             UnityEngine_Random_Binding.Register(app);
             UnityEngine_Rect_Binding.Register(app);
             UnityEngine_RectTransform_Binding.Register(app);
@@ -108,6 +109,7 @@ namespace ILRuntime.Runtime.Generated
             FairyGUI_UIPackage_Binding.Register(app);
             FairyGUI_Window_Binding.Register(app);
             Spine_Unity_SkeletonAnimation_Binding.Register(app);
+            Casinos_MbAsyncLoadAssets_Binding.Register(app);
             System_Collections_Generic_List_1_ILTypeInstance_Binding.Register(app);
         }
 

@@ -127,7 +127,6 @@ public class EditorContext
         types.Add(typeof(System.IO.Directory));
         types.Add(typeof(System.IO.DirectoryInfo));
         types.Add(typeof(System.IO.File));
-        types.Add(typeof(System.IO.Stream));
         types.Add(typeof(System.IO.MemoryStream));
         types.Add(typeof(System.IO.FileStream));
         types.Add(typeof(System.IO.Path));
@@ -159,6 +158,7 @@ public class EditorContext
         types.Add(typeof(UnityEngine.Ping));
         types.Add(typeof(UnityEngine.PlayerPrefs));
         types.Add(typeof(UnityEngine.Quaternion));
+        types.Add(typeof(UnityEngine.QualitySettings));
         types.Add(typeof(UnityEngine.Random));
         types.Add(typeof(UnityEngine.Rect));
         types.Add(typeof(UnityEngine.RectTransform));
@@ -231,6 +231,9 @@ public class EditorContext
 
         // Spine
         types.Add(typeof(Spine.Unity.SkeletonAnimation));
+
+        // Casinos
+        types.Add(typeof(Casinos.MbAsyncLoadAssets));
 
         // 所有DLL内的类型的真实C#类型都是ILTypeInstance
         types.Add(typeof(List<ILRuntime.Runtime.Intepreter.ILTypeInstance>));

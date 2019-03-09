@@ -23,16 +23,17 @@ namespace Cs
         StringBuilder Sb { get; set; }
 
         //---------------------------------------------------------------------
-        public PathMgr(string platform, bool is_editor_debug)
+        public PathMgr()
         {
             Sb = Context.Instance.Sb;
+            var cfg = Context.Instance.Config;
 
-            if (is_editor_debug)
+            if (cfg.IsEditorDebug)
             {
                 string p = Path.Combine(System.Environment.CurrentDirectory, "./DataOss/");
                 var di = new DirectoryInfo(p);
                 string p1 = di.FullName.Replace('\\', '/');
-                p1 += platform;
+                p1 += cfg.Platform;
 
                 DirAbRoot = p1 + "/Resources.KingTexas/";
                 DirAbLaunch = p1 + "/Resources.KingTexasLaunch/";
@@ -42,14 +43,14 @@ namespace Cs
                 Sb.Clear();
                 Sb.Append(Application.persistentDataPath);
                 Sb.Append("/");
-                Sb.Append(platform);
+                Sb.Append(cfg.Platform);
                 Sb.Append("/Resources.KingTexas/");
                 DirAbRoot = Sb.ToString();
 
                 Sb.Clear();
                 Sb.Append(Application.persistentDataPath);
                 Sb.Append("/");
-                Sb.Append(platform);
+                Sb.Append(cfg.Platform);
                 Sb.Append("/Resources.KingTexasLaunch/");
                 DirAbLaunch = Sb.ToString();
             }
