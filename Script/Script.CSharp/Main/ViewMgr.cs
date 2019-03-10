@@ -35,6 +35,8 @@ namespace Cs
         //---------------------------------------------------------------------
         public void Create()
         {
+            Debug.Log("ViewMgr.Create()");
+
             EventMgr = Context.Instance.EventMgr;
             ControllerMgr = Context.Instance.ControllerMgr;
 
@@ -62,6 +64,7 @@ namespace Cs
         //---------------------------------------------------------------------
         public void Destroy()
         {
+            Debug.Log("ViewMgr.Destroy()");
         }
 
         //---------------------------------------------------------------------

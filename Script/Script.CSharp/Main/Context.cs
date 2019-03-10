@@ -11,10 +11,11 @@ namespace Cs
     {
         //-------------------------------------------------------------------------
         public static Context Instance { get; private set; }
+        public StringBuilder Sb { get; set; } = new StringBuilder(512);
         public GameObject GoLaunch { get; private set; }
         public Casinos.MbAsyncLoadAssets MbAsyncLoadAssets { get; private set; }
         public Casinos.MbShowFPS MbShowFPS { get; private set; }
-        public StringBuilder Sb { get; set; } = new StringBuilder(512);
+        public Casinos.TimerShaft TimerShaft { get; private set; }
         public Config Config { get; private set; }
         public PathMgr PathMgr { get; private set; }
         public EventMgr EventMgr { get; private set; }
@@ -24,6 +25,7 @@ namespace Cs
         public SpineMgr SpineMgr { get; private set; }
         public ControllerMgr ControllerMgr { get; private set; }
         public ViewMgr ViewMgr { get; private set; }
+        System.Diagnostics.Stopwatch Stopwatch { get; set; }
 
         //-------------------------------------------------------------------------
         public Context()
@@ -36,6 +38,10 @@ namespace Cs
         {
             string s = string.Format("Context.Create()");
             Debug.Log(s);
+
+            Stopwatch = new System.Diagnostics.Stopwatch();
+            Stopwatch.Start();
+            TimerShaft = new Casinos.TimerShaft();
 
             GoLaunch = GameObject.Find("Launch");
             MbAsyncLoadAssets = (Casinos.MbAsyncLoadAssets)GoLaunch.GetComponent("Casinos.MbAsyncLoadAssets");
@@ -122,12 +128,22 @@ namespace Cs
                 ControllerMgr = null;
             }
 
+            if (TimerShaft != null)
+            {
+                TimerShaft.Destroy();
+                TimerShaft = null;
+            }
+
             Debug.Log("Context.Destroy()");
         }
 
         //-------------------------------------------------------------------------
-        public void Update()
+        public void Update(float elapsed_tm)
         {
+            if (TimerShaft != null)
+            {
+                TimerShaft.ProcessTimer((ulong)Stopwatch.ElapsedMilliseconds);
+            }
         }
     }
 }

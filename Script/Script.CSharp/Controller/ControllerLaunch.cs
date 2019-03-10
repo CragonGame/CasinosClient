@@ -30,6 +30,9 @@ namespace Cs
         string CommonVersionRemote { get; set; } = string.Empty;
         string DataVersionRemote { get; set; } = string.Empty;
         string[] LaunchStep { get; set; } = new string[4];
+        Casinos.EbTimer TimerUpdate { get; set; }
+
+        int Count { get; set; } = 0;
 
         //---------------------------------------------------------------------
         public override void Create()
@@ -43,6 +46,13 @@ namespace Cs
         public override void Destory()
         {
             UnListenAllEvent();
+
+            // 销毁定时器
+            if (TimerUpdate != null)
+            {
+                TimerUpdate.Close();
+                TimerUpdate = null;
+            }
 
             Debug.Log("ControllerLaunch.Destory()");
         }
@@ -157,6 +167,13 @@ namespace Cs
         // 执行下一步LaunchStep
         void _nextLaunchStep()
         {
+            // 销毁定时器
+            //if (TimerUpdate != null)
+            //{
+            //    TimerUpdate.Close();
+            //    TimerUpdate = null;
+            //}
+
             //UpdateViewLoadingDescAndProgress("准备登录中", 0, 100);
 
             //ViewMgr.DestroyView<ViewLaunch>();
@@ -302,6 +319,12 @@ namespace Cs
                 persistent_launchfilelist_content = File.ReadAllText(launchfilelist_persistent);
             }
 
+            if (TimerUpdate == null)
+            {
+                TimerUpdate = Context.Instance.TimerShaft.RegisterTimer(30, _timerUpdate);
+            }
+
+
             //Debug.Log(launchfilelist_persistent);
             //Debug.Log(text);
             //self.RemoteCommonFileListContent = text;
@@ -311,6 +334,18 @@ namespace Cs
             //self.UpdateRemoteCommonToPersistent = CS.Casinos.UpdateRemoteToPersistentData();
             //self.UpdateRemoteCommonToPersistent:UpateAsync(self.RemoteCommonFileListContent, persistent_commonfilelist_content, self.Cfg.CommonRootURL, commonrootdir_persistent);
             //self.TimerUpdateRemoteCommonToPersistent = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteCommonToPersistent);
+        }
+
+        //---------------------------------------------------------------------
+        // 定时器
+        void _timerUpdate(float tm)
+        {
+            Count++;
+            if (Count > 200)
+            {
+                Count = 0;
+                Debug.Log("TimerUpdate");
+            }
         }
 
         //---------------------------------------------------------------------

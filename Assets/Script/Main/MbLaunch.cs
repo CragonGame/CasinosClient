@@ -47,9 +47,22 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        private void Update()
+        {
+            if (AppDomain != null)
+            {
+                AppDomain.Invoke("Cs.Main", "Update", null, new object[] { Time.deltaTime });
+            }
+        }
+
+        //---------------------------------------------------------------------
         private void OnDestroy()
         {
-            AppDomain = null;
+            if (AppDomain != null)
+            {
+                AppDomain.Invoke("Cs.Main", "Destroy", null, new object[] { });
+                AppDomain = null;
+            }
 
             if (MsCommonDll != null)
             {
@@ -74,6 +87,8 @@ namespace Casinos
                 MsScriptPdb.Close();
                 MsScriptPdb = null;
             }
+
+            Debug.Log("MbLaunch.OnDestroy()");
         }
 
         //---------------------------------------------------------------------

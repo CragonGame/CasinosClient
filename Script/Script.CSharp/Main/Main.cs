@@ -24,9 +24,9 @@ namespace Cs
         }
 
         //-------------------------------------------------------------------------
-        public static void Update()
+        public static void Update(float elapsed_tm)
         {
-            Context.Update();
+            Context.Update(elapsed_tm);
         }
     }
 }
