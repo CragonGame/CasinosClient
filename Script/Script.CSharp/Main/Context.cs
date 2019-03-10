@@ -71,6 +71,7 @@ namespace Cs
 
             ViewMgr = new ViewMgr();
             ViewMgr.RegViewFactory(new ViewFactoryLaunch());
+            ViewMgr.RegViewFactory(new ViewFactoryLogin());
 
             ControllerMgr.Create();
             ViewMgr.Create();

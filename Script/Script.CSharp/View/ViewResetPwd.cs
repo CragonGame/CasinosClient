@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// Copyright (c) Cragon. All rights reserved.
 
 namespace Cs
 {
+    using System.Collections.Generic;
+    using UnityEngine;
+    using FairyGUI;
+
     public class ViewResetPwd : View
     {
         //---------------------------------------------------------------------
