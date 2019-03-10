@@ -69,10 +69,10 @@ namespace Cs
             DirAbItem = DirAbRoot + "Item/";
             DirAbParticle = DirAbRoot + "Particle/";
 
-            Debug.Log("DirLaunchRoot=" + DirLaunchRoot);
-            Debug.Log("DirLaunchAb=" + DirLaunchAb);
-            Debug.Log("DirCommonRoot=" + DirCommonRoot);
-            Debug.Log("DirAbRoot=" + DirAbRoot);
+            //Debug.Log("DirLaunchRoot=" + DirLaunchRoot);
+            //Debug.Log("DirLaunchAb=" + DirLaunchAb);
+            //Debug.Log("DirCommonRoot=" + DirCommonRoot);
+            //Debug.Log("DirAbRoot=" + DirAbRoot);
         }
     }
 }

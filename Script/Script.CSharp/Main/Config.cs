@@ -52,12 +52,12 @@ namespace Cs
         public bool UseDefaultLan { get; set; } = false;
         public string DefaultLan { get; set; } = "Chinese";
         public string CurrentLan { get; set; } = "ChineseSimplified";
-        public string BundleVersion { get; set; } = "1.00.000";// 本地Bundle版本号
-        public string LaunchVersion { get; set; } = "1.00.000";// 本地Launch版本号
+        public string BundleVersion { get; set; } = "";// 本地Bundle版本号
+        public string LaunchVersion { get; set; } = "";// 本地Launch版本号
         public string LaunchRootURL { get; set; } = "";
-        public string CommonVersion { get; set; } = "1.00.000";// 本地Common版本号
+        public string CommonVersion { get; set; } = "";// 本地Common版本号
         public string CommonRootURL { get; set; } = "";
-        public string DataVersion { get; set; } = "1.00.000";// 本地Data版本号
+        public string DataVersion { get; set; } = "";// 本地Data版本号
         public string DataRootURL { get; set; } = "";
         public string OssRootUrl { get; set; } = "https://cragon-king-oss.cragon.cn";
         public string AutopatcherUrl { get; set; } = "https://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml";
@@ -139,9 +139,27 @@ namespace Cs
 
             BundleVersion = Application.version;
 
-            Debug.Log("Platform=" + Platform);
-            Debug.Log("IsEditorDebug=" + IsEditorDebug);
-            Debug.Log("BundleVersion=" + BundleVersion);
+            if (PlayerPrefs.HasKey("VersionLaunchPersistent"))
+            {
+                LaunchVersion = PlayerPrefs.GetString("VersionLaunchPersistent");
+            }
+
+            if (PlayerPrefs.HasKey("VersionCommonPersistent"))
+            {
+                CommonVersion = PlayerPrefs.GetString("VersionCommonPersistent");
+            }
+
+            if (PlayerPrefs.HasKey("VersionDataPersistent"))
+            {
+                DataVersion = PlayerPrefs.GetString("VersionDataPersistent");
+            }
+
+            //Debug.Log("Platform=" + Platform);
+            //Debug.Log("IsEditorDebug=" + IsEditorDebug);
+            //Debug.Log("BundleVersion=" + BundleVersion);
+            //Debug.Log("LaunchVersion=" + LaunchVersion);
+            //Debug.Log("CommonVersion=" + CommonVersion);
+            //Debug.Log("DataVersion=" + DataVersion);
         }
 
         //-------------------------------------------------------------------------
@@ -149,6 +167,44 @@ namespace Cs
         {
             CfgSettings.Load();
             CfgModule.Load();
+        }
+
+        //---------------------------------------------------------------------
+        public void WriteVersionLaunchPersistent(string version_launch_persistent_new)
+        {
+            LaunchVersion = version_launch_persistent_new;
+            PlayerPrefs.SetString("VersionLaunchPersistent", LaunchVersion);
+        }
+
+        //---------------------------------------------------------------------
+        public void WriteVersionCommonPersistent(string version_common_persistent_new)
+        {
+            CommonVersion = version_common_persistent_new;
+            PlayerPrefs.SetString("VersionCommonPersistent", CommonVersion);
+        }
+
+        //---------------------------------------------------------------------
+        public void WriteVersionDataPersistent(string version_data_persistent_new)
+        {
+            DataVersion = version_data_persistent_new;
+            PlayerPrefs.SetString("VersionDataPersistent", DataVersion);
+        }
+
+        //---------------------------------------------------------------------
+        // v1>v2, return 1; v1=v2, return 0; v1<v2, return -1;
+        public int VersionCompare(string v1, string v2)
+        {
+            if (string.IsNullOrEmpty(v1)) return -1;
+            if (string.IsNullOrEmpty(v2)) return 1;
+
+            string v11 = v1.Replace(".", "");
+            string v22 = v2.Replace(".", "");
+            long i1 = long.Parse(v11);
+            long i2 = long.Parse(v22);
+
+            if (i1 > i2) return 1;
+            else if (i1 == i2) return 0;
+            else return -1;
         }
     }
 }

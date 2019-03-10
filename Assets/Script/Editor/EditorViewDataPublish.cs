@@ -45,10 +45,15 @@ public class EditorViewDataPublish : EditorWindow
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("清除所有VersionPersistent", GUILayout.Width(200)))
         {
+            PlayerPrefs.DeleteKey("VersionLaunchPersistent");
             PlayerPrefs.DeleteKey("VersionCommonPersistent");
             PlayerPrefs.DeleteKey("VersionDataPersistent");
-            PlayerPrefs.DeleteKey("VersionLaunchPersistent");
             ShowNotification(new GUIContent("删除所有VersionPersistent成功!"));
+        }
+        if (GUILayout.Button("清除VersionLaunchPersistent", GUILayout.Width(200)))
+        {
+            PlayerPrefs.DeleteKey("VersionLaunchPersistent");
+            ShowNotification(new GUIContent("删除VersionLaunchPersistent成功!"));
         }
         if (GUILayout.Button("清除VersionCommonPersistent", GUILayout.Width(200)))
         {
@@ -60,18 +65,29 @@ public class EditorViewDataPublish : EditorWindow
             PlayerPrefs.DeleteKey("VersionDataPersistent");
             ShowNotification(new GUIContent("删除VersionDataPersistent成功!"));
         }
-        if (GUILayout.Button("清除VersionLaunchPersistent", GUILayout.Width(200)))
-        {
-            PlayerPrefs.DeleteKey("VersionLaunchPersistent");
-            ShowNotification(new GUIContent("删除VersionLaunchPersistent成功!"));
-        }
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("清空Persistent目录", GUILayout.Width(200)))
         {
-            if (Directory.Exists(EditorContext.Instance.PathPersistent))
+            string dir_launch = Application.persistentDataPath + "/Launch";
+            string dir_common = Application.persistentDataPath + "/Common";
+            string dir_android = Application.persistentDataPath + "/Android";
+            string dir_ios = Application.persistentDataPath + "/iOS";
+            if (Directory.Exists(dir_launch))
             {
-                Directory.Delete(EditorContext.Instance.PathPersistent, true);
+                Directory.Delete(dir_launch, true);
+            }
+            if (Directory.Exists(dir_common))
+            {
+                Directory.Delete(dir_common, true);
+            }
+            if (Directory.Exists(dir_android))
+            {
+                Directory.Delete(dir_android, true);
+            }
+            if (Directory.Exists(dir_ios))
+            {
+                Directory.Delete(dir_ios, true);
             }
             ShowNotification(new GUIContent("清空Persistent目录成功!"));
         }
@@ -79,12 +95,28 @@ public class EditorViewDataPublish : EditorWindow
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("清空Persistent目录并清除所有VersionPersistent", GUILayout.Width(400)))
         {
+            PlayerPrefs.DeleteKey("VersionLaunchPersistent");
             PlayerPrefs.DeleteKey("VersionCommonPersistent");
             PlayerPrefs.DeleteKey("VersionDataPersistent");
-            PlayerPrefs.DeleteKey("VersionLaunchPersistent");
-            if (Directory.Exists(EditorContext.Instance.PathPersistent))
+            string dir_launch = Application.persistentDataPath + "/Launch";
+            string dir_common = Application.persistentDataPath + "/Common";
+            string dir_android = Application.persistentDataPath + "/Android";
+            string dir_ios = Application.persistentDataPath + "/iOS";
+            if (Directory.Exists(dir_launch))
             {
-                Directory.Delete(EditorContext.Instance.PathPersistent, true);
+                Directory.Delete(dir_launch, true);
+            }
+            if (Directory.Exists(dir_common))
+            {
+                Directory.Delete(dir_common, true);
+            }
+            if (Directory.Exists(dir_android))
+            {
+                Directory.Delete(dir_android, true);
+            }
+            if (Directory.Exists(dir_ios))
+            {
+                Directory.Delete(dir_ios, true);
             }
             ShowNotification(new GUIContent("清空Persistent目录并清除所有VersionPersistent成功!"));
         }

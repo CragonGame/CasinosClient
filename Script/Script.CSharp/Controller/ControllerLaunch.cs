@@ -72,10 +72,11 @@ namespace Cs
             Config cfg = Context.Instance.Config;
 
             // 下载并加载bundle_xxx.txt
-            string str_rd = UnityEngine.Random.Range(100000, 999999).ToString();
-            string bundle_cfg_remote = string.Format("Bundle_{0}", cfg.BundleVersion);
-            string bundle_cfg_remote_url = string.Format("https://cragon-king-oss.cragon.cn/{0}/{1}.txt?{2}",
-                Context.Instance.Config.Platform.ToUpper(), bundle_cfg_remote, str_rd);
+            string bundle_cfg_remote = string.Format("B_{0}", cfg.BundleVersion);
+
+            string bundle_cfg_remote_url = string.Format("https://cragon-king.oss-cn-shanghai.aliyuncs.com/{0}/{1}.txt",
+            //string bundle_cfg_remote_url = string.Format("https://cragon-king-oss.cragon.cn/{0}/{1}.txt",
+                Context.Instance.Config.Platform.ToUpper(), bundle_cfg_remote);
             Debug.Log(bundle_cfg_remote_url);
             async_loader.WWWLoadTextAsync(bundle_cfg_remote_url, _onDownloadBundleCfg);
         }
@@ -89,16 +90,18 @@ namespace Cs
             ev.Broadcast();
 
             VersionInfoRemote = LitJson.JsonMapper.ToObject<VersionInfoRemote>(text);
-            Debug.Log("VersionInfoRemote.BundleSelectDev=" + VersionInfoRemote.BundleSelectDev);
-            Debug.Log("VersionInfoRemote.BundleSelectPro=" + VersionInfoRemote.BundleSelectPro);
-            Debug.Log("VersionInfoRemote.LaunchSelectDev=" + VersionInfoRemote.LaunchSelectDev);
-            Debug.Log("VersionInfoRemote.LaunchSelectPro=" + VersionInfoRemote.LaunchSelectPro);
-            Debug.Log("VersionInfoRemote.CommonSelectDev=" + VersionInfoRemote.CommonSelectDev);
-            Debug.Log("VersionInfoRemote.CommonSelectPro=" + VersionInfoRemote.CommonSelectPro);
-            Debug.Log("VersionInfoRemote.DataSelectDev=" + VersionInfoRemote.DataSelectDev);
-            Debug.Log("VersionInfoRemote.DataSelectPro=" + VersionInfoRemote.DataSelectPro);
+
+            //Debug.Log("VersionInfoRemote.BundleSelectDev=" + VersionInfoRemote.BundleSelectDev);
+            //Debug.Log("VersionInfoRemote.BundleSelectPro=" + VersionInfoRemote.BundleSelectPro);
+            //Debug.Log("VersionInfoRemote.LaunchSelectDev=" + VersionInfoRemote.LaunchSelectDev);
+            //Debug.Log("VersionInfoRemote.LaunchSelectPro=" + VersionInfoRemote.LaunchSelectPro);
+            //Debug.Log("VersionInfoRemote.CommonSelectDev=" + VersionInfoRemote.CommonSelectDev);
+            //Debug.Log("VersionInfoRemote.CommonSelectPro=" + VersionInfoRemote.CommonSelectPro);
+            //Debug.Log("VersionInfoRemote.DataSelectDev=" + VersionInfoRemote.DataSelectDev);
+            //Debug.Log("VersionInfoRemote.DataSelectPro=" + VersionInfoRemote.DataSelectPro);
 
             _initLaunchStep();
+            _nextLaunchStep();
         }
 
         //---------------------------------------------------------------------
@@ -218,7 +221,6 @@ namespace Cs
             // 更新Launch
             if (!string.IsNullOrEmpty(LaunchStep[2]))
             {
-
             }
 
             // 更新Common
