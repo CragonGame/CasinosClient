@@ -20,15 +20,26 @@ namespace Casinos
     {
         //---------------------------------------------------------------------
         LaunchInfo LaunchInfo { get; set; }
-        ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get; set; } = new ILRuntime.Runtime.Enviorment.AppDomain();
+        ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get; set; } = null;
         MemoryStream MsCommonDll { get; set; }
         MemoryStream MsCommonPdb { get; set; }
         MemoryStream MsScriptDll { get; set; }
         MemoryStream MsScriptPdb { get; set; }
 
         //---------------------------------------------------------------------
+        public void Restart()
+        {
+            OnDestroy();
+
+            Start();
+        }
+
+        //---------------------------------------------------------------------
         void Start()
         {
+            LaunchInfo = null;
+            AppDomain = new ILRuntime.Runtime.Enviorment.AppDomain();
+
             // 读取VersionLaunchPersistent
             string launch_ver = string.Empty;
             if (PlayerPrefs.HasKey("VersionLaunchPersistent"))

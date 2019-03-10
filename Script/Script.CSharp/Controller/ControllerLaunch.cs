@@ -31,8 +31,10 @@ namespace Cs
         string DataVersionRemote { get; set; } = string.Empty;
         string[] LaunchStep { get; set; } = new string[4];
         Casinos.EbTimer TimerUpdate { get; set; }
-
-        int Count { get; set; } = 0;
+        UpdateRemoteToPersistentData UpdateRemoteToPersistentData4Launch { get; set; }
+        UpdateRemoteToPersistentData UpdateRemoteToPersistentData4CommonAndData { get; set; }
+        string StrCache1 { get; set; }
+        string StrCache2 { get; set; }
 
         //---------------------------------------------------------------------
         public override void Create()
@@ -167,6 +169,9 @@ namespace Cs
         // 执行下一步LaunchStep
         void _nextLaunchStep()
         {
+            //StrCache1 = string.Empty;
+            //StrCache2 = string.Empty;
+
             // 销毁定时器
             //if (TimerUpdate != null)
             //{
@@ -305,8 +310,12 @@ namespace Cs
 
         //---------------------------------------------------------------------
         // LaunchFileList.txt下载完毕
-        void _onDownloadLaunchFileList(string text)
+        void _onDownloadLaunchFileList(string remote_launchfilelist_content)
         {
+            StrCache1 = remote_launchfilelist_content;
+
+            Debug.Log("Launch文件列表下载完毕");
+
             Casinos.MbAsyncLoadAssets async_loader = Context.Instance.MbAsyncLoadAssets;
             Config cfg = Context.Instance.Config;
             PathMgr path_mgr = Context.Instance.PathMgr;
@@ -324,27 +333,51 @@ namespace Cs
                 TimerUpdate = Context.Instance.TimerShaft.RegisterTimer(30, _timerUpdate);
             }
 
+            Debug.Log(cfg.LaunchRootURL + LaunchVersionRemote + "/");
+            Debug.Log(path_mgr.DirLaunchRoot);
 
-            //Debug.Log(launchfilelist_persistent);
-            //Debug.Log(text);
-            //self.RemoteCommonFileListContent = text;
-            //string persistent_commonfilelist_content = self.LuaMgr:ReadAllText(commonfilelist_persistent);
-
-            //string commonrootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/');
-            //self.UpdateRemoteCommonToPersistent = CS.Casinos.UpdateRemoteToPersistentData();
-            //self.UpdateRemoteCommonToPersistent:UpateAsync(self.RemoteCommonFileListContent, persistent_commonfilelist_content, self.Cfg.CommonRootURL, commonrootdir_persistent);
-            //self.TimerUpdateRemoteCommonToPersistent = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteCommonToPersistent);
+            UpdateRemoteToPersistentData4Launch = new UpdateRemoteToPersistentData();
+            UpdateRemoteToPersistentData4Launch.UpateAsync(
+                remote_launchfilelist_content,
+                persistent_launchfilelist_content,
+                cfg.LaunchRootURL + LaunchVersionRemote + "/",
+                path_mgr.DirLaunchRoot);
         }
 
         //---------------------------------------------------------------------
         // 定时器
         void _timerUpdate(float tm)
         {
-            Count++;
-            if (Count > 200)
+            if (UpdateRemoteToPersistentData4Launch != null)
             {
-                Count = 0;
-                Debug.Log("TimerUpdate");
+                if (UpdateRemoteToPersistentData4Launch.IsDone())
+                {
+                    UpdateRemoteToPersistentData4Launch = null;
+                    UpdateViewLoadingProgress(100, 100);
+
+                    Debug.Log("Launch更新完成！！！！！！！！！！！！！！！！！！！！");
+
+                    // 用Remote LaunchFileList.txt中的内容覆盖Persistent中的；并更新VersionLaunchPersistent
+                    var cfg = Context.Instance.Config;
+                    var path_mgr = Context.Instance.PathMgr;
+                    string launchfilelist_persistent = Context.Instance.PathMgr.DirLaunchRoot + cfg.LaunchFileListFileName;
+                    File.WriteAllText(launchfilelist_persistent, StrCache1);
+                    Context.Instance.Config.WriteVersionLaunchPersistent(LaunchVersionRemote);
+                    StrCache1 = string.Empty;
+
+                    // 重启AppDomain
+                    Context.Instance.GoLaunch.AddComponent(typeof(Casinos.MbLaunchRestart));
+
+                    // 执行下一步LaunchStep
+                    //LaunchStep[2] = string.Empty;
+                    //_nextLaunchStep();
+                }
+                else
+                {
+                    int value = UpdateRemoteToPersistentData4Launch.LeftCount;
+                    int max = UpdateRemoteToPersistentData4Launch.TotalCount;
+                    UpdateViewLoadingProgress(max - value, max);
+                }
             }
         }
 

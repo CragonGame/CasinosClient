@@ -118,6 +118,7 @@ namespace ILRuntime.Runtime.Generated
             Spine_Unity_SkeletonAnimation_Binding.Register(app);
             System_Collections_Generic_List_1_ILTypeInstance_Binding.Register(app);
             Casinos_MbAsyncLoadAssets_Binding.Register(app);
+            Casinos_MbLaunchRestart_Binding.Register(app);
         }
 
         /// <summary>

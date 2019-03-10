@@ -32,6 +32,12 @@ namespace Cs
         //-------------------------------------------------------------------------
         public void Destroy()
         {
+            foreach (var i in MapController)
+            {
+                i.Value.Destory();
+            }
+            MapController.Clear();
+
             Debug.Log("ControllerMgr.Destroy()");
         }
 

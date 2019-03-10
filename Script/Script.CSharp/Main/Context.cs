@@ -134,6 +134,12 @@ namespace Cs
                 TimerShaft = null;
             }
 
+            if (ResourceMgr != null)
+            {
+                ResourceMgr.Destroy();
+                ResourceMgr = null;
+            }
+
             Debug.Log("Context.Destroy()");
         }
 

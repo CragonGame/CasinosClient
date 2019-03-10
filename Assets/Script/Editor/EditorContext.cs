@@ -244,6 +244,7 @@ public class EditorContext
 
         // Casinos
         types.Add(typeof(Casinos.MbAsyncLoadAssets));
+        types.Add(typeof(Casinos.MbLaunchRestart));
 
         ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode(types, "Assets/Script.ILRuntimeGenerated");
 

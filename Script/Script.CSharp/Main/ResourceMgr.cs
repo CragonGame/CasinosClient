@@ -4,7 +4,6 @@ namespace Cs
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
     using UnityEngine;
 
     public class ResourceMgr
@@ -30,6 +29,15 @@ namespace Cs
         public void AddAssetBundle(string ab_fullname, AssetBundle ab)
         {
             MapAssetBundle[ab_fullname] = ab;
+        }
+
+        //---------------------------------------------------------------------
+        public void Destroy()
+        {
+            foreach (var i in MapAssetBundle)
+            {
+                i.Value.Unload(true);
+            }
         }
     }
 }

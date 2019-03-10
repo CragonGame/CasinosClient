@@ -64,6 +64,18 @@ namespace Cs
         //---------------------------------------------------------------------
         public void Destroy()
         {
+            foreach (var i in MapView)
+            {
+                View view = i.Value;
+
+                GameObject go_view = view.Go;
+
+                view.Destory();
+
+                GameObject.Destroy(go_view);
+            }
+            MapView.Clear();
+
             Debug.Log("ViewMgr.Destroy()");
         }
 
