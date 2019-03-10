@@ -1,2 +1,0 @@
-xcopy "D:\CasinosClientGithub\Script.CSharp\bin\Script.CSharp.dll" /y "D:\CasinosClientGithub\DataOss\Common\Cs\"
-xcopy "D:\CasinosClientGithub\Script.CSharp\bin\Script.CSharp.pdb" /y "D:\CasinosClientGithub\DataOss\Common\Cs\"

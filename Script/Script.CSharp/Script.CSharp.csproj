@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Script.CSharp</RootNamespace>
     <AssemblyName>Script.CSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -48,7 +48,7 @@
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
-	<Reference Include="UnityEngine.AudioModule">
+    <Reference Include="UnityEngine.AudioModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
@@ -146,7 +146,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy   "$(TargetDir)Script.*"   "$(SolutionDir)Assets\StreamingAssets\Common\Cs\" /f /y
+    <PostBuildEvent>xcopy   "$(TargetDir)Script.*"   "$(SolutionDir)..\Assets\StreamingAssets\Common\Cs\" /f /y
 xcopy   "$(TargetDir)Script.*"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

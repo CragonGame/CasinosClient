@@ -708,7 +708,7 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    7: 
+    7: USE_PDB
   platformArchitecture:
     iOS: 1
   scriptingBackend:
