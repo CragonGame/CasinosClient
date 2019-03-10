@@ -54,7 +54,7 @@ namespace Cs
         public string CurrentLan { get; set; } = "ChineseSimplified";
         public string BundleVersion { get; set; } = "";// 本地Bundle版本号
         public string LaunchVersion { get; set; } = "";// 本地Launch版本号
-        public string LaunchRootURL { get; set; } = "";
+        public string LaunchRootURL { get; set; } = "https://cragon-king.oss-cn-shanghai.aliyuncs.com/Launch/";
         public string CommonVersion { get; set; } = "";// 本地Common版本号
         public string CommonRootURL { get; set; } = "";
         public string DataVersion { get; set; } = "";// 本地Data版本号

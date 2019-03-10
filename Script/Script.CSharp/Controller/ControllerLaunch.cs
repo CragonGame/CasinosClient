@@ -25,6 +25,10 @@ namespace Cs
         //---------------------------------------------------------------------
         ViewLaunch ViewLaunch { get; set; }
         VersionInfoRemote VersionInfoRemote { get; set; }
+        string BundleVersionRemote { get; set; } = string.Empty;
+        string LaunchVersionRemote { get; set; } = string.Empty;
+        string CommonVersionRemote { get; set; } = string.Empty;
+        string DataVersionRemote { get; set; } = string.Empty;
         string[] LaunchStep { get; set; } = new string[4];
 
         //---------------------------------------------------------------------
@@ -108,48 +112,41 @@ namespace Cs
         // 初始化LaunchStep
         void _initLaunchStep()
         {
-            string bundle_version_remote = string.Empty;
-            string launch_version_remote = string.Empty;
-            string common_version_remote = string.Empty;
-            string data_version_remote = string.Empty;
             Config cfg = Context.Instance.Config;
             if (cfg.Env == "Pro")
             {
-                bundle_version_remote = VersionInfoRemote.BundleSelectPro;
-                launch_version_remote = VersionInfoRemote.LaunchSelectPro;
-                common_version_remote = VersionInfoRemote.CommonSelectPro;
-                data_version_remote = VersionInfoRemote.DataSelectPro;
+                BundleVersionRemote = VersionInfoRemote.BundleSelectPro;
+                LaunchVersionRemote = VersionInfoRemote.LaunchSelectPro;
+                CommonVersionRemote = VersionInfoRemote.CommonSelectPro;
+                DataVersionRemote = VersionInfoRemote.DataSelectPro;
             }
             else
             {
-                bundle_version_remote = VersionInfoRemote.BundleSelectDev;
-                launch_version_remote = VersionInfoRemote.LaunchSelectDev;
-                common_version_remote = VersionInfoRemote.CommonSelectDev;
-                data_version_remote = VersionInfoRemote.DataSelectDev;
+                BundleVersionRemote = VersionInfoRemote.BundleSelectDev;
+                LaunchVersionRemote = VersionInfoRemote.LaunchSelectDev;
+                CommonVersionRemote = VersionInfoRemote.CommonSelectDev;
+                DataVersionRemote = VersionInfoRemote.DataSelectDev;
             }
 
-            // 检测Bundle是否需要更新
-            if (!string.IsNullOrEmpty(bundle_version_remote) && cfg.BundleVersion != bundle_version_remote)
+            // 检测是否需要更新Bundle
+            if (!string.IsNullOrEmpty(BundleVersionRemote) && cfg.BundleVersion != BundleVersionRemote)
             {
                 LaunchStep[0] = "UpdateBundle";
+                Debug.Log("需要更新Bundle");
             }
 
-            // 检测是否需要首次运行解压
-            //local r = self.CasinosContext.Config:VersionCompare(self.CasinosContext.Config.VersionDataPersistent, self.CasinosContext.Config.StreamingAssetsInfo.DataVersion)
-            //if (r< 0) then
-            //    self.LaunchStep[2] = "CopyStreamingAssetsToPersistentData"
-            //end
-
             // 检测是否需要更新Launch
-            if (cfg.LaunchVersion != launch_version_remote)
+            if (cfg.LaunchVersion != LaunchVersionRemote)
             {
                 LaunchStep[1] = "UpdateLaunch";
+                Debug.Log("需要更新Launch");
             }
 
             // 检测是否需要更新Common&Data
-            if (cfg.CommonVersion != common_version_remote || cfg.DataVersion != data_version_remote)
+            if (cfg.CommonVersion != CommonVersionRemote || cfg.DataVersion != DataVersionRemote)
             {
                 LaunchStep[2] = "UpdateCommon&Data";
+                Debug.Log("需要更新Common&Data");
             }
 
             // 进入Login界面
@@ -160,13 +157,16 @@ namespace Cs
         // 执行下一步LaunchStep
         void _nextLaunchStep()
         {
-            UpdateViewLoadingDescAndProgress("准备登录中", 0, 100);
+            //UpdateViewLoadingDescAndProgress("准备登录中", 0, 100);
 
-            ViewMgr.DestroyView<ViewLaunch>();
-            ControllerMgr.CreateController<ControllerUCenter>();
-            ControllerMgr.CreateController<ControllerLogin>();
+            //ViewMgr.DestroyView<ViewLaunch>();
+            //ControllerMgr.CreateController<ControllerUCenter>();
+            //ControllerMgr.CreateController<ControllerLogin>();
 
-            return;
+            //return;
+
+            Casinos.MbAsyncLoadAssets async_loader = Context.Instance.MbAsyncLoadAssets;
+            Config cfg = Context.Instance.Config;
 
             // 更新Bundle
             if (!string.IsNullOrEmpty(LaunchStep[0]))
@@ -215,25 +215,27 @@ namespace Cs
                 return;
             }
 
-            // 首次运行解压
-            //if (self.LaunchStep[2] ~= nil) then
-            //    UpdateViewLoadingDescAndProgress("首次运行解压资源，不消耗流量", 0, 100)
-            //    if (self.CopyStreamingAssetsToPersistentData == nil) then
-            //        self.CopyStreamingAssetsToPersistentData = CS.Casinos.CopyStreamingAssetsToPersistentData2()
-            //        self.CopyStreamingAssetsToPersistentData:CopyAsync('')
-            //    end
-            //    self.TimerUpdateCopyStreamingAssetsToPersistentData = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateCopyStreamingAssetsToPersistentData)
-            //    return
-            //end
-
             // 更新Launch
-            if (!string.IsNullOrEmpty(LaunchStep[2]))
+            if (!string.IsNullOrEmpty(LaunchStep[1]))
             {
+                Debug.Log("准备更新Luanch");
+
+                //if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
+                //{
+                //}
+
+                UpdateViewLoadingDescAndProgress("更新Launch...", 0, 100);
+                string http_url = cfg.LaunchRootURL + LaunchVersionRemote + "/" + cfg.LaunchFileListFileName;
+                Debug.Log(http_url);
+                async_loader.WWWLoadTextAsync(http_url, _onDownloadLaunchFileList);
+
+                return;
             }
 
             // 更新Common
             if (!string.IsNullOrEmpty(LaunchStep[2]))
             {
+                Debug.Log("准备更新Common&Data");
                 //    --if (CS.UnityEngine.Application.internetReachability == CS.UnityEngine.NetworkReachability.ReachableViaLocalAreaNetwork) then
                 //    --end
                 //    UpdateViewLoadingDescAndProgress("更新游戏脚本", 0, 100)
@@ -281,8 +283,34 @@ namespace Cs
             // 销毁ViewLaunch，加载并显示Login
             if (!string.IsNullOrEmpty(LaunchStep[3]))
             {
-
             }
+        }
+
+        //---------------------------------------------------------------------
+        // LaunchFileList.txt下载完毕
+        void _onDownloadLaunchFileList(string text)
+        {
+            Casinos.MbAsyncLoadAssets async_loader = Context.Instance.MbAsyncLoadAssets;
+            Config cfg = Context.Instance.Config;
+            PathMgr path_mgr = Context.Instance.PathMgr;
+
+            // 比较Oss上的LaunchFileList.txt和Persistent中的LaunchFileList.txt差异集，获取需要更新的列表
+            string persistent_launchfilelist_content = string.Empty;
+            string launchfilelist_persistent = path_mgr.DirLaunchRoot + cfg.LaunchFileListFileName;
+            if (File.Exists(launchfilelist_persistent))
+            {
+                persistent_launchfilelist_content = File.ReadAllText(launchfilelist_persistent);
+            }
+
+            //Debug.Log(launchfilelist_persistent);
+            //Debug.Log(text);
+            //self.RemoteCommonFileListContent = text;
+            //string persistent_commonfilelist_content = self.LuaMgr:ReadAllText(commonfilelist_persistent);
+
+            //string commonrootdir_persistent = self.CasinosContext.PathMgr:CombinePersistentDataPath('/');
+            //self.UpdateRemoteCommonToPersistent = CS.Casinos.UpdateRemoteToPersistentData();
+            //self.UpdateRemoteCommonToPersistent:UpateAsync(self.RemoteCommonFileListContent, persistent_commonfilelist_content, self.Cfg.CommonRootURL, commonrootdir_persistent);
+            //self.TimerUpdateRemoteCommonToPersistent = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateRemoteCommonToPersistent);
         }
 
         //---------------------------------------------------------------------

@@ -51,6 +51,9 @@
     <Reference Include="UnityEngine.AudioModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
+	<Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\Library\ScriptAssemblies\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -97,6 +100,7 @@
     <Compile Include="Main\ResourceMgr.cs" />
     <Compile Include="Main\SoundMgr.cs" />
     <Compile Include="Main\SpineMgr.cs" />
+    <Compile Include="Main\UpdateRemoteDataToPersistentData.cs" />
     <Compile Include="Main\View.cs" />
     <Compile Include="Main\ViewMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

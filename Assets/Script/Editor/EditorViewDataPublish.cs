@@ -124,6 +124,19 @@ public class EditorViewDataPublish : EditorWindow
 
         GUILayout.Space(10);
         GUILayout.Label("------------------------------------------------------");
+        EditorGUILayout.LabelField("Launch资源处理");
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("生成LaunchFileList.txt", GUILayout.Width(200)))
+        {
+            AssetDatabase.Refresh();
+            var ignore_files = new HashSet<string> { "LaunchFileList.txt" };
+            _genLaunchFileList(ignore_files);
+            AssetDatabase.Refresh();
+        }
+        EditorGUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
+        GUILayout.Label("------------------------------------------------------");
         EditorGUILayout.LabelField("Common资源处理");
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("打包Lua脚本（Android）", GUILayout.Width(200)))
@@ -616,6 +629,26 @@ public class EditorViewDataPublish : EditorWindow
                 File.Copy(i.FullName, path_dst1 + "/" + i.Name, true);// 不是文件夹即复制文件，true表示可以覆盖同名文件
             }
         }
+    }
+
+    //-------------------------------------------------------------------------
+    void _genLaunchFileList(HashSet<string> ignore_files)
+    {
+        string path_dst = EditorContext.Instance.PathDataOss + "Launch/";
+        path_dst = path_dst.Replace(@"\", "/");
+
+        string file_launchfilelist = path_dst + EditorStringDef.FileLaunchFileList;
+        if (File.Exists(file_launchfilelist))
+        {
+            File.Delete(file_launchfilelist);
+        }
+
+        using (StreamWriter sw = File.CreateText(file_launchfilelist))
+        {
+            _genDataFileList2(sw, ignore_files, path_dst, path_dst);
+        }
+
+        ShowNotification(new GUIContent("GenLaunchFileList Finished!"));
     }
 
     //-------------------------------------------------------------------------
