@@ -34,10 +34,13 @@ namespace Cs
         //---------------------------------------------------------------------
         public void Destroy()
         {
-            foreach (var i in MapAssetBundle)
-            {
-                i.Value.Unload(true);
-            }
+            //foreach (var i in MapAssetBundle)
+            //{
+            //    i.Value.Unload(true);
+            //}
+            MapAssetBundle.Clear();
+
+            AssetBundle.UnloadAllAssetBundles(true);
         }
     }
 }

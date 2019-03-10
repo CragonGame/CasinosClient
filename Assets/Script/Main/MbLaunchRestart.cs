@@ -8,23 +8,36 @@ namespace Casinos
     {
         //---------------------------------------------------------------------
         bool RunOnce { get; set; }
+        bool CanRestart { get; set; }
+
         //---------------------------------------------------------------------
         void Start()
         {
             RunOnce = false;
+            CanRestart = false;
         }
 
         //---------------------------------------------------------------------
         void Update()
         {
-            if (!RunOnce)
+            if (RunOnce && !CanRestart)
             {
-                RunOnce = true;
+                CanRestart = true;
 
                 Destroy(gameObject.GetComponent<MbLaunchRestart>());
 
                 var mb_launch = gameObject.GetComponent<MbLaunch>();
-                mb_launch.Restart();
+                mb_launch.Init();
+            }
+
+            if (!RunOnce)
+            {
+                RunOnce = true;
+
+                //Destroy(gameObject.GetComponent<MbLaunchRestart>());
+                var mb_launch = gameObject.GetComponent<MbLaunch>();
+                mb_launch.Close();
+                //mb_launch.Restart();
             }
         }
     }

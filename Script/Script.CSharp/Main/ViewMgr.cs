@@ -76,6 +76,9 @@ namespace Cs
             }
             MapView.Clear();
 
+            FairyGUI.GRoot.inst.CloseAllWindows();
+            FairyGUI.UIPackage.RemoveAllPackages();
+
             Debug.Log("ViewMgr.Destroy()");
         }
 

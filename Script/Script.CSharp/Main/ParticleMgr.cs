@@ -9,5 +9,9 @@ namespace Cs
 
     public class ParticleMgr
     {
+        //---------------------------------------------------------------------
+        public void Destroy()
+        {
+        }
     }
 }

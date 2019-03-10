@@ -17,6 +17,11 @@ namespace Cs
         }
 
         //---------------------------------------------------------------------
+        public void Destroy()
+        {
+        }
+
+        //---------------------------------------------------------------------
         public SkeletonAnimation CreateSpineObjFromAb(string ab_path_prefix, string ab_name,
             string atlas_name, string texture_name, string json_name, string shader_name)
         {

@@ -27,10 +27,14 @@ namespace Casinos
         MemoryStream MsScriptPdb { get; set; }
 
         //---------------------------------------------------------------------
-        public void Restart()
+        public void Close()
         {
             OnDestroy();
+        }
 
+        //---------------------------------------------------------------------
+        public void Init()
+        {
             Start();
         }
 

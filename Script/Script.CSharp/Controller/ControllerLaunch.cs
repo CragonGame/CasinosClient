@@ -62,9 +62,8 @@ namespace Cs
         //---------------------------------------------------------------------
         public override void HandleEvent(Event ev)
         {
-            if (ev is EventControllerLaunch)
+            if (ev is EventControllerLaunch evt)
             {
-                EventControllerLaunch evt = (EventControllerLaunch)ev;
                 Debug.Log("Event.Info=" + evt.Info);
             }
         }

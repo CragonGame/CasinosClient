@@ -39,6 +39,8 @@ namespace Cs
             string s = string.Format("Context.Create()");
             Debug.Log(s);
 
+            AssetBundle.UnloadAllAssetBundles(true);
+
             Stopwatch = new System.Diagnostics.Stopwatch();
             Stopwatch.Start();
             TimerShaft = new Casinos.TimerShaft();
@@ -132,6 +134,24 @@ namespace Cs
             {
                 TimerShaft.Destroy();
                 TimerShaft = null;
+            }
+
+            if (SpineMgr != null)
+            {
+                SpineMgr.Destroy();
+                SpineMgr = null;
+            }
+
+            if (ParticleMgr != null)
+            {
+                ParticleMgr.Destroy();
+                ParticleMgr = null;
+            }
+
+            if (SoundMgr != null)
+            {
+                SoundMgr.Destroy();
+                SoundMgr = null;
             }
 
             if (ResourceMgr != null)

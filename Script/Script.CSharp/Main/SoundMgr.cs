@@ -591,7 +591,7 @@ namespace Cs
         }
 
         //---------------------------------------------------------------------
-        public void play(string file_name, _eSoundLayer sound_layer)
+        public void Play(string file_name, _eSoundLayer sound_layer)
         {
             if (string.IsNullOrEmpty(file_name)) return;
             var audio_clip = _loadAudioClip(file_name);
@@ -604,7 +604,7 @@ namespace Cs
         }
 
         //---------------------------------------------------------------------
-        public void bgVolumeChange(float volume)
+        public void BgVolumeChange(float volume)
         {
             mMapSoundLayer[_eSoundLayer.Background].volumeChange(volume);
             //foreach (var i in mMapSoundLayer)
@@ -614,7 +614,7 @@ namespace Cs
         }
 
         //---------------------------------------------------------------------
-        public List<AudioSource> getAudioSource()
+        public List<AudioSource> GetAudioSource()
         {
             return mListAudioFree;
         }
@@ -629,7 +629,7 @@ namespace Cs
         }
 
         //---------------------------------------------------------------------
-        public void destroy()
+        public void Destroy()
         {
             mMapAudioClip.Clear();
 
@@ -651,7 +651,7 @@ namespace Cs
         }
 
         //---------------------------------------------------------------------
-        public void destroyAllSceneSound()
+        public void DestroyAllSceneSound()
         {
             mMapAudioClip.Clear();
 
