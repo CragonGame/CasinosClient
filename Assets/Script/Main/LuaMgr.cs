@@ -310,10 +310,10 @@ namespace Casinos
 
             if (is_load_launchlua_from_resources)
             {
-                foreach (var i in cfg.LaunchInfoResources.ListLua)
-                {
-                    LoadLuaFromResources(i);
-                }
+                //foreach (var i in cfg.LaunchInfoResources.ListLua)
+                //{
+                //    LoadLuaFromResources(i);
+                //}
             }
             else if (CasinosContext.Instance.IsEditorDebug)
             {

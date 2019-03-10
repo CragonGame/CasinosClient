@@ -5,11 +5,11 @@ namespace Casinos
     using System.Collections.Generic;
     using UnityEngine;
 
-    [System.Serializable]
-    public class LaunchInfo
-    {
-        public List<string> ListLua;
-    }
+    //[System.Serializable]
+    //public class LaunchInfo
+    //{
+    //    public List<string> ListLua;
+    //}
 
     public class CasinosConfig
     {

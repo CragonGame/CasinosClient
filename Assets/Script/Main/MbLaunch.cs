@@ -10,16 +10,16 @@ namespace Casinos
     using UnityEngine.Networking;
     using ILRuntime.Runtime.Enviorment;
 
-    public class CommonInfo
+    public class LaunchInfo
     {
-        public string CommonVersion { get; set; }
-        public List<string> CommonFileList { get; set; }
+        public string LaunchVersion { get; set; }
+        public List<string> LaunchFileList { get; set; }
     }
 
     public class MbLaunch : MonoBehaviour
     {
         //---------------------------------------------------------------------
-        CommonInfo CommonInfo { get; set; }
+        LaunchInfo LaunchInfo { get; set; }
         ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get; set; } = new ILRuntime.Runtime.Enviorment.AppDomain();
         MemoryStream MsCommonDll { get; set; }
         MemoryStream MsCommonPdb { get; set; }
@@ -29,14 +29,14 @@ namespace Casinos
         //---------------------------------------------------------------------
         void Start()
         {
-            // 读取VersionCommonPersistent
-            string common_ver = string.Empty;
-            if (PlayerPrefs.HasKey("VersionCommonPersistent"))
+            // 读取VersionLaunchPersistent
+            string launch_ver = string.Empty;
+            if (PlayerPrefs.HasKey("VersionLaunchPersistent"))
             {
-                common_ver = PlayerPrefs.GetString("VersionCommonPersistent");
+                launch_ver = PlayerPrefs.GetString("VersionLaunchPersistent");
             }
 
-            if (string.IsNullOrEmpty(common_ver))
+            if (string.IsNullOrEmpty(launch_ver))
             {
                 StartCoroutine(_copyStreamingAssets2PersistentAsync(_launch));
             }
@@ -81,15 +81,15 @@ namespace Casinos
         {
             string s = Application.streamingAssetsPath;
 
-            using (UnityWebRequest www_request = UnityWebRequest.Get(s + "/CommonInfo.json"))
+            using (UnityWebRequest www_request = UnityWebRequest.Get(s + "/LaunchInfo.json"))
             {
                 yield return www_request.SendWebRequest();
 
-                CommonInfo = LitJson.JsonMapper.ToObject<CommonInfo>(www_request.downloadHandler.text);
+                LaunchInfo = LitJson.JsonMapper.ToObject<LaunchInfo>(www_request.downloadHandler.text);
             }
 
             Dictionary<string, UnityWebRequest> map_www = new Dictionary<string, UnityWebRequest>();
-            foreach (var i in CommonInfo.CommonFileList)
+            foreach (var i in LaunchInfo.LaunchFileList)
             {
                 UnityWebRequest www_request = UnityWebRequest.Get(s + "/" + i);
                 www_request.SendWebRequest();
@@ -111,7 +111,6 @@ namespace Casinos
                         string p = Path.GetDirectoryName(path);
                         if (!Directory.Exists(p))
                         {
-                            Debug.Log(p);
                             Directory.CreateDirectory(p);
                         }
 
@@ -125,7 +124,7 @@ namespace Casinos
                 yield return 0;
             }
 
-            PlayerPrefs.SetString("VersionCommonPersistent", CommonInfo.CommonVersion);
+            PlayerPrefs.SetString("VersionLaunchPersistent", LaunchInfo.LaunchVersion);
 
             cb();
         }
@@ -133,12 +132,11 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _launch()
         {
-            string s = Application.persistentDataPath + "/Common/Cs/";
+            string s = Application.persistentDataPath + "/Launch/Cs/";
             //s = s.Replace('\\', '/');
             //s = s.Replace("Assets/StreamingAssets", "");
             //s += "Script/Script.CSharp/bin/";
             //Debug.Log(s);
-            //string s = Casinos.CasinosContext.Instance.PathMgr.DirCsRoot;
 
 #if UNITY_EDITOR
             // 检测Script.CSharp.dll是否存在，如不存在则给出提示
@@ -169,20 +167,20 @@ namespace Casinos
             string platform = "Android";
             bool is_editor = false;
 #if UNITY_STANDALONE_WIN
-                            platform = "PC";
+            platform = "PC";
 #elif UNITY_ANDROID && UNITY_EDITOR
             platform = "Android";
 #elif UNITY_ANDROID
-                            platform = "Android";
+            platform = "Android";
 #elif UNITY_IPHONE
-                            platform = "iOS";
+            platform = "iOS";
 #endif
 
 #if UNITY_EDITOR
             is_editor = true;
             AppDomain.DebugService.StartDebugService(56000);
 #else
-                            is_editor = false;
+            is_editor = false;
 #endif
 
             bool is_editor_debug = false;

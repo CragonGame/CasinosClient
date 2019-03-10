@@ -11,10 +11,10 @@ namespace Cs
     public class PathMgr
     {
         //---------------------------------------------------------------------
-        public string DirRawRoot { get; set; }// PersistentData/Common/Raw/
-        public string DirCsRoot { get; set; }// PersistentData/Common/Cs/
+        public string DirLaunchRoot { get; set; }// PersistentData/Launch/
+        public string DirLaunchAb { get; set; }// PersistentData/Launch/{Platform}/
+        public string DirCommonRoot { get; set; }// PersistentData/Common/
         public string DirAbRoot { get; set; }// Resources.KingTexas/，需动态计算
-        public string DirAbLaunch { get; set; }// Resources.KingTexasLaunch/，需动态计算
         public string DirAbUi { get; set; }// Resources.KingTexas/Ui/，需动态计算
         public string DirAbCard { get; set; }// Resources.KingTexas/Cards/，需动态计算
         public string DirAbAudio { get; set; }// Resources.KingTexas/Audio，需动态计算
@@ -36,7 +36,6 @@ namespace Cs
                 p1 += cfg.Platform;
 
                 DirAbRoot = p1 + "/Resources.KingTexas/";
-                DirAbLaunch = p1 + "/Resources.KingTexasLaunch/";
             }
             else
             {
@@ -46,24 +45,23 @@ namespace Cs
                 Sb.Append(cfg.Platform);
                 Sb.Append("/Resources.KingTexas/");
                 DirAbRoot = Sb.ToString();
-
-                Sb.Clear();
-                Sb.Append(Application.persistentDataPath);
-                Sb.Append("/");
-                Sb.Append(cfg.Platform);
-                Sb.Append("/Resources.KingTexasLaunch/");
-                DirAbLaunch = Sb.ToString();
             }
 
             Sb.Clear();
             Sb.Append(Application.persistentDataPath);
-            Sb.Append("/Common/Raw/");
-            DirRawRoot = Sb.ToString();
+            Sb.Append("/Launch/");
+            DirLaunchRoot = Sb.ToString();
+
+            Sb.Clear();
+            Sb.Append(DirLaunchRoot);
+            Sb.Append(Context.Instance.Config.Platform);
+            Sb.Append("/");
+            DirLaunchAb = Sb.ToString();
 
             Sb.Clear();
             Sb.Append(Application.persistentDataPath);
-            Sb.Append("/Common/Cs/");
-            DirCsRoot = Sb.ToString();
+            Sb.Append("/Common/");
+            DirCommonRoot = Sb.ToString();
 
             DirAbUi = DirAbRoot + "Ui/";
             DirAbCard = DirAbRoot + "Cards/";
@@ -71,10 +69,10 @@ namespace Cs
             DirAbItem = DirAbRoot + "Item/";
             DirAbParticle = DirAbRoot + "Particle/";
 
-            //Debug.Log("DirAbRoot=" + DirAbRoot);
-            //Debug.Log("DirAbLaunch=" + DirAbLaunch);
-            //Debug.Log("DirRawRoot=" + DirRawRoot);
-            //Debug.Log("DirCsRoot=" + DirCsRoot);
+            Debug.Log("DirLaunchRoot=" + DirLaunchRoot);
+            Debug.Log("DirLaunchAb=" + DirLaunchAb);
+            Debug.Log("DirCommonRoot=" + DirCommonRoot);
+            Debug.Log("DirAbRoot=" + DirAbRoot);
         }
     }
 }

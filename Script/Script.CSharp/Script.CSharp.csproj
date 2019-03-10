@@ -146,7 +146,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy   "$(TargetDir)Script.*"   "$(SolutionDir)..\Assets\StreamingAssets\Common\Cs\" /f /y
-xcopy   "$(TargetDir)Script.*"   "$(LocalAppData)Low\Cragon\果派德州\Common\Cs\" /f /y</PostBuildEvent>
+    <PostBuildEvent>xcopy   "$(TargetDir)Script.*"   "$(SolutionDir)..\Assets\StreamingAssets\Launch\Cs\" /f /y
+xcopy   "$(TargetDir)Script.*"   "$(LocalAppData)Low\Cragon\果派德州\Launch\Cs\" /f /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

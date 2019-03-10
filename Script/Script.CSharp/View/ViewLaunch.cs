@@ -31,7 +31,7 @@ namespace Cs
             // 隐藏图片模特
             var spine_mgr = Context.Instance.SpineMgr;
             var path_mgr = Context.Instance.PathMgr;
-            string ab_path_prefix = path_mgr.DirAbLaunch;
+            string ab_path_prefix = path_mgr.DirLaunchAb;
 
             // 加载Spine，灯笼和Marry
             SkeletonAnimation spine_loadingmarry = spine_mgr.CreateSpineObjFromAb(
@@ -130,7 +130,7 @@ namespace Cs
         //-------------------------------------------------------------------------
         public override string GetAbUiDir()
         {
-            return Context.Instance.PathMgr.DirAbLaunch;
+            return Context.Instance.PathMgr.DirLaunchAb;
         }
 
         //-------------------------------------------------------------------------

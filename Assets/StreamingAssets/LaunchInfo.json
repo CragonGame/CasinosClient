@@ -1,0 +1,25 @@
+{
+  "LaunchVersion": "1.00.000",
+  "LaunchFileList": [
+    "Launch/Cs/Script.Common.dll",
+	"Launch/Cs/Script.CSharp.dll",
+	"Launch/Cs/Script.Common.pdb",
+	"Launch/Cs/Script.CSharp.pdb",
+	"Launch/Android/denglong.ab",
+    "Launch/Android/denglong.ab.manifest",
+    "Launch/Android/loadingmarry.ab",
+    "Launch/Android/loadingmarry.ab.manifest",
+    "Launch/Android/preloading.ab",
+    "Launch/Android/preloading.ab.manifest",
+    "Launch/Android/premsgbox.ab",
+    "Launch/Android/premsgbox.ab.manifest",
+	"Launch/iOS/denglong.ab",
+    "Launch/iOS/denglong.ab.manifest",
+    "Launch/iOS/loadingmarry.ab",
+    "Launch/iOS/loadingmarry.ab.manifest",
+    "Launch/iOS/preloading.ab",
+    "Launch/iOS/preloading.ab.manifest",
+    "Launch/iOS/premsgbox.ab",
+    "Launch/iOS/premsgbox.ab.manifest"
+  ]
+}
