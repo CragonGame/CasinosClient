@@ -15,7 +15,11 @@ namespace Cs
         //---------------------------------------------------------------------
         public override void Create()
         {
+            Debug.Log("ControllerLogin.Create()");
+
             LoginPlayerPrefs = new LoginPlayerPrefs();
+
+            ViewMgr.CreateView<ViewLogin>();
         }
 
         //---------------------------------------------------------------------

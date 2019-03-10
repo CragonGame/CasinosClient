@@ -10,6 +10,7 @@ namespace Cs
         //---------------------------------------------------------------------
         public EventMgr EventMgr { get; set; }
         public ViewMgr ViewMgr { get; set; }
+        public ControllerMgr ControllerMgr { get; set; }
 
         //---------------------------------------------------------------------
         public abstract void Create();

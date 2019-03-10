@@ -9,7 +9,7 @@ namespace Cs
 
     public class ViewMgr
     {
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public EventMgr EventMgr { get; private set; }
         public ControllerMgr ControllerMgr { get; private set; }
         Dictionary<string, ViewFactory> MapViewFactory { get; set; } = new Dictionary<string, ViewFactory>();
@@ -20,19 +20,19 @@ namespace Cs
         const int STANDARD_WIDTH = 1066;// UI设计宽度
         const int STANDARD_HEIGHT = 640;// UI设计高度
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public ViewMgr()
         {
             Sb = Context.Instance.Sb;
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void RegViewFactory(ViewFactory factory)
         {
             MapViewFactory[factory.GetName()] = factory;
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void Create()
         {
             EventMgr = Context.Instance.EventMgr;
@@ -59,12 +59,12 @@ namespace Cs
             GoGRoot = GameObject.Find("Stage/GRoot");
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public void Destroy()
         {
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         public T CreateView<T>() where T : View
         {
             var name = typeof(T).Name;
@@ -76,7 +76,12 @@ namespace Cs
                 return null;
             }
 
-            //Debug.Log("ViewName=" + name);
+            if (MapView.ContainsKey(name))
+            {
+                string s = string.Format("ViewMgr.CreateView()失败！ 指定ViewName={0}实例已存在！", name);
+                Debug.LogError(s);
+                return null;
+            }
 
             string ab_dir = factory.GetAbUiDir();
 
@@ -104,15 +109,20 @@ namespace Cs
 
             var view = factory.CreateView();
             view.EventMgr = EventMgr;
+            view.ViewMgr = this;
             view.ControllerMgr = ControllerMgr;
+            view.Go = go;
             view.GCom = ui_panel.ui;
+
+            MapView[name] = view;
+
             view.Create();
 
             return (T)view;
         }
 
-        //-------------------------------------------------------------------------
-        public void Destroy<T>() where T : View
+        //---------------------------------------------------------------------
+        public void DestroyView<T>() where T : View
         {
             var name = typeof(T).Name;
             MapView.TryGetValue(name, out View view);
@@ -122,11 +132,16 @@ namespace Cs
                 return;
             }
 
+            GameObject go_view = view.Go;
+
             view.Destory();
+
             MapView.Remove(name);
+
+            GameObject.Destroy(go_view);
         }
 
-        //-------------------------------------------------------------------------
+        //---------------------------------------------------------------------
         // 添加UIPackage。ab_filename不带路径，不带后缀名。
         public void AddUiPackage(string ab_dir, string ab_filename)
         {

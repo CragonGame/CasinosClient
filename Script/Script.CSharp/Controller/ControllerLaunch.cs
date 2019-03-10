@@ -73,9 +73,9 @@ namespace Cs
 
             // 下载并加载bundle_xxx.txt
             string bundle_cfg_remote = string.Format("B_{0}", cfg.BundleVersion);
-
+            //cragon-king-oss.cragon.cn
+            //cragon-king.oss-cn-shanghai.aliyuncs.com
             string bundle_cfg_remote_url = string.Format("https://cragon-king.oss-cn-shanghai.aliyuncs.com/{0}/{1}.txt",
-            //string bundle_cfg_remote_url = string.Format("https://cragon-king-oss.cragon.cn/{0}/{1}.txt",
                 Context.Instance.Config.Platform.ToUpper(), bundle_cfg_remote);
             Debug.Log(bundle_cfg_remote_url);
             async_loader.WWWLoadTextAsync(bundle_cfg_remote_url, _onDownloadBundleCfg);
@@ -160,6 +160,14 @@ namespace Cs
         // 执行下一步LaunchStep
         void _nextLaunchStep()
         {
+            UpdateViewLoadingDescAndProgress("准备登录中", 0, 100);
+
+            ViewMgr.DestroyView<ViewLaunch>();
+            ControllerMgr.CreateController<ControllerUCenter>();
+            ControllerMgr.CreateController<ControllerLogin>();
+
+            return;
+
             // 更新Bundle
             if (!string.IsNullOrEmpty(LaunchStep[0]))
             {
@@ -273,7 +281,7 @@ namespace Cs
             // 销毁ViewLaunch，加载并显示Login
             if (!string.IsNullOrEmpty(LaunchStep[3]))
             {
-                UpdateViewLoadingDescAndProgress("准备登录中", 0, 100);
+
             }
         }
 

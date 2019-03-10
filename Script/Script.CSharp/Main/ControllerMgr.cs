@@ -50,6 +50,7 @@ namespace Cs
             controller = factory.CreateController();
             controller.EventMgr = EventMgr;
             controller.ViewMgr = ViewMgr;
+            controller.ControllerMgr = this;
             MapController[name] = controller;
             controller.Create();
 
