@@ -1,10 +1,8 @@
 {
   "LaunchVersion": "1.00.000",
   "LaunchFileList": [
-    "Launch/Cs/Script.Common.dll",
-	"Launch/Cs/Script.CSharp.dll",
-	"Launch/Cs/Script.Common.pdb",
-	"Launch/Cs/Script.CSharp.pdb",
+    "Launch/Cs/Script.dll",
+	"Launch/Cs/Script.pdb",
 	"Launch/Android/denglong.ab",
     "Launch/Android/denglong.ab.manifest",
     "Launch/Android/loadingmarry.ab",

@@ -21,8 +21,6 @@ namespace Casinos
         //---------------------------------------------------------------------
         LaunchInfo LaunchInfo { get; set; }
         ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get; set; } = null;
-        MemoryStream MsCommonDll { get; set; }
-        MemoryStream MsCommonPdb { get; set; }
         MemoryStream MsScriptDll { get; set; }
         MemoryStream MsScriptPdb { get; set; }
 
@@ -77,18 +75,6 @@ namespace Casinos
             {
                 AppDomain.Invoke("Cs.Main", "Destroy", null, new object[] { });
                 AppDomain = null;
-            }
-
-            if (MsCommonDll != null)
-            {
-                MsCommonDll.Close();
-                MsCommonDll = null;
-            }
-
-            if (MsCommonPdb != null)
-            {
-                MsCommonPdb.Close();
-                MsCommonPdb = null;
             }
 
             if (MsScriptDll != null)
@@ -172,18 +158,12 @@ namespace Casinos
             // 检测Script.CSharp.dll是否存在，如不存在则给出提示
 #endif
 
-            byte[] dll1 = File.ReadAllBytes(s + "Script.Common.dll");
-            byte[] pdb1 = File.ReadAllBytes(s + "Script.Common.pdb");
+            byte[] dll = File.ReadAllBytes(s + "Script.dll");
+            byte[] pdb = File.ReadAllBytes(s + "Script.pdb");
 
-            byte[] dll = File.ReadAllBytes(s + "Script.CSharp.dll");
-            byte[] pdb = File.ReadAllBytes(s + "Script.CSharp.pdb");
-
-            MsCommonDll = new MemoryStream(dll1);
-            MsCommonPdb = new MemoryStream(pdb1);
             MsScriptDll = new MemoryStream(dll);
             MsScriptPdb = new MemoryStream(pdb);
 
-            AppDomain.LoadAssembly(MsCommonDll, MsCommonPdb, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
             AppDomain.LoadAssembly(MsScriptDll, MsScriptPdb, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
 
             // 这里做一些ILRuntime的注册
