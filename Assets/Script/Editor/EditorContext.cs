@@ -192,8 +192,6 @@ public class EditorContext
         types.Add(typeof(FairyGUI.Container));
         types.Add(typeof(FairyGUI.Controller));
         types.Add(typeof(FairyGUI.DisplayObject));
-        //types.Add(typeof(FairyGUI.EventCallback0));
-        //types.Add(typeof(FairyGUI.EventCallback1));
         types.Add(typeof(FairyGUI.EventContext));
         types.Add(typeof(FairyGUI.EventDispatcher));
         types.Add(typeof(FairyGUI.EventListener));
@@ -219,22 +217,24 @@ public class EditorContext
         types.Add(typeof(FairyGUI.GSlider));
         types.Add(typeof(FairyGUI.GTween));
         types.Add(typeof(FairyGUI.GTweener));
-        //types.Add(typeof(FairyGUI.GTweenCallback));
-        //types.Add(typeof(FairyGUI.GTweenCallback1));
-        //types.Add(typeof(FairyGUI.ListItemRenderer));
         types.Add(typeof(FairyGUI.NTexture));
         types.Add(typeof(FairyGUI.Stage));
-        //types.Add(typeof(FairyGUI.PlayCompleteCallback));
         types.Add(typeof(FairyGUI.PopupMenu));
         types.Add(typeof(FairyGUI.Relations));
         types.Add(typeof(FairyGUI.ScrollPane));
         types.Add(typeof(FairyGUI.TextFormat));
-        //types.Add(typeof(FairyGUI.TimerCallback));
         types.Add(typeof(FairyGUI.Transition));
-        //types.Add(typeof(FairyGUI.TransitionHook));
         types.Add(typeof(FairyGUI.TweenValue));
         types.Add(typeof(FairyGUI.UIPackage));
         types.Add(typeof(FairyGUI.Window));
+        //types.Add(typeof(FairyGUI.EventCallback0));
+        //types.Add(typeof(FairyGUI.EventCallback1));
+        //types.Add(typeof(FairyGUI.GTweenCallback));
+        //types.Add(typeof(FairyGUI.GTweenCallback1));
+        //types.Add(typeof(FairyGUI.ListItemRenderer));
+        //types.Add(typeof(FairyGUI.PlayCompleteCallback));
+        //types.Add(typeof(FairyGUI.TimerCallback));
+        //types.Add(typeof(FairyGUI.TransitionHook));
 
         // Spine
         types.Add(typeof(Spine.Unity.SkeletonAnimation));

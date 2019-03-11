@@ -172,6 +172,70 @@ namespace Casinos
             AppDomain.DelegateManager.RegisterMethodDelegate<AssetBundle>();
             AppDomain.DelegateManager.RegisterMethodDelegate<Texture>();
 
+            AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.EventCallback0>((action) =>
+            {
+                return new FairyGUI.EventCallback0(() =>
+                {
+                    ((System.Action)action)();
+                });
+            });
+
+            AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.EventCallback1>((action) =>
+            {
+                return new FairyGUI.EventCallback1((context) =>
+                {
+                    ((System.Action<FairyGUI.EventContext>)action)(context);
+                });
+            });
+
+            AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.GTweenCallback>((action) =>
+            {
+                return new FairyGUI.GTweenCallback(() =>
+                {
+                    ((System.Action)action)();
+                });
+            });
+
+            AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.GTweenCallback1>((action) =>
+            {
+                return new FairyGUI.GTweenCallback1((a) =>
+                {
+                    ((System.Action<FairyGUI.GTweener>)action)(a);
+                });
+            });
+
+            AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.ListItemRenderer>((action) =>
+            {
+                return new FairyGUI.ListItemRenderer((a, b) =>
+                {
+                    ((System.Action<int, FairyGUI.GObject>)action)(a, b);
+                });
+            });
+
+            AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.PlayCompleteCallback>((action) =>
+            {
+                return new FairyGUI.PlayCompleteCallback(() =>
+                {
+                    ((System.Action)action)();
+                });
+            });
+
+            AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.TimerCallback>((action) =>
+            {
+                return new FairyGUI.TimerCallback((a) =>
+                {
+                    ((System.Action<object>)action)(a);
+                });
+            });
+
+            AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.TransitionHook>((action) =>
+            {
+                return new FairyGUI.TransitionHook(() =>
+                {
+                    ((System.Action)action)();
+                });
+            });
+
             LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
             ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
 
