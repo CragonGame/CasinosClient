@@ -166,7 +166,7 @@ namespace Casinos
 
             AppDomain.LoadAssembly(MsScriptDll, MsScriptPdb, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
 
-            // 这里做一些ILRuntime的注册
+            // 委托注册
             AppDomain.DelegateManager.RegisterMethodDelegate<string>();
             AppDomain.DelegateManager.RegisterMethodDelegate<List<string>>();
             AppDomain.DelegateManager.RegisterMethodDelegate<AssetBundle>();
@@ -236,6 +236,12 @@ namespace Casinos
                 });
             });
 
+            // 值类型绑定
+            AppDomain.RegisterValueTypeBinder(typeof(Vector3), new Vector3Binder());
+            AppDomain.RegisterValueTypeBinder(typeof(Quaternion), new QuaternionBinder());
+            AppDomain.RegisterValueTypeBinder(typeof(Vector2), new Vector2Binder());
+
+            // CLR绑定
             LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
             ILRuntime.Runtime.Generated.CLRBindings.Initialize(AppDomain);
 
