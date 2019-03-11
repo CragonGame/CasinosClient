@@ -63,7 +63,7 @@ namespace Cs
             denglong_render.sortingOrder = 4;
 
             // 显示左上角显示版本信息
-            _initVersionInfo();
+            RefreshVersionInfo();
         }
 
         //---------------------------------------------------------------------
@@ -80,13 +80,13 @@ namespace Cs
 
         //---------------------------------------------------------------------
         // 显示左上角显示版本信息
-        void _initVersionInfo()
+        public void RefreshVersionInfo()
         {
             var version_text = GCom.GetChild("Version").asTextField;
 
             var cfg = Context.Instance.Config;
             string app_version_label = "应用版本";
-            string launch_version_label = "更新器版本";
+            string launch_version_label = "脚本版本";
             string data_version_label = "数据版本";
 
             //local lan = CurrentLan
@@ -98,8 +98,9 @@ namespace Cs
             //app_version = "应用版本"
             //data_versionex = "数据版本"
 
-            version_text.text = string.Format("{0}: {1},  {2}: {3},  {4}: {5} {6}",
-                app_version_label, cfg.BundleVersion, launch_version_label, cfg.LaunchVersion, data_version_label, cfg.DataVersion, cfg.Env);
+            version_text.text = string.Format("{0}: {1},  {2}: {3},  {4}: {5}&{6} {7}",
+                app_version_label, cfg.BundleVersion, launch_version_label, cfg.LaunchVersion,
+                data_version_label, cfg.CommonVersion, cfg.DataVersion, cfg.Env);
         }
 
         //---------------------------------------------------------------------

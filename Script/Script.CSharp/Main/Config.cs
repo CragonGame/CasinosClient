@@ -56,9 +56,9 @@ namespace Cs
         public string LaunchVersion { get; set; } = "";// 本地Launch版本号
         public string LaunchRootURL { get; set; } = "https://cragon-king.oss-cn-shanghai.aliyuncs.com/Launch/";
         public string CommonVersion { get; set; } = "";// 本地Common版本号
-        public string CommonRootURL { get; set; } = "";
+        public string CommonRootURL { get; set; } = "https://cragon-king.oss-cn-shanghai.aliyuncs.com/Common/{0}/";// {0}=Version
         public string DataVersion { get; set; } = "";// 本地Data版本号
-        public string DataRootURL { get; set; } = "";
+        public string DataRootURL { get; set; } = "https://cragon-king.oss-cn-shanghai.aliyuncs.com/{0}/Data_{1}/";// {0}=Platform {1}=Version
         public string OssRootUrl { get; set; } = "https://cragon-king-oss.cragon.cn";
         public string AutopatcherUrl { get; set; } = "https://cragon-king-oss.cragon.cn/autopatcher/VersionInfo.xml";
         public string PlayerIconDomain { get; set; } = "https://cragon-king-oss.cragon.cn/images/";

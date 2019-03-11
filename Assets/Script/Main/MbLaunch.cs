@@ -188,6 +188,7 @@ namespace Casinos
 
             // 这里做一些ILRuntime的注册
             AppDomain.DelegateManager.RegisterMethodDelegate<string>();
+            AppDomain.DelegateManager.RegisterMethodDelegate<List<string>>();
             AppDomain.DelegateManager.RegisterMethodDelegate<AssetBundle>();
             AppDomain.DelegateManager.RegisterMethodDelegate<Texture>();
 

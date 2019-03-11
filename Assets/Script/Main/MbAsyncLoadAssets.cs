@@ -35,6 +35,12 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void WWWLoadTextListAsync(List<string> list_url, Action<List<string>> cb)
+        {
+            StartCoroutine(_wwwLoadTextListAsync(list_url, cb));
+        }
+
+        //---------------------------------------------------------------------
         public void WWWLoadTextureAsync(string url, Action<Texture> cb)
         {
             StartCoroutine(_wwwLoadTextureAsync(url, cb));
@@ -118,6 +124,34 @@ namespace Casinos
             }
 
             if (cb != null) cb.Invoke(t);
+        }
+
+        //---------------------------------------------------------------------
+        IEnumerator _wwwLoadTextListAsync(List<string> list_url, Action<List<string>> cb)
+        {
+            List<string> list_string = new List<string>();
+
+            foreach (var i in list_url)
+            {
+                using (UnityWebRequest www_request = UnityWebRequest.Get(i))
+                {
+                    yield return www_request.SendWebRequest();
+
+                    if (www_request.isHttpError || www_request.isNetworkError)
+                    {
+                        BuglyAgent.PrintLog(LogSeverity.LogError, www_request.error);
+                    }
+                    else
+                    {
+                        if (www_request.responseCode == 200)
+                        {
+                            list_string.Add(www_request.downloadHandler.text);
+                        }
+                    }
+                }
+            }
+
+            if (cb != null) cb.Invoke(list_string);
         }
 
         //---------------------------------------------------------------------
