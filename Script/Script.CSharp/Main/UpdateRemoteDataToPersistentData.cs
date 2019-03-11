@@ -26,6 +26,11 @@ namespace Cs
         public int UpateAsync(string datafilelist_remote, string datafilelist_persistent,
             string remotedata_root_url, string persistent_root_dir)
         {
+            //Debug.Log("远程更新列表: " + datafilelist_remote);
+            //Debug.Log("本地更新列表: " + datafilelist_persistent);
+            //Debug.Log("远程更新Url: " + remotedata_root_url);
+            //Debug.Log("本地更新路径: " + persistent_root_dir);
+
             QueUpdateFile = new Queue<string>(4096);
             MapWWW = new Dictionary<string, UnityWebRequest>();
             ListFinished = new List<string>(5);
@@ -37,9 +42,11 @@ namespace Cs
 
             if (!string.IsNullOrEmpty(datafilelist_remote))
             {
-                string[] arr_remote = datafilelist_remote.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] arr_remote = datafilelist_remote.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var i in arr_remote)
                 {
+                    //Debug.Log("远程列表条目: " + i);
+
                     var arr = i.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     map_remote[arr[0]] = arr[1];
                 }
@@ -47,7 +54,7 @@ namespace Cs
 
             if (!string.IsNullOrEmpty(datafilelist_persistent))
             {
-                string[] arr_persistent = datafilelist_persistent.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] arr_persistent = datafilelist_persistent.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var i in arr_persistent)
                 {
                     var arr = i.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);

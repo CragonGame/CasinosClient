@@ -51,12 +51,7 @@ namespace Cs
         {
             UnListenAllEvent();
 
-            // 销毁定时器
-            if (TimerUpdate != null)
-            {
-                TimerUpdate.Close();
-                TimerUpdate = null;
-            }
+            Finish();
 
             Debug.Log("ControllerLaunch.Destory()");
         }
@@ -94,8 +89,39 @@ namespace Cs
             //cragon-king.oss-cn-shanghai.aliyuncs.com
             string bundle_cfg_remote_url = string.Format("https://cragon-king.oss-cn-shanghai.aliyuncs.com/{0}/{1}.txt",
                 Context.Instance.Config.Platform.ToUpper(), bundle_cfg_remote);
-            Debug.Log(bundle_cfg_remote_url);
+            //Debug.Log(bundle_cfg_remote_url);
             async_loader.WWWLoadTextAsync(bundle_cfg_remote_url, _onDownloadBundleCfg);
+        }
+
+        //---------------------------------------------------------------------
+        // 完成更新
+        public void Finish()
+        {
+            // 销毁定时器
+            if (TimerUpdate != null)
+            {
+                TimerUpdate.Close();
+                TimerUpdate = null;
+            }
+
+            if (ViewLaunch != null)
+            {
+                ViewMgr.DestroyView<ViewLaunch>();
+                ViewLaunch = null;
+            }
+
+            VersionInfoRemote = null;
+            BundleVersionRemote = string.Empty;
+            LaunchVersionRemote = string.Empty;
+            CommonVersionRemote = string.Empty;
+            DataVersionRemote = string.Empty;
+            LaunchStep = new string[4];
+            UpdateRemoteToPersistentData4Launch = null;
+            UpdateRemoteToPersistentData4Common = null;
+            UpdateRemoteToPersistentData4Data = null;
+            CacheLaunchFileListContentRemote = string.Empty;
+            CacheCommonFileListContentRemote = string.Empty;
+            CacheDataFileListContentRemote = string.Empty;
         }
 
         //---------------------------------------------------------------------
@@ -145,21 +171,18 @@ namespace Cs
             if (!string.IsNullOrEmpty(BundleVersionRemote) && cfg.BundleVersion != BundleVersionRemote)
             {
                 LaunchStep[0] = "UpdateBundle";
-                Debug.Log("需要更新Bundle");
             }
 
             // 检测是否需要更新Launch
             if (cfg.LaunchVersion != LaunchVersionRemote)
             {
                 LaunchStep[1] = "UpdateLaunch";
-                Debug.Log("需要更新Launch");
             }
 
             // 检测是否需要更新Common&Data
             if (cfg.CommonVersion != CommonVersionRemote || cfg.DataVersion != DataVersionRemote)
             {
                 LaunchStep[2] = "UpdateCommon&Data";
-                Debug.Log("需要更新Common&Data");
             }
 
             // 进入Login界面
@@ -177,47 +200,48 @@ namespace Cs
             if (!string.IsNullOrEmpty(LaunchStep[0]))
             {
                 LaunchStep[0] = string.Empty;
-                UpdateViewLoadingDescAndProgress("准备更新安装包...", 0, 100);
+                ViewLaunch.UpdateDesc("准备更新安装包...");
+                ViewLaunch.UpdateLoadingProgress(0, 100);
 
-                //if (self.CasinosContext.UnityAndroid == true)
-                //{
-                //// 弹框让玩家选择，更新Bundle Apk
-                //var msg_info = string.Format('有新的安装包需要更新\n当前BundleVersion：{0}\n新的BundleVersion：{1}',
-                //    self.CasinosContext.Config.VersionBundle, self.Cfg.BundleUpdateVersion);
-                //var view_premsgbox = self.PreViewMgr:CreateView("PreMsgBox");
-                //view_premsgbox.showMsgBox(msg_info,
-                //     function()
-                //         self.Launch:UpdateViewLoadingDescAndProgress("正在更新安装包", 0, 100)
-                //         self.WWWUpdateBundleApk = CS.UnityEngine.UnityWebRequest(self.Cfg.BundleUpdateUrlANDROID)
-                //         self.WWWUpdateBundleApk:SendWebRequest()
-                //         self.TimerUpdateBundleApk = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateBundleApk)
-                //         self.PreViewMgr:DestroyView(view_premsgbox)
-                //     end,
-                //     function()
-                //         self.PreViewMgr:DestroyView(view_premsgbox)
-                //         UnityEngine.Application.Quit()
-                //     end
-                //);
-                //}
-                //else if (self.CasinosContext.UnityIOS == true)
-                //{ 
-                //    // 弹框让玩家选择，更新Bundle Ipa
-                //    local msg_info = string.Format("有新的安装包需要更新\n当前BundleVersion：{0}\n新的BundleVersion：{1}",
-                //        self.CasinosContext.Config.VersionBundle, self.Cfg.BundleUpdateVersion);
-                //    local view_premsgbox = PreViewMgr:CreateView("PreMsgBox");
-                //    view_premsgbox.showMsgBox(msg_info,
-                //        function()
-                //            Launch:UpdateViewLoadingDescAndProgress("正在更新安装包", 0, 100);
-                //            // TODO，调用打开ios下载链接api
-                //            UnityEngine.Application.OpenURL(self.Cfg.BundleUpdateUrlIOS);
-                //            PreViewMgr:DestroyView(view_premsgbox);
-                //        end,
-                //        function()
-                //            PreViewMgr: DestroyView(view_premsgbox);
-                //            UnityEngine.Application.Quit();
-                //        end
-                //    );
-                //}
+                if (cfg.Platform == "Android")
+                {
+                    // 弹框让玩家选择，更新Bundle Apk
+                    //var msg_info = string.Format('有新的安装包需要更新\n当前BundleVersion：{0}\n新的BundleVersion：{1}',
+                    //    self.CasinosContext.Config.VersionBundle, self.Cfg.BundleUpdateVersion);
+                    //var view_premsgbox = self.PreViewMgr:CreateView("PreMsgBox");
+                    //view_premsgbox.showMsgBox(msg_info,
+                    //     function()
+                    //         self.Launch:UpdateViewLoadingDescAndProgress("正在更新安装包", 0, 100)
+                    //         self.WWWUpdateBundleApk = CS.UnityEngine.UnityWebRequest(self.Cfg.BundleUpdateUrlANDROID)
+                    //         self.WWWUpdateBundleApk:SendWebRequest()
+                    //         self.TimerUpdateBundleApk = self.CasinosContext.TimerShaft:RegisterTimer(30, self, self._timerUpdateBundleApk)
+                    //         self.PreViewMgr:DestroyView(view_premsgbox)
+                    //     end,
+                    //     function()
+                    //         self.PreViewMgr:DestroyView(view_premsgbox)
+                    //         UnityEngine.Application.Quit()
+                    //     end
+                    //);
+                }
+                else if (cfg.Platform == "iOS")
+                {
+                    // 弹框让玩家选择，更新Bundle Ipa
+                    //    local msg_info = string.Format("有新的安装包需要更新\n当前BundleVersion：{0}\n新的BundleVersion：{1}",
+                    //        self.CasinosContext.Config.VersionBundle, self.Cfg.BundleUpdateVersion);
+                    //    local view_premsgbox = PreViewMgr:CreateView("PreMsgBox");
+                    //    view_premsgbox.showMsgBox(msg_info,
+                    //        function()
+                    //            Launch:UpdateViewLoadingDescAndProgress("正在更新安装包", 0, 100);
+                    //            // TODO，调用打开ios下载链接api
+                    //            UnityEngine.Application.OpenURL(self.Cfg.BundleUpdateUrlIOS);
+                    //            PreViewMgr:DestroyView(view_premsgbox);
+                    //        end,
+                    //        function()
+                    //            PreViewMgr: DestroyView(view_premsgbox);
+                    //            UnityEngine.Application.Quit();
+                    //        end
+                    //    );
+                }
 
                 return;
             }
@@ -226,15 +250,17 @@ namespace Cs
             if (!string.IsNullOrEmpty(LaunchStep[1]))
             {
                 LaunchStep[1] = string.Empty;
-                Debug.Log("准备更新Luanch");
+                //Debug.Log("准备更新Luanch");
 
                 //if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
                 //{
                 //}
 
-                UpdateViewLoadingDescAndProgress("更新脚本...", 0, 100);
+                ViewLaunch.UpdateDesc("更新脚本...");
+                ViewLaunch.UpdateLoadingProgress(0, 100);
+
                 string http_url = cfg.LaunchRootURL + LaunchVersionRemote + "/" + cfg.LaunchFileListFileName;
-                Debug.Log(http_url);
+                //Debug.Log(http_url);
                 async_loader.WWWLoadTextAsync(http_url, _onDownloadLaunchFileList);
 
                 return;
@@ -244,27 +270,26 @@ namespace Cs
             if (!string.IsNullOrEmpty(LaunchStep[2]))
             {
                 LaunchStep[2] = string.Empty;
-                Debug.Log("准备更新Common&Data");
+                //Debug.Log("准备更新Common&Data");
 
                 //if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
                 //{
                 //}
 
-                UpdateViewLoadingDescAndProgress("更新游戏数据...", 0, 100);
+                ViewLaunch.UpdateDesc("更新游戏数据...");
+                ViewLaunch.UpdateLoadingProgress(0, 100);
 
                 List<string> list_url = new List<string>();
                 if (cfg.CommonVersion != CommonVersionRemote)
                 {
                     string s = string.Format(cfg.CommonRootURL, CommonVersionRemote);
                     string http_url = s + cfg.CommonFileListFileName;
-                    Debug.Log(http_url);
                     list_url.Add(http_url);
                 }
                 if (cfg.DataVersion != DataVersionRemote)
                 {
                     string s = string.Format(cfg.DataRootURL, cfg.Platform.ToUpper(), DataVersionRemote);
                     string http_url = s + cfg.DataFileListFileName;
-                    Debug.Log(http_url);
                     list_url.Add(http_url);
                 }
 
@@ -278,17 +303,8 @@ namespace Cs
             {
                 LaunchStep[3] = string.Empty;
 
-                // 销毁定时器
-                if (TimerUpdate != null)
-                {
-                    TimerUpdate.Close();
-                    TimerUpdate = null;
-                }
+                Finish();
 
-                ViewLaunch.RefreshVersionInfo();
-                UpdateViewLoadingDescAndProgress("准备登录中...", 100, 100);
-
-                ViewMgr.DestroyView<ViewLaunch>();
                 ControllerMgr.CreateController<ControllerUCenter>();
                 ControllerMgr.CreateController<ControllerLogin>();
 
@@ -302,7 +318,7 @@ namespace Cs
         {
             CacheLaunchFileListContentRemote = remote_launchfilelist_content;
 
-            Debug.Log("Launch文件列表下载完毕");
+            //Debug.Log("Launch文件列表下载完毕");
 
             Casinos.MbAsyncLoadAssets async_loader = Context.Instance.MbAsyncLoadAssets;
             Config cfg = Context.Instance.Config;
@@ -321,9 +337,6 @@ namespace Cs
                 TimerUpdate = Context.Instance.TimerShaft.RegisterTimer(30, _timerUpdate);
             }
 
-            Debug.Log(cfg.LaunchRootURL + LaunchVersionRemote + "/");
-            Debug.Log(path_mgr.DirLaunchRoot);
-
             UpdateRemoteToPersistentData4Launch = new UpdateRemoteToPersistentData();
             UpdateRemoteToPersistentData4Launch.UpateAsync(
                 remote_launchfilelist_content,
@@ -341,7 +354,7 @@ namespace Cs
             if (common_and_data_filelist_content.Count == 1)
             {
                 string s = common_and_data_filelist_content[0];
-                if (s.Contains("Raw/TbData/"))
+                if (s.Contains("Raw/TbData"))
                 {
                     CacheCommonFileListContentRemote = s;
                 }
@@ -365,7 +378,7 @@ namespace Cs
                 }
             }
 
-            Debug.Log("Comon&Data文件列表下载完毕");
+            //Debug.Log("Comon&Data文件列表下载完毕");
 
             Casinos.MbAsyncLoadAssets async_loader = Context.Instance.MbAsyncLoadAssets;
             Config cfg = Context.Instance.Config;
@@ -403,7 +416,7 @@ namespace Cs
                 string persistent_datafilelist_content = string.Empty;
                 string persistent_filename = Application.persistentDataPath + "/" + cfg.Platform + "/" + cfg.DataFileListFileName;
 
-                Debug.Log(persistent_filename);
+                //Debug.Log(persistent_filename);
 
                 if (File.Exists(persistent_filename))
                 {
@@ -437,9 +450,9 @@ namespace Cs
                 if (UpdateRemoteToPersistentData4Launch.IsDone())
                 {
                     UpdateRemoteToPersistentData4Launch = null;
-                    UpdateViewLoadingProgress(100, 100);
+                    ViewLaunch.UpdateLoadingProgress(100, 100);
 
-                    Debug.Log("Launch更新完成！！！！！！！！！！！！！！！！！！！！");
+                    //Debug.Log("Launch更新完成！！！！！！！！！！！！！！！！！！！！");
 
                     // 用Remote LaunchFileList.txt中的内容覆盖Persistent中的；并更新VersionLaunchPersistent
                     var cfg = Context.Instance.Config;
@@ -461,7 +474,7 @@ namespace Cs
                         max = 100;
                         value = 100;
                     }
-                    UpdateViewLoadingProgress(max - value, max);
+                    ViewLaunch.UpdateLoadingProgress(max - value, max);
                 }
             }
 
@@ -493,9 +506,9 @@ namespace Cs
 
                 if (all_done)
                 {
-                    UpdateViewLoadingProgress(100, 100);
+                    ViewLaunch.UpdateLoadingProgress(100, 100);
 
-                    Debug.Log("Common&Data更新完成！！！！！！！！！！！！！！！！！！！！");
+                    //Debug.Log("Common&Data更新完成！！！！！！！！！！！！！！！！！！！！");
 
                     // 用Remote CommonFileList.txt中的内容覆盖Persistent中的；并更新VersionCommonPersistent
                     var cfg = Context.Instance.Config;
@@ -529,31 +542,9 @@ namespace Cs
                         max = 100;
                         value = 100;
                     }
-                    UpdateViewLoadingProgress(max - value, max);
+                    ViewLaunch.UpdateLoadingProgress(max - value, max);
                 }
             }
-        }
-
-        //---------------------------------------------------------------------
-        // 更新加载界面进度条进度
-        void UpdateViewLoadingProgress(int cur, int max)
-        {
-            ViewLaunch.UpdateLoadingProgress(cur, max);
-        }
-
-        //---------------------------------------------------------------------
-        // 更新加载界面进度条描述
-        void UpdateViewLoadingDesc(string desc)
-        {
-            ViewLaunch.UpdateDesc(desc);
-        }
-
-        //---------------------------------------------------------------------
-        // 更新加载界面进度条描述和进度
-        void UpdateViewLoadingDescAndProgress(string desc, int cur, int max)
-        {
-            ViewLaunch.UpdateDesc(desc);
-            ViewLaunch.UpdateLoadingProgress(cur, max);
         }
     }
 }
