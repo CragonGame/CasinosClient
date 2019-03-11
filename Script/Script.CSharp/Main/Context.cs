@@ -18,6 +18,7 @@ namespace Cs
         public Casinos.TimerShaft TimerShaft { get; private set; }
         public Config Config { get; private set; }
         public PathMgr PathMgr { get; private set; }
+        public LanguageMgr LanguageMgr { get; private set; }
         public EventMgr EventMgr { get; private set; }
         public ResourceMgr ResourceMgr { get; private set; }
         public SoundMgr SoundMgr { get; private set; }
@@ -25,6 +26,7 @@ namespace Cs
         public SpineMgr SpineMgr { get; private set; }
         public ControllerMgr ControllerMgr { get; private set; }
         public ViewMgr ViewMgr { get; private set; }
+        public GameCloud.Unity.Common.EbDataMgr EbDataMgr { get; set; } = new GameCloud.Unity.Common.EbDataMgr();
         System.Diagnostics.Stopwatch Stopwatch { get; set; }
 
         //-------------------------------------------------------------------------
@@ -52,6 +54,7 @@ namespace Cs
             Config = new Config(platform, is_editor, is_editor_debug);
             Config.Load();
             PathMgr = new PathMgr();
+            LanguageMgr = new LanguageMgr();
             EventMgr = new EventMgr();
             ResourceMgr = new ResourceMgr();
             SoundMgr = new SoundMgr();

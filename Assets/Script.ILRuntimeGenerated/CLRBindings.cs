@@ -119,6 +119,7 @@ namespace ILRuntime.Runtime.Generated
             System_Collections_Generic_List_1_ILTypeInstance_Binding.Register(app);
             Casinos_MbAsyncLoadAssets_Binding.Register(app);
             Casinos_MbLaunchRestart_Binding.Register(app);
+            SQLiteDB_Binding.Register(app);
         }
 
         /// <summary>

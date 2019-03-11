@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Script.CSharp</RootNamespace>
     <AssemblyName>Script.CSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -51,7 +51,7 @@
     <Reference Include="UnityEngine.AudioModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
-	<Reference Include="UnityEngine.UnityWebRequestModule">
+    <Reference Include="UnityEngine.UnityWebRequestModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
@@ -94,6 +94,7 @@
     <Compile Include="Main\ControllerMgr.cs" />
     <Compile Include="Main\Event.cs" />
     <Compile Include="Main\EventMgr.cs" />
+    <Compile Include="Main\LanguageMgr.cs" />
     <Compile Include="Main\Main.cs" />
     <Compile Include="Main\ParticleMgr.cs" />
     <Compile Include="Main\PathMgr.cs" />
