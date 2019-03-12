@@ -259,33 +259,40 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public List<List<string>> GetListCsvData()
+        public List<string[]> GetListCsvData()
         {
             _stream.Position = 0;
-            List<List<string>> tempListCsvData = new List<List<string>>();
-            bool isNotEndLine = false;
-            //这里的ReadLine可能把转义的/r/n分割，需要后面单独处理
+            List<string[]> tempListCsvData = new List<string[]>();
+            //bool isNotEndLine = false;
+            // 这里的ReadLine可能把转义的/r/n分割，需要后面单独处理
             string tempCsvRowString = _streamReader.ReadLine();
             while (tempCsvRowString != null)
             {
-                List<string> tempCsvRowList;
-                if (isNotEndLine)
+                //List<string> tempCsvRowList;
+                //if (isNotEndLine)
+                //{
+                //    tempCsvRowList = ParseContinueLine(tempCsvRowString);
+                //    isNotEndLine = (tempCsvRowList.Count > 0 && tempCsvRowList[tempCsvRowList.Count - 1].EndsWith("\r\n"));
+                //    List<string> myNowContinueList = tempListCsvData[tempListCsvData.Count - 1];
+                //    myNowContinueList[myNowContinueList.Count - 1] += tempCsvRowList[0];
+                //    tempCsvRowList.RemoveAt(0);
+                //    myNowContinueList.AddRange(tempCsvRowList);
+                //}
+                //else
+                //{
+                //    tempCsvRowList = ParseLine(tempCsvRowString);
+                //    isNotEndLine = (tempCsvRowList.Count > 0 && tempCsvRowList[tempCsvRowList.Count - 1].EndsWith("\r\n"));
+                //    tempListCsvData.Add(tempCsvRowList);
+                //}
+
+                string[] str_arr = tempCsvRowString.Split(CsvSeparator);
+                if (str_arr != null && str_arr.Length > 0)
                 {
-                    tempCsvRowList = ParseContinueLine(tempCsvRowString);
-                    isNotEndLine = (tempCsvRowList.Count > 0 && tempCsvRowList[tempCsvRowList.Count - 1].EndsWith("\r\n"));
-                    List<string> myNowContinueList = tempListCsvData[tempListCsvData.Count - 1];
-                    myNowContinueList[myNowContinueList.Count - 1] += tempCsvRowList[0];
-                    tempCsvRowList.RemoveAt(0);
-                    myNowContinueList.AddRange(tempCsvRowList);
-                }
-                else
-                {
-                    tempCsvRowList = ParseLine(tempCsvRowString);
-                    isNotEndLine = (tempCsvRowList.Count > 0 && tempCsvRowList[tempCsvRowList.Count - 1].EndsWith("\r\n"));
-                    tempListCsvData.Add(tempCsvRowList);
+                    tempListCsvData.Add(str_arr);
                 }
                 tempCsvRowString = _streamReader.ReadLine();
             }
+
             return tempListCsvData;
         }
 
