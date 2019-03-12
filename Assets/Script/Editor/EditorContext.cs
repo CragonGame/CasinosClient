@@ -243,6 +243,7 @@ public class EditorContext
         types.Add(typeof(List<ILRuntime.Runtime.Intepreter.ILTypeInstance>));
 
         // Casinos
+        types.Add(typeof(Casinos.CsvParser));
         types.Add(typeof(Casinos.MbAsyncLoadAssets));
         types.Add(typeof(Casinos.MbLaunchRestart));
         types.Add(typeof(SQLiteDB));
