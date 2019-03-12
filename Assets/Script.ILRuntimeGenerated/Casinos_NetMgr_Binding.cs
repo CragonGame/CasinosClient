@@ -57,6 +57,9 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{};
             method = type.GetMethod("Disconnect", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, Disconnect_11);
+            args = new Type[]{typeof(System.UInt16), typeof(System.Byte[])};
+            method = type.GetMethod("Send", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, Send_12);
 
 
 
@@ -272,6 +275,28 @@ namespace ILRuntime.Runtime.Generated
             __intp.Free(ptr_of_this_method);
 
             instance_of_this_method.Disconnect();
+
+            return __ret;
+        }
+
+        static StackObject* Send_12(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 3);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Byte[] @data = (System.Byte[])typeof(System.Byte[]).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            System.UInt16 @method_id = (ushort)ptr_of_this_method->Value;
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
+            Casinos.NetMgr instance_of_this_method = (Casinos.NetMgr)typeof(Casinos.NetMgr).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.Send(@method_id, @data);
 
             return __ret;
         }

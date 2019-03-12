@@ -11,6 +11,7 @@ namespace ILRuntime.Runtime.Generated
         /// </summary>
         public static void Initialize(ILRuntime.Runtime.Enviorment.AppDomain app)
         {
+            System_Byte_Binding.Register(app);
             System_Int16_Binding.Register(app);
             System_UInt16_Binding.Register(app);
             System_Int32_Binding.Register(app);

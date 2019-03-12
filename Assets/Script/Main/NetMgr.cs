@@ -58,6 +58,12 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
+        public void Send(ushort method_id, byte[] data)
+        {
+            RpcSession.Send(method_id, data);
+        }
+
+        //---------------------------------------------------------------------
         void _onSocketConnected(object client, EventArgs args)
         {
             OnSocketConnected();

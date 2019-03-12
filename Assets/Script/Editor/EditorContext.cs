@@ -111,6 +111,8 @@ public class EditorContext
         }
 
         List<Type> types = new List<Type>();
+        types.Add(typeof(byte));
+        types.Add(typeof(byte[]));
         types.Add(typeof(short));
         types.Add(typeof(ushort));
         types.Add(typeof(int));
