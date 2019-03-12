@@ -4,11 +4,13 @@ using GameCloud.Unity.Common;
 public class RpcSessionTcpClient : RpcSession
 {
     //-------------------------------------------------------------------------
-    TcpClient TcpClient;
+    TcpClient TcpClient { get; set; }
+    Casinos.NetMgr NetMgr { get; set; }
 
     //-------------------------------------------------------------------------
-    public RpcSessionTcpClient()
+    public RpcSessionTcpClient(Casinos.NetMgr net_mgr)
     {
+        NetMgr = net_mgr;
         TcpClient = new TcpClient();
         TcpClient.OnSocketReceive += _onSocketReceive;
         TcpClient.OnSocketConnected += _onSocketConnected;
@@ -86,7 +88,7 @@ public class RpcSessionTcpClient : RpcSession
         }
         else buf = new byte[0];
 
-        Casinos.CasinosContext.Instance.NetMgr.LuaOnRpcMethod(method_id, buf);
+        NetMgr.OnRpcMethod(method_id, buf);
     }
 
     //-------------------------------------------------------------------------
@@ -115,8 +117,8 @@ public class RpcSessionTcpClient : RpcSession
 public class RpcSessionFactoryTcpClient : RpcSessionFactory
 {
     //-------------------------------------------------------------------------
-    public override RpcSession CreateRpcSession()
+    public override RpcSession CreateRpcSession(Casinos.NetMgr net_mgr)
     {
-        return new RpcSessionTcpClient();
+        return new RpcSessionTcpClient(net_mgr);
     }
 }

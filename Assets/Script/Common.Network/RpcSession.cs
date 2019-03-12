@@ -400,6 +400,6 @@ namespace GameCloud.Unity.Common
     public abstract class RpcSessionFactory
     {
         //---------------------------------------------------------------------
-        public abstract RpcSession CreateRpcSession();
+        public abstract RpcSession CreateRpcSession(Casinos.NetMgr net_mgr);
     }
 }

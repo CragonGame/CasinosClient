@@ -9,27 +9,30 @@ namespace Casinos
     public class NetMgr
     {
         //---------------------------------------------------------------------
-        public RpcSession RpcSession { get; set; }
-        public Action<ushort, byte[]> LuaOnRpcMethod { get; set; }
+        RpcSession RpcSession { get; set; }
+        public Action<ushort, byte[]> OnRpcMethod { get; set; }
+        public Action OnSocketConnected { get; set; }
+        public Action OnSocketClosed { get; set; }
+        public Action OnSocketError { get; set; }
 
         //---------------------------------------------------------------------
         public NetMgr()
         {
             var rpc_session_factory = new RpcSessionFactoryTcpClient();
-            RpcSession = rpc_session_factory.CreateRpcSession();
+            RpcSession = rpc_session_factory.CreateRpcSession(this);
         }
 
         //---------------------------------------------------------------------
-        public void InitByLua()
-        {
-            var lua_rpc = CasinosContext.Instance.LuaMgr.LuaEnv.Global.Get<LuaTable>("Rpc");
-            LuaOnRpcMethod = lua_rpc.Get<Action<ushort, byte[]>>("OnRpcMethod");
-        }
+        //public void InitByLua()
+        //{
+        //    var lua_rpc = CasinosContext.Instance.LuaMgr.LuaEnv.Global.Get<LuaTable>("Rpc");
+        //    LuaOnRpcMethod = lua_rpc.Get<Action<ushort, byte[]>>("OnRpcMethod");
+        //}
 
         //---------------------------------------------------------------------
         public void Close()
         {
-            LuaOnRpcMethod = null;
+            OnRpcMethod = null;
         }
 
         //---------------------------------------------------------------------
@@ -57,6 +60,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _onSocketConnected(object client, EventArgs args)
         {
+            OnSocketConnected();
         }
 
         //---------------------------------------------------------------------
@@ -74,13 +78,16 @@ namespace Casinos
             //    BuglyAgent.ReportException(args.Exception, args.Exception.Message);
             //}
 
+            OnSocketError();
+
             _onSocketClose();
         }
 
         //---------------------------------------------------------------------
         void _onSocketClose()
         {
-            CasinosContext.Instance.LuaMgr._CSharpCallOnSocketClose();
+            //CasinosContext.Instance.LuaMgr._CSharpCallOnSocketClose();
+            OnSocketClosed();
         }
     }
 }

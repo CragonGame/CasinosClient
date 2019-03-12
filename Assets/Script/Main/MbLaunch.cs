@@ -171,6 +171,7 @@ namespace Casinos
             AppDomain.DelegateManager.RegisterMethodDelegate<List<string>>();
             AppDomain.DelegateManager.RegisterMethodDelegate<AssetBundle>();
             AppDomain.DelegateManager.RegisterMethodDelegate<Texture>();
+            AppDomain.DelegateManager.RegisterMethodDelegate<ushort, byte[]>();
 
             AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.EventCallback0>((action) =>
             {

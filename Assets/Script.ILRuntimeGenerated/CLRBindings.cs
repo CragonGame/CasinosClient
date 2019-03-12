@@ -120,6 +120,7 @@ namespace ILRuntime.Runtime.Generated
             Casinos_CsvParser_Binding.Register(app);
             Casinos_MbAsyncLoadAssets_Binding.Register(app);
             Casinos_MbLaunchRestart_Binding.Register(app);
+            Casinos_NetMgr_Binding.Register(app);
             SQLiteDB_Binding.Register(app);
         }
 
