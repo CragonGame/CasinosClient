@@ -12,6 +12,7 @@ namespace ILRuntime.Runtime.Generated
         public static void Initialize(ILRuntime.Runtime.Enviorment.AppDomain app)
         {
             System_Byte_Binding.Register(app);
+            System_Char_Binding.Register(app);
             System_Int16_Binding.Register(app);
             System_UInt16_Binding.Register(app);
             System_Int32_Binding.Register(app);
@@ -23,7 +24,11 @@ namespace ILRuntime.Runtime.Generated
             System_Object_Binding.Register(app);
             System_String_Binding.Register(app);
             System_Array_Binding.Register(app);
+            System_Console_Binding.Register(app);
             System_Environment_Binding.Register(app);
+            System_ValueType_Binding.Register(app);
+            System_Collections_Generic_List_1_String_Binding.Register(app);
+            System_Diagnostics_Stopwatch_Binding.Register(app);
             System_IO_Directory_Binding.Register(app);
             System_IO_DirectoryInfo_Binding.Register(app);
             System_IO_File_Binding.Register(app);
@@ -43,7 +48,6 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_Object_Binding.Register(app);
             UnityEngine_Component_Binding.Register(app);
             UnityEngine_Behaviour_Binding.Register(app);
-            UnityEngine_MonoBehaviour_Binding.Register(app);
             UnityEngine_Application_Binding.Register(app);
             UnityEngine_AssetBundle_Binding.Register(app);
             UnityEngine_AudioClip_Binding.Register(app);

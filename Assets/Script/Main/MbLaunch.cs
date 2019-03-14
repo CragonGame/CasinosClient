@@ -21,8 +21,10 @@ namespace Casinos
         //---------------------------------------------------------------------
         LaunchInfo LaunchInfo { get; set; }
         ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get; set; } = null;
+        bool LoadPdb { get; set; }// 是否加载Pdb，Pdb可以用于显示出错行号
         MemoryStream MsScriptDll { get; set; }
         MemoryStream MsScriptPdb { get; set; }
+        public ILTypeKeeper Keeper { get; set; }
 
         //---------------------------------------------------------------------
         public void Close()
@@ -41,6 +43,7 @@ namespace Casinos
         {
             LaunchInfo = null;
             AppDomain = new ILRuntime.Runtime.Enviorment.AppDomain();
+            LoadPdb = true;
 
             // 读取VersionLaunchPersistent
             string launch_ver = string.Empty;
@@ -159,12 +162,19 @@ namespace Casinos
 #endif
 
             byte[] dll = File.ReadAllBytes(s + "Script.dll");
-            byte[] pdb = File.ReadAllBytes(s + "Script.pdb");
-
             MsScriptDll = new MemoryStream(dll);
-            MsScriptPdb = new MemoryStream(pdb);
+
+            if (LoadPdb)
+            {
+                byte[] pdb = File.ReadAllBytes(s + "Script.pdb");
+                MsScriptPdb = new MemoryStream(pdb);
+            }
 
             AppDomain.LoadAssembly(MsScriptDll, MsScriptPdb, new ILRuntime.Mono.Cecil.Pdb.PdbReaderProvider());
+
+            // 跨域继承适配器注册
+            AppDomain.RegisterCrossBindingAdaptor(new CoroutineAdapter());
+            AppDomain.RegisterCrossBindingAdaptor(new MonoBehaviourAdapter());
 
             // 委托注册
             AppDomain.DelegateManager.RegisterMethodDelegate<string>();

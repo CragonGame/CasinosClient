@@ -3,6 +3,8 @@
   "LaunchFileList": [
     "Launch/Cs/Script.dll",
 	"Launch/Cs/Script.pdb",
+	"Launch/Language/Chinese/Ui/PreLoading.txt",
+	"Launch/Language/English/Ui/PreLoading.txt",
 	"Launch/Android/denglong.ab",
     "Launch/Android/denglong.ab.manifest",
     "Launch/Android/loadingmarry.ab",

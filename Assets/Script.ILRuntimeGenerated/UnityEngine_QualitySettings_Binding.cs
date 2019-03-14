@@ -1125,7 +1125,7 @@ namespace ILRuntime.Runtime.Generated
             System.Int32 @value = ptr_of_this_method->Value;
 
 
-            UnityEngine.QualitySettings.streamingMipmapsRenderersPerFrame = value;
+            //UnityEngine.QualitySettings.streamingMipmapsRenderersPerFrame = value;
 
             return __ret;
         }

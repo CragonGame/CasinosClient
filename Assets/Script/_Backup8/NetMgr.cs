@@ -3,7 +3,7 @@
 namespace Casinos
 {
     using System;
-    using XLua;
+    //using XLua;
     using GameCloud.Unity.Common;
 
     public class NetMgr

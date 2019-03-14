@@ -2,10 +2,10 @@
 
 namespace Casinos
 {
-    using XLua;
+    //using XLua;
     using System.Text.RegularExpressions;
 
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public static class CasinoHelper
     {
         //---------------------------------------------------------------------

@@ -2,9 +2,9 @@
 
 namespace Casinos
 {
-    using XLua;
+    //using XLua;
 
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public static class UiHelperCasinos
     {
         //---------------------------------------------------------------------

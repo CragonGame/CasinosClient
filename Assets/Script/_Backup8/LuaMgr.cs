@@ -6,26 +6,26 @@ namespace Casinos
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
-    using XLua;
+    //using XLua;
     using GameCloud.Unity.Common;
     using System.IO;
 
-    [CSharpCallLua]
-    public delegate void DelegateLua1(LuaTable lua_table);
+    //[CSharpCallLua]
+    //public delegate void DelegateLua1(LuaTable lua_table);
 
-    [CSharpCallLua]
-    public delegate void DelegateLua2(LuaTable lua_table, float tm);
+    //[CSharpCallLua]
+    //public delegate void DelegateLua2(LuaTable lua_table, float tm);
 
-    [CSharpCallLua]
-    public delegate void DelegateLua3(LuaTable lua_table, bool b);
+    //[CSharpCallLua]
+    //public delegate void DelegateLua3(LuaTable lua_table, bool b);
 
-    [CSharpCallLua]
-    public delegate void DelegateLua4(LuaTable lua_table, List<AssetBundle> list_ab);
+    //[CSharpCallLua]
+    //public delegate void DelegateLua4(LuaTable lua_table, List<AssetBundle> list_ab);
 
     public static class LuaCustomSettings
     {
         //---------------------------------------------------------------------
-        [LuaCallCSharp]
+        //[LuaCallCSharp]
         public static List<Type> CustomType = new List<Type>()
         {
             // Unity3D
@@ -179,16 +179,16 @@ namespace Casinos
         };
 
         //---------------------------------------------------------------------
-        [CSharpCallLua]
+        ///[CSharpCallLua]
         public static List<Type> CustomType2 = new List<Type>()
         {
             typeof(Action),
             typeof(Action<string>),
             typeof(Action<string[]>),
             typeof(Action<byte[]>),
-            typeof(Action<LuaTable>),
-            typeof(Action<LuaTable, string>),
-            typeof(Action<LuaTable, string, float>),
+            //typeof(Action<LuaTable>),
+            //typeof(Action<LuaTable, string>),
+            //typeof(Action<LuaTable, string, float>),
             typeof(Action<float>),
             typeof(Action<int, string>),
             typeof(Action<string, Action>),
@@ -242,17 +242,17 @@ namespace Casinos
         };
     }
 
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public class LuaMgr
     {
         //---------------------------------------------------------------------
-        public LuaEnv LuaEnv { get; private set; }
+        //public LuaEnv LuaEnv { get; private set; }
         Dictionary<string, byte[]> MapLuaFiles { get; set; }
-        DelegateLua1 FuncLaunchClose { get; set; }
-        DelegateLua1 FuncLaunchOnAndroidQuitConfirm { get; set; }
-        DelegateLua3 FuncLaunchOnApplicationPause { get; set; }
-        DelegateLua3 FuncLaunchOnApplicationFocus { get; set; }
-        DelegateLua1 FuncLaunchOnSocketClose { get; set; }
+        //DelegateLua1 FuncLaunchClose { get; set; }
+        //DelegateLua1 FuncLaunchOnAndroidQuitConfirm { get; set; }
+        //DelegateLua3 FuncLaunchOnApplicationPause { get; set; }
+        //DelegateLua3 FuncLaunchOnApplicationFocus { get; set; }
+        //DelegateLua1 FuncLaunchOnSocketClose { get; set; }
         CasinosContext Context { get; set; }
         MbAsyncLoadAssets MbAsyncLoadAssets { get; set; }
 
@@ -264,8 +264,8 @@ namespace Casinos
         {
             Context = CasinosContext.Instance;
             MapLuaFiles = new Dictionary<string, byte[]>();
-            LuaEnv = new LuaEnv();
-            LuaEnv.AddLoader(_luaLoaderCustom);
+            //LuaEnv = new LuaEnv();
+            //LuaEnv.AddLoader(_luaLoaderCustom);
 
             var go_main = GameObject.Find(StringDef.GoMainObj);
             MbAsyncLoadAssets = go_main.GetComponent<MbAsyncLoadAssets>();
@@ -274,31 +274,31 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void Release()
         {
-            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
-            if (FuncLaunchClose != null) FuncLaunchClose.Invoke(lua_launch);
-            FuncLaunchClose = null;
-            FuncLaunchOnAndroidQuitConfirm = null;
-            FuncLaunchOnApplicationPause = null;
-            FuncLaunchOnApplicationFocus = null;
-            FuncLaunchOnSocketClose = null;
-            LuaEnv.Tick();
+            //var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+            //if (FuncLaunchClose != null) FuncLaunchClose.Invoke(lua_launch);
+            //FuncLaunchClose = null;
+            //FuncLaunchOnAndroidQuitConfirm = null;
+            //FuncLaunchOnApplicationPause = null;
+            //FuncLaunchOnApplicationFocus = null;
+            //FuncLaunchOnSocketClose = null;
+            //LuaEnv.Tick();
 
-            if (LuaEnv != null)
-            {
-                LuaEnv.Dispose();
-                LuaEnv = null;
-            }
+            //if (LuaEnv != null)
+            //{
+            //    LuaEnv.Dispose();
+            //    LuaEnv = null;
+            //}
         }
 
         //---------------------------------------------------------------------
         public void Update(float elapsed_tm)
         {
-            TickTimeSpanLast += elapsed_tm;
-            if (LuaEnv != null && TickTimeSpanLast > TickTimeSpanMax)
-            {
-                TickTimeSpanLast = 0f;
-                LuaEnv.Tick();
-            }
+            //TickTimeSpanLast += elapsed_tm;
+            //if (LuaEnv != null && TickTimeSpanLast > TickTimeSpanMax)
+            //{
+            //    TickTimeSpanLast = 0f;
+            //    LuaEnv.Tick();
+            //}
         }
 
         //---------------------------------------------------------------------
@@ -328,14 +328,14 @@ namespace Casinos
 
             DoString("Launch");
 
-            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
-            FuncLaunchClose = lua_launch.Get<DelegateLua1>("Close");
-            FuncLaunchOnAndroidQuitConfirm = lua_launch.Get<DelegateLua1>("OnAndroidQuitConfirm");
-            FuncLaunchOnApplicationPause = lua_launch.Get<DelegateLua3>("OnApplicationPause");
-            FuncLaunchOnApplicationFocus = lua_launch.Get<DelegateLua3>("OnApplicationFocus");
-            FuncLaunchOnSocketClose = lua_launch.Get<DelegateLua1>("OnSocketClose");
-            var func_setup = lua_launch.Get<DelegateLua1>("Setup");
-            func_setup(lua_launch);
+            //var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+            //FuncLaunchClose = lua_launch.Get<DelegateLua1>("Close");
+            //FuncLaunchOnAndroidQuitConfirm = lua_launch.Get<DelegateLua1>("OnAndroidQuitConfirm");
+            //FuncLaunchOnApplicationPause = lua_launch.Get<DelegateLua3>("OnApplicationPause");
+            //FuncLaunchOnApplicationFocus = lua_launch.Get<DelegateLua3>("OnApplicationFocus");
+            //FuncLaunchOnSocketClose = lua_launch.Get<DelegateLua1>("OnSocketClose");
+            //var func_setup = lua_launch.Get<DelegateLua1>("Setup");
+            //func_setup(lua_launch);
         }
 
         //---------------------------------------------------------------------
@@ -457,38 +457,38 @@ namespace Casinos
         public void DoString(string luafile_name)
         {
             string do_string = string.Format("require '{0}'", luafile_name);
-            LuaEnv.DoString(do_string);
+            //LuaEnv.DoString(do_string);
         }
 
         //---------------------------------------------------------------------
-        public LuaTable GetLuaTable(string name)
-        {
-            return LuaEnv.Global.Get<LuaTable>(name);
-        }
+        //public LuaTable GetLuaTable(string name)
+        //{
+        //    return LuaEnv.Global.Get<LuaTable>(name);
+        //}
 
-        //---------------------------------------------------------------------
-        public LuaTable TransListToLuaTable<T>(List<T> list_t)
-        {
-            LuaTable l_t = LuaEnv.NewTable();
-            for (int i = 0; i < list_t.Count; i++)
-            {
-                l_t.Set(i, list_t[i]);
-            }
+        ////---------------------------------------------------------------------
+        //public LuaTable TransListToLuaTable<T>(List<T> list_t)
+        //{
+        //    LuaTable l_t = LuaEnv.NewTable();
+        //    for (int i = 0; i < list_t.Count; i++)
+        //    {
+        //        l_t.Set(i, list_t[i]);
+        //    }
 
-            return l_t;
-        }
+        //    return l_t;
+        //}
 
-        //---------------------------------------------------------------------
-        public LuaTable TransDicToLuaTable<TKey, TValue>(Dictionary<TKey, TValue> map)
-        {
-            LuaTable l_t = LuaEnv.NewTable();
-            foreach (var i in map)
-            {
-                l_t.Set(i.Key, i.Value);
-            }
+        ////---------------------------------------------------------------------
+        //public LuaTable TransDicToLuaTable<TKey, TValue>(Dictionary<TKey, TValue> map)
+        //{
+        //    LuaTable l_t = LuaEnv.NewTable();
+        //    foreach (var i in map)
+        //    {
+        //        l_t.Set(i.Key, i.Value);
+        //    }
 
-            return l_t;
-        }
+        //    return l_t;
+        //}
 
         //---------------------------------------------------------------------
         // 读取整个指定的文本文件
@@ -527,19 +527,19 @@ namespace Casinos
 
         //---------------------------------------------------------------------
         // 分割字符串
-        public LuaTable SpliteStr(string str, string splite_s)
-        {
-            var splite_str = str.Split(new string[] { splite_s }, StringSplitOptions.RemoveEmptyEntries);
-            var t = LuaEnv.NewTable();
-            int index = 1;
-            foreach (var i in splite_str)
-            {
-                t.Set(index, i);
-                index++;
-            }
+        //public LuaTable SpliteStr(string str, string splite_s)
+        //{
+        //    var splite_str = str.Split(new string[] { splite_s }, StringSplitOptions.RemoveEmptyEntries);
+        //    var t = LuaEnv.NewTable();
+        //    int index = 1;
+        //    foreach (var i in splite_str)
+        //    {
+        //        t.Set(index, i);
+        //        index++;
+        //    }
 
-            return t;
-        }
+        //    return t;
+        //}
 
         //---------------------------------------------------------------------
         public void DestroyGameObject(GameObject o)
@@ -639,32 +639,32 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void _CSharpCallOnAndroidQuitConfirm()
-        {
-            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
-            if (FuncLaunchOnAndroidQuitConfirm != null) FuncLaunchOnAndroidQuitConfirm.Invoke(lua_launch);
-        }
+        //public void _CSharpCallOnAndroidQuitConfirm()
+        //{
+        //    var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+        //    if (FuncLaunchOnAndroidQuitConfirm != null) FuncLaunchOnAndroidQuitConfirm.Invoke(lua_launch);
+        //}
 
-        //---------------------------------------------------------------------
-        public void _CSharpCallOnApplicationPause(bool pause)
-        {
-            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
-            if (FuncLaunchOnApplicationPause != null) FuncLaunchOnApplicationPause.Invoke(lua_launch, pause);
-        }
+        ////---------------------------------------------------------------------
+        //public void _CSharpCallOnApplicationPause(bool pause)
+        //{
+        //    var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+        //    if (FuncLaunchOnApplicationPause != null) FuncLaunchOnApplicationPause.Invoke(lua_launch, pause);
+        //}
 
-        //---------------------------------------------------------------------
-        public void _CSharpCallOnApplicationFocus(bool focus_status)
-        {
-            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
-            if (FuncLaunchOnApplicationFocus != null) FuncLaunchOnApplicationFocus.Invoke(lua_launch, focus_status);
-        }
+        ////---------------------------------------------------------------------
+        //public void _CSharpCallOnApplicationFocus(bool focus_status)
+        //{
+        //    var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+        //    if (FuncLaunchOnApplicationFocus != null) FuncLaunchOnApplicationFocus.Invoke(lua_launch, focus_status);
+        //}
 
-        //---------------------------------------------------------------------
-        public void _CSharpCallOnSocketClose()
-        {
-            var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
-            if (FuncLaunchOnSocketClose != null) FuncLaunchOnSocketClose.Invoke(lua_launch);
-        }
+        ////---------------------------------------------------------------------
+        //public void _CSharpCallOnSocketClose()
+        //{
+        //    var lua_launch = LuaEnv.Global.Get<LuaTable>("Launch");
+        //    if (FuncLaunchOnSocketClose != null) FuncLaunchOnSocketClose.Invoke(lua_launch);
+        //}
 
         //---------------------------------------------------------------------
         // 自定义Lua文件加载函数

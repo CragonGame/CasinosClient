@@ -6,9 +6,9 @@ namespace Casinos
     using System.IO;
     using System.Text;
     using UnityEngine;
-    using XLua;
+    //using XLua;
 
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public enum _eEditorRunSourcePlatform
     {
         Android,
@@ -16,14 +16,14 @@ namespace Casinos
         PC,
     }
 
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public enum DirType
     {
         Raw = 0,
         Resources,
     }
 
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public class PathMgr
     {
         //---------------------------------------------------------------------

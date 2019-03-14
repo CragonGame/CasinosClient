@@ -112,6 +112,7 @@ public class EditorContext
 
         List<Type> types = new List<Type>();
         types.Add(typeof(byte));
+        types.Add(typeof(char));
         //types.Add(typeof(byte[]));
         types.Add(typeof(short));
         types.Add(typeof(ushort));
@@ -123,9 +124,16 @@ public class EditorContext
         types.Add(typeof(ulong));
         types.Add(typeof(object));
         types.Add(typeof(string));
-        types.Add(typeof(Array));
-
+        types.Add(typeof(System.Array));
+        types.Add(typeof(System.Console));
         types.Add(typeof(System.Environment));
+        types.Add(typeof(System.ValueType));
+        //types.Add(typeof(System.Collections.Generic.Dictionary<short, ILRuntime.Runtime.Intepreter.ILTypeInstance>));
+        //types.Add(typeof(System.Collections.Generic.Dictionary<string, ILRuntime.Runtime.Intepreter.ILTypeInstance>));
+        //types.Add(typeof(System.Collections.Generic.HashSet<ILRuntime.Runtime.Intepreter.ILTypeInstance>));
+        types.Add(typeof(System.Collections.Generic.List<string>));
+        //types.Add(typeof(System.Collections.Generic.Queue<ILRuntime.Runtime.Intepreter.ILTypeInstance>));
+        types.Add(typeof(System.Diagnostics.Stopwatch));
         types.Add(typeof(System.IO.Directory));
         types.Add(typeof(System.IO.DirectoryInfo));
         types.Add(typeof(System.IO.File));
@@ -146,7 +154,7 @@ public class EditorContext
         types.Add(typeof(UnityEngine.Object));
         types.Add(typeof(UnityEngine.Component));
         types.Add(typeof(UnityEngine.Behaviour));
-        types.Add(typeof(UnityEngine.MonoBehaviour));
+        //types.Add(typeof(UnityEngine.MonoBehaviour));
         types.Add(typeof(UnityEngine.Application));
         types.Add(typeof(UnityEngine.AssetBundle));
         types.Add(typeof(UnityEngine.AudioClip));
@@ -263,15 +271,15 @@ public class EditorContext
     static void GenerateCLRBindingByAnalysis()
     {
         // 用新的分析热更dll调用引用来生成绑定代码
-        //ILRuntime.Runtime.Enviorment.AppDomain domain = new ILRuntime.Runtime.Enviorment.AppDomain();
-        //using (System.IO.FileStream fs = new System.IO.FileStream("Assets/StreamingAssets/HotFix_Project.dll", System.IO.FileMode.Open, System.IO.FileAccess.Read))
-        //{
-        //    domain.LoadAssembly(fs);
-        //}
+        ILRuntime.Runtime.Enviorment.AppDomain domain = new ILRuntime.Runtime.Enviorment.AppDomain();
+        using (FileStream fs = new FileStream("Assets/StreamingAssets/Launch/Cs/Script.dll", FileMode.Open, FileAccess.Read))
+        {
+            domain.LoadAssembly(fs);
 
-        ////Crossbind Adapter is needed to generate the correct binding code
-        //InitILRuntime(domain);
-        //ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode(domain, "Assets/ILRuntime/Generated");
+            //Crossbind Adapter is needed to generate the correct binding code
+            InitILRuntime(domain);
+            ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode(domain, "Assets/Script.ILRuntimeGenerated");
+        }
     }
 
     //-------------------------------------------------------------------------

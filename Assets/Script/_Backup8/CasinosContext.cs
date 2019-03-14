@@ -6,7 +6,7 @@ namespace Casinos
     using System.IO;
     using System.Text;
     using UnityEngine;
-    using XLua;
+    //using XLua;
     using FairyGUI;
     
     public enum _eProjectItemDisplayNameKey
@@ -22,7 +22,7 @@ namespace Casinos
         Marquee,
     }
 
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public class CasinosContext
     {
         //---------------------------------------------------------------------
@@ -50,7 +50,7 @@ namespace Casinos
         public bool IsEditor { get; set; }
         public bool IsEditorDebug { get; set; }// 是否处于编辑器调试模式，可以调试lua，使用本地ab，raw
         public bool IsSqliteUnity { get; set; }
-        public LuaTable TbDataMgrLua { get; set; }
+        //public LuaTable TbDataMgrLua { get; set; }
         //FTMgr FTMgr { get; set; }
         HeadIconMgr HeadIconMgr { get; set; }
         SoundMgr SoundMgr { get; set; }
@@ -191,7 +191,7 @@ namespace Casinos
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                LuaMgr._CSharpCallOnAndroidQuitConfirm();
+                //LuaMgr._CSharpCallOnAndroidQuitConfirm();
             }
         }
 
@@ -316,13 +316,13 @@ namespace Casinos
         //-------------------------------------------------------------------------
         public void OnApplicationPause(bool pause)
         {
-            LuaMgr._CSharpCallOnApplicationPause(pause);
+           // LuaMgr._CSharpCallOnApplicationPause(pause);
         }
 
         //-------------------------------------------------------------------------
         public void OnApplicationFocus(bool focus_status)
         {
-            LuaMgr._CSharpCallOnApplicationFocus(focus_status);
+           // LuaMgr._CSharpCallOnApplicationFocus(focus_status);
         }
 
         //---------------------------------------------------------------------

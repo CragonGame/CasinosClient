@@ -8,9 +8,9 @@ namespace Casinos
     using System.IO;
     using UnityEngine;
     using FairyGUI;
-    using XLua;
+    //using XLua;
 
-    [LuaCallCSharp]
+    //[LuaCallCSharp]
     public static class LuaHelper
     {
         //---------------------------------------------------------------------
@@ -62,19 +62,19 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static LuaTable spliteStr(string str, string splite_s)
-        {
-            var splite_str = str.Split(new string[] { splite_s }, StringSplitOptions.RemoveEmptyEntries);
-            var t = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
-            int index = 1;
-            foreach (var i in splite_str)
-            {
-                t.Set(index, i);
-                index++;
-            }
+        //public static LuaTable spliteStr(string str, string splite_s)
+        //{
+        //    var splite_str = str.Split(new string[] { splite_s }, StringSplitOptions.RemoveEmptyEntries);
+        //    var t = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
+        //    int index = 1;
+        //    foreach (var i in splite_str)
+        //    {
+        //        t.Set(index, i);
+        //        index++;
+        //    }
 
-            return t;
-        }
+        //    return t;
+        //}
 
         //---------------------------------------------------------------------
         public static string insertToStr(string target, int index, string insert_obj)
@@ -155,15 +155,15 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static LuaTable getIconName(bool is_small, string icon_name, string icon_resource_name1)
-        {
-            string icon_resource_name = icon_resource_name1;
-            string icon = HeadIconMgr.getIconName(is_small, icon_name, ref icon_resource_name);
-            var t = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
-            t.Set(0, icon_resource_name);
-            t.Set(1, icon);
-            return t;
-        }
+        //public static LuaTable getIconName(bool is_small, string icon_name, string icon_resource_name1)
+        //{
+        //    string icon_resource_name = icon_resource_name1;
+        //    string icon = HeadIconMgr.getIconName(is_small, icon_name, ref icon_resource_name);
+        //    var t = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
+        //    t.Set(0, icon_resource_name);
+        //    t.Set(1, icon);
+        //    return t;
+        //}
 
         //---------------------------------------------------------------------
         public static string bytes2StringByDefault(byte[] bytes)
@@ -311,36 +311,36 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static LuaTable DictionaryToLuatable(IDictionary obj)
-        {
-            LuaTable lua_table = null;
-            if (obj != null)
-            {
-                lua_table = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
-                foreach (var key in obj.Keys)
-                {
-                    lua_table.Set(key, obj[key]);
-                }
-            }
+        //public static LuaTable DictionaryToLuatable(IDictionary obj)
+        //{
+        //    LuaTable lua_table = null;
+        //    if (obj != null)
+        //    {
+        //        lua_table = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
+        //        foreach (var key in obj.Keys)
+        //        {
+        //            lua_table.Set(key, obj[key]);
+        //        }
+        //    }
 
-            return lua_table;
-        }
+        //    return lua_table;
+        //}
 
-        //---------------------------------------------------------------------
-        public static LuaTable ListToLuatable(IList obj)
-        {
-            LuaTable lua_table = null;
-            if (obj != null)
-            {
-                lua_table = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
-                for (int i = 0; i < obj.Count; i++)
-                {
-                    lua_table.Set(i + 1, obj[i]);
-                }
-            }
+        ////---------------------------------------------------------------------
+        //public static LuaTable ListToLuatable(IList obj)
+        //{
+        //    LuaTable lua_table = null;
+        //    if (obj != null)
+        //    {
+        //        lua_table = CasinosContext.Instance.LuaMgr.LuaEnv.NewTable();
+        //        for (int i = 0; i < obj.Count; i++)
+        //        {
+        //            lua_table.Set(i + 1, obj[i]);
+        //        }
+        //    }
 
-            return lua_table;
-        }
+        //    return lua_table;
+        //}
 
         //---------------------------------------------------------------------
         public static TimeSpan TimeDifferenceNow(DateTime time)
