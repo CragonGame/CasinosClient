@@ -18,12 +18,12 @@ namespace Casinos
         //---------------------------------------------------------------------
         private void Start()
         {
-            Rect = new Rect(Screen.width / 2, 0, 200, 50);
+            Rect = new Rect(Screen.width - 250, 10, 200, 40);
 
             FontStyle1 = new GUIStyle();
-            FontStyle1.fontSize = 22;
+            FontStyle1.fontSize = 16;
             FontStyle1.fontStyle = FontStyle.Normal;
-            FontStyle1.alignment = TextAnchor.MiddleLeft;
+            FontStyle1.alignment = TextAnchor.UpperRight;
             FontStyle1.normal.textColor = Color.white;
         }
 

@@ -11,6 +11,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public static MD5Comparer Instance { get; private set; }
         MD5 MD5 { get; set; }
+        StringBuilder Sb { get; set; } = new StringBuilder(256);
 
         //---------------------------------------------------------------------
         public MD5Comparer()
@@ -22,17 +23,17 @@ namespace Casinos
         //---------------------------------------------------------------------
         public bool IsSameFile(string local_filepath, string remote_filemd5)
         {
-            StringBuilder sb = new StringBuilder();
+            Sb.Clear();
             using (FileStream sr = File.OpenRead(local_filepath))
             {
                 byte[] new_bytes = MD5.ComputeHash(sr);
                 foreach (var bytes in new_bytes)
                 {
-                    sb.Append(bytes.ToString("X2"));
+                    Sb.Append(bytes.ToString("X2"));
                 }
             }
 
-            bool is_same = sb.ToString().Equals(remote_filemd5);
+            bool is_same = Sb.ToString().Equals(remote_filemd5);
             return is_same;
         }
     }

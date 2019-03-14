@@ -21,24 +21,33 @@ namespace ILRuntime.Runtime.Generated
             MethodBase method;
             Type[] args;
             Type type = typeof(Casinos.MbAsyncLoadAssets);
+            args = new Type[]{typeof(System.String), typeof(System.Action<System.String>)};
+            method = type.GetMethod("SendUrl", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, SendUrl_0);
+            args = new Type[]{typeof(System.String), typeof(System.String), typeof(System.Action<System.Int32, System.String>)};
+            method = type.GetMethod("PostUrl", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, PostUrl_1);
+            args = new Type[]{typeof(System.String), typeof(UnityEngine.WWWForm), typeof(System.Action<System.Int32, System.String>)};
+            method = type.GetMethod("PostUrlWithFormData", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, PostUrlWithFormData_2);
             args = new Type[]{typeof(System.String), typeof(System.Action<UnityEngine.AssetBundle>)};
             method = type.GetMethod("LocalLoadAssetBundleAsync", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, LocalLoadAssetBundleAsync_0);
+            app.RegisterCLRMethodRedirection(method, LocalLoadAssetBundleAsync_3);
             args = new Type[]{typeof(System.String), typeof(System.String), typeof(System.Action<UnityEngine.Texture>)};
             method = type.GetMethod("LocalLoadTextureFromAbAsync", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, LocalLoadTextureFromAbAsync_1);
+            app.RegisterCLRMethodRedirection(method, LocalLoadTextureFromAbAsync_4);
             args = new Type[]{typeof(System.String), typeof(System.Action<System.String>)};
             method = type.GetMethod("WWWLoadTextAsync", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, WWWLoadTextAsync_2);
+            app.RegisterCLRMethodRedirection(method, WWWLoadTextAsync_5);
             args = new Type[]{typeof(System.Collections.Generic.List<System.String>), typeof(System.Action<System.Collections.Generic.List<System.String>>)};
             method = type.GetMethod("WWWLoadTextListAsync", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, WWWLoadTextListAsync_3);
+            app.RegisterCLRMethodRedirection(method, WWWLoadTextListAsync_6);
             args = new Type[]{typeof(System.String), typeof(System.Action<UnityEngine.Texture>)};
             method = type.GetMethod("WWWLoadTextureAsync", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, WWWLoadTextureAsync_4);
+            app.RegisterCLRMethodRedirection(method, WWWLoadTextureAsync_7);
             args = new Type[]{typeof(System.String), typeof(System.Action<UnityEngine.AssetBundle>)};
             method = type.GetMethod("WWWLoadAssetBundleAsync", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, WWWLoadAssetBundleAsync_5);
+            app.RegisterCLRMethodRedirection(method, WWWLoadAssetBundleAsync_8);
 
 
 
@@ -52,7 +61,84 @@ namespace ILRuntime.Runtime.Generated
         }
 
 
-        static StackObject* LocalLoadAssetBundleAsync_0(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* SendUrl_0(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 3);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Action<System.String> @cb = (System.Action<System.String>)typeof(System.Action<System.String>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            System.String @url = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
+            Casinos.MbAsyncLoadAssets instance_of_this_method = (Casinos.MbAsyncLoadAssets)typeof(Casinos.MbAsyncLoadAssets).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.SendUrl(@url, @cb);
+
+            return __ret;
+        }
+
+        static StackObject* PostUrl_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 4);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Action<System.Int32, System.String> @cb = (System.Action<System.Int32, System.String>)typeof(System.Action<System.Int32, System.String>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            System.String @post_data = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
+            System.String @url = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 4);
+            Casinos.MbAsyncLoadAssets instance_of_this_method = (Casinos.MbAsyncLoadAssets)typeof(Casinos.MbAsyncLoadAssets).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.PostUrl(@url, @post_data, @cb);
+
+            return __ret;
+        }
+
+        static StackObject* PostUrlWithFormData_2(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 4);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Action<System.Int32, System.String> @cb = (System.Action<System.Int32, System.String>)typeof(System.Action<System.Int32, System.String>).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            UnityEngine.WWWForm @form_data = (UnityEngine.WWWForm)typeof(UnityEngine.WWWForm).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
+            System.String @url = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 4);
+            Casinos.MbAsyncLoadAssets instance_of_this_method = (Casinos.MbAsyncLoadAssets)typeof(Casinos.MbAsyncLoadAssets).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.PostUrlWithFormData(@url, @form_data, @cb);
+
+            return __ret;
+        }
+
+        static StackObject* LocalLoadAssetBundleAsync_3(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -75,7 +161,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret;
         }
 
-        static StackObject* LocalLoadTextureFromAbAsync_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* LocalLoadTextureFromAbAsync_4(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -102,7 +188,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret;
         }
 
-        static StackObject* WWWLoadTextAsync_2(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* WWWLoadTextAsync_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -125,7 +211,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret;
         }
 
-        static StackObject* WWWLoadTextListAsync_3(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* WWWLoadTextListAsync_6(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -148,7 +234,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret;
         }
 
-        static StackObject* WWWLoadTextureAsync_4(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* WWWLoadTextureAsync_7(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -171,7 +257,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret;
         }
 
-        static StackObject* WWWLoadAssetBundleAsync_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* WWWLoadAssetBundleAsync_8(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;

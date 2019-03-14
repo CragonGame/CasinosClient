@@ -112,7 +112,7 @@ public class EditorContext
 
         List<Type> types = new List<Type>();
         types.Add(typeof(byte));
-        types.Add(typeof(byte[]));
+        //types.Add(typeof(byte[]));
         types.Add(typeof(short));
         types.Add(typeof(ushort));
         types.Add(typeof(int));
@@ -140,6 +140,8 @@ public class EditorContext
         types.Add(typeof(System.IO.StringWriter));
         types.Add(typeof(System.Text.Encoding));
         types.Add(typeof(System.Text.StringBuilder));
+        types.Add(typeof(System.Text.RegularExpressions.Match));
+        types.Add(typeof(System.Text.RegularExpressions.Regex));
 
         types.Add(typeof(UnityEngine.Object));
         types.Add(typeof(UnityEngine.Component));

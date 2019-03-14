@@ -38,6 +38,8 @@ namespace ILRuntime.Runtime.Generated
             System_IO_StringWriter_Binding.Register(app);
             System_Text_Encoding_Binding.Register(app);
             System_Text_StringBuilder_Binding.Register(app);
+            System_Text_RegularExpressions_Match_Binding.Register(app);
+            System_Text_RegularExpressions_Regex_Binding.Register(app);
             UnityEngine_Object_Binding.Register(app);
             UnityEngine_Component_Binding.Register(app);
             UnityEngine_Behaviour_Binding.Register(app);

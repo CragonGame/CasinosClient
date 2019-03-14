@@ -9,22 +9,23 @@ namespace Casinos
     {
         //-------------------------------------------------------------------------
         public ParticleSystem mParticleSystem;
-        bool mCanCheckDestroy;
+        bool CheckDestroy;
         Action DestroyCallBack;
 
         //-------------------------------------------------------------------------
         public void play(Action destroy_callback = null)
         {
             DestroyCallBack = destroy_callback;
-            mCanCheckDestroy = true;
+            CheckDestroy = true;
             mParticleSystem.Play();
         }
 
         //-------------------------------------------------------------------------
         void Update()
         {
-            if (mCanCheckDestroy && !mParticleSystem.isPlaying)
+            if (CheckDestroy && !mParticleSystem.isPlaying)
             {
+                CheckDestroy = false;
                 if (DestroyCallBack != null) DestroyCallBack.Invoke();
                 Destroy(gameObject);
             }
