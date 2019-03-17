@@ -179,6 +179,7 @@ namespace Casinos
             // 委托注册
             AppDomain.DelegateManager.RegisterMethodDelegate<object>();
             AppDomain.DelegateManager.RegisterMethodDelegate<string>();
+            AppDomain.DelegateManager.RegisterMethodDelegate<int, string>();
             AppDomain.DelegateManager.RegisterMethodDelegate<List<string>>();
             AppDomain.DelegateManager.RegisterMethodDelegate<AssetBundle>();
             AppDomain.DelegateManager.RegisterMethodDelegate<Texture>();
