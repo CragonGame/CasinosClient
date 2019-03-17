@@ -177,11 +177,15 @@ namespace Casinos
             AppDomain.RegisterCrossBindingAdaptor(new MonoBehaviourAdapter());
 
             // 委托注册
+            AppDomain.DelegateManager.RegisterMethodDelegate<object>();
             AppDomain.DelegateManager.RegisterMethodDelegate<string>();
             AppDomain.DelegateManager.RegisterMethodDelegate<List<string>>();
             AppDomain.DelegateManager.RegisterMethodDelegate<AssetBundle>();
             AppDomain.DelegateManager.RegisterMethodDelegate<Texture>();
             AppDomain.DelegateManager.RegisterMethodDelegate<ushort, byte[]>();
+            AppDomain.DelegateManager.RegisterMethodDelegate<FairyGUI.EventContext>();
+            AppDomain.DelegateManager.RegisterMethodDelegate<FairyGUI.GTweener>();
+            AppDomain.DelegateManager.RegisterMethodDelegate<int, FairyGUI.GObject>();
 
             AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.EventCallback0>((action) =>
             {
@@ -248,9 +252,9 @@ namespace Casinos
             });
 
             // 值类型绑定
-            AppDomain.RegisterValueTypeBinder(typeof(Vector3), new Vector3Binder());
             AppDomain.RegisterValueTypeBinder(typeof(Quaternion), new QuaternionBinder());
             AppDomain.RegisterValueTypeBinder(typeof(Vector2), new Vector2Binder());
+            AppDomain.RegisterValueTypeBinder(typeof(Vector3), new Vector3Binder());
 
             // CLR绑定
             LitJson.JsonMapper.RegisterILRuntimeCLRRedirection(AppDomain);
