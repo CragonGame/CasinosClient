@@ -1,6 +1,9 @@
+ConfirmPhone|确认手机号码
 EnterPhone|请输入手机号
 EnterPwdTips1|请输入密码
+PhoneCode|验证码
 SearchCountry|请输入国家
+SendCodeToPhone|将发送验证码短信到这个号码
 VersionInfo|应用版本: {0},  脚本版本: {1},  数据版本: {2}&{3} {4}
 Btn_Cancel|取消
 Btn_Login1|登   录
