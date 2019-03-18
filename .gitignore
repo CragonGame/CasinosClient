@@ -13,6 +13,7 @@ Assets/SettingsUser/
 Assets/Script.Lua/.idea/
 /Assets/StreamingAssets/Launch/Cs
 /DataOss/Common/Lua/.idea
+/DataOss/Launch/Cs
 ProjectUiKing/.objs/
 Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj

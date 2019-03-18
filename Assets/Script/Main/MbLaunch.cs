@@ -151,22 +151,18 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _launch()
         {
-            string s = Application.persistentDataPath + "/Launch/Cs/";
-            //s = s.Replace('\\', '/');
-            //s = s.Replace("Assets/StreamingAssets", "");
-            //s += "Script/Script.CSharp/bin/";
-            //Debug.Log(s);
+            string path_dll = Application.persistentDataPath + "/Launch/Cs/";
 
 #if UNITY_EDITOR
             // 检测Script.CSharp.dll是否存在，如不存在则给出提示
 #endif
 
-            byte[] dll = File.ReadAllBytes(s + "Script.dll");
+            byte[] dll = File.ReadAllBytes(path_dll + "Script.dll");
             MsScriptDll = new MemoryStream(dll);
 
             if (LoadPdb)
             {
-                byte[] pdb = File.ReadAllBytes(s + "Script.pdb");
+                byte[] pdb = File.ReadAllBytes(path_dll + "Script.pdb");
                 MsScriptPdb = new MemoryStream(pdb);
             }
 
@@ -281,6 +277,28 @@ namespace Casinos
 #endif
 
             bool is_editor_debug = false;
+#if UNITY_EDITOR
+            EditorCfgUserSettingsCopy cfg_usersettings = null;
+            string p = Path.Combine(Environment.CurrentDirectory, "./Assets/SettingsUser/");
+            var di = new DirectoryInfo(p);
+            string path_settingsuser = di.FullName;
+
+            string full_filename = Path.Combine(path_settingsuser, StringDef.FileEditorUserSettings);
+            if (File.Exists(full_filename))
+            {
+                using (StreamReader sr = File.OpenText(full_filename))
+                {
+                    string s = sr.ReadToEnd();
+                    cfg_usersettings = JsonUtility.FromJson<EditorCfgUserSettingsCopy>(s);
+                }
+            }
+
+            if (cfg_usersettings != null)
+            {
+                is_editor_debug = cfg_usersettings.IsEditorDebug;
+            }
+#endif
+
             AppDomain.Invoke("Cs.Main", "Create", null, new object[] { platform, is_editor, is_editor_debug });
         }
     }
