@@ -1,10 +1,20 @@
+AlreadyLogin|您的帐号已在别处登录
 ConfirmPhone|确认手机号码
+EnterGameFailed|进入游戏失败
 EnterPhone|请输入手机号
 EnterPwdTips1|请输入密码
+Logining|正在登录中，请稍候
+LoginSuccessful|登录成功...
 PhoneCode|验证码
+Registering|正在注册中，请稍候
+RegisterSuccessful|帐号注册成功
+Resend|重发
+ResetPwding|重置密码中...
+ResetPwdSuccessful|重置密码成功
 SearchCountry|请输入国家
 SendCodeToPhone|将发送验证码短信到这个号码
 VersionInfo|应用版本: {0},  脚本版本: {1},  数据版本: {2}&{3} {4}
+WeChatLogining|正在请求微信登录…
 Btn_Cancel|取消
 Btn_Login1|登   录
 Btn_Register|立刻注册
