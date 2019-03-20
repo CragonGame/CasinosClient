@@ -1,3 +1,0 @@
-Btn_Confirm|确定
-Btn_Confirm1|确定
-Btn_Cancel|取消

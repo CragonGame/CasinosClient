@@ -95,6 +95,16 @@ namespace Casinos
             Debug.Log("MbLaunch.OnDestroy()");
         }
 
+        //-------------------------------------------------------------------------
+        void OnApplicationPause(bool pause)
+        {
+        }
+
+        //-------------------------------------------------------------------------
+        void OnApplicationFocus(bool focus_status)
+        {
+        }
+
         //---------------------------------------------------------------------
         IEnumerator _copyStreamingAssets2PersistentAsync(Action cb)
         {
