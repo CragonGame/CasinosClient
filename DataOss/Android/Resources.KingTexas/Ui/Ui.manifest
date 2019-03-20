@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 637503438
+CRC: 1019662513
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: friend.ab
+      Name: main.ab
       Dependencies: {}

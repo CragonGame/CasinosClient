@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="76,76" extention="Button">
+<component size="76,76" pivot="0.5,0.5" extention="Button">
   <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
   <displayList>
     <image id="n6_f70a" name="n6" src="f70a9g" fileName="Image/Service_icon.png" xy="0,0"/>
     <component id="n5_ncj5" name="ComMsgTips" src="d6gea8" fileName="Component/ComMsgTips.xml" pkg="nhvxw9ov" xy="60,-2"/>
   </displayList>
-  <Button/>
+  <Button downEffect="scale" downEffectValue="0.90"/>
 </component>
