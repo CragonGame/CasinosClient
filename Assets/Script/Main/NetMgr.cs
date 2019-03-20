@@ -3,7 +3,6 @@
 namespace Casinos
 {
     using System;
-    //using XLua;
     using GameCloud.Unity.Common;
 
     public class NetMgr
@@ -21,13 +20,6 @@ namespace Casinos
             var rpc_session_factory = new RpcSessionFactoryTcpClient();
             RpcSession = rpc_session_factory.CreateRpcSession(this);
         }
-
-        //---------------------------------------------------------------------
-        //public void InitByLua()
-        //{
-        //    var lua_rpc = CasinosContext.Instance.LuaMgr.LuaEnv.Global.Get<LuaTable>("Rpc");
-        //    LuaOnRpcMethod = lua_rpc.Get<Action<ushort, byte[]>>("OnRpcMethod");
-        //}
 
         //---------------------------------------------------------------------
         public void Close()
