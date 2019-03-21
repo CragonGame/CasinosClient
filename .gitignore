@@ -15,12 +15,5 @@ Assets/Script.Lua/.idea/
 /DataOss/Common/Lua/.idea
 /DataOss/Launch/Cs
 ProjectUiKing/.objs/
-Assembly-CSharp.csproj
-Assembly-CSharp-Editor.csproj
-Assembly-CSharp-Editor-firstpass.csproj
-Assembly-CSharp-firstpass.csproj
-CasinosClientGithub.csproj
-CasinosClientGithub.Editor.csproj
-CasinosClientGithub.Editor.Plugins.csproj
-CasinosClientGithub.Plugins.csproj
+/*.csproj
 CasinosClientGithub.sln

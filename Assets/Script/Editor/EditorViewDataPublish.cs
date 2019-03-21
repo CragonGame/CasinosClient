@@ -139,23 +139,32 @@ public class EditorViewDataPublish : EditorWindow
         GUILayout.Label("------------------------------------------------------");
         EditorGUILayout.LabelField("Common资源处理");
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("打包Lua脚本（Android）", GUILayout.Width(200)))
+        if (GUILayout.Button("生成CommonFileList.txt", GUILayout.Width(200)))
         {
             AssetDatabase.Refresh();
-            _buildAssetBundleLua(Casinos._eEditorRunSourcePlatform.Android);
-            var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.txt", "Context.txt" };
-            _genCommonFileList(ignore_files);
-            AssetDatabase.Refresh();
-        }
-        if (GUILayout.Button("打包Lua脚本（iOS）", GUILayout.Width(200)))
-        {
-            AssetDatabase.Refresh();
-            _buildAssetBundleLua(Casinos._eEditorRunSourcePlatform.IOS);
-            var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.txt", "Context.txt" };
+            var ignore_files = new HashSet<string> { "CommonFileList.txt" };
             _genCommonFileList(ignore_files);
             AssetDatabase.Refresh();
         }
         EditorGUILayout.EndHorizontal();
+        //EditorGUILayout.BeginHorizontal();
+        //if (GUILayout.Button("打包Lua脚本（Android）", GUILayout.Width(200)))
+        //{
+        //    AssetDatabase.Refresh();
+        //    _buildAssetBundleLua(Casinos._eEditorRunSourcePlatform.Android);
+        //    var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.txt", "Context.txt" };
+        //    _genCommonFileList(ignore_files);
+        //    AssetDatabase.Refresh();
+        //}
+        //if (GUILayout.Button("打包Lua脚本（iOS）", GUILayout.Width(200)))
+        //{
+        //    AssetDatabase.Refresh();
+        //    _buildAssetBundleLua(Casinos._eEditorRunSourcePlatform.IOS);
+        //    var ignore_files = new HashSet<string> { "CommonFileList.txt", "Bundle.txt", "Context.txt" };
+        //    _genCommonFileList(ignore_files);
+        //    AssetDatabase.Refresh();
+        //}
+        //EditorGUILayout.EndHorizontal();
 
         GUILayout.Space(10);
         GUILayout.Label("------------------------------------------------------");

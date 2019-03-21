@@ -1,7 +1,0 @@
-ManifestFileVersion: 0
-CRC: 2640100318
-AssetBundleManifest:
-  AssetBundleInfos:
-    Info_0:
-      Name: lua_launch_android.ab
-      Dependencies: {}
