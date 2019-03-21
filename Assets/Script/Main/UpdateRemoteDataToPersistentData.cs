@@ -37,7 +37,7 @@ namespace Casinos
 
             if (!string.IsNullOrEmpty(datafilelist_remote))
             {
-                string[] arr_remote = datafilelist_remote.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] arr_remote = datafilelist_remote.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var i in arr_remote)
                 {
                     var arr = i.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -47,7 +47,7 @@ namespace Casinos
 
             if (!string.IsNullOrEmpty(datafilelist_persistent))
             {
-                string[] arr_persistent = datafilelist_persistent.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] arr_persistent = datafilelist_persistent.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (var i in arr_persistent)
                 {
                     var arr = i.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
