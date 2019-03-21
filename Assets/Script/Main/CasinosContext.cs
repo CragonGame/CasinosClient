@@ -9,9 +9,7 @@ namespace Casinos
     using UnityEngine;
     using XLua;
     using FairyGUI;
-    using ILRuntime.Runtime.Enviorment;
-    using ILRuntime.Runtime.Generated;
-
+    
     public enum _eProjectItemDisplayNameKey
     {
         Gold,
@@ -57,8 +55,7 @@ namespace Casinos
         FTMgr FTMgr { get; set; }
         HeadIconMgr HeadIconMgr { get; set; }
         SoundMgr SoundMgr { get; set; }
-        CasinosILRuntime CsRuntime { get; set; }
-
+        
         //---------------------------------------------------------------------
         public CasinosContext(bool is_editor_debug)
         {
@@ -182,11 +179,6 @@ namespace Casinos
                 LuaMgr.Update(elapsed_tm);
             }
 
-            if (CsRuntime != null)
-            {
-                CsRuntime.Update();
-            }
-
             if (TimerShaft != null)
             {
                 TimerShaft.ProcessTimer((ulong)Stopwatch.ElapsedMilliseconds);
@@ -235,12 +227,6 @@ namespace Casinos
             {
                 NativeAPIMsgReceiverListner.Close();
                 NativeAPIMsgReceiverListner = null;
-            }
-
-            if (CsRuntime != null)
-            {
-                CsRuntime.Destroy();
-                CsRuntime = null;
             }
 
             if (LuaMgr != null)
@@ -311,9 +297,6 @@ namespace Casinos
             PathMgr.DirAbParticle = PathMgr.DirAbRoot + "Particle/";// "Resources.KingTexas/Particle/"，需动态计算
 
             LuaMgr.Launch(!version_persistent);
-
-            CsRuntime = new CasinosILRuntime();
-            CsRuntime.Create();
         }
 
         //-------------------------------------------------------------------------

@@ -73,7 +73,7 @@ function Launch:Setup()
 
     -- 下载并加载bundle_xxx.txt
     local lua_pkg_name = string.format('bundle_%s', self.CasinosContext.Config.VersionBundle)
-    local http_url_bundlexxx = string.format('https://cragon-king-oss.cragon.cn/%s/%s.txt', self.CasinosContext.Config.Platform, lua_pkg_name)
+    local http_url_bundlexxx = string.format('https://cragon-king.oss-cn-shanghai.aliyuncs.com/%s/%s.txt', self.CasinosContext.Config.Platform, lua_pkg_name)
     --print(http_url_bundlexxx)
     self.LuaMgr:WWWLoadTextAsync(http_url_bundlexxx,
             function(text)
@@ -87,7 +87,7 @@ function Launch:Setup()
                     self.LaunchCfg.CommonVersion = CommonSelectDev
                     self.LaunchCfg.DataVersion = DataSelectDev
                 end
-                local http_url_context = string.format('https://cragon-king-oss.cragon.cn/Common/%s/Lua/Context.txt', self.LaunchCfg.CommonVersion)
+                local http_url_context = string.format('https://cragon-king.oss-cn-shanghai.aliyuncs.com/Common/%s/Lua/Context.txt', self.LaunchCfg.CommonVersion)
                 --print(http_url_context)
                 self.LuaMgr:WWWLoadTextAsync(http_url_context,
                         function(text)
