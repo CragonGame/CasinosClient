@@ -77,6 +77,9 @@ namespace Casinos
             if (AppDomain != null)
             {
                 AppDomain.Invoke("Cs.Main", "Destroy", null, new object[] { });
+#if UNITY_EDITOR
+                AppDomain.DebugService.StopDebugService();
+#endif
                 AppDomain = null;
             }
 

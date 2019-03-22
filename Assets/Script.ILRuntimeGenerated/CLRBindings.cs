@@ -25,6 +25,7 @@ namespace ILRuntime.Runtime.Generated
             System_String_Binding.Register(app);
             System_Array_Binding.Register(app);
             System_Console_Binding.Register(app);
+            System_DateTime_Binding.Register(app);
             System_Environment_Binding.Register(app);
             System_ValueType_Binding.Register(app);
             System_Collections_Generic_List_1_String_Binding.Register(app);
@@ -68,7 +69,6 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_Ping_Binding.Register(app);
             UnityEngine_PlayerPrefs_Binding.Register(app);
             UnityEngine_Quaternion_Binding.Register(app);
-            UnityEngine_QualitySettings_Binding.Register(app);
             UnityEngine_Random_Binding.Register(app);
             UnityEngine_Rect_Binding.Register(app);
             UnityEngine_RectTransform_Binding.Register(app);

@@ -126,7 +126,9 @@ public class EditorContext
         types.Add(typeof(string));
         types.Add(typeof(System.Array));
         types.Add(typeof(System.Console));
+        types.Add(typeof(System.DateTime));
         types.Add(typeof(System.Environment));
+        //types.Add(typeof(System.TimeSpan));
         types.Add(typeof(System.ValueType));
         //types.Add(typeof(System.Collections.Generic.Dictionary<short, ILRuntime.Runtime.Intepreter.ILTypeInstance>));
         //types.Add(typeof(System.Collections.Generic.Dictionary<string, ILRuntime.Runtime.Intepreter.ILTypeInstance>));
@@ -177,7 +179,7 @@ public class EditorContext
         types.Add(typeof(UnityEngine.Ping));
         types.Add(typeof(UnityEngine.PlayerPrefs));
         types.Add(typeof(UnityEngine.Quaternion));
-        types.Add(typeof(UnityEngine.QualitySettings));
+        //types.Add(typeof(UnityEngine.QualitySettings));
         types.Add(typeof(UnityEngine.Random));
         types.Add(typeof(UnityEngine.Rect));
         types.Add(typeof(UnityEngine.RectTransform));
