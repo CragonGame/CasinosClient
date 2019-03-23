@@ -1,0 +1,15 @@
+Btn_ReceivingAddress|收货地址
+Btn_Upgrade|升级
+Text_Chip|筹码
+Text_Consume|消耗品
+Text_DoubledRemedies|救济金翻倍
+Text_Gift1|礼品
+Text_GiftTicket|礼品券
+Text_Level|等级
+Text_QQ|QQ
+Text_Recharge|充值
+Text_RequiredGrowthValue|所需成长值
+Text_Score|积分
+Text_ShopVipTips2|每充值一元，获得一点成长值
+Text_Trouble|充值过程有问题请联系客服微信：nvshendezhou
+Text_VIP|贵族
