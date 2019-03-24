@@ -26,17 +26,14 @@ namespace Casinos
             {
                 HeadIconMgr.Instant.LoadIconAsync(resource_name, this.url, resource_name, null, _wwwCallBack);
             }
+            else if (this.url.EndsWith(ABPostfix))
+            {
+                TextureMgr.Instant.LoadTextureAsync(resource_name.Replace(ABPostfix, ""), this.url, _loadTextureCallBackEx);
+            }
             else
             {
-                if (this.url.EndsWith(ABPostfix))
-                {
-                    TextureMgr.Instant.LoadTextureAsync(resource_name.Replace(ABPostfix, ""), this.url, _loadTextureCallBackEx);
-                }
-                else
-                {
-                    tex = Resources.Load<Texture2D>(this.url);
-                    _loadTextureCallBack(tex);
-                }
+                tex = Resources.Load<Texture2D>(this.url);
+                _loadTextureCallBack(tex);
             }
         }
 

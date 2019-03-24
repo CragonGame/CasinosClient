@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 3782672249
+CRC: 3806022801
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: wallet.ab
+      Name: desktoph.ab
       Dependencies: {}
