@@ -68,6 +68,11 @@ namespace Casinos
             if (AppDomain != null)
             {
                 AppDomain.Invoke("Cs.Main", "Update", null, new object[] { Time.deltaTime });
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    AppDomain.Invoke("Cs.Main", "OnConfirmQuit", null, new object[] { });
+                }
             }
         }
 
