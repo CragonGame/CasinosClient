@@ -7,15 +7,26 @@
 //using ILRuntime.Runtime.Intepreter;
 //using ILRuntime.CLR.Method;
 
-//public class IComparableAdapter : CrossBindingAdaptor
+//public class GLoaderAdapter : CrossBindingAdaptor
 //{
 //    public override Type BaseCLRType
 //    {
 //        get
 //        {
-//            return typeof(IComparable<in T>);
+//            return typeof(FairyGUI.GLoader);
 //        }
 //    }
+
+//    //public override Type[] BaseCLRTypes
+//    //{
+//    //    get
+//    //    {
+//    //        //跨域继承只能有1个Adapter，因此应该尽量避免一个类同时实现多个外部接口，对于coroutine来说是IEnumerator<object>,IEnumerator和IDisposable，
+//    //        //ILRuntime虽然支持，但是一定要小心这种用法，使用不当很容易造成不可预期的问题
+//    //        //日常开发如果需要实现多个DLL外部接口，请在Unity这边先做一个基类实现那些个接口，然后继承那个基类
+//    //        return new Type[] { typeof(FairyGUI.GLoader), typeof(FairyGUI.GObject) };
+//    //    }
+//    //}
 
 //    public override Type AdaptorType
 //    {
@@ -30,7 +41,7 @@
 //        return new Adaptor(appdomain, instance);
 //    }
 
-//    public class Adaptor : IComparable<T>, CrossBindingAdaptorType
+//    public class Adaptor : FairyGUI.GLoader, CrossBindingAdaptorType
 //    {
 //        ILTypeInstance instance;
 //        ILRuntime.Runtime.Enviorment.AppDomain appdomain;
@@ -49,21 +60,21 @@
 
 //        public ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get { return appdomain; } set { appdomain = value; } }
 
-//        //IMethod mStartMethod;
-//        //bool mStartMethodGot;
-//        //int CompareTo(T other)
-//        //{
-//        //    if (!mStartMethodGot)
-//        //    {
-//        //        mStartMethod = instance.Type.GetMethod("CompareTo", 1);
-//        //        mStartMethodGot = true;
-//        //    }
+//        IMethod mLoadExternalMethod;
+//        bool mLoadExternalMethodGot;
+//        override protected void LoadExternal()
+//        {
+//            if (!mLoadExternalMethodGot)
+//            {
+//                mLoadExternalMethod = instance.Type.GetMethod("LoadExternal", 0);
+//                mLoadExternalMethodGot = true;
+//            }
 
-//        //    if (mStartMethod != null)
-//        //    {
-//        //        appdomain.Invoke(mStartMethod, instance, null);
-//        //    }
-//        //}
+//            if (mLoadExternalMethod != null)
+//            {
+//                appdomain.Invoke(mLoadExternalMethod, instance, null);
+//            }
+//        }
 
 //        public override string ToString()
 //        {
@@ -74,7 +85,9 @@
 //                return instance.ToString();
 //            }
 //            else
+//            {
 //                return instance.Type.FullName;
+//            }
 //        }
 //    }
 //}

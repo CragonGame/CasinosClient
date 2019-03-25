@@ -19,6 +19,7 @@ namespace Casinos
     public class MbLaunch : MonoBehaviour
     {
         //---------------------------------------------------------------------
+        public static MbLaunch Instance { get; private set; }
         public ILTypeKeeper Keeper { get; set; } = new ILTypeKeeper();
         LaunchInfo LaunchInfo { get; set; }
         ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get; set; } = null;
@@ -39,7 +40,22 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        void Start()
+        public void FairyGUILoadExternal(string url, GLoaderEx gloaderex, FairyGUI.DisplayObject display_obj)
+        {
+            if (AppDomain != null)
+            {
+                AppDomain.Invoke("Cs.Main", "OnFairyGUILoadExternal", null, new object[] { url, gloaderex, display_obj });
+            }
+        }
+
+        //---------------------------------------------------------------------
+        private void Awake()
+        {
+            Instance = this;
+        }
+
+        //---------------------------------------------------------------------
+        private void Start()
         {
             LaunchInfo = null;
             AppDomain = new ILRuntime.Runtime.Enviorment.AppDomain();
@@ -104,13 +120,21 @@ namespace Casinos
         }
 
         //-------------------------------------------------------------------------
-        void OnApplicationPause(bool pause)
+        private void OnApplicationPause(bool pause)
         {
+            if (AppDomain != null)
+            {
+                AppDomain.Invoke("Cs.Main", "OnApplicationPause", null, new object[] { pause });
+            }
         }
 
         //-------------------------------------------------------------------------
-        void OnApplicationFocus(bool focus_status)
+        private void OnApplicationFocus(bool focus_status)
         {
+            if (AppDomain != null)
+            {
+                AppDomain.Invoke("Cs.Main", "OnApplicationFocus", null, new object[] { focus_status });
+            }
         }
 
         //---------------------------------------------------------------------
@@ -190,7 +214,7 @@ namespace Casinos
             AppDomain.RegisterCrossBindingAdaptor(new CoroutineAdapter());
             AppDomain.RegisterCrossBindingAdaptor(new MonoBehaviourAdapter());
 
-            // 委托注册
+            // 委托Action注册
             AppDomain.DelegateManager.RegisterMethodDelegate<object>();
             AppDomain.DelegateManager.RegisterMethodDelegate<string>();
             AppDomain.DelegateManager.RegisterMethodDelegate<int, string>();
@@ -206,7 +230,7 @@ namespace Casinos
             {
                 return new FairyGUI.EventCallback0(() =>
                 {
-                    ((System.Action)action)();
+                    ((Action)action)();
                 });
             });
 
@@ -214,7 +238,7 @@ namespace Casinos
             {
                 return new FairyGUI.EventCallback1((context) =>
                 {
-                    ((System.Action<FairyGUI.EventContext>)action)(context);
+                    ((Action<FairyGUI.EventContext>)action)(context);
                 });
             });
 
@@ -222,7 +246,7 @@ namespace Casinos
             {
                 return new FairyGUI.GTweenCallback(() =>
                 {
-                    ((System.Action)action)();
+                    ((Action)action)();
                 });
             });
 
@@ -230,7 +254,7 @@ namespace Casinos
             {
                 return new FairyGUI.GTweenCallback1((a) =>
                 {
-                    ((System.Action<FairyGUI.GTweener>)action)(a);
+                    ((Action<FairyGUI.GTweener>)action)(a);
                 });
             });
 
@@ -238,7 +262,7 @@ namespace Casinos
             {
                 return new FairyGUI.ListItemRenderer((a, b) =>
                 {
-                    ((System.Action<int, FairyGUI.GObject>)action)(a, b);
+                    ((Action<int, FairyGUI.GObject>)action)(a, b);
                 });
             });
 
@@ -246,7 +270,7 @@ namespace Casinos
             {
                 return new FairyGUI.PlayCompleteCallback(() =>
                 {
-                    ((System.Action)action)();
+                    ((Action)action)();
                 });
             });
 
@@ -254,7 +278,7 @@ namespace Casinos
             {
                 return new FairyGUI.TimerCallback((a) =>
                 {
-                    ((System.Action<object>)action)(a);
+                    ((Action<object>)action)(a);
                 });
             });
 
@@ -262,7 +286,18 @@ namespace Casinos
             {
                 return new FairyGUI.TransitionHook(() =>
                 {
-                    ((System.Action)action)();
+                    ((Action)action)();
+                });
+            });
+
+            // 委托Function注册
+            AppDomain.DelegateManager.RegisterFunctionDelegate<FairyGUI.GLoader>();
+
+            AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.UIObjectFactory.GLoaderCreator>((func) =>
+            {
+                return new FairyGUI.UIObjectFactory.GLoaderCreator(() =>
+                {
+                    return ((Func<FairyGUI.GLoader>)func)();
                 });
             });
 

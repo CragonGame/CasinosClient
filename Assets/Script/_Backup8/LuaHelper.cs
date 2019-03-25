@@ -143,10 +143,10 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public static GLoaderEx GLoaderCastToGLoaderEx(GLoader loader)
-        {
-            return (GLoaderEx)loader;
-        }
+        //public static GLoaderEx GLoaderCastToGLoaderEx(GLoader loader)
+        //{
+        //    return (GLoaderEx)loader;
+        //}
 
         //---------------------------------------------------------------------
         public static GComponent EventDispatcherCastToGComponent(EventDispatcher ev)
