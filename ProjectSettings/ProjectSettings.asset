@@ -164,7 +164,7 @@ PlayerSettings:
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
-  stripEngineCode: 1
+  stripEngineCode: 0
   iPhoneStrippingLevel: 2
   iPhoneScriptCallOptimization: 0
   ForceInternetPermission: 0
@@ -709,7 +709,7 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    7: USE_PDB
+    7: USE_PDB;CASINOS_CLIENT
   platformArchitecture:
     iOS: 1
   scriptingBackend:

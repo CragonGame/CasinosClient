@@ -19,7 +19,7 @@ namespace Casinos
     public class MbLaunch : MonoBehaviour
     {
         //---------------------------------------------------------------------
-        public ILTypeKeeper Keeper { get; set; }
+        public ILTypeKeeper Keeper { get; set; } = new ILTypeKeeper();
         LaunchInfo LaunchInfo { get; set; }
         ILRuntime.Runtime.Enviorment.AppDomain AppDomain { get; set; } = null;
         bool LoadPdb { get; set; }// 是否加载Pdb，Pdb可以用于显示出错行号

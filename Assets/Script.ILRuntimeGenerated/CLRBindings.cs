@@ -29,6 +29,8 @@ namespace ILRuntime.Runtime.Generated
             System_Environment_Binding.Register(app);
             System_ValueType_Binding.Register(app);
             System_Collections_Generic_List_1_String_Binding.Register(app);
+            System_Collections_Generic_List_1_Int32_Binding.Register(app);
+            System_Collections_Generic_List_1_Int64_Binding.Register(app);
             System_Diagnostics_Stopwatch_Binding.Register(app);
             System_IO_Directory_Binding.Register(app);
             System_IO_DirectoryInfo_Binding.Register(app);
