@@ -1,0 +1,2 @@
+Btn_Photograph|拍照
+Btn_Photo|相册
