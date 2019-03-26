@@ -144,7 +144,7 @@ namespace Casinos
             NetMgr = new NetMgr();
             PlayerPrefs = new CasinosPlayerPrefs();
             TextureMgr = new TextureMgr();
-            UIObjectFactory.SetLoaderExtension(typeof(GLoaderEx));
+            //UIObjectFactory.SetLoaderExtension(typeof(GLoaderEx));
             DelayMgr = new DelayMgr();
             LuaMgr = new LuaMgr();
             SoundMgr = new SoundMgr();

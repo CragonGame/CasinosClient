@@ -24,19 +24,28 @@ namespace Casinos
             string resource_name = url.Substring(index + 1);
             if (this.url.StartsWith(HttpPrefix) || this.url.StartsWith(HttpsPrefix))
             {
+                Debug.Log(this.url);
+
+                if (HeadIconMgr.Instant == null)
+                {
+                    var a = new HeadIconMgr();
+                }
                 HeadIconMgr.Instant.LoadIconAsync(resource_name, this.url, resource_name, null, _wwwCallBack);
+            }
+            else if (this.url.EndsWith(ABPostfix))
+            {
+                Debug.Log(url);
+
+                if (TextureMgr.Instant == null)
+                {
+                    var a = new TextureMgr();
+                }
+                TextureMgr.Instant.LoadTextureAsync(resource_name.Replace(ABPostfix, ""), this.url, _loadTextureCallBackEx);
             }
             else
             {
-                if (this.url.EndsWith(ABPostfix))
-                {
-                    TextureMgr.Instant.LoadTextureAsync(resource_name.Replace(ABPostfix, ""), this.url, _loadTextureCallBackEx);
-                }
-                else
-                {
-                    tex = Resources.Load<Texture2D>(this.url);
-                    _loadTextureCallBack(tex);
-                }
+                tex = Resources.Load<Texture2D>(this.url);
+                _loadTextureCallBack(tex);
             }
         }
 

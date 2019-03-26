@@ -3,6 +3,7 @@
 namespace Casinos
 {
     using System;
+    using System.Text;
     using System.Collections.Generic;
     using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public static HeadIconMgr Instant { get; private set; }
         Dictionary<string, Texture> MapHeadIconResources { get; set; }
+        MbAsyncLoadAssets MbAsyncLoadAssets { get; set; }
 
         const string mDefaultIcon = "playershadow";
         const string mDefaultIconStr = "profile_";
@@ -45,21 +47,30 @@ namespace Casinos
                 //string s = string.Format("HeadIconMgr.LoadIconAsync() path={0} name={1}", resource_path, resource_name);
                 //Debug.Log(s);
 
-                CasinosContext.Instance.LuaMgr.WWWLoadTextureAsync(resource_path, load_callback);
+                if (MbAsyncLoadAssets == null)
+                {
+                    var go = GameObject.Find("Launch");
+                    MbAsyncLoadAssets = go.GetComponent<MbAsyncLoadAssets>();
+                }
+
+                MbAsyncLoadAssets.WWWLoadTextureAsync(resource_path, load_callback);
+
+
+                //CasinosContext.Instance.LuaMgr.WWWLoadTextureAsync(resource_path, load_callback);
             }
         }
 
         //---------------------------------------------------------------------
         public static string getIconName(bool is_small, string icon_name, ref string icon_resource_name)
         {
+            StringBuilder sb = new StringBuilder(128);
             string icon_str = mSmallIcon;
             if (!is_small)
             {
                 icon_str = mLargeIcon;
             }
-            CasinosContext.Instance.ClearSB();
-
-            var sb = CasinosContext.Instance.SB;
+            //CasinosContext.Instance.ClearSB();
+            //var sb = CasinosContext.Instance.SB;
             sb.Append(mDefaultIconStr);
             sb.Append(icon_str);
             sb.Append(icon_name);

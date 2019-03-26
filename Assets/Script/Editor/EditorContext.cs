@@ -134,6 +134,8 @@ public class EditorContext
         //types.Add(typeof(System.Collections.Generic.Dictionary<string, ILRuntime.Runtime.Intepreter.ILTypeInstance>));
         //types.Add(typeof(System.Collections.Generic.HashSet<ILRuntime.Runtime.Intepreter.ILTypeInstance>));
         types.Add(typeof(System.Collections.Generic.List<string>));
+        types.Add(typeof(System.Collections.Generic.List<int>));
+        types.Add(typeof(System.Collections.Generic.List<long>));
         //types.Add(typeof(System.Collections.Generic.Queue<ILRuntime.Runtime.Intepreter.ILTypeInstance>));
         types.Add(typeof(System.Diagnostics.Stopwatch));
         types.Add(typeof(System.IO.Directory));

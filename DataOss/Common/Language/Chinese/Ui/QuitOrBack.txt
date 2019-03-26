@@ -1,0 +1,2 @@
+Btn_QuitGame|退出
+Btn_Back|取消

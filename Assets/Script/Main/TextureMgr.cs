@@ -11,6 +11,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         public Dictionary<string, Texture> MapTexture { get; private set; }
         public static TextureMgr Instant { get; private set; }
+        MbAsyncLoadAssets MbAsyncLoadAssets { get; set; }
 
         //---------------------------------------------------------------------
         public TextureMgr()
@@ -34,7 +35,15 @@ namespace Casinos
                 //string s = string.Format("TextureMgr.LoadTextureAsync() path={0} name={1}", path, name);
                 //Debug.Log(s);
 
-                CasinosContext.Instance.LuaMgr.LocalLoadTextureFromAbAsync(path, name, call_back);
+                if (MbAsyncLoadAssets == null)
+                {
+                    var go = GameObject.Find("Launch");
+                    MbAsyncLoadAssets = go.GetComponent<MbAsyncLoadAssets>();
+                }
+
+                MbAsyncLoadAssets.LocalLoadTextureFromAbAsync(path, name, call_back);
+
+                //CasinosContext.Instance.LuaMgr.LocalLoadTextureFromAbAsync(path, name, call_back);
             }
             else
             {
