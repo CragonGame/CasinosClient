@@ -39,7 +39,7 @@ namespace Casinos
         public LuaMgr LuaMgr { get; private set; }
         public NetMgr NetMgr { get; private set; }
         public SpineMgr SpineMgr { get; private set; }
-        public NativeMgr NativeMgr { get; set; }
+        //public NativeMgr NativeMgr { get; set; }
         public NativeAPIMsgReceiverListener NativeAPIMsgReceiverListner { get; set; }
         public bool UseHttps { get; set; }
         public bool CanReportLog { get; set; }
@@ -118,7 +118,7 @@ namespace Casinos
             //FTMgr = new FTMgr();
             PathMgr = new PathMgr(editor_runsorce);// 初始化PathMgr
             Config = new CasinosConfig(editor_runsorce);
-            NativeMgr = new NativeMgr();
+            //NativeMgr = new NativeMgr();
             SpineMgr = new SpineMgr();
 
             // 初始化系统参数
@@ -349,10 +349,10 @@ namespace Casinos
         //---------------------------------------------------------------------
         public void SetNativeOperate(int native_operate)
         {
-#if UNITY_IOS
-            NativeOperateType operate = (NativeOperateType)native_operate;
-            NativeMgr.nativeOperate(operate);
-#endif
+//#if UNITY_IOS
+//            //NativeOperateType operate = (NativeOperateType)native_operate;
+//            //NativeMgr.nativeOperate(operate);
+//#endif
         }
 
         //---------------------------------------------------------------------

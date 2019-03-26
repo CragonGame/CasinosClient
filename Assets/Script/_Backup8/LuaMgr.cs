@@ -563,14 +563,15 @@ namespace Casinos
         // 拷贝text到剪切板
         public void SetClipBoard(string text)
         {
-            BlankOperationClipboard.SetValue(text);
+            //BlankOperationClipboard.SetValue(text);
         }
 
         //---------------------------------------------------------------------
         // 从剪切板中获取拷贝的text
         public string GetClipBoard()
         {
-            return BlankOperationClipboard.GetValue();
+            //return BlankOperationClipboard.GetValue();
+            return string.Empty;
         }
 
         //---------------------------------------------------------------------

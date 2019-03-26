@@ -19,11 +19,11 @@ public class TakePhoto {
 	public static TakePhoto mTakePhoto;
 	private static AndroidToUnityMsgBridge mAndroidToUnityMsgBridge;	
 	private Activity mUnityActivity;
-	public static String mResultReceiver = "";
+//	public static String mResultReceiver = "";
 	public int mPhotoWidth = 150;
 	public int mPhotoHeight = 150;
-	public static String mSuccessMethodName = "";
-	public static String mFailMethodName = "";
+//	public static String mSuccessMethodName = "";
+//	public static String mFailMethodName = "";
 	public String mPhotoFinalPath="";
 	public String mPhotoName = "";
 
@@ -31,26 +31,18 @@ public class TakePhoto {
 
 	// -------------------------------------------------------------------------
 	public static TakePhoto Instantce(int photo_width, int photo_height,
-			String success_methodname, String fail_methodname,
-			String photo_name,String photo_final_path, String resultreceiver_name) {
-		mResultReceiver = resultreceiver_name;
-		mSuccessMethodName = success_methodname;
-		mFailMethodName = fail_methodname;		
+			String photo_name,String photo_final_path) {	
 		if (mTakePhoto == null) {
 			mAndroidToUnityMsgBridge = AndroidToUnityMsgBridge
 					.Instance();
-			mTakePhoto = new TakePhoto(photo_width, photo_height,
-					success_methodname, fail_methodname, photo_name,
-					photo_final_path,resultreceiver_name);
+			mTakePhoto = new TakePhoto(photo_width, photo_height,photo_name,photo_final_path);
 		}
-
 		return mTakePhoto;
 	}
 
 	// -------------------------------------------------------------------------
 	private TakePhoto(int photo_width, int photo_height,
-			String success_methodname, String fail_methodname,
-			String photo_name, String photo_final_path,String pay_resultreceiver) {
+			String photo_name, String photo_final_path) {
 		this.mPhotoWidth = photo_width;
 		this.mPhotoHeight = photo_height;
 		this.mPhotoName = photo_name;
@@ -75,13 +67,11 @@ public class TakePhoto {
 					.Instance();
 		}
 		if (is_success) {
-			Log.e("TakePhoto", "sendToUnity::is_success::" + info+
-					"  mSuccessMethodName::"+mSuccessMethodName+"  mResultReceiver:"+mResultReceiver);
-			mAndroidToUnityMsgBridge.sendMsgToUnity(mResultReceiver,mSuccessMethodName, info);
+			Log.e("TakePhoto", "sendToUnity::is_success::" + info);
+			mAndroidToUnityMsgBridge.sendMsgToUnity(is_success,0,info);
 		} else {
-			Log.e("TakePhoto", "sendToUnity::is_fail::"+info+"  mFailMethodName::"+mFailMethodName
-					+"  mResultReceiver:"+mResultReceiver);
-			mAndroidToUnityMsgBridge.sendMsgToUnity(mResultReceiver,mFailMethodName, info);
+			Log.e("TakePhoto", "sendToUnity::is_fail::"+info);
+			mAndroidToUnityMsgBridge.sendMsgToUnity(is_success,0,info);
 		}
 	}
 

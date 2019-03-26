@@ -3,8 +3,6 @@ package com.AudioController.AudioController;
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
-import android.util.Log;
-
 import com.AndroidToUnityMsgBridge.AndroidToUnityMsgBridge.AndroidToUnityMsgBridge;
 
 public class AudioController {
@@ -13,29 +11,25 @@ public class AudioController {
 	private static AndroidToUnityMsgBridge mAndroidToUnityMsgBridge;
 	private Activity mUnityActivity;
 	private AudioManager mAudioManager;
-	private String mAudioChangeMsgName;
 	private int mMaxVolume;
-	private int mMinVolume;
 	private float mCurrentVolumeProgress;
 	private int mCurrentVolume;
 	private Boolean mIsMaxVolume;
 	private Boolean mIsSilence;
 
 	// -------------------------------------------------------------------------
-	public static AudioController Instantce(String result_receiver,
-			String audio_changemsgname) {
+	public static AudioController Instantce() {
 		if (mAudioControl == null) {
 			mAndroidToUnityMsgBridge = AndroidToUnityMsgBridge
 					.Instance();
-			mAudioControl = new AudioController(audio_changemsgname);
+			mAudioControl = new AudioController();
 		}
 
 		return mAudioControl;
 	}
 
 	// -------------------------------------------------------------------------
-	private AudioController(String audio_changemsgname) {
-		this.mAudioChangeMsgName = audio_changemsgname;
+	private AudioController() {
 		this.mUnityActivity = mAndroidToUnityMsgBridge.getActivity();
 		this.mAudioManager = (AudioManager) this.mUnityActivity
 				.getSystemService(Context.AUDIO_SERVICE);
@@ -44,10 +38,8 @@ public class AudioController {
 		if (this.mAudioManager != null) {
 			this.mMaxVolume = this.mAudioManager
 					.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-			// Log.e("AudioController", "mMaxVolume" + this.mMaxVolume);
-			this.mMinVolume = this.mAudioManager
+			this.mAudioManager
 					.getStreamVolume(AudioManager.STREAM_MUSIC);
-			// Log.e("AudioController", "mMinVolume" + this.mMinVolume);
 		}
 	}
 

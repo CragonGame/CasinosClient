@@ -139,9 +139,6 @@ public class TakePhotoActivity extends Activity {
 		checkTakePhoto();
 		outState.putBoolean("AlreadyTakePhoto", this.mAlreadyTakePhoto);
 		outState.putParcelable("ImageUri", this.mImageUri);
-		outState.putString("ResultReceiver", TakePhoto.mResultReceiver);
-		outState.putString("SuccessMethodName", TakePhoto.mSuccessMethodName);
-		outState.putString("FailMethodName", TakePhoto.mFailMethodName);
 		outState.putString("PhotoName", mPhotoName);
 		outState.putString("PhotoFinalPath", mPhotoFinalPath);
 		outState.putInt("PhotoWidth", mPhotoWidth);
@@ -173,11 +170,8 @@ public class TakePhotoActivity extends Activity {
 			if (TakePhoto.mTakePhoto == null) {
 				TakePhoto.Instantce(mPhotoWidth,
 						mPhotoHeight,
-						savedInstanceState.getString("SuccessMethodName"),
-						savedInstanceState.getString("FailMethodName"),
 						mPhotoName,
-						mPhotoFinalPath,
-						savedInstanceState.getString("ResultReceiver"));
+						mPhotoFinalPath);
 			}
 		}
 	}

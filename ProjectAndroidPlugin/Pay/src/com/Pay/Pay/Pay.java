@@ -15,21 +15,20 @@ public class Pay {
 	private static AndroidToUnityMsgBridge mAndroidToUnityMsgBridge;
 	private Activity mUnityActivity;	
 	private static String UnityPayResultMethord = "PayResult";
-	static String mResultReceiver;	
+//	static String mResultReceiver;	
 
 	// -------------------------------------------------------------------------
-	public static Pay Instance(String pay_resultreceiver,String beecloud_id,String beecloud_secret,String wechat_id) {
+	public static Pay Instance(String beecloud_id,String beecloud_secret,String wechat_id) {
 		if (mPay == null) {
-			mPay = new Pay(pay_resultreceiver,beecloud_id,beecloud_secret,wechat_id);
+			mPay = new Pay(beecloud_id,beecloud_secret,wechat_id);
 		}
 		return mPay;
 	}
 
 	// -------------------------------------------------------------------------
-	private Pay(String pay_resultreceiver,String beecloud_id,String beecloud_secret,String wechat_id) {
+	private Pay(String beecloud_id,String beecloud_secret,String wechat_id) {
 		mAndroidToUnityMsgBridge = AndroidToUnityMsgBridge
 				.Instance();
-		mResultReceiver = pay_resultreceiver;
 		this.mUnityActivity = mAndroidToUnityMsgBridge.getActivity();
 		if(beecloud_id != null && beecloud_id.isEmpty() == false)
 		{
@@ -72,8 +71,8 @@ public class Pay {
 
 	// -------------------------------------------------------------------------
 	public static void sendToUnity(String result) {
-		Log.e("Pay", "mResultReceiver__"+mResultReceiver+"____UnityPayResultMethord__"+UnityPayResultMethord+"___sendToUnityResult__"+result);
+		Log.e("Pay","____UnityPayResultMethord__"+UnityPayResultMethord+"___sendToUnityResult__"+result);
 
-		mAndroidToUnityMsgBridge.sendMsgToUnity(mResultReceiver,UnityPayResultMethord,result);
+		mAndroidToUnityMsgBridge.sendMsgToUnity(true,4,result);
 	}
 }

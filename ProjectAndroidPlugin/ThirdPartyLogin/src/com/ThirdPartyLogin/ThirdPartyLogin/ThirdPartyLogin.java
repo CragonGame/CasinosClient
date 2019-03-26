@@ -9,25 +9,17 @@ import com.AndroidToUnityMsgBridge.AndroidToUnityMsgBridge.AndroidToUnityMsgBrid
 public class ThirdPartyLogin {
 	public static ThirdPartyLogin Instantce;
 	static AndroidToUnityMsgBridge mAndroidToUnityMsgBridge;
-	static String mResultReceiver;	
-	static String mSuccessMethodName;
-	static String mFailMethodName;
 	static String mAppId;
 	Activity mUnityActivity;
 	IThirdPartyLogin mIThirdPartyLogin;
 	String mLoginParam;
 		
 	// -------------------------------------------------------------------------
-	public static ThirdPartyLogin Instantce(String app_id,String success_methodname, 
-			String fail_methodname,String result_receiver) {		
-		mResultReceiver = result_receiver;
-		mSuccessMethodName = success_methodname;
-		mFailMethodName = fail_methodname;		
+	public static ThirdPartyLogin Instantce(String app_id) {			
 		mAppId = app_id;
 		if(Instantce==null)
 		{
-			mAndroidToUnityMsgBridge = AndroidToUnityMsgBridge
-					.Instance();
+			mAndroidToUnityMsgBridge = AndroidToUnityMsgBridge.Instance();
 			Instantce = new ThirdPartyLogin();			
 		}
 		
@@ -66,15 +58,14 @@ public class ThirdPartyLogin {
 	// -------------------------------------------------------------------------
 	public static void sendToUnity(Boolean is_success, String info) {		
 		if (mAndroidToUnityMsgBridge == null) {			
-			mAndroidToUnityMsgBridge = AndroidToUnityMsgBridge
-					.Instance();
+			mAndroidToUnityMsgBridge = AndroidToUnityMsgBridge.Instance();
 		}
 		if (is_success) {
 			Log.e("ThirdPartyLogin", "sendToUnity::is_success::" + info);
-			mAndroidToUnityMsgBridge.sendMsgToUnity(mResultReceiver,mSuccessMethodName, info);
+			mAndroidToUnityMsgBridge.sendMsgToUnity(is_success,3,info);
 		} else {
 			Log.e("ThirdPartyLogin", "sendToUnity::is_fail::"+info);
-			mAndroidToUnityMsgBridge.sendMsgToUnity(mResultReceiver,mFailMethodName, info);
+			mAndroidToUnityMsgBridge.sendMsgToUnity(is_success,3,info);
 		}
 	}
 

@@ -8,10 +8,6 @@ namespace Casinos
     //using OnePF;// 内购的一个库
 
     public class NativeAPIMsgReceiverListener
-        : ITakePhotoReceiverListener
-        , IPayReceiverListener
-        , IAudioControlListener
-        , IThirdPartyLoginReceiverListener
     {
         //---------------------------------------------------------------------
         public Action<string> ActionGetPicSuccess;
@@ -167,13 +163,13 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _initNativeMsgReceiverListener()
         {
-            var native_receiver = NativeReceiver.Instance();
-            native_receiver.TakePhotoReceiverListener = this;
-            native_receiver.AudioControlListener = this;
-            var pay_receiver = PayReceiver.instance();
-            pay_receiver.PayReceiverListener = this;
-            var thirdparty_login_receiver = ThirdPartyLoginReceiver.instance();
-            thirdparty_login_receiver.ThirdPartyLoginReceiverListener = this;
+            //var native_receiver = NativeReceiver.Instance();
+            //native_receiver.TakePhotoReceiverListener = this;
+            //native_receiver.AudioControlListener = this;
+            //var pay_receiver = PayReceiver.instance();
+            //pay_receiver.PayReceiverListener = this;
+            //var thirdparty_login_receiver = ThirdPartyLoginReceiver.instance();
+            //thirdparty_login_receiver.ThirdPartyLoginReceiverListener = this;
 
             //#if (UNITY_IPHONE || UNITY_ANDROID) && !UNITY_EDITOR
             //            ThirdPartyLogin.Instantce().initLogin(CasinosContext.Instance.Config.WeChatAppId);
