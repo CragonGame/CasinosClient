@@ -24,7 +24,7 @@ namespace Casinos
             string resource_name = url.Substring(index + 1);
             if (this.url.StartsWith(HttpPrefix) || this.url.StartsWith(HttpsPrefix))
             {
-                Debug.Log(this.url);
+                //Debug.Log(this.url);
 
                 if (HeadIconMgr.Instant == null)
                 {
@@ -34,7 +34,7 @@ namespace Casinos
             }
             else if (this.url.EndsWith(ABPostfix))
             {
-                Debug.Log(url);
+                //Debug.Log(url);
 
                 if (TextureMgr.Instant == null)
                 {

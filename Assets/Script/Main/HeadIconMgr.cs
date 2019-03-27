@@ -55,7 +55,6 @@ namespace Casinos
 
                 MbAsyncLoadAssets.WWWLoadTextureAsync(resource_path, load_callback);
 
-
                 //CasinosContext.Instance.LuaMgr.WWWLoadTextureAsync(resource_path, load_callback);
             }
         }
