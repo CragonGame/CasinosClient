@@ -1,0 +1,11 @@
+SearchPlayerTips|请输入玩家昵称或ID
+Btn_JoinDesk|加入桌牌
+Btn_Message|消息
+Btn_Presented|赠送
+Btn_Report|举报
+Btn_Search|搜索
+Text_Friend|好友
+Text_Search|搜索
+Text_TipAddFriend|添加好友
+Text_TipSearchAddFriend|可以使用昵称或ID搜索玩家。把你的ID发给好友，他们就可以把你添加为好友。
+Text_YouHaveNoFriend|你没有一个好友
