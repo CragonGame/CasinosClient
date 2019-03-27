@@ -140,15 +140,17 @@ namespace Casinos
         //---------------------------------------------------------------------
         IEnumerator _copyStreamingAssets2PersistentAsync(Action cb)
         {
+#if UNITY_IPHONE || UNITY_IOS
+            string s = "file:///" + Application.streamingAssetsPath;
+#else
             string s = Application.streamingAssetsPath;
+#endif
 
             using (UnityWebRequest www_request = UnityWebRequest.Get(s + "/LaunchInfo.txt"))
             {
                 yield return www_request.SendWebRequest();
 
-                //LaunchInfo = LitJson.JsonMapper.ToObject<LaunchInfo>(www_request.downloadHandler.text);
-                Debug.Log(www_request.downloadHandler.text);
-                LaunchInfo = JsonUtility.FromJson<LaunchInfo>(www_request.downloadHandler.text);
+                LaunchInfo = LitJson.JsonMapper.ToObject<LaunchInfo>(www_request.downloadHandler.text);
             }
 
             Dictionary<string, UnityWebRequest> map_www = new Dictionary<string, UnityWebRequest>();
