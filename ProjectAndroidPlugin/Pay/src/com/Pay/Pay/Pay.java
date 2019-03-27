@@ -1,5 +1,10 @@
 package com.Pay.Pay;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
@@ -36,8 +41,8 @@ public class Pay {
 			BeeCloud.setAppIdAndSecret(beecloud_id,beecloud_secret);
 			String initInfo = BCPay.initWechatPay(this.mUnityActivity, wechat_id);
 	        if (initInfo != null) {
-	        	 String total_result = "wechat_notinstall; ; "; 	            
-	 	         Pay.sendToUnity(total_result);
+	        	 String total_result = "wechat_notinstall"; 	            
+	 	         Pay.sendToUnity(false,total_result,total_result,10000);
 	        }
 		}
 	}
@@ -70,9 +75,20 @@ public class Pay {
 	}
 
 	// -------------------------------------------------------------------------
-	public static void sendToUnity(String result) {
+	public static void sendToUnity(boolean is_success,String result,String msg,int err_code) {
 		Log.e("Pay","____UnityPayResultMethord__"+UnityPayResultMethord+"___sendToUnityResult__"+result);
-
-		mAndroidToUnityMsgBridge.sendMsgToUnity(true,4,result);
+		
+		Map<String,Object> map = new HashMap<String,Object>(); 
+		map.put("ret", is_success); 					// 结果
+		map.put("native_type", 4);						// 来自哪里
+		map.put("result", result);						// 处理返回的结果
+		map.put("msg", msg);							// 结果描述
+		map.put("err_code", err_code);					// 错误代码
+		
+		JSONObject json = new JSONObject(map);
+		
+		String ret_str = json.toString();
+		
+		mAndroidToUnityMsgBridge.sendMsgToUnity(ret_str);
 	}
 }

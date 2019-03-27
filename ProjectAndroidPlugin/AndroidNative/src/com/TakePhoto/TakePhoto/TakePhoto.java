@@ -2,6 +2,10 @@ package com.TakePhoto.TakePhoto;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,6 +30,7 @@ public class TakePhoto {
 //	public static String mFailMethodName = "";
 	public String mPhotoFinalPath="";
 	public String mPhotoName = "";
+	public _ERESULT mTakePhotoType = _ERESULT.getPicFromPicture;
 
 	// public int QUALITY = 60;
 
@@ -66,13 +71,26 @@ public class TakePhoto {
 			mAndroidToUnityMsgBridge = AndroidToUnityMsgBridge
 					.Instance();
 		}
+		
+		Map<String,Object> map = new HashMap<String,Object>(); 
+		map.put("ret", is_success); 					// 结果
+		map.put("native_type", 0);						// 来自哪里
+		map.put("ret_param", info);						// 处理返回的结果
+		map.put("way", mTakePhoto.mTakePhotoType);		// 拍照类型
+		
+		JSONObject json = new JSONObject(map);
+		
+		String ret_str = json.toString();
+		
+		mAndroidToUnityMsgBridge.sendMsgToUnity(ret_str);
+		
 		if (is_success) {
-			Log.e("TakePhoto", "sendToUnity::is_success::" + info);
-			mAndroidToUnityMsgBridge.sendMsgToUnity(is_success,0,info);
+			Log.e("TakePhoto", "sendToUnity::is_success:" + ret_str);
 		} else {
-			Log.e("TakePhoto", "sendToUnity::is_fail::"+info);
-			mAndroidToUnityMsgBridge.sendMsgToUnity(is_success,0,info);
+			Log.e("TakePhoto", "sendToUnity::is_fail:" + ret_str);
 		}
+		
+		
 	}
 
 	// -------------------------------------------------------------------------
@@ -137,6 +155,8 @@ public class TakePhoto {
 	// -------------------------------------------------------------------------
 	void _startTakePhotoActivity(_ERESULT takephoto_type)
 	{
+		mTakePhotoType = takephoto_type;
+		
 		Intent intent = new Intent(mUnityActivity, TakePhotoActivity.class);
 		intent.putExtra("PhotoWidth", mPhotoWidth);
 		intent.putExtra("PhotoHeight", mPhotoHeight);

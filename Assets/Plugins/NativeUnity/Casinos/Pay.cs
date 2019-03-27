@@ -35,7 +35,7 @@ public class Pay
     }
 
     //-------------------------------------------------------------------------
-    public void pay(string bill_title, _ePayType pay_type,
+    public void pay(string bill_title, int pay_type,
         int bill_totalfee, string bill_num, string buy_id, string url_scheme)
     {
     }
@@ -92,7 +92,7 @@ public class Pay
         payInitIos(beecloud_id,beecloud_secret,wechat_id);
     }
 
-     //-------------------------------------------------------------------------
+    //-------------------------------------------------------------------------
     public void useTestMode(bool use_testmode)
     {
        useTestModeIos(use_testmode);

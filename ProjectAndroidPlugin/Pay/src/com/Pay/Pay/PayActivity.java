@@ -42,10 +42,19 @@ public class PayActivity extends Activity {
 	             */	            
 	            String errorMsg = data.getExtras().getString("error_msg"); // 错误信息
 	            String extraMsg = data.getExtras().getString("extra_msg"); // 错误信息
-	            //showMsg(result, errorMsg, extraMsg);
-	            String total_result = result+";"+errorMsg+";"+extraMsg;
-	            Log.e("PayActivity", "PayResult::" + total_result);
-	            Pay.sendToUnity(total_result);
+	            
+	            boolean is_success = false;
+	            String total_result = result;
+	            
+	            if( result.equalsIgnoreCase("success")){
+	            	is_success = true;
+	            }else if(result.equalsIgnoreCase("fail")){
+	            	total_result = total_result +";err_msg=" + errorMsg +";detail=" + extraMsg;
+	            }	
+	            
+	            Log.e("PayActivity", "PayResult:" + total_result);
+	            Pay.sendToUnity(is_success,total_result);
+	            
 	            this.mAlreadyPay = true;
 	        }
 	    }

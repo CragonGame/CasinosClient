@@ -75,49 +75,23 @@ public class AndroidToUnityMsgBridge {
 
 		return this.mUnityPlayerActivity;
 	}
-
-	// -------------------------------------------------------------------------
-	public void sendMsgToUnity(String msg_name, String msg_param) {
-		if (mAndroidToUnitySendMsgMethod != null) {
-			try {
-				this.mAndroidToUnitySendMsgMethod.invoke(null, new Object[] {
-						this.mUnityMsgReciver, msg_name, msg_param });
-			} catch (IllegalAccessException e) {
-				Log.e("AndroidToUnityMsgBridge",
-						"Could not find UnitySendMessageMethod: "
-								+ e.getMessage());
-			} catch (IllegalArgumentException e1) {
-				Log.e("AndroidToUnityMsgBridge",
-						"Could not find UnitySendMessageMethod: "
-								+ e1.getMessage());
-			} catch (InvocationTargetException e2) {
-				Log.e("AndroidToUnityMsgBridge",
-						"Could not find UnitySendMessageMethod: "
-								+ e2.getMessage());
-			}
-		} else {
-			Log.e("AndroidToUnityMsgBridge", "UnitySendMessage: "
-					+ this.mUnityMsgReciver + ": " + msg_name + ": "
-					+ msg_param);
-		}
-	}
 	
 	// -------------------------------------------------------------------------
-		public void sendMsgToUnity(Boolean is_success,int native_type,String msg_param) {
+		public void sendMsgToUnity(String msg_param) {
 			if (mAndroidToUnitySendMsgMethod != null) {
 				try {
-					Map<String,Object> map = new HashMap<String,Object>(); 
-					map.put("ret", is_success); 			// 结果
-					map.put("native_type", native_type);	// 来自哪里
-					map.put("return_param", msg_param);		// 处理返回的结果
-					
-					JSONObject json =new JSONObject(map);
+//					Map<String,Object> map = new HashMap<String,Object>(); 
+//					map.put("ret", is_success); 			// 结果
+//					map.put("native_type", native_type);	// 来自哪里
+//					map.put("return_param", msg_param);		// 处理返回的结果
+//					
+//					JSONObject json =new JSONObject(map);
 					
 					this.mAndroidToUnitySendMsgMethod.invoke(null, new Object[] {
-							this.mUnityMsgReciver, this.mUnityMsgCallBackFun, json.toString() });
+							this.mUnityMsgReciver, this.mUnityMsgCallBackFun, msg_param });
 					
 					// 调试打开，发布去掉
-					Log.e("AndroidToUnityMsgBridge","sendMsgToUnity:"+json.toString());
+					Log.e("AndroidToUnityMsgBridge","sendMsgToUnity:"+msg_param);
 					
 				} catch (IllegalAccessException e) {
 					Log.e("AndroidToUnityMsgBridge",

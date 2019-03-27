@@ -14,6 +14,7 @@ public class NativeTakePhoto
     //-------------------------------------------------------------------------
     public void takeNewPhoto(int photo_width, int photo_height, string photo_name, string photo_finalpath)
     {
+
     }
 
     //-------------------------------------------------------------------------

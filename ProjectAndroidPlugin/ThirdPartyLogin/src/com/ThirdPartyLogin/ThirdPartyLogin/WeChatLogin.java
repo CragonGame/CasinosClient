@@ -24,6 +24,7 @@ public class WeChatLogin implements IThirdPartyLogin {
 	@Override
 	public void Login(String state) {
 		String app_id = ThirdPartyLogin.Instantce.getAppId();
+		String login_param = ThirdPartyLogin.Instantce.getLoginParam();
 		// Log.e("WeChatLogin", app_id);
 		mAPI=WXAPIFactory.createWXAPI(mUnityActivity, app_id, true);
 		mAPI.registerApp(app_id);
@@ -32,7 +33,7 @@ public class WeChatLogin implements IThirdPartyLogin {
 		
 		if(!b)
 		{
-			ThirdPartyLogin.sendToUnity(false, Integer.toString(ERR_NOTINSTALLEDWECHAT));
+			ThirdPartyLogin.sendToUnity(false, "",login_param,ERR_NOTINSTALLEDWECHAT);
 		}
 		else
 		{

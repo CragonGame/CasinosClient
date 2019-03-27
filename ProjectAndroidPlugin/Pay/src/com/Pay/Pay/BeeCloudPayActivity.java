@@ -16,25 +16,25 @@ public class BeeCloudPayActivity extends Activity {
         public void done(final BCResult bcResult) {        	
             final BCPayResult bcPayResult = (BCPayResult)bcResult;           
             String result = bcPayResult.getResult();
-            String total_result = "";
-            if (result.equals(BCPayResult.RESULT_SUCCESS)) {
-            	  total_result = "success; ; "; 	             	            
-            } else if (result.equals(BCPayResult.RESULT_CANCEL))
-            {
-            	 total_result = "cancel;UserCanCel; "; 
+            Integer err_code = bcPayResult.getErrCode();
+            String msg = "";
+            boolean is_success = false;
+            if (result.equals(BCPayResult.RESULT_SUCCESS)){
+            	msg = "success";
+            	is_success = true;
+            } 
+            else if (result.equals(BCPayResult.RESULT_CANCEL)){
+            	msg = "cancel";
             }
-            else if (result.equals(BCPayResult.RESULT_FAIL)) {
-            	total_result = "fail;" + bcPayResult.getErrCode() +
-                        ";" + bcPayResult.getErrMsg() +
-                        ";" + bcPayResult.getDetailInfo();
-
+            else if (result.equals(BCPayResult.RESULT_FAIL)){
+            	msg = "err_msg=" + bcPayResult.getErrMsg() + ";detail=" + bcPayResult.getDetailInfo();         	
             } else if (result.equals(BCPayResult.RESULT_UNKNOWN)) {   
-            	 total_result = "unknown;UserCanCel; ";
+            	msg = "unknown";	// 微信未安装
             } else {
-            	 total_result = "invalid; ; ";
+            	msg = "invalid";	// app进程被杀死
             }
             mAlreadyPay = true;
-            Pay.sendToUnity(total_result);
+            Pay.sendToUnity(is_success,result.toLowerCase(),msg,err_code);
             finish();
         }
     };

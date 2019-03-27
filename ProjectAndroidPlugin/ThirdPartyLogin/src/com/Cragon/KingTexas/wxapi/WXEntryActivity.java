@@ -107,18 +107,17 @@ public class WXEntryActivity extends WechatHandlerActivity implements IWXAPIEven
 	public void onResp(BaseResp resp) {		
 		Log.e("WXEntryActivity", "errCode__"+resp.errCode);
 		
+		String login_param = ThirdPartyLogin.Instantce.getLoginParam();
 		if(resp.errCode== BaseResp.ErrCode.ERR_OK)
 		{
 			SendAuth.Resp re= ((SendAuth.Resp)resp);
 			String token = re.code;
-			String login_param = ThirdPartyLogin.Instantce.getLoginParam();
-			String send_to_unity_msg = login_param+"|"+token;
-			// Log.e("WXEntryActivity", "token__"+token);		
-			ThirdPartyLogin.sendToUnity(true, send_to_unity_msg);
+			Log.e("WXEntryActivity", "token__"+token);		
+			ThirdPartyLogin.sendToUnity(true, token,login_param,resp.errCode);
 		}
 		else	
 		{		
-			ThirdPartyLogin.sendToUnity(false, Integer.toString(resp.errCode));
+			ThirdPartyLogin.sendToUnity(false, "",login_param,resp.errCode);
 		}		
 		
 		finish();
