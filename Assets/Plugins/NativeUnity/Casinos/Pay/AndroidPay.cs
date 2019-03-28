@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum _eAndroidPay
-{
-    pay
-}
+//public enum _eAndroidPay
+//{
+//    pay
+//}
 
 public class AndroidPay : IPay
 {

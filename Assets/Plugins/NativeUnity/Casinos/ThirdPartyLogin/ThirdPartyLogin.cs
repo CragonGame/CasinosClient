@@ -4,44 +4,103 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+public enum _eLoginFaildType
+{
+    ERR_OK = 0,
+    ERR_COMM = -1,
+    ERR_USER_CANCEL = -2,
+    ERR_SENT_FAILED = -3,
+    ERR_AUTH_DENIED = -4,
+    ERR_UNSUPPORT = -5,
+    ERR_NOTINSTALLEDWECHAT = 10000,
+}
+
+//-------------------------------------------------------------------------
+public enum _eThirdPartyLoginType
+{
+    WeChat,
+}
+
+//-------------------------------------------------------------------------
+public enum _eThirdPartyLoginParam
+{
+    Login,
+    Bind,
+}
+
 public class ThirdPartyLogin
 {
+#if UNITY_EDITOR || UNITY_STANDALONE
     //-------------------------------------------------------------------------
-    static ThirdPartyLogin mThirdPartyLogin;
-    static IThirdPartyLogin mIThirdPartyLogin;
+    public ThirdPartyLogin()
+    {
+    }
+
+    //-------------------------------------------------------------------------
+    public void Init(string app_id)
+    {
+    }
+
+    //-------------------------------------------------------------------------
+    public void Login(_eThirdPartyLoginType login_type, string state, string param)
+    {
+    }
+
+#elif UNITY_ANDROID
+        //-------------------------------------------------------------------------
+    public AndroidJavaClass mAndoridJavaClassThirdPartyLogin;
+    public AndroidJavaObject mAndroidThirdPartyLogin;
 
     //-------------------------------------------------------------------------
     public ThirdPartyLogin()
     {
-#if UNITY_ANDROID
-        mIThirdPartyLogin = new AndroidThirdPartyLogin();
-#elif UNITY_IOS
-		mIThirdPartyLogin = new IOSThirdPartyLogin();
-#else
-        Debug.LogError("Do not supported on this platform. ");
-#endif
+        mAndoridJavaClassThirdPartyLogin = new AndroidJavaClass("com.ThirdPartyLogin.ThirdPartyLogin.ThirdPartyLogin");
     }
 
     //-------------------------------------------------------------------------
-    public static ThirdPartyLogin Instantce()
+    public void Init(string app_id)
     {
-        if (mThirdPartyLogin == null)
+        if (mAndroidThirdPartyLogin == null)
         {
-            mThirdPartyLogin = new ThirdPartyLogin();
+            mAndroidThirdPartyLogin = mAndoridJavaClassThirdPartyLogin.CallStatic<AndroidJavaObject>("Instantce",
+                app_id);
         }
-
-        return mThirdPartyLogin;
     }
 
     //-------------------------------------------------------------------------
-    public void initLogin(string app_id)
+    public void Login(_eThirdPartyLoginType login_type, string state, string param)
     {
-        mIThirdPartyLogin.Init(app_id);
+        if (mAndroidThirdPartyLogin != null)
+        {
+            mAndroidThirdPartyLogin.Call("Login", (int)_eThirdPartyLoginType.WeChat, state, param);
+        }
+        else
+        {
+            Debug.LogError("AndroidThirdPartyLogin Is Null");
+        }
+    }
+
+#elif UNITY_IPHONE || UNITY_IOS
+
+    //-------------------------------------------------------------------------
+    public void Init(string app_id)
+    {
+        init(app_id);
     }
 
     //-------------------------------------------------------------------------
-    public void login(_eThirdPartyLoginType login_type, string state, string param)
+    public void Login(_eThirdPartyLoginType login_type, string state,string param)
     {
-        mIThirdPartyLogin.Login(login_type, state, param);
+        login(login_type,state,param);
     }
+
+    //-------------------------------------------------------------------------
+    #region DllImport
+    [DllImport("__Internal")]
+    private static extern void init(string app_id);
+    [DllImport("__Internal")]
+    private static extern void login(_eThirdPartyLoginType login_type, string state,string param);
+    #endregion
+#endif
+
 }

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum _eAndroidTakePhoto
-{
-    takeNewPhoto,
-    takeExistPhoto,
-}
+//public enum _eAndroidTakePhoto
+//{
+//    takeNewPhoto,
+//    takeExistPhoto,
+//}
 
 public class AndroidTakePhoto : INativeTakePhoto
 {

@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //-------------------------------------------------------------------------
-public enum _eThirdPartyLoginType
-{
-    WeChat,
-}
+//public enum _eThirdPartyLoginType
+//{
+//    WeChat,
+//}
 
-//-------------------------------------------------------------------------
-public enum _eThirdPartyLoginParam
-{
-    Login,
-    Bind,
-}
+////-------------------------------------------------------------------------
+//public enum _eThirdPartyLoginParam
+//{
+//    Login,
+//    Bind,
+//}
 
 public interface IThirdPartyLogin
 {

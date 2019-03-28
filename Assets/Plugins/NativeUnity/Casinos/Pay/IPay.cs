@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum _ePayType
-{
-    wx = 0,
-    alipay,
-    iap,
-}
+//public enum _ePayType
+//{
+//    wx = 0,
+//    alipay,
+//    iap,
+//}
 
-public enum _ePayOptionType
-{
-    QueryInventory,
-    PurchaseProduct,
-    ConsumeProduct,
-}
+//public enum _ePayOptionType
+//{
+//    QueryInventory,
+//    PurchaseProduct,
+//    ConsumeProduct,
+//}
 
 public interface IPay
 {

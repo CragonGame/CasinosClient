@@ -53,7 +53,7 @@ public class PayActivity extends Activity {
 	            }	
 	            
 	            Log.e("PayActivity", "PayResult:" + total_result);
-	            Pay.sendToUnity(is_success,total_result);
+	            Pay.sendToUnity(is_success,total_result,total_result,10000);
 	            
 	            this.mAlreadyPay = true;
 	        }
