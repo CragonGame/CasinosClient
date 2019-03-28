@@ -19,12 +19,7 @@ public class BuglyInit : MonoBehaviour
     /// Your App ID can be found on the "Setting" page of the app you are trying to monitor.
     /// </summary>
     /// <example>A real App ID looks like this: 90000xxxx</example>
-    //private const string BuglyAppID = "YOUR APP ID GOES HERE";
-#if UNITY_IPHONE || UNITY_IOS
-    const string BuglyAppID = "e438009ecd";
-#elif UNITY_ANDROID
-    const string BuglyAppID = "0aed5e7e56";
-#endif
+    private const string BuglyAppID = "YOUR APP ID GOES HERE";
 
     void Awake()
     {

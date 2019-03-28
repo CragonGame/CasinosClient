@@ -57,6 +57,8 @@ namespace Casinos
         //---------------------------------------------------------------------
         private void Start()
         {
+            Debug.Log("MbLaunch.Start()");
+
             LaunchInfo = null;
             AppDomain = new ILRuntime.Runtime.Enviorment.AppDomain();
             LoadPdb = true;
