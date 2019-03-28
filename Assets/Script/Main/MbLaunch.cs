@@ -298,6 +298,7 @@ namespace Casinos
 
             // 委托Function注册
             AppDomain.DelegateManager.RegisterFunctionDelegate<FairyGUI.GLoader>();
+            AppDomain.DelegateManager.RegisterFunctionDelegate<Dictionary<string, string>>();
 
             AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.UIObjectFactory.GLoaderCreator>((func) =>
             {
