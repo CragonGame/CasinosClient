@@ -8,6 +8,7 @@ public class NativeReceiver : MonoBehaviour
     // 处理结果返回json串
     public void CallBackResult(string json_ret)
     {
+        Debug.Log("NativeReceiver json_ret=" + json_ret);
         Action(json_ret);
     }
 }

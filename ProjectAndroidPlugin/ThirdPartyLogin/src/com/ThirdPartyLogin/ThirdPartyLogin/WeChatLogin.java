@@ -25,11 +25,11 @@ public class WeChatLogin implements IThirdPartyLogin {
 	public void Login(String state) {
 		String app_id = ThirdPartyLogin.Instantce.getAppId();
 		String login_param = ThirdPartyLogin.Instantce.getLoginParam();
-		// Log.e("WeChatLogin", app_id);
+		Log.e("WeChatLogin", app_id);
 		mAPI=WXAPIFactory.createWXAPI(mUnityActivity, app_id, true);
 		mAPI.registerApp(app_id);
 		Boolean b= mAPI.isWXAppInstalled();
-		// Log.e("WeChatLogin", "isWXAppInstalled__"+b);
+		Log.e("WeChatLogin", "isWXAppInstalled__"+b);
 		
 		if(!b)
 		{
@@ -42,7 +42,7 @@ public class WeChatLogin implements IThirdPartyLogin {
 		    req.scope = "snsapi_userinfo";
 		    req.state = state;
 		    Boolean send_success = mAPI.sendReq(req);
-		    // Log.e("WeChatLogin", "send_success__"+send_success);
+		   Log.e("WeChatLogin", "send_success__"+send_success);
 		}
 	}
 }
