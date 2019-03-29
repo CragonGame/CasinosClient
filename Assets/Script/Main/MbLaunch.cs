@@ -297,9 +297,9 @@ namespace Casinos
             });
 
             // 委托Function注册
-            AppDomain.DelegateManager.RegisterFunctionDelegate<FairyGUI.GLoader>();
             AppDomain.DelegateManager.RegisterFunctionDelegate<Dictionary<string, string>>();
 
+            AppDomain.DelegateManager.RegisterFunctionDelegate<FairyGUI.GLoader>();
             AppDomain.DelegateManager.RegisterDelegateConvertor<FairyGUI.UIObjectFactory.GLoaderCreator>((func) =>
             {
                 return new FairyGUI.UIObjectFactory.GLoaderCreator(() =>
@@ -308,6 +308,14 @@ namespace Casinos
                 });
             });
 
+            AppDomain.DelegateManager.RegisterFunctionDelegate<ILRuntime.Runtime.Intepreter.ILTypeInstance, bool>();
+            AppDomain.DelegateManager.RegisterDelegateConvertor<Predicate<ILRuntime.Runtime.Intepreter.ILTypeInstance>>((act) =>
+            {
+                return new Predicate<ILRuntime.Runtime.Intepreter.ILTypeInstance>((obj) =>
+                {
+                    return ((Func<ILRuntime.Runtime.Intepreter.ILTypeInstance, bool>)act)(obj);
+                });
+            });
             // 值类型绑定
             AppDomain.RegisterValueTypeBinder(typeof(Quaternion), new QuaternionBinder());
             AppDomain.RegisterValueTypeBinder(typeof(Vector2), new Vector2Binder());
