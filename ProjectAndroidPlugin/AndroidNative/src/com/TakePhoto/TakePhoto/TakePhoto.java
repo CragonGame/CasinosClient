@@ -73,10 +73,11 @@ public class TakePhoto {
 		}
 		
 		Map<String,Object> map = new HashMap<String,Object>(); 
-		map.put("ret", is_success); 					// 结果
-		map.put("native_type", 0);						// 来自哪里
-		map.put("ret_param", info);						// 处理返回的结果
-		map.put("way", mTakePhoto.mTakePhotoType);		// 拍照类型
+		map.put("ret", is_success); 						// 结果
+		map.put("native_type", 0);							// 来自哪里
+		map.put("ret_param", info);							// 处理返回的结果
+		map.put("way", mTakePhoto.mTakePhotoType);			// 拍照类型
+		map.put("photo_path",mTakePhoto.mPhotoFinalPath+ "/" + mTakePhoto.mPhotoName);	// 照片路径
 		
 		JSONObject json = new JSONObject(map);
 		
