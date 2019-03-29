@@ -59,4 +59,19 @@ public class NativeFun {
         }
         mUnityActivity.startActivity(intent);
     }
+	
+	// -------------------------------------------------------------------------
+	@SuppressWarnings("deprecation")
+	public static String GetClipBoard(){
+	   ClipboardManager cmb = (ClipboardManager) mUnityActivity.getSystemService(Context.CLIPBOARD_SERVICE); 
+	   String text = cmb.getText().toString().trim();
+	   return text;
+	}
+	
+	// ------------------------------------------------------------------------
+	@SuppressWarnings("deprecation")
+	public static void SetClipBoard(String text ){
+		ClipboardManager cmb = (ClipboardManager) mUnityActivity.getSystemService(Context.CLIPBOARD_SERVICE); 
+		cmb.setText(text);
+	}
 }

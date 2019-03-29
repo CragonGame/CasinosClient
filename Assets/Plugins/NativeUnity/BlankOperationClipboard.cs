@@ -38,63 +38,71 @@
 //  */
 using UnityEngine;
 
-/// <summary>
-/// Android
-/// 需要在清单文件中添加的Activity
-///     <activity android:name="com.alianhome.clipboardoperation.MainActivity"/> 
-/// </summary>
-
 #if UNITY_IOS
 using System.Runtime.InteropServices;
 #endif
 
 
-public class BlankOperationClipboard : MonoBehaviour
+public class BlankOperationClipboard
 {
+#if UNITY_EDITOR || UNITY_STANDALONE
 
-#if UNITY_IOS
+    // 获取粘贴板的值
+    public string GetValue()
+    {
+        return "";
+    }
+
+    // 设置粘贴板的值
+    public void SetValue(string text)
+    {
+
+    }
+
+#elif UNITY_ANDROID
+    
+    public AndroidJavaClass mAndoridJavaClassNativeOperation;
+    public AndroidJavaObject mAndroidClipboard;
+    public BlankOperationClipboard()
+    {
+        mAndoridJavaClassNativeOperation = new AndroidJavaClass("com.Native.Clipboardoperation.NativeOperation");
+        if (mAndroidClipboard == null)
+        {
+            mAndroidClipboard = mAndoridJavaClassNativeOperation.CallStatic<AndroidJavaObject>("Instantce");
+        }
+    }
+
+    // 获取粘贴板的值
+    public string GetValue()
+    {
+        return mAndroidClipboard.CallStatic<string>("GetClipBoard");
+    }
+
+    // 设置粘贴板的值
+    public void SetValue(string text)
+    {
+        mAndroidClipboard.CallStatic("SetClipBoard", text);
+    }
+
+#elif UNITY_IPHONE || UNITY_IOS
+
+    public string GetValue()
+    {
+        return GetClipBoard();
+    }
+
+    public void SetValue(string text)
+    {
+        SetClipBoard (text);
+    }
+
+    #region DllImport
 	[DllImport("__Internal")]
 	private static extern string GetClipBoard ();
 	
 	[DllImport("__Internal")]
 	private static extern void SetClipBoard (string text);
-
+    #endregion
 #endif
 
-
-    /// <summary>
-    /// 获取粘贴板的值
-    /// </summary>
-    /// <returns></returns>
-    public static string GetValue()
-    {
-#if UNITY_EDITOR
-        return null;
-#elif UNITY_ANDROID
-        using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.alianhome.clipboardoperation.MainActivity"))
-        {
-            return androidJavaClass.CallStatic<string>("GetClipBoard");
-        }
-#elif UNITY_IOS
-	    return GetClipBoard ();
-#endif
-
-    }
-    /// <summary>
-    /// 设置粘贴板的值
-    /// </summary>
-    /// <param name="text"></param>
-    public static void SetValue(string text)
-    {
-#if UNITY_EDITOR
-
-#elif UNITY_ANDROID
-        using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.alianhome.clipboardoperation.MainActivity"))
-        {
-             androidJavaClass.CallStatic("SetClipBoard", text);
-        }
-#elif UNITY_IOS
-		SetClipBoard (text);
-#endif
-    }
 }

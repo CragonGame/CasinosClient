@@ -3,17 +3,17 @@ using System.Collections;
 using System;
 
 //-------------------------------------------------------------------------
-public enum _eAndroidAudioControl
-{
-    setMusicSilence,
-    cancelMusicSilence,
-    getIsSilence,
-    setMusicMax,
-    cancelMusicMax,
-    getIsMaxVolume,
-    setCurrentMusicVolume,
-    getCurrentMusicVolume,
-}
+//public enum _eAndroidAudioControl
+//{
+//    setMusicSilence,
+//    cancelMusicSilence,
+//    getIsSilence,
+//    setMusicMax,
+//    cancelMusicMax,
+//    getIsMaxVolume,
+//    setCurrentMusicVolume,
+//    getCurrentMusicVolume,
+//}
 
 public class AndroidAudioControl : INativeAudioControl
 {

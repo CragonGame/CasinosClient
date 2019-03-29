@@ -26,6 +26,20 @@ public class NativeFun
     {
     }
 
+    //-------------------------------------------------------------------------
+    // 获取粘贴板的值
+    public string GetValue()
+    {
+        return "";
+    }
+
+    //-------------------------------------------------------------------------
+    // 设置粘贴板的值
+    public void SetValue(string text)
+    {
+        
+    }
+
 #elif UNITY_ANDROID
     //-------------------------------------------------------------------------
     public AndroidJavaClass mAndoridJavaClassNativeFun;
@@ -60,6 +74,21 @@ public class NativeFun
             mAndroidFun.CallStatic("installAPK", file_path);
         }
     }
+
+    //-------------------------------------------------------------------------
+    // 获取粘贴板的值
+    public string GetValue()
+    {
+        return mAndroidFun.CallStatic<string>("GetClipBoard");
+    }
+
+    //-------------------------------------------------------------------------
+    // 设置粘贴板的值
+    public void SetValue(string text)
+    {
+        mAndroidFun.CallStatic("SetClipBoard", text);
+    }
+
 #elif UNITY_IPHONE || UNITY_IOS
     
     //-------------------------------------------------------------------------
