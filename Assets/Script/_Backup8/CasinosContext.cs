@@ -7,8 +7,8 @@ namespace Casinos
     using System.Text;
     using UnityEngine;
     //using XLua;
-    using FairyGUI;
-    
+    //using FairyGUI;
+
     public enum _eProjectItemDisplayNameKey
     {
         Gold,
@@ -27,7 +27,6 @@ namespace Casinos
     {
         //---------------------------------------------------------------------
         public static CasinosContext Instance { get; private set; }
-        //public TimerShaft TimerShaft { get; private set; }
         public System.Diagnostics.Stopwatch Stopwatch { get; private set; }
         public MemoryStream MemoryStream { get; private set; }
         public StringBuilder SB { get; private set; }
@@ -39,7 +38,6 @@ namespace Casinos
         public LuaMgr LuaMgr { get; private set; }
         public NetMgr NetMgr { get; private set; }
         public SpineMgr SpineMgr { get; private set; }
-        //public NativeMgr NativeMgr { get; set; }
         public NativeAPIMsgReceiverListener NativeAPIMsgReceiverListner { get; set; }
         public bool UseHttps { get; set; }
         public bool CanReportLog { get; set; }
@@ -50,11 +48,14 @@ namespace Casinos
         public bool IsEditor { get; set; }
         public bool IsEditorDebug { get; set; }// 是否处于编辑器调试模式，可以调试lua，使用本地ab，raw
         public bool IsSqliteUnity { get; set; }
-        //public LuaTable TbDataMgrLua { get; set; }
-        //FTMgr FTMgr { get; set; }
         HeadIconMgr HeadIconMgr { get; set; }
         SoundMgr SoundMgr { get; set; }
         CasinosILRuntime CsRuntime { get; set; }
+
+        //public TimerShaft TimerShaft { get; private set; }
+        //public NativeMgr NativeMgr { get; set; }
+        //public LuaTable TbDataMgrLua { get; set; }
+        //FTMgr FTMgr { get; set; }
 
         //---------------------------------------------------------------------
         public CasinosContext(bool is_editor_debug)
@@ -112,14 +113,15 @@ namespace Casinos
 
             Stopwatch = new System.Diagnostics.Stopwatch();
             Stopwatch.Start();
-            //TimerShaft = new TimerShaft();
             MemoryStream = new MemoryStream();
             SB = new StringBuilder();
-            //FTMgr = new FTMgr();
             PathMgr = new PathMgr(editor_runsorce);// 初始化PathMgr
             Config = new CasinosConfig(editor_runsorce);
-            //NativeMgr = new NativeMgr();
             SpineMgr = new SpineMgr();
+
+            //TimerShaft = new TimerShaft();
+            //FTMgr = new FTMgr();
+            //NativeMgr = new NativeMgr();
 
             // 初始化系统参数
             {
@@ -189,10 +191,10 @@ namespace Casinos
             //    TimerShaft.ProcessTimer((ulong)Stopwatch.ElapsedMilliseconds);
             //}
 
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                //LuaMgr._CSharpCallOnAndroidQuitConfirm();
-            }
+            //if (Input.GetKeyDown(KeyCode.Escape))
+            //{
+            //    //LuaMgr._CSharpCallOnAndroidQuitConfirm();
+            //}
         }
 
         //---------------------------------------------------------------------
@@ -316,44 +318,44 @@ namespace Casinos
         //-------------------------------------------------------------------------
         public void OnApplicationPause(bool pause)
         {
-           // LuaMgr._CSharpCallOnApplicationPause(pause);
+            // LuaMgr._CSharpCallOnApplicationPause(pause);
         }
 
         //-------------------------------------------------------------------------
         public void OnApplicationFocus(bool focus_status)
         {
-           // LuaMgr._CSharpCallOnApplicationFocus(focus_status);
+            // LuaMgr._CSharpCallOnApplicationFocus(focus_status);
         }
 
         //---------------------------------------------------------------------
-        public void ReportLogWithDeviceId(string name, string message, string stackTrace)
-        {
-            string device_id = SystemInfo.deviceUniqueIdentifier;
-            if (CanReportLog && !string.IsNullOrEmpty(CanReportLogDeviceId) && CanReportLogDeviceId.Equals(device_id))
-            {
-                BuglyAgent.ReportException(name, message, stackTrace);
-            }
-        }
+        //public void ReportLogWithDeviceId(string name, string message, string stackTrace)
+        //{
+        //    string device_id = SystemInfo.deviceUniqueIdentifier;
+        //    if (CanReportLog && !string.IsNullOrEmpty(CanReportLogDeviceId) && CanReportLogDeviceId.Equals(device_id))
+        //    {
+        //        BuglyAgent.ReportException(name, message, stackTrace);
+        //    }
+        //}
+
+        ////---------------------------------------------------------------------
+        //public void ReportLogWithPlayerId(string name, string player_id, string message, string stackTrace)
+        //{
+        //    if (CanReportLog
+        //        && !string.IsNullOrEmpty(CanReportLogPlayerId)
+        //        && CanReportLogPlayerId.Equals(player_id))
+        //    {
+        //        BuglyAgent.ReportException(name, message, stackTrace);
+        //    }
+        //}
 
         //---------------------------------------------------------------------
-        public void ReportLogWithPlayerId(string name, string player_id, string message, string stackTrace)
-        {
-            if (CanReportLog
-                && !string.IsNullOrEmpty(CanReportLogPlayerId)
-                && CanReportLogPlayerId.Equals(player_id))
-            {
-                BuglyAgent.ReportException(name, message, stackTrace);
-            }
-        }
-
-        //---------------------------------------------------------------------
-        public void SetNativeOperate(int native_operate)
-        {
-//#if UNITY_IOS
-//            //NativeOperateType operate = (NativeOperateType)native_operate;
-//            //NativeMgr.nativeOperate(operate);
-//#endif
-        }
+        //        public void SetNativeOperate(int native_operate)
+        //        {
+        ////#if UNITY_IOS
+        ////            //NativeOperateType operate = (NativeOperateType)native_operate;
+        ////            //NativeMgr.nativeOperate(operate);
+        ////#endif
+        //        }
 
         //---------------------------------------------------------------------
         public void ClearSB()

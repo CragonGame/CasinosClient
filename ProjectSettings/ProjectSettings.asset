@@ -248,7 +248,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: F:/Cragon.Casinos.Common/Casinos.Client.Store/KingTexas.keystore
+  AndroidKeystoreName: D:/Cragon.Casinos.Common/Casinos.Client.Store/KingTexas.keystore
   AndroidKeyaliasName: kingtexas
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1

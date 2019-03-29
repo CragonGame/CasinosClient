@@ -1,0 +1,3 @@
+Text_RankChip|筹码榜
+Text_RankDiamond|钻石榜
+Text_RankingRedEnvelopes|红包周榜

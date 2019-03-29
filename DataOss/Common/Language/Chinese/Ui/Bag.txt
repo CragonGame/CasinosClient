@@ -1,0 +1,5 @@
+Btn_BuyMore|购买更多
+Text_Consume|消耗品
+Text_Gift|礼物
+Text_NoConsumeTips|当前没有消耗品
+Text_NoGiftTips|当前没有礼物

@@ -32,9 +32,6 @@ namespace Casinos
 
             if (texture == null)
             {
-                //string s = string.Format("TextureMgr.LoadTextureAsync() path={0} name={1}", path, name);
-                //Debug.Log(s);
-
                 if (MbAsyncLoadAssets == null)
                 {
                     var go = GameObject.Find("Launch");
@@ -42,8 +39,6 @@ namespace Casinos
                 }
 
                 MbAsyncLoadAssets.LocalLoadTextureFromAbAsync(path, name, call_back);
-
-                //CasinosContext.Instance.LuaMgr.LocalLoadTextureFromAbAsync(path, name, call_back);
             }
             else
             {
