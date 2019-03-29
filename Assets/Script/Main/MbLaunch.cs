@@ -40,13 +40,13 @@ namespace Casinos
         }
 
         //---------------------------------------------------------------------
-        public void FairyGUILoadExternal(string url, GLoaderEx gloaderex, FairyGUI.DisplayObject display_obj)
-        {
-            if (AppDomain != null)
-            {
-                AppDomain.Invoke("Cs.Main", "OnFairyGUILoadExternal", null, new object[] { url, gloaderex, display_obj });
-            }
-        }
+        //public void FairyGUILoadExternal(string url, GLoaderEx gloaderex, FairyGUI.DisplayObject display_obj)
+        //{
+        //    if (AppDomain != null)
+        //    {
+        //        AppDomain.Invoke("Cs.Main", "OnFairyGUILoadExternal", null, new object[] { url, gloaderex, display_obj });
+        //    }
+        //}
 
         //---------------------------------------------------------------------
         private void Awake()

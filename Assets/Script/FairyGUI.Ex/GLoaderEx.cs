@@ -22,10 +22,9 @@ namespace Casinos
             string url = this.url.Replace('\\', '/');
             int index = url.LastIndexOf('/');
             string resource_name = url.Substring(index + 1);
+
             if (this.url.StartsWith(HttpPrefix) || this.url.StartsWith(HttpsPrefix))
             {
-                //Debug.Log(this.url);
-
                 if (HeadIconMgr.Instant == null)
                 {
                     var a = new HeadIconMgr();
@@ -34,8 +33,6 @@ namespace Casinos
             }
             else if (this.url.EndsWith(ABPostfix))
             {
-                //Debug.Log(url);
-
                 if (TextureMgr.Instant == null)
                 {
                     var a = new TextureMgr();
@@ -83,7 +80,7 @@ namespace Casinos
         //---------------------------------------------------------------------
         void _wwwCallBack(Texture obj)
         {
-            if (this.displayObject.gameObject == null)
+            if (displayObject.gameObject == null)
             {
                 return;
             }
