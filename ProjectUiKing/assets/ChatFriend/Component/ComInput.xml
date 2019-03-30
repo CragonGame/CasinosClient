@@ -2,7 +2,7 @@
 <component size="579,52">
   <displayList>
     <image id="n5_g5sv" name="n5" src="lh6bjv" fileName="Image/New/BgInput.png" pkg="nhvxw9ov" xy="0,4" size="437,43"/>
-    <text id="n1_dld2" name="TextInput" xy="3,8" size="431,36" input="true" fontSize="28" color="#ffffff" vAlign="middle" autoSize="none" text="">
+    <text id="n1_dld2" name="TextInput" xy="3,8" size="431,36" input="true" maxLength="256" fontSize="28" color="#ffffff" vAlign="middle" autoSize="none" singleLine="true" text="">
       <relation target="" sidePair="width-width,height-height"/>
     </text>
     <component id="n7_g5sv" name="Lan_Btn_Send" src="mkwxed" fileName="Component/Btn/BtnYellow.xml" pkg="nhvxw9ov" xy="439,0" size="140,52">

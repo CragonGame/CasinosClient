@@ -732,8 +732,8 @@ Resources.KingTexas/Ui/chatchoosetarget.ab 2E0BC7ACB36FAFA6C40C1C3F38E44B0C
 Resources.KingTexas/Ui/chatchoosetarget.ab.manifest 9EE19EE6210BB0E0C6573170A5CD12EB
 Resources.KingTexas/Ui/chatexpression.ab 83471AB7355A0823D29C2A7BD1AD918D
 Resources.KingTexas/Ui/chatexpression.ab.manifest C44473A641CCC4BBEABC677DFB0A6B96
-Resources.KingTexas/Ui/chatfriend.ab C5477B1A18E977DD4CD96C9B9FB05DC6
-Resources.KingTexas/Ui/chatfriend.ab.manifest 0D97F55D5ACB907D27B84024337517CC
+Resources.KingTexas/Ui/chatfriend.ab 6D1531A9F9A7E05400DF9E3AEDB12D4E
+Resources.KingTexas/Ui/chatfriend.ab.manifest 90AD8718408A2BF54040620CA90442D7
 Resources.KingTexas/Ui/chipnotenough.ab 293CE8272C1F73839FC8361EE841BCBA
 Resources.KingTexas/Ui/chipnotenough.ab.manifest F4655B15170020C72282E25B45187FB2
 Resources.KingTexas/Ui/chipoperate.ab 7FE971D881B188AA6720B3DE39018E97
@@ -746,8 +746,8 @@ Resources.KingTexas/Ui/club.ab E53C0C60B793078E2862837EA321BC1B
 Resources.KingTexas/Ui/club.ab.manifest 1172429C1418342BB232E2D5C3E9EC9E
 Resources.KingTexas/Ui/clubhelp.ab 8E866C6AC80D0F7F9DE91FB7824DBDD6
 Resources.KingTexas/Ui/clubhelp.ab.manifest 46F9291803C4313C5B22EBFB1DC1221F
-Resources.KingTexas/Ui/common.ab 8F02D9531BDA7FB1C1689FD1D4F66AC2
-Resources.KingTexas/Ui/common.ab.manifest F307F288BC37FC1B845DF436ADE829BE
+Resources.KingTexas/Ui/common.ab 39DB0DBADE52FE3324272B0118F62C50
+Resources.KingTexas/Ui/common.ab.manifest F224A396DA327E76CE3C5507DF42125B
 Resources.KingTexas/Ui/createdesktop.ab 29394216C8DA6EAADB63D4D0F4B8C827
 Resources.KingTexas/Ui/createdesktop.ab.manifest 83317AFD2AD1561FB60E1AF671AAB3E0
 Resources.KingTexas/Ui/creatematch.ab CBED58E055B7EFECE3F4D3D598B24974
@@ -888,7 +888,7 @@ Resources.KingTexas/Ui/snowballreward.ab D4B1EB71B504CA6B21A3A5278578B9FD
 Resources.KingTexas/Ui/snowballreward.ab.manifest 0760E5F1C8F5B140CED1B97F19C8C160
 Resources.KingTexas/Ui/takephoto.ab 58C9BD45F6287E017C29AD8A8CDADC2F
 Resources.KingTexas/Ui/takephoto.ab.manifest 19AF96155D4C4243B99B88B8B1C8CD30
-Resources.KingTexas/Ui/Ui EFF0907D21491C9353C803DD33348392
-Resources.KingTexas/Ui/Ui.manifest D9FA4C3164EA984AF258D96097CF31D4
+Resources.KingTexas/Ui/Ui 9245A96EEFAD4275C4D27FC5D8D693D8
+Resources.KingTexas/Ui/Ui.manifest E6A8F0C07F341AD9AF8991920685C87A
 Resources.KingTexas/Ui/wallet.ab 04A8608E17541EF80D781E2E8AE2DE72
 Resources.KingTexas/Ui/wallet.ab.manifest ED3027FB9CD9CD513D69A292FF04544D
