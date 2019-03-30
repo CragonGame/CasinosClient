@@ -46,6 +46,12 @@ public class NativeFun
         
     }
 
+    //-------------------------------------------------------------------------
+    public void nativeOperate(NativeOperateType operate_type)
+    {
+    }
+
+
 #elif UNITY_ANDROID
     //-------------------------------------------------------------------------
     public AndroidJavaClass mAndoridJavaClassNativeFun;
@@ -93,6 +99,11 @@ public class NativeFun
     public void SetValue(string text)
     {
         mAndroidFun.CallStatic("SetClipBoard", text);
+    }
+
+    //-------------------------------------------------------------------------
+    public void nativeOperate(NativeOperateType operate_type)
+    {
     }
 
 #elif UNITY_IPHONE || UNITY_IOS

@@ -18,7 +18,7 @@ PlayerSettings:
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_ShowUnitySplashScreen: 1
-  m_ShowUnitySplashLogo: 1
+  m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 0
@@ -248,7 +248,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Cragon.Casinos.Common/Casinos.Client.Store/KingTexas.keystore
+  AndroidKeystoreName: F:/Cragon.Casinos.Common/Casinos.Client.Store/KingTexas.keystore
   AndroidKeyaliasName: kingtexas
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
