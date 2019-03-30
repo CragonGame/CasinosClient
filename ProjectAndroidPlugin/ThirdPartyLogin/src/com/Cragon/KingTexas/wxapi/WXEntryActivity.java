@@ -1,6 +1,6 @@
 package com.Cragon.KingTexas.wxapi;
 
-//import cn.sharesdk.wechat.utils.WechatHandlerActivity;
+import cn.sharesdk.wechat.utils.WechatHandlerActivity;
 
 import com.ThirdPartyLogin.ThirdPartyLogin.ThirdPartyLogin;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -20,7 +20,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-public class WXEntryActivity extends Activity implements IWXAPIEventHandler{
+public class WXEntryActivity extends WechatHandlerActivity implements IWXAPIEventHandler{
 	// IWXAPI 是第三方app和微信通信的openapi接口
     private IWXAPI api;
 	
