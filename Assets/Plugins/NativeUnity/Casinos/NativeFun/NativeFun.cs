@@ -7,6 +7,12 @@ using System.Collections;
 //#elif UNITY_IPHONE || UNITY_IOS
 //#endif
 
+public enum NativeOperateType
+{
+    Pay,
+    Login,
+}
+
 public class NativeFun
 {
 #if UNITY_EDITOR || UNITY_STANDALONE
@@ -107,10 +113,22 @@ public class NativeFun
     {      
     }
 
+    //-------------------------------------------------------------------------
+    public void nativeOperate(NativeOperateType operate_type)
+    {
+        nativeOperate(operate_type.ToString());
+    }
+
     #region DllImport
+
         //-------------------------------------------------------------------------
         [DllImport("__Internal")]
         private static extern string getCountryCodeIos();
+
+        //-------------------------------------------------------------------------
+        [DllImport("__Internal")]
+        private static extern void nativeOperate(string operate_type);
+
     #endregion
 
 #endif
