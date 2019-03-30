@@ -66,6 +66,19 @@ namespace cn.sharesdk.unity3d
 
 			shareSDKUtils.SetPlatformConfig(platformConfigs);
 		}
+
+        public void _init()
+        {
+            if(shareSDKUtils == null)
+            {
+                Debug.Log("init shareSDKUtils gameObject=" + gameObject);
+#if UNITY_ANDROID
+                shareSDKUtils = new AndroidImpl(gameObject);
+#elif UNITY_IPHONE
+			    shareSDKUtils = new iOSImpl(gameObject);
+#endif
+            }
+        }
 		
 		/// <summary>
 		/// callback the specified data.
@@ -277,15 +290,17 @@ namespace cn.sharesdk.unity3d
 		/// init the ShareSDK.
 		/// </summary>
 		public void InitSDK (String appKey)
-		{			
-			// if you don't add ShareSDK.xml in your assets folder, use the following line
-			shareSDKUtils.InitSDK (appKey);
+		{
+            // if you don't add ShareSDK.xml in your assets folder, use the following line
+            _init();
+            shareSDKUtils.InitSDK (appKey);
 		}
 
 		public void InitSDK (String appKey,String appSecret)
-		{			
-			// if you don't add ShareSDK.xml in your assets folder, use the following line
-			shareSDKUtils.InitSDK (appKey,appSecret);
+		{
+            _init();
+            // if you don't add ShareSDK.xml in your assets folder, use the following line
+            shareSDKUtils.InitSDK (appKey,appSecret);
 		}
 
 		/// <summary>
