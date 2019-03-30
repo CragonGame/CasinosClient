@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="41lv2285" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="l8y70" name="DeveloperSettings.xml" path="/" exported="true"/>
+  </resources>
+  <publish name="DeveloperSettings" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\DeveloperSettings"/>
+</packageDescription>

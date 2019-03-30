@@ -315,7 +315,8 @@ namespace Casinos
                 {
                     return ((Func<ILRuntime.Runtime.Intepreter.ILTypeInstance, bool>)act)(obj);
                 });
-            });
+            });
+
             // 值类型绑定
             AppDomain.RegisterValueTypeBinder(typeof(Quaternion), new QuaternionBinder());
             AppDomain.RegisterValueTypeBinder(typeof(Vector2), new Vector2Binder());

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 721314614
+CRC: 3228592076
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7e49bdf981266bc2c38fc7b02a7e0823
+    Hash: bf01b1dc8f6e9e40f012e32809940126
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,8 +14,8 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Login/Login_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Login/Login_atlas1.png
 - Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Login/Login_fui.bytes
 - Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Login/Login_atlas2.png
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Login/Login_atlas1.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Login/Login_atlas0.png
 Dependencies: []

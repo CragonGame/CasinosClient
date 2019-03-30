@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="60,60" extention="Button" initName="BtnHelp">
+<component size="60,60" pivot="0.5,0.5" extention="Button" initName="BtnHelp">
   <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
   <displayList>
-    <image id="n5_sd6w" name="n5" src="wb2ek5" xy="0,0" size="60,60">
+    <image id="n5_sd6w" name="n5" src="wb2ek5" fileName="Image/New/UI2_通用按钮_icon底.png" xy="0,0" size="60,60">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <image id="n4_sd6w" name="n4" src="nhy4kn" xy="18,12" color="#a7bcf0">
+    <image id="n4_sd6w" name="n4" src="nhy4kn" fileName="Image/New/UI2_通用按钮_帮助.png" xy="18,12" color="#a7bcf0">
       <relation target="" sidePair="width-width%,height-height%"/>
       <relation target="" sidePair="center-center,middle-middle"/>
     </image>
   </displayList>
-  <Button/>
+  <Button downEffect="scale" downEffectValue="0.90"/>
 </component>

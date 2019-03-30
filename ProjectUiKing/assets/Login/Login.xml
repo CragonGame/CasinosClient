@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component size="1066,640" margin="0,640,0,0">
-  <controller name="LoginState" pages="0,Login,1,Register,3,LoginMain,4,RegisterCode,5,ResetPwd,6,ResetPwdCode,7,Logining" selected="2"/>
+  <controller name="LoginState" pages="0,Login,1,Register,3,LoginMain,4,RegisterCode,5,ResetPwd,6,ResetPwdCode,7,Logining" selected="0"/>
   <controller name="ControllerWeChat" pages="0,ShowWeChat,1,HideWeChat" selected="0"/>
   <controller name="ControllerChooseCountryCode" pages="0,Hide,1,Choose" selected="0"/>
   <controller name="ControllerShowIcon" pages="0,Hide,1,Show" selected="0"/>
@@ -143,12 +143,6 @@
       <relation target="" sidePair="center-center,middle-middle"/>
     </component>
     <component id="n185_jyil" name="DengLongParent" src="jyil10" fileName="Component/ComParent.xml" xy="233,224"/>
-    <component id="n186_hrjf" name="ComboChooseUCenter" src="hrjf1a" fileName="Component/ComboBox1.xml" xy="224,11" size="191,56">
-      <ComboBox visibleItemCount="10"/>
-    </component>
-    <component id="n187_hrjf" name="ComboChooseGateWay" src="hrjf1a" fileName="Component/ComboBox1.xml" xy="627,12" size="191,56">
-      <ComboBox visibleItemCount="10"/>
-    </component>
     <component id="n233_jczm" name="ComCountryCodeChoose" src="jczm1e" fileName="Component/ComCountryCodeChoose.xml" xy="0,0">
       <gearDisplay controller="ControllerChooseCountryCode" pages="1"/>
       <relation target="" sidePair="width-width,height-height"/>
@@ -165,6 +159,9 @@
     <image id="n248_leuv" name="n248" src="leuv1p" fileName="Image/icon-152.jpg" xy="0,33" size="56,56">
       <gearDisplay controller="ControllerShowIcon" pages="1"/>
     </image>
+    <component id="n254_l8y7" name="BtnDeveloperSettings" src="sd6wl0" fileName="Component/Btn/BtnHelp.xml" pkg="nhvxw9ov" xy="1033,530" size="33,35">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </component>
   </displayList>
   <transition name="t0" autoPlay="true" autoPlayRepeat="-1">
     <item time="0" type="Alpha" target="n128_74h9" tween="true" startValue="1" endValue="0.5" duration="24" ease="Linear" repeat="-1" yoyo="true"/>
