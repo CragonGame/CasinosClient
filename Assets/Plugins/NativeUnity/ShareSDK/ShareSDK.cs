@@ -35,39 +35,39 @@ namespace cn.sharesdk.unity3d
 
 		void Awake()
 		{				
-			Type type = devInfo.GetType();
-			Hashtable platformConfigs = new Hashtable();
-			FieldInfo[] devInfoFields = type.GetFields();
-			foreach (FieldInfo devInfoField in devInfoFields) 
-			{	
-				DevInfo info = (DevInfo) devInfoField.GetValue(devInfo);
-				int platformId = (int) info.GetType().GetField("type").GetValue(info);
-				FieldInfo[] fields = info.GetType().GetFields();
-				Hashtable table = new Hashtable();
-				foreach (FieldInfo field in fields) 
-				{
-					if ("type".EndsWith(field.Name)) {
-						continue;
-					} else if ("Enable".EndsWith(field.Name) || "ShareByAppClient".EndsWith(field.Name) || "BypassApproval".EndsWith(field.Name) || "WithShareTicket".EndsWith(field.Name)) {
-						table.Add(field.Name, Convert.ToString(field.GetValue(info)).ToLower());
-					} else {
-						table.Add(field.Name, Convert.ToString(field.GetValue(info)));
-					}
-				}
-				platformConfigs.Add(platformId, table);
-			}
+			//Type type = devInfo.GetType();
+			//Hashtable platformConfigs = new Hashtable();
+			//FieldInfo[] devInfoFields = type.GetFields();
+			//foreach (FieldInfo devInfoField in devInfoFields) 
+			//{	
+			//	DevInfo info = (DevInfo) devInfoField.GetValue(devInfo);
+			//	int platformId = (int) info.GetType().GetField("type").GetValue(info);
+			//	FieldInfo[] fields = info.GetType().GetFields();
+			//	Hashtable table = new Hashtable();
+			//	foreach (FieldInfo field in fields) 
+			//	{
+			//		if ("type".EndsWith(field.Name)) {
+			//			continue;
+			//		} else if ("Enable".EndsWith(field.Name) || "ShareByAppClient".EndsWith(field.Name) || "BypassApproval".EndsWith(field.Name) || "WithShareTicket".EndsWith(field.Name)) {
+			//			table.Add(field.Name, Convert.ToString(field.GetValue(info)).ToLower());
+			//		} else {
+			//			table.Add(field.Name, Convert.ToString(field.GetValue(info)));
+			//		}
+			//	}
+			//	platformConfigs.Add(platformId, table);
+			//}
 
-			#if UNITY_ANDROID
-			shareSDKUtils = new AndroidImpl(gameObject);
-			shareSDKUtils.InitSDK(appKey,appSecret);
-			#elif UNITY_IPHONE
-			shareSDKUtils = new iOSImpl(gameObject);
-			#endif
+			//#if UNITY_ANDROID
+			//shareSDKUtils = new AndroidImpl(gameObject);
+			//shareSDKUtils.InitSDK(appKey,appSecret);
+			//#elif UNITY_IPHONE
+			//shareSDKUtils = new iOSImpl(gameObject);
+			//#endif
 
-			shareSDKUtils.SetPlatformConfig(platformConfigs);
+			//shareSDKUtils.SetPlatformConfig(platformConfigs);
 		}
 
-        public void _init()
+        private void _init()
         {
             if(shareSDKUtils == null)
             {

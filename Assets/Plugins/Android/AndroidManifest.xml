@@ -39,8 +39,11 @@
     <activity android:name="com.secondfury.nativetoolkit.LocalNotificationResult" />
     <!--<receiver android:name="com.secondfury.nativetoolkit.LocalNotification" />-->
 	<!-- end native toolkit -->
+	
+	<!--openinstall start-->
 	<activity android:name="io.openinstall.unity.AndroidOpenInstall.currentActivity" />
 	<activity android:name="com.OpenInstall.OpenInstall.NativeOpenInstallActivity" />
+	<!--openinstall end-->
 	
 	<provider
 		android:name="android.support.v4.content.FileProvider"        
