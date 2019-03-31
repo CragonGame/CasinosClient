@@ -4,31 +4,34 @@
     <image id="n12_rjah" name="n12" src="8xode8" fileName="Image/BgGift.png" pkg="nhvxw9ov" xy="0,0" size="1066,640">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <text id="n1_l8y7" name="n1" xy="111,32" size="175,45" fontSize="30" color="#99cc00" autoSize="none" text="开发者选项">
+    <text id="n1_l8y7" name="n1" xy="54,22" size="175,45" fontSize="30" color="#99cc00" autoSize="none" text="开发者选项">
       <relation target="" sidePair="left-left,top-top"/>
     </text>
-    <image id="n11_l8y7" name="n11" src="er9baj" fileName="Image/CommonDarkBg.png" pkg="nhvxw9ov" xy="356,481" size="246,54"/>
-    <component id="n2_l8y7" name="BtnPro" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="109,290">
+    <image id="n11_l8y7" name="n11" src="er9baj" fileName="Image/CommonDarkBg.png" pkg="nhvxw9ov" xy="252,199" size="168,41"/>
+    <component id="n2_l8y7" name="BtnPro" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="194,267" size="105,39">
       <relation target="" sidePair="left-left,top-top"/>
       <Button title="生产环境"/>
     </component>
-    <component id="n3_l8y7" name="BtnTest" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="109,384">
+    <component id="n3_l8y7" name="BtnTest" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="334,267" size="105,39">
       <relation target="" sidePair="left-left,top-top"/>
       <Button title="测试环境"/>
     </component>
-    <component id="n4_l8y7" name="BtnDev" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="109,478">
+    <component id="n4_l8y7" name="BtnDev" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="54,267" size="105,39">
       <relation target="" sidePair="left-left,top-top"/>
       <Button title="开发环境"/>
     </component>
-    <text id="n5_l8y7" name="InputDevChannel" xy="360,486" size="236,46" input="true" prompt="DevChannel" fontSize="30" color="#99cc00" autoSize="none" singleLine="true" text="&#xA;">
+    <text id="n5_l8y7" name="InputDevChannel" xy="256,204" size="158,33" input="true" prompt="DevChannel" fontSize="20" color="#99cc00" autoSize="none" singleLine="true" text="&#xA;">
       <relation target="" sidePair="left-left,top-top"/>
     </text>
-    <text id="n6_l8y7" name="TxtCurrentEnv" xy="362,122" size="256,46" fontSize="30" color="#0099ff" autoSize="none" text=""/>
-    <text id="n9_l8y7" name="TxtCurrentDevChannel" xy="360,196" size="256,46" fontSize="30" color="#0099ff" autoSize="none" text=""/>
-    <text id="n7_l8y7" name="n7" xy="111,122" size="239,46" fontSize="30" color="#ffffff" autoSize="none" text="当前环境："/>
-    <text id="n8_l8y7" name="n8" xy="111,196" size="237,46" fontSize="30" color="#ffffff" autoSize="none" text="当前DevChannel"/>
+    <text id="n6_l8y7" name="TxtCurrentEnv" xy="254,102" size="177,34" fontSize="22" color="#0099ff" autoSize="none" text=""/>
+    <text id="n9_l8y7" name="TxtCurrentDevChannel" xy="254,154" size="184,30" fontSize="22" color="#0099ff" autoSize="none" text=""/>
+    <text id="n7_l8y7" name="n7" xy="54,102" size="179,32" fontSize="20" color="#ffffff" autoSize="none" text="当前环境："/>
+    <text id="n8_l8y7" name="n8" xy="54,154" size="181,29" fontSize="20" color="#ffffff" autoSize="none" text="当前DevChannel："/>
     <component id="n10_l8y7" name="BtnClose" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="980,21">
       <relation target="" sidePair="right-right,top-top"/>
     </component>
+    <text id="n13_mmzb" name="n13" xy="54,342" size="125,32" fontSize="20" color="#ffffff" autoSize="none" text="ShowFps："/>
+    <component id="n14_mmzb" name="BtnShowFps" src="cpaah6" fileName="Component/Btn/BtnCheck.xml" pkg="nhvxw9ov" xy="251,340"/>
+    <text id="n15_mmzb" name="n15" xy="54,203" size="181,29" fontSize="20" color="#ffffff" autoSize="none" text="重设DevChannel："/>
   </displayList>
 </component>

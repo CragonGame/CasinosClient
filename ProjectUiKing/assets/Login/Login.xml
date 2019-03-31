@@ -11,7 +11,7 @@
     <image id="n245_h1fy" name="n245" src="wb2ek8" fileName="Image/New/UISprite.png" pkg="nhvxw9ov" xy="1,1" size="19,28" alpha="0.25" color="#000000">
       <relation target="n124_tiab" sidePair="leftext-left,rightext-right"/>
     </image>
-    <text id="n124_tiab" name="Version" xy="5,6" size="10,18" fontSize="14" color="#ffffff" align="center" vAlign="middle" text=""/>
+    <text id="n124_tiab" name="Version" xy="5,6" size="10,20" fontSize="14" color="#92dcfc" align="center" vAlign="middle" text=""/>
     <graph id="n244_rbum" name="HolderMote" xy="540,457" size="0,0">
       <relation target="" sidePair="center-center,middle-middle"/>
     </graph>

@@ -794,8 +794,8 @@ Resources.KingTexas/Ui/desktopplayerinfo.ab F3E5FC23885072445AEFCA390F4B6002
 Resources.KingTexas/Ui/desktopplayerinfo.ab.manifest D9CB17FACFFB9DB581C552EEA058C07B
 Resources.KingTexas/Ui/desktopplayeroperate.ab C1CC0BB86FF7F4C3D306272AD273224C
 Resources.KingTexas/Ui/desktopplayeroperate.ab.manifest 6736D81D6C3AA3B3F2717B59868D18E0
-Resources.KingTexas/Ui/developersettings.ab 1CEEA718E63BD1DBE1FC67439F67F2BA
-Resources.KingTexas/Ui/developersettings.ab.manifest 6D5230A179E2E1698DB3D58D31085576
+Resources.KingTexas/Ui/developersettings.ab 41A4A08633AE3D64B25D0D7341982658
+Resources.KingTexas/Ui/developersettings.ab.manifest EFFB2E6CA9677E07D9DA74ED9D515A3C
 Resources.KingTexas/Ui/editaddress.ab 9662C5E4738793F58A6CB55146BC25F7
 Resources.KingTexas/Ui/editaddress.ab.manifest E9DC876A1A5BC2DD5A9E0E542539B720
 Resources.KingTexas/Ui/entermatchnotify.ab D01C97BC95EF5DCCBCA7090FCB388CA8
@@ -830,8 +830,8 @@ Resources.KingTexas/Ui/loading.ab 24E67CAF7B385CB9C6F42FC4A1AA1F7B
 Resources.KingTexas/Ui/loading.ab.manifest 00724B6161222102DB2A967905EAE955
 Resources.KingTexas/Ui/lockchat.ab C412645B22664160235AB6AE4246E21D
 Resources.KingTexas/Ui/lockchat.ab.manifest FA9F393088FC5C41C44273A6F9006C74
-Resources.KingTexas/Ui/login.ab C493EFD261E76A72806ADE0F6A84E8C5
-Resources.KingTexas/Ui/login.ab.manifest B26FBDB990EA2D8F247E607FC5D8B16E
+Resources.KingTexas/Ui/login.ab 5738F38B791C224AC1868D10DD0786B7
+Resources.KingTexas/Ui/login.ab.manifest 8D401580944B576AEFD9579CA2521C67
 Resources.KingTexas/Ui/lotteryticket.ab 018CB9393CE31995EBCF595F3145AE12
 Resources.KingTexas/Ui/lotteryticket.ab.manifest 733C7158012D31ADD98F2FD4A53FA10C
 Resources.KingTexas/Ui/mail.ab 61E6F779BDD38F8C34A2C80EF1AFE72B
@@ -888,7 +888,7 @@ Resources.KingTexas/Ui/snowballreward.ab D4B1EB71B504CA6B21A3A5278578B9FD
 Resources.KingTexas/Ui/snowballreward.ab.manifest 0760E5F1C8F5B140CED1B97F19C8C160
 Resources.KingTexas/Ui/takephoto.ab 58C9BD45F6287E017C29AD8A8CDADC2F
 Resources.KingTexas/Ui/takephoto.ab.manifest 19AF96155D4C4243B99B88B8B1C8CD30
-Resources.KingTexas/Ui/Ui 9245A96EEFAD4275C4D27FC5D8D693D8
-Resources.KingTexas/Ui/Ui.manifest E6A8F0C07F341AD9AF8991920685C87A
+Resources.KingTexas/Ui/Ui 1AC30E956B16C600262B7DA600CDB947
+Resources.KingTexas/Ui/Ui.manifest 7C76CE2BF8E3B09258DF27FCAF6E600C
 Resources.KingTexas/Ui/wallet.ab 04A8608E17541EF80D781E2E8AE2DE72
 Resources.KingTexas/Ui/wallet.ab.manifest ED3027FB9CD9CD513D69A292FF04544D
