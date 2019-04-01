@@ -232,6 +232,7 @@ namespace Casinos
             AppDomain.DelegateManager.RegisterMethodDelegate<FairyGUI.GTweener>();
             AppDomain.DelegateManager.RegisterMethodDelegate<int, FairyGUI.GObject>();
             AppDomain.DelegateManager.RegisterMethodDelegate<Int32, cn.sharesdk.unity3d.ResponseState, cn.sharesdk.unity3d.PlatformType, Hashtable>();
+            AppDomain.DelegateManager.RegisterMethodDelegate<io.openinstall.unity.OpenInstallData>();
 
             AppDomain.DelegateManager.RegisterDelegateConvertor<cn.sharesdk.unity3d.ShareSDK.EventHandler>((act) => 
             {

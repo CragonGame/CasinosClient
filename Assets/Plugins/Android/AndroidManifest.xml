@@ -55,9 +55,6 @@
 			android:resource="@xml/provider_paths" />
     </provider>
 	
-	<!-- 剪切板 -->
-	<activity android:name="com.alianhome.clipboardoperation.MainActivity"/>
-	
 	<!-- 拍照 -->
 	<activity
         android:name="com.TakePhoto.TakePhoto.TakePhotoActivity"
