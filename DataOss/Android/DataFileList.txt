@@ -794,8 +794,8 @@ Resources.KingTexas/Ui/desktopplayerinfo.ab F3E5FC23885072445AEFCA390F4B6002
 Resources.KingTexas/Ui/desktopplayerinfo.ab.manifest D9CB17FACFFB9DB581C552EEA058C07B
 Resources.KingTexas/Ui/desktopplayeroperate.ab C1CC0BB86FF7F4C3D306272AD273224C
 Resources.KingTexas/Ui/desktopplayeroperate.ab.manifest 6736D81D6C3AA3B3F2717B59868D18E0
-Resources.KingTexas/Ui/developersettings.ab 41A4A08633AE3D64B25D0D7341982658
-Resources.KingTexas/Ui/developersettings.ab.manifest EFFB2E6CA9677E07D9DA74ED9D515A3C
+Resources.KingTexas/Ui/developersettings.ab 5664D3E4E71FD98C654074EBF3661C69
+Resources.KingTexas/Ui/developersettings.ab.manifest 5861EC7DB337834562C3C65E80634C06
 Resources.KingTexas/Ui/editaddress.ab 9662C5E4738793F58A6CB55146BC25F7
 Resources.KingTexas/Ui/editaddress.ab.manifest E9DC876A1A5BC2DD5A9E0E542539B720
 Resources.KingTexas/Ui/entermatchnotify.ab D01C97BC95EF5DCCBCA7090FCB388CA8
@@ -888,7 +888,7 @@ Resources.KingTexas/Ui/snowballreward.ab D4B1EB71B504CA6B21A3A5278578B9FD
 Resources.KingTexas/Ui/snowballreward.ab.manifest 0760E5F1C8F5B140CED1B97F19C8C160
 Resources.KingTexas/Ui/takephoto.ab 58C9BD45F6287E017C29AD8A8CDADC2F
 Resources.KingTexas/Ui/takephoto.ab.manifest 19AF96155D4C4243B99B88B8B1C8CD30
-Resources.KingTexas/Ui/Ui 1AC30E956B16C600262B7DA600CDB947
-Resources.KingTexas/Ui/Ui.manifest 7C76CE2BF8E3B09258DF27FCAF6E600C
+Resources.KingTexas/Ui/Ui 0500DC3ECB6A7E47F86DEF398A52DDCB
+Resources.KingTexas/Ui/Ui.manifest FC7C88FF5D36FF6B1B26CD3B79FE3C9C
 Resources.KingTexas/Ui/wallet.ab 04A8608E17541EF80D781E2E8AE2DE72
 Resources.KingTexas/Ui/wallet.ab.manifest ED3027FB9CD9CD513D69A292FF04544D

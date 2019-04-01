@@ -8,23 +8,23 @@
       <relation target="" sidePair="left-left,top-top"/>
     </text>
     <image id="n11_l8y7" name="n11" src="er9baj" fileName="Image/CommonDarkBg.png" pkg="nhvxw9ov" xy="252,199" size="168,41"/>
-    <component id="n2_l8y7" name="BtnPro" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="194,267" size="105,39">
+    <component id="n2_l8y7" name="BtnPro" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="188,267" size="105,39">
       <relation target="" sidePair="left-left,top-top"/>
       <Button title="生产环境"/>
     </component>
-    <component id="n3_l8y7" name="BtnTest" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="334,267" size="105,39">
+    <component id="n3_l8y7" name="BtnTest" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="54,267" size="105,39">
       <relation target="" sidePair="left-left,top-top"/>
       <Button title="测试环境"/>
     </component>
-    <component id="n4_l8y7" name="BtnDev" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="54,267" size="105,39">
+    <component id="n4_l8y7" name="BtnDev" src="mkwxef" fileName="Component/Btn/BtnBlue.xml" pkg="nhvxw9ov" xy="322,267" size="105,39">
       <relation target="" sidePair="left-left,top-top"/>
       <Button title="开发环境"/>
     </component>
-    <text id="n5_l8y7" name="InputDevChannel" xy="256,204" size="158,33" input="true" prompt="DevChannel" fontSize="20" color="#99cc00" autoSize="none" singleLine="true" text="&#xA;">
+    <text id="n5_l8y7" name="InputDevChannel" xy="256,204" size="161,33" input="true" fontSize="20" color="#99cc00" autoSize="none" singleLine="true" text="&#xA;">
       <relation target="" sidePair="left-left,top-top"/>
     </text>
-    <text id="n6_l8y7" name="TxtCurrentEnv" xy="254,102" size="177,34" fontSize="22" color="#0099ff" autoSize="none" text=""/>
-    <text id="n9_l8y7" name="TxtCurrentDevChannel" xy="254,154" size="184,30" fontSize="22" color="#0099ff" autoSize="none" text=""/>
+    <text id="n6_l8y7" name="TxtCurrentEnv" xy="254,102" size="169,34" fontSize="22" color="#0099ff" autoSize="none" text=""/>
+    <text id="n9_l8y7" name="TxtCurrentDevChannel" xy="254,154" size="168,30" fontSize="22" color="#0099ff" autoSize="none" text=""/>
     <text id="n7_l8y7" name="n7" xy="54,102" size="179,32" fontSize="20" color="#ffffff" autoSize="none" text="当前环境："/>
     <text id="n8_l8y7" name="n8" xy="54,154" size="181,29" fontSize="20" color="#ffffff" autoSize="none" text="当前DevChannel："/>
     <component id="n10_l8y7" name="BtnClose" src="hrhqka" fileName="Component/Btn/BtnClose1.xml" pkg="nhvxw9ov" xy="980,21">
