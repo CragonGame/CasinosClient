@@ -10,12 +10,13 @@
 		android:targetSdkVersion="28" />
 
 	<application
+		android:name="io.openinstall.unityplugin.OiApplication"
 		android:allowBackup="true"
 		android:icon="@drawable/app_icon"
 		android:label="@string/app_name"
 		android:theme="@style/AppTheme" >
     <activity
-        android:name="com.unity3d.player.UnityPlayerActivity"
+        android:name="io.openinstall.unityplugin.OiUnityActivity"
         android:launchMode="singleInstance"
         android:configChanges="orientation|keyboardHidden|screenSize|navigation"
         android:label="@string/app_name" >
@@ -41,8 +42,8 @@
 	<!-- end native toolkit -->
 	
 	<!--openinstall start-->
-	<activity android:name="io.openinstall.unity.AndroidOpenInstall.currentActivity" />
-	<activity android:name="com.OpenInstall.OpenInstall.NativeOpenInstallActivity" />
+	<!--<activity android:name="io.openinstall.unityplugin.OiUnityActivity" android:launchMode="singleTask" /> -->       
+	<meta-data android:name="com.openinstall.APP_KEY" android:value="znc4d4"/>
 	<!--openinstall end-->
 	
 	<provider
@@ -174,10 +175,11 @@
 		android:label="PushService"
 		android:process=":pushservice">
     </service>
-    <service android:name="com.getui.getuiunity.GTPushIntentService"/>
+    <service android:name="com.getui.getuiunity.GTPushIntentService" 
+	android:permission="android.permission.BIND_JOB_SERVICE"/>
 	<!-- 配置个推SDK核心服务 End-->
 	
-	<meta-data android:name="com.openinstall.APP_KEY" android:value="znc4d4"/>
+	
 	<meta-data android:name="Mob-AppKey" android:value="254dedc7a3730"/>
 	<meta-data android:name="Mob-AppSecret" android:value="53788920e17ffa1d9af4ef3540352172"/>
 	<meta-data android:name="PUSH_APPID" android:value="TXYr3LD0se8JU8UOtg9cj3" />

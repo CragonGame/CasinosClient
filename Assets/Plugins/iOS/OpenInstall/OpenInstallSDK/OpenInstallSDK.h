@@ -13,26 +13,28 @@
 
 @optional
 
-#pragma mark - 请使用最新API：<code>getInstallParmsCompleted</code>
+#pragma mark - 推荐使用最新API：<code>getInstallParmsCompleted</code>
 /**
  * 安装时获取h5页面动态参数（如果是渠道链接，渠道编号会一起返回）
  * @param params 动态参数
  * @param error 错误回调
+ * @discussion 老版本sdk升级过来可延用该api
  */
-- (void)getInstallParamsFromOpenInstall:(nullable NSDictionary *)params withError:(nullable NSError *)error;//已废弃
+- (void)getInstallParamsFromOpenInstall:(nullable NSDictionary *)params withError:(nullable NSError *)error;
 
 
 ///----------------------
 /// @name 一键拉起的回调方法
 ///----------------------
 
-#pragma mark - 请使用最新API：<code>getWakeUpParams</code>
+#pragma mark - 推荐使用最新API：<code>getWakeUpParams</code>
 /**
  * 唤醒时获取h5页面动态参数（如果是渠道链接，渠道编号会一起返回）
  * @param params 动态参数
  * @param error 错误回调
+ * @discussion 老版本sdk升级过来可延用该api
  */
-- (void)getWakeUpParamsFromOpenInstall:(nullable NSDictionary *)params withError:(nullable NSError *)error;//已废弃
+- (void)getWakeUpParamsFromOpenInstall:(nullable NSDictionary *)params withError:(nullable NSError *)error;
 
 
 #pragma mark - add in v2.2.0
@@ -48,17 +50,21 @@
 
 @interface OpenInstallSDK : NSObject
 
+/**
+ * 获取sdk当前版本号,add in v2.2.1
+ */
++ (NSString *_Nullable)sdkVersion;
+
 
 /**
  * SDK单例,returns a previously instantiated singleton instance of the API.
  */
-+(instancetype _Nullable )defaultManager;
++(instancetype _Nullable)defaultManager;
 
 
 ///-------------
 /// @name 初始化
 ///-------------
-
 
 #pragma mark - added in v2.2.0 请在Info.plist中配置应用的appkey
 
@@ -71,7 +77,7 @@
  
  * @param delegate 委托方法所在的类的对象
  */
-+(void)initWithDelegate:(id _Nonnull)delegate;
++(void)initWithDelegate:(id<OpenInstallDelegate> _Nonnull)delegate;
 
 
 #pragma mark - Deprecated in v2.2.0（已废弃）
@@ -81,39 +87,43 @@
  *
  * @param appKey 控制中心创建应用获取appKey
  * @param delegate 委托方法(getInstallParamsFromOpenInstall和 getWakeUpParamsFromOpenInstall)所在的类的对象
+ * @discussion 老版本sdk升级过来可延用该api
  */
-+(void)setAppKey:(nonnull NSString *)appKey withDelegate:(nullable id)delegate __deprecated_msg("Deprecated in v2.2.0，请参考方法<code>initwithDelegate</code>");
++(void)setAppKey:(nonnull NSString *)appKey withDelegate:(nullable id<OpenInstallDelegate>)delegate __deprecated_msg("Deprecated in v2.2.0，请参考方法<code>initwithDelegate</code>");
 
 
 ///----------------------
 /// @name 获取安装的动态参数
 ///----------------------
 
-
 #pragma mark - added in v2.2.0
 
 /**
  * 开发者在需要获取用户安装app后由web网页传递过来的”动态参数“（如邀请码、游戏房间号，渠道编号等）时调用该方法,可第一时间返回数据，可在任意位置调用
  *
- * 默认回调超时时间为5秒(s)，如无特殊需求，请用此方法，否则可使用高级API
+ * v2.2.1后默认回调超时时长由5秒(s)修改为为8秒(s)，如无特殊需求，请用此方法，否则可使用高级API
  *
  * @param completedBlock 回调block，在主线程（UI线程）回调
  *
  * @discussion
- * ***开发者不要自行保存参数!!!如果获取动态参数成功，SDK会把参数保存在本地***
- * ***该方法可重复获取参数，如需在首次安装才获取安装参数，请自行判断***
+ 1、不要自己保存动态安装参数，在每次需要用到参数时，请调用该方法去获取；
+ 2、该方法默认超时为8秒，尽量写在业务场景需要参数的位置调用（在业务场景时，网络一般都是畅通的），例如，可以选择在用户注册成功后调用该方法获取参数，对用户进行奖励。原因是iOS首次安装、首次启动的app，会询问用户获取网络权限，用户允许后SDK才能正常联网去获取参数。如果调用过早，可能导致网络权限还未允许就被调用，导致参数无法及时拿到，误以为参数不存在（此时getInstallParmsCompleted法已超时，回调返回空）；
+ 3. 如果是业务需要，必须在application:didFinishLaunchingWithOptions方法中获取参数，可调用下面高级API，修改超时时长，比如15秒或更长，如果只是拿参数在后台“悄悄地”进行数据统计的情况，超时时长设置为半个小时或更长都是ok的，根据需要来。
+ 
+ * ***该方法可重复获取参数，如需在首次安装才获取安装参数，请自行判断，参考https://www.openinstall.io/doc/ios_sdk_faq.html***
  */
 -(void)getInstallParmsCompleted:(void (^_Nullable)(OpeninstallData*_Nullable appData))completedBlock;
+
 
 /**
  * 开发者在需要获取用户安装app后由web网页传递过来的”动态参数“（如邀请码、游戏房间号，渠道编号等）时调用该方法,可第一时间返回数据，可在任意位置调用
  *
- * @param timeoutInterval 可设置回调超时时间，单位秒(s)
+ * @param timeoutInterval 可设置回调超时时长，单位秒(s)
  * @param completedBlock 回调block，在主线程（UI线程）回调
  *
  * @discussion
  * ***开发者不要自行保存参数!!!如果获取动态参数成功，SDK会把参数保存在本地***
- * ***该方法可重复获取参数，如需在首次安装才获取安装参数，请自行判断***
+ * ***该方法可重复获取参数，如需在首次安装才获取安装参数，请自行判断，参考https://www.openinstall.io/doc/ios_sdk_faq.html***
  */
 -(void)getInstallParmsWithTimeoutInterval:(NSTimeInterval)timeoutInterval
                                 completed:(void (^_Nullable)(OpeninstallData*_Nullable appData))completedBlock;
@@ -125,7 +135,7 @@
  * 开发者直接获取动态参数,初始化之后调用（参数的正常获取时间1-2秒内）
  * @return NSDictionary
  */
-+(NSDictionary*_Nullable)getOpenInstallParams __deprecated_msg("Deprecated in v2.1.1，请参考方法<code>getInstallParmsCompleted</code>");
++(NSDictionary *_Nullable)getOpenInstallParams __deprecated_msg("Deprecated in v2.1.1，请参考方法<code>getInstallParmsCompleted</code>");
 
 
 ///---------------------
@@ -142,12 +152,10 @@
 
 /**
  * 处理 通用链接
- * 通过 Universal Link 启动应用时会调用 application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void(^)(NSArray * __nullable
- restorableObjects))restorationHandler ,在此方法中调用  [OpenInstallSDK continueUserActivity:userActivity]
  * @param userActivity 存储了页面信息，包括url
  * @return bool URL是否被OpenInstall识别
  */
-+(BOOL)continueUserActivity:(NSUserActivity*_Nullable)userActivity;
++(BOOL)continueUserActivity:(NSUserActivity *_Nullable)userActivity;
 
 
 

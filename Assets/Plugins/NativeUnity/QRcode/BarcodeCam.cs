@@ -161,4 +161,22 @@ public class BarcodeCam : MonoBehaviour
         };
         return writer.Write(textForEncoding);
     }
+
+    //---------------------------------------------------------------------
+    // 创建二维码
+    public Color32[] CreateQRCode(string encoding_text, int width, int height)
+    {
+        var writer = new BarcodeWriter
+        {
+            Format = BarcodeFormat.QR_CODE,
+            Options = new QrCodeEncodingOptions
+            {
+                CharacterSet = "UTF-8",
+                Height = height,
+                Width = width,
+                Margin = 1// 设置二维码的边距,单位不是固定像素
+            }
+        };
+        return writer.Write(encoding_text);
+    }
 }
