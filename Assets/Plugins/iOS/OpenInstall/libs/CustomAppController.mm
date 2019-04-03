@@ -50,8 +50,7 @@ IMPL_APP_CONTROLLER_SUBCLASS(CustomAppController)
 #pragma mark-----对于重签名的用户，如果系统scheme回调方法的API<code>application:openURL:sourceApplication:annotation:</code>无法回调，可打开以下注释
 /*
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
-    
-    [self configOrientation];
+ 
     NSMutableArray* keys    = [NSMutableArray arrayWithCapacity: 1];
     NSMutableArray* values  = [NSMutableArray arrayWithCapacity: 1];
     

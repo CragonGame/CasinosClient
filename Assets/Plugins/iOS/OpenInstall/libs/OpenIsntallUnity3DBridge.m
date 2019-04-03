@@ -19,9 +19,18 @@ extern "C" {
     {
         [[OpenInstallSDK defaultManager] getInstallParmsWithTimeoutInterval:s completed:^(OpeninstallData * _Nullable appData) {
             
-            NSDictionary *installDicResult = @{@"channelCode":appData.channelCode?:@"",@"bindData":appData.data?:@""};
+            NSString *channelID = @"";
+            NSString *datas = @"";
+            if (appData.data) {
+                datas = [OpenIsntallUnity3DBridge jsonStringWithObject:appData.data];
+            }
+            if (appData.channelCode) {
+                channelID = appData.channelCode;
+            }
+            NSDictionary *installDicResult = @{@"channelCode":channelID,@"bindData":datas};
             NSString *installJsonStr = [OpenIsntallUnity3DBridge jsonStringWithObject:installDicResult];
             UnitySendMessage([@"OpenInstall" UTF8String], "_installCallback", [installJsonStr UTF8String]);
+            
         }];
     }
     
