@@ -6,6 +6,7 @@
     <component id="sz68l" name="WheelPopup.xml" path="/Component/"/>
     <image id="lh6bm" name="UI2_设置_ICON.png" path="/Image/"/>
     <component id="n8cln" name="BtnResetPwd.xml" path="/Component/"/>
+    <component id="iyl7o" name="ComDeveloperSettings.xml" path="/Component/"/>
   </resources>
   <publish name="Settings" path="D:\CasinosClientGithub\Assets\Resources.KingTexas\BuildAssetBundleFromFold\Ui\Settings"/>
 </packageDescription>
