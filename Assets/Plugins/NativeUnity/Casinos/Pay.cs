@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_IOS
+using System.Runtime.InteropServices;
+#endif
+
 public enum _ePayType
 {
     wx = 0,

@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+#if UNITY_IOS
+using System.Runtime.InteropServices;
+#endif
+
 //-------------------------------------------------------------------------
 public enum _eAndroidAudioControl
 {
