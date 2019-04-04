@@ -96,9 +96,9 @@ public class ThirdPartyLogin
 
     //-------------------------------------------------------------------------
     #region DllImport
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern void init(string app_id);
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern void login(_eThirdPartyLoginType login_type, string state,string param);
     #endregion
 #endif

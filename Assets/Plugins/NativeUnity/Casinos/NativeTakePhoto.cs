@@ -85,10 +85,10 @@ public class NativeTakePhoto
 
     //-------------------------------------------------------------------------
     #region DllImport
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern void takeNewPhoto_ios(string msg_recivername, string take_photosuccessmsgname,
        string take_photofailmsgname, int photo_width, int photo_height, string store_photopath);
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern void takeExistPhoto_ios(string msg_recivername, string take_photosuccessmsgname,
         string take_photofailmsgname, int photo_width, int photo_height, string store_photopath);
     #endregion

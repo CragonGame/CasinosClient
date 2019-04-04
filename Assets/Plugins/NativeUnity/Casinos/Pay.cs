@@ -106,16 +106,16 @@ public class Pay
 
     #region DllImport
         //-------------------------------------------------------------------------
-        [DllImport("__Internal")]
+        [DllImport ("__Internal")]
         private static extern void payInitIos(string beecloud_id, string beecloud_secret, string wechat_id);
         //-------------------------------------------------------------------------
-        [DllImport("__Internal")]
+        [DllImport ("__Internal")]
         private static extern void useTestModeIos(bool use_testmode);
         ////-------------------------------------------------------------------------
-        //[DllImport("__Internal")]
+        //[DllImport ("__Internal")]
         //private static extern void payIos(string charge_data, int pay_type);
         //-------------------------------------------------------------------------
-        [DllImport("__Internal")]
+        [DllImport ("__Internal")]
         private static extern void payIos(string bill_title, int pay_type, int bill_totalfee, string bill_num, string buy_id,string url_scheme);
     #endregion
 #endif

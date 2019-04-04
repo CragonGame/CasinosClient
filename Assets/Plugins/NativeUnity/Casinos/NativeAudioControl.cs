@@ -202,21 +202,21 @@ public class NativeAudioControl
 
     //-------------------------------------------------------------------------
     #region DllImport
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern void setMusicSilence_ios();
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern void cancelMusicSilence_ios();
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern int getIsSilence_ios();
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern void setMusicMax_ios();
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern void cancelMusicMax_ios();
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern int getIsMaxVolume_ios();
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern void setCurrentMusicVolum_ios(float current_musicvolume);
-    [DllImport("__Internal")]
+    [DllImport ("__Internal")]
     private static extern float getCurrentMusicVolume_ios();
     #endregion
 

@@ -131,15 +131,13 @@ public class NativeFun
     }
 
     #region DllImport
-
         //-------------------------------------------------------------------------
-        [DllImport("__Internal")]
+        [DllImport ("__Internal")]
         private static extern string getCountryCodeIos();
 
         //-------------------------------------------------------------------------
-        [DllImport("__Internal")]
+        [DllImport ("__Internal")]
         private static extern void nativeOperate(string operate_type);
-
     #endregion
 
 #endif

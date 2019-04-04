@@ -97,10 +97,10 @@ public class BlankOperationClipboard
     }
 
     #region DllImport
-	[DllImport("__Internal")]
+	[DllImport ("__Internal")]
 	private static extern string GetClipBoard ();
 	
-	[DllImport("__Internal")]
+	[DllImport ("__Internal")]
 	private static extern void SetClipBoard (string text);
     #endregion
 #endif
