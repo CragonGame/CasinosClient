@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2092406038
+CRC: 3168516518
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 85b37d9f59fddd950273ae8cbe16c01e
+    Hash: 4cd68ea8cd3b9d2495895ef10c63956c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,6 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Mail/Mail_fui.bytes
 - Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Mail/Mail_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Mail/Mail_fui.bytes
 Dependencies: []

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3797084343
+CRC: 597482333
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 823a0134efc8f7a87b4bb8f1cdcddb6b
+    Hash: 465f460d5a10ce7bd6a999eb79ce3274
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8cfd36d84ed37a63bcb3c7ce96d93f72
@@ -14,6 +14,6 @@ ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
 Assets:
-- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Bag/Bag_fui.bytes
 - Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Bag/Bag_atlas0.png
+- Assets/Resources.KingTexas/BuildAssetBundleFromFold/Ui/Bag/Bag_fui.bytes
 Dependencies: []

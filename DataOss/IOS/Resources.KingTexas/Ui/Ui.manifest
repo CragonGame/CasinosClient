@@ -1,7 +1,7 @@
 ManifestFileVersion: 0
-CRC: 1733244216
+CRC: 438572447
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: activitypopup.ab
+      Name: paytype.ab
       Dependencies: {}
