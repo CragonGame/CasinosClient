@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+#if UNITY_IOS
+using System.Runtime.InteropServices;
+#endif
+
 //定义模板
 //#if UNITY_EDITOR || UNITY_STANDALONE
 //#elif UNITY_ANDROID
