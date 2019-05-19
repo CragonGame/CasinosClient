@@ -40,6 +40,10 @@
 ![a](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/a.png)
 ![c](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/c.png)
 ![d](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/d.png)
+![f](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/f.png)
+![g](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/g.png)
+![h](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/h.png)
+![i](https://github.com/CragonGame/CasinosClient/blob/master/Doc/Images/i.png)
 
 [licence badge]:https://img.shields.io/badge/license-MIT-blue.svg
 [stars badge]:https://img.shields.io/github/stars/CragonGame/CasinosClient.svg
