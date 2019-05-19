@@ -11,6 +11,9 @@
 ### 测试环境体验包下载链接（仅支持Android）
 - http://www.cragon.cn/gpdz.html
 
+### 打牌场视频
+- https://v.youku.com/v_show/id_XMzUzMTEzNjg2NA==.html?spm=a2h0k.11417342.soresults.dtitle
+
 ### 果派德州依赖的第三方SDK
 - https://unity3d.com
 - https://beecloud.cn
