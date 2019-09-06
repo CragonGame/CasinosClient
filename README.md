@@ -8,6 +8,8 @@
 - 果派德州是一款专注海外发行的休闲德州扑克，包含常规桌，赛事场，百人桌，时时彩等玩法。
 - master分支的代码为ILRuntime重构的半成品，已转为商业闭源，不再更新Github仓库。1.1分支为xLua较完整的版本，可在u3d中运行，以及发布Android版本运行。
 
+We recruits agents worldwide, please contact us at lion@cragon.cn
+
 ### 测试环境体验包下载链接（仅支持Android）
 - http://www.cragon.cn/gpdz.html
 
